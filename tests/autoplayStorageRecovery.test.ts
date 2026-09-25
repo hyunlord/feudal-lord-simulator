@@ -11,9 +11,18 @@ import { evaluateEraRequirements } from '../src/engine/era';
 import type { GameState } from '../src/engine/engine.types';
 import { underPreK4Unlocks } from './preK4UnlockScenario';
 
+// AF-13: this snapshot predates v10 (built directly from wheat farms, still legal and still simulating), so
+// under the new farmstead-counted grain slot it reads as food-chain-incomplete. A pending, road-connected
+// farmstead site marks the chain as already in progress (as it was, in effect, when this snapshot was taken),
+// keeping food out of the way of the storage-recovery behaviour under test.
+function withPendingFoodChain(state: GameState): GameState {
+  const site = createConstructionSite({ ordinal: 999999, kind: 'farmstead', tx: 40, ty: 10, startedTick: state.tick });
+  return { ...state, constructionSites: [...state.constructionSites, site] };
+}
+
 function natural(tick = 504000): GameState {
   // Captured under the pre-K4-1 unlock table (church locked until stone town); see preK4UnlockScenario.ts.
-  return underPreK4Unlocks(JSON.parse(gunzipSync(readFileSync(new URL(`./fixtures/storage-recovery/seed5-${tick}.json.gz`, import.meta.url))).toString()));
+  return withPendingFoodChain(underPreK4Unlocks(JSON.parse(gunzipSync(readFileSync(new URL(`./fixtures/storage-recovery/seed5-${tick}.json.gz`, import.meta.url))).toString())));
 }
 
 test('Given unchanged natural full storage over 24000 ticks When the complete advisor evaluates the stone shortage Then a legal storage recovery action progresses', () => {

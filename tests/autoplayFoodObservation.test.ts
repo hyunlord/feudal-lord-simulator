@@ -9,7 +9,7 @@ import { advanceTick } from '../src/engine/tick';
 import { gameReducer } from '../src/state/gameStore';
 import { BALANCE } from '../src/content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND } from '../src/content/buildingConfig';
-import { foodBuildRequest, routedStockTown } from './helpers/autoplayFoodFixtures';
+import { building, foodBuildRequest, routedStockTown } from './helpers/autoplayFoodFixtures';
 
 test('Given an active food observation When a house is hungry Then advisor waits for production and hauling evidence', () => {
   const state = { ...routedStockTown(true), autoplayFoodObservation: {
@@ -158,7 +158,10 @@ test('Given an observed mill produces during the tick loop When observation upda
 });
 
 test('Given expired facility observation without a full actual flow window Then advisor waits for measured capacity', () => {
-  const state = { ...routedStockTown(true), tick: 7200, autoplayFoodObservation: {
+  // AF-13: a complete chain needs a farmstead (the retired wheat farm no longer counts), so the observation
+  // warm-up this test targets is reached instead of an unrelated grain-track action.
+  const base = routedStockTown(true);
+  const state = { ...base, buildings: [...base.buildings, building('farmstead', 'farmstead', 3, 2, 4)], tick: 7200, autoplayFoodObservation: {
     kind: 'mill' as const, siteId: 'mill', placedTick: 5000, completedTick: 5600, observeUntilTick: 7000,
   } };
   const action = foodAction(state, foodBuildRequest);

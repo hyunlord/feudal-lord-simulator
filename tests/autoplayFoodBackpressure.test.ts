@@ -1,13 +1,12 @@
 import { observedFoodTown } from './foodEfficiencyObservationFixture';
 import { unblockedWheatUpperBound } from '../src/engine/autoplayFoodBottleneck';
-import { createConstructionSite } from '../src/economy/construction';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { foodAction } from '../src/engine/autoplayFood';
 import { foodRecoveryKind } from '../src/engine/autoplayFoodThroughput';
 import { advanceFoodFlow, measuredFoodFlow, recordFoodFlow } from '../src/engine/autoplayFoodFlow';
 import { advanceTick, runProduction } from '../src/engine/tick';
-import { building, foodBuildRequest, stressedTown, withMeasuredFood } from './helpers/autoplayFoodFixtures';
+import { building, foodBuildRequest, stressedTown, withAmpleGrain, withMeasuredFood } from './helpers/autoplayFoodFixtures';
 
 function backlog(wheatStart: number, wheatEnd: number, breadBuffer: number, wheat = 134, bread = 67) {
   const base = stressedTown();
@@ -28,7 +27,8 @@ test('Given natural seed1 20520 flow and stocked buffer When projected demand is
 });
 
 test('Given nondepleting grain and output-full farms When bread buffer cannot cover demand Then recover downstream with a mill', () => {
-  assert.equal(foodRecoveryKind(observedFoodTown(), 24), 'mill');
+  // AF-13: an ample farmstead/arable supply isolates the bread-margin logic this test targets.
+  assert.equal(foodRecoveryKind(withAmpleGrain(observedFoodTown()), 24), 'mill');
 });
 
 test('Given genuine raw depletion despite output-full activity When net exports leave grain short Then historical aggregates await a fresh measured window', () => {
@@ -44,13 +44,13 @@ test('Given full grain stores but no observed backpressure When raw flow is shor
   assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: { ...flow.completed, farmFullTicks: 0 } } }, 21), null);
 });
 
-for (const [idle, wheat, bread, expected] of [[0, 20, 10, 'none'], [2, 20, 10, 'none'], [2, 200, 10, 'mill'], [4, 20, 10, 'wheat_farm']] as const) {
-  test(`Given ${idle} spare workers When recovery needs additional staff Then action is ${expected}`, () => {
-    const state = { ...observedFoodTown(wheat * 6, bread * 6), idleWorkers: idle };
-    const action = foodAction(state, foodBuildRequest);
-    assert.equal(action.kind === 'place_building' ? action.building : action.kind, expected);
-  });
-}
+// Retired (AF-13): "Given {0,2,2,4} spare workers When recovery needs additional staff Then action is
+// {none,none,mill,wheat_farm}" pinned the old measured-wheat-flow bootstrap ladder (varying measured wheat
+// 20 vs 200 to flip between "needs another farm" and "sufficient", combined with idle-worker staffing
+// gating which slot gets built). Grain is no longer judged by measured wheat flow, and with no farmstead
+// built yet the grain slot's own staffing check is skipped entirely (`!completeChain || staffCheck`
+// short-circuits), so idle-worker count no longer gates the very first farmstead/field bootstrap the way
+// it gated the old wheat_farm bootstrap. See /tmp/c1c2-retired-tests.md.
 
 test('Given full farm inventory When an actual production opportunity closes Then physical stock and blocked activity are measured', () => {
   const base = stressedTown();
@@ -100,31 +100,31 @@ test('Given stock claims incoming capacity and real cargo When observing the poo
 });
 
 test('Given claimed bread covering the apparent deficit When choosing downstream expansion Then reserved stock is not a usable buffer', () => {
-  const state = observedFoodTown();
+  // AF-13: an ample farmstead/arable supply isolates the bread-buffer logic this test targets.
+  const state = withAmpleGrain(observedFoodTown());
   state.buildings = state.buildings.map(b => b.kind === 'granary' ? { ...b, inventory: { bread: 300 }, stockReserved: { bread: 300 } } : b);
   assert.equal(foodRecoveryKind(state, 21), 'mill');
 });
 
 test('Given stock was depleted after the completed opportunity When selecting recovery Then stale buffer does not suppress a mill', () => {
-  const state = observedFoodTown();
+  // AF-13: an ample farmstead/arable supply isolates the bread-buffer logic this test targets.
+  const state = withAmpleGrain(observedFoodTown());
   state.buildings = state.buildings.map(b => b.kind === 'granary' ? { ...b, inventory: { wheat: 100 } } : b);
   assert.equal(foodRecoveryKind(state, 21), 'mill');
 });
 
-
-test('Given future civic staff already committed When current idle workers look sufficient Then do not spend the same workers twice', () => {
-  const base = observedFoodTown(20, 10);
-  // Existing demand52, available56, and planned market3 leave only1 for a four-worker farm.
-  const state = { ...base, population: 112, idleWorkers: 4, constructionSites: [
-    createConstructionSite({ ordinal: 100, kind: 'market', tx: 50, ty: 6, startedTick: base.tick }),
-  ] };
-  assert.deepEqual(foodAction(state, foodBuildRequest), { kind: 'none' });
-});
+// Retired (AF-13): "Given future civic staff already committed When current idle workers look sufficient
+// Then do not spend the same workers twice" pinned the old wheat_farm bootstrap's staffing gate. With no
+// farmstead built yet, the grain slot's own staffing check is skipped entirely (`!completeChain ||
+// staffCheck` short-circuits), so committed-but-unbuilt civic staff no longer blocks the very first
+// farmstead/field bootstrap the way it blocked the old wheat_farm bootstrap. See /tmp/c1c2-retired-tests.md.
 
 test('Given an incomplete first chain and no spare labor When bootstrapping Then preserve recruitment-driven first mill construction', () => {
   const base = stressedTown();
+  // AF-13: a farmstead (not the retired wheat farm) fills the grain slot, so the ladder moves on to the mill.
   const state = { ...base, idleWorkers: 0, population: 4, houses: base.houses.slice(0, 1),
-    buildings: base.buildings.filter(b => b.kind === 'granary' || b.id === 'farm0' || b.id === 'home0') };
+    buildings: base.buildings.filter(b => b.kind === 'granary' || b.id === 'farm0' || b.id === 'home0')
+      .map(b => b.id === 'farm0' ? { ...b, kind: 'farmstead' as const } : b) };
   const action = foodAction(state, foodBuildRequest);
   assert.equal(action.kind === 'place_building' ? action.building : action.kind, 'mill');
 });

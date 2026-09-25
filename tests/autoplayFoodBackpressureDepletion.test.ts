@@ -5,10 +5,11 @@ import { advanceFoodFlow, measuredFoodFlow, recordFoodFlow } from '../src/engine
 import type { FoodFlowWindow } from '../src/engine/autoplayFoodFlow';
 import type { GameState } from '../src/engine/engine.types';
 import { building, stressedTown } from './helpers/autoplayFoodFixtures';
+import type { Building } from '../src/content/buildingConfig';
 
 type PhaseSample = FoodFlowWindow & { readonly farmCount?: number; readonly farmTicksPerOutput?: number };
 
-function depleted(sampleOverrides: Partial<PhaseSample> = {}, farmCount = 35): GameState {
+function depleted(sampleOverrides: Partial<PhaseSample> = {}, farmCount = 35, extra: readonly Building[] = []): GameState {
   const base = stressedTown();
   const width = 200;
   const state = { ...base, width,
@@ -16,7 +17,8 @@ function depleted(sampleOverrides: Partial<PhaseSample> = {}, farmCount = 35): G
       terrain: 'grass' as const, hasRoad: [1, 3].includes(Math.floor(n / width)) || n % width === 0, buildingId: null })),
     buildings: [...base.buildings.filter(b => b.kind !== 'wheat_farm').map(b => b.kind === 'granary'
       ? { ...b, inventory: { wheat: 1143, bread: 172 } } : b),
-    ...Array.from({ length: farmCount }, (_, n) => building(`farm${n}`, 'wheat_farm', 4 + n * 5, 4, 4))],
+    ...Array.from({ length: farmCount }, (_, n) => building(`farm${n}`, 'wheat_farm', 4 + n * 5, 4, 4)),
+    ...extra],
   };
   const opened = advanceFoodFlow(state);
   const flow = opened.autoplayFoodFlow;
@@ -107,12 +109,17 @@ test('Given qualified metadata When the sample is stale or the clock rewinds The
 });
 
 test('Given qualified metadata When a farm is removed Then membership invalidates the observation', () => {
-  const state = depleted();
-  assert.equal(measuredFoodFlow({ ...state, buildings: state.buildings.filter(b => b.id !== 'farm0') }), undefined);
+  // AF-13: the tracked food-flow layout no longer includes the retired wheat farm (`farm0`'s removal no
+  // longer changes it), so a farmstead stands in as the "farm" whose removal must invalidate the observation.
+  const state = depleted({}, 35, [building('farmstead-probe', 'farmstead', 150, 4, 4)]);
+  assert.ok(measuredFoodFlow(state));
+  assert.equal(measuredFoodFlow({ ...state, buildings: state.buildings.filter(b => b.id !== 'farmstead-probe') }), undefined);
 });
 
 test('Given qualified metadata When the supply road splits Then route qualification expires', () => {
-  const state = depleted();
+  // AF-13: the retired wheat farm is no longer tracked by the food-flow layout/routes, so a farmstead whose
+  // sole road-access tile sits at the split column stands in for the disrupted producer.
+  const state = depleted({}, 35, [building('farmstead-probe', 'farmstead', 100, 4, 4)]);
   const split = { ...state, roadRevision: state.roadRevision + 1, pathCache: {},
     tiles: state.tiles.map(t => t.tx === 100 ? { ...t, hasRoad: false } : t) };
   assert.equal(measuredFoodFlow(split), undefined);

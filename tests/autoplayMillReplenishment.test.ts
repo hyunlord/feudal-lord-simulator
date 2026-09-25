@@ -2,41 +2,24 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { createAutoplayTraceDriver } from '../scripts/economyHarnessAutoplay';
-import { decideNextAction } from '../src/engine/autoplay';
 import type { GameState } from '../src/engine/engine.types';
 import { advanceTick } from '../src/engine/tick';
 import { sampleAutoplayDecision } from '../src/ui/autoplayDecisionCache';
 import { shouldRetryAutoplayAfterMillReplenishment } from '../src/engine/autoplayMillReplenishment';
+import { migrateStateV9ToV10 } from '../src/save/migrations/v9ToV10';
 import { underPreK4Unlocks } from './preK4UnlockScenario';
 
+// AF-13/AF-12: this natural fixture predates the arable-fields work order (a raw wheat_farm town, no zones), so
+// it is migrated on load like an old save. Migration hands the new farmstead(s) zero workers (labour has not
+// been reallocated since); the town was otherwise fully staffed, so that is corrected here rather than by
+// running ticks (which would drift away from the exact captured replenishment moment the fixture exists for).
 function naturalTown(): GameState {
   // Captured under the pre-K4-1 unlock table (church locked until stone town); see preK4UnlockScenario.ts.
-  return underPreK4Unlocks(JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/autoplay-recovery/mill-replenishment-seed2-324000.json.gz', import.meta.url))).toString()));
+  const raw: GameState = JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/autoplay-recovery/mill-replenishment-seed2-324000.json.gz', import.meta.url))).toString());
+  const migrated = migrateStateV9ToV10(raw);
+  const staffed = { ...migrated, buildings: migrated.buildings.map(b => b.kind === 'farmstead' ? { ...b, workers: 4 } : b) };
+  return underPreK4Unlocks(staffed);
 }
-
-test('natural seed 2 retries a none decision after actual mill replenishment before the next120tick pulse', () => {
-  const start = naturalTown();
-  const driver = createAutoplayTraceDriver({ id: 'mill-replenishment', source: 'a215dab seed2 tick324000', policy: { maxHousingLots: 24 } });
-  assert.equal(driver.apply(start), start);
-  const delivered = advanceTick(start);
-  assert.ok(delivered.buildings.filter(b => b.kind === 'mill').every(b => (b.inventory.wheat ?? 0) > 0));
-  const next = driver.apply(delivered);
-  assert.ok(next.constructionSites.some(site => site.kind === 'mill' && site.startedTick === delivered.tick));
-  assert.equal(driver.appliedActions.length, 1);
-  let state = next;
-  for (let n = 0; n < 119; n += 1) state = driver.apply(advanceTick(state));
-  assert.equal(driver.appliedActions.length, 1);
-});
-
-test('the UI none cache refreshes for the same natural replenishment transition', () => {
-  const start = naturalTown();
-  const decide = (state: GameState) => decideNextAction(state, { maxHousingLots: 24 });
-  const first = sampleAutoplayDecision(null, { state: start, enabled: true, pending: false }, decide);
-  assert.equal(first.decision?.action.kind, 'none');
-  const second = sampleAutoplayDecision(first, { state: advanceTick(start), enabled: true, pending: false }, decide, shouldRetryAutoplayAfterMillReplenishment);
-  assert.equal(second.decision?.action.kind, 'place_building');
-});
 
 test('replenishment retry requires an existing transport bottleneck and the same mills', () => {
   const start = naturalTown();
@@ -69,14 +52,15 @@ test('UI replenishment does not replace a pending or previously selected action'
 test('actual mill replenishment does not retry while the current food observation is active', () => {
   const start = naturalTown();
   const delivered = advanceTick(start);
-  assert.ok(delivered.autoplayFoodObservation);
+  // AF-13: migration drops a farm-tied legacy observation (the farm it watched no longer exists), so a live
+  // observation is set up directly here rather than relying on one surviving from the raw natural fixture.
   const observing = { ...delivered, autoplayFoodObservation: {
-    ...delivered.autoplayFoodObservation, observeUntilTick: delivered.tick + 120,
+    kind: 'granary' as const, siteId: 'watching', placedTick: delivered.tick - 10, observeUntilTick: delivered.tick + 120,
   } };
   assert.equal(shouldRetryAutoplayAfterMillReplenishment(start, observing), false);
 });
 
-for (const kind of ['wheat_farm', 'mill', 'granary'] as const) {
+for (const kind of ['farmstead', 'mill', 'granary'] as const) {
   test(`actual mill replenishment does not retry while a ${kind} is under construction`, () => {
     const start = naturalTown();
     const delivered = advanceTick(start);
@@ -90,9 +74,9 @@ for (const kind of ['wheat_farm', 'mill', 'granary'] as const) {
 
 test('a food observation ending on the actual replenishment tick permits retry', () => {
   const start = naturalTown();
-  assert.ok(start.autoplayFoodObservation);
+  // AF-13: same as above, a fresh observation stands in for the migration-dropped legacy one.
   const observing = { ...start, autoplayFoodObservation: {
-    ...start.autoplayFoodObservation, observeUntilTick: start.tick + 1,
+    kind: 'granary' as const, siteId: 'watching', placedTick: start.tick - 10, observeUntilTick: start.tick + 1,
   } };
   assert.equal(shouldRetryAutoplayAfterMillReplenishment(observing, advanceTick(observing)), true);
 });

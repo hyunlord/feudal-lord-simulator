@@ -1,4 +1,4 @@
-import { observedFoodTown } from './foodEfficiencyObservationFixture';
+import { replayFoodObservation } from './foodEfficiencyObservationFixture';
 import { foodFlowLayout, foodFlowRoutes } from '../src/engine/autoplayFoodFlow';
 import type { GameState } from '../src/engine/engine.types';
 import { decideNextAction } from '../src/engine/autoplay';
@@ -7,6 +7,39 @@ import test from 'node:test';
 import type { FoodDiagnosticCollector } from '../src/engine/autoplayFoodDiagnostic';
 import { foodAction } from '../src/engine/autoplayFood';
 import { foodBuildRequest, stressedTown, routedStockTown, building, withMeasuredFood } from './helpers/autoplayFoodFixtures';
+
+// AF-13: the grain slot is now a farmstead tending an arable zone, so the wheat-farm town needs the farms
+// relabelled and an actual field behind each farmstead (else the expected harvest is zero and grain is always
+// short); giving every farmstead its own small block keeps the measured mill/bread checks the only thing in play.
+function farmsteadified(state: GameState): GameState {
+  return { ...state, buildings: state.buildings.map(b => b.kind === 'wheat_farm' ? { ...b, kind: 'farmstead' } : b) };
+}
+function withAmpleArable(state: GameState): GameState {
+  const membership: number[] = [];
+  for (const farmstead of state.buildings.filter(b => b.kind === 'farmstead')) {
+    for (let dy = 2; dy <= 3; dy += 1) {
+      for (let dx = 2; dx <= 4; dx += 1) {
+        const tx = farmstead.tx + dx;
+        const ty = farmstead.ty + dy;
+        if (tx < 0 || ty < 0 || tx >= state.width || ty >= state.height) continue;
+        membership.push(ty * state.width + tx);
+      }
+    }
+  }
+  return { ...state, zones: [{ id: 'zone-arable-test', kind: 'arable', strokes: [], membership, createdOrdinal: 1 }],
+    nextZoneOrdinal: 2 };
+}
+function ampleFoodTown(wheat = 1000, bread = 40): GameState {
+  const base = withAmpleArable(farmsteadified(stressedTown()));
+  // AF-13 shrank the mill headroom to the expected harvest (a handful of mills, not one per farmstead), so this
+  // fixture's five stock mills would sit over the new limit before recovery is ever evaluated.
+  const state = { ...base,
+    tiles: base.tiles.map(t => ({ ...t, hasRoad: t.hasRoad || t.ty === 1 || t.tx === 0 })),
+    houses: base.houses.map(h => ({ ...h, breadStock: 0 })),
+    buildings: base.buildings.flatMap(b => b.kind !== 'mill' ? [b]
+      : b.id === 'mill0' ? [{ ...b, inventory: { wheat: 2 } }] : []) };
+  return replayFoodObservation(state, { wheat, bread, exports: 0 });
+}
 
 test('Given no housing When food runs Then baseline action and no build calls are preserved', () => {
   const state = { ...stressedTown(), houses: [] };
@@ -35,7 +68,7 @@ test('Given pending and active observation When food runs Then earlier terminal 
 });
 
 test('Given a measured recovery When instrumented Then each applicable construction guard is evaluated once in order', async () => {
-  const state = observedFoodTown();
+  const state = ampleFoodTown();
   const collector: FoodDiagnosticCollector = {};
   const result = foodAction(state, foodBuildRequest, collector);
   assert.equal(collector.food?.recovery, 'mill');
@@ -47,7 +80,7 @@ test('Given a measured recovery When instrumented Then each applicable construct
 test('Given a rejected build When recovery runs Then diagnostics distinguish build none without a second attempt', async () => {
   const collector: FoodDiagnosticCollector = {};
   let calls = 0;
-  foodAction(observedFoodTown(), () => { calls++; return { kind: 'none' }; }, collector);
+  foodAction(ampleFoodTown(), () => { calls++; return { kind: 'none' }; }, collector);
   assert.equal(calls, 1);
   assert.equal(collector.food?.reason, 'build_returned_none');
 });
@@ -55,7 +88,7 @@ test('Given a rejected build When recovery runs Then diagnostics distinguish bui
 function fedTown(): GameState {
   const base = routedStockTown(true);
   const buildings = [building('granary', 'granary', 1, 2, 2),
-    building('mill', 'mill', 5, 2, 2), building('farm', 'wheat_farm', 8, 2, 4),
+    building('mill', 'mill', 5, 2, 2), building('farm', 'farmstead', 8, 2, 4),
     building('home', 'house', 4, 0, 0)];
   const houses = [{ ...base.houses[0], buildingId: 'home', level: 4, builtLevel: 4,
     residents: 32, hasWater: true, breadStock: 8, emptyFoodTicks: 0, lastServicedTick: 6000,
@@ -77,7 +110,7 @@ function fedTown(): GameState {
 
 
 for (const blocked of ['repeat', 'staff'] as const) test(`Given ${blocked} blocks recovery When recorded Then short-circuited calls remain unevaluated`, () => {
-  let state = observedFoodTown();
+  let state = ampleFoodTown();
   if (blocked === 'staff') state.idleWorkers = 0;
   else state = { ...state, autoplayFoodObservation: { kind: 'mill', siteId: 'mill0', placedTick: 1, completedTick: 2, observeUntilTick: 3,
     outcome: { outputDelta: 0, deliveredBreadDelta: 0, starvingHomesDelta: 0, effective: false } } };
@@ -88,12 +121,12 @@ for (const blocked of ['repeat', 'staff'] as const) test(`Given ${blocked} block
 });
 test('Given adequate measured food When recorded Then subordinate reasons stay not captured', () => {
   const collector: FoodDiagnosticCollector = {};
-  foodAction(observedFoodTown(2400, 1000), foodBuildRequest, collector);
+  foodAction(ampleFoodTown(2400, 1000), foodBuildRequest, collector);
   assert.equal(collector.food?.reason, 'food_supply_sufficient');
   assert.equal(collector.food?.details, 'not_captured');
 });
 test('Given stale measured flow and starving homes When recorded Then actual unmeasured guard remains unchanged', () => {
-  let state = withMeasuredFood(stressedTown());
+  let state = withMeasuredFood(farmsteadified(stressedTown()));
   assert.ok(state.autoplayFoodFlow);
   state = { ...state, autoplayFoodFlow: { ...state.autoplayFoodFlow, layout: 'stale' } };
   const collector: FoodDiagnosticCollector = {};

@@ -147,7 +147,7 @@ test('Given eight well stocked L3 homes When mill counts have no actual observat
   const template = state.buildings[0]!;
   state.buildings = [
     ...state.houses.map(house => ({ ...template, id: house.buildingId, kind: 'house' as const })),
-    ...Array.from({ length: 6 }, (_, index) => ({ ...template, id: `farm-${index}`, kind: 'wheat_farm' as const })),
+    ...Array.from({ length: 6 }, (_, index) => ({ ...template, id: `farm-${index}`, kind: 'farmstead' as const })),
     ...Array.from({ length: 2 }, (_, index) => ({ ...template, id: `mill-${index}`, kind: 'mill' as const })),
     ...Array.from({ length: 2 }, (_, index) => ({ ...template, id: `granary-${index}`, kind: 'granary' as const })),
   ];

@@ -57,7 +57,10 @@ test('Given unchanged empty evidence When a tick passes Then records preserve th
 });
 
 test('Given targeted granary placement When construction completes Then beneficiary IDs survive with a finite targeted travel opportunity', () => {
-  const first = refreshFoodObservation(emptyHomeTown());
+  // AF-13: a complete chain needs a farmstead (the retired wheat farm no longer counts) for the full
+  // FOOD_EFFICIENCY_WINDOW observation this test targets.
+  const base = { ...emptyHomeTown(), buildings: [...emptyHomeTown().buildings, building('farmstead', 'farmstead', 3, 2, 4)] };
+  const first = refreshFoodObservation(base);
   const state = refreshFoodObservation({ ...first, tick: first.tick + 2000 });
   const placed = gameReducer(state, { type: 'place_building', kind: 'granary', tx: 12, ty: 2, autoplayFoodObservation: true });
   assert.deepEqual(placed.autoplayFoodObservation?.targetHouseIds, ['home7']);

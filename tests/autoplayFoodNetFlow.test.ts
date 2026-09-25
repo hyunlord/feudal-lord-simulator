@@ -9,26 +9,27 @@ import { advanceTick, runProduction } from '../src/engine/tick';
 import { BUILDING_CONFIG_BY_KIND } from '../src/content/buildingConfig';
 import { foodRecoveryKind } from '../src/engine/autoplayFoodThroughput';
 import { advanceFoodFlow, recordFoodFlow, measuredFoodFlow } from '../src/engine/autoplayFoodFlow';
-import { building, foodBuildRequest, routedStockTown, stressedTown, withMeasuredFood } from './helpers/autoplayFoodFixtures';
+import { building, foodBuildRequest, routedStockTown, stressedTown, withAmpleGrain, withMeasuredFood } from './helpers/autoplayFoodFixtures';
 
-test('Given gross wheat surplus but actual market exports When recovering hunger Then choose a farm instead of another mill', () => {
-  // Given chronological production and export events over a fresh 2400-tick window.
-
-  const state = replayFoodObservation(observedFoodTown(1, 1), { wheat: 400, bread: 100, exports: 101 });
-  // When / Then exports consume the margin needed by actual household meals.
-  assert.equal(foodRecoveryKind(state, 74.8), 'wheat_farm');
-});
+// Retired (AF-13): "Given gross wheat surplus but actual market exports ... choose a farm instead of another
+// mill" asserted the old measured wheat-flow export-margin deficit (exports eating into the raw wheat
+// margin measured over a 2,400-tick window). measuredFoodDecision no longer reads wheat flow or exports at
+// all; grain is judged solely by the expected harvest (arableSupplyShort). See /tmp/c1c2-retired-tests.md.
 
 for (const [wheat, bread, expected] of [[1000, 40, 'mill'], [1000, 400, null]] as const) {
   test(`Given measured wheat ${wheat} and bread ${bread} When actual household meal events are observed Then recovery is ${expected}`, () => {
-    const state = observedFoodTown(wheat, bread);
+    // AF-13: an ample farmstead/arable supply isolates the bread-margin logic this test targets.
+    const state = withAmpleGrain(observedFoodTown(wheat, bread));
     assert.equal(foodRecoveryKind(state, 48), expected);
     if (expected === null) assert.deepEqual(foodAction(state, foodBuildRequest), { kind: 'none' });
   });
 }
 
 test('Given a legacy cold save When real substeps advance Then partial windows wait and mature without inferred output', () => {
-  let state = advanceFoodFlow(stressedTown());
+  // AF-13: a farmstead (not the retired wheat farm) completes the chain, so the advisor reads the measured
+  // decision (which waits for its own observation window) instead of an unconditional grain bootstrap.
+  const base = stressedTown();
+  let state = advanceFoodFlow({ ...base, buildings: [...base.buildings, building('farmstead', 'farmstead', 2, 4, 4)] });
   assert.equal(measuredFoodFlow(state), undefined);
   assert.deepEqual(foodAction(state, foodBuildRequest), { kind: 'none' });
   const deadline = state.autoplayFoodFlow?.current.untilTick;
@@ -67,7 +68,9 @@ test('Given mature food flow When an unrelated road and civic building change Th
 });
 
 test('Given unchanged actual meal evidence When legacy projected demand changes Then it cannot invent production demand', () => {
-  const state = observedFoodTown();
+  // AF-13: an ample farmstead/arable supply isolates the bread-margin logic this test targets; the meal
+  // demand argument is otherwise unused by the decision (it is read straight off measured evidence).
+  const state = withAmpleGrain(observedFoodTown());
   assert.equal(foodRecoveryKind(state, 30), 'mill');
   assert.equal(foodRecoveryKind(state, 45), 'mill');
   assert.equal(foodRecoveryKind(state, 60), 'mill');
@@ -80,7 +83,9 @@ test('Given a partial mill output marked effective When net raw supply is insuff
     latest: { outputTotal: 5, houseBread: 0, starvingHomes: 2 },
     outcome: { outputDelta: 5, deliveredBreadDelta: 0, starvingHomesDelta: 0, effective: true } } };
   const action = foodAction(state, foodBuildRequest);
-  assert.equal(action.kind === 'place_building' ? action.building : action.kind, 'wheat_farm');
+  // AF-13: grain (not another mill) still wins; the grain slot now starts as a painted field.
+  assert.ok(action.kind === 'paint_zone' && action.zone === 'arable'
+    || action.kind === 'place_building' && action.building === 'farmstead');
 });
 
 test('Given same-tick sale production delivery and consumption When the normal engine advances Then exact food events survive all state merges', () => {
@@ -104,10 +109,13 @@ test('Given same-tick sale production delivery and consumption When the normal e
 });
 
 test('Given healthy homes and sufficient measured projected supply When nominal mill count is low Then preserve civic materials', () => {
-  const state = withMeasuredFood(stressedTown(), 200, 100);
-  state.houses = state.houses.map(h => ({ ...h, breadStock: 6, emptyFoodTicks: 0 }));
-  state.buildings = state.buildings.filter(b => b.kind !== 'mill' || b.id === 'mill0');
-  const measured = withMeasuredFood(state, 200, 100);
+  // AF-13: an ample farmstead/arable supply, plus a real measured (rolling) window, isolates the "healthy
+  // town needs nothing more" outcome this test targets from the grain decision.
+  const base = stressedTown();
+  const state = withAmpleGrain({ ...base,
+    houses: base.houses.map(h => ({ ...h, breadStock: 6, emptyFoodTicks: 0 })),
+    buildings: base.buildings.filter(b => b.kind !== 'mill' || b.id === 'mill0') });
+  const measured = replayFoodObservation(state, { wheat: 200, bread: 100, exports: 0 });
   assert.deepEqual(foodAction(measured, foodBuildRequest), { kind: 'none' });
 });
 
@@ -154,9 +162,10 @@ for (const sale of [true, false]) test(`Given two connected markets and sale eli
 });
 
 for (const [kinds, expected] of [
-  [['granary'], 'wheat_farm'],
-  [['granary', 'wheat_farm'], 'mill'],
-  [['wheat_farm', 'mill'], 'granary'],
+  // AF-13: only a farmstead (not the retired wheat farm) fills the grain slot.
+  [['granary'], 'farmstead'],
+  [['granary', 'farmstead'], 'mill'],
+  [['farmstead', 'mill'], 'granary'],
 ] as const) test(`Given mature zero flow and only ${kinds.join(',')} When bootstrapping Then first missing chain step remains ${expected}`, () => {
   const base = stressedTown();
   base.houses = base.houses.slice(0, 1).map(h => ({ ...h, breadStock: 0 }));
@@ -164,11 +173,18 @@ for (const [kinds, expected] of [
   base.buildings.push(...kinds.map((kind, n) => building(`bootstrap-${kind}`, kind, 2 + n * 4, 4, 4)));
   const state = withMeasuredFood(base, 0, 0);
   const action = foodAction(state, foodBuildRequest);
-  assert.equal(action.kind === 'place_building' ? action.building : action.kind, expected);
+  if (expected === 'farmstead') {
+    // AF-13: the grain slot starts as a painted field ahead of the farmstead itself.
+    assert.ok(action.kind === 'paint_zone' && action.zone === 'arable'
+      || action.kind === 'place_building' && action.building === 'farmstead');
+  } else {
+    assert.equal(action.kind === 'place_building' ? action.building : action.kind, expected);
+  }
 });
 
 for (const cause of ['staff', 'access', 'remote-route'] as const) test(`Given a ${cause} interruption When supply is restored Then its interrupted epoch cannot authorize expansion`, () => {
-  const base = routedStockTown(true);
+  const withFarmstead = routedStockTown(true);
+  const base = { ...withFarmstead, buildings: [...withFarmstead.buildings, building('farmstead', 'farmstead', 2, 2, 4)] };
   let state = advanceFoodFlow({ ...base,
     buildings: base.buildings.map(b => cause === 'staff' ? { ...b, workers: 0 } : b),
     tiles: base.tiles.map(t => cause === 'access' || cause === 'remote-route' && t.tx === 4 ? { ...t, hasRoad: false } : t),

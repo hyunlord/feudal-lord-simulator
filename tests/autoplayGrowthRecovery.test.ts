@@ -35,7 +35,9 @@ function fixture(): GameState {
     buildings: [...homes, building('well', 'well', 9, 9), building('market', 'market', 10, 12),
       building('church', 'church', 15, 12), building('store', 'storehouse', 20, 12),
       building('granary-a', 'granary', 20, 8), building('granary-b', 'granary', 23, 8),
-      ...Array.from({ length: 6 }, (_, i) => building(`farm-${i}`, 'wheat_farm', 5 + i * 3, 5)),
+      // AF-13: the wheat farm is retired; the grain slot is a 1x1 farmstead. It sits on the old farm's
+      // road-adjacent edge (ty 6, beside the ty 7 road row) to keep the same required road access.
+      ...Array.from({ length: 6 }, (_, i) => building(`farm-${i}`, 'farmstead', 5 + i * 3, 6)),
       ...Array.from({ length: 4 }, (_, i) => building(`mill-${i}`, 'mill', 5 + i * 3, 8))] });
 }
 
@@ -128,7 +130,7 @@ test('Post-era housing keeps labour, food and pending-construction guards', () =
   const cases = [
     { ...base, idleWorkers: 6 },
     { ...base, houses: base.houses.map(home => ({ ...home, breadStock: 0 })) },
-    { ...base, constructionSites: [createConstructionSite({ ordinal: 99, kind: 'wheat_farm', tx: 23, ty: 5, startedTick: 0 })] },
+    { ...base, constructionSites: [createConstructionSite({ ordinal: 99, kind: 'farmstead', tx: 23, ty: 5, startedTick: 0 })] },
   ];
   for (const state of cases) {
     const action = decideNextAction(state, { maxHousingLots: 24 });
@@ -143,7 +145,7 @@ test('healthy four-home settlement can add a fifth home without a fixed farms-to
   const homeIds = new Set(houses.map(h => h.buildingId));
   const state = retile({ ...base, houses, population: 88,
     buildings: base.buildings.filter(b => b.kind === 'house' ? homeIds.has(b.id)
-      : b.kind === 'wheat_farm' ? b.id === 'farm-0' : b.kind === 'mill' ? b.id === 'mill-0' : true) });
+      : b.kind === 'farmstead' ? b.id === 'farm-0' : b.kind === 'mill' ? b.id === 'mill-0' : true) });
   // When the normal advisor evaluates growth under the unchanged default cap.
   const action = decideNextAction(state);
   // Then actual bread and population eligibility allow a fifth house.

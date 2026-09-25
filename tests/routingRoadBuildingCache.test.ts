@@ -125,9 +125,11 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // B2/K4-1: this stone-town city has no completed stone wall, so its prosperity hold now counts (0 -> 120).
   // C2 (spec M-1): the market no longer pays the treasury, so the ledger and treasury differ from B3 (13740b9c…).
   // Without any money field the state is the pre-C2 one (4950b10 gives 6a7136ec… for the same stripped state).
-  assert.equal(hash(warm), 'cb416e1635e20a48189521ce9ba23739b68a385dc97c42fea51ad473e0b9c304');
+  // C1c-2 (AF-13): the autoplay food-flow and recurring-delivery layout keys list farmsteads, not wheat farms, so
+  // only those two bookkeeping records differ from d823005 (cb416e16… / 6a7136ec…); the world itself is identical.
+  assert.equal(hash(warm), '7d16e1345231776c29206b79a68eab5c7c4a5d0bb1e5a096565be8285fa94534');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '6a7136eca6616b7d1cfcb477d5e809815bfad16327e8ca18ca61b8ad44e2cd0f');
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'dc77fe0b0751fef983833330f5074ea048972022129340ef1d85982553042f31');
   assert.equal(hash(coldState), hash(warm));
 });

@@ -6,6 +6,7 @@ import type { GameState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import type { Tile } from "../src/world/world.types";
+import type { Zone } from "../src/zones/zone.types";
 import {
   createOnboardingPresentationState,
   getOnboardingTaskView,
@@ -16,9 +17,9 @@ import {
 const REQUIRED_TITLES = [
   "길을 놓아 오두막을 이으세요",
   "숲 옆에 벌목소를 지으세요",
-  "밀밭과 방앗간을 먼저 지으세요",
+  "경작지를 칠하고 헛간과 방앗간을 지으세요",
   "제재소를 지어 목재를 만드세요",
-  "밀밭을 하나 더 짓고 곡창·창고를 갖추세요",
+  "경작지를 넓히고 곡창·창고를 갖추세요",
   "우물과 예배당을 갖추세요",
   "인구를 30명까지 늘리세요",
   "인구를 50명까지 늘리세요",
@@ -61,6 +62,7 @@ function withSettlement(input: {
   readonly population?: number;
   readonly width?: number;
   readonly height?: number;
+  readonly zones?: readonly Zone[];
 }): GameState {
   return {
     ...DEFAULT_GAME_STATE,
@@ -70,6 +72,18 @@ function withSettlement(input: {
     houses: [...(input.houses ?? DEFAULT_GAME_STATE.houses)],
     tiles: [...(input.tiles ?? DEFAULT_GAME_STATE.tiles)],
     population: input.population ?? DEFAULT_GAME_STATE.population,
+    zones: [...(input.zones ?? DEFAULT_GAME_STATE.zones ?? [])],
+  };
+}
+
+/** AF-13: a painted arable field of `cells` cells in a row, starting at tile index `origin`. */
+function arableZone(origin: number, cells: number): Zone {
+  return {
+    id: "zone-000001",
+    kind: "arable",
+    strokes: [],
+    membership: Array.from({ length: cells }, (_, index) => origin + index),
+    createdOrdinal: 1,
   };
 }
 
@@ -85,14 +99,14 @@ test("onboarding tasks expose the exact ordered Phase 5 titles and highlights", 
   assert.deepEqual(highlightedTools, [
     ["road"],
     ["logging_camp"],
-    ["wheat_farm", "mill"],
+    ["farmstead", "mill"],
     ["sawmill"],
-    ["wheat_farm", "granary", "storehouse"],
+    ["farmstead", "granary", "storehouse"],
     ["well", "chapel"],
     ["house"],
     ["house"],
   ]);
-  assert.match(foodChainHint ?? "", /첫 밀밭/);
+  assert.match(foodChainHint ?? "", /경작지/);
   assert.match(populationThirtyHint ?? "", /물과 빵/);
   assert.doesNotMatch(`${foodChainHint} ${populationThirtyHint}`, /5배속|네 채/);
 });
@@ -127,10 +141,10 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
     ),
     true,
   );
-  assert.equal(ONBOARDING_TASKS[2]?.isComplete(withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4)] })), false);
+  assert.equal(ONBOARDING_TASKS[2]?.isComplete(withSettlement({ buildings: [startHouse, building("farmstead", 6, 4)] })), false);
   assert.equal(
     ONBOARDING_TASKS[2]?.isComplete(
-      withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4), building("mill", 7, 4)] }),
+      withSettlement({ buildings: [startHouse, building("farmstead", 6, 4), building("mill", 7, 4)] }),
     ),
     true,
   );
@@ -170,8 +184,8 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
 
 test("opening construction fits initial timber before the sawmill, then defers expansion", () => {
   const timber = (kind: Building["kind"]): number => BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0;
-  const opening = timber("logging_camp") + timber("wheat_farm") + timber("mill") + timber("sawmill");
-  const prematureExpansion = opening + timber("wheat_farm") + timber("granary");
+  const opening = timber("logging_camp") + timber("farmstead") + timber("mill") + timber("sawmill");
+  const prematureExpansion = opening + timber("farmstead") + timber("granary");
   assert.ok(opening <= DEFAULT_GAME_STATE.treasuryTimber, `${opening} > ${DEFAULT_GAME_STATE.treasuryTimber}`);
   assert.ok(prematureExpansion > DEFAULT_GAME_STATE.treasuryTimber);
 });
@@ -179,24 +193,29 @@ test("opening construction fits initial timber before the sawmill, then defers e
 test("storage guidance stays open until a second storehouse joins the timber road network", () => {
   const width = 12;
   const height = 4;
-  const buildings = [building("sawmill", 0, 1), building("storehouse", 3, 0), building("wheat_farm", 9, 0), building("wheat_farm", 9, 2), building("granary", 5, 0)];
+  // AF-13: the second-field requirement is now painted arable cells (ONBOARDING_ARABLE_CELLS), not a second farm.
+  const fullField = arableZone(3 * width, 8);
+  const partialField = arableZone(3 * width, 4);
+  const buildings = [building("sawmill", 0, 1), building("storehouse", 3, 0), building("farmstead", 9, 0), building("granary", 5, 0)];
   const tiles = Array.from({ length: width * height }, (_, index) => {
     const tx = index % width;
     const ty = Math.floor(index / width);
     return tile(tx, ty, ty === 2 && tx <= 4);
   });
-  const firstStore = withSettlement({ buildings, tiles, width, height });
+  const firstStore = withSettlement({ buildings, tiles, width, height, zones: [fullField] });
   const islandStore = withSettlement({
     buildings: [...buildings, building("storehouse", 7, 0)],
     tiles: tiles.map((current) => current.tx === 7 && current.ty === 2 ? { ...current, hasRoad: true } : current),
     width,
     height,
+    zones: [fullField],
   });
   const connectedStore = withSettlement({
     buildings: [...buildings, building("storehouse", 7, 0)],
     tiles: tiles.map((current) => current.ty === 2 && current.tx <= 8 ? { ...current, hasRoad: true } : current),
     width,
     height,
+    zones: [fullField],
   });
 
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(DEFAULT_GAME_STATE), false);
@@ -204,16 +223,18 @@ test("storage guidance stays open until a second storehouse joins the timber roa
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(islandStore), false);
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(connectedStore), true);
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(withSettlement({
-    buildings: connectedStore.buildings.filter(building => building.id !== "wheat_farm-9-2"),
+    buildings: connectedStore.buildings,
     tiles: connectedStore.tiles,
     width,
     height,
+    zones: [partialField],
   })), false);
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(withSettlement({
     buildings: connectedStore.buildings.filter(building => building.kind !== "granary"),
     tiles: connectedStore.tiles,
     width,
     height,
+    zones: [fullField],
   })), false);
 });
 
@@ -279,8 +300,7 @@ test("presentation state reaches the Phase 4F open goal only after task eight co
       building("storehouse", 3, 0),
       building("storehouse", 7, 0),
       building("well", 0, 6),
-      building("wheat_farm", 4, 3),
-      building("wheat_farm", 4, 5),
+      building("farmstead", 4, 3),
       building("mill", 6, 3),
       building("granary", 8, 3),
       building("chapel", 9, 5),
@@ -294,6 +314,8 @@ test("presentation state reaches the Phase 4F open goal only after task eight co
       return tile(tx, ty, (ty === 1 && tx <= 2) || (ty === 2 && tx >= 2 && tx <= 8));
     }),
     population: 50,
+    // AF-13: task-5 needs ONBOARDING_ARABLE_CELLS painted, not a second farm.
+    zones: [arableZone(6 * 12, 8)],
   });
   let presentation = createOnboardingPresentationState();
 

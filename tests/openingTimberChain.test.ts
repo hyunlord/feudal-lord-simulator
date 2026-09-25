@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
 import type { GameState } from "../src/engine/engine.types";
-import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import { placementSpendableResource } from "../src/world/placement";
 import type { Tile } from "../src/world/world.types";
 
@@ -59,12 +59,18 @@ test("the authored opening can commit timber and food construction before worker
   assert.equal(placementSpendableResource(state, "timber"), 110);
   assert.ok(placementSpendableResource(state, "timber") >= foodChainCost);
 
-  state = placeBuilding(state, "wheat_farm", { tx: 2, ty: 3 });
+  // AF-13: the wheat farm is retired; the grain slot is a farmstead beside a painted arable field.
+  state = gameReducer(state, {
+    type: "zone_paint",
+    kind: "arable",
+    stroke: { tool: "polygon", points: [{ x: 1, y: 3 }, { x: 2, y: 3 }, { x: 2, y: 5 }, { x: 1, y: 5 }] },
+  });
+  state = placeBuilding(state, "farmstead", { tx: 2, ty: 3 });
   state = placeBuilding(state, "mill", { tx: 4, ty: 3 });
   state = placeBuilding(state, "granary", { tx: 5, ty: 3 });
   assert.deepEqual(
     state.constructionSites.map(({ kind }) => kind),
-    ["logging_camp", "sawmill", "storehouse", "well", "wheat_farm", "mill", "granary"],
+    ["logging_camp", "sawmill", "storehouse", "well", "farmstead", "mill", "granary"],
   );
   assert.equal(placementSpendableResource(state, "timber"), 20);
 });
@@ -76,10 +82,16 @@ test("the tuned default-map grant commits the first missing economy chain pieces
   state = placeBuilding(state, "logging_camp", { tx: 2, ty: 1 });
   state = placeBuilding(state, "sawmill", { tx: 2, ty: 3 });
   state = placeBuilding(state, "storehouse", { tx: 9, ty: 0 });
-  state = placeBuilding(state, "wheat_farm", { tx: 9, ty: 3 });
+  // AF-13: the wheat farm is retired; the grain slot is a farmstead beside a painted arable field.
+  state = gameReducer(state, {
+    type: "zone_paint",
+    kind: "arable",
+    stroke: { tool: "polygon", points: [{ x: 9, y: 4 }, { x: 10, y: 4 }, { x: 10, y: 5 }, { x: 9, y: 5 }] },
+  });
+  state = placeBuilding(state, "farmstead", { tx: 9, ty: 3 });
   state = placeBuilding(state, "mill", { tx: 8, ty: 3 });
   state = placeBuilding(state, "granary", { tx: 6, ty: 3 });
-  state = placeBuilding(state, "wheat_farm", { tx: 4, ty: 3 });
+  state = placeBuilding(state, "farmstead", { tx: 4, ty: 3 });
   state = placeBuilding(state, "house", { tx: 3, ty: 1 });
   state = placeBuilding(state, "house", { tx: 4, ty: 1 });
   state = placeBuilding(state, "house", { tx: 5, ty: 1 });
@@ -97,7 +109,7 @@ test("the tuned default-map grant commits the first missing economy chain pieces
       "logging_camp",
       "sawmill",
       "storehouse",
-      "wheat_farm",
+      "farmstead",
       "house",
       "house",
       "house",

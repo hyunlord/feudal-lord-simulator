@@ -8,7 +8,7 @@ import { recordRecurringDelivery, recurringDeliveryHomes } from '../src/engine/a
 function town(): GameState {
   const buildings: Building[] = ([
     { id: 'g', kind: 'granary', tx: 1, ty: 1 },
-    { id: 'f', kind: 'wheat_farm', tx: 4, ty: 1 },
+    { id: 'f', kind: 'farmstead', tx: 4, ty: 2 },
     { id: 'm', kind: 'mill', tx: 7, ty: 2 },
     { id: 'h', kind: 'house', tx: 20, ty: 2 },
     { id: 'well', kind: 'well', tx: 18, ty: 2 },

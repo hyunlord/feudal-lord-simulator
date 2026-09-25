@@ -6,18 +6,23 @@ import { createConstructionSite } from '../src/economy/construction';
 import { foodAction } from '../src/engine/autoplayFood';
 import { foodRecoveryKind } from '../src/engine/autoplayFoodThroughput';
 import { lateFoodBuildSites } from '../src/engine/autoplayFoodPlacement';
-import { building, foodBuildRequest, routedStockTown, stressedTown } from './helpers/autoplayFoodFixtures';
+import { building, foodBuildRequest, routedStockTown, stressedTown, withAmpleGrain } from './helpers/autoplayFoodFixtures';
 
 test('Given hungry homes and long food routes When nominal mill count is sufficient Then advisor expands actual supply', () => {
   const state = observedFoodTown(20, 10);
   const action = foodAction(state, foodBuildRequest);
-  assert.equal(action.kind, 'place_building');
-  assert.ok(action.kind === 'place_building' && ['wheat_farm', 'mill'].includes(action.building));
+  // AF-13: the grain slot is a painted field (ahead of its farmstead) or the farmstead itself, or a mill.
+  const isGrainAction = action.kind === 'paint_zone' && action.zone === 'arable'
+    || action.kind === 'place_building' && action.building === 'farmstead';
+  assert.ok(isGrainAction || action.kind === 'place_building' && action.building === 'mill');
 });
 
 test('Given healthy homes with nominal food support When advisor checks food Then no recovery construction is requested', () => {
-  const state = stressedTown();
-  state.houses = state.houses.map(house => ({ ...house, breadStock: 6, emptyFoodTicks: 0 }));
+  const base = stressedTown();
+  // AF-13: a farmstead (not the retired wheat farm) completes the chain, so a healthy town is read from the
+  // measured decision (which waits for its own observation window) instead of an unconditional grain bootstrap.
+  const state = { ...base, buildings: [...base.buildings, building('farmstead', 'farmstead', 2, 4, 4)],
+    houses: base.houses.map(house => ({ ...house, breadStock: 6, emptyFoodTicks: 0 })) };
   assert.deepEqual(foodAction(state, foodBuildRequest), { kind: 'none' });
 });
 
@@ -72,11 +77,11 @@ test('Given two disjoint food districts with local suppliers When both have meas
       building('home-' + index, 'house', offset + 3, 0, 0),
     ]),
   ];
-  const state = { ...base, buildings,
+  const state = withAmpleGrain({ ...base, buildings,
     houses: base.houses.slice(0, 2).map((house, index) => ({ ...house,
       buildingId: 'home-' + index, breadStock: 8, emptyFoodTicks: 0 })),
     tiles: base.tiles.map(tile => ({ ...tile, hasRoad: tile.ty === 1 && (tile.tx < 15 || tile.tx > 30) })),
-    roadRevision: base.roadRevision + 1, pathCache: {} };
+    roadRevision: base.roadRevision + 1, pathCache: {} });
   const observed = replayFoodObservation(state, { wheat: 240, bread: 100, exports: 0 });
   assert.deepEqual(measuredFoodDecision(observed), { kind: null, reason: 'food_supply_sufficient' });
   assert.deepEqual(foodAction(observed, foodBuildRequest), { kind: 'none' });
@@ -89,7 +94,8 @@ test('Given a hamlet food chain When choosing its first mill Then real granary r
 });
 
 test('Given grain currently in every mill When recent eligible time was raw-starved Then the advisor diagnoses transport before more milling', () => {
-  const state = replayFoodObservation(observedFoodTown(), { wheat: 1000, bread: 40, exports: 0 }, 2400);
+  // AF-13: an ample farmstead/arable supply isolates the transport-vs-mill diagnosis this test targets.
+  const state = replayFoodObservation(withAmpleGrain(observedFoodTown()), { wheat: 1000, bread: 40, exports: 0 }, 2400);
   assert.ok(state.buildings.filter(b => b.kind === 'mill').every(b => (b.inventory.wheat ?? 0) > 0));
   assert.deepEqual(measuredFoodDecision(state), { kind: null, reason: 'wheat_transport_blocked' });
 });

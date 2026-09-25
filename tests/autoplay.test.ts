@@ -231,22 +231,26 @@ test("Given era requirements When one building is missing or all are met Then au
 test("Given an earlier isolated road island When autoplay places a food site Then construction still has a real source route", () => {
   const home = building({ id: "house-a", kind: "house", tx: 5, ty: 5 });
   const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
-  const current = state({
-    buildings: [home, well],
+  // AF-13: a farmstead's field (the new food site) is only ever proposed beside a granary it can route wheat to,
+  // so this settlement needs one before the advisor pursues grain at all; road-building to reach the field's
+  // block now precedes the farmstead too, so the site takes a few decisions to appear, not the very first one.
+  const granary = building({ id: "granary-a", kind: "granary", tx: 9, ty: 9 });
+  let current = state({
+    buildings: [home, well, granary],
     houses: [house(home.id, { hasWater: true, breadStock: 0 })],
     roads: ["1,3", "5,6", "6,6"],
     timber: 500,
   });
-  const advisorAction = decideNextAction(current);
-  const gameAction = autoplayActionToGameAction(advisorAction, current);
-
-  if (gameAction === null) assert.fail("expected autoplay action to map to a game action");
-  const next = gameReducer(current, gameAction);
-  const site = next.constructionSites.find((candidate) =>
-    "tx" in candidate && candidate.kind === "wheat_farm",
-  );
-  if (site === undefined || !("tx" in site)) assert.fail("expected a wheat farm construction site");
-  assert.notEqual(resolveBuildingToConstructionSiteRoute(next, home, site).path, null);
+  let site: GameState["constructionSites"][number] | undefined;
+  for (let step = 0; step < 20 && site === undefined; step += 1) {
+    const advisorAction = decideNextAction(current);
+    const gameAction = autoplayActionToGameAction(advisorAction, current);
+    if (gameAction === null) assert.fail("expected autoplay action to map to a game action");
+    current = gameReducer(current, gameAction);
+    site = current.constructionSites.find((candidate) => "tx" in candidate && candidate.kind === "farmstead");
+  }
+  if (site === undefined || !("tx" in site)) assert.fail("expected a farmstead construction site");
+  assert.notEqual(resolveBuildingToConstructionSiteRoute(current, home, site).path, null);
 });
 
 test('Given thirteen nearby house lots When one well is full Then advisor queues one more well and counts its planned capacity', async () => {

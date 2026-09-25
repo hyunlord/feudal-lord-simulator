@@ -48,9 +48,9 @@ test('capture fails exact ten percent visible warnings and asset failures', asyn
 });
 
 test('v14 seed3-sized excess facilities cannot qualify despite otherwise healthy metrics', () => {
-  const result = efficientAcceptance({ ...metrics, farms: 23, mills: 60, chronicZeroWheatMills: 34, granaries: 11, markets: 8, churches: 6 });
+  const result = efficientAcceptance({ ...metrics, arableCells: 24 * 10 + 1, mills: 60, chronicZeroWheatMills: 34, granaries: 11, markets: 8, churches: 6 });
   assert.equal(result.passed, false);
-  assert.deepEqual([result.checks.mills, result.checks.granaries, result.checks.markets, result.checks.churches], [false, false, false, false]);
+  assert.deepEqual([result.checks.arableCells, result.checks.granaries, result.checks.markets, result.checks.churches], [false, false, false, false]);
 });
 
 test('opt-in efficiency leaves a short legacy simulation state unchanged', async () => {

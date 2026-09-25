@@ -14,9 +14,13 @@ function transportTown(): GameState {
   const buildings = [
     { ...building('store', 'granary', 1, 1, 2), inventory: { wheat: 94 } },
     { ...building('materials', 'storehouse', 4, 1, 2), inventory: { stone: 1000, timber: 1000 } },
-    building('mill', 'mill', 22, 4, 2), building('farm', 'wheat_farm', 25, 4, 4),
+    building('mill', 'mill', 22, 4, 2), building('farm', 'farmstead', 25, 4, 4),
     ...[20, 22, 24].map((tx, i) => building('home' + i, 'house', tx, 2, 0)),
   ];
+  // AF-13: the grain slot is a farmstead judged by its expected harvest, so a stocked-town scenario needs an
+  // actual arable field behind it (rows 6-7 are free of the fixture's coarse 2x2 building footprint stand-ins).
+  const membership: number[] = [];
+  for (let ty = 6; ty <= 7; ty += 1) for (let tx = 20; tx <= 29; tx += 1) membership.push(ty * 32 + tx);
   const state: GameState = { ...structuredClone(DEFAULT_GAME_STATE), tick: 6000, width: 32, height: 12,
     era: 'stone_town', palisade: null, buildings, population: 96, idleWorkers: 30, treasuryTimber: 1000,
     constructionSites: [], walkers: [], pathCache: {}, houses: buildings.filter(b => b.kind === 'house').map(b => ({
@@ -25,6 +29,7 @@ function transportTown(): GameState {
     tiles: Array.from({ length: 384 }, (_, n) => { const tx = n % 32, ty = Math.floor(n / 32);
       return { tx, ty, terrain: 'grass', hasRoad: ty === 3, buildingId: buildings.find(b => tx >= b.tx && tx < b.tx + (b.kind === 'house' ? 1 : 2)
         && ty >= b.ty && ty < b.ty + (b.kind === 'house' ? 1 : 2))?.id ?? null }; }),
+    zones: [{ id: 'zone-arable-test', kind: 'arable', strokes: [], membership, createdOrdinal: 1 }], nextZoneOrdinal: 2,
   };
   return replayFoodObservation(state, { wheat: 1000, bread: 10, exports: 0 }, 1200);
 }
@@ -40,7 +45,7 @@ test('measured raw hauling loss places a capped local grain store before another
   const mill = state.buildings.find(b => b.kind === 'mill');
   const store = state.buildings.find(b => b.kind === 'granary');
   assert.ok(mill && store);
-  const farm = state.buildings.find(b => b.kind === 'wheat_farm');
+  const farm = state.buildings.find(b => b.kind === 'farmstead');
   assert.ok(farm);
   const candidate = building('candidate', 'granary', action.tx, action.ty, 2);
   const before = resolveBuildingRoute(state, mill, store).path;

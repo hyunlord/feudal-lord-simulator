@@ -3,12 +3,13 @@ import test from 'node:test';
 import { advanceFoodFlow, recordFoodFlow } from '../src/engine/autoplayFoodFlow';
 import { foodAction } from '../src/engine/autoplayFood';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
-import { foodBuildRequest, routedStockTown } from './helpers/autoplayFoodFixtures';
+import { building, foodBuildRequest, routedStockTown } from './helpers/autoplayFoodFixtures';
 import { foodEfficiencyMetrics, recordFoodEfficiency } from '../src/engine/autoplayFoodEfficiency';
 
 test('missing observations do not authorize expansion of a complete food chain', () => {
-  // Given a complete supplied chain without a measured window.
-  const state = routedStockTown(true);
+  // Given a complete supplied chain (AF-13: a farmstead, not the retired wheat farm) without a measured window.
+  const base = routedStockTown(true);
+  const state = { ...base, buildings: [...base.buildings, building('farmstead', 'farmstead', 3, 2, 4)] };
   // When the advisor evaluates expansion.
   const action = foodAction(state, foodBuildRequest);
   // Then no speculative additional mill is requested.
@@ -138,8 +139,9 @@ test('private household reserves cannot offset measured missed meals in other ho
   const state = { ...observed, houses: observed.houses.map((house, index) => ({ ...house,
     breadStock: index === 0 ? 0 : 100 })) };
   assert.ok(foodEfficiencyMetrics(state).requestedBread > foodEfficiencyMetrics(state).consumedBread);
-  assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
+  // AF-13: the grain slot is the farmstead, not the retired wheat farm.
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'farmstead', reason: 'actual_wheat_deficit' });
   const shared = { ...state, buildings: state.buildings.map(building => building.kind === 'granary'
     ? { ...building, inventory: { ...building.inventory, bread: 1000 } } : building) };
-  assert.deepEqual(measuredFoodDecision(shared), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
+  assert.deepEqual(measuredFoodDecision(shared), { kind: 'farmstead', reason: 'actual_wheat_deficit' });
 });

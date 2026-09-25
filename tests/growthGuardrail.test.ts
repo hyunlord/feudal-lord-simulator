@@ -3,7 +3,7 @@ import test from 'node:test';
 import { efficientAcceptance } from '../scripts/efficientGrowthAcceptance';
 import { compareChronicZeroWheat, growthGuardrail } from '../scripts/growthGuardrail';
 
-const metrics = { lots: 24, farms: 20, mills: 8, chronicZeroWheatMills: 0, chronicZeroWheatKnown: true,
+const metrics = { lots: 24, arableCells: 96, farmsteads: 4, mills: 8, chronicZeroWheatMills: 0, chronicZeroWheatKnown: true,
   chronicZeroWheatObservedTicks: 24000, granaries: 7, markets: 2, churches: 2,
   population: 768, idleWorkers: 250, buildings: 80, warnings: 0,
   coveredTicks: 2400, fullWindow: true, known: true, rawStarvedTicks: 4000, eligibleMillTicks: 19200 };

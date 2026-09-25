@@ -61,7 +61,8 @@ test("Z-1 a new game and every migrated save start with no zone and ordinal 1", 
 });
 
 test("Z-1 empty zones do not change the simulation: a migrated save runs 1,200 ticks to the same state", () => {
-  const { envelope } = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v5/palisade-construction.save.json")));
+  // A save without wheat farms: v10 paints fields only where old farms stood (AF-12), so its zones stay empty.
+  const { envelope } = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v5/new-game.save.json")));
   const { zones: _zones, nextZoneOrdinal: _ordinal, ...withoutZones } = envelope.state;
   let migrated: GameState = envelope.state;
   let bare: GameState = withoutZones;
