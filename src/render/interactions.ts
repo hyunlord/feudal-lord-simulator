@@ -1,4 +1,5 @@
 import { roadTimberCost } from "../engine/roadPlacement";
+import { buildingTileMarks } from "./placementTileMarks";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
@@ -165,10 +166,12 @@ export function placementPreview(
   }
   // Zone rules (C1b): while any zone exists, houses need a plot zone and wheat farms an arable zone.
   const placement = canPlaceBuildingWithZones(state, tool, tile.tx, tile.ty);
+  const footprint = buildingFootprint(tool, tile);
   return {
     tool,
     tile,
-    footprint: buildingFootprint(tool, tile),
+    footprint,
+    marks: buildingTileMarks(state, tool, footprint, placement.ok ? { ok: true, reason: null } : placement),
     roadPath: [],
     ok: placement.ok,
     reason: placement.ok ? null : placement.reason,

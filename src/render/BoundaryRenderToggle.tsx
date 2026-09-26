@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { boundaryV2Enabled, setBoundaryV2Enabled, subscribeBoundaryV2 } from "./renderBoundaryFlag";
 import { BOUNDARY_RENDER_COPY } from "./boundaryRenderCopy.ko";
 import { RenderScaleToggle } from "./RenderScaleToggle";
+import { PlacementPaletteToggle } from "./PlacementPaletteToggle";
 
 /** Settings-menu switch for RENDER_BOUNDARY_V2 (kept per browser; a URL query still overrides it on load), followed by
  * the render scale switch (B9). */
@@ -16,6 +17,7 @@ export function BoundaryRenderToggle() {
       </button>
       <span className="autoplay-hint">{enabled ? BOUNDARY_RENDER_COPY.on : BOUNDARY_RENDER_COPY.off}</span>
       <RenderScaleToggle />
+      <PlacementPaletteToggle />
     </>
   );
 }

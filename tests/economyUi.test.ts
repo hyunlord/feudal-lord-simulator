@@ -11,7 +11,8 @@ import { drawOverlay, wellCoverageTiles } from "../src/render/overlays";
 import type { RenderFrameInput } from "../src/render/renderer";
 import { withAlpha } from "../src/render/style";
 import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
-import { toggleOverlayByKey } from "../src/ui/EconomyOverlayControls";
+import { EconomyOverlayControls, toggleOverlayByKey } from "../src/ui/EconomyOverlayControls";
+import { LedgerDrawer } from "../src/ui/hud/HudShell";
 import { CourtLedger } from "../src/ui/InfoPanel";
 import {
   settlementGuidance,
@@ -131,9 +132,14 @@ test("CourtLedger keeps full semantic term names when compact labels are aria-hi
   assert.match(markup, /<span class="ledger-label ledger-label--compact" aria-hidden="true">인구<\/span>/);
 });
 
+// UX-3: the overlay toggles live in the ledger drawer's 보기 tab (the drawer opens from the dock or the status pill).
+const overlayControls = () => renderToStaticMarkup(createElement(EconomyOverlayControls,
+  { overlayMode: "none", onChange: () => undefined, problemOnly: false, onProblemOnlyChange: () => undefined }));
+
 test("economy overlay controls expose visible water and labour toggles without camera-key collisions", () => {
   // Given / When
-  const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
+  const markup = overlayControls();
+  const app = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
   assert.match(markup, /aria-label="경제 보기"/);
@@ -145,8 +151,9 @@ test("economy overlay controls expose visible water and labour toggles without c
   assert.match(markup, /연결된 길/);
   assert.match(markup, />3<\/span>/);
   assert.match(markup, />4<\/span>/);
-  assert.match(markup, /class="resource-bar__cell resource-bar__population"/);
-  assert.match(markup, /aria-expanded="false"/);
+  // The population history opens from the status pill and starts closed (no drawer in the start markup).
+  assert.match(app, /aria-label="인구 기록 열기"/);
+  assert.doesNotMatch(app, /class="ledger-population-drawer/);
   assert.equal(toggleOverlayByKey("Digit1", "none"), "water");
   assert.equal(toggleOverlayByKey("Digit1", "water"), "none");
   assert.equal(toggleOverlayByKey("Digit2", "water"), "labour");
@@ -158,7 +165,7 @@ test("economy overlay controls expose visible water and labour toggles without c
 
 test("economy overlay controls expose compact visible labels without changing accessible names", () => {
   // Given / When
-  const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
+  const markup = overlayControls();
 
   // Then
   assert.match(markup, /aria-label="배급 보기, 단축키 3"/);
@@ -169,13 +176,17 @@ test("economy overlay controls expose compact visible labels without changing ac
   assert.match(markup, /class="overlay-label overlay-label--compact" aria-hidden="true">길/);
 });
 
-test("economy overlay controls render inside the right console recess, the speed seals in the top time cluster (UX-1)", () => {
+test("UX-3: the overlay controls are the ledger drawer's 보기 tab, the speed seals the top time cluster", () => {
   // Given / When
+  const ledger = renderToStaticMarkup(createElement(LedgerDrawer, { state: DEFAULT_GAME_STATE, onInspect: () => undefined,
+    onClose: () => undefined, viewTab: createElement("p", null, "view"), mapTab: createElement("p", null, "map") }));
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
-  assert.ok(markup.indexOf('class="ledger-recess"') < markup.indexOf('aria-label="경제 보기"'));
-  assert.ok(markup.indexOf('class="court-ledger"') < markup.indexOf('aria-label="경제 보기"'));
+  assert.match(ledger, /role="tab" aria-selected="true" class="ledger-tab">자원/);
+  assert.match(ledger, /role="tab" aria-selected="false" class="ledger-tab">보기/);
+  assert.match(ledger, /role="tab" aria-selected="false" class="ledger-tab">지도/);
+  assert.doesNotMatch(markup, /aria-label="경제 보기"/, "no overlay bar on the default screen");
   const cluster = markup.indexOf('class="hud-time-cluster"');
   assert.ok(cluster >= 0 && cluster < markup.indexOf('class="speed-seals"'));
   assert.ok(markup.indexOf('class="speed-seals"') < markup.indexOf('aria-label="영주 명령대"'));

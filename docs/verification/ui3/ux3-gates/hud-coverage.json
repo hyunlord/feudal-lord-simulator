@@ -1,0 +1,159 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "threshold": 24,
+ "budgets": {
+  "normal": [
+   6,
+   8
+  ],
+  "build": [
+   15,
+   20
+  ],
+  "placement": [
+   6,
+   9
+  ],
+  "zone": [
+   8,
+   12
+  ],
+  "selection": [
+   18,
+   24
+  ],
+  "ledger": [
+   25,
+   30
+  ]
+ },
+ "pass": true,
+ "rows": [
+  {
+   "resolution": "1280x800",
+   "state": "normal",
+   "percent": 5.6,
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "build",
+   "percent": 14.3,
+   "budget": 15,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "placement",
+   "percent": 5.4,
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "ledger",
+   "percent": 13.8,
+   "budget": 25,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "selection",
+   "percent": 16.3,
+   "budget": 18,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "zone",
+   "percent": 6.4,
+   "budget": 8,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "normal",
+   "percent": 2.8,
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "build",
+   "percent": 6.9,
+   "budget": 15,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "placement",
+   "percent": 2.7,
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "ledger",
+   "percent": 6.9,
+   "budget": 25,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "selection",
+   "percent": 8.2,
+   "budget": 18,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "zone",
+   "percent": 3.1,
+   "budget": 8,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "normal",
+   "percent": 6,
+   "budget": 8,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "build",
+   "percent": 17.5,
+   "budget": 20,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "placement",
+   "percent": 5.9,
+   "budget": 9,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "ledger",
+   "percent": 14.8,
+   "budget": 30,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "selection",
+   "percent": 17.4,
+   "budget": 24,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "zone",
+   "percent": 6.9,
+   "budget": 12,
+   "pass": true
+  }
+ ]
+}

@@ -1,3 +1,5 @@
+import { housePressureCauseLabel, housePressureStatus } from "../population/housePressure";
+import { HOUSE_PRESSURE_COPY } from "./housePressureCopy.ko";
 import { houseHasFood, houseIsStarving } from "../population/houseFood";
 import { durationLabel } from "./gameTimeCopy.ko";
 import { serviceDiagnosis, type ServiceDiagnosis } from "./serviceDiagnosisModel";
@@ -69,6 +71,8 @@ export type HouseDiagnosisModel = {
   readonly bread: BreadDiagnosis;
   readonly population: PopulationDiagnosis;
   readonly protection: ProtectionDiagnosis;
+  /** UI-3: a leaving or abandoned household and why (the engine's FP-3 cause), first in the card. */
+  readonly pressure?: string | null;
   readonly market: MarketAccessDiagnosis | { readonly kind: "capacity" | "paused"; readonly label: string };
   readonly church: ServiceDiagnosis;
   readonly stoneHouse: StoneHouseDiagnosis;
@@ -254,5 +258,13 @@ export function houseDiagnosisModel(
     market: servingMarketDiagnosis(state, home),
     church: serviceDiagnosis(state, home, "church"),
     stoneHouse: stoneHouseDiagnosis(state, house, home),
+    pressure: housePressureLine(house),
   };
+}
+
+function housePressureLine(house: House): string | null {
+  const status = housePressureStatus(house);
+  const cause = housePressureCauseLabel(house);
+  if (status === "settled" || cause === null) return null;
+  return status === "leaving" ? cause : HOUSE_PRESSURE_COPY.abandoned;
 }

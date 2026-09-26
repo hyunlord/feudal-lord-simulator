@@ -59,12 +59,17 @@ type BuildSealsProps = {
   readonly pulse?: { readonly key: string; readonly nonce: number } | null;
   /** UX-1: open the catalogue at a category (a goal card's button), `nonce` per request. */
   readonly openRequest?: { readonly category: BuildCategory; readonly nonce: number } | null;
+  /** UX-3: the drawer is controlled by the UI state machine (one panel slot); absent = the menu keeps its own. */
+  readonly open?: boolean;
+  readonly onOpenChange?: (open: boolean) => void;
+  /** UX-3: the layer switch lives outside the drawer (bottom left); true keeps the old top row (tests, old shells). */
+  readonly showLayers?: boolean;
 };
 
 const OPEN_ACCESS = tutorialAccess(false, 0);
 
 export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelect, palisadeDrawing = false, onStartPalisadeDrawing, zoneTool = null, onZoneToolChange,
-  access = OPEN_ACCESS, layer = "direct", onLayerChange, pulse = null, openRequest = null }: BuildSealsProps) {
+  access = OPEN_ACCESS, layer = "direct", onLayerChange, pulse = null, openRequest = null, open, onOpenChange, showLayers = true }: BuildSealsProps) {
   const id = useId().replaceAll(":", "");
   const menuState = state ?? DEFAULT_GAME_STATE;
   // Era-locked buildings stay visible with their lock and the stage that opens them (UX-0 "잠긴 건물은 숨기지 말고").
@@ -75,7 +80,11 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
     const initialTool = selectedTool ?? highlightedTools[0] ?? "house";
     return buildCategory(initialTool);
   });
-  const [catalogOpen, setCatalogOpen] = useState(false);
+  const [ownOpen, setOwnOpen] = useState(false);
+  const catalogOpen = open ?? ownOpen;
+  const setCatalogOpen = (next: boolean) => { if (open === undefined) setOwnOpen(next); onOpenChange?.(next); };
+  // A pick closes the menu; a controlled drawer (UX-3) closes by the state machine's pick_tool instead (no second event).
+  const closeAfterPick = () => { if (open === undefined) setCatalogOpen(false); };
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [preview, setPreview] = useState<PlacementTool | null>(null);
   // A tapped card that cannot be built yet: its tooltip lines stay visible in the catalogue (no hover needed).
@@ -92,12 +101,13 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   }, [openRequest]);
   const pulseKey = pulse === null ? null : `${pulse.key}#${pulse.nonce}`;
   const pulsing = (key: string) => pulse !== null && pulse.key === key ? pulseKey ?? undefined : undefined;
-  // Esc (the global `cancel` intent, after the map and the app shell) closes the catalog and the details (B9).
+  // Esc (the global `cancel` intent, after the map and the app shell) closes the catalog and the details (B9). A
+  // controlled drawer (UX-3) is closed by the UI state machine's one-step Esc instead.
   useEffect(() => platformServices().input.subscribe(intent => {
-    if (intent.kind !== "cancel" || intent.world !== undefined) return;
-    setCatalogOpen(false);
+    if (intent.kind !== "cancel" || intent.world !== undefined || open !== undefined) return;
+    setOwnOpen(false);
     setDetailsOpen(false);
-  }, INTENT_ORDER.menu), []);
+  }, INTENT_ORDER.menu), [open]);
   const visibleOptions = options.filter((option) => buildCategory(option.tool) === category);
   const palisadeReady = canProclaimPalisadeEra(menuState);
   const unmetPalisade = menuState.era === 'hamlet'
@@ -120,7 +130,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         onClick={() => {
           if (!open) { setLockNote(`${card.label} · ${TUTORIAL_COPY.lockedTool}`); return; }
           setLockNote(null);
-          onZoneToolChange?.({ target: card.target, radius: zoneTool?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: zoneTool?.polygon ?? false }); setCatalogOpen(false);
+          onZoneToolChange?.({ target: card.target, radius: zoneTool?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: zoneTool?.polygon ?? false }); closeAfterPick();
         }}>
         <span className="build-tool-art" aria-hidden="true">
           {card.thumbnail !== null ? <img src={card.thumbnail} width="80" height="40" alt="" draggable={false} />
@@ -149,7 +159,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         data-highlighted={highlightedTools.includes(option.tool) ? option.tool : undefined} data-pulse={pulsing(option.tool)}
         onMouseEnter={() => setPreview(option.tool)} onMouseLeave={() => setPreview(null)}
         onFocus={() => setPreview(option.tool)} onBlur={() => setPreview(null)}
-        onClick={() => { if (toolAffordable) { onSelect(option.tool); setCatalogOpen(false); setPreview(null); setPinned(null); setLockNote(null); } else if (locked) { setLockNote(`${option.label} · ${lockText}`); setPinned(null); } else setPinned(option.tool); }}>
+        onClick={() => { if (toolAffordable) { onSelect(option.tool); closeAfterPick(); setPreview(null); setPinned(null); setLockNote(null); } else if (locked) { setLockNote(`${option.label} · ${lockText}`); setPinned(null); } else setPinned(option.tool); }}>
         <span id={`${id}-tool-${option.tool}`} className="visually-hidden">{buildToolTooltipLines(option.tool, menuState).join(". ")}</span>
         <span className="build-tool-art" aria-hidden="true">
           {thumbnail !== null ? <img src={thumbnail} width="80" height="64" alt="" draggable={false} />
@@ -167,7 +177,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   return (
     <div className="build-menu" role="group" aria-label={KO_UI.placementSeals}>
       <div className="build-menu-toprow">
-      <div className="control-layers" role="group" aria-label={TUTORIAL_COPY.layerGroup}>
+      {showLayers ? <div className="control-layers" role="group" aria-label={TUTORIAL_COPY.layerGroup}>
         {(["direct", "zone", "direction"] as const).map(item => {
           const open = access.layers[item];
           const active = layer === item;
@@ -183,8 +193,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
             <UiIcon sheet="layer" cell={item} />{TUTORIAL_COPY.layers[item]}{open ? null : <UiIcon sheet="lock" cell="locked" className="control-layer-lock" />}
           </button>;
         })}
-      </div>
-      <div className="build-menu-categories" role="group" aria-label={BUILD_MENU_COPY.categoryGroup} hidden={layer === "zone"}>
+      </div> : null}
+      <div className="build-menu-categories" role="group" aria-label={BUILD_MENU_COPY.categoryGroup} hidden={layer === "zone" || (open !== undefined && !catalogOpen)}>
         {BUILD_CATEGORIES.map((item) => {
           const open = access.categories[item.key];
           return (
@@ -194,7 +204,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
             onClick={() => {
               if (!open) { setLockNote(`${item.label} · ${TUTORIAL_COPY.lockedCategory[item.key as keyof typeof TUTORIAL_COPY.lockedCategory] ?? TUTORIAL_COPY.lockedTool}`); setCatalogOpen(true); setPinned(null); return; }
               setLockNote(null);
-              onSelect(buildCategorySelection(item.key)); setDetailsOpen(false); setCatalogOpen(!catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); setPinned(null);
+              onSelect(buildCategorySelection(item.key)); setDetailsOpen(false); setCatalogOpen(open !== undefined || !catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); setPinned(null);
             }}>
             <UiIcon sheet="category" cell={item.key} />{item.label}{open ? null : <UiIcon sheet="lock" cell="locked" className="build-menu-category-lock" />}
             {options.some((option) => buildCategory(option.tool) === item.key && highlightedTools.includes(option.tool)) && <span className="build-menu-task" aria-label="현재 과업">·</span>}
@@ -218,7 +228,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
               {item.key === 'defense' && onStartPalisadeDrawing !== undefined ? (
                 <button type="button" className={`build-seal build-tool${palisadeDrawing ? ' build-tool--selected' : ''}`}
                   aria-label={WALL_COPY.drawTool} aria-pressed={palisadeDrawing} aria-disabled={!palisadeReady}
-                  onClick={() => { if (palisadeReady) { onStartPalisadeDrawing(); setCatalogOpen(false); } }}>
+                  onClick={() => { if (palisadeReady) { onStartPalisadeDrawing(); closeAfterPick(); } }}>
                   <span className="build-tool-art" aria-hidden="true"><UiIcon sheet="building" cell="palisade" size={48} /></span>
                   <span className="build-seal-label" aria-hidden="true">{WALL_COPY.drawTool}</span>
                   <span className="build-tool-cost">{WALL_COPY.drawCost}</span>
@@ -231,7 +241,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           ))}
         </div>
       </div>
-      <div className="build-menu-summary">
+      {open !== undefined && zoneTool === null && !palisadeDrawing ? null : <div className="build-menu-summary">
         {zoneTool !== null && onZoneToolChange !== undefined ? <>
           <strong>{zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraser : ZONE_KIND_LABELS[zoneTool.target]}</strong>
           <span className="zone-radius" role="group" aria-label={ZONE_BRUSH_COPY.radiusHint}>
@@ -249,8 +259,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           {radius !== undefined && radius > 0 && <span>반경 {radius}칸</span>}
           {service && <span>수용 {service.capacity}필지</span>}
         </>}
-        <button type="button" className="build-info-toggle" aria-label="선택 도구 상세 안내" aria-expanded={detailsOpen} aria-controls={`${id}-details`} onClick={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }}><UiIcon sheet="action" cell="log" size={32} /></button>
-      </div>
+        {open !== undefined ? null : <button type="button" className="build-info-toggle" aria-label="선택 도구 상세 안내" aria-expanded={detailsOpen} aria-controls={`${id}-details`} onClick={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }}><UiIcon sheet="action" cell="log" size={32} /></button>}
+      </div>}
       <div id={`${id}-details`} className="build-menu-details" aria-label="건설 안내" hidden={!detailsOpen}>
         {palisadeDrawing ? <p>{WALL_COPY.drawHint}</p> : selectedOption === null ? <p>선택 도구 없음 · 건설 카드를 눌러 도구를 선택하세요.</p> : <>
           <div className="build-menu-detail-heading"><strong>{selectedOption.label}</strong><span>{buildCostLabel(selectedOption)}</span></div>
@@ -258,9 +268,9 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           <p className={buildToolAffordability(selectedOption.tool, menuState).affordable ? "build-menu-ready" : "build-menu-shortfall"}>{buildToolTooltipLines(selectedOption.tool, menuState).at(-1)}</p>
         </>}
       </div>
-      <div className="build-menu-instruction">{zoneTool === null ? INPUT_HINT_COPY[inputDevice]
+      {open !== undefined ? null : <div className="build-menu-instruction">{zoneTool === null ? INPUT_HINT_COPY[inputDevice]
         : inputDevice === "mouse" ? zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraserStatus : ZONE_BRUSH_COPY.status(ZONE_KIND_LABELS[zoneTool.target])
-        : zoneTool.target === "erase" ? ZONE_BRUSH_HINT_COPY[inputDevice].eraser : ZONE_BRUSH_HINT_COPY[inputDevice].status(ZONE_KIND_LABELS[zoneTool.target])}</div>
+        : zoneTool.target === "erase" ? ZONE_BRUSH_HINT_COPY[inputDevice].eraser : ZONE_BRUSH_HINT_COPY[inputDevice].status(ZONE_KIND_LABELS[zoneTool.target])}</div>}
     </div>
   );
 }

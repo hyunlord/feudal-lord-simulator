@@ -30,7 +30,6 @@ import { createHouseMaterialWave, palisadeCenter } from "./render/buildingMateri
 import { BuildSeals } from "./ui/BuildMenu";
 import { EconomyOverlayControls, toggleOverlayByKey } from "./ui/EconomyOverlayControls";
 import { SettlementStatusLine } from "./ui/InfoPanel";
-import { ResourceBar } from "./ui/ResourceBar";
 import { SettlementPanel } from "./ui/SettlementPanel";
 import { PopulationEventPanel } from "./ui/PopulationEventPanel";
 import {
@@ -39,6 +38,17 @@ import {
   updateOnboardingPresentationState,
 } from "./ui/onboardingTaskModel";
 import { MapShield } from "./ui/OverlayControls";
+import { releaseControlFocus } from "./input/domInputBindings";
+import { stateCalendar } from "./engine/scenarioState";
+import { TITLE_COPY } from "./ui/titleCopy.ko";
+import { wave8ImageStyle, wave8Url } from "./ui/wave8Art";
+import { SEASON_LEDGER_COPY } from "./ui/seasonLedgerCopy.ko";
+import { SeasonLedgerCard } from "./ui/hud/SeasonLedgerCard";
+import { seasonLedgerCardModel } from "./ui/seasonLedgerCard";
+import { seasonLedgerAuto, setSeasonLedgerAuto } from "./ui/seasonLedgerPreference";
+import type { BuildCategory } from "./ui/buildMenuPresentation";
+import { autoPlacementOverlay } from "./ui/placementAutoOverlay";
+import { PlacementPaletteToggle } from "./render/PlacementPaletteToggle";
 import { SpeedSeals } from "./ui/SpeedControls";
 import { EraConsole, buildEraConsoleModel } from "./ui/EraConsole";
 import {
@@ -65,7 +75,6 @@ import { platformServices } from "./platform/platform";
 import { INTENT_ORDER } from "./input/intentBus";
 import { SPEED_STEPS, speedStepOf } from "./input/inputIntent";
 import { steppedPlacementTool } from "./render/placementToolCycle";
-import { calendarLabel, stateCalendar } from "./engine/scenarioState";
 import { UiIcon } from "./ui/UiIcon";
 import { setPresentationSpeed } from "./render/presentationSpeed";
 import { playSound, unlockAudio } from "./audio/audioEngine";
@@ -74,22 +83,24 @@ import { COMPLETION_GROUP_MS, COMPLETION_TOAST_MS, completedSiteNames } from "./
 import { COMPLETION_TOAST_COPY } from "./ui/completionToastCopy.ko";
 import { alertStackRows } from "./ui/alertStackModel";
 import { useTutorialController } from "./ui/tutorial/useTutorialController";
-import { GoalCards, GoalDrawer, PauseVeil, StewardAdvisor, TutorialToggle, UnlockBanner } from "./ui/tutorial/TutorialShell";
+import { GoalCards, GoalDrawer, PauseVeil, TutorialToggle, UnlockBanner } from "./ui/tutorial/TutorialShell";
 import { TUTORIAL_COPY } from "./ui/tutorial/tutorialCopy.ko";
 import type { ControlLayer } from "./ui/tutorial/tutorialModel";
 import { BUILD_MENU_COPY } from "./ui/buildMenuCopy.ko";
-import { AlertStack } from "./ui/AlertStackView";
 import { tutorialTargetCanvasPoint } from "./ui/tutorial/tutorialMapChannel";
 import { readTutorialRecord } from "./ui/tutorial/tutorialStore";
 import { Inspector } from "./ui/InspectorView";
+import { escapeOnce, hudVisibility, INITIAL_UI_STATE, reduceUi, timeStopped, topModal, type UiEvent, type UiState } from "./ui/uiStateMachine";
+import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, PauseMenu, StatusPill } from "./ui/hud/HudShell";
+import { statusPillModel } from "./ui/hud/statusPillModel";
 
 /** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
 const ZONE_TOOL_PREFIX = "zone:";
 const ZONE_TOOL_OFF = "zone:off";
 
 const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
+const CHAPTER_LOADING_MS = 900;
 /** UX-2: the season icon beside the date (calendar season index → resource-sheet cell). */
-const SEASON_ICON = ["spring", "summer", "autumn", "winter"] as const;
 
 export function nextOnboardingPresentationCommit(input: {
   readonly gameState: GameState;
@@ -122,15 +133,21 @@ export function App() {
   const [zoneTool, setZoneTool] = useState<ZoneBrushTool | null>(null);
   // UX-1: the control layer (직접 / 구역 / 방향) and the goal drawer.
   const [layer, setLayer] = useState<ControlLayer>("direct");
-  const [drawerOpen, setDrawerOpen] = useState(false);
   // UX-1: the left inspector (a warning's `[보기]`: cause and action of that building).
   const [inspectedId, setInspectedId] = useState<string | null>(null);
+  // UX-3: which UI is on screen is one state (uiStateMachine: one panel slot, Esc one step, modals push / pop).
+  const [ui, setUi] = useState<UiState>(INITIAL_UI_STATE);
+  const uiRef = useRef(ui);
+  uiRef.current = ui;
+  const sendUi = useCallback((event: UiEvent) => setUi(current => reduceUi(current, event)), []);
+  const openInspector = useCallback((id: string) => { setInspectedId(id); sendUi({ type: "select" }); }, [sendUi]);
+  // The map's own selection card (GameCanvas) takes the same slot; closing it there leaves the selection state.
+  const onCanvasSelection = useCallback((open: boolean) => { if (open) sendUi({ type: "select" }); else if (uiRef.current.mode === "selection") sendUi({ type: "deselect" }); }, [sendUi]);
   const palisadeDraftRef = useRef(palisadeDraft);
   const gameStateRef = useRef(state);
   palisadeDraftRef.current = palisadeDraft;
   gameStateRef.current = state;
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
-  const [populationDrawerOpen, setPopulationDrawerOpen] = useState(false);
   const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
   const [distributorRouteHistory, setDistributorRouteHistory] = useState(
     createDistributorRouteHistory,
@@ -209,7 +226,7 @@ export function App() {
   }, [presentationNowMs, state.era]);
 
   const tutorial = useTutorialController({ state, paused: speed === 0, selectedTool, zoneTool, layer, setLayer, nowMs: presentationNowMs,
-    onOpenDrawer: () => setDrawerOpen(true) });
+    onOpenDrawer: () => sendUi({ type: "open_goals" }) });
   // Tool intents obey the tutorial's unlocks (menu, Q / E, controller X alike).
   const accessRef = useRef(tutorial.access);
   accessRef.current = tutorial.access;
@@ -235,9 +252,15 @@ export function App() {
           return "handled";
         }
         if (selectedToolRef.current !== null || palisadeDraftRef.current !== null) playSound("place_cancel");
-        setPalisadeDraft(null);
-        setSelectedTool(null);
-        setZoneTool(null);
+        // UX-3 S-31: one step back (placement -> build drawer -> idle -> pause menu); the mode effect below drops the
+        // zone brush or the inspector the new state no longer holds. A placement tool is dropped here, in the same
+        // render as the step (as before UX-3), so a drag right after Esc already pans.
+        if (uiRef.current.mode === "placement" || uiRef.current.mode === "line") setSelectedTool(null);
+        setUi(current => escapeOnce(current));
+        return "handled";
+      case "panel":
+        if (intent.panel === "hud") setUi(current => reduceUi(current, { type: "toggle_hud" }));
+        else setUi(current => reduceUi(current, { type: intent.panel === "build" ? "toggle_build" : "toggle_ledger" }));
         return "handled";
       case "undo":
         if (context.target === "text" || palisadeDraftRef.current === null) return;
@@ -278,11 +301,61 @@ export function App() {
     }
   }, INTENT_ORDER.app), [setSpeed]);
 
+  // UX-3: the underlying tool / zone / inspector states follow the UI state (and a tool picked by any route moves it).
+  useEffect(() => {
+    if (selectedTool !== null || palisadeDraft?.mode === "draw") sendUi({ type: "pick_tool", line: selectedTool === "road" || palisadeDraft?.mode === "draw" });
+    else sendUi({ type: "tool_cleared" });
+  }, [selectedTool, palisadeDraft?.mode, sendUi]);
+  useEffect(() => { sendUi({ type: layer === "zone" ? "zone_on" : "zone_off" }); }, [layer, sendUi]);
+  useEffect(() => {
+    const placing = ui.mode === "placement" || ui.mode === "line";
+    if (placing) releaseControlFocus(); // the picked card closed with the drawer; Space, Esc and ] go to the map
+    if (!placing && selectedToolRef.current !== null) setSelectedTool(null);
+    if (!placing && palisadeDraftRef.current?.mode === "draw") setPalisadeDraft(null);
+    if (ui.mode !== "zone" && ui.mode !== "build" && !placing) { setZoneTool(null); setLayer(current => current === "zone" ? "direct" : current); }
+    if (ui.mode !== "selection") setInspectedId(null);
+  }, [ui.mode]);
+  // S-32: a modal stops time; the speed before it comes back when the last modal closes.
+  const modalPauseRef = useRef<GameSpeed | null>(null);
+  useEffect(() => {
+    if (timeStopped(ui) && modalPauseRef.current === null) { modalPauseRef.current = speedRef.current; setSpeed(0); }
+    if (!timeStopped(ui) && modalPauseRef.current !== null) { setSpeed(modalPauseRef.current === 0 ? 0 : modalPauseRef.current); modalPauseRef.current = null; }
+  }, [ui, setSpeed]);
+  // S-51: the placed building's overlay while its tool is up; the overlay before it comes back afterwards.
+  const overlayModeRef = useRef(overlayMode);
+  overlayModeRef.current = overlayMode;
+  const autoOverlayRef = useRef<OverlayMode | null>(null);
+  useEffect(() => {
+    const auto = autoPlacementOverlay(selectedTool);
+    if (auto !== null && autoOverlayRef.current === null) { autoOverlayRef.current = overlayModeRef.current; setOverlayMode(auto); }
+    if (auto === null && autoOverlayRef.current !== null) { setOverlayMode(autoOverlayRef.current); autoOverlayRef.current = null; }
+  }, [selectedTool]);
+  // UI-3 (S-28): a season that closes while the game runs opens its ledger card, a modal (time stops until 계속),
+  // unless the player turned it off. A jump of more than one closed season (a load) opens nothing.
+  const [ledgerAuto, setLedgerAuto] = useState(seasonLedgerAuto);
+  const closedSeasons = state.seasons?.history.length ?? 0;
+  const closedSeasonsRef = useRef(closedSeasons);
+  useEffect(() => {
+    const previous = closedSeasonsRef.current;
+    closedSeasonsRef.current = closedSeasons;
+    if (closedSeasons !== previous + 1 || !ledgerAuto || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
+    setUi(current => reduceUi(current, { type: "push_modal", modal: "season_ledger" }));
+  }, [closedSeasons, ledgerAuto, welcomeVisible]);
+  const seasonCard = topModal(ui) === "season_ledger" ? seasonLedgerCardModel(state) : null;
+  // The card's next objective opens the build drawer at its category (the tutorial's request path, its own nonce).
+  const [menuRequest, setMenuRequest] = useState<{ readonly category: BuildCategory; readonly nonce: number } | null>(null);
+  useEffect(() => { setMenuRequest(null); }, [tutorial.openRequest]);
+  const visibility = hudVisibility(ui, { tutorialRunning: tutorial.running });
+
   // UX-2: an immediate warning in the town puts the active goal cards in their warning frame (same sampled state as
   // the warning stack, recomputed only when that sample changes).
   const guidanceState = guidanceSnapshotRef.current.state;
   const alertRows = useMemo(() => alertStackRows(guidanceState), [guidanceState]);
   const immediateWarning = alertRows.some(row => row.severity === "immediate");
+  // UX-3 cache (AGENTS rule 10): the status pill's numbers (food days walk every store, money the ledger totals) —
+  // key: the sampled guidance state, reason: App renders every tick and the pill's numbers change slowly; measured on
+  // the DGX perf board (lots24 still p95 11.9 ms with a per-render model and duplicate alert rows, trunk 10.3 ms).
+  const pillModel = useMemo(() => statusPillModel(guidanceState), [guidanceState]);
   // F0-V: a warning row that appears plays its tier (urgent / caution); the unlock banner plays the info sound.
   const heardAlertsRef = useRef<ReadonlySet<string> | null>(null);
   useEffect(() => {
@@ -358,6 +431,14 @@ export function App() {
   // fresh game, e.g. an injected fixture, never gets one).
   // The toggle starts from the stored choice (a player who switched the tutorial off keeps it off), else on.
   const [welcomeTutorial, setWelcomeTutorial] = useState(() => readTutorialRecord()?.enabled ?? true);
+  // UI-3: a new game opens on the chapter's loading screen for a moment (chapter 1 reuses the title keyart; the
+  // 1315 / 1337 / 1348 screens are registered for the later chapters). It never takes a click.
+  const [chapterLoading, setChapterLoading] = useState(false);
+  useEffect(() => {
+    if (!chapterLoading) return undefined;
+    const timer = window.setTimeout(() => setChapterLoading(false), CHAPTER_LOADING_MS);
+    return () => window.clearTimeout(timer);
+  }, [chapterLoading]);
   const dismissWelcome = () => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
@@ -398,18 +479,8 @@ export function App() {
         aria-hidden={welcomeVisible ? true : undefined}
       >
         <h1 className="visually-hidden">{KO_UI.appName}</h1>
-        <ResourceBar
-          paused={speed === 0}
-          state={state}
-          populationDrawerOpen={populationDrawerOpen}
-          onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
-          onHighlightBuildings={setHighlightedHouseIds}
-        />
-        {populationDrawerOpen ? (
-          <div id="population-ledger-drawer" className="ledger-population-drawer top-population-drawer">
-            <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
-          </div>
-        ) : null}
+        {/* UX-3: the only UI always on screen — status pill, speed, layer switch, action dock, crisis icons (at most 3). */}
+        {visibility.statusPill ? <StatusPill state={state} model={pillModel} onOpenLedger={() => sendUi({ type: "toggle_ledger" })} onOpenPopulation={() => sendUi({ type: "open_population" })} /> : null}
         <GameCanvas
           selectedTool={selectedTool}
           overlayMode={overlayMode}
@@ -423,88 +494,110 @@ export function App() {
           onPalisadeDraftCancel={cancelPalisadeDraft}
           zoneTool={zoneTool}
           onZoneRadiusChange={radius => setZoneTool(current => current === null ? current : { ...current, radius })}
+          selectionOpen={ui.mode === "selection"} onSelectionChange={onCanvasSelection}
         />
-        <PauseVeil paused={speed === 0 && !welcomeVisible} />
-        <div className="hud-time-cluster" role="group" aria-label={SCENARIO_COPY.calendarAria}>
-          <span className="hud-date" data-testid="hud-calendar"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
+        <PauseVeil paused={speed === 0 && !welcomeVisible && topModal(ui) === null} />
+        <div className="hud-time-cluster" role="group" aria-label={SCENARIO_COPY.calendarAria} hidden={!visibility.speed}>
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
             extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
         </div>
-        <StewardAdvisor advisor={tutorial.advisor} onDismiss={tutorial.dismissAdvisor} />
-        <div className="left-inspector-mount"><Inspector state={state} buildingId={inspectedId} onClose={() => setInspectedId(null)} /></div>
+        {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector} /> : null}
+        {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
+          <GoalCards tutorial={tutorial} maxActive={1} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
+        </aside> : null}
+        {/* S-30: one panel slot — the goal log, the population log, the inspector or the ledger (the build drawer is below). */}
+        {ui.mode === "goals" ? <aside className="slot-panel goal-slot" aria-label={KO_UI.informationRail}>
+          <GoalDrawer open log={tutorial.log}>
+            <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
+            <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} developmentContent={
+              <EraConsole
+                model={eraModel}
+                priority={wallConstructionPriority(state)}
+                onPriorityChange={priority => dispatch({ type: 'set_wall_construction_priority', priority })}
+                onBeginProposal={beginPalisadeProposal}
+                onBeginDraw={beginPalisadeDraw}
+                onConfirmProposal={confirmPalisadeProposal}
+                onCancelProposal={() => setPalisadeDraft(null)}
+                onEraseDraftSegment={() => setPalisadeDraft(current => current === null || current.selectedRunIndex === null
+                  ? current : applyPalisadeIntent({ state, draft: current, intent: { type: 'eraseSegment', index: current.selectedRunIndex } }))}
+                onProclaimStoneTown={proclaimStoneTown}
+              />
+            } />
+          </GoalDrawer>
+        </aside> : null}
+        {ui.mode === "population" ? (
+          <div id="population-ledger-drawer" className="ledger-population-drawer slot-panel">
+            <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
+          </div>
+        ) : null}
+        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot"><Inspector state={state} buildingId={inspectedId} onClose={() => sendUi({ type: "deselect" })} /></div> : null}
+        {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
+          viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
+          mapTab={<MapShield grid={state} />} /> : null}
         <UnlockBanner text={tutorial.banner} />
         {toastVisible && completionToast !== null ? <div className="completion-toast" role="status" aria-label={COMPLETION_TOAST_COPY.region}>
           <UiIcon sheet="prediction" cell="ok" />{completionToast.names.length === 1 ? COMPLETION_TOAST_COPY.one(completionToast.names[0]!)
             : COMPLETION_TOAST_COPY.many(completionToast.names[0]!, completionToast.names.length - 1)}
         </div> : null}
-        <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
         <EraCeremonyBanner
           ceremony={visibleCeremony}
           nowMs={presentationNowMs}
           onDismiss={() => setEraPresentation(dismissEraCeremony)}
         />
-        <aside ref={railRef} className={`right-info-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail}>
-          <GoalCards tutorial={tutorial} drawerOpen={drawerOpen} warn={immediateWarning} onToggleDrawer={() => setDrawerOpen(open => !open)} />
-          <GoalDrawer open={drawerOpen} log={tutorial.log}>
-          <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} developmentContent={
-            <EraConsole
-              model={eraModel}
-              priority={wallConstructionPriority(state)}
-              onPriorityChange={priority => dispatch({ type: 'set_wall_construction_priority', priority })}
-              onBeginProposal={beginPalisadeProposal}
-              onBeginDraw={beginPalisadeDraw}
-              onConfirmProposal={confirmPalisadeProposal}
-              onCancelProposal={() => setPalisadeDraft(null)}
-              onEraseDraftSegment={() => setPalisadeDraft(current => current === null || current.selectedRunIndex === null
-                ? current : applyPalisadeIntent({ state, draft: current, intent: { type: 'eraseSegment', index: current.selectedRunIndex } }))}
-              onProclaimStoneTown={proclaimStoneTown}
-            />
-          } />
-          </GoalDrawer>
-          <AlertStack state={guidanceSnapshotRef.current.state} onInspect={setInspectedId} />
-          {problemOnly ? <CauseLegend /> : null}
-        </aside>
-        <aside className="court-console" aria-label={KO_UI.courtConsole}>
-          <div className="court-recess map-recess">
-            <button type="button" className="hud-undo" disabled={newestSite === undefined} aria-label={BUILD_MENU_COPY.undoHint}
-              data-attention={tutorial.cards.some(card => card.key === "well_done") ? "true" : undefined} onClick={undoLastSite}>{BUILD_MENU_COPY.undo}</button>
-          </div>
-          <div className="court-recess seal-recess">
-            <BuildSeals
-              selectedTool={selectedTool}
-              state={state}
-              highlightedTools={highlightedTools}
-              onSelect={tool => { platformServices().input.emit({ kind: "toolSelect", toolId: tool }); }}
-              zoneTool={zoneTool}
-              onZoneToolChange={tool => {
-                // Arming another zone tool (or none) is a tool choice; radius and polygon are settings of the armed one.
-                if (tool === null || tool.target !== zoneTool?.target) platformServices().input.emit({ kind: "toolSelect", toolId: tool === null ? ZONE_TOOL_OFF : `${ZONE_TOOL_PREFIX}${tool.target}` });
-                else setZoneTool(tool);
-              }}
-              palisadeDrawing={palisadeDraft?.mode === 'draw'}
-              onStartPalisadeDrawing={beginPalisadeDraw}
-              access={tutorial.access}
-              layer={layer}
-              onLayerChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }}
-              pulse={tutorial.pulse}
-              openRequest={tutorial.openRequest}
-            />
-          </div>
-          <div className="court-recess ledger-recess">
-            <details className="command-disclosure"><summary>지도</summary><div className="command-popover"><MapShield grid={state} /></div></details>
-            <details className="command-disclosure ledger-stack"><summary>보기</summary><div className="command-popover">
-              <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />
-            </div></details>
-          </div>
+        {problemOnly ? <CauseLegend /> : null}
+        {/* Mounted in every state (their locks stay readable), hidden where the state clears them from the screen. */}
+        <LayerSwitch layer={layer} access={tutorial.access} pulse={tutorial.pulse} hidden={!visibility.layers}
+          onChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }} />
+        <ActionDock hidden={!visibility.dock} buildOpen={ui.mode === "build"} ledgerOpen={ui.mode === "ledger"}
+          onBuild={() => sendUi({ type: "toggle_build" })} onLedger={() => sendUi({ type: "toggle_ledger" })}
+          advisor={tutorial.advisor} onDismissAdvisor={tutorial.dismissAdvisor}
+          undo={{ enabled: newestSite !== undefined, attention: tutorial.cards.some(card => card.key === "well_done"), label: BUILD_MENU_COPY.undoHint, onUndo: undoLastSite }} />
+        {/* S-21 build drawer (and the zone bar in S-24): the catalogue stays mounted so a goal card can open it. */}
+        <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" || ui.mode === "zone" ? "true" : undefined}>
+          <BuildSeals
+            selectedTool={selectedTool}
+            state={state}
+            highlightedTools={highlightedTools}
+            onSelect={tool => { platformServices().input.emit({ kind: "toolSelect", toolId: tool }); }}
+            zoneTool={zoneTool}
+            onZoneToolChange={tool => {
+              // Arming another zone tool (or none) is a tool choice; radius and polygon are settings of the armed one.
+              if (tool === null || tool.target !== zoneTool?.target) platformServices().input.emit({ kind: "toolSelect", toolId: tool === null ? ZONE_TOOL_OFF : `${ZONE_TOOL_PREFIX}${tool.target}` });
+              else setZoneTool(tool);
+            }}
+            palisadeDrawing={palisadeDraft?.mode === 'draw'}
+            onStartPalisadeDrawing={beginPalisadeDraw}
+            access={tutorial.access}
+            layer={layer}
+            onLayerChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }}
+            pulse={tutorial.pulse}
+            openRequest={menuRequest ?? tutorial.openRequest}
+            showLayers={false}
+            open={ui.mode === "build" || ui.mode === "zone"}
+            onOpenChange={next => {
+              if (next && uiRef.current.mode !== "zone") sendUi({ type: "open_build" });
+              if (!next && uiRef.current.mode === "build") sendUi({ type: "toggle_build" });
+            }}
+          />
         </aside>
       </div>
+      {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto}
+        onAutoChange={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
+        onResume={() => sendUi({ type: "pop_modal" })}
+        onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) setMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
+      {topModal(ui) === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
+        settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
+          <button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
+            onClick={() => { setLedgerAuto(!ledgerAuto); setSeasonLedgerAuto(!ledgerAuto); }}>{ledgerAuto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</button></>} /> : null}
+      {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
+        <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment
         onDismiss={dismissWelcome}
         continueLine={saveSystem.offerContinue ? saveSystem.latest?.summary?.line ?? "" : null}
         archiveNotice={saveSystem.latest?.summary ? formatNewGameArchiveNotice(saveSystem.latest.summary) : null}
         onContinue={continueSavedGame}
-        onNewGame={startNewGameOverSave}
-        onChooseMode={startScenarioWithoutSave}
+        onNewGame={scenarioId => { setChapterLoading(true); startNewGameOverSave(scenarioId); }}
+        onChooseMode={scenarioId => { setChapterLoading(true); startScenarioWithoutSave(scenarioId); }}
         tutorialEnabled={welcomeTutorial}
         onTutorialChange={setWelcomeTutorial}
       /> : null}
@@ -543,11 +636,15 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
 
   return (
     <div
-      className="welcome-dismiss-layer"
+      className="welcome-dismiss-layer title-screen"
+      data-screen={confirmingNewGame ? "mode" : "title"}
+      style={{ backgroundImage: `url("${wave8Url(confirmingNewGame ? "keyart_mode_select" : "keyart_title_bg")}")` }}
       onPointerDown={consumeDismissal}
       onClick={consumeDismissal}
       onKeyDown={containKeyboard}
     >
+      {/* UI-3: the title keyart behind the welcome, the emblem above it; choosing a new game over a save shows the mode backdrop. */}
+      <span className="title-emblem" aria-hidden="true" style={wave8ImageStyle("keyart_title_emblem", 176)} />
       <section
         ref={dialogRef}
         className="welcome-parchment"
@@ -556,13 +653,13 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
         aria-label={KO_UI.openingGuidance}
         tabIndex={-1}
       >
-        <h2>영지에 오신 것을 환영합니다</h2>
-        <p>아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요.</p>
-        <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
+        <h2>{TITLE_COPY.heading}</h2>
+        <p>{TITLE_COPY.howTo}</p>
+        <p>{TITLE_COPY.camera}</p>
         <TutorialToggle enabled={tutorialEnabled} onChange={onTutorialChange} />
         {continueLine === null ? <>
           <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId)} keepChoice={keepChoice} />
-          <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p>
+          <p className="welcome-dismiss">{TITLE_COPY.dismiss}</p>
         </> : (
           <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
             <p>{continueLine}</p>

@@ -55,6 +55,8 @@ export type InputIntent =
   /** Toggle economy overlay slot 1-4 (keys 1-4) or the problem-only view (O). */
   | { readonly kind: "overlayToggle"; readonly slot: 1 | 2 | 3 | 4 }
   | { readonly kind: "problemView" }
+  /** UX-3: open / close a panel (B the build drawer, L the ledger drawer) or hide the HUD (H). */
+  | { readonly kind: "panel"; readonly panel: "build" | "ledger" | "hud" }
   /** Pause / resume (Space tap, controller menu). */
   | { readonly kind: "pauseToggle" }
   /** Centre the view on a tile (the map overview; later a controller "jump to problem"). */

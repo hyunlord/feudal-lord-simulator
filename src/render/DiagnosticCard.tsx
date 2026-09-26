@@ -1,3 +1,4 @@
+import { UiIcon } from "../ui/UiIcon";
 import { BUILDING_OPERATION_COPY } from '../ui/buildingOperationCopy.ko';
 import { durationLabel } from "../ui/gameTimeCopy.ko";
 import type { ReactElement } from "react";
@@ -57,6 +58,8 @@ function HouseCard({ model, onDemolishHouse, onMergeHouses }: {
 }): ReactElement {
   return (
     <>
+      {model.pressure === undefined || model.pressure === null ? null
+        : <p className="inspector-pressure" role="status"><UiIcon sheet="cause" cell="food" />{model.pressure}</p>}
       <p>생활 등급 {model.level} · 주민 {model.residents}명 / 정원 {model.capacity}명 · {model.footprintLabel}칸</p>
       <dl>
         <div><dt>건축 단계</dt><dd>{model.builtLevel}단계 · {model.conditionLabel}</dd></div>

@@ -1,3 +1,4 @@
+import { drawUiIcon } from "../ui/uiArt";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import { BUILDING_CONFIG_BY_KIND, operationSuspended, type Building } from "../content/buildingConfig";
 import { marketHasSaleCandidate } from "../engine/marketSettlement";
@@ -128,6 +129,7 @@ export function drawWorldSigns(context: CanvasRenderingContext2D, state: GameSta
       if (!drawDottedTrack(context, sign, sign.toward)) drawDirtTrack(context, at, tileToScreen(sign.toward.tx, sign.toward.ty));
     } else if (sign.kind === "leaving_family") {
       drawWave7(context, "bundle_family_prop", at.sx + 18, at.sy + 14, SIGN_PROP_SCALE);
+      drawUiIcon(context, "cause", "food", at.sx, at.sy - 44, 20); // UI-3: why they leave (FP-3 food shortage)
     } else if (sign.kind === "idle_latch") {
       drawWave7(context, "bar_latch", at.sx + 14, at.sy + 12, SIGN_PROP_SCALE);
     } else if (sign.kind === "empty_stall") {

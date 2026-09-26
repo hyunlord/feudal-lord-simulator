@@ -76,6 +76,8 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
   await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
   if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click();
   await page.keyboard.press('Escape');
+  // UX-3 S-31: Esc on the idle screen opens the pause menu; a scene starts without it.
+  if (await page.locator('.pause-menu').count()) await page.keyboard.press('Escape');
   if (run) await page.getByRole('button', { name: '1배속', exact: true }).click();
   await page.waitForTimeout(1_500);
   return { context, page };

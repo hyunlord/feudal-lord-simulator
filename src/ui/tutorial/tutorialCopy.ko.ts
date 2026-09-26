@@ -69,6 +69,9 @@ export const TUTORIAL_COPY = {
   },
   pickTool: "도구를 고르세요",
   generalCard: { title: (name: string) => name, cta: "조건 보기", arm: (name: string) => `${name} 놓기`, place: (name: string) => `표시한 자리에 ${name} 놓기` },
+  /** UI-3 (FP-4 first winter warning): the lean season comes before the next harvest. */
+  leanSeason: { title: "다음 수확까지 비축 부족", why: "곳간과 들판의 식량이 겨울과 봄을 넘기지 못합니다. 곡창을 두고 경작지를 늘리십시오.",
+    granary: "곡창 놓기", arable: "경작지 칠하기", steward: "영주님, 이대로면 보릿고개를 못 넘깁니다. 곡창과 경작지를 챙기십시오." },
   buildingNames: { market: "시장", chapel: "예배당" },
   categories: { living: "생활", paths: "길", trade: "생업", storage: "저장·유통", public: "공공·신앙", defense: "방어" },
 } as const;

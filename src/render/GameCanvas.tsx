@@ -1,5 +1,5 @@
 import { PredictionPanel, type PredictionPresentation } from "../ui/PredictionPanel";
-import { useRef, useState, type Dispatch, type SetStateAction } from "react";
+import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 
 import { houseProgressModel } from "../ui/houseProgressModel";
 import { KO_UI } from "../content/locale.ko";
@@ -37,6 +37,9 @@ type GameCanvasProps = {
   readonly onPalisadeDraftCancel?: () => void;
   readonly zoneTool?: ZoneBrushTool | null;
   readonly onZoneRadiusChange?: (radius: number) => void;
+  /** UX-3 S-30: the selection card holds the one panel slot — false (another panel took it, or Esc) drops it. */
+  readonly selectionOpen?: boolean;
+  readonly onSelectionChange?: (open: boolean) => void;
 };
 
 export function GameCanvas({
@@ -52,12 +55,17 @@ export function GameCanvas({
   onPalisadeDraftCancel,
   zoneTool = null,
   onZoneRadiusChange,
+  selectionOpen,
+  onSelectionChange,
 }: GameCanvasProps) {
   const { state, previousRenderState, interpolationAlpha, dispatch } = useGameStore();
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
   const [selection, setSelection] = useState<AnchoredWorldSelection | null>(null);
   const [prediction, setPrediction] = useState<PredictionPresentation | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const hasSelection = selection !== null;
+  useEffect(() => { onSelectionChange?.(hasSelection); }, [hasSelection, onSelectionChange]);
+  useEffect(() => { if (selectionOpen === false) setSelection(null); }, [selectionOpen]);
 
   useGameCanvasRuntime({
     canvasRef,

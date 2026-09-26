@@ -1,3 +1,4 @@
+import { wave8Url } from "../wave8Art";
 import type { ReactNode } from "react";
 import { stewardPortraitStyle } from "../uiArt";
 import { UiIcon } from "../UiIcon";
@@ -9,18 +10,25 @@ import type { GoalCard, TutorialController } from "./useTutorialController";
 // line, one button), the unlock banner, the pause veil and the goal drawer. UX-2 dresses them in the P0 art (frames in
 // src/styles/uiSkin.css, painted icons through UiIcon, the steward's portrait by the line's tone).
 
-export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false }: {
+export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false, maxActive }: {
   readonly tutorial: TutorialController;
   readonly onToggleDrawer: () => void;
   readonly drawerOpen: boolean;
   /** UX-2: an immediate warning stands in the town (the warning frame on the active cards). */
   readonly warn?: boolean;
+  /** UX-3 S-80: at most this many active cards (the most urgent first); finished cards still flash. */
+  readonly maxActive?: number;
 }) {
+  // The lean-season warning (UI-3) outranks the other goal cards; otherwise the controller's order stands.
+  const active = tutorial.cards.filter(card => card.status === "active")
+    .sort((a, b) => Number(b.key === "lean_season") - Number(a.key === "lean_season"));
+  const shown = maxActive === undefined ? tutorial.cards
+    : tutorial.cards.filter(card => card.status !== "active" || active.indexOf(card) < maxActive);
   return (
     <section className="goal-cards" aria-label={TUTORIAL_COPY.cardsLabel}>
-      {tutorial.cards.map(card => <GoalCardView key={card.key} card={card} warn={warn} onPress={() => tutorial.press(card.key)} onLook={tutorial.lookAt} />)}
+      {shown.map(card => <GoalCardView key={card.key} card={card} warn={warn} onPress={() => tutorial.press(card.key)} onLook={tutorial.lookAt} />)}
       <button type="button" className="goal-drawer-toggle" aria-expanded={drawerOpen} onClick={() => onToggleDrawer()}>
-        <UiIcon sheet="action" cell="log" />{TUTORIAL_COPY.drawer}{tutorial.log.length > 0 ? ` (${tutorial.log.length})` : ""}
+        <UiIcon sheet="action" cell="log" /><span className="goal-drawer-toggle-label">{TUTORIAL_COPY.drawer}{tutorial.log.length > 0 ? ` (${tutorial.log.length})` : ""}</span>
       </button>
     </section>
   );
@@ -74,7 +82,9 @@ export function UnlockBanner({ text }: { readonly text: string | null }) {
 
 export function PauseVeil({ paused }: { readonly paused: boolean }) {
   if (!paused) return null;
-  return <div className="pause-veil" aria-hidden="false"><span className="pause-veil-label" role="status"><UiIcon sheet="time" cell="pause" />{TUTORIAL_COPY.paused}</span></div>;
+  // UI-3: the Wave 8 pause vignette over the map and the hourglass badge behind the label.
+  return <div className="pause-veil" aria-hidden="false" style={{ backgroundImage: `url("${wave8Url("pause_vignette")}")` }}>
+    <span className="pause-veil-label" role="status" style={{ backgroundImage: `url("${wave8Url("pause_badge")}")` }}>{TUTORIAL_COPY.paused}</span></div>;
 }
 
 export function GoalDrawer({ open, log, children }: { readonly open: boolean; readonly log: TutorialController["log"]; readonly children?: ReactNode }) {

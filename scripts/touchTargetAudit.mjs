@@ -2,8 +2,8 @@
 // 44x44 CSS px and every visible text at least 12px (Steam Deck recommendation). Opens the game at 1280x800 in a
 // few UI states and measures the DOM (canvas-drawn text is covered by tests/touchTargets.test.ts).
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/touchTargetAudit.mjs <out.json> [--url http://127.0.0.1:4241/]
-// States: welcome screen, HUD, build menu open (houses), zone brush armed, diagnostic card (a house selected), ledger
-// panel, and the disclosures (map, view, settings, resource detail, settlement, population drawer).
+// States (UX-3): welcome screen, HUD, build drawer, zone chip armed, ledger drawer and its tabs, population drawer,
+// goal log (+ settlement disclosure), settings, pause menu, and the diagnostic card (a house selected).
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, sceneStates } from './renderCommitProbe.mjs';
 
@@ -74,11 +74,18 @@ async function open(browser, state, dismiss) {
   if (dismiss) {
     if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
     await page.keyboard.press('Escape');
+    // UX-3 S-31: Esc on the normal screen opens the pause menu; the audit starts without it.
+    if (await page.locator('.pause-menu').count()) await page.keyboard.press('Escape');
     await page.waitForTimeout(400);
   }
   return { context, page };
 }
 
+/** UX-3 S-31: an Esc that lands on the normal screen opens the pause menu; the audit steps close it again. */
+const settle = async (page) => {
+  await page.waitForTimeout(200);
+  for (let i = 0; i < 3 && await page.locator('.pause-menu').count() > 0; i += 1) { await page.keyboard.press('Escape'); await page.waitForTimeout(200); }
+};
 const clickIfPresent = async (page, selector) => {
   const locator = page.locator(selector).first();
   if (await locator.count() === 0) return false;
@@ -99,21 +106,28 @@ async function main() {
 
   const { context, page } = await open(browser, city, true);
   await record('hud', page);
-  await clickIfPresent(page, '.build-menu-category[data-category]'); await record('build-menu', page, 'first category open');
-  const zoneCategory = page.locator('.build-menu-category', { hasText: '구역' });
-  if (await zoneCategory.count()) { await zoneCategory.click(); await page.waitForTimeout(300); await clickIfPresent(page, '.zone-tool'); }
-  await record('zone-brush', page, 'zone card armed');
-  await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await page.waitForTimeout(300);
-  await clickIfPresent(page, '.resource-bar__coin'); await record('ledger', page, 'finance cell open');
-  await clickIfPresent(page, '.resource-bar__coin');
-  await clickIfPresent(page, '.resource-bar__population'); await record('population', page, 'population drawer open');
-  await clickIfPresent(page, '.resource-bar__population');
-  // UX-1 moved the settlement panel into the goal drawer: open the drawer so its disclosure can be measured.
-  await clickIfPresent(page, '.goal-drawer-toggle');
-  for (const [name, selector] of [['resource-detail', '.resource-bar__more > summary'], ['settlement', '.right-info-rail details > summary'],
-    ['map', '.ledger-recess .command-disclosure:not(.ledger-stack) > summary'], ['view', '.ledger-stack > summary'], ['settings', '.settings-disclosure > summary']]) {
-    if (await clickIfPresent(page, selector)) { await record(name, page); await clickIfPresent(page, selector); }
+  // UX-3: the build drawer from the dock, its first category; the zone layer with a zone chip armed.
+  await clickIfPresent(page, "[data-dock='build']"); await clickIfPresent(page, '.build-menu-category[data-category]'); await record('build-menu', page, 'build drawer, first category open');
+  await page.keyboard.press('Escape'); await settle(page);
+  await clickIfPresent(page, ".control-layer[data-layer='zone']"); await clickIfPresent(page, '.zone-tool'); await record('zone-brush', page, 'zone chip armed');
+  await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await settle(page);
+  await clickIfPresent(page, ".control-layer[data-layer='direct']");
+  // The ledger drawer (dock) and each of its tabs; the population drawer and the goal log from the pill / the goal chip.
+  await clickIfPresent(page, "[data-dock='ledger']"); await record('ledger', page, 'ledger drawer, resources tab');
+  for (const tab of ['알림', '보기', '지도']) {
+    const button = page.locator('.ledger-tab', { hasText: tab });
+    if (await button.count()) { await button.click(); await page.waitForTimeout(300); await record(`ledger-${tab}`, page); }
   }
+  await clickIfPresent(page, "[data-dock='ledger']");
+  await clickIfPresent(page, '.status-pill-cell[aria-label="인구 기록 열기"]'); await record('population', page, 'population drawer open');
+  await page.keyboard.press('Escape'); await settle(page);
+  await clickIfPresent(page, '.goal-drawer-toggle'); await record('goal-log', page, 'goal log in the panel slot');
+  if (await clickIfPresent(page, '.slot-panel details > summary')) await record('settlement', page);
+  await page.keyboard.press('Escape'); await settle(page);
+  if (await clickIfPresent(page, '.settings-disclosure > summary')) { await record('settings', page); await clickIfPresent(page, '.settings-disclosure > summary'); }
+  // The pause menu (Esc on the normal screen).
+  await settle(page); await page.keyboard.press('Escape'); await page.waitForTimeout(300); await record('pause-menu', page);
+  await page.keyboard.press('Escape'); await settle(page);
   await context.close();
 
   if (house !== undefined) {
@@ -138,6 +152,7 @@ async function main() {
     await cardPage.waitForTimeout(800);
     if (await cardPage.locator('.welcome-dismiss-layer').count()) await cardPage.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
     await cardPage.keyboard.press('Escape'); await cardPage.waitForTimeout(600);
+    if (await cardPage.locator('.pause-menu').count()) { await cardPage.keyboard.press('Escape'); await cardPage.waitForTimeout(300); }
     let opened = false;
     for (const [dx, dy] of [[0, 0], [0, -12], [0, -24], [8, -8], [-8, -8], [0, 8]]) {
       await cardPage.mouse.click(WIDTH / 2 + dx, HEIGHT / 2 + dy); await cardPage.waitForTimeout(400);

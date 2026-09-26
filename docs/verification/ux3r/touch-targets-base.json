@@ -1,0 +1,94 @@
+{
+  "url": "http://127.0.0.1:4351/",
+  "viewport": "1280x800",
+  "minTarget": 44,
+  "minText": 12,
+  "summary": {
+    "smallTargets": 0,
+    "smallText": 0,
+    "uniqueSmallTargets": 0,
+    "uniqueSmallText": 0
+  },
+  "rows": [
+    {
+      "state": "welcome",
+      "note": "",
+      "targets": 3,
+      "texts": 10,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "hud",
+      "note": "",
+      "targets": 23,
+      "texts": 41,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "build-menu",
+      "note": "build drawer, first category open",
+      "targets": 26,
+      "texts": 50,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "zone-brush",
+      "note": "zone chip armed",
+      "targets": 21,
+      "texts": 39,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "ledger",
+      "note": "ledger drawer, resources tab",
+      "targets": 23,
+      "texts": 41,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "population",
+      "note": "population drawer open",
+      "targets": 23,
+      "texts": 41,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "goal-log",
+      "note": "goal log in the panel slot",
+      "targets": 24,
+      "texts": 45,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "settings",
+      "note": "",
+      "targets": 32,
+      "texts": 60,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "pause-menu",
+      "note": "",
+      "targets": 24,
+      "texts": 45,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "diagnostic-card",
+      "note": "house house-44-40-0 selected",
+      "targets": 26,
+      "texts": 61,
+      "smallTargets": [],
+      "smallText": []
+    }
+  ]
+}
