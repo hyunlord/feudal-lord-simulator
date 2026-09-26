@@ -1,0 +1,379 @@
+{
+  "status": "candidate",
+  "directions": [
+    "NE",
+    "SE",
+    "SW",
+    "NW"
+  ],
+  "frames": 2,
+  "cargoRegistration": [
+    {
+      "direction": "NE",
+      "frame": 0,
+      "source": {
+        "x": 92,
+        "y": 13,
+        "w": 351,
+        "h": 333
+      },
+      "destination": [
+        17,
+        6,
+        55,
+        52
+      ],
+      "cell": [
+        128,
+        96
+      ],
+      "method": "uniform-scale AI cargo crop; original cart pixels unchanged"
+    },
+    {
+      "direction": "SE",
+      "frame": 0,
+      "source": {
+        "x": 640,
+        "y": 35,
+        "w": 237,
+        "h": 321
+      },
+      "destination": [
+        27,
+        4,
+        35,
+        48
+      ],
+      "cell": [
+        128,
+        96
+      ],
+      "method": "uniform-scale AI cargo crop; original cart pixels unchanged"
+    },
+    {
+      "direction": "SW",
+      "frame": 0,
+      "source": {
+        "x": 1168,
+        "y": 35,
+        "w": 238,
+        "h": 322
+      },
+      "destination": [
+        67,
+        4,
+        35,
+        48
+      ],
+      "cell": [
+        128,
+        96
+      ],
+      "method": "uniform-scale AI cargo crop; original cart pixels unchanged"
+    },
+    {
+      "direction": "NW",
+      "frame": 0,
+      "source": {
+        "x": 1722,
+        "y": 13,
+        "w": 236,
+        "h": 337
+      },
+      "destination": [
+        65,
+        4,
+        38,
+        54
+      ],
+      "cell": [
+        128,
+        96
+      ],
+      "method": "uniform-scale AI cargo crop; original cart pixels unchanged"
+    },
+    {
+      "direction": "NE",
+      "frame": 1,
+      "source": {
+        "x": 92,
+        "y": 13,
+        "w": 351,
+        "h": 333
+      },
+      "destination": [
+        17,
+        6,
+        55,
+        52
+      ],
+      "cell": [
+        128,
+        96
+      ],
+      "method": "exact RGBA copy of same direction frame0; static cargo and flag"
+    },
+    {
+      "direction": "SE",
+      "frame": 1,
+      "source": {
+        "x": 640,
+        "y": 35,
+        "w": 237,
+        "h": 321
+      },
+      "destination": [
+        27,
+        4,
+        35,
+        48
+      ],
+      "cell": [
+        128,
+        96
+      ],
+      "method": "exact RGBA copy of same direction frame0; static cargo and flag"
+    },
+    {
+      "direction": "SW",
+      "frame": 1,
+      "source": {
+        "x": 1168,
+        "y": 35,
+        "w": 238,
+        "h": 322
+      },
+      "destination": [
+        67,
+        4,
+        35,
+        48
+      ],
+      "cell": [
+        128,
+        96
+      ],
+      "method": "exact RGBA copy of same direction frame0; static cargo and flag"
+    },
+    {
+      "direction": "NW",
+      "frame": 1,
+      "source": {
+        "x": 1722,
+        "y": 13,
+        "w": 236,
+        "h": 337
+      },
+      "destination": [
+        65,
+        4,
+        38,
+        54
+      ],
+      "cell": [
+        128,
+        96
+      ],
+      "method": "exact RGBA copy of same direction frame0; static cargo and flag"
+    }
+  ],
+  "layerAnchors": [
+    {
+      "kind": "ox",
+      "direction": "NE ↗",
+      "animalOrigin": [
+        54,
+        -31
+      ],
+      "cartOrigin": [
+        0,
+        0
+      ],
+      "driverScale": 0.5945945945945946,
+      "nearShaftPolygon": [
+        [
+          72,
+          45
+        ],
+        [
+          80,
+          46
+        ],
+        [
+          114,
+          17
+        ],
+        [
+          108,
+          11
+        ]
+      ],
+      "occlusion": "cart then animal then original near-shaft clipped polygon then cargo registered at local0,0; no additional historical load offset",
+      "newCargoOrigin": [
+        0,
+        0
+      ],
+      "newCargoFile": "assets/herd/wool_sack_convoy-v1.png",
+      "newCargoPixelScale": 1
+    },
+    {
+      "kind": "ox",
+      "direction": "SE ↘",
+      "animalOrigin": [
+        43,
+        40
+      ],
+      "cartOrigin": [
+        0,
+        0
+      ],
+      "driverScale": 0.5945945945945946,
+      "nearShaftPolygon": [
+        [
+          50,
+          59
+        ],
+        [
+          55,
+          66
+        ],
+        [
+          82,
+          91
+        ],
+        [
+          87,
+          85
+        ]
+      ],
+      "occlusion": "cart then animal then original near-shaft clipped polygon then cargo registered at local0,0; no additional historical load offset",
+      "newCargoOrigin": [
+        0,
+        0
+      ],
+      "newCargoFile": "assets/herd/wool_sack_convoy-v1.png",
+      "newCargoPixelScale": 1
+    },
+    {
+      "kind": "ox",
+      "direction": "SW ↙",
+      "animalOrigin": [
+        -24,
+        39
+      ],
+      "cartOrigin": [
+        0,
+        0
+      ],
+      "driverScale": 0.5945945945945946,
+      "nearShaftPolygon": [
+        [
+          76,
+          61
+        ],
+        [
+          68,
+          64
+        ],
+        [
+          45,
+          94
+        ],
+        [
+          51,
+          97
+        ]
+      ],
+      "occlusion": "cart then animal then original near-shaft clipped polygon then cargo registered at local0,0; no additional historical load offset",
+      "newCargoOrigin": [
+        0,
+        0
+      ],
+      "newCargoFile": "assets/herd/wool_sack_convoy-v1.png",
+      "newCargoPixelScale": 1
+    },
+    {
+      "kind": "ox",
+      "direction": "NW ↖",
+      "animalOrigin": [
+        -20,
+        -31
+      ],
+      "cartOrigin": [
+        0,
+        0
+      ],
+      "driverScale": 0.5945945945945946,
+      "nearShaftPolygon": [
+        [
+          19,
+          11
+        ],
+        [
+          14,
+          17
+        ],
+        [
+          58,
+          56
+        ],
+        [
+          65,
+          48
+        ]
+      ],
+      "occlusion": "cart then animal then original near-shaft clipped polygon then cargo registered at local0,0; no additional historical load offset",
+      "newCargoOrigin": [
+        0,
+        0
+      ],
+      "newCargoFile": "assets/herd/wool_sack_convoy-v1.png",
+      "newCargoPixelScale": 1
+    }
+  ],
+  "driverSource": "astra-wave17-reference-files/actor_civilian_man-v1.png",
+  "driverCellDisplay": [
+    44,
+    44
+  ],
+  "driverOrigins": [
+    [
+      -8,
+      -26
+    ],
+    [
+      -12,
+      37
+    ],
+    [
+      97,
+      34
+    ],
+    [
+      114,
+      -24
+    ]
+  ],
+  "proofScale": 1.45,
+  "proofNote": "Reference composition only. Original cart and ox preserved byte-for-byte; no claim of independent runtime animation validation. Original cart frames preserve Wave13 wheel changes; cargo frames are exact static copies.",
+  "copies": [
+    {
+      "file": "assets/animal_walk/ox-v1.png",
+      "source": "/tmp/astra-wave17-work-20260926/supplemental-wave13-candidates/astra-wave13-candidates-v1/assets/animal_walk/ox-v1.png",
+      "sha256": "3ba741cde63793ed3718ccb73abf2eca1d74c7cf54a1c3ceaaa80b972f57f9f9",
+      "method": "byte-copy"
+    },
+    {
+      "file": "assets/cart/ox_cart_body-v1.png",
+      "source": "/tmp/astra-wave17-work-20260926/supplemental-wave13-candidates/astra-wave13-candidates-v1/assets/cart/ox_cart_body-v1.png",
+      "sha256": "bc5a7d8c46e532c54bac797bf13636612998c91661c8a7fb3abf761ca445e158",
+      "method": "byte-copy"
+    },
+    {
+      "file": "assets/prop/refugee_child_sheet-v1.png",
+      "source": "/tmp/astra-wave9-work-20260925/delivery/assets/prop/leaving_child_sheet-v1.png",
+      "sha256": "64f9b3061e032bb59fda208b905697fca6d883c1c09490f9b4aaeee5cdb4d929",
+      "method": "byte-copy"
+    }
+  ]
+}

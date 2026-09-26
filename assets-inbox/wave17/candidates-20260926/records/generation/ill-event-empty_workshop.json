@@ -1,0 +1,44 @@
+{
+  "id": "event/empty_workshop",
+  "w": 960,
+  "h": 540,
+  "scene": "An empty shoemaker and cloth mending workshop at noon after the working men have been levied: vacant wooden stools, unused tools, an unfinished leather shoe and folded rough wool cloth on a workbench. Open doorway looks onto a quiet English village lane, one elderly craftswoman pauses outside. Show absence through composition.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/P05.png"
+  ],
+  "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 960:540, fill complete image edge to edge. An empty shoemaker and cloth mending workshop at noon after the working men have been levied: vacant wooden stools, unused tools, an unfinished leather shoe and folded rough wool cloth on a workbench. Open doorway looks onto a quiet English village lane, one elderly craftswoman pauses outside. Show absence through composition. Output 960 by 540 pixels.\nROOF CORRECTION: TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specifically remove red brick stacks at x637..649,y122..138 and x691..704,y124..147 visible through the doorway in 960x540 image. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.\nRESIDUAL ROOF CORRECTION: Very precise corrective edit. IMAGE 1 is the full illustration to preserve. IMAGE 2 is a ten-times enlarged locator crop ONLY, not a second scene: it shows the ONE residual red-brown brick chimney with a dark cap that MUST be removed. This crop comes from original full image coordinates x625,y110,width45,height45. The chimney itself occupies x637..649,y122..138 in IMAGE1 960x540 coordinate space, visible through the workshop open doorway, immediately left of the distant church tower. ERASE THE ENTIRE RED-BROWN VERTICAL SHAFT AND DARK CAP. Replace the deleted shaft with leafy green background above roof and continuous smooth golden thatch ridge at its foot. There must be no red vertical rectangle or dark cap remaining at that position. Preserve every other part of image1, all faces, tools, architecture, light and exact composition. Output ONLY the full image1 scene, same landscape size. No labels or inset. Do not add another chimney elsewhere.",
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-c40848d1-d306-48f2-9d3e-ea2d2ac5970f.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/empty_workshop.png",
+  "dimensions": [
+    960,
+    540
+  ],
+  "postprocess": "Lanczos3 resize and central cover crop to target; opaque illustration PNG",
+  "selected": true,
+  "revisions": [
+    {
+      "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 960:540, fill complete image edge to edge. An empty shoemaker and cloth mending workshop at noon after the working men have been levied: vacant wooden stools, unused tools, an unfinished leather shoe and folded rough wool cloth on a workbench. Open doorway looks onto a quiet English village lane, one elderly craftswoman pauses outside. Show absence through composition. Output 960 by 540 pixels.",
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-66e591eb-0472-4226-9a8c-c0facd7dd3cc.png",
+      "selected": false
+    },
+    {
+      "prompt": "TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specifically remove red brick stacks at x637..649,y122..138 and x691..704,y124..147 visible through the doorway in 960x540 image. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/empty_workshop.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-5ea1edcc-6a98-4e1f-aec2-48b57ddff678.png",
+      "selected": false
+    },
+    {
+      "prompt": "Very precise corrective edit. IMAGE 1 is the full illustration to preserve. IMAGE 2 is a ten-times enlarged locator crop ONLY, not a second scene: it shows the ONE residual red-brown brick chimney with a dark cap that MUST be removed. This crop comes from original full image coordinates x625,y110,width45,height45. The chimney itself occupies x637..649,y122..138 in IMAGE1 960x540 coordinate space, visible through the workshop open doorway, immediately left of the distant church tower. ERASE THE ENTIRE RED-BROWN VERTICAL SHAFT AND DARK CAP. Replace the deleted shaft with leafy green background above roof and continuous smooth golden thatch ridge at its foot. There must be no red vertical rectangle or dark cap remaining at that position. Preserve every other part of image1, all faces, tools, architecture, light and exact composition. Output ONLY the full image1 scene, same landscape size. No labels or inset. Do not add another chimney elsewhere.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/empty_workshop.png",
+        "/tmp/astra-wave17-work-20260926/records/roof-review/empty-remaining.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-c40848d1-d306-48f2-9d3e-ea2d2ac5970f.png",
+      "selected": true
+    }
+  ]
+}

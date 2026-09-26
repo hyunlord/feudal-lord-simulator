@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-26 11시 20분 갱신)
+## 3. 현재 장부 요약 (2026-09-26 12시 갱신)
 
 | wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -50,17 +50,18 @@ assets-inbox/
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
-| `portrait-pool` | 51 |  | 51 |  |  |  |  | 0 |
+| `portrait-pool` | 147 |  | 147 |  |  |  |  | 0 |
 | `retired` | 13 |  |  |  |  |  | 13 | 0 |
 | `ui-p0` | 85 |  | 56 |  | 29 |  |  | 43 |
 | `walker-pilot2` | 96 |  | 96 |  |  |  |  | 0 |
 | `wave10` | 735 |  |  |  |  | 735 |  | 0 |
-| `wave11` | 69 |  | 69 |  |  |  |  | 0 |
+| `wave11` | 69 |  | 69 |  |  |  |  | 55 |
 | `wave12` | 89 |  | 65 |  | 24 |  |  | 0 |
 | `wave13` | 118 |  | 118 |  |  |  |  | 0 |
 | `wave14` | 147 |  | 146 |  | 1 |  |  | 0 |
 | `wave15` | 69 |  | 69 |  |  |  |  | 0 |
 | `wave16` | 49 | 49 |  |  |  |  |  | 0 |
+| `wave17` | 66 | 66 |  |  |  |  |  | 0 |
 | `wave2` | 42 | 15 | 27 |  |  |  |  | 27 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
 | `wave4-pilot` | 15 | 3 | 12 |  |  |  |  | 12 |
@@ -72,11 +73,11 @@ assets-inbox/
 | `wave5b` | 36 | 4 |  |  |  | 32 |  | 0 |
 | `wave5c` | 17 |  | 17 |  |  |  |  | 14 |
 | `wave6` | 25 |  | 25 |  |  |  |  | 22 |
-| `wave7` | 206 |  | 172 |  | 34 |  |  | 0 |
+| `wave7` | 206 |  | 172 |  | 34 |  |  | 77 |
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 0 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 0 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **2448** | **221** | **1319** | **0** | **106** | **786** | **16** | **309** |
+| **합계** | **2610** | **287** | **1415** | **0** | **106** | **786** | **16** | **441** |
 
 ## 4. 찾는 법
 
@@ -157,6 +158,8 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-portrait-pivot-candidates-20260926.zip` (09:33) | `portrait-pool/pivot-pilot-20260926` | 99,866 KB | `8aad52a626f1b083…` | 114 | — | `raw/`·`references/` 제외 |
 | `/tmp/astra-wave16-candidates-20260926.zip` (11:21) | `wave16/candidates-v1` | 210,345 KB | `9b879a87344a3b12…` | 97 | — | `raw/`(139MB)·`references/` 제외 |
 | `output/astra-wave16-candidates-v1/` (작업 폴더) | `wave16/candidates-v1` | — | — | 0 | — | 〃 |
+| `/tmp/astra-portrait-pool1-candidates-20260926.zip` (11:57) | `portrait-pool/pool1-20260926` | 236,415 KB | `854e28b69fc28751…` | 210 | 37(승인된 파일럿 초상 사본 36 등) | `raw/`·`references/` 제외 |
+| `/tmp/astra-wave17-candidates-20260926.zip` (11:49) | `wave17/candidates-20260926` | 37,001 KB | `40c4963d35feb765…` | 157 | 0 | `raw/`·`references/` 제외 |
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -173,8 +176,9 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 14**: 원본 71장 중 70장 `confirmed`, `heraldry/shield_surface_texture.png`는 `superseded`(→ 질감 재작업 `shield_surface_texture_multiply`·`_screen`). 질감 재작업 4장(`multiply`·`screen`·`merchant_ink_stamp_texture`·`merchant_carved_texture`) `confirmed`.
 - **Wave 10**: 초상 방식을 레이어 합성에서 완성 초상 풀로 바꿔 v1·v2의 레이어·마스크·파생 레이어·합성본·확인 그림 735행 전부 `rejected`(비고 "방식 전환: 레이어 합성 → 완성 초상 풀", 이전 상태 병기). 인물 파일럿 1의 초상 6장은 `confirmed` 그대로.
 - **Wave 5b 초상 레이어**: `B/layers/` 12장과 그 확인 그림 `B/checks/` 4장 `rejected`(방식 전환: 레이어 합성 → 완성 초상 풀). `A/` 아이·노인 자유 생성 워커 3장은 원래대로 `rejected`, `reused/held_staff_*` 4장은 재사용 소품으로 `candidate`, `derived-templates/`는 그대로.
-- **초상 풀(`portrait-pool/`)**: 방식 전환 파일럿(`pivot-pilot-20260926`)이 첫 묶음. 완성 초상 P01~P36 36장과 노화 사슬 12장 `confirmed`. 원시 생성본 `provenance/raw`는 넣지 않았다.
+- **초상 풀(`portrait-pool/`)**: 방식 전환 파일럿(`pivot-pilot-20260926`)이 첫 묶음. 완성 초상 P01~P36 36장과 노화 사슬 12장 `confirmed`. 원시 생성본 `provenance/raw`는 넣지 않았다. 1차 풀(`pool1-20260926`) 92장 `confirmed`(12시). 1차 ZIP의 `provenance/approved-pilot` 36장은 파일럿 초상과 같은 바이트라 다시 넣지 않았다.
 - **Wave 15**: 계절 자연 65장 `confirmed`.
+- **Wave 17**: 11:49 도착. 에셋 57장과 확인·기록 그림 전부 판정 전이라 `candidate`.
 - **Wave 16**: 11:21 도착. 에셋 35장과 확인·기록 그림 전부 판정 전이라 `candidate`.
 - **Wave 3**: 재작업본 10장 `confirmed`, 해당 v1 10장 `superseded`(→ `wave3/fix-20260926/assets/…`). Wave 3 에셋 82장 확정.
 

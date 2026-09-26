@@ -1,0 +1,15 @@
+{
+  "id": "beacon_lit",
+  "folder": "bld",
+  "w": 128,
+  "h": 160,
+  "foot": [
+    1,
+    1
+  ],
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-5e1c74f6-e2db-48c9-8dfa-dfc874688407.png",
+  "prompt": "Precise-object-edit. Reference is the exact final unlit coastal medieval beacon128x160. Keep tower wood, iron basket, poles, ladder, footstones and ALL pixels of structure position unchanged. Light only basket: a compact broad amber orange flame plume rising from basket top at roughly(64,55) up to(65,12), maximumwidth35pixels. A little greysmoke above and tinywarm glow ONLY near basket. True transparent RGBA canvas. NO new tower or ground. Produce JUST isolated transparent flames/smokeglow overlay in SAME fullcanvas128x160 matching image with emptylowerhalf, for alpha compositing onto original. 14th century handpaintedgame, restrainedorange but clear at50%. No text orborder.",
+  "refs": [
+    "/tmp/astra-wave17-work-20260926/delivery/assets/bld/beacon_idle-v1.png"
+  ]
+}

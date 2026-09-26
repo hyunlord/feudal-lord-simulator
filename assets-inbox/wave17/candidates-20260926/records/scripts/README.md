@@ -1,0 +1,1 @@
+These scripts record the local processing used for this delivery. Paths point to the preserved local work directory and supplied reference archives; they are not a standalone installer. No game integration is included.

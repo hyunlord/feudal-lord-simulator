@@ -1,0 +1,9 @@
+{
+  "id": "wk_raider-v1",
+  "ref": "/tmp/astra-wave17-work-20260926/supplemental/astra-walker-pilot2-reference-files/actor_civilian_man-v1.png",
+  "prompt": "Use case: identity-preserve. Edit target: attached exact approved game worker sheet. Repaint CLOTHING ONLY for French coastal raider in 1338-1340, a lightly equipped sailor with muted slate-blue hood and tan short quilted aketon, leather belt. EMPTY hands, no weapons. Not scary or monstrous. Keep all eight original silhouettes, exact pose, same arms, hands, legs, shoes, feet locations, face identity and size. Keep original 4 columns NE SE SW NW and 2 walking frames in rows, identical cell registration and transparent padding. No free pose generation. No text or background. Transparent RGBA. Subdued hand-painted medieval isometric game sprite matching reference brushwork, no photorealism, full plate, firearm, gore, badges except explicitly requested lions. Original sheet may be enlarged for painting but proportions and spacing must remain unchanged. Role details should read after reduction to 74x74px cells.",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-803d8ef3-a8cd-450d-b020-74e85ffb40d2.png",
+  "registration_template": "/tmp/astra-wave17-work-20260926/workerrefs/P4.png",
+  "processing": "Generated clothing RGB registered per cell to exact approved Pilot2 template alpha. Entire silhouette unchanged. Bottom 10px figure feet RGB byte-preserved. Original face/head top16px retained except billman top9px ironcap recolor; head alpha unchanged.",
+  "clothing_changed_pixels": 6292
+}

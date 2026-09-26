@@ -1,0 +1,31 @@
+{
+  "id": "held_bill_ne-v1",
+  "prompt": "Use case: historical-scene. Asset: ONE standalone held prop sprite for a 1338 English town isometric game, intended final 32x32 pixels, enlarged master. Subject: One medieval agricultural billhook weapon: a long plain wooden pole with a small inward hooked dull iron pruning blade at top, compact and practical, no fantasy axe, no halberd spikes, no ornament. Upright pole leaning 12 degrees, hand grip at image center. Direction: NE, carried by a person facing away toward the upper-right; show rear-facing material surfaces and bow curve/blade hook projecting upper-right. Reference images are STYLE ONLY, muted hand-painted small game sprites; do not depict any person, hands, feet, ground or shadow. Paint the single object with compact readable shading in the reference's earthy muted palette. Entire object fully visible, plenty transparent padding. Genuine transparent RGBA background, no backdrop, no checkerboard, no text, no border. Orthographic 2:1 isometric viewing elevation about 30 degrees. It must remain recognizable reduced to 32px. Center object; grip near image center.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/astra-wave17-reference-files/actor_civilian_man-v1.png",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-walker-pilot2-reference-files/actor_merchant-v1.png"
+  ],
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db77-2eb0-7802-a05b-38fe63b9b356/exec-c4152f3e-4199-4d99-9e91-197044d5fb42.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/prop/held_bill_ne-v1.png",
+  "dimensions": [
+    32,
+    32
+  ],
+  "source_crop": {
+    "left": 284,
+    "top": 200,
+    "width": 476,
+    "height": 1382
+  },
+  "final_placement": [
+    11,
+    1,
+    10,
+    30
+  ],
+  "grip_anchor": [
+    14,
+    16
+  ],
+  "processing": "Alpha trim, aspect-preserving Lanczos downsample, centered 32x32 transparent canvas; coverage compensation alpha exponent 0.65 at small size; no procedural artwork or mirrored direction copies."
+}

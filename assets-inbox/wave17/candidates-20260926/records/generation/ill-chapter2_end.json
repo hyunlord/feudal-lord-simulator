@@ -1,0 +1,35 @@
+{
+  "id": "chapter2_end",
+  "w": 1920,
+  "h": 1080,
+  "scene": "Wide cinematic elevated panorama at evening: a modest prosperous southern English market town now encircled by a completed stone wall and square gate towers, thatch and timber homes and church within; distant harbour on right with two small medieval cargo sailing ships, warm low sunlight and calm blue-grey coast. A few returning villagers and a wool cart in foreground. Hope tempered by the shadow of war, no battle, no smoke from houses, no fantastical castle scale.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/P05.png"
+  ],
+  "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 1920:1080, fill complete image edge to edge. Wide cinematic elevated panorama at evening: a modest prosperous southern English market town now encircled by a completed stone wall and square gate towers, thatch and timber homes and church within; distant harbour on right with two small medieval cargo sailing ships, warm low sunlight and calm blue-grey coast. A few returning villagers and a wool cart in foreground. Hope tempered by the shadow of war, no battle, no smoke from houses, no fantastical castle scale. Output 1920 by 1080 pixels.\nROOF CORRECTION: TARGETED INPAINTING EDIT of this exact finished illustration. Preserve EXACT scene, architecture positions, town walls, gate towers, church tower, carts, every character, composition, warm sunset colors, camera, trees, boats, and painterly detail. ONLY CHANGE: remove ALL HOUSE CHIMNEYS AND FLUES from EVERY domestic rooftop, foreground AND tiny background rooftops. There are many short square brick/stone chimney stacks sticking up from red tile roofs and thatched ridgelines. Delete every single such square stack and seamlessly reconstruct continuous pitched roof tiles or thatch/ridgeline beneath it; where a stack rose above a roof silhouette replace it with the correct sky/tree/background. Inspect the entire town from left edge to right edge: every domestic roof must be uninterrupted without a brick pot, pipe, vent or flue. Preserve church towers, gable peaks, actual wall turrets, chimney-free roof architecture. DO NOT simply remove smoke: remove the physical stacks themselves, including tiny ones. No new objects, no heraldry changes, no composition changes. Output same 1920x1080 landscape image.",
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-6bf58776-fbf2-4dd0-bac8-e4a18bb83bcf.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/chapter2_end.png",
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "postprocess": "Lanczos3 resize and central cover crop to target; opaque illustration PNG",
+  "selected": true,
+  "revisions": [
+    {
+      "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 1920:1080, fill complete image edge to edge. Wide cinematic elevated panorama at evening: a modest prosperous southern English market town now encircled by a completed stone wall and square gate towers, thatch and timber homes and church within; distant harbour on right with two small medieval cargo sailing ships, warm low sunlight and calm blue-grey coast. A few returning villagers and a wool cart in foreground. Hope tempered by the shadow of war, no battle, no smoke from houses, no fantastical castle scale. Output 1920 by 1080 pixels.",
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-e031d675-beb4-4d37-89dd-1878e2fd4630.png",
+      "selected": false
+    },
+    {
+      "prompt": "TARGETED INPAINTING EDIT of this exact finished illustration. Preserve EXACT scene, architecture positions, town walls, gate towers, church tower, carts, every character, composition, warm sunset colors, camera, trees, boats, and painterly detail. ONLY CHANGE: remove ALL HOUSE CHIMNEYS AND FLUES from EVERY domestic rooftop, foreground AND tiny background rooftops. There are many short square brick/stone chimney stacks sticking up from red tile roofs and thatched ridgelines. Delete every single such square stack and seamlessly reconstruct continuous pitched roof tiles or thatch/ridgeline beneath it; where a stack rose above a roof silhouette replace it with the correct sky/tree/background. Inspect the entire town from left edge to right edge: every domestic roof must be uninterrupted without a brick pot, pipe, vent or flue. Preserve church towers, gable peaks, actual wall turrets, chimney-free roof architecture. DO NOT simply remove smoke: remove the physical stacks themselves, including tiny ones. No new objects, no heraldry changes, no composition changes. Output same 1920x1080 landscape image.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/chapter2_end.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-6bf58776-fbf2-4dd0-bac8-e4a18bb83bcf.png",
+      "selected": true
+    }
+  ]
+}
