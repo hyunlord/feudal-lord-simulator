@@ -39,4 +39,11 @@ export interface House {
   abandonedTick?: number;
   /** FP-4 (save v12): the winter ration's carried fraction, thousandths of a bread (0–999). Absent = 0. */
   winterRationCarry?: number;
+  /**
+   * F0-B EV-4 (save v13): the house burnt at this tick. It stands roofless: level 0, no rent, no promotion; its household
+   * stays and eats. A rebuild site (`rebuildOf`) clears it. Absent = not burnt.
+   */
+  burntTick?: number;
+  /** F0-B (save v13): the event (`EventRecord.id`) that burnt it, the cause the player reads (SourceRef type `event`). */
+  burntByEventId?: string;
 }

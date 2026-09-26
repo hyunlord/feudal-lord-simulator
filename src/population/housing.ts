@@ -94,6 +94,11 @@ function definitionForLevel(level: number): HousingDefinition {
     HOUSING_CONFIG[0];
 }
 
+function stepBurntResidents(house: House, tick: number, lotArea: number): House {
+  if (tick <= 0 || tick % BALANCE.GROWTH_INTERVAL !== houseGrowthPhase(house.buildingId) || !houseIsStarving(house, tick)) return house;
+  return { ...house, residents: Math.max(0, house.residents - lotArea) };
+}
+
 function stepResidents(house: House, tick: number, lotArea: number): House {
   // FP-3 stage 2: an abandoned house stays empty until the pressure rules let a new household in.
   if (house.abandonedTick !== undefined) return house;
@@ -119,6 +124,8 @@ export function updateHouse(
   context: HouseUpdateContext,
 ): House {
   house = stepHouseFood(house, context.tick);
+  // F0-B EV-4: a burnt house stays at level 0 and does not take in residents until rebuilt; a starving one still empties.
+  if (house.burntTick !== undefined) return stepBurntResidents(house, context.tick, context.lotArea ?? 1);
   const supported = supportedLevel(house, context);
   const targetLevel =
     context.palisadeProtection === "outside" && house.level < 3

@@ -47,6 +47,7 @@ export type BuildingVisualState = {
   readonly houseProblem: "water" | "bread" | null;
   readonly production: ProductionVisualState;
   readonly housePressure?: HousePressureStatus;
+  readonly houseBurnt?: boolean;
 };
 
 export function buildBuildingVisualState(
@@ -67,6 +68,7 @@ export function buildBuildingVisualState(
     }),
     houseProblem: houseProblem(building, house),
     housePressure: house === undefined ? "settled" : housePressureStatus(house),
+    houseBurnt: house?.burntTick !== undefined,
     production: productionVisualState(building),
   };
 }

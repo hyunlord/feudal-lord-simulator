@@ -1,0 +1,133 @@
+{
+ "run1": {
+  "commit": "b4571666",
+  "command": "npx tsx scripts/efficientGrowthRun.ts 24 1200000 <out> <seed> --checkpoint",
+  "passed": 4,
+  "seeds": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 170115,
+    "stopReason": "target-scale-stable",
+    "final": {
+     "tick": 255020,
+     "lots": 24,
+     "l4Houses": 24,
+     "population": 768,
+     "houses": 24
+    },
+    "lastDiagnosticResult": "no_action",
+    "elapsedSeconds": 271,
+    "finalStateSha256": "5e18aab3b5aced9b5aea2f6dce9059a0b2c4971384d2552b51dbd0ec6a9f72b5"
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 276244,
+    "stopReason": "target-scale-stable",
+    "final": {
+     "tick": 362068,
+     "lots": 24,
+     "l4Houses": 24,
+     "population": 768,
+     "houses": 24
+    },
+    "lastDiagnosticResult": "no_action",
+    "elapsedSeconds": 421,
+    "finalStateSha256": "9e6313e60a685ae900f973cc27cfa92ffca4a240df9b9dd08c5295e8ecb8aeee"
+   },
+   {
+    "seed": 3,
+    "status": "regression",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": false,
+     "serviceGap": true,
+     "newDeadlock": false,
+     "zeroWheatRegression": null
+    },
+    "victoryTick": 110199,
+    "stopReason": "tick-budget",
+    "final": {
+     "tick": 1200000,
+     "lots": 13,
+     "l4Houses": 12,
+     "population": 416,
+     "houses": 13
+    },
+    "lastDiagnosticResult": "no_action",
+    "elapsedSeconds": 2765,
+    "finalStateSha256": "fb1bec8720d5b4f92f38725b565b8408c5fbd03a40cc8425dcd25b2e75a4c9c4"
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 177945,
+    "stopReason": "target-scale-stable",
+    "final": {
+     "tick": 309824,
+     "lots": 24,
+     "l4Houses": 24,
+     "population": 768,
+     "houses": 24
+    },
+    "lastDiagnosticResult": "no_action",
+    "elapsedSeconds": 306,
+    "finalStateSha256": "76e0c53f1f6ab921a98151ffe0190e574df1f5e2a62bbd00aeec28cf9754ec4b"
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 128058,
+    "stopReason": "target-scale-stable",
+    "final": {
+     "tick": 254955,
+     "lots": 24,
+     "l4Houses": 24,
+     "population": 768,
+     "houses": 24
+    },
+    "lastDiagnosticResult": "no_action",
+    "elapsedSeconds": 929,
+    "finalStateSha256": "08ae4ff512871497ab37bc60ef33c8293f082bbcead209a3051949a404acf022"
+   }
+  ]
+ },
+ "seed3Diagnostics": {
+  "note": "single-seed diagnostic runs, not guardrail runs",
+  "ar9WalledFields@95e300c6": "lots 13 -> 14 at 132,000-168,000, stopped again (reverted)",
+  "waitForRoomyWallUntil1315": "hamlet held at 9 lots until 1315, then lots 14 at 240,000 (not kept)",
+  "dearthHold2Seasons": "lots 13 at 252,000",
+  "noDearthHold": "lots 13 at 252,000",
+  "stallState": "wall proclaimed at tick 40,763 (1310) around 132 interior cells: 58 road, 45 buildings (granaries 8, storehouses 8, market 4, mills 3, wells 5, houses 13), 28 free grass of which 18 touch the wall (no clearance); 10 house sites for 11 lots still needed, and the one buildable site asks for a road on another site, which AR-7 refuses"
+ },
+ "baselineReference": "seeds/baseline-322d36f.json (F0-A run 3): victory 167,232 / 237,592 / 222,484 / 208,716 / 145,110"
+}

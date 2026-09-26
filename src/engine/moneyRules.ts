@@ -88,7 +88,8 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
   const postings: LedgerPosting[] = [];
   const plots = homePlots(state);
   for (const house of state.houses) {
-    if (house.residents <= 0) continue;
+    // EV-4: a burnt house pays no rent until it is rebuilt.
+    if (house.residents <= 0 || house.burntTick !== undefined) continue;
     const plot = plots.get(house.buildingId);
     const amount = homeRent(house, plot?.width ?? null);
     if (amount <= 0) continue;

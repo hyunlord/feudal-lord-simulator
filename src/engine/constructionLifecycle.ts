@@ -25,6 +25,7 @@ import type { House } from "../population/population.types";
 import type { GameState, PalisadeState } from "./engine.types";
 import { stoneReplacementSiteId } from "./era";
 import { startFoodObservation } from "./autoplayFoodThroughput";
+import { completeRebuild } from "./fire";
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from "./simulationPorts";
 
 export type ConstructionCompletionEvent = {
@@ -118,7 +119,10 @@ export function completeEligibleConstruction(state: GameState): GameState {
     ...completedPalisadeSites.map((site) => site.id),
     ...completedStoneWallSites.map((site) => site.id),
   ]);
-  const completedHouses = completedBuildings.flatMap((site) => {
+  // EV-6: a rebuild site restores its burnt house instead of adding a building.
+  const rebuilt = new Set(completedBuildings.flatMap((site) => site.rebuildOf === undefined ? [] : [site.rebuildOf]));
+  const newBuildings = completedBuildings.filter((site) => site.rebuildOf === undefined);
+  const completedHouses = newBuildings.flatMap((site) => {
     const house = houseFromSite(site);
     return house === null ? [] : [house];
   });
@@ -145,12 +149,12 @@ export function completeEligibleConstruction(state: GameState): GameState {
 
   const nextState = finishMaterialConstruction({
     ...state,
-    buildings: [...state.buildings, ...completedBuildings.map(buildingFromSite)],
+    buildings: [...state.buildings, ...newBuildings.map(buildingFromSite)],
     constructionSites: [
       ...state.constructionSites.filter((site) => !completedIds.has(site.id)),
       ...lateStoneReplacements,
     ],
-    houses: [...state.houses, ...completedHouses],
+    houses: [...(rebuilt.size === 0 ? state.houses : state.houses.map((house) => rebuilt.has(house.buildingId) ? completeRebuild(house) : house)), ...completedHouses],
     walkers: activeWalkers,
     palisade,
     roadRevision: state.roadRevision + (barrierCompleted ? 1 : 0),

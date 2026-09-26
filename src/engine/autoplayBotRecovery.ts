@@ -54,7 +54,14 @@ export interface DemolishHouseAdvice {
   readonly foodTransient?: never;
   readonly materialRecovery?: never;
 }
-export type AdvisorAction = AutoplayAction | DemolishHouseAdvice;
+/** F0-B EV-6: rebuild a burnt house (the game's `rebuild_house`), the bot's step after a fire. */
+export interface RebuildHouseAdvice {
+  readonly kind: 'rebuild_house';
+  readonly buildingId: string;
+  readonly foodTransient?: never;
+  readonly materialRecovery?: never;
+}
+export type AdvisorAction = AutoplayAction | DemolishHouseAdvice | RebuildHouseAdvice;
 
 export function recordBotRecovery(collector: BotRecoveryCollector | undefined, kind: BotRecoveryKind, houses: readonly Building[], action: AdvisorAction,
   note?: BotRecoveryDiagnostic['note']): void {

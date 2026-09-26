@@ -28,6 +28,11 @@ export type BuildingConstructionSite = ConstructionSiteCommon & {
   readonly kind: BuildingKind;
   readonly tx: number;
   readonly ty: number;
+  /**
+   * F0-B EV-6 (save v13): the burnt house this site rebuilds. The house keeps its building, tiles and household; the
+   * site starts at stage 2 (foundation) and, when complete, clears the house's `burntTick` instead of adding a building.
+   */
+  readonly rebuildOf?: string;
 };
 
 export type PalisadeConstructionSite = ConstructionSiteCommon & {

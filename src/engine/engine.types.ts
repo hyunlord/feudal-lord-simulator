@@ -159,4 +159,6 @@ export interface GameState {
   readonly seasons?: import("./season.types").SeasonState;
   /** Historical eras entered, in order (save v12, spec FP-5). Absent until the first tick after v12. */
   readonly historicalEras?: readonly import("./season.types").HistoricalEraEntry[];
+  /** F0-B events that arrived and fires burning (save v13, spec EV-1…EV-9). Absent until the first event. */
+  readonly events?: import("./events.types").EventState;
 }

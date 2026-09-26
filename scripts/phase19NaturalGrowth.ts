@@ -58,6 +58,8 @@ export function runPhase19NaturalGrowth(options: {
   readonly seed?: number;
   /** F0-A gate ①: the bot variant without reserve measures (`--naive-reserve`, spec FP-6). */
   readonly naiveReserve?: boolean;
+  /** F0-B gate ②: the unprepared variant builds no wells beyond the opening one (`--no-wells`, spec EV-7). */
+  readonly noWells?: boolean;
   readonly additionalAcceptance?: (state: GameState) => boolean;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
@@ -65,7 +67,8 @@ export function runPhase19NaturalGrowth(options: {
   readonly onProgress?: (snapshot: ReturnType<typeof growthSnapshot>) => void;
 }) {
   const { targetLots, maxTicks, seed } = parseGrowthOptions([String(options.targetLots), String(options.maxTicks), "", String(options.seed ?? 1)]);
-  const policy = { maxHousingLots: targetLots, ...(options.naiveReserve === true ? { naiveReserve: true } : {}) };
+  const policy = { maxHousingLots: targetLots, ...(options.naiveReserve === true ? { naiveReserve: true } : {}),
+    ...(options.noWells === true ? { noWells: true } : {}) };
   const source = provenance();
   const started = performance.now();
   const opening = createGrowthOpening(seed);
