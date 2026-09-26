@@ -19,6 +19,9 @@ export const LEDGER_CATEGORY_LABELS = {
   mill_toll: "제분료",
   demesne_sale: "직영 판매",
   project: "공사 재원",
+  famine_relief: "구휼",
+  famine_sale: "기근 곡물 판매",
+  charter_fee: "특허 대가",
 } as const satisfies Record<LedgerCategory, string>;
 
 export const LEDGER_WINDOW_LABELS = {

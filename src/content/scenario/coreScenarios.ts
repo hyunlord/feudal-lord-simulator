@@ -1,5 +1,5 @@
 import { MONEY_BALANCE } from "../balanceConfig";
-import { DEARTH_REHEARSAL_EVENT_ID, FIRE_EVENT_ID, FIRST_FIRE_EVENT_ID, WEATHER_EVENT_ID } from "../eventConfig";
+import { DEARTH_REHEARSAL_EVENT_ID, FIRE_EVENT_ID, FIRST_FIRE_EVENT_ID, GREAT_FAMINE_EFFECTS, GREAT_FAMINE_EVENT_ID, WEATHER_EVENT_ID } from "../eventConfig";
 import { SCENARIO_COPY } from "./scenarioCopy.ko";
 import type { ArchetypeDef, EraDef, ObjectiveDef, ScenarioDef, StageDef } from "./types";
 
@@ -30,7 +30,7 @@ const STAGES: readonly StageDef[] = [
 
 /**
  * Five historical eras (content design §1, K9). F0-A (F2, spec FP-5): the Great Famine waits for a town that can meet
- * it (a granary, 12 lots, a market), at most five years; effects come with F0-B.
+ * it (a granary, 12 lots, a market), at most five years. F0-C1 (FC-1): its effects are the Great Famine's.
  */
 const ERAS: readonly EraDef[] = [
   { id: "saturation", name: SCENARIO_COPY.eras.saturation, enterWhen: { yearAtLeast: 1300 }, effects: [] },
@@ -38,7 +38,7 @@ const ERAS: readonly EraDef[] = [
     { kind: "building_count_at_least", building: "granary", value: 1 },
     { kind: "housing_lots_at_least", value: 12 },
     { kind: "building_count_at_least", building: "market", value: 1 },
-  ] } }, effects: [] },
+  ] } }, effects: GREAT_FAMINE_EFFECTS },
   { id: "war", name: SCENARIO_COPY.eras.war, enterWhen: { yearAtLeast: 1337 }, effects: [] },
   { id: "collapse", name: SCENARIO_COPY.eras.collapse, enterWhen: { yearAtLeast: 1348 }, effects: [] },
   { id: "specialisation", name: SCENARIO_COPY.eras.specialisation, enterWhen: { yearAtLeast: 1380 }, effects: [] },
@@ -74,8 +74,11 @@ const ECONOMY_RULES = { millMonopoly: true, demesneSale: false } as const satisf
 
 export const CORE_ARCHETYPES: readonly ArchetypeDef[] = [{ id: "core:open_field", resourcePackage: {} }];
 
-/** F0-B (EV-1): the weather and chapter 1's events — the first fire, later fires and the first dearth (the rehearsal). */
-const CHAPTER_ONE_EVENTS = [WEATHER_EVENT_ID, FIRST_FIRE_EVENT_ID, FIRE_EVENT_ID, DEARTH_REHEARSAL_EVENT_ID] as const;
+/**
+ * F0-B (EV-1): the weather and chapter 1's events — the first fire, later fires and the first dearth (the rehearsal).
+ * F0-C1 (FC-1): and the Great Famine, which comes with the famine era.
+ */
+const CHAPTER_ONE_EVENTS = [WEATHER_EVENT_ID, FIRST_FIRE_EVENT_ID, FIRE_EVENT_ID, DEARTH_REHEARSAL_EVENT_ID, GREAT_FAMINE_EVENT_ID] as const;
 
 export const CORE_SCENARIOS: readonly ScenarioDef[] = [
   {

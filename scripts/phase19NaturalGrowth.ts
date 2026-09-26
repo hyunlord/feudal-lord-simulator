@@ -60,6 +60,8 @@ export function runPhase19NaturalGrowth(options: {
   readonly naiveReserve?: boolean;
   /** F0-B gate ②: the unprepared variant builds no wells beyond the opening one (`--no-wells`, spec EV-7). */
   readonly noWells?: boolean;
+  /** F0-C1 gate ③: the bot's famine answer (`--famine-response=<choice>`, spec FC-6). */
+  readonly famineResponse?: import("../src/content/chapterConfig").FamineResponseChoice;
   readonly additionalAcceptance?: (state: GameState) => boolean;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
@@ -68,7 +70,8 @@ export function runPhase19NaturalGrowth(options: {
 }) {
   const { targetLots, maxTicks, seed } = parseGrowthOptions([String(options.targetLots), String(options.maxTicks), "", String(options.seed ?? 1)]);
   const policy = { maxHousingLots: targetLots, ...(options.naiveReserve === true ? { naiveReserve: true } : {}),
-    ...(options.noWells === true ? { noWells: true } : {}) };
+    ...(options.noWells === true ? { noWells: true } : {}),
+    ...(options.famineResponse === undefined ? {} : { famineResponse: options.famineResponse }) };
   const source = provenance();
   const started = performance.now();
   const opening = createGrowthOpening(seed);

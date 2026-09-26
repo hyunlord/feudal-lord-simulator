@@ -6,6 +6,7 @@
  * tolls), then this period's upkeep, then arrears oldest first. Upkeep the treasury cannot pay goes to
  * the arrears account and idles the facility (`upkeepUnpaid`) until it is paid.
  */
+import { stallFeePermille, stallFeeRightSource } from "./politics";
 import type { SourceRef } from "../contracts";
 import { MONEY_BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
@@ -99,8 +100,11 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
   }
   for (const market of [...state.buildings].filter(building => building.kind === "market").sort((a, b) => a.id.localeCompare(b.id))) {
     const stalls = marketStalls(state, market);
-    if (stalls > 0) postings.push({ account: "cash", category: "stall_fee", amount: stalls * MONEY_BALANCE.stallFeePerStall,
-      sourceRefs: [buildingSource(market.id, `stalls:${stalls}`)] });
+    // FC-3/FC-4: a market charter lowers the dues (the right is a source of the posting).
+    const right = stallFeeRightSource(state);
+    const fee = Math.round(stalls * MONEY_BALANCE.stallFeePerStall * stallFeePermille(state) / 1000);
+    if (stalls > 0 && fee > 0) postings.push({ account: "cash", category: "stall_fee", amount: fee,
+      sourceRefs: [buildingSource(market.id, `stalls:${stalls}`), ...(right === null ? [] : [right])] });
   }
   const millWheat: Record<string, number> = {};
   for (const [millId, wheat] of Object.entries(money.millWheat).sort(([a], [b]) => a.localeCompare(b))) {

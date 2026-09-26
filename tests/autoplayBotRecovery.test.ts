@@ -169,9 +169,10 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   assert.equal(state.tick, 816_000);
   // Recorded at 46f0a54 (trunk before BOT-1) as 475317b0065127d3 / 8d2d3158…; F0-A changes the rules on purpose
   // (winter meals ×1.2, the failure ladder, seasons and eras in the state, spec FP-*), re-recorded at 2820a00.
-  // F0-B changes the rules on purpose again (weather, fires, the dearth rehearsal, spec EV-*), re-recorded at F0-B.
+  // F0-B changes the rules on purpose again (weather, fires, the dearth rehearsal, spec EV-*), re-recorded at F0-B; F0-C1
+  // adds politics to the state (the economy hash stays), re-recorded at F0-C1.
   assert.equal(hashEconomyState(state), "2616bef1538043ac");
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "59a3404d9321f8537cc7ff73d134107cc1eec8b340851038285e215d458604f1");
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "e81b612c80def1b1c153a03ba0044ed7cd57dbfc0571aebab21b6c677818a355");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {

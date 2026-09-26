@@ -39,12 +39,12 @@ import { reserveDeadlock } from "./reserveDeadlock";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
 import { granaryGapAction, keepsHouseInMarketReach, marketGapAction, marketRelocationAction, recordBotRecovery, type AdvisorAction, type BotRecoveryCollector } from './autoplayBotRecovery';
-import { timberDemandExpansionKind } from './autoplayTimberDemand';
+import { logOverflowKind, timberDemandExpansionKind } from './autoplayTimberDemand';
 import { interiorHouseSites, keepsInteriorHouseSites } from './autoplayInteriorPlots';
 import { ARABLE_MARGIN_PERMILLE, NAIVE_ARABLE_MARGIN_PERMILLE, withArableMargin } from './autoplayArable';
 import { winterReserveAction } from './autoplayWinterReserve';
 import { barnMillAction } from './autoplayBarnMill';
-import { dearthArableMargin, dearthHoldsGrowth, rebuildBurntHouseAction } from './autoplayEvents';
+import { chapterDecisionAction, dearthArableMargin, dearthHoldsGrowth, rebuildBurntHouseAction } from './autoplayEvents';
 /** The advisor's outward action: the placement actions plus BOT-1's house relocation (`demolish_house`). */
 export type { AdvisorAction as AutoplayAction } from './autoplayBotRecovery';
 export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
@@ -57,6 +57,9 @@ export interface AutoplayPolicy {
   readonly naiveReserve?: boolean;
   /** F0-B gate ② (EV-7): the unprepared variant builds no wells beyond the opening one (`--no-wells`). */
   readonly noWells?: boolean;
+  /** F0-C1 (FC-6): the bot's famine answer (relief unless a gate variant says otherwise) and petition answer (accept). */
+  readonly famineResponse?: import("../content/chapterConfig").FamineResponseChoice;
+  readonly petitionResponse?: import("../content/chapterConfig").PetitionResponse;
 }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
@@ -238,6 +241,14 @@ function timberAction(state: GameState, diagnostic?: BotRecoveryCollector): Auto
       return action;
     }
   }
+  // F0-C1 (AR-10): logs fill the storehouses while the sawmills are the short side — another sawmill first.
+  if (logOverflowKind(state) !== null) {
+    const action = buildAction(state, "sawmill");
+    if (action.kind !== "none") {
+      recordBotRecovery(diagnostic, "log_overflow", [], action);
+      return action;
+    }
+  }
   const reserve = hasBuiltOrPlannedBuilding(state, "logging_camp") ? 120 : 39;
   if (placementSpendableResource(state, "timber") > reserve) return NONE;
   if (!hasBuiltOrPlannedBuilding(state, "logging_camp")) return buildAction(state, "logging_camp");
@@ -360,6 +371,9 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
 }
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AdvisorAction {
+  // F0-C1 (FC-6): the famine and the petition are answered as soon as they come.
+  const answer = chapterDecisionAction(state, policy.famineResponse ?? "relief", policy.petitionResponse ?? "accept");
+  if (answer !== null) return answer;
   // F0-B (EV-7): a burnt house is rebuilt first (its household waits in the ruin).
   const rebuild = rebuildBurntHouseAction(state);
   if (rebuild !== null) return rebuild;
