@@ -1,0 +1,6 @@
+{
+  "asset": "icon_faction_lord_household-v1",
+  "firstAttempt": "builtin image_gen returned HTTP401 invalid_api_key (provider message credential details redacted)",
+  "resolution": "Single retry with same built-in tool and prompt succeeded; no API/CLI fallback used",
+  "burgageCorrection": "Initial generated chimney and glass rejected; precise built-in edit removed both. Original and corrected raw PNG plus both prompts preserved in metadata-icons.json."
+}

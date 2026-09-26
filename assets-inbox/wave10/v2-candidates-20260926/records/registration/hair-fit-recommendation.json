@@ -1,0 +1,213 @@
+{
+  "status": "review_recommendation_not_applied",
+  "method": "native raster place IN OUT resized_width resized_height x y on256canvas",
+  "source_assumption": "unregistered split-panel deliverable inputs; do not apply twice",
+  "recommendations": [
+    {
+      "id": "pt_hair_f_01_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 14,
+      "y": 9,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_f_02_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 12,
+      "y": 6,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_f_03_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 8,
+      "y": 15,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_f_07_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 21,
+      "y": 13,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_f_08_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 18,
+      "y": 12,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_m_01_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 17,
+      "y": 12,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_m_03_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 20,
+      "y": 5,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_m_08_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 21,
+      "y": 2,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_m_09_tucked",
+      "width": 192,
+      "height": 192,
+      "x": 17,
+      "y": 5,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Scale bulky new panel to adult skull; alpha128 reference to crown40 outerhairright174"
+    },
+    {
+      "id": "pt_hair_c_01",
+      "width": 179,
+      "height": 179,
+      "x": 25,
+      "y": 20,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Fit independently oversized child source around skull crown56 and outerhairright174; hairstyle can extend below skull"
+    },
+    {
+      "id": "pt_hair_c_02",
+      "width": 148,
+      "height": 148,
+      "x": 38,
+      "y": 33,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Fit independently oversized child source around skull crown56 and outerhairright174; hairstyle can extend below skull"
+    },
+    {
+      "id": "pt_hair_c_03",
+      "width": 166,
+      "height": 166,
+      "x": 26,
+      "y": 32,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Fit independently oversized child source around skull crown56 and outerhairright174; hairstyle can extend below skull"
+    },
+    {
+      "id": "pt_hair_c_04",
+      "width": 174,
+      "height": 174,
+      "x": 22,
+      "y": 25,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Fit independently oversized child source around skull crown56 and outerhairright174; hairstyle can extend below skull"
+    },
+    {
+      "id": "pt_hair_c_05",
+      "width": 154,
+      "height": 154,
+      "x": 33,
+      "y": 34,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Fit independently oversized child source around skull crown56 and outerhairright174; hairstyle can extend below skull"
+    },
+    {
+      "id": "pt_hair_c_06",
+      "width": 154,
+      "height": 154,
+      "x": 33,
+      "y": 30,
+      "apply_to": [
+        "front",
+        "rear"
+      ],
+      "reason": "Fit independently oversized child source around skull crown56 and outerhairright174; hairstyle can extend below skull"
+    },
+    {
+      "id": "pt_hair_m_06",
+      "width": 230,
+      "height": 230,
+      "x": 9,
+      "y": 0,
+      "apply_to": [
+        "front"
+      ],
+      "source_revision": 2,
+      "reason": "New thin stubble ring looks like tonsure; 90% width fits right skull; rear intentionally empty"
+    }
+  ],
+  "m06_regenerate": false,
+  "m06_note": "Revision1 long voluminous ring failed tonsure reading. Revision2 sparse shaved crown ring now reads tonsure after90percent fit.",
+  "evidence": [
+    "review/hair-fit/all.png",
+    "review/hair-fit/fit-tests.png",
+    "review/hair-fit/recommended-all.png",
+    "review/hair-fit/m06-r2-fit-composite.png"
+  ],
+  "limitations": [
+    "Suggested registration is visual fit, not measured six-anchor PASS",
+    "Tucked variants still require hairclip under hood",
+    "Childfit checked against c02 only; fullchildface matrix remains",
+    "No source asset or build script changed"
+  ]
+}

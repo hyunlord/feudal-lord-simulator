@@ -1,0 +1,244 @@
+[
+  {
+    "id": "seal_town_round",
+    "file": "assets/seals/seal_town_round.png",
+    "width": 256,
+    "height": 256,
+    "role": "town seal border",
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Create ONE medieval English town seal border layer, perfectly front-facing ROUND circle. Transparent RGBA background and completely transparent empty central disc. Antiqued dark warm brown/bronze engraved ink/wax relief style matching provided small red seal reference but deliver monochrome dark umber tintable artwork (no red). Two thin concentric engraved outlines enclosing a wide EMPTY inscription band. NO letters, NO pseudo letters, NO numbers, NO symbols in band. Very restrained medieval beaded outer rim, coherent at256px. Circle centered, safe padding8%, inner central hole diameter64% canvas. No drop shadow, no white halo, no tabletop, no external scene. Single asset only, no labels. Project candidate town seal compositing layer.",
+        "rawFile": "raw/seals/seal_town_round.png",
+        "referenceImages": [
+          "references/seal_petition_accept.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "lanczos3 contain",
+      "clearRGBAtAlphaZero": true,
+      "centerRGB": "preserved generated color"
+    },
+    "qa": {
+      "transparentPixels": 39201,
+      "noText": "visually reviewed",
+      "candidate": true
+    }
+  },
+  {
+    "id": "seal_town_pointed_oval",
+    "file": "assets/seals/seal_town_pointed_oval.png",
+    "width": 256,
+    "height": 256,
+    "role": "town seal border",
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. ONE isolated town seal border, elongated upright pointed oval (vesica piscis), two restrained engraved outlines enclosing EMPTY inscription band, transparent empty central field. Monochrome dark umber bronze-ink relief. NO letters anywhere. Candidate medieval strategy game compositing layer. Genuine transparent RGBA outside object, centered complete artwork with 8 percent safety margin. Crisp at small game UI size. No white fringe, no drop shadow, no text, no numerals, no labels, no sheet. Provided red seal is style reference only, do not copy its checkmark.",
+        "rawFile": "raw/seals/seal_town_pointed_oval.png",
+        "referenceImages": [
+          "references/seal_petition_accept.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "lanczos3 contain",
+      "clearRGBAtAlphaZero": true,
+      "centerRGB": "preserved generated color"
+    },
+    "qa": {
+      "transparentPixels": 52614,
+      "noText": "visually reviewed",
+      "candidate": true
+    }
+  },
+  {
+    "id": "seal_town_center_gate",
+    "file": "assets/seals/seal_town_center_gate.png",
+    "width": 128,
+    "height": 128,
+    "role": "town seal center ink mask",
+    "pivot": {
+      "x": 64,
+      "y": 64
+    },
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. ONE isolated central medieval town seal emblem, two squat crenellated gate towers and one open rounded archway, no enclosing ring, no ground. Bold black engraved silhouette with sparse transparent cutout details. 14th century England. Candidate medieval strategy game compositing layer. Genuine transparent RGBA outside object, centered complete artwork with 8 percent safety margin. Crisp at small game UI size. No white fringe, no drop shadow, no text, no numerals, no labels, no sheet. Provided red seal is style reference only, do not copy its checkmark.",
+        "rawFile": "raw/seals/seal_town_center_gate.png",
+        "referenceImages": [
+          "references/seal_petition_accept.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "lanczos3 contain",
+      "clearRGBAtAlphaZero": true,
+      "centerRGB": "black ink; alpha carries engraving shape"
+    },
+    "qa": {
+      "transparentPixels": 9916,
+      "noText": "visually reviewed",
+      "candidate": true
+    }
+  },
+  {
+    "id": "seal_town_center_ship",
+    "file": "assets/seals/seal_town_center_ship.png",
+    "width": 128,
+    "height": 128,
+    "role": "town seal center ink mask",
+    "pivot": {
+      "x": 64,
+      "y": 64
+    },
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. ONE isolated central medieval town seal emblem, a single medieval cog sailing ship side view, one mast, one unfurled plain square sail, high prow/stern, no enclosing ring. Bold black engraved silhouette with sparse transparent cutout details. Candidate medieval strategy game compositing layer. Genuine transparent RGBA outside object, centered complete artwork with 8 percent safety margin. Crisp at small game UI size. No white fringe, no drop shadow, no text, no numerals, no labels, no sheet. Provided red seal is style reference only, do not copy its checkmark.",
+        "rawFile": "raw/seals/seal_town_center_ship.png",
+        "referenceImages": [
+          "references/seal_petition_accept.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "lanczos3 contain",
+      "clearRGBAtAlphaZero": true,
+      "centerRGB": "black ink; alpha carries engraving shape"
+    },
+    "qa": {
+      "transparentPixels": 10116,
+      "noText": "visually reviewed",
+      "candidate": true
+    }
+  },
+  {
+    "id": "seal_town_center_church",
+    "file": "assets/seals/seal_town_center_church.png",
+    "width": 128,
+    "height": 128,
+    "role": "town seal center ink mask",
+    "pivot": {
+      "x": 64,
+      "y": 64
+    },
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. ONE isolated central medieval town seal emblem, small English parish church front view with steep roof and square bell tower, one pointed doorway, no enclosing ring. Bold black engraved silhouette with sparse transparent cutout details. Candidate medieval strategy game compositing layer. Genuine transparent RGBA outside object, centered complete artwork with 8 percent safety margin. Crisp at small game UI size. No white fringe, no drop shadow, no text, no numerals, no labels, no sheet. Provided red seal is style reference only, do not copy its checkmark.",
+        "rawFile": "raw/seals/seal_town_center_church.png",
+        "referenceImages": [
+          "references/seal_petition_accept.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "lanczos3 contain",
+      "clearRGBAtAlphaZero": true,
+      "centerRGB": "black ink; alpha carries engraving shape"
+    },
+    "qa": {
+      "transparentPixels": 9348,
+      "noText": "visually reviewed",
+      "candidate": true
+    }
+  },
+  {
+    "id": "seal_town_center_bridge",
+    "file": "assets/seals/seal_town_center_bridge.png",
+    "width": 128,
+    "height": 128,
+    "role": "town seal center ink mask",
+    "pivot": {
+      "x": 64,
+      "y": 64
+    },
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. ONE isolated central medieval town seal emblem, low three-arch masonry bridge with large open arches and low parapet, no enclosing ring, no scenery. Bold black engraved silhouette with sparse transparent cutout details. Candidate medieval strategy game compositing layer. Genuine transparent RGBA outside object, centered complete artwork with 8 percent safety margin. Crisp at small game UI size. No white fringe, no drop shadow, no text, no numerals, no labels, no sheet. Provided red seal is style reference only, do not copy its checkmark.",
+        "rawFile": "raw/seals/seal_town_center_bridge.png",
+        "referenceImages": [
+          "references/seal_petition_accept.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "lanczos3 contain",
+      "clearRGBAtAlphaZero": true,
+      "centerRGB": "black ink; alpha carries engraving shape"
+    },
+    "qa": {
+      "transparentPixels": 13104,
+      "noText": "visually reviewed",
+      "candidate": true
+    }
+  },
+  {
+    "id": "wax_seal_hanging",
+    "file": "assets/seals/wax_seal_hanging.png",
+    "width": 96,
+    "height": 160,
+    "role": "hanging wax seal",
+    "pivot": {
+      "x": 48,
+      "y": 80
+    },
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. ONE isolated hanging red-brown beeswax document seal with TWO plain twisted flax cords rising upward from seal to top edge. Tall vertical composition, cord occupies upperhalf, round wax disc occupies lowerhalf. Wax disc face completely BLANK flat matte red-brown with subtle shallow rim for separately stamped town seal. Restrained hand-painted medieval parchment UI art matching reference. No emblem, no letters, no numbers. Candidate medieval strategy game compositing layer. Genuine transparent RGBA outside object, centered complete artwork with 8 percent safety margin. Crisp at small game UI size. No white fringe, no drop shadow, no text, no numerals, no labels, no sheet. Provided red seal is style reference only, do not copy its checkmark.",
+        "rawFile": "raw/seals/wax_seal_hanging.png",
+        "referenceImages": [
+          "references/seal_petition_accept.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "lanczos3 contain",
+      "clearRGBAtAlphaZero": true,
+      "centerRGB": "preserved generated color",
+      "waxAttachment": {
+        "cordTop": [
+          48,
+          0
+        ],
+        "sealCenter": [
+          48,
+          116
+        ],
+        "stampMaxSize": 52
+      }
+    },
+    "qa": {
+      "transparentPixels": 8449,
+      "noText": "visually reviewed",
+      "candidate": true
+    }
+  }
+]

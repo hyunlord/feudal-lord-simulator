@@ -1,0 +1,580 @@
+{
+  "reviewer": "visual-qa-a",
+  "round": 4,
+  "status": "candidate",
+  "verdict": "PASS_NUMBERED_DEFECT_GATE_WITH_SEPARATE_CONCERNS",
+  "numbered_defect_gate": {
+    "scope": "user contract section0 defects1..6 in36combination+48random proofs at256and96",
+    "observed_remaining_defect_count": 0,
+    "findings": [],
+    "result": "PASS_OBSERVED_ZERO",
+    "not_a_claim": "Not a blanket claim of all visual quality, measured anchors, runtime integration, or all possible combinations"
+  },
+  "scope": {
+    "combination_cells": 36,
+    "random_cells": 48,
+    "resolutions": [
+      256,
+      96
+    ],
+    "all_cells_scanned_on_each_board": true,
+    "additional_dark_background_board": true,
+    "individual_rechecks": 10,
+    "changed_composites": [
+      "deliverable/composites/02-combinations-33.png",
+      "deliverable/composites/04-random-23.png",
+      "deliverable/composites/04-random-29.png",
+      "deliverable/composites/02-combinations-27.png",
+      "deliverable/composites/02-combinations-30.png",
+      "deliverable/composites/02-combinations-36.png",
+      "deliverable/composites/04-random-26.png",
+      "deliverable/composites/04-random-32.png",
+      "deliverable/composites/04-random-35.png",
+      "deliverable/composites/04-random-43.png"
+    ]
+  },
+  "actualcheckedfiles": [
+    {
+      "path": "deliverable/checks/02-combinations/256.png",
+      "sha256": "24c5facd137a556527991fe0aa54bfd3b53e18555a62a23e8d2db5fb354042fb"
+    },
+    {
+      "path": "deliverable/checks/02-combinations/96.png",
+      "sha256": "ef8b9c20cbac17d3128e563bb48b1d82f5c8522a54b8f78d04853add30d86f9f"
+    },
+    {
+      "path": "deliverable/checks/04-random/256.png",
+      "sha256": "3821a45beb13e053b482fcf69423c0df7bcaa42646420cca3004a8155cd13a18"
+    },
+    {
+      "path": "deliverable/checks/04-random/96.png",
+      "sha256": "b9778eb0a28b40b4c27c65d31b82311cecb4e04378371fba133c9ceab783800e"
+    },
+    {
+      "path": "deliverable/checks/05-edges/dark-256.png",
+      "sha256": "9fce0a4456b7fcfbc25b1122c27e3c73dcc4f4a5383d5b059a670db5bb76f65b"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-27.png",
+      "sha256": "cb71eb99d9bfac6e35949b1d5aa1f4b0fd375b7810bef8f0446ecc0662dfb8d2"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-30.png",
+      "sha256": "45ec9ff877f2130068dab816638d60336e50d0241d93273e48283f5af30e4da3"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-33.png",
+      "sha256": "8fe594b05af8549959f1458a2ae0ec28854804632eb8d6b67d3cc5566493dea9"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-36.png",
+      "sha256": "465f35f28d967ead0e690e4b0727842aa1071641899874930a8db16fbff545cb"
+    },
+    {
+      "path": "deliverable/composites/04-random-23.png",
+      "sha256": "f6febb34bcb7a708f18fd70b79ebcb338bc72ba7a8b305aeaa49e8400b8e2a1d"
+    },
+    {
+      "path": "deliverable/composites/04-random-26.png",
+      "sha256": "f8f4eab06bff42b7d5587f2127a8d24e89f4809738a84d4a0961c3521d3e668e"
+    },
+    {
+      "path": "deliverable/composites/04-random-29.png",
+      "sha256": "76ebacb5c1b967e7ac702b817309a2bdcf1ff5fb306a5a1101fbbb9e8605214e"
+    },
+    {
+      "path": "deliverable/composites/04-random-32.png",
+      "sha256": "20049b04c7a652171fa8216f32d53d436d7ab140fa5356b8e9cdb361a2c55325"
+    },
+    {
+      "path": "deliverable/composites/04-random-35.png",
+      "sha256": "2a0d1c5625554367e4d257ac33afd28e91843028f71611cf2486d16d799d1365"
+    },
+    {
+      "path": "deliverable/composites/04-random-43.png",
+      "sha256": "14f5fd1f6fbac4e520eca7ebeaab48f7e4dfeff414270dd8087337cc478cd3ce"
+    }
+  ],
+  "final_snapshot_files": [
+    {
+      "path": "deliverable/checks/02-combinations/256.png",
+      "sha256": "24c5facd137a556527991fe0aa54bfd3b53e18555a62a23e8d2db5fb354042fb"
+    },
+    {
+      "path": "deliverable/checks/02-combinations/96.png",
+      "sha256": "ef8b9c20cbac17d3128e563bb48b1d82f5c8522a54b8f78d04853add30d86f9f"
+    },
+    {
+      "path": "deliverable/checks/04-random/256.png",
+      "sha256": "3821a45beb13e053b482fcf69423c0df7bcaa42646420cca3004a8155cd13a18"
+    },
+    {
+      "path": "deliverable/checks/04-random/96.png",
+      "sha256": "b9778eb0a28b40b4c27c65d31b82311cecb4e04378371fba133c9ceab783800e"
+    },
+    {
+      "path": "deliverable/checks/05-edges/dark-256.png",
+      "sha256": "9fce0a4456b7fcfbc25b1122c27e3c73dcc4f4a5383d5b059a670db5bb76f65b"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-33.png",
+      "sha256": "8fe594b05af8549959f1458a2ae0ec28854804632eb8d6b67d3cc5566493dea9"
+    },
+    {
+      "path": "deliverable/composites/04-random-06.png",
+      "sha256": "01fe082f9bcb3a9a462d06380bc807a3a70950afd15181d29511a728c0652f02"
+    },
+    {
+      "path": "deliverable/composites/04-random-16.png",
+      "sha256": "7298ebdb8b4b4fb2cb107650e94a527067ce72b7a810a17e104be7d07b548aae"
+    },
+    {
+      "path": "deliverable/composites/04-random-19.png",
+      "sha256": "1d19ec6e0795a20cdd081e78b38f78f25c54d88766e62c6709f251fe3eab1f13"
+    },
+    {
+      "path": "deliverable/composites/04-random-23.png",
+      "sha256": "f6febb34bcb7a708f18fd70b79ebcb338bc72ba7a8b305aeaa49e8400b8e2a1d"
+    },
+    {
+      "path": "deliverable/composites/04-random-25.png",
+      "sha256": "7e9b50b6bdc62057eba4f8c16351788ea91c76f548afb6b6a57808394361a9d2"
+    },
+    {
+      "path": "deliverable/composites/04-random-29.png",
+      "sha256": "76ebacb5c1b967e7ac702b817309a2bdcf1ff5fb306a5a1101fbbb9e8605214e"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-01.png",
+      "sha256": "e68bdfd2b87224f59e4d74461eae0e585840e9538f92b9a0116cff67c154e0d3"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-02.png",
+      "sha256": "1537cf3ff6cb006b4dc132e98c3d4d45720597f2e958a1ca8fc33c562d0054bf"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-03.png",
+      "sha256": "e43d13530a00775fe2e6623a65807e4557cbaba18670265e0ece9cf641d848f6"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-04.png",
+      "sha256": "20e59d59ff0aeecc7e59982afb41b2d85f4c83a848ca0f9bfe95dae974128c81"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-05.png",
+      "sha256": "706924c8d3fb5938818453c5ca4b3a49cca7559cbe83a933c9b5aaa187648db1"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-06.png",
+      "sha256": "31adcfcd68ae70d71afc8b835b494952ae1353ac877171497ab6662ec30491d9"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-07.png",
+      "sha256": "c053bb13f03ed1585cfb17e414f854ccd29bbbce58f350b71fdba1226d153c5c"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-08.png",
+      "sha256": "5a32a1c1d8882f992b83c9869f8457c5cadd4f248de755fe32f4640b688774e7"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-09.png",
+      "sha256": "86387b03f461ee5f1206b427767fdb70ac56e7e8bb3f43f99a60da8503beadff"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-10.png",
+      "sha256": "6ef89096fffe2d7b410f6d8df6fcb6cc165a29f6c794820d14095c4135cb7dc6"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-11.png",
+      "sha256": "089061480e38545cdf523923406b059d8dd3ecd9d242e9d50027b472f27507a7"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-12.png",
+      "sha256": "1b7268164f51ad5dd5e7377808e406d732cc4955f0d1c43972bc61591d494507"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-13.png",
+      "sha256": "e89c421831be383878ef2d92c10836aaad7f736a2ddb4d6b051e0d3ca49536d6"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-14.png",
+      "sha256": "a141d42cc9155151193600712fd442502893ae39969e976f0dc1925d1d2e712e"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-15.png",
+      "sha256": "665f193804ce2da5654aef89bdcbb2ab820a848952d81115ab978af14c91d7a8"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-16.png",
+      "sha256": "e7a0472451a7f376f9b92bfcd6d7f1e06cb72eb7143fb768eb22033b692906e8"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-17.png",
+      "sha256": "fb5ba306b2197982f3b9dc4c0f72f190c6f1d1c058400bf2e418011b81dda748"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-18.png",
+      "sha256": "82ec1bf1804e4ad2b425971a64b59a4f0b2ad1c82e2ccfe19552b189b1dba1f0"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-19.png",
+      "sha256": "b23d34ea674f2134e12709881ff4ed7071d3947027072c940f2690561bdf411d"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-20.png",
+      "sha256": "e83c80a2b0b57ec2e8df58d046903d1a636df84fc512784b29b19751d204ae0e"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-21.png",
+      "sha256": "414ce6a1b37711bf911c05c63687ecdf96ece19a0804ceb548bde479f29e245f"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-22.png",
+      "sha256": "ef81b6f61efd2e0b0f8e4bd1cae50ffa05609f74beaa79b5195f9348b58b542e"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-23.png",
+      "sha256": "d8124ad1c62acf99da016ae475b67c59f30345fcba4bc01c275e12d7dc2b9b58"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-24.png",
+      "sha256": "b0a18de9617c05b6085f337a188a23a33cd45fe52955b88533f52526edd50d02"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-25.png",
+      "sha256": "de672297aa487f19cd001956eecebf16245d51c77210df8273b695d3bf162352"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-26.png",
+      "sha256": "d0929730844ab2b79ddd48d4195f0384bfd13b0536b3e5d8689745c87d178f31"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-27.png",
+      "sha256": "cb71eb99d9bfac6e35949b1d5aa1f4b0fd375b7810bef8f0446ecc0662dfb8d2"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-28.png",
+      "sha256": "d0c74c520e77d435e563bf97c0d14535fe45bfd06446e25fd42c3ef7d08605fc"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-29.png",
+      "sha256": "def8916ae80da6f2401cf7187d9727ac9f6de31a44bc5b3be505efa73158ade2"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-30.png",
+      "sha256": "45ec9ff877f2130068dab816638d60336e50d0241d93273e48283f5af30e4da3"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-31.png",
+      "sha256": "0d19f0b11dc548a858abd54c9eb45f6897a3b0f336cc3dcb3c0e0c27f80c7230"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-32.png",
+      "sha256": "7b46598b8c75e1ea0d4836e516770dfb2ff5398b77a9a419a51f4c2f91366c2e"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-34.png",
+      "sha256": "05c8f2471d940e58bd2986dbb17eced603f50eae8cc5ea2b7f7b5dd3e1c8e93d"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-35.png",
+      "sha256": "ab725996162b0763c5ad9a204e43add4b5cd4313b9c31165f279fc1d507e057d"
+    },
+    {
+      "path": "deliverable/composites/02-combinations-36.png",
+      "sha256": "465f35f28d967ead0e690e4b0727842aa1071641899874930a8db16fbff545cb"
+    },
+    {
+      "path": "deliverable/composites/04-random-01.png",
+      "sha256": "77dd8cec0c9a8ca52376d5a1e66d5ad03d3d187986c27e87292470f19e74c43d"
+    },
+    {
+      "path": "deliverable/composites/04-random-02.png",
+      "sha256": "8efdb54e11699e0d476c2b83a21767b26ad1eb3c1d2a9c58b816e0437035a736"
+    },
+    {
+      "path": "deliverable/composites/04-random-03.png",
+      "sha256": "e0eb0dd080c89ca2626540ecaab532c06be694982f4990af0055a1846c708f0e"
+    },
+    {
+      "path": "deliverable/composites/04-random-04.png",
+      "sha256": "13e27d3df003274a15a767f2f40f7d0ad1b1fcacc5e889e84bc89130299f1917"
+    },
+    {
+      "path": "deliverable/composites/04-random-05.png",
+      "sha256": "27e8466fdd90fd9d12b1d84de728c2e1c85d82abe97d4949151998c50dec7a81"
+    },
+    {
+      "path": "deliverable/composites/04-random-07.png",
+      "sha256": "a56ad411a8fb2f10891c0f1d4a56ea4e4701818d18fe4c3d2a72fa0050a44db4"
+    },
+    {
+      "path": "deliverable/composites/04-random-08.png",
+      "sha256": "bd582e25ebe8f79823aada9dbd16744a6368a68fa55a6365a0f4c7343ac3b394"
+    },
+    {
+      "path": "deliverable/composites/04-random-09.png",
+      "sha256": "d01d3a852b4e81d0c752de3290e29205a3aa7a2edad2cbee4ddb764403b5e829"
+    },
+    {
+      "path": "deliverable/composites/04-random-10.png",
+      "sha256": "2bbe567f249438db485a1229a44e6a2d84b32a27a4d580caf7c5c696edcef694"
+    },
+    {
+      "path": "deliverable/composites/04-random-11.png",
+      "sha256": "9b90eee0ad15760caeb00dcba29144a50886fadb8055f5b893bb9a81a51b6a93"
+    },
+    {
+      "path": "deliverable/composites/04-random-12.png",
+      "sha256": "961ffd712d2114df293095f4629e854084f603affbe96ab3d1418711b7347578"
+    },
+    {
+      "path": "deliverable/composites/04-random-13.png",
+      "sha256": "eeb311fe198b08369752ba3c1cd7f5dc4972f78c8f3bce6f12fd619eb76da0ff"
+    },
+    {
+      "path": "deliverable/composites/04-random-14.png",
+      "sha256": "e04a4eb78ac1bc654963a27e6c14466d98914772cedc353646877d385d81d436"
+    },
+    {
+      "path": "deliverable/composites/04-random-15.png",
+      "sha256": "ab83335992a4b050901e4b0e9e364d6c018919938ddee2dc95e9d4eb10f73c0c"
+    },
+    {
+      "path": "deliverable/composites/04-random-17.png",
+      "sha256": "4460fa884ed0039bb5c94b6d7880bfe673fc57c472120705448e3d1bb7933b8c"
+    },
+    {
+      "path": "deliverable/composites/04-random-18.png",
+      "sha256": "3ee4da0470140a03e9ac04ee89db27860e29672552cef2fd6a3d1898d9663b6a"
+    },
+    {
+      "path": "deliverable/composites/04-random-20.png",
+      "sha256": "57a31ceca0894489476fb25faccb3e26ef34b3b76ca646cb7f2f975bfb9b1b50"
+    },
+    {
+      "path": "deliverable/composites/04-random-21.png",
+      "sha256": "b0b4c766aa0e573ae65fa0ac5b166226f06282e3a2f4708fe5d6c3c8f39f11ac"
+    },
+    {
+      "path": "deliverable/composites/04-random-22.png",
+      "sha256": "64866af55d3fc6c5e03ff5aa7e91577b0c6388f102e68a8f5a5a4b887c41547f"
+    },
+    {
+      "path": "deliverable/composites/04-random-24.png",
+      "sha256": "7aa77941df92a872ac9b53b5ab5a190cfc10cdc3c7c1086cc9c84e57ec0553ce"
+    },
+    {
+      "path": "deliverable/composites/04-random-26.png",
+      "sha256": "f8f4eab06bff42b7d5587f2127a8d24e89f4809738a84d4a0961c3521d3e668e"
+    },
+    {
+      "path": "deliverable/composites/04-random-27.png",
+      "sha256": "75c950c97f85577a6d80095afe864f4ec76cdb0225c1ecf4af5eb9d5cb7bca74"
+    },
+    {
+      "path": "deliverable/composites/04-random-28.png",
+      "sha256": "9b277937490e4ee7aea3b265ea86ebb0e10c9c372e1dc446af21be4302782d98"
+    },
+    {
+      "path": "deliverable/composites/04-random-30.png",
+      "sha256": "8831ce35bec487598013755880e3d9959f762346a3fa881a371b9c9eab2ea6a4"
+    },
+    {
+      "path": "deliverable/composites/04-random-31.png",
+      "sha256": "14f5195af5f3448a01ed86a3be45668183c18750e6f27e5e2073793bff631127"
+    },
+    {
+      "path": "deliverable/composites/04-random-32.png",
+      "sha256": "20049b04c7a652171fa8216f32d53d436d7ab140fa5356b8e9cdb361a2c55325"
+    },
+    {
+      "path": "deliverable/composites/04-random-33.png",
+      "sha256": "497fc65390651f572c679d265b4b6cdcf2c99d6af5b62795f79d6a910ef4c28f"
+    },
+    {
+      "path": "deliverable/composites/04-random-34.png",
+      "sha256": "905fcd8c25ccd35e81e5a91bb3456f7c3df4769af9fe475acdf624f53068d705"
+    },
+    {
+      "path": "deliverable/composites/04-random-35.png",
+      "sha256": "2a0d1c5625554367e4d257ac33afd28e91843028f71611cf2486d16d799d1365"
+    },
+    {
+      "path": "deliverable/composites/04-random-36.png",
+      "sha256": "8ab4b438a90f37145839c270067dcc97fee69e8534007ddc26dbf077942bd51b"
+    },
+    {
+      "path": "deliverable/composites/04-random-37.png",
+      "sha256": "4d7b49bf50fd2348ab0b411af62fee14a40daa5b76819a2ad1a5fc7cf71d2846"
+    },
+    {
+      "path": "deliverable/composites/04-random-38.png",
+      "sha256": "2380c2659df0808ed3188db5320480382133bf2109b4d6d38db2c838faad4232"
+    },
+    {
+      "path": "deliverable/composites/04-random-39.png",
+      "sha256": "b28c4c17e3d17015a3ec7bec9d98cf8d71ae0111666a2fbc533b4756ac23f5d9"
+    },
+    {
+      "path": "deliverable/composites/04-random-40.png",
+      "sha256": "6e2d95a57c8042f1673f5a8a294c09d421cddf49ab4830c0aa26380579c5da2f"
+    },
+    {
+      "path": "deliverable/composites/04-random-41.png",
+      "sha256": "08b85c63c4f989c137e0136cda5c2bd5cdf40a371c4962cce630182799d4586e"
+    },
+    {
+      "path": "deliverable/composites/04-random-42.png",
+      "sha256": "47b54da079068dba00988c91c6b611f9ad230520ce5d6fd490128c818c7e7a30"
+    },
+    {
+      "path": "deliverable/composites/04-random-43.png",
+      "sha256": "14f5fd1f6fbac4e520eca7ebeaab48f7e4dfeff414270dd8087337cc478cd3ce"
+    },
+    {
+      "path": "deliverable/composites/04-random-44.png",
+      "sha256": "cfdf928392f80d9cbee937672648e9efaf2e4c7caf7b401fa434b8bd4aba1fda"
+    },
+    {
+      "path": "deliverable/composites/04-random-45.png",
+      "sha256": "d429a66464d8aa6dcd3365e28cbbe5b7a7778c74f5cc412c11f13eeeb9393400"
+    },
+    {
+      "path": "deliverable/composites/04-random-46.png",
+      "sha256": "87a0c162c534004954525ec78b10fba131c868acfa926a9888e511905479ced5"
+    },
+    {
+      "path": "deliverable/composites/04-random-47.png",
+      "sha256": "a4b14e1d522c6782874edf528e7dd458eb9f2228ca38e3fd973313242dc95779"
+    },
+    {
+      "path": "deliverable/composites/04-random-48.png",
+      "sha256": "8122f627a78b9eb543692fd2c60df6389726460709f501b40436cfb7020bd108"
+    }
+  ],
+  "resolved_final_rechecks": [
+    {
+      "suite": "04-random",
+      "cells": [
+        6,
+        16,
+        23
+      ],
+      "result": "Disconnected forehead dots no longer read as floating hair; hat/forehead junction continuous or hairfullyoccluded at256and96"
+    },
+    {
+      "suite": "04-random",
+      "cell": 19,
+      "result": "Far-side beard stripe across nose removed; near sideburn now on cheek/temple. Priorhairattribution corrected."
+    },
+    {
+      "suite": "04-random",
+      "cell": 25,
+      "result": "Long front lock no longer crosses eye/nose/cheek; remaining fringe reads as hair under hat"
+    },
+    {
+      "round": 4,
+      "suite": "04-random",
+      "cells": [
+        23,
+        26,
+        35
+      ],
+      "result": "Headwear removed deterministically; underlying chosen hair now visible and distinct from priornearduplicate. No childsize or aboveheadprotrusion issue identified."
+    },
+    {
+      "round": 4,
+      "suite": "02-combinations",
+      "cells": [
+        27,
+        30,
+        33,
+        36
+      ],
+      "result": "Lowerneck hood contour narrower and lowergarment gap remains closed; small upperrightneck opening persists in27/33, masked bybeard in30/36."
+    }
+  ],
+  "defect_review": [
+    {
+      "number": 1,
+      "result": "No above-hat hair protrusion identified"
+    },
+    {
+      "number": 2,
+      "result": "No outside-hood hair protrusion identified"
+    },
+    {
+      "number": 3,
+      "result": "No obvious bright alpha halo identified on reviewed lightboards and darkcombinationboard"
+    },
+    {
+      "number": 4,
+      "result": "Child hair sizes read as fitted child hair rather than adult wig"
+    },
+    {
+      "number": 5,
+      "result": "Prior disconnected forehead fragments and face-crossing locks resolved; no remaining numbered instances identified"
+    },
+    {
+      "number": 6,
+      "result": "No hood+fur garment pairing visible"
+    }
+  ],
+  "separate_concerns": [
+    {
+      "category": "hood_interior_background_gap",
+      "suite": "02-combinations",
+      "cells": [
+        27,
+        33
+      ],
+      "reason": "R4 narrows lowerhood but small background-visible wedge remains under right ear between neck andhood. At256 transparentblack gap is clear; at96 lightboard small bright notch remains. This is a remaining seam concern, not a section0 hairprotrusion defect.",
+      "resolutions": {
+        "96": "SMALL_VISIBLE_NOTCH",
+        "256": "CONCERN_REMAINS"
+      }
+    },
+    {
+      "category": "hood_interior_background_gap",
+      "suite": "04-random",
+      "cells": [
+        29,
+        32,
+        43
+      ],
+      "reason": "Same residual small under-ear neck-tohood opening; individually rechecked allthree at256 and in96board.",
+      "resolutions": {
+        "96": "SMALL_VISIBLE_NOTCH",
+        "256": "CONCERN_REMAINS"
+      }
+    },
+    {
+      "category": "age_patch_naturalness",
+      "suite": "04-random",
+      "cells": [
+        4,
+        21,
+        25,
+        28
+      ],
+      "reason": "Strong angular cheek/forehead aging patches remain stylized and can read as applied texture. Age change is visible, but this reviewer does not grant a fullsameidentity30yearspass without dedicated beforeafterreview."
+    },
+    {
+      "category": "age_patch_naturalness",
+      "suite": "02-combinations",
+      "cells": [
+        5,
+        11
+      ],
+      "reason": "Deepzigzag facialcreases remain a separate naturalnessconcern, not section0headwear/fitdefect."
+    }
+  ],
+  "limitations": [
+    "Named section0 defects1..6 observedzero is limited to reviewed84cases andbothsizes, not blanketvisualapproval.",
+    "R4 currentboards rescanned and10affectedcomposites individuallychecked; unchanged R3 cells inherit priorindividualevidence.",
+    "All84currentcomposites+5boards SHA256 stored; alpha0 was not used to infervisualpass.",
+    "Fivechildhood neckseam concerns and agepatchnaturalness concerns remain; no gameintegration reviewed."
+  ],
+  "final_recheck_note": "R4 childhood lowerneck and randomcover variation recheck. Only targeted changed cells individually re-opened; fullcurrentboards rescanned."
+}

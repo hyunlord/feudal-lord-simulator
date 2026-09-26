@@ -1,0 +1,45 @@
+{
+  "reviewer": "w14_seals, independent from UI frame and icon authors",
+  "scope": "Read-only visual QA of five UI frames, eleven icons at96/48px and offline HUD proof4; no product integration testing",
+  "verdict": "pass with documented nine-slice aspect limitations",
+  "checks": {
+    "frames_no_text": "pass: five source PNGs contain no letters or numbers",
+    "frames_tone": "pass: parchment/oak/red-ochre palette and restrained corners agree with attached P0/Wave8 refs",
+    "frame_alpha": "pass: five interiors hide underlying HUD; all alpha0 pixels RGB0",
+    "person_card": "pass: left circular portrait and top-right shield stay inside fixed patches (top136,left112,right64)",
+    "nine_slice": "pass with documented aspect limits: corners0 mismatches; register middle crease and charter bottom cords stretch in center patches",
+    "hud_proof": "pass: final1280x800 offline proof inspected; both person cards have separate heraldry/merchant signs, allfivefactionicons visible, paper interiors hide HUD without ghosting; no panel clipping",
+    "icons11": "pass: all eleven visually distinct at96/48; no letters/numbers. Burgage no chimney or blue glass after correction. Household key/shield differs from crown."
+  },
+  "findings": [
+    {
+      "id": "UI-01",
+      "severity": "medium",
+      "issue": "Grievance ledger bottom inset26 split red band across scaled/fixed patches",
+      "resolution": "Author changed insets to32,32,56,32 and reran corner comparison0; resolved"
+    },
+    {
+      "id": "UI-02",
+      "severity": "medium",
+      "issue": "Burgage house has a roof chimney contrary to project house art rule",
+      "resolution": "Author precise edit removed chimney and blue glass, independently visually confirmed in final96/48contact; resolved"
+    }
+  ],
+  "limitations": [
+    "No runtime installation or interaction validation requested/performed",
+    "Candidate nine-slice register crease and charter cords do not guarantee arbitrary aspect ratio invariance",
+    "Small icon meanings are visual interpretation; user adoption pending"
+  ],
+  "score": 94,
+  "alphaAudit": {
+    "assets": 16,
+    "invalidChannels": 0,
+    "transparentRGBNonzero": 0
+  },
+  "inspectedFiles": [
+    "records/icons-96-48-contact.png",
+    "records/ui-frames-nine-slice.png",
+    "records/ui-frames-nine-slice-check.json",
+    "proofs/proof-04-rights-ui.png"
+  ]
+}
