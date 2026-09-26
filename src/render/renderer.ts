@@ -124,7 +124,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         zoom: input.camera.zoom,
         objectRenderItems,
       });
-      drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom); // INSTALL-7 frost, leaves, dry grass
+      drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom, objectRenderItems); // INSTALL-7 / INSTALL-15 season decals
     },
     objects: () => objectPassForProof &&
       drawObjectRenderItems(input.context, {

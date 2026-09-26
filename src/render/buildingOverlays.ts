@@ -1,6 +1,5 @@
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
-import { stateCalendar } from "../engine/scenarioState";
 import { housePressureStatus } from "../population/housePressure";
 import { buildBuildingVisualState } from "./buildingVisualState";
 import { historicalHouseAssetMeta, historicalHouseReady, historicalHouseSpriteRect } from "./historicalHouseAssets";
@@ -9,6 +8,7 @@ import { drawWave7, drawWave7Overlay, type Wave7Key } from "./wave7Art";
 import { drawWave9, drawWave9Overlay, type Wave9Key } from "./wave9Art";
 import { tileToScreen } from "./iso";
 import { drawStoryProps } from "./storyWorldProps";
+import { seasonBlend, type SeasonBlend } from "./seasonTransition";
 
 // INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (full detail only):
 //  - winter (calendar season 3): snow on the roof of a single-lot house, the Wave 7 layer painted on that level's own
@@ -21,6 +21,8 @@ import { drawStoryProps } from "./storyWorldProps";
 // well, two buckets set down on the way to the nearest well; once out, a burnt house (`burntTick`) is the burnt_lN
 // painting (same alpha as the house) until its rebuild completes. Pair lots show the smoke column and, burnt, soot.
 const SMOKE_FRAME_MS = 150;
+const roofSnowAlpha = (blend: SeasonBlend): number => blend.from === null ? (blend.season === 3 ? 1 : 0)
+  : blend.season === 3 ? blend.t : blend.from === 3 ? 1 - blend.t : 0;
 export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
   if (building.kind === "house") drawHouseEventOverlays(context, state, building);
   if (building.kind === "house" && building.houseLot === undefined) {
@@ -31,7 +33,9 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
       const clamped = Math.max(0, Math.min(4, level));
       const house = state.houses.find(candidate => candidate.buildingId === building.id);
       if (house !== undefined && housePressureStatus(house) === "abandoned") drawWave7Overlay(context, `boarded_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
-      if (stateCalendar(state).season === 3) drawWave7Overlay(context, `roof_snow_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
+      const snow = roofSnowAlpha(seasonBlend(state)); // INSTALL-15: fades in and out with the season's other art
+      if (snow > 0) { const alpha = context.globalAlpha; if (snow < 1) context.globalAlpha = alpha * snow;
+        drawWave7Overlay(context, `roof_snow_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect); if (snow < 1) context.globalAlpha = alpha; }
     }
   }
   drawStockPiles(context, state, building);

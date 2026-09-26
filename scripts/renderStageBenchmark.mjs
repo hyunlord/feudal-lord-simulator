@@ -22,7 +22,7 @@ import { loadChromium, openScene, sceneStates, traceMainThreadSplit } from './re
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
-const TILES = { newgame: [45, 41], pop176: [46, 39], lots24: [45, 37] };
+const TILES = { newgame: [45, 41], pop176: [46, 39], pop176turn: [46, 39], lots24: [45, 37] };
 const WINDOW = 240;
 
 export const stats = values => {

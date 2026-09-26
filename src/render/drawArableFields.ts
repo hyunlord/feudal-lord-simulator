@@ -18,6 +18,7 @@ import { ZONE_ASSETS, ZONE_VARIANTS, type ZoneAssetKey } from "./zoneAssetManife
 import { zoneAsset, zoneAssetRaster } from "./zoneAssets";
 import type { ZoneLayer } from "./zoneLayer";
 import { wetSummer } from "./wetSummer";
+import { seasonImage, seasonVariant, type SeasonIndex } from "./seasonArt";
 import { wave9Art, type Wave9Key } from "./wave9Art";
 
 // Arable ridge strips in the ground chunks (C1e): after the zone's soil fill, each strip run is drawn as two ridge rows
@@ -108,7 +109,7 @@ export function stripStateKey(layer: ZoneLayer, bandIndexes: readonly number[], 
   return key;
 }
 
-export function drawArableFields(context: CanvasRenderingContext2D, layer: ZoneLayer, zoneIndexes: readonly number[], states: StateLookup): void {
+export function drawArableFields(context: CanvasRenderingContext2D, layer: ZoneLayer, zoneIndexes: readonly number[], states: StateLookup, season: SeasonIndex = 1): void {
   for (const index of zoneIndexes) {
     const field = layer.fields[index];
     if (field === null || field === undefined || field.bands.length === 0) continue;
@@ -116,18 +117,19 @@ export function drawArableFields(context: CanvasRenderingContext2D, layer: ZoneL
     context.beginPath();
     for (const rect of field.crop) addQuad(context, [{ x: rect.left, y: rect.top }, { x: rect.right, y: rect.top }, { x: rect.right, y: rect.bottom }, { x: rect.left, y: rect.bottom }]);
     context.clip();
-    drawRidgeRows(context, field, states);
+    drawRidgeRows(context, field, states, season);
     drawFurrowStamps(context, field);
     context.restore();
   }
 }
 
-function drawRidgeRows(context: CanvasRenderingContext2D, field: ArableField, states: StateLookup): void {
+function drawRidgeRows(context: CanvasRenderingContext2D, field: ArableField, states: StateLookup, season: SeasonIndex): void {
   if (typeof context.createPattern !== "function") return;
   const rowWidth = 1 / RIDGE_ROWS_PER_STRIP;
   for (const band of field.bands) {
     const state = states.get(band.stripId) ?? "fallow";
-    const pair = ridgePair(state);
+    const seasonal = seasonalRidge(state, season);
+    const pair = seasonal ?? ridgePair(state);
     if (pair === null) continue;
     const pattern = cachedPattern(context, pair);
     if (pattern === null) continue;
@@ -145,6 +147,7 @@ function drawRidgeRows(context: CanvasRenderingContext2D, field: ArableField, st
         : [{ x: a, y: from }, { x: b, y: from }, { x: b, y: to }, { x: a, y: to }]);
       context.fillStyle = pattern;
       context.fill();
+      if (seasonal !== null) continue; // the winter art is its own colour: no summer wash
       context.fillStyle = STATE_WASH[state];
       context.fill();
     }
@@ -217,6 +220,19 @@ function ridgePair(state: FieldStripState): CanvasImageSource | null {
   const cached = pairs.get(id);
   if (cached !== undefined) return cached;
   const joined = typeof document === "undefined" ? images[0] as HTMLImageElement : joinStrips(images as HTMLImageElement[]);
+  pairs.set(id, joined);
+  return joined;
+}
+
+/** INSTALL-15: a fallow strip in winter lies under the Wave 15 winter ridge (one strip, joined with itself). */
+function seasonalRidge(state: FieldStripState, season: SeasonIndex): CanvasImageSource | null {
+  const variant = state === "fallow" ? seasonVariant("ridge_fallow_a", season) : null;
+  const image = variant === null ? null : seasonImage(variant);
+  if (variant === null || image === null) return null;
+  const id = `${variant}+${variant}`;
+  const cached = pairs.get(id);
+  if (cached !== undefined) return cached;
+  const joined = typeof document === "undefined" ? image : joinStrips([image, image]);
   pairs.set(id, joined);
   return joined;
 }

@@ -26,6 +26,9 @@ import type { TileRange } from "./renderVisibility";
 import { TERRAIN_TEXTURE_KEYS, type TerrainPatternAssets } from "./terrainPatterns";
 import { drawTownLandscape } from "./townLandscapeAssets";
 import { getSprite } from "./worldAssets";
+import { seasonArtStatuses, seasonOf, type SeasonIndex } from "./seasonArt";
+import { drawSeasonGrass, seasonChunkToken } from "./seasonGround";
+import { seasonFadeMs } from "./seasonTransition";
 
 // RENDER_BOUNDARY_V2 ground pass. Order: water (live) -> ground chunks (diamonds, seams, forest outline + fringe,
 // zone fills, building yards, field clusters, zone lines, building aprons) -> town landscape (live) -> road-ribbon
@@ -71,6 +74,7 @@ export function groundBoundaryDiagnostics(context: CanvasRenderingContext2D) {
     chunks: caches.get(context)?.stats() ?? null,
     scene: groundBoundarySceneStats(),
     assets: boundaryAssetStatuses(),
+    seasonArt: seasonArtStatuses(),
   };
 }
 
@@ -118,26 +122,33 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
     + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "");
   const visible = visibleChunks(scene, input.range);
+  // INSTALL-15: the season (and its art's readiness) is in both chunk keys but not in their deferKeys, so the season's
+  // re-rasters may spread over a few frames; each crossfades from the old season's raster (fade token = the season).
+  const season = seasonOf(input.state);
+  const seasonToken = seasonChunkToken(season);
+  const fade = { token: `s${season}`, ms: seasonFadeMs() };
   const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
-    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
+    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
     // Same ground base = the chunk only changed its zones: its old raster may stand in until the frame budget allows.
-    deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`,
+    deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, fade,
   });
   const roadRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
-    id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
+    id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
+    deferKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, fade,
   });
+  const paintRoads = (plan: GroundChunkPlan) => (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, season);
   for (const plan of visible) {
-    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts));
+    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season));
   }
   schedulePrefetch(context, cache, ringChunks(scene, input.range, visible).flatMap(plan => [
-    { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts) },
-    ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan) }] : []),
+    { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, season) },
+    ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: paintRoads(plan) }] : []),
   ]));
   probe?.enter("terrain.landscape");
   drawTownLandscape(context, input.state, input.tiles);
   probe?.enter("roads.ground");
   for (const plan of visible) {
-    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paint => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan));
+    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paintRoads(plan));
   }
   for (const tile of input.tiles) if (tile.hasRoad && tile.terrain === "water") drawBridgeDeck(context, input.state, tile);
   if (scene.shore.bridgeEnds.length > 0) drawBridgeAbutments(context, scene.shore);
@@ -152,12 +163,14 @@ function drawGroundChunk(
   plan: GroundChunkPlan,
   zoom: number,
   parts: TerrainV2Parts,
+  season: SeasonIndex,
 ): void {
   const tiles = chunkTiles(input.state, plan, 1);
   for (const tile of tiles) {
     // Forest and water tiles are laid as grass; the smoothed forest outline and shoreline below paint over them.
     parts.drawGroundDiamond(context, tile.terrain === "forest" || tile.terrain === "water" ? { ...tile, terrain: "grass" } : tile, input.state.seed, input.terrainPatterns);
   }
+  if (season !== 1) drawSeasonGrass(context, tiles, season);
   for (const tile of tiles) {
     if (tile.terrain === "water") continue;
     if (zoom > 0.7) drawGroundDecalDetail(context, tile, input.state.seed);
@@ -168,7 +181,7 @@ function drawGroundChunk(
   drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, {
     left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4,
   }, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
-  drawForestFringeDecals(context, scene.forest, plan.forestLoops);
+  drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
   drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, {
     left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4,
   }, bounds, input.state.seed);
@@ -178,13 +191,13 @@ function drawGroundChunk(
     if (plan.yards.length > 0) clipOutYards(context, scene.grounds, plan.yards, [
       { x: bounds.left - 4, y: bounds.top - 4 }, { x: bounds.right + 4, y: bounds.top - 4 },
       { x: bounds.right + 4, y: bounds.bottom + 4 }, { x: bounds.left - 4, y: bounds.bottom + 4 }]);
-    drawZoneFills(context, scene.zones, plan.zoneIndexes);
+    drawZoneFills(context, scene.zones, plan.zoneIndexes, season);
     context.restore();
-    if (plan.arableBands.length > 0) drawArableFields(context, scene.zones, plan.zoneIndexes, arableStripStateLookup(input.state));
+    if (plan.arableBands.length > 0) drawArableFields(context, scene.zones, plan.zoneIndexes, arableStripStateLookup(input.state), season);
   }
   drawYards(context, scene.grounds, plan.yards, input.state.seed);
   if (plan.beds.length > 0) drawCroftBeds(context, scene.yardProps, plan.beds);
-  drawFieldClusters(context, scene.fields, plan.fieldClusters);
+  drawFieldClusters(context, scene.fields, plan.fieldClusters, season);
   if (plan.zoneIndexes.length + plan.zoneChains.length > 0) drawZoneLines(context, scene.zones, plan.zoneChains, bounds, zoom);
   drawAprons(context, scene.grounds, plan.aprons, scene.ribbons.width);
 }

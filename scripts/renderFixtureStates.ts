@@ -24,7 +24,9 @@ function newestSaveFixture(name: string): string {
 }
 
 export function benchmarkCities(): { readonly newgame: null; readonly pop176: GameState; readonly lots24: GameState;
-  readonly fixed12: GameState; readonly seed2: GameState; readonly seed3: GameState; readonly seed4: GameState; readonly c25zoned: GameState; readonly gallery: GameState } {
+  readonly fixed12: GameState; readonly seed2: GameState; readonly seed3: GameState; readonly seed4: GameState; readonly c25zoned: GameState; readonly gallery: GameState;
+  readonly pop176turn: GameState } {
+  const pop176 = decode(newestSaveFixture("population-176.save.json"));
   return {
     newgame: null,
     // Curved-ground evidence (D1a): the 12x12 fixed scene on the new-game map, and the seed 2 final city.
@@ -37,7 +39,10 @@ export function benchmarkCities(): { readonly newgame: null; readonly pop176: Ga
     // Zone brush (C1b): the C25 board with painted zones.
     c25zoned: c25ZonedState(),
     gallery: variantGallery().state,
-    pop176: decode(newestSaveFixture("population-176.save.json")),
+    pop176,
+    // INSTALL-15 season turn: pop176 50 ticks before autumn turns to winter (27,000), so at 1x the turn falls about a
+    // second into each measured window (the scene runs 1.5 s before it).
+    pop176turn: { ...pop176, tick: 26_950 },
     // A bare GameState (schema v0); decodeSave migrates it step by step to the current version.
     lots24: decode("fixtures/determinism/seed1/final-state.json"),
   };
