@@ -1,0 +1,378 @@
+[
+  {
+    "id": "scene_timber_shortage",
+    "file": "assets/scenes_build/scene_timber_shortage.png",
+    "width": 96,
+    "height": 96,
+    "description": "목재 부족",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE new standalone medieval game HUD scene icon, scene_timber_shortage. Reference sheet is STYLE ONLY, do not reproduce the sheet. Subject: A very short pile of exactly two broad sawn oak planks with unmistakable long rectangular timber silhouette, a small muted rust-red downward arrow beside the end signifying shortage. Not logs. Hand-painted gouache game icon matching attached UI P0: subdued ochre, warm umber thin contour, matte slightly worn brushwork, functional readable silhouette. Center single subject filling 80% square canvas. Must read at 24px. GENUINELY TRANSPARENT RGBA background, no ground plane, no frame, no letters, no words, no numbers. No photorealism, no glossy 3D, no modern vector flatness.",
+        "rawFile": "raw/scenes_build/scene_timber_shortage.png",
+        "referenceImages": [
+          "references/scenes-build-p0-resources.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-876c-77f0-9625-cdfd2c99e05b/exec-cee030da-9d8e-4961-9e5d-88c91ed205e2.png",
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "sourceReferenceImages": [
+          "output/astra-wave18-candidates-v1/references/icon_resource_sheet.png"
+        ]
+      }
+    ],
+    "processing": "Alpha bounding box crop; uniform fit to84x84; centered on96x96 transparent canvas. Generated alpha preserved; no background reconstruction.",
+    "qa": {
+      "status": "pass_with_small_size_caveats",
+      "dimensions": true,
+      "channels": 4,
+      "reviewedSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "textNumbers": "none observed",
+      "silhouette24": "distinct within eight-icon group",
+      "notes": "Boards versus compact stone blocks remain distinct at24; downward arrow is small and shortage wording benefits contextual label."
+    },
+    "alphaCrop": {
+      "left": 105,
+      "top": 284,
+      "width": 1076,
+      "height": 723
+    },
+    "sha256": "5ab936b8b77e8f46dde78c26438c25162e5b5278f3fbcda904d89315367506cc"
+  },
+  {
+    "id": "scene_stone_shortage",
+    "file": "assets/scenes_build/scene_stone_shortage.png",
+    "width": 96,
+    "height": 96,
+    "description": "석재 부족",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE new standalone medieval game HUD scene icon, scene_stone_shortage. Reference sheet is STYLE ONLY, do not reproduce the sheet. Subject: Two chunky pale grey rough squared stone blocks, one large and one small, with a small muted rust-red downward arrow to the right indicating shortage. Compact block silhouette, no timber. Hand-painted gouache game icon matching attached UI P0: subdued ochre, warm umber thin contour, matte slightly worn brushwork, functional readable silhouette. Center single subject filling 80% square canvas. Must read at 24px. GENUINELY TRANSPARENT RGBA background, no ground plane, no frame, no letters, no words, no numbers. No photorealism, no glossy 3D, no modern vector flatness.",
+        "rawFile": "raw/scenes_build/scene_stone_shortage.png",
+        "referenceImages": [
+          "references/scenes-build-p0-resources.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-876c-77f0-9625-cdfd2c99e05b/exec-ae2461ca-c58b-49ee-8ed6-e75dc0d005dd.png",
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "sourceReferenceImages": [
+          "output/astra-wave18-candidates-v1/references/icon_resource_sheet.png"
+        ]
+      }
+    ],
+    "processing": "Alpha bounding box crop; uniform fit to84x84; centered on96x96 transparent canvas. Generated alpha preserved; no background reconstruction.",
+    "qa": {
+      "status": "pass_with_small_size_caveats",
+      "dimensions": true,
+      "channels": 4,
+      "reviewedSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "textNumbers": "none observed",
+      "silhouette24": "distinct within eight-icon group",
+      "notes": "Boards versus compact stone blocks remain distinct at24; downward arrow is small and shortage wording benefits contextual label."
+    },
+    "alphaCrop": {
+      "left": 179,
+      "top": 299,
+      "width": 959,
+      "height": 697
+    },
+    "sha256": "6148e5cbc87fbb854ca9055dd4bf2da41b5570db07e2bc9cd0871d696b3389d9"
+  },
+  {
+    "id": "scene_complete_house",
+    "file": "assets/scenes_build/scene_complete_house.png",
+    "width": 96,
+    "height": 96,
+    "description": "주택 완공",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE new standalone medieval game HUD scene icon, scene_complete_house. Reference sheet is STYLE ONLY, do not reproduce the sheet. Subject: One completed tiny southern English medieval thatched cottage, warm plaster oak frame, broad thatched gable roof, open dark doorway, NO CHIMNEY. One small muted sage completion check at lower right. Hand-painted gouache game icon matching attached UI P0: subdued ochre, warm umber thin contour, matte slightly worn brushwork, functional readable silhouette. Center single subject filling 80% square canvas. Must read at 24px. GENUINELY TRANSPARENT RGBA background, no ground plane, no frame, no letters, no words, no numbers. No photorealism, no glossy 3D, no modern vector flatness.",
+        "rawFile": "raw/scenes_build/scene_complete_house.png",
+        "referenceImages": [
+          "references/scenes-build-p0-resources.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-876c-77f0-9625-cdfd2c99e05b/exec-ef146fa4-99fc-4c67-b3fd-d789dd082be2.png",
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "sourceReferenceImages": [
+          "output/astra-wave18-candidates-v1/references/icon_resource_sheet.png"
+        ]
+      }
+    ],
+    "processing": "Alpha bounding box crop; uniform fit to84x84; centered on96x96 transparent canvas. Generated alpha preserved; no background reconstruction.",
+    "qa": {
+      "status": "pass_with_small_size_caveats",
+      "dimensions": true,
+      "channels": 4,
+      "reviewedSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "textNumbers": "none observed",
+      "silhouette24": "distinct within eight-icon group",
+      "notes": "Completed-building category distinguishable at24 by roof/sails/gate/tower; small completion check is secondary at24."
+    },
+    "alphaCrop": {
+      "left": 64,
+      "top": 145,
+      "width": 1141,
+      "height": 993
+    },
+    "sha256": "df38dfe367938d3cc8a5a62741663f866e96c9ad3dcaca5a66df9612860147c4"
+  },
+  {
+    "id": "scene_complete_facility",
+    "file": "assets/scenes_build/scene_complete_facility.png",
+    "width": 96,
+    "height": 96,
+    "description": "시설 완공",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE new standalone medieval game HUD scene icon, scene_complete_facility. Reference sheet is STYLE ONLY, do not reproduce the sheet. Subject: One completed southern English medieval POST WINDMILL on central timber post with FOUR broad sail arms unmistakably visible, small bread oven beside its base. NO WATER WHEEL. Simple bold windmill silhouette. One small muted sage completion check lower right. Hand-painted gouache game icon matching attached UI P0: subdued ochre, warm umber thin contour, matte slightly worn brushwork, functional readable silhouette. Center single subject filling 80% square canvas. Must read at 24px. GENUINELY TRANSPARENT RGBA background, no ground plane, no frame, no letters, no words, no numbers. No photorealism, no glossy 3D, no modern vector flatness.",
+        "rawFile": "raw/scenes_build/scene_complete_facility.png",
+        "referenceImages": [
+          "references/scenes-build-p0-resources.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-876c-77f0-9625-cdfd2c99e05b/exec-24c3bdad-2a68-4de8-8a4f-62fa27431435.png",
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "sourceReferenceImages": [
+          "output/astra-wave18-candidates-v1/references/icon_resource_sheet.png"
+        ]
+      }
+    ],
+    "processing": "Alpha bounding box crop; uniform fit to84x84; centered on96x96 transparent canvas. Generated alpha preserved; no background reconstruction.",
+    "qa": {
+      "status": "pass_with_small_size_caveats",
+      "dimensions": true,
+      "channels": 4,
+      "reviewedSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "textNumbers": "none observed",
+      "silhouette24": "distinct within eight-icon group",
+      "notes": "Completed-building category distinguishable at24 by roof/sails/gate/tower; small completion check is secondary at24."
+    },
+    "alphaCrop": {
+      "left": 225,
+      "top": 62,
+      "width": 899,
+      "height": 1133
+    },
+    "sha256": "2c3388f3f6669e2ca42e7a55fdea47d6992007dd196dd7d6f5d81c2318b2ef4a"
+  },
+  {
+    "id": "scene_complete_defense",
+    "file": "assets/scenes_build/scene_complete_defense.png",
+    "width": 96,
+    "height": 96,
+    "description": "방어 완공",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE new standalone medieval game HUD scene icon, scene_complete_defense. Reference sheet is STYLE ONLY, do not reproduce the sheet. Subject: One completed short medieval pointed-timber PALISADE GATE with two upright log towers/posts and central open arched passage. No castle stone tower. One small muted sage completion check lower right. Hand-painted gouache game icon matching attached UI P0: subdued ochre, warm umber thin contour, matte slightly worn brushwork, functional readable silhouette. Center single subject filling 80% square canvas. Must read at 24px. GENUINELY TRANSPARENT RGBA background, no ground plane, no frame, no letters, no words, no numbers. No photorealism, no glossy 3D, no modern vector flatness.",
+        "rawFile": "raw/scenes_build/scene_complete_defense.png",
+        "referenceImages": [
+          "references/scenes-build-p0-resources.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-876c-77f0-9625-cdfd2c99e05b/exec-83faa180-9f98-412c-8faa-4a007554098b.png",
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "sourceReferenceImages": [
+          "output/astra-wave18-candidates-v1/references/icon_resource_sheet.png"
+        ]
+      }
+    ],
+    "processing": "Alpha bounding box crop; uniform fit to84x84; centered on96x96 transparent canvas. Generated alpha preserved; no background reconstruction.",
+    "qa": {
+      "status": "pass_with_small_size_caveats",
+      "dimensions": true,
+      "channels": 4,
+      "reviewedSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "textNumbers": "none observed",
+      "silhouette24": "distinct within eight-icon group",
+      "notes": "Completed-building category distinguishable at24 by roof/sails/gate/tower; small completion check is secondary at24."
+    },
+    "alphaCrop": {
+      "left": 24,
+      "top": 183,
+      "width": 1207,
+      "height": 926
+    },
+    "sha256": "379b65f3afcb70e931f0ae35bdf15d6577cbf2ac2bf5c26f98d261999138f943"
+  },
+  {
+    "id": "scene_complete_public",
+    "file": "assets/scenes_build/scene_complete_public.png",
+    "width": 96,
+    "height": 96,
+    "description": "공공 완공",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE new standalone medieval game HUD scene icon, scene_complete_public. Reference sheet is STYLE ONLY, do not reproduce the sheet. Subject: One completed small medieval southern English stone CHURCH with single square bell tower and low long nave, steep plain tile roof, simple tiny cross finial, no fantasy spires. One small muted sage completion check lower right. Hand-painted gouache game icon matching attached UI P0: subdued ochre, warm umber thin contour, matte slightly worn brushwork, functional readable silhouette. Center single subject filling 80% square canvas. Must read at 24px. GENUINELY TRANSPARENT RGBA background, no ground plane, no frame, no letters, no words, no numbers. No photorealism, no glossy 3D, no modern vector flatness.",
+        "rawFile": "raw/scenes_build/scene_complete_public.png",
+        "referenceImages": [
+          "references/scenes-build-p0-resources.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-876c-77f0-9625-cdfd2c99e05b/exec-1b45c88e-8bec-42a8-b49a-9affd0f3bd58.png",
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "sourceReferenceImages": [
+          "output/astra-wave18-candidates-v1/references/icon_resource_sheet.png"
+        ]
+      }
+    ],
+    "processing": "Alpha bounding box crop; uniform fit to84x84; centered on96x96 transparent canvas. Generated alpha preserved; no background reconstruction.",
+    "qa": {
+      "status": "pass_with_small_size_caveats",
+      "dimensions": true,
+      "channels": 4,
+      "reviewedSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "textNumbers": "none observed",
+      "silhouette24": "distinct within eight-icon group",
+      "notes": "Completed-building category distinguishable at24 by roof/sails/gate/tower; small completion check is secondary at24."
+    },
+    "alphaCrop": {
+      "left": 69,
+      "top": 139,
+      "width": 1133,
+      "height": 1006
+    },
+    "sha256": "7b2155c697fc8182d16c85164beaeac3a266f9473edb006e37f4d5340edad7fa"
+  },
+  {
+    "id": "scene_construction_blocked",
+    "file": "assets/scenes_build/scene_construction_blocked.png",
+    "width": 96,
+    "height": 96,
+    "description": "공사 막힘",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE new standalone medieval game HUD scene icon, scene_construction_blocked. Reference sheet is STYLE ONLY, do not reproduce the sheet. Subject: An unfinished oak timber scaffold, two upright posts and horizontal beam surrounding a partly built low stone wall, with a broad rust-red diagonal physical wooden barrier across its opening. Blocked construction clearly visible by barrier, no workers, no hammer. Hand-painted gouache game icon matching attached UI P0: subdued ochre, warm umber thin contour, matte slightly worn brushwork, functional readable silhouette. Center single subject filling 80% square canvas. Must read at 24px. GENUINELY TRANSPARENT RGBA background, no ground plane, no frame, no letters, no words, no numbers. No photorealism, no glossy 3D, no modern vector flatness.",
+        "rawFile": "raw/scenes_build/scene_construction_blocked.png",
+        "referenceImages": [
+          "references/scenes-build-p0-resources.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-876c-77f0-9625-cdfd2c99e05b/exec-211a2cd7-da6e-4ec0-a3ce-fff03e340a1b.png",
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "sourceReferenceImages": [
+          "output/astra-wave18-candidates-v1/references/icon_resource_sheet.png"
+        ]
+      }
+    ],
+    "processing": "Alpha bounding box crop; uniform fit to84x84; centered on96x96 transparent canvas. Generated alpha preserved; no background reconstruction.",
+    "qa": {
+      "status": "pass_with_small_size_caveats",
+      "dimensions": true,
+      "channels": 4,
+      "reviewedSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "textNumbers": "none observed",
+      "silhouette24": "distinct within eight-icon group",
+      "notes": "Open scaffold with red diagonal barrier remains distinct from finished palisade gate."
+    },
+    "alphaCrop": {
+      "left": 81,
+      "top": 131,
+      "width": 1104,
+      "height": 1019
+    },
+    "sha256": "a991a0d129b0f5588274fd490fc3baf487173cc2b459d59035d22f761a53fe3a"
+  },
+  {
+    "id": "scene_fire",
+    "file": "assets/scenes_build/scene_fire.png",
+    "width": 96,
+    "height": 96,
+    "description": "화재",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE new standalone medieval game HUD scene icon, scene_fire. Reference sheet is STYLE ONLY, do not reproduce the sheet. Subject: One compact asymmetrical orange-ochre flame with three rising tongues and dark charred wood at base. Fire silhouette, not a building, no smoke clouds or additional icons. Hand-painted gouache game icon matching attached UI P0: subdued ochre, warm umber thin contour, matte slightly worn brushwork, functional readable silhouette. Center single subject filling 80% square canvas. Must read at 24px. GENUINELY TRANSPARENT RGBA background, no ground plane, no frame, no letters, no words, no numbers. No photorealism, no glossy 3D, no modern vector flatness.",
+        "rawFile": "raw/scenes_build/scene_fire.png",
+        "referenceImages": [
+          "references/scenes-build-p0-resources.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-876c-77f0-9625-cdfd2c99e05b/exec-43ecec77-d4bf-4268-939d-2b6fe0e1bf56.png",
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "sourceReferenceImages": [
+          "output/astra-wave18-candidates-v1/references/icon_resource_sheet.png"
+        ]
+      }
+    ],
+    "processing": "Alpha bounding box crop; uniform fit to84x84; centered on96x96 transparent canvas. Generated alpha preserved; no background reconstruction.",
+    "qa": {
+      "status": "pass_with_small_size_caveats",
+      "dimensions": true,
+      "channels": 4,
+      "reviewedSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "textNumbers": "none observed",
+      "silhouette24": "distinct within eight-icon group",
+      "notes": "Flame and charred logs silhouette clear at24."
+    },
+    "alphaCrop": {
+      "left": 282,
+      "top": 121,
+      "width": 702,
+      "height": 1035
+    },
+    "sha256": "b80957e76839d54f1b12b4dd57ebbd744e06b8361bb8baa12f433a01ce037b7e"
+  }
+]

@@ -1,0 +1,34 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+const work=path.resolve(process.argv[2]&&!process.argv[2].startsWith('--')?process.argv[2]:'/tmp/astra-portrait-pool2-work');
+const allowMissing=process.argv.includes('--allow-missing');
+const raster=process.env.POOL_RASTER??'/tmp/astra-wave10-v2-work/raster';
+const batch1=process.env.POOL_BATCH1??'/tmp/astra-portrait-pool1-work/deliverable/portraits';
+const pilot=process.env.POOL_PILOT??'/tmp/astra-portrait-pivot-work/deliverable/portraits';
+const output=path.join(work,'review-grids');
+fs.mkdirSync(output,{recursive:true});
+const roster=JSON.parse(fs.readFileSync(path.join(work,'roster.json'),'utf8'));
+const current=roster.identities.map(p=>({id:p.identity_id,file:path.join(work,'deliverable/portraits',`${p.identity_id}_young.png`)}));
+const previous=Array.from({length:32},(_,i)=>{const id=`I${String(i+37).padStart(3,'0')}`;return {id,file:path.join(batch1,id+'_young.png')};});
+const pilots=Array.from({length:36},(_,i)=>{const id=`P${String(i+1).padStart(2,'0')}`;return {id,file:path.join(pilot,id+'.png')};});
+const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const evidence=[];
+function board(name,title,items,size,columns){
+ const missing=items.filter(p=>!fs.existsSync(p.file));
+ if(missing.length&&!allowMissing)throw new Error(`Missing ${name}: ${missing.map(p=>p.id).join(', ')}`);
+ const cellWidth=size+32,cellHeight=size+38,top=66;
+ const scene={width:columns*cellWidth+40,height:Math.ceil(items.length/columns)*cellHeight+top+20,background:'#d5cbbb',images:[],texts:[{text:title+(missing.length?' · INCOMPLETE':''),x:20,y:18,size:22,color:'#302c26'}]};
+ items.forEach((p,i)=>{const x=20+(i%columns)*cellWidth,y=top+Math.floor(i/columns)*cellHeight;if(fs.existsSync(p.file))scene.images.push({file:p.file,x,y,width:size,height:size});else scene.texts.push({text:'MISSING',x,y:y+size/2,size:16,color:'#962d25'});scene.texts.push({text:p.id,x,y:y+size+5,size:15,color:'#302c26'});});
+ const sceneFile=path.join(output,name+'.json'),imageFile=path.join(output,name+'.png');
+ fs.writeFileSync(sceneFile,JSON.stringify(scene,null,2)+'\n');
+ execFileSync(raster,['board',imageFile,sceneFile]);
+ evidence.push({name,title,pixels_per_portrait:size,columns,rows:Math.ceil(items.length/columns),status:missing.length?'INCOMPLETE':'COMPLETE',missing:missing.map(p=>p.id),sha256:hash(imageFile),items:items.map(p=>({...p,sha256:fs.existsSync(p.file)?hash(p.file):null}))});
+}
+board('current32-young256','2차 청년 32명 · 256 px',current,256,8);
+board('current32-young96','2차 청년 32명 · 96 px',current,96,8);
+board('batch1-and-batch2-young64-96','1차 청년 32명 + 2차 청년 32명 · 96 px',[...previous,...current],96,8);
+board('pilot-and-batch2-young68-96','승인 파일럿 36명 + 2차 청년 32명 · 96 px',[...pilots,...current],96,8);
+fs.writeFileSync(path.join(output,'evidence.json'),JSON.stringify({scope:'Technical review grids only, not a visual verdict or final deliverable proof count',grids:evidence},null,2)+'\n');
+console.log(JSON.stringify({status:evidence.some(p=>p.status==='INCOMPLETE')?'INCOMPLETE':'COMPLETE',output,grids:evidence.map(({name,status,missing})=>({name,status,missing}))}));

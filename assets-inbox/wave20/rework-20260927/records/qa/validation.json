@@ -1,0 +1,1752 @@
+{
+  "assertions": 311,
+  "passed": 311,
+  "failed": [],
+  "checks": [
+    {
+      "name": "20 house rows",
+      "pass": true,
+      "detail": 20
+    },
+    {
+      "name": "12 reworks",
+      "pass": true,
+      "detail": 12
+    },
+    {
+      "name": "8 approved preserved",
+      "pass": true,
+      "detail": 8
+    },
+    {
+      "name": "3 required chimneys",
+      "pass": true,
+      "detail": 3
+    },
+    {
+      "name": "house_l0_1350_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1350_a-v1: pivot",
+      "pass": true,
+      "detail": [
+        "77.35406698564593",
+        "139.57894736842104"
+      ]
+    },
+    {
+      "name": "house_l0_1350_a-v1: scale",
+      "pass": true,
+      "detail": "0.4995704948646125"
+    },
+    {
+      "name": "house_l0_1350_a-v1: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l0_1350_a-v1: CSV hash",
+      "pass": true,
+      "detail": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c"
+    },
+    {
+      "name": "house_l0_1350_a-v1: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1350_a-v1: byte identical accepted",
+      "pass": true,
+      "detail": "assets/houses/house_l0_1350_a-v1.png"
+    },
+    {
+      "name": "house_l0_1350_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l0_1350_a-v1: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l0_1350_a-v1: boarded_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/boarded_l0-v2.png"
+    },
+    {
+      "name": "house_l0_1350_a-v1: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l0_1350_a-v1: snow_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/roof_snow_l0-v2.png"
+    },
+    {
+      "name": "house_l0_1350_a-v1: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l0_1350_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1350_b-v1: pivot",
+      "pass": true,
+      "detail": [
+        "77.35406698564593",
+        "139.57894736842104"
+      ]
+    },
+    {
+      "name": "house_l0_1350_b-v1: scale",
+      "pass": true,
+      "detail": "0.4995704948646125"
+    },
+    {
+      "name": "house_l0_1350_b-v1: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l0_1350_b-v1: CSV hash",
+      "pass": true,
+      "detail": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c"
+    },
+    {
+      "name": "house_l0_1350_b-v1: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1350_b-v1: byte identical accepted",
+      "pass": true,
+      "detail": "assets/houses/house_l0_1350_b-v1.png"
+    },
+    {
+      "name": "house_l0_1350_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l0_1350_b-v1: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l0_1350_b-v1: boarded_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/boarded_l0-v2.png"
+    },
+    {
+      "name": "house_l0_1350_b-v1: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l0_1350_b-v1: snow_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/roof_snow_l0-v2.png"
+    },
+    {
+      "name": "house_l0_1350_b-v1: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l0_1400_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1400_a-v1: pivot",
+      "pass": true,
+      "detail": [
+        "77.35406698564593",
+        "139.57894736842104"
+      ]
+    },
+    {
+      "name": "house_l0_1400_a-v1: scale",
+      "pass": true,
+      "detail": "0.4995704948646125"
+    },
+    {
+      "name": "house_l0_1400_a-v1: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l0_1400_a-v1: CSV hash",
+      "pass": true,
+      "detail": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00"
+    },
+    {
+      "name": "house_l0_1400_a-v1: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1400_a-v1: byte identical accepted",
+      "pass": true,
+      "detail": "assets/houses/house_l0_1400_a-v1.png"
+    },
+    {
+      "name": "house_l0_1400_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l0_1400_a-v1: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l0_1400_a-v1: boarded_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/boarded_l0-v2.png"
+    },
+    {
+      "name": "house_l0_1400_a-v1: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l0_1400_a-v1: snow_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/roof_snow_l0-v2.png"
+    },
+    {
+      "name": "house_l0_1400_a-v1: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l0_1400_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1400_b-v1: pivot",
+      "pass": true,
+      "detail": [
+        "77.35406698564593",
+        "139.57894736842104"
+      ]
+    },
+    {
+      "name": "house_l0_1400_b-v1: scale",
+      "pass": true,
+      "detail": "0.4995704948646125"
+    },
+    {
+      "name": "house_l0_1400_b-v1: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l0_1400_b-v1: CSV hash",
+      "pass": true,
+      "detail": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d"
+    },
+    {
+      "name": "house_l0_1400_b-v1: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1400_b-v1: byte identical accepted",
+      "pass": true,
+      "detail": "assets/houses/house_l0_1400_b-v1.png"
+    },
+    {
+      "name": "house_l0_1400_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l0_1400_b-v1: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l0_1400_b-v1: boarded_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/boarded_l0-v2.png"
+    },
+    {
+      "name": "house_l0_1400_b-v1: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l0_1400_b-v1: snow_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/roof_snow_l0-v2.png"
+    },
+    {
+      "name": "house_l0_1400_b-v1: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l1_1350_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1350_a-v1: pivot",
+      "pass": true,
+      "detail": [
+        "71.66148325358851",
+        "125.92025518341308"
+      ]
+    },
+    {
+      "name": "house_l1_1350_a-v1: scale",
+      "pass": true,
+      "detail": "0.4986217267599071"
+    },
+    {
+      "name": "house_l1_1350_a-v1: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l1_1350_a-v1: CSV hash",
+      "pass": true,
+      "detail": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf"
+    },
+    {
+      "name": "house_l1_1350_a-v1: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1350_a-v1: byte identical accepted",
+      "pass": true,
+      "detail": "assets/houses/house_l1_1350_a-v1.png"
+    },
+    {
+      "name": "house_l1_1350_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l1_1350_a-v1: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l1_1350_a-v1: boarded_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/boarded_l1-v2.png"
+    },
+    {
+      "name": "house_l1_1350_a-v1: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l1_1350_a-v1: snow_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/roof_snow_l1-v2.png"
+    },
+    {
+      "name": "house_l1_1350_a-v1: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l1_1350_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1350_b-v1: pivot",
+      "pass": true,
+      "detail": [
+        "71.66148325358851",
+        "125.92025518341308"
+      ]
+    },
+    {
+      "name": "house_l1_1350_b-v1: scale",
+      "pass": true,
+      "detail": "0.4986217267599071"
+    },
+    {
+      "name": "house_l1_1350_b-v1: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l1_1350_b-v1: CSV hash",
+      "pass": true,
+      "detail": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00"
+    },
+    {
+      "name": "house_l1_1350_b-v1: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1350_b-v1: byte identical accepted",
+      "pass": true,
+      "detail": "assets/houses/house_l1_1350_b-v1.png"
+    },
+    {
+      "name": "house_l1_1350_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l1_1350_b-v1: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l1_1350_b-v1: boarded_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/boarded_l1-v2.png"
+    },
+    {
+      "name": "house_l1_1350_b-v1: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l1_1350_b-v1: snow_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/roof_snow_l1-v2.png"
+    },
+    {
+      "name": "house_l1_1350_b-v1: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l1_1400_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1400_a-v1: pivot",
+      "pass": true,
+      "detail": [
+        "71.66148325358851",
+        "125.92025518341308"
+      ]
+    },
+    {
+      "name": "house_l1_1400_a-v1: scale",
+      "pass": true,
+      "detail": "0.4986217267599071"
+    },
+    {
+      "name": "house_l1_1400_a-v1: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l1_1400_a-v1: CSV hash",
+      "pass": true,
+      "detail": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8"
+    },
+    {
+      "name": "house_l1_1400_a-v1: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1400_a-v1: byte identical accepted",
+      "pass": true,
+      "detail": "assets/houses/house_l1_1400_a-v1.png"
+    },
+    {
+      "name": "house_l1_1400_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l1_1400_a-v1: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l1_1400_a-v1: boarded_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/boarded_l1-v2.png"
+    },
+    {
+      "name": "house_l1_1400_a-v1: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l1_1400_a-v1: snow_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/roof_snow_l1-v2.png"
+    },
+    {
+      "name": "house_l1_1400_a-v1: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l1_1400_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1400_b-v1: pivot",
+      "pass": true,
+      "detail": [
+        "71.66148325358851",
+        "125.92025518341308"
+      ]
+    },
+    {
+      "name": "house_l1_1400_b-v1: scale",
+      "pass": true,
+      "detail": "0.4986217267599071"
+    },
+    {
+      "name": "house_l1_1400_b-v1: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l1_1400_b-v1: CSV hash",
+      "pass": true,
+      "detail": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354"
+    },
+    {
+      "name": "house_l1_1400_b-v1: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1400_b-v1: byte identical accepted",
+      "pass": true,
+      "detail": "assets/houses/house_l1_1400_b-v1.png"
+    },
+    {
+      "name": "house_l1_1400_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l1_1400_b-v1: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l1_1400_b-v1: boarded_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/boarded_l1-v2.png"
+    },
+    {
+      "name": "house_l1_1400_b-v1: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l1_1400_b-v1: snow_overlay canvas",
+      "pass": true,
+      "detail": "references/overlays/roof_snow_l1-v2.png"
+    },
+    {
+      "name": "house_l1_1400_b-v1: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l2_1350_a-v2: canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1350_a-v2: pivot",
+      "pass": true,
+      "detail": [
+        "70.95813397129186",
+        "132.08373205741626"
+      ]
+    },
+    {
+      "name": "house_l2_1350_a-v2: scale",
+      "pass": true,
+      "detail": "0.4980801861842801"
+    },
+    {
+      "name": "house_l2_1350_a-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l2_1350_a-v2: CSV hash",
+      "pass": true,
+      "detail": "eae7260cade74a7ccb9b22e20e913f2c4634e6fe132fe2ed13fe2ef2469c0f55"
+    },
+    {
+      "name": "house_l2_1350_a-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_a-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 1.4210854715202004e-14
+    },
+    {
+      "name": "house_l2_1350_a-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l2_1350_a-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l2_1350_a-v2: pronounced jetty measurement",
+      "pass": true,
+      "detail": 13.299634440268713
+    },
+    {
+      "name": "house_l2_1350_a-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l2_1350_a-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l2_1350_a-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l2_1350-v3.png"
+    },
+    {
+      "name": "house_l2_1350_a-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l2_1350_a-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_a-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l2_shared-v3.png"
+    },
+    {
+      "name": "house_l2_1350_a-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l2_1350_b-v2: canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1350_b-v2: pivot",
+      "pass": true,
+      "detail": [
+        "70.95813397129186",
+        "132.08373205741626"
+      ]
+    },
+    {
+      "name": "house_l2_1350_b-v2: scale",
+      "pass": true,
+      "detail": "0.4980801861842801"
+    },
+    {
+      "name": "house_l2_1350_b-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l2_1350_b-v2: CSV hash",
+      "pass": true,
+      "detail": "e5d5b9e33ab6b6a901382679bcd7d79241301f49b6abbbc84b6eaa21b03932e9"
+    },
+    {
+      "name": "house_l2_1350_b-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_b-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 1.4210854715202004e-14
+    },
+    {
+      "name": "house_l2_1350_b-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l2_1350_b-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l2_1350_b-v2: pronounced jetty measurement",
+      "pass": true,
+      "detail": 13.299634440268713
+    },
+    {
+      "name": "house_l2_1350_b-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l2_1350_b-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l2_1350_b-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l2_1350-v3.png"
+    },
+    {
+      "name": "house_l2_1350_b-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l2_1350_b-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_b-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l2_shared-v3.png"
+    },
+    {
+      "name": "house_l2_1350_b-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l2_1400_a-v2: canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1400_a-v2: pivot",
+      "pass": true,
+      "detail": [
+        "70.95813397129186",
+        "132.08373205741626"
+      ]
+    },
+    {
+      "name": "house_l2_1400_a-v2: scale",
+      "pass": true,
+      "detail": "0.4980801861842801"
+    },
+    {
+      "name": "house_l2_1400_a-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l2_1400_a-v2: CSV hash",
+      "pass": true,
+      "detail": "8c4720c8a7eb07679726c80a924282820343dc0ad811df7d50fc705319ed22b6"
+    },
+    {
+      "name": "house_l2_1400_a-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_a-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 2.842170943040401e-14
+    },
+    {
+      "name": "house_l2_1400_a-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l2_1400_a-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l2_1400_a-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l2_1400_a-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l2_1400_a-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l2_1400-v3.png"
+    },
+    {
+      "name": "house_l2_1400_a-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l2_1400_a-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_a-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l2_shared-v3.png"
+    },
+    {
+      "name": "house_l2_1400_a-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l2_1400_b-v2: canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1400_b-v2: pivot",
+      "pass": true,
+      "detail": [
+        "70.95813397129186",
+        "132.08373205741626"
+      ]
+    },
+    {
+      "name": "house_l2_1400_b-v2: scale",
+      "pass": true,
+      "detail": "0.4980801861842801"
+    },
+    {
+      "name": "house_l2_1400_b-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l2_1400_b-v2: CSV hash",
+      "pass": true,
+      "detail": "21a2a3895a0a87357d35e72c5eb976dcf8e9a1390d1d220018d8872191471f1b"
+    },
+    {
+      "name": "house_l2_1400_b-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_b-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 1.4210854715202004e-14
+    },
+    {
+      "name": "house_l2_1400_b-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l2_1400_b-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l2_1400_b-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l2_1400_b-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l2_1400_b-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l2_1400-v3.png"
+    },
+    {
+      "name": "house_l2_1400_b-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l2_1400_b-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_b-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l2_shared-v3.png"
+    },
+    {
+      "name": "house_l2_1400_b-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l3_1350_a-v2: canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1350_a-v2: pivot",
+      "pass": true,
+      "detail": [
+        "74.39712918660287",
+        "138.03668261562999"
+      ]
+    },
+    {
+      "name": "house_l3_1350_a-v2: scale",
+      "pass": true,
+      "detail": "0.4983578424454543"
+    },
+    {
+      "name": "house_l3_1350_a-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l3_1350_a-v2: CSV hash",
+      "pass": true,
+      "detail": "01eda02bd43199fd9096a493ec7c509b9e67a29dcc80afc4f2334098f5df19f7"
+    },
+    {
+      "name": "house_l3_1350_a-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_a-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 1.4210854715202004e-14
+    },
+    {
+      "name": "house_l3_1350_a-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l3_1350_a-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l3_1350_a-v2: pronounced jetty measurement",
+      "pass": true,
+      "detail": 13.280694047880518
+    },
+    {
+      "name": "house_l3_1350_a-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l3_1350_a-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l3_1350_a-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l3_1350-v3.png"
+    },
+    {
+      "name": "house_l3_1350_a-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l3_1350_a-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_a-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l3_shared-v3.png"
+    },
+    {
+      "name": "house_l3_1350_a-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l3_1350_b-v2: canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1350_b-v2: pivot",
+      "pass": true,
+      "detail": [
+        "74.39712918660287",
+        "138.03668261562999"
+      ]
+    },
+    {
+      "name": "house_l3_1350_b-v2: scale",
+      "pass": true,
+      "detail": "0.4983578424454543"
+    },
+    {
+      "name": "house_l3_1350_b-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l3_1350_b-v2: CSV hash",
+      "pass": true,
+      "detail": "258c7638867d9b9185873a3b946176cb67ace0b26e0ec2fad3614b7eb7051084"
+    },
+    {
+      "name": "house_l3_1350_b-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_b-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_b-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l3_1350_b-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l3_1350_b-v2: pronounced jetty measurement",
+      "pass": true,
+      "detail": 13.245642952902134
+    },
+    {
+      "name": "house_l3_1350_b-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l3_1350_b-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l3_1350_b-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l3_1350-v3.png"
+    },
+    {
+      "name": "house_l3_1350_b-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l3_1350_b-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_b-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l3_shared-v3.png"
+    },
+    {
+      "name": "house_l3_1350_b-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l3_1400_a-v2: canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1400_a-v2: pivot",
+      "pass": true,
+      "detail": [
+        "74.39712918660287",
+        "138.03668261562999"
+      ]
+    },
+    {
+      "name": "house_l3_1400_a-v2: scale",
+      "pass": true,
+      "detail": "0.4983578424454543"
+    },
+    {
+      "name": "house_l3_1400_a-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l3_1400_a-v2: CSV hash",
+      "pass": true,
+      "detail": "7b883d60b9041ce6d46122d5f7adac2ec728faf64643473f909a82a3f434b1f9"
+    },
+    {
+      "name": "house_l3_1400_a-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_a-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 1.4210854715202004e-14
+    },
+    {
+      "name": "house_l3_1400_a-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l3_1400_a-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l3_1400_a-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l3_1400_a-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l3_1400_a-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l3_1400-v3.png"
+    },
+    {
+      "name": "house_l3_1400_a-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l3_1400_a-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_a-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l3_shared-v3.png"
+    },
+    {
+      "name": "house_l3_1400_a-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l3_1400_b-v2: canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1400_b-v2: pivot",
+      "pass": true,
+      "detail": [
+        "74.39712918660287",
+        "138.03668261562999"
+      ]
+    },
+    {
+      "name": "house_l3_1400_b-v2: scale",
+      "pass": true,
+      "detail": "0.4983578424454543"
+    },
+    {
+      "name": "house_l3_1400_b-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l3_1400_b-v2: CSV hash",
+      "pass": true,
+      "detail": "376eb6afed0fd2b883ca45bce863e2e87614e1f33e2078248c89e6759c333e68"
+    },
+    {
+      "name": "house_l3_1400_b-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_b-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 1.4210854715202004e-14
+    },
+    {
+      "name": "house_l3_1400_b-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l3_1400_b-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l3_1400_b-v2: chimney rule",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "house_l3_1400_b-v2: smoke origin in visible sprite",
+      "pass": true,
+      "detail": [
+        97,
+        29
+      ]
+    },
+    {
+      "name": "house_l3_1400_b-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l3_1400-v3.png"
+    },
+    {
+      "name": "house_l3_1400_b-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l3_1400_b-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_b-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l3_shared-v3.png"
+    },
+    {
+      "name": "house_l3_1400_b-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l4_1350_a-v2: canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1350_a-v2: pivot",
+      "pass": true,
+      "detail": [
+        "81.97647527910686",
+        "157.40510366826157"
+      ]
+    },
+    {
+      "name": "house_l4_1350_a-v2: scale",
+      "pass": true,
+      "detail": "0.49791865539583047"
+    },
+    {
+      "name": "house_l4_1350_a-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l4_1350_a-v2: CSV hash",
+      "pass": true,
+      "detail": "ba148ecfb3f672c361ced58c49d2a25f58b9d2b5cd2fa3e295d2ebb885a64ff8"
+    },
+    {
+      "name": "house_l4_1350_a-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_a-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 1.4210854715202004e-14
+    },
+    {
+      "name": "house_l4_1350_a-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l4_1350_a-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l4_1350_a-v2: pronounced jetty measurement",
+      "pass": true,
+      "detail": 13.355459341667624
+    },
+    {
+      "name": "house_l4_1350_a-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l4_1350_a-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l4_1350_a-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l4_1350-v3.png"
+    },
+    {
+      "name": "house_l4_1350_a-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l4_1350_a-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_a-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l4_shared-v3.png"
+    },
+    {
+      "name": "house_l4_1350_a-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l4_1350_b-v2: canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1350_b-v2: pivot",
+      "pass": true,
+      "detail": [
+        "81.97647527910686",
+        "157.40510366826157"
+      ]
+    },
+    {
+      "name": "house_l4_1350_b-v2: scale",
+      "pass": true,
+      "detail": "0.49791865539583047"
+    },
+    {
+      "name": "house_l4_1350_b-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l4_1350_b-v2: CSV hash",
+      "pass": true,
+      "detail": "4483abd9716330547de21493ea0307f17a388573ad993c51fbda8e77428a7631"
+    },
+    {
+      "name": "house_l4_1350_b-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_b-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 1.4210854715202004e-14
+    },
+    {
+      "name": "house_l4_1350_b-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l4_1350_b-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l4_1350_b-v2: pronounced jetty measurement",
+      "pass": true,
+      "detail": 13.355459341667624
+    },
+    {
+      "name": "house_l4_1350_b-v2: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l4_1350_b-v2: no smoke coords",
+      "pass": true,
+      "detail": [
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "house_l4_1350_b-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l4_1350-v3.png"
+    },
+    {
+      "name": "house_l4_1350_b-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l4_1350_b-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_b-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l4_shared-v3.png"
+    },
+    {
+      "name": "house_l4_1350_b-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l4_1400_a-v2: canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1400_a-v2: pivot",
+      "pass": true,
+      "detail": [
+        "81.97647527910686",
+        "157.40510366826157"
+      ]
+    },
+    {
+      "name": "house_l4_1400_a-v2: scale",
+      "pass": true,
+      "detail": "0.49791865539583047"
+    },
+    {
+      "name": "house_l4_1400_a-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l4_1400_a-v2: CSV hash",
+      "pass": true,
+      "detail": "c8cec83c79194ff0ad59139011dfb2f16adefd3d471490714422f0b1dbdc466b"
+    },
+    {
+      "name": "house_l4_1400_a-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_a-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_a-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l4_1400_a-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l4_1400_a-v2: chimney rule",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "house_l4_1400_a-v2: smoke origin in visible sprite",
+      "pass": true,
+      "detail": [
+        104,
+        27
+      ]
+    },
+    {
+      "name": "house_l4_1400_a-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l4_1400-v3.png"
+    },
+    {
+      "name": "house_l4_1400_a-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l4_1400_a-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_a-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l4_shared-v3.png"
+    },
+    {
+      "name": "house_l4_1400_a-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l4_1400_b-v2: canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1400_b-v2: pivot",
+      "pass": true,
+      "detail": [
+        "81.97647527910686",
+        "157.40510366826157"
+      ]
+    },
+    {
+      "name": "house_l4_1400_b-v2: scale",
+      "pass": true,
+      "detail": "0.49791865539583047"
+    },
+    {
+      "name": "house_l4_1400_b-v2: 1x1 footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l4_1400_b-v2: CSV hash",
+      "pass": true,
+      "detail": "62c8c2b14ea45a4bc0ea460c24c2dc74baed5d8f97d46b8d5b46596f417acfe7"
+    },
+    {
+      "name": "house_l4_1400_b-v2: transparent border",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_b-v2: ground landmark mapping",
+      "pass": true,
+      "detail": 2.842170943040401e-14
+    },
+    {
+      "name": "house_l4_1400_b-v2: raw generation prompt roundtrip",
+      "pass": true,
+      "detail": "full exact prompt"
+    },
+    {
+      "name": "house_l4_1400_b-v2: upper silhouette changed",
+      "pass": true,
+      "detail": "different image"
+    },
+    {
+      "name": "house_l4_1400_b-v2: chimney rule",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "house_l4_1400_b-v2: smoke origin in visible sprite",
+      "pass": true,
+      "detail": [
+        102,
+        30
+      ]
+    },
+    {
+      "name": "house_l4_1400_b-v2: boarded_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/boarded_l4_1400-v3.png"
+    },
+    {
+      "name": "house_l4_1400_b-v2: boarded_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "house_l4_1400_b-v2: no floating boards",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_b-v2: snow_overlay canvas",
+      "pass": true,
+      "detail": "assets/overlays/roof_snow_l4_shared-v3.png"
+    },
+    {
+      "name": "house_l4_1400_b-v2: snow_overlay identity placement",
+      "pass": true,
+      "detail": "0,0; scale1"
+    },
+    {
+      "name": "9 replacement overlays within original max10",
+      "pass": true,
+      "detail": 9
+    },
+    {
+      "name": "2 required layout proofs",
+      "pass": true,
+      "detail": [
+        "three_eras_zoom_06.png",
+        "three_eras_zoom_10.png"
+      ]
+    },
+    {
+      "name": "three_eras_zoom_06.png size",
+      "pass": true,
+      "detail": [
+        640,
+        665
+      ]
+    },
+    {
+      "name": "three_eras_zoom_10.png size",
+      "pass": true,
+      "detail": [
+        640,
+        665
+      ]
+    },
+    {
+      "name": "independent visual >=90 pass",
+      "pass": true,
+      "detail": 93
+    }
+  ],
+  "scope": "Offline registered PNG/CSV/proof verification, not game runtime. Manual ground landmarks have +/-2px visual tolerance; matrix residual is a different numeric measure."
+}

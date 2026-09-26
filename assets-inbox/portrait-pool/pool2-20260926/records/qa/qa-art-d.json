@@ -1,0 +1,235 @@
+{
+  "scope": "I093-I100",
+  "status": "PASS_WITH_LIMITATIONS",
+  "reviewer": "pool2_art_d",
+  "method": "Viewed every final 256px portrait individually and 256px and 96px chain boards; native imagegen only for art edits, deterministic Swift resize/boards.",
+  "identity_count": 8,
+  "portrait_count": 20,
+  "same_person_chains": 8,
+  "unresolved_severe_defects": [],
+  "limitations": [
+    "Exact nominal ages cannot be verified from painted faces.",
+    "Young-to-mature changes are intentionally subtler than old-stage changes, especially I093 at96px.",
+    "I096 belt knife is a small visible detail at96px."
+  ],
+  "identities": [
+    {
+      "identity_id": "I093",
+      "same_person": true,
+      "stages": [
+        {
+          "stage": "young",
+          "prop_expected": "walking_cane",
+          "prop_observed": "walking_cane",
+          "book_scroll_seen": false,
+          "expression_intended": "sharp_suspicious"
+        },
+        {
+          "stage": "mature",
+          "prop_expected": "walking_cane",
+          "prop_observed": "walking_cane",
+          "book_scroll_seen": false,
+          "expression_intended": "neutral"
+        },
+        {
+          "stage": "old",
+          "prop_expected": "walking_cane",
+          "prop_observed": "walking_cane",
+          "book_scroll_seen": false,
+          "expression_intended": "tired_worried"
+        }
+      ],
+      "observations": "Same short broad skull, crooked blunt nose, ears and brow mark preserved. Cane visible in right hand at all ages. Old revision2 grey-white beard and deeper tissue aging materially improve 96px separation; young versus mature remains subtle."
+    },
+    {
+      "identity_id": "I094",
+      "same_person": true,
+      "stages": [
+        {
+          "stage": "young",
+          "prop_expected": "wooden_pipe",
+          "prop_observed": "wooden_pipe",
+          "book_scroll_seen": false,
+          "expression_intended": "neutral"
+        },
+        {
+          "stage": "mature",
+          "prop_expected": "wooden_pipe",
+          "prop_observed": "wooden_pipe",
+          "book_scroll_seen": false,
+          "expression_intended": "slight_smile"
+        },
+        {
+          "stage": "old",
+          "prop_expected": "wooden_pipe",
+          "prop_observed": "wooden_pipe",
+          "book_scroll_seen": false,
+          "expression_intended": "sharp_suspicious"
+        }
+      ],
+      "observations": "Tall forehead, upturned nose, long jutting chin, freckles and asymmetrical mouth preserved; wooden pipe visible at lower bust all stages. Mature smile and straw hat, old russet scarf and wrinkles readable."
+    },
+    {
+      "identity_id": "I095",
+      "same_person": true,
+      "stages": [
+        {
+          "stage": "young",
+          "prop_expected": "none",
+          "prop_observed": "none",
+          "book_scroll_seen": false,
+          "expression_intended": "neutral"
+        },
+        {
+          "stage": "mature",
+          "prop_expected": "none",
+          "prop_observed": "none",
+          "book_scroll_seen": false,
+          "expression_intended": "tired_worried"
+        },
+        {
+          "stage": "old",
+          "prop_expected": "none",
+          "prop_observed": "none",
+          "book_scroll_seen": false,
+          "expression_intended": "neutral"
+        }
+      ],
+      "observations": "Full heavy build, close-set eyes, long nose and broad soft chin preserved. Royal blue fine gown and broad fox fur read gentry without any handheld object. Barbette strap, fillet and netted side hair visible across ages."
+    },
+    {
+      "identity_id": "I096",
+      "same_person": true,
+      "stages": [
+        {
+          "stage": "young",
+          "prop_expected": "small_knife",
+          "prop_observed": "small_knife",
+          "book_scroll_seen": false,
+          "expression_intended": "slight_smile"
+        },
+        {
+          "stage": "mature",
+          "prop_expected": "small_knife",
+          "prop_observed": "small_knife",
+          "book_scroll_seen": false,
+          "expression_intended": "sharp_suspicious"
+        },
+        {
+          "stage": "old",
+          "prop_expected": "small_knife",
+          "prop_observed": "small_knife",
+          "book_scroll_seen": false,
+          "expression_intended": "neutral"
+        }
+      ],
+      "observations": "Heavy-build revision2 applied before age chain. Blunt below-ear bob and same broad mouth/snub nose preserved. Small sheathed utility knife visible at lower image-right belt; smaller at96px. Empty hands but prop class remains other because belt knife is visible."
+    },
+    {
+      "identity_id": "I097",
+      "same_person": true,
+      "stages": [
+        {
+          "stage": "child",
+          "prop_expected": "wooden_horse",
+          "prop_observed": "wooden_horse",
+          "book_scroll_seen": false,
+          "expression_intended": "tired_worried"
+        },
+        {
+          "stage": "young",
+          "prop_expected": "wooden_horse",
+          "prop_observed": "wooden_horse",
+          "book_scroll_seen": false,
+          "expression_intended": "neutral"
+        }
+      ],
+      "observations": "Child and grown young man same nose/eye/chin landmarks. Adult has longer jaw/neck and stubble. Carved wooden horse held in both hands preserved; grey-white squirrel fur no black ermine pattern."
+    },
+    {
+      "identity_id": "I098",
+      "same_person": true,
+      "stages": [
+        {
+          "stage": "child",
+          "prop_expected": "smooth_pebble",
+          "prop_observed": "smooth_pebble",
+          "book_scroll_seen": false,
+          "expression_intended": "slight_smile"
+        },
+        {
+          "stage": "young",
+          "prop_expected": "smooth_pebble",
+          "prop_observed": "smooth_pebble",
+          "book_scroll_seen": false,
+          "expression_intended": "sharp_suspicious"
+        }
+      ],
+      "observations": "Child and grown young man same broad round nose, cheeks and lip shape; adult jaw/neck/stubble clear. Smooth grey pebble visible in left palm both stages."
+    },
+    {
+      "identity_id": "I099",
+      "same_person": true,
+      "stages": [
+        {
+          "stage": "child",
+          "prop_expected": "none",
+          "prop_observed": "none",
+          "book_scroll_seen": false,
+          "expression_intended": "neutral"
+        },
+        {
+          "stage": "young",
+          "prop_expected": "none",
+          "prop_observed": "none",
+          "book_scroll_seen": false,
+          "expression_intended": "tired_worried"
+        }
+      ],
+      "observations": "Child and grown young woman preserve nose, deep-set eyes, long philtrum and pointed jaw. Grown jaw/neck and adult facial proportions clear. No handheld object in either stage."
+    },
+    {
+      "identity_id": "I100",
+      "same_person": true,
+      "stages": [
+        {
+          "stage": "child",
+          "prop_expected": "ribbon_spool",
+          "prop_observed": "ribbon_spool",
+          "book_scroll_seen": false,
+          "expression_intended": "neutral"
+        },
+        {
+          "stage": "young",
+          "prop_expected": "ribbon_spool",
+          "prop_observed": "ribbon_spool",
+          "book_scroll_seen": false,
+          "expression_intended": "slight_smile"
+        }
+      ],
+      "observations": "Light peach-beige palette correction applied to child before growth; same nose/eyes/dimpled chin retained in young adult. Ribbon spool visible both stages; russet scarf becomes straw hat. Young adult reads approximately late teens to early20s, exact22 not visually provable."
+    }
+  ],
+  "final_sha256": {
+    "I093_young.png": "aa810bdde51f99143a6cb5790a43ac411127eb9e416bdd8a0c26ae59e9dcfbfb",
+    "I093_mature.png": "52dc6879875e2f35b8690c4d60c8e1e787c84b3cc7fd83736d3439d36ada6b49",
+    "I093_old.png": "3b262eaeb2fdea6932e469dbe599f5cb370564be3abe0beff401ad2ef6af6a52",
+    "I094_young.png": "9b12d92d076d64eab74a4d947abec510c5a1b2f72619a9af6ee8bf9452ac4bcd",
+    "I094_mature.png": "fa8eb758109374179fbea1210e6968115cb3ae11c5bfca67d302e335898c4270",
+    "I094_old.png": "b31e57113bb6b10dbea4904181683d16a2172fcfd16a0821e8885b4a5560e9ca",
+    "I095_young.png": "f2fe0a696ce33732c771628d65b09749fdafc13bb5e6db95f3b52eb6628ddc67",
+    "I095_mature.png": "5a717487751320f485c6e7390acbbfcf7bcb97d2c63b1f6d089acfec2aa7c917",
+    "I095_old.png": "a3436f5398240dec57f0c47bb03c4767db4d418543162a910c005c9fa47760b9",
+    "I096_young.png": "47bca2e35a6bc4e7773c9dfa0892af542929b765d6fd46ab804e95f5b9be7db3",
+    "I096_mature.png": "764680a497960138344545e61d90ef34c9ae6c399172b5d66800c048a26032ef",
+    "I096_old.png": "25326ad80b219a75fc7ae4225fe838eea737203cb16de0b0382437d874be739a",
+    "I097_child.png": "b4db6da339e3e8893c6f72fe7c3b481a15fdb6bee2cc47581a0ba644ccfe6c2b",
+    "I097_young.png": "1c7bd9e4f8ef250794f9292b3906b63e1e594d54239f374178cefe0c23201734",
+    "I098_child.png": "65aa07f1375b281e691f7faaf48a5aa31d27a9d30746be640eea93cff2385543",
+    "I098_young.png": "adadd2433ceff3eac3a65bd6b39b219dccaa47a5d37fea3bbe9db6bac91e211e",
+    "I099_child.png": "3a67725f94c6fcea0ff6369c415fdf86b012b2c1f7ac0082f9e8f5ce987ee05e",
+    "I099_young.png": "7c9bd47bdec528aba2c651183696d702a5f6c66ef314ff7817ffcca4be027b7a",
+    "I100_child.png": "81867b60eb181eb148174cf40be1c756af3ac47847e0858c6b9aaf3d2838eff5",
+    "I100_young.png": "e349b12e52a279effd1cfc112634e50e82edd5939c86085d0c177084928472be"
+  }
+}

@@ -1,25 +1,24 @@
 import { EVENT_DEF_BY_ID, GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
-import { SEASON_STOCK_KEYS, type NextObjectiveHint, type SeasonLedger, type SeasonStockKey } from "../engine/season.types";
+import { SEASON_STOCK_KEYS, type NextObjectiveHint, type SeasonLedger } from "../engine/season.types";
 import type { GameState } from "../engine/engine.types";
 import { scenarioOf } from "../engine/scenarioState";
 import type { BuildCategory } from "./buildMenuPresentation";
 import { SEASON_LEDGER_COPY } from "./seasonLedgerCopy.ko";
+import { seasonLedgerScenes, type SeasonSceneId } from "./seasonLedgerScenes";
 
-// UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes,
-// money, population and stock beside the season before, what happened, and the engine's next objective as a button
-// that opens the build drawer where the answer is.
-export type SceneKey = "population" | SeasonStockKey | "coin";
+// UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes
+// (UI-4b: from the history ledger, as Wave 19 scene icons, seasonLedgerScenes.ts), money, population and stock beside
+// the season before, what happened, and the engine's next objective as a button that opens the build drawer.
 export type SeasonLedgerCardModel = Readonly<{
   key: string;
   title: string;
-  scenes: readonly { readonly key: SceneKey; readonly value: string }[];
+  scenes: readonly { readonly id: SeasonSceneId; readonly name: string; readonly value: string | null }[];
+  scenesLine: string;
   lines: readonly string[];
   events: readonly string[];
   hint: { readonly text: string; readonly category: BuildCategory } | null;
 }>;
 
-/** How much a change of one unit weighs when the three scenes are picked (people count more than a sack). */
-const SCENE_WEIGHT: Readonly<Record<SceneKey, number>> = { population: 10, bread: 1, wheat: 1, timber: 1, stone: 1, coin: 1 };
 const HINT_CATEGORY: Readonly<Record<Exclude<NextObjectiveHint, null>, BuildCategory>> = {
   food_reserve: "storage", harvest_reserve: "trade", resettle: "storage", dearth_reserve: "storage", fire_break: "living", rebuild: "living",
 };
@@ -44,17 +43,13 @@ function eventLine(state: Pick<GameState, "scenarioId">, event: SeasonLedger["no
   }
 }
 
-export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenarioId">): SeasonLedgerCardModel | null {
+export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenarioId" | "history">): SeasonLedgerCardModel | null {
   const history = state.seasons?.history ?? [];
   const ledger = history.at(-1);
   if (ledger === undefined) return null;
   const before = history.at(-2);
   const year = ledger.year;
-  const deltas: Record<SceneKey, number> = { population: ledger.popDelta, coin: ledger.income - ledger.expense,
-    ...Object.fromEntries(SEASON_STOCK_KEYS.map(key => [key, ledger.stockDelta[key]])) as Record<SeasonStockKey, number> };
-  const scenes = (Object.keys(deltas) as SceneKey[]).filter(key => deltas[key] !== 0)
-    .sort((a, b) => Math.abs(deltas[b]) * SCENE_WEIGHT[b] - Math.abs(deltas[a]) * SCENE_WEIGHT[a]).slice(0, 3)
-    .map(key => ({ key, value: key === "coin" ? SEASON_LEDGER_COPY.pence(SEASON_LEDGER_COPY.signed(Math.round(deltas[key]))) : SEASON_LEDGER_COPY.signed(Math.round(deltas[key])) }));
+  const scenes = seasonLedgerScenes(state, ledger, before).map(scene => ({ ...scene, name: SEASON_LEDGER_COPY.scene[scene.id] }));
   const population = SEASON_LEDGER_COPY.population(ledger.popDelta) + (before === undefined ? "" : ` ${SEASON_LEDGER_COPY.versus(before.popDelta)}`);
   const stock = SEASON_STOCK_KEYS.map(key => SEASON_LEDGER_COPY.stock(SEASON_LEDGER_COPY.stockNames[key], Math.round(ledger.stockDelta[key]))).join(" · ");
   const events = ledger.notableEvents.map(event => eventLine(state, event));
@@ -62,8 +57,18 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     key: `${ledger.year}:${ledger.season}`,
     title: SEASON_LEDGER_COPY.title(year, ledger.season),
     scenes,
+    scenesLine: SEASON_LEDGER_COPY.scenesLine(scenes.map(scene => scene.value === null ? scene.name : `${scene.name} ${scene.value}`)),
     lines: [SEASON_LEDGER_COPY.money(Math.round(ledger.income), Math.round(ledger.expense)), population, stock],
     events: events.length === 0 ? [SEASON_LEDGER_COPY.quiet] : events,
     hint: ledger.nextObjectiveHint === null ? null : { text: SEASON_LEDGER_COPY.hints[ledger.nextObjectiveHint], category: HINT_CATEGORY[ledger.nextObjectiveHint] },
   };
+}
+
+/**
+ * UI-4b: exactly one more season closed since the last one seen (the card opens), from the ends of the last two
+ * closed seasons. Not the count of closed seasons: the engine keeps eight, so after two years the count stands still.
+ * A load or a jump (the season before the new one is not the one last seen) opens nothing.
+ */
+export function seasonJustClosed(previousEnd: number | null, lastEnd: number | null, priorEnd: number | null): boolean {
+  return lastEnd !== null && lastEnd !== previousEnd && priorEnd === previousEnd;
 }

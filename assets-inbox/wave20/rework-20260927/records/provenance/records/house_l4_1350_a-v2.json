@@ -1,0 +1,135 @@
+{
+  "generation": {
+    "id": "house_l4_1350_a-v2",
+    "references": [
+      "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l4-v2.png",
+      "/tmp/astra-wave20-rework-20260927/era1350/house_l3_1350_a-v2.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Image1 is edit target L4 original house. Image2 is approved1350 architecture/style example, not target silhouette. Evolve IMAGE1 into AD1350 using the bold grammar of IMAGE2. L4 PROSPEROUS TOWNHOUSE: Exactly THREE occupied floors as image1, distinctly taller than two-floor houses. TWO strongly projecting upper floors with stepped jetty bands, a dark horizontal unglazed window band on EACH upper storey. Simple tall townhouse roof as image1, no crosswing/dormer. Deep physical 10-14 native pixel upper-floor cantilever above recessed ground floor, visible broad dark underside with protruding chunky joist ends and big triangular brackets. WIDE CONTINUOUS DARK HORIZONTAL UNGLAZED WINDOW BANDS subdivided by thick oak mullions, no isolated small tall windows. Large warm cream panels and regular box frame. Handmade FLAT red-brown clay peg tiles, no rounded pantiles. Same ground footprint/camera/ground corners as original house, upper outline may change. No chimney/flue/smoke/glass/people/scenery/platform/text. True transparent RGBA, reference painterly medieval English game style, upper-left lighting, subdued cream/oak palette. A bold silhouette change must read at source30% zoom.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-ab2e79dc-59a0-4e49-abcf-83b45699617b.png",
+    "raw": "/tmp/astra-wave20-rework-20260927/era1350/house_l4_1350_a-v2.png"
+  },
+  "registration": {
+    "id": "house_l4_1350_a-v2",
+    "level": 4,
+    "era": 1350,
+    "variant": "a",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l4_1350_a-v2.png",
+    "file": "assets/houses/house_l4_1350_a-v2.png",
+    "canvas": [
+      161,
+      161
+    ],
+    "pivot": [
+      81.97647527910686,
+      157.40510366826157
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.49791865539583047,
+    "worldScale": 0.49791865539583047,
+    "sourceGround": {
+      "left": [
+        323,
+        961
+      ],
+      "front": [
+        747,
+        1180
+      ],
+      "right": [
+        975,
+        1051
+      ]
+    },
+    "targetGround": {
+      "left": [
+        38,
+        129
+      ],
+      "front": [
+        96,
+        157
+      ],
+      "right": [
+        129,
+        139
+      ]
+    },
+    "matrix": [
+      [
+        0.14058378254386972,
+        -0.007340291317811676,
+        -0.3545418052528948
+      ],
+      [
+        -0.0031540314256222044,
+        0.13396031655006307,
+        1.2828879458653546
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        38,
+        129
+      ],
+      [
+        96.00000000000001,
+        157
+      ],
+      [
+        129,
+        139
+      ]
+    ],
+    "jettyOverhangNativePx": 13.355459341667624,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 125,
+      "scale": 0.9533051520041433,
+      "originalTop": 5.416045418052532,
+      "targetTop": 11
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 125,
+      "yScale": 0.9533051520041433,
+      "targetTop": 11
+    },
+    "lowerEdgeWarp": {
+      "joinY": 157,
+      "yScale": 0.5548908547062981,
+      "originalBottom": 160.6043124211492,
+      "targetBottom": 159,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      25.195980043582985,
+      147.7165959399014
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  "source_in_archive": "provenance/generated/house_l4_1350_a-v2-raw.png",
+  "source_sha256": "de45e13140222612dd5e7118e66b627ff2aa5ac3151a4937ad86a02a38d92fa4"
+}

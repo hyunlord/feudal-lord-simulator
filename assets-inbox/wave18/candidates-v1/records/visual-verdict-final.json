@@ -1,0 +1,17 @@
+{
+  "score": 93,
+  "verdict": "pass_with_caveats",
+  "category_match": "P0 muted hand-painted minimum HUD candidate assets",
+  "differences": [
+    "24px zone boundary and fine tool semantics need contextual text",
+    "Service border contrast depends on terrain",
+    "HUD backdrop is edited offline, not a runtime capture"
+  ],
+  "suggestions": [
+    "Use 36/48px for crisis icons",
+    "Keep visible reason text with placement chips"
+  ],
+  "reasoning": "Final41 dimensions, alpha and provenance verified; three final proof atlases inspected. Grayscale dots versus hatch/cross remain distinguishable. Overlap and eraser revised after independent review.",
+  "threshold": 90,
+  "next_actions": []
+}

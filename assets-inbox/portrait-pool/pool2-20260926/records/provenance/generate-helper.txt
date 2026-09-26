@@ -1,0 +1,24 @@
+async function(j) {
+ const root='/tmp/astra-portrait-pool2-work',q=s=>"'"+s.replaceAll("'","'\\''")+"'";
+ let refs=[...j.refs];
+ if((j.revision??1)>1){
+  const target=root+'/deliverable/portraits/'+j.id+'.png',snap=root+'/revisions/'+j.id+'-before-r'+j.revision+'.png';
+  const old=await tools.exec_command({cmd:"mkdir -p "+root+"/revisions\ncp "+q(target)+" "+q(snap)+"\ncp "+root+"/generation-records/"+j.id+".json "+root+"/revisions/"+j.id+"-before-r"+j.revision+".json",max_output_tokens:100});
+  if(old.exit_code!==0)throw Error('cannot snapshot '+j.id);
+  refs=refs.map(f=>f===target?snap:f);
+ }
+ for(let n=0;n<refs.length;n++){
+  if(refs[n].startsWith(root+'/deliverable/portraits/')){
+   const snap=root+'/reference-snapshots/'+j.id+'-r'+(j.revision??1)+'-ref'+n+'.png';
+   const cp=await tools.exec_command({cmd:"mkdir -p "+root+"/reference-snapshots\ncp "+q(refs[n])+" "+q(snap),max_output_tokens:100});if(cp.exit_code!==0)throw Error('refsnapshotfailed');
+   refs[n]=snap;
+  }
+ }
+ const r=await tools.image_gen__imagegen({prompt:j.prompt,referenced_image_paths:refs});
+ const source=r.output_hint?.match(/ as (\/Users\/[\s\S]+?\.png) by default/)?.[1];
+ if(!source)throw Error(j.id+' missing output path');
+ const rec={id:j.id,prompt:j.prompt,source_path:source,references:refs,method:j.method??'native_imagegen',revision:j.revision??1};
+ const cmd="cat > "+root+"/generation-records/"+j.id+".json <<'RECORD_END'\n"+JSON.stringify(rec,null,2)+"\nRECORD_END\n/tmp/astra-wave10-v2-work/raster resize "+q(source)+" "+root+"/deliverable/portraits/"+j.id+".png 256 256";
+ const saved=await tools.exec_command({cmd,max_output_tokens:100}); if(saved.exit_code!==0)throw Error(j.id+' savefailed');
+ text({id:j.id,saved:true});return j.id;
+}

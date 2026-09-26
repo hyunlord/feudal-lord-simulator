@@ -1,0 +1,289 @@
+[
+  {
+    "id": "dock_build",
+    "group": "main",
+    "file": "assets/main/dock_build.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "dock_ledger",
+    "group": "main",
+    "file": "assets/main/dock_ledger.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "dock_steward",
+    "group": "main",
+    "file": "assets/main/dock_steward.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pill_food_days",
+    "group": "main",
+    "file": "assets/main/pill_food_days.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pill_population",
+    "group": "main",
+    "file": "assets/main/pill_population.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pill_money",
+    "group": "main",
+    "file": "assets/main/pill_money.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "reason_tree",
+    "group": "reasons",
+    "file": "assets/reasons/reason_tree.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "reason_no_road",
+    "group": "reasons",
+    "file": "assets/reasons/reason_no_road.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "reason_overlap",
+    "group": "reasons",
+    "file": "assets/reasons/reason_overlap.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "reason_water",
+    "group": "reasons",
+    "file": "assets/reasons/reason_water.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "reason_slope_rock",
+    "group": "reasons",
+    "file": "assets/reasons/reason_slope_rock.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "reason_wall_forbidden",
+    "group": "reasons",
+    "file": "assets/reasons/reason_wall_forbidden.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "reason_zone_forbidden",
+    "group": "reasons",
+    "file": "assets/reasons/reason_zone_forbidden.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "reason_material_shortage",
+    "group": "reasons",
+    "file": "assets/reasons/reason_material_shortage.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pattern_ok",
+    "group": "patterns",
+    "file": "assets/patterns/pattern_ok.png",
+    "width": 64,
+    "height": 32
+  },
+  {
+    "id": "pattern_blocked_hatch",
+    "group": "patterns",
+    "file": "assets/patterns/pattern_blocked_hatch.png",
+    "width": 64,
+    "height": 32
+  },
+  {
+    "id": "pattern_blocked_cross",
+    "group": "patterns",
+    "file": "assets/patterns/pattern_blocked_cross.png",
+    "width": 64,
+    "height": 32
+  },
+  {
+    "id": "pattern_service_range_edge",
+    "group": "patterns",
+    "file": "assets/patterns/pattern_service_range_edge.png",
+    "width": 128,
+    "height": 16
+  },
+  {
+    "id": "zone_brush",
+    "group": "zone",
+    "file": "assets/zone/zone_brush.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "zone_polygon",
+    "group": "zone",
+    "file": "assets/zone/zone_polygon.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "zone_erase",
+    "group": "zone",
+    "file": "assets/zone/zone_erase.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "zone_undo",
+    "group": "zone",
+    "file": "assets/zone/zone_undo.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "zone_redo",
+    "group": "zone",
+    "file": "assets/zone/zone_redo.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "zone_size_small",
+    "group": "zone",
+    "file": "assets/zone/zone_size_small.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "zone_size_large",
+    "group": "zone",
+    "file": "assets/zone/zone_size_large.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "zone_paint_forbidden",
+    "group": "zone",
+    "file": "assets/zone/zone_paint_forbidden.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "crisis_food_shortage",
+    "group": "crisis",
+    "file": "assets/crisis/crisis_food_shortage.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "crisis_construction_blocked",
+    "group": "crisis",
+    "file": "assets/crisis/crisis_construction_blocked.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "crisis_storage_full",
+    "group": "crisis",
+    "file": "assets/crisis/crisis_storage_full.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "crisis_household_leaving",
+    "group": "crisis",
+    "file": "assets/crisis/crisis_household_leaving.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "crisis_fire",
+    "group": "crisis",
+    "file": "assets/crisis/crisis_fire.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "crisis_upkeep_unpaid",
+    "group": "crisis",
+    "file": "assets/crisis/crisis_upkeep_unpaid.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "hud_hide",
+    "group": "misc",
+    "file": "assets/misc/hud_hide.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "layer_lock_badge",
+    "group": "misc",
+    "file": "assets/misc/layer_lock_badge.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pulse_ring",
+    "group": "misc",
+    "file": "assets/misc/pulse_ring.png",
+    "width": 288,
+    "height": 96
+  },
+  {
+    "id": "confirm_check_touch",
+    "group": "misc",
+    "file": "assets/misc/confirm_check_touch.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "cancel_touch",
+    "group": "misc",
+    "file": "assets/misc/cancel_touch.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pill_season_spring",
+    "group": "reused",
+    "file": "assets/reused/pill_season_spring.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pill_season_summer",
+    "group": "reused",
+    "file": "assets/reused/pill_season_summer.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pill_season_autumn",
+    "group": "reused",
+    "file": "assets/reused/pill_season_autumn.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "pill_season_winter",
+    "group": "reused",
+    "file": "assets/reused/pill_season_winter.png",
+    "width": 96,
+    "height": 96
+  }
+]

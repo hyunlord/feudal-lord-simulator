@@ -1,20 +1,13 @@
 import { UiIcon } from "../UiIcon";
-import type { SceneKey, SeasonLedgerCardModel } from "../seasonLedgerCard";
+import type { SeasonLedgerCardModel } from "../seasonLedgerCard";
 import { SEASON_LEDGER_COPY } from "../seasonLedgerCopy.ko";
 import { wave8ContentStyle, wave8FrameLayerStyle } from "../wave8Art";
+import { seasonSceneStyle } from "../wave19Art";
 
 // UI-3 season ledger card (S-28, a modal: time stops while it is up). The Wave 8 scroll: three scenes (the season's
-// biggest changes) in its header slots, then the numbers, what happened and the next objective.
-function SceneIcon({ scene }: { readonly scene: SceneKey }) {
-  switch (scene) {
-    case "population": return <UiIcon sheet="resource" cell="population" size={24} />;
-    case "bread": return <UiIcon sheet="resource" cell="bread" size={24} />;
-    case "wheat": return <UiIcon sheet="building" cell="field" size={24} />;
-    case "timber": return <UiIcon sheet="resource" cell="timber" size={24} />;
-    case "stone": return <UiIcon sheet="resource" cell="stone" size={24} />;
-    case "coin": return <UiIcon sheet="resource" cell="coin" size={24} />;
-  }
-}
+// biggest changes, UI-4b: Wave 19 icons chosen from the history ledger) in its header slots, their names under the
+// title (no hover-only meaning), then the numbers, what happened and the next objective.
+const SCENE_ICON_PX = 30;
 
 export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }: {
   readonly model: SeasonLedgerCardModel; readonly onResume: () => void; readonly onHint: () => void;
@@ -25,12 +18,13 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
       <section className="season-ledger-card" role="dialog" aria-modal="true" aria-label={model.title} data-season={model.key}>
         <span className="season-ledger-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_season_ledger")} />
         <ol className="season-ledger-scenes" aria-label={SEASON_LEDGER_COPY.label}>
-          {model.scenes.map(scene => <li key={scene.key} className="season-ledger-scene" data-scene={scene.key}>
-            <SceneIcon scene={scene.key} /><span className="season-ledger-scene-name">{SEASON_LEDGER_COPY.scene[scene.key]}</span>
-            <strong>{scene.value}</strong></li>)}
+          {model.scenes.map(scene => <li key={scene.id} className="season-ledger-scene" data-scene={scene.id}>
+            <span className="season-ledger-scene-icon" role="img" aria-label={scene.name} style={seasonSceneStyle(scene.id, SCENE_ICON_PX)} />
+            {scene.value === null ? null : <strong>{scene.value}</strong>}</li>)}
         </ol>
         <div className="season-ledger-body" style={wave8ContentStyle("frame_season_ledger")}>
           <h2>{model.title}</h2>
+          <p className="season-ledger-scenes-line">{model.scenesLine}</p>
           {model.lines.map(line => <p key={line} className="season-ledger-line">{line}</p>)}
           <ul className="season-ledger-events">{model.events.map(event => <li key={event}>{event}</li>)}</ul>
           <div className="season-ledger-actions">

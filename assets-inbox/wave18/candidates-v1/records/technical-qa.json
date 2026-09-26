@@ -1,0 +1,446 @@
+{
+  "assets": 41,
+  "new": 37,
+  "reused": 4,
+  "proofs": 3,
+  "checks": [
+    {
+      "id": "dock_build",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5206,
+      "visiblePixels": 4010,
+      "visibleEdgePixels": 0,
+      "sha256": "9e26630219c4373959beeff825fdf651034fd0792ef0c6db6ec41f0e6b0bdf56"
+    },
+    {
+      "id": "dock_ledger",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4782,
+      "visiblePixels": 4434,
+      "visibleEdgePixels": 0,
+      "sha256": "c144c4c7ed1f941187a110be65736daf485b5d4b8a803d6b05da5bdd8b848836"
+    },
+    {
+      "id": "dock_steward",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5682,
+      "visiblePixels": 3534,
+      "visibleEdgePixels": 0,
+      "sha256": "d10f54f515b64d1d7b6a0d8436ff1bdaac552d46045ec49363115bbd19e33883"
+    },
+    {
+      "id": "pill_food_days",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4582,
+      "visiblePixels": 4634,
+      "visibleEdgePixels": 0,
+      "sha256": "1d242e4a04928ca18607ae4c164716768cf0e6c05a53fb7fd15be51eebdef7ab"
+    },
+    {
+      "id": "pill_population",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5034,
+      "visiblePixels": 4182,
+      "visibleEdgePixels": 0,
+      "sha256": "1ba597a5c5f1e0bbe2e234430c48d4b885cbbe1c9791c2482fd31f943622b910"
+    },
+    {
+      "id": "pill_money",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4203,
+      "visiblePixels": 5013,
+      "visibleEdgePixels": 0,
+      "sha256": "e4e064fe40919e2affb0943067235db149a236be50c7e52d6af3016f953da144"
+    },
+    {
+      "id": "reason_tree",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5369,
+      "visiblePixels": 3847,
+      "visibleEdgePixels": 0,
+      "sha256": "729b679271fbc4eaa40082e77a1c8c2868f71b1073707635f764d10399cdb392"
+    },
+    {
+      "id": "reason_no_road",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 7093,
+      "visiblePixels": 2123,
+      "visibleEdgePixels": 0,
+      "sha256": "bc9fc7f37855a85e15d022398305a2059465466d0f5d15fb3cefd50d71ab356f"
+    },
+    {
+      "id": "reason_overlap",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5783,
+      "visiblePixels": 3433,
+      "visibleEdgePixels": 0,
+      "sha256": "e475ed010253c05a103d81637bc2dffc56b569d1e6ab5d426eefe64d24d03431"
+    },
+    {
+      "id": "reason_water",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6889,
+      "visiblePixels": 2327,
+      "visibleEdgePixels": 0,
+      "sha256": "3e7d9c28501d9a75316fa98ec6fea26b0cafbe21842deb52667e0f44cb25df78"
+    },
+    {
+      "id": "reason_slope_rock",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5921,
+      "visiblePixels": 3295,
+      "visibleEdgePixels": 0,
+      "sha256": "f9ab8d7175ee3f708b75baac4769e41dd8a1e0568812961d75a1b9496c17e86c"
+    },
+    {
+      "id": "reason_wall_forbidden",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4279,
+      "visiblePixels": 4937,
+      "visibleEdgePixels": 0,
+      "sha256": "c1ccc2afd808db9d70bebf97f4c3114b497a4666f5daefc4894868f0693bdbb0"
+    },
+    {
+      "id": "reason_zone_forbidden",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6360,
+      "visiblePixels": 2856,
+      "visibleEdgePixels": 0,
+      "sha256": "9c959c509af7e8d1774d7edbb4333998079169d0623b7d375086d33486a43aa2"
+    },
+    {
+      "id": "reason_material_shortage",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5970,
+      "visiblePixels": 3246,
+      "visibleEdgePixels": 0,
+      "sha256": "89065db518b7f3fdbaaaf17b5c9a27b8210ed240b62973a41f2bddead5e6735e"
+    },
+    {
+      "id": "pattern_ok",
+      "width": 64,
+      "height": 32,
+      "channels": 4,
+      "transparentPixels": 1984,
+      "visiblePixels": 64,
+      "visibleEdgePixels": 0,
+      "sha256": "e4262411b60f1cb56067d16eef58f67f0f91392de5a8ba381832f5eb560df901"
+    },
+    {
+      "id": "pattern_blocked_hatch",
+      "width": 64,
+      "height": 32,
+      "channels": 4,
+      "transparentPixels": 1664,
+      "visiblePixels": 384,
+      "visibleEdgePixels": 1,
+      "sha256": "bc593738f230d12cab565e40413b1967e1e404bb0542aaa085593d0949532554"
+    },
+    {
+      "id": "pattern_blocked_cross",
+      "width": 64,
+      "height": 32,
+      "channels": 4,
+      "transparentPixels": 1408,
+      "visiblePixels": 640,
+      "visibleEdgePixels": 2,
+      "sha256": "853ca606b7edbdeec36c8d076dfcec79f49f75e6261541dd7a3bfb6ed560fea4"
+    },
+    {
+      "id": "pattern_service_range_edge",
+      "width": 128,
+      "height": 16,
+      "channels": 4,
+      "transparentPixels": 1920,
+      "visiblePixels": 128,
+      "visibleEdgePixels": 0,
+      "sha256": "9bedd3699eecbe920ce30c1a3997945449fc466dd5ba32d29063ff44260693ab"
+    },
+    {
+      "id": "zone_brush",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6499,
+      "visiblePixels": 2717,
+      "visibleEdgePixels": 0,
+      "sha256": "f6a40d2f9aeb7fcd7accbf92dc0d53a8725ad97e3961e423444e11687233a463"
+    },
+    {
+      "id": "zone_polygon",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 7214,
+      "visiblePixels": 2002,
+      "visibleEdgePixels": 0,
+      "sha256": "dc1eae2f0505bb6b5d4c74da51b667d8daab24c957c674b4eaa43e6283d8b3ab"
+    },
+    {
+      "id": "zone_erase",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6875,
+      "visiblePixels": 2341,
+      "visibleEdgePixels": 0,
+      "sha256": "b25b53d3613f1bce5197e4b35cd0d0f53098d10d565478ab4336c986a9b845d0"
+    },
+    {
+      "id": "zone_undo",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6804,
+      "visiblePixels": 2412,
+      "visibleEdgePixels": 0,
+      "sha256": "bdf1c1c861525ca76d2b6c0c630b55a5a5ef2b248f951b850efc5f9f0d60bd5b"
+    },
+    {
+      "id": "zone_redo",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6670,
+      "visiblePixels": 2546,
+      "visibleEdgePixels": 0,
+      "sha256": "f3e5f681dc16d8c8c2a6f7e8b29f3a1f349ec0d986062516c3413d93346f0b96"
+    },
+    {
+      "id": "zone_size_small",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 8444,
+      "visiblePixels": 772,
+      "visibleEdgePixels": 0,
+      "sha256": "d79b9520fa076f0345c96c2f45e1057b56a3f2a4009f94535c0ac58f83477b76"
+    },
+    {
+      "id": "zone_size_large",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5028,
+      "visiblePixels": 4188,
+      "visibleEdgePixels": 0,
+      "sha256": "0b2c61438b0ab26e14d909866ea76f3e8d553444ba7a889b012725a06da21b0e"
+    },
+    {
+      "id": "zone_paint_forbidden",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 3959,
+      "visiblePixels": 5257,
+      "visibleEdgePixels": 0,
+      "sha256": "9cd66e634ce1eeb0a95c27f021841f689874daca4c5f635221b1370241035487"
+    },
+    {
+      "id": "crisis_food_shortage",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4819,
+      "visiblePixels": 4397,
+      "visibleEdgePixels": 0,
+      "sha256": "54927e1f3785334679eeb706a7a5972cc0b3f0c0ea5a29c73d58c1c347e7340e"
+    },
+    {
+      "id": "crisis_construction_blocked",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5458,
+      "visiblePixels": 3758,
+      "visibleEdgePixels": 0,
+      "sha256": "1898fdbe3b9339bcff7034a3af27d40ec884da4ed2779d4381d23d6f22123708"
+    },
+    {
+      "id": "crisis_storage_full",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4270,
+      "visiblePixels": 4946,
+      "visibleEdgePixels": 0,
+      "sha256": "1377a0abf2650efb45e369190259266ed2e27bdba50eee24a8067bb2cac7b32d"
+    },
+    {
+      "id": "crisis_household_leaving",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6459,
+      "visiblePixels": 2757,
+      "visibleEdgePixels": 0,
+      "sha256": "94a4d9579926f6d210abc59b4b0449cd2fcb32b74ccf90caae24ce73d41b6a4f"
+    },
+    {
+      "id": "crisis_fire",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5912,
+      "visiblePixels": 3304,
+      "visibleEdgePixels": 0,
+      "sha256": "40905b23a78a175eb2f25e04bfa1c988606f315140da4a56a3d8b3074856ee63"
+    },
+    {
+      "id": "crisis_upkeep_unpaid",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5557,
+      "visiblePixels": 3659,
+      "visibleEdgePixels": 0,
+      "sha256": "994d2ad8f0e0dda6ee05c1ebd7dee16f4cd8d9382c05be1fd9ea29537bc8f642"
+    },
+    {
+      "id": "hud_hide",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6022,
+      "visiblePixels": 3194,
+      "visibleEdgePixels": 0,
+      "sha256": "d0237ac9278228ac1443a61603efc2cd0318c6ff82d8ad2c7d85c63bbdb5ae29"
+    },
+    {
+      "id": "layer_lock_badge",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5111,
+      "visiblePixels": 4105,
+      "visibleEdgePixels": 0,
+      "sha256": "daf7a3984859dab26bf63a6dac3507962ba3a76bbdefad94bd2175e4cd6e2c76"
+    },
+    {
+      "id": "pulse_ring",
+      "width": 288,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 23519,
+      "visiblePixels": 4129,
+      "visibleEdgePixels": 0,
+      "sha256": "614889c4445c1f7ca98c197a691f627f4887e12660f28d19ddd99eb62055cae3"
+    },
+    {
+      "id": "confirm_check_touch",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6903,
+      "visiblePixels": 2313,
+      "visibleEdgePixels": 0,
+      "sha256": "a23ae391d547c278d93d6c17d4048c3dde7ce80dbc07b03093c983b5dcb368f8"
+    },
+    {
+      "id": "cancel_touch",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5000,
+      "visiblePixels": 4216,
+      "visibleEdgePixels": 0,
+      "sha256": "c0f25dbb5b2add2f397b7560b086f413fd8fb391af270be74bc77e639f2974f9"
+    },
+    {
+      "id": "pill_season_spring",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5246,
+      "visiblePixels": 3970,
+      "visibleEdgePixels": 0,
+      "sha256": "a30747892f25ee0e78ed3d78ae4ab95bf5f5a46abd37cfd8c82b897a62cc8a40"
+    },
+    {
+      "id": "pill_season_summer",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4857,
+      "visiblePixels": 4359,
+      "visibleEdgePixels": 0,
+      "sha256": "a8dd90d884f92cf50bb2e174a69905be62fd1d26343593ebad15f01d2d6f46c7"
+    },
+    {
+      "id": "pill_season_autumn",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 5943,
+      "visiblePixels": 3273,
+      "visibleEdgePixels": 0,
+      "sha256": "1d963eca0e205276557884df033588a53e81c8090cb7411b5fecfdd499d60cb9"
+    },
+    {
+      "id": "pill_season_winter",
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4842,
+      "visiblePixels": 4374,
+      "visibleEdgePixels": 0,
+      "sha256": "9601f1dc5d0f953fb273f09085f4a6c16d482e57c18e1601ae74060347e48a32"
+    }
+  ],
+  "seasonPixelsIdentical": true,
+  "grayscaleRgbUnequalPixels": 0,
+  "patternQA": [
+    {
+      "id": "pattern_ok",
+      "alphaPeriodX": 8,
+      "pairs": 484,
+      "errors": 0
+    },
+    {
+      "id": "pattern_blocked_hatch",
+      "alphaPeriodX": 8,
+      "pairs": 484,
+      "errors": 0
+    },
+    {
+      "id": "pattern_blocked_cross",
+      "alphaPeriodX": 8,
+      "pairs": 484,
+      "errors": 0
+    },
+    {
+      "id": "pattern_service_range_edge",
+      "alphaPeriodX": 16,
+      "pairs": 1792,
+      "errors": 0
+    }
+  ]
+}

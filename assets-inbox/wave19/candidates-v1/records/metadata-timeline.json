@@ -1,0 +1,684 @@
+[
+  {
+    "id": "timeline_strip_base",
+    "file": "assets/timeline/timeline_strip_base.png",
+    "width": 1024,
+    "height": 64,
+    "description": "A very wide shallow horizontal chronology strip. Five equally broad muted chapter color bands: warm straw, sage, dusty bluegrey, russet, greyviolet. Thin brown outline and blank short tick marks on lower edge; absolutely no lettering or numerals. Straight rectangular strip isolated transparent. Wide 16:1 proportions.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset, timeline_strip_base. A very wide shallow horizontal chronology strip. Five equally broad muted chapter color bands: warm straw, sage, dusty bluegrey, russet, greyviolet. Thin brown outline and blank short tick marks on lower edge; absolutely no lettering or numerals. Straight rectangular strip isolated transparent. Wide 16:1 proportions. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament, low chroma hand-painted matte gouache, warm parchment, thin dark brown outlines. Not modern vector. Output genuinely transparent RGBA outside object. No writing, numbers, watermark, UI labels. Entire object fully visible with generous transparent margin.",
+        "rawFile": "raw/timeline/timeline_strip_base.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 17,
+        "top": 437,
+        "width": 1552,
+        "height": 119
+      },
+      "target": [
+        1024,
+        64
+      ],
+      "padding": 0,
+      "resize": "fill native panel aspect",
+      "sourceSize": [
+        1586,
+        992
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        1024,
+        64
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "timeline_pin_now",
+    "file": "assets/timeline/timeline_pin_now.png",
+    "width": 96,
+    "height": 96,
+    "description": "A solid muted russet downward pointer arrowhead on a short upright stem with a small gold round cap. Current-time timeline pin. Strong simple downward silhouette.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset timeline_pin_now. A solid muted russet downward pointer arrowhead on a short upright stem with a small gold round cap. Current-time timeline pin. Strong simple downward silhouette. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated symbol centered, square canvas, generous transparent margins. Genuine transparent RGBA background. No text, no numbers, no watermark, no scenery.",
+        "rawFile": "raw/timeline/timeline_pin_now.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 427,
+        "top": 296,
+        "width": 398,
+        "height": 661
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "timeline_pin_select",
+    "file": "assets/timeline/timeline_pin_select.png",
+    "width": 96,
+    "height": 96,
+    "description": "A hollow dark brown diamond selection cursor with thick warm gold rim and empty transparent center. Short downward point. Visibly different from solid now pointer.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset timeline_pin_select. A hollow dark brown diamond selection cursor with thick warm gold rim and empty transparent center. Short downward point. Visibly different from solid now pointer. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated symbol centered, square canvas, generous transparent margins. Genuine transparent RGBA background. No text, no numbers, no watermark, no scenery.",
+        "rawFile": "raw/timeline/timeline_pin_select.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 262,
+        "top": 223,
+        "width": 730,
+        "height": 794
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "timeline_marker_decision",
+    "file": "assets/timeline/timeline_marker_decision.png",
+    "width": 96,
+    "height": 96,
+    "description": "Single compact dark russet wax seal in a DIAMOND silhouette with simple recessed central cross-free dot. No document, no letters. Decision timeline marker.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset timeline_marker_decision. Single compact dark russet wax seal in a DIAMOND silhouette with simple recessed central cross-free dot. No document, no letters. Decision timeline marker. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated symbol centered, square canvas, generous transparent margins. Genuine transparent RGBA background. No text, no numbers, no watermark, no scenery.",
+        "rawFile": "raw/timeline/timeline_marker_decision.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 346,
+        "top": 326,
+        "width": 563,
+        "height": 583
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "timeline_marker_event",
+    "file": "assets/timeline/timeline_marker_event.png",
+    "width": 96,
+    "height": 96,
+    "description": "Single irregular eight-point rust red burst with pale center. Event timeline marker, bold starburst silhouette, no letters no symbols inside.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset timeline_marker_event. Single irregular eight-point rust red burst with pale center. Event timeline marker, bold starburst silhouette, no letters no symbols inside. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated symbol centered, square canvas, generous transparent margins. Genuine transparent RGBA background. No text, no numbers, no watermark, no scenery.",
+        "rawFile": "raw/timeline/timeline_marker_event.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 215,
+        "top": 181,
+        "width": 825,
+        "height": 831
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "timeline_marker_era",
+    "file": "assets/timeline/timeline_marker_era.png",
+    "width": 96,
+    "height": 96,
+    "description": "Single thick dark oak medieval gateway silhouette with two stout square posts and one flat lintel, clear large open arch passage. Era timeline marker.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset timeline_marker_era. Single thick dark oak medieval gateway silhouette with two stout square posts and one flat lintel, clear large open arch passage. Era timeline marker. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated symbol centered, square canvas, generous transparent margins. Genuine transparent RGBA background. No text, no numbers, no watermark, no scenery.",
+        "rawFile": "raw/timeline/timeline_marker_era.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 160,
+        "top": 207,
+        "width": 934,
+        "height": 811
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "timeline_marker_milestone",
+    "file": "assets/timeline/timeline_marker_milestone.png",
+    "width": 96,
+    "height": 96,
+    "description": "One muted ochre triangular pennant flying right on short dark vertical pole with round base. Milestone timeline marker.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset timeline_marker_milestone. One muted ochre triangular pennant flying right on short dark vertical pole with round base. Milestone timeline marker. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated symbol centered, square canvas, generous transparent margins. Genuine transparent RGBA background. No text, no numbers, no watermark, no scenery.",
+        "rawFile": "raw/timeline/timeline_marker_milestone.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 365,
+        "top": 220,
+        "width": 632,
+        "height": 812
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "timeline_marker_person",
+    "file": "assets/timeline/timeline_marker_person.png",
+    "width": 96,
+    "height": 96,
+    "description": "One dark brown circular medallion enclosing a simple pale head-and-shoulders bust silhouette, large head, no detailed face. Person timeline marker.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset timeline_marker_person. One dark brown circular medallion enclosing a simple pale head-and-shoulders bust silhouette, large head, no detailed face. Person timeline marker. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated symbol centered, square canvas, generous transparent margins. Genuine transparent RGBA background. No text, no numbers, no watermark, no scenery.",
+        "rawFile": "raw/timeline/timeline_marker_person.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 201,
+        "top": 194,
+        "width": 850,
+        "height": 839
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "timeline_zoom_handle",
+    "file": "assets/timeline/timeline_zoom_handle.png",
+    "width": 96,
+    "height": 96,
+    "description": "Single small upright rounded parchment slider handle bounded thick brown edge, three bold vertical dark brown grip grooves. No arrows, no letters. Strong narrow capsule silhouette.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset timeline_zoom_handle. Single small upright rounded parchment slider handle bounded thick brown edge, three bold vertical dark brown grip grooves. No arrows, no letters. Strong narrow capsule silhouette. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated symbol centered, square canvas, generous transparent margins. Genuine transparent RGBA background. No text, no numbers, no watermark, no scenery.",
+        "rawFile": "raw/timeline/timeline_zoom_handle.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 489,
+        "top": 243,
+        "width": 276,
+        "height": 758
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes",
+      "caveat": "Narrow visual handle is not touch hitbox; runtime should supply48px hit target."
+    }
+  },
+  {
+    "id": "frame_decision_compare",
+    "file": "assets/timeline/frame_decision_compare.png",
+    "width": 512,
+    "height": 240,
+    "description": "Wide 512:240 rectangular parchment comparison panel with restrained brown double outer rule, modest squared corners, three equal blank columns separated by thin brown vertical rules. First column a faint muted ochre heading recess, second warm parchment, third faint sage heading recess. No text/icons/numbers at all. Edge thickness proportional 12px on 512wide; corner details only within24px. Calm uniform parchment interior suitable for stretchable nine slice; dividers are fixed native layout.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset frame_decision_compare. Wide 512:240 rectangular parchment comparison panel with restrained brown double outer rule, modest squared corners, three equal blank columns separated by thin brown vertical rules. First column a faint muted ochre heading recess, second warm parchment, third faint sage heading recess. No text/icons/numbers at all. Edge thickness proportional 12px on 512wide; corner details only within24px. Calm uniform parchment interior suitable for stretchable nine slice; dividers are fixed native layout. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated asset centered with generous transparent outer margins. Genuine transparent RGBA outside object. No text, no numbers, no watermark, no scenery. Wide landscape panel, three BLANK columns with straight rules.",
+        "rawFile": "raw/timeline/frame_decision_compare.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 48,
+        "top": 107,
+        "width": 1733,
+        "height": 619
+      },
+      "target": [
+        512,
+        240
+      ],
+      "padding": 0,
+      "resize": "fill native panel aspect",
+      "sourceSize": [
+        1829,
+        860
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        512,
+        240
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    },
+    "nineSlice": {
+      "left": 24,
+      "right": 24,
+      "top": 24,
+      "bottom": 24,
+      "layoutNote": "Outer frame stretches; internal native three-column divisions are baked and should not be treated as responsive column layout."
+    }
+  },
+  {
+    "id": "icon_predicted",
+    "file": "assets/timeline/icon_predicted.png",
+    "width": 96,
+    "height": 96,
+    "description": "One open almond-shaped eye outlined brown with simple gold iris, with a small hollow dashed outline crescent above it suggesting foresight. Predicted outcome symbol. Eye silhouette dominant, no text.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset icon_predicted. One open almond-shaped eye outlined brown with simple gold iris, with a small hollow dashed outline crescent above it suggesting foresight. Predicted outcome symbol. Eye silhouette dominant, no text. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated asset centered with generous transparent outer margins. Genuine transparent RGBA outside object. No text, no numbers, no watermark, no scenery. Square canvas.",
+        "rawFile": "raw/timeline/icon_predicted.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 261,
+        "top": 214,
+        "width": 733,
+        "height": 731
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes",
+      "caveat": "Eye denotes foresight, exact predicted meaning needs UI context; dashed crescent becomes subtle24px."
+    }
+  },
+  {
+    "id": "icon_actual",
+    "file": "assets/timeline/icon_actual.png",
+    "width": 96,
+    "height": 96,
+    "description": "One stout brown boot print with pale ochre sole and dark heel block, upright slightly angled right. Actual outcome physical footprint, simple unmistakable solid sole shape. No checkmark or text.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset icon_actual. One stout brown boot print with pale ochre sole and dark heel block, upright slightly angled right. Actual outcome physical footprint, simple unmistakable solid sole shape. No checkmark or text. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated asset centered with generous transparent outer margins. Genuine transparent RGBA outside object. No text, no numbers, no watermark, no scenery. Square canvas.",
+        "rawFile": "raw/timeline/icon_actual.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 376,
+        "top": 163,
+        "width": 555,
+        "height": 931
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes",
+      "caveat": "Footprint denotes realized trace; exact actual outcome meaning needs UI context."
+    }
+  },
+  {
+    "id": "icon_delta_up",
+    "file": "assets/timeline/icon_delta_up.png",
+    "width": 96,
+    "height": 96,
+    "description": "One large thick upward arrow, muted sage green fill, brown outline, tiny handpainted grain. Clear triangular up arrowhead, straight broad stem. No other objects/text.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset icon_delta_up. One large thick upward arrow, muted sage green fill, brown outline, tiny handpainted grain. Clear triangular up arrowhead, straight broad stem. No other objects/text. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated asset centered with generous transparent outer margins. Genuine transparent RGBA outside object. No text, no numbers, no watermark, no scenery. Square canvas.",
+        "rawFile": "raw/timeline/icon_delta_up.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 283,
+        "top": 176,
+        "width": 687,
+        "height": 901
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  },
+  {
+    "id": "icon_delta_down",
+    "file": "assets/timeline/icon_delta_down.png",
+    "width": 96,
+    "height": 96,
+    "description": "One large thick downward arrow, muted dusty russet fill, brown outline, tiny handpainted grain. Clear triangular down arrowhead, straight broad stem. No other objects/text.",
+    "generationRecords": [
+      {
+        "prompt": "Create one raster game UI candidate asset icon_delta_down. One large thick downward arrow, muted dusty russet fill, brown outline, tiny handpainted grain. Clear triangular down arrowhead, straight broad stem. No other objects/text. Style reference only: attached project UI. C direction 80 percent function 20 percent medieval ornament. Handpainted matte gouache, low chroma warm ochre russet brown palette, bold simple silhouette legible24pixels, thin brown contour. ONE isolated asset centered with generous transparent outer margins. Genuine transparent RGBA outside object. No text, no numbers, no watermark, no scenery. Square canvas.",
+        "rawFile": "raw/timeline/icon_delta_down.png",
+        "referenceImages": [
+          "references/timeline-p0-resource-sheet.png",
+          "references/frame_chronicle_page.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": {
+      "alphaThreshold": 12,
+      "crop": {
+        "left": 243,
+        "top": 144,
+        "width": 769,
+        "height": 941
+      },
+      "target": [
+        96,
+        96
+      ],
+      "padding": 6,
+      "resize": "contain",
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    "qa": {
+      "status": "technical_pass",
+      "rgba": true,
+      "dimensions": [
+        96,
+        96
+      ],
+      "visual": "pass at24/32/48; five markers diamond seal,burst,gate,pennant,bust have distinct silhouettes"
+    }
+  }
+]

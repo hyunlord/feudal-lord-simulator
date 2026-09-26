@@ -1,0 +1,184 @@
+{
+  "status": "ASSESSED_WITH_CLASS_CONFUSIONS",
+  "correct": 60,
+  "total": 84,
+  "by_class": {
+    "artisan": [
+      15,
+      18
+    ],
+    "labour": [
+      12,
+      27
+    ],
+    "gentry": [
+      9,
+      9
+    ],
+    "clerical": [
+      6,
+      9
+    ],
+    "merchant": [
+      9,
+      9
+    ],
+    "poor_servant": [
+      9,
+      12
+    ]
+  },
+  "errors": [
+    {
+      "id": "I071_young",
+      "expected": "artisan",
+      "predicted": "labour",
+      "reason": "Soiled pale apron over coarse ochre dress, plain linen head covering."
+    },
+    {
+      "id": "I071_mature",
+      "expected": "artisan",
+      "predicted": "labour",
+      "reason": "Soiled pale apron over coarse ochre dress, plain linen head covering."
+    },
+    {
+      "id": "I071_old",
+      "expected": "artisan",
+      "predicted": "labour",
+      "reason": "Soiled pale apron over coarse ochre dress, plain linen head covering."
+    },
+    {
+      "id": "I075_young",
+      "expected": "clerical",
+      "predicted": "poor_servant",
+      "reason": "Plain faded brown tunic, dark coarse shoulder cape and simple cloth cap; no costly trim."
+    },
+    {
+      "id": "I075_mature",
+      "expected": "clerical",
+      "predicted": "poor_servant",
+      "reason": "Plain faded brown tunic, dark coarse shoulder cape and simple cloth cap; no costly trim."
+    },
+    {
+      "id": "I075_old",
+      "expected": "clerical",
+      "predicted": "poor_servant",
+      "reason": "Plain faded brown tunic, dark coarse shoulder cape and simple cloth cap; no costly trim."
+    },
+    {
+      "id": "I079_young",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Ragged brown hood and dark coarse tunic with conspicuous ochre shoulder patch."
+    },
+    {
+      "id": "I079_mature",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Ragged brown hood and dark coarse tunic with conspicuous ochre shoulder patch."
+    },
+    {
+      "id": "I079_old",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Ragged brown hood and dark coarse tunic with conspicuous ochre shoulder patch."
+    },
+    {
+      "id": "I080_young",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Faded undyed garments, frayed hood and visible coarse repairs."
+    },
+    {
+      "id": "I080_mature",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Faded undyed garments, frayed hood and visible coarse repairs."
+    },
+    {
+      "id": "I080_old",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Faded undyed garments, frayed hood and visible coarse repairs."
+    },
+    {
+      "id": "I081_young",
+      "expected": "labour",
+      "predicted": "artisan",
+      "reason": "Scuffed brown work apron over blue wool tunic and close-fitting practical cap."
+    },
+    {
+      "id": "I081_mature",
+      "expected": "labour",
+      "predicted": "artisan",
+      "reason": "Scuffed brown work apron over blue wool tunic and close-fitting practical cap."
+    },
+    {
+      "id": "I081_old",
+      "expected": "labour",
+      "predicted": "artisan",
+      "reason": "Scuffed brown work apron over blue wool tunic and close-fitting practical cap."
+    },
+    {
+      "id": "I086_young",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Faded brown overdress, coarse undyed sleeves and patched or abraded shoulders."
+    },
+    {
+      "id": "I086_mature",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Faded brown overdress, coarse undyed sleeves and patched or abraded shoulders."
+    },
+    {
+      "id": "I086_old",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Faded brown overdress, coarse undyed sleeves and patched or abraded shoulders."
+    },
+    {
+      "id": "I092_young",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Frayed brown hooded cloak, patched shoulder, coarse dull layers."
+    },
+    {
+      "id": "I092_mature",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Frayed brown hooded cloak, patched shoulder, coarse dull layers."
+    },
+    {
+      "id": "I092_old",
+      "expected": "labour",
+      "predicted": "poor_servant",
+      "reason": "Frayed brown hooded cloak, patched shoulder, coarse dull layers."
+    },
+    {
+      "id": "I096_young",
+      "expected": "poor_servant",
+      "predicted": "labour",
+      "reason": "Coarse brown sleeveless work garment over green wool shirt, plain belt and cap, shoulder patch."
+    },
+    {
+      "id": "I096_mature",
+      "expected": "poor_servant",
+      "predicted": "labour",
+      "reason": "Coarse brown sleeveless work garment over green wool shirt, plain belt and cap, shoulder patch."
+    },
+    {
+      "id": "I096_old",
+      "expected": "poor_servant",
+      "predicted": "labour",
+      "reason": "Coarse brown sleeveless work garment over green wool shirt, plain belt and cap, shoulder patch."
+    }
+  ],
+  "actual_prop_counts": {
+    "other": 57,
+    "none": 29,
+    "book_scroll": 6
+  },
+  "prop_count_metadata_match": true,
+  "method": "Independent reviewer saw all92 at256 and96 without roster/CSV/generation records. Clothing class inferred from garments/material/fur/headwear/posture, instructed to ignore props.84adultscored;childidentity8excluded. Subjective singleAIreview,not humanaccuracytest."
+}
