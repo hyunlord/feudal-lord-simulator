@@ -17,6 +17,7 @@ import { granaryCoverageTargetIds } from '../engine/autoplayFoodCoverage';
 import { BALANCE } from "../content/balanceConfig";
 import { mergeHouses } from "../engine/houseMerge";
 import { demolishHouse } from "../engine/houseDemolition";
+import { rebuildBurntHouse } from "../engine/fire";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
@@ -136,6 +137,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return mergeHouses(state, action.sourceBuildingId, action.targetBuildingId);
     case "demolish_house":
       return demolishHouse(state, action.buildingId);
+    case "rebuild_house":
+      return rebuildBurntHouse(state, action.buildingId);
     case "cancel_construction": {
       const routes = createSimulationRoutePorts(state);
       const result = cancelConstruction({

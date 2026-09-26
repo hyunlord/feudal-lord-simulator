@@ -57,6 +57,18 @@ export function createRoamingJunctionSeed(input: RoamingJunctionSeedInput): numb
   return avalanche(hash);
 }
 
+/** F0-B (EV-1): a deterministic 32-bit value from the state seed, a salt and integers (event schedule, weather, fire). */
+export function hashSeed(stateSeed: number, salt: string, ...values: readonly number[]): number {
+  let hash = mixNumber(mixString(FNV_OFFSET, salt), stateSeed);
+  for (const value of values) hash = mixNumber(hash, value);
+  return avalanche(hash);
+}
+
+/** F0-B: a deterministic roll in [0, 1000) (see `hashSeed`). */
+export function rollPermille(stateSeed: number, salt: string, ...values: readonly number[]): number {
+  return hashSeed(stateSeed, salt, ...values) % 1000;
+}
+
 function mixString(hash: number, value: string): number {
   let mixed = hash >>> 0;
 

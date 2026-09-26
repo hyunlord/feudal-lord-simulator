@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import { harvestYieldPermille } from "../src/engine/eventSchedule";
 import { gunzipSync } from "node:zlib";
 
 import { ARABLE_CONFIG } from "../src/content/arableConfig";
@@ -50,7 +51,12 @@ test("F5 a v9 save with four wheat farms opens as 16 arable cells and one farmst
     assert.ok(window.breadProduced > 0, `bread in every 2,400-tick window (tick ${current.tick})`);
     made += window.breadProduced;
   }
-  assert.ok(made >= OLD_RULES_BREAD_24000 * 0.95, `bread over 24,000 ticks ${made} ≥ 95% of the old rules' ${OLD_RULES_BREAD_24000}`);
+  // F0-B (EV-3, EV-5): the old rules had no weather; the harvests in the window bring in their share of the crop, so
+  // the old rules' bread is scaled by the mean share of the harvests in the window (seed 2: the 1304 rehearsal −30 %).
+  const years = Array.from({ length: 6 }, (_, index) => Math.floor(state.tick / 4000) + 1 + index);
+  const share = years.reduce((sum, year) => sum + harvestYieldPermille(state, year * 4000 + 2000), 0) / years.length / 1000;
+  assert.ok(made >= OLD_RULES_BREAD_24000 * share * 0.95,
+    `bread over 24,000 ticks ${made} ≥ 95% of the old rules' ${OLD_RULES_BREAD_24000} × the harvests' share ${share.toFixed(3)}`);
 });
 
 test("F6 the seed-2 walled town (21 wheat farms) migrates to five to seven farmsteads that reach every strip", () => {

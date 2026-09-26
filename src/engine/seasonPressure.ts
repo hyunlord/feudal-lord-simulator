@@ -27,6 +27,7 @@ import { withHouseholdMembers } from "../population/householdMembers";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { advanceHistoricalEras, calendar, scenarioOf } from "./scenarioState";
+import { eventForecast } from "./eventSchedule";
 import {
   SEASON_STOCK_KEYS,
   type NextObjectiveHint,
@@ -87,6 +88,11 @@ function nextObjectiveHint(state: GameState): NextObjectiveHint {
   if (state.houses.some(house => house.leavingSinceTick !== undefined) || seasonalFoodReserveShort(state, state.tick)) return "food_reserve";
   const reserve = harvestOutlookTicks(state);
   if (reserve !== null && reserve < ticksUntilNextHarvest(state.tick)) return "harvest_reserve";
+  // F0-B (EV-2): a rumoured or signed event asks for its preparation; burnt houses wait for rebuilding.
+  const coming = eventForecast(state).filter(entry => entry.stage === "rumour" || entry.stage === "sign");
+  if (coming.some(entry => entry.kind === "dearth")) return "dearth_reserve";
+  if (coming.some(entry => entry.kind === "fire")) return "fire_break";
+  if (state.houses.some(house => house.burntTick !== undefined)) return "rebuild";
   return state.houses.some(house => house.abandonedTick !== undefined) ? "resettle" : null;
 }
 
@@ -97,6 +103,8 @@ function closedEvents(tally: SeasonTally): SeasonEvent[] {
   if (tally.abandoned > 0) events.push({ kind: "households_abandoned", count: tally.abandoned });
   if (tally.resettled > 0) events.push({ kind: "households_resettled", count: tally.resettled });
   for (const era of tally.eras) events.push({ kind: "era_entered", eraId: era.eraId, forced: era.forced });
+  // F0-B (EV-9): the season's event lines — forecasts, arrivals and recoveries with their losses.
+  events.push(...(tally.events ?? []));
   return events;
 }
 

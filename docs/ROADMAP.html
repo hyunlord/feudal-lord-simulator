@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feudal Lord Simulator — 비전·화면·로드맵 v5.1</title>
+<style>
+:root{--ink:#2b2117;--paper:#f4ecd8;--oak:#5a3f28;--seal:#8f2b1f;--ok:#2f6b3a;--wip:#b06a12;--todo:#6b6b6b;--line:#d9ccb0;--blue:#2b4c7e}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Pretendard","Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:var(--ink);background:#faf6ec;line-height:1.5}
+header{background:var(--oak);color:var(--paper);padding:18px 28px}
+header h1{margin:0;font-size:22px}header p{margin:6px 0 0;opacity:.9;font-size:13px}
+nav{position:sticky;top:0;background:#fff8e6;border-bottom:1px solid var(--line);padding:8px 28px;font-size:13px;z-index:5}
+nav a{margin-right:14px;color:var(--oak);text-decoration:none;font-weight:600}
+main{max-width:1280px;margin:0 auto;padding:20px 28px 80px}
+section{margin-top:44px}
+h2{border-left:6px solid var(--seal);padding-left:10px;font-size:20px}
+h3{margin-top:26px;font-size:16px;color:var(--oak)}
+.card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:10px 0}
+.grid{display:grid;gap:12px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+th,td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+th{background:#f1e7cf}
+.pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;color:#fff}
+.done{background:var(--ok)}.wip{background:var(--wip)}.todo{background:var(--todo)}.gate{background:var(--seal)}.hold{background:#7a5c8f}
+.muted{color:#6b6b6b;font-size:12px}
+.wire{background:#5f6b52;border:2px solid #3f4a36;border-radius:6px;position:relative;height:300px;overflow:hidden;font-size:11px;color:#fff}
+.wire .ui{position:absolute;background:rgba(244,236,216,.92);color:#2b2117;border:1px solid #8a7550;border-radius:4px;padding:3px 6px;font-size:10.5px}
+.wire .dark{background:rgba(60,43,28,.92);color:#f4ecd8}
+.wire .ghost{position:absolute;border:2px dashed #e6d9a8;background:rgba(80,200,120,.35)}
+.wire .bad{position:absolute;background:repeating-linear-gradient(45deg,rgba(210,80,50,.55) 0 4px,rgba(210,80,50,.15) 4px 8px)}
+.wire .world{position:absolute;left:0;right:0;top:0;bottom:0;background:linear-gradient(160deg,#6e7a5b,#55634a 60%,#4c5a43)}
+.wire .cap{position:absolute;left:6px;bottom:4px;color:#f4ecd8;font-size:10px;opacity:.85}
+.legend span{margin-right:12px}
+.task{border-left:5px solid var(--todo)}.task.done{border-left-color:var(--ok)}.task.wip{border-left-color:var(--wip)}.task.gate{border-left-color:var(--seal)}
+.task b{font-size:14px}
+.chart{width:100%;height:220px}
+code{background:#f1e7cf;padding:1px 4px;border-radius:3px;font-size:12px}
+.note{background:#fff6dd;border-left:4px solid var(--wip);padding:8px 12px;margin:10px 0;font-size:13px}
+.phase{border:2px solid var(--oak);border-radius:10px;padding:12px 16px;margin:14px 0;background:#fffdf7}
+.phase h3{margin-top:4px}
+details summary{cursor:pointer;font-weight:600}
+.small{font-size:12px}
+</style>
+</head>
+<body>
+<header>
+<h1>Feudal Lord Simulator — 비전·최종 화면·구현 로드맵 <span class="small">v5.1 · 2026-09-26</span></h1>
+<p>잉글랜드 1300–1450 시장도시를 영주로서 키우는 등각 2D 건설·경영 게임. 이 문서는 <b>무엇을 만들고(비전·화면), 어떤 순서로(로드맵), 어떻게(작업 방식)</b> 만드는지의 단일 기준이다. 에이전트(Claude Code·Codex·Astra)는 작업 전 이 문서의 관련 절을 읽는다. 수정은 <code>docs/ROADMAP.html</code> 하단 "편집 규칙"을 따른다.</p>
+</header>
+<nav>
+<a href="#vision">1 비전</a><a href="#screens">2 최종 화면</a><a href="#systems">3 시스템 지도</a><a href="#run">4 한 판의 구조</a><a href="#roadmap">5 로드맵</a><a href="#method">6 작업 방식</a><a href="#risks">7 미결·리스크</a><a href="#edit">8 편집 규칙</a>
+</nav>
+<main>
+
+<section id="vision">
+<h2>1. 비전 — 어떤 게임인가</h2>
+<div class="card">
+<p><b>한 문장:</b> 플레이어는 1300년 잉글랜드 남부의 작은 장원을 물려받은 영주다. 150년 동안 촌락을 시장도시로 키우고, 대기근·전쟁·흑사병을 넘기며, 마지막에는 도시에 자치를 내줄지 가문의 지배를 지킬지를 결정한다.</p>
+<p><b>플레이어 판타지:</b> "내가 땅의 쓰임을 정하고, 사람들이 그 안에서 살아가는 것을 지켜보며, 위기 때 결정을 내리고, 그 결과가 연대기에 남는다."</p>
+</div>
+<div class="grid g3">
+<div class="card"><b>정체성 1 · 역사가 재료</b><br>대기근 1315, 전쟁 1337, 흑사병 1348, 재편 1380. 병목이 토지 → 돈 → 사람 → 권리로 옮겨 간다. 고증은 사치 금지법·염료·복식·문장·상인 표식까지 실제 자료로.</div>
+<div class="card"><b>정체성 2 · 조작 층위 셋</b><br><b>직접</b>(건물 하나) → <b>구역</b>(땅의 쓰임을 붓으로) → <b>방향</b>(권리·정책). 게임이 진행될수록 결정 단위가 커진다: "필지를 어디에?" → "어느 규모를 유지?" → "누가 통행세 권리를 쥐나?"</div>
+<div class="card"><b>정체성 3 · 보이는 시뮬레이션</b><br>규칙은 숫자가 아니라 세계에서 보인다. 수레가 자재를 부리고, 공사가 단계별로 오르고, 밭에 볏단이 쌓이고, 굶는 집은 연기가 꺼진다. 위기는 세계에서 먼저 보이고 UI가 뒤따른다.</div>
+<div class="card"><b>정체성 4 · 압력과 위기</b><br>게임은 대가를 청구한다. 보릿고개, 첫 화재, 흉년, 대기근. 위기는 새 수업이 아니라 이미 배운 루프의 시험이고 예고 → 도래 → 회복의 톱니로 온다. 실패는 게임 오버가 아니라 손실과 회복의 사다리.</div>
+<div class="card"><b>정체성 5 · 사람과 권리</b><br>후반은 건물이 아니라 사람과 권리의 게임. 상인 엘리트·공동체·국왕·교회가 청원하고 원한을 기록한다. 인물은 초상 풀과 노화 사슬로 수십 년을 산다. 문장과 상인 표식으로 기억된다.</div>
+<div class="card"><b>정체성 6 · 모든 것이 남는다</b><br>내 결정(대안·예측·실제), 사건, 인물의 생애, 주변 세력의 역사가 전부 기록 원장에 남고, 연대기·인물 전기·세력 연대기 화면에서 "그때는 어땠나"를 글과 그때의 지도로 본다. 설계: <code>docs/design/CHRONICLE_DESIGN.md</code></div>
+<div class="card"><b>하지 않을 것</b><br>전투 시뮬레이션, 실시간 전투 마이크로, 판타지·마법, 실존 도시·인물 복원, 과장된 공포·유혈, 현대식 UI 은유(격자 달력·로만 칼라 등), 강제 튜토리얼 모달.</div>
+</div>
+<h3>플랫폼·형식</h3>
+<div class="card">PC(Steam, Electron) 우선 + 태블릿(터치) + Steam Deck·패드. Canvas 2D 등각(2:1, 타일 128×64), 손그림 저채도. 한 판 = 장(章) 하나 60~120분, 캠페인 = 장 5개, 샌드박스 연속. 한국어·영어.</div>
+</section>
+
+<section id="screens">
+<h2>2. 최종 화면 — 상태별 모습</h2>
+<p class="muted">원칙: 평소엔 게임만 보인다. UI는 행동이 부를 때만 나타나고 끝나면 접힌다. 상시 정보는 결정에 필요한 4개뿐. 배치 가능 여부는 도구를 고른 뒤 세계 위에 색+패턴+이유로. (조사 15, UX-3 수정본)</p>
+<div class="grid g2">
+<div><div class="wire"><div class="world"></div>
+<div class="ui" style="left:8px;top:8px">봄 3주·1301 │ 인구 42 │ 식량 38일 │ 12£</div>
+<div class="ui" style="right:8px;top:8px">⏸ ▶ ▶▶</div>
+<div class="ui" style="left:8px;top:36px;opacity:.9">▸ 목표: 곡창 짓기 0/1</div>
+<div class="ui" style="right:8px;top:36px;background:rgba(143,43,31,.9);color:#fff">! 식량</div>
+<div class="ui dark" style="left:8px;bottom:8px">직접 │ 구역🔒 │ 방향🔒</div>
+<div class="ui dark" style="right:8px;bottom:8px">건설 │ 장부 │ 청지기</div>
+<div class="cap">평소 — UI 면적 ≤ 6%(PC)·8%(태블릿)</div></div></div>
+<div><div class="wire"><div class="world"></div>
+<div class="ui" style="left:8px;top:8px">봄 3주·1301 │ 인구 42 │ 식량 38일 │ 12£</div>
+<div class="ui" style="right:8px;top:8px">⏸ ▶ ▶▶</div>
+<div class="ui" style="left:70px;right:70px;bottom:56px;height:90px">건설 서랍 · [생활][길][생업][저장유통][공공신앙][방어][구역]<br>[오두막 목재 8][우물 석재 4][헛간 목재 20 · 잠김: 경작지 먼저]…</div>
+<div class="ui dark" style="left:8px;bottom:8px">직접 │ 구역🔒 │ 방향🔒</div>
+<div class="ui dark" style="right:8px;bottom:8px">건설 │ 장부 │ 청지기</div>
+<div class="cap">건설 서랍 — 건물을 고르면 즉시 닫히고 배치로</div></div></div>
+<div><div class="wire"><div class="world"></div>
+<div class="ui" style="left:8px;top:8px">봄 3주·1301 │ 인구 42 │ 식량 38일 │ 12£</div>
+<div class="ghost" style="left:230px;top:120px;width:90px;height:46px"></div>
+<div class="bad" style="left:330px;top:120px;width:60px;height:46px"></div>
+<div class="ui" style="left:330px;top:64px">오두막 · 목재 8/보유 11 · 배치 후 3<br>✗ 도로 연결 없음 — 길을 먼저</div>
+<div class="ui dark" style="left:8px;bottom:8px">Esc 취소 · R 회전 · 배치 후 연속</div>
+<div class="cap">배치 — 발판+1칸만 판정, 색+사선+이유 아이콘, 고스트 유지</div></div></div>
+<div><div class="wire"><div class="world"></div>
+<div class="ui" style="left:8px;top:8px">봄 3주·1301 │ 인구 42 │ 식량 38일 │ 12£</div>
+<div class="ui" style="left:8px;top:60px;width:44px;height:150px">붓<br>다각형<br>지우개<br>↶ ↷<br>크기</div>
+<div class="ghost" style="left:170px;top:90px;width:240px;height:120px;border-style:solid;background:rgba(200,180,80,.25)"></div>
+<div class="ui" style="left:70px;bottom:56px">구역: [필지] 경작지 목초지 과수원 · 칠할 수 있는 땅 밝게, 금지 어둡게+사선</div>
+<div class="ui dark" style="left:8px;bottom:8px">직접 │ <b>구역</b> │ 방향🔒</div>
+<div class="cap">구역 — 층위 전환은 처음부터 보임, 잠김이면 자물쇠+조건</div></div></div>
+<div><div class="wire"><div class="world"></div>
+<div class="ui" style="left:8px;top:8px">봄 3주·1301 │ 인구 42 │ 식량 38일 │ 12£</div>
+<div class="ui" style="right:8px;top:40px;width:210px;height:220px"><b>곡창 #2</b><br>용량 412/500<br>받는 품목 [✓밀][✓보리][✗빵]<br>밀 310 ▲+12/주 · 보리 102 ▼−4<br>쓰는 곳: 방앗간 #1 · 빵집 #1<br>[위치로] [품목 모두 끄기]</div>
+<div class="ui dark" style="left:8px;bottom:8px">직접 │ 구역 │ 방향🔒</div>
+<div class="cap">선택(inspector) — 한 번에 하나, 저장소는 품목별 재고</div></div></div>
+<div><div class="wire"><div class="world" style="filter:brightness(.55)"></div>
+<div class="ui" style="left:80px;right:80px;top:30px;bottom:30px;background:rgba(244,236,216,.97)"><b>1301년 겨울 결산</b>(자동 일시정지)<br>[세계 장면 3칸: 새 곡창 · 눈 덮인 밭 · 장날 시장]<br>수입 38 · 지출 27 · 빵 −120 · 밀 +40 · 인구 +3<br>청지기: "봄까지 빵이 21일분 모자랍니다"<br>다음 목표: 경작지 한 곳 더 → [계속]</div>
+<div class="cap">계절 결산 — 층 2(5분)와 층 4(2시간)를 잇는 접착제</div></div></div>
+<div><div class="wire"><div class="world" style="filter:brightness(.55)"></div>
+<div class="ui" style="left:120px;right:120px;top:20px;bottom:40px;background:rgba(244,236,216,.97)"><b>1315년 · 대기근</b> [삽화: 빈 그릇]<br>2년째 비 오는 여름. 수확 절반, 곡물값 세 배.<br>[구휼: 금고→빵 배급] [가격 통제] [방관] [투기: 곡창 판매]<br>각 선택의 예상: 이탈 −/금고 −, 상인 불만 +, …</div>
+<div class="cap">사건·결정 모달 — 자동 일시정지, 선택 후 직전 상태 복귀</div></div></div>
+<div><div class="wire"><div class="world" style="filter:brightness(.4)"></div>
+<div class="ui" style="left:60px;right:60px;top:16px;bottom:16px;background:rgba(244,236,216,.98)"><b>연대기 · 제1장 촌락에서 시장도시로 (1300–1318)</b><br>[채식 삽화] 정착 · 첫 화재 · 시장 특허 · 목책 · 대기근 · 구휼<br>"1305년 봄, 영주는 상인들의 시장권 청원을 조건부로 받아들였다…"<br>인구 12→88 · 필지 24 · 권리 2 · 잃은 가구 3<br>[제2장으로: 전쟁의 그늘 →]</div>
+<div class="cap">장 끝 — 연대기 한 쪽, 플레이어 결정 3개 인용, 다음 장 예고</div></div></div>
+</div>
+<h3>화면 면적 예산 (자동 관문)</h3>
+<table><tr><th>상태</th><th>PC 1280×800</th><th>태블릿 1180×820</th><th>비고</th></tr>
+<tr><td>평소</td><td>≤ 6%</td><td>≤ 8%</td><td>상태 알약·속도·목표 1장·층위·도크·위기 아이콘</td></tr>
+<tr><td>건설 서랍</td><td>≤ 15%</td><td>≤ 20%</td><td>건물 고르면 즉시 닫힘</td></tr>
+<tr><td>배치</td><td>≤ 6%</td><td>≤ 9%</td><td>월드 오버레이는 면적에서 제외</td></tr>
+<tr><td>구역</td><td>≤ 8%</td><td>≤ 12%</td><td></td></tr>
+<tr><td>선택·장부</td><td>≤ 18% / 25%</td><td>≤ 24% / 30%</td><td>한 번에 하나</td></tr>
+<tr><td>모달·결산</td><td colspan="2">예외 — 시간 정지 필수</td><td></td></tr></table>
+</section>
+
+<section id="systems">
+<h2>3. 시스템 지도 — 무엇이 있고 무엇이 없나</h2>
+<div class="legend muted"><span class="pill done">완료</span> <span class="pill wip">진행 중</span> <span class="pill todo">예정</span> <span class="pill hold">보류·설계 필요</span></div>
+<table>
+<tr><th style="width:130px">층</th><th>시스템</th><th style="width:90px">상태</th><th>화면에서 보이는 방식</th></tr>
+<tr><td rowspan="3">땅</td><td>64×64 타일, 곡선 도로·숲·물가·성벽 렌더(판정은 격자)</td><td><span class="pill done">완료</span></td><td>리본·윤곽·띠, 청크 캐시</td></tr>
+<tr><td>구역 붓(필지·경작지·목초지·과수원), frontage 필지 파생, 자동 채움</td><td><span class="pill done">완료</span></td><td>구역 층위에서만 진하게, 칠할 수 있는 땅 오버레이(UX-3)</td></tr>
+<tr><td>계절 자연(나무·과수·지면 사계절)</td><td><span class="pill todo">예정</span></td><td>INSTALL-15</td></tr>
+<tr><td rowspan="3">건물</td><td>주택 L0–L4 승급·하락·합필, 시설 20종, 변형</td><td><span class="pill done">완료</span></td><td>변형 시트, 하락 오버레이</td></tr>
+<tr><td>공사 4단계·자재 반입·완공 연출·계열별 키트</td><td><span class="pill wip">진행 중</span></td><td>F0-V 완료, INSTALL-11 진행</td></tr>
+<tr><td>남은 시설(여관·대장간·영주관·길드홀 등 29)</td><td><span class="pill todo">예정</span></td><td>Wave 12 확정, C·E단계 설치</td></tr>
+<tr><td rowspan="3">경제</td><td>장부(4계정·출처 추적), 돈 규칙(지대·좌판세·제분료·통행세·유지비)</td><td><span class="pill done">완료</span></td><td>재정 칸 → 장부 패널 · 배치 예측 줄(UI-3)</td></tr>
+<tr><td>경작지 띠 생산·헛간·방앗간 운반</td><td><span class="pill done">완료</span></td><td>이랑 상태, 볏단·자루·수레 적재물(INSTALL-7)</td></tr>
+<tr><td>에일 사슬(보리·말트·에일), 직물 7단계</td><td><span class="pill todo">예정</span></td><td>Wave 3 확정, C·E단계</td></tr>
+<tr><td rowspan="2">사람</td><td>가구 구성원(성별·나이대), 노동 배분, 유휴, 주민 이동(우물·시장·교회), 아이·노인 워커</td><td><span class="pill done">완료</span></td><td>워커 41종+, 소지품, 겨울 외투</td></tr>
+<tr><td>인물 시스템(이름·역할·초상·노화·문장), 청지기·청원자</td><td><span class="pill todo">예정</span></td><td>초상 풀 140장 확정, F1 인물 v0</td></tr>
+<tr><td rowspan="3">압력·사건</td><td>계절 결산, 실패 사다리 1~2단, 보릿고개, 대기근 준비도</td><td><span class="pill done">완료</span></td><td>결산 카드·압력 표시(UI-3)</td></tr>
+<tr><td>사건 뼈대: 예고 사다리, 첫 화재, 흉년, 날씨</td><td><span class="pill done">완료</span></td><td>UI-4 + Wave 9·16</td></tr>
+<tr><td>대기근 효과·대응, 첫 청원, 연대기, 1장 끝</td><td><span class="pill wip">진행 중</span></td><td>F0-C1</td></tr>
+<tr><td rowspan="2">권리·시대</td><td>시나리오·시대·달력 데이터(1년 4,000틱), 조건부 석벽</td><td><span class="pill done">완료</span></td><td>계절 띠(UI-3)</td></tr>
+<tr><td>권리 체계(특허·세력·원한), 2~5장 시대 사건, 실패 3~4단</td><td><span class="pill hold">설계 필요</span></td><td>Wave 14·17 확정, E단계</td></tr>
+<tr><td rowspan="2">플랫폼</td><td>입력 의도 계층, 터치·패드 번역기, 플랫폼 서비스, 저장 v13, 상시 플레이 서버, DGX 원격 실행</td><td><span class="pill done">완료</span></td><td></td></tr>
+<tr><td>Electron·Steam, Deck 실기, 컨트롤러 포커스, 영어</td><td><span class="pill todo">예정</span></td><td>P단계</td></tr>
+</table>
+</section>
+
+<section id="run">
+<h2>4. 한 판의 구조 — 5장, 긴장 곡선, 결정</h2>
+<svg class="chart" viewBox="0 0 1000 220" preserveAspectRatio="none">
+<rect x="0" y="0" width="1000" height="220" fill="#fffdf7"/>
+<g stroke="#d9ccb0"><line x1="60" y1="190" x2="980" y2="190"/><line x1="60" y1="30" x2="60" y2="190"/></g>
+<path d="M60,170 C110,160 130,150 160,120 C175,105 185,95 190,80 L200,160 C240,140 260,135 300,110 C320,95 330,85 340,60 L355,150 C400,140 420,130 470,100 C490,85 500,70 510,40 L530,150 C580,130 620,125 680,100 C700,90 710,80 720,60 L740,140 C800,120 860,110 940,70" fill="none" stroke="#8f2b1f" stroke-width="3"/>
+<g font-size="12" fill="#2b2117" text-anchor="middle">
+<text x="130" y="210">1장 촌락→시장도시 1300–18</text><text x="330" y="210">2장 전쟁의 그늘 1318–47</text><text x="510" y="210">3장 흑사병 1348–62</text><text x="700" y="210">4장 재편 1362–1400</text><text x="900" y="210">5장 자치와 유산 1400–50</text>
+<text x="190" y="70" fill="#8f2b1f">대기근</text><text x="340" y="50" fill="#8f2b1f">해안 습격</text><text x="510" y="30" fill="#8f2b1f">흑사병</text><text x="720" y="50" fill="#8f2b1f">반란 압력</text>
+</g>
+<text x="20" y="40" font-size="11" fill="#6b6b6b" transform="rotate(-90 20,40)">긴장</text>
+</svg>
+<table>
+<tr><th>장</th><th>병목</th><th>장의 시험</th><th>새 결정</th><th>장 끝</th><th>재료 상태</th></tr>
+<tr><td>1 촌락에서 시장도시로</td><td>토지</td><td>첫 겨울·보릿고개, 첫 화재(1302±1), 흉년 리허설(1303±1), 목책, 첫 청원, 대기근(준비도)</td><td>비축 vs 확장, 시장 위치, 목책 시점, 구휼/통제/방관/투기, 청원 수락 가격</td><td>시장도시 선포 + 대기근 생존 → 연대기 1쪽</td><td>규칙 ✅/🟧, 그림 ✅(Wave 6~9·16)</td></tr>
+<tr><td>2 전쟁의 그늘</td><td>돈·징발</td><td>양모 공납, 징집, 봉화·해안 습격, 석벽 vs 상업, 군자금</td><td>사람 vs 면제금, 현물 vs 현금, 석벽 vs 시장, 피란민 수용</td><td>석벽 완공 또는 포기</td><td>규칙 ⬜, 그림 ✅(Wave 3·13·17)</td></tr>
+<tr><td>3 흑사병</td><td>사람</td><td>인구 −45%, 빈 필지, 임금 상승, 노동자 조례</td><td>임금 vs 조례, 토지 재분배</td><td>재정착</td><td>규칙 ⬜, 그림 △(Wave 9 역병)</td></tr>
+<tr><td>4 재편</td><td>노동·권리</td><td>농민 반란 압력, 자치 요구, 전문화(직물·에일)</td><td>권리를 내줄지</td><td>특허 협상</td><td>규칙 ⬜, 그림 △(Wave 12·14)</td></tr>
+<tr><td>5 자치와 유산</td><td>정치</td><td>상인 엘리트·국왕·가문</td><td>자치 특허 vs 가문 지배</td><td>승리 판정·유산 3종</td><td>규칙 ⬜, 그림 △</td></tr>
+</table>
+<h3>루프 5층</h3>
+<table><tr><th>층</th><th>주기</th><th>플레이어가 하는 것</th><th>피드백</th></tr>
+<tr><td>1 배치</td><td>30초</td><td>위치·크기·구역 종류 결정</td><td>배치 전 예측(공급 N/12, 장부 +x/−y, 거부 이유) → 필지 채워짐</td></tr>
+<tr><td>2 목표</td><td>5분</td><td>카드 하나 끝냄</td><td>진행률·이유·CTA → 다음 카드 2장</td></tr>
+<tr><td>3 계절·단계</td><td>30분</td><td>겨울 넘기기, 목책 선포</td><td>계절 결산 카드(자동 정지), 단계 해금</td></tr>
+<tr><td>4 시대·권리</td><td>2시간(장)</td><td>시대 사건 대응, 청원 응답</td><td>예고 사다리, 연대기 한 쪽</td></tr>
+<tr><td>5 한 판</td><td>캠페인</td><td>자치 vs 가문</td><td>연대기·유산·다음 판 보너스</td></tr></table>
+</section>
+
+<section id="roadmap">
+<h2>5. 로드맵 — 무엇을 어떤 순서로</h2>
+<div class="note"><b>원칙:</b> ① 단계를 넘는 조건은 <b>사람 플레이 관문(G)</b>이다. 에이전트 관문은 회귀 방지용. ② 콘텐츠 확장은 1장이 "하고 싶은 게임"이 된 뒤. ③ 새 규칙은 세계에서 보이는 방식까지가 한 작업. ④ 새 UI는 면적 예산 관문 통과 후 병합. ⑤ 무거운 검증은 DGX. <b>아래 작업 목록은 스크립트가 <code>TASKS</code> 배열에서 그린다 — 상태 변경은 배열만 고친다.</b></div>
+<div id="roadmap-root"></div>
+</section>
+
+<section id="method">
+<h2>6. 작업 방식 — 어떻게 만드나</h2>
+<div class="grid g2">
+<div class="card"><b>세션 구성</b><table>
+<tr><th>세션</th><th>범위</th><th>금지</th></tr>
+<tr><td>엔진(Claude Code)</td><td>규칙·봇·저장·콘텐츠 데이터</td><td>src/render, public/assets(예외: 상태 분기 한 줄)</td></tr>
+<tr><td>렌더(Claude Code)</td><td>화면·UI·에셋 설치·입력</td><td>엔진·규칙·저장 형식</td></tr>
+<tr><td>INBOX(Claude Code)</td><td>Astra 산출물 보관·장부</td><td>src, public/assets</td></tr>
+<tr><td>REMOTE(Claude Code)</td><td>DGX 실행기·플레이 서버</td><td>게임 코드</td></tr>
+<tr><td>Astra</td><td>그림 생성(후보만, 설치 금지)</td><td>—</td></tr>
+<tr><td>사용자</td><td>플레이 관문 판정, sudo, 결정</td><td>—</td></tr></table></div>
+<div class="card"><b>작업 지시서 형식</b><br>ID · 목표 · 만들 것 · 만들지 않을 것 · <b>관문(합격 판정, 수치)</b> · 필수 조건 · 시간 상한. 보고 첫 줄은 관문 결과. 한 지시서는 한 세션에만. 서로 의존이 없으면 여러 ZIP을 한 번에 주고 연쇄 진행. 판정이 필요한 선택지는 에이전트가 물어보고, 답을 기다리는 동안 다른 작업.</div>
+<div class="card"><b>검증 규칙</b><br>· 관문 = 시나리오 테스트 + 가드레일(seed 5, 기준선 대비 회귀 없음) + 결정론·저장 왕복 + 깨끗한 클론<br>· 가드레일 실행 2회까지, 순환 금지. 4/5면 "알려진 정지"로 기록하고 병합, 봇 문제는 별도 작업<br>· 무거운 검증(가드레일·전체 회귀·브라우저·캡처·성능·클론)은 <code>scripts/remote/run.sh</code>로 DGX. 성능은 DGX 기준선끼리<br>· C25 회귀 판(12화면 SHA)으로 렌더 부수 효과 감시<br>· UI는 상태별 면적 예산 자동 측정, 이모지·기호 0</div>
+<div class="card"><b>에셋 파이프라인</b><br>· 역할 5종(면 무늬·띠·데칼·모듈·오브젝트) 규격 <code>ASSET_PIPELINE_SPEC_v1.md</code><br>· 워커 = 승인 템플릿 재스킨(자유 생성 금지), 동물 = 다리만 다른 2프레임, 초상 = 완성 초상 풀 + 노화 사슬(레이어 합성 폐기)<br>· 납품은 <b>개별 파일을 전부 펼쳐</b> 검수(확인 그림만 보지 않음), 초상은 256px 합성으로, 오버레이는 원본 위에 겹쳐서, 줌 0.6 판독<br>· 도착 즉시 <code>assets-inbox/&lt;wave&gt;/</code> + <code>INBOX_LEDGER.csv</code>(candidate/confirmed/superseded/rejected/retired), 원본은 astra-raw<br>· 역사 오류 금지 목록: 문 표식(16~17c), 홉 맥주(15c+), 육각 관, 담비(왕족), 원색 염료, 현대 달력·헤어·칼라, 물레방아 곡물 방앗간(기둥풍차), 집 굴뚝</div>
+<div class="card"><b>조사·설계</b><br>· 큰 방향은 딥리서치 3종(사례 실측 / 원리·틀 / 우리 게임 설계)으로 교차 검증, 첨부 열람 여부를 먼저 확인<br>· 설계서: DESIGN_MASTER, CONTENT_DESIGN, PLAYER_FLOW_DESIGN, VISIBILITY_DESIGN, (예정) UI_STATE_DESIGN, PERSON_DESIGN<br>· 조사 결과는 그대로 쓰지 않고 우리 재료로 번역 — 조사 12처럼 "상시 HUD 전제" 같은 숨은 가정을 찾아낼 것</div>
+<div class="card"><b>사람 플레이 관문 양식</b><br>매 회: 막힘 / 오해 / 지루 / 예쁨·어색 / 몇 년 지났나 / 다음에 하고 싶은 것. 측정: 15초 이상 "뭘 하지?" 멈춤 횟수, 5분마다 "지금 목표는?" 대답 가능, 배속 사용, 세션 끝 "한 해만 더" 의사. 통과: 30분당 멈춤 ≤ 2, 목표 대답 ≥ 80%.</div>
+</div>
+</section>
+
+<section id="risks">
+<h2>7. 미결 결정·리스크</h2>
+<table><tr><th>항목</th><th>내용</th><th>언제</th></tr>
+<tr><td>시장 상한·반경 규칙</td><td>"24필지당 1개+1, 반경 8"은 굽은 도로 도시에서 플레이어도 걸림 → 도달 범위 기준으로</td><td>C단계 전</td></tr>
+<tr><td>작은 성벽 교착(LB-12)</td><td>봇이 목책을 너무 작게 둘러 13필지에서 정지(seed 3, 두 번) → BOT-2</td><td>F0</td></tr>
+<tr><td>틱 속도·장 길이</td><td>1년 4,000틱, 1장 90~120분은 사람 플레이로 확정</td><td>G1</td></tr>
+<tr><td>연대기 삽화 화풍</td><td>사실풍(Wave 16·17) → 코드 양피지 톤, 어색하면 채식 화풍 재요청</td><td>F1</td></tr>
+<tr><td>조사 15 실측 부재</td><td>GPT 실측 파일 손상 → 면적 예산은 우리 빌드 측정으로 확정</td><td>UX-3</td></tr>
+<tr><td>Steam·Electron·Deck</td><td>P단계, 저장 호환·컨트롤러 포커스 순서</td><td>C단계와 병행</td></tr>
+<tr><td>영어 로컬라이즈</td><td>문구 1,000줄+, `*.ko.ts` 구조는 준비됨</td><td>P단계</td></tr></table>
+</section>
+
+<section id="edit">
+<h2>8. 편집 규칙 (에이전트용)</h2>
+<div class="card">
+<ol>
+<li>작업 상태는 <code>TASKS</code> 배열의 <code>status</code>만 바꾼다: <code>done</code> / <code>wip</code> / <code>todo</code> / <code>hold</code>. 완료 시 <code>note</code>에 커밋 해시와 한 줄.</li>
+<li>새 작업은 같은 형식으로 추가하고 <code>deps</code>에 의존 ID를 적는다. 삭제하지 말고 <code>status:"dropped"</code> + 이유.</li>
+<li>2·3·4절(화면·시스템·한 판)은 설계서가 바뀔 때만, 결정 ID와 함께 고친다.</li>
+<li>변경은 문서 하단 이력에 한 줄(날짜·세션·무엇).</li>
+<li>이 문서와 <code>AGENTS.md</code>·<code>CLAUDE.md</code>가 충돌하면 이 문서가 우선이고, 충돌을 이력에 적는다.</li>
+</ol>
+<details><summary>변경 이력</summary><ul id="history"><li>2026-09-26 · Claude(프로젝트 대화) · v5.1 최초 작성(조사 12·13·14·15 반영)</li><li>2026-09-26 · Claude · 기록·연대기 설계 v1 반영: F0-C2 기록 원장, CHRON-1 연대기 화면, CHRON-2 세력 연대기 추가(정체성 6 "모든 것이 남는다")</li><li>2026-09-26 · Claude Code(인프라·문서 세션, DOC-1) · 저장소에 넣음(설계 docs/design/CHRONICLE_DESIGN.md 함께). TASKS를 본선 25820693 기준으로 맞춤: INSTALL-7·INSTALL-11·REMOTE-1 완료, UX-3R 진행 중, F0-B·F0-C1·F0-V·INBOX 비고 갱신, R0(완료) 추가. 충돌 2건: ① 헌장 4절 "merge·push → 브랜치 삭제"와 AGENTS.md 규칙 14 "브랜치 삭제는 명시 지시가 있을 때만" — 사용자 판정 전까지 규칙 14를 따른다 ② 이 문서 1절은 정체성 6("모든 것이 남는다")을 더했지만 CHARTER.md·AGENTS.md 0절은 "정체성 다섯" — 이 문서가 우선, 헌장 반영은 사용자 판정 대기</li><li>2026-09-26 · Claude Code(인프라·문서 세션) · 사용자 판정으로 두 충돌 해소: ① AGENTS.md 규칙 14를 "병합 뒤 브랜치 삭제가 기본, 지시서가 남겨 두라고 명시하면 예외"로 고쳐 헌장 4절과 맞춤 ② 정체성 6 "모든 것이 남는다"를 CHARTER.md·AGENTS.md 0절·CLAUDE.md에 넣어 여섯으로 맞춤</li></ul></details>
+</div>
+</section>
+</main>
+
+<script>
+// ===== 로드맵 데이터 (에이전트는 이 배열만 고친다) =====
+const PHASES = [
+ {id:"F0", name:"F0 · 1장을 끝까지 할 수 있는 게임", when:"지금 ~ 약 1주", goal:"사람이 1장(1300–1318)을 90~120분에 완주. 화면은 최소 HUD, 압력·사건·결정·연대기가 화면에 보임.", gate:"G1"},
+ {id:"F1", name:"F1 · 1장 다듬기", when:"G1 뒤 1~2주", goal:"플레이 메모로 UX 반복, 인물 v0(초상·문장), 소리·밸런스, 태블릿·패드 실기.", gate:"G2"},
+ {id:"C",  name:"C · 2장 전쟁의 그늘", when:"G2 뒤", goal:"에일 사슬, 장날 가축, 징발·징집·해안 습격·석벽 vs 상업, 실패 3~4단, 장 이어하기.", gate:"G3"},
+ {id:"E",  name:"E · 3~5장 흑사병·재편·자치", when:"G3 뒤", goal:"직물, 흑사병 병목 역전, 권리·정치, 인물 세대, 남은 시설, 유산.", gate:"G4"},
+ {id:"P",  name:"P · 출시 준비", when:"C와 병행 가능", goal:"Electron·Steam, Deck 실기, 컨트롤러 포커스, 저장 호환, 영어, 최저 사양.", gate:"출시 후보"}
+];
+const TASKS = [
+ // ---- F0 엔진
+ {id:"F0-A", phase:"F0", track:"엔진", title:"압력: 계절 결산·장부 예측·실패 1~2단·보릿고개·대기근 준비도", status:"done", gate:"압력 존재(naive 봇 필지 손실) · 가드레일 5/5", note:"28a23d8 · 기준선 322d36f"},
+ {id:"F0-B", phase:"F0", track:"엔진", title:"사건 뼈대: 예고 사다리·첫 화재·흉년 리허설·날씨", status:"done", gate:"화재 5/5·흉년 5/5·대비 차 · 가드레일 4/5(seed 3 알려진 정지)", note:"ca80f43d 병합 · seed 3 알려진 정지(EV8) · LB-12 작은 성벽 → BOT-2"},
+ {id:"F0-C1", phase:"F0", track:"엔진", title:"대기근 효과·대응 결정·첫 청원·연대기 데이터·1장 끝", status:"wip", gate:"표준 봇 1장 완주 ≥ 4/5", deps:["F0-B"], note:"브랜치 claude/f0c1-famine(3ed325df, 저장 v14) 진행 중, 본선 미병합"},
+ {id:"F0-C2", phase:"F0", track:"엔진", title:"기록 원장 v0: 모든 결정(대안·예측·실제)·사건·이정표·계절 변화·가구 생애 append-only + 계절 지도 축소판", status:"todo", gate:"1장 완주 원장 1,500~6,000건 · 저장 +≤4MB · 큰 결정 5종 대안·실제", deps:["F0-C1"]},
+ {id:"BOT-2", phase:"F0", track:"엔진", title:"작은 성벽 교착(LB-12 둘레 크기·성 안 길 비율)", status:"todo", gate:"가드레일 5/5", deps:["F0-C1"]},
+ // ---- F0 렌더
+ {id:"F0-V", phase:"F0", track:"렌더", title:"보이는 건설: 기준점 bar·자재 더미·완공 연출·지붕 연기·기표·소리 15", status:"done", gate:"공사장 관찰 캡처 · 소리 15", note:"8d034834 · 관문 ①~⑧ 통과, ⑨ 사용자 10분 판정 대기"},
+ {id:"R0", phase:"F0", track:"렌더", title:"사용자 판정 두 가지: 세계 신호는 분배 한 주기 뒤·완공 그림은 footprint 위", status:"done", gate:"결정 R0-1·R0-2", note:"db09d2b7 · 본선 병합"},
+ {id:"INSTALL-7", phase:"F0", track:"렌더", title:"밀→빵→집 사슬 가시화·겨울·세계 신호(Wave 7)", status:"done", gate:"사슬 관찰 캡처 6 · 겨울 캡처", deps:["F0-V"], note:"45958b9f · 관문 ①~⑦ 통과, 클론 210e636 2,950/2,950"},
+ {id:"INSTALL-11", phase:"F0", track:"렌더", title:"건물 계열별 공사 키트(Wave 11)", status:"done", gate:"계열 4×4단계 캡처", deps:["INSTALL-7"], note:"121e16b8 · 관문 ①~⑥ 통과, 클론 5956193 2,954/2,954"},
+ {id:"UX-3R", phase:"F0", track:"렌더", title:"UI 상태 기계·상시 4항목·행동 도크·배치 색+패턴+이유·구역 발견성·저장소 재고 (조사 15)", status:"wip", gate:"상태별 면적 예산 자동 측정 · 도구 선택 전 안내 0 · 회귀 0", deps:["INSTALL-11"], note:"브랜치 claude/ux3-hud-diet 작업 중(커밋 전)"},
+ {id:"INSTALL-18", phase:"F0", track:"렌더", title:"최소 HUD 아이콘·패턴 교체(Wave 18)", status:"todo", gate:"흑백에서 가능/불가 구분", deps:["UX-3R"]},
+ {id:"UI-3", phase:"F0", track:"렌더", title:"계절 결산 카드·계절 띠·배치 장부 예측·압력 원인·보릿고개 경고·타이틀(Wave 8) — UX-3 규칙 위에", status:"todo", gate:"결산 캡처 3계절 · 예측 줄 = 실제 장부", deps:["UX-3R"]},
+ {id:"UI-4", phase:"F0", track:"렌더", title:"사건 카드·대기근 결정·청원·연대기·장 끝 + Wave 9·16 설치 + S12 짐 진 가족", status:"todo", gate:"1장 사건 전부 화면에 · 연대기 1쪽", deps:["UI-3","F0-C1","F0-C2"]},
+ {id:"INSTALL-15", phase:"F0", track:"렌더", title:"계절 자연(Wave 15)", status:"todo", gate:"같은 장면 사계절 캡처", deps:["UI-4"]},
+ // ---- F0 인프라·Astra
+ {id:"REMOTE-1", phase:"F0", track:"인프라", title:"DGX 원격 실행기·Node 24·성능 기준선", status:"done", gate:"전체 회귀 통과·브라우저 10/10", note:"25820693 · 관문 ①~⑥ · Node 24.21.0(_tools, 시스템 20 유지) · 485a3ce 회귀 2,954/2,954·클론 통과"},
+ {id:"INBOX", phase:"F0", track:"인프라", title:"Astra 산출물 전량 보관·장부(2,608장)", status:"done", gate:"장부 = PNG 수, SHA 일치", note:"상시 운영 · 6765d0fd(INBOX-1h) 장부 2,608행 = PNG 2,608"},
+ {id:"PORTRAIT-2", phase:"F0", track:"Astra", title:"초상 풀 2차(1장 역할 32명)", status:"wip", gate:"옷만 보고 계급 · 소지품 분포"},
+ {id:"WAVE-18", phase:"F0", track:"Astra", title:"최소 HUD 아이콘·패턴 40", status:"wip", gate:"24px 구분 · 흑백 구분"},
+ {id:"G1", phase:"F0", track:"사람", title:"관문 G1: 사용자 1장 완주 3회(90~120분)", status:"gate", gate:"30분당 멈춤 ≤ 2 · 목표 대답 ≥ 80% · '한 해만 더' 의사", deps:["UI-4","F0-C1","BOT-2"]},
+ // ---- F1
+ {id:"UX-4", phase:"F1", track:"렌더", title:"G1 메모 기반 UX 반복(3회)", status:"todo", gate:"메모 항목 해소", deps:["G1"]},
+ {id:"PERSON-0", phase:"F1", track:"엔진", title:"인물 v0: 가구주·청원자·청지기에 초상 풀 연결, 이름(세례명), 노화 단계", status:"todo", gate:"청원 카드에 초상·문장", deps:["G1"]},
+ {id:"CHRON-1", phase:"F1", track:"렌더", title:"연대기 화면: 도시 타임라인·인물 전기·결정 기록·그때 지도", status:"todo", gate:"1장 원장을 필터·검색해 열람, 인물 전기 1명 완주", deps:["PERSON-0","F0-C2"]},
+ {id:"UI-5", phase:"F1", track:"렌더", title:"인물 카드·문장·상인 표식(Wave 14) 설치", status:"todo", gate:"", deps:["PERSON-0"]},
+ {id:"AUDIO-1", phase:"F1", track:"렌더", title:"소리 P1(가동음·환경·계절 전환)", status:"todo", gate:"", deps:["G1"]},
+ {id:"BAL-1", phase:"F1", track:"엔진", title:"밸런스: 보릿고개·대기근 강도·틱 속도·장 길이", status:"todo", gate:"G1 측정값", deps:["G1"]},
+ {id:"TOUCH-2", phase:"F1", track:"렌더", title:"태블릿·패드 실기 조정, 컨트롤러 포커스", status:"todo", gate:"Deck·iPad 실기", deps:["UX-4"]},
+ {id:"G2", phase:"F1", track:"사람", title:"관문 G2: 새 사람 1~2명 콜드 스타트 1장 완주", status:"gate", gate:"60초 안 구역 모드 진입 ≥ 80% 등", deps:["UX-4","PERSON-0"]},
+ // ---- C
+ {id:"C4", phase:"C", track:"엔진", title:"에일 사슬(보리·말트·에일, 가내 슬롯 첫 제품)", status:"todo", gate:"가드레일·사슬 시나리오", deps:["G2"]},
+ {id:"MOVE-2", phase:"C", track:"엔진", title:"장날 짐말·수레·가축 몰이(Wave 13)", status:"todo", gate:"장날 파동 캡처", deps:["G2"]},
+ {id:"F2-A", phase:"C", track:"엔진", title:"2장 사건: 양모 공납·징집·봉화·해안 습격·석벽 vs 상업·군자금", status:"todo", gate:"2장 완주 봇", deps:["C4"]},
+ {id:"FAIL-3", phase:"C", track:"엔진", title:"실패 3~4단(권리 상실·가문 교체)·장 이어하기(저장 승격)", status:"todo", gate:"", deps:["F2-A"]},
+ {id:"INSTALL-3", phase:"C", track:"렌더", title:"Wave 3 에일 부분·Wave 13·Wave 17 설치, 2장 UI", status:"todo", gate:"", deps:["C4","MOVE-2","F2-A"]},
+ {id:"MARKET-RULE", phase:"C", track:"엔진", title:"시장 상한·반경 → 도달 범위 기준", status:"todo", gate:"", deps:["G2"]},
+ {id:"G3", phase:"C", track:"사람", title:"관문 G3: 1→2장 이어 플레이", status:"gate", gate:"", deps:["INSTALL-3","FAIL-3"]},
+ // ---- E
+ {id:"C5", phase:"E", track:"엔진", title:"직물 7단계(양모→완성 직물)", status:"todo", gate:"", deps:["G3"]},
+ {id:"PLAGUE", phase:"E", track:"엔진", title:"흑사병: 인구 −45%, 빈 필지, 임금, 조례", status:"todo", gate:"", deps:["G3"]},
+ {id:"RIGHTS", phase:"E", track:"엔진", title:"권리·정치: 특허 패키지·세력·청원·원한·회수 6경로", status:"todo", gate:"", deps:["PLAGUE"]},
+ {id:"CHRON-2", phase:"E", track:"엔진", title:"세력 시스템·세력 연대기: 상위 영주·국왕·인접 영주·주교·대상인·공동체의 수장·관계·요구·기억·외부 세계 연표", status:"todo", gate:"", deps:["RIGHTS"]},
+ {id:"PERSON-1", phase:"E", track:"엔진", title:"인물 시스템 본격: 주요 인물·세대·문장 상속", status:"todo", gate:"", deps:["RIGHTS"]},
+ {id:"INSTALL-E", phase:"E", track:"렌더", title:"Wave 12 남은 시설·권리 UI·3~5장 삽화 설치", status:"todo", gate:"", deps:["RIGHTS"]},
+ {id:"LEGACY", phase:"E", track:"엔진", title:"연대기·유산·재플레이 축", status:"todo", gate:"", deps:["PERSON-1"]},
+ {id:"G4", phase:"E", track:"사람", title:"관문 G4: 캠페인 완주", status:"gate", gate:"", deps:["LEGACY","INSTALL-E"]},
+ // ---- P
+ {id:"ELECTRON", phase:"P", track:"인프라", title:"Electron·Steam 빌드·저장 호환", status:"todo", gate:"", deps:["G2"]},
+ {id:"DECK", phase:"P", track:"렌더", title:"Deck 실기·컨트롤러 포커스 순서·버튼 그림", status:"todo", gate:"", deps:["TOUCH-2"]},
+ {id:"I18N", phase:"P", track:"렌더", title:"영어 로컬라이즈", status:"todo", gate:"", deps:["G3"]},
+ {id:"PERF", phase:"P", track:"렌더", title:"최저 사양·메모리·LOD", status:"todo", gate:"", deps:["G3"]}
+];
+// ===== 렌더 =====
+const root=document.getElementById('roadmap-root');
+const label={done:"완료",wip:"진행 중",todo:"예정",hold:"보류",gate:"관문",dropped:"취소"};
+for(const p of PHASES){
+  const d=document.createElement('div');d.className='phase';
+  d.innerHTML=`<h3>${p.name} <span class="muted">${p.when}</span></h3><p>${p.goal} <b>관문: ${p.gate}</b></p>`;
+  const tracks=[...new Set(TASKS.filter(t=>t.phase===p.id).map(t=>t.track))];
+  for(const tr of tracks){
+    const h=document.createElement('div');h.innerHTML=`<b class="muted">${tr}</b>`;d.appendChild(h);
+    const g=document.createElement('div');g.className='grid g3';
+    for(const t of TASKS.filter(t=>t.phase===p.id&&t.track===tr)){
+      const c=document.createElement('div');c.className='card task '+(t.status==='gate'?'gate':t.status);
+      c.innerHTML=`<span class="pill ${t.status==='gate'?'gate':t.status}">${label[t.status]||t.status}</span> <b>${t.id}</b><br>${t.title}`+
+        (t.gate?`<div class="muted">관문: ${t.gate}</div>`:'')+(t.deps?`<div class="muted">의존: ${t.deps.join(', ')}</div>`:'')+(t.note?`<div class="muted">${t.note}</div>`:'');
+      g.appendChild(c);
+    }
+    d.appendChild(g);
+  }
+  root.appendChild(d);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "id": "stone_wall_repair_scaffold",
+  "folder": "wall",
+  "w": 512,
+  "h": 128,
+  "foot": [
+    4,
+    1
+  ],
+  "refs": [
+    "/tmp/astra-wave4-candidates-20260925/wall/stone_face_a-v1.png",
+    "/tmp/astra-wave17-work-20260926/astra-wave17-reference-files/stage_frame_gate-v1.png"
+  ],
+  "prompt": "Precise edit: reference1 is the EXACT 512x128 straight stone wall strip, reference2 only timber scaffolding style. Produce one 512x128 transparent RGBA stone wall REPAIR STRIP, long horizontal side elevation NOT diagonal isometric building, keep wall rectangular strip layout full width and existing crenellated top shape and base at y127. Add weathered oak scaffolding vertical poles, diagonal braces and horizontal plank catwalk across front of this same stone wall strip; same warm muted handpaintedgame stone colors. Thin poles within height, do not makeground, do not makegateway, no arch, no text, no characters. Unlike ref2 no gate structure. Output 2048x5124:1 ideal. Leave the original crenel gaps transparent, no sky/background. Ends modular; accurate straightonwallfacade strip suited to mapping along wallsegments. 14th-century nonmodern timber joints.",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-e071cbdb-0921-49c1-8698-5ecc116f1769.png"
+}

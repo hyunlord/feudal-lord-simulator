@@ -1,0 +1,246 @@
+{
+ "commit": "b4571666",
+ "maxTicks": 28000,
+ "firstFireInWindow": "5/5",
+ "rehearsalInWindow": "5/5",
+ "eventLossesTotal": {
+  "prepared": 7,
+  "unprepared": 22
+ },
+ "perSeed": {
+  "1": {
+   "prepared": 1,
+   "unprepared": 5
+  },
+  "2": {
+   "prepared": 3,
+   "unprepared": 6
+  },
+  "3": {
+   "prepared": 1,
+   "unprepared": 4
+  },
+  "4": {
+   "prepared": 1,
+   "unprepared": 1
+  },
+  "5": {
+   "prepared": 1,
+   "unprepared": 6
+  }
+ },
+ "rows": [
+  {
+   "variant": "prepared",
+   "seed": 1,
+   "firstFire": {
+    "year": 1302,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1304,
+   "rehearsalHarvestLost": 284,
+   "eventBurntHouses": 1,
+   "eventDepartures": 0,
+   "eventLosses": 1,
+   "allDepartures": 6,
+   "finalPopulation": 304,
+   "wells": 4,
+   "events": [
+    "first_fire@9 1302 summer burnt 1 left 0 lost wheat 0",
+    "dearth_rehearsal@17 1304 summer burnt 0 left 0 lost wheat 284"
+   ]
+  },
+  {
+   "variant": "prepared",
+   "seed": 2,
+   "firstFire": {
+    "year": 1302,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1304,
+   "rehearsalHarvestLost": 240,
+   "eventBurntHouses": 3,
+   "eventDepartures": 0,
+   "eventLosses": 3,
+   "allDepartures": 6,
+   "finalPopulation": 238,
+   "wells": 5,
+   "events": [
+    "first_fire@9 1302 summer burnt 1 left 0 lost wheat 0",
+    "fire@13 1303 summer burnt 2 left 0 lost wheat 0",
+    "dearth_rehearsal@17 1304 summer burnt 0 left 0 lost wheat 240"
+   ]
+  },
+  {
+   "variant": "prepared",
+   "seed": 3,
+   "firstFire": {
+    "year": 1303,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1304,
+   "rehearsalHarvestLost": 200,
+   "eventBurntHouses": 1,
+   "eventDepartures": 0,
+   "eventLosses": 1,
+   "allDepartures": 0,
+   "finalPopulation": 182,
+   "wells": 5,
+   "events": [
+    "first_fire@13 1303 summer burnt 1 left 0 lost wheat 0",
+    "dearth_rehearsal@17 1304 summer burnt 0 left 0 lost wheat 200"
+   ]
+  },
+  {
+   "variant": "prepared",
+   "seed": 4,
+   "firstFire": {
+    "year": 1302,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1303,
+   "rehearsalHarvestLost": 185,
+   "eventBurntHouses": 1,
+   "eventDepartures": 0,
+   "eventLosses": 1,
+   "allDepartures": 0,
+   "finalPopulation": 266,
+   "wells": 2,
+   "events": [
+    "first_fire@9 1302 summer burnt 1 left 0 lost wheat 0",
+    "dearth_rehearsal@13 1303 summer burnt 0 left 0 lost wheat 185"
+   ]
+  },
+  {
+   "variant": "prepared",
+   "seed": 5,
+   "firstFire": {
+    "year": 1302,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1304,
+   "rehearsalHarvestLost": 359,
+   "eventBurntHouses": 1,
+   "eventDepartures": 0,
+   "eventLosses": 1,
+   "allDepartures": 5,
+   "finalPopulation": 374,
+   "wells": 4,
+   "events": [
+    "first_fire@9 1302 summer burnt 1 left 0 lost wheat 0",
+    "dearth_rehearsal@17 1304 summer burnt 0 left 0 lost wheat 359"
+   ]
+  },
+  {
+   "variant": "unprepared",
+   "seed": 1,
+   "firstFire": {
+    "year": 1302,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1304,
+   "rehearsalHarvestLost": 125,
+   "eventBurntHouses": 1,
+   "eventDepartures": 4,
+   "eventLosses": 5,
+   "allDepartures": 4,
+   "finalPopulation": 185,
+   "wells": 1,
+   "events": [
+    "first_fire@9 1302 summer burnt 1 left 0 lost wheat 0",
+    "dearth_rehearsal@17 1304 summer burnt 0 left 4 lost wheat 125"
+   ]
+  },
+  {
+   "variant": "unprepared",
+   "seed": 2,
+   "firstFire": {
+    "year": 1302,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1304,
+   "rehearsalHarvestLost": 125,
+   "eventBurntHouses": 2,
+   "eventDepartures": 4,
+   "eventLosses": 6,
+   "allDepartures": 10,
+   "finalPopulation": 97,
+   "wells": 1,
+   "events": [
+    "first_fire@9 1302 summer burnt 1 left 0 lost wheat 0",
+    "fire@13 1303 summer burnt 1 left 0 lost wheat 0",
+    "dearth_rehearsal@17 1304 summer burnt 0 left 4 lost wheat 125"
+   ]
+  },
+  {
+   "variant": "unprepared",
+   "seed": 3,
+   "firstFire": {
+    "year": 1303,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1304,
+   "rehearsalHarvestLost": 120,
+   "eventBurntHouses": 1,
+   "eventDepartures": 3,
+   "eventLosses": 4,
+   "allDepartures": 7,
+   "finalPopulation": 112,
+   "wells": 1,
+   "events": [
+    "first_fire@13 1303 summer burnt 1 left 0 lost wheat 0",
+    "dearth_rehearsal@17 1304 summer burnt 0 left 3 lost wheat 120"
+   ]
+  },
+  {
+   "variant": "unprepared",
+   "seed": 4,
+   "firstFire": {
+    "year": 1302,
+    "season": "summer",
+    "burntHouses": 1
+   },
+   "rehearsalYear": 1303,
+   "rehearsalHarvestLost": 86,
+   "eventBurntHouses": 1,
+   "eventDepartures": 0,
+   "eventLosses": 1,
+   "allDepartures": 0,
+   "finalPopulation": 172,
+   "wells": 1,
+   "events": [
+    "first_fire@9 1302 summer burnt 1 left 0 lost wheat 0",
+    "dearth_rehearsal@13 1303 summer burnt 0 left 0 lost wheat 86"
+   ]
+  },
+  {
+   "variant": "unprepared",
+   "seed": 5,
+   "firstFire": {
+    "year": 1302,
+    "season": "summer",
+    "burntHouses": 2
+   },
+   "rehearsalYear": 1304,
+   "rehearsalHarvestLost": 159,
+   "eventBurntHouses": 2,
+   "eventDepartures": 4,
+   "eventLosses": 6,
+   "allDepartures": 13,
+   "finalPopulation": 154,
+   "wells": 1,
+   "events": [
+    "first_fire@9 1302 summer burnt 2 left 0 lost wheat 0",
+    "dearth_rehearsal@17 1304 summer burnt 0 left 4 lost wheat 159"
+   ]
+  }
+ ]
+}

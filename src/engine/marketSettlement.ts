@@ -13,6 +13,8 @@ import { existingRoadComponent } from "../world/roadGraph";
 import { postLedgerEntries } from "../ledger/ledger";
 import { scenarioOf } from "./scenarioState";
 import type { LedgerPosting } from "../ledger/ledger.types";
+import { foodPricePermille } from "./eventSchedule";
+import { foodPriceSource } from "./events";
 
 type MarketResource = Exclude<ResourceType, "coin">;
 
@@ -37,6 +39,16 @@ const SALE_RULES = [
 ] as const satisfies readonly SaleRule[];
 
 const MARKET_CADENCE_TICKS = 80;
+
+/**
+ * EV-5: the price a unit sells for now: the rule's price, bread and wheat × the food price of an arriving dearth
+ * (rounded to a whole penny). Trade priority keeps the usual prices, so a dearth does not change what the market
+ * sends out first.
+ */
+export function marketSalePrice(state: Pick<GameState, "seed" | "scenarioId" | "tick">, resource: MarketResource): number {
+  const base = SALE_RULES.find(rule => rule.resource === resource)?.coin ?? 0;
+  return resource === "bread" || resource === "wheat" ? Math.round(base * foodPricePermille(state, state.tick) / 1000) : base;
+}
 
 function coordinateKey(coordinate: TileCoordinate): string {
   return `${coordinate.tx},${coordinate.ty}`;
@@ -129,7 +141,7 @@ function settleMarket(
   if (candidate === undefined) return { buildings, coin: 0 };
 
   return {
-    coin: candidate.coin,
+    coin: marketSalePrice(state, candidate.resource),
     sold: candidate.resource,
     from: candidate.building,
     buildings: buildings.map((building) =>
@@ -169,8 +181,10 @@ export function settleMarkets(state: GameState): GameState {
     if (result.sold === "wheat") wheatExported += 1;
     if (result.sold === "bread") breadExported += 1;
     if (demesneSale && result.from?.kind === "granary" && (result.sold === "wheat" || result.sold === "bread")) {
+      const dearth = foodPriceSource(state);
       demesne.push({ account: "cash", category: "demesne_sale", amount: result.coin,
-        sourceRefs: [{ type: "building", id: result.from.id, detail: `sold:${result.sold}` }, { type: "building", id: market.id }] });
+        sourceRefs: [{ type: "building", id: result.from.id, detail: `sold:${result.sold}` }, { type: "building", id: market.id },
+          ...(dearth === null ? [] : [dearth])] });
     }
   }
 

@@ -13,11 +13,13 @@ import { placementSpendableResource } from '../world/placement';
 import type { GameState } from './engine.types';
 import { accrueMilledWheat } from './moneyRules';
 import { stepArableFields } from '../zones/arableFields';
+import { recordHarvestLoss } from './events';
 
 export function runProduction(input: GameState): GameState {
   // AF-3…AF-9: the fields advance first; a harvest lands in the barn this tick and counts as wheat produced.
   const fields = stepArableFields(input);
-  const state = fields.state;
+  // EV-9: the wheat a dearth's harvest lost is the dearth's loss.
+  const state = recordHarvestLoss(fields.state, fields.activity.weatherLostWheat);
   let forestHarvests = state.forestHarvests ?? [];
   let materialRecord = state.autoplayMaterialRecovery;
   const materialRoutes = materialRecord?.status === 'observing' ? createSimulationRoutePorts(state).delivery : undefined;

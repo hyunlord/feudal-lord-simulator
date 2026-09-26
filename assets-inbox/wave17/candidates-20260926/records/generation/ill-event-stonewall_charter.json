@@ -1,0 +1,43 @@
+{
+  "id": "event/stonewall_charter",
+  "w": 960,
+  "h": 540,
+  "scene": "Inside a modest medieval town hall, royal official hands a parchment charter with a large red wax seal to a town reeve; through open window, stone wall foundation work and labourers are visible. Two practical townsmen witness it. Parchment face hidden/blank, no readable letters. Royal licence for fortification, early fourteenth century.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/P05.png"
+  ],
+  "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 960:540, fill complete image edge to edge. Inside a modest medieval town hall, royal official hands a parchment charter with a large red wax seal to a town reeve; through open window, stone wall foundation work and labourers are visible. Two practical townsmen witness it. Parchment face hidden/blank, no readable letters. Royal licence for fortification, early fourteenth century. Output 960 by 540 pixels.\nCORRECTION: Edit this exact illustration, preserve all buildings, people, faces, composition, muted painted brushwork, dimensions. HISTORICAL CORRECTION ONLY: remove EVERY heraldic device, gold fleur-de-lis, gold lion, blue-and-red quartered coat of arms, embroidery symbol from ALL clothing and hanging banners. Replace decorated fabric with plain muted dark red or brown wool cloth, completely without symbols. Keep faces, poses, landscape and objects unchanged. No letters or readable text. One continuous image.\nROOF CORRECTION: TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending positions in original 960x540 image include far left roof x44,y60; thatch x98,y75; rear roofs x261,y72 and x387,y63 and x411,y63 and x450,y66. Each stack is only about 7–15 pixels wide but must be removed. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, market cross, flagstaffs and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-ff05dbcc-ce41-4ba8-b187-dd95205899ee.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/stonewall_charter.png",
+  "dimensions": [
+    960,
+    540
+  ],
+  "postprocess": "Lanczos3 resize and central cover crop to target; opaque illustration PNG",
+  "revisions": [
+    {
+      "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 960:540, fill complete image edge to edge. Inside a modest medieval town hall, royal official hands a parchment charter with a large red wax seal to a town reeve; through open window, stone wall foundation work and labourers are visible. Two practical townsmen witness it. Parchment face hidden/blank, no readable letters. Royal licence for fortification, early fourteenth century. Output 960 by 540 pixels.",
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-a3334fd8-ed5c-4f69-9b91-ee1123c8b077.png",
+      "selected": false
+    },
+    {
+      "prompt": "Edit this exact illustration, preserve all buildings, people, faces, composition, muted painted brushwork, dimensions. HISTORICAL CORRECTION ONLY: remove EVERY heraldic device, gold fleur-de-lis, gold lion, blue-and-red quartered coat of arms, embroidery symbol from ALL clothing and hanging banners. Replace decorated fabric with plain muted dark red or brown wool cloth, completely without symbols. Keep faces, poses, landscape and objects unchanged. No letters or readable text. One continuous image.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/stonewall_charter.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-b5866866-0aa7-44c5-a2c0-3ac2361afaf0.png",
+      "selected": false
+    },
+    {
+      "prompt": "TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending positions in original 960x540 image include far left roof x44,y60; thatch x98,y75; rear roofs x261,y72 and x387,y63 and x411,y63 and x450,y66. Each stack is only about 7–15 pixels wide but must be removed. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, market cross, flagstaffs and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/stonewall_charter.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-ff05dbcc-ce41-4ba8-b187-dd95205899ee.png",
+      "selected": true
+    }
+  ],
+  "selected": true
+}

@@ -35,7 +35,7 @@ function eraGameAction(state: GameState, candidatePath?: PalisadePath): GameActi
 
 export function autoplayActionToGameAction(action: AutoplayAction, state?: GameState): GameAction | null {
   const command = autoplayCommandToGameAction(action, state);
-  return action.kind === "demolish_house" || action.foodTransient === undefined ? command : { ...(command ?? { type: "record_autoplay_food_confirmation" }), foodTransient: action.foodTransient };
+  return action.kind === "demolish_house" || action.kind === "rebuild_house" || action.foodTransient === undefined ? command : { ...(command ?? { type: "record_autoplay_food_confirmation" }), foodTransient: action.foodTransient };
 }
 
 function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState): GameAction | null {
@@ -63,6 +63,8 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
       return { type: "zone_paint", kind: action.zone, stroke: action.stroke };
     case "demolish_house":
       return { type: "demolish_house", buildingId: action.buildingId };
+    case "rebuild_house":
+      return { type: "rebuild_house", buildingId: action.buildingId };
     case "none":
       return null;
     default:

@@ -1,0 +1,35 @@
+{
+  "id": "decision/wall_or_market",
+  "w": 640,
+  "h": 480,
+  "scene": "Single elevated view from town gate, a reeve and builder in foreground consider two adjacent unfinished civic works: modest new stone wall foundations to left and timber market stalls ready to expand to right. Both fit one continuous English market-town landscape; show limited resources, no divided screen or diagrams.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/P05.png"
+  ],
+  "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 640:480, fill complete image edge to edge. Single elevated view from town gate, a reeve and builder in foreground consider two adjacent unfinished civic works: modest new stone wall foundations to left and timber market stalls ready to expand to right. Both fit one continuous English market-town landscape; show limited resources, no divided screen or diagrams. Output 640 by 480 pixels.\nROOF CORRECTION: TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending positions in original 640x480 image include near red roof x247,y122; left thatch x199,y90; rear red roof x373,y92; central roof x364,y118. Each stack is only about 7–15 pixels wide but must be removed. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, market cross, flagstaffs and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-efa51194-1e80-4585-a960-f02c0f90647b.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/decision/wall_or_market.png",
+  "dimensions": [
+    640,
+    480
+  ],
+  "postprocess": "Lanczos3 resize and central cover crop to target; opaque illustration PNG",
+  "selected": true,
+  "revisions": [
+    {
+      "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 640:480, fill complete image edge to edge. Single elevated view from town gate, a reeve and builder in foreground consider two adjacent unfinished civic works: modest new stone wall foundations to left and timber market stalls ready to expand to right. Both fit one continuous English market-town landscape; show limited resources, no divided screen or diagrams. Output 640 by 480 pixels.",
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-72811171-1701-4c99-9f5b-c0f7e68eefb4.png",
+      "selected": false
+    },
+    {
+      "prompt": "TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending positions in original 640x480 image include near red roof x247,y122; left thatch x199,y90; rear red roof x373,y92; central roof x364,y118. Each stack is only about 7–15 pixels wide but must be removed. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, market cross, flagstaffs and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/decision/wall_or_market.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-efa51194-1e80-4585-a960-f02c0f90647b.png",
+      "selected": true
+    }
+  ]
+}

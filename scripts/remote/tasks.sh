@@ -15,8 +15,8 @@ TASK=${1:?task}; shift
 OUT=$PWD/.remote
 mkdir -p "$OUT"
 
-summarise_tap() {  # TAP totals of node --test into a one-line summary
-  grep -E '^# (tests|pass|fail|cancelled|skipped|todo|duration_ms) ' "$1" | awk '{printf "%s=%s ", $2, $3} END {print ""}'
+summarise_tap() {  # node --test totals as one line: TAP ("# pass 12", Node 20) or spec ("ℹ pass 12", Node 23+)
+  grep -E '^(#|ℹ) (tests|pass|fail|cancelled|skipped|todo|duration_ms) ' "$1" | awk '{printf "%s=%s ", $2, $3} END {print ""}'
 }
 
 case "$TASK" in
@@ -30,7 +30,7 @@ test)
   summary=$(summarise_tap "$OUT/test.log")
   echo "npm test exit $test_rc: $summary" | tee "$OUT/summary.txt"
   if [ $test_rc != 0 ]; then
-    grep -E '^not ok ' "$OUT/test.log" | head -40 | tee -a "$OUT/summary.txt"
+    grep -E '^(not ok |✖ )' "$OUT/test.log" | head -40 | tee -a "$OUT/summary.txt"
   fi
   [ $rc = 0 ] && rc=$test_rc
   exit $rc

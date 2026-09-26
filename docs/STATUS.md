@@ -1,9 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-26(INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+
+**로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
+- **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **F0-B 흐름 뼈대 2 — 사건 뼈대: 관문 ①②④⑤ 통과, ③ 가드레일 4/5(seed 3 작은 성벽 교착, 결정 EV8 알려진 정지), 사용자 지시로 본선 병합**(Claude Code, 엔진 세션, 렌더는 `buildingVisualState` +2줄): [사건 명세](design/flow-events.md) EV-1~EV-9, [보고서](verification/f0b-events/REPORT.md), 결정 EV1~EV7.
+  - 사건 정의 데이터(`EventDef`)와 seed 파생 일정·날씨, 예고 사다리(소문 → 징후 → 도래 → 회복, `eventForecast`), 저장 v13(`events`, 불탄 집, 재건 공사장).
+  - 첫 화재(1302 ± 1 마른 여름 보장, 밀도·우물 2칸), 이후 화재(마른 여름 15 %), 맞닿은 초가로 번짐·빈 칸과 우물에서 멈춤·우물물 긷는 가구가 끔, 불탄 집은 2단계부터 재건.
+  - 첫 흉년 리허설(1303 ± 1 젖은 여름, 수확 × 0.7, 빵·밀 × 1.5), 젖은 여름 × 0.95, 결산 `event_*` 줄과 손실.
+  - 관문 ② 첫 화재 5/5 · 흉년 5/5 · 사건 손실 대비 7 대 무대비 22. 관문 ③ seed 1·2·4·5 통과, seed 3은 1310년 성벽이 132칸(길 58)을 둘러 13필지에서 교착(LB-12 경우, F0-A 2회차와 같은 정지). 기준선은 `baseline-322d36f` 유지. 깨끗한 클론 `21be05d` 2,963/2,963.
 - **INSTALL-11 건물 계열별 공사 키트 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 렌더·표현 워커·에셋·대장·테스트·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/install11/REPORT.md), [명세](design/construction-kits.md) IK-1~IK-4, 결정 IN11-D1~D3.
   - 55장 설치. 목조 소·중, 석조 중·대, 교회·성채, 석벽 모퉁이 탑 키트가 단계마다 완성 그림의 캔버스에 선다.
   - 기중기·홍예틀·모르타르·들보 소품, 목수·석공 몸과 톱·자귀·흙손, 철거는 키트 역순. DGX p95 96~102 %.
@@ -14,7 +22,7 @@
 - **R0 사용자 판정 두 가지 — 본선 병합**(Claude Code, 렌더·테스트·스크립트·문서만, 엔진 0줄): [보고서](verification/r0-render-fixes/REPORT.md), 결정 R0-1·R0-2.
   - 세계 신호 S2·S4·S8은 조건이 배급 한 주기(250틱) 이상 이어질 때만 뜬다. 새 게임 첫 화면의 연기 없는 집 고리는 없어졌다.
   - 완성 그림 vs 발판 자동 검사 58장이 본선 32장 어긋남에서 0장이 됐다. 창고·곡창은 발판을 채우고, 시설·쌍집·우물·벌목장·헛간은 뜨지 않는다.
-- **REMOTE-1 DGX 원격 실행기 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 스크립트·문서만, 게임 코드 0줄): `scripts/remote/run.sh`·`npm run remote:{test,guardrail,browser,perf,clone-check,setup}`. 작업 트리를 DGX `~/fls-runs/<label>-<sha>`로 보내 `fls-runs.slice`(48GB·12코어·nice 10) 안에서 돌리고 결과만 가져온다. DGX 전체 회귀 2,944/2,944, Part7 10/10, 깨끗한 클론 `6c5088f` 통과. 성능 관문은 DGX 기준선 `perf/baseline-dgx-1326765.json`과만 비교. [사용법](REMOTE_RUNS.md), [보고서](verification/remote1-dgx-runner/REPORT.md), AGENTS.md "원격 실행" 규칙.
+- **REMOTE-1 DGX 원격 실행기 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 스크립트·문서만, 게임 코드 0줄): `scripts/remote/run.sh`·`npm run remote:{test,guardrail,browser,perf,clone-check,setup}`. 작업 트리를 DGX `~/fls-runs/<label>-<sha>`로 보내 `fls-runs.slice`(48GB·12코어·nice 10) 안에서 돌리고 결과만 가져온다. DGX 전체 회귀 2,944/2,944, Part7 10/10, 깨끗한 클론 `6c5088f` 통과. 게임은 DGX `~/fls-runs/_tools`의 Node 24.21.0 LTS로 돈다(원격 실행·플레이 서버, 시스템 Node 20은 그대로). `485a3ce`에서 전체 회귀 2,954/2,954, 깨끗한 클론 통과. 성능 관문은 DGX 기준선 `perf/baseline-dgx-1326765.json`과만 비교. [사용법](REMOTE_RUNS.md), [보고서](verification/remote1-dgx-runner/REPORT.md), AGENTS.md "원격 실행" 규칙.
 - **F0-V 가시성 뼈대 1 — 건설이 읽히게: 관문 ①~⑧ 통과, ⑨ 사용자 10분 판정 대기, 본선 병합**(Claude Code, 렌더·UI·소리·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population 0줄): [가시성 명세](design/visible-construction.md) VC-1~VC-8, [보고서](verification/f0v-visible-construction/REPORT.md), 결정 F0V-1~F0V-6.
   - 공사장 팻말: 완성 높이 기준점 하나에 이름·4칸 bar(25/55/85 %)·모자란 자재 또는 달력 도착점(앞당겨지기만)·막힘 탭(길·자재·일꾼)이 붙는다. 줌아웃에서는 같은 사유를 `×N`으로 묶는다.
   - 공사장 그림: 목재·석재 더미 1~3단, 표지와 건물 아이콘, 완성 유령 22 %, 200 ms 크로스페이드와 먼지, 1.2 s 완공(5배속은 먼지·소리만), 완공 토스트 묶음, 선택 공사장의 워커·수레꾼 연결선.
@@ -145,6 +153,8 @@
 이전 종료 이력: **A⁵-1 · `5f38625`**: 비축·창고 포화 교착 수정은 사용자가 수용했다. E1~E4 4/4, 가드레일은 2/5이며 seed 1 실패·seed 2/3 미판정이다. 이 상태를 5/5 통과로 해석하지 않는다. 전체 회귀 2,304/2,304·typecheck·build는 해당 종료 커밋에서 통과했다.
 
 ## 다음 작업
+
+- **BOT-2: 목책 둘레 크기(LB-12) — 필지당 성 안 면적을 넉넉히, 성 안 길 비율 상한.** 작은 성벽 교착이 F0-A 2회차에 이어 F0-B 1회차 seed 3에서 두 번째로 나왔다(결정 EV8). F0-C1 뒤 별도 작업(사용자 지시).
 
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").

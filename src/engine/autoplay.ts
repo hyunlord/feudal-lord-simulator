@@ -44,6 +44,7 @@ import { interiorHouseSites, keepsInteriorHouseSites } from './autoplayInteriorP
 import { ARABLE_MARGIN_PERMILLE, NAIVE_ARABLE_MARGIN_PERMILLE, withArableMargin } from './autoplayArable';
 import { winterReserveAction } from './autoplayWinterReserve';
 import { barnMillAction } from './autoplayBarnMill';
+import { dearthArableMargin, dearthHoldsGrowth, rebuildBurntHouseAction } from './autoplayEvents';
 /** The advisor's outward action: the placement actions plus BOT-1's house relocation (`demolish_house`). */
 export type { AdvisorAction as AutoplayAction } from './autoplayBotRecovery';
 export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
@@ -51,7 +52,12 @@ export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
  * `naiveReserve` (F0-A FP-6): the variant without reserve measures — no autumn winter check, harvest margin 1.0, and
  * houses whatever the bread stock (the flow design's "expand" over "stock").
  */
-export interface AutoplayPolicy { readonly maxHousingLots: number; readonly naiveReserve?: boolean }
+export interface AutoplayPolicy {
+  readonly maxHousingLots: number;
+  readonly naiveReserve?: boolean;
+  /** F0-B gate ② (EV-7): the unprepared variant builds no wells beyond the opening one (`--no-wells`). */
+  readonly noWells?: boolean;
+}
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
 const ERA_PHASE_SEARCH_WORK = 768;
@@ -253,7 +259,8 @@ function housingAction(state: GameState, policy: AutoplayPolicy): AutoplayAction
   // Z-15a: with a burgage zone, houses go only onto plots, through ZoneFillAgent in decideNextAction.
   if (zoneRuleActive(state, "burgage")) return NONE;
   // F0-A (FP-6): the bread-stock check is a reserve measure — the naive variant expands whatever the stock.
-  const stockShort = policy.naiveReserve !== true && breadStock(state) < 20;
+  // F0-B (EV-7): so is holding growth while a dearth is coming and the stored food lasts less than two seasons.
+  const stockShort = policy.naiveReserve !== true && (breadStock(state) < 20 || dearthHoldsGrowth(state));
   if (housingLotCount(state) >= policy.maxHousingLots || state.idleWorkers <= 6 || state.population < houseCapacity(state) || stockShort || hasPendingFoodChain(state) || hasPlannedBuilding(state, "house")) return NONE;
   const roads = new Set(roadTiles(state).map(coordinateKey));
   const accepts = (coordinate: TileCoordinate): boolean =>
@@ -307,11 +314,13 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   };
   // F0-A (FP-6): the autumn winter-reserve check, before the ordinary food step; the naive variant has none.
   const winterReserve = (current: GameState): AutoplayAction => policy.naiveReserve === true ? NONE : winterReserveAction(current, buildAction);
+  // F0-B (EV-7): the unprepared variant digs no wells.
+  const water = (current: GameState): AutoplayAction => policy.noWells === true ? NONE : waterAction(current);
   // F0-A (AR-8): a mill beside a barn the mills cannot empty while homes lose their levels (seed 4, run 1).
   const barnMill = (current: GameState): AutoplayAction => barnMillAction(current, buildAction, diagnostic);
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve, barnMill,
-      (current: GameState) => foodAction(current, buildAction, diagnostic), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, waterAction, materialRecoveryAction,
+      (current: GameState) => foodAction(current, buildAction, diagnostic), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
       const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
       if (action.foodTransient !== undefined) metadata = action;
@@ -323,7 +332,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   const servicePhase = () => serviceDecision(state);
   const housingPhase = () => housingAction(state, policy);
   for (const decide of [
-    () => waterAction(state),
+    () => water(state),
     () => roadAccessAction(state),
     () => networkRoadAction(state),
     () => constructionRoadAction(state),
@@ -351,16 +360,21 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
 }
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AdvisorAction {
+  // F0-B (EV-7): a burnt house is rebuilt first (its household waits in the ruin).
+  const rebuild = rebuildBurntHouseAction(state);
+  if (rebuild !== null) return rebuild;
   // Spec Z-15: only a town with a burgage zone consults ZoneFillAgent, and only below the policy's lot cap
   // (C1c); with no burgage zone this is never called.
-  if (zoneRuleActive(state, "burgage") && housingLotCount(state) < policy.maxHousingLots) {
+  if (zoneRuleActive(state, "burgage") && housingLotCount(state) < policy.maxHousingLots
+    && (policy.naiveReserve === true || !dearthHoldsGrowth(state))) {
     const fill = zoneFillAction(state);
     if (fill !== null) return fill;
   }
   // BOT-1 (AR-5): a home no market can reach any more is demolished so its lot is rebuilt in reach.
   const relocation = marketRelocationAction(state, policy.maxHousingLots, diagnostic);
   if (relocation.kind !== "none") return relocation;
-  const margin = policy.naiveReserve === true ? NAIVE_ARABLE_MARGIN_PERMILLE : ARABLE_MARGIN_PERMILLE;
+  // F0-B (EV-7): the standard bot plants for a rumoured dearth; the naive variant does not.
+  const margin = policy.naiveReserve === true ? NAIVE_ARABLE_MARGIN_PERMILLE : dearthArableMargin(state, ARABLE_MARGIN_PERMILLE);
   return withArableMargin(margin, () => decidePlacement(state, policy, diagnostic));
 }
 

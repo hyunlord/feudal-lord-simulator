@@ -1,0 +1,20 @@
+{
+  "id": "event/beacon_warning",
+  "w": 960,
+  "h": 540,
+  "scene": "A coastal timber beacon basket blazing on a simple tall timber platform above a grassy headland; two modest town watchmen in padded coats tend the warning fire. Small sailing vessels on distant Channel water, smoke bends inland. Urgent but restrained.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/P05.png"
+  ],
+  "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 960:540, fill complete image edge to edge. A coastal timber beacon basket blazing on a simple tall timber platform above a grassy headland; two modest town watchmen in padded coats tend the warning fire. Small sailing vessels on distant Channel water, smoke bends inland. Urgent but restrained. Output 960 by 540 pixels.",
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-74992b13-92ed-4af1-9489-81c47865c20e.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/beacon_warning.png",
+  "dimensions": [
+    960,
+    540
+  ],
+  "postprocess": "Lanczos3 resize and central cover crop to target; opaque illustration PNG",
+  "selected": true
+}

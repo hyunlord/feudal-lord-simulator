@@ -1,6 +1,8 @@
 /**
- * F0-A season ledger and pressure state (save v12, spec docs/design/flow-pressure.md FP-1…FP-5).
+ * F0-A season ledger and pressure state (save v12, spec docs/design/flow-pressure.md FP-1…FP-5). F0-B (save v13) adds
+ * the events' forecast, arrival and recovery to the ledger (spec docs/design/flow-events.md EV-9).
  */
+import type { EventSeasonEvent } from "./events.types";
 
 export const SEASON_STOCK_KEYS = ["bread", "wheat", "timber", "stone"] as const;
 export type SeasonStockKey = (typeof SEASON_STOCK_KEYS)[number];
@@ -12,14 +14,17 @@ export type SeasonEvent =
   | { readonly kind: "households_abandoned"; readonly count: number }
   | { readonly kind: "households_resettled"; readonly count: number }
   | { readonly kind: "era_entered"; readonly eraId: string; readonly forced: boolean }
-  | { readonly kind: "first_winter_warning" };
+  | { readonly kind: "first_winter_warning" }
+  | EventSeasonEvent;
 
 /**
  * The next objective the card suggests (FP-1): `food_reserve` = households are leaving or the stored food will not
  * last a season; `harvest_reserve` = the food in store and in the fields will not last to the next harvest (the lean
- * late spring, FP9); `resettle` = abandoned houses wait for a season of food. Null = nothing pressing.
+ * late spring, FP9); `resettle` = abandoned houses wait for a season of food. F0-B (EV-2, EV-9): `dearth_reserve` = a
+ * dearth is rumoured (stock up before the bad harvest); `fire_break` = a dry summer is rumoured (wells, gaps between
+ * thatch); `rebuild` = burnt houses wait for rebuilding. Null = nothing pressing.
  */
-export type NextObjectiveHint = "food_reserve" | "harvest_reserve" | "resettle" | null;
+export type NextObjectiveHint = "food_reserve" | "harvest_reserve" | "resettle" | "dearth_reserve" | "fire_break" | "rebuild" | null;
 
 /** FP-1: one closed season. Income and expense are the cash ledger's entries in (startTick, endTick]. */
 export interface SeasonLedger {
@@ -47,6 +52,8 @@ export interface SeasonTally {
   readonly resettled: number;
   readonly eras: readonly { readonly eraId: string; readonly forced: boolean }[];
   readonly firstWinterWarning: boolean;
+  /** F0-B (EV-9): event forecast, arrival and recovery lines raised this season. Absent = none (v12 tallies). */
+  readonly events?: readonly EventSeasonEvent[];
 }
 
 /**

@@ -44,6 +44,11 @@ type GameCommand =
       readonly buildingId: string;
     }
   | {
+      /** F0-B EV-6: rebuild a burnt house from stage 2. */
+      readonly type: "rebuild_house";
+      readonly buildingId: string;
+    }
+  | {
       readonly type: "cancel_construction";
       readonly siteId: string;
     }

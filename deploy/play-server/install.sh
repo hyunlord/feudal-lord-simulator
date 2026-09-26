@@ -7,6 +7,9 @@
 set -euo pipefail
 ROOT=${FLS_PLAY_ROOT:-$HOME/fls-play}
 HERE=$(cd "$(dirname "$0")" && pwd)
+# The server and its builds run on Node 24 from ~/fls-runs/_tools/node (scripts/remote/setup-dgx.sh installs it).
+[ -x "$HOME/fls-runs/_tools/node/bin/node" ] || { echo "Node 24 missing: run scripts/remote/setup-dgx.sh first" >&2; exit 1; }
+export PATH="$HOME/fls-runs/_tools/node/bin:$PATH"
 mkdir -p "$ROOT/bin" "$ROOT/state" "$ROOT/releases" "$HOME/.config/systemd/user"
 install -m 755 "$HERE/update.sh" "$ROOT/bin/update.sh"
 install -m 644 "$HERE/serve.mjs" "$ROOT/bin/serve.mjs"
