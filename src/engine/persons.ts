@@ -8,6 +8,8 @@
  *   empty house found a household (head and spouse). The old decline rule (a starving house loses a resident) is a
  *   famine death of the frailest or, among the strong, someone leaving. New: on each season's first day a person dies at
  *   the rate of their age (dearer bread weighs it: dearth × 1.5, famine × 3), and a house that burns kills some within.
+ *   A household that could grow fills the dead one's place at once (a birth or a relative); in a house that cannot
+ *   (no bread or water, burnt, leaving) the death is a resident lost — mortality is the decline there.
  *   A household whose adults are gone passes to its eldest child of 12+, else it breaks up (the children go to kin).
  * - PS-4 offices: the steward (manor household, always), the reeve (a labour household head, chosen each year), a
  *   master for each staffed trade building (the nearest free household head takes the trade), petitioners (2–3
@@ -16,6 +18,7 @@
  */
 import { FEMALE_GIVEN_NAMES, HAIR_COLOURS, MALE_GIVEN_NAMES, NAMESAKE_EPITHETS, OCCUPATIONAL_SURNAMES, ORDINAL_EPITHETS, PATRONYMIC_SURNAMES, TOPOGRAPHIC_SURNAMES, type WeightedName } from "../content/personNames";
 import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
+import { houseHasFood } from "../population/houseFood";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { foodPricePermille } from "./eventSchedule";
@@ -225,6 +228,12 @@ function mortalityWeight(state: GameState): number {
   return price >= 2_000 ? MORTALITY_WEIGHTS.famine : price >= 1_400 ? MORTALITY_WEIGHTS.dearth : 1_000;
 }
 
+/** PS-3: a house whose empty place the growth rule would fill (water, bread, not burnt, abandoned or leaving). */
+function canRefill(house: House, tick: number): boolean {
+  return house.hasWater && houseHasFood(house) && house.burntTick === undefined && house.abandonedTick === undefined
+    && house.leavingSinceTick === undefined && tick > 0;
+}
+
 /** PS-1: a house's adults (14+) and children from its people. */
 function membersOf(house: House, people: readonly Person[], year: number): House {
   const adults = people.filter(person => ageOf(person, year) >= ADULT_AGE).length;
@@ -347,6 +356,7 @@ export function advancePersons(state: GameState): GameState {
   }
   const town = new Town(state.seed, year, base);
   const residents = new Map(state.houses.map(house => [house.buildingId, Math.max(0, house.residents)]));
+  const houseById = new Map(state.houses.map(house => [house.buildingId, house]));
   const houseIds = new Set(state.houses.map(house => house.buildingId));
 
   // PS-3 deaths of the season and of fire (they take residents from the houses).
@@ -367,7 +377,10 @@ export function advancePersons(state: GameState): GameState {
       }
       if (cause === null) continue;
       town.remove(person.id, { died: cause });
-      if (residents.has(person.householdId)) residents.set(person.householdId, Math.max(0, residents.get(person.householdId)! - 1));
+      // A household that could grow (fed, watered, not burnt, not leaving) fills the place at once — a birth or a
+      // relative, as the growth rule would within its interval. Elsewhere the death is a resident lost.
+      const house = houseById.get(person.householdId);
+      if (house !== undefined && !canRefill(house, state.tick)) residents.set(person.householdId, Math.max(0, residents.get(person.householdId)! - 1));
     }
   }
 
