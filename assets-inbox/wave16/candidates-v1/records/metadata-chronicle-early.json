@@ -1,0 +1,284 @@
+[
+  {
+    "id": "chronicle_settlement",
+    "file": "assets/chronicle/chronicle_settlement.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "정착: 초가 오두막과 새 우물 주변의 세 정착민",
+    "characters": "세 정착민",
+    "historyNotes": "잉글랜드 남부 1300–1318. 초가·목골조·천연 저채도 의복. 문 표식·홉·관·흑사병·현대물 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square, full bleed chronicle illustration, designed for final 384x384 and readable at192x192. Project reference images are style only: match their low-chroma hand-painted gouache/oil medieval game keyart and restrained natural faces. Add just a slight English illuminated-manuscript flattened storytelling quality, NOT a literal manuscript page. No decorative frame, no border, no margin ornaments. Southern England 1300-1318. Palette muted earth, warm chalk, weathered oak, dull olive, gray wool; painterly material texture and clear simple silhouettes. Absolutely NO letters, numbers, symbols of writing, labels, watermarks, painted door marks or X marks, hops, coffins, plague, bright primary colors, modern objects, chimneys, blue glass. Plain unmarked doors. Limit scene to 2-4 people and a few key objects. A newly settled hamlet. One modest wattle-and-daub thatched hut on the left, a simple stone well with wooden beam and bucket prominent on the right. A family of three arrives with a small handcart and rolled blanket. One adult draws water while the other and child approach. Quiet optimistic spring. Hut and well must dominate the scene.",
+        "rawFile": "raw/chronicle-early/chronicle_settlement.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "Square source proportionally downsampled to384x384 using sharp Lanczos3; ensureAlpha; no painting modifications.",
+      "sourceRaw": "raw/chronicle-early/chronicle_settlement.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sceneLegibility384": "pass: principal action and objects readable without text",
+      "sceneLegibility192": "pass: principal silhouette and action retained",
+      "historicalVisualInspection": "No prohibited visible motifs found; not exhaustive scholarly certification",
+      "illuminationStrength": "slight/weak: keyart painterly texture dominates; final stylistic acceptance remains user decision",
+      "notes": "No corrective edit required"
+    }
+  },
+  {
+    "id": "chronicle_first_plough",
+    "file": "assets/chronicle/chronicle_first_plough.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "첫 밭 갈기: 소가 끄는 쟁기와 새 고랑",
+    "characters": "농부 두 명",
+    "historyNotes": "잉글랜드 남부 1300–1318. 초가·목골조·천연 저채도 의복. 문 표식·홉·관·흑사병·현대물 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square, full bleed chronicle illustration, designed for final 384x384 and readable at192x192. Project reference images are style only: match their low-chroma hand-painted gouache/oil medieval game keyart and restrained natural faces. Add just a slight English illuminated-manuscript flattened storytelling quality, NOT a literal manuscript page. No decorative frame, no border, no margin ornaments. Southern England 1300-1318. Palette muted earth, warm chalk, weathered oak, dull olive, gray wool; painterly material texture and clear simple silhouettes. Absolutely NO letters, numbers, symbols of writing, labels, watermarks, painted door marks or X marks, hops, coffins, plague, bright primary colors, modern objects, chimneys, blue glass. Plain unmarked doors. Limit scene to 2-4 people and a few key objects. First ploughing. A pair of brown oxen in a wooden neck yoke pull a medieval wooden mouldboard plough through dark earth. One farmer behind grips the plough handles and another guides the oxen beside their heads. Three clear fresh curved furrows foreground, small thatched hut distance. Animals clearly cattle with horns, NOT horses. Strong diagonal storytelling with oxen, yoke, drawbeam, plough mechanically connected.",
+        "rawFile": "raw/chronicle-early/chronicle_first_plough.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "Square source proportionally downsampled to384x384 using sharp Lanczos3; ensureAlpha; no painting modifications.",
+      "sourceRaw": "raw/chronicle-early/chronicle_first_plough.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sceneLegibility384": "pass: principal action and objects readable without text",
+      "sceneLegibility192": "pass: principal silhouette and action retained",
+      "historicalVisualInspection": "No prohibited visible motifs found; not exhaustive scholarly certification",
+      "illuminationStrength": "slight/weak: keyart painterly texture dominates; final stylistic acceptance remains user decision",
+      "notes": "No corrective edit required"
+    }
+  },
+  {
+    "id": "chronicle_first_winter",
+    "file": "assets/chronicle/chronicle_first_winter.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "첫 겨울: 눈 내린 오두막 앞 곡물 자루",
+    "characters": "세 주민",
+    "historyNotes": "잉글랜드 남부 1300–1318. 초가·목골조·천연 저채도 의복. 문 표식·홉·관·흑사병·현대물 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square, full bleed chronicle illustration, designed for final 384x384 and readable at192x192. Project reference images are style only: match their low-chroma hand-painted gouache/oil medieval game keyart and restrained natural faces. Add just a slight English illuminated-manuscript flattened storytelling quality, NOT a literal manuscript page. No decorative frame, no border, no margin ornaments. Southern England 1300-1318. Palette muted earth, warm chalk, weathered oak, dull olive, gray wool; painterly material texture and clear simple silhouettes. Absolutely NO letters, numbers, symbols of writing, labels, watermarks, painted door marks or X marks, hops, coffins, plague, bright primary colors, modern objects, chimneys, blue glass. Plain unmarked doors. Limit scene to 2-4 people and a few key objects. First winter in a young village. Snow visibly covers most of two low thatch roofs and ground. Three villagers in dull wool cloaks gather outside a small timber granary: one counts a FEW remaining closed grain sacks by pointing, one carries a sack and a child clutches a blanket. Wooden shovel in snow. Cold pale sky, no writing. Winter snow and scarce provisions immediately readable.",
+        "rawFile": "raw/chronicle-early/chronicle_first_winter.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "Square source proportionally downsampled to384x384 using sharp Lanczos3; ensureAlpha; no painting modifications.",
+      "sourceRaw": "raw/chronicle-early/chronicle_first_winter.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sceneLegibility384": "pass: principal action and objects readable without text",
+      "sceneLegibility192": "pass: principal silhouette and action retained",
+      "historicalVisualInspection": "No prohibited visible motifs found; not exhaustive scholarly certification",
+      "illuminationStrength": "slight/weak: keyart painterly texture dominates; final stylistic acceptance remains user decision",
+      "notes": "No corrective edit required"
+    }
+  },
+  {
+    "id": "chronicle_first_mill",
+    "file": "assets/chronicle/chronicle_first_mill.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "첫 방앗간: 목제 기둥풍차와 밀 자루",
+    "characters": "방앗간 일꾼 두 명",
+    "historyNotes": "잉글랜드 남부 1300–1318. 초가·목골조·천연 저채도 의복. 문 표식·홉·관·흑사병·현대물 없음. 중앙 목제 기둥과 버팀대의 기둥풍차, 4개 격자 날개, 물레방아 없음.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square, full bleed chronicle illustration, designed for final 384x384 and readable at192x192. Project reference images are style only: match their low-chroma hand-painted gouache/oil medieval game keyart and restrained natural faces. Add just a slight English illuminated-manuscript flattened storytelling quality, NOT a literal manuscript page. No decorative frame, no border, no margin ornaments. Southern England 1300-1318. Palette muted earth, warm chalk, weathered oak, dull olive, gray wool; painterly material texture and clear simple silhouettes. Absolutely NO letters, numbers, symbols of writing, labels, watermarks, painted door marks or X marks, hops, coffins, plague, bright primary colors, modern objects, chimneys, blue glass. Plain unmarked doors. Limit scene to 2-4 people and a few key objects. First windmill: a medieval English TIMBER POST WINDMILL, exactly four large crossed wooden lattice sails, raised rectangular timber mill body pivoting on a clearly visible central stout wooden post and braced trestle, short steep pitched timber roof, small rear stair. No masonry tower, no Dutch cap mill, NO waterwheel or water machinery. Two workers with one wheat sack near base indicate first operation. Open field, tiny village behind. Mill silhouette dominates and full sails remain inside square.",
+        "rawFile": "raw/chronicle-early/chronicle_first_mill.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit this square illustration only to widen framing: zoom camera out about 18%, extend landscape and sky, keeping the entire timber postmill with all four sail tips fully inside the square with at least 6% empty sky above the top sail. Preserve the central wooden post trestle structure, raised box mill body, four lattice sails, two workers handling wheat sacks, hand-painted subdued historical English keyart style. No text, no border, no new objects, no chimney, no waterwheel. All four sail tips must be completely visible with breathing room.",
+        "rawFile": "raw/chronicle-early/chronicle_first_mill-v2.png",
+        "referenceImages": [
+          "raw/chronicle-early/chronicle_first_mill.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "Square source proportionally downsampled to384x384 using sharp Lanczos3; ensureAlpha; no painting modifications.",
+      "sourceRaw": "raw/chronicle-early/chronicle_first_mill-v2.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sceneLegibility384": "pass: principal action and objects readable without text",
+      "sceneLegibility192": "pass: principal silhouette and action retained",
+      "historicalVisualInspection": "No prohibited visible motifs found; not exhaustive scholarly certification",
+      "illuminationStrength": "slight/weak: keyart painterly texture dominates; final stylistic acceptance remains user decision",
+      "notes": "v1 sail-tip crop corrected with builtin edit; full four tips visible in v2"
+    }
+  },
+  {
+    "id": "chronicle_first_fire",
+    "file": "assets/chronicle/chronicle_first_fire.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "첫 화재: 불붙은 초가와 물통 나르는 주민",
+    "characters": "주민 네 명",
+    "historyNotes": "잉글랜드 남부 1300–1318. 초가·목골조·천연 저채도 의복. 문 표식·홉·관·흑사병·현대물 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square, full bleed chronicle illustration, designed for final 384x384 and readable at192x192. Project reference images are style only: match their low-chroma hand-painted gouache/oil medieval game keyart and restrained natural faces. Add just a slight English illuminated-manuscript flattened storytelling quality, NOT a literal manuscript page. No decorative frame, no border, no margin ornaments. Southern England 1300-1318. Palette muted earth, warm chalk, weathered oak, dull olive, gray wool; painterly material texture and clear simple silhouettes. Absolutely NO letters, numbers, symbols of writing, labels, watermarks, painted door marks or X marks, hops, coffins, plague, bright primary colors, modern objects, chimneys, blue glass. Plain unmarked doors. Limit scene to 2-4 people and a few key objects. First fire: one thatched hut burning at dusk, orange fire only at roof edge and dark smoke above. Four villagers form a clear bucket brigade from a stone well in foreground toward the house, passing wooden buckets hand to hand. No injured bodies, no gore. Fire and urgent water-carrying action obvious. Muted ember orange, smoke gray, no saturated red theatrical glow. No chimneys.",
+        "rawFile": "raw/chronicle-early/chronicle_first_fire.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "Square source proportionally downsampled to384x384 using sharp Lanczos3; ensureAlpha; no painting modifications.",
+      "sourceRaw": "raw/chronicle-early/chronicle_first_fire.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sceneLegibility384": "pass: principal action and objects readable without text",
+      "sceneLegibility192": "pass: principal silhouette and action retained",
+      "historicalVisualInspection": "No prohibited visible motifs found; not exhaustive scholarly certification",
+      "illuminationStrength": "slight/weak: keyart painterly texture dominates; final stylistic acceptance remains user decision",
+      "notes": "No corrective edit required"
+    }
+  },
+  {
+    "id": "chronicle_rebuilding",
+    "file": "assets/chronicle/chronicle_rebuilding.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "재건: 그을린 터 옆 새 목골조를 세우는 목수",
+    "characters": "목수 세 명",
+    "historyNotes": "잉글랜드 남부 1300–1318. 초가·목골조·천연 저채도 의복. 문 표식·홉·관·흑사병·현대물 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square, full bleed chronicle illustration, designed for final 384x384 and readable at192x192. Project reference images are style only: match their low-chroma hand-painted gouache/oil medieval game keyart and restrained natural faces. Add just a slight English illuminated-manuscript flattened storytelling quality, NOT a literal manuscript page. No decorative frame, no border, no margin ornaments. Southern England 1300-1318. Palette muted earth, warm chalk, weathered oak, dull olive, gray wool; painterly material texture and clear simple silhouettes. Absolutely NO letters, numbers, symbols of writing, labels, watermarks, painted door marks or X marks, hops, coffins, plague, bright primary colors, modern objects, chimneys, blue glass. Plain unmarked doors. Limit scene to 2-4 people and a few key objects. Rebuilding after the fire: beside low charred remains in foreground, three medieval carpenters raise a timber-framed wall assembled flat on the ground, now tilted halfway upright using ropes and a prop. One carpenter pulls rope, two support the timber frame. A second completed upright frame behind makes rebuilding clear. Hewn oak pegs, simple hand axe on ground, no power tools, no metal scaffold. Gentle hopeful morning.",
+        "rawFile": "raw/chronicle-early/chronicle_rebuilding.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "Square source proportionally downsampled to384x384 using sharp Lanczos3; ensureAlpha; no painting modifications.",
+      "sourceRaw": "raw/chronicle-early/chronicle_rebuilding.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sceneLegibility384": "pass: principal action and objects readable without text",
+      "sceneLegibility192": "pass: principal silhouette and action retained",
+      "historicalVisualInspection": "No prohibited visible motifs found; not exhaustive scholarly certification",
+      "illuminationStrength": "slight/weak: keyart painterly texture dominates; final stylistic acceptance remains user decision",
+      "notes": "No corrective edit required"
+    }
+  },
+  {
+    "id": "chronicle_bad_harvest",
+    "file": "assets/chronicle/chronicle_bad_harvest.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "첫 흉년: 빈 수레와 적은 볏단, 쓰러진 밭",
+    "characters": "농부 두 명",
+    "historyNotes": "잉글랜드 남부 1300–1318. 초가·목골조·천연 저채도 의복. 문 표식·홉·관·흑사병·현대물 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square, full bleed chronicle illustration, designed for final 384x384 and readable at192x192. Project reference images are style only: match their low-chroma hand-painted gouache/oil medieval game keyart and restrained natural faces. Add just a slight English illuminated-manuscript flattened storytelling quality, NOT a literal manuscript page. No decorative frame, no border, no margin ornaments. Southern England 1300-1318. Palette muted earth, warm chalk, weathered oak, dull olive, gray wool; painterly material texture and clear simple silhouettes. Absolutely NO letters, numbers, symbols of writing, labels, watermarks, painted door marks or X marks, hops, coffins, plague, bright primary colors, modern objects, chimneys, blue glass. Plain unmarked doors. Limit scene to 2-4 people and a few key objects. Bad harvest. A nearly empty wooden two-wheeled cart holds only THREE thin poor wheat sheaves. Two weary farmers place the last skimpy sheaf on the cart. Surrounding field has sparse flattened wet stalks and mud, gray clouds and a small ruined patch. Composition strongly contrasts large empty cart bed with few thin sheaves; no plentiful golden wheat stacks. Restrained melancholy, no starvation corpses.",
+        "rawFile": "raw/chronicle-early/chronicle_bad_harvest.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "Square source proportionally downsampled to384x384 using sharp Lanczos3; ensureAlpha; no painting modifications.",
+      "sourceRaw": "raw/chronicle-early/chronicle_bad_harvest.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sceneLegibility384": "pass: principal action and objects readable without text",
+      "sceneLegibility192": "pass: principal silhouette and action retained",
+      "historicalVisualInspection": "No prohibited visible motifs found; not exhaustive scholarly certification",
+      "illuminationStrength": "slight/weak: keyart painterly texture dominates; final stylistic acceptance remains user decision",
+      "notes": "No corrective edit required"
+    }
+  },
+  {
+    "id": "chronicle_market_day",
+    "file": "assets/chronicle/chronicle_market_day.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "장날: 천막 좌판에서 물건을 거래하는 네 사람",
+    "characters": "상인 두 명과 손님 두 명",
+    "historyNotes": "잉글랜드 남부 1300–1318. 초가·목골조·천연 저채도 의복. 문 표식·홉·관·흑사병·현대물 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square, full bleed chronicle illustration, designed for final 384x384 and readable at192x192. Project reference images are style only: match their low-chroma hand-painted gouache/oil medieval game keyart and restrained natural faces. Add just a slight English illuminated-manuscript flattened storytelling quality, NOT a literal manuscript page. No decorative frame, no border, no margin ornaments. Southern England 1300-1318. Palette muted earth, warm chalk, weathered oak, dull olive, gray wool; painterly material texture and clear simple silhouettes. Absolutely NO letters, numbers, symbols of writing, labels, watermarks, painted door marks or X marks, hops, coffins, plague, bright primary colors, modern objects, chimneys, blue glass. Plain unmarked doors. Limit scene to 2-4 people and a few key objects. First market day. Two modest canvas stalls in a timber-framed village lane, one displaying a few bread loaves and grain measure, the other folded muted wool cloth and pottery. Four townspeople, two sellers and two buyers, visibly exchange a loaf and a small coin. Clear friendly everyday activity, no crowds hiding objects, no signs or lettering, no brightly striped awnings. A plain stone market cross in soft background.",
+        "rawFile": "raw/chronicle-early/chronicle_market_day.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "Square source proportionally downsampled to384x384 using sharp Lanczos3; ensureAlpha; no painting modifications.",
+      "sourceRaw": "raw/chronicle-early/chronicle_market_day.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sceneLegibility384": "pass: principal action and objects readable without text",
+      "sceneLegibility192": "pass: principal silhouette and action retained",
+      "historicalVisualInspection": "No prohibited visible motifs found; not exhaustive scholarly certification",
+      "illuminationStrength": "slight/weak: keyart painterly texture dominates; final stylistic acceptance remains user decision",
+      "notes": "No corrective edit required"
+    }
+  }
+]

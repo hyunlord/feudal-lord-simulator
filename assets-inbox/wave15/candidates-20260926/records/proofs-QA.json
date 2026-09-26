@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "scope": "Mechanical project-pixel composites, visual QA; no game installation",
+  "reviewedAt": "2026-09-26T00:17:03.805Z",
+  "missingRequiredInputs": [],
+  "checks": [
+    {
+      "file": "checks/01-four-seasons.png",
+      "sha256": "62c88d5a77942730b7526bb9161bd2f131d7a1deba1adc821eba5e468abb1f49",
+      "visuallyInspected": true
+    },
+    {
+      "file": "checks/02-foliage-grid.png",
+      "sha256": "a04579d729882ad1682342d76cac69aeafb186bb1785ed927880d2b9f075d72f",
+      "visuallyInspected": true
+    },
+    {
+      "file": "checks/03-orchard-grid.png",
+      "sha256": "e81a15f7ad7cce19b4e3e067a4998cc4597dbfdc70265cbcf181686c640cbb79",
+      "visuallyInspected": true
+    },
+    {
+      "file": "checks/04-winter-village.png",
+      "sha256": "e04bdf1b41b9369c8fcc55a515622b7bdddef72f764970c8b4811d5323227f3a",
+      "visuallyInspected": true
+    }
+  ],
+  "observations": {
+    "samePlaceFourSeasons": "pass at zoom 1.0 and 0.6",
+    "sourceScale": "actual foliage and orchard runtime display scales and anchors",
+    "seasonPalette": "muted brown/gold autumn, yellow birch, green pines, thin winter snow",
+    "silhouette": "original envelope and contact read consistently; not pixel-identical alpha; sparse branch edge 1-2px variance",
+    "layout": "no overlapping or clipped labels in final proofs"
+  },
+  "limitations": [
+    "Not a game screenshot or runtime integration test",
+    "Detail orchard grid is enlarged and separately labelled"
+  ]
+}

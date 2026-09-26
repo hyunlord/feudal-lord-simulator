@@ -1,0 +1,122 @@
+{
+  "stage": "final_pool_visual_review_R2",
+  "reviewer": "roster_agent",
+  "verdict": "PILOT_CANDIDATE_ACCEPTABLE_WITH_NOTED_SIMILARITY",
+  "evidence": [
+    {
+      "file": "deliverable/checks/01-pool-36-256-and-96.png",
+      "sha256": "5ed667301e935f77ec14be1032ababa6e86ac063b9a9d7bd4fcba44499fb3012"
+    },
+    {
+      "file": "review-pool-final-96.png",
+      "sha256": "0cb03c7a0f79c0ddfe23e77baffe750b74e3c93789633ce5b0305913e6acf170"
+    },
+    {
+      "file": "deliverable/portraits/P09.png",
+      "sha256": "00febe551bfbbdf03004957826c16bce518284cc6d8c70f83f98b1d46748f704"
+    },
+    {
+      "file": "deliverable/portraits/P30.png",
+      "sha256": "12d323745bba42cbcf762ec530e10df7caa7f469838ea23bb93211eccc356f0d"
+    },
+    {
+      "file": "deliverable/portraits/P16.png",
+      "sha256": "53d4f4b6adad69856c86e1e2b058466d0f24a027f16bb626f4a434d7e4e24075"
+    },
+    {
+      "file": "deliverable/portraits/P35.png",
+      "sha256": "fb58d2ede96cb4a3b29b1bd4bc2e52e66539693e8fbfd498e76eaa78d0055b10"
+    },
+    {
+      "file": "deliverable/portraits/P14.png",
+      "sha256": "837bc37f4bfa5fb5ba7c6af22708458bc031afff5a5070acadd3d51b5675817f"
+    },
+    {
+      "file": "deliverable/portraits/P28.png",
+      "sha256": "7a22b0f148d47f79991d1fca91839444e91acc7efe63e200207501bfeb440350"
+    }
+  ],
+  "scope": "Reopened current R2 full 36-person 256px/96px proof after P09/P30 regeneration. Regenerated a direct unscaled crop of native96 region and viewed at original detail. Viewed current P09/P30 and closest-pair P16/P35/P14/P28 native256 PNGs. No stale pair verdict carried forward.",
+  "similar_pairs": [
+    {
+      "ids": [
+        "P16",
+        "P35"
+      ],
+      "rank": 1,
+      "severity": "relative_similarity_not_duplicate",
+      "observation_ko": "두 장년 여성의 둥근 볼·도톰한 턱·짧은 눈매와 흰 머리 가리개가 가까운 인상을 만든다. 그러나 P16의 더 짧고 뭉툭한 코, P35의 길고 뚜렷한 콧등, 입매와 반대 방향 때문에 현재 그림에서는 별개 인물로 읽힌다.",
+      "distinguishability_96": "Distinguishable as complete portraits; shared round-face family remains the closest relative resemblance."
+    },
+    {
+      "ids": [
+        "P14",
+        "P28"
+      ],
+      "rank": 2,
+      "severity": "relative_similarity_not_duplicate",
+      "observation_ko": "왼쪽을 향한 길고 마른 얼굴, 가는 콧등과 눈썹·눈 배치가 닮았다. P14는 볼에 젊은 볼륨과 부드러운 턱이 있고 P28은 볼이 패이고 코끝·턱이 더 돌출되어 구분된다. 수녀복만이 아닌 얼굴 윤곽에서도 차이가 보인다.",
+      "distinguishability_96": "Distinguishable, though more closely related-looking than many other pairs. Do not advertise mathematically unique face identities."
+    }
+  ],
+  "observations": [
+    {
+      "topic": "revised_pairs_R2",
+      "ids": [
+        "P02",
+        "P09",
+        "P18",
+        "P30"
+      ],
+      "verdict": "RESOLVED_OBSERVED",
+      "note_ko": "P09의 긴 코·넓고 각진 하안면·좁은 눈은 P02의 둥글고 어린 얼굴과 분명히 달라졌다. P30은 높은 이마·작고 오목한 들창코·뒤로 물러난 턱·검버섯으로 P18의 길고 곧은 코·날카로운 턱과 달라졌다. 이 두 쌍은 현재 최상위 유사 쌍이 아니다."
+    },
+    {
+      "topic": "36_individuals_at_96",
+      "verdict": "ACCEPTABLE_PILOT_SUBJECTIVE_REVIEW",
+      "note_ko": "현 36개 완성 초상은 96px에서 서로 구별되는 인물 아이콘으로 읽힌다. 처음 확인한 근접 복제 쌍은 수정되었다. 가장 닮은 두 쌍은 남지만 차이가 코·볼·턱에도 보여 의상만 바꾼 동일인으로 바로 읽히는 수준은 아니다. 이는 눈으로 본 파일럿 후보 판정이며, 얼굴만 잘라 모든 관찰자에게 36개 신원이 확실히 분리됨을 입증한 검사는 아니다."
+    },
+    {
+      "topic": "direction",
+      "verdict": "PASS_OBSERVED",
+      "note_ko": "좌향·우향·거의 정면이 격자 전체에 분산되어 보인다. 거의 정면 인물의 약한 회전은 요청 범위에 들어간다. 좌우 반전 사용 여부는 이미지 관찰만으로 증명할 수 없다."
+    },
+    {
+      "topic": "body",
+      "verdict": "MOSTLY_READABLE",
+      "note_ko": "마른 목·좁은 어깨와 둥근 볼·두꺼운 목의 대비가 읽힌다. P08은 얼굴 폭이 있어도 목·어깨는 마른 체형으로 수용 가능하다. P12는 수염과 앞치마 때문에 살찐 체형 판독이 약하다. 변경된 P24는 평균 체형 태그에 비해 얼굴이 상당히 둥글고 풍성하여 보통/살찐 경계 사례이다.",
+      "ids": [
+        "P08",
+        "P12",
+        "P24"
+      ]
+    },
+    {
+      "topic": "age",
+      "verdict": "BANDS_READ_WITH_BORDERLINES",
+      "note_ko": "P03은 분명한 아이이고 P02·P07·P19는 사춘기 전후처럼 읽힌다. P07의 정확한 9세는 약하고 11~13세 인상이다. 노년 주름·피부 처짐·탈모는 분명하다. 개별 정확한 나이는 육안으로 인증하지 않는다.",
+      "ids": [
+        "P02",
+        "P03",
+        "P07",
+        "P19"
+      ]
+    },
+    {
+      "topic": "skin",
+      "verdict": "LIMITED_BUT_VISIBLE_VARIATION",
+      "note_ko": "대부분 밝은 피부 범위이며 붉은 볼·주근깨·창백함 차이는 보인다. 전체가 따뜻한 분홍베이지 쪽으로 모여 올리브·누런 기 차이는 CSV 설명보다 약하다. 피부나 체형을 악인/선인 표지로 쓰는 인상은 없다."
+    },
+    {
+      "topic": "historical_clothing",
+      "verdict": "NO_OBVIOUS_MAJOR_ERROR_OBSERVED",
+      "note_ko": "저채도 모직과 린넨, 성인 여성 베일/윔플, 수녀와 남성 성직자의 다른 복식, 제의가 아닌 일상복이 보인다. 현대 헤어스타일·원색·후기 과장 머리 장식은 눈에 띄지 않는다. 수도회 단위 정밀 역사 고증을 시각 검수만으로 인증하지는 않는다."
+    },
+    {
+      "topic": "class_readability",
+      "verdict": "BROAD_NOT_EXACT",
+      "note_ko": "수도복과 앞치마, 수선 흔적, 직물과 서류 소품으로 큰 직업군을 읽을 수 있다. 노동/하인 및 상인/젠트리는 겹쳐 여섯 계급을 96px 이미지로만 정확히 분류한다고 보장하지 않는다."
+    }
+  ],
+  "summary_ko": "R2 수정 후 한 얼굴에 다른 분장이라는 반복 인상은 크게 줄었다. 현 풀은 서로 다른 사람을 고르는 완성 초상 파일럿 후보로 수용 가능한 수준이다. 가장 닮은 두 쌍 P16–P35, P14–P28을 공개하며, 36명 얼굴 정체성의 객관적 완전 독립성을 보증하지 않는다. 정확한 계급·연령·체형 판독에는 기록한 경계 사례가 남는다."
+}

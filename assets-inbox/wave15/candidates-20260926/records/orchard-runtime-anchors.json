@@ -1,0 +1,108 @@
+{
+  "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/src/render/zoneAssetManifest.ts",
+  "legacySource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/src/render/townLandscapeManifest.generated.ts",
+  "assets": [
+    {
+      "key": "orchard_floor_fill",
+      "url": "assets/zones/orchard_floor_a-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill"
+    },
+    {
+      "key": "orchard_floor_fill_b",
+      "url": "assets/zones/orchard_floor_b-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill"
+    },
+    {
+      "key": "orchard_apple_c",
+      "url": "assets/zones/orchard_apple_c-v1.png",
+      "width": 256,
+      "height": 256,
+      "role": "prop",
+      "displayWidth": 43,
+      "anchorX": 128,
+      "anchorY": 246
+    },
+    {
+      "key": "orchard_apple_d",
+      "url": "assets/zones/orchard_apple_d-v1.png",
+      "width": 256,
+      "height": 256,
+      "role": "prop",
+      "displayWidth": 43,
+      "anchorX": 123,
+      "anchorY": 246
+    },
+    {
+      "key": "orchard_pear_e",
+      "url": "assets/zones/orchard_pear_e-v1.png",
+      "width": 256,
+      "height": 256,
+      "role": "prop",
+      "displayWidth": 43,
+      "anchorX": 123,
+      "anchorY": 246
+    },
+    {
+      "key": "orchard_plum_f",
+      "url": "assets/zones/orchard_plum_f-v1.png",
+      "width": 256,
+      "height": 256,
+      "role": "prop",
+      "displayWidth": 43,
+      "anchorX": 141,
+      "anchorY": 246
+    },
+    {
+      "key": "orchard_apple_g",
+      "url": "assets/zones/orchard_apple_g-v1.png",
+      "width": 256,
+      "height": 256,
+      "role": "prop",
+      "displayWidth": 43,
+      "anchorX": 128,
+      "anchorY": 242
+    },
+    {
+      "key": "orchard_apple_h",
+      "url": "assets/zones/orchard_apple_h-v1.png",
+      "width": 256,
+      "height": 256,
+      "role": "prop",
+      "displayWidth": 43,
+      "anchorX": 128,
+      "anchorY": 242
+    },
+    {
+      "key": "orchard_pear_i",
+      "url": "assets/zones/orchard_pear_i-v1.png",
+      "width": 256,
+      "height": 256,
+      "role": "prop",
+      "displayWidth": 43,
+      "anchorX": 128,
+      "anchorY": 242
+    },
+    {
+      "key": "orchard_plum_j",
+      "url": "assets/zones/orchard_plum_j-v1.png",
+      "width": 256,
+      "height": 256,
+      "role": "prop",
+      "displayWidth": 43,
+      "anchorX": 128,
+      "anchorY": 242
+    },
+    {
+      "key": "orchard_tree",
+      "width": 113,
+      "height": 80,
+      "displayWidth": 40,
+      "anchorX": 56.5,
+      "anchorY": 74.4
+    }
+  ]
+}
