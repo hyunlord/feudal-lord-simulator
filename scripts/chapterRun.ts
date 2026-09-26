@@ -18,10 +18,15 @@ let treasuryAtArrival: number | null = null;
 let departuresInFamine = 0;
 let minPopulationInFamine: number | null = null;
 let relief = 0;
+let released = 0;
 runPhase19NaturalGrowth({ targetLots: 24, maxTicks, seed, ...(responseArg === undefined ? {} : { famineResponse: responseArg }), onTick: state => {
   lastState = state;
   if (state.tick % 1000 === 0) {
-    for (const entry of state.ledger?.entries ?? []) if (entry.tick === state.tick && entry.category === "famine_relief") relief -= entry.amount;
+    // FC-2a: the cash bought and, apart, the granary bread released (in kind, at the market price).
+    for (const entry of state.ledger?.entries ?? []) {
+      if (entry.tick !== state.tick || entry.category !== "famine_relief") continue;
+      if (entry.account === "in_kind") released -= entry.amount; else relief -= entry.amount;
+    }
   }
   const famine = famineRecord(state);
   if (famine === undefined) return;
@@ -46,7 +51,7 @@ process.stdout.write(`${JSON.stringify({ seed, famineResponse: responseArg ?? "r
   famine: famine === undefined ? null : { id: famine.id, arrival: at(famine.arrivalTick), end: at(famine.endTick), harvestFromYear: famine.harvestFromYear,
     harvestYears: famine.harvestYears, response: famine.response ?? null, populationAtArrival: famine.populationAtArrival ?? null,
     populationAtEnd: famine.populationAtEnd ?? null, losses: famine.losses },
-  departuresInFamine, minPopulationInFamine, treasuryAtArrival, reliefSpent: relief,
+  departuresInFamine, minPopulationInFamine, treasuryAtArrival, reliefSpent: relief, reliefReleasedValue: released,
   chapterEnd: end === null ? null : { ...at(end.tick), chronicle: end.chronicle },
   petitions: final?.politics?.petitions ?? [], rights: final?.politics?.rights ?? [], merchantGauge: final?.politics?.merchantGauge ?? null,
   final: { tick: final?.tick ?? null, era: final?.era ?? null, population: final?.population ?? null, houses: final?.houses.length ?? null,

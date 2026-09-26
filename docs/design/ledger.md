@@ -23,7 +23,7 @@
   - 더 오래된 항목은 기록할 때 (기간, 계정)별 `LedgerRollup{periodStart, periodEnd, account, byCategory}`로 접는다.
   - 기간 롤업은 120기간까지 두고, 그보다 오래된 것은 계정별 보관 롤업 하나로 합친다. 합계는 언제나 보존된다.
 - **L-5 출처 필수**: `LedgerEntry.sourceRefs`의 타입은 `[SourceRef, ...SourceRef[]]`다. 빈 목록은 컴파일 오류이고, 실행 중에도 `postLedgerEntries`가 거부한다(`LedgerSourceError`). 저장을 불러올 때도 검사한다.
-- **L-6 네 계정**: `cash`(현금), `restricted`(목적 기금, `fundId`), `arrears`(미납 의무), `in_kind`(현물 의무, `resource`). 현금 말고는 뼈대만 있고 항목은 0개다. E단계 murage·fee farm, C2 지대 체납 자리다.
+- **L-6 네 계정**: `cash`(현금), `restricted`(목적 기금, `fundId`), `arrears`(미납 의무), `in_kind`(현물 의무, `resource`). `restricted`·`arrears`는 뼈대만 있고 항목은 0개다. E단계 murage·fee farm, C2 지대 체납 자리다. `in_kind`의 첫 항목은 구휼의 곡창 방출이다(`famine_relief`, resource `bread`, 방출 × 시장가, [FC-2a](flow-chapter-one.md)). 현물 항목은 금고(현금 잔액)를 바꾸지 않는다.
 
 ## 보기·UI
 

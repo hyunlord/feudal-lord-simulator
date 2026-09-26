@@ -1,0 +1,131 @@
+{
+ "what": "FIX-3 (spec FC-2b): scripts/speculationSaleRun.ts on trunk b74249e2 (before) and on FIX-3 35d563bb (after). The chapter tests' ready town (population-176 + a market + 5,000 rent), the Great Famine arrived in spring 1315 (tick 60,000), speculation answered then; full advanceTick to the due tick 62,000 (the town eats and grows grain meanwhile).",
+ "before_trunk_b74249e2": {
+  "cases": [
+   {
+    "case": "income 0, granary bread 400 · wheat 200",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 140(지금 176) · 금고 5000d(지금 5000d)",
+    "predicted": 5000,
+    "actual": 7175,
+    "treasuryAtDue": 7175,
+    "saleEntries": [
+     {
+      "tick": 61000,
+      "amount": 1404,
+      "detail": "bread:82,wheat:29"
+     },
+     {
+      "tick": 62000,
+      "amount": 771,
+      "detail": "bread:43,wheat:21"
+     }
+    ]
+   },
+   {
+    "case": "income 1,200, granary bread 400 · wheat 200",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 140(지금 176) · 금고 5600d(지금 5000d)",
+    "predicted": 5600,
+    "actual": 7175,
+    "treasuryAtDue": 7175,
+    "saleEntries": [
+     {
+      "tick": 61000,
+      "amount": 1404,
+      "detail": "bread:82,wheat:29"
+     },
+     {
+      "tick": 62000,
+      "amount": 771,
+      "detail": "bread:43,wheat:21"
+     }
+    ]
+   },
+   {
+    "case": "income 0, empty granary",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 140(지금 176) · 금고 5000d(지금 5000d)",
+    "predicted": 5000,
+    "actual": 5285,
+    "treasuryAtDue": 5285,
+    "saleEntries": [
+     {
+      "tick": 61000,
+      "amount": 132,
+      "detail": "bread:0,wheat:22"
+     },
+     {
+      "tick": 62000,
+      "amount": 153,
+      "detail": "bread:1,wheat:23"
+     }
+    ]
+   }
+  ]
+ },
+ "after_fix3_35d563bb": {
+  "cases": [
+   {
+    "case": "income 0, granary bread 400 · wheat 200",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 140(지금 176) · 금고 8147d(지금 5000d)",
+    "predicted": 8147,
+    "actual": 7175,
+    "treasuryAtDue": 7175,
+    "saleEntries": [
+     {
+      "tick": 61000,
+      "amount": 1404,
+      "detail": "bread:82,wheat:29"
+     },
+     {
+      "tick": 62000,
+      "amount": 771,
+      "detail": "bread:43,wheat:21"
+     }
+    ]
+   },
+   {
+    "case": "income 1,200, granary bread 400 · wheat 200",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 140(지금 176) · 금고 8147d(지금 5000d)",
+    "predicted": 8147,
+    "actual": 7175,
+    "treasuryAtDue": 7175,
+    "saleEntries": [
+     {
+      "tick": 61000,
+      "amount": 1404,
+      "detail": "bread:82,wheat:29"
+     },
+     {
+      "tick": 62000,
+      "amount": 771,
+      "detail": "bread:43,wheat:21"
+     }
+    ]
+   },
+   {
+    "case": "income 0, empty granary",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 140(지금 176) · 금고 5000d(지금 5000d)",
+    "predicted": 5000,
+    "actual": 5285,
+    "treasuryAtDue": 5285,
+    "saleEntries": [
+     {
+      "tick": 61000,
+      "amount": 132,
+      "detail": "bread:0,wheat:22"
+     },
+     {
+      "tick": 62000,
+      "amount": 153,
+      "detail": "bread:1,wheat:23"
+     }
+    ]
+   }
+  ]
+ }
+}

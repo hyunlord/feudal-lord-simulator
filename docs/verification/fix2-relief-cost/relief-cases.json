@@ -1,0 +1,152 @@
+{
+ "what": "FIX-2 (spec FC-2a): scripts/reliefCostRun.ts on trunk 85069063 (before) and on FIX-2 82dbf474 (after). The chapter tests' ready town (population-176 + a market + 5,000 rent), the Great Famine arrived in spring 1315 (tick 60,000), relief answered then; full advanceTick to the due tick 62,000. Then 3,000 ticks of relief with 60 bread in the granary: the world without ledger/history/pathCache, the cash entries and the roll-ups hash the same.",
+ "before_trunk_85069063": {
+  "cases": [
+   {
+    "case": "income 0, granary bread 3,000",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 176(지금 176) · 금고 5000d(지금 5000d)",
+    "predicted": 5000,
+    "actual": 5000,
+    "treasuryAtDue": 5000,
+    "reliefEntries": []
+   },
+   {
+    "case": "income 0, the fixture's granary (bread 7)",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 176(지금 176) · 금고 5000d(지금 5000d)",
+    "predicted": 5000,
+    "actual": 5000,
+    "treasuryAtDue": 5000,
+    "reliefEntries": []
+   },
+   {
+    "case": "income 1,200 (C3), the fixture's granary",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 176(지금 176) · 금고 2600d(지금 5000d)",
+    "predicted": 2600,
+    "actual": 5000,
+    "treasuryAtDue": 5000,
+    "reliefEntries": []
+   }
+  ],
+  "simulation": {
+   "tick": 63000,
+   "world": "1c6250ab53384a12",
+   "cash": "4b5b89d1c6e9d885",
+   "rollups": "1593b12808665ae0",
+   "treasury": 4941,
+   "reliefEntries": [
+    {
+     "tick": 63000,
+     "account": "cash",
+     "amount": -90,
+     "detail": "bread:6"
+    }
+   ]
+  }
+ },
+ "after_fix2_82dbf474": {
+  "cases": [
+   {
+    "case": "income 0, granary bread 3,000",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 176(지금 176) · 금고 4760d(지금 5000d)",
+    "predicted": 4760,
+    "actual": 4760,
+    "treasuryAtDue": 5000,
+    "reliefEntries": [
+     {
+      "tick": 61000,
+      "account": "in_kind",
+      "amount": -120,
+      "detail": "bread:8"
+     },
+     {
+      "tick": 62000,
+      "account": "in_kind",
+      "amount": -120,
+      "detail": "bread:8"
+     }
+    ]
+   },
+   {
+    "case": "income 0, the fixture's granary (bread 7)",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 176(지금 176) · 금고 4895d(지금 5000d)",
+    "predicted": 4895,
+    "actual": 4895,
+    "treasuryAtDue": 5000,
+    "reliefEntries": [
+     {
+      "tick": 61000,
+      "account": "in_kind",
+      "amount": -30,
+      "detail": "bread:2"
+     },
+     {
+      "tick": 62000,
+      "account": "in_kind",
+      "amount": -75,
+      "detail": "bread:5"
+     }
+    ]
+   },
+   {
+    "case": "income 1,200 (C3), the fixture's granary",
+    "treasuryAtAnswer": 5000,
+    "card": "인구 176(지금 176) · 금고 4760d(지금 5000d)",
+    "predicted": 4760,
+    "actual": 4895,
+    "treasuryAtDue": 5000,
+    "reliefEntries": [
+     {
+      "tick": 61000,
+      "account": "in_kind",
+      "amount": -30,
+      "detail": "bread:2"
+     },
+     {
+      "tick": 62000,
+      "account": "in_kind",
+      "amount": -75,
+      "detail": "bread:5"
+     }
+    ]
+   }
+  ],
+  "simulation": {
+   "tick": 63000,
+   "world": "1c6250ab53384a12",
+   "cash": "4b5b89d1c6e9d885",
+   "rollups": "1593b12808665ae0",
+   "treasury": 4941,
+   "reliefEntries": [
+    {
+     "tick": 61000,
+     "account": "in_kind",
+     "amount": -120,
+     "detail": "bread:8"
+    },
+    {
+     "tick": 62000,
+     "account": "in_kind",
+     "amount": -120,
+     "detail": "bread:8"
+    },
+    {
+     "tick": 63000,
+     "account": "cash",
+     "amount": -90,
+     "detail": "bread:6"
+    },
+    {
+     "tick": 63000,
+     "account": "in_kind",
+     "amount": -105,
+     "detail": "bread:7"
+    }
+   ]
+  }
+ }
+}

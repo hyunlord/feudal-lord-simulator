@@ -16,6 +16,7 @@
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
 import { CHAPTER_ONE, PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
+import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
 import { HISTORY_TEMPLATES } from "../content/historyCopy.ko";
 import { MONEY_BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { calendar, scenarioOf } from "./scenarioState";
@@ -31,6 +32,8 @@ import type {
 } from "./history.types";
 import { decodeSnapshot, rasterizeSnapshot } from "./historySnapshot";
 import { famineShortHouses } from "./eventSchedule";
+import { reliefCostForecast, reliefCostPosted } from "./famineRelief";
+import { speculationSaleForecast, speculationSalePosted } from "./famineSale";
 import { housingLotCount } from "../population/housing";
 import type { SourceRef } from "../contracts";
 import type { Person } from "./persons.types";
@@ -89,6 +92,11 @@ function append(history: HistoryState, drafts: readonly (Draft & { readonly thum
   return { ...history, records, snapshots, nextOrdinal: ordinal, pendingActuals: pending };
 }
 
+/** FC-1: the Great Famine's record, if it arrived. */
+function famineOf(state: Pick<GameState, "events">) {
+  return state.events?.records.find(record => record.defId === GREAT_FAMINE_EVENT_ID);
+}
+
 /** The numbers a prediction and its actual are read on. */
 function metrics(state: GameState): Readonly<Record<string, number>> {
   return { population: state.population, treasury: state.treasuryCoin, lots: housingLotCount(state),
@@ -108,9 +116,12 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
     const poor = famineShortHouses(before, true).length;
     const perHousehold = before.houses.filter(house => house.residents > 0).length === 0 ? 0
       : Math.round(before.population / before.houses.filter(house => house.residents > 0).length);
-    const income = before.seasons?.history.at(-1)?.income ?? 0;
     const leaving = chosen === "laissez_faire" ? Math.min(poor, 2) : chosen === "speculation" ? Math.min(poor, 3) : 0;
-    const treasury = chosen === "relief" ? -2 * income : chosen === "speculation" ? Math.round(income / 2) : 0;
+    // FC-2a: relief costs the bread it hands out in its seasons to the due tick, at the market price (bought or released);
+    // FC-2b: speculation earns the grain it sells in them (a quarter of each granary a season) × the market price.
+    const famine = famineOf(before);
+    const treasury = famine === undefined ? 0 : chosen === "relief" ? -reliefCostForecast(before, famine, due)
+      : chosen === "speculation" ? speculationSaleForecast(before, famine, due) : 0;
     return { chosen, alternatives: (["relief", "price_control", "laissez_faire", "speculation"] as const).filter(option => option !== chosen),
       predicted: { population: now.population! - leaving * perHousehold, treasury: now.treasury! + treasury }, actualDueTick: due };
   }
@@ -146,7 +157,10 @@ export function recordDecision(before: GameState, after: GameState, command: { r
     return { ...after, history: { ...history, seasonDecisions: { ...history.seasonDecisions, [kind]: (history.seasonDecisions[kind] ?? 0) + 1 } } };
   }
   const decision = bigDecision(before, after, kind, command);
-  const params: Record<string, string> = { decisionKind: kind, chosen: decision.chosen };
+  const params: Record<string, string | number> = { decisionKind: kind, chosen: decision.chosen };
+  // FC-2a, FC-2b: the relief's or speculation's actual is its posted cost or sale on the treasury at the decision (`fillActuals`).
+  const famine = kind === "famine_response" && (decision.chosen === "relief" || decision.chosen === "speculation") ? famineOf(before) : undefined;
+  if (famine !== undefined) Object.assign(params, { eventId: famine.id, treasuryAtDecision: before.treasuryCoin });
   const place = kind === "rebuild" ? after.buildings.find(entry => entry.id === command.buildingId) : undefined;
   return { ...after, history: append(history, [{ tick: after.tick, kind: "decision", template: `decision.${kind}`, params, subject: TOWN,
     ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }]) };
@@ -394,16 +408,29 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   return history === historyOf(after) ? after : { ...after, history };
 }
 
-/** HL-3: fills the due decisions' `actual` (the ledger's one later write). */
+/**
+ * HL-3: fills the due decisions' `actual` (the ledger's one later write). FC-2a: a relief's treasury is the treasury at
+ * the decision less the relief's posted cost to the due tick (cash bought and granary bread released, at the market price);
+ * FC-2b: a speculation's is the treasury at the decision plus its posted sales.
+ */
 function fillActuals(history: HistoryState, state: GameState): HistoryState {
   if (history.pendingActuals.length === 0 || !history.pendingActuals.some(entry => state.tick >= entry.due)) return history;
   const due = new Set(history.pendingActuals.filter(entry => state.tick >= entry.due).map(entry => entry.id));
   const now = metrics(state);
+  const actual = (record: HistoryRecord, decision: HistoryDecision): Record<string, number> => {
+    const values = pick(now, BIG_KEYS[String(record.params?.decisionKind)] ?? Object.keys(decision.predicted));
+    const eventId = record.params?.eventId;
+    const treasury = record.params?.treasuryAtDecision;
+    if (typeof eventId !== "string" || typeof treasury !== "number" || decision.actualDueTick === undefined) return values;
+    return { ...values, treasury: record.params?.chosen === "speculation"
+      ? treasury + speculationSalePosted(state.ledger, eventId, record.tick, decision.actualDueTick)
+      : treasury - reliefCostPosted(state.ledger, eventId, record.tick, decision.actualDueTick) };
+  };
   return {
     ...history,
     pendingActuals: history.pendingActuals.filter(entry => !due.has(entry.id)),
     records: history.records.map(record => !due.has(record.id) || record.decision === undefined ? record
-      : { ...record, decision: { ...record.decision, actual: pick(now, BIG_KEYS[String(record.params?.decisionKind)] ?? Object.keys(record.decision.predicted)) } }),
+      : { ...record, decision: { ...record.decision, actual: actual(record, record.decision) } }),
   };
 }
 
