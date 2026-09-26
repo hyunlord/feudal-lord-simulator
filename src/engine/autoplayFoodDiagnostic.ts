@@ -52,6 +52,7 @@ export function transientSummary(value: AutoplayFoodTransientConfirmation | null
 }
 export function diagnosticAction(action: AdvisorAction): DiagnosticAction {
   if (action.kind === 'demolish_house' || action.kind === 'rebuild_house') return { kind: action.kind, building: 'house', foodTransient: 'not_evaluated' };
+  if (action.kind === 'famine_response' || action.kind === 'petition_response') return { kind: action.kind, foodTransient: 'not_evaluated' };
   const foodTransient = transientSummary(action.foodTransient);
   switch (action.kind) {
     case 'place_building': return { kind: action.kind, building: action.building, tx: action.tx, ty: action.ty, foodTransient };

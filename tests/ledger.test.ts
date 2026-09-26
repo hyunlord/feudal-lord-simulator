@@ -77,7 +77,7 @@ test("L-3 before the first posting the treasury is the opening balance; the firs
     [["ledger-000001", "opening_balance", 120, "scenario"], ["ledger-000002", "market_sale", 5, "building"]]);
   assert.equal(DEFAULT_GAME_STATE.ledger, undefined);
   assert.deepEqual(LEDGER_CATEGORIES, ["opening_balance", "market_sale", "construction", "upkeep",
-    "toll", "stall_fee", "rent", "mill_toll", "demesne_sale", "project"]);
+    "toll", "stall_fee", "rent", "mill_toll", "demesne_sale", "project", "famine_relief", "famine_sale", "charter_fee"]);
 });
 
 test("L-4 roll-ups keep every account total while only the last 6 periods stay as entries", () => {

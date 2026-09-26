@@ -15,6 +15,8 @@ export type LedgerAccount = (typeof LEDGER_ACCOUNTS)[number];
 export const LEDGER_CATEGORIES = [
   "opening_balance", "market_sale", "construction", "upkeep",
   "toll", "stall_fee", "rent", "mill_toll", "demesne_sale", "project",
+  // F0-C1 (FC-2, FC-3): famine relief bought, granary grain sold in the famine, a charter's price.
+  "famine_relief", "famine_sale", "charter_fee",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

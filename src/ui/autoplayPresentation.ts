@@ -6,7 +6,7 @@ import type { GameAction } from "../state/gameStore.types";
 import type { TileCoordinate } from "../world/grid";
 import { roadLine } from "../world/roadGraph";
 import { createPlacementFeedback, type PlacementFeedback } from "../render/placementFeedback";
-import { AUTOPLAY_PAINT_ARABLE_LABEL, AUTOPLAY_REBUILD_HOUSE_LABEL, AUTOPLAY_RELOCATE_HOUSE_LABEL, AUTOPLAY_RESERVE_RECOVERY_LABEL } from './autoplayCopy.ko';
+import { AUTOPLAY_PAINT_ARABLE_LABEL, AUTOPLAY_FAMINE_RESPONSE_LABEL, AUTOPLAY_PETITION_RESPONSE_LABEL, AUTOPLAY_REBUILD_HOUSE_LABEL, AUTOPLAY_RELOCATE_HOUSE_LABEL, AUTOPLAY_RESERVE_RECOVERY_LABEL } from './autoplayCopy.ko';
 
 export { autoplayActionToGameAction } from "../engine/autoplayActions";
 
@@ -44,6 +44,8 @@ export function autoplayActionPulseTile(action: AutoplayAction): TileCoordinate 
     case "set_wall_construction_priority":
     case "demolish_house":
     case "rebuild_house":
+    case "famine_response":
+    case "petition_response":
     case "none":
       return null;
     default:
@@ -67,6 +69,10 @@ export function autoplayActionLabel(action: AutoplayAction): string {
       return AUTOPLAY_RELOCATE_HOUSE_LABEL;
     case "rebuild_house":
       return AUTOPLAY_REBUILD_HOUSE_LABEL;
+    case "famine_response":
+      return AUTOPLAY_FAMINE_RESPONSE_LABEL;
+    case "petition_response":
+      return AUTOPLAY_PETITION_RESPONSE_LABEL;
     case "none":
       return "다음: 대기";
     default:
@@ -112,6 +118,8 @@ export function autoplayActionFeedback(action: AutoplayAction, nowMs: number): P
     case "set_wall_construction_priority":
     case "demolish_house":
     case "rebuild_house":
+    case "famine_response":
+    case "petition_response":
     case "none":
       return null;
     default:

@@ -23,13 +23,15 @@ import {
 import type { GameState } from "./engine.types";
 import type { EventForecastEntry, EventRecord, EventStage, WeatherReport } from "./events.types";
 import { rollPermille, hashSeed } from "./prng";
+import { FAMINE_RESPONSE_CONFIG } from "../content/chapterConfig";
 import { calendar, scenarioOf } from "./scenarioState";
 
 export const SEASON_TICKS = PRESSURE_BALANCE.seasonTicks;
 const SEASONS_PER_YEAR = BALANCE.TICKS_PER_YEAR / SEASON_TICKS;
 const SUMMER = 1;
 
-type EventWorld = Pick<GameState, "seed" | "scenarioId">;
+/** The schedule reads the seed and scenario; F0-C1's era events also read what arrived and the eras entered. */
+type EventWorld = Pick<GameState, "seed" | "scenarioId"> & Partial<Pick<GameState, "events" | "historicalEras">>;
 
 export function seasonIndexOf(tick: number): number {
   return Math.floor(tick / SEASON_TICKS);
@@ -71,6 +73,22 @@ export function scheduledSeason(state: EventWorld, def: EventDef): number | null
   return year === null ? null : summerOfYearIndex(year - scenarioOf(state).startYear);
 }
 
+/** FC-1: the summer an era event's forecast counts back from (its era's year). */
+export function eraPlannedSeason(state: Pick<GameState, "scenarioId">, def: EventDef): number | null {
+  return def.schedule.type === "era" ? summerOfYearIndex(def.schedule.plannedYear - scenarioOf(state).startYear) : null;
+}
+
+/** FC-1: the record of an event definition that arrived (era events arrive once). */
+function recordOf(state: EventWorld, def: EventDef): EventRecord | undefined {
+  return state.events?.records.find(record => record.defId === def.id);
+}
+
+/** FC-1: the summers a dearth record's harvests fall in (absolute season indices). */
+function recordHarvestSummers(record: EventRecord): readonly number[] {
+  if (record.harvestFromYear === undefined) return [];
+  return Array.from({ length: record.harvestYears ?? 1 }, (_, index) => summerOfYearIndex(record.harvestFromYear! + index));
+}
+
 /** EV-3: the weather a scheduled event forces on a season, or null. */
 function forcedWeather(state: EventWorld, seasonIndex: number): WeatherKind | null {
   for (const def of activeEventDefs(state)) {
@@ -81,6 +99,14 @@ function forcedWeather(state: EventWorld, seasonIndex: number): WeatherKind | nu
       const summers = (def.harvestYears ?? [0]).map(offset => season + offset * SEASONS_PER_YEAR);
       if (summers.includes(seasonIndex) || seasonIndex === season - def.forecast.signSeasons) return "wet";
     }
+  }
+  // FC-1: the famine's two wet summers before its year (the sign), and its own harvest summers once it arrived.
+  for (const def of activeEventDefs(state)) {
+    const planned = eraPlannedSeason(state, def);
+    if (planned === null) continue;
+    if (seasonIndex === planned - SEASONS_PER_YEAR || seasonIndex === planned - 2 * SEASONS_PER_YEAR) return "wet";
+    const record = recordOf(state, def);
+    if (record !== undefined && recordHarvestSummers(record).includes(seasonIndex)) return "wet";
   }
   return null;
 }
@@ -125,6 +151,14 @@ export function plannedEvents(state: EventWorld, fromSeason: number, toSeason: n
       if (season !== null && season >= fromSeason && season <= toSeason) planned.push({ id: eventInstanceId(def, season), def, season });
       continue;
     }
+    if (def.schedule.type === "era") {
+      // FC-1: planned on its era's summer; waiting past it (the town not ready), it is due any season now.
+      // The id stays the planned summer's, so the forecast, the ledger lines and the record agree.
+      const plannedSeason = eraPlannedSeason(state, def)!;
+      const season = Math.max(plannedSeason, fromSeason);
+      if (recordOf(state, def) === undefined && season <= toSeason) planned.push({ id: eventInstanceId(def, plannedSeason), def, season });
+      continue;
+    }
     const afterDef = EVENT_DEF_BY_ID.get(def.schedule.afterEventId);
     const after = afterDef === undefined ? null : scheduledSeason(state, afterDef);
     if (after === null) continue;
@@ -147,7 +181,8 @@ export function dearthWindow(def: EventDef, season: number): { readonly arrivalT
   return { arrivalTick: season * SEASON_TICKS, endTick: (lastHarvestYear + 1) * BALANCE.TICKS_PER_YEAR + ARABLE_CONFIG.growTicks };
 }
 
-const MAX_RUMOUR_SEASONS = 4;
+/** EV-2: the forecast looks as far ahead as the longest rumour (the famine's three years). */
+export const FORECAST_LOOKAHEAD_SEASONS = Math.max(...[...EVENT_DEF_BY_ID.values()].map(def => def.forecast.rumourSeasons));
 
 /** EV-2: the stage of a saved record at `tick`. */
 export function recordStage(record: EventRecord, tick: number): EventStage {
@@ -182,7 +217,7 @@ export function eventForecast(state: GameState): readonly EventForecastEntry[] {
     const def = EVENT_DEF_BY_ID.get(record.defId);
     if (stage !== "done" && def !== undefined) lines.push(entry(record.id, def, stage, record.arrivalTick));
   }
-  for (const planned of plannedEvents(state, now, now + MAX_RUMOUR_SEASONS)) {
+  for (const planned of plannedEvents(state, now, now + FORECAST_LOOKAHEAD_SEASONS)) {
     if (known.has(planned.id)) continue;
     const stage = plannedStage(planned, state.tick);
     if (stage !== null) lines.push(entry(planned.id, planned.def, stage, planned.season * SEASON_TICKS));
@@ -197,6 +232,12 @@ export function eventForecast(state: GameState): readonly EventForecastEntry[] {
 export function harvestYieldPermille(state: EventWorld, tick: number): number {
   if (!weatherActive(state)) return 1000;
   const yearIndex = Math.floor(tick / BALANCE.TICKS_PER_YEAR);
+  // FC-1: an arrived era dearth's harvest years.
+  for (const record of state.events?.records ?? []) {
+    if (record.harvestFromYear === undefined || yearIndex < record.harvestFromYear || yearIndex >= record.harvestFromYear + (record.harvestYears ?? 1)) continue;
+    const permille = EVENT_DEF_BY_ID.get(record.defId)?.harvestPermille;
+    if (permille !== undefined) return permille;
+  }
   for (const def of activeEventDefs(state)) {
     if (def.kind !== "dearth" || def.harvestPermille === undefined) continue;
     const season = scheduledSeason(state, def);
@@ -207,9 +248,33 @@ export function harvestYieldPermille(state: EventWorld, tick: number): number {
   return weatherOfSeason(state, summerOfYearIndex(yearIndex)) === "wet" ? WET_SUMMER_HARVEST_PERMILLE : 1000;
 }
 
-/** EV-5: the food price (bread and wheat at market), permille of the usual price: the dearest arriving dearth. */
+/**
+ * FC-1: when an arrived dearth ends — the start of the next good harvest after its last reduced one. Era dearths carry
+ * their harvest years; a scheduled dearth's come from its definition.
+ */
+export function dearthEndTick(record: EventRecord): number {
+  if (record.harvestFromYear !== undefined) return (record.harvestFromYear + (record.harvestYears ?? 1)) * BALANCE.TICKS_PER_YEAR + ARABLE_CONFIG.growTicks;
+  const def = EVENT_DEF_BY_ID.get(record.defId);
+  return def === undefined ? record.arrivalTick : dearthWindow(def, record.season).endTick;
+}
+
+/**
+ * EV-5, FC-1, FC-2: the food price (bread and wheat at market), permille of the usual price: the dearest arriving
+ * dearth; an era dearth signed but not arrived raises it to its sign price; a famine under price control is capped.
+ */
 export function foodPricePermille(state: EventWorld, tick: number): number {
   let price = 1000;
+  for (const record of state.events?.records ?? []) {
+    const def = EVENT_DEF_BY_ID.get(record.defId);
+    if (def?.schedule.type !== "era" || def.foodPricePermille === undefined || tick < record.arrivalTick || tick >= dearthEndTick(record)) continue;
+    const capped = record.response?.choice === "price_control" ? Math.min(def.foodPricePermille, FAMINE_RESPONSE_CONFIG.priceCapPermille) : def.foodPricePermille;
+    price = Math.max(price, capped);
+  }
+  for (const def of activeEventDefs(state)) {
+    if (def.schedule.type !== "era" || def.signFoodPricePermille === undefined || recordOf(state, def) !== undefined) continue;
+    const planned = eraPlannedSeason(state, def)!;
+    if (seasonIndexOf(tick) >= planned - def.forecast.signSeasons) price = Math.max(price, def.signFoodPricePermille);
+  }
   for (const def of activeEventDefs(state)) {
     if (def.kind !== "dearth" || def.foodPricePermille === undefined) continue;
     const season = scheduledSeason(state, def);
@@ -218,4 +283,17 @@ export function foodPricePermille(state: EventWorld, tick: number): number {
     if (tick >= span.arrivalTick && tick < span.endTick) price = Math.max(price, def.foodPricePermille);
   }
   return price;
+}
+
+/**
+ * FP-3 × FC-2: households that may leave per season. While a famine arrives, relief lowers the cap and speculation
+ * raises it; otherwise the pressure rules' cap.
+ */
+export function departureCapPerSeason(state: Pick<GameState, "events" | "tick">, usual: number): number {
+  for (const record of state.events?.records ?? []) {
+    if (record.response === undefined || state.tick < record.arrivalTick || state.tick >= dearthEndTick(record)) continue;
+    if (record.response.choice === "relief") return FAMINE_RESPONSE_CONFIG.reliefDepartureCap;
+    if (record.response.choice === "speculation") return FAMINE_RESPONSE_CONFIG.speculationDepartureCap;
+  }
+  return usual;
 }

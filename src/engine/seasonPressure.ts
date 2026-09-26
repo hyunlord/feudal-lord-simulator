@@ -27,7 +27,7 @@ import { withHouseholdMembers } from "../population/householdMembers";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { advanceHistoricalEras, calendar, scenarioOf } from "./scenarioState";
-import { eventForecast } from "./eventSchedule";
+import { departureCapPerSeason, eventForecast } from "./eventSchedule";
 import {
   SEASON_STOCK_KEYS,
   type NextObjectiveHint,
@@ -163,7 +163,9 @@ function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
   // Stage 2: households a season into stage 1 leave, the worst fed first, up to the season's cap and never leaving
   // fewer than `minOccupiedHouses` homes lived in (stage 2 is a loss, not the end of the town).
   const occupied = houses.filter(house => house.residents > 0).length;
-  const room = Math.max(0, Math.min(PRESSURE_BALANCE.maxDeparturesPerSeason - tally.departures, occupied - PRESSURE_BALANCE.minOccupiedHouses));
+  // FC-2: the famine answer moves the season's cap (relief 1, speculation 3).
+  const cap = departureCapPerSeason(state, PRESSURE_BALANCE.maxDeparturesPerSeason);
+  const room = Math.max(0, Math.min(cap - tally.departures, occupied - PRESSURE_BALANCE.minOccupiedHouses));
   const due = houses
     .map((house, index) => ({ house, index }))
     .filter(({ house }) => house.leavingSinceTick !== undefined && house.abandonedTick === undefined && tick - house.leavingSinceTick >= SEASON)

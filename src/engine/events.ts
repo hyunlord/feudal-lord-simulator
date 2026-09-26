@@ -19,9 +19,12 @@ import { EVENT_DEF_BY_ID, FIRE_CONFIG, type EventDef } from "../content/eventCon
 import type { GameState } from "./engine.types";
 import type { EventLosses, EventRecord, EventSeasonEvent, EventState } from "./events.types";
 import {
+  FORECAST_LOOKAHEAD_SEASONS,
   SEASON_TICKS,
   activeEventDefs,
+  dearthEndTick,
   dearthWindow,
+  eraPlannedSeason,
   plannedEvents,
   recordStage,
   seasonIndexOf,
@@ -33,7 +36,6 @@ import { hashSeed } from "./prng";
 
 export const EMPTY_EVENT_STATE: EventState = { records: [], burning: [] };
 const NO_LOSSES: EventLosses = { burntHouses: 0, departures: 0, harvestLost: 0 };
-const LOOKAHEAD_SEASONS = 4;
 
 function withRecord(events: EventState, record: EventRecord): EventState {
   const index = events.records.findIndex(entry => entry.id === record.id);
@@ -54,8 +56,9 @@ function ended(record: EventRecord, tick: number): EventRecord {
 }
 
 /** EV-9: the start of a dearth's first reduced harvest (its arrival year's in-year `growTicks`). */
-export function dearthHarvestStart(record: Pick<EventRecord, "arrivalTick">): number {
-  return Math.floor(record.arrivalTick / BALANCE.TICKS_PER_YEAR) * BALANCE.TICKS_PER_YEAR + ARABLE_CONFIG.growTicks;
+export function dearthHarvestStart(record: Pick<EventRecord, "arrivalTick" | "harvestFromYear">): number {
+  const year = record.harvestFromYear ?? Math.floor(record.arrivalTick / BALANCE.TICKS_PER_YEAR);
+  return year * BALANCE.TICKS_PER_YEAR + ARABLE_CONFIG.growTicks;
 }
 
 /** EV-4: the tick a planned fire's ignition attempts start: its summer's start plus a seeded offset in the first half. */
@@ -76,7 +79,7 @@ export function advanceEvents(state: GameState): GameState {
 
   // EV-2: rumour and sign lines at the season's start.
   if (tick % SEASON_TICKS === 0) {
-    for (const planned of plannedEvents(state, now, now + LOOKAHEAD_SEASONS)) {
+    for (const planned of plannedEvents(state, now, now + FORECAST_LOOKAHEAD_SEASONS)) {
       if (known(planned.id)) continue;
       if (planned.season - planned.def.forecast.rumourSeasons === now) lines.push({ kind: "event_rumour", eventId: planned.id, defId: planned.def.id });
       if (planned.season - planned.def.forecast.signSeasons === now) lines.push({ kind: "event_sign", eventId: planned.id, defId: planned.def.id });
@@ -98,9 +101,33 @@ export function advanceEvents(state: GameState): GameState {
     if (record === undefined && tick >= span.arrivalTick && tick < span.endTick) {
       events = withRecord(events, arrive(def, season, tick));
       lines.push({ kind: "event_arrived", eventId: id, defId: def.id });
-    } else if (record !== undefined && record.endTick === undefined && tick >= span.endTick) {
-      events = withRecord(events, ended(record, tick));
     }
+  }
+
+  // FC-1: an era dearth (the Great Famine) arrives when its era enters. An era entered before events existed (a v13
+  // save loaded later) is missed, not started late.
+  for (const def of activeEventDefs(state)) {
+    if (def.schedule.type !== "era") continue;
+    const schedule = def.schedule;
+    const id = eventInstanceId(def, eraPlannedSeason(state, def)!);
+    const entered = state.historicalEras?.find(entry => entry.id === schedule.eraId);
+    if (entered === undefined || known(id)) continue;
+    if (entered.enteredTick < tick - SEASON_TICKS) {
+      events = { ...events, missed: [...(events.missed ?? []), id] };
+      continue;
+    }
+    const year = Math.floor(tick / BALANCE.TICKS_PER_YEAR);
+    const counts = schedule.harvestYearCounts;
+    events = withRecord(events, { ...arrive(def, seasonIndexOf(tick), tick), id,
+      harvestFromYear: tick % BALANCE.TICKS_PER_YEAR < ARABLE_CONFIG.growTicks ? year : year + 1,
+      harvestYears: counts[hashSeed(state.seed, `era-harvests:${def.id}`) % counts.length]!, populationAtArrival: state.population });
+    lines.push({ kind: "event_arrived", eventId: id, defId: def.id });
+  }
+
+  // EV-5, FC-1: a dearth ends at the next good harvest.
+  for (const record of events.records) {
+    if (record.kind !== "dearth" || record.endTick !== undefined || tick < dearthEndTick(record)) continue;
+    events = withRecord(events, { ...ended(record, tick), ...(record.populationAtArrival === undefined ? {} : { populationAtEnd: state.population }) });
   }
 
   // EV-4: ignition on a planned fire's summer.

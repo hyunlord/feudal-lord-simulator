@@ -61,7 +61,21 @@ export interface RebuildHouseAdvice {
   readonly foodTransient?: never;
   readonly materialRecovery?: never;
 }
-export type AdvisorAction = AutoplayAction | DemolishHouseAdvice | RebuildHouseAdvice;
+/** F0-C1 FC-2/FC-3: the bot answers the famine and the petition (the game's `famine_response` / `petition_response`). */
+export interface FamineResponseAdvice {
+  readonly kind: 'famine_response';
+  readonly choice: import("../content/chapterConfig").FamineResponseChoice;
+  readonly foodTransient?: never;
+  readonly materialRecovery?: never;
+}
+export interface PetitionResponseAdvice {
+  readonly kind: 'petition_response';
+  readonly petitionId: string;
+  readonly response: import("../content/chapterConfig").PetitionResponse;
+  readonly foodTransient?: never;
+  readonly materialRecovery?: never;
+}
+export type AdvisorAction = AutoplayAction | DemolishHouseAdvice | RebuildHouseAdvice | FamineResponseAdvice | PetitionResponseAdvice;
 
 export function recordBotRecovery(collector: BotRecoveryCollector | undefined, kind: BotRecoveryKind, houses: readonly Building[], action: AdvisorAction,
   note?: BotRecoveryDiagnostic['note']): void {

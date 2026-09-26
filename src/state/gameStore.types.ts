@@ -49,6 +49,17 @@ type GameCommand =
       readonly buildingId: string;
     }
   | {
+      /** F0-C1 FC-2: the lord's answer to the Great Famine. */
+      readonly type: "famine_response";
+      readonly choice: import("../content/chapterConfig").FamineResponseChoice;
+    }
+  | {
+      /** F0-C1 FC-3: the lord's answer to a petition. */
+      readonly type: "petition_response";
+      readonly petitionId: string;
+      readonly response: import("../content/chapterConfig").PetitionResponse;
+    }
+  | {
       readonly type: "cancel_construction";
       readonly siteId: string;
     }
