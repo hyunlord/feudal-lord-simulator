@@ -93,6 +93,10 @@
   position: absolute; right: 0; bottom: 64px; display: grid; gap: 4px; width: 300px; padding: 8px 10px;
   color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink);
 }
+/* The old advisor card placed itself under the resource bar (top / left): above the steward button instead. */
+.app-shell .action-dock .steward-bubble { top: auto; left: auto; right: 0; bottom: 64px; width: min(300px, calc(100vw - 16px)); }
+.app-shell .action-dock .steward-bubble--line { width: min(280px, calc(100vw - 16px)); padding: 6px 12px; }
+.app-shell .steward-bubble--line .steward-line { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .app-shell .steward-bubble .steward-line { margin: 0; font-size: 13px; }
 .app-shell .steward-bubble .steward-button { min-height: 44px; }
 

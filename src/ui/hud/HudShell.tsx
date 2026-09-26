@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
@@ -20,6 +20,7 @@ import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
 // build drawer, the ledger drawer and the inspector share one panel slot (uiStateMachine).
+const STEWARD_LINE_MS = 8_000;
 const SEASON_ICON = ["spring", "summer", "autumn", "winter"] as const;
 
 export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
@@ -85,6 +86,17 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
 }) {
   const [stewardOpen, setStewardOpen] = useState(false);
   const speaking = advisor !== null;
+  // UX3R 7: a new line shows as one line above the button for STEWARD_LINE_MS, then folds; the marked button opens it
+  // in full (with its dismiss) until it is answered.
+  const [expanded, setExpanded] = useState(false);
+  const [fresh, setFresh] = useState(true);
+  const advisorKey = advisor?.key ?? null;
+  useEffect(() => {
+    setExpanded(false); setFresh(true);
+    if (advisorKey === null) return undefined;
+    const timer = window.setTimeout(() => setFresh(false), STEWARD_LINE_MS);
+    return () => window.clearTimeout(timer);
+  }, [advisorKey]);
   return (
     <nav className="action-dock" aria-label={HUD_COPY.dock} hidden={hidden}>
       {undo.enabled ? <button type="button" className="hud-undo action-dock-small" aria-label={undo.label} data-attention={undo.attention ? "true" : undefined}
@@ -96,13 +108,14 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
         <UiIcon sheet="action" cell="log" size={32} />{HUD_COPY.ledger}
       </button>
       <button type="button" className="action-dock-button" data-dock="steward" aria-expanded={stewardOpen || speaking} data-speaking={speaking ? "true" : undefined}
-        onClick={() => { if (speaking) onDismissAdvisor(); else setStewardOpen(open => !open); }}>
+        onClick={() => { if (speaking) setExpanded(open => !open); else setStewardOpen(open => !open); }}>
         <span className="action-dock-portrait" aria-hidden="true" style={stewardPortraitStyle(advisor?.tone ?? "neutral")} />{HUD_COPY.steward}
       </button>
-      {speaking ? <aside className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}`} aria-label={TUTORIAL_COPY.stewardName} data-advisor={advisor.key} data-tone={advisor.tone}>
+      {speaking && (fresh || expanded) ? <aside className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
+        aria-label={TUTORIAL_COPY.stewardName} data-advisor={advisor.key} data-tone={advisor.tone}>
         <p className="steward-line">{advisor.text}</p>
-        <button type="button" className="steward-button" onClick={() => onDismissAdvisor()}>{TUTORIAL_COPY.advisorButton}</button>
-      </aside> : stewardOpen ? <aside className="steward-bubble" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
+        {expanded ? <button type="button" className="steward-button" onClick={() => onDismissAdvisor()}>{TUTORIAL_COPY.advisorButton}</button> : null}
+      </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
     </nav>
   );
 }

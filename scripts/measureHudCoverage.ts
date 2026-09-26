@@ -32,6 +32,7 @@ const RESOLUTIONS = [
 ] as const;
 type Page = { click: (s: string) => Promise<void>; locator: (s: string) => { count: () => Promise<number>; first: () => { click: () => Promise<void> }; nth: (i: number) => { click: () => Promise<void> } };
   keyboard: { press: (key: string) => Promise<void> };
+  waitForFunction: (f: () => boolean, arg: null, options: { timeout: number }) => Promise<unknown>;
   evaluate: <T>(f: (...a: never[]) => T | Promise<T>, arg?: unknown) => Promise<T>; screenshot: (o: object) => Promise<Buffer>; waitForTimeout: (ms: number) => Promise<void>;
   mouse: { move: (x: number, y: number) => Promise<void>; click: (x: number, y: number) => Promise<void> }; addStyleTag: (o: object) => Promise<{ evaluate: (f: (e: Element) => void) => Promise<void> }> };
 
@@ -110,7 +111,9 @@ const rows: Row[] = [];
 type Proof = { __FEUDAL_PHASE10_PROOF__: { tileClientPoint: (t: object) => { clientX: number; clientY: number } } };
 for (const resolution of RESOLUTIONS) {
   const { context, page } = await openScene(browser, { state: null, tile: [45, 41], baseUrl: url, width: resolution.width, height: resolution.height, dpr: 1, zoom: 1, run: true, hasTouch: resolution.touch }) as { context: { close: () => Promise<void> }; page: Page };
+  // The steward's new line is a transient (one line, 8 s, UX3R 7): the normal state is measured once it has folded.
   await page.waitForTimeout(2_500);
+  await page.waitForFunction(() => document.querySelector(".steward-bubble") === null, null, { timeout: 12_000 }).catch(() => undefined);
   const point = async (tx: number, ty: number) => { const p = await page.evaluate(t => (window as unknown as Proof).__FEUDAL_PHASE10_PROOF__.tileClientPoint(t), { tx, ty }); return { x: p.clientX, y: p.clientY }; };
   // The cursor rests on open grass (a screen edge would pan the running game; a building would raise its hover card).
   const rest = await point(38, 46);
