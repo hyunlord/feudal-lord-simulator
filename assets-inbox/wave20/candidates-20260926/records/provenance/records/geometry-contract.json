@@ -1,0 +1,509 @@
+{
+  "status": "read-only audit",
+  "sources": {
+    "manifest": "/Users/rexxa/github/feudal-lord-simulator-playable/src/render/historicalHouseAssetManifest.generated.ts",
+    "renderer": "/Users/rexxa/github/feudal-lord-simulator-playable/src/render/historicalHouseAssets.ts:71",
+    "derivativeMapping": "/Users/rexxa/github/feudal-lord-simulator-playable/src/render/runtimeAssetCoordinates.ts:7",
+    "footprint": "/Users/rexxa/github/feudal-lord-simulator-playable/src/content/buildingConfig.ts:58"
+  },
+  "houses": [
+    {
+      "level": 0,
+      "referencePath": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l0-v3.png",
+      "runtimePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l0-v3.png",
+      "canvas": [
+        153,
+        153
+      ],
+      "referenceSha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09",
+      "runtimeSha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09",
+      "referenceMatchesRuntime": true,
+      "actualAlphaBoundsExclusive": [
+        19,
+        44,
+        136,
+        142
+      ],
+      "sourceMetadata": {
+        "level": 0,
+        "url": "assets/buildings/historical-houses/house_l0-v3.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 172,
+          "y": 378,
+          "width": 924,
+          "height": 766
+        }
+      },
+      "runtimeDerivedNativeCrop": {
+        "x": 20.985645933014354,
+        "y": 46.11961722488038,
+        "width": 112.73684210526315,
+        "height": 93.45933014354067
+      },
+      "runtimeDerivedNativeAnchor": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "anchorMeaning": "alpha crop bottom center mapped to tile center + TILE_H/2; inferred from renderer, not PNG embedded pivot",
+      "footprint": [
+        1,
+        1
+      ],
+      "nativeToWorldScale": 0.4995704948646125,
+      "overlayOffset": [
+        0,
+        0
+      ]
+    },
+    {
+      "level": 1,
+      "referencePath": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l1-v2.png",
+      "runtimePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l1-v2.png",
+      "canvas": [
+        139,
+        139
+      ],
+      "referenceSha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac",
+      "runtimeSha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac",
+      "referenceMatchesRuntime": true,
+      "actualAlphaBoundsExclusive": [
+        13,
+        18,
+        130,
+        128
+      ],
+      "sourceMetadata": {
+        "level": 1,
+        "url": "assets/buildings/historical-houses/house_l1-v2.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 137,
+          "y": 187,
+          "width": 1019,
+          "height": 949
+        }
+      },
+      "runtimeDerivedNativeCrop": {
+        "x": 15.185805422647528,
+        "y": 20.728070175438596,
+        "width": 112.95135566188198,
+        "height": 105.19218500797449
+      },
+      "runtimeDerivedNativeAnchor": [
+        71.66148325358851,
+        125.92025518341308
+      ],
+      "anchorMeaning": "alpha crop bottom center mapped to tile center + TILE_H/2; inferred from renderer, not PNG embedded pivot",
+      "footprint": [
+        1,
+        1
+      ],
+      "nativeToWorldScale": 0.4986217267599071,
+      "overlayOffset": [
+        0,
+        0
+      ]
+    },
+    {
+      "level": 2,
+      "referencePath": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l2-v2.png",
+      "runtimePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l2-v2.png",
+      "canvas": [
+        137,
+        137
+      ],
+      "referenceSha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e",
+      "runtimeSha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e",
+      "referenceMatchesRuntime": true,
+      "actualAlphaBoundsExclusive": [
+        12,
+        4,
+        130,
+        135
+      ],
+      "sourceMetadata": {
+        "level": 2,
+        "url": "assets/buildings/historical-houses/house_l2-v2.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 132,
+          "y": 62,
+          "width": 1035,
+          "height": 1147
+        }
+      },
+      "runtimeDerivedNativeCrop": {
+        "x": 14.421052631578947,
+        "y": 6.773524720893142,
+        "width": 113.07416267942584,
+        "height": 125.31020733652312
+      },
+      "runtimeDerivedNativeAnchor": [
+        70.95813397129186,
+        132.08373205741626
+      ],
+      "anchorMeaning": "alpha crop bottom center mapped to tile center + TILE_H/2; inferred from renderer, not PNG embedded pivot",
+      "footprint": [
+        1,
+        1
+      ],
+      "nativeToWorldScale": 0.4980801861842801,
+      "overlayOffset": [
+        0,
+        0
+      ]
+    },
+    {
+      "level": 3,
+      "referencePath": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l3-v2.png",
+      "runtimePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l3-v2.png",
+      "canvas": [
+        142,
+        142
+      ],
+      "referenceSha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc",
+      "runtimeSha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc",
+      "referenceMatchesRuntime": true,
+      "actualAlphaBoundsExclusive": [
+        16,
+        5,
+        133,
+        141
+      ],
+      "sourceMetadata": {
+        "level": 3,
+        "url": "assets/buildings/historical-houses/house_l3-v2.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 158,
+          "y": 64,
+          "width": 998,
+          "height": 1155
+        }
+      },
+      "runtimeDerivedNativeCrop": {
+        "x": 17.891547049441787,
+        "y": 7.247208931419458,
+        "width": 113.01116427432217,
+        "height": 130.78947368421052
+      },
+      "runtimeDerivedNativeAnchor": [
+        74.39712918660287,
+        138.03668261562999
+      ],
+      "anchorMeaning": "alpha crop bottom center mapped to tile center + TILE_H/2; inferred from renderer, not PNG embedded pivot",
+      "footprint": [
+        1,
+        1
+      ],
+      "nativeToWorldScale": 0.4983578424454543,
+      "overlayOffset": [
+        0,
+        0
+      ]
+    },
+    {
+      "level": 4,
+      "referencePath": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l4-v2.png",
+      "runtimePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l4-v2.png",
+      "canvas": [
+        161,
+        161
+      ],
+      "referenceSha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8",
+      "runtimeSha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8",
+      "referenceMatchesRuntime": true,
+      "actualAlphaBoundsExclusive": [
+        23,
+        9,
+        141,
+        160
+      ],
+      "sourceMetadata": {
+        "level": 4,
+        "url": "assets/buildings/historical-houses/house_l4-v2.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 198,
+          "y": 89,
+          "width": 881,
+          "height": 1137
+        }
+      },
+      "runtimeDerivedNativeCrop": {
+        "x": 25.42105263157895,
+        "y": 11.426634768740033,
+        "width": 113.11084529505584,
+        "height": 145.97846889952154
+      },
+      "runtimeDerivedNativeAnchor": [
+        81.97647527910686,
+        157.40510366826157
+      ],
+      "anchorMeaning": "alpha crop bottom center mapped to tile center + TILE_H/2; inferred from renderer, not PNG embedded pivot",
+      "footprint": [
+        1,
+        1
+      ],
+      "nativeToWorldScale": 0.49791865539583047,
+      "overlayOffset": [
+        0,
+        0
+      ]
+    }
+  ],
+  "overlays": [
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/overlay/boarded_l0-v1.png",
+      "version": 1,
+      "canvas": [
+        153,
+        153
+      ],
+      "sha256": "673473f17ddbf083a47ac4f55b829a4a5dbdad96f287315cce98735752210f90",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/overlay/boarded_l1-v1.png",
+      "version": 1,
+      "canvas": [
+        139,
+        139
+      ],
+      "sha256": "2995ed6a7f33af59794dd56aeae3e944a32cf5ecd3e246640c922859b7122dbc",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/overlay/boarded_l2-v1.png",
+      "version": 1,
+      "canvas": [
+        137,
+        137
+      ],
+      "sha256": "7cd345f4cf53a03f2e933130d3288382cfbf86e56bfb127f216f3eaa0ce0d59b",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/overlay/boarded_l3-v1.png",
+      "version": 1,
+      "canvas": [
+        142,
+        142
+      ],
+      "sha256": "fed66223de7d985856560026d4db3799db5532a55740154db0a8252845a58e13",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/overlay/boarded_l4-v1.png",
+      "version": 1,
+      "canvas": [
+        161,
+        161
+      ],
+      "sha256": "012a36efd4cdb9c1ccd799134687ccefa0467fa512911939f0a8f4624354312a",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/season/roof_snow_l0-v1.png",
+      "version": 1,
+      "canvas": [
+        153,
+        153
+      ],
+      "sha256": "fda2da780fff502d3b338c6a878b1cf736a1f344d8bac98219f4f2551eb24ad5",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/season/roof_snow_l1-v1.png",
+      "version": 1,
+      "canvas": [
+        139,
+        139
+      ],
+      "sha256": "cf412403704556649635b4f66e1ad5a8a31e85c1572bfd65d33b811f8daf779c",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/season/roof_snow_l2-v1.png",
+      "version": 1,
+      "canvas": [
+        137,
+        137
+      ],
+      "sha256": "427197edf0f73d74e483783c1f7fe45919e0f53df9a03ad2969813a5db3b0ae8",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/season/roof_snow_l3-v1.png",
+      "version": 1,
+      "canvas": [
+        142,
+        142
+      ],
+      "sha256": "a050ca439ba87692ae9897c45f48f78086b846dc6987037316bd2f5be7a67ca6",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-candidates-20260925.zip",
+      "member": "astra-wave7-candidates-v1/assets/season/roof_snow_l4-v1.png",
+      "version": 1,
+      "canvas": [
+        161,
+        161
+      ],
+      "sha256": "c01fcd139f7cec68d505c92e318e66fe09d3bccdc628bef24cf55ab1d2f8ad81",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/overlay/boarded_l0-v2.png",
+      "version": 2,
+      "canvas": [
+        153,
+        153
+      ],
+      "sha256": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/overlay/boarded_l1-v2.png",
+      "version": 2,
+      "canvas": [
+        139,
+        139
+      ],
+      "sha256": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/overlay/boarded_l2-v2.png",
+      "version": 2,
+      "canvas": [
+        137,
+        137
+      ],
+      "sha256": "3b3e63fea713e6d5be4f0971b16002512fadd836924d9daf760e4311a21fb5d1",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/overlay/boarded_l3-v2.png",
+      "version": 2,
+      "canvas": [
+        142,
+        142
+      ],
+      "sha256": "d7510229c8f432347f593e423ca079627f8337216abce85273e66b8104d2977a",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/overlay/boarded_l4-v2.png",
+      "version": 2,
+      "canvas": [
+        161,
+        161
+      ],
+      "sha256": "6b0a042e586f96b316e9c3cf449ba189b010eaa08470a3c68005dbd2b6ca19a6",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/season/roof_snow_l0-v2.png",
+      "version": 2,
+      "canvas": [
+        153,
+        153
+      ],
+      "sha256": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/season/roof_snow_l1-v2.png",
+      "version": 2,
+      "canvas": [
+        139,
+        139
+      ],
+      "sha256": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/season/roof_snow_l2-v2.png",
+      "version": 2,
+      "canvas": [
+        137,
+        137
+      ],
+      "sha256": "af53c4c70620f3de88bd957e65b908467fb1939ce95cc06c1eca42a6bcac4043",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/season/roof_snow_l3-v2.png",
+      "version": 2,
+      "canvas": [
+        142,
+        142
+      ],
+      "sha256": "41c424fda13031e43e85a6b94cba496aaf414ac69b74ccb4a498308aa6f1c2ae",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    },
+    {
+      "archive": "/tmp/astra-wave7-rework-20260926.zip",
+      "member": "astra-wave7-rework-v1/assets/season/roof_snow_l4-v2.png",
+      "version": 2,
+      "canvas": [
+        161,
+        161
+      ],
+      "sha256": "414108d8367039573613a1300f1bff97ef062357102023fa8d065c17be1106a8",
+      "pivotContract": "same original canvas; identity offset0,0; no embedded pivot",
+      "status": "candidate; v2 pending user review per records/asset-rows.json"
+    }
+  ],
+  "notes": [
+    "All supplied PNGs equal runtime native derivatives; metadata original1254 canvas is intentional source coordinate system, not stale dimensions.",
+    "1x1 non-houseLot renderer maps crop bottomcenter to tilecenter+TILE_H/2. Attached multi-lot variants are absent.",
+    "Overlay v1 and reworkv2 exist in Wave7 archives, not in playable public. v2 is newest candidate, not proven approved.",
+    "No artwork edits or game installation performed."
+  ]
+}

@@ -1,0 +1,200 @@
+[
+  {
+    "id": "crisis_food_shortage",
+    "file": "assets/crisis/crisis_food_shortage.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "An EMPTY shallow wooden food bowl seen three-quarter top view, three tiny crumbs in its otherwise visibly empty interior. Empty concave bowl is the large recognizable silhouette. No bread loaf, utensils, coins or people.",
+    "characters": "none",
+    "historyNotes": "Wave18 candidate, newly generated; no runtime installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: illustration-story. Create ONE standalone medieval city-builder crisis HUD icon, transparent true RGBA background, no backdrop, no tile or badge. Match provided project's UI P0 reference images' thin dark brown outline, muted ochre/oak/gray palette, compact hand-painted slightly textured forms. Simple silhouette strongly readable at 24,32,48 pixels, subject centered filling ~80% of square with padding. No text, letters, numbers, watermark, interface. No hammer, scroll, sealed document, two workers. This will be resized to 96x96 PNG. Subject: An EMPTY shallow wooden food bowl seen three-quarter top view, three tiny crumbs in its otherwise visibly empty interior. Empty concave bowl is the large recognizable silhouette. No bread loaf, utensils, coins or people.",
+        "rawFile": "raw/crisis/crisis_food_shortage-v1.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp alpha trim; proportional resize fit 82x82 into intermediate PNG buffer; centered transparent contain canvas 96x96 without enlargement; RGBA PNG. Original preserved.",
+    "qa": {
+      "status": "candidate",
+      "dimensions": "96x96",
+      "hasAlpha": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visualReview": "PASS internal contact-sheet inspection at 24/32/48 px: six overall silhouettes differentiated, thin brown contours and muted palette consistent with P0; small crumbs and scale details become secondary at 24 px, intended crisis use remains 36/48 px.",
+      "text": "none",
+      "reservedMotifs": "No hammer, scroll, sealed document, or two workers."
+    }
+  },
+  {
+    "id": "crisis_construction_blocked",
+    "file": "assets/crisis/crisis_construction_blocked.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "A compact unfinished timber scaffolding frame with two upright posts and an overhead beam, its entrance visibly closed by a prominent horizontal wooden barrier. No hammers, road, workers, warning triangles or letters.",
+    "characters": "none",
+    "historyNotes": "Wave18 candidate, newly generated; no runtime installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: illustration-story. Create ONE standalone medieval city-builder crisis HUD icon, transparent true RGBA background, no backdrop, no tile or badge. Match provided project's UI P0 reference images' thin dark brown outline, muted ochre/oak/gray palette, compact hand-painted slightly textured forms. Simple silhouette strongly readable at 24,32,48 pixels, subject centered filling ~80% of square with padding. No text, letters, numbers, watermark, interface. No hammer, scroll, sealed document, two workers. This will be resized to 96x96 PNG. Subject: A compact unfinished timber scaffolding frame with two upright posts and an overhead beam, its entrance visibly closed by a prominent horizontal wooden barrier. No hammers, road, workers, warning triangles or letters.",
+        "rawFile": "raw/crisis/crisis_construction_blocked-v1.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp alpha trim; proportional resize fit 82x82 into intermediate PNG buffer; centered transparent contain canvas 96x96 without enlargement; RGBA PNG. Original preserved.",
+    "qa": {
+      "status": "candidate",
+      "dimensions": "96x96",
+      "hasAlpha": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visualReview": "PASS internal contact-sheet inspection at 24/32/48 px: six overall silhouettes differentiated, thin brown contours and muted palette consistent with P0; small crumbs and scale details become secondary at 24 px, intended crisis use remains 36/48 px.",
+      "text": "none",
+      "reservedMotifs": "No hammer, scroll, sealed document, or two workers."
+    }
+  },
+  {
+    "id": "crisis_storage_full",
+    "file": "assets/crisis/crisis_storage_full.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "An OPEN squat wooden storage bin visibly overflowing above its rim with pale cloth sacks and bundles, lid absent. Open top and bulging cargo silhouette clearly distinguish this from a closed wooden crate. No people or bread loaf.",
+    "characters": "none",
+    "historyNotes": "Wave18 candidate, newly generated; no runtime installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: illustration-story. Create ONE standalone medieval city-builder crisis HUD icon, transparent true RGBA background, no backdrop, no tile or badge. Match provided project's UI P0 reference images' thin dark brown outline, muted ochre/oak/gray palette, compact hand-painted slightly textured forms. Simple silhouette strongly readable at 24,32,48 pixels, subject centered filling ~80% of square with padding. No text, letters, numbers, watermark, interface. No hammer, scroll, sealed document, two workers. This will be resized to 96x96 PNG. Subject: An OPEN squat wooden storage bin visibly overflowing above its rim with pale cloth sacks and bundles, lid absent. Open top and bulging cargo silhouette clearly distinguish this from a closed wooden crate. No people or bread loaf.",
+        "rawFile": "raw/crisis/crisis_storage_full-v1.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp alpha trim; proportional resize fit 82x82 into intermediate PNG buffer; centered transparent contain canvas 96x96 without enlargement; RGBA PNG. Original preserved.",
+    "qa": {
+      "status": "candidate",
+      "dimensions": "96x96",
+      "hasAlpha": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visualReview": "PASS internal contact-sheet inspection at 24/32/48 px: six overall silhouettes differentiated, thin brown contours and muted palette consistent with P0; small crumbs and scale details become secondary at 24 px, intended crisis use remains 36/48 px.",
+      "text": "none",
+      "reservedMotifs": "No hammer, scroll, sealed document, or two workers."
+    }
+  },
+  {
+    "id": "crisis_household_leaving",
+    "file": "assets/crisis/crisis_household_leaving.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "A single tied ochre cloth household bundle leaning left, accompanied by two dark shoe sole footprint silhouettes traveling to the right. One bundle with knotted fabric ears and two rightward footsteps only. No human figures, tools, doors, arrows or text.",
+    "characters": "none",
+    "historyNotes": "Wave18 candidate, newly generated; no runtime installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: illustration-story. Create ONE standalone medieval city-builder crisis HUD icon, transparent true RGBA background, no backdrop, no tile or badge. Match provided project's UI P0 reference images' thin dark brown outline, muted ochre/oak/gray palette, compact hand-painted slightly textured forms. Simple silhouette strongly readable at 24,32,48 pixels, subject centered filling ~80% of square with padding. No text, letters, numbers, watermark, interface. No hammer, scroll, sealed document, two workers. This will be resized to 96x96 PNG. Subject: A single tied ochre cloth household bundle leaning left, accompanied by two dark shoe sole footprint silhouettes traveling to the right. One bundle with knotted fabric ears and two rightward footsteps only. No human figures, tools, doors, arrows or text.",
+        "rawFile": "raw/crisis/crisis_household_leaving-v1.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp alpha trim; proportional resize fit 82x82 into intermediate PNG buffer; centered transparent contain canvas 96x96 without enlargement; RGBA PNG. Original preserved.",
+    "qa": {
+      "status": "candidate",
+      "dimensions": "96x96",
+      "hasAlpha": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visualReview": "PASS internal contact-sheet inspection at 24/32/48 px: six overall silhouettes differentiated, thin brown contours and muted palette consistent with P0; small crumbs and scale details become secondary at 24 px, intended crisis use remains 36/48 px.",
+      "text": "none",
+      "reservedMotifs": "No hammer, scroll, sealed document, or two workers."
+    }
+  },
+  {
+    "id": "crisis_fire",
+    "file": "assets/crisis/crisis_fire.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One compact stylized contained flame with three tongues, muted burnt orange outer shape and warm ochre core, thin dark-brown hand-drawn edge, rising from two tiny charcoal embers. No house, chimney, people, badge, white glow.",
+    "characters": "none",
+    "historyNotes": "Wave18 candidate, newly generated; no runtime installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: illustration-story. Create ONE standalone medieval city-builder crisis HUD icon, transparent true RGBA background, no backdrop, no tile or badge. Match provided project's UI P0 reference images' thin dark brown outline, muted ochre/oak/gray palette, compact hand-painted slightly textured forms. Simple silhouette strongly readable at 24,32,48 pixels, subject centered filling ~80% of square with padding. No text, letters, numbers, watermark, interface. No hammer, scroll, sealed document, two workers. This will be resized to 96x96 PNG. Subject: One compact stylized contained flame with three tongues, muted burnt orange outer shape and warm ochre core, thin dark-brown hand-drawn edge, rising from two tiny charcoal embers. No house, chimney, people, badge, white glow.",
+        "rawFile": "raw/crisis/crisis_fire-v1.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp alpha trim; proportional resize fit 82x82 into intermediate PNG buffer; centered transparent contain canvas 96x96 without enlargement; RGBA PNG. Original preserved.",
+    "qa": {
+      "status": "candidate",
+      "dimensions": "96x96",
+      "hasAlpha": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visualReview": "PASS internal contact-sheet inspection at 24/32/48 px: six overall silhouettes differentiated, thin brown contours and muted palette consistent with P0; small crumbs and scale details become secondary at 24 px, intended crisis use remains 36/48 px.",
+      "text": "none",
+      "reservedMotifs": "No hammer, scroll, sealed document, or two workers."
+    }
+  },
+  {
+    "id": "crisis_upkeep_unpaid",
+    "file": "assets/crisis/crisis_upkeep_unpaid.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One slack nearly empty leather coin purse lying low, with its mouth open and one small coin tipped on edge beside it; behind it a very small visibly unbalanced two-pan wooden balance, one pan low and other high. Dominant silhouette is slumped empty purse rather than full upright money pouch. No writing, documents, seals or people.",
+    "characters": "none",
+    "historyNotes": "Wave18 candidate, newly generated; no runtime installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: illustration-story. Create ONE standalone medieval city-builder crisis HUD icon, transparent true RGBA background, no backdrop, no tile or badge. Match provided project's UI P0 reference images' thin dark brown outline, muted ochre/oak/gray palette, compact hand-painted slightly textured forms. Simple silhouette strongly readable at 24,32,48 pixels, subject centered filling ~80% of square with padding. No text, letters, numbers, watermark, interface. No hammer, scroll, sealed document, two workers. This will be resized to 96x96 PNG. Subject: One slack nearly empty leather coin purse lying low, with its mouth open and one small coin tipped on edge beside it; behind it a very small visibly unbalanced two-pan wooden balance, one pan low and other high. Dominant silhouette is slumped empty purse rather than full upright money pouch. No writing, documents, seals or people.",
+        "rawFile": "raw/crisis/crisis_upkeep_unpaid-v1.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp alpha trim; proportional resize fit 82x82 into intermediate PNG buffer; centered transparent contain canvas 96x96 without enlargement; RGBA PNG. Original preserved.",
+    "qa": {
+      "status": "candidate",
+      "dimensions": "96x96",
+      "hasAlpha": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visualReview": "PASS internal contact-sheet inspection at 24/32/48 px: six overall silhouettes differentiated, thin brown contours and muted palette consistent with P0; small crumbs and scale details become secondary at 24 px, intended crisis use remains 36/48 px.",
+      "text": "none",
+      "reservedMotifs": "No hammer, scroll, sealed document, or two workers."
+    }
+  }
+]

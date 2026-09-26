@@ -1,0 +1,132 @@
+{
+  "generation": {
+    "id": "house_l3_1350_a-v2",
+    "prompt": "Use case: precise-object-edit. Redesign the ATTACHED L3 merchant-house game sprite as a visibly evolved southern English house of AD1350. This is a major readable architectural change, NOT a subtle repaint. Keep ONLY the original ground-floor footprint and ground-contact corners, same camera orientation/isometric projection, same storey count and approximate overall height. The upper walls, roof outline and windows MAY and MUST change.\nCRITICAL SILHOUETTE: upper main storey physically cantilevers FAR FORWARD above the street-facing shop: extend it 10-14 pixels on the final 142px canvas (about one tenth of entire image width). Make this a genuine outward offset in wall plane and enlarged roof footprint, not just a dark stripe drawn on a flush wall. A broad deep dark underside must be plainly visible between the projecting upper floor and recessed ground-floor shop. Expose chunky protruding joist ends and several big triangular timber brackets supporting this large overhang. This step in silhouette must be obvious at a 43px-tall game display.\nWINDOW CHANGE: replace the original little separate tall windows with a WIDE CONTINUOUS HORIZONTAL band of dark UNGLAZED openings across the upper front, subdivided by thick vertical wooden mullions. Repeat a shorter broad horizontal band on visible side. No glass. Broad regular box-frame construction: fewer larger warm cream rectangular plaster infill panels bounded by thick brown oak horizontal rails and uprights. Preserve shop-and-house L3 identity with original projecting front gable, grounded shopfront and same overall two-storey-plus-attic height. Redesign roof to cover the enlarged upper storey, while keeping similar roof height. Roof material handmade FLAT clay peg tiles, restrained brown-red, not rounded pantiles. No chimney, no flue, no chimney pots, no smoke, no blue glass, no people, no added ground platform, no scenery. Exact original painterly isometric game style, upper-left light, subdued warm cream/oak/red palette. Single complete building, freely padded TRUE TRANSPARENT RGBA background. Visually bold geometry, restrained color. No words, labels or montage.",
+    "reference": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l3-v2.png",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-f01970e7-db0c-4e6d-a3e7-c773cddc94fd.png",
+    "raw": "/tmp/astra-wave20-rework-20260927/era1350/house_l3_1350_a-v2.png"
+  },
+  "registration": {
+    "id": "house_l3_1350_a-v2",
+    "level": 3,
+    "era": 1350,
+    "variant": "a",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l3_1350_a-v2.png",
+    "file": "assets/houses/house_l3_1350_a-v2.png",
+    "canvas": [
+      142,
+      142
+    ],
+    "pivot": [
+      74.39712918660287,
+      138.03668261562999
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4983578424454543,
+    "worldScale": 0.4983578424454543,
+    "sourceGround": {
+      "left": [
+        257,
+        964
+      ],
+      "front": [
+        759,
+        1191
+      ],
+      "right": [
+        1029,
+        1041
+      ]
+    },
+    "targetGround": {
+      "left": [
+        28,
+        109
+      ],
+      "front": [
+        88,
+        137
+      ],
+      "right": [
+        121,
+        120
+      ]
+    },
+    "matrix": [
+      [
+        0.12073358225345926,
+        -0.0026795519437733365,
+        -0.44544256534153526
+      ],
+      [
+        0.002496522439417234,
+        0.11782707372428436,
+        -5.2269053371403515
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        28,
+        109
+      ],
+      [
+        87.99999999999999,
+        137
+      ],
+      [
+        121,
+        120
+      ]
+    ],
+    "jettyOverhangNativePx": 13.280694047880518,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 105,
+      "scale": 0.9478730776208448,
+      "originalTop": 1.6106303536129989,
+      "targetTop": 7
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 105,
+      "yScale": 0.9478730776208448,
+      "targetTop": 7
+    },
+    "lowerEdgeWarp": {
+      "joinY": 137,
+      "yScale": 1,
+      "originalBottom": 139.63962954828318,
+      "targetBottom": 139.63962954828318,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      11.294201625301996,
+      135.93443883153967
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        -1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  "source_in_archive": "provenance/generated/house_l3_1350_a-v2-raw.png",
+  "source_sha256": "dc344357ae3296c2e0a92f8a016055ec0f4382f1dea4f41aaf3e2b56ba44aa0b"
+}

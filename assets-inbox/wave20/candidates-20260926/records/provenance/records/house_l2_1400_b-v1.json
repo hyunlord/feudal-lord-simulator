@@ -1,0 +1,53 @@
+{
+  "id": "house_l2_1400_b-v1",
+  "era": 1400,
+  "level": 2,
+  "variant": "b",
+  "file": "assets/houses/house_l2_1400_b-v1.png",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-dc82795c-db1b-4c9b-819a-f1bacfa5d86f.png",
+  "record": {
+    "id": "house_l2_1400_b-v1",
+    "l": 2,
+    "v": "b",
+    "chimney": false,
+    "prompt": "PRECISE RESKIN EDIT of the attached single isometric house sprite, NOT a new house design. Era1400 southern/southeastern England, same grade L2. Preserve EXACT roof polygon silhouette, roof ridge and eaves positions, ground-contact footprint, projection, camera angle, scale, canvas placement, all existing doorway and window opening CENTERS. Preserve same number of storeys, same grade recognizable. No moved or extra doors/windows, no additional wings, no new ground props. Transparent background. Same warm muted hand-painted game style, warm off-white limewashed daub and brown oak, light from upper left. Thicker more regular square oak box framing and a visibly stronger horizontal sill band, small timber canopy over the EXISTING door without moving its opening. Keep windows dark with timber shutters, NO glazing. Variant b: slightly earthier cream infill with darker walnut shutters and modest alternate panel repair, same geometry. ABSOLUTELY NO chimney, no masonry rooftop shaft, no chimney pot, no smoke, no flue, no roof vent of any kind. Output one full house sprite only, transparent alpha, no labels, no sheet, no decorative frame, no ground tile.",
+    "references": [
+      "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l2-v2.png"
+    ],
+    "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-dc82795c-db1b-4c9b-819a-f1bacfa5d86f.png",
+    "raw_path": "/tmp/astra-wave20-work-20260926/era1400/house_l2_1400_b-v1.png"
+  },
+  "crop": {
+    "left": 109,
+    "top": 37,
+    "width": 1036,
+    "height": 1166
+  },
+  "target": {
+    "left": 14,
+    "top": 6,
+    "width": 114,
+    "height": 126
+  },
+  "canvas": [
+    137,
+    137
+  ],
+  "pivot": [
+    70.95813397129186,
+    132.08373205741626
+  ],
+  "footprint": [
+    1,
+    1
+  ],
+  "scale": 0.4980801861842801,
+  "chimney": false,
+  "chimneyRegion": null,
+  "smokeOrigin": null,
+  "groundDrift": 0,
+  "changed": 5435,
+  "source_archive_path": "provenance/generated/house_l2_1400_b-v1-raw.png",
+  "source_sha256": "49524d9806b2e10c4042d0132584f518ceaff34ba6ab1280fdaa73a159634d65",
+  "candidate_sha256": "576814ec1fb1b77e6fd8cf1e30931556cf4801f0d4201fca27d0d96c3ab34b67"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "house_l1_1350_a-v1",
+  "era": 1350,
+  "level": 1,
+  "variant": "a",
+  "file": "assets/houses/house_l1_1350_a-v1.png",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-c2618c0d-acc3-49f7-9833-bc3941a9af71.png",
+  "record": {
+    "id": "house_l1_1350_a-v1",
+    "level": 1,
+    "variant": "a",
+    "reference": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l1-v2.png",
+    "prompt": "Use case: precise-object-edit. Edit ONLY the attached approved isometric house facade to its circa AD1350 southern English market-town style. Asset house_l1_1350_a-v1. Stable modest single-storey cottage with loft. Small evolution: tidier maintained thatch, stronger straight oak doorposts and modest more regular wall panels, same openings. Variant A: warm dark-brown oak frame, muted tawny shutters, simple mostly rectangular regular timber bays. Preserve EXACT original camera, 2:1 isometric projection, entire roof ridge/eaves/roof silhouette and outline, building silhouette, ground footprint, base contact points, original canvas proportions and padding, lighting upper-left, and every door/window opening POSITION and SIZE. Existing snow and boarded-window overlays must continue to align. Repaint original roof surface only with same material and geometry, do not reshape, move, enlarge, raise, add dormers or extend it. Keep original same grade identifiable. NO CHIMNEY, no flue, no chimney pots, no smoke, no glass or blue reflections, no new windows/doors, no people, no props, no surrounding scenery, no text. Single isolated complete building with true transparent RGBA background. Match reference understated painterly small-game sprite texture, restrained warm earth palette and pixel-scale detail, no black-white Tudor revival contrast. Do not redesign a different house.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-c2618c0d-acc3-49f7-9833-bc3941a9af71.png"
+  },
+  "crop": {
+    "left": 124,
+    "top": 171,
+    "width": 1058,
+    "height": 988
+  },
+  "target": {
+    "left": 15,
+    "top": 20,
+    "width": 113,
+    "height": 106
+  },
+  "canvas": [
+    139,
+    139
+  ],
+  "pivot": [
+    71.66148325358851,
+    125.92025518341308
+  ],
+  "footprint": [
+    1,
+    1
+  ],
+  "scale": 0.4986217267599071,
+  "chimney": false,
+  "chimneyRegion": null,
+  "smokeOrigin": null,
+  "groundDrift": 0,
+  "changed": 3224,
+  "source_archive_path": "provenance/generated/house_l1_1350_a-v1-raw.png",
+  "source_sha256": "79525a7ec441818513e51bb0cbdff0425351a12522febde7b83384b6646800fb",
+  "candidate_sha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf"
+}

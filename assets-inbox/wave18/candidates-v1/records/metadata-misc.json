@@ -1,0 +1,278 @@
+[
+  {
+    "id": "hud_hide",
+    "file": "assets/misc/hud_hide.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "HUD hide toggle: a simple almond shaped eye with one diagonal slash crossing it. Only eye outline, single dark pupil and a strong clean diagonal slash; no arrow, no floating panel. Warm beige eye and muted brown outline.",
+    "characters": "none",
+    "historyNotes": "Candidate; P0 style reference only; no runtime installation. Lock is explicitly requested functional lock badge.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create exactly ONE isolated medieval city-builder raster HUD icon on genuinely transparent RGBA background. Square canvas with centered shape and generous transparent margins; no text, letters, numbers, decorative panel, shadow backdrop or watermark. Match attached project P0 sheet style only: muted warm ochre, brown ink thin outline, restrained hand-painted highlights, simple broad silhouette readable at 24px, slight material texture. Do not copy subjects from reference. Final use96x96.\nSubject: HUD hide toggle: a simple almond shaped eye with one diagonal slash crossing it. Only eye outline, single dark pupil and a strong clean diagonal slash; no arrow, no floating panel. Warm beige eye and muted brown outline.",
+        "rawFile": "raw/misc/hud_hide.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop; aspect-preserving fit within80x80; center in96x96transparent canvas.",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "left": 245,
+      "top": 331,
+      "width": 756,
+      "height": 636
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": "preserved original generated alpha",
+      "smallSizeReview": [
+        24,
+        32,
+        48
+      ],
+      "text": "none",
+      "forbiddenMotifs": "none",
+      "runtimeInstalled": false,
+      "visualReview": "24/32/48px inspection passed: eye slash, lock, check, X independently readable; pulse is intentionally subtle feedback ring."
+    }
+  },
+  {
+    "id": "layer_lock_badge",
+    "file": "assets/misc/layer_lock_badge.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Small layer lock badge: a compact CLOSED medieval dark iron padlock, simple rounded U shackle and compact square iron body with one keyhole. Dark slate iron face, warm brown outline, modest warm edge highlight. Clearly closed lock; no layer stack or parchment.",
+    "characters": "none",
+    "historyNotes": "Candidate; P0 style reference only; no runtime installation. Lock is explicitly requested functional lock badge.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create exactly ONE isolated medieval city-builder raster HUD icon on genuinely transparent RGBA background. Square canvas with centered shape and generous transparent margins; no text, letters, numbers, decorative panel, shadow backdrop or watermark. Match attached project P0 sheet style only: muted warm ochre, brown ink thin outline, restrained hand-painted highlights, simple broad silhouette readable at 24px, slight material texture. Do not copy subjects from reference. Final use96x96.\nSubject: Small layer lock badge: a compact CLOSED medieval dark iron padlock, simple rounded U shackle and compact square iron body with one keyhole. Dark slate iron face, warm brown outline, modest warm edge highlight. Clearly closed lock; no layer stack or parchment.",
+        "rawFile": "raw/misc/layer_lock_badge.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop; aspect-preserving fit within80x80; center in96x96transparent canvas.",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "left": 382,
+      "top": 301,
+      "width": 487,
+      "height": 654
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": "preserved original generated alpha",
+      "smallSizeReview": [
+        24,
+        32,
+        48
+      ],
+      "text": "none",
+      "forbiddenMotifs": "none",
+      "runtimeInstalled": false,
+      "visualReview": "24/32/48px inspection passed: eye slash, lock, check, X independently readable; pulse is intentionally subtle feedback ring."
+    }
+  },
+  {
+    "id": "confirm_check_touch",
+    "file": "assets/misc/confirm_check_touch.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Tablet confirm icon: one large thick check mark, lower left short rising? Standard unequivocal checkmark: short stroke descends from left upper to low center then long stroke rises toward right upper. Muted sage green painted solid check with thin dark brown outline and subtle light edge. No circle or plaque.",
+    "characters": "none",
+    "historyNotes": "Candidate; P0 style reference only; no runtime installation. Lock is explicitly requested functional lock badge.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create exactly ONE isolated medieval city-builder raster HUD icon on genuinely transparent RGBA background. Square canvas with centered shape and generous transparent margins; no text, letters, numbers, decorative panel, shadow backdrop or watermark. Match attached project P0 sheet style only: muted warm ochre, brown ink thin outline, restrained hand-painted highlights, simple broad silhouette readable at 24px, slight material texture. Do not copy subjects from reference. Final use96x96.\nSubject: Tablet confirm icon: one large thick check mark, lower left short rising? Standard unequivocal checkmark: short stroke descends from left upper to low center then long stroke rises toward right upper. Muted sage green painted solid check with thin dark brown outline and subtle light edge. No circle or plaque.",
+        "rawFile": "raw/misc/confirm_check_touch.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop; aspect-preserving fit within80x80; center in96x96transparent canvas.",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "left": 277,
+      "top": 339,
+      "width": 765,
+      "height": 623
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": "preserved original generated alpha",
+      "smallSizeReview": [
+        24,
+        32,
+        48
+      ],
+      "text": "none",
+      "forbiddenMotifs": "none",
+      "runtimeInstalled": false,
+      "visualReview": "24/32/48px inspection passed: eye slash, lock, check, X independently readable; pulse is intentionally subtle feedback ring."
+    }
+  },
+  {
+    "id": "cancel_touch",
+    "file": "assets/misc/cancel_touch.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Tablet cancel icon: one large thick symmetrical diagonal X cross, muted terracotta painted solid cross with thin dark brown outline and subtle light edge. No circle or plaque. Shape must match broad stroke weight of a touch confirmation check.",
+    "characters": "none",
+    "historyNotes": "Candidate; P0 style reference only; no runtime installation. Lock is explicitly requested functional lock badge.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create exactly ONE isolated medieval city-builder raster HUD icon on genuinely transparent RGBA background. Square canvas with centered shape and generous transparent margins; no text, letters, numbers, decorative panel, shadow backdrop or watermark. Match attached project P0 sheet style only: muted warm ochre, brown ink thin outline, restrained hand-painted highlights, simple broad silhouette readable at 24px, slight material texture. Do not copy subjects from reference. Final use96x96.\nSubject: Tablet cancel icon: one large thick symmetrical diagonal X cross, muted terracotta painted solid cross with thin dark brown outline and subtle light edge. No circle or plaque. Shape must match broad stroke weight of a touch confirmation check.",
+        "rawFile": "raw/misc/cancel_touch.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop; aspect-preserving fit within80x80; center in96x96transparent canvas.",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "left": 248,
+      "top": 254,
+      "width": 758,
+      "height": 745
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": "preserved original generated alpha",
+      "smallSizeReview": [
+        24,
+        32,
+        48
+      ],
+      "text": "none",
+      "forbiddenMotifs": "none",
+      "runtimeInstalled": false,
+      "visualReview": "24/32/48px inspection passed: eye slash, lock, check, X independently readable; pulse is intentionally subtle feedback ring."
+    }
+  },
+  {
+    "id": "pulse_ring",
+    "file": "assets/misc/pulse_ring.png",
+    "width": 288,
+    "height": 96,
+    "sceneDescription": "Unlock pulse animation source: exactly ONE plain thin circular ring with hollow genuinely transparent interior and exterior. Muted pale ochre hand-painted stroke and discreet brown outline, no spokes, rays, glow cloud, dots, symbols or central mark. Exact circle centered. Ring diameter about72percent canvas. Even stroke about3percent canvas.",
+    "characters": "none",
+    "historyNotes": "Candidate; P0 style reference only; no runtime installation. Lock is explicitly requested functional lock badge.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create exactly ONE isolated medieval city-builder raster HUD icon on genuinely transparent RGBA background. Square canvas with centered shape and generous transparent margins; no text, letters, numbers, decorative panel, shadow backdrop or watermark. Match attached project P0 sheet style only: muted warm ochre, brown ink thin outline, restrained hand-painted highlights, simple broad silhouette readable at 24px, slight material texture. Do not copy subjects from reference. Final use96x96.\nSubject: Unlock pulse animation source: exactly ONE plain thin circular ring with hollow genuinely transparent interior and exterior. Muted pale ochre hand-painted stroke and discreet brown outline, no spokes, rays, glow cloud, dots, symbols or central mark. Exact circle centered. Ring diameter about72percent canvas. Even stroke about3percent canvas.",
+        "rawFile": "raw/misc/pulse_ring.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop; render source into 48,66,84px rings with alpha factors0.80,0.55,0.28; centered inside 96x96frames, horizontal288x96sheet. Frame origins0,96,192; all centers48,48.",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "left": 219,
+      "top": 217,
+      "width": 817,
+      "height": 809
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": "preserved original generated alpha",
+      "smallSizeReview": [
+        24,
+        32,
+        48
+      ],
+      "text": "none",
+      "forbiddenMotifs": "none",
+      "runtimeInstalled": false,
+      "visualReview": "24/32/48px inspection passed: eye slash, lock, check, X independently readable; pulse is intentionally subtle feedback ring.",
+      "frameCenterAlpha": [
+        0,
+        0,
+        0
+      ],
+      "frameMaximumAlpha": [
+        204,
+        140,
+        71
+      ]
+    },
+    "frames": {
+      "count": 3,
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "layout": "horizontal",
+      "sourceRects": [
+        [
+          0,
+          0,
+          96,
+          96
+        ],
+        [
+          96,
+          0,
+          96,
+          96
+        ],
+        [
+          192,
+          0,
+          96,
+          96
+        ]
+      ],
+      "center": [
+        48,
+        48
+      ],
+      "diameters": [
+        48,
+        66,
+        84
+      ],
+      "opacityMultipliers": [
+        0.8,
+        0.55,
+        0.28
+      ],
+      "suggestedFrameMs": 100
+    }
+  }
+]

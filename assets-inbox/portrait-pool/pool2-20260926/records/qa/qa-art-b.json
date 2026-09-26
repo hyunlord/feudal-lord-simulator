@@ -1,0 +1,318 @@
+{
+  "reviewer": "pool2_art_b",
+  "status": "PASS_WITH_LIMITATIONS",
+  "scope": "I077-I084, 24 completed portraits",
+  "method": "Each base inspected individually before use as identity reference. All 24 inspected individually at 256px; final combined board inspected at both 256px and 96px. Native imagegen only for art changes. Technical board uses Swift raster.",
+  "board": "review-b.png",
+  "limitations": [
+    "Exact chronological ages cannot be visually certified; stages read young/mature/older.",
+    "Young-to-mature differences are subtle at 96px for I077/I078/I079/I081/I082; old stage is clearer from grey hair and facial tissue.",
+    "At 96px I081 net_float reads an oval object with cord, not an unambiguous fishing tool; no book/scroll confusion."
+  ],
+  "identities": [
+    {
+      "identity_id": "I077",
+      "same_person_256": true,
+      "same_person_96": true,
+      "props_observed_all_stages": "coin_purse",
+      "notes": "coin_purse: ochre drawstring pouch visibly supported by palm; widow veil and modest brown fur merchant trim stable; broad lower face and long chin preserved.",
+      "headwear_observed": [
+        "widow_veil",
+        "widow_veil",
+        "widow_veil"
+      ],
+      "stages": [
+        {
+          "stage": "young",
+          "file": "I077_young.png",
+          "prop_observed": "coin_purse",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "13cc18978741fb21ac8249bbee29945250b235d89adebf10b72096a86c23e78b"
+        },
+        {
+          "stage": "mature",
+          "file": "I077_mature.png",
+          "prop_observed": "coin_purse",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "07d4394228d159804d330c8afe29d891a07f3b7052c84ee08257812c038e33fc"
+        },
+        {
+          "stage": "old",
+          "file": "I077_old.png",
+          "prop_observed": "coin_purse",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "d315822049ad01f43326125008d056fa31cfb370e2f3cee253e218b163f71a53"
+        }
+      ]
+    },
+    {
+      "identity_id": "I078",
+      "same_person_256": true,
+      "same_person_96": true,
+      "props_observed_all_stages": "wool_sample",
+      "notes": "wool_sample: unmistakable white raw fleece tuft in hand; long projecting nose, narrow jaw and pointed beard preserved; red hood/green fine cloth narrow fur trim.",
+      "headwear_observed": [
+        "hood",
+        "hood",
+        "hood"
+      ],
+      "stages": [
+        {
+          "stage": "young",
+          "file": "I078_young.png",
+          "prop_observed": "wool_sample",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "ea99b45fbae9714e0724334555375675f308520e0bd2c09b43511b3a6e0860b0"
+        },
+        {
+          "stage": "mature",
+          "file": "I078_mature.png",
+          "prop_observed": "wool_sample",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "11f34bb6d531bcaf00ea2c4594d9442f87277441531b5e4b0770d5f65a09cfb3"
+        },
+        {
+          "stage": "old",
+          "file": "I078_old.png",
+          "prop_observed": "wool_sample",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "50ea1067c652928de42ae8442a7ee949aefe66f12efbdb2065acaffe8ffe484b"
+        }
+      ]
+    },
+    {
+      "identity_id": "I079",
+      "same_person_256": true,
+      "same_person_96": true,
+      "props_observed_all_stages": "none",
+      "notes": "none: no handheld objects; coarse patched hooded tunic and harness strap; broad short-nosed square face preserved. Young skin-only revision 2 propagated to both ages.",
+      "headwear_observed": [
+        "hood",
+        "hood",
+        "hood"
+      ],
+      "stages": [
+        {
+          "stage": "young",
+          "file": "I079_young.png",
+          "prop_observed": "none",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "45e432d5240e6b163b8ba0fc49098874918d6e550cef485c2222ef3c64501c0a"
+        },
+        {
+          "stage": "mature",
+          "file": "I079_mature.png",
+          "prop_observed": "none",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "a437e4c4987212a93a254742ec02597353106d16a6933cce0c87e73bdddb49f9"
+        },
+        {
+          "stage": "old",
+          "file": "I079_old.png",
+          "prop_observed": "none",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "2860025408b1f31f1d18cc2ffe9e398abd0fda5cf9ff45d82a4f194cca37fb7f"
+        }
+      ]
+    },
+    {
+      "identity_id": "I080",
+      "same_person_256": true,
+      "same_person_96": true,
+      "props_observed_all_stages": "shepherd_crook",
+      "notes": "shepherd_crook: hooked wooden staff visible, grasped in hand; slim elongated face, pale blue eyes, red bob preserved.",
+      "headwear_observed": [
+        "hood",
+        "hood",
+        "hood"
+      ],
+      "stages": [
+        {
+          "stage": "young",
+          "file": "I080_young.png",
+          "prop_observed": "shepherd_crook",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "d664cc4e8a31eede1cc5f56bd57d0a60d9cbf739535235258645d00d7d80f524"
+        },
+        {
+          "stage": "mature",
+          "file": "I080_mature.png",
+          "prop_observed": "shepherd_crook",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "4b0f6d1cf3b4cfca8e6d53d6e9a3808c157ca1817a5866968fd1d1a50f4e463c"
+        },
+        {
+          "stage": "old",
+          "file": "I080_old.png",
+          "prop_observed": "shepherd_crook",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "c3c8fa666172a89f0f016337ed7c16fadf5403517ca321c0c65627e378b7a3d1"
+        }
+      ]
+    },
+    {
+      "identity_id": "I081",
+      "same_person_256": true,
+      "same_person_96": true,
+      "props_observed_all_stages": "net_float",
+      "notes": "net_float: oval brown cork-textured float with attached cord held low; moustache and long bulbous nose preserved. Float occupational specificity less obvious at 96px.",
+      "headwear_observed": [
+        "coif_cap",
+        "coif_cap",
+        "coif_cap"
+      ],
+      "stages": [
+        {
+          "stage": "young",
+          "file": "I081_young.png",
+          "prop_observed": "net_float",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "b903ed69373b639792bc1333ed0abe549594f3c5fd3374ad618404aea1a82921"
+        },
+        {
+          "stage": "mature",
+          "file": "I081_mature.png",
+          "prop_observed": "net_float",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "d7d5f711b2ac25fba066ded6e7f09d07c7b2241620ca3edf67d10fb7ece0c4bc"
+        },
+        {
+          "stage": "old",
+          "file": "I081_old.png",
+          "prop_observed": "net_float",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "04b0cb7be3c0f2d00e5d4a6f2c95cbcbba5e70f18255e86e4c9f8752e35bb41a"
+        }
+      ]
+    },
+    {
+      "identity_id": "I082",
+      "same_person_256": true,
+      "same_person_96": true,
+      "props_observed_all_stages": "none",
+      "notes": "none: no object; leather work apron and heavy shoulders; spherical nose and short lower face preserved.",
+      "headwear_observed": [
+        "felt_hat",
+        "felt_hat",
+        "felt_hat"
+      ],
+      "stages": [
+        {
+          "stage": "young",
+          "file": "I082_young.png",
+          "prop_observed": "none",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "cfaa88e8e0b1c0ff65493548b0c5cdf18b79b213b3a520d6dec8b4e7fcd83f7e"
+        },
+        {
+          "stage": "mature",
+          "file": "I082_mature.png",
+          "prop_observed": "none",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "78c735ded645ab6fc2164b74ea43cf64e71a5c5c9d8dbd35996deeffe9b85ea1"
+        },
+        {
+          "stage": "old",
+          "file": "I082_old.png",
+          "prop_observed": "none",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "c8ff145605481b2a8aa3ed13e2c513837e9660def219ae89f842baa54969cacb"
+        }
+      ]
+    },
+    {
+      "identity_id": "I083",
+      "same_person_256": true,
+      "same_person_96": true,
+      "props_observed_all_stages": "shoe_last",
+      "notes": "shoe_last: foot-shaped carved wooden last held low; long convex nose, large wide-set eyes and thin lips preserved.",
+      "headwear_observed": [
+        "coif_cap",
+        "coif_cap",
+        "coif_cap"
+      ],
+      "stages": [
+        {
+          "stage": "young",
+          "file": "I083_young.png",
+          "prop_observed": "shoe_last",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "6a6fa358dea2fe41c696932d66faf02119765669b4dc935393863a63630a1650"
+        },
+        {
+          "stage": "mature",
+          "file": "I083_mature.png",
+          "prop_observed": "shoe_last",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "eedde00eb8bd1e70ecc7e3b6c82af32b46b9744b808f043397c45e6a8a72582f"
+        },
+        {
+          "stage": "old",
+          "file": "I083_old.png",
+          "prop_observed": "shoe_last",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "39f7c23a6a7f9f707f4cbdf3824bb1e6cedd3916cc4c894c8ffe9090c8c449e1"
+        }
+      ]
+    },
+    {
+      "identity_id": "I084",
+      "same_person_256": true,
+      "same_person_96": true,
+      "props_observed_all_stages": "spindle",
+      "notes": "spindle: wooden drop spindle and white yarn visible in all stages; long straight nose and broad lips preserved. Loose hair -> straw hat -> ochre scarf correct. Young skin-only revision 2 propagated.",
+      "headwear_observed": [
+        "loose_unmarried",
+        "straw_hat",
+        "colored_headscarf"
+      ],
+      "stages": [
+        {
+          "stage": "young",
+          "file": "I084_young.png",
+          "prop_observed": "spindle",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "22c50797415c199fdc653335205ba9931c7772898185fb4ffc88485976ee2796"
+        },
+        {
+          "stage": "mature",
+          "file": "I084_mature.png",
+          "prop_observed": "spindle",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "7ddcc0ed45e45550491d63c7a0215afdbf80f8254074a0410ff89d9a022c1f5c"
+        },
+        {
+          "stage": "old",
+          "file": "I084_old.png",
+          "prop_observed": "spindle",
+          "visible_unwanted_book_scroll": false,
+          "visual_defect_found": false,
+          "sha256": "591d1d120163b29d2d6d2dcda128cd5d54c67937ea33cc06e9cad1d9766cf959"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+[
+  {
+    "id": "reason_tree",
+    "file": "assets/reasons/reason_tree.png",
+    "width": 96,
+    "height": 96,
+    "status": "candidate",
+    "sceneDescription": "A single stout leafy tree with a visible trunk and three broad muted olive foliage lobes. Clear tree silhouette indicating a tree must be cleared; no axe.",
+    "characters": "none",
+    "historyNotes": "Southern England medieval material vocabulary; project P0 style reference only.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: historical-scene. Make ONE transparent game UI icon, reason_tree. Subject: A single stout leafy tree with a visible trunk and three broad muted olive foliage lobes. Clear tree silhouette indicating a tree must be cleared; no axe. Style: match attached project UI P0 reference: hand-painted medieval miniature, muted earthy color, thin dark brown outline, restrained painted shading. Simple and bold enough to read at 24 pixels; no microdetail. Subject centered with a compact silhouette occupying about 78% of square canvas. True transparent background RGBA, no solid background, no checkerboard drawing, no contact shadow outside object. Output one square icon only, no text, letters, digits, frame or UI. No hammer, scroll, sealed document, pair of workers. Reference is style only; do not copy its subjects. Final deliverable will be 96x96px.",
+        "rawFile": "raw/reasons/reason_tree.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop, aspect-preserving Lanczos3 resize into centered 80x80 within transparent 96x96; original preserved.",
+    "qa": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceTransparentPixels": 1078467,
+      "alphaBounds": [
+        173,
+        157,
+        1087,
+        1106
+      ],
+      "alphaPreserved": true,
+      "visualReview": "pass: inspected 24/32/48/96px contact sheet; distinct silhouettes and reserved motif avoidance",
+      "smallSizeNotes": "Silhouette remains identifiable at 24px."
+    }
+  },
+  {
+    "id": "reason_no_road",
+    "file": "assets/reasons/reason_no_road.png",
+    "width": 96,
+    "height": 96,
+    "status": "candidate",
+    "sceneDescription": "Two short tan earthen road segments facing one another, separated by a very obvious wide broken gap. Each road has simple edging; NO arrows, NO wooden plank or bridge across the gap.",
+    "characters": "none",
+    "historyNotes": "Southern England medieval material vocabulary; project P0 style reference only.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: historical-scene. Make ONE transparent game UI icon, reason_no_road. Subject: Two short tan earthen road segments facing one another, separated by a very obvious wide broken gap. Each road has simple edging; NO arrows, NO wooden plank or bridge across the gap. Style: match attached project UI P0 reference: hand-painted medieval miniature, muted earthy color, thin dark brown outline, restrained painted shading. Simple and bold enough to read at 24 pixels; no microdetail. Subject centered with a compact silhouette occupying about 78% of square canvas. True transparent background RGBA, no solid background, no checkerboard drawing, no contact shadow outside object. Output one square icon only, no text, letters, digits, frame or UI. No hammer, scroll, sealed document, pair of workers. Reference is style only; do not copy its subjects. Final deliverable will be 96x96px.",
+        "rawFile": "raw/reasons/reason_no_road.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop, aspect-preserving Lanczos3 resize into centered 80x80 within transparent 96x96; original preserved.",
+    "qa": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceTransparentPixels": 1223027,
+      "alphaBounds": [
+        79,
+        389,
+        1175,
+        857
+      ],
+      "alphaPreserved": true,
+      "visualReview": "pass: inspected 24/32/48/96px contact sheet; distinct silhouettes and reserved motif avoidance",
+      "smallSizeNotes": "Silhouette remains identifiable at 24px."
+    }
+  },
+  {
+    "id": "reason_overlap",
+    "file": "assets/reasons/reason_overlap.png",
+    "width": 96,
+    "height": 96,
+    "status": "candidate",
+    "sceneDescription": "Two distinct offset house blocks colliding at inner corners with burgundy cross marker and hatch.",
+    "characters": "none",
+    "historyNotes": "Southern England medieval material vocabulary; project P0 style reference only.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: historical-scene. Make ONE transparent game UI icon, reason_overlap. Subject: Two simple compact medieval roof-and-wall building blocks intruding into each other, one in front and one behind, offset diagonally. Clearly overlapping rooftops; no red badge needed. Style: match attached project UI P0 reference: hand-painted medieval miniature, muted earthy color, thin dark brown outline, restrained painted shading. Simple and bold enough to read at 24 pixels; no microdetail. Subject centered with a compact silhouette occupying about 78% of square canvas. True transparent background RGBA, no solid background, no checkerboard drawing, no contact shadow outside object. Output one square icon only, no text, letters, digits, frame or UI. No hammer, scroll, sealed document, pair of workers. Reference is style only; do not copy its subjects. Final deliverable will be 96x96px.",
+        "rawFile": "raw/reasons/reason_overlap.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Edit this icon into a much clearer building-overlap conflict icon for a medieval game at 24px. Keep muted painted style thin brown outlines genuine transparent background. Replace the attached-looking single complex house with TWO CLEARLY SEPARATE SMALL HOUSE BLOCKS: offset left and right so both peaked front gables and both full rooftops are clearly recognizable, one pale ochre roof and one muted reddish roof, with a visible negative-space notch between the two upper silhouettes. The lower inner corners of the two building volumes visibly intrude into each other. At this central collision put an unmistakable dark burgundy X marker with a few diagonal hatch strokes just behind it. X approximately 25% total icon width so readable when icon is 24px. Avoid roof decoration and microdetail. This is a BUILDING COLLISION error pictogram, must not resemble a single house with extension or two buildings standing peacefully next to each other. No lettering numbers other symbols frame background or shadow. Square canvas with margins.\n",
+        "rawFile": "raw/reasons/reason_overlap-v2.png",
+        "referenceImages": [
+          "raw/reasons/reason_overlap.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop, aspect-preserving Lanczos3 resize into centered 80x80 within transparent 96x96; original preserved.",
+    "qa": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceTransparentPixels": 1012183,
+      "alphaBounds": [
+        98,
+        269,
+        1171,
+        1063
+      ],
+      "alphaPreserved": true,
+      "visualReview": "pass: inspected 24/32/48/96px contact sheet; distinct silhouettes and reserved motif avoidance",
+      "smallSizeNotes": "v2: two peaked roof silhouettes and central collision cross replace attached-house ambiguity; checked at 24/32/48px."
+    }
+  },
+  {
+    "id": "reason_water",
+    "file": "assets/reasons/reason_water.png",
+    "width": 96,
+    "height": 96,
+    "status": "candidate",
+    "sceneDescription": "Three broad horizontal gently curved water ripples forming a small shallow pool in muted slate blue. No droplet shape.",
+    "characters": "none",
+    "historyNotes": "Southern England medieval material vocabulary; project P0 style reference only.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: historical-scene. Make ONE transparent game UI icon, reason_water. Subject: Three broad horizontal gently curved water ripples forming a small shallow pool in muted slate blue. No droplet shape. Style: match attached project UI P0 reference: hand-painted medieval miniature, muted earthy color, thin dark brown outline, restrained painted shading. Simple and bold enough to read at 24 pixels; no microdetail. Subject centered with a compact silhouette occupying about 78% of square canvas. True transparent background RGBA, no solid background, no checkerboard drawing, no contact shadow outside object. Output one square icon only, no text, letters, digits, frame or UI. No hammer, scroll, sealed document, pair of workers. Reference is style only; do not copy its subjects. Final deliverable will be 96x96px.",
+        "rawFile": "raw/reasons/reason_water.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop, aspect-preserving Lanczos3 resize into centered 80x80 within transparent 96x96; original preserved.",
+    "qa": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceTransparentPixels": 1278506,
+      "alphaBounds": [
+        157,
+        453,
+        1097,
+        883
+      ],
+      "alphaPreserved": true,
+      "visualReview": "pass: inspected 24/32/48/96px contact sheet; distinct silhouettes and reserved motif avoidance",
+      "smallSizeNotes": "Silhouette remains identifiable at 24px."
+    }
+  },
+  {
+    "id": "reason_slope_rock",
+    "file": "assets/reasons/reason_slope_rock.png",
+    "width": 96,
+    "height": 96,
+    "status": "candidate",
+    "sceneDescription": "One angular gray rock ledge with a steep sloping face, chunky silhouette, visibly rising sharply on one side.",
+    "characters": "none",
+    "historyNotes": "Southern England medieval material vocabulary; project P0 style reference only.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: historical-scene. Make ONE transparent game UI icon, reason_slope_rock. Subject: One angular gray rock ledge with a steep sloping face, chunky silhouette, visibly rising sharply on one side. Style: match attached project UI P0 reference: hand-painted medieval miniature, muted earthy color, thin dark brown outline, restrained painted shading. Simple and bold enough to read at 24 pixels; no microdetail. Subject centered with a compact silhouette occupying about 78% of square canvas. True transparent background RGBA, no solid background, no checkerboard drawing, no contact shadow outside object. Output one square icon only, no text, letters, digits, frame or UI. No hammer, scroll, sealed document, pair of workers. Reference is style only; do not copy its subjects. Final deliverable will be 96x96px.",
+        "rawFile": "raw/reasons/reason_slope_rock.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop, aspect-preserving Lanczos3 resize into centered 80x80 within transparent 96x96; original preserved.",
+    "qa": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceTransparentPixels": 1065888,
+      "alphaBounds": [
+        117,
+        197,
+        1146,
+        1088
+      ],
+      "alphaPreserved": true,
+      "visualReview": "pass: inspected 24/32/48/96px contact sheet; distinct silhouettes and reserved motif avoidance",
+      "smallSizeNotes": "Silhouette remains identifiable at 24px."
+    }
+  },
+  {
+    "id": "reason_wall_forbidden",
+    "file": "assets/reasons/reason_wall_forbidden.png",
+    "width": 96,
+    "height": 96,
+    "status": "candidate",
+    "sceneDescription": "A short three-stake medieval timber palisade fence with a dark crossed obstruction mark directly in front of its enclosed side. Fence is dominant, no shield, no document.",
+    "characters": "none",
+    "historyNotes": "Southern England medieval material vocabulary; project P0 style reference only.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: historical-scene. Make ONE transparent game UI icon, reason_wall_forbidden. Subject: A short three-stake medieval timber palisade fence with a dark crossed obstruction mark directly in front of its enclosed side. Fence is dominant, no shield, no document. Style: match attached project UI P0 reference: hand-painted medieval miniature, muted earthy color, thin dark brown outline, restrained painted shading. Simple and bold enough to read at 24 pixels; no microdetail. Subject centered with a compact silhouette occupying about 78% of square canvas. True transparent background RGBA, no solid background, no checkerboard drawing, no contact shadow outside object. Output one square icon only, no text, letters, digits, frame or UI. No hammer, scroll, sealed document, pair of workers. Reference is style only; do not copy its subjects. Final deliverable will be 96x96px.",
+        "rawFile": "raw/reasons/reason_wall_forbidden.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop, aspect-preserving Lanczos3 resize into centered 80x80 within transparent 96x96; original preserved.",
+    "qa": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceTransparentPixels": 979723,
+      "alphaBounds": [
+        213,
+        166,
+        1039,
+        1063
+      ],
+      "alphaPreserved": true,
+      "visualReview": "pass: inspected 24/32/48/96px contact sheet; distinct silhouettes and reserved motif avoidance",
+      "smallSizeNotes": "Silhouette remains identifiable at 24px."
+    }
+  },
+  {
+    "id": "reason_zone_forbidden",
+    "file": "assets/reasons/reason_zone_forbidden.png",
+    "width": 96,
+    "height": 96,
+    "status": "candidate",
+    "sceneDescription": "Two adjacent flat land parcels, one muted olive and one ochre, shown as simple isometric diamond plots with a stout little boundary barrier between them. Strong separation boundary. No brush, no document, no scroll.",
+    "characters": "none",
+    "historyNotes": "Southern England medieval material vocabulary; project P0 style reference only.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: historical-scene. Make ONE transparent game UI icon, reason_zone_forbidden. Subject: Two adjacent flat land parcels, one muted olive and one ochre, shown as simple isometric diamond plots with a stout little boundary barrier between them. Strong separation boundary. No brush, no document, no scroll. Style: match attached project UI P0 reference: hand-painted medieval miniature, muted earthy color, thin dark brown outline, restrained painted shading. Simple and bold enough to read at 24 pixels; no microdetail. Subject centered with a compact silhouette occupying about 78% of square canvas. True transparent background RGBA, no solid background, no checkerboard drawing, no contact shadow outside object. Output one square icon only, no text, letters, digits, frame or UI. No hammer, scroll, sealed document, pair of workers. Reference is style only; do not copy its subjects. Final deliverable will be 96x96px.",
+        "rawFile": "raw/reasons/reason_zone_forbidden.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop, aspect-preserving Lanczos3 resize into centered 80x80 within transparent 96x96; original preserved.",
+    "qa": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceTransparentPixels": 1179416,
+      "alphaBounds": [
+        133,
+        274,
+        1121,
+        1002
+      ],
+      "alphaPreserved": true,
+      "visualReview": "pass: inspected 24/32/48/96px contact sheet; distinct silhouettes and reserved motif avoidance",
+      "smallSizeNotes": "Two plots and dividing barrier remain visible; exact restriction explained by reason chip."
+    }
+  },
+  {
+    "id": "reason_material_shortage",
+    "file": "assets/reasons/reason_material_shortage.png",
+    "width": 96,
+    "height": 96,
+    "status": "candidate",
+    "sceneDescription": "A single small medieval two-wheel wooden handcart with unmistakably EMPTY open cargo bed, visible bare interior floor. No cargo, no sacks, no people.",
+    "characters": "none",
+    "historyNotes": "Southern England medieval material vocabulary; project P0 style reference only.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: historical-scene. Make ONE transparent game UI icon, reason_material_shortage. Subject: A single small medieval two-wheel wooden handcart with unmistakably EMPTY open cargo bed, visible bare interior floor. No cargo, no sacks, no people. Style: match attached project UI P0 reference: hand-painted medieval miniature, muted earthy color, thin dark brown outline, restrained painted shading. Simple and bold enough to read at 24 pixels; no microdetail. Subject centered with a compact silhouette occupying about 78% of square canvas. True transparent background RGBA, no solid background, no checkerboard drawing, no contact shadow outside object. Output one square icon only, no text, letters, digits, frame or UI. No hammer, scroll, sealed document, pair of workers. Reference is style only; do not copy its subjects. Final deliverable will be 96x96px.",
+        "rawFile": "raw/reasons/reason_material_shortage.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha-bounds crop, aspect-preserving Lanczos3 resize into centered 80x80 within transparent 96x96; original preserved.",
+    "qa": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceTransparentPixels": 1187555,
+      "alphaBounds": [
+        169,
+        285,
+        1090,
+        994
+      ],
+      "alphaPreserved": true,
+      "visualReview": "pass: inspected 24/32/48/96px contact sheet; distinct silhouettes and reserved motif avoidance",
+      "smallSizeNotes": "Silhouette remains identifiable at 24px."
+    }
+  }
+]

@@ -1,0 +1,1784 @@
+{
+  "assertions": 302,
+  "passed": 302,
+  "failed": [],
+  "checks": [
+    {
+      "name": "candidate count",
+      "pass": true,
+      "detail": 20
+    },
+    {
+      "name": "unique IDs",
+      "pass": true,
+      "detail": "20 unique"
+    },
+    {
+      "name": "chimney count",
+      "pass": true,
+      "detail": [
+        "house_l3_1400_b-v1",
+        "house_l4_1400_a-v1",
+        "house_l4_1400_b-v1"
+      ]
+    },
+    {
+      "name": "house_l0_1350_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1350_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "name": "house_l0_1350_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l0_1350_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1350_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1350_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1350_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l0_1350_a-v1: not empty",
+      "pass": true,
+      "detail": 7046
+    },
+    {
+      "name": "house_l0_1350_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l0_1350_a-v1.png"
+    },
+    {
+      "name": "house_l0_1350_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l0_1350_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1350_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa"
+    },
+    {
+      "name": "house_l0_1350_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1350_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c"
+    },
+    {
+      "name": "house_l0_1350_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1350_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "name": "house_l0_1350_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l0_1350_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1350_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1350_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1350_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l0_1350_b-v1: not empty",
+      "pass": true,
+      "detail": 7046
+    },
+    {
+      "name": "house_l0_1350_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l0_1350_b-v1.png"
+    },
+    {
+      "name": "house_l0_1350_b-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l0_1350_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1350_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa"
+    },
+    {
+      "name": "house_l0_1350_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1350_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c"
+    },
+    {
+      "name": "house_l1_1350_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1350_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "name": "house_l1_1350_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l1_1350_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1350_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1350_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1350_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l1_1350_a-v1: not empty",
+      "pass": true,
+      "detail": 7702
+    },
+    {
+      "name": "house_l1_1350_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l1_1350_a-v1.png"
+    },
+    {
+      "name": "house_l1_1350_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l1_1350_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1350_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8"
+    },
+    {
+      "name": "house_l1_1350_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1350_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e"
+    },
+    {
+      "name": "house_l1_1350_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1350_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "name": "house_l1_1350_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l1_1350_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1350_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1350_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1350_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l1_1350_b-v1: not empty",
+      "pass": true,
+      "detail": 7702
+    },
+    {
+      "name": "house_l1_1350_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l1_1350_b-v1.png"
+    },
+    {
+      "name": "house_l1_1350_b-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l1_1350_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1350_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8"
+    },
+    {
+      "name": "house_l1_1350_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1350_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e"
+    },
+    {
+      "name": "house_l2_1350_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1350_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        70.95813397129186,
+        132.08373205741626
+      ]
+    },
+    {
+      "name": "house_l2_1350_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l2_1350_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l2_1350_a-v1: not empty",
+      "pass": true,
+      "detail": 9728
+    },
+    {
+      "name": "house_l2_1350_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l2_1350_a-v1.png"
+    },
+    {
+      "name": "house_l2_1350_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l2_1350_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1350_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "3b3e63fea713e6d5be4f0971b16002512fadd836924d9daf760e4311a21fb5d1"
+    },
+    {
+      "name": "house_l2_1350_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1350_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "af53c4c70620f3de88bd957e65b908467fb1939ce95cc06c1eca42a6bcac4043"
+    },
+    {
+      "name": "house_l2_1350_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1350_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        70.95813397129186,
+        132.08373205741626
+      ]
+    },
+    {
+      "name": "house_l2_1350_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l2_1350_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1350_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l2_1350_b-v1: not empty",
+      "pass": true,
+      "detail": 9728
+    },
+    {
+      "name": "house_l2_1350_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l2_1350_b-v1.png"
+    },
+    {
+      "name": "house_l2_1350_b-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l2_1350_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1350_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "3b3e63fea713e6d5be4f0971b16002512fadd836924d9daf760e4311a21fb5d1"
+    },
+    {
+      "name": "house_l2_1350_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1350_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "af53c4c70620f3de88bd957e65b908467fb1939ce95cc06c1eca42a6bcac4043"
+    },
+    {
+      "name": "house_l3_1350_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1350_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        74.39712918660287,
+        138.03668261562999
+      ]
+    },
+    {
+      "name": "house_l3_1350_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l3_1350_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l3_1350_a-v1: not empty",
+      "pass": true,
+      "detail": 10148
+    },
+    {
+      "name": "house_l3_1350_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l3_1350_a-v1.png"
+    },
+    {
+      "name": "house_l3_1350_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l3_1350_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1350_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "d7510229c8f432347f593e423ca079627f8337216abce85273e66b8104d2977a"
+    },
+    {
+      "name": "house_l3_1350_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1350_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "41c424fda13031e43e85a6b94cba496aaf414ac69b74ccb4a498308aa6f1c2ae"
+    },
+    {
+      "name": "house_l3_1350_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1350_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        74.39712918660287,
+        138.03668261562999
+      ]
+    },
+    {
+      "name": "house_l3_1350_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l3_1350_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1350_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l3_1350_b-v1: not empty",
+      "pass": true,
+      "detail": 10148
+    },
+    {
+      "name": "house_l3_1350_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l3_1350_b-v1.png"
+    },
+    {
+      "name": "house_l3_1350_b-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l3_1350_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1350_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "d7510229c8f432347f593e423ca079627f8337216abce85273e66b8104d2977a"
+    },
+    {
+      "name": "house_l3_1350_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1350_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "41c424fda13031e43e85a6b94cba496aaf414ac69b74ccb4a498308aa6f1c2ae"
+    },
+    {
+      "name": "house_l4_1350_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1350_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        81.97647527910686,
+        157.40510366826157
+      ]
+    },
+    {
+      "name": "house_l4_1350_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l4_1350_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l4_1350_a-v1: not empty",
+      "pass": true,
+      "detail": 11643
+    },
+    {
+      "name": "house_l4_1350_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l4_1350_a-v1.png"
+    },
+    {
+      "name": "house_l4_1350_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l4_1350_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1350_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "6b0a042e586f96b316e9c3cf449ba189b010eaa08470a3c68005dbd2b6ca19a6"
+    },
+    {
+      "name": "house_l4_1350_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1350_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "414108d8367039573613a1300f1bff97ef062357102023fa8d065c17be1106a8"
+    },
+    {
+      "name": "house_l4_1350_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1350_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        81.97647527910686,
+        157.40510366826157
+      ]
+    },
+    {
+      "name": "house_l4_1350_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l4_1350_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1350_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l4_1350_b-v1: not empty",
+      "pass": true,
+      "detail": 11643
+    },
+    {
+      "name": "house_l4_1350_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l4_1350_b-v1.png"
+    },
+    {
+      "name": "house_l4_1350_b-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l4_1350_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1350_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "6b0a042e586f96b316e9c3cf449ba189b010eaa08470a3c68005dbd2b6ca19a6"
+    },
+    {
+      "name": "house_l4_1350_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1350_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "414108d8367039573613a1300f1bff97ef062357102023fa8d065c17be1106a8"
+    },
+    {
+      "name": "house_l0_1400_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1400_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "name": "house_l0_1400_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l0_1400_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1400_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1400_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1400_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l0_1400_a-v1: not empty",
+      "pass": true,
+      "detail": 7046
+    },
+    {
+      "name": "house_l0_1400_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l0_1400_a-v1.png"
+    },
+    {
+      "name": "house_l0_1400_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l0_1400_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1400_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa"
+    },
+    {
+      "name": "house_l0_1400_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1400_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c"
+    },
+    {
+      "name": "house_l0_1400_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1400_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "name": "house_l0_1400_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l0_1400_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1400_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1400_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l0_1400_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l0_1400_b-v1: not empty",
+      "pass": true,
+      "detail": 7046
+    },
+    {
+      "name": "house_l0_1400_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l0_1400_b-v1.png"
+    },
+    {
+      "name": "house_l0_1400_b-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l0_1400_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1400_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa"
+    },
+    {
+      "name": "house_l0_1400_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        153,
+        153
+      ]
+    },
+    {
+      "name": "house_l0_1400_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c"
+    },
+    {
+      "name": "house_l1_1400_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1400_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "name": "house_l1_1400_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l1_1400_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1400_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1400_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1400_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l1_1400_a-v1: not empty",
+      "pass": true,
+      "detail": 7702
+    },
+    {
+      "name": "house_l1_1400_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l1_1400_a-v1.png"
+    },
+    {
+      "name": "house_l1_1400_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l1_1400_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1400_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8"
+    },
+    {
+      "name": "house_l1_1400_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1400_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e"
+    },
+    {
+      "name": "house_l1_1400_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1400_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "name": "house_l1_1400_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l1_1400_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1400_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1400_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l1_1400_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l1_1400_b-v1: not empty",
+      "pass": true,
+      "detail": 7702
+    },
+    {
+      "name": "house_l1_1400_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l1_1400_b-v1.png"
+    },
+    {
+      "name": "house_l1_1400_b-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l1_1400_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1400_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8"
+    },
+    {
+      "name": "house_l1_1400_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        139,
+        139
+      ]
+    },
+    {
+      "name": "house_l1_1400_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e"
+    },
+    {
+      "name": "house_l2_1400_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1400_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        70.95813397129186,
+        132.08373205741626
+      ]
+    },
+    {
+      "name": "house_l2_1400_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l2_1400_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l2_1400_a-v1: not empty",
+      "pass": true,
+      "detail": 9728
+    },
+    {
+      "name": "house_l2_1400_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l2_1400_a-v1.png"
+    },
+    {
+      "name": "house_l2_1400_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l2_1400_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1400_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "3b3e63fea713e6d5be4f0971b16002512fadd836924d9daf760e4311a21fb5d1"
+    },
+    {
+      "name": "house_l2_1400_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1400_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "af53c4c70620f3de88bd957e65b908467fb1939ce95cc06c1eca42a6bcac4043"
+    },
+    {
+      "name": "house_l2_1400_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1400_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        70.95813397129186,
+        132.08373205741626
+      ]
+    },
+    {
+      "name": "house_l2_1400_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l2_1400_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l2_1400_b-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l2_1400_b-v1: not empty",
+      "pass": true,
+      "detail": 9728
+    },
+    {
+      "name": "house_l2_1400_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l2_1400_b-v1.png"
+    },
+    {
+      "name": "house_l2_1400_b-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l2_1400_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1400_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "3b3e63fea713e6d5be4f0971b16002512fadd836924d9daf760e4311a21fb5d1"
+    },
+    {
+      "name": "house_l2_1400_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        137,
+        137
+      ]
+    },
+    {
+      "name": "house_l2_1400_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "af53c4c70620f3de88bd957e65b908467fb1939ce95cc06c1eca42a6bcac4043"
+    },
+    {
+      "name": "house_l3_1400_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1400_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        74.39712918660287,
+        138.03668261562999
+      ]
+    },
+    {
+      "name": "house_l3_1400_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l3_1400_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_a-v1: chimney rule",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "name": "house_l3_1400_a-v1: not empty",
+      "pass": true,
+      "detail": 10148
+    },
+    {
+      "name": "house_l3_1400_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l3_1400_a-v1.png"
+    },
+    {
+      "name": "house_l3_1400_a-v1: no smoke coordinate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "house_l3_1400_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1400_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "d7510229c8f432347f593e423ca079627f8337216abce85273e66b8104d2977a"
+    },
+    {
+      "name": "house_l3_1400_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1400_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "41c424fda13031e43e85a6b94cba496aaf414ac69b74ccb4a498308aa6f1c2ae"
+    },
+    {
+      "name": "house_l3_1400_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1400_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        74.39712918660287,
+        138.03668261562999
+      ]
+    },
+    {
+      "name": "house_l3_1400_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l3_1400_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l3_1400_b-v1: chimney rule",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "house_l3_1400_b-v1: not empty",
+      "pass": true,
+      "detail": 10274
+    },
+    {
+      "name": "house_l3_1400_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l3_1400_b-v1.png"
+    },
+    {
+      "name": "house_l3_1400_b-v1: smoke origin in visible chimney",
+      "pass": true,
+      "detail": [
+        100,
+        29
+      ]
+    },
+    {
+      "name": "house_l3_1400_b-v1: visible stack added",
+      "pass": true,
+      "detail": 130
+    },
+    {
+      "name": "house_l3_1400_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1400_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "d7510229c8f432347f593e423ca079627f8337216abce85273e66b8104d2977a"
+    },
+    {
+      "name": "house_l3_1400_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        142,
+        142
+      ]
+    },
+    {
+      "name": "house_l3_1400_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "41c424fda13031e43e85a6b94cba496aaf414ac69b74ccb4a498308aa6f1c2ae"
+    },
+    {
+      "name": "house_l4_1400_a-v1: canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1400_a-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        81.97647527910686,
+        157.40510366826157
+      ]
+    },
+    {
+      "name": "house_l4_1400_a-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l4_1400_a-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_a-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_a-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_a-v1: chimney rule",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "house_l4_1400_a-v1: not empty",
+      "pass": true,
+      "detail": 11818
+    },
+    {
+      "name": "house_l4_1400_a-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l4_1400_a-v1.png"
+    },
+    {
+      "name": "house_l4_1400_a-v1: smoke origin in visible chimney",
+      "pass": true,
+      "detail": [
+        111,
+        35
+      ]
+    },
+    {
+      "name": "house_l4_1400_a-v1: visible stack added",
+      "pass": true,
+      "detail": 176
+    },
+    {
+      "name": "house_l4_1400_a-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1400_a-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "6b0a042e586f96b316e9c3cf449ba189b010eaa08470a3c68005dbd2b6ca19a6"
+    },
+    {
+      "name": "house_l4_1400_a-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1400_a-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "414108d8367039573613a1300f1bff97ef062357102023fa8d065c17be1106a8"
+    },
+    {
+      "name": "house_l4_1400_b-v1: canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1400_b-v1: pivot unchanged",
+      "pass": true,
+      "detail": [
+        81.97647527910686,
+        157.40510366826157
+      ]
+    },
+    {
+      "name": "house_l4_1400_b-v1: footprint",
+      "pass": true,
+      "detail": "1x1"
+    },
+    {
+      "name": "house_l4_1400_b-v1: alpha outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_b-v1: ground RGBA unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_b-v1: roof RGBA outside chimney unchanged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "house_l4_1400_b-v1: chimney rule",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "house_l4_1400_b-v1: not empty",
+      "pass": true,
+      "detail": 11765
+    },
+    {
+      "name": "house_l4_1400_b-v1: distinct from original",
+      "pass": true,
+      "detail": "assets/houses/house_l4_1400_b-v1.png"
+    },
+    {
+      "name": "house_l4_1400_b-v1: smoke origin in visible chimney",
+      "pass": true,
+      "detail": [
+        111,
+        37
+      ]
+    },
+    {
+      "name": "house_l4_1400_b-v1: visible stack added",
+      "pass": true,
+      "detail": 127
+    },
+    {
+      "name": "house_l4_1400_b-v1: boarded same canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1400_b-v1: boarded exact reused hash",
+      "pass": true,
+      "detail": "6b0a042e586f96b316e9c3cf449ba189b010eaa08470a3c68005dbd2b6ca19a6"
+    },
+    {
+      "name": "house_l4_1400_b-v1: roof_snow same canvas",
+      "pass": true,
+      "detail": [
+        161,
+        161
+      ]
+    },
+    {
+      "name": "house_l4_1400_b-v1: roof_snow exact reused hash",
+      "pass": true,
+      "detail": "414108d8367039573613a1300f1bff97ef062357102023fa8d065c17be1106a8"
+    },
+    {
+      "name": "L0 1350 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L0 1400 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L1 1350 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L1 1400 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L2 1350 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L2 1400 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L3 1350 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L3 1400 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L4 1350 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "L4 1400 independent variants",
+      "pass": true,
+      "detail": "different final hashes"
+    },
+    {
+      "name": "CSV20 rows",
+      "pass": true,
+      "detail": 20
+    },
+    {
+      "name": "CSV full prompt roundtrip",
+      "pass": true,
+      "detail": "exact prompts including newlines/quotes"
+    },
+    {
+      "name": "3 proof PNGs",
+      "pass": true,
+      "detail": [
+        "01_same_street_three_eras.png",
+        "02_smoke_origins_overlay_fit.png",
+        "03_zoom_06_three_eras.png"
+      ]
+    },
+    {
+      "name": "01_same_street_three_eras.png decoded",
+      "pass": true,
+      "detail": [
+        1050,
+        1325
+      ]
+    },
+    {
+      "name": "02_smoke_origins_overlay_fit.png decoded",
+      "pass": true,
+      "detail": [
+        2650,
+        1460
+      ]
+    },
+    {
+      "name": "03_zoom_06_three_eras.png decoded",
+      "pass": true,
+      "detail": [
+        860,
+        590
+      ]
+    }
+  ],
+  "scope": "Offline candidate PNG/canvas/anchor/overlay-reference/proof/provenance checks. No in-game runtime installation, cache or collision tests."
+}

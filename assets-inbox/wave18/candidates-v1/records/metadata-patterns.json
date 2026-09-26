@@ -1,0 +1,178 @@
+[
+  {
+    "id": "pattern_ok",
+    "file": "assets/patterns/pattern_ok.png",
+    "width": 64,
+    "height": 32,
+    "sceneDescription": "isolated circular dots",
+    "characters": "none",
+    "historyNotes": "Original generated texture retained; exact periodic production geometry reconstructed from generated ink colour and brush grain to enforce tiling.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Asset type: medieval hand-painted HUD overlay texture reference pattern_ok. Generate one transparent PNG. A light grid of isolated evenly spaced tiny circular dots, muted warm dark sepia ink. No connecting lines. Restrained miniature hand-painted gouache texture matching the supplied project icon reference, no perspective objects, thin linework, low saturation. Transparent empty space between marks. No lettering, labels, border, background fill, shadows, numbers, watermark, parchment sheet, hammer, scroll, seal, or figures. This texture is the sole source of ink colour and brush grain for a mathematically seamless production overlay; use clean sparse geometry filling most of canvas.",
+        "rawFile": "raw/patterns/pattern_ok-generated.png",
+        "referenceImages": [
+          "references/icon_layer_mode_sheet.png"
+        ],
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "processing": {
+      "method": "Sharp RGBA raster assembly, no Python. Generated ink pixels provide colour and subtle periodic grain; exact analytical masks provide tile-safe geometry and transparency.",
+      "alphaUsage": "Transparent between ink marks and outside diamond. Draw with source-over or multiply over a separate coloured placement fill; do not replace alpha with opaque diamond fill.",
+      "lattice": "Isometric translation basis (32,16),(-32,16); screen-space texture period 8px; top vertex (32,0), right (64,16), bottom (32,32), left (0,16)."
+    },
+    "qa": {
+      "alphaMin": 0,
+      "alphaMax": 165,
+      "meanAlpha": 5.15625,
+      "nonzeroPixels": 64,
+      "inkRGB": [
+        90,
+        71,
+        41
+      ],
+      "periodFailures": 0,
+      "slopeErrors": {
+        "diagonalDown": 15.46875,
+        "diagonalUp": 15.46875,
+        "horizontal": 10.3125
+      },
+      "grayscaleShape": "isolated circular dots",
+      "outsideDiamondAlphaZero": true
+    }
+  },
+  {
+    "id": "pattern_blocked_hatch",
+    "file": "assets/patterns/pattern_blocked_hatch.png",
+    "width": 64,
+    "height": 32,
+    "sceneDescription": "one diagonal line family",
+    "characters": "none",
+    "historyNotes": "Original generated texture retained; exact periodic production geometry reconstructed from generated ink colour and brush grain to enforce tiling.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Asset type: medieval hand-painted HUD overlay texture reference pattern_blocked_hatch. Generate one transparent PNG. Thin 45-degree parallel diagonal hatching stripes, muted warm dark sepia ink. No cross hatch. Restrained miniature hand-painted gouache texture matching the supplied project icon reference, no perspective objects, thin linework, low saturation. Transparent empty space between marks. No lettering, labels, border, background fill, shadows, numbers, watermark, parchment sheet, hammer, scroll, seal, or figures. This texture is the sole source of ink colour and brush grain for a mathematically seamless production overlay; use clean sparse geometry filling most of canvas.",
+        "rawFile": "raw/patterns/pattern_blocked_hatch-generated.png",
+        "referenceImages": [
+          "references/icon_layer_mode_sheet.png"
+        ],
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "processing": {
+      "method": "Sharp RGBA raster assembly, no Python. Generated ink pixels provide colour and subtle periodic grain; exact analytical masks provide tile-safe geometry and transparency.",
+      "alphaUsage": "Transparent between ink marks and outside diamond. Draw with source-over or multiply over a separate coloured placement fill; do not replace alpha with opaque diamond fill.",
+      "lattice": "Isometric translation basis (32,16),(-32,16); screen-space texture period 8px; top vertex (32,0), right (64,16), bottom (32,32), left (0,16)."
+    },
+    "qa": {
+      "alphaMin": 0,
+      "alphaMax": 225,
+      "meanAlpha": 31.6875,
+      "nonzeroPixels": 384,
+      "inkRGB": [
+        106,
+        75,
+        46
+      ],
+      "periodFailures": 0,
+      "slopeErrors": {
+        "diagonalDown": 91.5,
+        "diagonalUp": 0,
+        "horizontal": 56.25
+      },
+      "grayscaleShape": "one diagonal line family",
+      "outsideDiamondAlphaZero": true
+    }
+  },
+  {
+    "id": "pattern_blocked_cross",
+    "file": "assets/patterns/pattern_blocked_cross.png",
+    "width": 64,
+    "height": 32,
+    "sceneDescription": "two crossing diagonal line families",
+    "characters": "none",
+    "historyNotes": "Original generated texture retained; exact periodic production geometry reconstructed from generated ink colour and brush grain to enforce tiling.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Asset type: medieval hand-painted HUD overlay texture reference pattern_blocked_cross. Generate one transparent PNG. Thin intersecting diagonal cross-hatching stripes forming small diamond cells, muted warm dark sepia ink. Restrained miniature hand-painted gouache texture matching the supplied project icon reference, no perspective objects, thin linework, low saturation. Transparent empty space between marks. No lettering, labels, border, background fill, shadows, numbers, watermark, parchment sheet, hammer, scroll, seal, or figures. This texture is the sole source of ink colour and brush grain for a mathematically seamless production overlay; use clean sparse geometry filling most of canvas.",
+        "rawFile": "raw/patterns/pattern_blocked_cross-generated.png",
+        "referenceImages": [
+          "references/icon_layer_mode_sheet.png"
+        ],
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "processing": {
+      "method": "Sharp RGBA raster assembly, no Python. Generated ink pixels provide colour and subtle periodic grain; exact analytical masks provide tile-safe geometry and transparency.",
+      "alphaUsage": "Transparent between ink marks and outside diamond. Draw with source-over or multiply over a separate coloured placement fill; do not replace alpha with opaque diamond fill.",
+      "lattice": "Isometric translation basis (32,16),(-32,16); screen-space texture period 8px; top vertex (32,0), right (64,16), bottom (32,32), left (0,16)."
+    },
+    "qa": {
+      "alphaMin": 0,
+      "alphaMax": 225,
+      "meanAlpha": 41.8125,
+      "nonzeroPixels": 640,
+      "inkRGB": [
+        95,
+        68,
+        42
+      ],
+      "periodFailures": 0,
+      "slopeErrors": {
+        "diagonalDown": 60.8125,
+        "diagonalUp": 60.8125,
+        "horizontal": 75.25
+      },
+      "grayscaleShape": "two crossing diagonal line families",
+      "outsideDiamondAlphaZero": true
+    }
+  },
+  {
+    "id": "pattern_service_range_edge",
+    "file": "assets/patterns/pattern_service_range_edge.png",
+    "width": 128,
+    "height": 16,
+    "sceneDescription": "separated horizontal dashes",
+    "characters": "none",
+    "historyNotes": "Original generated texture retained; exact periodic production geometry reconstructed from generated ink colour and brush grain to enforce tiling.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Asset type: medieval hand-painted HUD overlay texture reference pattern_service_range_edge. Generate one transparent PNG. One horizontal line of evenly spaced short rounded ink dashes, muted warm dark sepia ink. No other marks. Restrained miniature hand-painted gouache texture matching the supplied project icon reference, no perspective objects, thin linework, low saturation. Transparent empty space between marks. No lettering, labels, border, background fill, shadows, numbers, watermark, parchment sheet, hammer, scroll, seal, or figures. This texture is the sole source of ink colour and brush grain for a mathematically seamless production overlay; use clean sparse geometry filling most of canvas.",
+        "rawFile": "raw/patterns/pattern_service_range_edge-generated.png",
+        "referenceImages": [
+          "references/icon_layer_mode_sheet.png"
+        ],
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "processing": {
+      "method": "Sharp RGBA raster assembly, no Python. Generated ink pixels provide colour and subtle periodic grain; exact analytical masks provide tile-safe geometry and transparency.",
+      "alphaUsage": "Transparent between ink marks and outside diamond. Draw with source-over or multiply over a separate coloured placement fill; do not replace alpha with opaque diamond fill.",
+      "lattice": "Horizontal repeat (128,0), internal dash period 16px"
+    },
+    "qa": {
+      "alphaMin": 0,
+      "alphaMax": 225,
+      "meanAlpha": 14.0625,
+      "nonzeroPixels": 128,
+      "inkRGB": [
+        76,
+        51,
+        25
+      ],
+      "periodFailures": 0,
+      "slopeErrors": {},
+      "grayscaleShape": "separated horizontal dashes",
+      "outsideDiamondAlphaZero": true
+    }
+  }
+]

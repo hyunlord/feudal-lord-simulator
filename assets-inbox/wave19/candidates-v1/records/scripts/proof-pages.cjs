@@ -1,0 +1,12 @@
+const fs=require('fs'),path=require('path');const {createCanvas,loadImage}=require('/tmp/astra-wave4b-work-20260925/node_modules/@napi-rs/canvas');const p=path.resolve(__dirname,'..');
+(async()=>{const c=createCanvas(1328,900),x=c.getContext('2d');x.fillStyle='#dfd2b0';x.fillRect(0,0,1328,900);x.fillStyle='#3c2e23';x.font='24px sans-serif';x.fillText('인물 전기',24,36);x.fillText('세력 연대기',680,36);x.font='14px sans-serif';x.fillText('오프라인 합성 · 임시 인물/기록 · 첨부 초상 및 프로젝트 문장 재사용',660,889);
+const cache={};async function im(f){return cache[f]||(cache[f]=await loadImage(p+'/'+f));}async function dr(f,a,b,w,h=w){x.drawImage(await im(f),a,b,w,h);}function txt(s,a,b,size=18){x.fillStyle='#3c2e23';x.font=size+'px sans-serif';x.fillText(s,a,b);}async function portrait(a,b,r){x.save();x.beginPath();x.arc(a,b,r,0,Math.PI*2);x.clip();await dr('references/초상_예.png',a-r,b-r,r*2);x.restore();}
+await dr('assets/pages/frame_biography.png',16,60,640,800);await dr('assets/pages/frame_faction_page.png',672,60,640,800);
+await portrait(179,276,101);await portrait(815,230,75);
+await dr('references/project-shield-textured.png',66,425,96,110);txt('표식 없음',220,483,15);
+txt('토머스',369,161,25);txt('상인 · 도시 주민',369,193,17);await dr('assets/pages/biography_life_line.png',348,232,24,280);
+const events=[['1300','이 마을에서 태어남'],['1316','상점 일을 시작함'],['1321','시장 확장 청원에 참여'],['현재','가족과 함께 거주']];for(let i=0;i<events.length;i++){await dr('assets/pages/biography_life_dot.png',348,244+i*70,24);txt(events[i][0],386,259+i*70,16);txt(events[i][1],386,284+i*70,16);}await dr('assets/pages/biography_life_end.png',347,522,26);
+txt('가족과 관계',66,650,21);txt('배우자 · 자녀 · 함께 일하는 사람',66,686,18);txt('함께 남긴 기록',66,762,21);txt('시장 확장 결정 · 겨울 구호 요청',66,799,18);
+await dr('references/project-shield-textured.png',1155,162,104,110);txt('강변 상인 가문',946,161,25);txt('수장 · 토머스',946,199,17);txt('우리 도시와의 관계',946,240,17);await dr('assets/pages/relation_scale_track.png',850,362,256,24);await dr('assets/pages/relation_scale_pin.png',1035,350,28);txt('적대',760,382,16);txt('우호',1180,382,16);
+txt('요구',751,470,22);txt('장날의 창고 접근',751,511,17);txt('도로를 정비해 달라',751,548,17);txt('약속',1035,470,22);txt('겨울 곡물 공급',1035,511,17);txt('다음 계절에 재논의',1035,548,17);
+txt('우리와 함께한 연대기',746,704,23);txt('1318  첫 거래를 시작했다',746,746,17);txt('1321  시장 확장을 함께 논의했다',746,786,17);fs.writeFileSync(p+'/proofs/02-biography-faction.png',c.toBuffer('image/png'));console.log('proof02 1328x900');})();

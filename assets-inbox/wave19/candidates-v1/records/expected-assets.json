@@ -1,0 +1,373 @@
+[
+  {
+    "id": "timeline_strip_base",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_strip_base.png",
+    "width": 1024,
+    "height": 64
+  },
+  {
+    "id": "timeline_pin_now",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_pin_now.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "timeline_pin_select",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_pin_select.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "timeline_marker_decision",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_marker_decision.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "timeline_marker_event",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_marker_event.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "timeline_marker_era",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_marker_era.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "timeline_marker_milestone",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_marker_milestone.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "timeline_marker_person",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_marker_person.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "timeline_zoom_handle",
+    "group": "timeline",
+    "file": "assets/timeline/timeline_zoom_handle.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "frame_record_decision",
+    "group": "cards",
+    "file": "assets/cards/frame_record_decision.png",
+    "width": 320,
+    "height": 160
+  },
+  {
+    "id": "frame_record_event",
+    "group": "cards",
+    "file": "assets/cards/frame_record_event.png",
+    "width": 320,
+    "height": 160
+  },
+  {
+    "id": "frame_record_era",
+    "group": "cards",
+    "file": "assets/cards/frame_record_era.png",
+    "width": 320,
+    "height": 160
+  },
+  {
+    "id": "frame_record_milestone",
+    "group": "cards",
+    "file": "assets/cards/frame_record_milestone.png",
+    "width": 320,
+    "height": 160
+  },
+  {
+    "id": "frame_record_person",
+    "group": "cards",
+    "file": "assets/cards/frame_record_person.png",
+    "width": 320,
+    "height": 160
+  },
+  {
+    "id": "frame_record_ledger",
+    "group": "cards",
+    "file": "assets/cards/frame_record_ledger.png",
+    "width": 320,
+    "height": 160
+  },
+  {
+    "id": "frame_biography",
+    "group": "pages",
+    "file": "assets/pages/frame_biography.png",
+    "width": 640,
+    "height": 800
+  },
+  {
+    "id": "frame_faction_page",
+    "group": "pages",
+    "file": "assets/pages/frame_faction_page.png",
+    "width": 640,
+    "height": 800
+  },
+  {
+    "id": "biography_life_line",
+    "group": "pages",
+    "file": "assets/pages/biography_life_line.png",
+    "width": 32,
+    "height": 256
+  },
+  {
+    "id": "biography_life_dot",
+    "group": "pages",
+    "file": "assets/pages/biography_life_dot.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "biography_life_end",
+    "group": "pages",
+    "file": "assets/pages/biography_life_end.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "relation_scale_pin",
+    "group": "pages",
+    "file": "assets/pages/relation_scale_pin.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "relation_scale_track",
+    "group": "pages",
+    "file": "assets/pages/relation_scale_track.png",
+    "width": 256,
+    "height": 24
+  },
+  {
+    "id": "frame_snapshot_map_160",
+    "group": "pages",
+    "file": "assets/pages/frame_snapshot_map_160.png",
+    "width": 160,
+    "height": 160
+  },
+  {
+    "id": "frame_snapshot_map_320",
+    "group": "pages",
+    "file": "assets/pages/frame_snapshot_map_320.png",
+    "width": 320,
+    "height": 320
+  },
+  {
+    "id": "frame_decision_compare",
+    "group": "timeline",
+    "file": "assets/timeline/frame_decision_compare.png",
+    "width": 512,
+    "height": 240
+  },
+  {
+    "id": "icon_predicted",
+    "group": "timeline",
+    "file": "assets/timeline/icon_predicted.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "icon_actual",
+    "group": "timeline",
+    "file": "assets/timeline/icon_actual.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "icon_delta_up",
+    "group": "timeline",
+    "file": "assets/timeline/icon_delta_up.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "icon_delta_down",
+    "group": "timeline",
+    "file": "assets/timeline/icon_delta_down.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_population_up",
+    "group": "scenes_people",
+    "file": "assets/scenes_people/scene_population_up.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_population_down",
+    "group": "scenes_people",
+    "file": "assets/scenes_people/scene_population_down.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_household_arrival",
+    "group": "scenes_people",
+    "file": "assets/scenes_people/scene_household_arrival.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_household_departure",
+    "group": "scenes_people",
+    "file": "assets/scenes_people/scene_household_departure.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_house_hungry",
+    "group": "scenes_people",
+    "file": "assets/scenes_people/scene_house_hungry.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_house_fed",
+    "group": "scenes_people",
+    "file": "assets/scenes_people/scene_house_fed.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_bread_shortage",
+    "group": "scenes_people",
+    "file": "assets/scenes_people/scene_bread_shortage.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_bread_reserve",
+    "group": "scenes_people",
+    "file": "assets/scenes_people/scene_bread_reserve.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_timber_shortage",
+    "group": "scenes_build",
+    "file": "assets/scenes_build/scene_timber_shortage.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_stone_shortage",
+    "group": "scenes_build",
+    "file": "assets/scenes_build/scene_stone_shortage.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_complete_house",
+    "group": "scenes_build",
+    "file": "assets/scenes_build/scene_complete_house.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_complete_facility",
+    "group": "scenes_build",
+    "file": "assets/scenes_build/scene_complete_facility.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_complete_defense",
+    "group": "scenes_build",
+    "file": "assets/scenes_build/scene_complete_defense.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_complete_public",
+    "group": "scenes_build",
+    "file": "assets/scenes_build/scene_complete_public.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_construction_blocked",
+    "group": "scenes_build",
+    "file": "assets/scenes_build/scene_construction_blocked.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_fire",
+    "group": "scenes_build",
+    "file": "assets/scenes_build/scene_fire.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_poor_harvest",
+    "group": "scenes_events",
+    "file": "assets/scenes_events/scene_poor_harvest.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_great_famine",
+    "group": "scenes_events",
+    "file": "assets/scenes_events/scene_great_famine.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_petition",
+    "group": "scenes_events",
+    "file": "assets/scenes_events/scene_petition.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_charter",
+    "group": "scenes_events",
+    "file": "assets/scenes_events/scene_charter.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_market_busy",
+    "group": "scenes_events",
+    "file": "assets/scenes_events/scene_market_busy.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_market_quiet",
+    "group": "scenes_events",
+    "file": "assets/scenes_events/scene_market_quiet.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_winter_survived",
+    "group": "scenes_events",
+    "file": "assets/scenes_events/scene_winter_survived.png",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "scene_hungry_gap",
+    "group": "scenes_events",
+    "file": "assets/scenes_events/scene_hungry_gap.png",
+    "width": 96,
+    "height": 96
+  }
+]

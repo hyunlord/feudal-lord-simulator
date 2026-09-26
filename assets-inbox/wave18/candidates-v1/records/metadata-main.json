@@ -1,0 +1,248 @@
+[
+  {
+    "id": "dock_build",
+    "file": "assets/main/dock_build.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Construction: a wooden carpenter's measuring ruler with simple tick marks (NO digits), diagonally crossed with ONE wood-handled steel chisel. No hammer. Just these two objects, distinct broad silhouette.",
+    "characters": "none",
+    "historyNotes": "Candidate. Project-owned UI P0 style references. No game installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create ONE isolated medieval game HUD icon, intended to become 96x96px PNG and read clearly at 24, 32 and 48px. Reference images are project-owned STYLE references only: match their low-chroma hand-painted ochre/taupe/brown palette, thin dark brown ink outline, matte shaded volume and restrained brush texture. Subject: Construction: a wooden carpenter's measuring ruler with simple tick marks (NO digits), diagonally crossed with ONE wood-handled steel chisel. No hammer. Just these two objects, distinct broad silhouette. Composition: centered object filling about 80% of a square canvas, compact readable silhouette, no tiny details. Background: genuinely transparent RGBA alpha outside artwork, no background color, no checkerboard drawing, no floor, no cast shadow outside object. No text, letters, numbers, borders, buttons or labels. Only this ONE icon, never a sheet.",
+        "rawFile": "raw/main/dock_build.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_layer_mode_sheet.png",
+          "references/icon_objective_action_sheet.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawWidth": 1254,
+        "rawHeight": 1254
+      }
+    ],
+    "processing": "Preserved generated alpha; alpha > 8 bounding box crop; aspect-preserving Lanczos3 fit within 84 px and transparent padding to 96x96.",
+    "qa": {
+      "status": "pass internal candidate review after dimension correction",
+      "actualWidth": 96,
+      "actualHeight": 96,
+      "channels": 4,
+      "transparentPixels": 5206,
+      "opaquePixels": 240,
+      "reviewedSizes": [
+        24,
+        32,
+        48
+      ],
+      "proof": "raw/main/contact-main.png",
+      "notes": "Visually reinspected corrected 96px outputs at24/32/48. Silhouettes unchanged after correcting canvas. Previous108px export replaced; no raw altered."
+    }
+  },
+  {
+    "id": "dock_ledger",
+    "file": "assets/main/dock_ledger.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Ledger: a wide open account book with entirely blank pale parchment pages and a prominent dark feather quill crossing its right page. NO writing, NO candle, NO scroll, NO wax seal.",
+    "characters": "none",
+    "historyNotes": "Candidate. Project-owned UI P0 style references. No game installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create ONE isolated medieval game HUD icon, intended to become 96x96px PNG and read clearly at 24, 32 and 48px. Reference images are project-owned STYLE references only: match their low-chroma hand-painted ochre/taupe/brown palette, thin dark brown ink outline, matte shaded volume and restrained brush texture. Subject: Ledger: a wide open account book with entirely blank pale parchment pages and a prominent dark feather quill crossing its right page. NO writing, NO candle, NO scroll, NO wax seal. Composition: centered object filling about 80% of a square canvas, compact readable silhouette, no tiny details. Background: genuinely transparent RGBA alpha outside artwork, no background color, no checkerboard drawing, no floor, no cast shadow outside object. No text, letters, numbers, borders, buttons or labels. Only this ONE icon, never a sheet.",
+        "rawFile": "raw/main/dock_ledger.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_layer_mode_sheet.png",
+          "references/icon_objective_action_sheet.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawWidth": 1254,
+        "rawHeight": 1254
+      }
+    ],
+    "processing": "Preserved generated alpha; alpha > 8 bounding box crop; aspect-preserving Lanczos3 fit within 84 px and transparent padding to 96x96.",
+    "qa": {
+      "status": "pass internal candidate review after dimension correction",
+      "actualWidth": 96,
+      "actualHeight": 96,
+      "channels": 4,
+      "transparentPixels": 4782,
+      "opaquePixels": 211,
+      "reviewedSizes": [
+        24,
+        32,
+        48
+      ],
+      "proof": "raw/main/contact-main.png",
+      "notes": "Visually reinspected corrected 96px outputs at24/32/48. Silhouettes unchanged after correcting canvas. Previous108px export replaced; no raw altered."
+    }
+  },
+  {
+    "id": "dock_steward",
+    "file": "assets/main/dock_steward.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Steward: THREE chunky medieval iron keys hanging from ONE round bronze key ring. Distinct key teeth and loops, simple broad readable silhouette. No people.",
+    "characters": "none",
+    "historyNotes": "Candidate. Project-owned UI P0 style references. No game installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create ONE isolated medieval game HUD icon, intended to become 96x96px PNG and read clearly at 24, 32 and 48px. Reference images are project-owned STYLE references only: match their low-chroma hand-painted ochre/taupe/brown palette, thin dark brown ink outline, matte shaded volume and restrained brush texture. Subject: Steward: THREE chunky medieval iron keys hanging from ONE round bronze key ring. Distinct key teeth and loops, simple broad readable silhouette. No people. Composition: centered object filling about 80% of a square canvas, compact readable silhouette, no tiny details. Background: genuinely transparent RGBA alpha outside artwork, no background color, no checkerboard drawing, no floor, no cast shadow outside object. No text, letters, numbers, borders, buttons or labels. Only this ONE icon, never a sheet.",
+        "rawFile": "raw/main/dock_steward.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_layer_mode_sheet.png",
+          "references/icon_objective_action_sheet.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawWidth": 1254,
+        "rawHeight": 1254
+      }
+    ],
+    "processing": "Preserved generated alpha; alpha > 8 bounding box crop; aspect-preserving Lanczos3 fit within 84 px and transparent padding to 96x96.",
+    "qa": {
+      "status": "pass internal candidate review after dimension correction",
+      "actualWidth": 96,
+      "actualHeight": 96,
+      "channels": 4,
+      "transparentPixels": 5682,
+      "opaquePixels": 392,
+      "reviewedSizes": [
+        24,
+        32,
+        48
+      ],
+      "proof": "raw/main/contact-main.png",
+      "notes": "Visually reinspected corrected 96px outputs at24/32/48. Silhouettes unchanged after correcting canvas. Previous108px export replaced; no raw altered."
+    }
+  },
+  {
+    "id": "pill_food_days",
+    "file": "assets/main/pill_food_days.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Food supply duration: ONE small round loaf of brown bread on left and ONE upright compact wooden hourglass on right, side-by-side overlapping slightly. Clear hourglass pinch and pale sand. No numerals, no dial.",
+    "characters": "none",
+    "historyNotes": "Candidate. Project-owned UI P0 style references. No game installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create ONE isolated medieval game HUD icon, intended to become 96x96px PNG and read clearly at 24, 32 and 48px. Reference images are project-owned STYLE references only: match their low-chroma hand-painted ochre/taupe/brown palette, thin dark brown ink outline, matte shaded volume and restrained brush texture. Subject: Food supply duration: ONE small round loaf of brown bread on left and ONE upright compact wooden hourglass on right, side-by-side overlapping slightly. Clear hourglass pinch and pale sand. No numerals, no dial. Composition: centered object filling about 80% of a square canvas, compact readable silhouette, no tiny details. Background: genuinely transparent RGBA alpha outside artwork, no background color, no checkerboard drawing, no floor, no cast shadow outside object. No text, letters, numbers, borders, buttons or labels. Only this ONE icon, never a sheet.",
+        "rawFile": "raw/main/pill_food_days.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_layer_mode_sheet.png",
+          "references/icon_objective_action_sheet.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawWidth": 1254,
+        "rawHeight": 1254
+      }
+    ],
+    "processing": "Preserved generated alpha; alpha > 8 bounding box crop; aspect-preserving Lanczos3 fit within 84 px and transparent padding to 96x96.",
+    "qa": {
+      "status": "pass internal candidate review after dimension correction",
+      "actualWidth": 96,
+      "actualHeight": 96,
+      "channels": 4,
+      "transparentPixels": 4582,
+      "opaquePixels": 238,
+      "reviewedSizes": [
+        24,
+        32,
+        48
+      ],
+      "proof": "raw/main/contact-main.png",
+      "notes": "Visually reinspected corrected 96px outputs at24/32/48. Silhouettes unchanged after correcting canvas. Previous108px export replaced; no raw altered."
+    }
+  },
+  {
+    "id": "pill_population",
+    "file": "assets/main/pill_population.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Population: exactly TWO extremely simplified bareheaded civilian head-and-shoulder silhouettes side by side, one slightly taller. Solid warm ivory faces without facial features, muted brown and tan shoulders. Very simple broad bust shapes, NO hats, NO tools, NO uniform, NO worker clothing, NO third person, NO medallion or frame.",
+    "characters": "two simplified civilian bust symbols",
+    "historyNotes": "Candidate. Project-owned UI P0 style references. No game installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create ONE isolated medieval game HUD icon, intended to become 96x96px PNG and read clearly at 24, 32 and 48px. Reference images are project-owned STYLE references only: match their low-chroma hand-painted ochre/taupe/brown palette, thin dark brown ink outline, matte shaded volume and restrained brush texture. Subject: Population: exactly TWO extremely simplified bareheaded civilian head-and-shoulder silhouettes side by side, one slightly taller. Solid warm ivory faces without facial features, muted brown and tan shoulders. Very simple broad bust shapes, NO hats, NO tools, NO uniform, NO worker clothing, NO third person, NO medallion or frame. Composition: centered object filling about 80% of a square canvas, compact readable silhouette, no tiny details. Background: genuinely transparent RGBA alpha outside artwork, no background color, no checkerboard drawing, no floor, no cast shadow outside object. No text, letters, numbers, borders, buttons or labels. Only this ONE icon, never a sheet.",
+        "rawFile": "raw/main/pill_population.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_layer_mode_sheet.png",
+          "references/icon_objective_action_sheet.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawWidth": 1254,
+        "rawHeight": 1254
+      }
+    ],
+    "processing": "Preserved generated alpha; alpha > 8 bounding box crop; aspect-preserving Lanczos3 fit within 84 px and transparent padding to 96x96.",
+    "qa": {
+      "status": "pass internal candidate review after dimension correction",
+      "actualWidth": 96,
+      "actualHeight": 96,
+      "channels": 4,
+      "transparentPixels": 5034,
+      "opaquePixels": 243,
+      "reviewedSizes": [
+        24,
+        32,
+        48
+      ],
+      "proof": "raw/main/contact-main.png",
+      "notes": "Visually reinspected corrected 96px outputs at24/32/48. Silhouettes unchanged after correcting canvas. Previous108px export replaced; no raw altered."
+    }
+  },
+  {
+    "id": "pill_money",
+    "file": "assets/main/pill_money.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Treasury: ONE plump tied medieval brown leather coin purse, short drawstring neck. No visible coins, no coin pile, no symbol, no writing.",
+    "characters": "none",
+    "historyNotes": "Candidate. Project-owned UI P0 style references. No game installation.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Create ONE isolated medieval game HUD icon, intended to become 96x96px PNG and read clearly at 24, 32 and 48px. Reference images are project-owned STYLE references only: match their low-chroma hand-painted ochre/taupe/brown palette, thin dark brown ink outline, matte shaded volume and restrained brush texture. Subject: Treasury: ONE plump tied medieval brown leather coin purse, short drawstring neck. No visible coins, no coin pile, no symbol, no writing. Composition: centered object filling about 80% of a square canvas, compact readable silhouette, no tiny details. Background: genuinely transparent RGBA alpha outside artwork, no background color, no checkerboard drawing, no floor, no cast shadow outside object. No text, letters, numbers, borders, buttons or labels. Only this ONE icon, never a sheet.",
+        "rawFile": "raw/main/pill_money.png",
+        "referenceImages": [
+          "references/icon_resource_sheet.png",
+          "references/icon_layer_mode_sheet.png",
+          "references/icon_objective_action_sheet.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawWidth": 1254,
+        "rawHeight": 1254
+      }
+    ],
+    "processing": "Preserved generated alpha; alpha > 8 bounding box crop; aspect-preserving Lanczos3 fit within 84 px and transparent padding to 96x96.",
+    "qa": {
+      "status": "pass internal candidate review after dimension correction",
+      "actualWidth": 96,
+      "actualHeight": 96,
+      "channels": 4,
+      "transparentPixels": 4203,
+      "opaquePixels": 186,
+      "reviewedSizes": [
+        24,
+        32,
+        48
+      ],
+      "proof": "raw/main/contact-main.png",
+      "notes": "Visually reinspected corrected 96px outputs at24/32/48. Silhouettes unchanged after correcting canvas. Previous108px export replaced; no raw altered."
+    }
+  }
+]

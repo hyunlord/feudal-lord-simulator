@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "scope": "Independent structure, CSV roundtrip, prop counts, scene bounds, PNG headers, packaged references, and all SHA256 hashes. No visual classification claim.",
+  "portraits": 92,
+  "csv_rows": 92,
+  "identities": 32,
+  "proofs": 4,
+  "manifest_entries": 478,
+  "props": {
+    "identities": {
+      "none": 10,
+      "book_scroll": 2,
+      "other": 20
+    },
+    "stages": {
+      "none": 29,
+      "book_scroll": 6,
+      "other": 57
+    }
+  },
+  "scenes": [
+    {
+      "file": "01-all-92-256-and-96.json",
+      "width": 3360,
+      "height": 4600,
+      "images": 184,
+      "text_entries": 214,
+      "bounds": "PASS"
+    },
+    {
+      "file": "02-pilot68-and-batch-comparison64.json",
+      "width": 2192,
+      "height": 3540,
+      "images": 132,
+      "text_entries": 134,
+      "bounds": "PASS"
+    },
+    {
+      "file": "03-all-32-aging-chains.json",
+      "width": 1816,
+      "height": 4870,
+      "images": 92,
+      "text_entries": 129,
+      "bounds": "PASS"
+    },
+    {
+      "file": "04-ui-96-cards.json",
+      "width": 1380,
+      "height": 1190,
+      "images": 12,
+      "text_entries": 39,
+      "bounds": "PASS"
+    }
+  ]
+}

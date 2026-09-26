@@ -1,0 +1,83 @@
+{
+  "id": "house_l4_1400_b-v1",
+  "era": 1400,
+  "level": 4,
+  "variant": "b",
+  "file": "assets/houses/house_l4_1400_b-v1.png",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-2e596384-c253-4fef-a21e-bfd58dc10d81.png",
+  "record": {
+    "id": "house_l4_1400_b-v1",
+    "l": 4,
+    "v": "b",
+    "chimney": true,
+    "prompt": "PRECISE RESKIN EDIT of the attached single isometric house sprite, NOT a new house design. Era1400 southern/southeastern England, same grade L4. Preserve EXACT roof polygon silhouette, roof ridge and eaves positions, ground-contact footprint, projection, camera angle, scale, canvas placement, all existing doorway and window opening CENTERS. Preserve same number of storeys, same grade recognizable. No moved or extra doors/windows, no additional wings, no new ground props. Transparent background. Same warm muted hand-painted game style, warm off-white limewashed daub and brown oak, light from upper left. Clearly heavier orderly oak box framing and projecting upper-storey jetty bressummer/corbel band, keep original mass/footprint. A small projecting timber door canopy above EXISTING doorway. Only one or two EXISTING upper window openings get small muted grey-green leaded glass panes, not blue, not reflective. Upper-storey joinery visibly more orderly and substantial. Variant b: slightly earthier cream infill with darker walnut shutters and modest alternate panel repair, same geometry. REQUIRED: add EXACTLY ONE squat rectangular stone/muted brick chimney stack with dark open top and NO cylindrical chimney pots, no tall tube, no smoke. Place on the right/back lower roof slope so its top stays below the main roof apex and within original canvas. Size modest about 15–20 pixels high at source resolution, readily identifiable. This is a rare wealthy early1400 exception. Roof geometry otherwise unchanged. Output one full house sprite only, transparent alpha, no labels, no sheet, no decorative frame, no ground tile.",
+    "references": [
+      "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l4-v2.png"
+    ],
+    "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-2e596384-c253-4fef-a21e-bfd58dc10d81.png",
+    "raw_path": "/tmp/astra-wave20-work-20260926/era1400/house_l4_1400_b-v1.png"
+  },
+  "crop": {
+    "left": 174,
+    "top": 64,
+    "width": 853,
+    "height": 1098
+  },
+  "target": {
+    "left": 25,
+    "top": 11,
+    "width": 114,
+    "height": 147
+  },
+  "canvas": [
+    161,
+    161
+  ],
+  "pivot": [
+    81.97647527910686,
+    157.40510366826157
+  ],
+  "footprint": [
+    1,
+    1
+  ],
+  "scale": 0.49791865539583047,
+  "chimney": true,
+  "chimneyRegion": [
+    101,
+    23,
+    123,
+    52
+  ],
+  "chimneyPolygon": [
+    [
+      110.53341148886284,
+      32.68852459016394
+    ],
+    [
+      117.08206330597889,
+      35.90163934426229
+    ],
+    [
+      117.08206330597889,
+      48.75409836065574
+    ],
+    [
+      103.71746776084407,
+      42.46174863387978
+    ],
+    [
+      103.71746776084407,
+      35.90163934426229
+    ]
+  ],
+  "smokeOrigin": [
+    111,
+    37
+  ],
+  "groundDrift": 0,
+  "changed": 7724,
+  "source_archive_path": "provenance/generated/house_l4_1400_b-v1-raw.png",
+  "source_sha256": "3af979484d26a81fe82880f834a16468756757c1f585c224705746ea6c30455d",
+  "candidate_sha256": "1d57308417172af62d5f5ef5ccc1f271127e5526b661d6df9faa7f80cbb780fc"
+}
