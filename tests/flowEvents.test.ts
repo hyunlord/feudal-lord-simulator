@@ -4,7 +4,7 @@ import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
 import { ARABLE_CONFIG } from "../src/content/arableConfig";
-import { DEARTH_REHEARSAL_EVENT_ID, EVENT_DEF_BY_ID, FIRE_CONFIG, FIRST_FIRE_EVENT_ID, WEATHER_TABLE } from "../src/content/eventConfig";
+import { DEARTH_REHEARSAL_EVENT_ID, EVENT_DEF_BY_ID, FIRE_CONFIG, FIRST_FIRE_EVENT_ID, WEATHER_TABLE, WET_SUMMER_HARVEST_PERMILLE } from "../src/content/eventConfig";
 import { constructionStage, isBuildingConstructionSite } from "../src/economy/construction";
 import { completeEligibleConstruction } from "../src/engine/constructionLifecycle";
 import type { GameState } from "../src/engine/engine.types";
@@ -224,14 +224,14 @@ test("E6 a burnt house keeps its household, loses its level and rent, and is reb
   assert.ok(!done.constructionSites.some(entry => entry.id === site.id));
 });
 
-test("E7 the rehearsal's wet summer brings in 70 % of the crop; other years bring 100 % (90 % in a wet summer)", () => {
+test("E7 the rehearsal's wet summer brings in 70 % of the crop; other years bring 100 % (95 % in a wet summer)", () => {
   const state = town();
   const season = scheduledSeason(state, REHEARSAL)!;
   const year = Math.floor(season / 4);
   assert.equal(harvestYieldPermille(state, year * YEAR + 2_000), 700);
   for (let other = 0; other < 20; other += 1) {
     if (other === year) continue;
-    const expected = weatherOfSeason(state, other * 4 + 1) === "wet" ? 900 : 1000;
+    const expected = weatherOfSeason(state, other * 4 + 1) === "wet" ? WET_SUMMER_HARVEST_PERMILLE : 1000;
     assert.equal(harvestYieldPermille(state, other * YEAR + 2_000), expected, `year ${1300 + other}`);
   }
   // A ripe strip one worker-tick from harvest: the barn gets 70 % of what it grew in the rehearsal year.
