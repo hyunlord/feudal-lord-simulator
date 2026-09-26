@@ -1,0 +1,466 @@
+{
+ "summary": {
+  "presses": 40,
+  "tapped": 17,
+  "canvasTaps": 7,
+  "confirmed": 6,
+  "notFound": 12,
+  "hoverOnly": 10,
+  "keyboardOnly": 4,
+  "keysOnScreen": 0,
+  "goalSteps": [
+   "greet",
+   "well",
+   "well_done",
+   "road",
+   "house",
+   "arable",
+   "arable_limits",
+   "food_chain"
+  ],
+  "finalGoalStep": "food_chain",
+  "errors": []
+ },
+ "results": [
+  {
+   "clock": "00:08",
+   "op": "click",
+   "target": {
+    "x": 494,
+    "y": 448,
+    "w": 126,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-scenario=\"core:campaign_market_town\"]",
+   "goalStep": "greet"
+  },
+  {
+   "clock": "00:11",
+   "op": "click",
+   "target": {
+    "x": 211,
+    "y": 84,
+    "w": 70,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"greet\"]",
+   "goalStep": "well"
+  },
+  {
+   "clock": "00:13",
+   "op": "click",
+   "target": {
+    "x": 209,
+    "y": 84,
+    "w": 73,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"well\"]"
+  },
+  {
+   "clock": "00:15",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:16",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 528,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   },
+   "goalStep": "well_done"
+  },
+  {
+   "clock": "00:20",
+   "op": "click",
+   "target": {
+    "x": 223,
+    "y": 84,
+    "w": 46,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"well_done\"]",
+   "goalStep": "road"
+  },
+  {
+   "clock": "00:23",
+   "op": "click",
+   "target": {
+    "x": 215,
+    "y": 84,
+    "w": 62,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"road\"]"
+  },
+  {
+   "clock": "00:24",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:25",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap",
+   "goalStep": "house"
+  },
+  {
+   "clock": "00:28",
+   "op": "click",
+   "target": {
+    "x": 215,
+    "y": 84,
+    "w": 62,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"house\"]"
+  },
+  {
+   "clock": "00:29",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:30",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 528,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   },
+   "goalStep": "arable"
+  },
+  {
+   "clock": "00:32",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:35",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:37",
+   "op": "click",
+   "onMarker": false,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 528,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   }
+  },
+  {
+   "clock": "00:38",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:40",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:42",
+   "op": "click",
+   "onMarker": false,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 528,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   }
+  },
+  {
+   "clock": "00:43",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:44",
+   "op": "key",
+   "result": "keyboard only (Escape)"
+  },
+  {
+   "clock": "00:45",
+   "op": "key",
+   "result": "keyboard only (Escape)"
+  },
+  {
+   "clock": "00:46",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:48",
+   "op": "click",
+   "target": {
+    "x": 197,
+    "y": 84,
+    "w": 97,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"arable\"]"
+  },
+  {
+   "clock": "00:52",
+   "op": "click",
+   "target": {
+    "x": 158,
+    "y": 84,
+    "w": 176,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"arable\"]",
+   "goalStep": "arable_limits"
+  },
+  {
+   "clock": "00:55",
+   "op": "click",
+   "target": {
+    "x": 205,
+    "y": 84,
+    "w": 82,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"arable_limits\"]",
+   "goalStep": "food_chain"
+  },
+  {
+   "clock": "00:57",
+   "op": "click",
+   "target": {
+    "x": 209,
+    "y": 84,
+    "w": 73,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"food_chain\"]"
+  },
+  {
+   "clock": "00:58",
+   "op": "click",
+   "target": {
+    "x": 170,
+    "y": 84,
+    "w": 153,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"food_chain\"]"
+  },
+  {
+   "clock": "01:02",
+   "op": "click",
+   "result": "desktop press landed on a modal backdrop (skipped)"
+  },
+  {
+   "clock": "01:03",
+   "op": "click",
+   "result": "desktop press landed on a modal backdrop (skipped)"
+  },
+  {
+   "clock": "01:05",
+   "op": "click",
+   "result": "desktop press landed on a modal backdrop (skipped)"
+  },
+  {
+   "clock": "01:07",
+   "op": "click",
+   "result": "desktop press landed on a modal backdrop (skipped)"
+  },
+  {
+   "clock": "01:15",
+   "op": "click",
+   "target": {
+    "x": 709,
+    "y": 482,
+    "w": 76,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": ".season-ledger-resume"
+  },
+  {
+   "clock": "01:16",
+   "op": "click",
+   "target": {
+    "x": 170,
+    "y": 84,
+    "w": 153,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"food_chain\"]"
+  },
+  {
+   "clock": "01:17",
+   "op": "click",
+   "target": {
+    "x": 170,
+    "y": 84,
+    "w": 153,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"food_chain\"]"
+  },
+  {
+   "clock": "01:21",
+   "op": "click",
+   "result": "not found ([data-tutorial-cta=\"granary\"])"
+  },
+  {
+   "clock": "01:22",
+   "op": "click",
+   "result": "not found ([data-tutorial-cta=\"granary\"])"
+  },
+  {
+   "clock": "01:26",
+   "op": "click",
+   "result": "not found ([data-tutorial-cta=\"zone_unlock\"])"
+  },
+  {
+   "clock": "01:28",
+   "op": "click",
+   "result": "not found ([data-tutorial-cta=\"burgage\"])"
+  },
+  {
+   "clock": "01:29",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "01:31",
+   "op": "click",
+   "result": "not found ([data-tutorial-cta=\"burgage\"])"
+  },
+  {
+   "clock": "01:34",
+   "op": "click",
+   "result": "not found ([data-tutorial-cta=\"burgage_done\"])"
+  },
+  {
+   "clock": "01:36",
+   "op": "click",
+   "result": "not found ([data-tutorial-cta=\"wrap_up\"])"
+  },
+  {
+   "clock": "01:37",
+   "op": "click",
+   "result": "not found ([data-layer=\"direct\"])"
+  },
+  {
+   "clock": "01:41",
+   "op": "click",
+   "target": {
+    "x": 1096,
+    "y": 32,
+    "w": 44,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[aria-label=\"3배속\"]"
+  },
+  {
+   "clock": "02:05",
+   "op": "click",
+   "target": {
+    "x": 709,
+    "y": 482,
+    "w": 76,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": ".season-ledger-resume"
+  },
+  {
+   "clock": "02:06",
+   "op": "key",
+   "result": "keyboard only (Space)"
+  },
+  {
+   "clock": "02:06",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 528,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   }
+  },
+  {
+   "clock": "02:11",
+   "op": "click",
+   "result": "not found ([aria-label=\"상세 정보 닫기\"])"
+  },
+  {
+   "clock": "02:11",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 528,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   }
+  },
+  {
+   "clock": "02:14",
+   "op": "click",
+   "result": "not found ([aria-label=\"상세 정보 닫기\"])"
+  },
+  {
+   "clock": "02:15",
+   "op": "key",
+   "result": "keyboard only (Space)"
+  },
+  {
+   "clock": "02:47",
+   "op": "click",
+   "target": {
+    "x": 709,
+    "y": 518,
+    "w": 76,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": ".season-ledger-resume"
+  },
+  {
+   "clock": "02:48",
+   "op": "click",
+   "result": "not found (.action-dock-button)"
+  },
+  {
+   "clock": "02:49",
+   "op": "click",
+   "result": "not found ([data-category=\"trade\"])"
+  }
+ ]
+}

@@ -1,0 +1,490 @@
+{
+ "summary": {
+  "presses": 32,
+  "tapped": 24,
+  "canvasTaps": 7,
+  "confirmed": 6,
+  "notFound": 0,
+  "hoverOnly": 9,
+  "keyboardOnly": 2,
+  "keysOnScreen": 0,
+  "goalSteps": [
+   "greet",
+   "arable",
+   "arable_limits",
+   "food_chain",
+   "well",
+   "well_done",
+   "road",
+   "house",
+   "sawmill",
+   "zone_unlock",
+   "burgage",
+   "burgage_done",
+   "wrap_up",
+   null,
+   "wrap",
+   null,
+   "wrap",
+   null
+  ],
+  "finalGoalStep": null,
+  "errors": []
+ },
+ "results": [
+  {
+   "clock": "00:18",
+   "op": "click",
+   "target": {
+    "x": 494,
+    "y": 448,
+    "w": 125,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-scenario=\"core:campaign_market_town\"]",
+   "goalStep": "greet"
+  },
+  {
+   "clock": "00:31",
+   "op": "click",
+   "target": {
+    "x": 53,
+    "y": 103,
+    "w": 70,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"greet\"]",
+   "goalStep": "arable"
+  },
+  {
+   "clock": "00:37",
+   "op": "click",
+   "target": {
+    "x": 66,
+    "y": 104,
+    "w": 97,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"arable\"]"
+  },
+  {
+   "clock": "00:39",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:43",
+   "op": "drag",
+   "result": "touch drag",
+   "goalStep": "arable_limits"
+  },
+  {
+   "clock": "00:48",
+   "op": "click",
+   "target": {
+    "x": 59,
+    "y": 103,
+    "w": 82,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"arable_limits\"]",
+   "goalStep": "food_chain"
+  },
+  {
+   "clock": "00:51",
+   "op": "click",
+   "target": {
+    "x": 54,
+    "y": 104,
+    "w": 73,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"food_chain\"]"
+  },
+  {
+   "clock": "00:54",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "00:55",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 529,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   }
+  },
+  {
+   "clock": "00:57",
+   "op": "click",
+   "target": {
+    "x": 60,
+    "y": 104,
+    "w": 85,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"food_chain\"]"
+  },
+  {
+   "clock": "01:01",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "01:02",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 529,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   },
+   "goalStep": "well"
+  },
+  {
+   "clock": "01:07",
+   "op": "click",
+   "target": {
+    "x": 54,
+    "y": 104,
+    "w": 73,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"well\"]"
+  },
+  {
+   "clock": "01:09",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "01:10",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 529,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   },
+   "goalStep": "well_done"
+  },
+  {
+   "clock": "01:12",
+   "op": "click",
+   "target": {
+    "x": 41,
+    "y": 103,
+    "w": 46,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"well_done\"]",
+   "goalStep": "road"
+  },
+  {
+   "clock": "01:15",
+   "op": "click",
+   "target": {
+    "x": 48,
+    "y": 104,
+    "w": 61,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"road\"]"
+  },
+  {
+   "clock": "01:18",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap",
+   "goalStep": "house"
+  },
+  {
+   "clock": "01:21",
+   "op": "click",
+   "result": "desktop press landed on a modal backdrop (skipped)"
+  },
+  {
+   "clock": "01:34",
+   "op": "click",
+   "target": {
+    "x": 464,
+    "y": 482,
+    "w": 76,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": ".season-ledger-resume"
+  },
+  {
+   "clock": "01:36",
+   "op": "click",
+   "target": {
+    "x": 48,
+    "y": 104,
+    "w": 61,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"house\"]"
+  },
+  {
+   "clock": "01:37",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "01:38",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 529,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   },
+   "goalStep": "sawmill"
+  },
+  {
+   "clock": "01:44",
+   "op": "click",
+   "target": {
+    "x": 60,
+    "y": 104,
+    "w": 85,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"sawmill\"]"
+  },
+  {
+   "clock": "01:45",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "01:47",
+   "op": "click",
+   "onMarker": true,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 529,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   },
+   "goalStep": "zone_unlock"
+  },
+  {
+   "clock": "01:52",
+   "op": "click",
+   "target": {
+    "x": 54,
+    "y": 103,
+    "w": 73,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"zone_unlock\"]",
+   "goalStep": "burgage"
+  },
+  {
+   "clock": "01:53",
+   "op": "click",
+   "target": {
+    "x": 60,
+    "y": 104,
+    "w": 85,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"burgage\"]"
+  },
+  {
+   "clock": "01:55",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "01:58",
+   "op": "drag",
+   "result": "touch drag",
+   "goalStep": "burgage_done"
+  },
+  {
+   "clock": "02:03",
+   "op": "click",
+   "target": {
+    "x": 59,
+    "y": 103,
+    "w": 82,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"burgage_done\"]",
+   "goalStep": "wrap_up"
+  },
+  {
+   "clock": "02:06",
+   "op": "click",
+   "target": {
+    "x": 60,
+    "y": 103,
+    "w": 85,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"wrap_up\"]",
+   "goalStep": null
+  },
+  {
+   "clock": "02:08",
+   "op": "click",
+   "target": {
+    "x": 43,
+    "y": 790,
+    "w": 70,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-layer=\"direct\"]",
+   "goalStep": "wrap"
+  },
+  {
+   "clock": "02:12",
+   "op": "click",
+   "target": {
+    "x": 1096,
+    "y": 32,
+    "w": 44,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[aria-label=\"3배속\"]"
+  },
+  {
+   "clock": "02:40",
+   "op": "click",
+   "target": {
+    "x": 707,
+    "y": 482,
+    "w": 76,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": ".season-ledger-resume"
+  },
+  {
+   "clock": "03:05",
+   "op": "click",
+   "target": {
+    "x": 464,
+    "y": 482,
+    "w": 76,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": ".season-ledger-resume"
+  },
+  {
+   "clock": "03:06",
+   "op": "click",
+   "target": {
+    "x": 1096,
+    "y": 90,
+    "w": 48,
+    "h": 48
+   },
+   "result": "tap",
+   "selector": "[aria-label=\"유지비 미납 — 첫 건물 보기 · 유지비 미납\"]",
+   "goalStep": null
+  },
+  {
+   "clock": "03:12",
+   "op": "click",
+   "target": {
+    "x": 1122,
+    "y": 114,
+    "w": 44,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[aria-label=\"닫기\"]",
+   "goalStep": "wrap"
+  },
+  {
+   "clock": "03:33",
+   "op": "click",
+   "target": {
+    "x": 464,
+    "y": 482,
+    "w": 76,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": ".season-ledger-resume"
+  },
+  {
+   "clock": "03:34",
+   "op": "click",
+   "target": {
+    "x": 60,
+    "y": 104,
+    "w": 85,
+    "h": 44
+   },
+   "result": "tap",
+   "selector": "[data-tutorial-cta=\"wrap\"]",
+   "goalStep": null
+  },
+  {
+   "clock": "03:38",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "03:42",
+   "op": "move",
+   "result": "hover — no touch form"
+  },
+  {
+   "clock": "03:44",
+   "op": "click",
+   "onMarker": false,
+   "result": "canvas tap + ✓",
+   "confirm": {
+    "x": 529,
+    "y": 758,
+    "w": 83,
+    "h": 44
+   }
+  },
+  {
+   "clock": "03:45",
+   "op": "key",
+   "result": "keyboard only (Escape)"
+  },
+  {
+   "clock": "03:46",
+   "op": "key",
+   "result": "keyboard only (Escape)"
+  }
+ ]
+}

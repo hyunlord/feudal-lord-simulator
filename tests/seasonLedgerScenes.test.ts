@@ -17,8 +17,8 @@ const record = (tick: number, template: string, severity: 0 | 1 | 2 | 3, params:
   ({ id: `h-${String(++ordinal).padStart(6, "0")}`, tick, kind, template, params, subject: TOWN, severity });
 const ledger = (startTick: number, over: Partial<SeasonLedger> = {}): SeasonLedger => ({ season: 1, year: 1301, startTick, endTick: startTick + 1_000, income: 40, expense: 30,
   stockDelta: { bread: 5, wheat: 0, timber: 0, stone: 0 }, popDelta: 2, notableEvents: [], nextObjectiveHint: null, ...over });
-const stateWith = (records: readonly HistoryRecord[], ledgers: readonly SeasonLedger[]) => ({
-  scenarioId: "core:campaign_market_town", history: { ...EMPTY_HISTORY, records }, seasons: { history: ledgers } }) as never;
+const stateWith = (records: readonly HistoryRecord[], ledgers: readonly SeasonLedger[], buildings: readonly object[] = []) => ({
+  scenarioId: "core:campaign_market_town", history: { ...EMPTY_HISTORY, records }, seasons: { history: ledgers }, buildings }) as never;
 
 test("Given the Wave 19 install When the manifest is read Then 53 files are installed, 24 of them scene icons, frames with their 9-slice insets", () => {
   const entries = Object.entries(WAVE19_IMAGES);
@@ -49,8 +49,24 @@ test("Given a season with a famine, a first market and burnt houses When its sce
 test("Given a quiet season When its ledger has no changes Then the scenes come from its numbers, weighted as before", () => {
   const closed = ledger(1_000, { popDelta: -2, stockDelta: { bread: -30, wheat: 0, timber: -3, stone: 0 }, notableEvents: [{ kind: "first_winter_warning" }] });
   const scenes = seasonLedgerScenes(stateWith([], [closed]), closed, undefined);
-  assert.deepEqual(scenes.map(scene => scene.id), ["bread_shortage", "population_down", "market_busy"]);
-  assert.deepEqual(scenes.map(scene => scene.value), ["−30", "−2", "+10d"]);
+  // UX-0b: no market stands, so the money turn is no market day; spent timber is no scene.
+  assert.deepEqual(scenes.map(scene => scene.id), ["bread_shortage", "population_down", "hungry_gap"]);
+  assert.deepEqual(scenes.map(scene => scene.value), ["−30", "−2", null]);
+});
+
+test("UX-0b: a number names a scene only when it is true — larder bread, spent timber, idle wheat and no market", () => {
+  const growing = ledger(1_000, { popDelta: 16, income: 12, expense: 2, stockDelta: { bread: -21, wheat: 473, timber: -50, stone: 0 } });
+  const idle = stateWith([], [growing], [{ kind: "mill", upkeepUnpaid: true }]);
+  assert.deepEqual(seasonLedgerScenes(idle, growing, undefined).map(scene => scene.id), ["population_up"]);
+  const working = stateWith([], [growing], [{ kind: "mill" }, { kind: "market" }]);
+  assert.deepEqual(seasonLedgerScenes(working, growing, undefined).map(scene => scene.id), ["bread_reserve", "population_up", "market_busy"]);
+});
+
+test("UX-0b: the quiet line is only for a calm season; people lost with no event reads as the loss", () => {
+  const starving = ledger(1_000, { popDelta: -20, stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 } });
+  assert.deepEqual(seasonLedgerCardModel(stateWith([], [starving]))?.events, ["사람이 20명 줄었습니다"]);
+  const calm = ledger(1_000, { popDelta: 0, stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 } });
+  assert.deepEqual(seasonLedgerCardModel(stateWith([], [calm]))?.events, ["큰 일 없이 지나간 계절입니다"]);
 });
 
 test("Given every ledger template When mapped Then each change has a scene and forecasts and everyday lines have none", () => {

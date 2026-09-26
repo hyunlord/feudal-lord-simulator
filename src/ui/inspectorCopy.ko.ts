@@ -28,7 +28,8 @@ export const INSPECTOR_COPY = {
   /** "조치" lines, keyed by the blocking cause. */
   action: {
     resume: `'${BUILDING_OPERATION_COPY.resume}' 버튼으로 다시 가동하세요`,
-    payUpkeep: "재정을 채워 밀린 유지비를 내세요",
+    // UX-0b: the audit could not act on "재정을 채워 …": say where money comes from and when the debt is paid.
+    payUpkeep: "집이 늘어 지대가 오르거나 다른 시설을 멈추면, 다음 장부 마감에 밀린 유지비를 내고 다시 돌아갑니다",
     /** Household services (water, market, church), per diagnosis kind. */
     service: {
       water: { missing: "이 집 가까이에 우물을 지으세요", outside: "범위 안에 우물을 하나 더 지으세요",

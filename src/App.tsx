@@ -74,6 +74,7 @@ import {
 import { platformServices } from "./platform/platform";
 import { INTENT_ORDER } from "./input/intentBus";
 import { SPEED_STEPS, speedStepOf } from "./input/inputIntent";
+import { bindPressClock, lastPressAt } from "./input/inputDevice";
 import { steppedPlacementTool } from "./render/placementToolCycle";
 import { UiIcon } from "./ui/UiIcon";
 import { setPresentationSpeed } from "./render/presentationSpeed";
@@ -104,6 +105,8 @@ import { famineDecisionView, petitionDecisionView } from "./ui/decisionModels";
 import { chronicleView } from "./ui/chronicleModel";
 import { PresentationToggle } from "./render/PresentationToggle";
 
+/** UX-0b: how long the season card waits after the last press before it opens (a press in flight is not swallowed). */
+const LEDGER_PRESS_GRACE_MS = 700;
 /** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
 const ZONE_TOOL_PREFIX = "zone:";
 const ZONE_TOOL_OFF = "zone:off";
@@ -317,10 +320,13 @@ export function App() {
   }, INTENT_ORDER.app), [setSpeed]);
 
   // UX-3: the underlying tool / zone / inspector states follow the UI state (and a tool picked by any route moves it).
+  // UX-0b: the arable brush armed from the build drawer on the direct layer is a line tool like the road, so the drawer
+  // closes and the marked land is in view (the audit painted blind under the open drawer).
+  const directBrush = zoneTool !== null && layer === "direct";
   useEffect(() => {
-    if (selectedTool !== null || palisadeDraft?.mode === "draw") sendUi({ type: "pick_tool", line: selectedTool === "road" || palisadeDraft?.mode === "draw" });
+    if (selectedTool !== null || palisadeDraft?.mode === "draw" || directBrush) sendUi({ type: "pick_tool", line: selectedTool === "road" || palisadeDraft?.mode === "draw" || directBrush });
     else sendUi({ type: "tool_cleared" });
-  }, [selectedTool, palisadeDraft?.mode, sendUi]);
+  }, [selectedTool, palisadeDraft?.mode, directBrush, sendUi]);
   useEffect(() => { sendUi({ type: layer === "zone" ? "zone_on" : "zone_off" }); }, [layer, sendUi]);
   useEffect(() => {
     const placing = ui.mode === "placement" || ui.mode === "line";
@@ -354,11 +360,18 @@ export function App() {
   const lastClosedEnd = state.seasons?.history.at(-1)?.endTick ?? null;
   const priorClosedEnd = state.seasons?.history.at(-2)?.endTick ?? null;
   const lastClosedEndRef = useRef(lastClosedEnd);
+  // UX-0b: the card waits until the pointer has been still for LEDGER_PRESS_GRACE_MS (the cold start audit's presses at
+  // a season's close landed on the card's backdrop four times and were lost).
+  useEffect(() => bindPressClock(), []);
   useEffect(() => {
     const previous = lastClosedEndRef.current;
     lastClosedEndRef.current = lastClosedEnd;
     if (!seasonJustClosed(previous, lastClosedEnd, priorClosedEnd) || !ledgerAuto || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
-    setUi(current => reduceUi(current, { type: "push_modal", modal: "season_ledger" }));
+    const open = () => setUi(current => topModal(current) === "season_ledger" ? current : reduceUi(current, { type: "push_modal", modal: "season_ledger" }));
+    const wait = LEDGER_PRESS_GRACE_MS - (performance.now() - lastPressAt());
+    if (wait <= 0) { open(); return; }
+    const timer = window.setTimeout(open, wait);
+    return () => window.clearTimeout(timer);
   }, [lastClosedEnd, priorClosedEnd, ledgerAuto, welcomeVisible]);
   const seasonCard = topModal(ui) === "season_ledger" ? seasonLedgerCardModel(state) : null;
   // The card's next objective opens the build drawer at its category (the tutorial's request path, its own nonce).

@@ -9,7 +9,7 @@ test("Given the opening When showing settlement progress Then real supply and cu
   const markup = renderToStaticMarkup(createElement(SettlementPanel, { state: DEFAULT_GAME_STATE, onRestart: () => {} }));
   assert.match(markup, /자립 마을/);
   assert.match(markup, /가구 비축/);
-  assert.match(markup, /30초/);
+  assert.match(markup, /약 54일/, "UX-0b: the hold on the calendar, not in game seconds");
   assert.doesNotMatch(markup, /새 영지 시작/);
 });
 test("Given abandonment When showing outcome Then restart is available and cause is explicit", () => {

@@ -1,7 +1,7 @@
 import { RESOURCE_TYPES, type ResourceType } from "../../content/resourceConfig";
 import { BALANCE } from "../../content/balanceConfig";
 import type { GameState } from "../../engine/engine.types";
-import { BUILDING_CONFIG_BY_KIND } from "../../content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, operationSuspended } from "../../content/buildingConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../../content/houseFoodConfig";
 import { economyStockTotals } from "../ledgerModel";
 
@@ -10,6 +10,8 @@ import { economyStockTotals } from "../ledgerModel";
 // Judgement 2026-09-26: the food number is what lies in the stores only — the storehouses and granaries (bread, and
 // wheat as the bread a mill makes of it) over the current ration, as FIX-1 foodReserveTicks counts it but without
 // the bread already on carts or in the mills and barns; no production counted (the conservative reading of Q2).
+// UX-0b: the wheat counts only while a mill can grind it (one stands and is not stopped for upkeep or by the lord). The
+// cold start audit read "식량 900일" while the only mill stood unpaid and the town starved to nothing.
 const DAYS_PER_YEAR = 360;
 const STORE_KINDS: ReadonlySet<string> = new Set(["storehouse", "granary"]);
 
@@ -20,7 +22,19 @@ export function storedFoodTicks(state: Pick<GameState, "houses" | "buildings">):
   const stored = (resource: "bread" | "wheat") => state.buildings.reduce((sum, building) =>
     sum + (STORE_KINDS.has(building.kind) ? Math.max(0, building.inventory[resource] ?? 0) : 0), 0);
   const wheatPerBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2;
-  return Math.floor((stored("bread") + Math.floor(stored("wheat") / wheatPerBread)) * HOUSE_FOOD_INTERVAL / ration);
+  const wheat = millGrinds(state) ? Math.floor(stored("wheat") / wheatPerBread) : 0;
+  return Math.floor((stored("bread") + wheat) * HOUSE_FOOD_INTERVAL / ration);
+}
+
+/** Some mill can turn stored wheat into bread: one stands and is neither stopped for unpaid upkeep nor paused. */
+export function millGrinds(state: Pick<GameState, "buildings">): boolean {
+  return state.buildings.some(building => building.kind === "mill" && !operationSuspended(building));
+}
+
+/** Stored wheat no mill can grind now (the pill leaves it out; the date panel says so). */
+export function idleWheat(state: Pick<GameState, "buildings">): number {
+  if (millGrinds(state)) return 0;
+  return state.buildings.reduce((sum, building) => sum + (STORE_KINDS.has(building.kind) ? Math.max(0, building.inventory.wheat ?? 0) : 0), 0);
 }
 
 export function foodDays(state: Pick<GameState, "houses" | "buildings">): number | null {

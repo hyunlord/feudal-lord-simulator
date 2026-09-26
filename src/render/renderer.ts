@@ -218,7 +218,8 @@ export const renderFrame = (input: RenderFrameInput): void => {
   drawOnboardingGuidanceOverlay(input.context, {
     targets: tutorialTarget === null ? [] : [{ kind: "road", label: tutorialTarget.label, origin: tutorialTarget.focus,
       ...(tutorialTarget.tiles.length > 1 ? { region: tutorialTarget.tiles } : {}) }],
-    zoom: input.camera.zoom, tiles: input.preview.tool !== null, // UX-3: no hint squares before a tool is picked
+    // UX-3: no hint squares before a tool is picked; UX-0b: a zone brush is a picked tool too.
+    zoom: input.camera.zoom, tiles: input.preview.tool !== null || (input.zoneBrush !== undefined && input.zoneBrush !== null),
   });
   probe?.enter("overlay.feedback");
   drawPlacementFeedbackOverlay(input.context, {

@@ -231,17 +231,24 @@ test("UX-3R2 road click-click: each next click lays the road from the anchor and
   assert.equal(run.actions.length, before + 1, "only the first click's tile");
 });
 
-test("UX-3R2 tablet: a finger positions the ghost 80 px above it; lifting builds nothing; ✓ (confirm) builds there and the tool stays", () => {
+test("UX-3R2 tablet (UX-0b): a tap leaves the ghost under the finger, a drag 80 px above it; lifting builds nothing; ✓ (confirm) builds there and the tool stays", () => {
   const run = runtimeFor(DEFAULT_GAME_STATE, "house");
   reportInputDevice("touch");
   const finger = run.client(50, 50);
+  const tileAt = (point: { readonly clientX: number; readonly clientY: number }) =>
+    pickTile(canvasToWorld({ x: point.clientX - RECT.left, y: point.clientY - RECT.top }, run.refs.cameraRef.current));
+  // A tap (a wobble inside the tap slop) marks the tile the finger touched: the audit's tap on the marked spot + ✓.
   run.touch.start([finger]); run.touch.move([{ ...finger, clientX: finger.clientX + 1 }]); run.touch.end(0);
+  assert.equal(run.actions.length, 0, "lifting the finger does not build");
+  assert.deepEqual(run.refs.pendingPlacement.current, tileAt({ clientX: finger.clientX + 1, clientY: finger.clientY }), "a tap: the ghost is under the finger");
+  assert.equal(run.bus.emit({ kind: "cancel" }), true);
+  // A drag lifts the ghost 80 px above the finger so the finger does not hide it.
+  const moved = { ...finger, clientX: finger.clientX + 40 };
+  run.touch.start([finger]); run.touch.move([{ ...finger, clientX: finger.clientX + 20 }]); run.touch.move([moved]); run.touch.end(0);
   assert.equal(run.actions.length, 0, "lifting the finger does not build");
   const ghost = run.refs.pendingPlacement.current;
   assert.ok(ghost !== null);
-  const above = { clientX: finger.clientX + 1, clientY: finger.clientY - 80 };
-  const aboveTile = pickTile(canvasToWorld({ x: above.clientX - RECT.left, y: above.clientY - RECT.top }, run.refs.cameraRef.current));
-  assert.deepEqual(ghost, aboveTile, "the ghost is the tile 80 px above the finger");
+  assert.deepEqual(ghost, tileAt({ clientX: moved.clientX, clientY: moved.clientY - 80 }), "a drag: the ghost is the tile 80 px above the finger");
   const cameraBefore = run.refs.cameraRef.current;
   run.bus.emit({ kind: "confirm" });
   const expected = resolveBuildingPlacementAttempt({ state: DEFAULT_GAME_STATE, tool: "house", tile: ghost!, nowMs: 0 }).action;

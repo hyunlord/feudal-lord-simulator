@@ -58,11 +58,14 @@ test("Given a new game When only the card buttons are followed Then all 13 tutor
 test("Given each step When access is read Then only the script's categories and tools are open (gate 2)", () => {
   const at = (id: TutorialStepId) => tutorialAccess(true, TUTORIAL_STEP_IDS.indexOf(id));
   assert.deepEqual(at("greet").categories, { living: true, paths: true, trade: false, storage: false, public: false, defense: false });
-  assert.ok(at("well").tools("well") && at("well").tools("house") && at("well").tools("road") && !at("well").tools("farmstead"));
+  assert.ok(at("greet").tools("well") && at("greet").tools("house") && at("greet").tools("road") && !at("greet").tools("farmstead"));
+  // UX-0b: food first — the arable brush, then the barn and the mill, before the well, road and house.
   assert.ok(at("arable").categories.trade && at("arable").arableCard && !at("arable").tools("farmstead"));
   assert.ok(at("food_chain").tools("farmstead") && at("food_chain").tools("mill") && !at("food_chain").tools("sawmill"));
-  assert.ok(!at("food_chain").categories.storage && at("granary").categories.storage && at("granary").tools("granary") && !at("granary").tools("storehouse"));
-  assert.ok(!at("granary").layers.zone && at("zone_unlock").layers.zone);
+  assert.ok(at("well").tools("farmstead") && at("house").tools("mill") && !at("house").tools("sawmill"));
+  assert.ok(at("sawmill").tools("sawmill") && !at("sawmill").categories.storage && !at("sawmill").tools("granary"));
+  assert.ok(at("zone_unlock").categories.storage && at("zone_unlock").tools("granary") && !at("zone_unlock").tools("storehouse"));
+  assert.ok(!at("sawmill").layers.zone && at("zone_unlock").layers.zone);
   assert.ok(at("burgage").zoneTargets("burgage") && !at("burgage").zoneTargets("pasture"));
   for (const id of TUTORIAL_STEP_IDS) assert.ok(!at(id).categories.public && !at(id).categories.defense && !at(id).layers.direction, id);
   const done = tutorialAccess(true, TUTORIAL_STEP_IDS.length);

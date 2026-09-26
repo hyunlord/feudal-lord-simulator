@@ -28,8 +28,8 @@ export function drawOnboardingGuidanceOverlay(
   context.save();
   for (const target of input.targets) {
     if (input.tiles !== false) {
-      if (target.region === undefined) drawTargetDiamond(context, target.origin, input.zoom);
-      else drawTargetRegion(context, target.region);
+      if (target.region !== undefined) drawTargetRegion(context, target.region, input.zoom);
+      drawTargetDiamond(context, target.origin, input.zoom);
     }
     drawTargetPlaque(context, target, input);
   }
@@ -52,15 +52,38 @@ function drawTargetDiamond(
   context.stroke();
 }
 
+// UX-0b: a footprint or a zone stroke reads as tiles on any ground: a parchment wash with a gold rule on every tile
+// (the old 12 % gold wash vanished on forest, and the granary step showed no mark at all). The origin tile gets the
+// full diamond on top: it is the tile the cursor must take.
 function drawTargetRegion(
   context: CanvasRenderingContext2D,
   origins: readonly OnboardingGuidanceTarget["origin"][],
+  zoom: number,
 ): void {
   if (origins.length === 0) return;
-  context.fillStyle = withAlpha(PALETTE.gold, 0.12);
+  context.fillStyle = withAlpha(SEMANTIC_PALETTE.parchment, 0.4);
   context.beginPath();
   for (const origin of origins) appendTargetDiamond(context, tileToScreen(origin.tx, origin.ty));
   context.fill();
+  // The outline only (Phase 11: one field, not a tile grid): a tile edge is drawn where the neighbour across it is
+  // not in the region. In screen space (tx, ty − 1) is up-right, (tx + 1, ty) down-right, (tx, ty + 1) down-left,
+  // (tx − 1, ty) up-left.
+  const inRegion = new Set(origins.map(origin => `${origin.tx},${origin.ty}`));
+  context.beginPath();
+  for (const origin of origins) {
+    const { sx, sy } = tileToScreen(origin.tx, origin.ty);
+    const top = [sx, sy - TILE_H / 2] as const; const right = [sx + TILE_W / 2, sy] as const;
+    const bottom = [sx, sy + TILE_H / 2] as const; const left = [sx - TILE_W / 2, sy] as const;
+    const edges: readonly [readonly [number, number], readonly [number, number], number, number][] = [
+      [top, right, 0, -1], [right, bottom, 1, 0], [bottom, left, 0, 1], [left, top, -1, 0]];
+    for (const [from, to, dx, dy] of edges) {
+      if (inRegion.has(`${origin.tx + dx},${origin.ty + dy}`)) continue;
+      context.moveTo(snapToPixel(from[0]), snapToPixel(from[1]));
+      context.lineTo(snapToPixel(to[0]), snapToPixel(to[1]));
+    }
+  }
+  applyPaletteStroke(context, PALETTE.gold, zoom);
+  context.stroke();
 }
 
 function appendTargetDiamond(
@@ -151,7 +174,7 @@ function safeRightInset(context: CanvasRenderingContext2D, explicitInset: number
   const canvas = context.canvas;
   if (canvas === undefined) return 0;
 
-  const rail = canvasOverlayElement(canvas, ".right-info-rail");
+  const rail = canvasOverlayElement(canvas, ".slot-panel") ?? canvasOverlayElement(canvas, ".right-info-rail");
   if (rail === null) return 0;
 
   const canvasBounds = canvas.getBoundingClientRect();

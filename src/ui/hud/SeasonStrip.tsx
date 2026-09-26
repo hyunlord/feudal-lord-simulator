@@ -1,3 +1,4 @@
+import { idleWheat } from "./statusPillModel";
 import type { GameState } from "../../engine/engine.types";
 import { eventForecast } from "../../engine/eventSchedule";
 import { arrivalOf, forecastMarks, seasonMarks, yearFraction, type SeasonMarkKind } from "../seasonStrip";
@@ -32,6 +33,7 @@ export function SeasonStripPanel({ state, food, onClose }: {
     <section className="season-strip-panel" aria-label={SEASON_STRIP_COPY.listTitle}>
       <p className="season-strip-food" data-food-until={food.untilTick ?? ""}>{food.days === null || until === null ? SEASON_STRIP_COPY.foodNone
         : SEASON_STRIP_COPY.foodUntil(food.days, until.season, until.third, until.nextYear)}</p>
+      {idleWheat(state) > 0 ? <p className="season-strip-food season-strip-idle-wheat">{SEASON_STRIP_COPY.idleWheat(idleWheat(state))}</p> : null}
       <div className="season-strip-full" style={wave8ImageStyle("season_strip", 300)}>
         {marks.map(mark => <span key={mark.kind} className="season-strip-mark" data-mark={mark.kind}
           style={{ left: `${mark.fraction * 100}%`, ...wave8ImageStyle(MARK_IMAGE[mark.kind], 16) }} />)}

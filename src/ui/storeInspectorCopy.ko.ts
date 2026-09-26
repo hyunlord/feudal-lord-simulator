@@ -7,8 +7,9 @@ export const STORE_INSPECTOR_COPY = {
   capacity: (used: number, capacity: number, incoming: number) => incoming > 0 ? `${used} / ${capacity} · 들어올 몫 ${incoming}` : `${used} / ${capacity}`,
   capacityLabel: "용량",
   acceptsHeading: "받는 품목",
-  /** No per-store item switch in the rules yet (F0-C1 FC10): the chips show what the store takes by rule. */
-  acceptsNote: "품목을 끄고 켜는 규칙은 아직 없습니다 — 지금은 규칙대로 받습니다",
+  /** No per-store item switch in the rules yet (F0-C1 FC10): the chips show what the store takes. UX-0b: the audit read
+   * the old line ("품목을 끄고 켜는 규칙은 아직 없습니다 …") as a developer note. */
+  acceptsNote: "이 저장소는 위 품목을 모두 받습니다",
   stockHeading: "품목별 재고 · 이번 주",
   week: (delta: number | null) => delta === null ? "기록 중" : delta > 0 ? `+${delta}` : delta < 0 ? `−${-delta}` : "0",
   usersHeading: "이 창고를 쓰는 곳",

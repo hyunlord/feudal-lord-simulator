@@ -20,3 +20,15 @@ export function subscribeInputDevice(listener: Listener): () => void {
   listeners.add(listener);
   return () => { listeners.delete(listener); };
 }
+
+// UX-0b: when the player last pressed anything (the map or a control), so a modal that opens on its own (the season
+// ledger card) waits for a press in flight instead of swallowing it. Only the time is kept; nothing reaches the game.
+let lastPress = Number.NEGATIVE_INFINITY;
+export function lastPressAt(): number { return lastPress; }
+
+/** Records every pointer press on the page (capture phase). Returns the unbind. */
+export function bindPressClock(target: Pick<Window, "addEventListener" | "removeEventListener"> = window, now: () => number = () => performance.now()): () => void {
+  const note = () => { lastPress = now(); };
+  target.addEventListener("pointerdown", note, true);
+  return () => target.removeEventListener("pointerdown", note, true);
+}

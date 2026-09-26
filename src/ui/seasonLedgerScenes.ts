@@ -1,3 +1,4 @@
+import { operationSuspended, type Building } from "../content/buildingConfig";
 import { DEARTH_REHEARSAL_EVENT_ID, GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
 import type { GameState } from "../engine/engine.types";
 import { history } from "../engine/history";
@@ -70,18 +71,24 @@ function recordValue(record: HistoryRecord, templates: ReadonlyMap<string, numbe
 
 /** How much a change of one unit weighs among the numbers (people count more than a sack; UI-3). */
 const NUMBER_WEIGHT = { population: 10, bread: 1, wheat: 1, timber: 1, stone: 1, coin: 1 } as const;
-function numberScenes(ledger: SeasonLedger): readonly (SeasonScene & { readonly weight: number })[] {
+/**
+ * UX-0b: a number only names a scene when the scene is true of it (the cold start audit read "빵 부족 −21" for the
+ * opening loaves carried into larders, "목재 부족 −50" for timber spent on a mill, "비축 충분 +473" for wheat no mill
+ * could grind and "장날 성황 +2d" with no market). Less bread is a shortage only while people are lost; spent timber
+ * or stone is no scene; wheat is a reserve only while a mill grinds; a money turn is a market day only with a market.
+ */
+function numberScenes(ledger: SeasonLedger, buildings: readonly Pick<Building, "kind" | "operationPaused" | "upkeepUnpaid">[]): readonly (SeasonScene & { readonly weight: number })[] {
   const copy = SEASON_LEDGER_COPY; const scenes: (SeasonScene & { weight: number })[] = [];
   const add = (delta: number, key: keyof typeof NUMBER_WEIGHT, up: SeasonSceneId | null, down: SeasonSceneId | null) => {
     const id = delta > 0 ? up : delta < 0 ? down : null;
     if (id !== null) scenes.push({ id, value: key === "coin" ? copy.pence(copy.signed(Math.round(delta))) : copy.signed(Math.round(delta)), weight: Math.abs(delta) * NUMBER_WEIGHT[key] });
   };
+  const grinds = buildings.some(building => building.kind === "mill" && !operationSuspended(building));
+  const market = buildings.some(building => building.kind === "market");
   add(ledger.popDelta, "population", "population_up", "population_down");
-  add(ledger.stockDelta.bread, "bread", "bread_reserve", "bread_shortage");
-  add(ledger.stockDelta.wheat, "wheat", "bread_reserve", null);
-  add(ledger.stockDelta.timber, "timber", null, "timber_shortage");
-  add(ledger.stockDelta.stone, "stone", null, "stone_shortage");
-  add(ledger.income - ledger.expense, "coin", "market_busy", "market_quiet");
+  add(ledger.stockDelta.bread, "bread", "bread_reserve", ledger.popDelta < 0 ? "bread_shortage" : null);
+  add(ledger.stockDelta.wheat, "wheat", grinds ? "bread_reserve" : null, null);
+  if (market) add(ledger.income - ledger.expense, "coin", "market_busy", "market_quiet");
   if (ledger.notableEvents.some(event => event.kind === "first_winter_warning")) scenes.push({ id: "hungry_gap", value: null, weight: 0.5 });
   return scenes.sort((a, b) => b.weight - a.weight);
 }
@@ -89,7 +96,7 @@ function numberScenes(ledger: SeasonLedger): readonly (SeasonScene & { readonly 
 export const SEASON_SCENES = 3;
 
 /** The closed season's three scenes: its weightiest ledger records, then its numbers. */
-export function seasonLedgerScenes(state: Pick<GameState, "history">, ledger: SeasonLedger, previous: SeasonLedger | undefined): readonly SeasonScene[] {
+export function seasonLedgerScenes(state: Pick<GameState, "history"> & Partial<Pick<GameState, "buildings">>, ledger: SeasonLedger, previous: SeasonLedger | undefined): readonly SeasonScene[] {
   // Records written when the season before closed carry its last tick: start after it.
   const from = previous === undefined ? ledger.startTick : previous.endTick + 1;
   const records = history.query(state, { severity: 1, range: { from, to: ledger.endTick } })
@@ -104,6 +111,6 @@ export function seasonLedgerScenes(state: Pick<GameState, "history">, ledger: Se
     if (seen.has(id)) continue;
     seen.add(id); scenes.push({ id, value: recordValue(record, templates) });
   }
-  for (const scene of numberScenes(ledger)) if (!seen.has(scene.id)) { seen.add(scene.id); scenes.push({ id: scene.id, value: scene.value }); }
+  for (const scene of numberScenes(ledger, state.buildings ?? [])) if (!seen.has(scene.id)) { seen.add(scene.id); scenes.push({ id: scene.id, value: scene.value }); }
   return scenes.slice(0, SEASON_SCENES);
 }

@@ -19,5 +19,7 @@ export const SEASON_STRIP_COPY = {
   foodUntil: (days: number, season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
     `식량 ${days}일 — ${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}까지`,
   foodNone: "식량 — 먹는 집이 없습니다",
+  /** UX-0b: stored wheat the pill leaves out because no mill can grind it now. */
+  idleWheat: (wheat: number) => `밀 ${wheat}은 방앗간이 멈춰 빵이 되지 않습니다`,
   now: "지금",
 } as const;

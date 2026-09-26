@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
-import { foodDays, statusPillModel } from "../src/ui/hud/statusPillModel";
+import { foodDays, idleWheat, statusPillModel } from "../src/ui/hud/statusPillModel";
 import { HUD_COPY } from "../src/ui/hud/hudCopy.ko";
 import { SEASON_STRIP_COPY } from "../src/ui/seasonStripCopy.ko";
 import { arrivalOf } from "../src/ui/seasonStrip";
@@ -29,7 +29,25 @@ test("bread on carts, in mills or in barns is not stored food; wheat in a store 
   const mill = { ...granary, id: "mill-x", kind: "mill" as const, inventory: { bread: 20 } };
   assert.equal(foodDays({ ...carting, buildings: [...carting.buildings, mill] }), 0);
   const wheat = { ...empty, inventory: { wheat: 60 } };
-  assert.equal(foodDays({ ...carting, buildings: [...others, wheat] }), 270, "60 wheat = 30 bread");
+  const working = { ...granary, id: "mill-y", kind: "mill" as const, inventory: {} };
+  assert.equal(foodDays({ ...carting, buildings: [...others, wheat, working] }), 270, "60 wheat = 30 bread while a mill works");
+});
+
+test("UX-0b: wheat no mill can grind is not food — no mill, or the only mill stopped for unpaid upkeep", () => {
+  const granary = DEFAULT_GAME_STATE.buildings.find(building => building.kind === "granary")!;
+  const others = DEFAULT_GAME_STATE.buildings.filter(building => building !== granary);
+  const wheat = { ...granary, inventory: { wheat: 60 } };
+  const noMill = { ...DEFAULT_GAME_STATE, buildings: [...others, wheat] };
+  assert.equal(foodDays(noMill), 0);
+  assert.equal(idleWheat(noMill), 60);
+  const unpaid = { ...granary, id: "mill-z", kind: "mill" as const, inventory: {}, upkeepUnpaid: true as const };
+  const stopped = { ...noMill, buildings: [...noMill.buildings, unpaid] };
+  assert.equal(foodDays(stopped), 0);
+  assert.equal(SEASON_STRIP_COPY.idleWheat(idleWheat(stopped)), "밀 60은 방앗간이 멈춰 빵이 되지 않습니다");
+  const { upkeepUnpaid: _paid, ...working } = unpaid;
+  const running = { ...stopped, buildings: [...noMill.buildings, working] };
+  assert.equal(foodDays(running), 270);
+  assert.equal(idleWheat(running), 0);
 });
 
 test("money reads as pennies everywhere the HUD shows it", () => {

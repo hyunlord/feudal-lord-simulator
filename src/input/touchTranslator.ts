@@ -50,7 +50,9 @@ const PREVENT: Outcome = { preventDefault: true };
 type Mode =
   | { readonly kind: "idle" }
   | { readonly kind: "one"; readonly start: TouchPoint; last: TouchPoint; moved: boolean; timer: number | null; inspected: boolean }
-  | { readonly kind: "place"; last: TouchPoint }
+  // UX-0b: a tap leaves the ghost where the finger touched (the audit's tap on the marked spot + ✓ built 80 px above
+  // it, off the mark); only a drag lifts the ghost PLACE_OFFSET_PX above the finger so the finger does not hide it.
+  | { readonly kind: "place"; readonly start: TouchPoint; last: TouchPoint; moved: boolean }
   | { readonly kind: "two"; readonly startedAt: number; readonly startMid: Point; readonly startDistance: number; mid: Point; distance: number; moved: boolean;
       /** The second finger dropped a one-finger press: that is the whole gesture, lifting both is no cancel tap. */
       readonly droppedPress: boolean };
@@ -87,7 +89,7 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
       }
       if (mode.kind !== "idle") return PREVENT;
       const touch = touches[0] as TouchPoint;
-      if (positioning()) { mode = { kind: "place", last: touch }; context.mouse.pointerMove(above(touch)); lastTap = null; return PREVENT; }
+      if (positioning()) { mode = { kind: "place", start: touch, last: touch, moved: false }; context.mouse.pointerMove(touch); lastTap = null; return PREVENT; }
       const double = lastTap !== null && now() - lastTap.at <= DOUBLE_TAP_MS
         && Math.hypot(lastTap.point.clientX - touch.clientX, lastTap.point.clientY - touch.clientY) <= TAP_SLOP * 2;
       context.mouse.pointerDown({ button: 0, clientX: touch.clientX, clientY: touch.clientY, detail: double ? 2 : 1 });
@@ -109,7 +111,8 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
       if (mode.kind === "place" && touches.length === 1) {
         const touch = touches[0] as TouchPoint;
         mode.last = touch;
-        if (touch.covered !== true) context.mouse.pointerMove(above(touch));
+        if (!mode.moved && Math.hypot(touch.clientX - mode.start.clientX, touch.clientY - mode.start.clientY) > TAP_SLOP) mode.moved = true;
+        if (touch.covered !== true) context.mouse.pointerMove(mode.moved ? above(touch) : touch);
         return PREVENT;
       }
       if (mode.kind === "one" && touches.length === 1) {
@@ -137,7 +140,7 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
         if (remaining > 0) return PREVENT;
         const ended = mode;
         mode = { kind: "idle" };
-        context.emit({ kind: "select", world: canvasToWorld(local(above(ended.last)), context.camera()) });
+        context.emit({ kind: "select", world: canvasToWorld(local(ended.moved ? above(ended.last) : ended.last), context.camera()) });
         return PREVENT;
       }
       if (mode.kind === "one") {

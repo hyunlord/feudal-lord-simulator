@@ -103,12 +103,13 @@ test("desktop ledger lays primary and secondary facts across columns instead of 
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*?\.court-ledger\s*\{[\s\S]*?height:\s*auto;/);
 });
 
-test("a valid onboarding region is one quiet field instead of a tile grid", () => {
+test("a valid onboarding region is one field with an outline, not a tile grid, and its origin diamond (UX-0b)", () => {
   const calls: string[] = [];
+  let moves = 0;
   const context = {
     canvas: { clientWidth: 1280, clientHeight: 720 }, fillStyle: "", font: "",
     lineWidth: 0, lineJoin: "miter", lineCap: "butt",
-    beginPath: () => calls.push("beginPath"), moveTo: () => undefined,
+    beginPath: () => calls.push("beginPath"), moveTo: () => { moves += 1; },
     lineTo: () => undefined, closePath: () => undefined,
     fill: () => calls.push("fill"), stroke: () => calls.push("stroke"),
     measureText: () => ({ width: 80 }), fillRect: () => calls.push("fillRect"),
@@ -124,8 +125,11 @@ test("a valid onboarding region is one quiet field instead of a tile grid", () =
     zoom: 1,
   });
 
-  assert.equal(calls.filter((call) => call === "fill").length, 1);
-  assert.equal(calls.filter((call) => call === "stroke").length, 0);
+  // UX-0b: the 12 % wash alone vanished on forest (the granary step showed no mark). One wash, one outline stroke (the
+  // L of three tiles has 8 outer edges, the 2 shared ones are not drawn), then the origin diamond (fill, gold, ink).
+  assert.equal(calls.filter((call) => call === "fill").length, 2);
+  assert.equal(calls.filter((call) => call === "stroke").length, 3);
+  assert.equal(moves, 3 + 8 + 1, "three wash diamonds, eight outline edges, one origin diamond");
   assert.equal(calls.filter((call) => call === "fillRect").length, 1);
   assert.equal(calls.filter((call) => call === "fillText").length, 1);
 });

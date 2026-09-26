@@ -3,6 +3,8 @@ import { firstWinterWarningActive } from "../../engine/seasonPressure";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GameState } from "../../engine/engine.types";
 import { canProclaimPalisadeEra } from "../../engine/era";
+import { isBuildingUnlocked } from "../../world/placement";
+import { alertStackRows } from "../alertStackModel";
 import { getSettlementView } from "../../engine/settlementView";
 import type { WorldPoint } from "../../input/inputIntent";
 import { platformServices } from "../../platform/platform";
@@ -45,16 +47,16 @@ type Transition = { readonly id: string; readonly title: string; readonly alread
 type StepCopyKey = keyof typeof TUTORIAL_COPY.cards;
 const COPY_KEY: Readonly<Record<TutorialStepId, StepCopyKey>> = {
   greet: "greet", well: "well", well_done: "wellDone", house: "house", road: "road", arable: "arable",
-  arable_limits: "arableLimits", food_chain: "foodChain", granary: "granary", zone_unlock: "zoneUnlock",
+  arable_limits: "arableLimits", food_chain: "foodChain", sawmill: "sawmill", zone_unlock: "zoneUnlock",
   burgage: "burgage", burgage_done: "burgageDone", wrap_up: "wrapUp",
 };
 const ADVISOR_KEY: Partial<Record<TutorialStepId, keyof typeof TUTORIAL_COPY.advisor>> = {
-  greet: "greet", well: "well", well_done: "wellDone", house: "house", arable: "arable", granary: "granary",
+  greet: "greet", well: "well", well_done: "wellDone", house: "house", arable: "arable", sawmill: "sawmill",
   zone_unlock: "zoneUnlock", burgage_done: "burgageDone", wrap_up: "wrapUp",
 };
 /** UX-2: the tone of each steward line (the portrait's expression): praise → success, a limit or a shortage → concern. */
 const ADVISOR_TONE: Readonly<Record<keyof typeof TUTORIAL_COPY.advisor, StewardTone>> = {
-  greet: "neutral", well: "neutral", wellDone: "success", house: "neutral", arable: "concern", granary: "concern",
+  greet: "neutral", well: "neutral", wellDone: "success", house: "neutral", arable: "concern", sawmill: "neutral",
   zoneUnlock: "neutral", burgageDone: "success", wrapUp: "success",
 };
 
@@ -74,7 +76,7 @@ function ctaLabel(id: TutorialStepId, action: TutorialAction | null): string | n
 /** Whether the state is a fresh new game (nothing placed, no zone, no tick): only then may a missing record start the tutorial. */
 export function isFreshGame(state: GameState): boolean {
   return state.tick === 0 && (state.zones ?? []).length === 0 && state.constructionSites.length === 0
-    && (["well", "house", "granary", "farmstead", "mill"] as const).every(kind => newCount(state, kind) === 0);
+    && (["well", "house", "granary", "farmstead", "mill", "sawmill"] as const).every(kind => newCount(state, kind) === 0);
 }
 
 export type TutorialController = {
@@ -194,7 +196,6 @@ export function useTutorialController(input: {
       case "armZone":
         input.setLayer(next.target === "arable" ? "direct" : "zone");
         emit({ kind: "toolSelect", toolId: `zone:${next.target}` });
-        if (next.target === "arable") openCategory("trade");
         requestPulse(`zone:${next.target}`);
         return;
       case "place": {
@@ -241,9 +242,12 @@ export function useTutorialController(input: {
   const leanSeason = stepId === null && firstWinterWarningActive(state);
   // UI-4: a coming fire, dearth or famine (the forecast ladder) is the steward's line once the tutorial is done.
   const forecast = stepId === null && !leanSeason ? forecastStewardLine(state) : null;
+  // UX-0b: otherwise the most urgent crisis row (a stopped mill, a house without bread …) is.
+  const crisis = stepId === null && !leanSeason && forecast === null ? crisisStewardLine(state) : null;
   const advisor = advisorKey !== null && dismissedAdvisor !== stepId ? { text: TUTORIAL_COPY.advisor[advisorKey], key: stepId!, tone: ADVISOR_TONE[advisorKey] }
     : leanSeason && dismissedAdvisor !== "lean_season" ? { text: TUTORIAL_COPY.leanSeason.steward, key: "lean_season", tone: "concern" as const }
-    : forecast !== null && dismissedAdvisor !== forecast.key ? { text: forecast.text, key: forecast.key, tone: "concern" as const } : null;
+    : forecast !== null && dismissedAdvisor !== forecast.key ? { text: forecast.text, key: forecast.key, tone: "concern" as const }
+    : crisis !== null && dismissedAdvisor !== crisis.key ? { text: crisis.text, key: crisis.key, tone: "concern" as const } : null;
 
   return {
     enabled, running, access,
@@ -254,7 +258,7 @@ export function useTutorialController(input: {
     pulse, openRequest,
     press,
     lookAt: () => { if (target !== null) emit({ kind: "lookAt", tile: target.focus }); },
-    dismissAdvisor: () => setDismissedAdvisor(stepId ?? (leanSeason ? "lean_season" : forecast?.key ?? null)),
+    dismissAdvisor: () => setDismissedAdvisor(stepId ?? (leanSeason ? "lean_season" : forecast?.key ?? crisis?.key ?? null)),
     startNewGame: (on, fresh) => {
       if (fresh !== null && !isFreshGame(fresh)) return;
       setRecord({ enabled: on, acks: [], pulsed: [], log: [] });
@@ -264,7 +268,13 @@ export function useTutorialController(input: {
   };
 }
 
-/** Goal cards when no tutorial step is current: the settlement goal, and the market / chapel suggestion. */
+/** The steward's line for the most urgent crisis row (immediate rows sort first), keyed so a dismissal holds per row. */
+function crisisStewardLine(state: GameState): { readonly text: string; readonly key: string } | null {
+  const row = alertStackRows(state)[0];
+  return row === undefined ? null : { text: TUTORIAL_COPY.crisisSteward(row.title, row.cause), key: `crisis:${row.id}` };
+}
+
+/** Goal cards when no tutorial step is current: the settlement goal, and the chapel / market suggestion. */
 function generalCards(state: GameState, tutorialRan: boolean, selectedTool: PlacementTool | null): { readonly cards: readonly GoalCard[]; readonly actions: ReadonlyMap<string, TutorialAction> } {
   const cards: GoalCard[] = []; const actions = new Map<string, TutorialAction>();
   const view = getSettlementView(state);
@@ -275,8 +285,10 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
       ctaLabel: TUTORIAL_COPY.generalCard.cta, status: "active", help: humanizeTicks(goal.description), hasTarget: false });
   }
   if (tutorialRan) {
-    const missing = (["market", "chapel"] as const).filter(kind => placedCount(state, kind) === 0);
-    const kind = missing[0];
+    // UX-0b: the chapel first, and never a building the era has not opened (the market waits for the market-town
+    // proclamation; the audit's "시장 놓기" armed a locked market).
+    const missing = (["chapel", "market"] as const).filter(kind => placedCount(state, kind) === 0);
+    const kind = missing.find(candidate => isBuildingUnlocked(candidate, state.era, state.scenarioId));
     if (kind !== undefined) {
       const spot = suggestedBuildingSpot(state, kind);
       const nextAction: TutorialAction = selectedTool === kind && spot !== null ? { kind: "place", tool: kind, tile: spot } : { kind: "arm", tool: kind };

@@ -43,7 +43,11 @@ function eventLine(state: Pick<GameState, "scenarioId">, event: SeasonLedger["no
   }
 }
 
-export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenarioId" | "history">): SeasonLedgerCardModel | null {
+/** Scenes that say the season went badly: with any of them (or fewer people) it was no quiet season. */
+const TROUBLE: ReadonlySet<SeasonSceneId> = new Set(["population_down", "household_departure", "house_hungry", "bread_shortage", "timber_shortage",
+  "stone_shortage", "construction_blocked", "fire", "poor_harvest", "great_famine", "market_quiet", "hungry_gap"]);
+
+export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenarioId" | "history"> & Partial<Pick<GameState, "buildings">>): SeasonLedgerCardModel | null {
   const history = state.seasons?.history ?? [];
   const ledger = history.at(-1);
   if (ledger === undefined) return null;
@@ -59,7 +63,9 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     scenes,
     scenesLine: SEASON_LEDGER_COPY.scenesLine(scenes.map(scene => scene.value === null ? scene.name : `${scene.name} ${scene.value}`)),
     lines: [SEASON_LEDGER_COPY.money(Math.round(ledger.income), Math.round(ledger.expense)), population, stock],
-    events: events.length === 0 ? [SEASON_LEDGER_COPY.quiet] : events,
+    // UX-0b: "큰 일 없이 지나간 계절입니다" only for a calm season (the audit read it beside "인구 줄음 −62%").
+    events: events.length > 0 ? events : ledger.popDelta < 0 ? [SEASON_LEDGER_COPY.populationFell(-ledger.popDelta)]
+      : scenes.some(scene => TROUBLE.has(scene.id)) ? [] : [SEASON_LEDGER_COPY.quiet],
     hint: ledger.nextObjectiveHint === null ? null : { text: SEASON_LEDGER_COPY.hints[ledger.nextObjectiveHint], category: HINT_CATEGORY[ledger.nextObjectiveHint] },
   };
 }

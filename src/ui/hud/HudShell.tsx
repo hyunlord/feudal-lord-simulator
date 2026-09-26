@@ -164,11 +164,12 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         ))}
       </div>
       {tab === "stock" ? (matrix.rows.length === 0 ? <p>{HUD_COPY.ledgerEmpty}</p> : (
-        <table className="ledger-matrix">
-          <thead><tr><th scope="col" />{matrix.stores.map(store => (
+        // UX-0b: at 1280 the store columns pushed the total, the week and the lasts out of the drawer; they come first now.
+        <div className="ledger-matrix-scroll"><table className="ledger-matrix">
+          <thead><tr><th scope="col" /><th scope="col">{HUD_COPY.ledgerTotal}</th><th scope="col">{HUD_COPY.ledgerWeek}</th><th scope="col">{HUD_COPY.ledgerLasts}</th>
+            {matrix.stores.map(store => (
             <th key={store.id} scope="col"><button type="button" className="ledger-store" onClick={() => onInspect(store.id)}>
-              {HUD_COPY.ledgerStore(BUILDING_CONFIG_BY_KIND[store.kind as BuildingKind].name, store.index)}</button></th>))}
-            <th scope="col">{HUD_COPY.ledgerTotal}</th><th scope="col">{HUD_COPY.ledgerWeek}</th><th scope="col">{HUD_COPY.ledgerLasts}</th></tr></thead>
+              {HUD_COPY.ledgerStore(BUILDING_CONFIG_BY_KIND[store.kind as BuildingKind].name, store.index)}</button></th>))}</tr></thead>
           <tbody>{matrix.rows.map(row => {
             const holders = matrix.stores.filter((_store, index) => (row.byStore[index] ?? 0) > 0).map(store => store.id);
             const lit = holders.length > 0 && holders.every(id => highlighted.includes(id)) && highlighted.length === holders.length;
@@ -178,10 +179,10 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
             <tr key={row.resource} data-resource={row.resource} data-lit={lit ? "true" : undefined}>
               <th scope="row"><button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(RESOURCE_NAMES[row.resource])}
                 onClick={() => onHighlight?.(lit ? [] : holders)}>{RESOURCE_NAMES[row.resource]}</button></th>
-              {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}
-              <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td></tr>);
+              <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td>
+              {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}</tr>);
           })}</tbody>
-        </table>)) : null}
+        </table></div>)) : null}
       {/* UI-4 (FC-4): the lord's grants, one line each (the petition's result). */}
       {tab === "stock" && (state.politics?.rights.length ?? 0) > 0 ? <section className="ledger-rights" aria-label={DECISION_COPY.rightsHeading}>
         <h3>{DECISION_COPY.rightsHeading}</h3>

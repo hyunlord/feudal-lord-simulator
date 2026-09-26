@@ -42,6 +42,8 @@ export const SEASON_LEDGER_COPY = {
   },
   eventNames: { fire: "불", dearth: "흉년", great_famine: "대기근" },
   quiet: "큰 일 없이 지나간 계절입니다",
+  /** UX-0b: the season's own loss when no event names it (starvation is not an engine event). */
+  populationFell: (people: number) => `사람이 ${people}명 줄었습니다`,
   hints: {
     food_reserve: "다음: 식량 비축 — 곡창을 채우세요",
     harvest_reserve: "다음: 다음 수확까지 — 경작지를 늘리세요",

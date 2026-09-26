@@ -12,14 +12,17 @@ const [outDir] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
 const url = flags.url ?? 'http://127.0.0.1:4213/';
 const width = Number(flags.width ?? 1280); const height = Number(flags.height ?? 800);
-const STEPS = ['greet', 'well', 'well_done', 'road', 'house', 'arable', 'arable_limits', 'food_chain', 'granary', 'zone_unlock', 'burgage', 'burgage_done', 'wrap_up'];
+// UX-0b: food first (arable, barn and mill inside the year's sowing), then well, road and house; the sawmill replaces the
+// second granary. The trunk before it (the base run) had the UX-1 order: its steps are accepted so its presses count.
+const STEPS = ['greet', 'arable', 'arable_limits', 'food_chain', 'well', 'well_done', 'road', 'house', 'sawmill', 'zone_unlock', 'burgage', 'burgage_done', 'wrap_up'];
+const BASE_ONLY_STEPS = ['granary'];
 
 // Gate 2: what the script (work order section 2, research E) opens at each step, written out independently of the model.
 const OPEN_BY_STEP = (step) => {
   const at = STEPS.indexOf(step);
   const reached = id => at >= STEPS.indexOf(id);
   return {
-    categories: { living: true, paths: true, trade: reached('arable'), storage: reached('granary'), public: false, defense: false },
+    categories: { living: true, paths: true, trade: reached('arable'), storage: reached('zone_unlock'), public: false, defense: false },
     layers: { direct: true, zone: reached('zone_unlock'), direction: false },
   };
 };
@@ -89,7 +92,7 @@ const stepOf = () => page.evaluate(() => document.querySelector('[data-tutorial-
 const rows = []; const seen = new Set(); let presses = 0; let last = null;
 for (let guard = 0; guard < 80; guard += 1) {
   const step = await stepOf();
-  if (step === null || !STEPS.includes(step)) break;
+  if (step === null || (!STEPS.includes(step) && !BASE_ONLY_STEPS.includes(step))) break;
   if (!seen.has(step)) {
     seen.add(step);
     await page.waitForTimeout(400);
@@ -151,7 +154,7 @@ if (AUDIT) {
 const cardsAfter = await page.$$eval('.goal-card', cards => cards.map(card => card.innerText.replace(/\n+/g, ' | ')));
 const remnantCount = [...rows.map(row => row.remnants), ...menuAudit].filter(Boolean)
   .reduce((total, item) => total + item.glyphs.length + item.controls.length + item.dark.length + item.svgs.length, 0);
-const result = { url, viewport: { width, height }, ...(AUDIT ? { remnantCount, menuAudit } : {}), stepsCompleted: rows.length, allSteps: STEPS.every(step => seen.has(step)), locksMatch: rows.every(row => row.locksMatch), presses, seconds: Math.round((Date.now() - startedAt) / 1000), rows, state, cardsAfter };
+const result = { url, viewport: { width, height }, ...(AUDIT ? { remnantCount, menuAudit } : {}), stepsCompleted: rows.length, allSteps: STEPS.every(step => seen.has(step)) || (BASE_ONLY_STEPS.every(step => seen.has(step)) && seen.size === STEPS.length), locksMatch: rows.every(row => row.locksMatch), presses, seconds: Math.round((Date.now() - startedAt) / 1000), rows, state, cardsAfter };
 await writeFile(join(outDir, 'replay.json'), JSON.stringify(result, null, 1) + '\n');
 console.log(JSON.stringify({ ...(AUDIT ? { remnantCount } : {}), steps: rows.map(row => row.step), presses, allSteps: result.allSteps, locksMatch: result.locksMatch, mismatched: rows.filter(row => !row.locksMatch).map(row => row.step), state: result.state, cardsAfter }, null, 1));
 await browser.close();

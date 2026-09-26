@@ -53,10 +53,11 @@ const touchDevice = (page, cdp) => {
     drag: (a, b) => oneFinger(a, b, 8),
     // Taps are spaced past the double-tap window (350 ms): two taps on one tile are two taps, not a double tap.
     tap: async p => { await send('touchStart', [p]); await send('touchEnd', []); await page.waitForTimeout(400); },
-    // UX-3R2 tablet placement: the ghost sits 80 px above the finger and ✓ builds; the mouse clicks the tile itself.
+    // UX-3R2 tablet placement: ✓ builds. UX-0b: a tap leaves the ghost under the finger (only a drag lifts it 80 px), so
+    // the finger taps the tile the mouse clicks.
     place: async p => {
       if (await page.locator('canvas[data-line-tools="click-click"]').count() === 0) { await touchDevice(page, cdp).tap(p); return; }
-      await touchDevice(page, cdp).tap({ x: p.x, y: p.y + 80 });
+      await touchDevice(page, cdp).tap({ x: p.x, y: p.y });
       await touchDevice(page, cdp).press(page.locator('.placement-confirm-button[data-confirm="ok"]'));
     },
     press: async locator => { const box = await locator.boundingBox(); await touchDevice(page, cdp).tap({ x: box.x + box.width / 2, y: box.y + box.height / 2 }); },

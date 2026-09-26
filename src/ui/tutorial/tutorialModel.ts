@@ -11,7 +11,11 @@ import type { ZoneStroke } from "../../zones/zone.types";
 import { ONBOARDING_ARABLE_CELLS } from "../onboardingBuildingTaskProgress";
 
 // UX-1 first-session tutorial (research E "첫 세션 대본 0~15분", work order UX-1 section 2): thirteen steps in a fixed
-// order. Pure and derived: a step is done when its game-state predicate holds (a new well, a house on a road, an
+// order. UX-0b (cold start audit v2): food comes first — the arable, the barn and the mill are placed while the year's
+// sowing is still open (a barn after about in-year tick 1300 gets no 1300 crop, and a mill that stands a year without
+// wheat cannot pay its upkeep from a 0d treasury: the audit town starved to nothing in 1301); the well, road and house
+// follow; the sawmill replaces the second granary (the old script left 20 timber, below the sawmill's 30, and timber
+// only comes from sawmills). Pure and derived: a step is done when its game-state predicate holds (a new well, a house on a road, an
 // arable zone ...), or, for the steps that only explain something, when the player acknowledged it. Acknowledgements
 // live in the platform preferences (tutorialStore.ts), not in the save; a later step's predicate also closes every
 // earlier acknowledgement, so a save loaded elsewhere resumes on the same card (gate 3).
@@ -23,12 +27,12 @@ import { ONBOARDING_ARABLE_CELLS } from "../onboardingBuildingTaskProgress";
 //    same input intents a click or a drag sends (gate 1: the whole script plays by pressing the card buttons only).
 
 export type TutorialStepId =
-  | "greet" | "well" | "well_done" | "road" | "house" | "arable" | "arable_limits"
-  | "food_chain" | "granary" | "zone_unlock" | "burgage" | "burgage_done" | "wrap_up";
+  | "greet" | "arable" | "arable_limits" | "food_chain" | "well" | "well_done" | "road" | "house"
+  | "sawmill" | "zone_unlock" | "burgage" | "burgage_done" | "wrap_up";
 
 export const TUTORIAL_STEP_IDS = [
-  "greet", "well", "well_done", "road", "house", "arable", "arable_limits",
-  "food_chain", "granary", "zone_unlock", "burgage", "burgage_done", "wrap_up",
+  "greet", "arable", "arable_limits", "food_chain", "well", "well_done", "road", "house",
+  "sawmill", "zone_unlock", "burgage", "burgage_done", "wrap_up",
 ] as const satisfies readonly TutorialStepId[];
 
 /** Steps that close by an acknowledgement (their card button), not by a game-state predicate. */
@@ -102,7 +106,7 @@ function stepPredicate(id: TutorialStepId): ((state: GameState) => boolean) | nu
     case "house": return state => newHouses(state).length >= 1;
     case "arable": return state => zoneCells(state, "arable") >= ONBOARDING_ARABLE_CELLS;
     case "food_chain": return state => placedCount(state, "farmstead") >= 1 && placedCount(state, "mill") >= 1;
-    case "granary": return state => newCount(state, "granary") >= 1;
+    case "sawmill": return state => placedCount(state, "sawmill") >= 1;
     case "burgage": return state => zoneCells(state, "burgage") > 0;
     default: return null;
   }
@@ -116,7 +120,7 @@ export function stepProgress(state: GameState, id: TutorialStepId): TutorialProg
     case "house": return { current: Math.min(1, newHouses(state).length), target: 1 };
     case "arable": return { current: Math.min(ONBOARDING_ARABLE_CELLS, zoneCells(state, "arable")), target: ONBOARDING_ARABLE_CELLS };
     case "food_chain": return { current: Math.min(1, placedCount(state, "farmstead")) + Math.min(1, placedCount(state, "mill")), target: 2 };
-    case "granary": return { current: Math.min(1, newCount(state, "granary")), target: 1 };
+    case "sawmill": return { current: Math.min(1, placedCount(state, "sawmill")), target: 1 };
     case "burgage": return { current: zoneCells(state, "burgage") > 0 ? 1 : 0, target: 1 };
     default: return null;
   }
@@ -164,9 +168,9 @@ const stepAt = (id: TutorialStepId): number => TUTORIAL_STEP_IDS.indexOf(id);
 
 /**
  * What is open at a step index (tutorial on). Direct building of houses, wells and roads from the start; the trade
- * category (the arable brush, then the barn and mill) at the food step; storage (the granary) at the granary step;
- * the zone layer, with plots only, at the zone step; public buildings and the other trade and storage tools when the
- * tutorial ends. Defence opens with the palisade stage (`defenseOpen`: the proclamation is possible or done); the
+ * category (the arable brush, then the barn and mill) at the food step; the sawmill at its step; storage (the granary)
+ * and the zone layer, with plots only, at the zone step; public buildings and the other trade and storage tools when
+ * the tutorial ends. Defence opens with the palisade stage (`defenseOpen`: the proclamation is possible or done); the
  * direction layer stays closed (petitions, P2).
  */
 export function tutorialAccess(enabled: boolean, index: number, defenseOpen = false): TutorialAccess {
@@ -174,10 +178,11 @@ export function tutorialAccess(enabled: boolean, index: number, defenseOpen = fa
   // Finished: everything is open but defence, which waits for the palisade stage (research E: "방어·권리 계속 숨김").
   if (index >= TUTORIAL_STEP_IDS.length) return defenseOpen ? ALL_OPEN : { ...ALL_OPEN, categories: { ...ALL_OPEN.categories, defense: false } };
   const reached = (id: TutorialStepId) => index >= stepAt(id);
-  const trade = reached("arable"); const chain = reached("food_chain"); const storage = reached("granary");
-  const zone = reached("zone_unlock");
+  const trade = reached("arable"); const chain = reached("food_chain"); const zone = reached("zone_unlock");
+  const storage = zone;
   const openTools = new Set<PlacementTool>(["house", "well", "road"]);
   if (chain) { openTools.add("farmstead"); openTools.add("mill"); }
+  if (reached("sawmill")) openTools.add("sawmill");
   if (storage) openTools.add("granary");
   return {
     categories: { living: true, paths: true, trade, storage, public: false, defense: false },
@@ -327,7 +332,7 @@ export function stepAction(state: GameState, id: TutorialStepId, armed: { readon
       if (placedCount(state, "farmstead") === 0) return building("farmstead", suggestedBuildingSpot(state, "farmstead"));
       return building("mill", suggestedBuildingSpot(state, "mill"));
     }
-    case "granary": return building("granary", suggestedBuildingSpot(state, "granary"));
+    case "sawmill": return building("sawmill", suggestedBuildingSpot(state, "sawmill"));
     case "zone_unlock": return { kind: "layer", layer: "zone", step: id };
     case "burgage": {
       if (armed.zone !== "burgage") return { kind: "armZone", target: "burgage" };
@@ -354,7 +359,7 @@ export function stepTarget(state: GameState, id: TutorialStepId, zoneRadius: num
       const kind = placedCount(state, "farmstead") === 0 ? "farmstead" : "mill";
       return single(suggestedBuildingSpot(state, kind), kind);
     }
-    case "granary": return single(suggestedBuildingSpot(state, "granary"), "granary");
+    case "sawmill": return single(suggestedBuildingSpot(state, "sawmill"), "sawmill");
     default: return null;
   }
 }

@@ -39,7 +39,7 @@ test("construction site card model exposes four separate progress rows and an ac
       "4, 7 · 제재소",
       "목재 12/30 확보 · 예약 8",
       "목재 10 남음",
-      "20% · 일꾼 2명 · 약 12초 남음",
+      "20% · 일꾼 2명 · 약 22일 남음",
     ],
   );
   assert.doesNotMatch(JSON.stringify(model), /no_route/);
@@ -189,6 +189,6 @@ test("construction site card model adds material diagnostics when state facts ar
   // Then
   assert.deepEqual(model.rows.at(-1), {
     label: "자재 진단",
-    value: "목재 12/30 · 예약 8 · 창고 북서쪽 8칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 약 2초",
+    value: "목재 12/30 · 예약 8 · 창고 북서쪽 8칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 약 3일",
   });
 });
