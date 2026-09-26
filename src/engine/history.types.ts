@@ -1,7 +1,9 @@
 /**
  * F0-C2 history ledger v0 (spec docs/design/history-ledger.md HL-1…HL-9, design docs/design/CHRONICLE_DESIGN.md §1):
  * the append-only record of the town's story, saved (v15). A record keeps a template id and its parameters; the
- * sentence (`historySummary`) and the date (`historyDate`) are rebuilt from them, so the save stays small.
+ * sentence (`historySummary`) and the date (`historyDate`) are rebuilt from them, so the save stays small. HL-10
+ * (HIST-1): everyday records eight seasons old fold into a season summary (`ledger.rollup`) and old 128² thumbnails
+ * are thinned to one a year; nothing else is ever removed.
  */
 import type { SourceRef } from "../contracts";
 

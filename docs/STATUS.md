@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-26(UX-3R2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -12,6 +12,14 @@
   - 저장소 inspector(용량·받는 품목·품목별 재고와 이번 주·쓰는 곳·위치로), 공사장 첫 줄, 장부 이번 주·버팀·행 강조·열 머리 → inspector.
   - 길 클릭-클릭(한 번 클릭은 그대로, 사슬은 그 위에), 목책 클릭, 태블릿 = 손가락 위 80px 고스트 + 확정 막대.
   - 면적 24/24, 튜토리얼 22 = 22, B9 14/14(새 기준), TOUCH 14/14. 받는 품목 끄고 켜기는 엔진 규칙 대기(FC10).
+
+- **HIST-1 긴 판의 원장 크기 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 원장만 · 렌더 0줄, 검증 DGX): [보고서](verification/hist1-ledger-size/REPORT.md), [기록 원장 명세](design/history-ledger.md) HL-10, 결정 HL9·HL10.
+  - 계절이 닫힐 때 8계절 지난 일상 기록을 계절 요약 한 건(`ledger.rollup`: 건수·템플릿별·일상 결정 종류별 명령 수·결산 줄)으로 접고, 축소판은 최근 8계절 + 해마다 겨울 끝 + 시대급만. 큰 결정·사건·이정표·심각도 1 이상·입주는 영구. 저장 v15 그대로.
+  - seed 3 1,200,000틱 원장 847 KB(접지 않으면 2.75 MB), 조회 10종 동일. F0-C2의 멈춘 seed 3 원장은 8.8 MB → 1.5 MB. DGX 전체 회귀·깨끗한 클론 `5a8ed72` 3,035/3,035.
+
+- **BOT-2 가드레일 5/5 되찾기 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 봇만 · 규칙 diff 0 · 렌더 0줄, 검증 DGX): [보고서](verification/bot2-wall/REPORT.md), [복구 명세](design/autoplay-recovery.md) AR-10·AR-11, 결정 BT9·BT10, 새 기준선 [`seeds/baseline-90fb216.json`](../seeds/baseline-90fb216.json).
+  - 성벽 여유(AR-11): 정책보다 적은 필지로 선포할 때 성 안 자유 집 칸 ≥ 남은 필지 × 6 · 길 ≤ 30 %, 없으면 트인 쪽으로 늘인 벽. seed 3 알려진 정지(EV8·FC11) 해소 — 204칸 목책, 296,548틱 L4 24/24.
+  - 통나무 넘침(AR-10)은 F0-C1 복구 그대로, 시나리오 B10 추가. 목책 "확장 선포"는 규칙에 없음(다음 후보). 창고 받는 품목 토글(FC10)은 렌더·UX 몫으로 남음. DGX 전체 회귀·깨끗한 클론 `dba1f47` 3,032/3,032.
 
 - **J1 사용자 판정 네 가지 — 본선 병합**(Claude Code, 렌더·UI·스크립트·대장·테스트·문서만, 엔진 0줄): [보고서](verification/j1-judgements/REPORT.md).
   - 알약 식량은 창고·곡창 저장분만(새 게임 270일은 곡창 빵 30 ÷ 네 집 한 끼 1개로 맞음, 수레 위 빵은 뺌), 날짜 펼침에 "식량 N일 — 겨울 초까지".
@@ -188,7 +196,6 @@
 
 ## 다음 작업
 
-- **BOT-2: 목책 둘레 크기(LB-12) — 필지당 성 안 면적을 넉넉히, 성 안 길 비율 상한. 그리고 통나무 넘침.** 작은 성벽 교착이 F0-A 2회차, F0-B 1회차, F0-C1 1~3회차 seed 3에서 나왔다(결정 EV8·FC11). 통나무가 창고를 채워 채석장이 안 서는 정지(F0-C1 1·2회차 seed 5)는 봇 복구 AR-10(FC9)으로 막았지만, 창고 품목 칸 규칙·받는 품목 토글(FC10 메모)과 함께 BOT-2 범위(사용자 지시). 다음 엔진 작업(F0-C2 끝남).
 
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
