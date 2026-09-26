@@ -1,0 +1,42 @@
+{
+  "url": "http://127.0.0.1:4301/",
+  "raster": "software (--disable-gpu)",
+  "rows": [
+    {
+      "scene": "fixed12",
+      "dpr": 1,
+      "forward": "afa011c0ca6355533d44a9f2c342c65bbbd553cbb92ddc518a00670af72bc632",
+      "reversedInput": "afa011c0ca6355533d44a9f2c342c65bbbd553cbb92ddc518a00670af72bc632",
+      "secondPage": "afa011c0ca6355533d44a9f2c342c65bbbd553cbb92ddc518a00670af72bc632",
+      "identical": true,
+      "sceneBuildsAfterReverse": 2
+    },
+    {
+      "scene": "fixed12",
+      "dpr": 2,
+      "forward": "c1396f17e3aeb64738dc78e6fff9867266910624e56cec552ec31f4299235ae2",
+      "reversedInput": "c1396f17e3aeb64738dc78e6fff9867266910624e56cec552ec31f4299235ae2",
+      "secondPage": "c1396f17e3aeb64738dc78e6fff9867266910624e56cec552ec31f4299235ae2",
+      "identical": true,
+      "sceneBuildsAfterReverse": 2
+    },
+    {
+      "scene": "seed2-town",
+      "dpr": 1,
+      "forward": "4e5786b33cc0d047a36e6425220c005ef094e00e4a84b1e362aecff87bdeefac",
+      "reversedInput": "4e5786b33cc0d047a36e6425220c005ef094e00e4a84b1e362aecff87bdeefac",
+      "secondPage": "4e5786b33cc0d047a36e6425220c005ef094e00e4a84b1e362aecff87bdeefac",
+      "identical": true,
+      "sceneBuildsAfterReverse": 2
+    },
+    {
+      "scene": "seed2-town",
+      "dpr": 2,
+      "forward": "0260139dd8d543788a2be261cbfa99579478fac052cdd1f29f3b613bbb46ba06",
+      "reversedInput": "0260139dd8d543788a2be261cbfa99579478fac052cdd1f29f3b613bbb46ba06",
+      "secondPage": "0260139dd8d543788a2be261cbfa99579478fac052cdd1f29f3b613bbb46ba06",
+      "identical": true,
+      "sceneBuildsAfterReverse": 2
+    }
+  ]
+}

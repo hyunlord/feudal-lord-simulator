@@ -1,0 +1,86 @@
+{
+ "url": "http://127.0.0.1:4301/",
+ "errors": [],
+ "seasons": {
+  "spring-z1.0": {
+   "ready": true,
+   "tick": 600
+  },
+  "spring-z0.6": {
+   "ready": true,
+   "tick": 600
+  },
+  "summer-z1.0": {
+   "ready": true,
+   "tick": 1600
+  },
+  "summer-z0.6": {
+   "ready": true,
+   "tick": 1600
+  },
+  "autumn-z1.0": {
+   "ready": true,
+   "tick": 2600
+  },
+  "autumn-z0.6": {
+   "ready": true,
+   "tick": 2600
+  },
+  "winter-z1.0": {
+   "ready": true,
+   "tick": 3600
+  },
+  "winter-z0.6": {
+   "ready": true,
+   "tick": 3600
+  }
+ },
+ "closeups": {
+  "winter-ground": {
+   "state": "season-winter"
+  },
+  "spring-orchard": {
+   "state": "season-spring"
+  }
+ },
+ "fx": {
+  "leaves": {
+   "state": "fx-leaves"
+  },
+  "snow": {
+   "state": "fx-snow"
+  }
+ },
+ "turns": {
+  "autumn-winter": {
+   "frames": 145,
+   "turnFrame": 29,
+   "ticks": [
+    2975,
+    3002
+   ],
+   "totalChange": 529440,
+   "largestStepShare": 0.163,
+   "largestStepAt": 3,
+   "framesWithEmptyGround": 0,
+   "fades": 71,
+   "deferredContent": 21,
+   "noFlicker": true
+  },
+  "winter-spring": {
+   "frames": 150,
+   "turnFrame": 33,
+   "ticks": [
+    3975,
+    4001
+   ],
+   "totalChange": 906658,
+   "largestStepShare": 0.085,
+   "largestStepAt": 3,
+   "framesWithEmptyGround": 0,
+   "fades": 71,
+   "deferredContent": 17,
+   "noFlicker": true
+  }
+ }
+}

@@ -1,11 +1,16 @@
 # 현재 상태
 
-갱신: 2026-09-27(UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(INSTALL-15 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **INSTALL-15 계절 자연(Wave 15) — 관문 ①~⑤ 통과, ⑥ 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·에셋·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [계절 자연 명세](design/seasonal-nature.md) I15-1~3, [보고서](verification/install15/REPORT.md), 결정 I15-D1~D7.
+  - 나무·덤불·그루터기·과수·풀밭·숲 가장자리·목초지·겨울 밭이 사계절 그림으로 바뀐다(65장). 청크 키에 계절이 들어 있고, 여름 키는 그대로다.
+  - 전환: 땅은 1.5초 8단계 섞기, 물체와 지붕 눈은 물결로 바뀐다. 다음 계절 청크는 10초 전부터 미리 그린다. 5배속은 즉시다.
+  - 봄 들꽃·꽃잎, 겨울 언 웅덩이·눈더미, 가을 낙엽·겨울 첫눈. C25 판은 16장(계절 4 더함)이다.
 
 - **UI-4b 계절 결산 세 장면을 원장에서(Wave 19) — 관문 통과, 사용자 판정 대기, 본선 병합**(Claude Code, UI·스타일·에셋·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [UI-4 명세](design/events-decisions-chronicle-ui.md) UI4-8, [보고서](verification/ui4b/REPORT.md), 결정 UI4-D7·D8.
   - 결산 카드 3칸은 그 계절 원장 기록(`history.query`, 심각도 상위)을 Wave 19 결산 장면 아이콘 24개로 보인다. 조용한 계절은 계절 숫자로 채운다. 이름은 제목 아래 한 줄이다.
