@@ -33,6 +33,7 @@ import { decodeSnapshot, rasterizeSnapshot } from "./historySnapshot";
 import { famineShortHouses } from "./eventSchedule";
 import { housingLotCount } from "../population/housing";
 import type { SourceRef } from "../contracts";
+import type { Person } from "./persons.types";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const TOWN: ActorRef = { type: "town", id: "town" };
@@ -152,17 +153,29 @@ function eventCause(eventId: string, defId: string): SourceRef {
   return { type: "event", id: eventId, detail: defId };
 }
 
-/** HL-2 ⑤: a household's life between two states. */
+/**
+ * HL-2 ⑤: a household's life between two states. PERSON-0 (PS-8): with persons, a household's record is the
+ * head's (subject the head, the household an actor), and each person's own life is recorded from the persons that
+ * appear, go or change — born, married (a household formed), a relative arrived, came of age, took a trade, chosen
+ * reeve, a new steward, died (with the cause), left the town.
+ */
 function personDrafts(before: GameState, after: GameState): Draft[] {
   const previous = new Map(before.houses.map(house => [house.buildingId, house]));
   const buildings = new Map(after.buildings.map(building => [building.id, building]));
+  const heads = new Map<string, string>();
+  for (const person of [...(before.persons?.people ?? []), ...(after.persons?.people ?? [])]) if (person.role === "head") heads.set(person.householdId, person.id);
   const drafts: Draft[] = [];
+  const placeOf = (householdId: string) => {
+    const building = buildings.get(householdId);
+    return building === undefined ? {} : { place: { tx: building.tx, ty: building.ty, buildingId: building.id } };
+  };
   for (const house of after.houses) {
     const old = previous.get(house.buildingId);
     if (old === undefined) continue;
-    const building = buildings.get(house.buildingId);
-    const base = { tick: after.tick, kind: "person" as const, subject: { type: "household" as const, id: house.buildingId },
-      ...(building === undefined ? {} : { place: { tx: building.tx, ty: building.ty, buildingId: building.id } }) };
+    const household = { type: "household" as const, id: house.buildingId };
+    const head = heads.get(house.buildingId);
+    const base = { tick: after.tick, kind: "person" as const, ...placeOf(house.buildingId),
+      ...(head === undefined ? { subject: household } : { subject: { type: "person" as const, id: head }, actors: [household] }) };
     const push = (template: string, severity: HistorySeverity, extra: Partial<Draft> = {}) => drafts.push({ ...base, template, severity, ...extra });
     if (house.burntTick !== undefined && old.burntTick === undefined) {
       push("person.burnt", 1, house.burntByEventId === undefined ? {} : { cause: eventCause(house.burntByEventId, house.burntByEventId.split("@")[0] ?? "fire") });
@@ -180,8 +193,39 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
     if (house.foodShortSinceTick !== undefined && old.foodShortSinceTick === undefined) push("person.hungry", 0);
     if (house.foodShortSinceTick === undefined && old.foodShortSinceTick !== undefined && house.abandonedTick === undefined) push("person.fed", 0);
     if (house.hasWater !== old.hasWater) push(house.hasWater ? "person.water" : "person.water_lost", 0);
-    if (old.residents > 0 && house.residents > old.residents) push("person.grew", 0, { params: { residents: house.residents } });
-    if (house.residents > 0 && house.residents < old.residents) push("person.shrank", 0, { params: { residents: house.residents } });
+    // Without persons (a town before save v16's first tick) the household's size is its own line.
+    if (after.persons === undefined) {
+      if (old.residents > 0 && house.residents > old.residents) push("person.grew", 0, { params: { residents: house.residents } });
+      if (house.residents > 0 && house.residents < old.residents) push("person.shrank", 0, { params: { residents: house.residents } });
+    }
+  }
+  if (before.persons === undefined || after.persons === undefined || before.persons === after.persons) return drafts;
+  const year = calendar(after.tick, scenarioOf(after).startYear).year;
+  const beforeYear = calendar(before.tick, scenarioOf(before).startYear).year;
+  const was = new Map(before.persons.people.map(person => [person.id, person]));
+  const now = new Map(after.persons.people.map(person => [person.id, person]));
+  const personRecord = (person: Person, template: string, severity: HistorySeverity, params?: Readonly<Record<string, number | string>>) => drafts.push({
+    tick: after.tick, kind: "person", template, severity, subject: { type: "person", id: person.id },
+    ...(person.householdId === "manor" ? {} : { actors: [{ type: "household", id: person.householdId }] }), ...placeOf(person.householdId),
+    ...(params === undefined ? {} : { params }) });
+  for (const person of after.persons.people) {
+    const old = was.get(person.id);
+    if (old === undefined) {
+      if (person.role === "child" && person.birthYear === year) personRecord(person, "person.born", 0);
+      else if (person.role === "spouse") personRecord(person, "person.married", 0);
+      else if (person.role === "kin") personRecord(person, "person.arrived", 0);
+      else if (person.role === "steward") personRecord(person, "person.steward", 1);
+      continue;
+    }
+    if (year - person.birthYear >= 14 && beforeYear - old.birthYear < 14) personRecord(person, "person.came_of_age", 0);
+    if (old.occupation !== person.occupation && old.occupation !== "child" && person.occupation !== "labourer") personRecord(person, "person.occupation", 0, { occupation: person.occupation });
+    if (!old.tags.includes("reeve") && person.tags.includes("reeve")) personRecord(person, "person.reeve", 1);
+  }
+  const gone = after.persons.past.slice(before.persons.past.length);
+  for (const person of gone) {
+    if (!was.has(person.id) || now.has(person.id)) continue;
+    if (!person.alive) personRecord(person, "person.died", 1, { cause: person.deathCause ?? "age", age: (person.deathYear ?? year) - person.birthYear });
+    else personRecord(person, "person.left_town", 0);
   }
   return drafts;
 }
@@ -253,8 +297,8 @@ function seasonDrafts(after: GameState, history: HistoryState): { readonly draft
 export const FOLD_AFTER_SEASONS = 8;
 /** HL-10: the season summary that replaces a season's folded everyday records. */
 export const ROLLUP_TEMPLATE = "ledger.rollup";
-/** HL-10: everyday records that are never folded (a household moving into a house). */
-const PERMANENT_EVERYDAY: ReadonlySet<string> = new Set(["person.move_in", "person.resettled"]);
+/** HL-10: everyday records that are never folded (a household moving into a house, a household forming). */
+const PERMANENT_EVERYDAY: ReadonlySet<string> = new Set(["person.move_in", "person.resettled", "person.married"]);
 const YEAR = 4 * SEASON;
 
 /** HL-10: a record folded into its season's summary once old enough — everyday (severity 0), not kept for good. */

@@ -1,4 +1,6 @@
 import { BALANCE } from "../content/balanceConfig";
+import { scenarioById } from "../content/scenario/registry";
+import type { PersonState } from "../engine/persons.types";
 import type { House, HouseholdMembers } from "./population.types";
 
 export type MemberSex = "female" | "male";
@@ -85,10 +87,29 @@ export interface HouseholdMembersView {
   readonly members: readonly MemberProfile[];
 }
 
-/** LB-2: the render API (V2 walkers read sex and age band). `null` for an unknown house or one not yet counted. */
-export function householdMembers(state: { readonly houses: readonly House[] }, houseId: string): HouseholdMembersView | null {
+const ROLE_ORDER = ["head", "spouse", "kin", "child"] as const;
+
+/**
+ * LB-2: the render API (V2 walkers read sex and age band). `null` for an unknown house or one not yet counted.
+ * PERSON-0 (PS-1): with persons, the members are the household's persons (head, spouse, relatives, children; child
+ * under 14, elder 55+), in that order.
+ */
+export function householdMembers(state: { readonly houses: readonly House[]; readonly persons?: PersonState; readonly tick?: number; readonly scenarioId?: string }, houseId: string): HouseholdMembersView | null {
   const members = state.houses.find(house => house.buildingId === houseId)?.members;
   if (members === undefined) return null;
+  if (state.persons !== undefined && state.tick !== undefined) {
+    const year = scenarioById(state.scenarioId as never).startYear + Math.floor(state.tick / BALANCE.TICKS_PER_YEAR);
+    const people = state.persons.people.filter(person => person.householdId === houseId)
+      .sort((a, b) => ROLE_ORDER.indexOf(a.role as never) - ROLE_ORDER.indexOf(b.role as never) || a.birthYear - b.birthYear || a.id.localeCompare(b.id));
+    return {
+      adults: members.adults,
+      children: members.children,
+      members: people.map(person => {
+        const age = year - person.birthYear;
+        return { sex: person.sex, ageBand: age < 14 ? "child" : age >= 55 ? "elder" : "adult" } satisfies MemberProfile;
+      }),
+    };
+  }
   return {
     adults: members.adults,
     children: members.children,
