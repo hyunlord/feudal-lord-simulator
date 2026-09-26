@@ -22,7 +22,13 @@ export function nearestMarketDistance(
   return distances.length === 0 ? null : Math.min(...distances);
 }
 
-export type MarketRoadService = (home: Building, market: Building) => boolean;
+/**
+ * Road connection between a home and a market or church (a wall crossed only at gates). MARKET-1 (MK-1): the engine's
+ * service also carries `marketReach`, the market's reach along the road (steps), which replaces the market's radius.
+ */
+export type MarketRoadService = ((home: Building, market: Building) => boolean) & {
+  readonly marketReach?: (home: Building, market: Building) => boolean;
+};
 
 export function hasMarketAccess(home: Building, buildings: readonly Building[], service?: MarketRoadService): boolean {
   return marketAccessDiagnosis(home, buildings, service).kind === "within";

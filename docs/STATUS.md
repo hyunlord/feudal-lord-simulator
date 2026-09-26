@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-27(UX-0b · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -12,6 +12,12 @@
   - **대본을 먹을 것 먼저로 바꿨다:** 경작지 → 헛간·방앗간 → 우물·길·집, 새 곡창 단계는 제재소 단계다. 카드만 사람 속도로 누르고 손을 떼도 1302년 끝에 68~76명이다.
   - **화면 수정:** 표시 칸 외곽선, 튜토리얼 뒤 예배당 → 시장 도시, 청지기는 위기 줄을 말한다. 알약은 빻을 수 없는 밀을 빼고, 결산 장면·문장은 참인 것만 쓰며, 결산 카드는 누름 뒤 0.7초에 연다. 태블릿 탭은 손가락 아래, 기간은 달력 일·계절·해다.
   - **재감사:** 진행 불가 0·30초 막힘 0. 튜토리얼 13단계 22 = 22, B9·TOUCH 14/14, 면적 24/24다. 엔진 후보 E1~E11(0d 금고·청구 순서·멈춘 시설·파종 창·사람 플레이의 필지 채움 등). DGX 전체 회귀·깨끗한 클론 `bdc90df` 3,102/3,102.
+
+- **MARKET-1 시장 도달 범위 — 관문 통과(가드레일 4/5, 알려진 정지 MK6), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/market1-reach/REPORT.md), [시장 도달 범위 명세](design/market-reach.md) MK-1~MK-5, 결정 MK1~MK6·GR1·PS9.
+  - 시장은 길 40걸음 안의 집을 받는다(건물 거리 8 반경 대신, 우물·교회는 그대로). 두 번째 시장부터는 받지 못하는 필지가 12 이상일 때만 짓는다(봇·가드레일 수용 1 + ⌊필지 ÷ 12⌋, 플레이어는 제한 없음). 예측 API `marketReach`·`marketRoadDistance`·`anotherMarketAllowed`.
+  - AR-5(MK-5, 사용자 판정): 길로 먼 집은 길 연장 → 새 시장(시설 상한 안) → 빈 집·L0·L1 옮기기 순서다. 사람이 사는 L2 이상은 헐지 않는다. 예전 규칙 도시에서 L3 9채(seed 5)와 L4 4채(seed 1)를 헐지 않고 길로 넣었다.
+  - 가드레일 3회차(마지막, 사용자 허락) 4/5: seed 3 식량 물류 정지(동쪽 밭 밀 907, 서쪽 방앗간·곡창 빔) → 알려진 정지, **BOT-3**. 기준선 `baseline-cbc84d0` 유지(PERSON-0 seed 4 +19.7 %는 수용, PS9). 가드레일 3회차는 앞으로 사용자 허락 뒤에만(GR1). 전체 회귀 `fd7e673` 3,100/3,100, 깨끗한 클론 `a1416c1` 3,101/3,101.
+  - 렌더가 넘겨받을 것: 범위 원 대신 `marketReach`의 길 칸, "거리 d / 범위 8" → "길 d걸음 / 40"(`serviceDiagnosisModel`·`placementPrediction`·`houseDiagnosisModel`). 그리고 시간에 좌우되는 시험 `tests/seasonArt.test.ts` "held chunk raster … stepped blend"(40ms 페이드를 실제 시계로 잼, DGX가 바쁠 때 깨끗한 클론 두 번 실패 — 시계 주입 권함).
 
 - **FIX-3 투기 판매액 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄 · 저장 형식 그대로, 검증 DGX): [보고서](verification/fix3-speculation-sale/REPORT.md), [1장 명세](design/flow-chapter-one.md) FC-2b, 결정 FC13.
   - 투기의 예측·실제 금고(HL-3)가 판 곡물 × 시장가다(예전 `+ 지난 계절 수입 ÷ 2`). 예측은 결정 때 곡창 재고로 두 계절 안 투기 계절마다 곡창마다 빵·밀의 1/4을 판다고 보고(재고는 판 만큼 줄임), 실제는 결정 때 금고 + 장부의 `famine_sale`이다.
@@ -234,6 +240,7 @@
 
 ## 다음 작업
 
+- **BOT-3 식량 물류(엔진, 봇)**: MARKET-1 가드레일 3회차 seed 3(MK6). 밭이 한쪽 끝에 몰리고 방앗간·곡창이 반대쪽에 서면 밀이 건너가지 않는다. 봇이 지역별 빵 부족을 보고 밭 가까이 방앗간을 옮기거나(상한 안) 곡창 사이 흐름을 만들어야 한다.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.

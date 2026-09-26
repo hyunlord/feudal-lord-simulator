@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import test from 'node:test';
 import { decideNextAction } from '../src/engine/autoplay';
+import type { BotRecoveryCollector } from '../src/engine/autoplayBotRecovery';
 import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
 import { gameReducer } from '../src/state/gameStore';
 import { needsStoneStorageRecovery } from '../src/engine/autoplayStorageRecovery';
@@ -31,11 +32,21 @@ test('Given unchanged natural full storage over 24000 ticks When the complete ad
   const stocks = (s: GameState) => s.buildings.filter(b => ['storehouse', 'masonry'].includes(b.kind)).map(b => b.inventory);
   assert.deepEqual(stocks(state), stocks(later));
   assert.equal(evaluateEraRequirements(state).find(r => r.key === 'stone')?.current, 365);
-  const action = decideNextAction(state, { maxHousingLots: 24 });
+  // MARKET-1: in this old-rule town the advisor first brings homes out of the markets' road reach into reach (AR-5 under
+  // MK-2; MK-5: a road first, a market next, demolition last); after those, the storage recovery comes.
+  let current = state;
+  let collector: BotRecoveryCollector = {};
+  let action = decideNextAction(current, { maxHousingLots: 24 }, collector);
+  for (let step = 0; step < 40 && (collector.recovery ?? []).some(entry => entry.kind === 'market_relocation' && entry.action === action.kind); step += 1) {
+    current = gameReducer(current, autoplayActionToGameAction(action, current)!);
+    collector = {};
+    action = decideNextAction(current, { maxHousingLots: 24 }, collector);
+  }
+  assert.equal((collector.recovery ?? []).some(entry => entry.kind === 'market_relocation' && entry.action === action.kind), false, 'past AR-5');
   assert.ok(action.kind === 'place_building' && action.building === 'storehouse' || action.kind === 'place_road', JSON.stringify(action));
-  const command = autoplayActionToGameAction(action, state);
+  const command = autoplayActionToGameAction(action, current);
   assert.ok(command);
-  assert.notEqual(gameReducer(state, command), state);
+  assert.notEqual(gameReducer(current, command), current);
 });
 
 

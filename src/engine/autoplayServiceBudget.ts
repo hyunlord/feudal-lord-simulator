@@ -7,7 +7,7 @@ import { HOUSEHOLD_SERVICE_CONFIG, allocateHouseServices } from '../population/s
 import { canPlaceBuildingBeforeRoad } from '../world/placement';
 import type { GameState } from './engine.types';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
-import { marketRoadService } from './marketService';
+import { marketConnectionOnly } from './marketService';
 import { potentialServiceRoads, serviceCandidate, serviceFootprint, serviceSpaceBuildings, serviceSpaceHouses, serviceTileKey, serviceWitnessRoads } from './autoplayServiceSpaceRoutes';
 
 type Kind = 'market' | 'church';
@@ -61,7 +61,7 @@ export function searchBudgetedServicePlan(state: GameState): ServiceBudgetSearch
   const houses = serviceSpaceHouses(state, buildings);
   const full = (1n << BigInt(homes.length)) - 1n;
   const staffedState = { ...state, buildings, constructionSites: state.constructionSites.filter(site => site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment') };
-  const potentialConnectivity = marketRoadService(potentialServiceRoads(staffedState, buildings));
+  const potentialConnectivity = marketConnectionOnly(potentialServiceRoads(staffedState, buildings));
   const sources = autoplayConstructionSources(staffedState);
   let branches = 0;
   let truncated = false;
@@ -85,7 +85,7 @@ export function searchBudgetedServicePlan(state: GameState): ServiceBudgetSearch
   const routesFor = (all: readonly Building[], kind: Kind): ReadonlySet<string> | null => {
     if (!spendAutoplaySearch()) { truncated = true; return null; }
     const potential = potentialServiceRoads(staffedState, all);
-    const allocation = allocateHouseServices({ houses, buildings: all, roadService: marketRoadService(potential) });
+    const allocation = allocateHouseServices({ houses, buildings: all, roadService: marketConnectionOnly(potential) });
     const roads = new Set<string>();
     for (const home of homes) {
       const access = allocation.houses.get(home.id)?.[kind];
@@ -101,7 +101,7 @@ export function searchBudgetedServicePlan(state: GameState): ServiceBudgetSearch
   const allocatedMask = (all: readonly Building[], kind: Kind): bigint => {
     if (!spendAutoplaySearch()) { truncated = true; return 0n; }
     const potential = potentialServiceRoads(staffedState, all);
-    const allocation = allocateHouseServices({ houses, buildings: all, roadService: marketRoadService(potential) });
+    const allocation = allocateHouseServices({ houses, buildings: all, roadService: marketConnectionOnly(potential) });
     return homes.reduce((mask, home, index) => allocation.houses.get(home.id)?.[kind].kind === 'served'
       ? mask | (1n << BigInt(index)) : mask, 0n);
   };

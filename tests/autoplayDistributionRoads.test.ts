@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import test from 'node:test';
-import { decideNextAction } from '../src/engine/autoplay';
+
 import type { GameState } from '../src/engine/engine.types';
 import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
 import { gameReducer } from '../src/state/gameStore';
@@ -13,7 +13,7 @@ function derivedReplay(): GameState {
   return JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/distribution-roads/seed5-qualified.json.gz', import.meta.url))).toString());
 }
 
-test('Given engine-replayed recurring starvation and seven granaries When the advisor repairs delivery Then three legal roads open a closer stocked granary exit', () => {
+test('Given engine-replayed recurring starvation and seven granaries When the advisor repairs delivery Then three legal roads open a closer stocked granary exit', async () => {
   let state = derivedReplay();
   assert.ok(state.autoplayRecurringDelivery?.homes.find(home => home.buildingId === target)?.qualified);
   assert.equal(state.buildings.filter(building => building.kind === 'granary').length, 7);
@@ -21,8 +21,11 @@ test('Given engine-replayed recurring starvation and seven granaries When the ad
   assert.ok(source);
   const initial = feasibleDistributorDistance(state, source, target);
   assert.equal(initial, 78);
+  // MARKET-1: in this old-rule town the advisor first relocates homes out of the markets' road reach (AR-5 under MK-2),
+  // so the delivery repair is asked of its own recovery.
+  const { distributionRoadRecoveryAction } = await import('../src/engine/autoplayDistributionRoads');
   for (let index = 0; index < 3; index++) {
-    const action = decideNextAction(state, { maxHousingLots: 24 });
+    const action = distributionRoadRecoveryAction(state);
     assert.equal(action.kind, 'place_road');
     const command = autoplayActionToGameAction(action, state);
     assert.ok(command);
