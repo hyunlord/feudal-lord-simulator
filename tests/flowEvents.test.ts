@@ -297,7 +297,7 @@ test("E9 the season ledger records the rumour, the sign, the arrival and the rec
   assert.deepEqual(recovered.losses, through.events!.records.find(record => record.id === id)!.losses);
 });
 
-test("E10 a town mid-fire and mid-dearth round-trips through save v13 and runs on identically; a v12 save is promoted", () => {
+test("E10 a town mid-fire and mid-dearth round-trips through the save (v13+) and runs on identically; a v12 save is promoted", () => {
   const season = scheduledSeason(DEFAULT_GAME_STATE, REHEARSAL)!;
   const window = dearthWindow(REHEARSAL, season);
   const arriving = advanceEvents(street([10, 11, 12], [], 1, window.arrivalTick + 10));
@@ -305,7 +305,7 @@ test("E10 a town mid-fire and mid-dearth round-trips through save v13 and runs o
   const burning: GameState = { ...arriving, events: { ...arriving.events!, burning: [{ buildingId: target.id, eventId: "fire@test", ignitedTick: arriving.tick, outTick: arriving.tick + 150, doused: false }] } };
   const loaded = decodeSave(encodeSave({ state: burning, createdAt: "2026-09-26T00:00:00.000Z", savedAt: "2026-09-26T00:00:00.000Z" }).bytes);
   assert.equal(loaded.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
-  assert.equal(SAVE_SCHEMA_VERSION, 13);
+  assert.ok(SAVE_SCHEMA_VERSION >= 13, "events are saved since v13");
   assert.deepEqual(loaded.envelope.state, burning);
   let a: GameState = burning;
   let b: GameState = loaded.envelope.state as GameState;
@@ -321,7 +321,7 @@ test("E10 a town mid-fire and mid-dearth round-trips through save v13 and runs o
 
   const promoted = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v12/population-176.save.json")));
   assert.equal(promoted.migratedFrom, 12);
-  assert.equal(promoted.envelope.schemaVersion, 13);
+  assert.equal(promoted.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
   const next = advanceTick(promoted.envelope.state as GameState);
   assert.deepEqual(next.events?.burning ?? [], []);
 });
