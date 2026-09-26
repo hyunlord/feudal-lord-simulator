@@ -68,14 +68,14 @@ assets-inbox/
 | `wave4d` | 25 | 3 | 22 |  |  |  |  | 22 |
 | `wave4e` | 53 | 18 | 35 |  |  |  |  | 35 |
 | `wave5a` | 151 | 87 | 61 |  | 3 |  |  | 55 |
-| `wave5b` | 36 | 20 |  |  |  | 16 |  | 0 |
+| `wave5b` | 36 | 4 |  |  |  | 32 |  | 0 |
 | `wave5c` | 17 |  | 17 |  |  |  |  | 14 |
 | `wave6` | 25 |  | 25 |  |  |  |  | 22 |
 | `wave7` | 206 |  | 172 |  | 34 |  |  | 0 |
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 0 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 0 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **2399** | **188** | **1319** | **0** | **106** | **770** | **16** | **309** |
+| **합계** | **2399** | **172** | **1319** | **0** | **106** | **786** | **16** | **309** |
 
 ## 4. 찾는 법
 
@@ -169,6 +169,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 12**: 본체 29·아이콘 시트 3·가동 오버레이 28 전부 확정. 오버레이 24장은 재작업본(`wave12/rework-20260926/`)이 `confirmed`이고 옛 24장은 `superseded`. `charcoal_clamp`·`lime_kiln`·`pottery_kiln`·`communal_oven`은 처음 판이 그대로 `confirmed`. 시설별 발판 크기 `buildings.csv`는 `records/`에 있다.
 - **Wave 14**: 원본 71장 중 70장 `confirmed`, `heraldry/shield_surface_texture.png`는 `superseded`(→ 질감 재작업 `shield_surface_texture_multiply`·`_screen`). 질감 재작업 4장(`multiply`·`screen`·`merchant_ink_stamp_texture`·`merchant_carved_texture`) `confirmed`.
 - **Wave 10**: 초상 방식을 레이어 합성에서 완성 초상 풀로 바꿔 v1·v2의 레이어·마스크·파생 레이어·합성본·확인 그림 735행 전부 `rejected`(비고 "방식 전환: 레이어 합성 → 완성 초상 풀", 이전 상태 병기). 인물 파일럿 1의 초상 6장은 `confirmed` 그대로.
+- **Wave 5b 초상 레이어**: `B/layers/` 12장과 그 확인 그림 `B/checks/` 4장 `rejected`(방식 전환: 레이어 합성 → 완성 초상 풀). `A/` 아이·노인 자유 생성 워커 3장은 원래대로 `rejected`, `reused/held_staff_*` 4장은 재사용 소품으로 `candidate`, `derived-templates/`는 그대로.
 - **초상 풀(`portrait-pool/`)**: 방식 전환 파일럿(`pivot-pilot-20260926`)이 첫 묶음. 완성 초상 P01~P36 36장과 노화 사슬 12장 `confirmed`. 원시 생성본 `provenance/raw`는 넣지 않았다.
 - **Wave 15**: 계절 자연 65장 `confirmed`.
 - **Wave 3**: 재작업본 10장 `confirmed`, 해당 v1 10장 `superseded`(→ `wave3/fix-20260926/assets/…`). Wave 3 에셋 82장 확정.
@@ -182,7 +183,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 
 ## 8. 이후 규칙
 
-- Astra 산출물은 도착하면 설치 여부와 관계없이 `assets-inbox/<wave>/<batch>/`에 보관하고 `INBOX_LEDGER.csv`에 행을 더한다(상태 `candidate`). `sources/`·`raw/`·`references/`는 넣지 않는다.
+- Astra 산출물은 도착하면 설치 여부와 관계없이 `assets-inbox/<wave>/<batch>/`에 보관하고 `INBOX_LEDGER.csv`에 행을 더한다. 판정이 오기 전에는 모두 `candidate`다. `sources/`·`raw/`·`references/`는 넣지 않는다.
 - 같은 때 원본 ZIP과 `output/astra-*` 작업 폴더를 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사한다(저장소 밖, 재부팅 대비).
 - 재작업본이 오면 원본 행은 `superseded` + `replaced_by`, 재작업본은 판정 전까지 `candidate`.
 - 장부는 여러 세션이 고친다. 다시 생성하지 말고 해당 행만 고치거나 행을 더한다.
