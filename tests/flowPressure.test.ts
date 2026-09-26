@@ -19,6 +19,7 @@ import { stepHouseFood } from "../src/population/houseFood";
 import { housePressureCause, housePressureCauseLabel, housePressureStatus } from "../src/population/housePressure";
 import type { House } from "../src/population/population.types";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
+import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { canPlaceBuildingWithZones } from "../src/zones/zonePlacement";
 
@@ -301,14 +302,14 @@ function foodTown(ticks: number): GameState {
   return { ...state, buildings: state.buildings.map(building => building === granary ? { ...building, inventory: { ...building.inventory, bread } } : building) };
 }
 
-test("④ a town on the ladder round-trips through save v12 and runs on identically; two runs agree", () => {
+test("④ a town on the ladder round-trips through the save and runs on identically; two runs agree", () => {
   const state = hungryTown();
   const id = state.houses.find(house => house.residents > 0)!.buildingId;
   const pressured = samples(state, SPRING_1307, SPRING_1307 + 2 * SEASON + 3 * HOUSE_FOOD_INTERVAL, emptyLarder(id));
   assert.ok(pressured.houses.some(house => house.abandonedTick !== undefined) && pressured.houses.some(house => house.leavingSinceTick !== undefined));
   assert.ok(pressured.seasons!.history.length >= 2);
   const loaded = decodeSave(encodeSave({ state: pressured, createdAt: "2026-09-26T00:00:00.000Z", savedAt: "2026-09-26T00:00:00.000Z" }).bytes);
-  assert.equal(loaded.envelope.schemaVersion, 12);
+  assert.equal(loaded.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
   assert.deepEqual(loaded.envelope.state, pressured);
   let a: GameState = pressured;
   let b: GameState = loaded.envelope.state as GameState;

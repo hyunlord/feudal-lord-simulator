@@ -1,4 +1,5 @@
 import { MONEY_BALANCE } from "../balanceConfig";
+import { DEARTH_REHEARSAL_EVENT_ID, FIRE_EVENT_ID, FIRST_FIRE_EVENT_ID, WEATHER_EVENT_ID } from "../eventConfig";
 import { SCENARIO_COPY } from "./scenarioCopy.ko";
 import type { ArchetypeDef, EraDef, ObjectiveDef, ScenarioDef, StageDef } from "./types";
 
@@ -73,6 +74,9 @@ const ECONOMY_RULES = { millMonopoly: true, demesneSale: false } as const satisf
 
 export const CORE_ARCHETYPES: readonly ArchetypeDef[] = [{ id: "core:open_field", resourcePackage: {} }];
 
+/** F0-B (EV-1): the weather and chapter 1's events — the first fire, later fires and the first dearth (the rehearsal). */
+const CHAPTER_ONE_EVENTS = [WEATHER_EVENT_ID, FIRST_FIRE_EVENT_ID, FIRE_EVENT_ID, DEARTH_REHEARSAL_EVENT_ID] as const;
+
 export const CORE_SCENARIOS: readonly ScenarioDef[] = [
   {
     id: "core:campaign_market_town",
@@ -91,7 +95,7 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     ], holdTicks: 1200 },
     failure: { all: [{ kind: "settlement_empty_for", ticks: 600 }] },
     walls: WALLS,
-    activeEvents: [],
+    activeEvents: CHAPTER_ONE_EVENTS,
     economyRules: ECONOMY_RULES,
   },
   {
@@ -106,7 +110,7 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     victory: null,
     failure: null,
     walls: WALLS,
-    activeEvents: [],
+    activeEvents: CHAPTER_ONE_EVENTS,
     economyRules: ECONOMY_RULES,
   },
 ];

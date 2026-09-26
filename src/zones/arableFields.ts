@@ -9,6 +9,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfi
 import { availableSpace } from "../economy/storage";
 import type { GameState } from "../engine/engine.types";
 import { buildingHasRequiredRoadAccess } from "../engine/roadAccess";
+import { harvestYieldPermille } from "../engine/eventSchedule";
 import type { TileCoordinate } from "../geometry/tileGeometry";
 import type { ArableField, ArableStage, ArableStripRecord } from "./arable.types";
 import { zonesOf } from "./zoneEdits";
@@ -316,6 +317,8 @@ const TASK_ORDER: Readonly<Record<Task, number>> = { harvest: 0, sow: 1, plough:
 export interface ArableStepActivity {
   readonly harvestedWheat: number;
   readonly lostWheat: number;
+  /** F0-B (EV-3, EV-5): wheat grown but not brought in because of a wet summer or a dearth. */
+  readonly weatherLostWheat: number;
 }
 
 /**
@@ -324,7 +327,7 @@ export interface ArableStepActivity {
  * order. A finished harvest goes into the farmstead's barn; with too little barn space it waits (AF-9).
  */
 export function stepArableFields(state: GameState): { readonly state: GameState; readonly activity: ArableStepActivity } {
-  const idle = { state, activity: { harvestedWheat: 0, lostWheat: 0 } };
+  const idle = { state, activity: { harvestedWheat: 0, lostWheat: 0, weatherLostWheat: 0 } };
   if (!zonesOf(state).some(zone => zone.kind === "arable") && (state.arableFields ?? []).length === 0) return idle;
   const layouts = arableLayouts(state);
   const reconciled = reconcileArableFields(state, layouts);
@@ -332,6 +335,8 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
   for (const layout of layouts) for (const strip of layout.strips) layoutById.set(strip.id, strip);
   let lostWheat = 0;
   let harvestedWheat = 0;
+  let weatherLostWheat = 0;
+  const harvestPermille = harvestYieldPermille(state, state.tick);
   const fields = reconciled.map(field => {
     let strips: ArableStripRecord[] | null = null;
     let lost = 0;
@@ -392,7 +397,9 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
       if (entry.task === "plough") setRecord(entry.field, entry.strip, withStage(record, "ploughed", state.tick));
       else if (entry.task === "sow") setRecord(entry.field, entry.strip, withStage(record, "sown", state.tick, { sownTick: state.tick }));
       else {
-        const amount = stripYield(strip, record, record.completionPermille ?? 1000);
+        const grown = stripYield(strip, record, record.completionPermille ?? 1000);
+        // EV-3, EV-5: a wet summer or a dearth takes its share of the crop grown.
+        const amount = Math.floor(grown * harvestPermille / 1000);
         if (amount > availableSpace(farmstead, BUILDING_CONFIG_BY_KIND.farmstead)) {
           if (record.work !== required) setRecord(entry.field, entry.strip, { ...record, work: required });
           continue;
@@ -400,6 +407,7 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
         farmstead = { ...farmstead, inventory: { ...farmstead.inventory, wheat: (farmstead.inventory.wheat ?? 0) + amount } };
         setRecord(entry.field, entry.strip, withStage(record, "harvested", state.tick));
         harvestedWheat += amount;
+        weatherLostWheat += grown - amount;
         fieldTotals.set(entry.field, (fieldTotals.get(entry.field) ?? 0) + amount);
       }
     }
@@ -417,5 +425,5 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
   const unchanged = finalFields.length === (state.arableFields ?? []).length
     && finalFields.every((field, index) => field === state.arableFields?.[index]);
   if (unchanged && buildings === state.buildings) return idle;
-  return { state: { ...state, buildings, ...(unchanged ? {} : { arableFields: finalFields }) }, activity: { harvestedWheat, lostWheat } };
+  return { state: { ...state, buildings, ...(unchanged ? {} : { arableFields: finalFields }) }, activity: { harvestedWheat, lostWheat, weatherLostWheat } };
 }
