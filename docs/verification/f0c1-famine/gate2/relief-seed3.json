@@ -1,0 +1,153 @@
+{
+ "seed": 3,
+ "famineResponse": "relief",
+ "maxTicks": 100000,
+ "famineEra": {
+  "tick": 80000,
+  "year": 1320,
+  "season": "spring",
+  "forced": true
+ },
+ "famine": {
+  "id": "great_famine@61",
+  "arrival": {
+   "tick": 80000,
+   "year": 1320,
+   "season": "spring"
+  },
+  "end": {
+   "tick": 93500,
+   "year": 1323,
+   "season": "summer"
+  },
+  "harvestFromYear": 20,
+  "harvestYears": 3,
+  "response": {
+   "choice": "relief",
+   "tick": 80003
+  },
+  "populationAtArrival": 212,
+  "populationAtEnd": 246,
+  "losses": {
+   "burntHouses": 0,
+   "departures": 0,
+   "harvestLost": 1044
+  }
+ },
+ "departuresInFamine": 0,
+ "minPopulationInFamine": 212,
+ "treasuryAtArrival": 3186,
+ "reliefSpent": 435,
+ "chapterEnd": {
+  "tick": 93500,
+  "year": 1323,
+  "season": "summer",
+  "chronicle": {
+   "chapter": 1,
+   "fromYear": 1300,
+   "toYear": 1323,
+   "events": [
+    {
+     "eventId": "first_fire@13",
+     "defId": "first_fire",
+     "year": 1303,
+     "losses": {
+      "burntHouses": 1,
+      "departures": 0,
+      "harvestLost": 0
+     }
+    },
+    {
+     "eventId": "dearth_rehearsal@17",
+     "defId": "dearth_rehearsal",
+     "year": 1304,
+     "losses": {
+      "burntHouses": 0,
+      "departures": 0,
+      "harvestLost": 200
+     }
+    },
+    {
+     "eventId": "fire@65",
+     "defId": "fire",
+     "year": 1316,
+     "losses": {
+      "burntHouses": 1,
+      "departures": 0,
+      "harvestLost": 0
+     }
+    },
+    {
+     "eventId": "great_famine@61",
+     "defId": "great_famine",
+     "year": 1320,
+     "losses": {
+      "burntHouses": 0,
+      "departures": 0,
+      "harvestLost": 1044
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "kind": "famine_response",
+     "tick": 80003,
+     "eventId": "great_famine@61",
+     "choice": "relief"
+    },
+    {
+     "kind": "petition_response",
+     "tick": 27083,
+     "petitionId": "market_charter@27000",
+     "choice": "accept"
+    },
+    {
+     "kind": "market_town",
+     "tick": 40763
+    }
+   ],
+   "stats": {
+    "populationStart": 12,
+    "populationEnd": 246,
+    "peakPopulation": 246,
+    "houses": 14,
+    "burntHouses": 2,
+    "departures": 0,
+    "harvestLost": 1244,
+    "treasury": 3644,
+    "famine": {
+     "year": 1320,
+     "populationAtArrival": 212,
+     "populationAtEnd": 246
+    }
+   }
+  }
+ },
+ "petitions": [
+  {
+   "id": "market_charter@27000",
+   "defId": "market_charter",
+   "petitioner": "merchants",
+   "arrivedTick": 27000,
+   "response": "accept",
+   "respondedTick": 27083
+  }
+ ],
+ "rights": [
+  {
+   "id": "market_charter",
+   "holder": "merchants",
+   "grantedTick": 27083,
+   "petitionId": "market_charter@27000",
+   "stallFeePermille": 750
+  }
+ ],
+ "merchantGauge": 65,
+ "final": {
+  "tick": 100000,
+  "era": "palisade",
+  "population": 271,
+  "houses": 14,
+  "treasury": 4348
+ }
+}

@@ -126,7 +126,11 @@ test("C3 relief buys bread into the granary with the treasury, posted as famine 
   assert.equal(famineResponse(answered, "speculation"), answered, "answered once");
   assert.deepEqual(famineStatus(answered)?.choices, []);
   const granaryBread = (state: GameState) => state.buildings.filter(building => building.kind === "granary").reduce((sum, building) => sum + (building.inventory.bread ?? 0), 0);
-  const hungry: GameState = { ...answered, buildings: answered.buildings.map(building => ({ ...building, inventory: { ...building.inventory, bread: 0, wheat: 0 } })) };
+  // The last closed season earned 1,200 in cash: relief spends at most that (and half the treasury) a season.
+  const earned = { season: 3 as const, year: 1314, startTick: SPRING_1315 - SEASON, endTick: SPRING_1315, income: 1_200, expense: 0,
+    stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 }, popDelta: 0, notableEvents: [], nextObjectiveHint: null };
+  const hungry: GameState = { ...answered, seasons: { ...answered.seasons!, history: [earned] },
+    buildings: answered.buildings.map(building => ({ ...building, inventory: { ...building.inventory, bread: 0, wheat: 0 } })) };
   const relieved = advancePolitics({ ...hungry, tick: SPRING_1315 + SEASON });
   const bought = granaryBread(relieved);
   assert.ok(bought > 0, "bread bought");
@@ -135,7 +139,10 @@ test("C3 relief buys bread into the granary with the treasury, posted as famine 
   assert.equal(posting.category, "famine_relief");
   assert.deepEqual(posting.sourceRefs[0], { type: "event", id: famineRecord(arrived)!.id, detail: "relief" });
   assert.equal(departureCapPerSeason({ ...relieved, tick: SPRING_1315 + SEASON }, 2), FAMINE_RESPONSE_CONFIG.reliefDepartureCap);
-  assert.ok(hungry.treasuryCoin - relieved.treasuryCoin <= hungry.treasuryCoin * FAMINE_RESPONSE_CONFIG.reliefTreasuryPermille / 1000, "at most half the treasury a season");
+  assert.ok(hungry.treasuryCoin - relieved.treasuryCoin <= Math.min(1_200, hungry.treasuryCoin * FAMINE_RESPONSE_CONFIG.reliefTreasuryPermille / 1000),
+    "at most the last season's income and half the treasury");
+  const broke: GameState = { ...hungry, seasons: { ...hungry.seasons!, history: [{ ...earned, income: 0 }] } };
+  assert.equal(advancePolitics({ ...broke, tick: SPRING_1315 + SEASON }).treasuryCoin, broke.treasuryCoin, "no income, no relief bought");
   // The price shock: standing by, the poorest quarter cannot buy bread at three times its price; relief feeds them.
   const idle = famineResponse(arrived, "laissez_faire");
   const poor = famineShortHouses({ ...idle, tick: SPRING_1315 + 50 });

@@ -1,0 +1,189 @@
+{
+ "commit": "3ed325df",
+ "maxTicks": 100000,
+ "chapterCompleted": 5,
+ "reliefFewerDepartures": 5,
+ "reliefLowerTreasury": 5,
+ "rows": [
+  {
+   "seed": 1,
+   "famineEra": {
+    "tick": 80000,
+    "year": 1320,
+    "season": "spring",
+    "forced": true
+   },
+   "harvestYears": 2,
+   "chapterEnd": {
+    "tick": 89500,
+    "year": 1322,
+    "season": "summer"
+   },
+   "relief": {
+    "famineDepartures": 0,
+    "populationAtArrival": 528,
+    "populationAtEnd": 528,
+    "reliefSpent": 2355,
+    "treasuryAtArrival": 4558,
+    "finalTreasury": 3238
+   },
+   "laissezFaire": {
+    "famineDepartures": 12,
+    "populationAtArrival": 528,
+    "populationAtEnd": 420,
+    "finalTreasury": 5580,
+    "chapterEnd": 1322
+   },
+   "petition": [
+    [
+     "accept",
+     25000
+    ]
+   ]
+  },
+  {
+   "seed": 2,
+   "famineEra": {
+    "tick": 67700,
+    "year": 1316,
+    "season": "winter",
+    "forced": false
+   },
+   "harvestYears": 3,
+   "chapterEnd": {
+    "tick": 81500,
+    "year": 1320,
+    "season": "summer"
+   },
+   "relief": {
+    "famineDepartures": 0,
+    "populationAtArrival": 473,
+    "populationAtEnd": 463,
+    "reliefSpent": 3165,
+    "treasuryAtArrival": 2642,
+    "finalTreasury": 1380
+   },
+   "laissezFaire": {
+    "famineDepartures": 19,
+    "populationAtArrival": 473,
+    "populationAtEnd": 425,
+    "finalTreasury": 4587,
+    "chapterEnd": 1320
+   },
+   "petition": [
+    [
+     "accept",
+     30000
+    ]
+   ]
+  },
+  {
+   "seed": 3,
+   "famineEra": {
+    "tick": 80000,
+    "year": 1320,
+    "season": "spring",
+    "forced": true
+   },
+   "harvestYears": 3,
+   "chapterEnd": {
+    "tick": 93500,
+    "year": 1323,
+    "season": "summer"
+   },
+   "relief": {
+    "famineDepartures": 0,
+    "populationAtArrival": 212,
+    "populationAtEnd": 246,
+    "reliefSpent": 435,
+    "treasuryAtArrival": 3186,
+    "finalTreasury": 4348
+   },
+   "laissezFaire": {
+    "famineDepartures": 6,
+    "populationAtArrival": 212,
+    "populationAtEnd": 190,
+    "finalTreasury": 4825,
+    "chapterEnd": 1323
+   },
+   "petition": [
+    [
+     "accept",
+     27000
+    ]
+   ]
+  },
+  {
+   "seed": 4,
+   "famineEra": {
+    "tick": 71300,
+    "year": 1317,
+    "season": "winter",
+    "forced": false
+   },
+   "harvestYears": 2,
+   "chapterEnd": {
+    "tick": 81500,
+    "year": 1320,
+    "season": "summer"
+   },
+   "relief": {
+    "famineDepartures": 0,
+    "populationAtArrival": 515,
+    "populationAtEnd": 528,
+    "reliefSpent": 2925,
+    "treasuryAtArrival": 3408,
+    "finalTreasury": 2724
+   },
+   "laissezFaire": {
+    "famineDepartures": 12,
+    "populationAtArrival": 515,
+    "populationAtEnd": 421,
+    "finalTreasury": 5579,
+    "chapterEnd": 1320
+   },
+   "petition": [
+    [
+     "accept",
+     26000
+    ]
+   ]
+  },
+  {
+   "seed": 5,
+   "famineEra": {
+    "tick": 80000,
+    "year": 1320,
+    "season": "spring",
+    "forced": true
+   },
+   "harvestYears": 3,
+   "chapterEnd": {
+    "tick": 93500,
+    "year": 1323,
+    "season": "summer"
+   },
+   "relief": {
+    "famineDepartures": 0,
+    "populationAtArrival": 528,
+    "populationAtEnd": 528,
+    "reliefSpent": 6000,
+    "treasuryAtArrival": 5274,
+    "finalTreasury": 544
+   },
+   "laissezFaire": {
+    "famineDepartures": 20,
+    "populationAtArrival": 528,
+    "populationAtEnd": 421,
+    "finalTreasury": 6496,
+    "chapterEnd": 1323
+   },
+   "petition": [
+    [
+     "accept",
+     29000
+    ]
+   ]
+  }
+ ]
+}

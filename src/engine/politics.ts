@@ -99,7 +99,9 @@ function stepFamineResponse(state: GameState, record: EventRecord): GameState {
     const price = marketSalePrice(state, "bread");
     const poor = new Set(famineShortHouses(state, true));
     const need = seasonBread({ ...state, houses: state.houses.filter(house => poor.has(house.buildingId)) });
-    const budget = Math.floor(Math.max(0, state.treasuryCoin) * FAMINE_RESPONSE_CONFIG.reliefTreasuryPermille / 1000);
+    // FC3: at most the last season's cash income (and half the treasury): the famine eats the earnings, not the savings.
+    const income = state.seasons?.history.at(-1)?.income ?? 0;
+    const budget = Math.min(income, Math.floor(Math.max(0, state.treasuryCoin) * FAMINE_RESPONSE_CONFIG.reliefTreasuryPermille / 1000));
     const capacity = granary === undefined ? 0 : Math.max(0, BUILDING_CONFIG_BY_KIND.granary.storageCapacity
       - Object.values(granary.inventory).reduce((sum, amount) => sum + (amount ?? 0), 0));
     const bread = price <= 0 ? 0 : Math.min(need, Math.floor(budget / price), capacity);

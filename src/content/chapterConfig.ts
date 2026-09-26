@@ -12,9 +12,9 @@ export const FAMINE_RESPONSE_CHOICES = ["relief", "price_control", "laissez_fair
  * merchants' mood) and on every ladder sample (the departure cap, the poor households' shortage).
  * - The price shock: while food sells at `poorShortPricePermille` or more, the poorest `poorPermille` of the lived-in
  *   households (lowest level, then id) cannot buy bread and count as short of food on the ladder.
- * - relief: the treasury pays the poor households' season of bread at the famine price (into the granary, spending
- *   at most `reliefTreasuryPermille` of the treasury), and they are not short; one household may leave a season
- *   instead of two.
+ * - relief: the treasury pays the poor households' season of bread at the famine price (into the granary), spending
+ *   at most the last season's cash income and `reliefTreasuryPermille` of the treasury — the famine takes the town's
+ *   earnings, not its savings — and they are not short; one household may leave a season instead of two.
  * - price_control: bread and wheat sell at most at `priceCapPermille`; the merchants lose `merchantPerSeason` a season.
  * - speculation: the granaries sell `speculationPermille` of their bread and wheat at the famine price into the
  *   treasury each season; three households may leave a season.
