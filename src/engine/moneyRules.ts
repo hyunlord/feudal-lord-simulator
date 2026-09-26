@@ -54,7 +54,7 @@ export function homeRent(house: Pick<House, "level">, frontageWidth: number | nu
 }
 
 /** Homes standing on burgage plots: house id → plot (zone id and frontage width). Empty without zones. */
-function homePlots(state: GameState): ReadonlyMap<string, { readonly zoneId: string; readonly width: number }> {
+export function homePlots(state: GameState): ReadonlyMap<string, { readonly zoneId: string; readonly width: number }> {
   const plots = new Map<string, { zoneId: string; width: number }>();
   for (const zone of zonesOf(state)) {
     if (zone.kind !== "burgage") continue;

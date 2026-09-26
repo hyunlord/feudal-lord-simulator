@@ -130,9 +130,11 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // path cache differ from d823005 (cb416e16… / 6a7136ec…). Cold and warm caches still agree (below).
   // C3: households (members), labour v2 (field hands, granary haulers, `labour`) and the mills' intake carts change
   // houses, buildings and walkers from C1c-2 (03db9d54… / 144a486d…).
-  assert.equal(hash(warm), '2fc10332b0f6364f77105ca9356125711d88c06a8ddfbf9576c873f6ee3f4aa8');
+  // F0-A: winter meals eat 1.2× and the state records seasons, eras and household shortages (spec FP-*), so houses and
+  // the state differ from C3 (2fc10332… / b40558e9…). Cold and warm caches still agree (below).
+  assert.equal(hash(warm), '4bdd32a8b8f99009977a7ca892fec22ccecc1f55dda9b90e820416cf6ced1d8e');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'b40558e95d3bf56912bfd52ec71839b7cd3ec53344f59124184f0a9f11bab0f1');
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'fe6ed3b36d91fca036650ae5ba4da7e32dadbb4a1001b00f119abbe1ee22fab0');
   assert.equal(hash(coldState), hash(warm));
 });

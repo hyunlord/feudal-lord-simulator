@@ -27,10 +27,17 @@ const STAGES: readonly StageDef[] = [
   },
 ];
 
-/** Five historical eras (content design §1, K9). Year gates only; state gates and effects come later. */
+/**
+ * Five historical eras (content design §1, K9). F0-A (F2, spec FP-5): the Great Famine waits for a town that can meet
+ * it (a granary, 12 lots, a market), at most five years; effects come with F0-B.
+ */
 const ERAS: readonly EraDef[] = [
   { id: "saturation", name: SCENARIO_COPY.eras.saturation, enterWhen: { yearAtLeast: 1300 }, effects: [] },
-  { id: "famine", name: SCENARIO_COPY.eras.famine, enterWhen: { yearAtLeast: 1315 }, effects: [] },
+  { id: "famine", name: SCENARIO_COPY.eras.famine, enterWhen: { yearAtLeast: 1315, maxDelayYears: 5, state: { all: [
+    { kind: "building_count_at_least", building: "granary", value: 1 },
+    { kind: "housing_lots_at_least", value: 12 },
+    { kind: "building_count_at_least", building: "market", value: 1 },
+  ] } }, effects: [] },
   { id: "war", name: SCENARIO_COPY.eras.war, enterWhen: { yearAtLeast: 1337 }, effects: [] },
   { id: "collapse", name: SCENARIO_COPY.eras.collapse, enterWhen: { yearAtLeast: 1348 }, effects: [] },
   { id: "specialisation", name: SCENARIO_COPY.eras.specialisation, enterWhen: { yearAtLeast: 1380 }, effects: [] },

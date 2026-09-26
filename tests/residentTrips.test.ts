@@ -8,7 +8,8 @@ import { OCCUPATION_BANDS, walkerLook, walkerLooks, walkerSheet, ELDER_BANDS } f
 import { walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { withResidentWalkers } from "../src/state/residentWalkerState";
-import { isMarketDay, isResidentWalker, RESIDENT_WALKER_CAP, residentWalkers, type ResidentOccupation } from "../src/ui/residentTrips";
+import { absoluteDay, dayStartTick, isMarketDay, isResidentWalker, MARKET_DAY_OF_MONTH, RESIDENT_WALKER_CAP, residentWalkers, VISITOR_REACH,
+  type ResidentOccupation } from "../src/ui/residentTrips";
 import { hashEconomyState } from "../scripts/economyHarnessSerializer";
 import { loadSeed2City } from "../scripts/walkerLookEvidence";
 
@@ -79,7 +80,10 @@ test("RM-2..RM-5 the year has every purpose, visitors on market days, at most 40
       const from = walker.path[walker.pathIndex]!;
       assert.equal(state.tiles[from.ty * state.width + from.tx]?.hasRoad, true, `${walker.id} walks on a road`);
     }
-    if (isMarketDay(state.tick) && walkers.some(walker => walker.resident.purpose === "visit")) visitorsOnMarketDays += 1;
+    // F0-A pulse: the market is monthly and a day is 11 ticks, so count visitors within 300 ticks of a market day's start.
+    const day = absoluteDay(state.tick);
+    const marketStart = dayStartTick(day - ((((day - MARKET_DAY_OF_MONTH) % 30) + 30) % 30));
+    if (state.tick - marketStart < 300 && walkers.some(walker => walker.resident.purpose === "visit")) visitorsOnMarketDays += 1;
   }
   assert.deepEqual([...purposes].sort(), ["church", "clergy", "field", "market", "patrol", "visit", "well"]);
   assert.ok(visitorsOnMarketDays > 0, "visitors walk on market days");
@@ -107,6 +111,31 @@ test("V2 mapping: every installed class band has a walking occupation, and every
     }
   }
   assert.equal(walkerSheet("legacy_guard").classBand, "guard");
+});
+
+test("RM-2 (F0-A pulse) the market is monthly and its visitors are on the road only within 300 ticks of the market day", () => {
+  let state = loadSeed2City();
+  let marketDays = 0;
+  let visitorTicks = 0;
+  const visitorsAt: { tick: number; count: number; sinceMarket: number }[] = [];
+  for (let step = 0; step < 4_000; step += 1) {
+    state = advanceTick(state);
+    if (step % 10 !== 0) continue;
+    const day = absoluteDay(state.tick);
+    const lastMarket = day - ((day - MARKET_DAY_OF_MONTH) % 30 + 30) % 30;
+    const visitors = residentWalkers(state).filter(walker => walker.resident.purpose === "visit");
+    if (visitors.length > 0) {
+      visitorTicks += 1;
+      visitorsAt.push({ tick: state.tick, count: visitors.length, sinceMarket: state.tick - dayStartTick(lastMarket) });
+      for (const walker of visitors) assert.ok(walker.path.length - 1 <= VISITOR_REACH, `${walker.id} walks at most ${VISITOR_REACH} road steps`);
+    }
+  }
+  for (let day = 0; day < 360; day += 1) if (isMarketDay(dayStartTick(day))) marketDays += 1;
+  assert.equal(marketDays, 12, "twelve market days a year");
+  assert.ok(visitorTicks > 0, "visitors come on market days");
+  assert.ok(visitorsAt.every(sample => sample.sinceMarket >= 0 && sample.sinceMarket < 300), "no visitor outside 300 ticks after a market day starts");
+  const months = new Set(visitorsAt.map(sample => Math.floor((sample.tick - dayStartTick(MARKET_DAY_OF_MONTH)) / (4_000 / 12))));
+  assert.ok(months.size >= 10, `visitors in ${months.size} of 12 months`);
 });
 
 test("INSTALL-5c a child walks only beside an adult of its household on a market or church trip, 0.3 tiles to the side, in a child body; elders wear elder bodies", () => {

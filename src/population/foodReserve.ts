@@ -1,6 +1,6 @@
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
-import { BALANCE } from "../content/balanceConfig";
-import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
+import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
+import { HOUSE_FOOD_INTERVAL, houseFoodRation, isWinterTick } from "../content/houseFoodConfig";
 
 /** The parts of the game state the reserve reads (population may not import the engine's state type). */
 export interface FoodReserveWorld {
@@ -34,5 +34,21 @@ export const FOOD_RESERVE_STABLE_TICKS = BALANCE.TICKS_PER_YEAR / 4;
 
 export function foodReserveShort(state: FoodReserveWorld): boolean {
   const reserve = foodReserveTicks(state);
+  return reserve !== null && reserve < FOOD_RESERVE_STABLE_TICKS;
+}
+
+/**
+ * FP-3/FP-4: the reserve at the consumption of the season `tick` falls in (winter eats 1.2× the ration), in ticks.
+ * Null when no house eats.
+ */
+export function seasonalFoodReserveTicks(state: FoodReserveWorld, tick: number): number | null {
+  const reserve = foodReserveTicks(state);
+  if (reserve === null || !isWinterTick(tick)) return reserve;
+  return Math.floor(reserve * 1000 / PRESSURE_BALANCE.winterRationPermille);
+}
+
+/** FP-3: the town's stored food will not last a season at this season's consumption. */
+export function seasonalFoodReserveShort(state: FoodReserveWorld, tick: number): boolean {
+  const reserve = seasonalFoodReserveTicks(state, tick);
   return reserve !== null && reserve < FOOD_RESERVE_STABLE_TICKS;
 }

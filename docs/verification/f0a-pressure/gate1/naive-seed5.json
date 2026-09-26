@@ -1,0 +1,215 @@
+{
+ "seed": 5,
+ "naiveReserve": true,
+ "maxTicks": 16000,
+ "stage1": {
+  "tick": 7900,
+  "year": 1301,
+  "season": "winter",
+  "winterOfYear": 2
+ },
+ "stage2": {
+  "tick": 8900,
+  "year": 1302,
+  "season": "spring",
+  "winterOfYear": null
+ },
+ "maxLeaving": 18,
+ "maxAbandoned": 4,
+ "finalTick": 16000,
+ "finalPopulation": 166,
+ "finalHouses": 18,
+ "seasonLedgers": [
+  {
+   "season": 0,
+   "year": 1302,
+   "startTick": 8000,
+   "endTick": 9000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": 0,
+    "wheat": 0,
+    "timber": -1,
+    "stone": 0
+   },
+   "popDelta": -39,
+   "notableEvents": [
+    {
+     "kind": "households_leaving",
+     "count": 4
+    },
+    {
+     "kind": "households_abandoned",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": "food_reserve"
+  },
+  {
+   "season": 1,
+   "year": 1302,
+   "startTick": 9000,
+   "endTick": 10000,
+   "income": 20,
+   "expense": 22,
+   "stockDelta": {
+    "bread": 8,
+    "wheat": 152,
+    "timber": 10,
+    "stone": 0
+   },
+   "popDelta": -61,
+   "notableEvents": [
+    {
+     "kind": "households_abandoned",
+     "count": 2
+    },
+    {
+     "kind": "households_resettled",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": "food_reserve"
+  },
+  {
+   "season": 2,
+   "year": 1302,
+   "startTick": 10000,
+   "endTick": 11000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": 12,
+    "wheat": 82,
+    "timber": -23,
+    "stone": 0
+   },
+   "popDelta": 61,
+   "notableEvents": [
+    {
+     "kind": "households_abandoned",
+     "count": 2
+    },
+    {
+     "kind": "households_resettled",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": "resettle"
+  },
+  {
+   "season": 3,
+   "year": 1302,
+   "startTick": 11000,
+   "endTick": 12000,
+   "income": 66,
+   "expense": 22,
+   "stockDelta": {
+    "bread": 8,
+    "wheat": -132,
+    "timber": 3,
+    "stone": 0
+   },
+   "popDelta": 52,
+   "notableEvents": [
+    {
+     "kind": "households_resettled",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": null
+  },
+  {
+   "season": 0,
+   "year": 1303,
+   "startTick": 12000,
+   "endTick": 13000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": -28,
+    "wheat": -102,
+    "timber": 10,
+    "stone": 0
+   },
+   "popDelta": 43,
+   "notableEvents": [],
+   "nextObjectiveHint": "food_reserve"
+  },
+  {
+   "season": 1,
+   "year": 1303,
+   "startTick": 13000,
+   "endTick": 14000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": 6,
+    "wheat": 360,
+    "timber": 10,
+    "stone": 0
+   },
+   "popDelta": 10,
+   "notableEvents": [
+    {
+     "kind": "households_leaving",
+     "count": 18
+    }
+   ],
+   "nextObjectiveHint": "food_reserve"
+  },
+  {
+   "season": 2,
+   "year": 1303,
+   "startTick": 14000,
+   "endTick": 15000,
+   "income": 68,
+   "expense": 22,
+   "stockDelta": {
+    "bread": 3,
+    "wheat": -132,
+    "timber": -20,
+    "stone": 0
+   },
+   "popDelta": -52,
+   "notableEvents": [
+    {
+     "kind": "households_leaving",
+     "count": 5
+    },
+    {
+     "kind": "households_abandoned",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": "food_reserve"
+  },
+  {
+   "season": 3,
+   "year": 1303,
+   "startTick": 15000,
+   "endTick": 16000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": 11,
+    "wheat": -196,
+    "timber": 10,
+    "stone": 0
+   },
+   "popDelta": 21,
+   "notableEvents": [
+    {
+     "kind": "households_abandoned",
+     "count": 2
+    },
+    {
+     "kind": "households_resettled",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": "food_reserve"
+  }
+ ]
+}

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { migrateStateV10ToV11 } from "../src/save/migrations/v10ToV11";
+import { migrateStateV11ToV12 } from "../src/save/migrations/v11ToV12";
 import { migrateStateV9ToV10 } from "../src/save/migrations/v9ToV10";
 import { readFileSync } from "node:fs";
 import test from "node:test";
@@ -88,10 +89,10 @@ test("v0 bare states migrate to the latest envelope", () => {
   // v4 -> v5 adds only the default scenario (spec SC-14); v5 -> v6 adds only empty zones (spec Z-1);
   // v6 -> v7 swaps the income window for a ledger holding the opening balance (spec L-9).
   const { coinLedger: _coinLedger, ...rawRest } = raw as GameState & { coinLedger?: unknown };
-  // v9 -> v10 turns the city's wheat farms into arable fields and farmsteads (spec AF-12); v10 -> v11 adds households (LB-10).
-  assert.deepEqual(decoded.envelope.state, migrateStateV10ToV11(migrateStateV9ToV10({ ...rawRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
+  // v9 -> v10 turns the city's wheat farms into arable fields and farmsteads (spec AF-12); v10 -> v11 adds households (LB-10); v11 -> v12 opens the season and enters the due eras (FP-1, FP-5).
+  assert.deepEqual(decoded.envelope.state, migrateStateV11ToV12(migrateStateV10ToV11(migrateStateV9ToV10({ ...rawRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
     ledger: { entries: [{ id: "ledger-000001", tick: raw.tick, account: "cash", category: "opening_balance", amount: raw.treasuryCoin,
-    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } })));
+    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } }))));
 });
 
 test("migration refuses newer or unknown files", () => {

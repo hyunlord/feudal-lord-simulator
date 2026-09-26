@@ -95,6 +95,8 @@ function definitionForLevel(level: number): HousingDefinition {
 }
 
 function stepResidents(house: House, tick: number, lotArea: number): House {
+  // FP-3 stage 2: an abandoned house stays empty until the pressure rules let a new household in.
+  if (house.abandonedTick !== undefined) return house;
   if (tick <= 0 || tick % BALANCE.GROWTH_INTERVAL !== houseGrowthPhase(house.buildingId)) return house;
   const breadAbsent = houseIsStarving(house, tick);
 

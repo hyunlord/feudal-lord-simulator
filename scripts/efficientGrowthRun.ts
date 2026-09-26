@@ -21,6 +21,8 @@ export function runEfficientGrowth(args: readonly string[]) {
   let finalStateSha256 = '';
   const diagnostics: { last: AdvisorDiagnosticReceipt | null } = { last: null };
   const checkpoint = args.includes('--checkpoint');
+  // F0-A gate ①: `--naive-reserve` runs the bot without its reserve measures (spec FP-6).
+  const naiveReserve = args.includes('--naive-reserve');
   const millObservation = createMillZeroWheatObservation();
   let efficiency: ReturnType<typeof efficientGrowthMetrics> | null = null;
   const moneyPeriods: (MoneyPeriodSample & { readonly stableSince: number | null })[] = [];
@@ -30,7 +32,7 @@ export function runEfficientGrowth(args: readonly string[]) {
   const labourSamples: { tick: number; idle: number; population: number; fieldHands: number; hauling: number; mills: number; wheatlessMills: number }[] = [];
   let money200Tick: number | null = null;
   let stoneProclaimedTick: number | null = null;
-  const report = runPhase19NaturalGrowth({ ...options,
+  const report = runPhase19NaturalGrowth({ ...options, naiveReserve,
     onDiagnostic: receipt => { diagnostics.last = receipt; },
     onTick: (state, stableSince) => {
       millObservation.observe(state.tick, stableSince, millWheatSamples(state));

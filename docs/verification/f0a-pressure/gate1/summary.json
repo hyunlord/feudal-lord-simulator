@@ -1,0 +1,156 @@
+{
+ "commit": "322d36f",
+ "ticks": 16000,
+ "judgement": "within four years (1300-1303), decision FP9",
+ "command": "tsx scripts/pressureGateRun.ts <seed> 16000 [--naive-reserve]",
+ "rows": [
+  {
+   "bot": "naive",
+   "seed": 1,
+   "stage1": {
+    "tick": 12700,
+    "year": 1303,
+    "season": "spring"
+   },
+   "stage2": {
+    "tick": 13700,
+    "year": 1303,
+    "season": "summer"
+   },
+   "maxLeaving": 9,
+   "maxAbandoned": 1,
+   "finalPopulation": 146,
+   "finalHouses": 10
+  },
+  {
+   "bot": "naive",
+   "seed": 2,
+   "stage1": {
+    "tick": 9500,
+    "year": 1302,
+    "season": "summer"
+   },
+   "stage2": {
+    "tick": 13700,
+    "year": 1303,
+    "season": "summer"
+   },
+   "maxLeaving": 8,
+   "maxAbandoned": 1,
+   "finalPopulation": 128,
+   "finalHouses": 11
+  },
+  {
+   "bot": "naive",
+   "seed": 3,
+   "stage1": {
+    "tick": 8150,
+    "year": 1302,
+    "season": "spring"
+   },
+   "stage2": {
+    "tick": 9150,
+    "year": 1302,
+    "season": "summer"
+   },
+   "maxLeaving": 12,
+   "maxAbandoned": 4,
+   "finalPopulation": 162,
+   "finalHouses": 14
+  },
+  {
+   "bot": "naive",
+   "seed": 4,
+   "stage1": {
+    "tick": 12650,
+    "year": 1303,
+    "season": "spring"
+   },
+   "stage2": {
+    "tick": 13650,
+    "year": 1303,
+    "season": "summer"
+   },
+   "maxLeaving": 9,
+   "maxAbandoned": 4,
+   "finalPopulation": 118,
+   "finalHouses": 11
+  },
+  {
+   "bot": "naive",
+   "seed": 5,
+   "stage1": {
+    "tick": 7900,
+    "year": 1301,
+    "season": "winter"
+   },
+   "stage2": {
+    "tick": 8900,
+    "year": 1302,
+    "season": "spring"
+   },
+   "maxLeaving": 18,
+   "maxAbandoned": 4,
+   "finalPopulation": 166,
+   "finalHouses": 18
+  },
+  {
+   "bot": "standard",
+   "seed": 1,
+   "stage1": null,
+   "stage2": null,
+   "maxLeaving": 0,
+   "maxAbandoned": 0,
+   "finalPopulation": 166,
+   "finalHouses": 11
+  },
+  {
+   "bot": "standard",
+   "seed": 2,
+   "stage1": null,
+   "stage2": null,
+   "maxLeaving": 0,
+   "maxAbandoned": 0,
+   "finalPopulation": 153,
+   "finalHouses": 10
+  },
+  {
+   "bot": "standard",
+   "seed": 3,
+   "stage1": null,
+   "stage2": null,
+   "maxLeaving": 0,
+   "maxAbandoned": 0,
+   "finalPopulation": 92,
+   "finalHouses": 7
+  },
+  {
+   "bot": "standard",
+   "seed": 4,
+   "stage1": null,
+   "stage2": null,
+   "maxLeaving": 0,
+   "maxAbandoned": 0,
+   "finalPopulation": 166,
+   "finalHouses": 11
+  },
+  {
+   "bot": "standard",
+   "seed": 5,
+   "stage1": {
+    "tick": 8300,
+    "year": 1302,
+    "season": "spring"
+   },
+   "stage2": {
+    "tick": 9300,
+    "year": 1302,
+    "season": "summer"
+   },
+   "maxLeaving": 14,
+   "maxAbandoned": 4,
+   "finalPopulation": 220,
+   "finalHouses": 18
+  }
+ ]
+}

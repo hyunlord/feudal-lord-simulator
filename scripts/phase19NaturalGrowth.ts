@@ -56,6 +56,8 @@ export function runPhase19NaturalGrowth(options: {
   readonly targetLots: number;
   readonly maxTicks: number;
   readonly seed?: number;
+  /** F0-A gate ①: the bot variant without reserve measures (`--naive-reserve`, spec FP-6). */
+  readonly naiveReserve?: boolean;
   readonly additionalAcceptance?: (state: GameState) => boolean;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
@@ -63,10 +65,11 @@ export function runPhase19NaturalGrowth(options: {
   readonly onProgress?: (snapshot: ReturnType<typeof growthSnapshot>) => void;
 }) {
   const { targetLots, maxTicks, seed } = parseGrowthOptions([String(options.targetLots), String(options.maxTicks), "", String(options.seed ?? 1)]);
+  const policy = { maxHousingLots: targetLots, ...(options.naiveReserve === true ? { naiveReserve: true } : {}) };
   const source = provenance();
   const started = performance.now();
   const opening = createGrowthOpening(seed);
-  const driver = createAutoplayTraceDriver({ id: `natural-growth-seed${seed}-${targetLots}`, source: `seed${seed}-translated-verification-fixture-offset-${opening.provenance.offset.tx},${opening.provenance.offset.ty}`, policy: { maxHousingLots: targetLots }, ...(options.onDiagnostic === undefined ? {} : { onDiagnostic: options.onDiagnostic }) });
+  const driver = createAutoplayTraceDriver({ id: `natural-growth-seed${seed}-${targetLots}`, source: `seed${seed}-translated-verification-fixture-offset-${opening.provenance.offset.tx},${opening.provenance.offset.ty}`, policy, ...(options.onDiagnostic === undefined ? {} : { onDiagnostic: options.onDiagnostic }) });
   const observations = createGrowthObservations();
   let state = opening.state;
   const resourcePreflight = terrainResourcePreflight(state);
@@ -162,7 +165,7 @@ export function runPhase19NaturalGrowth(options: {
   const acceptanceMet = Object.values(acceptance).every(Boolean);
   return {
     status: acceptanceMet ? "passed" : "acceptance-unmet", source, seed, opening: opening.provenance, acceptance,
-    policy: { maxHousingLots: targetLots }, maxTicks, targetReachedTick, maximumLots,
+    policy, maxTicks, targetReachedTick, maximumLots,
     stopReason: failures.length > 0 ? "invalid-run" : complete && (options.additionalAcceptance?.(state) ?? true) ? "target-scale-stable" : "tick-budget",
     growthBlocker: null,
     sourceContract: "Verification-only rigid opening translation on unchanged buildWorldGrid(seed), nearest legal Manhattan/dy/dx offset; not a product seed feature. Seed1 preserves DEFAULT_GAME_STATE; actual reducer and advanceTick; economics and save schema unchanged",

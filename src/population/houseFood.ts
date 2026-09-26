@@ -1,7 +1,7 @@
 import { BALANCE } from "../content/balanceConfig";
 import type { House } from "./population.types";
 
-import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
+import { HOUSE_FOOD_INTERVAL, houseFoodRation, mealBread } from "../content/houseFoodConfig";
 export { HOUSE_FOOD_INTERVAL, houseFoodRation, houseBreadCapacity } from "../content/houseFoodConfig";
 
 export function houseHasFood(house: { readonly breadStock: number }): boolean {
@@ -15,13 +15,17 @@ export function houseIsStarving(house: House, tick: number): boolean {
 }
 
 export function stepHouseFood(house: House, tick: number): House {
-  const breadStock = tick > 0 && tick % HOUSE_FOOD_INTERVAL === 0
-    ? Math.max(0, house.breadStock - houseFoodRation(house)) : house.breadStock;
+  // FP-4: a winter meal eats the ration × 1.2 (the fraction carried to the next winter meal).
+  const meal = tick > 0 && tick % HOUSE_FOOD_INTERVAL === 0 ? mealBread(houseFoodRation(house), tick, house.winterRationCarry ?? 0) : null;
+  const breadStock = meal === null ? house.breadStock : Math.max(0, house.breadStock - meal.bread);
   const emptyFoodTicks = breadStock > 0 || house.residents === 0
     || tick <= (house.starvationGraceUntilTick ?? 0)
     ? 0 : (house.emptyFoodTicks ?? 0) + 1;
-  if (breadStock === house.breadStock && emptyFoodTicks === (house.emptyFoodTicks ?? 0)) return house;
-  return { ...house, breadStock, emptyFoodTicks };
+  const carry = meal === null ? house.winterRationCarry ?? 0 : meal.carry;
+  if (breadStock === house.breadStock && emptyFoodTicks === (house.emptyFoodTicks ?? 0) && carry === (house.winterRationCarry ?? 0)) return house;
+  const next: House = { ...house, breadStock, emptyFoodTicks };
+  if (carry === 0) delete next.winterRationCarry; else next.winterRationCarry = carry;
+  return next;
 }
 
 export function houseGrowthPhase(buildingId: string): number {
