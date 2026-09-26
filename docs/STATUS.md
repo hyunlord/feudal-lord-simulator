@@ -1,11 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-27(FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-3 투기 판매액 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄 · 저장 형식 그대로, 검증 DGX): [보고서](verification/fix3-speculation-sale/REPORT.md), [1장 명세](design/flow-chapter-one.md) FC-2b, 결정 FC13.
+  - 투기의 예측·실제 금고(HL-3)가 판 곡물 × 시장가다(예전 `+ 지난 계절 수입 ÷ 2`). 예측은 결정 때 곡창 재고로 두 계절 안 투기 계절마다 곡창마다 빵·밀의 1/4을 판다고 보고(재고는 판 만큼 줄임), 실제는 결정 때 금고 + 장부의 `famine_sale`이다.
+  - 수입 0 · 곡창 빵 400·밀 200이면 카드가 `금고 8147d(지금 5000d)`(예전 5000d "그대로"). 시나리오 C12. 시뮬레이션은 그대로다(판매 규칙을 옮기기만 함).
 
 - **FIX-2 구휼 비용 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄 · 저장 형식 그대로, 검증 DGX): [보고서](verification/fix2-relief-cost/REPORT.md), [1장 명세](design/flow-chapter-one.md) FC-2a, 결정 FC12.
   - 구휼 비용 = 나눈 빵 × 시장가. 가난한 가구의 한 계절 빵을 현금으로 먼저 사고(예전 규칙), 모자란 몫은 곡창의 빵에서 방출해 방출 가치(시장가)로 센다. 방출은 `famine_relief` 현물 항목이라 금고와 시뮬레이션은 그대로다(3,000틱 세계 해시 같음).
