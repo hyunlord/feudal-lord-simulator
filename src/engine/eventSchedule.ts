@@ -154,9 +154,15 @@ export function plannedEvents(state: EventWorld, fromSeason: number, toSeason: n
     if (def.schedule.type === "era") {
       // FC-1: planned on its era's summer; waiting past it (the town not ready), it is due any season now.
       // The id stays the planned summer's, so the forecast, the ledger lines and the record agree.
+      // Not pending once its era has entered (it arrived, or came with an old save) or its last year has passed.
       const plannedSeason = eraPlannedSeason(state, def)!;
       const season = Math.max(plannedSeason, fromSeason);
-      if (recordOf(state, def) === undefined && season <= toSeason) planned.push({ id: eventInstanceId(def, plannedSeason), def, season });
+      const lastSeason = summerOfYearIndex(def.schedule.lastYear - scenarioOf(state).startYear) + SEASONS_PER_YEAR;
+      const eraId = def.schedule.eraId;
+      const entered = (state.historicalEras ?? []).some(entry => entry.id === eraId);
+      if (recordOf(state, def) === undefined && !entered && season <= toSeason && fromSeason < lastSeason) {
+        planned.push({ id: eventInstanceId(def, plannedSeason), def, season });
+      }
       continue;
     }
     const afterDef = EVENT_DEF_BY_ID.get(def.schedule.afterEventId);

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 14,
-  "sha256": "8b9153058764c6fbf9a932a1440093a4cc02520652ba3fb2d4b7b547ae48abc5",
+  "sha256": "a5e985c5b27845d20fc467da5f30a6a93e920408924a8da1abd963067204acb2",
   "inputs": [
     "DEFAULT_GAME_STATE",
     "fixtures/saves/v1/new-game.save.json",
@@ -413,6 +413,11 @@
     "$.politics.decisions[]:object",
     "$.politics.merchantGauge:number",
     "$.politics.petitions:array",
+    "$.politics.petitions[].arrivedTick:number",
+    "$.politics.petitions[].defId:string",
+    "$.politics.petitions[].id:string",
+    "$.politics.petitions[].petitioner:string",
+    "$.politics.petitions[]:object",
     "$.politics.rights:array",
     "$.politics:object",
     "$.population:number",

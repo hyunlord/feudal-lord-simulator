@@ -43,9 +43,10 @@ export interface EventDef {
     /**
      * F0-C1 (FC-1): the event arrives when the historical era `eraId` enters (FP-5 readiness, forced after its grace).
      * Its forecast counts back from the summer of `plannedYear` (the era's year); waiting past it, it stays signed.
-     * `harvestYearCounts`: the seed picks how many harvests it takes.
+     * `harvestYearCounts`: the seed picks how many harvests it takes. `lastYear`: the era is forced in by then; an era
+     * entered later came with an old save (its eras enter together on load) and brings no event.
      */
-    | { readonly type: "era"; readonly eraId: string; readonly plannedYear: number; readonly harvestYearCounts: readonly number[] };
+    | { readonly type: "era"; readonly eraId: string; readonly plannedYear: number; readonly lastYear: number; readonly harvestYearCounts: readonly number[] };
   readonly forecast: EventForecastDef;
   /** Published into the B1 effect pipe (source `{type:"event"}`); the rules below read the same values. */
   readonly effects: readonly EffectSpec[];
@@ -118,7 +119,7 @@ export const EVENT_DEFS: readonly EventDef[] = [
     // three years ahead (summer 1312), sign two years ahead: the wet summers of 1313–14 and prices rising. Two or
     // three harvests at half, food × 3 until the next good harvest. Its effects are the famine era's (`EraDef.effects`).
     id: GREAT_FAMINE_EVENT_ID, kind: "dearth",
-    schedule: { type: "era", eraId: FAMINE_ERA_ID, plannedYear: 1315, harvestYearCounts: [2, 3] },
+    schedule: { type: "era", eraId: FAMINE_ERA_ID, plannedYear: 1315, lastYear: 1320, harvestYearCounts: [2, 3] },
     forecast: { rumourSeasons: 12, signSeasons: 8 },
     effects: GREAT_FAMINE_EFFECTS,
     harvestPermille: 500,

@@ -33,6 +33,7 @@ import {
 } from "./eventSchedule";
 import { igniteFire, stepFires } from "./fire";
 import { hashSeed } from "./prng";
+import { calendar, scenarioOf } from "./scenarioState";
 
 export const EMPTY_EVENT_STATE: EventState = { records: [], burning: [] };
 const NO_LOSSES: EventLosses = { burntHouses: 0, departures: 0, harvestLost: 0 };
@@ -112,7 +113,8 @@ export function advanceEvents(state: GameState): GameState {
     const id = eventInstanceId(def, eraPlannedSeason(state, def)!);
     const entered = state.historicalEras?.find(entry => entry.id === schedule.eraId);
     if (entered === undefined || known(id)) continue;
-    if (entered.enteredTick < tick - SEASON_TICKS) {
+    const enteredYear = calendar(entered.enteredTick, scenarioOf(state).startYear).year;
+    if (entered.enteredTick < tick - SEASON_TICKS || enteredYear > schedule.lastYear) {
       events = { ...events, missed: [...(events.missed ?? []), id] };
       continue;
     }
