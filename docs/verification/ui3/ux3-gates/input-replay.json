@@ -1,0 +1,352 @@
+{
+  "base": "http://127.0.0.1:4350/",
+  "url": "http://127.0.0.1:4300/",
+  "identical": 13,
+  "of": 13,
+  "rows": [
+    {
+      "step": "road tool, drag a road line",
+      "identical": true,
+      "before": {
+        "step": "road tool, drag a road line",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44",
+        "roadRevision": 1,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "640.000,400.000",
+        "zoom": 1
+      },
+      "after": {
+        "step": "road tool, drag a road line",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44",
+        "roadRevision": 1,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "640.000,400.000",
+        "zoom": 1
+      }
+    },
+    {
+      "step": "road tool, click one tile twice (place, remove)",
+      "identical": true,
+      "before": {
+        "step": "road tool, click one tile twice (place, remove)",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "640.000,400.000",
+        "zoom": 1
+      },
+      "after": {
+        "step": "road tool, click one tile twice (place, remove)",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "640.000,400.000",
+        "zoom": 1
+      }
+    },
+    {
+      "step": "road tool, drag then right click cancels, release",
+      "identical": true,
+      "before": {
+        "step": "road tool, drag then right click cancels, release",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "640.000,400.000",
+        "zoom": 1
+      },
+      "after": {
+        "step": "road tool, drag then right click cancels, release",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "640.000,400.000",
+        "zoom": 1
+      }
+    },
+    {
+      "step": "Esc disarms, left drag pans",
+      "identical": true,
+      "before": {
+        "step": "Esc disarms, left drag pans",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "550.000,360.000",
+        "zoom": 1
+      },
+      "after": {
+        "step": "Esc disarms, left drag pans",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "550.000,360.000",
+        "zoom": 1
+      }
+    },
+    {
+      "step": "middle drag pans",
+      "identical": true,
+      "before": {
+        "step": "middle drag pans",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "610.000,410.000",
+        "zoom": 1
+      },
+      "after": {
+        "step": "middle drag pans",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "610.000,410.000",
+        "zoom": 1
+      }
+    },
+    {
+      "step": "wheel zoom in and out",
+      "identical": true,
+      "before": {
+        "step": "wheel zoom in and out",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "610.890,412.670",
+        "zoom": 1.0890000000000002
+      },
+      "after": {
+        "step": "wheel zoom in and out",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "610.890,412.670",
+        "zoom": 1.0890000000000002
+      }
+    },
+    {
+      "step": "house tool, place",
+      "identical": true,
+      "before": {
+        "step": "house tool, place",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "610.890,412.670",
+        "zoom": 1.0890000000000002
+      },
+      "after": {
+        "step": "house tool, place",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "610.890,412.670",
+        "zoom": 1.0890000000000002
+      }
+    },
+    {
+      "step": "right click the new site cancels it",
+      "identical": true,
+      "before": {
+        "step": "right click the new site cancels it",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "610.890,412.670",
+        "zoom": 1.0890000000000002
+      },
+      "after": {
+        "step": "right click the new site cancels it",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "610.890,412.670",
+        "zoom": 1.0890000000000002
+      }
+    },
+    {
+      "step": "Space held + drag pans with the road tool",
+      "identical": true,
+      "before": {
+        "step": "Space held + drag pans with the road tool",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "570.890,452.670",
+        "zoom": 1.0890000000000002
+      },
+      "after": {
+        "step": "Space held + drag pans with the road tool",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "camera": "570.890,452.670",
+        "zoom": 1.0890000000000002
+      }
+    },
+    {
+      "step": "zone brush: paint, radius ], paint",
+      "identical": true,
+      "before": {
+        "step": "zone brush: paint, radius ], paint",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:53",
+        "zoneUndo": 2,
+        "camera": "570.890,452.670",
+        "zoom": 1.0890000000000002
+      },
+      "after": {
+        "step": "zone brush: paint, radius ], paint",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:53",
+        "zoneUndo": 2,
+        "camera": "570.890,452.670",
+        "zoom": 1.0890000000000002
+      }
+    },
+    {
+      "step": "zone brush: Z undoes the last stroke, Esc disarms",
+      "identical": true,
+      "before": {
+        "step": "zone brush: Z undoes the last stroke, Esc disarms",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:28",
+        "zoneUndo": 1,
+        "camera": "570.890,452.670",
+        "zoom": 1.0890000000000002
+      },
+      "after": {
+        "step": "zone brush: Z undoes the last stroke, Esc disarms",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:28",
+        "zoneUndo": 1,
+        "camera": "570.890,452.670",
+        "zoom": 1.0890000000000002
+      }
+    },
+    {
+      "step": "keyboard pan (D held)",
+      "identical": true,
+      "movedPx": {
+        "base": 388.01599999999996,
+        "build": 385.61699999999996,
+        "baseAgain": 385.73
+      },
+      "before": {
+        "step": "keyboard pan (D held)",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:28",
+        "zoneUndo": 1,
+        "camera": "182.874,452.670",
+        "zoom": 1.0890000000000002
+      },
+      "after": {
+        "step": "keyboard pan (D held)",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:28",
+        "zoneUndo": 1,
+        "camera": "185.273,452.670",
+        "zoom": 1.0890000000000002
+      },
+      "previous": "zone brush: Z undoes the last stroke, Esc disarms"
+    },
+    {
+      "step": "map overview press jumps the camera",
+      "identical": true,
+      "before": {
+        "step": "map overview press jumps the camera",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:28",
+        "zoneUndo": 1,
+        "camera": "1406.656,887.872",
+        "zoom": 1.0890000000000002
+      },
+      "after": {
+        "step": "map overview press jumps the camera",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:28",
+        "zoneUndo": 1,
+        "camera": "1406.656,887.872",
+        "zoom": 1.0890000000000002
+      }
+    }
+  ]
+}

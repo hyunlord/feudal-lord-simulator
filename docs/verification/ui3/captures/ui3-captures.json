@@ -1,0 +1,76 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "seasons": [
+  {
+   "n": 1,
+   "tick": 1003,
+   "season": "1300:0",
+   "text": "인구 | +16 | 빵 | −20 | 1300년 봄 결산 | 수입 0 · 지출 0 · 남음 0 | 인구 +16 | 빵 −20 · 밀 0 · 목재 0 · 석재 0 | 큰 일 없이 지나간 계절입니다 | 계속 | 계절마다 결산 띄우기: 켬",
+   "timeStopped": true,
+   "resumedTo": "5배속"
+  },
+  {
+   "n": 2,
+   "tick": 2006,
+   "season": "1300:1",
+   "text": "인구 | +4 | 빵 | −8 | 1300년 여름 결산 | 수입 0 · 지출 0 · 남음 0 | 인구 +4 (전 계절 +16) | 빵 −8 · 밀 0 · 목재 0 · 석재 0 | 큰 일 없이 지나간 계절입니다 | 다음: 식량 비축 — 곡창을 채우세요 | 계속 | 계절마다 결산 띄우기: 켬",
+   "timeStopped": true,
+   "resumedTo": "5배속"
+  },
+  {
+   "n": 3,
+   "tick": 3000,
+   "season": "1300:2",
+   "text": "돈 | +5 | 빵 | −2 | 1300년 가을 결산 | 수입 +8 · 지출 −3 · 남음 +5 | 인구 0 (전 계절 +4) | 빵 −2 · 밀 0 · 목재 0 · 석재 0 | 다음 수확까지 비축이 모자랍니다 | 다음: 식량 비축 — 곡창을 채우세요 | 계속 | 계절마다 결산 띄우기: 켬",
+   "timeStopped": true,
+   "resumedTo": "5배속"
+  },
+  {
+   "n": 4,
+   "tick": 4001,
+   "season": "1300:3",
+   "text": "인구 | +8 | 1300년 겨울 결산 | 수입 0 · 지출 0 · 남음 0 | 인구 +8 (전 계절 0) | 빵 0 · 밀 0 · 목재 0 · 석재 0 | 큰 일 없이 지나간 계절입니다 | 다음: 식량 비축 — 곡창을 채우세요 | 계속 | 계절마다 결산 띄우기: 켬",
+   "timeStopped": true,
+   "resumedTo": "5배속"
+  }
+ ],
+ "lean": {
+  "card": [
+   "다음 수확까지 비축 부족 | 경작지 칠하기"
+  ],
+  "steward": "영주님, 이대로면 보릿고개를 못 넘깁니다. 곡창과 경작지를 챙기십시오."
+ },
+ "strip": {
+  "date": "1301년 여름",
+  "pin": "0.289",
+  "marks": [
+   "harvest",
+   "period_end",
+   "sow"
+  ],
+  "list": [
+   "수확 시작 — 여름 중순쯤",
+   "장부 기간 마감 — 겨울 초쯤",
+   "파종 시작 — 겨울 중순쯤"
+  ]
+ },
+ "pressure": {
+  "tick": 13250,
+  "leaving": "house-46-40-0",
+  "abandoned": "construction-site-000006",
+  "inspector": "식량 부족으로 떠날 준비"
+ },
+ "title": {
+  "chapterLoadingShown": true,
+  "savedTick": 51,
+  "offersContinue": true,
+  "modeScreen": "mode",
+  "continuedTick": 51,
+  "continued": true
+ },
+ "seasonsOff": {
+  "fromTick": 4047,
+  "toTick": 5148,
+  "cardShown": false
+ }
+}
