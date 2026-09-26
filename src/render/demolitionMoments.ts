@@ -11,6 +11,8 @@ import { presentationSpeed } from "./presentationSpeed";
 // sequences, keyed by building id; it restarts when the clock goes backwards (a new game or a loaded save).
 export const DEMOLITION_MS = 1_200;
 const FAST = 5;
+const CONTINUATION_TICKS = 60;
+const MAX_AT_ONCE = 3;
 let seen = new Map<string, Building>();
 let lastTick = -1;
 let running: { readonly building: Building; readonly startedMs: number }[] = [];
@@ -22,8 +24,13 @@ function covers(building: Building, tx: number, ty: number): boolean {
 
 export function observeDemolitions(state: GameState, nowMs: number): void {
   if (state.tick < lastTick) { seen = new Map(); running = []; }
+  // Only a continuation of the last state can demolish: a load or a new scene (a tick jump, or many buildings gone
+  // at once) just replaces what was seen.
+  const continuing = state.tick - lastTick <= CONTINUATION_TICKS;
   lastTick = state.tick;
   const current = new Map(state.buildings.map(building => [building.id, building]));
+  const gone = [...seen.keys()].filter(id => !current.has(id)).length;
+  if (!continuing || gone > MAX_AT_ONCE) { seen = current; return; }
   for (const [id, building] of seen) {
     if (current.has(id)) continue;
     const replaced = state.buildings.some(other => covers(other, building.tx, building.ty))

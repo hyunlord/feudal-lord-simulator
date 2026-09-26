@@ -17,8 +17,8 @@ const placed = JSON.parse(await readFile('docs/verification/install11/scene/kits
 const at = (kind, stage) => { const p = placed.find(entry => entry.kind === kind && entry.stage === stage); return [p.tx, p.ty]; };
 const WIDTH = 1440, HEIGHT = 900;
 const views = [
-  { name: 'row1-z1', tile: ((t) => [t[0] + 2, t[1] - 1])(at('farmstead', 1)), zoom: 1 },
-  { name: 'row2-z1', tile: at('church', 1), zoom: 1 },
+  { name: 'row1-z1', tile: ((t) => [t[0] + 3, t[1] - 3])(at('farmstead', 1)), zoom: 1, clip: { x: 0, y: 110, width: 1180, height: 680 } },
+  { name: 'row2-z1', tile: ((t) => [t[0] + 3, t[1] - 3])(at('church', 1)), zoom: 1, clip: { x: 0, y: 110, width: 1180, height: 680 } },
   { name: 'all-z06', tile: at('church', 0), zoom: 0.6 },
   { name: 'church-frame-z135', tile: at('church', 2), zoom: 1.35, walkers: true },
   { name: 'walls-z1', tile: at('stone_wall', 1), zoom: 1 },
@@ -36,7 +36,7 @@ for (const view of views) {
     const scene = view.walkers ? { ...state, walkers: builders } : state;
     const { context, page } = await openScene(browser, { state: scene, tile: view.tile, baseUrl: url, width: WIDTH, height: HEIGHT, dpr: 1, zoom: view.zoom, run: false });
     await page.waitForTimeout(3_000); await page.mouse.move(WIDTH - 4, HEIGHT / 2); await page.waitForTimeout(300);
-    await writeFile(join(outDir, `${view.name}-${label}.jpg`), await page.screenshot({ type: 'jpeg', quality: 74, clip: { x: 220, y: 110, width: 1000, height: 680 } }));
+    await writeFile(join(outDir, `${view.name}-${label}.jpg`), await page.screenshot({ type: 'jpeg', quality: 74, clip: view.clip ?? { x: 220, y: 110, width: 1000, height: 680 } }));
     await context.close();
   }
 }
