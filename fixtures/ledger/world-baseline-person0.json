@@ -1,5 +1,5 @@
 {
-  "description": "Money-free world state after PERSON-0 (the town's persons: names, births, deaths, offices, save v16) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money, history and Building.upkeepUnpaid. PERSON-0 changes the world by design (the state records persons; mortality takes residents where a house cannot grow, spec PS-3), so the F0-C1 world no longer applies. The cache must still match the ledger on every tick.",
+  "description": "Money-free world state after PERSON-0 (the town's persons: names, births, deaths, offices, save v16) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money, history and Building.upkeepUnpaid. PERSON-0 changes the world by design (the state records persons; mortality takes residents where a house cannot grow, spec PS-3), so the F0-C1 world no longer applies. The cache must still match the ledger on every tick. MARKET-1 re-pinned seed1City2400 (the market reaches homes along the road; the new-game case is unchanged).",
   "sourceCommit": "person0-persons",
   "previousBaseline": "fixtures/ledger/world-baseline-f0c1-famine.json",
   "cases": {
@@ -17,7 +17,7 @@
       "endTick": 681651,
       "ticks": 2400,
       "stateFile": "fixtures/determinism/seed1/final-state.json",
-      "finalWorldHashWithoutMoney": "4e8be5fcf552afc9867d0de88de227160e326e19da3ccc44c3c9020643d932c3"
+      "finalWorldHashWithoutMoney": "67db5f18b9eddf582aa68cab075db68f72caef4c04943b8514851442f518e4ad"
     }
   }
 }

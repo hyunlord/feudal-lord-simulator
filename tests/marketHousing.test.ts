@@ -125,7 +125,9 @@ test("house diagnosis reports within outside and no-market access without mutati
   // Given
   const home = building("home", "house", 1, 1);
   const within = state([home, building("market", "market", 9, 1, 3)]);
-  const outside = state([home, building("market", "market", 10, 1, 3)]);
+  // MARKET-1 (MK-1): reach runs along the road; a market 9 tiles off with the road cut between is out of reach.
+  const far = state([home, building("market", "market", 10, 1, 3)]);
+  const outside = { ...far, tiles: far.tiles.map(tile => tile.tx === 5 && tile.ty === 0 ? { ...tile, hasRoad: false } : tile) };
   const missing = state([home]);
 
   // When

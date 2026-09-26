@@ -19,6 +19,8 @@ import { housingLotCount } from "../src/population/housing";
 import type { GameState } from "../src/engine/engine.types";
 import { householdServices } from "../src/engine/householdServices";
 import { advanceTick } from "../src/engine/tick";
+import { autoplayActionToGameAction } from "../src/engine/autoplayActions";
+import { gameReducer } from "../src/state/gameStore";
 import { createAutoplayTraceDriver } from "../scripts/economyHarnessAutoplay";
 import { hashEconomyState } from "../scripts/economyHarnessSerializer";
 import { loadAutoplayFixture } from "../scripts/autoplayStallProbe";
@@ -224,7 +226,15 @@ test("B10 AR-10 seed 5 (F0-C1 run 2): logs fill the storehouses while the sawmil
   const state = loadAutoplayFixture(SEED5_LOG_OVERFLOW);
   assert.equal(state.tick, 276_000);
   assert.equal(logOverflowKind(state), "sawmill");
-  const action = runAutoplaySearch(() => decideNextAction(state));
+  // MARKET-1: in this old-rule town the advisor first relocates homes out of the markets' road reach (AR-5 under MK-2);
+  // after those, the sawmill comes.
+  let current = state;
+  let action = runAutoplaySearch(() => decideNextAction(current));
+  // (Fewer than 12 lots can be stranded under MK-2 — twelve would allow a market instead.)
+  for (let step = 0; step < 12 && action.kind === "demolish_house"; step += 1) {
+    current = gameReducer(current, autoplayActionToGameAction(action, current)!);
+    action = runAutoplaySearch(() => decideNextAction(current));
+  }
   assert.equal(action.kind, "place_building");
   assert.equal((action as { building: string }).building, "sawmill");
 });

@@ -46,6 +46,11 @@ for (const firstMarket of [false, true]) {
     const base = fixture();
     const state = retile({ ...base, era: 'palisade', buildings: base.buildings.flatMap(b =>
       b.kind === 'church' ? [] : b.kind === 'market' ? firstMarket ? [] : [{ ...b, tx: 24, ty: 12 }] : [b]) });
+    // MARKET-1 (MK-1): a market moved to (24,12) still reaches the homes along the road row; only a town with none needs one.
+    if (!firstMarket) {
+      assert.equal([...householdServices(state).houses.values()].filter(h => h.market.kind === 'served').length, 8);
+      return;
+    }
     assert.equal([...householdServices(state).houses.values()].filter(h => h.market.kind === 'served').length, 0);
     const action = decideNextAction(state);
     assert.equal(action.kind, 'place_building');

@@ -31,11 +31,18 @@ test('Given unchanged natural full storage over 24000 ticks When the complete ad
   const stocks = (s: GameState) => s.buildings.filter(b => ['storehouse', 'masonry'].includes(b.kind)).map(b => b.inventory);
   assert.deepEqual(stocks(state), stocks(later));
   assert.equal(evaluateEraRequirements(state).find(r => r.key === 'stone')?.current, 365);
-  const action = decideNextAction(state, { maxHousingLots: 24 });
+  // MARKET-1: in this old-rule town the advisor first relocates homes out of the markets' road reach (AR-5 under MK-2);
+  // after those, the storage recovery comes.
+  let current = state;
+  let action = decideNextAction(current, { maxHousingLots: 24 });
+  for (let step = 0; step < 6 && action.kind === 'demolish_house'; step += 1) {
+    current = gameReducer(current, autoplayActionToGameAction(action, current)!);
+    action = decideNextAction(current, { maxHousingLots: 24 });
+  }
   assert.ok(action.kind === 'place_building' && action.building === 'storehouse' || action.kind === 'place_road', JSON.stringify(action));
-  const command = autoplayActionToGameAction(action, state);
+  const command = autoplayActionToGameAction(action, current);
   assert.ok(command);
-  assert.notEqual(gameReducer(state, command), state);
+  assert.notEqual(gameReducer(current, command), current);
 });
 
 

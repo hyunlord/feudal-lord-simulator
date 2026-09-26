@@ -25,6 +25,16 @@ export function marketRoadService(grid: WallGrid): MarketRoadService {
   } });
 }
 
+/**
+ * MK-4: the road connection alone (no road reach), for the bot's proofs over roads not yet built: a reach measured on
+ * those would refuse sites the finished roads serve, so the proofs keep the old 8-tile radius as their stand-in
+ * (the 40-step reach was calibrated to cover what that radius covers in the towns).
+ */
+export function marketConnectionOnly(grid: WallGrid): MarketRoadService {
+  const connected = marketConnection(grid);
+  return (home: Building, market: Building) => connected(home, market);
+}
+
 function marketConnection(grid: WallGrid): (home: Building, market: Building) => boolean {
   const labels = labelRoadComponents(grid);
   const accessLabels = new Map<Building, ReadonlySet<number>>();
