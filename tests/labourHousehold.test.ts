@@ -291,12 +291,19 @@ test("LB-12 autoplay proclaims the palisade with a wall of six cells per wanted 
     assert.ok(action.kind === "proclaim_era" && action.candidatePath !== undefined);
     return wallInteriorCells(confirmPalisadeProclamation(state, action.candidatePath!));
   };
+  const { housingLotCount } = await import("../src/population/housing");
+  const { wallRoom } = await import("../src/engine/autoplayWallRoom");
   const first = cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild)));
-  const perLot = LABOUR_BALANCE.wallCellsPerLot;
-  // A target the first wall already holds keeps that wall.
-  assert.equal(cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild, Math.floor(first / perLot)))), first);
-  // One lot more than the first wall holds: a roomier candidate is taken if the search has one, never a smaller wall.
-  assert.ok(cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild, Math.floor(first / perLot) + 1))) >= first);
+  const lots = housingLotCount(state);
+  // A target the hamlet already has keeps the first wall (BOT-2 AR-11 checks room only for lots still wanted).
+  assert.equal(cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild, lots))), first);
+  // More lots wanted: the wall taken has room for them (six cells per lot and, AR-11, free house cells per lot still
+  // wanted with roads at most 30 %), stretched toward open land if need be — never a smaller wall.
+  for (const target of [Math.floor(first / LABOUR_BALANCE.wallCellsPerLot), lots + 5]) {
+    const action = runAutoplaySearch(() => autoplayEraAction(state, noBuild, target));
+    assert.ok(cellsOf(action) >= first);
+    assert.ok(action.kind === "proclaim_era" && wallRoom(state, action.candidatePath!, target - lots).roomy, `target ${target}`);
+  }
   // No candidate holds 60 lots: the advisor still proclaims with the first acceptable wall (it never waits on room).
   assert.equal(cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild, 60))), first);
 });
