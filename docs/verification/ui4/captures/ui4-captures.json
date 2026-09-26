@@ -1,0 +1,118 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "errors": [],
+ "moments": {
+  "fire": {
+   "state": "fire-ignited",
+   "before": {
+    "chips": [],
+    "modal": null
+   },
+   "after": {
+    "chips": [
+     "불이 났습니다"
+    ],
+    "modal": null
+   },
+   "worldFirst": true,
+   "card": "불이 났습니다 | 초가 지붕에 불이 붙었습니다. 맞닿은 집으로 번질 수 있습니다 | 타는 집 1채 | 우물 물로 끄는 집 1채 | 우물을 집 가까이에, 초가 사이에 빈 칸을 두면 불이 멈춥니다 | 위치로 | 조언 | 닫기",
+   "defaultDelayMs": 1497
+  },
+  "wet_summer": {
+   "state": "dearth-wet-summer",
+   "before": {
+    "chips": [],
+    "modal": null
+   },
+   "after": {
+    "chips": [
+     "젖은 여름",
+     "흉년"
+    ],
+    "modal": null
+   },
+   "worldFirst": true,
+   "defaultDelayMs": 1505
+  },
+  "famine": {
+   "state": "famine-arrival",
+   "before": {
+    "chips": [],
+    "modal": null
+   },
+   "after": {
+    "chips": [
+     "대기근"
+    ],
+    "modal": "decision"
+   },
+   "worldFirst": true,
+   "options": [
+    "구휼 | 가난한 가구의 한 계절 빵을 기근 값으로 사서 곡창에 넣습니다. 떠나는 가구가 적지만 금고가 비어 갑니다 | 두 계절 뒤 예측 · 인구 473(지금 473) · 금고 2642d(지금 2642d)",
+    "가격 통제 | 값을 1.5배로 묶습니다. 가난한 가구도 빵을 사지만 상인들이 싫어합니다 | 두 계절 뒤 예측 · 인구 473(지금 473) · 금고 2642d(지금 2642d)",
+    "방관 | 아무것도 하지 않습니다. 빵을 못 사는 가구가 계절마다 떠납니다 | 두 계절 뒤 예측 · 인구 433(지금 473) · 금고 2642d(지금 2642d)",
+    "투기 | 곡창의 빵과 밀 1/4을 기근 값으로 팝니다. 금고는 차지만 가장 많이 떠납니다 | 두 계절 뒤 예측 · 인구 413(지금 473) · 금고 2642d(지금 2642d)"
+   ],
+   "afterChoice": {
+    "modal": false,
+    "response": {
+     "choice": "relief",
+     "tick": 67700
+    },
+    "dockVisible": true,
+    "paused": "일시 정지"
+   },
+   "responseBefore": null,
+   "defaultDelayMs": 1503
+  },
+  "petition": {
+   "state": "petition-open",
+   "before": {
+    "chips": [],
+    "modal": null
+   },
+   "after": {
+    "chips": [
+     "상인들의 청원"
+    ],
+    "modal": "petition"
+   },
+   "worldFirst": true,
+   "afterAnswer": {
+    "modal": false,
+    "rights": 1,
+    "chips": [
+     "상인들의 청원"
+    ]
+   },
+   "defaultDelayMs": 1497
+  },
+  "chapter_end": {
+   "state": "chapter-end",
+   "before": {
+    "chips": [],
+    "modal": null
+   },
+   "after": {
+    "chips": [
+     "대기근"
+    ],
+    "modal": "chronicle"
+   },
+   "worldFirst": true,
+   "page": {
+    "entries": 8,
+    "decisions": 3,
+    "text": "제1장 연대기 · 1300–1320\n이 장에 일어난 일\n1300년 봄\n포화의 시대가 왔다\n1302년 여름\n첫 화재가 닥쳤다\n1302년 겨울\n첫 화재에서 회복했다 — 불탄 집 1, 떠난 가구 0, 잃은 밀 0\n1303년 여름\n화재가 닥쳤다\n1303년 겨울\n화재에서 회복했다 — 불탄 집 2, 떠난 가구 0, 잃은 밀 0\n1304년 여름\n첫 흉년이 닥쳤다\n1316년 겨울\n기근과 취약의 시대가 왔다\n1320년 여름\n1장이 끝났다\n영주의 결정\n1316년 겨울 · 대기근 대응: 구휼\n다른 길: 가격 통제, 방관, 투기\n예측 인구 473 · 금고 2642d / 실제 인구 468 · 금고 2539d\n1307년 가을 · 상인 청원: 수락\n다른 길: 가격을 붙여 수락, 거절\n예측 금고 378d · 상인 게이지 65 / 실제 금고 501d · 상인 게이지 65\n1315년 겨울 · 시장도시 선포: 선포\n다른 길: 미룸\n예측 인구 473 · 필지 24 / 실제 인구 473 · 필지 24\n숫자로 본 장\n인구 처음 12 · 끝 463 · 가장 많을 때 475\n집 24채 · 불탄 집 3 · 떠난 가구 0\n잃은 수확 밀 3398 · 금고 2042d\n대기근(1316) 인구 닥칠 때 473 · 끝날 때 463\n제2장으로\n계속 (샌드박스)"
+   },
+   "preview": true,
+   "defaultDelayMs": 1507
+  },
+  "s12_leaving": {
+   "state": "household-leaving"
+  },
+  "s12_left": {
+   "state": "household-left"
+  }
+ }
+}

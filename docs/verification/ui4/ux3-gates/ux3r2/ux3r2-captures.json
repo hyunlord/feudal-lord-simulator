@@ -1,0 +1,64 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "errors": [],
+ "zone": {
+  "legend": "헛간이 닿는 땅 | 헛간·길 멂 — 안 가꿈 | 물·성벽 안",
+  "painted": [
+   [
+    "arable",
+    31
+   ]
+  ],
+  "undone": [],
+  "redone": [
+   [
+    "arable",
+    31
+   ]
+  ],
+  "erasedByRightClick": [
+   [
+    "arable",
+    18
+   ]
+  ]
+ },
+ "store": {
+  "cards": {
+   "granary": "6 / 200 · 들어올 몫 14 | 받는 품목 | 밀 | 빵 | 품목을 끄고 켜는 규칙은 아직 없습니다 — 지금은 규칙대로 받습니다 | 품목별 재고 · 이번 주 | 밀\t0\t0 | 빵\t6\t0 | 이 창고를 쓰는 곳 | 배급꾼 2명이 여기서 떠남 | 위치로",
+   "storehouse": "23 / 200 · 들어올 몫 3 | 받는 품목 | 원목 | 목재 | 원석 | 석재 | 품목을 끄고 켜는 규칙은 아직 없습니다 — 지금은 규칙대로 받습니다 | 품목별 재고 · 이번 주 | 원목\t23\t+2 | 목재\t0\t0 | 원석\t0\t0 | 석재\t0\t0 | 이 창고를 쓰는 곳 | 벌목소에서 원목 들여옴 | 위치로"
+  },
+  "ledger": " 곡창 1 벌목소 1 창고 1 합계 이번 주 버팀 | 빵 6 — — 20 0 54일 | 원목 — 1 23 27 +2 — | 목재 — — — 120 0 —",
+  "lit": [
+   "logs"
+  ],
+  "slot": "6 / 200 · 들어올 몫 14 | 받는 품목 | 밀 | 빵 | 품목을 끄고 켜는 규칙은 아직 없습니다 — 지금은 규칙대로 받습니다 | 품목별 재고 · 이번 주 | 밀\t0\t0 | 빵\t6\t0 | 이 창고를 쓰는 곳 | 배급꾼 2명이 여기서 떠남 | 위치로",
+  "site": {
+   "blocker": null,
+   "first": "🪵 목재 오는 중 (0/10)"
+  }
+ },
+ "road": {
+  "before": 14,
+  "afterFirst": 15,
+  "afterSecond": 19,
+  "afterEnterClick": 20,
+  "chainEndedByEnter": true
+ },
+ "tablet": {
+  "bar": true,
+  "before": 0,
+  "afterLift": 0,
+  "afterConfirm": 1,
+  "siteTile": {
+   "tx": 40,
+   "ty": 44
+  },
+  "target": {
+   "tx": 40,
+   "ty": 44
+  },
+  "barAfterConfirm": false,
+  "toolStays": true
+ }
+}

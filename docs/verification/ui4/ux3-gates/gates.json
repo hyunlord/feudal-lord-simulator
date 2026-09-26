@@ -1,0 +1,31 @@
+{
+ "pass": true,
+ "gates": {
+  "hudArea": true,
+  "tutorial13": true,
+  "touchTargets": true,
+  "inputReplay": true,
+  "touchReplay": true,
+  "gamepad": true,
+  "focusReturn": true,
+  "zoneUndoRedo": true,
+  "storeLedger": true,
+  "roadClickClick": true,
+  "tabletConfirm": true,
+  "noPageErrors": true
+ },
+ "detail": {
+  "tutorialPresses": [
+   22,
+   22
+  ],
+  "input": [
+   14,
+   14
+  ],
+  "touchReplay": [
+   14,
+   14
+  ]
+ }
+}

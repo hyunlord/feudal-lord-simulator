@@ -1,0 +1,111 @@
+{
+  "url": "http://127.0.0.1:4300/",
+  "pass": true,
+  "rows": [
+    {
+      "label": "RB until the hut tool is armed",
+      "cursor": {
+        "clientX": 640,
+        "clientY": 44.569599990844836,
+        "tx": 45,
+        "ty": 42
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "",
+      "hutArmed": true,
+      "pastureArmed": false,
+      "hint": ""
+    },
+    {
+      "label": "cursor on (48,40)",
+      "cursor": {
+        "clientX": 798.3303134129465,
+        "clientY": 63.7972332607726,
+        "tx": 48,
+        "ty": 40
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "",
+      "hutArmed": true,
+      "pastureArmed": false,
+      "hint": ""
+    },
+    {
+      "label": "A places a hut",
+      "cursor": {
+        "clientX": 798.3303134129465,
+        "clientY": 63.7972332607726,
+        "tx": 48,
+        "ty": 40
+      },
+      "device": "gamepad",
+      "sites": "house@48,40",
+      "zones": "",
+      "hutArmed": true,
+      "pastureArmed": false,
+      "hint": ""
+    },
+    {
+      "label": "B disarms",
+      "cursor": {
+        "clientX": 798.3303134129465,
+        "clientY": 63.7972332607726,
+        "tx": 48,
+        "ty": 40
+      },
+      "device": "gamepad",
+      "sites": "house@48,40",
+      "zones": "",
+      "hutArmed": false,
+      "pastureArmed": false,
+      "hint": ""
+    },
+    {
+      "label": "B on the site cancels it",
+      "cursor": {
+        "clientX": 798.3303134129465,
+        "clientY": 63.7972332607726,
+        "tx": 48,
+        "ty": 40
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "",
+      "hutArmed": false,
+      "pastureArmed": false,
+      "hint": ""
+    },
+    {
+      "label": "X x3 = pasture brush",
+      "cursor": {
+        "clientX": 798.3303134129465,
+        "clientY": 63.7972332607726,
+        "tx": 48,
+        "ty": 40
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "",
+      "hutArmed": false,
+      "pastureArmed": true,
+      "hint": ""
+    },
+    {
+      "label": "A held + stick (52,46) -> (55,46) paints",
+      "cursor": {
+        "clientX": 829.8232624599011,
+        "clientY": 270.882838162034,
+        "tx": 55,
+        "ty": 46
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "pasture:25",
+      "hutArmed": false,
+      "pastureArmed": true,
+      "hint": ""
+    }
+  ]
+}
