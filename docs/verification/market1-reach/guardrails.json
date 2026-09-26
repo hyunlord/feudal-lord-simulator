@@ -1,0 +1,58 @@
+{
+ "runner": "DGX",
+ "runs": {
+  "run1@b5a2c482": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 174294,
+    "baselineVictoryTick": 143648,
+    "finalTick": 290606,
+    "baselineFinalTick": 282868,
+    "markets": 1,
+    "baselineMarkets": 2
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 163809,
+    "baselineVictoryTick": 171536,
+    "finalTick": 215964,
+    "baselineFinalTick": 214105,
+    "markets": 1,
+    "baselineMarkets": 2
+   },
+   {
+    "seed": 3,
+    "status": "passed",
+    "victoryTick": 166980,
+    "baselineVictoryTick": 149819,
+    "finalTick": 325167,
+    "baselineFinalTick": 287126,
+    "markets": 1,
+    "baselineMarkets": 2
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 176092,
+    "baselineVictoryTick": 180922,
+    "finalTick": 350164,
+    "baselineFinalTick": 219124,
+    "markets": 1,
+    "baselineMarkets": 2
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 161044,
+    "baselineVictoryTick": 281230,
+    "finalTick": 250598,
+    "baselineFinalTick": 422579,
+    "markets": 1,
+    "baselineMarkets": 2
+   }
+  ]
+ },
+ "note": "5/5 pass, but seed 3 held at 9 lots with L4 0 from 72,000 to 120,000 ticks (the service planner's market search ran out of budget), and seed 4 stabilised at 350,164 against 219,124. Run 1 was before the diagnosis-layer, house-reach and proof fixes."
+}

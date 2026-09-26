@@ -59,7 +59,8 @@ test('Given existing capacity serves all homes When selecting another well Then 
 
 test('Given market workers are already promised to construction When selecting services Then shortage is diagnosed', () => {
   const state = fixture();
-  state.buildings = state.buildings.filter(b => b.id !== 'market2');
+  // MARKET-1 (MK-2): with no market standing the first is always allowed, so the planner reaches the worker check.
+  state.buildings = state.buildings.filter(b => b.kind !== 'market');
   const diagnostic: ServicePlanningCollector = {};
   const action = urbanServiceAction({ ...state, population: 12, idleWorkers: 12,
     constructionSites: [createConstructionSite({ ordinal: 99, kind: 'mill', tx: 25, ty: 13, startedTick: 0 })] }, diagnostic);

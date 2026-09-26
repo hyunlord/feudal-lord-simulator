@@ -16,7 +16,8 @@ for (const [name, changed] of [
   ['unknown observation', { known: false }],
   ['empty eligibility denominator', { eligibleMillTicks: 0 }],
   ['arable cells over the per-lot cap', { arableCells: 24 * 10 + 1 }], ['extra granary', { granaries: 8 }],
-  ['extra market', { markets: 3 }], ['extra church', { churches: 3 }],
+  // MARKET-1 (MK-2): 24 lots allow 1 + ⌊24 ÷ 12⌋ = 3 markets; a fourth is extra.
+  ['extra market', { markets: 4 }], ['extra church', { churches: 3 }],
 ] as const) test(`efficiency fails ${name}`, () => {
   assert.equal(efficientAcceptance({ ...metrics, ...changed }).passed, false);
 });

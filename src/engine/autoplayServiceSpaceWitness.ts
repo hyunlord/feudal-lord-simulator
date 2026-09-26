@@ -40,9 +40,13 @@ function candidatePads(state: GameState, home: Building, kind: UrbanService, rea
 function allocationForHome(state: GameState, home: Building, buildings: readonly Building[], potential: GameState) {
   const lots = buildings.filter(building => building.kind === 'house').reduce((sum, building) => sum + houseLotArea(building), 0);
   // Below both capacities, other homes cannot exhaust any provider; only the target's reachability affects its allocation.
+  // MARKET-1 (MK-4): the proof keeps the 8-tile radius over the potential roads (a road connection only, no road reach):
+  // the reach of 40 steps was calibrated to cover what that radius covers in the towns, and a reach measured on roads
+  // not yet built would refuse sites the finished roads serve.
+  const connected = marketRoadService(potential);
   const roadService = lots <= Math.min(HOUSEHOLD_SERVICE_CONFIG.market.capacity, HOUSEHOLD_SERVICE_CONFIG.church.capacity)
     ? (candidate: Building, provider: Building) => candidate.id !== home.id || serviceRoadConnected(potential, candidate, provider)
-    : marketRoadService(potential);
+    : (candidate: Building, provider: Building) => connected(candidate, provider);
   return allocateHouseServices({ houses: serviceSpaceHouses(state, buildings), buildings: staffed(buildings), roadService });
 }
 function jointlyServed(state: GameState, home: Building, buildings: readonly Building[], additions: readonly Building[]): ServiceSpaceWitness | null {
