@@ -1,0 +1,162 @@
+[
+ {
+  "file": "winter-z1-before.jpg",
+  "tick": 679251,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "winter-z1-after.jpg",
+  "tick": 679251,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "winter-z06-before.jpg",
+  "tick": 679251,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "winter-z06-after.jpg",
+  "tick": 679251,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "spring-z1-before.jpg",
+  "tick": 680251,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "spring-z1-after.jpg",
+  "tick": 680251,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "newgame-winter-before.jpg",
+  "tick": 3300,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "newgame-winter-after.jpg",
+  "tick": 3300,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "newgame-autumn-before.jpg",
+  "tick": 2300,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "newgame-autumn-after.jpg",
+  "tick": 2300,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "newgame-summer-before.jpg",
+  "tick": 1300,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "newgame-summer-after.jpg",
+  "tick": 1300,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "signals-before.jpg",
+  "tick": 8023,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "signals-after.jpg",
+  "tick": 8023,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "signals-roadcut-before.jpg",
+  "tick": 8495,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "signals-roadcut-after.jpg",
+  "tick": 8492,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "lod-z135-before.jpg",
+  "tick": 348668,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "lod-z135-after.jpg",
+  "tick": 348668,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "file": "lod-z06-before.jpg",
+  "tick": 348671,
+  "build": "http://127.0.0.1:4350/"
+ },
+ {
+  "file": "lod-z06-after.jpg",
+  "tick": 348670,
+  "build": "http://127.0.0.1:4300/"
+ },
+ {
+  "chain": {
+   "sack-cart": {
+    "file": "chain-2-sack-cart.jpg",
+    "tick": 348619,
+    "note": "carter carter:construction-site-000038:push:348616 carrying 4 wheat",
+    "mark": {
+     "x": 240,
+     "y": 200
+    }
+   },
+   "mill-working": {
+    "file": "chain-3-mill-working.jpg",
+    "tick": 348619,
+    "note": "mill construction-site-000003: 13 wheat, baking 8.00",
+    "mark": {
+     "x": 240,
+     "y": 200
+    }
+   },
+   "mill-bread": {
+    "file": "chain-4-mill-bread.jpg",
+    "tick": 348619,
+    "note": "mill construction-site-000003: 14 bread waiting",
+    "mark": {
+     "x": 231,
+     "y": 200
+    }
+   },
+   "bread-basket": {
+    "file": "chain-5-bread-basket.jpg",
+    "tick": 348619,
+    "note": "distributor distributor:construction-site-000025:348360 on its round",
+    "mark": {
+     "x": 240,
+     "y": 200
+    }
+   },
+   "roof-smoke": {
+    "file": "chain-6-roof-smoke.jpg",
+    "tick": 348668,
+    "note": "house house-44-42-0: bread 6 -> 9",
+    "mark": {
+     "x": -101,
+     "y": 200
+    }
+   },
+   "sheaves": {
+    "file": "chain-1-sheaves.jpg",
+    "tick": 349511,
+    "note": "farmstead construction-site-000049: strip harvested (2 cells)",
+    "mark": {
+     "x": 45,
+     "y": 200
+    }
+   }
+  },
+  "missing": [],
+  "source": "Mac run (local Chrome, 1280x800): see REPORT (the DGX view of the whole town did not fit)"
+ }
+]

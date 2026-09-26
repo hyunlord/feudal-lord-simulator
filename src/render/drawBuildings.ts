@@ -8,6 +8,7 @@ import { drawHouseCondition } from "./houseConditionOverlay";
 import { drawHouseCompound } from "./houseCompound";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { GameState } from "../engine/engine.types";
+import { stateCalendar } from "../engine/scenarioState";
 import type { Building } from "../economy/economy.types";
 import { PALETTE } from "../content/palette";
 import type { Tile } from "../world/world.types";
@@ -184,8 +185,7 @@ function drawBuildingDetail(
     center,
     building,
     houseLevel: visualState.houseLevel,
-    houseMaterialEra: visualState.houseMaterialEra,
-    zoom: input.zoom,
+    houseMaterialEra: visualState.houseMaterialEra, zoom: input.zoom, winter: stateCalendar(input.state).season === 3,
   };
   if (detailLevel === "blocks") {
     drawLodBlock(context, shape);
