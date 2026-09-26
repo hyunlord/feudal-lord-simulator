@@ -1,6 +1,6 @@
 # REMOTE-1 DGX 원격 실행기 — 보고서
 
-관문: ①회귀 2,944/2,944 · ②가드레일 실행 성공 · ③브라우저 10/10 · ④동시 통과 · ⑤자원 제한 확인 · ⑥기준선 기록
+관문: ①회귀 2,944/2,944(Node 24 재확인 2,954/2,954) · ②가드레일 실행 성공 · ③브라우저 10/10 · ④동시 통과 · ⑤자원 제한 확인 · ⑥기준선 기록
 
 Claude Code 작업이다. 스크립트·문서만 바꿨고 게임 코드는 0줄이다. 플레이 서버(4173)는 건드리지 않았다. 사용법은 [REMOTE_RUNS.md](../../REMOTE_RUNS.md)에 있다.
 
@@ -25,6 +25,16 @@ Claude Code 작업이다. 스크립트·문서만 바꿨고 게임 코드는 0�
 ## 필수 조건
 - 깨끗한 클론 `6c5088f`는 `npm run remote:clone-check`로 확인했다. 미러에서 clone한 뒤 GitHub에서 LFS pull(129초), npm ci, typecheck, 전체 회귀 2,944/2,944, build 순서로 모두 통과했다.
 - 한 번 실행에 더 드는 시간은 캐시 적중 때 약 8~12초다(rsync 5.5~8.4초, 준비 2.0~3.5초). 첫 실행 때는 동기화 38.5초와 npm ci 3.2초가 들었다.
+
+## Node 24 전환(후속)
+- **설치:** Node 24.21.0 LTS를 `~/fls-runs/_tools/node`에 설치했다(버전·SHA256 고정, `setup-dgx.sh`). **시스템 Node는 20, 게임은 `_tools`의 24다.** `/usr/bin/node`(20.20.0)는 DGX의 다른 작업이 쓰므로 그대로 두었다(사용자 결정).
+- **원격 실행:** `PATH` 맨 앞에 `_tools/node/bin`을 넣는다. `--experimental-websocket` 우회는 지웠다. Node 24 테스트 요약(spec 형식 `ℹ pass N`)도 읽는다.
+- **플레이 서버:**
+  - `fls-play.service`의 `ExecStart`와 갱신 서비스의 `PATH`를 `_tools` Node 24로 바꿨다.
+  - 순서: 단위 설치·`daemon-reload`(재시작 없음) → Node 24로 `485a3ce` 빌드·원자 교체(`build.json` `"node": "v24.21.0"`, 그동안 옛 서버가 200을 냈다) → 서버 한 번 재시작.
+  - 재시작 동안 0.2초 간격으로 40번 찔러 1번 응답이 없었다(0.2초 안팎). 새 PID의 실행 파일은 `node-v24.21.0-linux-arm64/bin/node`다.
+- **확인(`485a3ce`, Node 24):** 전체 회귀 2,954/2,954(379초). 깨끗한 클론은 clone+LFS 128초, npm ci, typecheck, 2,954/2,954, build 모두 통과.
+- **PLAY.md:** 지원 버전을 "Node.js 22 이상(22.x는 22.12 이상, 권장 24 LTS)"으로 고쳤다.
 
 ## 발견
 - **Node 20과 전역 WebSocket:** DGX의 Node 20에는 전역 `WebSocket`이 없어서 CDP 테스트 2건이 실패했다. 지금은 원격 실행에서 `--experimental-websocket`으로 맞춘다. PLAY.md는 Node 20.19 이상을 지원한다고 적는다 → 다음 후보(Node 22 이상으로 올리기).
