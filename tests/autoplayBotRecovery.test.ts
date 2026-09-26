@@ -8,7 +8,12 @@ import { autoplayBuildAction, decideNextAction } from "../src/engine/autoplay";
 import { backedUpBarns, barnMillAction, MILL_NEAR_BARN } from "../src/engine/autoplayBarnMill";
 import { granaryGapAction, granaryGapHouses, insideWall, marketGapAction, marketGapHouses, strandedMarketHouses, type BotRecoveryCollector } from "../src/engine/autoplayBotRecovery";
 import { housingLotsStillNeeded, interiorHouseSites, keepsInteriorHouseSites } from "../src/engine/autoplayInteriorPlots";
-import { timberDemandExpansionKind } from "../src/engine/autoplayTimberDemand";
+import { logOverflowKind, timberDemandExpansionKind } from "../src/engine/autoplayTimberDemand";
+import { autoplayEraAction, wallInteriorCells } from "../src/engine/autoplayEra";
+import { stretchedWallCandidates, wallRoom, WALL_FREE_CELLS_PER_NEW_LOT, WALL_ROAD_SHARE_MAX } from "../src/engine/autoplayWallRoom";
+import { confirmPalisadeProclamation } from "../src/engine/palisade";
+import { computePalisadeProposalForState } from "../src/engine/palisadeFootprints";
+import { runAutoplaySearch } from "../src/engine/autoplaySearchBudget";
 import { timberExpansionKind } from "../src/engine/autoplayTimberRecovery";
 import { housingLotCount } from "../src/population/housing";
 import type { GameState } from "../src/engine/engine.types";
@@ -33,6 +38,11 @@ const SEED3_INTERIOR = "fixtures/autoplay/seed3-120000.json.gz";
 // F0-A guardrail run 1 (2820a00), seed 4 at 1,200,000 ticks: L4 14/24, two edge barns with 800–900 wheat, nine central
 // mills at 0–1 wheat (AR-8).
 const SEED4_BARNS = "fixtures/autoplay/seed4-f0a-1200000.json.gz";
+// BOT-2: seed 3 the tick before its palisade (F0-B..F0-C2 runs, 9 of 24 lots, water north and east), seed 1 the tick
+// before its palisade (24 lots), and seed 5 with logs filling every storehouse (F0-C1 run 2, before AR-10).
+const SEED3_PRE_PALISADE = "fixtures/autoplay/seed3-40763-pre-palisade.json.gz";
+const SEED1_PRE_PALISADE = "fixtures/autoplay/seed1-78560-pre-palisade.json.gz";
+const SEED5_LOG_OVERFLOW = "fixtures/autoplay/seed5-276000-log-overflow.json.gz";
 const POLICY = { maxHousingLots: 24 } as const;
 
 function runWithAdvisor(state: GameState, ticks: number): GameState {
@@ -200,4 +210,46 @@ test("B8 a healthy town with a full barn right after its harvest gets no barn mi
   const state = loadAutoplayFixture(SEED4_BARNS);
   const healthy = { ...state, houses: state.houses.map(house => ({ ...house, level: Math.max(house.level, house.builtLevel ?? house.level) })) };
   assert.deepEqual(backedUpBarns(healthy), []);
+});
+
+test("B9 AR-11 seed 3: the hull of its buildings has no room for 15 more lots, so the bot proclaims a wall stretched toward open land", () => {
+  const state = loadAutoplayFixture(SEED3_PRE_PALISADE);
+  const remaining = 24 - housingLotCount(state);
+  assert.equal(remaining, 15);
+  // The old choice: the panel's first proposal, the hull of the buildings.
+  const hull = computePalisadeProposalForState(state);
+  assert.ok(hull.ok);
+  const hullRoom = wallRoom(state, hull.path, remaining);
+  assert.equal(hullRoom.interior, 131);
+  assert.equal(hullRoom.roomy, false, `${hullRoom.free} free cells for ${remaining} lots`);
+  // Stretched candidates exist only toward open land (south); every one encloses the core and clears the buildings.
+  assert.ok(stretchedWallCandidates(state).length >= 1);
+  const action = runAutoplaySearch(() => autoplayEraAction(state, (current, kind) => autoplayBuildAction(current, kind), 24));
+  assert.equal(action.kind, "proclaim_era");
+  const path = (action as { candidatePath: Parameters<typeof confirmPalisadeProclamation>[1] }).candidatePath;
+  const room = wallRoom(state, path, remaining);
+  assert.ok(room.roomy);
+  assert.ok(room.free >= remaining * WALL_FREE_CELLS_PER_NEW_LOT && room.roads <= room.interior * WALL_ROAD_SHARE_MAX);
+  const proclaimed = confirmPalisadeProclamation(state, path);
+  assert.notEqual(proclaimed, state, "the stretched wall is a valid proclamation");
+  assert.equal(wallInteriorCells(proclaimed), room.interior);
+  assert.ok(room.interior > hullRoom.interior + 50, `${room.interior} cells`);
+});
+
+test("B9 AR-11 seed 1: a hamlet already at its lots proclaims the same wall as before (no room check)", () => {
+  const state = loadAutoplayFixture(SEED1_PRE_PALISADE);
+  assert.equal(housingLotCount(state), 24);
+  const action = runAutoplaySearch(() => autoplayEraAction(state, (current, kind) => autoplayBuildAction(current, kind), 24));
+  assert.equal(action.kind, "proclaim_era");
+  const proclaimed = confirmPalisadeProclamation(state, (action as { candidatePath: Parameters<typeof confirmPalisadeProclamation>[1] }).candidatePath);
+  assert.equal(wallInteriorCells(proclaimed), 182, "the wall of the F0-C2 guardrail run");
+});
+
+test("B10 AR-10 seed 5 (F0-C1 run 2): logs fill the storehouses while the sawmill is the short side, and the bot places another sawmill first", () => {
+  const state = loadAutoplayFixture(SEED5_LOG_OVERFLOW);
+  assert.equal(state.tick, 276_000);
+  assert.equal(logOverflowKind(state), "sawmill");
+  const action = runAutoplaySearch(() => decideNextAction(state));
+  assert.equal(action.kind, "place_building");
+  assert.equal((action as { building: string }).building, "sawmill");
 });
