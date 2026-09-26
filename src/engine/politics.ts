@@ -3,9 +3,10 @@
  * events (a no-op between the ladder's 50-tick samples):
  *
  * - FC-2 famine answer (`famineResponse`): chosen once while the famine arrives. At every season's start of the famine,
- *   relief buys bread into a granary with treasury money (`famine_relief`), speculation sells granary grain into the
- *   treasury (`famine_sale`), price control costs the merchants' goodwill. The departure cap and the price cap are read
- *   by the ladder and the market (`departureCapPerSeason`, `foodPricePermille`).
+ *   relief hands the poor their season's bread — bought into a granary with treasury money, the rest released from the
+ *   granaries' bread, both at the market price (`famine_relief`, cash and in kind; FC-2a in `famineRelief.ts`),
+ *   speculation sells granary grain into the treasury (`famine_sale`), price control costs the merchants' goodwill.
+ *   The departure cap and the price cap are read by the ladder and the market (`departureCapPerSeason`, `foodPricePermille`).
  * - FC-3 petition: arrives at the seed's season in its years once the town has its building; the answer (`respondToPetition`)
  *   grants the right (stall fee), takes a charter price, moves the gauge. Unanswered at its years' end it expires.
  * - FC-4 rights: `rights[]`, one line per right, published in the B1 pipe with source `{type:"right"}`.
@@ -13,7 +14,6 @@
  *   and it is a market town, chapter 1 ends and its chronicle page is written.
  */
 import { EffectRegistry, SETTLEMENT_REGION_ID, type SourceRef } from "../contracts";
-import { BUILDING_CONFIG_BY_KIND, operationSuspended } from "../content/buildingConfig";
 import {
   CHAPTER_ONE,
   FAMINE_RESPONSE_CONFIG,
@@ -24,14 +24,14 @@ import {
   type PetitionResponse,
 } from "../content/chapterConfig";
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
-import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
 import { postLedgerEntries } from "../ledger/ledger";
 import type { LedgerPosting } from "../ledger/ledger.types";
 import type { GameState } from "./engine.types";
-import { SEASON_TICKS, dearthEndTick, famineShortHouses, recordStage } from "./eventSchedule";
+import { SEASON_TICKS, dearthEndTick, recordStage } from "./eventSchedule";
 import type { EventRecord } from "./events.types";
 import { eventSource } from "./events";
 import { marketSalePrice } from "./marketSettlement";
+import { famineGranaries, reliefSeason } from "./famineRelief";
 import type { ChapterEnd, ChronicleEntry, DecisionRecord, PetitionRecord, PoliticsState } from "./politics.types";
 import { hashSeed } from "./prng";
 import { chapterPageRecords } from "./history";
@@ -80,44 +80,38 @@ export function famineResponse(state: GameState, choice: FamineResponseChoice): 
   };
 }
 
-function granaries(state: GameState) {
-  return state.buildings.filter(building => building.kind === "granary" && !operationSuspended(building)).sort((a, b) => a.id.localeCompare(b.id));
-}
-
-/** Bread the town eats in a season at the ration (every lived-in house). */
-function seasonBread(state: GameState): number {
-  const ration = state.houses.reduce((sum, house) => sum + (house.residents > 0 ? houseFoodRation(house) : 0), 0);
-  return Math.ceil(ration * SEASON_TICKS / HOUSE_FOOD_INTERVAL);
-}
-
-
 /** FC-2: a season's relief or speculation, at the season's start while the famine arrives. */
 function stepFamineResponse(state: GameState, record: EventRecord): GameState {
   const choice = record.response?.choice;
   const source = eventSource(record, choice);
   if (choice === "relief") {
-    const granary = granaries(state)[0];
-    const price = marketSalePrice(state, "bread");
-    const poor = new Set(famineShortHouses(state, true));
-    const need = seasonBread({ ...state, houses: state.houses.filter(house => poor.has(house.buildingId)) });
-    // FC3: at most the last season's cash income (and half the treasury): the famine eats the earnings, not the savings.
-    const income = state.seasons?.history.at(-1)?.income ?? 0;
-    const budget = Math.min(income, Math.floor(Math.max(0, state.treasuryCoin) * FAMINE_RESPONSE_CONFIG.reliefTreasuryPermille / 1000));
-    const capacity = granary === undefined ? 0 : Math.max(0, BUILDING_CONFIG_BY_KIND.granary.storageCapacity
-      - Object.values(granary.inventory).reduce((sum, amount) => sum + (amount ?? 0), 0));
-    const bread = price <= 0 ? 0 : Math.min(need, Math.floor(budget / price), capacity);
-    if (granary === undefined || bread <= 0) return state;
-    const posted = postLedgerEntries(state, [{ account: "cash", category: "famine_relief", amount: -bread * price,
-      sourceRefs: [source, { type: "building", id: granary.id, detail: `bread:${bread}` }] }]);
-    return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger,
-      buildings: state.buildings.map(building => building.id === granary.id ? { ...building, inventory: { ...building.inventory, bread: (building.inventory.bread ?? 0) + bread } } : building) };
+    // FC-2a: the poor's season of bread, bought with cash first (FC3), the rest released from the granaries.
+    const { price, bought, released } = reliefSeason(state);
+    if (bought <= 0 && released <= 0) return state;
+    const stores = famineGranaries(state);
+    const granary = stores[0]!;
+    const postings: LedgerPosting[] = [];
+    if (bought > 0) postings.push({ account: "cash", category: "famine_relief", amount: -bought * price,
+      sourceRefs: [source, { type: "building", id: granary.id, detail: `bread:${bought}` }] });
+    // The release is valued at the market price, in kind (no money moves; the bread goes out through the town's usual trade).
+    let left = released;
+    for (const store of stores) {
+      const bread = Math.min(left, Math.max(0, store.inventory.bread ?? 0));
+      if (bread <= 0) continue;
+      left -= bread;
+      postings.push({ account: "in_kind", category: "famine_relief", amount: -bread * price, resource: "bread",
+        sourceRefs: [source, { type: "building", id: store.id, detail: `bread:${bread}` }] });
+    }
+    const posted = postLedgerEntries(state, postings);
+    return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, buildings: bought <= 0 ? state.buildings
+      : state.buildings.map(building => building.id === granary.id ? { ...building, inventory: { ...building.inventory, bread: (building.inventory.bread ?? 0) + bought } } : building) };
   }
   if (choice === "speculation") {
     const postings: LedgerPosting[] = [];
     const breadPrice = marketSalePrice(state, "bread");
     const wheatPrice = marketSalePrice(state, "wheat");
     const sold = new Map<string, { bread: number; wheat: number }>();
-    for (const granary of granaries(state)) {
+    for (const granary of famineGranaries(state)) {
       const bread = Math.floor(Math.max(0, granary.inventory.bread ?? 0) * FAMINE_RESPONSE_CONFIG.speculationPermille / 1000);
       const wheat = Math.floor(Math.max(0, granary.inventory.wheat ?? 0) * FAMINE_RESPONSE_CONFIG.speculationPermille / 1000);
       const amount = bread * breadPrice + wheat * wheatPrice;
