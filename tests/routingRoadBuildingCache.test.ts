@@ -137,10 +137,12 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // differs from F0-A (4bdd32a8… / fe6ed3b3…). Cold and warm caches still agree (below).
   // F0-C1: the state records politics (petitions, rights, the chapter) and the market charter lowers stall fees, so the
   // state differs from F0-B (1aaecca7… / 0effea2a…).
-  assert.equal(hash(warm), '295502ea582dc05d9fb86c8b76f50099627b3e6ec75023348f048c77029d7eb8');
+  // PERSON-0: the state records the town's persons (names, births, deaths, offices), so it differs from F0-C1
+  // (295502ea… / 24f719ed…). Cold and warm caches still agree (below).
+  assert.equal(hash(warm), 'ffe8e1a697fa219404b96b53338f7b3cf00ef3c62ac1d53b37fe68e74b58e947');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, history: _history, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '24f719ed7f3841658308325a1db67afbf0e871fd4b29d21c15965dd26f74d20b');
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '180663ef0348f23ff5e572dd2f34d42738aa55346cfcbb1c04a1c32dc804b953');
   assert.equal(hash(coldState), hash(warm));
   assert.deepEqual(coldState.history, warm.history);
 });

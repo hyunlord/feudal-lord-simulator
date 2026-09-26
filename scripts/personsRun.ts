@@ -13,7 +13,7 @@ import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
 const [seedArg, maxArg, outArg] = process.argv.slice(2);
 const seed = Number(seedArg);
 const maxTicks = Number(maxArg ?? 100_000);
-const counts = { born: 0, married: 0, founded: 0, arrived: 0, died: {} as Record<string, number>, left: 0 };
+const counts = { born: 0, married: 0, founded: 0, arrived: 0, appointed: 0, died: {} as Record<string, number>, left: 0 };
 const samples: { tick: number; population: number; living: number; adults: number; children: number; elders: number }[] = [];
 let invariantBreaks = 0;
 let startLiving: number | null = null;
@@ -36,6 +36,7 @@ runPhase19NaturalGrowth({ targetLots: 24, maxTicks, seed, additionalAcceptance: 
       else if (person.role === "spouse") counts.married += 1;
       else if (person.role === "head") counts.founded += 1;
       else if (person.role === "kin" || person.role === "child") counts.arrived += 1;
+      else if (person.role === "steward") counts.appointed += 1;
     }
     for (const person of after.past.slice(before.past.length)) {
       if (!person.alive) counts.died[person.deathCause ?? "age"] = (counts.died[person.deathCause ?? "age"] ?? 0) + 1;
@@ -75,8 +76,8 @@ const result = {
   portraits: { checks: portraitChecks, exact: portraitExact, share: portraitChecks === 0 ? null : portraitExact / portraitChecks, misses },
   counts, deaths,
   // New persons − those who died or left = the change of the living (from the first tick with persons).
-  accounting: { startLiving, endLiving: final.persons.people.length, added: counts.born + counts.married + counts.founded + counts.arrived, gone: deaths + counts.left,
-    balanced: startLiving !== null && final.persons.people.length - startLiving === counts.born + counts.married + counts.founded + counts.arrived - deaths - counts.left },
+  accounting: { startLiving, endLiving: final.persons.people.length, added: counts.born + counts.married + counts.founded + counts.arrived + counts.appointed, gone: deaths + counts.left,
+    balanced: startLiving !== null && final.persons.people.length - startLiving === counts.born + counts.married + counts.founded + counts.arrived + counts.appointed - deaths - counts.left },
   ageBands: { adults: end.adults, children: end.children, elders: end.elders },
   offices: {
     steward: personsByRole(final, "steward").map(displayName),
