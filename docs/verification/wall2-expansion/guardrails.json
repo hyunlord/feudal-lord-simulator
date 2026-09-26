@@ -1,0 +1,59 @@
+{
+ "runner": "DGX, scripts/remote/run.sh --task guardrail (REMOTE-1)",
+ "baseline": "seeds/baseline-cbc84d0.json",
+ "runs": {
+  "run1@e9c80af7": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 143648,
+    "finalTick": 282868,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "sameAsBaseline": true
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 171536,
+    "finalTick": 214105,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "sameAsBaseline": true
+   },
+   {
+    "seed": 3,
+    "status": "passed",
+    "victoryTick": 149819,
+    "finalTick": 287126,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "sameAsBaseline": true
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 180922,
+    "finalTick": 219124,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "sameAsBaseline": true
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 281230,
+    "finalTick": 422579,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "sameAsBaseline": true
+   }
+  ]
+ },
+ "note": "5/5; every seed's victory and final tick equal to the PERSON-0 baseline: the AR-11 walls hold their lots, so AR-12 never widened a wall in these towns (the rule and the bot step are exercised by W1-W6 on the seed 3 small-wall town)."
+}

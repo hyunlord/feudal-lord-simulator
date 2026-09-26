@@ -185,12 +185,12 @@ test("N9 the ledger's life records are the persons': born, died, a household's l
   assert.ok(records.every(record => record.template !== "person.grew" && record.template !== "person.shrank"), "sizes are births and deaths now");
 });
 
-test("N10 a town with persons round-trips through save v16 and runs on identically; v15 promotes", () => {
+test("N10 a town with persons round-trips through the save (v16+) and runs on identically; v15 promotes", () => {
   let state = fixture("population-176");
   for (let tick = 0; tick < 1_500; tick += 1) state = advanceTick(state);
   const loaded = decodeSave(encodeSave({ state, createdAt: "2026-09-27T00:00:00.000Z", savedAt: "2026-09-27T00:00:00.000Z" }).bytes);
-  assert.equal(SAVE_SCHEMA_VERSION, 16);
-  assert.equal(loaded.envelope.schemaVersion, 16);
+  assert.ok(SAVE_SCHEMA_VERSION >= 16);
+  assert.equal(loaded.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
   assert.deepEqual(loaded.envelope.state, state);
   let a = state;
   let b = loaded.envelope.state as GameState;
