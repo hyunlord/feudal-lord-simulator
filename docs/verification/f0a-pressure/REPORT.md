@@ -78,7 +78,7 @@
 - v11 저장이 v12로 오른다(계절 열림·들어갈 시대 진입·모든 가구 정착). v0~v11 고정물이 모두 v12로 오른다.
 - 지문은 `schemaFingerprint.v12.json`, 고정물은 `fixtures/saves/v12/`다.
 
-**⑤ 깨끗한 클론** — CLONE_LINE
+**⑤ 깨끗한 클론** — origin `claude/f0a-pressure` `1c5f919`(본선 병합 뒤): `npm ci`·typecheck·build·`npm test` 2,930/2,930·`npm audit --omit=dev` 0(240초). 그 뒤 커밋은 이 줄뿐이다.
 
 **필수 조건** — 본선 합치기: 본선(UX-2·INSTALL-5c·INBOX-1b)을 브랜치에 merge했다(`816c05a`). 충돌은 `tests/residentTrips.test.ts`(장날 박동 + 아이·노인 워커, 둘 다 유지)와 STATUS였다. 합친 뒤 전체 2,930/2,930이다. 렌더 파일 변경은 `buildingVisualState.ts` +3줄(예외 18번)뿐이다.
 
@@ -108,4 +108,4 @@
 
 ## 소요 시간
 
-1차 00:04 ~ 01:31 KST(약 1시간 27분), 3회차 지시 뒤 08:50 ~ END_TIME KST. 상한 6시간 안이다.
+1차 00:04 ~ 01:31 KST(약 1시간 27분), 3회차 지시 뒤 08:45 ~ 09:17 KST(약 32분). 상한 6시간 안이다.
