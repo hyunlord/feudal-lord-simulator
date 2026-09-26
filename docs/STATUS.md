@@ -1,11 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-26(BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **HIST-1 긴 판의 원장 크기 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 원장만 · 렌더 0줄, 검증 DGX): [보고서](verification/hist1-ledger-size/REPORT.md), [기록 원장 명세](design/history-ledger.md) HL-10, 결정 HL9·HL10.
+  - 계절이 닫힐 때 8계절 지난 일상 기록을 계절 요약 한 건(`ledger.rollup`: 건수·템플릿별·일상 결정 종류별 명령 수·결산 줄)으로 접고, 축소판은 최근 8계절 + 해마다 겨울 끝 + 시대급만. 큰 결정·사건·이정표·심각도 1 이상·입주는 영구. 저장 v15 그대로.
+  - seed 3 1,200,000틱 원장 847 KB(접지 않으면 2.75 MB), 조회 10종 동일. F0-C2의 멈춘 seed 3 원장은 8.8 MB → 1.5 MB.
 
 - **BOT-2 가드레일 5/5 되찾기 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 봇만 · 규칙 diff 0 · 렌더 0줄, 검증 DGX): [보고서](verification/bot2-wall/REPORT.md), [복구 명세](design/autoplay-recovery.md) AR-10·AR-11, 결정 BT9·BT10, 새 기준선 [`seeds/baseline-90fb216.json`](../seeds/baseline-90fb216.json).
   - 성벽 여유(AR-11): 정책보다 적은 필지로 선포할 때 성 안 자유 집 칸 ≥ 남은 필지 × 6 · 길 ≤ 30 %, 없으면 트인 쪽으로 늘인 벽. seed 3 알려진 정지(EV8·FC11) 해소 — 204칸 목책, 296,548틱 L4 24/24.

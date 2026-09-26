@@ -1,6 +1,6 @@
 # 기록 원장 명세 (F0-C2) — 모든 결정·사건·변화가 남는다
 
-지시서: F0-C2 기록 원장 v0. 근거: [연대기 설계서](CHRONICLE_DESIGN.md) 1절(원장 타입·원천·심각도·스냅샷). 앞 단계: [1장 명세](flow-chapter-one.md) FC-5(연대기 한 쪽), [사건 명세](flow-events.md)(예고 사다리). 결정: HL1~HL8.
+지시서: F0-C2 기록 원장 v0. 근거: [연대기 설계서](CHRONICLE_DESIGN.md) 1절(원장 타입·원천·심각도·스냅샷). 앞 단계: [1장 명세](flow-chapter-one.md) FC-5(연대기 한 쪽), [사건 명세](flow-events.md)(예고 사다리). 결정: HL1~HL10.
 
 게임의 이야기가 **append-only 원장**(`GameState.history`, 저장 v15)에 남는다. 원장은 시뮬레이션을 바꾸지 않는다 — 매 틱과 매 명령의 앞뒤 상태를 읽어 기록만 더한다(봇·가드레일 결과 불변). 조항 번호(HL-*)는 `tests/historyLedger.test.ts`(H1~H8)와 이어진다. 화면(UI-4 기록 패널·CHRON-1 연대기)은 렌더 세션 몫이고, 이 명세는 렌더가 읽을 API까지다.
 
@@ -8,7 +8,7 @@
 
 - `id`(`h-000001` 순번) · `tick` · `kind`(`decision` `event` `person` `faction` `era` `milestone` `ledger`) · `template` · `params` · `subject`(`ActorRef`: town · household · person · faction · lineage) · `actors?` · `place?`(타일·건물) · `cause?`(`SourceRef`, B1 원인 등록표 재사용) · `decision?` · `severity` · `illustration?` · `snapshotId?`.
 - 문장은 저장하지 않는다. 템플릿 id + 파라미터만 저장하고 `historySummary(record)`가 `src/content/historyCopy.ko.ts`에서 다시 짓는다(문자열 조립 금지 규칙 5 — 문구는 한 파일). 날짜는 `historyDate(record, state)`가 틱에서 계산한다.
-- append-only: 기록은 더하기만 한다. 뒤에 쓰는 것은 결정의 `actual` 하나뿐(HL-3).
+- append-only: 기록은 더하기만 한다. 뒤에 쓰는 것은 결정의 `actual`(HL-3)과 오래된 일상 기록 접기(HL-10)뿐이다.
 
 ## HL-2 원천
 
@@ -60,3 +60,17 @@
 ## HL-9 봇·시뮬레이션 무변경
 
 원장은 규칙이 읽지 않는다. 가드레일 결과는 원장 전과 같아야 한다(관문 ④, 틱 성능 +3 % 이하).
+
+## HL-10 긴 판의 원장 크기 (HIST-1)
+
+캠페인 150년(약 600계절)을 넘기면 원장이 커진다(F0-C2 seed 3 1,200,000틱: 30,836건 · 축소판 1,206장 · 9.6 MB). 계절이 닫힐 때마다(`compactHistory`) 다음을 한다.
+
+- **일상 기록 접기**: 8계절 이상 지난 일상 기록(심각도 0)은 그 계절의 요약 한 건(`ledger.rollup`, 심각도 0)으로 접고 원문은 버린다.
+  - 계절: 틱이 (k−1)·1,000 초과 k·1,000 이하인 기록이 k번째 계절이고, 요약의 틱은 k·1,000(계절 끝)이다.
+  - 요약 파라미터: `count`(접은 건수), 템플릿마다 건수(`person.level_up`: 12 …), 일상 결정은 종류마다 명령 수(`decision.build`: 7 …), 그 계절 결산 줄의 인구·증감·금고·계절·해.
+  - 요약의 id와 자리는 처음 접힌 기록의 것이다. 그래서 id 순서가 그대로이고, 새 번호를 쓰지 않는다.
+- **영구**: 심각도 1 이상 전부(큰 결정·사건·시대·이정표·큰 변화·화재 피해·이탈·흩어짐), 대안·예측을 가진 결정, 입주(`person.move_in`·`person.resettled`). 요약도 다시 접지 않는다.
+  - "사망"은 아직 인물이 없어 기록이 없다. 가구가 굶어 흩어짐(`person.emptied`)이 심각도 1로 남는다.
+- **축소판 솎기**: 최근 8계절은 전부 남긴다. 그 전은 해마다 한 장(겨울 끝 = 해의 끝 틱)과 시대·장 끝(256²)만 남긴다. 겨울 끝 축소판은 그 계절 요약의 `snapshotId`로 이어진다.
+- **조회**: `history.query`는 요약으로 바뀐 기록을 빼면 접기 전과 같은 결과를 낸다(H10, 1,200,000틱 관문 스크립트 `scripts/historyCompactionRun.ts`).
+- **저장**: v15 그대로. `HistoryRecord` 모양이 같다 — 요약은 `params`(문자열 → 수·글) 한 칸에 담는다.
