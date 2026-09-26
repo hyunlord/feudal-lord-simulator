@@ -46,6 +46,8 @@ export interface PalisadeState {
   readonly gate: TileEdgePoint;
   readonly additionalGates?: readonly TileEdgePoint[];
   readonly segments: readonly PalisadeSegment[];
+  /** WALL-2 (WX-4, save v17): the last expansion and the arable cells it took inside, until they have turned to pasture. */
+  readonly expansion?: { readonly tick: number; readonly arableCells: readonly number[] };
 }
 
 export interface ForestHarvest {

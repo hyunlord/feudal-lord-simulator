@@ -68,6 +68,8 @@ type GameCommand =
       readonly candidatePath: PalisadePath;
     }
   | { readonly type: "confirm_stone_town_proclamation" }
+  /** WALL-2 WX-1: widen the palisade to a ring that holds the old one (only the new length is built). */
+  | { readonly type: "expand_palisade"; readonly candidatePath: PalisadePath }
   /** Spec Z-5: paint a zone stroke (new zone, or merged into touching zones of the same kind). */
   | { readonly type: "zone_paint"; readonly kind: import("../zones/zone.types").ZoneKind; readonly stroke: import("../zones/zone.types").ZoneStroke }
   /** Spec Z-6: remove the stroke's cells from every zone. */

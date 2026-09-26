@@ -10,6 +10,7 @@ import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
 import { autoplayEraAction } from './autoplayEra';
+import { autoplayWallExpansionAction } from './autoplayWallRoom';
 import { preservesAutoplayServiceSpace, serviceSafeRoadAction } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
 import { footprintCorners, isPointInsidePalisade } from "../world/palisadeGeometry";
@@ -354,6 +355,8 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => barnMill(state),
     () => foodAction(state, buildAction, diagnostic),
     housingPhase,
+    // WALL-2 (AR-12): a built wall too small for the lots still wanted is widened.
+    () => autoplayWallExpansionAction(state, policy.maxHousingLots),
     servicePhase,
     () => marketGap(state),
     () => storageAction(state),

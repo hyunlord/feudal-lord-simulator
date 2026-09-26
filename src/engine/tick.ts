@@ -38,6 +38,7 @@ import {
 import { allocateLabourDemands } from "./labourDemand";
 import { withHouseholdMembers } from "../population/householdMembers";
 import { advancePersons, labourPool } from "./persons";
+import { advancePalisadeExpansion } from "./palisadeExpansion";
 import { createMulberry32, createRoamingJunctionSeed } from "./prng";
 import {
   createDeliveryInventoryPort,
@@ -251,6 +252,6 @@ export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
   return advanceHistory(state, updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    advancePolitics(advancePersons(advanceEvents(advanceSeasons(settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))),
+    advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceSeasons(settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))))),
   )))));
 }
