@@ -45,6 +45,15 @@ const BUNDLE: Readonly<Record<string, (params: P) => string>> = {
   wall_priority: params => `이번 계절 성벽 공사 우선을 ${n(params, "count")}번 정했다`,
 };
 
+/** PERSON-0: trades a household head takes (PS-4). */
+export const HISTORY_OCCUPATIONS: Readonly<Record<string, string>> = {
+  miller: "방앗간", sawyer: "제재소", mason: "석공장", chapman: "시장", husbandman: "헛간", woodward: "벌목장", quarrier: "채석장",
+  granger: "곡창", storekeeper: "창고",
+};
+const DEATH_CAUSES: Readonly<Record<string, string>> = {
+  age: "세상을 떠났다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
+};
+
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
   "decision.famine_response": params => { const label = choice(s(params, "chosen")); return `대기근에 ${label}${josa(label, "을", "를")} 택했다`; },
@@ -83,6 +92,15 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "person.fed": () => "가구가 다시 배불리 먹게 되었다",
   "person.water": () => "가구에 우물 물이 닿았다",
   "person.water_lost": () => "가구가 우물 물을 잃었다",
+  "person.born": () => "아이가 태어났다",
+  "person.married": () => "혼인해 가구를 이루었다",
+  "person.arrived": () => "친척이 와서 함께 살게 되었다",
+  "person.came_of_age": () => "어른이 되어 일을 거들기 시작했다",
+  "person.occupation": params => `${HISTORY_OCCUPATIONS[s(params, "occupation")] ?? s(params, "occupation")} 일을 맡았다`,
+  "person.reeve": () => "마을 사람들 가운데서 reeve로 뽑혔다",
+  "person.steward": () => "영주의 청지기가 되었다",
+  "person.died": params => `${n(params, "age")}살에 ${DEATH_CAUSES[s(params, "cause")] ?? "세상을 떠났다"}`,
+  "person.left_town": () => "마을을 떠났다",
   "person.grew": params => `식구가 늘어 ${n(params, "residents")}명이 되었다`,
   "person.shrank": params => `식구가 줄어 ${n(params, "residents")}명이 되었다`,
 };

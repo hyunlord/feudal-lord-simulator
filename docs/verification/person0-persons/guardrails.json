@@ -1,0 +1,111 @@
+{
+ "runner": "DGX, scripts/remote/run.sh --task guardrail (REMOTE-1)",
+ "allowance": "victory tick within +-15 % of seeds/baseline-90fb216.json",
+ "runs": {
+  "run1@672d6852": "stopped at about 960,000 ticks: every seed at 24 lots and L4 24/24 but never stable (each death a vacancy broke the full-town 24,000-tick window)",
+  "run2@439815c9": [
+   {
+    "seed": 1,
+    "victoryTick": 207943,
+    "change": "+35 %"
+   },
+   {
+    "seed": 2,
+    "victoryTick": 302550,
+    "change": "+52 %"
+   },
+   {
+    "seed": 4,
+    "victoryTick": 643632,
+    "change": "+326 %"
+   },
+   {
+    "seed": 5,
+    "victoryTick": 361710,
+    "change": "+20 %"
+   },
+   {
+    "seed": 3,
+    "status": "stopped at 576,000 ticks, L4 16-18"
+   }
+  ],
+  "diagnostic@07f7c22 (deaths off / old labour)": {
+   "nodeath-s1": {
+    "victoryTick": 162155
+   },
+   "nodeath-s2": {
+    "victoryTick": 171536
+   },
+   "oldlabour-s1": "L4 0 at 132,000 (slow, stopped)",
+   "oldlabour-s2": "L4 17 at 300,000 (slow, stopped)"
+  },
+  "run3@cbc84d0c": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 143648,
+    "baselineVictoryTick": 153976,
+    "victoryChangePercent": -6.7,
+    "finalTick": 282868,
+    "baselineFinalTick": 263544,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 498
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 171536,
+    "baselineVictoryTick": 198810,
+    "victoryChangePercent": -13.7,
+    "finalTick": 214105,
+    "baselineFinalTick": 261762,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 316
+   },
+   {
+    "seed": 3,
+    "status": "passed",
+    "victoryTick": 149819,
+    "baselineVictoryTick": 163320,
+    "victoryChangePercent": -8.3,
+    "finalTick": 287126,
+    "baselineFinalTick": 296548,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 592
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 180922,
+    "baselineVictoryTick": 151101,
+    "victoryChangePercent": 19.7,
+    "finalTick": 219124,
+    "baselineFinalTick": 296655,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 292
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 281230,
+    "baselineVictoryTick": 300416,
+    "victoryChangePercent": -6.4,
+    "finalTick": 422579,
+    "baselineFinalTick": 467322,
+    "finalL4": 24,
+    "finalLots": 24,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 688
+   }
+  ]
+ },
+ "note": "Run 3 is past the two-run limit (run 1 stopped early on a structural stability issue). 5/5 pass; victory ticks -6.7 / -13.7 / -8.3 / +19.7 / -6.4 %: seed 4 outside +-15 % (final stable tick 219,124 against 296,655)."
+}
