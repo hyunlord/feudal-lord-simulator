@@ -1,11 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-27(INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-2 구휼 비용 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄 · 저장 형식 그대로, 검증 DGX): [보고서](verification/fix2-relief-cost/REPORT.md), [1장 명세](design/flow-chapter-one.md) FC-2a, 결정 FC12.
+  - 구휼 비용 = 나눈 빵 × 시장가. 가난한 가구의 한 계절 빵을 현금으로 먼저 사고(예전 규칙), 모자란 몫은 곡창의 빵에서 방출해 방출 가치(시장가)로 센다. 방출은 `famine_relief` 현물 항목이라 금고와 시뮬레이션은 그대로다(3,000틱 세계 해시 같음).
+  - 대기근 대응의 예측·실제 금고(HL-3)가 이 비용이다. 수입 0 · 곡창 빵 3,000이면 카드와 원장이 `금고 4760d(지금 5000d)`, 실제 4,760d(예전엔 둘 다 5,000d "그대로"). 시나리오 C11.
 
 - **INSTALL-15 계절 자연(Wave 15) — 관문 ①~⑤ 통과, ⑥ 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·에셋·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [계절 자연 명세](design/seasonal-nature.md) I15-1~3, [보고서](verification/install15/REPORT.md), 결정 I15-D1~D7.
   - 나무·덤불·그루터기·과수·풀밭·숲 가장자리·목초지·겨울 밭이 사계절 그림으로 바뀐다(65장). 청크 키에 계절이 들어 있고, 여름 키는 그대로다.
