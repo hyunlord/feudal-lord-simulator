@@ -1,0 +1,6 @@
+{
+  "successfulDistinctAssets": 12,
+  "initialParallelAttempt": "One call returned HTTP401 invalid_api_key; no secret retained. Some pending calls had no captured result after Promise.all rejection.",
+  "recovery": "A single stag_head retry succeeded, then all eight remaining requested assets succeeded in distinct builtin calls using Promise.allSettled.",
+  "fallbackUsed": false
+}

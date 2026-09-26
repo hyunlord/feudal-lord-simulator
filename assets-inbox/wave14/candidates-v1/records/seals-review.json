@@ -1,0 +1,15 @@
+{
+  "score": 94,
+  "verdict": "pass",
+  "category_match": "candidate town seal compositing layers",
+  "reasoning": "All seven final assets visually inspected on parchment background. Four centers remain distinct: twin gate, sailship, church, three-arch bridge. Round/pointed oval inscription bands contain no lettering. Transparent centers leave room for independent motifs. Hanging wax stays blank before compositing. Proof03 inspected at delivered1280x800.",
+  "differences": ["Generated raw pointed oval and wax have colored RGB in alpha-zero pixels; final export zeros RGB at alpha0. Apparent glow in alpha-ignoring image preview is absent on composited final."],
+  "suggestions": ["Town seal center uses black RGB with alpha coverage; tint via source-in, not luminance extraction."],
+  "discardedGeneration": {
+    "rawFile": "raw/seals/seal_town_pointed_oval-clean.png",
+    "reason": "Not selected; original alpha already clean after proper RGBA compositing. Original chosen to avoid unnecessary variation.",
+    "tool": "builtin image_gen",
+    "referenceImages": ["raw/seals/seal_town_pointed_oval.png"],
+    "prompt": "Edit this town seal ring asset precisely. Preserve the pointed oval border and blank inscription band exactly. REMOVE all soft brown glows/shadows/halos outside ring AND inside central opening. Both outside and central opening must be genuinely fully transparent RGBA right up to the sharp silhouette of the metal ring. NO soft drop shadow anywhere. NO letters. Keep metallic artwork itself. Single isolated clean compositing layer."
+  }
+}

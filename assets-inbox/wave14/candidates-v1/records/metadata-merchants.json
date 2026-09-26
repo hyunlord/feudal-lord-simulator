@@ -1,0 +1,618 @@
+[
+  {
+    "id": "merchant_staff_topcross",
+    "file": "assets/merchant/merchant_staff_topcross-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M64 101V27 M49 39H79 M56 27H72. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M64 101V27 M49 39H79 M56 27H72",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_staff_figure4",
+    "file": "assets/merchant/merchant_staff_figure4-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M64 101V26 L43 51H81. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M64 101V26 L43 51H81",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_staff_pennant",
+    "file": "assets/merchant/merchant_staff_pennant-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M64 101V27 L88 40L64 51. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M64 101V27 L88 40L64 51",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_staff_rake",
+    "file": "assets/merchant/merchant_staff_rake-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M64 101V30 M45 30V44H83V30. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M64 101V30 M45 30V44H83V30",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_branch_diagonal",
+    "file": "assets/merchant/merchant_branch_diagonal-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M40 83L86 61. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M40 83L86 61",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_branch_horizontal",
+    "file": "assets/merchant/merchant_branch_horizontal-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M41 70H88 M64 84H85. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M41 70H88 M64 84H85",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_branch_loop",
+    "file": "assets/merchant/merchant_branch_loop-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M64 62C34 48 34 89 64 83C92 96 95 57 64 62Z. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M64 62C34 48 34 89 64 83C92 96 95 57 64 62Z",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_branch_v",
+    "file": "assets/merchant/merchant_branch_v-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M40 65L64 88L88 65. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M40 65L64 88L88 65",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_branch_w",
+    "file": "assets/merchant/merchant_branch_w-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M39 63L50 87L64 70L78 87L89 63. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M39 63L50 87L64 70L78 87L89 63",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_branch_diamond",
+    "file": "assets/merchant/merchant_branch_diamond-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M64 57L85 74L64 92L43 74Z. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M64 57L85 74L64 92L43 74Z",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_branch_steps",
+    "file": "assets/merchant/merchant_branch_steps-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M39 85V73H51V61H64 M64 87H86. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M39 85V73H51V61H64 M64 87H86",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_branch_double_fork",
+    "file": "assets/merchant/merchant_branch_double_fork-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M64 68L42 56 M64 68L86 56 M64 85L42 73 M64 85L86 73. White round stroke 6px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 6,
+      "svgPath": "M64 68L42 56 M64 68L86 56 M64 85L42 73 M64 85L86 73",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_frame_shield",
+    "file": "assets/merchant/merchant_frame_shield-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M15 13H113V65C113 90 93 107 64 118C35 107 15 90 15 65Z. White round stroke 4px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 4,
+      "svgPath": "M15 13H113V65C113 90 93 107 64 118C35 107 15 90 15 65Z",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  },
+  {
+    "id": "merchant_frame_circle",
+    "file": "assets/merchant/merchant_frame_circle-v1.png",
+    "width": 128,
+    "height": 128,
+    "role": "merchant mark modular alpha mask",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG rasterization (librsvg via sharp)",
+        "prompt": "Original geometric component. SVG path: M64 10A54 54 0 1 1 63.99 10Z. White round stroke 4px. 128x128. No historical mark copied.",
+        "model": "not applicable",
+        "seed": "not applicable",
+        "referenceImages": []
+      }
+    ],
+    "processing": {
+      "coverage": "alpha",
+      "visibleRGB": "255,255,255",
+      "transparentRGB": "0,0,0",
+      "strokeWidth": 4,
+      "svgPath": "M64 10A54 54 0 1 1 63.99 10Z",
+      "attachment": {
+        "staffX": 64,
+        "branchCenter": [
+          64,
+          74
+        ],
+        "frameCenter": [
+          64,
+          64
+        ]
+      },
+      "recolor": "replace RGB before compositing; alpha is coverage; max alpha union for overlaps"
+    },
+    "qa": {
+      "candidate": true,
+      "noHistoricalReference": true,
+      "noText": true
+    },
+    "pivot": {
+      "x": 64,
+      "y": 101
+    }
+  }
+]

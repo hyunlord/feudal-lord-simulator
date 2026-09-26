@@ -1,0 +1,23 @@
+const fs=require('fs'),path=require('path');
+const sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const base=path.resolve(__dirname,'..');
+const reference='references/seal_petition_accept.png';
+const specs=[
+['seal_town_pointed_oval','town seal border, elongated upright pointed oval (vesica piscis), two restrained engraved outlines enclosing EMPTY inscription band, transparent empty central field. Monochrome dark umber bronze-ink relief. NO letters anywhere'],
+['seal_town_center_gate','central medieval town seal emblem, two squat crenellated gate towers and one open rounded archway, no enclosing ring, no ground. Bold black engraved silhouette with sparse transparent cutout details. 14th century England'],
+['seal_town_center_ship','central medieval town seal emblem, a single medieval cog sailing ship side view, one mast, one unfurled plain square sail, high prow/stern, no enclosing ring. Bold black engraved silhouette with sparse transparent cutout details'],
+['seal_town_center_church','central medieval town seal emblem, small English parish church front view with steep roof and square bell tower, one pointed doorway, no enclosing ring. Bold black engraved silhouette with sparse transparent cutout details'],
+['seal_town_center_bridge','central medieval town seal emblem, low three-arch masonry bridge with large open arches and low parapet, no enclosing ring, no scenery. Bold black engraved silhouette with sparse transparent cutout details'],
+['wax_seal_hanging','hanging red-brown beeswax document seal with TWO plain twisted flax cords rising upward from seal to top edge. Tall vertical composition, cord occupies upperhalf, round wax disc occupies lowerhalf. Wax disc face completely BLANK flat matte red-brown with subtle shallow rim for separately stamped town seal. Restrained hand-painted medieval parchment UI art matching reference. No emblem, no letters, no numbers']
+];
+const roundPrompt='Create ONE medieval English town seal border layer, perfectly front-facing ROUND circle. Transparent RGBA background and completely transparent empty central disc. Antiqued dark warm brown/bronze engraved ink/wax relief style matching provided small red seal reference but deliver monochrome dark umber tintable artwork (no red). Two thin concentric engraved outlines enclosing a wide EMPTY inscription band. NO letters, NO pseudo letters, NO numbers, NO symbols in band. Very restrained medieval beaded outer rim, coherent at256px. Circle centered, safe padding8%, inner central hole diameter64% canvas. No drop shadow, no white halo, no tabletop, no external scene. Single asset only, no labels. Project candidate town seal compositing layer.';
+const prompts=new Map([['seal_town_round',roundPrompt],...specs.map(([id,desc])=>[id,`Use case: stylized-concept. ONE isolated ${desc}. Candidate medieval strategy game compositing layer. Genuine transparent RGBA outside object, centered complete artwork with 8 percent safety margin. Crisp at small game UI size. No white fringe, no drop shadow, no text, no numerals, no labels, no sheet. Provided red seal is style reference only, do not copy its checkmark.`])]);
+(async()=>{const out=[]; for(const[id,prompt]of prompts){let width=id.includes('center')?128:id==='wax_seal_hanging'?96:256,height=id==='wax_seal_hanging'?160:width;
+const rawFile=`raw/seals/${id}.png`, file=`assets/seals/${id}.png`;
+let source=sharp(path.join(base,rawFile)).ensureAlpha();
+if(id==='wax_seal_hanging')source=source.trim({threshold:8});
+const {data,info}=await source.resize(width,height,{fit:'contain',background:'#00000000'}).raw().toBuffer({resolveWithObject:true});
+let transparent=0;for(let i=0;i<data.length;i+=4){if(!data[i+3]){data[i]=data[i+1]=data[i+2]=0;transparent++;} else if(id.includes('center')){data[i]=data[i+1]=data[i+2]=0;}}
+await sharp(data,{raw:{width:info.width,height:info.height,channels:4}}).png().toFile(path.join(base,file));
+out.push({id,file,width,height,role:id.includes('center')?'town seal center ink mask':id==='wax_seal_hanging'?'hanging wax seal':'town seal border',pivot:{x:width/2,y:height/2},generationRecords:[{tool:'builtin image_gen',prompt,rawFile,referenceImages:[reference],model:'not supplied',seed:'not supplied'}],processing:{resize:'lanczos3 contain',clearRGBAtAlphaZero:true,centerRGB:id.includes('center')?'black ink; alpha carries engraving shape':'preserved generated color',waxAttachment:id==='wax_seal_hanging'?{cordTop:[48,0],sealCenter:[48,116],stampMaxSize:52}:undefined},qa:{transparentPixels:transparent,noText:'visually reviewed',candidate:true}});
+}fs.writeFileSync(path.join(base,'records/metadata-seals.json'),JSON.stringify(out,null,2));console.log('built',out.length);})();

@@ -1,0 +1,531 @@
+[
+  {
+    "id": "icon_faction_commune-v1",
+    "file": "assets/ui-icons/icon_faction_commune-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "8fb87a3e13b603dba6bd97b2e6dcdbf36c3804b00c93600819a33c314091514d",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Community faction: three simple busts of townspeople, woman linen coif, man wool hood, elderly bareheaded man, grouped closely, no tools.",
+        "rawFile": "raw/ui-icons/icon_faction_commune-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 38,
+        "top": 204,
+        "width": 1177,
+        "height": 863
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_faction_merchant_elite-v1",
+    "file": "assets/ui-icons/icon_faction_merchant_elite-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "6f060729ef4e56822db9204be5fd5075b0fb81b1aaf9021a8196bd207cbff9ad",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Merchant elite faction: one bulging leather coin purse with large visible dull gold coins at its mouth, merchant money wealth silhouette, no text.",
+        "rawFile": "raw/ui-icons/icon_faction_merchant_elite-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 174,
+        "top": 164,
+        "width": 907,
+        "height": 939
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_faction_crown-v1",
+    "file": "assets/ui-icons/icon_faction_crown-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "552ec988b14e97d861f406fcdbfb141bb979ea52676755d2f3e4e3e411138261",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Crown faction: a single simple medieval open gold crown with three tall leaf points, NO modern royal insignia.",
+        "rawFile": "raw/ui-icons/icon_faction_crown-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 79,
+        "top": 191,
+        "width": 1096,
+        "height": 848
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_faction_church-v1",
+    "file": "assets/ui-icons/icon_faction_church-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "a997fcadd069364f0e7285ddf91d0a1edf1058bdf23d32acc90ab05af4aa8faf",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Church faction: one ivory bishop mitre with muted red bands, short two lappets, restrained plain medieval form.",
+        "rawFile": "raw/ui-icons/icon_faction_church-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 236,
+        "top": 60,
+        "width": 778,
+        "height": 1114
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_faction_lord_household-v1",
+    "file": "assets/ui-icons/icon_faction_lord_household-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "c0753d310f9b5c938ad8a4728369f8d1972a94caa53154820ee0dcbeb5ecdc56",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Lord household faction: a single large ornate oak key crossed over a small plain red heater shield, estate administration, no house building.",
+        "rawFile": "raw/ui-icons/icon_faction_lord_household-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 173,
+        "top": 185,
+        "width": 941,
+        "height": 842
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_right_market-v1",
+    "file": "assets/ui-icons/icon_right_market-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "c1cc1162e0d36e060615c0cf809cb3ff5314d1938b037ccdd74a974ff58ec29c",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Market right: single low open oak stall with muted red and cream striped canvas awning and empty counter, broad horizontal silhouette.",
+        "rawFile": "raw/ui-icons/icon_right_market-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "alphaBounds": {
+        "left": 258,
+        "top": 104,
+        "width": 1020,
+        "height": 790
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_right_toll-v1",
+    "file": "assets/ui-icons/icon_right_toll-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "da2223aa6aad2fe7d0726201a833541a81167eef23ae57e2f429c30c409f0ef3",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Toll right: wooden road toll barrier, long lifted diagonal oak boom on a stout post, one small coin beside post.",
+        "rawFile": "raw/ui-icons/icon_right_toll-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 267,
+        "top": 202,
+        "width": 895,
+        "height": 836
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_right_court-v1",
+    "file": "assets/ui-icons/icon_right_court-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "07233517ab50e874479204aab48317e0294dd69f05864605ebe5d25b024c8144",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Court right: a large iron balance scale with two hanging shallow brass pans, symmetrical, upright and fully readable.",
+        "rawFile": "raw/ui-icons/icon_right_court-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 34,
+        "top": 119,
+        "width": 1187,
+        "height": 1002
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_right_guild-v1",
+    "file": "assets/ui-icons/icon_right_guild-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "98d5bfe0c20e3b8a71d1bdc4ef47450596aead718468c0bc9020c6ed8fd8a771",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Guild right: crossed wood-handled blacksmith hammer and large iron shears, work tools bound by small tan cord, no building.",
+        "rawFile": "raw/ui-icons/icon_right_guild-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 143,
+        "top": 174,
+        "width": 1001,
+        "height": 927
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_right_fair-v1",
+    "file": "assets/ui-icons/icon_right_fair-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "12dcf228dc86afe35cefb192f0588a521fe125cf147d84e590e8aeaff3617a1b",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Periodic fair right: tall triangular cream and ochre medieval market pavilion tent with two small red pennants on poles, tall pointed silhouette, no striped stall or calendar.",
+        "rawFile": "raw/ui-icons/icon_right_fair-v1.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 186,
+        "top": 64,
+        "width": 971,
+        "height": 1094
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass"
+    }
+  },
+  {
+    "id": "icon_right_burgage-v1",
+    "file": "assets/ui-icons/icon_right_burgage-v1.png",
+    "width": 96,
+    "height": 96,
+    "pivot": [
+      48,
+      48
+    ],
+    "role": "rights and faction UI icon",
+    "status": "candidate",
+    "sha256": "9abace93f9390910434a1d4f7f9d95b055c009524924cd04dc0847cde95cf7fa",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Create ONE standalone game UI icon, not a sheet. Reference image is STYLE ONLY, do not copy its subjects. Match the reference hand-painted medieval city-builder icon style: crisp dark brown ink outline, warm ochre oak, muted clay red, dull brass, cream linen, simplified chunky readable shapes. 80% functional silhouette,20% restrained medieval detail. Transparent RGBA background, NO ground, NO surrounding square or medallion, no cast shadow outside object. Center icon with ample transparent margin. Subject fits square, legible after downsample to96 and48 pixels. No words, letters, numbers, runes, watermark. Burgage tenure right: small timber-framed house facade inside a clearly outlined rectangular fenced plot, ochre roof, short front gate, no key or shield.",
+        "rawFile": "raw/ui-icons/icon_right_burgage-rejected-chimney.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied",
+        "selection": "rejected: chimney and blue glass contrary to project art bible"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: precise-object-edit. Edit this exact medieval burgage UI icon only in two prohibited house details: remove the entire chimney sticking up behind the upper right roof, leaving clear transparent background and continuous unchanged roofline; replace the small blue glass window with an open dark window with simple wooden shutters, no glass. Preserve every other part: timber house, ochre thatch, fenced rectangular land plot, overall silhouette except chimney, proportions, palette, crisp hand-painted outlines and true transparent RGBA background. No letters numbers symbols. Do not redesign or add anything.",
+        "rawFile": "raw/ui-icons/icon_right_burgage-v1.png",
+        "referenceImages": [
+          "raw/ui-icons/icon_right_burgage-rejected-chimney.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds crop; uniform Lanczos3 downsample within84x84; centered on96x96 transparentRGBA; original generated alpha retained",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "alphaBounds": {
+        "left": 113,
+        "top": 204,
+        "width": 1032,
+        "height": 890
+      }
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "noText": true,
+      "reviewScale": [
+        96,
+        48
+      ],
+      "review": "Pass: distinct subjects and silhouettes at96and48; hand-painted P0 reference palette; no text; burgage has no chimney or glass",
+      "historicalCorrection": "Chimney removed and glazed window changed to open wooden shutters through builtin precise edit"
+    }
+  }
+]

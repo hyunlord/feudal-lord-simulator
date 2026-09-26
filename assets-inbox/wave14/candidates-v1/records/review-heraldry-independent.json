@@ -1,0 +1,60 @@
+{
+  "reviewer": "w14_merchants, independent of heraldry author",
+  "status": "pass",
+  "scope": "22 geometry/texture masks, actual ordinary 8x3 composition matrix, 24 illustrated combinations at256px and96px on light/dark backgrounds",
+  "checks": {
+    "grayscaleFiles": 22,
+    "dimensions256Files": 22,
+    "nonGrayPixels": 0,
+    "bordureIndependentRecheck": [
+      {
+        "shape": "heater",
+        "missingSideRows": 0
+      },
+      {
+        "shape": "rounded",
+        "missingSideRows": 0
+      },
+      {
+        "shape": "knightly",
+        "missingSideRows": 0
+      }
+    ],
+    "actualCombinationRows": 24,
+    "uniqueCombinationHashes": 24,
+    "coverageSeamMaxError": 1.1102230246251565e-16,
+    "outsideAlphaPixels": 0,
+    "neutralFringePixels": 0
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "high",
+      "location": "heraldry-build.cjs ordinary.bordure",
+      "issue": "Fixed heater-shaped inset loses side bands when clipped to narrow knightly shield.",
+      "evidence": "For knightly shield, x59 at y45..99 is fully white fill while bordure alpha=0 on all55 rows.",
+      "requested": "Provide shape-adaptive bordure mapping/coverage and prove all3 shield variants.",
+      "status": "resolved",
+      "resolution": "normalized shield UV mask, remapped by delivered helper; all3shapes have0missingSideRows"
+    },
+    {
+      "id": "H2",
+      "severity": "medium",
+      "location": "heraldry-proof.cjs chiefCoverage",
+      "issue": "Proof hardcodes chief y28..65 rather than consuming delivered ordinary_chief alpha (y0..78).",
+      "requested": "Use delivered ordinary mask and prevent metal charge overlap on metal chief.",
+      "status": "resolved",
+      "resolution": "proof reads ordinary_chief.png alpha, confirmed source"
+    }
+  ],
+  "visual": "Finalproof01 visually inspected.24/24 recognizable as different by fieldpartition,shieldshape,charge or color. No visible seams or bright halos on alternatinglight/dark panels. Metalcharges contrast with colorfields; metalchiefs spatially separated fromcharges. Fineeagle/wheat detail reducesat96px but silhouettes remain distinct. Lionpassant shows horizontally carriedbody, raisedforepaw andremainingfeet grounded.",
+  "historicalLimit": "No copied real family sources observed; this is not an exhaustive historical collision search.",
+  "verdict": {
+    "score": 94,
+    "verdict": "pass",
+    "category_match": true,
+    "differences": "No unresolved correctness finding. UVbordure thickness variesnearpoint, normalmaskrequires deliveredmappinghelper.",
+    "suggestions": "Use providedalpha tintandUVbordure contracts whenintegrating. Avoid interpretingcandidateproofasgameintegration.",
+    "reasoning": "Both detectedcompositiondefects correctedand rechecked withactualassets. Final24combinationsdistinct onownvisualreview; no blindeduserstudy."
+  }
+}

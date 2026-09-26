@@ -1,0 +1,398 @@
+[
+  {
+    "id": "charge_lion_passant",
+    "file": "assets/charges/charge_lion_passant.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: a lion passant, walking to viewer left in strict side profile with head facing left, right forepaw raised, three other feet down, long S curved tail above back and recognizable shaggy mane. Pure WHITE solid silhouette with a few generous TRANSPARENT cutout separations for jaw, legs and mane; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 mask. Flat, no shading, no texture, no gray decoration, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square, generous clear margin, large distinct feet; silhouette remains legible at48px. Invented generic charge, do not reproduce any real coat of arms. This is a tintable mask not a complete emblem.",
+        "rawFile": "raw/charges/lion_passant.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 68,
+        "top": 180,
+        "width": 1108,
+        "height": 906
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 6554,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_eagle",
+    "file": "assets/charges/charge_eagle.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: a heraldic eagle displayed, frontal body and head turned viewer left, two symmetric outstretched feather wings, two open clawed feet, short fanned tail. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/eagle.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 116,
+        "top": 125,
+        "width": 1022,
+        "height": 1016
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 8530,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_boar",
+    "file": "assets/charges/charge_boar.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: a stocky wild boar walking to viewer left, side profile, jagged bristled back, prominent short tusk, four short stout legs and raised short tail. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/boar.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 56,
+        "top": 236,
+        "width": 1141,
+        "height": 813
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 5586,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_stag_head",
+    "file": "assets/charges/charge_stag_head.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. ONE isolated heraldic charge: frontal stag head cabossed with two wide branching antlers, recognizable deer muzzle and two ears, no neck or body. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/stag_head.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 75,
+        "top": 137,
+        "width": 1104,
+        "height": 1007
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 4234,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_fish",
+    "file": "assets/charges/charge_fish.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: one heraldic fish swimming to viewer left, horizontal body, broad triangular tail and distinct dorsal and belly fins. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/fish.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 84,
+        "top": 358,
+        "width": 1103,
+        "height": 538
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 3380,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_fleur_de_lis",
+    "file": "assets/charges/charge_fleur_de_lis.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: one fleur-de-lis with large upright central spear petal, two elegant curved side petals and broad crossband, three separated short lower terminals. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/fleur_de_lis.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 141,
+        "top": 76,
+        "width": 970,
+        "height": 1102
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 4945,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_rose",
+    "file": "assets/charges/charge_rose.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: one heraldic five-petalled rose, frontal, five broad lobed petals, small central disc, simple open separations between petals. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/rose.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 128,
+        "top": 147,
+        "width": 998,
+        "height": 946
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 7780,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_mullet",
+    "file": "assets/charges/charge_mullet.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: one heraldic mullet, bold regular five-pointed solid star, no face, no decorations. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/mullet.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 125,
+        "top": 145,
+        "width": 1004,
+        "height": 963
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 4655,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_crescent",
+    "file": "assets/charges/charge_crescent.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: one bold heraldic crescent with both pointed horns upward, thick lower curved body and deep hollow center. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/crescent.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 181,
+        "top": 249,
+        "width": 887,
+        "height": 799
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 5825,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_tower",
+    "file": "assets/charges/charge_tower.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: one frontal medieval square tower, broad crenellated battlements, thick tapered body, generous arched doorway cutout and two slit window cutouts. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/tower.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 284,
+        "top": 161,
+        "width": 686,
+        "height": 958
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 7074,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_cartwheel",
+    "file": "assets/charges/charge_cartwheel.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: one medieval cartwheel, broad perfectly circular rim, six stout radial spokes, round central hub, six large empty wedge openings. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/cartwheel.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 89,
+        "top": 98,
+        "width": 1076,
+        "height": 1076
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 8395,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  },
+  {
+    "id": "charge_wheatsheaf",
+    "file": "assets/charges/charge_wheatsheaf.png",
+    "width": 128,
+    "height": 128,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: logo-brand. Create ONE isolated heraldic charge: one bound sheaf of wheat, five or seven large stalk ears splaying outward at top, narrow cord band around middle and cut stalk ends splayed at bottom. Pure WHITE solid silhouette with generous TRANSPARENT cutout separations; transparent RGBA background. Bold simplified 14th-century English heraldic hand-cut silhouette, designed for a 128x128 tintable mask. Flat, no shading, no texture, no outline, no shield, no frame, no ground, no words, no numbers, no watermark. Entire figure centered in square with generous clear margin. Must remain immediately legible at48px. Generic invented charge, do not reproduce any real coat of arms. Single emblem only.",
+        "rawFile": "raw/charges/wheatsheaf.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "crop alpha bounds then fit112x112 centered128; preserve source alpha, white RGB for covered pixels, zero RGB outside",
+      "sourceBounds": {
+        "left": 152,
+        "top": 61,
+        "width": 951,
+        "height": 1124
+      },
+      "channelContract": "white RGBA alpha-coverage tintable silhouette"
+    },
+    "qa": {
+      "candidate": true,
+      "transparent": true,
+      "coloredPixels": 0,
+      "coveredPixels": 4689,
+      "visualReview": "Passed contact-sheet inspection: distinct requested silhouette; no shield, lettering or texture. Small feather/grain details subordinate to overall outline."
+    }
+  }
+]

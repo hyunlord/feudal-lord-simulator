@@ -1,0 +1,607 @@
+{
+  "seed": 140926,
+  "count": 24,
+  "uniqueHashes": 24,
+  "combinations": [
+    {
+      "index": 1,
+      "shield": "rounded",
+      "partition": "per_pale",
+      "charge": "charge_tower.png",
+      "fieldColors": [
+        [
+          115,
+          39,
+          36
+        ],
+        [
+          39,
+          79,
+          59
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "6c9c5d17d56676c2b79fe3b6a622dbea8dbb5fdaf4576bc7d0e8c9f6a08e65ec"
+    },
+    {
+      "index": 2,
+      "shield": "heater",
+      "partition": "quarterly",
+      "charge": "charge_eagle.png",
+      "fieldColors": [
+        [
+          115,
+          39,
+          36
+        ],
+        [
+          39,
+          79,
+          59
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "01cf2c5c8ed597d5d25bee80c7180d6f6065c126e0ef01f1446e65168937cfa8"
+    },
+    {
+      "index": 3,
+      "shield": "knightly",
+      "partition": "quarterly",
+      "charge": "charge_fleur_de_lis.png",
+      "fieldColors": [
+        [
+          115,
+          39,
+          36
+        ],
+        [
+          39,
+          79,
+          59
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "f1130ed986e5fc7ee076476027fbe1e00f301d0b56a01c0fd4ee34c43338b0a7"
+    },
+    {
+      "index": 4,
+      "shield": "knightly",
+      "partition": "per_chevron",
+      "charge": "charge_crescent.png",
+      "fieldColors": [
+        [
+          39,
+          79,
+          59
+        ],
+        [
+          38,
+          40,
+          42
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": null,
+      "sha256": "3a8b6b546f6be5f16d732dda5bed5f82a988ea9aae122c27d2c087baea643fc0"
+    },
+    {
+      "index": 5,
+      "shield": "knightly",
+      "partition": "paly",
+      "charge": "charge_fleur_de_lis.png",
+      "fieldColors": [
+        [
+          39,
+          79,
+          59
+        ],
+        [
+          38,
+          40,
+          42
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "6f3708355c6085d6adb614e6f28d647085b5150b3806a0496e372b88d583b5d6"
+    },
+    {
+      "index": 6,
+      "shield": "heater",
+      "partition": "per_bend",
+      "charge": "charge_lion_passant.png",
+      "fieldColors": [
+        [
+          33,
+          66,
+          97
+        ],
+        [
+          70,
+          47,
+          79
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": null,
+      "sha256": "fd5daf138f3f77d066b3a2145b41e8c6296946b229c9a9e4d6c8797700e80e8b"
+    },
+    {
+      "index": 7,
+      "shield": "heater",
+      "partition": "per_fess",
+      "charge": "charge_eagle.png",
+      "fieldColors": [
+        [
+          70,
+          47,
+          79
+        ],
+        [
+          115,
+          39,
+          36
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "b4e6d58171726041e356f8838f58ace1fd8c86d6722ddbc45670d42fef66bf40"
+    },
+    {
+      "index": 8,
+      "shield": "heater",
+      "partition": "per_pale_indented",
+      "charge": "charge_stag_head.png",
+      "fieldColors": [
+        [
+          33,
+          66,
+          97
+        ],
+        [
+          70,
+          47,
+          79
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "027bbe248bb83770394ec1e415a9e3cbe333fb739604642873d9279d9417b6f5"
+    },
+    {
+      "index": 9,
+      "shield": "knightly",
+      "partition": "per_fess",
+      "charge": "charge_wheatsheaf.png",
+      "fieldColors": [
+        [
+          70,
+          47,
+          79
+        ],
+        [
+          115,
+          39,
+          36
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "f9fd635d337e355afe6902b1d3e4c3ed177d2a737507a388fc6466cbfa2aa0b7"
+    },
+    {
+      "index": 10,
+      "shield": "rounded",
+      "partition": "per_pale_indented",
+      "charge": "charge_cartwheel.png",
+      "fieldColors": [
+        [
+          33,
+          66,
+          97
+        ],
+        [
+          70,
+          47,
+          79
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": null,
+      "sha256": "f4fa4dea359439349c7d412170450d3db0c26bebcebe938646775a6a60b2ae02"
+    },
+    {
+      "index": 11,
+      "shield": "knightly",
+      "partition": "barry",
+      "charge": "charge_crescent.png",
+      "fieldColors": [
+        [
+          38,
+          40,
+          42
+        ],
+        [
+          33,
+          66,
+          97
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": null,
+      "sha256": "9a4fbfcb8c46d774525ecc6112a4c6fae97b38a7759674d39a07feba7daa86ff"
+    },
+    {
+      "index": 12,
+      "shield": "rounded",
+      "partition": "per_chevron",
+      "charge": "charge_tower.png",
+      "fieldColors": [
+        [
+          39,
+          79,
+          59
+        ],
+        [
+          38,
+          40,
+          42
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "260f9dc5e23159017996b056879460ed89233f2b4f4b4cde4f798a58d9be4e20"
+    },
+    {
+      "index": 13,
+      "shield": "rounded",
+      "partition": "per_fess",
+      "charge": "charge_cartwheel.png",
+      "fieldColors": [
+        [
+          70,
+          47,
+          79
+        ],
+        [
+          115,
+          39,
+          36
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": null,
+      "sha256": "c117531c9bb3c361afbe99314d05212d7a1039a8772f3d0930ae68a5891aef55"
+    },
+    {
+      "index": 14,
+      "shield": "rounded",
+      "partition": "per_bend_sinister",
+      "charge": "charge_mullet.png",
+      "fieldColors": [
+        [
+          38,
+          40,
+          42
+        ],
+        [
+          33,
+          66,
+          97
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": null,
+      "sha256": "1a6955a5af21c08fc113aca7d985e77a3f2fcbc9b970bde3cd5106d9d100178e"
+    },
+    {
+      "index": 15,
+      "shield": "knightly",
+      "partition": "per_saltire",
+      "charge": "charge_rose.png",
+      "fieldColors": [
+        [
+          70,
+          47,
+          79
+        ],
+        [
+          115,
+          39,
+          36
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": "chief",
+      "sha256": "d716711551de9f517c804b8ee1821d788b09d4b07f472c74449a0883b89f917e"
+    },
+    {
+      "index": 16,
+      "shield": "knightly",
+      "partition": "per_pale_indented",
+      "charge": "charge_wheatsheaf.png",
+      "fieldColors": [
+        [
+          33,
+          66,
+          97
+        ],
+        [
+          70,
+          47,
+          79
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "f000665819ae4d10b85a45d73eedef7eb151864fd983a2eb901f404a4d412496"
+    },
+    {
+      "index": 17,
+      "shield": "rounded",
+      "partition": "paly",
+      "charge": "charge_mullet.png",
+      "fieldColors": [
+        [
+          39,
+          79,
+          59
+        ],
+        [
+          38,
+          40,
+          42
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": null,
+      "sha256": "d70a4344cfb57e7f60ea4c63d0e4890b469f4a54bdb4dd196ccc53eef03e41d1"
+    },
+    {
+      "index": 18,
+      "shield": "heater",
+      "partition": "per_chevron",
+      "charge": "charge_boar.png",
+      "fieldColors": [
+        [
+          39,
+          79,
+          59
+        ],
+        [
+          38,
+          40,
+          42
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": "chief",
+      "sha256": "f282f7e66f0a112909f42187b633b3a9653bc928cf94abe90915954804ceac2c"
+    },
+    {
+      "index": 19,
+      "shield": "heater",
+      "partition": "per_bend_sinister",
+      "charge": "charge_stag_head.png",
+      "fieldColors": [
+        [
+          38,
+          40,
+          42
+        ],
+        [
+          33,
+          66,
+          97
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": null,
+      "sha256": "545f1d94886943fc152509c66b418cef568564223622d32e5d34d02ac843f377"
+    },
+    {
+      "index": 20,
+      "shield": "rounded",
+      "partition": "per_bend",
+      "charge": "charge_fish.png",
+      "fieldColors": [
+        [
+          33,
+          66,
+          97
+        ],
+        [
+          70,
+          47,
+          79
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": "chief",
+      "sha256": "f3dbf8c5d6deb76c2a81f895cc27035b85235f8630b487b9a9c938ae9437f11c"
+    },
+    {
+      "index": 21,
+      "shield": "rounded",
+      "partition": "barry",
+      "charge": "charge_fish.png",
+      "fieldColors": [
+        [
+          38,
+          40,
+          42
+        ],
+        [
+          33,
+          66,
+          97
+        ]
+      ],
+      "chargeMetal": [
+        234,
+        229,
+        207
+      ],
+      "ordinary": "chief",
+      "sha256": "57adecc1b439db2cd23b4f0fad6f13becc2de08d9a0206f31f053e68bade52d8"
+    },
+    {
+      "index": 22,
+      "shield": "heater",
+      "partition": "per_pale",
+      "charge": "charge_boar.png",
+      "fieldColors": [
+        [
+          115,
+          39,
+          36
+        ],
+        [
+          39,
+          79,
+          59
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": "chief",
+      "sha256": "9919c40d2802ed3ba4102bb49a54fe945099e9d4f3812a6329ded60df497f982"
+    },
+    {
+      "index": 23,
+      "shield": "heater",
+      "partition": "per_saltire",
+      "charge": "charge_lion_passant.png",
+      "fieldColors": [
+        [
+          70,
+          47,
+          79
+        ],
+        [
+          115,
+          39,
+          36
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": null,
+      "sha256": "c66bda76b5747500e89397ee7d5b00d4be52bc4a55dd673ba0ebfc52af2b3985"
+    },
+    {
+      "index": 24,
+      "shield": "knightly",
+      "partition": "per_pale",
+      "charge": "charge_rose.png",
+      "fieldColors": [
+        [
+          115,
+          39,
+          36
+        ],
+        [
+          39,
+          79,
+          59
+        ]
+      ],
+      "chargeMetal": [
+        224,
+        186,
+        90
+      ],
+      "ordinary": "chief",
+      "sha256": "3fca581619abd272c64fb13324692a1f87b226ef889b159b2d54d6264eba073c"
+    }
+  ]
+}

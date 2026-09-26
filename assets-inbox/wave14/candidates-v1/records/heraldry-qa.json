@@ -1,0 +1,18 @@
+{
+  "coverageSeamMaxError": 1.1102230246251565e-16,
+  "outsideAlphaPixels": 0,
+  "neutralFringePixels": 0,
+  "uniqueCombos": 24,
+  "tinctureRule": "two color-class field partitions, metal-class charges; optional metal chief separated spatially from charge",
+  "historical": "No real family source used. Invented seeded combinations, not exhaustive collision audit of all historic arms.",
+  "texture": "Generated transparent scuff layer, grayscale and opacity0.13",
+  "visual": {
+    "status": "pass",
+    "reviewed": "24 combinations at256/96 onalternatinglightdarkbackgrounds",
+    "distinct": "24/24 distinguishable bypartition,shieldshape,charge,colorcombination",
+    "seams": "No visible seams or bright halos at256",
+    "detail": "Eagle feather and wheat grain detail reduces at96, silhouette remains legible",
+    "ordinaryMatrix": "8ordinary×3shieldtypes, including adaptiveUVbordure",
+    "lion": "Confirmedpassant:horizontalback,oneforepawraised,threefeetbaseline"
+  }
+}
