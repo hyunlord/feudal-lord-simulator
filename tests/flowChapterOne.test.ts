@@ -278,7 +278,7 @@ test("C9 the chronicle page is written at the chapter's end: its events, three d
   assert.ok(page.stats.peakPopulation >= page.stats.populationEnd);
 });
 
-test("C10 the chapter ends with a market town that kept 60 % of its people; not below; and round-trips through save v14", () => {
+test("C10 the chapter ends with a market town that kept 60 % of its people; not below; and round-trips through the save (v14+)", () => {
   const ended = throughFamine();
   const end = chapterEnd(ended)!;
   const famine = famineRecord(ended)!;
@@ -294,7 +294,7 @@ test("C10 the chapter ends with a market town that kept 60 % of its people; not 
 
   const loaded = decodeSave(encodeSave({ state: ended, createdAt: "2026-09-26T00:00:00.000Z", savedAt: "2026-09-26T00:00:00.000Z" }).bytes);
   assert.equal(loaded.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
-  assert.equal(SAVE_SCHEMA_VERSION, 14);
+  assert.ok(SAVE_SCHEMA_VERSION >= 14);
   assert.deepEqual(loaded.envelope.state, ended);
   let a: GameState = ended;
   let b: GameState = loaded.envelope.state as GameState;

@@ -121,7 +121,8 @@ test('natural seed3 full state including serialized pathCache stays identical af
     warm = advanceTick(warm);
     coldState = advanceTick({ ...coldState, tiles: [...coldState.tiles] });
   }
-  const hash = (state: GameState) => createHash('sha256').update(JSON.stringify(state)).digest('hex');
+  // F0-C2: the history ledger records the run and never feeds it (spec HL-9); the pins hash the state without it.
+  const hash = (state: GameState) => { const { history: _history, ...world } = state; return createHash('sha256').update(JSON.stringify(world)).digest('hex'); };
   // B2/K4-1: this stone-town city has no completed stone wall, so its prosperity hold now counts (0 -> 120).
   // C2 (spec M-1): the market no longer pays the treasury, so the ledger and treasury differ from B3 (13740b9c…).
   // Without any money field the state is the pre-C2 one (4950b10 gives 6a7136ec… for the same stripped state).
@@ -137,8 +138,9 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // F0-C1: the state records politics (petitions, rights, the chapter) and the market charter lowers stall fees, so the
   // state differs from F0-B (1aaecca7… / 0effea2a…).
   assert.equal(hash(warm), '295502ea582dc05d9fb86c8b76f50099627b3e6ec75023348f048c77029d7eb8');
-  const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
+  const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, history: _history, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
   assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '24f719ed7f3841658308325a1db67afbf0e871fd4b29d21c15965dd26f74d20b');
   assert.equal(hash(coldState), hash(warm));
+  assert.deepEqual(coldState.history, warm.history);
 });

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 15,
-  "sha256": "3f3df8a0feff5d7af490e2a09c58f78221839242f91e3179132d477aed0c0de4",
+  "sha256": "46fb09a8be21e1a43d1372b5cab209e666f15c9f12a25bf22702a0e390d1cb52",
   "inputs": [
     "DEFAULT_GAME_STATE",
     "fixtures/saves/v1/new-game.save.json",
@@ -327,6 +327,7 @@
     "$.history.records[].params.net:number",
     "$.history.records[].params.popDelta:number",
     "$.history.records[].params.population:number",
+    "$.history.records[].params.residents:number",
     "$.history.records[].params.season:number",
     "$.history.records[].params.year:number",
     "$.history.records[].params:object",
