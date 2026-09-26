@@ -25,18 +25,18 @@ const STEPS = [
     await page.mouse.move(a.x, a.y); await page.mouse.down(); await page.mouse.move(b.x, b.y, { steps: 6 });
     await page.mouse.click(b.x, b.y, { button: 'right' }); await page.mouse.up();
   }],
-  ['Esc disarms, left drag pans', async (page) => { await page.keyboard.press('Escape'); await drag(page, { x: 700, y: 420 }, { x: 610, y: 380 }); }],
+  ['Esc disarms, left drag pans', async (page) => { await escape(page); await drag(page, { x: 700, y: 420 }, { x: 610, y: 380 }); }],
   ['middle drag pans', async (page) => { await page.mouse.move(640, 400); await page.mouse.down({ button: 'middle' }); await page.mouse.move(700, 450, { steps: 5 }); await page.mouse.up({ button: 'middle' }); }],
   ['wheel zoom in and out', async (page) => { await page.mouse.move(600, 380); await page.mouse.wheel(0, -120); await page.waitForTimeout(80); await page.mouse.wheel(0, -120); await page.waitForTimeout(80); await page.mouse.wheel(0, 120); }],
   ['house tool, place', async (page, at) => {
     await tool(page, '주택', '오두막');
     await clickAt(page, await at(48, 38));
   }],
-  ['right click the new site cancels it', async (page, at) => { await page.keyboard.press('Escape'); const p = await at(48, 38); await page.mouse.click(p.x, p.y, { button: 'right' }); }],
+  ['right click the new site cancels it', async (page, at) => { await escape(page); const p = await at(48, 38); await page.mouse.click(p.x, p.y, { button: 'right' }); }],
   ['Space held + drag pans with the road tool', async (page) => {
     await tool(page, '도로', '길');
     await page.mouse.move(640, 400); await page.keyboard.down('Space'); await drag(page, { x: 640, y: 400 }, { x: 600, y: 440 }); await page.keyboard.up('Space');
-    await page.keyboard.press('Escape');
+    await escape(page);
   }],
   ['zone brush: paint, radius ], paint', async (page, at) => {
     await page.locator('button.build-menu-category', { hasText: '구역' }).click();
@@ -46,21 +46,34 @@ const STEPS = [
     await page.keyboard.press('BracketRight');
     await drag(page, await at(52, 49), await at(54, 50));
   }],
-  ['zone brush: Z undoes the last stroke, Esc disarms', async (page) => { await page.keyboard.press('KeyZ'); await page.keyboard.press('Escape'); }],
+  ['zone brush: Z undoes the last stroke, Esc disarms', async (page) => { await page.keyboard.press('KeyZ'); await escape(page); }],
   ['keyboard pan (D held)', async (page) => { await page.mouse.move(640, 400); await page.keyboard.down('KeyD'); await page.waitForTimeout(250); await page.keyboard.up('KeyD'); await page.waitForTimeout(400); }],
   ['map overview press jumps the camera', async (page) => {
-    await page.locator('summary', { hasText: '지도' }).first().click();
+    // UX-3: the map is the ledger drawer's 지도 tab (opened from the dock); before, a 지도 disclosure in the console.
+    const ledger = page.locator("[data-dock='ledger']");
+    const drawer = await ledger.count() > 0;
+    if (drawer) { await ledger.click(); await page.locator('.ledger-tab', { hasText: '지도' }).click(); } else await page.locator('summary', { hasText: '지도' }).first().click();
     const box = await page.locator('button.map-overview').boundingBox();
     await page.mouse.click(box.x + box.width * 0.3, box.y + box.height * 0.6);
-    await page.locator('summary', { hasText: '지도' }).first().click();
+    if (drawer) await ledger.click(); else await page.locator('summary', { hasText: '지도' }).first().click();
     await page.mouse.move(640, 790);
   }],
 ];
 
 async function tool(page, category, name) {
-  await page.locator('button.build-menu-category', { hasText: CATEGORY_NAME[category] ?? category }).click();
-  await page.locator(`button[aria-label="${name}"]:visible`).first().click();
+  // UX-3: the categories are inside the build drawer the dock opens (a tool is picked from the drawer, which then
+  // closes; the 길 category arms the road itself). The baseline has no dock and its categories are always on screen.
+  const dock = page.locator("[data-dock='build']");
+  if (await dock.count() > 0 && await dock.isVisible() && await dock.getAttribute('aria-expanded') !== 'true') await dock.click();
+  await page.locator('button.build-menu-category[data-category]', { hasText: CATEGORY_NAME[category] ?? category }).click();
+  const button = page.locator(`button[aria-label="${name}"]:visible`);
+  if (await button.count() > 0) await button.first().click();
   await page.mouse.move(640, 790);
+}
+/** Esc one step; on the normal screen UX-3 opens the pause menu (S-31), which this session closes again. */
+async function escape(page) {
+  await page.keyboard.press('Escape');
+  if (await page.locator('.pause-menu').count() > 0) await page.keyboard.press('Escape');
 }
 async function drag(page, a, b) { await page.mouse.move(a.x, a.y); await page.mouse.down(); await page.mouse.move(b.x, b.y, { steps: 8 }); await page.mouse.up(); await page.waitForTimeout(60); }
 async function clickAt(page, p) { await page.mouse.click(p.x, p.y); await page.waitForTimeout(60); }
