@@ -1,8 +1,14 @@
 # 현재 상태
 
-갱신: 2026-09-26(F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(F0-B · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
+
+- **F0-B 흐름 뼈대 2 — 사건 뼈대: 관문 ①②④⑤ 통과, ③ 가드레일 4/5(seed 3 작은 성벽 교착), 병합 여부 사용자 판정 대기**(Claude Code, 엔진 세션, 렌더는 `buildingVisualState` +2줄): [사건 명세](design/flow-events.md) EV-1~EV-9, [보고서](verification/f0b-events/REPORT.md), 결정 EV1~EV7.
+  - 사건 정의 데이터(`EventDef`)와 seed 파생 일정·날씨, 예고 사다리(소문 → 징후 → 도래 → 회복, `eventForecast`), 저장 v13(`events`, 불탄 집, 재건 공사장).
+  - 첫 화재(1302 ± 1 마른 여름 보장, 밀도·우물 2칸), 이후 화재(마른 여름 15 %), 맞닿은 초가로 번짐·빈 칸과 우물에서 멈춤·우물물 긷는 가구가 끔, 불탄 집은 2단계부터 재건.
+  - 첫 흉년 리허설(1303 ± 1 젖은 여름, 수확 × 0.7, 빵·밀 × 1.5), 젖은 여름 × 0.95, 결산 `event_*` 줄과 손실.
+  - 관문 ② 첫 화재 5/5 · 흉년 5/5 · 사건 손실 대비 7 대 무대비 22. 관문 ③ seed 1·2·4·5 통과, seed 3은 1310년 성벽이 132칸(길 58)을 둘러 13필지에서 교착(LB-12 경우, F0-A 2회차와 같은 정지).
 
 - **F0-V 가시성 뼈대 1 — 건설이 읽히게: 관문 ①~⑧ 통과, ⑨ 사용자 10분 판정 대기, 본선 병합**(Claude Code, 렌더·UI·소리·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population 0줄): [가시성 명세](design/visible-construction.md) VC-1~VC-8, [보고서](verification/f0v-visible-construction/REPORT.md), 결정 F0V-1~F0V-6.
   - 공사장 팻말: 완성 높이 기준점 하나에 이름·4칸 bar(25/55/85 %)·모자란 자재 또는 달력 도착점(앞당겨지기만)·막힘 탭(길·자재·일꾼)이 붙는다. 줌아웃에서는 같은 사유를 `×N`으로 묶는다.

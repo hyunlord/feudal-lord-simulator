@@ -1,0 +1,84 @@
+{
+ "seed": 3,
+ "naiveReserve": true,
+ "noWells": true,
+ "maxTicks": 28000,
+ "firstFire": {
+  "year": 1303,
+  "season": "summer",
+  "burntHouses": 1
+ },
+ "rehearsal": {
+  "year": 1304,
+  "harvestLost": 120,
+  "departures": 3
+ },
+ "missed": [],
+ "losses": {
+  "burntHouses": 1,
+  "departures": 7,
+  "total": 8
+ },
+ "maxBurning": 1,
+ "final": {
+  "tick": 28000,
+  "population": 112,
+  "houses": 12,
+  "wells": 1,
+  "burntNow": 0
+ },
+ "records": [
+  {
+   "id": "first_fire@13",
+   "defId": "first_fire",
+   "kind": "fire",
+   "arrival": {
+    "tick": 13350,
+    "year": 1303,
+    "season": "summer"
+   },
+   "end": {
+    "tick": 13500,
+    "year": 1303,
+    "season": "summer"
+   },
+   "recoveryUntil": {
+    "tick": 15500,
+    "year": 1303,
+    "season": "winter"
+   },
+   "originBuildingId": "construction-site-000011",
+   "losses": {
+    "burntHouses": 1,
+    "departures": 0,
+    "harvestLost": 0
+   }
+  },
+  {
+   "id": "dearth_rehearsal@17",
+   "defId": "dearth_rehearsal",
+   "kind": "dearth",
+   "arrival": {
+    "tick": 17000,
+    "year": 1304,
+    "season": "summer"
+   },
+   "end": {
+    "tick": 21500,
+    "year": 1305,
+    "season": "summer"
+   },
+   "recoveryUntil": {
+    "tick": 23500,
+    "year": 1305,
+    "season": "winter"
+   },
+   "originBuildingId": null,
+   "losses": {
+    "burntHouses": 0,
+    "departures": 3,
+    "harvestLost": 120
+   }
+  }
+ ]
+}
