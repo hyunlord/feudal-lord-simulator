@@ -17,6 +17,18 @@ test("F0-V smoke: a lived-in house with bread smokes, its last loaf thinly; empt
   assert.equal(houseSmokeStrength(house(4, 0), { id: "h" }), 0);
   assert.equal(houseSmokeStrength(house(4, 1), { id: "h" }), 0.35);
   assert.equal(houseSmokeStrength(house(4, 6), { id: "h" }), 1);
+  const pressured = (patch: Record<string, number>) => ({ houses: [{ ...house(4, 6).houses[0]!, ...patch }] });
+  assert.equal(houseSmokeStrength(pressured({ leavingSinceTick: 10 }), { id: "h" }), 0.35, "F0-A leaving: a thin plume");
+  assert.equal(houseSmokeStrength(pressured({ abandonedTick: 20, residents: 0 }), { id: "h" }), 0, "F0-A abandoned: none");
+});
+
+test("F0-V S4 x F0-A: a leaving household or an abandoned house is a cold house even with bread in store", () => {
+  const base = DEFAULT_GAME_STATE;
+  const fed = base.houses.map(house => ({ ...house, residents: 3, breadStock: 4 }));
+  const cold = (houses: typeof fed) => worldSigns({ ...base, houses }).filter(sign => sign.kind === "cold_house").length;
+  assert.equal(cold(fed), 0);
+  assert.equal(cold(fed.map((house, index) => index === 0 ? { ...house, leavingSinceTick: 5 } : house)), 1);
+  assert.equal(cold(fed.map((house, index) => index === 1 ? { ...house, residents: 0, breadStock: 0, abandonedTick: 9 } : house)), 1);
 });
 
 test("F0-V smoke: the mill oven burns only while the mill runs (workers, wheat or baking, not paused, not unpaid)", () => {

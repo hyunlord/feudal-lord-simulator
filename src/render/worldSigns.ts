@@ -3,6 +3,7 @@ import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingFootprint } from "../geometry/buildingFootprint";
+import { housePressureStatus } from "../population/housePressure";
 import { burgageParcels } from "../zones/zoneFillAgent";
 import { tileToScreen } from "./iso";
 import { applyPaletteStroke } from "./style";
@@ -12,7 +13,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // F0-V world signs (visibility design 3절, the P0 three): the world says what needs doing before an icon does.
 //  - S1 empty plot: a stake on each burgage plot with no house and no house site yet ("여기 지을 수 있음").
 //  - S2 road cut: dirt footprints from a building that needs a road but touches none, toward the nearest road.
-//  - S4 cold house: residents but no bread in store, so no smoke (roofSmoke) — only its emphasis is drawn here.
+//  - S4 cold house: residents but no bread in store, or an F0-A household leaving / a house it abandoned, so no or thin
+//    smoke (roofSmoke) — only its emphasis is drawn here.
 // At most MAX_EMPHASIS signs in view are emphasised (a steady ring), road cut first, then cold houses, then empty
 // plots, nearest the view's centre first. Everything is read from the state; nothing is stored.
 export type WorldSignKind = "road_cut" | "cold_house" | "empty_plot";
@@ -46,7 +48,9 @@ export function worldSigns(state: GameState): readonly WorldSign[] {
     signs.push({ kind: "road_cut", tx: edge.tx, ty: edge.ty, toward });
   }
   for (const house of state.houses) {
-    if (house.residents <= 0 || house.breadStock > 0) continue;
+    // F0-A: a household preparing to leave, or a house it left, is cold whatever its larder (FP-3 stages 1-2).
+    const pressure = housePressureStatus(house);
+    if (pressure === "settled" && (house.residents <= 0 || house.breadStock > 0)) continue;
     const building = state.buildings.find(candidate => candidate.id === house.buildingId);
     if (building === undefined) continue;
     const size = buildingFootprint(building); // the ring goes round the footprint's middle, not its top corner

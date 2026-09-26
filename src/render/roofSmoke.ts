@@ -1,5 +1,6 @@
 import { operationSuspended, type Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
+import { housePressureStatus } from "../population/housePressure";
 import { frameBuildingVariant } from "./buildingVariants";
 import { historicalHouseAssetMeta, historicalHouseSpriteRect } from "./historicalHouseAssets";
 import { houseCompoundAssetMeta, houseCompoundSpriteRect } from "./houseCompoundAssets";
@@ -23,7 +24,10 @@ export function smokeClockMs(tick: number): number { return tick * SMOKE_TICK_MS
 export function houseSmokeStrength(state: Pick<GameState, "houses">, building: Pick<Building, "id">): number {
   const house = state.houses.find(candidate => candidate.buildingId === building.id);
   if (house === undefined || house.residents <= 0 || house.breadStock <= 0) return 0;
-  return house.breadStock <= 1 ? 0.35 : 1;
+  const pressure = housePressureStatus(house);
+  if (pressure === "abandoned") return 0;
+  // F0-A stage 1 (떠날 준비): the hearth is kept low whatever the larder holds.
+  return pressure === "leaving" || house.breadStock <= 1 ? 0.35 : 1;
 }
 
 export function millOvenBurning(building: Building): boolean {
