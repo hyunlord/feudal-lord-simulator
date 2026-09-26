@@ -1,0 +1,17 @@
+{
+ "what": "seed 2 chapter 1 (81,500 ticks) through the bot (runPhase19NaturalGrowth), wall ms, alternating A/B on one Mac (M-series, Node 24)",
+ "A_trunk_3aa8f265_no_ledger": [
+  76578,
+  75955,
+  78613
+ ],
+ "B_branch_cd3c5f1_ledger": [
+  83188,
+  76825,
+  77919
+ ],
+ "min_delta": 0.0115,
+ "median_delta": 0.0175,
+ "mean_delta": 0.0294,
+ "ledger_step_share_of_tick_historyRun": 0.0125
+}
