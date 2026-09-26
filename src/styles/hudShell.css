@@ -322,3 +322,5 @@
 /* UI-4 forecast marks on the season strip (cause icons, 24 px scaled to the strip). */
 .app-shell .season-strip-forecast { display: inline-grid; place-items: center; transform: translate(-50%, -2px) scale(0.75); }
 .app-shell .season-strip-forecast[data-stage="rumour"] { opacity: 0.7; }
+.app-shell .ledger-rights h3 { margin: 8px 0 2px; font-size: 13px; }
+.app-shell .ledger-rights ul { margin: 0; padding-left: 18px; font-size: 13px; }

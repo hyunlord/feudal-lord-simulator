@@ -17,6 +17,7 @@ import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory";
+import { DECISION_COPY } from "../decisionCopy.ko";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -181,6 +182,11 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
               <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td></tr>);
           })}</tbody>
         </table>)) : null}
+      {/* UI-4 (FC-4): the lord's grants, one line each (the petition's result). */}
+      {tab === "stock" && (state.politics?.rights.length ?? 0) > 0 ? <section className="ledger-rights" aria-label={DECISION_COPY.rightsHeading}>
+        <h3>{DECISION_COPY.rightsHeading}</h3>
+        <ul>{state.politics!.rights.map(right => <li key={right.id}>{DECISION_COPY.right(right.holder, right.stallFeePermille)}</li>)}</ul>
+      </section> : null}
       {tab === "alerts" ? (alerts.length === 0 ? <p>{HUD_COPY.ledgerNoAlerts}</p> : <ul className="ledger-alerts">{alerts.map(row => (
         <li key={row.id}><strong>{row.title}</strong> · {row.countLabel}<br /><span>{row.cause}</span>
           <button type="button" className="ledger-alert-look" onClick={() => { const first = row.targetIds[0]; if (first !== undefined) { platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); } }}>
