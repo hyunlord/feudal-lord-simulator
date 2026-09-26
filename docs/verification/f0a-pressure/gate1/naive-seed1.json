@@ -69,7 +69,7 @@
    },
    "popDelta": 10,
    "notableEvents": [],
-   "nextObjectiveHint": null
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 3,
@@ -130,7 +130,7 @@
      "count": 1
     }
    ],
-   "nextObjectiveHint": "resettle"
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 2,
@@ -148,11 +148,14 @@
    "popDelta": 22,
    "notableEvents": [
     {
+     "kind": "first_winter_warning"
+    },
+    {
      "kind": "households_resettled",
      "count": 1
     }
    ],
-   "nextObjectiveHint": null
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 3,

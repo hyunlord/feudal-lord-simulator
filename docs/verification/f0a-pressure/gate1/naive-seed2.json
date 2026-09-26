@@ -57,7 +57,7 @@
      "count": 6
     }
    ],
-   "nextObjectiveHint": null
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 2,
@@ -73,8 +73,12 @@
     "stone": 0
    },
    "popDelta": 5,
-   "notableEvents": [],
-   "nextObjectiveHint": null
+   "notableEvents": [
+    {
+     "kind": "first_winter_warning"
+    }
+   ],
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 3,
@@ -153,14 +157,11 @@
    "popDelta": 18,
    "notableEvents": [
     {
-     "kind": "first_winter_warning"
-    },
-    {
      "kind": "households_resettled",
      "count": 1
     }
    ],
-   "nextObjectiveHint": null
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 3,

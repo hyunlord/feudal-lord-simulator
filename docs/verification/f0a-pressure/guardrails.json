@@ -190,5 +190,100 @@
   "noWinterRation": {
    "lastProgress": "L4 0/24 at 144,000 ticks when stopped"
   }
+ },
+ "run3": {
+  "commit": "322d36f",
+  "note": "x1.05 reverted (run 1 advisor) plus barn_mill (AR-8); new baseline seeds/baseline-322d36f.json",
+  "seeds": {
+   "1": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 167232,
+    "stopReason": "target-scale-stable",
+    "finalTick": 297330,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 273331,
+    "finalStateSha256": "25e45fbd4f4876e61a11720d0a4a3bb772ab67f0c817290c72746af69201492f"
+   },
+   "2": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 237592,
+    "stopReason": "target-scale-stable",
+    "finalTick": 342763,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 318764,
+    "finalStateSha256": "32b09aeaa919f77851c4014138b17d07dc855c4e00b3a8d76a5d615703e32a07"
+   },
+   "3": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 222484,
+    "stopReason": "target-scale-stable",
+    "finalTick": 305157,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 281158,
+    "finalStateSha256": "98ae088082e8cd3314093c8e57d28642c3d4fa8bda6f8da3667abfe59f39672e"
+   },
+   "4": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 208716,
+    "stopReason": "target-scale-stable",
+    "finalTick": 238190,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 214191,
+    "finalStateSha256": "679820f92cddf67aab6595a4a5c6b6019a8b0b75ecc17e61dd772a83d1717aa1"
+   },
+   "5": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 145110,
+    "stopReason": "target-scale-stable",
+    "finalTick": 231715,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 207716,
+    "finalStateSha256": "5f099ab3a55dd08c50162428442ad28b1bcbeabe8d90ab84504334f7c5322240"
+   }
+  }
+ },
+ "seed4BarnMillDiagnostic": {
+  "commit": "c949041",
+  "note": "seed 4 alone before run 3, stopped once it matched: L4 24/24 at 216,000 ticks (run 1: L4 0 at 216,000, 13 at 228,000)"
  }
 }

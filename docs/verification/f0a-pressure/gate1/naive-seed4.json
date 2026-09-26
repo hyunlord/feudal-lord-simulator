@@ -52,7 +52,7 @@
    },
    "popDelta": 12,
    "notableEvents": [],
-   "nextObjectiveHint": null
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 2,
@@ -68,8 +68,12 @@
     "stone": 0
    },
    "popDelta": 11,
-   "notableEvents": [],
-   "nextObjectiveHint": null
+   "notableEvents": [
+    {
+     "kind": "first_winter_warning"
+    }
+   ],
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 3,

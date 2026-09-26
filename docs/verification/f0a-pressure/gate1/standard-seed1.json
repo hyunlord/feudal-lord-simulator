@@ -53,7 +53,7 @@
    "expense": 0,
    "stockDelta": {
     "bread": 48,
-    "wheat": -80,
+    "wheat": -108,
     "timber": 9,
     "stone": 0
    },
@@ -66,11 +66,11 @@
    "year": 1302,
    "startTick": 11000,
    "endTick": 12000,
-   "income": 69,
+   "income": 66,
    "expense": 28,
    "stockDelta": {
-    "bread": 29,
-    "wheat": -140,
+    "bread": 14,
+    "wheat": -110,
     "timber": 9,
     "stone": 0
    },
@@ -93,7 +93,7 @@
    },
    "popDelta": 8,
    "notableEvents": [],
-   "nextObjectiveHint": null
+   "nextObjectiveHint": "food_reserve"
   },
   {
    "season": 1,
@@ -105,7 +105,7 @@
    "stockDelta": {
     "bread": -4,
     "wheat": 61,
-    "timber": 11,
+    "timber": 2,
     "stone": 0
    },
    "popDelta": 21,
@@ -117,17 +117,17 @@
    "year": 1303,
    "startTick": 14000,
    "endTick": 15000,
-   "income": 66,
+   "income": 67,
    "expense": 28,
    "stockDelta": {
-    "bread": 31,
-    "wheat": -18,
-    "timber": -21,
+    "bread": 46,
+    "wheat": -42,
+    "timber": -12,
     "stone": 0
    },
    "popDelta": 22,
    "notableEvents": [],
-   "nextObjectiveHint": null
+   "nextObjectiveHint": "harvest_reserve"
   },
   {
    "season": 3,
@@ -137,8 +137,8 @@
    "income": 0,
    "expense": 0,
    "stockDelta": {
-    "bread": -40,
-    "wheat": -40,
+    "bread": -54,
+    "wheat": -20,
     "timber": 11,
     "stone": 0
    },
