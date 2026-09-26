@@ -38,6 +38,7 @@ import {
   updateOnboardingPresentationState,
 } from "./ui/onboardingTaskModel";
 import { MapShield } from "./ui/OverlayControls";
+import { releaseControlFocus } from "./input/domInputBindings";
 import { autoPlacementOverlay } from "./ui/placementAutoOverlay";
 import { PlacementPaletteToggle } from "./render/PlacementPaletteToggle";
 import { SpeedSeals } from "./ui/SpeedControls";
@@ -243,7 +244,9 @@ export function App() {
         }
         if (selectedToolRef.current !== null || palisadeDraftRef.current !== null) playSound("place_cancel");
         // UX-3 S-31: one step back (placement -> build drawer -> idle -> pause menu); the mode effect below drops the
-        // tool, the zone brush or the inspector that the new state no longer holds.
+        // zone brush or the inspector the new state no longer holds. A placement tool is dropped here, in the same
+        // render as the step (as before UX-3), so a drag right after Esc already pans.
+        if (uiRef.current.mode === "placement" || uiRef.current.mode === "line") setSelectedTool(null);
         setUi(current => escapeOnce(current));
         return "handled";
       case "panel":
@@ -297,6 +300,7 @@ export function App() {
   useEffect(() => { sendUi({ type: layer === "zone" ? "zone_on" : "zone_off" }); }, [layer, sendUi]);
   useEffect(() => {
     const placing = ui.mode === "placement" || ui.mode === "line";
+    if (placing) releaseControlFocus(); // the picked card closed with the drawer; Space, Esc and ] go to the map
     if (!placing && selectedToolRef.current !== null) setSelectedTool(null);
     if (!placing && palisadeDraftRef.current?.mode === "draw") setPalisadeDraft(null);
     if (ui.mode !== "zone" && ui.mode !== "build" && !placing) { setZoneTool(null); setLayer(current => current === "zone" ? "direct" : current); }

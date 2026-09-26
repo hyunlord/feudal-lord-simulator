@@ -8,8 +8,9 @@ import type { TouchTranslator } from "./touchTranslator";
 // shortcuts work at once (a clicked speed seal kept the focus and swallowed WASD / Q / E / Space before); and each
 // device reports itself as the last input device.
 
-/** Drop the focus of a control (not a text field being typed in) when the map is pressed. */
-function releaseControlFocus(): void {
+/** Drop the focus of a control (not a text field being typed in) when the map is pressed — and (UX-3) when a pick
+ * closes the build drawer, so the map's keys act on the placement at once. */
+export function releaseControlFocus(): void {
   if (typeof document === "undefined") return;
   const active = document.activeElement;
   if (typeof HTMLElement === "undefined" || !(active instanceof HTMLElement) || active === document.body) return;

@@ -4,6 +4,9 @@
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/inputReplayCompare.mjs <out.json> --base <url> [--url <url>]
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
+// Where the mouse rests between steps: over the old bottom console, and on the UX-3 map clear of the 20 px edge-pan
+// band (y 790 was inside it once the console left, so the camera slid while the replay waited).
+const PARK = { x: 640, y: 740 };
 
 // UX-1: the replay compares input handling, so the build under test runs with the tutorial off (its unlocks would lock
 // the pasture brush); the baseline ignores the key. The categories were renamed (주택 → 생활, 도로 → 길); both match.
@@ -38,13 +41,15 @@ const STEPS = [
     await page.mouse.move(640, 400); await page.keyboard.down('Space'); await drag(page, { x: 640, y: 400 }, { x: 600, y: 440 }); await page.keyboard.up('Space');
     await escape(page);
   }],
+  // UX-3: the strokes sit in the upper map (tiles 46-50 x 41-43), clear of the old bottom console and the zone drawer
+  // (the earlier tiles 52-55 x 46-50 fell under the drawer once the camera had panned).
   ['zone brush: paint, radius ], paint', async (page, at) => {
     await page.locator('button.build-menu-category', { hasText: '구역' }).click();
     await page.locator('[data-zone-tool="pasture"]:visible').first().click();
-    await page.mouse.move(640, 790);
-    await drag(page, await at(52, 46), await at(55, 46));
+    await page.mouse.move(PARK.x, PARK.y);
+    await drag(page, await at(47, 41), await at(50, 41));
     await page.keyboard.press('BracketRight');
-    await drag(page, await at(52, 49), await at(54, 50));
+    await drag(page, await at(46, 43), await at(48, 43));
   }],
   ['zone brush: Z undoes the last stroke, Esc disarms', async (page) => { await page.keyboard.press('KeyZ'); await escape(page); }],
   ['keyboard pan (D held)', async (page) => { await page.mouse.move(640, 400); await page.keyboard.down('KeyD'); await page.waitForTimeout(250); await page.keyboard.up('KeyD'); await page.waitForTimeout(400); }],
@@ -56,7 +61,7 @@ const STEPS = [
     const box = await page.locator('button.map-overview').boundingBox();
     await page.mouse.click(box.x + box.width * 0.3, box.y + box.height * 0.6);
     if (drawer) await ledger.click(); else await page.locator('summary', { hasText: '지도' }).first().click();
-    await page.mouse.move(640, 790);
+    await page.mouse.move(PARK.x, PARK.y);
   }],
 ];
 
@@ -68,7 +73,7 @@ async function tool(page, category, name) {
   await page.locator('button.build-menu-category[data-category]', { hasText: CATEGORY_NAME[category] ?? category }).click();
   const button = page.locator(`button[aria-label="${name}"]:visible`);
   if (await button.count() > 0) await button.first().click();
-  await page.mouse.move(640, 790);
+  await page.mouse.move(PARK.x, PARK.y);
 }
 /** Esc one step; on the normal screen UX-3 opens the pause menu (S-31), which this session closes again. */
 async function escape(page) {
@@ -80,7 +85,7 @@ async function clickAt(page, p) { await page.mouse.click(p.x, p.y); await page.w
 
 async function session(browser, base) {
   const { context, page } = await openScene(browser, { state: null, tile: [44, 41], baseUrl: base, run: false, initScript: TUTORIAL_OFF });
-  await page.mouse.move(640, 790);
+  await page.mouse.move(PARK.x, PARK.y);
   const at = async (tx, ty) => page.evaluate(([x, y]) => { const p = window.__FEUDAL_PHASE10_PROOF__.tileClientPoint({ tx: x, ty: y }); return { x: p.clientX, y: p.clientY }; }, [tx, ty]);
   const rows = [];
   for (const [name, step] of STEPS) {

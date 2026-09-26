@@ -12,6 +12,9 @@
 // there; everything else must be identical.
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
+// Where the mouse rests between steps: over the old bottom console, and on the UX-3 map clear of the 20 px edge-pan
+// band (y 790 was inside it once the console left, so the camera slid while the replay waited).
+const PARK = { x: 640, y: 740 };
 
 // UX-1: the replay compares input handling, so the build under test runs with the tutorial off (its unlocks would lock
 // the pasture brush); the baseline ignores the key. The categories were renamed (주택 → 생활, 도로 → 길); both match.
@@ -34,7 +37,7 @@ const mouseDevice = page => ({
   panDragWithSpace: async (a, b) => { await page.mouse.move(a.x, a.y); await page.keyboard.down('Space'); await mouseDevice(page).drag(a, b); await page.keyboard.up('Space'); },
   zoomSteps: async (anchor) => { await page.mouse.move(anchor.x, anchor.y); for (const deltaY of [-120, -120, 120]) { await page.mouse.wheel(0, deltaY); await page.waitForTimeout(80); } },
   cancelAt: async p => { await page.mouse.click(p.x, p.y, { button: 'right' }); },
-  park: async () => { await page.mouse.move(640, 790); },
+  park: async () => { await page.mouse.move(PARK.x, PARK.y); },
 });
 
 const touchDevice = (page, cdp) => {
@@ -75,13 +78,15 @@ const STEPS = [
   ['house tool, place', async (d, page, at) => { await tool(d, page, '주택', '오두막'); await d.tap(await at(48, 38)); }],
   ['right click the new site cancels it', async (d, page, at) => { await escape(page); await d.cancelAt(await at(48, 38)); }],
   ['Space held + drag pans with the road tool', async (d, page) => { await tool(d, page, '도로', '길'); await d.panDragWithSpace({ x: 640, y: 400 }, { x: 600, y: 440 }); await escape(page); }],
+  // UX-3: the strokes sit in the upper map (tiles 46-50 x 41-43), clear of the old bottom console and the zone drawer
+  // (the earlier tiles 52-55 x 46-50 fell under the drawer once the camera had panned).
   ['zone brush: paint, radius ], paint', async (d, page, at) => {
     await d.press(page.locator('button.build-menu-category', { hasText: '구역' }));
     await d.press(page.locator('[data-zone-tool="pasture"]:visible').first());
     await d.park();
-    await d.drag(await at(52, 46), await at(55, 46));
+    await d.drag(await at(47, 41), await at(50, 41));
     await page.keyboard.press('BracketRight');
-    await d.drag(await at(52, 49), await at(54, 50));
+    await d.drag(await at(46, 43), await at(48, 43));
   }],
   ['zone brush: Z undoes the last stroke, Esc disarms', async (d, page) => { await page.keyboard.press('KeyZ'); await escape(page); }],
   ['keyboard pan (D held)', async (d, page) => { await page.mouse.move(640, 400); await page.keyboard.down('KeyD'); await page.waitForTimeout(250); await page.keyboard.up('KeyD'); await page.waitForTimeout(400); }],
@@ -115,7 +120,7 @@ async function tool(d, page, category, name) {
 
 async function session(browser, kind) {
   const { context, page } = await openScene(browser, { state: null, tile: [44, 41], baseUrl: url, run: false, hasTouch: kind === 'touch', initScript: TUTORIAL_OFF });
-  await page.mouse.move(640, 790);
+  await page.mouse.move(PARK.x, PARK.y);
   const cdp = kind === 'touch' ? await context.newCDPSession(page) : null;
   const device = kind === 'touch' ? touchDevice(page, cdp) : mouseDevice(page);
   const at = async (tx, ty) => page.evaluate(([x, y]) => { const p = window.__FEUDAL_PHASE10_PROOF__.tileClientPoint({ tx: x, ty: y }); return { x: p.clientX, y: p.clientY }; }, [tx, ty]);

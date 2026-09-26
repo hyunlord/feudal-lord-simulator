@@ -20,3 +20,5 @@ step touch-replay node scripts/touchReplayCompare.mjs "$out/touch-replay.json" -
 step gamepad node scripts/gamepadReplay.mjs "$out/gamepad" --url "$URL"
 step focus-return node scripts/focusReturnCheck.mjs "$out/focus-return.json" --base "$BASE_URL" --url "$URL"
 printf '%s\n' "${results[@]}" > "$out/exit-codes.txt"
+step gates node scripts/ux3GateSummary.mjs "$out"
+cat "$out/gates.json"
