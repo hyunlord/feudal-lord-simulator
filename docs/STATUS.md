@@ -2,6 +2,9 @@
 
 갱신: 2026-09-26(F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
+**로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
+- **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
+
 ## 현재 단계
 
 - **F0-B 흐름 뼈대 2 — 사건 뼈대: 관문 ①②④⑤ 통과, ③ 가드레일 4/5(seed 3 작은 성벽 교착, 결정 EV8 알려진 정지), 사용자 지시로 본선 병합**(Claude Code, 엔진 세션, 렌더는 `buildingVisualState` +2줄): [사건 명세](design/flow-events.md) EV-1~EV-9, [보고서](verification/f0b-events/REPORT.md), 결정 EV1~EV7.
