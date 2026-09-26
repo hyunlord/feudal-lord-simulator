@@ -1,4 +1,6 @@
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { drawDemolitions, observeDemolitions } from "./demolitionMoments";
+import type { GameState } from "../engine/engine.types";
 import { constructionArtImage } from "./constructionArtAssets";
 import {
   constructionSiteAnchor,
@@ -101,8 +103,15 @@ export function drawConstructionCompletionEffects(
   input: {
     readonly effects: readonly ConstructionCompletionEffect[];
     readonly zoom: number;
+    /** INSTALL-11: the frame's state and clock, for the demolitions (the kit in reverse, demolitionMoments). */
+    readonly state?: GameState;
+    readonly nowMs?: number;
   },
 ): void {
+  if (input.state !== undefined && input.nowMs !== undefined) {
+    observeDemolitions(input.state, input.nowMs);
+    drawDemolitions(context, input.nowMs);
+  }
   for (const effect of input.effects) {
     if (effect.confirmedCompletion === true && effect.site !== undefined && presentationSpeed() < FAST_PRESENTATION_SPEED) {
       drawCompletionSequence(context, effect, effect.site, input.zoom);

@@ -148,7 +148,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
       drawWorldSigns(input.context, input.state, input.camera, input.viewport); // F0-V world signs
       drawConstructionCompletionEffects(input.context, {
         effects: constructionEffects,
-        zoom: input.camera.zoom,
+        zoom: input.camera.zoom, state: input.state, nowMs: input.nowMs ?? performance.now(), // + INSTALL-11 demolitions
       });
     },
   });

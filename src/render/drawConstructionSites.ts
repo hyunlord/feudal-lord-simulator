@@ -26,7 +26,8 @@ import { currentConstructionSiteLabel } from "../ui/constructionAccessModel";
 import { constructionSiteLabelBoxes, type ConstructionLabelEntry } from "./constructionSiteLabelLayout";
 import { drawConstructionPiles, drawConstructionPlaque, drawConstructionSign, drawWellStage } from "./constructionPlaque";
 import { constructionMoment, CROSSFADE_MS, drawSiteDust } from "./constructionMoments";
-import { constructionWorkProgress } from "./constructionVisibility";
+import { constructionStageIndex, constructionWorkProgress } from "./constructionVisibility";
+import { drawKitSiteProps, drawKitStage } from "./constructionKits";
 import { drawConstructionGhost, drawConstructionSignIcon } from "./constructionGhost";
 export {
   createConstructionCompletionTracker,
@@ -122,8 +123,9 @@ export function drawConstructionSite(
   const drawStage = (stage: ConstructionRenderSignature, stageProgress: number | null, alpha: number) => {
     context.save();
     context.globalAlpha *= alpha;
-    const drawn = input.site.kind === "well" ? drawWellStage(context, input.site, stageProgressFor(stage))
-      : drawConstructionArt(context, input.site, stage);
+    // INSTALL-11: the family kit's stage painting; the well's own stages; else the common four-stage art.
+    const drawn = drawKitStage(context, input.site, SIGNATURES.indexOf(stage as typeof SIGNATURES[number]))
+      || (input.site.kind === "well" ? drawWellStage(context, input.site, stageProgressFor(stage)) : drawConstructionArt(context, input.site, stage));
     if (!drawn) drawConstructionStageBand(context, { signature: stage, anchor, zoom: input.zoom, progress: stageProgress });
     context.restore();
   };
@@ -135,6 +137,7 @@ export function drawConstructionSite(
   drawConstructionSign(context, input.site);
   drawConstructionSignIcon(context, input.site);
   drawConstructionPiles(context, input.site, progress);
+  drawKitSiteProps(context, input.site, constructionStageIndex(progress), input.zoom);
   if (moment !== null) drawSiteDust(context, input.site, moment);
   // F0-V: the builders are the real builder walkers at the site; the static marker (a builder sprite, else a gold
   // square) stays only for still test frames without a state.

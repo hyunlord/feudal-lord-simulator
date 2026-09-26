@@ -1,4 +1,5 @@
 import type { GameState } from "../engine/engine.types";
+import { kitWorker } from "./constructionKits";
 import type { Walker } from "../agents/walker.types";
 import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { assetUrlForBase } from "./worldAssets";
@@ -151,7 +152,15 @@ function lookOf(state: GameState, walker: Walker): WalkerLook {
 /** The look, prop and cloak a walker is drawn with this frame (also the evidence scripts' read-out). */
 export function walkerAppearance(state: GameState, walker: Walker) {
   const look = lookOf(state, walker);
-  return { look, prop: walkerHeldProp(look, walker, builderSiteStage(state, walker), stateCalendar(state)), cloak: walkerCloak(state, look) };
+  const stage = builderSiteStage(state, walker);
+  // INSTALL-11: a builder at a kit site is its family's worker (carpenter or mason sheet) with the family's tool.
+  const site = stage === null ? undefined : state.constructionSites.find(candidate => "siteId" in walker && candidate.id === walker.siteId);
+  const worker = site === undefined ? null : kitWorker(site.kind, stage!);
+  if (worker !== null) {
+    const kitLook = { ...look, sheetId: worker.sheet as typeof look.sheetId };
+    return { look: kitLook, prop: worker.tool as ReturnType<typeof walkerHeldProp>, cloak: walkerCloak(state, kitLook) };
+  }
+  return { look, prop: walkerHeldProp(look, walker, stage, stateCalendar(state)), cloak: walkerCloak(state, look) };
 }
 
 /** Whether the walker's composed look can be drawn now (composes it on first call once its images are loaded). */
