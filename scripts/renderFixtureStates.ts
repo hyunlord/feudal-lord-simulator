@@ -40,9 +40,9 @@ export function benchmarkCities(): { readonly newgame: null; readonly pop176: Ga
     c25zoned: c25ZonedState(),
     gallery: variantGallery().state,
     pop176,
-    // INSTALL-15 season turn: pop176 50 ticks before autumn turns to winter (27,000), so at 1x the turn falls about a
-    // second into each measured window (the scene runs 1.5 s before it).
-    pop176turn: { ...pop176, tick: 26_950 },
+    // INSTALL-15 season turn: pop176 80 ticks before autumn turns to winter (27,000); the scene runs 1.5 s before each
+    // measured window, so at 1x the turn falls ~2.5 s into the ~4 s window and its 1.5 s change is measured whole.
+    pop176turn: { ...pop176, tick: 26_920 },
     // A bare GameState (schema v0); decodeSave migrates it step by step to the current version.
     lots24: decode("fixtures/determinism/seed1/final-state.json"),
   };

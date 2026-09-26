@@ -11,30 +11,25 @@ import {
   type TreeDescriptor,
 } from "./treeLayout";
 import { applyInkOutline, snapToPixel } from "./style";
-import { seasonSprite, seasonVariant, type SeasonIndex } from "./seasonArt";
-import type { SeasonBlend } from "./seasonTransition";
+import { seasonSprite, seasonVariant } from "./seasonArt";
+import { seasonForObject, type SeasonBlend } from "./seasonTransition";
 import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
 
 /**
  * INSTALL-15: a tree, shrub, stump, tuft or stone in this season's art (the Wave 15 variant on the base's canvas and
- * registration; the base art where there is none or it is still loading). While the season changes, the old art fades
- * out as the new one fades in (seasonBlend). Variants are drawn untinted: the foliage-ramp tint only moves exact ramp
+ * registration; the base art where there is none or it is still loading). While the season turns, each object switches
+ * at its own moment (seasonForObject). Variants are drawn untinted: the foliage-ramp tint only moves exact ramp
  * colours, and the received Wave 15 art has none (0 of ~3,000 opaque pixels on the large oak and each of its variants).
- * `salt` (the tree's position) picks between a winter oak's bare and snowy art.
+ * `salt` (the object's position) picks between a winter oak's bare and snowy art and its moment in the turn.
  */
 function drawSeasonalSprite(context: CanvasRenderingContext2D, key: string, tx: number, ty: number, options: WorldSpriteOptions,
   blend: SeasonBlend | undefined, salt: number): boolean {
-  const layer = (season: SeasonIndex, alpha: number): boolean => {
-    const variant = seasonVariant(key, season, salt);
-    const image = variant === null ? null : seasonSprite(variant);
-    const faded = { ...options, alpha: (options.alpha ?? 1) * alpha };
-    if (image === null) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, faded);
-    const { tint: _tint, ...untinted } = faded;
-    return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, { ...untinted, image });
-  };
   if (blend === undefined) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, options);
-  if (blend.from !== null) layer(blend.from, 1 - blend.t);
-  return layer(blend.season, blend.from === null ? 1 : blend.t);
+  const variant = seasonVariant(key, seasonForObject(blend, salt), salt);
+  const image = variant === null ? null : seasonSprite(variant);
+  if (image === null) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, options);
+  const { tint: _tint, ...untinted } = options;
+  return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, { ...untinted, image });
 }
 
 export { seasonBlend } from "./seasonTransition"; // one drawBuildings import for the object pass's season

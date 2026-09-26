@@ -5,24 +5,16 @@ import { ZONE_ASSETS } from "./zoneAssetManifest";
 import { zoneAsset, zoneAssetRaster } from "./zoneAssets";
 import type { ZoneProp } from "./zoneLayer";
 import { seasonPropRaster, seasonVariant, type SeasonIndex } from "./seasonArt";
-import type { SeasonBlend } from "./seasonTransition";
+import { seasonForObject, type SeasonBlend } from "./seasonTransition";
 
 // Object-pass sprites for zone props (C1b) and yard hurdles (C1e): the existing orchard tree (phase16 landscape), the
 // Wave 4 / 4b orchard trees and haycocks (never mirrored: they are real variants), and the hurdle panels (mirrored for
 // the +x run, spec 0-A of C1e). Anchored at the manifest's (anchorX, anchorY); a mirrored sprite mirrors about it.
 // INSTALL-15: orchard trees blossom in spring and stand bare in winter (Wave 15, same canvas and anchor; autumn keeps
-// the fruiting summer art), crossfading while the season changes.
+// the fruiting summer art), each turning at its own moment while the season changes.
 
 export function drawZoneProp(context: CanvasRenderingContext2D, prop: ZoneProp, season?: SeasonBlend): void {
-  if (season?.from !== null && season?.from !== undefined) {
-    context.save(); context.globalAlpha *= 1 - season.t;
-    drawZonePropIn(context, prop, season.from);
-    context.restore(); context.save(); context.globalAlpha *= season.t;
-    drawZonePropIn(context, prop, season.season);
-    context.restore();
-    return;
-  }
-  drawZonePropIn(context, prop, season?.season ?? 1);
+  drawZonePropIn(context, prop, season === undefined ? 1 : seasonForObject(season, Math.round(prop.x * 31 + prop.y * 17)));
 }
 
 function drawZonePropIn(context: CanvasRenderingContext2D, prop: ZoneProp, season: SeasonIndex): void {

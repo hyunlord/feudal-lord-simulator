@@ -2,9 +2,9 @@ import type { GameState } from "../engine/engine.types";
 import { FAST_PRESENTATION_SPEED, presentationSpeed } from "./presentationSpeed";
 import { seasonOf, type SeasonIndex } from "./seasonArt";
 
-// INSTALL-15 season change on screen: when the calendar season turns, the object pass crossfades each tree, shrub and
-// orchard tree from its old season's art to the new one over SEASON_FADE_MS (and the ground chunks fade their new
-// rasters in over the same time, groundChunkCache `fade`). At 5x the change is immediate (visibility design 5절). A
+// INSTALL-15 season change on screen: when the calendar season turns, the ground chunks fade their new rasters in over
+// SEASON_FADE_MS (groundChunkCache `fade`) and, over the same time, each tree, shrub, orchard tree and roof turns to
+// the new season's art at its own moment (`seasonForObject`). At 5x the change is immediate (visibility design 5절). A
 // jump of more than a season (a load, a proof scene) is not a change: it shows the new season at once.
 // Presentation state only (the last season seen and when it changed), never saved.
 export const SEASON_FADE_MS = 1_500;
@@ -29,6 +29,17 @@ export function seasonBlend(state: Pick<GameState, "tick" | "scenarioId">, nowMs
   const t = Math.min(1, Math.max(0, (nowMs - seen.startedMs) / SEASON_FADE_MS));
   if (t >= 1) seen.from = null;
   return { season, from: seen.from, t };
+}
+
+/**
+ * The season one object shows this frame: while a turn fades, each object switches at its own moment in the fade (its
+ * salt's place in [0, 1)), so the change runs over the forest and the roofs as a wave and every object is still drawn
+ * once. (An alpha crossfade drew every tree twice: +4.5 ms p95 at 4x CPU on the pop176 turn, docs/verification/install15.)
+ */
+export function seasonForObject(blend: SeasonBlend, salt: number): SeasonIndex {
+  if (blend.from === null) return blend.season;
+  let hash = Math.imul(Math.trunc(salt) ^ 0x5bd1e995, 0x27d4eb2d); hash ^= hash >>> 15;
+  return blend.t >= ((hash >>> 0) % 1_000) / 1_000 ? blend.season : blend.from;
 }
 
 /** Tests: forget the last season seen. */

@@ -249,8 +249,9 @@ const PREFETCH_MIN_IDLE_MS = 6;
  * frame that queued it, so a raster made from an older state is simply re-rastered when the key moves on.
  */
 const SEASON_TICKS = 1_000;
-/** Staging window before a turn: 80 ticks, 4 s at 1x (the visible chunks raster in ~20-40 ms of idle time). */
-const STAGE_TICKS = 80;
+/** Staging window before a turn: 200 ticks, 10 s at 1x (the visible chunks raster in ~0.1-0.3 s of idle time; a scene
+ * opened just before a turn shares that idle time with its first rasters). */
+const STAGE_TICKS = 200;
 const stagingQueues = new WeakMap<CanvasRenderingContext2D, { jobs: PrefetchJob[]; scheduled: boolean }>();
 
 function scheduleStaging(context: CanvasRenderingContext2D, cache: GroundChunkCache, jobs: PrefetchJob[]): void {

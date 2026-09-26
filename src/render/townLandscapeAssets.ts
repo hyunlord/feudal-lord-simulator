@@ -6,8 +6,8 @@ import { townLandscapeAt, type TownLandscapeKind } from "./townLandscape";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
-import { seasonPropRaster, seasonVariant, type SeasonIndex } from "./seasonArt";
-import { seasonBlend } from "./seasonTransition";
+import { seasonPropRaster, seasonVariant } from "./seasonArt";
+import { seasonBlend, seasonForObject } from "./seasonTransition";
 
 type LandscapeAsset = { readonly meta: typeof townLandscapeManifest[number]; image: HTMLImageElement | null; raster: RasterizedWorldSprite | null };
 const assets: LandscapeAsset[] = townLandscapeManifest.map(meta => ({ meta, image: null, raster: null }));
@@ -55,17 +55,11 @@ export function drawTownLandscape(context: CanvasRenderingContext2D, state: Game
 
     const source = asset.raster?.source ?? { x: 0, y: 0, width: asset.image.naturalWidth, height: asset.image.naturalHeight };
     const rect = townLandscapeRect(asset.meta, tile);
-    // INSTALL-15: the orchard tree blossoms in spring and is bare in winter (orchard_tree variants, same canvas).
-    const draw = (seasonIndex: SeasonIndex, alpha: number) => {
-      const variant = kind === "orchard" ? seasonVariant("orchard_tree", seasonIndex) : null;
-      const raster = variant === null ? null : seasonPropRaster(variant, asset.meta.displayWidth);
-      const previous = context.globalAlpha;
-      if (alpha !== 1) context.globalAlpha = previous * alpha;
-      drawCroppedWorldSprite(context, raster?.image ?? asset.raster?.image ?? asset.image as HTMLImageElement, raster?.source ?? source, rect, false, true);
-      if (alpha !== 1) context.globalAlpha = previous;
-    };
-    if (season.from !== null && kind === "orchard") draw(season.from, 1 - season.t);
-    draw(season.season, season.from !== null && kind === "orchard" ? season.t : 1);
+    // INSTALL-15: the orchard tree blossoms in spring and is bare in winter (orchard_tree variants, same canvas); it
+    // turns at its own moment while the season changes.
+    const variant = kind === "orchard" ? seasonVariant("orchard_tree", seasonForObject(season, tile.tx * 31 + tile.ty * 17)) : null;
+    const raster = variant === null ? null : seasonPropRaster(variant, asset.meta.displayWidth);
+    drawCroppedWorldSprite(context, raster?.image ?? asset.raster?.image ?? asset.image, raster?.source ?? source, rect, false, true);
   }
 }
 
