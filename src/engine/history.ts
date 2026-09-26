@@ -1,7 +1,7 @@
 /**
- * F0-C2 history ledger v0 (spec docs/design/history-ledger.md HL-1…HL-9). Append-only: records are only added; the one
- * later write is a decision's `actual` (HL-3). Nothing here changes the simulation — the ledger reads the state before
- * and after each tick and each player command.
+ * F0-C2 history ledger v0 (spec docs/design/history-ledger.md HL-1…HL-10). Append-only: records are only added; the
+ * later writes are a decision's `actual` (HL-3) and the folding of old everyday records (HL-10). Nothing here changes
+ * the simulation — the ledger reads the state before and after each tick and each player command.
  *
  * - HL-2 ① decisions: every player command (`gameReducer`) — the everyday ones (build, road, zone, house, cancel,
  *   operation, wall priority) counted per season and written as one record per kind at its end; the big ones (market
@@ -12,6 +12,8 @@
  *   rebuilt, emptied, went hungry, fed again, reached or lost water, grew or shrank).
  * - HL-3: a prediction's `actual` is filled on the same keys two seasons later.
  * - HL-5: thumbnails 128² every season, 256² for an era or a chapter end.
+ * - HL-10 (HIST-1): at each season's close, everyday records eight seasons old fold into one summary per season, and
+ *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
 import { CHAPTER_ONE, PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import { HISTORY_TEMPLATES } from "../content/historyCopy.ko";
@@ -247,6 +249,75 @@ function seasonDrafts(after: GameState, history: HistoryState): { readonly draft
   return { drafts, closed: true };
 }
 
+/** HL-10: everyday records and 128² thumbnails are thinned once they are this many seasons old. */
+export const FOLD_AFTER_SEASONS = 8;
+/** HL-10: the season summary that replaces a season's folded everyday records. */
+export const ROLLUP_TEMPLATE = "ledger.rollup";
+/** HL-10: everyday records that are never folded (a household moving into a house). */
+const PERMANENT_EVERYDAY: ReadonlySet<string> = new Set(["person.move_in", "person.resettled"]);
+const YEAR = 4 * SEASON;
+
+/** HL-10: a record folded into its season's summary once old enough — everyday (severity 0), not kept for good. */
+export function foldableRecord(record: HistoryRecord): boolean {
+  return record.severity === 0 && record.decision === undefined && record.template !== ROLLUP_TEMPLATE && !PERMANENT_EVERYDAY.has(record.template);
+}
+
+/** HL-10: a thumbnail kept once old: an era's or chapter's (256²), or a year's end (winter's close). */
+function keptOldSnapshot(snapshot: { readonly size: number; readonly tick: number }): boolean {
+  return snapshot.size === 256 || snapshot.tick % YEAR === 0;
+}
+
+/**
+ * HL-10: folds the everyday records at least `FOLD_AFTER_SEASONS` seasons old into one summary per season (the season
+ * ending at the next multiple of the season length): `count`, a count per template, commands per everyday decision
+ * kind (`decision.build`), and the season's line
+ * (population, change, treasury) and its thumbnail if kept. The summary takes the first folded record's id and place,
+ * so ids stay in order. Old 128² thumbnails are kept only at a year's end. The originals are dropped.
+ */
+export function compactHistory(history: HistoryState, tick: number): HistoryState {
+  const cutoff = tick - FOLD_AFTER_SEASONS * SEASON;
+  const dropsSnapshot = (snapshot: HistoryState["snapshots"][number]) => snapshot.tick <= cutoff && !keptOldSnapshot(snapshot);
+  const folds = history.records.some(record => record.tick <= cutoff && foldableRecord(record));
+  if (!folds && !history.snapshots.some(dropsSnapshot)) return history;
+  const snapshots = history.snapshots.filter(snapshot => !dropsSnapshot(snapshot));
+  const kept = new Set(snapshots.map(snapshot => snapshot.id));
+  const records: HistoryRecord[] = [];
+  const summaries = new Map<number, { index: number; params: Record<string, number | string>; snapshotId?: string }>();
+  const windowOf = (at: number) => Math.ceil(at / SEASON);
+  for (const record of history.records) {
+    if (record.template === ROLLUP_TEMPLATE) {
+      summaries.set(windowOf(record.tick), { index: records.length, params: { ...record.params },
+        ...(record.snapshotId === undefined ? {} : { snapshotId: record.snapshotId }) });
+      records.push(record);
+      continue;
+    }
+    if (record.tick > cutoff || !foldableRecord(record)) { records.push(record); continue; }
+    const window = windowOf(record.tick);
+    let summary = summaries.get(window);
+    if (summary === undefined) {
+      summary = { index: records.length, params: { count: 0 } };
+      summaries.set(window, summary);
+      records.push({ id: record.id, tick: window * SEASON, kind: "ledger", template: ROLLUP_TEMPLATE, subject: TOWN, severity: 0 });
+    }
+    summary.params.count = Number(summary.params.count ?? 0) + 1;
+    summary.params[record.template] = Number(summary.params[record.template] ?? 0) + 1;
+    // An everyday decision line keeps its command count by kind (`decision.build`: commands that season).
+    if (record.template === "decision.bundle") {
+      const key = `decision.${String(record.params?.decisionKind)}`;
+      summary.params[key] = Number(summary.params[key] ?? 0) + Number(record.params?.count ?? 0);
+    }
+    if (record.template === "ledger.season") {
+      for (const key of ["population", "popDelta", "net", "season", "year"] as const) if (record.params?.[key] !== undefined) summary.params[key] = record.params[key]!;
+      if (record.snapshotId !== undefined && kept.has(record.snapshotId)) summary.snapshotId = record.snapshotId;
+    }
+  }
+  for (const summary of summaries.values()) {
+    const base = records[summary.index]!;
+    records[summary.index] = { ...base, params: summary.params, ...(summary.snapshotId === undefined ? {} : { snapshotId: summary.snapshotId }) };
+  }
+  return { ...history, records, snapshots };
+}
+
 /** One tick of the ledger: `before` is the state the tick started from. */
 export function advanceHistory(before: GameState, after: GameState): GameState {
   let history = historyOf(after);
@@ -272,6 +343,7 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...season.drafts);
   if (milestones !== history.milestones || season.closed) history = { ...history, milestones, ...(season.closed ? { seasonDecisions: {} } : {}) };
   history = fillActuals(append(history, drafts), after);
+  if (season.closed) history = compactHistory(history, after.tick);
   return history === historyOf(after) ? after : { ...after, history };
 }
 

@@ -1,0 +1,123 @@
+{
+ "seed": 3,
+ "maxTicks": 1200000,
+ "finalTick": 1200000,
+ "era": "stone_town",
+ "elapsedSeconds": 1703,
+ "ledger": {
+  "bytes": 846916,
+  "records": 1359,
+  "summaries": 1192,
+  "snapshots": 312,
+  "snapshots256": 6
+ },
+ "unfolded": {
+  "bytes": 2753817,
+  "records": 3378,
+  "snapshots": 1206
+ },
+ "replaced": 3211,
+ "replacedAllFoldableAndOld": true,
+ "summaryCountsMatch": true,
+ "permanentKept": {
+  "moveIns": 23,
+  "severity1up": 128,
+  "severity1upUnfolded": 128
+ },
+ "queryChecks": [
+  {
+   "query": {},
+   "records": 167,
+   "equal": true
+  },
+  {
+   "query": {
+    "severity": 1
+   },
+   "records": 128,
+   "equal": true
+  },
+  {
+   "query": {
+    "severity": 2
+   },
+   "records": 30,
+   "equal": true
+  },
+  {
+   "query": {
+    "kinds": [
+     "decision"
+    ]
+   },
+   "records": 19,
+   "equal": true
+  },
+  {
+   "query": {
+    "kinds": [
+     "event",
+     "era"
+    ]
+   },
+   "records": 53,
+   "equal": true
+  },
+  {
+   "query": {
+    "kinds": [
+     "person"
+    ]
+   },
+   "records": 49,
+   "equal": true
+  },
+  {
+   "query": {
+    "kinds": [
+     "milestone",
+     "ledger"
+    ]
+   },
+   "records": 46,
+   "equal": true
+  },
+  {
+   "query": {
+    "actors": [
+     {
+      "type": "household",
+      "id": "house-46-40-0"
+     }
+    ]
+   },
+   "records": 0,
+   "equal": true
+  },
+  {
+   "query": {
+    "range": {
+     "from": 0,
+     "to": 100000
+    }
+   },
+   "records": 55,
+   "equal": true
+  },
+  {
+   "query": {
+    "range": {
+     "from": 1192000
+    }
+   },
+   "records": 24,
+   "equal": true
+  }
+ ],
+ "queriesEqual": true,
+ "save": {
+  "schemaVersion": 15,
+  "bytes": 2488817,
+  "historyRoundTrip": true
+ }
+}

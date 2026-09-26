@@ -68,6 +68,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "ledger.treasury_turn": params => n(params, "net") >= 0 ? "금고가 다시 늘기 시작했다" : "금고가 줄기 시작했다",
   "ledger.l4": params => `도시 대가옥이 ${n(params, "from")}채에서 ${n(params, "to")}채가 되었다`,
   "ledger.departures": params => `한 계절에 ${n(params, "count")}가구가 떠났다`,
+  "ledger.rollup": params => `계절 요약 — 일상 기록 ${n(params, "count")}건`,
   "person.move_in": () => "가구가 새 집에 들었다",
   "person.level_up": params => `집이 ${n(params, "level")}등급으로 올랐다`,
   "person.level_down": params => `집이 ${n(params, "level")}등급으로 내려앉았다`,
