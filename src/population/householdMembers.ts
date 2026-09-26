@@ -1,6 +1,5 @@
 import { BALANCE } from "../content/balanceConfig";
 import { scenarioById } from "../content/scenario/registry";
-import type { PersonState } from "../engine/persons.types";
 import type { House, HouseholdMembers } from "./population.types";
 
 export type MemberSex = "female" | "male";
@@ -89,12 +88,17 @@ export interface HouseholdMembersView {
 
 const ROLE_ORDER = ["head", "spouse", "kin", "child"] as const;
 
+/** The persons this view reads (PERSON-0 `PersonState`, spec docs/design/persons.md; population does not import the engine). */
+interface MemberPersons {
+  readonly people: readonly { readonly id: string; readonly householdId: string; readonly sex: MemberSex; readonly birthYear: number; readonly role: string }[];
+}
+
 /**
  * LB-2: the render API (V2 walkers read sex and age band). `null` for an unknown house or one not yet counted.
  * PERSON-0 (PS-1): with persons, the members are the household's persons (head, spouse, relatives, children; child
  * under 14, elder 55+), in that order.
  */
-export function householdMembers(state: { readonly houses: readonly House[]; readonly persons?: PersonState; readonly tick?: number; readonly scenarioId?: string }, houseId: string): HouseholdMembersView | null {
+export function householdMembers(state: { readonly houses: readonly House[]; readonly persons?: MemberPersons; readonly tick?: number; readonly scenarioId?: string }, houseId: string): HouseholdMembersView | null {
   const members = state.houses.find(house => house.buildingId === houseId)?.members;
   if (members === undefined) return null;
   if (state.persons !== undefined && state.tick !== undefined) {

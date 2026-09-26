@@ -6,7 +6,7 @@
  * - PS-3 life: the old growth rule (a fed, watered house below capacity gains a resident) is a birth when the
  *   household has a mother and fewer children than adults, else a relative arriving; the first two residents of an
  *   empty house found a household (head and spouse). The old decline rule (a starving house loses a resident) is a
- *   famine death of the frailest or, among the strong, someone leaving. New: at each season's start a person dies at
+ *   famine death of the frailest or, among the strong, someone leaving. New: on each season's first day a person dies at
  *   the rate of their age (dearer bread weighs it: dearth × 1.5, famine × 3), and a house that burns kills some within.
  *   A household whose adults are gone passes to its eldest child of 12+, else it breaks up (the children go to kin).
  * - PS-4 offices: the steward (manor household, always), the reeve (a labour household head, chosen each year), a
@@ -177,7 +177,9 @@ class Town {
       this.create({ sex: roll % 2 === 0 ? "female" : "male", birthYear: this.year, householdId, role: "child", ...(head.surname === undefined ? {} : { surname: head.surname }) });
       return;
     }
-    this.create({ sex: roll % 2 === 0 ? "female" : "male", birthYear: this.year - 14 - (roll >>> 3) % 17, householdId, role: "kin",
+    // A relative: a young one (14–30), or one time in four a widowed parent (55–70).
+    const elder = (roll >>> 8) % 4 === 0;
+    this.create({ sex: roll % 2 === 0 ? "female" : "male", birthYear: this.year - (elder ? 55 + (roll >>> 3) % 16 : 14 + (roll >>> 3) % 17), householdId, role: "kin",
       ...(head.surname === undefined ? {} : { surname: head.surname }) });
   }
 
@@ -250,7 +252,7 @@ export function initialPersons(state: GameState): PersonState {
       const roll = hashSeed(state.seed, "initial-member", town.ordinal);
       const head = town.household(house.buildingId).find(person => person.role === "head");
       const surname = head?.surname;
-      if (index < adults) town.create({ sex: roll % 2 === 0 ? "female" : "male", birthYear: town.year - 14 - (roll >>> 3) % 30, householdId: house.buildingId, role: "kin", ...(surname === undefined ? {} : { surname }) });
+      if (index < adults) town.create({ sex: roll % 2 === 0 ? "female" : "male", birthYear: town.year - ((roll >>> 8) % 4 === 0 ? 55 + (roll >>> 3) % 16 : 14 + (roll >>> 3) % 17), householdId: house.buildingId, role: "kin", ...(surname === undefined ? {} : { surname }) });
       else town.create({ sex: roll % 2 === 0 ? "female" : "male", birthYear: town.year - (roll >>> 3) % ADULT_AGE, householdId: house.buildingId, role: "child", ...(surname === undefined ? {} : { surname }) });
     }
   }
@@ -330,9 +332,11 @@ export function advancePersons(state: GameState): GameState {
   const base = state.persons ?? initialPersons(state);
   const year = currentYear(state);
   const seasonStart = state.tick > 0 && state.tick % SEASON === 0;
+  // PS-3: the season's deaths fall on its first day (after the ledger closed the last season).
+  const deathDay = state.tick > 0 && state.tick % SEASON === 1;
   const burning = state.houses.some(house => house.burntTick === state.tick);
   // Fast path: nothing to change when every house holds its people and it is not a season's start.
-  if (state.persons !== undefined && !seasonStart && !burning) {
+  if (state.persons !== undefined && !seasonStart && !deathDay && !burning) {
     const counts = new Map<string, number>();
     for (const person of base.people) counts.set(person.householdId, (counts.get(person.householdId) ?? 0) + 1);
     const settled = state.houses.every(house => (counts.get(house.buildingId) ?? 0) === Math.max(0, house.residents))
@@ -346,14 +350,14 @@ export function advancePersons(state: GameState): GameState {
   const houseIds = new Set(state.houses.map(house => house.buildingId));
 
   // PS-3 deaths of the season and of fire (they take residents from the houses).
-  if (seasonStart || burning) {
-    const weight = seasonStart ? mortalityWeight(state) : 0;
+  if (deathDay || burning) {
+    const weight = deathDay ? mortalityWeight(state) : 0;
     const burnt = new Set(state.houses.filter(house => house.burntTick === state.tick).map(house => house.buildingId));
     for (const person of [...town.people]) {
-      if (person.householdId === MANOR_HOUSEHOLD && !seasonStart) continue;
+      if (person.householdId === MANOR_HOUSEHOLD && !deathDay) continue;
       let cause: DeathCause | null = null;
       if (burnt.has(person.householdId) && rollPermille(state.seed, "fire-death", Number(person.id.slice(2)), state.tick) < FIRE_DEATH_PERMILLE) cause = "fire";
-      else if (seasonStart) {
+      else if (deathDay) {
         // A season is a quarter of the year's rate; the deaths dear bread adds on top are famine deaths.
         const usual = seasonDeathPermille(ageOf(person, year));
         const weighted = seasonDeathPermille(ageOf(person, year), weight);

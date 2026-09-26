@@ -17,7 +17,7 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.98
+      "saveSerializeMs": 0.94
     },
     {
       "id": "population-176",
@@ -27,7 +27,7 @@
       "sourceSha256": "6d5e28ee6d740171c00e5db82c8864bd2f12a03d7a407c00dc1f1724e920c875",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "population-176.save.json",
-      "bytes": 894195,
+      "bytes": 894191,
       "tick": 27471,
       "population": 176,
       "era": "hamlet",
@@ -35,7 +35,7 @@
       "houses": 15,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 2.15
+      "saveSerializeMs": 2.08
     },
     {
       "id": "palisade-construction",
@@ -45,7 +45,7 @@
       "sourceSha256": "2a185b43bb143a6b4884632fdc9f3800e37fd57b166b4840d3b50c07c18c8140",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "palisade-construction.save.json",
-      "bytes": 1087812,
+      "bytes": 1087807,
       "tick": 90976,
       "population": 462,
       "era": "palisade",
@@ -53,7 +53,7 @@
       "houses": 24,
       "palisadeSegments": 33,
       "completedPalisadeSegments": 1,
-      "saveSerializeMs": 3.14
+      "saveSerializeMs": 2.57
     },
     {
       "id": "timber-shortage",
@@ -62,7 +62,7 @@
       "sourceSha256": "8345d1e15cccbbd7c776fcad99963cf662e5d3a5b46eb658a57ba407aac9bde8",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "timber-shortage.save.json",
-      "bytes": 1093219,
+      "bytes": 1093214,
       "tick": 92684,
       "population": 466,
       "era": "palisade",
@@ -70,7 +70,7 @@
       "houses": 24,
       "palisadeSegments": 33,
       "completedPalisadeSegments": 2,
-      "saveSerializeMs": 2.6
+      "saveSerializeMs": 2.46
     },
     {
       "id": "zoned-opening",
@@ -88,7 +88,7 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.74
+      "saveSerializeMs": 0.76
     },
     {
       "id": "ledger-rollup",
@@ -106,7 +106,7 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.76
+      "saveSerializeMs": 0.72
     },
     {
       "id": "money-arrears",
@@ -124,7 +124,7 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.68
+      "saveSerializeMs": 0.74
     },
     {
       "id": "zone-undo",
@@ -142,7 +142,7 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.73
+      "saveSerializeMs": 0.7
     },
     {
       "id": "four-farms",
@@ -152,7 +152,7 @@
       "sourceSha256": "2ebd721bcf26d019afc414ecbd53cc2556ada14bf274ada3fa5763bfb0b9d90b",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "four-farms.save.json",
-      "bytes": 859458,
+      "bytes": 859456,
       "tick": 15162,
       "population": 132,
       "era": "hamlet",
@@ -160,7 +160,7 @@
       "houses": 9,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 1.9
+      "saveSerializeMs": 1.85
     }
   ],
   "v0Fixtures": [

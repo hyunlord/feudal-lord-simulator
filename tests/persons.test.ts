@@ -91,12 +91,12 @@ test("N4 the season's death rate rises with age and with dear bread; the dead le
   assert.ok(seasonDeathPermille(80) > seasonDeathPermille(60) && seasonDeathPermille(60) > seasonDeathPermille(40));
   assert.equal(seasonDeathPermille(40, MORTALITY_WEIGHTS.famine), 3 * seasonDeathPermille(40));
   assert.ok(seasonDeathPermille(70, MORTALITY_WEIGHTS.dearth) > seasonDeathPermille(70));
-  // A town of old people at a season's start: some die, their houses lose them, the past keeps them.
+  // A town of old people on a season's first day: some die, their houses lose them, the past keeps them.
   let state = town(40, 4, 7 * SEASON - 1);
   state = advancePersons(state);
   const year = currentYear(state);
   state = { ...state, persons: { ...state.persons!, people: state.persons!.people.map(person => person.householdId === MANOR_HOUSEHOLD ? person : { ...person, birthYear: year - 80 }) } };
-  const after = advancePersons({ ...state, tick: 7 * SEASON });
+  const after = advancePersons({ ...state, tick: 7 * SEASON + 1 });
   const dead = after.persons!.past.filter(person => !person.alive);
   assert.ok(dead.length > 0);
   assert.ok(dead.every(person => person.deathYear === year && person.deathCause === "age"));

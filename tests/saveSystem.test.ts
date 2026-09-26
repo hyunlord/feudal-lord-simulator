@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { migrateStateV13ToV14 } from "../src/save/migrations/v13ToV14";
+import { migrateStateV15ToV16 } from "../src/save/migrations/v15ToV16";
 import { migrateStateV10ToV11 } from "../src/save/migrations/v10ToV11";
 import { migrateStateV11ToV12 } from "../src/save/migrations/v11ToV12";
 import { migrateStateV9ToV10 } from "../src/save/migrations/v9ToV10";
@@ -92,9 +93,9 @@ test("v0 bare states migrate to the latest envelope", () => {
   const { coinLedger: _coinLedger, ...rawRest } = raw as GameState & { coinLedger?: unknown };
   // v9 -> v10 turns the city's wheat farms into arable fields and farmsteads (spec AF-12); v10 -> v11 adds households (LB-10); v11 -> v12 opens the season and enters the due eras (FP-1, FP-5);
   // v13 -> v14 records the Great Famine as missed for a town already in the famine era (FC-7).
-  assert.deepEqual(decoded.envelope.state, migrateStateV13ToV14(migrateStateV11ToV12(migrateStateV10ToV11(migrateStateV9ToV10({ ...rawRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
+  assert.deepEqual(decoded.envelope.state, migrateStateV15ToV16(migrateStateV13ToV14(migrateStateV11ToV12(migrateStateV10ToV11(migrateStateV9ToV10({ ...rawRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
     ledger: { entries: [{ id: "ledger-000001", tick: raw.tick, account: "cash", category: "opening_balance", amount: raw.treasuryCoin,
-    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } })))));
+    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } }))))));
 });
 
 test("migration refuses newer or unknown files", () => {
