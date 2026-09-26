@@ -13,6 +13,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { deflateSync, inflateSync } from "node:zlib";
+import { WAVE16_IMAGES } from "../src/ui/wave16ArtManifest.generated";
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 const ENCODER_VERSION = 1;
@@ -39,7 +40,14 @@ export const KEYART_DERIVATIVES: readonly KeyartDerivative[] = [
   { id: "loading_1348_plague", source: `${PLAGUE}/loading_1348_plague.png`, url: "assets/wave8/keyart/loading_1348_plague.jpg", format: "jpeg" },
 ];
 
-export const KEYART_DERIVATIVE_BY_URL: ReadonlyMap<string, KeyartDerivative> = new Map(KEYART_DERIVATIVES.map(item => [item.url, item]));
+/** UI-4: the Wave 16 illustrations (event cards, famine decision, chronicle, chapter screens) — all opaque, as JPEG. */
+export const WAVE16_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE16_IMAGES)
+  .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
+
+/** Every build-time web derivative (Wave 8 keyart and Wave 16 illustrations). */
+export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES];
+
+export const KEYART_DERIVATIVE_BY_URL: ReadonlyMap<string, KeyartDerivative> = new Map(WEB_ART_DERIVATIVES.map(item => [item.url, item]));
 
 // ---------------------------------------------------------------------------------------------------------------
 // PNG decoding (8-bit RGB / RGBA, non-interlaced — what the Astra batches deliver).
@@ -299,7 +307,7 @@ export function keyartDerivativesPlugin() {
     configureServer(server: DevServer) {
       server.middlewares.use((request, response, next) => {
         const url = (request.url ?? "").split("?")[0] ?? "";
-        const item = KEYART_DERIVATIVES.find(candidate => url.endsWith(`/${candidate.url}`));
+        const item = WEB_ART_DERIVATIVES.find(candidate => url.endsWith(`/${candidate.url}`));
         if (item === undefined) { next(); return; }
         response.setHeader("Content-Type", item.format === "jpeg" ? "image/jpeg" : "image/png");
         response.setHeader("Cache-Control", "no-cache");
@@ -307,7 +315,7 @@ export function keyartDerivativesPlugin() {
       });
     },
     generateBundle(this: EmitContext) {
-      for (const item of KEYART_DERIVATIVES) this.emitFile({ type: "asset", fileName: item.url, source: buildKeyartDerivative(item) });
+      for (const item of WEB_ART_DERIVATIVES) this.emitFile({ type: "asset", fileName: item.url, source: buildKeyartDerivative(item) });
     },
   };
 }

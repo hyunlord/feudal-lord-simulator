@@ -4,6 +4,7 @@ import { test } from "node:test";
 
 import { decodePng, encodeJpeg, encodePng, halfSize, KEYART_DERIVATIVES, buildKeyartDerivative, sha256 } from "../scripts/keyartDerivatives";
 import { WAVE8_IMAGES } from "../src/ui/wave8ArtManifest.generated";
+import { WAVE16_DERIVATIVES } from "../scripts/keyartDerivatives";
 
 // Judgement 2026-09-26: the keyart PNGs stay in assets-inbox; the game loads web derivatives made at build time.
 
@@ -38,4 +39,14 @@ test("the encoders round-trip: a flat colour survives the PNG path exactly and a
   assert.deepEqual(decodePng(encodePng(flat)).data, flat.data);
   assert.deepEqual(halfSize(flat).data, new Uint8Array([200, 120, 40, 255, 200, 120, 40, 255, 200, 120, 40, 255, 200, 120, 40, 255]));
   assert.deepEqual(encodeJpeg(flat, 70), encodeJpeg(flat, 70));
+});
+
+test("UI-4: every Wave 16 illustration is a JPEG derivative of its confirmed received PNG, at the received size", () => {
+  const inbox = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8");
+  assert.equal(WAVE16_DERIVATIVES.length, 35);
+  const chronicle = WAVE16_DERIVATIVES.find(item => item.id === "chronicle_first_fire")!;
+  const out = buildKeyartDerivative(chronicle);
+  const sof = out.indexOf(Buffer.from([0xff, 0xc0]));
+  assert.deepEqual([out.readUInt16BE(sof + 7), out.readUInt16BE(sof + 5)], [384, 384]);
+  for (const item of WAVE16_DERIVATIVES) assert.ok(inbox.includes(sha256(readFileSync(item.source))), item.id);
 });
