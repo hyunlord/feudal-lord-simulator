@@ -1,0 +1,102 @@
+{
+ "runner": "DGX, scripts/remote/run.sh --task guardrail (REMOTE-1)",
+ "baseline": "seeds/baseline-322d36f.json (unchanged)",
+ "runs": {
+  "run1@2ae15282": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 153976,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 263544,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 437
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 198810,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 261762,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 408
+   },
+   {
+    "seed": 3,
+    "status": "regression",
+    "victoryTick": 463030,
+    "finalL4": 10,
+    "finalLots": 18,
+    "finalTick": 1200000,
+    "stopReason": "tick-budget",
+    "elapsedSeconds": 8043
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 151101,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 296655,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 448
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 300416,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 467322,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 748
+   }
+  ]
+ },
+ "compare_f0c1_run3@fe3c0657": [
+  {
+   "seed": 1,
+   "status": "passed",
+   "victoryTick": 153976,
+   "finalL4": 24,
+   "finalLots": 24,
+   "finalTick": 263544,
+   "stopReason": "target-scale-stable"
+  },
+  {
+   "seed": 2,
+   "status": "passed",
+   "victoryTick": 198810,
+   "finalL4": 24,
+   "finalLots": 24,
+   "finalTick": 261762,
+   "stopReason": "target-scale-stable"
+  },
+  {
+   "seed": 3,
+   "status": "stalled (run still going to the 1,200,000 budget)",
+   "progress": "\"tick\":168000,\"lots\":18,\"l4\":9"
+  },
+  {
+   "seed": 4,
+   "status": "passed",
+   "victoryTick": 151101,
+   "finalL4": 24,
+   "finalLots": 24,
+   "finalTick": 296655,
+   "stopReason": "target-scale-stable"
+  },
+  {
+   "seed": 5,
+   "status": "passed",
+   "victoryTick": 300416,
+   "finalL4": 24,
+   "finalLots": 24,
+   "finalTick": 467322,
+   "stopReason": "target-scale-stable"
+  }
+ ],
+ "note": "Seeds 1, 2, 4, 5: victory and final ticks identical to F0-C1 run 3 (the ledger reads state, never feeds it, HL-9). Seed 3: 1,200,000 budget at 18 lots, L4 10 = known stall FC11 (EV8), BOT-2."
+}
