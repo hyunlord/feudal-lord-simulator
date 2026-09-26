@@ -18,6 +18,7 @@ import { BALANCE } from "../content/balanceConfig";
 import { mergeHouses } from "../engine/houseMerge";
 import { demolishHouse } from "../engine/houseDemolition";
 import { rebuildBurntHouse } from "../engine/fire";
+import { famineResponse, respondToPetition } from "../engine/politics";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
@@ -139,6 +140,10 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return demolishHouse(state, action.buildingId);
     case "rebuild_house":
       return rebuildBurntHouse(state, action.buildingId);
+    case "famine_response":
+      return famineResponse(state, action.choice);
+    case "petition_response":
+      return respondToPetition(state, action.petitionId, action.response);
     case "cancel_construction": {
       const routes = createSimulationRoutePorts(state);
       const result = cancelConstruction({

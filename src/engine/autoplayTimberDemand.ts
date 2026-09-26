@@ -56,3 +56,18 @@ export function timberDemandExpansionKind(state: GameState): TimberKind | null {
     || placementSpendableResource(state, 'timber') < (config.buildCost.timber ?? 0)) return null;
   return kind;
 }
+
+/**
+ * F0-C1 (AR-10, guardrail run 2 seed 5): logs fill every storehouse while the sawmills are the short side (three camps
+ * cut a little faster than one sawmill saws), so the storehouses stay full, the quarry has nowhere to send its stone
+ * and is never placed, and the town waits for a church for good. Another sawmill first — staffed, with its timber.
+ */
+export function logOverflowKind(state: GameState): 'sawmill' | null {
+  if (storageCapacityBlock(state.buildings, 'logs') === null || bottleneck(state.buildings) !== 'sawmill') return null;
+  if (state.constructionSites.some(site => isBuildingConstructionSite(site) && (site.kind === 'logging_camp' || site.kind === 'sawmill'))) return null;
+  const config = BUILDING_CONFIG_BY_KIND.sawmill;
+  if (state.buildings.some(building => building.kind === 'sawmill' && building.workers < config.workersRequired)
+    || state.idleWorkers < config.workersRequired
+    || placementSpendableResource(state, 'timber') < (config.buildCost.timber ?? 0)) return null;
+  return 'sawmill';
+}

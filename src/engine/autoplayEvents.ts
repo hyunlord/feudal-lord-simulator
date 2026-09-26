@@ -7,7 +7,9 @@ import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { EVENT_DEF_BY_ID } from "../content/eventConfig";
 import { foodReserveTicks } from "../population/foodReserve";
 import { isBuildingConstructionSite } from "../economy/construction";
-import type { RebuildHouseAdvice } from "./autoplayBotRecovery";
+import type { FamineResponseAdvice, PetitionResponseAdvice, RebuildHouseAdvice } from "./autoplayBotRecovery";
+import type { FamineResponseChoice, PetitionResponse } from "../content/chapterConfig";
+import { famineStatus, openPetitions } from "./politics";
 import type { GameState } from "./engine.types";
 import { eventForecast } from "./eventSchedule";
 
@@ -40,6 +42,14 @@ export function dearthHoldsGrowth(state: GameState): boolean {
  * (1.2 ÷ 0.7 ≈ 1.72), so the fields sown before the bad summer still feed the town; the usual margin otherwise.
  */
 export function dearthArableMargin(state: GameState, margin: number): number {
-  const harvest = Math.min(1000, ...dearthComing(state));
+  // FC-6: at most × 1.5 (a famine's half harvest would double the fields; the reserve hold does the rest).
+  const harvest = Math.max(667, Math.min(1000, ...dearthComing(state)));
   return harvest >= 1000 ? margin : Math.ceil(margin * 1000 / harvest);
+}
+
+/** FC-6: the bot's answer to an arriving famine it has not answered, then to an open petition; null when none waits. */
+export function chapterDecisionAction(state: GameState, famine: FamineResponseChoice, petition: PetitionResponse): FamineResponseAdvice | PetitionResponseAdvice | null {
+  if ((famineStatus(state)?.choices.length ?? 0) > 0) return { kind: "famine_response", choice: famine };
+  const open = openPetitions(state)[0];
+  return open === undefined ? null : { kind: "petition_response", petitionId: open.id, response: petition };
 }

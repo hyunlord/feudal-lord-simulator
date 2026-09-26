@@ -31,6 +31,14 @@ export interface EventRecord {
   /** Fire: the house that caught first. */
   readonly originBuildingId?: string;
   readonly losses: EventLosses;
+  /** F0-C1 (FC-1, save v14): an era dearth's first reduced harvest (year index from the start year) and how many. */
+  readonly harvestFromYear?: number;
+  readonly harvestYears?: number;
+  /** F0-C1 (FC-5): the town's population when the dearth arrived and when it ended (the chapter's survival test). */
+  readonly populationAtArrival?: number;
+  readonly populationAtEnd?: number;
+  /** F0-C1 (FC-2): the lord's answer to the famine. */
+  readonly response?: { readonly choice: import("../content/chapterConfig").FamineResponseChoice; readonly tick: number };
 }
 
 /** A house on fire (saved while it burns). */

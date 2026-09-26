@@ -161,4 +161,6 @@ export interface GameState {
   readonly historicalEras?: readonly import("./season.types").HistoricalEraEntry[];
   /** F0-B events that arrived and fires burning (save v13, spec EV-1…EV-9). Absent until the first event. */
   readonly events?: import("./events.types").EventState;
+  /** F0-C1 petitions, rights, the merchants' gauge, decisions and chapter ends (save v14, spec FC-2…FC-5). */
+  readonly politics?: import("./politics.types").PoliticsState;
 }

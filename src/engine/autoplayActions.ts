@@ -35,7 +35,8 @@ function eraGameAction(state: GameState, candidatePath?: PalisadePath): GameActi
 
 export function autoplayActionToGameAction(action: AutoplayAction, state?: GameState): GameAction | null {
   const command = autoplayCommandToGameAction(action, state);
-  return action.kind === "demolish_house" || action.kind === "rebuild_house" || action.foodTransient === undefined ? command : { ...(command ?? { type: "record_autoplay_food_confirmation" }), foodTransient: action.foodTransient };
+  return action.kind === "demolish_house" || action.kind === "rebuild_house" || action.kind === "famine_response"
+    || action.kind === "petition_response" || action.foodTransient === undefined ? command : { ...(command ?? { type: "record_autoplay_food_confirmation" }), foodTransient: action.foodTransient };
 }
 
 function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState): GameAction | null {
@@ -65,6 +66,10 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
       return { type: "demolish_house", buildingId: action.buildingId };
     case "rebuild_house":
       return { type: "rebuild_house", buildingId: action.buildingId };
+    case "famine_response":
+      return { type: "famine_response", choice: action.choice };
+    case "petition_response":
+      return { type: "petition_response", petitionId: action.petitionId, response: action.response };
     case "none":
       return null;
     default:
