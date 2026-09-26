@@ -100,6 +100,7 @@ import type { ZoneKind } from "./zones/zone.types";
 import { createStoreStockHistory, observeStoreStockHistory } from "./ui/storeStockHistory";
 import { EventCards } from "./ui/hud/EventCards";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "./ui/hud/StoryModals";
+import { ChronicleScreen } from "./ui/chronicle/ChronicleScreen";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
 import { famineDecisionView, petitionDecisionView } from "./ui/decisionModels";
 import { chronicleView } from "./ui/chronicleModel";
@@ -278,6 +279,9 @@ export function App() {
         return "handled";
       case "panel":
         if (intent.panel === "hud") setUi(current => reduceUi(current, { type: "toggle_hud" }));
+        // CHRON-1: C opens the chronicle over a state with no modal up, and closes it.
+        else if (intent.panel === "chronicle") setUi(current => topModal(current) === "history" ? reduceUi(current, { type: "pop_modal" })
+          : current.modals.length === 0 ? reduceUi(current, { type: "push_modal", modal: "history" }) : current);
         else setUi(current => reduceUi(current, { type: intent.panel === "build" ? "toggle_build" : "toggle_ledger" }));
         return "handled";
       case "undo":
@@ -590,7 +594,7 @@ export function App() {
         {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
           history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
-          mapTab={<MapShield grid={state} />} /> : null}
+          mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} /> : null}
         <UnlockBanner text={tutorial.banner} />
         {toastVisible && completionToast !== null ? <div className="completion-toast" role="status" aria-label={COMPLETION_TOAST_COPY.region}>
           <UiIcon sheet="prediction" cell="ok" />{completionToast.names.length === 1 ? COMPLETION_TOAST_COPY.one(completionToast.names[0]!)
@@ -651,7 +655,10 @@ export function App() {
       {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })}
         onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
       {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
-        onNextChapter={() => { sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "chapter_preview" }); }} />}
+        onNextChapter={() => { sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "chapter_preview" }); }}
+        onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} />}
+      {topModal(ui) === "history" ? <ChronicleScreen state={state} onClose={() => sendUi({ type: "pop_modal" })}
+        onLookAt={tile => { sendUi({ type: "pop_modal" }); platformServices().input.emit({ kind: "lookAt", tile }); }} /> : null}
       {topModal(ui) === "chapter_preview" ? <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} /> : null}
       {topModal(ui) === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
         settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />

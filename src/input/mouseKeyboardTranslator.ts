@@ -66,7 +66,8 @@ const PREVENT: Outcome = { preventDefault: true };
 const ZOOM_IN = 1.1;
 const ZOOM_OUT = 0.9;
 /** UX-3 panel keys: B build drawer, L ledger drawer, H hide the HUD. */
-const PANEL_KEYS: Readonly<Record<string, "build" | "ledger" | "hud">> = { KeyB: "build", KeyL: "ledger", KeyH: "hud" };
+/** CHRON-1: C opens (and closes) the chronicle screen. */
+const PANEL_KEYS: Readonly<Record<string, "build" | "ledger" | "hud" | "chronicle">> = { KeyB: "build", KeyL: "ledger", KeyH: "hud", KeyC: "chronicle" };
 const OVERLAY_SLOTS: Readonly<Record<string, 1 | 2 | 3 | 4>> = { Digit1: 1, Digit2: 2, Digit3: 3, Digit4: 4 };
 const ZOOM_KEYS: Readonly<Record<string, number>> = { Equal: ZOOM_IN, NumpadAdd: ZOOM_IN, Minus: ZOOM_OUT, NumpadSubtract: ZOOM_OUT };
 const TOOL_STEP_KEYS: Readonly<Record<string, -1 | 1>> = { KeyQ: -1, KeyE: 1 };

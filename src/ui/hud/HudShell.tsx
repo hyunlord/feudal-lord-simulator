@@ -18,6 +18,7 @@ import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory";
 import { DECISION_COPY } from "../decisionCopy.ko";
+import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -145,9 +146,11 @@ type LedgerTab = "stock" | "alerts" | "view" | "map";
  * row lights the buildings holding it on the map, a column head opens that store's inspector (UX-3R2). Alerts,
  * overlays and the map are its other tabs.
  */
-export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight }: {
+export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight, onOpenChronicle }: {
   readonly state: GameState; readonly onInspect: (id: string) => void; readonly onClose: () => void;
   readonly viewTab: ReactNode; readonly mapTab: ReactNode;
+  /** CHRON-1: the [연대기] tab opens the chronicle screen (a modal: time stops). */
+  readonly onOpenChronicle?: () => void;
   readonly history?: StoreStockHistory | null; readonly food?: { readonly days: number | null };
   readonly highlighted?: readonly string[]; readonly onHighlight?: (ids: readonly string[]) => void;
 }) {
@@ -158,10 +161,15 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
     <section className="ledger-drawer slot-panel" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
         <button type="button" className="slot-panel-close" aria-label={HUD_COPY.close} onClick={() => onClose()}>{HUD_COPY.closeMark}</button></header>
-      <div className="ledger-tabs" role="tablist">
-        {(Object.keys(HUD_COPY.ledgerTabs) as LedgerTab[]).map(key => (
-          <button key={key} type="button" role="tab" aria-selected={tab === key} className="ledger-tab" onClick={() => setTab(key)}>{HUD_COPY.ledgerTabs[key]}</button>
-        ))}
+      <div className="ledger-tabs">
+        <div className="ledger-tab-list" role="tablist">
+          {(Object.keys(HUD_COPY.ledgerTabs) as LedgerTab[]).map(key => (
+            <button key={key} type="button" role="tab" aria-selected={tab === key} className="ledger-tab" onClick={() => setTab(key)}>{HUD_COPY.ledgerTabs[key]}</button>
+          ))}
+        </div>
+        {/* CHRON-1: not a tab of the drawer — it opens the chronicle screen over it. */}
+        {onOpenChronicle === undefined ? null : <button type="button" className="ledger-tab ledger-tab--chronicle" aria-haspopup="dialog"
+          aria-label={CHRONICLE_SCREEN_COPY.ledgerTabLabel} data-ledger-chronicle="open" onClick={() => onOpenChronicle()}>{CHRONICLE_SCREEN_COPY.ledgerTab}</button>}
       </div>
       {tab === "stock" ? (matrix.rows.length === 0 ? <p>{HUD_COPY.ledgerEmpty}</p> : (
         // UX-0b: at 1280 the store columns pushed the total, the week and the lasts out of the drawer; they come first now.

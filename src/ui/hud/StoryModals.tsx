@@ -72,8 +72,10 @@ export function PetitionModal({ view, onRespond, onLater }: {
   );
 }
 
-export function ChroniclePage({ view, onNextChapter, onKeepPlaying }: {
+export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChronicle }: {
   readonly view: ChronicleView; readonly onNextChapter: () => void; readonly onKeepPlaying: () => void;
+  /** CHRON-1: [전체 연대기 보기] opens the chronicle screen over the page (closing it comes back here). */
+  readonly onOpenChronicle?: () => void;
 }) {
   return (
     <div className="story-modal-backdrop story-modal-backdrop--chronicle" role="presentation" style={{ backgroundImage: `url("${wave16Url("chapter1_end")}")` }}>
@@ -102,6 +104,8 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying }: {
           <div className="chronicle-actions">
             <button type="button" className="chronicle-next" onClick={() => onNextChapter()}><UiIcon sheet="action" cell="open" />{CHRONICLE_COPY.nextChapter}</button>
             <button type="button" className="chronicle-keep" onClick={() => onKeepPlaying()}><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.keepPlaying}</button>
+            {onOpenChronicle === undefined ? null : <button type="button" className="chronicle-full" onClick={() => onOpenChronicle()}>
+              <UiIcon sheet="action" cell="log" />{CHRONICLE_COPY.openFull}</button>}
           </div></section>
           </div>
         </div>

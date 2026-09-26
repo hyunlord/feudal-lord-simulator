@@ -1,0 +1,42 @@
+{
+ "tick": 93500,
+ "records": 894,
+ "snapshots": 32,
+ "decisions": [
+  {
+   "id": "h-000154",
+   "template": "decision.rebuild",
+   "actual": true
+  },
+  {
+   "id": "h-000271",
+   "template": "decision.rebuild",
+   "actual": true
+  },
+  {
+   "id": "h-000275",
+   "template": "decision.rebuild",
+   "actual": true
+  },
+  {
+   "id": "h-001063",
+   "template": "decision.petition_response",
+   "actual": true
+  },
+  {
+   "id": "h-002517",
+   "template": "decision.market_town",
+   "actual": true
+  },
+  {
+   "id": "h-002662",
+   "template": "decision.famine_response",
+   "actual": true
+  }
+ ],
+ "persons": 502,
+ "past": 536,
+ "saveBytes": 1769216,
+ "saveSchema": 17,
+ "ms": 193957
+}

@@ -1,0 +1,159 @@
+/* CHRON-1 chronicle screen (a state machine modal over the town: time stops while it is up). Colours are the palette's
+   CSS variables (src/styles/paletteVariables.ts); art frames are Wave 19 layers drawn by src/ui/wave19Art.ts. */
+.chronicle-screen {
+  position: absolute; inset: 0; z-index: 35; display: grid; grid-template-rows: auto auto auto minmax(0, 1fr); gap: 8px;
+  padding: 10px 16px 12px; box-sizing: border-box; color: var(--palette-ink); font-size: 13px;
+  background: var(--palette-parchment);
+}
+.chronicle-screen[data-view="person"] { grid-template-rows: auto minmax(0, 1fr); }
+.chronicle-screen button { color: var(--palette-ink); font-size: 13px; }
+.chronicle-header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-height: 44px; }
+.chronicle-header h2 { margin: 0; font-family: var(--ui-font-serif); font-size: 22px; }
+.chronicle-now { font-weight: 700; color: var(--palette-ink-muted); }
+.chronicle-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0; padding: 0; list-style: none; font-size: 12px; }
+.chronicle-legend li { display: inline-flex; align-items: center; gap: 4px; }
+.chronicle-close, .chronicle-back { display: inline-flex; align-items: center; gap: 6px; min-width: 44px; min-height: 44px; padding: 0 14px; font-weight: 700; }
+.chronicle-close { margin-left: auto; }
+
+/* Timeline: the Wave 19 strip (its band is x 41–984 of 1024 art px), markers on the band, the pins, the eras and chapters. */
+.chronicle-timeline-block { display: grid; gap: 2px; }
+.chronicle-strip-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.chronicle-strip { position: relative; display: block; width: 100%; aspect-ratio: 1024 / 64; min-height: 44px; padding: 0; border: 0; cursor: pointer;
+  background-color: transparent; background-size: 100% 100%; background-repeat: no-repeat; }
+.chronicle-marker, .chronicle-pin { position: absolute; transform: translate(-50%, -50%); pointer-events: none; }
+.chronicle-marker { top: 41%; }
+.chronicle-pin--select { top: 41%; }
+.chronicle-pin--now { top: 6%; }
+.chronicle-zoom { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; font-weight: 700; }
+.chronicle-strip-labels { position: relative; height: 36px; margin-right: 120px; }
+.chronicle-era-label { position: absolute; top: 0; font-size: 12px; white-space: nowrap; color: var(--palette-ink-muted); }
+.chronicle-era-label[data-entered="true"] { color: var(--palette-ink); font-weight: 700; }
+.chronicle-chapter-bar { position: absolute; top: 18px; height: 16px; overflow: hidden; padding: 0 4px; box-sizing: border-box; font-size: 12px; line-height: 16px;
+  white-space: nowrap; background: color-mix(in srgb, var(--palette-gold) 45%, transparent); border-left: 2px solid var(--palette-ink); }
+.chronicle-seasons { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px; align-items: stretch; }
+.chronicle-season-shift { min-height: 44px; padding: 0 10px; }
+.chronicle-season-cells { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: 2px; margin: 0; padding: 0; list-style: none; }
+.chronicle-season { display: grid; align-content: center; justify-items: center; gap: 2px; width: 100%; min-height: 48px; padding: 2px; font-size: 12px;
+  border: 1px solid color-mix(in srgb, var(--palette-ink) 30%, transparent); }
+.chronicle-season--0 { background: color-mix(in srgb, var(--palette-sage) 30%, var(--palette-vellum)); }
+.chronicle-season--1 { background: color-mix(in srgb, var(--palette-gold) 30%, var(--palette-vellum)); }
+.chronicle-season--2 { background: color-mix(in srgb, var(--palette-earth) 35%, var(--palette-vellum)); }
+.chronicle-season--3 { background: color-mix(in srgb, var(--palette-winter-grey) 40%, var(--palette-vellum)); }
+.chronicle-season[aria-pressed="true"] { outline: 3px solid var(--palette-vermilion); outline-offset: -3px; font-weight: 700; }
+.chronicle-season-name { white-space: nowrap; }
+.chronicle-season-marks { display: inline-flex; align-items: center; gap: 1px; min-height: 14px; }
+.chronicle-season-count { margin-left: 2px; font-size: 12px; }
+
+/* Filters. */
+.chronicle-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.chronicle-kinds { display: flex; flex-wrap: wrap; gap: 4px; }
+.chronicle-kind { min-height: 44px; padding: 0 12px; border: 1px solid var(--palette-ink-muted); background: var(--palette-vellum); }
+.chronicle-kind[aria-pressed="true"] { background: color-mix(in srgb, var(--palette-gold) 55%, var(--palette-vellum)); font-weight: 700; }
+.chronicle-select { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+.chronicle-select select { min-height: 44px; max-width: 220px; font-size: 13px; }
+.chronicle-count { margin-left: auto; font-weight: 700; }
+
+/* Body: the virtual list of cards and the detail pane. */
+.chronicle-body { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; min-height: 0; }
+.chronicle-list { position: relative; min-height: 0; overflow-y: auto; }
+.chronicle-list-space { position: relative; }
+.chronicle-empty, .chronicle-hint { margin: 12px 4px; font-size: 14px; }
+.chronicle-card { position: absolute; left: 0; right: 6px; height: 112px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+.chronicle-card[data-selected="true"] { box-shadow: 0 0 0 3px var(--palette-vermilion); }
+.chronicle-card-body:focus-visible, .chronicle-card-action:focus-visible { outline: 3px solid var(--palette-ultramarine); outline-offset: -3px; }
+.chronicle-card-frame { position: absolute; inset: 0; box-sizing: border-box; pointer-events: none; }
+.chronicle-card-body { position: relative; z-index: 1; align-self: stretch; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 12px;
+  min-width: 0; padding: 12px 8px 12px 22px; border: 0; background: transparent; text-align: left; cursor: pointer; }
+.chronicle-card--decision .chronicle-card-body { padding-left: 40px; }
+.chronicle-card--person .chronicle-card-body { padding-left: 70px; }
+.chronicle-card-art { display: block; border: 1px solid color-mix(in srgb, var(--palette-ink) 60%, transparent); }
+.chronicle-card-art--portrait { position: absolute; left: 8px; top: 12px; border: 0; border-radius: 50%; }
+.chronicle-card-text { display: grid; gap: 2px; min-width: 0; }
+.chronicle-card-date { font-size: 12px; font-weight: 700; color: var(--palette-ink-muted); }
+.chronicle-card-line { font-size: 14px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.chronicle-card-numbers { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chronicle-card-actions { position: relative; z-index: 1; display: flex; gap: 4px; padding: 0 14px 12px 0; }
+.chronicle-card--event .chronicle-card-actions { padding-right: 18px; }
+.chronicle-card-action, .chronicle-detail-action { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 8px; font-size: 12px; white-space: nowrap;
+  background: var(--palette-vellum); border: 1px solid var(--palette-ink-muted); }
+.chronicle-detail-action[aria-pressed="true"] { background: color-mix(in srgb, var(--palette-gold) 55%, var(--palette-vellum)); font-weight: 700; }
+.chronicle-detail { min-height: 0; overflow-y: auto; padding: 4px 8px 8px; box-sizing: border-box;
+  background: color-mix(in srgb, var(--palette-vellum) 70%, transparent); border-left: 2px solid color-mix(in srgb, var(--palette-ink) 35%, transparent); }
+.chronicle-detail-body { display: grid; gap: 6px; justify-items: start; }
+.chronicle-detail-date { margin: 0; font-size: 14px; }
+.chronicle-detail-line { margin: 0; font-size: 14px; line-height: 1.4; }
+.chronicle-detail-numbers, .chronicle-detail-note { margin: 0; font-size: 12px; }
+.chronicle-detail-map { display: grid; gap: 6px; justify-items: start; }
+.chronicle-detail-actions { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* The map then. */
+.chronicle-maps { display: grid; gap: 4px; }
+.chronicle-map-pair { display: flex; gap: 8px; }
+.chronicle-map { margin: 0; display: grid; gap: 2px; }
+.chronicle-map-box { position: relative; }
+.chronicle-map-inner { position: absolute; display: grid; place-items: center; }
+.chronicle-map-canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+.chronicle-map-frame { position: absolute; inset: 0; box-sizing: border-box; pointer-events: none; }
+.chronicle-map figcaption { font-size: 12px; font-weight: 700; }
+.chronicle-map-none { margin: 4px 0; font-size: 12px; }
+.chronicle-map-legend { display: flex; flex-wrap: wrap; gap: 2px 10px; max-width: 480px; margin: 0; padding: 0; list-style: none; font-size: 12px; }
+.chronicle-map-legend li { display: inline-flex; align-items: center; gap: 4px; }
+.chronicle-map-legend span { width: 12px; height: 12px; border: 1px solid color-mix(in srgb, var(--palette-ink) 50%, transparent); }
+
+/* Decision record (frame_decision_compare: three columns under their header plates). */
+.chronicle-decision { position: relative; flex: none; }
+.chronicle-decision-frame { position: absolute; inset: 0; box-sizing: border-box; pointer-events: none; }
+.chronicle-decision-column { position: absolute; display: grid; align-content: start; justify-items: center; gap: 4px; overflow: hidden; text-align: center; }
+.chronicle-decision-column h4 { display: grid; place-items: center; height: 30px; margin: 0; font-size: 13px; }
+.chronicle-decision-column ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; font-size: 13px; }
+.chronicle-decision-column p { margin: 0; font-size: 12px; }
+.chronicle-decision-chosen { font-size: 15px; }
+.chronicle-decision-art { border: 1px solid color-mix(in srgb, var(--palette-ink) 60%, transparent); }
+.chronicle-decision-rows { display: grid; gap: 4px; margin: 0; width: 100%; font-size: 12px; text-align: left; }
+.chronicle-decision-row dt, .chronicle-decision-row dd { display: flex; flex-wrap: wrap; align-items: center; gap: 3px; margin: 0; }
+.chronicle-decision-row dd { padding-left: 8px; }
+.chronicle-decision-delta { font-weight: 700; }
+.chronicle-decision-pending { font-style: italic; }
+
+/* Biography (frame_biography slots, placed in % of the page so they scale with it). */
+.chronicle-page-body { min-height: 0; overflow: auto; display: grid; justify-items: center; align-items: start; }
+.chronicle-biography, .chronicle-faction { position: relative; flex: none; background-size: 100% 100%; background-repeat: no-repeat; }
+.chronicle-biography > *, .chronicle-faction > * { position: absolute; box-sizing: border-box; margin: 0; }
+.chronicle-biography-portrait, .chronicle-biography-companion { border-radius: 50%; }
+.chronicle-biography-caption { display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+.chronicle-biography-match { font-size: 12px; line-height: 1.35; }
+.chronicle-biography-match[data-exact="false"] { font-style: italic; color: var(--palette-ink-muted); }
+.chronicle-biography-header { display: grid; align-content: start; gap: 2px; overflow: hidden; }
+.chronicle-biography-header h3 { margin: 0; font-family: var(--ui-font-serif); font-size: 17px; line-height: 1.2; }
+.chronicle-biography-header p { margin: 0; font-size: 13px; line-height: 1.35; }
+.chronicle-biography-office { font-weight: 700; }
+.chronicle-biography-life { overflow-y: auto; }
+.chronicle-biography-life ol { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.chronicle-biography-life li { display: grid; grid-template-columns: 26px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 4px; font-size: 12px; line-height: 1.35; }
+.chronicle-biography-dot { grid-row: 1 / 3; justify-self: center; margin-top: 1px; }
+.chronicle-biography-date { font-weight: 700; margin-right: 6px; }
+.chronicle-biography-empty { font-size: 12px; }
+.chronicle-biography-band { display: grid; align-content: start; gap: 4px; padding: 6px 10px; overflow: hidden; }
+.chronicle-biography-band h4 { margin: 0; font-size: 12px; }
+.chronicle-biography-band ul { display: flex; gap: 6px; margin: 0; padding: 0 0 4px; list-style: none; overflow-x: auto; }
+.chronicle-biography-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; max-width: 280px; padding: 0 10px; font-size: 12px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; background: var(--palette-vellum); border: 1px solid var(--palette-ink-muted); }
+.chronicle-biography-chip-face { flex: none; border-radius: 50%; }
+
+/* Faction page (frame registered; nothing opens it before the E stage's factions). */
+.chronicle-faction-leader { border-radius: 50%; }
+.chronicle-faction-name { display: grid; place-items: center; font-family: var(--ui-font-serif); font-size: 18px; }
+.chronicle-faction-relation { display: grid; align-items: center; }
+.chronicle-faction-track { position: absolute; inset: 25% 0; background-size: 100% 100%; }
+.chronicle-faction-pin { position: absolute; top: 50%; transform: translate(-50%, -50%); }
+.chronicle-faction-list { overflow: hidden; padding: 8px 10px; list-style: none; font-size: 12px; }
+
+.app-shell .ledger-tab-list { display: flex; gap: 4px; }
+.ledger-tab--chronicle { margin-left: auto; font-weight: 700; }
+.chronicle-full { display: inline-flex; gap: 6px; align-items: center; min-height: 48px; font-size: 15px; font-weight: 700; }
+
+/* A touch tablet: 48 px targets. `height`, since uiBoundaries.css pins every control's min-height to 44 px (!important). */
+@media (pointer: coarse) {
+  .chronicle-screen :is(.chronicle-close, .chronicle-back, .chronicle-zoom, .chronicle-kind, .chronicle-card-action, .chronicle-detail-action,
+    .chronicle-season-shift, .chronicle-season, .chronicle-biography-chip, .chronicle-select select) { height: 48px; }
+}

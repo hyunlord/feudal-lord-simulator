@@ -14,6 +14,7 @@ import "./styles/tutorial.css";
 import "./styles/alertStack.css";
 import "./styles/uiInspector.css";
 import "./styles/hudShell.css";
+import "./styles/chronicle.css";
 // UX-2: bundled OFL fonts (body sans 400/700, titles and the steward serif 600) and the UI art skin, loaded last.
 import "@fontsource/noto-sans-kr/400.css";
 import "@fontsource/noto-sans-kr/700.css";

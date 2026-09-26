@@ -8,12 +8,18 @@
  * Cache (AGENTS rule 10, node_modules/.cache/keyart-derivatives): key = source SHA-256 + encoder version + settings;
  * reason: `vite` would decode and encode the six images again on every start; measured locally 0.11–0.25 s each
  * (1.1 s for the set), a cache hit is a file read. Sizes at quality 70: 167–361 KB (the PNGs 2.3–4.8 MB).
+ * CHRON-1: the portrait pool (232 opaque 256 px PNGs, about 120 KB each) ships as a 256 px and a 96 px baseline JPEG
+ * each (the 96 an exact area average of the 256), in the same cache (same key: source SHA-256 + version + format +
+ * quality): the 464 encodes measured 1.97 s cold on the Mac, a hit is a file read; 256 px about 10.8 KB, 96 px about
+ * 2.5 KB — 3.0 MB for the pool against 28 MB of PNG.
  */
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { deflateSync, inflateSync } from "node:zlib";
+import { PORTRAIT_IMAGES } from "../src/ui/portraitArtManifest.generated";
 import { WAVE16_IMAGES } from "../src/ui/wave16ArtManifest.generated";
+import { WAVE17_IMAGES } from "../src/ui/wave17ArtManifest.generated";
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 const ENCODER_VERSION = 1;
@@ -26,10 +32,14 @@ export type KeyartDerivative = Readonly<{
   source: string;
   /** Where the game loads it (relative to the site base), and how it is made. */
   url: string;
-  format: "jpeg" | "png-half";
+  /** `portrait` / `portrait-96`: a pool portrait at its 256 px size / area-averaged to 96 px, as JPEG. */
+  format: "jpeg" | "png-half" | "portrait" | "portrait-96";
 }>;
 
 export const JPEG_QUALITY = 70;
+/** Faces keep their detail at a higher quality than the keyart (a 256 px portrait is about 20 KB at 82). */
+export const PORTRAIT_QUALITY = 82;
+export const PORTRAIT_SMALL = 96;
 
 export const KEYART_DERIVATIVES: readonly KeyartDerivative[] = [
   { id: "keyart_title_bg", source: `${CANDIDATES}/keyart_title_bg.png`, url: "assets/wave8/keyart/keyart_title_bg.jpg", format: "jpeg" },
@@ -44,8 +54,18 @@ export const KEYART_DERIVATIVES: readonly KeyartDerivative[] = [
 export const WAVE16_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE16_IMAGES)
   .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
 
-/** Every build-time web derivative (Wave 8 keyart and Wave 16 illustrations). */
-export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES];
+/** CHRON-1: the Wave 17 chronicle illustrations the ledger's records use (opaque, as JPEG). */
+export const WAVE17_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE17_IMAGES)
+  .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
+
+/** CHRON-1: each pool portrait twice — at 256 px (biography) and 96 px (cards, lists). */
+export const PORTRAIT_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(PORTRAIT_IMAGES).flatMap(([id, image]) => [
+  { id, source: image.source, url: image.url, format: "portrait" as const },
+  { id: `${id}-96`, source: image.source, url: image.url96, format: "portrait-96" as const },
+]);
+
+/** Every build-time web derivative (Wave 8 keyart, Wave 16 and 17 illustrations, the portrait pool). */
+export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES, ...WAVE17_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
 
 export const KEYART_DERIVATIVE_BY_URL: ReadonlyMap<string, KeyartDerivative> = new Map(WEB_ART_DERIVATIVES.map(item => [item.url, item]));
 
@@ -137,6 +157,31 @@ export function halfSize(image: Rgba): Rgba {
     const target = (y * width + x) * 4;
     data[target] = a === 0 ? 0 : Math.round(r / a); data[target + 1] = a === 0 ? 0 : Math.round(g / a);
     data[target + 2] = a === 0 ? 0 : Math.round(b / a); data[target + 3] = Math.round(a / 4);
+  }
+  return { width, height, data };
+}
+
+/** An exact area average to `width` x `height` (each source pixel weighted by the part of it a target pixel covers; alpha-weighted). */
+export function resizeArea(image: Rgba, width: number, height: number): Rgba {
+  const data = new Uint8Array(width * height * 4);
+  const sx = image.width / width; const sy = image.height / height;
+  for (let y = 0; y < height; y += 1) {
+    const top = y * sy; const bottom = top + sy;
+    for (let x = 0; x < width; x += 1) {
+      const left = x * sx; const right = left + sx;
+      let r = 0; let g = 0; let b = 0; let a = 0; let area = 0;
+      for (let yy = Math.floor(top); yy < Math.ceil(bottom); yy += 1) {
+        const wy = Math.min(bottom, yy + 1) - Math.max(top, yy);
+        for (let xx = Math.floor(left); xx < Math.ceil(right); xx += 1) {
+          const weight = wy * (Math.min(right, xx + 1) - Math.max(left, xx));
+          const at = (yy * image.width + xx) * 4; const alpha = image.data[at + 3]! * weight;
+          r += image.data[at]! * alpha; g += image.data[at + 1]! * alpha; b += image.data[at + 2]! * alpha; a += alpha; area += weight;
+        }
+      }
+      const target = (y * width + x) * 4;
+      data[target] = a === 0 ? 0 : Math.round(r / a); data[target + 1] = a === 0 ? 0 : Math.round(g / a);
+      data[target + 2] = a === 0 ? 0 : Math.round(b / a); data[target + 3] = Math.round(a / area);
+    }
   }
   return { width, height, data };
 }
@@ -288,10 +333,12 @@ export function sha256(bytes: Uint8Array): string { return createHash("sha256").
 export function buildKeyartDerivative(item: KeyartDerivative, root = ROOT): Buffer {
   const source = readFileSync(path.join(root, item.source));
   const cacheDir = path.join(root, "node_modules/.cache/keyart-derivatives");
-  const cached = path.join(cacheDir, `${sha256(source)}-v${ENCODER_VERSION}-${item.format}${item.format === "jpeg" ? `-q${JPEG_QUALITY}` : ""}`);
+  const quality = item.format === "jpeg" ? `-q${JPEG_QUALITY}` : item.format === "png-half" ? "" : `-q${PORTRAIT_QUALITY}`;
+  const cached = path.join(cacheDir, `${sha256(source)}-v${ENCODER_VERSION}-${item.format}${quality}`);
   if (existsSync(cached)) return readFileSync(cached);
   const image = decodePng(source);
-  const out = item.format === "jpeg" ? encodeJpeg(image, JPEG_QUALITY) : encodePng(halfSize(image));
+  const out = item.format === "jpeg" ? encodeJpeg(image, JPEG_QUALITY) : item.format === "png-half" ? encodePng(halfSize(image))
+    : encodeJpeg(item.format === "portrait" ? image : resizeArea(image, PORTRAIT_SMALL, PORTRAIT_SMALL), PORTRAIT_QUALITY);
   try { mkdirSync(cacheDir, { recursive: true }); writeFileSync(cached, out); } catch { /* a read-only tree still builds */ }
   return out;
 }
@@ -309,7 +356,7 @@ export function keyartDerivativesPlugin() {
         const url = (request.url ?? "").split("?")[0] ?? "";
         const item = WEB_ART_DERIVATIVES.find(candidate => url.endsWith(`/${candidate.url}`));
         if (item === undefined) { next(); return; }
-        response.setHeader("Content-Type", item.format === "jpeg" ? "image/jpeg" : "image/png");
+        response.setHeader("Content-Type", item.format === "png-half" ? "image/png" : "image/jpeg");
         response.setHeader("Cache-Control", "no-cache");
         response.end(buildKeyartDerivative(item));
       });

@@ -30,6 +30,7 @@ export const CHRONICLE_COPY = {
   ],
   nextChapter: "제2장으로",
   keepPlaying: "계속 (샌드박스)",
+  openFull: "전체 연대기 보기",
   chapterTwoTitle: "제2장 — 예고",
   chapterTwoLine: "기근이 지나간 마을에 새 세대가 자랍니다. 다음 장은 아직 준비 중입니다",
   chapterTwoContinue: "이 마을로 계속",

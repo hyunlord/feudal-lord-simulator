@@ -1,0 +1,384 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "errors": [],
+ "gates": {
+  "chronicle": {
+   "opened": {
+    "records": 472,
+    "cards": [
+     "milestone",
+     "person",
+     "person",
+     "person",
+     "person",
+     "person",
+     "person"
+    ],
+    "markers": [
+     "era",
+     "event",
+     "event",
+     "decision",
+     "milestone",
+     "event",
+     "event",
+     "person",
+     "decision",
+     "era",
+     "person",
+     "milestone"
+    ],
+    "detail": "h-003075",
+    "count": "기록 472건"
+   },
+   "famineEra": {
+    "records": 472,
+    "cards": [
+     "person",
+     "person",
+     "person",
+     "person",
+     "decision",
+     "person",
+     "person",
+     "person",
+     "person",
+     "person"
+    ],
+    "markers": [
+     "era",
+     "event",
+     "event",
+     "decision",
+     "milestone",
+     "event",
+     "event",
+     "person",
+     "decision",
+     "era",
+     "person",
+     "milestone"
+    ],
+    "detail": "h-002662",
+    "count": "기록 472건"
+   },
+   "all": {
+    "records": 894,
+    "cards": [
+     "person",
+     "milestone",
+     "person",
+     "person",
+     "person",
+     "person",
+     "person"
+    ],
+    "markers": [
+     "era",
+     "event",
+     "event",
+     "decision",
+     "milestone",
+     "event",
+     "event",
+     "person",
+     "decision",
+     "era",
+     "person",
+     "milestone"
+    ],
+    "detail": "h-003076",
+    "count": "기록 894건"
+   },
+   "eventsEras": {
+    "records": 17,
+    "cards": [
+     "era",
+     "event",
+     "event",
+     "event",
+     "event",
+     "event",
+     "event"
+    ],
+    "markers": [
+     "era",
+     "event",
+     "event",
+     "event",
+     "event",
+     "era"
+    ],
+    "detail": "h-002634",
+    "count": "기록 17건"
+   },
+   "decisions": {
+    "records": 8,
+    "cards": [
+     "decision",
+     "decision",
+     "decision",
+     "decision",
+     "decision",
+     "decision",
+     "decision"
+    ],
+    "markers": [
+     "decision",
+     "decision",
+     "decision",
+     "decision",
+     "decision"
+    ],
+    "detail": "h-002662",
+    "count": "기록 8건"
+   },
+   "range": {
+    "from": "1302",
+    "to": "1303",
+    "records": 50,
+    "cards": [
+     "person",
+     "person",
+     "event",
+     "ledger",
+     "person",
+     "ledger",
+     "ledger"
+    ],
+    "markers": [
+     "event",
+     "event"
+    ],
+    "detail": "h-000406",
+    "count": "기록 50건"
+   },
+   "person": {
+    "id": "p-000004",
+    "records": 17,
+    "cards": [
+     "person",
+     "person",
+     "person",
+     "person",
+     "person",
+     "person",
+     "person"
+    ],
+    "markers": [
+     "person",
+     "person",
+     "person",
+     "person"
+    ],
+    "detail": "h-003073",
+    "count": "기록 17건"
+   },
+   "ruler": {
+    "cells": 16,
+    "picked": "1317년 봄 · 기록 4건",
+    "detail": "1317년 봄"
+   },
+   "cardKinds": [
+    "person",
+    "decision",
+    "milestone",
+    "era",
+    "event"
+   ]
+  },
+  "decision": {
+   "famine": {
+    "heading": "1320년 봄 · 대기근 대응",
+    "rows": [
+     {
+      "delta": "same",
+      "text": "인구 528528예측대로"
+     },
+     {
+      "delta": "same",
+      "text": "금고 2408d2408d예측대로"
+     }
+    ],
+    "chosen": "구휼",
+    "alternatives": [
+     "가격 통제",
+     "방관",
+     "투기"
+    ]
+   },
+   "marketTown": [
+    {
+     "delta": "up",
+     "text": "인구 517524예측보다 7 많음"
+    },
+    {
+     "delta": "same",
+     "text": "필지 2424예측대로"
+    }
+   ]
+  },
+  "maps": {
+   "seasons": [
+    {
+     "date": "1323년 봄",
+     "snapshot": "s-002985",
+     "size": "128",
+     "painted": 9,
+     "legend": [
+      "풀밭",
+      "숲",
+      "물",
+      "바위",
+      "길",
+      "집",
+      "시설",
+      "공사",
+      "경작지",
+      "성벽"
+     ]
+    },
+    {
+     "date": "1323년 여름",
+     "snapshot": "s-003057",
+     "size": "128",
+     "painted": 9,
+     "legend": [
+      "풀밭",
+      "숲",
+      "물",
+      "바위",
+      "길",
+      "집",
+      "시설",
+      "공사",
+      "경작지",
+      "성벽"
+     ]
+    },
+    {
+     "date": "1322년 가을",
+     "snapshot": "s-002847",
+     "size": "128",
+     "painted": 9,
+     "legend": [
+      "풀밭",
+      "숲",
+      "물",
+      "바위",
+      "길",
+      "집",
+      "시설",
+      "공사",
+      "경작지",
+      "성벽"
+     ]
+    },
+    {
+     "date": "1322년 겨울",
+     "snapshot": "s-002887",
+     "size": "128",
+     "painted": 9,
+     "legend": [
+      "풀밭",
+      "숲",
+      "물",
+      "바위",
+      "길",
+      "집",
+      "시설",
+      "공사",
+      "경작지",
+      "성벽"
+     ]
+    }
+   ],
+   "ledgerCards": [
+    "ledger",
+    "ledger",
+    "ledger",
+    "ledger",
+    "ledger",
+    "ledger",
+    "ledger"
+   ],
+   "compare": [
+    "then",
+    "now"
+   ],
+   "lookAt": {
+    "tile": [
+     46,
+     39
+    ],
+    "closed": true,
+    "before": {
+     "clientX": 448.00000000000006,
+     "clientY": 379.20000000000005
+    },
+    "after": {
+     "clientX": 640,
+     "clientY": 360
+    },
+    "centred": true
+   }
+  },
+  "biography": {
+   "person": "p-000004",
+   "portrait": "I072_mature",
+   "exact": "true",
+   "match": "초상 I072 장년 · 성별·나이대·계층 일치",
+   "name": "Robert atte Well the elder",
+   "life": 17,
+   "relations": 21,
+   "src": "http://127.0.0.1:4300/assets/portraits/256/I072_mature.jpg",
+   "status": 200,
+   "type": "image/jpeg",
+   "bytes": 10123,
+   "image": {
+    "w": 256,
+    "h": 256
+   }
+  },
+  "time": {
+   "running": [
+    93521,
+    93542
+   ],
+   "held": [
+    93543,
+    93543
+   ],
+   "closedByC": true,
+   "resumed": 93563,
+   "escape": {
+    "closed": true,
+    "ledgerBack": true
+   },
+   "stopped": true
+  },
+  "thirtyThousand": {
+   "records": 30000,
+   "opensMs": [
+    156,
+    74,
+    151,
+    70,
+    149,
+    60
+   ],
+   "medianMs": 149,
+   "maxMs": 156,
+   "rendered": {
+    "cards": 7,
+    "records": 15924
+   },
+   "pass": true
+  },
+  "tablet": {
+   "coarse": true,
+   "targetsUnder48": [],
+   "textUnder12": 0
+  }
+ }
+}
