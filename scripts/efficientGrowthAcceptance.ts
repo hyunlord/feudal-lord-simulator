@@ -25,7 +25,8 @@ export function efficientAcceptance(metrics: EfficiencyMetrics) {
     validMetrics: finite,
     arableCells: metrics.lots > 0 && metrics.arableCells <= metrics.lots * ARABLE_CELLS_PER_LOT_CAP,
     granaries: metrics.granaries <= Math.ceil(metrics.lots / 4) + 1,
-    markets: metrics.markets <= Math.ceil(metrics.lots / 24) + 1,
+    // MARKET-1 (MK-2): no count cap; each market beyond the first answers 12 or more lots the others did not serve.
+    markets: metrics.markets <= 1 + Math.floor(metrics.lots / 12),
     churches: metrics.churches <= Math.ceil(metrics.lots / 32) + 1,
     observedWindow: metrics.known && metrics.fullWindow && metrics.coveredTicks >= 2400,
     observedMillActivity: metrics.eligibleMillTicks > 0,

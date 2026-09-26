@@ -7,7 +7,7 @@ import { allocateHouseServices, HOUSEHOLD_SERVICE_CONFIG } from '../population/s
 import { canPlaceBuildingBeforeRoad } from '../world/placement';
 import type { GameState } from './engine.types';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
-import { marketRoadService } from './marketService';
+import { marketConnectionOnly } from './marketService';
 import { potentialServiceRoads, serviceCandidate, serviceFootprint, serviceSpaceBuildings, serviceSpaceHouses, serviceTileKey, serviceWitnessRoads, serviceRoadConnected } from './autoplayServiceSpaceRoutes';
 
 export type ServiceSpaceWitness = {
@@ -40,9 +40,11 @@ function candidatePads(state: GameState, home: Building, kind: UrbanService, rea
 function allocationForHome(state: GameState, home: Building, buildings: readonly Building[], potential: GameState) {
   const lots = buildings.filter(building => building.kind === 'house').reduce((sum, building) => sum + houseLotArea(building), 0);
   // Below both capacities, other homes cannot exhaust any provider; only the target's reachability affects its allocation.
+  // MARKET-1 (MK-4): the proof keeps the 8-tile radius over the potential roads (`marketConnectionOnly`).
+  const connected = marketConnectionOnly(potential);
   const roadService = lots <= Math.min(HOUSEHOLD_SERVICE_CONFIG.market.capacity, HOUSEHOLD_SERVICE_CONFIG.church.capacity)
     ? (candidate: Building, provider: Building) => candidate.id !== home.id || serviceRoadConnected(potential, candidate, provider)
-    : marketRoadService(potential);
+    : connected;
   return allocateHouseServices({ houses: serviceSpaceHouses(state, buildings), buildings: staffed(buildings), roadService });
 }
 function jointlyServed(state: GameState, home: Building, buildings: readonly Building[], additions: readonly Building[]): ServiceSpaceWitness | null {
@@ -74,7 +76,7 @@ export function findAutoplayServiceWitness(state: GameState, home: Building): Se
     || (services?.church.kind !== 'served' && !spareSlot('church'))) return null;
   // A disconnected pad cannot become reachable by removing land for another provider.
   // Reject it before the Cartesian search; final joint allocation and routes still prove safety.
-  const connected = marketRoadService(potential);
+  const connected = marketConnectionOnly(potential);
   const reachable = (candidate: Building): boolean => connected(home, candidate) && sources.some(source => connected(source, candidate));
   const markets: readonly (Building | null)[] = services?.market.kind === 'served' ? [null] : candidatePads(state, home, 'market', reachable);
   const churches: readonly (Building | null)[] = services?.church.kind === 'served' ? [null] : candidatePads(state, home, 'church', reachable);

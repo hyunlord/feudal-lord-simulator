@@ -29,7 +29,13 @@ function fixture() {
 }
 
 test('Given a distant era market When town service planning runs Then it builds a legal market covering homes instead of accepting mere existence', () => {
-  const state = fixture();
+  // MARKET-1 (MK-2): a second market needs 12 unserved lots; this fixture's lone home does not justify one while the
+  // distant market stands, so the planner leaves it (and diagnoses the cap). With no market standing, it builds one.
+  const withDistant = fixture();
+  const diagnostic: { services?: { service: string; reason: string }[] } = {};
+  const refused = urbanServiceAction(withDistant, diagnostic as never);
+  assert.notEqual(refused.kind === 'place_building' && refused.building, 'market');
+  const state = { ...fixture(), buildings: fixture().buildings.filter(b => b.kind !== 'market') };
   const action = urbanServiceAction(state);
   assert.equal(action.kind, 'place_building');
   if (action.kind !== 'place_building') return;
