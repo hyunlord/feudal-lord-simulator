@@ -252,6 +252,8 @@ const SEASON_TICKS = 1_000;
 /** Staging window before a turn: 200 ticks, 10 s at 1x (the visible chunks raster in ~0.1-0.3 s of idle time; a scene
  * opened just before a turn shares that idle time with its first rasters). */
 const STAGE_TICKS = 200;
+/** The longest a staging callback waits for idle time (46 chunks stage in ~2.3 s even with none). */
+const STAGE_WAIT_MS = 50;
 const stagingQueues = new WeakMap<CanvasRenderingContext2D, { jobs: PrefetchJob[]; scheduled: boolean }>();
 
 function scheduleStaging(context: CanvasRenderingContext2D, cache: GroundChunkCache, jobs: PrefetchJob[]): void {
@@ -261,17 +263,21 @@ function scheduleStaging(context: CanvasRenderingContext2D, cache: GroundChunkCa
   queue.jobs = jobs.filter(job => cache.needsStage(job.request));
   if (queue.scheduled || queue.jobs.length === 0) return;
   queue.scheduled = true;
+  // One chunk per callback at least (the callback comes within STAGE_WAIT_MS even without idle time): on a busy
+  // software raster (the DGX) idle periods over PREFETCH_MIN_IDLE_MS are rare, and staging must finish before the turn.
   const run = (deadline: IdleDeadline): void => {
     const current = stagingQueues.get(context);
     if (current === undefined) return;
-    while (current.jobs.length > 0 && deadline.timeRemaining() > PREFETCH_MIN_IDLE_MS) {
+    let first = true;
+    while (current.jobs.length > 0 && (first || deadline.timeRemaining() > PREFETCH_MIN_IDLE_MS)) {
       const job = current.jobs.shift() as PrefetchJob;
       cache.stage(job.request, job.paint);
+      first = false;
     }
     current.scheduled = current.jobs.length > 0;
-    if (current.scheduled) requestIdleCallback(run);
+    if (current.scheduled) requestIdleCallback(run, { timeout: STAGE_WAIT_MS });
   };
-  requestIdleCallback(run);
+  requestIdleCallback(run, { timeout: STAGE_WAIT_MS });
 }
 
 function schedulePrefetch(context: CanvasRenderingContext2D, cache: GroundChunkCache, jobs: PrefetchJob[]): void {

@@ -18,9 +18,11 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //     Chunks in a one-chunk ring around the view are rastered ahead in idle time (prefetch), so a camera drag
 //     reveals rasters that already exist. Measured fill cost, hit rates and pixel totals: docs/verification/d1a.
 // (d) Fade (INSTALL-15): a request may carry a fade token (the season). When a chunk re-rasters for new content under
-//     a new token, the old raster is kept for `fade.ms` and the new one is drawn over it at a rising alpha, so the
-//     season turns as a crossfade instead of a cut. The old raster is dropped when the fade ends or the zoom bucket
-//     changes; during the fade that chunk holds two rasters. Staging: in the last seconds of a season the renderer
+//     a new token, the old raster is kept for `fade.ms` and the chunk shows a blend of old and new in FADE_STEPS steps:
+//     the blend is made once per step in a third canvas (old copied, new drawn over at the step's alpha) and blitted
+//     opaque. A per-frame semi-transparent blit of every chunk cost the software raster ~4.5 ms a frame, landing on
+//     the next draws that flushed it (DGX pop176 turn: buildings stage 0.3 -> 4.8 ms); in steps, offset per chunk, a
+//     frame makes a few chunks' blends instead. The old raster and the blend canvas are dropped when the fade ends or the zoom bucket changes. Staging: in the last seconds of a season the renderer
 //     rasters the next season's visible chunks in idle time (`stage`, kept apart from the drawn rasters, at most one
 //     token at a time); at the turn a staged raster with the same content key and scale is taken as is, so the turn's
 //     frames only blend. Measured in docs/verification/install15/perf.md.
@@ -35,6 +37,7 @@ const FRAME_DEFER_AFTER_MS = 8;
 /** After waiting this many frames a chunk may take the frame's one over-budget raster (so every wait ends). */
 const MAX_DEFERRED_FRAMES = 3;
 const EDGE_OVERLAP_PX = 1.5;
+const FADE_STEPS = 8;
 
 export type ChunkCanvas = {
   readonly canvas: CanvasImageSource & { width: number; height: number };
@@ -61,7 +64,7 @@ type Entry = Held & {
   readonly deferKey: string | undefined;
   readonly fadeToken: string | undefined;
   /** The raster this one fades in over, and when the fade began (header (d)). */
-  previous: (Held & { readonly startedMs: number; readonly ms: number }) | null;
+  previous: (Held & { readonly startedMs: number; readonly ms: number; blend: ChunkCanvas | null; step: number }) | null;
 };
 
 export type GroundChunkCacheStats = {
@@ -211,7 +214,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         // A staged next-season raster: take it, and fade from the held one.
         const next = staged.get(request.id) as Entry;
         staged.delete(request.id); stats.stagedUsed += 1;
-        if (request.fade.ms > 0) { next.previous = { raster: entry.raster, left: entry.left, top: entry.top, scale: entry.scale, startedMs: now(), ms: request.fade.ms }; stats.fades += 1; }
+        if (request.fade.ms > 0) { next.previous = { raster: entry.raster, left: entry.left, top: entry.top, scale: entry.scale, startedMs: now(), ms: request.fade.ms, blend: null, step: -1 }; stats.fades += 1; }
         entry = next;
         store(request.id, entry);
       } else if (frameStart !== undefined && entry !== undefined && entry.scale === request.scale && request.deferKey !== undefined
@@ -230,7 +233,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         if (next === null) { paint(target); return; }
         if (zoomOnly) { stats.zoomRasters += 1; zoomBudget -= 1; } else stats.contentRasters += 1;
         if (fade !== null && entry !== undefined) {
-          next.previous = { raster: entry.raster, left: entry.left, top: entry.top, scale: entry.scale, startedMs: now(), ms: fade.ms };
+          next.previous = { raster: entry.raster, left: entry.left, top: entry.top, scale: entry.scale, startedMs: now(), ms: fade.ms, blend: null, step: -1 };
           stats.fades += 1;
         }
         entry = next;
@@ -240,6 +243,25 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
       const t = previous === null ? 1 : Math.min(1, (now() - previous.startedMs) / previous.ms);
       if (previous !== null && t >= 1) entry.previous = null;
       if (previous === null || t >= 1) { blit(target, entry); return; }
+      // Each chunk's steps are offset by its id, so the blends spread over the frames (~4 chunks a frame, not all 46).
+      // Until its first step a chunk shows its old raster as is (so not every chunk blends on the turn's first frame).
+      const step = Math.min(FADE_STEPS - 1, Math.floor(t * FADE_STEPS + fadePhase(request.id)) - 1);
+      if (step < 0) { blit(target, previous); return; }
+      const canvas = entry.raster.canvas;
+      if (previous.step !== step && factory !== null && previous.raster.canvas.width === canvas.width && previous.raster.canvas.height === canvas.height) {
+        previous.blend ??= factory(canvas.width, canvas.height);
+        const paint = previous.blend?.context;
+        if (paint !== undefined) {
+          paint.setTransform(1, 0, 0, 1, 0, 0); paint.globalAlpha = 1; paint.clearRect(0, 0, canvas.width, canvas.height);
+          const whole = { x: 0, y: 0, width: canvas.width, height: canvas.height };
+          drawCroppedWorldSprite(paint, previous.raster.canvas, whole, whole, true, true);
+          paint.globalAlpha = (step + 1) / (FADE_STEPS + 1);
+          drawCroppedWorldSprite(paint, canvas, whole, whole, true, true);
+          paint.globalAlpha = 1;
+          previous.step = step;
+        }
+      }
+      if (previous.blend !== null && previous.step === step) { blit(target, { raster: previous.blend, left: entry.left, top: entry.top, scale: entry.scale }); return; }
       blit(target, previous);
       const alpha = target.globalAlpha;
       target.globalAlpha = alpha * t;
@@ -250,6 +272,12 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
     clear() { entries.clear(); staged.clear(); stats.entries = 0; stats.pixels = 0; },
     entry(id) { const value = entries.get(id); return value === undefined ? null : { contentKey: value.contentKey, scale: value.scale, raster: value.raster }; },
   };
+}
+
+function fadePhase(id: string): number {
+  let hash = 2_166_136_261;
+  for (let index = 0; index < id.length; index += 1) hash = Math.imul(hash ^ id.charCodeAt(index), 16_777_619);
+  return ((hash >>> 0) % 1_000) / 1_000;
 }
 
 function blit(target: CanvasRenderingContext2D, held: Held): void {

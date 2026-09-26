@@ -79,19 +79,26 @@ test("Given the object pass When the season turns at 1x Then it fades over SEASO
   resetSeasonBlendForTest();
 });
 
-test("Given a held chunk raster When it re-rasters under a new season token Then the old raster stays under the new one until the fade ends", async () => {
-  const cache = createGroundChunkCache(((w: number, h: number) => recordingCanvas(w, h)) as unknown as Parameters<typeof createGroundChunkCache>[0]);
+test("Given a held chunk raster When it re-rasters under a new season token Then it shows a stepped blend of old and new until the fade ends", async () => {
+  const made: ReturnType<typeof recordingCanvas>[] = [];
+  const cache = createGroundChunkCache(((w: number, h: number) => { const canvas = recordingCanvas(w, h); made.push(canvas); return canvas; }) as unknown as Parameters<typeof createGroundChunkCache>[0]);
   const diamond = [{ x: 0, y: -64 }, { x: 128, y: 0 }, { x: 0, y: 64 }, { x: -128, y: 0 }] as const;
   const target = recordingCanvas(512, 512);
   const request = (content: string, token: string, ms: number) => ({ id: "ground:0,0", contentKey: content, scale: 1, diamond, fade: { token, ms } });
   cache.beginFrame(); cache.draw(target.context, request("a|s2", "s2", 1_000_000), () => undefined);
   target.canvas.ops.length = 0;
-  cache.beginFrame(); cache.draw(target.context, request("a|s3", "s3", 1_000_000), () => undefined);
-  const blits = target.canvas.ops.filter(op => op.startsWith("drawImage"));
-  assert.equal(blits.length, 2, "old raster, then the new one");
-  assert.ok(target.canvas.ops.some(op => /^set globalAlpha\(0(\.\d+)?\)$/.test(op)), "the new raster starts transparent");
+  cache.beginFrame(); cache.draw(target.context, request("a|s3", "s3", 40), () => undefined);
+  assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1, "the turn's first frame: one opaque blit (the old raster)");
   assert.equal(cache.stats().fades, 1);
+  await new Promise(resolve => setTimeout(resolve, 20));
+  target.canvas.ops.length = 0;
+  cache.beginFrame(); cache.draw(target.context, request("a|s3", "s3", 40), () => undefined);
+  assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1, "mid-fade: one opaque blit (the blend)");
+  const blend = made.at(-1)!.canvas.ops;
+  assert.equal(blend.filter(op => op.startsWith("drawImage")).length, 2, "the blend: the old raster, then the new one over it");
+  assert.ok(blend.some(op => /^set globalAlpha\(0\.(3|4|5|6)\d*\)$/.test(op)), `mid-fade step alpha: ${blend.filter(op => op.includes("globalAlpha")).join(" ")}`);
   // The same token (an art load, a zone edit) cuts over; a zero-length fade (5x) too.
+  await new Promise(resolve => setTimeout(resolve, 30));
   target.canvas.ops.length = 0;
   cache.beginFrame(); cache.draw(target.context, request("b|s3", "s3", 1_000_000), () => undefined);
   assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1);
