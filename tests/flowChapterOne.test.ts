@@ -25,10 +25,12 @@ import {
 } from "../src/engine/politics";
 import { advanceHistoricalEras, historicalEra, historicalEraEffectRegistry } from "../src/engine/scenarioState";
 import { advanceSeasons } from "../src/engine/seasonPressure";
+import { advanceHistory } from "../src/engine/history";
 import { advanceTick } from "../src/engine/tick";
 import { LEDGER_PERIOD_TICKS, postLedgerEntries } from "../src/ledger/ledger";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
+import { gameReducer } from "../src/state/gameStore";
 import { migrateStateV13ToV14 } from "../src/save/migrations/v13ToV14";
 
 // F0-C1 chapter 1 scenarios (spec docs/design/flow-chapter-one.md FC-1…FC-6), C1–C10.
@@ -65,8 +67,13 @@ function petitionedCity(): GameState {
 /** The pressure, events and politics steps on their 50-tick samples, the rest of the town standing still. */
 function samples(state: GameState, from: number, to: number, edit: (state: GameState) => GameState = current => current): GameState {
   let current: GameState = { ...state, tick: from };
-  for (let tick = from; tick <= to; tick += 50) current = advancePolitics(advanceEvents(advanceSeasons(edit({ ...current, tick }))));
+  for (let tick = from; tick <= to; tick += 50) current = step(edit({ ...current, tick }));
   return current;
+}
+
+/** The season, event, politics and history steps of one tick (the history ledger reads the before and after). */
+function step(state: GameState): GameState {
+  return advanceHistory(state, advancePolitics(advanceEvents(advanceSeasons(state))));
 }
 
 const SPRING_1315 = 15 * YEAR;
@@ -247,9 +254,10 @@ function throughFamine(edit: (state: GameState) => GameState = current => curren
   const base = readyTown();
   const season = petitionSeason(base, PETITION);
   const petitioned = samples({ ...base, era: "palisade", eraProclaimedTick: 9 * YEAR }, season * SEASON, season * SEASON);
-  const answered = respondToPetition(petitioned, openPetitions(petitioned)[0]!.id, "accept");
-  const arrived = advancePolitics(advanceEvents(advanceSeasons({ ...answered, tick: SPRING_1315 })));
-  const relieved = famineResponse(arrived, "relief");
+  // The answers go through the game's commands, as a player's would (F0-C2: the history ledger records them).
+  const answered = gameReducer(petitioned, { type: "petition_response", petitionId: openPetitions(petitioned)[0]!.id, response: "accept" });
+  const arrived = step({ ...answered, tick: SPRING_1315 });
+  const relieved = gameReducer(arrived, { type: "famine_response", choice: "relief" });
   return samples(relieved, SPRING_1315 + 50, dearthEndTick(famineRecord(relieved)!) + 100, edit);
 }
 
@@ -259,8 +267,11 @@ test("C9 the chronicle page is written at the chapter's end: its events, three d
   assert.ok(end !== null);
   const page = end.chronicle;
   assert.equal(page.chapter, 1);
-  assert.deepEqual(page.decisions.map(decision => decision.kind), ["famine_response", "petition_response", "market_town"], "the weightiest first");
-  assert.equal(page.decisions.length, CHAPTER_ONE.quotedDecisions);
+  // F0-C2 (HL-6): quoted from the history ledger's big decisions, weightiest first (the market town here was set, not proclaimed).
+  assert.deepEqual(page.decisions.map(decision => decision.kind), ["famine_response", "petition_response"], "the weightiest first");
+  assert.ok(page.decisions.length <= CHAPTER_ONE.quotedDecisions);
+  assert.deepEqual(page.decisions[0]!.alternatives, ["price_control", "laissez_faire", "speculation"]);
+  assert.ok(page.decisions[0]!.actual !== undefined, "two seasons on, the famine answer has its actual");
   assert.ok(page.events.some(event => event.defId === GREAT_FAMINE_EVENT_ID && event.year === 1315));
   assert.equal(page.stats.famine?.year, 1315);
   assert.equal(page.stats.populationEnd, ended.population);

@@ -32,15 +32,26 @@ export type DecisionRecord =
   | { readonly kind: "petition_response"; readonly tick: number; readonly petitionId: string; readonly choice: PetitionResponse }
   | { readonly kind: "market_town"; readonly tick: number };
 
-/** FC-5: one page of the chronicle, written when a chapter ends. */
+/** F0-C2 (HL-6): a decision the chronicle quotes, from the history ledger (its record, what was chosen and why). */
+export interface ChronicleQuote {
+  readonly recordId: string;
+  readonly kind: string;
+  readonly tick: number;
+  readonly chosen: string;
+  readonly alternatives: readonly string[];
+  readonly predicted: Readonly<Record<string, number>>;
+  readonly actual?: Readonly<Record<string, number>>;
+}
+
+/** FC-5: one page of the chronicle, written when a chapter ends — since F0-C2 edited from the history ledger (HL-6). */
 export interface ChronicleEntry {
   readonly chapter: number;
   readonly fromYear: number;
   readonly toYear: number;
-  /** The chapter's events in order, with what each cost. */
-  readonly events: readonly { readonly eventId: string; readonly defId: string; readonly year: number; readonly losses: EventLosses }[];
-  /** The player's decisions the page quotes (at most `CHAPTER_ONE.quotedDecisions`, the weightiest first). */
-  readonly decisions: readonly DecisionRecord[];
+  /** The ledger's weightiest event and era records of the chapter (at most eight), in order, with what each cost. */
+  readonly events: readonly { readonly recordId: string; readonly eventId: string; readonly defId: string; readonly year: number; readonly losses: EventLosses }[];
+  /** The player's big decisions the page quotes (at most `CHAPTER_ONE.quotedDecisions`, the weightiest first). */
+  readonly decisions: readonly ChronicleQuote[];
   readonly stats: {
     readonly populationStart: number;
     readonly populationEnd: number;

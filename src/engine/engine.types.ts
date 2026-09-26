@@ -163,4 +163,6 @@ export interface GameState {
   readonly events?: import("./events.types").EventState;
   /** F0-C1 petitions, rights, the merchants' gauge, decisions and chapter ends (save v14, spec FC-2…FC-5). */
   readonly politics?: import("./politics.types").PoliticsState;
+  /** F0-C2 history ledger: append-only records and map thumbnails (save v15, spec HL-1…HL-9). Absent until the first record. */
+  readonly history?: import("./history.types").HistoryState;
 }

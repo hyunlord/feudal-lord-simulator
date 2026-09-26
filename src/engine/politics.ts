@@ -34,6 +34,7 @@ import { eventSource } from "./events";
 import { marketSalePrice } from "./marketSettlement";
 import type { ChapterEnd, ChronicleEntry, DecisionRecord, PetitionRecord, PoliticsState } from "./politics.types";
 import { hashSeed } from "./prng";
+import { chapterPageRecords } from "./history";
 import { calendar, scenarioOf } from "./scenarioState";
 import { housingLotCount } from "../population/housing";
 
@@ -204,21 +205,30 @@ export function rightsEffectRegistry(state: GameState): EffectRegistry {
   return registry;
 }
 
-const DECISION_WEIGHT: Readonly<Record<DecisionRecord["kind"], number>> = { famine_response: 0, petition_response: 1, market_town: 2 };
-
 /** FC-5: the chronicle page of chapter 1, written at `state.tick`. */
 export function chronicleEntry(state: GameState): ChronicleEntry {
   const politics = politicsOf(state);
   const startYear = scenarioOf(state).startYear;
   const records = (state.events?.records ?? []).filter(record => record.arrivalTick >= politics.chapter.startTick && record.arrivalTick <= state.tick);
   const famine = famineRecord(state);
-  const decisions = [...politics.decisions].sort((a, b) => DECISION_WEIGHT[a.kind] - DECISION_WEIGHT[b.kind] || a.tick - b.tick).slice(0, CHAPTER_ONE.quotedDecisions);
+  // F0-C2 (HL-6): the page is edited from the history ledger — its weightiest events and eras, its big decisions.
+  const page = chapterPageRecords(state, politics.chapter.startTick, state.tick);
+  const noLosses = { burntHouses: 0, departures: 0, harvestLost: 0 };
+  const events = page.events.map(record => {
+    const eventId = String(record.params?.eventId ?? `era:${String(record.params?.eraId ?? "")}`);
+    const event = state.events?.records.find(entry => entry.id === eventId);
+    return { recordId: record.id, eventId, defId: String(record.params?.defId ?? record.params?.eraId ?? ""),
+      year: calendar(record.tick, startYear).year, losses: event?.losses ?? noLosses };
+  });
+  const decisions = page.decisions.map(record => ({ recordId: record.id, kind: String(record.params?.decisionKind ?? ""), tick: record.tick,
+    chosen: record.decision!.chosen, alternatives: record.decision!.alternatives, predicted: record.decision!.predicted,
+    ...(record.decision!.actual === undefined ? {} : { actual: record.decision!.actual }) }));
   const sum = (key: "burntHouses" | "departures" | "harvestLost") => records.reduce((total, record) => total + record.losses[key], 0);
   return {
     chapter: politics.chapter.number,
     fromYear: calendar(politics.chapter.startTick, startYear).year,
     toYear: calendar(state.tick, startYear).year,
-    events: records.map(record => ({ eventId: record.id, defId: record.defId, year: calendar(record.arrivalTick, startYear).year, losses: record.losses })),
+    events,
     decisions,
     stats: {
       populationStart: politics.chapter.populationStart, populationEnd: state.population, peakPopulation: politics.chapter.peakPopulation,

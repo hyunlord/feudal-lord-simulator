@@ -19,6 +19,7 @@ import { mergeHouses } from "../engine/houseMerge";
 import { demolishHouse } from "../engine/houseDemolition";
 import { rebuildBurntHouse } from "../engine/fire";
 import { famineResponse, respondToPetition } from "../engine/politics";
+import { recordDecision } from "../engine/history";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
@@ -92,7 +93,8 @@ function assertNever(action: never): never {
 }
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
-  const next = reduceGameAction(state, action);
+  // F0-C2 (HL-2 ①): a command that changed the state is a decision in the history ledger.
+  const next = recordDecision(state, reduceGameAction(state, action), action as unknown as { readonly type: string } & Readonly<Record<string, unknown>>);
   if (action.foodTransient === undefined || state.settlement?.outcome === "abandoned") return next;
   const { autoplayFoodTransientConfirmation: _confirmation, ...rest } = next;
   return action.foodTransient === null ? rest : { ...rest, autoplayFoodTransientConfirmation: action.foodTransient };
