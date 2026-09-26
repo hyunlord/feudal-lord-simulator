@@ -4,21 +4,25 @@ import { HOUSING_CONFIG } from '../content/housingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
 import { footprintCorners, isPointInsidePalisade } from '../world/palisadeGeometry';
-import { getOrthogonalRoadNeighbors } from '../world/roadGraph';
-import type { TileCoordinate } from '../world/grid';
+import { canPlaceRoad, getOrthogonalRoadNeighbors } from '../world/roadGraph';
+import { canTraverseRoadBoundary } from '../world/bridges';
+import { getTile, type TileCoordinate } from '../world/grid';
 import { housingLotCount } from '../population/housing';
 import { foodFacilityWithinLimit } from './autoplayFoodLimits';
 import { buildingRoadAccessTiles } from './routing';
 import { allocateHouseServices, type ServiceAllocation } from '../population/serviceAllocation';
 import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingUnlocked, placementSpendableResource } from '../world/placement';
 import { householdServices } from './householdServices';
-import { anotherMarketAllowed, marketRoadService } from './marketService';
+import { MARKET_ROAD_REACH, MARKET_UNSERVED_LOTS_FOR_ANOTHER, anotherMarketAllowed, marketRoadService } from './marketService';
 import { serviceAccessDistances } from './autoplayServiceAccess';
 import { hasConnectedConstructionRoute } from './autoplayConstructionRoute';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
 import { rankServiceRoadPlans } from './autoplayServiceRoadPlans';
 import { plannedBuildingRoadAction } from './autoplayConstructionRoads';
+import { roadPrefixAction } from './autoplayRoadPrefix';
+import { serviceSafeRoadAction } from './autoplayServiceSpace';
+import { runAutoplaySearch } from './autoplaySearchBudget';
 import { projectServiceAction, serviceCandidate } from './autoplayServiceSpaceRoutes';
 import type { AutoplayAction } from './autoplay.types';
 import type { GameState } from './engine.types';
@@ -37,8 +41,11 @@ export interface BotRecoveryDiagnostic {
   readonly building?: BuildingKind;
   readonly tx?: number;
   readonly ty?: number;
-  /** Why no building was placed: no site in reach, not enough timber, or (AR-7) it would take the lots' house sites. */
-  readonly note?: 'no_site' | 'unaffordable' | 'refused';
+  /**
+   * Why no building was placed: no site in reach, not enough timber, (AR-7) it would take the lots' house sites, or
+   * (AR-5 ③) only inhabited homes at L2 or above are out of reach, and those are never demolished.
+   */
+  readonly note?: 'no_site' | 'unaffordable' | 'refused' | 'protected';
 }
 export interface BotRecoveryCollector { recovery?: readonly BotRecoveryDiagnostic[] }
 
@@ -223,15 +230,27 @@ function marketGain(state: GameState, current: ServiceAllocation, gap: readonly 
 
 /** A market that serves the most gap homes without taking a service from anyone; a road toward one otherwise. */
 export function marketGapAction(state: GameState, collector?: BotRecoveryCollector): AutoplayAction {
+  if (!marketSiteOpen(state)) return { kind: 'none' };
+  const gap = marketGapHouses(state);
+  return gap.length === 0 ? { kind: 'none' } : marketSiteAction(state, gap, 'market_gap', collector);
+}
+
+/** A market can be started now: unlocked, none being built, its workers idle. */
+function marketSiteOpen(state: GameState): boolean {
+  return isBuildingUnlocked('market', state.era, state.scenarioId)
+    && !state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === 'market')
+    && state.idleWorkers >= BUILDING_CONFIG_BY_KIND.market.workersRequired;
+}
+
+/**
+ * AR-2 and AR-5 ②: the market site that serves the most of `gap` without taking a service from anyone (sites within the
+ * market radius of a gap home, the stand-in for roads to come), or a road toward one; recorded under `kind`.
+ */
+function marketSiteAction(state: GameState, gap: readonly Building[], kind: BotRecoveryKind, collector?: BotRecoveryCollector): AutoplayAction {
   const none = { kind: 'none' } as const;
   const definition = BUILDING_CONFIG_BY_KIND.market;
-  if (!isBuildingUnlocked('market', state.era, state.scenarioId)
-    || state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === 'market')
-    || state.idleWorkers < definition.workersRequired) return none;
-  const gap = marketGapHouses(state);
-  if (gap.length === 0) return none;
   if (!marketAffordable(state)) {
-    recordBotRecovery(collector, 'market_gap', gap, none, 'unaffordable');
+    recordBotRecovery(collector, kind, gap, none, 'unaffordable');
     return none;
   }
   const current = householdServices(state);
@@ -252,17 +271,17 @@ export function marketGapAction(state: GameState, collector?: BotRecoveryCollect
   const best = ranked[0];
   if (best !== undefined) {
     const action = { kind: 'place_building', building: 'market', tx: best.candidate.tx, ty: best.candidate.ty } as const;
-    recordBotRecovery(collector, 'market_gap', gap, action);
+    recordBotRecovery(collector, kind, gap, action);
     return action;
   }
   for (const { building } of rankServiceRoadPlans(state, 'market', candidates)) {
     const road = plannedBuildingRoadAction(state, building);
     if (road.kind !== 'none') {
-      recordBotRecovery(collector, 'market_gap', gap, road);
+      recordBotRecovery(collector, kind, gap, road);
       return road;
     }
   }
-  recordBotRecovery(collector, 'market_gap', gap, none, 'no_site');
+  recordBotRecovery(collector, kind, gap, none, 'no_site');
   return none;
 }
 
@@ -291,18 +310,107 @@ export function strandedMarketHouses(state: GameState, targetLots: number): read
   });
 }
 
+/** MK-5: the markets the bot may stand for the policy's lots — the guardrail's facility cap, 1 + ⌊lots ÷ 12⌋. */
+export function marketFacilityCap(targetLots: number): number {
+  return 1 + Math.floor(targetLots / MARKET_UNSERVED_LOTS_FOR_ANOTHER);
+}
+
 /**
- * At the lot target the advisor demolishes one stranded home; the housing rule then rebuilds the lot where a standing
- * market reaches it (`keepsHouseInMarketReach`). Below the target nothing is demolished, so a regrowing town is never
- * thinned twice.
+ * AR-5 (MK-5) brings stranded homes into a market's reach, demolishing last:
+ *   ① a road that carries one within 40 steps of a standing market (`marketReachRoadAction`);
+ *   ② else another market for them, while the markets stay within the facility cap (MK-2's twelve lots do not hold here);
+ *   ③ only when neither can, and at the lot target: an empty or L0–L1 home out of reach is demolished, and the housing
+ *      rule rebuilds the lot where a standing market reaches it (`keepsHouseInMarketReach`). An inhabited home at L2 or
+ *      above is never demolished; below the target nothing is, so a regrowing town is never thinned twice.
+ * `accepts` is the advisor's AR-7 check on the road or market (behind a wall they must leave the lots their house sites).
  */
-export function marketRelocationAction(state: GameState, targetLots: number, collector?: BotRecoveryCollector): AdvisorAction {
+export function marketRelocationAction(state: GameState, targetLots: number, collector?: BotRecoveryCollector,
+  accepts: (action: AutoplayAction) => boolean = () => true): AdvisorAction {
+  const none = { kind: 'none' } as const;
+  const markets = marketsAtTargetCap(state, targetLots);
   const stranded = strandedMarketHouses(state, targetLots);
-  if (stranded.length === 0 || housingLotCount(state) < targetLots) return { kind: 'none' };
-  const target = [...stranded].sort((a, b) => a.id.localeCompare(b.id))[0]!;
+  if (markets === null || stranded.length === 0) return none;
+  const road = marketReachRoadAction(state, stranded, markets);
+  if (road.kind !== 'none' && accepts(road)) {
+    recordBotRecovery(collector, 'market_relocation', stranded, road);
+    return road;
+  }
+  if (markets.length < marketFacilityCap(targetLots) && marketSiteOpen(state)) {
+    const market = runAutoplaySearch(() => marketSiteAction(state, stranded, 'market_relocation', collector));
+    if (market.kind !== 'none' && accepts(market)) return market;
+  }
+  if (housingLotCount(state) < targetLots) return none;
+  const movable = relocatableMarketHouses(state, markets);
+  if (movable.length === 0) {
+    recordBotRecovery(collector, 'market_relocation', stranded, none, 'protected');
+    return none;
+  }
+  const target = [...movable].sort((a, b) => a.id.localeCompare(b.id))[0]!;
   const action: DemolishHouseAdvice = { kind: 'demolish_house', buildingId: target.id };
   recordBotRecovery(collector, 'market_relocation', stranded, action);
   return action;
+}
+
+/**
+ * AR-5 ③ (MK-5): homes out of every standing market's reach (inside the wall once there is one) that may be rebuilt in
+ * reach — empty, or at L0–L1. An inhabited home at L2 or above is never demolished.
+ */
+export function relocatableMarketHouses(state: GameState, markets: readonly Building[]): readonly Building[] {
+  const reach = marketRoadService(state).marketReach!;
+  const homes = new Map(state.buildings.map(building => [building.id, building]));
+  return state.houses.flatMap(house => {
+    const home = homes.get(house.buildingId);
+    if (home === undefined || (house.residents > 0 && house.level >= 2)
+      || (state.palisade !== null && !insideWall(state, 'house', home)) || markets.some(market => reach(home, market))) return [];
+    return [home];
+  });
+}
+
+const tileKey = (tile: TileCoordinate): string => `${tile.tx},${tile.ty}`;
+
+/**
+ * AR-5 ① (MK-5): the road that brings a stranded home within reach of a standing market. From each market's road, the
+ * shortest walk over laid and new road tiles (at most 40 steps, as the reach counts them) to a tile beside a stranded
+ * home; of those, the one that lays the fewest new tiles (then the shortest, then the market and home in id order). Its
+ * first straight run of new road is placed if it keeps the service space; the next decision lays the next run.
+ */
+export function marketReachRoadAction(state: GameState, stranded: readonly Building[], markets: readonly Building[]): AutoplayAction {
+  const everywhere = { ...state, tiles: state.tiles.map(tile => ({ ...tile, hasRoad: true })) };
+  const targets = new Set(stranded.flatMap(home => buildingRoadAccessTiles(everywhere, home)).map(tileKey));
+  const plans = state.constructionSites.filter(isBuildingConstructionSite);
+  const planned = (tile: TileCoordinate): boolean => plans.some(site => {
+    const size = BUILDING_CONFIG_BY_KIND[site.kind];
+    return tile.tx >= site.tx && tile.tx < site.tx + size.width && tile.ty >= site.ty && tile.ty < site.ty + size.height;
+  });
+  let best: { readonly path: readonly TileCoordinate[]; readonly fresh: number; readonly steps: number } | null = null;
+  for (const market of [...markets].sort((a, b) => a.id.localeCompare(b.id))) {
+    const start = buildingRoadAccessTiles(state, market);
+    const parents = new Map<string, TileCoordinate | null>(start.map(tile => [tileKey(tile), null]));
+    let frontier: readonly TileCoordinate[] = start;
+    for (let steps = 0; frontier.length > 0 && steps <= MARKET_ROAD_REACH; steps += 1) {
+      const next: TileCoordinate[] = [];
+      for (const current of frontier) {
+        if (targets.has(tileKey(current))) {
+          const path: TileCoordinate[] = [];
+          for (let point: TileCoordinate | null = current; point !== null; point = parents.get(tileKey(point)) ?? null) path.unshift(point);
+          const fresh = path.filter(tile => getTile(state, tile)?.hasRoad !== true).length;
+          if (fresh > 0 && (best === null || fresh < best.fresh || (fresh === best.fresh && steps < best.steps))) best = { path, fresh, steps };
+        }
+        if (steps === MARKET_ROAD_REACH) continue;
+        for (const neighbour of [{ tx: current.tx, ty: current.ty - 1 }, { tx: current.tx - 1, ty: current.ty }, { tx: current.tx + 1, ty: current.ty }, { tx: current.tx, ty: current.ty + 1 }]) {
+          if (parents.has(tileKey(neighbour)) || !canTraverseRoadBoundary(state, current, neighbour)) continue;
+          const tile = getTile(state, neighbour);
+          if (tile === null || (tile.hasRoad !== true && (!canPlaceRoad(state, neighbour) || planned(neighbour)))) continue;
+          parents.set(tileKey(neighbour), current);
+          next.push(neighbour);
+        }
+      }
+      frontier = next;
+    }
+  }
+  if (best === null) return { kind: 'none' };
+  const prefix = roadPrefixAction(state, best.path);
+  return prefix.kind === 'place_road' ? serviceSafeRoadAction(state, prefix) : { kind: 'none' };
 }
 
 /**

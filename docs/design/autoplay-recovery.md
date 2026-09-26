@@ -23,13 +23,14 @@
   - 할당 검사: 새 시장을 넣은 실제 서비스 할당(`allocateHouseServices`)을 계산한다. 지금 물·시장·교회를 받는 집이 하나라도 잃으면 그 자리는 버린다.
   - 판단 위치: 서비스 단계 바로 뒤.
   - 이유: 서비스 공간 검사(`preservesAutoplayServiceSpace`)는 도시 전체의 미래 배치 증명이 이미 불가능해지면 그 공백을 덮는 시장 자리를 모두 거절한다. seed 2(C3)는 L4 조건 중 시장만 빠진 L3 집 7채가 80,000틱 넘게 머물렀다. 기존 시장은 24 중 17을 쓰고 있었다.
-- **AR-3 복구 기록**: 봇 판단 영수증(`AdvisorDiagnosticReceipt.recovery[]`)에 `{ kind, houses, action, building, tx, ty, note }`를 남긴다. `kind`는 `granary_gap`·`market_gap`·`market_relocation`·`timber_demand`·`interior_plots`·`barn_mill`(F0-A)이다. `note`는 `no_site`(자리 없음)와 `unaffordable`(목재 부족)이다. 성장 실행의 `last-diagnostic.json`과 `scripts/autoplayStallProbe.ts`가 읽는다.
-- **AR-5 `market_relocation` 닿지 않는 집 옮기기**(결정 BT7)
-  - 감지 조건: 시장이 정책 필지의 시장 상한(필지 ÷ 24 + 1)만큼 서 있고, 짓는 시장이 없다. 그런데도 주민이 있는 집이 어느 시장의 반경에도 들지 않는다(`outside`). 성벽이 있으면 성 안 집만 센다.
-  - 조치: 도시가 정책 필지에 닿아 있으면 그 집 하나를 헌다(게임 액션 `demolish_house`). 여럿이면 id 순 첫 집이다. 필지가 모자라면 헐지 않는다(다시 자라는 도시를 두 번 깎지 않는다).
-  - 다시 짓기: 시장이 상한에 닿은 뒤 새 집은 서 있는 시장의 반경 8 안, 성벽이 있으면 성 안에만 놓는다(`keepsHouseInMarketReach`, 주택 단계). 상한 전에는 제한이 없다.
-  - 봇의 바깥 액션 종류는 `AutoplayAction | DemolishHouseAdvice`다(`autoplay.ts`가 내보내는 `AutoplayAction`). 봇 안의 배치 판단은 예전 `AutoplayAction`을 그대로 쓴다. 표시 문구는 `다음: 시장이 닿지 않는 집 옮기기`(`autoplayCopy.ko.ts`) 한 줄이다.
-  - 이유: seed 2는 목책 선포 때 벽 여유가 마지막 시장 자리를 가져가, 시장 두 곳으로 24집 중 23집까지만 닿는다(아래 조사). 한 집을 시장이 닿는 성 안 자리로 옮기면 24/24가 된다.
+- **AR-3 복구 기록**: 봇 판단 영수증(`AdvisorDiagnosticReceipt.recovery[]`)에 `{ kind, houses, action, building, tx, ty, note }`를 남긴다. `kind`는 `granary_gap`·`market_gap`·`market_relocation`·`timber_demand`·`interior_plots`·`barn_mill`(F0-A)이다. `note`는 `no_site`(자리 없음)·`unaffordable`(목재 부족)·`refused`(AR-7 거절)·`protected`(AR-5: 도달 밖이 사람 사는 L2 이상 집뿐)다. 성장 실행의 `last-diagnostic.json`과 `scripts/autoplayStallProbe.ts`가 읽는다.
+- **AR-5 `market_relocation` 닿지 않는 집을 도달 안으로**(결정 BT7, MARKET-1 뒤 MK5)
+  - 감지 조건: 시장이 MK-2 상한이고(받지 못하는 필지 12 미만), 짓는 시장이 없다. 그런데도 주민이 있는 집이 어느 시장의 길 도달(40걸음)에도 들지 않는다(`outside`). 성벽이 있으면 성 안 집만 센다.
+  - 조치 순서([MK-5](market-reach.md)): ① 서 있는 시장에서 40걸음 안에 닿게 하는 길 연장(새 칸이 가장 적은 것, 첫 곧은 토막부터) → ② 시설 상한(1 + ⌊정책 필지 ÷ 12⌋) 안이면 그 집들을 받는 새 시장(AR-2의 자리 고르기) → ③ 둘 다 안 되고 정책 필지에 닿았을 때만, 도달 밖의 빈 집 또는 L0·L1 집 하나를 헌다(게임 액션 `demolish_house`, id 순). 사람이 사는 L2 이상 집은 헐지 않는다(기록 `protected`). 필지가 모자라면 헐지 않는다(다시 자라는 도시를 두 번 깎지 않는다).
+  - 길과 시장은 성벽 안 집 자리 검사(AR-7 `keepsInteriorHouseSites`)를 거친다. 시장 자리 찾기는 자체 탐색 예산 안에서 한다.
+  - 다시 짓기: 시장이 상한에 닿은 뒤 새 집은 서 있는 시장의 길 도달 안(길이 아직 없는 자리는 반경 8 대리), 성벽이 있으면 성 안에만 놓는다(`keepsHouseInMarketReach`, 주택 단계). 상한 전에는 제한이 없다.
+  - 봇의 바깥 액션 종류는 `AutoplayAction | DemolishHouseAdvice`다(`autoplay.ts`가 내보내는 `AutoplayAction`). 봇 안의 배치 판단은 예전 `AutoplayAction`을 그대로 쓴다. 옮기기의 표시 문구는 `다음: 시장이 닿지 않는 집 옮기기`(`autoplayCopy.ko.ts`) 한 줄이고, 길·시장은 보통 길·건물 문구다.
+  - 이유: seed 2는 목책 선포 때 벽 여유가 마지막 시장 자리를 가져가, 시장 두 곳으로 24집 중 23집까지만 닿았다(아래 조사, 반경 8 시절). MARKET-1의 길 도달로 그 집은 받는다. 예전 규칙으로 자란 도시에서는 옮기기가 먼저 나와 사람이 사는 집을 헐었으므로, 사용자 판정(2026-09-27)으로 옮기기를 마지막 수단으로 돌렸다.
 - **AR-6 `timber_demand` 수요 대비 목재 시설**(결정 BT6)
   - 조건: 공사가 기다리는 목재(벽·건물 공사장의 남은 목재)가 지난 2,400틱에 만든 목재 × 10(24,000틱 분)을 넘는다.
   - 조치: 벌목장·제재소 가운데 모자란 쪽을 하나 더 짓는다. 벌목장은 0.02 통나무/틱을 베고, 제재소는 0.057 통나무/틱을 켠다.
@@ -72,7 +73,7 @@
   - 조치: 성벽의 곧은 변 하나를 밖으로 1~10걸음 끈 후보(`dragPalisadeRun`, 플레이어의 끌기와 같음) 가운데, 엔진 미리보기가 받아들이고 남은 필지 × 6의 자유 집 칸을 주는 것 중 새 걸음이 가장 적은 것.
   - 한 번 찾은 결과는 성벽·필지·길 개정·건물 수가 같으면 다시 찾지 않는다.
   - 이유: 목책은 한 번 선포하면 끝이었다. seed 3(EV8)의 132칸 성벽처럼 작게 두르면 확장이 유일한 길이다. AR-11이 선포 때 넉넉히 고르므로 가드레일 도시에서는 드물다.
-- **MARKET-1과 AR-2·AR-5**(결정 MK4): 시장 상한은 "받지 못하는 필지 12 이상이면 하나 더"(MK-2)다. AR-2 시장 공백은 그 상한 안에서만 시장을 짓는다. AR-5 옮기기는 상한에 걸렸을 때(12필지 미만이 못 받음) 길로 먼 집을 헐어 도달 안(길 40걸음)에 다시 짓는다.
+- **MARKET-1과 AR-2·AR-5**(결정 MK4·MK5): 시장 상한은 "받지 못하는 필지 12 이상이면 하나 더"(MK-2)다. AR-2 시장 공백은 그 상한 안에서만 시장을 짓는다. 상한에 걸렸을 때(12필지 미만이 못 받음) 길로 먼 집은 AR-5가 길 → 새 시장(시설 상한 안) → 옮기기(빈 집·L0·L1만) 순서로 도달 안(길 40걸음)에 넣는다.
 - **AR-4 규칙 무변경**
   - 규칙 파일은 시뮬레이션 틱(`src/engine/tick.ts`)과 액션 리듀서(`src/state/gameStore.ts`)가 직접·간접 import하는 모든 소스다(205개). `scripts/ruleClosureDiff.ts <base>`가 이들의 변경 줄 수를 센다.
   - B4는 봇 없이 24,000틱 진행한 fixture의 상태 해시가 BOT-1 이전(`46f0a54`)과 같음을 확인한다.

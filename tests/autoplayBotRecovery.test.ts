@@ -6,7 +6,9 @@ import { houseFoodRation } from "../src/content/houseFoodConfig";
 import { isBuildingConstructionSite } from "../src/economy/construction";
 import { autoplayBuildAction, decideNextAction } from "../src/engine/autoplay";
 import { backedUpBarns, barnMillAction, MILL_NEAR_BARN } from "../src/engine/autoplayBarnMill";
-import { granaryGapAction, granaryGapHouses, insideWall, marketGapHouses, strandedMarketHouses, type BotRecoveryCollector } from "../src/engine/autoplayBotRecovery";
+import { granaryGapAction, granaryGapHouses, insideWall, marketFacilityCap, marketGapHouses, marketRelocationAction, strandedMarketHouses,
+  type BotRecoveryCollector } from "../src/engine/autoplayBotRecovery";
+import type { AutoplayAction } from "../src/engine/autoplay.types";
 import { housingLotsStillNeeded, interiorHouseSites, keepsInteriorHouseSites } from "../src/engine/autoplayInteriorPlots";
 import { logOverflowKind, timberDemandExpansionKind } from "../src/engine/autoplayTimberDemand";
 import { autoplayEraAction, wallInteriorCells } from "../src/engine/autoplayEra";
@@ -222,19 +224,60 @@ test("B9 AR-11 seed 1: a hamlet already at its lots proclaims the same wall as b
   assert.equal(wallInteriorCells(proclaimed), 182, "the wall of the F0-C2 guardrail run");
 });
 
+/** MK-5: runs the advisor while its action is AR-5's (a road, market or relocation for homes out of the markets' reach). */
+function throughMarketReach(state: GameState): { readonly current: GameState; readonly steps: readonly string[] } {
+  let current = state;
+  const steps: string[] = [];
+  for (let step = 0; step < 40; step += 1) {
+    const collector: BotRecoveryCollector = {};
+    const action = runAutoplaySearch(() => decideNextAction(current, POLICY, collector));
+    if (!(collector.recovery ?? []).some(entry => entry.kind === "market_relocation" && entry.action === action.kind)) break;
+    steps.push(action.kind);
+    current = gameReducer(current, autoplayActionToGameAction(action, current)!);
+  }
+  return { current, steps };
+}
+
 test("B10 AR-10 seed 5 (F0-C1 run 2): logs fill the storehouses while the sawmill is the short side, and the bot places another sawmill first", () => {
   const state = loadAutoplayFixture(SEED5_LOG_OVERFLOW);
   assert.equal(state.tick, 276_000);
   assert.equal(logOverflowKind(state), "sawmill");
-  // MARKET-1: in this old-rule town the advisor first relocates homes out of the markets' road reach (AR-5 under MK-2);
-  // after those, the sawmill comes.
-  let current = state;
-  let action = runAutoplaySearch(() => decideNextAction(current));
-  // (Fewer than 12 lots can be stranded under MK-2 — twelve would allow a market instead.)
-  for (let step = 0; step < 12 && action.kind === "demolish_house"; step += 1) {
-    current = gameReducer(current, autoplayActionToGameAction(action, current)!);
-    action = runAutoplaySearch(() => decideNextAction(current));
-  }
+  // MARKET-1: in this old-rule town nine lived-in homes are out of the markets' road reach (AR-5 under MK-2). MK-5: the
+  // advisor lays the roads that bring them into reach — no home is demolished — and then the sawmill comes.
+  const { current, steps } = throughMarketReach(state);
+  assert.ok(steps.length > 0 && steps.every(kind => kind === "place_road"), steps.join());
+  assert.deepEqual(strandedMarketHouses(current, POLICY.maxHousingLots), []);
+  assert.deepEqual(current.houses.map(house => house.buildingId), state.houses.map(house => house.buildingId), "no home demolished");
+  const action = runAutoplaySearch(() => decideNextAction(current, POLICY));
   assert.equal(action.kind, "place_building");
   assert.equal((action as { building: string }).building, "sawmill");
+});
+
+test("B11 AR-5 (MK-5): homes out of reach get a road first, then another market within the facility cap, and are demolished last — only empty or L0–L1 ones", () => {
+  const state = loadAutoplayFixture(SEED5_LOG_OVERFLOW);
+  const stranded = strandedMarketHouses(state, POLICY.maxHousingLots);
+  assert.equal(stranded.length, 9);
+  assert.ok(stranded.every(home => state.houses.find(house => house.buildingId === home.id)!.level >= 2), "all lived in above L1");
+  // ① A road into reach first (B10 follows it through).
+  assert.equal(marketRelocationAction(state, POLICY.maxHousingLots).kind, "place_road");
+  // ② With no road allowed (AR-7), another market: the facility cap (1 + ⌊24 ÷ 12⌋ = 3) allows a third beside the two;
+  // this dense walled town has no site for it. At the cap (two for 23 lots) no market is tried.
+  const noRoad = (action: AutoplayAction) => action.kind !== "place_road";
+  const rich: GameState = { ...state, treasuryTimber: 500 };
+  assert.equal(marketFacilityCap(POLICY.maxHousingLots), 3);
+  const tried: BotRecoveryCollector = {};
+  assert.deepEqual(marketRelocationAction(rich, POLICY.maxHousingLots, tried, noRoad), { kind: "none" });
+  assert.deepEqual(tried.recovery!.map(entry => entry.note), ["no_site", "protected"]);
+  const capped: BotRecoveryCollector = {};
+  marketRelocationAction(rich, 23, capped, noRoad);
+  assert.deepEqual(capped.recovery!.map(entry => entry.note), ["protected"]);
+  // ③ Neither: the lived-in L3 homes are never demolished (above: `protected`); an L1 or L0 home out of reach is, and so
+  // is an empty one — at the lot target only.
+  const edit = (id: string, change: Partial<GameState["houses"][number]>): GameState =>
+    ({ ...state, houses: state.houses.map(house => house.buildingId === id ? { ...house, ...change } : house) });
+  const last = stranded.map(home => home.id).sort().at(-1)!;
+  for (const change of [{ level: 1 }, { level: 0 }, { residents: 0 }]) {
+    assert.deepEqual(marketRelocationAction(edit(last, change), POLICY.maxHousingLots, undefined, () => false), { kind: "demolish_house", buildingId: last });
+  }
+  assert.deepEqual(marketRelocationAction(edit(last, { level: 1 }), 25, undefined, () => false), { kind: "none" }, "below the lot target");
 });

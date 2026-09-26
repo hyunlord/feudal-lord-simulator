@@ -387,8 +387,10 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
     const fill = zoneFillAction(state);
     if (fill !== null) return fill;
   }
-  // BOT-1 (AR-5): a home no market can reach any more is demolished so its lot is rebuilt in reach.
-  const relocation = marketRelocationAction(state, policy.maxHousingLots, diagnostic);
+  // AR-5 (MK-5): a home no market reaches gets a road into reach, else another market, and only then (empty or L0–L1,
+  // at the lot target) is it demolished to be rebuilt in reach; behind a wall the road or market keeps the lots' sites (AR-7).
+  const relocation = marketRelocationAction(state, policy.maxHousingLots, diagnostic,
+    action => keepsInteriorHouseSites(state, action, policy.maxHousingLots));
   if (relocation.kind !== "none") return relocation;
   // F0-B (EV-7): the standard bot plants for a rumoured dearth; the naive variant does not.
   const margin = policy.naiveReserve === true ? NAIVE_ARABLE_MARGIN_PERMILLE : dearthArableMargin(state, ARABLE_MARGIN_PERMILLE);
