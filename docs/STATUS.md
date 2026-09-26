@@ -10,8 +10,8 @@
 - **MARKET-1 시장 도달 범위 — 관문 통과(가드레일 4/5, 알려진 정지 MK6), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/market1-reach/REPORT.md), [시장 도달 범위 명세](design/market-reach.md) MK-1~MK-5, 결정 MK1~MK6·GR1·PS9.
   - 시장은 길 40걸음 안의 집을 받는다(건물 거리 8 반경 대신, 우물·교회는 그대로). 두 번째 시장부터는 받지 못하는 필지가 12 이상일 때만 짓는다(봇·가드레일 수용 1 + ⌊필지 ÷ 12⌋, 플레이어는 제한 없음). 예측 API `marketReach`·`marketRoadDistance`·`anotherMarketAllowed`.
   - AR-5(MK-5, 사용자 판정): 길로 먼 집은 길 연장 → 새 시장(시설 상한 안) → 빈 집·L0·L1 옮기기 순서다. 사람이 사는 L2 이상은 헐지 않는다. 예전 규칙 도시에서 L3 9채(seed 5)와 L4 4채(seed 1)를 헐지 않고 길로 넣었다.
-  - 가드레일 3회차(마지막, 사용자 허락) 4/5: seed 3 식량 물류 정지(동쪽 밭 밀 907, 서쪽 방앗간·곡창 빔) → 알려진 정지, **BOT-3**. 기준선 `baseline-cbc84d0` 유지(PERSON-0 seed 4 +19.7 %는 수용, PS9). 가드레일 3회차는 앞으로 사용자 허락 뒤에만(GR1). 전체 회귀 `fd7e673` 3,100/3,100, 깨끗한 클론 RUN3_CLONE_SHORT.
-  - 렌더가 넘겨받을 것: 범위 원 대신 `marketReach`의 길 칸, "거리 d / 범위 8" → "길 d걸음 / 40"(`serviceDiagnosisModel`·`placementPrediction`·`houseDiagnosisModel`).
+  - 가드레일 3회차(마지막, 사용자 허락) 4/5: seed 3 식량 물류 정지(동쪽 밭 밀 907, 서쪽 방앗간·곡창 빔) → 알려진 정지, **BOT-3**. 기준선 `baseline-cbc84d0` 유지(PERSON-0 seed 4 +19.7 %는 수용, PS9). 가드레일 3회차는 앞으로 사용자 허락 뒤에만(GR1). 전체 회귀 `fd7e673` 3,100/3,100, 깨끗한 클론 `a1416c1` 3,101/3,101.
+  - 렌더가 넘겨받을 것: 범위 원 대신 `marketReach`의 길 칸, "거리 d / 범위 8" → "길 d걸음 / 40"(`serviceDiagnosisModel`·`placementPrediction`·`houseDiagnosisModel`). 그리고 시간에 좌우되는 시험 `tests/seasonArt.test.ts` "held chunk raster … stepped blend"(40ms 페이드를 실제 시계로 잼, DGX가 바쁠 때 깨끗한 클론 두 번 실패 — 시계 주입 권함).
 
 - **FIX-3 투기 판매액 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄 · 저장 형식 그대로, 검증 DGX): [보고서](verification/fix3-speculation-sale/REPORT.md), [1장 명세](design/flow-chapter-one.md) FC-2b, 결정 FC13.
   - 투기의 예측·실제 금고(HL-3)가 판 곡물 × 시장가다(예전 `+ 지난 계절 수입 ÷ 2`). 예측은 결정 때 곡창 재고로 두 계절 안 투기 계절마다 곡창마다 빵·밀의 1/4을 판다고 보고(재고는 판 만큼 줄임), 실제는 결정 때 금고 + 장부의 `famine_sale`이다.

@@ -293,7 +293,7 @@ const TASKS = [
  {id:"F2-A", phase:"C", track:"엔진", title:"2장 사건: 양모 공납·징집·봉화·해안 습격·석벽 vs 상업·군자금", status:"todo", gate:"2장 완주 봇", deps:["C4"]},
  {id:"FAIL-3", phase:"C", track:"엔진", title:"실패 3~4단(권리 상실·가문 교체)·장 이어하기(저장 승격)", status:"todo", gate:"", deps:["F2-A"]},
  {id:"INSTALL-3", phase:"C", track:"렌더", title:"Wave 3 에일 부분·Wave 13·Wave 17 설치, 2장 UI", status:"todo", gate:"", deps:["C4","MOVE-2","F2-A"]},
- {id:"MARKET-RULE", phase:"C", track:"엔진", title:"시장 상한·반경 → 도달 범위 기준", status:"done", gate:"시나리오 M1~M4 · seed 2·4 미도달 필지 감소 · 가드레일", deps:["G2"], note:"MARKET-1(사용자 지시로 G2 앞에 진행): 길 40걸음 도달·12필지 규칙·marketReach·AR-5 길→시장→빈 집·L0·L1(MK-5) · 가드레일 3회차 4/5, seed 3 식량 물류 알려진 정지(MK6 → BOT-3) · 클론 RUN3_CLONE_SHORT"},
+ {id:"MARKET-RULE", phase:"C", track:"엔진", title:"시장 상한·반경 → 도달 범위 기준", status:"done", gate:"시나리오 M1~M4 · seed 2·4 미도달 필지 감소 · 가드레일", deps:["G2"], note:"MARKET-1(사용자 지시로 G2 앞에 진행): 길 40걸음 도달·12필지 규칙·marketReach·AR-5 길→시장→빈 집·L0·L1(MK-5) · 가드레일 3회차 4/5, seed 3 식량 물류 알려진 정지(MK6 → BOT-3) · 클론 `a1416c1` 3,101/3,101"},
  {id:"G3", phase:"C", track:"사람", title:"관문 G3: 1→2장 이어 플레이", status:"gate", gate:"", deps:["INSTALL-3","FAIL-3"]},
  // ---- E
  {id:"C5", phase:"E", track:"엔진", title:"직물 7단계(양모→완성 직물)", status:"todo", gate:"", deps:["G3"]},
