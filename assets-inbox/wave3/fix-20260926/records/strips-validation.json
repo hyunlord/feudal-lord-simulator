@@ -1,0 +1,38 @@
+{
+  "count": 2,
+  "results": [
+    {
+      "id": "field/ridge_barley_ripe_a-v1",
+      "size": [
+        512,
+        64
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": 0,
+      "nonzeroAlphaPixels": 19851,
+      "zeroAlphaPixels": 12917,
+      "pivot": [
+        256,
+        32
+      ],
+      "sha256": "c802e3af1e798e488d0bb0c4bb8c27bc552b598a5d804514c39424bdd86cf303"
+    },
+    {
+      "id": "field/ridge_barley_ripe_b-v1",
+      "size": [
+        512,
+        64
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": 0,
+      "nonzeroAlphaPixels": 18102,
+      "zeroAlphaPixels": 14666,
+      "pivot": [
+        256,
+        32
+      ],
+      "sha256": "f5737d6614b015f6ecd7366688e03c2d2bf8df3c70d5726447bd1bb5dcd04bb8"
+    }
+  ],
+  "visual": "Inspected strips-versus-wheat.png at literal source scale0.3 and0.5: wheat has two dense rows of ochre fans; revised barley has single sparse row of long hanging bearded heads separated by brown earth. Species silhouette distinguishable; individual awn threads belowpixel at0.3 are not independently legible."
+}

@@ -1,0 +1,35 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const {createCanvas,loadImage}=require('/tmp/astra-wave4b-work-20260925/node_modules/@napi-rs/canvas');
+const root=path.resolve(__dirname,'..');
+const specs={
+ staff_topcross:'M64 101V27 M49 39H79 M56 27H72',
+ staff_figure4:'M64 101V26 L43 51H81',
+ staff_pennant:'M64 101V27 L88 40L64 51',
+ staff_rake:'M64 101V30 M45 30V44H83V30',
+ branch_diagonal:'M40 83L86 61',
+ branch_horizontal:'M41 70H88 M64 84H85',
+ branch_loop:'M64 62C34 48 34 89 64 83C92 96 95 57 64 62Z',
+ branch_v:'M40 65L64 88L88 65',
+ branch_w:'M39 63L50 87L64 70L78 87L89 63',
+ branch_diamond:'M64 57L85 74L64 92L43 74Z',
+ branch_steps:'M39 85V73H51V61H64 M64 87H86',
+ branch_double_fork:'M64 68L42 56 M64 68L86 56 M64 85L42 73 M64 85L86 73',
+ frame_shield:'M15 13H113V65C113 90 93 107 64 118C35 107 15 90 15 65Z',
+ frame_circle:'M64 10A54 54 0 1 1 63.99 10Z'
+};
+function svg(d,w){return `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path d="${d}" fill="none" stroke="white" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/></svg>`}
+function sha(b){return crypto.createHash('sha256').update(b).digest('hex')}
+async function main(){const meta=[];for(const [name,d]of Object.entries(specs)){const w=name.startsWith('frame')?4:6;const raw=await sharp(Buffer.from(svg(d,w))).ensureAlpha().raw().toBuffer();for(let i=0;i<raw.length;i+=4){raw[i]=raw[i+1]=raw[i+2]=raw[i+3]?255:0;}const file=`assets/merchant/merchant_${name}-v1.png`;await sharp(raw,{raw:{width:128,height:128,channels:4}}).png().toFile(path.join(root,file));meta.push({id:`merchant_${name}`,file,width:128,height:128,role:'merchant mark modular alpha mask',generationRecords:[{tool:'deterministic SVG rasterization (librsvg via sharp)',prompt:`Original geometric component. SVG path: ${d}. White round stroke ${w}px. 128x128. No historical mark copied.`,model:'not applicable',seed:'not applicable',referenceImages:[]}],processing:{coverage:'alpha',visibleRGB:'255,255,255',transparentRGB:'0,0,0',strokeWidth:w,svgPath:d,attachment:{staffX:64,branchCenter:[64,74],frameCenter:[64,64]},recolor:'replace RGB before compositing; alpha is coverage; max alpha union for overlaps'},qa:{candidate:true,noHistoricalReference:true,noText:true},pivot:{x:64,y:101}});}
+fs.writeFileSync(path.join(root,'records/metadata-merchants.json'),JSON.stringify(meta,null,2));
+let seed=140926;function rand(){seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296}let candidates=[];for(let s=0;s<4;s++)for(let b=0;b<8;b++)candidates.push([s,b]);for(let i=candidates.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[candidates[i],candidates[j]]=[candidates[j],candidates[i]];}let selected=candidates.slice(0,16);const names=Object.keys(specs),combos=[],buffers=[];for(let k=0;k<16;k++){const [s,b]=selected[k],f=k%2;const layerNames=[names[s],names[4+b],names[12+f]],raw=Buffer.alloc(128*128*4);for(const n of layerNames){const a=await sharp(path.join(root,`assets/merchant/merchant_${n}-v1.png`)).raw().toBuffer();for(let p=0;p<raw.length;p+=4){raw[p+3]=Math.max(raw[p+3],a[p+3]);raw[p]=raw[p+1]=raw[p+2]=0;}}const png=await sharp(raw,{raw:{width:128,height:128,channels:4}}).png().toBuffer();buffers.push(png);combos.push({index:k+1,staff:names[s],branch:names[4+b],frame:names[12+f],sha256:sha(png)});}
+const c=createCanvas(1280,1160),g=c.getContext('2d');g.fillStyle='#eee5d1';g.fillRect(0,0,c.width,c.height);g.fillStyle='#30281f';g.font='bold 27px sans-serif';g.fillText('MERCHANT MARKS / 16 SEEDED COMBINATIONS',34,44);g.font='16px sans-serif';g.fillText('128 px + 48 px | alpha-union masks | original geometric components',34,76);for(let i=0;i<16;i++){const x=34+(i%8)*156,y=108+Math.floor(i/8)*225;g.fillStyle='#d9cbb0';g.fillRect(x,y,144,174);const im=await loadImage(buffers[i]);g.drawImage(im,x+8,y+2,128,128);g.drawImage(im,x+48,y+127,48,48);g.fillStyle='#564631';g.font='14px sans-serif';g.fillText(String(i+1).padStart(2,'0'),x+4,y+195)}
+g.fillStyle='#30281f';g.font='bold 23px sans-serif';g.fillText('PROJECT ART / TWO STAMP PLACEMENT EXAMPLES',34,603);
+const sack=await loadImage(path.join(root,'references/merchant-stamp-examples/grain_sacks.png'));const house=await loadImage(path.join(root,'references/merchant-stamp-examples/house_l0-v3.png'));
+// Crop existing project paintings; stamp only, no newly painted object geometry.
+g.fillStyle='#c6b596';g.fillRect(34,628,594,420);g.fillRect(650,628,594,420);g.drawImage(sack,275,245,565,510,34,628,594,420);g.drawImage(house,414,704,247,371,650,628,594,420);
+g.save();g.globalAlpha=.77;g.translate(312,824);g.rotate(-.055);g.scale(1,.82);g.drawImage(await loadImage(buffers[2]),-49,-49,98,98);g.restore();g.save();g.globalAlpha=.85;g.translate(942,882);g.transform(1,.22,0,1,0,0);g.drawImage(await loadImage(buffers[10]),-48,-48,96,96);g.restore();g.fillStyle='#30281f';g.font='17px sans-serif';g.fillText('03 / ink on sack, existing project painting crop',34,1080);g.fillText('11 / dark mark on door, existing project painting crop',650,1080);g.font='15px sans-serif';g.fillText('Candidate-only offline composite. Labels are proof annotations, never embedded in delivered masks.',34,1122);
+fs.writeFileSync(path.join(root,'proofs/02-merchant-marks.png'),c.toBuffer('image/png'));const hashes=combos.map(x=>x.sha256);let minDiff=1e9,minPair=null;for(let a=0;a<16;a++)for(let b=a+1;b<16;b++){const aa=await sharp(buffers[a]).resize(48,48).raw().toBuffer(),bb=await sharp(buffers[b]).resize(48,48).raw().toBuffer();let diff=0;for(let p=3;p<aa.length;p+=4)if(Math.abs(aa[p]-bb[p])>32)diff++;if(diff<minDiff){minDiff=diff;minPair=[a+1,b+1]}}
+fs.writeFileSync(path.join(root,'records/merchant-combinations.json'),JSON.stringify({seed:140926,method:'Fisher-Yates unique staff/branch pairs; alternating frames',combinations:combos,unique: new Set(hashes).size,minimum48pxAlphaDifferenceAbove32:minDiff,closestPair:minPair,haloPolicy:'Mask RGB discarded before tinting; alpha max union. No RGB white can leak.',stampReferences:['output/stockpile-v1/assets/grain_sacks.png','output/housing-historical-v2/house_l0-v3.png']},null,2));
+const q=createCanvas(1280,600),h=q.getContext('2d');h.fillStyle='#eee5d1';h.fillRect(0,0,1280,600);h.fillStyle='#30281f';h.font='24px sans-serif';h.fillText('256 px edge audit / tint alpha first / light and dark surfaces',25,36);for(let i=0;i<4;i++){for(let r=0;r<2;r++){const x=12+i*318,y=54+r*270;h.fillStyle=r?'#191b1a':'#fcf7e8';h.fillRect(x,y,306,264);let raw=await sharp(buffers[i]).resize(256,256).raw().toBuffer();for(let p=0;p<raw.length;p+=4){raw[p]=r?198:58;raw[p+1]=r?143:32;raw[p+2]=r?51:20;}const b=await sharp(raw,{raw:{width:256,height:256,channels:4}}).png().toBuffer();h.drawImage(await loadImage(b),x+25,y+4)}}fs.writeFileSync(path.join(root,'records/merchant-256-edge-audit.png'),q.toBuffer('image/png'));console.log(JSON.stringify({assets:meta.length,unique:new Set(hashes).size,minDiff,minPair}));}
+main().catch(e=>{console.error(e);process.exit(1)});

@@ -1,0 +1,262 @@
+{
+  "method": "Direct comparison of final PNG RGBA bytes under saved protected masks; mask anatomical validity separately inspected visually.",
+  "pairs": 32,
+  "results": [
+    {
+      "id": "ox",
+      "direction": "NE",
+      "mask": "records/large-animals-ox-0-protected-mask.png",
+      "protectedPixels": 6185,
+      "protectedDifferences": 0,
+      "changedLegPixels": 687
+    },
+    {
+      "id": "ox",
+      "direction": "SE",
+      "mask": "records/large-animals-ox-1-protected-mask.png",
+      "protectedPixels": 6405,
+      "protectedDifferences": 0,
+      "changedLegPixels": 575
+    },
+    {
+      "id": "ox",
+      "direction": "SW",
+      "mask": "records/large-animals-ox-2-protected-mask.png",
+      "protectedPixels": 6451,
+      "protectedDifferences": 0,
+      "changedLegPixels": 492
+    },
+    {
+      "id": "ox",
+      "direction": "NW",
+      "mask": "records/large-animals-ox-3-protected-mask.png",
+      "protectedPixels": 6285,
+      "protectedDifferences": 0,
+      "changedLegPixels": 578
+    },
+    {
+      "id": "horse_draught",
+      "direction": "NE",
+      "mask": "records/large-animals-horse_draught-0-protected-mask.png",
+      "protectedPixels": 6858,
+      "protectedDifferences": 0,
+      "changedLegPixels": 656
+    },
+    {
+      "id": "horse_draught",
+      "direction": "SE",
+      "mask": "records/large-animals-horse_draught-1-protected-mask.png",
+      "protectedPixels": 6500,
+      "protectedDifferences": 0,
+      "changedLegPixels": 913
+    },
+    {
+      "id": "horse_draught",
+      "direction": "SW",
+      "mask": "records/large-animals-horse_draught-2-protected-mask.png",
+      "protectedPixels": 6551,
+      "protectedDifferences": 0,
+      "changedLegPixels": 967
+    },
+    {
+      "id": "horse_draught",
+      "direction": "NW",
+      "mask": "records/large-animals-horse_draught-3-protected-mask.png",
+      "protectedPixels": 6973,
+      "protectedDifferences": 0,
+      "changedLegPixels": 563
+    },
+    {
+      "id": "horse_riding",
+      "direction": "NE",
+      "mask": "records/large-animals-horse_riding-0-protected-mask.png",
+      "protectedPixels": 6905,
+      "protectedDifferences": 0,
+      "changedLegPixels": 501
+    },
+    {
+      "id": "horse_riding",
+      "direction": "SE",
+      "mask": "records/large-animals-horse_riding-1-protected-mask.png",
+      "protectedPixels": 6613,
+      "protectedDifferences": 0,
+      "changedLegPixels": 686
+    },
+    {
+      "id": "horse_riding",
+      "direction": "SW",
+      "mask": "records/large-animals-horse_riding-2-protected-mask.png",
+      "protectedPixels": 6729,
+      "protectedDifferences": 0,
+      "changedLegPixels": 503
+    },
+    {
+      "id": "horse_riding",
+      "direction": "NW",
+      "mask": "records/large-animals-horse_riding-3-protected-mask.png",
+      "protectedPixels": 6987,
+      "protectedDifferences": 0,
+      "changedLegPixels": 419
+    },
+    {
+      "id": "cow_single",
+      "direction": "NE",
+      "mask": "records/large-animals-cow_single-0-protected-mask.png",
+      "protectedPixels": 4827,
+      "protectedDifferences": 0,
+      "changedLegPixels": 282
+    },
+    {
+      "id": "cow_single",
+      "direction": "SE",
+      "mask": "records/large-animals-cow_single-1-protected-mask.png",
+      "protectedPixels": 4705,
+      "protectedDifferences": 0,
+      "changedLegPixels": 372
+    },
+    {
+      "id": "cow_single",
+      "direction": "SW",
+      "mask": "records/large-animals-cow_single-2-protected-mask.png",
+      "protectedPixels": 4751,
+      "protectedDifferences": 0,
+      "changedLegPixels": 319
+    },
+    {
+      "id": "cow_single",
+      "direction": "NW",
+      "mask": "records/large-animals-cow_single-3-protected-mask.png",
+      "protectedPixels": 4810,
+      "protectedDifferences": 0,
+      "changedLegPixels": 285
+    },
+    {
+      "id": "sheep_single",
+      "direction": "NE",
+      "mask": "records/small-animals-sheep-protected-0.png",
+      "protectedPixels": 1760,
+      "protectedDifferences": 0,
+      "changedLegPixels": 129
+    },
+    {
+      "id": "sheep_single",
+      "direction": "SE",
+      "mask": "records/small-animals-sheep-protected-1.png",
+      "protectedPixels": 1752,
+      "protectedDifferences": 0,
+      "changedLegPixels": 130
+    },
+    {
+      "id": "sheep_single",
+      "direction": "SW",
+      "mask": "records/small-animals-sheep-protected-2.png",
+      "protectedPixels": 1745,
+      "protectedDifferences": 0,
+      "changedLegPixels": 148
+    },
+    {
+      "id": "sheep_single",
+      "direction": "NW",
+      "mask": "records/small-animals-sheep-protected-3.png",
+      "protectedPixels": 1727,
+      "protectedDifferences": 0,
+      "changedLegPixels": 154
+    },
+    {
+      "id": "pig_single",
+      "direction": "NE",
+      "mask": "records/small-animals-pig-protected-0.png",
+      "protectedPixels": 1754,
+      "protectedDifferences": 0,
+      "changedLegPixels": 136
+    },
+    {
+      "id": "pig_single",
+      "direction": "SE",
+      "mask": "records/small-animals-pig-protected-1.png",
+      "protectedPixels": 1748,
+      "protectedDifferences": 0,
+      "changedLegPixels": 130
+    },
+    {
+      "id": "pig_single",
+      "direction": "SW",
+      "mask": "records/small-animals-pig-protected-2.png",
+      "protectedPixels": 1740,
+      "protectedDifferences": 0,
+      "changedLegPixels": 140
+    },
+    {
+      "id": "pig_single",
+      "direction": "NW",
+      "mask": "records/small-animals-pig-protected-3.png",
+      "protectedPixels": 1771,
+      "protectedDifferences": 0,
+      "changedLegPixels": 127
+    },
+    {
+      "id": "goose_single",
+      "direction": "NE",
+      "mask": "records/small-animals-goose-protected-0.png",
+      "protectedPixels": 969,
+      "protectedDifferences": 0,
+      "changedLegPixels": 31
+    },
+    {
+      "id": "goose_single",
+      "direction": "SE",
+      "mask": "records/small-animals-goose-protected-1.png",
+      "protectedPixels": 958,
+      "protectedDifferences": 0,
+      "changedLegPixels": 43
+    },
+    {
+      "id": "goose_single",
+      "direction": "SW",
+      "mask": "records/small-animals-goose-protected-2.png",
+      "protectedPixels": 952,
+      "protectedDifferences": 0,
+      "changedLegPixels": 46
+    },
+    {
+      "id": "goose_single",
+      "direction": "NW",
+      "mask": "records/small-animals-goose-protected-3.png",
+      "protectedPixels": 969,
+      "protectedDifferences": 0,
+      "changedLegPixels": 32
+    },
+    {
+      "id": "dog_herding",
+      "direction": "NE",
+      "mask": "records/small-animals-dog-protected-0.png",
+      "protectedPixels": 1211,
+      "protectedDifferences": 0,
+      "changedLegPixels": 47
+    },
+    {
+      "id": "dog_herding",
+      "direction": "SE",
+      "mask": "records/small-animals-dog-protected-1.png",
+      "protectedPixels": 1200,
+      "protectedDifferences": 0,
+      "changedLegPixels": 60
+    },
+    {
+      "id": "dog_herding",
+      "direction": "SW",
+      "mask": "records/small-animals-dog-protected-2.png",
+      "protectedPixels": 1199,
+      "protectedDifferences": 0,
+      "changedLegPixels": 58
+    },
+    {
+      "id": "dog_herding",
+      "direction": "NW",
+      "mask": "records/small-animals-dog-protected-3.png",
+      "protectedPixels": 1220,
+      "protectedDifferences": 0,
+      "changedLegPixels": 43
+    }
+  ]
+}

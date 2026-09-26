@@ -1,0 +1,322 @@
+{
+  "candidate_png": 60,
+  "base_png": 29,
+  "overlay_png": 28,
+  "icon_sheets": 3,
+  "icon_cells": 29,
+  "proof_png": 4,
+  "overlay_checks": [
+    {
+      "id": "inn_a",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 528,
+      "transparent_pixels": 98032
+    },
+    {
+      "id": "inn_b",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 784,
+      "transparent_pixels": 97776
+    },
+    {
+      "id": "communal_oven",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 1003,
+      "transparent_pixels": 22037
+    },
+    {
+      "id": "smithy_a",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 54,
+      "transparent_pixels": 18715
+    },
+    {
+      "id": "smithy_b",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 82,
+      "transparent_pixels": 18687
+    },
+    {
+      "id": "cordwainer",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 459,
+      "transparent_pixels": 18310
+    },
+    {
+      "id": "tailor",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 537,
+      "transparent_pixels": 18232
+    },
+    {
+      "id": "tannery_a",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 982,
+      "transparent_pixels": 64682
+    },
+    {
+      "id": "tannery_b",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 1098,
+      "transparent_pixels": 64566
+    },
+    {
+      "id": "lime_kiln",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 720,
+      "transparent_pixels": 75312
+    },
+    {
+      "id": "charcoal_clamp",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 708,
+      "transparent_pixels": 22332
+    },
+    {
+      "id": "pottery_kiln",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 878,
+      "transparent_pixels": 71698
+    },
+    {
+      "id": "butcher_shambles",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 249,
+      "transparent_pixels": 39175
+    },
+    {
+      "id": "market_cross_wood",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 317,
+      "transparent_pixels": 22723
+    },
+    {
+      "id": "market_cross_stone",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 318,
+      "transparent_pixels": 25026
+    },
+    {
+      "id": "almshouse",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 219,
+      "transparent_pixels": 57381
+    },
+    {
+      "id": "hospital",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 43,
+      "transparent_pixels": 95701
+    },
+    {
+      "id": "chantry_chapel",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 40,
+      "transparent_pixels": 28120
+    },
+    {
+      "id": "manor_house_a",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 710,
+      "transparent_pixels": 135738
+    },
+    {
+      "id": "manor_house_b",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 807,
+      "transparent_pixels": 135641
+    },
+    {
+      "id": "guildhall",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 375,
+      "transparent_pixels": 105225
+    },
+    {
+      "id": "tolbooth",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 334,
+      "transparent_pixels": 83762
+    },
+    {
+      "id": "tithe_barn",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 675,
+      "transparent_pixels": 109149
+    },
+    {
+      "id": "bridge_chapel",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 33,
+      "transparent_pixels": 30687
+    },
+    {
+      "id": "conduit_house",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 129,
+      "transparent_pixels": 28031
+    },
+    {
+      "id": "priory_cell",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 88,
+      "transparent_pixels": 168872
+    },
+    {
+      "id": "pilgrim_shrine",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 97,
+      "transparent_pixels": 22943
+    },
+    {
+      "id": "quay",
+      "canvas_match": true,
+      "pivot_match": true,
+      "placement": [
+        0,
+        0
+      ],
+      "visible_pixels": 587,
+      "transparent_pixels": 32181
+    }
+  ],
+  "ditch_edge_difference_channels": 0,
+  "game_installed": false,
+  "runtime_tested": false,
+  "pivot_contract": "New candidate ground-contact coordinates; source numerical pivots absent. Base and active are identity placement with shared pivot."
+}

@@ -1,0 +1,764 @@
+[
+  {
+    "stage": "generated_records",
+    "id": "almshouse",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET almshouse: ALMSHOUSE: long LOW SINGLE STOREY range of four tiny rooms with four simple oak doors and small shuttered windows, warm limewash over rubble stone; tiny chapel room at one end with slightly raised gable and one narrow pointed opening. Continuous modest flat peg tile roof. Three by one tiles, restrained charitable shelter. NO chimney anywhere.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-20c4dbef-b140-4115-ba03-25a6c82a218a.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "bridge_chapel",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET bridge_chapel: Small narrow stone BRIDGE END CHAPEL intended at SE end of supplied bridge DECK (top-left panel of reference sheet, not whole sheet). One modest single storey rubble chapel, terracotta flat peg tile gable, narrow gothic window, simple doorway at northwest-facing end toward bridge. Small stone landing beneath door at same height as bridge roadway, short side parapet terminating cleanly at landing. NO bridge span included, no water or background, no chimney. Make compact modular stone road end rather than freestanding grassy church.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/bridge_stone_nw_se-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-7c64dfda-5ecb-4b87-bd11-53d018241c85.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "butcher_shambles",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET butcher_shambles: Medieval BUTCHER SHAMBLES long open timber market stall, two by one tiles, low plain flat-peg-tile shelter roof on oak posts, wooden chopping table. Two SMALL subdued brown-red dressed cuts of meat hang under beam, restrained, no gore or blood, no heads. No domestic house/chimney, no modern awning or text.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-e4f1824e-9142-49e1-a145-2cf96e65a68e.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "chantry_chapel",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET chantry_chapel: Tiny CHANTRY CHAPEL church annex: one short single-storey grey-brown rubble stone chapel, low flat peg tile gable, narrow pointed side window and simple west doorway, small end cross. One tile, deliberately smaller than supplied parish church. NO tower or chimney.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-0424934d-227c-4e4d-82c8-a562f047df8a.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "charcoal_clamp",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET charcoal_clamp: CHARCOAL CLAMP at forest edge: low round dome/mound of earth and turf covering stacked wood, a few visible cut logs at a small foot opening. Small vent holes in mound top. NO chimney pipe or stone kiln or building or roof. Single compact low mound, very muted earth colours, no surrounding terrain slab. Idle with NO smoke.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-25d58250-b26d-4c91-8a49-ff6e94798d46.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "communal_oven",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET communal_oven: Independent communal BREAD OVEN: squat rubble-stone domed bread chamber with small arched oven mouth and a simple thatched shelter roof over working side, small working oven vent. No house, no windmill. Cold idle oven. Compact single tile.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-74f03f38-5dc1-4565-bb82-ac69400e6a93.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "conduit_house",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET conduit_house: CONDUIT HOUSE: a medieval stone public WATER BASIN, square waist-high grey-brown stone water trough beneath a small steep flat peg tile roof on four stone posts, stone head spout inside, low front basin lip visibly reveals water surface. Not a well, no bucket/winch. Calm water in idle base, no flowing stream yet. Compact public water structure. NO chimney.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-01edb787-5d6f-447e-bbe8-7b24a1526bd2.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "cordwainer",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET cordwainer: One ordinary L2 two-storey street shoemaker house matching supplied house EXACT wealth and human proportions. Front ground floor counter has TWO CLEAR PAIRS OF BROWN LEATHER SHOES as functional identifying detail. Above counter, large single dark oak closed shop shutter ready to hinge open. Upper limeplaster dwelling, weathered oak, flat pegtiles. NO chimney. Strong simple shoe silhouettes.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-d9a67891-0744-4baf-963c-25c296ad3979.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "ditch_drain",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET ditch_drain: Roadside open drainage DITCH DECAL, horizontal repeatable shallow irregular earth trench, muted moist grey-brown soil lip and subtle narrow muddy channel. Entire horizontal ditch reaches and crosses left and right image edges with matching profile for seamless repetition. Transparent outer ground edges, no grass platform, no buildings, no people, no isolated oval. A 2:1 horizontal strip, compact and low.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-ab594341-efd2-4f66-817d-91d7bc69ee13.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "guildhall",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET guildhall: GUILDHALL with unmistakable OPEN STONE ARCADE along entire GROUND FLOOR for market trade, at least THREE sturdy pointed arches, sheltered through passage. ABOVE this is one broad TIMBER FRAMED upper MEETING ROOM with closed oak shutter windows, flat peg tiled roof. Three by two tiles, civic hall not manor or church, no tower, NO chimney. Strong arcaded open ground floor.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-de40fd8d-1d9a-4823-9229-0787ed8859aa.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "hospital",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET hospital: MEDIEVAL HOSPITAL as charitable HOSPICE, not a modern clinic: one-storey long stone infirmary shelter hall with a narrower chapel chancel at its eastern end, modest low attached timber porch, plain pointed windows, flat peg tile roof. Three by two tiles, simple ecclesiastical silhouette. NO red crosses, no medical signs, NO chimney.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-6e05ea1f-b4d4-45f7-88fd-09956b115462.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "cordwainer",
+    "prompt": "Create ONE 96px game UI icon design, isolated transparent background, matching supplied building sprite's warm muted handpainted outlined style. Readable at 24px. A small cream plaster/oak shoemaker workshop in background upper left, with ONE LARGE BROWN LEATHER MEDIEVAL SHOE clearly dominating front lower-right, large boot/shoe silhouette with rounded toe, no modern laces or branding. No text, frame, badge, ground or chimney. Flat peg tile roof.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/cordwainer-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-77269372-02c0-4ab2-873a-694f7f0cfdcd.png",
+    "tool": "image_gen"
+  },
+  {
+    "stage": "generated_records",
+    "id": "tailor",
+    "prompt": "Create ONE 96px game UI icon design, isolated transparent background, matching supplied building sprite's warm muted handpainted outlined style. Readable at 24px. A small cream plaster/oak tailor workshop in background upper left, with TWO LARGE FOLDED CLOTH LENGTHS draped across foreground, muted red and olive broad cloth silhouettes dominating bottom half. No text, frame, badge, ground or chimney. Flat peg tile roof.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/tailor-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-e99108d2-6189-4e3e-b152-2d545560375d.png",
+    "tool": "image_gen"
+  },
+  {
+    "stage": "generated_records",
+    "id": "inn_a",
+    "prompt": "Edit this exact inn sprite. Preserve its courtyard, stable wing, pictorial sign, proportions and camera. Replace EVERY rounded barrel tile on all roofs with THIN FLAT RECTANGULAR PEG TILES like traditional English clay shingles, flat faces with straight edges, no tube shapes. REMOVE every pixel of surrounding colored aura/shadow gradient and all courtyard floor coloration: these areas must be truly transparent, not painted grey, brown or black. Keep only structural buildings, courtyard walls and gate. Completely isolated clean RGBA sprite without any background or platform. Interior empty courtyard ground is transparent. No chimneys. No other changes.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-1dc92896-3452-4db2-9762-33d0cf2ec471.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-dc4ccca6-c1d0-4cd8-b737-41bcb81bee36.png",
+    "tool": "image_gen",
+    "revision": 2,
+    "previous": {
+      "id": "inn_a",
+      "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite. ASSET inn_a: large but ordinary medieval inn, footprint 3 by 2 tiles. Two-storey main hall on back/left of a compact U-shaped OPEN COURTYARD, one-storey stable wing on right, visible broad courtyard gate at front, small pictorial wooden sign showing a simple horse silhouette WITHOUT text. Stable stalls under open lean-to. Terracotta tiled main hall, modest thatch stable. Clear internal courtyard negative space, NOT a bush or tavern hut. No garden or ground platform. Large central double doorway, simple shuttered upper windows. No chimney anywhere.",
+      "references": [
+        "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+        "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+      ],
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-1dc92896-3452-4db2-9762-33d0cf2ec471.png",
+      "tool": "image_gen"
+    }
+  },
+  {
+    "stage": "generated_records",
+    "id": "inn_b",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET inn_b: Same wealth and materials as inn_a. Change roof pitch, courtyard gate position and small rear lean-to; keep open courtyard, one-storey stable wing and pictorial horse sign. Two-storey hall, NO chimney.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-53273a2c-d6b8-471a-91cb-6297b02affaa.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "lime_kiln",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET lime_kiln: LIME KILN: large squat circular grey-brown rubble-stone draw kiln set freestanding, battered thick stone walls, broad open top shaft, small arched firing draw hole low at front, modest integral STONE FURNACE FLUE at rear. Functional industrial kiln, not tower/house/castle. Cold idle state, no smoke. Two tile square, no landscape platform.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-5b3bbb35-f9d0-4cd3-84fb-4be622cf9dc8.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "manor_house_a",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET manor_house_a: MANOR HOUSE: modest but authoritative ONE STOREY STONE GREAT HALL with tall hall roof, attached TWO STOREY OAK AND PLASTER WING at right, irregular flat peg tiles, low rubble stone boundary walls and clear courtyard gateway at front. Three by three tiles. Clear empty petitioners space just inside gate, NO people in base. No castle turrets, NO chimneys or flues on either hall or wing.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-be72c5b4-89d9-4d7b-b039-8cde0c310e1f.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "manor_house_b",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET manor_house_b: MANOR HOUSE alternative B, same wealth: ONE STOREY long rubble-stone hall, attached two-storey timber framed warm plaster residential wing on left, modest courtyard enclosed by low stone wall and plain timber gate, flat peg tile roofs. Vary hall roof pitch and doorway/windows from A, not richness. Open area for petitioners by gate, no people. NO chimney anywhere.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-2ddcaf05-8db2-4729-aaef-c6693306075d.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "market_cross_stone",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET market_cross_stone: STONE MARKET CROSS: plain shaft and simple cross finial carved from grey-brown stone, modest octagonal three-step stone base. Clearly a medieval market-place landmark, not a gravestone, no elaborate gothic tracery or roof. Tall slender silhouette, no terrain beyond steps.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-1ebfc608-8033-4f9c-8b9a-fee0e350136d.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "market_cross_wood",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET market_cross_wood: WOODEN MARKET CROSS: tall plain weathered oak Christian cross rising from small sturdy stepped timber base, four low market-edge posts, very simple undecorated street landmark. Full cross readable silhouette. NO roof or chimney, no background, no ground slab.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-404a3e13-9e84-47dd-b14f-4a6478e3df69.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "pilgrim_shrine",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET pilgrim_shrine: PILGRIM SHRINE: tiny roadside devotional structure, simple waist-high grey-brown stone plinth supporting small oak niche with low steep flat peg-tile shelter, a small plain cross carved within niche. Distinct from market cross/chapel. One-person-scale wayside shrine, no tall tower, no people, NO chimney, no terrain platform.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-3e0ef50d-03b9-4c6c-9182-850dd1052937.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "pottery_kiln",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET pottery_kiln: POTTERY KILN workshop: small round dome firing kiln of rough earthy clay and stone, short narrow furnace flue, front firing arch; adjacent low simple thatched open shelter, a bench with a few terracotta pots as functional signature. Ordinary medieval industrial workshop, not modern brickworks. Two tile square. No smoke or glow in base.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-5a8ab59f-8b04-43c8-9f03-db078dadd852.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "priory_cell",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET priory_cell: PRIORY CELL: modest small religious satellite house, FOUR BY THREE tiles, one small stone chapel attached to LOW single-storey CLOISTER WALK enclosing a small EMPTY rectangular courtyard. Flat clay peg tiled low roofs, pointed open cloister arches. Small scale monastery not cathedral or fortress, no massive tower, NO chimney. Transparent courtyard floor, no lawn/platform.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-7453a8c0-5800-4ead-9728-9f9a508f08f0.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "quay",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET quay: RIVERSIDE QUAY MODULE, wide 2:1 rectangle, grey-brown rubble-stone revetment with sturdy flat cobbled loading top in strict 2:1 isometric view, three thick oak mooring posts on water edge, one barrel and two tied sacks. Open on two repeatable ends. No boats, buildings, chimney, terrain platform, or water baked in. Water side is transparent; compact engineering module exactly twice as wide as high.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-2ca694d3-4c08-4f94-953a-fff894a3e353.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "smithy_a",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite. ASSET smithy_a: one tile ordinary two-storey STREET WORKSHOP matching reference L2 house scale and wealth. Simple tiled gabled roof over oak/plaster upper dwelling. OPEN GROUND FLOOR WORK BAY on southwest front, sturdy oak posts, one visible anvil, ironworking stone FORGE at right-back of bay, tool rack. This is the sole intentional industrial flue: short stone flue connected visibly to the forge furnace rising just past right roof eave. No domestic chimney or decorative chimney pot. Cold dark furnace, no glow/sparks/smoke. Compact rectangle, no yard/platform.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-35cdbc29-5662-49d8-8f1f-bbfa0c8605a6.png",
+    "tool": "image_gen"
+  },
+  {
+    "stage": "generated_records",
+    "id": "smithy_b",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET smithy_b: Compact ordinary L2 two-storey street SMITHY, front ground floor OPEN supported on plain oak posts, visible anvil and cold dark stone forge at left-front. Short STONE INDUSTRIAL FLUE connects to that forge, main upper dwelling has no domestic chimney. Change door and window placement and slightly shallower pitched roof from smithy_a, same wealth/materials. Flat peg tiles. No yard.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-60047318-26b3-4204-ae81-a41ea30c42a5.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "tailor",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET tailor: One ordinary L2 two-storey street TAILOR house matching supplied house wealth/scale. Front ground floor counter has two broad folded lengths of muted dull red and dull olive CLOTH with hanging draped fabric. Above counter a large plain oak CLOSED shop shutter ready to hinge open. Simple upper limeplaster dwelling, flat pegtiles. NO chimney.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-16913c95-099b-4ff7-b23e-839fa5ba7c6d.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "tannery_a",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET tannery_a: Small town-edge TANNERY yard intended beside a stream. Three recessed round timber vats and pits, sturdy drying rack holding TWO irregular animal HIDES (tan/brown, no blood), low thatched open work shed at back, narrow wooden water trough outlet at right. No river or landscape baked in, no ground platform; only small ground patches immediately around pit rims. Two tile square workspace. NO chimney.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-cc67a920-ae9f-4b56-a390-71e24deda358.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "tannery_b",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET tannery_b: Small waterside town-edge TANNERY with two round sunken timber vats, one rectangular lime pit, open thatched lean-to and drying rack with TWO large irregular stretched animal hides. Slightly different rack/pit arrangement than tannery_a, same wealth and size, no river/background, NO chimney. Water trough points toward right. No blood.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-bba51d37-cbaf-4eb3-8b6f-afbc12a66778.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "tithe_barn",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET tithe_barn: TITHE BARN: VERY LONG SINGLE STOREY major agricultural barn, four by two tiles. Thick grey-brown rubble stone walls with THREE clearly projecting sturdy BUTTRESSES along long side, oak roof trusses under broad low pitched terracotta flat peg tile roof, HUGE central pair of barn doors and modest small gabled loading porch. No windows like a house, NO chimney or tower.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-5cf48f55-2203-4bb2-b271-0efc6b00daf6.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "generated_records",
+    "id": "tolbooth",
+    "prompt": "Create ONE isolated production game BUILDING sprite, true transparent RGBA, no background, no ground tile or terrain slab, no text, no border. Match these supplied project sprites' precise clean hand-painted prerendered 2D style: dark brown narrow outlines, warm muted terracotta FLAT small peg tiles, cream lime plaster, weathered oak, grey-brown rubble stone, soft upper-left light and only tiny contact AO. Southern England AD1348. Strict SW-view orthographic 2:1 isometric, parallel ground edges at +/-26.565 degrees; verticals vertical. Keep ordinary doors at same human scale as reference house. No perspective or photorealism. Entire asset visible with transparent margins. No domestic chimney, chimney pot or flue: domestic rooms use an internal open hearth. No glass or blue windows: dark unglazed openings with solid oak shutters. No people, no smoke, no glow in this idle base. No modern brick, slate, rounded/barrel/S-shaped tiles, fantasy ornaments, banners or lettering. Functional restrained vernacular building, NOT Tudor revival decoration. Use enough large simple functional details to remain legible as a small game sprite.  Roof tiles must be THIN FLAT rectangular shingles, absolutely NOT curved tubes. Transparent background includes all courtyards/negative space: NO painted haze, glow, brown aura, gradient shadow or halo. \nASSET tolbooth: TOLBOOTH tax court: OPEN STONE ARCADE on GROUND FLOOR (two or three generous arches for market trade), upper timber/plaster MEETING ROOM, SMALL modest square bell tower or open bellcote at one roof end with visible bronze bell. Two by two tiles. Flat clay peg tiles, restrained civic authority, no palace, NO chimney.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/church-v2.png",
+      "/tmp/astra-wave12-work-20260926/astra-wave12-reference-files/storehouse.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-4770c280-9d3d-46d4-80f5-554572269e7a.png",
+    "tool": "image_gen",
+    "revision": 1
+  },
+  {
+    "stage": "overlay_records",
+    "id": "almshouse",
+    "prompt": "Create transparent RGBA isolated overlay ingredients for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One small woven bread basket and a squat unglazed clay bowl together, charity food provision, SW 2:1, restrained ochre and brown. No building or people.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/almshouse-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-3e8ea25e-7ac5-42d1-96c8-e9c303ffca62.png",
+    "parts": [
+      "One small woven bread basket and a squat unglazed clay bowl together, charity food provision, SW 2:1, restrained ochre and brown. No building or people."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "bridge_chapel",
+    "prompt": "Create transparent RGBA isolated overlay ingredient for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One tiny iron sconce holding a short burning wax candle, subtle warm amber light, no glass or architecture.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/bridge_chapel-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-c610f40c-7b71-411f-b4ee-e3c475282b5d.png",
+    "parts": [
+      "One tiny iron sconce holding a short burning wax candle, subtle warm amber light, no glass or architecture."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "butcher_shambles",
+    "prompt": "Create ONE isolated transparent RGBA game sprite: two small restrained brown-red dressed meat cuts hanging on short iron hooks, a medieval butcher stall active overlay ingredient. Southern England AD1348. Clean hand-painted prerendered game style, muted natural colours, narrow brown outlines, SW orthographic 2:1 view, upper-left light. No blood, gore, heads, people, stall, building or background. Only the two small hanging cuts, true transparent surrounding pixels.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/butcher_shambles-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-a667fd3a-2a85-42cd-acea-b4209bb0051a.png",
+    "parts": [
+      "Two hanging meat cuts"
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "chantry_chapel",
+    "prompt": "Create transparent RGBA isolated overlay ingredients for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One plain small iron wall bracket holding a burning wax candle, subtle warm amber light, no glass lantern, no building or wall.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/chantry_chapel-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-fc078a25-d2f1-4611-9bb9-b8a311d46193.png",
+    "parts": [
+      "One plain small iron wall bracket holding a burning wax candle, subtle warm amber light, no glass lantern, no building or wall."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "charcoal_clamp",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. EFFECT: One low delicate grey charcoal smoke plume, several fine wisps merging upward, fine at bottom. Low-intensity and slightly smoky blue-grey, not thick white cloud. No mound or structure.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/charcoal_clamp-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-3368cd16-e46d-4502-bc4a-df1361f56f95.png",
+    "parts": [
+      "One low delicate grey charcoal smoke plume, several fine wisps merging upward, fine at bottom. Low-intensity and slightly smoky blue-grey, not thick white cloud. No mound or structure."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "communal_oven",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. LAYOUT: two clearly SEPARATE isolated effect components on one WIDE transparent canvas, LEFT HALF contains only One narrow vertical plume of soft muted pale-grey oven SMOKE, very thin at bottom emitting point, broader softly curling top, transparent wispy edges. No chimney. RIGHT HALF contains only A small low pile of glowing orange bread-oven EMBERS with two tiny yellow-orange flames, no stove or stone. Leave a wide transparent gutter at image midpoint. Both parts entirely inside their half. These are ingredients for ONE registered building operating overlay.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/communal_oven-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-3de222fa-5c6f-4a53-9794-6656155c4fa8.png",
+    "parts": [
+      "One narrow vertical plume of soft muted pale-grey oven SMOKE, very thin at bottom emitting point, broader softly curling top, transparent wispy edges. No chimney.",
+      "A small low pile of glowing orange bread-oven EMBERS with two tiny yellow-orange flames, no stove or stone."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "conduit_house",
+    "prompt": "Create transparent RGBA isolated overlay ingredient for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One clear small WATER STREAM flowing in a short downward arc from an invisible stone spout into an invisible basin: muted pale grey-green translucent water, a few tiny bright highlights and small contact ripples at its bottom. No basin, no tap or structure, not vivid blue.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/conduit_house-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-e0f74522-dacd-4153-8366-ed89e57b0a64.png",
+    "parts": [
+      "One clear small WATER STREAM flowing in a short downward arc from an invisible stone spout into an invisible basin: muted pale grey-green translucent water, a few tiny bright highlights and small contact ripples at its bottom. No basin, no tap or structure, not vivid blue."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "cordwainer",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. EFFECT: A SINGLE CLOSED paired solid wooden shop SHUTTER, dark weathered oak planks with one clear diagonal brace per half, tightly shut. Front left facade SW 2:1 isometric: horizontal top/bottom edges descend toward right, vertical side edges vertical. No opening, no glass, no handles needed, no shoes/cloth/building/wall/background. Isolated shutter panel only, clean rectangular-parallelogram outline.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/cordwainer-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-c9f5031d-6a01-4a22-b50f-c5a33e0a3be4.png",
+    "parts": [
+      "A SINGLE CLOSED paired solid wooden shop SHUTTER, dark weathered oak planks with one clear diagonal brace per half, tightly shut. Front left facade SW 2:1 isometric: horizontal top/bottom edges descend toward right, vertical side edges vertical. No opening, no glass, no handles needed, no shoes/cloth/building/wall/background. Isolated shutter panel only, clean rectangular-parallelogram outline."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "guildhall",
+    "prompt": "Create transparent RGBA isolated overlay ingredients for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One modest oak market transaction table, with a plain open parchment ledger and two rolled parchments, seen SW 2:1. No text/letters, no money symbol, no architecture.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/guildhall-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-2f338e10-1c25-4d57-b807-4296d1bc4860.png",
+    "parts": [
+      "One modest oak market transaction table, with a plain open parchment ledger and two rolled parchments, seen SW 2:1. No text/letters, no money symbol, no architecture."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "hospital",
+    "prompt": "Create transparent RGBA isolated overlay ingredients for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One plain small iron wall bracket holding a burning wax candle, subtle warm amber light, no glass lantern, no hospital or wall.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/hospital-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-66c12134-9299-41db-99dd-36dd0fcb4cf6.png",
+    "parts": [
+      "One plain small iron wall bracket holding a burning wax candle, subtle warm amber light, no glass lantern, no hospital or wall."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "inn_a",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. LAYOUT: two clearly SEPARATE isolated effect components on one WIDE transparent canvas, LEFT HALF contains only A chestnut stable HORSE HEAD AND NECK peering forward, neck bottom cutoff to hide behind a stall door. SW isometric, calm restrained anatomy. RIGHT HALF contains only A small warm amber RECTANGULAR window-light patch, plain translucent glow with slight hand-painted soft variation, no window frame, no border. Leave a wide transparent gutter at image midpoint. Both parts entirely inside their half. These are ingredients for ONE registered building operating overlay.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/inn_a-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-bd18c5b9-c215-429e-a53f-935c84836bc6.png",
+    "parts": [
+      "A chestnut stable HORSE HEAD AND NECK peering forward, neck bottom cutoff to hide behind a stall door. SW isometric, calm restrained anatomy.",
+      "A small warm amber RECTANGULAR window-light patch, plain translucent glow with slight hand-painted soft variation, no window frame, no border."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "inn_b",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. LAYOUT: two clearly SEPARATE isolated effect components on one WIDE transparent canvas, LEFT HALF contains only A dark brown stable HORSE HEAD AND NECK peering forward, neck bottom cutoff to hide behind a stall door. SW isometric, calm restrained anatomy. RIGHT HALF contains only A small warm amber RECTANGULAR window-light patch, plain translucent glow with slight hand-painted soft variation, no window frame, no border. Leave a wide transparent gutter at image midpoint. Both parts entirely inside their half. These are ingredients for ONE registered building operating overlay.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/inn_b-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-3e0fa163-733d-4a39-b750-f011a86fbeff.png",
+    "parts": [
+      "A dark brown stable HORSE HEAD AND NECK peering forward, neck bottom cutoff to hide behind a stall door. SW isometric, calm restrained anatomy.",
+      "A small warm amber RECTANGULAR window-light patch, plain translucent glow with slight hand-painted soft variation, no window frame, no border."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "lime_kiln",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. EFFECT: One upright narrow plume of warm PALE GREY industrial kiln smoke, fine at bottom emitting point, gently curling thicker at top. Restrained transparent wispy edges. No chimney or structure.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/lime_kiln-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-344d5d8e-0591-4791-8b4d-4c4b1e15653e.png",
+    "parts": [
+      "One upright narrow plume of warm PALE GREY industrial kiln smoke, fine at bottom emitting point, gently curling thicker at top. Restrained transparent wispy edges. No chimney or structure."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "manor_house_a",
+    "prompt": "Create transparent RGBA isolated overlay ingredients for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. Wide canvas two separate components: LEFT HALF A small warm amber RECTANGULAR window-light patch, plain translucent glow with slight hand-painted soft variation, no frame. RIGHT HALF A plain LOW OAK WAITING BENCH outside a medieval petitioners gateway, SW 2:1, without people, simple two legs and backless seat. Leave clear transparent central gutter.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/manor_house_a-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-36305150-0285-46c1-9f09-68820f0dc494.png",
+    "parts": [
+      "A small warm amber RECTANGULAR window-light patch, plain translucent glow with slight hand-painted soft variation, no frame.",
+      "A plain LOW OAK WAITING BENCH outside a medieval petitioners gateway, SW 2:1, without people, simple two legs and backless seat."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "manor_house_b",
+    "prompt": "Create transparent RGBA isolated overlay ingredients for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. Wide canvas two separate components: LEFT HALF A small warm amber RECTANGULAR window-light patch, plain translucent glow with slight hand-painted soft variation, no frame. RIGHT HALF A plain LOW OAK WAITING BENCH outside a medieval petitioners gateway, SW 2:1, without people, simple two legs and backless seat. Leave clear transparent central gutter.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/manor_house_b-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-66a3ab52-3361-4e35-81ce-0a2bfd8413ae.png",
+    "parts": [
+      "A small warm amber RECTANGULAR window-light patch, plain translucent glow with slight hand-painted soft variation, no frame.",
+      "A plain LOW OAK WAITING BENCH outside a medieval petitioners gateway, SW 2:1, without people, simple two legs and backless seat."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "market_cross_stone",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. EFFECT: One small woven wicker market basket with two muted russet cloth rolls, SW 2:1 ground plane. No cross/base/people.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/market_cross_stone-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-9435ffc3-6c7e-4fe2-bfa0-067af7a70acc.png",
+    "parts": [
+      "One small woven wicker market basket with two muted russet cloth rolls, SW 2:1 ground plane. No cross/base/people."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "market_cross_wood",
+    "prompt": "Create transparent RGBA isolated overlay ingredients for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One small woven wicker market basket containing three muted ochre loaves, a folded muted olive cloth beside it. SW 2:1 ground plane. No cross/base/people.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/market_cross_wood-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-988181e1-2446-4bf1-9301-cfbd0c095f17.png",
+    "parts": [
+      "One small woven wicker market basket containing three muted ochre loaves, a folded muted olive cloth beside it. SW 2:1 ground plane. No cross/base/people."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "pilgrim_shrine",
+    "prompt": "Create transparent RGBA isolated overlay ingredient for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. Three short uneven votive wax CANDLES with tiny warm amber flames, close clustered, no big glow or stand, no building.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/pilgrim_shrine-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-d0a0957e-0cee-42aa-a28c-d10c8751c524.png",
+    "parts": [
+      "Three short uneven votive wax CANDLES with tiny warm amber flames, close clustered, no big glow or stand, no building."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "pottery_kiln",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. EFFECT: One vertical narrow plume of soft warm GREY pottery kiln smoke with two wispy curls, fine at bottom emitting point. Semi-transparent edges, no chimney or structure.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/pottery_kiln-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-4c55077c-2cb6-4141-a0f7-d2074b50f20b.png",
+    "parts": [
+      "One vertical narrow plume of soft warm GREY pottery kiln smoke with two wispy curls, fine at bottom emitting point. Semi-transparent edges, no chimney or structure."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "priory_cell",
+    "prompt": "Create transparent RGBA isolated overlay ingredient for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One simple short wax candle in a small iron wall bracket, restrained warm amber glow, no wall or architecture.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/priory_cell-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-e625d6bc-b9f1-4217-8774-c7fc43667f6e.png",
+    "parts": [
+      "One simple short wax candle in a small iron wall bracket, restrained warm amber glow, no wall or architecture."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "quay",
+    "prompt": "ONE isolated medieval game prop: a heavy natural hemp MOORING ROPE coil next to one short tied sack, SW orthographic 2:1 ground view, warm brown weathered rope, upper-left light, clean hand-painted outlined project style. No dock, water, buildings, background, text or aura. True transparent RGBA. Active overlay ingredient for the attached quay.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/quay-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-963e4ac5-f7f2-4243-be81-2e6abcec68aa.png",
+    "parts": [
+      "Rope coil and sack"
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "smithy_a",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. EFFECT: One compact low bed of glowing amber forge COALS with tiny orange flame tongues and two upward sparks, no stone or equipment, no smoke.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/smithy_a-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-2c283559-f29e-464f-bbbc-c528f2b541b3.png",
+    "parts": [
+      "One compact low bed of glowing amber forge COALS with tiny orange flame tongues and two upward sparks, no stone or equipment, no smoke."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "smithy_b",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. EFFECT: One compact low bed of glowing amber forge COALS with tiny orange flame tongues and two upward sparks, no stone or equipment, no smoke.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/smithy_b-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-8af4ce75-9007-4eed-8653-50b2f8d382f9.png",
+    "parts": [
+      "One compact low bed of glowing amber forge COALS with tiny orange flame tongues and two upward sparks, no stone or equipment, no smoke."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "tailor",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. EFFECT: A SINGLE CLOSED paired solid wooden shop SHUTTER, dark weathered oak planks with one clear diagonal brace per half, tightly shut. Front left facade SW 2:1 isometric: horizontal top/bottom edges descend toward right, vertical side edges vertical. No opening, no glass, no handles needed, no shoes/cloth/building/wall/background. Isolated shutter panel only, clean rectangular-parallelogram outline.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/tailor-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-701e49cb-0571-4370-aba1-9f2bda2a64d8.png",
+    "parts": [
+      "A SINGLE CLOSED paired solid wooden shop SHUTTER, dark weathered oak planks with one clear diagonal brace per half, tightly shut. Front left facade SW 2:1 isometric: horizontal top/bottom edges descend toward right, vertical side edges vertical. No opening, no glass, no handles needed, no shoes/cloth/building/wall/background. Isolated shutter panel only, clean rectangular-parallelogram outline."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "tannery_a",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. LAYOUT: two clearly SEPARATE isolated components on one WIDE transparent canvas. LEFT HALF: A single irregular tawny animal HIDE hanging vertically from two tiny rope loops, seen SW isometric, no blood, no rack. RIGHT HALF: One restrained pale grey-white STEAM wisp, fine at bottom wider near top, semi-transparent soft edges. No container or background. Wide transparent gutter at midpoint, each part stays entirely in its half. Ingredients for one registered building active overlay.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/tannery_a-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-8dc69411-ee48-448d-9332-bf2375112b70.png",
+    "parts": [
+      "A single irregular tawny animal HIDE hanging vertically from two tiny rope loops, seen SW isometric, no blood, no rack.",
+      "One restrained pale grey-white STEAM wisp, fine at bottom wider near top, semi-transparent soft edges. No container or background."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "tannery_b",
+    "prompt": "Create ONE transparent RGBA active-overlay source for the supplied historical game building. Do NOT redraw ANY building or any ground. Output ONLY requested isolated effect/prop, as a clean hand-painted small game sprite matching the attached source's colours, thin dark brown outlines, upper-left lighting, SW orthographic 2:1 ground projection. Southern England AD1348, natural subdued colours, no text, no frame, no symbols. Entire remaining canvas must be true transparency, no background, painted checkerboard, shadows, aura or vignette. Do not enlarge ordinary props into monuments. LAYOUT: two clearly SEPARATE isolated components on one WIDE transparent canvas. LEFT HALF: A single irregular dark tan animal HIDE hanging vertically from two tiny rope loops, seen SW isometric, no blood, no rack. RIGHT HALF: One restrained pale grey-white STEAM wisp, fine at bottom wider near top, semi-transparent soft edges. No container or background. Wide transparent gutter at midpoint, each part stays entirely in its half. Ingredients for one registered building active overlay.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/tannery_b-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-a011725b-556c-4449-8efc-d9736878d805.png",
+    "parts": [
+      "A single irregular dark tan animal HIDE hanging vertically from two tiny rope loops, seen SW isometric, no blood, no rack.",
+      "One restrained pale grey-white STEAM wisp, fine at bottom wider near top, semi-transparent soft edges. No container or background."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "tithe_barn",
+    "prompt": "Create transparent RGBA isolated overlay ingredient for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. Two tied grain SACKS on a low wooden handcart with TWO wooden wheels, small farm cargo, SW 2:1, no barn/people.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/tithe_barn-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-7a3e841a-2e55-4852-ab33-a6d2a1c82e50.png",
+    "parts": [
+      "Two tied grain SACKS on a low wooden handcart with TWO wooden wheels, small farm cargo, SW 2:1, no barn/people."
+    ],
+    "tool": "image_gen"
+  },
+  {
+    "stage": "overlay_records",
+    "id": "tolbooth",
+    "prompt": "Create transparent RGBA isolated overlay ingredient for medieval English game sprite. Match attached project style, muted handpainted prerender, upper-left light, SW orthographic2:1. NO buildings or ground, no text/background/aura. One narrow oak toll-court transaction table with an open parchment account book and a rolled document. SW 2:1, no text or symbols, no architecture.",
+    "references": [
+      "/tmp/astra-wave12-work-20260926/delivery/assets/bld/tolbooth-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-400d77bc-9fa6-4a09-95c6-ce95ecdbb89d.png",
+    "parts": [
+      "One narrow oak toll-court transaction table with an open parchment account book and a rolled document. SW 2:1, no text or symbols, no architecture."
+    ],
+    "tool": "image_gen"
+  }
+]

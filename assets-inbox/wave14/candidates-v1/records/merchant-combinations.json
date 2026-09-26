@@ -1,0 +1,129 @@
+{
+  "seed": 140926,
+  "method": "Fisher-Yates unique staff/branch pairs; alternating frames",
+  "combinations": [
+    {
+      "index": 1,
+      "staff": "staff_rake",
+      "branch": "branch_diamond",
+      "frame": "frame_shield",
+      "sha256": "48e6af923535e8afb42c36aff5019f138e05d01ee59b927296ca191a02aa0be7"
+    },
+    {
+      "index": 2,
+      "staff": "staff_topcross",
+      "branch": "branch_diamond",
+      "frame": "frame_circle",
+      "sha256": "6da67d5c0e205defb8fdaa5874e2936d41d2f6b739418dfb1eec15f6ddface16"
+    },
+    {
+      "index": 3,
+      "staff": "staff_pennant",
+      "branch": "branch_w",
+      "frame": "frame_shield",
+      "sha256": "b88e8d94c93102a86521fa85dbfc743b59da90732ccdd5a3e7dd9d79f48573a7"
+    },
+    {
+      "index": 4,
+      "staff": "staff_pennant",
+      "branch": "branch_diamond",
+      "frame": "frame_circle",
+      "sha256": "aeb409f89121256c1afd35c824a2b93a99e19eee0179c083418bb1ba8bd3b648"
+    },
+    {
+      "index": 5,
+      "staff": "staff_topcross",
+      "branch": "branch_loop",
+      "frame": "frame_shield",
+      "sha256": "0b71bfd032b5c80c5742abbdd4559b49f7d87d6c111097058c4c29a92aa8cc0e"
+    },
+    {
+      "index": 6,
+      "staff": "staff_topcross",
+      "branch": "branch_w",
+      "frame": "frame_circle",
+      "sha256": "756ace246d8c975ffc13ea8da464f4c20385fe7434eaea31cd657e75447069f1"
+    },
+    {
+      "index": 7,
+      "staff": "staff_pennant",
+      "branch": "branch_loop",
+      "frame": "frame_shield",
+      "sha256": "44bf620a5f1d8dcd3cce978566dec0b9c90ceae336db3d97bfe5434b28bedef9"
+    },
+    {
+      "index": 8,
+      "staff": "staff_rake",
+      "branch": "branch_horizontal",
+      "frame": "frame_circle",
+      "sha256": "781fcc51504a42a580de4195f3f3820af9d4cd1ff56bced7b175709119c0980e"
+    },
+    {
+      "index": 9,
+      "staff": "staff_rake",
+      "branch": "branch_steps",
+      "frame": "frame_shield",
+      "sha256": "048bf5c9e38a96e5325109e8ad7af194f7e28749e7ee38f950f13f77a6595662"
+    },
+    {
+      "index": 10,
+      "staff": "staff_rake",
+      "branch": "branch_loop",
+      "frame": "frame_circle",
+      "sha256": "3fdd2ddcc91c2d1eaf53a4fffb94d7287357b77e7c2a11fb8c6c29bccb90016f"
+    },
+    {
+      "index": 11,
+      "staff": "staff_figure4",
+      "branch": "branch_diagonal",
+      "frame": "frame_shield",
+      "sha256": "9b17ee45af60c0a0f49852eb2646d698e9d410465ddaa6b32a84fbfa8b0d7f77"
+    },
+    {
+      "index": 12,
+      "staff": "staff_pennant",
+      "branch": "branch_double_fork",
+      "frame": "frame_circle",
+      "sha256": "eea964c2821f39b1e30ea68e8f4c8ce9a29d224ffe696db6ae7a06b6481d404d"
+    },
+    {
+      "index": 13,
+      "staff": "staff_pennant",
+      "branch": "branch_v",
+      "frame": "frame_shield",
+      "sha256": "6eba89da98b4321e2996d2d67b7b64f7375a3b03818e9ffe63cd63e8e41e63a3"
+    },
+    {
+      "index": 14,
+      "staff": "staff_figure4",
+      "branch": "branch_horizontal",
+      "frame": "frame_circle",
+      "sha256": "718260972d4edf0b5753ebd35eb622681398f08e6b433fe46f1a09a3025b218f"
+    },
+    {
+      "index": 15,
+      "staff": "staff_rake",
+      "branch": "branch_w",
+      "frame": "frame_shield",
+      "sha256": "22e7f11e7cb091143741fdd5118fc619503632c920e7dde86cbae0db9ab9c85a"
+    },
+    {
+      "index": 16,
+      "staff": "staff_topcross",
+      "branch": "branch_horizontal",
+      "frame": "frame_circle",
+      "sha256": "2a92f8b586e9dfe6e7d0a0b983ca9328a6f2ba6d628c17a6ca6621a329c0e2bf"
+    }
+  ],
+  "unique": 16,
+  "minimum48pxAlphaDifferenceAbove32": 90,
+  "closestPair": [
+    2,
+    4
+  ],
+  "haloPolicy": "Mask RGB discarded before tinting; alpha max union. No RGB white can leak.",
+  "stampReferences": [
+    "output/stockpile-v1/assets/grain_sacks.png",
+    "output/housing-historical-v2/house_l0-v3.png"
+  ]
+}

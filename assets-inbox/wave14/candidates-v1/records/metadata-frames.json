@@ -1,0 +1,302 @@
+[
+  {
+    "id": "frame_charter",
+    "file": "assets/ui-frames/frame_charter-v1.png",
+    "width": 512,
+    "height": 640,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: ui-mockup. Single production raster UI panel, front-on orthographic flat 2D. Match attached project panels: muted warm oatmeal parchment, dark weathered oak ink, restrained red ochre accent, hand-painted medieval English 1300–1450 game UI, 80% function 20% period decoration. No text, letters, numerals, glyph text, people, icon drawings, watermark, bevel gloss, drop shadow or perspective. Interior large clean low-contrast blank area. Actual transparent outside edges; panel fills canvas with at most 2% outer transparent margin. Restrained small corners and straight rectangular edges suitable for 9-slice. Portrait 4:5 charter document parchment panel. Double fine dark brown ruled perimeter, irregular very subtly worn paper edge. Bottom centered two narrow crimson cords ending below page in empty hanging seal attachment space, NO seal body. All top and bottom corner motifs stay within 20px at final512width. Main paper center quiet. Bottom cords entirely in bottom 90px band.",
+        "rawFile": "raw/ui-frames/frame_charter-raw.png",
+        "referenceImages": [
+          "references/frame_modal.png",
+          "references/frame_petition.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": [
+        512,
+        640
+      ],
+      "fit": "fill",
+      "alpha": "preserved",
+      "opaqueInterior": {
+        "rect": [
+          14,
+          14,
+          498,
+          566
+        ],
+        "changedPixels": 267168,
+        "reason": "Generated near-opaque paper leaked underlying HUD text; set only paper interior alpha255; RGB unchanged; preserve outer alpha."
+      }
+    },
+    "pivot": {
+      "x": 0,
+      "y": 0
+    },
+    "nineSlice": {
+      "insetsTopRightBottomLeft": [
+        26,
+        26,
+        100,
+        26
+      ],
+      "minimumSize": [
+        512,
+        640
+      ],
+      "note": "Use declared insets, do not shrink below native."
+    },
+    "qa": {
+      "text": "none; visually inspected",
+      "tone": "project parchment/oak match",
+      "nineSlice": "1.2 width,1.1 height rendered; fixed edge/corner anatomy retained",
+      "limitation": "Centered bottom cords stretch horizontally with bottom patch; use native aspect ratio when precise cord width is required."
+    }
+  },
+  {
+    "id": "frame_rights_register",
+    "file": "assets/ui-frames/frame_rights_register-v1.png",
+    "width": 512,
+    "height": 512,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: ui-mockup. Single production raster UI panel, front-on orthographic flat 2D. Match attached project panels: muted warm oatmeal parchment, dark weathered oak ink, restrained red ochre accent, hand-painted medieval English 1300–1450 game UI, 80% function 20% period decoration. No text, letters, numerals, glyph text, people, icon drawings, watermark, bevel gloss, drop shadow or perspective. Interior large clean low-contrast blank area. Actual transparent outside edges; panel fills canvas with at most 2% outer transparent margin. Restrained small corners and straight rectangular edges suitable for 9-slice. Square open rights register, two blank parchment facing pages and a narrow brown central vertical binding crease. Straight rectangular outer silhouette, thin weathered oak/leather bound edge, no elaborate corners. Center crease runs vertically from top to bottom, exactly central. No ruled text lines.",
+        "rawFile": "raw/ui-frames/frame_rights_register-raw.png",
+        "referenceImages": [
+          "references/frame_modal.png",
+          "references/frame_petition.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": [
+        512,
+        512
+      ],
+      "fit": "fill",
+      "alpha": "preserved",
+      "opaqueInterior": {
+        "rect": [
+          16,
+          22,
+          496,
+          489
+        ],
+        "changedPixels": 224160,
+        "reason": "Generated near-opaque paper leaked underlying HUD text; set only paper interior alpha255; RGB unchanged; preserve outer alpha."
+      }
+    },
+    "pivot": {
+      "x": 0,
+      "y": 0
+    },
+    "nineSlice": {
+      "insetsTopRightBottomLeft": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "minimumSize": [
+        512,
+        512
+      ],
+      "note": "Center crease scales horizontally with center patch; for arbitrary width render two facing pages separately. Candidate tested at native and 1.25x."
+    },
+    "qa": {
+      "text": "none; visually inspected",
+      "tone": "project parchment/oak match",
+      "nineSlice": "1.2 width,1.1 height rendered; fixed edge/corner anatomy retained",
+      "limitation": "Center crease stretches with center patch, width expands at same ratio. Not distortion-free under arbitrary aspect ratios."
+    }
+  },
+  {
+    "id": "frame_grievance_ledger",
+    "file": "assets/ui-frames/frame_grievance_ledger-v1.png",
+    "width": 384,
+    "height": 512,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: ui-mockup. Single production raster UI panel, front-on orthographic flat 2D. Match attached project panels: muted warm oatmeal parchment, dark weathered oak ink, restrained red ochre accent, hand-painted medieval English 1300–1450 game UI, 80% function 20% period decoration. No text, letters, numerals, glyph text, people, icon drawings, watermark, bevel gloss, drop shadow or perspective. Interior large clean low-contrast blank area. Actual transparent outside edges; panel fills canvas with at most 2% outer transparent margin. Restrained small corners and straight rectangular edges suitable for 9-slice. Portrait 3:4 grievance ledger panel: dark weathered brown leather cover perimeter thicker than ordinary parchment frames, muted wine-red cord laced only along left edge and a red horizontal band along bottom edge. Large empty light warm parchment writing inset, no text or icons.",
+        "rawFile": "raw/ui-frames/frame_grievance_ledger-raw.png",
+        "referenceImages": [
+          "references/frame_modal.png",
+          "references/frame_petition.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": [
+        384,
+        512
+      ],
+      "fit": "fill",
+      "alpha": "preserved",
+      "opaqueInterior": {
+        "rect": [
+          29,
+          30,
+          352,
+          464
+        ],
+        "changedPixels": 140182,
+        "reason": "Generated near-opaque paper leaked underlying HUD text; set only paper interior alpha255; RGB unchanged; preserve outer alpha."
+      }
+    },
+    "pivot": {
+      "x": 0,
+      "y": 0
+    },
+    "nineSlice": {
+      "insetsTopRightBottomLeft": [
+        32,
+        32,
+        56,
+        32
+      ],
+      "minimumSize": [
+        384,
+        512
+      ],
+      "note": "Use declared insets, do not shrink below native."
+    },
+    "qa": {
+      "text": "none; visually inspected",
+      "tone": "project parchment/oak match",
+      "nineSlice": "1.2 width,1.1 height rendered; fixed edge/corner anatomy retained",
+      "limitation": "No native clipping seen"
+    }
+  },
+  {
+    "id": "frame_person_card",
+    "file": "assets/ui-frames/frame_person_card-v1.png",
+    "width": 320,
+    "height": 200,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: ui-mockup. Single production raster UI panel, front-on orthographic flat 2D. Match attached project panels: muted warm oatmeal parchment, dark weathered oak ink, restrained red ochre accent, hand-painted medieval English 1300–1450 game UI, 80% function 20% period decoration. No text, letters, numerals, glyph text, people, icon drawings, watermark, bevel gloss, drop shadow or perspective. Interior large clean low-contrast blank area. Actual transparent outside edges; panel fills canvas with at most 2% outer transparent margin. Restrained small corners and straight rectangular edges suitable for 9-slice. Landscape 8:5 person card parchment panel. Fixed empty circular portrait recess left, center(60,94),radius39 in final320x200. Empty small heater shield-shaped emblem slot upper right centered(279,45), width40 height48. Thin double brown perimeter and small oak corner fastening. Blank space center-right for future text. Both circular portrait frame and top-right emblem slot unoccupied, no silhouettes.",
+        "rawFile": "raw/ui-frames/frame_person_card-raw.png",
+        "referenceImages": [
+          "references/frame_modal.png",
+          "references/frame_petition.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": [
+        320,
+        200
+      ],
+      "fit": "fill",
+      "alpha": "preserved",
+      "opaqueInterior": {
+        "rect": [
+          15,
+          23,
+          304,
+          179
+        ],
+        "changedPixels": 45084,
+        "reason": "Generated near-opaque paper leaked underlying HUD text; set only paper interior alpha255; RGB unchanged; preserve outer alpha."
+      }
+    },
+    "pivot": {
+      "x": 0,
+      "y": 0
+    },
+    "nineSlice": {
+      "insetsTopRightBottomLeft": [
+        136,
+        64,
+        20,
+        112
+      ],
+      "minimumSize": [
+        320,
+        200
+      ],
+      "note": "Left fixed strip retains portrait; top-right fixed corner retains emblem. Do not shrink below native."
+    },
+    "qa": {
+      "text": "none; visually inspected",
+      "tone": "project parchment/oak match",
+      "nineSlice": "1.2 width,1.1 height rendered; fixed edge/corner anatomy retained",
+      "limitation": "No native clipping seen"
+    }
+  },
+  {
+    "id": "frame_faction_panel",
+    "file": "assets/ui-frames/frame_faction_panel-v1.png",
+    "width": 384,
+    "height": 256,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: ui-mockup. Single production raster UI panel, front-on orthographic flat 2D. Match attached project panels: muted warm oatmeal parchment, dark weathered oak ink, restrained red ochre accent, hand-painted medieval English 1300–1450 game UI, 80% function 20% period decoration. No text, letters, numerals, glyph text, people, icon drawings, watermark, bevel gloss, drop shadow or perspective. Interior large clean low-contrast blank area. Actual transparent outside edges; panel fills canvas with at most 2% outer transparent margin. Restrained small corners and straight rectangular edges suitable for 9-slice. Landscape 3:2 faction panel. Thin dark oak perimeter enclosing blank oatmeal parchment with restrained dark red-brown secondary inner rule. Very small squared oak corner fittings. No crest, no portrait recess, no medallion, no motifs in center. Subtle upper heading separator horizontal line at y52 in final256height.",
+        "rawFile": "raw/ui-frames/frame_faction_panel-raw.png",
+        "referenceImages": [
+          "references/frame_modal.png",
+          "references/frame_petition.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": [
+        384,
+        256
+      ],
+      "fit": "fill",
+      "alpha": "preserved",
+      "opaqueInterior": {
+        "rect": [
+          12,
+          12,
+          372,
+          244
+        ],
+        "changedPixels": 83520,
+        "reason": "Generated near-opaque paper leaked underlying HUD text; set only paper interior alpha255; RGB unchanged; preserve outer alpha."
+      }
+    },
+    "pivot": {
+      "x": 0,
+      "y": 0
+    },
+    "nineSlice": {
+      "insetsTopRightBottomLeft": [
+        60,
+        20,
+        20,
+        20
+      ],
+      "minimumSize": [
+        384,
+        256
+      ],
+      "note": "Use declared insets, do not shrink below native."
+    },
+    "qa": {
+      "text": "none; visually inspected",
+      "tone": "project parchment/oak match",
+      "nineSlice": "1.2 width,1.1 height rendered; fixed edge/corner anatomy retained",
+      "limitation": "No native clipping seen"
+    }
+  }
+]

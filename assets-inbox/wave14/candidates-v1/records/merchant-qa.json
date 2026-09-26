@@ -1,0 +1,20 @@
+{
+  "files": 14,
+  "invalidMaskPixels": 0,
+  "antialiasPixels": 3033,
+  "unique48pxCombinations": 16,
+  "minimumPairwiseAlphaDifferencePixels90": true,
+  "visualReview": {
+    "score": 94,
+    "verdict": "pass",
+    "category_match": true,
+    "differences": "Each of 16 combinations remains distinguishable at 48px by top or branch geometry; closest pair 02/04 differs cross vs pennant.",
+    "suggestions": "Runtime may introduce ink grain inside alpha for printed material; candidate masks intentionally remain deterministic.",
+    "reasoning": "Inspected proof at native resolution and 256px light/dark edge audit. No pale fringe or disconnected staff joints visible."
+  },
+  "limitations": [
+    "Geometric masks are deterministic SVG assets, not AI-generated illustrations.",
+    "48px differentiation is self-assessed, not a user recognition study.",
+    "No exhaustive historic-symbol collision search; no historic marks were referenced or intentionally copied."
+  ]
+}

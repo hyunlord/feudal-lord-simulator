@@ -1,0 +1,10 @@
+{
+  "tool": "builtin image_gen",
+  "prompt": "Use case: identity-preserve. EDIT the provided medieval walker sprite sheet, do not invent or regenerate poses. A female goose keeper. Muted grey blue wool kirtle with warm oatmeal apron. Keep original white linen headcover, dress silhouette and original hands. No stick, goose or props. Preserve exact original 4 columns x 2 rows, direction order NE SE SW NW and alternating walk frames. Every head hand leg boot, body proportion, spacing, camera angle, shadow, silhouette and pixel position unchanged. Change ONLY clothing surface colours/materials on the torso (and skirt for woman), keep all headwear geometry. South England 1300-1450 wool and linen, muted hand-painted isometric project style. No people added, no accessories in hands, no text, no grid, no background; transparent RGBA. Full original composition including all eight figures, same framing.",
+  "rawFile": "raw/workers/goosegirl_f-raw.png",
+  "referenceImages": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave13-candidates-v1/sources/workers/template-woman-original.png"
+  ],
+  "model": "not supplied by tool",
+  "seed": "not supplied by tool"
+}

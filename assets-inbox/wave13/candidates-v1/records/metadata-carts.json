@@ -1,0 +1,1239 @@
+[
+  {
+    "id": "cart/ox_cart_body-v1",
+    "file": "assets/cart/ox_cart_body-v1.png",
+    "cell": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      92
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create a transparent RGBA sprite reference sheet showing ONLY the empty two-wheel ox-cart BODY from attached project reference, REMOVE ox and all cargo. Medieval southern England 1300-1450 muted handpainted brown oak matching reference. Four separate equal square cells across ONE horizontal row on transparent background, generous spacing. Directions LEFT TO RIGHT: NE shafts point upper-right, SE shafts point lower-right, SW shafts point lower-left, NW shafts point upper-left. True 2:1 isometric orthographic camera fixed upper-left light. Empty flat rectangular oak bed with low plank sides, TWO large wooden spoke wheels (one each side) and paired straight shafts with visible front yoke hitch. No animal, no person, no cargo, no text, no scenery, no shadow outside cart. Preserve ox-cart construction and sturdy silhouette from reference, do not mirror output or invent extra wheels. Four actual direction views of SAME cart. Large clear forms for 128x96 cell downsample.",
+        "rawFile": "raw/carts/ox-cart.png",
+        "referenceImages": [
+          "references/cart_ox-v3.png"
+        ]
+      }
+    ],
+    "processing": {
+      "directions": [
+        {
+          "direction": "ne",
+          "crop": [
+            53,
+            159,
+            440,
+            398
+          ],
+          "scale": 0.22055137844611528,
+          "placement": [
+            16,
+            4
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "se",
+          "crop": [
+            555,
+            178,
+            438,
+            362
+          ],
+          "scale": 0.22055137844611528,
+          "placement": [
+            16,
+            12
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "sw",
+          "crop": [
+            1063,
+            176,
+            439,
+            364
+          ],
+          "scale": 0.22055137844611528,
+          "placement": [
+            16,
+            12
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "nw",
+          "crop": [
+            1563,
+            159,
+            441,
+            399
+          ],
+          "scale": 0.22055137844611528,
+          "placement": [
+            16,
+            4
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        }
+      ],
+      "removedAlphaPixels": 1264546,
+      "frame2": "Nearest visible wheel inner spoke texture rotated 18deg in elliptical wheel mask; cart pixels outside wheel unchanged.",
+      "layerAssemblyContract": "records/carts/layer-anchors.json"
+    },
+    "qa": {
+      "wheelFrames": [
+        {
+          "direction": "ne",
+          "changedPixels": 251,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            65,
+            72,
+            6,
+            12
+          ]
+        },
+        {
+          "direction": "se",
+          "changedPixels": 250,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            29,
+            57,
+            6,
+            12
+          ]
+        },
+        {
+          "direction": "sw",
+          "changedPixels": 249,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            101,
+            56,
+            6,
+            12
+          ]
+        },
+        {
+          "direction": "nw",
+          "changedPixels": 251,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            62,
+            73,
+            6,
+            12
+          ]
+        }
+      ],
+      "actualSize": [
+        512,
+        192
+      ],
+      "rgba": true,
+      "candidateOnly": true,
+      "gameInstallation": false,
+      "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+      "legibility": "Direction/bodytypevisible;wheelrotationnotguaranteedreadableat0.3."
+    }
+  },
+  {
+    "id": "cart/horse_cart_body-v1",
+    "file": "assets/cart/horse_cart_body-v1.png",
+    "cell": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      92
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Transparent RGBA production sprite sheet of one EMPTY medieval horse CART BODY, without horse, people or cargo, inspired by attached project handpainted cart. Four separated views in ONE horizontal row equal cells. LEFT TO RIGHT NE(paired shafts upper-right), SE(shafts lower-right), SW(shafts lower-left), NW(shafts upper-left). Same two-wheel light oak cart eachview, shallow open rectangular bed slightly more refined than oxwagon, slender wheels with six strong spokes, low wooden sideboards, twin long shafts. No metal springs moderncomponents labels grid or background, true 2:1 isometric orthographic, muted honeygraybrown wood upperleftlight, matte brush painted matchingproject. Empty loading deck fully visible. Exactly two wheels percart, no animal/mover. Fit128x96nativecells withroomaroundends.",
+        "rawFile": "raw/carts/horse-cart.png",
+        "referenceImages": [
+          "references/cart_hand-v4.png"
+        ]
+      }
+    ],
+    "processing": {
+      "directions": [
+        {
+          "direction": "ne",
+          "crop": [
+            62,
+            250,
+            376,
+            348
+          ],
+          "scale": 0.25071225071225073,
+          "placement": [
+            17,
+            5
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "se",
+          "crop": [
+            491,
+            260,
+            370,
+            344
+          ],
+          "scale": 0.25071225071225073,
+          "placement": [
+            18,
+            6
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "sw",
+          "crop": [
+            904,
+            261,
+            377,
+            343
+          ],
+          "scale": 0.25071225071225073,
+          "placement": [
+            17,
+            6
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "nw",
+          "crop": [
+            1334,
+            249,
+            377,
+            351
+          ],
+          "scale": 0.25071225071225073,
+          "placement": [
+            17,
+            4
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        }
+      ],
+      "removedAlphaPixels": 1337417,
+      "frame2": "Nearest visible wheel inner spoke texture rotated 18deg in elliptical wheel mask; cart pixels outside wheel unchanged.",
+      "layerAssemblyContract": "records/carts/layer-anchors.json"
+    },
+    "qa": {
+      "wheelFrames": [
+        {
+          "direction": "ne",
+          "changedPixels": 228,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            67,
+            71,
+            6,
+            11
+          ]
+        },
+        {
+          "direction": "se",
+          "changedPixels": 228,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            32,
+            55,
+            6,
+            11
+          ]
+        },
+        {
+          "direction": "sw",
+          "changedPixels": 228,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            97,
+            55,
+            6,
+            11
+          ]
+        },
+        {
+          "direction": "nw",
+          "changedPixels": 228,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            61,
+            71,
+            6,
+            11
+          ]
+        }
+      ],
+      "actualSize": [
+        512,
+        192
+      ],
+      "rgba": true,
+      "candidateOnly": true,
+      "gameInstallation": false,
+      "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+      "legibility": "Direction/bodytypevisible;wheelrotationnotguaranteedreadableat0.3."
+    }
+  },
+  {
+    "id": "cart/handcart_body-v2",
+    "file": "assets/cart/handcart_body-v2.png",
+    "cell": [
+      96,
+      74
+    ],
+    "pivot": [
+      48,
+      70
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Edit attached existing handcart sprite sheet into FOUR views of SAME EMPTY two-wheel medieval handcart, retain original rustic oak color/material/model. ONE HORIZONTAL ROW, directions left-right NE handles upper-right, SE handles lower-right, SW handles lower-left, NW handles upper-left. Generous transparent spacing between exact four views, transparent RGBA. No pusher/person, no cargo, noanimal, no writing. Small low flatdeck with two restrained sideplanks, TWO wooden spoke wheels, paired wooden handhandles. True2:1isometric fixed upperleft light, muted painted projectstyle. Shape should closely match attached cart_hand-v4, native96x74 cellgameasset.",
+        "rawFile": "raw/carts/hand-cart.png",
+        "referenceImages": [
+          "references/cart_hand-v4.png"
+        ]
+      }
+    ],
+    "processing": {
+      "directions": [
+        {
+          "direction": "ne",
+          "crop": [
+            73,
+            187,
+            395,
+            364
+          ],
+          "scale": 0.1793478260869565,
+          "placement": [
+            13,
+            5
+          ],
+          "cell": [
+            96,
+            74
+          ],
+          "ground": [
+            48,
+            70
+          ]
+        },
+        {
+          "direction": "se",
+          "crop": [
+            589,
+            208,
+            384,
+            353
+          ],
+          "scale": 0.1793478260869565,
+          "placement": [
+            14,
+            7
+          ],
+          "cell": [
+            96,
+            74
+          ],
+          "ground": [
+            48,
+            70
+          ]
+        },
+        {
+          "direction": "sw",
+          "crop": [
+            1059,
+            210,
+            390,
+            351
+          ],
+          "scale": 0.1793478260869565,
+          "placement": [
+            13,
+            7
+          ],
+          "cell": [
+            96,
+            74
+          ],
+          "ground": [
+            48,
+            70
+          ]
+        },
+        {
+          "direction": "nw",
+          "crop": [
+            1572,
+            183,
+            398,
+            368
+          ],
+          "scale": 0.1793478260869565,
+          "placement": [
+            13,
+            4
+          ],
+          "cell": [
+            96,
+            74
+          ],
+          "ground": [
+            48,
+            70
+          ]
+        }
+      ],
+      "removedAlphaPixels": 1304660,
+      "frame2": "Nearest visible wheel inner spoke texture rotated 18deg in elliptical wheel mask; cart pixels outside wheel unchanged.",
+      "layerAssemblyContract": "records/carts/layer-anchors.json"
+    },
+    "qa": {
+      "wheelFrames": [
+        {
+          "direction": "ne",
+          "changedPixels": 114,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            49,
+            52,
+            4,
+            8
+          ]
+        },
+        {
+          "direction": "se",
+          "changedPixels": 114,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            24,
+            41,
+            4,
+            8
+          ]
+        },
+        {
+          "direction": "sw",
+          "changedPixels": 114,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            71,
+            41,
+            4,
+            8
+          ]
+        },
+        {
+          "direction": "nw",
+          "changedPixels": 114,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            45,
+            53,
+            4,
+            8
+          ]
+        }
+      ],
+      "actualSize": [
+        384,
+        148
+      ],
+      "rgba": true,
+      "candidateOnly": true,
+      "gameInstallation": false,
+      "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+      "legibility": "Direction/bodytypevisible;wheelrotationnotguaranteedreadableat0.3."
+    }
+  },
+  {
+    "id": "cart/barrow_body-v1",
+    "file": "assets/cart/barrow_body-v1.png",
+    "cell": [
+      64,
+      48
+    ],
+    "pivot": [
+      32,
+      44
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA sprite sheet of FOUR views of SAME medieval SINGLE-wheel handbarrow, handpainted project style matchingattached woodcart. ONE ROW fourequalcells widelyseparated. Left-right NE nosewheel facesupperright, SE nosewheelfaceslowerright, SW noselowerleft, NW noseupperleft. A shallow rectangular oak tray with ONE small wooden wheel atfront center, TWO long handles extending REAR direction, short rear rests. Empty tray; nopeople animals cargo scenery textlabels borders. Medieval1300-1450England, dullweatheredoak/limitediron, fixed upperleftsoftlight and2:1isometricortho. Distinctly wheelbarrow,NOT two-wheel cart. Nativecell64x48 so clearcompact silhouette.",
+        "rawFile": "raw/carts/barrow-original.png",
+        "referenceImages": [
+          "references/cart_hand-v4.png"
+        ]
+      },
+      {
+        "prompt": "Correct ONLY FIRST/leftmost of four wheelbarrow views. First currentlyduplicates southeast. Replace first view by NORTHEAST travelling wheelbarrow: front nose and single wheel at UPPER RIGHT, TWO handles extend LOWER LEFT toward viewer, see REAR of tray. Keep otherthree views untouched: secondnose lowerright,thirdnose lowerleft,fourthnoseupperleft. Sameemptywoodbarrow twohandles onefrontwheel, nopeoplecargo. Transparentbackground, fourseparatedviews sameone row. No text.",
+        "rawFile": "raw/carts/barrow.png",
+        "referenceImages": [
+          "raw/carts/barrow-original.png"
+        ]
+      }
+    ],
+    "processing": {
+      "directions": [
+        {
+          "direction": "ne",
+          "crop": [
+            35,
+            226,
+            405,
+            296
+          ],
+          "scale": 0.12232415902140673,
+          "placement": [
+            7,
+            8
+          ],
+          "cell": [
+            64,
+            48
+          ],
+          "ground": [
+            32,
+            44
+          ]
+        },
+        {
+          "direction": "se",
+          "crop": [
+            522,
+            211,
+            412,
+            324
+          ],
+          "scale": 0.12232415902140673,
+          "placement": [
+            7,
+            4
+          ],
+          "cell": [
+            64,
+            48
+          ],
+          "ground": [
+            32,
+            44
+          ]
+        },
+        {
+          "direction": "sw",
+          "crop": [
+            1053,
+            208,
+            410,
+            327
+          ],
+          "scale": 0.12232415902140673,
+          "placement": [
+            7,
+            4
+          ],
+          "cell": [
+            64,
+            48
+          ],
+          "ground": [
+            32,
+            44
+          ]
+        },
+        {
+          "direction": "nw",
+          "crop": [
+            1578,
+            265,
+            374,
+            240
+          ],
+          "scale": 0.12232415902140673,
+          "placement": [
+            9,
+            15
+          ],
+          "cell": [
+            64,
+            48
+          ],
+          "ground": [
+            32,
+            44
+          ]
+        }
+      ],
+      "removedAlphaPixels": 1381472,
+      "frame2": "Nearest visible wheel inner spoke texture rotated 18deg in elliptical wheel mask; cart pixels outside wheel unchanged.",
+      "layerAssemblyContract": "records/carts/layer-anchors.json"
+    },
+    "qa": {
+      "wheelFrames": [
+        {
+          "direction": "ne",
+          "changedPixels": 55,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            48,
+            16,
+            3,
+            5
+          ]
+        },
+        {
+          "direction": "se",
+          "changedPixels": 56,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            48,
+            33,
+            3,
+            5
+          ]
+        },
+        {
+          "direction": "sw",
+          "changedPixels": 56,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            13,
+            33,
+            3,
+            5
+          ]
+        },
+        {
+          "direction": "nw",
+          "changedPixels": 56,
+          "outsideWheelMask": 0,
+          "wheelEllipse": [
+            13,
+            21,
+            3,
+            5
+          ]
+        }
+      ],
+      "firstDirectionCorrection": "Original duplicated SE; builtin targetededit nowNE frontwheelupperright/handleslowerleft.",
+      "actualSize": [
+        256,
+        96
+      ],
+      "rgba": true,
+      "candidateOnly": true,
+      "gameInstallation": false,
+      "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+      "legibility": "Direction/bodytypevisible;wheelrotationnotguaranteedreadableat0.3."
+    }
+  },
+  {
+    "id": "pack/packsaddle_sacks-v1",
+    "file": "assets/pack/packsaddle_sacks-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create transparent RGBA layer of ONLY medieval pack-saddle with TWO large grain sacks hanging symmetrically from sides, fitted to horses in attached reference. DO NOT DRAW ANY HORSE OR PERSON. Just wooden packsaddle padded leather top,ropestraps,and two bulging beige tied sacks. FOUR views ONE horizontalrow equallyseparated: NE facingupperright,rearview;SE lower-rightfrontview;SW lower-leftfrontview;NW upper-leftrearview. Saddletop centeredbetween sacks,widehorse-shaped hollow underarch transparent. The horse willbe drawn beneath as separate layer; cover upperbody butnotheadtaillegs. Mutedprojecthandpainted southernEngland1300-1450 no textmetalmodernbales. Clearlarge sacks silhouettes, lowcontrastrope only. Matchangle2:1isometric/upperleftlight. Final each overlayfits96x80horsecell, actualpackwidth38pxheight28pxaroundback. Renderlarge fordownsample.",
+        "rawFile": "raw/carts/sacks.png",
+        "referenceImages": [
+          "raw/large-animals/horse_draught-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "frames": "second row duplicates first; animal legs animate underneath independently",
+      "registration": [
+        {
+          "direction": "ne",
+          "backAnchor": [
+            48,
+            34
+          ],
+          "crop": [
+            51,
+            213,
+            400,
+            310
+          ],
+          "placement": [
+            29,
+            25
+          ],
+          "size": [
+            38,
+            29
+          ]
+        },
+        {
+          "direction": "se",
+          "backAnchor": [
+            47,
+            30
+          ],
+          "crop": [
+            542,
+            214,
+            403,
+            320
+          ],
+          "placement": [
+            28,
+            21
+          ],
+          "size": [
+            38,
+            30
+          ]
+        },
+        {
+          "direction": "sw",
+          "backAnchor": [
+            50,
+            29
+          ],
+          "crop": [
+            1041,
+            214,
+            403,
+            318
+          ],
+          "placement": [
+            31,
+            20
+          ],
+          "size": [
+            38,
+            30
+          ]
+        },
+        {
+          "direction": "nw",
+          "backAnchor": [
+            48,
+            33
+          ],
+          "crop": [
+            1533,
+            213,
+            400,
+            310
+          ],
+          "placement": [
+            29,
+            24
+          ],
+          "size": [
+            38,
+            29
+          ]
+        }
+      ],
+      "riderTemplatePolicy": "notapplicable",
+      "layerAssemblyContract": "records/carts/layer-anchors.json"
+    },
+    "qa": {
+      "layerSeparation": "no horse pixels",
+      "direction": "NE SE SW NW",
+      "animation": "stationary overlay",
+      "actualSize": [
+        384,
+        160
+      ],
+      "rgba": true,
+      "candidateOnly": true,
+      "gameInstallation": false,
+      "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+      "legibility": "Final wool correction: square grey bundles versus round tan sacks, dark colored cloth rolls. 0.3 silhouette/color cues improved; tiny material texture remains limited."
+    }
+  },
+  {
+    "id": "pack/packsaddle_wool-v1",
+    "file": "assets/pack/packsaddle_wool-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Transparent RGBA ONLY medieval woolpack saddle overlay. Use horsesas mountingreference,butDO NOT draw horse/person/bodyparts. Pair of irregular cream RAW WOOL rounded bundles tiedinropenet over simple wooden pack saddle, loosewooltufts visible in silhouette; NOT moderncompressedhaybales, notgrainbags. FOUR equallyspacedviews ONE horizontalrow left-right NEheadingupperright/rearview,SElowerright/frontview,SWlowerleft/frontview,NWupperleft/rearview. Sameunit, saddle arch center between two side woolbundles, fitted acrosshorseback, transparentunderneath. Mutedcream/oakprojecthandpainted,mattesouthEngland1300-1450, orthographic2:1isometric,softupperleftlight. No background textlabels. Actual overlaytargetwidth40pxheight29px within96x80horsecell; largeclearmasses readablezoom.",
+        "rawFile": "raw/carts/wool-original.png",
+        "referenceImages": [
+          "raw/large-animals/horse_draught-base.png"
+        ]
+      },
+      {
+        "prompt": "Edit ONLY woolbundle silhouettes in this fourdirection transparent packsaddle sheet. Make both hanging fleece loads broadly RECTANGULAR squared-off tied bundles with FLAT TOPS and FLAT LOWER EDGES, natural GRAY/IVORY raw fleece, little wooltufts. No roundedgrainbag shapes and no goldcreamcolor. Keep exact same fourdirections,camera,saddle/strap placement and total width and height. Bind two broad rectangular wool parcels per side with prominent dark crossed rope. Irregular felted fleece surface notstraw/hay ormodern compressedbales. Transparentbackground. This is to distinguish rectangular graywool from tanroundedgrainsacks atsmall gamezoom. Noanimalpersonorwriting.",
+        "rawFile": "raw/carts/wool.png",
+        "referenceImages": [
+          "raw/carts/wool-original.png"
+        ]
+      }
+    ],
+    "processing": {
+      "frames": "second row duplicates first; animal legs animate underneath independently",
+      "registration": [
+        {
+          "direction": "ne",
+          "backAnchor": [
+            48,
+            34
+          ],
+          "crop": [
+            23,
+            389,
+            345,
+            275
+          ],
+          "placement": [
+            29,
+            25
+          ],
+          "size": [
+            38,
+            30
+          ]
+        },
+        {
+          "direction": "se",
+          "backAnchor": [
+            47,
+            30
+          ],
+          "crop": [
+            368,
+            385,
+            360,
+            270
+          ],
+          "placement": [
+            28,
+            21
+          ],
+          "size": [
+            38,
+            29
+          ]
+        },
+        {
+          "direction": "sw",
+          "backAnchor": [
+            50,
+            29
+          ],
+          "crop": [
+            765,
+            396,
+            339,
+            264
+          ],
+          "placement": [
+            31,
+            20
+          ],
+          "size": [
+            38,
+            30
+          ]
+        },
+        {
+          "direction": "nw",
+          "backAnchor": [
+            48,
+            33
+          ],
+          "crop": [
+            1104,
+            373,
+            348,
+            292
+          ],
+          "placement": [
+            29,
+            24
+          ],
+          "size": [
+            37,
+            31
+          ]
+        }
+      ],
+      "riderTemplatePolicy": "notapplicable",
+      "layerAssemblyContract": "records/carts/layer-anchors.json"
+    },
+    "qa": {
+      "layerSeparation": "no horse pixels",
+      "direction": "NE SE SW NW",
+      "animation": "stationary overlay",
+      "shapeCorrection": "Targeted edit: square grey fleece bundles, flatter top/bottom, contrasting round tan sacks.",
+      "actualSize": [
+        384,
+        160
+      ],
+      "rgba": true,
+      "candidateOnly": true,
+      "gameInstallation": false,
+      "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+      "legibility": "Final wool correction: square grey bundles versus round tan sacks, dark colored cloth rolls. 0.3 silhouette/color cues improved; tiny material texture remains limited."
+    }
+  },
+  {
+    "id": "pack/packsaddle_cloth-v1",
+    "file": "assets/pack/packsaddle_cloth-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Transparent RGBA ONLY medieval pack saddle carrying CLOTH ROLLS overlay, nohorse orperson. Mountingreference attachedhorses butDRAWONLY load+simpleleather/woodpacksaddle. Four broadlong woollenclothboltsrolledtightly, clearly circularspiral ends, muted madderred,tan,grayblue cloth; twoperflank withropestraps acrosscentral saddle arch. FOURviews ONE horizontalrow equallyspaced left-right NEupperrightrearview,SElowerrightfrontview,SWlowerleftfrontview,NWupperleftrearview. Samepack actualfour directions,2:1isometricsoftupperleftlight, English1300-1450handpaintedprojectstyle. Transparenthollowunderarch, nolegsheadtailfloorlabels. Distinctfromsacksandwoolclumps because longcylindricalrolledboltswithspiralends. Actualoverlay38x28within96x80cellhorse butrenderlargerfordownsample.",
+        "rawFile": "raw/carts/cloth.png",
+        "referenceImages": [
+          "raw/large-animals/horse_draught-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "frames": "second row duplicates first; animal legs animate underneath independently",
+      "registration": [
+        {
+          "direction": "ne",
+          "backAnchor": [
+            48,
+            34
+          ],
+          "crop": [
+            23,
+            141,
+            475,
+            404
+          ],
+          "placement": [
+            30,
+            25
+          ],
+          "size": [
+            36,
+            31
+          ]
+        },
+        {
+          "direction": "se",
+          "backAnchor": [
+            47,
+            30
+          ],
+          "crop": [
+            544,
+            141,
+            475,
+            419
+          ],
+          "placement": [
+            29,
+            21
+          ],
+          "size": [
+            35,
+            31
+          ]
+        },
+        {
+          "direction": "sw",
+          "backAnchor": [
+            50,
+            29
+          ],
+          "crop": [
+            1060,
+            150,
+            477,
+            408
+          ],
+          "placement": [
+            32,
+            20
+          ],
+          "size": [
+            36,
+            31
+          ]
+        },
+        {
+          "direction": "nw",
+          "backAnchor": [
+            48,
+            33
+          ],
+          "crop": [
+            1611,
+            140,
+            486,
+            405
+          ],
+          "placement": [
+            29,
+            24
+          ],
+          "size": [
+            37,
+            31
+          ]
+        }
+      ],
+      "riderTemplatePolicy": "notapplicable",
+      "layerAssemblyContract": "records/carts/layer-anchors.json"
+    },
+    "qa": {
+      "layerSeparation": "no horse pixels",
+      "direction": "NE SE SW NW",
+      "animation": "stationary overlay",
+      "actualSize": [
+        384,
+        160
+      ],
+      "rgba": true,
+      "candidateOnly": true,
+      "gameInstallation": false,
+      "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+      "legibility": "Final wool correction: square grey bundles versus round tan sacks, dark colored cloth rolls. 0.3 silhouette/color cues improved; tiny material texture remains limited."
+    }
+  },
+  {
+    "id": "rider/saddle_rider_merchant-v1",
+    "file": "assets/rider/saddle_rider_merchant-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Edit reference merchant sprite into separable mounted merchant UPPERBODY + SADDLE layer only, nohorse. Preserve merchanthead/hat/clothes colors and fourview directions from firstrow of reference, keepheadandtorso shape exactly; remove walkinglegs belowwaist and addsmallbrownmedievalriding saddle underhip. Fouractualviews ONE row NE rearupperright,SEfrontlowerright,SWfrontlowerleft,NWrearupperleft. Merchant wearsdull ochre woolcoat,tan cap,pouch,noble silhouette notarmor. Reusepose upperbody ratherthan invent newcharacter. No horse legsorfullbody,nolabelsbackground. TransparentRGBA,mattesameprojectpixelhandpainted. Saddlefits horse96x80cell; riderupperbodyheightabout27px andsaddlewidth22px, noalterheadprofile.",
+        "rawFile": "raw/carts/rider.png",
+        "referenceImages": [
+          "references/actor_merchant-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "frames": "second row duplicates first; animal legs animate underneath independently",
+      "registration": [
+        {
+          "direction": "ne",
+          "backAnchor": [
+            48,
+            34
+          ],
+          "saddleCrop": [
+            127,
+            457,
+            294,
+            167
+          ],
+          "upperBodyTemplate": [
+            0,
+            0,
+            71,
+            42
+          ],
+          "upperBodyOutput": [
+            22,
+            7,
+            52,
+            30
+          ],
+          "headPixelDifferenceAgainstTransformedTemplate": 0,
+          "feet": "notapplicable upperbodyonly"
+        },
+        {
+          "direction": "se",
+          "backAnchor": [
+            47,
+            30
+          ],
+          "saddleCrop": [
+            630,
+            452,
+            302,
+            165
+          ],
+          "upperBodyTemplate": [
+            71,
+            0,
+            71,
+            42
+          ],
+          "upperBodyOutput": [
+            21,
+            3,
+            52,
+            30
+          ],
+          "headPixelDifferenceAgainstTransformedTemplate": 0,
+          "feet": "notapplicable upperbodyonly"
+        },
+        {
+          "direction": "sw",
+          "backAnchor": [
+            50,
+            29
+          ],
+          "saddleCrop": [
+            1117,
+            452,
+            301,
+            165
+          ],
+          "upperBodyTemplate": [
+            142,
+            0,
+            71,
+            42
+          ],
+          "upperBodyOutput": [
+            24,
+            2,
+            52,
+            30
+          ],
+          "headPixelDifferenceAgainstTransformedTemplate": 0,
+          "feet": "notapplicable upperbodyonly"
+        },
+        {
+          "direction": "nw",
+          "backAnchor": [
+            48,
+            33
+          ],
+          "saddleCrop": [
+            1628,
+            457,
+            293,
+            167
+          ],
+          "upperBodyTemplate": [
+            213,
+            0,
+            72,
+            42
+          ],
+          "upperBodyOutput": [
+            22,
+            6,
+            52,
+            30
+          ],
+          "headPixelDifferenceAgainstTransformedTemplate": 0,
+          "feet": "notapplicable upperbodyonly"
+        }
+      ],
+      "riderTemplatePolicy": "Generated saddle retained; generated head/torso discarded and original merchant upperbody translated/scaled unchanged, no new human pose.",
+      "layerAssemblyContract": "records/carts/layer-anchors.json",
+      "topMarginCorrection": "Upperbody only shifted down2px; saddle unchanged. Transformed template follows same translation. Final outer border alpha0."
+    },
+    "qa": {
+      "layerSeparation": "no horse pixels",
+      "direction": "NE SE SW NW",
+      "animation": "stationary overlay",
+      "actualSize": [
+        384,
+        160
+      ],
+      "rgba": true,
+      "candidateOnly": true,
+      "gameInstallation": false,
+      "nativeScale": "proofshows1xinspection,0.5xzoom1.0,0.3xzoom0.6",
+      "legibility": "Direction/bodytypevisible;wheelrotationnotguaranteedreadableat0.3."
+    }
+  }
+]

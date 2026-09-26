@@ -1,0 +1,311 @@
+{
+  "assets": 34,
+  "checks": [
+    {
+      "id": "animal_walk/ox-v1",
+      "width": 384,
+      "height": 148,
+      "channels": 4,
+      "transparentPixels": 37749,
+      "occupiedPixels": 19083,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "animal_walk/horse_draught-v1",
+      "width": 384,
+      "height": 160,
+      "channels": 4,
+      "transparentPixels": 39389,
+      "occupiedPixels": 22051,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "animal_walk/horse_riding-v1",
+      "width": 384,
+      "height": 160,
+      "channels": 4,
+      "transparentPixels": 43220,
+      "occupiedPixels": 18220,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "animal_walk/sheep_single-v1",
+      "width": 192,
+      "height": 80,
+      "channels": 4,
+      "transparentPixels": 9845,
+      "occupiedPixels": 5515,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "animal_walk/pig_single-v1",
+      "width": 192,
+      "height": 80,
+      "channels": 4,
+      "transparentPixels": 9732,
+      "occupiedPixels": 5628,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "animal_walk/goose_single-v1",
+      "width": 128,
+      "height": 64,
+      "channels": 4,
+      "transparentPixels": 6001,
+      "occupiedPixels": 2191,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "animal_walk/cow_single-v1",
+      "width": 320,
+      "height": 128,
+      "channels": 4,
+      "transparentPixels": 27169,
+      "occupiedPixels": 13791,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "animal_walk/dog_herding-v1",
+      "width": 160,
+      "height": 64,
+      "channels": 4,
+      "transparentPixels": 7107,
+      "occupiedPixels": 3133,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "cart/ox_cart_body-v1",
+      "width": 512,
+      "height": 192,
+      "channels": 4,
+      "transparentPixels": 64148,
+      "occupiedPixels": 34156,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "cart/horse_cart_body-v1",
+      "width": 512,
+      "height": 192,
+      "channels": 4,
+      "transparentPixels": 64874,
+      "occupiedPixels": 33430,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "cart/handcart_body-v2",
+      "width": 384,
+      "height": 148,
+      "channels": 4,
+      "transparentPixels": 36884,
+      "occupiedPixels": 19948,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "cart/barrow_body-v1",
+      "width": 256,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 17048,
+      "occupiedPixels": 7528,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "pack/packsaddle_sacks-v1",
+      "width": 384,
+      "height": 160,
+      "channels": 4,
+      "transparentPixels": 54992,
+      "occupiedPixels": 6448,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "pack/packsaddle_wool-v1",
+      "width": 384,
+      "height": 160,
+      "channels": 4,
+      "transparentPixels": 54510,
+      "occupiedPixels": 6930,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "pack/packsaddle_cloth-v1",
+      "width": 384,
+      "height": 160,
+      "channels": 4,
+      "transparentPixels": 54510,
+      "occupiedPixels": 6930,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "rider/saddle_rider_merchant-v1",
+      "width": 384,
+      "height": 160,
+      "channels": 4,
+      "transparentPixels": 55690,
+      "occupiedPixels": 5750,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "workers/wk_drover_m-v1",
+      "width": 296,
+      "height": 148,
+      "channels": 4,
+      "transparentPixels": 33561,
+      "occupiedPixels": 10247,
+      "borderOccupiedPixels": 9
+    },
+    {
+      "id": "workers/wk_packhorse_leader-v1",
+      "width": 296,
+      "height": 148,
+      "channels": 4,
+      "transparentPixels": 33561,
+      "occupiedPixels": 10247,
+      "borderOccupiedPixels": 9
+    },
+    {
+      "id": "workers/wk_goosegirl_f-v1",
+      "width": 296,
+      "height": 148,
+      "channels": 4,
+      "transparentPixels": 33234,
+      "occupiedPixels": 10574,
+      "borderOccupiedPixels": 11
+    },
+    {
+      "id": "workers/wk_swineherd_m-v1",
+      "width": 296,
+      "height": 148,
+      "channels": 4,
+      "transparentPixels": 33561,
+      "occupiedPixels": 10247,
+      "borderOccupiedPixels": 9
+    },
+    {
+      "id": "work/work_whip_ne-v1",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparentPixels": 2198,
+      "occupiedPixels": 106,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "work/work_whip_se-v1",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparentPixels": 2235,
+      "occupiedPixels": 69,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "work/work_whip_sw-v1",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparentPixels": 2228,
+      "occupiedPixels": 76,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "work/work_whip_nw-v1",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparentPixels": 2238,
+      "occupiedPixels": 66,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "work/work_goad_ne-v1",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparentPixels": 2219,
+      "occupiedPixels": 85,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "work/work_goad_se-v1",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparentPixels": 2244,
+      "occupiedPixels": 60,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "work/work_goad_sw-v1",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparentPixels": 2243,
+      "occupiedPixels": 61,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "work/work_goad_nw-v1",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparentPixels": 2211,
+      "occupiedPixels": 93,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "herd/sheep_cluster_moving_a-v1",
+      "width": 512,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 38130,
+      "occupiedPixels": 11022,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "herd/sheep_cluster_moving_b-v1",
+      "width": 576,
+      "height": 112,
+      "channels": 4,
+      "transparentPixels": 50868,
+      "occupiedPixels": 13644,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "herd/pig_cluster-v1",
+      "width": 512,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 37869,
+      "occupiedPixels": 11283,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "herd/goose_flock_a-v1",
+      "width": 384,
+      "height": 74,
+      "channels": 4,
+      "transparentPixels": 22946,
+      "occupiedPixels": 5470,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "herd/goose_flock_b-v1",
+      "width": 384,
+      "height": 74,
+      "channels": 4,
+      "transparentPixels": 24036,
+      "occupiedPixels": 4380,
+      "borderOccupiedPixels": 0
+    },
+    {
+      "id": "herd/cattle_drove-v1",
+      "width": 768,
+      "height": 144,
+      "channels": 4,
+      "transparentPixels": 90029,
+      "occupiedPixels": 20563,
+      "borderOccupiedPixels": 0
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "id": "dog_herding",
+  "file": "assets/animal_walk/dog_herding-v1.png",
+  "cell": [
+    40,
+    32
+  ],
+  "pivot": [
+    20,
+    28
+  ],
+  "results": [
+    {
+      "direction": "ne",
+      "protectedMask": "records/small-animals-dog-protected-0.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 47,
+      "editableRectangles": [
+        [
+          11,
+          26,
+          15,
+          30
+        ],
+        [
+          15,
+          25,
+          20,
+          30
+        ],
+        [
+          21,
+          20,
+          28,
+          24
+        ]
+      ]
+    },
+    {
+      "direction": "se",
+      "protectedMask": "records/small-animals-dog-protected-1.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 60,
+      "editableRectangles": [
+        [
+          11,
+          18,
+          15,
+          24
+        ],
+        [
+          16,
+          19,
+          20,
+          23
+        ],
+        [
+          20,
+          25,
+          24,
+          30
+        ],
+        [
+          25,
+          23,
+          29,
+          28
+        ]
+      ]
+    },
+    {
+      "direction": "sw",
+      "protectedMask": "records/small-animals-dog-protected-2.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 58,
+      "editableRectangles": [
+        [
+          12,
+          23,
+          16,
+          28
+        ],
+        [
+          16,
+          25,
+          21,
+          30
+        ],
+        [
+          22,
+          20,
+          26,
+          23
+        ],
+        [
+          26,
+          18,
+          30,
+          24
+        ]
+      ]
+    },
+    {
+      "direction": "nw",
+      "protectedMask": "records/small-animals-dog-protected-3.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 43,
+      "editableRectangles": [
+        [
+          12,
+          20,
+          18,
+          24
+        ],
+        [
+          21,
+          25,
+          25,
+          30
+        ],
+        [
+          25,
+          26,
+          29,
+          30
+        ]
+      ]
+    }
+  ]
+}
