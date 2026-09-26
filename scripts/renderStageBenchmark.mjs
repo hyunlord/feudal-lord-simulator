@@ -37,8 +37,10 @@ async function measureCell(chromium, states, cell, options) {
   const windows = [];
   try {
     for (let round = 0; round < options.rounds; round++) {
+      // `story-delay`: UI-4 story modals stop time (the petition pop176 carries opens ~1.5 s in: 0 ticks, a false
+      // 38 % p95). Holding the world-first delay past the window keeps time running, as before UI-4; older builds ignore it.
       const { context, page } = await openScene(browser, { state: states[city], tile: TILES[city], baseUrl: options.url, width, height, dpr,
-        query: (options.stages ? '' : '&render-stages=0') + options.query });
+        query: (options.stages ? '' : '&render-stages=0') + '&story-delay=600000' + options.query });
       const errors = []; page.on('pageerror', error => errors.push(error.message));
       const cdp = await context.newCDPSession(page);
       await cdp.send('Performance.enable');
