@@ -8,6 +8,8 @@ import type { Era } from "../content/eraConfig";
 import { placementSpendableResource } from "../world/placement";
 import type { GameState } from "./engine.types";
 import { settlementMetrics } from "./settlementMetrics";
+import { housingLotCount } from "../population/housing";
+import type { HistoricalEraEntry } from "./season.types";
 import type { SettlementMetrics } from "./settlement.types";
 
 const ERA_STAGE = { hamlet: "village", palisade: "market_town", stone_town: "fortified_town" } as const satisfies Record<Era, StageId>;
@@ -44,6 +46,7 @@ export function conditionMet(state: GameState, condition: Condition, context: Co
     case "spendable_resource_at_least": return placementSpendableResource(state, condition.resource) >= condition.value;
     case "treasury_coin_at_least": return treasuryBalance(state) >= condition.value;
     case "settlement_empty_for": return (context.emptyTicks ?? 0) >= condition.ticks;
+    case "housing_lots_at_least": return housingLotCount(state) >= condition.value;
   }
 }
 
@@ -76,14 +79,50 @@ export function stateCalendar(state: Pick<GameState, "tick" | "scenarioId">): Ca
   return calendar(state.tick, scenarioOf(state).startYear);
 }
 
-/** The last era whose year gate is met (spec SC-12). State gates are reserved and not evaluated yet. */
-export function historicalEra(state: Pick<GameState, "tick" | "scenarioId">): EraDef {
+/**
+ * The historical era the town is in (spec SC-12, FP-5): the last era it entered (`historicalEras`, kept by
+ * `advanceHistoricalEras`). Before the first v12 tick the year gates stand in, stopping at an era whose readiness
+ * gate is unknown until its grace has run out.
+ */
+export function historicalEra(state: Pick<GameState, "tick" | "scenarioId" | "historicalEras">): EraDef {
   const scenario = scenarioOf(state);
+  const entered = state.historicalEras?.at(-1);
+  if (entered !== undefined) {
+    const era = scenario.eras.find(candidate => candidate.id === entered.id);
+    if (era !== undefined) return era;
+  }
   const { year } = stateCalendar(state);
   let current = scenario.eras[0];
-  for (const era of scenario.eras) if ((era.enterWhen.yearAtLeast ?? Number.POSITIVE_INFINITY) <= year) current = era;
+  for (const era of scenario.eras) {
+    const gate = era.enterWhen.yearAtLeast ?? Number.POSITIVE_INFINITY;
+    const due = era.enterWhen.state === undefined ? gate : gate + (era.enterWhen.maxDelayYears ?? 0);
+    if (due > year) break;
+    current = era;
+  }
   if (current === undefined) throw new Error(`${scenario.id} has no eras`);
   return current;
+}
+
+/**
+ * FP-5 (F2): enters the eras whose time has come, in order. An era enters when the calendar reaches its year and the
+ * town meets its readiness, or, readiness unmet, when `maxDelayYears` more have passed (forced). An era never enters
+ * before the one ahead of it. Returns the state unchanged when nothing enters.
+ */
+export function advanceHistoricalEras(state: GameState): GameState {
+  const scenario = scenarioOf(state);
+  const entries: HistoricalEraEntry[] = [...(state.historicalEras ?? [])];
+  const { year } = stateCalendar(state);
+  let changed = state.historicalEras === undefined;
+  for (const era of scenario.eras.slice(entries.length)) {
+    const gate = era.enterWhen.yearAtLeast;
+    if (gate === undefined || year < gate) break;
+    const ready = era.enterWhen.state === undefined || conditionsMet(state, era.enterWhen.state);
+    const forced = !ready && year >= gate + (era.enterWhen.maxDelayYears ?? 0);
+    if (!ready && !forced) break;
+    entries.push({ id: era.id, enteredTick: state.tick, forced });
+    changed = true;
+  }
+  return changed ? { ...state, historicalEras: entries } : state;
 }
 
 export function calendarLabel(state: Pick<GameState, "tick" | "scenarioId">): string {

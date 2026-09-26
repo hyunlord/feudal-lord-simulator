@@ -53,7 +53,8 @@ test("Given stocked bread When resource bar renders Then food duration has expli
     buildings: [{ id: house.buildingId, kind: "house", tx: 0, ty: 0, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 },
       { id: "granary", kind: "granary", tx: 1, ty: 0, workers: 0, inventory: { bread: 4 }, reserved: {}, stockReserved: {}, productionProgress: 0 }],
   });
-  assert.match(html, /1가구 기준 약 1분/);
+  // F0-V: the bread stock reads as the calendar point it lasts until.
+  assert.match(html, /1가구 · (?:곧|(?:봄|여름|가을|겨울) (?:초|중순|말)쯤)까지/);
   assert.doesNotMatch(html, /가구분 · 1끼/);
 });
 

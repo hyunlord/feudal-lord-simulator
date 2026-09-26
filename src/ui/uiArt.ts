@@ -127,3 +127,11 @@ export function drawUiFrame(context: CanvasRenderingContext2D, frame: keyof type
   }
   return true;
 }
+
+/** Starts loading the sheets the canvas draws (map markers, cause, prediction, resource icons) before a frame needs them. */
+export function preloadCanvasIcons(): void {
+  for (const sheet of [SHEETS.warning_map_marker_sheet, SHEETS.icon_cause_family_sheet, SHEETS.icon_prediction_sheet, SHEETS.icon_resource_sheet]) {
+    const sizes: Readonly<Record<string, { readonly url: string }>> = sheet.sizes;
+    for (const size of ["24", "32", "48"]) if (sizes[size] !== undefined) canvasSheet(sizes[size]!.url);
+  }
+}

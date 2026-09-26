@@ -17,6 +17,7 @@ import { zoomByFactor } from "./interactions";
 import { cameraForMinimapTileJump } from "./minimapCameraJump";
 import { applyPalisadeIntent, type PalisadeDraftState } from "./palisadeDraftInteraction";
 import { pickTile } from "./picking";
+import { playPlacementSound } from "../audio/soundDirector";
 
 // The map's intent handler (B9): what the canvas used to do in its mouse and key callbacks, fed by input intents
 // only. Device questions (button, Space held, drag threshold, which click a drag swallows) were answered by the
@@ -82,6 +83,7 @@ export function createCanvasIntentHandler(deps: Deps): IntentHandler {
     const attempt = finishedRoadAttempt(stateRef.current, drag, destination, performance.now());
     if (attempt !== null) {
       refs.feedbackRef.current = attempt.feedback;
+      playPlacementSound(attempt);
       if (attempt.action !== null) deps.dispatch(attempt.action);
     }
     resetDrag();

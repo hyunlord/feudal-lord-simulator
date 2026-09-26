@@ -1,0 +1,4098 @@
+{
+  "generated_at": "2026-09-25T15:39:15.628Z",
+  "available_faces": 20,
+  "passing_faces": 20,
+  "all_six_anchors_verified": false,
+  "limitations": [
+    "Vision provides face confidence, not landmark precision confidence.",
+    "Ear center and hairline remain NOT_MEASURED; numeric pass covers crown, eyes, chin and alpha neck bottom only.",
+    "Adult near-eye horizontal translation preserves source face width; child width normalized to exactly94 alpha>=128 pixels around nearEye99.84, faded to canvas edges.",
+    "No artwork regeneration, skin recoloring, or deliverable asset replacement is performed."
+  ],
+  "faces": [
+    {
+      "id": "pt_face_c_01",
+      "size_class": "child",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-13ea1caa-5181-4e1c-b3dd-b0d8b5d3b3a5.png",
+      "source_sha256": "b6aa9b56606da929d40652b5566c2a372bc23a6680d7a5289ffdf1097e300c42",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_c_01.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_c_01.png",
+      "target": {
+        "crown_y": 56,
+        "eye_mean_y": 112,
+        "near_eye_x": 99.84,
+        "chin_y": 160,
+        "neck_bottom_y": 194,
+        "head_width": 94
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              61,
+              62.21398341685909
+            ],
+            [
+              178,
+              170.0375128286238
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              49,
+              56
+            ],
+            [
+              103.35332275690385,
+              112
+            ],
+            [
+              153.0273086008158,
+              160
+            ],
+            [
+              185,
+              194
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 103.35332275690385,
+        "near_eye_xy": [
+          101.8282307604295,
+          103.35509740307498
+        ],
+        "far_eye_xy": [
+          79.27835371686372,
+          103.35154811073274
+        ],
+        "chin_xy": [
+          91.62895449670395,
+          153.0273086008158
+        ],
+        "chin_y": 153.0273086008158,
+        "crown_y": 49,
+        "neck_bottom_y": 185,
+        "alpha128_bbox": [
+          69,
+          49,
+          170,
+          185
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": null,
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred",
+        "manual_observation_before_child_width_adjustment": {
+          "xy": [
+            149,
+            127
+          ],
+          "estimated_uncertainty_px": 3,
+          "status": "NOT_VERIFIED",
+          "method": "visual estimate, not calibrated landmark detection"
+        }
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": null,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.02615479269133,
+        "near_eye_xy": [
+          100.59711831199854,
+          112.18478239798378
+        ],
+        "far_eye_xy": [
+          79.29544508154316,
+          111.86752718739888
+        ],
+        "chin_xy": [
+          91.51146397842194,
+          160.79235567471443
+        ],
+        "chin_y": 160.79235567471443,
+        "crown_y": 56,
+        "neck_bottom_y": 194,
+        "alpha128_bbox": [
+          70,
+          56,
+          163,
+          194
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.026154792691329476,
+          "near_eye_x": 0.7571183119985392,
+          "chin_y": 0.7923556747144289,
+          "neck_bottom_y": 0,
+          "head_width": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3,
+          "head_width": 0
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.02615479269133,
+        "near_eye_xy": [
+          100.59711831199854,
+          112.18478239798378
+        ],
+        "far_eye_xy": [
+          79.29544508154316,
+          111.86752718739888
+        ],
+        "chin_xy": [
+          91.51146397842194,
+          160.79235567471443
+        ],
+        "chin_y": 160.79235567471443,
+        "crown_y": 56,
+        "neck_bottom_y": 194,
+        "alpha128_bbox": [
+          70,
+          56,
+          163,
+          194
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.026154792691329476,
+          "near_eye_x": 0.7571183119985392,
+          "chin_y": 0.7923556747144289,
+          "neck_bottom_y": 0,
+          "head_width": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3,
+          "head_width": 0
+        }
+      }
+    },
+    {
+      "id": "pt_face_c_02",
+      "size_class": "child",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-42e25329-89bb-4919-955b-18be1d6e8791.png",
+      "source_sha256": "da56a7914d38fd02887605c060487b3c813f8a0537d1ea98b594976d8111361b",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_c_02.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_c_02.png",
+      "target": {
+        "crown_y": 56,
+        "eye_mean_y": 112,
+        "near_eye_x": 99.84,
+        "chin_y": 160,
+        "neck_bottom_y": 194,
+        "head_width": 94
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              61,
+              61.63285507829962
+            ],
+            [
+              177,
+              169.5932511179036
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              49,
+              56
+            ],
+            [
+              106.41519111008863,
+              112
+            ],
+            [
+              159.52895538124284,
+              160
+            ],
+            [
+              189,
+              194
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 106.41519111008863,
+        "near_eye_xy": [
+          102.05235784140147,
+          106.52594165887528
+        ],
+        "far_eye_xy": [
+          78.26959606454982,
+          106.30444056130197
+        ],
+        "chin_xy": [
+          93.40310845688873,
+          159.52895538124284
+        ],
+        "chin_y": 159.52895538124284,
+        "crown_y": 49,
+        "neck_bottom_y": 189,
+        "alpha128_bbox": [
+          69,
+          49,
+          169,
+          189
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": null,
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": null,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.51455874660572,
+        "near_eye_xy": [
+          100.05921949255367,
+          112.53469230917752
+        ],
+        "far_eye_xy": [
+          77.5172023980404,
+          112.49442518403391
+        ],
+        "chin_xy": [
+          91.7974471780417,
+          160.24625197550523
+        ],
+        "chin_y": 160.24625197550523,
+        "crown_y": 56,
+        "neck_bottom_y": 194,
+        "alpha128_bbox": [
+          69,
+          56,
+          162,
+          194
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.5145587466057151,
+          "near_eye_x": 0.21921949255366258,
+          "chin_y": 0.24625197550523126,
+          "neck_bottom_y": 0,
+          "head_width": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3,
+          "head_width": 0
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.51455874660572,
+        "near_eye_xy": [
+          100.05921949255367,
+          112.53469230917752
+        ],
+        "far_eye_xy": [
+          77.5172023980404,
+          112.49442518403391
+        ],
+        "chin_xy": [
+          91.7974471780417,
+          160.24625197550523
+        ],
+        "chin_y": 160.24625197550523,
+        "crown_y": 56,
+        "neck_bottom_y": 194,
+        "alpha128_bbox": [
+          69,
+          56,
+          162,
+          194
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.5145587466057151,
+          "near_eye_x": 0.21921949255366258,
+          "chin_y": 0.24625197550523126,
+          "neck_bottom_y": 0,
+          "head_width": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3,
+          "head_width": 0
+        }
+      }
+    },
+    {
+      "id": "pt_face_c_03",
+      "size_class": "child",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-754e235a-4f36-4e58-a9d7-b4ec60f20482.png",
+      "source_sha256": "437f3184dc4f84d2b26b5393084fc5eeabfcd2ae7b5d39c6dadd3aec01e8906b",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_c_03.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_c_03.png",
+      "target": {
+        "crown_y": 56,
+        "eye_mean_y": 112,
+        "near_eye_x": 99.84,
+        "chin_y": 160,
+        "neck_bottom_y": 194,
+        "head_width": 94
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              60,
+              63.04654616466134
+            ],
+            [
+              184,
+              169.9823259811751
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              43,
+              56
+            ],
+            [
+              107.16925506285372,
+              112
+            ],
+            [
+              159.02956987203152,
+              160
+            ],
+            [
+              190,
+              194
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 107.16925506285372,
+        "near_eye_xy": [
+          102.66474966012674,
+          106.53932687205634
+        ],
+        "far_eye_xy": [
+          77.36173173578669,
+          107.79918325365111
+        ],
+        "chin_xy": [
+          93.13965236244849,
+          159.02956987203152
+        ],
+        "chin_y": 159.02956987203152,
+        "crown_y": 43,
+        "neck_bottom_y": 190,
+        "alpha128_bbox": [
+          68,
+          43,
+          176,
+          190
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": null,
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred",
+        "manual_observation_before_child_width_adjustment": {
+          "xy": [
+            151,
+            128
+          ],
+          "estimated_uncertainty_px": 3,
+          "status": "NOT_VERIFIED",
+          "method": "visual estimate, not calibrated landmark detection"
+        }
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": null,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.54008708400761,
+        "near_eye_xy": [
+          100.12870839593279,
+          111.07515366786538
+        ],
+        "far_eye_xy": [
+          78.12747818841535,
+          112.00502050014984
+        ],
+        "chin_xy": [
+          92.21981476919336,
+          159.45503485593449
+        ],
+        "chin_y": 159.45503485593449,
+        "crown_y": 56,
+        "neck_bottom_y": 194,
+        "alpha128_bbox": [
+          70,
+          56,
+          163,
+          194
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.4599129159923905,
+          "near_eye_x": 0.28870839593278674,
+          "chin_y": -0.5449651440655146,
+          "neck_bottom_y": 0,
+          "head_width": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3,
+          "head_width": 0
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.54008708400761,
+        "near_eye_xy": [
+          100.12870839593279,
+          111.07515366786538
+        ],
+        "far_eye_xy": [
+          78.12747818841535,
+          112.00502050014984
+        ],
+        "chin_xy": [
+          92.21981476919336,
+          159.45503485593449
+        ],
+        "chin_y": 159.45503485593449,
+        "crown_y": 56,
+        "neck_bottom_y": 194,
+        "alpha128_bbox": [
+          70,
+          56,
+          163,
+          194
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.4599129159923905,
+          "near_eye_x": 0.28870839593278674,
+          "chin_y": -0.5449651440655146,
+          "neck_bottom_y": 0,
+          "head_width": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3,
+          "head_width": 0
+        }
+      }
+    },
+    {
+      "id": "pt_face_c_04",
+      "size_class": "child",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-5bb8abc4-9b2c-49fb-ab48-7dfc29a5cb25.png",
+      "source_sha256": "74076bfe48638389a01140608f83b3b97a77de24fb97b25bd40102e38dd2fe18",
+      "source_revision": 2,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_c_04.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_c_04.png",
+      "target": {
+        "crown_y": 56,
+        "eye_mean_y": 112,
+        "near_eye_x": 99.84,
+        "chin_y": 160,
+        "neck_bottom_y": 194,
+        "head_width": 94
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              65,
+              62.90876429039474
+            ],
+            [
+              184,
+              170.46645659808706
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              54,
+              56
+            ],
+            [
+              110.52147212208843,
+              112
+            ],
+            [
+              162.40155294549174,
+              160
+            ],
+            [
+              200,
+              194
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.52147212208843,
+        "near_eye_xy": [
+          105.86009057232923,
+          109.65660012460694
+        ],
+        "far_eye_xy": [
+          81.81315884943922,
+          111.38634411956991
+        ],
+        "chin_xy": [
+          97.6446813519342,
+          162.40155294549174
+        ],
+        "chin_y": 162.40155294549174,
+        "crown_y": 54,
+        "neck_bottom_y": 200,
+        "alpha128_bbox": [
+          73,
+          54,
+          176,
+          200
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": null,
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": null,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.17282905741772,
+        "near_eye_xy": [
+          100.15322071220119,
+          111.51944191388111
+        ],
+        "far_eye_xy": [
+          78.03330605980841,
+          112.8262162009543
+        ],
+        "chin_xy": [
+          92.92418370120868,
+          159.5459080419305
+        ],
+        "chin_y": 159.5459080419305,
+        "crown_y": 56,
+        "neck_bottom_y": 194,
+        "alpha128_bbox": [
+          70,
+          56,
+          163,
+          194
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.17282905741771515,
+          "near_eye_x": 0.3132207122011863,
+          "chin_y": -0.45409195806951175,
+          "neck_bottom_y": 0,
+          "head_width": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3,
+          "head_width": 0
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.17282905741772,
+        "near_eye_xy": [
+          100.15322071220119,
+          111.51944191388111
+        ],
+        "far_eye_xy": [
+          78.03330605980841,
+          112.8262162009543
+        ],
+        "chin_xy": [
+          92.92418370120868,
+          159.5459080419305
+        ],
+        "chin_y": 159.5459080419305,
+        "crown_y": 56,
+        "neck_bottom_y": 194,
+        "alpha128_bbox": [
+          70,
+          56,
+          163,
+          194
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.17282905741771515,
+          "near_eye_x": 0.3132207122011863,
+          "chin_y": -0.45409195806951175,
+          "neck_bottom_y": 0,
+          "head_width": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3,
+          "head_width": 0
+        }
+      }
+    },
+    {
+      "id": "pt_face_f_01",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-e51dde67-e0ea-4a76-a647-6b685e024760.png",
+      "source_sha256": "0a844ef3fd0f099f1c174ad5427cf4039754d2258687ed97a0bcc4ddeb7cd903",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_f_01.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_f_01.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              56,
+              54.380038996015514
+            ],
+            [
+              182,
+              180.38003899601551
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              99.77798998792127,
+              112
+            ],
+            [
+              162.90681910510193,
+              168
+            ],
+            [
+              213,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 99.77798998792127,
+        "near_eye_xy": [
+          97.61996100398449,
+          98.12670679464736
+        ],
+        "far_eye_xy": [
+          74.25283389175902,
+          101.42927318119519
+        ],
+        "chin_xy": [
+          90.7952230963765,
+          162.90681910510193
+        ],
+        "chin_y": 162.90681910510193,
+        "crown_y": 40,
+        "neck_bottom_y": 213,
+        "alpha128_bbox": [
+          64,
+          40,
+          174,
+          213
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred",
+        "manual_observation_before_child_width_adjustment": {
+          "xy": [
+            149,
+            124
+          ],
+          "estimated_uncertainty_px": 3,
+          "status": "NOT_VERIFIED",
+          "method": "visual estimate, not calibrated landmark detection"
+        }
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.22781430964278,
+        "near_eye_xy": [
+          95.20914867641689,
+          108.53813825545573
+        ],
+        "far_eye_xy": [
+          72.19860871861799,
+          111.91749036382983
+        ],
+        "chin_xy": [
+          88.31783968677519,
+          167.6185480717013
+        ],
+        "chin_y": 167.6185480717013,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          62,
+          40,
+          172,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.7721856903572188,
+          "near_eye_x": -0.7908513235831123,
+          "chin_y": -0.3814519282987021,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.22781430964278,
+        "near_eye_xy": [
+          95.20914867641689,
+          108.53813825545573
+        ],
+        "far_eye_xy": [
+          72.19860871861799,
+          111.91749036382983
+        ],
+        "chin_xy": [
+          88.31783968677519,
+          167.6185480717013
+        ],
+        "chin_y": 167.6185480717013,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          62,
+          40,
+          172,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.7721856903572188,
+          "near_eye_x": -0.7908513235831123,
+          "chin_y": -0.3814519282987021,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_f_02",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-8819ed6c-61e8-4533-969f-275a991aabaa.png",
+      "source_sha256": "a4e2d40e53056a858eba57d3cea5b19c25ab96a3a7c9384884cec449ac18b80b",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_f_02.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_f_02.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              52,
+              47.29367083060349
+            ],
+            [
+              184,
+              179.2936708306035
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              99.93840363370884,
+              112
+            ],
+            [
+              160.68018262208287,
+              168
+            ],
+            [
+              211,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 99.93840363370884,
+        "near_eye_xy": [
+          100.70632916939651,
+          99.06119818246354
+        ],
+        "far_eye_xy": [
+          73.59348117021402,
+          100.81560908495415
+        ],
+        "chin_xy": [
+          89.87852635347554,
+          160.68018262208287
+        ],
+        "chin_y": 160.68018262208287,
+        "crown_y": 40,
+        "neck_bottom_y": 211,
+        "alpha128_bbox": [
+          60,
+          40,
+          176,
+          211
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.54260102141416,
+        "near_eye_xy": [
+          96.05242046248168,
+          110.82790142840531
+        ],
+        "far_eye_xy": [
+          68.85516771683615,
+          112.257300614423
+        ],
+        "chin_xy": [
+          84.79320367617765,
+          168.28724947348041
+        ],
+        "chin_y": 168.28724947348041,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          55,
+          40,
+          171,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.457398978585843,
+          "near_eye_x": 0.05242046248167753,
+          "chin_y": 0.28724947348041496,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.54260102141416,
+        "near_eye_xy": [
+          96.05242046248168,
+          110.82790142840531
+        ],
+        "far_eye_xy": [
+          68.85516771683615,
+          112.257300614423
+        ],
+        "chin_xy": [
+          84.79320367617765,
+          168.28724947348041
+        ],
+        "chin_y": 168.28724947348041,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          55,
+          40,
+          171,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.457398978585843,
+          "near_eye_x": 0.05242046248167753,
+          "chin_y": 0.28724947348041496,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_f_03",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-9c2b2b98-0f44-4dfc-95d1-14df2a8dcc8c.png",
+      "source_sha256": "ab514d9907bb8ecb30d913b238a1ae4dbde6e05c9e8ab3131add0cd7e78340a6",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_f_03.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_f_03.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              56,
+              51.53523954360526
+            ],
+            [
+              180,
+              175.53523954360526
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              47,
+              40
+            ],
+            [
+              104.62675225288649,
+              112
+            ],
+            [
+              163.9474180769896,
+              168
+            ],
+            [
+              209,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 104.62675225288649,
+        "near_eye_xy": [
+          100.46476045639474,
+          103.65485475543255
+        ],
+        "far_eye_xy": [
+          74.4020009714036,
+          105.59864975034043
+        ],
+        "chin_xy": [
+          91.94465219779977,
+          163.9474180769896
+        ],
+        "chin_y": 163.9474180769896,
+        "crown_y": 47,
+        "neck_bottom_y": 209,
+        "alpha128_bbox": [
+          64,
+          47,
+          172,
+          209
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.80018593377326,
+        "near_eye_xy": [
+          95.24591375081036,
+          109.96087424434654
+        ],
+        "far_eye_xy": [
+          68.90459434220202,
+          111.63949762319999
+        ],
+        "chin_xy": [
+          86.61182501215717,
+          167.56910877350722
+        ],
+        "chin_y": 167.56910877350722,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          60,
+          40,
+          168,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.199814066226736,
+          "near_eye_x": -0.7540862491896405,
+          "chin_y": -0.43089122649277556,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.80018593377326,
+        "near_eye_xy": [
+          95.24591375081036,
+          109.96087424434654
+        ],
+        "far_eye_xy": [
+          68.90459434220202,
+          111.63949762319999
+        ],
+        "chin_xy": [
+          86.61182501215717,
+          167.56910877350722
+        ],
+        "chin_y": 167.56910877350722,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          60,
+          40,
+          168,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.199814066226736,
+          "near_eye_x": -0.7540862491896405,
+          "chin_y": -0.43089122649277556,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_f_04",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-e9ac6ecb-6c18-4ffc-9198-9f784bbbfa76.png",
+      "source_sha256": "3236f69bc2c44e35ba4303d0ab1c6f8f090c9ac0dea5b2723f42b8631b30fb0d",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_f_04.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_f_04.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              59,
+              54.32121490003789
+            ],
+            [
+              187,
+              182.3212149000379
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              104.16860568069893,
+              112
+            ],
+            [
+              159.00668577569053,
+              168
+            ],
+            [
+              208,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 104.16860568069893,
+        "near_eye_xy": [
+          100.67878509996211,
+          103.47367295105812
+        ],
+        "far_eye_xy": [
+          75.72280952136983,
+          104.86353841033974
+        ],
+        "chin_xy": [
+          92.2895415767274,
+          159.00668577569053
+        ],
+        "chin_y": 159.00668577569053,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          67,
+          40,
+          179,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.90990279644907,
+        "near_eye_xy": [
+          95.78970407238732,
+          111.27975823217896
+        ],
+        "far_eye_xy": [
+          70.65937112493752,
+          112.5400473607192
+        ],
+        "chin_xy": [
+          87.42448249349991,
+          167.8377933956881
+        ],
+        "chin_y": 167.8377933956881,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          62,
+          40,
+          174,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.09009720355092554,
+          "near_eye_x": -0.2102959276126768,
+          "chin_y": -0.1622066043119048,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.90990279644907,
+        "near_eye_xy": [
+          95.78970407238732,
+          111.27975823217896
+        ],
+        "far_eye_xy": [
+          70.65937112493752,
+          112.5400473607192
+        ],
+        "chin_xy": [
+          87.42448249349991,
+          167.8377933956881
+        ],
+        "chin_y": 167.8377933956881,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          62,
+          40,
+          174,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.09009720355092554,
+          "near_eye_x": -0.2102959276126768,
+          "chin_y": -0.1622066043119048,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_f_05",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-f1c899db-654e-4c71-83fb-3e5c163b630e.png",
+      "source_sha256": "392ae5747cb8af70a19df8c2863d53fbbdaca3c882b782db3c4e386ca1a4d8e3",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_f_05.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_f_05.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              61,
+              56.23129188810647
+            ],
+            [
+              178,
+              173.23129188810645
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              48,
+              40
+            ],
+            [
+              105.42513410992419,
+              112
+            ],
+            [
+              163.14535597765405,
+              168
+            ],
+            [
+              207,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 105.42513410992419,
+        "near_eye_xy": [
+          100.76870811189353,
+          104.3456582999642
+        ],
+        "far_eye_xy": [
+          77.80530739867183,
+          106.50460991988416
+        ],
+        "chin_xy": [
+          84.19365074721247,
+          163.14535597765405
+        ],
+        "chin_y": 163.14535597765405,
+        "crown_y": 48,
+        "neck_bottom_y": 207,
+        "alpha128_bbox": [
+          69,
+          48,
+          170,
+          207
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.33259892837305,
+        "near_eye_xy": [
+          95.63201876432716,
+          110.00208765660136
+        ],
+        "far_eye_xy": [
+          72.63740034626599,
+          112.66311020014473
+        ],
+        "chin_xy": [
+          79.33128838358789,
+          168.2769013899133
+        ],
+        "chin_y": 168.2769013899133,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          64,
+          40,
+          166,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.667401071626955,
+          "near_eye_x": -0.36798123567284335,
+          "chin_y": 0.2769013899132915,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.33259892837305,
+        "near_eye_xy": [
+          95.63201876432716,
+          110.00208765660136
+        ],
+        "far_eye_xy": [
+          72.63740034626599,
+          112.66311020014473
+        ],
+        "chin_xy": [
+          79.33128838358789,
+          168.2769013899133
+        ],
+        "chin_y": 168.2769013899133,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          64,
+          40,
+          166,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.667401071626955,
+          "near_eye_x": -0.36798123567284335,
+          "chin_y": 0.2769013899132915,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_f_06",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-8f884ae0-1a11-4a30-82b6-331cc1ce9954.png",
+      "source_sha256": "6da6bcaeece01774b97dd761621b785dd8c7f5ed5da6d00ba52ef1f98037bf96",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_f_06.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_f_06.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              54,
+              49.917826190619735
+            ],
+            [
+              187,
+              182.91782619061973
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              39,
+              40
+            ],
+            [
+              100.35117940381528,
+              112
+            ],
+            [
+              163.53373641373764,
+              168
+            ],
+            [
+              214,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 100.35117940381528,
+        "near_eye_xy": [
+          100.08217380938027,
+          98.95107049165465
+        ],
+        "far_eye_xy": [
+          72.6721874985786,
+          101.7512883159759
+        ],
+        "chin_xy": [
+          91.50386296761008,
+          163.53373641373764
+        ],
+        "chin_y": 163.53373641373764,
+        "crown_y": 39,
+        "neck_bottom_y": 214,
+        "alpha128_bbox": [
+          62,
+          39,
+          179,
+          214
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.21523154747024,
+        "near_eye_xy": [
+          94.7946003523225,
+          108.80503866804975
+        ],
+        "far_eye_xy": [
+          67.1935734137603,
+          111.62542442689073
+        ],
+        "chin_xy": [
+          85.75402426074379,
+          167.97353085422998
+        ],
+        "chin_y": 167.97353085422998,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          58,
+          40,
+          175,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.784768452529761,
+          "near_eye_x": -1.2053996476774955,
+          "chin_y": -0.02646914577002235,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.21523154747024,
+        "near_eye_xy": [
+          94.7946003523225,
+          108.80503866804975
+        ],
+        "far_eye_xy": [
+          67.1935734137603,
+          111.62542442689073
+        ],
+        "chin_xy": [
+          85.75402426074379,
+          167.97353085422998
+        ],
+        "chin_y": 167.97353085422998,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          58,
+          40,
+          175,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.784768452529761,
+          "near_eye_x": -1.2053996476774955,
+          "chin_y": -0.02646914577002235,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_f_07",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-175de750-51d2-406f-9872-83314b946ff0.png",
+      "source_sha256": "f2b65157b410e3d10e2a146ce8806a469a5a141faf70bb67de3c4328766d4334",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_f_07.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_f_07.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              62,
+              55.670477910243605
+            ],
+            [
+              179,
+              172.67047791024362
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              44,
+              40
+            ],
+            [
+              102.8339073559348,
+              112
+            ],
+            [
+              162.07140145497794,
+              168
+            ],
+            [
+              209,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 102.8339073559348,
+        "near_eye_xy": [
+          102.3295220897564,
+          102.25126965547376
+        ],
+        "far_eye_xy": [
+          77.11413595285039,
+          103.41654505639583
+        ],
+        "chin_xy": [
+          94.13309034543659,
+          162.07140145497794
+        ],
+        "chin_y": 162.07140145497794,
+        "crown_y": 44,
+        "neck_bottom_y": 209,
+        "alpha128_bbox": [
+          70,
+          44,
+          171,
+          209
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.57309680954941,
+        "near_eye_xy": [
+          95.82716683646788,
+          110.10695964130309
+        ],
+        "far_eye_xy": [
+          70.81837619749804,
+          111.03923397779575
+        ],
+        "chin_xy": [
+          87.12725030111551,
+          168.6538722684985
+        ],
+        "chin_y": 168.6538722684985,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          64,
+          40,
+          165,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.426903190450588,
+          "near_eye_x": -0.1728331635321183,
+          "chin_y": 0.6538722684985032,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.57309680954941,
+        "near_eye_xy": [
+          95.82716683646788,
+          110.10695964130309
+        ],
+        "far_eye_xy": [
+          70.81837619749804,
+          111.03923397779575
+        ],
+        "chin_xy": [
+          87.12725030111551,
+          168.6538722684985
+        ],
+        "chin_y": 168.6538722684985,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          64,
+          40,
+          165,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.426903190450588,
+          "near_eye_x": -0.1728331635321183,
+          "chin_y": 0.6538722684985032,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_f_08",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-71d8557a-47b6-4493-a24f-8dfbacce2982.png",
+      "source_sha256": "5453b92bb09306b3dd3b51f22e8694f1d77670c73ff3b94de1b2b4af91a4ae8a",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_f_08.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_f_08.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              60,
+              54.12824704853642
+            ],
+            [
+              179,
+              173.12824704853642
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              49,
+              40
+            ],
+            [
+              103.686622073948,
+              112
+            ],
+            [
+              159.71652959808415,
+              168
+            ],
+            [
+              205,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 103.686622073948,
+        "near_eye_xy": [
+          101.87175295146358,
+          102.13204337163052
+        ],
+        "far_eye_xy": [
+          77.17564333365237,
+          105.24120077626549
+        ],
+        "chin_xy": [
+          82.70705183132782,
+          159.71652959808415
+        ],
+        "chin_y": 159.71652959808415,
+        "crown_y": 49,
+        "neck_bottom_y": 205,
+        "alpha128_bbox": [
+          68,
+          49,
+          171,
+          205
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.51854909295616,
+        "near_eye_xy": [
+          95.06618003404674,
+          109.93813223422087
+        ],
+        "far_eye_xy": [
+          70.50953049780098,
+          113.09896595169145
+        ],
+        "chin_xy": [
+          75.70121954217848,
+          168.79021617698447
+        ],
+        "chin_y": 168.79021617698447,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          62,
+          40,
+          165,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.4814509070438362,
+          "near_eye_x": -0.933819965953262,
+          "chin_y": 0.7902161769844724,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.51854909295616,
+        "near_eye_xy": [
+          95.06618003404674,
+          109.93813223422087
+        ],
+        "far_eye_xy": [
+          70.50953049780098,
+          113.09896595169145
+        ],
+        "chin_xy": [
+          75.70121954217848,
+          168.79021617698447
+        ],
+        "chin_y": 168.79021617698447,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          62,
+          40,
+          165,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.4814509070438362,
+          "near_eye_x": -0.933819965953262,
+          "chin_y": 0.7902161769844724,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_m_01",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-82b06c9c-9ce7-4e48-9e7a-3d8ae92740ac.png",
+      "source_sha256": "cae7a9af26028df5a74182c85289c95024168dfbc3014376bc25d514793d6859",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_m_01.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_m_01.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              59,
+              56.129958374755006
+            ],
+            [
+              182,
+              179.129958374755
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              46,
+              40
+            ],
+            [
+              104.14359926691063,
+              112
+            ],
+            [
+              162.26893418313728,
+              168
+            ],
+            [
+              208,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 104.14359926691063,
+        "near_eye_xy": [
+          98.870041625245,
+          103.02440788553388
+        ],
+        "far_eye_xy": [
+          75.60724422753405,
+          105.26279064828736
+        ],
+        "chin_xy": [
+          91.33551620427647,
+          162.26893418313728
+        ],
+        "chin_y": 162.26893418313728,
+        "crown_y": 46,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          67,
+          46,
+          174,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred",
+        "manual_observation_before_child_width_adjustment": {
+          "xy": [
+            149,
+            122
+          ],
+          "estimated_uncertainty_px": 3,
+          "status": "NOT_VERIFIED",
+          "method": "visual estimate, not calibrated landmark detection"
+        }
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.6371591052366,
+        "near_eye_xy": [
+          95.82291260185593,
+          110.38231679992714
+        ],
+        "far_eye_xy": [
+          72.40952691117275,
+          112.89200141054607
+        ],
+        "chin_xy": [
+          88.13093924961686,
+          168.2485989218652
+        ],
+        "chin_y": 168.2485989218652,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          64,
+          40,
+          171,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.3628408947633943,
+          "near_eye_x": -0.17708739814406727,
+          "chin_y": 0.24859892186520938,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.6371591052366,
+        "near_eye_xy": [
+          95.82291260185593,
+          110.38231679992714
+        ],
+        "far_eye_xy": [
+          72.40952691117275,
+          112.89200141054607
+        ],
+        "chin_xy": [
+          88.13093924961686,
+          168.2485989218652
+        ],
+        "chin_y": 168.2485989218652,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          64,
+          40,
+          171,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.3628408947633943,
+          "near_eye_x": -0.17708739814406727,
+          "chin_y": 0.24859892186520938,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_m_02",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-780fbc41-323b-40e7-845e-78ee4c23cef9.png",
+      "source_sha256": "23f62e566467ea4a994722ae80cca433ac36e3e0ab636be59acdc4ad9cbf03f5",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_m_02.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_m_02.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              59,
+              57.243409602859586
+            ],
+            [
+              176,
+              174.24340960285957
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              43,
+              40
+            ],
+            [
+              96.9890455838633,
+              112
+            ],
+            [
+              156.9495131839999,
+              168
+            ],
+            [
+              198,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 96.9890455838633,
+        "near_eye_xy": [
+          97.75659039714041,
+          96.05522725257931
+        ],
+        "far_eye_xy": [
+          76.97961324918802,
+          97.92286391514729
+        ],
+        "chin_xy": [
+          91.71491954194221,
+          156.9495131839999
+        ],
+        "chin_y": 156.9495131839999,
+        "crown_y": 43,
+        "neck_bottom_y": 198,
+        "alpha128_bbox": [
+          67,
+          43,
+          168,
+          198
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.44287278865758,
+        "near_eye_xy": [
+          96.38637074053695,
+          109.31296925353801
+        ],
+        "far_eye_xy": [
+          75.08817218915827,
+          111.57277632377713
+        ],
+        "chin_xy": [
+          90.34862965553339,
+          167.7898228268691
+        ],
+        "chin_y": 167.7898228268691,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          65,
+          40,
+          166,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.5571272113424186,
+          "near_eye_x": 0.38637074053694676,
+          "chin_y": -0.21017717313088724,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 110.44287278865758,
+        "near_eye_xy": [
+          96.38637074053695,
+          109.31296925353801
+        ],
+        "far_eye_xy": [
+          75.08817218915827,
+          111.57277632377713
+        ],
+        "chin_xy": [
+          90.34862965553339,
+          167.7898228268691
+        ],
+        "chin_y": 167.7898228268691,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          65,
+          40,
+          166,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -1.5571272113424186,
+          "near_eye_x": 0.38637074053694676,
+          "chin_y": -0.21017717313088724,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_m_03",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-868dac22-8c0d-49b5-bc28-e98b71a5293d.png",
+      "source_sha256": "ff01c96f4e72d030b55aed273eb39ee737b4778697443656bfc3d89325f39858",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_m_03.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_m_03.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              54,
+              49.544384603341314
+            ],
+            [
+              185,
+              180.5443846033413
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              42,
+              40
+            ],
+            [
+              102.23803492695151,
+              112
+            ],
+            [
+              162.8304873273769,
+              168
+            ],
+            [
+              206,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 102.23803492695151,
+        "near_eye_xy": [
+          100.45561539665869,
+          101.90179651761112
+        ],
+        "far_eye_xy": [
+          74.16340609938622,
+          102.57427333629191
+        ],
+        "chin_xy": [
+          90.84597529574967,
+          162.8304873273769
+        ],
+        "chin_y": 162.8304873273769,
+        "crown_y": 42,
+        "neck_bottom_y": 206,
+        "alpha128_bbox": [
+          62,
+          42,
+          177,
+          206
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.37298769904078,
+        "near_eye_xy": [
+          95.80256237518097,
+          111.11094699734167
+        ],
+        "far_eye_xy": [
+          69.51862918976258,
+          111.63502840073988
+        ],
+        "chin_xy": [
+          85.70579581265292,
+          168.82136685163252
+        ],
+        "chin_y": 168.82136685163252,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          58,
+          40,
+          172,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.6270123009592226,
+          "near_eye_x": -0.19743762481903104,
+          "chin_y": 0.8213668516325185,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.37298769904078,
+        "near_eye_xy": [
+          95.80256237518097,
+          111.11094699734167
+        ],
+        "far_eye_xy": [
+          69.51862918976258,
+          111.63502840073988
+        ],
+        "chin_xy": [
+          85.70579581265292,
+          168.82136685163252
+        ],
+        "chin_y": 168.82136685163252,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          58,
+          40,
+          172,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.6270123009592226,
+          "near_eye_x": -0.19743762481903104,
+          "chin_y": 0.8213668516325185,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_m_04",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-d36355a3-46f2-4c2e-9204-e4409269214c.png",
+      "source_sha256": "ba27b487d0a4468a5ad493a720ef42f10e0ae71f7bebb52b02e60dd881018d19",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_m_04.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_m_04.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              58,
+              55.00547815607793
+            ],
+            [
+              181,
+              178.0054781560779
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              45,
+              40
+            ],
+            [
+              102.06918591559213,
+              112
+            ],
+            [
+              162.49370637623122,
+              168
+            ],
+            [
+              208,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 102.06918591559213,
+        "near_eye_xy": [
+          98.99452184392207,
+          101.08960680276702
+        ],
+        "far_eye_xy": [
+          73.70196550981358,
+          103.04876502841724
+        ],
+        "chin_xy": [
+          89.90863397261455,
+          162.49370637623122
+        ],
+        "chin_y": 162.49370637623122,
+        "crown_y": 45,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          66,
+          45,
+          173,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.70315833170919,
+        "near_eye_xy": [
+          96.44492235789676,
+          110.60335520448673
+        ],
+        "far_eye_xy": [
+          71.03846297599057,
+          112.80296145893165
+        ],
+        "chin_xy": [
+          86.61328690926166,
+          169.2057026543206
+        ],
+        "chin_y": 169.2057026543206,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          63,
+          40,
+          170,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.29684166829080993,
+          "near_eye_x": 0.4449223578967576,
+          "chin_y": 1.2057026543205893,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.70315833170919,
+        "near_eye_xy": [
+          96.44492235789676,
+          110.60335520448673
+        ],
+        "far_eye_xy": [
+          71.03846297599057,
+          112.80296145893165
+        ],
+        "chin_xy": [
+          86.61328690926166,
+          169.2057026543206
+        ],
+        "chin_y": 169.2057026543206,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          63,
+          40,
+          170,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.29684166829080993,
+          "near_eye_x": 0.4449223578967576,
+          "chin_y": 1.2057026543205893,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_m_05",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-df39377d-8383-450e-8864-985aeeed8139.png",
+      "source_sha256": "e0d52e448332aa6ef60c5fa50b94d89a70904e8f28edf4b6888d85aa8e70cfe0",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_m_05.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_m_05.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              57,
+              52.43332663822166
+            ],
+            [
+              184,
+              179.43332663822167
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              43,
+              40
+            ],
+            [
+              102.70714370723474,
+              112
+            ],
+            [
+              165.78612385043607,
+              168
+            ],
+            [
+              211,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 102.70714370723474,
+        "near_eye_xy": [
+          100.56667336177834,
+          102.86410103062985
+        ],
+        "far_eye_xy": [
+          75.39786459460349,
+          102.5501863838396
+        ],
+        "chin_xy": [
+          89.61939454977505,
+          165.78612385043607
+        ],
+        "chin_y": 165.78612385043607,
+        "crown_y": 43,
+        "neck_bottom_y": 211,
+        "alpha128_bbox": [
+          65,
+          43,
+          176,
+          211
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.06195039238294,
+        "near_eye_xy": [
+          96.07593913775729,
+          112.38202952984314
+        ],
+        "far_eye_xy": [
+          70.41125114749953,
+          111.74187125492274
+        ],
+        "chin_xy": [
+          83.47409292231191,
+          169.54127221701123
+        ],
+        "chin_y": 169.54127221701123,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          60,
+          40,
+          171,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.06195039238293987,
+          "near_eye_x": 0.07593913775728822,
+          "chin_y": 1.541272217011226,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.06195039238294,
+        "near_eye_xy": [
+          96.07593913775729,
+          112.38202952984314
+        ],
+        "far_eye_xy": [
+          70.41125114749953,
+          111.74187125492274
+        ],
+        "chin_xy": [
+          83.47409292231191,
+          169.54127221701123
+        ],
+        "chin_y": 169.54127221701123,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          60,
+          40,
+          171,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.06195039238293987,
+          "near_eye_x": 0.07593913775728822,
+          "chin_y": 1.541272217011226,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_m_06",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-fe4001a3-eaf4-476a-bdd2-7672740245a5.png",
+      "source_sha256": "614d3260b76b87cf0351effed8dc12ff54656f2b11df6b6f748d978658682ce6",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_m_06.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_m_06.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              61,
+              54.71460283105125
+            ],
+            [
+              182,
+              175.71460283105125
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              46,
+              40
+            ],
+            [
+              103.12934112231824,
+              112
+            ],
+            [
+              160.38929704639668,
+              168
+            ],
+            [
+              206,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 103.12934112231824,
+        "near_eye_xy": [
+          102.28539716894875,
+          102.26790432614325
+        ],
+        "far_eye_xy": [
+          77.95895046803548,
+          103.99077791849322
+        ],
+        "chin_xy": [
+          93.52138005665802,
+          160.38929704639668
+        ],
+        "chin_y": 160.38929704639668,
+        "crown_y": 46,
+        "neck_bottom_y": 206,
+        "alpha128_bbox": [
+          69,
+          46,
+          174,
+          206
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.96964007889073,
+        "near_eye_xy": [
+          94.70542537847587,
+          111.10317556665132
+        ],
+        "far_eye_xy": [
+          70.47885318453973,
+          112.83610459113015
+        ],
+        "chin_xy": [
+          85.51669524844692,
+          169.00518201015268
+        ],
+        "chin_y": 169.00518201015268,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          63,
+          40,
+          168,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.030359921109265997,
+          "near_eye_x": -1.2945746215241343,
+          "chin_y": 1.00518201015268,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 111.96964007889073,
+        "near_eye_xy": [
+          94.70542537847587,
+          111.10317556665132
+        ],
+        "far_eye_xy": [
+          70.47885318453973,
+          112.83610459113015
+        ],
+        "chin_xy": [
+          85.51669524844692,
+          169.00518201015268
+        ],
+        "chin_y": 169.00518201015268,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          63,
+          40,
+          168,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": -0.030359921109265997,
+          "near_eye_x": -1.2945746215241343,
+          "chin_y": 1.00518201015268,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_m_07",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-07757c0e-bf93-4223-8458-6e3454d6590e.png",
+      "source_sha256": "a9c6ca317d894d81a98c2bccc1696d945975d7617a965ce6f77f9e722621d235",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_m_07.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_m_07.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              59,
+              54.292972176546456
+            ],
+            [
+              187,
+              182.29297217654647
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              43,
+              40
+            ],
+            [
+              99.49402193485396,
+              112
+            ],
+            [
+              160.90708643984794,
+              168
+            ],
+            [
+              208,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 99.49402193485396,
+        "near_eye_xy": [
+          100.70702782345354,
+          98.80736329178201
+        ],
+        "far_eye_xy": [
+          75.534733169635,
+          100.18068057792591
+        ],
+        "chin_xy": [
+          91.88970149897341,
+          160.90708643984794
+        ],
+        "chin_y": 160.90708643984794,
+        "crown_y": 43,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          67,
+          43,
+          179,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.538381901928,
+        "near_eye_xy": [
+          96.12823308834868,
+          111.7270172289271
+        ],
+        "far_eye_xy": [
+          70.99145893657169,
+          113.34974657492891
+        ],
+        "chin_xy": [
+          86.4306772852151,
+          170.15303196137472
+        ],
+        "chin_y": 170.15303196137472,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          62,
+          40,
+          174,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.5383819019280054,
+          "near_eye_x": 0.1282330883486793,
+          "chin_y": 2.1530319613747224,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.538381901928,
+        "near_eye_xy": [
+          96.12823308834868,
+          111.7270172289271
+        ],
+        "far_eye_xy": [
+          70.99145893657169,
+          113.34974657492891
+        ],
+        "chin_xy": [
+          86.4306772852151,
+          170.15303196137472
+        ],
+        "chin_y": 170.15303196137472,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          62,
+          40,
+          174,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.5383819019280054,
+          "near_eye_x": 0.1282330883486793,
+          "chin_y": 2.1530319613747224,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    },
+    {
+      "id": "pt_face_m_08",
+      "size_class": "adult",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-0b9e4e7b-8e67-409f-89b3-cb4440262039.png",
+      "source_sha256": "195be2ff6a2f11ad8a3948f9cbf603006acfa50b4befbd850507f723faeeb9ca",
+      "source_revision": 1,
+      "raw256": "/tmp/astra-wave10-v2-work/review/faces-raw256/pt_face_m_08.png",
+      "normalized": "/tmp/astra-wave10-v2-work/review/faces-normalized/pt_face_m_08.png",
+      "target": {
+        "crown_y": 40,
+        "eye_mean_y": 112,
+        "near_eye_x": 96,
+        "chin_y": 168,
+        "neck_bottom_y": 208
+      },
+      "transformations": [
+        {
+          "stage": "initial",
+          "x": [
+            [
+              0,
+              0
+            ],
+            [
+              60,
+              54.71779474319783
+            ],
+            [
+              182,
+              176.71779474319783
+            ],
+            [
+              256,
+              256
+            ]
+          ],
+          "y": [
+            [
+              0,
+              0
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              101.06580659515384,
+              112
+            ],
+            [
+              161.09978999747773,
+              168
+            ],
+            [
+              208,
+              208
+            ],
+            [
+              256,
+              256
+            ]
+          ]
+        }
+      ],
+      "source_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 101.06580659515384,
+        "near_eye_xy": [
+          101.28220525680217,
+          100.37501536614354
+        ],
+        "far_eye_xy": [
+          77.81055842279147,
+          101.75659782416415
+        ],
+        "chin_xy": [
+          92.27901539135064,
+          161.09978999747773
+        ],
+        "chin_y": 161.09978999747773,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          68,
+          40,
+          174,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "ear": {
+        "status": "NOT_MEASURED",
+        "reference": [
+          150,
+          120
+        ],
+        "note": "virtual reference only; manual ear-center validation required; child ear target not inferred"
+      },
+      "hairline": {
+        "status": "NOT_MEASURED",
+        "reference_y": 70,
+        "note": "bald face has no measurable hairline; virtual reference only"
+      },
+      "first_pass_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.21151645278246,
+        "near_eye_xy": [
+          95.10496207246388,
+          111.6032229479606
+        ],
+        "far_eye_xy": [
+          71.31348760076673,
+          112.81980995760432
+        ],
+        "chin_xy": [
+          85.76094831271939,
+          168.9266438685247
+        ],
+        "chin_y": 168.9266438685247,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          63,
+          40,
+          168,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "first_pass_validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.21151645278246178,
+          "near_eye_x": -0.8950379275361229,
+          "chin_y": 0.9266438685247067,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      },
+      "final_measured": {
+        "detection_status": "detected",
+        "eye_mean_y": 112.21151645278246,
+        "near_eye_xy": [
+          95.10496207246388,
+          111.6032229479606
+        ],
+        "far_eye_xy": [
+          71.31348760076673,
+          112.81980995760432
+        ],
+        "chin_xy": [
+          85.76094831271939,
+          168.9266438685247
+        ],
+        "chin_y": 168.9266438685247,
+        "crown_y": 40,
+        "neck_bottom_y": 208,
+        "alpha128_bbox": [
+          63,
+          40,
+          168,
+          208
+        ],
+        "face_confidence": 1,
+        "landmark_precision_confidence": null,
+        "crown_method": "top of alpha>=128 bounding box",
+        "chin_method": "max y of Vision faceContour",
+        "near_eye_method": "landmark center of wider eye, inferred"
+      },
+      "validation": {
+        "pass": true,
+        "deltas": {
+          "crown_y": 0,
+          "eye_mean_y": 0.21151645278246178,
+          "near_eye_x": -0.8950379275361229,
+          "chin_y": 0.9266438685247067,
+          "neck_bottom_y": 0
+        },
+        "tolerance": {
+          "crown_y": 3,
+          "eye_mean_y": 2,
+          "near_eye_x": 2,
+          "chin_y": 4,
+          "neck_bottom_y": 3
+        }
+      }
+    }
+  ]
+}

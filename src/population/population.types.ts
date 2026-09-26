@@ -31,4 +31,12 @@ export interface House {
   members?: HouseholdMembers;
   /** LB-8 (save v11): slots that hold a product, by slot index. Absent = every slot empty. */
   crafts?: readonly HouseholdSlot[];
+  /** FP-3 (save v12): the household has been short of food since this tick without a break. Absent = fed. */
+  foodShortSinceTick?: number;
+  /** FP-3 stage 1 (save v12): the household has been preparing to leave since this tick (`떠날 준비`). */
+  leavingSinceTick?: number;
+  /** FP-3 stage 2 (save v12): the household left at this tick; the house stands empty and pays no rent (not demolished). */
+  abandonedTick?: number;
+  /** FP-4 (save v12): the winter ration's carried fraction, thousandths of a bread (0–999). Absent = 0. */
+  winterRationCarry?: number;
 }

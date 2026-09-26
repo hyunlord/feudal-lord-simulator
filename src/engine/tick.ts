@@ -24,6 +24,7 @@ import { recordFoodObservationActivity, refreshFoodObservation } from "./autopla
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { settleMarkets } from "./marketSettlement";
 import { accrueTollCrossings, settleMoneyPeriod } from "./moneyRules";
+import { advanceSeasons } from "./seasonPressure";
 import { carterCrossings } from "./tollCrossings";
 import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
@@ -245,6 +246,6 @@ export function advanceSimulationSubstep(input: GameState): GameState {
 export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   return updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })),
+    advanceSeasons(settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))),
   ))));
 }

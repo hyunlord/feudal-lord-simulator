@@ -1,0 +1,62 @@
+{
+  "url": "http://127.0.0.1:4241/",
+  "base": "http://127.0.0.1:4242/",
+  "board": {
+    "city": "seed2",
+    "tile": [
+      44,
+      38
+    ]
+  },
+  "raster": "software (--disable-gpu)",
+  "rows": [
+    {
+      "view": "z0.60-dpr1",
+      "sha256": "3d58d4fe8e35a407127cf215e4e13b16f6efe73789b84621c9f21f05252f2c46",
+      "secondPage": "3d58d4fe8e35a407127cf215e4e13b16f6efe73789b84621c9f21f05252f2c46",
+      "identical": true,
+      "trunk": "0a4a8331b1495a4147c62f257c52bca54b2377444ef5993db8a72873c8d29cac",
+      "equalsTrunk": false
+    },
+    {
+      "view": "z0.60-dpr2",
+      "sha256": "218e1014e029cce9a5d3afdc007a040d60144c3c008e7ddfbbb3dbf4ce109b18",
+      "secondPage": "218e1014e029cce9a5d3afdc007a040d60144c3c008e7ddfbbb3dbf4ce109b18",
+      "identical": true,
+      "trunk": "aabee492988554d576f1615b6aab4ed2cce9ce5fb838c1a32f3fc2d1287d71fd",
+      "equalsTrunk": false
+    },
+    {
+      "view": "z1.00-dpr1",
+      "sha256": "bd5eb4145fd3bd3fafcc1c7f0244130fd3b1608db6b970793e775543b4449e8f",
+      "secondPage": "bd5eb4145fd3bd3fafcc1c7f0244130fd3b1608db6b970793e775543b4449e8f",
+      "identical": true,
+      "trunk": "578671f4a70f45e8d3282de14831d8b69c645d30f265c4891b5693266f67b11c",
+      "equalsTrunk": false
+    },
+    {
+      "view": "z1.00-dpr2",
+      "sha256": "63c36e3b4b09b463846de0e34d317a5cf2af739386060744bed2e182e28bb6fe",
+      "secondPage": "63c36e3b4b09b463846de0e34d317a5cf2af739386060744bed2e182e28bb6fe",
+      "identical": true,
+      "trunk": "c05fc96cc7bfab34249f0b81605cfa7aca3e2b4432b9b06732afad430fc25b08",
+      "equalsTrunk": false
+    },
+    {
+      "view": "z1.35-dpr1",
+      "sha256": "e746772a2e23f5172492cf759148360517460bb3a6b4314245f12f13f4891ff2",
+      "secondPage": "e746772a2e23f5172492cf759148360517460bb3a6b4314245f12f13f4891ff2",
+      "identical": true,
+      "trunk": "97095a425a7ff7deca8006488ecd558ddf7e1a0151e091d4b5dc4a70afc15fa0",
+      "equalsTrunk": false
+    },
+    {
+      "view": "z1.35-dpr2",
+      "sha256": "77618676d363fd6c1582b2afcd68df1fc4a3b52300abee234f296632cd08e4a3",
+      "secondPage": "77618676d363fd6c1582b2afcd68df1fc4a3b52300abee234f296632cd08e4a3",
+      "identical": true,
+      "trunk": "0a52ae3b54f4575df600890189fc35f72e8334afaaf0b1a514401e948bb18812",
+      "equalsTrunk": false
+    }
+  ]
+}

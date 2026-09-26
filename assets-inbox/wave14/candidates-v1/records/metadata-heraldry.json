@@ -1,0 +1,647 @@
+[
+  {
+    "id": "shield_heater",
+    "file": "assets/heraldry/shield_heater.png",
+    "width": 256,
+    "height": 256,
+    "role": "shield",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M30 25 H226 V104 C226 164 184 209 128 238 C72 209 30 164 30 104 Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white fill / black outline; alpha silhouette. fill=alpha*luminance, outline=alpha-fill",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "shield_rounded",
+    "file": "assets/heraldry/shield_rounded.png",
+    "width": 256,
+    "height": 256,
+    "role": "shield",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M27 25 Q128 16 229 25 V109 C229 177 190 221 128 238 C66 221 27 177 27 109 Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white fill / black outline; alpha silhouette. fill=alpha*luminance, outline=alpha-fill",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "shield_knightly",
+    "file": "assets/heraldry/shield_knightly.png",
+    "width": 256,
+    "height": 256,
+    "role": "shield",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M54 22 H202 V107 C202 166 164 216 128 240 C92 216 54 166 54 107 Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white fill / black outline; alpha silhouette. fill=alpha*luminance, outline=alpha-fill",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_per_pale",
+    "file": "assets/heraldry/partition_per_pale.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M128 0H256V256H128Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_per_fess",
+    "file": "assets/heraldry/partition_per_fess.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 128H256V256H0Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_per_bend",
+    "file": "assets/heraldry/partition_per_bend.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 0L256 256H0Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_per_bend_sinister",
+    "file": "assets/heraldry/partition_per_bend_sinister.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M256 0V256H0Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_per_chevron",
+    "file": "assets/heraldry/partition_per_chevron.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 202L128 101L256 202V256H0Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_quarterly",
+    "file": "assets/heraldry/partition_quarterly.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 0H128V128H0ZM128 128H256V256H128Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_per_saltire",
+    "file": "assets/heraldry/partition_per_saltire.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 0H256L128 128ZM0 256H256L128 128Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_per_pale_indented",
+    "file": "assets/heraldry/partition_per_pale_indented.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M128 0L144 16L112 48L144 80L112 112L144 144L112 176L144 208L112 240L128 256H256V0Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_barry",
+    "file": "assets/heraldry/partition_barry.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 0H256V43H0ZM0 86H256V129H0ZM0 172H256V215H0Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "partition_paly",
+    "file": "assets/heraldry/partition_paly.png",
+    "width": 256,
+    "height": 256,
+    "role": "partition",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 0H43V256H0ZM86 0H129V256H86ZM172 0H215V256H172Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "ordinary_chief",
+    "file": "assets/heraldry/ordinary_chief.png",
+    "width": 256,
+    "height": 256,
+    "role": "ordinary",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 0H256V78H0Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "ordinary_fess",
+    "file": "assets/heraldry/ordinary_fess.png",
+    "width": 256,
+    "height": 256,
+    "role": "ordinary",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 105H256V151H0Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "ordinary_pale",
+    "file": "assets/heraldry/ordinary_pale.png",
+    "width": 256,
+    "height": 256,
+    "role": "ordinary",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M105 0H151V256H105Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "ordinary_bend",
+    "file": "assets/heraldry/ordinary_bend.png",
+    "width": 256,
+    "height": 256,
+    "role": "ordinary",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 0H32L256 224V256H224L0 32Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "ordinary_chevron",
+    "file": "assets/heraldry/ordinary_chevron.png",
+    "width": 256,
+    "height": 256,
+    "role": "ordinary",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M-20 211L128 85L276 211L247 245L128 143L9 245Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "ordinary_cross",
+    "file": "assets/heraldry/ordinary_cross.png",
+    "width": 256,
+    "height": 256,
+    "role": "ordinary",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M105 0H151V105H256V151H151V256H105V151H0V105H105Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "ordinary_saltire",
+    "file": "assets/heraldry/ordinary_saltire.png",
+    "width": 256,
+    "height": 256,
+    "role": "ordinary",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "M0 0H28L128 100L228 0H256V28L156 128L256 228V256H228L128 156L28 256H0V228L100 128L0 28Z",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Use complementary coverage 1-partitionAlpha, never independently rasterized complementary shapes; tint before compositing"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true
+    }
+  },
+  {
+    "id": "ordinary_bordure",
+    "file": "assets/heraldry/ordinary_bordure.png",
+    "width": 256,
+    "height": 256,
+    "role": "ordinary",
+    "generationRecords": [
+      {
+        "tool": "deterministic SVG geometry",
+        "prompt": "Normalized shield UV ring20px. REQUIRED: map U per shield scanline fill span, V per occupied shield height; see heraldry-bordure.cjs.",
+        "sourceFile": "records/heraldry-build.cjs",
+        "model": "not applicable",
+        "seed": "not applicable"
+      }
+    ],
+    "processing": {
+      "rasterization": "4x SVG downsample to 256",
+      "channels": "white RGB coverage in alpha; transparent pixels ignored",
+      "composition": "Map U to per-row fill span, V to occupied shield height; bilinear sample mask, then tint and clip to shield fill. Do not direct-overlay in canvas coordinates.",
+      "coordinateSpace": "normalized shield UV",
+      "requiredCompositor": "records/heraldry-bordure.cjs:mapBordure"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate",
+      "grayscale": true,
+      "threeShieldSideGaps": 0,
+      "evidence": "records/bordure-three-shields.png"
+    }
+  },
+  {
+    "id": "shield_surface_texture",
+    "file": "assets/heraldry/shield_surface_texture.png",
+    "width": 256,
+    "height": 256,
+    "role": "transparent texture overlay",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Create ONE transparent RGBA square overlay for a medieval shield, only tiny subtle off-white gloss brush scuffs and sparse charcoal scratches. This is a surface texture layer that will be clipped over arbitrary heraldic colored shield silhouettes, NOT a shield illustration. Full canvas rectangle distributed very sparsely; 90 percent empty transparent, no opaque background, no shield outline, no rim, no objects, no symbols, no text. Hand-painted restrained worn tempera texture matching attached project emblem paint quality only, grayscale white/black flecks, not gold. No bright broad halo; transparent edges. Fine barely visible short scratched marks with slight upper-left sheen. This overlay is for 256px runtime use.",
+        "rawFile": "raw/heraldry/texture-generated.png",
+        "referenceImages": [
+          "references/keyart_title_emblem.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "256x256",
+      "grayscale": true,
+      "alphaScale": 0.13,
+      "composition": "Clip to filled shield silhouette, never over outline"
+    },
+    "pivot": {
+      "x": 128,
+      "y": 128
+    },
+    "qa": {
+      "status": "candidate"
+    }
+  }
+]

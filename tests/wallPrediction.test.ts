@@ -63,7 +63,8 @@ test('measured output sets an explicitly transport-excluded 1x minimum time', ()
       productionTicks: Array.from({ length: 100 }, (_, index) => 24 * (index + 1)),
     } };
   const lines = proposalPredictionLines(state, path);
-  assert.ok(lines.some(line => line.id === 'eta' && line.text.includes('최소 약 5분')));
+  // F0-V: the earliest completion is a calendar arrival point (tick 2400 + 6000 ticks = spring two years on).
+  assert.ok(lines.some(line => line.id === 'eta' && line.text.includes('빨라야 2년 뒤 봄쯤')), JSON.stringify(lines.find(line => line.id === 'eta')));
   assert.ok(lines.some(line => line.id === 'eta' && line.text.includes('운송 제외')));
 });
 

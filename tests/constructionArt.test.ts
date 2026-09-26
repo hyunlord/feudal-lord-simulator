@@ -26,5 +26,6 @@ test('completed building evidence distinguishes construction from cancellation',
   const effects = constructionCompletionEffectsForFrame(completed, [], 20, [site.id]);
   assert.equal(effects.length, 1);
   assert.equal(effects[0]?.confirmedCompletion, true);
-  assert.deepEqual(constructionCompletionEffectsForFrame(completed, [], 220, [site.id]), []);
+  // F0-V: a completed building plays the 1.2 s completion sequence.
+  assert.deepEqual(constructionCompletionEffectsForFrame(completed, [], 1_220, [site.id]), []);
 });

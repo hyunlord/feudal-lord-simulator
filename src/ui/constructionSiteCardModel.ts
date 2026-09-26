@@ -19,6 +19,8 @@ import {
 import { constructionAccessModel, currentConstructionSiteLabel, groupedConstructionCause } from './constructionAccessModel';
 import { A_TRIPLE_PRIME_ROAD_COPY } from './aTriplePrimeRoadCopy';
 import type { GameState } from '../engine/engine.types';
+import { calendarArrivalLabel } from "./calendarArrival";
+import { scenarioOf } from "../engine/scenarioState";
 
 const RESOURCE_LABELS = {
   wheat: "밀",
@@ -65,12 +67,16 @@ function materialParts(site: ConstructionSite, valueForResource: (resource: Reso
 }
 
 /** Each assigned builder adds one builder tick per tick (economy/construction), so the crew sets the time left. */
-function builderWorkLabel(site: ConstructionSite): string {
+function builderWorkLabel(site: ConstructionSite, state?: GameState): string {
   const required = Math.max(1, site.requiredBuilderTicks);
   const percent = Math.min(100, Math.floor((site.builderTicks / required) * 100));
   const remaining = Math.max(0, site.requiredBuilderTicks - site.builderTicks);
-  return GAME_TIME_COPY.builderWork(percent, site.assignedBuilders,
-    site.assignedBuilders > 0 && remaining > 0 ? Math.ceil(remaining / site.assignedBuilders) : null);
+  const left = site.assignedBuilders > 0 && remaining > 0 ? Math.ceil(remaining / site.assignedBuilders) : null;
+  // F0-V: with the state known, the time left reads as the calendar point it ends at.
+  if (state !== undefined && left !== null) {
+    return GAME_TIME_COPY.builderWorkUntil(percent, site.assignedBuilders, calendarArrivalLabel(state.tick, state.tick + left, scenarioOf(state).startYear));
+  }
+  return GAME_TIME_COPY.builderWork(percent, site.assignedBuilders, left);
 }
 
 function securedLabel(site: ConstructionSite): string {
@@ -137,7 +143,7 @@ export function constructionSiteCardModel(
       { label: "부지", value: `${anchor.tx}, ${anchor.ty} · ${name}` },
       { label: "자재 확보", value: securedLabel(site) },
       { label: "자재 배달", value: deliveryLabel(site) },
-      { label: "건축 작업", value: builderWorkLabel(site) },
+      { label: "건축 작업", value: builderWorkLabel(site, options.accessState) },
       ...materialDiagnosisRows(site, options),
       ...(options.accessState === undefined ? [] : (() => {
         const access = constructionAccessModel(options.accessState, site);

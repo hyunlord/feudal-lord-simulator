@@ -45,6 +45,7 @@ function validateCondition(scenario: string, condition: Condition): void {
   if (!(CONDITION_KINDS as readonly string[]).includes(condition.kind)) fail(scenario, `unknown condition ${String((condition as { kind: unknown }).kind)}`);
   switch (condition.kind) {
     case "population_at_least": case "supplied_percent_at_least": case "occupied_l4_lots_at_least": case "treasury_coin_at_least":
+    case "housing_lots_at_least":
       return validateNumber(scenario, condition.value, condition.kind);
     case "stage_at_least":
       if (!(STAGE_ORDER as readonly string[]).includes(condition.stage)) fail(scenario, `unknown stage ${condition.stage}`);
@@ -103,6 +104,8 @@ function validateScenario(scenario: ScenarioDef, archetypes: ReadonlyMap<string,
       previousYear = year;
     }
     validateSet(id, era.enterWhen.state, `era ${era.id}`);
+    const delay = era.enterWhen.maxDelayYears;
+    if (delay !== undefined && (!Number.isInteger(delay) || delay < 0 || year === undefined)) fail(id, `era ${era.id} maxDelayYears needs yearAtLeast and a whole number of years`);
   }
   if (scenario.eras.length === 0 || scenario.eras[0]?.enterWhen.yearAtLeast === undefined
     || scenario.eras[0].enterWhen.yearAtLeast > scenario.startYear) fail(id, "the first era must start by startYear");

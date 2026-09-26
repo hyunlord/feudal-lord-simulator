@@ -185,7 +185,8 @@ test("calendar: a provisional 4,000-tick year of four 1,000-tick seasons; era ye
   assert.deepEqual(calendar(1000, 1300), { year: 1300, season: 1, dayOfYear: 91 });
   assert.deepEqual(calendar(4000, 1300), { year: 1301, season: 0, dayOfYear: 1 });
   const eraAt = (year: number) => historicalEra({ tick: (year - 1300) * 4000, scenarioId: "core:campaign_market_town" }).id;
-  assert.deepEqual([1314, 1315, 1337, 1348, 1380].map(eraAt), ["saturation", "famine", "war", "collapse", "specialisation"]);
+  // The famine's year is 1315; without the town's readiness (F0-A, F2) it comes by 1320 at the latest.
+  assert.deepEqual([1314, 1320, 1337, 1348, 1380].map(eraAt), ["saturation", "famine", "war", "collapse", "specialisation"]);
   // Autoplay's 24-lot victories (277k–628k ticks, C2 guardrail) now land in 1369–1457.
   assert.deepEqual([277_437, 628_273].map(tick => calendar(tick, 1300).year), [1369, 1457]);
 });

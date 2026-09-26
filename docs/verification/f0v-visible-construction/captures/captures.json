@@ -1,0 +1,122 @@
+[
+ {
+  "file": "blockers-before.jpg",
+  "source": "new game + three sites: no builders (well), no material in store (barn), road cut (storehouse); paused",
+  "tile": [
+   46,
+   42
+  ],
+  "zoom": 1.35,
+  "build": "http://127.0.0.1:4242/"
+ },
+ {
+  "file": "blockers-after.jpg",
+  "source": "new game + three sites: no builders (well), no material in store (barn), road cut (storehouse); paused",
+  "tile": [
+   46,
+   42
+  ],
+  "zoom": 1.35,
+  "build": "http://127.0.0.1:4241/"
+ },
+ {
+  "file": "blockers-far-before.jpg",
+  "source": "the same scene at zoom 0.6: bars and blocker icons only; the two no-builder sites share one icon with a count",
+  "tile": [
+   46,
+   42
+  ],
+  "zoom": 0.6,
+  "build": "http://127.0.0.1:4242/"
+ },
+ {
+  "file": "blockers-far-after.jpg",
+  "source": "the same scene at zoom 0.6: bars and blocker icons only; the two no-builder sites share one icon with a count",
+  "tile": [
+   46,
+   42
+  ],
+  "zoom": 0.6,
+  "build": "http://127.0.0.1:4241/"
+ },
+ {
+  "file": "smoke-town-before.jpg",
+  "source": "C3 seed 2 city, market day, 1x for 3 s: roof smoke, mill ovens, cart payloads",
+  "tile": [
+   48,
+   35
+  ],
+  "zoom": 1,
+  "build": "http://127.0.0.1:4242/"
+ },
+ {
+  "file": "smoke-town-after.jpg",
+  "source": "C3 seed 2 city, market day, 1x for 3 s: roof smoke, mill ovens, cart payloads",
+  "tile": [
+   48,
+   35
+  ],
+  "zoom": 1,
+  "build": "http://127.0.0.1:4241/"
+ },
+ {
+  "file": "signs-zoned-before.jpg",
+  "source": "C25 zoned board (burgage zones): its two empty plots (36,41 and 41,47) carry stakes and emphasis rings",
+  "tile": [
+   38,
+   44
+  ],
+  "zoom": 1,
+  "build": "http://127.0.0.1:4242/"
+ },
+ {
+  "file": "signs-zoned-after.jpg",
+  "source": "C25 zoned board (burgage zones): its two empty plots (36,41 and 41,47) carry stakes and emphasis rings",
+  "tile": [
+   38,
+   44
+  ],
+  "zoom": 1,
+  "build": "http://127.0.0.1:4241/"
+ },
+ {
+  "file": "signs-cold-before.jpg",
+  "source": "fixed12 fixture: four lived-in houses with no bread, no smoke, emphasis rings (at most three)",
+  "tile": [
+   45,
+   41
+  ],
+  "zoom": 1,
+  "build": "http://127.0.0.1:4242/"
+ },
+ {
+  "file": "signs-cold-after.jpg",
+  "source": "fixed12 fixture: four lived-in houses with no bread, no smoke, emphasis rings (at most three)",
+  "tile": [
+   45,
+   41
+  ],
+  "zoom": 1,
+  "build": "http://127.0.0.1:4241/"
+ },
+ {
+  "file": "signs-road-before.jpg",
+  "source": "fixed12 fixture: two buildings off the road (43,55 and 42,59), footprints toward the nearest road",
+  "tile": [
+   43,
+   56
+  ],
+  "zoom": 1,
+  "build": "http://127.0.0.1:4242/"
+ },
+ {
+  "file": "signs-road-after.jpg",
+  "source": "fixed12 fixture: two buildings off the road (43,55 and 42,59), footprints toward the nearest road",
+  "tile": [
+   43,
+   56
+  ],
+  "zoom": 1,
+  "build": "http://127.0.0.1:4241/"
+ }
+]

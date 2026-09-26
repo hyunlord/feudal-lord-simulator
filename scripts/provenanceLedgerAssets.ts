@@ -102,6 +102,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/terrainVariantManifest.ts",
     "src/render/walkerSheetManifest.generated.ts",
     "src/ui/uiArtManifest.generated.ts",
+    "src/render/visibilityArtManifest.ts",
   ];
   for (const file of manifestFiles) {
     for (const url of extractUrlLiterals(readText(file))) add(url, file);

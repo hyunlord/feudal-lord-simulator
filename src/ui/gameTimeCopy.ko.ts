@@ -28,6 +28,8 @@ export const GAME_TIME_COPY = {
   builderWork: (percent: number, builders: number, remainingTicks: number | null) => remainingTicks === null
     ? `${percent}% · 일꾼 ${builders}명`
     : `${percent}% · 일꾼 ${builders}명 · ${durationLabel(remainingTicks)} 남음`,
+  /** F0-V: the same with the time left as its calendar end point. */
+  builderWorkUntil: (percent: number, builders: number, when: string) => `${percent}% · 일꾼 ${builders}명 · ${when} 완공`,
   /** Two ticks on the same calendar day read as that one day. */
   calendarSpan: (firstTick: number, lastTick: number) => calendarDayLabel(firstTick) === calendarDayLabel(lastTick)
     ? calendarDayLabel(firstTick)

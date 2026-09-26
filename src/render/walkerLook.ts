@@ -152,8 +152,10 @@ export function walkerLooks(state: Pick<GameState, "walkers" | "houses" | "seed"
  * bread is carried as a loaf; other goods keep the cargo marker; free hands carry the occupation's tool (builder:
  * hammer, logger: axe) or the look's trinket.
  */
-export function walkerHeldProp(look: WalkerLook, walker: Walker): WalkerPropKind | null {
+export function walkerHeldProp(look: WalkerLook, walker: Walker, siteStage: number | null = null): WalkerPropKind | null {
+  // F0-V: a builder at work holds the Wave 6 shovel through the foundation and the hammer from the frame on.
   if (walkerSheet(look.sheetId).holdsTool) return null;
+  if (look.occupation === "builder" && siteStage !== null) return siteStage < 2 ? "work_shovel" : "work_hammer";
   if (walker.cargo !== null) return walker.cargo.resource === "bread" ? "loaf" : null;
   if (look.occupation === "builder") return "tool_hammer";
   if (look.occupation === "logger") return "tool_axe";

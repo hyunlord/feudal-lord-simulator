@@ -1,0 +1,2185 @@
+{
+  "bases": [
+    {
+      "id": "inn_a",
+      "group": "A",
+      "footprint": [
+        3,
+        2
+      ],
+      "canvas": [
+        352,
+        280
+      ],
+      "target_width": 320,
+      "description": "Courtyard inn with stable, horse picture sign, two-storey hall, no chimney",
+      "active": "windowlight_horse",
+      "file": "assets/bld/inn_a-v1.png",
+      "pivot": [
+        164,
+        271
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-dc4ccca6-c1d0-4cd8-b737-41bcb81bee36.png",
+      "crop": {
+        "left": 92,
+        "top": 17,
+        "width": 1413,
+        "height": 960
+      },
+      "placement": [
+        16,
+        55,
+        320,
+        217
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "inn_b",
+      "group": "A",
+      "footprint": [
+        3,
+        2
+      ],
+      "canvas": [
+        352,
+        280
+      ],
+      "target_width": 320,
+      "description": "Same wealth and materials as inn_a. Change roof pitch, courtyard gate position and small rear lean-to; keep open courtyard, one-storey stable wing and pictorial horse sign. Two-storey hall, NO chimney.",
+      "active": "windowlight_horse",
+      "file": "assets/bld/inn_b-v1.png",
+      "pivot": [
+        206,
+        271
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-53273a2c-d6b8-471a-91cb-6297b02affaa.png",
+      "crop": {
+        "left": 91,
+        "top": 95,
+        "width": 1197,
+        "height": 952
+      },
+      "placement": [
+        16,
+        17,
+        320,
+        255
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "communal_oven",
+      "group": "A",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        144,
+        160
+      ],
+      "target_width": 114,
+      "description": "Independent communal BREAD OVEN: squat rubble-stone domed bread chamber with small arched oven mouth and a simple thatched shelter roof over working side, small working oven vent. No house, no windmill. Cold idle oven. Compact single tile.",
+      "active": "oven_fire_smoke",
+      "file": "assets/bld/communal_oven-v1.png",
+      "pivot": [
+        91,
+        151
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-74f03f38-5dc1-4565-bb82-ac69400e6a93.png",
+      "crop": {
+        "left": 195,
+        "top": 178,
+        "width": 875,
+        "height": 873
+      },
+      "placement": [
+        15,
+        38,
+        114,
+        114
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "ditch_drain",
+      "group": "A",
+      "footprint": null,
+      "canvas": [
+        128,
+        64
+      ],
+      "target_width": 128,
+      "description": "Roadside open drainage DITCH DECAL, horizontal repeatable shallow irregular earth trench, muted moist grey-brown soil lip and subtle narrow muddy channel. Entire horizontal ditch reaches and crosses left and right image edges with matching profile for seamless repetition. Transparent outer ground edges, no grass platform, no buildings, no people, no isolated oval. A 2:1 horizontal strip, compact and low.",
+      "active": "none",
+      "file": "assets/bld/ditch_drain-v1.png",
+      "pivot": [
+        81,
+        52
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-ab594341-efd2-4f66-817d-91d7bc69ee13.png",
+      "crop": {
+        "left": 0,
+        "top": 382,
+        "width": 1774,
+        "height": 169
+      },
+      "placement": [
+        0,
+        10,
+        128,
+        44
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "smithy_a",
+      "group": "B",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        137,
+        137
+      ],
+      "target_width": 118,
+      "description": "Openfront two-storey smithy, anvil, forge with stone industrial flue, tiled roof, no domestic flue",
+      "active": "forge_glow",
+      "file": "assets/bld/smithy_a-v1.png",
+      "pivot": [
+        80,
+        128
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-35cdbc29-5662-49d8-8f1f-bbfa0c8605a6.png",
+      "crop": {
+        "left": 131,
+        "top": 105,
+        "width": 1020,
+        "height": 1073
+      },
+      "placement": [
+        11,
+        8,
+        115,
+        121
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "smithy_b",
+      "group": "B",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        137,
+        137
+      ],
+      "target_width": 118,
+      "description": "Compact ordinary L2 two-storey street SMITHY, front ground floor OPEN supported on plain oak posts, visible anvil and cold dark stone forge at left-front. Short STONE INDUSTRIAL FLUE connects to that forge, main upper dwelling has no domestic chimney. Change door and window placement and slightly shallower pitched roof from smithy_a, same wealth/materials. Flat peg tiles. No yard.",
+      "active": "forge_glow",
+      "file": "assets/bld/smithy_b-v1.png",
+      "pivot": [
+        83,
+        128
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-60047318-26b3-4204-ae81-a41ea30c42a5.png",
+      "crop": {
+        "left": 148,
+        "top": 41,
+        "width": 1082,
+        "height": 1073
+      },
+      "placement": [
+        9,
+        12,
+        118,
+        117
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "cordwainer",
+      "group": "B",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        137,
+        137
+      ],
+      "target_width": 118,
+      "description": "One ordinary L2 two-storey street shoemaker house matching supplied house EXACT wealth and human proportions. Front ground floor counter has TWO CLEAR PAIRS OF BROWN LEATHER SHOES as functional identifying detail. Above counter, large single dark oak closed shop shutter ready to hinge open. Upper limeplaster dwelling, weathered oak, flat pegtiles. NO chimney. Strong simple shoe silhouettes.",
+      "active": "open_shutter_shoes",
+      "file": "assets/bld/cordwainer-v1.png",
+      "pivot": [
+        82,
+        128
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-d9a67891-0744-4baf-963c-25c296ad3979.png",
+      "crop": {
+        "left": 136,
+        "top": 43,
+        "width": 1023,
+        "height": 1104
+      },
+      "placement": [
+        12,
+        8,
+        112,
+        121
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "tailor",
+      "group": "B",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        137,
+        137
+      ],
+      "target_width": 118,
+      "description": "One ordinary L2 two-storey street TAILOR house matching supplied house wealth/scale. Front ground floor counter has two broad folded lengths of muted dull red and dull olive CLOTH with hanging draped fabric. Above counter a large plain oak CLOSED shop shutter ready to hinge open. Simple upper limeplaster dwelling, flat pegtiles. NO chimney.",
+      "active": "open_shutter_cloth",
+      "file": "assets/bld/tailor-v1.png",
+      "pivot": [
+        76,
+        128
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-16913c95-099b-4ff7-b23e-839fa5ba7c6d.png",
+      "crop": {
+        "left": 146,
+        "top": 38,
+        "width": 1073,
+        "height": 1084
+      },
+      "placement": [
+        9,
+        10,
+        118,
+        119
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "tannery_a",
+      "group": "B",
+      "footprint": [
+        2,
+        2
+      ],
+      "canvas": [
+        288,
+        228
+      ],
+      "target_width": 244,
+      "description": "Small town-edge TANNERY yard intended beside a stream. Three recessed round timber vats and pits, sturdy drying rack holding TWO irregular animal HIDES (tan/brown, no blood), low thatched open work shed at back, narrow wooden water trough outlet at right. No river or landscape baked in, no ground platform; only small ground patches immediately around pit rims. Two tile square workspace. NO chimney.",
+      "active": "hide_steam",
+      "file": "assets/bld/tannery_a-v1.png",
+      "pivot": [
+        249,
+        219
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-cc67a920-ae9f-4b56-a390-71e24deda358.png",
+      "crop": {
+        "left": 221,
+        "top": 58,
+        "width": 1132,
+        "height": 847
+      },
+      "placement": [
+        22,
+        37,
+        244,
+        183
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "tannery_b",
+      "group": "B",
+      "footprint": [
+        2,
+        2
+      ],
+      "canvas": [
+        288,
+        228
+      ],
+      "target_width": 244,
+      "description": "Small waterside town-edge TANNERY with two round sunken timber vats, one rectangular lime pit, open thatched lean-to and drying rack with TWO large irregular stretched animal hides. Slightly different rack/pit arrangement than tannery_a, same wealth and size, no river/background, NO chimney. Water trough points toward right. No blood.",
+      "active": "hide_steam",
+      "file": "assets/bld/tannery_b-v1.png",
+      "pivot": [
+        172,
+        219
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-bba51d37-cbaf-4eb3-8b6f-afbc12a66778.png",
+      "crop": {
+        "left": 165,
+        "top": 52,
+        "width": 1228,
+        "height": 862
+      },
+      "placement": [
+        22,
+        49,
+        244,
+        171
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "lime_kiln",
+      "group": "B",
+      "footprint": [
+        2,
+        2
+      ],
+      "canvas": [
+        288,
+        264
+      ],
+      "target_width": 232,
+      "description": "LIME KILN: large squat circular grey-brown rubble-stone draw kiln set freestanding, battered thick stone walls, broad open top shaft, small arched firing draw hole low at front, modest integral STONE FURNACE FLUE at rear. Functional industrial kiln, not tower/house/castle. Cold idle state, no smoke. Two tile square, no landscape platform.",
+      "active": "kiln_smoke",
+      "file": "assets/bld/lime_kiln-v1.png",
+      "pivot": [
+        133,
+        255
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-5b3bbb35-f9d0-4cd3-84fb-4be622cf9dc8.png",
+      "crop": {
+        "left": 173,
+        "top": 185,
+        "width": 941,
+        "height": 911
+      },
+      "placement": [
+        28,
+        31,
+        232,
+        225
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "charcoal_clamp",
+      "group": "B",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        144,
+        160
+      ],
+      "target_width": 116,
+      "description": "CHARCOAL CLAMP at forest edge: low round dome/mound of earth and turf covering stacked wood, a few visible cut logs at a small foot opening. Small vent holes in mound top. NO chimney pipe or stone kiln or building or roof. Single compact low mound, very muted earth colours, no surrounding terrain slab. Idle with NO smoke.",
+      "active": "mound_smoke",
+      "file": "assets/bld/charcoal_clamp-v1.png",
+      "pivot": [
+        74,
+        151
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-25d58250-b26d-4c91-8a49-ff6e94798d46.png",
+      "crop": {
+        "left": 186,
+        "top": 359,
+        "width": 882,
+        "height": 599
+      },
+      "placement": [
+        14,
+        73,
+        116,
+        79
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "pottery_kiln",
+      "group": "B",
+      "footprint": [
+        2,
+        2
+      ],
+      "canvas": [
+        288,
+        252
+      ],
+      "target_width": 232,
+      "description": "POTTERY KILN workshop: small round dome firing kiln of rough earthy clay and stone, short narrow furnace flue, front firing arch; adjacent low simple thatched open shelter, a bench with a few terracotta pots as functional signature. Ordinary medieval industrial workshop, not modern brickworks. Two tile square. No smoke or glow in base.",
+      "active": "kiln_smoke",
+      "file": "assets/bld/pottery_kiln-v1.png",
+      "pivot": [
+        201,
+        243
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-5a8ab59f-8b04-43c8-9f03-db078dadd852.png",
+      "crop": {
+        "left": 141,
+        "top": 214,
+        "width": 1023,
+        "height": 820
+      },
+      "placement": [
+        28,
+        58,
+        232,
+        186
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "butcher_shambles",
+      "group": "B",
+      "footprint": [
+        2,
+        1
+      ],
+      "canvas": [
+        224,
+        176
+      ],
+      "target_width": 188,
+      "description": "Medieval BUTCHER SHAMBLES long open timber market stall, two by one tiles, low plain flat-peg-tile shelter roof on oak posts, wooden chopping table. Two SMALL subdued brown-red dressed cuts of meat hang under beam, restrained, no gore or blood, no heads. No domestic house/chimney, no modern awning or text.",
+      "active": "hanging_goods",
+      "file": "assets/bld/butcher_shambles-v1.png",
+      "pivot": [
+        67,
+        167
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-e4f1824e-9142-49e1-a145-2cf96e65a68e.png",
+      "crop": {
+        "left": 200,
+        "top": 23,
+        "width": 1152,
+        "height": 973
+      },
+      "placement": [
+        18,
+        9,
+        188,
+        159
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "market_cross_wood",
+      "group": "C",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        144,
+        160
+      ],
+      "target_width": 100,
+      "description": "WOODEN MARKET CROSS: tall plain weathered oak Christian cross rising from small sturdy stepped timber base, four low market-edge posts, very simple undecorated street landmark. Full cross readable silhouette. NO roof or chimney, no background, no ground slab.",
+      "active": "market_baskets",
+      "file": "assets/bld/market_cross_wood-v1.png",
+      "pivot": [
+        69,
+        151
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-404a3e13-9e84-47dd-b14f-4a6478e3df69.png",
+      "crop": {
+        "left": 272,
+        "top": 59,
+        "width": 710,
+        "height": 1141
+      },
+      "placement": [
+        27,
+        8,
+        89,
+        144
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "market_cross_stone",
+      "group": "C",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        144,
+        176
+      ],
+      "target_width": 110,
+      "description": "STONE MARKET CROSS: plain shaft and simple cross finial carved from grey-brown stone, modest octagonal three-step stone base. Clearly a medieval market-place landmark, not a gravestone, no elaborate gothic tracery or roof. Tall slender silhouette, no terrain beyond steps.",
+      "active": "market_baskets",
+      "file": "assets/bld/market_cross_stone-v1.png",
+      "pivot": [
+        71,
+        167
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-1ebfc608-8033-4f9c-8b9a-fee0e350136d.png",
+      "crop": {
+        "left": 395,
+        "top": 66,
+        "width": 443,
+        "height": 1069
+      },
+      "placement": [
+        39,
+        8,
+        66,
+        160
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "almshouse",
+      "group": "C",
+      "footprint": [
+        3,
+        1
+      ],
+      "canvas": [
+        288,
+        200
+      ],
+      "target_width": 252,
+      "description": "ALMSHOUSE: long LOW SINGLE STOREY range of four tiny rooms with four simple oak doors and small shuttered windows, warm limewash over rubble stone; tiny chapel room at one end with slightly raised gable and one narrow pointed opening. Continuous modest flat peg tile roof. Three by one tiles, restrained charitable shelter. NO chimney anywhere.",
+      "active": "charity_baskets",
+      "file": "assets/bld/almshouse-v1.png",
+      "pivot": [
+        76,
+        191
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-20c4dbef-b140-4115-ba03-25a6c82a218a.png",
+      "crop": {
+        "left": 164,
+        "top": 50,
+        "width": 1491,
+        "height": 818
+      },
+      "placement": [
+        18,
+        54,
+        252,
+        138
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "hospital",
+      "group": "C",
+      "footprint": [
+        3,
+        2
+      ],
+      "canvas": [
+        352,
+        272
+      ],
+      "target_width": 316,
+      "description": "MEDIEVAL HOSPITAL as charitable HOSPICE, not a modern clinic: one-storey long stone infirmary shelter hall with a narrower chapel chancel at its eastern end, modest low attached timber porch, plain pointed windows, flat peg tile roof. Three by two tiles, simple ecclesiastical silhouette. NO red crosses, no medical signs, NO chimney.",
+      "active": "hospice_lamps",
+      "file": "assets/bld/hospital-v1.png",
+      "pivot": [
+        273,
+        263
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-6e05ea1f-b4d4-45f7-88fd-09956b115462.png",
+      "crop": {
+        "left": 130,
+        "top": 77,
+        "width": 1296,
+        "height": 886
+      },
+      "placement": [
+        18,
+        48,
+        316,
+        216
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "chantry_chapel",
+      "group": "C",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        160,
+        176
+      ],
+      "target_width": 126,
+      "description": "Tiny CHANTRY CHAPEL church annex: one short single-storey grey-brown rubble stone chapel, low flat peg tile gable, narrow pointed side window and simple west doorway, small end cross. One tile, deliberately smaller than supplied parish church. NO tower or chimney.",
+      "active": "chapel_lamps",
+      "file": "assets/bld/chantry_chapel-v1.png",
+      "pivot": [
+        64,
+        167
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-0424934d-227c-4e4d-82c8-a562f047df8a.png",
+      "crop": {
+        "left": 247,
+        "top": 290,
+        "width": 781,
+        "height": 778
+      },
+      "placement": [
+        17,
+        42,
+        126,
+        126
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "manor_house_a",
+      "group": "D",
+      "footprint": [
+        3,
+        3
+      ],
+      "canvas": [
+        416,
+        328
+      ],
+      "target_width": 376,
+      "description": "MANOR HOUSE: modest but authoritative ONE STOREY STONE GREAT HALL with tall hall roof, attached TWO STOREY OAK AND PLASTER WING at right, irregular flat peg tiles, low rubble stone boundary walls and clear courtyard gateway at front. Three by three tiles. Clear empty petitioners space just inside gate, NO people in base. No castle turrets, NO chimneys or flues on either hall or wing.",
+      "active": "hall_light_petition_space",
+      "file": "assets/bld/manor_house_a-v1.png",
+      "pivot": [
+        249,
+        319
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-be72c5b4-89d9-4d7b-b039-8cde0c310e1f.png",
+      "crop": {
+        "left": 129,
+        "top": 58,
+        "width": 1283,
+        "height": 927
+      },
+      "placement": [
+        20,
+        48,
+        376,
+        272
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "manor_house_b",
+      "group": "D",
+      "footprint": [
+        3,
+        3
+      ],
+      "canvas": [
+        416,
+        328
+      ],
+      "target_width": 376,
+      "description": "MANOR HOUSE alternative B, same wealth: ONE STOREY long rubble-stone hall, attached two-storey timber framed warm plaster residential wing on left, modest courtyard enclosed by low stone wall and plain timber gate, flat peg tile roofs. Vary hall roof pitch and doorway/windows from A, not richness. Open area for petitioners by gate, no people. NO chimney anywhere.",
+      "active": "hall_light_petition_space",
+      "file": "assets/bld/manor_house_b-v1.png",
+      "pivot": [
+        251,
+        319
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-2ddcaf05-8db2-4729-aaef-c6693306075d.png",
+      "crop": {
+        "left": 118,
+        "top": 43,
+        "width": 1338,
+        "height": 943
+      },
+      "placement": [
+        20,
+        55,
+        376,
+        265
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "guildhall",
+      "group": "D",
+      "footprint": [
+        3,
+        2
+      ],
+      "canvas": [
+        352,
+        300
+      ],
+      "target_width": 312,
+      "description": "GUILDHALL with unmistakable OPEN STONE ARCADE along entire GROUND FLOOR for market trade, at least THREE sturdy pointed arches, sheltered through passage. ABOVE this is one broad TIMBER FRAMED upper MEETING ROOM with closed oak shutter windows, flat peg tiled roof. Three by two tiles, civic hall not manor or church, no tower, NO chimney. Strong arcaded open ground floor.",
+      "active": "trade_tables",
+      "file": "assets/bld/guildhall-v1.png",
+      "pivot": [
+        107,
+        291
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-de40fd8d-1d9a-4823-9229-0787ed8859aa.png",
+      "crop": {
+        "left": 190,
+        "top": 33,
+        "width": 1161,
+        "height": 964
+      },
+      "placement": [
+        20,
+        33,
+        312,
+        259
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "tolbooth",
+      "group": "D",
+      "footprint": [
+        2,
+        2
+      ],
+      "canvas": [
+        288,
+        292
+      ],
+      "target_width": 242,
+      "description": "TOLBOOTH tax court: OPEN STONE ARCADE on GROUND FLOOR (two or three generous arches for market trade), upper timber/plaster MEETING ROOM, SMALL modest square bell tower or open bellcote at one roof end with visible bronze bell. Two by two tiles. Flat clay peg tiles, restrained civic authority, no palace, NO chimney.",
+      "active": "court_table_bell",
+      "file": "assets/bld/tolbooth-v1.png",
+      "pivot": [
+        104,
+        283
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-4770c280-9d3d-46d4-80f5-554572269e7a.png",
+      "crop": {
+        "left": 67,
+        "top": 58,
+        "width": 1105,
+        "height": 1164
+      },
+      "placement": [
+        23,
+        29,
+        242,
+        255
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "tithe_barn",
+      "group": "D",
+      "footprint": [
+        4,
+        2
+      ],
+      "canvas": [
+        416,
+        264
+      ],
+      "target_width": 380,
+      "description": "TITHE BARN: VERY LONG SINGLE STOREY major agricultural barn, four by two tiles. Thick grey-brown rubble stone walls with THREE clearly projecting sturdy BUTTRESSES along long side, oak roof trusses under broad low pitched terracotta flat peg tile roof, HUGE central pair of barn doors and modest small gabled loading porch. No windows like a house, NO chimney or tower.",
+      "active": "tithe_sacks",
+      "file": "assets/bld/tithe_barn-v1.png",
+      "pivot": [
+        116,
+        255
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-5cf48f55-2203-4bb2-b271-0efc6b00daf6.png",
+      "crop": {
+        "left": 25,
+        "top": 47,
+        "width": 1486,
+        "height": 915
+      },
+      "placement": [
+        18,
+        22,
+        380,
+        234
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "bridge_chapel",
+      "group": "D",
+      "footprint": null,
+      "canvas": [
+        160,
+        192
+      ],
+      "target_width": 124,
+      "description": "Small narrow stone BRIDGE END CHAPEL intended at SE end of supplied bridge DECK (top-left panel of reference sheet, not whole sheet). One modest single storey rubble chapel, terracotta flat peg tile gable, narrow gothic window, simple doorway at northwest-facing end toward bridge. Small stone landing beneath door at same height as bridge roadway, short side parapet terminating cleanly at landing. NO bridge span included, no water or background, no chimney. Make compact modular stone road end rather than freestanding grassy church.",
+      "active": "chapel_lamps",
+      "file": "assets/bld/bridge_chapel-v1.png",
+      "pivot": [
+        59,
+        183
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-7c64dfda-5ecb-4b87-bd11-53d018241c85.png",
+      "crop": {
+        "left": 224,
+        "top": 112,
+        "width": 953,
+        "height": 886
+      },
+      "placement": [
+        18,
+        69,
+        124,
+        115
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "conduit_house",
+      "group": "D",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        160,
+        176
+      ],
+      "target_width": 124,
+      "description": "CONDUIT HOUSE: a medieval stone public WATER BASIN, square waist-high grey-brown stone water trough beneath a small steep flat peg tile roof on four stone posts, stone head spout inside, low front basin lip visibly reveals water surface. Not a well, no bucket/winch. Calm water in idle base, no flowing stream yet. Compact public water structure. NO chimney.",
+      "active": "flowing_water",
+      "file": "assets/bld/conduit_house-v1.png",
+      "pivot": [
+        69,
+        167
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-01edb787-5d6f-447e-bbe8-7b24a1526bd2.png",
+      "crop": {
+        "left": 187,
+        "top": 132,
+        "width": 962,
+        "height": 967
+      },
+      "placement": [
+        18,
+        43,
+        124,
+        125
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "priory_cell",
+      "group": "D",
+      "footprint": [
+        4,
+        3
+      ],
+      "canvas": [
+        480,
+        352
+      ],
+      "target_width": 440,
+      "description": "PRIORY CELL: modest small religious satellite house, FOUR BY THREE tiles, one small stone chapel attached to LOW single-storey CLOISTER WALK enclosing a small EMPTY rectangular courtyard. Flat clay peg tiled low roofs, pointed open cloister arches. Small scale monastery not cathedral or fortress, no massive tower, NO chimney. Transparent courtyard floor, no lawn/platform.",
+      "active": "cloister_lamps",
+      "file": "assets/bld/priory_cell-v1.png",
+      "pivot": [
+        284,
+        343
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-7453a8c0-5800-4ead-9728-9f9a508f08f0.png",
+      "crop": {
+        "left": 71,
+        "top": 96,
+        "width": 1316,
+        "height": 916
+      },
+      "placement": [
+        20,
+        38,
+        440,
+        306
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "pilgrim_shrine",
+      "group": "D",
+      "footprint": [
+        1,
+        1
+      ],
+      "canvas": [
+        144,
+        160
+      ],
+      "target_width": 108,
+      "description": "PILGRIM SHRINE: tiny roadside devotional structure, simple waist-high grey-brown stone plinth supporting small oak niche with low steep flat peg-tile shelter, a small plain cross carved within niche. Distinct from market cross/chapel. One-person-scale wayside shrine, no tall tower, no people, NO chimney, no terrain platform.",
+      "active": "shrine_candles",
+      "file": "assets/bld/pilgrim_shrine-v1.png",
+      "pivot": [
+        72,
+        151
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-3e0ef50d-03b9-4c6c-9182-850dd1052937.png",
+      "crop": {
+        "left": 390,
+        "top": 230,
+        "width": 491,
+        "height": 806
+      },
+      "placement": [
+        28,
+        8,
+        88,
+        144
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    },
+    {
+      "id": "quay",
+      "group": "D",
+      "footprint": null,
+      "canvas": [
+        256,
+        128
+      ],
+      "target_width": 246,
+      "description": "RIVERSIDE QUAY MODULE, wide 2:1 rectangle, grey-brown rubble-stone revetment with sturdy flat cobbled loading top in strict 2:1 isometric view, three thick oak mooring posts on water edge, one barrel and two tied sacks. Open on two repeatable ends. No boats, buildings, chimney, terrain platform, or water baked in. Water side is transparent; compact engineering module exactly twice as wide as high.",
+      "active": "mooring_rope",
+      "file": "assets/bld/quay-v1.png",
+      "pivot": [
+        68,
+        119
+      ],
+      "pivot_basis": "new candidate front ground contact measured from lowest opaque structure; original numeric pivot not supplied",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-2ca694d3-4c08-4f94-953a-fff894a3e353.png",
+      "crop": {
+        "left": 84,
+        "top": 39,
+        "width": 1609,
+        "height": 825
+      },
+      "placement": [
+        18,
+        8,
+        219,
+        112
+      ],
+      "processing": "Opaque architectural alpha extraction at 240; one Lanczos downsample; common canvas; 2px RGB edge bleed in zero-alpha pixels."
+    }
+  ],
+  "overlays": [
+    {
+      "id": "inn_a",
+      "file": "assets/active/inn_a-active-v1.png",
+      "canvas": [
+        352,
+        280
+      ],
+      "pivot": [
+        164,
+        271
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          204,
+          163,
+          13,
+          17
+        ],
+        [
+          1,
+          109,
+          156,
+          12,
+          14,
+          0.55
+        ],
+        [
+          1,
+          147,
+          140,
+          12,
+          15,
+          0.55
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "inn_b",
+      "file": "assets/active/inn_b-active-v1.png",
+      "canvas": [
+        352,
+        280
+      ],
+      "pivot": [
+        206,
+        271
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          196,
+          160,
+          16,
+          16
+        ],
+        [
+          1,
+          46,
+          112,
+          14,
+          21,
+          0.5
+        ],
+        [
+          1,
+          86,
+          136,
+          14,
+          20,
+          0.5
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "communal_oven",
+      "file": "assets/active/communal_oven-active-v1.png",
+      "canvas": [
+        144,
+        160
+      ],
+      "pivot": [
+        91,
+        151
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          22,
+          76,
+          40,
+          38,
+          0.45
+        ],
+        [
+          1,
+          57,
+          114,
+          15,
+          11
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "smithy_a",
+      "file": "assets/active/smithy_a-active-v1.png",
+      "canvas": [
+        137,
+        137
+      ],
+      "pivot": [
+        80,
+        128
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          61,
+          109,
+          8,
+          9
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "smithy_b",
+      "file": "assets/active/smithy_b-active-v1.png",
+      "canvas": [
+        137,
+        137
+      ],
+      "pivot": [
+        83,
+        128
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          34,
+          86,
+          10,
+          11
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "cordwainer",
+      "file": "assets/active/cordwainer-active-v1.png",
+      "canvas": [
+        137,
+        137
+      ],
+      "pivot": [
+        82,
+        128
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          28,
+          81
+        ],
+        [
+          55,
+          91
+        ],
+        [
+          55,
+          108
+        ],
+        [
+          28,
+          98
+        ]
+      ],
+      "method": "Generated closed shutter clipped to original shop polygon; active restores exact original open-shop pixels."
+    },
+    {
+      "id": "tailor",
+      "file": "assets/active/tailor-active-v1.png",
+      "canvas": [
+        137,
+        137
+      ],
+      "pivot": [
+        76,
+        128
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          25,
+          84
+        ],
+        [
+          54,
+          96
+        ],
+        [
+          54,
+          115
+        ],
+        [
+          25,
+          102
+        ]
+      ],
+      "method": "Generated closed shutter clipped to original shop polygon; active restores exact original open-shop pixels."
+    },
+    {
+      "id": "tannery_a",
+      "file": "assets/active/tannery_a-active-v1.png",
+      "canvas": [
+        288,
+        228
+      ],
+      "pivot": [
+        249,
+        219
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          113,
+          117,
+          22,
+          31
+        ],
+        [
+          1,
+          124,
+          126,
+          22,
+          29,
+          0.4
+        ],
+        [
+          1,
+          169,
+          141,
+          20,
+          28,
+          0.32
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "tannery_b",
+      "file": "assets/active/tannery_b-active-v1.png",
+      "canvas": [
+        288,
+        228
+      ],
+      "pivot": [
+        172,
+        219
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          146,
+          142,
+          17,
+          24
+        ],
+        [
+          1,
+          119,
+          141,
+          22,
+          27,
+          0.4
+        ],
+        [
+          1,
+          165,
+          163,
+          20,
+          28,
+          0.32
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "lime_kiln",
+      "file": "assets/active/lime_kiln-active-v1.png",
+      "canvas": [
+        288,
+        264
+      ],
+      "pivot": [
+        133,
+        255
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          190,
+          5,
+          37,
+          40,
+          0.6
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "charcoal_clamp",
+      "file": "assets/active/charcoal_clamp-active-v1.png",
+      "canvas": [
+        144,
+        160
+      ],
+      "pivot": [
+        74,
+        151
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          58,
+          33,
+          30,
+          47,
+          0.5
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "pottery_kiln",
+      "file": "assets/active/pottery_kiln-active-v1.png",
+      "canvas": [
+        288,
+        252
+      ],
+      "pivot": [
+        201,
+        243
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          75,
+          9,
+          36,
+          57,
+          0.6
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "butcher_shambles",
+      "file": "assets/active/butcher_shambles-active-v1.png",
+      "canvas": [
+        224,
+        176
+      ],
+      "pivot": [
+        67,
+        167
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          128,
+          102,
+          17,
+          21
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "market_cross_wood",
+      "file": "assets/active/market_cross_wood-active-v1.png",
+      "canvas": [
+        144,
+        160
+      ],
+      "pivot": [
+        69,
+        151
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          90,
+          129,
+          23,
+          18
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "market_cross_stone",
+      "file": "assets/active/market_cross_stone-active-v1.png",
+      "canvas": [
+        144,
+        176
+      ],
+      "pivot": [
+        71,
+        167
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          86,
+          143,
+          22,
+          17
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "almshouse",
+      "file": "assets/active/almshouse-active-v1.png",
+      "canvas": [
+        288,
+        200
+      ],
+      "pivot": [
+        76,
+        191
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          135,
+          168,
+          18,
+          14
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "hospital",
+      "file": "assets/active/hospital-active-v1.png",
+      "canvas": [
+        352,
+        272
+      ],
+      "pivot": [
+        273,
+        263
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          205,
+          217,
+          5,
+          10
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "chantry_chapel",
+      "file": "assets/active/chantry_chapel-active-v1.png",
+      "canvas": [
+        160,
+        176
+      ],
+      "pivot": [
+        64,
+        167
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          54,
+          137,
+          5,
+          10
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "manor_house_a",
+      "file": "assets/active/manor_house_a-active-v1.png",
+      "canvas": [
+        416,
+        328
+      ],
+      "pivot": [
+        249,
+        319
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          107,
+          148,
+          7,
+          25,
+          0.5
+        ],
+        [
+          0,
+          213,
+          196,
+          7,
+          23,
+          0.5
+        ],
+        [
+          1,
+          198,
+          227,
+          34,
+          19
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "manor_house_b",
+      "file": "assets/active/manor_house_b-active-v1.png",
+      "canvas": [
+        416,
+        328
+      ],
+      "pivot": [
+        251,
+        319
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          51,
+          145,
+          16,
+          20,
+          0.5
+        ],
+        [
+          0,
+          274,
+          232,
+          7,
+          22,
+          0.5
+        ],
+        [
+          1,
+          137,
+          244,
+          33,
+          18
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "guildhall",
+      "file": "assets/active/guildhall-active-v1.png",
+      "canvas": [
+        352,
+        300
+      ],
+      "pivot": [
+        107,
+        291
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          126,
+          243,
+          31,
+          16
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "tolbooth",
+      "file": "assets/active/tolbooth-active-v1.png",
+      "canvas": [
+        288,
+        292
+      ],
+      "pivot": [
+        104,
+        283
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          158,
+          229,
+          29,
+          16
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "tithe_barn",
+      "file": "assets/active/tithe_barn-active-v1.png",
+      "canvas": [
+        416,
+        264
+      ],
+      "pivot": [
+        116,
+        255
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          222,
+          207,
+          42,
+          25
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "bridge_chapel",
+      "file": "assets/active/bridge_chapel-active-v1.png",
+      "canvas": [
+        160,
+        192
+      ],
+      "pivot": [
+        59,
+        183
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          70,
+          146,
+          4,
+          9
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "conduit_house",
+      "file": "assets/active/conduit_house-active-v1.png",
+      "canvas": [
+        160,
+        176
+      ],
+      "pivot": [
+        69,
+        167
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          89,
+          125,
+          12,
+          22
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "priory_cell",
+      "file": "assets/active/priory_cell-active-v1.png",
+      "canvas": [
+        480,
+        352
+      ],
+      "pivot": [
+        284,
+        343
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          89,
+          225,
+          5,
+          10
+        ],
+        [
+          0,
+          143,
+          240,
+          5,
+          10
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "pilgrim_shrine",
+      "file": "assets/active/pilgrim_shrine-active-v1.png",
+      "canvas": [
+        144,
+        160
+      ],
+      "pivot": [
+        72,
+        151
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          78,
+          122,
+          13,
+          9
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    },
+    {
+      "id": "quay",
+      "file": "assets/active/quay-active-v1.png",
+      "canvas": [
+        256,
+        128
+      ],
+      "pivot": [
+        68,
+        119
+      ],
+      "placement": [
+        0,
+        0
+      ],
+      "regions": [
+        [
+          0,
+          154,
+          64,
+          36,
+          19
+        ]
+      ],
+      "method": "Generated prop/effect crop placed at manually inspected native base feature coordinates."
+    }
+  ],
+  "icons": [
+    {
+      "id": "inn_a",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        0,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "inn_b",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        96,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "communal_oven",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        192,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "ditch_drain",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        288,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "smithy_a",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        384,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "smithy_b",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        480,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "cordwainer",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        576,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "tailor",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        672,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "tannery_a",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        768,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "tannery_b",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        864,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "lime_kiln",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        960,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "charcoal_clamp",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        1056,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "pottery_kiln",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        1152,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "butcher_shambles",
+      "file": "assets/icons/buildings_AB-96.png",
+      "rect": [
+        1248,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "market_cross_wood",
+      "file": "assets/icons/buildings_C-96.png",
+      "rect": [
+        0,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "market_cross_stone",
+      "file": "assets/icons/buildings_C-96.png",
+      "rect": [
+        96,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "almshouse",
+      "file": "assets/icons/buildings_C-96.png",
+      "rect": [
+        192,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "hospital",
+      "file": "assets/icons/buildings_C-96.png",
+      "rect": [
+        288,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "chantry_chapel",
+      "file": "assets/icons/buildings_C-96.png",
+      "rect": [
+        384,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "manor_house_a",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        0,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "manor_house_b",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        96,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "guildhall",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        192,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "tolbooth",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        288,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "tithe_barn",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        384,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "bridge_chapel",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        480,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "conduit_house",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        576,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "priory_cell",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        672,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "pilgrim_shrine",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        768,
+        0,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "quay",
+      "file": "assets/icons/buildings_D-96.png",
+      "rect": [
+        864,
+        0,
+        96,
+        96
+      ]
+    }
+  ],
+  "bridge": {
+    "source_crop": [
+      16,
+      0,
+      144,
+      90
+    ],
+    "source_socket": [
+      126,
+      73
+    ],
+    "chapel_socket": [
+      26,
+      157
+    ],
+    "placement_vs_sheet": [
+      100,
+      -84
+    ],
+    "status": "visually proposed end-side connection; numeric source sockets not supplied"
+  }
+}

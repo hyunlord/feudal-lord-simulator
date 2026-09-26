@@ -13,6 +13,7 @@ import type { ConstructionCompletionTracker } from "./constructionCompletionEffe
 import { drawConstructionAccessOverlay } from './constructionAccessOverlay';
 import { renderStageProbe } from "./renderStageProbe";
 import { hoverOcclusionActive } from "./selectionOcclusion";
+import { drawConstructionCrewLinks } from "./constructionCrewLinks";
 
 type GameCanvasFrameInput = {
   readonly context: CanvasRenderingContext2D;
@@ -87,6 +88,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
   if (input.selectedConstructionSiteId !== undefined && input.selectedConstructionSiteId !== null) {
     probe?.enter("overlay.constructionAccess");
     drawConstructionAccessOverlay(input.context, input.state, input.selectedConstructionSiteId, input.camera.zoom);
+    drawConstructionCrewLinks(input.context, input.state, input.selectedConstructionSiteId, input.renderWalkers ?? input.state.walkers, input.camera.zoom);
   }
   input.context.restore();
   return preview;

@@ -24,6 +24,8 @@ import { lastInputDevice } from "../input/inputDevice";
 import { drawMapCursor } from "./mapCursor";
 import { INTENT_ORDER } from "../input/intentBus";
 import { platformServices } from "../platform/platform";
+import { preloadVisibilityArt } from "./visibilityArtManifest";
+import { preloadCanvasIcons } from "../ui/uiArt";
 
 // Game canvas runtime: frame loop, camera, and input. Input goes DOM event -> translator (src/input) -> intent bus
 // (PlatformServices.input) -> handlers; the map's handler (canvasIntentHandler.ts) runs first, the app shell's after.
@@ -58,6 +60,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     if (canvas === null || context === null) return undefined;
 
     void preloadGameArt();
+    // F0-V: the visibility art and the canvas icon sheets load with the rest (a paused first frame then has them).
+    preloadVisibilityArt();
+    preloadCanvasIcons();
 
     const refs = createCanvasMutableRefs(initialCamera(canvas, stateRef.current));
     const publishPanel = createPredictionPublisher(value => setPrediction?.(value));

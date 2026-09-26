@@ -1,0 +1,223 @@
+{
+  "generated_at": "2026-09-25T15:57:27.886Z",
+  "revision": "R4",
+  "reviewer": "independent-B",
+  "verdict": "CANDIDATE_WITH_RESIDUAL_VISUAL_LIMITS",
+  "zero_defect_gate": "NOT_FULLY_VERIFIED",
+  "summary": "R4에서 아이 후드 아래 목 폭이 개선되었고 random23/26/35의 반복 덮개가 제거되어 외관 반복이 줄었다. 큰 목 단절·모자 위/후드 바깥 머리 돌출을 다시 발견하지 못했다. 이마 머리 접촉 일부, 노화 선의 표면 품질, 귀/이마 기준점 미검증은 남아 무조건 PASS로 보지 않는다.",
+  "scope": {
+    "proofs": [
+      "02-combinations/256.png",
+      "02-combinations/96.png",
+      "03-aging/256.png",
+      "03-aging/96.png",
+      "04-random/256.png",
+      "04-random/96.png",
+      "05-edges/dark-256.png",
+      "05-edges/light-256.png",
+      "05-edges/dark-96.png",
+      "05-edges/light-96.png"
+    ],
+    "cells_reviewed_as_boards": {
+      "combinations": 36,
+      "random": 48,
+      "age_pairs": 4
+    },
+    "full_resolution_cells": [
+      "02-combinations-25",
+      "02-combinations-18",
+      "04-random-15",
+      "04-random-19",
+      "04-random-25",
+      "04-random-39",
+      "03-aging-06",
+      "04-random-23",
+      "04-random-26",
+      "04-random-35",
+      "02-combinations-27",
+      "02-combinations-33",
+      "04-random-43"
+    ],
+    "limits": [
+      "256px 전체 보드는 도구 표시 중 축소될 수 있어 R3 의심 7칸과 R4 영향 6칸을 개별256PNG로 확인했다. R4에서는 random·combinations 및 짙은/밝은 배경96 보드를 재검토했다. 변경 없는 나이 보드는 R3 관찰을 유지한다.",
+      "전수 픽셀 경계 검증이나 게임 실행 검증은 아니다.",
+      "귀 중심/가상 이마선은 미측정으로 유지하며 자동 얼굴 기준점 통과와 구분한다."
+    ]
+  },
+  "resolved_previous_findings": [
+    {
+      "ids": [
+        "B01",
+        "B02"
+      ],
+      "result": "아이 목/칼라의 큰 투명 틈이 닫혔다. combinations25~36 및 random9/12/15/18/26/29/32/35/43/46에서 이전 목 단절을 다시 관찰하지 못했다.",
+      "confidence": 0.98
+    },
+    {
+      "ids": [
+        "B03",
+        "B04"
+      ],
+      "result": "후드 아래 삼각형으로 잘린 머리 조각이 연속된 머리 결로 바뀌었다. 전반적인 잘림은 개선되었다.",
+      "confidence": 0.94
+    },
+    {
+      "ids": [
+        "B05"
+      ],
+      "result": "random19의 코 위 수직 패치가 사라졌다. random25는 끊어진 안경형 획이 실제 앞머리 가닥으로 바뀌었지만 눈 주위 접촉은 잔여 미관 항목으로 남긴다.",
+      "confidence": 0.98
+    },
+    {
+      "ids": [
+        "B06"
+      ],
+      "result": "random21/39 삭발 정수리 양끝의 뿔 형태가 사라졌다.",
+      "confidence": 0.96
+    }
+  ],
+  "remaining_findings": [
+    {
+      "id": "BF01",
+      "severity": "medium",
+      "category": "fringe_eye_contact",
+      "suite": "04-random",
+      "cells": [
+        25
+      ],
+      "confidence": 0.87,
+      "observation": "챙 밑 갈색 앞머리가 양눈 위로 굵게 내려와 오른쪽 눈 가장자리와 닿는다. R1의 단절 패치는 해결되었으나 96px에서 눈 주변이 어둡게 뭉쳐 얼굴 식별을 약화한다. 256px에서는 연결된 실제 머리 가닥으로 보이므로 명확한 알파 붕괴로 단정하지 않는다.",
+      "blocking_zero_defect_claim": "uncertain"
+    },
+    {
+      "id": "BF02",
+      "severity": "medium",
+      "category": "age_surface_naturalness",
+      "suite": "03-aging",
+      "cells": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "confidence": 0.97,
+      "observation": "같은 사람이 뚜렷하게 늙어 보이지만 256px 볼·팔자·턱 주름 일부가 피부 처짐보다 선을 그린 표면 무늬처럼 읽힌다. 96px에서는 노화 전달이 개선되며 이 결함이 덜 보인다.",
+      "also_visible": {
+        "02-combinations": [
+          5,
+          11,
+          17,
+          23,
+          29,
+          35
+        ],
+        "04-random": [
+          4,
+          5,
+          10,
+          13,
+          17,
+          21,
+          25,
+          28,
+          37,
+          40,
+          42,
+          45
+        ]
+      },
+      "blocking_zero_defect_claim": "aesthetic_residual_not_confirmed_compositing_failure"
+    },
+    {
+      "id": "BF03",
+      "severity": "low",
+      "category": "tonsure_contour_naturalness",
+      "suite": "04-random",
+      "cells": [
+        21,
+        39
+      ],
+      "confidence": 0.93,
+      "observation": "돌출은 해결되었지만 정수리 맨살과 갈색 머리고리의 경계가 매우 매끈하고 기하학적이다. 자연스러운 불규칙 모근 질감은 약하다.",
+      "blocking_zero_defect_claim": false
+    },
+    {
+      "id": "BF04",
+      "severity": "medium",
+      "category": "anchor_unverified",
+      "suite": "01-faces",
+      "cells": "all20",
+      "confidence": 1,
+      "observation": "귀 중심과 이마선은 정량 검증되지 않았다. 모든 레이어가 귀150,120±3까지 만족한다고 선언할 근거가 없다. 귀가 실제로 모두 실패한다는 뜻은 아니며 NOT_VERIFIED이다.",
+      "blocking_zero_defect_claim": "six_anchor_completion_unverified"
+    }
+  ],
+  "age_assessment": {
+    "same_identity": "PASS_OBSERVED_FOR_FOUR_PAIRS",
+    "visibly_older_at_96": "PASS_OBSERVED",
+    "exact_30_year_delta": "NOT_OBJECTIVELY_VERIFIABLE",
+    "confidence": 0.93,
+    "comments": "m01/m05/f01/f05의 코·턱·눈 구조는 유지되고 주름/처진 볼 단서가 추가되어 96px에서 연령 차이를 읽을 수 있다. 이를 정확히30년 또는 자연스러운 노화 전범위 통과로 확대하지 않는다."
+  },
+  "face_uniqueness": {
+    "assessment": "BASE_SHAPE_VARIETY_IMPROVED_BUT_48_UNIQUE_PERSONS_NOT_ESTABLISHED",
+    "confidence": 0.96,
+    "comments": [
+      "넓고 둥근 얼굴, 긴 좁은 얼굴, 강한 눈썹, 작은 아이 비율의 차이가 이전 파일럿보다 분명하다.",
+      "같은20베이스가48조합에서 반복되므로48명이 모두 별개 사람이라는 증거는 아니다.",
+      "R4의 덮개 제거로 random09/26 및06/23의 거의 같은 외관 반복은 해소됐다. 다만 동일 베이스 재사용을 새로운 얼굴 정체성으로 세지 않았으며 48명 전원의 고유 인물성은 입증되지 않았다."
+    ]
+  },
+  "edge_assessment": {
+    "dark_and_light": "NO_OBVIOUS_GENERAL_BRIGHT_FRINGE_OBSERVED",
+    "confidence": 0.9,
+    "comments": "짙은/밝은 배경 모두에서 외곽에 일관된 밝은 테두리를 발견하지 못했다. 회색 머리 하이라이트와 흰 속옷 깃을 오염 알파로 세지 않았다. 매우 가는 잔여 프린지의 전수0은 픽셀 수준으로 인증하지 않았다."
+  },
+  "occlusion_assessment": {
+    "hat_above_crown": "NO_OBVIOUS_OVERFLOW_OBSERVED",
+    "hood_exterior": "NO_OBVIOUS_OVERFLOW_OBSERVED",
+    "child_adult_hair_scale": "NO_OBVIOUS_ADULT_SIZE_HAIR_ON_CHILD_OBSERVED",
+    "confidence": 0.93
+  },
+  "proof_hashes": {
+    "02-combinations/256.png": "24c5facd137a556527991fe0aa54bfd3b53e18555a62a23e8d2db5fb354042fb",
+    "02-combinations/96.png": "ef8b9c20cbac17d3128e563bb48b1d82f5c8522a54b8f78d04853add30d86f9f",
+    "03-aging/256.png": "5345abb9d2be773676ad11b56da3b0800609c34ef731c1d50cd334941228dfdb",
+    "03-aging/96.png": "de230ee1fe16b3c4aa632a0f900b6cb6e536b818982c97292719d5e9e5083a57",
+    "04-random/256.png": "3821a45beb13e053b482fcf69423c0df7bcaa42646420cca3004a8155cd13a18",
+    "04-random/96.png": "b9778eb0a28b40b4c27c65d31b82311cecb4e04378371fba133c9ceab783800e",
+    "05-edges/dark-256.png": "9fce0a4456b7fcfbc25b1122c27e3c73dcc4f4a5383d5b059a670db5bb76f65b",
+    "05-edges/light-256.png": "c507a947cb9a3fe805c1cc4e228dbdf4e73d6ba4d3460f4cfc4f0c55eaf64be3",
+    "05-edges/dark-96.png": "fd8da641c51b2d912d8e744fbaabf248f64ad2e98ee79fdc4433c74f9500f462",
+    "05-edges/light-96.png": "68b6c0ca3e0467c736e013bbcd51654a905028338a4053e9db3f319593c6e788"
+  },
+  "r4_targeted_review": {
+    "cells_256": [
+      "04-random-23",
+      "04-random-26",
+      "04-random-35",
+      "02-combinations-27",
+      "02-combinations-33",
+      "04-random-43"
+    ],
+    "boards_96": [
+      "04-random/96.png",
+      "02-combinations/96.png",
+      "05-edges/dark-96.png",
+      "05-edges/light-96.png"
+    ],
+    "findings": [
+      {
+        "category": "child_hood_neck",
+        "observation": "아이 후드 아래 목이 좁아져 칼라와 연결되며 이전 큰 목 단절은 보이지 않는다. 귀 뒤의 좁은 배경 노출은 남지만 이 관찰에서 새 알파 붕괴라고 확정할 근거는 없다.",
+        "confidence": 0.93
+      },
+      {
+        "category": "repeated_cover_removed",
+        "observation": "random23 회색 올림머리,26 갈색 짧은 머리,35 짙은 짧은 머리가 드러나 이전 덮개 반복 외관이 달라졌다. 09/26 및06/23은 이제 같은 덮개 조합이 아니다.",
+        "confidence": 0.99
+      }
+    ],
+    "new_confirmed_blocking_defects": []
+  }
+}

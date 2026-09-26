@@ -155,4 +155,8 @@ export interface GameState {
   readonly arableFields?: readonly import("../zones/arable.types").ArableField[];
   /** Set once by the v9→v10 migration when it converted wheat farms (spec AF-12). */
   readonly arableMigration?: import("../zones/arable.types").ArableMigrationSummary;
+  /** Season ledgers and the season being counted (save v12, spec FP-1). Absent until the first tick after v12. */
+  readonly seasons?: import("./season.types").SeasonState;
+  /** Historical eras entered, in order (save v12, spec FP-5). Absent until the first tick after v12. */
+  readonly historicalEras?: readonly import("./season.types").HistoricalEraEntry[];
 }
