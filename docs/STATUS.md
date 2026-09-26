@@ -4,6 +4,7 @@
 
 ## 현재 단계
 
+- **REMOTE-1 DGX 원격 실행기 — 관문 ②③④⑤ 통과, ① 대기(sudo 링크), ⑥ 기록**(Claude Code, 스크립트·문서만, 게임 코드 0줄): `scripts/remote/run.sh`·`npm run remote:{test,guardrail,browser,perf,clone-check,setup}`. 작업 트리를 DGX `~/fls-runs/<label>-<sha>`로 보내 `fls-runs.slice`(48GB·12코어·nice 10) 안에서 돌리고 결과만 가져온다. Part7 브라우저 테스트 DGX 10/10(각 7.4초). 성능 관문은 DGX 기준선 `perf/baseline-dgx-<sha>.json`과만 비교. [사용법](REMOTE_RUNS.md), AGENTS.md "원격 실행" 규칙.
 - **INSTALL-5c Wave 5c 설치 — 관문 ①~⑦ 통과(③ 곧은 벽 성문만), 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·표현 워커·경계층 기둥 필드·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population·성벽 논리 0줄): 지시서 ZIP이 없어 사용자 요청 한 줄 + Wave 5c 대장·판정표로 진행(IN5c1). [보고서](verification/install5c/REPORT.md), RM-8·WC-10·WL-8·SH-6, 결정 IN5c1~IN5c4.
   - 아이·노인 8시트: 노인은 노인 몸, 아이는 시장·교회 길 절반에 어른 0.3칸 옆 동행(상한 40의 남은 자리만, 어른은 MOVE-1 그대로). 1년 545번 동행·실패 0.
   - 석문 v3(축마다 한 장, 통로 배율 51.2/204, 늘이기 없음), 135° 기둥 b·c(축 팔 방향), 얕은 물 d·e(물가 밝은 테두리 2.5~3.8 → 0.5~1.4). p95 98~102%, 깨끗한 클론 `6f3248c` 2,901/2,901.

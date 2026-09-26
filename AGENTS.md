@@ -29,6 +29,19 @@
 - **상태 스냅샷**: 화면 플레이 중 하네스가 5분마다 게임 상태를 읽기 전용으로 저장한다(`replay*/snapshots/mmss.json`). 플레이어(에이전트)는 이 파일을 보지 않는다. 실패 재현용이다.
 - **구간 관문 예외**: 지시서가 구간 관문을 지정하면, 자연 화면 플레이에서 나온 스냅샷에 한해 그 시점부터 시작할 수 있다. 합성·편집한 상태는 금지. 보고서에 스냅샷 출처(어느 플레이, 몇 분)를 적는다.
 
+### 원격 실행 (DGX Spark)
+[사용법·동작: docs/REMOTE_RUNS.md](docs/REMOTE_RUNS.md)
+- **원격 필수**: 다음은 `scripts/remote/run.sh`(`npm run remote:*`)로 DGX에서 돌린다.
+  - 가드레일 → `remote:guardrail`
+  - 전체 회귀(`npm test` 전체) → `remote:test`
+  - 브라우저·Playwright 테스트 → `remote:browser`, 또는 `run.sh`에 명령을 준다
+  - 캡처·성능 측정 → `remote:perf`, 또는 `run.sh`
+  - 깨끗한 클론 검증 → `remote:clone-check`
+- **로컬 허용**: typecheck, 단일 파일·소규모 단위 테스트, 린트.
+- **성능 관문 수치는 DGX 기준선(`perf/baseline-dgx-<sha>.json`)과만 비교한다.** Mac 수치와 섞지 않는다.
+- **원격 폴더 label은 `<세션>-<작업ID>`다**(예: `render-F0V`, `engine-F0A`). `FLS_REMOTE_LABEL`로 준다.
+- 원격 실행은 48GB·12코어·nice 10 안에서만 돈다(`fls-runs.slice`). 이 상한을 올리거나 우회하지 않는다. 플레이 서버(4173)는 건드리지 않는다. 원격 실행의 포트는 4300~4399다.
+
 ### 상시 규칙
 1. 커밋은 작업 단위. 증빙은 단계당 3MB 이하(재플레이 캡처 별도), 이미지 JPEG. 준비 상태·자연 플레이·자동 성장 재생을 캡처마다 구분 표기.
 2. 배포·main 병합은 명시 지시 없이 금지.
