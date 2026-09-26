@@ -1,0 +1,132 @@
+{
+  "generation": {
+    "id": "house_l4_1350_b-v2",
+    "prompt": "Precise-object-edit: turn attached approved AD1350 L4 house A into facade VARIANT B. Keep EXACT SAME alpha outline, roof shape, height, ground footprint, three-floor count, cantilever geometry, broad dark horizontal window strips and their opening positions. Change ONLY oak carpentry arrangement: paired triangular bracket details, alternate short diagonal braces in a few cream lower infill panels, slightly weathered grey-brown timber and muted tawny wooden shutter resting beside ONE opening without covering the wide dark window band. Preserve large projecting floor bands, protruding joist ends and deep underside shadows. Do not add or remove storeys, chimney, glass, smoke or objects. Same warm understated isometric painterly game style, upper-left lighting. Transparent background. This is the same physical house with modest alternate timber detailing, not a redesign.",
+    "reference": "/tmp/astra-wave20-rework-20260927/era1350/house_l4_1350_a-v2.png",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-97bda9dc-cd78-478a-b067-78e67761b54b.png",
+    "raw": "/tmp/astra-wave20-rework-20260927/era1350/house_l4_1350_b-v2.png"
+  },
+  "registration": {
+    "id": "house_l4_1350_b-v2",
+    "level": 4,
+    "era": 1350,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l4_1350_b-v2.png",
+    "file": "assets/houses/house_l4_1350_b-v2.png",
+    "canvas": [
+      161,
+      161
+    ],
+    "pivot": [
+      81.97647527910686,
+      157.40510366826157
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.49791865539583047,
+    "worldScale": 0.49791865539583047,
+    "sourceGround": {
+      "left": [
+        323,
+        961
+      ],
+      "front": [
+        747,
+        1180
+      ],
+      "right": [
+        975,
+        1051
+      ]
+    },
+    "targetGround": {
+      "left": [
+        38,
+        129
+      ],
+      "front": [
+        96,
+        157
+      ],
+      "right": [
+        129,
+        139
+      ]
+    },
+    "matrix": [
+      [
+        0.14058378254386972,
+        -0.007340291317811676,
+        -0.3545418052528948
+      ],
+      [
+        -0.0031540314256222044,
+        0.13396031655006307,
+        1.2828879458653546
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        38,
+        129
+      ],
+      [
+        96.00000000000001,
+        157
+      ],
+      [
+        129,
+        139
+      ]
+    ],
+    "jettyOverhangNativePx": 13.355459341667624,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 125,
+      "scale": 0.9522133490699796,
+      "originalTop": 5.278931070076847,
+      "targetTop": 11
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 125,
+      "yScale": 0.9522133490699796,
+      "targetTop": 11
+    },
+    "lowerEdgeWarp": {
+      "joinY": 157,
+      "yScale": 0.5000143369175641,
+      "originalBottom": 160.99988530794815,
+      "targetBottom": 159,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      25.07741713499255,
+      147.70925564858356
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  "source_in_archive": "provenance/generated/house_l4_1350_b-v2-raw.png",
+  "source_sha256": "5d9c77681fbdab4e117f7e882fe3c12573bf846898e87093d397de511acb7e02"
+}

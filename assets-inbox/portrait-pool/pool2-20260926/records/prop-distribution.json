@@ -1,0 +1,153 @@
+{
+  "scope": "Roster metadata counts; visual confirmation recorded separately in QA_REPORT.md",
+  "identities": {
+    "total": 32,
+    "counts": {
+      "none": 10,
+      "book_scroll": 2,
+      "other": 20
+    }
+  },
+  "stages": {
+    "total": 92,
+    "counts": {
+      "none": 29,
+      "book_scroll": 6,
+      "other": 57
+    }
+  },
+  "details": [
+    {
+      "prop": "none",
+      "label": "빈손",
+      "identities": 10,
+      "stages": 29
+    },
+    {
+      "prop": "book_scroll",
+      "label": "두루마리·책",
+      "identities": 2,
+      "stages": 6
+    },
+    {
+      "prop": "ale_jug",
+      "label": "에일 주전자",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "coin_purse",
+      "label": "동전 지갑",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "gloves",
+      "label": "장갑",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "grain_measure",
+      "label": "곡물 계량컵",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "key_ring",
+      "label": "열쇠 꾸러미",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "measuring_rod",
+      "label": "측량 자",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "net_float",
+      "label": "그물 부표",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "pilgrim_badge",
+      "label": "순례 배지",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "ribbon_spool",
+      "label": "리본 실패",
+      "identities": 1,
+      "stages": 2
+    },
+    {
+      "prop": "rosary",
+      "label": "묵주",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "shepherd_crook",
+      "label": "목동 지팡이",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "shoe_last",
+      "label": "구두 골",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "small_knife",
+      "label": "작은 칼",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "smooth_pebble",
+      "label": "매끈한 조약돌",
+      "identities": 1,
+      "stages": 2
+    },
+    {
+      "prop": "spindle",
+      "label": "방추",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "walking_cane",
+      "label": "보행 지팡이",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "washing_cloth",
+      "label": "세탁 천",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "wooden_horse",
+      "label": "나무 말 장난감",
+      "identities": 1,
+      "stages": 2
+    },
+    {
+      "prop": "wooden_pipe",
+      "label": "나무 피리",
+      "identities": 1,
+      "stages": 3
+    },
+    {
+      "prop": "wool_sample",
+      "label": "양모 견본",
+      "identities": 1,
+      "stages": 3
+    }
+  ]
+}

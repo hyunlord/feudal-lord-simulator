@@ -1,0 +1,176 @@
+{
+  "status": "candidate-ground-registration-contract",
+  "copiedAcceptedAssets": [
+    {
+      "file": "/tmp/astra-wave20-rework-20260927/delivery/assets/houses/house_l1_1400_a-v1.png",
+      "source": "/tmp/astra-wave20-work-20260926/delivery/assets/houses/house_l1_1400_a-v1.png",
+      "sha256": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8",
+      "status": "accepted unchanged per latest user instruction"
+    },
+    {
+      "file": "/tmp/astra-wave20-rework-20260927/delivery/assets/houses/house_l1_1350_b-v1.png",
+      "source": "/tmp/astra-wave20-work-20260926/delivery/assets/houses/house_l1_1350_b-v1.png",
+      "sha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+      "status": "accepted unchanged per latest user instruction"
+    },
+    {
+      "file": "/tmp/astra-wave20-rework-20260927/delivery/assets/houses/house_l0_1400_b-v1.png",
+      "source": "/tmp/astra-wave20-work-20260926/delivery/assets/houses/house_l0_1400_b-v1.png",
+      "sha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d",
+      "status": "accepted unchanged per latest user instruction"
+    },
+    {
+      "file": "/tmp/astra-wave20-rework-20260927/delivery/assets/houses/house_l0_1350_a-v1.png",
+      "source": "/tmp/astra-wave20-work-20260926/delivery/assets/houses/house_l0_1350_a-v1.png",
+      "sha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c",
+      "status": "accepted unchanged per latest user instruction"
+    },
+    {
+      "file": "/tmp/astra-wave20-rework-20260927/delivery/assets/houses/house_l1_1350_a-v1.png",
+      "source": "/tmp/astra-wave20-work-20260926/delivery/assets/houses/house_l1_1350_a-v1.png",
+      "sha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+      "status": "accepted unchanged per latest user instruction"
+    },
+    {
+      "file": "/tmp/astra-wave20-rework-20260927/delivery/assets/houses/house_l1_1400_b-v1.png",
+      "source": "/tmp/astra-wave20-work-20260926/delivery/assets/houses/house_l1_1400_b-v1.png",
+      "sha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354",
+      "status": "accepted unchanged per latest user instruction"
+    },
+    {
+      "file": "/tmp/astra-wave20-rework-20260927/delivery/assets/houses/house_l0_1350_b-v1.png",
+      "source": "/tmp/astra-wave20-work-20260926/delivery/assets/houses/house_l0_1350_b-v1.png",
+      "sha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c",
+      "status": "accepted unchanged per latest user instruction"
+    },
+    {
+      "file": "/tmp/astra-wave20-rework-20260927/delivery/assets/houses/house_l0_1400_a-v1.png",
+      "source": "/tmp/astra-wave20-work-20260926/delivery/assets/houses/house_l0_1400_a-v1.png",
+      "sha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00",
+      "status": "accepted unchanged per latest user instruction"
+    }
+  ],
+  "canonicalReferenceCount": 5,
+  "priorContract": "delivery/references/contracts/prior-geometry-contract.json",
+  "priorDocumentIsHistorical": "prior REFERENCE_CONTRACT.md describes previous no-geometry-change round. Newest user now authorizes bold upper geometry/window changes while ground/canvas/pivot/worldscale stay fixed; old overlay compatibility must be rechecked.",
+  "diagnostic": "records/ground-reference-grid.png",
+  "houses": [
+    {
+      "level": 2,
+      "source": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l2-v2.png",
+      "referenceSha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e",
+      "canvas": [
+        137,
+        137
+      ],
+      "nativePivot": [
+        70.95813397129186,
+        132.08373205741626
+      ],
+      "nativeToWorldScaleFixed": 0.4980801861842801,
+      "logicalFootprint": [
+        1,
+        1
+      ],
+      "foundationContactLandmarks": {
+        "left": [
+          24,
+          103
+        ],
+        "front": [
+          86,
+          131
+        ],
+        "right": [
+          118,
+          113
+        ]
+      },
+      "landmarkMethod": "manual visual inspection of 4x nearest-neighbor image with 10-native-pixel grid; visible stone foundation corners, not alpha bbox",
+      "landmarkToleranceNativePx": 2,
+      "landmarkStatus": "registration landmarks inferred from artwork; no authored numeric ground polygon supplied",
+      "registrationRule": "fit new foundation to these three ground contacts; preserve exact canvas, numeric pivot and world scale. Never fit or recenter by whole-building alpha bbox. Upper geometry and windows may change.",
+      "oldOverlayCompatibility": "NOT_ASSUMED: changed roof/windows invalidate existing roof_snow and boarded alignment; inspect each new variant and re-register overlays if reused."
+    },
+    {
+      "level": 3,
+      "source": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l3-v2.png",
+      "referenceSha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc",
+      "canvas": [
+        142,
+        142
+      ],
+      "nativePivot": [
+        74.39712918660287,
+        138.03668261562999
+      ],
+      "nativeToWorldScaleFixed": 0.4983578424454543,
+      "logicalFootprint": [
+        1,
+        1
+      ],
+      "foundationContactLandmarks": {
+        "left": [
+          28,
+          109
+        ],
+        "front": [
+          88,
+          137
+        ],
+        "right": [
+          121,
+          120
+        ]
+      },
+      "landmarkMethod": "manual visual inspection of 4x nearest-neighbor image with 10-native-pixel grid; visible stone foundation corners, not alpha bbox",
+      "landmarkToleranceNativePx": 2,
+      "landmarkStatus": "registration landmarks inferred from artwork; no authored numeric ground polygon supplied",
+      "registrationRule": "fit new foundation to these three ground contacts; preserve exact canvas, numeric pivot and world scale. Never fit or recenter by whole-building alpha bbox. Upper geometry and windows may change.",
+      "oldOverlayCompatibility": "NOT_ASSUMED: changed roof/windows invalidate existing roof_snow and boarded alignment; inspect each new variant and re-register overlays if reused."
+    },
+    {
+      "level": 4,
+      "source": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l4-v2.png",
+      "referenceSha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8",
+      "canvas": [
+        161,
+        161
+      ],
+      "nativePivot": [
+        81.97647527910686,
+        157.40510366826157
+      ],
+      "nativeToWorldScaleFixed": 0.49791865539583047,
+      "logicalFootprint": [
+        1,
+        1
+      ],
+      "foundationContactLandmarks": {
+        "left": [
+          38,
+          129
+        ],
+        "front": [
+          96,
+          157
+        ],
+        "right": [
+          129,
+          139
+        ]
+      },
+      "landmarkMethod": "manual visual inspection of 4x nearest-neighbor image with 10-native-pixel grid; visible stone foundation corners, not alpha bbox",
+      "landmarkToleranceNativePx": 2,
+      "landmarkStatus": "registration landmarks inferred from artwork; no authored numeric ground polygon supplied",
+      "registrationRule": "fit new foundation to these three ground contacts; preserve exact canvas, numeric pivot and world scale. Never fit or recenter by whole-building alpha bbox. Upper geometry and windows may change.",
+      "oldOverlayCompatibility": "NOT_ASSUMED: changed roof/windows invalidate existing roof_snow and boarded alignment; inspect each new variant and re-register overlays if reused."
+    }
+  ],
+  "constraints": [
+    "New chimney/roof may change upper alpha bounds. Do not recalculate worldscale from new bbox.",
+    "Contact corners are visible three-corner V; rear ground corner is occluded and should not be fabricated as measured.",
+    "Original foundation front corner is not identical to runtime crop-bottom-center pivot. Do not substitute one for the other.",
+    "No game files modified. Reworked L2-4 deliverables not touched."
+  ]
+}

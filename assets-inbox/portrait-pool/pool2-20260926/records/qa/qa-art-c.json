@@ -1,0 +1,296 @@
+{
+  "status": "PASS_WITH_LIMITATIONS",
+  "reviewer": "art_c_self_review",
+  "method": "Every young portrait visually inspected before used as identity edit reference. Every final 256px portrait inspected individually, then full24 boards at 256 and96. Subjective visual review, exact nominal age not objectively measurable.",
+  "boards": [
+    "art-c-256.png",
+    "art-c-96.png"
+  ],
+  "identities": [
+    {
+      "identity_id": "I085",
+      "same_person_256": true,
+      "same_person_96": true,
+      "all_stages_present": true,
+      "observed_prop": "none",
+      "no_unrequested_book_scroll": true,
+      "concerns": "Distinctive broad forehead and squared chin retained. Old hood revised to unambiguous dark teal wool hood. Young to mature aging is restrained at 96px.",
+      "stages": [
+        {
+          "id": "I085_young",
+          "sha256": "879882104901775756d474bad1b05c66ee3063a5c695d07bac26ca76045ccb26",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I085_mature",
+          "sha256": "9ae8d5734cf1c5da17e123bd06bcdcbc53a69db7b24568d553328e4fc051961f",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I085_old",
+          "sha256": "a83c9987bb7d6c2a7413169c239e5de5af563f1fa12c2016eaa0e6fee68f35a8",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I086",
+      "same_person_256": true,
+      "same_person_96": true,
+      "all_stages_present": true,
+      "observed_prop": "washing_cloth",
+      "no_unrequested_book_scroll": true,
+      "concerns": "Washing cloth visible in all stages; small pale-blue folded area remains identifiable at 96px. Old r2 now clearer neck aging, eye bags and grey hair.",
+      "stages": [
+        {
+          "id": "I086_young",
+          "sha256": "42394d3992a9283aef25614a6393cf966bdc6a7c9b541ee532478529b8710d05",
+          "observed_prop": "washing_cloth",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I086_mature",
+          "sha256": "ef040a4c85dc19caadb72333e3c6e93f8eeb568c654a0cc0033cf1387d25aeae",
+          "observed_prop": "washing_cloth",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I086_old",
+          "sha256": "e60acc810315d4ddc0b70746d3eb7ee411aa8bf133f9f249847666e0241876aa",
+          "observed_prop": "washing_cloth",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I087",
+      "same_person_256": true,
+      "same_person_96": true,
+      "all_stages_present": true,
+      "observed_prop": "none",
+      "no_unrequested_book_scroll": true,
+      "concerns": "Skin-only young r2 lightened golden beige before aging. Young versus mature differs subtly; old greying and facial aging visible. No handheld props.",
+      "stages": [
+        {
+          "id": "I087_young",
+          "sha256": "6081ad74b9d50f5a98eb49b300fde8b29e56402feae17821367d522dc8366302",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I087_mature",
+          "sha256": "01db4688d21a9e1cca7f09a975d014fa4cd6cab4306a4c02cf8f744df8bf2d87",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I087_old",
+          "sha256": "2528f4551afe67b1230941200d61863fbe70ca390e61de6238d1801e8c049ca7",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I088",
+      "same_person_256": true,
+      "same_person_96": true,
+      "all_stages_present": true,
+      "observed_prop": "gloves",
+      "no_unrequested_book_scroll": true,
+      "concerns": "Gloves and broad grey-white squirrel fur visible at both sizes. All three headwear families present, identity retained.",
+      "stages": [
+        {
+          "id": "I088_young",
+          "sha256": "8e66b2d86b61ba63346646b81ee6c866afff722120ff5cf9cf4167db852abe59",
+          "observed_prop": "gloves",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I088_mature",
+          "sha256": "f2ce64a3f8568a06f4c50ed7cc9f428ce60847591a05922345183f8d5ffa959f",
+          "observed_prop": "gloves",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I088_old",
+          "sha256": "77bcbc3cf2b41b841439f2a88178e30edfab571e0e09d1fb4a59b835ea18c1ac",
+          "observed_prop": "gloves",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I089",
+      "same_person_256": true,
+      "same_person_96": true,
+      "all_stages_present": true,
+      "observed_prop": "none",
+      "no_unrequested_book_scroll": true,
+      "concerns": "No handheld props. Coarse patched clothing visible; long chin, nose and eye spacing consistent.",
+      "stages": [
+        {
+          "id": "I089_young",
+          "sha256": "3c57b0e68e2632688bee569321a62161c9737e8b4ee48137f4e5a47b6fa210d1",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I089_mature",
+          "sha256": "fbdb9f01d6b71c610e1dbe9168529fda59a3a3070995e3e6bffa25b0534119f4",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I089_old",
+          "sha256": "f90ca095a727e6fdea7e4806353b9fafb3a480618c78629e1147660a4f1dd64d",
+          "observed_prop": "none",
+          "prop_visible": false,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I090",
+      "same_person_256": true,
+      "same_person_96": true,
+      "all_stages_present": true,
+      "observed_prop": "book_scroll",
+      "no_unrequested_book_scroll": true,
+      "concerns": "Closed brown book in both hands in all three stages. Below-ear bob and cap present. Young warm beige-tan skin has lighting warmth; mature/old remain same person.",
+      "stages": [
+        {
+          "id": "I090_young",
+          "sha256": "c79fb710298c4b6edba7190903be6c4a97782311b5e3814e9e5e4d19557727b9",
+          "observed_prop": "book_scroll",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I090_mature",
+          "sha256": "02f65f62e6e8f9b00cc520b2942e4d56d340385115c4bf9abee1969f0b6fbba3",
+          "observed_prop": "book_scroll",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I090_old",
+          "sha256": "409ab1c48bed3ced3f4325f6f5fccc2dfce1a371c1a4be4be750d90c14608f6e",
+          "observed_prop": "book_scroll",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I091",
+      "same_person_256": true,
+      "same_person_96": true,
+      "all_stages_present": true,
+      "observed_prop": "rosary",
+      "no_unrequested_book_scroll": true,
+      "concerns": "Dominican black cappa and white habit, tonsure and wooden prayer beads clearly present. Age changes subtle at 96px but young/old differentiated.",
+      "stages": [
+        {
+          "id": "I091_young",
+          "sha256": "3598a4e451d4b44e0e5abadb5cd74d174f9169f2fce0a1e338ea231dac373ee2",
+          "observed_prop": "rosary",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I091_mature",
+          "sha256": "ae86b77abe5f78b4be4153d82aaa8df2648185b1e8b4792a4d6b302db7da9e29",
+          "observed_prop": "rosary",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I091_old",
+          "sha256": "62511ab7fb39093bcadb5c688b1b8e93586ee33ba43c23019ec606cc5bd302ba",
+          "observed_prop": "rosary",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I092",
+      "same_person_256": true,
+      "same_person_96": true,
+      "all_stages_present": true,
+      "observed_prop": "pilgrim_badge",
+      "no_unrequested_book_scroll": true,
+      "concerns": "Single pewter scallop pilgrim badge, no other prop. Below-ear hair and forked beard preserved; elderly wrinkles and grey hair/beard visible.",
+      "stages": [
+        {
+          "id": "I092_young",
+          "sha256": "b95d37a1288303318fbea2e9e33f734bbdcf5daff43159fcba3225d4f77a98ce",
+          "observed_prop": "pilgrim_badge",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I092_mature",
+          "sha256": "c0ac67683ccc74834721ba3d9e4eb9e2b970b416ec98ccd621e2faf1dfd23f17",
+          "observed_prop": "pilgrim_badge",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        },
+        {
+          "id": "I092_old",
+          "sha256": "4ec0a6b30ca3db0aa0d86a966d4499ac339b4e7a3c625a7b71c9cd5d424f4c8e",
+          "observed_prop": "pilgrim_badge",
+          "prop_visible": true,
+          "headwear_matches_family": true,
+          "identity_pass": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Young-to-mature aging is restrained at96px for I085,I087,I091,I092; identity consistency is strong.",
+    "I086 washing cloth is visible but small at96px.",
+    "No independent blinded identity or class test was performed in this slice."
+  ]
+}

@@ -1,0 +1,94 @@
+[
+  {
+    "id": "pill_season_spring",
+    "file": "assets/reused/pill_season_spring.png",
+    "width": 96,
+    "height": 96,
+    "status": "reused reference crop",
+    "sceneDescription": "spring 계절 아이콘",
+    "historyNotes": "첨부 P0 계절 셀 원본 픽셀 재사용",
+    "generationRecords": [],
+    "processing": {
+      "source": "references/icon_resource_sheet.png",
+      "crop": [
+        480,
+        0,
+        96,
+        96
+      ],
+      "resample": false
+    },
+    "qa": {
+      "pixelPreserved": true
+    }
+  },
+  {
+    "id": "pill_season_summer",
+    "file": "assets/reused/pill_season_summer.png",
+    "width": 96,
+    "height": 96,
+    "status": "reused reference crop",
+    "sceneDescription": "summer 계절 아이콘",
+    "historyNotes": "첨부 P0 계절 셀 원본 픽셀 재사용",
+    "generationRecords": [],
+    "processing": {
+      "source": "references/icon_resource_sheet.png",
+      "crop": [
+        576,
+        0,
+        96,
+        96
+      ],
+      "resample": false
+    },
+    "qa": {
+      "pixelPreserved": true
+    }
+  },
+  {
+    "id": "pill_season_autumn",
+    "file": "assets/reused/pill_season_autumn.png",
+    "width": 96,
+    "height": 96,
+    "status": "reused reference crop",
+    "sceneDescription": "autumn 계절 아이콘",
+    "historyNotes": "첨부 P0 계절 셀 원본 픽셀 재사용",
+    "generationRecords": [],
+    "processing": {
+      "source": "references/icon_resource_sheet.png",
+      "crop": [
+        672,
+        0,
+        96,
+        96
+      ],
+      "resample": false
+    },
+    "qa": {
+      "pixelPreserved": true
+    }
+  },
+  {
+    "id": "pill_season_winter",
+    "file": "assets/reused/pill_season_winter.png",
+    "width": 96,
+    "height": 96,
+    "status": "reused reference crop",
+    "sceneDescription": "winter 계절 아이콘",
+    "historyNotes": "첨부 P0 계절 셀 원본 픽셀 재사용",
+    "generationRecords": [],
+    "processing": {
+      "source": "references/icon_resource_sheet.png",
+      "crop": [
+        768,
+        0,
+        96,
+        96
+      ],
+      "resample": false
+    },
+    "qa": {
+      "pixelPreserved": true
+    }
+  }
+]

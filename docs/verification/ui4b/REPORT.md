@@ -28,8 +28,9 @@
 
 ## 만든 것
 - **받기와 설치:**
-  - 받기: Wave 19는 `assets-inbox/`에 없었다. 원격 브랜치 14개, 로컬 체크아웃, `astra-raw` 어디에도 없었다. 그래서 이 작업이 받았다(`assets-inbox/wave19/candidates-20260926`, 받은 바이트 그대로, SHA256SUMS 53/53 일치, 장부 57행 `candidate`, 원본 ZIP은 `~/feudal-lord-analysis/astra-raw/zips/`).
-  - 설치: `scripts/installWave19.py`가 53장을 `public/assets/wave19/<묶음>`에 넣고 대장 53행을 만든다. inbox `installed_by`는 UI-4b이고, 상태는 판정 전이라 `candidate`다.
+  - 받기: 작업을 시작할 때 Wave 19는 `assets-inbox/`에 없었다(원격 브랜치 14개, 로컬 체크아웃, `astra-raw`). 그래서 이 작업이 따로 받아 두었다(받은 바이트, SHA256SUMS 53/53).
+  - INBOX-1i: 병합 직전 본선에 INBOX-1i(`e31b0887`)가 들어왔다. Wave 19를 `wave19/candidates-v1`로 받았고, 53장이 확정이다. 따로 받아 둔 사본과 그 장부 57행은 지우고 INBOX 묶음을 쓴다(같은 바이트, inbox 장부 행 = PNG 2,867).
+  - 설치: `scripts/installWave19.py`가 확정 53장을 `public/assets/wave19/<묶음>`에 넣고 대장 53행을 만든다. inbox `installed_by`는 UI-4b다.
 - **장면:** `src/ui/seasonLedgerScenes.ts`가 원장에서 장면을 고른다. 결산 카드(`SeasonLedgerCard.tsx`)는 30px 아이콘과 값을 보이고, 제목 아래 한 줄에 이름을 적는다.
 - **등록만:** 기록 카드 틀 6, 타임라인 14, 전기·세력·지도·관계 9는 `src/ui/wave19ArtManifest.generated.ts`에 올렸다. 9-slice inset과 최소 크기가 들어 있고, CHRON-1에서 쓴다.
 
@@ -38,6 +39,5 @@
 - **화재 칸의 채 수:** 화재 사건 기록이 앞서면 채 수가 빠졌다. 그 계절의 불탄 집 기록 수를 붙였다.
 
 ## 판정을 받을 선택지
-- **Wave 19 채택:** 53장 모두 `candidate`로 설치했다(사용자 지시). 판정이 오면 inbox 상태만 바꾸면 된다.
 - **조용한 계절의 빈 셋째 칸:** 원장과 숫자에 변화가 둘뿐이면 칸이 비어 있다. "큰 일 없음" 같은 칸을 둘지는 판정 몫이다.
 - **"대기근"·"특허" 아이콘:** 24px에서 문맥 없이 읽히는지는 Astra 검수표도 판정을 미뤘다. 제목 아래 이름 줄이 그 몫을 한다.

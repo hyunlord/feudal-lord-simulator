@@ -1,0 +1,14 @@
+{
+  "id": "I079_young",
+  "prompt": "Use case: identity-preserve precise colour correction. Keep this exact man, facial anatomy, nose eye shapes, curly beard, dark medieval below-ear hair, hood, body size, posture, lighting, coarse patched tunic, empty hands, background and entire composition. Change ONLY his skin color from deep brown to sun-tanned LIGHT warm beige, within the light European skin palette of the approved painted game pool. Maintain natural warm weather-reddened shadows, not washed white. Do not alter his ethnicity cues, skull, age or identity. One whole opaque square painted portrait. No props, no books, no text.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0dbec-fbbd-7260-8a5f-3ec700caded1/exec-983c7dd9-cb9c-49ba-8ed5-82213d557343.png",
+  "references": [
+    "/tmp/astra-portrait-pool2-work/revisions/I079_young-before-r2.png"
+  ],
+  "method": "native_targeted_skin_palette_correction",
+  "revision": 2,
+  "packaged_source": "provenance/raw/I079_young.png",
+  "packaged_references": [
+    "provenance/references/e10650783f38-I079_young-before-r2.png"
+  ]
+}

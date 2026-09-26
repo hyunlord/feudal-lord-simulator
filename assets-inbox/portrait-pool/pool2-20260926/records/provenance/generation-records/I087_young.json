@@ -1,0 +1,14 @@
+{
+  "id": "I087_young",
+  "prompt": "Use case: identity-preserve. Precisely edit this existing painted portrait. Keep the exact same woman, facial anatomy, expression, age24, white veil and wimple, green kirtle and rust shoulder cloth, build, LEFT-facing pose, no object, composition, background and natural painterly lighting. ONLY lighten her skin tone slightly from medium golden brown to LIGHT golden beige within a fair warm complexion range. Preserve all facial shading naturally, not washed out or grey. Do not change identity or any costume detail. One square complete portrait, no text.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0dbed-2f00-7200-897b-cb387f44cb31/exec-07b0a644-b524-49e7-b6d4-e419ebd8c89f.png",
+  "references": [
+    "/tmp/astra-portrait-pool2-work/revisions/I087_young-before-r2.png"
+  ],
+  "method": "native_imagegen_skin_palette_revision",
+  "revision": 2,
+  "packaged_source": "provenance/raw/I087_young.png",
+  "packaged_references": [
+    "provenance/references/38daa6c80253-I087_young-before-r2.png"
+  ]
+}

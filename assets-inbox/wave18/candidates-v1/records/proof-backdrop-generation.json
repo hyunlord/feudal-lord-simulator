@@ -1,0 +1,12 @@
+{
+  "tool": "builtin image_gen",
+  "prompt": "Edit this supplied game screenshot ONLY to create a clean offline mockup backdrop. Remove ALL UI overlays: top resource bar, top right time panel, top left portrait/tutorial box, right objective panel and floating text, bottom toolbar, placement white ghost tile, red arrow and annotation. Reconstruct only hidden grass/trees/roads as needed in the same painterly isometric game style. Preserve the visible village houses, central well, road network, trees, water and camera as closely as possible. No new buildings, no new gameplay layout. Remove ALL text and numbers, no UI, no icons. This is an art mockup backdrop, not a live game screenshot. Return same landscape aspect ratio.",
+  "referenceImages": [
+    "references/현재_첫화면.jpg"
+  ],
+  "rawFile": "raw/proofs/backdrop-ui-removal.png",
+  "model": "not supplied",
+  "seed": "not supplied",
+  "purpose": "Supporting offline proof background only; not one of 41 asset PNGs",
+  "limitation": "UI-hidden terrain reconstructed for mockup, not actual game-state evidence"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "house_l0_1350_b-v1",
+  "era": 1350,
+  "level": 0,
+  "variant": "b",
+  "file": "assets/houses/house_l0_1350_b-v1.png",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-c7e1a3c6-66c1-45db-98cf-d62cbe687c68.png",
+  "record": {
+    "id": "house_l0_1350_b-v1",
+    "level": 0,
+    "variant": "b",
+    "reference": "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l0-v3.png",
+    "prompt": "Use case: precise-object-edit. Edit ONLY the attached approved isometric house facade to its circa AD1350 southern English market-town style. Asset house_l0_1350_b-v1. Poor low single-storey cottage. Only modest evolution: fresh neatly repaired thatch within exact roof geometry, straighter doorway frame, restrained cream daub repairs. No new storey. Variant B: slightly deeper weathered brown oak frame, muted grey-brown shutters, subtle alternative short diagonal brace arrangement inside the existing wall bays. Preserve EXACT original camera, 2:1 isometric projection, entire roof ridge/eaves/roof silhouette and outline, building silhouette, ground footprint, base contact points, original canvas proportions and padding, lighting upper-left, and every door/window opening POSITION and SIZE. Existing snow and boarded-window overlays must continue to align. Repaint original roof surface only with same material and geometry, do not reshape, move, enlarge, raise, add dormers or extend it. Keep original same grade identifiable. NO CHIMNEY, no flue, no chimney pots, no smoke, no glass or blue reflections, no new windows/doors, no people, no props, no surrounding scenery, no text. Single isolated complete building with true transparent RGBA background. Match reference understated painterly small-game sprite texture, restrained warm earth palette and pixel-scale detail, no black-white Tudor revival contrast. Do not redesign a different house.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-c7e1a3c6-66c1-45db-98cf-d62cbe687c68.png"
+  },
+  "crop": {
+    "left": 171,
+    "top": 397,
+    "width": 897,
+    "height": 746
+  },
+  "target": {
+    "left": 21,
+    "top": 46,
+    "width": 113,
+    "height": 94
+  },
+  "canvas": [
+    153,
+    153
+  ],
+  "pivot": [
+    77.35406698564593,
+    139.57894736842104
+  ],
+  "footprint": [
+    1,
+    1
+  ],
+  "scale": 0.4995704948646125,
+  "chimney": false,
+  "chimneyRegion": null,
+  "smokeOrigin": null,
+  "groundDrift": 0,
+  "changed": 2742,
+  "source_archive_path": "provenance/generated/house_l0_1350_b-v1-raw.png",
+  "source_sha256": "bc1c3fa561173db4c54347a15c789a549ef0a5e7c928408a0fd69022b2941733",
+  "candidate_sha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c"
+}

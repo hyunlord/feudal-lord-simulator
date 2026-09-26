@@ -1,0 +1,137 @@
+{
+  "generation": {
+    "id": "house_l2_1400_b-v2",
+    "l": 2,
+    "v": "b",
+    "references": [
+      "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave20-rework-20260927/era1400/house_l4_1400_a-v2.png"
+    ],
+    "prompt": "Create exactly ONE transparent game house sprite. Image1 is the exact grade L2 structural template; image2 is APPROVED1400 visual grammar, use its materials, dense close-studding, broad diamond-leaded windows and stone ground storey but DO NOT copy its three-storey height for lower grades. Preserve image1 grade, two storeys, exact original ground footprint/isometric projection/light/scale. Keep its simple uninterrupted gabled redtile roof; NO extra dormer or floor. Era1400 southern/southeastern England. Must look BOLDLY different from1300 at30percent scale. Both visible upper walls have DENSE continuous repeating vertical warmdark oak CLOSE-STUDDING alternating narrow cream slots, approximate3–4native-pixel posts and3–4pxgaps, not isolatedXbraces. Wide coherent bands of THREE grey-green diamond-leaded glass lights, visibly broad and dark, no neonblue, retain human-scaled openings. Rough grey-beigeSTONE ground-floor wall covering lower25–30percent buildingfacade, not only thinfoundation. BROAD projecting REDTILED shop/door canopy with pronounced shadow. Upper geometry/windows may change for era clarity, preserve ground footprint and correct grade. ABSOLUTELY NO chimney/stack/pipe/pot/vent of anykind, no smoky roof. NO painted smoke. Variantb: deeperwalnutoak and earthycream panels, slightlywider centralglazedlight and narrowflankinglights, same overallroof/footgeometry as A. Warm muted hand-painted projectstyle top-leftlight, brown/cream gentlecontrast neverblackwhiteTudorrevival, redclayflat tiles. No groundtile, lawn, figures, props, labels orframe. Onebuilding only transparentalpha.",
+    "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-89358de2-71da-48b0-aa8e-55c8f4ce16f9.png",
+    "raw_path": "/tmp/astra-wave20-rework-20260927/era1400/house_l2_1400_b-v2.png"
+  },
+  "registration": {
+    "id": "house_l2_1400_b-v2",
+    "level": 2,
+    "era": 1400,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1400/house_l2_1400_b-v2.png",
+    "file": "assets/houses/house_l2_1400_b-v2.png",
+    "canvas": [
+      137,
+      137
+    ],
+    "pivot": [
+      70.95813397129186,
+      132.08373205741626
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4980801861842801,
+    "worldScale": 0.4980801861842801,
+    "sourceGround": {
+      "left": [
+        237,
+        837
+      ],
+      "front": [
+        705,
+        1108
+      ],
+      "right": [
+        995,
+        963
+      ]
+    },
+    "targetGround": {
+      "left": [
+        24,
+        103
+      ],
+      "front": [
+        86,
+        131
+      ],
+      "right": [
+        118,
+        113
+      ]
+    },
+    "matrix": [
+      [
+        0.1206008876749744,
+        0.020512120177534995,
+        -21.751054967565725
+      ],
+      [
+        -0.005585524069648344,
+        0.11296688289518607,
+        9.770488221235922
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        23.999999999999996,
+        103
+      ],
+      [
+        86.00000000000001,
+        131
+      ],
+      [
+        118,
+        113
+      ]
+    ],
+    "jettyOverhangNativePx": null,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 99,
+      "scale": 1.1440973753512345,
+      "originalTop": 17.71321270058041,
+      "targetTop": 6
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 99,
+      "yScale": 1.1440973753512345,
+      "targetTop": 6
+    },
+    "lowerEdgeWarp": {
+      "joinY": 131,
+      "yScale": 1,
+      "originalBottom": 134.21459883919425,
+      "targetBottom": 134.21459883919425,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      8.16516217138955,
+      120.2298805052919
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        -3.552713678800501e-15,
+        0
+      ],
+      [
+        1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  "source_in_archive": "provenance/generated/house_l2_1400_b-v2-raw.png",
+  "source_sha256": "10c74db49c49c2346f9456660f29bb9194102cb8d99f5ae51b8beb4e6f1aa368"
+}

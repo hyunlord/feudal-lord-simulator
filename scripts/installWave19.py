@@ -1,5 +1,5 @@
-"""UI-4b: install Wave 19 (53 runtime files from assets-inbox/wave19/candidates-20260926, installed on the user's
-directive of 2026-09-27; the inbox rows stay `candidate` until the verdict) into public/assets/wave19/<group>:
+"""UI-4b: install Wave 19 (53 confirmed runtime files from assets-inbox/wave19/candidates-v1, INBOX-1i, verdict
+2026-09-27) into public/assets/wave19/<group>:
 the 24 season-ledger scene icons (used by the season ledger card now) and the record-card frames, timeline, biography,
 faction and decision-record art (registered for CHRON-1). One docs/provenance/assets.csv row each (replacing earlier
 UI-4b rows) with one prompt file each, `installed_by` = UI-4b in the inbox ledger, and
@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 LEDGER = ROOT / "docs/provenance/assets.csv"
 INBOX_LEDGER = ROOT / "assets-inbox/INBOX_LEDGER.csv"
-BATCH = ROOT / "assets-inbox/wave19/candidates-20260926"
+BATCH = ROOT / "assets-inbox/wave19/candidates-v1"
 MANIFEST = ROOT / "src/ui/wave19ArtManifest.generated.ts"
 USED_IN = {
     "scenes": "src/ui/wave19ArtManifest.generated.ts (UI-4b: season ledger card scenes)",
@@ -32,7 +32,7 @@ def sha(path: Path) -> str:
 
 def main() -> None:
     inbox = list(csv.DictReader(open(INBOX_LEDGER, encoding="utf-8")))
-    rows_in = {row["file"]: row for row in inbox if row["wave"] == "wave19" and "/assets/" in row["file"]}
+    rows_in = {row["file"]: row for row in inbox if row["wave"] == "wave19" and row["status"] == "confirmed" and "/assets/" in row["file"]}
     records = {row["file"]: row for row in csv.DictReader(open(BATCH / "records/assets.csv", encoding="utf-8-sig"))}
     metadata = {}
     for path in sorted((BATCH / "records").glob("metadata-*.json")):
@@ -74,8 +74,8 @@ def main() -> None:
                      "candidates": str(max(1, len(generations))), "manualEdits": record["processing"], "artBible": "AB_2026-09-19_v1",
                      "historicalProfile": "S_England_1300_1450_v1", "owner": "Astra wave19",
                      "usedIn": USED_IN["scenes" if group.startswith("scenes_") else "other"], "status": "runtime",
-                     "notes": f"Astra wave19 {key} installed by UI-4b on 2026-09-27 from {BATCH.relative_to(ROOT)} on the user's directive "
-                              "(inbox status candidate until the verdict); received bytes = runtime bytes."})
+                     "notes": f"Astra wave19 {key} (confirmed in assets-inbox/INBOX_LEDGER.csv, INBOX-1i) installed by UI-4b on 2026-09-27 "
+                              f"from {BATCH.relative_to(ROOT)}; received bytes = runtime bytes."})
         installed.add(file)
     assert len(images) == 53 and sum(1 for image in images.values() if image["group"].startswith("scenes_")) == 24, len(images)
     header = next(csv.reader(open(LEDGER, encoding="utf-8")))

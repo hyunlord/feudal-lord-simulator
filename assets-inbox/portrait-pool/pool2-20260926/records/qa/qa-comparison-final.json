@@ -1,0 +1,657 @@
+{
+  "status": "PASS_WITH_CAVEATS",
+  "scope": "후보 초상의 시각 비교 QA. 게임 통합 또는 사람 대상 식별 정확도 검증 아님.",
+  "reviewed_at_utc": "2026-09-26T04:36:00.340Z",
+  "method": "완성된32청년256/96, 1차32+2차32=64의96, 파일럿36+2차32=68의96 격자를 실제 이미지로 확인. 상위쌍 원본256을 재확인. 성장4쌍의child/young원본256을 확인. 순위는 시각적 판단이며 모든조합의 정량 얼굴유사도 측정이 아니다.",
+  "final_source_hash_check": "All104 recorded source hashes still match at final proof review.",
+  "most_similar_pairs": [
+    {
+      "rank": 1,
+      "ids": [
+        "I047",
+        "I085"
+      ],
+      "relationship": "batch1/new",
+      "facial_similarity": "붉은 갈색 머리, 눈 간격과 눈매, 곧은 코와 입술, 오른쪽 삼사분면 방향이 상당히 닮았다.",
+      "clothing_similarity": "귀 뒤 망과 흰 끈을 가진 머리쓰개도 같아 얼굴 유사성을 강화한다. 귀족풍 모피/자주색 옷과 체크 앞치마/청록색 옷은 명확히 다르다.",
+      "differences": "I085는 턱과 하안면이 더 넓고 코끝/입 주변이 둔중하며 눈썹이 더 수평이다. I047는 볼과 턱이 더 가늘고 눈이 조금 더 크게 읽힌다.",
+      "risk_at_96": "moderate-high",
+      "verdict": "같은 인물의 직업/복장 변형으로 오독할 여지가 있는 최상위 유사쌍. 동일 얼굴 복제라고 단정할 근거는 없다."
+    },
+    {
+      "rank": 2,
+      "ids": [
+        "I076",
+        "I079"
+      ],
+      "relationship": "new/new",
+      "facial_similarity": "검은 짧은 머리, 굵은 눈썹, 짙은 수염, 코와 입 주변의 형태, 오른쪽을 향한 시선이 닮았다.",
+      "clothing_similarity": "의복은 붉은 모자/파란 망토/모피와 갈색 후드/거친 천으로 확연히 다르다. 의복 차이 없이 얼굴만 보면 친족 또는 같은 얼굴 계열로 읽힐 수 있다.",
+      "differences": "I079는 얼굴과 턱이 더 넓고 눈썹을 찌푸린 강한 표정, 더 두꺼운 코/입 주변, 짧고 굵은 목을 가진다. I076는 얼굴이 상대적으로 길고 표정이 덜 긴장되어 있다.",
+      "risk_at_96": "moderate-high",
+      "verdict": "얼굴 계열이 가깝지만 턱폭과 표정에서 구별된다. 복식에 의존하면 구별이 쉬워진다는 한계를 기록한다."
+    },
+    {
+      "rank": 3,
+      "ids": [
+        "I069",
+        "I090"
+      ],
+      "relationship": "new/new",
+      "facial_similarity": "붉은 단발, 갈색 모자, 왼쪽 삼사분면 얼굴, 돌출된 긴 코, 밝은 눈과 얇은 입술이 닮았다.",
+      "clothing_similarity": "모자와 단발 외곽이 비슷하다. I069의 붉은 작업복/푸른 앞치마와 I090의 검은 수도복은 다르다.",
+      "differences": "I069는 더 돌출된 코끝과 턱수염, 둥글고 두꺼운 목이 보인다. I090는 더 각진 광대/턱, 면도된 얼굴, 좁고 곧은 목과 더 단단히 닫힌 입을 가진다.",
+      "risk_at_96": "moderate",
+      "verdict": "머리 외곽과 코 방향이 겹쳐 빠른 시선에서 혼동 가능하나 256에서는 하안면과 목으로 구별된다."
+    }
+  ],
+  "pilot_comparison": {
+    "count": 68,
+    "strong_duplicate_detected": false,
+    "notes": "공통 화풍·삼사분면 구도·흰 베일·수도복은 반복되지만 이번 청년을 파일럿 인물의 강한 얼굴 복제로 판정할 쌍은 발견하지 못했다. P20/I088 및 P28 계열의 베일/각진 얼굴 인상을 원본에서도 대조했으나 코·턱·눈매와 얼굴 방향의 차이가 확인된다. 모든 얼굴이 완전히 독립적이라는 보장은 아니다."
+  },
+  "growth_review": [
+    {
+      "id": "I097",
+      "verdict": "PASS_WITH_CAVEAT",
+      "observed": "아이의 둥근 볼/짧은 하안면에서 더 긴 턱, 뚜렷한 코/목, 희미한 수염으로 성장한다. 같은 눈 간격과 붉은 단발, 목마로 동일 인물 연결이 유지된다.",
+      "limit": "성장은 주로 얼굴/목에 있으며 어깨·손·구도는 거의 유지된다. 늦은 십대 또는 매우 젊은 성인으로 읽힐 수 있어 정확히22세로 단정하지 않는다."
+    },
+    {
+      "id": "I098",
+      "verdict": "PASS_WITH_CAVEAT",
+      "observed": "볼의 아동형 둥근 윤곽이 줄고 턱/광대와 코가 길어지며 수염과 목의 성인형 윤곽이 생긴다. 얼굴 방향·후드·숫돌을 유지해 인물 연결이 강하다.",
+      "limit": "몸통/손의 확대보다 얼굴 성장이 핵심이다. 청년 범주 안에서 정확한 나이를 검증할 수 없다."
+    },
+    {
+      "id": "I099",
+      "verdict": "PASS_WITH_CAVEAT",
+      "observed": "아이의 짧고 둥근 턱에서 길고 단단한 하안면, 더 뚜렷한 눈썹/코/목으로 바뀐다. 긴 머리와 눈·귀의 배치가 유지된다.",
+      "limit": "성장은 절제되어 늦은 십대~젊은 성인으로 읽힌다. 의상·포즈의 반복이 성장량을 작게 느끼게 할 수 있다."
+    },
+    {
+      "id": "I100",
+      "verdict": "PASS_WITH_CAVEAT",
+      "observed": "아이보다 턱과 목이 길고 가늘어지고 입/볼 윤곽이 성숙한다. 얼굴 유사성이 매우 강하며 머리쓰개가 천 두건에서 밀짚모자로 바뀐다.",
+      "limit": "네 쌍 중 성장이 가장 미묘하다. 96에서 머리쓰개 교체가 얼굴 성장보다 눈에 띄고 늦은 십대로 읽힐 수 있다. 분명한10–12세 아이의 그대로 복제라고 판단하지는 않지만 정확한22세 판정은 하지 않는다."
+    }
+  ],
+  "limitations": [
+    "96에서는 섬세한 코·턱·눈 차이가 줄어 복식과 실루엣에 더 의존한다.",
+    "유사쌍은 제외/실패를 뜻하지 않으며 후보 검토 시 명시적으로 인지해야 할 혼동 위험이다.",
+    "성장4쌍은 주로 얼굴·목에서 성인화를 확인했다. 어깨/손/구도 변화는 제한적이다."
+  ],
+  "review_grids": [
+    {
+      "name": "current32-young256",
+      "sha256": "c076e2cf31367970a0eb20e62cc424a959a7ae961ff96b722e8c628d05939ab8",
+      "status": "COMPLETE",
+      "pixels_per_portrait": 256,
+      "count": 32
+    },
+    {
+      "name": "current32-young96",
+      "sha256": "6a370d21e6e9576305df66bc151a3b24ec0356fc5f87014ff1085398abe09496",
+      "status": "COMPLETE",
+      "pixels_per_portrait": 96,
+      "count": 32
+    },
+    {
+      "name": "batch1-and-batch2-young64-96",
+      "sha256": "236e29a0d023827a35fc2b5803738542664681f0e1ee8dae2386e626fe8d3224",
+      "status": "COMPLETE",
+      "pixels_per_portrait": 96,
+      "count": 64
+    },
+    {
+      "name": "pilot-and-batch2-young68-96",
+      "sha256": "06f0366b82ca53295fcc285cfd4402cefe52b0aa95ae85c694f69ac4d385f553",
+      "status": "COMPLETE",
+      "pixels_per_portrait": 96,
+      "count": 68
+    }
+  ],
+  "source_hashes": [
+    {
+      "id": "I069",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I069_young.png",
+      "sha256": "5696b4e027cb60c87d26d5b2b27ee307702cc42430b5d2f560768e35b4816350"
+    },
+    {
+      "id": "I070",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I070_young.png",
+      "sha256": "c3f5f2c1933360db95b1937865d46a62fa8d7845aa1ea35bb00a293e7eb63ec3"
+    },
+    {
+      "id": "I071",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I071_young.png",
+      "sha256": "241bd4eb9c4d4d9e0c4b4eb12fcfae8724e82c4e534201f852b9fb845d303aca"
+    },
+    {
+      "id": "I072",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I072_young.png",
+      "sha256": "8e6c8cb0bb0373ac91a989bf12c973effae22f44d25257b69e9241a90f895987"
+    },
+    {
+      "id": "I073",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I073_young.png",
+      "sha256": "6b7c05fa918200227d1b130fcee536e1bcbf4474d82bba159d474c403c7a414b"
+    },
+    {
+      "id": "I074",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I074_young.png",
+      "sha256": "3d5e4fda9d54339d9ea28d8f0119c512414caee779dfd1069a2062746d85f272"
+    },
+    {
+      "id": "I075",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I075_young.png",
+      "sha256": "ec4c55e86f1e6469c0c54fa50e6bb7f1ac14d8cb6a315a5ab0fb0d3fad4ae08a"
+    },
+    {
+      "id": "I076",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I076_young.png",
+      "sha256": "2e3b9e53b5a5ad4abfb477ae0cea7ff35a37919db7fd32fdc4f7e12de0fc41d6"
+    },
+    {
+      "id": "I077",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I077_young.png",
+      "sha256": "13cc18978741fb21ac8249bbee29945250b235d89adebf10b72096a86c23e78b"
+    },
+    {
+      "id": "I078",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I078_young.png",
+      "sha256": "ea99b45fbae9714e0724334555375675f308520e0bd2c09b43511b3a6e0860b0"
+    },
+    {
+      "id": "I079",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I079_young.png",
+      "sha256": "45e432d5240e6b163b8ba0fc49098874918d6e550cef485c2222ef3c64501c0a"
+    },
+    {
+      "id": "I080",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I080_young.png",
+      "sha256": "d664cc4e8a31eede1cc5f56bd57d0a60d9cbf739535235258645d00d7d80f524"
+    },
+    {
+      "id": "I081",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I081_young.png",
+      "sha256": "b903ed69373b639792bc1333ed0abe549594f3c5fd3374ad618404aea1a82921"
+    },
+    {
+      "id": "I082",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I082_young.png",
+      "sha256": "cfaa88e8e0b1c0ff65493548b0c5cdf18b79b213b3a520d6dec8b4e7fcd83f7e"
+    },
+    {
+      "id": "I083",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I083_young.png",
+      "sha256": "6a6fa358dea2fe41c696932d66faf02119765669b4dc935393863a63630a1650"
+    },
+    {
+      "id": "I084",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I084_young.png",
+      "sha256": "22c50797415c199fdc653335205ba9931c7772898185fb4ffc88485976ee2796"
+    },
+    {
+      "id": "I085",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I085_young.png",
+      "sha256": "879882104901775756d474bad1b05c66ee3063a5c695d07bac26ca76045ccb26"
+    },
+    {
+      "id": "I086",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I086_young.png",
+      "sha256": "42394d3992a9283aef25614a6393cf966bdc6a7c9b541ee532478529b8710d05"
+    },
+    {
+      "id": "I087",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I087_young.png",
+      "sha256": "6081ad74b9d50f5a98eb49b300fde8b29e56402feae17821367d522dc8366302"
+    },
+    {
+      "id": "I088",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I088_young.png",
+      "sha256": "8e66b2d86b61ba63346646b81ee6c866afff722120ff5cf9cf4167db852abe59"
+    },
+    {
+      "id": "I089",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I089_young.png",
+      "sha256": "3c57b0e68e2632688bee569321a62161c9737e8b4ee48137f4e5a47b6fa210d1"
+    },
+    {
+      "id": "I090",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I090_young.png",
+      "sha256": "c79fb710298c4b6edba7190903be6c4a97782311b5e3814e9e5e4d19557727b9"
+    },
+    {
+      "id": "I091",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I091_young.png",
+      "sha256": "3598a4e451d4b44e0e5abadb5cd74d174f9169f2fce0a1e338ea231dac373ee2"
+    },
+    {
+      "id": "I092",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I092_young.png",
+      "sha256": "b95d37a1288303318fbea2e9e33f734bbdcf5daff43159fcba3225d4f77a98ce"
+    },
+    {
+      "id": "I093",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I093_young.png",
+      "sha256": "aa810bdde51f99143a6cb5790a43ac411127eb9e416bdd8a0c26ae59e9dcfbfb"
+    },
+    {
+      "id": "I094",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I094_young.png",
+      "sha256": "9b12d92d076d64eab74a4d947abec510c5a1b2f72619a9af6ee8bf9452ac4bcd"
+    },
+    {
+      "id": "I095",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I095_young.png",
+      "sha256": "f2fe0a696ce33732c771628d65b09749fdafc13bb5e6db95f3b52eb6628ddc67"
+    },
+    {
+      "id": "I096",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I096_young.png",
+      "sha256": "47bca2e35a6bc4e7773c9dfa0892af542929b765d6fd46ab804e95f5b9be7db3"
+    },
+    {
+      "id": "I097",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I097_young.png",
+      "sha256": "1c7bd9e4f8ef250794f9292b3906b63e1e594d54239f374178cefe0c23201734"
+    },
+    {
+      "id": "I098",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I098_young.png",
+      "sha256": "adadd2433ceff3eac3a65bd6b39b219dccaa47a5d37fea3bbe9db6bac91e211e"
+    },
+    {
+      "id": "I099",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I099_young.png",
+      "sha256": "7c9bd47bdec528aba2c651183696d702a5f6c66ef314ff7817ffcca4be027b7a"
+    },
+    {
+      "id": "I100",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I100_young.png",
+      "sha256": "e349b12e52a279effd1cfc112634e50e82edd5939c86085d0c177084928472be"
+    },
+    {
+      "id": "I037",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I037_young.png",
+      "sha256": "62120dd567153893ca82bc7ad7a223952457fe81fc71b5445eef429baad7a878"
+    },
+    {
+      "id": "I038",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I038_young.png",
+      "sha256": "03f1b3f11d43aa3870fcc1e7438ef3bf6b6e8569775ba246569279bd851649db"
+    },
+    {
+      "id": "I039",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I039_young.png",
+      "sha256": "dfc543036a13431d79a7e4b5b2448e7ba86e300711503c5f18528feb1f77ce1c"
+    },
+    {
+      "id": "I040",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I040_young.png",
+      "sha256": "47c6db4446d99c06ebf298528f8f7b0a97d52907319d8d3a5acc3acc48b256da"
+    },
+    {
+      "id": "I041",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I041_young.png",
+      "sha256": "6619dd413e360e700a7ba0baccfed2a6f72ce6f19c3f5ec621de3a6c51917056"
+    },
+    {
+      "id": "I042",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I042_young.png",
+      "sha256": "23b917cef14535874ecb59cabc575cb52bf9c39543133403e4b3708d3f642daa"
+    },
+    {
+      "id": "I043",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I043_young.png",
+      "sha256": "7d46fc544ecc2464bfeaf4ddbb8837f283fc0c688b20dd07ceff231f7883fe63"
+    },
+    {
+      "id": "I044",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I044_young.png",
+      "sha256": "9e1bf448649b4653cdde9b94be4271f722a4f516ee75915eb1f3eb3993408f35"
+    },
+    {
+      "id": "I045",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I045_young.png",
+      "sha256": "ffb85a1746c61fda094d538f56e3494ac6f5494a015ea2e8ba82c69fed048ee2"
+    },
+    {
+      "id": "I046",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I046_young.png",
+      "sha256": "0c51defb5d102a95414175456fd574e58b5fe50649961cfdb78ecdb8be91289d"
+    },
+    {
+      "id": "I047",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I047_young.png",
+      "sha256": "3d3e8b247d30e04b0e27c431cb1264cf51e8aceafde096c6ff64de9e49daa678"
+    },
+    {
+      "id": "I048",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I048_young.png",
+      "sha256": "5ea9f67d56f7c1d7ac9adfdf1d325307d8a6b7518c3e97d77252933f271888b7"
+    },
+    {
+      "id": "I049",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I049_young.png",
+      "sha256": "c6642989af96120a29719109b2a85e77790fa5756fdd4be90c65c622a4b5ed1d"
+    },
+    {
+      "id": "I050",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I050_young.png",
+      "sha256": "75615c1fdd075d881976c23499f81bdddacb60749221c8d0da79f7cd4bf91b89"
+    },
+    {
+      "id": "I051",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I051_young.png",
+      "sha256": "8ea290039ccef37e5ad8e1847e79aba54c75b0a4a3cc14441fb1c0ee911e8894"
+    },
+    {
+      "id": "I052",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I052_young.png",
+      "sha256": "bb503401913dea946ef19e255565fd7fd7e02d570097ca552fb3630be9512ec6"
+    },
+    {
+      "id": "I053",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I053_young.png",
+      "sha256": "ffb952af59988ea17068c394435daeb7ebc8d723e2131b8e0dcfa0ecc8b3b710"
+    },
+    {
+      "id": "I054",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I054_young.png",
+      "sha256": "d4eb231f952b4a78f700e7da4617b56db0c3607f53d6d48956acdce00b1c23e6"
+    },
+    {
+      "id": "I055",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I055_young.png",
+      "sha256": "6c0e20a71dcb8c68a0901704d1df348dd70cb70227882bc86222e72bff0dec6b"
+    },
+    {
+      "id": "I056",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I056_young.png",
+      "sha256": "2bf9fb9e6e241d8b3f9a8d0eae4040caf76e6481c72215b720eff7de93c71846"
+    },
+    {
+      "id": "I057",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I057_young.png",
+      "sha256": "be7bff38234dd51b7c03ff68b64c5f48ab23d9af884670cad1737454db7edfe6"
+    },
+    {
+      "id": "I058",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I058_young.png",
+      "sha256": "a77798968b4d5f100b48c85b2f1b9806ab9cea74be36d666106531c72d483795"
+    },
+    {
+      "id": "I059",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I059_young.png",
+      "sha256": "951db4158c37e28c6c9db4e82b84cd27911d377e2710eae479015bc2b5632293"
+    },
+    {
+      "id": "I060",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I060_young.png",
+      "sha256": "e7b1bc2af848dbeecc80cec64c931ed4b55bc0329c1c98f74fd73e043c990ca6"
+    },
+    {
+      "id": "I061",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I061_young.png",
+      "sha256": "57ef4fbe0873eb98c66b5dc3bfb34a1d70e354bbf8afc93ccdd9c147df531586"
+    },
+    {
+      "id": "I062",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I062_young.png",
+      "sha256": "641d892eaafd4d7f2b178bd1e90acc03096ce6c76188238a046b4cc6b51ccdb5"
+    },
+    {
+      "id": "I063",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I063_young.png",
+      "sha256": "909edaf289b61251d966b60eb06194ff440ea0d30458f18903873665ad4e9276"
+    },
+    {
+      "id": "I064",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I064_young.png",
+      "sha256": "ea8e13d3629bd65016167bbb62a9fb44167c210a4a33fa29357f3eb790d6c1aa"
+    },
+    {
+      "id": "I065",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I065_young.png",
+      "sha256": "805e11330abd1970f94c2bb7ee617634a1010d48af0000b0bb151eac24455d82"
+    },
+    {
+      "id": "I066",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I066_young.png",
+      "sha256": "1c97a529bf85823fbfb37d7c15ad48b4af8c0ea36eef97c8027d1e74dc950806"
+    },
+    {
+      "id": "I067",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I067_young.png",
+      "sha256": "a1b7537c32b4cdf74e23363f49d80d440d15c45d23ce08af63a9e8c6e323b58e"
+    },
+    {
+      "id": "I068",
+      "file": "/tmp/astra-portrait-pool1-work/deliverable/portraits/I068_young.png",
+      "sha256": "f3b96f0c6c7353c5478afb9ee9a62222cea38bf038ad896e83a7cac57d5246a6"
+    },
+    {
+      "id": "P01",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P01.png",
+      "sha256": "4d5fbcfefa9fb22364106d9f76f20e3d8f28b1c78e8ed8257786e131b664dc3f"
+    },
+    {
+      "id": "P02",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P02.png",
+      "sha256": "56d08f44c8283a9b6a87c20a79f4b128e44feb38999fec156b202a84ade78068"
+    },
+    {
+      "id": "P03",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P03.png",
+      "sha256": "26b3344a4f3a5e6d2e3a2aa17067e8805156f68d948ad19f9feaff45f0fc8afb"
+    },
+    {
+      "id": "P04",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P04.png",
+      "sha256": "c6bd7d5c3f3a3756c57bbdecba4e8b4a5b3d8421f7efb0eca6f1e3a6693ad2b7"
+    },
+    {
+      "id": "P05",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P05.png",
+      "sha256": "3ca0c80672369f038526e238a5c609000affe285a7ae4942b382229b64f42de0"
+    },
+    {
+      "id": "P06",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P06.png",
+      "sha256": "6875ab687593d2f644c4256c1d1d908343e3b97fc206742d7531ef75f3e4084f"
+    },
+    {
+      "id": "P07",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P07.png",
+      "sha256": "8a1f8e1f669c1b6493ff3b52d0c53bcec7f398c25fbdca8a87cee5dc093d76df"
+    },
+    {
+      "id": "P08",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P08.png",
+      "sha256": "9842ffffb28188c951e7a588686bd2fa0c1a556124e45ec7c3bff838af008a10"
+    },
+    {
+      "id": "P09",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P09.png",
+      "sha256": "00febe551bfbbdf03004957826c16bce518284cc6d8c70f83f98b1d46748f704"
+    },
+    {
+      "id": "P10",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P10.png",
+      "sha256": "f7bc8e72f46953b8202ef55741f74ba6fd9cfd943569df4d1416a90aae57038a"
+    },
+    {
+      "id": "P11",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P11.png",
+      "sha256": "ccd6cc5dccac45b6bbf9f70bbe5da47fc49d39e45e44327046028227662f1bbb"
+    },
+    {
+      "id": "P12",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P12.png",
+      "sha256": "e3d51a565484263f3f95011eba8f692da514ec7685c4b10bed931825b6ec67db"
+    },
+    {
+      "id": "P13",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P13.png",
+      "sha256": "ea06565c12a7d8110a8f3815b9d8c23e3cffac63cc7b0130fbc0e016746ae801"
+    },
+    {
+      "id": "P14",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P14.png",
+      "sha256": "837bc37f4bfa5fb5ba7c6af22708458bc031afff5a5070acadd3d51b5675817f"
+    },
+    {
+      "id": "P15",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P15.png",
+      "sha256": "ef404dc44688fc40d2cb69a68988df72a8aec6dc6242dda1f9606911cb3d5429"
+    },
+    {
+      "id": "P16",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P16.png",
+      "sha256": "53d4f4b6adad69856c86e1e2b058466d0f24a027f16bb626f4a434d7e4e24075"
+    },
+    {
+      "id": "P17",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P17.png",
+      "sha256": "f675f9bbd573fac2972458f9fe591ff3767f7ae12bb91364845c6f4afa022e04"
+    },
+    {
+      "id": "P18",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P18.png",
+      "sha256": "255d7d43e062a9e7af277714b6e51f2e3668e3e77062b267eac9d113fc0a271f"
+    },
+    {
+      "id": "P19",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P19.png",
+      "sha256": "c063505226cb291b77c55f89a9963daac10dd28a81c5e7a6367c706dbfe6738e"
+    },
+    {
+      "id": "P20",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P20.png",
+      "sha256": "113d19e7b7ee5982f62aa341cf50ea4963efc379d4709005e21cf4b7af4266cb"
+    },
+    {
+      "id": "P21",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P21.png",
+      "sha256": "11ce6af48f477bb8a1011eb5a64c4036567df4e723a85f6eacf2870b33f039d7"
+    },
+    {
+      "id": "P22",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P22.png",
+      "sha256": "3b7c29fc2dbd1ed31c7b29532b9dec1f4a5402fe556addbc1537146bc0b40d1f"
+    },
+    {
+      "id": "P23",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P23.png",
+      "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79"
+    },
+    {
+      "id": "P24",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P24.png",
+      "sha256": "e874958918220a002325e86a0c8dcd3a35a39a27b39d7c4efe787db53df93cef"
+    },
+    {
+      "id": "P25",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P25.png",
+      "sha256": "1ce0c058c96f4eddab6438d3ffa23d2541a545bdb3fb30a570c510a570b4c126"
+    },
+    {
+      "id": "P26",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P26.png",
+      "sha256": "412829ea5e127222b40ed25b8d2d94ee8792212dee834298f0c881d98f61efbf"
+    },
+    {
+      "id": "P27",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P27.png",
+      "sha256": "30ad11436ce70f267135303962d5324322507ed0863b1a6b123a6ac2202248bd"
+    },
+    {
+      "id": "P28",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P28.png",
+      "sha256": "7a22b0f148d47f79991d1fca91839444e91acc7efe63e200207501bfeb440350"
+    },
+    {
+      "id": "P29",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P29.png",
+      "sha256": "e8cbbcf52582a69a42157ded2b783bcf28fd5df827004fa74cd9531e19796812"
+    },
+    {
+      "id": "P30",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P30.png",
+      "sha256": "12d323745bba42cbcf762ec530e10df7caa7f469838ea23bb93211eccc356f0d"
+    },
+    {
+      "id": "P31",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P31.png",
+      "sha256": "8c02ee5619d218900dfcbe72da7f38c1a8f8ca2e1c8f92eaa4a4088f42a40ded"
+    },
+    {
+      "id": "P32",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P32.png",
+      "sha256": "f2134371d258debad517de865468e7d2924e9b501d07ed8e6ce3fc17bdbb8338"
+    },
+    {
+      "id": "P33",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P33.png",
+      "sha256": "eaadc7352926ed276cb3339c9deb3d9ce475c0a319c345a6daf7df824eb6fae6"
+    },
+    {
+      "id": "P34",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P34.png",
+      "sha256": "e1ee44defd57c3a3cc37b96e2ccec1de4817e78405b7e34612bc71608cb569b9"
+    },
+    {
+      "id": "P35",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P35.png",
+      "sha256": "fb58d2ede96cb4a3b29b1bd4bc2e52e66539693e8fbfd498e76eaa78d0055b10"
+    },
+    {
+      "id": "P36",
+      "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P36.png",
+      "sha256": "86ba3887e8c9cd33a1a022e0fb477ebdb6c8fbbab61be635c1350e3457ba6f18"
+    },
+    {
+      "id": "I097_child",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I097_child.png",
+      "sha256": "b4db6da339e3e8893c6f72fe7c3b481a15fdb6bee2cc47581a0ba644ccfe6c2b"
+    },
+    {
+      "id": "I098_child",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I098_child.png",
+      "sha256": "65aa07f1375b281e691f7faaf48a5aa31d27a9d30746be640eea93cff2385543"
+    },
+    {
+      "id": "I099_child",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I099_child.png",
+      "sha256": "3a67725f94c6fcea0ff6369c415fdf86b012b2c1f7ac0082f9e8f5ce987ee05e"
+    },
+    {
+      "id": "I100_child",
+      "file": "/tmp/astra-portrait-pool2-work/deliverable/portraits/I100_child.png",
+      "sha256": "81867b60eb181eb148174cf40be1c756af3ac47847e0858c6b9aaf3d2838eff5"
+    }
+  ],
+  "final_proof": {
+    "file": "/tmp/astra-portrait-pool2-work/deliverable/checks/02-pilot68-and-batch-comparison64.png",
+    "sha256": "ef2296d4c9a7038839fc2f70567716cbd9b4460b6b5baa43001647190d1d7a83",
+    "status": "PASS",
+    "viewed_at_utc": "2026-09-26T04:38:18.913Z",
+    "panels": [
+      {
+        "id": "02-A",
+        "composition": "pilot36 + batch2 young32",
+        "count": 68,
+        "pixels_per_portrait": 192
+      },
+      {
+        "id": "02-B",
+        "composition": "batch1 young32 + batch2 young32",
+        "count": 64,
+        "pixels_per_portrait": 192
+      }
+    ],
+    "observed": "하나의 확인그림2 안에 68명 비교와64명 비교 패널이 모두 있으며 잘린 얼굴이나 빠진 마지막 행 없이 레이블을 확인했다. 기존96px/256px 시각검수와 같은 최종 청년 원본으로 보이며 세 유사쌍 판정은 유지한다. 192px 확인그림은 실제96px 격자 검수를 대체하지 않는다."
+  }
+}
