@@ -79,7 +79,7 @@ const touchDevice = (page, cdp) => {
 const STEPS = [
   ['road tool, drag a road line', async (d, page, at) => { await tool(d, page, '도로', '길'); await d.drag(await at(43, 44), await at(47, 44)); }],
   ['road tool, click one tile twice (place, remove)', async (d, page, at) => { await d.tap(await at(40, 46)); await d.tap(await at(40, 46)); await d.tap(await at(38, 46)); }],
-  ['UX-3R2 road click-click: two taps lay a line, Enter ends the chain', async (d, page, at) => { await d.tap(await at(41, 48)); await d.tap(await at(44, 48)); await page.keyboard.press('Enter'); }],
+  ['UX-3R2 road click-click: two taps lay a line, Enter ends the chain', async (d, page, at) => { await page.keyboard.press('Enter'); await d.tap(await at(41, 48)); await d.tap(await at(44, 48)); await page.keyboard.press('Enter'); }],
   ['road tool, drag then right click cancels, release', async (d, page, at) => { await d.roadDragCancelled(await at(36, 50), await at(39, 50)); }],
   ['Esc disarms, left drag pans', async (d, page) => { await escape(page); await d.drag({ x: 700, y: 420 }, { x: 610, y: 380 }); }],
   ['middle drag pans', async (d) => { await d.panDrag({ x: 640, y: 400 }, { x: 700, y: 450 }); }],

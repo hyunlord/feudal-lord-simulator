@@ -25,6 +25,8 @@ const STEPS = [
   // UX-3R2 keeps the single click: it toggles the tile (and on open ground anchors a click-click chain there).
   ['road tool, click one tile twice (place, remove)', async (page, at) => { await clickAt(page, await at(40, 46)); await clickAt(page, await at(40, 46)); await clickAt(page, await at(38, 46)); }],
   ['UX-3R2 road click-click: two clicks lay a line, Enter ends the chain', async (page, at) => {
+    // The last single click anchored a chain (UX-3R2); Enter ends it first (with the road tool on the base: nothing).
+    await page.keyboard.press('Enter');
     if (!(await lineTools(page))) { await drag(page, await at(41, 48), await at(44, 48)); return; }
     await clickAt(page, await at(41, 48)); await clickAt(page, await at(44, 48)); await page.keyboard.press('Enter');
   }],
