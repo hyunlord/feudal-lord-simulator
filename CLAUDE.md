@@ -23,6 +23,11 @@ Claude Code 세션이 시작할 때 읽는 요약이다.
    - 후반은 인물·세력·권리의 게임이다.
    - 인물은 초상 풀·노화 사슬·문장으로 기억된다.
 
+`docs/ROADMAP.html` 1절은 여기에 **정체성 6 "모든 것이 남는다"**를 더했다.
+- 내 결정(대안·예측·실제), 사건, 인물의 생애, 주변 세력의 역사가 전부 기록 원장에 남는다.
+- 설계: [CHRONICLE_DESIGN](docs/design/CHRONICLE_DESIGN.md).
+- 헌장은 아직 다섯이다. ROADMAP이 우선이고, 헌장 반영은 사용자 판정을 기다린다.
+
 ## 화면 원칙
 - **평소엔 게임만.**
   - UI는 행동이 부를 때만 나타나고, 끝나면 접힌다.
@@ -80,6 +85,7 @@ Claude Code 세션이 시작할 때 읽는 요약이다.
   - [CONTENT_DESIGN](docs/design/CONTENT_DESIGN.md)
   - [플레이어 흐름](docs/design/player-flow.md)(헌장의 PLAYER_FLOW_DESIGN)
   - [보이는 시뮬레이션](docs/design/visibility.md)(헌장의 VISIBILITY_DESIGN)
+  - [기록·연대기](docs/design/CHRONICLE_DESIGN.md)
   - 결정 목록 [docs/decisions/README.md](docs/decisions/README.md)
 - **조사**: [docs/research/](docs/research/)(조사 15: UI 상태·HUD)
 - **운영**: [원격 실행](docs/REMOTE_RUNS.md), [플레이 서버](docs/PLAY_SERVER.md)

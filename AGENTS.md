@@ -56,13 +56,15 @@
 - **세션 범위**: 4절 "세션 범위·상태 분기 한 줄 예외" = 규칙 18.
 - **본선 합치기**
   - 4절 "본선 합치기" = 규칙 13(깨끗한 클론)·14(브랜치)·16(문서 갱신).
-  - **충돌 1건**: 4절은 병합 뒤 브랜치 삭제를 적었고, 규칙 14는 "브랜치 삭제는 명시 지시가 있을 때만"이다. 사용자 판정 전까지 **규칙 14를 따른다**. 이 충돌은 `docs/ROADMAP.html` 이력에 적었다.
+  - **충돌 ①**: 4절은 병합 뒤 브랜치 삭제를 적었고, 규칙 14는 "브랜치 삭제는 명시 지시가 있을 때만"이다. 사용자 판정 전까지 **규칙 14를 따른다**. 이 충돌은 `docs/ROADMAP.html` 이력에 적었다.
 - **문구**: 4절 "새 문구는 `*.ko.ts`" = 규칙 5·9.
 - **화면**: 3절 "터치 ≥ 44px·호버 전용 정보 0" = 규칙 4.
 - **에셋**: 5절 Astra inbox·원본 보관 = 규칙 6·17.
 - **문서**
   - 6절 문서 = 규칙 15·16. 규칙 15의 읽는 순서에서는 `docs/STATUS.md` 다음, 지시서 앞에 `docs/ROADMAP.html` 5절을 본다(위 "로드맵 작업 상태").
   - 6절 설계서 이름 `PLAYER_FLOW_DESIGN.md`·`VISIBILITY_DESIGN.md`는 저장소의 [`docs/design/player-flow.md`](docs/design/player-flow.md)·[`docs/design/visibility.md`](docs/design/visibility.md)다.
+  - 기록·연대기 설계서는 [`docs/design/CHRONICLE_DESIGN.md`](docs/design/CHRONICLE_DESIGN.md)다(ROADMAP 1절 정체성 6, 작업 F0-C2·CHRON-1·CHRON-2).
+- **정체성(충돌 ②)**: `docs/ROADMAP.html` 1절은 **정체성 6 "모든 것이 남는다"**를 더했다(결정·사건·인물·세력이 모두 기록 원장에 남는다). 이 절(헌장 2절)은 아직 "정체성 다섯"이다. 우선순위대로 ROADMAP을 따르고, 헌장 반영은 사용자 판정을 기다린다.
 
 <!-- ===== 아래 블록을 저장소 루트 AGENTS.md 맨 위(기존 내용 앞)에 추가 ===== -->
 

@@ -66,6 +66,7 @@ details summary{cursor:pointer;font-weight:600}
 <div class="card"><b>정체성 3 · 보이는 시뮬레이션</b><br>규칙은 숫자가 아니라 세계에서 보인다. 수레가 자재를 부리고, 공사가 단계별로 오르고, 밭에 볏단이 쌓이고, 굶는 집은 연기가 꺼진다. 위기는 세계에서 먼저 보이고 UI가 뒤따른다.</div>
 <div class="card"><b>정체성 4 · 압력과 위기</b><br>게임은 대가를 청구한다. 보릿고개, 첫 화재, 흉년, 대기근. 위기는 새 수업이 아니라 이미 배운 루프의 시험이고 예고 → 도래 → 회복의 톱니로 온다. 실패는 게임 오버가 아니라 손실과 회복의 사다리.</div>
 <div class="card"><b>정체성 5 · 사람과 권리</b><br>후반은 건물이 아니라 사람과 권리의 게임. 상인 엘리트·공동체·국왕·교회가 청원하고 원한을 기록한다. 인물은 초상 풀과 노화 사슬로 수십 년을 산다. 문장과 상인 표식으로 기억된다.</div>
+<div class="card"><b>정체성 6 · 모든 것이 남는다</b><br>내 결정(대안·예측·실제), 사건, 인물의 생애, 주변 세력의 역사가 전부 기록 원장에 남고, 연대기·인물 전기·세력 연대기 화면에서 "그때는 어땠나"를 글과 그때의 지도로 본다. 설계: <code>docs/design/CHRONICLE_DESIGN.md</code></div>
 <div class="card"><b>하지 않을 것</b><br>전투 시뮬레이션, 실시간 전투 마이크로, 판타지·마법, 실존 도시·인물 복원, 과장된 공포·유혈, 현대식 UI 은유(격자 달력·로만 칼라 등), 강제 튜토리얼 모달.</div>
 </div>
 <h3>플랫폼·형식</h3>
@@ -232,8 +233,7 @@ details summary{cursor:pointer;font-weight:600}
 <li>변경은 문서 하단 이력에 한 줄(날짜·세션·무엇).</li>
 <li>이 문서와 <code>AGENTS.md</code>·<code>CLAUDE.md</code>가 충돌하면 이 문서가 우선이고, 충돌을 이력에 적는다.</li>
 </ol>
-<details><summary>변경 이력</summary><ul id="history"><li>2026-09-26 · Claude(프로젝트 대화) · v5.1 최초 작성(조사 12·13·14·15 반영)</li>
-<li>2026-09-26 · Claude Code(인프라·문서 세션, DOC-1) · 저장소에 넣음. TASKS를 본선 25820693 기준으로 맞춤: INSTALL-7·INSTALL-11·REMOTE-1 완료, UX-3R 진행 중, F0-B·F0-C1·F0-V·INBOX 비고 갱신, R0(완료) 추가. 충돌 1건: 헌장 4절 "merge·push → 브랜치 삭제"와 AGENTS.md 규칙 14 "브랜치 삭제는 명시 지시가 있을 때만" — 사용자 판정 전까지 규칙 14를 따른다</li></ul></details>
+<details><summary>변경 이력</summary><ul id="history"><li>2026-09-26 · Claude(프로젝트 대화) · v5.1 최초 작성(조사 12·13·14·15 반영)</li><li>2026-09-26 · Claude · 기록·연대기 설계 v1 반영: F0-C2 기록 원장, CHRON-1 연대기 화면, CHRON-2 세력 연대기 추가(정체성 6 "모든 것이 남는다")</li><li>2026-09-26 · Claude Code(인프라·문서 세션, DOC-1) · 저장소에 넣음(설계 docs/design/CHRONICLE_DESIGN.md 함께). TASKS를 본선 25820693 기준으로 맞춤: INSTALL-7·INSTALL-11·REMOTE-1 완료, UX-3R 진행 중, F0-B·F0-C1·F0-V·INBOX 비고 갱신, R0(완료) 추가. 충돌 2건: ① 헌장 4절 "merge·push → 브랜치 삭제"와 AGENTS.md 규칙 14 "브랜치 삭제는 명시 지시가 있을 때만" — 사용자 판정 전까지 규칙 14를 따른다 ② 이 문서 1절은 정체성 6("모든 것이 남는다")을 더했지만 CHARTER.md·AGENTS.md 0절은 "정체성 다섯" — 이 문서가 우선, 헌장 반영은 사용자 판정 대기</li></ul></details>
 </div>
 </section>
 </main>
@@ -252,6 +252,7 @@ const TASKS = [
  {id:"F0-A", phase:"F0", track:"엔진", title:"압력: 계절 결산·장부 예측·실패 1~2단·보릿고개·대기근 준비도", status:"done", gate:"압력 존재(naive 봇 필지 손실) · 가드레일 5/5", note:"28a23d8 · 기준선 322d36f"},
  {id:"F0-B", phase:"F0", track:"엔진", title:"사건 뼈대: 예고 사다리·첫 화재·흉년 리허설·날씨", status:"done", gate:"화재 5/5·흉년 5/5·대비 차 · 가드레일 4/5(seed 3 알려진 정지)", note:"ca80f43d 병합 · seed 3 알려진 정지(EV8) · LB-12 작은 성벽 → BOT-2"},
  {id:"F0-C1", phase:"F0", track:"엔진", title:"대기근 효과·대응 결정·첫 청원·연대기 데이터·1장 끝", status:"wip", gate:"표준 봇 1장 완주 ≥ 4/5", deps:["F0-B"], note:"브랜치 claude/f0c1-famine(3ed325df, 저장 v14) 진행 중, 본선 미병합"},
+ {id:"F0-C2", phase:"F0", track:"엔진", title:"기록 원장 v0: 모든 결정(대안·예측·실제)·사건·이정표·계절 변화·가구 생애 append-only + 계절 지도 축소판", status:"todo", gate:"1장 완주 원장 1,500~6,000건 · 저장 +≤4MB · 큰 결정 5종 대안·실제", deps:["F0-C1"]},
  {id:"BOT-2", phase:"F0", track:"엔진", title:"작은 성벽 교착(LB-12 둘레 크기·성 안 길 비율)", status:"todo", gate:"가드레일 5/5", deps:["F0-C1"]},
  // ---- F0 렌더
  {id:"F0-V", phase:"F0", track:"렌더", title:"보이는 건설: 기준점 bar·자재 더미·완공 연출·지붕 연기·기표·소리 15", status:"done", gate:"공사장 관찰 캡처 · 소리 15", note:"8d034834 · 관문 ①~⑧ 통과, ⑨ 사용자 10분 판정 대기"},
@@ -261,7 +262,7 @@ const TASKS = [
  {id:"UX-3R", phase:"F0", track:"렌더", title:"UI 상태 기계·상시 4항목·행동 도크·배치 색+패턴+이유·구역 발견성·저장소 재고 (조사 15)", status:"wip", gate:"상태별 면적 예산 자동 측정 · 도구 선택 전 안내 0 · 회귀 0", deps:["INSTALL-11"], note:"브랜치 claude/ux3-hud-diet 작업 중(커밋 전)"},
  {id:"INSTALL-18", phase:"F0", track:"렌더", title:"최소 HUD 아이콘·패턴 교체(Wave 18)", status:"todo", gate:"흑백에서 가능/불가 구분", deps:["UX-3R"]},
  {id:"UI-3", phase:"F0", track:"렌더", title:"계절 결산 카드·계절 띠·배치 장부 예측·압력 원인·보릿고개 경고·타이틀(Wave 8) — UX-3 규칙 위에", status:"todo", gate:"결산 캡처 3계절 · 예측 줄 = 실제 장부", deps:["UX-3R"]},
- {id:"UI-4", phase:"F0", track:"렌더", title:"사건 카드·대기근 결정·청원·연대기·장 끝 + Wave 9·16 설치 + S12 짐 진 가족", status:"todo", gate:"1장 사건 전부 화면에 · 연대기 1쪽", deps:["UI-3","F0-C1"]},
+ {id:"UI-4", phase:"F0", track:"렌더", title:"사건 카드·대기근 결정·청원·연대기·장 끝 + Wave 9·16 설치 + S12 짐 진 가족", status:"todo", gate:"1장 사건 전부 화면에 · 연대기 1쪽", deps:["UI-3","F0-C1","F0-C2"]},
  {id:"INSTALL-15", phase:"F0", track:"렌더", title:"계절 자연(Wave 15)", status:"todo", gate:"같은 장면 사계절 캡처", deps:["UI-4"]},
  // ---- F0 인프라·Astra
  {id:"REMOTE-1", phase:"F0", track:"인프라", title:"DGX 원격 실행기·Node 24·성능 기준선", status:"done", gate:"전체 회귀 통과·브라우저 10/10", note:"25820693 · 관문 ①~⑥ · Node 24.21.0(_tools, 시스템 20 유지) · 485a3ce 회귀 2,954/2,954·클론 통과"},
@@ -272,6 +273,7 @@ const TASKS = [
  // ---- F1
  {id:"UX-4", phase:"F1", track:"렌더", title:"G1 메모 기반 UX 반복(3회)", status:"todo", gate:"메모 항목 해소", deps:["G1"]},
  {id:"PERSON-0", phase:"F1", track:"엔진", title:"인물 v0: 가구주·청원자·청지기에 초상 풀 연결, 이름(세례명), 노화 단계", status:"todo", gate:"청원 카드에 초상·문장", deps:["G1"]},
+ {id:"CHRON-1", phase:"F1", track:"렌더", title:"연대기 화면: 도시 타임라인·인물 전기·결정 기록·그때 지도", status:"todo", gate:"1장 원장을 필터·검색해 열람, 인물 전기 1명 완주", deps:["PERSON-0","F0-C2"]},
  {id:"UI-5", phase:"F1", track:"렌더", title:"인물 카드·문장·상인 표식(Wave 14) 설치", status:"todo", gate:"", deps:["PERSON-0"]},
  {id:"AUDIO-1", phase:"F1", track:"렌더", title:"소리 P1(가동음·환경·계절 전환)", status:"todo", gate:"", deps:["G1"]},
  {id:"BAL-1", phase:"F1", track:"엔진", title:"밸런스: 보릿고개·대기근 강도·틱 속도·장 길이", status:"todo", gate:"G1 측정값", deps:["G1"]},
@@ -289,6 +291,7 @@ const TASKS = [
  {id:"C5", phase:"E", track:"엔진", title:"직물 7단계(양모→완성 직물)", status:"todo", gate:"", deps:["G3"]},
  {id:"PLAGUE", phase:"E", track:"엔진", title:"흑사병: 인구 −45%, 빈 필지, 임금, 조례", status:"todo", gate:"", deps:["G3"]},
  {id:"RIGHTS", phase:"E", track:"엔진", title:"권리·정치: 특허 패키지·세력·청원·원한·회수 6경로", status:"todo", gate:"", deps:["PLAGUE"]},
+ {id:"CHRON-2", phase:"E", track:"엔진", title:"세력 시스템·세력 연대기: 상위 영주·국왕·인접 영주·주교·대상인·공동체의 수장·관계·요구·기억·외부 세계 연표", status:"todo", gate:"", deps:["RIGHTS"]},
  {id:"PERSON-1", phase:"E", track:"엔진", title:"인물 시스템 본격: 주요 인물·세대·문장 상속", status:"todo", gate:"", deps:["RIGHTS"]},
  {id:"INSTALL-E", phase:"E", track:"렌더", title:"Wave 12 남은 시설·권리 UI·3~5장 삽화 설치", status:"todo", gate:"", deps:["RIGHTS"]},
  {id:"LEGACY", phase:"E", track:"엔진", title:"연대기·유산·재플레이 축", status:"todo", gate:"", deps:["PERSON-1"]},
