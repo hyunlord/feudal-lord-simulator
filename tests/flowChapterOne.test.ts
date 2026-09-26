@@ -32,8 +32,11 @@ import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { gameReducer } from "../src/state/gameStore";
 import { migrateStateV13ToV14 } from "../src/save/migrations/v13ToV14";
+import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../src/content/houseFoodConfig";
+import { famineDecisionView } from "../src/ui/decisionModels";
+import { pence } from "../src/ui/hud/hudCopy.ko";
 
-// F0-C1 chapter 1 scenarios (spec docs/design/flow-chapter-one.md FC-1…FC-6), C1–C10.
+// F0-C1 chapter 1 scenarios (spec docs/design/flow-chapter-one.md FC-1…FC-6), C1–C10; FC-2a relief's cost, C11.
 
 const SEASON = 1000;
 const YEAR = 4000;
@@ -311,4 +314,65 @@ test("C10 the chapter ends with a market town that kept 60 % of its people; not 
   const migrated = migrateStateV13ToV14(late);
   assert.deepEqual(migrated.events!.missed, [`${GREAT_FAMINE_EVENT_ID}@61`]);
   assert.equal(famineRecord(advanceEvents({ ...migrated, tick: migrated.tick + 50 })), undefined);
+});
+
+test("C11 relief costs the bread it hands out at the market price — bought with cash, else released from the granary at that value — and the answer's prediction and actual both count it (FC-2a)", () => {
+  const arrived = advanceEvents(advanceSeasons({ ...readyTown(), tick: SPRING_1315 }));
+  const famine = famineRecord(arrived)!;
+  const granary = arrived.buildings.find(building => building.kind === "granary")!;
+  // No cash income last season (relief buys nothing: C3) and 3,000 bread in the granary.
+  const earned = { season: 3 as const, year: 1314, startTick: SPRING_1315 - SEASON, endTick: SPRING_1315, income: 0, expense: 0,
+    stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 }, popDelta: 0, notableEvents: [], nextObjectiveHint: null };
+  const withBread = (state: GameState, bread: number): GameState => ({ ...state,
+    buildings: state.buildings.map(building => building.id === granary.id ? { ...building, inventory: { ...building.inventory, bread } } : building) });
+  const broke = withBread({ ...arrived, seasons: { ...arrived.seasons!, history: [earned] } }, 3_000);
+  const price = marketSalePrice(broke, "bread");
+  const poor = new Set(famineShortHouses(broke, true));
+  const need = Math.ceil(broke.houses.filter(house => house.residents > 0 && poor.has(house.buildingId))
+    .reduce((sum, house) => sum + houseFoodRation(house), 0) * SEASON / HOUSE_FOOD_INTERVAL);
+  assert.ok(need > 0 && price === 15);
+  // Two relief seasons (summer's and autumn's starts) before the actual is read, the poor's season of bread in each.
+  const cost = 2 * need * price;
+  const t0 = broke.treasuryCoin;
+  // The answer's card shows the cost before the choice; the history ledger keeps the same prediction with it.
+  const card = famineDecisionView(broke)!.options.find(option => option.choice === "relief")!;
+  assert.ok(card.predicted.includes(`금고 ${pence(t0 - cost)}(지금 ${pence(t0)})`), card.predicted);
+  const relieved = gameReducer(broke, { type: "famine_response", choice: "relief" });
+  const record = relieved.history!.records.find(entry => entry.template === "decision.famine_response")!;
+  assert.equal(record.decision!.predicted.treasury, t0 - cost);
+  assert.equal(record.params!.eventId, famine.id);
+  assert.equal(record.params!.treasuryAtDecision, t0);
+  // Each season's start: nothing bought, the granary's bread released, in kind at the market price; no money moves.
+  const run = samples(relieved, SPRING_1315 + 50, SPRING_1315 + 2 * SEASON);
+  const relief = run.ledger!.entries.filter(entry => entry.category === "famine_relief");
+  const release = (tick: number) => [tick, "in_kind", "bread", -need * price, { type: "event", id: famine.id, detail: "relief" },
+    { type: "building", id: granary.id, detail: `bread:${need}` }];
+  assert.deepEqual(relief.map(entry => [entry.tick, entry.account, entry.resource, entry.amount, ...entry.sourceRefs]),
+    [release(SPRING_1315 + SEASON), release(SPRING_1315 + 2 * SEASON)]);
+  assert.equal(run.treasuryCoin, t0, "no money moves");
+  assert.equal(run.buildings.find(building => building.id === granary.id)!.inventory.bread, 3_000, "the bread goes out through the town's trade");
+  // Two seasons on, the actual is the treasury at the answer less what the relief handed out.
+  assert.deepEqual(run.history!.records.find(entry => entry.id === record.id)!.decision!.actual, { population: run.population, treasury: t0 - cost });
+  // A record from before FC-2a (no event, no treasury at the answer) reads the treasury at the due tick, as it did.
+  const older: GameState = { ...relieved, history: { ...relieved.history!, records: relieved.history!.records.map(entry =>
+    entry.id === record.id ? { ...entry, params: { decisionKind: "famine_response", chosen: "relief" } } : entry) } };
+  assert.equal(samples(older, SPRING_1315 + 50, SPRING_1315 + 2 * SEASON).history!.records.find(entry => entry.id === record.id)!.decision!.actual!.treasury, t0);
+
+  // With income: cash first (⌊income ÷ price⌋ loaves into the granary's room), the rest released from its bread.
+  const earning = withBread({ ...broke, seasons: { ...broke.seasons!, history: [{ ...earned, income: (need - 3) * price }] } }, 20);
+  const mixed = advancePolitics({ ...famineResponse(earning, "relief"), tick: SPRING_1315 + SEASON });
+  assert.deepEqual(mixed.ledger!.entries.filter(entry => entry.category === "famine_relief").map(entry => [entry.account, entry.amount]),
+    [["cash", -(need - 3) * price], ["in_kind", -3 * price]]);
+  assert.equal(earning.treasuryCoin - mixed.treasuryCoin, (need - 3) * price);
+  assert.equal(mixed.buildings.find(building => building.id === granary.id)!.inventory.bread, 20 + need - 3);
+  // A granary full of bread has no room to buy into: the season comes from its bread.
+  const full = advancePolitics({ ...famineResponse({ ...earning, buildings: withBread(earning, 3_000).buildings }, "relief"), tick: SPRING_1315 + SEASON });
+  assert.deepEqual(full.ledger!.entries.filter(entry => entry.category === "famine_relief").map(entry => [entry.account, entry.amount]), [["in_kind", -need * price]]);
+  // The prediction splits each season the same way, the granary's bread running down: need − 1 loaves cover most of one season.
+  const low = withBread(broke, need - 1);
+  assert.equal(gameReducer(low, { type: "famine_response", choice: "relief" }).history!.records.at(-1)!.decision!.predicted.treasury, t0 - (need - 1) * price);
+  // Nothing to hand out (no income, no bread): no cost, and the card says the treasury stays.
+  const empty = withBread(broke, 0);
+  assert.equal(gameReducer(empty, { type: "famine_response", choice: "relief" }).history!.records.at(-1)!.decision!.predicted.treasury, t0);
+  assert.equal(advancePolitics({ ...famineResponse(empty, "relief"), tick: SPRING_1315 + SEASON }).ledger, empty.ledger);
 });
