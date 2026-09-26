@@ -28,20 +28,24 @@ type SelectRuntimeInput = {
 export function handleCanvasSelect(input: SelectRuntimeInput): void {
   const { world, canvas, refs, stateRef, selectedToolRef, palisadeDraftRef, setSelection, dispatch } = input;
   if (palisadeDraftRef.current !== null) return;
-  // UX-3R2 road click-click (UX3R 4절, S-23): the first click anchors, each next click lays the road from the anchor
-  // and anchors there; a click on the anchor itself places or removes that one tile (as a single click did) and ends
-  // the chain; Enter, a double click, Esc or a right click end it. A drag still lays one line on its own.
+  // UX-3R2 road click-click (UX3R 4절, S-23): a click on open ground lays that one tile as before and anchors a chain
+  // there (a click on a road only anchors, to draw on from it); each next click lays the road from the anchor and
+  // anchors there; a click on the anchor itself is the old single-click toggle (places or removes it) and ends the
+  // chain; Enter, a double click, Esc or a right click end it. A drag still lays one line on its own.
   const hover = refs.hoverRef.current;
+  let startChain = false;
   if (selectedToolRef.current === "road" && hover !== null) {
     const anchor = refs.roadChain.current;
-    if (anchor === null) { refs.roadChain.current = hover; return; }
-    if (anchor.tx !== hover.tx || anchor.ty !== hover.ty) {
+    if (anchor === null && getTile(stateRef.current, hover)?.hasRoad === true) { refs.roadChain.current = hover; return; }
+    if (anchor !== null && (anchor.tx !== hover.tx || anchor.ty !== hover.ty)) {
       const attempt = resolveRoadPlacementAttempt({ state: stateRef.current, start: anchor, destination: hover, nowMs: performance.now() });
       refs.feedbackRef.current = attempt.feedback;
       playPlacementSound(attempt);
       if (attempt.action !== null) { dispatch(attempt.action); refs.roadChain.current = hover; }
       return;
     }
+    // The single-tile toggle below; a tile laid on open ground (no chain yet) starts the chain there.
+    startChain = anchor === null;
     refs.roadChain.current = null;
   }
   // UX-3R2 tablet placement (UX3R 8절): a finger's tap or drag leaves the ghost where it ends (80 px above the finger);
@@ -85,4 +89,5 @@ export function handleCanvasSelect(input: SelectRuntimeInput): void {
   refs.feedbackRef.current = resolution.attempt.feedback;
   playPlacementSound(resolution.attempt);
   if (resolution.attempt.action !== null) dispatch(resolution.attempt.action);
+  if (startChain && resolution.attempt.action !== null) refs.roadChain.current = hover;
 }

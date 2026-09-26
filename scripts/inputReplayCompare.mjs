@@ -22,9 +22,8 @@ const STEPS = [
     await tool(page, '도로', '길');
     await drag(page, await at(43, 44), await at(47, 44));
   }],
-  // UX-3R2 new baseline (click-click line tools): a single-tile road action is the anchor click plus a click on it; the
-  // build without them (the trunk before UX-3R2) takes one click. Both end with the same roads.
-  ['road tool, click one tile twice (place, remove)', async (page, at) => { await roadTile(page, await at(40, 46)); await roadTile(page, await at(40, 46)); await roadTile(page, await at(38, 46)); }],
+  // UX-3R2 keeps the single click: it toggles the tile (and on open ground anchors a click-click chain there).
+  ['road tool, click one tile twice (place, remove)', async (page, at) => { await clickAt(page, await at(40, 46)); await clickAt(page, await at(40, 46)); await clickAt(page, await at(38, 46)); }],
   ['UX-3R2 road click-click: two clicks lay a line, Enter ends the chain', async (page, at) => {
     if (!(await lineTools(page))) { await drag(page, await at(41, 48), await at(44, 48)); return; }
     await clickAt(page, await at(41, 48)); await clickAt(page, await at(44, 48)); await page.keyboard.press('Enter');
@@ -88,9 +87,8 @@ async function escape(page) {
 }
 async function drag(page, a, b) { await page.mouse.move(a.x, a.y); await page.mouse.down(); await page.mouse.move(b.x, b.y, { steps: 8 }); await page.mouse.up(); await page.waitForTimeout(60); }
 async function clickAt(page, p) { await page.mouse.click(p.x, p.y); await page.waitForTimeout(60); }
-/** UX-3R2: the build has the click-click line tools (the canvas says so). */
+/** UX-3R2: the build has the click-click line tools (the canvas says so); the base lays the same line by a drag. */
 async function lineTools(page) { return await page.locator('canvas[data-line-tools="click-click"]').count() > 0; }
-async function roadTile(page, p) { await clickAt(page, p); if (await lineTools(page)) await clickAt(page, p); }
 
 async function session(browser, base) {
   const { context, page } = await openScene(browser, { state: null, tile: [44, 41], baseUrl: base, run: false, initScript: TUTORIAL_OFF });

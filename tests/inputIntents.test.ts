@@ -192,16 +192,18 @@ test("Given the road tool When a road is dragged through the intents Then the sa
   assert.deepEqual(run.actions, [expected]);
 });
 
-test("UX-3R2 road click-click: one click anchors; a click on the anchor toggles that tile, as the old single click did", () => {
+test("UX-3R2 road click-click: a click toggles one tile as before (and on open ground anchors a chain); a click on the anchor toggles it back", () => {
   const run = runtimeFor(DEFAULT_GAME_STATE, "road");
-  const point = run.client(44, 41);
+  const tile = { tx: 40, ty: 46 };
+  assert.equal(getTile(DEFAULT_GAME_STATE, tile)?.hasRoad, false);
+  const point = run.client(tile.tx, tile.ty);
   const click = () => { run.translator.pointerDown({ button: 0, ...point }); run.translator.pointerUp({ button: 0, ...point }); run.translator.click(point); };
   click();
-  assert.equal(run.actions.length, 0, "the first click only anchors");
-  assert.deepEqual(run.refs.roadChain.current, { tx: 44, ty: 41 });
+  assert.equal(getTile(run.stateRef.current, tile)?.hasRoad, true, "one click lays the tile, as the old single click did");
+  assert.deepEqual(run.refs.roadChain.current, tile, "and anchors a chain there");
   click();
-  assert.equal(getTile(run.stateRef.current, { tx: 44, ty: 41 })?.hasRoad, !getTile(DEFAULT_GAME_STATE, { tx: 44, ty: 41 })?.hasRoad);
-  assert.equal(run.actions.length, 1);
+  assert.equal(getTile(run.stateRef.current, tile)?.hasRoad, false, "a click on the anchor removes it again (the old second click)");
+  assert.equal(run.actions.length, 2);
   assert.equal(run.refs.roadChain.current, null, "the toggle ends the chain");
 });
 
@@ -209,20 +211,24 @@ test("UX-3R2 road click-click: each next click lays the road from the anchor and
   const run = runtimeFor(DEFAULT_GAME_STATE, "road");
   const click = (tx: number, ty: number) => { const p = run.client(tx, ty); run.translator.pointerMove(p); run.translator.pointerDown({ button: 0, ...p }); run.translator.pointerUp({ button: 0, ...p }); run.translator.click(p); };
   click(43, 44); click(47, 44);
-  const first = resolveRoadPlacementAttempt({ state: DEFAULT_GAME_STATE, start: { tx: 43, ty: 44 }, destination: { tx: 47, ty: 44 }, nowMs: 0 }).action;
-  assert.deepEqual(run.actions, [first], "the same line a drag from 43,44 to 47,44 lays");
+  const single = resolveRoadPlacementAttempt({ state: DEFAULT_GAME_STATE, start: { tx: 43, ty: 44 }, destination: { tx: 43, ty: 44 }, nowMs: 0 });
+  const afterSingle = single.action === null ? DEFAULT_GAME_STATE : gameReducer(DEFAULT_GAME_STATE, single.action);
+  const line = resolveRoadPlacementAttempt({ state: afterSingle, start: { tx: 43, ty: 44 }, destination: { tx: 47, ty: 44 }, nowMs: 0 }).action;
+  assert.deepEqual(run.actions, [single.action, line], "the first tile, then the line from it (as a drag from 43,44 to 47,44)");
   assert.deepEqual(run.refs.roadChain.current, { tx: 47, ty: 44 });
   run.translator.keyDown({ code: "Enter", key: "Enter", target: null });
   assert.equal(run.refs.roadChain.current, null);
   click(40, 46);
+  assert.deepEqual(run.refs.roadChain.current, { tx: 40, ty: 46 });
   const consumed = run.bus.emit({ kind: "cancel" });
   assert.equal(consumed, true, "Esc on a chain is consumed by the map (the app's one-step Esc does not see it)");
   assert.equal(run.refs.roadChain.current, null);
   // A double click ends a chain (confirm) and lays nothing itself.
-  click(40, 46); const p = run.client(44, 46);
+  const before = run.actions.length;
+  click(41, 46); const p = run.client(44, 46);
   run.translator.pointerMove(p); run.translator.pointerDown({ button: 0, ...p, detail: 2 }); run.translator.pointerUp({ button: 0, ...p }); run.translator.click(p);
   assert.equal(run.refs.roadChain.current, null);
-  assert.equal(run.actions.length, 1);
+  assert.equal(run.actions.length, before + 1, "only the first click's tile");
 });
 
 test("UX-3R2 tablet: a finger positions the ghost 80 px above it; lifting builds nothing; ✓ (confirm) builds there and the tool stays", () => {

@@ -1,0 +1,126 @@
+{
+  "url": "http://127.0.0.1:4351/",
+  "viewport": "1280x800",
+  "minTarget": 44,
+  "minText": 12,
+  "summary": {
+    "smallTargets": 0,
+    "smallText": 0,
+    "uniqueSmallTargets": 0,
+    "uniqueSmallText": 0
+  },
+  "rows": [
+    {
+      "state": "welcome",
+      "note": "",
+      "targets": 3,
+      "texts": 10,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "hud",
+      "note": "",
+      "targets": 17,
+      "texts": 11,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "build-menu",
+      "note": "build drawer, first category open",
+      "targets": 24,
+      "texts": 21,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "zone-brush",
+      "note": "zone chip armed",
+      "targets": 22,
+      "texts": 18,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "ledger",
+      "note": "ledger drawer, resources tab",
+      "targets": 28,
+      "texts": 38,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "ledger-알림",
+      "note": "",
+      "targets": 22,
+      "texts": 21,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "ledger-보기",
+      "note": "",
+      "targets": 27,
+      "texts": 24,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "ledger-지도",
+      "note": "",
+      "targets": 22,
+      "texts": 17,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "population",
+      "note": "population drawer open",
+      "targets": 16,
+      "texts": 13,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "goal-log",
+      "note": "goal log in the panel slot",
+      "targets": 17,
+      "texts": 16,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "settlement",
+      "note": "",
+      "targets": 17,
+      "texts": 36,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "settings",
+      "note": "",
+      "targets": 26,
+      "texts": 28,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "pause-menu",
+      "note": "",
+      "targets": 24,
+      "texts": 21,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "diagnostic-card",
+      "note": "house house-44-40-0 selected",
+      "targets": 19,
+      "texts": 31,
+      "smallTargets": [],
+      "smallText": []
+    }
+  ]
+}

@@ -4,7 +4,8 @@
 //    stroke, undo, redo, a right-click erase, and an open polygon with its area label;
 //  store: the granary's and the storehouse's storage cards after a little play; ledger: a row lighting its stores on
 //    the map, a column head opening the storage inspector in the slot; site: a house site's first line;
-//  road click-click: anchor, preview to the pointer, a second click lays the line, Enter ends;
+//  road click-click: the first click lays its tile and anchors, preview to the pointer, a second click lays the line,
+//    Enter ends (a click after it starts afresh: one tile);
 //  tablet (1180 × 820, touch): a tap leaves the ghost 80 px above the finger and the confirm bar; nothing is built until ✓.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -122,7 +123,7 @@ const roads = page => proof(page, () => window.__FEUDAL_PHASE10_PROOF__.state().
   const before = await roads(page);
   const a = await at(page, 41, 48), b = await at(page, 45, 48), c = await at(page, 45, 51);
   await page.mouse.click(a.x, a.y); await page.waitForTimeout(100);
-  const afterAnchor = await roads(page);
+  const afterFirst = await roads(page);
   await page.mouse.move(b.x, b.y, { steps: 4 }); await page.waitForTimeout(300);
   await shot(page, 'road-chain-preview.jpg', { x: b.x - 300, y: b.y - 220, width: 600, height: 400 });
   await page.mouse.click(b.x, b.y); await page.waitForTimeout(150);
@@ -132,7 +133,7 @@ const roads = page => proof(page, () => window.__FEUDAL_PHASE10_PROOF__.state().
   await page.keyboard.press('Enter'); await page.waitForTimeout(150);
   await page.mouse.click(c.x, c.y); await page.waitForTimeout(150);
   const afterEnterClick = await roads(page);
-  result.road = { before, afterAnchor, afterSecond, afterEnterClick, chainEndedByEnter: afterEnterClick === afterSecond };
+  result.road = { before, afterFirst, afterSecond, afterEnterClick, chainEndedByEnter: afterEnterClick === afterSecond + 1 };
   await context.close();
 }
 

@@ -28,7 +28,7 @@ const gates = {
   ...(r2 === null ? {} : {
     zoneUndoRedo: cells(r2.zone.painted) > 0 && cells(r2.zone.undone) === 0 && cells(r2.zone.redone) === cells(r2.zone.painted) && cells(r2.zone.erasedByRightClick) < cells(r2.zone.painted),
     storeLedger: r2.store.cards.granary !== undefined && r2.store.cards.storehouse !== undefined && r2.store.lit.length === 1 && r2.store.slot !== null,
-    roadClickClick: r2.road.afterAnchor === r2.road.before && r2.road.afterSecond > r2.road.before && r2.road.chainEndedByEnter,
+    roadClickClick: r2.road.afterFirst === r2.road.before + 1 && r2.road.afterSecond > r2.road.afterFirst + 1 && r2.road.chainEndedByEnter,
     tabletConfirm: r2.tablet.bar && r2.tablet.afterLift === r2.tablet.before && r2.tablet.afterConfirm === r2.tablet.before + 1
       && r2.tablet.siteTile?.tx === r2.tablet.target.tx && r2.tablet.siteTile?.ty === r2.tablet.target.ty,
     noPageErrors: r2.errors.length === 0,

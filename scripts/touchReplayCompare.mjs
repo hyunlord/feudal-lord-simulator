@@ -78,8 +78,7 @@ const touchDevice = (page, cdp) => {
 
 const STEPS = [
   ['road tool, drag a road line', async (d, page, at) => { await tool(d, page, '도로', '길'); await d.drag(await at(43, 44), await at(47, 44)); }],
-  // UX-3R2: a single-tile road action is the anchor tap plus a tap on it (click-click line tools).
-  ['road tool, click one tile twice (place, remove)', async (d, page, at) => { for (const tile of [[40, 46], [40, 46], [38, 46]]) await roadTile(d, page, await at(...tile)); }],
+  ['road tool, click one tile twice (place, remove)', async (d, page, at) => { await d.tap(await at(40, 46)); await d.tap(await at(40, 46)); await d.tap(await at(38, 46)); }],
   ['UX-3R2 road click-click: two taps lay a line, Enter ends the chain', async (d, page, at) => { await d.tap(await at(41, 48)); await d.tap(await at(44, 48)); await page.keyboard.press('Enter'); }],
   ['road tool, drag then right click cancels, release', async (d, page, at) => { await d.roadDragCancelled(await at(36, 50), await at(39, 50)); }],
   ['Esc disarms, left drag pans', async (d, page) => { await escape(page); await d.drag({ x: 700, y: 420 }, { x: 610, y: 380 }); }],
@@ -111,8 +110,6 @@ const STEPS = [
     await d.park();
   }],
 ];
-
-async function roadTile(d, page, p) { await d.tap(p); if (await page.locator('canvas[data-line-tools="click-click"]').count() > 0) await d.tap(p); }
 
 /** Esc one step; on the normal screen UX-3 opens the pause menu (S-31), which this session closes again. */
 async function escape(page) {
