@@ -1,6 +1,7 @@
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import type { NextObjectiveHint } from "../engine/season.types";
 import { pence } from "./hud/hudCopy.ko";
+import type { SeasonSceneId } from "./seasonLedgerScenes";
 
 // UI-3 season ledger card (FP-1): one closed season on the Wave 8 scroll. Signed numbers, no arrows or symbols.
 const signed = (value: number): string => value > 0 ? `+${value}` : value < 0 ? `−${-value}` : "0";
@@ -15,7 +16,19 @@ export const SEASON_LEDGER_COPY = {
   versus: (delta: number) => `(전 계절 ${signed(delta)})`,
   stock: (name: string, delta: number) => `${name} ${signed(delta)}`,
   stockNames: { bread: "빵", wheat: "밀", timber: "목재", stone: "석재" },
-  scene: { population: "인구", bread: "빵", wheat: "밀", timber: "목재", stone: "석재", coin: "돈" },
+  // UI-4b: the Wave 19 scene names (records/metadata-scenes-*.json), shown under the title and read for each icon.
+  scene: {
+    population_up: "인구 늘음", population_down: "인구 줄음", household_arrival: "가구 입주", household_departure: "가구 이탈",
+    house_hungry: "굶은 집", house_fed: "다시 먹음", bread_shortage: "빵 부족", bread_reserve: "비축 충분",
+    timber_shortage: "목재 부족", stone_shortage: "석재 부족", complete_house: "주택 완공", complete_facility: "시설 완공",
+    complete_defense: "방어 완공", complete_public: "공공 완공", construction_blocked: "공사 막힘", fire: "화재",
+    poor_harvest: "흉년", great_famine: "대기근", petition: "청원", charter: "특허",
+    market_busy: "장날 성황", market_quiet: "장날 한산", winter_survived: "겨울 넘김", hungry_gap: "보릿고개",
+  } satisfies Record<SeasonSceneId, string>,
+  scenesLine: (names: readonly string[]) => `이 계절의 장면: ${names.join(" · ")}`,
+  percent: (value: string) => `${value}%`,
+  households: (count: number) => `${count}가구`,
+  houses: (count: number) => `${count}채`,
   events: {
     households_leaving: (count: number) => `떠날 채비를 한 가구 ${count}`,
     households_abandoned: (count: number) => `비워진 집 ${count}`,

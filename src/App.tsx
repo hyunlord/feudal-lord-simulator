@@ -44,7 +44,7 @@ import { TITLE_COPY } from "./ui/titleCopy.ko";
 import { wave8ImageStyle, wave8Url } from "./ui/wave8Art";
 import { SEASON_LEDGER_COPY } from "./ui/seasonLedgerCopy.ko";
 import { SeasonLedgerCard } from "./ui/hud/SeasonLedgerCard";
-import { seasonLedgerCardModel } from "./ui/seasonLedgerCard";
+import { seasonJustClosed, seasonLedgerCardModel } from "./ui/seasonLedgerCard";
 import { seasonLedgerAuto, setSeasonLedgerAuto } from "./ui/seasonLedgerPreference";
 import type { BuildCategory } from "./ui/buildMenuPresentation";
 import { autoPlacementOverlay } from "./ui/placementAutoOverlay";
@@ -347,16 +347,19 @@ export function App() {
     if (auto === null && autoOverlayRef.current !== null) { setOverlayMode(autoOverlayRef.current); autoOverlayRef.current = null; }
   }, [selectedTool]);
   // UI-3 (S-28): a season that closes while the game runs opens its ledger card, a modal (time stops until 계속),
-  // unless the player turned it off. A jump of more than one closed season (a load) opens nothing.
+  // unless the player turned it off. A jump of more than one closed season (a load) opens nothing. UI-4b: keyed on
+  // the last closed season's end, not the count (the engine keeps eight, so after two years the count stood still and
+  // the card never opened again): it opens when the season before the new one is the one last seen.
   const [ledgerAuto, setLedgerAuto] = useState(seasonLedgerAuto);
-  const closedSeasons = state.seasons?.history.length ?? 0;
-  const closedSeasonsRef = useRef(closedSeasons);
+  const lastClosedEnd = state.seasons?.history.at(-1)?.endTick ?? null;
+  const priorClosedEnd = state.seasons?.history.at(-2)?.endTick ?? null;
+  const lastClosedEndRef = useRef(lastClosedEnd);
   useEffect(() => {
-    const previous = closedSeasonsRef.current;
-    closedSeasonsRef.current = closedSeasons;
-    if (closedSeasons !== previous + 1 || !ledgerAuto || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
+    const previous = lastClosedEndRef.current;
+    lastClosedEndRef.current = lastClosedEnd;
+    if (!seasonJustClosed(previous, lastClosedEnd, priorClosedEnd) || !ledgerAuto || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
     setUi(current => reduceUi(current, { type: "push_modal", modal: "season_ledger" }));
-  }, [closedSeasons, ledgerAuto, welcomeVisible]);
+  }, [lastClosedEnd, priorClosedEnd, ledgerAuto, welcomeVisible]);
   const seasonCard = topModal(ui) === "season_ledger" ? seasonLedgerCardModel(state) : null;
   // The card's next objective opens the build drawer at its category (the tutorial's request path, its own nonce).
   const [menuRequest, setMenuRequest] = useState<{ readonly category: BuildCategory; readonly nonce: number } | null>(null);
