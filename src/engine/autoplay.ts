@@ -39,7 +39,7 @@ import { reserveDeadlock } from "./reserveDeadlock";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
 import { granaryGapAction, keepsHouseInMarketReach, marketGapAction, marketRelocationAction, recordBotRecovery, type AdvisorAction, type BotRecoveryCollector } from './autoplayBotRecovery';
-import { timberDemandExpansionKind } from './autoplayTimberDemand';
+import { logOverflowKind, timberDemandExpansionKind } from './autoplayTimberDemand';
 import { interiorHouseSites, keepsInteriorHouseSites } from './autoplayInteriorPlots';
 import { ARABLE_MARGIN_PERMILLE, NAIVE_ARABLE_MARGIN_PERMILLE, withArableMargin } from './autoplayArable';
 import { winterReserveAction } from './autoplayWinterReserve';
@@ -238,6 +238,14 @@ function timberAction(state: GameState, diagnostic?: BotRecoveryCollector): Auto
     const action = buildAction(state, demand);
     if (action.kind !== "none") {
       recordBotRecovery(diagnostic, "timber_demand", [], action);
+      return action;
+    }
+  }
+  // F0-C1 (AR-10): logs fill the storehouses while the sawmills are the short side — another sawmill first.
+  if (logOverflowKind(state) !== null) {
+    const action = buildAction(state, "sawmill");
+    if (action.kind !== "none") {
+      recordBotRecovery(diagnostic, "log_overflow", [], action);
       return action;
     }
   }
