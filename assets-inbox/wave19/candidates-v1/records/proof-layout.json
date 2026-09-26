@@ -1,0 +1,54 @@
+{
+  "status": "offline composite, not runtime",
+  "chronicle": {
+    "width": 1280,
+    "height": 800,
+    "cardNative": [
+      320,
+      160
+    ],
+    "hiddenNameOrder": [
+      "person",
+      "event",
+      "ledger",
+      "milestone",
+      "decision",
+      "era"
+    ],
+    "timelineMarkerPx": 24
+  },
+  "ledger": {
+    "width": 1280,
+    "height": 1260,
+    "examples": 4,
+    "slots": 3,
+    "exampleIconPx": 48,
+    "comparisonIconPx": 24,
+    "sceneOrder": [
+      "scene_population_up",
+      "scene_population_down",
+      "scene_household_arrival",
+      "scene_household_departure",
+      "scene_house_hungry",
+      "scene_house_fed",
+      "scene_bread_shortage",
+      "scene_bread_reserve",
+      "scene_timber_shortage",
+      "scene_stone_shortage",
+      "scene_complete_house",
+      "scene_complete_facility",
+      "scene_complete_defense",
+      "scene_complete_public",
+      "scene_construction_blocked",
+      "scene_fire",
+      "scene_poor_harvest",
+      "scene_great_famine",
+      "scene_petition",
+      "scene_charter",
+      "scene_market_busy",
+      "scene_market_quiet",
+      "scene_winter_survived",
+      "scene_hungry_gap"
+    ]
+  }
+}

@@ -1,0 +1,129 @@
+{
+ "url": "http://127.0.0.1:4301/",
+ "errors": [],
+ "cards": {
+  "season-famine": {
+   "tick": 67970,
+   "opened": true,
+   "title": "1316년 겨울 결산",
+   "scenes": [
+    "great_famine",
+    "market_busy",
+    "bread_reserve"
+   ],
+   "values": [
+    null,
+    null,
+    null
+   ],
+   "iconsLoaded": [
+    true,
+    true,
+    true
+   ],
+   "line": "이 계절의 장면: 대기근 · 장날 성황 · 비축 충분"
+  },
+  "season-fire": {
+   "tick": 9970,
+   "opened": true,
+   "title": "1302년 여름 결산",
+   "scenes": [
+    "fire",
+    "complete_house",
+    "population_up"
+   ],
+   "values": [
+    "1채",
+    null,
+    "+14%"
+   ],
+   "iconsLoaded": [
+    true,
+    true,
+    true
+   ],
+   "line": "이 계절의 장면: 화재 1채 · 주택 완공 · 인구 늘음 +14%"
+  },
+  "season-first-building": {
+   "tick": 970,
+   "opened": true,
+   "title": "1300년 봄 결산",
+   "scenes": [
+    "population_up",
+    "complete_facility",
+    "timber_shortage"
+   ],
+   "values": [
+    null,
+    null,
+    "−68"
+   ],
+   "iconsLoaded": [
+    true,
+    true,
+    true
+   ],
+   "line": "이 계절의 장면: 인구 늘음 · 시설 완공 · 목재 부족 −68"
+  },
+  "season-market-town": {
+   "tick": 63970,
+   "opened": true,
+   "title": "1315년 겨울 결산",
+   "scenes": [
+    "charter",
+    "population_down",
+    "timber_shortage"
+   ],
+   "values": [
+    null,
+    "−3",
+    "−18"
+   ],
+   "iconsLoaded": [
+    true,
+    true,
+    true
+   ],
+   "line": "이 계절의 장면: 특허 · 인구 줄음 −3 · 목재 부족 −18"
+  },
+  "season-petition": {
+   "tick": 30970,
+   "opened": true,
+   "title": "1307년 가을 결산",
+   "scenes": [
+    "charter",
+    "population_up",
+    "bread_reserve"
+   ],
+   "values": [
+    null,
+    "+10",
+    "+27"
+   ],
+   "iconsLoaded": [
+    true,
+    true,
+    true
+   ],
+   "line": "이 계절의 장면: 특허 · 인구 늘음 +10 · 비축 충분 +27"
+  },
+  "season-quiet": {
+   "tick": 8970,
+   "opened": true,
+   "title": "1302년 봄 결산",
+   "scenes": [
+    "population_up",
+    "bread_shortage"
+   ],
+   "values": [
+    "+9%",
+    "−30"
+   ],
+   "iconsLoaded": [
+    true,
+    true
+   ],
+   "line": "이 계절의 장면: 인구 늘음 +9% · 빵 부족 −30"
+  }
+ }
+}

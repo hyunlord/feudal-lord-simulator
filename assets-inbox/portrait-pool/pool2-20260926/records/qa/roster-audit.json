@@ -1,0 +1,193 @@
+{
+  "audit_kind": "read-only planned metadata; not visual verification",
+  "roster_sha256": "a6854cf398cd245123f84c4560f6125cab4a86fc3e77936ef7d8542b00df2f1a",
+  "status": "PASS_PLANNED_METADATA_WITH_LIMITATIONS",
+  "identity_count": 32,
+  "stage_count": 92,
+  "identity_ids_contiguous": true,
+  "role_coverage_exact": true,
+  "role_ambiguity_resolution": "One disabled-veteran beggar plus one itinerant musician, two people total; approved by parent.",
+  "class_identities": {
+    "artisan": 6,
+    "labour": 9,
+    "gentry": 3,
+    "clerical": 3,
+    "merchant": 3,
+    "poor_servant": 4,
+    "child": 4
+  },
+  "body_identities": {
+    "heavy": 11,
+    "thin": 11,
+    "average": 10
+  },
+  "class_body": {
+    "artisan": {
+      "heavy": 3,
+      "thin": 2,
+      "average": 1
+    },
+    "labour": {
+      "average": 3,
+      "heavy": 3,
+      "thin": 3
+    },
+    "gentry": {
+      "thin": 1,
+      "average": 1,
+      "heavy": 1
+    },
+    "clerical": {
+      "thin": 1,
+      "average": 1,
+      "heavy": 1
+    },
+    "merchant": {
+      "average": 1,
+      "heavy": 1,
+      "thin": 1
+    },
+    "poor_servant": {
+      "thin": 2,
+      "average": 1,
+      "heavy": 1
+    },
+    "child": {
+      "thin": 1,
+      "heavy": 1,
+      "average": 2
+    }
+  },
+  "sex_identities": {
+    "m": 19,
+    "f": 13
+  },
+  "sex_stages": {
+    "m": 55,
+    "f": 37
+  },
+  "female_headwear_planned": {
+    "colored_headscarf": 5,
+    "hood": 4,
+    "coif": 4,
+    "white_veil": 4,
+    "veil_wimple": 4,
+    "widow_veil": 4,
+    "loose_unmarried": 4,
+    "straw_hat": 4,
+    "barbette_fillet": 4
+  },
+  "direction_stages": {
+    "left": 31,
+    "right": 31,
+    "front": 30
+  },
+  "expression_stages": {
+    "neutral": 46,
+    "tired_worried": 19,
+    "slight_smile": 18,
+    "sharp_suspicious": 9
+  },
+  "expression_percentages": {
+    "neutral": 50.0,
+    "tired_worried": 20.65,
+    "slight_smile": 19.57,
+    "sharp_suspicious": 9.78
+  },
+  "props_identity_counts": {
+    "other": 20,
+    "none": 10,
+    "book_scroll": 2
+  },
+  "props_stage_counts": {
+    "other": 57,
+    "none": 29,
+    "book_scroll": 6
+  },
+  "props_identity_percentages": {
+    "other": 62.5,
+    "none": 31.25,
+    "book_scroll": 6.25
+  },
+  "props_stage_percentages": {
+    "other": 61.96,
+    "none": 31.52,
+    "book_scroll": 6.52
+  },
+  "props_fixed_within_identity": true,
+  "unique_other_prop_types": 20,
+  "book_scroll_threshold_pass_both_denominators": true,
+  "none_target_approximately30_pass_both_denominators": true,
+  "issues": [
+    {
+      "severity": "resolved",
+      "ids": [
+        "I079",
+        "I084",
+        "I100"
+      ],
+      "finding": "Deep brown complexion descriptions exceed literal inherited pool1 rule to vary within light tones. I087 medium golden brown and I090 medium tawny brown are additional borderline descriptions. Prior accepted material may be broader; parent must reconcile before claiming exact inherited-rule compliance.",
+      "source": "Pool1 commission section2 skin: 밝은 톤 안에서 서로 다르게; pool2 inherits skin distribution.",
+      "resolution": "Parent authorized narrow complexion correction in identity skin_tone and every affected stage prompt only; art agents notified."
+    },
+    {
+      "severity": "resolved",
+      "ids": [
+        "I089",
+        "I093",
+        "I094",
+        "I096"
+      ],
+      "finding": "poor_servant class has two thin and two average identities, no heavy identity. Other adult classes each include all three body categories. Prior class mixing instruction does not explicitly impose minimum per body, but this is less complete distribution.",
+      "resolution": "Parent authorized I096 average to heavy, changing identity body and stage Build prompt clause only; all classes now contain all three body categories."
+    },
+    {
+      "severity": "metadata_decision",
+      "ids": [
+        "I072",
+        "I075",
+        "I092"
+      ],
+      "finding": "Reeve mapped to labour (tenant-farmer supervisor), beadle to clerical (parish service), pilgrim to labour (lay traveller). Roles remain explicit; class labels are costume/social pool buckets, not claims that all holders of these roles had this class."
+    }
+  ],
+  "roster_modified_by_audit": true,
+  "limitations": [
+    "Headwear, props, expression and anatomy are prompt targets until actual image review.",
+    "Both chronological children and their young-adult continuations retain class=child for compatibility; household class lives in role and clothing.",
+    "No assertion that intended expression counts equal measured visible expression counts."
+  ],
+  "authorized_changes": [
+    {
+      "identity_id": "I079",
+      "before": "deep warm brown",
+      "after": "sun-tanned light warm beige"
+    },
+    {
+      "identity_id": "I084",
+      "before": "deep reddish brown",
+      "after": "light warm beige with reddish undertone"
+    },
+    {
+      "identity_id": "I087",
+      "before": "medium golden brown",
+      "after": "light golden beige"
+    },
+    {
+      "identity_id": "I090",
+      "before": "medium tawny brown",
+      "after": "light tawny beige"
+    },
+    {
+      "identity_id": "I100",
+      "before": "deep warm brown",
+      "after": "light warm peach beige"
+    },
+    {
+      "identity_id": "I096",
+      "field": "body",
+      "before": "average",
+      "after": "heavy"
+    }
+  ]
+}

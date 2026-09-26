@@ -1,0 +1,53 @@
+{
+  "id": "house_l1_1400_b-v1",
+  "era": 1400,
+  "level": 1,
+  "variant": "b",
+  "file": "assets/houses/house_l1_1400_b-v1.png",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-673c85a1-8daf-47b8-bb50-6bd4a8f3268c.png",
+  "record": {
+    "id": "house_l1_1400_b-v1",
+    "l": 1,
+    "v": "b",
+    "chimney": false,
+    "prompt": "PRECISE RESKIN EDIT of the attached single isometric house sprite, NOT a new house design. Era1400 southern/southeastern England, same grade L1. Preserve EXACT roof polygon silhouette, roof ridge and eaves positions, ground-contact footprint, projection, camera angle, scale, canvas placement, all existing doorway and window opening CENTERS. Preserve same number of storeys, same grade recognizable. No moved or extra doors/windows, no additional wings, no new ground props. Transparent background. Same warm muted hand-painted game style, warm off-white limewashed daub and brown oak, light from upper left. Keep this modest single-storey cottage poor and simple, retain thatch. Only better straightened door-frame posts and tidier repair bands, subtle earth-plaster finish. NO glazing. Variant b: slightly earthier cream infill with darker walnut shutters and modest alternate panel repair, same geometry. ABSOLUTELY NO chimney, no masonry rooftop shaft, no chimney pot, no smoke, no flue, no roof vent of any kind. Output one full house sprite only, transparent alpha, no labels, no sheet, no decorative frame, no ground tile.",
+    "references": [
+      "/tmp/astra-wave20-work-20260926/astra-wave20-reference-files/house_l1-v2.png"
+    ],
+    "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-673c85a1-8daf-47b8-bb50-6bd4a8f3268c.png",
+    "raw_path": "/tmp/astra-wave20-work-20260926/era1400/house_l1_1400_b-v1.png"
+  },
+  "crop": {
+    "left": 97,
+    "top": 131,
+    "width": 1095,
+    "height": 1034
+  },
+  "target": {
+    "left": 15,
+    "top": 20,
+    "width": 113,
+    "height": 106
+  },
+  "canvas": [
+    139,
+    139
+  ],
+  "pivot": [
+    71.66148325358851,
+    125.92025518341308
+  ],
+  "footprint": [
+    1,
+    1
+  ],
+  "scale": 0.4986217267599071,
+  "chimney": false,
+  "chimneyRegion": null,
+  "smokeOrigin": null,
+  "groundDrift": 0,
+  "changed": 3276,
+  "source_archive_path": "provenance/generated/house_l1_1400_b-v1-raw.png",
+  "source_sha256": "a213d58c6b3a5af3e8d1c14c3bd790917138535f2003b0095ddfcdaf1bf0bfbb",
+  "candidate_sha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354"
+}

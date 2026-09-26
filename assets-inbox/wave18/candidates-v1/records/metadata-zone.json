@@ -1,0 +1,236 @@
+[
+  {
+    "id": "zone_brush",
+    "file": "assets/zone/zone_brush.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One upright broad flat pigment paintbrush, very short plain wooden handle at top, broad muted sage pigment bristles pointing vertically down, and one short sage paint swash below. No straw, no earth, no hand, no angled brush. Tool of area painting.",
+    "characters": "none",
+    "historyNotes": "Wave18 zone tool candidate; new motif distinct from UI P0 layer brush. Not installed. UI P0 layer-mode sheet inspected for style/exclusion context but not uploaded as generation input.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Generate a SINGLE standalone raster game HUD icon, square canvas, genuine transparent RGBA background, no background color or checkerboard baked into image. South England medieval city builder painted UI P0 style: muted warm natural palette, delicately hand-painted shading, thin clean dark warm-brown outer contour, simple bold readable silhouette at 24px, subdued texture only, no glossy 3D, no drop shadow, no panel or frame. Deliver one centered icon only with generous transparent padding, intended final 96x96 pixels. No text, letters, numerals, watermark. Do not use hammer, scroll, sealed document or two workers motifs. Subject: One upright broad flat pigment paintbrush, very short plain wooden handle at top, broad muted sage pigment bristles pointing vertically down, and one short sage paint swash below. No straw, no earth, no hand, no angled brush. Tool of area painting.",
+        "rawFile": "raw/zone/zone_brush.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp transparent trim threshold 8 and Lanczos3 fit to 80px (small stamp 30px, large stamp 72px), centered on transparent 96x96; original alpha preserved; no repainting.",
+    "qa": {
+      "alpha": true,
+      "transparentPixels": 6499,
+      "opaquePixels": 218,
+      "status": "candidate",
+      "visualReview": "Reviewed actual 24/32/48px contact: silhouette and intended tool readable; no reserved motifs, true transparent alpha, no text.",
+      "reviewImage": "raw/zone/contact-24-32-48.png"
+    }
+  },
+  {
+    "id": "zone_polygon",
+    "file": "assets/zone/zone_polygon.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One irregular closed pentagonal polygon outline made from a warm ochre cord-like stroke with five large dark bronze circular vertex nodes. Transparent hollow center. Flat frontal graphic, unmistakable connected polygon, no background.",
+    "characters": "none",
+    "historyNotes": "Wave18 zone tool candidate; new motif distinct from UI P0 layer brush. Not installed. UI P0 layer-mode sheet inspected for style/exclusion context but not uploaded as generation input.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Generate a SINGLE standalone raster game HUD icon, square canvas, genuine transparent RGBA background, no background color or checkerboard baked into image. South England medieval city builder painted UI P0 style: muted warm natural palette, delicately hand-painted shading, thin clean dark warm-brown outer contour, simple bold readable silhouette at 24px, subdued texture only, no glossy 3D, no drop shadow, no panel or frame. Deliver one centered icon only with generous transparent padding, intended final 96x96 pixels. No text, letters, numerals, watermark. Do not use hammer, scroll, sealed document or two workers motifs. Subject: One irregular closed pentagonal polygon outline made from a warm ochre cord-like stroke with five large dark bronze circular vertex nodes. Transparent hollow center. Flat frontal graphic, unmistakable connected polygon, no background.",
+        "rawFile": "raw/zone/zone_polygon.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp transparent trim threshold 8 and Lanczos3 fit to 80px (small stamp 30px, large stamp 72px), centered on transparent 96x96; original alpha preserved; no repainting.",
+    "qa": {
+      "alpha": true,
+      "transparentPixels": 7214,
+      "opaquePixels": 296,
+      "status": "candidate",
+      "visualReview": "Reviewed actual 24/32/48px contact: silhouette and intended tool readable; no reserved motifs, true transparent alpha, no text.",
+      "reviewImage": "raw/zone/contact-24-32-48.png"
+    }
+  },
+  {
+    "id": "zone_erase",
+    "file": "assets/zone/zone_erase.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "Broad rigid triangular iron scraper with wood handle removing sage paint, leaving a clean transparent lane. No bristles.",
+    "characters": "none",
+    "historyNotes": "Wave18 zone tool candidate; new motif distinct from UI P0 layer brush. Not installed. UI P0 layer-mode sheet inspected for style/exclusion context but not uploaded as generation input. Initial scraper resembled a paintbrush and was rejected; targeted builtin v2 edit replaces bristle-like blade with a broad rigid iron scraper and clean removed paint lane.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Generate a SINGLE standalone raster game HUD icon, square canvas, genuine transparent RGBA background, no background color or checkerboard baked into image. South England medieval city builder painted UI P0 style: muted warm natural palette, delicately hand-painted shading, thin clean dark warm-brown outer contour, simple bold readable silhouette at 24px, subdued texture only, no glossy 3D, no drop shadow, no panel or frame. Deliver one centered icon only with generous transparent padding, intended final 96x96 pixels. No text, letters, numerals, watermark. Do not use hammer, scroll, sealed document or two workers motifs. Subject: One small medieval wooden handled paint scraper with broad pale steel edge, diagonally lifting away one short muted sage paint swash. Only scraper and swash. Not a modern eraser. No chisel crossed with ruler.",
+        "rawFile": "raw/zone/zone_erase.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Edit this single game icon to make it unmistakably an ERASING PAINT SCRAPER, NOT A PAINTBRUSH. Keep handpainted medieval muted warm UI P0 tone with thin brown outlines and genuinely transparent background. Replace the existing bristly paintbrush-like blade entirely with a broad, short, rigid triangular dark iron scraper blade with straight bright beveled bottom scraping edge and clearly visible solid dark metal face, attached to a stubby rounded wooden handle; tool seen diagonally from upper right toward lower left. NO HAIRS, NO BRISTLES, NO FLEXIBLE BRUSH, no soft pale blade. Beneath the blade show a muted sage paint patch with a broad clean transparent lane scraped through its middle; a tiny curled peel of paint sits at the scraping edge. The broad iron blade should be the dominant silhouette. Simple bold readable at 24px, just one isolated tool and one small partly removed paint patch, no text, no shadow, no frame, transparent RGBA square. Keep generous transparent margins. No hammer, scroll, document, workers.",
+        "rawFile": "raw/zone/zone_erase-v2.png",
+        "referenceImages": [
+          "raw/zone/zone_erase-v1-export.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp transparent trim threshold 8 and Lanczos3 fit to 80px (small stamp 30px, large stamp 72px), centered on transparent 96x96; original alpha preserved; no repainting.",
+    "qa": {
+      "alpha": true,
+      "transparentPixels": 6875,
+      "opaquePixels": 176,
+      "status": "candidate",
+      "visualReview": "v2 broad straight iron blade distinct from brush; scraped clear lane visible. Reviewed 24/32/48px contact.",
+      "reviewImage": "raw/zone/contact-24-32-48.png"
+    }
+  },
+  {
+    "id": "zone_undo",
+    "file": "assets/zone/zone_undo.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One single broad curved return arrow curling from right to left, arrowhead at upper LEFT points left. Warm parchment ivory fill, thin dark brown outline, tiny warm shading. A simple nearly semicircular open arc. No objects.",
+    "characters": "none",
+    "historyNotes": "Wave18 zone tool candidate; new motif distinct from UI P0 layer brush. Not installed. UI P0 layer-mode sheet inspected for style/exclusion context but not uploaded as generation input.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Generate a SINGLE standalone raster game HUD icon, square canvas, genuine transparent RGBA background, no background color or checkerboard baked into image. South England medieval city builder painted UI P0 style: muted warm natural palette, delicately hand-painted shading, thin clean dark warm-brown outer contour, simple bold readable silhouette at 24px, subdued texture only, no glossy 3D, no drop shadow, no panel or frame. Deliver one centered icon only with generous transparent padding, intended final 96x96 pixels. No text, letters, numerals, watermark. Do not use hammer, scroll, sealed document or two workers motifs. Subject: One single broad curved return arrow curling from right to left, arrowhead at upper LEFT points left. Warm parchment ivory fill, thin dark brown outline, tiny warm shading. A simple nearly semicircular open arc. No objects.",
+        "rawFile": "raw/zone/zone_undo.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp transparent trim threshold 8 and Lanczos3 fit to 80px (small stamp 30px, large stamp 72px), centered on transparent 96x96; original alpha preserved; no repainting.",
+    "qa": {
+      "alpha": true,
+      "transparentPixels": 6804,
+      "opaquePixels": 207,
+      "status": "candidate",
+      "visualReview": "Reviewed actual 24/32/48px contact: silhouette and intended tool readable; no reserved motifs, true transparent alpha, no text.",
+      "reviewImage": "raw/zone/contact-24-32-48.png"
+    }
+  },
+  {
+    "id": "zone_redo",
+    "file": "assets/zone/zone_redo.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One single broad curved return arrow curling from left to right, arrowhead at upper RIGHT points right. Warm parchment ivory fill, thin dark brown outline, tiny warm shading. A simple nearly semicircular open arc. No objects.",
+    "characters": "none",
+    "historyNotes": "Wave18 zone tool candidate; new motif distinct from UI P0 layer brush. Not installed. UI P0 layer-mode sheet inspected for style/exclusion context but not uploaded as generation input.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Generate a SINGLE standalone raster game HUD icon, square canvas, genuine transparent RGBA background, no background color or checkerboard baked into image. South England medieval city builder painted UI P0 style: muted warm natural palette, delicately hand-painted shading, thin clean dark warm-brown outer contour, simple bold readable silhouette at 24px, subdued texture only, no glossy 3D, no drop shadow, no panel or frame. Deliver one centered icon only with generous transparent padding, intended final 96x96 pixels. No text, letters, numerals, watermark. Do not use hammer, scroll, sealed document or two workers motifs. Subject: One single broad curved return arrow curling from left to right, arrowhead at upper RIGHT points right. Warm parchment ivory fill, thin dark brown outline, tiny warm shading. A simple nearly semicircular open arc. No objects.",
+        "rawFile": "raw/zone/zone_redo.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp transparent trim threshold 8 and Lanczos3 fit to 80px (small stamp 30px, large stamp 72px), centered on transparent 96x96; original alpha preserved; no repainting.",
+    "qa": {
+      "alpha": true,
+      "transparentPixels": 6670,
+      "opaquePixels": 191,
+      "status": "candidate",
+      "visualReview": "Reviewed actual 24/32/48px contact: silhouette and intended tool readable; no reserved motifs, true transparent alpha, no text.",
+      "reviewImage": "raw/zone/contact-24-32-48.png"
+    }
+  },
+  {
+    "id": "zone_size_small",
+    "file": "assets/zone/zone_size_small.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One small circular sage pigment brush stamp footprint, diameter only 32 percent of canvas width, centered, solid opaque muted sage interior with a few subtle bristle flecks at the circular edge and thin brown outline. Rest entirely transparent. No brush, no ring, no dots, no text.",
+    "characters": "none",
+    "historyNotes": "Wave18 zone tool candidate; new motif distinct from UI P0 layer brush. Not installed. UI P0 layer-mode sheet inspected for style/exclusion context but not uploaded as generation input.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Generate a SINGLE standalone raster game HUD icon, square canvas, genuine transparent RGBA background, no background color or checkerboard baked into image. South England medieval city builder painted UI P0 style: muted warm natural palette, delicately hand-painted shading, thin clean dark warm-brown outer contour, simple bold readable silhouette at 24px, subdued texture only, no glossy 3D, no drop shadow, no panel or frame. Deliver one centered icon only with generous transparent padding, intended final 96x96 pixels. No text, letters, numerals, watermark. Do not use hammer, scroll, sealed document or two workers motifs. Subject: One small circular sage pigment brush stamp footprint, diameter only 32 percent of canvas width, centered, solid opaque muted sage interior with a few subtle bristle flecks at the circular edge and thin brown outline. Rest entirely transparent. No brush, no ring, no dots, no text.",
+        "rawFile": "raw/zone/zone_size_small.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp transparent trim threshold 8 and Lanczos3 fit to 80px (small stamp 30px, large stamp 72px), centered on transparent 96x96; original alpha preserved; no repainting.",
+    "qa": {
+      "alpha": true,
+      "transparentPixels": 8444,
+      "opaquePixels": 60,
+      "status": "candidate",
+      "visualReview": "Reviewed actual 24/32/48px contact: silhouette and intended tool readable; no reserved motifs, true transparent alpha, no text.",
+      "reviewImage": "raw/zone/contact-24-32-48.png"
+    }
+  },
+  {
+    "id": "zone_size_large",
+    "file": "assets/zone/zone_size_large.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One large circular sage pigment brush stamp footprint, diameter 76 percent of canvas width, centered, solid opaque muted sage interior with a few subtle bristle flecks at circular edge and thin brown outline. Rest entirely transparent. No brush, no ring, no dots, no text.",
+    "characters": "none",
+    "historyNotes": "Wave18 zone tool candidate; new motif distinct from UI P0 layer brush. Not installed. UI P0 layer-mode sheet inspected for style/exclusion context but not uploaded as generation input.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Generate a SINGLE standalone raster game HUD icon, square canvas, genuine transparent RGBA background, no background color or checkerboard baked into image. South England medieval city builder painted UI P0 style: muted warm natural palette, delicately hand-painted shading, thin clean dark warm-brown outer contour, simple bold readable silhouette at 24px, subdued texture only, no glossy 3D, no drop shadow, no panel or frame. Deliver one centered icon only with generous transparent padding, intended final 96x96 pixels. No text, letters, numerals, watermark. Do not use hammer, scroll, sealed document or two workers motifs. Subject: One large circular sage pigment brush stamp footprint, diameter 76 percent of canvas width, centered, solid opaque muted sage interior with a few subtle bristle flecks at circular edge and thin brown outline. Rest entirely transparent. No brush, no ring, no dots, no text.",
+        "rawFile": "raw/zone/zone_size_large.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp transparent trim threshold 8 and Lanczos3 fit to 80px (small stamp 30px, large stamp 72px), centered on transparent 96x96; original alpha preserved; no repainting.",
+    "qa": {
+      "alpha": true,
+      "transparentPixels": 5028,
+      "opaquePixels": 150,
+      "status": "candidate",
+      "visualReview": "Reviewed actual 24/32/48px contact: silhouette and intended tool readable; no reserved motifs, true transparent alpha, no text.",
+      "reviewImage": "raw/zone/contact-24-32-48.png"
+    }
+  },
+  {
+    "id": "zone_paint_forbidden",
+    "file": "assets/zone/zone_paint_forbidden.png",
+    "width": 96,
+    "height": 96,
+    "sceneDescription": "One broad muted sage paint patch with softly bristled square silhouette, crossed by a single thick diagonal pale terracotta prohibition slash from lower left to upper right, dark brown outlined slash. Flat frontal graphic. Only paint patch and slash, not two land parcels, no enclosing circle.",
+    "characters": "none",
+    "historyNotes": "Wave18 zone tool candidate; new motif distinct from UI P0 layer brush. Not installed. UI P0 layer-mode sheet inspected for style/exclusion context but not uploaded as generation input.",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "prompt": "Use case: stylized-concept. Generate a SINGLE standalone raster game HUD icon, square canvas, genuine transparent RGBA background, no background color or checkerboard baked into image. South England medieval city builder painted UI P0 style: muted warm natural palette, delicately hand-painted shading, thin clean dark warm-brown outer contour, simple bold readable silhouette at 24px, subdued texture only, no glossy 3D, no drop shadow, no panel or frame. Deliver one centered icon only with generous transparent padding, intended final 96x96 pixels. No text, letters, numerals, watermark. Do not use hammer, scroll, sealed document or two workers motifs. Subject: One broad muted sage paint patch with softly bristled square silhouette, crossed by a single thick diagonal pale terracotta prohibition slash from lower left to upper right, dark brown outlined slash. Flat frontal graphic. Only paint patch and slash, not two land parcels, no enclosing circle.",
+        "rawFile": "raw/zone/zone_paint_forbidden.png",
+        "referenceImages": [],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Sharp transparent trim threshold 8 and Lanczos3 fit to 80px (small stamp 30px, large stamp 72px), centered on transparent 96x96; original alpha preserved; no repainting.",
+    "qa": {
+      "alpha": true,
+      "transparentPixels": 3959,
+      "opaquePixels": 226,
+      "status": "candidate",
+      "visualReview": "Reviewed actual 24/32/48px contact: silhouette and intended tool readable; no reserved motifs, true transparent alpha, no text.",
+      "reviewImage": "raw/zone/contact-24-32-48.png"
+    }
+  }
+]

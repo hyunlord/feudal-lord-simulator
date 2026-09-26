@@ -1,0 +1,944 @@
+{
+  "method": "Independent blind visual audit; no roster, CSV, generation records or expected prop distribution read. Class inferred from clothing/material/fur/headwear/posture only; props excluded as class cues. Garment brooches excluded as props; pilgrim badge and sheathed knife included. Child chains I097-I100 excluded from class scoring.",
+  "observations": [
+    {
+      "id": "I069_mature",
+      "sha256": "0ffbd1d0085fe1f6a0c4b726e9acfd8ab3cb0a5cf5fdc58334bff4f613b1a22e",
+      "observed_prop": "wooden bowl containing grain or meal",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Flour-stained blue work apron over coarse red wool; plain cap.",
+      "confidence": 0.91,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I069_old",
+      "sha256": "d7a5ce48231eba4619f8d2e6ae9316509232d54649d504d5b4c2d9cbb56e2981",
+      "observed_prop": "wooden bowl containing grain or meal",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Flour-stained blue work apron over coarse red wool; plain cap.",
+      "confidence": 0.91,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I069_young",
+      "sha256": "5696b4e027cb60c87d26d5b2b27ee307702cc42430b5d2f560768e35b4816350",
+      "observed_prop": "wooden bowl containing grain or meal",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Flour-stained blue work apron over coarse red wool; plain cap.",
+      "confidence": 0.91,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I070_mature",
+      "sha256": "caadf65763cbbccdca53f9ddbf094accc512a4febfe94db3ddf05aa86c8b2b84",
+      "observed_prop": "green glazed earthenware jug",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Heavy olive apron, plain red sleeves and practical head covering.",
+      "confidence": 0.67,
+      "notes": "Artisan versus labour is ambiguous from ordinary apron clothing alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I070_old",
+      "sha256": "8121e6bdefae77a69ab7be5c48491124318da0aee9f496079d7f173e377070c7",
+      "observed_prop": "green glazed earthenware jug",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Heavy olive apron, plain red sleeves and practical head covering.",
+      "confidence": 0.67,
+      "notes": "Artisan versus labour is ambiguous from ordinary apron clothing alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I070_young",
+      "sha256": "c3f5f2c1933360db95b1937865d46a62fa8d7845aa1ea35bb00a293e7eb63ec3",
+      "observed_prop": "green glazed earthenware jug",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Heavy olive apron, plain red sleeves and practical head covering.",
+      "confidence": 0.67,
+      "notes": "Artisan versus labour is ambiguous from ordinary apron clothing alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I071_mature",
+      "sha256": "1eddebf5d2a3f3eaca8b2d2a67b879fe786917fa856ea18aea5658aaaceaf1e5",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Soiled pale apron over coarse ochre dress, plain linen head covering.",
+      "confidence": 0.65,
+      "notes": "Labour versus poor servant is ambiguous; apron supports manual work. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I071_old",
+      "sha256": "fa67c0ec90520502d6f135004be3a7e88d331a1d3fc8f5d4a490563613b98739",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Soiled pale apron over coarse ochre dress, plain linen head covering.",
+      "confidence": 0.65,
+      "notes": "Labour versus poor servant is ambiguous; apron supports manual work. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I071_young",
+      "sha256": "241bd4eb9c4d4d9e0c4b4eb12fcfae8724e82c4e534201f852b9fb845d303aca",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Soiled pale apron over coarse ochre dress, plain linen head covering.",
+      "confidence": 0.65,
+      "notes": "Labour versus poor servant is ambiguous; apron supports manual work. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I072_mature",
+      "sha256": "92cc9aa5cb36d35bfbbc259f96e4d8996127c64896ca7daf5c3f749d41887982",
+      "observed_prop": "straight wooden handle or narrow tool shaft at lower right",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Coarse brown tunic and unadorned green wool hood.",
+      "confidence": 0.72,
+      "notes": "Only shaft is visible; exact tool cannot be identified. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I072_old",
+      "sha256": "7ae861ccc82f9f64ff17b7d32fb204e202bf8a630fc94dfa3278fdb6f20f0c27",
+      "observed_prop": "straight wooden handle or narrow tool shaft at lower right",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Coarse brown tunic and unadorned green wool hood.",
+      "confidence": 0.72,
+      "notes": "Only shaft is visible; exact tool cannot be identified. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I072_young",
+      "sha256": "8e6c8cb0bb0373ac91a989bf12c973effae22f44d25257b69e9241a90f895987",
+      "observed_prop": "straight wooden handle or narrow tool shaft at lower right",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Coarse brown tunic and unadorned green wool hood.",
+      "confidence": 0.72,
+      "notes": "Only shaft is visible; exact tool cannot be identified. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I073_mature",
+      "sha256": "8decd65c50cb7bf8930da239a15e9a1a31bc893ba144a0b77bd3d5c991705744",
+      "observed_prop": "bunch of metal keys",
+      "prop_group": "other",
+      "predicted_class": "gentry",
+      "clothing_reason": "Saturated red cloak, broad pale fur collar, blue undergarment and decorative fastening.",
+      "confidence": 0.92,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I073_old",
+      "sha256": "c62d0956471b76b9c76a8ccbfbf6bc67325e82905402df91edda94ccdd6040bd",
+      "observed_prop": "bunch of metal keys",
+      "prop_group": "other",
+      "predicted_class": "gentry",
+      "clothing_reason": "Saturated red cloak, broad pale fur collar, blue undergarment and decorative fastening.",
+      "confidence": 0.92,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I073_young",
+      "sha256": "6b7c05fa918200227d1b130fcee536e1bcbf4474d82bba159d474c403c7a414b",
+      "observed_prop": "bunch of metal keys",
+      "prop_group": "other",
+      "predicted_class": "gentry",
+      "clothing_reason": "Saturated red cloak, broad pale fur collar, blue undergarment and decorative fastening.",
+      "confidence": 0.92,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I074_mature",
+      "sha256": "050349041254a6150993d9fc41fd7dee8189daebee5580bdef850602d8f4d62d",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Rough brown wool tunic, plain blue shoulder hood, leather cross-body strap and simple cap.",
+      "confidence": 0.65,
+      "notes": "Cross-body strap alone is clothing/equipment support, no discrete carried object visible. Labour versus artisan uncertain. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I074_old",
+      "sha256": "2b932d6b6d5302a1fe9cb84389365c09639bd3041abf5eb49141275e09558380",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Rough brown wool tunic, plain blue shoulder hood, leather cross-body strap and simple cap.",
+      "confidence": 0.65,
+      "notes": "Cross-body strap alone is clothing/equipment support, no discrete carried object visible. Labour versus artisan uncertain. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I074_young",
+      "sha256": "3d5e4fda9d54339d9ea28d8f0119c512414caee779dfd1069a2062746d85f272",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Rough brown wool tunic, plain blue shoulder hood, leather cross-body strap and simple cap.",
+      "confidence": 0.65,
+      "notes": "Cross-body strap alone is clothing/equipment support, no discrete carried object visible. Labour versus artisan uncertain. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I075_mature",
+      "sha256": "e3057e541263a48ea7b61a93228358dbff959af6d7bae6df285c46275124dbe0",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Plain faded brown tunic, dark coarse shoulder cape and simple cloth cap; no costly trim.",
+      "confidence": 0.66,
+      "notes": "Low-income clothing overlaps labour. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I075_old",
+      "sha256": "a441fe0e610f7c1ad27d02b195235af45fa8fa671bee6dc9c496072ee0d5b1c7",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Plain faded brown tunic, dark coarse shoulder cape and simple cloth cap; no costly trim.",
+      "confidence": 0.66,
+      "notes": "Low-income clothing overlaps labour. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I075_young",
+      "sha256": "ec4c55e86f1e6469c0c54fa50e6bb7f1ac14d8cb6a315a5ab0fb0d3fad4ae08a",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Plain faded brown tunic, dark coarse shoulder cape and simple cloth cap; no costly trim.",
+      "confidence": 0.66,
+      "notes": "Low-income clothing overlaps labour. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I076_mature",
+      "sha256": "edd37041461b2a0ea5854220df58393b82e980165e3ab9891f3bf2bb8d47cf54",
+      "observed_prop": "closed brown book",
+      "prop_group": "book_scroll",
+      "predicted_class": "merchant",
+      "clothing_reason": "Well-kept deep blue cape, burgundy doublet and cap, modest fur edging and circular fastening.",
+      "confidence": 0.77,
+      "notes": "Merchant versus lesser gentry is uncertain from dress alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I076_old",
+      "sha256": "e1be8de388c399a51e17854f353a7d789eef4f73da12126076fdb8e11bb402eb",
+      "observed_prop": "closed brown book",
+      "prop_group": "book_scroll",
+      "predicted_class": "merchant",
+      "clothing_reason": "Well-kept deep blue cape, burgundy doublet and cap, modest fur edging and circular fastening.",
+      "confidence": 0.77,
+      "notes": "Merchant versus lesser gentry is uncertain from dress alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I076_young",
+      "sha256": "2e3b9e53b5a5ad4abfb477ae0cea7ff35a37919db7fd32fdc4f7e12de0fc41d6",
+      "observed_prop": "closed brown book",
+      "prop_group": "book_scroll",
+      "predicted_class": "merchant",
+      "clothing_reason": "Well-kept deep blue cape, burgundy doublet and cap, modest fur edging and circular fastening.",
+      "confidence": 0.77,
+      "notes": "Merchant versus lesser gentry is uncertain from dress alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I077_mature",
+      "sha256": "07d4394228d159804d330c8afe29d891a07f3b7052c84ee08257812c038e33fc",
+      "observed_prop": "small ochre drawstring purse",
+      "prop_group": "other",
+      "predicted_class": "merchant",
+      "clothing_reason": "Well-kept blue gown, burgundy cape with narrow fur trim, black veil and circular fastening.",
+      "confidence": 0.79,
+      "notes": "Prosperous dress also overlaps lesser gentry. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I077_old",
+      "sha256": "d315822049ad01f43326125008d056fa31cfb370e2f3cee253e218b163f71a53",
+      "observed_prop": "small ochre drawstring purse",
+      "prop_group": "other",
+      "predicted_class": "merchant",
+      "clothing_reason": "Well-kept blue gown, burgundy cape with narrow fur trim, black veil and circular fastening.",
+      "confidence": 0.79,
+      "notes": "Prosperous dress also overlaps lesser gentry. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I077_young",
+      "sha256": "13cc18978741fb21ac8249bbee29945250b235d89adebf10b72096a86c23e78b",
+      "observed_prop": "small ochre drawstring purse",
+      "prop_group": "other",
+      "predicted_class": "merchant",
+      "clothing_reason": "Well-kept blue gown, burgundy cape with narrow fur trim, black veil and circular fastening.",
+      "confidence": 0.79,
+      "notes": "Prosperous dress also overlaps lesser gentry. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I078_mature",
+      "sha256": "11f34bb6d531bcaf00ea2c4594d9442f87277441531b5e4b0770d5f65a09cfb3",
+      "observed_prop": "tuft or sample of raw pale wool",
+      "prop_group": "other",
+      "predicted_class": "merchant",
+      "clothing_reason": "Rich red hooded cape, dark green garment and narrow fur edging.",
+      "confidence": 0.74,
+      "notes": "Merchant versus lesser gentry ambiguous; carried wool ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I078_old",
+      "sha256": "50ea1067c652928de42ae8442a7ee949aefe66f12efbdb2065acaffe8ffe484b",
+      "observed_prop": "tuft or sample of raw pale wool",
+      "prop_group": "other",
+      "predicted_class": "merchant",
+      "clothing_reason": "Rich red hooded cape, dark green garment and narrow fur edging.",
+      "confidence": 0.74,
+      "notes": "Merchant versus lesser gentry ambiguous; carried wool ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I078_young",
+      "sha256": "ea99b45fbae9714e0724334555375675f308520e0bd2c09b43511b3a6e0860b0",
+      "observed_prop": "tuft or sample of raw pale wool",
+      "prop_group": "other",
+      "predicted_class": "merchant",
+      "clothing_reason": "Rich red hooded cape, dark green garment and narrow fur edging.",
+      "confidence": 0.74,
+      "notes": "Merchant versus lesser gentry ambiguous; carried wool ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I079_mature",
+      "sha256": "a437e4c4987212a93a254742ec02597353106d16a6933cce0c87e73bdddb49f9",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Ragged brown hood and dark coarse tunic with conspicuous ochre shoulder patch.",
+      "confidence": 0.94,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I079_old",
+      "sha256": "2860025408b1f31f1d18cc2ffe9e398abd0fda5cf9ff45d82a4f194cca37fb7f",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Ragged brown hood and dark coarse tunic with conspicuous ochre shoulder patch.",
+      "confidence": 0.94,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I079_young",
+      "sha256": "45e432d5240e6b163b8ba0fc49098874918d6e550cef485c2222ef3c64501c0a",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Ragged brown hood and dark coarse tunic with conspicuous ochre shoulder patch.",
+      "confidence": 0.94,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I080_mature",
+      "sha256": "4b0f6d1cf3b4cfca8e6d53d6e9a3808c157ca1817a5866968fd1d1a50f4e463c",
+      "observed_prop": "crooked wooden staff",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded undyed garments, frayed hood and visible coarse repairs.",
+      "confidence": 0.91,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I080_old",
+      "sha256": "c3c8fa666172a89f0f016337ed7c16fadf5403517ca321c0c65627e378b7a3d1",
+      "observed_prop": "crooked wooden staff",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded undyed garments, frayed hood and visible coarse repairs.",
+      "confidence": 0.91,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I080_young",
+      "sha256": "d664cc4e8a31eede1cc5f56bd57d0a60d9cbf739535235258645d00d7d80f524",
+      "observed_prop": "crooked wooden staff",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded undyed garments, frayed hood and visible coarse repairs.",
+      "confidence": 0.91,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I081_mature",
+      "sha256": "d7d5f711b2ac25fba066ded6e7f09d07c7b2241620ca3edf67d10fb7ece0c4bc",
+      "observed_prop": "round coil or ball of coarse cord with hanging loose end",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Scuffed brown work apron over blue wool tunic and close-fitting practical cap.",
+      "confidence": 0.76,
+      "notes": "Cord object readable as a rough bundle at 96px; exact craft uncertain. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I081_old",
+      "sha256": "04b0cb7be3c0f2d00e5d4a6f2c95cbcbba5e70f18255e86e4c9f8752e35bb41a",
+      "observed_prop": "round coil or ball of coarse cord with hanging loose end",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Scuffed brown work apron over blue wool tunic and close-fitting practical cap.",
+      "confidence": 0.76,
+      "notes": "Cord object readable as a rough bundle at 96px; exact craft uncertain. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I081_young",
+      "sha256": "b903ed69373b639792bc1333ed0abe549594f3c5fd3374ad618404aea1a82921",
+      "observed_prop": "round coil or ball of coarse cord with hanging loose end",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Scuffed brown work apron over blue wool tunic and close-fitting practical cap.",
+      "confidence": 0.76,
+      "notes": "Cord object readable as a rough bundle at 96px; exact craft uncertain. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I082_mature",
+      "sha256": "78c735ded645ab6fc2164b74ea43cf64e71a5c5c9d8dbd35996deeffe9b85ea1",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "artisan",
+      "clothing_reason": "Large scuffed leather work apron, ochre tunic and practical brown cap.",
+      "confidence": 0.96,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I082_old",
+      "sha256": "c8ff145605481b2a8aa3ed13e2c513837e9660def219ae89f842baa54969cacb",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "artisan",
+      "clothing_reason": "Large scuffed leather work apron, ochre tunic and practical brown cap.",
+      "confidence": 0.96,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I082_young",
+      "sha256": "cfaa88e8e0b1c0ff65493548b0c5cdf18b79b213b3a520d6dec8b4e7fcd83f7e",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "artisan",
+      "clothing_reason": "Large scuffed leather work apron, ochre tunic and practical brown cap.",
+      "confidence": 0.96,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I083_mature",
+      "sha256": "eedde00eb8bd1e70ecc7e3b6c82af32b46b9744b808f043397c45e6a8a72582f",
+      "observed_prop": "small brown shoe or shoemaker last",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Worn leather apron over red-and-blue work clothes, simple cap.",
+      "confidence": 0.95,
+      "notes": "Small held object could be shoe or wooden last; no book visible. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I083_old",
+      "sha256": "39f7c23a6a7f9f707f4cbdf3824bb1e6cedd3916cc4c894c8ffe9090c8c449e1",
+      "observed_prop": "small brown shoe or shoemaker last",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Worn leather apron over red-and-blue work clothes, simple cap.",
+      "confidence": 0.95,
+      "notes": "Small held object could be shoe or wooden last; no book visible. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I083_young",
+      "sha256": "6a6fa358dea2fe41c696932d66faf02119765669b4dc935393863a63630a1650",
+      "observed_prop": "small brown shoe or shoemaker last",
+      "prop_group": "other",
+      "predicted_class": "artisan",
+      "clothing_reason": "Worn leather apron over red-and-blue work clothes, simple cap.",
+      "confidence": 0.95,
+      "notes": "Small held object could be shoe or wooden last; no book visible. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I084_mature",
+      "sha256": "7ddcc0ed45e45550491d63c7a0215afdbf80f8254074a0410ff89d9a022c1f5c",
+      "observed_prop": "drop spindle with pale wound fiber and thread",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Plain coarse red dress, undyed neckline and practical rural headwear where present.",
+      "confidence": 0.61,
+      "notes": "Labour versus artisan cannot be securely separated from dress; prop ignored. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I084_old",
+      "sha256": "591d1d120163b29d2d6d2dcda128cd5d54c67937ea33cc06e9cad1d9766cf959",
+      "observed_prop": "drop spindle with pale wound fiber and thread",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Plain coarse red dress, undyed neckline and practical rural headwear where present.",
+      "confidence": 0.61,
+      "notes": "Labour versus artisan cannot be securely separated from dress; prop ignored. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I084_young",
+      "sha256": "22c50797415c199fdc653335205ba9931c7772898185fb4ffc88485976ee2796",
+      "observed_prop": "drop spindle with pale wound fiber and thread",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Plain coarse red dress, undyed neckline and practical rural headwear where present.",
+      "confidence": 0.61,
+      "notes": "Labour versus artisan cannot be securely separated from dress; prop ignored. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I085_mature",
+      "sha256": "9ae8d5734cf1c5da17e123bd06bcdcbc53a69db7b24568d553328e4fc051961f",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "artisan",
+      "clothing_reason": "Checked work apron over plain dark teal dress, practical linen cap or wool hood.",
+      "confidence": 0.64,
+      "notes": "Artisan versus labour is ambiguous from apron alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I085_old",
+      "sha256": "a83c9987bb7d6c2a7413169c239e5de5af563f1fa12c2016eaa0e6fee68f35a8",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "artisan",
+      "clothing_reason": "Checked work apron over plain dark teal dress, practical linen cap or wool hood.",
+      "confidence": 0.64,
+      "notes": "Artisan versus labour is ambiguous from apron alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I085_young",
+      "sha256": "879882104901775756d474bad1b05c66ee3063a5c695d07bac26ca76045ccb26",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "artisan",
+      "clothing_reason": "Checked work apron over plain dark teal dress, practical linen cap or wool hood.",
+      "confidence": 0.64,
+      "notes": "Artisan versus labour is ambiguous from apron alone. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I086_mature",
+      "sha256": "ef040a4c85dc19caadb72333e3c6e93f8eeb568c654a0cc0033cf1387d25aeae",
+      "observed_prop": "folded pale blue cloth draped over arm",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded brown overdress, coarse undyed sleeves and patched or abraded shoulders.",
+      "confidence": 0.84,
+      "notes": "Loose blue cloth treated as carried textile, not part of sleeve. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I086_old",
+      "sha256": "e60acc810315d4ddc0b70746d3eb7ee411aa8bf133f9f249847666e0241876aa",
+      "observed_prop": "folded pale blue cloth draped over arm",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded brown overdress, coarse undyed sleeves and patched or abraded shoulders.",
+      "confidence": 0.84,
+      "notes": "Loose blue cloth treated as carried textile, not part of sleeve. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I086_young",
+      "sha256": "42394d3992a9283aef25614a6393cf966bdc6a7c9b541ee532478529b8710d05",
+      "observed_prop": "folded pale blue cloth draped over arm",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded brown overdress, coarse undyed sleeves and patched or abraded shoulders.",
+      "confidence": 0.84,
+      "notes": "Loose blue cloth treated as carried textile, not part of sleeve. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I087_mature",
+      "sha256": "01db4688d21a9e1cca7f09a975d014fa4cd6cab4306a4c02cf8f744df8bf2d87",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Plain green dress, coarse russet shoulder wrap and undyed linen head covering.",
+      "confidence": 0.62,
+      "notes": "Labour versus poor servant is ambiguous; no conspicuous luxury or severe rags. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I087_old",
+      "sha256": "2528f4551afe67b1230941200d61863fbe70ca390e61de6238d1801e8c049ca7",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Plain green dress, coarse russet shoulder wrap and undyed linen head covering.",
+      "confidence": 0.62,
+      "notes": "Labour versus poor servant is ambiguous; no conspicuous luxury or severe rags. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I087_young",
+      "sha256": "6081ad74b9d50f5a98eb49b300fde8b29e56402feae17821367d522dc8366302",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "labour",
+      "clothing_reason": "Plain green dress, coarse russet shoulder wrap and undyed linen head covering.",
+      "confidence": 0.62,
+      "notes": "Labour versus poor servant is ambiguous; no conspicuous luxury or severe rags. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I088_mature",
+      "sha256": "f2ce64a3f8568a06f4c50ed7cc9f428ce60847591a05922345183f8d5ffa959f",
+      "observed_prop": "pair of tan gloves",
+      "prop_group": "other",
+      "predicted_class": "gentry",
+      "clothing_reason": "Red cloak with broad pale fur lining, ornate gold neckline and jeweled fastening.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I088_old",
+      "sha256": "77bcbc3cf2b41b841439f2a88178e30edfab571e0e09d1fb4a59b835ea18c1ac",
+      "observed_prop": "pair of tan gloves",
+      "prop_group": "other",
+      "predicted_class": "gentry",
+      "clothing_reason": "Red cloak with broad pale fur lining, ornate gold neckline and jeweled fastening.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I088_young",
+      "sha256": "8e66b2d86b61ba63346646b81ee6c866afff722120ff5cf9cf4167db852abe59",
+      "observed_prop": "pair of tan gloves",
+      "prop_group": "other",
+      "predicted_class": "gentry",
+      "clothing_reason": "Red cloak with broad pale fur lining, ornate gold neckline and jeweled fastening.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I089_mature",
+      "sha256": "fbdb9f01d6b71c610e1dbe9168529fda59a3a3070995e3e6bffa25b0534119f4",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded gray-brown dress and coarse worn mantle with visible shoulder repairs.",
+      "confidence": 0.93,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I089_old",
+      "sha256": "f90ca095a727e6fdea7e4806353b9fafb3a480618c78629e1147660a4f1dd64d",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded gray-brown dress and coarse worn mantle with visible shoulder repairs.",
+      "confidence": 0.93,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I089_young",
+      "sha256": "3c57b0e68e2632688bee569321a62161c9737e8b4ee48137f4e5a47b6fa210d1",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Faded gray-brown dress and coarse worn mantle with visible shoulder repairs.",
+      "confidence": 0.93,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I090_mature",
+      "sha256": "02f65f62e6e8f9b00cc520b2942e4d56d340385115c4bf9abee1969f0b6fbba3",
+      "observed_prop": "closed brown book held in both hands",
+      "prop_group": "book_scroll",
+      "predicted_class": "clerical",
+      "clothing_reason": "Plain dark ample robe with broad cowl-like shoulder layer and narrow white linen neck.",
+      "confidence": 0.72,
+      "notes": "Unadorned scholarly lay dress remains possible; book ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I090_old",
+      "sha256": "409ab1c48bed3ced3f4325f6f5fccc2dfce1a371c1a4be4be750d90c14608f6e",
+      "observed_prop": "closed brown book held in both hands",
+      "prop_group": "book_scroll",
+      "predicted_class": "clerical",
+      "clothing_reason": "Plain dark ample robe with broad cowl-like shoulder layer and narrow white linen neck.",
+      "confidence": 0.72,
+      "notes": "Unadorned scholarly lay dress remains possible; book ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I090_young",
+      "sha256": "c79fb710298c4b6edba7190903be6c4a97782311b5e3814e9e5e4d19557727b9",
+      "observed_prop": "closed brown book held in both hands",
+      "prop_group": "book_scroll",
+      "predicted_class": "clerical",
+      "clothing_reason": "Plain dark ample robe with broad cowl-like shoulder layer and narrow white linen neck.",
+      "confidence": 0.72,
+      "notes": "Unadorned scholarly lay dress remains possible; book ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I091_mature",
+      "sha256": "ae86b77abe5f78b4be4153d82aaa8df2648185b1e8b4792a4d6b302db7da9e29",
+      "observed_prop": "dark prayer bead strand",
+      "prop_group": "other",
+      "predicted_class": "clerical",
+      "clothing_reason": "White habit under black mantle and visibly tonsured head.",
+      "confidence": 0.99,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I091_old",
+      "sha256": "62511ab7fb39093bcadb5c688b1b8e93586ee33ba43c23019ec606cc5bd302ba",
+      "observed_prop": "dark prayer bead strand",
+      "prop_group": "other",
+      "predicted_class": "clerical",
+      "clothing_reason": "White habit under black mantle and visibly tonsured head.",
+      "confidence": 0.99,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I091_young",
+      "sha256": "3598a4e451d4b44e0e5abadb5cd74d174f9169f2fce0a1e338ea231dac373ee2",
+      "observed_prop": "dark prayer bead strand",
+      "prop_group": "other",
+      "predicted_class": "clerical",
+      "clothing_reason": "White habit under black mantle and visibly tonsured head.",
+      "confidence": 0.99,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I092_mature",
+      "sha256": "c0ac67683ccc74834721ba3d9e4eb9e2b970b416ec98ccd621e2faf1dfd23f17",
+      "observed_prop": "worn scallop-shell pilgrim badge on left chest",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Frayed brown hooded cloak, patched shoulder, coarse dull layers.",
+      "confidence": 0.93,
+      "notes": "Scallop badge counted as prop as instructed, not as garment brooch. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I092_old",
+      "sha256": "4ec0a6b30ca3db0aa0d86a966d4499ac339b4e7a3c625a7b71c9cd5d424f4c8e",
+      "observed_prop": "worn scallop-shell pilgrim badge on left chest",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Frayed brown hooded cloak, patched shoulder, coarse dull layers.",
+      "confidence": 0.93,
+      "notes": "Scallop badge counted as prop as instructed, not as garment brooch. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I092_young",
+      "sha256": "b95d37a1288303318fbea2e9e33f734bbdcf5daff43159fcba3225d4f77a98ce",
+      "observed_prop": "worn scallop-shell pilgrim badge on left chest",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Frayed brown hooded cloak, patched shoulder, coarse dull layers.",
+      "confidence": 0.93,
+      "notes": "Scallop badge counted as prop as instructed, not as garment brooch. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I093_mature",
+      "sha256": "52dc6879875e2f35b8690c4d60c8e1e787c84b3cc7fd83736d3439d36ada6b49",
+      "observed_prop": "short visible section of wooden staff",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Tattered brown shoulder mantle and blue tunic with large repairs and fraying.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I093_old",
+      "sha256": "3b262eaeb2fdea6932e469dbe599f5cb370564be3abe0beff401ad2ef6af6a52",
+      "observed_prop": "short visible section of wooden staff",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Tattered brown shoulder mantle and blue tunic with large repairs and fraying.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I093_young",
+      "sha256": "aa810bdde51f99143a6cb5790a43ac411127eb9e416bdd8a0c26ae59e9dcfbfb",
+      "observed_prop": "short visible section of wooden staff",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Tattered brown shoulder mantle and blue tunic with large repairs and fraying.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I094_mature",
+      "sha256": "fa8eb758109374179fbea1210e6968115cb3ae11c5bfca67d302e335898c4270",
+      "observed_prop": "slender wooden flute or pipe with finger holes",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Fraying russet mantle over plain purple-brown dress, coarse neckline and shoulder strap.",
+      "confidence": 0.76,
+      "notes": "Poor servant versus labour uncertain; instrument ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I094_old",
+      "sha256": "b31e57113bb6b10dbea4904181683d16a2172fcfd16a0821e8885b4a5560e9ca",
+      "observed_prop": "slender wooden flute or pipe with finger holes",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Fraying russet mantle over plain purple-brown dress, coarse neckline and shoulder strap.",
+      "confidence": 0.76,
+      "notes": "Poor servant versus labour uncertain; instrument ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I094_young",
+      "sha256": "9b12d92d076d64eab74a4d947abec510c5a1b2f72619a9af6ee8bf9452ac4bcd",
+      "observed_prop": "slender wooden flute or pipe with finger holes",
+      "prop_group": "other",
+      "predicted_class": "poor_servant",
+      "clothing_reason": "Fraying russet mantle over plain purple-brown dress, coarse neckline and shoulder strap.",
+      "confidence": 0.76,
+      "notes": "Poor servant versus labour uncertain; instrument ignored for class. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I095_mature",
+      "sha256": "5a717487751320f485c6e7390acbbfcf7bcb97d2c63b1f6d089acfec2aa7c917",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "gentry",
+      "clothing_reason": "Vivid blue gown with broad rich brown fur collar, gold embroidered neckline and decorative hair nets.",
+      "confidence": 0.97,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I095_old",
+      "sha256": "a3436f5398240dec57f0c47bb03c4767db4d418543162a910c005c9fa47760b9",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "gentry",
+      "clothing_reason": "Vivid blue gown with broad rich brown fur collar, gold embroidered neckline and decorative hair nets.",
+      "confidence": 0.97,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I095_young",
+      "sha256": "f2fe0a696ce33732c771628d65b09749fdafc13bb5e6db95f3b52eb6628ddc67",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": "gentry",
+      "clothing_reason": "Vivid blue gown with broad rich brown fur collar, gold embroidered neckline and decorative hair nets.",
+      "confidence": 0.97,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I096_mature",
+      "sha256": "764680a497960138344545e61d90ef34c9ae6c399172b5d66800c048a26032ef",
+      "observed_prop": "sheathed knife at lower right waist",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Coarse brown sleeveless work garment over green wool shirt, plain belt and cap, shoulder patch.",
+      "confidence": 0.7,
+      "notes": "Labour versus artisan overlaps; knife counted as prop. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I096_old",
+      "sha256": "25326ad80b219a75fc7ae4225fe838eea737203cb16de0b0382437d874be739a",
+      "observed_prop": "sheathed knife at lower right waist",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Coarse brown sleeveless work garment over green wool shirt, plain belt and cap, shoulder patch.",
+      "confidence": 0.7,
+      "notes": "Labour versus artisan overlaps; knife counted as prop. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I096_young",
+      "sha256": "47bca2e35a6bc4e7773c9dfa0892af542929b765d6fd46ab804e95f5b9be7db3",
+      "observed_prop": "sheathed knife at lower right waist",
+      "prop_group": "other",
+      "predicted_class": "labour",
+      "clothing_reason": "Coarse brown sleeveless work garment over green wool shirt, plain belt and cap, shoulder patch.",
+      "confidence": 0.7,
+      "notes": "Labour versus artisan overlaps; knife counted as prop. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I097_child",
+      "sha256": "b4db6da339e3e8893c6f72fe7c3b481a15fdb6bee2cc47581a0ba644ccfe6c2b",
+      "observed_prop": "carved wooden toy horse",
+      "prop_group": "other",
+      "predicted_class": null,
+      "clothing_reason": "Rich red cloak and broad pale fur collar; child chain excluded from class score.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I097_young",
+      "sha256": "1c7bd9e4f8ef250794f9292b3906b63e1e594d54239f374178cefe0c23201734",
+      "observed_prop": "carved wooden toy horse",
+      "prop_group": "other",
+      "predicted_class": null,
+      "clothing_reason": "Rich red cloak and broad pale fur collar; child chain excluded from class score.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I098_child",
+      "sha256": "65aa07f1375b281e691f7faaf48a5aa31d27a9d30746be640eea93cff2385543",
+      "observed_prop": "smooth gray stone held in palm",
+      "prop_group": "other",
+      "predicted_class": null,
+      "clothing_reason": "Coarse blue tunic and frayed brown hood; child chain excluded from class score.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I098_young",
+      "sha256": "adadd2433ceff3eac3a65bd6b39b219dccaa47a5d37fea3bbe9db6bac91e211e",
+      "observed_prop": "smooth gray stone held in palm",
+      "prop_group": "other",
+      "predicted_class": null,
+      "clothing_reason": "Coarse blue tunic and frayed brown hood; child chain excluded from class score.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I099_child",
+      "sha256": "3a67725f94c6fcea0ff6369c415fdf86b012b2c1f7ac0082f9e8f5ce987ee05e",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": null,
+      "clothing_reason": "Blue cloak with brown fur edging and decorated burgundy neckline; child chain excluded from class score.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I099_young",
+      "sha256": "7c9bd47bdec528aba2c651183696d702a5f6c66ef314ff7817ffcca4be027b7a",
+      "observed_prop": "none",
+      "prop_group": "none",
+      "predicted_class": null,
+      "clothing_reason": "Blue cloak with brown fur edging and decorated burgundy neckline; child chain excluded from class score.",
+      "confidence": 0.98,
+      "notes": "Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I100_child",
+      "sha256": "81867b60eb181eb148174cf40be1c756af3ac47847e0858c6b9aaf3d2838eff5",
+      "observed_prop": "small wooden spool with long blue ribbon or fabric strip",
+      "prop_group": "other",
+      "predicted_class": null,
+      "clothing_reason": "Plain red sleeves, olive bodice, coarse pale apron and practical headwear; child chain excluded from class score.",
+      "confidence": 0.88,
+      "notes": "Object reads as spool/ribbon at 256px; at 96px only blue strip and hand are clear. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    },
+    {
+      "id": "I100_young",
+      "sha256": "e349b12e52a279effd1cfc112634e50e82edd5939c86085d0c177084928472be",
+      "observed_prop": "small wooden spool with long blue ribbon or fabric strip",
+      "prop_group": "other",
+      "predicted_class": null,
+      "clothing_reason": "Plain red sleeves, olive bodice, coarse pale apron and practical headwear; child chain excluded from class score.",
+      "confidence": 0.88,
+      "notes": "Object reads as spool/ribbon at 256px; at 96px only blue strip and hand are clear. Inspected at 256px and 96px. No severe anatomy defect or extraneous book observed."
+    }
+  ],
+  "inspected_count": 92,
+  "expected_count": 92,
+  "complete": true,
+  "hash_recheck_utc": "2026-09-26T04:38:03.790364+00:00",
+  "final_hash_mismatches": [],
+  "inspection_evidence": [
+    "/tmp/pool2-independent/page0.png",
+    "/tmp/pool2-independent/page1.png",
+    "/tmp/pool2-independent/page2.png",
+    "/tmp/pool2-independent/page3.png",
+    "/tmp/pool2-independent/page4.png",
+    "/tmp/pool2-independent/page5.png",
+    "/tmp/pool2-independent/page6.png",
+    "/tmp/pool2-independent/page7.png",
+    "/tmp/pool2-independent/updates.png",
+    "/tmp/pool2-independent/updates2.png",
+    "/tmp/pool2-independent/updates3.png"
+  ],
+  "severe_visual_findings": []
+}

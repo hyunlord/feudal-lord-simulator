@@ -1,0 +1,134 @@
+{
+  "generation": {
+    "id": "house_l3_1350_b-v2",
+    "references": [
+      "/tmp/astra-wave20-rework-20260927/era1350/house_l3_1350_a-v2.png"
+    ],
+    "prompt": "Precise-object-edit of attached APPROVED1350 L3A into variant B. KEEP EXACT existing alpha outline, roof geometry and height, footprint, physical upper-floor projection and all window positions unchanged. Change ONLY facade carpentry arrangement: thicker paired support brackets at ends, a different rhythmic spacing of joist ends, short diagonal oak braces within lower cream infill panels, slightly cooler weathered-brown timber. Preserve the large dark horizontal unglazed window strip fully. No new or removed storeys, no chimney, no glass, no smoke. Retain same transparent background, painterly sprite lighting and scale. This is a variant of the exact same projecting house, not a new building.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-e7cd-7ab1-a2a3-a1f550053f8c/exec-45732816-4453-4556-8697-3881aac15c87.png",
+    "raw": "/tmp/astra-wave20-rework-20260927/era1350/house_l3_1350_b-v2.png"
+  },
+  "registration": {
+    "id": "house_l3_1350_b-v2",
+    "level": 3,
+    "era": 1350,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l3_1350_b-v2.png",
+    "file": "assets/houses/house_l3_1350_b-v2.png",
+    "canvas": [
+      142,
+      142
+    ],
+    "pivot": [
+      74.39712918660287,
+      138.03668261562999
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4983578424454543,
+    "worldScale": 0.4983578424454543,
+    "sourceGround": {
+      "left": [
+        256,
+        963
+      ],
+      "front": [
+        759,
+        1192
+      ],
+      "right": [
+        1030,
+        1044
+      ]
+    },
+    "targetGround": {
+      "left": [
+        28,
+        109
+      ],
+      "front": [
+        88,
+        137
+      ],
+      "right": [
+        121,
+        120
+      ]
+    },
+    "matrix": [
+      [
+        0.12041493593547395,
+        -0.002483461901936221,
+        -0.4346497879167499
+      ],
+      [
+        0.0018387874259173792,
+        0.11823183373259195,
+        -5.3279854655208965
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        28,
+        109
+      ],
+      [
+        88,
+        137
+      ],
+      [
+        121,
+        120
+      ]
+    ],
+    "jettyOverhangNativePx": 13.245642952902134,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 105,
+      "scale": 0.9382559511873549,
+      "originalTop": 0.5508889914507451,
+      "targetTop": 7
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 105,
+      "yScale": 0.9382559511873549,
+      "targetTop": 7
+    },
+    "lowerEdgeWarp": {
+      "joinY": 137,
+      "yScale": 1,
+      "originalBottom": 139.75610792436797,
+      "targetBottom": 139.75610792436797,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      11.260170106151513,
+      135.8113667831476
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  "source_in_archive": "provenance/generated/house_l3_1350_b-v2-raw.png",
+  "source_sha256": "ba26143e514c5fa3c413960abed130358bc220d3f62c2a819d37cf3d8547bb25"
+}

@@ -1,0 +1,283 @@
+{
+  "status": "PASS_WITH_LIMITATIONS",
+  "reviewer": "pool2_art_a",
+  "scope": "I069–I076, 24 final portraits",
+  "method": "Viewed all 24 individual 256px PNGs and 96px three-stage board; visual qualitative assessment, not exact-age biometrics.",
+  "counts": {
+    "portraits": 24,
+    "book_scroll": 3,
+    "none": 9,
+    "other": 12
+  },
+  "revisions": [
+    "I076_young r2 enlarged closed book; edited young used for both age references.",
+    "I071_mature r2 long white veil distinct from coif."
+  ],
+  "unresolved_defects": [],
+  "identities": [
+    {
+      "identity_id": "I069",
+      "same_person_chain": "pass",
+      "age_progression": "pass_with_limitations",
+      "observations": "Wooden grain cup and grain visible, no papers. Long nose, ear, chin and heavier shoulders retained.",
+      "limitations": "Young-to-mature distinction subtle at 96px; old greying and creases visible.",
+      "stages": [
+        {
+          "id": "I069_young",
+          "sha256": "5696b4e027cb60c87d26d5b2b27ee307702cc42430b5d2f560768e35b4816350",
+          "actual_prop": "grain_measure",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I069_mature",
+          "sha256": "0ffbd1d0085fe1f6a0c4b726e9acfd8ab3cb0a5cf5fdc58334bff4f613b1a22e",
+          "actual_prop": "grain_measure",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I069_old",
+          "sha256": "d7a5ce48231eba4619f8d2e6ae9316509232d54649d504d5b4c2d9cbb56e2981",
+          "actual_prop": "grain_measure",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I070",
+      "same_person_chain": "pass",
+      "age_progression": "pass_with_limitations",
+      "observations": "Green ceramic jug visible all stages; slender build, narrow upturned nose and long jaw consistent. Headscarf / wool hood / coif visually differentiated.",
+      "limitations": "Mature smile restrained rather than broad.",
+      "stages": [
+        {
+          "id": "I070_young",
+          "sha256": "c3f5f2c1933360db95b1937865d46a62fa8d7845aa1ea35bb00a293e7eb63ec3",
+          "actual_prop": "ale_jug",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I070_mature",
+          "sha256": "caadf65763cbbccdca53f9ddbf094accc512a4febfe94db3ddf05aa86c8b2b84",
+          "actual_prop": "ale_jug",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I070_old",
+          "sha256": "8121e6bdefae77a69ab7be5c48491124318da0aee9f496079d7f173e377070c7",
+          "actual_prop": "ale_jug",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I071",
+      "same_person_chain": "pass",
+      "age_progression": "pass_with_limitations",
+      "observations": "No handheld props. Broad cheek/jaw/chin identity retained. Young coif, mature long white veil after r2, old veil+wimple now distinct.",
+      "limitations": "Old stage visibly grey, wrinkled and sagged; exact nominal age not measurable.",
+      "stages": [
+        {
+          "id": "I071_young",
+          "sha256": "241bd4eb9c4d4d9e0c4b4eb12fcfae8724e82c4e534201f852b9fb845d303aca",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I071_mature",
+          "sha256": "1eddebf5d2a3f3eaca8b2d2a67b879fe786917fa856ea18aea5658aaaceaf1e5",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I071_old",
+          "sha256": "fa67c0ec90520502d6f135004be3a7e88d331a1d3fc8f5d4a490563613b98739",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I072",
+      "same_person_chain": "pass",
+      "age_progression": "pass_with_limitations",
+      "observations": "Wooden measuring rod visible across ages, no paper. Narrow cheeks, prominent ear, mustache/chin beard and left direction retained.",
+      "limitations": "Young-to-mature tissue changes restrained at 96px; old grey temples distinguish.",
+      "stages": [
+        {
+          "id": "I072_young",
+          "sha256": "8e6c8cb0bb0373ac91a989bf12c973effae22f44d25257b69e9241a90f895987",
+          "actual_prop": "measuring_rod",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I072_mature",
+          "sha256": "92cc9aa5cb36d35bfbbc259f96e4d8996127c64896ca7daf5c3f749d41887982",
+          "actual_prop": "measuring_rod",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I072_old",
+          "sha256": "7ae861ccc82f9f64ff17b7d32fb204e202bf8a630fc94dfa3278fdb6f20f0c27",
+          "actual_prop": "measuring_rod",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I073",
+      "same_person_chain": "pass",
+      "age_progression": "pass_with_limitations",
+      "observations": "Metal ring with several keys visible. Scarlet mantle and plain grey-white squirrel fur strongly distinguish gentry without book. Same long chin and angular nose across ages.",
+      "limitations": "Old subtle smile retained; mature worry visibly differs.",
+      "stages": [
+        {
+          "id": "I073_young",
+          "sha256": "6b7c05fa918200227d1b130fcee536e1bcbf4474d82bba159d474c403c7a414b",
+          "actual_prop": "key_ring",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I073_mature",
+          "sha256": "8decd65c50cb7bf8930da239a15e9a1a31bc893ba144a0b77bd3d5c991705744",
+          "actual_prop": "key_ring",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I073_old",
+          "sha256": "c62d0956471b76b9c76a8ccbfbf6bc67325e82905402df91edda94ccdd6040bd",
+          "actual_prop": "key_ring",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I074",
+      "same_person_chain": "pass",
+      "age_progression": "pass_with_limitations",
+      "observations": "No handheld object. Stout neck and cheeks, broad face, prominent nose and strap/blue hood retained.",
+      "limitations": "Young-to-mature subtle at 96px; old greying beard and lower eyelid bags clear.",
+      "stages": [
+        {
+          "id": "I074_young",
+          "sha256": "3d5e4fda9d54339d9ea28d8f0119c512414caee779dfd1069a2062746d85f272",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I074_mature",
+          "sha256": "050349041254a6150993d9fc41fd7dee8189daebee5580bdef850602d8f4d62d",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I074_old",
+          "sha256": "2b932d6b6d5302a1fe9cb84389365c09639bd3041abf5eb49141275e09558380",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I075",
+      "same_person_chain": "pass",
+      "age_progression": "pass_with_limitations",
+      "observations": "No handheld object. Large ear, narrow triangular face, flattened broad nose, full mouth and hollow cheeks remain identical.",
+      "limitations": "Mature smile slight; old greying and creases apparent.",
+      "stages": [
+        {
+          "id": "I075_young",
+          "sha256": "ec4c55e86f1e6469c0c54fa50e6bb7f1ac14d8cb6a315a5ab0fb0d3fad4ae08a",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I075_mature",
+          "sha256": "e3057e541263a48ea7b61a93228358dbff959af6d7bae6df285c46275124dbe0",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I075_old",
+          "sha256": "a441fe0e610f7c1ad27d02b195235af45fa8fa671bee6dc9c496072ee0d5b1c7",
+          "actual_prop": "none",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        }
+      ]
+    },
+    {
+      "identity_id": "I076",
+      "same_person_chain": "pass",
+      "age_progression": "pass_with_limitations",
+      "observations": "After young r2, brown closed leather book broad cover and pale page edge visible at lower-right in all stages. Class also reads from blue fine mantle/plum cloth/rabbit fur.",
+      "limitations": "Book is held diagonal-horizontal near bottom, not original tiny nearly hidden spine. Mature tissue change subtle at 96px.",
+      "stages": [
+        {
+          "id": "I076_young",
+          "sha256": "2e3b9e53b5a5ad4abfb477ae0cea7ff35a37919db7fd32fdc4f7e12de0fc41d6",
+          "actual_prop": "book_scroll",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I076_mature",
+          "sha256": "edd37041461b2a0ea5854220df58393b82e980165e3ab9891f3bf2bb8d47cf54",
+          "actual_prop": "book_scroll",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        },
+        {
+          "id": "I076_old",
+          "sha256": "e1be8de388c399a51e17854f353a7d789eef4f73da12126076fdb8e11bb402eb",
+          "actual_prop": "book_scroll",
+          "unrequested_book_scroll": false,
+          "viewed_256": true,
+          "viewed_96": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "hud": [
+    {
+      "viewport": [
+        1280,
+        800
+      ],
+      "syntheticDisplayedValues": true,
+      "rectangles": [
+        [
+          12,
+          12,
+          128,
+          48
+        ],
+        [
+          146,
+          12,
+          104,
+          48
+        ],
+        [
+          256,
+          12,
+          146,
+          48
+        ],
+        [
+          408,
+          12,
+          112,
+          48
+        ],
+        [
+          1114,
+          12,
+          48,
+          48
+        ],
+        [
+          1164,
+          12,
+          48,
+          48
+        ],
+        [
+          1214,
+          12,
+          48,
+          48
+        ],
+        [
+          12,
+          70,
+          194,
+          48
+        ],
+        [
+          12,
+          740,
+          102,
+          48
+        ],
+        [
+          120,
+          740,
+          102,
+          48
+        ],
+        [
+          228,
+          740,
+          102,
+          48
+        ],
+        [
+          1112,
+          740,
+          48,
+          48
+        ],
+        [
+          1164,
+          740,
+          48,
+          48
+        ],
+        [
+          1216,
+          740,
+          48,
+          48
+        ]
+      ],
+      "rectangleCoveragePercent": 5.9906250000000005,
+      "note": "Offline drawn rectangles only; not runtime HUD coverage gate."
+    },
+    {
+      "viewport": [
+        1180,
+        820
+      ],
+      "syntheticDisplayedValues": true,
+      "rectangles": [
+        [
+          12,
+          12,
+          128,
+          48
+        ],
+        [
+          146,
+          12,
+          104,
+          48
+        ],
+        [
+          256,
+          12,
+          146,
+          48
+        ],
+        [
+          408,
+          12,
+          112,
+          48
+        ],
+        [
+          1014,
+          12,
+          48,
+          48
+        ],
+        [
+          1064,
+          12,
+          48,
+          48
+        ],
+        [
+          1114,
+          12,
+          48,
+          48
+        ],
+        [
+          12,
+          70,
+          194,
+          48
+        ],
+        [
+          12,
+          760,
+          102,
+          48
+        ],
+        [
+          120,
+          760,
+          102,
+          48
+        ],
+        [
+          228,
+          760,
+          102,
+          48
+        ],
+        [
+          1012,
+          760,
+          48,
+          48
+        ],
+        [
+          1064,
+          760,
+          48,
+          48
+        ],
+        [
+          1116,
+          760,
+          48,
+          48
+        ]
+      ],
+      "rectangleCoveragePercent": 6.339809838776354,
+      "note": "Offline drawn rectangles only; not runtime HUD coverage gate."
+    }
+  ],
+  "backdrop": {
+    "source": "references/현재_첫화면.jpg",
+    "edit": "raw/proofs/backdrop-ui-removal.png",
+    "replacementRectangles": [],
+    "visiblePixelsOutsideRectanglesPreserved": false,
+    "notes": "Full source-screenshot edit, not a pixel-identical or live-game backdrop; partial patch method rejected for visible seams"
+  },
+  "placement": {
+    "synthetic": true,
+    "screen": [
+      1280,
+      700
+    ],
+    "testCells": [
+      {
+        "center": [
+          610,
+          368
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_ok",
+        "reason": null
+      },
+      {
+        "center": [
+          562,
+          392
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_ok",
+        "reason": null
+      },
+      {
+        "center": [
+          514,
+          416
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_ok",
+        "reason": null
+      },
+      {
+        "center": [
+          658,
+          392
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_blocked_hatch",
+        "reason": "reason_water"
+      },
+      {
+        "center": [
+          610,
+          416
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_ok",
+        "reason": null
+      },
+      {
+        "center": [
+          562,
+          440
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_ok",
+        "reason": null
+      },
+      {
+        "center": [
+          706,
+          416
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_ok",
+        "reason": null
+      },
+      {
+        "center": [
+          658,
+          440
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_blocked_hatch",
+        "reason": "reason_tree"
+      },
+      {
+        "center": [
+          610,
+          464
+        ],
+        "size": [
+          96,
+          48
+        ],
+        "pattern": "pattern_blocked_cross",
+        "reason": "reason_no_road"
+      },
+      {
+        "center": [
+          180,
+          560
+        ],
+        "size": [
+          192,
+          96
+        ],
+        "pattern": "pattern_ok",
+        "reason": null
+      },
+      {
+        "center": [
+          415,
+          560
+        ],
+        "size": [
+          192,
+          96
+        ],
+        "pattern": "pattern_blocked_hatch",
+        "reason": "reason_tree"
+      }
+    ],
+    "ghost": "references/project-house-l0.png",
+    "grayscale": "sharp.grayscale same colour proof, no redesign"
+  },
+  "proofs": 3
+}

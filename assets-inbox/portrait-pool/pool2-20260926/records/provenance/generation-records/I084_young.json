@@ -1,0 +1,14 @@
+{
+  "id": "I084_young",
+  "prompt": "Use case: identity-preserve precise colour correction. Keep this exact woman, facial anatomy, eye spacing, long nose, broad lips, chin, black simple braided hair, medium body, pose facing image LEFT, faded madder wool gown, held wooden drop spindle with yarn, background, light and entire composition. Change ONLY skin color from deep reddish brown to LIGHT warm beige with a reddish undertone, inside the light skin tone palette of the approved portrait pool. Natural light warm complexion with rosy shadows, not washed white. Do not change her facial structure or individual identity. Whole opaque square painted game portrait no text, no extra props.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0dbec-fbbd-7260-8a5f-3ec700caded1/exec-5a210329-c176-44e1-9fb4-3ae30aface1e.png",
+  "references": [
+    "/tmp/astra-portrait-pool2-work/revisions/I084_young-before-r2.png"
+  ],
+  "method": "native_targeted_skin_palette_correction",
+  "revision": 2,
+  "packaged_source": "provenance/raw/I084_young.png",
+  "packaged_references": [
+    "provenance/references/382050241fab-I084_young-before-r2.png"
+  ]
+}

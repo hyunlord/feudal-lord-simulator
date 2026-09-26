@@ -1,0 +1,11 @@
+# Wave19 design contract
+- Scope: candidate raster art only. No game integration, package changes, commits or deployment.
+- Existing approved direction: P0/Wave8/Wave14 C, 80% function 20% period ornament. Warm parchment, thin brown edge, muted rust/gold/oak accents; matte hand-painted grain. No text/numbers in assets.
+- Explicit file list governs heading arithmetic: A9+B6+C9+D5+E24=53 PNG. Proofs3 separate. Single-scale unspecified icons96px; timeline markers96px master reviewed24/32. Map frames160/320 distinct PNG.
+- Frames: record320x160; biography/faction640x800; decision512x240. Nine-slice must preserve corner motifs; fixed-inset borders with calm stretchable center. Record slice in metadata, test native+expanded. Internal portrait circles and column separators are fixed layout at native resolution; do not claim arbitrary resizing preserves layout; deliver precise safe regions.
+- Record identity: seal recess / rust corner / thick oak / gold rule / portrait circular recess / ledger marginal ruling. Center blank, distinguish edges without labels.
+- Timeline identity: decision seal diamond, event burst, era gate, milestone pennant, person bust medallion. 24px opaque silhouette leads.
+- Scene pairs: population arrows, household doorway direction, hungry/fed roofs+bowl, scarce/full bread storage. Different base motifs between families. Outward vs inward arrows/poses must remain apparent at24px. Tool-free civilians distinct from labor icon.
+- Material: southern England medieval visual vocabulary; no modern calendars, printed letters, original known heraldry, chimneys or watermills.
+- QA: all PNG dimensions/RGBA, slice corner invariance, 24px masked-name comparison and proof3. Human visual judgment separated from pixel tests; document uncertain semantics.
+- Proof text is temporary overlay, not baked asset content. No live UI proof claims.

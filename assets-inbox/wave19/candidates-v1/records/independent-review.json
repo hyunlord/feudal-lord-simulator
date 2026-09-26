@@ -1,0 +1,68 @@
+{
+  "reviewer": "w19_cards",
+  "status": "pass_with_context_and_resize_caveats",
+  "scope": "Read-only independent review of other lanes. Cards are author review, separately identified.",
+  "observations": [
+    {
+      "files": [
+        "assets/pages/frame_biography.png",
+        "assets/pages/frame_faction_page.png",
+        "assets/pages/frame_snapshot_map_320.png"
+      ],
+      "result": "pass_at_native_size",
+      "note": "P0 wood/parchment tone coherent; blank portrait and heraldry slots, page columns readable, no text. Snapshot center transparent. Parent reports visible stretched parchment grain at expanded sizes; native-size visual approval does not guarantee arbitrary-size layout or texture fidelity."
+    },
+    {
+      "file": "raw/scenes_people/contact-24-32-48-96.png",
+      "result": "pass_distinct_at_24",
+      "note": "All four pairs distinguish at24: up/down arrows; doorway versus family left/right; empty/full bowl; empty/full bread basket. Household arrows are small, but complementary door position preserves direction."
+    },
+    {
+      "file": "raw/scenes_events/contact-24-32-48-96.png",
+      "result": "pass_distinct_at_24",
+      "note": "Eight silhouettes distinct: drought stalk, empty hinged chest, raised hand, sealed parchment, rich awning stall, bare stall, green seedling in snow, sparse bowl. Empty famine chest differs from round bread-shortage basket. Raised hand palm cloth can suggest bandaging at96; no other hand icon competes, but exact petition interpretation is contextual."
+    },
+    {
+      "file": "records/scenes-build-size-check.png",
+      "result": "pass_scene_categories_at_24_with_badge_caveat",
+      "note": "Timber/stone and house/windmill/palisade/church silhouettes distinguish; blocked frame diagonal and fire clear. Check/downarrow badges become1-3px at24, so exact completed/shortage semantics benefit label/state context even when scene categories distinguish."
+    },
+    {
+      "file": "raw/cards/contact-expanded.png",
+      "reviewType": "author_not_independent",
+      "result": "pass_after_person_v2",
+      "note": "Person foliage shortened to upper-left; top96/bottom32 leaves32px stretch band. Other five assets unchanged.640x240 viewed; no severe streaking in person v2.24 corner comparisons byte-identical."
+    },
+    {
+      "file": "raw/timeline/contact-24-32-48-96.png",
+      "result": "pass_five_markers_at24",
+      "note": "Decision four-lobed seal, event sharp burst, era open gate, milestone side pennant, person round bust medallion distinguish at24 by silhouette. Now pin and selected diamond are visually separate; no marker collision."
+    },
+    {
+      "file": "proofs/01-chronicle-cards.png",
+      "result": "pass",
+      "note": "All five markers visible on timeline; selected diamond sits above rather than occluding era gate. Six masked-name cards distinguish by large portrait recess, rust folded corner, ruled ledger margin, gold doubleline, small seal socket+ribbon, thick oak. Person v2 identity confirmed."
+    },
+    {
+      "file": "proofs/02-biography-faction.png",
+      "result": "pass_native_composite",
+      "note": "Portrait crops and heraldry fit slots, timeline/relation/requirements legible without clipping. Temporary text is on proof only; offline composite not runtime UI."
+    },
+    {
+      "file": "proofs/03-ledger-scenes.png",
+      "result": "pass_scene_categories_at24",
+      "note": "Four three-scene examples plus all24icons at actual24px reviewed. All scene categories remain distinct; related pairs differentiated by direction/door position/fullness. Badge-size caveat from build contact remains: complete/shortage qualifiers are clearer with accompanying labels than alone at24. No duplicate category silhouette blocking delivery."
+    }
+  ],
+  "pending": [],
+  "finalVerdict": {
+    "approved": true,
+    "score": 92,
+    "scope": "Candidate art and offline proofs, not product installation or user usability trial",
+    "remainingRisks": [
+      "Small badge qualifiers at24 benefit text context.",
+      "Expanded page parchment grain stretches despite preserved9slice corners; native page sizes preferred.",
+      "Raised-hand petition semantic is conventional/contextual, not proven by human recognition study."
+    ]
+  }
+}

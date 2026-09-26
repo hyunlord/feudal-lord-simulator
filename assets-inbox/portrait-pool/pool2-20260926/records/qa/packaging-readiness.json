@@ -1,0 +1,73 @@
+{
+  "status": "STATIC_ROSTER_READY",
+  "scope": "Schema and count readiness only; no image visual or packaging pass",
+  "roster_sha256": "a6854cf398cd245123f84c4560f6125cab4a86fc3e77936ef7d8542b00df2f1a",
+  "checks": [
+    {
+      "name": "identities32",
+      "pass": true
+    },
+    {
+      "name": "idsI069toI100",
+      "pass": true
+    },
+    {
+      "name": "rows92",
+      "pass": true
+    },
+    {
+      "name": "adult28child4",
+      "pass": true
+    },
+    {
+      "name": "uniqueStageIDs",
+      "pass": true
+    },
+    {
+      "name": "roleMandatory",
+      "pass": true
+    },
+    {
+      "name": "propMandatory",
+      "pass": true
+    },
+    {
+      "name": "prop_groupMandatory",
+      "pass": true
+    },
+    {
+      "name": "propGroups",
+      "pass": true
+    },
+    {
+      "name": "bodyValues",
+      "pass": true
+    },
+    {
+      "name": "books<=25percent",
+      "pass": true
+    }
+  ],
+  "props": {
+    "identities": {
+      "none": 10,
+      "book_scroll": 2,
+      "other": 20
+    },
+    "stages": {
+      "none": 29,
+      "book_scroll": 6,
+      "other": 57
+    }
+  },
+  "classes": [
+    "artisan",
+    "labour",
+    "gentry",
+    "clerical",
+    "merchant",
+    "poor_servant",
+    "child"
+  ],
+  "existingPortraits": 65
+}

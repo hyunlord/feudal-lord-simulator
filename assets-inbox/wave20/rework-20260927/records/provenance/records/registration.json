@@ -1,0 +1,1532 @@
+[
+  {
+    "id": "house_l2_1350_b-v2",
+    "level": 2,
+    "era": 1350,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l2_1350_b-v2.png",
+    "file": "assets/houses/house_l2_1350_b-v2.png",
+    "canvas": [
+      137,
+      137
+    ],
+    "pivot": [
+      70.95813397129186,
+      132.08373205741626
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4980801861842801,
+    "worldScale": 0.4980801861842801,
+    "sourceGround": {
+      "left": [
+        256,
+        963
+      ],
+      "front": [
+        759,
+        1192
+      ],
+      "right": [
+        1030,
+        1044
+      ]
+    },
+    "targetGround": {
+      "left": [
+        24,
+        103
+      ],
+      "front": [
+        86,
+        131
+      ],
+      "right": [
+        118,
+        113
+      ]
+    },
+    "matrix": [
+      [
+        0.12090576763880648,
+        0.0051720475007875286,
+        -11.932558258792849
+      ],
+      [
+        0.00016116861900471053,
+        0.1219167344307451,
+        -14.447074423272753
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        23.999999999999996,
+        103
+      ],
+      [
+        86,
+        131
+      ],
+      [
+        118,
+        112.99999999999999
+      ]
+    ],
+    "jettyOverhangNativePx": 13.299634440268713,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 99,
+      "scale": 0.8879493350161415,
+      "originalTop": -5.735705442371234,
+      "targetTop": 6
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 99,
+      "yScale": 0.8879493350161415,
+      "targetTop": 6
+    },
+    "lowerEdgeWarp": {
+      "joinY": 131,
+      "yScale": 1,
+      "originalBottom": 134.17338080481744,
+      "targetBottom": 134.17338080481744,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      3.5587496245503747,
+      129.36468795557607
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        -3.552713678800501e-15,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -1.4210854715202004e-14
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l4_1350_b-v2",
+    "level": 4,
+    "era": 1350,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l4_1350_b-v2.png",
+    "file": "assets/houses/house_l4_1350_b-v2.png",
+    "canvas": [
+      161,
+      161
+    ],
+    "pivot": [
+      81.97647527910686,
+      157.40510366826157
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.49791865539583047,
+    "worldScale": 0.49791865539583047,
+    "sourceGround": {
+      "left": [
+        323,
+        961
+      ],
+      "front": [
+        747,
+        1180
+      ],
+      "right": [
+        975,
+        1051
+      ]
+    },
+    "targetGround": {
+      "left": [
+        38,
+        129
+      ],
+      "front": [
+        96,
+        157
+      ],
+      "right": [
+        129,
+        139
+      ]
+    },
+    "matrix": [
+      [
+        0.14058378254386972,
+        -0.007340291317811676,
+        -0.3545418052528948
+      ],
+      [
+        -0.0031540314256222044,
+        0.13396031655006307,
+        1.2828879458653546
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        38,
+        129
+      ],
+      [
+        96.00000000000001,
+        157
+      ],
+      [
+        129,
+        139
+      ]
+    ],
+    "jettyOverhangNativePx": 13.355459341667624,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 125,
+      "scale": 0.9522133490699796,
+      "originalTop": 5.278931070076847,
+      "targetTop": 11
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 125,
+      "yScale": 0.9522133490699796,
+      "targetTop": 11
+    },
+    "lowerEdgeWarp": {
+      "joinY": 157,
+      "yScale": 0.5000143369175641,
+      "originalBottom": 160.99988530794815,
+      "targetBottom": 159,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      25.07741713499255,
+      147.70925564858356
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l2_1400_a-v2",
+    "level": 2,
+    "era": 1400,
+    "variant": "a",
+    "source": "/tmp/astra-wave20-rework-20260927/era1400/house_l2_1400_a-v2.png",
+    "file": "assets/houses/house_l2_1400_a-v2.png",
+    "canvas": [
+      137,
+      137
+    ],
+    "pivot": [
+      70.95813397129186,
+      132.08373205741626
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4980801861842801,
+    "worldScale": 0.4980801861842801,
+    "sourceGround": {
+      "left": [
+        250,
+        873
+      ],
+      "front": [
+        715,
+        1138
+      ],
+      "right": [
+        1006,
+        997
+      ]
+    },
+    "targetGround": {
+      "left": [
+        24,
+        103
+      ],
+      "front": [
+        86,
+        131
+      ],
+      "right": [
+        118,
+        113
+      ]
+    },
+    "matrix": [
+      [
+        0.12070367255396693,
+        0.02216148023549201,
+        -25.522890384076256
+      ],
+      [
+        -0.005761143818334735,
+        0.1157695542472666,
+        3.37346509671994
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        24,
+        103
+      ],
+      [
+        86,
+        131
+      ],
+      [
+        118.00000000000003,
+        113
+      ]
+    ],
+    "jettyOverhangNativePx": null,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 99,
+      "scale": 1.0694938384921837,
+      "originalTop": 12.04297729184189,
+      "targetTop": 6
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 99,
+      "yScale": 1.0694938384921837,
+      "targetTop": 6
+    },
+    "lowerEdgeWarp": {
+      "joinY": 131,
+      "yScale": 1,
+      "originalBottom": 134.2824222035324,
+      "targetBottom": 134.2824222035324,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      5.2460751331651245,
+      120.33769273899637
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        2.842170943040401e-14,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l2_1400_b-v2",
+    "level": 2,
+    "era": 1400,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1400/house_l2_1400_b-v2.png",
+    "file": "assets/houses/house_l2_1400_b-v2.png",
+    "canvas": [
+      137,
+      137
+    ],
+    "pivot": [
+      70.95813397129186,
+      132.08373205741626
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4980801861842801,
+    "worldScale": 0.4980801861842801,
+    "sourceGround": {
+      "left": [
+        237,
+        837
+      ],
+      "front": [
+        705,
+        1108
+      ],
+      "right": [
+        995,
+        963
+      ]
+    },
+    "targetGround": {
+      "left": [
+        24,
+        103
+      ],
+      "front": [
+        86,
+        131
+      ],
+      "right": [
+        118,
+        113
+      ]
+    },
+    "matrix": [
+      [
+        0.1206008876749744,
+        0.020512120177534995,
+        -21.751054967565725
+      ],
+      [
+        -0.005585524069648344,
+        0.11296688289518607,
+        9.770488221235922
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        23.999999999999996,
+        103
+      ],
+      [
+        86.00000000000001,
+        131
+      ],
+      [
+        118,
+        113
+      ]
+    ],
+    "jettyOverhangNativePx": null,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 99,
+      "scale": 1.1440973753512345,
+      "originalTop": 17.71321270058041,
+      "targetTop": 6
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 99,
+      "yScale": 1.1440973753512345,
+      "targetTop": 6
+    },
+    "lowerEdgeWarp": {
+      "joinY": 131,
+      "yScale": 1,
+      "originalBottom": 134.21459883919425,
+      "targetBottom": 134.21459883919425,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      8.16516217138955,
+      120.2298805052919
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        -3.552713678800501e-15,
+        0
+      ],
+      [
+        1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l4_1400_b-v2",
+    "level": 4,
+    "era": 1400,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1400/house_l4_1400_b-v2.png",
+    "file": "assets/houses/house_l4_1400_b-v2.png",
+    "canvas": [
+      161,
+      161
+    ],
+    "pivot": [
+      81.97647527910686,
+      157.40510366826157
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.49791865539583047,
+    "worldScale": 0.49791865539583047,
+    "sourceGround": {
+      "left": [
+        258,
+        913
+      ],
+      "front": [
+        690,
+        1152
+      ],
+      "right": [
+        956,
+        1001
+      ]
+    },
+    "targetGround": {
+      "left": [
+        38,
+        129
+      ],
+      "front": [
+        96,
+        157
+      ],
+      "right": [
+        129,
+        139
+      ]
+    },
+    "matrix": [
+      [
+        0.1292253466453426,
+        0.009098955017623403,
+        -3.6474853655885564
+      ],
+      [
+        -0.000574507398723662,
+        0.11819325186714905,
+        21.237783954163632
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        38,
+        129
+      ],
+      [
+        96,
+        157.00000000000003
+      ],
+      [
+        129,
+        139
+      ]
+    ],
+    "jettyOverhangNativePx": null,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 125,
+      "scale": 1.187001407372498,
+      "originalTop": 28.959675791500402,
+      "targetTop": 11
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 125,
+      "yScale": 1.187001407372498,
+      "targetTop": 11
+    },
+    "lowerEdgeWarp": {
+      "joinY": 157,
+      "yScale": 0.6521657679552402,
+      "originalBottom": 160.06670496715992,
+      "targetBottom": 159,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      24.095484682390577,
+      132.05223359160289
+    ],
+    "chimneySource": [
+      804,
+      207
+    ],
+    "chimneyNative": [
+      102.13317702591495,
+      30.327003040280275
+    ],
+    "smokeOrigin": [
+      102.13317702591495,
+      30.327003040280275
+    ],
+    "chimneyCap": [
+      [
+        94.3068645870534,
+        29.245555055264234
+      ],
+      [
+        101.97123581199634,
+        25.83686329732582
+      ],
+      [
+        110.68934676956043,
+        30.702881597210137
+      ],
+      [
+        103.20879462136857,
+        34.952664751907136
+      ]
+    ],
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        2.842170943040401e-14
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l3_1400_a-v2",
+    "level": 3,
+    "era": 1400,
+    "variant": "a",
+    "source": "/tmp/astra-wave20-rework-20260927/era1400/house_l3_1400_a-v2.png",
+    "file": "assets/houses/house_l3_1400_a-v2.png",
+    "canvas": [
+      142,
+      142
+    ],
+    "pivot": [
+      74.39712918660287,
+      138.03668261562999
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4983578424454543,
+    "worldScale": 0.4983578424454543,
+    "sourceGround": {
+      "left": [
+        230,
+        873
+      ],
+      "front": [
+        709,
+        1140
+      ],
+      "right": [
+        1010,
+        984
+      ]
+    },
+    "targetGround": {
+      "left": [
+        28,
+        109
+      ],
+      "front": [
+        88,
+        137
+      ],
+      "right": [
+        121,
+        120
+      ]
+    },
+    "matrix": [
+      [
+        0.11716347176818771,
+        0.014526955142464746,
+        -11.629630346054897
+      ],
+      [
+        -0.001102578486179082,
+        0.10684694792089805,
+        15.976207516877182
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        28,
+        109
+      ],
+      [
+        88.00000000000001,
+        137
+      ],
+      [
+        121.00000000000001,
+        119.99999999999999
+      ]
+    ],
+    "jettyOverhangNativePx": null,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 105,
+      "scale": 1.2511236631162406,
+      "originalTop": 26.670412854388708,
+      "targetTop": 7
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 105,
+      "yScale": 1.2511236631162406,
+      "targetTop": 7
+    },
+    "lowerEdgeWarp": {
+      "joinY": 137,
+      "yScale": 1,
+      "originalBottom": 139.87163665203008,
+      "targetBottom": 139.87163665203008,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      14.976246203841617,
+      123.60380679729967
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        1.4210854715202004e-14,
+        0
+      ],
+      [
+        1.4210854715202004e-14,
+        -1.4210854715202004e-14
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l3_1400_b-v2",
+    "level": 3,
+    "era": 1400,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1400/house_l3_1400_b-v2.png",
+    "file": "assets/houses/house_l3_1400_b-v2.png",
+    "canvas": [
+      142,
+      142
+    ],
+    "pivot": [
+      74.39712918660287,
+      138.03668261562999
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4983578424454543,
+    "worldScale": 0.4983578424454543,
+    "sourceGround": {
+      "left": [
+        247,
+        894
+      ],
+      "front": [
+        725,
+        1132
+      ],
+      "right": [
+        1000,
+        970
+      ]
+    },
+    "targetGround": {
+      "left": [
+        28,
+        109
+      ],
+      "front": [
+        88,
+        137
+      ],
+      "right": [
+        121,
+        120
+      ]
+    },
+    "matrix": [
+      [
+        0.12299315538261271,
+        0.0050809736433240485,
+        -6.921699816637039
+      ],
+      [
+        0.003429307279929454,
+        0.11075962655543581,
+        9.133854961297814
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        28,
+        109
+      ],
+      [
+        87.99999999999999,
+        137
+      ],
+      [
+        121,
+        120.00000000000001
+      ]
+    ],
+    "jettyOverhangNativePx": null,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 105,
+      "scale": 1.1878222589581033,
+      "originalTop": 22.496073793093792,
+      "targetTop": 7
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 105,
+      "yScale": 1.1878222589581033,
+      "targetTop": 7
+    },
+    "lowerEdgeWarp": {
+      "joinY": 137,
+      "yScale": 1,
+      "originalBottom": 139.93461920692022,
+      "targetBottom": 139.93461920692022,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      18.395994009210135,
+      127.62899094382936
+    ],
+    "chimneySource": [
+      838,
+      261
+    ],
+    "chimneyNative": [
+      97.47269851489999,
+      28.879452246295088
+    ],
+    "smokeOrigin": [
+      97.47269851489999,
+      28.879452246295088
+    ],
+    "chimneyCap": [
+      [
+        90.30352868720519,
+        27.722255361425425
+      ],
+      [
+        96.57214842601795,
+        24.64500380704976
+      ],
+      [
+        105.61565163836904,
+        29.806110891691134
+      ],
+      [
+        98.73206612264322,
+        32.862995408467256
+      ]
+    ],
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        -1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        1.4210854715202004e-14
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l3_1350_a-v2",
+    "level": 3,
+    "era": 1350,
+    "variant": "a",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l3_1350_a-v2.png",
+    "file": "assets/houses/house_l3_1350_a-v2.png",
+    "canvas": [
+      142,
+      142
+    ],
+    "pivot": [
+      74.39712918660287,
+      138.03668261562999
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4983578424454543,
+    "worldScale": 0.4983578424454543,
+    "sourceGround": {
+      "left": [
+        257,
+        964
+      ],
+      "front": [
+        759,
+        1191
+      ],
+      "right": [
+        1029,
+        1041
+      ]
+    },
+    "targetGround": {
+      "left": [
+        28,
+        109
+      ],
+      "front": [
+        88,
+        137
+      ],
+      "right": [
+        121,
+        120
+      ]
+    },
+    "matrix": [
+      [
+        0.12073358225345926,
+        -0.0026795519437733365,
+        -0.44544256534153526
+      ],
+      [
+        0.002496522439417234,
+        0.11782707372428436,
+        -5.2269053371403515
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        28,
+        109
+      ],
+      [
+        87.99999999999999,
+        137
+      ],
+      [
+        121,
+        120
+      ]
+    ],
+    "jettyOverhangNativePx": 13.280694047880518,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 105,
+      "scale": 0.9478730776208448,
+      "originalTop": 1.6106303536129989,
+      "targetTop": 7
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 105,
+      "yScale": 0.9478730776208448,
+      "targetTop": 7
+    },
+    "lowerEdgeWarp": {
+      "joinY": 137,
+      "yScale": 1,
+      "originalBottom": 139.63962954828318,
+      "targetBottom": 139.63962954828318,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      11.294201625301996,
+      135.93443883153967
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        -1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l4_1400_a-v2",
+    "level": 4,
+    "era": 1400,
+    "variant": "a",
+    "source": "/tmp/astra-wave20-rework-20260927/era1400/house_l4_1400_a-v2.png",
+    "file": "assets/houses/house_l4_1400_a-v2.png",
+    "canvas": [
+      161,
+      161
+    ],
+    "pivot": [
+      81.97647527910686,
+      157.40510366826157
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.49791865539583047,
+    "worldScale": 0.49791865539583047,
+    "sourceGround": {
+      "left": [
+        260,
+        904
+      ],
+      "front": [
+        690,
+        1134
+      ],
+      "right": [
+        950,
+        994
+      ]
+    },
+    "targetGround": {
+      "left": [
+        38,
+        129
+      ],
+      "front": [
+        96,
+        157
+      ],
+      "right": [
+        129,
+        139
+      ]
+    },
+    "matrix": [
+      [
+        0.13091666666666665,
+        0.007416666666666667,
+        -2.742999999999994
+      ],
+      [
+        -0.0018333333333333333,
+        0.12516666666666668,
+        16.32599999999998
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        38,
+        129
+      ],
+      [
+        96,
+        157
+      ],
+      [
+        129,
+        139
+      ]
+    ],
+    "jettyOverhangNativePx": null,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 125,
+      "scale": 1.136340982037838,
+      "originalTop": 24.67799999999998,
+      "targetTop": 11
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 125,
+      "yScale": 1.136340982037838,
+      "targetTop": 11
+    },
+    "lowerEdgeWarp": {
+      "joinY": 157,
+      "yScale": 0.6198026961417286,
+      "originalBottom": 160.22683333333333,
+      "targetBottom": 159,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      25.623416666666667,
+      133.88025
+    ],
+    "chimneySource": [
+      802,
+      193
+    ],
+    "chimneyNative": [
+      103.68358333333333,
+      27.289258587348726
+    ],
+    "smokeOrigin": [
+      103.68358333333333,
+      27.289258587348726
+    ],
+    "chimneyCap": [
+      [
+        96.68566666666666,
+        26.26181694942285
+      ],
+      [
+        103.4685,
+        23.16453021271505
+      ],
+      [
+        111.77816666666666,
+        26.73339845696856
+      ],
+      [
+        104.78541666666666,
+        30.83047586770597
+      ]
+    ],
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l4_1350_a-v2",
+    "level": 4,
+    "era": 1350,
+    "variant": "a",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l4_1350_a-v2.png",
+    "file": "assets/houses/house_l4_1350_a-v2.png",
+    "canvas": [
+      161,
+      161
+    ],
+    "pivot": [
+      81.97647527910686,
+      157.40510366826157
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.49791865539583047,
+    "worldScale": 0.49791865539583047,
+    "sourceGround": {
+      "left": [
+        323,
+        961
+      ],
+      "front": [
+        747,
+        1180
+      ],
+      "right": [
+        975,
+        1051
+      ]
+    },
+    "targetGround": {
+      "left": [
+        38,
+        129
+      ],
+      "front": [
+        96,
+        157
+      ],
+      "right": [
+        129,
+        139
+      ]
+    },
+    "matrix": [
+      [
+        0.14058378254386972,
+        -0.007340291317811676,
+        -0.3545418052528948
+      ],
+      [
+        -0.0031540314256222044,
+        0.13396031655006307,
+        1.2828879458653546
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        38,
+        129
+      ],
+      [
+        96.00000000000001,
+        157
+      ],
+      [
+        129,
+        139
+      ]
+    ],
+    "jettyOverhangNativePx": 13.355459341667624,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 125,
+      "scale": 0.9533051520041433,
+      "originalTop": 5.416045418052532,
+      "targetTop": 11
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 125,
+      "yScale": 0.9533051520041433,
+      "targetTop": 11
+    },
+    "lowerEdgeWarp": {
+      "joinY": 157,
+      "yScale": 0.5548908547062981,
+      "originalBottom": 160.6043124211492,
+      "targetBottom": 159,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      25.195980043582985,
+      147.7165959399014
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        1.4210854715202004e-14,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l2_1350_a-v2",
+    "level": 2,
+    "era": 1350,
+    "variant": "a",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l2_1350_a-v2.png",
+    "file": "assets/houses/house_l2_1350_a-v2.png",
+    "canvas": [
+      137,
+      137
+    ],
+    "pivot": [
+      70.95813397129186,
+      132.08373205741626
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4980801861842801,
+    "worldScale": 0.4980801861842801,
+    "sourceGround": {
+      "left": [
+        256,
+        963
+      ],
+      "front": [
+        759,
+        1192
+      ],
+      "right": [
+        1030,
+        1044
+      ]
+    },
+    "targetGround": {
+      "left": [
+        24,
+        103
+      ],
+      "front": [
+        86,
+        131
+      ],
+      "right": [
+        118,
+        113
+      ]
+    },
+    "matrix": [
+      [
+        0.12090576763880648,
+        0.0051720475007875286,
+        -11.932558258792849
+      ],
+      [
+        0.00016116861900471053,
+        0.1219167344307451,
+        -14.447074423272753
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        23.999999999999996,
+        103
+      ],
+      [
+        86,
+        131
+      ],
+      [
+        118,
+        112.99999999999999
+      ]
+    ],
+    "jettyOverhangNativePx": 13.299634440268713,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 99,
+      "scale": 0.8900172608164044,
+      "originalTop": -5.492355479366758,
+      "targetTop": 6
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 99,
+      "yScale": 0.8900172608164044,
+      "targetTop": 6
+    },
+    "lowerEdgeWarp": {
+      "joinY": 131,
+      "yScale": 1,
+      "originalBottom": 134.0509805645297,
+      "targetBottom": 134.0509805645297,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      3.68482743968997,
+      129.017486795162
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        -3.552713678800501e-15,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -1.4210854715202004e-14
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  },
+  {
+    "id": "house_l3_1350_b-v2",
+    "level": 3,
+    "era": 1350,
+    "variant": "b",
+    "source": "/tmp/astra-wave20-rework-20260927/era1350/house_l3_1350_b-v2.png",
+    "file": "assets/houses/house_l3_1350_b-v2.png",
+    "canvas": [
+      142,
+      142
+    ],
+    "pivot": [
+      74.39712918660287,
+      138.03668261562999
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "scale": 0.4983578424454543,
+    "worldScale": 0.4983578424454543,
+    "sourceGround": {
+      "left": [
+        256,
+        963
+      ],
+      "front": [
+        759,
+        1192
+      ],
+      "right": [
+        1030,
+        1044
+      ]
+    },
+    "targetGround": {
+      "left": [
+        28,
+        109
+      ],
+      "front": [
+        88,
+        137
+      ],
+      "right": [
+        121,
+        120
+      ]
+    },
+    "matrix": [
+      [
+        0.12041493593547395,
+        -0.002483461901936221,
+        -0.4346497879167499
+      ],
+      [
+        0.0018387874259173792,
+        0.11823183373259195,
+        -5.3279854655208965
+      ]
+    ],
+    "actualPlacedPoints": [
+      [
+        28,
+        109
+      ],
+      [
+        88,
+        137
+      ],
+      [
+        121,
+        120
+      ]
+    ],
+    "jettyOverhangNativePx": 13.245642952902134,
+    "jettyMeasurement": "manual approximate screen-horizontal upperwall setback versus recessed ground wall; not total alpha width",
+    "upperCompression": {
+      "joinY": 105,
+      "scale": 0.9382559511873549,
+      "originalTop": 0.5508889914507451,
+      "targetTop": 7
+    },
+    "warps": {
+      "type": "upper-only vertical scaling around fixed ground seam",
+      "joinY": 105,
+      "yScale": 0.9382559511873549,
+      "targetTop": 7
+    },
+    "lowerEdgeWarp": {
+      "joinY": 137,
+      "yScale": 1,
+      "originalBottom": 139.75610792436797,
+      "targetBottom": 139.75610792436797,
+      "note": "Only alpha below front foundation contact is rescaled; all three contacts remain fixed"
+    },
+    "sourceCleanAlpha": "a<240 removed; retained core alpha255; no original roof or silhouette restored",
+    "mappedWidthBounds": [
+      11.260170106151513,
+      135.8113667831476
+    ],
+    "chimneySource": null,
+    "chimneyNative": null,
+    "smokeOrigin": null,
+    "chimneyCap": null,
+    "groundResiduals": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "note": "Manual foundation landmarks. Ground affine then upper-only vertical rescaling to retain grade-specific top height. Final once-downsample from4x; upper alpha permitted to differ from original."
+  }
+]
