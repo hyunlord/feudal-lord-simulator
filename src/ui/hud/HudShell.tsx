@@ -35,7 +35,7 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
         <span className="status-pill-date-text"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
         <SeasonStripMini tick={state.tick} />
       </button>
-      {stripOpen ? <SeasonStripPanel state={state} onClose={() => setStripOpen(false)} /> : null}
+      {stripOpen ? <SeasonStripPanel state={state} food={{ days: model.foodDays, untilTick: model.foodUntilTick }} onClose={() => setStripOpen(false)} /> : null}
       <button type="button" className="status-pill-cell" aria-label={HUD_COPY.populationOpens} onClick={() => onOpenPopulation()}>
         <UiIcon sheet="resource" cell="population" />{HUD_COPY.population(model.population)}
       </button>

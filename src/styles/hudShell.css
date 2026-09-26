@@ -166,6 +166,7 @@
 .app-shell .season-strip-full { position: relative; margin: 14px 0 10px; }
 .app-shell .season-strip-mark { position: absolute; top: -1px; transform: translateX(-50%); }
 .app-shell .season-strip-pin { position: absolute; top: -12px; transform: translateX(-50%); }
+.app-shell .season-strip-food { margin: 6px 0 4px; font-size: 14px; font-weight: 600; }
 .app-shell .season-strip-panel h3 { margin: 0 0 4px; font-size: 14px; }
 .app-shell .season-strip-list { display: grid; gap: 4px; margin: 0 0 6px; padding: 0; list-style: none; }
 .app-shell .season-strip-list li { display: flex; gap: 6px; align-items: center; }

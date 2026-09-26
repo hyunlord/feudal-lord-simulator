@@ -1,12 +1,16 @@
 import type { ResourceType } from "../../content/resourceConfig";
 
+/** A sum of money in pennies: "120d" (the coin icon goes beside it where there is room). */
+export const pence = (value: number | string): string => `${value}d`;
+
 // UX-3 HUD shell copy (status pill, action dock, ledger drawer, crisis icons, pause menu).
 export const HUD_COPY = {
   pill: "마을 상태",
   population: (count: number) => `인구 ${count}`,
   foodDays: (days: number) => `식량 ${days}일`,
   foodNone: "식량 —",
-  money: (coin: number) => `${coin}£`,
+  /** Money is pennies (judgement 2026-09-26): the coin icon, the number and "d". */
+  money: (coin: number) => pence(coin),
   pillOpensLedger: "자원 장부 열기",
   populationOpens: "인구 기록 열기",
   dock: "행동",

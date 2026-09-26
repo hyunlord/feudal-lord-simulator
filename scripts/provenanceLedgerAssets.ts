@@ -17,6 +17,7 @@
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { KEYART_DERIVATIVE_BY_URL } from "./keyartDerivatives";
 
 export const REPO_ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 
@@ -34,7 +35,7 @@ function readJson<T>(relative: string): T {
 
 /** A single runtime-loadable asset file, before assetId/version derivation. */
 export interface RuntimeAssetRef {
-  /** Path relative to repo root, always "public/assets/...". */
+  /** Path relative to repo root: "public/assets/...", or the received inbox file of a build-time derivative. */
   readonly runtimePath: string;
   /** Which enumeration rule found this path, for traceability/debugging. */
   readonly foundVia: string;
@@ -108,7 +109,13 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/ui/wave8ArtManifest.generated.ts",
   ];
   for (const file of manifestFiles) {
-    for (const url of extractUrlLiterals(readText(file))) add(url, file);
+    for (const url of extractUrlLiterals(readText(file))) {
+      // Judgement 2026-09-26: a keyart web derivative is made at build time from its received inbox PNG
+      // (scripts/keyartDerivatives.ts); that file is what the game ships, so it is the runtime asset of record.
+      const derived = KEYART_DERIVATIVE_BY_URL.get(url);
+      if (derived === undefined) { add(url, file); continue; }
+      if (!seen.has(derived.source)) { seen.add(derived.source); refs.push({ runtimePath: derived.source, foundVia: `${file} (build-time web derivative ${url})` }); }
+    }
   }
 
   // 3) animatedMill.ts — single-quoted static url literals for the mill body/sails.

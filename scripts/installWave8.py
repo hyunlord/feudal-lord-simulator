@@ -5,6 +5,9 @@ prompt file each, fill `installed_by` in the inbox ledger, and write src/ui/wave
 url and size, and for the six frames the 9-slice insets, content rects and minimum size of records/frames-contract.json
 (source pixels; drawn at half size, sourceScale 2, as the UX-2 frames).
 The received PNGs carry no C2PA caBX chunk: runtime bytes = received bytes = the Astra SHA.
+Judgement 2026-09-26: the six keyart PNGs are not copied to public/; the game loads web derivatives made at build time
+(scripts/keyartDerivatives.ts, KEYART_DERIVATIVES: JPEG for the screens, a half-size PNG for the emblem), so their
+ledger rows point at the received inbox file and the manifest at the derivative's url and size.
 Run: python3 scripts/installWave8.py
 """
 import csv
@@ -21,6 +24,15 @@ PLAGUE = ROOT / "assets-inbox/wave8/plague-fix-20260926"
 LEDGER = ROOT / "docs/provenance/assets.csv"
 INBOX_LEDGER = ROOT / "assets-inbox/INBOX_LEDGER.csv"
 MANIFEST = ROOT / "src/ui/wave8ArtManifest.generated.ts"
+# scripts/keyartDerivatives.ts KEYART_DERIVATIVES (url, and the derivative's size when it differs from the source).
+DERIVED = {
+    "keyart_title_bg": ("assets/wave8/keyart/keyart_title_bg.jpg", None),
+    "keyart_mode_select": ("assets/wave8/keyart/keyart_mode_select.jpg", None),
+    "keyart_title_emblem": ("assets/wave8/keyart/keyart_title_emblem.png", 0.5),
+    "loading_1315_famine": ("assets/wave8/keyart/loading_1315_famine.jpg", None),
+    "loading_1337_war": ("assets/wave8/keyart/loading_1337_war.jpg", None),
+    "loading_1348_plague": ("assets/wave8/keyart/loading_1348_plague.jpg", None),
+}
 USED_IN = ("src/ui/wave8ArtManifest.generated.ts (UI-3: season ledger card, season strip, pause vignette and badge, title "
            "and mode select screens, chapter loading screens, overlay icons, alert bells; chronicle and petition art registered)")
 csv.field_size_limit(sys.maxsize)
@@ -65,22 +77,30 @@ def main() -> None:
         assert record["runtimeSha256"] == digest, file
         asset_id, name = record["assetId"], source.name
         runtime_dir = f"public/assets/wave8/{group}"
-        runtime = ROOT / runtime_dir / name
-        runtime.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source, runtime)
-        assert sha(runtime) == digest, name
+        derived = DERIVED.get(asset_id)
+        if derived is None:
+            runtime = ROOT / runtime_dir / name
+            runtime.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, runtime)
+            assert sha(runtime) == digest, name
         prompt = ROOT / "docs/provenance/prompts" / f"{asset_id}-wave8.txt"
         prompt.write_text((record["prompt"] or "(no prompt recorded)").strip() + "\n")
-        rows.append({**record, "runtimePath": f"{runtime_dir}/{name}", "runtimeSha256": digest,
+        runtime_path = str(source.relative_to(ROOT)) if derived is not None else f"{runtime_dir}/{name}"
+        rows.append({**record, "runtimePath": runtime_path, "runtimeSha256": digest,
                      "sourcePath": str(source.relative_to(ROOT)), "sourceSha256": digest, "prompt": str(prompt.relative_to(ROOT)), "usedIn": USED_IN,
                      "status": "runtime",
                      "notes": (f"Astra Wave 8 {asset_id} {record['version']} (confirmed in assets-inbox/INBOX_LEDGER.csv) installed "
                                f"by UI-3 on 2026-09-26 from {batch.relative_to(ROOT)}; received bytes = runtime bytes (no caBX); Astra's native "
                                f"generation source SHA {record['sourceSha256']}. "
+                               + (f"Runtime is the web derivative {derived[0]} made at build time from this received file by "
+                                  f"scripts/keyartDerivatives.ts (judgement 2026-09-26; the PNG stays in assets-inbox only). " if derived is not None else "") +
                                f"Astra note: {record['notes'][:300]}")})
         installed.add(file)
         width, height = png_size(source)
         entry = {"url": f"assets/wave8/{group}/{name}", "width": width, "height": height}
+        if derived is not None:
+            scale = derived[1] or 1
+            entry = {"url": derived[0], "width": int(width * scale), "height": int(height * scale)}
         images[asset_id] = entry
         if asset_id in contract:
             frame = contract[asset_id]

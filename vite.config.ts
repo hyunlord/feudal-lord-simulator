@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { defineConfig } from "vite";
+import { keyartDerivativesPlugin } from "./scripts/keyartDerivatives";
 
 function gameVersion(): string {
   const { version } = JSON.parse(readFileSync(new URL("./package.json", import.meta.url), "utf8")) as { version: string };
@@ -13,7 +14,7 @@ function gameVersion(): string {
 }
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), keyartDerivativesPlugin()],
   base: process.env.GITHUB_PAGES === "true" ? "/feudal-lord-simulator/" : "/",
   define: { __GAME_VERSION__: JSON.stringify(gameVersion()) },
 });

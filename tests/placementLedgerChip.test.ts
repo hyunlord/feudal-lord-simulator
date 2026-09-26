@@ -22,7 +22,7 @@ test("UI-3 gate 3: a hut's chip says the rent the engine predicts for its site",
     .map(tile => ({ tile, prediction: predictPlacementLedger(base, "house", tile) }))
     .find(entry => entry.prediction.rentPerPeriod > 0)!;
   const chip = placementChipModel(base, { tool: "house", reachHouses: null, ledger: site.prediction });
-  assert.equal(chip.period, `장부 기간마다 지대 +${site.prediction.rentPerPeriod}`, "no upkeep, no labour for a hut");
+  assert.equal(chip.period, `장부 기간마다 지대 +${site.prediction.rentPerPeriod}d`, "no upkeep, no labour for a hut");
 });
 
 test("UI-3 gate 3: a mill's chip says the upkeep the period close charges and the adults it takes", () => {
@@ -35,6 +35,6 @@ test("UI-3 gate 3: a mill's chip says the upkeep the period close charges and th
     .reduce((sum, entry) => sum - entry.amount, 0);
   assert.equal(charged, prediction.upkeepPerPeriod);
   const chip = placementChipModel(base, { tool: "mill", reachHouses: null, ledger: prediction });
-  const parts = [...(prediction.upkeepPerPeriod > 0 ? [`유지비 −${prediction.upkeepPerPeriod}`] : []), ...(prediction.labourDemand > 0 ? [`일꾼 ${prediction.labourDemand}`] : [])];
+  const parts = [...(prediction.upkeepPerPeriod > 0 ? [`유지비 −${prediction.upkeepPerPeriod}d`] : []), ...(prediction.labourDemand > 0 ? [`일꾼 ${prediction.labourDemand}`] : [])];
   assert.equal(chip.period, parts.length === 0 ? null : `장부 기간마다 ${parts.join(" · ")}`);
 });
