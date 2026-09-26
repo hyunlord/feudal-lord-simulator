@@ -41,18 +41,25 @@ export const RESIDENT_WALK_SPEED = 0.12;
 export const RESIDENT_WALKER_CAP = 40;
 const DAYS_PER_YEAR = 360;
 const DAYS_PER_WEEK = 7;
-/** RM-2: the market day and Sunday of the week (0-based day of the week). */
-export const MARKET_WEEKDAY = 2;
+const DAYS_PER_MONTH = 30;
+/**
+ * RM-2 (F0-A pulse): the market is held once a month, on the third day of each 30-day month (about 333 ticks apart);
+ * Sunday is the seventh day of the week (0-based).
+ */
+export const MARKET_DAY_OF_MONTH = 2;
 export const SUNDAY_WEEKDAY = 6;
+/** RM-2 (F0-A pulse): visitors walk in from a road tile at most this many road steps from the market. */
+export const VISITOR_REACH = 12;
 const WELL_PERIOD = 2_400;
 const FIELD_PERIOD = 800;
 const CLERGY_PERIOD = 600;
-const STAY = { well: 30, market: 120, church: 150, field: 300, visit: 150, clergy: 80, patrol: 20 } as const satisfies Record<ResidentPurpose, number>;
+const STAY = { well: 30, market: 120, church: 150, field: 300, visit: 60, clergy: 80, patrol: 20 } as const satisfies Record<ResidentPurpose, number>;
 /** Household departures spread over this many ticks after the day starts. */
 const DEPARTURE_SPREAD = 40;
 /**
- * A calendar week is 78 ticks and a walk across town 150-450, so a household goes to market on one market day in four
- * and to church on one Sunday in four (its own hashed turn): everyone every week would fill the streets without end.
+ * A calendar week is 78 ticks and a walk across town 150-450, so a household goes to church on one Sunday in four (its
+ * own hashed turn): everyone every week would fill the streets without end. The monthly market takes every household
+ * (the market quota caps them).
  */
 const HOUSEHOLD_TURNS = 4;
 /** Priority when the cap bites: town figures first, then the market day, then everyday errands. */
@@ -63,7 +70,9 @@ const QUOTA: Readonly<Record<ResidentPurpose, number>> = { patrol: 2, clergy: 2,
 export const absoluteDay = (tick: number): number => Math.floor((Math.max(0, tick) * DAYS_PER_YEAR) / BALANCE.TICKS_PER_YEAR);
 export const dayStartTick = (day: number): number => Math.ceil((day * BALANCE.TICKS_PER_YEAR) / DAYS_PER_YEAR);
 export const weekday = (day: number): number => day % DAYS_PER_WEEK;
-export const isMarketDay = (tick: number): boolean => weekday(absoluteDay(tick)) === MARKET_WEEKDAY;
+const marketDayIndex = (day: number): boolean => day % DAYS_PER_MONTH === MARKET_DAY_OF_MONTH;
+const sundayIndex = (day: number): boolean => weekday(day) === SUNDAY_WEEKDAY;
+export const isMarketDay = (tick: number): boolean => marketDayIndex(absoluteDay(tick));
 
 /** The render's walker key and member pick (`walkerLook.ts` walkerKey / walkerSex), so the tag and the drawn body agree. */
 const walkerKey = (id: string): number => hashNumbers(Array.from(id, char => char.charCodeAt(0)));
@@ -153,14 +162,30 @@ const buildingRoute = (state: GameState, origin: Building, destination: Building
 const working = (building: Building): boolean => building.workers > 0 && !operationSuspended(building);
 
 /**
- * RM-2: where visitors come in: the road tiles on the map edge, or, when no road reaches the edge yet, the road tiles
- * nearest to it (seed 2's roads stop 4 tiles short), in row order.
+ * RM-2 (F0-A pulse): where visitors come in: the gate's road tiles when the gate is within `VISITOR_REACH` road steps
+ * of the market, else the road tiles farthest from the market within that reach (row order). A round trip is then at
+ * most 2 × 12 ÷ 0.12 + 60 = 260 ticks, so a market day's visitors are gone before the next (333 ticks).
  */
-function edgeRoadTiles(state: GameState): readonly TilePos[] {
-  const roads = state.tiles.filter(tile => tile.hasRoad);
-  const edgeDistance = (tile: Tile) => Math.min(tile.tx, tile.ty, state.width - 1 - tile.tx, state.height - 1 - tile.ty);
-  const nearest = Math.min(...roads.map(edgeDistance));
-  return roads.filter(tile => edgeDistance(tile) === nearest).map(tile => ({ tx: tile.tx, ty: tile.ty }));
+function visitorOrigins(state: GameState, market: Building): readonly TilePos[] {
+  const parents = searchFrom(state, `market:${market.id}`, buildingRoadAccessTiles(state, market));
+  const depths = new Map<string, number>();
+  const depthOf = (at: string): number => {
+    const known = depths.get(at);
+    if (known !== undefined) return known;
+    const parent = parents.get(at) ?? null;
+    const depth = parent === null ? 0 : depthOf(parent) + 1;
+    depths.set(at, depth);
+    return depth;
+  };
+  const reachable = [...parents.keys()].map(at => ({ at, depth: depthOf(at) })).filter(entry => entry.depth <= VISITOR_REACH);
+  const inReach = new Set(reachable.map(entry => entry.at));
+  const gate = gateRoadTiles(state).filter(tile => inReach.has(key(tile)));
+  if (gate.length > 0) return gate;
+  const farthest = Math.max(0, ...reachable.map(entry => entry.depth));
+  return reachable.filter(entry => entry.depth === farthest && farthest > 0).map(entry => {
+    const [tx, ty] = entry.at.split(",").map(Number);
+    return { tx: tx!, ty: ty! };
+  }).sort((a, b) => a.ty - b.ty || a.tx - b.tx);
 }
 
 /** Road tiles beside the main gate (tile centres within 1 of the gate point). */
@@ -202,12 +227,12 @@ function computePlan(state: GameState): TripPlan {
       household.push({ purpose: "field", occupation: "field_hand", originId: pick.house.buildingId, destinationId: farm.id, route: pick.route, houseId: pick.house.buildingId, slot });
     }
   }
-  // RM-2 visitors: from the first road tile on the map edge (row-major) that reaches a working market.
+  // RM-2 visitors: from the first visitor origin (gate, else the farthest road within reach) to a working market.
   const market = state.buildings.filter(building => building.kind === "market" && working(building)).sort((a, b) => a.id.localeCompare(b.id))[0];
   let visitors: Route | null = null;
   if (market !== undefined) {
-    for (const edge of edgeRoadTiles(state)) {
-      visitors = routeBetween(state, `edge:${key(edge)}`, [edge], buildingRoadAccessTiles(state, market));
+    for (const origin of visitorOrigins(state, market)) {
+      visitors = routeBetween(state, `visitor:${key(origin)}`, [origin], buildingRoadAccessTiles(state, market));
       if (visitors !== null) break;
     }
   }
@@ -281,11 +306,11 @@ interface ActiveTrip {
 const legTicks = (path: readonly TilePos[]): number => Math.ceil((path.length - 1) / RESIDENT_WALK_SPEED);
 const tripTicks = (path: readonly TilePos[], purpose: ResidentPurpose): number => legTicks(path) * 2 + STAY[purpose];
 
-/** Days (latest first) whose trips may still be on the road at `tick`. */
-function recentDays(tick: number, weekdayWanted: number, longest: number): readonly number[] {
+/** Days (latest first) of the kind wanted whose trips may still be on the road at `tick`. */
+function recentDays(tick: number, wanted: (day: number) => boolean, longest: number): readonly number[] {
   const days: number[] = [];
   for (let day = absoluteDay(tick); day >= 0 && dayStartTick(day) > tick - longest - DEPARTURE_SPREAD; day -= 1) {
-    if (weekday(day) === weekdayWanted) days.push(day);
+    if (wanted(day)) days.push(day);
   }
   return days;
 }
@@ -307,9 +332,9 @@ function activeTrips(state: GameState, plan: TripPlan): readonly ActiveTrip[] {
         houseId: planned.houseId, path: planned.route.path, startTick: start });
       continue;
     }
-    const wanted = planned.purpose === "market" ? MARKET_WEEKDAY : SUNDAY_WEEKDAY;
-    for (const day of recentDays(tick, wanted, tripTicks(planned.route.path, planned.purpose))) {
-      if (Math.floor(day / DAYS_PER_WEEK) % HOUSEHOLD_TURNS !== offset % HOUSEHOLD_TURNS) continue;
+    const market = planned.purpose === "market";
+    for (const day of recentDays(tick, market ? marketDayIndex : sundayIndex, tripTicks(planned.route.path, planned.purpose))) {
+      if (!market && Math.floor(day / DAYS_PER_WEEK) % HOUSEHOLD_TURNS !== offset % HOUSEHOLD_TURNS) continue;
       const start = dayStartTick(day) + (offset % DEPARTURE_SPREAD);
       add({ id: `resident-${base}@${start}`, purpose: planned.purpose, occupation: planned.occupation, homeBuildingId: planned.originId,
         houseId: planned.houseId, path: planned.route.path, startTick: start });
@@ -317,7 +342,7 @@ function activeTrips(state: GameState, plan: TripPlan): readonly ActiveTrip[] {
   }
   if (plan.visitors !== null) {
     const path = plan.visitors.path;
-    for (const day of recentDays(tick, MARKET_WEEKDAY, tripTicks(path, "visit"))) {
+    for (const day of recentDays(tick, marketDayIndex, tripTicks(path, "visit"))) {
       const count = 4 + (hashOf(`visitors@${day}`, state.seed, 12) % 5);
       for (let index = 0; index < count; index += 1) {
         const start = dayStartTick(day) + index * 6;

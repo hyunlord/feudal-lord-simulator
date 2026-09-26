@@ -30,6 +30,21 @@ import { plannedBuildingRoadAction } from "./autoplayConstructionRoads";
 
 /** AF-13: the planner keeps the expected harvest this far above a year's need (growth headroom). */
 export const ARABLE_MARGIN_PERMILLE = 1200;
+/** F0-A `--naive-reserve` (FP-6): the bot variant without reserve measures plants for the year's need only. */
+export const NAIVE_ARABLE_MARGIN_PERMILLE = 1000;
+
+let activeMarginPermille: number = ARABLE_MARGIN_PERMILLE;
+
+/** Runs `decide` with the planner's harvest margin set to `margin` (FP-6); the default margin is restored after. */
+export function withArableMargin<T>(margin: number, decide: () => T): T {
+  const previous = activeMarginPermille;
+  activeMarginPermille = margin;
+  try {
+    return decide();
+  } finally {
+    activeMarginPermille = previous;
+  }
+}
 
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
 const BLOCK = 2;
@@ -45,9 +60,9 @@ export function annualWheatNeed(state: GameState): number {
   return Math.max(measured, homeWheatDemand(state, BALANCE.TICKS_PER_YEAR));
 }
 
-/** AF-13: the expected harvest falls short of the need with margin. */
-export function arableSupplyShort(state: GameState): boolean {
-  return expectedAnnualWheat(state) * 1000 < annualWheatNeed(state) * ARABLE_MARGIN_PERMILLE;
+/** AF-13: the expected harvest falls short of the need with margin (`margin` ‰, default the planner's). */
+export function arableSupplyShort(state: GameState, margin: number = activeMarginPermille): boolean {
+  return expectedAnnualWheat(state) * 1000 < annualWheatNeed(state) * margin;
 }
 
 export function hasPendingFarmstead(state: GameState): boolean {

@@ -125,9 +125,10 @@ test("T4 SC-11 calendar boundaries: seasons every 1,000 ticks, years every 4,000
 });
 
 test("T4 SC-12 historical eras change on their years and publish zero effects", () => {
+  // F0-A (F2, FP-5): without the town's entered eras, the famine counts from its forced year (1315 + 5 years' grace).
   const eraAt = (year: number) => historicalEra({ tick: (year - 1300) * 4000, scenarioId: DEFAULT_SCENARIO_ID }).id;
-  assert.deepEqual([1300, 1314, 1315, 1336, 1337, 1347, 1348, 1379, 1380, 1450].map(eraAt),
-    ["saturation", "saturation", "famine", "famine", "war", "war", "collapse", "collapse", "specialisation", "specialisation"]);
+  assert.deepEqual([1300, 1314, 1315, 1319, 1320, 1336, 1337, 1347, 1348, 1379, 1380, 1450].map(eraAt),
+    ["saturation", "saturation", "saturation", "saturation", "famine", "famine", "war", "war", "collapse", "collapse", "specialisation", "specialisation"]);
   assert.equal(historicalEra({ tick: 15 * 4000 - 1, scenarioId: DEFAULT_SCENARIO_ID }).id, "saturation");
   assert.equal(historicalEraEffectRegistry({ tick: 50 * 4000, scenarioId: DEFAULT_SCENARIO_ID }).size, 0);
 });

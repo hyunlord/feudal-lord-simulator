@@ -4,7 +4,8 @@ import test from "node:test";
 
 import { houseFoodRation } from "../src/content/houseFoodConfig";
 import { isBuildingConstructionSite } from "../src/economy/construction";
-import { decideNextAction } from "../src/engine/autoplay";
+import { autoplayBuildAction, decideNextAction } from "../src/engine/autoplay";
+import { backedUpBarns, barnMillAction, MILL_NEAR_BARN } from "../src/engine/autoplayBarnMill";
 import { granaryGapAction, granaryGapHouses, insideWall, marketGapAction, marketGapHouses, strandedMarketHouses, type BotRecoveryCollector } from "../src/engine/autoplayBotRecovery";
 import { housingLotsStillNeeded, interiorHouseSites, keepsInteriorHouseSites } from "../src/engine/autoplayInteriorPlots";
 import { timberDemandExpansionKind } from "../src/engine/autoplayTimberDemand";
@@ -29,6 +30,9 @@ const SEED2_PALISADE = "fixtures/autoplay/seed2-70140.json.gz";
 // Guardrail run 2 (01c7106; replayed at 5f974bb, same advisor), seed 3 at 120,000 ticks: 21 lots, 16 free interior house
 // sites, no church in any home's reach. Run 2 stopped here at 22 lots (decision BT8).
 const SEED3_INTERIOR = "fixtures/autoplay/seed3-120000.json.gz";
+// F0-A guardrail run 1 (2820a00), seed 4 at 1,200,000 ticks: L4 14/24, two edge barns with 800–900 wheat, nine central
+// mills at 0–1 wheat (AR-8).
+const SEED4_BARNS = "fixtures/autoplay/seed4-f0a-1200000.json.gz";
 const POLICY = { maxHousingLots: 24 } as const;
 
 function runWithAdvisor(state: GameState, ticks: number): GameState {
@@ -143,9 +147,17 @@ test("B7 seed 3 run 2: the walled town keeps house sites for its last lots, buil
   const churches = [...lots.buildings, ...lots.constructionSites.filter(isBuildingConstructionSite)].filter(site => site.kind === "church");
   assert.equal(churches.length, 1);
   assert.ok(!insideWall(lots, "church", churches[0]!), "the town's first church goes outside the wall");
-  const later = runWithAdvisor(lots, 48_000);
+  // F0-A: the town reaches L4 24/24 within the 48,000 ticks; a household's bread gap (winter meals ×1.2) may still
+  // hold one home a level below at the last tick, so the check is "reached", not "at the last tick".
+  const driver = createAutoplayTraceDriver({ id: "bot-recovery", source: "test", policy: POLICY });
+  let later = lots;
+  let reachedTick: number | null = null;
+  for (let step = 0; step < 48_000; step += 1) {
+    later = advanceTick(driver.apply(later));
+    if (reachedTick === null && housingLotCount(later) === 24 && later.houses.length === 24 && later.houses.every(house => house.level === 4)) reachedTick = later.tick;
+  }
   assert.equal(housingLotCount(later), 24);
-  assert.ok(later.houses.every(house => house.level === 4), "L4 24/24");
+  assert.ok(reachedTick !== null, "L4 24/24");
 });
 
 test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without the advisor hashes as before BOT-1", () => {
@@ -153,7 +165,34 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   for (let step = 0; step < 24_000; step += 1) state = advanceTick(state);
   const { pathCache: _pathCache, ...rest } = state;
   assert.equal(state.tick, 816_000);
-  // Recorded at 46f0a54 (trunk before BOT-1).
-  assert.equal(hashEconomyState(state), "475317b0065127d3");
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "8d2d3158b34ee536fc261cdcd6bb3193122242e17ce1eff0295f0b886eae79df");
+  // Recorded at 46f0a54 (trunk before BOT-1) as 475317b0065127d3 / 8d2d3158…; F0-A changes the rules on purpose
+  // (winter meals ×1.2, the failure ladder, seasons and eras in the state, spec FP-*), re-recorded at 2820a00.
+  assert.equal(hashEconomyState(state), "211657f1e619938a");
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "6a7827603ad2392f743ecbb326fecb29f4f4ccf78ba55d6255f49eee17068592");
+});
+
+test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {
+  const state = loadAutoplayFixture(SEED4_BARNS);
+  const barns = backedUpBarns(state);
+  assert.deepEqual(barns.map(barn => `${barn.tx},${barn.ty}`).sort(), ["11,28", "11,33"]);
+  const collector: BotRecoveryCollector = {};
+  const action = barnMillAction(state, (current, kind, accepts) => autoplayBuildAction(current, kind, accepts), collector);
+  assert.equal(action.kind, "place_building");
+  assert.equal(collector.recovery?.[0]?.kind, "barn_mill");
+  assert.ok(action.kind === "place_building" && Math.abs(action.tx - barns[0]!.tx) + Math.abs(action.ty - barns[0]!.ty) <= MILL_NEAR_BARN);
+  const driver = createAutoplayTraceDriver({ id: "bot-recovery", source: "test", policy: POLICY });
+  let current = state;
+  let reached: number | null = null;
+  for (let step = 0; step < 20_000 && reached === null; step += 1) {
+    current = advanceTick(driver.apply(current));
+    if (current.houses.filter(house => house.level === 4).length === 24) reached = current.tick;
+  }
+  assert.ok(reached !== null, "L4 24/24 within 20,000 ticks (it stood at 13–16 for 970,000 ticks)");
+  assert.deepEqual(backedUpBarns(current), []);
+});
+
+test("B8 a healthy town with a full barn right after its harvest gets no barn mill (no home has lost a level)", () => {
+  const state = loadAutoplayFixture(SEED4_BARNS);
+  const healthy = { ...state, houses: state.houses.map(house => ({ ...house, level: Math.max(house.level, house.builtLevel ?? house.level) })) };
+  assert.deepEqual(backedUpBarns(healthy), []);
 });

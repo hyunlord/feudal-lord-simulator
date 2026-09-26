@@ -1,0 +1,289 @@
+{
+ "baseline": "seeds/baseline-c96e6ed.json",
+ "command": "tsx scripts/efficientGrowthRun.ts 24 1200000 <out> <seed> --checkpoint",
+ "run1": {
+  "commit": "2820a00",
+  "seeds": {
+   "1": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 167232,
+    "stopReason": "target-scale-stable",
+    "finalTick": 297330,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 273331,
+    "finalStateSha256": "a80c23a8108a89fcd8fbaae9ad129e47b34f78de9674413ca446700432bace73"
+   },
+   "2": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 237592,
+    "stopReason": "target-scale-stable",
+    "finalTick": 342763,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 318764,
+    "finalStateSha256": "91810eb438c7cc4429b9f35f1cf03da219aa1108476850f6e653620606862bf5"
+   },
+   "3": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 169360,
+    "stopReason": "target-scale-stable",
+    "finalTick": 270052,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 246053,
+    "finalStateSha256": "b7f7e656423490f09ae9196de36cf5be833001d72c8a593ad20353f84558fb4a"
+   },
+   "4": {
+    "status": "regression",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": false,
+     "serviceGap": true,
+     "newDeadlock": false,
+     "zeroWheatRegression": null
+    },
+    "victoryTick": 224171,
+    "stopReason": "tick-budget",
+    "finalTick": 1200000,
+    "lots": 24,
+    "l4Houses": 14,
+    "stableSince": null,
+    "finalStateSha256": "cd489f40aa3281b4f96b6732a0ed9bcae8d06a8c633deb2ab97f253b4733b8f2"
+   },
+   "5": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 145110,
+    "stopReason": "target-scale-stable",
+    "finalTick": 231715,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 207716,
+    "finalStateSha256": "02721ad0a01a35c9d21cb5f636836e77ecd1d5bea43a3f1a55afb4ca86a2488b"
+   }
+  }
+ },
+ "run2": {
+  "commit": "8911323",
+  "seeds": {
+   "1": {
+    "status": "stopped by me after seeds 3 and 5 failed (gate 2 decided); not a verdict",
+    "lastProgress": {
+     "tick": 156000,
+     "lots": 24,
+     "l4": 0
+    },
+    "msPerTickAdvisor": 12.61
+   },
+   "2": {
+    "status": "stopped by me after seeds 3 and 5 failed (gate 2 decided); not a verdict",
+    "lastProgress": {
+     "tick": 132000,
+     "lots": 24,
+     "l4": 0
+    },
+    "msPerTickAdvisor": null
+   },
+   "3": {
+    "status": "regression",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": false,
+     "serviceGap": true,
+     "newDeadlock": false,
+     "zeroWheatRegression": null
+    },
+    "victoryTick": 100622,
+    "stopReason": "tick-budget",
+    "finalTick": 1200000,
+    "lots": 13,
+    "l4Houses": 13,
+    "stableSince": null,
+    "finalStateSha256": "804fe23cad838d9b51b007fafa3ce8b290efb2261f4762b4a1b205ee4b619cb9"
+   },
+   "4": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 139449,
+    "stopReason": "target-scale-stable",
+    "finalTick": 234823,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 210824,
+    "finalStateSha256": "97ebac7b28eb5ba9a6597c1682aad100646852c92f29f597ce1b142fbc4c80dc"
+   },
+   "5": {
+    "status": "regression",
+    "checks": {
+     "efficiency": false,
+     "baselineL4": false,
+     "serviceGap": true,
+     "newDeadlock": false,
+     "zeroWheatRegression": null
+    },
+    "victoryTick": 180330,
+    "stopReason": "tick-budget",
+    "finalTick": 1200000,
+    "lots": 24,
+    "l4Houses": 19,
+    "stableSince": null,
+    "finalStateSha256": "f1b2fc44d4caf57aae2cab47478d793bb7ad4c0a0a7dcabdf46b417a284606a7"
+   }
+  }
+ },
+ "seed4Variants": {
+  "note": "run 1 code plus one switch each, seed 4 only (diagnosis, not guardrail runs)",
+  "yearNeedWithWinter": {
+   "status": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "victoryTick": 139449,
+   "stopReason": "target-scale-stable",
+   "finalTick": 234823,
+   "lots": 24,
+   "l4Houses": 24,
+   "stableSince": 210824,
+   "finalStateSha256": "97ebac7b28eb5ba9a6597c1682aad100646852c92f29f597ce1b142fbc4c80dc"
+  },
+  "noAutumnStep": {
+   "lastProgress": "L4 0/24 at 192,000 ticks when stopped"
+  },
+  "noWinterRation": {
+   "lastProgress": "L4 0/24 at 144,000 ticks when stopped"
+  }
+ },
+ "run3": {
+  "commit": "322d36f",
+  "note": "x1.05 reverted (run 1 advisor) plus barn_mill (AR-8); new baseline seeds/baseline-322d36f.json",
+  "seeds": {
+   "1": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 167232,
+    "stopReason": "target-scale-stable",
+    "finalTick": 297330,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 273331,
+    "finalStateSha256": "25e45fbd4f4876e61a11720d0a4a3bb772ab67f0c817290c72746af69201492f"
+   },
+   "2": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 237592,
+    "stopReason": "target-scale-stable",
+    "finalTick": 342763,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 318764,
+    "finalStateSha256": "32b09aeaa919f77851c4014138b17d07dc855c4e00b3a8d76a5d615703e32a07"
+   },
+   "3": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 222484,
+    "stopReason": "target-scale-stable",
+    "finalTick": 305157,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 281158,
+    "finalStateSha256": "98ae088082e8cd3314093c8e57d28642c3d4fa8bda6f8da3667abfe59f39672e"
+   },
+   "4": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 208716,
+    "stopReason": "target-scale-stable",
+    "finalTick": 238190,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 214191,
+    "finalStateSha256": "679820f92cddf67aab6595a4a5c6b6019a8b0b75ecc17e61dd772a83d1717aa1"
+   },
+   "5": {
+    "status": "passed",
+    "checks": {
+     "efficiency": true,
+     "baselineL4": true,
+     "serviceGap": true,
+     "newDeadlock": true,
+     "zeroWheatRegression": true
+    },
+    "victoryTick": 145110,
+    "stopReason": "target-scale-stable",
+    "finalTick": 231715,
+    "lots": 24,
+    "l4Houses": 24,
+    "stableSince": 207716,
+    "finalStateSha256": "5f099ab3a55dd08c50162428442ad28b1bcbeabe8d90ab84504334f7c5322240"
+   }
+  }
+ },
+ "seed4BarnMillDiagnostic": {
+  "commit": "c949041",
+  "note": "seed 4 alone before run 3, stopped once it matched: L4 24/24 at 216,000 ticks (run 1: L4 0 at 216,000, 13 at 228,000)"
+ }
+}

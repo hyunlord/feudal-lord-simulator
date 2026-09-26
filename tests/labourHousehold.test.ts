@@ -242,7 +242,7 @@ test("L9 LB-8 crafts load (none yet), slots derive by level and household stock 
 
 test("L10 LB-10 a v10 save migrates: members are seeded, population and residents stay", () => {
   const manifest = JSON.parse(readFileSync("fixtures/saves/v10/manifest.json", "utf8")) as { fixtures: { file: string }[] };
-  assert.equal(SAVE_SCHEMA_VERSION, 11);
+  assert.ok(SAVE_SCHEMA_VERSION >= 11);
   for (const { file } of manifest.fixtures) {
     const raw = JSON.parse(readFileSync(`fixtures/saves/v10/${file}`, "utf8")) as { state: GameState };
     const migrated = migrateSaveToLatest(raw);

@@ -23,12 +23,14 @@ export type Condition =
   | { readonly kind: "building_count_at_least"; readonly building: BuildingKind; readonly value: number }
   | { readonly kind: "spendable_resource_at_least"; readonly resource: "timber" | "stone"; readonly value: number }
   | { readonly kind: "treasury_coin_at_least"; readonly value: number }
-  | { readonly kind: "settlement_empty_for"; readonly ticks: number };
+  | { readonly kind: "settlement_empty_for"; readonly ticks: number }
+  /** FP-5: housing lots (a house counts its lot area, as the lot cap does). */
+  | { readonly kind: "housing_lots_at_least"; readonly value: number };
 
 export const CONDITION_KINDS = [
   "population_at_least", "supplied_percent_at_least", "occupied_l4_lots_at_least", "stage_at_least",
   "wall_completed", "stone_wall_completed", "building_count_at_least", "spendable_resource_at_least",
-  "treasury_coin_at_least", "settlement_empty_for",
+  "treasury_coin_at_least", "settlement_empty_for", "housing_lots_at_least",
 ] as const satisfies readonly Condition["kind"][];
 
 /** All conditions must hold; `holdTicks` > 0 means they must hold for that many consecutive ticks. */
@@ -49,7 +51,11 @@ export interface EraDef {
   readonly id: string;
   /** Player-facing name, taken from `scenarioCopy.ko.ts`. */
   readonly name: string;
-  readonly enterWhen: { readonly yearAtLeast?: number; readonly state?: ConditionSet };
+  /**
+   * FP-5 (F2): the era comes when the calendar reaches `yearAtLeast` and the town meets `state` (its readiness).
+   * Unmet, it waits at most `maxDelayYears` more years and then comes anyway (forced).
+   */
+  readonly enterWhen: { readonly yearAtLeast?: number; readonly state?: ConditionSet; readonly maxDelayYears?: number };
   /** Published into the B1 effect pipe; empty until C-stage content defines values. */
   readonly effects: readonly EffectSpec[];
 }

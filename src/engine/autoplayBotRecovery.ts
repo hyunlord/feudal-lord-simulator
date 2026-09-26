@@ -29,7 +29,7 @@ import type { GameState } from './engine.types';
  * mended by placement (seed 3 at 792,000 ticks has no free granary site inside the wall; seed 2 at 408,000 has no free
  * market site that reaches all seven homes, and a third market would pass the facility cap).
  */
-export type BotRecoveryKind = 'granary_gap' | 'market_gap' | 'market_relocation' | 'timber_demand' | 'interior_plots';
+export type BotRecoveryKind = 'granary_gap' | 'market_gap' | 'market_relocation' | 'timber_demand' | 'interior_plots' | 'barn_mill';
 export interface BotRecoveryDiagnostic {
   readonly kind: BotRecoveryKind;
   readonly houses: readonly string[];
