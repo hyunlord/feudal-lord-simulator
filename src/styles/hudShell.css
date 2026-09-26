@@ -41,6 +41,8 @@
 .app-shell .goal-chip-rail .goal-card-count { font-size: 12px; }
 .app-shell .goal-chip-rail .goal-card-actions { flex: 0 0 auto; }
 .app-shell .goal-chip-rail .goal-card-cta { min-height: 44px; padding: 4px 10px; font-size: 13px; }
+/* Placement keeps only the tutorial's card (US-D5), not the log opener. */
+.app-shell .goal-chip-rail[data-placing="true"] .goal-drawer-toggle { display: none; }
 /* The goal log opener is its icon alone here (its name stays the button's text for assistive tech). */
 .app-shell .goal-chip-rail .goal-drawer-toggle { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0; font-size: 0; }
 
@@ -96,7 +98,7 @@
 /* The build drawer (S-21): bottom centre, only while open; categories as tabs, compact cards. */
 .app-shell .build-drawer.court-console {
   left: 50%; right: auto; bottom: 8px; display: none; grid-template-columns: none;
-  width: auto; max-width: min(760px, calc(100% - 16px)); height: auto; padding: 8px; transform: translateX(-50%);
+  width: auto; max-width: min(760px, calc(100% - 16px)); height: auto; padding: 6px; transform: translateX(-50%);
 }
 .app-shell .build-drawer.court-console[data-open="true"] { display: block; }
 .app-shell .build-drawer .build-menu { height: auto; }
@@ -104,8 +106,8 @@
 .app-shell .build-drawer .build-menu-categories:not([hidden]) { display: flex; flex-wrap: wrap; gap: 4px; }
 .app-shell .build-drawer .build-menu-category { min-height: 44px; padding: 0 8px; font-size: 13px; }
 .app-shell .build-drawer .build-menu-tools:not([hidden]) { display: flex; flex-wrap: wrap; gap: 6px; }
-.app-shell .build-drawer .build-tool { flex: 0 0 96px; width: 96px; min-width: 96px; min-height: 96px; padding: 4px; gap: 2px; }
-.app-shell .build-drawer .build-tool-art img { width: 56px; height: 40px; object-fit: contain; }
+.app-shell .build-drawer .build-tool { flex: 0 0 88px; width: 88px; min-width: 88px; min-height: 84px; padding: 3px; gap: 1px; }
+.app-shell .build-drawer .build-tool-art img { width: 52px; height: 36px; object-fit: contain; }
 .app-shell .build-drawer .build-tool-purpose { display: none; }
 .app-shell .build-drawer :is(.build-seal-label, .build-tool-cost, .build-tool-lock, .build-tool-shortfall) { font-size: 12px; line-height: 16px; }
 .app-shell .build-drawer .build-menu-quick-road { display: none; }
@@ -134,11 +136,11 @@
 .app-shell .slot-panel-close { font-size: 22px; line-height: 1; }
 
 /* The placement chip beside the cursor (S-53): three short lines, 240 px wide. */
-.app-shell .prediction-panel.placement-chip { width: 240px; padding: 6px 10px; font-size: 13px; line-height: 18px; }
+.app-shell .prediction-panel.placement-chip { width: 232px; padding: 4px 8px; font-size: 13px; line-height: 17px; }
 .app-shell .placement-chip p { display: flex; gap: 4px; align-items: center; margin: 0; }
 .app-shell .placement-chip-title { font-weight: 700; }
 .app-shell .placement-chip-ledger[data-short="true"], .app-shell .placement-chip-reason { color: var(--palette-vermilion); font-weight: 600; }
 
-/* The map's selection card in the panel slot (S-25): right side, 320 x 420 at most (the 18 % budget with the HUD). */
-.app-shell .diagnostic-card-position { inset: 66px 8px auto auto !important; width: min(320px, calc(100% - 16px)); }
-.app-shell .diagnostic-card-position .diagnostic-card { max-height: min(420px, calc(100vh - 150px)); overflow-y: auto; }
+/* The map's selection card in the panel slot (S-25): right side, 312 x 400 at most (the 18 % budget with the HUD, with room for Linux font metrics). */
+.app-shell .diagnostic-card-position { inset: 66px 8px auto auto !important; width: min(312px, calc(100% - 16px)); }
+.app-shell .diagnostic-card-position .diagnostic-card { max-height: min(400px, calc(100vh - 150px)); overflow-y: auto; }

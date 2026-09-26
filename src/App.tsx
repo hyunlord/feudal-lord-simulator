@@ -461,7 +461,7 @@ export function App() {
             extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
         </div>
         {visibility.crisis ? <CrisisIcons state={guidanceSnapshotRef.current.state} onInspect={openInspector} /> : null}
-        {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail}>
+        {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
           <GoalCards tutorial={tutorial} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
         </aside> : null}
         {/* S-30: one panel slot — the goal log, the population log, the inspector or the ledger (the build drawer is below). */}

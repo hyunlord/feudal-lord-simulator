@@ -74,6 +74,8 @@ async function open(browser, state, dismiss) {
   if (dismiss) {
     if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
     await page.keyboard.press('Escape');
+    // UX-3 S-31: Esc on the normal screen opens the pause menu; the audit starts without it.
+    if (await page.locator('.pause-menu').count()) await page.keyboard.press('Escape');
     await page.waitForTimeout(400);
   }
   return { context, page };
@@ -145,6 +147,7 @@ async function main() {
     await cardPage.waitForTimeout(800);
     if (await cardPage.locator('.welcome-dismiss-layer').count()) await cardPage.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
     await cardPage.keyboard.press('Escape'); await cardPage.waitForTimeout(600);
+    if (await cardPage.locator('.pause-menu').count()) { await cardPage.keyboard.press('Escape'); await cardPage.waitForTimeout(300); }
     let opened = false;
     for (const [dx, dy] of [[0, 0], [0, -12], [0, -24], [8, -8], [-8, -8], [0, 8]]) {
       await cardPage.mouse.click(WIDTH / 2 + dx, HEIGHT / 2 + dy); await cardPage.waitForTimeout(400);
