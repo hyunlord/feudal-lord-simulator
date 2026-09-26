@@ -1,11 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-26(F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(BOT-2 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **BOT-2 가드레일 5/5 되찾기 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 봇만 · 규칙 diff 0 · 렌더 0줄, 검증 DGX): [보고서](verification/bot2-wall/REPORT.md), [복구 명세](design/autoplay-recovery.md) AR-10·AR-11, 결정 BT9·BT10, 새 기준선 [`seeds/baseline-90fb216.json`](../seeds/baseline-90fb216.json).
+  - 성벽 여유(AR-11): 정책보다 적은 필지로 선포할 때 성 안 자유 집 칸 ≥ 남은 필지 × 6 · 길 ≤ 30 %, 없으면 트인 쪽으로 늘인 벽. seed 3 알려진 정지(EV8·FC11) 해소 — 204칸 목책, 296,548틱 L4 24/24.
+  - 통나무 넘침(AR-10)은 F0-C1 복구 그대로, 시나리오 B10 추가. 목책 "확장 선포"는 규칙에 없음(다음 후보). 창고 받는 품목 토글(FC10)은 렌더·UX 몫으로 남음.
 
 - **F0-C2 기록 원장 v0 — 관문 ①②③⑤ 통과, ④ 가드레일 4/5(seed 3 알려진 정지 FC11, 나머지 4 seed는 F0-C1과 틱까지 같음)·성능 +≤3 %, 사용자 지시(4/5면 알려진 정지로 병합)에 따라 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄·봇 0줄, 검증 DGX): [기록 원장 명세](design/history-ledger.md) HL-1~HL-9, [보고서](verification/f0c2-history/REPORT.md), 결정 HL1~HL8.
   - append-only `HistoryRecord`(템플릿 id + 파라미터, 저장 v15): 명령 12종(일상 7종은 계절 묶음, 큰 결정 5종은 대안·예측, 2계절 뒤 실제), 사건·시대·장 끝, 이정표, 계절 결산과 큰 변화, 가구 생애. 계절 끝 128²·시대 256² 지도 축소판.
@@ -178,7 +182,6 @@
 
 ## 다음 작업
 
-- **BOT-2: 목책 둘레 크기(LB-12) — 필지당 성 안 면적을 넉넉히, 성 안 길 비율 상한. 그리고 통나무 넘침.** 작은 성벽 교착이 F0-A 2회차, F0-B 1회차, F0-C1 1~3회차 seed 3에서 나왔다(결정 EV8·FC11). 통나무가 창고를 채워 채석장이 안 서는 정지(F0-C1 1·2회차 seed 5)는 봇 복구 AR-10(FC9)으로 막았지만, 창고 품목 칸 규칙·받는 품목 토글(FC10 메모)과 함께 BOT-2 범위(사용자 지시). 다음 엔진 작업(F0-C2 끝남).
 
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
