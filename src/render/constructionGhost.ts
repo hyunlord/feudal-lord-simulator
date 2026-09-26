@@ -15,7 +15,7 @@ import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 // foundation stages) the completed building's art is laid over the stakes at GHOST_ALPHA, and the sign post carries
 // the building's first-session icon. The ghost is the art the finished building will draw (the same Building shape
 // the engine's completion makes: constructionLifecycle.buildingFromSite) with the frame's sprite options (camera
-// culling); a kind without that art (the storehouse is drawn in code) draws no ghost.
+// culling); a kind with no art at all draws no ghost.
 export const GHOST_ALPHA = 0.22;
 const GHOST_STAGES = 2;
 
@@ -40,7 +40,7 @@ export function drawConstructionGhost(context: CanvasRenderingContext2D, state: 
   const drawn = building.kind === "house" ? drawHistoricalHouse(context, building, 0)
     : building.kind === "farmstead" ? drawFarmsteadSprite(context, building, state, options)
       : drawHistoricalFacility(context, building, state)
-        || drawWorldSprite(context, buildingSpriteKey(building, 0), building.tx, building.ty, options); // e.g. the granary
+        || drawWorldSprite(context, buildingSpriteKey(building, 0), building.tx, building.ty, options); // e.g. the storehouse
   context.restore();
   return drawn;
 }

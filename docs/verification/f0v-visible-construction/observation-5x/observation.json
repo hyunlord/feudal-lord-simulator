@@ -1,0 +1,274 @@
+{
+ "url": "http://127.0.0.1:4241/",
+ "kind": "farmstead",
+ "speed": "5배속",
+ "site": {
+  "id": "construction-site-000003",
+  "kind": "farmstead",
+  "tx": 48,
+  "ty": 40,
+  "delivered": {
+   "timber": 4
+  },
+  "required": {
+   "timber": 20
+  },
+  "builderTicks": 0,
+  "requiredBuilderTicks": 400,
+  "stall": "awaiting_materials",
+  "builders": 0
+ },
+ "shots": [
+  {
+   "file": "01-placed.jpg",
+   "note": "site placed (paused), delivered {\"timber\":4} of {\"timber\":20}"
+  },
+  {
+   "file": "02-delivery-20.jpg",
+   "note": "delivered share 0.2"
+  },
+  {
+   "file": "03-delivery-60.jpg",
+   "note": "delivered share 0.6"
+  },
+  {
+   "file": "04-stage-0.jpg",
+   "note": "delivered share 1"
+  },
+  {
+   "file": "05-stage-1.jpg",
+   "note": "stage 1"
+  },
+  {
+   "file": "06-stage-2.jpg",
+   "note": "stage 2"
+  },
+  {
+   "file": "07-stage-3.jpg",
+   "note": "stage 3"
+  },
+  {
+   "file": "08-complete-0.3s.jpg",
+   "note": "completion sequence +300 ms"
+  },
+  {
+   "file": "09-complete-0.7s.jpg",
+   "note": "completion sequence +700 ms"
+  },
+  {
+   "file": "10-complete-1.1s.jpg",
+   "note": "completion sequence +1100 ms"
+  }
+ ],
+ "rows": [
+  {
+   "ms": 670,
+   "tick": 170,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 822,
+   "tick": 181,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 924,
+   "tick": 194,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 1054,
+   "tick": 208,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 1692,
+   "tick": 213,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 1797,
+   "tick": 231,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 27,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 1951,
+   "tick": 246,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 72,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 2053,
+   "tick": 258,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 108,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 2191,
+   "tick": 271,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 147,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 2293,
+   "tick": 281,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 177,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 2399,
+   "tick": 291,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 207,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 2502,
+   "tick": 303,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 243,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 2639,
+   "tick": 316,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 282,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 2743,
+   "tick": 326,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 309,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 2851,
+   "tick": 336,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 342,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 2991,
+   "tick": 351,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 387,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 3612,
+   "tick": 356,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 399,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 3720,
+   "tick": 376,
+   "completed": true
+  }
+ ]
+}

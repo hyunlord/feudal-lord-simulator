@@ -1,0 +1,45 @@
+{
+ "url": "http://127.0.0.1:4241/",
+ "naturalCounts": {
+  "spring_ambience": 1,
+  "cart_loop": 1,
+  "place_ok": 6,
+  "unload_wood": 13,
+  "hammer_2": 16,
+  "stage_thud": 13,
+  "hammer_3": 12,
+  "hammer_1": 14,
+  "complete": 4,
+  "alert_info": 4,
+  "alert_warn": 1,
+  "alert_urgent": 2
+ },
+ "loops": [
+  "spring"
+ ],
+ "manual": {
+  "place_ok": true,
+  "place_cancel": true,
+  "place_blocked": true,
+  "alert_info": true,
+  "alert_warn": true,
+  "alert_urgent": true,
+  "hammer_1": true,
+  "hammer_2": true,
+  "hammer_3": true,
+  "unload_wood": true,
+  "unload_stone": true,
+  "stage_thud": true,
+  "complete": true,
+  "cart_loop": true,
+  "spring_ambience": true
+ },
+ "manualPlayed": 15,
+ "mute": {
+  "settings": {
+   "volume": 0.7,
+   "muted": true
+  },
+  "stored": "{\"volume\":0.7,\"muted\":true}"
+ }
+}

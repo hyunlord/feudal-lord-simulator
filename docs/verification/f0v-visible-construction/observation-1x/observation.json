@@ -1,0 +1,1126 @@
+{
+ "url": "http://127.0.0.1:4241/",
+ "kind": "farmstead",
+ "speed": "1배속",
+ "site": {
+  "id": "construction-site-000003",
+  "kind": "farmstead",
+  "tx": 48,
+  "ty": 40,
+  "delivered": {
+   "timber": 4
+  },
+  "required": {
+   "timber": 20
+  },
+  "builderTicks": 0,
+  "requiredBuilderTicks": 400,
+  "stall": "awaiting_materials",
+  "builders": 0
+ },
+ "shots": [
+  {
+   "file": "01-placed.jpg",
+   "note": "site placed (paused), delivered {\"timber\":4} of {\"timber\":20}"
+  },
+  {
+   "file": "02-delivery-20.jpg",
+   "note": "delivered share 0.2"
+  },
+  {
+   "file": "03-delivery-60.jpg",
+   "note": "delivered share 0.6"
+  },
+  {
+   "file": "04-stage-0.jpg",
+   "note": "delivered share 1"
+  },
+  {
+   "file": "05-stage-1.jpg",
+   "note": "stage 1"
+  },
+  {
+   "file": "06-stage-2.jpg",
+   "note": "stage 2"
+  },
+  {
+   "file": "07-stage-3.jpg",
+   "note": "stage 3"
+  },
+  {
+   "file": "08-complete-0.3s.jpg",
+   "note": "completion sequence +300 ms"
+  },
+  {
+   "file": "09-complete-0.7s.jpg",
+   "note": "completion sequence +700 ms"
+  },
+  {
+   "file": "10-complete-1.1s.jpg",
+   "note": "completion sequence +1100 ms"
+  }
+ ],
+ "rows": [
+  {
+   "ms": 707,
+   "tick": 173,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 842,
+   "tick": 176,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 945,
+   "tick": 178,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1050,
+   "tick": 179,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1152,
+   "tick": 182,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1255,
+   "tick": 184,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1357,
+   "tick": 186,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1459,
+   "tick": 188,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1561,
+   "tick": 190,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1663,
+   "tick": 192,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1767,
+   "tick": 194,
+   "delivered": {
+    "timber": 4
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.2,
+   "stage": 0
+  },
+  {
+   "ms": 1871,
+   "tick": 196,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 2008,
+   "tick": 199,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 2113,
+   "tick": 201,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 2218,
+   "tick": 203,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 2320,
+   "tick": 205,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 2422,
+   "tick": 207,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 2524,
+   "tick": 209,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 2626,
+   "tick": 211,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 2728,
+   "tick": 213,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 3345,
+   "tick": 214,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 3447,
+   "tick": 221,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 3561,
+   "tick": 223,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 3664,
+   "tick": 225,
+   "delivered": {
+    "timber": 12
+   },
+   "builderTicks": 0,
+   "builders": 0,
+   "stall": "awaiting_materials",
+   "share": 0.6,
+   "stage": 0
+  },
+  {
+   "ms": 3768,
+   "tick": 227,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 6,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 3909,
+   "tick": 230,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 15,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4011,
+   "tick": 232,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 21,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4116,
+   "tick": 234,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 27,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4218,
+   "tick": 236,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 33,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4321,
+   "tick": 238,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 39,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4422,
+   "tick": 240,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 45,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4524,
+   "tick": 242,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 51,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4626,
+   "tick": 244,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 57,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4728,
+   "tick": 246,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 63,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4830,
+   "tick": 248,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 69,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 4937,
+   "tick": 250,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 75,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 5040,
+   "tick": 253,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 84,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 5142,
+   "tick": 255,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 90,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 5243,
+   "tick": 257,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 96,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 0
+  },
+  {
+   "ms": 5345,
+   "tick": 259,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 102,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 5506,
+   "tick": 262,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 111,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 5608,
+   "tick": 264,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 117,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 5711,
+   "tick": 266,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 123,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 5813,
+   "tick": 268,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 129,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 5916,
+   "tick": 270,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 135,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6019,
+   "tick": 272,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 141,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6121,
+   "tick": 274,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 147,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6222,
+   "tick": 276,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 153,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6323,
+   "tick": 278,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 159,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6426,
+   "tick": 280,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 165,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6527,
+   "tick": 282,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 171,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6630,
+   "tick": 284,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 177,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6736,
+   "tick": 286,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 183,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6840,
+   "tick": 289,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 192,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 6942,
+   "tick": 291,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 198,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 7044,
+   "tick": 293,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 204,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 7145,
+   "tick": 295,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 210,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 7250,
+   "tick": 297,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 216,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 1
+  },
+  {
+   "ms": 7353,
+   "tick": 299,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 222,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 7503,
+   "tick": 302,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 228,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 7606,
+   "tick": 304,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 237,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 7707,
+   "tick": 306,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 243,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 7810,
+   "tick": 308,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 249,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 7912,
+   "tick": 310,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 255,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8016,
+   "tick": 312,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 261,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8119,
+   "tick": 314,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 267,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8221,
+   "tick": 316,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 273,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8323,
+   "tick": 318,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 279,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8425,
+   "tick": 320,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 285,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8528,
+   "tick": 322,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 291,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8630,
+   "tick": 324,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 297,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8737,
+   "tick": 326,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 303,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8839,
+   "tick": 329,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 312,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 8942,
+   "tick": 331,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 318,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 9043,
+   "tick": 333,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 324,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 9145,
+   "tick": 335,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 330,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 9246,
+   "tick": 337,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 336,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 2
+  },
+  {
+   "ms": 9351,
+   "tick": 339,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 342,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 9502,
+   "tick": 342,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 348,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 9605,
+   "tick": 344,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 357,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 9707,
+   "tick": 346,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 363,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 9809,
+   "tick": 348,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 369,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 9911,
+   "tick": 350,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 375,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 10013,
+   "tick": 352,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 381,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 10117,
+   "tick": 354,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 387,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 10219,
+   "tick": 356,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 393,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 10321,
+   "tick": 358,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 399,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 10906,
+   "tick": 359,
+   "delivered": {
+    "timber": 20
+   },
+   "builderTicks": 399,
+   "builders": 3,
+   "stall": "none",
+   "share": 1,
+   "stage": 3
+  },
+  {
+   "ms": 11008,
+   "tick": 366,
+   "completed": true
+  }
+ ]
+}

@@ -14,6 +14,12 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // plume; an empty house, or residents with no bread (world sign S4, worldSigns.ts), give none. The mill's bread oven smokes while the mill runs (workers, not paused
 // or unpaid, wheat in hand or baking under way). Presentation only: read from the state, nothing stored.
 
+// The plume moves on the game clock, not the wall clock: a paused frame is still (the C25 browser board opens each
+// view twice and hashes it), 5x runs the smoke five times faster. SMOKE_TICK_MS is the 1x tick seen in the F0-V
+// observation (192 ticks in 10.3 s, about 54 ms).
+const SMOKE_TICK_MS = 54;
+export function smokeClockMs(tick: number): number { return tick * SMOKE_TICK_MS; }
+
 export function houseSmokeStrength(state: Pick<GameState, "houses">, building: Pick<Building, "id">): number {
   const house = state.houses.find(candidate => candidate.buildingId === building.id);
   if (house === undefined || house.residents <= 0 || house.breadStock <= 0) return 0;
