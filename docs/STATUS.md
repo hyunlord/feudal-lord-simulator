@@ -2,6 +2,9 @@
 
 갱신: 2026-09-26(F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
+**로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
+- **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
+
 ## 현재 단계
 
 - **F0-C1 흐름 뼈대 3 — 대기근·첫 청원·연대기·1장 끝: 관문 ①~⑤ 통과, 가드레일 4/5(3회차, seed 3 알려진 정지 FC11), 사용자 지시로 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [1장 명세](design/flow-chapter-one.md) FC-1~FC-7, [보고서](verification/f0c1-famine/REPORT.md), 결정 FC1~FC11.
@@ -25,7 +28,7 @@
 - **R0 사용자 판정 두 가지 — 본선 병합**(Claude Code, 렌더·테스트·스크립트·문서만, 엔진 0줄): [보고서](verification/r0-render-fixes/REPORT.md), 결정 R0-1·R0-2.
   - 세계 신호 S2·S4·S8은 조건이 배급 한 주기(250틱) 이상 이어질 때만 뜬다. 새 게임 첫 화면의 연기 없는 집 고리는 없어졌다.
   - 완성 그림 vs 발판 자동 검사 58장이 본선 32장 어긋남에서 0장이 됐다. 창고·곡창은 발판을 채우고, 시설·쌍집·우물·벌목장·헛간은 뜨지 않는다.
-- **REMOTE-1 DGX 원격 실행기 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 스크립트·문서만, 게임 코드 0줄): `scripts/remote/run.sh`·`npm run remote:{test,guardrail,browser,perf,clone-check,setup}`. 작업 트리를 DGX `~/fls-runs/<label>-<sha>`로 보내 `fls-runs.slice`(48GB·12코어·nice 10) 안에서 돌리고 결과만 가져온다. DGX 전체 회귀 2,944/2,944, Part7 10/10, 깨끗한 클론 `6c5088f` 통과. 성능 관문은 DGX 기준선 `perf/baseline-dgx-1326765.json`과만 비교. [사용법](REMOTE_RUNS.md), [보고서](verification/remote1-dgx-runner/REPORT.md), AGENTS.md "원격 실행" 규칙.
+- **REMOTE-1 DGX 원격 실행기 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 스크립트·문서만, 게임 코드 0줄): `scripts/remote/run.sh`·`npm run remote:{test,guardrail,browser,perf,clone-check,setup}`. 작업 트리를 DGX `~/fls-runs/<label>-<sha>`로 보내 `fls-runs.slice`(48GB·12코어·nice 10) 안에서 돌리고 결과만 가져온다. DGX 전체 회귀 2,944/2,944, Part7 10/10, 깨끗한 클론 `6c5088f` 통과. 게임은 DGX `~/fls-runs/_tools`의 Node 24.21.0 LTS로 돈다(원격 실행·플레이 서버, 시스템 Node 20은 그대로). `485a3ce`에서 전체 회귀 2,954/2,954, 깨끗한 클론 통과. 성능 관문은 DGX 기준선 `perf/baseline-dgx-1326765.json`과만 비교. [사용법](REMOTE_RUNS.md), [보고서](verification/remote1-dgx-runner/REPORT.md), AGENTS.md "원격 실행" 규칙.
 - **F0-V 가시성 뼈대 1 — 건설이 읽히게: 관문 ①~⑧ 통과, ⑨ 사용자 10분 판정 대기, 본선 병합**(Claude Code, 렌더·UI·소리·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population 0줄): [가시성 명세](design/visible-construction.md) VC-1~VC-8, [보고서](verification/f0v-visible-construction/REPORT.md), 결정 F0V-1~F0V-6.
   - 공사장 팻말: 완성 높이 기준점 하나에 이름·4칸 bar(25/55/85 %)·모자란 자재 또는 달력 도착점(앞당겨지기만)·막힘 탭(길·자재·일꾼)이 붙는다. 줌아웃에서는 같은 사유를 `×N`으로 묶는다.
   - 공사장 그림: 목재·석재 더미 1~3단, 표지와 건물 아이콘, 완성 유령 22 %, 200 ms 크로스페이드와 먼지, 1.2 s 완공(5배속은 먼지·소리만), 완공 토스트 묶음, 선택 공사장의 워커·수레꾼 연결선.

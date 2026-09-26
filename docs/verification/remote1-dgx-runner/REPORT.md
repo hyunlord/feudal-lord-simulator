@@ -37,5 +37,5 @@ Claude Code 작업이다. 스크립트·문서만 바꿨고 게임 코드는 0�
 - **PLAY.md:** 지원 버전을 "Node.js 22 이상(22.x는 22.12 이상, 권장 24 LTS)"으로 고쳤다.
 
 ## 발견
-- **Node 20과 전역 WebSocket:** DGX의 Node 20에는 전역 `WebSocket`이 없어서 CDP 테스트 2건이 실패했다. 지금은 원격 실행에서 `--experimental-websocket`으로 맞춘다. PLAY.md는 Node 20.19 이상을 지원한다고 적는다 → 다음 후보(Node 22 이상으로 올리기).
+- **(해결됨 → 위 Node 24 전환) Node 20과 전역 WebSocket:** DGX의 Node 20에는 전역 `WebSocket`이 없어서 CDP 테스트 2건이 실패했다. 지금은 원격 실행에서 `--experimental-websocket`으로 맞춘다. PLAY.md는 Node 20.19 이상을 지원한다고 적는다 → 다음 후보(Node 22 이상으로 올리기).
 - **`CHROME_PATH`:** 이 값을 넣으면 기본 경로를 검사하는 CLI 테스트 3건이 깨진다. 그래서 원격에서는 설정하지 않고 `/usr/bin/google-chrome` 링크를 쓴다.

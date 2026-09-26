@@ -20,7 +20,9 @@
     "remote:guardrail": "scripts/remote/run.sh --task guardrail",
     "remote:browser": "scripts/remote/run.sh --task browser",
     "remote:clone-check": "scripts/remote/run.sh --task clone-check",
-    "remote:perf": "scripts/remote/run.sh --task perf"
+    "remote:perf": "scripts/remote/run.sh --task perf",
+    "hooks:install": "sh scripts/git-hooks/install.sh",
+    "postinstall": "test ! -f scripts/git-hooks/install.sh || sh scripts/git-hooks/install.sh"
   },
   "dependencies": {
     "@fontsource/noto-sans-kr": "5.3.0",
