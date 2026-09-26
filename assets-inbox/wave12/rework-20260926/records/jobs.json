@@ -1,0 +1,452 @@
+[
+  {
+    "id": "inn_a",
+    "group": "A",
+    "footprint": [
+      3,
+      2
+    ],
+    "canvas": [
+      352,
+      280
+    ],
+    "target_width": 320,
+    "description": "Courtyard inn with stable, horse picture sign, two-storey hall, no chimney",
+    "active": "windowlight_horse",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference."
+    ]
+  },
+  {
+    "id": "inn_b",
+    "group": "A",
+    "footprint": [
+      3,
+      2
+    ],
+    "canvas": [
+      352,
+      280
+    ],
+    "target_width": 320,
+    "description": "Same wealth and materials as inn_a. Change roof pitch, courtyard gate position and small rear lean-to; keep open courtyard, one-storey stable wing and pictorial horse sign. Two-storey hall, NO chimney.",
+    "active": "windowlight_horse",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference."
+    ]
+  },
+  {
+    "id": "cordwainer",
+    "group": "B",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      137,
+      137
+    ],
+    "target_width": 118,
+    "description": "One ordinary L2 two-storey street shoemaker house matching supplied house EXACT wealth and human proportions. Front ground floor counter has TWO CLEAR PAIRS OF BROWN LEATHER SHOES as functional identifying detail. Above counter, large single dark oak closed shop shutter ready to hinge open. Upper limeplaster dwelling, weathered oak, flat pegtiles. NO chimney. Strong simple shoe silhouettes.",
+    "active": "open_shutter_shoes",
+    "parts": [
+      "OPEN wooden shop shutter with both leaves visibly folded outward around DARK OPEN INTERIOR, no wall.",
+      "A large FRONT DISPLAY COUNTER with SIX substantial medieval brown leather SHOES, arranged prominently, light buff countercloth, clearly readable silhouette."
+    ]
+  },
+  {
+    "id": "tailor",
+    "group": "B",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      137,
+      137
+    ],
+    "target_width": 118,
+    "description": "One ordinary L2 two-storey street TAILOR house matching supplied house wealth/scale. Front ground floor counter has two broad folded lengths of muted dull red and dull olive CLOTH with hanging draped fabric. Above counter a large plain oak CLOSED shop shutter ready to hinge open. Simple upper limeplaster dwelling, flat pegtiles. NO chimney.",
+    "active": "open_shutter_cloth",
+    "parts": [
+      "OPEN wooden shop shutter with both leaves visibly folded outward around DARK OPEN INTERIOR, no wall.",
+      "A large FRONT DISPLAY COUNTER prominently draped with broad RUSSET RED and muted OLIVE lengths of CLOTH, big simple folds, cloth hangs over front."
+    ]
+  },
+  {
+    "id": "tannery_a",
+    "group": "B",
+    "footprint": [
+      2,
+      2
+    ],
+    "canvas": [
+      288,
+      228
+    ],
+    "target_width": 244,
+    "description": "Small town-edge TANNERY yard intended beside a stream. Three recessed round timber vats and pits, sturdy drying rack holding TWO irregular animal HIDES (tan/brown, no blood), low thatched open work shed at back, narrow wooden water trough outlet at right. No river or landscape baked in, no ground platform; only small ground patches immediately around pit rims. Two tile square workspace. NO chimney.",
+    "active": "hide_steam",
+    "parts": [
+      "A BROAD pale-grey STEAM cloud rising from one narrow bottom point, pronounced readable vapour, no container or ground.",
+      "THREE LARGE animal HIDES hanging together from a light oak drying beam, cream and tawny silhouettes, no blood, large clear shapes."
+    ]
+  },
+  {
+    "id": "tannery_b",
+    "group": "B",
+    "footprint": [
+      2,
+      2
+    ],
+    "canvas": [
+      288,
+      228
+    ],
+    "target_width": 244,
+    "description": "Small waterside town-edge TANNERY with two round sunken timber vats, one rectangular lime pit, open thatched lean-to and drying rack with TWO large irregular stretched animal hides. Slightly different rack/pit arrangement than tannery_a, same wealth and size, no river/background, NO chimney. Water trough points toward right. No blood.",
+    "active": "hide_steam",
+    "parts": [
+      "A BROAD pale-grey STEAM cloud rising from one narrow bottom point, pronounced readable vapour, no container or ground.",
+      "THREE LARGE animal HIDES hanging together from a light oak drying beam, cream and tawny silhouettes, no blood, large clear shapes."
+    ]
+  },
+  {
+    "id": "butcher_shambles",
+    "group": "B",
+    "footprint": [
+      2,
+      1
+    ],
+    "canvas": [
+      224,
+      176
+    ],
+    "target_width": 188,
+    "description": "Medieval BUTCHER SHAMBLES long open timber market stall, two by one tiles, low plain flat-peg-tile shelter roof on oak posts, wooden chopping table. Two SMALL subdued brown-red dressed cuts of meat hang under beam, restrained, no gore or blood, no heads. No domestic house/chimney, no modern awning or text.",
+    "active": "hanging_goods",
+    "parts": [
+      "A broad plain dull RED-BROWN fabric awning projecting from an invisible stall beam, two slim wooden supports. No building.",
+      "A large wooden meat COUNTER stocked with several clearly visible muted brown-red cuts and a chopping block. No blood/gore or body parts."
+    ]
+  },
+  {
+    "id": "market_cross_wood",
+    "group": "C",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      144,
+      160
+    ],
+    "target_width": 100,
+    "description": "WOODEN MARKET CROSS: tall plain weathered oak Christian cross rising from small sturdy stepped timber base, four low market-edge posts, very simple undecorated street landmark. Full cross readable silhouette. NO roof or chimney, no background, no ground slab.",
+    "active": "market_baskets",
+    "parts": [
+      "A small but broad LINEN CANOPY on two slender wooden posts sheltering a low market table, subdued ochre, open sides.",
+      "A CLUSTER of THREE substantial wicker baskets and THREE tied grain sacks with broad ochre silhouettes."
+    ]
+  },
+  {
+    "id": "market_cross_stone",
+    "group": "C",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      144,
+      176
+    ],
+    "target_width": 110,
+    "description": "STONE MARKET CROSS: plain shaft and simple cross finial carved from grey-brown stone, modest octagonal three-step stone base. Clearly a medieval market-place landmark, not a gravestone, no elaborate gothic tracery or roof. Tall slender silhouette, no terrain beyond steps.",
+    "active": "market_baskets",
+    "parts": [
+      "A small but broad LINEN CANOPY on two slender wooden posts sheltering a low market table, subdued ochre, open sides.",
+      "A CLUSTER of THREE substantial wicker baskets and THREE tied grain sacks with broad ochre silhouettes."
+    ]
+  },
+  {
+    "id": "almshouse",
+    "group": "C",
+    "footprint": [
+      3,
+      1
+    ],
+    "canvas": [
+      288,
+      200
+    ],
+    "target_width": 252,
+    "description": "ALMSHOUSE: long LOW SINGLE STOREY range of four tiny rooms with four simple oak doors and small shuttered windows, warm limewash over rubble stone; tiny chapel room at one end with slightly raised gable and one narrow pointed opening. Continuous modest flat peg tile roof. Three by one tiles, restrained charitable shelter. NO chimney anywhere.",
+    "active": "charity_baskets",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference."
+    ]
+  },
+  {
+    "id": "hospital",
+    "group": "C",
+    "footprint": [
+      3,
+      2
+    ],
+    "canvas": [
+      352,
+      272
+    ],
+    "target_width": 316,
+    "description": "MEDIEVAL HOSPITAL as charitable HOSPICE, not a modern clinic: one-storey long stone infirmary shelter hall with a narrower chapel chancel at its eastern end, modest low attached timber porch, plain pointed windows, flat peg tile roof. Three by two tiles, simple ecclesiastical silhouette. NO red crosses, no medical signs, NO chimney.",
+    "active": "hospice_lamps",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference."
+    ]
+  },
+  {
+    "id": "chantry_chapel",
+    "group": "C",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      160,
+      176
+    ],
+    "target_width": 126,
+    "description": "Tiny CHANTRY CHAPEL church annex: one short single-storey grey-brown rubble stone chapel, low flat peg tile gable, narrow pointed side window and simple west doorway, small end cross. One tile, deliberately smaller than supplied parish church. NO tower or chimney.",
+    "active": "chapel_lamps",
+    "parts": [
+      "OPEN pointed medieval oak DOORWAY: two door leaves visibly swung outward, LARGE warm golden candlelit interior and a short broad amber light spill on threshold. Door unit only without stone wall. Restrained devotional atmosphere."
+    ]
+  },
+  {
+    "id": "manor_house_a",
+    "group": "D",
+    "footprint": [
+      3,
+      3
+    ],
+    "canvas": [
+      416,
+      328
+    ],
+    "target_width": 376,
+    "description": "MANOR HOUSE: modest but authoritative ONE STOREY STONE GREAT HALL with tall hall roof, attached TWO STOREY OAK AND PLASTER WING at right, irregular flat peg tiles, low rubble stone boundary walls and clear courtyard gateway at front. Three by three tiles. Clear empty petitioners space just inside gate, NO people in base. No castle turrets, NO chimneys or flues on either hall or wing.",
+    "active": "hall_light_petition_space",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference."
+    ]
+  },
+  {
+    "id": "manor_house_b",
+    "group": "D",
+    "footprint": [
+      3,
+      3
+    ],
+    "canvas": [
+      416,
+      328
+    ],
+    "target_width": 376,
+    "description": "MANOR HOUSE alternative B, same wealth: ONE STOREY long rubble-stone hall, attached two-storey timber framed warm plaster residential wing on left, modest courtyard enclosed by low stone wall and plain timber gate, flat peg tile roofs. Vary hall roof pitch and doorway/windows from A, not richness. Open area for petitioners by gate, no people. NO chimney anywhere.",
+    "active": "hall_light_petition_space",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference."
+    ]
+  },
+  {
+    "id": "guildhall",
+    "group": "D",
+    "footprint": [
+      3,
+      2
+    ],
+    "canvas": [
+      352,
+      300
+    ],
+    "target_width": 312,
+    "description": "GUILDHALL with unmistakable OPEN STONE ARCADE along entire GROUND FLOOR for market trade, at least THREE sturdy pointed arches, sheltered through passage. ABOVE this is one broad TIMBER FRAMED upper MEETING ROOM with closed oak shutter windows, flat peg tiled roof. Three by two tiles, civic hall not manor or church, no tower, NO chimney. Strong arcaded open ground floor.",
+    "active": "trade_tables",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference.",
+      "A broad muted ochre LINEN MARKET CANOPY on thin oak supports over a well-stocked oak counter with large folded russet and cream cloth and sacks. Compact low stall for underneath arcade, isolated no building."
+    ]
+  },
+  {
+    "id": "tolbooth",
+    "group": "D",
+    "footprint": [
+      2,
+      2
+    ],
+    "canvas": [
+      288,
+      292
+    ],
+    "target_width": 242,
+    "description": "TOLBOOTH tax court: OPEN STONE ARCADE on GROUND FLOOR (two or three generous arches for market trade), upper timber/plaster MEETING ROOM, SMALL modest square bell tower or open bellcote at one roof end with visible bronze bell. Two by two tiles. Flat clay peg tiles, restrained civic authority, no palace, NO chimney.",
+    "active": "court_table_bell",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference.",
+      "A broad muted ochre LINEN MARKET CANOPY on thin oak supports over a well-stocked oak counter with large folded russet and cream cloth and sacks. Compact low stall for underneath arcade, isolated no building."
+    ]
+  },
+  {
+    "id": "tithe_barn",
+    "group": "D",
+    "footprint": [
+      4,
+      2
+    ],
+    "canvas": [
+      416,
+      264
+    ],
+    "target_width": 380,
+    "description": "TITHE BARN: VERY LONG SINGLE STOREY major agricultural barn, four by two tiles. Thick grey-brown rubble stone walls with THREE clearly projecting sturdy BUTTRESSES along long side, oak roof trusses under broad low pitched terracotta flat peg tile roof, HUGE central pair of barn doors and modest small gabled loading porch. No windows like a house, NO chimney or tower.",
+    "active": "tithe_sacks",
+    "parts": [
+      "A LARGE OPEN paired oak BARN DOOR, two tall leaves swung wide, deep dark interior behind, no wall or building.",
+      "A wooden two-wheel CART heaped conspicuously with GOLDEN STRAW SHEAVES, SW2:1, large clear straw silhouette, no people."
+    ]
+  },
+  {
+    "id": "bridge_chapel",
+    "group": "D",
+    "footprint": null,
+    "canvas": [
+      160,
+      192
+    ],
+    "target_width": 124,
+    "description": "Small narrow stone BRIDGE END CHAPEL intended at SE end of supplied bridge DECK (top-left panel of reference sheet, not whole sheet). One modest single storey rubble chapel, terracotta flat peg tile gable, narrow gothic window, simple doorway at northwest-facing end toward bridge. Small stone landing beneath door at same height as bridge roadway, short side parapet terminating cleanly at landing. NO bridge span included, no water or background, no chimney. Make compact modular stone road end rather than freestanding grassy church.",
+    "active": "chapel_lamps",
+    "parts": [
+      "OPEN pointed medieval oak DOORWAY: two door leaves visibly swung outward, LARGE warm golden candlelit interior and a short broad amber light spill on threshold. Door unit only without stone wall. Restrained devotional atmosphere."
+    ]
+  },
+  {
+    "id": "conduit_house",
+    "group": "D",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      160,
+      176
+    ],
+    "target_width": 124,
+    "description": "CONDUIT HOUSE: a medieval stone public WATER BASIN, square waist-high grey-brown stone water trough beneath a small steep flat peg tile roof on four stone posts, stone head spout inside, low front basin lip visibly reveals water surface. Not a well, no bucket/winch. Calm water in idle base, no flowing stream yet. Compact public water structure. NO chimney.",
+    "active": "flowing_water",
+    "parts": [
+      "A broad clear pale grey-green WATER STREAM cascading from invisible spout into a basin, large bright splash and several ripples, transparent background, no structure.",
+      "Two large oak WATER PAILS on ground with a small puddle and rope handles, SW2:1."
+    ]
+  },
+  {
+    "id": "priory_cell",
+    "group": "D",
+    "footprint": [
+      4,
+      3
+    ],
+    "canvas": [
+      480,
+      352
+    ],
+    "target_width": 440,
+    "description": "PRIORY CELL: modest small religious satellite house, FOUR BY THREE tiles, one small stone chapel attached to LOW single-storey CLOISTER WALK enclosing a small EMPTY rectangular courtyard. Flat clay peg tiled low roofs, pointed open cloister arches. Small scale monastery not cathedral or fortress, no massive tower, NO chimney. Transparent courtyard floor, no lawn/platform.",
+    "active": "cloister_lamps",
+    "parts": [
+      "A BROAD pale grey gently curling hearth SMOKE plume, tapering to a SINGLE bottom emission point. No chimney, roof or structure. Clearly readable substantial light grey smoke, not faint wisps.",
+      "An OPEN oak double DOOR portal: both leaves swung outward, a dark amber interior brilliantly lit by warm hearth light, broad GOLDEN LIGHT spilling onto threshold. Isolated door unit only, no wall or building. Same isometric facade as reference."
+    ]
+  },
+  {
+    "id": "quay",
+    "group": "D",
+    "footprint": null,
+    "canvas": [
+      256,
+      128
+    ],
+    "target_width": 246,
+    "description": "RIVERSIDE QUAY MODULE, wide 2:1 rectangle, grey-brown rubble-stone revetment with sturdy flat cobbled loading top in strict 2:1 isometric view, three thick oak mooring posts on water edge, one barrel and two tied sacks. Open on two repeatable ends. No boats, buildings, chimney, terrain platform, or water baked in. Water side is transparent; compact engineering module exactly twice as wide as high.",
+    "active": "mooring_rope",
+    "parts": [
+      "A large CLUSTER of three oak barrels and four tied sacks, SW isometric ground plane.",
+      "A SMALL MOORED CLINKER-BUILT ROWBOAT, empty open wooden hull with two seats and coiled mooring rope. Long axis NW-SE, parallel to attached quay water edge. No water, sail, people or background."
+    ]
+  },
+  {
+    "id": "smithy_a",
+    "group": "B",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      137,
+      137
+    ],
+    "target_width": 118,
+    "description": "Openfront two-storey smithy, anvil, forge with stone industrial flue, tiled roof, no domestic flue",
+    "active": "forge_glow",
+    "parts": [
+      "A BROAD pale grey hearth SMOKE plume tapering to a single bottom emission point, substantial readable silhouette, NO chimney/roof/background.",
+      "A LARGE GLOWING FORGE HEARTH interior with broad orange-hot coals and several yellow-orange FLAMES and flying sparks, dark firebox cavity behind, no wall or building, warm amber light at edges."
+    ]
+  },
+  {
+    "id": "smithy_b",
+    "group": "B",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      137,
+      137
+    ],
+    "target_width": 118,
+    "description": "Compact ordinary L2 two-storey street SMITHY, front ground floor OPEN supported on plain oak posts, visible anvil and cold dark stone forge at left-front. Short STONE INDUSTRIAL FLUE connects to that forge, main upper dwelling has no domestic chimney. Change door and window placement and slightly shallower pitched roof from smithy_a, same wealth/materials. Flat peg tiles. No yard.",
+    "active": "forge_glow",
+    "parts": [
+      "A BROAD pale grey hearth SMOKE plume tapering to a single bottom emission point, substantial readable silhouette, NO chimney/roof/background.",
+      "A LARGE GLOWING FORGE HEARTH interior with broad orange-hot coals and several yellow-orange FLAMES and flying sparks, dark firebox cavity behind, no wall or building, warm amber light at edges."
+    ]
+  },
+  {
+    "id": "pilgrim_shrine",
+    "group": "D",
+    "footprint": [
+      1,
+      1
+    ],
+    "canvas": [
+      144,
+      160
+    ],
+    "target_width": 108,
+    "description": "PILGRIM SHRINE: tiny roadside devotional structure, simple waist-high grey-brown stone plinth supporting small oak niche with low steep flat peg-tile shelter, a small plain cross carved within niche. Distinct from market cross/chapel. One-person-scale wayside shrine, no tall tower, no people, NO chimney, no terrain platform.",
+    "active": "shrine_candles",
+    "parts": [
+      "A CLUSTER OF SEVEN short votive wax CANDLES with clear warm golden flames and shared restrained amber glow, isolated, no shrine or background.",
+      "One small KNEELING medieval PILGRIM SILHOUETTE in a simple muted brown hooded cloak, hands held in prayer, facing northeast toward an invisible roadside shrine. Side/back SW isometric view, no face detail, calm and reverent. Human scale prop, no ground."
+    ]
+  }
+]

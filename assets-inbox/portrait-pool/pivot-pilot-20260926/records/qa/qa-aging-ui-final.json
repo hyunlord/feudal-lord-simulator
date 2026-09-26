@@ -1,0 +1,159 @@
+{
+  "reviewer": "pivot_packager",
+  "review_type": "independent read-only visual inspection",
+  "status": "PASS_WITH_LIMITATIONS",
+  "scope": {
+    "aging_chains": 4,
+    "aging_portraits": 12,
+    "ui_people": 8,
+    "aging_sizes": [
+      256,
+      96
+    ],
+    "ui_size": 96
+  },
+  "evidence": [
+    {
+      "file": "checks/02-aging-four-chains.png",
+      "sha256": "05a31722edce85ba46a882c6f1bce8025c9d27476893614b1edadd75fb8f3afa"
+    },
+    {
+      "file": "checks/03-ui-96-eight-people.png",
+      "sha256": "4856b1650928e98e13117e9ef27d3b48271c21c7a1f59f45898c6460c8020839"
+    },
+    {
+      "file": "aging/P01_young.png",
+      "sha256": "4d5fbcfefa9fb22364106d9f76f20e3d8f28b1c78e8ed8257786e131b664dc3f"
+    },
+    {
+      "file": "aging/P01_mature.png",
+      "sha256": "31474da8638ae80b6aa01c09f495c3ab252512897f90b509eb2cf0b359e5375b"
+    },
+    {
+      "file": "aging/P01_old.png",
+      "sha256": "cb25dd95ff20098337e057024c63a8d0e9bb1d960bd4cc831d0b5e149f77668d"
+    },
+    {
+      "file": "aging/P08_young.png",
+      "sha256": "9842ffffb28188c951e7a588686bd2fa0c1a556124e45ec7c3bff838af008a10"
+    },
+    {
+      "file": "aging/P08_mature.png",
+      "sha256": "961aa7321051826c8a3f44bbe2f13cbdc3a40b42c4486f65a4cf7e1f3be0feae"
+    },
+    {
+      "file": "aging/P08_old.png",
+      "sha256": "29266e76058ee812a639c33ad530fbcd0f62e11357d3740e753c5da0ecc1048c"
+    },
+    {
+      "file": "aging/P14_young.png",
+      "sha256": "837bc37f4bfa5fb5ba7c6af22708458bc031afff5a5070acadd3d51b5675817f"
+    },
+    {
+      "file": "aging/P14_mature.png",
+      "sha256": "e9c85e8ceb8acb2b7e860d1310cf26343f73e141b5489b42bd7eb69b1eeec00b"
+    },
+    {
+      "file": "aging/P14_old.png",
+      "sha256": "143b63cd7c445b42f98bad8e5504d7329364c74e15054b148132151bdf80c780"
+    },
+    {
+      "file": "aging/P20_young.png",
+      "sha256": "113d19e7b7ee5982f62aa341cf50ea4963efc379d4709005e21cf4b7af4266cb"
+    },
+    {
+      "file": "aging/P20_mature.png",
+      "sha256": "6cd6e4180499bac3e03f0c1e1152df4f330d7a55ea39c0c7d663a59fddbbe188"
+    },
+    {
+      "file": "aging/P20_old.png",
+      "sha256": "25eb86f49d5bd60c0554d2c8ef3cdadd102a9e89644e35607eca4fb0ad752b84"
+    },
+    {
+      "file": "portraits/P01.png",
+      "sha256": "4d5fbcfefa9fb22364106d9f76f20e3d8f28b1c78e8ed8257786e131b664dc3f"
+    },
+    {
+      "file": "portraits/P02.png",
+      "sha256": "56d08f44c8283a9b6a87c20a79f4b128e44feb38999fec156b202a84ade78068"
+    },
+    {
+      "file": "portraits/P15.png",
+      "sha256": "ef404dc44688fc40d2cb69a68988df72a8aec6dc6242dda1f9606911cb3d5429"
+    },
+    {
+      "file": "portraits/P20.png",
+      "sha256": "113d19e7b7ee5982f62aa341cf50ea4963efc379d4709005e21cf4b7af4266cb"
+    },
+    {
+      "file": "portraits/P24.png",
+      "sha256": "e874958918220a002325e86a0c8dcd3a35a39a27b39d7c4efe787db53df93cef"
+    },
+    {
+      "file": "portraits/P29.png",
+      "sha256": "e8cbbcf52582a69a42157ded2b783bcf28fd5df827004fa74cd9531e19796812"
+    },
+    {
+      "file": "portraits/P33.png",
+      "sha256": "eaadc7352926ed276cb3339c9deb3d9ce475c0a319c345a6daf7df824eb6fae6"
+    },
+    {
+      "file": "portraits/P34.png",
+      "sha256": "e1ee44defd57c3a3cc37b96e2ccec1de4817e78405b7e34612bc71608cb569b9"
+    }
+  ],
+  "per_chain": [
+    {
+      "id": "P01",
+      "same_person_96": "PASS",
+      "aging_integration": "PASS",
+      "three_stage_progression_96": "PASS",
+      "notes": "긴 매부리코, 깊은 눈과 광대, 길쭉한 두개골이 유지된다. 노년은 관자놀이의 회색 머리, 꺼진 볼과 목에서 자연스럽게 읽힌다."
+    },
+    {
+      "id": "P08",
+      "same_person_96": "PASS",
+      "aging_integration": "PASS",
+      "three_stage_progression_96": "PASS_WITH_NOTE",
+      "notes": "넓은 코끝, 눈 간격, 입술과 턱의 형태가 유지된다. 볼과 목의 노화가 연결되며 별도 주름 스티커처럼 보이지 않는다. 노년은 96 px에서 약60세 인상으로, 55+ 기준에는 맞지만 정확한70세 판독은 약하다."
+    },
+    {
+      "id": "P14",
+      "same_person_96": "PASS",
+      "aging_integration": "PASS",
+      "three_stage_progression_96": "PASS_WITH_NOTE",
+      "notes": "R2에서 은회색 머리와 관자놀이, 턱·목의 처짐이 뚜렷해졌다. 코·눈·입술·턱의 구조를 유지하여96 px에서 동일인으로 읽힌다. 노년은 이제 명확히노년 범주로 보이며 청년과 잘 구분된다. 청년-장년의 차이는 여전히 상대적으로 미묘하다."
+    },
+    {
+      "id": "P20",
+      "same_person_96": "PASS",
+      "aging_integration": "PASS",
+      "three_stage_progression_96": "PASS",
+      "notes": "넓은 눈썹, 매부리코와 각진 턱 골격이 유지된다. 장년의 입가와 노년의 회색머리·목·볼 처짐이 단계적으로 보이며 동일인 판독을 해치지 않는다."
+    }
+  ],
+  "ui": {
+    "status": "PASS",
+    "ids": [
+      "P01",
+      "P02",
+      "P15",
+      "P20",
+      "P24",
+      "P29",
+      "P33",
+      "P34"
+    ],
+    "legibility": "8명의 얼굴과 주요 머리·체형 실루엣이96 px에서 읽힌다. 양쪽 청원/인물 카드 모두 동일한96 px 크기를 유지한다.",
+    "clipping": "표시 영역에서 초상, ID, 한국어 문구의 잘림이나 겹침을 관찰하지 못했다.",
+    "distinction": "어린이, 마른 긴 얼굴, 대머리, 살찐 노년, 수염 등의 특징이 쉽게 분리된다. P20/P33은 비슷한 어두운 눈썹·밝은 머릿수건 계열이지만 얼굴 폭과 방향이 다르다."
+  },
+  "observed_defects": [],
+  "limitations": [
+    "노년의 정확한 연령 수치는 그림만으로 검증할 수 없다. P14의R2는 은회색머리와 목·턱 노화로 노년 판독이 개선되었다. P08은 여전히약60세로 읽혀70세의 강한 인상은 약하지만 요청된55+ 범주에는 부합한다.",
+    "동일한 옷과 방향을 유지한 사슬이므로 얼굴만 가리고 비교한 블라인드 동일인 시험은 수행하지 않았다. 얼굴 골격 자체도 함께 확인했다.",
+    "이 검수는 오프라인 확인 그림이며 실제 게임UI 설치/상호작용 검증이 아니다."
+  ],
+  "recommendation": "All four retain same-person continuity; R2 strengthens P14old sufficiently for requested old55+ readability. Young-to-mature separation for P14 remains subtle at96px.",
+  "revision": "R2 P14 old regenerated"
+}

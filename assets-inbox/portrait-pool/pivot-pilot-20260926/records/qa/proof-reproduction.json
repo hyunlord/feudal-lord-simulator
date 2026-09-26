@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "file": "checks/01-pool-36-256-and-96.png",
+      "sha256": "5ed667301e935f77ec14be1032ababa6e86ac063b9a9d7bd4fcba44499fb3012",
+      "identical": true
+    },
+    {
+      "file": "checks/03-ui-96-eight-people.png",
+      "sha256": "4856b1650928e98e13117e9ef27d3b48271c21c7a1f59f45898c6460c8020839",
+      "identical": true
+    },
+    {
+      "file": "checks/02-aging-four-chains.png",
+      "sha256": "05a31722edce85ba46a882c6f1bce8025c9d27476893614b1edadd75fb8f3afa",
+      "identical": true
+    }
+  ]
+}
