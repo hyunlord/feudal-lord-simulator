@@ -12,6 +12,9 @@ import type { ConstructionSiteCardModel } from "../ui/constructionSiteCardModel"
 import { BuildGlyph } from "../ui/BuildGlyph";
 import { buildThumbnail } from "../ui/buildMenuPresentation";
 import type { BuildingInspectorModel } from "./buildingInspectorModel";
+import type { StoreInspectorModel } from "../ui/storeInspectorModel";
+import { StoreInspectorBody } from "../ui/StoreInspector";
+import { STORE_INSPECTOR_COPY } from "../ui/storeInspectorCopy.ko";
 
 type Size = Readonly<{ width: number; height: number }>;
 type Rect = Readonly<{ x: number; y: number; width: number; height: number }>;
@@ -21,7 +24,9 @@ export type DiagnosticCardModel =
   | { readonly kind: "house"; readonly value: HouseDiagnosisModel }
   | { readonly kind: "building"; readonly value: BuildingInspectorModel }
   | { readonly kind: "walker"; readonly value: WalkerDiagnosisModel }
-  | { readonly kind: "construction_site"; readonly value: ConstructionSiteCardModel };
+  | { readonly kind: "construction_site"; readonly value: ConstructionSiteCardModel }
+  /** UX-3R2: a storehouse or granary (capacity, items, the week's change, who uses it). */
+  | { readonly kind: "store"; readonly value: StoreInspectorModel };
 
 function fits(position: Position, viewport: Size, card: Size): boolean {
   return position.x >= 8
@@ -147,6 +152,7 @@ function ConstructionSiteCard({
   const cancellationEnabled = cancellation.enabled;
   return (
     <>
+      {model.blockerLine === undefined || model.blockerLine === null ? null : <p className="inspector-blocker" role="status">{model.blockerLine}</p>}
       {model.currentStallLabel === "" ? null : <p>{model.currentStallLabel}</p>}
       <dl>
         {model.rows.map((row) => (
@@ -180,6 +186,11 @@ function cardIdentity(model: DiagnosticCardModel): Readonly<{ name: string; type
     case "building": {
       const source = buildThumbnail(model.value.kind);
       return { name: model.value.name, type: "도시 시설", label: `${model.value.name} 시설 진단`,
+        art: source === null ? <BuildGlyph tool={model.value.kind} /> : <img src={source} alt="" /> };
+    }
+    case "store": {
+      const source = buildThumbnail(model.value.kind);
+      return { name: model.value.name, type: STORE_INSPECTOR_COPY.type, label: STORE_INSPECTOR_COPY.label(model.value.name),
         art: source === null ? <BuildGlyph tool={model.value.kind} /> : <img src={source} alt="" /> };
     }
     case "walker": return { name: model.value.roleLabel, type: "주민 · 이동과 운송", label: `${model.value.roleLabel} 임무 진단`, art: <span>이동</span> };
@@ -229,6 +240,7 @@ export function DiagnosticCard({
         <div className="inspector-body">
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} /> : null}
+          {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}
           {model.kind === "building" ? <><p>{model.value.purpose}</p>{buildingOperation === undefined ? null : <section className="inspector-actions"><button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onClick={() => buildingOperation.onToggle()}>{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"
             ? onCancelConstruction === undefined

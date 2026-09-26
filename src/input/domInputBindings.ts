@@ -70,7 +70,7 @@ function applyOutcome(event: Event, outcome: Outcome): void {
 
 /** Mouse and keyboard on the game canvas / window -> the translator. `resize` is the window service's, passed through. */
 export function bindMouseKeyboard(canvas: EventSource, translator: MouseKeyboardTranslator, resize: () => void): () => void {
-  const key = (event: KeyboardEvent) => ({ code: event.code, key: event.key, repeat: event.repeat, target: event.target });
+  const key = (event: KeyboardEvent) => ({ code: event.code, key: event.key, repeat: event.repeat, target: event.target, shiftKey: event.shiftKey });
   const pointer = (event: MouseEvent) => ({ button: event.button, clientX: event.clientX, clientY: event.clientY, shiftKey: event.shiftKey, detail: event.detail });
   return bindGameCanvasEvents({
     canvas,

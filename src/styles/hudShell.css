@@ -203,3 +203,64 @@
 .chapter-loading-title { font-size: 24px; font-weight: 700; }
 .chapter-loading-line { font-size: 14px; }
 @keyframes chapter-loading-out { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
+
+/* UX-3R2 zone toolbar (UX3R 5절): left of the map in the zone layer — brush, polygon, eraser, undo, redo, size. */
+.app-shell .zone-toolbar { position: absolute; left: 8px; top: 50%; z-index: 4; display: grid; gap: 4px; width: 148px; transform: translateY(-50%); }
+.app-shell .zone-toolbar[hidden] { display: none; }
+.app-shell :is(.zone-toolbar-kinds, .zone-toolbar-tools) { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.app-shell .zone-toolbar-button { display: inline-flex; gap: 2px; align-items: center; justify-content: flex-start; min-width: 0; white-space: nowrap; min-height: 44px; padding: 0 4px; font-size: 12px; }
+.app-shell .zone-toolbar-button .ui-icon { flex: 0 0 auto; transform: scale(0.75); margin: 0 -3px; }
+/* Kind chips: a small swatch of the zone's map tint (the zone layer's colours, drawZones ZONE_STYLES). */
+.app-shell .zone-toolbar-kind { display: inline-block; flex: 0 0 12px; width: 12px; height: 12px; margin: 0 3px 0 2px; border: 1px solid var(--palette-ink); }
+.app-shell .zone-toolbar-kind--burgage { background-color: var(--palette-earth); }
+.app-shell .zone-toolbar-kind--arable { background-color: var(--palette-gold); }
+.app-shell .zone-toolbar-kind--pasture { background-color: var(--palette-sage); }
+.app-shell .zone-toolbar-kind--orchard { background-color: var(--palette-forest); }
+.app-shell .zone-toolbar .zone-land-legend { display: grid; gap: 2px; padding: 4px 6px; line-height: 15px; background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.app-shell .zone-toolbar-button[aria-pressed="true"] { outline: 2px solid var(--palette-ink); outline-offset: -2px; font-weight: 700; }
+.app-shell .zone-toolbar-button[aria-disabled="true"] { opacity: 0.5; }
+.app-shell .zone-toolbar-redo-icon { transform: scaleX(-1); }
+/* The polygon and size marks are drawn shapes (no symbol characters): an open triangle, and a dot of the brush size. */
+.app-shell .zone-toolbar-polygon { display: inline-block; flex: 0 0 16px; width: 16px; height: 14px; margin: 0 3px 0 1px;
+  background: linear-gradient(to top right, transparent calc(50% - 1px), var(--palette-ink) 50%, transparent calc(50% + 1px)) left / 50% 100% no-repeat,
+    linear-gradient(to top left, transparent calc(50% - 1px), var(--palette-ink) 50%, transparent calc(50% + 1px)) right / 50% 100% no-repeat;
+  border-bottom: 2px solid var(--palette-ink); }
+.app-shell .zone-toolbar-size { display: inline-grid; flex: 0 0 18px; place-items: center; height: 18px; }
+.app-shell .zone-toolbar-size::before { content: ""; display: block; width: calc(var(--dot, 8) * 1px); height: calc(var(--dot, 8) * 1px); border-radius: 50%; background-color: var(--palette-ink); }
+.app-shell .zone-toolbar-size[data-size="1"] { --dot: 6; }
+.app-shell .zone-toolbar-size[data-size="2"] { --dot: 11; }
+.app-shell .zone-toolbar-size[data-size="3"] { --dot: 16; }
+@media (pointer: coarse) { .app-shell .zone-toolbar-button { min-height: 48px; } }
+/* The paintable-land legend under the kind chips: swatches of the overlay's colours (barred also hatched). */
+.app-shell .zone-land-legend { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; margin: 0; font-size: 12px; }
+.app-shell .zone-land-item { display: inline-flex; gap: 4px; align-items: center; white-space: nowrap; }
+.app-shell .zone-land-swatch { display: inline-block; flex: 0 0 auto; width: 16px; height: 12px; border: 1px solid var(--palette-ink); }
+.app-shell .zone-land-swatch--good { background-color: color-mix(in srgb, var(--palette-sage) 55%, transparent); }
+.app-shell .zone-land-swatch--fair { background-color: color-mix(in srgb, var(--palette-gold) 45%, transparent); }
+.app-shell .zone-land-swatch--barred { background: repeating-linear-gradient(135deg, var(--palette-ink) 0 2px, color-mix(in srgb, var(--palette-ink) 35%, transparent) 2px 5px); }
+
+/* UX-3R2 storage inspector (UX3R 6절) in the selection card and the slot: capacity bar, items, week, users. */
+.app-shell .store-inspector { display: grid; gap: 4px; font-size: 13px; }
+.app-shell .store-inspector h3 { margin: 6px 0 0; font-size: 13px; }
+.app-shell .store-capacity { display: grid; gap: 2px; }
+.app-shell .store-capacity-bar { display: block; height: 10px; border: 1px solid var(--palette-ink); background-color: var(--palette-parchment); }
+.app-shell .store-capacity-fill { display: block; height: 100%; background-color: var(--palette-sage-dark); }
+.app-shell .store-accepts { display: flex; flex-wrap: wrap; gap: 4px; margin: 0; }
+.app-shell .store-accept-chip { padding: 2px 8px; border: 1px solid var(--palette-ink); background-color: var(--palette-vellum); font-size: 12px; }
+.app-shell .store-accepts-note { margin: 0; font-size: 12px; color: var(--palette-ink-muted); }
+.app-shell .store-stock { border-collapse: collapse; }
+.app-shell .store-stock :is(th, td) { padding: 2px 8px 2px 0; text-align: right; }
+.app-shell .store-stock th { text-align: left; font-weight: 600; }
+.app-shell .store-users { margin: 0; padding-left: 16px; }
+.app-shell .store-look { display: inline-flex; gap: 4px; align-items: center; justify-self: start; min-height: 44px; }
+/* Ledger rows light their stores on the map; this week's change and how long food lasts. */
+.app-shell .ledger-row { min-height: 44px; padding: 0 6px; font-weight: 600; text-align: left; }
+.app-shell .ledger-matrix tr[data-lit="true"] th, .app-shell .ledger-matrix tr[data-lit="true"] td { background-color: color-mix(in srgb, var(--palette-vermilion) 14%, transparent); }
+@media (pointer: coarse) { .app-shell .ledger-row { min-height: 48px; } }
+
+/* UX-3R2 tablet confirm bar (UX3R 8절): bottom centre while a tap has left a ghost waiting; 64 px targets. */
+.app-shell .placement-confirm-bar { position: absolute; left: 50%; bottom: 12px; z-index: 6; display: grid; grid-template-columns: auto auto; gap: 4px 8px;
+  justify-items: center; padding: 6px 10px; transform: translateX(-50%); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.app-shell .placement-confirm-button { display: inline-flex; gap: 6px; align-items: center; justify-content: center; min-width: 120px; min-height: 64px; font-size: 16px; font-weight: 700; }
+.app-shell .placement-confirm-hint { grid-column: 1 / -1; margin: 0; font-size: 12px; }
+.app-shell .inspector-blocker { margin: 0 0 4px; font-weight: 700; }

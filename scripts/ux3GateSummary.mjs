@@ -13,6 +13,10 @@ const touch = read('touch-targets.json');
 const input = read('input-replay.json'); const touchReplay = read('touch-replay.json');
 const gamepad = read('gamepad/gamepad-replay.json');
 const focus = lines('focus-return.log');
+// UX-3R2 (scripts/ux3r2Verification.sh): zone undo / redo / right-click erase, ledger highlight and slot inspector,
+// road click-click, tablet ✓ — present only in that suite's folder.
+const r2 = read('ux3r2/ux3r2-captures.json');
+const cells = zones => (zones ?? []).reduce((sum, [, count]) => sum + count, 0);
 const gates = {
   hudArea: hud?.pass === true,
   tutorial13: tutorial?.allSteps === true && tutorial.locksMatch === true && tutorial.presses === tutorialBase?.presses,
@@ -21,6 +25,14 @@ const gates = {
   touchReplay: touchReplay !== null && touchReplay.identical === touchReplay.of,
   gamepad: gamepad?.pass === true,
   focusReturn: focus.length === 4 && focus.every(row => row.roadArmedByE && row.focusAfter.startsWith('BODY')),
+  ...(r2 === null ? {} : {
+    zoneUndoRedo: cells(r2.zone.painted) > 0 && cells(r2.zone.undone) === 0 && cells(r2.zone.redone) === cells(r2.zone.painted) && cells(r2.zone.erasedByRightClick) < cells(r2.zone.painted),
+    storeLedger: r2.store.cards.granary !== undefined && r2.store.cards.storehouse !== undefined && r2.store.lit.length === 1 && r2.store.slot !== null,
+    roadClickClick: r2.road.afterAnchor === r2.road.before && r2.road.afterSecond > r2.road.before && r2.road.chainEndedByEnter,
+    tabletConfirm: r2.tablet.bar && r2.tablet.afterLift === r2.tablet.before && r2.tablet.afterConfirm === r2.tablet.before + 1
+      && r2.tablet.siteTile?.tx === r2.tablet.target.tx && r2.tablet.siteTile?.ty === r2.tablet.target.ty,
+    noPageErrors: r2.errors.length === 0,
+  }),
 };
 const detail = { tutorialPresses: [tutorial?.presses, tutorialBase?.presses], input: [input?.identical, input?.of], touchReplay: [touchReplay?.identical, touchReplay?.of] };
 writeFileSync(join(dir, 'gates.json'), JSON.stringify({ pass: Object.values(gates).every(Boolean), gates, detail }, null, 1) + '\n');

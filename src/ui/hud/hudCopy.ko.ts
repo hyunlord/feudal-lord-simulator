@@ -23,6 +23,12 @@ export const HUD_COPY = {
   ledgerTabs: { stock: "자원", alerts: "알림", view: "보기", map: "지도" },
   ledgerTotal: "합계",
   ledgerLasts: "버팀",
+  ledgerWeek: "이번 주",
+  ledgerWeekValue: (delta: number | null) => delta === null ? "—" : delta > 0 ? `+${delta}` : delta < 0 ? `−${-delta}` : "0",
+  ledgerDays: (days: number) => `${days}일`,
+  ledgerNoLasts: "—",
+  /** A row button lights the buildings holding that resource on the map. */
+  ledgerRowLabel: (resource: string) => `${resource} — 지도에서 보관한 곳 밝히기`,
   ledgerStore: (name: string, index: number) => `${name} ${index}`,
   ledgerEmpty: "보관 중인 자원이 없습니다",
   ledgerNoAlerts: "알릴 일이 없습니다",

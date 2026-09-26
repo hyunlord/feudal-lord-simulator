@@ -10,6 +10,7 @@ import { createPlacementFeedback } from "./placementFeedback";
 import { ZONE_BRUSH_COPY } from "./zoneBrushCopy.ko";
 import { applyZoneBrushIntent, nextBrushRadius, type ZoneBrushGesture, type ZoneBrushIntent, type ZoneBrushTool } from "./zoneBrushInteraction";
 import type { ZoneBrushView } from "./zoneBrushOverlay";
+import { zoneEditHistory } from "./zoneEditHistory";
 
 // Canvas adapter for the zone brush (C1b): input intents -> ZoneBrushIntent (B9: the mouse, keyboard and touch
 // translators in src/input produce the intents). Only active while a zone tool is armed; otherwise every function
@@ -18,6 +19,9 @@ import type { ZoneBrushView } from "./zoneBrushOverlay";
 //    or the polygon toggle) places polygon vertices, confirm (double-click) closes; cancel (right click / Esc) drops
 //    the gesture; brushSize ([ ], or the card buttons) sets the radius 1..3; the wheel always zooms (C1d); undo (Z)
 //    undoes the last paint or erase (`zone_undo_stroke`, C1c Z-17; a stroke in progress is cancelled first, like Esc).
+//  - UX-3R2: redo (Shift+Z / Y, the toolbar) re-sends the edit the last undo took back (zoneEditHistory); a right
+//    click with no gesture in progress erases a dab of the brush's size there (UX3R 5절 "우클릭 = 지우기"; with a
+//    gesture in progress it drops the gesture, as before).
 //  - Touch: one finger paints, two fingers pan the camera (and drop a stroke in progress). No hover is needed:
 //    the preview follows the finger.
 
@@ -75,7 +79,7 @@ function apply(context: Context, intent: ZoneBrushIntent): void {
   if (tool === null) return;
   const outcome = applyZoneBrushIntent({ state: context.state(), tool, gesture: context.zone.gestureRef.current, intent });
   context.zone.gestureRef.current = outcome.gesture;
-  if (outcome.action !== null) context.dispatch(outcome.action);
+  if (outcome.action !== null) { context.dispatch(outcome.action); zoneEditHistory.record(outcome.action); }
   if (outcome.message !== null) {
     const point = context.zone.pointRef.current;
     const tile = point === null ? { tx: 0, ty: 0 } : { tx: Math.floor(point.x), ty: Math.floor(point.y) };
@@ -148,11 +152,41 @@ export function zoneUndo(context: Context): boolean {
   if (context.zone.toolRef.current === null) return false;
   if (context.zone.gestureRef.current !== null) { zoneCancel(context); return true; }
   const undoable = (context.state().zoneUndo?.length ?? 0) > 0;
-  if (undoable) context.dispatch({ type: "zone_undo_stroke" });
+  if (undoable) { context.dispatch({ type: "zone_undo_stroke" }); zoneEditHistory.undid(); }
   const point = context.zone.pointRef.current;
   context.refs.feedbackRef.current = createPlacementFeedback({ kind: undoable ? "success" : "failure",
     message: undoable ? ZONE_BRUSH_COPY.undone : ZONE_BRUSH_COPY.nothingToUndo,
     anchor: { kind: "tile", tile: point === null ? { tx: 0, ty: 0 } : { tx: Math.floor(point.x), ty: Math.floor(point.y) } }, nowMs: performance.now() });
+  return true;
+}
+
+/** `redo`: the edit the last undo took back, sent again. */
+export function zoneRedo(context: Context): boolean {
+  if (context.zone.toolRef.current === null) return false;
+  if (context.zone.gestureRef.current !== null) { zoneCancel(context); return true; }
+  const action = zoneEditHistory.takeRedo();
+  if (action !== null) { context.dispatch(action); zoneEditHistory.record(action); }
+  const point = context.zone.pointRef.current;
+  context.refs.feedbackRef.current = createPlacementFeedback({ kind: action !== null ? "success" : "failure",
+    message: action !== null ? ZONE_BRUSH_COPY.redone : ZONE_BRUSH_COPY.nothingToRedo,
+    anchor: { kind: "tile", tile: point === null ? { tx: 0, ty: 0 } : { tx: Math.floor(point.x), ty: Math.floor(point.y) } }, nowMs: performance.now() });
+  return true;
+}
+
+/** Right click on the map with the zone tool: drops a gesture in progress, else erases a brush-sized dab there. */
+export function zoneAimedCancel(context: Context, world: WorldPoint): boolean {
+  const tool = context.zone.toolRef.current;
+  if (tool === null) return false;
+  if (context.zone.gestureRef.current !== null) { zoneCancel(context); return true; }
+  const at = zonePointAtWorld(world);
+  context.zone.pointRef.current = at;
+  const eraser = { ...tool, target: "erase" as const, polygon: false };
+  const outcome = applyZoneBrushIntent({ state: context.state(), tool: eraser, gesture: { mode: "brush", points: [at] }, intent: { type: "strokeEnd" } });
+  if (outcome.action !== null) { context.dispatch(outcome.action); zoneEditHistory.record(outcome.action); }
+  if (outcome.message !== null && outcome.action !== null) {
+    context.refs.feedbackRef.current = createPlacementFeedback({ kind: outcome.message.kind, message: outcome.message.text,
+      anchor: { kind: "tile", tile: { tx: Math.floor(at.x), ty: Math.floor(at.y) } }, nowMs: performance.now() });
+  }
   return true;
 }
 

@@ -9,6 +9,8 @@ import { createPlacementFeedback } from "./placementFeedback";
 import { townLandscapeAssetReady } from "./townLandscapeAssets";
 import { townLandscapeAt, TOWN_LANDSCAPE_TOOLTIP } from "./townLandscape";
 import { playPlacementSound } from "../audio/soundDirector";
+import { resolveRoadPlacementAttempt } from "./interactions";
+import { lastInputDevice } from "../input/inputDevice";
 
 type SelectRuntimeInput = {
   readonly world: WorldPoint;
@@ -19,12 +21,36 @@ type SelectRuntimeInput = {
   readonly palisadeDraftRef: { current: GameCanvasRuntimeInput["palisadeDraft"] };
   readonly setSelection: GameCanvasRuntimeInput["setSelection"];
   readonly dispatch: GameCanvasRuntimeInput["dispatch"];
+  readonly setPending?: (tile: { readonly tx: number; readonly ty: number } | null) => void;
 };
 
 /** The `select` intent on the map: select what is there, or place with the armed tool. */
 export function handleCanvasSelect(input: SelectRuntimeInput): void {
   const { world, canvas, refs, stateRef, selectedToolRef, palisadeDraftRef, setSelection, dispatch } = input;
   if (palisadeDraftRef.current !== null) return;
+  // UX-3R2 road click-click (UX3R 4절, S-23): the first click anchors, each next click lays the road from the anchor
+  // and anchors there; a click on the anchor itself places or removes that one tile (as a single click did) and ends
+  // the chain; Enter, a double click, Esc or a right click end it. A drag still lays one line on its own.
+  const hover = refs.hoverRef.current;
+  if (selectedToolRef.current === "road" && hover !== null) {
+    const anchor = refs.roadChain.current;
+    if (anchor === null) { refs.roadChain.current = hover; return; }
+    if (anchor.tx !== hover.tx || anchor.ty !== hover.ty) {
+      const attempt = resolveRoadPlacementAttempt({ state: stateRef.current, start: anchor, destination: hover, nowMs: performance.now() });
+      refs.feedbackRef.current = attempt.feedback;
+      playPlacementSound(attempt);
+      if (attempt.action !== null) { dispatch(attempt.action); refs.roadChain.current = hover; }
+      return;
+    }
+    refs.roadChain.current = null;
+  }
+  // UX-3R2 tablet placement (UX3R 8절): a finger's tap or drag leaves the ghost where it ends (80 px above the finger);
+  // lifting does not build — the confirm bar's ✓ does (the `confirm` intent).
+  const tool = selectedToolRef.current;
+  if (tool !== null && tool !== "road" && hover !== null && input.setPending !== undefined && lastInputDevice() === "touch") {
+    input.setPending(hover);
+    return;
+  }
   const point = worldToCanvas(world, refs.cameraRef.current);
   const resolution = resolveCanvasClick({
     // The translator already swallowed clicks that ended a drag and clicks while Space is held.

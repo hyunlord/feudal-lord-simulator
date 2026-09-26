@@ -32,6 +32,8 @@ export type GameCanvasRuntimeInput = {
   /** Armed zone brush (C1b), or null. */
   readonly zoneTool?: import("./zoneBrushInteraction").ZoneBrushTool | null;
   readonly onZoneRadiusChange?: ((radius: number) => void) | undefined;
+  /** UX-3R2: the tablet placement waiting for ✓ changed (GameCanvas shows the confirm bar). */
+  readonly setPendingPlacement?: ((tile: import("../world/grid").TileCoordinate | null) => void) | undefined;
 };
 
 const CAMERA_DRAG_THRESHOLD_PX = 4;

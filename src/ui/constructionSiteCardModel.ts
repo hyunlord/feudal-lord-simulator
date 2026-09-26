@@ -41,6 +41,8 @@ export type ConstructionSiteCardModel = Readonly<{
   siteId: string;
   name: string;
   currentStallLabel: string;
+  /** UX-3R2: the first line while it waits for materials (constructionBlockerLine), set by the map card. */
+  blockerLine?: string | null;
   rows: readonly ConstructionSiteCardRow[];
   cancellation?: Readonly<
     | { readonly enabled: true; readonly reason: null }

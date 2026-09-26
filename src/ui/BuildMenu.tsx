@@ -26,6 +26,7 @@ import { TUTORIAL_COPY } from "./tutorial/tutorialCopy.ko";
 import { tutorialAccess, type ControlLayer, type TutorialAccess } from "./tutorial/tutorialModel";
 import { UiIcon } from "./UiIcon";
 import type { UiIconCell } from "./uiArt";
+import { ZoneLandLegend } from "./hud/ZoneToolbar";
 
 /** Zone cards (C1b): plots, arable, pasture, orchard and the eraser, in the zone layer (UX-1); UX-2 painted icons. */
 type ZoneCardIcon = { readonly sheet: "building"; readonly cell: UiIconCell<"building"> } | { readonly sheet: "prediction"; readonly cell: UiIconCell<"prediction"> };
@@ -219,7 +220,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           {lockNote !== null ? <p className="build-menu-pinned build-menu-lock-note" role="status"><UiIcon sheet="lock" cell="locked" /> {lockNote}</p>
             : pinned === null ? null : <p className="build-menu-pinned" role="status">{buildToolTooltipLines(pinned, menuState).join(" · ")}</p>}
           {layer === "zone" && onZoneToolChange !== undefined ? <section id={`${id}-zone`} aria-label={`${TUTORIAL_COPY.layers.zone} 도구`} className="build-menu-tools">
-            {ZONE_CARDS.map(card => zoneCard(card, access.zoneTargets(card.target)))}
+            {/* UX-3R2: in the UX-3 shell the eraser, the polygon and the size are on the left zone toolbar. */}
+            {ZONE_CARDS.filter(card => open === undefined || card.target !== "erase").map(card => zoneCard(card, access.zoneTargets(card.target)))}
           </section> : null}
           {BUILD_CATEGORIES.map((item) => (
             <section key={item.key} id={`${id}-${item.key}`} hidden={layer === "zone" || category !== item.key} aria-label={`${item.label} 도구`} className="build-menu-tools">
@@ -242,7 +244,9 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         </div>
       </div>
       {open !== undefined && zoneTool === null && !palisadeDrawing ? null : <div className="build-menu-summary">
-        {zoneTool !== null && onZoneToolChange !== undefined ? <>
+        {zoneTool !== null && onZoneToolChange !== undefined && open !== undefined ? zoneTool.target === "erase"
+          ? <span className="zone-land-legend">{ZONE_BRUSH_COPY.eraserHint}</span> : <ZoneLandLegend kind={zoneTool.target} />
+        : zoneTool !== null && onZoneToolChange !== undefined ? <>
           <strong>{zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraser : ZONE_KIND_LABELS[zoneTool.target]}</strong>
           <span className="zone-radius" role="group" aria-label={ZONE_BRUSH_COPY.radiusHint}>
             {ZONE_BRUSH_RADII.map(radius => (

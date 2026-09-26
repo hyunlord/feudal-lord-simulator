@@ -4,18 +4,24 @@ import type { GameState } from "../engine/engine.types";
 import { INSPECTOR_COPY } from "./inspectorCopy.ko";
 import { inspectorModel } from "./inspectorModel";
 import { UiIcon } from "./UiIcon";
+import { StoreInspectorBody } from "./StoreInspector";
+import { storeInspectorModel } from "./storeInspectorModel";
+import type { StoreStockHistory } from "./storeStockHistory";
 
 export type InspectorProps = Readonly<{
   state: GameState;
   /** Selected building or construction-site id; null hides the inspector. */
   buildingId: string | null;
   onClose: () => void;
+  /** UX-3R2: a store opens as the storage inspector (the ledger's column heads, a crisis icon). */
+  storeHistory?: StoreStockHistory | null;
 }>;
 
 /** Markup of the left inspector; `Inspector.tsx` adds its stylesheet (kept apart so node tests can render this). */
-export function Inspector({ state, buildingId, onClose }: InspectorProps): ReactElement | null {
+export function Inspector({ state, buildingId, onClose, storeHistory = null }: InspectorProps): ReactElement | null {
   const model = inspectorModel(state, buildingId);
   if (model === null) return null;
+  const store = buildingId === null ? null : storeInspectorModel(state, buildingId, storeHistory);
   return (
     <section className="left-inspector" aria-label={INSPECTOR_COPY.regionLabel} data-target={model.target}>
       <header className="left-inspector-heading">
@@ -27,7 +33,7 @@ export function Inspector({ state, buildingId, onClose }: InspectorProps): React
           <UiIcon sheet="prediction" cell="block" />
         </button>
       </header>
-      <div className="left-inspector-body">
+      {store !== null ? <div className="left-inspector-body"><StoreInspectorBody model={store} /></div> : <div className="left-inspector-body">
         <h3>{INSPECTOR_COPY.whyHeading}</h3>
         <ul className="left-inspector-why">
           {model.why.length === 0
@@ -44,7 +50,7 @@ export function Inspector({ state, buildingId, onClose }: InspectorProps): React
             ? <li className="left-inspector-empty">{INSPECTOR_COPY.noAction}</li>
             : model.actions.map((action) => <li key={action}>{action}</li>)}
         </ul>
-      </div>
+      </div>}
     </section>
   );
 }

@@ -93,6 +93,10 @@ import { Inspector } from "./ui/InspectorView";
 import { escapeOnce, hudVisibility, INITIAL_UI_STATE, reduceUi, timeStopped, topModal, type UiEvent, type UiState } from "./ui/uiStateMachine";
 import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, PauseMenu, StatusPill } from "./ui/hud/HudShell";
 import { statusPillModel } from "./ui/hud/statusPillModel";
+import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
+import { zoneEditHistory } from "./render/zoneEditHistory";
+import type { ZoneKind } from "./zones/zone.types";
+import { createStoreStockHistory, observeStoreStockHistory } from "./ui/storeStockHistory";
 
 /** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
 const ZONE_TOOL_PREFIX = "zone:";
@@ -147,6 +151,11 @@ export function App() {
   const gameStateRef = useRef(state);
   palisadeDraftRef.current = palisadeDraft;
   gameStateRef.current = state;
+  // UX-3R2: the stores' stock samples and cart uses (weekly change, "who uses it"); presentation memory, per tick.
+  const storeHistoryRef = useRef(createStoreStockHistory());
+  useEffect(() => { storeHistoryRef.current = observeStoreStockHistory(storeHistoryRef.current, state); }, [state]);
+  // UX-3R2: a ledger row lights the stores holding that resource on the map (cleared when the ledger closes).
+  const [ledgerHighlight, setLedgerHighlight] = useState<readonly string[]>([]);
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
   const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
   const [distributorRouteHistory, setDistributorRouteHistory] = useState(
@@ -314,6 +323,7 @@ export function App() {
     if (!placing && palisadeDraftRef.current?.mode === "draw") setPalisadeDraft(null);
     if (ui.mode !== "zone" && ui.mode !== "build" && !placing) { setZoneTool(null); setLayer(current => current === "zone" ? "direct" : current); }
     if (ui.mode !== "selection") setInspectedId(null);
+    if (ui.mode !== "ledger") setLedgerHighlight([]);
   }, [ui.mode]);
   // S-32: a modal stops time; the speed before it comes back when the last modal closes.
   const modalPauseRef = useRef<GameSpeed | null>(null);
@@ -346,6 +356,16 @@ export function App() {
   const [menuRequest, setMenuRequest] = useState<{ readonly category: BuildCategory; readonly nonce: number } | null>(null);
   useEffect(() => { setMenuRequest(null); }, [tutorial.openRequest]);
   const visibility = hudVisibility(ui, { tutorialRunning: tutorial.running });
+  // UX-3R2 zone toolbar: the brush and the polygon paint the last kind chosen (the first open kind before any); the
+  // redo list belongs to one painting session (cleared when the zone tool goes down).
+  const [lastZoneKind, setLastZoneKind] = useState<ZoneKind | null>(null);
+  useEffect(() => { if (zoneTool !== null && zoneTool.target !== "erase") setLastZoneKind(zoneTool.target); }, [zoneTool?.target]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (zoneTool === null) zoneEditHistory.clear(); }, [zoneTool === null]); // eslint-disable-line react-hooks/exhaustive-deps
+  const toolbarKind = lastZoneKind ?? (["burgage", "arable", "pasture", "orchard"] as const).find(kind => tutorial.access.zoneTargets(kind)) ?? null;
+  const pickZoneMode = (target: ZoneKind | "erase", polygon: boolean) => {
+    if (target !== zoneTool?.target) platformServices().input.emit({ kind: "toolSelect", toolId: `${ZONE_TOOL_PREFIX}${target}` });
+    setZoneTool(current => current === null ? current : { ...current, polygon });
+  };
 
   // UX-2: an immediate warning in the town puts the active goal cards in their warning frame (same sampled state as
   // the warning stack, recomputed only when that sample changes).
@@ -485,7 +505,8 @@ export function App() {
           selectedTool={selectedTool}
           overlayMode={overlayMode}
           problemOnly={problemOnly}
-          highlightedHouseIds={highlightedHouseIds}
+          highlightedHouseIds={ledgerHighlight.length > 0 ? ledgerHighlight : highlightedHouseIds}
+          storeHistory={storeHistoryRef.current}
           distributorRouteHistory={distributorRouteHistory}
           palisadeDraft={palisadeDraft}
           houseMaterialWave={houseMaterialWave}
@@ -530,8 +551,9 @@ export function App() {
             <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
           </div>
         ) : null}
-        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot"><Inspector state={state} buildingId={inspectedId} onClose={() => sendUi({ type: "deselect" })} /></div> : null}
+        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} onClose={() => sendUi({ type: "deselect" })} /></div> : null}
         {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
+          history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
           mapTab={<MapShield grid={state} />} /> : null}
         <UnlockBanner text={tutorial.banner} />
@@ -545,6 +567,9 @@ export function App() {
           onDismiss={() => setEraPresentation(dismissEraCeremony)}
         />
         {problemOnly ? <CauseLegend /> : null}
+        {ui.mode === "zone" ? <ZoneToolbar tool={zoneTool} lastKind={toolbarKind} canUndo={(state.zoneUndo?.length ?? 0) > 0}
+          eraserOpen={tutorial.access.zoneTargets("erase")} kindOpen={kind => tutorial.access.zoneTargets(kind)} pulse={tutorial.pulse} onPick={pickZoneMode}
+          onRadius={radius => setZoneTool(current => current === null ? current : { ...current, radius })} /> : null}
         {/* Mounted in every state (their locks stay readable), hidden where the state clears them from the screen. */}
         <LayerSwitch layer={layer} access={tutorial.access} pulse={tutorial.pulse} hidden={!visibility.layers}
           onChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }} />
@@ -553,7 +578,8 @@ export function App() {
           advisor={tutorial.advisor} onDismissAdvisor={tutorial.dismissAdvisor}
           undo={{ enabled: newestSite !== undefined, attention: tutorial.cards.some(card => card.key === "well_done"), label: BUILD_MENU_COPY.undoHint, onUndo: undoLastSite }} />
         {/* S-21 build drawer (and the zone bar in S-24): the catalogue stays mounted so a goal card can open it. */}
-        <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" || ui.mode === "zone" ? "true" : undefined}>
+        {/* UX-3R2: in the zone state the left zone panel holds the kinds and tools; the drawer stays closed. */}
+        <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" ? "true" : undefined}>
           <BuildSeals
             selectedTool={selectedTool}
             state={state}
@@ -573,7 +599,7 @@ export function App() {
             pulse={tutorial.pulse}
             openRequest={menuRequest ?? tutorial.openRequest}
             showLayers={false}
-            open={ui.mode === "build" || ui.mode === "zone"}
+            open={ui.mode === "build"}
             onOpenChange={next => {
               if (next && uiRef.current.mode !== "zone") sendUi({ type: "open_build" });
               if (!next && uiRef.current.mode === "build") sendUi({ type: "toggle_build" });

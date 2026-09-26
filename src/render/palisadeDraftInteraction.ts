@@ -52,7 +52,9 @@ export type PalisadeDraftIntent =
   | { readonly type: 'strokeEnd' | 'cancel' | 'undo' | 'vertexEnd' }
   | { readonly type: 'vertexBegin'; readonly index: number }
   | { readonly type: 'vertexMove'; readonly point: TileEdgePoint }
-  | { readonly type: 'eraseSegment'; readonly index: number };
+  | { readonly type: 'eraseSegment'; readonly index: number }
+  /** UX-3R2 click-click: extend the open line from its end to this point (the first click starts it). */
+  | { readonly type: 'clickPoint'; readonly point: TileEdgePoint };
 
 export function applyPalisadeIntent(input: {
   readonly state: GameState;
@@ -115,6 +117,15 @@ export function applyPalisadeIntent(input: {
         strokes: samePath(draft.path, draft.gestureBasePath)
         ? draft.strokes : [...draft.strokes, draft.gestureBasePath],
         activeGesture: null, gestureBasePath: null, gestureEnd: null, gesturePoint: null, selectedVertexIndex: null };
+    }
+    case 'clickPoint': {
+      if (draft.activeGesture !== null || draft.candidate !== null) return draft;
+      const point = integerPoint(intent.point);
+      const last = draft.path[draft.path.length - 1];
+      if (last === undefined) return { ...draft, path: [point], mode: 'draw', cancelArmed: false };
+      if (samePoint(last, point)) return draft;
+      const path = [...draft.path, ...snapPalisadeStroke(last, point).slice(1)];
+      return validatePath(state, { ...draft, path, mode: 'draw', strokes: [...draft.strokes, draft.path], selectedRunIndex: null, cancelArmed: false });
     }
     case 'eraseSegment': {
       const run = draft.candidate?.runs[intent.index];

@@ -24,6 +24,9 @@ export type CanvasFrameRefs = Readonly<{
   hoverRef: { current: TileCoordinate | null };
   feedbackRef: { current: PlacementFeedback | null };
   dragRef: { current: DragState };
+  /** UX-3R2 road click-click anchor (absent in callers without one). */
+  roadChain?: { current: TileCoordinate | null };
+  pendingPlacement?: { current: TileCoordinate | null };
   pixelRatioRef: { current: number };
   completionTracker: ConstructionCompletionTracker;
 }>;
@@ -54,6 +57,9 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   if (!isPlacementFeedbackVisible(input.refs.feedbackRef.current, nowMs)) {
     input.refs.feedbackRef.current = null;
   }
+  // A road chain belongs to the road tool: another tool (or none) drops it.
+  if (input.selectedTool !== "road" && input.refs.roadChain !== undefined) input.refs.roadChain.current = null;
+  if ((input.selectedTool === null || input.selectedTool === "road") && input.refs.pendingPlacement !== undefined) input.refs.pendingPlacement.current = null;
   const interpolationAlpha = input.interpolationAlpha();
   const preview = drawGameCanvasFrame({
     context: input.context,
@@ -62,7 +68,8 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     viewport: input.canvas.getBoundingClientRect(),
     pixelRatio: input.refs.pixelRatioRef.current,
     hoveredTile: input.refs.hoverRef.current,
-    roadStart: input.refs.dragRef.current.roadStart,
+    // UX-3R2: a click-click road chain previews from its anchor like a drag from its start.
+    roadStart: input.refs.dragRef.current.roadStart ?? (input.selectedTool === "road" ? input.refs.roadChain?.current ?? null : null),
     selectedTool: input.selectedTool,
     overlayMode: input.overlayMode,
     problemOnly: input.problemOnly ?? false,

@@ -106,7 +106,7 @@ async function measure(page: Page, name: StateName, shots: string | undefined, l
 
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
-type Row = { resolution: string; state: StateName; percent: number; budget: number; pass: boolean };
+type Row = { resolution: string; state: StateName; view?: string; percent: number; budget: number; pass: boolean };
 const rows: Row[] = [];
 type Proof = { __FEUDAL_PHASE10_PROOF__: { tileClientPoint: (t: object) => { clientX: number; clientY: number } } };
 for (const resolution of RESOLUTIONS) {
@@ -117,10 +117,10 @@ for (const resolution of RESOLUTIONS) {
   const point = async (tx: number, ty: number) => { const p = await page.evaluate(t => (window as unknown as Proof).__FEUDAL_PHASE10_PROOF__.tileClientPoint(t), { tx, ty }); return { x: p.clientX, y: p.clientY }; };
   // The cursor rests on open grass (a screen edge would pan the running game; a building would raise its hover card).
   const rest = await point(38, 46);
-  const push = async (name: StateName, cursor?: { x: number; y: number }) => {
-    const measured = await measure(page, name, flags.shots, resolution.name, cursor ?? rest);
+  const push = async (name: StateName, cursor?: { x: number; y: number }, view?: string) => {
+    const measured = await measure(page, name, flags.shots, view === undefined ? resolution.name : `${resolution.name}-${view}`, cursor ?? rest);
     const budget = BUDGETS[name][resolution.touch ? 1 : 0];
-    rows.push({ resolution: resolution.name, ...measured, budget, pass: measured.percent <= budget });
+    rows.push({ resolution: resolution.name, ...measured, ...(view === undefined ? {} : { view }), budget, pass: measured.percent <= budget });
   };
   await push("normal");
   await page.locator("[data-dock='build']").first().click(); await page.waitForTimeout(400); await push("build");
@@ -131,15 +131,22 @@ for (const resolution of RESOLUTIONS) {
   const house = await point(44, 42);
   await page.mouse.click(house.x, house.y - 8); await page.waitForTimeout(500); await push("selection");
   await page.keyboard.press("Escape"); await page.waitForTimeout(200);
+  // UX-3R2: the storage inspector (the granary's card: capacity, items, week, users) is a selection too.
+  const granaryTile = await page.evaluate(() => { const s = (window as unknown as { __FEUDAL_PHASE10_PROOF__: { state: () => { buildings: { kind: string; tx: number; ty: number }[] } } }).__FEUDAL_PHASE10_PROOF__.state(); const g = s.buildings.find(b => b.kind === "granary")!; return { tx: g.tx, ty: g.ty }; });
+  const granary = await point(granaryTile.tx, granaryTile.ty);
+  await page.mouse.click(granary.x, granary.y - 10); await page.waitForTimeout(500); await push("selection", undefined, "store");
+  await page.keyboard.press("Escape"); await page.waitForTimeout(200);
   // The zone layer opens with the tutorial off (pause menu switch), then back to play.
   await page.keyboard.press("Escape"); await page.waitForTimeout(300);
   await page.locator(".pause-menu .tutorial-switch").first().click(); await page.waitForTimeout(200);
   await page.keyboard.press("Escape"); await page.waitForTimeout(300);
   await page.locator("[data-layer='zone']").first().click(); await page.waitForTimeout(500); await push("zone");
+  // UX-3R2: with a kind armed the zone state also shows the land legend under the chips (the toolbar is always up).
+  await page.locator("[data-zone-tool='arable']").first().click(); await page.waitForTimeout(400); await push("zone", undefined, "armed");
   await context.close();
 }
 await browser.close();
 const pass = rows.every(row => row.pass);
 writeFileSync(out!, JSON.stringify({ url, threshold: THRESHOLD, budgets: BUDGETS, pass, rows }, null, 1) + "\n");
-for (const row of rows) console.log(`${row.resolution.padEnd(16)} ${row.state.padEnd(10)} ${String(row.percent).padStart(5)} % / ${row.budget} % ${row.pass ? "ok" : "OVER"}`);
+for (const row of rows) console.log(`${row.resolution.padEnd(16)} ${`${row.state}${row.view === undefined ? "" : `:${row.view}`}`.padEnd(16)} ${String(row.percent).padStart(5)} % / ${row.budget} % ${row.pass ? "ok" : "OVER"}`);
 if (!pass) process.exitCode = 1;

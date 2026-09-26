@@ -14,6 +14,7 @@ import { ZONE_BRUSH_COPY } from "./zoneBrushCopy.ko";
 import { applyPaletteStroke, withAlpha } from "./style";
 import { gestureStroke, type ZoneBrushGesture, type ZoneBrushTool } from "./zoneBrushInteraction";
 import { ZONE_STYLES } from "./drawZones";
+import { drawPaintableLand } from "./zonePaintableLand";
 
 // Live preview while a zone tool is armed (C1b): the cells the gesture would take, tinted by kind; for a refused
 // arable stroke the cells inside the wall in red and the rest pale; for the eraser the owned cells it would clear.
@@ -105,6 +106,8 @@ function cellsWithoutRoadAccess(state: GameState, cells: readonly number[]): Set
 }
 
 export function drawZoneBrushOverlay(context: CanvasRenderingContext2D, state: GameState, view: ZoneBrushView, zoom: number): void {
+  // UX-3R2: the land the armed kind can be painted on, under the stroke preview (zonePaintableLand).
+  if (view.tool.target !== "erase") drawPaintableLand(context, state, view.tool.target, zoom);
   const preview = zoneBrushPreview(state, view);
   const tint = view.tool.target === "erase" ? PALETTE.ink : ZONE_STYLES[view.tool.target].line;
   const anyRefused = preview.blocked;
@@ -159,6 +162,18 @@ export function drawZoneBrushOverlay(context: CanvasRenderingContext2D, state: G
       context.beginPath();
       context.arc(screen.sx, screen.sy, 3 / zoom, 0, Math.PI * 2);
       context.fill();
+    }
+    // UX3R 5절: the area the polygon would take, before it is closed (beside the pointer).
+    const last = points[points.length - 1];
+    if (last !== undefined && preview.cells.length > 0) {
+      const screen = tileToScreen(last.x - 0.5, last.y - 0.5);
+      const label = ZONE_BRUSH_COPY.polygonArea(preview.cells.length);
+      context.font = `600 ${Math.round(13 / Math.max(zoom, 0.5))}px "Noto Sans KR", "Apple SD Gothic Neo", sans-serif`;
+      const width = context.measureText(label).width; const pad = 4 / zoom; const x = screen.sx + 10 / zoom; const y = screen.sy - 22 / zoom;
+      context.fillStyle = withAlpha(RAMPS.plaster[5], 0.92);
+      context.fillRect(x - pad, y - 14 / zoom, width + pad * 2, 19 / zoom);
+      context.fillStyle = PALETTE.ink;
+      context.fillText(label, x, y);
     }
   }
 }

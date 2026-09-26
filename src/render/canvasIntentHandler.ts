@@ -6,11 +6,11 @@ import { handleCanvasSelect } from "./canvasClickRuntime";
 import { handleAimedCancel } from "./canvasContextMenuHandler";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
 import { updateCanvasHover } from "./canvasHoverRuntime";
-import { advancePalisadeDraftDrag, beginPalisadeDraftDrag, finishPalisadeDraftDrag } from "./canvasPalisadeDraftRuntime";
+import { advancePalisadeDraftDrag, beginPalisadeDraftDrag, finishPalisadeDraftDrag, palisadeEdgePointAtCanvas } from "./canvasPalisadeDraftRuntime";
 import type { CanvasMutableRefs } from "./canvasRuntimeRefs";
 import {
-  createZoneBrushContext, zoneBrushSize, zoneCancel, zoneConfirm, zoneEscape, zonePointer, zoneStrokeBegin, zoneStrokeEnd,
-  zoneStrokeMove, zoneUndo,
+  createZoneBrushContext, zoneAimedCancel, zoneBrushSize, zoneConfirm, zoneEscape, zonePointer, zoneRedo, zoneStrokeBegin,
+  zoneStrokeEnd, zoneStrokeMove, zoneUndo,
 } from "./canvasZoneBrushRuntime";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { zoomByFactor } from "./interactions";
@@ -18,6 +18,7 @@ import { cameraForMinimapTileJump } from "./minimapCameraJump";
 import { applyPalisadeIntent, type PalisadeDraftState } from "./palisadeDraftInteraction";
 import { pickTile } from "./picking";
 import { playPlacementSound } from "../audio/soundDirector";
+import { resolveBuildingPlacementAttempt } from "./interactions";
 
 // The map's intent handler (B9): what the canvas used to do in its mouse and key callbacks, fed by input intents
 // only. Device questions (button, Space held, drag threshold, which click a drag swallows) were answered by the
@@ -40,6 +41,8 @@ type Deps = {
   readonly viewport: () => { readonly width: number; readonly height: number };
   readonly world: () => WorldBounds;
   readonly markUserControlled: () => void;
+  /** UX-3R2 tablet placement: sets (or clears) the tile waiting for ✓. */
+  readonly setPending?: (tile: { readonly tx: number; readonly ty: number } | null) => void;
 };
 
 export function createCanvasIntentHandler(deps: Deps): IntentHandler {
@@ -81,6 +84,7 @@ export function createCanvasIntentHandler(deps: Deps): IntentHandler {
     }
     const destination = intent.outside === true ? null : pickTile(intent.world);
     const attempt = finishedRoadAttempt(stateRef.current, drag, destination, performance.now());
+    if (drag.mode === "road" && drag.moved) refs.roadChain.current = null; // a drag lays its own line (UX-3R2)
     if (attempt !== null) {
       refs.feedbackRef.current = attempt.feedback;
       playPlacementSound(attempt);
@@ -115,19 +119,40 @@ export function createCanvasIntentHandler(deps: Deps): IntentHandler {
       case "strokeBegin": return strokeBegin(intent) ? "handled" : undefined;
       case "strokeMove": strokeMove(intent.world); return "handled";
       case "strokeEnd": strokeEnd(intent); return "handled";
-      case "select":
+      case "select": {
         if (zone.zone.toolRef.current !== null) return;
+        // UX-3R2 palisade click-click: in the open draw a click extends the line from its end to the point.
+        const draft = palisadeDraftRef.current;
+        if (draft !== null && draft.mode === "draw" && draft.candidate === null) {
+          const next = applyPalisadeIntent({ state: stateRef.current, draft, intent: { type: "clickPoint", point: palisadeEdgePointAtCanvas(canvasPoint(intent.world), refs.cameraRef.current) } });
+          if (next !== draft) setDraft(next);
+          return "handled";
+        }
         handleCanvasSelect({ world: intent.world, canvas, refs, stateRef, selectedToolRef, palisadeDraftRef,
-          setSelection: deps.setSelection, dispatch: deps.dispatch });
+          setSelection: deps.setSelection, dispatch: deps.dispatch, ...(deps.setPending === undefined ? {} : { setPending: deps.setPending }) });
         return "handled";
-      case "confirm": return onMap && zoneConfirm(zone) ? "handled" : undefined;
+      }
+      case "confirm": {
+        if (onMap && refs.roadChain.current !== null) { refs.roadChain.current = null; return "handled"; }
+        // UX-3R2 tablet ✓: place the armed building where the tap left the ghost; the tool stays for the next.
+        const pending = refs.pendingPlacement.current; const tool = selectedToolRef.current;
+        if (onMap && pending !== null && tool !== null && tool !== "road") {
+          const attempt = resolveBuildingPlacementAttempt({ state: stateRef.current, tool, tile: pending, nowMs: performance.now() });
+          refs.feedbackRef.current = attempt.feedback;
+          playPlacementSound(attempt);
+          if (attempt.action !== null) deps.dispatch(attempt.action);
+          deps.setPending?.(null);
+          return "handled";
+        }
+        return onMap && zoneConfirm(zone) ? "handled" : undefined;
+      }
       case "cancel": {
         if (intent.world !== undefined) {
           if (palisadeDraftRef.current !== null) {
             setDraft(applyPalisadeIntent({ state: stateRef.current, draft: palisadeDraftRef.current, intent: { type: "cancel" } }));
             return "handled";
           }
-          if (zone.zone.toolRef.current !== null) { zoneCancel(zone); return "handled"; }
+          if (zoneAimedCancel(zone, intent.world)) return "handled";
           if (cancelRoadPreview(refs)) return "handled";
           handleAimedCancel({ world: intent.world, dispatch: deps.dispatch, selectedToolRef, setSelection: deps.setSelection, stateRef });
           return "handled";
@@ -135,11 +160,16 @@ export function createCanvasIntentHandler(deps: Deps): IntentHandler {
         if (!onMap) return;
         // The zone brush's Esc drops only its own gesture: the tool stays armed (nothing after this sees it).
         if (zoneEscape(zone)) return "consumed";
+        // UX-3R2: a tablet placement waiting for ✓ is dropped first (✕, Esc, a two-finger tap); the tool stays.
+        if (refs.pendingPlacement.current !== null) { deps.setPending?.(null); return "consumed"; }
+        // UX-3R2: likewise a road chain — Esc ends the chain, the road tool stays armed (one step, S-31).
+        if (refs.roadChain.current !== null && refs.dragRef.current.mode !== "road") { refs.roadChain.current = null; return "consumed"; }
         cancelRoadPreview(refs);
         deps.setSelection(null);
         return "handled";
       }
       case "undo": return onMap && zoneUndo(zone) ? "handled" : undefined;
+      case "redo": return onMap && zoneRedo(zone) ? "handled" : undefined;
       case "brushSize": return onMap && zoneBrushSize(zone, intent.step) ? "handled" : undefined;
       case "pan":
         moveCamera(deps.clampCamera({ ...refs.cameraRef.current, panX: refs.cameraRef.current.panX + intent.dx, panY: refs.cameraRef.current.panY + intent.dy }));

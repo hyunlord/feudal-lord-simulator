@@ -28,6 +28,7 @@ const url = flags.url ?? 'http://127.0.0.1:4291/';
 const mouseDevice = page => ({
   drag: async (a, b) => { await page.mouse.move(a.x, a.y); await page.mouse.down(); await page.mouse.move(b.x, b.y, { steps: 8 }); await page.mouse.up(); await page.waitForTimeout(60); },
   tap: async p => { await page.mouse.click(p.x, p.y); await page.waitForTimeout(60); },
+  place: async p => { await page.mouse.click(p.x, p.y); await page.waitForTimeout(60); },
   press: async locator => { await locator.click(); },
   roadDragCancelled: async (a, b) => {
     await page.mouse.move(a.x, a.y); await page.mouse.down(); await page.mouse.move(b.x, b.y, { steps: 6 });
@@ -50,7 +51,14 @@ const touchDevice = (page, cdp) => {
   };
   return {
     drag: (a, b) => oneFinger(a, b, 8),
-    tap: async p => { await send('touchStart', [p]); await send('touchEnd', []); await page.waitForTimeout(60); },
+    // Taps are spaced past the double-tap window (350 ms): two taps on one tile are two taps, not a double tap.
+    tap: async p => { await send('touchStart', [p]); await send('touchEnd', []); await page.waitForTimeout(400); },
+    // UX-3R2 tablet placement: the ghost sits 80 px above the finger and ✓ builds; the mouse clicks the tile itself.
+    place: async p => {
+      if (await page.locator('canvas[data-line-tools="click-click"]').count() === 0) { await touchDevice(page, cdp).tap(p); return; }
+      await touchDevice(page, cdp).tap({ x: p.x, y: p.y + 80 });
+      await touchDevice(page, cdp).press(page.locator('.placement-confirm-button[data-confirm="ok"]'));
+    },
     press: async locator => { const box = await locator.boundingBox(); await touchDevice(page, cdp).tap({ x: box.x + box.width / 2, y: box.y + box.height / 2 }); },
     roadDragCancelled: async (a, b) => {
       await send('touchStart', [a]); for (let i = 1; i <= 6; i += 1) await send('touchMove', [lerp(a, b, i / 6)]);
@@ -70,12 +78,14 @@ const touchDevice = (page, cdp) => {
 
 const STEPS = [
   ['road tool, drag a road line', async (d, page, at) => { await tool(d, page, '도로', '길'); await d.drag(await at(43, 44), await at(47, 44)); }],
-  ['road tool, click one tile twice (place, remove)', async (d, page, at) => { await d.tap(await at(40, 46)); await d.tap(await at(40, 46)); await d.tap(await at(38, 46)); }],
+  // UX-3R2: a single-tile road action is the anchor tap plus a tap on it (click-click line tools).
+  ['road tool, click one tile twice (place, remove)', async (d, page, at) => { for (const tile of [[40, 46], [40, 46], [38, 46]]) await roadTile(d, page, await at(...tile)); }],
+  ['UX-3R2 road click-click: two taps lay a line, Enter ends the chain', async (d, page, at) => { await d.tap(await at(41, 48)); await d.tap(await at(44, 48)); await page.keyboard.press('Enter'); }],
   ['road tool, drag then right click cancels, release', async (d, page, at) => { await d.roadDragCancelled(await at(36, 50), await at(39, 50)); }],
   ['Esc disarms, left drag pans', async (d, page) => { await escape(page); await d.drag({ x: 700, y: 420 }, { x: 610, y: 380 }); }],
   ['middle drag pans', async (d) => { await d.panDrag({ x: 640, y: 400 }, { x: 700, y: 450 }); }],
   ['wheel zoom in and out', async (d) => { await d.zoomSteps({ x: 600, y: 380 }); }],
-  ['house tool, place', async (d, page, at) => { await tool(d, page, '주택', '오두막'); await d.tap(await at(48, 38)); }],
+  ['house tool, place', async (d, page, at) => { await tool(d, page, '주택', '오두막'); await d.place(await at(48, 38)); }],
   ['right click the new site cancels it', async (d, page, at) => { await escape(page); await d.cancelAt(await at(48, 38)); }],
   ['Space held + drag pans with the road tool', async (d, page) => { await tool(d, page, '도로', '길'); await d.panDragWithSpace({ x: 640, y: 400 }, { x: 600, y: 440 }); await escape(page); }],
   // UX-3: the strokes sit in the upper map (tiles 46-50 x 41-43), clear of the old bottom console and the zone drawer
@@ -101,6 +111,8 @@ const STEPS = [
     await d.park();
   }],
 ];
+
+async function roadTile(d, page, p) { await d.tap(p); if (await page.locator('canvas[data-line-tools="click-click"]').count() > 0) await d.tap(p); }
 
 /** Esc one step; on the normal screen UX-3 opens the pause menu (S-31), which this session closes again. */
 async function escape(page) {

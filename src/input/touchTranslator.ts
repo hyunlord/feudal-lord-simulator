@@ -20,6 +20,9 @@ import type { ArmedTools, MouseKeyboardTranslator, Outcome } from "./mouseKeyboa
 //    (disarm, like Esc) while a tool is armed, else the cancel aimed at the map (the construction site there, like a
 //    right click). A second finger that lands on a stroke in progress only drops that stroke (the right click
 //    during a road drag), without the extra cancel.
+//  - UX-3R2 (UX3R 8절): with a building tool armed one finger positions the ghost instead of panning — the ghost sits
+//    PLACE_OFFSET_PX above the finger (so the finger never covers it); lifting ends the positioning with a `select`
+//    at the ghost, which leaves the placement waiting for the confirm bar's ✓. Two fingers still move the camera.
 // Everything is preventDefault-ed: the browser makes no mouse events or scrolling of its own on the canvas.
 
 /** `covered`: a page control lies over the canvas at this point (the DOM binding hit-tests each move). */
@@ -41,11 +44,13 @@ export const LONG_PRESS_MS = 400;
 export const TWO_TAP_MS = 300;
 export const DOUBLE_TAP_MS = 350;
 export const TAP_SLOP = 10;
+export const PLACE_OFFSET_PX = 80;
 const PREVENT: Outcome = { preventDefault: true };
 
 type Mode =
   | { readonly kind: "idle" }
   | { readonly kind: "one"; readonly start: TouchPoint; last: TouchPoint; moved: boolean; timer: number | null; inspected: boolean }
+  | { readonly kind: "place"; last: TouchPoint }
   | { readonly kind: "two"; readonly startedAt: number; readonly startMid: Point; readonly startDistance: number; mid: Point; distance: number; moved: boolean;
       /** The second finger dropped a one-finger press: that is the whole gesture, lifting both is no cancel tap. */
       readonly droppedPress: boolean };
@@ -64,6 +69,8 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
   };
   const strokeTool = () => { const armed = context.armed(); return armed.zone || armed.road || armed.palisade; };
   const stopTimer = () => { if (mode.kind === "one" && mode.timer !== null) { clearTimer(mode.timer); mode.timer = null; } };
+  const above = (touch: TouchPoint): TouchPoint => ({ clientX: touch.clientX, clientY: touch.clientY - PLACE_OFFSET_PX });
+  const positioning = () => { const armed = context.armed(); return armed.building === true && !strokeTool(); };
   const beginTwo = (touches: readonly TouchPoint[]) => {
     const droppedPress = mode.kind === "one" && context.mouse.pressing() && strokeTool();
     if (mode.kind === "one") { stopTimer(); context.mouse.abortPress(mode.last); }
@@ -80,6 +87,7 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
       }
       if (mode.kind !== "idle") return PREVENT;
       const touch = touches[0] as TouchPoint;
+      if (positioning()) { mode = { kind: "place", last: touch }; context.mouse.pointerMove(above(touch)); lastTap = null; return PREVENT; }
       const double = lastTap !== null && now() - lastTap.at <= DOUBLE_TAP_MS
         && Math.hypot(lastTap.point.clientX - touch.clientX, lastTap.point.clientY - touch.clientY) <= TAP_SLOP * 2;
       context.mouse.pointerDown({ button: 0, clientX: touch.clientX, clientY: touch.clientY, detail: double ? 2 : 1 });
@@ -98,6 +106,12 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
     },
 
     move(touches: readonly TouchPoint[]): Outcome {
+      if (mode.kind === "place" && touches.length === 1) {
+        const touch = touches[0] as TouchPoint;
+        mode.last = touch;
+        if (touch.covered !== true) context.mouse.pointerMove(above(touch));
+        return PREVENT;
+      }
       if (mode.kind === "one" && touches.length === 1) {
         const touch = touches[0] as TouchPoint;
         mode.last = touch;
@@ -119,6 +133,13 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
     },
 
     end(remaining: number): Outcome {
+      if (mode.kind === "place") {
+        if (remaining > 0) return PREVENT;
+        const ended = mode;
+        mode = { kind: "idle" };
+        context.emit({ kind: "select", world: canvasToWorld(local(above(ended.last)), context.camera()) });
+        return PREVENT;
+      }
       if (mode.kind === "one") {
         if (remaining > 0) return PREVENT;
         stopTimer();

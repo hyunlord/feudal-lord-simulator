@@ -16,6 +16,7 @@ import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
+import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -138,10 +139,16 @@ export function CrisisIcons({ rows: all, onInspect }: { readonly rows: ReturnTyp
 }
 
 type LedgerTab = "stock" | "alerts" | "view" | "map";
-/** Ledger drawer (S-26): resource x storage; alerts, overlays and the map as its other tabs. */
-export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab }: {
+/**
+ * Ledger drawer (S-26): resource x storage with the total, this week's change and (for food) how long it lasts; a
+ * row lights the buildings holding it on the map, a column head opens that store's inspector (UX-3R2). Alerts,
+ * overlays and the map are its other tabs.
+ */
+export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight }: {
   readonly state: GameState; readonly onInspect: (id: string) => void; readonly onClose: () => void;
   readonly viewTab: ReactNode; readonly mapTab: ReactNode;
+  readonly history?: StoreStockHistory | null; readonly food?: { readonly days: number | null };
+  readonly highlighted?: readonly string[]; readonly onHighlight?: (ids: readonly string[]) => void;
 }) {
   const [tab, setTab] = useState<LedgerTab>("stock");
   const matrix = ledgerMatrix(state);
@@ -160,11 +167,19 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab }: {
           <thead><tr><th scope="col" />{matrix.stores.map(store => (
             <th key={store.id} scope="col"><button type="button" className="ledger-store" onClick={() => onInspect(store.id)}>
               {HUD_COPY.ledgerStore(BUILDING_CONFIG_BY_KIND[store.kind as BuildingKind].name, store.index)}</button></th>))}
-            <th scope="col">{HUD_COPY.ledgerTotal}</th></tr></thead>
-          <tbody>{matrix.rows.map(row => (
-            <tr key={row.resource}><th scope="row">{RESOURCE_NAMES[row.resource]}</th>
+            <th scope="col">{HUD_COPY.ledgerTotal}</th><th scope="col">{HUD_COPY.ledgerWeek}</th><th scope="col">{HUD_COPY.ledgerLasts}</th></tr></thead>
+          <tbody>{matrix.rows.map(row => {
+            const holders = matrix.stores.filter((_store, index) => (row.byStore[index] ?? 0) > 0).map(store => store.id);
+            const lit = holders.length > 0 && holders.every(id => highlighted.includes(id)) && highlighted.length === holders.length;
+            const week = history === null ? null : weeklyTotalChange(history, row.resource, state);
+            const lasts = (row.resource === "bread" || row.resource === "wheat") && food.days !== null ? HUD_COPY.ledgerDays(food.days) : HUD_COPY.ledgerNoLasts;
+            return (
+            <tr key={row.resource} data-resource={row.resource} data-lit={lit ? "true" : undefined}>
+              <th scope="row"><button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(RESOURCE_NAMES[row.resource])}
+                onClick={() => onHighlight?.(lit ? [] : holders)}>{RESOURCE_NAMES[row.resource]}</button></th>
               {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}
-              <td className="ledger-total">{row.total}</td></tr>))}</tbody>
+              <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td></tr>);
+          })}</tbody>
         </table>)) : null}
       {tab === "alerts" ? (alerts.length === 0 ? <p>{HUD_COPY.ledgerNoAlerts}</p> : <ul className="ledger-alerts">{alerts.map(row => (
         <li key={row.id}><strong>{row.title}</strong> · {row.countLabel}<br /><span>{row.cause}</span>

@@ -56,6 +56,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const { problemOnlyRef, highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, previousRenderStateRef, selectedToolRef, selectionRef, stateRef, zoneToolRef } =
     useGameCanvasRuntimeRefs({ state, previousRenderState, selectedTool, overlayMode, problemOnly, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs, zoneTool: input.zoneTool ?? null });
   const zoneRadiusRef = useRef(input.onZoneRadiusChange); zoneRadiusRef.current = input.onZoneRadiusChange;
+  const pendingRef = useRef(input.setPendingPlacement); pendingRef.current = input.setPendingPlacement;
 
   useEffect(() => {
     const canvas = canvasRef.current, context = canvas?.getContext("2d") ?? null;
@@ -90,9 +91,11 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       palisade: palisadeDraftRef.current !== null,
       road: selectedToolRef.current === "road",
       tool: selectedToolRef.current !== null || zoneToolRef.current !== null || palisadeDraftRef.current !== null,
+      building: selectedToolRef.current !== null && selectedToolRef.current !== "road" && zoneToolRef.current === null && palisadeDraftRef.current === null,
     });
+    const setPending = (tile: { readonly tx: number; readonly ty: number } | null) => { refs.pendingPlacement.current = tile; pendingRef.current?.(tile); };
     const disposeHandler = bus.subscribe(createCanvasIntentHandler({
-      canvas, refs, stateRef, selectedToolRef, palisadeDraftRef, zone: zoneContext, dispatch, setSelection, setHoveredBuilding,
+      canvas, refs, stateRef, selectedToolRef, palisadeDraftRef, zone: zoneContext, dispatch, setSelection, setHoveredBuilding, setPending,
       onPalisadeDraftChange, clampCamera, viewport, world, markUserControlled: () => { userControlledCamera = true; },
     }), INTENT_ORDER.world);
     const translator = createMouseKeyboardTranslator({

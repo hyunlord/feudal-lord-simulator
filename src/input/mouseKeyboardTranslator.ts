@@ -17,7 +17,7 @@ import type { InputIntent, StrokeToolId } from "./inputIntent";
 //  - A pan emits `pan` deltas once the pointer has moved 4 px, anchored to the camera at the first move (so a pan
 //    that hits the map edge and comes back tracks the pointer as before). Any drag past 4 px swallows its click.
 //  - Right click (contextmenu) = cancel aimed at the map; a road stroke it cancels swallows the rest of that press.
-//  - Keys: Esc cancel, Z undo, [ ] brush size, O problem view, 1-4 overlays, Enter confirm, Q / E tool step,
+//  - Keys: Esc cancel, Z undo (Shift+Z / Y redo), [ ] brush size, O problem view, 1-4 overlays, Enter confirm, Q / E tool step,
 //    + / - zoom at the view centre, Space held = pan with the left button, Space tap = pause, WASD / arrows camera.
 
 export type ArmedTools = {
@@ -28,6 +28,8 @@ export type ArmedTools = {
   readonly road: boolean;
   /** Any placement tool is armed (road or a building); the controller's B then disarms instead of cancelling a site. */
   readonly tool?: boolean;
+  /** UX-3R2: a building tool is armed (not the road): a finger then moves the ghost instead of the camera. */
+  readonly building?: boolean;
 };
 
 type CanvasRect = { readonly left: number; readonly top: number; readonly width: number; readonly height: number };
@@ -51,7 +53,7 @@ export type PointerData = {
   readonly detail?: number;
 };
 export type WheelData = { readonly clientX: number; readonly clientY: number; readonly deltaY: number };
-export type KeyData = { readonly code: string; readonly key: string; readonly repeat?: boolean; readonly target: EventTarget | null };
+export type KeyData = { readonly code: string; readonly key: string; readonly repeat?: boolean; readonly target: EventTarget | null; readonly shiftKey?: boolean };
 /** What the DOM binding must do with the event. */
 export type Outcome = { readonly preventDefault: boolean; readonly stopImmediatePropagation?: boolean };
 
@@ -149,6 +151,14 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
         gesture = { kind: "pan", start: point, startCamera: null, moved: false };
         return PREVENT;
       }
+      // UX-3R2: a double click with the road tool ends a click-click chain (confirm) and places nothing itself.
+      if (pointer.button === 0 && (pointer.detail ?? 0) >= 2) {
+        context.emit({ kind: "confirm" });
+        // The press is spent: its release keeps the click swallowed (as a cancelled stroke's does).
+        strokeCancelled = true;
+        suppressClick = true;
+        return PREVENT;
+      }
       if (pointer.button === 0) {
         context.emit({ kind: "strokeBegin", toolId: "road", world });
         gesture = { kind: "stroke", tool: "road", start: point, moved: false };
@@ -238,7 +248,9 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
         const consumed = context.emit({ kind: "cancel" }, at);
         return { preventDefault: true, stopImmediatePropagation: consumed };
       }
-      if (key.code === "KeyZ") return { preventDefault: context.emit({ kind: "undo" }, at) };
+      // UX-3R2: Shift+Z (or Y) redoes the zone edit Z took back.
+      if (key.code === "KeyZ") return { preventDefault: context.emit({ kind: key.shiftKey === true ? "redo" : "undo" }, at) };
+      if (key.code === "KeyY") return { preventDefault: context.emit({ kind: "redo" }, at) };
       if (key.code === "BracketLeft" || key.code === "BracketRight") {
         return { preventDefault: context.emit({ kind: "brushSize", step: key.code === "BracketRight" ? 1 : -1 }, at) };
       }

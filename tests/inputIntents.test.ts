@@ -17,6 +17,10 @@ import type { ZoneBrushTool } from "../src/render/zoneBrushInteraction";
 import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import type { GameAction } from "../src/state/gameStore.types";
 import { getTile } from "../src/world/grid";
+import { canvasToWorld } from "../src/render/camera";
+import { pickTile } from "../src/render/picking";
+import { reportInputDevice } from "../src/input/inputDevice";
+import { initialOpenPalisadeDraft, type PalisadeDraftState } from "../src/render/palisadeDraftInteraction";
 
 // B9 input intents: the mouse / keyboard translation table (docs/design/input-intents.md) and the same player
 // operations run end to end (translator -> bus -> canvas handler -> game actions) against the pure resolvers the
@@ -145,7 +149,7 @@ test("Given the intent bus When a handler consumes an intent Then later handlers
 });
 
 // End to end: translator -> bus -> canvas handler, with a real state.
-function runtimeFor(state: GameState, tool: PlacementTool | null, zoneTool: ZoneBrushTool | null = null) {
+function runtimeFor(state: GameState, tool: PlacementTool | null, zoneTool: ZoneBrushTool | null = null, palisadeDraft: PalisadeDraftState | null = null) {
   const canvas = { getBoundingClientRect: () => RECT, title: "" } as unknown as HTMLCanvasElement;
   const camera: CameraState = { zoom: 1, panX: 640 - tileToScreen(44, 41).sx, panY: 400 - tileToScreen(44, 41).sy };
   const refs = createCanvasMutableRefs(camera);
@@ -158,18 +162,22 @@ function runtimeFor(state: GameState, tool: PlacementTool | null, zoneTool: Zone
   const zone = createZoneBrushContext({ toolRef: zoneToolRef, radiusRef: { current: undefined }, refs, stateRef, dispatch, clampCamera });
   const bus = createIntentBus();
   let selection: unknown = null;
-  bus.subscribe(createCanvasIntentHandler({ canvas, refs, stateRef, selectedToolRef: { current: tool }, palisadeDraftRef: { current: null }, zone,
+  const pending: ({ readonly tx: number; readonly ty: number } | null)[] = [];
+  const palisadeDraftRef = { current: palisadeDraft };
+  bus.subscribe(createCanvasIntentHandler({ canvas, refs, stateRef, selectedToolRef: { current: tool }, palisadeDraftRef, zone,
     dispatch, setSelection: value => { selection = typeof value === "function" ? value(selection as never) : value; }, setHoveredBuilding: () => undefined,
-    onPalisadeDraftChange: undefined, clampCamera, viewport: () => RECT, world, markUserControlled: () => undefined }), INTENT_ORDER.world);
+    onPalisadeDraftChange: undefined, clampCamera, viewport: () => RECT, world, markUserControlled: () => undefined,
+    setPending: tile => { refs.pendingPlacement.current = tile; pending.push(tile); } }), INTENT_ORDER.world);
   const translator = createMouseKeyboardTranslator({ bounds: () => RECT, camera: () => refs.cameraRef.current, world,
-    armed: () => ({ zone: zoneToolRef.current !== null, zonePolygon: false, palisade: false, road: tool === "road" }),
+    armed: () => ({ zone: zoneToolRef.current !== null, zonePolygon: false, palisade: palisadeDraftRef.current !== null, road: tool === "road" }),
     emit: (intent, context) => bus.emit(intent, context), setTimeout: () => 1, clearTimeout: () => undefined });
   const client = (tx: number, ty: number) => {
     const screen = tileToScreen(tx, ty);
     return { clientX: screen.sx * refs.cameraRef.current.zoom + refs.cameraRef.current.panX, clientY: screen.sy * refs.cameraRef.current.zoom + refs.cameraRef.current.panY };
   };
-  return { translator, actions, stateRef, refs, client, bus, selection: () => selection, touch: createTouchTranslator({ bounds: () => RECT, camera: () => refs.cameraRef.current,
-    armed: () => ({ zone: zoneToolRef.current !== null, zonePolygon: false, palisade: false, road: tool === "road", tool: tool !== null || zoneToolRef.current !== null }),
+  return { translator, actions, stateRef, refs, client, bus, pending, palisadeDraftRef, selection: () => selection, touch: createTouchTranslator({ bounds: () => RECT, camera: () => refs.cameraRef.current,
+    armed: () => ({ zone: zoneToolRef.current !== null, zonePolygon: false, palisade: false, road: tool === "road", tool: tool !== null || zoneToolRef.current !== null,
+      building: tool !== null && tool !== "road" && zoneToolRef.current === null }),
     emit: intent => bus.emit(intent), mouse: translator, setTimeout: () => 1, clearTimeout: () => undefined }) };
 }
 
@@ -184,12 +192,85 @@ test("Given the road tool When a road is dragged through the intents Then the sa
   assert.deepEqual(run.actions, [expected]);
 });
 
-test("Given the road tool When one tile is clicked Then it toggles that tile, as the old click resolver did", () => {
+test("UX-3R2 road click-click: one click anchors; a click on the anchor toggles that tile, as the old single click did", () => {
   const run = runtimeFor(DEFAULT_GAME_STATE, "road");
   const point = run.client(44, 41);
-  run.translator.pointerDown({ button: 0, ...point }); run.translator.pointerUp({ button: 0, ...point }); run.translator.click(point);
+  const click = () => { run.translator.pointerDown({ button: 0, ...point }); run.translator.pointerUp({ button: 0, ...point }); run.translator.click(point); };
+  click();
+  assert.equal(run.actions.length, 0, "the first click only anchors");
+  assert.deepEqual(run.refs.roadChain.current, { tx: 44, ty: 41 });
+  click();
   assert.equal(getTile(run.stateRef.current, { tx: 44, ty: 41 })?.hasRoad, !getTile(DEFAULT_GAME_STATE, { tx: 44, ty: 41 })?.hasRoad);
   assert.equal(run.actions.length, 1);
+  assert.equal(run.refs.roadChain.current, null, "the toggle ends the chain");
+});
+
+test("UX-3R2 road click-click: each next click lays the road from the anchor and anchors there; Enter ends, Esc ends without disarming", () => {
+  const run = runtimeFor(DEFAULT_GAME_STATE, "road");
+  const click = (tx: number, ty: number) => { const p = run.client(tx, ty); run.translator.pointerMove(p); run.translator.pointerDown({ button: 0, ...p }); run.translator.pointerUp({ button: 0, ...p }); run.translator.click(p); };
+  click(43, 44); click(47, 44);
+  const first = resolveRoadPlacementAttempt({ state: DEFAULT_GAME_STATE, start: { tx: 43, ty: 44 }, destination: { tx: 47, ty: 44 }, nowMs: 0 }).action;
+  assert.deepEqual(run.actions, [first], "the same line a drag from 43,44 to 47,44 lays");
+  assert.deepEqual(run.refs.roadChain.current, { tx: 47, ty: 44 });
+  run.translator.keyDown({ code: "Enter", key: "Enter", target: null });
+  assert.equal(run.refs.roadChain.current, null);
+  click(40, 46);
+  const consumed = run.bus.emit({ kind: "cancel" });
+  assert.equal(consumed, true, "Esc on a chain is consumed by the map (the app's one-step Esc does not see it)");
+  assert.equal(run.refs.roadChain.current, null);
+  // A double click ends a chain (confirm) and lays nothing itself.
+  click(40, 46); const p = run.client(44, 46);
+  run.translator.pointerMove(p); run.translator.pointerDown({ button: 0, ...p, detail: 2 }); run.translator.pointerUp({ button: 0, ...p }); run.translator.click(p);
+  assert.equal(run.refs.roadChain.current, null);
+  assert.equal(run.actions.length, 1);
+});
+
+test("UX-3R2 tablet: a finger positions the ghost 80 px above it; lifting builds nothing; ✓ (confirm) builds there and the tool stays", () => {
+  const run = runtimeFor(DEFAULT_GAME_STATE, "house");
+  reportInputDevice("touch");
+  const finger = run.client(50, 50);
+  run.touch.start([finger]); run.touch.move([{ ...finger, clientX: finger.clientX + 1 }]); run.touch.end(0);
+  assert.equal(run.actions.length, 0, "lifting the finger does not build");
+  const ghost = run.refs.pendingPlacement.current;
+  assert.ok(ghost !== null);
+  const above = { clientX: finger.clientX + 1, clientY: finger.clientY - 80 };
+  const aboveTile = pickTile(canvasToWorld({ x: above.clientX - RECT.left, y: above.clientY - RECT.top }, run.refs.cameraRef.current));
+  assert.deepEqual(ghost, aboveTile, "the ghost is the tile 80 px above the finger");
+  const cameraBefore = run.refs.cameraRef.current;
+  run.bus.emit({ kind: "confirm" });
+  const expected = resolveBuildingPlacementAttempt({ state: DEFAULT_GAME_STATE, tool: "house", tile: ghost!, nowMs: 0 }).action;
+  assert.deepEqual(run.actions, expected === null ? [] : [expected]);
+  assert.equal(run.refs.pendingPlacement.current, null);
+  assert.equal(run.refs.cameraRef.current, cameraBefore, "one finger did not pan");
+  run.touch.start([finger]); run.touch.end(0);
+  assert.ok(run.refs.pendingPlacement.current !== null);
+  assert.equal(run.bus.emit({ kind: "cancel" }), true, "✕ / Esc drops the waiting spot first");
+  assert.equal(run.refs.pendingPlacement.current, null);
+  reportInputDevice("mouse");
+});
+
+test("UX-3R2 zone: Shift+Z redoes the undone stroke; a right click with no gesture erases a brush dab", () => {
+  const run = runtimeFor(DEFAULT_GAME_STATE, null, { target: "pasture", radius: 2, polygon: false });
+  const a = run.client(20, 60); const b = run.client(24, 60);
+  run.translator.pointerDown({ button: 0, ...a }); run.translator.pointerMove(b); run.translator.pointerUp({ button: 0, ...b });
+  const painted = run.stateRef.current.zones?.[0]?.membership.length ?? 0;
+  run.translator.keyDown({ code: "KeyZ", key: "z", target: null });
+  assert.equal(run.stateRef.current.zones?.length ?? 0, 0);
+  run.translator.keyDown({ code: "KeyZ", key: "Z", target: null, shiftKey: true });
+  assert.equal(run.stateRef.current.zones?.[0]?.membership.length, painted, "redo paints the same cells again");
+  run.translator.contextMenu(run.client(22, 60));
+  assert.deepEqual(run.actions.map(action => action.type), ["zone_paint", "zone_undo_stroke", "zone_paint", "zone_erase"]);
+  assert.ok((run.stateRef.current.zones?.[0]?.membership.length ?? 0) < painted);
+});
+
+test("UX-3R2 palisade click-click: in the open draw each click extends the line from its end", () => {
+  const draft = initialOpenPalisadeDraft();
+  const run = runtimeFor(DEFAULT_GAME_STATE, null, null, draft);
+  const handlerDraft = () => run.palisadeDraftRef.current;
+  run.bus.emit({ kind: "select", world: canvasToWorld({ x: run.client(40, 40).clientX - RECT.left, y: run.client(40, 40).clientY - RECT.top }, run.refs.cameraRef.current) });
+  assert.equal(handlerDraft()?.path.length, 1);
+  run.bus.emit({ kind: "select", world: canvasToWorld({ x: run.client(44, 40).clientX - RECT.left, y: run.client(44, 40).clientY - RECT.top }, run.refs.cameraRef.current) });
+  assert.ok((handlerDraft()?.path.length ?? 0) > 2, "a snapped run from the first point to the second");
 });
 
 test("Given a building tool When the map is clicked Then the placement is the old resolver's", () => {

@@ -41,6 +41,8 @@ export type InputIntent =
   /** `outside`: released off the map (a road drag then places nothing). */
   | { readonly kind: "strokeEnd"; readonly world: WorldPoint; readonly outside?: boolean }
   | { readonly kind: "undo" }
+  /** UX-3R2: redo the zone edit the last undo took back (Shift+Z, Y, the zone toolbar). */
+  | { readonly kind: "redo" }
   | { readonly kind: "toolSelect"; readonly toolId: string | null }
   | { readonly kind: "speed"; readonly value: SpeedStep }
   // B9 extensions (not in design master 13.1; device-free meanings, see docs/design/input-intents.md IN-2):
