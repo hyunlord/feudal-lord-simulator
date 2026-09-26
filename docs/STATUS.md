@@ -4,7 +4,7 @@
 
 ## 현재 단계
 
-- **REMOTE-1 DGX 원격 실행기 — 관문 ②③④⑤ 통과, ① 대기(sudo 링크), ⑥ 기록**(Claude Code, 스크립트·문서만, 게임 코드 0줄): `scripts/remote/run.sh`·`npm run remote:{test,guardrail,browser,perf,clone-check,setup}`. 작업 트리를 DGX `~/fls-runs/<label>-<sha>`로 보내 `fls-runs.slice`(48GB·12코어·nice 10) 안에서 돌리고 결과만 가져온다. Part7 브라우저 테스트 DGX 10/10(각 7.4초). 성능 관문은 DGX 기준선 `perf/baseline-dgx-<sha>.json`과만 비교. [사용법](REMOTE_RUNS.md), AGENTS.md "원격 실행" 규칙.
+- **REMOTE-1 DGX 원격 실행기 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 스크립트·문서만, 게임 코드 0줄): `scripts/remote/run.sh`·`npm run remote:{test,guardrail,browser,perf,clone-check,setup}`. 작업 트리를 DGX `~/fls-runs/<label>-<sha>`로 보내 `fls-runs.slice`(48GB·12코어·nice 10) 안에서 돌리고 결과만 가져온다. DGX 전체 회귀 2,944/2,944, Part7 10/10, 깨끗한 클론 `6c5088f` 통과. 성능 관문은 DGX 기준선 `perf/baseline-dgx-1326765.json`과만 비교. [사용법](REMOTE_RUNS.md), [보고서](verification/remote1-dgx-runner/REPORT.md), AGENTS.md "원격 실행" 규칙.
 - **F0-V 가시성 뼈대 1 — 건설이 읽히게: 관문 ①~⑧ 통과, ⑨ 사용자 10분 판정 대기, 본선 병합**(Claude Code, 렌더·UI·소리·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population 0줄): [가시성 명세](design/visible-construction.md) VC-1~VC-8, [보고서](verification/f0v-visible-construction/REPORT.md), 결정 F0V-1~F0V-6.
   - 공사장 팻말: 완성 높이 기준점 하나에 이름·4칸 bar(25/55/85 %)·모자란 자재 또는 달력 도착점(앞당겨지기만)·막힘 탭(길·자재·일꾼)이 붙는다. 줌아웃에서는 같은 사유를 `×N`으로 묶는다.
   - 공사장 그림: 목재·석재 더미 1~3단, 표지와 건물 아이콘, 완성 유령 22 %, 200 ms 크로스페이드와 먼지, 1.2 s 완공(5배속은 먼지·소리만), 완공 토스트 묶음, 선택 공사장의 워커·수레꾼 연결선.
