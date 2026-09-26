@@ -33,11 +33,11 @@ import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
 import {
   allocateBuildingAndConstructionLabour,
-  availableWorkers,
   builderWalkersForSites,
 } from "../population/labour";
 import { allocateLabourDemands } from "./labourDemand";
 import { withHouseholdMembers } from "../population/householdMembers";
+import { advancePersons, labourPool } from "./persons";
 import { createMulberry32, createRoamingJunctionSeed } from "./prng";
 import {
   createDeliveryInventoryPort,
@@ -167,6 +167,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     state.population,
     { era: state.era, tick, eraProclaimedTick: state.eraProclaimedTick },
     (building) => buildingHasRequiredRoadAccess(state, building),
+    labourPool(state),
   );
   // LB-4: field hands, granary haulers and household slots take only what the facility allocation left.
   const demands = allocateLabourDemands({
@@ -175,7 +176,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     houses: state.houses,
     remaining: labour.idleWorkers,
     constructionWorkers: labour.constructionSites.reduce((total, site) => total + site.assignedBuilders, 0),
-    adults: availableWorkers(state.population),
+    adults: labourPool(state),
     tick,
     eligible: (building) => buildingHasRequiredRoadAccess(state, building),
   });
@@ -250,6 +251,6 @@ export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
   return advanceHistory(state, updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    advancePolitics(advanceEvents(advanceSeasons(settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))),
+    advancePolitics(advancePersons(advanceEvents(advanceSeasons(settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))),
   )))));
 }

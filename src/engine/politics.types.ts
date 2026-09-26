@@ -13,6 +13,8 @@ export interface PetitionRecord {
   readonly arrivedTick: number;
   readonly response?: PetitionResponse | "expired";
   readonly respondedTick?: number;
+  /** PERSON-0 PS-4 (save v16): the persons who bring the petition (2–3 household heads). */
+  readonly petitionerIds?: readonly string[];
 }
 
 /** FC-4: one right the lord granted (one line of the rights list). */

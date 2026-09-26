@@ -154,13 +154,15 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
   population: number,
   options?: PalisadeEraLabourOptions,
   eligible: LabourEligibility = () => true,
+  /** PERSON-0 PS-1: the town's adults when persons are known (else half the population, the old rule). */
+  workers?: number,
 ): BuildingAndConstructionLabourResult & {
   readonly constructionSites: readonly (TSite & {
     readonly assignedBuilders: number;
     readonly stall: ConstructionLabourStall | string;
   })[];
 } {
-  const available = availableWorkers(population);
+  const available = workers ?? availableWorkers(population);
   const reservation = options === undefined
     ? palisadeEraLabourReservation({
         constructionSites,

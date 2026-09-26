@@ -199,13 +199,13 @@ test("H5 the severity filter keeps records at or above it; kinds, actors and ran
   assert.equal(history.query(state, { severity: 1, kinds: ["decision"] }).length, 100);
 });
 
-test("H6 a town with a ledger round-trips through save v15 and runs on identically", () => {
+test("H6 a town with a ledger round-trips through the save (v15+) and runs on identically", () => {
   let state = fixture("population-176");
   for (let tick = 0; tick < 1_200; tick += 1) state = advanceTick(state);
   assert.ok(records(state).length > 0 && (state.history?.snapshots.length ?? 0) > 0);
   const loaded = decodeSave(encodeSave({ state, createdAt: "2026-09-26T00:00:00.000Z", savedAt: "2026-09-26T00:00:00.000Z" }).bytes);
   assert.equal(loaded.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
-  assert.equal(SAVE_SCHEMA_VERSION, 15);
+  assert.ok(SAVE_SCHEMA_VERSION >= 15);
   assert.deepEqual(loaded.envelope.state, state);
   let a = state;
   let b = loaded.envelope.state as GameState;
@@ -319,7 +319,7 @@ test("H10 HIST-1 queries return the same records after folding, except those a s
   }
 });
 
-test("H11 HIST-1 a town run for ten seasons folds its oldest season and still round-trips through save v15", () => {
+test("H11 HIST-1 a town run for ten seasons folds its oldest season and still round-trips through the save (v15+)", () => {
   let state = fixture("population-176");
   const end = state.tick + 10 * SEASON;
   while (state.tick < end) state = advanceTick(state);
@@ -328,6 +328,6 @@ test("H11 HIST-1 a town run for ten seasons folds its oldest season and still ro
   assert.ok(records(state).every(record => record.tick > state.tick - (FOLD_AFTER_SEASONS + 1) * SEASON || !foldableRecord(record)));
   assert.ok(state.history!.snapshots.filter(snapshot => snapshot.size === 128).length <= FOLD_AFTER_SEASONS + 3);
   const loaded = decodeSave(encodeSave({ state, createdAt: "2026-09-26T00:00:00.000Z", savedAt: "2026-09-26T00:00:00.000Z" }).bytes);
-  assert.equal(loaded.envelope.schemaVersion, 15);
+  assert.equal(loaded.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
   assert.deepEqual(loaded.envelope.state, state);
 });

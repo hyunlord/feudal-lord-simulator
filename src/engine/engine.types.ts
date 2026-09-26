@@ -165,4 +165,6 @@ export interface GameState {
   readonly politics?: import("./politics.types").PoliticsState;
   /** F0-C2 history ledger: append-only records and map thumbnails (save v15, spec HL-1…HL-9). Absent until the first record. */
   readonly history?: import("./history.types").HistoryState;
+  /** PERSON-0 persons: the named people of the town, the dead and those who left (save v16, spec PS-1…PS-9). */
+  readonly persons?: import("./persons.types").PersonState;
 }

@@ -1,0 +1,266 @@
+{
+ "seed": 2,
+ "maxTicks": 95000,
+ "finalTick": 95000,
+ "chapterEndTick": 93500,
+ "population": {
+  "first": 28,
+  "end": 496,
+  "living": 496
+ },
+ "invariantBreaks": 0,
+ "duplicateNames": 0,
+ "portraits": {
+  "checks": 33798,
+  "exact": 33760,
+  "share": 0.9988756731167525,
+  "misses": {
+   "male/adult/artisan": 14,
+   "male/youth/artisan": 12,
+   "female/youth/artisan": 6,
+   "female/adult/artisan": 5,
+   "male/elder/artisan": 1
+  }
+ },
+ "counts": {
+  "born": 572,
+  "married": 47,
+  "founded": 35,
+  "arrived": 369,
+  "appointed": 2,
+  "died": {
+   "age": 146,
+   "fire": 1,
+   "famine": 217
+  },
+  "left": 177
+ },
+ "deaths": 364,
+ "accounting": {
+  "startLiving": 13,
+  "endLiving": 497,
+  "added": 1025,
+  "gone": 541,
+  "balanced": true
+ },
+ "ageBands": {
+  "adults": 361,
+  "children": 135,
+  "elders": 11
+ },
+ "offices": {
+  "steward": [
+   "William de Ashby"
+  ],
+  "reeve": [
+   "John Northwood the younger"
+  ],
+  "masters": 24,
+  "petitions": [
+   {
+    "id": "market_charter@30000",
+    "petitioners": [
+     "Ralph atte Wood (miller, 60)",
+     "William atte Lane (miller, 40)",
+     "Stephen Northwood the elder (sawyer, 42)"
+    ]
+   }
+  ]
+ },
+ "past": 541,
+ "living": 497,
+ "samples": [
+  {
+   "tick": 1000,
+   "population": 28,
+   "living": 28,
+   "adults": 12,
+   "children": 16,
+   "elders": 0
+  },
+  {
+   "tick": 5000,
+   "population": 32,
+   "living": 32,
+   "adults": 16,
+   "children": 16,
+   "elders": 0
+  },
+  {
+   "tick": 9000,
+   "population": 72,
+   "living": 72,
+   "adults": 37,
+   "children": 35,
+   "elders": 5
+  },
+  {
+   "tick": 13000,
+   "population": 128,
+   "living": 128,
+   "adults": 66,
+   "children": 62,
+   "elders": 6
+  },
+  {
+   "tick": 17000,
+   "population": 80,
+   "living": 80,
+   "adults": 53,
+   "children": 27,
+   "elders": 1
+  },
+  {
+   "tick": 21000,
+   "population": 155,
+   "living": 155,
+   "adults": 78,
+   "children": 77,
+   "elders": 8
+  },
+  {
+   "tick": 25000,
+   "population": 206,
+   "living": 206,
+   "adults": 105,
+   "children": 101,
+   "elders": 13
+  },
+  {
+   "tick": 29000,
+   "population": 265,
+   "living": 265,
+   "adults": 129,
+   "children": 136,
+   "elders": 18
+  },
+  {
+   "tick": 33000,
+   "population": 372,
+   "living": 372,
+   "adults": 184,
+   "children": 188,
+   "elders": 32
+  },
+  {
+   "tick": 37000,
+   "population": 333,
+   "living": 333,
+   "adults": 169,
+   "children": 164,
+   "elders": 11
+  },
+  {
+   "tick": 41000,
+   "population": 399,
+   "living": 399,
+   "adults": 202,
+   "children": 197,
+   "elders": 17
+  },
+  {
+   "tick": 45000,
+   "population": 401,
+   "living": 401,
+   "adults": 203,
+   "children": 198,
+   "elders": 17
+  },
+  {
+   "tick": 49000,
+   "population": 443,
+   "living": 443,
+   "adults": 224,
+   "children": 219,
+   "elders": 21
+  },
+  {
+   "tick": 53000,
+   "population": 451,
+   "living": 451,
+   "adults": 229,
+   "children": 222,
+   "elders": 20
+  },
+  {
+   "tick": 57000,
+   "population": 454,
+   "living": 454,
+   "adults": 231,
+   "children": 223,
+   "elders": 20
+  },
+  {
+   "tick": 61000,
+   "population": 459,
+   "living": 459,
+   "adults": 237,
+   "children": 222,
+   "elders": 20
+  },
+  {
+   "tick": 65000,
+   "population": 467,
+   "living": 467,
+   "adults": 241,
+   "children": 226,
+   "elders": 18
+  },
+  {
+   "tick": 69000,
+   "population": 467,
+   "living": 467,
+   "adults": 241,
+   "children": 226,
+   "elders": 18
+  },
+  {
+   "tick": 73000,
+   "population": 522,
+   "living": 522,
+   "adults": 291,
+   "children": 231,
+   "elders": 18
+  },
+  {
+   "tick": 77000,
+   "population": 528,
+   "living": 528,
+   "adults": 319,
+   "children": 209,
+   "elders": 22
+  },
+  {
+   "tick": 81000,
+   "population": 528,
+   "living": 528,
+   "adults": 321,
+   "children": 207,
+   "elders": 22
+  },
+  {
+   "tick": 85000,
+   "population": 528,
+   "living": 528,
+   "adults": 343,
+   "children": 185,
+   "elders": 21
+  },
+  {
+   "tick": 89000,
+   "population": 528,
+   "living": 528,
+   "adults": 372,
+   "children": 156,
+   "elders": 16
+  },
+  {
+   "tick": 93000,
+   "population": 503,
+   "living": 503,
+   "adults": 368,
+   "children": 135,
+   "elders": 11
+  }
+ ]
+}
