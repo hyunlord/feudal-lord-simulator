@@ -125,6 +125,10 @@
 12. **규칙 명세 우선**: 규칙을 바꾸는 작업은 지시서의 명세를 코드 주석이나 `docs/`에 옮기고, 명세의 각 조항을 검증하는 시나리오 테스트를 먼저 쓴다. 화면 플레이는 마지막 확인이다.
 13. **완료 판정은 깨끗한 클론 기준.** 테스트·스크립트는 저장소 밖 절대경로·`output/` 증빙 폴더에 의존하지 않는다.
 14. **브랜치**: 작업 브랜치는 그 작업이 끝나면 본선에 합치고, **병합 뒤 브랜치(원격·로컬)를 삭제하는 것이 기본이다.** 지시서가 "남겨 두라"고 명시하면 예외다. 본선에 합치지 않은 브랜치를 다음 작업까지 남기지 않는다. 본선에서 작업 중인 에이전트가 있으면 다른 에이전트는 본선을 자기 브랜치로 merge해 충돌을 미리 푼다. 본선은 제품 작업 브랜치를 뜻하며 main 병합·배포는 명시 지시가 있을 때만 한다.
+    - **본선 푸시는 `FLS_PUSH_OK=1 git push …`로만 하고, 다른 명령과 이어 붙이지 않는다**(예: `FLS_PUSH_OK=1 git push origin HEAD:codex/phase15-organic-ground`를 단독 실행). main도 같다.
+      - 안전장치: pre-push 훅(`scripts/git-hooks/pre-push`)이 이 변수 없이 본선·main으로 가는 푸시(갱신·삭제)를 거부한다. 설치는 `npm run hooks:install`이고, `npm ci`/`npm install`의 postinstall이 새 클론에도 설치한다. git-lfs 훅은 `pre-push.chained`로 이어서 돈다.
+      - `--no-verify`로 훅을 건너뛰지 않는다. 작업 브랜치 푸시에는 변수가 필요 없다.
+      - 명령이 중단되거나 거부되면, 계속하기 전에 원격 ref(`git ls-remote`, reflog)에 이미 반영된 것이 있는지 확인한다.
 15. **읽는 순서**: `docs/STATUS.md` → 지시서 → `docs/design/DESIGN_MASTER.md` 관련 절 → `docs/decisions/README.md`.
 16. **문서 갱신**: 작업 완료 시 `docs/STATUS.md` 갱신, 결정을 바꾸면 같은 커밋에서 설계서·결정 목록 갱신.
 17. **에셋 받은 편지함**: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS로 커밋한다(설치 여부와 무관). 설치는 여기서 꺼내 `public/assets/`로 옮기고, 불채택은 inbox에 남긴 채 대장 상태 `rejected`.

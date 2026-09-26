@@ -62,6 +62,7 @@ Claude Code 세션이 시작할 때 읽는 요약이다.
   - 순서: 작업 브랜치 → 관문 → 깨끗한 클론 → merge·push.
   - 본선이 움직였으면 양쪽을 살린다.
   - 병합 뒤 작업 브랜치(원격·로컬)는 삭제하는 것이 기본이다. 지시서가 "남겨 두라"고 명시하면 남긴다(AGENTS.md 규칙 14).
+  - 본선·main 푸시는 `FLS_PUSH_OK=1 git push …` 한 명령으로만 한다. 다른 명령과 이어 붙이지 않고 `--no-verify`도 쓰지 않는다. pre-push 훅이 막는다.
   - main 병합·배포는 명시 지시가 있을 때만 한다.
 - **끝나면**: `docs/ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 `docs/STATUS.md`를 같은 커밋에서 갱신한다.
 - **표기**

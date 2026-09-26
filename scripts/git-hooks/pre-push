@@ -1,0 +1,43 @@
+#!/bin/sh
+# fls-pre-push-guard (installed by scripts/git-hooks/install.sh; do not edit the installed copy)
+# Pushes to the trunk (codex/phase15-organic-ground) or main — updates and deletions alike — pass only with
+# FLS_PUSH_OK=1 in the environment:  FLS_PUSH_OK=1 git push origin HEAD:codex/phase15-organic-ground
+# Work-branch pushes are unchanged. See AGENTS.md rule 14.
+# Afterwards the hook that was here before (usually git-lfs's, kept as pre-push.chained) runs with the same input;
+# without one, git lfs pre-push runs directly so LFS objects are still uploaded.
+input=$(cat)
+
+protected=""
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/codex/phase15-organic-ground|refs/heads/main) protected="$protected ${remote_ref#refs/heads/}" ;;
+  esac
+done <<EOF_INPUT
+$input
+EOF_INPUT
+
+if [ -n "$protected" ] && [ "${FLS_PUSH_OK:-}" != 1 ]; then
+  {
+    echo "pre-push: refused a push to the protected branch(es):$protected"
+    echo "  Pushes to the trunk and main go only as a command of their own:"
+    echo "    FLS_PUSH_OK=1 git push origin HEAD:codex/phase15-organic-ground"
+    echo "  Do not chain it after other commands (AGENTS.md rule 14). Work-branch pushes need nothing."
+  } >&2
+  exit 1
+fi
+
+feed() { [ -z "$input" ] || printf '%s\n' "$input"; }
+chained="$(dirname "$0")/pre-push.chained"
+if [ -x "$chained" ]; then
+  feed | "$chained" "$@"
+  exit $?
+fi
+if command -v git-lfs >/dev/null 2>&1; then
+  feed | git lfs pre-push "$@"
+  exit $?
+fi
+if grep -qs 'filter=lfs' "$(git rev-parse --show-toplevel)/.gitattributes"; then
+  echo "pre-push: this repository uses Git LFS but 'git-lfs' was not found on your path." >&2
+  exit 2
+fi
+exit 0
