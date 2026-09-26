@@ -36,7 +36,7 @@ import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../src/content/houseFoodCo
 import { famineDecisionView } from "../src/ui/decisionModels";
 import { pence } from "../src/ui/hud/hudCopy.ko";
 
-// F0-C1 chapter 1 scenarios (spec docs/design/flow-chapter-one.md FC-1…FC-6), C1–C10; FC-2a relief's cost, C11.
+// F0-C1 chapter 1 scenarios (spec docs/design/flow-chapter-one.md FC-1…FC-6), C1–C10; FC-2a relief's cost, C11; FC-2b speculation's sales, C12.
 
 const SEASON = 1000;
 const YEAR = 4000;
@@ -375,4 +375,42 @@ test("C11 relief costs the bread it hands out at the market price — bought wit
   const empty = withBread(broke, 0);
   assert.equal(gameReducer(empty, { type: "famine_response", choice: "relief" }).history!.records.at(-1)!.decision!.predicted.treasury, t0);
   assert.equal(advancePolitics({ ...famineResponse(empty, "relief"), tick: SPRING_1315 + SEASON }).ledger, empty.ledger);
+});
+
+test("C12 speculation earns the grain it sells at the market price — a quarter of each granary a season — and the answer's prediction and actual both count it (FC-2b)", () => {
+  const arrived = advanceEvents(advanceSeasons({ ...readyTown(), tick: SPRING_1315 }));
+  const famine = famineRecord(arrived)!;
+  const granary = arrived.buildings.find(building => building.kind === "granary")!;
+  // No cash income last season (the old prediction, + income ÷ 2, said "unchanged"); 400 bread and 200 wheat in the granary.
+  const earned = { season: 3 as const, year: 1314, startTick: SPRING_1315 - SEASON, endTick: SPRING_1315, income: 0, expense: 0,
+    stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 }, popDelta: 0, notableEvents: [], nextObjectiveHint: null };
+  const withGrain = (state: GameState, bread: number, wheat: number): GameState => ({ ...state,
+    buildings: state.buildings.map(building => building.id === granary.id ? { ...building, inventory: { ...building.inventory, bread, wheat } } : building) });
+  const stocked = withGrain({ ...arrived, seasons: { ...arrived.seasons!, history: [earned] } }, 400, 200);
+  const bread = marketSalePrice(stocked, "bread");
+  const wheat = marketSalePrice(stocked, "wheat");
+  assert.deepEqual([bread, wheat], [15, 6], "the famine prices");
+  // Two seasons' sales before the actual is read: a quarter, then a quarter of what is left.
+  const first = 100 * bread + 50 * wheat;
+  const second = 75 * bread + 37 * wheat;
+  const t0 = stocked.treasuryCoin;
+  // The answer's card shows the sale before the choice; the history ledger keeps the same prediction with it.
+  const card = famineDecisionView(stocked)!.options.find(option => option.choice === "speculation")!;
+  assert.ok(card.predicted.includes(`금고 ${pence(t0 + first + second)}(지금 ${pence(t0)})`), card.predicted);
+  const sold = gameReducer(stocked, { type: "famine_response", choice: "speculation" });
+  const record = sold.history!.records.find(entry => entry.template === "decision.famine_response")!;
+  assert.equal(record.decision!.predicted.treasury, t0 + first + second);
+  assert.equal(record.params!.eventId, famine.id);
+  assert.equal(record.params!.treasuryAtDecision, t0);
+  // Each season's start sells a quarter of what the granary holds; two seasons on, the actual is the treasury at the answer
+  // plus those sales.
+  const run = samples(sold, SPRING_1315 + 50, SPRING_1315 + 2 * SEASON);
+  assert.deepEqual(run.ledger!.entries.filter(entry => entry.category === "famine_sale").map(entry => [entry.tick, entry.amount, entry.sourceRefs[1]!.detail]),
+    [[SPRING_1315 + SEASON, first, "bread:100,wheat:50"], [SPRING_1315 + 2 * SEASON, second, "bread:75,wheat:37"]]);
+  assert.deepEqual(run.history!.records.find(entry => entry.id === record.id)!.decision!.actual, { population: run.population, treasury: t0 + first + second });
+  // Last season's income does not enter it; an empty granary sells nothing, and the treasury stays.
+  const earning: GameState = { ...stocked, seasons: { ...stocked.seasons!, history: [{ ...earned, income: 1_200 }] } };
+  assert.equal(gameReducer(earning, { type: "famine_response", choice: "speculation" }).history!.records.at(-1)!.decision!.predicted.treasury, t0 + first + second);
+  const empty = withGrain(stocked, 0, 0);
+  assert.equal(gameReducer(empty, { type: "famine_response", choice: "speculation" }).history!.records.at(-1)!.decision!.predicted.treasury, t0);
 });

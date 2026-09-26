@@ -5,7 +5,8 @@
  * - FC-2 famine answer (`famineResponse`): chosen once while the famine arrives. At every season's start of the famine,
  *   relief hands the poor their season's bread — bought into a granary with treasury money, the rest released from the
  *   granaries' bread, both at the market price (`famine_relief`, cash and in kind; FC-2a in `famineRelief.ts`),
- *   speculation sells granary grain into the treasury (`famine_sale`), price control costs the merchants' goodwill.
+ *   speculation sells a quarter of the granaries' grain into the treasury (`famine_sale`, FC-2b in `famineSale.ts`),
+ *   price control costs the merchants' goodwill.
  *   The departure cap and the price cap are read by the ladder and the market (`departureCapPerSeason`, `foodPricePermille`).
  * - FC-3 petition: arrives at the seed's season in its years once the town has its building; the answer (`respondToPetition`)
  *   grants the right (stall fee), takes a charter price, moves the gauge. Unanswered at its years' end it expires.
@@ -32,6 +33,7 @@ import type { EventRecord } from "./events.types";
 import { eventSource } from "./events";
 import { marketSalePrice } from "./marketSettlement";
 import { famineGranaries, reliefSeason } from "./famineRelief";
+import { speculationSold } from "./famineSale";
 import type { ChapterEnd, ChronicleEntry, DecisionRecord, PetitionRecord, PoliticsState } from "./politics.types";
 import { hashSeed } from "./prng";
 import { chapterPageRecords } from "./history";
@@ -112,8 +114,7 @@ function stepFamineResponse(state: GameState, record: EventRecord): GameState {
     const wheatPrice = marketSalePrice(state, "wheat");
     const sold = new Map<string, { bread: number; wheat: number }>();
     for (const granary of famineGranaries(state)) {
-      const bread = Math.floor(Math.max(0, granary.inventory.bread ?? 0) * FAMINE_RESPONSE_CONFIG.speculationPermille / 1000);
-      const wheat = Math.floor(Math.max(0, granary.inventory.wheat ?? 0) * FAMINE_RESPONSE_CONFIG.speculationPermille / 1000);
+      const { bread, wheat } = speculationSold(granary.inventory);
       const amount = bread * breadPrice + wheat * wheatPrice;
       if (amount <= 0) continue;
       sold.set(granary.id, { bread, wheat });
