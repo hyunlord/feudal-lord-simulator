@@ -1,9 +1,13 @@
 # 현재 상태
 
-갱신: 2026-09-26(R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
+- **INSTALL-7 Wave 7 — 밀→빵→집 사슬·겨울·세계 신호: 관문 ①~⑦ 통과, 본선 병합**(Claude Code, 렌더·표현 워커·에셋·대장·테스트·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/install7/REPORT.md), [명세](design/bread-chain-winter.md) IN7-1~IN7-8, 결정 IN7-D1~D5.
+  - 77장 설치, 수레 적재물 6종 × 2축, 연기·먼지 4프레임 시트, 더미 4종 × 3단, 작업 소품 5종 + 낫.
+  - 지붕 눈(L0~L4)·서리·낙엽·마른 풀, 신호 S1·S2·S6·S9·S12·빈집, 지붕틀 크기 4등급.
+  - 사슬 6/6 관찰, DGX p95 98~102 %.
 - **R0 사용자 판정 두 가지 — 본선 병합**(Claude Code, 렌더·테스트·스크립트·문서만, 엔진 0줄): [보고서](verification/r0-render-fixes/REPORT.md), 결정 R0-1·R0-2.
   - 세계 신호 S2·S4·S8은 조건이 배급 한 주기(250틱) 이상 이어질 때만 뜬다. 새 게임 첫 화면의 연기 없는 집 고리는 없어졌다.
   - 완성 그림 vs 발판 자동 검사 58장이 본선 32장 어긋남에서 0장이 됐다. 창고·곡창은 발판을 채우고, 시설·쌍집·우물·벌목장·헛간은 뜨지 않는다.
