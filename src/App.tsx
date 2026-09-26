@@ -83,6 +83,7 @@ import { readTutorialRecord } from "./ui/tutorial/tutorialStore";
 import { Inspector } from "./ui/InspectorView";
 import { escapeOnce, hudVisibility, INITIAL_UI_STATE, reduceUi, timeStopped, topModal, type UiEvent, type UiState } from "./ui/uiStateMachine";
 import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, PauseMenu, StatusPill } from "./ui/hud/HudShell";
+import { statusPillModel } from "./ui/hud/statusPillModel";
 
 /** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
 const ZONE_TOOL_PREFIX = "zone:";
@@ -323,6 +324,10 @@ export function App() {
   const guidanceState = guidanceSnapshotRef.current.state;
   const alertRows = useMemo(() => alertStackRows(guidanceState), [guidanceState]);
   const immediateWarning = alertRows.some(row => row.severity === "immediate");
+  // UX-3 cache (AGENTS rule 10): the status pill's numbers (food days walk every store, money the ledger totals) —
+  // key: the sampled guidance state, reason: App renders every tick and the pill's numbers change slowly; measured on
+  // the DGX perf board (lots24 still p95 11.9 ms with a per-render model and duplicate alert rows, trunk 10.3 ms).
+  const pillModel = useMemo(() => statusPillModel(guidanceState), [guidanceState]);
   // F0-V: a warning row that appears plays its tier (urgent / caution); the unlock banner plays the info sound.
   const heardAlertsRef = useRef<ReadonlySet<string> | null>(null);
   useEffect(() => {
@@ -439,7 +444,7 @@ export function App() {
       >
         <h1 className="visually-hidden">{KO_UI.appName}</h1>
         {/* UX-3: the only UI always on screen — status pill, speed, layer switch, action dock, crisis icons (at most 3). */}
-        {visibility.statusPill ? <StatusPill state={state} onOpenLedger={() => sendUi({ type: "toggle_ledger" })} onOpenPopulation={() => sendUi({ type: "open_population" })} /> : null}
+        {visibility.statusPill ? <StatusPill state={state} model={pillModel} onOpenLedger={() => sendUi({ type: "toggle_ledger" })} onOpenPopulation={() => sendUi({ type: "open_population" })} /> : null}
         <GameCanvas
           selectedTool={selectedTool}
           overlayMode={overlayMode}
@@ -460,7 +465,7 @@ export function App() {
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
             extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
         </div>
-        {visibility.crisis ? <CrisisIcons state={guidanceSnapshotRef.current.state} onInspect={openInspector} /> : null}
+        {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
           <GoalCards tutorial={tutorial} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
         </aside> : null}

@@ -88,7 +88,8 @@ async function measure(page: Page, name: StateName, shots: string | undefined, l
     return [...document.querySelectorAll("body *")].flatMap(element => {
       if (element instanceof HTMLCanvasElement) return [];
       const style = getComputedStyle(element); const rect = element.getBoundingClientRect();
-      if (style.visibility !== "visible" || style.display === "none" || Number(style.opacity) === 0 || rect.width * rect.height === 0 || rect.width * rect.height > view / 2) return [];
+      // checkVisibility also drops the content of a closed <details> (the settings popover keeps a 236 x 539 box).
+      if (!element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) || style.display === "none" || rect.width * rect.height === 0 || rect.width * rect.height > view / 2) return [];
       return [{ x: rect.x, y: rect.y, w: rect.width, h: rect.height }];
     });
   });

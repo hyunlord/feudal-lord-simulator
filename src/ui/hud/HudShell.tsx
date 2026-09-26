@@ -19,10 +19,10 @@ import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 // build drawer, the ledger drawer and the inspector share one panel slot (uiStateMachine).
 const SEASON_ICON = ["spring", "summer", "autumn", "winter"] as const;
 
-export function StatusPill({ state, onOpenLedger, onOpenPopulation }: {
-  readonly state: GameState; readonly onOpenLedger: () => void; readonly onOpenPopulation: () => void;
+export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
+  readonly state: GameState; readonly model: ReturnType<typeof statusPillModel>;
+  readonly onOpenLedger: () => void; readonly onOpenPopulation: () => void;
 }) {
-  const model = statusPillModel(state);
   return (
     <nav className="status-pill" aria-label={HUD_COPY.pill}>
       <span className="status-pill-cell status-pill-date" data-testid="hud-calendar"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
@@ -99,8 +99,8 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
 }
 
 /** Crisis icons (S-33): outside the slot, at most three, only while something is wrong; a tap looks at and inspects it. */
-export function CrisisIcons({ state, onInspect }: { readonly state: GameState; readonly onInspect: (id: string) => void }) {
-  const rows = alertStackRows(state).slice(0, 3);
+export function CrisisIcons({ rows: all, onInspect }: { readonly rows: ReturnType<typeof alertStackRows>; readonly onInspect: (id: string) => void }) {
+  const rows = all.slice(0, 3);
   if (rows.length === 0) return null;
   return (
     <section className="crisis-icons" aria-label={HUD_COPY.crisis}>
