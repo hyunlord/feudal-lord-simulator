@@ -1,6 +1,7 @@
 import { buildingBodyProfile, buildingLodColor, type BodyProfile } from "./buildingVisualState";
 import type { Building } from "../economy/economy.types";
 import { applyInkOutline, shade, snapToPixel } from "./style";
+import { SEMANTIC_PALETTE } from "../content/palette";
 import type { HouseMaterialEra } from "./buildingMaterialWave";
 
 type Point = { readonly x: number; readonly y: number };
@@ -11,6 +12,8 @@ type BuildingShapeInput = {
   readonly houseLevel: number;
   readonly houseMaterialEra: HouseMaterialEra;
   readonly zoom: number;
+  /** INSTALL-7: calendar winter, so the simplified roofs read snow-covered at the far zooms (0.5-0.7). */
+  readonly winter?: boolean;
 };
 
 export function drawLodBlock(
@@ -55,7 +58,7 @@ export function drawRoof(
 ): void {
   const body = buildingBodyProfile(input.building.kind, input.houseLevel, input.houseMaterialEra);
   if (body.roofShape === "none") return;
-  context.fillStyle = body.roofColor;
+  context.fillStyle = input.winter === true ? SEMANTIC_PALETTE.snow : body.roofColor;
   if (body.roofShape === "flat") {
     traceRect(context, { x: input.center.x - body.width / 2 - 4, y: input.center.y - body.height - 4 }, body.width + 8, 8);
   } else if (body.roofShape === "shed") {

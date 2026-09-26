@@ -5,6 +5,7 @@ import { assetUrlForBase } from "./worldAssets";
 import { createTintCanvas, drawCroppedWorldSprite } from "./worldSprite";
 import type { WalkerPresentation, WalkerPresentationDirection } from "./walkerPresentation";
 import { walkerCloakManifest, walkerPropManifest } from "./walkerSheetManifest.generated";
+import { stateCalendar } from "../engine/scenarioState";
 import { walkerCloak, walkerHeldProp, walkerLooks, walkerSheet, type WalkerCloakKind, type WalkerLook, type WalkerPropKind, type WalkerSheetId } from "./walkerLook";
 import { constructionStageIndex, constructionWorkProgress } from "./constructionVisibility";
 
@@ -84,11 +85,15 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
     const drawProp = () => {
       if (prop === null || propImages === null) return;
       const entry = walkerPropManifest[prop][frame.direction];
-      const hand = rightHand(frame);
+      // INSTALL-7: a Wave 7 work prop carries Astra's attachment point in the 74 px frame and is drawn at its own
+      // scale there (shoulder bag, hand basket / bucket / plough, waist purse); the older props go to the right hand.
+      const placed = "walkerPoint" in entry;
+      const hand = placed ? entry.walkerPoint : rightHand(frame);
+      const scale = placed ? 1 : PROP_SCALE;
       const image = propImages[frame.direction]!;
-      const size = 32 * PROP_SCALE;
+      const size = 32 * scale;
       drawCroppedWorldSprite(context, image, { x: ("cell" in entry ? entry.cell : 0) * 32, y: 0, width: 32, height: 32 },
-        { x: originX + hand.x - entry.anchor.x * PROP_SCALE, y: originY + hand.y - entry.anchor.y * PROP_SCALE, width: size, height: size }, false, true);
+        { x: originX + hand.x - entry.anchor.x * scale, y: originY + hand.y - entry.anchor.y * scale, width: size, height: size }, false, true);
     };
     if (!near) drawProp();
     const cellBox = { x: originX, y: originY, width: WALKER_CELL, height: WALKER_CELL };
@@ -146,7 +151,7 @@ function lookOf(state: GameState, walker: Walker): WalkerLook {
 /** The look, prop and cloak a walker is drawn with this frame (also the evidence scripts' read-out). */
 export function walkerAppearance(state: GameState, walker: Walker) {
   const look = lookOf(state, walker);
-  return { look, prop: walkerHeldProp(look, walker, builderSiteStage(state, walker)), cloak: walkerCloak(state, look) };
+  return { look, prop: walkerHeldProp(look, walker, builderSiteStage(state, walker), stateCalendar(state)), cloak: walkerCloak(state, look) };
 }
 
 /** Whether the walker's composed look can be drawn now (composes it on first call once its images are loaded). */

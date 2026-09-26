@@ -6,19 +6,16 @@ import { zonesOf } from "../zones/zoneEdits";
 import { variantImage } from "./buildingVariantAssets";
 import { frameBuildingVariant } from "./buildingVariants";
 import { BUILDING_VARIANT_POOLS } from "./buildingVariantManifest";
-import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
+import { drawFittedBuildingSprite } from "./buildingSpriteFit";
+import type { WorldSpriteOptions } from "./worldSprite";
 
 // Farmstead (barn) art (C1f, Wave 4c): `farmstead_a` / `farmstead_b` picked by the V1 variant rule (position hash +
 // neighbour push, building:farmstead pool), and `farmstead_working` while the harvest is on: one of the strips this
 // farmstead tends is `ripe` (C1c-2 arableStripStates: stage + farmsteadId). The art is painted in the storehouse's
-// frame (160 x 136, ground pivot 80,120), so it is drawn with the storehouse's registration; the farmstead is 1 x 1
-// (C1c-2 A3) against the storehouse's 2 x 2, so it stands on its own tile at FARMSTEAD_SCALE of the storehouse size.
+// frame (160 x 136); the farmstead is 1 x 1 (C1c-2 A3) and is fitted to its own tile (buildingSpriteFit, R0-2).
 // In calendar winter (season 3, as the walkers' cloaks) every farmstead shows `farmstead_winter` (Wave 4e, INSTALL-4e:
 // the same barn in winter, no snow; the storehouse frame too); no strip is ripe then.
 
-const FRAME_KEY = "storehouse";
-/** 1x1 barn at 0.75 of the 2x2 storehouse: about 62 px wide at zoom 1 over a 64 px tile. */
-export const FARMSTEAD_SCALE = 0.75;
 const POOL = BUILDING_VARIANT_POOLS.find(pool => pool.kind === "farmstead");
 const WORKING = POOL?.variants.find(variant => variant.id === "working");
 const WINTER = POOL?.variants.find(variant => variant.id === "winter");
@@ -74,5 +71,8 @@ export function drawFarmsteadSprite(context: CanvasRenderingContext2D, building:
   const url = farmsteadImageUrl(state, building);
   const image = url === null ? null : variantImage(url, 160, 136);
   if (image === null) return false;
-  return drawWorldSpriteAtWorldAnchor(context, FRAME_KEY, building.tx, building.ty, { ...options, image, scale: (options.scale ?? 1) * FARMSTEAD_SCALE });
+  // R0-2: fitted to its tile (the storehouse registration floated it half a tile row); `options` keep the signature.
+  void options;
+  drawFittedBuildingSprite(context, "farmstead", building, image);
+  return true;
 }

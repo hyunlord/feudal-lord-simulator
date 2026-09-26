@@ -8,6 +8,7 @@ import { currentConstructionStall } from "../ui/constructionAccessModel";
 import { CAUSE_ICON, drawUiIcon, type UiIconCell } from "../ui/uiArt";
 import { CONSTRUCTION_PLAQUE_COPY } from "./constructionPlaqueCopy.ko";
 import { constructionSiteLabelAnchor } from "./constructionSiteLabelLayout";
+import { persistentSignals } from "./signalPersistence";
 import {
   constructionBarCells, constructionBlocker, constructionMaterialShare, constructionOwedMaterial, constructionPhase,
   constructionPileLevels, constructionStageIndex, shownConstructionArrival, type ConstructionBlocker,
@@ -43,6 +44,21 @@ export type ConstructionPlaque = {
   readonly blockerCount: number;
 };
 
+/**
+ * R0-1 (S8): a site's blocker shows once it has held for a distribution cycle (signalPersistence); a stall that
+ * clears within the round never reaches the plaque. Keyed by site and cause, so a change of cause starts again.
+ */
+export function shownConstructionBlocker(state: GameState, site: ConstructionSite): ConstructionBlocker | null {
+  // Every site's cause is handed over each state (a cleared stall must leave the memory), then this one is read.
+  const keys = state.constructionSites.flatMap(other => {
+    const cause = constructionBlocker(other, currentConstructionStall(state, other));
+    return cause === null ? [] : [`${other.id}:${cause}`];
+  });
+  const shown = persistentSignals("site_blocker", state, keys);
+  const blocker = constructionBlocker(site, currentConstructionStall(state, site));
+  return blocker !== null && shown.has(`${site.id}:${blocker}`) ? blocker : null;
+}
+
 const GROUP_ZOOM = 0.8;
 const GROUP_REACH = 6 * 32; // world px between two sites' anchors (six tiles along a row)
 
@@ -55,7 +71,7 @@ function blockerGroupCount(state: GameState, site: ConstructionSite, blocker: Co
     if (isPalisadeConstructionSite(other) || isStoneWallConstructionSite(other)) continue;
     const at = constructionSiteLabelAnchor(other);
     if (Math.hypot(at.x - own.x, at.topY - own.topY) > GROUP_REACH) continue;
-    if (constructionBlocker(other, currentConstructionStall(state, other)) !== blocker) continue;
+    if (shownConstructionBlocker(state, other) !== blocker) continue;
     if (other.id === site.id) { if (count > 0) return 0; } // an earlier near site of the same cause leads
     count += 1;
   }
@@ -65,7 +81,7 @@ function blockerGroupCount(state: GameState, site: ConstructionSite, blocker: Co
 /** What the plaque says for a site at this tick (pure but for the arrival memory: shown arrivals only move earlier). */
 export function constructionPlaqueModel(state: GameState, site: ConstructionSite, progress: number, zoom: number): ConstructionPlaque {
   const phase = constructionPhase(site);
-  const blocker = constructionBlocker(site, currentConstructionStall(state, site));
+  const blocker = shownConstructionBlocker(state, site);
   const owed = constructionOwedMaterial(site);
   const arrival = shownConstructionArrival(site, state.tick, new Set(state.constructionSites.map(other => other.id)));
   const line = zoom < 0.8 ? null

@@ -1,0 +1,18 @@
+{
+  "id": "P20_mature",
+  "age": 45,
+  "prompt": "Use case: identity-preserve. Edit this complete hand-painted historical bust portrait to show EXACTLY THE SAME PERSON at age 45. This is an aging sequence, not a different actor and not makeup painted over a young face. Preserve unmistakable craniofacial skeleton, distinctive nose shape and length, eye spacing and eyelid asymmetry, ears, chin, mouth proportions and any scar/freckle landmark. Identity notes: long severe rectangular face, exceptionally broad straight nasal bridge and narrow nose tip, wide-set half-lidded hazel eyes, thick nearly horizontal eyebrows, strongly projecting square chin, small full mouth. Preserve original pose and camera orientation exactly, same opaque grey-brown background, same crop/eyeheight, upperleft illumination, coherent natural painterly realism. Keep historically correct circa1300 English clothing and headcovering from original; allow natural wear and modest cloth aging. Subtle but clear middle age: nasolabial folds, incipient forehead and eye wrinkles, slightly heavier lower eyelids, natural early grey temples, modest soft-tissue aging. Face must visibly age beyond young adult while retaining its personhood. This must be a single finished square painting, no panels/text/labels/frame. No mirror, no new person, no cosmetic face beautification.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-2b982f92-d6c8-4d98-b5d3-51432766af15.png",
+  "references": [
+    "/tmp/astra-portrait-pivot-work/deliverable/portraits/P20.png"
+  ],
+  "method": "native_imagegen_identity_edit",
+  "revision": 1,
+  "metadata_overrides": {
+    "hair_color": "dark ash brown with grey temples"
+  },
+  "packaged_source": "provenance/raw/P20_mature.png",
+  "packaged_references": [
+    "provenance/references/113d19e7b7ee-P20.png"
+  ]
+}

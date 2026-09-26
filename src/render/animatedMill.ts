@@ -11,6 +11,8 @@ export const millRegistration = {
   bodyHub: { x: 428, y: 450 },
   sailHub: { x: 655, y: 602 },
   bodyDisplayWidth: 68,
+  /** R0-2: the body painting's alpha centre (it sits right of its canvas centre); it is centred on the tile. */
+  bodyCentreX: 751,
   groundY: 1170,
   rotorScale: 0.039,
   plane: { a: 0.72, b: 0.25, c: 0, d: 1 },
@@ -76,7 +78,7 @@ export function drawAnimatedMill(context: CanvasRenderingContext2D, building: Bu
   const registration = millRegistration;
   const scale = registration.bodyDisplayWidth / registration.body.width;
   const center = tileToScreen(building.tx, building.ty);
-  const left = center.sx - registration.bodyDisplayWidth / 2;
+  const left = center.sx - registration.bodyCentreX * scale;
   const top = center.sy + TILE_H / 2 - registration.groundY * scale;
   context.save();
   context.imageSmoothingEnabled = true;

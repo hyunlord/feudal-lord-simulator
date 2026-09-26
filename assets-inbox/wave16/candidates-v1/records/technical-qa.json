@@ -1,0 +1,320 @@
+{
+  "assets": 35,
+  "checks": [
+    {
+      "id": "event_first_winter",
+      "file": "assets/events/event_first_winter.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "6ab5b3e8a6abb0b448f5e9fcdce92b3a315f6491c8a02aa04fd75a4032e9745f"
+    },
+    {
+      "id": "event_hungry_gap",
+      "file": "assets/events/event_hungry_gap.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "cacd148c88f24d44a675c68cb6bed353a5bc357afff2176c2a1148bd4fdb0b18"
+    },
+    {
+      "id": "event_fire_warning",
+      "file": "assets/events/event_fire_warning.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "2264805be9dc6291b83b2e3c03fa278555edcf68fb0e9b284718ac2ef2b069da"
+    },
+    {
+      "id": "event_fire",
+      "file": "assets/events/event_fire.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "4cb461b996fb0c5e59c74a54ec3a9e133a69dda88ab85a91459206b0ed8ba5e3"
+    },
+    {
+      "id": "event_fire_aftermath",
+      "file": "assets/events/event_fire_aftermath.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "9ef2a26d1ef66938f798f96fa590890cf9367db981fbaa14d09afc869b9f73ea"
+    },
+    {
+      "id": "event_wet_summer",
+      "file": "assets/events/event_wet_summer.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "baabe5c0b20f7e6d6531b86ab2b8b45f6f9b6e27d4ec133abde2f7b0ffc20443"
+    },
+    {
+      "id": "event_bad_harvest",
+      "file": "assets/events/event_bad_harvest.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "975db47fb49596b928881c67f1b1c562fd78ae1b7a47442cee745a4d7a738f1e"
+    },
+    {
+      "id": "event_market_petition",
+      "file": "assets/events/event_market_petition.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "cf3b6b0d2658b1e8272da7ace4eb08d05d1bb78b3556ea67d873767a08a4df30"
+    },
+    {
+      "id": "event_market_charter",
+      "file": "assets/events/event_market_charter.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "7cf9a0bfa994773233adb11cbd10de118495463dfd78624e9e0db664b2cd48d2"
+    },
+    {
+      "id": "event_palisade",
+      "file": "assets/events/event_palisade.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "b0fd030d366d0188c238c3916f167638223489390608b2874fa479498369788a"
+    },
+    {
+      "id": "event_market_town",
+      "file": "assets/events/event_market_town.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "debeee7762e3c334f2771c0a36737eac1e5933fe07fd44733c85dee3aee339fc"
+    },
+    {
+      "id": "event_famine_omen",
+      "file": "assets/events/event_famine_omen.png",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "d496eaa0ddbeaf19c802125bd3746e5b7e4554e051749aea01794416a913029c"
+    },
+    {
+      "id": "decision_famine_intro",
+      "file": "assets/decisions/decision_famine_intro.png",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "649ff52f22c3ad88f785cf79c4b81af074246cc4c187969f173e84176ae86995"
+    },
+    {
+      "id": "decision_relief",
+      "file": "assets/decisions/decision_relief.png",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "59285be48b0bb26fe736fb601b0b501eeb450336e9f70dacf483b8ab4e17b9a6"
+    },
+    {
+      "id": "decision_price_control",
+      "file": "assets/decisions/decision_price_control.png",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "82e109ff130dd84e37f63681467843eab834669b7ba60bf2c70dc882745b14ce"
+    },
+    {
+      "id": "decision_laissez_faire",
+      "file": "assets/decisions/decision_laissez_faire.png",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "d93561032ec9e73c29af1235725daac68f4de3d81dfd8180165cc36cef1b2c1f"
+    },
+    {
+      "id": "decision_speculation",
+      "file": "assets/decisions/decision_speculation.png",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "39906ee47be89cca9d335e910e0833ff84c40a7aba629ab2d0a7b75a8ee4f27c"
+    },
+    {
+      "id": "chronicle_settlement",
+      "file": "assets/chronicle/chronicle_settlement.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "608ca8889bbfd37ceb40eff9b22050edb2d9ed0eb5bba44eb981d723047c8efd"
+    },
+    {
+      "id": "chronicle_first_plough",
+      "file": "assets/chronicle/chronicle_first_plough.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "330fc8bcfff4c1798e33f109fb4b5cf03560c10bd432568bb80d503956559110"
+    },
+    {
+      "id": "chronicle_first_winter",
+      "file": "assets/chronicle/chronicle_first_winter.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "1bf6d42a0f86ff87bbb6867eee6cd7e62ac49ddbbbdd45f8b7c2dee71b310081"
+    },
+    {
+      "id": "chronicle_first_mill",
+      "file": "assets/chronicle/chronicle_first_mill.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "2b6c95d3a3eaf020d35461b033bed770cb404ebc8e8646f4b443609b5c0d2ce5"
+    },
+    {
+      "id": "chronicle_first_fire",
+      "file": "assets/chronicle/chronicle_first_fire.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "04b208e91f0cb3f64596c0301c27eefc8cba5245cdd2c304ed43371f9257467c"
+    },
+    {
+      "id": "chronicle_rebuilding",
+      "file": "assets/chronicle/chronicle_rebuilding.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "e6f060e8496cbb54ed0d4cc110b775999315977a2acd5c775e871b4a0b3f88c9"
+    },
+    {
+      "id": "chronicle_bad_harvest",
+      "file": "assets/chronicle/chronicle_bad_harvest.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "008803576697e52f80c5665a2ad21c42219eb344276df7845c2c79fef262fc7b"
+    },
+    {
+      "id": "chronicle_market_day",
+      "file": "assets/chronicle/chronicle_market_day.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "4a81ac7000f098136a801138dd248346a908d7eadf4a4f3f750bdc7843f0fbc0"
+    },
+    {
+      "id": "chronicle_petition",
+      "file": "assets/chronicle/chronicle_petition.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "9dbe7d39e333dc5e519f9b7264aeaca86c59d3ab0e7e28ea58ddc572c32585e5"
+    },
+    {
+      "id": "chronicle_charter",
+      "file": "assets/chronicle/chronicle_charter.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "310e3ff11f06aae28777be800dbc468243fa506342bf29b0ecb9fdb73b974aa7"
+    },
+    {
+      "id": "chronicle_palisade",
+      "file": "assets/chronicle/chronicle_palisade.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "018360f49131d1dec483f77070f3899fb8ebb4d2b4907147e10c1e7d743895b5"
+    },
+    {
+      "id": "chronicle_market_town",
+      "file": "assets/chronicle/chronicle_market_town.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "8bfbc5d6a1303def414b179308d5695357489f38006fd076bcc9c38b72f30ea0"
+    },
+    {
+      "id": "chronicle_church_dedication",
+      "file": "assets/chronicle/chronicle_church_dedication.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "be7f1cc0ee2ba1584375ee0dc405123fee5c161e28fa7497e05c6b3704eabd3f"
+    },
+    {
+      "id": "chronicle_famine",
+      "file": "assets/chronicle/chronicle_famine.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "867cb6a6633a42b93db20fc8f14ff26cc8a2f52f84cfc9873687e51350f73d7e"
+    },
+    {
+      "id": "chronicle_relief",
+      "file": "assets/chronicle/chronicle_relief.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "a2e8a32f217c3fa1684d3237e0b69d1049371f7e14ee037ab91463caeee5ad39"
+    },
+    {
+      "id": "chronicle_survival_spring",
+      "file": "assets/chronicle/chronicle_survival_spring.png",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "2df9f923078c67d1622e7886f80ffa7c54834756471073c801746e3484e07ad0"
+    },
+    {
+      "id": "chapter1_end",
+      "file": "assets/chapters/chapter1_end.png",
+      "width": 1920,
+      "height": 1080,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "9b81fc3da323bbcdb5b3acc94fdd46ab5a4ea864e951f03a9a92ecefa32397c4"
+    },
+    {
+      "id": "chapter2_intro",
+      "file": "assets/chapters/chapter2_intro.png",
+      "width": 1920,
+      "height": 1080,
+      "channels": 4,
+      "nonOpaquePixels": 0,
+      "sha256": "19704099e2e5af4e5041ca31a7a76a011e67efe676df6fd28e861f497d41b4ee"
+    }
+  ]
+}

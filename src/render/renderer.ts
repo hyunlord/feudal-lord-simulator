@@ -41,7 +41,7 @@ import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderStageProbe } from "./renderStageProbe";
 import { forgetGoneConstructionSites } from "./constructionMoments";
-import { drawWorldSigns } from "./worldSigns";
+import { drawSeasonalDecals, drawWorldSigns } from "./worldSigns";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -124,6 +124,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         zoom: input.camera.zoom,
         objectRenderItems,
       });
+      drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom); // INSTALL-7 frost, leaves, dry grass
     },
     objects: () => objectPassForProof &&
       drawObjectRenderItems(input.context, {

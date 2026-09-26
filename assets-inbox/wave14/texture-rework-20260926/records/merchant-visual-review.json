@@ -1,0 +1,18 @@
+{
+  "score": 93,
+  "verdict": "pass_candidate",
+  "reviewed": [
+    "proofs/02-merchant-materials.png",
+    "records/merchant-before-after.png"
+  ],
+  "category_match": true,
+  "differences": [
+    "Ink surfaces show broken absorptive edges and internal dropout at 128 pixels; shape remains distinct at 48 pixels.",
+    "Oak uses recessed dark NW edge and lit SE edge with generated gouged grain clipped inside the mask; it reads as incised rather than ink.",
+    "16 same source combinations remain visually distinguishable; closest 2/4 differs by staff cross versus pennant."
+  ],
+  "suggestions": [
+    "At 48 pixels the fine carved grain is subordinate to the inset edge; this is expected LOD, not full detail retention."
+  ],
+  "reasoning": "All 48 material cases inspected in one proof, with same-symbol untextured/textured crop and 48px insets. Original source masks unchanged. Candidate-only offline compositing."
+}

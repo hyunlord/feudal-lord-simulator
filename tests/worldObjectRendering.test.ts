@@ -55,6 +55,8 @@ function loggedContext(): LoggedContext {
   const context = {
     canvas: { width: 512, height: 512 },
     calls,
+    // R0-2: fitted building sprites are drawn with drawCroppedWorldSprite, which reads the transform.
+    getTransform: () => ({ a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }),
     get fillStyle() {
       return fillStyle;
     },

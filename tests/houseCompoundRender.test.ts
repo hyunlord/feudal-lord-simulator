@@ -61,7 +61,7 @@ test("compound art preserves aspect ratio, anchors both orientations and reserve
     const rect = houseCompoundSpriteRect(building, meta);
     assert.equal(rect.width, 84.48);
     assert.ok(Math.abs(rect.width / rect.height - meta.alphaBounds.width / meta.alphaBounds.height) < 1e-9);
-    assert.equal(rect.y + rect.height, 120);
+    assert.equal(rect.y + rect.height, 128, "R0-2: on the 2 x 1 lot's front vertex (centre 104 + 24)");
     assert.equal(rect.x + rect.width / 2, meta.axis === "horizontal" ? 16 : -16);
     assert.ok(meta.alphaBounds.x >= 0 && meta.alphaBounds.y >= 0);
     assert.ok(meta.alphaBounds.x + meta.alphaBounds.width <= meta.width);

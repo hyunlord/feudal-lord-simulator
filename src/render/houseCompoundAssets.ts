@@ -57,7 +57,8 @@ export function houseCompoundSpriteRect(building: Building, meta: HouseCompoundA
   const center = tileToScreen(building.tx + (size.width - 1) / 2, building.ty + (size.height - 1) / 2);
   const width = (size.width + size.height) * TILE_W / 2 * 0.88;
   const height = width * meta.alphaBounds.height / meta.alphaBounds.width;
-  return { x: center.sx - width / 2, y: center.sy + TILE_H / 2 - height, width, height };
+  // R0-2: on the lot's front vertex (half a tile below the one-tile vertex for a 2 x 1 / 1 x 2 lot).
+  return { x: center.sx - width / 2, y: center.sy + (size.width + size.height) * TILE_H / 4 - height, width, height };
 }
 
 export function houseCompoundAssetMeta(building: Building, level: number): HouseCompoundAssetMeta | null {

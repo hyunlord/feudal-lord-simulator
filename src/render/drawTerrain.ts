@@ -1,4 +1,5 @@
 import { drawTownLandscape } from "./townLandscapeAssets";
+import { isFittedSpriteKey } from "./buildingSpriteFit";
 import { drawBridgeDeck } from "./drawBridges";
 import { drawHistoricalWater } from "./drawWater";
 import { buildingFootprint } from "../geometry/buildingFootprint";
@@ -144,7 +145,8 @@ function drawObjectGrounding(
         continue;
       }
       const baked = meta?.bakedArchitecture === true && meta.status === "ready" && renderDetailLevel(input.zoom) === "full";
-      const base = baked ? tileToScreen(
+      // R0-2: a fitted sprite stands on its footprint's centre, not on the far tile its authored anchor named.
+      const base = baked && !isFittedSpriteKey(buildingSpriteKey(item.building, visualState.houseLevel)) ? tileToScreen(
         item.building.tx + meta.footprint.width - 1,
         item.building.ty + meta.footprint.height - 1,
       ) : center;

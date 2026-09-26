@@ -86,6 +86,7 @@ test("Given walkers at work When props are chosen Then builders hold a hammer, b
     const look = walkerLook(state, walker);
     const prop = walkerHeldProp(look, walker);
     if (walkerSheet(look.sheetId).holdsTool) assert.equal(prop, null);
+    else if (look.occupation === "distributor") assert.equal(prop, "work_breadbasket", "INSTALL-7: the bread round carries the basket");
     else if (walker.cargo?.resource === "bread") assert.equal(prop, "loaf");
     else if (walker.cargo !== null) assert.equal(prop, null);
   }
@@ -113,7 +114,7 @@ test("Given the composer cache When it is full Then it holds at most 25 MB of co
   assert.ok(CACHE_LIMIT * 4 * WALKER_COMPOSED_CELL * 2 * WALKER_COMPOSED_CELL * 4 <= 25_000_000);
 });
 
-test("Given the Wave 5a, 4e and 5c sheets When the manifest is read Then all 44 walkers, 32 props and the three cloaks are installed with the ledger bytes", () => {
+test("Given the Wave 5a, 4e and 5c sheets When the manifest is read Then all 44 walkers, 64 props and the three cloaks are installed with the ledger bytes", () => {
   const wave5a = walkerSheetManifest.filter(sheet => !sheet.legacy);
   assert.equal(wave5a.length, 29 + 7 + 8);
   // INSTALL-5c: the child and elder bodies (4 each), no winter cloak.
@@ -125,7 +126,7 @@ test("Given the Wave 5a, 4e and 5c sheets When the manifest is read Then all 44 
     assert.deepEqual(sheet.directionOrder, ["NE", "SE", "SW", "NW"]);
   }
   const props = Object.values(walkerPropManifest).flatMap(directions => Object.values(directions));
-  assert.equal(props.length, 24 + 8 + 8, "Wave 5a 24, Wave 4e 8, F0-V work tools 8");
+  assert.equal(props.length, 24 + 8 + 12 + 20, "Wave 5a 24, Wave 4e 8, Wave 6 work tools 12 (hammer, shovel, sickle), Wave 7 work props 20");
   for (const prop of props) readFileSync(new URL(`../public/${prop.url}`, import.meta.url));
   assert.deepEqual(Object.keys(walkerCloakManifest).sort(), ["female", "male", "merchant"]);
   for (const cloak of Object.values(walkerCloakManifest)) readFileSync(new URL(`../public/${cloak.url}`, import.meta.url));

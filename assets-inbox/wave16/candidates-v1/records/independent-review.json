@@ -1,0 +1,248 @@
+{
+  "status": "complete",
+  "verdict": "pass_with_documented_semantic_limits",
+  "score": 92,
+  "scope": "Independent visual review of 33 assets made by other lanes and all 3 final proofs. Reviewer authored two chapter images; root reviewed those separately.",
+  "method": {
+    "visual": "All 33 final asset PNGs opened individually via view_image, three final offline proof PNGs opened after final regeneration. Two detected defects rechecked after editing.",
+    "code": "This reviewer did not independently repeat dimensions, alpha, CSV or archive validation. Those remain root quantitative verification."
+  },
+  "assets": [
+    {
+      "id": "event_bad_harvest",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 문자·숫자·문 표식·홉·관·역병·주택 굴뚝·원색 발견 없음. 행위와 장면 구별 가능."
+    },
+    {
+      "id": "event_famine_omen",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 문자·숫자·문 표식·홉·관·역병·주택 굴뚝·원색 발견 없음. 행위와 장면 구별 가능."
+    },
+    {
+      "id": "event_market_charter",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 문자·숫자·문 표식·홉·관·역병·주택 굴뚝·원색 발견 없음. 행위와 장면 구별 가능."
+    },
+    {
+      "id": "event_market_petition",
+      "viewedIndividually": true,
+      "visualResult": "pass_after_revision",
+      "finding": "v1 이중 모자 발견 후 v2 맨머리+손의 모자로 수정 확인."
+    },
+    {
+      "id": "event_market_town",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 문자·숫자·문 표식·홉·관·역병·주택 굴뚝·원색 발견 없음. 행위와 장면 구별 가능."
+    },
+    {
+      "id": "event_palisade",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 문자·숫자·문 표식·홉·관·역병·주택 굴뚝·원색 발견 없음. 행위와 장면 구별 가능."
+    },
+    {
+      "id": "chronicle_bad_harvest",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 사건별 행위·주제 구별 가능. 채식 영향은 약하고 회화성이 강함."
+    },
+    {
+      "id": "chronicle_first_fire",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 사건별 행위·주제 구별 가능. 채식 영향은 약하고 회화성이 강함."
+    },
+    {
+      "id": "chronicle_first_mill",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 사건별 행위·주제 구별 가능. 채식 영향은 약하고 회화성이 강함."
+    },
+    {
+      "id": "chronicle_first_plough",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 사건별 행위·주제 구별 가능. 채식 영향은 약하고 회화성이 강함."
+    },
+    {
+      "id": "chronicle_first_winter",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 사건별 행위·주제 구별 가능. 채식 영향은 약하고 회화성이 강함."
+    },
+    {
+      "id": "chronicle_market_day",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 사건별 행위·주제 구별 가능. 채식 영향은 약하고 회화성이 강함."
+    },
+    {
+      "id": "chronicle_rebuilding",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 사건별 행위·주제 구별 가능. 채식 영향은 약하고 회화성이 강함."
+    },
+    {
+      "id": "chronicle_settlement",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 사건별 행위·주제 구별 가능. 채식 영향은 약하고 회화성이 강함."
+    },
+    {
+      "id": "decision_famine_intro",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 빈 시장/봉쇄 창고/가격 갈등/배급/곡물 반출 구별됨. 정확한 정책명은 문맥 의존."
+    },
+    {
+      "id": "decision_laissez_faire",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 빈 시장/봉쇄 창고/가격 갈등/배급/곡물 반출 구별됨. 정확한 정책명은 문맥 의존."
+    },
+    {
+      "id": "decision_price_control",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 빈 시장/봉쇄 창고/가격 갈등/배급/곡물 반출 구별됨. 정확한 정책명은 문맥 의존."
+    },
+    {
+      "id": "decision_relief",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 빈 시장/봉쇄 창고/가격 갈등/배급/곡물 반출 구별됨. 정확한 정책명은 문맥 의존."
+    },
+    {
+      "id": "decision_speculation",
+      "viewedIndividually": true,
+      "visualResult": "pass_after_revision",
+      "finding": "원본과 합성 검사에서 배경 작은 굴뚝 발견해 제거 요청. v2 최종에서 제거 확인. 곡물 반출은 읽히지만 투기 의도는 문맥 필요."
+    },
+    {
+      "id": "event_first_winter",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 겨울/보릿고개/화재/재건/우천 피해 장면 구별됨. 배경 주택 굴뚝 없음."
+    },
+    {
+      "id": "event_hungry_gap",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 겨울/보릿고개/화재/재건/우천 피해 장면 구별됨. 배경 주택 굴뚝 없음."
+    },
+    {
+      "id": "event_fire_warning",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "건조 초가·먼 우물은 보이나 화재 위험이라는 판단은 문맥 필요."
+    },
+    {
+      "id": "event_fire",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 겨울/보릿고개/화재/재건/우천 피해 장면 구별됨. 배경 주택 굴뚝 없음."
+    },
+    {
+      "id": "event_fire_aftermath",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 겨울/보릿고개/화재/재건/우천 피해 장면 구별됨. 배경 주택 굴뚝 없음."
+    },
+    {
+      "id": "event_wet_summer",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 겨울/보릿고개/화재/재건/우천 피해 장면 구별됨. 배경 주택 굴뚝 없음."
+    },
+    {
+      "id": "chronicle_petition",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 청원/목책 건설/봄 회복 장면 구별됨."
+    },
+    {
+      "id": "chronicle_palisade",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 청원/목책 건설/봄 회복 장면 구별됨."
+    },
+    {
+      "id": "chronicle_survival_spring",
+      "viewedIndividually": true,
+      "visualResult": "pass",
+      "finding": "명백한 금지사항·문자 없음. 청원/목책 건설/봄 회복 장면 구별됨."
+    },
+    {
+      "id": "chronicle_charter",
+      "viewedIndividually": true,
+      "visualResult": "pass_after_revision",
+      "finding": "제작자 굴뚝 교정 후 최종 이미지 개별 확인. 지붕 굴뚝·문자·명백한 금지항목 안 보임. 장면 구별 가능."
+    },
+    {
+      "id": "chronicle_market_town",
+      "viewedIndividually": true,
+      "visualResult": "pass_after_revision",
+      "finding": "제작자 굴뚝 교정 후 최종 이미지 개별 확인. 지붕 굴뚝·문자·명백한 금지항목 안 보임. 장면 구별 가능."
+    },
+    {
+      "id": "chronicle_church_dedication",
+      "viewedIndividually": true,
+      "visualResult": "pass_after_revision",
+      "finding": "제작자 굴뚝 교정 후 최종 이미지 개별 확인. 지붕 굴뚝·문자·명백한 금지항목 안 보임. 장면 구별 가능."
+    },
+    {
+      "id": "chronicle_famine",
+      "viewedIndividually": true,
+      "visualResult": "pass_after_revision",
+      "finding": "제작자 굴뚝 교정 후 최종 이미지 개별 확인. 지붕 굴뚝·문자·명백한 금지항목 안 보임. 장면 구별 가능."
+    },
+    {
+      "id": "chronicle_relief",
+      "viewedIndividually": true,
+      "visualResult": "pass_after_revision",
+      "finding": "제작자 굴뚝 교정 후 최종 이미지 개별 확인. 지붕 굴뚝·문자·명백한 금지항목 안 보임. 장면 구별 가능."
+    }
+  ],
+  "proofs": [
+    {
+      "file": "proofs/01-event-cards.png",
+      "result": "pass",
+      "notes": "12개 사건의 날씨·행위·장소 구별. 무문자, 청원자의 수정된 모자 확인."
+    },
+    {
+      "file": "proofs/02-decision-modals.png",
+      "result": "pass",
+      "notes": "결정 5개 구별, 하단 선택 버튼 여백 유지, 무문자. 투기 장면 굴뚝 교정 반영."
+    },
+    {
+      "file": "proofs/03-chronicle-pages.png",
+      "result": "pass",
+      "notes": "4페이지×4삽화로 16종을 틀 안에 합성. 무문자, 배경 굴뚝 교정 반영. 이미지 내용별 구별 가능."
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "event_market_petition",
+      "before": "두 청원자의 머리와 손에 모자가 중복됨.",
+      "after": "v2 맨머리와 손의 모자로 수정, 재확인."
+    },
+    {
+      "id": "decision_speculation",
+      "before": "합성 검수에서 배경 굴뚝 발견, 원본 확대에서 여러 굴뚝 확인.",
+      "after": "v2 모든 주택 지붕 굴뚝 제거, 최종 PNG와 재생성 proof2에서 확인."
+    }
+  ],
+  "limitations": [
+    "화재 위험은 마른 초가·먼 우물에서 추론해야 하므로 정확한 사건명 판독 신뢰는 중간.",
+    "가격 통제와 흥정, 투기와 일반 운송을 이미지 행위만으로 완전히 분리할 수 없어 정책명은 문맥 필요.",
+    "정확한 연도, 대기근의 역사적 명칭, 특허의 법적 종류는 무문자 장면만으로 확정되지 않음.",
+    "연대기 그림의 채식 영향은 강한 장식보다 압축 구도·질감 수준으로 약하며 회화성이 강함.",
+    "여러 장면에 같은 참조 얼굴·복색이 반복된다. 장면 행위는 구별되나 인물 배역 다양성은 제한됨.",
+    "역사 명세의 명백한 위반을 찾는 시각 검수이며 외부 사료에 의한 모든 소품의 역사적 정확성 증명은 아님.",
+    "실제 제품 실행·설치 검수가 아닌 오프라인 후보 및 틀 합성 검수."
+  ]
+}

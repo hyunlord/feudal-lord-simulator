@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-26 09시 갱신)
+## 3. 현재 장부 요약 (2026-09-26 11시 20분 갱신)
 
 | wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -50,30 +50,33 @@ assets-inbox/
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
+| `portrait-pool` | 51 |  | 51 |  |  |  |  | 0 |
 | `retired` | 13 |  |  |  |  |  | 13 | 0 |
 | `ui-p0` | 85 |  | 56 |  | 29 |  |  | 43 |
 | `walker-pilot2` | 96 |  | 96 |  |  |  |  | 0 |
-| `wave10` | 735 | 538 | 114 |  | 83 |  |  | 0 |
-| `wave11` | 69 | 69 |  |  |  |  |  | 0 |
-| `wave12` | 64 |  | 40 | 24 |  |  |  | 0 |
-| `wave13` | 118 | 118 |  |  |  |  |  | 0 |
-| `wave14` | 110 |  | 109 | 1 |  |  |  | 0 |
+| `wave10` | 735 |  |  |  |  | 735 |  | 0 |
+| `wave11` | 69 |  | 69 |  |  |  |  | 0 |
+| `wave12` | 89 |  | 65 |  | 24 |  |  | 0 |
+| `wave13` | 118 |  | 118 |  |  |  |  | 0 |
+| `wave14` | 147 |  | 146 |  | 1 |  |  | 0 |
+| `wave15` | 69 |  | 69 |  |  |  |  | 0 |
+| `wave16` | 49 | 49 |  |  |  |  |  | 0 |
 | `wave2` | 42 | 15 | 27 |  |  |  |  | 27 |
-| `wave3` | 98 | 11 | 77 |  | 10 |  |  | 0 |
+| `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
 | `wave4-pilot` | 15 | 3 | 12 |  |  |  |  | 12 |
 | `wave4b` | 57 | 4 | 53 |  |  |  |  | 53 |
 | `wave4c` | 29 | 11 | 18 |  |  |  |  | 18 |
 | `wave4d` | 25 | 3 | 22 |  |  |  |  | 22 |
 | `wave4e` | 53 | 18 | 35 |  |  |  |  | 35 |
 | `wave5a` | 151 | 87 | 61 |  | 3 |  |  | 55 |
-| `wave5b` | 36 | 20 |  |  |  | 16 |  | 0 |
+| `wave5b` | 36 | 4 |  |  |  | 32 |  | 0 |
 | `wave5c` | 17 |  | 17 |  |  |  |  | 14 |
-| `wave6` | 25 |  | 25 |  |  |  |  | 0 |
+| `wave6` | 25 |  | 25 |  |  |  |  | 22 |
 | `wave7` | 206 |  | 172 |  | 34 |  |  | 0 |
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 0 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 0 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **2217** | **924** | **1053** | **25** | **164** | **35** | **16** | **287** |
+| **합계** | **2448** | **221** | **1319** | **0** | **106** | **786** | **16** | **309** |
 
 ## 4. 찾는 법
 
@@ -147,6 +150,13 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave12-candidates-20260926.zip` (09:02) | `wave12/candidates-20260926` | 6,754 KB | `95af6c36e96be40b…` | 73 | 0 | `raw/`·`references/` 제외 |
 | `/tmp/astra-wave14-candidates-20260926.zip` (09:06) | `wave14/candidates-v1` | 49,858 KB | `e6b616aa5092f631…` | 164 | 0 | `raw/`·`references/` 제외 |
 | `output/astra-wave14-candidates-v1/` (작업 폴더) | `wave14/candidates-v1` | — | — | 0(ZIP과 같음) | — | 〃 |
+| `/tmp/astra-wave14-texture-rework-20260926.zip` (09:18) | `wave14/texture-rework-20260926` | 21,955 KB | `5cc3e46c9379956d…` | 64 | — | `raw/`·`references/` 제외 |
+| `output/astra-wave14-texture-rework-v1/` (작업 폴더) | `wave14/texture-rework-20260926` | — | — | 0 | — | 〃 |
+| `/tmp/astra-wave15-candidates-20260926.zip` (09:18) | `wave15/candidates-20260926` | 3,708 KB | `13bb93a9777f000e…` | 97 | — | `raw/`·`references/` 제외 |
+| `/tmp/astra-wave12-rework-20260926.zip` (09:21) | `wave12/rework-20260926` | 3,910 KB | `a76f2f2d4fa78141…` | 59 | — | `raw/`·`references/` 제외 | 본체·아이콘·확정 오버레이 4장은 같은 바이트라 건너뜀
+| `/tmp/astra-portrait-pivot-candidates-20260926.zip` (09:33) | `portrait-pool/pivot-pilot-20260926` | 99,866 KB | `8aad52a626f1b083…` | 114 | — | `raw/`·`references/` 제외 |
+| `/tmp/astra-wave16-candidates-20260926.zip` (11:21) | `wave16/candidates-v1` | 210,345 KB | `9b879a87344a3b12…` | 97 | — | `raw/`(139MB)·`references/` 제외 |
+| `output/astra-wave16-candidates-v1/` (작업 폴더) | `wave16/candidates-v1` | — | — | 0 | — | 〃 |
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -154,15 +164,19 @@ git lfs pull --include="assets-inbox/wave7/**"
 
 - **Wave 9**: confirmed 33이 맞다(판정표 34는 오기, 2026-09-26 확인).
 - **UI 파일럿**: 12장 모두 `superseded`. `icon_status_sheet`는 P0 `icon_prediction_sheet`·`icon_alert_priority_sheet`·`icon_lock_new_sheet` 세 장으로 대체(2026-09-26 판정). `cursor_sheet` → P0 커서 6장 대응은 추정.
-- **Wave 10**: '머리 17'은 헤어 18종(`pt_hair_f_01~09`, `pt_hair_m_01~09`, 각각 앞·`_rear`) 중 `m_06`을 뺀 17종으로 읽었다. `pt_hair_m_06`(+`_rear`)은 `rework_pending`이다. 마스크·`records/provenance/raw`는 해당 레이어의 상태를 따르고, `pilot-reuse/` 4장은 `rework_pending`(2026-09-26 판정).
+- **Wave 10(이전 판정 기록, 지금은 전부 rejected)**: '머리 17'은 헤어 18종(`pt_hair_f_01~09`, `pt_hair_m_01~09`, 각각 앞·`_rear`) 중 `m_06`을 뺀 17종으로 읽었다. `pt_hair_m_06`(+`_rear`)은 `rework_pending`이다. 마스크·`records/provenance/raw`는 해당 레이어의 상태를 따르고, `pilot-reuse/` 4장은 `rework_pending`(2026-09-26 판정).
 - **Wave 5a**: `candidates-v1`(26장 시트)과 `candidates-v2-29sheets` 45장 중 42장이 같은 바이트여서 `candidate`, 다른 3장만 `superseded`(→ v2)다. 판정표에 Wave 5a가 없어 v2 masters도 `candidate`다.
 - **판정표에 없는 묶음**: `l1-tile`(본선 설치 확인 → `confirmed`, 설치 커밋 622e588), `asset-trial`, 기존 Wave에 새로 더한 확인 그림 → `candidate`. `zone-ground-pilot` 7장은 `rejected`(2026-09-26 판정).
-- **Wave 11**: `astra-wave11-candidates-20260926.zip`(00:51 도착)과 작업 폴더를 받았다. 판정 전이라 전부 `candidate`.
-- **Wave 13**: `astra-wave13-candidates-20260926.zip`(01:23)과 작업 폴더를 받았다. 판정 전이라 전부 `candidate`.
-- **Wave 12**: 본체 29·아이콘 시트 3 `confirmed`. 가동 오버레이 28장 중 `charcoal_clamp`·`lime_kiln`·`pottery_kiln`·`communal_oven` 4장 `confirmed`, 나머지 24장 `rework_pending`(2026-09-26 판정).
-- **Wave 14**: 71장 중 `heraldry/shield_surface_texture.png`만 `rework_pending`, 나머지 70장 `confirmed`(2026-09-26 판정).
-- **Wave 10 v2**(결합 규격 v2, 08:54): v1의 `rework_pending` 83행(얼굴 20·나이 8·`hair_m_06`·`pilot-reuse` 4와 해당 마스크·기록)은 `superseded`(→ v2 같은 이름). v2 534장은 `candidate`. `provenance/raw`는 원시 생성본이라 넣지 않았다. **초상 방식을 레이어 합성에서 완성 초상 풀로 바꾸기로 해, 방식 전환 파일럿 결과가 오면 Wave 10 v1·v2 레이어 전부를 한 번에 `rejected`로 바꿀 예정**(비고에 표시).
-- **Wave 3 재작업**: `astra-wave3-fix-20260926.zip`(08:51)이 `rework_pending` 10장과 같은 이름으로 왔다. 원본 10장은 `superseded`(→ `wave3/fix-20260926/assets/…`), 재작업본은 판정 전이라 `candidate`.
+- **Wave 11**: 공사 키트 55장 `confirmed`(확인 그림·기록 그림 포함 69행).
+- **Wave 13**: 수레·가축 34장 `confirmed`(확인 그림·기록 그림 포함 118행).
+- **Wave 12**: 본체 29·아이콘 시트 3·가동 오버레이 28 전부 확정. 오버레이 24장은 재작업본(`wave12/rework-20260926/`)이 `confirmed`이고 옛 24장은 `superseded`. `charcoal_clamp`·`lime_kiln`·`pottery_kiln`·`communal_oven`은 처음 판이 그대로 `confirmed`. 시설별 발판 크기 `buildings.csv`는 `records/`에 있다.
+- **Wave 14**: 원본 71장 중 70장 `confirmed`, `heraldry/shield_surface_texture.png`는 `superseded`(→ 질감 재작업 `shield_surface_texture_multiply`·`_screen`). 질감 재작업 4장(`multiply`·`screen`·`merchant_ink_stamp_texture`·`merchant_carved_texture`) `confirmed`.
+- **Wave 10**: 초상 방식을 레이어 합성에서 완성 초상 풀로 바꿔 v1·v2의 레이어·마스크·파생 레이어·합성본·확인 그림 735행 전부 `rejected`(비고 "방식 전환: 레이어 합성 → 완성 초상 풀", 이전 상태 병기). 인물 파일럿 1의 초상 6장은 `confirmed` 그대로.
+- **Wave 5b 초상 레이어**: `B/layers/` 12장과 그 확인 그림 `B/checks/` 4장 `rejected`(방식 전환: 레이어 합성 → 완성 초상 풀). `A/` 아이·노인 자유 생성 워커 3장은 원래대로 `rejected`, `reused/held_staff_*` 4장은 재사용 소품으로 `candidate`, `derived-templates/`는 그대로.
+- **초상 풀(`portrait-pool/`)**: 방식 전환 파일럿(`pivot-pilot-20260926`)이 첫 묶음. 완성 초상 P01~P36 36장과 노화 사슬 12장 `confirmed`. 원시 생성본 `provenance/raw`는 넣지 않았다.
+- **Wave 15**: 계절 자연 65장 `confirmed`.
+- **Wave 16**: 11:21 도착. 에셋 35장과 확인·기록 그림 전부 판정 전이라 `candidate`.
+- **Wave 3**: 재작업본 10장 `confirmed`, 해당 v1 10장 `superseded`(→ `wave3/fix-20260926/assets/…`). Wave 3 에셋 82장 확정.
 
 ## 7. 찾지 못한 것
 
@@ -172,7 +186,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 
 ## 8. 이후 규칙
 
-- Astra 산출물은 도착하면 설치 여부와 관계없이 `assets-inbox/<wave>/<batch>/`에 보관하고 `INBOX_LEDGER.csv`에 행을 더한다(상태 `candidate`). `sources/`·`raw/`·`references/`는 넣지 않는다.
+- Astra 산출물은 도착하면 설치 여부와 관계없이 `assets-inbox/<wave>/<batch>/`에 보관하고 `INBOX_LEDGER.csv`에 행을 더한다. 판정이 오기 전에는 모두 `candidate`다. `sources/`·`raw/`·`references/`는 넣지 않는다.
 - 같은 때 원본 ZIP과 `output/astra-*` 작업 폴더를 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사한다(저장소 밖, 재부팅 대비).
 - 재작업본이 오면 원본 행은 `superseded` + `replaced_by`, 재작업본은 판정 전까지 `candidate`.
 - 장부는 여러 세션이 고친다. 다시 생성하지 말고 해당 행만 고치거나 행을 더한다.

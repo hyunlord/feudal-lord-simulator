@@ -127,16 +127,16 @@ test("single houses and crops retain their dedicated ground rendering", () => {
   }
 });
 
-test("multi-tile contact meets the fixed sprite front anchor", () => {
-  // Given a 2x2 storehouse whose fixed sprite uses the front footprint tile.
+test("multi-tile contact meets the fitted sprite's footprint centre (R0-2)", () => {
+  // Given a 2x2 storehouse whose art is fitted to its footprint (buildingSpriteFit), centred on the diamond.
   const owner = building("storehouse");
   // When generating its contact polygon.
   const contact = buildingContactPolygon(owner);
-  // Then it straddles that front anchor, rather than sitting a half tile behind the art.
+  // Then it straddles the footprint centre (the old far-tile anchor left it a half tile off the fitted art).
   const tx = contact.map(point => point.tx);
   const ty = contact.map(point => point.ty);
-  assert.ok(Math.min(...tx) < owner.tx + 1 && Math.max(...tx) > owner.tx + 1);
-  assert.ok(Math.min(...ty) < owner.ty + 1 && Math.max(...ty) > owner.ty + 1);
+  assert.ok(Math.min(...tx) < owner.tx + 0.5 && Math.max(...tx) > owner.tx + 0.5);
+  assert.ok(Math.min(...ty) < owner.ty + 0.5 && Math.max(...ty) > owner.ty + 0.5);
 });
 
 
@@ -161,8 +161,7 @@ test("every approach joins the actual fixed sprite contact with an overlapping i
     const frontage = buildingFrontage(grid, owner, 11);
     assert.ok(frontage);
     for (const path of frontage.paths) {
-      const legacy = kind === "storehouse" || kind === "granary";
-      const anchor = { tx: owner.tx + (size.width - 1) / (legacy ? 1 : 2), ty: owner.ty + (size.height - 1) / (legacy ? 1 : 2) };
+      const anchor = { tx: owner.tx + (size.width - 1) / 2, ty: owner.ty + (size.height - 1) / 2 }; // R0-2: every art on its centre
       const origin = { tx: Math.max(owner.tx, Math.min(path.road.tx, owner.tx + size.width - 1)),
         ty: Math.max(owner.ty, Math.min(path.road.ty, owner.ty + size.height - 1)) };
       const overlap = { tx: origin.tx + (path.road.tx - origin.tx) * 0.15,

@@ -8,6 +8,7 @@ import { drawHouseCondition } from "./houseConditionOverlay";
 import { drawHouseCompound } from "./houseCompound";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { GameState } from "../engine/engine.types";
+import { stateCalendar } from "../engine/scenarioState";
 import type { Building } from "../economy/economy.types";
 import { PALETTE } from "../content/palette";
 import type { Tile } from "../world/world.types";
@@ -24,16 +25,15 @@ import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor } fr
 import { drawWalker } from "./drawWalkers";
 import { drawZoneProp } from "./zonePropSprites";
 import type { TileRange, ViewportSize } from "./renderer";
-import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
-import { worldSpriteVariantImage } from "./buildingVariantAssets";
+import type { WorldSpriteOptions } from "./worldSprite";
+import { drawBuildingSprite } from "./buildingSpriteFit";
+import { drawBuildingOverlays } from "./buildingOverlays";
 import { drawFarmsteadSprite } from "./farmsteadArt";
 import { drawFarmProp } from "./farmProps";
 import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
 import { applyInkOutline, snapToPixel } from "./style";
 import type { ObjectRenderViewMode } from "./objectRenderViewMode";
-import {
-  OBJECT_OUTLINE_ALPHA,
-} from "./occlusionModel";
+import { OBJECT_OUTLINE_ALPHA } from "./occlusionModel";
 import { drawHouseRoofSmoke, drawMillOvenSmoke, smokeClockMs } from "./roofSmoke";
 
 type ObjectRenderInput = {
@@ -123,6 +123,7 @@ function drawBuilding(
   // Curved ground (C1d): the contact shadow sits directly under the body, drawn here rather than baked into the ground.
   if (boundaryV2Enabled()) drawBuildingContactShadowV2(context, building);
   drawBuildingDetail(context, input, building, spriteOptions);
+  if (renderDetailLevel(input.zoom) === "full") drawBuildingOverlays(context, input.state, building); // INSTALL-7 snow, boards, piles
 }
 
 function drawBuildingDetail(
@@ -167,7 +168,7 @@ function drawBuildingDetail(
       return;
     }
     const spriteKey = buildingSpriteKey(building, visualState.houseLevel);
-    const spriteDrawn = drawWorldSprite(context, spriteKey, building.tx, building.ty, { ...spriteOptions, image: worldSpriteVariantImage(building, spriteKey) });
+    const spriteDrawn = drawBuildingSprite(context, building, spriteKey, spriteOptions);
     if (spriteDrawn) {
       drawKindDetail(context, { hideProblemMarker: true,
         architecture: spriteMeta(spriteKey)?.bakedArchitecture === true ? "baked" : "procedural",
@@ -184,8 +185,7 @@ function drawBuildingDetail(
     center,
     building,
     houseLevel: visualState.houseLevel,
-    houseMaterialEra: visualState.houseMaterialEra,
-    zoom: input.zoom,
+    houseMaterialEra: visualState.houseMaterialEra, zoom: input.zoom, winter: stateCalendar(input.state).season === 3,
   };
   if (detailLevel === "blocks") {
     drawLodBlock(context, shape);

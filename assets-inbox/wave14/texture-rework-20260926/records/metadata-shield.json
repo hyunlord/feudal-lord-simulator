@@ -1,0 +1,92 @@
+[
+  {
+    "id": "shield_surface_texture_multiply",
+    "file": "assets/shield_surface_texture_multiply.png",
+    "width": 256,
+    "height": 256,
+    "status": "candidate",
+    "role": "multiply surface texture",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Asset: ONE grayscale handpainted shield-surface MULTIPLY texture, square full-bleed flat 2D texture. Reference house is only brushwork/material style; do NOT draw a house, shield outline, heraldry, objects, text or symbols. Paint a full square gouache-coated leather over old timber, painterly long subtle grain, overlapping dry-brush strokes, scattered organic worn scrapes near square edges, broad soft slightly darker lower half. Whites and light grays only, white neutral multiply base, no colors. The surface must visibly read as hand painted at 256px and96px, not microscopic noise: broad irregular brush marks 20-60px wide at1024, with small striations. Surface should range roughly gray160 towhite250, most surface210-240, bottom and outer margins darker but no drawn frame. No holes, no transparency, no vignette border, no embossing, no central object, no letters. Plain front-facing flat material plate reaching all four edges, no perspective. This is an unlit shadow/grain layer later tinted by game code, lower zone shadow retained.\n",
+        "rawFile": "raw/shield-multiply.png",
+        "referenceImages": [
+          "references/house_l3-v2.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "256x256 lanczos3",
+      "color": "neutral grayscale RGBA opaque blend data; white multiply neutral / black screen neutral",
+      "mapping": "normalized fill row UV; see SHIELD_TEXTURE_COMPOSITION.md"
+    },
+    "qa": {
+      "averageAlpha": 1,
+      "averageGrayscale": 179.67984008789062,
+      "effectiveBlendFactorMean": 0.7637014590992648,
+      "blendStrength": 0.8,
+      "preservesOriginalSilhouetteAlpha": true,
+      "viewedAt": [
+        256,
+        96
+      ]
+    },
+    "blendContract": {
+      "mode": "multiply",
+      "strength": 0.8,
+      "neutral": "white",
+      "space": "sRGB",
+      "mapping": "normalized fill row UV",
+      "clip": "fill; preserve outline/alpha",
+      "order": 1
+    }
+  },
+  {
+    "id": "shield_surface_texture_screen",
+    "file": "assets/shield_surface_texture_screen.png",
+    "width": 256,
+    "height": 256,
+    "status": "candidate",
+    "role": "screen surface texture",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: stylized-concept. Asset: ONE grayscale hand-painted shield-surface SCREEN light texture, square full-bleed flat 2D material plate. Reference house only for gouache brushwork style. Do NOT draw a house, shield, outline, heraldry, objects, text or symbols. Pure black neutral screen base over complete square, very dark lower half. Broken soft hand-brushed gray highlights across upper third and upper-left, broad thin scumbled gouache strokes, sparse ragged lighter abrasion near square margins, faint fine wood/leather grain. Image should be predominantly black and dark gray, upper gray brush patches100-140, finegrain30-60, lower0-20. Organic visible paint strokes, not photographic noise or glossy plastic. No thick border, no bevel, no central emblem, no perspective. This is ONLY the light contribution layer used with screen blending atop saturated medieval heraldry. Neutral black must remain between irregular strokes; clear upper light direction. Opaque square texture plate, no transparency needed; output no lettering.\n",
+        "rawFile": "raw/shield-screen.png",
+        "referenceImages": [
+          "references/house_l3-v2.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "256x256 lanczos3",
+      "color": "neutral grayscale RGBA opaque blend data; white multiply neutral / black screen neutral",
+      "mapping": "normalized fill row UV; see SHIELD_TEXTURE_COMPOSITION.md"
+    },
+    "qa": {
+      "averageAlpha": 1,
+      "averageGrayscale": 23.438705444335938,
+      "effectiveBlendFactorMean": 0.9558800838694853,
+      "blendStrength": 0.48,
+      "preservesOriginalSilhouetteAlpha": true,
+      "viewedAt": [
+        256,
+        96
+      ]
+    },
+    "blendContract": {
+      "mode": "screen",
+      "strength": 0.48,
+      "neutral": "black",
+      "space": "sRGB",
+      "mapping": "normalized fill row UV",
+      "clip": "fill; preserve outline/alpha",
+      "order": 2
+    }
+  }
+]

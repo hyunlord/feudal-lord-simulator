@@ -86,7 +86,7 @@ export const historicalFacilityManifest = [
       "width": 832,
       "height": 1155
     },
-    "displayWidth": 88,
+    "displayWidth": 94,
     "sha256": "f58a040bae034799e31f51150aa66ee268d8c48af72904da91c1073b0e1d13de"
   },
   {

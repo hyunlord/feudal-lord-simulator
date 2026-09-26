@@ -7,6 +7,8 @@ import { MAX_LOOPS, SOUND_BANK } from "../src/audio/audioEngine";
 import { houseSmokeStrength, millOvenBurning } from "../src/render/roofSmoke";
 import { ROOF_SMOKE_ANCHORS } from "../src/render/roofSmokeAnchors.generated";
 import { emphasisedSigns, MAX_EMPHASIS, worldSigns, type WorldSign } from "../src/render/worldSigns";
+import { SIGNAL_PERSIST_TICKS } from "../src/render/signalPersistence";
+import { isMarketDay } from "../src/ui/residentTrips";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 const ROOT = new URL("..", import.meta.url).pathname;
@@ -22,13 +24,27 @@ test("F0-V smoke: a lived-in house with bread smokes, its last loaf thinly; empt
   assert.equal(houseSmokeStrength(pressured({ abandonedTick: 20, residents: 0 }), { id: "h" }), 0, "F0-A abandoned: none");
 });
 
-test("F0-V S4 x F0-A: a leaving household or an abandoned house is a cold house even with bread in store", () => {
+test("INSTALL-7 S12 / abandoned x F0-A: a leaving household shows its bundles, an abandoned house its own sign, whatever its larder", () => {
   const base = DEFAULT_GAME_STATE;
   const fed = base.houses.map(house => ({ ...house, residents: 3, breadStock: 4 }));
-  const cold = (houses: typeof fed) => worldSigns({ ...base, houses }).filter(sign => sign.kind === "cold_house").length;
-  assert.equal(cold(fed), 0);
-  assert.equal(cold(fed.map((house, index) => index === 0 ? { ...house, leavingSinceTick: 5 } : house)), 1);
-  assert.equal(cold(fed.map((house, index) => index === 1 ? { ...house, residents: 0, breadStock: 0, abandonedTick: 9 } : house)), 1);
+  const kinds = (houses: typeof fed) => worldSigns({ ...base, houses }).map(sign => sign.kind).filter(kind => kind !== "empty_plot");
+  assert.deepEqual(kinds(fed), []);
+  assert.deepEqual(kinds(fed.map((house, index) => index === 0 ? { ...house, leavingSinceTick: 5 } : house)), ["leaving_family"]);
+  assert.deepEqual(kinds(fed.map((house, index) => index === 1 ? { ...house, residents: 0, breadStock: 0, abandonedTick: 9 } : house)), ["abandoned_house"]);
+});
+
+test("INSTALL-7 S9 / S6: a paused or unpaid building shows the latch; a market on a market day with nothing to sell the empty stall", () => {
+  const base = DEFAULT_GAME_STATE;
+  const mill = { id: "mill-x", kind: "mill" as const, tx: 30, ty: 30, workers: 1, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+  const kinds = (buildings: typeof base.buildings, tick = base.tick) => worldSigns({ ...base, tick, buildings }).map(sign => sign.kind);
+  assert.ok(!kinds([...base.buildings, mill]).includes("idle_latch"));
+  assert.ok(kinds([...base.buildings, { ...mill, operationPaused: true }]).includes("idle_latch"));
+  assert.ok(kinds([...base.buildings, { ...mill, upkeepUnpaid: true }]).includes("idle_latch"));
+  const market = { ...mill, id: "market-x", kind: "market" as const };
+  const marketDay = Array.from({ length: 4_000 }, (_, tick) => tick).find(tick => isMarketDay(tick))!;
+  const ordinary = Array.from({ length: 4_000 }, (_, tick) => tick).find(tick => !isMarketDay(tick))!;
+  assert.ok(kinds([...base.buildings, market], marketDay).includes("empty_stall"), "market day, nothing to sell");
+  assert.ok(!kinds([...base.buildings, market], ordinary).includes("empty_stall"), "not a market day");
 });
 
 test("F0-V smoke: the mill oven burns only while the mill runs (workers, wheat or baking, not paused, not unpaid)", () => {
@@ -51,7 +67,9 @@ test("F0-V world signs: road cut, cold house and empty plot appear only under th
   const base = DEFAULT_GAME_STATE;
   const signs = worldSigns(base);
   for (const sign of signs) assert.ok(["road_cut", "cold_house", "empty_plot"].includes(sign.kind));
-  const cold = worldSigns({ ...base, houses: base.houses.map(house => ({ ...house, residents: 3, breadStock: 0 })) });
+  const coldHouses = base.houses.map(house => ({ ...house, residents: 3, breadStock: 0 }));
+  worldSigns({ ...base, tick: 500, houses: coldHouses });
+  const cold = worldSigns({ ...base, tick: 500 + SIGNAL_PERSIST_TICKS, houses: coldHouses });
   assert.equal(cold.filter(sign => sign.kind === "cold_house").length, base.houses.length);
   const fed = worldSigns({ ...base, houses: base.houses.map(house => ({ ...house, residents: 3, breadStock: 4 })) });
   assert.equal(fed.filter(sign => sign.kind === "cold_house").length, 0);
@@ -64,6 +82,18 @@ test("F0-V world signs: road cut, cold house and empty plot appear only under th
   assert.deepEqual(emphasised.map(sign => sign.kind), ["road_cut", "cold_house", "empty_plot"]);
   const inView = emphasisedSigns(many, { x: 0, y: 0 }, 400);
   assert.ok(!inView.some(sign => sign.kind === "road_cut"), "the road cut at (20,20) is out of view and takes no ring");
+});
+
+test("R0-1: a new game shows no cold house; an empty larder shows after a cycle, or at once from the engine's shortage start", () => {
+  const fresh = worldSigns(DEFAULT_GAME_STATE);
+  assert.equal(fresh.filter(sign => sign.kind === "cold_house").length, 0, "the opening village before its first bread round");
+  const empty = DEFAULT_GAME_STATE.houses.map(house => ({ ...house, residents: 3, breadStock: 0 }));
+  const cold = (tick: number, houses = empty) => worldSigns({ ...DEFAULT_GAME_STATE, tick, houses }).filter(sign => sign.kind === "cold_house").length;
+  assert.equal(cold(2_000), 0);
+  assert.equal(cold(2_100), 0, "a larder empty for 100 ticks is one bread round, not a signal");
+  assert.equal(cold(2_000 + SIGNAL_PERSIST_TICKS), empty.length);
+  const shortLong = empty.map(house => ({ ...house, foodShortSinceTick: 1_000 }));
+  assert.equal(cold(5_000, shortLong), empty.length, "the engine has counted the shortage since 1,000 (a load mid-shortage)");
 });
 
 test("F0-V sounds: the 15 P0 sounds are installed, on three buses, with at most four loops", () => {

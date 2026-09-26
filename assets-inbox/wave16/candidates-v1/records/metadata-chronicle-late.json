@@ -1,0 +1,390 @@
+[
+  {
+    "id": "chronicle_petition",
+    "file": "assets/chronicle/chronicle_petition.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "상인들이 영주관 앞에서 모자를 벗어 들고 청원서를 내민다.",
+    "characters": "상인 2명, 청지기 1명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 참조의 문 X표식은 배제. 무문자·무숫자, 주택 굴뚝·홉·육각 관·흑사병 장면 없음. 연대기는 약한 채식 구도만 차용.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square full-bleed chronicle illustration, no border, no lettering, no numbers, no pseudo-writing. Southern England market town 1300–1318. Match attached project keyart muted handpainted gouache/oil storytelling, gently simplified manuscript illumination spatial rhythms ONLY, not ornate manuscript borders. Natural restrained faces as the two portrait references, small readable story in 384px and 192px. Earthy wool, flax, oak, warm lime plaster, low rubble foundations, thatch and muted flat clay roof tiles. NO house chimneys, no blue glass, no painted door marks, no hops, no coffins, no plague, no vivid primary colors, no fantasy armor, no modern objects. References are STYLE only: specifically do not reproduce their erroneous white X door markings. Scene: Outside a timber lord's hall, two merchants each holding a removed soft wool cap bow slightly, one extending a conspicuously BLANK parchment to the steward standing on the doorstep. Three foreground adults, empty hat-in-hand humility and offered paper must unmistakably read petition. Late-spring muted daylight; soft town background, no crowd.",
+        "rawFile": "raw/chronicle-late/chronicle_petition.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "output": "384×384 RGBA PNG",
+      "operation": "Lanczos3 fit-cover centre resize, no stretching, no drawn additions"
+    },
+    "qa": {
+      "visualReview": "pass candidate; full generated source and 192px contact inspected",
+      "readability384": "벗어 든 모자·몸을 낮춘 상인·문간으로 건네는 문서가 청원으로 읽힘.",
+      "readability192": "주요 인물 행동과 소품/건축 구도 유지",
+      "noTextNumbers": true,
+      "noDoorMarks": true,
+      "noHouseChimneys": true,
+      "noHopsCoffinsPlague": true,
+      "style": "저채도 손그림 회화, 약한 채식 공간 구성. 실제 필사본 복제 아님.",
+      "limitations": "에이전트 자기검수이며 블라인드 사용자 인지 실험 아님."
+    }
+  },
+  {
+    "id": "chronicle_charter",
+    "file": "assets/chronicle/chronicle_charter.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "시장 십자가 앞에서 붉은 밀랍 인장이 달린 특허 문서를 낭독한다.",
+    "characters": "관리 1명, 주민 3명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 참조의 문 X표식은 배제. 무문자·무숫자, 주택 굴뚝·홉·육각 관·흑사병 장면 없음. 연대기는 약한 채식 구도만 차용.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square full-bleed chronicle illustration, no border, no lettering, no numbers, no pseudo-writing. Southern England market town 1300–1318. Match attached project keyart muted handpainted gouache/oil storytelling, gently simplified manuscript illumination spatial rhythms ONLY, not ornate manuscript borders. Natural restrained faces as the two portrait references, small readable story in 384px and 192px. Earthy wool, flax, oak, warm lime plaster, low rubble foundations, thatch and muted flat clay roof tiles. NO house chimneys, no blue glass, no painted door marks, no hops, no coffins, no plague, no vivid primary colors, no fantasy armor, no modern objects. References are STYLE only: specifically do not reproduce their erroneous white X door markings. Scene: A town officer before a plain stone market cross presents and reads a large BLANK opened charter with prominent hanging muted red wax seal to three attentive townspeople. The sheet is completely blank and turned toward the viewer, red seal below; gesture of granted civic rights. Town square, clean sunny overcast, no lettering anywhere. Four clear focal figures.",
+        "rawFile": "raw/chronicle-late/chronicle_charter.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit this existing square illustration only to remove EVERY domestic chimney or flue protruding from any house roof; reconstruct ordinary uninterrupted clay tiles or thatch wherever a chimney stood. Church tower and cross and stone market cross must remain. Preserve all people, facial gestures, document, buildings, clothing, muted hand-painted paint texture, composition, square canvas, existing blank pages and no text. Do not add any object. Southern England circa1300 project houses have NO chimneys.",
+        "rawFile": "raw/chronicle-late/chronicle_charter-no-chimneys.png",
+        "referenceImages": [
+          "raw/chronicle-late/chronicle_charter.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "output": "384×384 RGBA PNG",
+      "operation": "Lanczos3 fit-cover centre resize, no stretching, no drawn additions",
+      "selectedRaw": "raw/chronicle-late/chronicle_charter-no-chimneys.png"
+    },
+    "qa": {
+      "visualReview": "pass candidate; full generated source and 192px contact inspected",
+      "correction": "Background domestic chimneys removed by image edit; initial version preserved as raw.",
+      "readability384": "높이 든 빈 문서와 붉은 인장·시장 십자가가 특허 공표로 읽힘.",
+      "readability192": "주요 인물 행동과 소품/건축 구도 유지",
+      "noTextNumbers": true,
+      "noDoorMarks": true,
+      "noHouseChimneys": true,
+      "noHopsCoffinsPlague": true,
+      "style": "저채도 손그림 회화, 약한 채식 공간 구성. 실제 필사본 복제 아님.",
+      "limitations": "에이전트 자기검수이며 블라인드 사용자 인지 실험 아님."
+    }
+  },
+  {
+    "id": "chronicle_palisade",
+    "file": "assets/chronicle/chronicle_palisade.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "주민들이 목책 말뚝을 세워 둘레를 닫는다.",
+    "characters": "목책 일꾼 3명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 참조의 문 X표식은 배제. 무문자·무숫자, 주택 굴뚝·홉·육각 관·흑사병 장면 없음. 연대기는 약한 채식 구도만 차용.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square full-bleed chronicle illustration, no border, no lettering, no numbers, no pseudo-writing. Southern England market town 1300–1318. Match attached project keyart muted handpainted gouache/oil storytelling, gently simplified manuscript illumination spatial rhythms ONLY, not ornate manuscript borders. Natural restrained faces as the two portrait references, small readable story in 384px and 192px. Earthy wool, flax, oak, warm lime plaster, low rubble foundations, thatch and muted flat clay roof tiles. NO house chimneys, no blue glass, no painted door marks, no hops, no coffins, no plague, no vivid primary colors, no fantasy armor, no modern objects. References are STYLE only: specifically do not reproduce their erroneous white X door markings. Scene: Three villagers raising one tall sharpened oak palisade stake vertically into a shallow earth trench beside a short row of newly installed stakes, one holds upright while two guide. Simple timber gate in background, thatch town beyond. Make construction effort clear with rope and wooden mallet set on earth, no carts or material piles obscuring action.",
+        "rawFile": "raw/chronicle-late/chronicle_palisade.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "output": "384×384 RGBA PNG",
+      "operation": "Lanczos3 fit-cover centre resize, no stretching, no drawn additions"
+    },
+    "qa": {
+      "visualReview": "pass candidate; full generated source and 192px contact inspected",
+      "readability384": "세 사람이 날카로운 통나무를 흙 구덩이에 세우는 행동으로 목책 공사를 읽음.",
+      "readability192": "주요 인물 행동과 소품/건축 구도 유지",
+      "noTextNumbers": true,
+      "noDoorMarks": true,
+      "noHouseChimneys": true,
+      "noHopsCoffinsPlague": true,
+      "style": "저채도 손그림 회화, 약한 채식 공간 구성. 실제 필사본 복제 아님.",
+      "limitations": "에이전트 자기검수이며 블라인드 사용자 인지 실험 아님."
+    }
+  },
+  {
+    "id": "chronicle_market_town",
+    "file": "assets/chronicle/chronicle_market_town.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "목책 안 광장과 상설 장터·교회가 갖춰진 시장도시 전경.",
+    "characters": "성문으로 들어오는 주민 4명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 참조의 문 X표식은 배제. 무문자·무숫자, 주택 굴뚝·홉·육각 관·흑사병 장면 없음. 연대기는 약한 채식 구도만 차용.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square full-bleed chronicle illustration, no border, no lettering, no numbers, no pseudo-writing. Southern England market town 1300–1318. Match attached project keyart muted handpainted gouache/oil storytelling, gently simplified manuscript illumination spatial rhythms ONLY, not ornate manuscript borders. Natural restrained faces as the two portrait references, small readable story in 384px and 192px. Earthy wool, flax, oak, warm lime plaster, low rubble foundations, thatch and muted flat clay roof tiles. NO house chimneys, no blue glass, no painted door marks, no hops, no coffins, no plague, no vivid primary colors, no fantasy armor, no modern objects. References are STYLE only: specifically do not reproduce their erroneous white X door markings. Scene: A newly established enclosed market town seen in gently elevated manuscript-like view: a full connected oak palisade encloses a small spacious square, plain stone market cross at center, permanent stalls under muted beige cloth, modest parish church, thatch and timber plaster homes. Four clear tiny foreground citizens entering the open town gate. This is civic town establishment, wider than a close market-day transaction. No text banners or painted door symbols.",
+        "rawFile": "raw/chronicle-late/chronicle_market_town.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit this existing square illustration only to remove EVERY domestic chimney or flue protruding from any house roof; reconstruct ordinary uninterrupted clay tiles or thatch wherever a chimney stood. Church tower and cross and stone market cross must remain. Preserve all people, facial gestures, document, buildings, clothing, muted hand-painted paint texture, composition, square canvas, existing blank pages and no text. Do not add any object. Southern England circa1300 project houses have NO chimneys.",
+        "rawFile": "raw/chronicle-late/chronicle_market_town-no-chimneys.png",
+        "referenceImages": [
+          "raw/chronicle-late/chronicle_market_town.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "output": "384×384 RGBA PNG",
+      "operation": "Lanczos3 fit-cover centre resize, no stretching, no drawn additions",
+      "selectedRaw": "raw/chronicle-late/chronicle_market_town-no-chimneys.png"
+    },
+    "qa": {
+      "visualReview": "pass candidate; full generated source and 192px contact inspected",
+      "correction": "Background domestic chimneys removed by image edit; initial version preserved as raw.",
+      "readability384": "닫힌 목책·성문·중앙 십자가·장터·교회가 갖춰진 도시 전체 구도, 거래 근접 장면과 구별.",
+      "readability192": "주요 인물 행동과 소품/건축 구도 유지",
+      "noTextNumbers": true,
+      "noDoorMarks": true,
+      "noHouseChimneys": true,
+      "noHopsCoffinsPlague": true,
+      "style": "저채도 손그림 회화, 약한 채식 공간 구성. 실제 필사본 복제 아님.",
+      "limitations": "에이전트 자기검수이며 블라인드 사용자 인지 실험 아님."
+    }
+  },
+  {
+    "id": "chronicle_church_dedication",
+    "file": "assets/chronicle/chronicle_church_dedication.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "성직자가 새 교회 문간을 축복하고 주민들이 봉헌을 지켜본다.",
+    "characters": "성직자 1명, 보조 1명, 주민 2명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 참조의 문 X표식은 배제. 무문자·무숫자, 주택 굴뚝·홉·육각 관·흑사병 장면 없음. 연대기는 약한 채식 구도만 차용.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square full-bleed chronicle illustration, no border, no lettering, no numbers, no pseudo-writing. Southern England market town 1300–1318. Match attached project keyart muted handpainted gouache/oil storytelling, gently simplified manuscript illumination spatial rhythms ONLY, not ornate manuscript borders. Natural restrained faces as the two portrait references, small readable story in 384px and 192px. Earthy wool, flax, oak, warm lime plaster, low rubble foundations, thatch and muted flat clay roof tiles. NO house chimneys, no blue glass, no painted door marks, no hops, no coffins, no plague, no vivid primary colors, no fantasy armor, no modern objects. References are STYLE only: specifically do not reproduce their erroneous white X door markings. Scene: A clergy member in subdued cream vestment lifts an aspergillum to bless the stone doorway of a small new parish church; another attendant holds a holy-water bowl, with two townspeople watching respectfully. Four figures. Church porch with simple pointed arch, rubble stone and weathered oak door, tiny carved cross, no funeral, no coffin, no mourners. Bright restrained celebration.",
+        "rawFile": "raw/chronicle-late/chronicle_church_dedication.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit this existing square illustration ONLY remove every domestic chimney or flue protruding from any house roof in the background, reconstruct unbroken ordinary clay tiles or thatch. This includes tiny brick or pale stacks, all must vanish. Keep the church tower/cross, all people, faces, hands, clothing, primary action, color, painted texture, composition exactly unchanged. No added text or objects. Project historical houses have NO chimneys.",
+        "rawFile": "raw/chronicle-late/chronicle_church_dedication-no-chimneys.png",
+        "referenceImages": [
+          "raw/chronicle-late/chronicle_church_dedication.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "output": "384×384 RGBA PNG",
+      "operation": "Lanczos3 fit-cover centre resize, no stretching, no drawn additions",
+      "selectedRaw": "raw/chronicle-late/chronicle_church_dedication-no-chimneys.png"
+    },
+    "qa": {
+      "visualReview": "pass candidate; full generated source and 192px contact inspected",
+      "correction": "Background domestic chimneys removed by image edit; initial version preserved as raw.",
+      "readability384": "교회 문간을 향한 성수 뿌리기와 성수 통이 축복 의식으로 읽힘. 봉헌이라는 제도적 이름은 문맥 필요.",
+      "readability192": "주요 인물 행동과 소품/건축 구도 유지",
+      "noTextNumbers": true,
+      "noDoorMarks": true,
+      "noHouseChimneys": true,
+      "noHopsCoffinsPlague": true,
+      "style": "저채도 손그림 회화, 약한 채식 공간 구성. 실제 필사본 복제 아님.",
+      "limitations": "에이전트 자기검수이며 블라인드 사용자 인지 실험 아님."
+    }
+  },
+  {
+    "id": "chronicle_famine",
+    "file": "assets/chronicle/chronicle_famine.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "빈 바구니와 그릇 앞에서 가족이 굶주림을 견딘다.",
+    "characters": "부모 2명, 어린이 1명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 참조의 문 X표식은 배제. 무문자·무숫자, 주택 굴뚝·홉·육각 관·흑사병 장면 없음. 연대기는 약한 채식 구도만 차용.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square full-bleed chronicle illustration, no border, no lettering, no numbers, no pseudo-writing. Southern England market town 1300–1318. Match attached project keyart muted handpainted gouache/oil storytelling, gently simplified manuscript illumination spatial rhythms ONLY, not ornate manuscript borders. Natural restrained faces as the two portrait references, small readable story in 384px and 192px. Earthy wool, flax, oak, warm lime plaster, low rubble foundations, thatch and muted flat clay roof tiles. NO house chimneys, no blue glass, no painted door marks, no hops, no coffins, no plague, no vivid primary colors, no fantasy armor, no modern objects. References are STYLE only: specifically do not reproduce their erroneous white X door markings. Scene: A gaunt living family of three sitting beside an EMPTY upturned wicker grain basket and empty shallow wooden bowl at a deserted market stall. Rain-soaked southern English town behind, two closed empty stalls. Hollow cheeks, worried posture, mother comforting child, father looking at empty bowl. Dignified restrained sorrow, no dead bodies, no sickness markings, no plague imagery.",
+        "rawFile": "raw/chronicle-late/chronicle_famine.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit this existing square illustration ONLY remove every domestic chimney or flue protruding from any house roof in the background, reconstruct unbroken ordinary clay tiles or thatch. This includes tiny brick or pale stacks, all must vanish. Keep the church tower/cross, all people, faces, hands, clothing, primary action, color, painted texture, composition exactly unchanged. No added text or objects. Project historical houses have NO chimneys.",
+        "rawFile": "raw/chronicle-late/chronicle_famine-no-chimneys.png",
+        "referenceImages": [
+          "raw/chronicle-late/chronicle_famine.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "output": "384×384 RGBA PNG",
+      "operation": "Lanczos3 fit-cover centre resize, no stretching, no drawn additions",
+      "selectedRaw": "raw/chronicle-late/chronicle_famine-no-chimneys.png"
+    },
+    "qa": {
+      "visualReview": "pass candidate; full generated source and 192px contact inspected",
+      "correction": "Background domestic chimneys removed by image edit; initial version preserved as raw.",
+      "readability384": "비·빈 장터·빈 그릇과 바구니·침울한 가족이 식량난으로 읽힘. 연도·기간은 그림만으로 판별 불가.",
+      "readability192": "주요 인물 행동과 소품/건축 구도 유지",
+      "noTextNumbers": true,
+      "noDoorMarks": true,
+      "noHouseChimneys": true,
+      "noHopsCoffinsPlague": true,
+      "style": "저채도 손그림 회화, 약한 채식 공간 구성. 실제 필사본 복제 아님.",
+      "limitations": "에이전트 자기검수이며 블라인드 사용자 인지 실험 아님."
+    }
+  },
+  {
+    "id": "chronicle_relief",
+    "file": "assets/chronicle/chronicle_relief.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "곡창 문간에서 영주 가솔이 가족에게 빵을 나눠 준다.",
+    "characters": "영주 가솔 1명, 수급 주민 3명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 참조의 문 X표식은 배제. 무문자·무숫자, 주택 굴뚝·홉·육각 관·흑사병 장면 없음. 연대기는 약한 채식 구도만 차용.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square full-bleed chronicle illustration, no border, no lettering, no numbers, no pseudo-writing. Southern England market town 1300–1318. Match attached project keyart muted handpainted gouache/oil storytelling, gently simplified manuscript illumination spatial rhythms ONLY, not ornate manuscript borders. Natural restrained faces as the two portrait references, small readable story in 384px and 192px. Earthy wool, flax, oak, warm lime plaster, low rubble foundations, thatch and muted flat clay roof tiles. NO house chimneys, no blue glass, no painted door marks, no hops, no coffins, no plague, no vivid primary colors, no fantasy armor, no modern objects. References are STYLE only: specifically do not reproduce their erroneous white X door markings. Scene: At an open granary doorway, one household retainer in plain muted wool coat reaches forward with a clearly visible round loaf into the open hands of a hungry mother; a child waits beside her and another adult behind. Four figures. A small basket of loaves beside giver. Bread handover large at center; hopeful but sober. No money exchanged, no pricing sign.",
+        "rawFile": "raw/chronicle-late/chronicle_relief.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit this existing square illustration ONLY remove every domestic chimney or flue protruding from any house roof in the background, reconstruct unbroken ordinary clay tiles or thatch. This includes tiny brick or pale stacks, all must vanish. Keep the church tower/cross, all people, faces, hands, clothing, primary action, color, painted texture, composition exactly unchanged. No added text or objects. Project historical houses have NO chimneys.",
+        "rawFile": "raw/chronicle-late/chronicle_relief-no-chimneys.png",
+        "referenceImages": [
+          "raw/chronicle-late/chronicle_relief.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "output": "384×384 RGBA PNG",
+      "operation": "Lanczos3 fit-cover centre resize, no stretching, no drawn additions",
+      "selectedRaw": "raw/chronicle-late/chronicle_relief-no-chimneys.png"
+    },
+    "qa": {
+      "visualReview": "pass candidate; full generated source and 192px contact inspected",
+      "correction": "Background domestic chimneys removed by image edit; initial version preserved as raw.",
+      "readability384": "곡창 문간의 큰 빵을 건네는 두 손과 어린이 대기가 구휼로 읽힘.",
+      "readability192": "주요 인물 행동과 소품/건축 구도 유지",
+      "noTextNumbers": true,
+      "noDoorMarks": true,
+      "noHouseChimneys": true,
+      "noHopsCoffinsPlague": true,
+      "style": "저채도 손그림 회화, 약한 채식 공간 구성. 실제 필사본 복제 아님.",
+      "limitations": "에이전트 자기검수이며 블라인드 사용자 인지 실험 아님."
+    }
+  },
+  {
+    "id": "chronicle_survival_spring",
+    "file": "assets/chronicle/chronicle_survival_spring.png",
+    "width": 384,
+    "height": 384,
+    "sceneDescription": "비가 갠 봄, 살아남은 가족이 새싹과 마을을 바라본다.",
+    "characters": "부모 2명, 어린이 1명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 참조의 문 X표식은 배제. 무문자·무숫자, 주택 굴뚝·홉·육각 관·흑사병 장면 없음. 연대기는 약한 채식 구도만 차용.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE square full-bleed chronicle illustration, no border, no lettering, no numbers, no pseudo-writing. Southern England market town 1300–1318. Match attached project keyart muted handpainted gouache/oil storytelling, gently simplified manuscript illumination spatial rhythms ONLY, not ornate manuscript borders. Natural restrained faces as the two portrait references, small readable story in 384px and 192px. Earthy wool, flax, oak, warm lime plaster, low rubble foundations, thatch and muted flat clay roof tiles. NO house chimneys, no blue glass, no painted door marks, no hops, no coffins, no plague, no vivid primary colors, no fantasy armor, no modern objects. References are STYLE only: specifically do not reproduce their erroneous white X door markings. Scene: After rain, a surviving family of three stands at a field edge watching bright but muted new green cereal shoots emerge from wet furrows, intact small market town and humble church behind under clearing cloud. Father gently holds child's hand, mother carries an empty planting basket. Peaceful restrained hope, fresh foliage, no flowers overwhelming field, no death or triumph symbols.",
+        "rawFile": "raw/chronicle-late/chronicle_survival_spring.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "output": "384×384 RGBA PNG",
+      "operation": "Lanczos3 fit-cover centre resize, no stretching, no drawn additions"
+    },
+    "qa": {
+      "visualReview": "pass candidate; full generated source and 192px contact inspected",
+      "readability384": "비 갠 하늘·새싹 밭·함께 바라보는 가족이 봄 회복으로 읽힘. 이전 대기근의 생존 여부는 연대기 순서 문맥 필요.",
+      "readability192": "주요 인물 행동과 소품/건축 구도 유지",
+      "noTextNumbers": true,
+      "noDoorMarks": true,
+      "noHouseChimneys": true,
+      "noHopsCoffinsPlague": true,
+      "style": "저채도 손그림 회화, 약한 채식 공간 구성. 실제 필사본 복제 아님.",
+      "limitations": "에이전트 자기검수이며 블라인드 사용자 인지 실험 아님."
+    }
+  }
+]
