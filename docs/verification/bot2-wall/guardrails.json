@@ -1,0 +1,110 @@
+{
+ "runner": "DGX, scripts/remote/run.sh --task guardrail (REMOTE-1)",
+ "runs": {
+  "run1@90fb216d": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 153976,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 263544,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 499
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 198810,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 261762,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 462
+   },
+   {
+    "seed": 3,
+    "status": "passed",
+    "victoryTick": 163320,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 296548,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 667
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 151101,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 296655,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 504
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 300416,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 467322,
+    "stopReason": "target-scale-stable",
+    "elapsedSeconds": 772
+   }
+  ]
+ },
+ "compare_f0c2_run1@2ae15282": [
+  {
+   "seed": 1,
+   "status": "passed",
+   "victoryTick": 153976,
+   "finalL4": 24,
+   "finalLots": 24,
+   "finalTick": 263544,
+   "stopReason": "target-scale-stable",
+   "elapsedSeconds": 437
+  },
+  {
+   "seed": 2,
+   "status": "passed",
+   "victoryTick": 198810,
+   "finalL4": 24,
+   "finalLots": 24,
+   "finalTick": 261762,
+   "stopReason": "target-scale-stable",
+   "elapsedSeconds": 408
+  },
+  {
+   "seed": 3,
+   "status": "regression",
+   "victoryTick": 463030,
+   "finalL4": 10,
+   "finalLots": 18,
+   "finalTick": 1200000,
+   "stopReason": "tick-budget",
+   "elapsedSeconds": 8043
+  },
+  {
+   "seed": 4,
+   "status": "passed",
+   "victoryTick": 151101,
+   "finalL4": 24,
+   "finalLots": 24,
+   "finalTick": 296655,
+   "stopReason": "target-scale-stable",
+   "elapsedSeconds": 448
+  },
+  {
+   "seed": 5,
+   "status": "passed",
+   "victoryTick": 300416,
+   "finalL4": 24,
+   "finalLots": 24,
+   "finalTick": 467322,
+   "stopReason": "target-scale-stable",
+   "elapsedSeconds": 748
+  }
+ ],
+ "note": "5/5. Seed 3 (known stall EV8/FC11 at 18 lots, L4 9-10) now proclaims a 204-cell wall stretched south and reaches L4 24/24 at 296,548. Seeds 1, 2, 4, 5 tick-identical to F0-C2 (they proclaim at 24 lots, where AR-11 does not apply)."
+}
