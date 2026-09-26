@@ -1,0 +1,779 @@
+[
+  {
+    "id": "orchard/orchard_apple_c_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_c-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-8bbae95b-0829-46e1-97fd-54bd4e438b3b.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_apple_c-v1.png. Create spring blossom seasonal replacement of exactly this SAME tree. Preserve the exact 256x256 canvas composition, trunk geometry, root contact location, branch joints, overall canopy envelope and individual crown-lobe positions; no new tree design, no change to camera or size. Change only leafy crown seasonal appearance to muted ivory white and very faint pink apple blossom clusters with sparse young olive-green leaves. Large simple painterly clusters readable at game scale, not tiny speckle noise. Southern England 1300–1450 hand-painted 2:1 isometric city builder. Soft top-left light. Trunk unchanged warm grey brown. Truly transparent RGBA background, no ground disk, no cast shadow added, no text, no frame. Retain original empty margins. One single tree asset only.",
+    "generatedAt": "2026-09-25T23:58:51.348Z",
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_apple_c_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        33,
+        286,
+        1243,
+        1245
+      ],
+      "targetBounds": [
+        8,
+        61,
+        247,
+        247
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 246,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_apple_c_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_c-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-3a406e68-8911-4352-901d-5a400a8aed64.png",
+    "prompt": "Use case: precise-object-edit. Input1 is the ORIGINAL summer apple tree. Input2 is its winter attempt. Correct ONLY the winter attempt's thickened trunk and main forks to match input1 EXACTLY. Original trunk silhouette, root footprint, lower fork positions, curvature and woody branch thickness are locked from input1; do not inflate branches. Thin the oversized right main limb and trunk in input2 until identical to input1. Preserve input2's open bare twig fans at the summer canopy envelope, with no foliage, no fruit, no buds or red accents. All wood muted grey brown. Same canvas and root location, soft upper-left light and restrained painted sprite style. True transparent RGBA background, no shadow or ground disk, no text. Produce corrected single winter tree, original256x256 canvas framing.",
+    "generatedAt": "2026-09-26T00:13:13.498Z",
+    "attempts": [
+      {
+        "id": "orchard/orchard_apple_c_winter-v1",
+        "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_c-v1.png",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-ffceb9df-8c29-42cc-82d7-b77591b98012.png",
+        "prompt": "Use case: lighting-weather. Edit target: attached orchard_apple_c-v1.png. Make exactly this SAME orchard tree in winter. Keep identical square canvas framing, root contact point and trunk position, trunk geometry and existing branch joints unchanged. Remove all foliage and fruit and reveal a sparse network of bare warm grey-brown branches whose tips follow the original crown-lobe envelope. Each old leaf clump is now an open branch fan, NOT brown solid leaf masses. No snow, no leaves, no ground disk. Same restrained hand-painted 2:1 isometric game style and soft top-left light. Do not redesign, enlarge, recenter, rotate, or move the tree. Truly transparent RGBA background. No text, frame, shadow, additional objects. One single seasonal replacement sprite.",
+        "generatedAt": "2026-09-26T00:00:02.936Z",
+        "selection": "rejected: trunk and main right limb thicker than original"
+      },
+      {
+        "prompt": "Use case: precise-object-edit. Input1 is the ORIGINAL summer apple tree. Input2 is its winter attempt. Correct ONLY the winter attempt's thickened trunk and main forks to match input1 EXACTLY. Original trunk silhouette, root footprint, lower fork positions, curvature and woody branch thickness are locked from input1; do not inflate branches. Thin the oversized right main limb and trunk in input2 until identical to input1. Preserve input2's open bare twig fans at the summer canopy envelope, with no foliage, no fruit, no buds or red accents. All wood muted grey brown. Same canvas and root location, soft upper-left light and restrained painted sprite style. True transparent RGBA background, no shadow or ground disk, no text. Produce corrected single winter tree, original256x256 canvas framing.",
+        "referencePaths": [
+          "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_c-v1.png",
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-ffceb9df-8c29-42cc-82d7-b77591b98012.png"
+        ],
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-3a406e68-8911-4352-901d-5a400a8aed64.png",
+        "generatedAt": "2026-09-26T00:13:13.498Z",
+        "selection": "selected targeted trunk correction"
+      }
+    ],
+    "referencePaths": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_c-v1.png",
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-ffceb9df-8c29-42cc-82d7-b77591b98012.png"
+    ],
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_apple_c_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        45,
+        297,
+        1225,
+        1222
+      ],
+      "targetBounds": [
+        8,
+        61,
+        247,
+        247
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 2,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 246,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_apple_d_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_d-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-4be54ea2-aca1-460a-9f94-dddb10e1fa30.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_apple_d-v1.png. Create spring replacement of exactly this SAME tree. Change only foliage and fruit to muted ivory-white blossom clusters with very faint pink accents and sparse young olive-green leaves. Preserve each existing crown lobe position and silhouette. Broad simple paint shapes, no tiny speckle noise. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:01:38.166Z",
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_apple_d_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        45,
+        231,
+        1235,
+        1237
+      ],
+      "targetBounds": [
+        8,
+        47,
+        247,
+        247
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 123,
+      "anchorY": 246,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_apple_d_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_d-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-ca8d25fa-7b70-46e3-8795-662c22f5626a.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_apple_d-v1.png. Create winter replacement of exactly this SAME tree. Remove ALL foliage and fruit and reveal sparse bare warm grey-brown branches; branch tips follow original canopy lobe envelope. Each old leaf clump becomes an OPEN branch fan, never solid brown foliage. No snow. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:02:16.943Z",
+    "rootRegistrationShiftX": -3,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_apple_d_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        65,
+        224,
+        1188,
+        1217
+      ],
+      "targetBounds": [
+        8,
+        47,
+        247,
+        247
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 123,
+      "anchorY": 246,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_apple_g_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_g-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-ee478726-bca2-4272-9020-4060725d4d67.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_apple_g-v1.png. Create spring replacement of exactly this SAME tree. Change only foliage and fruit to muted ivory-white blossom clusters with very faint pink accents and sparse young olive-green leaves. Preserve each existing crown lobe position and silhouette. Broad simple paint shapes, no tiny speckle noise. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:02:55.419Z",
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_apple_g_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        57,
+        436,
+        1110,
+        1225
+      ],
+      "targetBounds": [
+        12,
+        89,
+        220,
+        243
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 242,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_apple_g_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_g-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-05ae997d-1c73-4587-a9f1-e7707a2bc492.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_apple_g-v1.png. Create winter replacement of exactly this SAME tree. Remove ALL foliage and fruit and reveal sparse bare warm grey-brown branches; branch tips follow original canopy lobe envelope. Each old leaf clump becomes an OPEN branch fan, never solid brown foliage. No snow. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:03:34.722Z",
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_apple_g_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        71,
+        437,
+        1103,
+        1214
+      ],
+      "targetBounds": [
+        12,
+        89,
+        220,
+        243
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 242,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_apple_h_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_h-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-fa5b7dd7-0247-43c6-a645-de572f2041d8.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_apple_h-v1.png. Create spring replacement of exactly this SAME tree. Change only foliage and fruit to muted ivory-white blossom clusters with very faint pink accents and sparse young olive-green leaves. Preserve each existing crown lobe position and silhouette. Broad simple paint shapes, no tiny speckle noise. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:04:17.538Z",
+    "rootRegistrationShiftX": -1,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_apple_h_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        57,
+        440,
+        1224,
+        1227
+      ],
+      "targetBounds": [
+        13,
+        90,
+        243,
+        243
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 242,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_apple_h_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_apple_h-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-33992e89-30e8-497c-9dac-7dfecb240e35.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_apple_h-v1.png. Create winter replacement of exactly this SAME tree. Remove ALL foliage and fruit and reveal sparse bare warm grey-brown branches; branch tips follow original canopy lobe envelope. Each old leaf clump becomes an OPEN branch fan, never solid brown foliage. No snow. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:04:56.909Z",
+    "rootRegistrationShiftX": -2,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_apple_h_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        66,
+        447,
+        1213,
+        1226
+      ],
+      "targetBounds": [
+        13,
+        90,
+        243,
+        243
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 242,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_pear_e_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_pear_e-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-d43b6a8f-14bc-4197-aabc-00e320bdee6f.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_pear_e-v1.png. Create spring replacement of exactly this SAME tree. Change only foliage and fruit to muted ivory-white blossom clusters with very faint pink accents and sparse young olive-green leaves. Preserve each existing crown lobe position and silhouette. Broad simple paint shapes, no tiny speckle noise. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:05:37.028Z",
+    "rootRegistrationShiftX": -2,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_pear_e_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        240,
+        30,
+        1039,
+        1239
+      ],
+      "targetBounds": [
+        50,
+        8,
+        205,
+        247
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 123,
+      "anchorY": 246,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_pear_e_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_pear_e-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-8d0b7678-6d4b-42b0-a2a7-62c8bfdc773b.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_pear_e-v1.png. Create winter replacement of exactly this SAME tree. Remove ALL foliage and fruit and reveal sparse bare warm grey-brown branches; branch tips follow original canopy lobe envelope. Each old leaf clump becomes an OPEN branch fan, never solid brown foliage. No snow. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:06:18.248Z",
+    "rootRegistrationShiftX": -1,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_pear_e_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        253,
+        42,
+        1020,
+        1228
+      ],
+      "targetBounds": [
+        50,
+        8,
+        205,
+        247
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 123,
+      "anchorY": 246,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_pear_i_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_pear_i-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-ce4aea30-6077-407e-90bb-81c25b08e4ab.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_pear_i-v1.png. Create spring replacement of exactly this SAME tree. Change only foliage and fruit to muted ivory-white blossom clusters with very faint pink accents and sparse young olive-green leaves. Preserve each existing crown lobe position and silhouette. Broad simple paint shapes, no tiny speckle noise. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:06:58.751Z",
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_pear_i_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        354,
+        59,
+        964,
+        1219
+      ],
+      "targetBounds": [
+        71,
+        12,
+        191,
+        243
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 242,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_pear_i_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_pear_i-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-e44a1caf-0a04-42c4-a078-9b511e33b810.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_pear_i-v1.png. Create winter replacement of exactly this SAME tree. Remove ALL foliage and fruit and reveal sparse bare warm grey-brown branches; branch tips follow original canopy lobe envelope. Each old leaf clump becomes an OPEN branch fan, never solid brown foliage. No snow. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:07:37.867Z",
+    "rootRegistrationShiftX": -1,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_pear_i_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        347,
+        66,
+        955,
+        1220
+      ],
+      "targetBounds": [
+        71,
+        12,
+        191,
+        243
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 242,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_plum_f_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_plum_f-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-bc14ddcb-28c9-489a-8b16-f805e82f0ac6.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_plum_f-v1.png. Create spring replacement of exactly this SAME tree. Change only foliage and fruit to muted ivory-white blossom clusters with very faint pink accents and sparse young olive-green leaves. Preserve each existing crown lobe position and silhouette. Broad simple paint shapes, no tiny speckle noise. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:08:20.730Z",
+    "rootRegistrationShiftX": -2,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_plum_f_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        35,
+        380,
+        1229,
+        1244
+      ],
+      "targetBounds": [
+        8,
+        77,
+        247,
+        247
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 141,
+      "anchorY": 246,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_plum_f_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_plum_f-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-85b45ca8-9956-4dcf-bbc0-39efa4081869.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_plum_f-v1.png. Create winter replacement of exactly this SAME tree. Remove ALL foliage and fruit and reveal sparse bare warm grey-brown branches; branch tips follow original canopy lobe envelope. Each old leaf clump becomes an OPEN branch fan, never solid brown foliage. No snow. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:09:04.788Z",
+    "rootRegistrationShiftX": -3,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_plum_f_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        47,
+        394,
+        1217,
+        1239
+      ],
+      "targetBounds": [
+        8,
+        77,
+        247,
+        247
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 141,
+      "anchorY": 246,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_plum_j_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_plum_j-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-7964fc96-c0b0-4faf-87f2-86cdb5baf512.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_plum_j-v1.png. Create spring replacement of exactly this SAME tree. Change only foliage and fruit to muted ivory-white blossom clusters with very faint pink accents and sparse young olive-green leaves. Preserve each existing crown lobe position and silhouette. Broad simple paint shapes, no tiny speckle noise. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:09:51.394Z",
+    "rootRegistrationShiftX": 1,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_plum_j_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        60,
+        253,
+        1223,
+        1227
+      ],
+      "targetBounds": [
+        12,
+        51,
+        242,
+        243
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 242,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_plum_j_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_plum_j-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-e4fb9e0b-31bb-48f5-9ff3-5f5cac89e017.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached project orchard_plum_j-v1.png. Create winter replacement of exactly this SAME tree. Remove ALL foliage and fruit and reveal sparse bare warm grey-brown branches; branch tips follow original canopy lobe envelope. Each old leaf clump becomes an OPEN branch fan, never solid brown foliage. No snow. Lock original canvas framing, empty margins, root contact point, trunk silhouette, branch joints, asymmetry, original canopy envelope landmarks and 2:1 isometric view. Do not redesign, move, enlarge or recenter tree. Same restrained hand-painted Southern England 1300–1450 city-builder style, muted natural colors and soft top-left light. True transparent RGBA background. No ground disk, added shadow, text, frame or other objects. Single tree sprite only.",
+    "generatedAt": "2026-09-26T00:10:34.308Z",
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_plum_j_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        60,
+        260,
+        1223,
+        1220
+      ],
+      "targetBounds": [
+        12,
+        51,
+        242,
+        243
+      ],
+      "canvas": [
+        256,
+        256
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 256,
+      "height": 256,
+      "anchorX": 128,
+      "anchorY": 242,
+      "displayWidth": 43
+    }
+  },
+  {
+    "id": "orchard/orchard_tree_spring-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_original_phase16.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-8928093e-0fad-4b63-9ef9-1f8628000957.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached orchard_original_phase16.png. Make the spring seasonal replacement of this EXACT small, broad, sparse orchard tree. Replace foliage and tiny fruit with muted ivory blossom clusters, a few very pale pink accents and sparse young olive leaves. Do not thicken fine branches or trunk; original is a small open wide tree. Exact original canvas aspect113:80, original root point at(56.5,74.4) within113x80 canvas, branch architecture and asymmetric canopy envelope must remain identical. Same old game sprite's coarse muted hand-painted style; no high-detail realism. Original root and trunk thin, preserve this. Truly transparent background. No shadow, ground disk, text or frame. One tree only.",
+    "generatedAt": "2026-09-26T00:11:28.481Z",
+    "rootRegistrationShiftX": 1,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_tree_spring-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        0,
+        0,
+        1489,
+        1048
+      ],
+      "targetBounds": [
+        0,
+        0,
+        112,
+        79
+      ],
+      "canvas": [
+        113,
+        80
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 113,
+      "height": 80,
+      "anchorX": 56.5,
+      "anchorY": 74.4,
+      "displayWidth": 40
+    }
+  },
+  {
+    "id": "orchard/orchard_tree_winter-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_original_phase16.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-6654f60c-1389-407a-a9d1-3ba69a22d1d0.png",
+    "prompt": "Use case: lighting-weather. Edit target: attached orchard_original_phase16.png. Make the winter seasonal replacement of this EXACT small, broad, sparse orchard tree. Remove all foliage and fruit, leave bare fine twig fans and original slender trunk. Warm grey-brown wood only. No red buds, no snow, no added thick branches. Exact original canvas aspect113:80, original root point at(56.5,74.4) within113x80 canvas, branch architecture and asymmetric canopy envelope must remain identical. Same old game sprite's coarse muted hand-painted style; no high-detail realism. Original root and trunk thin, preserve this. Truly transparent background. No shadow, ground disk, text or frame. One tree only.",
+    "generatedAt": "2026-09-26T00:12:06.092Z",
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/orchard/orchard_tree_winter-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        26,
+        11,
+        1465,
+        1040
+      ],
+      "targetBounds": [
+        0,
+        0,
+        112,
+        79
+      ],
+      "canvas": [
+        113,
+        80
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.",
+    "runtimeContract": {
+      "width": 113,
+      "height": 80,
+      "anchorX": 56.5,
+      "anchorY": 74.4,
+      "displayWidth": 40
+    }
+  },
+  {
+    "id": "zones/orchard_spring_petals-v1",
+    "referencePath": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/orchard_floor_a-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-967d-7f20-8ad5-b7dc0e5e1f93/exec-c948d0e3-cb01-492f-8ca6-4f068e18d464.png",
+    "prompt": "Use case: compositing. Reference image is ONLY palette and ground-style reference from the project, not a background to reproduce. Create one transparent orchard spring fallen-petals decal,96x48 final canvas, 2:1 isometric ground-plane footprint. A modest sparse scatter of ivory apple/pear blossom petals with very faint blush-pink accents, in 4 or5 broad simple little clusters readable after shrinking. Muted off-white, not glowing white. Irregular horizontal oval distribution, substantial empty transparent gaps, no perfect flowers, no grass, no soil, no leaves, no tree, no ground disk, no shadow. Preserve8px clear transparent margin all sides. Match restrained painted medieval Southern England city-builder art. Truly transparent RGBA background. No text or frame. One decal only.",
+    "generatedAt": "2026-09-26T00:14:07.023Z",
+    "rootRegistrationShiftX": 0,
+    "outputPath": "/tmp/astra-wave15-candidates-20260926/zones/orchard_spring_petals-v1.png",
+    "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+    "registration": {
+      "sourceBounds": [
+        142,
+        251,
+        1633,
+        642
+      ],
+      "targetBounds": [
+        8,
+        8,
+        87,
+        39
+      ],
+      "canvas": [
+        96,
+        48
+      ]
+    },
+    "status": "candidate",
+    "tool": "image_gen built-in native edit",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Sparse muted ivory/blush petals on transparent ground decal, eight-pixel content margin, readable broad clusters."
+  }
+]

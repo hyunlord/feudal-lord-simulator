@@ -1,0 +1,18 @@
+{
+  "id": "P14_old",
+  "age": 70,
+  "prompt": "Use case: identity-preserve. Paint this EXACT WOMAN at age70, substantially elderly and recognizably her. Preserve her distinctive convex nose, long narrow lower face and small chin, eye spacing, thin lips, visible ear anatomy, slight asymmetries. Keep precisely the same left-facing3/4 orientation, costume, cream linen veil, brooch/merchant detail and muted red dress. Same framing grey-brown flat background upperleft light and painterly natural realism. Strong natural whole-face aging: clearly silver-white hair at forehead/temples, deep set eyes with drooping upperlids, lower cheeks sagging gently, fine irregular age spots, soft jowls and older neck with loose skin; less fat in temples. At96pixels should immediately read an elderly woman aged65-75, NOT a middle-aged50yearold. Maintain bone/nose/eye identity; no nose redesign. No wrinkle overlay effect, no zigzag drawn lines, no caricature. One coherent finished opaque square painting, no text/frame/panels, no mirroring.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-6b8b1cc3-fc6f-46cd-a775-50ee0fd511ea.png",
+  "references": [
+    "/tmp/astra-portrait-pivot-work/deliverable/portraits/P14.png"
+  ],
+  "method": "native_imagegen_identity_edit",
+  "revision": 2,
+  "metadata_overrides": {
+    "hair_color": "silver white"
+  },
+  "packaged_source": "provenance/raw/P14_old.png",
+  "packaged_references": [
+    "provenance/references/837bc37f4bfa-P14.png"
+  ]
+}

@@ -62,8 +62,6 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
       return { type: "set_wall_construction_priority", priority: action.priority };
     case "paint_zone":
       return { type: "zone_paint", kind: action.zone, stroke: action.stroke };
-    case "erase_zone":
-      return { type: "zone_erase", stroke: action.stroke };
     case "demolish_house":
       return { type: "demolish_house", buildingId: action.buildingId };
     case "rebuild_house":

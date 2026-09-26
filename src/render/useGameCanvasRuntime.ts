@@ -25,6 +25,8 @@ import { drawMapCursor } from "./mapCursor";
 import { INTENT_ORDER } from "../input/intentBus";
 import { platformServices } from "../platform/platform";
 import { preloadVisibilityArt } from "./visibilityArtManifest";
+import { preloadWave7Art } from "./wave7Art";
+import { preloadWave11Art } from "./wave11Art";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
 // Game canvas runtime: frame loop, camera, and input. Input goes DOM event -> translator (src/input) -> intent bus
@@ -62,6 +64,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     void preloadGameArt();
     // F0-V: the visibility art and the canvas icon sheets load with the rest (a paused first frame then has them).
     preloadVisibilityArt();
+    preloadWave7Art();
+    preloadWave11Art();
     preloadCanvasIcons();
 
     const refs = createCanvasMutableRefs(initialCamera(canvas, stateRef.current));

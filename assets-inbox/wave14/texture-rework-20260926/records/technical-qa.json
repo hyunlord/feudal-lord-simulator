@@ -1,0 +1,59 @@
+{
+  "originalAssetsUnchanged": 71,
+  "assets": 4,
+  "proofs": 2,
+  "checks": [
+    {
+      "id": "shield_surface_texture_multiply",
+      "file": "assets/shield_surface_texture_multiply.png",
+      "width": 256,
+      "height": 256,
+      "channels": 4,
+      "meanAlpha": 1,
+      "visiblePixels": 65536,
+      "grayMin": 75,
+      "grayMax": 251,
+      "nongrayPixels": 0,
+      "sha256": "8cf85aef25cec836ea5b4540c1cf4414217c223de3d7c8e4d3e01de536ea0768"
+    },
+    {
+      "id": "shield_surface_texture_screen",
+      "file": "assets/shield_surface_texture_screen.png",
+      "width": 256,
+      "height": 256,
+      "channels": 4,
+      "meanAlpha": 1,
+      "visiblePixels": 65536,
+      "grayMin": 0,
+      "grayMax": 186,
+      "nongrayPixels": 0,
+      "sha256": "f12c3e763144638b92bc47ab4fcbbcaeeb3de70eac09f694f67a6485101ff344"
+    },
+    {
+      "id": "merchant_ink_stamp_texture",
+      "file": "assets/merchant/merchant_ink_stamp_texture.png",
+      "width": 128,
+      "height": 128,
+      "channels": 4,
+      "meanAlpha": 1,
+      "visiblePixels": 16384,
+      "grayMin": 0,
+      "grayMax": 255,
+      "nongrayPixels": 0,
+      "sha256": "742abad9d68241ec33db4e1cbbecefd65ca7aa8d600799e7c6a6773fee836f53"
+    },
+    {
+      "id": "merchant_carved_texture",
+      "file": "assets/merchant/merchant_carved_texture.png",
+      "width": 128,
+      "height": 128,
+      "channels": 4,
+      "meanAlpha": 1,
+      "visiblePixels": 16384,
+      "grayMin": 33,
+      "grayMax": 191,
+      "nongrayPixels": 0,
+      "sha256": "11ca3be6b738a98e358103b0f7502e8f795a532937ef11e9f9e2106867d4f339"
+    }
+  ]
+}

@@ -104,7 +104,8 @@ export function historicalFacilitySpriteRect(building: Building) {
   const center = tileToScreen(building.tx + (size.width - 1) / 2, building.ty + (size.height - 1) / 2);
   const height = meta.displayWidth * meta.source.height / meta.source.width;
   return { x: center.sx - meta.displayWidth / 2,
-    y: center.sy + TILE_H / 2 - height,
+    // R0-2: the art's ground on the footprint's front vertex (a 2 x 2's is a whole tile row below a 1 x 1's).
+    y: center.sy + (size.width + size.height) * TILE_H / 4 - height,
     width: meta.displayWidth, height };
 }
 

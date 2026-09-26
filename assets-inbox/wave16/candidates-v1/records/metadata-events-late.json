@@ -1,0 +1,211 @@
+[
+  {
+    "id": "event_bad_harvest",
+    "file": "assets/events/event_bad_harvest.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "빈 수레에 마른 밀 묶음 몇 개만 싣는 흉년",
+    "characters": "농부 3명",
+    "historyNotes": "1300–1318 잉글랜드 남부 시장도시. 소박한 양모·리넨, 초가·목골조·회칠 및 낮은 돌 기단. 문 표식·홉·관·흑사병·원색·주택 굴뚝·푸른 유리·글자 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Create one finished landscape 16:9 game event illustration, full-bleed with no framing, preferably 1536x864 or 1920x1080, for a 960x540 card. Hand-painted muted gouache/oil illustration matching the attached project's village keyart: visible fine painterly texture, believable medieval faces and anatomy, subdued ochres, browns, moss greens, grey skies; not photorealistic, not vector, not cartoon, not cinematic fantasy. Southern English market town circa 1300–1318. Keep scene legible at thumbnail. Attached title village is palette/architecture reference, P05/P13 face painting references only. Absolutely NO writing, letters, numbers, pseudo-writing, labels, border, modern objects, painted marks or X on doors, hops, coffins, plague, primary saturated colors, chimney stacks on homes, blue reflective glass. Blank parchment is blank, not filled with squiggles. Autumn harvest failure. In foreground three exhausted rural adults in coarse undyed wool and linen slowly load ONLY three small thin WHEAT sheaves into a nearly empty low medieval wooden two-wheel farm cart. Large bare cart bed visibly dwarfs the meagre harvest. One woman bends with a thin bundle, man rests on cart side, older farmer holds last sheaf. Sparse flattened wheat stubble, muddy poor field, modest thatched village in distance. No rice, no mound of harvest, no celebratory abundance.",
+        "rawFile": "raw/events-late/event_bad_harvest.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "operation": "Sharp Lanczos resize cover to 960x540; preserve aspect ratio, no stretch; ensure RGBA",
+      "selectedRaw": "raw/events-late/event_bad_harvest.png"
+    },
+    "qa": {
+      "reviewed": true,
+      "readability": "pass at 480x270; primary action clearly distinguishable without text",
+      "history": "visible forbidden elements absent",
+      "limitations": null
+    }
+  },
+  {
+    "id": "event_market_petition",
+    "file": "assets/events/event_market_petition.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "영주관 밖에서 모자를 벗어 손에 들고 빈 청원서를 내미는 상인들",
+    "characters": "청원 상인 3명·청지기·문지기",
+    "historyNotes": "1300–1318 잉글랜드 남부 시장도시. 소박한 양모·리넨, 초가·목골조·회칠 및 낮은 돌 기단. 문 표식·홉·관·흑사병·원색·주택 굴뚝·푸른 유리·글자 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Create one finished landscape 16:9 game event illustration, full-bleed with no framing, preferably 1536x864 or 1920x1080, for a 960x540 card. Hand-painted muted gouache/oil illustration matching the attached project's village keyart: visible fine painterly texture, believable medieval faces and anatomy, subdued ochres, browns, moss greens, grey skies; not photorealistic, not vector, not cartoon, not cinematic fantasy. Southern English market town circa 1300–1318. Keep scene legible at thumbnail. Attached title village is palette/architecture reference, P05/P13 face painting references only. Absolutely NO writing, letters, numbers, pseudo-writing, labels, border, modern objects, painted marks or X on doors, hops, coffins, plague, primary saturated colors, chimney stacks on homes, blue reflective glass. Blank parchment is blank, not filled with squiggles. Merchants petition their lord. Outside the plain heavy oak doorway of a modest timber-framed lord's hall, three earnest merchants stand respectfully with their soft caps visibly held IN THEIR HANDS. Foremost merchant extends one blank unrolled cream parchment toward a steward standing on one low stone step. Subdued brown and faded claret long wool tunics, attentive restrained expressions. View establishes hall exterior and humble supplicants, not a market speech. No crown, no lavish palace, no writing on parchment or building.",
+        "rawFile": "raw/events-late/event_market_petition.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen targeted edit",
+        "prompt": "Precise correction of attached existing historical painting. Preserve the entire composition, all faces, clothing, hands, blank parchment, landscape, palette, painterly texture, canvas and perspective. REMOVE the hats from heads of ONLY TWO supplicants: the LEFTMOST red-clad merchant (currently wearing cream cap on head) and the CENTER-RIGHT claret merchant presenting parchment (currently wearing navy cap on head). Both are already holding their respective caps in their hands, which MUST remain unchanged. Reveal natural brown hair on both heads instead. The middle bearded merchant is already bareheaded and remains unchanged. All three supplicant merchants thus bareheaded and holding caps. Keep steward and guard headwear on far right unchanged. No added writing or symbols. Landscape16:9.",
+        "rawFile": "raw/events-late/event_market_petition-v2.png",
+        "referenceImages": [
+          "raw/events-late/event_market_petition-edit-input.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "operation": "Sharp Lanczos resize cover to 960x540; preserve aspect ratio, no stretch; ensure RGBA",
+      "selectedRaw": "raw/events-late/event_market_petition-v2.png"
+    },
+    "qa": {
+      "reviewed": true,
+      "readability": "pass at 480x270; primary action clearly distinguishable without text",
+      "history": "visible forbidden elements absent",
+      "limitations": null,
+      "correction": "Removed duplicate worn caps from two petitioners; all three now bareheaded holding caps."
+    }
+  },
+  {
+    "id": "event_market_charter",
+    "file": "assets/events/event_market_charter.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "시장 십자가 앞 빈 특허 문서를 낭독하는 관리와 군중",
+    "characters": "관리·모인 주민들",
+    "historyNotes": "1300–1318 잉글랜드 남부 시장도시. 소박한 양모·리넨, 초가·목골조·회칠 및 낮은 돌 기단. 문 표식·홉·관·흑사병·원색·주택 굴뚝·푸른 유리·글자 없음. 특허를 선언하는 장소는 석조 시장 십자가.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Create one finished landscape 16:9 game event illustration, full-bleed with no framing, preferably 1536x864 or 1920x1080, for a 960x540 card. Hand-painted muted gouache/oil illustration matching the attached project's village keyart: visible fine painterly texture, believable medieval faces and anatomy, subdued ochres, browns, moss greens, grey skies; not photorealistic, not vector, not cartoon, not cinematic fantasy. Southern English market town circa 1300–1318. Keep scene legible at thumbnail. Attached title village is palette/architecture reference, P05/P13 face painting references only. Absolutely NO writing, letters, numbers, pseudo-writing, labels, border, modern objects, painted marks or X on doors, hops, coffins, plague, primary saturated colors, chimney stacks on homes, blue reflective glass. Blank parchment is blank, not filled with squiggles. Public proclamation of a market charter. At a weathered STONE MARKET CROSS on a stepped stone base in the town square, one official in subdued russet wool stands above an assembled semicircle of townspeople and reads from a wide blank cream parchment. The tall carved stone cross is fully recognisable behind him, crowd faces toward him, townspeople with caps/hoods and work clothes. Small modest timber-framed shops around square. Distinct public ceremony, hopeful attentive crowd. No heraldry banners, no letters on parchment, no pulpit, no lord's doorway.",
+        "rawFile": "raw/events-late/event_market_charter.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "operation": "Sharp Lanczos resize cover to 960x540; preserve aspect ratio, no stretch; ensure RGBA",
+      "selectedRaw": "raw/events-late/event_market_charter.png"
+    },
+    "qa": {
+      "reviewed": true,
+      "readability": "pass at 480x270; primary action clearly distinguishable without text",
+      "history": "visible forbidden elements absent",
+      "limitations": null
+    }
+  },
+  {
+    "id": "event_palisade",
+    "file": "assets/events/event_palisade.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "흙 도랑에 거친 목책 말뚝을 함께 세우는 주민들",
+    "characters": "목책 작업 인부들",
+    "historyNotes": "1300–1318 잉글랜드 남부 시장도시. 소박한 양모·리넨, 초가·목골조·회칠 및 낮은 돌 기단. 문 표식·홉·관·흑사병·원색·주택 굴뚝·푸른 유리·글자 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Create one finished landscape 16:9 game event illustration, full-bleed with no framing, preferably 1536x864 or 1920x1080, for a 960x540 card. Hand-painted muted gouache/oil illustration matching the attached project's village keyart: visible fine painterly texture, believable medieval faces and anatomy, subdued ochres, browns, moss greens, grey skies; not photorealistic, not vector, not cartoon, not cinematic fantasy. Southern English market town circa 1300–1318. Keep scene legible at thumbnail. Attached title village is palette/architecture reference, P05/P13 face painting references only. Absolutely NO writing, letters, numbers, pseudo-writing, labels, border, modern objects, painted marks or X on doors, hops, coffins, plague, primary saturated colors, chimney stacks on homes, blue reflective glass. Blank parchment is blank, not filled with squiggles. Communal construction of a timber palisade. Several medieval workers raise one long rough sharpened oak stake upright into an open narrow earth trench, using rope and coordinated hands. A short completed line of pointed oak stakes recedes into distance, another labourer tamps earth with wooden tool. Show teamwork and upright stake clearly, rough bark, mud, warm grey daylight, modest thatch village behind. No stone castle, no modern helmets, machinery or metal scaffold. Faces natural and restrained.",
+        "rawFile": "raw/events-late/event_palisade.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "operation": "Sharp Lanczos resize cover to 960x540; preserve aspect ratio, no stretch; ensure RGBA",
+      "selectedRaw": "raw/events-late/event_palisade.png"
+    },
+    "qa": {
+      "reviewed": true,
+      "readability": "pass at 480x270; primary action clearly distinguishable without text",
+      "history": "visible forbidden elements absent",
+      "limitations": null
+    }
+  },
+  {
+    "id": "event_market_town",
+    "file": "assets/events/event_market_town.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "목책 안에서 빵·곡물·천을 거래하는 붐비는 장날",
+    "characters": "상인·주민·짐 나르는 사람들",
+    "historyNotes": "1300–1318 잉글랜드 남부 시장도시. 소박한 양모·리넨, 초가·목골조·회칠 및 낮은 돌 기단. 문 표식·홉·관·흑사병·원색·주택 굴뚝·푸른 유리·글자 없음. ",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Create one finished landscape 16:9 game event illustration, full-bleed with no framing, preferably 1536x864 or 1920x1080, for a 960x540 card. Hand-painted muted gouache/oil illustration matching the attached project's village keyart: visible fine painterly texture, believable medieval faces and anatomy, subdued ochres, browns, moss greens, grey skies; not photorealistic, not vector, not cartoon, not cinematic fantasy. Southern English market town circa 1300–1318. Keep scene legible at thumbnail. Attached title village is palette/architecture reference, P05/P13 face painting references only. Absolutely NO writing, letters, numbers, pseudo-writing, labels, border, modern objects, painted marks or X on doors, hops, coffins, plague, primary saturated colors, chimney stacks on homes, blue reflective glass. Blank parchment is blank, not filled with squiggles. A thriving weekly market in a newly established small English market town. Full lively but readable street-level wide scene: a few canvas awnings and oak stalls with baskets of bread, grain sacks, cloth rolls; townspeople bargaining, walking with baskets; one cart, mostly adults in muted wool/linen. A distinct continuous timber PALISADE with timber gate visible across mid-background behind the market. Thatch and warm limewashed timber-frame buildings. Gentle sunlight after rain, bustle and civic optimism without festival banners. No written signs, no hops, no chimneys, no modern produce or vivid colors.",
+        "rawFile": "raw/events-late/event_market_town.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "operation": "Sharp Lanczos resize cover to 960x540; preserve aspect ratio, no stretch; ensure RGBA",
+      "selectedRaw": "raw/events-late/event_market_town.png"
+    },
+    "qa": {
+      "reviewed": true,
+      "readability": "pass at 480x270; primary action clearly distinguishable without text",
+      "history": "visible forbidden elements absent",
+      "limitations": "장날은 읽히며 법적 선포의 정확한 시점은 그림만으로 전달되지 않음."
+    }
+  },
+  {
+    "id": "event_famine_omen",
+    "file": "assets/events/event_famine_omen.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "계속되는 비와 물에 잠긴 밀밭 옆 교회 앞 기도 행렬",
+    "characters": "성직자·행렬 주민들",
+    "historyNotes": "1300–1318 잉글랜드 남부 시장도시. 소박한 양모·리넨, 초가·목골조·회칠 및 낮은 돌 기단. 문 표식·홉·관·흑사병·원색·주택 굴뚝·푸른 유리·글자 없음. 기근의 비·흉작을 표현하며 흑사병 장면이 아님.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Create one finished landscape 16:9 game event illustration, full-bleed with no framing, preferably 1536x864 or 1920x1080, for a 960x540 card. Hand-painted muted gouache/oil illustration matching the attached project's village keyart: visible fine painterly texture, believable medieval faces and anatomy, subdued ochres, browns, moss greens, grey skies; not photorealistic, not vector, not cartoon, not cinematic fantasy. Southern English market town circa 1300–1318. Keep scene legible at thumbnail. Attached title village is palette/architecture reference, P05/P13 face painting references only. Absolutely NO writing, letters, numbers, pseudo-writing, labels, border, modern objects, painted marks or X on doors, hops, coffins, plague, primary saturated colors, chimney stacks on homes, blue reflective glass. Blank parchment is blank, not filled with squiggles. Omen of famine, second persistently wet summer. Under clearly falling long rain and a heavy grey sky, a solemn prayer procession emerges in front of a small stone parish church, clergy in simple off-white vestments and townspeople in soaked muted cloaks. A simple wooden processional cross leads them. Foreground edge shows waterlogged flattened WHEAT field and puddles, distant low fields submerged. Faces anxious, tired, restrained. This is weather-driven food anxiety, NOT plague: no dead people, no coffins, no illness marks, no masks, no flagellants. Church architecture early14th-century English modest parish, no grand cathedral.",
+        "rawFile": "raw/events-late/event_famine_omen.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "operation": "Sharp Lanczos resize cover to 960x540; preserve aspect ratio, no stretch; ensure RGBA",
+      "selectedRaw": "raw/events-late/event_famine_omen.png"
+    },
+    "qa": {
+      "reviewed": true,
+      "readability": "pass at 480x270; primary action clearly distinguishable without text",
+      "history": "visible forbidden elements absent",
+      "limitations": "그림만으로 두 번째 해라는 시간 순서는 알 수 없음. 지속되는 비와 기도·흉작은 읽힘."
+    }
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "captions": "none: scene-readability review without labels or numbers",
+  "events": {
+    "file": "proofs/01-event-cards.png",
+    "order": [
+      "event_first_winter",
+      "event_hungry_gap",
+      "event_fire_warning",
+      "event_fire",
+      "event_fire_aftermath",
+      "event_wet_summer",
+      "event_bad_harvest",
+      "event_market_petition",
+      "event_market_charter",
+      "event_palisade",
+      "event_market_town",
+      "event_famine_omen"
+    ],
+    "layout": "3columns4rows",
+    "displayImage": [
+      480,
+      270
+    ],
+    "frame": "references/frame_objective_normal.png"
+  },
+  "decisions": {
+    "file": "proofs/02-decision-modals.png",
+    "order": [
+      "decision_famine_intro",
+      "decision_relief",
+      "decision_price_control",
+      "decision_laissez_faire",
+      "decision_speculation"
+    ],
+    "layout": "3top2bottom",
+    "displayImage": [
+      400,
+      300
+    ],
+    "blankChoiceArea": true,
+    "frame": "references/frame_modal.png"
+  },
+  "chronicle": {
+    "file": "proofs/03-chronicle-pages.png",
+    "order": [
+      "chronicle_settlement",
+      "chronicle_first_plough",
+      "chronicle_first_winter",
+      "chronicle_first_mill",
+      "chronicle_first_fire",
+      "chronicle_rebuilding",
+      "chronicle_bad_harvest",
+      "chronicle_market_day",
+      "chronicle_petition",
+      "chronicle_charter",
+      "chronicle_palisade",
+      "chronicle_market_town",
+      "chronicle_church_dedication",
+      "chronicle_famine",
+      "chronicle_relief",
+      "chronicle_survival_spring"
+    ],
+    "layout": "4pages in2x2; eachpage4images in2x2",
+    "displayImage": [
+      216,
+      216
+    ],
+    "frame": "references/frame_chronicle_page.png"
+  }
+}

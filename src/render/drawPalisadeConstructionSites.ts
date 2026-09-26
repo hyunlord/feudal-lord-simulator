@@ -1,4 +1,6 @@
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
+import { drawKitCornerTowers } from "./constructionKits";
+import { isStoneWallConstructionSite } from "../economy/constructionSiteAccessors";
 import {
   constructionOnSiteLabel,
   constructionStage,
@@ -58,6 +60,8 @@ export function drawPalisadeConstructionSite(
     style: palisadeRunStyle(input.site),
     zoom: input.zoom,
   });
+  // INSTALL-11 defense kit: a stone wall site raises its corner towers stage by stage.
+  if (isStoneWallConstructionSite(input.site)) drawKitCornerTowers(context, input.site.path, ["marked_plot", "foundation", "frame", "roof"].indexOf(constructionStage(input.site)));
 }
 
 function palisadeRunStyle(site: WallConstructionSite): PalisadeRunStyle {

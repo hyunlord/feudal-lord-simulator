@@ -1,9 +1,25 @@
 # 현재 상태
 
-갱신: 2026-09-26(F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
+- **F0-B 흐름 뼈대 2 — 사건 뼈대: 관문 ①②④⑤ 통과, ③ 가드레일 4/5(seed 3 작은 성벽 교착, 결정 EV8 알려진 정지), 사용자 지시로 본선 병합**(Claude Code, 엔진 세션, 렌더는 `buildingVisualState` +2줄): [사건 명세](design/flow-events.md) EV-1~EV-9, [보고서](verification/f0b-events/REPORT.md), 결정 EV1~EV7.
+  - 사건 정의 데이터(`EventDef`)와 seed 파생 일정·날씨, 예고 사다리(소문 → 징후 → 도래 → 회복, `eventForecast`), 저장 v13(`events`, 불탄 집, 재건 공사장).
+  - 첫 화재(1302 ± 1 마른 여름 보장, 밀도·우물 2칸), 이후 화재(마른 여름 15 %), 맞닿은 초가로 번짐·빈 칸과 우물에서 멈춤·우물물 긷는 가구가 끔, 불탄 집은 2단계부터 재건.
+  - 첫 흉년 리허설(1303 ± 1 젖은 여름, 수확 × 0.7, 빵·밀 × 1.5), 젖은 여름 × 0.95, 결산 `event_*` 줄과 손실.
+  - 관문 ② 첫 화재 5/5 · 흉년 5/5 · 사건 손실 대비 7 대 무대비 22. 관문 ③ seed 1·2·4·5 통과, seed 3은 1310년 성벽이 132칸(길 58)을 둘러 13필지에서 교착(LB-12 경우, F0-A 2회차와 같은 정지). 기준선은 `baseline-322d36f` 유지. 깨끗한 클론 `21be05d` 2,963/2,963.
+- **INSTALL-11 건물 계열별 공사 키트 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 렌더·표현 워커·에셋·대장·테스트·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/install11/REPORT.md), [명세](design/construction-kits.md) IK-1~IK-4, 결정 IN11-D1~D3.
+  - 55장 설치. 목조 소·중, 석조 중·대, 교회·성채, 석벽 모퉁이 탑 키트가 단계마다 완성 그림의 캔버스에 선다.
+  - 기중기·홍예틀·모르타르·들보 소품, 목수·석공 몸과 톱·자귀·흙손, 철거는 키트 역순. DGX p95 96~102 %.
+- **INSTALL-7 Wave 7 — 밀→빵→집 사슬·겨울·세계 신호: 관문 ①~⑦ 통과, 본선 병합**(Claude Code, 렌더·표현 워커·에셋·대장·테스트·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/install7/REPORT.md), [명세](design/bread-chain-winter.md) IN7-1~IN7-8, 결정 IN7-D1~D5.
+  - 77장 설치, 수레 적재물 6종 × 2축, 연기·먼지 4프레임 시트, 더미 4종 × 3단, 작업 소품 5종 + 낫.
+  - 지붕 눈(L0~L4)·서리·낙엽·마른 풀, 신호 S1·S2·S6·S9·S12·빈집, 지붕틀 크기 4등급.
+  - 사슬 6/6 관찰, DGX p95 98~102 %.
+- **R0 사용자 판정 두 가지 — 본선 병합**(Claude Code, 렌더·테스트·스크립트·문서만, 엔진 0줄): [보고서](verification/r0-render-fixes/REPORT.md), 결정 R0-1·R0-2.
+  - 세계 신호 S2·S4·S8은 조건이 배급 한 주기(250틱) 이상 이어질 때만 뜬다. 새 게임 첫 화면의 연기 없는 집 고리는 없어졌다.
+  - 완성 그림 vs 발판 자동 검사 58장이 본선 32장 어긋남에서 0장이 됐다. 창고·곡창은 발판을 채우고, 시설·쌍집·우물·벌목장·헛간은 뜨지 않는다.
+- **REMOTE-1 DGX 원격 실행기 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 스크립트·문서만, 게임 코드 0줄): `scripts/remote/run.sh`·`npm run remote:{test,guardrail,browser,perf,clone-check,setup}`. 작업 트리를 DGX `~/fls-runs/<label>-<sha>`로 보내 `fls-runs.slice`(48GB·12코어·nice 10) 안에서 돌리고 결과만 가져온다. DGX 전체 회귀 2,944/2,944, Part7 10/10, 깨끗한 클론 `6c5088f` 통과. 성능 관문은 DGX 기준선 `perf/baseline-dgx-1326765.json`과만 비교. [사용법](REMOTE_RUNS.md), [보고서](verification/remote1-dgx-runner/REPORT.md), AGENTS.md "원격 실행" 규칙.
 - **F0-V 가시성 뼈대 1 — 건설이 읽히게: 관문 ①~⑧ 통과, ⑨ 사용자 10분 판정 대기, 본선 병합**(Claude Code, 렌더·UI·소리·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population 0줄): [가시성 명세](design/visible-construction.md) VC-1~VC-8, [보고서](verification/f0v-visible-construction/REPORT.md), 결정 F0V-1~F0V-6.
   - 공사장 팻말: 완성 높이 기준점 하나에 이름·4칸 bar(25/55/85 %)·모자란 자재 또는 달력 도착점(앞당겨지기만)·막힘 탭(길·자재·일꾼)이 붙는다. 줌아웃에서는 같은 사유를 `×N`으로 묶는다.
   - 공사장 그림: 목재·석재 더미 1~3단, 표지와 건물 아이콘, 완성 유령 22 %, 200 ms 크로스페이드와 먼지, 1.2 s 완공(5배속은 먼지·소리만), 완공 토스트 묶음, 선택 공사장의 워커·수레꾼 연결선.
@@ -25,7 +41,7 @@
   - Astra P0 43장(초판 29 + 재작업 14, `caBX` 제거)과 파생 54장(아이콘 24/32/48/64, 커서 32, 초상 96)을 설치했다. 대장 97행, 받은 편지함 `ui-p0`(초판 12 superseded · 파일럿 12).
   - 9-slice 틀·버튼·탭·chip(상태는 코드), 아이콘 57, 커서 6, 청지기 3표정(대사 `tone`), Noto Sans/Serif KR(OFL)을 입혔다. 🔒 ▲ ◆ ✓ · "청" 등 글리프를 모두 그림으로 바꿨다.
   - 재생 감사 잔재 0(본선 1,027), 터치 44 px·12 px 0건, 9-slice 모서리 18/18 동일, p95 48~102%, 깨끗한 클론 `5584cb3` 2,900/2,900. 아이콘 24 px 실루엣은 3쌍이 IoU 0.85를 넘어 Astra 후보로 넘겼다.
-- **INBOX-1 Astra 산출물 전량 보관 — 본선 커밋**(Claude Code, inbox·docs만): `/tmp/astra-*.zip` 30개와 `output/astra-*` 13개를 `assets-inbox/<wave>/<batch>/{assets,proofs,records}`에 받은 바이트 그대로 보관, 장부 [`assets-inbox/INBOX_LEDGER.csv`](../assets-inbox/INBOX_LEDGER.csv) 1,380행(= inbox PNG 1,380장), 구조·상태 뜻 [`ASSET_INBOX.md`](ASSET_INBOX.md). `ui-p0/`는 UX-2 브랜치와 같은 경로·같은 바이트. `sources/`·`references/`(약 826MB)는 보관하지 않음. Wave 12·Wave 10 재작업·Wave 3 재작업은 아직 없음. 2차(09시): 판정 4건 반영(Wave 9 33 확정·UI 파일럿 icon_status_sheet superseded·Wave 10 pilot-reuse rework_pending·zone-ground-pilot rejected), Wave 13·Wave 3 재작업 수령(장부 1,509행), 원본은 저장소 밖 `~/feudal-lord-analysis/astra-raw/`에 복사. 3차(09시): Wave 12(오버레이 4 confirmed·24 rework_pending), Wave 14(1 rework_pending), Wave 10 v2(v1 재작업 대기분 superseded, 초상 방식 전환으로 v1·v2 레이어 rejected 예정) 수령, 장부 2,217행.
+- **INBOX-1 Astra 산출물 전량 보관 — 본선 커밋**(Claude Code, inbox·docs만): `/tmp/astra-*.zip` 30개와 `output/astra-*` 13개를 `assets-inbox/<wave>/<batch>/{assets,proofs,records}`에 받은 바이트 그대로 보관, 장부 [`assets-inbox/INBOX_LEDGER.csv`](../assets-inbox/INBOX_LEDGER.csv) 1,380행(= inbox PNG 1,380장), 구조·상태 뜻 [`ASSET_INBOX.md`](ASSET_INBOX.md). `ui-p0/`는 UX-2 브랜치와 같은 경로·같은 바이트. `sources/`·`references/`(약 826MB)는 보관하지 않음. Wave 12·Wave 10 재작업·Wave 3 재작업은 아직 없음. 2차(09시): 판정 4건 반영(Wave 9 33 확정·UI 파일럿 icon_status_sheet superseded·Wave 10 pilot-reuse rework_pending·zone-ground-pilot rejected), Wave 13·Wave 3 재작업 수령(장부 1,509행), 원본은 저장소 밖 `~/feudal-lord-analysis/astra-raw/`에 복사. 3차(09시): Wave 12(오버레이 4 confirmed·24 rework_pending), Wave 14(1 rework_pending), Wave 10 v2(v1 재작업 대기분 superseded, 초상 방식 전환으로 v1·v2 레이어 rejected 예정) 수령, 장부 2,217행. 4차(11시): Wave 3·11·12·13·14·15 확정 반영, 질감·오버레이 재작업 수령, 초상 방식 전환으로 Wave 10 레이어 전부 rejected·완성 초상 풀 첫 묶음(`portrait-pool/`) 48장 confirmed, 장부 2,399행.
 
 - **MOVE-1 주민 이동 v0 — 관문 통과, 본선 병합**(Claude Code, 표현 워커, 시뮬레이션 0줄, 렌더는 V2 매핑 표 줄만): [주민 이동 명세](design/resident-movement.md) RM-1~RM-7, [보고서](verification/move1-residents/REPORT.md), 결정 MV1~MV5.
   - 가구 어른이 우물·시장·교회에 걷고, 헛간 일꾼이 들일을 오간다. 시장일 방문객, 교회↔예배당 성직자, 성문 경비가 있다. 모두 상태와 틱에서 파생하며 저장하지 않는다(v11 그대로).
@@ -134,6 +150,8 @@
 이전 종료 이력: **A⁵-1 · `5f38625`**: 비축·창고 포화 교착 수정은 사용자가 수용했다. E1~E4 4/4, 가드레일은 2/5이며 seed 1 실패·seed 2/3 미판정이다. 이 상태를 5/5 통과로 해석하지 않는다. 전체 회귀 2,304/2,304·typecheck·build는 해당 종료 커밋에서 통과했다.
 
 ## 다음 작업
+
+- **BOT-2: 목책 둘레 크기(LB-12) — 필지당 성 안 면적을 넉넉히, 성 안 길 비율 상한.** 작은 성벽 교착이 F0-A 2회차에 이어 F0-B 1회차 seed 3에서 두 번째로 나왔다(결정 EV8). F0-C1 뒤 별도 작업(사용자 지시).
 
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").

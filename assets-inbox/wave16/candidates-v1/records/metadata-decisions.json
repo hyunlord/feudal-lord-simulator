@@ -1,0 +1,202 @@
+[
+  {
+    "id": "decision_famine_intro",
+    "file": "assets/decisions/decision_famine_intro.png",
+    "width": 640,
+    "height": 480,
+    "sceneDescription": "텅 빈 시장 진열대와 빈 그릇을 든 가족. 대기근 도래.",
+    "characters": "빈 그릇을 든 어머니, 아이 둘, 근심하는 주민 둘",
+    "historyNotes": "1300–1318 잉글랜드 남부. 목골조·회칠·초가·평기와, 소박한 양모 옷과 코이프. 문 표식·홉·관·흑사병·원색·현대 물품 없음. 실존 인물 재현 아님.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create one standalone 4:3 landscape hand-painted illustration for a medieval strategy game decision card, entire canvas one scene, no border, no text area. Southern England market town circa 1315 within 1300–1318. Match attached town keyart muted tempera/gouache painterly surfaces, subtle brushwork and believable human faces as in attached portraits (portraits are style only, not obligatory identities). Weathered oak timber framing, warm limewashed infill, low rubble plinths, thatch or muted flat clay rooftiles; humble wool tunics, coifs, hoods in subdued brown, gray, dirty cream, moss green, faded ochre. Natural human proportions, no caricature. NO text, letters, numbers, pseudo-writing, symbols on doors, white door crosses, hops, coffins, plague imagery, bright primary colors, firearms, modern objects, house chimneys, blue glass, fantasy elements, parchment borders or split panels. Avoid crosses even in incidental cloth or door decoration. Composition must remain legible at 320x240. Great famine has arrived: a desolate muddy open-air market with abandoned EMPTY display tables and almost empty grain bowls prominent in foreground. A thin weary family and two townspeople in worn clothes stare at the empty stalls with concern, a mother holds a small empty bowl; restrained realistic faces, not skeletal or grotesque. Gray overcast sky, distant humble houses. The visual focus is absence of food, a market gone quiet. No busy trading, carts of goods or officials.",
+        "rawFile": "raw/decisions/decision_famine_intro.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit this supplied medieval famine market illustration only to remove every house chimney. Specifically remove the stone vertical chimney on the reddish tiled roof near upper right, replacing with uninterrupted sloping roof tiles and matching sky behind. Keep church tower unchanged. Preserve all people, faces, hands, empty market bowls, tables, architecture, lighting, muted painted texture, composition and image aspect ratio. No other change, no text or marks.",
+        "rawFile": "raw/decisions/decision_famine_intro-v2.png",
+        "referenceImages": [
+          "raw/decisions/decision_famine_intro.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "tool": "sharp",
+      "operation": "resize cover centre to 640x480; preserve aspect ratio; ensure RGBA PNG",
+      "selectedRaw": "raw/decisions/decision_famine_intro-v2.png",
+      "contentEdit": "Imagegen v2 removed erroneous house chimney, rejected v1 retained."
+    },
+    "qa": {
+      "selfVisualReview": "pass",
+      "text": "No visible text or numerals",
+      "sceneReadability": "식량 부족은 명확하지만 기근 연도와 원인은 그림만으로 특정할 수 없다.",
+      "history": "No listed prohibited motif observed in selected image",
+      "status": "candidate; user review pending"
+    }
+  },
+  {
+    "id": "decision_relief",
+    "file": "assets/decisions/decision_relief.png",
+    "width": 640,
+    "height": 480,
+    "sceneDescription": "열린 곡창에서 가솔이 기다리는 주민에게 빵을 건넨다.",
+    "characters": "영주 가솔 둘, 어머니와 아이, 기다리는 주민",
+    "historyNotes": "1300–1318 잉글랜드 남부. 목골조·회칠·초가·평기와, 소박한 양모 옷과 코이프. 문 표식·홉·관·흑사병·원색·현대 물품 없음. 실존 인물 재현 아님.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create one standalone 4:3 landscape hand-painted illustration for a medieval strategy game decision card, entire canvas one scene, no border, no text area. Southern England market town circa 1315 within 1300–1318. Match attached town keyart muted tempera/gouache painterly surfaces, subtle brushwork and believable human faces as in attached portraits (portraits are style only, not obligatory identities). Weathered oak timber framing, warm limewashed infill, low rubble plinths, thatch or muted flat clay rooftiles; humble wool tunics, coifs, hoods in subdued brown, gray, dirty cream, moss green, faded ochre. Natural human proportions, no caricature. NO text, letters, numbers, pseudo-writing, symbols on doors, white door crosses, hops, coffins, plague imagery, bright primary colors, firearms, modern objects, house chimneys, blue glass, fantasy elements, parchment borders or split panels. Avoid crosses even in incidental cloth or door decoration. Composition must remain legible at 320x240. Relief: in front of an OPEN granary, a well-kept lord household steward in muted ochre tunic with a plain leather belt and a second household servant distribute clearly recognizable round rustic brown BREAD loaves by hand from a large basket to a waiting poor mother and child. Bread passes between open hands as the focal action. Behind servants open oak doors reveal stored grain sacks, orderly queue of only 3 more townspeople. Gentle daylight. Visually unmistakable food aid, with giver and recipients different clothing quality. No coins, written records, sales counter.",
+        "rawFile": "raw/decisions/decision_relief.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "tool": "sharp",
+      "operation": "resize cover centre to 640x480; preserve aspect ratio; ensure RGBA PNG",
+      "selectedRaw": "raw/decisions/decision_relief.png",
+      "contentEdit": "none"
+    },
+    "qa": {
+      "selfVisualReview": "pass",
+      "text": "No visible text or numerals",
+      "sceneReadability": "식량 구휼은 명확하다. 가솔의 정확한 소속은 문맥이 필요하다.",
+      "history": "No listed prohibited motif observed in selected image",
+      "status": "candidate; user review pending"
+    }
+  },
+  {
+    "id": "decision_price_control",
+    "file": "assets/decisions/decision_price_control.png",
+    "width": 640,
+    "height": 480,
+    "sceneDescription": "관리의 제지 손짓과 빵·저울·동전 앞에서 항의하는 상인.",
+    "characters": "관리, 항의하는 빵 상인, 빈 바구니를 든 구매자",
+    "historyNotes": "1300–1318 잉글랜드 남부. 목골조·회칠·초가·평기와, 소박한 양모 옷과 코이프. 문 표식·홉·관·흑사병·원색·현대 물품 없음. 실존 인물 재현 아님.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create one standalone 4:3 landscape hand-painted illustration for a medieval strategy game decision card, entire canvas one scene, no border, no text area. Southern England market town circa 1315 within 1300–1318. Match attached town keyart muted tempera/gouache painterly surfaces, subtle brushwork and believable human faces as in attached portraits (portraits are style only, not obligatory identities). Weathered oak timber framing, warm limewashed infill, low rubble plinths, thatch or muted flat clay rooftiles; humble wool tunics, coifs, hoods in subdued brown, gray, dirty cream, moss green, faded ochre. Natural human proportions, no caricature. NO text, letters, numbers, pseudo-writing, symbols on doors, white door crosses, hops, coffins, plague imagery, bright primary colors, firearms, modern objects, house chimneys, blue glass, fantasy elements, parchment borders or split panels. Avoid crosses even in incidental cloth or door decoration. Composition must remain legible at 320x240. Market price control: an upright municipal official in clean muted gray-blue wool speaks firmly with raised open palm, his other hand indicating a small group of plain SILVER coins beside bread and a simple beam BALANCE SCALE on a market table. The bread seller opposite visibly disagrees through restrained furrowed brow and spread hands. A buyer with an empty basket waits, watching the dispute. One stall close composition, official physically intervenes in the transaction. No written signs, no documents, no coin inscriptions visible, no flags. The scale and bread and official-versus-seller gestures clearly legible.",
+        "rawFile": "raw/decisions/decision_price_control.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "tool": "sharp",
+      "operation": "resize cover centre to 640x480; preserve aspect ratio; ensure RGBA PNG",
+      "selectedRaw": "raw/decisions/decision_price_control.png",
+      "contentEdit": "none"
+    },
+    "qa": {
+      "selfVisualReview": "pass",
+      "text": "No visible text or numerals",
+      "sceneReadability": "거래에 개입하는 관리와 분쟁은 읽힌다. 가격 상한의 제도적 뜻은 그림만으로 확정할 수 없다.",
+      "history": "No listed prohibited motif observed in selected image",
+      "status": "candidate; user review pending"
+    }
+  },
+  {
+    "id": "decision_laissez_faire",
+    "file": "assets/decisions/decision_laissez_faire.png",
+    "width": 640,
+    "height": 480,
+    "sceneDescription": "빗장으로 닫힌 곡창 문 앞에서 기다리는 주민.",
+    "characters": "문 앞 노동자, 어머니와 아이, 앉은 노인",
+    "historyNotes": "1300–1318 잉글랜드 남부. 목골조·회칠·초가·평기와, 소박한 양모 옷과 코이프. 문 표식·홉·관·흑사병·원색·현대 물품 없음. 실존 인물 재현 아님.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create one standalone 4:3 landscape hand-painted illustration for a medieval strategy game decision card, entire canvas one scene, no border, no text area. Southern England market town circa 1315 within 1300–1318. Match attached town keyart muted tempera/gouache painterly surfaces, subtle brushwork and believable human faces as in attached portraits (portraits are style only, not obligatory identities). Weathered oak timber framing, warm limewashed infill, low rubble plinths, thatch or muted flat clay rooftiles; humble wool tunics, coifs, hoods in subdued brown, gray, dirty cream, moss green, faded ochre. Natural human proportions, no caricature. NO text, letters, numbers, pseudo-writing, symbols on doors, white door crosses, hops, coffins, plague imagery, bright primary colors, firearms, modern objects, house chimneys, blue glass, fantasy elements, parchment borders or split panels. Avoid crosses even in incidental cloth or door decoration. Composition must remain legible at 320x240. Refusal to intervene: CLOSED massive oak granary double doors dominate center and upper half, plainly shut with strong iron latch and thick horizontal timber bar. Outside in the foreground a small weary hungry crowd waits: mother with empty basket, seated elderly man, standing laborer with open pleading hand toward closed door. No servant, no food distribution, no violence. The closed barrier and waiting people are the unambiguous subject. Solid plain vertical planks with horizontal bar, absolutely no X braces, white marks, symbols, letters or decoration. Cool quiet overcast light, restraint.",
+        "rawFile": "raw/decisions/decision_laissez_faire.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "tool": "sharp",
+      "operation": "resize cover centre to 640x480; preserve aspect ratio; ensure RGBA PNG",
+      "selectedRaw": "raw/decisions/decision_laissez_faire.png",
+      "contentEdit": "none"
+    },
+    "qa": {
+      "selfVisualReview": "pass",
+      "text": "No visible text or numerals",
+      "sceneReadability": "닫힌 곡창과 주민의 기다림은 명확하다. 비축 고갈과 의도적 방관은 그림만으로 확정 구별할 수 없다.",
+      "history": "No listed prohibited motif observed in selected image",
+      "status": "candidate; user review pending"
+    }
+  },
+  {
+    "id": "decision_speculation",
+    "file": "assets/decisions/decision_speculation.png",
+    "width": 640,
+    "height": 480,
+    "sceneDescription": "빈 시장 진열대 옆 주민을 두고 곡물 자루를 수레에 싣고 동전을 주고받는다.",
+    "characters": "상인, 짐꾼 둘, 빈 바구니를 든 주민",
+    "historyNotes": "1300–1318 잉글랜드 남부. 목골조·회칠·초가·평기와, 소박한 양모 옷과 코이프. 문 표식·홉·관·흑사병·원색·현대 물품 없음. 실존 인물 재현 아님.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create one standalone 4:3 landscape hand-painted illustration for a medieval strategy game decision card, entire canvas one scene, no border, no text area. Southern England market town circa 1315 within 1300–1318. Match attached town keyart muted tempera/gouache painterly surfaces, subtle brushwork and believable human faces as in attached portraits (portraits are style only, not obligatory identities). Weathered oak timber framing, warm limewashed infill, low rubble plinths, thatch or muted flat clay rooftiles; humble wool tunics, coifs, hoods in subdued brown, gray, dirty cream, moss green, faded ochre. Natural human proportions, no caricature. NO text, letters, numbers, pseudo-writing, symbols on doors, white door crosses, hops, coffins, plague imagery, bright primary colors, firearms, modern objects, house chimneys, blue glass, fantasy elements, parchment borders or split panels. Avoid crosses even in incidental cloth or door decoration. Composition must remain legible at 320x240. Grain being removed for private profit during scarcity: a prosperous but not cartoonishly villainous merchant at the edge of the market supervises two laborers loading MANY bulging burlap grain sacks onto an oak TWO-WHEEL CART whose shafts point OUT toward the town road on the right. One opened sack shows golden grain. Merchant discreetly receives a few plain silver coins in one hand. At left a hungry woman with empty basket watches from beside an entirely EMPTY market display table, separated from the loaded cart. Strong diagonal flow of sack being hoisted onto outward cart. Muted rainy light, no text or marks on sacks, no four-wheel wagon, no horses necessary.",
+        "rawFile": "raw/decisions/decision_speculation.png",
+        "referenceImages": [
+          "references/키아트_타이틀_화풍기준.jpg",
+          "references/P05.png",
+          "references/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Targeted edit only: remove every HOUSE CHIMNEY from the supplied medieval grain cart scene. Specifically at image relative x29%, y7% there is a short gray stone chimney projecting above the reddish tiled roof LEFT of the church. Replace this small projection with matching sky/foliage and continuous pitched roof tiles. Keep church bell tower (x43%) and its small cross intact. Inspect all other roofs and remove any chimney projection. Preserve every person, face, sack, coin, cart, grain, market table, architecture other than chimneys, muted painting texture, lighting, 4:3 composition. No lettering or symbols added. This is one same picture with chimney removed, not a new composition.",
+        "rawFile": "raw/decisions/decision_speculation-v2.png",
+        "referenceImages": [
+          "raw/decisions/decision_speculation.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "tool": "sharp",
+      "operation": "resize cover centre to 640x480; preserve aspect ratio; ensure RGBA PNG",
+      "selectedRaw": "raw/decisions/decision_speculation-v2.png",
+      "contentEdit": "Independent reviewer found small house chimney missed in first contact review; builtin imagegen v2 removes it, v1 preserved."
+    },
+    "qa": {
+      "selfVisualReview": "pass",
+      "text": "No visible text or numerals",
+      "sceneReadability": "곡물 반출과 대가 지급은 읽힌다. 투기 의도와 정상 매매는 그림만으로 확정 구별할 수 없다.",
+      "history": "No listed prohibited motif observed in selected image",
+      "status": "candidate; user review pending"
+    }
+  }
+]

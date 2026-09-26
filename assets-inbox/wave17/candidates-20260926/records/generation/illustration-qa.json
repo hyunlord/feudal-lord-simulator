@@ -1,0 +1,253 @@
+{
+  "status": "PASS_WITH_LIMITS",
+  "score": 94,
+  "asset_count": 22,
+  "visual_check": "All 22 final illustrations inspected on contact sheet; chapter2_end also inspected at full size. Card proof uses provided Wave16 wooden frame with nine-slice border and chronicle page frame. Independent reviewer rechecked all identified roof stacks and final empty_workshop residual at 10x; all known chimney blockers removed. Final proof03 reopened with all 22 assets.",
+  "corrections": "Seven English civic illustrations had incidental fleur-de-lis or quartered heraldry removed with imagegen; French raiding-vessel fleur-de-lis retained. Twelve illustrations additionally received targeted imagegen edits removing house chimneys identified during full-resolution roof review. All twelve rebuilt and inspected by illustrator; independent follow-up review pending. A second localized edit removed one residual stack in empty_workshop using its 10x locator crop.",
+  "limitations": "Candidate art only; not installed or verified in runtime.",
+  "checks": [
+    {
+      "id": "chapter2_end",
+      "width": 1920,
+      "height": 1080,
+      "expected": [
+        1920,
+        1080
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "chronicle/beacon",
+      "width": 384,
+      "height": 384,
+      "expected": [
+        384,
+        384
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "chronicle/conscription",
+      "width": 384,
+      "height": 384,
+      "expected": [
+        384,
+        384
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "chronicle/messenger",
+      "width": 384,
+      "height": 384,
+      "expected": [
+        384,
+        384
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "chronicle/purveyance_licence",
+      "width": 384,
+      "height": 384,
+      "expected": [
+        384,
+        384
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "chronicle/raid",
+      "width": 384,
+      "height": 384,
+      "expected": [
+        384,
+        384
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "chronicle/stonewall_complete",
+      "width": 384,
+      "height": 384,
+      "expected": [
+        384,
+        384
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "chronicle/stonewall_start",
+      "width": 384,
+      "height": 384,
+      "expected": [
+        384,
+        384
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "chronicle/wool_levy",
+      "width": 384,
+      "height": 384,
+      "expected": [
+        384,
+        384
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "decision/levy_response",
+      "width": 640,
+      "height": 480,
+      "expected": [
+        640,
+        480
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "decision/refugee_admission",
+      "width": 640,
+      "height": 480,
+      "expected": [
+        640,
+        480
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "decision/wall_or_market",
+      "width": 640,
+      "height": 480,
+      "expected": [
+        640,
+        480
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "decision/war_funding",
+      "width": 640,
+      "height": 480,
+      "expected": [
+        640,
+        480
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "decision/wool_payment",
+      "width": 640,
+      "height": 480,
+      "expected": [
+        640,
+        480
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "event/beacon_warning",
+      "width": 960,
+      "height": 540,
+      "expected": [
+        960,
+        540
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "event/coastal_raid",
+      "width": 960,
+      "height": 540,
+      "expected": [
+        960,
+        540
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "event/conscription_departure",
+      "width": 960,
+      "height": 540,
+      "expected": [
+        960,
+        540
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "event/empty_workshop",
+      "width": 960,
+      "height": 540,
+      "expected": [
+        960,
+        540
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "event/raid_aftermath",
+      "width": 960,
+      "height": 540,
+      "expected": [
+        960,
+        540
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "event/royal_messenger_arrival",
+      "width": 960,
+      "height": 540,
+      "expected": [
+        960,
+        540
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "event/stonewall_charter",
+      "width": 960,
+      "height": 540,
+      "expected": [
+        960,
+        540
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    },
+    {
+      "id": "event/wool_levy_edict",
+      "width": 960,
+      "height": 540,
+      "expected": [
+        960,
+        540
+      ],
+      "dimension_pass": true,
+      "opaque": true
+    }
+  ],
+  "roof_corrections": 12
+}

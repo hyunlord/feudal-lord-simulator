@@ -1,0 +1,55 @@
+{
+  "id": "prop/refugee_bundle_sheet-v1",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-8c7170ca-521d-45c6-a9ff-1acaf6b9f5c1.png",
+  "prompt": "Use case: stylized-concept. One compact bundled bedroll for a departing medieval peasant woman's back: faded ochre blanket tightly rolled with clearly visible spiral end and tied by two dark brown leather straps, small gray-brown cloth sack attached underneath. Object only, no person. Isometric view matching attached woman's game sprite, clear compact bundle silhouette, restrained hand-painted small-game sprite. Truly transparent RGBA background. Accessory layer to be mounted on existing fixed-pose sprite back without modifying anatomy. No text or background.",
+  "reference": "/tmp/astra-wave9-work-20260925/delivery/assets/wk_leaving_family-v1.png",
+  "generation": "Reuse approved Wave9 separated original support image. No new image generation.",
+  "processing": "Exact replay of Wave9 role_finish.mjs cropfit 12x14 and eight origins; emitted separate alpha overlay on 296x148 canvas. Same single-view compact prop reused in every direction, matching Wave9 approved finishing.",
+  "origins": [
+    [
+      27,
+      23
+    ],
+    [
+      22,
+      25
+    ],
+    [
+      43,
+      25
+    ],
+    [
+      38,
+      23
+    ],
+    [
+      27,
+      24
+    ],
+    [
+      23,
+      24
+    ],
+    [
+      44,
+      24
+    ],
+    [
+      38,
+      24
+    ]
+  ],
+  "canvas": [
+    296,
+    148
+  ],
+  "placement": [
+    0,
+    0
+  ],
+  "child_companion_offset": [
+    17,
+    0
+  ],
+  "draw_order": "woman, bundle at identity, child shifted +17px in each cell"
+}

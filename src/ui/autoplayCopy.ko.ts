@@ -4,4 +4,3 @@ export const AUTOPLAY_RELOCATE_HOUSE_LABEL = '다음: 시장이 닿지 않는 �
 export const AUTOPLAY_REBUILD_HOUSE_LABEL = '다음: 불탄 집 다시 짓기';
 export const AUTOPLAY_FAMINE_RESPONSE_LABEL = '다음: 대기근 대응 정하기';
 export const AUTOPLAY_PETITION_RESPONSE_LABEL = '다음: 청원에 답하기';
-export const AUTOPLAY_ERASE_WALLED_FIELDS_LABEL = '다음: 성 안 밭을 집터로';

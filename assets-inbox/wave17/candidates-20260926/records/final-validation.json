@@ -1,0 +1,1484 @@
+{
+  "status": "PASS",
+  "candidate_pngs": 57,
+  "proof_pngs": 3,
+  "assertions": 239,
+  "checks": [
+    {
+      "name": "candidate_count",
+      "pass": true,
+      "detail": 57
+    },
+    {
+      "name": "illustration_count",
+      "pass": true,
+      "detail": 22
+    },
+    {
+      "name": "sha:animal_walk/ox-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:animal_walk/ox-v1",
+      "pass": true,
+      "detail": [
+        384,
+        148
+      ]
+    },
+    {
+      "name": "prompt:animal_walk/ox-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:animal_walk/ox-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:bld/beacon_idle-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:bld/beacon_idle-v1",
+      "pass": true,
+      "detail": [
+        128,
+        160
+      ]
+    },
+    {
+      "name": "prompt:bld/beacon_idle-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:bld/beacon_idle-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:bld/beacon_lit-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:bld/beacon_lit-v1",
+      "pass": true,
+      "detail": [
+        128,
+        160
+      ]
+    },
+    {
+      "name": "prompt:bld/beacon_lit-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:bld/beacon_lit-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:bld/muster_field-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:bld/muster_field-v1",
+      "pass": true,
+      "detail": [
+        256,
+        192
+      ]
+    },
+    {
+      "name": "prompt:bld/muster_field-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:bld/muster_field-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:bld/royal_warehouse-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:bld/royal_warehouse-v1",
+      "pass": true,
+      "detail": [
+        256,
+        256
+      ]
+    },
+    {
+      "name": "prompt:bld/royal_warehouse-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:bld/royal_warehouse-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:cart/ox_cart_body-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:cart/ox_cart_body-v1",
+      "pass": true,
+      "detail": [
+        512,
+        192
+      ]
+    },
+    {
+      "name": "prompt:cart/ox_cart_body-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:cart/ox_cart_body-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:decal/trampled_field-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:decal/trampled_field-v1",
+      "pass": true,
+      "detail": [
+        128,
+        64
+      ]
+    },
+    {
+      "name": "prompt:decal/trampled_field-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:decal/trampled_field-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:event/raid_burning_quay-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:event/raid_burning_quay-v1",
+      "pass": true,
+      "detail": [
+        256,
+        128
+      ]
+    },
+    {
+      "name": "prompt:event/raid_burning_quay-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:event/raid_burning_quay-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:event/raid_smoke_column_sheet-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:event/raid_smoke_column_sheet-v1",
+      "pass": true,
+      "detail": [
+        512,
+        192
+      ]
+    },
+    {
+      "name": "prompt:event/raid_smoke_column_sheet-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:event/raid_smoke_column_sheet-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:herd/wool_sack_convoy-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:herd/wool_sack_convoy-v1",
+      "pass": true,
+      "detail": [
+        512,
+        192
+      ]
+    },
+    {
+      "name": "prompt:herd/wool_sack_convoy-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:herd/wool_sack_convoy-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:illustration/chapter2_end",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chapter2_end",
+      "pass": true,
+      "detail": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "name": "prompt:illustration/chapter2_end",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chapter2_end",
+      "pass": true,
+      "detail": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "name": "sha:illustration/chronicle/beacon",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chronicle/beacon",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "prompt:illustration/chronicle/beacon",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chronicle/beacon",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "sha:illustration/chronicle/conscription",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chronicle/conscription",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "prompt:illustration/chronicle/conscription",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chronicle/conscription",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "sha:illustration/chronicle/messenger",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chronicle/messenger",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "prompt:illustration/chronicle/messenger",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chronicle/messenger",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "sha:illustration/chronicle/purveyance_licence",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chronicle/purveyance_licence",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "prompt:illustration/chronicle/purveyance_licence",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chronicle/purveyance_licence",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "sha:illustration/chronicle/raid",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chronicle/raid",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "prompt:illustration/chronicle/raid",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chronicle/raid",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "sha:illustration/chronicle/stonewall_complete",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chronicle/stonewall_complete",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "prompt:illustration/chronicle/stonewall_complete",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chronicle/stonewall_complete",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "sha:illustration/chronicle/stonewall_start",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chronicle/stonewall_start",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "prompt:illustration/chronicle/stonewall_start",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chronicle/stonewall_start",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "sha:illustration/chronicle/wool_levy",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/chronicle/wool_levy",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "prompt:illustration/chronicle/wool_levy",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/chronicle/wool_levy",
+      "pass": true,
+      "detail": [
+        384,
+        384
+      ]
+    },
+    {
+      "name": "sha:illustration/decision/levy_response",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/decision/levy_response",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "prompt:illustration/decision/levy_response",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/decision/levy_response",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "sha:illustration/decision/refugee_admission",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/decision/refugee_admission",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "prompt:illustration/decision/refugee_admission",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/decision/refugee_admission",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "sha:illustration/decision/wall_or_market",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/decision/wall_or_market",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "prompt:illustration/decision/wall_or_market",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/decision/wall_or_market",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "sha:illustration/decision/war_funding",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/decision/war_funding",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "prompt:illustration/decision/war_funding",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/decision/war_funding",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "sha:illustration/decision/wool_payment",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/decision/wool_payment",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "prompt:illustration/decision/wool_payment",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/decision/wool_payment",
+      "pass": true,
+      "detail": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "sha:illustration/event/beacon_warning",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/event/beacon_warning",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "prompt:illustration/event/beacon_warning",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/event/beacon_warning",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "sha:illustration/event/coastal_raid",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/event/coastal_raid",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "prompt:illustration/event/coastal_raid",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/event/coastal_raid",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "sha:illustration/event/conscription_departure",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/event/conscription_departure",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "prompt:illustration/event/conscription_departure",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/event/conscription_departure",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "sha:illustration/event/empty_workshop",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/event/empty_workshop",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "prompt:illustration/event/empty_workshop",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/event/empty_workshop",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "sha:illustration/event/raid_aftermath",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/event/raid_aftermath",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "prompt:illustration/event/raid_aftermath",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/event/raid_aftermath",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "sha:illustration/event/royal_messenger_arrival",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/event/royal_messenger_arrival",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "prompt:illustration/event/royal_messenger_arrival",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/event/royal_messenger_arrival",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "sha:illustration/event/stonewall_charter",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/event/stonewall_charter",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "prompt:illustration/event/stonewall_charter",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/event/stonewall_charter",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "sha:illustration/event/wool_levy_edict",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:illustration/event/wool_levy_edict",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "prompt:illustration/event/wool_levy_edict",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "illustration_spec:illustration/event/wool_levy_edict",
+      "pass": true,
+      "detail": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "sha:prop/held_bill_ne-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_bill_ne-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_bill_ne-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_bill_ne-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_bill_nw-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_bill_nw-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_bill_nw-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_bill_nw-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_bill_se-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_bill_se-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_bill_se-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_bill_se-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_bill_sw-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_bill_sw-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_bill_sw-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_bill_sw-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_ledger_ne-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_ledger_ne-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_ledger_ne-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_ledger_ne-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_ledger_nw-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_ledger_nw-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_ledger_nw-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_ledger_nw-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_ledger_se-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_ledger_se-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_ledger_se-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_ledger_se-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_ledger_sw-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_ledger_sw-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_ledger_sw-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_ledger_sw-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_longbow_ne-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_longbow_ne-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_longbow_ne-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_longbow_ne-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_longbow_nw-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_longbow_nw-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_longbow_nw-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_longbow_nw-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_longbow_se-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_longbow_se-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_longbow_se-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_longbow_se-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_longbow_sw-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_longbow_sw-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_longbow_sw-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_longbow_sw-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_torch_ne-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_torch_ne-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_torch_ne-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_torch_ne-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_torch_nw-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_torch_nw-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_torch_nw-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_torch_nw-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_torch_se-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_torch_se-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_torch_se-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_torch_se-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/held_torch_sw-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/held_torch_sw-v1",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "prompt:prop/held_torch_sw-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/held_torch_sw-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/refugee_bundle_sheet-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/refugee_bundle_sheet-v1",
+      "pass": true,
+      "detail": [
+        296,
+        148
+      ]
+    },
+    {
+      "name": "prompt:prop/refugee_bundle_sheet-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/refugee_bundle_sheet-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:prop/refugee_child_sheet-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:prop/refugee_child_sheet-v1",
+      "pass": true,
+      "detail": [
+        296,
+        148
+      ]
+    },
+    {
+      "name": "prompt:prop/refugee_child_sheet-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:prop/refugee_child_sheet-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:wall/stone_wall_repair_scaffold-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:wall/stone_wall_repair_scaffold-v1",
+      "pass": true,
+      "detail": [
+        512,
+        128
+      ]
+    },
+    {
+      "name": "prompt:wall/stone_wall_repair_scaffold-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:wall/stone_wall_repair_scaffold-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:wk/wk_levy_archer-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:wk/wk_levy_archer-v1",
+      "pass": true,
+      "detail": [
+        296,
+        148
+      ]
+    },
+    {
+      "name": "prompt:wk/wk_levy_archer-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:wk/wk_levy_archer-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:wk/wk_levy_billman-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:wk/wk_levy_billman-v1",
+      "pass": true,
+      "detail": [
+        296,
+        148
+      ]
+    },
+    {
+      "name": "prompt:wk/wk_levy_billman-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:wk/wk_levy_billman-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:wk/wk_raider-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:wk/wk_raider-v1",
+      "pass": true,
+      "detail": [
+        296,
+        148
+      ]
+    },
+    {
+      "name": "prompt:wk/wk_raider-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:wk/wk_raider-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:wk/wk_refugee_family-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:wk/wk_refugee_family-v1",
+      "pass": true,
+      "detail": [
+        296,
+        148
+      ]
+    },
+    {
+      "name": "prompt:wk/wk_refugee_family-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:wk/wk_refugee_family-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:wk/wk_royal_purveyor-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:wk/wk_royal_purveyor-v1",
+      "pass": true,
+      "detail": [
+        296,
+        148
+      ]
+    },
+    {
+      "name": "prompt:wk/wk_royal_purveyor-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:wk/wk_royal_purveyor-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "sha:wk/wk_tax_collector-v1",
+      "pass": true,
+      "detail": "Current final pixels match CSV"
+    },
+    {
+      "name": "dims:wk/wk_tax_collector-v1",
+      "pass": true,
+      "detail": [
+        296,
+        148
+      ]
+    },
+    {
+      "name": "prompt:wk/wk_tax_collector-v1",
+      "pass": true,
+      "detail": "Complete prompt or explicit reuse record"
+    },
+    {
+      "name": "rgba:wk/wk_tax_collector-v1",
+      "pass": true,
+      "detail": "Nonempty true alpha"
+    },
+    {
+      "name": "proof_count",
+      "pass": true,
+      "detail": [
+        "01_workers_convoy.png",
+        "02_coastal_raid.png",
+        "03_illustrations_cards.png"
+      ]
+    },
+    {
+      "name": "worker_exact_alpha:wk_levy_archer-v1",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "worker_exact_alpha:wk_levy_billman-v1",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "worker_exact_alpha:wk_raider-v1",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "worker_exact_alpha:wk_royal_purveyor-v1",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "worker_exact_alpha:wk_tax_collector-v1",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "worker_exact_alpha:wk_refugee_family-v1",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "cargo_f0_f1",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "beacon_base_preserved_below56",
+      "pass": true,
+      "detail": true
+    }
+  ],
+  "visual_qa": {
+    "scope": "wave17-full-candidate-static-art",
+    "verdict": "PASS_WITH_LIMITS",
+    "full_pack_verdict": "PASS_WITH_LIMITS",
+    "reviewed_proofs": [
+      "01_workers_convoy.png",
+      "02_coastal_raid.png",
+      "03_illustrations_cards.png"
+    ],
+    "worker_frames_independently_checked": 48,
+    "max_alpha_diff": 0,
+    "max_protected_foot_rgba_diff": 0,
+    "weapon_attachment_scale": 2,
+    "ox_protected_head_body_tail_diff": 0,
+    "cargo_frame_byte_diff": 0,
+    "blocking_ready_scope_findings": [],
+    "limits": [
+      "weapon fine details at zoom0.6",
+      "preview driver placement not runtime behavior",
+      "wall and animation runtime untested",
+      "22 illustrations checked in final proof; all roof regions examined at native/enlarged scale, with close rechecks of 12 corrected scenes",
+      "historical authentication and ZIP/metadata integrity outside visual scope"
+    ],
+    "runtime_tested": false,
+    "assets_modified": false,
+    "asset_png_count": 57,
+    "proof_png_count": 3,
+    "illustration_count": 22,
+    "illustration_dimensions_pass": true,
+    "illustrations_full_resolution_sample_count": 5,
+    "blocking_full_pack_visual_findings": [],
+    "roof_scenes_examined_enlarged": 22,
+    "chapter_roof_correction": "PASS_SPECIFIC_KNOWN_FINDINGS",
+    "roof_pending_scenes": [],
+    "roof_corrected_scenes_rechecked": 12,
+    "recheck_time_utc": "2026-09-26T02:48:42.072Z",
+    "final_roof_recheck": "All 12 corrected scenes visually rechecked, including final empty_workshop native (637,122,12,16) after second repair; no confirmed remaining house chimney found in examined native/enlarged roof regions.",
+    "final_proof03_rechecked": true
+  },
+  "scope": "Offline candidate assets only; no game installation or runtime validation."
+}

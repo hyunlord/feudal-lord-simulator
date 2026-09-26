@@ -8,6 +8,7 @@ import { millRegistration } from "./animatedMill";
 import { tileToScreen, TILE_H } from "./iso";
 import { ROOF_SMOKE_ANCHORS } from "./roofSmokeAnchors.generated";
 import { visibilityArt } from "./visibilityArtManifest";
+import { drawWave7 } from "./wave7Art";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
 // F0-V operating signs (visibility design 1절, D6): smoke is "lived in and fed". A house with residents and bread in
@@ -56,13 +57,25 @@ export function drawMillOvenSmoke(context: CanvasRenderingContext2D, building: B
   if (!millOvenBurning(building)) return;
   const center = tileToScreen(building.tx, building.ty);
   const scale = millRegistration.bodyDisplayWidth / millRegistration.body.width;
-  const left = center.sx - millRegistration.bodyDisplayWidth / 2;
+  const left = center.sx - millRegistration.bodyCentreX * scale;
   const top = center.sy + TILE_H / 2 - millRegistration.groundY * scale;
-  drawSmokePlume(context, left + MILL_OVEN.fx * millRegistration.body.width * scale, top + MILL_OVEN.fy * millRegistration.body.height * scale, 1, nowMs, building.tx);
+  drawSmokePlume(context, left + MILL_OVEN.fx * millRegistration.body.width * scale, top + MILL_OVEN.fy * millRegistration.body.height * scale, 1, nowMs, building.tx, true);
 }
 
-/** A rising, fading plume from (x, y): the two Wave 6 smoke frames alternating, 12 x 24 world px. */
-function drawSmokePlume(context: CanvasRenderingContext2D, x: number, y: number, strength: number, nowMs: number, seed: number): void {
+/** INSTALL-7: world px per sheet px of the Wave 7 smoke (a 48 x 80 roof cell is ~14 px wide at zoom 1). */
+const SMOKE_SCALE = 0.3;
+const SMOKE_FRAME_MS = 180;
+
+/** A rising plume from (x, y): the Wave 7 four-frame sheet (the weak sheet for a thin plume, the oven sheet for the
+ * mill), else the two Wave 6 frames alternating, 12 x 24 world px. */
+function drawSmokePlume(context: CanvasRenderingContext2D, x: number, y: number, strength: number, nowMs: number, seed: number, oven = false): void {
+  const frame = Math.floor(nowMs / SMOKE_FRAME_MS + seed);
+  const sheet = oven ? "oven_smoke_sheet" : strength < 0.6 ? "roof_smoke_weak_sheet" : "roof_smoke_sheet";
+  context.save();
+  context.globalAlpha *= oven ? 0.9 : 0.55 + 0.45 * strength;
+  const drawn = drawWave7(context, sheet, x, y, SMOKE_SCALE, frame);
+  context.restore();
+  if (drawn) return;
   const phase = ((nowMs / 1_800 + seed * 0.137) % 1 + 1) % 1;
   const image = visibilityArt(Math.floor(nowMs / 450 + seed) % 2 === 0 ? "smoke_a" : "smoke_b");
   if (image === null) return;

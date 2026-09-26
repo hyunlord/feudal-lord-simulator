@@ -1,0 +1,1391 @@
+{
+  "status": "PASS_WITH_LIMITATIONS",
+  "reviewed_adult_chains": 28,
+  "reviewed_portraits": 92,
+  "total_requested_identities": 32,
+  "sizes": [
+    256,
+    96
+  ],
+  "not_full_delivery_verdict": false,
+  "per_chain": [
+    {
+      "identity_id": "I037",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "coif_cap",
+          "observed": "coif_cap",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bald",
+          "observed": "bald",
+          "status": "PASS"
+        }
+      ],
+      "notes": "매부리코·긴 턱·눈썹이 유지되며 노년의 두피와 목 변화가 잘 읽힌다.",
+      "evidence": [
+        {
+          "file": "portraits/I037_young.png",
+          "sha256": "62120dd567153893ca82bc7ad7a223952457fe81fc71b5445eef429baad7a878"
+        },
+        {
+          "file": "portraits/I037_mature.png",
+          "sha256": "edbec1c654c033299e84a253e1b16a5d6ff57b8ef4f38f973e0128f642361ac8"
+        },
+        {
+          "file": "portraits/I037_old.png",
+          "sha256": "fd69e6010c0819a0fdb5a3f1407bbddbd7a35abd3e7552a5feb57dea480d258e"
+        }
+      ]
+    },
+    {
+      "identity_id": "I038",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "felt_hat",
+          "observed": "felt_hat",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        }
+      ],
+      "notes": "넓은 코·작고 높은입·둥근턱을 유지한다. 노년의 실제hood로 메타데이터를 정정하여 그림과 일치한다.",
+      "evidence": [
+        {
+          "file": "portraits/I038_young.png",
+          "sha256": "03f1b3f11d43aa3870fcc1e7438ef3bf6b6e8569775ba246569279bd851649db"
+        },
+        {
+          "file": "portraits/I038_mature.png",
+          "sha256": "e1c8124ff3f7ef3beffea9dee514b1089c5a5d36ef3a060d0e8e1f47104f4139"
+        },
+        {
+          "file": "portraits/I038_old.png",
+          "sha256": "bca5ac6a781f2290ea12e40503abe977622a70b968315bd6c684989f8f001a16"
+        }
+      ]
+    },
+    {
+      "identity_id": "I039",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "felt_hat",
+          "observed": "felt_hat",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "coif_cap",
+          "observed": "coif_cap",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        }
+      ],
+      "notes": "넓은 얼굴과 코·짧은 콧수염·턱살 유지. felt→coifcap→hood의 차이 확인.",
+      "evidence": [
+        {
+          "file": "portraits/I039_young.png",
+          "sha256": "dfc543036a13431d79a7e4b5b2448e7ba86e300711503c5f18528feb1f77ce1c"
+        },
+        {
+          "file": "portraits/I039_mature.png",
+          "sha256": "234e8233a6914a09b480d7f4676abaecf785113f584f9c870586a090a8d55bbf"
+        },
+        {
+          "file": "portraits/I039_old.png",
+          "sha256": "dc3643b8a175f0a9cdd1bb159c97b99d059401e79df6b520d52c60b173766006"
+        }
+      ]
+    },
+    {
+      "identity_id": "I040",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "barbette_fillet",
+          "observed": "barbette_fillet",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "barbette_fillet",
+          "observed": "barbette_fillet",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "widow_veil",
+          "observed": "widow_veil",
+          "status": "PASS"
+        }
+      ],
+      "notes": "넓은 얼굴과 둥근 턱 유지. 청년-장년 차이는96px에서 작지만 노년은 회색머리와 얼굴 처짐으로 구분된다.",
+      "evidence": [
+        {
+          "file": "portraits/I040_young.png",
+          "sha256": "47c6db4446d99c06ebf298528f8f7b0a97d52907319d8d3a5acc3acc48b256da"
+        },
+        {
+          "file": "portraits/I040_mature.png",
+          "sha256": "bf253bb85ba882b6c03548084ca69b313a016b55ec15ebcc19de577fe1f8db33"
+        },
+        {
+          "file": "portraits/I040_old.png",
+          "sha256": "dd3651bb7e49aede4b2cff7ed5980f04a93d90d4fa9d660b04eeba3aca4dfaa8"
+        }
+      ]
+    },
+    {
+      "identity_id": "I041",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "loose_unmarried",
+          "observed": "loose_unmarried",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "barbette_fillet",
+          "observed": "barbette_fillet",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        }
+      ],
+      "notes": "얼굴 폭·코·턱 유지. 풀어내린 머리→fillet/barbette→hood 전환과 노년 미소가 자연스럽다.",
+      "evidence": [
+        {
+          "file": "portraits/I041_young.png",
+          "sha256": "6619dd413e360e700a7ba0baccfed2a6f72ce6f19c3f5ec621de3a6c51917056"
+        },
+        {
+          "file": "portraits/I041_mature.png",
+          "sha256": "de8d6211c55d8d0b99705566b2e80438142a2396d51fb727aa6f2ac2237c9793"
+        },
+        {
+          "file": "portraits/I041_old.png",
+          "sha256": "186b4d765c0e612156c008a721572692491266a174df9e92136101b933679178"
+        }
+      ]
+    },
+    {
+      "identity_id": "I042",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "white_veil",
+          "observed": "white_veil",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "barbette_fillet",
+          "observed": "barbette_fillet",
+          "status": "PASS_WITH_THIN_CHINSTRAP_NOTE"
+        },
+        {
+          "stage": "old",
+          "expected": "veil_wimple",
+          "observed": "veil_wimple",
+          "status": "PASS"
+        }
+      ],
+      "notes": "큰 눈·긴 인중·턱이 유지된다. 장년fillet/net 명확, 턱끈은 얇은 외곽선 수준이다. 노년veil/wimple 명확.",
+      "evidence": [
+        {
+          "file": "portraits/I042_young.png",
+          "sha256": "23b917cef14535874ecb59cabc575cb52bf9c39543133403e4b3708d3f642daa"
+        },
+        {
+          "file": "portraits/I042_mature.png",
+          "sha256": "5e54ef05df9e42e3e346c5432280494aec025b570b6da972532947f10810951a"
+        },
+        {
+          "file": "portraits/I042_old.png",
+          "sha256": "3f65cb8ef36e548a053994307b991dbca8b3a9239cdb45e116551003791a5138"
+        }
+      ]
+    },
+    {
+      "identity_id": "I043",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "coif_cap",
+          "observed": "coif_cap",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "felt_hat",
+          "observed": "felt_hat",
+          "status": "PASS"
+        }
+      ],
+      "notes": "볼살·작은 코와 입·처진 턱 유지. 세 단계 미소 유지. 노년 회색머리와 목 주름 자연스럽다.",
+      "evidence": [
+        {
+          "file": "portraits/I043_young.png",
+          "sha256": "7d46fc544ecc2464bfeaf4ddbb8837f283fc0c688b20dd07ceff231f7883fe63"
+        },
+        {
+          "file": "portraits/I043_mature.png",
+          "sha256": "2bc7849dac80cf564da01c6d516300c4db788208943f1b98b5ce0c2d6730de2b"
+        },
+        {
+          "file": "portraits/I043_old.png",
+          "sha256": "5adc9e8786a0b6765b1bc519873b4a8a3c547563b3c27e88dc19986fa0b8eae7"
+        }
+      ]
+    },
+    {
+      "identity_id": "I044",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "felt_hat",
+          "observed": "felt_hat",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "coif_cap",
+          "observed": "coif_cap",
+          "status": "PASS"
+        }
+      ],
+      "notes": "꺾인 코·콧수염·미간 유지. 모자 세 종류 구분됨. 장년의 근심에서 노년의 미소로 변화가 읽힌다.",
+      "evidence": [
+        {
+          "file": "portraits/I044_young.png",
+          "sha256": "9e1bf448649b4653cdde9b94be4271f722a4f516ee75915eb1f3eb3993408f35"
+        },
+        {
+          "file": "portraits/I044_mature.png",
+          "sha256": "26b6e372e666712c34d303cac83fceab7a48fb47fa9a38eb4991a690a121ff14"
+        },
+        {
+          "file": "portraits/I044_old.png",
+          "sha256": "313bc37d35b2840f228f775e9b5ba62fe64fc4b9ab6292a4bd2257f8641df3fb"
+        }
+      ]
+    },
+    {
+      "identity_id": "I045",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "felt_hat",
+          "observed": "felt_hat",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "coif_cap",
+          "observed": "coif_cap",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bald",
+          "observed": "bald",
+          "status": "PASS"
+        }
+      ],
+      "notes": "눈 간격·코끝·귀·수염 골격 유지. 노년 대머리와 희끗한 수염으로 뚜렷하게 늙는다.",
+      "evidence": [
+        {
+          "file": "portraits/I045_young.png",
+          "sha256": "ffb85a1746c61fda094d538f56e3494ac6f5494a015ea2e8ba82c69fed048ee2"
+        },
+        {
+          "file": "portraits/I045_mature.png",
+          "sha256": "49c20042115f22e698b42c80274041ed551424dccb4796ca3dfe07237c4ee5d5"
+        },
+        {
+          "file": "portraits/I045_old.png",
+          "sha256": "2d4a204c252eaee4e25d801d38f31d9afb4c7e5367b547acf88e75eb7a109346"
+        }
+      ]
+    },
+    {
+      "identity_id": "I046",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "coif",
+          "observed": "coif",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "veil_wimple",
+          "observed": "veil_wimple",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "widow_veil",
+          "observed": "widow_veil",
+          "status": "PASS"
+        }
+      ],
+      "notes": "유난히긴 코와 큰귀·매우마른 두개골 유지. coif→veilwimple→widowveil 전환 명확.",
+      "evidence": [
+        {
+          "file": "portraits/I046_young.png",
+          "sha256": "0c51defb5d102a95414175456fd574e58b5fe50649961cfdb78ecdb8be91289d"
+        },
+        {
+          "file": "portraits/I046_mature.png",
+          "sha256": "8d43bb689341fa5a898ebf7cf09057be011333f0571b867417a54dfde9509175"
+        },
+        {
+          "file": "portraits/I046_old.png",
+          "sha256": "06aeb9f99327315e7fead9ea5a5725d24741b8c6a799d24b0c5473915f837786"
+        }
+      ]
+    },
+    {
+      "identity_id": "I047",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "barbette_fillet",
+          "observed": "barbette_fillet",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "white_veil",
+          "observed": "white_veil",
+          "status": "PASS"
+        }
+      ],
+      "notes": "좁은 코·작은 입·턱 유지. barbette/net→hood→whiteveil이 분명하다. 노년 미소가 약하게 읽힌다.",
+      "evidence": [
+        {
+          "file": "portraits/I047_young.png",
+          "sha256": "3d3e8b247d30e04b0e27c431cb1264cf51e8aceafde096c6ff64de9e49daa678"
+        },
+        {
+          "file": "portraits/I047_mature.png",
+          "sha256": "0ced77def3fe4eeee2d290c04e787ee30c41a7e05b66fdf0750bba57ae8523ae"
+        },
+        {
+          "file": "portraits/I047_old.png",
+          "sha256": "87122908aa15954708537bc76b2a7e2df38a97808838a521d6f03e742df5a6c1"
+        }
+      ]
+    },
+    {
+      "identity_id": "I048",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "loose_unmarried",
+          "observed": "loose_unmarried",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "white_veil",
+          "observed": "white_veil",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "widow_veil",
+          "observed": "widow_veil",
+          "status": "PASS"
+        }
+      ],
+      "notes": "넓은 얼굴·입술·턱살 유지. 머리→흰베일→암색과부베일 구분. 장년 변화는96px에서 미묘하다.",
+      "evidence": [
+        {
+          "file": "portraits/I048_young.png",
+          "sha256": "5ea9f67d56f7c1d7ac9adfdf1d325307d8a6b7518c3e97d77252933f271888b7"
+        },
+        {
+          "file": "portraits/I048_mature.png",
+          "sha256": "943f072a978afbca82578ee6870e9146c4ab7a706d39653534e980d2b691dcd1"
+        },
+        {
+          "file": "portraits/I048_old.png",
+          "sha256": "944ea80602bba0b919268637249c3c5083271d9ff5eedb10e7e8322ddb8d7ee3"
+        }
+      ]
+    },
+    {
+      "identity_id": "I049",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bald",
+          "observed": "bald",
+          "status": "PASS"
+        }
+      ],
+      "notes": "넓은 코·각진 턱·짧은 수염 유지. 노년 머리숱 감소·관자놀이·눈가·목이 함께 늙는다.",
+      "evidence": [
+        {
+          "file": "portraits/I049_young.png",
+          "sha256": "c6642989af96120a29719109b2a85e77790fa5756fdd4be90c65c622a4b5ed1d"
+        },
+        {
+          "file": "portraits/I049_mature.png",
+          "sha256": "3bf7eb26555099f1d7d3f93cdb12fae68cf1120d1bb8c6aecf458eba52dc3460"
+        },
+        {
+          "file": "portraits/I049_old.png",
+          "sha256": "48daf895014edf9063e3682a2efb56e5b4f63a8bbdf5c28d44125c81ef29e77d"
+        }
+      ]
+    },
+    {
+      "identity_id": "I050",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        }
+      ],
+      "notes": "둥근 얼굴과 처진 턱선 유지. 후드 단계와 맨머리 단계 구분. 노년 회색머리·볼처짐 자연스럽다.",
+      "evidence": [
+        {
+          "file": "portraits/I050_young.png",
+          "sha256": "75615c1fdd075d881976c23499f81bdddacb60749221c8d0da79f7cd4bf91b89"
+        },
+        {
+          "file": "portraits/I050_mature.png",
+          "sha256": "8af64fe5453bb4d8cf672a9077ae04bb1621efe654b8d8cfc1e5e15241203502"
+        },
+        {
+          "file": "portraits/I050_old.png",
+          "sha256": "66157a5335e1e64afc939b6a6bcb4d41c28af6cb7b0134de2d9561d76dee22e9"
+        }
+      ]
+    },
+    {
+      "identity_id": "I051",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        }
+      ],
+      "notes": "긴 각진턱·콧수염·불균형한눈썹 유지. 노년 회색머리와 볼·목 변화가 분명.",
+      "evidence": [
+        {
+          "file": "portraits/I051_young.png",
+          "sha256": "8ea290039ccef37e5ad8e1847e79aba54c75b0a4a3cc14441fb1c0ee911e8894"
+        },
+        {
+          "file": "portraits/I051_mature.png",
+          "sha256": "05fd80df5ad03fd228bc79a55f01d506ad4c618e121fb562a0a829a1c3dc03c5"
+        },
+        {
+          "file": "portraits/I051_old.png",
+          "sha256": "3a1369adbd8956d4d6c025026a4a6ed49826f303f40df47cfb4f3611c5f59784"
+        }
+      ]
+    },
+    {
+      "identity_id": "I052",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "coif",
+          "observed": "coif",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "colored_headscarf",
+          "observed": "colored_headscarf",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        }
+      ],
+      "notes": "볼살·코끝·턱을 유지. coif→색머리수건→hood 차이가 뚜렷하다.",
+      "evidence": [
+        {
+          "file": "portraits/I052_young.png",
+          "sha256": "bb503401913dea946ef19e255565fd7fd7e02d570097ca552fb3630be9512ec6"
+        },
+        {
+          "file": "portraits/I052_mature.png",
+          "sha256": "22f20b513c0995df2c495a634056e4308589b1f6f97abfe500a2fa51b9ee6584"
+        },
+        {
+          "file": "portraits/I052_old.png",
+          "sha256": "fe2c9aee2061b1b5795f483cc2ec31fce1161dae8b90afbf4644f5b2bd580720"
+        }
+      ]
+    },
+    {
+      "identity_id": "I053",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "straw_hat",
+          "observed": "straw_hat",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "coif",
+          "observed": "coif",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "widow_veil",
+          "observed": "widow_veil",
+          "status": "PASS"
+        }
+      ],
+      "notes": "올라간 눈·긴 코·턱 끝 유지. 밀짚모자→coif→과부베일 변경이 자연스럽고 노년 골격이 보존된다.",
+      "evidence": [
+        {
+          "file": "portraits/I053_young.png",
+          "sha256": "ffb952af59988ea17068c394435daeb7ebc8d723e2131b8e0dcfa0ecc8b3b710"
+        },
+        {
+          "file": "portraits/I053_mature.png",
+          "sha256": "c905e51dc15700d141109d42b919bec1db1b76e223bf1c7f40538a1576359052"
+        },
+        {
+          "file": "portraits/I053_old.png",
+          "sha256": "7b4cefa42573b1897f20f32f4a8dc0391a86537f75c74ea1989258529971cc03"
+        }
+      ]
+    },
+    {
+      "identity_id": "I054",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        }
+      ],
+      "notes": "길고 마른 얼굴·코·귀 유지. 맨머리→hood→회색맨머리로 진행하며 노년은 깊은 주름과 목으로도 읽힌다.",
+      "evidence": [
+        {
+          "file": "portraits/I054_young.png",
+          "sha256": "d4eb231f952b4a78f700e7da4617b56db0c3607f53d6d48956acdce00b1c23e6"
+        },
+        {
+          "file": "portraits/I054_mature.png",
+          "sha256": "6de0e43058ceef8b4ddff3fc81a73434865be0eb6df4f36b3a4b193fc95b9b1d"
+        },
+        {
+          "file": "portraits/I054_old.png",
+          "sha256": "37b80fc97c684c0321cff750f7755618fc9d64d5729ec965b99d2f8518aece16"
+        }
+      ]
+    },
+    {
+      "identity_id": "I055",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        }
+      ],
+      "notes": "둥근 얼굴·올라간 콧수염·짧은 코 유지. 노년 목과 얼굴변화 자연스럽다.",
+      "evidence": [
+        {
+          "file": "portraits/I055_young.png",
+          "sha256": "6c0e20a71dcb8c68a0901704d1df348dd70cb70227882bc86222e72bff0dec6b"
+        },
+        {
+          "file": "portraits/I055_mature.png",
+          "sha256": "7461e91fde12f8e8d45d8c0e24b5482ac4901f01460e464cc5bbbe931ca64b8a"
+        },
+        {
+          "file": "portraits/I055_old.png",
+          "sha256": "b2228c50dcb8ad08eef8bc5eda6b40ad94032e8d42c655c264d61a7210461846"
+        }
+      ]
+    },
+    {
+      "identity_id": "I056",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        }
+      ],
+      "notes": "적갈색 단발과 나뉜수염·긴 코 유지. 노년머리와 수염 희끗해지며 볼처짐.",
+      "evidence": [
+        {
+          "file": "portraits/I056_young.png",
+          "sha256": "2bf9fb9e6e241d8b3f9a8d0eae4040caf76e6481c72215b720eff7de93c71846"
+        },
+        {
+          "file": "portraits/I056_mature.png",
+          "sha256": "61b60f093df3cc4564192731abcb9cac954dd33342934a2a3376a14c4bf8152b"
+        },
+        {
+          "file": "portraits/I056_old.png",
+          "sha256": "af2578586a2850f887e5f1df0df0ee2002ba63262ede7727f5aa36a207a898c8"
+        }
+      ]
+    },
+    {
+      "identity_id": "I057",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "loose_unmarried",
+          "observed": "loose_unmarried",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "straw_hat",
+          "observed": "straw_hat",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "colored_headscarf",
+          "observed": "colored_headscarf",
+          "status": "PASS"
+        }
+      ],
+      "notes": "넓은 얼굴·눈 간격·코 유지. 풀어내린 머리→밀짚모자→색머리수건. 노년의 얼굴과 목 변화 자연스럽다.",
+      "evidence": [
+        {
+          "file": "portraits/I057_young.png",
+          "sha256": "be7bff38234dd51b7c03ff68b64c5f48ab23d9af884670cad1737454db7edfe6"
+        },
+        {
+          "file": "portraits/I057_mature.png",
+          "sha256": "1bf7ce58d413d23542564dfde80be75592c83625cf9623030b76cbd2857b6fa7"
+        },
+        {
+          "file": "portraits/I057_old.png",
+          "sha256": "7add01fe464278cf88af2b4931377cfc978d1739722db81b04fd6455e475019d"
+        }
+      ]
+    },
+    {
+      "identity_id": "I058",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "colored_headscarf",
+          "observed": "colored_headscarf",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "straw_hat",
+          "observed": "straw_hat",
+          "status": "PASS"
+        }
+      ],
+      "notes": "색머리수건→hood→밀짚모자 변경이 명확하고, 큰 코·각진 턱 골격을 유지한 채 늙는다.",
+      "evidence": [
+        {
+          "file": "portraits/I058_young.png",
+          "sha256": "a77798968b4d5f100b48c85b2f1b9806ab9cea74be36d666106531c72d483795"
+        },
+        {
+          "file": "portraits/I058_mature.png",
+          "sha256": "bed3326b2b4ca149f9adaf954a3484c1cd840c1259562fffbe5a5f3130ef4459"
+        },
+        {
+          "file": "portraits/I058_old.png",
+          "sha256": "50a04cd82aa5fb8869efab929fab313e71b2ba7590a9f6506285ceef8b2fd6c5"
+        }
+      ]
+    },
+    {
+      "identity_id": "I059",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "straw_hat",
+          "observed": "straw_hat",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "colored_headscarf",
+          "observed": "colored_headscarf",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "coif",
+          "observed": "coif",
+          "status": "PASS"
+        }
+      ],
+      "notes": "넓고 둥근 얼굴·작은 입 유지. 밀짚모자→황토수건→coif 세 종류 명확.",
+      "evidence": [
+        {
+          "file": "portraits/I059_young.png",
+          "sha256": "951db4158c37e28c6c9db4e82b84cd27911d377e2710eae479015bc2b5632293"
+        },
+        {
+          "file": "portraits/I059_mature.png",
+          "sha256": "330568a8db005d9367c85fc0950240b9b272d079bd6787e1ff9cad236f8b1fc7"
+        },
+        {
+          "file": "portraits/I059_old.png",
+          "sha256": "8f8a6c9003978f7d54d9d36668e971353a0512ec2249a5ae38408eb80550ffc0"
+        }
+      ]
+    },
+    {
+      "identity_id": "I060",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "tonsure",
+          "observed": "tonsure",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "tonsure",
+          "observed": "tonsure",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "tonsure",
+          "observed": "tonsure",
+          "status": "PASS"
+        }
+      ],
+      "notes": "둥근 머리·처진 눈·작은 입 유지. 세 단계tonsure가 보이고 현대흰로만칼라 없음. 장년의날카로움 미묘.",
+      "evidence": [
+        {
+          "file": "portraits/I060_young.png",
+          "sha256": "e7b1bc2af848dbeecc80cec64c931ed4b55bc0329c1c98f74fd73e043c990ca6"
+        },
+        {
+          "file": "portraits/I060_mature.png",
+          "sha256": "d61100488db2c10f8f214378201fab3398afe024f56f28f6d936391075fef4e0"
+        },
+        {
+          "file": "portraits/I060_old.png",
+          "sha256": "f0624697a97cdedfcf605826a7ba10226fc223945e659ddbdbef71f01be6b90f"
+        }
+      ]
+    },
+    {
+      "identity_id": "I061",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "tonsure",
+          "observed": "tonsure",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "tonsure",
+          "observed": "tonsure",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "tonsure",
+          "observed": "tonsure",
+          "status": "PASS"
+        }
+      ],
+      "notes": "긴 얼굴·큰 코·돌출한 턱 유지. tonsure 두피 일부가 세 단계 모두 보인다. 장년의 옅은미소와 노년 중립 구분.",
+      "evidence": [
+        {
+          "file": "portraits/I061_young.png",
+          "sha256": "57ef4fbe0873eb98c66b5dc3bfb34a1d70e354bbf8afc93ccdd9c147df531586"
+        },
+        {
+          "file": "portraits/I061_mature.png",
+          "sha256": "d596109a7f5d7811802f7b218e96d402a079a88d7ca087445717264c9f93ed39"
+        },
+        {
+          "file": "portraits/I061_old.png",
+          "sha256": "68478bdd4e06a717df950fc1d8523fe69520d01152f10decb3c9130fc21b80fc"
+        }
+      ]
+    },
+    {
+      "identity_id": "I062",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "veil_wimple",
+          "observed": "veil_wimple",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "veil_wimple",
+          "observed": "veil_wimple",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "veil_wimple",
+          "observed": "veil_wimple",
+          "status": "PASS"
+        }
+      ],
+      "notes": "수녀veil+wimple 유지. 얼굴코·눈·입 동일. 머리가보이지않아 청년-장년 차이는96px에서 매우약하지만 노년 얼굴주름은 읽힌다.",
+      "evidence": [
+        {
+          "file": "portraits/I062_young.png",
+          "sha256": "641d892eaafd4d7f2b178bd1e90acc03096ce6c76188238a046b4cc6b51ccdb5"
+        },
+        {
+          "file": "portraits/I062_mature.png",
+          "sha256": "08a9b3e18fb75b7f9112c7238db64a19632fbe4b8058c528eb8ec80045a4ad7a"
+        },
+        {
+          "file": "portraits/I062_old.png",
+          "sha256": "360c1fc8339bd20043545e5448067f5a6533838d905d28f3be3c218792f4d129"
+        }
+      ]
+    },
+    {
+      "identity_id": "I063",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "bare_bob",
+          "observed": "bare_bob",
+          "status": "PASS"
+        }
+      ],
+      "notes": "길고 좁은얼굴·턱·눈간격 유지. hood중간단계와 회색노년 확인.",
+      "evidence": [
+        {
+          "file": "portraits/I063_young.png",
+          "sha256": "909edaf289b61251d966b60eb06194ff440ea0d30458f18903873665ad4e9276"
+        },
+        {
+          "file": "portraits/I063_mature.png",
+          "sha256": "57afab5f6c4f7534569d2074d6c65b70ecb8c8c9b8aea5a1d5623b66aa8ca30e"
+        },
+        {
+          "file": "portraits/I063_old.png",
+          "sha256": "9f395e8ce9eb2e159accb7b735b9400eb8b11cac260120decf08fa43a3ddf215"
+        }
+      ]
+    },
+    {
+      "identity_id": "I064",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "old_age_progression": "PASS",
+      "young_to_mature_96": "SUBTLE_BUT_READABLE_WITH_CHAIN",
+      "expression": "NATURAL_SUBTLE_MATCH",
+      "headwear": [
+        {
+          "stage": "young",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "mature",
+          "expected": "colored_headscarf",
+          "observed": "colored_headscarf",
+          "status": "PASS"
+        },
+        {
+          "stage": "old",
+          "expected": "widow_veil",
+          "observed": "widow_veil",
+          "status": "PASS"
+        }
+      ],
+      "notes": "둥근 얼굴·입술·코끝 유지. hood→황토수건→암색과부베일이 구분되며 노년 회색머리·목 변화 자연스럽다.",
+      "evidence": [
+        {
+          "file": "portraits/I064_young.png",
+          "sha256": "ea8e13d3629bd65016167bbb62a9fb44167c210a4a33fa29357f3eb790d6c1aa"
+        },
+        {
+          "file": "portraits/I064_mature.png",
+          "sha256": "d87fbcde6c0ee163d9e39a62adcad159235eef73d400b5eee7f00879d8e44117"
+        },
+        {
+          "file": "portraits/I064_old.png",
+          "sha256": "a638fc1ad88d93ba43192a95af0af11be17b7ff7cce39e596c1506e96246501d"
+        }
+      ]
+    },
+    {
+      "identity_id": "I065",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS_YOUNG_16_TO_30",
+      "headwear": [
+        {
+          "stage": "child",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        },
+        {
+          "stage": "young",
+          "expected": "hood",
+          "observed": "hood",
+          "status": "PASS"
+        }
+      ],
+      "notes": "R2에서 턱·코·목이 성숙하고 수염그늘이 생겨96px에서도 아이와 청년16–30이 구분된다. 눈·귀·코의 정체성은 보존된다. 실제머리쓰개는hood이며 최종메타데이터도hood다.",
+      "evidence": [
+        {
+          "file": "portraits/I065_child.png",
+          "sha256": "695d51841bb74edc40880459cca4d99956465a2cd78df3647f562e0958462c93"
+        },
+        {
+          "file": "portraits/I065_young.png",
+          "sha256": "805e11330abd1970f94c2bb7ee617634a1010d48af0000b0bb151eac24455d82"
+        }
+      ],
+      "revision": "R2"
+    },
+    {
+      "identity_id": "I066",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS_YOUNG_16_TO_30",
+      "headwear": [
+        {
+          "stage": "child",
+          "expected": "felt_hat",
+          "observed": "felt_hat",
+          "status": "PASS"
+        },
+        {
+          "stage": "young",
+          "expected": "felt_hat",
+          "observed": "felt_hat",
+          "status": "PASS"
+        }
+      ],
+      "notes": "R2에서 코와 하안면이 커지고 턱·목이 성숙하며 옅은수염이 보인다. 살찐체형과 둥근아이의 고유특징을 유지하면서 청년16–30으로읽힌다. 22라는정확한나이는 단정하지 않는다. 실제머리쓰개felt_hat으로 최종메타데이터와 일치.",
+      "evidence": [
+        {
+          "file": "portraits/I066_child.png",
+          "sha256": "2cb10e3163fac8484db8e14eb4c81490f24d958515ba35fada5271ddca2aa12a"
+        },
+        {
+          "file": "portraits/I066_young.png",
+          "sha256": "1c97a529bf85823fbfb37d7c15ad48b4af8c0ea36eef97c8027d1e74dc950806"
+        }
+      ],
+      "revision": "R2"
+    },
+    {
+      "identity_id": "I067",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS_WITH_LATE_TEEN_NOTE",
+      "headwear": [
+        {
+          "stage": "child",
+          "expected": "loose_unmarried",
+          "observed": "loose_unmarried",
+          "status": "PASS"
+        },
+        {
+          "stage": "young",
+          "expected": "white_veil",
+          "observed": "white_veil",
+          "status": "PASS"
+        }
+      ],
+      "notes": "큰눈·작은 입과 코 유지하며 목과 하안면이 자라청년으로읽힌다.22보다는18–20인상, 비교적수용가능.",
+      "evidence": [
+        {
+          "file": "portraits/I067_child.png",
+          "sha256": "c9fff2e86f7f97d09a4d95abd1984b6e4d6a8e8316691146e836222a05fb4286"
+        },
+        {
+          "file": "portraits/I067_young.png",
+          "sha256": "a1b7537c32b4cdf74e23363f49d80d440d15c45d23ce08af63a9e8c6e323b58e"
+        }
+      ]
+    },
+    {
+      "identity_id": "I068",
+      "same_identity_256": "PASS",
+      "same_identity_96": "PASS",
+      "age_progression": "PASS_YOUNG_16_TO_30",
+      "headwear": [
+        {
+          "stage": "child",
+          "expected": "coif",
+          "observed": "coif",
+          "status": "PASS"
+        },
+        {
+          "stage": "young",
+          "expected": "straw_hat",
+          "observed": "straw_hat",
+          "status": "PASS"
+        }
+      ],
+      "notes": "R2에서 하안면·목이 길어지고 턱과 어깨가 성숙해96px에서도 아이→청년 성장으로읽힌다. 눈·코·입의 정체성을 유지하며 밀짚모자도명확하다.",
+      "evidence": [
+        {
+          "file": "portraits/I068_child.png",
+          "sha256": "e54b1dabed80331169479ef6971e8ce3df0d1701601723ccc8e09a720b89c748"
+        },
+        {
+          "file": "portraits/I068_young.png",
+          "sha256": "f3b96f0c6c7353c5478afb9ee9a62222cea38bf038ad896e83a7cac57d5246a6"
+        }
+      ],
+      "revision": "R2"
+    }
+  ],
+  "issues": [],
+  "limitations": [
+    "All32chains and92currentportraits inspected. R2 I065/I066/I068young explicitly rereviewed besidechild at256and96; current92hashes recorded.",
+    "Young-to-mature changes are intentionally restrained and often subtle at96px; alloldstages nevertheless visiblyage the same person.",
+    "Expression categories overlap naturally at small sizes; this is not an exact blind expression classification score.",
+    "No actual game integration was tested.",
+    "Visualage category young16–30 is assessed; nominalage22 cannot be inferred precisely from an image."
+  ],
+  "reviewed_child_chains": 4,
+  "female_headwear_coverage": {
+    "status": "PASS_OBSERVED",
+    "types": [
+      "white_veil",
+      "veil_wimple",
+      "barbette_fillet",
+      "coif",
+      "colored_headscarf",
+      "hood",
+      "straw_hat",
+      "widow_veil",
+      "loose_unmarried"
+    ],
+    "note": "All9visiblyrepresented. I042mature chinstrapthin but present."
+  },
+  "revision": "R2 child growth rereview",
+  "resolved_issues": [
+    {
+      "id": "HEADWEAR-01",
+      "portrait": "I038_old",
+      "severity": "metadata/design mismatch",
+      "expected": "coif_cap",
+      "observed": "Long red hood drapes to left shoulder over narrow pale coif band.",
+      "recommendation": "Regenerate outer cap, or retain artwork only with truthful hood metadata and disclosed deviation.",
+      "resolution": "Finalrosterhood tag verified against actualI038old."
+    },
+    {
+      "id": "GROWTH-01",
+      "portrait": "I066_young",
+      "severity": "required growth weak",
+      "expected": "recognizable adult22",
+      "observed": "Still reads12–15; childfaceproportions retained",
+      "recommendation": "Regenerate adult lowerface, neck andshoulders while preservingidentity.",
+      "resolution": "R2 rereview passed requestedyoung16–30 agecategory at256and96; sameidentityretained."
+    },
+    {
+      "id": "GROWTH-02",
+      "portrait": "I065_young",
+      "severity": "borderline",
+      "expected": "adult22",
+      "observed": "reads16–18",
+      "recommendation": "Strengthen adulthood if feasible.",
+      "resolution": "R2 rereview passed requestedyoung16–30 agecategory at256and96; sameidentityretained."
+    },
+    {
+      "id": "GROWTH-03",
+      "portrait": "I068_young",
+      "severity": "required growth weak",
+      "expected": "adult22",
+      "observed": "Reads13–16, faceandneck nearlyunchanged",
+      "recommendation": "Regenerate stronger adult proportions preservingidentity.",
+      "resolution": "R2 rereview passed requestedyoung16–30 agecategory at256and96; sameidentityretained."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "chapter1_end",
+    "sceneDescription": "대기근을 넘긴 1318년 봄. 새싹이 돋는 밭 너머 작은 장터가 다시 열리고 두 가족이 목책 도시로 돌아간다.",
+    "characters": "평범한 가족 두 무리, 장터 상인과 주민",
+    "historyNotes": "남부 잉글랜드 목골조·회칠·초가·평기와, 목책, 작은 교구 교회. 호화로운 승전이나 전염병 상징 없이 절제된 회복.",
+    "qa": {
+      "visual": "pass",
+      "readability": "봄의 회복과 시장 재개는 글 없이 읽힘. 대기근을 넘겼다는 정확한 과거 원인은 앞선 장면 맥락이 필요.",
+      "forbiddenElements": "눈에 띄는 문자·숫자·문 표식·홉·관·역병·주택 굴뚝·원색 없음",
+      "score": 93
+    },
+    "file": "assets/chapters/chapter1_end.png",
+    "width": 1920,
+    "height": 1080,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Asset chapter1_end: ONE complete wide 16:9 hand-painted chapter ending scene, target 1920x1080 or higher native, no panels/borders. Reference1 title painting defines painterly detail, low-chroma muted natural palette and Southern English timber market town, reference2 is only paint/landscape tone (DO NOT copy its erroneous X door markings), reference3/4 define natural unexaggerated human faces. Depict Southern England, spring 1318: a modest market town which has survived the great famine, seen from a gentle grassy rise near its timber palisade. A freshly tilled small field with tender green shoots in foreground, two ordinary families with worn wool and linen clothing walk toward reopened small market stalls, one vendor places a modest basket of bread on a trestle. Town is materially humble, repaired thatched and warm pale plaster oak-framed houses with a few muted flat clay tile roofs, a simple small parish church, nearby river, distant fields. Quiet muted morning sunlight breaking through cloud, a little fresh growth; restrained hope after hardship, not wealth or triumph. Broad town panorama but readable small market activity, no posed crowd looking at viewer. Brush texture in sky, grass, plaster; natural painterly realism, softly defined distant landscape, no CGI or slick digital gloss, no manuscript border. Architecture and clothes exclusively England 1300-1318. No text, lettering, numbers, pseudo-writing, marks on doors, X markings, heraldic flags, known coats of arms, hops, coffins, plague or corpses, vivid primary colours, chimneys on houses, reflective blue windows, Renaissance architecture, fantasy ornaments. ONE scene, no collage.",
+        "rawFile": "raw/chapters/chapter1_end.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "nativeSize": [
+        1672,
+        941
+      ],
+      "targetSize": [
+        1920,
+        1080
+      ],
+      "upscaled": true,
+      "method": "Sharp Lanczos3 uniform cover resize with centre crop to exact 16:9; no nonuniform distortion; RGB native converted to opaque RGBA",
+      "scale": 1.1483253588516746,
+      "status": "candidate - not installed"
+    }
+  },
+  {
+    "id": "chapter2_intro",
+    "sceneDescription": "목책 성문으로 들어온 기마 전령이 밀봉한 서신을 관리에게 내민다. 주민들이 조심스럽게 지켜보며 다음 장의 불안을 예고한다.",
+    "characters": "기마 전령, 마을 관리, 시장 주민 다섯 명",
+    "historyNotes": "단순한 목책 성문·양모 망토·코이프·안장과 등자·봉랍 서신. 실제 왕가 문장과 문자·전투·시신은 넣지 않음.",
+    "qa": {
+      "visual": "pass",
+      "readability": "성문에 도착한 전령과 서신 인계는 명확함. 국왕의 전령이라는 신분과 미래 전쟁은 문맥 의존, 그림만으로 확정 불가.",
+      "forbiddenElements": "눈에 띄는 문자·숫자·문 표식·홉·관·역병·주택 굴뚝·원색 없음",
+      "score": 92
+    },
+    "file": "assets/chapters/chapter2_intro.png",
+    "width": 1920,
+    "height": 1080,
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Asset chapter2_intro: ONE full-bleed wide 16:9 chapter opening painting, target1920x1080 or higher native. Reference1 title defines hand-painted natural low-chroma medieval town world, reference2 painting material/tone only (never copy its erroneous white X door markings), reference3/4 define naturally modelled faces. Southern England market town, spring1318. A mounted royal messenger ENTERS through an open modest oak timber palisade gate. View from inside the town toward the open gateway: messenger's face and the front/three-quarter of his small sturdy bay riding horse visible while passing between upright gate posts, outside road recedes into fields. Messenger wears subdued russet/brown wool traveling cloak and simple coif, plain leather belt, no armour or ornamental heraldry; holds a small folded BLANK parchment dispatch with a dark muted wax seal and cord so his mission is clear. A town official standing just inside reaches to receive it; a few wary ordinary townsfolk pause their work with concerned restrained expressions. New chapter foretaste of war conveyed by gathering cloud and uneasy attention to the sealed message, NOT battle, dead bodies or invasion. Near gate are plain thatched oak-and-warm-plaster houses, modest trestle stall, road mud and straw; shallow rich brushwork with realistic scale and calm coherent anatomy. Muted ochres, moss grey, weathered oak, soft cool grey sky, no vivid red/blue/yellow. NO text, letters, numerals, pseudowriting, door markings/X, known coats of arms, flags, hops, coffins, plague, dramatic fantasy castle, house chimneys, blue glass, brick houses, modern/Renaissance features, frame, collage or split-panel. Messenger is clearly arriving IN town, not departing. ONE readable scene.",
+        "rawFile": "raw/chapters/chapter2_intro.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "nativeSize": [
+        1672,
+        941
+      ],
+      "targetSize": [
+        1920,
+        1080
+      ],
+      "upscaled": true,
+      "method": "Sharp Lanczos3 uniform cover resize with centre crop to exact 16:9; no nonuniform distortion; RGB native converted to opaque RGBA",
+      "scale": 1.1483253588516746,
+      "status": "candidate - not installed"
+    }
+  }
+]

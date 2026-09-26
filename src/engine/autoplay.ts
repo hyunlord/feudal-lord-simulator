@@ -45,7 +45,6 @@ import { ARABLE_MARGIN_PERMILLE, NAIVE_ARABLE_MARGIN_PERMILLE, withArableMargin 
 import { winterReserveAction } from './autoplayWinterReserve';
 import { barnMillAction } from './autoplayBarnMill';
 import { chapterDecisionAction, dearthArableMargin, dearthHoldsGrowth, rebuildBurntHouseAction } from './autoplayEvents';
-import { walledFieldsAction } from './autoplayWalledFields';
 /** The advisor's outward action: the placement actions plus BOT-1's house relocation (`demolish_house`). */
 export type { AdvisorAction as AutoplayAction } from './autoplayBotRecovery';
 export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
@@ -346,8 +345,6 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => winterReserve(state),
     () => barnMill(state),
     () => foodAction(state, buildAction, diagnostic),
-    // F0-B (AR-9): a walled town short of house sites gives its fields inside the wall to house plots.
-    () => walledFieldsAction(state, policy.maxHousingLots),
     housingPhase,
     servicePhase,
     () => marketGap(state),

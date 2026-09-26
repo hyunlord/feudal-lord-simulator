@@ -103,6 +103,8 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/walkerSheetManifest.generated.ts",
     "src/ui/uiArtManifest.generated.ts",
     "src/render/visibilityArtManifest.ts",
+    "src/render/wave7ArtManifest.generated.ts",
+    "src/render/wave11ArtManifest.generated.ts",
   ];
   for (const file of manifestFiles) {
     for (const url of extractUrlLiterals(readText(file))) add(url, file);

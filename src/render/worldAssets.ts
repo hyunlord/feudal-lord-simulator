@@ -58,6 +58,13 @@ export function getSprite(key: string): CanvasImageSource | null {
   return record?.status === "ready" ? record.scaledImage : null;
 }
 
+/** The sprite's loaded image at its authored resolution (getSprite's raster is at the meta's render scale); R0-2's
+ * fitted buildings draw from it, since they are drawn larger than the render scale. */
+export function getSpriteSource(key: string): HTMLImageElement | null {
+  const record = records.get(key);
+  return record?.status === "ready" ? record.image : null;
+}
+
 export function spriteMeta(key: string): AssetMeta | null {
   const record = records.get(key);
   return record === undefined ? null : { ...record.meta, status: record.status };

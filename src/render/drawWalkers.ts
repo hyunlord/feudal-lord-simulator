@@ -10,6 +10,7 @@ import { drawRuntimeActor, drawRuntimeHandcart } from "./runtimeActorAssets";
 import { composedWalkerReady, drawComposedWalker, walkerAppearance } from "./walkerComposer";
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
 import { visibilityArt } from "./visibilityArtManifest";
+import { drawWave7 } from "./wave7Art";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { drawUiIcon } from "../ui/uiArt";
 
@@ -79,7 +80,7 @@ export function drawWalker(
   const presentation = walkerPresentationFor(walker);
   // V2: the composed look (sheet, held prop, winter cloak) above the legacy LOD zoom; the legacy actor while its
   // images load, the procedural sprite below that zoom.
-  const composed = state !== null && zoom > RUNTIME_ACTOR_MIN_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale);
+  const composed = state !== null && zoom > RUNTIME_ACTOR_MIN_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale, zoom);
   if (!composed && !drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter")) {
     drawWalkerHalo(context, footX, footY, scale);
     drawProceduralWalkerSprite(context, {
@@ -102,13 +103,26 @@ export function drawWalker(
 
 const RUNTIME_ACTOR_MIN_ZOOM = 0.7;
 const CLOSE_ZOOM = 1.3;
-const CART_PAYLOAD: Partial<Record<ResourceType, "pile_wood_1" | "pile_stone_1">> = {
+// INSTALL-7: the Wave 7 cart loads, one per good and cart axis (NE / SW carts: the `_ne` load; SE / NW: `_nw`); the
+// F0-V Wave 6 pile stands in while they load. Coin rides in the collector's purse, not on a cart.
+const CART_PAYLOAD: Partial<Record<ResourceType, "log" | "timber" | "rawstone" | "stone" | "grainsack" | "bread">> = {
+  logs: "log", timber: "timber", stone_raw: "rawstone", stone: "stone", wheat: "grainsack", bread: "bread",
+};
+const CART_PAYLOAD_FALLBACK: Partial<Record<ResourceType, "pile_wood_1" | "pile_stone_1">> = {
   logs: "pile_wood_1", timber: "pile_wood_1", stone_raw: "pile_stone_1", stone: "pile_stone_1",
 };
+/** LOD: below this zoom the cart's load is not drawn (it reads as a few pixels; the cart and carter say enough). */
+export const CART_LOAD_MIN_ZOOM = 0.8;
 const CARGO_ICON: Partial<Record<ResourceType, "bread" | "timber" | "stone" | "coin">> = { bread: "bread", coin: "coin", wheat: "bread" };
 
-function drawCartPayload(context: CanvasRenderingContext2D, cart: { readonly x: number; readonly y: number; readonly width: number; readonly height: number }, resource: ResourceType): void {
-  const key = CART_PAYLOAD[resource];
+function drawCartPayload(context: CanvasRenderingContext2D, cart: { readonly x: number; readonly y: number; readonly width: number; readonly height: number },
+  resource: ResourceType, direction: string): void {
+  const load = CART_PAYLOAD[resource];
+  if (load === undefined) return;
+  // The load's pivot (bottom centre of its 36 px cargo) on the cart bed, the cargo about 0.55 of the cart's width.
+  const axis = direction === "NE" || direction === "SW" ? "ne" : "nw";
+  if (drawWave7(context, `cart_load_${load}_${axis}`, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / 36)) return;
+  const key = CART_PAYLOAD_FALLBACK[resource];
   const image = key === undefined ? null : visibilityArt(key);
   if (image === null) return;
   const width = cart.width * 0.62;
@@ -123,7 +137,7 @@ function drawCargoIcon(context: CanvasRenderingContext2D, footX: number, footY: 
 }
 
 function drawComposedWalkerWithCart(context: CanvasRenderingContext2D, state: GameState, walker: Walker,
-  presentation: ReturnType<typeof walkerPresentationFor>, footX: number, footY: number, scale: number): boolean {
+  presentation: ReturnType<typeof walkerPresentationFor>, footX: number, footY: number, scale: number, zoom: number): boolean {
   // The cart is drawn only once the body is known to draw, so a loading look never leaves a cart without a carter.
   if (!composedWalkerReady(state, walker)) return false;
   const handcart = walker.kind === "carter";
@@ -131,7 +145,7 @@ function drawComposedWalkerWithCart(context: CanvasRenderingContext2D, state: Ga
   // F0-V cart payload: timber / logs or stone / raw stone ride on the cart bed (the Wave 6 level-1 pile, scaled).
   const cart = () => {
     const rect = drawRuntimeHandcart(context, presentation.direction, footX, footY, scale);
-    if (rect !== null && walker.cargo !== null) drawCartPayload(context, rect, walker.cargo.resource);
+    if (rect !== null && walker.cargo !== null && zoom >= CART_LOAD_MIN_ZOOM) drawCartPayload(context, rect, walker.cargo.resource, presentation.direction);
   };
   if (handcart && cartBehind) cart();
   drawComposedWalker(context, state, walker, presentation, footX, footY, scale);

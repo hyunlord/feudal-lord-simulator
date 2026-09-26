@@ -16,6 +16,8 @@ import { drawPalisadeRun, drawPalisadeSegment } from "../src/render/drawPalisade
 import { constructionSiteLabelAnchor, constructionSiteLabelBoxes } from "../src/render/constructionSiteLabelLayout";
 import { building, state as makeState } from "./stoneWallConversionFixtures";
 import { loggedContext } from "./constructionRenderingFixtures";
+import { SIGNAL_PERSIST_TICKS } from "../src/render/signalPersistence";
+import type { GameState } from "../src/engine/engine.types";
 
 test("proposal plot remains visibly distinct at minimum zoom", () => {
   // Given
@@ -144,12 +146,18 @@ test("drawConstructionSite ties its label to its own footprint with a leader lin
   assert.ok(context.calls.slice(0, leader).includes("strokeStyle:#2A2118"));
 });
 
+/** R0-1: a site's blocker shows once it has held a distribution cycle: the state is seen, then a cycle later. */
+function heldACycle(state: GameState): GameState {
+  for (const site of state.constructionSites) drawConstructionSite(loggedContext(), { site, state, zoom: 1 });
+  return { ...state, tick: state.tick + SIGNAL_PERSIST_TICKS };
+}
+
 test("neighbouring construction labels step up instead of overlapping", () => {
   // Given: two labelled sites side by side whose labels would share a row.
   const first = site({ id: "construction-site-000001", stall: "no_builders", delivered: { timber: 40 } });
   const second = site({ id: "construction-site-000002", tx: 3, ty: 1, stall: "no_builders", delivered: { timber: 40 } });
-  const state = makeState({ width: 8, height: 8, palisade: null, houses: [], walkers: [], buildings: [],
-    constructionSites: [first, second] });
+  const state = heldACycle(makeState({ width: 8, height: 8, palisade: null, houses: [], walkers: [], buildings: [],
+    constructionSites: [first, second] }));
 
   // When: the label layout still steps rows, and F0-V's site plaques (drawn with a state) step the same way.
   const boxes = constructionSiteLabelBoxes([{ site: first, label: "👷 일꾼 없음" }, { site: second, label: "👷 일꾼 없음" }], 1, text => text.length * 8);
@@ -190,8 +198,8 @@ test("drawConstructionSite shows the live road break before the stored delivery 
   });
   const context = loggedContext();
 
-  // When
-  drawConstructionSite(context, { site: stalledSite, state, zoom: 1 });
+  // When (the break has held a distribution cycle, R0-1)
+  drawConstructionSite(context, { site: stalledSite, state: heldACycle(state), zoom: 1 });
 
   // Then: F0-V's plaque names the live road break (the blocker), not the stored delivery stall.
   assert.ok(context.calls.some(call => call.startsWith("fillText:길 끊김")), JSON.stringify(context.calls.filter(call => call.startsWith("fillText"))));

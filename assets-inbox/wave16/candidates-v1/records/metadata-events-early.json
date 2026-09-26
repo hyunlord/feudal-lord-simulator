@@ -1,0 +1,276 @@
+[
+  {
+    "id": "event_first_winter",
+    "file": "assets/events/event_first_winter.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "첫 겨울: 눈 내린 초가 마을의 곡창 앞, 남은 자루를 세는 청지기와 주민",
+    "characters": "청지기 1명, 주민 3명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 수공 목골조·초가·양모와 리넨, 문 표식·홉·관·흑사병·글자 없음. 겨울/재건/우천 초안의 굴뚝은 생성 편집으로 제거.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE full-bleed wide 16:9 opaque event-card illustration, no frame. Southern England market village 1300–1318. References 1 and 2 are project-only hand-painted keyart style and materials; references 3 and 4 show restrained natural face rendering. Handpainted low-saturation gouache/oil-like brushwork, subtle paper grain, earthy umber, grey olive, weathered oak, warm plaster and straw; natural anatomy, quiet storytelling not fantasy caricature. Keep all important action within central 90 percent for 960x540 crop. NO letters, digits, pseudo-writing, door markings or painted X, no hops, no coffin, no plague, no primary/neon colours, no house chimney, no glass windows, no modern objects. Plain sacks and blank wood only. Do NOT copy the incorrect painted door X from reference2. Single coherent scene read without captions.\nScene: Snow has just settled thickly on thatched roofs and lane edges. In foreground outside a small timber granary, four ordinary villagers in muted wool and linen gather around SIX plain plump grain sacks in an orderly row. Steward counts by touching successive sacks with fingers, other hand open, no tablet or writing. An older woman looks concerned at limited winter stores, another carries one sack inside. Snowy village roofs establish winter clearly; food stock counting the central action.",
+        "rawFile": "raw/events-early/event_first_winter-v1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit this winter scene precisely. Remove EVERY chimney stack on ALL cottage roofs: far upper left tall stack, little stacks across left and center, and stack near upper center-right. Replace each with matching continuous snowy thatch and background sky/trees. These houses have no chimney anywhere, ridge vents are not visible. Preserve church tower cross (church tower is not a chimney), all people, sacks, granary, snow, composition, brushwork and every other detail. No text.",
+        "rawFile": "raw/events-early/event_first_winter-v2.png",
+        "referenceImages": [
+          "raw/events-early/event_first_winter-v1.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "sharp 960×540 cover centre without stretching",
+      "alpha": "opaque RGBA",
+      "sourceDimensions": [
+        1672,
+        941
+      ]
+    },
+    "qa": {
+      "viewed": true,
+      "readability": "high: main scene read without text",
+      "history": "visual scan no prominent prohibited element",
+      "text": "none visible",
+      "status": "candidate"
+    }
+  },
+  {
+    "id": "event_hungry_gap",
+    "file": "assets/events/event_hungry_gap.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "보릿고개: 빈 곡창 바닥과 문밖 풋보리 밭을 바라보는 가족",
+    "characters": "부모와 아이 1명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 수공 목골조·초가·양모와 리넨, 문 표식·홉·관·흑사병·글자 없음. 겨울/재건/우천 초안의 굴뚝은 생성 편집으로 제거.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE full-bleed wide 16:9 opaque event-card illustration, no frame. Southern England market village 1300–1318. References 1 and 2 are project-only hand-painted keyart style and materials; references 3 and 4 show restrained natural face rendering. Handpainted low-saturation gouache/oil-like brushwork, subtle paper grain, earthy umber, grey olive, weathered oak, warm plaster and straw; natural anatomy, quiet storytelling not fantasy caricature. Keep all important action within central 90 percent for 960x540 crop. NO letters, digits, pseudo-writing, door markings or painted X, no hops, no coffin, no plague, no primary/neon colours, no house chimney, no glass windows, no modern objects. Plain sacks and blank wood only. Do NOT copy the incorrect painted door X from reference2. Single coherent scene read without captions.\nScene: Late spring hungry gap. View from inside a nearly empty timber granary with a wide foreground of bare worn wooden floor, a collapsed EMPTY sack and only a few scattered grains. At the large open door a peasant mother, father and child stand close together gazing toward a clearly GREEN UNRIPE BARLEY field outside in mild spring light. Father holds an empty wooden grain bowl tipped toward viewer; child holds mother hand. Concern and waiting not illness. Contrast empty store with unready crop unmistakable.",
+        "rawFile": "raw/events-early/event_hungry_gap-v1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "sharp 960×540 cover centre without stretching",
+      "alpha": "opaque RGBA",
+      "sourceDimensions": [
+        1672,
+        941
+      ]
+    },
+    "qa": {
+      "viewed": true,
+      "readability": "high: main scene read without text",
+      "history": "visual scan no prominent prohibited element",
+      "text": "none visible",
+      "status": "candidate"
+    }
+  },
+  {
+    "id": "event_fire_warning",
+    "file": "assets/events/event_fire_warning.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "화재 징후: 메마르고 밀집한 초가 지붕, 골목 먼 끝의 우물",
+    "characters": "지붕을 살피는 주민 2명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 수공 목골조·초가·양모와 리넨, 문 표식·홉·관·흑사병·글자 없음. 겨울/재건/우천 초안의 굴뚝은 생성 편집으로 제거.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE full-bleed wide 16:9 opaque event-card illustration, no frame. Southern England market village 1300–1318. References 1 and 2 are project-only hand-painted keyart style and materials; references 3 and 4 show restrained natural face rendering. Handpainted low-saturation gouache/oil-like brushwork, subtle paper grain, earthy umber, grey olive, weathered oak, warm plaster and straw; natural anatomy, quiet storytelling not fantasy caricature. Keep all important action within central 90 percent for 960x540 crop. NO letters, digits, pseudo-writing, door markings or painted X, no hops, no coffin, no plague, no primary/neon colours, no house chimney, no glass windows, no modern objects. Plain sacks and blank wood only. Do NOT copy the incorrect painted door X from reference2. Single coherent scene read without captions.\nScene: Dry midsummer FIRE RISK before any actual fire. Elevated intimate street view dominated by very densely packed, dry brittle straw thatch eaves nearly touching across a narrow lane. Parched weeds and dusty earth, warm hazy dry sky. Two villagers foreground look upward worriedly at close dry eaves, one points along lane toward a SMALL DISTANT stone well at far end, conspicuously far from houses. No smoke, flame, sparks or fire anywhere. No signage. Composition emphasizes combustible roofs and inconvenient distant water.\nRoof ridges must be wholly uninterrupted thatch, absolutely no protruding chimney stacks.",
+        "rawFile": "raw/events-early/event_fire_warning-v1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "sharp 960×540 cover centre without stretching",
+      "alpha": "opaque RGBA",
+      "sourceDimensions": [
+        1672,
+        941
+      ]
+    },
+    "qa": {
+      "viewed": true,
+      "readability": "medium: dry dense roofs and distant water legible; precise fire-risk meaning needs event context",
+      "history": "visual scan no prominent prohibited element",
+      "text": "none visible",
+      "status": "candidate"
+    }
+  },
+  {
+    "id": "event_fire",
+    "file": "assets/events/event_fire.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "밤 초가 화재와 우물에서 불길까지 물통을 나르는 주민 줄",
+    "characters": "양동이 전달 주민 8명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 수공 목골조·초가·양모와 리넨, 문 표식·홉·관·흑사병·글자 없음. 겨울/재건/우천 초안의 굴뚝은 생성 편집으로 제거.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE full-bleed wide 16:9 opaque event-card illustration, no frame. Southern England market village 1300–1318. References 1 and 2 are project-only hand-painted keyart style and materials; references 3 and 4 show restrained natural face rendering. Handpainted low-saturation gouache/oil-like brushwork, subtle paper grain, earthy umber, grey olive, weathered oak, warm plaster and straw; natural anatomy, quiet storytelling not fantasy caricature. Keep all important action within central 90 percent for 960x540 crop. NO letters, digits, pseudo-writing, door markings or painted X, no hops, no coffin, no plague, no primary/neon colours, no house chimney, no glass windows, no modern objects. Plain sacks and blank wood only. Do NOT copy the incorrect painted door X from reference2. Single coherent scene read without captions.\nScene: Night-time thatched cottage fire. Orange flame consumes ONE straw roof at right; dark low-saturation slate-blue night and smoke backdrop. A clear diagonal bucket brigade of about eight villagers passes simple wooden water buckets HAND TO HAND from a stone well at left foreground toward burning building. Two people near fire pour water upward. Show chain of action clearly, calm determined faces, no injured people. Warm fire is localized, not neon spectacle. Neighboring timber-plaster roofs visibly endangered, no chimneys.\nAll roof ridges uninterrupted thatch except actual burning area, zero chimney stacks.",
+        "rawFile": "raw/events-early/event_fire-v1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "sharp 960×540 cover centre without stretching",
+      "alpha": "opaque RGBA",
+      "sourceDimensions": [
+        1672,
+        941
+      ]
+    },
+    "qa": {
+      "viewed": true,
+      "readability": "high: main scene read without text",
+      "history": "visual scan no prominent prohibited element",
+      "text": "none visible",
+      "status": "candidate"
+    }
+  },
+  {
+    "id": "event_fire_aftermath",
+    "file": "assets/events/event_fire_aftermath.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "화재 뒤: 그을린 잔해를 치우고 지상에서 짠 목골조를 세우는 목수들",
+    "characters": "목수와 잔해 정리 주민 5명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 수공 목골조·초가·양모와 리넨, 문 표식·홉·관·흑사병·글자 없음. 겨울/재건/우천 초안의 굴뚝은 생성 편집으로 제거.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE full-bleed wide 16:9 opaque event-card illustration, no frame. Southern England market village 1300–1318. References 1 and 2 are project-only hand-painted keyart style and materials; references 3 and 4 show restrained natural face rendering. Handpainted low-saturation gouache/oil-like brushwork, subtle paper grain, earthy umber, grey olive, weathered oak, warm plaster and straw; natural anatomy, quiet storytelling not fantasy caricature. Keep all important action within central 90 percent for 960x540 crop. NO letters, digits, pseudo-writing, door markings or painted X, no hops, no coffin, no plague, no primary/neon colours, no house chimney, no glass windows, no modern objects. Plain sacks and blank wood only. Do NOT copy the incorrect painted door X from reference2. Single coherent scene read without captions.\nScene: Morning after cottage fire. Left foreground black charred broken beams and soot-stained rubble being cleared by two villagers into a low plain handcart. Center-right three carpenters with hemp ropes and a timber prop raise a NEW OAK WALL FRAME assembled flat on ground, currently tilted up halfway, mortise-and-tenon crossmembers obvious. Remaining low stone footing and partly blackened old upright reveal rebuilding same home. Ash grey and warm pale fresh oak contrast. No active fire, no machine/crane, no piles of random giant logs. Reconstruction hopeful but restrained.\nAll intact houses have uninterrupted roof ridges with NO chimney stacks.",
+        "rawFile": "raw/events-early/event_fire_aftermath-v1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Precise correction: remove every chimney from ALL background house roofs. There are small chimney stacks at upper left behind ruins and mid-left atop thatched roofs. Replace them with unbroken thatch/clay tile ridges and matching background. Every ordinary house is without a chimney. Preserve the actual church tower, burned upright timber posts in foreground, raised new oak frame and all five workers, cart, and painting. No other changes.",
+        "rawFile": "raw/events-early/event_fire_aftermath-v2.png",
+        "referenceImages": [
+          "raw/events-early/event_fire_aftermath-v1.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "sharp 960×540 cover centre without stretching",
+      "alpha": "opaque RGBA",
+      "sourceDimensions": [
+        1672,
+        941
+      ]
+    },
+    "qa": {
+      "viewed": true,
+      "readability": "high: main scene read without text",
+      "history": "visual scan no prominent prohibited element",
+      "text": "none visible",
+      "status": "candidate"
+    }
+  },
+  {
+    "id": "event_wet_summer",
+    "file": "assets/events/event_wet_summer.png",
+    "width": 960,
+    "height": 540,
+    "sceneDescription": "흉년 예고: 장맛비에 쓰러진 밀과 이를 바라보는 농부",
+    "characters": "농부 1명",
+    "historyNotes": "1300–1318 잉글랜드 남부. 수공 목골조·초가·양모와 리넨, 문 표식·홉·관·흑사병·글자 없음. 겨울/재건/우천 초안의 굴뚝은 생성 편집으로 제거.",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: historical-scene. Create ONE full-bleed wide 16:9 opaque event-card illustration, no frame. Southern England market village 1300–1318. References 1 and 2 are project-only hand-painted keyart style and materials; references 3 and 4 show restrained natural face rendering. Handpainted low-saturation gouache/oil-like brushwork, subtle paper grain, earthy umber, grey olive, weathered oak, warm plaster and straw; natural anatomy, quiet storytelling not fantasy caricature. Keep all important action within central 90 percent for 960x540 crop. NO letters, digits, pseudo-writing, door markings or painted X, no hops, no coffin, no plague, no primary/neon colours, no house chimney, no glass windows, no modern objects. Plain sacks and blank wood only. Do NOT copy the incorrect painted door X from reference2. Single coherent scene read without captions.\nScene: Rain-damaged midsummer wheat. Foreground broad field of long wheat stalks LODGED FLAT in tangled directional mats, muddy shallow puddles, visibly drooping ears; NOT harvested bundles and no harvest stubble. Rain streaks and heavy slate grey sky. At right foreground a farmer in sodden dull brown wool hood stands at field edge bending to lift one crushed wheat ear, gaze surveying damage. Distant modest thatched village no chimney. Same mood and material rendering as rain field quadrant reference2 but new composition, prominently show farmer and crop damage.\nAll distant houses have uninterrupted thatch roof ridges with zero chimney stacks.",
+        "rawFile": "raw/events-early/event_wet_summer-v1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P05.png",
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave16/astra-wave16-reference-files/P13.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Precise historical correction: remove ALL tiny chimney stacks from distant village house roof ridges. In particular little brown protrusions at upper central thatch roof (roughly x670 y255) and roofs to its left and right. Continue unbroken straw thatch at each location. Keep the substantial stone church tower intact. Preserve farmer, every flattened wheat stalk, rain, puddles, colors, composition. No other changes.",
+        "rawFile": "raw/events-early/event_wet_summer-v2.png",
+        "referenceImages": [
+          "raw/events-early/event_wet_summer-v1.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      },
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Edit only the distant village behind the farmer: repaint ALL distant cottage roofs as plain smooth low thatched roofs with absolutely nothing projecting above their ridge lines. Delete the clearly visible dark rectangular chimney on the large house left of center near the top, and every similar small upright roof protrusion. Retain the stone church tower. You must visibly remove those little dark upright rectangles. Keep foreground farmer, rain and flattened wheat exactly unchanged. No chimney or vent stack exists in this village.",
+        "rawFile": "raw/events-early/event_wet_summer-v3.png",
+        "referenceImages": [
+          "raw/events-early/event_wet_summer-v2.png"
+        ],
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "resize": "sharp 960×540 cover centre without stretching",
+      "alpha": "opaque RGBA",
+      "sourceDimensions": [
+        1672,
+        941
+      ]
+    },
+    "qa": {
+      "viewed": true,
+      "readability": "high: main scene read without text",
+      "history": "visual scan no prominent prohibited element",
+      "text": "none visible",
+      "status": "candidate"
+    }
+  }
+]

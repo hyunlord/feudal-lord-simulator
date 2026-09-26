@@ -1,0 +1,35 @@
+{
+  "id": "event/royal_messenger_arrival",
+  "w": 960,
+  "h": 540,
+  "scene": "A mounted royal messenger arriving at the open timber gate of a small southern English coastal market town, town reeve steps forward to receive his sealed folded dispatch; only four supporting townspeople. Quiet anticipation, coastal inlet distant. Messenger dark red tabard with small three gold lion motif; no quartered arms.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/P05.png"
+  ],
+  "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 960:540, fill complete image edge to edge. A mounted royal messenger arriving at the open timber gate of a small southern English coastal market town, town reeve steps forward to receive his sealed folded dispatch; only four supporting townspeople. Quiet anticipation, coastal inlet distant. Messenger dark red tabard with small three gold lion motif; no quartered arms. Output 960 by 540 pixels.\nROOF CORRECTION: TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending positions in original 960x540 image include red ridge x499,y70; gray shaft above crossbeam x561,y93. Each stack is only about 7–15 pixels wide but must be removed. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, market cross, flagstaffs and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-d5db3d17-8658-4f6c-87f6-eb5ad1edc6d7.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/royal_messenger_arrival.png",
+  "dimensions": [
+    960,
+    540
+  ],
+  "postprocess": "Lanczos3 resize and central cover crop to target; opaque illustration PNG",
+  "selected": true,
+  "revisions": [
+    {
+      "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 960:540, fill complete image edge to edge. A mounted royal messenger arriving at the open timber gate of a small southern English coastal market town, town reeve steps forward to receive his sealed folded dispatch; only four supporting townspeople. Quiet anticipation, coastal inlet distant. Messenger dark red tabard with small three gold lion motif; no quartered arms. Output 960 by 540 pixels.",
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-2ab774f4-bb9c-42bf-be2b-51f28de1e64f.png",
+      "selected": false
+    },
+    {
+      "prompt": "TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending positions in original 960x540 image include red ridge x499,y70; gray shaft above crossbeam x561,y93. Each stack is only about 7–15 pixels wide but must be removed. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, market cross, flagstaffs and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/event/royal_messenger_arrival.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-d5db3d17-8658-4f6c-87f6-eb5ad1edc6d7.png",
+      "selected": true
+    }
+  ]
+}

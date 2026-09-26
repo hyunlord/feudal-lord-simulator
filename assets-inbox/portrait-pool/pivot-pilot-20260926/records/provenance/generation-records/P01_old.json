@@ -1,0 +1,18 @@
+{
+  "id": "P01_old",
+  "age": 70,
+  "prompt": "Use case: identity-preserve. Edit this complete hand-painted historical bust portrait to show EXACTLY THE SAME PERSON at age 70. This is an aging sequence, not a different actor and not makeup painted over a young face. Preserve unmistakable craniofacial skeleton, distinctive nose shape and length, eye spacing and eyelid asymmetry, ears, chin, mouth proportions and any scar/freckle landmark. Identity notes: very long narrow cranium, oversized projecting ears, long straight broad-bridge nose slightly turned down, close-set grey eyes, thin lips, cleft narrow chin, long thin neck and bony shoulders, clean shaven. Preserve original pose and camera orientation exactly, same opaque grey-brown background, same crop/eyeheight, upperleft illumination, coherent natural painterly realism. Keep historically correct circa1300 English clothing and headcovering from original; allow natural wear and modest cloth aging. Clearly elderly70: substantial anatomical aging, thinner skin with age spots and fine irregular wrinkles, sagging cheeks and jowls, under-eye hollows, softened jawline, thinner grey-white hair/receding hairline if visible, older neck. Preserve underlying bones and nose identity. Age the whole person naturally, not just add drawn zigzag wrinkle lines. Healthy believable elder, not gruesome. This must be a single finished square painting, no panels/text/labels/frame. No mirror, no new person, no cosmetic face beautification.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-dc80-7593-9e2d-d99749845fec/exec-f705a22c-29d6-49cf-8540-23b773692bb3.png",
+  "references": [
+    "/tmp/astra-portrait-pivot-work/deliverable/portraits/P01.png"
+  ],
+  "method": "native_imagegen_identity_edit",
+  "revision": 1,
+  "metadata_overrides": {
+    "hair_color": "grey brown"
+  },
+  "packaged_source": "provenance/raw/P01_old.png",
+  "packaged_references": [
+    "provenance/references/4d5fbcfefa9f-P01.png"
+  ]
+}
