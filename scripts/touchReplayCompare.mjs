@@ -69,12 +69,12 @@ const STEPS = [
   ['road tool, drag a road line', async (d, page, at) => { await tool(d, page, '도로', '길'); await d.drag(await at(43, 44), await at(47, 44)); }],
   ['road tool, click one tile twice (place, remove)', async (d, page, at) => { await d.tap(await at(40, 46)); await d.tap(await at(40, 46)); await d.tap(await at(38, 46)); }],
   ['road tool, drag then right click cancels, release', async (d, page, at) => { await d.roadDragCancelled(await at(36, 50), await at(39, 50)); }],
-  ['Esc disarms, left drag pans', async (d, page) => { await page.keyboard.press('Escape'); await d.drag({ x: 700, y: 420 }, { x: 610, y: 380 }); }],
+  ['Esc disarms, left drag pans', async (d, page) => { await escape(page); await d.drag({ x: 700, y: 420 }, { x: 610, y: 380 }); }],
   ['middle drag pans', async (d) => { await d.panDrag({ x: 640, y: 400 }, { x: 700, y: 450 }); }],
   ['wheel zoom in and out', async (d) => { await d.zoomSteps({ x: 600, y: 380 }); }],
   ['house tool, place', async (d, page, at) => { await tool(d, page, '주택', '오두막'); await d.tap(await at(48, 38)); }],
-  ['right click the new site cancels it', async (d, page, at) => { await page.keyboard.press('Escape'); await d.cancelAt(await at(48, 38)); }],
-  ['Space held + drag pans with the road tool', async (d, page) => { await tool(d, page, '도로', '길'); await d.panDragWithSpace({ x: 640, y: 400 }, { x: 600, y: 440 }); await page.keyboard.press('Escape'); }],
+  ['right click the new site cancels it', async (d, page, at) => { await escape(page); await d.cancelAt(await at(48, 38)); }],
+  ['Space held + drag pans with the road tool', async (d, page) => { await tool(d, page, '도로', '길'); await d.panDragWithSpace({ x: 640, y: 400 }, { x: 600, y: 440 }); await escape(page); }],
   ['zone brush: paint, radius ], paint', async (d, page, at) => {
     await d.press(page.locator('button.build-menu-category', { hasText: '구역' }));
     await d.press(page.locator('[data-zone-tool="pasture"]:visible').first());
@@ -83,20 +83,33 @@ const STEPS = [
     await page.keyboard.press('BracketRight');
     await d.drag(await at(52, 49), await at(54, 50));
   }],
-  ['zone brush: Z undoes the last stroke, Esc disarms', async (d, page) => { await page.keyboard.press('KeyZ'); await page.keyboard.press('Escape'); }],
+  ['zone brush: Z undoes the last stroke, Esc disarms', async (d, page) => { await page.keyboard.press('KeyZ'); await escape(page); }],
   ['keyboard pan (D held)', async (d, page) => { await page.mouse.move(640, 400); await page.keyboard.down('KeyD'); await page.waitForTimeout(250); await page.keyboard.up('KeyD'); await page.waitForTimeout(400); }],
   ['map overview press jumps the camera', async (d, page) => {
-    await d.press(page.locator('summary', { hasText: '지도' }).first());
+    // UX-3: the map is the ledger drawer's 지도 tab (opened from the dock); before, a 지도 disclosure in the console.
+    const ledger = page.locator("[data-dock='ledger']");
+    const drawer = await ledger.count() > 0;
+    if (drawer) { await d.press(ledger); await d.press(page.locator('.ledger-tab', { hasText: '지도' })); } else await d.press(page.locator('summary', { hasText: '지도' }).first());
     const box = await page.locator('button.map-overview').boundingBox();
     await d.tap({ x: box.x + box.width * 0.3, y: box.y + box.height * 0.6 });
-    await d.press(page.locator('summary', { hasText: '지도' }).first());
+    await d.press(drawer ? ledger : page.locator('summary', { hasText: '지도' }).first());
     await d.park();
   }],
 ];
 
+/** Esc one step; on the normal screen UX-3 opens the pause menu (S-31), which this session closes again. */
+async function escape(page) {
+  await page.keyboard.press('Escape');
+  if (await page.locator('.pause-menu').count() > 0) await page.keyboard.press('Escape');
+}
+
 async function tool(d, page, category, name) {
-  await d.press(page.locator('button.build-menu-category', { hasText: CATEGORY_NAME[category] ?? category }));
-  await d.press(page.locator(`button[aria-label="${name}"]:visible`).first());
+  // UX-3: the categories are inside the build drawer the dock opens; picking a tool closes it (길 arms the road itself).
+  const dock = page.locator("[data-dock='build']");
+  if (await dock.count() > 0 && await dock.isVisible() && await dock.getAttribute('aria-expanded') !== 'true') await d.press(dock);
+  await d.press(page.locator('button.build-menu-category[data-category]', { hasText: CATEGORY_NAME[category] ?? category }));
+  const button = page.locator(`button[aria-label="${name}"]:visible`);
+  if (await button.count() > 0) await d.press(button.first());
   await d.park();
 }
 
