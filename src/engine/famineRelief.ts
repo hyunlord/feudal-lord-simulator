@@ -10,7 +10,7 @@
 import { BUILDING_CONFIG_BY_KIND, operationSuspended } from "../content/buildingConfig";
 import { FAMINE_RESPONSE_CONFIG } from "../content/chapterConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
-import type { Ledger } from "../ledger/ledger.types";
+import type { Ledger, LedgerCategory } from "../ledger/ledger.types";
 import type { GameState } from "./engine.types";
 import { SEASON_TICKS, dearthEndTick, famineShortHouses } from "./eventSchedule";
 import type { EventRecord } from "./events.types";
@@ -97,10 +97,15 @@ export function reliefCostForecast(state: GameState, famine: EventRecord, until:
 
 /** FC-2a, HL-3: the relief's cost as posted in (from, until] — its cash purchases and in-kind releases. */
 export function reliefCostPosted(ledger: Ledger | undefined, eventId: string, from: number, until: number): number {
-  let cost = 0;
+  return -famineEntriesTotal(ledger, "famine_relief", eventId, from, until);
+}
+
+/** HL-3: the signed total of a famine answer's `category` entries (every account) posted in (from, until] for its event. */
+export function famineEntriesTotal(ledger: Ledger | undefined, category: LedgerCategory, eventId: string, from: number, until: number): number {
+  let total = 0;
   for (const entry of ledger?.entries ?? []) {
-    if (entry.category !== "famine_relief" || entry.tick <= from || entry.tick > until) continue;
-    if (entry.sourceRefs[0].type === "event" && entry.sourceRefs[0].id === eventId) cost -= entry.amount;
+    if (entry.category !== category || entry.tick <= from || entry.tick > until) continue;
+    if (entry.sourceRefs[0].type === "event" && entry.sourceRefs[0].id === eventId) total += entry.amount;
   }
-  return cost;
+  return total;
 }
