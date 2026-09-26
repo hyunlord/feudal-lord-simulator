@@ -81,6 +81,11 @@ async function open(browser, state, dismiss) {
   return { context, page };
 }
 
+/** UX-3 S-31: an Esc that lands on the normal screen opens the pause menu; the audit steps close it again. */
+const settle = async (page) => {
+  await page.waitForTimeout(200);
+  for (let i = 0; i < 3 && await page.locator('.pause-menu').count() > 0; i += 1) { await page.keyboard.press('Escape'); await page.waitForTimeout(200); }
+};
 const clickIfPresent = async (page, selector) => {
   const locator = page.locator(selector).first();
   if (await locator.count() === 0) return false;
@@ -103,9 +108,9 @@ async function main() {
   await record('hud', page);
   // UX-3: the build drawer from the dock, its first category; the zone layer with a zone chip armed.
   await clickIfPresent(page, "[data-dock='build']"); await clickIfPresent(page, '.build-menu-category[data-category]'); await record('build-menu', page, 'build drawer, first category open');
-  await page.keyboard.press('Escape'); await page.waitForTimeout(200);
+  await page.keyboard.press('Escape'); await settle(page);
   await clickIfPresent(page, ".control-layer[data-layer='zone']"); await clickIfPresent(page, '.zone-tool'); await record('zone-brush', page, 'zone chip armed');
-  await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await page.waitForTimeout(300);
+  await page.keyboard.press('Escape'); await page.keyboard.press('Escape'); await settle(page);
   await clickIfPresent(page, ".control-layer[data-layer='direct']");
   // The ledger drawer (dock) and each of its tabs; the population drawer and the goal log from the pill / the goal chip.
   await clickIfPresent(page, "[data-dock='ledger']"); await record('ledger', page, 'ledger drawer, resources tab');
@@ -115,14 +120,14 @@ async function main() {
   }
   await clickIfPresent(page, "[data-dock='ledger']");
   await clickIfPresent(page, '.status-pill-cell[aria-label="인구 기록 열기"]'); await record('population', page, 'population drawer open');
-  await page.keyboard.press('Escape'); await page.waitForTimeout(200);
+  await page.keyboard.press('Escape'); await settle(page);
   await clickIfPresent(page, '.goal-drawer-toggle'); await record('goal-log', page, 'goal log in the panel slot');
   if (await clickIfPresent(page, '.slot-panel details > summary')) await record('settlement', page);
-  await page.keyboard.press('Escape'); await page.waitForTimeout(200);
+  await page.keyboard.press('Escape'); await settle(page);
   if (await clickIfPresent(page, '.settings-disclosure > summary')) { await record('settings', page); await clickIfPresent(page, '.settings-disclosure > summary'); }
-  // The pause menu (Esc on the normal screen) and the steward dock bubble.
-  await page.keyboard.press('Escape'); await page.waitForTimeout(300); await record('pause-menu', page);
-  await page.keyboard.press('Escape'); await page.waitForTimeout(200);
+  // The pause menu (Esc on the normal screen).
+  await settle(page); await page.keyboard.press('Escape'); await page.waitForTimeout(300); await record('pause-menu', page);
+  await page.keyboard.press('Escape'); await settle(page);
   await context.close();
 
   if (house !== undefined) {

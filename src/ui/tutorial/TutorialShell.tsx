@@ -20,7 +20,7 @@ export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false }
     <section className="goal-cards" aria-label={TUTORIAL_COPY.cardsLabel}>
       {tutorial.cards.map(card => <GoalCardView key={card.key} card={card} warn={warn} onPress={() => tutorial.press(card.key)} onLook={tutorial.lookAt} />)}
       <button type="button" className="goal-drawer-toggle" aria-expanded={drawerOpen} onClick={() => onToggleDrawer()}>
-        <UiIcon sheet="action" cell="log" />{TUTORIAL_COPY.drawer}{tutorial.log.length > 0 ? ` (${tutorial.log.length})` : ""}
+        <UiIcon sheet="action" cell="log" /><span className="goal-drawer-toggle-label">{TUTORIAL_COPY.drawer}{tutorial.log.length > 0 ? ` (${tutorial.log.length})` : ""}</span>
       </button>
     </section>
   );

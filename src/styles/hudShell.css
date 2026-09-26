@@ -44,7 +44,8 @@
 /* Placement keeps only the tutorial's card (US-D5), not the log opener. */
 .app-shell .goal-chip-rail[data-placing="true"] .goal-drawer-toggle { display: none; }
 /* The goal log opener is its icon alone here (its name stays the button's text for assistive tech). */
-.app-shell .goal-chip-rail .goal-drawer-toggle { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0; font-size: 0; }
+.app-shell .goal-chip-rail .goal-drawer-toggle { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0; }
+.app-shell .goal-chip-rail .goal-drawer-toggle-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* One panel slot (S-30) on the right. */
 .app-shell .slot-panel {
