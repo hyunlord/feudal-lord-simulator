@@ -26,6 +26,7 @@ import { INTENT_ORDER } from "../input/intentBus";
 import { platformServices } from "../platform/platform";
 import { preloadVisibilityArt } from "./visibilityArtManifest";
 import { preloadWave7Art } from "./wave7Art";
+import { preloadWave9Art } from "./wave9Art";
 import { preloadWave11Art } from "./wave11Art";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
@@ -65,7 +66,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     void preloadGameArt();
     // F0-V: the visibility art and the canvas icon sheets load with the rest (a paused first frame then has them).
     preloadVisibilityArt();
-    preloadWave7Art();
+    preloadWave7Art(); preloadWave9Art();
     preloadWave11Art();
     preloadCanvasIcons();
 

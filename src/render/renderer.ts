@@ -1,4 +1,5 @@
 import { drawZoneBrushOverlay, type ZoneBrushView } from "./zoneBrushOverlay";
+import { drawRainOverlay, wetSummer } from "./wetSummer";
 import { drawPlacementPrediction } from "./placementPredictionOverlay";
 import { drawCauseMap } from "./causeMapOverlay";
 import type { Walker } from "../agents/walker.types";
@@ -204,6 +205,11 @@ export const renderFrame = (input: RenderFrameInput): void => {
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   if (input.preview.prediction !== undefined) drawPlacementPrediction(input.context, input.state, input.preview.prediction, input.camera.zoom);
   probe?.enter("overlay.cause");
+  // UI-4: a wet summer's rain over the world (screen space, under the map markers and guidance; a setting hides it).
+  if (wetSummer(input.state)) {
+    const transform = typeof input.context.getTransform === "function" ? input.context.getTransform() : null;
+    drawRainOverlay(input.context, input.viewport, transform === null ? 1 : transform.a / input.camera.zoom, input.nowMs ?? 0);
+  }
   drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
   probe?.enter("overlay.onboarding");
   // UX-1: the tutorial step's halo (the goal card's suggested spot) replaces the old per-task map guidance, which had

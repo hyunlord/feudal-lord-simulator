@@ -78,8 +78,21 @@ def main() -> None:
             runtime_path = str(runtime.relative_to(ROOT))
             entry = {"url": f"assets/wave9/{group}/{name}", "width": width, "height": height}
             frames = frames_of(record.get("frame_layout", "") or "")
+            cell_w = width // frames["columns"] if frames else width
+            cell_h = height // frames["rows"] if frames else height
+            # Pivots (manifestArt): house overlays share the house canvas (0,0, drawn on its rect); the smoke column
+            # rises from its bottom centre; walker cells stand on their feet (the actor sheets' 74 px cell, 4 px up);
+            # decals, ridges, piles and props sit on their centre.
+            if group == "event" and asset_id.split("_")[1] in ("fire", "burnt", "abandoned", "plague"):
+                entry["pivot"] = {"x": 0, "y": 0, "overlay": True}
+            elif asset_id.startswith("fx_black_smoke"):
+                entry["pivot"] = {"x": cell_w // 2, "y": cell_h - 6}
+            elif group == "walker" or asset_id.startswith("prop_leaving_child"):
+                entry["pivot"] = {"x": cell_w // 2, "y": cell_h - 4}
+            else:
+                entry["pivot"] = {"x": cell_w // 2, "y": cell_h // 2}
             if frames is not None:
-                entry["frames"] = frames
+                entry["frames"] = {"width": cell_w, "height": cell_h, "count": frames["columns"], "rows": frames["rows"]}
             images9[asset_id] = entry
             note = "installed to public/assets/wave9 (received bytes = runtime bytes)"
         else:

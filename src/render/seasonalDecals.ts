@@ -4,6 +4,8 @@ import { stateCalendar } from "../engine/scenarioState";
 import { hashNumbers } from "../world/boundary/boundaryGeometry";
 import { TILE_H, tileToScreen } from "./iso";
 import { drawWave7, type Wave7Key } from "./wave7Art";
+import { drawWave9, type Wave9Key } from "./wave9Art";
+import { wetSummer } from "./wetSummer";
 
 // INSTALL-7 season on the ground (Wave 7 decals): winter frost patches, autumn leaves, high-summer dry grass on open
 // grass tiles (no building, road or zone paint underneath is excluded by the tile fields), a deterministic scatter:
@@ -28,10 +30,22 @@ export function seasonalDecal(seed: number, tile: Pick<Tile, "tx" | "ty" | "terr
   return keys[Math.floor(hash / 10_000) % keys.length]!;
 }
 
+/** UI-4: in a wet summer the dry-grass tiles hold puddles instead (Wave 9, the same scatter). */
+const PUDDLES: readonly Wave9Key[] = ["decal_puddle_a", "decal_puddle_b"];
+
 export function drawSeasonalDecals(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[], zoom: number): void {
   if (zoom < DECAL_MIN_ZOOM) return;
   const season = stateCalendar(state).season;
   if (season === 0) return;
+  if (season === 1 && wetSummer(state)) {
+    for (const tile of tiles) {
+      const key = seasonalDecal(state.seed, tile, season);
+      if (key === null) continue;
+      const at = tileToScreen(tile.tx, tile.ty);
+      drawWave9(context, PUDDLES[key === "dry_grass_a" ? 0 : 1]!, at.sx, at.sy + TILE_H * 0.35, DECAL_SCALE);
+    }
+    return;
+  }
   for (const tile of tiles) {
     const key = seasonalDecal(state.seed, tile, season);
     if (key === null) continue;
