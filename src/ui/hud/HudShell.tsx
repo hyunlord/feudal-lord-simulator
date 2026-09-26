@@ -12,6 +12,9 @@ import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
 import type { TutorialController } from "../tutorial/useTutorialController";
 import type { ControlLayer } from "../tutorial/tutorialModel";
 import { HUD_COPY, RESOURCE_NAMES } from "./hudCopy.ko";
+import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
+import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
+import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
@@ -23,9 +26,15 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
   readonly state: GameState; readonly model: ReturnType<typeof statusPillModel>;
   readonly onOpenLedger: () => void; readonly onOpenPopulation: () => void;
 }) {
+  const [stripOpen, setStripOpen] = useState(false);
   return (
     <nav className="status-pill" aria-label={HUD_COPY.pill}>
-      <span className="status-pill-cell status-pill-date" data-testid="hud-calendar"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
+      <button type="button" className="status-pill-cell status-pill-date" data-testid="hud-calendar" aria-label={SEASON_STRIP_COPY.label}
+        aria-expanded={stripOpen} onClick={() => setStripOpen(open => !open)}>
+        <span className="status-pill-date-text"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
+        <SeasonStripMini tick={state.tick} />
+      </button>
+      {stripOpen ? <SeasonStripPanel state={state} onClose={() => setStripOpen(false)} /> : null}
       <button type="button" className="status-pill-cell" aria-label={HUD_COPY.populationOpens} onClick={() => onOpenPopulation()}>
         <UiIcon sheet="resource" cell="population" />{HUD_COPY.population(model.population)}
       </button>
@@ -107,7 +116,8 @@ export function CrisisIcons({ rows: all, onInspect }: { readonly rows: ReturnTyp
       {rows.map(row => (
         <button key={row.id} type="button" className={`crisis-icon alert-stack-inspect crisis-icon--${row.severity}`} aria-label={HUD_COPY.crisisLabel(ALERT_STACK_COPY.inspectLabel(row.title), row.cause)}
           onClick={() => { const first = row.targetIds[0]; if (first === undefined) return; platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); }}>
-          <UiIcon sheet="alert" cell={row.severity === "immediate" ? "urgent" : "warn"} size={32} />
+          {/* UI-3: the Wave 8 alert bells (threat = immediate, bad = caution). */}
+          <span className="crisis-bell" aria-hidden="true" style={wave8ImageStyle(row.severity === "immediate" ? "icon_alert_bell_threat" : "icon_alert_bell_bad", 32)} />
         </button>
       ))}
     </section>

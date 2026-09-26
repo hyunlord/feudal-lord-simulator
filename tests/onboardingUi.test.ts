@@ -38,7 +38,7 @@ test("welcome parchment renders exact opening copy and dismiss affordance", () =
   assert.match(markup, /tabindex="-1"/);
   assert.match(markup, /class="app-interaction-layer" inert="" aria-hidden="true"/);
   assert.match(markup, /영지에 오신 것을 환영합니다/);
-  assert.match(markup, /아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요\./);
+  assert.match(markup, /오른쪽 아래 \[건설\]에서 건물을 고르고, 지도를 눌러 지으세요\./, "UX-3: the build drawer opens from the dock");
   assert.match(markup, /마우스 휠로 확대, 드래그로 이동합니다\./);
   assert.match(markup, /아무 곳이나 클릭하여 시작/);
 });

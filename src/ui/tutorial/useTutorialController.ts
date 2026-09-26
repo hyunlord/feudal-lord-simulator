@@ -1,3 +1,4 @@
+import { firstWinterWarningActive } from "../../engine/seasonPressure";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GameState } from "../../engine/engine.types";
 import { canProclaimPalisadeEra } from "../../engine/era";
@@ -236,7 +237,9 @@ export function useTutorialController(input: {
 
   const [dismissedAdvisor, setDismissedAdvisor] = useState<string | null>(null);
   const advisorKey = stepId === null ? null : ADVISOR_KEY[stepId] ?? null;
-  const advisor = advisorKey === null || dismissedAdvisor === stepId ? null : { text: TUTORIAL_COPY.advisor[advisorKey], key: stepId!, tone: ADVISOR_TONE[advisorKey] };
+  const leanSeason = stepId === null && firstWinterWarningActive(state);
+  const advisor = advisorKey !== null && dismissedAdvisor !== stepId ? { text: TUTORIAL_COPY.advisor[advisorKey], key: stepId!, tone: ADVISOR_TONE[advisorKey] }
+    : leanSeason && dismissedAdvisor !== "lean_season" ? { text: TUTORIAL_COPY.leanSeason.steward, key: "lean_season", tone: "concern" as const } : null;
 
   return {
     enabled, running, access,
@@ -247,7 +250,7 @@ export function useTutorialController(input: {
     pulse, openRequest,
     press,
     lookAt: () => { if (target !== null) emit({ kind: "lookAt", tile: target.focus }); },
-    dismissAdvisor: () => setDismissedAdvisor(stepId),
+    dismissAdvisor: () => setDismissedAdvisor(stepId ?? (leanSeason ? "lean_season" : null)),
     startNewGame: (on, fresh) => {
       if (fresh !== null && !isFreshGame(fresh)) return;
       setRecord({ enabled: on, acks: [], pulsed: [], log: [] });
@@ -278,6 +281,13 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
         progress: { current: 2 - missing.length, target: 2 }, ctaLabel: nextAction.kind === "place" ? TUTORIAL_COPY.generalCard.place(TUTORIAL_COPY.buildingNames[kind]) : TUTORIAL_COPY.generalCard.arm(TUTORIAL_COPY.buildingNames[kind]),
         status: "active", help: null, hasTarget: false });
     }
+  }
+  // UI-3 (FP-4): the first winter warning puts the lean season first — a granary if there is none, else more arable.
+  if (firstWinterWarningActive(state)) {
+    const next: TutorialAction = placedCount(state, "granary") === 0 ? { kind: "arm", tool: "granary" } : { kind: "armZone", target: "arable" };
+    actions.set("lean_season", next);
+    cards.push({ key: "lean_season", title: TUTORIAL_COPY.leanSeason.title, why: TUTORIAL_COPY.leanSeason.why, progress: null,
+      ctaLabel: next.kind === "arm" ? TUTORIAL_COPY.leanSeason.granary : TUTORIAL_COPY.leanSeason.arable, status: "active", help: null, hasTarget: false });
   }
   return { cards, actions };
 }

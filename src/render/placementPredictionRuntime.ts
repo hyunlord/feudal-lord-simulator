@@ -12,6 +12,7 @@ import type { CameraState } from './camera';
 import { placementPreview } from './interactions';
 import { TILE_W, tileToScreen } from './iso';
 import { placementChipModel } from '../ui/placementChip';
+import { predictPlacementLedger } from '../engine/placementLedger';
 import { PLACEMENT_REASON_LABELS } from '../ui/predictionRegistry';
 
 let lastPreview: { readonly stateKey: string; readonly key: string; readonly preview: PlacementPreview } | null = null;
@@ -33,6 +34,7 @@ export function cachedPlacementPreview(state: GameState, tool: PlacementTool | n
       : basePrediction;
   // UX-3 S-53: the cursor chip (three lines) is built with the preview, so it is cached with it.
   const chip = tool === null || tile === null ? undefined : placementChipModel(state, { tool, ...(preview.marks === undefined ? {} : { marks: preview.marks }),
+    ...(tool === 'road' ? {} : { ledger: predictPlacementLedger(state, tool, tile) }),
     timberCost: preview.timberCost ?? null, reachHouses: prediction?.range === null || prediction === undefined ? null : prediction.houseIds.length,
     failureLabel: tool === 'road' && preview.reason !== null && preview.reason in PLACEMENT_REASON_LABELS ? PLACEMENT_REASON_LABELS[preview.reason as keyof typeof PLACEMENT_REASON_LABELS] : null });
   const result = prediction === undefined ? preview : { ...preview, prediction, ...(chip === undefined ? {} : { chip }) };

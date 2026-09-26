@@ -145,3 +145,56 @@
 /* The map's selection card in the panel slot (S-25): right side, 312 x 400 at most (the 18 % budget with the HUD, with room for Linux font metrics). */
 .app-shell .diagnostic-card-position { inset: 66px 8px auto auto !important; width: min(312px, calc(100% - 16px)); }
 .app-shell .diagnostic-card-position .diagnostic-card { max-height: min(400px, calc(100vh - 150px)); overflow-y: auto; }
+
+/* UI-3 pause (Wave 8): the vignette darkens the edges only; the badge's hourglass sits left of the label. */
+.app-shell .pause-veil { background-color: transparent; background-size: 100% 100%; background-repeat: no-repeat; }
+.app-shell .pause-veil-label { min-height: 44px; padding: 0 18px 0 44px; background-color: transparent; border: 0;
+  border-image: none; color: var(--palette-ink); background-size: 100% 100%; background-repeat: no-repeat; }
+
+/* UI-3 season strip, small by default: a 5 px strip under the date (the pin at today); the date opens the full strip. */
+.app-shell .status-pill-date { flex-direction: column; align-items: stretch; justify-content: center; gap: 3px; cursor: pointer; }
+.app-shell .status-pill-date-text { display: inline-flex; align-items: center; gap: 4px; }
+.app-shell .season-strip-mini { position: relative; display: block; height: 5px; background-size: 100% 100%; background-repeat: no-repeat; }
+.app-shell .season-strip-mini-pin { position: absolute; top: -2px; width: 2px; height: 9px; background-color: var(--palette-ink); transform: translateX(-1px); }
+/* contrast-audit selector=".season-strip-panel" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.app-shell .season-strip-panel { position: absolute; top: 52px; left: 0; z-index: 6; width: 324px; padding: 8px 12px 10px;
+  color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); font-size: 13px; font-weight: 400; white-space: normal; }
+.app-shell .season-strip-full { position: relative; margin: 14px 0 10px; }
+.app-shell .season-strip-mark { position: absolute; top: -1px; transform: translateX(-50%); }
+.app-shell .season-strip-pin { position: absolute; top: -12px; transform: translateX(-50%); }
+.app-shell .season-strip-panel h3 { margin: 0 0 4px; font-size: 14px; }
+.app-shell .season-strip-list { display: grid; gap: 4px; margin: 0 0 6px; padding: 0; list-style: none; }
+.app-shell .season-strip-list li { display: flex; gap: 6px; align-items: center; }
+.app-shell .season-strip-close { min-width: 44px; min-height: 44px; }
+
+/* UI-3 season ledger card (a modal: time stops while it is up). The Wave 8 scroll is a layer; the three scenes sit in
+   its header slots (source x44..450, y48..118), the body in its content rect. */
+.season-ledger-backdrop { position: absolute; inset: 0; z-index: 8; display: grid; place-items: center; background: rgb(20 14 8 / 0.25); }
+/* contrast-audit selector=".season-ledger-card" fg="--palette-ink" bg="--palette-parchment" size="13" role="body" */
+.season-ledger-card { position: relative; width: 380px; height: 324px; color: var(--palette-ink); font-size: 13px; }
+.season-ledger-frame { position: absolute; inset: 0; box-sizing: border-box; pointer-events: none; }
+.season-ledger-scenes { position: absolute; left: 24px; top: 24px; width: 202px; height: 35px; display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 3px; margin: 0; padding: 0; list-style: none; }
+.season-ledger-scene { display: flex; gap: 3px; align-items: center; justify-content: center; font-size: 13px; }
+.season-ledger-scene-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.season-ledger-body { overflow-y: auto; padding: 2px 4px; }
+.season-ledger-body h2 { margin: 0 0 4px; font-size: 16px; }
+.season-ledger-line { margin: 0 0 2px; }
+.season-ledger-events { margin: 4px 0; padding-left: 18px; }
+.season-ledger-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.season-ledger-actions button, .season-ledger-auto { display: inline-flex; gap: 4px; align-items: center; min-height: 44px; padding: 0 10px; font-size: 13px; }
+.season-ledger-resume { font-weight: 700; }
+.season-ledger-auto { margin-top: 4px; }
+
+/* UI-3 title screen: the Wave 8 keyart behind the welcome parchment, the emblem above it. */
+.app-shell .welcome-dismiss-layer.title-screen { z-index: 40; }
+.title-screen { background-color: var(--palette-ink); background-position: center; background-size: cover; background-repeat: no-repeat; }
+.title-emblem { position: absolute; left: 50%; top: 8vh; transform: translateX(-50%); pointer-events: none; }
+/* The chapter loading screen: a moment, never a click target. */
+.chapter-loading { position: absolute; inset: 0; z-index: 45; display: grid; place-content: center; gap: 6px; pointer-events: none;
+  background-color: var(--palette-ink); background-position: center; background-size: cover; animation: chapter-loading-out 0.9s ease-in forwards; }
+/* contrast-audit selector=".chapter-loading-title" fg="--palette-ink" bg="--palette-vellum" size="24" role="heading" */
+.chapter-loading-title, .chapter-loading-line { margin: 0; padding: 6px 18px; text-align: center; color: var(--palette-ink); background-color: var(--palette-vellum); }
+.chapter-loading-title { font-size: 24px; font-weight: 700; }
+.chapter-loading-line { font-size: 14px; }
+@keyframes chapter-loading-out { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }

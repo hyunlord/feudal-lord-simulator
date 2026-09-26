@@ -16,6 +16,8 @@ export type PlacementChip = {
   readonly ledger: readonly { readonly text: string; readonly short: boolean }[];
   readonly reason: string | null;
   readonly reach: string | null;
+  /** UI-3: what the building does to the ledger each period (rent, upkeep, labour), null when all are zero. */
+  readonly period: string | null;
 };
 
 type ChipInput = {
@@ -27,6 +29,8 @@ type ChipInput = {
   readonly failureLabel?: string | null;
   /** Houses inside the service range (null: no range). */
   readonly reachHouses: number | null;
+  /** UI-3: the engine's placement ledger prediction (predictPlacementLedger) for a building. */
+  readonly ledger?: { readonly rentPerPeriod: number; readonly upkeepPerPeriod: number; readonly labourDemand: number };
 };
 
 export function placementChipModel(state: GameState, input: ChipInput): PlacementChip {
@@ -47,6 +51,12 @@ export function placementChipModel(state: GameState, input: ChipInput): Placemen
   const reason = first !== undefined
     ? PLACEMENT_CHIP_COPY.reasons[first.reason](first.count) + (reasons.length > 1 ? PLACEMENT_CHIP_COPY.more(reasons.length - 1) : "")
     : input.failureLabel ?? null;
+  const parts = input.ledger === undefined ? [] : [
+    ...(input.ledger.rentPerPeriod > 0 ? [PLACEMENT_CHIP_COPY.rent(input.ledger.rentPerPeriod)] : []),
+    ...(input.ledger.upkeepPerPeriod > 0 ? [PLACEMENT_CHIP_COPY.upkeep(input.ledger.upkeepPerPeriod)] : []),
+    ...(input.ledger.labourDemand > 0 ? [PLACEMENT_CHIP_COPY.labour(input.ledger.labourDemand)] : []),
+  ];
   return { title: PLACEMENT_CHIP_COPY.title(name, costLabel), ledger, reason,
-    reach: input.reachHouses === null ? null : PLACEMENT_CHIP_COPY.reach(input.reachHouses) };
+    reach: input.reachHouses === null ? null : PLACEMENT_CHIP_COPY.reach(input.reachHouses),
+    period: parts.length === 0 ? null : PLACEMENT_CHIP_COPY.period(parts) };
 }

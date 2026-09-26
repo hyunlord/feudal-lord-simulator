@@ -49,7 +49,8 @@ test("the calendar opens the status pill, not the resource bar (UX-1 HUD, UX-3 p
   assert.doesNotMatch(bar, /resource-calendar/);
   const app = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
   // UX-3: the date is the status pill's first item (the speed stands alone at the top right).
-  assert.match(app, /<nav class="status-pill" aria-label="마을 상태"><span class="status-pill-cell status-pill-date" data-testid="hud-calendar"><span class="ui-icon" aria-hidden="true" data-icon="resource.spring"[^>]*><\/span>1300년 봄<\/span>/);
+  // UI-3: the date cell opens the season strip; its thin strip sits under the date.
+  assert.match(app, /<nav class="status-pill" aria-label="마을 상태"><button type="button" class="status-pill-cell status-pill-date" data-testid="hud-calendar"[^>]*><span class="status-pill-date-text"><span class="ui-icon" aria-hidden="true" data-icon="resource.spring"[^>]*><\/span>1300년 봄<\/span><span class="season-strip-mini"/);
 });
 
 test("T3 the stone-wall action is disabled with a reason when the scenario turns the project off", () => {

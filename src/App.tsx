@@ -39,6 +39,14 @@ import {
 } from "./ui/onboardingTaskModel";
 import { MapShield } from "./ui/OverlayControls";
 import { releaseControlFocus } from "./input/domInputBindings";
+import { stateCalendar } from "./engine/scenarioState";
+import { TITLE_COPY } from "./ui/titleCopy.ko";
+import { wave8ImageStyle, wave8Url } from "./ui/wave8Art";
+import { SEASON_LEDGER_COPY } from "./ui/seasonLedgerCopy.ko";
+import { SeasonLedgerCard } from "./ui/hud/SeasonLedgerCard";
+import { seasonLedgerCardModel } from "./ui/seasonLedgerCard";
+import { seasonLedgerAuto, setSeasonLedgerAuto } from "./ui/seasonLedgerPreference";
+import type { BuildCategory } from "./ui/buildMenuPresentation";
 import { autoPlacementOverlay } from "./ui/placementAutoOverlay";
 import { PlacementPaletteToggle } from "./render/PlacementPaletteToggle";
 import { SpeedSeals } from "./ui/SpeedControls";
@@ -91,6 +99,7 @@ const ZONE_TOOL_PREFIX = "zone:";
 const ZONE_TOOL_OFF = "zone:off";
 
 const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
+const CHAPTER_LOADING_MS = 900;
 /** UX-2: the season icon beside the date (calendar season index → resource-sheet cell). */
 
 export function nextOnboardingPresentationCommit(input: {
@@ -321,6 +330,21 @@ export function App() {
     if (auto !== null && autoOverlayRef.current === null) { autoOverlayRef.current = overlayModeRef.current; setOverlayMode(auto); }
     if (auto === null && autoOverlayRef.current !== null) { setOverlayMode(autoOverlayRef.current); autoOverlayRef.current = null; }
   }, [selectedTool]);
+  // UI-3 (S-28): a season that closes while the game runs opens its ledger card, a modal (time stops until 계속),
+  // unless the player turned it off. A jump of more than one closed season (a load) opens nothing.
+  const [ledgerAuto, setLedgerAuto] = useState(seasonLedgerAuto);
+  const closedSeasons = state.seasons?.history.length ?? 0;
+  const closedSeasonsRef = useRef(closedSeasons);
+  useEffect(() => {
+    const previous = closedSeasonsRef.current;
+    closedSeasonsRef.current = closedSeasons;
+    if (closedSeasons !== previous + 1 || !ledgerAuto || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
+    setUi(current => reduceUi(current, { type: "push_modal", modal: "season_ledger" }));
+  }, [closedSeasons, ledgerAuto, welcomeVisible]);
+  const seasonCard = topModal(ui) === "season_ledger" ? seasonLedgerCardModel(state) : null;
+  // The card's next objective opens the build drawer at its category (the tutorial's request path, its own nonce).
+  const [menuRequest, setMenuRequest] = useState<{ readonly category: BuildCategory; readonly nonce: number } | null>(null);
+  useEffect(() => { setMenuRequest(null); }, [tutorial.openRequest]);
   const visibility = hudVisibility(ui, { tutorialRunning: tutorial.running });
 
   // UX-2: an immediate warning in the town puts the active goal cards in their warning frame (same sampled state as
@@ -407,6 +431,14 @@ export function App() {
   // fresh game, e.g. an injected fixture, never gets one).
   // The toggle starts from the stored choice (a player who switched the tutorial off keeps it off), else on.
   const [welcomeTutorial, setWelcomeTutorial] = useState(() => readTutorialRecord()?.enabled ?? true);
+  // UI-3: a new game opens on the chapter's loading screen for a moment (chapter 1 reuses the title keyart; the
+  // 1315 / 1337 / 1348 screens are registered for the later chapters). It never takes a click.
+  const [chapterLoading, setChapterLoading] = useState(false);
+  useEffect(() => {
+    if (!chapterLoading) return undefined;
+    const timer = window.setTimeout(() => setChapterLoading(false), CHAPTER_LOADING_MS);
+    return () => window.clearTimeout(timer);
+  }, [chapterLoading]);
   const dismissWelcome = () => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
@@ -471,7 +503,7 @@ export function App() {
         </div>
         {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
-          <GoalCards tutorial={tutorial} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
+          <GoalCards tutorial={tutorial} maxActive={1} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
         </aside> : null}
         {/* S-30: one panel slot — the goal log, the population log, the inspector or the ledger (the build drawer is below). */}
         {ui.mode === "goals" ? <aside className="slot-panel goal-slot" aria-label={KO_UI.informationRail}>
@@ -539,7 +571,7 @@ export function App() {
             layer={layer}
             onLayerChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }}
             pulse={tutorial.pulse}
-            openRequest={tutorial.openRequest}
+            openRequest={menuRequest ?? tutorial.openRequest}
             showLayers={false}
             open={ui.mode === "build" || ui.mode === "zone"}
             onOpenChange={next => {
@@ -549,15 +581,23 @@ export function App() {
           />
         </aside>
       </div>
+      {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto}
+        onAutoChange={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
+        onResume={() => sendUi({ type: "pop_modal" })}
+        onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) setMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
       {topModal(ui) === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
-        settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle /></>} /> : null}
+        settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
+          <button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
+            onClick={() => { setLedgerAuto(!ledgerAuto); setSeasonLedgerAuto(!ledgerAuto); }}>{ledgerAuto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</button></>} /> : null}
+      {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
+        <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment
         onDismiss={dismissWelcome}
         continueLine={saveSystem.offerContinue ? saveSystem.latest?.summary?.line ?? "" : null}
         archiveNotice={saveSystem.latest?.summary ? formatNewGameArchiveNotice(saveSystem.latest.summary) : null}
         onContinue={continueSavedGame}
-        onNewGame={startNewGameOverSave}
-        onChooseMode={startScenarioWithoutSave}
+        onNewGame={scenarioId => { setChapterLoading(true); startNewGameOverSave(scenarioId); }}
+        onChooseMode={scenarioId => { setChapterLoading(true); startScenarioWithoutSave(scenarioId); }}
         tutorialEnabled={welcomeTutorial}
         onTutorialChange={setWelcomeTutorial}
       /> : null}
@@ -596,11 +636,15 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
 
   return (
     <div
-      className="welcome-dismiss-layer"
+      className="welcome-dismiss-layer title-screen"
+      data-screen={confirmingNewGame ? "mode" : "title"}
+      style={{ backgroundImage: `url("${wave8Url(confirmingNewGame ? "keyart_mode_select" : "keyart_title_bg")}")` }}
       onPointerDown={consumeDismissal}
       onClick={consumeDismissal}
       onKeyDown={containKeyboard}
     >
+      {/* UI-3: the title keyart behind the welcome, the emblem above it; choosing a new game over a save shows the mode backdrop. */}
+      <span className="title-emblem" aria-hidden="true" style={wave8ImageStyle("keyart_title_emblem", 176)} />
       <section
         ref={dialogRef}
         className="welcome-parchment"
@@ -609,13 +653,13 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
         aria-label={KO_UI.openingGuidance}
         tabIndex={-1}
       >
-        <h2>영지에 오신 것을 환영합니다</h2>
-        <p>아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요.</p>
-        <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
+        <h2>{TITLE_COPY.heading}</h2>
+        <p>{TITLE_COPY.howTo}</p>
+        <p>{TITLE_COPY.camera}</p>
         <TutorialToggle enabled={tutorialEnabled} onChange={onTutorialChange} />
         {continueLine === null ? <>
           <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId)} keepChoice={keepChoice} />
-          <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p>
+          <p className="welcome-dismiss">{TITLE_COPY.dismiss}</p>
         </> : (
           <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
             <p>{continueLine}</p>
