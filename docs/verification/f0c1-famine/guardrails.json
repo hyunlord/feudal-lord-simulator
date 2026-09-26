@@ -1,0 +1,144 @@
+{
+ "runner": "DGX, scripts/remote/run.sh --task guardrail (REMOTE-1)",
+ "runs": {
+  "run1@3ed325df": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 166080,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 239769,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 203930,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 262423,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 3,
+    "status": "regression",
+    "victoryTick": 129670,
+    "finalL4": 8,
+    "finalLots": 14,
+    "finalTick": 1200000,
+    "stopReason": "tick-budget"
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 155843,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 327265,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 5,
+    "status": "regression",
+    "victoryTick": null,
+    "finalL4": 0,
+    "finalLots": 24,
+    "finalTick": 1200000,
+    "stopReason": "tick-budget"
+   }
+  ],
+  "run2@a939d8a5": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 153976,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 263544,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 198810,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 261762,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 3,
+    "status": "stalled (run still going to the 1,200,000 budget)",
+    "progress": "\"tick\":312000,\"lots\":18,\"l4\":9"
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 151101,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 296655,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 364601,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 422191,
+    "stopReason": "target-scale-stable"
+   }
+  ],
+  "run3@fe3c0657": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 153976,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 263544,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 198810,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 261762,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 3,
+    "status": "stalled (run still going to the 1,200,000 budget)",
+    "progress": "\"tick\":168000,\"lots\":18,\"l4\":9"
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 151101,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 296655,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 300416,
+    "finalL4": 24,
+    "finalLots": 24,
+    "finalTick": 467322,
+    "stopReason": "target-scale-stable"
+   }
+  ]
+ },
+ "notes": {
+  "seed3": "the same 1310 palisade around 132 interior cells as F0-B (decision EV8): run 1 stopped at 14 lots, runs 2-3 at 18 lots from 96,000 ticks (no_action: granary_gap no site, interior_plots refused road)",
+  "seed5": "run 1: relief at half the treasury emptied it (5,274 -> 268), no quarry, no church, L3 for good (FC3 cap, FC8). run 2 (FC8 storage recovery): L4 0 until ~360,000 ticks, then passed at 364,601 (judged too early at 300,000 during the work). run 3 (AR-10 log_overflow): passed at 300,416.",
+  "diagnostics": "seed 5 from scratch at f20177ea (AR-10): L4 24/24 from 312,000 ticks (local, not a guardrail run)"
+ },
+ "userRule": "run 3 is the last (user); 4/5 with seed 3 as EV8 -> merge"
+}
