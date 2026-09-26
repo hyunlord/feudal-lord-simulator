@@ -297,3 +297,18 @@ export function departureCapPerSeason(state: Pick<GameState, "events" | "tick">,
   }
   return usual;
 }
+
+/**
+ * FC-2 the price shock: while an arriving era dearth sells food at `poorShortPricePermille` or more, the poorest
+ * `poorPermille` of the lived-in households (lowest level, then id: the same households season after season) cannot buy bread — the ladder
+ * counts them short. Relief feeds them (`ignoreRelief` lists them anyway, for the relief's bill).
+ */
+export function famineShortHouses(state: Pick<GameState, "events" | "houses" | "tick" | "seed" | "scenarioId">, ignoreRelief = false): readonly string[] {
+  const record = state.events?.records.find(entry => EVENT_DEF_BY_ID.get(entry.defId)?.schedule.type === "era"
+    && state.tick >= entry.arrivalTick && state.tick < dearthEndTick(entry));
+  if (record === undefined || (!ignoreRelief && record.response?.choice === "relief")) return [];
+  if (foodPricePermille(state, state.tick) < FAMINE_RESPONSE_CONFIG.poorShortPricePermille) return [];
+  const lived = state.houses.filter(house => house.residents > 0 && house.abandonedTick === undefined)
+    .sort((a, b) => a.level - b.level || a.buildingId.localeCompare(b.buildingId));
+  return lived.slice(0, Math.floor(lived.length * FAMINE_RESPONSE_CONFIG.poorPermille / 1000)).map(house => house.buildingId);
+}

@@ -6,7 +6,7 @@ import { CHAPTER_ONE, FAMINE_RESPONSE_CONFIG, MARKET_CHARTER_PETITION_ID, PETITI
 import { EVENT_DEF_BY_ID, FAMINE_ERA_ID, GREAT_FAMINE_EFFECTS, GREAT_FAMINE_EVENT_ID } from "../src/content/eventConfig";
 import { MONEY_BALANCE } from "../src/content/balanceConfig";
 import type { GameState } from "../src/engine/engine.types";
-import { dearthEndTick, departureCapPerSeason, eraPlannedSeason, eventForecast, foodPricePermille, harvestYieldPermille, weatherOfSeason } from "../src/engine/eventSchedule";
+import { dearthEndTick, departureCapPerSeason, eraPlannedSeason, eventForecast, famineShortHouses, foodPricePermille, harvestYieldPermille, weatherOfSeason } from "../src/engine/eventSchedule";
 import { advanceEvents } from "../src/engine/events";
 import { marketSalePrice } from "../src/engine/marketSettlement";
 import { settleMoneyPeriod } from "../src/engine/moneyRules";
@@ -136,9 +136,24 @@ test("C3 relief buys bread into the granary with the treasury, posted as famine 
   assert.deepEqual(posting.sourceRefs[0], { type: "event", id: famineRecord(arrived)!.id, detail: "relief" });
   assert.equal(departureCapPerSeason({ ...relieved, tick: SPRING_1315 + SEASON }, 2), FAMINE_RESPONSE_CONFIG.reliefDepartureCap);
   assert.ok(hungry.treasuryCoin - relieved.treasuryCoin <= hungry.treasuryCoin * FAMINE_RESPONSE_CONFIG.reliefTreasuryPermille / 1000, "at most half the treasury a season");
+  // The price shock: standing by, the poorest quarter cannot buy bread at three times its price; relief feeds them.
+  const idle = famineResponse(arrived, "laissez_faire");
+  const poor = famineShortHouses({ ...idle, tick: SPRING_1315 + 50 });
+  const lived = idle.houses.filter(house => house.residents > 0).length;
+  assert.equal(poor.length, Math.floor(lived / 4));
+  assert.deepEqual(famineShortHouses({ ...answered, tick: SPRING_1315 + 50 }), [], "relief feeds the poor");
+  // A well-stocked town (its stores last years, every larder full): only the price keeps the poor from bread.
+  const stocked = (current: GameState): GameState => ({ ...current, houses: current.houses.map(house => ({ ...house, breadStock: 6 })),
+    buildings: current.buildings.map(building => building.kind === "granary" ? { ...building, inventory: { ...building.inventory, bread: 3_000 } } : building) });
+  const poorStocked = famineShortHouses({ ...stocked(idle), tick: SPRING_1315 + 50 });
+  const short = samples(stocked(idle), SPRING_1315 + 50, SPRING_1315 + SEASON + 50, stocked);
+  assert.ok(poorStocked.every(id => short.houses.find(house => house.buildingId === id)!.leavingSinceTick !== undefined), "a season short: preparing to leave");
+  assert.equal(short.houses.filter(house => house.leavingSinceTick !== undefined).length, poorStocked.length, "only the poor");
+  const fed = samples(stocked(answered), SPRING_1315 + 50, SPRING_1315 + SEASON + 50, stocked);
+  assert.ok(poorStocked.every(id => fed.houses.find(house => house.buildingId === id)!.leavingSinceTick === undefined));
 });
 
-test("C4 price control caps food at × 1.5 and costs the merchants' goodwill each season", () => {
+test("C4 price control caps food at × 1.5 (the poor can buy again) and costs the merchants' goodwill each season", () => {
   const arrived = advancePolitics(advanceEvents(advanceSeasons({ ...readyTown(), tick: SPRING_1315 })));
   const controlled = famineResponse(arrived, "price_control");
   assert.equal(foodPricePermille(controlled, SPRING_1315 + 10), FAMINE_RESPONSE_CONFIG.priceCapPermille);
@@ -147,6 +162,7 @@ test("C4 price control caps food at × 1.5 and costs the merchants' goodwill eac
   const later = advancePolitics({ ...controlled, tick: SPRING_1315 + SEASON });
   assert.equal(later.politics!.merchantGauge, gauge + FAMINE_RESPONSE_CONFIG.priceControlMerchantPerSeason);
   assert.equal(departureCapPerSeason({ ...later, tick: SPRING_1315 + SEASON }, 2), 2);
+  assert.deepEqual(famineShortHouses({ ...controlled, tick: SPRING_1315 + 50 }), []);
 });
 
 test("C5 standing by changes nothing; C6 speculation sells a quarter of the granaries into the treasury and lets three leave", () => {
@@ -169,7 +185,7 @@ test("C5 standing by changes nothing; C6 speculation sells a quarter of the gran
   assert.equal(departureCapPerSeason({ ...sold, tick: SPRING_1315 + SEASON }, 2), FAMINE_RESPONSE_CONFIG.speculationDepartureCap);
 });
 
-test("C7 the merchants' charter petition comes in 1305–1308 once the town has a market, and expires unanswered after 1308", () => {
+test("C7 the merchants' charter petition comes in 1305–1308 to a village of six lots, and expires unanswered after 1308", () => {
   const state = readyTown();
   const season = petitionSeason(state, PETITION);
   assert.ok(season >= (1305 - 1300) * 4 && season < (1308 - 1300) * 4, `season ${season}`);
@@ -178,8 +194,9 @@ test("C7 the merchants' charter petition comes in 1305–1308 once the town has 
   const arrived = samples(before, season * SEASON, season * SEASON);
   assert.equal(openPetitions(arrived).length, 1);
   assert.equal(openPetitions(arrived)[0]!.petitioner, "merchants");
-  const noMarket = samples({ ...state, buildings: state.buildings.filter(building => building.kind !== "market") }, season * SEASON, season * SEASON + 100);
-  assert.deepEqual(openPetitions(noMarket), [], "no market, no charter petition");
+  const houses = state.houses.slice(0, 5);
+  const hamlet: GameState = { ...state, houses, buildings: state.buildings.filter(building => building.kind !== "house" || houses.some(house => house.buildingId === building.id)) };
+  assert.deepEqual(openPetitions(samples(hamlet, season * SEASON, season * SEASON + 100)), [], "five lots: no merchants yet");
   const expired = samples(arrived, 9 * YEAR, 9 * YEAR);
   assert.deepEqual(openPetitions(expired), []);
   assert.equal(expired.politics!.petitions[0]!.response, "expired");

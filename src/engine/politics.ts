@@ -28,13 +28,14 @@ import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig
 import { postLedgerEntries } from "../ledger/ledger";
 import type { LedgerPosting } from "../ledger/ledger.types";
 import type { GameState } from "./engine.types";
-import { SEASON_TICKS, dearthEndTick, recordStage } from "./eventSchedule";
+import { SEASON_TICKS, dearthEndTick, famineShortHouses, recordStage } from "./eventSchedule";
 import type { EventRecord } from "./events.types";
 import { eventSource } from "./events";
 import { marketSalePrice } from "./marketSettlement";
 import type { ChapterEnd, ChronicleEntry, DecisionRecord, PetitionRecord, PoliticsState } from "./politics.types";
 import { hashSeed } from "./prng";
 import { calendar, scenarioOf } from "./scenarioState";
+import { housingLotCount } from "../population/housing";
 
 const SAMPLE = 50;
 
@@ -88,9 +89,6 @@ function seasonBread(state: GameState): number {
   return Math.ceil(ration * SEASON_TICKS / HOUSE_FOOD_INTERVAL);
 }
 
-function storedFood(state: GameState): number {
-  return state.buildings.reduce((sum, building) => sum + Math.max(0, building.inventory.bread ?? 0) + Math.floor(Math.max(0, building.inventory.wheat ?? 0) / 2), 0);
-}
 
 /** FC-2: a season's relief or speculation, at the season's start while the famine arrives. */
 function stepFamineResponse(state: GameState, record: EventRecord): GameState {
@@ -99,11 +97,12 @@ function stepFamineResponse(state: GameState, record: EventRecord): GameState {
   if (choice === "relief") {
     const granary = granaries(state)[0];
     const price = marketSalePrice(state, "bread");
-    const short = Math.max(0, seasonBread(state) * FAMINE_RESPONSE_CONFIG.reliefSeasons - storedFood(state));
+    const poor = new Set(famineShortHouses(state, true));
+    const need = seasonBread({ ...state, houses: state.houses.filter(house => poor.has(house.buildingId)) });
     const budget = Math.floor(Math.max(0, state.treasuryCoin) * FAMINE_RESPONSE_CONFIG.reliefTreasuryPermille / 1000);
     const capacity = granary === undefined ? 0 : Math.max(0, BUILDING_CONFIG_BY_KIND.granary.storageCapacity
       - Object.values(granary.inventory).reduce((sum, amount) => sum + (amount ?? 0), 0));
-    const bread = price <= 0 ? 0 : Math.min(short, Math.floor(budget / price), capacity);
+    const bread = price <= 0 ? 0 : Math.min(need, Math.floor(budget / price), capacity);
     if (granary === undefined || bread <= 0) return state;
     const posted = postLedgerEntries(state, [{ account: "cash", category: "famine_relief", amount: -bread * price,
       sourceRefs: [source, { type: "building", id: granary.id, detail: `bread:${bread}` }] }]);
@@ -261,7 +260,7 @@ export function advancePolitics(state: GameState): GameState {
   for (const def of PETITION_DEFS) {
     const existing = politics.petitions.find(petition => petition.defId === def.id);
     if (existing === undefined) {
-      const ready = next.buildings.some(building => building.kind === def.requiresBuilding);
+      const ready = housingLotCount(next) >= def.requiresLots;
       if (Math.floor(tick / SEASON_TICKS) >= petitionSeason(next, def) && year <= def.toYear && ready) {
         politics = { ...politics, petitions: [...politics.petitions, { id: `${def.id}@${tick}`, defId: def.id, petitioner: def.petitioner, arrivedTick: tick }] };
       }

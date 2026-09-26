@@ -9,16 +9,19 @@ export const FAMINE_RESPONSE_CHOICES = ["relief", "price_control", "laissez_fair
 
 /**
  * FC-2: what each answer does while the famine is arriving, at every season's start (relief, speculation, the
- * merchants' mood) and on every ladder sample (the departure cap).
- * - relief: the treasury buys bread at the famine price into the granary, up to the food for `reliefSeasons` of the
- *   town's consumption short of it, spending at most `reliefTreasuryPermille` of the treasury; one household may leave
- *   a season instead of two.
+ * merchants' mood) and on every ladder sample (the departure cap, the poor households' shortage).
+ * - The price shock: while food sells at `poorShortPricePermille` or more, the poorest `poorPermille` of the lived-in
+ *   households (lowest level, then id) cannot buy bread and count as short of food on the ladder.
+ * - relief: the treasury pays the poor households' season of bread at the famine price (into the granary, spending
+ *   at most `reliefTreasuryPermille` of the treasury), and they are not short; one household may leave a season
+ *   instead of two.
  * - price_control: bread and wheat sell at most at `priceCapPermille`; the merchants lose `merchantPerSeason` a season.
  * - speculation: the granaries sell `speculationPermille` of their bread and wheat at the famine price into the
  *   treasury each season; three households may leave a season.
  */
 export const FAMINE_RESPONSE_CONFIG = {
-  reliefSeasons: 1,
+  poorPermille: 250,
+  poorShortPricePermille: 2000,
   reliefTreasuryPermille: 500,
   reliefDepartureCap: 1,
   priceCapPermille: 1500,
@@ -47,8 +50,8 @@ export interface PetitionOutcome {
 
 /**
  * FC-3: one petition. It arrives at a season the seed picks in `fromYear`…`toYear` (first sample there that the town
- * has `requiresBuilding`), waits for an answer until the end of `toYear` (unanswered: `expired`, the gauge takes
- * `expiredGauge`).
+ * has `requiresLots` lots: merchants ask a village big enough to trade in), waits for an answer until the end of
+ * `toYear` (unanswered: `expired`, the gauge takes `expiredGauge`).
  */
 export interface PetitionDef {
   readonly id: string;
@@ -56,7 +59,7 @@ export interface PetitionDef {
   readonly demand: string;
   readonly fromYear: number;
   readonly toYear: number;
-  readonly requiresBuilding: "market";
+  readonly requiresLots: number;
   readonly outcomes: Readonly<Record<PetitionResponse, PetitionOutcome>>;
   readonly expiredGauge: number;
 }
@@ -66,10 +69,10 @@ export const MARKET_CHARTER_RIGHT_ID = "market_charter";
 
 export const PETITION_DEFS: readonly PetitionDef[] = [
   {
-    // FC-3: the merchants ask for a market charter (60–75 min, 1305–1308): the right to hold the market under their own
-    // wardens with lighter stall dues.
+    // FC-3: the merchants ask for a market charter (60–75 min, 1305–1308): the right to hold the town's market under
+    // their own wardens with lighter stall dues — asked of a village of six lots or more, with or without its market.
     id: MARKET_CHARTER_PETITION_ID, petitioner: "merchants", demand: "market_charter", fromYear: 1305, toYear: 1308,
-    requiresBuilding: "market",
+    requiresLots: 6,
     outcomes: {
       accept: { right: MARKET_CHARTER_RIGHT_ID, stallFeePermille: 750, charterFee: 0, gauge: 15 },
       accept_with_price: { right: MARKET_CHARTER_RIGHT_ID, stallFeePermille: 1000, charterFee: 150, gauge: 5 },

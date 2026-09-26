@@ -27,7 +27,7 @@ import { withHouseholdMembers } from "../population/householdMembers";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { advanceHistoricalEras, calendar, scenarioOf } from "./scenarioState";
-import { departureCapPerSeason, eventForecast } from "./eventSchedule";
+import { departureCapPerSeason, eventForecast, famineShortHouses } from "./eventSchedule";
 import {
   SEASON_STOCK_KEYS,
   type NextObjectiveHint,
@@ -141,13 +141,15 @@ type LadderResult = { readonly houses: House[]; readonly tally: SeasonTally; rea
 function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
   const tick = state.tick;
   const reserveShort = seasonalFoodReserveShort(state, tick);
+  // FC-2: in the famine the poorest households cannot buy bread at its price (relief or price control feeds them).
+  const famineShort = new Set(famineShortHouses(state));
   let changed = false;
   let leaving = 0;
   let abandoned = 0;
   const houses = state.houses.map(house => {
     if (house.abandonedTick !== undefined) return house;
     // A house that starved empty is an ordinary empty house (the old rule): it has no household to be short or leave.
-    if (!householdShortOfFood(house, reserveShort, tick)) {
+    if (!householdShortOfFood(house, reserveShort, tick) && !(famineShort.has(house.buildingId) && house.residents > 0)) {
       if (house.foodShortSinceTick === undefined && house.leavingSinceTick === undefined) return house;
       changed = true;
       return withoutPressure(house);
