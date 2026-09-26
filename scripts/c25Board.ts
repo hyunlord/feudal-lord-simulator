@@ -20,6 +20,9 @@ import type { ZoneKind } from "../src/zones/zone.types";
 import { setZoneAssetsForTest } from "../src/render/zoneAssets";
 import { ZONE_ASSETS } from "../src/render/zoneAssetManifest";
 import { recordingCanvas, type Recording } from "./recordingCanvas";
+import { SEASON_IMAGES } from "../src/render/seasonArtManifest.generated";
+import { setSeasonArtForTest } from "../src/render/seasonArt";
+import { resetSeasonBlendForTest } from "../src/render/seasonTransition";
 
 export const C25_BOARD = { fixture: "seed 2 final", centre: [44, 38] as const, zooms: [0.6, 1, 1.35] as const, dprs: [1, 2] as const,
   viewport: { width: 1280, height: 800 } } as const;
@@ -45,7 +48,18 @@ export function c25ZonedState(): GameState {
     stroke: { tool: "brush", radius: 2, points: stroke.points.map(([x, y]) => ({ x: x + 0.5, y: y + 0.5 })) } }), c25BoardState());
 }
 
+/**
+ * INSTALL-15: the zoned board in each season (zoom 1, DPR 1), 600 ticks into the season (past the leaf and snow
+ * effects, which follow the clock). Summer is the zoned board's own season art.
+ */
+export const C25_SEASONS = [["spring", 0], ["summer", 1], ["autumn", 2], ["winter", 3]] as const;
+export function c25SeasonState(season: number): GameState {
+  const state = c25ZonedState();
+  return { ...state, tick: Math.floor(state.tick / 4_000) * 4_000 + season * 1_000 + 600 };
+}
+
 function drawBoard(state: GameState, zoom: number, dpr: number): string {
+  resetSeasonBlendForTest();
   const { width, height } = C25_BOARD.viewport;
   const [tx, ty] = C25_BOARD.centre;
   const recording = recordingCanvas(width * dpr, height * dpr);
@@ -81,6 +95,10 @@ export function c25BoardHashes(): Record<string, string> {
   for (const [prefix, state] of [["", c25BoardState()], ["zoned-", c25ZonedState()]] as const) {
     for (const zoom of C25_BOARD.zooms) for (const dpr of C25_BOARD.dprs) hashes[`${prefix}z${zoom.toFixed(2)}-dpr${dpr}`] = drawBoard(state, zoom, dpr);
   }
+  setSeasonArtForTest(key => ({ label: key, width: SEASON_IMAGES[key].width, height: SEASON_IMAGES[key].height,
+    naturalWidth: SEASON_IMAGES[key].width, naturalHeight: SEASON_IMAGES[key].height }) as unknown as HTMLImageElement);
+  for (const [name, season] of C25_SEASONS) hashes[`season-${name}-z1.00-dpr1`] = drawBoard(c25SeasonState(season), 1, 1);
+  setSeasonArtForTest(null);
   return hashes;
 }
 

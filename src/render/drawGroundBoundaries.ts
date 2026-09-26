@@ -6,6 +6,7 @@ import type { BoundaryAssetKey } from "./boundaryAssetManifest";
 import { tileToScreen } from "./iso";
 import { getTerrainPattern, terrainPatternQuarterTurn, TERRAIN_TEXTURE_COMPOSITE_OPACITY, type TerrainPatternAssets } from "./terrainPatterns";
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { seasonImage, seasonVariant, type SeasonIndex } from "./seasonArt";
 
 // Forest edge and field outlines for the V2 ground chunks. Forest tiles are painted as grass first; the smoothed
 // forest loops are then filled with the forest floor (even-odd, so enclosed clearings stay grass), and fringe decals
@@ -51,12 +52,18 @@ export function drawForestFill(
   context.globalAlpha = previousAlpha;
 }
 
-export function drawForestFringeDecals(context: CanvasRenderingContext2D, forest: ForestBoundary, loops: readonly number[]): void {
+/** INSTALL-15: a boundary decal in this season's Wave 15 art (autumn and winter fringes and grass edges), else its own. */
+export function seasonalBoundaryAsset(key: BoundaryAssetKey, season: SeasonIndex): HTMLImageElement | null {
+  const variant = seasonVariant(key, season);
+  return (variant === null ? null : seasonImage(variant)) ?? boundaryAsset(key);
+}
+
+export function drawForestFringeDecals(context: CanvasRenderingContext2D, forest: ForestBoundary, loops: readonly number[], season: SeasonIndex = 1): void {
   const decals = loops.flatMap(index => forest.decals[index] ?? [])
     .map(decal => ({ decal, screen: tileToScreen(decal.anchor.x, decal.anchor.y) }))
     .sort((a, b) => a.screen.sy - b.screen.sy || a.screen.sx - b.screen.sx || a.decal.edgeKey - b.decal.edgeKey);
   for (const { decal, screen } of decals) {
-    const image = boundaryAsset(FRINGE_KEYS[decal.variant % FRINGE_KEYS.length] as BoundaryAssetKey);
+    const image = seasonalBoundaryAsset(FRINGE_KEYS[decal.variant % FRINGE_KEYS.length] as BoundaryAssetKey, season);
     if (image === null) continue;
     const width = FRINGE_SIZE.width * decal.scale; const height = FRINGE_SIZE.height * decal.scale;
     stamp(context, image, { x: screen.sx - FRINGE_SIZE.anchorX * decal.scale, y: screen.sy - FRINGE_SIZE.anchorY * decal.scale, width, height },
@@ -64,7 +71,7 @@ export function drawForestFringeDecals(context: CanvasRenderingContext2D, forest
   }
 }
 
-export function drawFieldClusters(context: CanvasRenderingContext2D, fields: readonly FieldCluster[], clusters: readonly number[]): void {
+export function drawFieldClusters(context: CanvasRenderingContext2D, fields: readonly FieldCluster[], clusters: readonly number[], season: SeasonIndex = 1): void {
   for (const index of clusters) {
     const field = fields[index];
     if (field === undefined) continue;
@@ -80,7 +87,7 @@ export function drawFieldClusters(context: CanvasRenderingContext2D, fields: rea
     .map(decal => ({ decal, screen: tileToScreen(decal.anchor.x, decal.anchor.y) }))
     .sort((a, b) => fieldDecalOrder(a.decal) - fieldDecalOrder(b.decal) || a.screen.sy - b.screen.sy || a.screen.sx - b.screen.sx);
   for (const { decal, screen } of decals) {
-    const image = boundaryAsset(decal.kind === "furrow" ? "field_furrow" : "grass_edge");
+    const image = seasonalBoundaryAsset(decal.kind === "furrow" ? "field_furrow" : "grass_edge", season);
     if (image === null) continue;
     const width = FIELD_DECAL_SIZE.width * decal.length; const height = FIELD_DECAL_SIZE.height * decal.length;
     stamp(context, image, { x: screen.sx - width / 2, y: screen.sy - height / 2, width, height }, decal.axis === "x" ? screen.sx : null);

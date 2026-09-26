@@ -1,11 +1,20 @@
 # 현재 상태
 
-갱신: 2026-09-27(WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-2 구휼 비용 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄 · 저장 형식 그대로, 검증 DGX): [보고서](verification/fix2-relief-cost/REPORT.md), [1장 명세](design/flow-chapter-one.md) FC-2a, 결정 FC12.
+  - 구휼 비용 = 나눈 빵 × 시장가. 가난한 가구의 한 계절 빵을 현금으로 먼저 사고(예전 규칙), 모자란 몫은 곡창의 빵에서 방출해 방출 가치(시장가)로 센다. 방출은 `famine_relief` 현물 항목이라 금고와 시뮬레이션은 그대로다(3,000틱 세계 해시 같음).
+  - 대기근 대응의 예측·실제 금고(HL-3)가 이 비용이다. 수입 0 · 곡창 빵 3,000이면 카드와 원장이 `금고 4760d(지금 5000d)`, 실제 4,760d(예전엔 둘 다 5,000d "그대로"). 시나리오 C11. DGX 전체 회귀 `82dbf47`·깨끗한 클론 `d6070a5` 3,095/3,095.
+
+- **INSTALL-15 계절 자연(Wave 15) — 관문 ①~⑤ 통과, ⑥ 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·에셋·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [계절 자연 명세](design/seasonal-nature.md) I15-1~3, [보고서](verification/install15/REPORT.md), 결정 I15-D1~D7.
+  - 나무·덤불·그루터기·과수·풀밭·숲 가장자리·목초지·겨울 밭이 사계절 그림으로 바뀐다(65장). 청크 키에 계절이 들어 있고, 여름 키는 그대로다.
+  - 전환: 땅은 1.5초 8단계 섞기, 물체와 지붕 눈은 물결로 바뀐다. 다음 계절 청크는 10초 전부터 미리 그린다. 5배속은 즉시다.
+  - 봄 들꽃·꽃잎, 겨울 언 웅덩이·눈더미, 가을 낙엽·겨울 첫눈. C25 판은 16장(계절 4 더함)이다.
 
 - **WALL-2 목책 확장 선포 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/wall2-expansion/REPORT.md), [확장 명세](design/wall-expansion.md) WX-1~WX-6, 결정 WX1~WX5.
   - `expand_palisade`: 새 둘레가 옛 성 안을 감싸면, 둘레 위 옛 구간은 그대로 두고 성 안 구간은 헌다(목재 60 % 환급). 새 걸음만 공사한다(비용 = 새 길이). 성문은 그대로다.
@@ -214,7 +223,6 @@
 이전 종료 이력: **A⁵-1 · `5f38625`**: 비축·창고 포화 교착 수정은 사용자가 수용했다. E1~E4 4/4, 가드레일은 2/5이며 seed 1 실패·seed 2/3 미판정이다. 이 상태를 5/5 통과로 해석하지 않는다. 전체 회귀 2,304/2,304·typecheck·build는 해당 종료 커밋에서 통과했다.
 
 ## 다음 작업
-
 
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").

@@ -6,6 +6,8 @@ import { townLandscapeAt, type TownLandscapeKind } from "./townLandscape";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
+import { seasonPropRaster, seasonVariant } from "./seasonArt";
+import { seasonBlend, seasonForObject } from "./seasonTransition";
 
 type LandscapeAsset = { readonly meta: typeof townLandscapeManifest[number]; image: HTMLImageElement | null; raster: RasterizedWorldSprite | null };
 const assets: LandscapeAsset[] = townLandscapeManifest.map(meta => ({ meta, image: null, raster: null }));
@@ -45,13 +47,19 @@ export function townLandscapeAssetReady(kind: TownLandscapeKind): boolean {
 
 export function drawTownLandscape(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[]): void {
   if (!assets.some(asset => asset.image !== null)) return;
+  const season = seasonBlend(state);
   for (const tile of tiles) {
     const kind = townLandscapeAt(state, tile);
     const asset = assets.find(candidate => candidate.meta.id === kind);
     if (asset?.image === null || asset === undefined) continue;
 
     const source = asset.raster?.source ?? { x: 0, y: 0, width: asset.image.naturalWidth, height: asset.image.naturalHeight };
-    drawCroppedWorldSprite(context, asset.raster?.image ?? asset.image, source, townLandscapeRect(asset.meta, tile), false, true);
+    const rect = townLandscapeRect(asset.meta, tile);
+    // INSTALL-15: the orchard tree blossoms in spring and is bare in winter (orchard_tree variants, same canvas); it
+    // turns at its own moment while the season changes.
+    const variant = kind === "orchard" ? seasonVariant("orchard_tree", seasonForObject(season, tile.tx * 31 + tile.ty * 17)) : null;
+    const raster = variant === null ? null : seasonPropRaster(variant, asset.meta.displayWidth);
+    drawCroppedWorldSprite(context, raster?.image ?? asset.raster?.image ?? asset.image, raster?.source ?? source, rect, false, true);
   }
 }
 

@@ -11,7 +11,30 @@ import {
   type TreeDescriptor,
 } from "./treeLayout";
 import { applyInkOutline, snapToPixel } from "./style";
+import { seasonSprite, seasonVariant } from "./seasonArt";
+import { seasonForObject, type SeasonBlend } from "./seasonTransition";
 import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
+
+/**
+ * INSTALL-15: a tree, shrub, stump, tuft or stone in this season's art (the Wave 15 variant on the base's canvas and
+ * registration; the base art where there is none or it is still loading). While the season turns, each object switches
+ * at its own moment (seasonForObject). Variants are drawn untinted: the foliage-ramp tint only moves exact ramp
+ * colours, and the received Wave 15 art has none (0 of ~3,000 opaque pixels on the large oak and each of its variants).
+ * `salt` (the object's position) picks between a winter oak's bare and snowy art and its moment in the turn.
+ */
+function drawSeasonalSprite(context: CanvasRenderingContext2D, key: string, tx: number, ty: number, options: WorldSpriteOptions,
+  blend: SeasonBlend | undefined, salt: number): boolean {
+  if (blend === undefined) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, options);
+  const variant = seasonVariant(key, seasonForObject(blend, salt), salt);
+  const image = variant === null ? null : seasonSprite(variant);
+  if (image === null) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, options);
+  const { tint: _tint, ...untinted } = options;
+  return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, { ...untinted, image });
+}
+
+export { seasonBlend } from "./seasonTransition"; // one drawBuildings import for the object pass's season
+
+const saltOf = (tx: number, ty: number): number => Math.floor(tx * 31 + ty * 17);
 
 export function drawTreeCluster(
   context: CanvasRenderingContext2D,
@@ -33,6 +56,7 @@ export function drawTreeDescriptor(
     readonly tree: TreeDescriptor;
     readonly zoom: number;
     readonly spriteOptions: WorldSpriteOptions;
+    readonly season?: SeasonBlend;
   },
 ): void {
   if (renderDetailLevel(input.zoom) === "full") {
@@ -44,12 +68,12 @@ export function drawTreeDescriptor(
     });
     const anchor = screenToTile(input.tree.x + sway, input.tree.y);
     if (
-      drawWorldSpriteAtWorldAnchor(context, input.tree.spriteKey, anchor.tx, anchor.ty, {
+      drawSeasonalSprite(context, input.tree.spriteKey, anchor.tx, anchor.ty, {
         ...input.spriteOptions,
         scale: input.tree.scale,
         tint: input.tree.tone,
         flipX: input.tree.flipX,
-      })
+      }, input.season, saltOf(input.tree.anchorTx, input.tree.anchorTy))
     ) {
       return;
     }
@@ -63,16 +87,18 @@ export function drawGroundCoverDescriptor(
     readonly descriptor: GroundCoverDescriptor;
     readonly zoom: number;
     readonly spriteOptions: WorldSpriteOptions;
+    readonly season?: SeasonBlend;
   },
 ): void {
   if (renderDetailLevel(input.zoom) !== "full") return;
   if (
-    drawWorldSpriteAtWorldAnchor(
+    drawSeasonalSprite(
       context,
       input.descriptor.spriteKey,
       input.descriptor.anchorTx,
       input.descriptor.anchorTy,
       { ...input.spriteOptions, scale: input.descriptor.scale },
+      input.season, saltOf(input.descriptor.anchorTx, input.descriptor.anchorTy),
     )
   ) {
     return;
@@ -86,15 +112,17 @@ export function drawStumpDescriptor(
     readonly descriptor: StumpDescriptor;
     readonly zoom: number;
     readonly spriteOptions: WorldSpriteOptions;
+    readonly season?: SeasonBlend;
   },
 ): void {
   if (
-    drawWorldSpriteAtWorldAnchor(
+    drawSeasonalSprite(
       context,
       input.descriptor.spriteKey,
       input.descriptor.anchorTx,
       input.descriptor.anchorTy,
       { ...input.spriteOptions, scale: input.descriptor.scale },
+      input.season, saltOf(input.descriptor.anchorTx, input.descriptor.anchorTy),
     )
   ) {
     return;

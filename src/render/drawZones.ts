@@ -5,6 +5,7 @@ import { tileToScreen } from "./iso";
 import { applyPaletteStroke, withAlpha } from "./style";
 import { zoneAsset } from "./zoneAssets";
 import type { ZoneLayer } from "./zoneLayer";
+import { seasonImage, seasonVariant, type SeasonIndex } from "./seasonArt";
 
 // Zone layer in the ground chunks (C1b). Fills sit under the field clusters and the road chunks; outlines, plot
 // lines and frontage marks sit on top of the fields. Every fill is one even-odd path per zone from its shared-edge
@@ -26,12 +27,14 @@ export const ZONE_STYLES: Readonly<Record<ZoneKind, ZoneStyle>> = {
 const OUTLINE_ALPHA = 0.75;
 const SHARED_OUTLINE_ALPHA = 0.55;
 
-export function drawZoneFills(context: CanvasRenderingContext2D, layer: ZoneLayer, zoneIndexes: readonly number[]): void {
+/** `season` (INSTALL-15): pasture turns in autumn and winter, arable soil in winter (Wave 15, the same 2x2-tile fill). */
+export function drawZoneFills(context: CanvasRenderingContext2D, layer: ZoneLayer, zoneIndexes: readonly number[], season: SeasonIndex = 1): void {
   for (const index of zoneIndexes) {
     const zone = layer.zones[index]; const rings = layer.outlines.rings[index];
     if (zone === undefined || rings === undefined || rings.length === 0) continue;
     const style = ZONE_STYLES[zone.kind];
-    const texture = zone.floor === null ? null : zoneAsset(zone.floor);
+    const variant = zone.floor === null ? null : seasonVariant(zone.floor, season);
+    const texture = zone.floor === null ? null : (variant === null ? null : seasonImage(variant)) ?? zoneAsset(zone.floor);
     const pattern = texture === null ? null : cachedPattern(context, texture);
     traceRings(context, rings);
     const previousAlpha = context.globalAlpha;

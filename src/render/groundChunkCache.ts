@@ -17,6 +17,15 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // (c) Memory bound: the chunks drawn this frame plus OFFSCREEN_ENTRIES more (least recently drawn evicted first).
 //     Chunks in a one-chunk ring around the view are rastered ahead in idle time (prefetch), so a camera drag
 //     reveals rasters that already exist. Measured fill cost, hit rates and pixel totals: docs/verification/d1a.
+// (d) Fade (INSTALL-15): a request may carry a fade token (the season). When a chunk re-rasters for new content under
+//     a new token, the old raster is kept for `fade.ms` and the chunk shows a blend of old and new in FADE_STEPS steps:
+//     the blend is made once per step in a third canvas (old copied, new drawn over at the step's alpha) and blitted
+//     opaque. A per-frame semi-transparent blit of every chunk cost the software raster ~4.5 ms a frame, landing on
+//     the next draws that flushed it (DGX pop176 turn: buildings stage 0.3 -> 4.8 ms); in steps, offset per chunk, a
+//     frame makes a few chunks' blends instead. The old raster and the blend canvas are dropped when the fade ends or the zoom bucket changes. Staging: in the last seconds of a season the renderer
+//     rasters the next season's visible chunks in idle time (`stage`, kept apart from the drawn rasters, at most one
+//     token at a time); at the turn a staged raster with the same content key and scale is taken as is, so the turn's
+//     frames only blend. Measured in docs/verification/install15/perf.md.
 
 export const GROUND_CHUNK_ZOOM_STEP = 0.05;
 const OFFSCREEN_ENTRIES = 64;
@@ -28,6 +37,7 @@ const FRAME_DEFER_AFTER_MS = 8;
 /** After waiting this many frames a chunk may take the frame's one over-budget raster (so every wait ends). */
 const MAX_DEFERRED_FRAMES = 3;
 const EDGE_OVERLAP_PX = 1.5;
+const FADE_STEPS = 8;
 
 export type ChunkCanvas = {
   readonly canvas: CanvasImageSource & { width: number; height: number };
@@ -44,15 +54,17 @@ export type ChunkRasterRequest = {
   readonly diamond: readonly [Point, Point, Point, Point];
   /** If the held raster has the same deferKey, the content change may wait for a later frame (see header). */
   readonly deferKey?: string;
+  /** A content change under a different token crossfades from the held raster over `ms` (see header (d)). */
+  readonly fade?: { readonly token: string; readonly ms: number };
 };
 type Point = { readonly x: number; readonly y: number };
-type Entry = {
+type Held = { readonly raster: ChunkCanvas; readonly left: number; readonly top: number; readonly scale: number };
+type Entry = Held & {
   readonly contentKey: string;
   readonly deferKey: string | undefined;
-  readonly scale: number;
-  readonly raster: ChunkCanvas;
-  readonly left: number;
-  readonly top: number;
+  readonly fadeToken: string | undefined;
+  /** The raster this one fades in over, and when the fade began (header (d)). */
+  previous: (Held & { readonly startedMs: number; readonly ms: number; blend: ChunkCanvas | null; step: number }) | null;
 };
 
 export type GroundChunkCacheStats = {
@@ -68,6 +80,9 @@ export type GroundChunkCacheStats = {
   pixels: number;
   lastFrameRasters: number;
   lastFrameRasterMs: number;
+  fades: number;
+  staged: number;
+  stagedUsed: number;
 };
 
 export type GroundChunkCache = {
@@ -78,6 +93,10 @@ export type GroundChunkCache = {
   prefetch(request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): boolean;
   /** Whether `prefetch` would raster anything for this request. */
   needs(request: ChunkRasterRequest): boolean;
+  /** Rasters a chunk's next-season content ahead of the turn (idle time); no-op if already staged (header (d)). */
+  stage(request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): boolean;
+  /** Whether `stage` would raster anything for this request. */
+  needsStage(request: ChunkRasterRequest): boolean;
   stats(): Readonly<GroundChunkCacheStats>;
   /** Chunks this frame drew from a held raster while their re-raster waits (deferKey); a later frame must follow. */
   pending(): number;
@@ -89,7 +108,8 @@ export type GroundChunkCache = {
 export function createGroundChunkCache(factory: ChunkCanvasFactory | null = browserChunkCanvas): GroundChunkCache {
   const entries = new Map<string, Entry>();
   const stats: GroundChunkCacheStats = { hits: 0, prefetched: 0, contentRasters: 0, zoomRasters: 0, deferredZoom: 0, deferredContent: 0, evictions: 0,
-    rasterMs: 0, entries: 0, pixels: 0, lastFrameRasters: 0, lastFrameRasterMs: 0 };
+    rasterMs: 0, entries: 0, pixels: 0, lastFrameRasters: 0, lastFrameRasterMs: 0, fades: 0, staged: 0, stagedUsed: 0 };
+  const staged = new Map<string, Entry>();
   let zoomBudget = ZOOM_RERASTER_BUDGET;
   let pendingThisFrame = 0;
   let frameStart: number | undefined;
@@ -98,7 +118,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
   const drawnThisFrame = new Set<string>();
   const now = (): number => typeof performance === "undefined" ? 0 : performance.now();
 
-  const raster = (request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): Entry | null => {
+  const raster = (request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void, fresh = false): Entry | null => {
     if (factory === null) return null;
     const started = now();
     const xs = request.diamond.map(point => point.x); const ys = request.diamond.map(point => point.y);
@@ -107,7 +127,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
     const width = Math.ceil((Math.max(...xs) + pad - left) * request.scale);
     const height = Math.ceil((Math.max(...ys) + pad - top) * request.scale);
     const reused = entries.get(request.id);
-    const target = reused !== undefined && reused.raster.canvas.width === width && reused.raster.canvas.height === height
+    const target = !fresh && reused !== undefined && reused.raster.canvas.width === width && reused.raster.canvas.height === height
       ? reused.raster : factory(width, height);
     if (target === null) return null;
     const context = target.context;
@@ -126,7 +146,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
     context.clip();
     paint(context);
     context.restore();
-    const entry = { contentKey: request.contentKey, deferKey: request.deferKey, scale: request.scale, raster: target, left, top };
+    const entry: Entry = { contentKey: request.contentKey, deferKey: request.deferKey, fadeToken: request.fade?.token, scale: request.scale, raster: target, left, top, previous: null };
     const elapsed = now() - started;
     stats.rasterMs += elapsed; stats.lastFrameRasterMs += elapsed; stats.lastFrameRasters += 1;
     return entry;
@@ -156,6 +176,20 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
       const entry = entries.get(request.id);
       return entry === undefined || entry.contentKey !== request.contentKey || entry.scale !== request.scale;
     },
+    needsStage(request) {
+      const entry = staged.get(request.id);
+      return request.fade !== undefined && (entry === undefined || entry.contentKey !== request.contentKey || entry.scale !== request.scale);
+    },
+    stage(request, paint) {
+      if (!this.needsStage(request) || request.fade === undefined) return false;
+      for (const [id, entry] of staged) if (entry.fadeToken !== request.fade.token) staged.delete(id);
+      const started = stats.lastFrameRasterMs; const count = stats.lastFrameRasters;
+      const next = raster(request, paint, true);
+      stats.lastFrameRasterMs = started; stats.lastFrameRasters = count;
+      if (next === null) return false;
+      staged.set(request.id, next); stats.staged += 1;
+      return true;
+    },
     prefetch(request, paint) {
       if (!this.needs(request)) return false;
       const started = stats.lastFrameRasterMs; const count = stats.lastFrameRasters;
@@ -175,6 +209,14 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         store(request.id, entry);
       } else if (entry !== undefined && entry.contentKey === request.contentKey && zoomBudget <= 0) {
         stats.deferredZoom += 1;
+      } else if (entry !== undefined && request.fade !== undefined && entry.fadeToken !== request.fade.token
+        && staged.get(request.id)?.contentKey === request.contentKey && staged.get(request.id)?.scale === request.scale) {
+        // A staged next-season raster: take it, and fade from the held one.
+        const next = staged.get(request.id) as Entry;
+        staged.delete(request.id); stats.stagedUsed += 1;
+        if (request.fade.ms > 0) { next.previous = { raster: entry.raster, left: entry.left, top: entry.top, scale: entry.scale, startedMs: now(), ms: request.fade.ms, blend: null, step: -1 }; stats.fades += 1; }
+        entry = next;
+        store(request.id, entry);
       } else if (frameStart !== undefined && entry !== undefined && entry.scale === request.scale && request.deferKey !== undefined
         && entry.deferKey === request.deferKey && (stats.lastFrameRasterMs >= DEFER_BUDGET_MS || now() - frameStart >= FRAME_DEFER_AFTER_MS)
         && (forcedThisFrame || (deferredFrames.get(request.id) ?? 0) < MAX_DEFERRED_FRAMES)) {
@@ -185,20 +227,63 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         if ((deferredFrames.get(request.id) ?? 0) >= MAX_DEFERRED_FRAMES) forcedThisFrame = true;
         deferredFrames.delete(request.id);
         const zoomOnly = entry !== undefined && entry.contentKey === request.contentKey;
-        const next = raster(request, paint);
+        const fade = !zoomOnly && entry !== undefined && request.fade !== undefined && request.fade.ms > 0 && entry.fadeToken !== undefined
+          && entry.fadeToken !== request.fade.token && entry.scale === request.scale ? request.fade : null;
+        const next = raster(request, paint, fade !== null);
         if (next === null) { paint(target); return; }
         if (zoomOnly) { stats.zoomRasters += 1; zoomBudget -= 1; } else stats.contentRasters += 1;
+        if (fade !== null && entry !== undefined) {
+          next.previous = { raster: entry.raster, left: entry.left, top: entry.top, scale: entry.scale, startedMs: now(), ms: fade.ms, blend: null, step: -1 };
+          stats.fades += 1;
+        }
         entry = next;
         store(request.id, entry);
       }
+      const previous = entry.previous;
+      const t = previous === null ? 1 : Math.min(1, (now() - previous.startedMs) / previous.ms);
+      if (previous !== null && t >= 1) entry.previous = null;
+      if (previous === null || t >= 1) { blit(target, entry); return; }
+      // Each chunk's steps are offset by its id, so the blends spread over the frames (~4 chunks a frame, not all 46).
+      // Until its first step a chunk shows its old raster as is (so not every chunk blends on the turn's first frame).
+      const step = Math.min(FADE_STEPS - 1, Math.floor(t * FADE_STEPS + fadePhase(request.id)) - 1);
+      if (step < 0) { blit(target, previous); return; }
       const canvas = entry.raster.canvas;
-      drawCroppedWorldSprite(target, canvas, { x: 0, y: 0, width: canvas.width, height: canvas.height },
-        { x: entry.left, y: entry.top, width: canvas.width / entry.scale, height: canvas.height / entry.scale }, true, true);
+      if (previous.step !== step && factory !== null && previous.raster.canvas.width === canvas.width && previous.raster.canvas.height === canvas.height) {
+        previous.blend ??= factory(canvas.width, canvas.height);
+        const paint = previous.blend?.context;
+        if (paint !== undefined) {
+          paint.setTransform(1, 0, 0, 1, 0, 0); paint.globalAlpha = 1; paint.clearRect(0, 0, canvas.width, canvas.height);
+          const whole = { x: 0, y: 0, width: canvas.width, height: canvas.height };
+          drawCroppedWorldSprite(paint, previous.raster.canvas, whole, whole, true, true);
+          paint.globalAlpha = (step + 1) / (FADE_STEPS + 1);
+          drawCroppedWorldSprite(paint, canvas, whole, whole, true, true);
+          paint.globalAlpha = 1;
+          previous.step = step;
+        }
+      }
+      if (previous.blend !== null && previous.step === step) { blit(target, { raster: previous.blend, left: entry.left, top: entry.top, scale: entry.scale }); return; }
+      blit(target, previous);
+      const alpha = target.globalAlpha;
+      target.globalAlpha = alpha * t;
+      blit(target, entry);
+      target.globalAlpha = alpha;
     },
     stats: () => ({ ...stats }),
-    clear() { entries.clear(); stats.entries = 0; stats.pixels = 0; },
+    clear() { entries.clear(); staged.clear(); stats.entries = 0; stats.pixels = 0; },
     entry(id) { const value = entries.get(id); return value === undefined ? null : { contentKey: value.contentKey, scale: value.scale, raster: value.raster }; },
   };
+}
+
+function fadePhase(id: string): number {
+  let hash = 2_166_136_261;
+  for (let index = 0; index < id.length; index += 1) hash = Math.imul(hash ^ id.charCodeAt(index), 16_777_619);
+  return ((hash >>> 0) % 1_000) / 1_000;
+}
+
+function blit(target: CanvasRenderingContext2D, held: Held): void {
+  const canvas = held.raster.canvas;
+  drawCroppedWorldSprite(target, canvas, { x: 0, y: 0, width: canvas.width, height: canvas.height },
+    { x: held.left, y: held.top, width: canvas.width / held.scale, height: canvas.height / held.scale }, true, true);
 }
 
 export function groundChunkZoomBucket(zoom: number): number {

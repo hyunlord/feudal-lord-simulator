@@ -21,7 +21,7 @@ import { buildBuildingVisualState, renderDetailLevel } from "./buildingVisualSta
 import { houseMaterialEraFromEra, type HouseMaterialWave } from "./buildingMaterialWave";
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
 import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
-import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor } from "./drawTrees";
+import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor, seasonBlend } from "./drawTrees";
 import { drawWalker } from "./drawWalkers";
 import { drawZoneProp } from "./zonePropSprites";
 import type { TileRange, ViewportSize } from "./renderer";
@@ -67,31 +67,31 @@ export function drawBuildings(
     seed: input.state.seed,
     includeGroundCover: renderDetailLevel(input.zoom) === "full",
   });
-  const spriteOptions = spriteOptionsFor(input);
+  const spriteOptions = spriteOptionsFor(input); const season = seasonBlend(input.state, input.nowMs); // INSTALL-15 seasonal art
   for (const item of items) {
     if (item.kind === "tree") {
       drawTreeDescriptor(context, {
         tick: input.state.tick,
         tree: item.descriptor,
         zoom: input.zoom,
-        spriteOptions,
+        spriteOptions, season,
       });
     } else if (item.kind === "groundCover") {
       drawGroundCoverDescriptor(context, {
         descriptor: item.descriptor,
         zoom: input.zoom,
-        spriteOptions,
+        spriteOptions, season,
       });
     } else if (item.kind === "stump") {
       drawStumpDescriptor(context, {
         descriptor: item.descriptor,
         zoom: input.zoom,
-        spriteOptions,
+        spriteOptions, season,
       });
     } else if (item.kind === "walker") {
       drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal", input.state);
     } else if (item.kind === "zone_prop") {
-      if ((input.viewMode ?? "normal") === "normal") drawZoneProp(context, item.prop);
+      if ((input.viewMode ?? "normal") === "normal") drawZoneProp(context, item.prop, season);
     } else if (item.kind === "farm_prop") {
       if ((input.viewMode ?? "normal") === "normal") drawFarmProp(context, item.prop);
     } else if (item.kind === "building") {

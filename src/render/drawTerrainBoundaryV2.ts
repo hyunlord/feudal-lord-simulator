@@ -26,6 +26,9 @@ import type { TileRange } from "./renderVisibility";
 import { TERRAIN_TEXTURE_KEYS, type TerrainPatternAssets } from "./terrainPatterns";
 import { drawTownLandscape } from "./townLandscapeAssets";
 import { getSprite } from "./worldAssets";
+import { preloadSeasonArt, seasonArtStatuses, seasonOf, type SeasonIndex } from "./seasonArt";
+import { drawSeasonGrass, seasonChunkToken } from "./seasonGround";
+import { seasonFadeMs } from "./seasonTransition";
 
 // RENDER_BOUNDARY_V2 ground pass. Order: water (live) -> ground chunks (diamonds, seams, forest outline + fringe,
 // zone fills, building yards, field clusters, zone lines, building aprons) -> town landscape (live) -> road-ribbon
@@ -71,6 +74,7 @@ export function groundBoundaryDiagnostics(context: CanvasRenderingContext2D) {
     chunks: caches.get(context)?.stats() ?? null,
     scene: groundBoundarySceneStats(),
     assets: boundaryAssetStatuses(),
+    seasonArt: seasonArtStatuses(),
   };
 }
 
@@ -90,6 +94,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const waterReady = waterSurface() !== null;
   probe?.enter("terrain.fill");
   void preloadBoundaryAssets();
+  preloadSeasonArt(); // INSTALL-15: every season's art is loading from the first frame, not from its first turn
   const scene = groundBoundaryScene(input.state);
   if (scene.shore.loops.length > 0) void preloadShoreAssets();
   if (scene.zones.zones.length > 0 || scene.yardProps.beds.length + scene.yardProps.hurdles.length > 0) void preloadZoneAssets();
@@ -118,26 +123,46 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
     + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "");
   const visible = visibleChunks(scene, input.range);
+  // INSTALL-15: the season (and its art's readiness) is in both chunk keys but not in their deferKeys, so the season's
+  // re-rasters may spread over a few frames; each crossfades from the old season's raster (fade token = the season).
+  const season = seasonOf(input.state);
+  const seasonToken = seasonChunkToken(season);
+  const fade = { token: `s${season}`, ms: seasonFadeMs() };
   const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
-    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
+    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
     // Same ground base = the chunk only changed its zones: its old raster may stand in until the frame budget allows.
-    deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`,
+    deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, fade,
   });
   const roadRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
-    id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
+    id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
+    deferKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, fade,
   });
+  const paintRoads = (plan: GroundChunkPlan) => (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, season);
   for (const plan of visible) {
-    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts));
+    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season));
+  }
+  // INSTALL-15 staging: in the season's last STAGE_TICKS the visible chunks' next-season rasters are made in idle time,
+  // so the turn itself only blends (groundChunkCache header (d)). Same keys as the turn's requests will carry.
+  if (input.state.tick % SEASON_TICKS >= SEASON_TICKS - STAGE_TICKS && seasonFadeMs() > 0) {
+    const next = ((season + 1) % 4) as SeasonIndex;
+    const nextToken = seasonChunkToken(next);
+    const nextFade = { token: `s${next}`, ms: fade.ms };
+    scheduleStaging(context, cache, visible.flatMap(plan => [
+      { request: { ...groundRequest(plan), contentKey: `${plan.groundKey}|${groundReadiness(plan)}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
+        paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, next) },
+      ...(plan.hasRoads ? [{ request: { ...roadRequest(plan), contentKey: `${plan.roadKey}|${readiness}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
+        paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, next) }] : []),
+    ]));
   }
   schedulePrefetch(context, cache, ringChunks(scene, input.range, visible).flatMap(plan => [
-    { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts) },
-    ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan) }] : []),
+    { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, season) },
+    ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: paintRoads(plan) }] : []),
   ]));
   probe?.enter("terrain.landscape");
   drawTownLandscape(context, input.state, input.tiles);
   probe?.enter("roads.ground");
   for (const plan of visible) {
-    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paint => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan));
+    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paintRoads(plan));
   }
   for (const tile of input.tiles) if (tile.hasRoad && tile.terrain === "water") drawBridgeDeck(context, input.state, tile);
   if (scene.shore.bridgeEnds.length > 0) drawBridgeAbutments(context, scene.shore);
@@ -152,12 +177,14 @@ function drawGroundChunk(
   plan: GroundChunkPlan,
   zoom: number,
   parts: TerrainV2Parts,
+  season: SeasonIndex,
 ): void {
   const tiles = chunkTiles(input.state, plan, 1);
   for (const tile of tiles) {
     // Forest and water tiles are laid as grass; the smoothed forest outline and shoreline below paint over them.
     parts.drawGroundDiamond(context, tile.terrain === "forest" || tile.terrain === "water" ? { ...tile, terrain: "grass" } : tile, input.state.seed, input.terrainPatterns);
   }
+  if (season !== 1) drawSeasonGrass(context, tiles, season);
   for (const tile of tiles) {
     if (tile.terrain === "water") continue;
     if (zoom > 0.7) drawGroundDecalDetail(context, tile, input.state.seed);
@@ -168,7 +195,7 @@ function drawGroundChunk(
   drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, {
     left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4,
   }, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
-  drawForestFringeDecals(context, scene.forest, plan.forestLoops);
+  drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
   drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, {
     left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4,
   }, bounds, input.state.seed);
@@ -178,13 +205,13 @@ function drawGroundChunk(
     if (plan.yards.length > 0) clipOutYards(context, scene.grounds, plan.yards, [
       { x: bounds.left - 4, y: bounds.top - 4 }, { x: bounds.right + 4, y: bounds.top - 4 },
       { x: bounds.right + 4, y: bounds.bottom + 4 }, { x: bounds.left - 4, y: bounds.bottom + 4 }]);
-    drawZoneFills(context, scene.zones, plan.zoneIndexes);
+    drawZoneFills(context, scene.zones, plan.zoneIndexes, season);
     context.restore();
-    if (plan.arableBands.length > 0) drawArableFields(context, scene.zones, plan.zoneIndexes, arableStripStateLookup(input.state));
+    if (plan.arableBands.length > 0) drawArableFields(context, scene.zones, plan.zoneIndexes, arableStripStateLookup(input.state), season);
   }
   drawYards(context, scene.grounds, plan.yards, input.state.seed);
   if (plan.beds.length > 0) drawCroftBeds(context, scene.yardProps, plan.beds);
-  drawFieldClusters(context, scene.fields, plan.fieldClusters);
+  drawFieldClusters(context, scene.fields, plan.fieldClusters, season);
   if (plan.zoneIndexes.length + plan.zoneChains.length > 0) drawZoneLines(context, scene.zones, plan.zoneChains, bounds, zoom);
   drawAprons(context, scene.grounds, plan.aprons, scene.ribbons.width);
 }
@@ -221,6 +248,38 @@ const PREFETCH_MIN_IDLE_MS = 6;
  * Rasters the ring of chunks around the view in idle time, nearest first. Each job carries the content key of the
  * frame that queued it, so a raster made from an older state is simply re-rastered when the key moves on.
  */
+const SEASON_TICKS = 1_000;
+/** Staging window before a turn: 200 ticks, 10 s at 1x (the visible chunks raster in ~0.1-0.3 s of idle time; a scene
+ * opened just before a turn shares that idle time with its first rasters). */
+const STAGE_TICKS = 200;
+/** The longest a staging callback waits for idle time (46 chunks stage in ~2.3 s even with none). */
+const STAGE_WAIT_MS = 50;
+const stagingQueues = new WeakMap<CanvasRenderingContext2D, { jobs: PrefetchJob[]; scheduled: boolean }>();
+
+function scheduleStaging(context: CanvasRenderingContext2D, cache: GroundChunkCache, jobs: PrefetchJob[]): void {
+  if (typeof requestIdleCallback !== "function") return;
+  let queue = stagingQueues.get(context);
+  if (queue === undefined) { queue = { jobs: [], scheduled: false }; stagingQueues.set(context, queue); }
+  queue.jobs = jobs.filter(job => cache.needsStage(job.request));
+  if (queue.scheduled || queue.jobs.length === 0) return;
+  queue.scheduled = true;
+  // One chunk per callback at least (the callback comes within STAGE_WAIT_MS even without idle time): on a busy
+  // software raster (the DGX) idle periods over PREFETCH_MIN_IDLE_MS are rare, and staging must finish before the turn.
+  const run = (deadline: IdleDeadline): void => {
+    const current = stagingQueues.get(context);
+    if (current === undefined) return;
+    let first = true;
+    while (current.jobs.length > 0 && (first || deadline.timeRemaining() > PREFETCH_MIN_IDLE_MS)) {
+      const job = current.jobs.shift() as PrefetchJob;
+      cache.stage(job.request, job.paint);
+      first = false;
+    }
+    current.scheduled = current.jobs.length > 0;
+    if (current.scheduled) requestIdleCallback(run, { timeout: STAGE_WAIT_MS });
+  };
+  requestIdleCallback(run, { timeout: STAGE_WAIT_MS });
+}
+
 function schedulePrefetch(context: CanvasRenderingContext2D, cache: GroundChunkCache, jobs: PrefetchJob[]): void {
   if (typeof requestIdleCallback !== "function") return;
   let queue = prefetchQueues.get(context);

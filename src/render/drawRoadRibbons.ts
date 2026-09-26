@@ -8,6 +8,8 @@ import { tileToScreen } from "./iso";
 import { roadStripSet } from "./roadRibbonStyle";
 import { withAlpha } from "./style";
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { seasonalBoundaryAsset } from "./drawGroundBoundaries";
+import type { SeasonIndex } from "./seasonArt";
 
 // Road ribbons along the smoothed centreline. A top-down strip (512x64 per image) repeats along the path: every
 // centreline segment is one quad filled with the strip pattern under that segment's own affine transform (tile space
@@ -52,7 +54,7 @@ type StripSource = {
 const sourceCanvases = new WeakMap<object, Map<string, { image: CanvasImageSource; rutFree: CanvasImageSource | null; ruts: CanvasImageSource | null }>>();
 const patternCache = new WeakMap<CanvasRenderingContext2D, Map<CanvasImageSource, Map<string, CanvasPattern | null>>>();
 
-export function drawRoadRibbons(context: CanvasRenderingContext2D, graph: RoadCenterlineGraph, layout: RoadRibbonLayout, plan: RibbonPlan): void {
+export function drawRoadRibbons(context: CanvasRenderingContext2D, graph: RoadCenterlineGraph, layout: RoadRibbonLayout, plan: RibbonPlan, season: SeasonIndex = 1): void {
   const sources = { earth: stripSource("earth", layout.width), stone: stripSource("stone", layout.width) };
   const sourceFor = (material: RoadMaterial): StripSource | null => material === "stone" ? sources.stone ?? sources.earth : sources.earth;
   for (const index of plan.plazas) {
@@ -89,7 +91,7 @@ export function drawRoadRibbons(context: CanvasRenderingContext2D, graph: RoadCe
   const decals: ShoulderDecal[] = [];
   for (const index of plan.chains) decals.push(...(layout.shoulders[index] ?? []));
   for (const index of plan.fixedPoints) { const decal = layout.capDecals[index]; if (decal !== null && decal !== undefined) decals.push(decal); }
-  drawShoulderDecals(context, decals);
+  drawShoulderDecals(context, decals, season);
 }
 
 /**
@@ -335,8 +337,8 @@ const bandYAt = (x: number): number => 47 - 0.23 * (x - 16);
 const TUFT_SCALE = 0.8;
 const TUFT_ALPHA = 0.85;
 
-function drawShoulderDecals(context: CanvasRenderingContext2D, decals: readonly ShoulderDecal[]): void {
-  const image = boundaryAsset("grass_edge");
+function drawShoulderDecals(context: CanvasRenderingContext2D, decals: readonly ShoulderDecal[], season: SeasonIndex): void {
+  const image = seasonalBoundaryAsset("grass_edge", season);
   if (image === null || decals.length === 0) return;
   const previousAlpha = context.globalAlpha;
   context.globalAlpha = previousAlpha * TUFT_ALPHA;
