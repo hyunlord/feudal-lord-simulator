@@ -1,11 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-26(UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(J1 판정 네 가지 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **J1 사용자 판정 네 가지 — 본선 병합**(Claude Code, 렌더·UI·스크립트·대장·테스트·문서만, 엔진 0줄): [보고서](verification/j1-judgements/REPORT.md).
+  - 알약 식량은 창고·곡창 저장분만(새 게임 270일은 곡창 빵 30 ÷ 네 집 한 끼 1개로 맞음, 수레 위 빵은 뺌), 날짜 펼침에 "식량 N일 — 겨울 초까지".
+  - 키아트는 빌드 시 웹 파생본(JPEG 167–361 KB, 엠블럼 절반 PNG 96 KB, `scripts/keyartDerivatives.ts`), PNG는 inbox에만. 돈은 페니 "120d". 결산 카드 기본 켬 유지.
 
 - **UI-3 압력이 화면에 — 계절 결산·계절 띠·배치 장부·집 압력·보릿고개·타이틀(Wave 8): 관문 ①~⑦ 통과, ⑧ 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·UI·스타일·에셋·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [UI-3 명세](design/season-ledger-ui.md) UI3-1~UI3-7, [보고서](verification/ui3/REPORT.md), 결정 UI3-D1~D8.
   - Wave 8 37장 설치. 결산 카드는 상태 기계 모달(자동 정지, 끄기 가능), 계절 띠는 알약 날짜 아래 5px(누르면 전체 띠·다가오는 일), 칩에 장부 기간마다 지대·유지비·일꾼.

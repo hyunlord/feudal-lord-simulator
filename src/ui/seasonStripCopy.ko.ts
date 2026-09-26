@@ -13,5 +13,9 @@ export const SEASON_STRIP_COPY = {
   arrival: (season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
     `${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}쯤`,
   row: (kind: string, when: string) => `${kind} — ${when}`,
+  /** Judgement 2026-09-26: the pill's food days, with the calendar point they reach ("식량 270일 — 가을 초까지"). */
+  foodUntil: (days: number, season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
+    `식량 ${days}일 — ${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}까지`,
+  foodNone: "식량 — 먹는 집이 없습니다",
   now: "지금",
 } as const;

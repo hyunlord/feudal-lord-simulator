@@ -1,5 +1,6 @@
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import type { NextObjectiveHint } from "../engine/season.types";
+import { pence } from "./hud/hudCopy.ko";
 
 // UI-3 season ledger card (FP-1): one closed season on the Wave 8 scroll. Signed numbers, no arrows or symbols.
 const signed = (value: number): string => value > 0 ? `+${value}` : value < 0 ? `−${-value}` : "0";
@@ -8,7 +9,8 @@ export const SEASON_LEDGER_COPY = {
   label: "계절 결산",
   title: (year: number, season: 0 | 1 | 2 | 3) => `${year}년 ${SCENARIO_COPY.seasons[season]} 결산`,
   signed,
-  money: (income: number, expense: number) => `수입 ${signed(income)} · 지출 ${signed(-expense)} · 남음 ${signed(income - expense)}`,
+  money: (income: number, expense: number) => `수입 ${pence(signed(income))} · 지출 ${pence(signed(-expense))} · 남음 ${pence(signed(income - expense))}`,
+  pence,
   population: (delta: number) => `인구 ${signed(delta)}`,
   versus: (delta: number) => `(전 계절 ${signed(delta)})`,
   stock: (name: string, delta: number) => `${name} ${signed(delta)}`,

@@ -54,7 +54,7 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     ...Object.fromEntries(SEASON_STOCK_KEYS.map(key => [key, ledger.stockDelta[key]])) as Record<SeasonStockKey, number> };
   const scenes = (Object.keys(deltas) as SceneKey[]).filter(key => deltas[key] !== 0)
     .sort((a, b) => Math.abs(deltas[b]) * SCENE_WEIGHT[b] - Math.abs(deltas[a]) * SCENE_WEIGHT[a]).slice(0, 3)
-    .map(key => ({ key, value: SEASON_LEDGER_COPY.signed(Math.round(deltas[key])) }));
+    .map(key => ({ key, value: key === "coin" ? SEASON_LEDGER_COPY.pence(SEASON_LEDGER_COPY.signed(Math.round(deltas[key]))) : SEASON_LEDGER_COPY.signed(Math.round(deltas[key])) }));
   const population = SEASON_LEDGER_COPY.population(ledger.popDelta) + (before === undefined ? "" : ` ${SEASON_LEDGER_COPY.versus(before.popDelta)}`);
   const stock = SEASON_STOCK_KEYS.map(key => SEASON_LEDGER_COPY.stock(SEASON_LEDGER_COPY.stockNames[key], Math.round(ledger.stockDelta[key]))).join(" · ");
   const events = ledger.notableEvents.map(event => eventLine(state, event));

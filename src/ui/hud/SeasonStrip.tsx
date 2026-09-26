@@ -17,10 +17,18 @@ export function SeasonStripMini({ tick }: { readonly tick: number }) {
   );
 }
 
-export function SeasonStripPanel({ state, onClose }: { readonly state: Pick<GameState, "tick" | "buildings">; readonly onClose: () => void }) {
+export function SeasonStripPanel({ state, food, onClose }: {
+  readonly state: Pick<GameState, "tick" | "buildings">;
+  /** The pill's food days and the tick they reach (null when no house eats). */
+  readonly food: { readonly days: number | null; readonly untilTick: number | null };
+  readonly onClose: () => void;
+}) {
   const marks = seasonMarks(state);
+  const until = food.untilTick === null ? null : arrivalOf(state.tick, food.untilTick);
   return (
     <section className="season-strip-panel" aria-label={SEASON_STRIP_COPY.listTitle}>
+      <p className="season-strip-food" data-food-until={food.untilTick ?? ""}>{food.days === null || until === null ? SEASON_STRIP_COPY.foodNone
+        : SEASON_STRIP_COPY.foodUntil(food.days, until.season, until.third, until.nextYear)}</p>
       <div className="season-strip-full" style={wave8ImageStyle("season_strip", 300)}>
         {marks.map(mark => <span key={mark.kind} className="season-strip-mark" data-mark={mark.kind}
           style={{ left: `${mark.fraction * 100}%`, ...wave8ImageStyle(MARK_IMAGE[mark.kind], 16) }} />)}
