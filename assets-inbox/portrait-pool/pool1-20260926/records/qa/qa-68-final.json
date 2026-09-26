@@ -1,0 +1,104 @@
+{
+  "review": "final68_pilot36_plus_new_young32",
+  "reviewer": "roster_agent",
+  "verdict": "CANDIDATE_WITH_REPORTED_IDENTITY_SIMILARITY",
+  "evidence": [
+    {
+      "file": "deliverable/checks/02-pilot-and-new-68.png",
+      "sha256": "cbde46a66097b5ed231ff43ef948a8ebc209e2af095d2cd853a70928e7f71926"
+    },
+    {
+      "file": "deliverable/checks/04-ui-96-cards.png",
+      "sha256": "e022ed4d877018b972ab8b1ac62f1889961f3b02fcf5ef05e636c388b594e7d2"
+    },
+    {
+      "file": "final68-review96.png",
+      "sha256": "22521bd354c59bbbcf680d96e02f8cb25b16fa3c860f6bb12521df6157482549"
+    },
+    {
+      "file": "deliverable/portraits/I067_young.png",
+      "sha256": "a1b7537c32b4cdf74e23363f49d80d440d15c45d23ce08af63a9e8c6e323b58e"
+    },
+    {
+      "file": "deliverable/portraits/I054_young.png",
+      "sha256": "d4eb231f952b4a78f700e7da4617b56db0c3607f53d6d48956acdce00b1c23e6"
+    },
+    {
+      "file": "deliverable/portraits/I063_young.png",
+      "sha256": "909edaf289b61251d966b60eb06194ff440ea0d30458f18903873665ad4e9276"
+    },
+    {
+      "file": "deliverable/portraits/I050_young.png",
+      "sha256": "75615c1fdd075d881976c23499f81bdddacb60749221c8d0da79f7cd4bf91b89"
+    },
+    {
+      "file": "deliverable/portraits/I066_young.png",
+      "sha256": "1c97a529bf85823fbfb37d7c15ad48b4af8c0ea36eef97c8027d1e74dc950806"
+    }
+  ],
+  "pilot_comparison_evidence": {
+    "file": "/tmp/astra-portrait-pivot-work/deliverable/portraits/P31.png",
+    "sha256": "8c02ee5619d218900dfcbe72da7f38c1a8f8ca2e1c8f92eaa4a4088f42a40ded"
+  },
+  "composition_check": "Final02 visually contains approved P01–P36 plus I037_young–I068_young. I065–I068 are grown YOUNG stages, not the former child bases. Reviewed all68 in192px proof and a separately built original96px review grid. Opened closest-pair candidates individually256px. Also viewed04 UI cards at96px.",
+  "similar_pairs": [
+    {
+      "rank": 1,
+      "ids": [
+        "P31",
+        "I067_young"
+      ],
+      "type": "pilot_new",
+      "similarity": "moderate_to_high",
+      "actual_face_similarity_ko": "왼쪽 3/4 각도, 눈썹과 눈 배치, 작고 부드러운 코, 입꼬리가 살짝 오른 미소와 가는 턱이 닮았다. 이번 성장 청년 I067은 파일럿 P31과 같은 배우 계열로 보일 위험이 가장 크다.",
+      "differences_ko": "I067은 눈이 더 크고 눈썹이 부드러우며 턱이 짧고 볼이 덜 각져 있다. P31은 코와 광대가 조금 더 길고 분명하다.",
+      "clothing_effect_ko": "P31의 붉은 작업복·묶은 머리수건과 I067의 녹색 옷·드리운 베일이 첫눈의 구별에 크게 기여한다. 얼굴 차이만으로 완전히 독립적인 인물이라고 단언하기 어렵다.",
+      "at96_ko": "아이콘 자체는 의복과 머리 실루엣으로 구분되지만 얼굴 정체성 오독 우려가 남는다."
+    },
+    {
+      "rank": 2,
+      "ids": [
+        "I054_young",
+        "I063_young"
+      ],
+      "type": "new_new",
+      "similarity": "moderate",
+      "actual_face_similarity_ko": "정면의 마른 청년 남성 둘은 직선적인 입매, 눈 간격, 코 중심선, 좁은 턱과 단발 실루엣이 가까워 형제처럼 보인다.",
+      "differences_ko": "I054는 얼굴과 코가 더 길고 눈과 귀가 크며, I063은 중안면이 넓고 이목구비가 더 작고 짧다.",
+      "clothing_effect_ko": "회갈색 작업복과 황갈색 수선 옷이 구분을 돕지만 비슷한 낮은 계층의 복식이다. 얼굴 길이·코·눈 크기 차이가 실질적인 구별점이다.",
+      "at96_ko": "구분 가능하나 무작위로 따로 제시하면 혼동할 수 있는 가장 가까운 새 인물 쌍이다."
+    },
+    {
+      "rank": 3,
+      "ids": [
+        "I050_young",
+        "I066_young"
+      ],
+      "type": "new_new",
+      "similarity": "moderate_low",
+      "actual_face_similarity_ko": "풍성한 볼과 짧은 턱, 적갈색 머리, 오른쪽을 향한 젊은 남성 얼굴이라는 조합이 닮았다.",
+      "differences_ko": "I050은 코와 하안면이 더 길고 눈썹이 근심 있게 모이며, I066은 눈이 더 크고 코가 짧고 둥글며 가는 콧수염이 있다.",
+      "clothing_effect_ko": "I050의 가죽 앞치마와 I066의 자주색 모자·모피 깃이 차이를 크게 만든다. 얼굴에서도 코·눈·턱의 차이가 남아 단순 의상 교체로만 보이지는 않는다.",
+      "at96_ko": "두 아이콘은 구분되며 첫 두 쌍보다 유사성 우려가 낮다."
+    }
+  ],
+  "observations": [
+    {
+      "topic": "corrected_pairs",
+      "note_ko": "기존 I058–P31 및 I046–I052 문제는 현재 그림에서 해소되어 최종 세 쌍에 포함하지 않았다."
+    },
+    {
+      "topic": "overall_identity",
+      "note_ko": "68명 격자는 얼굴 폭·길이, 코, 수염·머리 실루엣, 체형과 방향 차이로 다양하게 읽힌다. 모든 인물이 같은 배우라는 전체적 인상은 없다. 다만 가장 가까운 세 쌍을 공개하며, 특히 P31–I067은 의상 차이 의존이 크므로 68개 얼굴이 모두 객관적으로 독립적이라는 무조건 통과는 부여하지 않는다."
+    },
+    {
+      "topic": "96_ui",
+      "note_ko": "04의 인물 카드 8명과 청원 카드 4명은96px에서 얼굴 방향·표정·머리쓰개·윤곽이 읽힌다. 자체96px 전체격자에서도 주요 구별점이 유지된다. 실제 게임에 설치한 검증은 아니다."
+    },
+    {
+      "topic": "scope",
+      "note_ko": "계급 맞힘 수와 노화 사슬 동일인 판정은 별도 검수 담당 범위이며 이 기록에서 새 수치를 주장하지 않는다."
+    }
+  ],
+  "summary_ko": "최종 확인그림02에서 직접 선정한 가장 닮은 세 쌍은 P31–I067_young, I054_young–I063_young, I050_young–I066_young. 후보로서 다양성과96px 판독은 개선됐지만 첫 쌍의 얼굴 유사성은 잔여 우려로 명시한다."
+}

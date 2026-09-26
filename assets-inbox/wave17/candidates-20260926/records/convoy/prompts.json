@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen.imagegen",
+  "status": "candidate",
+  "prompts": [
+    "Create ONE transparent RGBA cargo-only sprite sheet for medieval southern England circa 1337, matching the attached exact ox-cart template geometry. Attached image is positional template and painterly isometric style reference. Output 4 columns x 2 rows. Column directions left to right NE up-right, SE down-right, SW down-left, NW up-left; row 0 and row 1 same load, slight cloth flutter only. Each logical cell is 128x96, total final512x192, you may render at exact integer multiple. Draw ONLY compact tied wool sacks and one small muted red royal pennon on a short pole per cell, with three tiny gold lions stacked vertically, NO quartered arms. NO cart, NO wheels, NO animals, NO driver, NO ground, NO grid, NO labels. Cargo placement must sit inside cart body deck in provided reference: cell-local deck region NE x20..70 y30..57, SE x23..69 y22..49, SW x55..103 y22..49, NW x58..106 y30..57. Fit three sacks into each bed footprint. Small flag pole mounted rear bed corner rises above sacks; no modern heraldry. Muted oatmeal canvas sacks, woven wool fibers, dark hemp ties, hand painted historical citybuilder finish, upper-left soft light, exact 2:1 isometric projection. Empty transparent pixels everywhere else. Keep each cargo group isolated from adjacent cells. Do not draw or regenerate any template cart pixels: cargo and pole only.",
+    "Edit this exact cargo sprite sheet: preserve all eight wool-sack groups and red flags with three gold lions and their exact layout. Remove ALL background, colored glow, haze, shadow halos and floor shadows. Output true hard-clean transparent RGBA with only sacks, hemp ties, flags, flagpoles opaque. Empty spaces MUST have alpha zero, no semi-transparent colored clouds or gradients. Keep 4columns2rows. No cart no animal no text. Do not change sack or flag designs."
+  ],
+  "reference": "astra-wave17-reference-files/ox_cart_body-v1.png",
+  "raw": [
+    "exec-9998972e-cf64-438f-b10d-ed3be69de935.png",
+    "exec-1aa16dc4-caca-4bd7-b96e-c1473fe08d0b.png"
+  ],
+  "note": "view_image displayed hidden RGB haze. Pixel checks show surrounding haze alpha=0; preserve alpha."
+}

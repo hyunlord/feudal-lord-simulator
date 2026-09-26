@@ -1,0 +1,31 @@
+{
+  "id": "held_ledger_ne-v1",
+  "prompt": "Use case: historical-scene. Asset: ONE standalone held prop sprite for a 1338 English town isometric game, intended final 32x32 pixels, enlarged master. Subject: One small closed plain brown leather ledger book with a single simple wrap strap, unmarked leather cover, pale pages on the exposed fore edge, no letters or symbols. Isometric oblique object, broad cover readable, central attachment grip at image center. Direction: NE, carried by a person facing away toward the upper-right; show rear-facing material surfaces and bow curve/blade hook projecting upper-right. Reference images are STYLE ONLY, muted hand-painted small game sprites; do not depict any person, hands, feet, ground or shadow. Paint the single object with compact readable shading in the reference's earthy muted palette. Entire object fully visible, generous transparent padding. Genuine transparent RGBA background, no backdrop, no checkerboard, no text, no border. Orthographic 2:1 isometric viewing elevation about 30 degrees. Readable at32px; center object and grip near image center.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/astra-wave17-reference-files/actor_civilian_man-v1.png",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-walker-pilot2-reference-files/actor_merchant-v1.png"
+  ],
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db77-2eb0-7802-a05b-38fe63b9b356/exec-38477fe5-3b38-45eb-8c4f-1e753013dee8.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/prop/held_ledger_ne-v1.png",
+  "dimensions": [
+    32,
+    32
+  ],
+  "source_crop": {
+    "left": 539,
+    "top": 310,
+    "width": 458,
+    "height": 410
+  },
+  "final_placement": [
+    8,
+    9,
+    16,
+    14
+  ],
+  "grip_anchor": [
+    16,
+    16
+  ],
+  "processing": "Alpha trim, aspect-preserving Lanczos downsample, centered 32x32 transparent canvas; coverage compensation alpha exponent 0.65 at small size; no procedural artwork or mirrored direction copies."
+}

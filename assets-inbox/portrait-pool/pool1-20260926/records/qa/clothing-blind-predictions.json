@@ -1,0 +1,559 @@
+{
+  "blind": true,
+  "method": "Visual-only classification of clothing-blind.png followed by inspection of ambiguous individual B-label PNGs. Classes were inferred from cloth quality, fur, ornament, aprons, patches, robes, and visible occupational accessories. No metadata or ground truth was read; no class balancing was used. Confidence is a subjective 0-to-1 estimate.",
+  "limitations": "Only the bottom 80 pixels of each bust are visible. Faces and most headwear are excluded. Labour and poor_servant can share coarse patched cloth; gentry and merchant can share fine cloth and fur. Plain brown garments lack decisive religious insignia. Repeated-looking clothing was judged consistently but cannot establish social class with certainty.",
+  "predictions": [
+    {
+      "label": "B001",
+      "predicted_class": "merchant",
+      "confidence": 0.72,
+      "reason": "Fine burgundy buttoned cloth with a modest fur collar; prosperous but restrained."
+    },
+    {
+      "label": "B002",
+      "predicted_class": "labour",
+      "confidence": 0.84,
+      "reason": "Coarse grey-olive work tunic and plain dirty linen apron with wooden handle."
+    },
+    {
+      "label": "B003",
+      "predicted_class": "labour",
+      "confidence": 0.85,
+      "reason": "Plain blue work tunic, worn linen apron, and wooden tool handle."
+    },
+    {
+      "label": "B004",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Substantial stained leather apron over blue sleeves with visible workshop implement."
+    },
+    {
+      "label": "B005",
+      "predicted_class": "labour",
+      "confidence": 0.78,
+      "reason": "Patched blue work tunic under a rough linen apron, with tool handle; poverty remains plausible."
+    },
+    {
+      "label": "B006",
+      "predicted_class": "labour",
+      "confidence": 0.85,
+      "reason": "Plain blue work tunic, worn linen apron, and wooden tool handle."
+    },
+    {
+      "label": "B007",
+      "predicted_class": "labour",
+      "confidence": 0.83,
+      "reason": "Patched red work tunic with rough pale apron and wooden handle."
+    },
+    {
+      "label": "B008",
+      "predicted_class": "labour",
+      "confidence": 0.84,
+      "reason": "Coarse grey-olive work tunic and plain dirty linen apron with wooden handle."
+    },
+    {
+      "label": "B009",
+      "predicted_class": "clerical",
+      "confidence": 0.72,
+      "reason": "Plain loose dark brown buttoned robe without belt ornament or work apron; clergy is a tentative inference."
+    },
+    {
+      "label": "B010",
+      "predicted_class": "gentry",
+      "confidence": 0.97,
+      "reason": "Saturated red draped garment with broad luxurious fur edging and decorated belt."
+    },
+    {
+      "label": "B011",
+      "predicted_class": "poor_servant",
+      "confidence": 0.93,
+      "reason": "Coarse mustard-brown tunic with conspicuous mismatched patches and frayed tied neckline."
+    },
+    {
+      "label": "B012",
+      "predicted_class": "merchant",
+      "confidence": 0.91,
+      "reason": "Fine burgundy gown, belt purse, and folded cloth or documents suggest trade prosperity."
+    },
+    {
+      "label": "B013",
+      "predicted_class": "labour",
+      "confidence": 0.78,
+      "reason": "Patched blue work tunic under a rough linen apron, with tool handle; poverty remains plausible."
+    },
+    {
+      "label": "B014",
+      "predicted_class": "poor_servant",
+      "confidence": 0.96,
+      "reason": "Very ragged coarse brown hooded clothing, frayed edges, patches and simple ties."
+    },
+    {
+      "label": "B015",
+      "predicted_class": "artisan",
+      "confidence": 0.97,
+      "reason": "Leather working apron over olive tunic with a rectangular wooden implement."
+    },
+    {
+      "label": "B016",
+      "predicted_class": "gentry",
+      "confidence": 0.95,
+      "reason": "Rich green cloak with broad pale fur edging and ornamental fastening."
+    },
+    {
+      "label": "B017",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Substantial stained leather apron over blue sleeves with visible workshop implement."
+    },
+    {
+      "label": "B018",
+      "predicted_class": "poor_servant",
+      "confidence": 0.62,
+      "reason": "Very coarse plain olive garment with rough neckline; limited clues distinguish it from labour clothing."
+    },
+    {
+      "label": "B019",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Heavily worked leather apron over red sleeves, with a visible broad brush or tool."
+    },
+    {
+      "label": "B020",
+      "predicted_class": "gentry",
+      "confidence": 0.97,
+      "reason": "Saturated red draped garment with broad luxurious fur edging and decorated belt."
+    },
+    {
+      "label": "B021",
+      "predicted_class": "merchant",
+      "confidence": 0.88,
+      "reason": "Fine blue-purple buttoned gown with purse and decorated belt; restrained fur edging."
+    },
+    {
+      "label": "B022",
+      "predicted_class": "gentry",
+      "confidence": 0.96,
+      "reason": "Saturated blue cloak with broad pale fur edging and jeweled-looking clasp."
+    },
+    {
+      "label": "B023",
+      "predicted_class": "merchant",
+      "confidence": 0.91,
+      "reason": "Fine burgundy gown, belt purse, and folded cloth or documents suggest trade prosperity."
+    },
+    {
+      "label": "B024",
+      "predicted_class": "clerical",
+      "confidence": 0.97,
+      "reason": "Black draped robe with a conspicuous clean white collar or wimple-like neckline."
+    },
+    {
+      "label": "B025",
+      "predicted_class": "merchant",
+      "confidence": 0.86,
+      "reason": "Good blue cloth, narrow fur collar, belt purse, and carried book or roll."
+    },
+    {
+      "label": "B026",
+      "predicted_class": "poor_servant",
+      "confidence": 0.93,
+      "reason": "Coarse faded blue garment with large rough patches and frayed neckline; no occupational apron visible."
+    },
+    {
+      "label": "B027",
+      "predicted_class": "merchant",
+      "confidence": 0.91,
+      "reason": "Fine burgundy gown, belt purse, and folded cloth or documents suggest trade prosperity."
+    },
+    {
+      "label": "B028",
+      "predicted_class": "labour",
+      "confidence": 0.83,
+      "reason": "Patched red work tunic with rough pale apron and wooden handle."
+    },
+    {
+      "label": "B029",
+      "predicted_class": "gentry",
+      "confidence": 0.97,
+      "reason": "Saturated red draped garment with broad luxurious fur edging and decorated belt."
+    },
+    {
+      "label": "B030",
+      "predicted_class": "poor_servant",
+      "confidence": 0.93,
+      "reason": "Coarse mustard-brown tunic with conspicuous mismatched patches and frayed tied neckline."
+    },
+    {
+      "label": "B031",
+      "predicted_class": "labour",
+      "confidence": 0.79,
+      "reason": "Worn red work tunic and rough apron with tool handle; conspicuous wear also suggests poverty."
+    },
+    {
+      "label": "B032",
+      "predicted_class": "labour",
+      "confidence": 0.78,
+      "reason": "Patched blue work tunic under a rough linen apron, with tool handle; poverty remains plausible."
+    },
+    {
+      "label": "B033",
+      "predicted_class": "merchant",
+      "confidence": 0.85,
+      "reason": "Good dark blue cloth with modest fur trim, decorated belt, purse, and roll."
+    },
+    {
+      "label": "B034",
+      "predicted_class": "merchant",
+      "confidence": 0.86,
+      "reason": "Fine burgundy cloth, decorated belt and purse, narrow fur collar, carried book or roll."
+    },
+    {
+      "label": "B035",
+      "predicted_class": "labour",
+      "confidence": 0.84,
+      "reason": "Coarse grey-olive work tunic and plain dirty linen apron with wooden handle."
+    },
+    {
+      "label": "B036",
+      "predicted_class": "labour",
+      "confidence": 0.84,
+      "reason": "Coarse grey-olive work tunic and plain dirty linen apron with wooden handle."
+    },
+    {
+      "label": "B037",
+      "predicted_class": "merchant",
+      "confidence": 0.85,
+      "reason": "Good dark blue cloth with modest fur trim, decorated belt, purse, and roll."
+    },
+    {
+      "label": "B038",
+      "predicted_class": "merchant",
+      "confidence": 0.86,
+      "reason": "Good blue cloth, narrow fur collar, belt purse, and carried book or roll."
+    },
+    {
+      "label": "B039",
+      "predicted_class": "labour",
+      "confidence": 0.69,
+      "reason": "Coarse mustard tunic with plain linen apron; could also be servant clothing."
+    },
+    {
+      "label": "B040",
+      "predicted_class": "artisan",
+      "confidence": 0.99,
+      "reason": "Leather apron over blue work clothes, with a visible hammer head."
+    },
+    {
+      "label": "B041",
+      "predicted_class": "merchant",
+      "confidence": 0.88,
+      "reason": "Fine blue-purple buttoned gown with purse and decorated belt; restrained fur edging."
+    },
+    {
+      "label": "B042",
+      "predicted_class": "gentry",
+      "confidence": 0.95,
+      "reason": "Rich green cloak with broad pale fur edging and ornamental fastening."
+    },
+    {
+      "label": "B043",
+      "predicted_class": "clerical",
+      "confidence": 0.97,
+      "reason": "Black draped robe with a conspicuous clean white collar or wimple-like neckline."
+    },
+    {
+      "label": "B044",
+      "predicted_class": "gentry",
+      "confidence": 0.95,
+      "reason": "Rich green cloak with broad pale fur edging and ornamental fastening."
+    },
+    {
+      "label": "B045",
+      "predicted_class": "labour",
+      "confidence": 0.84,
+      "reason": "Coarse grey-olive work tunic and plain dirty linen apron with wooden handle."
+    },
+    {
+      "label": "B046",
+      "predicted_class": "gentry",
+      "confidence": 0.97,
+      "reason": "Rich red gown and cloak with lavish broad fur and ornate decorative trim."
+    },
+    {
+      "label": "B047",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Substantial stained leather apron over blue sleeves with visible workshop implement."
+    },
+    {
+      "label": "B048",
+      "predicted_class": "clerical",
+      "confidence": 0.72,
+      "reason": "Plain loose dark brown buttoned robe without belt ornament or work apron; clergy is a tentative inference."
+    },
+    {
+      "label": "B049",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Heavily worked leather apron over red sleeves, with a visible broad brush or tool."
+    },
+    {
+      "label": "B050",
+      "predicted_class": "clerical",
+      "confidence": 0.72,
+      "reason": "Plain loose dark brown buttoned robe without belt ornament or work apron; clergy is a tentative inference."
+    },
+    {
+      "label": "B051",
+      "predicted_class": "poor_servant",
+      "confidence": 0.93,
+      "reason": "Coarse faded blue garment with large rough patches and frayed neckline; no occupational apron visible."
+    },
+    {
+      "label": "B052",
+      "predicted_class": "merchant",
+      "confidence": 0.72,
+      "reason": "Fine burgundy buttoned cloth with a modest fur collar; prosperous but restrained."
+    },
+    {
+      "label": "B053",
+      "predicted_class": "artisan",
+      "confidence": 0.97,
+      "reason": "Leather working apron over olive tunic with a rectangular wooden implement."
+    },
+    {
+      "label": "B054",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Heavily worked leather apron over red sleeves, with a visible broad brush or tool."
+    },
+    {
+      "label": "B055",
+      "predicted_class": "gentry",
+      "confidence": 0.95,
+      "reason": "Rich green cloak with broad pale fur edging and ornamental fastening."
+    },
+    {
+      "label": "B056",
+      "predicted_class": "merchant",
+      "confidence": 0.88,
+      "reason": "Fine blue-purple buttoned gown with purse and decorated belt; restrained fur edging."
+    },
+    {
+      "label": "B057",
+      "predicted_class": "labour",
+      "confidence": 0.85,
+      "reason": "Plain blue work tunic, worn linen apron, and wooden tool handle."
+    },
+    {
+      "label": "B058",
+      "predicted_class": "gentry",
+      "confidence": 0.96,
+      "reason": "Saturated blue cloak with broad pale fur edging and jeweled-looking clasp."
+    },
+    {
+      "label": "B059",
+      "predicted_class": "labour",
+      "confidence": 0.83,
+      "reason": "Patched red work tunic with rough pale apron and wooden handle."
+    },
+    {
+      "label": "B060",
+      "predicted_class": "merchant",
+      "confidence": 0.91,
+      "reason": "Fine purple-blue cloth and modest fur collar with prominent purse and document roll."
+    },
+    {
+      "label": "B061",
+      "predicted_class": "gentry",
+      "confidence": 0.82,
+      "reason": "Fine blue gown with pale fur neckline and central ornamental fastening; purse or workwear absent."
+    },
+    {
+      "label": "B062",
+      "predicted_class": "artisan",
+      "confidence": 0.99,
+      "reason": "Leather apron over blue work clothes, with a visible hammer head."
+    },
+    {
+      "label": "B063",
+      "predicted_class": "poor_servant",
+      "confidence": 0.93,
+      "reason": "Coarse faded blue garment with large rough patches and frayed neckline; no occupational apron visible."
+    },
+    {
+      "label": "B064",
+      "predicted_class": "clerical",
+      "confidence": 0.97,
+      "reason": "Black draped robe with a conspicuous clean white collar or wimple-like neckline."
+    },
+    {
+      "label": "B065",
+      "predicted_class": "merchant",
+      "confidence": 0.86,
+      "reason": "Fine burgundy cloth, decorated belt and purse, narrow fur collar, carried book or roll."
+    },
+    {
+      "label": "B066",
+      "predicted_class": "merchant",
+      "confidence": 0.86,
+      "reason": "Good blue cloth, narrow fur collar, belt purse, and carried book or roll."
+    },
+    {
+      "label": "B067",
+      "predicted_class": "gentry",
+      "confidence": 0.98,
+      "reason": "Rich blue cloak with broad pale fur, elaborate gold-colored chain and medallion."
+    },
+    {
+      "label": "B068",
+      "predicted_class": "gentry",
+      "confidence": 0.96,
+      "reason": "Saturated blue cloak with broad pale fur edging and jeweled-looking clasp."
+    },
+    {
+      "label": "B069",
+      "predicted_class": "labour",
+      "confidence": 0.79,
+      "reason": "Worn red work tunic and rough apron with tool handle; conspicuous wear also suggests poverty."
+    },
+    {
+      "label": "B070",
+      "predicted_class": "labour",
+      "confidence": 0.73,
+      "reason": "Heavily worn grey work clothes with apron and wooden handle; poor servant is also plausible."
+    },
+    {
+      "label": "B071",
+      "predicted_class": "gentry",
+      "confidence": 0.97,
+      "reason": "Rich red gown and cloak with lavish broad fur and ornate decorative trim."
+    },
+    {
+      "label": "B072",
+      "predicted_class": "gentry",
+      "confidence": 0.98,
+      "reason": "Rich blue cloak with broad pale fur, elaborate gold-colored chain and medallion."
+    },
+    {
+      "label": "B073",
+      "predicted_class": "gentry",
+      "confidence": 0.97,
+      "reason": "Rich red gown and cloak with lavish broad fur and ornate decorative trim."
+    },
+    {
+      "label": "B074",
+      "predicted_class": "merchant",
+      "confidence": 0.86,
+      "reason": "Fine burgundy cloth, decorated belt and purse, narrow fur collar, carried book or roll."
+    },
+    {
+      "label": "B075",
+      "predicted_class": "gentry",
+      "confidence": 0.95,
+      "reason": "Rich green cloak with broad pale fur edging and ornamental fastening."
+    },
+    {
+      "label": "B076",
+      "predicted_class": "merchant",
+      "confidence": 0.91,
+      "reason": "Fine purple-blue cloth and modest fur collar with prominent purse and document roll."
+    },
+    {
+      "label": "B077",
+      "predicted_class": "merchant",
+      "confidence": 0.85,
+      "reason": "Good dark blue cloth with modest fur trim, decorated belt, purse, and roll."
+    },
+    {
+      "label": "B078",
+      "predicted_class": "clerical",
+      "confidence": 0.87,
+      "reason": "Plain heavy brown cowl and robe suggest monastic clothing, though the crop hides the waist."
+    },
+    {
+      "label": "B079",
+      "predicted_class": "poor_servant",
+      "confidence": 0.62,
+      "reason": "Very coarse plain olive garment with rough neckline; limited clues distinguish it from labour clothing."
+    },
+    {
+      "label": "B080",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Heavily worked leather apron over red sleeves, with a visible broad brush or tool."
+    },
+    {
+      "label": "B081",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Heavily worked leather apron over red sleeves, with a visible broad brush or tool."
+    },
+    {
+      "label": "B082",
+      "predicted_class": "artisan",
+      "confidence": 0.97,
+      "reason": "Leather working apron over olive tunic with a rectangular wooden implement."
+    },
+    {
+      "label": "B083",
+      "predicted_class": "merchant",
+      "confidence": 0.91,
+      "reason": "Fine purple-blue cloth and modest fur collar with prominent purse and document roll."
+    },
+    {
+      "label": "B084",
+      "predicted_class": "gentry",
+      "confidence": 0.98,
+      "reason": "Rich blue cloak with broad pale fur, elaborate gold-colored chain and medallion."
+    },
+    {
+      "label": "B085",
+      "predicted_class": "artisan",
+      "confidence": 0.98,
+      "reason": "Heavily worked leather apron over red sleeves, with a visible broad brush or tool."
+    },
+    {
+      "label": "B086",
+      "predicted_class": "gentry",
+      "confidence": 0.82,
+      "reason": "Fine blue gown with pale fur neckline and central ornamental fastening; purse or workwear absent."
+    },
+    {
+      "label": "B087",
+      "predicted_class": "artisan",
+      "confidence": 0.99,
+      "reason": "Leather apron over blue work clothes, with a visible hammer head."
+    },
+    {
+      "label": "B088",
+      "predicted_class": "clerical",
+      "confidence": 0.98,
+      "reason": "Heavy plain brown cowl and robe with rope cincture strongly suggest monastic dress."
+    },
+    {
+      "label": "B089",
+      "predicted_class": "gentry",
+      "confidence": 0.96,
+      "reason": "Bright red cloak with pale fur edging and ornamental fastening over rich green cloth."
+    },
+    {
+      "label": "B090",
+      "predicted_class": "clerical",
+      "confidence": 0.98,
+      "reason": "Heavy plain brown cowl and robe with rope cincture strongly suggest monastic dress."
+    },
+    {
+      "label": "B091",
+      "predicted_class": "labour",
+      "confidence": 0.79,
+      "reason": "Worn red work tunic and rough apron with tool handle; conspicuous wear also suggests poverty."
+    },
+    {
+      "label": "B092",
+      "predicted_class": "labour",
+      "confidence": 0.69,
+      "reason": "Coarse mustard tunic with plain linen apron; could also be servant clothing."
+    }
+  ]
+}

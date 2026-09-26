@@ -1,0 +1,43 @@
+{
+  "id": "decision/wool_payment",
+  "w": 640,
+  "h": 480,
+  "scene": "Single continuous warehouse counting scene: royal purveyor behind a plain table weighing options, large wool sacks and raw fleece on one side, merchant offering a modest open coin purse on other. Goods or cash levy dilemma, honest material detail, no scales of justice allegory, no split panels.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/P05.png"
+  ],
+  "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 640:480, fill complete image edge to edge. Single continuous warehouse counting scene: royal purveyor behind a plain table weighing options, large wool sacks and raw fleece on one side, merchant offering a modest open coin purse on other. Goods or cash levy dilemma, honest material detail, no scales of justice allegory, no split panels. Output 640 by 480 pixels.\nCORRECTION: Edit this exact illustration, preserve all buildings, people, faces, composition, muted painted brushwork, dimensions. HISTORICAL CORRECTION ONLY: remove EVERY heraldic device, gold fleur-de-lis, gold lion, blue-and-red quartered coat of arms, embroidery symbol from ALL clothing and hanging banners. Replace decorated fabric with plain muted dark red or brown wool cloth, completely without symbols. Keep faces, poses, landscape and objects unchanged. No letters or readable text. One continuous image.\nROOF CORRECTION: TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending positions in original 640x480 image include red roof beside tree x276,y58. Each stack is only about 7–15 pixels wide but must be removed. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, market cross, flagstaffs and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-23869f39-b9b0-4527-badc-ecc761c196e8.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/decision/wool_payment.png",
+  "dimensions": [
+    640,
+    480
+  ],
+  "postprocess": "Lanczos3 resize and central cover crop to target; opaque illustration PNG",
+  "revisions": [
+    {
+      "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Landscape format 640:480, fill complete image edge to edge. Single continuous warehouse counting scene: royal purveyor behind a plain table weighing options, large wool sacks and raw fleece on one side, merchant offering a modest open coin purse on other. Goods or cash levy dilemma, honest material detail, no scales of justice allegory, no split panels. Output 640 by 480 pixels.",
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-81c78c68-fb19-4fe0-a7ef-5f43dc8b086b.png",
+      "selected": false
+    },
+    {
+      "prompt": "Edit this exact illustration, preserve all buildings, people, faces, composition, muted painted brushwork, dimensions. HISTORICAL CORRECTION ONLY: remove EVERY heraldic device, gold fleur-de-lis, gold lion, blue-and-red quartered coat of arms, embroidery symbol from ALL clothing and hanging banners. Replace decorated fabric with plain muted dark red or brown wool cloth, completely without symbols. Keep faces, poses, landscape and objects unchanged. No letters or readable text. One continuous image.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/decision/wool_payment.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-4b8b4ce4-2456-40db-88d2-f242393de12a.png",
+      "selected": false
+    },
+    {
+      "prompt": "TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending positions in original 640x480 image include red roof beside tree x276,y58. Each stack is only about 7–15 pixels wide but must be removed. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, market cross, flagstaffs and ordinary gable peaks. No added objects, no changes to heraldry. Same exact image and aspect ratio.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/decision/wool_payment.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-23869f39-b9b0-4527-badc-ecc761c196e8.png",
+      "selected": true
+    }
+  ],
+  "selected": true
+}

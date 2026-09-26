@@ -1,0 +1,15 @@
+{
+  "id": "raid_smoke_column_sheet",
+  "folder": "event",
+  "w": 512,
+  "h": 192,
+  "foot": [
+    1,
+    1
+  ],
+  "refs": [
+    "/tmp/astra-wave17-work-20260926/astra-wave17-reference-files/stage_frame_gate-v1.png"
+  ],
+  "prompt": "Transparent sprite atlas4columns1row. FOUR consecutive frames of one same grey brown smoke column from small distant coastal fire. Each identicalcell128x192, same bottom-centered anchor, topdiffusiononlychanges, smoke rises and drifts slightlyleft, silhouettebigreadableat50%. Handpainted muted medievalgame matching reference, NOT solidbuilding not realisticphoto. No flames, no objects, no text, no backplate, true transparent RGBA throughout. Consistentbillowing source and size across4frames. Isolated smoke eachcell no overlap. Render atlas1024x384 with4equal256x384 cells fordownsampling.",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e9-c73c-7df0-8174-f7c58669d181/exec-9f175da1-4c66-4a03-a170-65c97cc87ec1.png"
+}

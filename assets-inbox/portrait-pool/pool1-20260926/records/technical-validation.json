@@ -1,0 +1,602 @@
+{
+  "status": "PASS",
+  "scope": "File and provenance validation only; metadata distribution is not visual trait verification.",
+  "identities": 32,
+  "adult_identities": 28,
+  "child_identities": 4,
+  "portrait_png": 92,
+  "proof_png": 4,
+  "csv_rows": 92,
+  "approved_pilot_reference_png": 36,
+  "counts": {
+    "sex": {
+      "m": 17,
+      "f": 15
+    },
+    "class": {
+      "gentry": 6,
+      "merchant": 6,
+      "artisan": 5,
+      "labour": 6,
+      "clerical": 3,
+      "poor_servant": 2,
+      "child": 4
+    },
+    "body": {
+      "thin": 11,
+      "average": 10,
+      "fat": 11
+    },
+    "direction": {
+      "left": 11,
+      "right": 11,
+      "front": 10
+    },
+    "stage": {
+      "young": 32,
+      "mature": 28,
+      "old": 28,
+      "child": 4
+    },
+    "expression": {
+      "neutral": 46,
+      "slight_smile": 18,
+      "tired_worried": 19,
+      "sharp_suspicious": 9
+    }
+  },
+  "files": [
+    {
+      "file": "portraits/I037_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "62120dd567153893ca82bc7ad7a223952457fe81fc71b5445eef429baad7a878"
+    },
+    {
+      "file": "portraits/I037_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "edbec1c654c033299e84a253e1b16a5d6ff57b8ef4f38f973e0128f642361ac8"
+    },
+    {
+      "file": "portraits/I037_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "fd69e6010c0819a0fdb5a3f1407bbddbd7a35abd3e7552a5feb57dea480d258e"
+    },
+    {
+      "file": "portraits/I038_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "03f1b3f11d43aa3870fcc1e7438ef3bf6b6e8569775ba246569279bd851649db"
+    },
+    {
+      "file": "portraits/I038_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "e1c8124ff3f7ef3beffea9dee514b1089c5a5d36ef3a060d0e8e1f47104f4139"
+    },
+    {
+      "file": "portraits/I038_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "bca5ac6a781f2290ea12e40503abe977622a70b968315bd6c684989f8f001a16"
+    },
+    {
+      "file": "portraits/I039_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "dfc543036a13431d79a7e4b5b2448e7ba86e300711503c5f18528feb1f77ce1c"
+    },
+    {
+      "file": "portraits/I039_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "234e8233a6914a09b480d7f4676abaecf785113f584f9c870586a090a8d55bbf"
+    },
+    {
+      "file": "portraits/I039_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "dc3643b8a175f0a9cdd1bb159c97b99d059401e79df6b520d52c60b173766006"
+    },
+    {
+      "file": "portraits/I040_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "47c6db4446d99c06ebf298528f8f7b0a97d52907319d8d3a5acc3acc48b256da"
+    },
+    {
+      "file": "portraits/I040_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "bf253bb85ba882b6c03548084ca69b313a016b55ec15ebcc19de577fe1f8db33"
+    },
+    {
+      "file": "portraits/I040_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "dd3651bb7e49aede4b2cff7ed5980f04a93d90d4fa9d660b04eeba3aca4dfaa8"
+    },
+    {
+      "file": "portraits/I041_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "6619dd413e360e700a7ba0baccfed2a6f72ce6f19c3f5ec621de3a6c51917056"
+    },
+    {
+      "file": "portraits/I041_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "de8d6211c55d8d0b99705566b2e80438142a2396d51fb727aa6f2ac2237c9793"
+    },
+    {
+      "file": "portraits/I041_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "186b4d765c0e612156c008a721572692491266a174df9e92136101b933679178"
+    },
+    {
+      "file": "portraits/I042_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "23b917cef14535874ecb59cabc575cb52bf9c39543133403e4b3708d3f642daa"
+    },
+    {
+      "file": "portraits/I042_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "5e54ef05df9e42e3e346c5432280494aec025b570b6da972532947f10810951a"
+    },
+    {
+      "file": "portraits/I042_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "3f65cb8ef36e548a053994307b991dbca8b3a9239cdb45e116551003791a5138"
+    },
+    {
+      "file": "portraits/I043_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "7d46fc544ecc2464bfeaf4ddbb8837f283fc0c688b20dd07ceff231f7883fe63"
+    },
+    {
+      "file": "portraits/I043_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "2bc7849dac80cf564da01c6d516300c4db788208943f1b98b5ce0c2d6730de2b"
+    },
+    {
+      "file": "portraits/I043_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "5adc9e8786a0b6765b1bc519873b4a8a3c547563b3c27e88dc19986fa0b8eae7"
+    },
+    {
+      "file": "portraits/I044_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "9e1bf448649b4653cdde9b94be4271f722a4f516ee75915eb1f3eb3993408f35"
+    },
+    {
+      "file": "portraits/I044_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "26b6e372e666712c34d303cac83fceab7a48fb47fa9a38eb4991a690a121ff14"
+    },
+    {
+      "file": "portraits/I044_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "313bc37d35b2840f228f775e9b5ba62fe64fc4b9ab6292a4bd2257f8641df3fb"
+    },
+    {
+      "file": "portraits/I045_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "ffb85a1746c61fda094d538f56e3494ac6f5494a015ea2e8ba82c69fed048ee2"
+    },
+    {
+      "file": "portraits/I045_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "49c20042115f22e698b42c80274041ed551424dccb4796ca3dfe07237c4ee5d5"
+    },
+    {
+      "file": "portraits/I045_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "2d4a204c252eaee4e25d801d38f31d9afb4c7e5367b547acf88e75eb7a109346"
+    },
+    {
+      "file": "portraits/I046_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "0c51defb5d102a95414175456fd574e58b5fe50649961cfdb78ecdb8be91289d"
+    },
+    {
+      "file": "portraits/I046_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "8d43bb689341fa5a898ebf7cf09057be011333f0571b867417a54dfde9509175"
+    },
+    {
+      "file": "portraits/I046_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "06aeb9f99327315e7fead9ea5a5725d24741b8c6a799d24b0c5473915f837786"
+    },
+    {
+      "file": "portraits/I047_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "3d3e8b247d30e04b0e27c431cb1264cf51e8aceafde096c6ff64de9e49daa678"
+    },
+    {
+      "file": "portraits/I047_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "0ced77def3fe4eeee2d290c04e787ee30c41a7e05b66fdf0750bba57ae8523ae"
+    },
+    {
+      "file": "portraits/I047_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "87122908aa15954708537bc76b2a7e2df38a97808838a521d6f03e742df5a6c1"
+    },
+    {
+      "file": "portraits/I048_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "5ea9f67d56f7c1d7ac9adfdf1d325307d8a6b7518c3e97d77252933f271888b7"
+    },
+    {
+      "file": "portraits/I048_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "943f072a978afbca82578ee6870e9146c4ab7a706d39653534e980d2b691dcd1"
+    },
+    {
+      "file": "portraits/I048_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "944ea80602bba0b919268637249c3c5083271d9ff5eedb10e7e8322ddb8d7ee3"
+    },
+    {
+      "file": "portraits/I049_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "c6642989af96120a29719109b2a85e77790fa5756fdd4be90c65c622a4b5ed1d"
+    },
+    {
+      "file": "portraits/I049_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "3bf7eb26555099f1d7d3f93cdb12fae68cf1120d1bb8c6aecf458eba52dc3460"
+    },
+    {
+      "file": "portraits/I049_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "48daf895014edf9063e3682a2efb56e5b4f63a8bbdf5c28d44125c81ef29e77d"
+    },
+    {
+      "file": "portraits/I050_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "75615c1fdd075d881976c23499f81bdddacb60749221c8d0da79f7cd4bf91b89"
+    },
+    {
+      "file": "portraits/I050_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "8af64fe5453bb4d8cf672a9077ae04bb1621efe654b8d8cfc1e5e15241203502"
+    },
+    {
+      "file": "portraits/I050_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "66157a5335e1e64afc939b6a6bcb4d41c28af6cb7b0134de2d9561d76dee22e9"
+    },
+    {
+      "file": "portraits/I051_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "8ea290039ccef37e5ad8e1847e79aba54c75b0a4a3cc14441fb1c0ee911e8894"
+    },
+    {
+      "file": "portraits/I051_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "05fd80df5ad03fd228bc79a55f01d506ad4c618e121fb562a0a829a1c3dc03c5"
+    },
+    {
+      "file": "portraits/I051_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "3a1369adbd8956d4d6c025026a4a6ed49826f303f40df47cfb4f3611c5f59784"
+    },
+    {
+      "file": "portraits/I052_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "bb503401913dea946ef19e255565fd7fd7e02d570097ca552fb3630be9512ec6"
+    },
+    {
+      "file": "portraits/I052_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "22f20b513c0995df2c495a634056e4308589b1f6f97abfe500a2fa51b9ee6584"
+    },
+    {
+      "file": "portraits/I052_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "fe2c9aee2061b1b5795f483cc2ec31fce1161dae8b90afbf4644f5b2bd580720"
+    },
+    {
+      "file": "portraits/I053_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "ffb952af59988ea17068c394435daeb7ebc8d723e2131b8e0dcfa0ecc8b3b710"
+    },
+    {
+      "file": "portraits/I053_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "c905e51dc15700d141109d42b919bec1db1b76e223bf1c7f40538a1576359052"
+    },
+    {
+      "file": "portraits/I053_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "7b4cefa42573b1897f20f32f4a8dc0391a86537f75c74ea1989258529971cc03"
+    },
+    {
+      "file": "portraits/I054_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "d4eb231f952b4a78f700e7da4617b56db0c3607f53d6d48956acdce00b1c23e6"
+    },
+    {
+      "file": "portraits/I054_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "6de0e43058ceef8b4ddff3fc81a73434865be0eb6df4f36b3a4b193fc95b9b1d"
+    },
+    {
+      "file": "portraits/I054_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "37b80fc97c684c0321cff750f7755618fc9d64d5729ec965b99d2f8518aece16"
+    },
+    {
+      "file": "portraits/I055_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "6c0e20a71dcb8c68a0901704d1df348dd70cb70227882bc86222e72bff0dec6b"
+    },
+    {
+      "file": "portraits/I055_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "7461e91fde12f8e8d45d8c0e24b5482ac4901f01460e464cc5bbbe931ca64b8a"
+    },
+    {
+      "file": "portraits/I055_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "b2228c50dcb8ad08eef8bc5eda6b40ad94032e8d42c655c264d61a7210461846"
+    },
+    {
+      "file": "portraits/I056_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "2bf9fb9e6e241d8b3f9a8d0eae4040caf76e6481c72215b720eff7de93c71846"
+    },
+    {
+      "file": "portraits/I056_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "61b60f093df3cc4564192731abcb9cac954dd33342934a2a3376a14c4bf8152b"
+    },
+    {
+      "file": "portraits/I056_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "af2578586a2850f887e5f1df0df0ee2002ba63262ede7727f5aa36a207a898c8"
+    },
+    {
+      "file": "portraits/I057_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "be7bff38234dd51b7c03ff68b64c5f48ab23d9af884670cad1737454db7edfe6"
+    },
+    {
+      "file": "portraits/I057_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "1bf7ce58d413d23542564dfde80be75592c83625cf9623030b76cbd2857b6fa7"
+    },
+    {
+      "file": "portraits/I057_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "7add01fe464278cf88af2b4931377cfc978d1739722db81b04fd6455e475019d"
+    },
+    {
+      "file": "portraits/I058_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "a77798968b4d5f100b48c85b2f1b9806ab9cea74be36d666106531c72d483795"
+    },
+    {
+      "file": "portraits/I058_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "bed3326b2b4ca149f9adaf954a3484c1cd840c1259562fffbe5a5f3130ef4459"
+    },
+    {
+      "file": "portraits/I058_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "50a04cd82aa5fb8869efab929fab313e71b2ba7590a9f6506285ceef8b2fd6c5"
+    },
+    {
+      "file": "portraits/I059_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "951db4158c37e28c6c9db4e82b84cd27911d377e2710eae479015bc2b5632293"
+    },
+    {
+      "file": "portraits/I059_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "330568a8db005d9367c85fc0950240b9b272d079bd6787e1ff9cad236f8b1fc7"
+    },
+    {
+      "file": "portraits/I059_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "8f8a6c9003978f7d54d9d36668e971353a0512ec2249a5ae38408eb80550ffc0"
+    },
+    {
+      "file": "portraits/I060_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "e7b1bc2af848dbeecc80cec64c931ed4b55bc0329c1c98f74fd73e043c990ca6"
+    },
+    {
+      "file": "portraits/I060_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "d61100488db2c10f8f214378201fab3398afe024f56f28f6d936391075fef4e0"
+    },
+    {
+      "file": "portraits/I060_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "f0624697a97cdedfcf605826a7ba10226fc223945e659ddbdbef71f01be6b90f"
+    },
+    {
+      "file": "portraits/I061_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "57ef4fbe0873eb98c66b5dc3bfb34a1d70e354bbf8afc93ccdd9c147df531586"
+    },
+    {
+      "file": "portraits/I061_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "d596109a7f5d7811802f7b218e96d402a079a88d7ca087445717264c9f93ed39"
+    },
+    {
+      "file": "portraits/I061_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "68478bdd4e06a717df950fc1d8523fe69520d01152f10decb3c9130fc21b80fc"
+    },
+    {
+      "file": "portraits/I062_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "641d892eaafd4d7f2b178bd1e90acc03096ce6c76188238a046b4cc6b51ccdb5"
+    },
+    {
+      "file": "portraits/I062_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "08a9b3e18fb75b7f9112c7238db64a19632fbe4b8058c528eb8ec80045a4ad7a"
+    },
+    {
+      "file": "portraits/I062_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "360c1fc8339bd20043545e5448067f5a6533838d905d28f3be3c218792f4d129"
+    },
+    {
+      "file": "portraits/I063_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "909edaf289b61251d966b60eb06194ff440ea0d30458f18903873665ad4e9276"
+    },
+    {
+      "file": "portraits/I063_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "57afab5f6c4f7534569d2074d6c65b70ecb8c8c9b8aea5a1d5623b66aa8ca30e"
+    },
+    {
+      "file": "portraits/I063_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "9f395e8ce9eb2e159accb7b735b9400eb8b11cac260120decf08fa43a3ddf215"
+    },
+    {
+      "file": "portraits/I064_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "ea8e13d3629bd65016167bbb62a9fb44167c210a4a33fa29357f3eb790d6c1aa"
+    },
+    {
+      "file": "portraits/I064_mature.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "d87fbcde6c0ee163d9e39a62adcad159235eef73d400b5eee7f00879d8e44117"
+    },
+    {
+      "file": "portraits/I064_old.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "a638fc1ad88d93ba43192a95af0af11be17b7ff7cce39e596c1506e96246501d"
+    },
+    {
+      "file": "portraits/I065_child.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "695d51841bb74edc40880459cca4d99956465a2cd78df3647f562e0958462c93"
+    },
+    {
+      "file": "portraits/I065_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "805e11330abd1970f94c2bb7ee617634a1010d48af0000b0bb151eac24455d82"
+    },
+    {
+      "file": "portraits/I066_child.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "2cb10e3163fac8484db8e14eb4c81490f24d958515ba35fada5271ddca2aa12a"
+    },
+    {
+      "file": "portraits/I066_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "1c97a529bf85823fbfb37d7c15ad48b4af8c0ea36eef97c8027d1e74dc950806"
+    },
+    {
+      "file": "portraits/I067_child.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "c9fff2e86f7f97d09a4d95abd1984b6e4d6a8e8316691146e836222a05fb4286"
+    },
+    {
+      "file": "portraits/I067_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "a1b7537c32b4cdf74e23363f49d80d440d15c45d23ce08af63a9e8c6e323b58e"
+    },
+    {
+      "file": "portraits/I068_child.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "e54b1dabed80331169479ef6971e8ce3df0d1701601723ccc8e09a720b89c748"
+    },
+    {
+      "file": "portraits/I068_young.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "f3b96f0c6c7353c5478afb9ee9a62222cea38bf038ad896e83a7cac57d5246a6"
+    }
+  ]
+}

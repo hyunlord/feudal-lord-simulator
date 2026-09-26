@@ -1,0 +1,43 @@
+{
+  "id": "chronicle/messenger",
+  "w": 384,
+  "h": 384,
+  "scene": "Compact readable chronicle vignette: mounted medieval royal messenger presenting a sealed dispatch to town reeve beside a simple gate. Two main figures only.",
+  "references": [
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/키아트_타이틀_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/로딩화면_화풍기준.jpg",
+    "/tmp/astra-wave17-work-20260926/supplemental/astra-wave16-reference-files/P05.png"
+  ],
+  "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Chronicle illustration: square format, slightly simplified illuminated-manuscript storytelling but SAME muted painterly realism, no ornamental frame. Compact readable chronicle vignette: mounted medieval royal messenger presenting a sealed dispatch to town reeve beside a simple gate. Two main figures only. Output 384 by 384 pixels.\nCORRECTION: Edit this exact illustration, preserve all buildings, people, faces, composition, muted painted brushwork, dimensions. HISTORICAL CORRECTION ONLY: remove EVERY heraldic device, gold fleur-de-lis, gold lion, blue-and-red quartered coat of arms, embroidery symbol from ALL clothing and hanging banners. Replace decorated fabric with plain muted dark red or brown wool cloth, completely without symbols. Keep faces, poses, landscape and objects unchanged. No letters or readable text. One continuous image.\nROOF CORRECTION: TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending chimney is red masonry shaft on foreground red roof behind the rider at original 384x384 coordinates x173..179,y81..93. Remove all similar house chimney stacks across the entire illustration. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, flagstaffs and ordinary gable peaks. No added objects, no changes to plain red clothing or blank banners. Same exact image and aspect ratio.",
+  "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-ee14b3f4-a507-41b6-ba0e-e435f9e9a287.png",
+  "final_path": "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/chronicle/messenger.png",
+  "dimensions": [
+    384,
+    384
+  ],
+  "postprocess": "Lanczos3 resize and central cover crop to target; opaque illustration PNG",
+  "revisions": [
+    {
+      "prompt": "Create ONE complete illustration for a historical city-building game, one continuous scene, NOT a contact sheet, no collage, no inset panels. Reference 1 sets the muted hand-painted naturalistic storybook landscape style; reference 2 contains multiple examples ONLY for brushwork and materials (do not copy its multi-panel layout); reference 3 sets grounded painted human face style. Southern England in 1318–1347, ordinary timber/plaster/thatch medieval buildings with NO household chimneys, muted ochres, dusty reds and grey greens, subtle painted texture, soft natural light, modest human scale, no modern objects. No words, letters, numbers, captions, interface, border or watermark. No horror, no gore. Chronicle illustration: square format, slightly simplified illuminated-manuscript storytelling but SAME muted painterly realism, no ornamental frame. Compact readable chronicle vignette: mounted medieval royal messenger presenting a sealed dispatch to town reeve beside a simple gate. Two main figures only. Output 384 by 384 pixels.",
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-b1031350-4cba-47df-9bd5-05daf7868862.png",
+      "selected": false
+    },
+    {
+      "prompt": "Edit this exact illustration, preserve all buildings, people, faces, composition, muted painted brushwork, dimensions. HISTORICAL CORRECTION ONLY: remove EVERY heraldic device, gold fleur-de-lis, gold lion, blue-and-red quartered coat of arms, embroidery symbol from ALL clothing and hanging banners. Replace decorated fabric with plain muted dark red or brown wool cloth, completely without symbols. Keep faces, poses, landscape and objects unchanged. No letters or readable text. One continuous image.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/chronicle/messenger.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-7b9eb01a-476c-41ae-9f58-0de406ceb2ef.png",
+      "selected": false
+    },
+    {
+      "prompt": "TARGETED LOCAL EDIT of this exact illustration. Preserve all composition, people, faces, poses, buildings, objects, lighting and brushwork. ONLY REMOVE EVERY domestic rooftop chimney, chimney pot, masonry stack or flue, including small distant ones. Specific offending chimney is red masonry shaft on foreground red roof behind the rider at original 384x384 coordinates x173..179,y81..93. Remove all similar house chimney stacks across the entire illustration. Reconstruct continuous roof tile/thatch/ridge and correct background behind removed stacks. No physical chimney shafts anywhere on houses. Do not just remove smoke. Preserve church towers, wall towers, flagstaffs and ordinary gable peaks. No added objects, no changes to plain red clothing or blank banners. Same exact image and aspect ratio.",
+      "references": [
+        "/tmp/astra-wave17-work-20260926/delivery/assets/illustration/chronicle/messenger.png"
+      ],
+      "generated_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db76-a8d1-7703-b911-94b2d2385e78/exec-ee14b3f4-a507-41b6-ba0e-e435f9e9a287.png",
+      "selected": true
+    }
+  ],
+  "selected": true
+}

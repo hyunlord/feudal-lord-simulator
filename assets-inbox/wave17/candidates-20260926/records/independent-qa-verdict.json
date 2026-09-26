@@ -1,0 +1,39 @@
+{
+  "scope": "wave17-full-candidate-static-art",
+  "verdict": "PASS_WITH_LIMITS",
+  "full_pack_verdict": "PASS_WITH_LIMITS",
+  "reviewed_proofs": [
+    "01_workers_convoy.png",
+    "02_coastal_raid.png",
+    "03_illustrations_cards.png"
+  ],
+  "worker_frames_independently_checked": 48,
+  "max_alpha_diff": 0,
+  "max_protected_foot_rgba_diff": 0,
+  "weapon_attachment_scale": 2,
+  "ox_protected_head_body_tail_diff": 0,
+  "cargo_frame_byte_diff": 0,
+  "blocking_ready_scope_findings": [],
+  "limits": [
+    "weapon fine details at zoom0.6",
+    "preview driver placement not runtime behavior",
+    "wall and animation runtime untested",
+    "22 illustrations checked in final proof; all roof regions examined at native/enlarged scale, with close rechecks of 12 corrected scenes",
+    "historical authentication and ZIP/metadata integrity outside visual scope"
+  ],
+  "runtime_tested": false,
+  "assets_modified": false,
+  "asset_png_count": 57,
+  "proof_png_count": 3,
+  "illustration_count": 22,
+  "illustration_dimensions_pass": true,
+  "illustrations_full_resolution_sample_count": 5,
+  "blocking_full_pack_visual_findings": [],
+  "roof_scenes_examined_enlarged": 22,
+  "chapter_roof_correction": "PASS_SPECIFIC_KNOWN_FINDINGS",
+  "roof_pending_scenes": [],
+  "roof_corrected_scenes_rechecked": 12,
+  "recheck_time_utc": "2026-09-26T02:48:42.072Z",
+  "final_roof_recheck": "All 12 corrected scenes visually rechecked, including final empty_workshop native (637,122,12,16) after second repair; no confirmed remaining house chimney found in examined native/enlarged roof regions.",
+  "final_proof03_rechecked": true
+}
