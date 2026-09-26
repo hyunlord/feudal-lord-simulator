@@ -163,7 +163,7 @@ test("status line prioritizes armed tool copy before feedback and blocker fallba
   assert.equal(getPlacementToolStatus({ kind: "road" }), "드래그하여 길을 놓으세요 · 취소하려면 Esc");
 });
 
-test("right rail renders the goal cards, and the era gauges in the goal drawer (UX-1)", () => {
+test("UX-3: the goal chip rail shows the active goal cards; the goal log (era gauges) opens into the panel slot", () => {
   // Given / When
   const markup = renderApp();
   const railMarkup = markup.slice(
@@ -172,26 +172,24 @@ test("right rail renders the goal cards, and the era gauges in the goal drawer (
   );
 
   // Then
-  assert.match(railMarkup, /class="goal-cards"/);
-  assert.match(railMarkup, /class="goal-drawer" hidden=""/);
-  assert.match(railMarkup, /aria-label="시대 선포"/);
-  assert.equal((railMarkup.match(/class="era-requirement(?: era-requirement--met)?"/g) ?? []).length, 4);
+  assert.match(railMarkup, /class="goal-chip-rail"|class="goal-cards"/);
+  assert.match(railMarkup, /class="goal-drawer-toggle" aria-expanded="false"/);
+  assert.doesNotMatch(markup, /class="goal-drawer"/, "the goal log is not mounted until it takes the slot");
+  assert.doesNotMatch(markup, /aria-label="시대 선포"/);
   assert.ok((railMarkup.match(/class="goal-card"/g) ?? []).length <= 2);
   assert.doesNotMatch(railMarkup, /aria-label="현재 과업"/);
   assert.doesNotMatch(railMarkup, /목표: 인구 50명 · 현재/);
 });
 
-test("population history opens from the top resource bar and starts closed", () => {
+test("UX-3: population history opens from the status pill and starts closed", () => {
   // Given / When
   const markup = renderApp();
-  const beforeConsole = markup.slice(0, markup.indexOf('aria-label="영주 명령대"'));
-  const consoleMarkup = markup.slice(markup.indexOf('aria-label="영주 명령대"'));
+  const pill = markup.slice(markup.indexOf('<nav class="status-pill"'), markup.indexOf("</nav>", markup.indexOf('<nav class="status-pill"')));
 
   // Then
-  assert.doesNotMatch(beforeConsole, /aria-label="인구 변화 기록"/);
-  assert.match(beforeConsole, /class="resource-bar__cell resource-bar__population"/);
-  assert.match(beforeConsole, /aria-label="인구 기록" aria-expanded="false" aria-controls="population-ledger-drawer"/);
-  assert.doesNotMatch(consoleMarkup, /id="population-ledger-drawer"/);
+  assert.match(pill, /aria-label="인구 기록 열기"/);
+  assert.doesNotMatch(markup, /aria-label="인구 변화 기록"/);
+  assert.doesNotMatch(markup, /id="population-ledger-drawer"/);
 });
 
 test("population drawer toggle stays above ledger text for pointer access", async () => {

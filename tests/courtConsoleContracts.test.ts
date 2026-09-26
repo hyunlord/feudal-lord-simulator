@@ -105,23 +105,28 @@ test("minimap pointer coordinates select the matching world tile", () => {
   );
 });
 
-test("the actual app renders one continuous accessible court console", () => {
+test("UX-3: the actual app keeps one build drawer (closed at start) and only the always-on HUD", () => {
   // Given / When
   const markup = renderToStaticMarkup(
     createElement(GameProvider, null, createElement(App)),
   );
 
-  // Then
-  assert.equal(markup.match(/class="court-console"/g)?.length, 1);
-  assert.match(markup, /aria-label="영주 명령대"/);
-  assert.equal(markup.match(/class="court-recess /g)?.length, 3);
-  assert.match(markup, /class="map-overview"/);
+  // Then: the old full-width console became the build drawer — mounted once, closed until the dock opens it.
+  assert.equal(markup.match(/class="court-console build-drawer"/g)?.length, 1);
+  assert.match(markup, /class="court-console build-drawer" aria-label="영주 명령대">/, "closed: no data-open");
   assert.match(markup, /class="build-menu"/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">오두막/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">우물/);
-  assert.match(markup, /class="resource-bar"/);
+  // Always on (UX3R section 2): the status pill, the speed, the layer switch and the action dock.
+  assert.match(markup, /<nav class="status-pill" aria-label="마을 상태">/);
   assert.match(markup, /aria-label="일시 정지"/);
   assert.match(markup, /aria-label="5배속"/);
+  assert.match(markup, /class="layer-switch"/);
+  assert.match(markup, /<nav class="action-dock" aria-label="행동">/);
+  // Gone from the default screen: the resource bar, the console recesses and the minimap (the ledger's map tab).
+  assert.doesNotMatch(markup, /class="resource-bar"/);
+  assert.doesNotMatch(markup, /class="court-recess /);
+  assert.doesNotMatch(markup, /class="map-overview"/);
 });
 
 test("reusable console controls create unique referenced DOM and SVG ids", () => {
