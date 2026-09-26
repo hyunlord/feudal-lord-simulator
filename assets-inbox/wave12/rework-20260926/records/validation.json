@@ -1,0 +1,321 @@
+{
+  "base_preserved": 29,
+  "icons_preserved": 3,
+  "approved_overlays_preserved": 4,
+  "reworked_overlays": 24,
+  "checks": [
+    {
+      "id": "inn_a",
+      "base_byte_identical": true
+    },
+    {
+      "id": "inn_a",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "inn_b",
+      "base_byte_identical": true
+    },
+    {
+      "id": "inn_b",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "communal_oven",
+      "base_byte_identical": true
+    },
+    {
+      "id": "communal_oven",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": true,
+      "revised": false
+    },
+    {
+      "id": "ditch_drain",
+      "base_byte_identical": true
+    },
+    {
+      "id": "smithy_a",
+      "base_byte_identical": true
+    },
+    {
+      "id": "smithy_a",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "smithy_b",
+      "base_byte_identical": true
+    },
+    {
+      "id": "smithy_b",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "cordwainer",
+      "base_byte_identical": true
+    },
+    {
+      "id": "cordwainer",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "tailor",
+      "base_byte_identical": true
+    },
+    {
+      "id": "tailor",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "tannery_a",
+      "base_byte_identical": true
+    },
+    {
+      "id": "tannery_a",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "tannery_b",
+      "base_byte_identical": true
+    },
+    {
+      "id": "tannery_b",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "lime_kiln",
+      "base_byte_identical": true
+    },
+    {
+      "id": "lime_kiln",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": true,
+      "revised": false
+    },
+    {
+      "id": "charcoal_clamp",
+      "base_byte_identical": true
+    },
+    {
+      "id": "charcoal_clamp",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": true,
+      "revised": false
+    },
+    {
+      "id": "pottery_kiln",
+      "base_byte_identical": true
+    },
+    {
+      "id": "pottery_kiln",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": true,
+      "revised": false
+    },
+    {
+      "id": "butcher_shambles",
+      "base_byte_identical": true
+    },
+    {
+      "id": "butcher_shambles",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "market_cross_wood",
+      "base_byte_identical": true
+    },
+    {
+      "id": "market_cross_wood",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "market_cross_stone",
+      "base_byte_identical": true
+    },
+    {
+      "id": "market_cross_stone",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "almshouse",
+      "base_byte_identical": true
+    },
+    {
+      "id": "almshouse",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "hospital",
+      "base_byte_identical": true
+    },
+    {
+      "id": "hospital",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "chantry_chapel",
+      "base_byte_identical": true
+    },
+    {
+      "id": "chantry_chapel",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "manor_house_a",
+      "base_byte_identical": true
+    },
+    {
+      "id": "manor_house_a",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "manor_house_b",
+      "base_byte_identical": true
+    },
+    {
+      "id": "manor_house_b",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "guildhall",
+      "base_byte_identical": true
+    },
+    {
+      "id": "guildhall",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "tolbooth",
+      "base_byte_identical": true
+    },
+    {
+      "id": "tolbooth",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "tithe_barn",
+      "base_byte_identical": true
+    },
+    {
+      "id": "tithe_barn",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "bridge_chapel",
+      "base_byte_identical": true
+    },
+    {
+      "id": "bridge_chapel",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "conduit_house",
+      "base_byte_identical": true
+    },
+    {
+      "id": "conduit_house",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "priory_cell",
+      "base_byte_identical": true
+    },
+    {
+      "id": "priory_cell",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "pilgrim_shrine",
+      "base_byte_identical": true
+    },
+    {
+      "id": "pilgrim_shrine",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    },
+    {
+      "id": "quay",
+      "base_byte_identical": true
+    },
+    {
+      "id": "quay",
+      "overlay_canvas_match": true,
+      "overlay_pivot": "inherit same original pivot; offset0,0",
+      "approved_preserved": null,
+      "revised": true
+    }
+  ],
+  "game_installed": false
+}

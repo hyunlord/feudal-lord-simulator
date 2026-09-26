@@ -1,0 +1,58 @@
+[
+  {
+    "asset_id": "shield_surface_texture_multiply",
+    "status": "candidate",
+    "file": "assets/shield_surface_texture_multiply.png",
+    "width": 256,
+    "height": 256,
+    "role": "multiply surface texture",
+    "sha256": "8cf85aef25cec836ea5b4540c1cf4414217c223de3d7c8e4d3e01de536ea0768",
+    "generation_records": "[{\"tool\":\"builtin image_gen\",\"prompt\":\"Use case: stylized-concept. Asset: ONE grayscale handpainted shield-surface MULTIPLY texture, square full-bleed flat 2D texture. Reference house is only brushwork/material style; do NOT draw a house, shield outline, heraldry, objects, text or symbols. Paint a full square gouache-coated leather over old timber, painterly long subtle grain, overlapping dry-brush strokes, scattered organic worn scrapes near square edges, broad soft slightly darker lower half. Whites and light grays only, white neutral multiply base, no colors. The surface must visibly read as hand painted at 256px and96px, not microscopic noise: broad irregular brush marks 20-60px wide at1024, with small striations. Surface should range roughly gray160 towhite250, most surface210-240, bottom and outer margins darker but no drawn frame. No holes, no transparency, no vignette border, no embossing, no central object, no letters. Plain front-facing flat material plate reaching all four edges, no perspective. This is an unlit shadow/grain layer later tinted by game code, lower zone shadow retained.\\n\",\"rawFile\":\"raw/shield-multiply.png\",\"referenceImages\":[\"references/house_l3-v2.png\"],\"model\":\"not supplied\",\"seed\":\"not supplied\"}]",
+    "processing": "{\"resize\":\"256x256 lanczos3\",\"color\":\"neutral grayscale RGBA opaque blend data; white multiply neutral / black screen neutral\",\"mapping\":\"normalized fill row UV; see SHIELD_TEXTURE_COMPOSITION.md\"}",
+    "blend_contract": "{\"mode\":\"multiply\",\"strength\":0.8,\"neutral\":\"white\",\"space\":\"sRGB\",\"mapping\":\"normalized fill row UV\",\"clip\":\"fill; preserve outline/alpha\",\"order\":1}",
+    "accepted": "pending user review",
+    "qa": "{\"averageAlpha\":1,\"averageGrayscale\":179.67984008789062,\"effectiveBlendFactorMean\":0.7637014590992648,\"blendStrength\":0.8,\"preservesOriginalSilhouetteAlpha\":true,\"viewedAt\":[256,96]}"
+  },
+  {
+    "asset_id": "shield_surface_texture_screen",
+    "status": "candidate",
+    "file": "assets/shield_surface_texture_screen.png",
+    "width": 256,
+    "height": 256,
+    "role": "screen surface texture",
+    "sha256": "f12c3e763144638b92bc47ab4fcbbcaeeb3de70eac09f694f67a6485101ff344",
+    "generation_records": "[{\"tool\":\"builtin image_gen\",\"prompt\":\"Use case: stylized-concept. Asset: ONE grayscale hand-painted shield-surface SCREEN light texture, square full-bleed flat 2D material plate. Reference house only for gouache brushwork style. Do NOT draw a house, shield, outline, heraldry, objects, text or symbols. Pure black neutral screen base over complete square, very dark lower half. Broken soft hand-brushed gray highlights across upper third and upper-left, broad thin scumbled gouache strokes, sparse ragged lighter abrasion near square margins, faint fine wood/leather grain. Image should be predominantly black and dark gray, upper gray brush patches100-140, finegrain30-60, lower0-20. Organic visible paint strokes, not photographic noise or glossy plastic. No thick border, no bevel, no central emblem, no perspective. This is ONLY the light contribution layer used with screen blending atop saturated medieval heraldry. Neutral black must remain between irregular strokes; clear upper light direction. Opaque square texture plate, no transparency needed; output no lettering.\\n\",\"rawFile\":\"raw/shield-screen.png\",\"referenceImages\":[\"references/house_l3-v2.png\"],\"model\":\"not supplied\",\"seed\":\"not supplied\"}]",
+    "processing": "{\"resize\":\"256x256 lanczos3\",\"color\":\"neutral grayscale RGBA opaque blend data; white multiply neutral / black screen neutral\",\"mapping\":\"normalized fill row UV; see SHIELD_TEXTURE_COMPOSITION.md\"}",
+    "blend_contract": "{\"mode\":\"screen\",\"strength\":0.48,\"neutral\":\"black\",\"space\":\"sRGB\",\"mapping\":\"normalized fill row UV\",\"clip\":\"fill; preserve outline/alpha\",\"order\":2}",
+    "accepted": "pending user review",
+    "qa": "{\"averageAlpha\":1,\"averageGrayscale\":23.438705444335938,\"effectiveBlendFactorMean\":0.9558800838694853,\"blendStrength\":0.48,\"preservesOriginalSilhouetteAlpha\":true,\"viewedAt\":[256,96]}"
+  },
+  {
+    "asset_id": "merchant_ink_stamp_texture",
+    "status": "candidate",
+    "file": "assets/merchant/merchant_ink_stamp_texture.png",
+    "width": 128,
+    "height": 128,
+    "role": "grayscale ink retention data, multiply into merchant alpha mask",
+    "sha256": "742abad9d68241ec33db4e1cbbecefd65ca7aa8d600799e7c6a6773fee836f53",
+    "generation_records": "[{\"tool\":\"builtin image_gen\",\"prompt\":\"Create an OPAQUE black and white texture image. Full square filled with WHITE paper ground and very visible BLACK broken ink fibers and blotches. No transparency, because this is an ink-retention data map, not a faint overlay. Most of the square is bright white, about 20% covered in irregular BLACK tiny sponge pores, broken dry brush scratches and ragged fiber shapes. Hand drawn ink stamp imperfection texture for medieval sack cloth and parchment. No emblem, no letters or numbers, no object silhouette, no border. Dense irregular organic marks distributed edge to edge; strong contrast visible at 128x128. Reference is only painterly fiber style, not an object to reproduce. Important: solid white pixels are vital, do not remove white as background.\",\"rawFile\":\"raw/merchant/ink-retention.png\",\"referenceImages\":[\"references/merchant/grain_sacks.png\"],\"model\":\"not supplied\",\"seed\":\"not supplied\"}]",
+    "processing": "{\"resize\":\"128x128 Lanczos3\",\"channels\":\"R=G=B=retention; A=255 data-domain coverage. White retains ink, black removes it. Do not alpha-over as a square.\",\"contrast\":\"clamp((generated_luminance-110)*255/145)\",\"composition\":\"maskAlpha*R/255; tint ink using substrate multiply, optional 1px neighbour bleed with amplitude 0.12, no white RGB compositing.\"}",
+    "blend_contract": "{}",
+    "accepted": "pending user review",
+    "qa": "{\"noText\":true,\"gameInstalled\":false,\"proof\":\"proofs/02-merchant-materials.png\",\"minimum48pxAlphaDifferenceAbove32\":85}"
+  },
+  {
+    "asset_id": "merchant_carved_texture",
+    "status": "candidate",
+    "file": "assets/merchant/merchant_carved_texture.png",
+    "width": 128,
+    "height": 128,
+    "role": "grayscale incised wood grain shaded height field, clipped to mark",
+    "sha256": "11ca3be6b738a98e358103b0f7502e8f795a532937ef11e9f9e2106867d4f339",
+    "generation_records": "[{\"tool\":\"builtin image_gen\",\"prompt\":\"Use case: stylized-concept. Create ONE square grayscale material-only texture map for the interior of a hand-incised merchant mark on medieval oak door or barrel, compatible with supplied project's painted oak. Full-bleed 1024x1024, flat orthographic, NO symbol, no letters, no numbers, no borders, no complete wooden object, no tile-shaped cast shadow. Close painterly hand-gouged oak surface: shallow long chipped cuts and darker narrow incisions running mostly vertically, little alternating light chisel facets, imperfect grain; medium grayscale with contrasting charcoal low grooves and soft pale high ridges. These tiny grain grooves must remain legible at 128x128, approximately 2-4 pixel groove widths at final 128. This image will be clipped inside separate symbol masks, with code applying a one-pixel incised rim; do NOT draw any symbol-shaped rim yourself. Neutral gray, no color. Hand painted gouache appearance matching game reference, no photoreal crisp wood.\",\"rawFile\":\"raw/merchant/carved.png\",\"referenceImages\":[\"references/merchant/house_l0-v3.png\"],\"model\":\"not supplied\",\"seed\":\"not supplied\"}]",
+    "processing": "{\"resize\":\"128x128 Lanczos3\",\"channels\":\"R=G=B=generated grayscale cut grain; A=255 data-domain coverage. Higher grayscale=lit facet, lower=groove.\",\"composition\":\"Multiply substrate inside mark by 0.28+0.40*R; clipped 1px NW rim -0.24, SE rim +0.65, bounded 0.14..1.22. No marks outside source coverage. No automatic RGB rectangle.\"}",
+    "blend_contract": "{}",
+    "accepted": "pending user review",
+    "qa": "{\"noText\":true,\"gameInstalled\":false,\"proof\":\"proofs/02-merchant-materials.png\",\"minimum48pxAlphaDifferenceAbove32\":85}"
+  }
+]

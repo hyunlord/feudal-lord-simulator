@@ -1,0 +1,386 @@
+[
+  {
+    "id": "boundary/forest_fringe_a_autumn-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_a-v1.png",
+    "role": "decal",
+    "w": 128,
+    "h": 96,
+    "prompt": "Use case: lighting-weather. Edit target image: forest_fringe_a-v1, a 128x96 transparent game DECAL, not a strip. Change only its season to southern England autumn: olive fronds turn subdued tawny brown and ochre, dry leaf litter dull gold. Preserve EXACT original layout, outer silhouette, three plant groups, scale, ground contact, camera, and transparent canvas. Same hand painted brushwork. Broad readable forms, no new fine noise. No red foliage, no added objects, no text, no shadows. Genuine transparent background. Deliver original 128x96 dimensions if possible.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-abeb3ebe-81bf-4b8f-beac-d23527db7baf.png",
+    "generatedAt": "2026-09-25T23:59:10.747Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; decal native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting.",
+    "runtimePath": "boundary/forest_fringe_a_autumn-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "boundary/forest_fringe_a_autumn-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_a-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_a-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "zones/pasture_winter-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/pasture_a-v1.png",
+    "role": "fill",
+    "w": 256,
+    "h": 128,
+    "prompt": "Edit pasture_a-v1 only to muted winter straw olive with a very thin silver frost. Preserve EXACT broad patch shapes and low frequency painting. Fully opaque256x128 XY seamless fill; no microdetail, no new objects, no border, no snow blanket.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-98ff8a37-8528-4f93-a9e9-bdc9aa0ba542.png",
+    "generatedAt": "2026-09-26T00:00:21.741Z",
+    "manualEdits": "Native painted edit scaled once to specified canvas; opaque alpha enforced; opposing edge color strips symmetrically blended across 12px for XY seamless.",
+    "runtimePath": "zones/pasture_winter-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "zones/pasture_winter-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/pasture_a-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/pasture_a-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "fields/ridge_fallow_winter-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/ridge_fallow_a-v1.png",
+    "role": "strip",
+    "w": 512,
+    "h": 64,
+    "prompt": "Use case: lighting-weather. Edit exact original ridge_fallow_a-v1. ROLE strip512x64, repeatX ONLY, transparent upper/lower borders same as source. Winter southern England fallow field: thin pale grey frost along existing low ridges, olive grass becomes dry grey straw, warm brown furrows remain open. Keep original two long parallel ridge positions, widths, outer alpha contour and shallow depth EXACT. Flat overhead hand painted game material, 8-12px broad marks, no noise or individual grass hairs. Subtle frost not snow blanket. No text. Preserve8:1 canvas.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-f0081623-6e14-4f50-8262-8646bc3042e8.png",
+    "generatedAt": "2026-09-26T00:01:00.355Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; strip native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting. X-only12px symmetric seam blend; Y alpha unchanged.",
+    "runtimePath": "fields/ridge_fallow_winter-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "fields/ridge_fallow_winter-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/ridge_fallow_a-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/ridge_fallow_a-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "boundary/forest_fringe_a_winter-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_a-v1.png",
+    "role": "decal",
+    "w": 128,
+    "h": 96,
+    "prompt": "Use case: lighting-weather. Edit exact attached forest_fringe_a-v1.png. ROLE decal, 128x96, genuine transparent RGBA. Southern England winter: vegetation dried muted grey brown and straw with thin silver frost on upper plant edges, dark olive remains, no thick white snow. Preserve EXACT source arrangement, outer plant silhouette, lower ground contact, empty margins, camera and brush style. Retain large frond clump positions. Broad shapes, minimum8-12px at output, no added microdetail, no new objects or shadows, no text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-570dc26f-a40d-40c3-93a9-b73bd0fdc6b8.png",
+    "generatedAt": "2026-09-26T00:02:29.878Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; decal native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting.",
+    "runtimePath": "boundary/forest_fringe_a_winter-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "boundary/forest_fringe_a_winter-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_a-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_a-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "boundary/forest_fringe_b_autumn-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_b-v1.png",
+    "role": "decal",
+    "w": 128,
+    "h": 96,
+    "prompt": "Use case: lighting-weather. Edit exact attached forest_fringe_b-v1.png. ROLE decal, 128x96, genuine transparent RGBA. Southern England. Autumn: muted brown ochre and tawny bronze dry fronds and leaf litter; no orange or primary red. Preserve EXACT original positions of plant clumps, outer silhouette, ground contact, empty margins, camera, flat handpainted brush style. Same plants in same place with only season changed. Broad forms8-12px minimum at output; no extra detail, noise, objects, shadows or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-f66b8045-055d-4bc8-af37-61425dca31f2.png",
+    "generatedAt": "2026-09-26T00:03:40.206Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; decal native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting.",
+    "runtimePath": "boundary/forest_fringe_b_autumn-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "boundary/forest_fringe_b_autumn-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_b-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_b-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "boundary/forest_fringe_b_winter-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_b-v1.png",
+    "role": "decal",
+    "w": 128,
+    "h": 96,
+    "prompt": "Use case: lighting-weather. Edit exact attached forest_fringe_b-v1.png. ROLE decal, 128x96, genuine transparent RGBA. Southern England. Winter: dried muted grey brown and straw, thin silver frost on upper frond edges, dark olive remains, no thick snow. Preserve EXACT original positions of plant clumps, outer silhouette, ground contact, empty margins, camera, flat handpainted brush style. Same plants in same place with only season changed. Broad forms8-12px minimum at output; no extra detail, noise, objects, shadows or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-9a528f5b-576a-46da-ac16-724999e4f228.png",
+    "generatedAt": "2026-09-26T00:04:13.392Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; decal native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting.",
+    "runtimePath": "boundary/forest_fringe_b_winter-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "boundary/forest_fringe_b_winter-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_b-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_b-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "boundary/forest_fringe_c_autumn-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_c-v1.png",
+    "role": "decal",
+    "w": 128,
+    "h": 96,
+    "prompt": "Use case: lighting-weather. Edit exact attached forest_fringe_c-v1.png. ROLE decal, 128x96, genuine transparent RGBA. Southern England. Autumn: muted brown ochre and tawny bronze dry fronds and leaf litter; no orange or primary red. Preserve EXACT original positions of plant clumps, outer silhouette, ground contact, empty margins, camera, flat handpainted brush style. Same plants in same place with only season changed. Broad forms8-12px minimum at output; no extra detail, noise, objects, shadows or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-0ae78ade-e49f-4934-9353-ecd3bd75ee93.png",
+    "generatedAt": "2026-09-26T00:04:43.601Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; decal native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting.",
+    "runtimePath": "boundary/forest_fringe_c_autumn-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "boundary/forest_fringe_c_autumn-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_c-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_c-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "boundary/forest_fringe_c_winter-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_c-v1.png",
+    "role": "decal",
+    "w": 128,
+    "h": 96,
+    "prompt": "Use case: lighting-weather. Edit exact attached forest_fringe_c-v1.png. ROLE decal, 128x96, genuine transparent RGBA. Southern England. Winter: dried muted grey brown and straw, thin silver frost on upper plant edges, dark olive remains, no thick snow. Preserve EXACT original positions of plant clumps, outer silhouette, ground contact, empty margins, camera, flat handpainted brush style. Same plants in same place with only season changed. Broad forms8-12px minimum at output; no extra detail, noise, objects, shadows or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-bd0df236-c7c6-4b80-b843-f286698a5779.png",
+    "generatedAt": "2026-09-26T00:05:33.966Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; decal native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting.",
+    "runtimePath": "boundary/forest_fringe_c_winter-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "boundary/forest_fringe_c_winter-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_c-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/forest_fringe_c-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "boundary/grass_edge_autumn-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/grass_edge-v1.png",
+    "role": "decal",
+    "w": 128,
+    "h": 64,
+    "prompt": "Use case: lighting-weather. Edit exact attached grass_edge-v1.png. ROLE decal, 128x64, genuine transparent RGBA. Southern England. Autumn: muted brown ochre and tawny bronze dry grasses and leaf litter; no orange or primary red. Preserve EXACT original positions of plant clumps, outer silhouette, ground contact, empty margins, camera, flat handpainted brush style. Same plants in same place with only season changed. Broad forms8-12px minimum at output; no extra detail, noise, objects, shadows or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-dcba4428-4db1-466c-9013-203e3ee21d41.png",
+    "generatedAt": "2026-09-26T00:06:00.932Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; decal native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting.",
+    "runtimePath": "boundary/grass_edge_autumn-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "boundary/grass_edge_autumn-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/grass_edge-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/grass_edge-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "boundary/grass_edge_winter-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/grass_edge-v1.png",
+    "role": "decal",
+    "w": 128,
+    "h": 64,
+    "prompt": "Use case: lighting-weather. Edit exact attached grass_edge-v1.png. ROLE decal, 128x64, genuine transparent RGBA. Southern England. Winter: dried muted grey brown and straw, thin silver frost on upper plant edges, dark olive remains, no thick snow. Preserve EXACT original positions of plant clumps, outer silhouette, ground contact, empty margins, camera, flat handpainted brush style. Same plants in same place with only season changed. Broad forms8-12px minimum at output; no extra detail, noise, objects, shadows or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-7f89746b-dcad-4479-922e-b4e656f3fe2e.png",
+    "generatedAt": "2026-09-26T00:06:26.805Z",
+    "manualEdits": "Native painted edit scaled once to exact source canvas; decal native alpha bounds fitted to source alpha bounds; nearest opaque native RGB extended into transparent edge pixels; original alpha restored exactly to lock footprint/pivot. No procedural painting.",
+    "runtimePath": "boundary/grass_edge_winter-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "boundary/grass_edge_winter-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/grass_edge-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/grass_edge-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "zones/pasture_autumn-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/pasture_a-v1.png",
+    "role": "fill",
+    "w": 256,
+    "h": 128,
+    "prompt": "Use case: lighting-weather. Edit exact attached pasture_a-v1.png. ROLE fill,256x128, fully opaque XYseamless. Southern England. Autumn: dry muted straw brown and ochre grass, residual subdued olive, low saturation. Preserve EXACT original broad patch positions, shapes, flat overhead view and lowfrequency handpainted brush style. Same ground with only season changed. Broad color blocks12-20px minimum at output; keep quiet without focalpoint. NO grassblade detail, grains, specks, noise, shadows, new objects, border, vignette, text or perspective. Keep contrast as low as source.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-22a17104-fc3e-4081-8d47-5246f8714c08.png",
+    "generatedAt": "2026-09-26T00:07:03.299Z",
+    "manualEdits": "Native painted edit scaled once to specified canvas; opaque alpha enforced; opposing edge color strips symmetrically blended across 12px for XY seamless.",
+    "runtimePath": "zones/pasture_autumn-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "zones/pasture_autumn-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/pasture_a-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/pasture_a-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "fields/soil_winter-v1",
+    "ref": "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/soil_a-v1.png",
+    "role": "fill",
+    "w": 256,
+    "h": 128,
+    "prompt": "Use case: lighting-weather. Edit exact attached soil_a-v1.png. ROLE fill,256x128, fully opaque XYseamless. Southern England. Winter: thin pale grey silver frost brushing broad existing earth patches. Warm brown soil remains dominant, no thick snow. Preserve EXACT original broad patch positions, shapes, flat overhead view and lowfrequency handpainted brush style. Same ground with only season changed. Broad color blocks12-20px minimum at output; keep quiet without focalpoint. NO grassblade detail, grains, specks, noise, shadows, new objects, border, vignette, text or perspective. Keep contrast as low as source.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-2263bc2d-353e-43a4-b011-e5e3e2945bbb.png",
+    "generatedAt": "2026-09-26T00:07:20.876Z",
+    "manualEdits": "Native painted edit scaled once to specified canvas; opaque alpha enforced; opposing edge color strips symmetrically blended across 12px for XY seamless.",
+    "runtimePath": "fields/soil_winter-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "selectionReason": "Same source arrangement and muted seasonal palette; exact alpha/canvas retained by mechanical normalization",
+    "assetId": "fields/soil_winter-v1",
+    "references": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/soil_a-v1.png"
+    ],
+    "referenceInputs": [
+      "/tmp/astra-wave15-work-20260926/astra-wave15-reference-files/soil_a-v1.png"
+    ],
+    "notes": "Source canvas and role retained."
+  },
+  {
+    "id": "terrain/grass_autumn_fill-v1",
+    "ref": "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png",
+    "role": "fill",
+    "w": 256,
+    "h": 128,
+    "prompt": "Edit ONLY tonal contrast of this exact image. Keep all existing large patch shapes and absolutely smooth painted surfaces unchanged. Compress contrast by85 percent toward the average color so patches are BARELY distinguishable from each other. No distinct camouflage islands at small size. It should look almost uniform with very faint broad brush tonal variations. Preserve overall seasonal average hue. Do not add ANY texture or details: no grain, no grass, no noise, no dots, no edges, no photography, no tiny brush marks. Keep2:1 rectangle fullyopaqueXYseamless, no text. Sole operation: make current largepatch contrast almost disappear.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-d0e37a1e-02c4-42f8-bf49-3a1526de2c22.png",
+    "generatedAt": "2026-09-26T00:14:59.993Z",
+    "priorAttempts": [
+      {
+        "prompt": "Use case: lighting-weather. Edit attached project grass.png into seasonal game terrain reference. ROLE fill256x128, fully opaque seamlessXY repeating plane, flat overhead no isometricdiamond. Autumn: dry muted golden tan grass with olive remnants, golden brown overall, no orange or red. Southern England1300-1450, restrained handpainted game surface. Preserve source overall grass coverage and evenlydistributed lowcontrast density and shade, no landmarks or newobjects. IMPORTANT newpipeline requires simplifying source finegrain into broad softly angular painted grass patches minimum12-20px at final256x128. No1-4px speckles or blades, no photographnoise, no randomdots. Quiet nearuniform tonal variation, no focalpoint. No shadows, border, vignette, writing or perspective.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-6da15eeb-cd6f-420f-98aa-b1f035a90713.png",
+        "reason": "Rejected microtexture below 8-12px"
+      },
+      {
+        "prompt": "Use case: precise-object-edit. Image1 is projectgrass colorreference, image2 is REQUIRED broadshape/detail level reference. Create seasonal edit of image1 into autumn muted golden tawny olive version. ROLE fill256x128 opaqueXY seamless. The earlier result incorrectly retained microscopic photographicgrass. Correct this: ALL areas must be SIMPLE SOLID PAINTED PATCHES like image2. Only30-45 large interlocking grass-color areas across fullcanvas, each12-35px at256x128. Absolutely no visible grassblade, speckle, grain, dither, tiny dots, scratch, stipple, salttexture, microtexture. No microtexture even inside largepatches. Lowcontrast ochre tan and mutedolive shapes, handpaintedflat topdown citybuilder. No objects or focalpoint. No thickwhite snow, shadows, vignette, text or border. EdgesXYtileable. Samecoverage and overalltone asreference onlyseasonchanged.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-d38e337f-4895-4c7b-9f32-adfebf737700.png",
+        "reason": "Rejected high contrast camouflage islands, lost original quiet grass material identity"
+      },
+      {
+        "prompt": "Use case: precise-object-edit. Image1 EDIT TARGET current seasonal grass terrain, image2 ORIGINAL GAME GRASS for material identity. Correct image1: its current distinct hard interlocking CAMOUFLAGE ISLANDS are wrong. Remove those islands completely. Replace with nearly uniform quiet handpainted dry subdued brownish olive autumn grass material matching original game grass coverage. COLOR CONTRAST EXTREMELY LOW: neighboring broad brush areas differ only about4-7 RGB values. Painterly broad short drygrass brush groupings8-16px wide at256x128; internal boundaries gently broken and softly painted, NOT outlined polygonpatches, NOT blur, NOT photographic finegrain. Quiet desaturated olive taupe straw, NOT brightgold, orange or red. No darkorlight focalareas. Same gameground, seasonchanged only. Fully opaque seamlessXY 256x128 rectangular topdown texture, no border, no vignette, no diamonds, no perspective, no text. This must look like actual quietgrass at0.3scale, never camouflage or puzzlepieces.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-89e31b47-1685-4eb7-84ab-a671eb3a9449.png",
+        "reason": "Rejected restored microscopic photographicgrain"
+      }
+    ],
+    "referenceInputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-d38e337f-4895-4c7b-9f32-adfebf737700.png"
+    ],
+    "candidates": 4,
+    "manualEdits": "Native painted edit scaled once to specified canvas; opaque alpha enforced; opposing edge color strips symmetrically blended across 12px for XY seamless.",
+    "runtimePath": "terrain/grass_autumn_fill-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "selectionReason": "Fourth native tonal-only edit retains broad smooth motifs at very low contrast; first/third finegrain and second camouflage contrast rejected. No procedural artwork or colorgrading.",
+    "assetId": "terrain/grass_autumn_fill-v1",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-d38e337f-4895-4c7b-9f32-adfebf737700.png"
+    ],
+    "notes": "Project Wave4 grass256x256 and Wave15 pasture style referenced in earlier attempts; final fourth edit directly targets second broadpaint native. Final256x128 perbrief. Complete3 rejected prior attempts preserved."
+  },
+  {
+    "id": "terrain/grass_winter_fill-v1",
+    "ref": "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png",
+    "role": "fill",
+    "w": 256,
+    "h": 128,
+    "prompt": "Edit ONLY tonal contrast of this exact image. Keep all existing large patch shapes and absolutely smooth painted surfaces unchanged. Compress contrast by85 percent toward the average color so patches are BARELY distinguishable from each other. No distinct camouflage islands at small size. It should look almost uniform with very faint broad brush tonal variations. Preserve overall seasonal average hue. Do not add ANY texture or details: no grain, no grass, no noise, no dots, no edges, no photography, no tiny brush marks. Keep2:1 rectangle fullyopaqueXYseamless, no text. Sole operation: make current largepatch contrast almost disappear.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-2354a7e2-1c82-4a68-a3fa-bf6a091b9ad8.png",
+    "generatedAt": "2026-09-26T00:15:17.010Z",
+    "priorAttempts": [
+      {
+        "prompt": "Use case: lighting-weather. Edit attached project grass.png into seasonal game terrain reference. ROLE fill256x128, fully opaque seamlessXY repeating plane, flat overhead no isometricdiamond. Winter: thin silver grey frost on muted greyolive straw grass, earth and olive remain visible. Pale cool grey-beige overall, no snow blanket. Southern England1300-1450, restrained handpainted game surface. Preserve source overall grass coverage and evenlydistributed lowcontrast density and shade, no landmarks or newobjects. IMPORTANT newpipeline requires simplifying source finegrain into broad softly angular painted grass patches minimum12-20px at final256x128. No1-4px speckles or blades, no photographnoise, no randomdots. Quiet nearuniform tonal variation, no focalpoint. No shadows, border, vignette, writing or perspective.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-d871670e-1939-4535-aa85-2be2c8a71ded.png",
+        "reason": "Rejected microtexture below 8-12px"
+      },
+      {
+        "prompt": "Use case: precise-object-edit. Image1 is projectgrass colorreference, image2 is REQUIRED broadshape/detail level reference. Create seasonal edit of image1 into winter pale greyolive straw with thin frost version. ROLE fill256x128 opaqueXY seamless. The earlier result incorrectly retained microscopic photographicgrass. Correct this: ALL areas must be SIMPLE SOLID PAINTED PATCHES like image2. Only30-45 large interlocking grass-color areas across fullcanvas, each12-35px at256x128. Absolutely no visible grassblade, speckle, grain, dither, tiny dots, scratch, stipple, salttexture, microtexture. No microtexture even inside largepatches. Lowcontrast greyolive with a few pale greybeige frost patches, brownstraw remains shapes, handpaintedflat topdown citybuilder. No objects or focalpoint. No thickwhite snow, shadows, vignette, text or border. EdgesXYtileable. Samecoverage and overalltone asreference onlyseasonchanged.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-aa1cf8af-88d6-4bd5-9895-3b6554fe693d.png",
+        "reason": "Rejected high contrast camouflage islands, lost original quiet grass material identity"
+      },
+      {
+        "prompt": "Use case: precise-object-edit. Image1 EDIT TARGET current seasonal grass terrain, image2 ORIGINAL GAME GRASS for material identity. Correct image1: its current distinct hard interlocking CAMOUFLAGE ISLANDS are wrong. Remove those islands completely. Replace with nearly uniform quiet handpainted frosted pale grey olive straw grass material matching original game grass coverage. COLOR CONTRAST EXTREMELY LOW: neighboring broad brush areas differ only about4-7 RGB values. Painterly broad short drygrass brush groupings8-16px wide at256x128; internal boundaries gently broken and softly painted, NOT outlined polygonpatches, NOT blur, NOT photographic finegrain. Thin cool silvery frost tone overall but olive straw visible, absolutely no white snow patches. No darkorlight focalareas. Same gameground, seasonchanged only. Fully opaque seamlessXY 256x128 rectangular topdown texture, no border, no vignette, no diamonds, no perspective, no text. This must look like actual quietgrass at0.3scale, never camouflage or puzzlepieces.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-83971c1f-625c-470d-aa7a-7040c67de64f.png",
+        "reason": "Rejected restored microscopic photographicgrain"
+      }
+    ],
+    "referenceInputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-aa1cf8af-88d6-4bd5-9895-3b6554fe693d.png"
+    ],
+    "candidates": 4,
+    "manualEdits": "Native painted edit scaled once to specified canvas; opaque alpha enforced; opposing edge color strips symmetrically blended across 12px for XY seamless.",
+    "runtimePath": "terrain/grass_winter_fill-v1.png",
+    "status": "candidate",
+    "tool": "native image_gen imagegen",
+    "model": "not exposed",
+    "selectionReason": "Fourth native tonal-only edit retains broad smooth motifs at very low contrast; first/third finegrain and second camouflage contrast rejected. No procedural artwork or colorgrading.",
+    "assetId": "terrain/grass_winter_fill-v1",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0db00-c7b3-70d0-933a-4608e80b6da8/exec-aa1cf8af-88d6-4bd5-9895-3b6554fe693d.png"
+    ],
+    "notes": "Project Wave4 grass256x256 and Wave15 pasture style referenced in earlier attempts; final fourth edit directly targets second broadpaint native. Final256x128 perbrief. Complete3 rejected prior attempts preserved."
+  }
+]

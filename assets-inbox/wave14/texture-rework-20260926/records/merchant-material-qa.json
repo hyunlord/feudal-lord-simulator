@@ -1,0 +1,110 @@
+{
+  "same16Combinations": true,
+  "materials": 3,
+  "examples": 48,
+  "minimum48pxAlphaDifferenceAbove32": 85,
+  "closestPair": [
+    2,
+    4
+  ],
+  "combinations": [
+    {
+      "index": 1,
+      "changedRGBChannelsAbove3": 23228,
+      "meanAbsoluteRGBDelta": 4.514363606770833,
+      "inkDropoutFractionInsideMark": 0.12141592920353983
+    },
+    {
+      "index": 2,
+      "changedRGBChannelsAbove3": 22597,
+      "meanAbsoluteRGBDelta": 4.148274739583333,
+      "inkDropoutFractionInsideMark": 0.12326714125140502
+    },
+    {
+      "index": 3,
+      "changedRGBChannelsAbove3": 22723,
+      "meanAbsoluteRGBDelta": 4.435126410590278,
+      "inkDropoutFractionInsideMark": 0.1261061946902655
+    },
+    {
+      "index": 4,
+      "changedRGBChannelsAbove3": 22520,
+      "meanAbsoluteRGBDelta": 4.121222601996528,
+      "inkDropoutFractionInsideMark": 0.12415856394913986
+    },
+    {
+      "index": 5,
+      "changedRGBChannelsAbove3": 23552,
+      "meanAbsoluteRGBDelta": 4.540079752604167,
+      "inkDropoutFractionInsideMark": 0.12374461979913917
+    },
+    {
+      "index": 6,
+      "changedRGBChannelsAbove3": 22746,
+      "meanAbsoluteRGBDelta": 4.222527398003472,
+      "inkDropoutFractionInsideMark": 0.12551828119110442
+    },
+    {
+      "index": 7,
+      "changedRGBChannelsAbove3": 23475,
+      "meanAbsoluteRGBDelta": 4.513027615017361,
+      "inkDropoutFractionInsideMark": 0.12459720730397422
+    },
+    {
+      "index": 8,
+      "changedRGBChannelsAbove3": 22443,
+      "meanAbsoluteRGBDelta": 4.295111762152778,
+      "inkDropoutFractionInsideMark": 0.1317502872462658
+    },
+    {
+      "index": 9,
+      "changedRGBChannelsAbove3": 22600,
+      "meanAbsoluteRGBDelta": 4.445014105902778,
+      "inkDropoutFractionInsideMark": 0.11968680089485459
+    },
+    {
+      "index": 10,
+      "changedRGBChannelsAbove3": 24075,
+      "meanAbsoluteRGBDelta": 4.426866319444445,
+      "inkDropoutFractionInsideMark": 0.12235543018335684
+    },
+    {
+      "index": 11,
+      "changedRGBChannelsAbove3": 21933,
+      "meanAbsoluteRGBDelta": 4.343573676215278,
+      "inkDropoutFractionInsideMark": 0.13109637143971908
+    },
+    {
+      "index": 12,
+      "changedRGBChannelsAbove3": 23152,
+      "meanAbsoluteRGBDelta": 4.228068033854167,
+      "inkDropoutFractionInsideMark": 0.1261127596439169
+    },
+    {
+      "index": 13,
+      "changedRGBChannelsAbove3": 21568,
+      "meanAbsoluteRGBDelta": 4.369791666666667,
+      "inkDropoutFractionInsideMark": 0.14083398898505115
+    },
+    {
+      "index": 14,
+      "changedRGBChannelsAbove3": 22642,
+      "meanAbsoluteRGBDelta": 4.374104817708333,
+      "inkDropoutFractionInsideMark": 0.13930348258706468
+    },
+    {
+      "index": 15,
+      "changedRGBChannelsAbove3": 23377,
+      "meanAbsoluteRGBDelta": 4.588616265190972,
+      "inkDropoutFractionInsideMark": 0.1235315058739765
+    },
+    {
+      "index": 16,
+      "changedRGBChannelsAbove3": 21866,
+      "meanAbsoluteRGBDelta": 4.168674045138889,
+      "inkDropoutFractionInsideMark": 0.13391789557592668
+    }
+  ],
+  "inkRawRejectedReason": "First generated image had max alpha 11/255, mean alpha 0.935/255; regenerated opaque coverage field.",
+  "inkCoverageMean": 0.7739849015778186
+}
