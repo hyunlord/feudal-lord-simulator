@@ -12,4 +12,6 @@ type AutoplayCommand =
   | { readonly kind: "set_wall_construction_priority"; readonly priority: "priority" }
   /** AF-13: autoplay paints an arable field block (a zone stroke). */
   | { readonly kind: "paint_zone"; readonly zone: import("../zones/zone.types").ZoneKind; readonly stroke: import("../zones/zone.types").ZoneStroke }
+  /** AR-9: autoplay erases the fields inside a wall that has run out of house sites (a zone stroke). */
+  | { readonly kind: "erase_zone"; readonly stroke: import("../zones/zone.types").ZoneStroke }
   | { readonly kind: "none" };
