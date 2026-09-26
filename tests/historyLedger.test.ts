@@ -106,7 +106,8 @@ test("H1 each of the twelve decision kinds is recorded: seven as the season's li
   state = recordDecision(state, { ...state, era: "stone_town" }, { type: "confirm_stone_town_proclamation" });
 
   const big = records(state).filter(record => record.kind === "decision").map(record => String(record.params?.decisionKind));
-  assert.deepEqual([...big].sort(), [...BIG_DECISION_KINDS].sort(), "the big five, one record each");
+  // The big five of F0-C2, one record each (WALL-2's expansion, the sixth, is W6 in tests/wallExpansion.test.ts).
+  assert.deepEqual([...big].sort(), BIG_DECISION_KINDS.filter(kind => kind !== "wall_expand").sort(), "the big five, one record each");
   // Two seasons on, each big decision has its actual on its prediction's keys.
   const later = advanceHistory(state, { ...state, tick: state.tick + ACTUAL_AFTER_TICKS });
   for (const record of records(later).filter(entry => entry.kind === "decision")) {
@@ -118,7 +119,7 @@ test("H1 each of the twelve decision kinds is recorded: seven as the season's li
   const bundles = records(closed).filter(record => record.template === "decision.bundle").map(record => String(record.params?.decisionKind));
   assert.deepEqual(bundles.sort(), ["build", "cancel", "house", "operation", "road", "zone"]);
   assert.deepEqual(records(closeSeason(prioritised)).filter(record => record.template === "decision.bundle").map(record => record.params?.decisionKind), ["wall_priority"]);
-  assert.equal(DECISION_KINDS.length, 12);
+  assert.equal(DECISION_KINDS.length, 13, "twelve, and WALL-2's wall expansion");
   assert.equal(before.history, undefined, "the fixture had no ledger");
   assert.equal(historySummary(records(closed).find(record => record.template === "decision.bundle" && record.params?.decisionKind === "build")!), "이번 계절 건물 1곳의 공사를 놓았다");
 });

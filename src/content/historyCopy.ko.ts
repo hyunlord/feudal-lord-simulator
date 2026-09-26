@@ -21,7 +21,7 @@ function josa(word: string, withFinal: string, withoutFinal: string): string {
 export const HISTORY_CHOICE_LABELS: Readonly<Record<string, string>> = {
   relief: "구휼", price_control: "가격 통제", laissez_faire: "방관", speculation: "투기",
   accept: "수락", refuse: "거절", accept_with_price: "가격을 붙여 수락", expired: "답하지 않음",
-  proclaim: "선포", wait: "미룸", rebuild: "다시 짓기", leave: "그대로 둠",
+  proclaim: "선포", wait: "미룸", rebuild: "다시 짓기", leave: "그대로 둠", expand: "넓힘", keep: "그대로 둠",
 };
 const choice = (key: string) => HISTORY_CHOICE_LABELS[key] ?? key;
 
@@ -61,6 +61,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "decision.market_town": () => "목책을 두르고 시장도시를 선포했다",
   "decision.stone_town": () => "석벽 사업을 선포했다",
   "decision.rebuild": () => "불탄 집을 다시 짓기 시작했다",
+  "decision.wall_expand": () => "목책을 넓혀 새로 두르기로 했다",
   "event.rumour": params => `${eventName(s(params, "defId"))}의 소문이 돌았다`,
   "event.sign": params => `${eventName(s(params, "defId"))}의 징후가 보였다`,
   "event.arrived": params => { const name = eventName(s(params, "defId")); return `${name}${josa(name, "이", "가")} 닥쳤다`; },

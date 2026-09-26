@@ -2,6 +2,7 @@ import { additionalRoadGates } from "./palisadeGates";
 import { snapshotWallConstructionReserve } from "./constructionReserve";
 import { palisadeCoreFootprintsForState, palisadeFootprintsForState } from "./palisadeFootprints";
 import {
+  constructionCancellationRefunds,
   createPalisadeConstructionSite,
   type PalisadeConstructionSite,
 } from "../economy/construction";
@@ -9,6 +10,8 @@ import { canProclaimPalisadeEra } from "./era";
 import type { GameState, PalisadeSegment } from "./engine.types";
 import { getTile, type TileCoordinate } from "../world/grid";
 import {
+  isPointInsidePalisade,
+  palisadePathEnclosesFootprints,
   palisadePerimeterSteps,
   validatePalisadeCandidate,
   type PalisadeFootprint,
@@ -18,11 +21,16 @@ import {
 import {
   PALISADE_SEGMENT_SITE_STEPS,
   palisadeRingPoints,
+  palisadeStepPoints,
   segmentPalisadePathForConstruction,
   type PalisadeConstructionSegmentPath,
 } from "./palisadeSegments";
 
 export { segmentPalisadePathForConstruction } from "./palisadeSegments";
+
+/** Timber a palisade step costs (the segment site's rate). */
+const PALISADE_TIMBER_PER_STEP = createPalisadeConstructionSite({ id: "rate", wallId: "rate", segmentIndex: 0, gateDistance: 0, order: 0,
+  path: [{ x: 0, y: 0 }, { x: 1, y: 0 }], startedTick: 0 }).required.timber ?? 0;
 
 type BoundaryGate = {
   readonly point: TileEdgePoint;
@@ -246,5 +254,117 @@ export function projectPalisadeProclamation(
     constructionSites: [...state.constructionSites, ...sites],
     wallConstructionReserve: snapshotWallConstructionReserve(state, sites, "timber"),
     nextConstructionOrdinal: state.nextConstructionOrdinal + 1,
+  };
+}
+
+/**
+ * WALL-2 (spec docs/design/wall-expansion.md WX-1…WX-6): an expansion proclaims a new ring that holds the old one.
+ * Old segments that lie on the new ring stay as they are (built or not); old segments left inside the town are taken
+ * down with their sites (timber delivered to them refunds as for a cancelled site); only the new ring's other steps become
+ * construction sites, so the cost is the new length. The gate stays where it is if it is still on the ring. In the
+ * stone town the new timber segments are replaced in stone as they complete, like every timber segment there.
+ */
+export type PalisadeExpansionPreview =
+  | { readonly ok: true; readonly path: PalisadePath; readonly newSteps: number; readonly timber: number; readonly reusedSegmentIds: readonly string[];
+    readonly removedSegmentIds: readonly string[]; readonly interiorBefore: number; readonly interiorAfter: number; readonly enclosedArableCells: readonly number[] }
+  | { readonly ok: false; readonly reason: "no_palisade" | "invalid_path" | "not_containing" | "not_larger" | "no_gate" };
+
+function stepKey(a: TileEdgePoint, b: TileEdgePoint): string {
+  return a.x < b.x || (a.x === b.x && a.y < b.y) ? `${a.x},${a.y}|${b.x},${b.y}` : `${b.x},${b.y}|${a.x},${a.y}`;
+}
+
+function pathStepKeys(path: PalisadePath): string[] {
+  const points = palisadeStepPoints(path);
+  const keys: string[] = [];
+  for (let index = 1; index < points.length; index += 1) keys.push(stepKey(points[index - 1]!, points[index]!));
+  return keys;
+}
+
+function interiorCells(state: Pick<GameState, "width" | "height">, path: PalisadePath): Set<number> {
+  const cells = new Set<number>();
+  for (let ty = 0; ty < state.height; ty += 1) {
+    for (let tx = 0; tx < state.width; tx += 1) if (isPointInsidePalisade({ x: tx + 0.5, y: ty + 0.5 }, path)) cells.add(ty * state.width + tx);
+  }
+  return cells;
+}
+
+/** WX-1: what an expansion to `path` would keep, take down and build (the render's preview; nothing changes). */
+export function previewPalisadeExpansion(state: GameState, path: PalisadePath): PalisadeExpansionPreview {
+  const palisade = state.palisade;
+  if (palisade === null || (state.era !== "palisade" && state.era !== "stone_town")) return { ok: false, reason: "no_palisade" };
+  // The new ring must clear every building and hold all the old wall held (a town may have built outside its wall).
+  const footprints = palisadeFootprintsForState(state);
+  const enclosed = footprints.filter(footprint => palisadePathEnclosesFootprints(palisade.polygon, [footprint]));
+  const validation = validatePalisadeCandidate(state, path, footprints, enclosed, 1);
+  if (!validation.ok) return { ok: false, reason: "invalid_path" };
+  const candidate = validation.candidate.path;
+  const before = interiorCells(state, palisade.polygon);
+  const after = interiorCells(state, candidate);
+  for (const cell of before) if (!after.has(cell)) return { ok: false, reason: "not_containing" };
+  if (after.size <= before.size) return { ok: false, reason: "not_larger" };
+  const ring = new Set(pathStepKeys(candidate));
+  const reused = palisade.segments.filter(segment => pathStepKeys(segment.edgePath).every(key => ring.has(key)));
+  const reusedKeys = new Set(reused.flatMap(segment => pathStepKeys(segment.edgePath)));
+  const newSteps = [...ring].filter(key => !reusedKeys.has(key)).length;
+  const arable = new Set((state.zones ?? []).filter(zone => zone.kind === "arable").flatMap(zone => zone.membership));
+  return {
+    ok: true, path: candidate, newSteps, timber: newSteps * PALISADE_TIMBER_PER_STEP,
+    reusedSegmentIds: reused.map(segment => segment.id),
+    removedSegmentIds: palisade.segments.filter(segment => !reused.includes(segment)).map(segment => segment.id),
+    interiorBefore: before.size, interiorAfter: after.size,
+    enclosedArableCells: [...after].filter(cell => !before.has(cell) && arable.has(cell)).sort((a, b) => a - b),
+  };
+}
+
+/** WX-1 `expand_palisade`: proclaims the larger ring (see `previewPalisadeExpansion`); returns the state unchanged if it cannot. */
+export function expandPalisade(state: GameState, path: PalisadePath): GameState {
+  const preview = previewPalisadeExpansion(state, path);
+  if (!preview.ok || state.palisade === null) return state;
+  const palisade = state.palisade;
+  const ring = palisadeRingPoints(preview.path);
+  const gateIndex = ring.findIndex(point => point.x === palisade.gate.x && point.y === palisade.gate.y);
+  const gate = gateIndex >= 0 ? { point: palisade.gate, stepIndex: gateIndex } : chooseGate(state, ring, settlementCenter(palisadeFootprintsForState(state)));
+  if (gate === null) return state;
+  const reusedIds = new Set(preview.reusedSegmentIds);
+  const reused = palisade.segments.filter(segment => reusedIds.has(segment.id));
+  const removed = palisade.segments.filter(segment => !reusedIds.has(segment.id));
+  const reusedKeys = new Set(reused.flatMap(segment => pathStepKeys(segment.edgePath)));
+  // The new ring from the gate, in runs of steps not already walled; each run cut into sites of four steps at most.
+  const rotated = [...ring.slice(gate.stepIndex), ...ring.slice(0, gate.stepIndex), ring[gate.stepIndex]!];
+  const runs: { readonly start: number; readonly points: TileEdgePoint[] }[] = [];
+  let current: { start: number; points: TileEdgePoint[] } | null = null;
+  for (let index = 1; index < rotated.length; index += 1) {
+    const a = rotated[index - 1]!;
+    const b = rotated[index]!;
+    const fresh = !reusedKeys.has(stepKey(a, b));
+    if (fresh && (current === null || current.points.length - 1 >= PALISADE_SEGMENT_SITE_STEPS)) {
+      if (current !== null) runs.push(current);
+      current = { start: index - 1, points: [a, b] };
+    } else if (fresh && current !== null) current.points.push(b);
+    else if (current !== null) { runs.push(current); current = null; }
+  }
+  if (current !== null) runs.push(current);
+  const wallId = palisade.id;
+  const ordinal = state.nextConstructionOrdinal;
+  const firstOrder = palisade.segments.reduce((max, segment) => Math.max(max, segment.order), -1) + 1;
+  const sites = runs.map((run, index) => createPalisadeConstructionSite({
+    id: `${wallId}-x${String(ordinal).padStart(6, "0")}-segment-${String(index).padStart(3, "0")}`,
+    wallId, segmentIndex: firstOrder + index, gateDistance: Math.min(run.start, ring.length - run.start), order: firstOrder + index,
+    path: run.points, startedTick: state.tick,
+  }));
+  const removedSiteIds = new Set(removed.flatMap(segment => [segment.constructionSiteId, segment.replacementConstructionSiteId]).filter((id): id is string => typeof id === "string"));
+  // Sites taken down refund as a cancelled site does (M-rule: 60 % of what was delivered).
+  const refund = state.constructionSites.filter(site => removedSiteIds.has(site.id)).reduce((sum, site) => sum + (constructionCancellationRefunds(site).deliveredRefund.timber ?? 0), 0);
+  const additionalGates = additionalRoadGates(state, preview.path, gate.point);
+  return {
+    ...state,
+    treasuryTimber: state.treasuryTimber + refund,
+    palisade: {
+      id: wallId, polygon: preview.path, gate: gate.point, ...(additionalGates.length > 0 ? { additionalGates } : {}),
+      segments: [...reused, ...palisadeSegments(sites)], expansion: { tick: state.tick, arableCells: preview.enclosedArableCells },
+    },
+    constructionSites: [...state.constructionSites.filter(site => !removedSiteIds.has(site.id)), ...sites],
+    wallConstructionReserve: snapshotWallConstructionReserve(state, sites, "timber"),
+    nextConstructionOrdinal: ordinal + 1,
   };
 }
