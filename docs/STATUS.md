@@ -1,9 +1,12 @@
 # 현재 상태
 
-갱신: 2026-09-26(INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
+- **INSTALL-11 건물 계열별 공사 키트 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 렌더·표현 워커·에셋·대장·테스트·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/install11/REPORT.md), [명세](design/construction-kits.md) IK-1~IK-4, 결정 IN11-D1~D3.
+  - 55장 설치. 목조 소·중, 석조 중·대, 교회·성채, 석벽 모퉁이 탑 키트가 단계마다 완성 그림의 캔버스에 선다.
+  - 기중기·홍예틀·모르타르·들보 소품, 목수·석공 몸과 톱·자귀·흙손, 철거는 키트 역순. DGX p95 96~102 %.
 - **INSTALL-7 Wave 7 — 밀→빵→집 사슬·겨울·세계 신호: 관문 ①~⑦ 통과, 본선 병합**(Claude Code, 렌더·표현 워커·에셋·대장·테스트·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/install7/REPORT.md), [명세](design/bread-chain-winter.md) IN7-1~IN7-8, 결정 IN7-D1~D5.
   - 77장 설치, 수레 적재물 6종 × 2축, 연기·먼지 4프레임 시트, 더미 4종 × 3단, 작업 소품 5종 + 낫.
   - 지붕 눈(L0~L4)·서리·낙엽·마른 풀, 신호 S1·S2·S6·S9·S12·빈집, 지붕틀 크기 4등급.
