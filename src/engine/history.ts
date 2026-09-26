@@ -40,12 +40,12 @@ const TOWN: ActorRef = { type: "town", id: "town" };
 /** HL-3: `actual` is read this long after the decision. */
 export const ACTUAL_AFTER_TICKS = 2 * SEASON;
 
-/** HL-2 ①: the twelve decision kinds and the commands behind them. */
+/** HL-2 ①: the decision kinds (twelve, and WALL-2's wall expansion) and the commands behind them. */
 export const DECISION_KINDS = ["build", "road", "zone", "house", "cancel", "operation", "wall_priority",
-  "rebuild", "market_town", "stone_town", "famine_response", "petition_response"] as const;
+  "rebuild", "market_town", "stone_town", "famine_response", "petition_response", "wall_expand"] as const;
 export type DecisionKind = (typeof DECISION_KINDS)[number];
 /** HL-3: the big five, one record each with alternatives, a prediction and (later) the actual. */
-export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild"];
+export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand"];
 
 export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = {
   place_building: "build", place_road_line: "road", remove_road: "road",
@@ -53,7 +53,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   demolish_house: "house", merge_houses: "house", cancel_construction: "cancel", set_building_operation: "operation",
   set_wall_construction_priority: "wall_priority", rebuild_house: "rebuild",
   confirm_palisade_proclamation: "market_town", confirm_stone_town_proclamation: "stone_town",
-  famine_response: "famine_response", petition_response: "petition_response",
+  famine_response: "famine_response", petition_response: "petition_response", expand_palisade: "wall_expand",
 };
 
 /** HL-2 ③: buildings whose first completion is a milestone. */
@@ -123,6 +123,9 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
   if (kind === "stone_town") {
     return { chosen: "proclaim", alternatives: ["wait"], predicted: { treasury: now.treasury! - MONEY_BALANCE.stoneWallProjectCost, lots: now.lots! }, actualDueTick: due };
   }
+  if (kind === "wall_expand") {
+    return { chosen: "expand", alternatives: ["keep"], predicted: pick(metrics(after), ["population", "lots"]), actualDueTick: due };
+  }
   if (kind === "market_town") {
     return { chosen: "proclaim", alternatives: ["wait"], predicted: pick(metrics(after), ["population", "lots"]), actualDueTick: due };
   }
@@ -131,7 +134,7 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
 
 const BIG_KEYS: Readonly<Record<string, readonly string[]>> = {
   famine_response: ["population", "treasury"], petition_response: ["treasury", "merchantGauge"],
-  stone_town: ["treasury", "lots"], market_town: ["population", "lots"], rebuild: ["population"],
+  stone_town: ["treasury", "lots"], market_town: ["population", "lots"], rebuild: ["population"], wall_expand: ["population", "lots"],
 };
 
 /** HL-2 ①: records the player's (or the bot's) command, if it changed the state. Called by `gameReducer`. */
@@ -437,7 +440,7 @@ export function historyDate(record: Pick<HistoryRecord, "tick">, state: Pick<Gam
 export const history = { query: historyQuery, snapshot: historySnapshot, summary: historySummary, date: historyDate } as const;
 
 /** HL-6: the decisions a chapter page quotes, weightiest first. */
-const QUOTE_WEIGHT: Readonly<Record<string, number>> = { famine_response: 0, petition_response: 1, market_town: 2, stone_town: 3, rebuild: 4 };
+const QUOTE_WEIGHT: Readonly<Record<string, number>> = { famine_response: 0, petition_response: 1, market_town: 2, stone_town: 3, wall_expand: 4, rebuild: 5 };
 
 /** HL-6: a chapter's page from the ledger — its top `limit` event and era records, and its quoted decisions. */
 export function chapterPageRecords(state: Pick<GameState, "history">, fromTick: number, toTick: number, limit = 8) {

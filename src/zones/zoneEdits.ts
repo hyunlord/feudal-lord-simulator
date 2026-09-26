@@ -100,7 +100,8 @@ function sortedUnion(...lists: readonly (readonly number[])[]): readonly number[
  * a shared cell. Same-kind zones the stroke overlaps or edge-touches merge into the oldest of them,
  * which keeps its id, ordinal and label and gains the stroke.
  */
-function applyPaint(state: GameState, kind: ZoneKind, stroke: ZoneStroke): GameState {
+/** A paint without an undo record (WALL-2: the engine's own conversion of enclosed fields). */
+export function applyPaint(state: GameState, kind: ZoneKind, stroke: ZoneStroke): GameState {
   const assessment = zonePaintAssessment(state, kind, stroke);
   if (!assessment.ok) return state;
   const painted = new Set(assessment.cells);
@@ -136,7 +137,8 @@ function applyPaint(state: GameState, kind: ZoneKind, stroke: ZoneStroke): GameS
 }
 
 /** Z-6: removes the stroke's cells from every zone; a zone left with no cell is deleted. */
-function applyErase(state: GameState, stroke: ZoneStroke): GameState {
+/** An erase without an undo record (WALL-2). */
+export function applyErase(state: GameState, stroke: ZoneStroke): GameState {
   const normalized = normalizeZoneStroke(stroke);
   if (normalized === null) return state;
   const erased = new Set(rasterizeZoneStroke(normalized, state));

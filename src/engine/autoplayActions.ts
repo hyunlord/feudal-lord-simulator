@@ -16,6 +16,8 @@ function assertNever(value: never): never {
 }
 
 function eraGameAction(state: GameState, candidatePath?: PalisadePath): GameAction | null {
+  // WALL-2 (AR-12): with a wall standing, a candidate path widens it.
+  if (state.palisade !== null && candidatePath !== undefined) return { type: "expand_palisade", candidatePath };
   if (state.era === "stone_town") return null;
   if (state.era === "palisade") {
     return canProclaimStoneTownEra(state) ? { type: "confirm_stone_town_proclamation" } : null;

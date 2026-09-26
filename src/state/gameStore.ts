@@ -23,7 +23,7 @@ import { recordDecision } from "../engine/history";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
-import { confirmPalisadeProclamation } from "../engine/palisade";
+import { confirmPalisadeProclamation, expandPalisade } from "../engine/palisade";
 import { setWallConstructionPriority } from "../engine/constructionReserve";
 import { eraseZone, paintZone, removeZone, undoZoneStroke } from "../zones/zoneEdits";
 import { constructionSiteId } from "../economy/construction";
@@ -166,6 +166,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return confirmPalisadeProclamation(state, action.candidatePath);
     case "confirm_stone_town_proclamation":
       return confirmStoneTownProclamation(state);
+    case "expand_palisade":
+      return expandPalisade(state, action.candidatePath);
     case "set_wall_construction_priority":
       return setWallConstructionPriority(state, action.priority);
     case "zone_paint":

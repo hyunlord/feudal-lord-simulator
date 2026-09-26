@@ -1,11 +1,16 @@
 # 현재 상태
 
-갱신: 2026-09-27(PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **WALL-2 목책 확장 선포 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/wall2-expansion/REPORT.md), [확장 명세](design/wall-expansion.md) WX-1~WX-6, 결정 WX1~WX5.
+  - `expand_palisade`: 새 둘레가 옛 성 안을 감싸면, 둘레 위 옛 구간은 그대로 두고 성 안 구간은 헌다(목재 60 % 환급). 새 걸음만 공사한다(비용 = 새 길이). 성문은 그대로다.
+  - 새로 성 안이 된 밭은 경고한 뒤 한 계절 뒤 목초지가 된다. 석벽 도시도 같은 규칙(목책 → 석재 교체)이고, 원장 큰 결정 `wall_expand`, 저장 v17이다.
+  - 봇 AR-12: 지어진 성벽의 집 자리가 모자라면 변 하나를 끌어 넓힌다. 가드레일 5/5, 기준선과 틱까지 같다(넓힐 일이 없었음). DGX 전체 회귀·깨끗한 클론 `477f171` 3,087/3,087.
 
 - **PERSON-0 인물 v0 — 관문 ①②③⑤⑥ 통과, ④ 가드레일 5/5·승리 틱 4/5가 ±15 % 안(seed 4 +19.7 %, 3회차 — 실행 한도 초과), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄, 검증 DGX): [보고서](verification/person0-persons/REPORT.md), [인물 명세](design/persons.md) PS-1~PS-9, 결정 PS1~PS8, 새 기준선 [`seeds/baseline-cbc84d0.json`](../seeds/baseline-cbc84d0.json).
   - 집의 residents가 이름·성·출생연도·역할·계급·직업·초상을 가진 인물이다(저장 v16). 출생·친척·혼인·승계, 계절 사망(자랄 수 있는 집의 교체), 굶어 죽음(예전 감소), 불.
