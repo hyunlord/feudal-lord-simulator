@@ -65,7 +65,7 @@
    "step": "well_done",
    "locksMatch": true,
    "file": "03-well_done.jpg",
-   "atSeconds": 5.7,
+   "atSeconds": 5.8,
    "card": "결과를 먼저 보고 놓기 | 계속",
    "categories": [
     "living:open",
@@ -116,7 +116,7 @@
    "step": "house",
    "locksMatch": true,
    "file": "05-house.jpg",
-   "atSeconds": 9.2,
+   "atSeconds": 9.1,
    "card": "새 길가에 집 짓기 | 0/1 | 집 놓기",
    "categories": [
     "living:open",
@@ -142,7 +142,7 @@
    "step": "arable",
    "locksMatch": true,
    "file": "06-arable.jpg",
-   "atSeconds": 11.3,
+   "atSeconds": 11.2,
    "card": "식량 기반: 경작지 | 0/8 | 경작지 칠하기",
    "categories": [
     "living:open",
@@ -221,7 +221,7 @@
    "step": "granary",
    "locksMatch": true,
    "file": "09-granary.jpg",
-   "atSeconds": 19.6,
+   "atSeconds": 19.7,
    "card": "새 곡창 짓기 | 0/1 | 곡창 놓기",
    "categories": [
     "living:open",
@@ -272,7 +272,7 @@
    "step": "burgage",
    "locksMatch": true,
    "file": "11-burgage.jpg",
-   "atSeconds": 23.2,
+   "atSeconds": 23.3,
    "card": "첫 필지 구역 칠하기 | 0/1 | 필지 칠하기",
    "categories": [
     "living:open",
@@ -298,7 +298,7 @@
    "step": "burgage_done",
    "locksMatch": true,
    "file": "12-burgage_done.jpg",
-   "atSeconds": 25.2,
+   "atSeconds": 25.3,
    "card": "사람들이 채우는 땅 | 알겠습니다",
    "categories": [
     "living:open",
@@ -346,7 +346,7 @@
   }
  ],
  "state": {
-  "tick": 515,
+  "tick": 516,
   "speed": "1배속",
   "sites": [
    "mill@48,42",

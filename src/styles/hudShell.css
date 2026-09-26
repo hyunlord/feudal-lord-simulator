@@ -63,7 +63,7 @@
 .app-shell .ledger-tab { min-height: 44px; padding: 0 10px; font-size: 13px; }
 .app-shell .ledger-tab[aria-selected="true"] { outline: 2px solid var(--palette-gold); outline-offset: -3px; }
 .app-shell .ledger-matrix { width: 100%; border-collapse: collapse; font-size: 13px; }
-.app-shell .ledger-matrix :is(th, td) { padding: 4px 6px; text-align: right; border-bottom: 1px solid var(--palette-parchment-dark); }
+.app-shell .ledger-matrix :is(th, td) { padding: 4px 6px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--palette-parchment-dark); }
 .app-shell .ledger-matrix th[scope="row"] { text-align: left; }
 .app-shell .ledger-store { min-height: 44px; padding: 0 4px; font-size: 12px; }
 .app-shell .ledger-total { font-weight: 700; }

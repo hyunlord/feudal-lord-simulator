@@ -1,7 +1,7 @@
 {
   "base": "http://127.0.0.1:4351/",
   "url": "http://127.0.0.1:4301/",
-  "identical": 2,
+  "identical": 14,
   "of": 14,
   "rows": [
     {
@@ -58,11 +58,11 @@
     },
     {
       "step": "UX-3R2 road click-click: two clicks lay a line, Enter ends the chain",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "UX-3R2 road click-click: two clicks lay a line, Enter ends the chain",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "",
@@ -84,11 +84,11 @@
     },
     {
       "step": "road tool, drag then right click cancels, release",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "road tool, drag then right click cancels, release",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "",
@@ -110,11 +110,11 @@
     },
     {
       "step": "Esc disarms, left drag pans",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "Esc disarms, left drag pans",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "",
@@ -136,11 +136,11 @@
     },
     {
       "step": "middle drag pans",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "middle drag pans",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "",
@@ -162,11 +162,11 @@
     },
     {
       "step": "wheel zoom in and out",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "wheel zoom in and out",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "",
@@ -188,11 +188,11 @@
     },
     {
       "step": "house tool, place",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "house tool, place",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "",
@@ -214,11 +214,11 @@
     },
     {
       "step": "right click the new site cancels it",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "right click the new site cancels it",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "",
@@ -240,11 +240,11 @@
     },
     {
       "step": "Space held + drag pans with the road tool",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "Space held + drag pans with the road tool",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "",
@@ -266,11 +266,11 @@
     },
     {
       "step": "zone brush: paint, radius ], paint",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "zone brush: paint, radius ], paint",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "pasture:53",
@@ -292,11 +292,11 @@
     },
     {
       "step": "zone brush: Z undoes the last stroke, Esc disarms",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "zone brush: Z undoes the last stroke, Esc disarms",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "pasture:28",
@@ -318,21 +318,21 @@
     },
     {
       "step": "keyboard pan (D held)",
-      "identical": false,
+      "identical": true,
       "movedPx": {
-        "base": 357.336,
-        "build": 355.22299999999996,
-        "baseAgain": 376.866
+        "base": 399.71299999999997,
+        "build": 392.44,
+        "baseAgain": 392.03599999999994
       },
       "before": {
         "step": "keyboard pan (D held)",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "pasture:28",
         "zoneUndo": 1,
-        "camera": "213.554,452.670",
+        "camera": "171.177,452.670",
         "zoom": 1.0890000000000002
       },
       "after": {
@@ -343,18 +343,18 @@
         "sites": "",
         "zones": "pasture:28",
         "zoneUndo": 1,
-        "camera": "215.667,452.670",
+        "camera": "178.450,452.670",
         "zoom": 1.0890000000000002
       },
       "previous": "zone brush: Z undoes the last stroke, Esc disarms"
     },
     {
       "step": "map overview press jumps the camera",
-      "identical": false,
+      "identical": true,
       "before": {
         "step": "map overview press jumps the camera",
         "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46 41,48 42,48 43,48 44,48",
-        "roadRevision": 5,
+        "roadRevision": 6,
         "buildings": 8,
         "sites": "",
         "zones": "pasture:28",

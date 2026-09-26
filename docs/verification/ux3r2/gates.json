@@ -1,10 +1,10 @@
 {
- "pass": false,
+ "pass": true,
  "gates": {
   "hudArea": true,
   "tutorial13": true,
   "touchTargets": true,
-  "inputReplay": false,
+  "inputReplay": true,
   "touchReplay": true,
   "gamepad": true,
   "focusReturn": true,
@@ -20,7 +20,7 @@
    22
   ],
   "input": [
-   2,
+   14,
    14
   ],
   "touchReplay": [

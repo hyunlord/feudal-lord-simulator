@@ -1,11 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-26(J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(UX-3R2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UX-3R2 구역 판·칠할 땅·저장소 inspector·장부 행렬·길/목책 클릭-클릭·태블릿 확정 막대 — 관문 ①~⑦ 통과, ⑧ 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·UI·입력·스타일·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [UI 상태 설계](design/UI_STATE_DESIGN.md) US-5~US-8, [보고서](verification/ux3r2/REPORT.md), 결정 US-D9~US-D16.
+  - 구역: 왼쪽 한 판(종류 4 + 붓·다각형·지우개·되돌리기·다시·크기 + 범례), 칠할 땅 세 단계(규칙에서 읽음, 불가는 사선), 우클릭 지우기, 다각형 면적.
+  - 저장소 inspector(용량·받는 품목·품목별 재고와 이번 주·쓰는 곳·위치로), 공사장 첫 줄, 장부 이번 주·버팀·행 강조·열 머리 → inspector.
+  - 길 클릭-클릭(한 번 클릭은 그대로, 사슬은 그 위에), 목책 클릭, 태블릿 = 손가락 위 80px 고스트 + 확정 막대.
+  - 면적 24/24, 튜토리얼 22 = 22, B9 14/14(새 기준), TOUCH 14/14. 받는 품목 끄고 켜기는 엔진 규칙 대기(FC10).
 
 - **J1 사용자 판정 네 가지 — 본선 병합**(Claude Code, 렌더·UI·스크립트·대장·테스트·문서만, 엔진 0줄): [보고서](verification/j1-judgements/REPORT.md).
   - 알약 식량은 창고·곡창 저장분만(새 게임 270일은 곡창 빵 30 ÷ 네 집 한 끼 1개로 맞음, 수레 위 빵은 뺌), 날짜 펼침에 "식량 N일 — 겨울 초까지".
