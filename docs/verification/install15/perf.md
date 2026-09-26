@@ -15,7 +15,9 @@ The DGX was shared with other sessions during these runs. A run is valid only wh
 | pop176 | 12.4 → 12.0 | 97 % | 14.1 → 13.4 | 95 % |
 | **pop176turn (계절 전환)** | **6.1 → 6.7** | **110 %** | **7.1 → 7.5** | **106 %** |
 
-Gate ④: season-turn frame p95 106-110 % of trunk (≤ 120 %), steady 93-105 % (≤ 110 %).
+After merging PERSON-0 (pair 5: trunk 330f05fb against INSTALL-15 177644c, rAF alike on both sides): pop176turn 7.3 -> 7.3 ms p95 (100 %); newgame 7.0 -> 6.4 (91 %), pop176 13.7 -> 13.0 (95 %), lots24 drag 12.2 -> 11.0 (90 %), still 14.4 -> 11.0, dpr2 25.6 -> 24.3.
+
+Gate ④: season-turn frame p95 100-110 % of trunk (≤ 120 %), steady 90-105 % (≤ 110 %).
 
 The turn in detail (`turn-timeline.json` / `turn-timeline-trunk.json`, one 240-frame window each, stage probe on): 46 of 46 visible chunks staged before the turn and used at it; window p95 7.5 against trunk 6.3 ms.
 
@@ -102,3 +104,23 @@ How the turn got here (DGX, same cell): first build 17.9 ms p95 against trunk 6.
 | newgame-1280x800-dpr1-cpu1-still | 4.1 / 5.6 | 5.0 / 6.6 | 118% |
 | pop176-1280x800-dpr1-cpu1-still | 4.0 / 12.3 | 4.9 / 13.4 | 109% |
 | pop176turn-1280x800-dpr1-cpu1-still | — | 5.3 / 7.5 | — |
+
+### trunk-5
+| 칸 | 기준선 중앙 / p95 | 이번 중앙 / p95 | p95 비 |
+|---|---|---|---|
+| lots24-1280x800-dpr1-cpu1-drag | 5.8 / 9.3 | 8.2 / 12.2 | 131% |
+| lots24-1280x800-dpr1-cpu1-still | 5.0 / 9.0 | 8.7 / 14.4 | 160% |
+| lots24-1280x800-dpr2-cpu1-still | 18.3 / 21.0 | 22.4 / 25.6 | 122% |
+| newgame-1280x800-dpr1-cpu1-still | 4.1 / 5.6 | 5.1 / 7.0 | 125% |
+| pop176-1280x800-dpr1-cpu1-still | 4.0 / 12.3 | 5.3 / 13.7 | 111% |
+| pop176turn-1280x800-dpr1-cpu1-still | — | 5.2 / 7.3 | — |
+
+### i15-5
+| 칸 | 기준선 중앙 / p95 | 이번 중앙 / p95 | p95 비 |
+|---|---|---|---|
+| lots24-1280x800-dpr1-cpu1-drag | 5.8 / 9.3 | 7.5 / 11.0 | 118% |
+| lots24-1280x800-dpr1-cpu1-still | 5.0 / 9.0 | 6.7 / 11.0 | 122% |
+| lots24-1280x800-dpr2-cpu1-still | 18.3 / 21.0 | 21.5 / 24.3 | 116% |
+| newgame-1280x800-dpr1-cpu1-still | 4.1 / 5.6 | 4.7 / 6.4 | 114% |
+| pop176-1280x800-dpr1-cpu1-still | 4.0 / 12.3 | 5.1 / 13.0 | 106% |
+| pop176turn-1280x800-dpr1-cpu1-still | — | 5.0 / 7.3 | — |
