@@ -52,7 +52,8 @@
     "markets": 1,
     "baselineMarkets": 2
    }
-  ]
+  ],
+  "run2@e6d61b68": "seed 3 held at 14 lots, L4 14 at 336,000 ticks (new houses at the market cap measured by road reach only: roadless interior sites refused \u2014 fixed in b425d46, B7); seeds 1, 2, 4, 5 at 24 lots and L4 24/24 by 216,000-288,000 when last read"
  },
- "note": "5/5 pass, but seed 3 held at 9 lots with L4 0 from 72,000 to 120,000 ticks (the service planner's market search ran out of budget), and seed 4 stabilised at 350,164 against 219,124. Run 1 was before the diagnosis-layer, house-reach and proof fixes."
+ "note": "Run 1 before the proof fix; run 2 before the roadless-site fix. The final commit b425d46 has no guardrail run (two per task used)."
 }
