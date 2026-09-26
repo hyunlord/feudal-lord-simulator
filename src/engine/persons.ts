@@ -8,8 +8,9 @@
  *   empty house found a household (head and spouse). The old decline rule (a starving house loses a resident) is a
  *   famine death of the frailest or, among the strong, someone leaving. New: on each season's first day a person dies at
  *   the rate of their age (dearer bread weighs it: dearth × 1.5, famine × 3), and a house that burns kills some within.
- *   A household that could grow fills the dead one's place at once (a birth or a relative); in a house that cannot
- *   (no bread or water, burnt, leaving) the death is a resident lost — mortality is the decline there.
+ *   The season's deaths fall in households that can grow, and each fills the dead one's place at once (a birth or a
+ *   relative): mortality turns the town over without changing its size. A house that cannot grow (no bread or water,
+ *   leaving) declines by the old rule, whose losses are the famine deaths above; a fire's dead are residents lost.
  *   A household whose adults are gone passes to its eldest child of 12+, else it breaks up (the children go to kin).
  * - PS-4 offices: the steward (manor household, always), the reeve (a labour household head, chosen each year), a
  *   master for each staffed trade building (the nearest free household head takes the trade), petitioners (2–3
@@ -366,8 +367,11 @@ export function advancePersons(state: GameState): GameState {
     for (const person of [...town.people]) {
       if (person.householdId === MANOR_HOUSEHOLD && !deathDay) continue;
       let cause: DeathCause | null = null;
+      const home = houseById.get(person.householdId);
       if (burnt.has(person.householdId) && rollPermille(state.seed, "fire-death", Number(person.id.slice(2)), state.tick) < FIRE_DEATH_PERMILLE) cause = "fire";
-      else if (deathDay) {
+      // A house that cannot grow already loses its people by the decline rule (famine deaths of the frailest); the
+      // season's deaths are the turnover of houses that can.
+      else if (deathDay && (home === undefined || canRefill(home, state.tick))) {
         // A season is a quarter of the year's rate; the deaths dear bread adds on top are famine deaths.
         const usual = seasonDeathPermille(ageOf(person, year));
         const weighted = seasonDeathPermille(ageOf(person, year), weight);
@@ -377,10 +381,9 @@ export function advancePersons(state: GameState): GameState {
       }
       if (cause === null) continue;
       town.remove(person.id, { died: cause });
-      // A household that could grow (fed, watered, not burnt, not leaving) fills the place at once — a birth or a
-      // relative, as the growth rule would within its interval. Elsewhere the death is a resident lost.
-      const house = houseById.get(person.householdId);
-      if (house !== undefined && !canRefill(house, state.tick)) residents.set(person.householdId, Math.max(0, residents.get(person.householdId)! - 1));
+      // A household that can grow (fed, watered, not burnt, not leaving) fills the place at once — a birth or a
+      // relative, as the growth rule would within its interval. A fire's dead are residents lost.
+      if (home !== undefined && !canRefill(home, state.tick)) residents.set(person.householdId, Math.max(0, residents.get(person.householdId)! - 1));
     }
   }
 
