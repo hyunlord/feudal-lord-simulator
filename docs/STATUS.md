@@ -1,11 +1,18 @@
 # 현재 상태
 
-갱신: 2026-09-26(F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UX-3R 1차 UI 상태 기계·상시 4항목·행동 도크·건설 서랍·배치 색+사선+이유 — 관문 ①~⑥ 통과, ⑦ 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·UI·스타일·스크립트·테스트·문서만, 엔진·state·save·content·zones·population 0줄, 검증 DGX): [UI 상태 설계](design/UI_STATE_DESIGN.md) US-1~US-4, [보고서](verification/ux3r/REPORT.md), 결정 US-D1~US-D8.
+  - 상시 = 상태 알약(날짜·인구·식량 N일·돈)·속도·층위 전환·행동 도크(건설·장부·청지기)·위기 아이콘 ≤3. 상단 자원 막대·하단 명령대·겹쳐보기 막대·상시 미니맵·경고 목록 창 제거(장부 서랍 탭으로).
+  - 상태 기계(`src/ui/uiStateMachine.ts`): 패널 슬롯 1개, Esc 한 단계, 모달 push/pop + 자동 정지(사건·결산 모달은 `push_modal`로 붙이면 된다), H = HUD 숨김.
+  - 배치: 발판 + 1칸 테두리만, 불가 칸 사선 + 이유 그림, 색약 모드, 커서 칩 3줄, 연속 배치, 우물 → 물 겹쳐보기. 도구 선택 전 안내 0.
+  - 면적 18/18 예산 안(1280 평소 5.5 %·서랍 14.3 %·배치 5.1 %·구역 6.4 %·선택 16.2 %·장부 13.9 %), 튜토리얼 13단계 22번(본선 22), B9 13/13, TOUCH-1 전부, 성능 본선과 같음, 클론 `9d355f3` 3,001/3,001.
+  - 다음(렌더): UI-3(결산 카드·계절 띠, 이 규칙 위에), UX-3R2(구역 도구 막대·저장소 inspector·태블릿 확정 막대·길 클릭-클릭).
 
 - **F0-C1 흐름 뼈대 3 — 대기근·첫 청원·연대기·1장 끝: 관문 ①~⑤ 통과, 가드레일 4/5(3회차, seed 3 알려진 정지 FC11), 사용자 지시로 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [1장 명세](design/flow-chapter-one.md) FC-1~FC-7, [보고서](verification/f0c1-famine/REPORT.md), 결정 FC1~FC11.
   - 대기근 = 시대 사건(준비도, 1320 강제): 예고 1312~, 수확 반 2~3번, 값 × 3, 값 충격(가난한 1/4). 대응 4종(구휼·가격 통제·방관·투기)이 장부·사다리·값에 효과.
