@@ -65,7 +65,7 @@ fi
 BUILT_AT=$(now)
 RELEASE="$ROOT/releases/$(date -u +%Y%m%dT%H%M%SZ)-${REMOTE:0:7}"
 cp -a "$REPO/dist" "$RELEASE"
-printf '{\n  "commit": "%s",\n  "builtAt": "%s",\n  "branch": "%s"\n}\n' "$REMOTE" "$BUILT_AT" "$BRANCH" > "$RELEASE/build.json"
+printf '{\n  "commit": "%s",\n  "builtAt": "%s",\n  "branch": "%s",\n  "node": "%s"\n}\n' "$REMOTE" "$BUILT_AT" "$BRANCH" "$(node -v)" > "$RELEASE/build.json"
 # Commit badge (7 hex digits, top-left corner, links to /status): added to the release copy, not to the game code.
 BADGE="<a id=\"fls-play-build\" href=\"/status\" title=\"본선 ${REMOTE:0:7} · 빌드 ${BUILT_AT}\" style=\"position:fixed;left:3px;top:1px;z-index:2147483647;font:10px/1.2 ui-monospace,monospace;color:#f4ecd8;background:rgba(33,24,16,.55);padding:1px 4px;border-radius:3px;text-decoration:none;opacity:.75\">${REMOTE:0:7}</a>"
 sed -i "s|</body>|${BADGE}</body>|" "$RELEASE/index.html"

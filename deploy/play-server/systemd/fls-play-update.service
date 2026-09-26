@@ -4,7 +4,8 @@ Description=Feudal Lord Simulator play server update (PLAY-1): rebuild when the 
 [Service]
 Type=oneshot
 Environment=FLS_PLAY_ROOT=%h/fls-play
-Environment=PATH=/usr/local/bin:/usr/bin:/bin
+# Builds (npm ci, vite) with the same Node 24 as the server, not the system Node 20.
+Environment=PATH=%h/fls-runs/_tools/node/bin:/usr/local/bin:/usr/bin:/bin
 ExecStart=%h/fls-play/bin/update.sh
 TimeoutStartSec=30min
 Nice=10

@@ -33,6 +33,15 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
    - 명령이 `docs/`·`seeds/`·`perf/`·`output/`·`fixtures/` 아래에 만들거나 바꾼 파일은 작업 트리로 온다. `rsync --update`라서 실행 중에 Mac에서 고친 파일은 덮지 않는다. 목록은 `.remote-runs/<run>/changed-files.txt`에 있다.
 5. **정리**: DGX는 최근 실행 폴더 10개만 남긴다(도는 중인 폴더는 지우지 않는다). node_modules 캐시는 최근 4개를 남긴다.
 
+## Node
+- **시스템 Node는 20, 게임은 `_tools`의 24다.**
+  - `/usr/bin/node`(nodesource 20.x)는 DGX의 다른 작업이 쓰므로 그대로 둔다.
+  - 원격 실행과 플레이 서버(서버·빌드)는 `~/fls-runs/_tools/node/bin/node`(Node 24.21.0 LTS)를 쓴다. `_tools/node`는 `node-v24.21.0-linux-arm64`를 가리키는 심볼릭 링크다.
+- 원격 실행은 `PATH` 맨 앞에 `_tools/node/bin`을 넣는다. 실행 로그 첫머리에 `node v24.21.0 (/home/hyunlord/fls-runs/_tools/node/bin/node)`가 찍힌다.
+- node_modules 캐시 키에 Node 버전이 들어가므로, Node를 바꾸면 처음 한 번은 `npm ci`를 한다.
+- 버전을 올릴 때는 `setup-dgx.sh`의 `NODE_VERSION`·`NODE_SHA256`을 고치고 `npm run remote:setup`을 실행한다. 링크를 원자적으로 바꾼다. 그다음 `remote:test`로 확인하고, 플레이 서버를 한 번 재시작한다(docs/PLAY_SERVER.md).
+- 테스트는 Node 22 이상의 전역 `WebSocket`을 쓴다(CDP 클라이언트: Part7 증명, 성장 기록 감시).
+
 ## 자원 제한
 - 모든 실행은 systemd 사용자 스코프 `fls-run-<run>-<시각>`에서 돈다. 스코프마다 `MemoryMax=48G`, `CPUQuota=1200%`(20코어 중 12)이고, `nice -n 10`이다.
 - 스코프는 `fls-runs.slice`에 들어간다. 슬라이스에도 같은 상한이 있어서 **동시 실행을 모두 합쳐도** 48GB·12코어를 넘지 않는다. 사용자의 로컬 추론(llama·ComfyUI 등)이 나머지 8코어·70GB를 쓴다.
@@ -46,7 +55,6 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
   - `/usr/bin/google-chrome`: 같은 Chromium을 가리키는 심볼릭 링크. Linux 기본값으로 Chrome을 찾는 테스트(Part7)를 위해 둔다.
 - `CHROME_PATH`는 설정하지 않는다. 기본 Chrome 경로를 검사하는 CLI 테스트가 Mac과 똑같이 돌게 하기 위해서다. 명시 경로가 필요한 명령은 `CHROME_PATH=$FLS_CHROMIUM_PATH …`를 붙인다(`remote:browser`는 그렇게 한다).
 - 한글 캡처에 쓰는 폰트는 Noto CJK(`fonts-noto-cjk`)다. 이미 설치되어 있다.
-- Node 20에는 전역 `WebSocket`이 없다(Node 22부터 기본). 그래서 원격 실행은 Node 20일 때 `NODE_OPTIONS=--experimental-websocket`을 켠다. CDP 클라이언트(Part7 증명, 성장 기록 감시)가 이것을 쓴다.
 
 ## 성능 기준선
 - 성능 관문(p95 비교)은 **DGX 대 DGX로만** 한다. Mac 수치와 섞지 않는다.
@@ -57,7 +65,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 
 ## DGX 준비(한 번, 다시 해도 됨)
 `npm run remote:setup`은 `scripts/remote/setup-dgx.sh`를 DGX에서 실행한다. sudo 없이 `~/fls-runs`와 `~/.config/systemd/user`만 쓴다.
-- Node 20 확인(PLAY-1과 같은 `/usr/bin/node`).
+- Node 24 LTS를 `~/fls-runs/_tools/node`에 설치한다(버전·SHA256 고정). 시스템 `/usr/bin/node`는 건드리지 않는다.
 - `~/fls-runs/_tools`에 playwright-core와 Chromium, git-lfs 3.8.0을 설치한다.
 - Noto CJK를 확인하고, 헤드리스로 한글을 렌더링해 폭을 확인한다.
 - `fls-runs.slice` 단위를 만들고 bare 미러를 준비한다.
@@ -71,7 +79,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
     .remote/               로그·요약·원자료 → Mac .remote-runs/<run>/
   _cache/repo.git          bare 미러(실행 폴더 git의 객체 저장소)
   _cache/nm-<hash>/        node_modules 캐시
-  _tools/                  playwright-core, chromium-path, bin/git-lfs
+  _tools/                  node -> node-v24.21.0-linux-arm64, playwright-core, chromium-path, bin/git-lfs
   _locks/ _slots/ _ports/  실행·가드레일 슬롯·포트 잠금(flock)
   _clones/                 clone-check 임시 클론(끝나면 지운다)
 ```

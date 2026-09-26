@@ -85,7 +85,9 @@ sort -u .remote-in/in-files.txt > .remote/sent.txt
 comm -23 .remote/present.txt .remote/sent.txt | while IFS= read -r stale; do rm -f -- "$stale"; done
 rm -f .remote/present.txt .remote/sent.txt .remote/changed-files.txt .remote/start-marker
 
-export PATH="$BASE/_tools/bin:$PATH"
+# Node 24 LTS from _tools (setup-dgx.sh); the system /usr/bin/node (20) is not used by runs.
+export PATH="$BASE/_tools/node/bin:$BASE/_tools/bin:$PATH"
+[ -x "$BASE/_tools/node/bin/node" ] || fail "no Node 24 in $BASE/_tools/node (run: npm run remote:setup)"
 
 # 2. Git metadata: the run folder becomes a work tree of $FULL_SHA whose objects live in the shared bare mirror
 #    (alternates, no copy). `git status` then shows exactly the Mac's uncommitted changes.
@@ -179,13 +181,11 @@ export FLS_CHROMIUM_PATH=$(cat "$BASE/_tools/chromium-path" 2>/dev/null)
 export FLS_PLAYWRIGHT_CORE=$BASE/_tools/node_modules/playwright-core/index.mjs
 export PLAYWRIGHT_MODULE=$RUN_DIR/scripts/remote/playwright-chrome-shim.mjs
 unset CHROME_PATH
-# Node 20 has WebSocket only behind a flag (global from Node 22; the Mac runs newer Node). The CDP clients need it.
-case "$(node -v)" in v20.*) export NODE_OPTIONS="${NODE_OPTIONS:+$NODE_OPTIONS }--experimental-websocket" ;; esac
 [ -x "$FLS_CHROMIUM_PATH" ] || echo "== warning: no Chromium (run: npm run remote:setup)"
 [ -e /usr/bin/google-chrome ] || echo "== warning: /usr/bin/google-chrome missing; tests that default to it fail (see docs/REMOTE_RUNS.md)"
 export RUN LABEL SHORT_SHA FULL_SHA DIRTY BRANCH
 export FLS_REMOTE=1 FLS_REMOTE_RUN=$RUN FLS_REMOTE_MIRROR=$MIRROR FLS_REMOTE_COMMIT=$FULL_SHA
-echo "== port $FLS_REMOTE_PORT  chromium ${FLS_CHROMIUM_PATH:-none}  node $(node -v) ${NODE_OPTIONS:-}"
+echo "== port $FLS_REMOTE_PORT  chromium ${FLS_CHROMIUM_PATH:-none}  node $(node -v) ($(command -v node))"
 echo "== command: $CMD"
 echo "== prepare ${PREPARE_S}s (node_modules $NM_CACHE), slot wait ${WAIT_S}s"
 echo

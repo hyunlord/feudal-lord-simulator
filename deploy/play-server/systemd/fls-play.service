@@ -9,7 +9,8 @@ Type=simple
 Environment=FLS_PLAY_ROOT=%h/fls-play
 Environment=FLS_PLAY_HOST=100.70.109.50
 Environment=FLS_PLAY_PORT=4173
-ExecStart=/usr/bin/node %h/fls-play/bin/serve.mjs
+# Node 24 LTS from the remote runner's tools (scripts/remote/setup-dgx.sh); the system /usr/bin/node stays 20.
+ExecStart=%h/fls-runs/_tools/node/bin/node %h/fls-play/bin/serve.mjs
 # The Tailscale address may come up after the user manager: keep retrying.
 Restart=always
 RestartSec=5

@@ -4,7 +4,7 @@
 |---|---|
 | **주소** | <http://100.70.109.50:4173/> (Tailscale 안에서만. 공개 인터넷·LAN에는 열지 않는다) |
 | **상태 페이지** | <http://100.70.109.50:4173/status> (JSON: `/status.json`) |
-| **서버** | DGX Spark `hyunlord@100.70.109.50`(Ubuntu 24.04, arm64, Node 20) |
+| **서버** | DGX Spark `hyunlord@100.70.109.50`(Ubuntu 24.04, arm64). **Node: 시스템 Node는 20, 게임은 `_tools`의 24** — 서버와 빌드 모두 `~/fls-runs/_tools/node/bin/node`(Node 24.21.0 LTS). [원격 실행](REMOTE_RUNS.md#node)의 `setup-dgx.sh`가 설치한다 |
 | **내용** | 본선 `codex/phase15-organic-ground`의 `npm run build` 결과(정적 파일) |
 | **갱신** | 5분마다 본선 머리를 확인한다. 바뀌었으면 빌드해서 바꿔 끼운다. 빌드가 1분 안쪽이라 대개 5~6분 안에 뜬다 |
 | **커밋 표시** | 게임 화면 왼쪽 위 구석의 7자리 해시(누르면 상태 페이지) |
@@ -26,6 +26,11 @@
   - **성공하면:** `dist/`를 `~/fls-play/releases/<시각>-<커밋>/`에 복사하고 커밋 표시·`build.json`을 넣은 뒤, `current`를 원자적으로 바꾼다(`ln -s` 임시 이름 + `mv -T`). 서빙 중인 것 말고 최근 3개를 남긴다.
   - **실패하면:** `current`는 그대로라 이전 빌드가 계속 나간다. 상태가 `failed:npm-ci` 또는 `failed:build`가 되고, 같은 머리는 5분마다 다시 빌드하지 않는다(본선이 움직이거나 `--force`까지).
   - 한 번에 하나만 돈다(`flock`). 성공한 뒤에는 새 커밋의 `update.sh`·`serve.mjs`로 설치 사본을 바꾸고, `serve.mjs`가 바뀌었으면 서버를 재시작한다.
+- **Node:**
+  - `fls-play.service`는 `ExecStart=%h/fls-runs/_tools/node/bin/node …/serve.mjs`로 돈다.
+  - `fls-play-update.service`는 `PATH` 맨 앞에 같은 `_tools/node/bin`을 넣어서 `npm ci`와 빌드도 Node 24로 한다.
+  - `build.json`의 `node` 칸에 빌드한 Node 버전이 남는다.
+  - 시스템 `/usr/bin/node`(20)는 쓰지 않는다.
 - **systemd(사용자 단위):**
   - `fls-play.service`: 서버. 늘 재시작하고, Tailscale 주소가 늦게 올라오면 5초마다 다시 붙는다.
   - `fls-play-update.timer` → `fls-play-update.service`: 켜진 뒤 1분, 부팅 뒤 2분, 이후 확인이 끝날 때마다 5분 뒤에 돈다.
@@ -35,6 +40,7 @@
 ```sh
 ssh hyunlord@100.70.109.50
 git clone -b codex/phase15-organic-ground https://github.com/hyunlord/feudal-lord-simulator ~/fls-play/repo   # 없을 때만
+bash ~/fls-play/repo/scripts/remote/setup-dgx.sh   # Node 24를 ~/fls-runs/_tools/node에(서버·빌드가 쓴다)
 ~/fls-play/repo/deploy/play-server/install.sh
 sudo loginctl enable-linger hyunlord   # 한 번만(재부팅 뒤 자동 시작)
 ```
