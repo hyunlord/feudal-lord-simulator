@@ -1,7 +1,7 @@
 // UI-4 gate 1 (world before UI): the seed 2 chapter 1 run (the bot, as F0-C1/F0-C2 evidence), saving the game state at
 // the first moment of each story beat the screen must show — a house catching fire, the fire out (a burnt house), the
 // wet summer of the dearth rehearsal, the Great Famine arriving (before the answer), the first petition waiting, a
-// household leaving (S12), and the end of chapter 1. The browser captures (scripts/ui4Captures.mjs) open these states.
+// household leaving and one gone (S12), and the end of chapter 1. The browser captures (scripts/ui4Captures.mjs) open these states.
 //   tsx scripts/ui4ChapterStates.ts <seed> <maxTicks> <out-dir>
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -31,6 +31,7 @@ runPhase19NaturalGrowth({ targetLots: 24, maxTicks: Number(maxArg ?? 90_000), se
   if (famine !== null && famine.stage === "arrival" && famine.response === null) save("famine-arrival", state);
   if (openPetitions(state).length > 0) save("petition-open", state);
   if (state.houses.some(house => house.leavingSinceTick !== undefined && house.abandonedTick === undefined)) save("household-leaving", state);
+  if (state.houses.some(house => house.abandonedTick !== undefined && state.tick - house.abandonedTick < 20)) save("household-left", state);
   if (chapterEnd(state) !== null) save("chapter-end", state);
 } });
 writeFileSync(join(out!, "moments.json"), JSON.stringify(Object.fromEntries(found), null, 1) + "\n");

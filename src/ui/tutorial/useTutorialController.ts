@@ -1,3 +1,4 @@
+import { forecastStewardLine } from "../eventStory";
 import { firstWinterWarningActive } from "../../engine/seasonPressure";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GameState } from "../../engine/engine.types";
@@ -238,8 +239,11 @@ export function useTutorialController(input: {
   const [dismissedAdvisor, setDismissedAdvisor] = useState<string | null>(null);
   const advisorKey = stepId === null ? null : ADVISOR_KEY[stepId] ?? null;
   const leanSeason = stepId === null && firstWinterWarningActive(state);
+  // UI-4: a coming fire, dearth or famine (the forecast ladder) is the steward's line once the tutorial is done.
+  const forecast = stepId === null && !leanSeason ? forecastStewardLine(state) : null;
   const advisor = advisorKey !== null && dismissedAdvisor !== stepId ? { text: TUTORIAL_COPY.advisor[advisorKey], key: stepId!, tone: ADVISOR_TONE[advisorKey] }
-    : leanSeason && dismissedAdvisor !== "lean_season" ? { text: TUTORIAL_COPY.leanSeason.steward, key: "lean_season", tone: "concern" as const } : null;
+    : leanSeason && dismissedAdvisor !== "lean_season" ? { text: TUTORIAL_COPY.leanSeason.steward, key: "lean_season", tone: "concern" as const }
+    : forecast !== null && dismissedAdvisor !== forecast.key ? { text: forecast.text, key: forecast.key, tone: "concern" as const } : null;
 
   return {
     enabled, running, access,
@@ -250,7 +254,7 @@ export function useTutorialController(input: {
     pulse, openRequest,
     press,
     lookAt: () => { if (target !== null) emit({ kind: "lookAt", tile: target.focus }); },
-    dismissAdvisor: () => setDismissedAdvisor(stepId ?? (leanSeason ? "lean_season" : null)),
+    dismissAdvisor: () => setDismissedAdvisor(stepId ?? (leanSeason ? "lean_season" : forecast?.key ?? null)),
     startNewGame: (on, fresh) => {
       if (fresh !== null && !isFreshGame(fresh)) return;
       setRecord({ enabled: on, acks: [], pulsed: [], log: [] });

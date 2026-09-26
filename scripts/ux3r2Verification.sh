@@ -5,7 +5,7 @@
 # TOUCH-1 targets (this and base), B9 input replay vs base, TOUCH-1 touch replay, gamepad replay, focus return vs base.
 # Each step runs even when one before it fails; the summary lists the exit codes.
 set -u
-out=docs/verification/ux3r2
+out=${UX3_OUT:-docs/verification/ux3r2}
 mkdir -p "$out/replay" "$out/replay-base" "$out/captures" "$out/ux3r2" "$out/gamepad"
 declare -a results=()
 step() { local name=$1; shift; "$@" > "$out/$name.log" 2>&1; local code=$?; results+=("$name=$code"); echo "$name exit $code"; }

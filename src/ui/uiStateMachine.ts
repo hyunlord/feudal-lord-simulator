@@ -17,7 +17,8 @@ export type UiMode =
   | "ledger" // S-26
   | "population" // pop pill -> household events
   | "goals"; // the goal log drawer
-export type UiModal = "pause_menu" | "event" | "season_ledger";
+/** UI-4: `decision` the famine's answer, `petition` a petition, `chronicle` the chapter's page and its next-chapter preview. */
+export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "petition" | "chronicle" | "chapter_preview";
 export type UiState = Readonly<{ mode: UiMode; modals: readonly { readonly modal: UiModal; readonly under: UiMode }[]; hudHidden: boolean }>;
 export type UiEvent =
   | { readonly type: "open_build" } | { readonly type: "toggle_build" }

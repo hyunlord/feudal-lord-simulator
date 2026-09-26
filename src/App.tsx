@@ -97,6 +97,12 @@ import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
 import { zoneEditHistory } from "./render/zoneEditHistory";
 import type { ZoneKind } from "./zones/zone.types";
 import { createStoreStockHistory, observeStoreStockHistory } from "./ui/storeStockHistory";
+import { EventCards } from "./ui/hud/EventCards";
+import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "./ui/hud/StoryModals";
+import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
+import { famineDecisionView, petitionDecisionView } from "./ui/decisionModels";
+import { chronicleView } from "./ui/chronicleModel";
+import { PresentationToggle } from "./render/PresentationToggle";
 
 /** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
 const ZONE_TOOL_PREFIX = "zone:";
@@ -356,6 +362,17 @@ export function App() {
   const [menuRequest, setMenuRequest] = useState<{ readonly category: BuildCategory; readonly nonce: number } | null>(null);
   useEffect(() => { setMenuRequest(null); }, [tutorial.openRequest]);
   const visibility = hudVisibility(ui, { tutorialRunning: tutorial.running });
+  // UI-4: the town's story beats (fire, wet summer, famine, petition, chapter end): chips after the world, decisions
+  // and the chronicle as modals (useStoryPresentation).
+  const story = useStoryPresentation({ state, nowMs: presentationNowMs, blocked: welcomeVisible, topModal: topModal(ui),
+    pushModal: modal => sendUi({ type: "push_modal", modal }), pause: () => setSpeed(0) });
+  const famineView = topModal(ui) === "decision" ? famineDecisionView(state) : null;
+  const petitionView = topModal(ui) === "petition" ? petitionDecisionView(state) : null;
+  const chronicle = topModal(ui) === "chronicle" ? chronicleView(state) : null;
+  // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
+  useEffect(() => {
+    if ((topModal(ui) === "decision" && famineView === null) || (topModal(ui) === "petition" && petitionView === null) || (topModal(ui) === "chronicle" && chronicle === null)) sendUi({ type: "pop_modal" });
+  }, [ui, famineView === null, petitionView === null, chronicle === null]); // eslint-disable-line react-hooks/exhaustive-deps
   // UX-3R2 zone toolbar: the brush and the polygon paint the last kind chosen (the first open kind before any); the
   // redo list belongs to one painting session (cleared when the zone tool goes down).
   const [lastZoneKind, setLastZoneKind] = useState<ZoneKind | null>(null);
@@ -523,6 +540,8 @@ export function App() {
             extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
         </div>
         {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector} /> : null}
+        {visibility.crisis ? <EventCards beats={story.visible} onDismiss={story.dismiss}
+          onDecide={beat => sendUi({ type: "push_modal", modal: beat.decision === "famine" ? "decision" : "petition" })} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
           <GoalCards tutorial={tutorial} maxActive={1} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
         </aside> : null}
@@ -611,8 +630,16 @@ export function App() {
         onAutoChange={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
         onResume={() => sendUi({ type: "pop_modal" })}
         onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) setMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
+      {famineView === null ? null : <FamineDecisionModal view={famineView} onLater={() => sendUi({ type: "pop_modal" })}
+        onChoose={choice => { dispatch({ type: "famine_response", choice }); sendUi({ type: "pop_modal" }); }} />}
+      {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })}
+        onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
+      {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
+        onNextChapter={() => { sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "chapter_preview" }); }} />}
+      {topModal(ui) === "chapter_preview" ? <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} /> : null}
       {topModal(ui) === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
         settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
+          <PresentationToggle preference="eventPause" /><PresentationToggle preference="rainOverlay" />
           <button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
             onClick={() => { setLedgerAuto(!ledgerAuto); setSeasonLedgerAuto(!ledgerAuto); }}>{ledgerAuto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</button></>} /> : null}
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>

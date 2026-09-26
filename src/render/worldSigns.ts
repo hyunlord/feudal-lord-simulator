@@ -15,6 +15,7 @@ import { visibilityArt } from "./visibilityArtManifest";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { drawWave7 } from "./wave7Art";
 export { drawSeasonalDecals } from "./seasonalDecals"; // one renderer import for the world's ground and signs
+export { drawStoryWorldOverlays } from "./wetSummer"; // UI-4 story overlays (S12 departures, rain)
 
 // World signs (visibility design 3절; F0-V the P0 three, INSTALL-7 the Wave 7 art and the rest): the world says what
 // needs doing before an icon does.

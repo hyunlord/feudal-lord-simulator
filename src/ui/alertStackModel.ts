@@ -113,9 +113,23 @@ function siteEntries(state: GameState): readonly AlertEntry[] {
   });
 }
 
+/** UI-4: a house on fire (immediate) and a household getting ready to leave (caution), as crisis rows. */
+function storyEntries(state: GameState): readonly AlertEntry[] {
+  const at = (id: string) => state.buildings.find(building => building.id === id);
+  const copy = ALERT_STACK_COPY.story;
+  const fires = (state.events?.burning ?? []).flatMap(entry => { const building = at(entry.buildingId); return building === undefined ? [] : [{
+    key: "immediate|story|fire", severity: "immediate" as const, title: copy.fireTitle, cause: copy.fireCause, causeId: null,
+    name: ALERT_STACK_COPY.houseName, targetId: building.id, tile: footprintCentre(building) }]; });
+  const leaving = state.houses.flatMap(house => { const building = house.leavingSinceTick !== undefined && house.abandonedTick === undefined ? at(house.buildingId) : undefined;
+    return building === undefined ? [] : [{ key: "caution|story|leaving", severity: "caution" as const, title: copy.leavingTitle, cause: copy.leavingCause, causeId: null,
+      name: ALERT_STACK_COPY.houseName, targetId: building.id, tile: footprintCentre(building) }]; });
+  return [...fires, ...leaving];
+}
+
 function deriveRows(state: GameState): readonly AlertRow[] {
   const snapshot = buildingCauseSnapshot(state);
   const entries = [
+    ...storyEntries(state),
     ...state.buildings.flatMap((building) => {
       const cause = snapshot.get(building.id);
       const entry = cause === undefined ? null : buildingEntry(building, cause);

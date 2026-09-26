@@ -39,6 +39,14 @@ export function seasonMarks(state: Pick<GameState, "tick" | "buildings">): reado
   return marks.map(mark => ({ ...mark, fraction: yearFraction(mark.tick) })).sort((a, b) => a.tick - b.tick);
 }
 
+/** UI-4: the coming events of the forecast ladder (rumour or sign) within a year, on the strip beside its marks. */
+export type ForecastMark = { readonly kind: "fire" | "dearth"; readonly stage: "rumour" | "sign"; readonly tick: number; readonly fraction: number; readonly famine: boolean };
+export function forecastMarks(entries: readonly { readonly kind: "fire" | "dearth"; readonly stage: string; readonly arrivalTick: number; readonly defId: string }[], now: number): readonly ForecastMark[] {
+  return entries.filter(entry => (entry.stage === "rumour" || entry.stage === "sign") && entry.arrivalTick >= now && entry.arrivalTick - now < YEAR)
+    .map(entry => ({ kind: entry.kind, stage: entry.stage as "rumour" | "sign", tick: entry.arrivalTick, fraction: yearFraction(entry.arrivalTick), famine: entry.defId === "great_famine" }))
+    .sort((a, b) => a.tick - b.tick);
+}
+
 /** Calendar arrival of a tick relative to now: its season, which third of it, and whether it falls in a later year. */
 export function arrivalOf(now: number, tick: number): { readonly season: 0 | 1 | 2 | 3; readonly third: 0 | 1 | 2; readonly nextYear: boolean } {
   const inYear = tick % YEAR;

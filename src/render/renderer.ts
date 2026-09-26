@@ -1,5 +1,4 @@
 import { drawZoneBrushOverlay, type ZoneBrushView } from "./zoneBrushOverlay";
-import { drawRainOverlay, wetSummer } from "./wetSummer";
 import { drawPlacementPrediction } from "./placementPredictionOverlay";
 import { drawCauseMap } from "./causeMapOverlay";
 import type { Walker } from "../agents/walker.types";
@@ -20,10 +19,10 @@ import {
 import type { PlacementFeedback } from "./placementFeedback";
 import { renderDetailLevel } from "./buildingVisualState";
 import { drawOnboardingGuidanceOverlay } from "./onboardingGuidanceOverlay";
+import { setTutorialTargetCanvasPoint, tutorialMapTarget } from "../ui/tutorial/tutorialMapChannel";
 import { objectRenderItemsForFrame } from "./renderObjectFrameCache";
 import { computeVisibleTileRange, visibleTilesInDrawOrder } from "./renderVisibility";
 import type { ViewportSize } from "./renderVisibility";
-import { setTutorialTargetCanvasPoint, tutorialMapTarget } from "../ui/tutorial/tutorialMapChannel";
 import { tileToScreen } from "./iso";
 import { drawSelectedWalkerPath } from "./diagnosticPathOverlay";
 import { drawHighlightedHouses } from "./diagnosticOverlays";
@@ -42,7 +41,7 @@ import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderStageProbe } from "./renderStageProbe";
 import { forgetGoneConstructionSites } from "./constructionMoments";
-import { drawSeasonalDecals, drawWorldSigns } from "./worldSigns";
+import { drawSeasonalDecals, drawStoryWorldOverlays, drawWorldSigns } from "./worldSigns";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -205,12 +204,8 @@ export const renderFrame = (input: RenderFrameInput): void => {
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   if (input.preview.prediction !== undefined) drawPlacementPrediction(input.context, input.state, input.preview.prediction, input.camera.zoom);
   probe?.enter("overlay.cause");
-  // UI-4: a wet summer's rain over the world (screen space, under the map markers and guidance; a setting hides it).
-  if (wetSummer(input.state)) {
-    const transform = typeof input.context.getTransform === "function" ? input.context.getTransform() : null;
-    drawRainOverlay(input.context, input.viewport, transform === null ? 1 : transform.a / input.camera.zoom, input.nowMs ?? 0);
-  }
-  drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
+  // UI-4: the S12 departures and a wet summer's rain over the world, under the cause map and the guidance.
+  drawStoryWorldOverlays(input.context, input.state, input.viewport, input.camera.zoom, input.nowMs ?? 0); drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
   probe?.enter("overlay.onboarding");
   // UX-1: the tutorial step's halo (the goal card's suggested spot) replaces the old per-task map guidance, which had
   // no card of its own any more (UX-0: it pointed at spots off the road).

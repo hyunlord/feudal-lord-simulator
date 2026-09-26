@@ -15,6 +15,11 @@ export const ALERT_STACK_COPY = {
   /** `방앗간 2`. */
   count: (name: string, count: number) => `${name} ${count}`,
   houseName: "주택",
+  /** UI-4 crisis rows (Wave 18 art was not delivered: the Wave 8 bells show them). */
+  story: {
+    fireTitle: "불이 났습니다", fireCause: "초가 지붕이 타고 있습니다 — 맞닿은 집으로 번질 수 있습니다",
+    leavingTitle: "떠날 채비", leavingCause: "먹을 것이 모자라 가구가 떠날 준비를 합니다",
+  },
   mixedName: "건물",
   siteName: "공사",
   resource: {

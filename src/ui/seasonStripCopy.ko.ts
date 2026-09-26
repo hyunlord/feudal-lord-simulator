@@ -13,6 +13,8 @@ export const SEASON_STRIP_COPY = {
   arrival: (season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
     `${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}쯤`,
   row: (kind: string, when: string) => `${kind} — ${when}`,
+  /** UI-4 forecast marks: what is coming and how sure (rumour / sign). */
+  forecast: (kind: "fire" | "dearth", famine: boolean, sign: boolean) => `${kind === "fire" ? "불 위험" : famine ? "대기근" : "흉년"}(${sign ? "징후" : "소문"})`,
   /** Judgement 2026-09-26: the pill's food days, with the calendar point they reach ("식량 270일 — 가을 초까지"). */
   foodUntil: (days: number, season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
     `식량 ${days}일 — ${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}까지`,

@@ -8,6 +8,7 @@ import { drawStockPiles } from "./stockPiles";
 import { drawWave7, drawWave7Overlay, type Wave7Key } from "./wave7Art";
 import { drawWave9, drawWave9Overlay, type Wave9Key } from "./wave9Art";
 import { tileToScreen } from "./iso";
+import { drawStoryProps } from "./storyWorldProps";
 
 // INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (full detail only):
 //  - winter (calendar season 3): snow on the roof of a single-lot house, the Wave 7 layer painted on that level's own
@@ -34,6 +35,7 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
     }
   }
   drawStockPiles(context, state, building);
+  drawStoryProps(context, state, building); // UI-4 petition crowd, S12 leaving family
 }
 
 function drawHouseEventOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
