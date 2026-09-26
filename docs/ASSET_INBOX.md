@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-26 12시 갱신)
+## 3. 현재 장부 요약 (2026-09-26 13시 갱신)
 
 | wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -60,8 +60,8 @@ assets-inbox/
 | `wave13` | 118 |  | 118 |  |  |  |  | 0 |
 | `wave14` | 147 |  | 146 |  | 1 |  |  | 0 |
 | `wave15` | 69 |  | 69 |  |  |  |  | 0 |
-| `wave16` | 49 | 49 |  |  |  |  |  | 0 |
-| `wave17` | 66 | 66 |  |  |  |  |  | 0 |
+| `wave16` | 49 |  | 49 |  |  |  |  | 0 |
+| `wave17` | 64 |  | 64 |  |  |  |  | 0 |
 | `wave2` | 42 | 15 | 27 |  |  |  |  | 27 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
 | `wave4-pilot` | 15 | 3 | 12 |  |  |  |  | 12 |
@@ -77,7 +77,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 0 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 0 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **2610** | **287** | **1415** | **0** | **106** | **786** | **16** | **441** |
+| **합계** | **2608** | **172** | **1528** | **0** | **106** | **786** | **16** | **441** |
 
 ## 4. 찾는 법
 
@@ -178,8 +178,8 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 5b 초상 레이어**: `B/layers/` 12장과 그 확인 그림 `B/checks/` 4장 `rejected`(방식 전환: 레이어 합성 → 완성 초상 풀). `A/` 아이·노인 자유 생성 워커 3장은 원래대로 `rejected`, `reused/held_staff_*` 4장은 재사용 소품으로 `candidate`, `derived-templates/`는 그대로.
 - **초상 풀(`portrait-pool/`)**: 방식 전환 파일럿(`pivot-pilot-20260926`)이 첫 묶음. 완성 초상 P01~P36 36장과 노화 사슬 12장 `confirmed`. 원시 생성본 `provenance/raw`는 넣지 않았다. 1차 풀(`pool1-20260926`) 92장 `confirmed`(12시). 1차 ZIP의 `provenance/approved-pilot` 36장은 파일럿 초상과 같은 바이트라 다시 넣지 않았다.
 - **Wave 15**: 계절 자연 65장 `confirmed`.
-- **Wave 17**: 11:49 도착. 에셋 57장과 확인·기록 그림 전부 판정 전이라 `candidate`.
-- **Wave 16**: 11:21 도착. 에셋 35장과 확인·기록 그림 전부 판정 전이라 `candidate`.
+- **Wave 17**: 57장 `confirmed`(13시 판정). 그중 `animal_walk/ox-v1`·`cart/ox_cart_body-v1`은 Wave 13의 같은 이름 파일과 SHA가 같아 중복으로 보고 `wave17/`에서 빼고 Wave 13 행 비고에 표시했다(inbox에는 55장). `wall/stone_wall_repair_scaffold`는 비고 "설치 시 석벽 v2 옆에서 톤 확인". 확인·기록 그림 9장도 `confirmed`.
+- **Wave 16**: 11:21 도착. 에셋 35장 `confirmed`(13시 판정), 확인 그림 11·기록 그림 3도 `confirmed`(비고에 표시).
 - **Wave 3**: 재작업본 10장 `confirmed`, 해당 v1 10장 `superseded`(→ `wave3/fix-20260926/assets/…`). Wave 3 에셋 82장 확정.
 
 ## 7. 찾지 못한 것
