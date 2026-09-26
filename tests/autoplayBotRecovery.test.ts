@@ -165,7 +165,8 @@ test("B7 seed 3 run 2: the walled town keeps house sites for its last lots, buil
 test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without the advisor hashes as before BOT-1", () => {
   let state = loadAutoplayFixture(SEED3_STALL);
   for (let step = 0; step < 24_000; step += 1) state = advanceTick(state);
-  const { pathCache: _pathCache, ...rest } = state;
+  // F0-C2: the history ledger records the run and never feeds it (spec HL-9), so the pin hashes the state without it.
+  const { pathCache: _pathCache, history: _history, ...rest } = state;
   assert.equal(state.tick, 816_000);
   // Recorded at 46f0a54 (trunk before BOT-1) as 475317b0065127d3 / 8d2d3158…; F0-A changes the rules on purpose
   // (winter meals ×1.2, the failure ladder, seasons and eras in the state, spec FP-*), re-recorded at 2820a00.

@@ -1,0 +1,183 @@
+{
+ "seed": 2,
+ "maxTicks": 90000,
+ "measuredTick": 81500,
+ "lastTick": 90000,
+ "chapterEndTick": 81500,
+ "records": 2806,
+ "byKind": {
+  "era": 2,
+  "milestone": 12,
+  "person": 2580,
+  "decision": 80,
+  "ledger": 117,
+  "event": 15
+ },
+ "bySeverity": {
+  "0": 2719,
+  "1": 77,
+  "2": 7,
+  "3": 3
+ },
+ "byTemplate": {
+  "era.entered": 2,
+  "milestone.first_building": 7,
+  "person.grew": 751,
+  "person.level_up": 106,
+  "decision.bundle": 74,
+  "ledger.season": 81,
+  "ledger.population": 31,
+  "person.water_lost": 4,
+  "person.water": 24,
+  "person.move_in": 23,
+  "person.hungry": 664,
+  "person.fed": 652,
+  "event.rumour": 4,
+  "milestone.lots": 3,
+  "event.sign": 4,
+  "event.arrived": 4,
+  "person.burnt": 3,
+  "decision.rebuild": 3,
+  "person.rebuilt": 3,
+  "event.recovered": 3,
+  "person.leaving": 43,
+  "person.stayed": 33,
+  "person.shrank": 213,
+  "person.level_down": 38,
+  "person.left": 10,
+  "ledger.departures": 5,
+  "person.emptied": 3,
+  "person.resettled": 10,
+  "decision.petition_response": 1,
+  "decision.market_town": 1,
+  "milestone.market_town": 1,
+  "decision.famine_response": 1,
+  "milestone.chapter_end": 1
+ },
+ "decisionKindsSeen": [
+  "build",
+  "road",
+  "zone",
+  "rebuild",
+  "market_town",
+  "famine_response",
+  "petition_response"
+ ],
+ "decisionKindsMissing": [
+  "house",
+  "cancel",
+  "operation",
+  "wall_priority",
+  "stone_town"
+ ],
+ "bigDecisions": [
+  {
+   "id": "h-000141",
+   "tick": 9490,
+   "kind": "rebuild",
+   "chosen": "rebuild",
+   "alternatives": [
+    "leave"
+   ],
+   "predicted": {
+    "population": 76
+   },
+   "actual": {
+    "population": 97
+   }
+  },
+  {
+   "id": "h-000249",
+   "tick": 13210,
+   "kind": "rebuild",
+   "chosen": "rebuild",
+   "alternatives": [
+    "leave"
+   ],
+   "predicted": {
+    "population": 130
+   },
+   "actual": {
+    "population": 171
+   }
+  },
+  {
+   "id": "h-000253",
+   "tick": 13330,
+   "kind": "rebuild",
+   "chosen": "rebuild",
+   "alternatives": [
+    "leave"
+   ],
+   "predicted": {
+    "population": 130
+   },
+   "actual": {
+    "population": 174
+   }
+  },
+  {
+   "id": "h-000934",
+   "tick": 30104,
+   "kind": "petition_response",
+   "chosen": "accept",
+   "alternatives": [
+    "accept_with_price",
+    "refuse"
+   ],
+   "predicted": {
+    "treasury": 378,
+    "merchantGauge": 65
+   },
+   "actual": {
+    "treasury": 501,
+    "merchantGauge": 65
+   }
+  },
+  {
+   "id": "h-002124",
+   "tick": 63591,
+   "kind": "market_town",
+   "chosen": "proclaim",
+   "alternatives": [
+    "wait"
+   ],
+   "predicted": {
+    "population": 473,
+    "lots": 24
+   },
+   "actual": {
+    "population": 473,
+    "lots": 24
+   }
+  },
+  {
+   "id": "h-002305",
+   "tick": 67791,
+   "kind": "famine_response",
+   "chosen": "relief",
+   "alternatives": [
+    "price_control",
+    "laissez_faire",
+    "speculation"
+   ],
+   "predicted": {
+    "population": 473,
+    "treasury": 2642
+   },
+   "actual": {
+    "population": 468,
+    "treasury": 2539
+   }
+  }
+ ],
+ "snapshots": 84,
+ "snapshotBytes": 144272,
+ "saveBytes": {
+  "withLedger": 1969529,
+  "withoutLedger": 1204033,
+  "ledger": 765496
+ },
+ "roundTrip": true,
+ "ledgerShareOfTick": 0.01247796134645079
+}

@@ -27,6 +27,7 @@ import { accrueTollCrossings, settleMoneyPeriod } from "./moneyRules";
 import { advanceSeasons } from "./seasonPressure";
 import { advanceEvents } from "./events";
 import { advancePolitics } from "./politics";
+import { advanceHistory } from "./history";
 import { carterCrossings } from "./tollCrossings";
 import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
@@ -247,7 +248,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
 
 export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
-  return updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
+  // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
+  return advanceHistory(state, updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
     advancePolitics(advanceEvents(advanceSeasons(settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))),
-  ))));
+  )))));
 }
