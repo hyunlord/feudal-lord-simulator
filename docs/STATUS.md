@@ -1,11 +1,16 @@
 # 현재 상태
 
-갱신: 2026-09-27(UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(PERSON-0 · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **PERSON-0 인물 v0 — 관문 ①②③⑤⑥ 통과, ④ 가드레일 5/5·승리 틱 4/5가 ±15 % 안(seed 4 +19.7 %, 3회차 — 실행 한도 초과), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄, 검증 DGX): [보고서](verification/person0-persons/REPORT.md), [인물 명세](design/persons.md) PS-1~PS-9, 결정 PS1~PS8, 새 기준선 [`seeds/baseline-cbc84d0.json`](../seeds/baseline-cbc84d0.json).
+  - 집의 residents가 이름·성·출생연도·역할·계급·직업·초상을 가진 인물이다(저장 v16). 출생·친척·혼인·승계, 계절 사망(자랄 수 있는 집의 교체), 굶어 죽음(예전 감소), 불.
+  - 청지기·reeve(해마다)·시설 책임자·청원자(청원마다 2~3명)가 실제 인물이다. 초상 풀 232장에서 결정론적으로 고르고(정확 99.9 %), 원장의 가구 기록은 가구주, 인물 기록은 본인이 주어다.
+  - 마을 노동 = 14세 이상 인물(예전 인구 × 0.5). API `persons.of/byRole/biography/portrait/name`.
 
 - **UI-4 사건·결정·청원·연대기가 화면에(Wave 9·16, S12) — 관문 ①~⑦ 통과, ⑧ 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·UI·스타일·에셋·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [UI-4 명세](design/events-decisions-chronicle-ui.md) UI4-1~UI4-7, [보고서](verification/ui4/REPORT.md), 결정 UI4-D1~D6.
   - 세계가 먼저, 1.5초 뒤 UI가 뜬다. 불은 지붕 불·연기·물통 → 불탄 집이다. 젖은 여름은 쓰러진·잠긴 이랑·웅덩이·비다. 청원은 예배당 앞 상인 무리, S12는 문 앞 가족 → 가장자리로 걸어 나감이다.
