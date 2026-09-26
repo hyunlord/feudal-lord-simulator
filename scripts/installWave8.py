@@ -72,10 +72,11 @@ def main() -> None:
         prompt = ROOT / "docs/provenance/prompts" / f"{asset_id}-wave8.txt"
         prompt.write_text((record["prompt"] or "(no prompt recorded)").strip() + "\n")
         rows.append({**record, "runtimePath": f"{runtime_dir}/{name}", "runtimeSha256": digest,
-                     "sourcePath": str(source.relative_to(ROOT)), "prompt": str(prompt.relative_to(ROOT)), "usedIn": USED_IN,
+                     "sourcePath": str(source.relative_to(ROOT)), "sourceSha256": digest, "prompt": str(prompt.relative_to(ROOT)), "usedIn": USED_IN,
                      "status": "runtime",
                      "notes": (f"Astra Wave 8 {asset_id} {record['version']} (confirmed in assets-inbox/INBOX_LEDGER.csv) installed "
-                               f"by UI-3 on 2026-09-26 from {batch.relative_to(ROOT)}; received bytes = runtime bytes (no caBX). "
+                               f"by UI-3 on 2026-09-26 from {batch.relative_to(ROOT)}; received bytes = runtime bytes (no caBX); Astra's native "
+                               f"generation source SHA {record['sourceSha256']}. "
                                f"Astra note: {record['notes'][:300]}")})
         installed.add(file)
         width, height = png_size(source)

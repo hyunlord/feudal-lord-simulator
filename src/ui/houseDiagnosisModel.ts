@@ -266,5 +266,5 @@ function housePressureLine(house: House): string | null {
   const status = housePressureStatus(house);
   const cause = housePressureCauseLabel(house);
   if (status === "settled" || cause === null) return null;
-  return status === "leaving" ? HOUSE_PRESSURE_COPY.leaving(cause) : HOUSE_PRESSURE_COPY.abandoned(cause);
+  return status === "leaving" ? cause : HOUSE_PRESSURE_COPY.abandoned;
 }
