@@ -1,0 +1,370 @@
+[
+  {
+    "id": "scene_poor_harvest",
+    "file": "assets/scenes_events/scene_poor_harvest.png",
+    "width": 96,
+    "height": 96,
+    "description": "Two thin bent drooping wheat stems with visibly sparse shriveled ears, one stem sharply bent downward. Broad readable silhouette. No bowl, building, skull, people, crossed-out mark.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset: ONE isolated tiny medieval game HUD icon, centered square composition, real transparent RGBA background, no ground plane, no panel, no labels, no letters or numbers. Style reference input is ONLY palette and P0 painterly treatment, do not copy its subjects: matte handpainted gouache, low-chroma warm ochre/oak/parchment, simple brown outline and strong filled silhouette, upper-left light. England 1300. Must read at 24px after reduction. Keep object broad, compact, 10% clear margins, very few details, no badge frame. Subject: Two thin bent drooping wheat stems with visibly sparse shriveled ears, one stem sharply bent downward. Broad readable silhouette. No bowl, building, skull, people, crossed-out mark.",
+        "rawFile": "raw/scenes_events/scene_poor_harvest-v1.png",
+        "referenceImages": [
+          "raw/scenes_events/reference-resource-sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-bc4e-7ed1-b36e-598cc6c4fb51/exec-fa2942a5-1669-4400-b2af-a8490e3c14a1.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated alpha preserved; alpha > 8 bounding-box crop; Lanczos3 contain 84x84; transparent 6px padding; no painted replacement",
+      "crop": {
+        "left": 302,
+        "top": 263,
+        "width": 665,
+        "height": 710
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "status": "pass_with_context_caveats",
+      "contact": "raw/scenes_events/contact-24-32-48-96.png",
+      "sizesReviewed": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "notes": "Drooping wheat silhouette distinct at 24px; shriveled grain detail needs 48px, do not infer exact event solely from grain size.",
+      "textNumbers": "none visually observed",
+      "dimensions": "96x96 RGBA",
+      "candidateOnly": true
+    },
+    "sha256": "fc8e9db1ecf5a588a7e5cf45a772da79793e49a54c48860c0eadd67c7a9d1a36"
+  },
+  {
+    "id": "scene_great_famine",
+    "file": "assets/scenes_events/scene_great_famine.png",
+    "width": 96,
+    "height": 96,
+    "description": "An open empty timber grain chest with its hinged lid fully raised, dark bare hollow interior and just two emaciated barren wheat ears leaning against its front. Chest dominates silhouette, stark scarcity. No skull, no people, no bowl.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset: ONE isolated tiny medieval game HUD icon, centered square composition, real transparent RGBA background, no ground plane, no panel, no labels, no letters or numbers. Style reference input is ONLY palette and P0 painterly treatment, do not copy its subjects: matte handpainted gouache, low-chroma warm ochre/oak/parchment, simple brown outline and strong filled silhouette, upper-left light. England 1300. Must read at 24px after reduction. Keep object broad, compact, 10% clear margins, very few details, no badge frame. Subject: An open empty timber grain chest with its hinged lid fully raised, dark bare hollow interior and just two emaciated barren wheat ears leaning against its front. Chest dominates silhouette, stark scarcity. No skull, no people, no bowl.",
+        "rawFile": "raw/scenes_events/scene_great_famine-v1.png",
+        "referenceImages": [
+          "raw/scenes_events/reference-resource-sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-bc4e-7ed1-b36e-598cc6c4fb51/exec-22a7a350-2508-4582-9008-6ff240521d1b.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated alpha preserved; alpha > 8 bounding-box crop; Lanczos3 contain 84x84; transparent 6px padding; no painted replacement",
+      "crop": {
+        "left": 187,
+        "top": 132,
+        "width": 958,
+        "height": 995
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "status": "pass_with_context_caveats",
+      "contact": "raw/scenes_events/contact-24-32-48-96.png",
+      "sizesReviewed": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "notes": "Open empty chest distinct from wheat stalk and measuring bowl at 24px; severity relies on event context, no claim of universal famine recognition.",
+      "textNumbers": "none visually observed",
+      "dimensions": "96x96 RGBA",
+      "candidateOnly": true
+    },
+    "sha256": "753c708255ed0c41d96fa492290890546826c6d0c39634d2a4db95e9b9ac8b01"
+  },
+  {
+    "id": "scene_petition",
+    "file": "assets/scenes_events/scene_petition.png",
+    "width": 96,
+    "height": 96,
+    "description": "One raised upright open human hand emerging from plain undyed sleeve, holding at its lower palm edge a small folded plain off-white paper. Open fingers are main silhouette. No seal, no writing, no rolled scroll.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset: ONE isolated tiny medieval game HUD icon, centered square composition, real transparent RGBA background, no ground plane, no panel, no labels, no letters or numbers. Style reference input is ONLY palette and P0 painterly treatment, do not copy its subjects: matte handpainted gouache, low-chroma warm ochre/oak/parchment, simple brown outline and strong filled silhouette, upper-left light. England 1300. Must read at 24px after reduction. Keep object broad, compact, 10% clear margins, very few details, no badge frame. Subject: One raised upright open human hand emerging from plain undyed sleeve, holding at its lower palm edge a small folded plain off-white paper. Open fingers are main silhouette. No seal, no writing, no rolled scroll.",
+        "rawFile": "raw/scenes_events/scene_petition-v1.png",
+        "referenceImages": [
+          "raw/scenes_events/reference-resource-sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-bc4e-7ed1-b36e-598cc6c4fb51/exec-abc7aeaa-d376-4f58-a4bf-fe657ceaed8c.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated alpha preserved; alpha > 8 bounding-box crop; Lanczos3 contain 84x84; transparent 6px padding; no painted replacement",
+      "crop": {
+        "left": 349,
+        "top": 75,
+        "width": 626,
+        "height": 1104
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "status": "pass_with_context_caveats",
+      "contact": "raw/scenes_events/contact-24-32-48-96.png",
+      "sizesReviewed": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "notes": "Raised hand remains clear at 24px; folded paper detail clearer at 32/48.",
+      "textNumbers": "none visually observed",
+      "dimensions": "96x96 RGBA",
+      "candidateOnly": true
+    },
+    "sha256": "db2f41a0c60985172fe6695b5c005ebe665ea16f7329fa552655d99ecf4cdff0"
+  },
+  {
+    "id": "scene_charter",
+    "file": "assets/scenes_events/scene_charter.png",
+    "width": 96,
+    "height": 96,
+    "description": "One open flat thick blank parchment charter with softly irregular corners and a large muted red wax seal hanging on two short dark cords below. Document fills width, seal strongly legible. Absolutely blank: no pseudo letters, no lines, no writing.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset: ONE isolated tiny medieval game HUD icon, centered square composition, real transparent RGBA background, no ground plane, no panel, no labels, no letters or numbers. Style reference input is ONLY palette and P0 painterly treatment, do not copy its subjects: matte handpainted gouache, low-chroma warm ochre/oak/parchment, simple brown outline and strong filled silhouette, upper-left light. England 1300. Must read at 24px after reduction. Keep object broad, compact, 10% clear margins, very few details, no badge frame. Subject: One open flat thick blank parchment charter with softly irregular corners and a large muted red wax seal hanging on two short dark cords below. Document fills width, seal strongly legible. Absolutely blank: no pseudo letters, no lines, no writing.",
+        "rawFile": "raw/scenes_events/scene_charter-v1.png",
+        "referenceImages": [
+          "raw/scenes_events/reference-resource-sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-bc4e-7ed1-b36e-598cc6c4fb51/exec-5532fe88-ac5c-4e5a-b9ef-dc95b65f96e8.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated alpha preserved; alpha > 8 bounding-box crop; Lanczos3 contain 84x84; transparent 6px padding; no painted replacement",
+      "crop": {
+        "left": 38,
+        "top": 74,
+        "width": 1179,
+        "height": 1102
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "status": "pass_with_context_caveats",
+      "contact": "raw/scenes_events/contact-24-32-48-96.png",
+      "sizesReviewed": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "notes": "Broad blank parchment plus dangling red seal distinct at 24px.",
+      "textNumbers": "none visually observed",
+      "dimensions": "96x96 RGBA",
+      "candidateOnly": true
+    },
+    "sha256": "4fe43f3e468f6032ed50b9031a0b88c9e8b413998560d463c1f33cf638622990"
+  },
+  {
+    "id": "scene_market_busy",
+    "file": "assets/scenes_events/scene_market_busy.png",
+    "width": 96,
+    "height": 96,
+    "description": "One compact medieval market stall, broad ochre-and-cream striped cloth awning OPEN above counter piled with three bold differently shaped wares (round loaf, red apples, beige sack), two small customer head-and-shoulder silhouettes in front on the sides. Awning and full counter dominant. No writing, no coins, no modern objects.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset: ONE isolated tiny medieval game HUD icon, centered square composition, real transparent RGBA background, no ground plane, no panel, no labels, no letters or numbers. Style reference input is ONLY palette and P0 painterly treatment, do not copy its subjects: matte handpainted gouache, low-chroma warm ochre/oak/parchment, simple brown outline and strong filled silhouette, upper-left light. England 1300. Must read at 24px after reduction. Keep object broad, compact, 10% clear margins, very few details, no badge frame. Subject: One compact medieval market stall, broad ochre-and-cream striped cloth awning OPEN above counter piled with three bold differently shaped wares (round loaf, red apples, beige sack), two small customer head-and-shoulder silhouettes in front on the sides. Awning and full counter dominant. No writing, no coins, no modern objects.",
+        "rawFile": "raw/scenes_events/scene_market_busy-v1.png",
+        "referenceImages": [
+          "raw/scenes_events/reference-resource-sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-bc4e-7ed1-b36e-598cc6c4fb51/exec-a9f8de5a-9c5a-47b1-986d-b072102ba255.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated alpha preserved; alpha > 8 bounding-box crop; Lanczos3 contain 84x84; transparent 6px padding; no painted replacement",
+      "crop": {
+        "left": 116,
+        "top": 183,
+        "width": 1023,
+        "height": 891
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "status": "pass_with_context_caveats",
+      "contact": "raw/scenes_events/contact-24-32-48-96.png",
+      "sizesReviewed": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "notes": "Broad open awning and full counter distinct from quiet narrow rolled awning at 24px; customers read as silhouettes.",
+      "textNumbers": "none visually observed",
+      "dimensions": "96x96 RGBA",
+      "candidateOnly": true
+    },
+    "sha256": "a45fbfb427a60677624f0e190c5f6a05847f85dffc6c70ae4b757feae9799fd7"
+  },
+  {
+    "id": "scene_market_quiet",
+    "file": "assets/scenes_events/scene_market_quiet.png",
+    "width": 96,
+    "height": 96,
+    "description": "One compact empty closed medieval market stall, same broad ochre cloth awning furled tightly into thin horizontal roll at top, bare dark shuttered oak counter below, no goods and no people. Sparse closed silhouette unlike open full awning. No writing, no modern objects.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset: ONE isolated tiny medieval game HUD icon, centered square composition, real transparent RGBA background, no ground plane, no panel, no labels, no letters or numbers. Style reference input is ONLY palette and P0 painterly treatment, do not copy its subjects: matte handpainted gouache, low-chroma warm ochre/oak/parchment, simple brown outline and strong filled silhouette, upper-left light. England 1300. Must read at 24px after reduction. Keep object broad, compact, 10% clear margins, very few details, no badge frame. Subject: One compact empty closed medieval market stall, same broad ochre cloth awning furled tightly into thin horizontal roll at top, bare dark shuttered oak counter below, no goods and no people. Sparse closed silhouette unlike open full awning. No writing, no modern objects.",
+        "rawFile": "raw/scenes_events/scene_market_quiet-v1.png",
+        "referenceImages": [
+          "raw/scenes_events/reference-resource-sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-bc4e-7ed1-b36e-598cc6c4fb51/exec-6e4380cc-dfa8-4465-bc61-ccb85319fa70.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated alpha preserved; alpha > 8 bounding-box crop; Lanczos3 contain 84x84; transparent 6px padding; no painted replacement",
+      "crop": {
+        "left": 207,
+        "top": 237,
+        "width": 840,
+        "height": 763
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "status": "pass_with_context_caveats",
+      "contact": "raw/scenes_events/contact-24-32-48-96.png",
+      "sizesReviewed": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "notes": "Rolled awning, open gap and shuttered counter distinct from busy awning at 24px.",
+      "textNumbers": "none visually observed",
+      "dimensions": "96x96 RGBA",
+      "candidateOnly": true
+    },
+    "sha256": "9c3483094a1b765e11c5a733ce154e85750ef90f0f52c8d803da5f826fd12fb4"
+  },
+  {
+    "id": "scene_winter_survived",
+    "file": "assets/scenes_events/scene_winter_survived.png",
+    "width": 96,
+    "height": 96,
+    "description": "One strong fresh muted green seedling with two broad leaves pushing upward through a low flat broken patch of melting ivory snow. Green living shoot dominates vertical silhouette, snow low wide at its base. No pot, no bowl, no sun, no snowflake.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset: ONE isolated tiny medieval game HUD icon, centered square composition, real transparent RGBA background, no ground plane, no panel, no labels, no letters or numbers. Style reference input is ONLY palette and P0 painterly treatment, do not copy its subjects: matte handpainted gouache, low-chroma warm ochre/oak/parchment, simple brown outline and strong filled silhouette, upper-left light. England 1300. Must read at 24px after reduction. Keep object broad, compact, 10% clear margins, very few details, no badge frame. Subject: One strong fresh muted green seedling with two broad leaves pushing upward through a low flat broken patch of melting ivory snow. Green living shoot dominates vertical silhouette, snow low wide at its base. No pot, no bowl, no sun, no snowflake.",
+        "rawFile": "raw/scenes_events/scene_winter_survived-v1.png",
+        "referenceImages": [
+          "raw/scenes_events/reference-resource-sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-bc4e-7ed1-b36e-598cc6c4fb51/exec-c465571d-aaea-4c97-8665-9fe52380eac0.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated alpha preserved; alpha > 8 bounding-box crop; Lanczos3 contain 84x84; transparent 6px padding; no painted replacement",
+      "crop": {
+        "left": 192,
+        "top": 255,
+        "width": 871,
+        "height": 781
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "status": "pass_with_context_caveats",
+      "contact": "raw/scenes_events/contact-24-32-48-96.png",
+      "sizesReviewed": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "notes": "Green seedling over white snow clear at 24px; winter survived versus spring context remains contextual.",
+      "textNumbers": "none visually observed",
+      "dimensions": "96x96 RGBA",
+      "candidateOnly": true
+    },
+    "sha256": "3a86e05fc1a227c14571fd8af6a528ed39484aa6431ba5564361e01e2630073c"
+  },
+  {
+    "id": "scene_hungry_gap",
+    "file": "assets/scenes_events/scene_hungry_gap.png",
+    "width": 96,
+    "height": 96,
+    "description": "One broad shallow wooden grain measuring bowl almost empty, three large isolated pale grain kernels visible in its dark interior, one very small spring sprout just outside its right rim. Bowl is main silhouette, hunger during spring gap. No wheat ears, no bread, no chest, no people.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset: ONE isolated tiny medieval game HUD icon, centered square composition, real transparent RGBA background, no ground plane, no panel, no labels, no letters or numbers. Style reference input is ONLY palette and P0 painterly treatment, do not copy its subjects: matte handpainted gouache, low-chroma warm ochre/oak/parchment, simple brown outline and strong filled silhouette, upper-left light. England 1300. Must read at 24px after reduction. Keep object broad, compact, 10% clear margins, very few details, no badge frame. Subject: One broad shallow wooden grain measuring bowl almost empty, three large isolated pale grain kernels visible in its dark interior, one very small spring sprout just outside its right rim. Bowl is main silhouette, hunger during spring gap. No wheat ears, no bread, no chest, no people.",
+        "rawFile": "raw/scenes_events/scene_hungry_gap-v1.png",
+        "referenceImages": [
+          "raw/scenes_events/reference-resource-sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": "not provided",
+        "seed": "not provided",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddcf-bc4e-7ed1-b36e-598cc6c4fb51/exec-00685e20-e71d-4af5-821d-d29d5a264e07.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated alpha preserved; alpha > 8 bounding-box crop; Lanczos3 contain 84x84; transparent 6px padding; no painted replacement",
+      "crop": {
+        "left": 137,
+        "top": 296,
+        "width": 1002,
+        "height": 686
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "status": "pass_with_context_caveats",
+      "contact": "raw/scenes_events/contact-24-32-48-96.png",
+      "sizesReviewed": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "notes": "Shallow bowl distinct at 24px from chest and stalk. Three remaining kernels clear at 48px; tiny spring sprout weak at 24px.",
+      "textNumbers": "none visually observed",
+      "dimensions": "96x96 RGBA",
+      "candidateOnly": true
+    },
+    "sha256": "bea8b739ab4e59529bf5e72a56c71271f94d96231ea486f0747c1280c79f3bdc"
+  }
+]

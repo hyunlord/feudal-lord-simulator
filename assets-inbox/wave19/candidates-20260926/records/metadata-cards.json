@@ -1,0 +1,313 @@
+[
+  {
+    "id": "frame_record_decision",
+    "file": "assets/cards/frame_record_decision.png",
+    "width": 320,
+    "height": 160,
+    "description": "a recessed empty circular seal socket at upper left corner; two short muted burgundy ribbon tails contained in left margin. Blank socket, no heraldic emblem",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE medieval game record-card FRAME raster candidate, no sheet. Reference images establish only handpainted UI tone. Final target320x160 horizontal 2:1. Render frame straight-on perfectly rectangular, centered with tiny transparent outside gutter. Opaque warm pale parchment blank content surface. C direction 80% practical 20% ornament. Match fine brown outlines, low chroma warm ochre cream, subtle matte handpainted gouache grain of attached project references. Frame outer artwork ratio2:1. Intended 9-slice: ALL identity motif stays within corner or edge strips; blank quiet inner rectangular center occupying at least75% area, straight edges stretchable. No letters, no numbers, no readable writing, no icon in content, no people, no scenery, no drop shadow, no photoreal tabletop, no extra objects. Genuine transparent RGBA OUTSIDE frame; opaque parchment INSIDE. Unique edge identity: a recessed empty circular seal socket at upper left corner; two short muted burgundy ribbon tails contained in left margin. Blank socket, no heraldic emblem",
+        "rawFile": "raw/cards/frame_record_decision-v1.png",
+        "referenceImages": [
+          "references/frame_chronicle_page.png",
+          "references/frame_season_ledger.png",
+          "references/frame_person_card-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddce-936e-71d1-901d-3a61d1aec8de/exec-3826b33a-d134-466b-a1e0-3e69fe6c27c3.png"
+      }
+    ],
+    "processing": "Generated artwork resized to exact 320x160 using Sharp fill, alpha preserved. No procedural replacement of artwork. Expanded QA uses nine extracted slices.",
+    "nineSlice": {
+      "insets": {
+        "left": 50,
+        "top": 90,
+        "right": 32,
+        "bottom": 55
+      },
+      "minimumSize": {
+        "width": 320,
+        "height": 160
+      },
+      "testedExpandedSize": {
+        "width": 640,
+        "height": 240
+      },
+      "cornerDifferentBytes": 0,
+      "center": "Opaque blank parchment; stretch center and straight edge strips, keep all four corners fixed."
+    },
+    "qa": {
+      "dimensionsPass": true,
+      "rgbaPass": true,
+      "transparentOutsidePass": true,
+      "noTextVisualPass": true,
+      "edgeIdentityPass": true,
+      "sha256": "d59f433997f953e8f11afb2fb90e1b92f969ab2f044154d0bc5c4b3f180d0b0a",
+      "note": "Six identities judged without names at native 320x160. Seal has ribbon; portrait recess is larger and ribbonless. Era wood and milestone gold remain distinct in grayscale by border thickness."
+    }
+  },
+  {
+    "id": "frame_record_event",
+    "file": "assets/cards/frame_record_event.png",
+    "width": 320,
+    "height": 160,
+    "description": "a broad asymmetrical folded RUST RED parchment corner at upper right, visibly triangular silhouette, with two restrained stitch marks. The other edges thin brown",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE medieval game record-card FRAME raster candidate, no sheet. Reference images establish only handpainted UI tone. Final target320x160 horizontal 2:1. Render frame straight-on perfectly rectangular, centered with tiny transparent outside gutter. Opaque warm pale parchment blank content surface. C direction 80% practical 20% ornament. Match fine brown outlines, low chroma warm ochre cream, subtle matte handpainted gouache grain of attached project references. Frame outer artwork ratio2:1. Intended 9-slice: ALL identity motif stays within corner or edge strips; blank quiet inner rectangular center occupying at least75% area, straight edges stretchable. No letters, no numbers, no readable writing, no icon in content, no people, no scenery, no drop shadow, no photoreal tabletop, no extra objects. Genuine transparent RGBA OUTSIDE frame; opaque parchment INSIDE. Unique edge identity: a broad asymmetrical folded RUST RED parchment corner at upper right, visibly triangular silhouette, with two restrained stitch marks. The other edges thin brown",
+        "rawFile": "raw/cards/frame_record_event-v1.png",
+        "referenceImages": [
+          "references/frame_chronicle_page.png",
+          "references/frame_season_ledger.png",
+          "references/frame_person_card-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddce-936e-71d1-901d-3a61d1aec8de/exec-08285bd7-7b12-402e-850c-a1163ea6b0a6.png"
+      }
+    ],
+    "processing": "Generated artwork resized to exact 320x160 using Sharp fill, alpha preserved. No procedural replacement of artwork. Expanded QA uses nine extracted slices.",
+    "nineSlice": {
+      "insets": {
+        "left": 28,
+        "top": 64,
+        "right": 64,
+        "bottom": 44
+      },
+      "minimumSize": {
+        "width": 320,
+        "height": 160
+      },
+      "testedExpandedSize": {
+        "width": 640,
+        "height": 240
+      },
+      "cornerDifferentBytes": 0,
+      "center": "Opaque blank parchment; stretch center and straight edge strips, keep all four corners fixed."
+    },
+    "qa": {
+      "dimensionsPass": true,
+      "rgbaPass": true,
+      "transparentOutsidePass": true,
+      "noTextVisualPass": true,
+      "edgeIdentityPass": true,
+      "sha256": "185f1600d9caded48473008ee597198c7a97961dcbef96938aa29b6a85e5a93c",
+      "note": "Six identities judged without names at native 320x160. Seal has ribbon; portrait recess is larger and ribbonless. Era wood and milestone gold remain distinct in grayscale by border thickness."
+    }
+  },
+  {
+    "id": "frame_record_era",
+    "file": "assets/cards/frame_record_era.png",
+    "width": 320,
+    "height": 160,
+    "description": "a visibly THICK dark weathered OAK plank border on all four sides, plain square pegged timber joints; no gold frame, no seal",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE medieval game record-card FRAME raster candidate, no sheet. Reference images establish only handpainted UI tone. Final target320x160 horizontal 2:1. Render frame straight-on perfectly rectangular, centered with tiny transparent outside gutter. Opaque warm pale parchment blank content surface. C direction 80% practical 20% ornament. Match fine brown outlines, low chroma warm ochre cream, subtle matte handpainted gouache grain of attached project references. Frame outer artwork ratio2:1. Intended 9-slice: ALL identity motif stays within corner or edge strips; blank quiet inner rectangular center occupying at least75% area, straight edges stretchable. No letters, no numbers, no readable writing, no icon in content, no people, no scenery, no drop shadow, no photoreal tabletop, no extra objects. Genuine transparent RGBA OUTSIDE frame; opaque parchment INSIDE. Unique edge identity: a visibly THICK dark weathered OAK plank border on all four sides, plain square pegged timber joints; no gold frame, no seal",
+        "rawFile": "raw/cards/frame_record_era-v1.png",
+        "referenceImages": [
+          "references/frame_chronicle_page.png",
+          "references/frame_season_ledger.png",
+          "references/frame_person_card-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddce-936e-71d1-901d-3a61d1aec8de/exec-aae34080-bcd7-42fb-8d5f-6b6d16c61368.png"
+      }
+    ],
+    "processing": "Generated artwork resized to exact 320x160 using Sharp fill, alpha preserved. No procedural replacement of artwork. Expanded QA uses nine extracted slices.",
+    "nineSlice": {
+      "insets": {
+        "left": 30,
+        "top": 38,
+        "right": 30,
+        "bottom": 30
+      },
+      "minimumSize": {
+        "width": 320,
+        "height": 160
+      },
+      "testedExpandedSize": {
+        "width": 640,
+        "height": 240
+      },
+      "cornerDifferentBytes": 0,
+      "center": "Opaque blank parchment; stretch center and straight edge strips, keep all four corners fixed."
+    },
+    "qa": {
+      "dimensionsPass": true,
+      "rgbaPass": true,
+      "transparentOutsidePass": true,
+      "noTextVisualPass": true,
+      "edgeIdentityPass": true,
+      "sha256": "e368ef61480dc47cd01c9439e8c31f5f6a218945dcfbc44fad626090eef139e9",
+      "note": "Six identities judged without names at native 320x160. Seal has ribbon; portrait recess is larger and ribbonless. Era wood and milestone gold remain distinct in grayscale by border thickness."
+    }
+  },
+  {
+    "id": "frame_record_milestone",
+    "file": "assets/cards/frame_record_milestone.png",
+    "width": 320,
+    "height": 160,
+    "description": "two thin muted GOLD rules parallel around perimeter with modest four angular gold corner brackets. No wood plank, no red corner, no roundel",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE medieval game record-card FRAME raster candidate, no sheet. Reference images establish only handpainted UI tone. Final target320x160 horizontal 2:1. Render frame straight-on perfectly rectangular, centered with tiny transparent outside gutter. Opaque warm pale parchment blank content surface. C direction 80% practical 20% ornament. Match fine brown outlines, low chroma warm ochre cream, subtle matte handpainted gouache grain of attached project references. Frame outer artwork ratio2:1. Intended 9-slice: ALL identity motif stays within corner or edge strips; blank quiet inner rectangular center occupying at least75% area, straight edges stretchable. No letters, no numbers, no readable writing, no icon in content, no people, no scenery, no drop shadow, no photoreal tabletop, no extra objects. Genuine transparent RGBA OUTSIDE frame; opaque parchment INSIDE. Unique edge identity: two thin muted GOLD rules parallel around perimeter with modest four angular gold corner brackets. No wood plank, no red corner, no roundel",
+        "rawFile": "raw/cards/frame_record_milestone-v1.png",
+        "referenceImages": [
+          "references/frame_chronicle_page.png",
+          "references/frame_season_ledger.png",
+          "references/frame_person_card-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddce-936e-71d1-901d-3a61d1aec8de/exec-6cb8ba8b-6fc8-4ec5-837c-26b0e442095c.png"
+      }
+    ],
+    "processing": "Generated artwork resized to exact 320x160 using Sharp fill, alpha preserved. No procedural replacement of artwork. Expanded QA uses nine extracted slices.",
+    "nineSlice": {
+      "insets": {
+        "left": 30,
+        "top": 30,
+        "right": 30,
+        "bottom": 30
+      },
+      "minimumSize": {
+        "width": 320,
+        "height": 160
+      },
+      "testedExpandedSize": {
+        "width": 640,
+        "height": 240
+      },
+      "cornerDifferentBytes": 0,
+      "center": "Opaque blank parchment; stretch center and straight edge strips, keep all four corners fixed."
+    },
+    "qa": {
+      "dimensionsPass": true,
+      "rgbaPass": true,
+      "transparentOutsidePass": true,
+      "noTextVisualPass": true,
+      "edgeIdentityPass": true,
+      "sha256": "3f234d8eaf6068bd3ada6c2396773e582742c44b936f6d0724c86b5d10b2327c",
+      "note": "Six identities judged without names at native 320x160. Seal has ribbon; portrait recess is larger and ribbonless. Era wood and milestone gold remain distinct in grayscale by border thickness."
+    }
+  },
+  {
+    "id": "frame_record_person",
+    "file": "assets/cards/frame_record_person.png",
+    "width": 320,
+    "height": 160,
+    "description": "a large empty circular portrait recess embedded in left edge near upper corner, visibly breaks inner border into arc, fine brown surround and warm cream blank center. Not seal wax, no ribbons",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE medieval game record-card FRAME raster candidate, no sheet. Reference images establish only handpainted UI tone. Final target320x160 horizontal 2:1. Render frame straight-on perfectly rectangular, centered with tiny transparent outside gutter. Opaque warm pale parchment blank content surface. C direction 80% practical 20% ornament. Match fine brown outlines, low chroma warm ochre cream, subtle matte handpainted gouache grain of attached project references. Frame outer artwork ratio2:1. Intended 9-slice: ALL identity motif stays within corner or edge strips; blank quiet inner rectangular center occupying at least75% area, straight edges stretchable. No letters, no numbers, no readable writing, no icon in content, no people, no scenery, no drop shadow, no photoreal tabletop, no extra objects. Genuine transparent RGBA OUTSIDE frame; opaque parchment INSIDE. Unique edge identity: a large empty circular portrait recess embedded in left edge near upper corner, visibly breaks inner border into arc, fine brown surround and warm cream blank center. Not seal wax, no ribbons",
+        "rawFile": "raw/cards/frame_record_person-v1.png",
+        "referenceImages": [
+          "references/frame_chronicle_page.png",
+          "references/frame_season_ledger.png",
+          "references/frame_person_card-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddce-936e-71d1-901d-3a61d1aec8de/exec-dfd315e6-2e59-491e-81b5-4d86ed5843d2.png"
+      },
+      {
+        "prompt": "Targeted edit of this ONE record person frame. Preserve exact 320x160 composition, opaque pale parchment and transparent exterior, rectangular frame, large empty circular portrait recess upper-left, fine brown/gold edge, same handpainted P0 tone. Shorten the leafy ornament on LEFT EDGE drastically: ALL foliage must stay in upper-left corner ABOVE y90 of160, curling beside the circle only. Below y96 the left border must be a completely straight plain vertical brown rule down to small bottomcorner. Keep full blank center. No other changes. No text numbers faces heraldry or extraobjects. 9slice target insets left90 top96 right28 bottom32 so central strip y96..128 must be quiet parchment with straight unadorned borders. Genuine transparent RGBA exterior.",
+        "rawFile": "raw/cards/frame_record_person-v2.png",
+        "referenceImages": [
+          "raw/cards/frame_record_person-edit-input-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddce-936e-71d1-901d-3a61d1aec8de/exec-c4af06b3-fb0e-4c24-933e-10e88f7f50e5.png"
+      }
+    ],
+    "processing": "Generated artwork resized to exact 320x160 using Sharp fill, alpha preserved. No procedural replacement of artwork. Expanded QA uses nine extracted slices.",
+    "nineSlice": {
+      "insets": {
+        "left": 90,
+        "top": 96,
+        "right": 28,
+        "bottom": 32
+      },
+      "minimumSize": {
+        "width": 320,
+        "height": 160
+      },
+      "testedExpandedSize": {
+        "width": 640,
+        "height": 240
+      },
+      "cornerDifferentBytes": 0,
+      "center": "Opaque blank parchment; stretch center and straight edge strips, keep all four corners fixed."
+    },
+    "qa": {
+      "dimensionsPass": true,
+      "rgbaPass": true,
+      "transparentOutsidePass": true,
+      "noTextVisualPass": true,
+      "edgeIdentityPass": true,
+      "sha256": "36e650711b939ffc84033a5e4ceeebaeb19ea2c4f2936543edad298ec27987f2",
+      "note": "Six identities judged without names at native 320x160. Seal has ribbon; portrait recess is larger and ribbonless. Era wood and milestone gold remain distinct in grayscale by border thickness. Person v2 shortens left foliage above center stretch band. Center stretch band32px; native320x160 and640x240 reviewed."
+    }
+  },
+  {
+    "id": "frame_record_ledger",
+    "file": "assets/cards/frame_record_ledger.png",
+    "width": 320,
+    "height": 160,
+    "description": "ledger marginal ruling confined to LEFT BORDER: three vertical thin brown parallel lines and six short horizontal tick rules, a folded parchment lower right corner. No text and no long ruled writing lines across center",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE medieval game record-card FRAME raster candidate, no sheet. Reference images establish only handpainted UI tone. Final target320x160 horizontal 2:1. Render frame straight-on perfectly rectangular, centered with tiny transparent outside gutter. Opaque warm pale parchment blank content surface. C direction 80% practical 20% ornament. Match fine brown outlines, low chroma warm ochre cream, subtle matte handpainted gouache grain of attached project references. Frame outer artwork ratio2:1. Intended 9-slice: ALL identity motif stays within corner or edge strips; blank quiet inner rectangular center occupying at least75% area, straight edges stretchable. No letters, no numbers, no readable writing, no icon in content, no people, no scenery, no drop shadow, no photoreal tabletop, no extra objects. Genuine transparent RGBA OUTSIDE frame; opaque parchment INSIDE. Unique edge identity: ledger marginal ruling confined to LEFT BORDER: three vertical thin brown parallel lines and six short horizontal tick rules, a folded parchment lower right corner. No text and no long ruled writing lines across center",
+        "rawFile": "raw/cards/frame_record_ledger-v1.png",
+        "referenceImages": [
+          "references/frame_chronicle_page.png",
+          "references/frame_season_ledger.png",
+          "references/frame_person_card-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ddce-936e-71d1-901d-3a61d1aec8de/exec-4eac4b91-c403-4c61-b093-10e7e6221975.png"
+      }
+    ],
+    "processing": "Generated artwork resized to exact 320x160 using Sharp fill, alpha preserved. No procedural replacement of artwork. Expanded QA uses nine extracted slices.",
+    "nineSlice": {
+      "insets": {
+        "left": 32,
+        "top": 30,
+        "right": 40,
+        "bottom": 40
+      },
+      "minimumSize": {
+        "width": 320,
+        "height": 160
+      },
+      "testedExpandedSize": {
+        "width": 640,
+        "height": 240
+      },
+      "cornerDifferentBytes": 0,
+      "center": "Opaque blank parchment; stretch center and straight edge strips, keep all four corners fixed."
+    },
+    "qa": {
+      "dimensionsPass": true,
+      "rgbaPass": true,
+      "transparentOutsidePass": true,
+      "noTextVisualPass": true,
+      "edgeIdentityPass": true,
+      "sha256": "47572a471c04113827578a028bc2d46961082f3e0469d0afe0d57a681a9826a9",
+      "note": "Six identities judged without names at native 320x160. Seal has ribbon; portrait recess is larger and ribbonless. Era wood and milestone gold remain distinct in grayscale by border thickness."
+    }
+  }
+]

@@ -62,6 +62,7 @@ assets-inbox/
 | `wave15` | 69 |  | 69 |  |  |  |  | 0 |
 | `wave16` | 49 |  | 49 |  |  |  |  | 0 |
 | `wave17` | 64 |  | 64 |  |  |  |  | 0 |
+| `wave19` | 57 | 57 |  |  |  |  |  | 0 |
 | `wave2` | 42 | 15 | 27 |  |  |  |  | 27 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
 | `wave4-pilot` | 15 | 3 | 12 |  |  |  |  | 12 |
@@ -77,7 +78,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 0 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 0 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **2608** | **172** | **1528** | **0** | **106** | **786** | **16** | **441** |
+| **합계** | **2665** | **229** | **1528** | **0** | **106** | **786** | **16** | **441** |
 
 ## 4. 찾는 법
 
@@ -160,6 +161,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `output/astra-wave16-candidates-v1/` (작업 폴더) | `wave16/candidates-v1` | — | — | 0 | — | 〃 |
 | `/tmp/astra-portrait-pool1-candidates-20260926.zip` (11:57) | `portrait-pool/pool1-20260926` | 236,415 KB | `854e28b69fc28751…` | 210 | 37(승인된 파일럿 초상 사본 36 등) | `raw/`·`references/` 제외 |
 | `/tmp/astra-wave17-candidates-20260926.zip` (11:49) | `wave17/candidates-20260926` | 37,001 KB | `40c4963d35feb765…` | 157 | 0 | `raw/`·`references/` 제외 |
+| `/tmp/astra-wave19-candidates-20260926.zip` (22:18, UI-4b가 받음 2026-09-27) | `wave19/candidates-20260926` | 67,936 KB | `67a53685d4ad8ee4…` | 86 | 0 | `raw/`(60MB)·`references/`·`scripts/` 제외 |
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 

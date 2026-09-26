@@ -1,0 +1,19 @@
+{
+  "coordinates": "Native 640x800; approximate safe content regions inside generated recesses. Runtime must position inserts relative to 9-slice fixed corner offsets when expanded.",
+  "frame_biography": {
+    "portraitCircle": {"cx":163,"cy":216,"radius":99},
+    "heraldrySafeBox": {"x":59,"y":367,"width":74,"height":91},
+    "merchantMarkCircle": {"cx":232,"cy":416,"radius":45},
+    "lifeChronologySafeBox": {"x":337,"y":75,"width":259,"height":445},
+    "relationshipSafeBoxes": [{"x":43,"y":568,"width":552,"height":65},{"x":43,"y":667,"width":552,"height":83}]
+  },
+  "frame_faction_page": {
+    "portraitCircle": {"cx":143,"cy":171,"radius":78},
+    "heraldrySafeBox": {"x":488,"y":100,"width":81,"height":90},
+    "relationScaleSafeBox": {"x":81,"y":303,"width":478,"height":23},
+    "demandsSafeBox": {"x":49,"y":383,"width":248,"height":134},
+    "promisesSafeBox": {"x":340,"y":383,"width":246,"height":134},
+    "chronologySafeBox": {"x":53,"y":610,"width":536,"height":112}
+  },
+  "qa": "Native and expanded 800x960 viewed. Original test caught stretched horizontal separators; insets moved into blank horizontal bands. Final round portrait geometry remains fixed. Large expansion elongates parchment texture in stretch bands; not claimed infinitely scalable. Map hole remains transparent. No text/numbers observed."
+}

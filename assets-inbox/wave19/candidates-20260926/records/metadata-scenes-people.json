@@ -1,0 +1,370 @@
+[
+  {
+    "id": "scene_population_up",
+    "file": "assets/scenes_people/scene_population_up.png",
+    "width": 96,
+    "height": 96,
+    "description": "인구 증가: 시민과 위 화살표",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One transparent RGBA medieval game UI scene icon, population increase. Reference images are P0 style examples only; create ONE new icon, not a sheet. A very simple bareheaded civilian bust on LEFT, muted ochre tunic, with a LARGE bold upward arrow on RIGHT, muted sage green with dark brown outline. Arrow fills nearly the full icon height and has a clear triangular tip at TOP. No tools, no hats/helmets, no text/numbers, no badge/frame/background/shadow. P0 warm handpainted gouache, low saturation, thin brown contour, simple broad planes. Readable at24px. Square composition, icon occupies80% with transparent margins.",
+        "rawFile": "raw/scenes_people/scene_population_up-v1.png",
+        "referenceImages": [
+          "references/scenes-people-p0-resources.png",
+          "references/scenes-people-p0-causes.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds threshold8 then contain84x84 transparent plus6px margins; original alpha retained.",
+      "crop": {
+        "left": 59,
+        "top": 111,
+        "width": 1144,
+        "height": 1064
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "dimensions": true,
+      "rgba": true,
+      "visualReview": "pass_with_24px_detail_limits",
+      "reviewSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "noText": true,
+      "candidateOnly": true,
+      "notes": "24px arrow direction or empty/full basket silhouette distinguishes.",
+      "sha256": "c743e54f95d5263a24ff261904ae17a18e2e006aeed857256ccac0db2bc1fe0a"
+    }
+  },
+  {
+    "id": "scene_population_down",
+    "file": "assets/scenes_people/scene_population_down.png",
+    "width": 96,
+    "height": 96,
+    "description": "인구 감소: 시민과 아래 화살표",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One transparent RGBA medieval game UI scene icon: scene_population_down. References are style examples only, not an edit target; create ONE new isolated icon, not a sheet. Subject: A very simple bareheaded civilian bust on LEFT, muted ochre tunic, LARGE bold downward arrow RIGHT muted rust. Arrow fills nearly full icon height and has triangular tip at BOTTOM. Style: P0 handpainted gouache, warm muted earthy palette, thin dark brown contour, broad readable shapes, simple rather than realistic detail. Must distinguish at24px. Square composition,80% occupied with clean transparent margins. No text/numbers, no tools, helmets, chimneys, badges, borders, background or ground shadow.",
+        "rawFile": "raw/scenes_people/scene_population_down-v1.png",
+        "referenceImages": [
+          "references/scenes-people-p0-resources.png",
+          "references/scenes-people-p0-causes.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds threshold8 then contain84x84 transparent plus6px margins; original alpha retained.",
+      "crop": {
+        "left": 62,
+        "top": 152,
+        "width": 1146,
+        "height": 939
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "dimensions": true,
+      "rgba": true,
+      "visualReview": "pass_with_24px_detail_limits",
+      "reviewSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "noText": true,
+      "candidateOnly": true,
+      "notes": "24px arrow direction or empty/full basket silhouette distinguishes.",
+      "sha256": "7316c53c3795cbde3986b96c72774e2ae9c9bf12c2d134215e4b9028a163fc7f"
+    }
+  },
+  {
+    "id": "scene_household_arrival",
+    "file": "assets/scenes_people/scene_household_arrival.png",
+    "width": 96,
+    "height": 96,
+    "description": "가구 입주: 가족이 문 안으로",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One transparent RGBA medieval game UI scene icon: scene_household_arrival. References are style examples only, not an edit target; create ONE new isolated icon, not a sheet. Subject: Simple family of two adult silhouettes and one small child on LEFT, open timber doorway RIGHT. LARGE sage arrow above family points RIGHT into doorway. All shapes very simple broad. No hut roof, just doorway. Style: P0 handpainted gouache, warm muted earthy palette, thin dark brown contour, broad readable shapes, simple rather than realistic detail. Must distinguish at24px. Square composition,80% occupied with clean transparent margins. No text/numbers, no tools, helmets, chimneys, badges, borders, background or ground shadow.",
+        "rawFile": "raw/scenes_people/scene_household_arrival-v1.png",
+        "referenceImages": [
+          "references/scenes-people-p0-resources.png",
+          "references/scenes-people-p0-causes.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds threshold8 then contain84x84 transparent plus6px margins; original alpha retained.",
+      "crop": {
+        "left": 75,
+        "top": 203,
+        "width": 1116,
+        "height": 903
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "dimensions": true,
+      "rgba": true,
+      "visualReview": "pass_with_24px_detail_limits",
+      "reviewSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "noText": true,
+      "candidateOnly": true,
+      "notes": "24px family-door position distinguishes arrival/departure; small curved arrows clearer at32px.",
+      "sha256": "95d3808a2279fc72dc202924b448923734e4098c10bd4ca1128f3e8e1ce20e5a"
+    }
+  },
+  {
+    "id": "scene_household_departure",
+    "file": "assets/scenes_people/scene_household_departure.png",
+    "width": 96,
+    "height": 96,
+    "description": "가구 이탈: 가족이 문 밖으로",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One transparent RGBA medieval game UI scene icon: scene_household_departure. References are style examples only, not an edit target; create ONE new isolated icon, not a sheet. Subject: Open timber doorway LEFT, simple family of two adult silhouettes and one small child RIGHT. LARGE rust arrow above family points RIGHT outward away from doorway. No hut roof, just doorway. Style: P0 handpainted gouache, warm muted earthy palette, thin dark brown contour, broad readable shapes, simple rather than realistic detail. Must distinguish at24px. Square composition,80% occupied with clean transparent margins. No text/numbers, no tools, helmets, chimneys, badges, borders, background or ground shadow.",
+        "rawFile": "raw/scenes_people/scene_household_departure-v1.png",
+        "referenceImages": [
+          "references/scenes-people-p0-resources.png",
+          "references/scenes-people-p0-causes.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds threshold8 then contain84x84 transparent plus6px margins; original alpha retained.",
+      "crop": {
+        "left": 90,
+        "top": 141,
+        "width": 1103,
+        "height": 1005
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "dimensions": true,
+      "rgba": true,
+      "visualReview": "pass_with_24px_detail_limits",
+      "reviewSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "noText": true,
+      "candidateOnly": true,
+      "notes": "24px family-door position distinguishes arrival/departure; small curved arrows clearer at32px.",
+      "sha256": "ae1db2391849cd5576c5ebc69e2ac21e9465588eeeb0c6c773f904e3e0049bf7"
+    }
+  },
+  {
+    "id": "scene_house_hungry",
+    "file": "assets/scenes_people/scene_house_hungry.png",
+    "width": 96,
+    "height": 96,
+    "description": "굶은 집: 집과 빈 그릇",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One transparent RGBA medieval game UI scene icon: scene_house_hungry. References are style examples only, not an edit target; create ONE new isolated icon, not a sheet. Subject: One tiny thatched cottage with NO CHIMNEY in upper half; foreground a very LARGE empty wooden bowl, showing clearly dark EMPTY interior. A large rust X on the bowl rim/front signals no food. Bowl occupies lower half. Style: P0 handpainted gouache, warm muted earthy palette, thin dark brown contour, broad readable shapes, simple rather than realistic detail. Must distinguish at24px. Square composition,80% occupied with clean transparent margins. No text/numbers, no tools, helmets, chimneys, badges, borders, background or ground shadow.",
+        "rawFile": "raw/scenes_people/scene_house_hungry-v1.png",
+        "referenceImages": [
+          "references/scenes-people-p0-resources.png",
+          "references/scenes-people-p0-causes.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds threshold8 then contain84x84 transparent plus6px margins; original alpha retained.",
+      "crop": {
+        "left": 153,
+        "top": 97,
+        "width": 946,
+        "height": 1058
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "dimensions": true,
+      "rgba": true,
+      "visualReview": "pass_with_24px_detail_limits",
+      "reviewSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "noText": true,
+      "candidateOnly": true,
+      "notes": "24px empty/full bowls and X/check distinguish; no chimney.",
+      "sha256": "0f588e428f3420361d8c0492272e4ffbdefa65e7c440896803b2c0145f55f83b"
+    }
+  },
+  {
+    "id": "scene_house_fed",
+    "file": "assets/scenes_people/scene_house_fed.png",
+    "width": 96,
+    "height": 96,
+    "description": "다시 먹는 집: 집과 가득 찬 그릇",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One transparent RGBA medieval game UI scene icon: scene_house_fed. References are style examples only, not an edit target; create ONE new isolated icon, not a sheet. Subject: One tiny thatched cottage with NO CHIMNEY in upper half; foreground very LARGE wooden bowl overflowing with three warm golden bread chunks. Large muted sage check on bowl front signals food restored. Bowl occupies lower half. Style: P0 handpainted gouache, warm muted earthy palette, thin dark brown contour, broad readable shapes, simple rather than realistic detail. Must distinguish at24px. Square composition,80% occupied with clean transparent margins. No text/numbers, no tools, helmets, chimneys, badges, borders, background or ground shadow.",
+        "rawFile": "raw/scenes_people/scene_house_fed-v1.png",
+        "referenceImages": [
+          "references/scenes-people-p0-resources.png",
+          "references/scenes-people-p0-causes.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds threshold8 then contain84x84 transparent plus6px margins; original alpha retained.",
+      "crop": {
+        "left": 148,
+        "top": 85,
+        "width": 958,
+        "height": 1085
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "dimensions": true,
+      "rgba": true,
+      "visualReview": "pass_with_24px_detail_limits",
+      "reviewSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "noText": true,
+      "candidateOnly": true,
+      "notes": "24px empty/full bowls and X/check distinguish; no chimney.",
+      "sha256": "b0e453bc57f3e9a7a48a1102e6e89331dee8872a3f07d5aad34116f00fed8c91"
+    }
+  },
+  {
+    "id": "scene_bread_shortage",
+    "file": "assets/scenes_people/scene_bread_shortage.png",
+    "width": 96,
+    "height": 96,
+    "description": "빵 부족: 거의 빈 빵 바구니",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One transparent RGBA medieval game UI scene icon: scene_bread_shortage. References are style examples only, not an edit target; create ONE new isolated icon, not a sheet. Subject: One low broad wicker bread basket visibly EMPTY, dark empty interior with just a tiny broken bread heel lying at bottom. A LARGE rust downward arrow beside basket. No house, no people. Style: P0 handpainted gouache, warm muted earthy palette, thin dark brown contour, broad readable shapes, simple rather than realistic detail. Must distinguish at24px. Square composition,80% occupied with clean transparent margins. No text/numbers, no tools, helmets, chimneys, badges, borders, background or ground shadow.",
+        "rawFile": "raw/scenes_people/scene_bread_shortage-v1.png",
+        "referenceImages": [
+          "references/scenes-people-p0-resources.png",
+          "references/scenes-people-p0-causes.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds threshold8 then contain84x84 transparent plus6px margins; original alpha retained.",
+      "crop": {
+        "left": 51,
+        "top": 231,
+        "width": 1180,
+        "height": 823
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "dimensions": true,
+      "rgba": true,
+      "visualReview": "pass_with_24px_detail_limits",
+      "reviewSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "noText": true,
+      "candidateOnly": true,
+      "notes": "24px arrow direction or empty/full basket silhouette distinguishes.",
+      "sha256": "96c23a3cad3d1a8ecb92032654474fd9ae9214575113d2b80ee7e8ce5bf8facd"
+    }
+  },
+  {
+    "id": "scene_bread_reserve",
+    "file": "assets/scenes_people/scene_bread_reserve.png",
+    "width": 96,
+    "height": 96,
+    "description": "빵 비축: 가득 찬 빵 바구니",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One transparent RGBA medieval game UI scene icon: scene_bread_reserve. References are style examples only, not an edit target; create ONE new isolated icon, not a sheet. Subject: One low broad wicker basket HEAPED with three large golden round scored bread loaves, broad full dome silhouette. A LARGE muted sage check beside basket. No house, no people. Style: P0 handpainted gouache, warm muted earthy palette, thin dark brown contour, broad readable shapes, simple rather than realistic detail. Must distinguish at24px. Square composition,80% occupied with clean transparent margins. No text/numbers, no tools, helmets, chimneys, badges, borders, background or ground shadow.",
+        "rawFile": "raw/scenes_people/scene_bread_reserve-v1.png",
+        "referenceImages": [
+          "references/scenes-people-p0-resources.png",
+          "references/scenes-people-p0-causes.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Alpha bounds threshold8 then contain84x84 transparent plus6px margins; original alpha retained.",
+      "crop": {
+        "left": 38,
+        "top": 160,
+        "width": 1180,
+        "height": 957
+      },
+      "rawWidth": 1254,
+      "rawHeight": 1254
+    },
+    "qa": {
+      "dimensions": true,
+      "rgba": true,
+      "visualReview": "pass_with_24px_detail_limits",
+      "reviewSizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "noText": true,
+      "candidateOnly": true,
+      "notes": "24px arrow direction or empty/full basket silhouette distinguishes.",
+      "sha256": "7fcccc88885bef478e875490fa6c815673a5a97ca211f1b5f4732661ce13231e"
+    }
+  }
+]
