@@ -11,6 +11,10 @@ import { eventInstanceId, scheduledSeason } from "../src/engine/eventSchedule";
 import { EVENT_DEF_BY_ID, FIRST_FIRE_EVENT_ID } from "../src/content/eventConfig";
 import {
   ACTUAL_AFTER_TICKS,
+  compactHistory,
+  FOLD_AFTER_SEASONS,
+  foldableRecord,
+  ROLLUP_TEMPLATE,
   BIG_DECISION_KINDS,
   DECISION_KINDS,
   advanceHistory,
@@ -241,4 +245,89 @@ test("H8 a query over 10,000 records takes under 5 ms", () => {
     best = Math.min(best, performance.now() - started);
   }
   assert.ok(best < 5, `${best.toFixed(2)} ms`);
+});
+
+/** A ledger of `seasons` seasons: per season three level-ups, a move-in, a bundle, a milestone and the season line with its thumbnail. */
+function seasonsHistory(seasons: number): HistoryState {
+  const records: HistoryRecord[] = [];
+  const snapshots: HistoryState["snapshots"][number][] = [];
+  let ordinal = 1;
+  const add = (record: Omit<HistoryRecord, "id">) => records.push({ ...record, id: `h-${String(ordinal++).padStart(6, "0")}` });
+  const house = (index: number) => ({ type: "household" as const, id: `house-${index}` });
+  for (let season = 1; season <= seasons; season += 1) {
+    const start = (season - 1) * SEASON;
+    for (const offset of [100, 300, 700]) add({ tick: start + offset, kind: "person", template: "person.level_up", params: { level: 2 }, subject: house(offset), severity: 0 });
+    add({ tick: start + 400, kind: "person", template: "person.move_in", subject: house(season), severity: 0 });
+    add({ tick: start + 500, kind: "milestone", template: "milestone.lots", params: { lots: season }, subject: { type: "town", id: "town" }, severity: 1 });
+    add({ tick: season * SEASON, kind: "decision", template: "decision.bundle", params: { decisionKind: "build", count: 2 }, subject: { type: "town", id: "town" }, severity: 0 });
+    const snapshotId = `s-${String(ordinal).padStart(6, "0")}`;
+    snapshots.push({ id: snapshotId, tick: season * SEASON, size: 128, data: "x" });
+    add({ tick: season * SEASON, kind: "ledger", template: "ledger.season", params: { population: 100 + season, popDelta: 1, net: 5, season: (season - 1) % 4, year: 1300 }, subject: { type: "town", id: "town" }, severity: 0, snapshotId });
+  }
+  snapshots.push({ id: "s-era", tick: 2_500, size: 256, data: "y" });
+  return { records, snapshots, nextOrdinal: ordinal, seasonDecisions: {}, milestones: [], pendingActuals: [] };
+}
+
+test("H9 HIST-1 everyday records eight seasons old fold into one summary per season; move-ins, milestones and the recent eight seasons stay", () => {
+  const original = seasonsHistory(12);
+  const now = 12 * SEASON;
+  const compacted = compactHistory(original, now);
+  const cutoff = now - FOLD_AFTER_SEASONS * SEASON;
+  const summaries = compacted.records.filter(record => record.template === ROLLUP_TEMPLATE);
+  assert.deepEqual(summaries.map(record => record.tick), [1_000, 2_000, 3_000, 4_000]);
+  for (const summary of summaries) {
+    // Three level-ups, the bundle and the season line; the move-in and the milestone are kept.
+    assert.deepEqual({ ...summary.params }, { count: 5, "person.level_up": 3, "decision.bundle": 1, "decision.build": 2, "ledger.season": 1,
+      population: 100 + summary.tick / SEASON, popDelta: 1, net: 5, season: (summary.tick / SEASON - 1) % 4, year: 1300 });
+    assert.equal(summary.severity, 0);
+    assert.equal(historySummary(summary), "계절 요약 — 일상 기록 5건");
+  }
+  assert.ok(compacted.records.every(record => record.tick > cutoff || !foldableRecord(record)));
+  assert.equal(compacted.records.filter(record => record.template === "person.move_in").length, 12);
+  assert.equal(compacted.records.filter(record => record.kind === "milestone").length, 12);
+  assert.deepEqual(compacted.records.filter(record => record.tick > cutoff), original.records.filter(record => record.tick > cutoff));
+  // Ids stay in order (a summary takes its first folded record's id); nothing new is numbered.
+  const ids = compacted.records.map(record => record.id);
+  assert.deepEqual(ids, [...ids].sort());
+  assert.equal(new Set(ids).size, ids.length);
+  assert.equal(compacted.nextOrdinal, original.nextOrdinal);
+  // Thumbnails: the year's end (4,000) and the era's are kept of the old ones; the recent eight seasons all stay.
+  assert.deepEqual(compacted.snapshots.map(snapshot => snapshot.tick).sort((a, b) => a - b), [2_500, 4_000, 5_000, 6_000, 7_000, 8_000, 9_000, 10_000, 11_000, 12_000]);
+  assert.equal(summaries.find(record => record.tick === 4_000)!.snapshotId, original.records.find(record => record.template === "ledger.season" && record.tick === 4_000)!.snapshotId);
+  assert.ok(summaries.filter(record => record.tick !== 4_000).every(record => record.snapshotId === undefined));
+  // Idempotent, and a later season folds only its own window.
+  assert.equal(compactHistory(compacted, now), compacted);
+  const later = compactHistory(compacted, now + SEASON);
+  assert.equal(later.records.filter(record => record.template === ROLLUP_TEMPLATE).length, 5);
+});
+
+test("H10 HIST-1 queries return the same records after folding, except those a summary replaced", () => {
+  const original = seasonsHistory(40);
+  const compacted = compactHistory(original, 40 * SEASON);
+  const present = new Set(compacted.records.map(record => record.id));
+  const folded = original.records.filter(record => !present.has(record.id) || compacted.records.find(entry => entry.id === record.id)!.template === ROLLUP_TEMPLATE);
+  assert.ok(folded.every(foldableRecord));
+  const counted = compacted.records.filter(record => record.template === ROLLUP_TEMPLATE).reduce((sum, record) => sum + Number(record.params!.count), 0);
+  assert.equal(counted, folded.length);
+  const queries = [{}, { severity: 1 as const }, { kinds: ["person" as const] }, { kinds: ["milestone" as const, "decision" as const] },
+    { actors: [{ type: "household" as const, id: "house-3" }] }, { range: { from: 5_000, to: 20_000 } }, { severity: 0 as const, range: { from: 30_000 } }];
+  const foldedIds = new Set(folded.map(record => record.id));
+  for (const query of queries) {
+    const after = historyQuery({ history: compacted }, query).filter(record => record.template !== ROLLUP_TEMPLATE);
+    const before = historyQuery({ history: original }, query).filter(record => !foldedIds.has(record.id));
+    assert.deepEqual(after, before, JSON.stringify(query));
+  }
+});
+
+test("H11 HIST-1 a town run for ten seasons folds its oldest season and still round-trips through save v15", () => {
+  let state = fixture("population-176");
+  const end = state.tick + 10 * SEASON;
+  while (state.tick < end) state = advanceTick(state);
+  const summaries = records(state).filter(record => record.template === ROLLUP_TEMPLATE);
+  assert.ok(summaries.length >= 1);
+  assert.ok(records(state).every(record => record.tick > state.tick - (FOLD_AFTER_SEASONS + 1) * SEASON || !foldableRecord(record)));
+  assert.ok(state.history!.snapshots.filter(snapshot => snapshot.size === 128).length <= FOLD_AFTER_SEASONS + 3);
+  const loaded = decodeSave(encodeSave({ state, createdAt: "2026-09-26T00:00:00.000Z", savedAt: "2026-09-26T00:00:00.000Z" }).bytes);
+  assert.equal(loaded.envelope.schemaVersion, 15);
+  assert.deepEqual(loaded.envelope.state, state);
 });
