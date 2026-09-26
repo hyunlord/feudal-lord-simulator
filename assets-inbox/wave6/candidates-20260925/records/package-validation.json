@@ -1,0 +1,382 @@
+{
+  "assetCount": 22,
+  "proofCount": 3,
+  "allDimensionsPass": true,
+  "allContainTrueTransparency": true,
+  "results": [
+    {
+      "file": "construction/pile_stone_1-v1.png",
+      "size": [
+        96,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 5422,
+      "visible": 690,
+      "bbox": [
+        28,
+        32,
+        67,
+        55
+      ]
+    },
+    {
+      "file": "construction/pile_stone_2-v1.png",
+      "size": [
+        96,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 4655,
+      "visible": 1427,
+      "bbox": [
+        20,
+        18,
+        75,
+        55
+      ]
+    },
+    {
+      "file": "construction/pile_stone_3-v1.png",
+      "size": [
+        96,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 4068,
+      "visible": 2013,
+      "bbox": [
+        15,
+        8,
+        80,
+        55
+      ]
+    },
+    {
+      "file": "construction/pile_wood_1-v1.png",
+      "size": [
+        96,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 5615,
+      "visible": 500,
+      "bbox": [
+        29,
+        32,
+        66,
+        55
+      ]
+    },
+    {
+      "file": "construction/pile_wood_2-v1.png",
+      "size": [
+        96,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 4695,
+      "visible": 1403,
+      "bbox": [
+        21,
+        18,
+        74,
+        55
+      ]
+    },
+    {
+      "file": "construction/pile_wood_3-v1.png",
+      "size": [
+        96,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 4032,
+      "visible": 2064,
+      "bbox": [
+        18,
+        8,
+        77,
+        55
+      ]
+    },
+    {
+      "file": "construction/roof_frame_thatch-v1.png",
+      "size": [
+        512,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 84119,
+      "visible": 46403,
+      "bbox": [
+        51,
+        14,
+        460,
+        237
+      ]
+    },
+    {
+      "file": "construction/sign_post-v1.png",
+      "size": [
+        32,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 1423,
+      "visible": 533,
+      "bbox": [
+        4,
+        12,
+        27,
+        55
+      ]
+    },
+    {
+      "file": "construction/well_stages-v1.png",
+      "size": [
+        216,
+        80
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparent": 14783,
+      "visible": 2452,
+      "bbox": [
+        20,
+        11,
+        203,
+        64
+      ]
+    },
+    {
+      "file": "fx/completion_burst-v1.png",
+      "size": [
+        384,
+        128
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 31539,
+      "visible": 13795,
+      "bbox": [
+        8,
+        19,
+        375,
+        119
+      ]
+    },
+    {
+      "file": "fx/dust_puff.png",
+      "size": [
+        32,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 639,
+      "visible": 341,
+      "bbox": [
+        2,
+        13,
+        29,
+        29
+      ]
+    },
+    {
+      "file": "fx/fire_large.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 5324,
+      "visible": 3576,
+      "bbox": [
+        13,
+        2,
+        83,
+        93
+      ]
+    },
+    {
+      "file": "fx/fire_small.png",
+      "size": [
+        48,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 1722,
+      "visible": 1162,
+      "bbox": [
+        5,
+        2,
+        43,
+        61
+      ]
+    },
+    {
+      "file": "fx/hammer_sparks-v1.png",
+      "size": [
+        32,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 649,
+      "visible": 330,
+      "bbox": [
+        2,
+        13,
+        29,
+        29
+      ]
+    },
+    {
+      "file": "fx/smoke_chimney_a.png",
+      "size": [
+        32,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 1122,
+      "visible": 791,
+      "bbox": [
+        2,
+        2,
+        29,
+        61
+      ]
+    },
+    {
+      "file": "fx/smoke_chimney_b.png",
+      "size": [
+        32,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 1140,
+      "visible": 779,
+      "bbox": [
+        3,
+        2,
+        28,
+        61
+      ]
+    },
+    {
+      "file": "marker/stake_empty_plot.png",
+      "size": [
+        32,
+        48
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparent": 993,
+      "visible": 457,
+      "bbox": [
+        5,
+        2,
+        26,
+        45
+      ]
+    },
+    {
+      "file": "work/work_carry_beam-v1.png",
+      "size": [
+        128,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "transparent": 2605,
+      "visible": 1227,
+      "bbox": [
+        1,
+        2,
+        126,
+        29
+      ]
+    },
+    {
+      "file": "work/work_hammer-v1.png",
+      "size": [
+        128,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "transparent": 2744,
+      "visible": 1150,
+      "bbox": [
+        7,
+        1,
+        120,
+        30
+      ]
+    },
+    {
+      "file": "work/work_pose_overlay_m.png",
+      "size": [
+        74,
+        74
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparent": 4672,
+      "visible": 778,
+      "bbox": [
+        20,
+        3,
+        57,
+        43
+      ]
+    },
+    {
+      "file": "work/work_shovel-v1.png",
+      "size": [
+        128,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "transparent": 3335,
+      "visible": 658,
+      "bbox": [
+        9,
+        1,
+        119,
+        30
+      ]
+    },
+    {
+      "file": "work/work_sickle-v1.png",
+      "size": [
+        128,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "transparent": 1990,
+      "visible": 1757,
+      "bbox": [
+        3,
+        1,
+        126,
+        30
+      ]
+    }
+  ]
+}

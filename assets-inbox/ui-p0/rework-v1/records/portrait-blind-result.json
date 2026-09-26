@@ -1,0 +1,29 @@
+{
+  "literalPixels": 96,
+  "correct": 3,
+  "total": 3,
+  "pass": true,
+  "proofSha256": "8ae7d28cf6d321365201c7af691dc5ca69e9406013b18d32fdb7119911fc902d",
+  "method": "fresh-context AI judge; first guesses persisted before key comparison",
+  "excludedRun": "blind-first-guesses.json portrait guesses viewed superseded first order; not used as final gate",
+  "results": [
+    {
+      "label": "A",
+      "guess": "success",
+      "answer": "success",
+      "correct": true
+    },
+    {
+      "label": "B",
+      "guess": "concern",
+      "answer": "concern",
+      "correct": true
+    },
+    {
+      "label": "C",
+      "guess": "neutral",
+      "answer": "neutral",
+      "correct": true
+    }
+  ]
+}

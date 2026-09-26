@@ -1,0 +1,85 @@
+{
+  "assets": [
+    {
+      "assetId": "road/stone_strip-v1",
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        0,
+        242,
+        2172,
+        237
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "alphaBounds": [
+        0,
+        8,
+        512,
+        47
+      ],
+      "alphaPaddingViolations": 0,
+      "seamBeforeMaxRGBA": 47,
+      "seamMaxRGBA": 0,
+      "pivot": [
+        256,
+        32
+      ],
+      "nativeRequestedSizeHonored": false,
+      "manualEdits": "alpha bounds crop; fit 512x48 at y8; 8px inward coverage taper; 48px premultiplied-alpha cyclic overlap gives 464px period, rotate232px and resample to512; average outermost RGBA columns"
+    },
+    {
+      "assetId": "boundary/forest_fringe_c-v1",
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        129,
+        564,
+        1515,
+        212
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "alphaBounds": [
+        8,
+        64,
+        112,
+        24
+      ],
+      "alphaPaddingViolations": 0,
+      "seamBeforeMaxRGBA": null,
+      "seamMaxRGBA": null,
+      "pivot": [
+        64,
+        88
+      ],
+      "nativeRequestedSizeHonored": false,
+      "manualEdits": "alpha bounds crop; nonuniform resize to112x24 (initial proportional16px height rejected); bottom at88; explicit8px gutters; 8px horizontal coverage taper"
+    }
+  ],
+  "boundsFormat": "x,y,width,height",
+  "preview": {
+    "forestSequence": [
+      "A",
+      "C",
+      "B",
+      "C",
+      "A",
+      "B",
+      "C"
+    ],
+    "forestSpacingAtZoom1": 64,
+    "scale1": 0.5,
+    "scale06": 0.3,
+    "transition": "crossfade over t=.46..54 of curve; approx 70 screen px; offline only",
+    "noGameInstallation": true
+  }
+}

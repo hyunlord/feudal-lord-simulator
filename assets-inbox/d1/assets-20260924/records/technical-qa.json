@@ -1,0 +1,183 @@
+{
+  "assets": [
+    {
+      "assetId": "road/earth_strip-v1",
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sourceAlphaBounds": [
+        0,
+        173,
+        2172,
+        374
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "alphaBounds": [
+        0,
+        8,
+        512,
+        48
+      ],
+      "pivot": [
+        256,
+        56
+      ],
+      "padViolations": 0,
+      "seamBeforeMeanRGBA": 7.734375,
+      "seamMaxRGBA": 0,
+      "end16BandMaxRGBA": 0,
+      "manualEdits": "crop alpha bounds >2; fit target interior; browser high-quality resampling; explicit 8px alpha gutter; non-blur coverage taper; periodic 16px edge profile matched, 24px linear transition into source on each side",
+      "nativeRequestedSizeHonored": false
+    },
+    {
+      "assetId": "boundary/forest_fringe_a-v1",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "sourceAlphaBounds": [
+        117,
+        294,
+        1216,
+        542
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "alphaBounds": [
+        8,
+        39,
+        112,
+        49
+      ],
+      "pivot": [
+        64,
+        88
+      ],
+      "padViolations": 0,
+      "seamBeforeMeanRGBA": null,
+      "seamMaxRGBA": null,
+      "end16BandMaxRGBA": null,
+      "manualEdits": "crop alpha bounds >2; fit target interior; browser high-quality resampling; explicit 8px alpha gutter; non-blur coverage taper",
+      "nativeRequestedSizeHonored": false
+    },
+    {
+      "assetId": "boundary/forest_fringe_b-v1",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "sourceAlphaBounds": [
+        223,
+        333,
+        1033,
+        481
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "alphaBounds": [
+        8,
+        36,
+        112,
+        52
+      ],
+      "pivot": [
+        64,
+        88
+      ],
+      "padViolations": 0,
+      "seamBeforeMeanRGBA": null,
+      "seamMaxRGBA": null,
+      "end16BandMaxRGBA": null,
+      "manualEdits": "crop alpha bounds >2; fit target interior; browser high-quality resampling; explicit 8px alpha gutter; non-blur coverage taper",
+      "nativeRequestedSizeHonored": false
+    },
+    {
+      "assetId": "boundary/field_furrow-v1",
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceAlphaBounds": [
+        308,
+        203,
+        1326,
+        550
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "alphaBounds": [
+        8,
+        10,
+        112,
+        46
+      ],
+      "pivot": [
+        64,
+        56
+      ],
+      "padViolations": 0,
+      "seamBeforeMeanRGBA": null,
+      "seamMaxRGBA": null,
+      "end16BandMaxRGBA": null,
+      "manualEdits": "crop alpha bounds >2; fit target interior; browser high-quality resampling; explicit 8px alpha gutter; non-blur coverage taper",
+      "nativeRequestedSizeHonored": false
+    },
+    {
+      "assetId": "boundary/grass_edge-v1",
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceAlphaBounds": [
+        102,
+        97,
+        1617,
+        640
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "alphaBounds": [
+        8,
+        12,
+        112,
+        44
+      ],
+      "pivot": [
+        64,
+        56
+      ],
+      "padViolations": 0,
+      "seamBeforeMeanRGBA": null,
+      "seamMaxRGBA": null,
+      "end16BandMaxRGBA": null,
+      "manualEdits": "crop alpha bounds >2; fit target interior; browser high-quality resampling; explicit 8px alpha gutter; non-blur coverage taper",
+      "nativeRequestedSizeHonored": false
+    }
+  ],
+  "preview": {
+    "method": "Canvas2D composition from final deliverables; road strip sampled along an approximate S, A/B alternate 6; existing wheat sprites adjacent; grass edge placed on road; 1.0 and .6 actual CSS scale",
+    "screenshot": "corrected-screenshot-04-final-observation.png",
+    "screenshotNativeZoom": "unknown",
+    "wheatDisplayFootprint": "comparison 2x2 cells per existing sprite",
+    "mainScenePx": [
+      720,
+      530
+    ],
+    "zoom06ScenePx": [
+      432,
+      318
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "wk_merchant_f_01-v1",
+    "raw": "sources/wk_merchant_f_01-v1-short-veil-edit.png",
+    "fullPrompt": "EDIT this existing approved 8-cell template-derived green merchant woman sprite sheet. Change ONLY her head covering: replace LONG cream veil by SHORT CLOSE linen cap-veil ending AT NAPE ABOVE SHOULDERS. Clear narrow white linen band across forehead, small rounded offwhite cloth cap covers rear skull, lower edge at hairline/nape. NO tails, NO fabric down back, NO shoulder-length veil, NO neck covering or wimple. All NE SE SW NW views and both gait rows same SHORT NAPE-LENGTH CAP-VEIL. Keep exact original face, skull centre, face size, pose, all hands feet and green gown with fur collar. Fixed4columns×2rows, transparentRGBA, no recentering or extra object, no text. Existing image is edit target, NOT inspiration for new people. This merchant must differ from red merchant with long neck-covered wimple. Body below shoulders must be pixel-identical if possible. Return full editedsheet.",
+    "inputReference": "masters/wk_merchant_f_01-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-a1b0-7c42-b039-a6447e3f738f as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-a1b0-7c42-b039-a6447e3f738f/exec-f63dcfc3-abc4-40fd-a155-f9ce66d845ac.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "id": "wk_merchant_f_02-v1",
+    "raw": "sources/wk_merchant_f_02-v1-wimple-edit.png",
+    "fullPrompt": "EDIT this existing approved 8-cell template-derived CRIMSON merchant woman sprite sheet. Change ONLY headwear and neck cloth: medieval LONG WHITE VEIL plus unmistakable WHITE WIMPLE. Wimple is linen wrapped beneath CHIN and fully covers throat, neck and exposed upperchest, leaving only oval FACE visible. White cloth under chin flows down onto neckline. NO visible bare neck or cleavage. Not a modern collar. LONG white veil reaches shoulders/back. Keep exactoriginal face, skull centre, face size, poses, all hands, feet and crimson gown. Fixed4columnsNESESWNW x2gaitrows, transparentRGBA, no recentering or extra objects, no text. Existing image is edit target NOT inspiration for new people. All8cells same white underchin wimple, in both frontviews the throat must be white linen. Body below shoulders unchanged. Returnfull editedsheet.",
+    "inputReference": "masters/wk_merchant_f_02-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-a1b0-7c42-b039-a6447e3f738f as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-a1b0-7c42-b039-a6447e3f738f/exec-27b5b965-973a-426e-9e5e-037a1ab2e555.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "id": "wk_textile_f_02-v1",
+    "raw": "sources/wk_textile_f_02-v1-tan-wrap-edit.png",
+    "fullPrompt": "EDIT only HEADSCARF of this existing8-cell template-derived dusty madder rose dress woman sheet. Keep exactsame8faces, headscentres, bodyposes, hands, feet, dress, placement and gait. Replacecreamheadcloth with visibly warm medium TAN/OCHER natural linen WRAPPED HEADSCARF: brown ocher colour, crossed wrapped folds across forehead, SMALL LOW KNOT at nape/back, no long ivory veil. Must visibly differ from WHITE small COIF. No veil tails on shoulders, no neckwimple. True RGBA transparent4columns NESESWNW×2gaitrows sheet, no labels. Paintonlyheadcovering, do not invent a newperson orpose. All directions same mediumtan wrap and lowbackknot.",
+    "inputReference": "masters/wk_textile_f_02-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-a1b0-7c42-b039-a6447e3f738f as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-a1b0-7c42-b039-a6447e3f738f/exec-eee72ffb-0bc8-4c31-9d11-abb3681a1ed5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

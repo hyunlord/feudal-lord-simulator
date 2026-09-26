@@ -1,0 +1,12 @@
+{
+  "id": "wk_pilot_P1-v1",
+  "prompt": "Create ONE genuine transparent RGBA sprite sheet, exactly8 separate full-body sprites in a REGULAR4 COLUMNS x2 ROWS grid, landscape2:1 aspect. No labels, grid lines, background, floor, cast shadows, extra figures. Southern England1375–1425 hand-painted game art, broad readable colour masses, soft upper-left world light, no black outlines or photographic texture. FIXED orthographic isometric camera looking down30degrees. Column1 NE = BACK three-quarter looking upper-right, face mostly hidden. Column2 SE = FRONT three-quarter looking lower-right, face visible. Column3 SW = FRONT three-quarter looking lower-left, face visible. Column4 NW = BACK three-quarter looking upper-left, face mostly hidden. Top row walk gaitA left leg forward; bottom row same exact four directions walk gaitB opposite leg forward. Every cell contains SAME PERSON SAME CLOTHING SAME HEADWEAR SAME anatomy, no mirrored sprites. Head-to-feet height approx120 of148mastercell, foot contact at(74,134) in each148cell, character fullywithin cell, generous padding. Intended master592x296 then exactly50% downsample to296x148(cell74). Reference1 existing sheet is STRICT layout/direction/scale and painterly sprite style reference; reference2 portrait defines this persons headwear and main garment colour, not portrait realism. Keep no floating props, no duplicate limbs, all eight full-body figures. \nMature prosperous English male merchant aged48, broad square face, short neat brown beard with grey flecks, a broad BRIMMED brown felt hat. Tailored long deep WOAD BLUE gown, modest warm grey-brown fur lining visible at collar, leather belt and small purse at right hip. No scales, no jewellery extravagance.\nWorker asset wk_pilot_P1-v1. Keep garment anklelength and muted primary colour and hat/veil identical across8cells. Small right-hip belt purse for P1 remains anatomicalRIGHT, not screenright; P2 emptyhands and no apron.",
+  "references": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/references/actor_merchant-v1.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/sources/pt_pilot_P1-v1.png"
+  ],
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-c28727ec-4def-4bf2-a0a8-35bdc575e52c.png"
+}

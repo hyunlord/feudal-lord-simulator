@@ -129,7 +129,7 @@ export function GameCanvas({
     <>
       <canvas
         ref={canvasRef}
-        className={selectedTool === null && zoneTool === null ? "game-canvas" : "game-canvas game-canvas--placement-armed"}
+        className={canvasCursorClass(selectedTool, zoneTool, hoveredBuilding !== null)}
         aria-label={KO_UI.simulationCanvas}
       />
       {prediction === null ? null : <PredictionPanel {...prediction} />}
@@ -156,4 +156,13 @@ export function GameCanvas({
       ) : null}
     </>
   );
+}
+
+/** UX-2 cursor art by the armed tool: select, inspect (a building under the pointer), road, zone brush, placement
+ * (valid / invalid from the frame's `data-placement`). */
+export function canvasCursorClass(selectedTool: PlacementTool | null, zoneTool: ZoneBrushTool | null, overBuilding: boolean): string {
+  if (zoneTool !== null) return "game-canvas game-canvas--placement-armed game-canvas--zone";
+  if (selectedTool === "road") return "game-canvas game-canvas--placement-armed game-canvas--road";
+  if (selectedTool !== null) return "game-canvas game-canvas--placement-armed game-canvas--place";
+  return overBuilding ? "game-canvas game-canvas--inspect" : "game-canvas";
 }

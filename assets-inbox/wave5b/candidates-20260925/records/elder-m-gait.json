@@ -1,0 +1,130 @@
+{
+  "id": "actor_elder_m-v1",
+  "status": "candidate",
+  "overall": "fail",
+  "reason": "SE and SW repeat the same projected leading foot after two explicit feet-only native edit attempts. NE/NW exchange visible shoe positions, but anatomical leg identity is partly obscured by long gown and cannot be certified.",
+  "sheet": [
+    296,
+    148
+  ],
+  "cell": [
+    74,
+    74
+  ],
+  "groundBoundaryY": 67,
+  "normalization": "Each native cell alpha>32 bounding box uniformly scaled to 61px height, centered x37 and bottom boundary67, one Canvas resample. No feet painted algorithmically.",
+  "directions": [
+    {
+      "direction": "NE",
+      "frame0": {
+        "toe": [
+          32,
+          64
+        ],
+        "lead": "left",
+        "reason": "Visible low shoe at screen-left, other shoe tucked upper-right."
+      },
+      "frame1": {
+        "toe": [
+          49,
+          64
+        ],
+        "lead": "right",
+        "reason": "Visible low shoe switches screen-right, other shoe tucked upper-left."
+      },
+      "verdict": "uncertain",
+      "note": "Projected shoe exchange yes; anatomical identity under gown occluded."
+    },
+    {
+      "direction": "SE",
+      "frame0": {
+        "toe": [
+          49,
+          64
+        ],
+        "lead": "right",
+        "reason": "Low extended shoe screen-right."
+      },
+      "frame1": {
+        "toe": [
+          49,
+          64
+        ],
+        "lead": "right",
+        "reason": "Same low screen-right shoe remains after feet-only edits."
+      },
+      "verdict": "fail"
+    },
+    {
+      "direction": "SW",
+      "frame0": {
+        "toe": [
+          29,
+          64
+        ],
+        "lead": "left",
+        "reason": "Low extended shoe screen-left."
+      },
+      "frame1": {
+        "toe": [
+          29,
+          64
+        ],
+        "lead": "left",
+        "reason": "Same low screen-left shoe remains after feet-only edits."
+      },
+      "verdict": "fail"
+    },
+    {
+      "direction": "NW",
+      "frame0": {
+        "toe": [
+          47,
+          64
+        ],
+        "lead": "right",
+        "reason": "Visible low shoe screen-right, other upper-left."
+      },
+      "frame1": {
+        "toe": [
+          27,
+          64
+        ],
+        "lead": "left",
+        "reason": "Visible low shoe switches screen-left."
+      },
+      "verdict": "uncertain",
+      "note": "Projected shoe exchange yes; anatomical identity under gown occluded."
+    }
+  ],
+  "directionConsistency": {
+    "hair": "pass: bald crown grey side hair all eight views",
+    "beard": "pass in front and front-quarter views; hidden correctly from rear",
+    "hat": "pass: bare head all directions",
+    "gown": "pass: same grey-olive lower-calf gown across directions",
+    "posture": "pass: forward neck and slightly hunched upper back",
+    "heldObject": "none, staff excluded"
+  },
+  "attempts": [
+    {
+      "number": 1,
+      "result": "FAIL all directions repeat foot; knee-length gown too short"
+    },
+    {
+      "number": 2,
+      "result": "Feet-only attempt: rear views exchange shoe positions; front views fail; gown still short"
+    },
+    {
+      "number": 3,
+      "result": "Long gown corrected; front views still fail"
+    },
+    {
+      "number": 4,
+      "result": "Long-gown feet-only attempt: front views still fail. Native tool did not keep upper-body pixels exactly identical despite explicit request; diagnostic attempt, not pixel-preserving edit."
+    },
+    {
+      "number": 5,
+      "result": "Strict duplicated-frame0 input feet-only edit: FAIL all four directions repeat same projected leading foot. Selected previous attempt4 as better candidate, while diagnostic attempt5 supplied."
+    }
+  ]
+}

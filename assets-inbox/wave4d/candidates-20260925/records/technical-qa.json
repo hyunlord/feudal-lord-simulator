@@ -1,0 +1,784 @@
+{
+  "assets": [
+    {
+      "id": "wall/stone_face_a-v2",
+      "size": [
+        512,
+        128
+      ],
+      "sourceSize": [
+        2032,
+        774
+      ],
+      "crop": [
+        0,
+        242,
+        2032,
+        532
+      ],
+      "placement": [
+        0,
+        0,
+        384,
+        128
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "lowalpha and red fringe RGB replaced by nearestopaque",
+      "materialSpan": 384,
+      "colorShift": [
+        4.315385105840349,
+        -0.1503602397347663,
+        -3.877040295842903
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "wall/stone_face_b-v2",
+      "size": [
+        512,
+        128
+      ],
+      "sourceSize": [
+        2033,
+        773
+      ],
+      "crop": [
+        0,
+        242,
+        2033,
+        531
+      ],
+      "placement": [
+        0,
+        0,
+        384,
+        128
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "lowalpha and red fringe RGB replaced by nearestopaque",
+      "materialSpan": 384,
+      "colorShift": [
+        0.5365566037735903,
+        -4.031053459119491,
+        -8.699245283018868
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "wall/stone_face_c-v2",
+      "size": [
+        512,
+        128
+      ],
+      "sourceSize": [
+        2033,
+        774
+      ],
+      "crop": [
+        0,
+        224,
+        2033,
+        550
+      ],
+      "placement": [
+        0,
+        0,
+        288,
+        128
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "native opaque black header keyed alpha in top40% before crop",
+      "materialSpan": 288,
+      "colorShift": [
+        5.703929059949999,
+        2.4295552096599238,
+        -0.440435199597502
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "wall/stone_top_a-v1",
+      "size": [
+        512,
+        48
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "crop": [
+        0,
+        269,
+        2172,
+        186
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        48
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "lowalpha and red fringe RGB replaced by nearestopaque",
+      "materialSpan": null,
+      "colorShift": [
+        -4.382404692082105,
+        -6.1922496857980605,
+        -10.935819019689987
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X whole clean native-painted interior32px cycle repeated16times; eachcycle endpointRGBA matched; exact32pxphase; architecturalrepeat retained"
+    },
+    {
+      "id": "wall/stone_top_b-v1",
+      "size": [
+        512,
+        48
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "crop": [
+        0,
+        266,
+        2172,
+        192
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        48
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "lowalpha and red fringe RGB replaced by nearestopaque",
+      "materialSpan": null,
+      "colorShift": [
+        0.35525141326985477,
+        -2.9283801589662914,
+        -9.54414077442938
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X whole clean native-painted interior32px cycle repeated16times; eachcycle endpointRGBA matched; exact32pxphase; architecturalrepeat retained"
+    },
+    {
+      "id": "wall/stone_face_diag_top-v1",
+      "size": [
+        512,
+        64
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "crop": [
+        0,
+        234,
+        2172,
+        254
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "vertical alpha gaps of at most3px between connected top components closed",
+      "materialSpan": null,
+      "colorShift": [
+        3.1781338726615047,
+        0.15048033915444137,
+        -5.664462681342613
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X whole clean native-painted interior32px cycle repeated16times; eachcycle endpointRGBA matched; exact32pxphase; architecturalrepeat retained"
+    },
+    {
+      "id": "wall/stone_tower_corner-v1",
+      "size": [
+        1774,
+        887
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "placement": [
+        0,
+        35,
+        1774,
+        887
+      ],
+      "moduleWarp": {
+        "contactY": 810,
+        "verticalShift": 35,
+        "pivotStatus": "candidate inferred"
+      },
+      "sourceToTargetResizes": 1,
+      "specialEdits": "see moduleWarp registration; lowalpha fringe RGB replaced by nearestopaque",
+      "materialSpan": null,
+      "colorShift": [
+        -3.6836728124184503,
+        -1.3254627951028226,
+        -0.6061861888319271
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "none"
+    },
+    {
+      "id": "wall/palisade_face_a-v2",
+      "size": [
+        512,
+        128
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "crop": [
+        0,
+        128,
+        2172,
+        596
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "lowalpha and red fringe RGB replaced by nearestopaque",
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "wall/palisade_face_b-v2",
+      "size": [
+        512,
+        128
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "crop": [
+        0,
+        123,
+        2172,
+        601
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "lowalpha and red fringe RGB replaced by nearestopaque",
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "wall/palisade_top-v1",
+      "size": [
+        512,
+        48
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "crop": [
+        0,
+        320,
+        2172,
+        70
+      ],
+      "placement": [
+        0,
+        15.749539594843462,
+        512,
+        16.500920810313076
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "lowalpha and red fringe RGB replaced by nearestopaque",
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "wall/palisade_face_diag_top-v1",
+      "size": [
+        512,
+        64
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "crop": [
+        0,
+        318,
+        2172,
+        74
+      ],
+      "placement": [
+        0,
+        23.278084714548804,
+        512,
+        17.443830570902396
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": "lowalpha and red fringe RGB replaced by nearestopaque",
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "water/deep_a-v1",
+      "size": [
+        256,
+        128
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "placement": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": [
+        7.0084228515625,
+        14.86053466796875,
+        18.875091552734375
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "XY48px"
+    },
+    {
+      "id": "water/deep_b-v1",
+      "size": [
+        256,
+        128
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "placement": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": [
+        10.804595947265625,
+        17.380859375,
+        21.02423095703125
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "XY48px"
+    },
+    {
+      "id": "water/deep_c-v1",
+      "size": [
+        256,
+        128
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "placement": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": [
+        10.814361572265625,
+        16.6224365234375,
+        20.582916259765625
+      ],
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "XY48px"
+    },
+    {
+      "id": "shore/shoreline_e-v1",
+      "size": [
+        512,
+        96
+      ],
+      "sourceSize": [
+        2048,
+        768
+      ],
+      "crop": [
+        0,
+        173,
+        2048,
+        424
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        96
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "shore/shoreline_f-v1",
+      "size": [
+        512,
+        96
+      ],
+      "sourceSize": [
+        2048,
+        768
+      ],
+      "crop": [
+        0,
+        166,
+        2048,
+        501
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        96
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "X48px"
+    },
+    {
+      "id": "shore/reeds_a-v1",
+      "size": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        165,
+        164,
+        923,
+        924
+      ],
+      "placement": [
+        8.043290043290042,
+        8,
+        79.91341991341992,
+        80
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "none"
+    },
+    {
+      "id": "shore/reeds_b-v1",
+      "size": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        105,
+        359,
+        1073,
+        595
+      ],
+      "placement": [
+        8,
+        43.63839701770737,
+        80,
+        44.36160298229263
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "none"
+    },
+    {
+      "id": "shore/reeds_c-v1",
+      "size": [
+        96,
+        96
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        339,
+        130,
+        630,
+        961
+      ],
+      "placement": [
+        21.777315296566076,
+        8,
+        52.44536940686785,
+        80
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "none"
+    },
+    {
+      "id": "shore/mudstone_a-v1",
+      "size": [
+        64,
+        48
+      ],
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "crop": [
+        201,
+        468,
+        1045,
+        324
+      ],
+      "placement": [
+        8,
+        25.117703349282294,
+        48,
+        14.882296650717704
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "none"
+    },
+    {
+      "id": "shore/mudstone_b-v1",
+      "size": [
+        64,
+        48
+      ],
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "crop": [
+        113,
+        485,
+        1222,
+        402
+      ],
+      "placement": [
+        8,
+        24.20949263502455,
+        48,
+        15.79050736497545
+      ],
+      "moduleWarp": null,
+      "sourceToTargetResizes": 1,
+      "specialEdits": null,
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "none"
+    },
+    {
+      "id": "module/bridge_abutment_se_a-v1",
+      "size": [
+        256,
+        192
+      ],
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "crop": [
+        0,
+        0,
+        1448,
+        1086
+      ],
+      "placement": [
+        0,
+        0,
+        256,
+        192
+      ],
+      "moduleWarp": {
+        "sourceQuad": [
+          [
+            34,
+            88
+          ],
+          [
+            93,
+            42
+          ],
+          [
+            208,
+            111
+          ],
+          [
+            137,
+            146
+          ]
+        ],
+        "targetQuad": [
+          [
+            24,
+            100
+          ],
+          [
+            152,
+            36
+          ],
+          [
+            232,
+            76
+          ],
+          [
+            104,
+            140
+          ]
+        ],
+        "method": "deck-only inverse homography; bank clipped; vertical timber posts independent native affine samples",
+        "mask": "SE deck polygon and bank; posts stay vertical"
+      },
+      "sourceToTargetResizes": 1,
+      "specialEdits": "see moduleWarp registration; lowalpha fringe RGB replaced by nearestopaque",
+      "materialSpan": null,
+      "colorShift": null,
+      "noiseCleanup": "edge-aware radius2 RGB mean",
+      "seamCorrection": "none"
+    }
+  ],
+  "wallJoin": {
+    "stone": {
+      "topY": 0,
+      "faceY": 32,
+      "overlap": 16
+    },
+    "palisade": {
+      "topY": 16,
+      "faceY": 32,
+      "capCenter": 40
+    }
+  },
+  "gateReconstruction": {
+    "leftGround": [
+      520,
+      640
+    ],
+    "rightGround": [
+      804,
+      736
+    ],
+    "horizontalScale": 0.75,
+    "leftVerticalScale": 1.125,
+    "rightVerticalScale": 1.075,
+    "gateSprite": "gate_part_stone_arch_nw_se-v1.png",
+    "offline": true
+  },
+  "scene": {
+    "grid": [
+      12,
+      12
+    ],
+    "screenScale": 0.3,
+    "stonePlacementScale": 0.55,
+    "woodPlacementScale": 0.5,
+    "exactZoom06Rows": true
+  }
+}

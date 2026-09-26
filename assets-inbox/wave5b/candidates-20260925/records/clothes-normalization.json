@@ -1,0 +1,62 @@
+[
+  {
+    "id": "pt_hood-v1",
+    "size": [
+      256,
+      256
+    ],
+    "registration": "fullcanvas no bbox centering; eye112 shoulder208",
+    "edits": "Original P4 pixels clipped by hood and opening polygons; flat BG removed",
+    "alphaCleanup": "Alpha248..254 normalized to255 to remove native nearopaque veil; edge antialias alpha preserved",
+    "alphaPixelsChanged": 30,
+    "details": "clothes-registration.json"
+  },
+  {
+    "id": "pt_hat_brim-v1",
+    "size": [
+      256,
+      256
+    ],
+    "registration": "fullcanvas no bbox centering; eye112 shoulder208",
+    "edits": "Original P1 pixels clipped to fixed hat contour",
+    "alphaCleanup": "Alpha248..254 normalized to255 to remove native nearopaque veil; edge antialias alpha preserved",
+    "alphaPixelsChanged": 0,
+    "details": "clothes-registration.json"
+  },
+  {
+    "id": "pt_garment_work_tunic-v1",
+    "size": [
+      256,
+      256
+    ],
+    "registration": "fullcanvas no bbox centering; eye112 shoulder208",
+    "edits": "Native reconstructed tunic resized directly256; exact P4 lower visible cloth restored",
+    "alphaCleanup": "Alpha248..254 normalized to255 to remove native nearopaque veil; edge antialias alpha preserved",
+    "alphaPixelsChanged": 3833,
+    "details": "clothes-registration.json"
+  },
+  {
+    "id": "pt_garment_merchant_gown-v1",
+    "size": [
+      256,
+      256
+    ],
+    "registration": "fullcanvas no bbox centering; eye112 shoulder208",
+    "edits": "Native gown fullcanvas resized directly256",
+    "alphaCleanup": "Alpha248..254 normalized to255 to remove native nearopaque veil; edge antialias alpha preserved",
+    "alphaPixelsChanged": 19632,
+    "details": "clothes-registration.json"
+  },
+  {
+    "id": "pt_garment_work_tunic-v1_mask",
+    "size": [
+      256,
+      256
+    ],
+    "registration": "fullcanvas no bbox centering; eye112 shoulder208",
+    "edits": "Derived white cloth1 mask, excludes ties and linen",
+    "alphaCleanup": "Alpha248..254 normalized to255 to remove native nearopaque veil; edge antialias alpha preserved",
+    "alphaPixelsChanged": 3674,
+    "details": "clothes-registration.json"
+  }
+]

@@ -1,0 +1,106 @@
+{
+  "tower": {
+    "size": [
+      1774,
+      887
+    ],
+    "pivot": [
+      887,
+      810
+    ],
+    "pivotStatus": "candidate inferred bottom-center, no reserved-asset runtime registration found",
+    "ports": [
+      {
+        "center": [
+          640,
+          605
+        ],
+        "top": [
+          640,
+          505
+        ],
+        "bottom": [
+          640,
+          710
+        ]
+      },
+      {
+        "center": [
+          1134,
+          605
+        ],
+        "top": [
+          1134,
+          505
+        ],
+        "bottom": [
+          1134,
+          710
+        ]
+      }
+    ],
+    "wallLockTiles": 0.75
+  },
+  "bridge": {
+    "size": [
+      256,
+      192
+    ],
+    "land": {
+      "center": [
+        168,
+        108
+      ],
+      "edge": [
+        [
+          104,
+          140
+        ],
+        [
+          232,
+          76
+        ]
+      ]
+    },
+    "water": {
+      "center": [
+        88,
+        68
+      ],
+      "edge": [
+        [
+          24,
+          100
+        ],
+        [
+          152,
+          36
+        ]
+      ]
+    },
+    "deckPolygon": [
+      [
+        24,
+        100
+      ],
+      [
+        152,
+        36
+      ],
+      [
+        232,
+        76
+      ],
+      [
+        104,
+        140
+      ]
+    ],
+    "axis": "NW-SE, land is screen lower-right SE; new axis unlike original NE-SW",
+    "passageProjectedWidth": [
+      128,
+      -64
+    ],
+    "wallLockTiles": 0.75
+  }
+}

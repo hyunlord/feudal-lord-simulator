@@ -1,0 +1,78 @@
+{
+  "method": "Single AI reviewer; first pixel-only assessment at literal 96 px, before reading answer key, filenames or provenance. Not a human recognition study.",
+  "portraitProof": "proofs/02-portraits-shuffled.png",
+  "portraits": [
+    {
+      "slot": "A",
+      "guess": "neutral",
+      "confidence": "high",
+      "cue": "Closed mouth, level eyebrows and steady forward/side gaze; alert but no visible smile or distressed downturn."
+    },
+    {
+      "slot": "B",
+      "guess": "concern",
+      "confidence": "high",
+      "cue": "Head and eyes lowered, brows drawn inward/upward, frowning downturned mouth; visibly weary and worried at 96 px."
+    },
+    {
+      "slot": "C",
+      "guess": "success",
+      "confidence": "high",
+      "cue": "Broad open smile with teeth, lifted cheeks and narrowed smiling eyes; unmistakably pleased at 96 px."
+    }
+  ],
+  "frames": [
+    {
+      "slot": "A",
+      "guess": "heavy_oak_modal",
+      "confidence": "high",
+      "cue": "Thick dark wood rails and square corner joints; strongly heavier than all other frames."
+    },
+    {
+      "slot": "B",
+      "guess": "objective_warning",
+      "confidence": "high",
+      "cue": "Restrained straight rectangular frame with red inner rule."
+    },
+    {
+      "slot": "C",
+      "guess": "unchanged_tooltip",
+      "confidence": "medium",
+      "cue": "Very faint parchment border, no dark outline, lighter than the simple thin-line panel F."
+    },
+    {
+      "slot": "D",
+      "guess": "advisor_normal",
+      "confidence": "high",
+      "cue": "Rolled parchment ends and ornamental scroll corners without red warning rule."
+    },
+    {
+      "slot": "E",
+      "guess": "objective_normal",
+      "confidence": "high",
+      "cue": "Dark double straight line and tiny upper-left ornamental marker; no red."
+    },
+    {
+      "slot": "F",
+      "guess": "light_panel",
+      "confidence": "medium",
+      "cue": "Plain single thin brown border with flat paper body; close in semantic weight to tooltip C."
+    },
+    {
+      "slot": "G",
+      "guess": "advisor_warning",
+      "confidence": "high",
+      "cue": "Same rolled-scroll structural family as D, plus red inner rule."
+    },
+    {
+      "slot": "H",
+      "guess": "objective_done",
+      "confidence": "high",
+      "cue": "Double straight line plus bottom-right red wax seal marking completion."
+    }
+  ],
+  "portraitExposureDisclosure": "Root informed reviewer after first guesses were locked that the image order accidentally matched original order and would be replaced. These guesses describe the first exposed version only; this reviewer cannot serve as a fresh blind reviewer of the replacement. Final randomized recognition requires another reviewer.",
+  "portraitVerdictStatus": "superseded-first-exposure-not-final-randomized-check",
+  "frameProof": "proofs/01-frames-blind.png",
+  "frameMethod": "Pixel-only classification before filenames, answer key or provenance; labels A-H only."
+}

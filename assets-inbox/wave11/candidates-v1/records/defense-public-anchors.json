@@ -1,0 +1,22 @@
+{
+  "method": "Public/tower: three manually inspected noncollinear ground contacts, affine transform. Gate: outer two foot endpoints with preserved vertical axis; middlepoint audit only because three almost collinear points produce unstable shear. No alpha-box auto fit. Contact selection uncertainty approximately 1-3 output pixels; canvas/origin exact, not a claim of generated interior geometry pixel identity.",
+  "targets": {"gate": [[26,161],[115,202],[460,333]], "tower": [[160,289],[352,289],[256,326]], "church": [[8,188],[51,214],[225,169]], "keep": [[48,202],[136,248],[225,203]]},
+  "sources": {
+    "gate_plot": [[23,159],[110,197],[469,324]],
+    "gate_foundation": [[31,165],[116,204],[463,323]],
+    "gate_frame": [[33,164],[118,201],[451,328]],
+    "gate_roof": [[26,162],[119,205],[460,338]],
+    "tower_plot": [[159,249],[354,249],[256,288]],
+    "tower_foundation": [[164,234],[349,234],[256,274]],
+    "tower_frame": [[135,253],[293,253],[214,282]],
+    "tower_roof": [[158,280],[362,280],[259,313]],
+    "church_frame": [[10,181],[52,201],[221,161]],
+    "church_plot": [[13,155],[50,181],[220,115]],
+    "church_foundation": [[10,174],[47,198],[226,136]],
+    "church_roof": [[8,188],[53,214],[227,171]],
+    "keep_plot": [[60,171],[142,219],[217,177]],
+    "keep_foundation": [[50,190],[141,240],[216,194]],
+    "keep_frame": [[59,202],[146,245],[220,205]],
+    "keep_roof": [[54,200],[137,243],[222,201]]
+  }
+}

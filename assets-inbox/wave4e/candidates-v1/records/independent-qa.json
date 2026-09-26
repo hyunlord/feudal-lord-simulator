@@ -1,0 +1,40 @@
+{
+  "scope": "candidate-only visual review, not runtime certification",
+  "reviewed": {
+    "workers": 7,
+    "workerCells": 56,
+    "overlay": 1,
+    "props": 8,
+    "water": 5,
+    "objects": 8,
+    "walls": 6,
+    "proofs": 3
+  },
+  "checks": {
+    "workerDirection": "visually coherent",
+    "workerPalette": "distinct",
+    "merchantHat": "visible",
+    "waterColor": "continuous with supplied deep reference",
+    "animalGroups": "3/4/5 sheep, c includes one black sheep, two pigs",
+    "winterBarn": "no snow, closed door, wood pile",
+    "pillar": "angular, exact 135 degree socket fit not certified"
+  },
+  "pending": [],
+  "limits": [
+    "head alpha centroid is not anatomical head measurement",
+    "prop 4-direction rigid consistency not certified",
+    "module socket walkability and game occlusion not verified",
+    "female hem length diversity constrained by template"
+  ],
+  "status": "candidate visual review complete with stated limits",
+  "resolved": [
+    "rubble B irregular stone correction",
+    "proof01 joined row added",
+    "proof01 top strip and face gap removed in final visual inspection"
+  ],
+  "reviewedProofHashes": {
+    "01-walls.png": "c3479973424efa524cd93e9a4789f3ad546c4ab1285de0b37f4e16b23e2c580f",
+    "02-water.png": "0e72cbf17f1e710f94304a288edd41da1278b2ff555e25ee7f86aadbb0427c35",
+    "03-walkers.png": "173b8554650a1e0a78f42201060a2a1787282fe5257bbfa6010c0ecf705d02ca"
+  }
+}

@@ -1,0 +1,558 @@
+{
+  "method": "Independent image inspection; manual approximate anatomical face center for front views and covered cranial center for back views, sheet-local 148px-cell coordinates; not alpha centroids. Coordinates approximate to ~2 master px per point; distance uncertainty may exceed 1 final px. Not metrological certification.",
+  "rows": [
+    {
+      "id": "P1",
+      "direction": "NE",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        84,
+        22
+      ],
+      "candidateHeadMasterPx": [
+        86,
+        23
+      ],
+      "headDistanceFinalPx": 1.12,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P1",
+      "direction": "SE",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        79,
+        23
+      ],
+      "candidateHeadMasterPx": [
+        80,
+        25
+      ],
+      "headDistanceFinalPx": 1.12,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P1",
+      "direction": "SW",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        69,
+        24
+      ],
+      "candidateHeadMasterPx": [
+        68,
+        25
+      ],
+      "headDistanceFinalPx": 0.71,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P1",
+      "direction": "NW",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        66,
+        21
+      ],
+      "candidateHeadMasterPx": [
+        65,
+        22
+      ],
+      "headDistanceFinalPx": 0.71,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P1",
+      "direction": "NE",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        84,
+        24
+      ],
+      "candidateHeadMasterPx": [
+        85,
+        24
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P1",
+      "direction": "SE",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        80,
+        25
+      ],
+      "candidateHeadMasterPx": [
+        81,
+        27
+      ],
+      "headDistanceFinalPx": 1.12,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P1",
+      "direction": "SW",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        67,
+        26
+      ],
+      "candidateHeadMasterPx": [
+        68,
+        27
+      ],
+      "headDistanceFinalPx": 0.71,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P1",
+      "direction": "NW",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        68,
+        22
+      ],
+      "candidateHeadMasterPx": [
+        67,
+        23
+      ],
+      "headDistanceFinalPx": 0.71,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P4",
+      "direction": "NE",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        95,
+        21
+      ],
+      "candidateHeadMasterPx": [
+        94,
+        22
+      ],
+      "headDistanceFinalPx": 0.71,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P4",
+      "direction": "SE",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        81,
+        23
+      ],
+      "candidateHeadMasterPx": [
+        80,
+        25
+      ],
+      "headDistanceFinalPx": 1.12,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P4",
+      "direction": "SW",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        69,
+        23
+      ],
+      "candidateHeadMasterPx": [
+        68,
+        25
+      ],
+      "headDistanceFinalPx": 1.12,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P4",
+      "direction": "NW",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        57,
+        21
+      ],
+      "candidateHeadMasterPx": [
+        57,
+        22
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P4",
+      "direction": "NE",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        95,
+        21
+      ],
+      "candidateHeadMasterPx": [
+        94,
+        22
+      ],
+      "headDistanceFinalPx": 0.71,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P4",
+      "direction": "SE",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        85,
+        23
+      ],
+      "candidateHeadMasterPx": [
+        84,
+        25
+      ],
+      "headDistanceFinalPx": 1.12,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P4",
+      "direction": "SW",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        67,
+        22
+      ],
+      "candidateHeadMasterPx": [
+        66,
+        24
+      ],
+      "headDistanceFinalPx": 1.12,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P4",
+      "direction": "NW",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        57,
+        21
+      ],
+      "candidateHeadMasterPx": [
+        57,
+        22
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P5",
+      "direction": "NE",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        84,
+        22
+      ],
+      "candidateHeadMasterPx": [
+        84,
+        23
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P5",
+      "direction": "SE",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        74,
+        26
+      ],
+      "candidateHeadMasterPx": [
+        77,
+        25
+      ],
+      "headDistanceFinalPx": 1.58,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P5",
+      "direction": "SW",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        75,
+        26
+      ],
+      "candidateHeadMasterPx": [
+        74,
+        29
+      ],
+      "headDistanceFinalPx": 1.58,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P5",
+      "direction": "NW",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        65,
+        22
+      ],
+      "candidateHeadMasterPx": [
+        65,
+        23
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P5",
+      "direction": "NE",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        85,
+        20
+      ],
+      "candidateHeadMasterPx": [
+        86,
+        20
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P5",
+      "direction": "SE",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        74,
+        23
+      ],
+      "candidateHeadMasterPx": [
+        77,
+        24
+      ],
+      "headDistanceFinalPx": 1.58,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P5",
+      "direction": "SW",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        67,
+        23
+      ],
+      "candidateHeadMasterPx": [
+        69,
+        23
+      ],
+      "headDistanceFinalPx": 1,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P5",
+      "direction": "NW",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        65,
+        20
+      ],
+      "candidateHeadMasterPx": [
+        65,
+        21
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P6",
+      "direction": "NE",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        84,
+        22
+      ],
+      "candidateHeadMasterPx": [
+        84,
+        22
+      ],
+      "headDistanceFinalPx": 0,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P6",
+      "direction": "SE",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        74,
+        26
+      ],
+      "candidateHeadMasterPx": [
+        76,
+        26
+      ],
+      "headDistanceFinalPx": 1,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P6",
+      "direction": "SW",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        75,
+        26
+      ],
+      "candidateHeadMasterPx": [
+        73,
+        29
+      ],
+      "headDistanceFinalPx": 1.8,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P6",
+      "direction": "NW",
+      "frame": 0,
+      "templateHeadMasterPx": [
+        65,
+        22
+      ],
+      "candidateHeadMasterPx": [
+        65,
+        22
+      ],
+      "headDistanceFinalPx": 0,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P6",
+      "direction": "NE",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        85,
+        20
+      ],
+      "candidateHeadMasterPx": [
+        85,
+        21
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P6",
+      "direction": "SE",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        74,
+        23
+      ],
+      "candidateHeadMasterPx": [
+        77,
+        25
+      ],
+      "headDistanceFinalPx": 1.8,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "near_threshold_not_certified",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P6",
+      "direction": "SW",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        67,
+        23
+      ],
+      "candidateHeadMasterPx": [
+        67,
+        24
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    },
+    {
+      "id": "P6",
+      "direction": "NW",
+      "frame": 1,
+      "templateHeadMasterPx": [
+        65,
+        20
+      ],
+      "candidateHeadMasterPx": [
+        65,
+        21
+      ],
+      "headDistanceFinalPx": 0.5,
+      "manualPointUncertaintyFinalPx": 1,
+      "thresholdVerdict": "visually_consistent_with_tolerance",
+      "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result"
+    }
+  ],
+  "observations": [
+    "No gross direction reversal in 16 direction/gait pairs.",
+    "Feet and leg trajectories visually follow templates; numerical alpha/RGBA check belongs to producer.",
+    "P1/P4 costume and hands have been repainted, so exact arm pixels are not preserved. Broad arm pose remains comparable.",
+    "P5/P6 red-brown lower hem bands survive under blue gowns because protected lower pixels include old garment.",
+    "P6 NE f0 and f1 tiny pale apron edge remnants at right skirt side: remove for no-apron requirement.",
+    "No extra carried props or signatures observed.",
+    "Full head <=2px claim cannot be established by forced alpha mask, bbox matching or these approximate visual annotations alone."
+  ]
+}

@@ -4,6 +4,7 @@ import type { GameState } from "../engine/engine.types";
 import { platformServices } from "../platform/platform";
 import { ALERT_STACK_COPY } from "./alertStackCopy.ko";
 import { alertRowLookAtIntent, alertStackRows, type AlertRow } from "./alertStackModel";
+import { UiIcon } from "./UiIcon";
 
 export type AlertStackProps = Readonly<{
   state: GameState;
@@ -28,7 +29,7 @@ export function AlertStack({ state, onInspect }: AlertStackProps): ReactElement 
       <ul className="alert-stack-list">
         {rows.map((row) => (
           <li key={row.id} className={`alert-stack-row alert-stack-row--${row.severity}`}>
-            <span className="alert-stack-shape" role="img" aria-label={ALERT_STACK_COPY.severityLabel[row.severity]}>{row.shape}</span>
+            <UiIcon sheet="alert" cell={row.severity === "immediate" ? "urgent" : "warn"} size={32} className="alert-stack-shape" label={ALERT_STACK_COPY.severityLabel[row.severity]} />
             <div className="alert-stack-text">
               <p className="alert-stack-title"><strong>{row.title}</strong> · <span>{row.countLabel}</span></p>
               <p className="alert-stack-cause">{row.cause}</p>
@@ -39,7 +40,7 @@ export function AlertStack({ state, onInspect }: AlertStackProps): ReactElement 
               aria-label={ALERT_STACK_COPY.inspectLabel(row.title)}
               onClick={() => inspectAlertRow(row, onInspect)}
             >
-              {ALERT_STACK_COPY.inspect}
+              <UiIcon sheet="action" cell="look" />{ALERT_STACK_COPY.inspect}
             </button>
           </li>
         ))}

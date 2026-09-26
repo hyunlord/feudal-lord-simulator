@@ -1,0 +1,15 @@
+{
+  "score": 90,
+  "verdict": "pass",
+  "category_match": true,
+  "scope": "candidate package technical completeness and project style; not unconditional visual acceptance",
+  "differences": [
+    "Some house silhouettes remain subtle at zoom0.6; house visual acceptance is partial.",
+    "Native sources were larger than final PNG sizes and mechanically normalized."
+  ],
+  "suggestions": [
+    "Review named low-zoom silhouette limitations in SELF_QA.md before game adoption."
+  ],
+  "reasoning": "All35assets and4checks exist; all dimensions, padding, reference pivots and39-row provenance pass. Five promotions are byte-identical; remaining visual limitations are explicitly recorded.",
+  "next_actions": []
+}

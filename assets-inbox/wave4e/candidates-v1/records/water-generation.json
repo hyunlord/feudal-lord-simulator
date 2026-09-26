@@ -1,0 +1,67 @@
+[
+  {
+    "id": "shoreline_deep_a-v1",
+    "prompt": "ROLE strip / shoreline_deep_a. Edit project shoreline reference, retain its horizontally continuous quiet grassy earth bank composition, ground in upper half and water in lower half. Match water hues to reference2 deep_a muted blue-green (#456975 approximately), no turquoise shallows. Broad handpainted medieval strategy-game brush shapes, soft upper-left light, flat texture map no perspective. Target final512x96, 4tilelong ribbon. Horizontal X-only repeating uninterrupted bank; top and bottom alpha fade12px, true transparent outside. Varied modest dirt ledge and small grass tufts12-16pxatfinalscale, no reeds, focalstones, whitefoam, borders or text. Deliver a long horizontal ribbon centered across entire width on transparent canvas. Change water color and bank rhythm only, preserve reference style.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/shoreline_a-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/deep_a-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "source": "sources/water/shoreline_deep_a-v1-raw.png",
+    "method": "reference edit"
+  },
+  {
+    "id": "bridge_abutment_sw_a-v1",
+    "prompt": "ROLE module / bridge_abutment_sw_a. Reference1 is mandatory black/white topology mask at256x192: white is deck and two support ends, black must be transparent. Paint inside that silhouette a dedicated SOUTHWEST front bridge abutment, medieval worn oak plank deck, broad6planks and sturdy squared posts, dull muted warmwood, touch of earth at upper shore socket. Reference2 gives handpainted projectstyle only; do NOT mirror/copy its pixels. Orthographic2:1isometric, no perspective. Deck face nearest camera slopes down toward LOWER LEFT, independent view, upper-leftsoftlight. Keep deck corners at (24,98),(146,37),(230,79),(108,140) normalizedto256x192. Frontsocket(108,140), backsocket(146,37), passage48px. TransparentRGBA outside object, no castshadow, grassisland, water, boat, ropes, railings or text. Painted useful gameasset, large readable wood shapes no micrograin.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/bridge_abutment_sw_a-v1-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/bridge_abutment_se_a-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "source": "sources/water/bridge_abutment_sw_a-v1-raw.png",
+    "method": "reference edit"
+  },
+  {
+    "id": "shoreline_deep_b-v1",
+    "prompt": "ROLE strip / shoreline_deep_a. Edit project shoreline reference, retain its horizontally continuous quiet grassy earth bank composition, ground in upper half and water in lower half. Match water hues to reference2 deep_a muted blue-green (#456975 approximately), no turquoise shallows. Broad handpainted medieval strategy-game brush shapes, soft upper-left light, flat texture map no perspective. Target final512x96, 4tilelong ribbon. Horizontal X-only repeating uninterrupted bank; top and bottom alpha fade12px, true transparent outside. Varied modest dirt ledge and small grass tufts12-16pxatfinalscale, no reeds, focalstones, whitefoam, borders or text. Deliver a long horizontal ribbon centered across entire width on transparent canvas. Change water color and bank rhythm only, preserve reference style. Variant B: independently repaint bank with two shallower rounded bays and three broad low moss humps, less dirt exposed than A; keep water exactly the same deep blue-green palette as deep_a. No isolated stones.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/shoreline_a-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/deep_a-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "source": "sources/water/shoreline_deep_b-v1-raw.png",
+    "method": "reference edit"
+  },
+  {
+    "id": "bridge_abutment_nw_b-v1",
+    "prompt": "ROLE module bridge_abutment_nw_b. Mask1 controls white silhouette(deck/supports); black becomes transparency. Draw BACK NORTHWEST bridge abutment variant independently, not reflected pixels. Deck points at256x192:(30,82),(102,46),(228,109),(155,146). Entrancefrontsocket(155,146), shorebacksocket(102,46). Reference2projectNEstyle only. Broad aged grey-brown oak boards, shorethreshold one rough earth/stone lip at UPPER LEFT, exposed rightmost squared leg, clearer five broad plank rhythm. Upperleftsoftlight, orthographic2:1isometric, no perspective. Actual transparent background, no water, grass island, boat, text, modernbolts, rails, longshadow. Keep deckboards thick enough to read at0.3scale. Shape must follow mask and be distinct from supplied reference.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/bridge_abutment_nw_b-v1-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/bridge_abutment_ne_a-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "source": "sources/water/bridge_abutment_nw_b-v1-raw.png",
+    "method": "reference edit"
+  },
+  {
+    "id": "ferry_landing-v1",
+    "prompt": "ROLE module ferry_landing. Edit white regions of topology mask1 into small medieval timber landing. Preserve rhomboiddeck footprint (33,106),(147,49),(224,87),(110,145) normalized256x192, rectangular deck in2:1isometricview. EXACTLY TWO upright mooring posts, one on each long outer edge, anchored near(44,117) and(207,90), separate from the deck. No thirdpost. Four broad weathered grey-brown oak planks, simple pegs, no railings, NO boat, NO rope, NOwater, NOgroundisland. Reference2styleonly. Softupperleftlight, contactAOonly, transparentRGBAbackground. Plain purposeful handpainted medieval game prop; broad readable shapes, no text or micrograin. Keep black mask area transparent.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/ferry_landing-v1-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/bridge_abutment_se_a-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "source": "sources/water/ferry_landing-v1-raw.png",
+    "method": "reference edit"
+  }
+]

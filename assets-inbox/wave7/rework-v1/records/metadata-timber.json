@@ -1,0 +1,108 @@
+[
+  {
+    "id": "cart_load_timber_ne-v2",
+    "file": "assets/cart_load_timber_ne-v2.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit the FIRST input image, an existing isolated sawn-timber cargo sprite. Keep its exact northeast isometric direction: long lumber axis from lower-left to upper-right, with near ends at lower-left. Replace the thin bundle with a distinct compact STACK of FOUR visibly thick layers of rectangular rough-sawn timber planks. Chunky squared flat plank ends, strong stepped layered silhouette and clear dark narrow horizontal separations between the four tiers. Each tier consists of two or three substantial wide planks. Uneven staggered ends make the layers count readable in miniature. Warm muted honey-brown wood, broad painterly strokes matching the SECOND image project cart, with flat faces, no round log ends. Keep low and compact enough for the cart bed: final visible content must fit about36x29 within96x64 canvas. Second reference is style/fit only, do not include cart, wheel, handle, people, ground, shadow or ropes. True transparent RGBA background with ample margins. No lettering, numbers, symbols. Preserve camera and NE orientation, no mirror or rotation. Main improvement is multiple THICK plank layers, not a single thin board.",
+        "references": [
+          "output/astra-wave7-candidates-v1/assets/cart_load_timber_ne-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/timber/timber_ne-raw.png",
+        "rawSize": [
+          1536,
+          1024
+        ],
+        "tool": "builtin imagegen edit",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 541,
+        "top": 314,
+        "width": 548,
+        "height": 474
+      },
+      "resize": "single Lanczos3 aspect-preserving fit inside36x29; unmodified generated RGBA",
+      "visibleSize": [
+        34,
+        29
+      ],
+      "placement": "centerX48 bottomY48",
+      "script": "records/timber-fit.cjs"
+    },
+    "qa": {
+      "rgba": true,
+      "transparentPixels": 5403,
+      "partialPixels": 692,
+      "sha256": "a945a3d6ac517051e59ebf460fa5c5c2be2f7d2064ec6bb7502e16c388be9016",
+      "visual": "Four thick squared timber tiers; NE and NW independently edited without mirroring.",
+      "smallScale": "0.3 scale silhouette visibly thicker than v1, but individual tiers cannot be counted reliably.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "cart_load_timber_nw-v2",
+    "file": "assets/cart_load_timber_nw-v2.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit the FIRST input image, an existing isolated sawn-timber cargo sprite. Keep its exact northwest isometric direction: long lumber axis from lower-right to upper-left, with near ends at lower-right. Replace the thin bundle with a distinct compact STACK of FOUR visibly thick layers of rectangular rough-sawn timber planks. Chunky squared flat plank ends, strong stepped layered silhouette and clear dark narrow horizontal separations between the four tiers. Each tier consists of two or three substantial wide planks. Uneven staggered ends make the layers count readable in miniature. Warm muted honey-brown wood, broad painterly strokes matching the SECOND image project cart, with flat faces, no round log ends. Keep low and compact enough for the cart bed: final visible content must fit about36x29 within96x64 canvas. Second reference is style/fit only, do not include cart, wheel, handle, people, ground, shadow or ropes. True transparent RGBA background with ample margins. No lettering, numbers, symbols. Preserve camera and NW orientation, no mirror or rotation. Main improvement is multiple THICK plank layers, not a single thin board.",
+        "references": [
+          "output/astra-wave7-candidates-v1/assets/cart_load_timber_nw-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/timber/timber_nw-raw.png",
+        "rawSize": [
+          1536,
+          1024
+        ],
+        "tool": "builtin imagegen edit",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 484,
+        "top": 287,
+        "width": 584,
+        "height": 480
+      },
+      "resize": "single Lanczos3 aspect-preserving fit inside36x29; unmodified generated RGBA",
+      "visibleSize": [
+        35,
+        29
+      ],
+      "placement": "centerX48 bottomY48",
+      "script": "records/timber-fit.cjs"
+    },
+    "qa": {
+      "rgba": true,
+      "transparentPixels": 5419,
+      "partialPixels": 671,
+      "sha256": "c3a7cccc8c6b3d6783522688c4089297b9800e563c643f2c18a68ecf476e57a9",
+      "visual": "Four thick squared timber tiers; NE and NW independently edited without mirroring.",
+      "smallScale": "0.3 scale silhouette visibly thicker than v1, but individual tiers cannot be counted reliably.",
+      "runtime": "not installed"
+    }
+  }
+]

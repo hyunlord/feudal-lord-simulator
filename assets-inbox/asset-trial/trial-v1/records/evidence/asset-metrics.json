@@ -1,0 +1,125 @@
+[
+  {
+    "key": "house",
+    "source": "buildings/house_l0.png",
+    "output": "house_l0.png",
+    "baseline": {
+      "width": 96,
+      "height": 112,
+      "transparent": 7269,
+      "opaque": 3337,
+      "bbox": {
+        "left": 9,
+        "top": 22,
+        "width": 78,
+        "height": 74
+      }
+    },
+    "generated": {
+      "width": 1254,
+      "height": 1254,
+      "transparent": 904222,
+      "opaque": 778,
+      "bbox": {
+        "left": 134,
+        "top": 155,
+        "width": 1035,
+        "height": 996
+      }
+    },
+    "candidate": {
+      "width": 96,
+      "height": 112,
+      "transparent": 6750,
+      "opaque": 151,
+      "bbox": {
+        "left": 10,
+        "top": 22,
+        "width": 77,
+        "height": 74
+      }
+    }
+  },
+  {
+    "key": "oak",
+    "source": "foliage/tree_oak_large.png",
+    "output": "tree_oak_large.png",
+    "baseline": {
+      "width": 88,
+      "height": 112,
+      "transparent": 3617,
+      "opaque": 6070,
+      "bbox": {
+        "left": 1,
+        "top": 0,
+        "width": 85,
+        "height": 112
+      }
+    },
+    "generated": {
+      "width": 1254,
+      "height": 1254,
+      "transparent": 932198,
+      "opaque": 902,
+      "bbox": {
+        "left": 187,
+        "top": 27,
+        "width": 917,
+        "height": 1188
+      }
+    },
+    "candidate": {
+      "width": 88,
+      "height": 112,
+      "transparent": 3930,
+      "opaque": 289,
+      "bbox": {
+        "left": 1,
+        "top": 2,
+        "width": 85,
+        "height": 110
+      }
+    }
+  },
+  {
+    "key": "grass",
+    "source": "terrain/grass.png",
+    "output": "grass.png",
+    "baseline": {
+      "width": 256,
+      "height": 256,
+      "transparent": 0,
+      "opaque": 65536,
+      "bbox": {
+        "left": 0,
+        "top": 0,
+        "width": 256,
+        "height": 256
+      }
+    },
+    "generated": {
+      "width": 1254,
+      "height": 1254,
+      "transparent": 0,
+      "opaque": 1572516,
+      "bbox": {
+        "left": 0,
+        "top": 0,
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    "candidate": {
+      "width": 256,
+      "height": 256,
+      "transparent": 0,
+      "opaque": 65536,
+      "bbox": {
+        "left": 0,
+        "top": 0,
+        "width": 256,
+        "height": 256
+      }
+    }
+  }
+]

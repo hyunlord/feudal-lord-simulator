@@ -1,0 +1,68 @@
+[
+  {
+    "id": "herd/sheep_cluster_moving_a-v1",
+    "width": 512,
+    "height": 96,
+    "channels": 4,
+    "borderOccupiedPixels": 0,
+    "occupiedPixels": 11022,
+    "memberCount": 4,
+    "sourceCellPixels": "unscaled, unmirrored, integer translations",
+    "static": true
+  },
+  {
+    "id": "herd/sheep_cluster_moving_b-v1",
+    "width": 576,
+    "height": 112,
+    "channels": 4,
+    "borderOccupiedPixels": 0,
+    "occupiedPixels": 13644,
+    "memberCount": 5,
+    "sourceCellPixels": "unscaled, unmirrored, integer translations",
+    "static": true
+  },
+  {
+    "id": "herd/pig_cluster-v1",
+    "width": 512,
+    "height": 96,
+    "channels": 4,
+    "borderOccupiedPixels": 0,
+    "occupiedPixels": 11283,
+    "memberCount": 4,
+    "sourceCellPixels": "unscaled, unmirrored, integer translations",
+    "static": true
+  },
+  {
+    "id": "herd/goose_flock_a-v1",
+    "width": 384,
+    "height": 74,
+    "channels": 4,
+    "borderOccupiedPixels": 0,
+    "occupiedPixels": 5470,
+    "memberCount": 5,
+    "sourceCellPixels": "unscaled, unmirrored, integer translations",
+    "static": true
+  },
+  {
+    "id": "herd/goose_flock_b-v1",
+    "width": 384,
+    "height": 74,
+    "channels": 4,
+    "borderOccupiedPixels": 0,
+    "occupiedPixels": 4380,
+    "memberCount": 4,
+    "sourceCellPixels": "unscaled, unmirrored, integer translations",
+    "static": true
+  },
+  {
+    "id": "herd/cattle_drove-v1",
+    "width": 768,
+    "height": 144,
+    "channels": 4,
+    "borderOccupiedPixels": 0,
+    "occupiedPixels": 20563,
+    "memberCount": 3,
+    "sourceCellPixels": "unscaled, unmirrored, integer translations",
+    "static": true
+  }
+]

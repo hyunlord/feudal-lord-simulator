@@ -60,7 +60,13 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     void preloadGameArt();
 
     const refs = createCanvasMutableRefs(initialCamera(canvas, stateRef.current));
-    const publishPrediction = createPredictionPublisher(value => setPrediction?.(value));
+    const publishPanel = createPredictionPublisher(value => setPrediction?.(value));
+    // UX-2 cursor: the placement verdict at the pointer (valid / invalid cursor art), written only when it changes.
+    const publishPrediction = (preview: import("./overlays").PlacementPreview, camera: import("./camera").CameraState) => {
+      const verdict = preview.tool === null || preview.tile === null ? "none" : preview.ok ? "ok" : "blocked";
+      if (canvas.dataset.placement !== verdict) canvas.dataset.placement = verdict;
+      publishPanel(preview, camera);
+    };
     const bus = platformServices().input;
     let frameId = 0, lastFrameAtMs = performance.now(), userControlledCamera = false;
     const viewport = () => {

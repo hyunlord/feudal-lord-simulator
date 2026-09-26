@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "id": "ui/icon_resource_sheet",
+      "width": 576,
+      "height": 96,
+      "alphaMin": 0,
+      "alphaMax": 255
+    },
+    {
+      "id": "ui/icon_build_category_sheet",
+      "width": 768,
+      "height": 128,
+      "alphaMin": 0,
+      "alphaMax": 255
+    },
+    {
+      "id": "ui/icon_layer_mode_sheet",
+      "width": 384,
+      "height": 128,
+      "alphaMin": 0,
+      "alphaMax": 255
+    },
+    {
+      "id": "ui/icon_status_sheet",
+      "width": 768,
+      "height": 96,
+      "alphaMin": 0,
+      "alphaMax": 255
+    },
+    {
+      "id": "ui/cursor_sheet",
+      "width": 256,
+      "height": 64,
+      "alphaMin": 0,
+      "alphaMax": 255
+    }
+  ],
+  "cellOrderVerified": true,
+  "actual24pxReview": true,
+  "smallDetailLimit": "At24px secondary details are weak; silhouettes distinguish primary groups. No blind recognition test.",
+  "gameInstalled": false
+}

@@ -1,0 +1,118 @@
+[
+  {
+    "id": "water/shallow_d-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "deep_a-v1.png",
+      "shallow_a-v1.png"
+    ],
+    "refs": [
+      "/tmp/astra-wave5c-work-20260925/additional/deep_a-v1.png",
+      "/tmp/astra-wave5c-work-20260925/additional/shallow_a-v1.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Create ONE seamless opaque top-down game water texture, aspect ratio 2:1, delivered design resolution 256x128. Reference image 1 is the approved deep water, reference 2 is the previous shallow water. Make shallow water variant D in EXACTLY the muted grey olive teal hue family of image 1, only very modestly lighter (about 4 RGB levels brighter); remove the extra cyan/blue of image 2. Broad softly painted ripple forms, 8–12 pixels minimum at final 256x128 scale. Ripple phase D: gently staggered short horizontal arcs, no large distinctive center feature. Perfectly tileable BOTH axes. Whole image opaque, no border, no shoreline, no transparency, no objects, no sparkle noise or 1–4px grain. Preserve restrained painterly game texture. No text.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-ac3ddc2d-45a1-4611-a3c5-8fdc6caf2df6.png",
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/water/shallow_d-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-ac3ddc2d-45a1-4611-a3c5-8fdc6caf2df6.png",
+    "manualEdits": "Canvas one-pass resize to 256x128; mean RGB matched to deep_a+4 levels; contrast .65; paired edge collar X16/Y12px; opaque RGBA.",
+    "notes": "Candidate: same deep-water hue, modest lighter level; wave phase differs.",
+    "generatedAt": "2026-09-25T13:04:04.723Z",
+    "candidates": 1,
+    "selectionReason": "Broad low-contrast ripples, muted hue continuity."
+  },
+  {
+    "id": "water/shallow_e-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "deep_a-v1.png",
+      "shallow_a-v1.png"
+    ],
+    "refs": [
+      "/tmp/astra-wave5c-work-20260925/additional/deep_a-v1.png",
+      "/tmp/astra-wave5c-work-20260925/additional/shallow_a-v1.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Create ONE seamless opaque top-down game water texture, aspect ratio 2:1, delivered design resolution 256x128. Reference image 1 is approved deep water; image 2 is prior shallow water. New shallow variant E must use EXACT muted grey olive teal hue of image 1 with only a very slight lightness increase (about 4 RGB levels). Less blue and murkier than image 2. Broad painted low-contrast wave motifs 8–12px at 256x128, E phase offset with longer shallow meandering ripples clustered across left and lower thirds, distinct from D but same density. Perfectly seamless on BOTH X and Y. Entire opaque rectangle. No shore, no border, no objects, no speckle noise, no tiny grain, no foam, no text. Same painterly rendering as project references.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-fb32dba6-6973-487a-af4b-dc7f6cde93a2.png",
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/water/shallow_e-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-fb32dba6-6973-487a-af4b-dc7f6cde93a2.png",
+    "manualEdits": "Canvas one-pass resize to 256x128; mean RGB matched to deep_a+4 levels; contrast .65; paired edge collar X16/Y12px; opaque RGBA.",
+    "notes": "Candidate: same deep-water hue, modest lighter level; wave phase differs.",
+    "generatedAt": "2026-09-25T13:04:27.863Z",
+    "candidates": 1,
+    "selectionReason": "Broad low-contrast ripples, muted hue continuity."
+  },
+  {
+    "id": "wall/stone_pillar_135_b-v1",
+    "role": "module",
+    "size": [
+      1774,
+      887
+    ],
+    "references": [
+      "stone_pillar_135-v1.png"
+    ],
+    "refs": [
+      "/tmp/astra-wave5c-work-20260925/astra-wave5c-reference-files/stone_pillar_135-v1.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Reference is this project's existing 135-degree stone wall buttress. Make ONE newly painted LEFT-TURN 135-degree corner buttress B, not a horizontal flip or recolor. Keep existing canvas aspect 2:1, centered isolated object, same size and bottom-center registration, same vertical height and block scale, identical grey warm limestone/rubble palette and painterly material. Change the actual footprint: two unequal wings meet at an obtuse 135 degree corner, primary long wing extends back-left from the front bend, short return wing turns to rear-right; clearly show 135-degree bent cap and plinth plan, not a right-angle square column. Faceted cap follows bend, quoins at exposed bend, battered lower foot. Transparent background everywhere outside object, no ground plane, no cast shadow, soft top-left light, right face shaded. Reference object's body occupies approximately x630..1145 y100..790 in 1774x887 canvas; keep this registration and visual scale. Broad masonry joint grouping. No battlements, no roof, no doorway, no text.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-00e1ad81-c41c-42b2-9eb2-8c2d99be34e8.png",
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/wall/stone_pillar_135_b-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-00e1ad81-c41c-42b2-9eb2-8c2d99be34e8.png",
+    "manualEdits": "Canvas single bbox registration to reference pillar bbox; saturated edge-fringe alpha cleanup; 3px invisible RGB bleed. No flip.",
+    "notes": "Candidate: independently repainted left/right long-wing geometry, fixed reference registration; obtuse corner visual target requires runtime socket verification.",
+    "generatedAt": "2026-09-25T13:05:00.221Z",
+    "candidates": 1,
+    "selectionReason": "Distinct long-wing side, material and top-left light retained."
+  },
+  {
+    "id": "wall/stone_pillar_135_c-v1",
+    "role": "module",
+    "size": [
+      1774,
+      887
+    ],
+    "references": [
+      "stone_pillar_135-v1.png"
+    ],
+    "refs": [
+      "/tmp/astra-wave5c-work-20260925/astra-wave5c-reference-files/stone_pillar_135-v1.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Paint ONE RIGHT-TURN 135-degree corner buttress C as a true newly drawn counterpart of project reference. Not a mirrored bitmap: redraw masonry with light still from top-left and different joint placement. Same 1774x887 2:1 transparent canvas, body centered around x630..1145 y100..790, same height, pivot, scale, stone block size, grey warm limestone and rubble painting. Actual footprint two unequal wings form obtuse 135-degree turn: primary long wing extends toward rear-right from the front bend, shorter return turns rear-left. Broad long RIGHT side and narrower LEFT return, versus B's long left side. Show bent polygon top cap and matching plinth, genuine obtuse 135-degree corner not 90-degree square pillar. Quoin blocks articulate bend, sloped lower foot. Same restrained historical English stonework 1300-1450. Fully transparent exterior; no floor or cast shadow, no battlements, no text.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-af33a1bd-5c07-47b0-9a09-34616d0771c0.png",
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/wall/stone_pillar_135_c-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-af33a1bd-5c07-47b0-9a09-34616d0771c0.png",
+    "manualEdits": "Canvas single bbox registration to reference pillar bbox; saturated edge-fringe alpha cleanup; 3px invisible RGB bleed. No flip.",
+    "notes": "Candidate: independently repainted left/right long-wing geometry, fixed reference registration; obtuse corner visual target requires runtime socket verification.",
+    "generatedAt": "2026-09-25T13:05:24.984Z",
+    "candidates": 1,
+    "selectionReason": "Distinct long-wing side, material and top-left light retained."
+  }
+]

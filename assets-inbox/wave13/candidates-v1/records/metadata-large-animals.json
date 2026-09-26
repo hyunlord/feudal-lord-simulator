@@ -1,0 +1,326 @@
+[
+  {
+    "id": "animal_walk/ox-v1",
+    "file": "assets/animal_walk/ox-v1.png",
+    "cell": [
+      96,
+      74
+    ],
+    "sheet": [
+      384,
+      148
+    ],
+    "pivot": [
+      48,
+      70
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene game object sprites. Create a transparent RGBA 2 by 2 turntable sheet of ONE SAME sturdy tawny brown medieval English ox, with cream muzzle and small outward horns. Reference attached cattle is STYLE ONLY warm hand-painted 2:1 isometric orthographic art, soft upper-left light, clear chunky silhouettes, no ground shadows. Four evenly spaced cells each same size, generous empty gutters. Top left animal faces NE upper-right away from viewer; top right faces SE lower-right toward viewer; bottom left faces SW lower-left toward viewer; bottom right faces NW upper-left away. Exactly one ox per cell, consistent anatomy and coat, four separated legs visible, standing mid walk with near foreleg ahead and near hindleg behind. Entire head horns tail hooves visible, body diagonal along direction, camera elevated 30 degrees. NO harness yoke rider load scenery letters grid watermark. Transparent background. Single four-direction stationary base pose; will later edit legs only.",
+        "rawFile": "raw/large-animals/ox-base.png",
+        "referenceImages": [
+          "references/cattle_pair-v1.png"
+        ]
+      },
+      {
+        "prompt": "Edit target four ox sprites. Change ONLY the four legs below shoulders/hips to the OPPOSITE WALK PHASE: each visible near foreleg moves backwards and near hindleg forwards, far legs reverse. Move hooves clearly about one hoof length (not tiny variation). Keep all four directions NE SE SW NW as arranged and exact same image dimensions, position, torso, heads, horns, tail, coat pixels, proportions and silhouette above legs. No shift of any animal body, no new markings. Pure transparent RGBA, no ground shadow or text. Bodies heads tails will be pixel copied from base in final compositing so make changed legs join exact same joints.",
+        "rawFile": "raw/large-animals/ox-legs-edit.png",
+        "referenceImages": [
+          "raw/large-animals/ox-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "pipeline": "Builtin stationary turntable -> builtin legs-only edit -> saturated-red fringe cleanup -> base-bbox crop and single Lanczos resize -> manual leg polygons -> exact base RGBA outside leg mask ->4cols2rows",
+      "registration": "records/large-animals-ox-registration.json",
+      "redFringeRule": "R>150,G<50,B<50 or alpha<12 cleared; natural brown retained",
+      "protectedRegion": "Torso/head/tail copied byte-for-byte from frame0; black only leg polygons in mask",
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "sourceScale": "zoom1=0.5,zoom0.6=0.3",
+      "status": "candidate"
+    },
+    "qa": {
+      "measurements": [
+        {
+          "direction": "ne",
+          "changedLegPixels": 687,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-ox-0-protected-mask.png"
+        },
+        {
+          "direction": "se",
+          "changedLegPixels": 575,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-ox-1-protected-mask.png"
+        },
+        {
+          "direction": "sw",
+          "changedLegPixels": 492,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-ox-2-protected-mask.png"
+        },
+        {
+          "direction": "nw",
+          "changedLegPixels": 578,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-ox-3-protected-mask.png"
+        }
+      ],
+      "nativeLegAlternation": "Visible on silhouette hoof position; forward views smaller phase shift than reverse views",
+      "zoom06": "Largeanimal hoof alternation subtle at0.3source; not equal clarity across directions",
+      "historical": "No saddle harness load person in animal layer; medieval coat proportions, no modern breed claim"
+    }
+  },
+  {
+    "id": "animal_walk/horse_draught-v1",
+    "file": "assets/animal_walk/horse_draught-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "sheet": [
+      384,
+      160
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene game sprite turntable. Create transparent RGBA 2x2 sheet of one SAME strong sturdy medieval English draught horse, muted warm bay brown coat, black mane tail and socks, no saddle harness rider or load. Four evenly spaced cells and generous margins. Top left NE upperright AWAY view, top right SE lowerright TOWARD view, bottom left SW lowerleft TOWARD view, bottom right NW upperleft AWAY view. 2:1 elevated orthographic isometric camera, hand-painted warm project style as cattle reference, NOT photo, simplified large colorplanes for 96x80px cell. Entire hooves ears tails inview, body length diagonal direction. Four clearly separated legs, near foreleg ahead near hindleg back, standing walk pose. All four show same horse anatomy no large draftbreed feathers. Soft upperleftlight,no floor or groundshadow,no text labels grid. Exact four horses only, no ox.",
+        "rawFile": "raw/large-animals/horse_draught-base.png",
+        "referenceImages": [
+          "references/cattle_pair-v1.png"
+        ]
+      },
+      {
+        "prompt": "Edit only legs of these four draft horses to opposite gait phase. Near front hoof now back, near rear hoof now forward, far pair opposite. Clearly shift each hoof by a hoof-length, at least 25px source, while keeping shoulders hips anchored. Everything else must remain exact same including torso, head, mane, tail, position, dimensions, camera and coat. Exact same transparent background and four cell arrangement. NO saddle harness rider load shadow labels. These are animation frames, not new animals; body/head/tail will be restored from original pixels so move legs only below chest/haunch.",
+        "rawFile": "raw/large-animals/horse_draught-legs-edit.png",
+        "referenceImages": [
+          "raw/large-animals/horse_draught-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "pipeline": "Builtin stationary turntable -> builtin legs-only edit -> saturated-red fringe cleanup -> base-bbox crop and single Lanczos resize -> manual leg polygons -> exact base RGBA outside leg mask ->4cols2rows",
+      "registration": "records/large-animals-horse_draught-registration.json",
+      "redFringeRule": "R>150,G<50,B<50 or alpha<12 cleared; natural brown retained",
+      "protectedRegion": "Torso/head/tail copied byte-for-byte from frame0; black only leg polygons in mask",
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "sourceScale": "zoom1=0.5,zoom0.6=0.3",
+      "status": "candidate",
+      "rawCellOverlap": "Horse NW ears cross raw2x2 row boundary; sourceNW startsy380,SEheight410; exclude neighbor pixels byxy mask beforecrop. See buildscript. Exactcanvasgroundanchorunchanged."
+    },
+    "qa": {
+      "measurements": [
+        {
+          "direction": "ne",
+          "changedLegPixels": 656,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-horse_draught-0-protected-mask.png"
+        },
+        {
+          "direction": "se",
+          "changedLegPixels": 913,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-horse_draught-1-protected-mask.png"
+        },
+        {
+          "direction": "sw",
+          "changedLegPixels": 967,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-horse_draught-2-protected-mask.png"
+        },
+        {
+          "direction": "nw",
+          "changedLegPixels": 563,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-horse_draught-3-protected-mask.png"
+        }
+      ],
+      "nativeLegAlternation": "Visible on silhouette hoof position; forward views smaller phase shift than reverse views",
+      "zoom06": "Largeanimal hoof alternation subtle at0.3source; not equal clarity across directions",
+      "historical": "No saddle harness load person in animal layer; medieval coat proportions, no modern breed claim"
+    }
+  },
+  {
+    "id": "animal_walk/horse_riding-v1",
+    "file": "assets/animal_walk/horse_riding-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "sheet": [
+      384,
+      160
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene game sprite turntable. Create transparent RGBA 2x2 sheet of ONE SAME SLENDER MEDIEVAL RIDING HORSE, warm grey/dun coat dark mane tail legs, lean elegant neck/lightbuild distinctly thinner than attacheddraft horse. Reference horse attached is stylecamera ONLY. Four evenly spacedcells generouslyseparated. TOPLEFT NE upperright AWAY, TOPRIGHT SE lowerright TOWARD, BOTTOMLEFT SW lowerleft TOWARD, BOTTOMRIGHT NW upperleft AWAY. Whole ears tail hooves visible, orthographic2:1isometric elevation30deg, chunky handpainted medievalgame art lightupperleft. No saddle rider reins harness loads,no castshadow/text/grid. Four visibly separated legs, nearfrontahead nearhindback, samehorse stableturntable.",
+        "rawFile": "raw/large-animals/horse_riding-rejected-bulky-base.png",
+        "referenceImages": [
+          "raw/large-animals/horse_draught-base.png"
+        ]
+      },
+      {
+        "prompt": "Edit target ridinghorse turntable: change ONLY legs below hips/chest to alternate walk phase. Move the near FRONT HOOF backwards, near REAR HOOF forwards; opposite far legs. Make shift pronounced onehooflength. All torso head ears mane tail colors pixels and position stayexact. Same four directions arrangement and canvasdimensions. TransparentRGBA, no saddle rider harness load text shadows. Frame0bodieswillbe restored, soeditonlylegswithsamejoints.",
+        "rawFile": "raw/large-animals/horse_riding-rejected-bulky-legs.png",
+        "referenceImages": [
+          "raw/large-animals/horse_riding-rejected-bulky-base.png"
+        ]
+      },
+      {
+        "prompt": "TARGETED ANATOMY CORRECTION on this fourdirection riding horse sheet. Currenthorse too chunky looksdraft. InALL4cells make a visibly LIGHT slender riding horse: narrow deep chest, tuckedslimmerbelly, thinlongneck, delicatehead, long THIN clean legs with NO FEATHERING and SMALL hooves. Reduce barrelbulk/hipwidth about25%, slimneck30%, legs50%thickness. Not just recolor. Preserve warmgrey/dun coat darkmane/tail, exactlysamefourNE/SE/SW/NWviews camera and overallpositions, transparentbackground. No saddle/rider/harness/text/shadow. This is medievalpalfrey NOT muscularshire draftbreed.",
+        "rawFile": "raw/large-animals/horse_riding-base.png",
+        "referenceImages": [
+          "raw/large-animals/horse_riding-rejected-bulky-base.png"
+        ]
+      },
+      {
+        "prompt": "Edit target ridinghorse turntable: change ONLY legs below hips/chest to alternate walk phase. Move the near FRONT HOOF backwards, near REAR HOOF forwards; opposite far legs. Make shift pronounced onehooflength. All torso head ears mane tail colors pixels and position stayexact. Same four directions arrangement and canvasdimensions. TransparentRGBA, no saddle rider harness load text shadows. Frame0bodieswillbe restored, soeditonlylegswithsamejoints. IMPORTANT keep corrected THIN unfeathered legs/thin barrel. Do not revert to draft horse. Strong alternate leg placement.",
+        "rawFile": "raw/large-animals/horse_riding-legs-edit.png",
+        "referenceImages": [
+          "raw/large-animals/horse_riding-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "pipeline": "Builtin stationary turntable -> builtin legs-only edit -> saturated-red fringe cleanup -> base-bbox crop and single Lanczos resize -> manual leg polygons -> exact base RGBA outside leg mask ->4cols2rows",
+      "registration": "records/large-animals-horse_riding-registration.json",
+      "redFringeRule": "R>150,G<50,B<50 or alpha<12 cleared; natural brown retained",
+      "protectedRegion": "Torso/head/tail copied byte-for-byte from frame0; black only leg polygons in mask",
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "sourceScale": "zoom1=0.5,zoom0.6=0.3",
+      "status": "candidate",
+      "rawCellOverlap": "Horse NW ears cross raw2x2 row boundary; sourceNW startsy380,SEheight410; exclude neighbor pixels byxy mask beforecrop. See buildscript. Exactcanvasgroundanchorunchanged."
+    },
+    "qa": {
+      "measurements": [
+        {
+          "direction": "ne",
+          "changedLegPixels": 501,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-horse_riding-0-protected-mask.png"
+        },
+        {
+          "direction": "se",
+          "changedLegPixels": 686,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-horse_riding-1-protected-mask.png"
+        },
+        {
+          "direction": "sw",
+          "changedLegPixels": 503,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-horse_riding-2-protected-mask.png"
+        },
+        {
+          "direction": "nw",
+          "changedLegPixels": 419,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-horse_riding-3-protected-mask.png"
+        }
+      ],
+      "nativeLegAlternation": "Visible on silhouette hoof position; forward views smaller phase shift than reverse views",
+      "zoom06": "Largeanimal hoof alternation subtle at0.3source; not equal clarity across directions",
+      "historical": "No saddle harness load person in animal layer; medieval coat proportions, no modern breed claim"
+    }
+  },
+  {
+    "id": "animal_walk/cow_single-v1",
+    "file": "assets/animal_walk/cow_single-v1.png",
+    "cell": [
+      80,
+      64
+    ],
+    "sheet": [
+      320,
+      128
+    ],
+    "pivot": [
+      40,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Historical medieval English dairy cow game sprite. Transparent RGBA2by2 turntable, SAME slim female cow with modest visibleudder, small horns, reddish brown coat with a few cream patches, notmodern blackwhite Holstein, distinctly smaller leanerthanox reference. Warmhandpaintedprojectstyle softupperleftlight2:1orthographicisometric elevated30degrees. TopLeft NE upperright AWAY; TopRight SE lowerright TOWARD; BottomLeft SW lowerleft TOWARD; BottomRight NW upperleft AWAY. Four spacious equalcells, nooverlap, all ears tail hooves visible. Stationary firstwalkingpose nearforelegahead nearhindlegback,fourlegs separated. No yoke harness bell load person saddle grass shadow text border.",
+        "rawFile": "raw/large-animals/cow_single-base.png",
+        "referenceImages": [
+          "references/cattle_pair-v1.png"
+        ]
+      },
+      {
+        "prompt": "Precise legs-only animation edit of4cowturntable. Reversewalkphase: move nearforelegback and nearhindlegforward, farlegs opposite, eachhoofclearhoof-lengthdisplacement. SAMEbody head horns ears tail udder positions/colors exactly, dimensionsand4viewlayoutunchanged. Onlylegs BELOW belly/udder change, keep udders identical. Backgroundtransparent,no text shadow or props.",
+        "rawFile": "raw/large-animals/cow_single-legs-edit.png",
+        "referenceImages": [
+          "raw/large-animals/cow_single-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "pipeline": "Builtin stationary turntable -> builtin legs-only edit -> saturated-red fringe cleanup -> base-bbox crop and single Lanczos resize -> manual leg polygons -> exact base RGBA outside leg mask ->4cols2rows",
+      "registration": "records/large-animals-cow_single-registration.json",
+      "redFringeRule": "R>150,G<50,B<50 or alpha<12 cleared; natural brown retained",
+      "protectedRegion": "Torso/head/tail copied byte-for-byte from frame0; black only leg polygons in mask",
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "sourceScale": "zoom1=0.5,zoom0.6=0.3",
+      "status": "candidate"
+    },
+    "qa": {
+      "measurements": [
+        {
+          "direction": "ne",
+          "changedLegPixels": 282,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-cow_single-0-protected-mask.png"
+        },
+        {
+          "direction": "se",
+          "changedLegPixels": 372,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-cow_single-1-protected-mask.png"
+        },
+        {
+          "direction": "sw",
+          "changedLegPixels": 319,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-cow_single-2-protected-mask.png"
+        },
+        {
+          "direction": "nw",
+          "changedLegPixels": 285,
+          "protectedPixelDifferences": 0,
+          "mask": "records/large-animals-cow_single-3-protected-mask.png"
+        }
+      ],
+      "nativeLegAlternation": "Visible on silhouette hoof position; forward views smaller phase shift than reverse views",
+      "zoom06": "Largeanimal hoof alternation subtle at0.3source; not equal clarity across directions",
+      "historical": "No saddle harness load person in animal layer; medieval coat proportions, no modern breed claim"
+    }
+  }
+]

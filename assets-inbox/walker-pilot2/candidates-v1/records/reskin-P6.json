@@ -1,0 +1,223 @@
+{
+  "id": "P6",
+  "status": "candidate",
+  "asset": "assets/workers/wk_reskin_P6_widow_f-v1.png",
+  "master": "masters/wk_reskin_P6_widow_f-v1.png",
+  "method": "Each direction original template two-cell image passed as EDIT target. Per-cell alpha bbox registration to original; original shoes and outer skin-colored hands restored without drawing anatomy; original template alpha used as silhouette clip. Nearest opaque edited RGB extends only into template silhouette fringe (max35px search), removing old brown garment remnants. Original front-shoe rectangles manually bounded against enlarged template grid; broad lower-band preservation removed because it retained old brown hem/apron. Rear shoes remain edited colors inside original silhouette. Hands preserved by skin threshold. Head untouched by this correction. Final 50% downsample. Not unprocessed model output and not proof of raw edit pose fidelity.",
+  "frameOrder": [
+    "NE",
+    "SE",
+    "SW",
+    "NW"
+  ],
+  "frames": [
+    {
+      "direction": "NE",
+      "frame": 0,
+      "source": "sources/P6_NE.png",
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "w": 887,
+        "h": 887
+      },
+      "rawAlphaBbox": {
+        "x": 293,
+        "y": 64,
+        "w": 350,
+        "h": 737
+      },
+      "templateAlphaBbox": {
+        "x": 51,
+        "y": 11,
+        "w": 56,
+        "h": 123
+      },
+      "scaleX": 0.16,
+      "scaleY": 0.16689280868385345,
+      "protectedOriginalPixels": 300
+    },
+    {
+      "direction": "NE",
+      "frame": 1,
+      "source": "sources/P6_NE.png",
+      "sourceCrop": {
+        "x": 0,
+        "y": 887,
+        "w": 887,
+        "h": 887
+      },
+      "rawAlphaBbox": {
+        "x": 332,
+        "y": 50,
+        "w": 311,
+        "h": 717
+      },
+      "templateAlphaBbox": {
+        "x": 58,
+        "y": 9,
+        "w": 50,
+        "h": 122
+      },
+      "scaleX": 0.1607717041800643,
+      "scaleY": 0.1701534170153417,
+      "protectedOriginalPixels": 295
+    },
+    {
+      "direction": "SE",
+      "frame": 0,
+      "source": "sources/P6_SE_no-apron.png",
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "w": 887,
+        "h": 887
+      },
+      "rawAlphaBbox": {
+        "x": 281,
+        "y": 58,
+        "w": 315,
+        "h": 743
+      },
+      "templateAlphaBbox": {
+        "x": 48,
+        "y": 11,
+        "w": 52,
+        "h": 124
+      },
+      "scaleX": 0.16507936507936508,
+      "scaleY": 0.16689098250336473,
+      "protectedOriginalPixels": 365
+    },
+    {
+      "direction": "SE",
+      "frame": 1,
+      "source": "sources/P6_SE_no-apron.png",
+      "sourceCrop": {
+        "x": 0,
+        "y": 887,
+        "w": 887,
+        "h": 887
+      },
+      "rawAlphaBbox": {
+        "x": 285,
+        "y": 23,
+        "w": 323,
+        "h": 728
+      },
+      "templateAlphaBbox": {
+        "x": 50,
+        "y": 6,
+        "w": 53,
+        "h": 123
+      },
+      "scaleX": 0.16408668730650156,
+      "scaleY": 0.16895604395604397,
+      "protectedOriginalPixels": 364
+    },
+    {
+      "direction": "SW",
+      "frame": 0,
+      "source": "sources/P6_SW_no-apron.png",
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "w": 887,
+        "h": 887
+      },
+      "rawAlphaBbox": {
+        "x": 282,
+        "y": 67,
+        "w": 338,
+        "h": 738
+      },
+      "templateAlphaBbox": {
+        "x": 50,
+        "y": 13,
+        "w": 53,
+        "h": 122
+      },
+      "scaleX": 0.15680473372781065,
+      "scaleY": 0.16531165311653118,
+      "protectedOriginalPixels": 375
+    },
+    {
+      "direction": "SW",
+      "frame": 1,
+      "source": "sources/P6_SW_no-apron.png",
+      "sourceCrop": {
+        "x": 0,
+        "y": 887,
+        "w": 887,
+        "h": 887
+      },
+      "rawAlphaBbox": {
+        "x": 259,
+        "y": 16,
+        "w": 347,
+        "h": 740
+      },
+      "templateAlphaBbox": {
+        "x": 44,
+        "y": 6,
+        "w": 55,
+        "h": 122
+      },
+      "scaleX": 0.1585014409221902,
+      "scaleY": 0.16486486486486487,
+      "protectedOriginalPixels": 367
+    },
+    {
+      "direction": "NW",
+      "frame": 0,
+      "source": "sources/P6_NW.png",
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "w": 887,
+        "h": 887
+      },
+      "rawAlphaBbox": {
+        "x": 257,
+        "y": 91,
+        "w": 330,
+        "h": 708
+      },
+      "templateAlphaBbox": {
+        "x": 42,
+        "y": 11,
+        "w": 55,
+        "h": 123
+      },
+      "scaleX": 0.16666666666666666,
+      "scaleY": 0.17372881355932204,
+      "protectedOriginalPixels": 359
+    },
+    {
+      "direction": "NW",
+      "frame": 1,
+      "source": "sources/P6_NW.png",
+      "sourceCrop": {
+        "x": 0,
+        "y": 887,
+        "w": 887,
+        "h": 887
+      },
+      "rawAlphaBbox": {
+        "x": 257,
+        "y": 51,
+        "w": 330,
+        "h": 710
+      },
+      "templateAlphaBbox": {
+        "x": 42,
+        "y": 9,
+        "w": 49,
+        "h": 122
+      },
+      "scaleX": 0.1484848484848485,
+      "scaleY": 0.17183098591549295,
+      "protectedOriginalPixels": 351
+    }
+  ]
+}

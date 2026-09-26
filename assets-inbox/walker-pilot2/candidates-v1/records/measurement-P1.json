@@ -1,0 +1,133 @@
+{
+  "method": "head proxy: alpha weighted centroid of local y0..33 at master; not a skeletal landmark. Original foot region from y100 retained; final downsampling performed uniformly.",
+  "rows": [
+    {
+      "direction": "NE",
+      "frame": 0,
+      "headAlphaCentroidTemplateMaster": [
+        80.19858169560517,
+        20.351936653310435
+      ],
+      "headAlphaCentroidResultMaster": [
+        80.50142856362434,
+        19.69286701520341
+      ],
+      "headFinalPixelDistance": 0.362659969304425,
+      "headPass": true,
+      "footProtectedRegionIdentical": true,
+      "footFinalPixelDistance": 0
+    },
+    {
+      "direction": "SE",
+      "frame": 0,
+      "headAlphaCentroidTemplateMaster": [
+        72.63430501838323,
+        21.182375972878766
+      ],
+      "headAlphaCentroidResultMaster": [
+        73.02343422930844,
+        20.273619594768405
+      ],
+      "headFinalPixelDistance": 0.4942822315113943,
+      "headPass": true,
+      "footProtectedRegionIdentical": true,
+      "footFinalPixelDistance": 0
+    },
+    {
+      "direction": "SW",
+      "frame": 0,
+      "headAlphaCentroidTemplateMaster": [
+        72.85395743057586,
+        21.165485507203186
+      ],
+      "headAlphaCentroidResultMaster": [
+        73.03814518714432,
+        20.302045764206138
+      ],
+      "headFinalPixelDistance": 0.4414332677360567,
+      "headPass": true,
+      "footProtectedRegionIdentical": true,
+      "footFinalPixelDistance": 0
+    },
+    {
+      "direction": "NW",
+      "frame": 0,
+      "headAlphaCentroidTemplateMaster": [
+        66.35024673695887,
+        20.407736763491755
+      ],
+      "headAlphaCentroidResultMaster": [
+        66.03820828504462,
+        19.627978526029136
+      ],
+      "headFinalPixelDistance": 0.4199377645448939,
+      "headPass": true,
+      "footProtectedRegionIdentical": true,
+      "footFinalPixelDistance": 0
+    },
+    {
+      "direction": "NE",
+      "frame": 1,
+      "headAlphaCentroidTemplateMaster": [
+        80.87009652387862,
+        20.56361743738566
+      ],
+      "headAlphaCentroidResultMaster": [
+        80.32692457828692,
+        19.667787418090597
+      ],
+      "headFinalPixelDistance": 0.5238194311850357,
+      "headPass": true,
+      "footProtectedRegionIdentical": true,
+      "footFinalPixelDistance": 0
+    },
+    {
+      "direction": "SE",
+      "frame": 1,
+      "headAlphaCentroidTemplateMaster": [
+        73.92638624508666,
+        21.238795085411994
+      ],
+      "headAlphaCentroidResultMaster": [
+        74.93196991601826,
+        20.238338125328255
+      ],
+      "headFinalPixelDistance": 0.7092447828895654,
+      "headPass": true,
+      "footProtectedRegionIdentical": true,
+      "footFinalPixelDistance": 0
+    },
+    {
+      "direction": "SW",
+      "frame": 1,
+      "headAlphaCentroidTemplateMaster": [
+        73.02429946677165,
+        21.223079125362347
+      ],
+      "headAlphaCentroidResultMaster": [
+        72.6196086703228,
+        20.28819381666969
+      ],
+      "headFinalPixelDistance": 0.5093587098351627,
+      "headPass": true,
+      "footProtectedRegionIdentical": true,
+      "footFinalPixelDistance": 0
+    },
+    {
+      "direction": "NW",
+      "frame": 1,
+      "headAlphaCentroidTemplateMaster": [
+        69.9308746732296,
+        20.440562993981928
+      ],
+      "headAlphaCentroidResultMaster": [
+        69.35040251142266,
+        19.626358540805427
+      ],
+      "headFinalPixelDistance": 0.4999692046029597,
+      "headPass": true,
+      "footProtectedRegionIdentical": true,
+      "footFinalPixelDistance": 0
+    }
+  ]
+}

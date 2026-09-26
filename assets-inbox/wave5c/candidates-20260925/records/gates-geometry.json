@@ -1,0 +1,192 @@
+[
+  {
+    "id": "wall/stone_gate_v3_nwse-v1",
+    "size": [
+      512,
+      384
+    ],
+    "axis": "nwse",
+    "portalSpanSource": 204,
+    "portalFeet": [
+      [
+        150,
+        198
+      ],
+      [
+        354,
+        300
+      ]
+    ],
+    "pivot": [
+      252,
+      249
+    ],
+    "groundSlope": 0.5,
+    "localVerticalHeight": 112,
+    "sourcePortalAnchors": [
+      [
+        439,
+        661
+      ],
+      [
+        1029,
+        1013
+      ]
+    ],
+    "sourceGroundSlope": 0.5966101694915255,
+    "sourceMaximumRise": 580.4711864406781,
+    "affine": [
+      0.34576271186440677,
+      0.05776739240753906,
+      0,
+      0.19294670022599986,
+      -1.78983050847458,
+      45.102345883704444
+    ],
+    "wallSockets": [
+      [
+        32.7864406779661,
+        139.39322033898304
+      ],
+      [
+        435.6,
+        340.8
+      ]
+    ],
+    "interpretation": "Height112px measured vertically above each local groundpoint; full isometric bounding box also includes diagonal ground-axis drop. Native generated topology differs from guide; calibrated with source portal anchors; no runtime horizontal stretching.",
+    "mask": "Preserved native alpha; topology supplied before generation; clear passage stays alpha0.",
+    "opaqueBBox": [
+      27,
+      60,
+      456,
+      333
+    ],
+    "openingSamples": [
+      {
+        "x": 166,
+        "groundY": 206,
+        "innerArchY": 162,
+        "clearHeight": 43
+      },
+      {
+        "x": 201,
+        "groundY": 223.5,
+        "innerArchY": 166,
+        "clearHeight": 56.5
+      },
+      {
+        "x": 252,
+        "groundY": 249,
+        "innerArchY": 185,
+        "clearHeight": 63
+      },
+      {
+        "x": 303,
+        "groundY": 274.5,
+        "innerArchY": 215,
+        "clearHeight": 58.5
+      },
+      {
+        "x": 338,
+        "groundY": 292,
+        "innerArchY": 247,
+        "clearHeight": 44
+      }
+    ]
+  },
+  {
+    "id": "wall/stone_gate_v3_nesw-v1",
+    "size": [
+      512,
+      384
+    ],
+    "axis": "nesw",
+    "portalSpanSource": 204,
+    "portalFeet": [
+      [
+        150,
+        300
+      ],
+      [
+        354,
+        198
+      ]
+    ],
+    "pivot": [
+      252,
+      249
+    ],
+    "groundSlope": -0.5,
+    "localVerticalHeight": 112,
+    "sourcePortalAnchors": [
+      [
+        382,
+        984
+      ],
+      [
+        1008,
+        614
+      ]
+    ],
+    "sourceGroundSlope": -0.5910543130990416,
+    "sourceMaximumRise": 533.4536741214058,
+    "affine": [
+      0.3258785942492013,
+      -0.03884589168293713,
+      0,
+      0.20995262650400368,
+      25.51437699680511,
+      108.24574614294238
+    ],
+    "wallSockets": [
+      [
+        51.584664536741215,
+        349.2076677316294
+      ],
+      [
+        432.8626198083067,
+        158.56869009584665
+      ]
+    ],
+    "interpretation": "Height112px measured vertically above each local groundpoint; full isometric bounding box also includes diagonal ground-axis drop. Native generated topology differs from guide; calibrated with source portal anchors; no runtime horizontal stretching.",
+    "mask": "Preserved native alpha; topology supplied before generation; clear passage stays alpha0.",
+    "opaqueBBox": [
+      48,
+      74,
+      439,
+      330
+    ],
+    "openingSamples": [
+      {
+        "x": 166,
+        "groundY": 292,
+        "innerArchY": 253,
+        "clearHeight": 38
+      },
+      {
+        "x": 201,
+        "groundY": 274.5,
+        "innerArchY": 220,
+        "clearHeight": 53.5
+      },
+      {
+        "x": 252,
+        "groundY": 249,
+        "innerArchY": 190,
+        "clearHeight": 58
+      },
+      {
+        "x": 303,
+        "groundY": 223.5,
+        "innerArchY": 171,
+        "clearHeight": 51.5
+      },
+      {
+        "x": 338,
+        "groundY": 206,
+        "innerArchY": 167,
+        "clearHeight": 38
+      }
+    ]
+  }
+]

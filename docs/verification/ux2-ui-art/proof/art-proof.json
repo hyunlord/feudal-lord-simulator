@@ -1,0 +1,512 @@
+{
+ "gate3": {
+  "frames": 18,
+  "cornersIdentical": 18,
+  "rows": [
+   {
+    "frame": "banner_unlock",
+    "slice": {
+     "bottom": 48,
+     "left": 48,
+     "right": 48,
+     "top": 48
+    },
+    "sizes": [
+     [
+      98,
+      98
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "button_icon_square_base",
+    "slice": {
+     "bottom": 10,
+     "left": 10,
+     "right": 10,
+     "top": 10
+    },
+    "sizes": [
+     [
+      22,
+      22
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "button_primary_base",
+    "slice": {
+     "bottom": 12,
+     "left": 12,
+     "right": 12,
+     "top": 12
+    },
+    "sizes": [
+     [
+      26,
+      26
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "button_secondary_base",
+    "slice": {
+     "bottom": 12,
+     "left": 12,
+     "right": 12,
+     "top": 12
+    },
+    "sizes": [
+     [
+      26,
+      26
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "chip_condition_base",
+    "slice": {
+     "bottom": 8,
+     "left": 8,
+     "right": 8,
+     "top": 8
+    },
+    "sizes": [
+     [
+      18,
+      18
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_advisor_normal",
+    "slice": {
+     "bottom": 24,
+     "left": 24,
+     "right": 24,
+     "top": 24
+    },
+    "sizes": [
+     [
+      50,
+      50
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_advisor_warn",
+    "slice": {
+     "bottom": 24,
+     "left": 24,
+     "right": 24,
+     "top": 24
+    },
+    "sizes": [
+     [
+      50,
+      50
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_hud_strip_bottom",
+    "slice": {
+     "bottom": 24,
+     "left": 24,
+     "right": 24,
+     "top": 24
+    },
+    "sizes": [
+     [
+      50,
+      50
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_hud_strip_top",
+    "slice": {
+     "bottom": 24,
+     "left": 24,
+     "right": 24,
+     "top": 24
+    },
+    "sizes": [
+     [
+      50,
+      50
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_modal",
+    "slice": {
+     "bottom": 32,
+     "left": 32,
+     "right": 32,
+     "top": 32
+    },
+    "sizes": [
+     [
+      66,
+      66
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_objective_complete",
+    "slice": {
+     "bottom": 32,
+     "left": 32,
+     "right": 32,
+     "top": 32
+    },
+    "sizes": [
+     [
+      66,
+      66
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_objective_normal",
+    "slice": {
+     "bottom": 32,
+     "left": 32,
+     "right": 32,
+     "top": 32
+    },
+    "sizes": [
+     [
+      66,
+      66
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_objective_warn",
+    "slice": {
+     "bottom": 32,
+     "left": 32,
+     "right": 32,
+     "top": 32
+    },
+    "sizes": [
+     [
+      66,
+      66
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_panel_dark",
+    "slice": {
+     "bottom": 24,
+     "left": 24,
+     "right": 24,
+     "top": 24
+    },
+    "sizes": [
+     [
+      50,
+      50
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_panel_light",
+    "slice": {
+     "bottom": 32,
+     "left": 32,
+     "right": 32,
+     "top": 32
+    },
+    "sizes": [
+     [
+      66,
+      66
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "frame_tooltip",
+    "slice": {
+     "bottom": 12,
+     "left": 12,
+     "right": 12,
+     "top": 12
+    },
+    "sizes": [
+     [
+      26,
+      26
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "tab_build_base",
+    "slice": {
+     "bottom": 12,
+     "left": 12,
+     "right": 12,
+     "top": 12
+    },
+    "sizes": [
+     [
+      26,
+      26
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   },
+   {
+    "frame": "toast_small",
+    "slice": {
+     "bottom": 24,
+     "left": 24,
+     "right": 24,
+     "top": 24
+    },
+    "sizes": [
+     [
+      50,
+      50
+     ],
+     [
+      640,
+      256
+     ],
+     [
+      1280,
+      480
+     ]
+    ],
+    "cornersIdentical": true
+   }
+  ]
+ },
+ "gate4": {
+  "icons": 57,
+  "maxIoU": 0.913,
+  "rows": [
+   {
+    "sheet": "icon_alert_priority_sheet",
+    "icons": 3,
+    "maxSilhouetteIoU": 0.698,
+    "closestPair": "warn~info"
+   },
+   {
+    "sheet": "icon_build_category_sheet",
+    "icons": 6,
+    "maxSilhouetteIoU": 0.859,
+    "closestPair": "storage~defense"
+   },
+   {
+    "sheet": "icon_cause_family_sheet",
+    "icons": 7,
+    "maxSilhouetteIoU": 0.821,
+    "closestPair": "food~storage"
+   },
+   {
+    "sheet": "icon_first_session_buildings_sheet",
+    "icons": 12,
+    "maxSilhouetteIoU": 0.913,
+    "closestPair": "barn~warehouse"
+   },
+   {
+    "sheet": "icon_layer_mode_sheet",
+    "icons": 3,
+    "maxSilhouetteIoU": 0.618,
+    "closestPair": "direct~direction"
+   },
+   {
+    "sheet": "icon_lock_new_sheet",
+    "icons": 3,
+    "maxSilhouetteIoU": 0.702,
+    "closestPair": "locked~help"
+   },
+   {
+    "sheet": "icon_objective_action_sheet",
+    "icons": 4,
+    "maxSilhouetteIoU": 0.771,
+    "closestPair": "look~log"
+   },
+   {
+    "sheet": "icon_prediction_sheet",
+    "icons": 4,
+    "maxSilhouetteIoU": 0.751,
+    "closestPair": "pending~warn"
+   },
+   {
+    "sheet": "icon_resource_sheet",
+    "icons": 9,
+    "maxSilhouetteIoU": 0.872,
+    "closestPair": "population~bread"
+   },
+   {
+    "sheet": "icon_time_sheet",
+    "icons": 4,
+    "maxSilhouetteIoU": 0.576,
+    "closestPair": "fast~fastest"
+   },
+   {
+    "sheet": "warning_map_marker_sheet",
+    "icons": 2,
+    "maxSilhouetteIoU": 0.679,
+    "closestPair": "warn~urgent"
+   }
+  ]
+ }
+}

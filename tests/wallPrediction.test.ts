@@ -94,6 +94,6 @@ test('wall construction exposes explicit balanced and priority controls', () => 
     onCancelProposal: () => undefined, priority: 'balanced', onPriorityChange: () => undefined,
   }));
   assert.match(markup, /성벽 공사 자재 우선순위/);
-  assert.match(markup, /aria-pressed="true"[^>]*>✓ 균형 · 25% 비축/);
+  assert.match(markup, /aria-pressed="true"[^>]*><span class="ui-icon" aria-hidden="true" data-icon="prediction.ok"[^>]*><\/span>균형 · 25% 비축/);
   assert.match(markup, /공사 우선/);
 });

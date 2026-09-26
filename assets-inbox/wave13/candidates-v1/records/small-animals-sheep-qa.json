@@ -1,0 +1,142 @@
+{
+  "id": "sheep_single",
+  "file": "assets/animal_walk/sheep_single-v1.png",
+  "cell": [
+    48,
+    40
+  ],
+  "pivot": [
+    24,
+    36
+  ],
+  "results": [
+    {
+      "direction": "ne",
+      "protectedMask": "records/small-animals-sheep-protected-0.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 129,
+      "editableRectangles": [
+        [
+          6,
+          27,
+          11,
+          35
+        ],
+        [
+          11,
+          30,
+          17,
+          37
+        ],
+        [
+          21,
+          24,
+          27,
+          30
+        ],
+        [
+          27,
+          24,
+          33,
+          31
+        ]
+      ]
+    },
+    {
+      "direction": "se",
+      "protectedMask": "records/small-animals-sheep-protected-1.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 130,
+      "editableRectangles": [
+        [
+          9,
+          24,
+          15,
+          31
+        ],
+        [
+          15,
+          25,
+          21,
+          31
+        ],
+        [
+          22,
+          29,
+          28,
+          37
+        ],
+        [
+          28,
+          28,
+          34,
+          35
+        ]
+      ]
+    },
+    {
+      "direction": "sw",
+      "protectedMask": "records/small-animals-sheep-protected-2.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 148,
+      "editableRectangles": [
+        [
+          14,
+          28,
+          20,
+          36
+        ],
+        [
+          19,
+          30,
+          26,
+          37
+        ],
+        [
+          27,
+          24,
+          33,
+          30
+        ],
+        [
+          33,
+          23,
+          39,
+          31
+        ]
+      ]
+    },
+    {
+      "direction": "nw",
+      "protectedMask": "records/small-animals-sheep-protected-3.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 154,
+      "editableRectangles": [
+        [
+          15,
+          23,
+          21,
+          31
+        ],
+        [
+          20,
+          24,
+          26,
+          32
+        ],
+        [
+          28,
+          29,
+          35,
+          37
+        ],
+        [
+          35,
+          26,
+          41,
+          34
+        ]
+      ]
+    }
+  ]
+}

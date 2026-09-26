@@ -1,0 +1,197 @@
+{
+  "count": 13,
+  "passed": true,
+  "assets": [
+    {
+      "id": "tree/orchard_apple_g-v1",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        128,
+        244
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 48947
+    },
+    {
+      "id": "tree/orchard_apple_h-v1",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        128,
+        244
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 45344
+    },
+    {
+      "id": "tree/orchard_pear_i-v1",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        128,
+        244
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 50711
+    },
+    {
+      "id": "tree/orchard_plum_j-v1",
+      "size": [
+        256,
+        256
+      ],
+      "pivot": [
+        128,
+        244
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 40195
+    },
+    {
+      "id": "field/ridge_stubble_a-v1",
+      "size": [
+        512,
+        64
+      ],
+      "pivot": [
+        256,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1024,
+      "xSeamRgbaDifferences": 0,
+      "growingAlphaDifferences": 0
+    },
+    {
+      "id": "field/ridge_stubble_b-v1",
+      "size": [
+        512,
+        64
+      ],
+      "pivot": [
+        256,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1024,
+      "xSeamRgbaDifferences": 0,
+      "growingAlphaDifferences": 0
+    },
+    {
+      "id": "farmstead_a-v1",
+      "size": [
+        160,
+        136
+      ],
+      "pivot": [
+        80,
+        120
+      ],
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "transparentPixels": 13653
+    },
+    {
+      "id": "farmstead_b-v1",
+      "size": [
+        160,
+        136
+      ],
+      "pivot": [
+        80,
+        120
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 11511
+    },
+    {
+      "id": "farmstead_working-v1",
+      "size": [
+        160,
+        136
+      ],
+      "pivot": [
+        80,
+        120
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 13140
+    },
+    {
+      "id": "animal/ox_plough_team-v1",
+      "size": [
+        192,
+        128
+      ],
+      "pivot": [
+        96,
+        120
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 17002
+    },
+    {
+      "id": "animal/ox_cart_hay-v1",
+      "size": [
+        192,
+        128
+      ],
+      "pivot": [
+        96,
+        120
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 14870
+    },
+    {
+      "id": "animal/sheep_flock-v1",
+      "size": [
+        128,
+        96
+      ],
+      "pivot": [
+        64,
+        88
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 7639
+    },
+    {
+      "id": "animal/cattle_pair-v1",
+      "size": [
+        128,
+        96
+      ],
+      "pivot": [
+        64,
+        88
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 8980
+    }
+  ],
+  "limitations": [
+    "Prepared visual candidates only; no runtime integration/performance check",
+    "Old fallow alpha differs from old growing; new stubble uses growing exactly",
+    "Existing runtime storehouse footprint2x2, new candidate contract2x1"
+  ]
+}

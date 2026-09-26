@@ -1,0 +1,415 @@
+[
+  {
+    "id": "house_l0_garden-v1",
+    "reference": "house_l0-v3.png",
+    "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l0_garden-v1, target153x153. Reference house_l0-v3 is the SAME low single-storey peasant hut body and thatched roofing to retain. Create a materially distinct garden silhouette: compact garden with exactly two short broad raised vegetable ridges tucked against side of hut, modest stacked firewood at front side. Shift door position and shallow thatch eave outline from reference, but retain body scale and poverty. Keep yard very compact so house does not shrink to make room. No fence enclosing whole composition, no animals.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l0-v3.png"
+    ],
+    "attempt": 1,
+    "notes": "New distinct silhouette; native output subject normalized by parent.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-4891579b-c22e-4ba3-b22a-8fc35ee9986f.png"
+  },
+  {
+    "id": "house_l0_pen-v1",
+    "reference": "house_l0-v3.png",
+    "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l0_pen-v1, target153x153. Reference house_l0-v3 is exact SAME low single-storey hut tier. Keep its modest main house body scale and brown thatch roof. Distinct silhouette through compact open wattle pig/chicken pen appended to right side, no shed or barn, fence only, one small pig and two chickens as simple readable shapes. Small gate facing foreground. Change window and door placement from reference and create slightly asymmetrical thatched hip roof. Pen small enough main hut remains same size. Avoid enlarged sprawling farm compound.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l0-v3.png"
+    ],
+    "attempt": 1,
+    "notes": "Compact fence-only animal pen; native source.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-de51e9b4-f51b-496a-aaa8-070c0eabb1e5.png"
+  },
+  {
+    "id": "house_l1_artisan-v1",
+    "reference": "house_l1-v2.png",
+    "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l1_artisan-v1, target139x139. Reference house_l1-v2 is EXACT main one-storey cottage body scale to retain. Create artisan variant with compact street-facing wooden workbench beneath a simple low brown cloth awning projecting from eave. Readable two or three wooden hand tools, no modern equipment. Keep a similarly simple thatched gabled roof, small unglazed window and changed door placement. Workbench and awning must form distinct broad silhouette at front-left, not merely painted on wall. No extra workshop building. Compact subject, house main body does not shrink.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l1-v2.png"
+    ],
+    "attempt": 1,
+    "notes": "Street workbench and projecting awning; same L1 tier.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-43c307d8-bf75-4209-bc98-a3515df3ccd9.png"
+  },
+  {
+    "id": "house_l1_garden-v1",
+    "reference": "house_l1-v2.png",
+    "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l1_garden-v1 target139x139. Reference house_l1-v2 main one-storey cottage body, thatch gable and wealth MUST stay same size. Add compact subsistence garden tucked beside it: two short broad vegetable beds, ONE modest orchard tree low crown behind side corner, tiny wattle poultry pen. No additional barn. Arrange in a shallow narrow side strip, not wide farmyard, so main cottage remains dominant full-size. Tree lower than roof ridge. Change door and unglazed window layout enough to form distinct garden household. Hand-painted big simple shapes to remain readable at small game scale.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l1-v2.png"
+    ],
+    "attempt": 1,
+    "notes": "Compact garden one low orchard tree and pen.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-d9e5467c-5351-4fcc-88aa-bac9e5626e6f.png"
+  },
+  {
+    "id": "house_l1_thatch-v1",
+    "reference": "house_l1-v2.png",
+    "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l1_thatch-v1 target139x139. Precise material variant of supplied house_l1-v2. Keep EXACT same single-storey cottage body, door, windows, framing, SW view and projection, footprint and wealth. Give the roof a distinctly thick, soft, rounded straw-thatched silhouette: slightly drooping rounded deep eaves and a heavy raised continuous thatch ridge, instead of reference's thin hard eaves and regular courses. This is material geometry differentiation, NOT recoloring. No extra props, no extra buildings or rooms. Brown-gold dry straw, coarse broad bundled straw masses with restrained detail. Preserve all rest unchanged.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l1-v2.png"
+    ],
+    "attempt": 1,
+    "notes": "Supplied L1 already visually thatched; differentiated thick rounded roof geometry while preserving rest.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-d086fc9b-705f-4e5e-87fd-cf5d347f4a0e.png"
+  },
+  {
+    "id": "house_l2_brewer-v1",
+    "reference": "house_l2_brewer-pilot.png",
+    "prompt": "Use case: precise-object-edit. Edit supplied PROJECT pilot house_l2_brewer-pilot.png only. Preserve the approved brewer house IDENTICALLY: same body, two storeys, flat clay peg-tile roofs, small lower brewing annex, timber frame, limewash panels, barrel positions, windows, palette, projection, overall dimensions and transparent cutout. The ONLY change: add one small very LOW roof-ridge wooden ventilation opening along the MAIN roof ridge: a short horizontal black slit beneath a low sloping wooden weather cap. Clearly readable as a squat open ridge vent, NOT vertical chimney, NOT pipe, NOT chimney pot, NOT tower, NOT cupola. Length about 8 percent of roof ridge, height no more than 3 percent of whole house. Keep no rising smoke. Southern England1300–1450; subdued existing browns and soft upper-left light. Genuinely transparent RGBA background. Final137x137 sprite; preserve crop and bottom ground-contact/pivot. Do not redraw, upscale building, change framing, add yard, add a door, or change any other feature. No glass, slate or curved S/pan tiles, text or watermark.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l2_brewer-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Edit target approved pilot; ONLY low roof-ridge ventilation slit requested.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-148bddc9-6c81-4587-8351-b031bfd1398b.png",
+    "selected": false,
+    "rejection": "Black opening not readable after137px normalization."
+  },
+  {
+    "id": "house_l2_brewer-v1",
+    "reference": "house_l2_brewer-pilot.png",
+    "prompt": "Use case: precise-object-edit. Edit ONLY roof-ridge ventilation slit of supplied approved project brewer house sprite. Existing tan bump is too small. Replace that bump with a LOW WIDE wooden ridge ventilator near same ridge position. Critical small-size readability: on final 137x137px canvas its near-black horizontal OPEN AIR SLIT should measure roughly18px wide by2-3px high, with very thin sloping brown weathercap and low timber supports. The opening is a clear black elongated shape on roof ridge, not a pale patch. No smoke. NOT chimney, no vertical shaft, pipe, pot, cupola or tower. Keep roof ridge vent low, horizontal, length roughly one quarter of roof ridge. Preserve EVERYTHING ELSE exactly as provided: house body and silhouette, two-storey facade, door/windows, lean-to brewing annex, all barrels, warm peg-tile roof, timber frame, muted palette, SW 2:1 isometric camera, upper-left light and original ground contact. No new material, no changed size or wealth. Southern England1300-1450. Transparent RGBA background, no ground plane, no text, no watermark. Native output can be larger but opening dimensions must remain readable when reduced to final137px. Match source design and keep all other features fixed.",
+    "references": [
+      "/tmp/astra-wave2-production-20260924/assets/house_l2_brewer-v1.png"
+    ],
+    "attempt": 2,
+    "notes": "Second native localized edit: low ridge ventilator widened to retain black air slit at137px.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-6826b747-f673-4bc7-9ed0-87a08e87f849.png"
+  },
+  {
+    "id": "house_l3_storage-v1",
+    "reference": "house_l3-v2.png",
+    "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 142×142 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L3 merchant house STORAGE variant: same two-storey L3 reference proportions, prominent wide double timber loading door on street side, clearly recessed cellar stair opening at lower side, and compact low rear storage annex with a lean-to roof that changes the outline. Keep main house dominant and storehouse annex small. Roof profile should include modest offset low annex; no third floor.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l3-v2.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l2_weaver-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Native candidate; mechanical final size/pivot normalization by parent.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4b5ed971-2b40-464b-ad82-3d0dcf5771d7.png"
+  },
+  {
+    "id": "house_l3_shop-v1",
+    "reference": "house_l3-v2.png",
+    "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 142×142 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L3 merchant house SHOP variant: same two-storey L3 reference scale. Add a broad street-facing ochre linen awning with two stout posts, an open display counter underneath, and a small hanging pictorial merchant sign without letters. Awning projects noticeably to alter silhouette while main gabled body retains same tier. No rear warehouse annex, no cellar stairs.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l3-v2.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l2_weaver-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Native candidate; mechanical final size/pivot normalization by parent.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4da210a8-3250-45d4-8eb9-05b2ae6780aa.png"
+  },
+  {
+    "id": "house_l3_clothier-v1",
+    "reference": "house_l3-v2.png",
+    "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 142×142 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L3 merchant CLOTHIER house: same two-storey L3 reference scale, broad open unglazed workshop shutter bay on front with three large muted woven cloth rolls on counter, a small timber tenter frame in compact side/rear yard holding one plain pale cloth panel. Tenter frame should extend a little past side outline, recognizable at small size; overall silhouette different from broad awning and storage annex variants. No extra floor.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l3-v2.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l2_weaver-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Native candidate; mechanical final size/pivot normalization by parent.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-522584e7-fcbc-4d43-9f2f-8f1646a57081.png"
+  },
+  {
+    "id": "house_l4_courtyard-v1",
+    "reference": "house_l4-v2.png",
+    "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 161×161 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L4 grand house COURTYARD variant: same three-storey reference body and wealth. A compact low rubble courtyard wall with a distinct arched timber gate wraps a tiny front/side court; a small low round stone well inside. Main tall house remains dominant, narrow court close to walls, courtyard adds stepped low silhouette. No castle tower or extra floor.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l4-v2.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l2_weaver-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Native candidate; mechanical final size/pivot normalization by parent.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4313249f-5bac-4c7b-b40b-ea6f5b400139.png"
+  },
+  {
+    "id": "house_l4_wing-v1",
+    "reference": "house_l4-v2.png",
+    "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 161×161 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L4 grand house REAR WING variant: same three-storey main reference body and wealth. One short lower two-storey rear wing extends behind to the right, with a clearly offset perpendicular gable and visibly higher rubble stone foundation. Compact L plan, no courtyard wall, no extra floors, main tall gable remains dominant.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l4-v2.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l2_weaver-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Native candidate; mechanical final size/pivot normalization by parent.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-1e943bc2-6c41-412f-8fcd-6867285b1423.png",
+    "selected": false
+  },
+  {
+    "id": "house_l4_wing-v1",
+    "reference": "house_l4-v2.png",
+    "prompt": "Use case: precise-object-edit. Edit image 1, our project candidate, using image 2 ONLY as exact same-tier scale and style reference. ONE transparent isolated SW 2:1 isometric medieval southern English L4 house sprite. Correct ONLY the oversized side wing: preserve tall THREE STOREY main house, main roof, doors, shutters, colors, oak framing and planar flat clay peg tiles, and the main house height. Move the lower rear wing almost completely BEHIND the main house, so just a narrow strip of its perpendicular gable and high rubble plinth projects on RIGHT; maximum extra width 12% of main house width, not the present 30%. Main building must occupy at least 85% of the whole silhouette width and 100% of height. Do not shrink main house, do not widen full footprint. Clearly three full floors, same reference wealth. Only compact behind-wing structural change. Flat rectangular tiles not S/pantiles. No chimney, glass, text, people, background tile. Genuine transparent background. Target final161×161, tiny sprite, chunky shape.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-1e943bc2-6c41-412f-8fcd-6867285b1423.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l4-v2.png"
+    ],
+    "attempt": 2,
+    "notes": "Native compact rear-wing correction to preserve main L4 height; prior attempt retained in history.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-dfcd5a68-1177-4a95-a0ea-d9fb7c9ad6cc.png"
+  },
+  {
+    "id": "house_l4_inn-v1",
+    "reference": "house_l4-v2.png",
+    "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 161×161 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L4 grand house INN variant: same three-storey main reference body and wealth. Large arched double main entrance, small broad stable doorway attached in a compact low side bay, projecting small wooden inn sign bearing only a simple tankard pictogram, no letters. Stepped low stable roof visibly changes outline. No courtyard wall and no long rear wing.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l4-v2.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_l2_weaver-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Native candidate; mechanical final size/pivot normalization by parent.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-1d6cbb26-4eb9-448a-961e-477080b1ece0.png"
+  },
+  {
+    "id": "house_pair_l3_horizontal_courtyard-v1",
+    "reference": "house_pair_l3_horizontal-v2.png",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_pair_l3_horizontal-v2.png"
+    ],
+    "attempt": 1,
+    "prompt": "Use case: historical-scene. Generate one isolated transparent PNG game building sprite for house_pair_l3_horizontal_courtyard-v1. Reference image 1 is the sole project-owned style, view, tier and footprint reference. L3 merchant merged horizontal lot. Two two-storey houses separated by a narrow visible shared open courtyard and shared timber gate at front, buildings flank this courtyard. Distinct two roof silhouettes with a notch between, same compact horizontal two-lot envelope, no third storey. Final delivery canvas 209x167 pixels, so design bold readable silhouettes for tiny game display, not fine texture. Match reference precisely in 2:1 isometric SW view, warm oak half-timbering, muted limewash, rubble footing, terracotta flat rectangular peg roof tiles. Southern England 1300-1450. Preserve reference's visual scale and ground bottom-center anchor; keep compact building composition with clear transparent margin, 8px equivalent at top and sides and 4px bottom. Genuinely transparent background with alpha, no ground rectangle, no scene, no other buildings, no labels. Soft top-left sunlight with minimal short contact shadow. Structural variation required, not recoloring. Unglazed dark or shuttered windows. NO chimney shafts or pots, no glass panes, no slate roofs, no curved S/pan tiles, no fantasy ornament. Flat rectangular tile courses must be flat rather than tubes. Painterly project style, crisp large forms, no blur, no watermark.",
+    "notes": "Native structural variant; parent normalizes canvas and reference pivot.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-cd381cab-1f67-46d0-aa62-e151dba93b9e.png"
+  },
+  {
+    "id": "house_pair_l3_vertical_workshop-v1",
+    "reference": "house_pair_l3_vertical-v2.png",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_pair_l3_vertical-v2.png"
+    ],
+    "attempt": 1,
+    "prompt": "Use case: historical-scene. Generate one isolated transparent PNG game building sprite for house_pair_l3_vertical_workshop-v1. Reference image 1 is the sole project-owned style, view, tier and footprint reference. L3 merchant merged depth-oriented lot. Front two-storey residence with a rear lower workshop, broad workbench and plain little awning on workshop side, tools as two or three bold shapes. Keep depth-oriented lot and main two-storey front volume. Roofline and awning visibly different from reference, no third storey. Final delivery canvas 183x183 pixels, so design bold readable silhouettes for tiny game display, not fine texture. Match reference precisely in 2:1 isometric SW view, warm oak half-timbering, muted limewash, rubble footing, terracotta flat rectangular peg roof tiles. Southern England 1300-1450. Preserve reference's visual scale and ground bottom-center anchor; keep compact building composition with clear transparent margin, 8px equivalent at top and sides and 4px bottom. Genuinely transparent background with alpha, no ground rectangle, no scene, no other buildings, no labels. Soft top-left sunlight with minimal short contact shadow. Structural variation required, not recoloring. Unglazed dark or shuttered windows. NO chimney shafts or pots, no glass panes, no slate roofs, no curved S/pan tiles, no fantasy ornament. Flat rectangular tile courses must be flat rather than tubes. Painterly project style, crisp large forms, no blur, no watermark.",
+    "notes": "Native structural variant; parent normalizes canvas and reference pivot.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-5000c3e2-d1ea-4a74-8db1-d1fc95a837cb.png"
+  },
+  {
+    "id": "house_pair_l4_horizontal_hall-v1",
+    "reference": "house_pair_l4_horizontal-v2.png",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_pair_l4_horizontal-v2.png"
+    ],
+    "attempt": 1,
+    "prompt": "Use case: historical-scene. Generate one isolated transparent PNG game building sprite for house_pair_l4_horizontal_hall-v1. Reference image 1 is the sole project-owned style, view, tier and footprint reference. L4 prosperous merged horizontal lot. Merchant hall variant with one broad dominant pitched hall roof, subordinate attached wing to one side, large timber hall doorway. Maintain reference L4 wall height, wealth tier and compact footprint, no tower or extra storey. Distinct dominant long roof and smaller wing silhouette. Final delivery canvas 204x204 pixels, so design bold readable silhouettes for tiny game display, not fine texture. Match reference precisely in 2:1 isometric SW view, warm oak half-timbering, muted limewash, rubble footing, terracotta flat rectangular peg roof tiles. Southern England 1300-1450. Preserve reference's visual scale and ground bottom-center anchor; keep compact building composition with clear transparent margin, 8px equivalent at top and sides and 4px bottom. Genuinely transparent background with alpha, no ground rectangle, no scene, no other buildings, no labels. Soft top-left sunlight with minimal short contact shadow. Structural variation required, not recoloring. Unglazed dark or shuttered windows. NO chimney shafts or pots, no glass panes, no slate roofs, no curved S/pan tiles, no fantasy ornament. Flat rectangular tile courses must be flat rather than tubes. Painterly project style, crisp large forms, no blur, no watermark.",
+    "notes": "Native structural variant; parent normalizes canvas and reference pivot.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-8e978d09-f42a-461c-bd9e-a65e5d6f4bfe.png"
+  },
+  {
+    "id": "house_pair_l4_vertical_court-v1",
+    "reference": "house_pair_l4_vertical-v2.png",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/house_pair_l4_vertical-v2.png"
+    ],
+    "attempt": 1,
+    "prompt": "Use case: historical-scene. Generate one isolated transparent PNG game building sprite for house_pair_l4_vertical_court-v1. Reference image 1 is the sole project-owned style, view, tier and footprint reference. L4 prosperous merged depth-oriented lot. Tall principal residence of reference L4 height, compact visible courtyard beside/rear it with low stable building and broad stable double doors. Keep same long-depth lot envelope and wealth tier, no extra storey. Strong silhouette notch between main roof and low stable roof, tiny timber courtyard gate. No animals needed. Final delivery canvas 184x184 pixels, so design bold readable silhouettes for tiny game display, not fine texture. Match reference precisely in 2:1 isometric SW view, warm oak half-timbering, muted limewash, rubble footing, terracotta flat rectangular peg roof tiles. Southern England 1300-1450. Preserve reference's visual scale and ground bottom-center anchor; keep compact building composition with clear transparent margin, 8px equivalent at top and sides and 4px bottom. Genuinely transparent background with alpha, no ground rectangle, no scene, no other buildings, no labels. Soft top-left sunlight with minimal short contact shadow. Structural variation required, not recoloring. Unglazed dark or shuttered windows. NO chimney shafts or pots, no glass panes, no slate roofs, no curved S/pan tiles, no fantasy ornament. Flat rectangular tile courses must be flat rather than tubes. Painterly project style, crisp large forms, no blur, no watermark.",
+    "notes": "Native structural variant; parent normalizes canvas and reference pivot.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-d32187bf-92ac-4d3b-a962-c8f7a76a82df.png",
+    "selected": false
+  },
+  {
+    "id": "house_pair_l4_vertical_court-v1",
+    "reference": "house_pair_l4_vertical-v2.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-d32187bf-92ac-4d3b-a962-c8f7a76a82df.png"
+    ],
+    "attempt": 2,
+    "prompt": "Use case: precise-object-edit. Edit this project candidate only: REMOVE the small low connecting roof over the courtyard between the tall left residence and right stable. In its place show a clearly OPEN TO SKY compact stone-paved courtyard behind the existing short timber gate, with visible pavement and a little dark empty ground space. Keep tall residence, stable, doors, all dimensions, exact SW isometric viewpoint, colors, alpha transparency, roof tiles and ground anchor unchanged. No new props, chimney, windows or people. The two main roofs must now be separated by a visible notch/open courtyard, not joined by a covered porch. Preserve genuinely transparent background.",
+    "notes": "Selected targeted second attempt: removed covered link to expose open paved court. First attempt and full prompt retained in history; sole edit target is own project-derived candidate.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-0f051495-56c3-41bd-828b-818b567b8edb.png"
+  },
+  {
+    "id": "farm_mixed_ripe-v1",
+    "reference": "wheat_farm_ripe-v4.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+    "prompt": "Use case: historical-scene. Create ONE transparent game sprite farm_mixed_ripe-v1, southern England 1300–1450. Input 1 wheat_farm_ripe-v4 is crop style and exact SW 2:1 isometric ground-diamond reference; input 2 pastoral pilot is grass, shed, animal and rendering style reference. Final delivery 384x192 pixels, all sides transparent margin 8px, whole 2x2 tile rhombus fully in frame. Half this single rhombus is mature golden wheat, other half olive pasture with EXACTLY TWO dairy cows, ONE modest hay mound, ONE little thatched open shed. A medieval mixed smallholding, no machinery. IMPORTANT layout to enable four state edits: divide diamond with a straight diagonal boundary from top apex to bottom apex (vertical in image); wheat occupies LEFT half of diamond, pasture with cows/hay/shed occupies RIGHT half. Keep all cow/shed/hay silhouettes wholly to right of canvas center, no overlap into wheat half. Cows large readable simplified brown-and-cream silhouettes, not sheep. Wheat rows follow isometric ground axis, irregular hand cultivated. Painterly broad forms matching supplied project images, muted greens warm earth, soft top-left daylight, minimal ground shadow. Transparent outside ground footprint, no opaque backdrop. No text, no watermark, no grid, no stone plinth or floating extruded tile, no modern objects, no chimney, no tiny noisy detailing. Same camera and footprint height as reference. This is the ripe base of an animation: crop half will change later but pastoral half must remain fixed.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/wheat_farm_ripe-v4.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/wheat_farm_pastoral_ripe-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Native base, cows/shed/hay entirely right of x=0.52 width. Pasture invariance recommended compositing right half from this base."
+  },
+  {
+    "id": "farm_pastoral_spring-v1",
+    "reference": "wheat_farm_pastoral_ripe-pilot.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-edb7ee19-793b-40fc-8469-2455d457877a.png",
+    "prompt": "Use case: precise-object-edit / season. Edit supplied wheat_farm_pastoral_ripe-pilot project sprite into farm_pastoral_spring-v1. ONE transparent PNG, same entire image composition, exact SW 2:1 viewpoint, ground rhombus shape and every shed/fence/hay position invariant. Final 384x192 with 8px transparent margins. Keep same medieval English 1300–1450 painterly style, same sheep species, same four mature sheep and their approximate positions, same thatched open shed at left-front, same hay mound near lower middle, same wattle enclosure footprint on right. Change to spring: slightly fresher muted grass with distinct larger clumps, add TWO small lambs inside enclosure adjacent to adults (readable baby sheep silhouettes, not merely color change). No new structures. Top-left soft sunlight, no long shadows. Preserve alpha background. No modern fencing, no text, no grid, no flowers everywhere, no watermarks. Lambs and fresh grass broad recognizable forms at zoom0.6; avoid microdetail.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/wheat_farm_pastoral_ripe-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Four adults plus two lambs; shed/fence/hay layout retained visually, broad spring grass."
+  },
+  {
+    "id": "farm_pastoral_winter-v1",
+    "reference": "wheat_farm_pastoral_ripe-pilot.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-bf4dd826-6c3d-4dd6-8791-07a161d787fe.png",
+    "prompt": "Use case: precise-object-edit / season. Edit supplied wheat_farm_pastoral_ripe-pilot project sprite into farm_pastoral_winter-v1. ONE genuinely transparent PNG, same exact SW 2:1 viewpoint, ground rhombus and shed/fence positions, same tiny thatched shed in left foreground and wattle enclosure on right. Final delivery384x192 all8pxalpha margins. Preserve same four adult sheep species but group ALL FOUR inside pen tightly near its sheltered far side, leaving foreground pasture empty. Dry subdued straw/olive-brown winter grass, visibly reduced hay mound almost consumed, a few loose straw chunks. NO snow blanket, no new buildings, no additional animals. This must differ in animal grouping and hay silhouette, not merely hue. Same southern England1300–1450 project painterly broad forms, warm earth, soft upper-left daylight, minimal shadows. Preserve transparent background. No modern objects, no text, no watermark, no floating stone slab. Exact same footprint and tier as supplied summer pilot.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/wheat_farm_pastoral_ripe-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Four sheep gathered inside far enclosure; hay consumed; dry grass. Structures layout retained visually."
+  },
+  {
+    "id": "farm_mixed_seedling-v1",
+    "reference": "wheat_farm_seedling-v3.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-3db8365f-7223-4b57-a99f-974479b17e0a.png",
+    "prompt": "Use case: precise-object-edit. Edit ONLY the LEFT crop half of input1 farm_mixed_ripe native base to make farm_mixed_seedling-v1. Input2 is project wheat seedling reference for exact crop state. Replace tall ripe golden wheat on LEFT of image center with low parallel warm brown ridges and tiny short fresh green seedlings like input2. Keep EXACT same camera, whole rhombus, canvas framing, alpha boundaries, and every pixel of RIGHT pastoral half: two cows, shed, hay mound, grass, position, size, color all unchanged. The ground dividing line goes top apex to bottom apex approximately vertical through center. Do not move, alter or recolor any pasture objects. No remaining ripe wheat. Same medieval England painterly game style, simple readable rows at 384x192 final, 8pxalpha margins. No text/watermarks/modern objects. Genuine transparent background.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/wheat_farm_seedling-v3.png"
+    ],
+    "attempt": 1,
+    "notes": "Crop-left edit from ripe; identical nominal canvas. Parent composites ripe pasture for exact invariance.",
+    "selected": false
+  },
+  {
+    "id": "farm_mixed_seedling-v1",
+    "reference": "wheat_farm_seedling-v3.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-fd3b4065-3356-496c-b25a-ec7169c7c733.png",
+    "prompt": "Use case: precise-object-edit. Edit input1 farm_mixed_seedling-v1 candidate to fix seedling readability ONLY in the LEFT crop half. Keep exact same 1774x887 canvas framing, ground diamond extents, two cows, thatched shed, hay mound and all RIGHT pastoral content unchanged. Existing tiny seedlings vanish when resized to384x192. Replace them with CLEARLY VISIBLE cohesive clumps of young GREEN wheat shoots along the same brown ridges: each clump about20-30px wide and15px high on this1774px original, broad few-leaf silhouettes, dull fresh green distinct against warm dark soil. Many small but bold green clusters create obvious intermittent GREEN dotted rows even at finalgamezoom0.6. Shoots must remain VERY SHORT, only1/5 height of growing wheat, NO seedheads, NO golden stalks. Brown soil still dominates; this is sprouting seedling stage not developed green wheat. Change crop plants only; do not enlarge or rotate field, do not shift any animal/building/hay. Preserve genuine transparent background, medievalEnglish painterly style and softtop-left light. No text, blur, modern items, or watermark. Output identical framing and dimensions if possible.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-3db8365f-7223-4b57-a99f-974479b17e0a.png"
+    ],
+    "attempt": 2,
+    "notes": "Attempt2 selected after finalscale QA: enlarged short broad green seedling clumps for lowzoom readability. Parent retains ripe pasture by right-region composite."
+  },
+  {
+    "id": "farm_mixed_growing-v1",
+    "reference": "wheat_farm_growing-v3.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-8c5dd4e3-32af-436d-a40b-be45f500f509.png",
+    "prompt": "Use case: precise-object-edit. Edit ONLY LEFT crop half of input1 farm_mixed_ripe base to create farm_mixed_growing-v1. Input2 wheat_farm_growing-v3 is crop-state reference. Replace golden ripe wheat LEFT of image center with shorter growing green wheat in separated rows with brown earth visible, sparse pale immature heads, matching input2 crop maturity and olive green. Keep exactly the whole original canvas/framing/transparent ground shape and all RIGHT pastoral half pixels: TWO cows, thatch shed, hay mound, grass stay identical in position,size,color. Do not change pasture. Boundary top-to-bottom apex approximately x50%. Same SW2:1isometric perspective, medieval England1300–1450, painterly muted palette, top-left daylight. Final384x192px eightpxalpha margins, readable broad crop shapes, no text/watermarks/modern objects. Only crop half changes.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/wheat_farm_growing-v3.png"
+    ],
+    "attempt": 1,
+    "notes": "Crop-left edit from ripe; identical nominal canvas. Parent composites ripe pasture for exact invariance."
+  },
+  {
+    "id": "farm_mixed_worked-v1",
+    "reference": "wheat_farm_worked-v3.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-801166b8-4e07-494b-b4a0-624645902ec3.png",
+    "prompt": "Use case: precise-object-edit. Edit ONLY LEFT crop half of input1 farm_mixed_ripe base to make farm_mixed_worked-v1. Input2 wheat_farm_worked-v3 is crop state reference. REMOVE every standing wheat stalk from left half, replace with worked bare warm-brown earth and clear short parallel shallow ridges/furrows matching input2. Tiny leftover stubble permitted only barely sparse, no green growing crop. All RIGHT half pastoral pixels must stay exactly unchanged: two cows, thatched little shed, full hay mound, grass, every position/size/color. Same canvas framing ground diamond alpha silhouette SW2:1camera. Division approximately image center from top apex to bottom apex. No alterations outside crop half. Final384x192 alpha8margins, medievalEngland1300–1450 handpainted project mutedpalette top-left light. Transparent background, no text/no watermark/no modern machinery marks.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/wheat_farm_worked-v3.png"
+    ],
+    "attempt": 1,
+    "notes": "Crop-left edited bare soil. Native output enlarges ground footprint vs ripe; needs registration to ripe bbox before right-pasture composite."
+  },
+  {
+    "id": "well_c-v1",
+    "reference": "well.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-6aeb6330-19d8-46d3-afbd-5b133620a06d.png",
+    "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target72x80. Low circular rough stone well rim, no roof, no tall pulley frame. Beside rim a low broad wooden platform holding two water tubs/buckets. Distinct low and wide silhouette from roofed well and pilot upright bucket post. Keep rim diameter same as reference; compact footprint.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/well.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/well_b-pilot.png"
+    ],
+    "attempt": 1,
+    "notes": "Inspected: distinct roofless low stone rim with tub platform; parent must preserve low silhouette rather than scale height to roofed reference.",
+    "selected": true
+  },
+  {
+    "id": "storehouse_b-v1",
+    "reference": "storehouse.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-fd5e34cb-2dde-4be7-9437-9f1c6ed03768.png",
+    "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target160x136. Storehouse B: a timber storehouse on a visibly raised rough rubble-stone basement, broad loading doors on opposite visible side from reference, short timber access ramp. Same tier and footprint, roof ridge and annex rearranged distinct silhouette. Weathered oak planks with simple flat reddish peg tile roof.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/storehouse.png"
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "Rejected roof cylindrical pan tiles; targeted flat peg tile correction required."
+  },
+  {
+    "id": "storehouse_b-v1",
+    "reference": "storehouse.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-85100b0e-2bac-4463-8c24-b08ddbafebc6.png",
+    "prompt": "Precise object edit of attached generated warehouse. Change ONLY roof material and cargo doorway side. All roof surfaces must be FLAT RECTANGULAR clay peg tiles, thin flat rectangles overlapping like flat cards, matte muted brick brown, absolutely NO rounded barrels, NO curved channels, NO cylindrical ridges or S-shaped pantiles. Shift large loading doorway to right visible facade underneath right roof, left face planks. Preserve raised stone basement, scale, SW view, overall building silhouette, wooden ramp appropriate to loading door, transparent background. Southern England1300–1450. No text or glass or chimney.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-fd5e34cb-2dde-4be7-9437-9f1c6ed03768.png"
+    ],
+    "attempt": 2,
+    "selected": true,
+    "notes": "Native correction selected: flat tiles and right loading door, higher stone base, distinct ramp silhouette."
+  },
+  {
+    "id": "storehouse_c-v1",
+    "reference": "storehouse.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-0d73048f-50c5-421e-8ba2-d6e9b29cfff6.png",
+    "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target160x136. Storehouse C: a low long barn warehouse, lower roof ridge and elongated single gable roof, large broad wooden cargo doors, a small simple two-wheeled wooden handcart at its side. Same total footprint and tier as reference, no larger building. Flat reddish peg tile roof. Clear low long silhouette, cart clearly readable. Roof tiles MUST be visibly FLAT MATTE rectangles like thin cards, no rounded/cylindrical tiles anywhere. Avoid orange saturation.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/storehouse.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Inspected flat tile elongated single low barn, side cart, distinct from B."
+  },
+  {
+    "id": "windmill-v1",
+    "reference": "mill-v2.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-4edecec4-5c94-4825-a4ac-b7ebfba29d72.png",
+    "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target142x142. Post mill: replace reference building with a compact genuine medieval English timber POST MILL. Boxlike timber mill body supported above ground on a single massive central wooden post and open crossed timber trestle, short access ladder, FOUR broad wooden lattice sails attached to front hub. Distinct narrow elevated body silhouette. NOT a stone tower mill, NOT a watermill, no waterwheel. Same footprint, height envelope, viewpoint and visual wealth as supplied mill. Flat peg tiled small saddle roof, exposed support clearly visible. Roof tiles MUST be visibly FLAT MATTE rectangles like thin cards, no rounded/cylindrical tiles anywhere. Avoid orange saturation.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/mill-v2.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Inspected genuine post mill elevated box, central post and cross trestle, four sails."
+  },
+  {
+    "id": "market_active_c-v1",
+    "reference": "market_active-v2.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-919462e3-5a9d-4e3e-8804-48273f80236b.png",
+    "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target224x224. Market C: compact livestock market arrangement different from both references, a small low wattle sheep pen with two sheep and two geese, one simple canvas-covered grain stall with large grain sacks and wooden balance scales. Keep same marketplace footprint/tier, irregular triangular arrangement; animal pen and sacks strongly readable, muted off-white canvas. No people or lettering.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/market_active-v2.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/market_active_b-pilot.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Inspected distinct livestock pen and grain stall, two sheep two geese, balance scale."
+  },
+  {
+    "id": "market_quiet_b-v1",
+    "reference": "market_quiet-v2.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-e6fd75de-771d-43c5-bab4-e927ccc0c175.png",
+    "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nPRECISE EDIT. Image1 is the edit target, the approved two-stall activeB pilot. Image2 is only quiet-market material reference. Final target224x224. Keep EXACTLY image1 two-stall L layout, all wood posts, counters, ground footprint, lower corners, perspective, colors and framing. Change only market operating state: roll/fold the two fabric awnings tightly along their own existing roof rails and remove displayed wares so counters are bare, keep a few shut baskets beneath. Do NOT add a third stall; do NOT relocate, resize or redesign either booth. Genuine transparent background retained.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/market_active_b-pilot.png",
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/market_quiet-v2.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native edit paired L layout, two stalls maintained, awnings rolled and wares removed. Match final activeB footprint using shared width/bottom anchor; not independent height fit."
+  },
+  {
+    "id": "chapel_b-v1",
+    "reference": "chapel-v2.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-26620767-2dd4-4dcb-8fd0-ab7958768f10.png",
+    "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target133x133. Chapel B same small parish chapel body tier/footprint. Replace reference masonry bell tower with a modest OPEN timber bell hanger holding one small bronze bell above gable, no enclosed belfry. Add a small oak timber entrance porch with low pitched flat peg tile roof. Limewashed rubble stone chapel walls, tall narrow unglazed dark slit windows. Distinct timber porch and open hanger silhouette, not a large church. Roof tiles MUST be visibly FLAT MATTE rectangles like thin cards, no rounded/cylindrical tiles anywhere. Avoid orange saturation.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/chapel-v2.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Inspected open timber bell hanger and timber entrance porch; flat tiles, unglazed dark windows."
+  },
+  {
+    "id": "chapel_stone-v1",
+    "reference": "chapel-v2.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-2240ea49-3609-4230-a7ae-8c8426aa7df9.png",
+    "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target133x133. Chapel stone variant same small parish chapel tier and footprint. Exposed irregular warm grey rubble stone walls with chunky buttresses, very narrow dark unglazed slit windows, broad plain round-arched doorway. Lower simple gable and squat open stone bellcote, distinctly heavier low outline than reference, no large tower. Flat muted terracotta peg tile roof. No glass, no leaded windows. Material variant also changes roofline and buttress silhouette. Roof tiles MUST be visibly FLAT MATTE rectangles like thin cards, no rounded/cylindrical tiles anywhere. Avoid orange saturation.",
+    "references": [
+      "/tmp/astra-wave2-production-work-20260924/astra-wave2-production-reference/chapel-v2.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Inspected rubble stone, narrow slits, strong buttress outline, stone bellcote, flat tiles."
+  }
+]

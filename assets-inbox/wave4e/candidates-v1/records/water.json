@@ -1,0 +1,343 @@
+[
+  {
+    "id": "shore/shoreline_deep_a-v1",
+    "file": "assets/shore/shoreline_deep_a-v1.png",
+    "role": "strip",
+    "width": 512,
+    "height": 96,
+    "status": "candidate",
+    "sha256": "e10d39c567ab74c4d8526a4cd89781af7848d323453e52a5b034f55138f43b04",
+    "generationRecords": [
+      {
+        "id": "shoreline_deep_a-v1",
+        "prompt": "ROLE strip / shoreline_deep_a. Edit project shoreline reference, retain its horizontally continuous quiet grassy earth bank composition, ground in upper half and water in lower half. Match water hues to reference2 deep_a muted blue-green (#456975 approximately), no turquoise shallows. Broad handpainted medieval strategy-game brush shapes, soft upper-left light, flat texture map no perspective. Target final512x96, 4tilelong ribbon. Horizontal X-only repeating uninterrupted bank; top and bottom alpha fade12px, true transparent outside. Varied modest dirt ledge and small grass tufts12-16pxatfinalscale, no reeds, focalstones, whitefoam, borders or text. Deliver a long horizontal ribbon centered across entire width on transparent canvas. Change water color and bank rhythm only, preserve reference style.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/shoreline_a-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/deep_a-v1.png"
+        ],
+        "model": null,
+        "seed": null,
+        "tool": "image_gen.imagegen",
+        "source": "sources/water/shoreline_deep_a-v1-raw.png",
+        "method": "reference edit",
+        "referenceHashes": [
+          {
+            "file": "references/astra-wave4e-reference-files/shoreline_a-v1.png",
+            "sha256": "037a4bd5162c997f1566f28abd47be973a7c72de17fbcbafd849c73f913dfc95"
+          },
+          {
+            "file": "references/astra-wave4e-reference-files/deep_a-v1.png",
+            "sha256": "6e75254ff53937623e95da192da448cff58695fceff6263d5e1fbdadb1f81ed7"
+          }
+        ],
+        "sourceSHA256": "3675725a1427af47fc0f564ba6a2937e78b93e031642fb1092e3a7ec5590d6d4"
+      }
+    ],
+    "processing": {
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/shoreline_deep_a-v1-raw.png",
+      "crop": {
+        "left": 0,
+        "top": 251,
+        "width": 2172,
+        "height": 265
+      },
+      "target": [
+        512,
+        96
+      ],
+      "method": "One resize; mirrored-edge20px blend only at X seam (not object reflection); 12px Y alpha fade."
+    },
+    "sockets": null,
+    "qa": {
+      "xSeamMaxChannelDelta": 0,
+      "yOuterRowsTransparent": true,
+      "independentGeneration": true,
+      "mirrored": false,
+      "postCount": null,
+      "limitations": "Quiet broad waves use deep_a family palette. Repetition rhythm and curved runtime mapping need installation QA."
+    }
+  },
+  {
+    "id": "module/bridge_abutment_sw_a-v1",
+    "file": "assets/module/bridge_abutment_sw_a-v1.png",
+    "role": "module",
+    "width": 256,
+    "height": 192,
+    "status": "candidate",
+    "sha256": "045aa0fa3b4c1a676e2de83b199dace9daa98d92e46c58f914dcabe24c88ab4f",
+    "generationRecords": [
+      {
+        "id": "bridge_abutment_sw_a-v1",
+        "prompt": "ROLE module / bridge_abutment_sw_a. Reference1 is mandatory black/white topology mask at256x192: white is deck and two support ends, black must be transparent. Paint inside that silhouette a dedicated SOUTHWEST front bridge abutment, medieval worn oak plank deck, broad6planks and sturdy squared posts, dull muted warmwood, touch of earth at upper shore socket. Reference2 gives handpainted projectstyle only; do NOT mirror/copy its pixels. Orthographic2:1isometric, no perspective. Deck face nearest camera slopes down toward LOWER LEFT, independent view, upper-leftsoftlight. Keep deck corners at (24,98),(146,37),(230,79),(108,140) normalizedto256x192. Frontsocket(108,140), backsocket(146,37), passage48px. TransparentRGBA outside object, no castshadow, grassisland, water, boat, ropes, railings or text. Painted useful gameasset, large readable wood shapes no micrograin.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/bridge_abutment_sw_a-v1-mask.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/bridge_abutment_se_a-v1.png"
+        ],
+        "model": null,
+        "seed": null,
+        "tool": "image_gen.imagegen",
+        "source": "sources/water/bridge_abutment_sw_a-v1-raw.png",
+        "method": "reference edit",
+        "referenceHashes": [
+          {
+            "file": "sources/water/bridge_abutment_sw_a-v1-mask.png",
+            "sha256": "edc2996263fb65f59b18fcb2ad6738d817614cb427d4d4e7be440b6783a439aa"
+          },
+          {
+            "file": "references/astra-wave4e-reference-files/bridge_abutment_se_a-v1.png",
+            "sha256": "7b126c2afdd3e38a029959e32339bf179e4ae973e760242d46ade4ba217ae9f4"
+          }
+        ],
+        "sourceSHA256": "f722fcbf9cd9a73424a55ebf4750d4cedd9ec71098c3107323321469caae2ba7"
+      }
+    ],
+    "processing": {
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/bridge_abutment_sw_a-v1-raw.png",
+      "crop": {
+        "left": 129,
+        "top": 109,
+        "width": 1259,
+        "height": 804
+      },
+      "target": [
+        256,
+        192
+      ],
+      "method": "Alpha crop and single resize to topology-mask bounding box. Socket geometry remains a candidate registration; pixel-level walkability not runtime verified."
+    },
+    "sockets": {
+      "front": [
+        108,
+        140
+      ],
+      "back": [
+        146,
+        37
+      ],
+      "pivot": [
+        108,
+        140
+      ],
+      "passageWidth": 48,
+      "footprintPolygon": "24,98 146,37 230,79 108,140",
+      "straightLockTiles": 0.6,
+      "validation": "mask-first target registration; not runtime verified"
+    },
+    "qa": {
+      "xSeamMaxChannelDelta": null,
+      "yOuterRowsTransparent": null,
+      "independentGeneration": true,
+      "mirrored": false,
+      "postCount": null,
+      "limitations": "Source follows mask broadly; deck-corner sockets are target metadata, not certified pixel-exact portals. No game collision/occlusion test."
+    }
+  },
+  {
+    "id": "shore/shoreline_deep_b-v1",
+    "file": "assets/shore/shoreline_deep_b-v1.png",
+    "role": "strip",
+    "width": 512,
+    "height": 96,
+    "status": "candidate",
+    "sha256": "1469efca0129a63c5528c57f596c6cab476ca80c2fa6bdf1d020baf431ca782f",
+    "generationRecords": [
+      {
+        "id": "shoreline_deep_b-v1",
+        "prompt": "ROLE strip / shoreline_deep_a. Edit project shoreline reference, retain its horizontally continuous quiet grassy earth bank composition, ground in upper half and water in lower half. Match water hues to reference2 deep_a muted blue-green (#456975 approximately), no turquoise shallows. Broad handpainted medieval strategy-game brush shapes, soft upper-left light, flat texture map no perspective. Target final512x96, 4tilelong ribbon. Horizontal X-only repeating uninterrupted bank; top and bottom alpha fade12px, true transparent outside. Varied modest dirt ledge and small grass tufts12-16pxatfinalscale, no reeds, focalstones, whitefoam, borders or text. Deliver a long horizontal ribbon centered across entire width on transparent canvas. Change water color and bank rhythm only, preserve reference style. Variant B: independently repaint bank with two shallower rounded bays and three broad low moss humps, less dirt exposed than A; keep water exactly the same deep blue-green palette as deep_a. No isolated stones.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/shoreline_a-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/deep_a-v1.png"
+        ],
+        "model": null,
+        "seed": null,
+        "tool": "image_gen.imagegen",
+        "source": "sources/water/shoreline_deep_b-v1-raw.png",
+        "method": "reference edit",
+        "referenceHashes": [
+          {
+            "file": "references/astra-wave4e-reference-files/shoreline_a-v1.png",
+            "sha256": "037a4bd5162c997f1566f28abd47be973a7c72de17fbcbafd849c73f913dfc95"
+          },
+          {
+            "file": "references/astra-wave4e-reference-files/deep_a-v1.png",
+            "sha256": "6e75254ff53937623e95da192da448cff58695fceff6263d5e1fbdadb1f81ed7"
+          }
+        ],
+        "sourceSHA256": "56e775bd297854f213e7d7bd1878e590d4df405c89b1ad700a0b47504d44a449"
+      }
+    ],
+    "processing": {
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/shoreline_deep_b-v1-raw.png",
+      "crop": {
+        "left": 0,
+        "top": 252,
+        "width": 2172,
+        "height": 271
+      },
+      "target": [
+        512,
+        96
+      ],
+      "method": "One resize; mirrored-edge20px blend only at X seam (not object reflection); 12px Y alpha fade."
+    },
+    "sockets": null,
+    "qa": {
+      "xSeamMaxChannelDelta": 0,
+      "yOuterRowsTransparent": true,
+      "independentGeneration": true,
+      "mirrored": false,
+      "postCount": null,
+      "limitations": "Quiet broad waves use deep_a family palette. Repetition rhythm and curved runtime mapping need installation QA."
+    }
+  },
+  {
+    "id": "module/bridge_abutment_nw_b-v1",
+    "file": "assets/module/bridge_abutment_nw_b-v1.png",
+    "role": "module",
+    "width": 256,
+    "height": 192,
+    "status": "candidate",
+    "sha256": "43ebadff4c81f40a7d4aa6f84b86420ce4b993cc3b7da4eea11fb647bd329709",
+    "generationRecords": [
+      {
+        "id": "bridge_abutment_nw_b-v1",
+        "prompt": "ROLE module bridge_abutment_nw_b. Mask1 controls white silhouette(deck/supports); black becomes transparency. Draw BACK NORTHWEST bridge abutment variant independently, not reflected pixels. Deck points at256x192:(30,82),(102,46),(228,109),(155,146). Entrancefrontsocket(155,146), shorebacksocket(102,46). Reference2projectNEstyle only. Broad aged grey-brown oak boards, shorethreshold one rough earth/stone lip at UPPER LEFT, exposed rightmost squared leg, clearer five broad plank rhythm. Upperleftsoftlight, orthographic2:1isometric, no perspective. Actual transparent background, no water, grass island, boat, text, modernbolts, rails, longshadow. Keep deckboards thick enough to read at0.3scale. Shape must follow mask and be distinct from supplied reference.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/bridge_abutment_nw_b-v1-mask.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/bridge_abutment_ne_a-v1.png"
+        ],
+        "model": null,
+        "seed": null,
+        "tool": "image_gen.imagegen",
+        "source": "sources/water/bridge_abutment_nw_b-v1-raw.png",
+        "method": "reference edit",
+        "referenceHashes": [
+          {
+            "file": "sources/water/bridge_abutment_nw_b-v1-mask.png",
+            "sha256": "31a0d72a884b3a7089323de9216bf31bde355ceb47c963504f19fe24f0c6e62e"
+          },
+          {
+            "file": "references/astra-wave4e-reference-files/bridge_abutment_ne_a-v1.png",
+            "sha256": "67b573610e69ce06acbea4936069ed2899c88a3d2992c7ddb7bf4709d8f2e1cf"
+          }
+        ],
+        "sourceSHA256": "6fe1db73a2a74eeaf5fb9f84a29a524f97319b8545efb625644651066313fdb5"
+      }
+    ],
+    "processing": {
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/bridge_abutment_nw_b-v1-raw.png",
+      "crop": {
+        "left": 153,
+        "top": 180,
+        "width": 1148,
+        "height": 786
+      },
+      "target": [
+        256,
+        192
+      ],
+      "method": "Alpha crop and single resize to topology-mask bounding box. Socket geometry remains a candidate registration; pixel-level walkability not runtime verified."
+    },
+    "sockets": {
+      "front": [
+        155,
+        146
+      ],
+      "back": [
+        102,
+        46
+      ],
+      "pivot": [
+        155,
+        146
+      ],
+      "passageWidth": 48,
+      "footprintPolygon": "30,82 102,46 228,109 155,146",
+      "straightLockTiles": 0.6,
+      "validation": "mask-first target registration; not runtime verified"
+    },
+    "qa": {
+      "xSeamMaxChannelDelta": null,
+      "yOuterRowsTransparent": null,
+      "independentGeneration": true,
+      "mirrored": false,
+      "postCount": null,
+      "limitations": "Source follows mask broadly; deck-corner sockets are target metadata, not certified pixel-exact portals. No game collision/occlusion test."
+    }
+  },
+  {
+    "id": "module/ferry_landing-v1",
+    "file": "assets/module/ferry_landing-v1.png",
+    "role": "module",
+    "width": 256,
+    "height": 192,
+    "status": "candidate",
+    "sha256": "cbebd3f46b609b7bbbdbc807c3648c6f43ad42e519fa67e05d68205b4204a650",
+    "generationRecords": [
+      {
+        "id": "ferry_landing-v1",
+        "prompt": "ROLE module ferry_landing. Edit white regions of topology mask1 into small medieval timber landing. Preserve rhomboiddeck footprint (33,106),(147,49),(224,87),(110,145) normalized256x192, rectangular deck in2:1isometricview. EXACTLY TWO upright mooring posts, one on each long outer edge, anchored near(44,117) and(207,90), separate from the deck. No thirdpost. Four broad weathered grey-brown oak planks, simple pegs, no railings, NO boat, NO rope, NOwater, NOgroundisland. Reference2styleonly. Softupperleftlight, contactAOonly, transparentRGBAbackground. Plain purposeful handpainted medieval game prop; broad readable shapes, no text or micrograin. Keep black mask area transparent.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/ferry_landing-v1-mask.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/bridge_abutment_se_a-v1.png"
+        ],
+        "model": null,
+        "seed": null,
+        "tool": "image_gen.imagegen",
+        "source": "sources/water/ferry_landing-v1-raw.png",
+        "method": "reference edit",
+        "referenceHashes": [
+          {
+            "file": "sources/water/ferry_landing-v1-mask.png",
+            "sha256": "42116bd336b3236261fd2085ca8dcb0b9ab52dc3db59db8e8419e4684868bf0f"
+          },
+          {
+            "file": "references/astra-wave4e-reference-files/bridge_abutment_se_a-v1.png",
+            "sha256": "7b126c2afdd3e38a029959e32339bf179e4ae973e760242d46ade4ba217ae9f4"
+          }
+        ],
+        "sourceSHA256": "ffb036b65428f0fb7444329ae50a45d7e786da279ac2f1711789bdbd07d14b5d"
+      }
+    ],
+    "processing": {
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/ferry_landing-v1-raw.png",
+      "crop": {
+        "left": 160,
+        "top": 240,
+        "width": 1155,
+        "height": 652
+      },
+      "target": [
+        256,
+        192
+      ],
+      "method": "Alpha crop and single resize to topology-mask bounding box. Socket geometry remains a candidate registration; pixel-level walkability not runtime verified."
+    },
+    "sockets": {
+      "front": [
+        110,
+        145
+      ],
+      "back": [
+        147,
+        49
+      ],
+      "pivot": [
+        110,
+        145
+      ],
+      "passageWidth": 48,
+      "footprintPolygon": "33,106 147,49 224,87 110,145",
+      "straightLockTiles": 0.6,
+      "validation": "mask-first target registration; not runtime verified"
+    },
+    "qa": {
+      "xSeamMaxChannelDelta": null,
+      "yOuterRowsTransparent": null,
+      "independentGeneration": true,
+      "mirrored": false,
+      "postCount": 2,
+      "limitations": "Source follows mask broadly; deck-corner sockets are target metadata, not certified pixel-exact portals. No game collision/occlusion test."
+    }
+  }
+]

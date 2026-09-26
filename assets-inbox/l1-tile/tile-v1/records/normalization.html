@@ -1,0 +1,11 @@
+<!doctype html><script>
+(async()=>{try{
+const conf=await(await fetch('/config')).json(),a=conf.assets[0],ct=a.contract;
+const load=u=>new Promise((r,j)=>{let i=new Image();i.onload=()=>r(i);i.onerror=j;i.src=u;});
+const im=await load('/source/0'),sc=document.createElement('canvas');sc.width=im.width;sc.height=im.height;const sg=sc.getContext('2d');sg.drawImage(im,0,0);const si=sg.getImageData(0,0,im.width,im.height);let l=im.width,t=im.height,r=0,b=0;
+for(let y=0;y<im.height;y++)for(let x=0;x<im.width;x++){let k=(y*im.width+x)*4;if(si.data[k+3]<=2)si.data.fill(0,k,k+4);else{l=Math.min(l,x);t=Math.min(t,y);r=Math.max(r,x+1);b=Math.max(b,y+1);}}sg.putImageData(si,0,0);
+const c=document.createElement('canvas');c.width=139;c.height=139;const g=c.getContext('2d');g.imageSmoothingQuality='high';const scale=Math.min(ct.crop[2]/(r-l),ct.crop[3]/(b-t));const dw=(r-l)*scale,dh=(b-t)*scale,dx=ct.pivot[0]-dw/2,dy=ct.pivot[1]-dh;g.drawImage(sc,l,t,r-l,b-t,dx,dy,dw,dh);let d=g.getImageData(0,0,139,139);for(let y=0;y<139;y++)for(let x=0;x<139;x++){let k=(y*139+x)*4;if(x<8||x>=131||y<8||y>=135||d.data[k+3]<=2)d.data.fill(0,k,k+4);}g.putImageData(d,0,0);
+await fetch('/save/house_l1_tile-v1.png',{method:'POST',body:await new Promise(r=>c.toBlob(r,'image/png'))});
+await fetch('/save/records%2Ftechnical-qa.json',{method:'POST',body:JSON.stringify({id:a.id,size:[139,139],pivot:ct.pivot,referenceCrop:ct.crop,sourceSize:[im.width,im.height],sourceCrop:[l,t,r-l,b-t],scale,placement:[dx,dy,dw,dh],padding:{left:8,right:8,top:8,bottom:4},manualEdits:'alpha<=2 cleanup; meaningful bounds crop; uniform downsample; unchanged reference pivot; transparent padding'},null,2)});await fetch('/done');
+}catch(e){await fetch('/error',{method:'POST',body:e.stack||String(e)});}})();
+</script>

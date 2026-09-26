@@ -12,6 +12,7 @@ import type { ZoneStrokePoint } from "../../zones/zone.types";
 import { buildCategory, type BuildCategory } from "../buildMenuPresentation";
 import { humanizeTicks } from "../gameTimeCopy.ko";
 import { TUTORIAL_COPY } from "./tutorialCopy.ko";
+import type { StewardTone } from "../uiArt";
 import {
   currentStepIndex, newCount, placedCount, stepAction, stepProgress, stepTarget, suggestedBuildingSpot, tutorialAccess,
   TUTORIAL_STEP_IDS, type BuildCategoryKey, type ControlLayer, type TutorialAccess, type TutorialAction, type TutorialStepId,
@@ -49,6 +50,11 @@ const ADVISOR_KEY: Partial<Record<TutorialStepId, keyof typeof TUTORIAL_COPY.adv
   greet: "greet", well: "well", well_done: "wellDone", house: "house", arable: "arable", granary: "granary",
   zone_unlock: "zoneUnlock", burgage_done: "burgageDone", wrap_up: "wrapUp",
 };
+/** UX-2: the tone of each steward line (the portrait's expression): praise → success, a limit or a shortage → concern. */
+const ADVISOR_TONE: Readonly<Record<keyof typeof TUTORIAL_COPY.advisor, StewardTone>> = {
+  greet: "neutral", well: "neutral", wellDone: "success", house: "neutral", arable: "concern", granary: "concern",
+  zoneUnlock: "neutral", burgageDone: "success", wrapUp: "success",
+};
 
 function stepTitle(id: TutorialStepId): string { return TUTORIAL_COPY.cards[COPY_KEY[id]].title; }
 
@@ -74,7 +80,7 @@ export type TutorialController = {
   readonly running: boolean;
   readonly access: TutorialAccess;
   readonly cards: readonly GoalCard[];
-  readonly advisor: { readonly text: string; readonly key: string } | null;
+  readonly advisor: { readonly text: string; readonly key: string; readonly tone: StewardTone } | null;
   readonly banner: string | null;
   readonly log: TutorialRecord["log"];
   readonly pulse: { readonly key: string; readonly nonce: number } | null;
@@ -230,7 +236,7 @@ export function useTutorialController(input: {
 
   const [dismissedAdvisor, setDismissedAdvisor] = useState<string | null>(null);
   const advisorKey = stepId === null ? null : ADVISOR_KEY[stepId] ?? null;
-  const advisor = advisorKey === null || dismissedAdvisor === stepId ? null : { text: TUTORIAL_COPY.advisor[advisorKey], key: stepId! };
+  const advisor = advisorKey === null || dismissedAdvisor === stepId ? null : { text: TUTORIAL_COPY.advisor[advisorKey], key: stepId!, tone: ADVISOR_TONE[advisorKey] };
 
   return {
     enabled, running, access,

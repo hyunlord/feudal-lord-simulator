@@ -1,0 +1,130 @@
+[
+  {
+    "id": "frost_patch_a",
+    "file": "assets/season/frost_patch_a-v2.png",
+    "width": 128,
+    "height": 64,
+    "role": "seasonal ground frost overlay",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit the provided rejected frost sprite for a medieval 2:1 isometric game. Replace its puffed cloud-like white masses completely with an almost paper-thin ground-level frost coating: three irregular flat translucent frost stains arranged on the SAME 2:1 isometric ground plane. Frost is just a sparse broad-brush pale gray-white wash with broken edges and many transparent holes through which underlying grass remains visible. No ground backing; real transparent RGBA. Crucial: ZERO VOLUME, absolutely no mounds, no raised edge, no side faces, no cast shadow, no highlights suggesting bulges, no cotton/cloud/lumpy shapes, no fine sparkles. Each stain has an uneven elongated polygon footprint with width about twice depth. Colors low contrast off-white and light cool gray with opacity varying about 15–50 percent; no black or dark gray. Keep simple painterly broad marks suitable for final 128x64 pixels, isolated centered artwork, ample transparent margins, no text. This is surface frost lying flush on ground, not piled snow.",
+        "references": [
+          "output/astra-wave7-candidates-v1/assets/season/frost_patch_a-v1.png"
+        ],
+        "rawFile": "sources/frost/frost_patch_a-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": [
+      "Regenerated geometry and surface treatment, not opacity-only modification of rejected asset.",
+      "Resized generated 1774x887 RGBA to 128x64 Lanczos3; multiplied alpha by 0.5; preserved RGB and generated alpha holes."
+    ],
+    "qa": {
+      "status": "candidate",
+      "channels": 4,
+      "alphaMin": 0,
+      "alphaMax": 128,
+      "transparentPixels": 5998,
+      "visual": "Thin flat irregular surface sheets; no rounded cloud bulges or cast shadows. Grass visible through frost.",
+      "proof": "records/frost-all-grass-proof.png",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "frost_patch_b",
+    "file": "assets/season/frost_patch_b-v2.png",
+    "width": 128,
+    "height": 64,
+    "role": "seasonal ground frost overlay",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit the provided rejected frost sprite for a medieval 2:1 isometric game. Replace its puffed cloud-like white masses completely with an almost paper-thin ground-level frost coating: three irregular flat translucent frost stains arranged on the SAME 2:1 isometric ground plane. Frost is just a sparse broad-brush pale gray-white wash with broken edges and many transparent holes through which underlying grass remains visible. No ground backing; real transparent RGBA. Crucial: ZERO VOLUME, absolutely no mounds, no raised edge, no side faces, no cast shadow, no highlights suggesting bulges, no cotton/cloud/lumpy shapes, no fine sparkles. Each stain has an uneven elongated polygon footprint with width about twice depth. Colors low contrast off-white and light cool gray with opacity varying about 15–50 percent; no black or dark gray. Keep simple painterly broad marks suitable for final 128x64 pixels, isolated centered artwork, ample transparent margins, no text. This is surface frost lying flush on ground, not piled snow. Variant B: distinct arrangement of one broad irregular thin stain with two very small detached flakes; use the second reference as the accepted flat surface treatment, not the rejected cloudy volumes of first. Preserve no object from the rejected input that implies height.",
+        "references": [
+          "output/astra-wave7-candidates-v1/assets/season/frost_patch_b-v1.png",
+          "output/astra-wave7-rework-v1/sources/frost/frost_patch_a-raw.png"
+        ],
+        "rawFile": "sources/frost/frost_patch_b-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": [
+      "Regenerated geometry and surface treatment, not opacity-only modification of rejected asset.",
+      "Resized generated 1774x887 RGBA to 128x64 Lanczos3; multiplied alpha by 0.5; preserved RGB and generated alpha holes."
+    ],
+    "qa": {
+      "status": "candidate",
+      "channels": 4,
+      "alphaMin": 0,
+      "alphaMax": 128,
+      "transparentPixels": 6286,
+      "visual": "Thin flat irregular surface sheets; no rounded cloud bulges or cast shadows. Grass visible through frost.",
+      "proof": "records/frost-all-grass-proof.png",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "frost_patch_c",
+    "file": "assets/season/frost_patch_c-v2.png",
+    "width": 128,
+    "height": 64,
+    "role": "seasonal ground frost overlay",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit the provided rejected frost sprite for a medieval 2:1 isometric game. Replace its puffed cloud-like white masses completely with an almost paper-thin ground-level frost coating: three irregular flat translucent frost stains arranged on the SAME 2:1 isometric ground plane. Frost is just a sparse broad-brush pale gray-white wash with broken edges and many transparent holes through which underlying grass remains visible. No ground backing; real transparent RGBA. Crucial: ZERO VOLUME, absolutely no mounds, no raised edge, no side faces, no cast shadow, no highlights suggesting bulges, no cotton/cloud/lumpy shapes, no fine sparkles. Each stain has an uneven elongated polygon footprint with width about twice depth. Colors low contrast off-white and light cool gray with opacity varying about 15–50 percent; no black or dark gray. Keep simple painterly broad marks suitable for final 128x64 pixels, isolated centered artwork, ample transparent margins, no text. This is surface frost lying flush on ground, not piled snow. Variant C: distinct arrangement of four broken narrow irregular translucent ground stains; use the second reference as the accepted flat surface treatment, not the rejected cloudy volumes of first. Preserve no object from the rejected input that implies height.",
+        "references": [
+          "output/astra-wave7-candidates-v1/assets/season/frost_patch_c-v1.png",
+          "output/astra-wave7-rework-v1/sources/frost/frost_patch_a-raw.png"
+        ],
+        "rawFile": "sources/frost/frost_patch_c-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": [
+      "Regenerated geometry and surface treatment, not opacity-only modification of rejected asset.",
+      "Resized generated 1774x887 RGBA to 128x64 Lanczos3; multiplied alpha by 0.5; preserved RGB and generated alpha holes."
+    ],
+    "qa": {
+      "status": "candidate",
+      "channels": 4,
+      "alphaMin": 0,
+      "alphaMax": 128,
+      "transparentPixels": 6146,
+      "visual": "Thin flat irregular surface sheets; no rounded cloud bulges or cast shadows. Grass visible through frost.",
+      "proof": "records/frost-all-grass-proof.png",
+      "runtime": "not installed"
+    }
+  }
+]

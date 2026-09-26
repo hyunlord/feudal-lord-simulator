@@ -1,0 +1,14 @@
+{
+  "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/bridge_abutment_sw_a-v1-raw.png",
+  "crop": {
+    "left": 129,
+    "top": 109,
+    "width": 1259,
+    "height": 804
+  },
+  "target": [
+    256,
+    192
+  ],
+  "method": "Alpha crop and single resize to topology-mask bounding box. Socket geometry remains a candidate registration; pixel-level walkability not runtime verified."
+}

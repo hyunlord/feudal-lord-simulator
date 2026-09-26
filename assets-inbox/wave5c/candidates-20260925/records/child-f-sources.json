@@ -1,0 +1,567 @@
+[
+  {
+    "id": "wk_child_f_01-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-4aea-7493-a5a3-54df30981268/exec-e491cbe0-516c-4649-81ba-de8b1e207ed1.png",
+    "prompt": "Use case: identity-preserve. EDIT TARGET image1 actor_child_template_f-v1.png; project style reference image2 wk_labor_f_01-v1.png. Create wk_child_f_01-v1 by repainting ONLY clothing hair and skin on the exact existing CHILD GIRL 4-column 2-row walk sprite sheet. Keep exact original canvas 288x144 layout, transparent background, each sprite pixel silhouette, head location, arms, legs, shoes and foot placement. Columns face NE SE SW NW; row0 frame0 and row1 frame1 must preserve opposite forward foot, never duplicate poses. Outfit one consistent simple muted dusty olive wool child kirtle with small cream linen coif, youthful face, no wimple, no widow outfit, no objects. Child proportions unchanged, NOT adult. Same coif shape and garment length all directions. Soft top-left light, broad painterly game shapes. Preserve original feet/shoes unchanged. No shadow, no labels, no grid. Do not generate a new arrangement; reskin attached template in place.",
+    "references": [
+      "actor_child_template_f-v1.png",
+      "wk_labor_f_01-v1.png"
+    ],
+    "tool": "image_gen",
+    "model": "not exposed",
+    "attempt": 1,
+    "candidates": 1,
+    "notes": "Native edit source. Pose lock achieved mechanically in final, not native generation.",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_f_01-v1.png",
+    "selected": true,
+    "size": [
+      296,
+      148
+    ],
+    "manualEdits": "Native source per-cell bounding-box registration by Canvas; exact original template alpha and bottom9px restored per-cell pixel-for-pixel. Original head silhouette locked; generated garment/head paint clipped. Prompt mistakenly specified288x144; actual output uses authoritative296x148 template.",
+    "validation": {
+      "alphaMaxDiff": 0,
+      "paintCoverageFraction": 0.9550820616181975,
+      "cells": [
+        {
+          "col": 0,
+          "row": 0,
+          "sourceCrop": [
+            162,
+            138,
+            287,
+            404
+          ],
+          "targetBounds": [
+            29,
+            24,
+            47,
+            67
+          ],
+          "protectedFeetY": 58,
+          "headRegionY": [
+            24,
+            34
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 87,
+          "headTemplateAlphaCentroid": [
+            38.731368186874306,
+            29.235817575083427
+          ],
+          "headFinalAlphaCentroid": [
+            38.731368186874306,
+            29.235817575083427
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 1,
+          "row": 0,
+          "sourceCrop": [
+            609,
+            138,
+            732,
+            404
+          ],
+          "targetBounds": [
+            105,
+            25,
+            122,
+            68
+          ],
+          "protectedFeetY": 59,
+          "headRegionY": [
+            25,
+            35
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 73,
+          "headTemplateAlphaCentroid": [
+            112.1328813559322,
+            30.18532687651332
+          ],
+          "headFinalAlphaCentroid": [
+            112.1328813559322,
+            30.18532687651332
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 2,
+          "row": 0,
+          "sourceCrop": [
+            1023,
+            142,
+            1146,
+            406
+          ],
+          "targetBounds": [
+            175,
+            25,
+            192,
+            68
+          ],
+          "protectedFeetY": 59,
+          "headRegionY": [
+            25,
+            35
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 80,
+          "headTemplateAlphaCentroid": [
+            183.968094902768,
+            30.5018688045068
+          ],
+          "headFinalAlphaCentroid": [
+            183.968094902768,
+            30.5018688045068
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 3,
+          "row": 0,
+          "sourceCrop": [
+            1461,
+            136,
+            1586,
+            404
+          ],
+          "targetBounds": [
+            249,
+            24,
+            267,
+            67
+          ],
+          "protectedFeetY": 58,
+          "headRegionY": [
+            24,
+            34
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 87,
+          "headTemplateAlphaCentroid": [
+            255.49008015462454,
+            29.215053152180094
+          ],
+          "headFinalAlphaCentroid": [
+            255.49008015462454,
+            29.215053152180094
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 0,
+          "row": 1,
+          "sourceCrop": [
+            173,
+            564,
+            289,
+            829
+          ],
+          "targetBounds": [
+            31,
+            97,
+            47,
+            140
+          ],
+          "protectedFeetY": 131,
+          "headRegionY": [
+            97,
+            107
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            38.71959145775302,
+            102.21803484625048
+          ],
+          "headFinalAlphaCentroid": [
+            38.71959145775302,
+            102.21803484625048
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 1,
+          "row": 1,
+          "sourceCrop": [
+            617,
+            558,
+            737,
+            823
+          ],
+          "targetBounds": [
+            106,
+            96,
+            123,
+            138
+          ],
+          "protectedFeetY": 129,
+          "headRegionY": [
+            96,
+            106
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            113.08731757653186,
+            101.34131000933615
+          ],
+          "headFinalAlphaCentroid": [
+            113.08731757653186,
+            101.34131000933615
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 2,
+          "row": 1,
+          "sourceCrop": [
+            1012,
+            559,
+            1133,
+            823
+          ],
+          "targetBounds": [
+            172,
+            96,
+            190,
+            138
+          ],
+          "protectedFeetY": 129,
+          "headRegionY": [
+            96,
+            106
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            181.2155633223684,
+            101.39643297697368
+          ],
+          "headFinalAlphaCentroid": [
+            181.2155633223684,
+            101.39643297697368
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 3,
+          "row": 1,
+          "sourceCrop": [
+            1465,
+            564,
+            1579,
+            829
+          ],
+          "targetBounds": [
+            250,
+            97,
+            266,
+            140
+          ],
+          "protectedFeetY": 131,
+          "headRegionY": [
+            97,
+            107
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 86,
+          "headTemplateAlphaCentroid": [
+            256.4371575439191,
+            102.24176693215838
+          ],
+          "headFinalAlphaCentroid": [
+            256.4371575439191,
+            102.24176693215838
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "wk_child_f_02-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-4aea-7493-a5a3-54df30981268/exec-6e1f1e64-133f-471a-995d-35b06a1133a1.png",
+    "prompt": "Use case: identity-preserve. Edit ONLY the attached actor_child_template_f-v1 transparent 4-column x2-row sprite sheet. Preserve CHILD girl exact silhouettes, pose, frame layout, foot positions and head positions. Repaint clothes/hair/skin only; do not invent new poses or grow into adults. wk_child_f_02-v1: muted dusty blue simple wool kirtle, ochre-brown close fitting cloth cap with visible brown hair, youthful face. Same cap and garment length for NE SE SW NW, 2 complementary walk frames. Pixel-for-pixel feet and legs, arms and all outer silhouette remain from input. Top-left soft game lighting, original painterly style. No objects, no beard, no wimple, no apron added, no labels, no grid, no shadows, real transparent background. Sheet original288x144, retain original arrangement with eight distinct tiny figures. Different palette/head cloth from cream-coif olive first variant; entirely template reskin, no free generation.",
+    "references": [
+      "actor_child_template_f-v1.png"
+    ],
+    "tool": "image_gen",
+    "model": "not exposed",
+    "attempt": 1,
+    "candidates": 1,
+    "notes": "Native edit source. Pose lock achieved mechanically in final, not native generation.",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_f_02-v1.png",
+    "selected": true,
+    "size": [
+      296,
+      148
+    ],
+    "manualEdits": "Native source per-cell bounding-box registration by Canvas; exact original template alpha and bottom9px restored per-cell pixel-for-pixel. Original head silhouette locked; generated garment/head paint clipped. Prompt mistakenly specified288x144; actual output uses authoritative296x148 template.",
+    "validation": {
+      "alphaMaxDiff": 0,
+      "paintCoverageFraction": 0.940685286495825,
+      "cells": [
+        {
+          "col": 0,
+          "row": 0,
+          "sourceCrop": [
+            161,
+            135,
+            288,
+            400
+          ],
+          "targetBounds": [
+            29,
+            24,
+            47,
+            67
+          ],
+          "protectedFeetY": 58,
+          "headRegionY": [
+            24,
+            34
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 87,
+          "headTemplateAlphaCentroid": [
+            38.731368186874306,
+            29.235817575083427
+          ],
+          "headFinalAlphaCentroid": [
+            38.731368186874306,
+            29.235817575083427
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 1,
+          "row": 0,
+          "sourceCrop": [
+            611,
+            135,
+            733,
+            405
+          ],
+          "targetBounds": [
+            105,
+            25,
+            122,
+            68
+          ],
+          "protectedFeetY": 59,
+          "headRegionY": [
+            25,
+            35
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 73,
+          "headTemplateAlphaCentroid": [
+            112.1328813559322,
+            30.18532687651332
+          ],
+          "headFinalAlphaCentroid": [
+            112.1328813559322,
+            30.18532687651332
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 2,
+          "row": 0,
+          "sourceCrop": [
+            1024,
+            140,
+            1147,
+            405
+          ],
+          "targetBounds": [
+            175,
+            25,
+            192,
+            68
+          ],
+          "protectedFeetY": 59,
+          "headRegionY": [
+            25,
+            35
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 80,
+          "headTemplateAlphaCentroid": [
+            183.968094902768,
+            30.5018688045068
+          ],
+          "headFinalAlphaCentroid": [
+            183.968094902768,
+            30.5018688045068
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 3,
+          "row": 0,
+          "sourceCrop": [
+            1460,
+            135,
+            1589,
+            405
+          ],
+          "targetBounds": [
+            249,
+            24,
+            267,
+            67
+          ],
+          "protectedFeetY": 58,
+          "headRegionY": [
+            24,
+            34
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 87,
+          "headTemplateAlphaCentroid": [
+            255.49008015462454,
+            29.215053152180094
+          ],
+          "headFinalAlphaCentroid": [
+            255.49008015462454,
+            29.215053152180094
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 0,
+          "row": 1,
+          "sourceCrop": [
+            169,
+            566,
+            292,
+            830
+          ],
+          "targetBounds": [
+            31,
+            97,
+            47,
+            140
+          ],
+          "protectedFeetY": 131,
+          "headRegionY": [
+            97,
+            107
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            38.71959145775302,
+            102.21803484625048
+          ],
+          "headFinalAlphaCentroid": [
+            38.71959145775302,
+            102.21803484625048
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 1,
+          "row": 1,
+          "sourceCrop": [
+            616,
+            561,
+            739,
+            821
+          ],
+          "targetBounds": [
+            106,
+            96,
+            123,
+            138
+          ],
+          "protectedFeetY": 129,
+          "headRegionY": [
+            96,
+            106
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            113.08731757653186,
+            101.34131000933615
+          ],
+          "headFinalAlphaCentroid": [
+            113.08731757653186,
+            101.34131000933615
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 2,
+          "row": 1,
+          "sourceCrop": [
+            1009,
+            561,
+            1132,
+            821
+          ],
+          "targetBounds": [
+            172,
+            96,
+            190,
+            138
+          ],
+          "protectedFeetY": 129,
+          "headRegionY": [
+            96,
+            106
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            181.2155633223684,
+            101.39643297697368
+          ],
+          "headFinalAlphaCentroid": [
+            181.2155633223684,
+            101.39643297697368
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 3,
+          "row": 1,
+          "sourceCrop": [
+            1465,
+            567,
+            1584,
+            830
+          ],
+          "targetBounds": [
+            250,
+            97,
+            266,
+            140
+          ],
+          "protectedFeetY": 131,
+          "headRegionY": [
+            97,
+            107
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 86,
+          "headTemplateAlphaCentroid": [
+            256.4371575439191,
+            102.24176693215838
+          ],
+          "headFinalAlphaCentroid": [
+            256.4371575439191,
+            102.24176693215838
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        }
+      ]
+    }
+  }
+]

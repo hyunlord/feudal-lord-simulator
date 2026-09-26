@@ -1,0 +1,223 @@
+{
+  "newAssetCount": 15,
+  "checkCounts": [
+    2,
+    4
+  ],
+  "reusedStaff": 4,
+  "allPngCount": 38,
+  "maskWhitePixels": 16317,
+  "assets": [
+    {
+      "id": "actor_child-v1",
+      "size": [
+        296,
+        148
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "sha256": "2b7d062bca95d54a3432c22e1305fec35b4af55d30568f2b3fcd0255e5e5bbd5",
+      "soleRows": [
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66
+      ]
+    },
+    {
+      "id": "actor_elder_m-v1",
+      "size": [
+        296,
+        148
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "9a28a8614125b2f94de0362055d3b996c5fe4d1c76574e327b8240f29ea88544",
+      "soleRows": [
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66
+      ]
+    },
+    {
+      "id": "actor_elder_f-v1",
+      "size": [
+        296,
+        148
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "sha256": "1b971366f09fc81159916b283cb043c7043923aacdf81866e06083109242caa7",
+      "soleRows": [
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66,
+        66
+      ]
+    },
+    {
+      "id": "pt_face_m_01-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "0c7a217d8f5d73d9983711161ecccc1e95769056007cd1ce80cc8646c7f15e98"
+    },
+    {
+      "id": "pt_age_m_old-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        147
+      ],
+      "sha256": "2cf41372873a032fe3e79562535053937125b624d1f9b0fae744eccce930a8f7"
+    },
+    {
+      "id": "pt_hair_m_short_01-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "sha256": "f72f77356eb8aa2ec069b89afd537e6725ad70a1a943943df6eb1f255b6ae37b"
+    },
+    {
+      "id": "pt_hair_m_short_01_rear-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        253
+      ],
+      "sha256": "c4e69c1c7ddf51c5b91638e61c79c176b7f246618e2c90aaec52116e2a2ee1e1"
+    },
+    {
+      "id": "pt_hair_m_grey_01-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        253
+      ],
+      "sha256": "58bae01a3fc7698c95f357c965c651a984e1d21ddab35f4632a7bd40c0a15809"
+    },
+    {
+      "id": "pt_hair_m_grey_01_rear-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        253
+      ],
+      "sha256": "b82cd163a0760057c5cb755310ead1c8611e6033cdc1af10ee08502f39cc694b"
+    },
+    {
+      "id": "pt_beard_m_01-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        253
+      ],
+      "sha256": "aec3ecb19f8a78e87e37633484786240b67b588a5e1bf0e2e73f3064a94e9b1a"
+    },
+    {
+      "id": "pt_hood-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "61ed71ae27cd284ef9e6ae2ce19e749220c131794b5974eeff901d5578b79131"
+    },
+    {
+      "id": "pt_hat_brim-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "2ef24b95d8041cc67bd0e9e132d1d37930b1e231194dfb660c926421ac942e91"
+    },
+    {
+      "id": "pt_garment_work_tunic-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "12dd9a29fcea65b6b89e72881c362d5ff9c3ed1059815d03aed8d75f825a11ae"
+    },
+    {
+      "id": "pt_garment_merchant_gown-v1",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "2fe477abc332084146de4d9417fa3c02f5d06a2c3a6b5d24fc4d0befb02e38cb"
+    },
+    {
+      "id": "pt_garment_work_tunic-v1_mask",
+      "size": [
+        256,
+        256
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "e8afe55ebe3669d55eed4e1e94578059da22628444e40cde42836965b56ab064"
+    }
+  ],
+  "limits": "Gait is judged visually; dimensions and alpha alone do not prove anatomical alternation. Candidate only."
+}

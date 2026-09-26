@@ -27,8 +27,9 @@ test('generic prediction panel renders policy lines without facility logic and w
     { id: 'zone', tone: 'negative', text: '구역 점유 충돌' },
   ] }));
   assert.match(html, /정책 적용 시 일꾼 2명 필요/);
-  assert.match(html, /△/);
-  assert.match(html, /×/);
+  // UX-2: the status is a painted icon with its name (not colour alone).
+  assert.match(html, /role="img" aria-label="주의" data-icon="prediction.warn"/);
+  assert.match(html, /role="img" aria-label="미충족" data-icon="prediction.block"/);
 });
 
 test('stationary cursor reuses semantic prediction and does not republish each frame', () => {

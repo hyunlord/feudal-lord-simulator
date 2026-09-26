@@ -1,0 +1,586 @@
+[
+  {
+    "id": "pile/sheaves_2-v1",
+    "file": "assets/pile/sheaves_2-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / harvest wheat sheaves storage pile. Create ONE game sprite, stage 2 medium quantity: THREE standing loosely tied wheat sheaves leaning together, splayed golden straw bases, visible wheat heads at top, NOT modern hay bales. Medieval southern England 1300-1450. Match supplied project reference's restrained painterly isometric low-detail game-art palette, upper-left soft light, orthographic SW-facing isometric camera. Transparent RGBA background, no floor or scene, contact AO only tightly under sheaves. Large bold readable silhouette, broad simple color shapes; target final 96x64 pixels at 0.3 scale. Occupy centered medium-width composition with modest transparent margin. No text, no border, no cast shadow, no noise, no photorealism. Separate asset, not sheet. Design quantity as 3 sheaves, so stages 1 and 3 can be 1 and 6 sheaves. Reference is stylistic only; do not draw timber.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/sheaves_2-superseded-raw.png",
+        "status": "superseded; initially suspected halo is invisible alpha-zero RGB, not visible halo"
+      },
+      {
+        "prompt": "ROLE: object / harvest wheat sheaves storage pile. Create ONE game sprite, stage 2 medium quantity: THREE standing loosely tied wheat sheaves leaning together, splayed golden straw bases, visible wheat heads at top, NOT modern hay bales. Medieval southern England 1300-1450. Match supplied project reference's restrained painterly isometric low-detail game-art palette, upper-left soft light, orthographic SW-facing isometric camera. Transparent RGBA background, no floor or scene, contact AO only tightly under sheaves. Large bold readable silhouette, broad simple color shapes; target final 96x64 pixels at 0.3 scale. Occupy centered medium-width composition with modest transparent margin. No text, no border, no cast shadow, no noise, no photorealism. Separate asset, not sheet. Design quantity as 3 sheaves, so stages 1 and 3 can be 1 and 6 sheaves. Reference is stylistic only; do not draw timber. CRITICAL correction: absolutely NO ambient glow or soft outline or golden haze outside the object. Hard clean cutout silhouette, fully transparent surrounding pixels. No glow, no shadow beyond feet. Preserve three upright sheaves.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/sheaves_2-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        431,
+        162,
+        679,
+        673
+      ],
+      "singleResize": [
+        46,
+        46
+      ],
+      "paste": [
+        25,
+        14
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/sacks_2-v1",
+    "file": "assets/pile/sacks_2-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. THREE plump coarse tan linen grain sacks, tied necks, one reclining in front, medium inventory quantity. Final target 96x64px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/sacks_2-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        411,
+        199,
+        715,
+        624
+      ],
+      "singleResize": [
+        53,
+        46
+      ],
+      "paste": [
+        21,
+        14
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/bread_2-v1",
+    "file": "assets/pile/bread_2-v1.png",
+    "width": 64,
+    "height": 48,
+    "role": "object",
+    "pivot": [
+      32,
+      44
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. ONE shallow oval wicker basket with SIX large round golden-brown bread loaves heaped visibly, medium bakery inventory. No other objects. Final target 64x48px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/bread_2-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        260,
+        219,
+        930,
+        643
+      ],
+      "singleResize": [
+        46,
+        32
+      ],
+      "paste": [
+        9,
+        12
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/crates_2-v1",
+    "file": "assets/pile/crates_2-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. ONE simple closed square rough oak plank crate and ONE small wooden barrel, medieval storage inventory medium quantity. No metal modern shipping clasps. Final target 96x64px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/crates_2-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        489,
+        260,
+        558,
+        486
+      ],
+      "singleResize": [
+        53,
+        46
+      ],
+      "paste": [
+        21,
+        14
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/sheaves_3-v1",
+    "file": "assets/pile/sheaves_3-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. SIX upright loosely tied wheat sheaves leaning together in a broad dense stacked harvest stook, large inventory. Splayed bases, visible heads. No modern hay bales. Final target 96x64px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/sheaves_3-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        333,
+        61,
+        869,
+        853
+      ],
+      "singleResize": [
+        57,
+        56
+      ],
+      "paste": [
+        19,
+        4
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/sheaves_1-v1",
+    "file": "assets/pile/sheaves_1-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. ONE upright loosely tied wheat sheaf, splayed base and wheat heads, small inventory. No modern hay bale. Final target 96x64px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/sheaves_1-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        531,
+        124,
+        496,
+        768
+      ],
+      "singleResize": [
+        23,
+        35
+      ],
+      "paste": [
+        36,
+        25
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/sacks_1-v1",
+    "file": "assets/pile/sacks_1-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. ONE plump coarse tan linen grain sack, tied neck, small inventory. Final target 96x64px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/sacks_1-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        556,
+        266,
+        421,
+        493
+      ],
+      "singleResize": [
+        30,
+        35
+      ],
+      "paste": [
+        33,
+        25
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/sacks_3-v1",
+    "file": "assets/pile/sacks_3-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. SEVEN plump coarse tan linen grain sacks stacked in a broad low pyramid, tied necks, large inventory. Final target 96x64px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/sacks_3-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        324,
+        157,
+        865,
+        742
+      ],
+      "singleResize": [
+        65,
+        56
+      ],
+      "paste": [
+        15,
+        4
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/bread_1-v1",
+    "file": "assets/pile/bread_1-v1.png",
+    "width": 64,
+    "height": 48,
+    "role": "object",
+    "pivot": [
+      32,
+      44
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. ONE tiny shallow wicker tray carrying TWO large round golden-brown bread loaves, small bakery inventory. Final target 64x48px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/bread_1-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        354,
+        325,
+        802,
+        513
+      ],
+      "singleResize": [
+        35,
+        22
+      ],
+      "paste": [
+        14,
+        22
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/bread_3-v1",
+    "file": "assets/pile/bread_3-v1.png",
+    "width": 64,
+    "height": 48,
+    "role": "object",
+    "pivot": [
+      32,
+      44
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. THREE shallow oval wicker baskets tightly clustered full of many large round golden-brown bread loaves, broad high-quantity bakery inventory. Final target 64x48px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/bread_3-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        156,
+        186,
+        1139,
+        714
+      ],
+      "singleResize": [
+        56,
+        35
+      ],
+      "paste": [
+        4,
+        9
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/crates_1-v1",
+    "file": "assets/pile/crates_1-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. ONE simple closed rough oak plank storage crate, small inventory. Final target 96x64px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/crates_1-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        464,
+        241,
+        624,
+        561
+      ],
+      "singleResize": [
+        39,
+        35
+      ],
+      "paste": [
+        28,
+        25
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  },
+  {
+    "id": "pile/crates_3-v1",
+    "file": "assets/pile/crates_3-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      60
+    ],
+    "generationRecords": [
+      {
+        "prompt": "ROLE: object / medieval storage pile. ONE transparent RGBA game sprite, isolated object clean native alpha, contact AO only. Southern England 1300-1450. Restrained painterly isometric low-detail game art matching project timber reference, soft upper-left light, orthographic view from above SW. Broad simple shapes, silhouette readable at 0.3 scale. No floor, scenery, labels, modern hardware, cast shadows, fine noise, glow. No timber pile; reference style only. THREE closed rough oak plank storage crates and TWO squat wooden barrels clustered in a broad compact staggered two-tier pile, large inventory. Final target 96x64px; centered with transparent margin.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/pile_wood_2-v1.png"
+        ],
+        "rawFile": "sources/piles/crates_3-raw.png"
+      }
+    ],
+    "processing": {
+      "crop": [
+        354,
+        169,
+        827,
+        689
+      ],
+      "singleResize": [
+        67,
+        56
+      ],
+      "paste": [
+        14,
+        4
+      ],
+      "alpha": "native alpha preserved within alpha>4 crop; no alpha thresholding/mask/repaint",
+      "sourceSize": [
+        1536,
+        1024
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "smallScale": "Visual review passed type silhouette and increasing quantity at literal 0.3 in 12x12 synthetic context; small bread1 remains a tiny tray and does not show individual loaf details.",
+      "representativeGate": "records/piles-representative-context-03.png reviewed before remaining 8 generations",
+      "proof": "records/piles-contact-sheet.png",
+      "runtime": "not installed; no game runtime placement validation"
+    }
+  }
+]

@@ -1,0 +1,186 @@
+{
+  "scope": "18 house PNGs and three house check images",
+  "status": "candidate_partial_visual",
+  "technicalPass": true,
+  "all18Viewed": true,
+  "checkImagesViewed": [
+    "01-streets-zoom1.png",
+    "02-streets-zoom06.png",
+    "04-silhouettes.png"
+  ],
+  "independence": "Reviewer also generated six L3/L4 assets; not independent for those six.",
+  "resolved": [
+    "L4 wing main-body scale corrected with native generation, no stretch",
+    "Brewer low ridge vent now visible at original PNG scale"
+  ],
+  "residuals": [
+    "L1 thatch source already appears thatched, material distinction weak",
+    "L4 wing now mostly behind main body, low-zoom silhouette distinction subtle",
+    "Pair L3 vertical workshop and L4 horizontal hall have similar overall outline to their references",
+    "Tiny props and ridge vent are not independently readable at zoom0.6"
+  ],
+  "assets": [
+    {
+      "id": "house_l0_garden-v1",
+      "size": [
+        153,
+        153
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "c320744da6a2b850b0c078c36f2357166840a3d43e2a028acb8e31b28ec8348a"
+    },
+    {
+      "id": "house_l0_pen-v1",
+      "size": [
+        153,
+        153
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "22551b82a740af2ab8c06d966992c6d052fc1ab04dcfa7eecf4b7d509e48d7ca"
+    },
+    {
+      "id": "house_l1_artisan-v1",
+      "size": [
+        139,
+        139
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "903f214c669da374ec2663ee32307d3e28ddbef9ab49baac0e3857bc6b8e811e"
+    },
+    {
+      "id": "house_l1_garden-v1",
+      "size": [
+        139,
+        139
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "bb2ef7a7c0849de21f4d6ca1fd602b52f979dae2101dfb7613ede2df29f8a809"
+    },
+    {
+      "id": "house_l1_thatch-v1",
+      "size": [
+        139,
+        139
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "c0d1b1d0639d480baf16a2f6459876dc4d46e980e84dbc88a4bde71c283a8ac2"
+    },
+    {
+      "id": "house_l2_brewer-v1",
+      "size": [
+        137,
+        137
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "85495f678089cf03b05f7f3f3f4d8f4a08849052febee2d7d7824e0c7704ec67"
+    },
+    {
+      "id": "house_l2_garden-v1",
+      "size": [
+        137,
+        137
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "6ae78452f454825a0a44fcb64c2509e59af2b8e3578762a64ab1d2367cbd8247"
+    },
+    {
+      "id": "house_l2_weaver-v1",
+      "size": [
+        137,
+        137
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "2aed1cd89d5ba88f62137a5e81ac9b3417e3ed3fd985709906cc055b9838b2ed"
+    },
+    {
+      "id": "house_l3_clothier-v1",
+      "size": [
+        142,
+        142
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "5774a6291eeb32d2eb36826d503f32ea9355bfa539c464e2100e5f3a84f36ed6"
+    },
+    {
+      "id": "house_l3_shop-v1",
+      "size": [
+        142,
+        142
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "0af07bc0aa8564093df93ca3c768e7c297817da53d343f5a4acec088a945f386"
+    },
+    {
+      "id": "house_l3_storage-v1",
+      "size": [
+        142,
+        142
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "6359e01ea0d65d6e8694030def5895f4238a1f027d2e6f0f597cbbf88adda7c2"
+    },
+    {
+      "id": "house_l4_courtyard-v1",
+      "size": [
+        161,
+        161
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "1b3dfc1ce568a18b3730b65617692584208fcfc50c2de8ea5ca109e394864530"
+    },
+    {
+      "id": "house_l4_inn-v1",
+      "size": [
+        161,
+        161
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "117bf700f4681d91f619f1bb4807ba3374851a410e70702ae378f4cdabecaf24"
+    },
+    {
+      "id": "house_l4_wing-v1",
+      "size": [
+        161,
+        161
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "b29e6d8b5ef95da98833c971fb2478852423a8bef0e80bc6d0f19fe5b60486a1"
+    },
+    {
+      "id": "house_pair_l3_horizontal_courtyard-v1",
+      "size": [
+        209,
+        167
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "f17ec618c83e71ba9d4c8d99d35fc8ca0bba6ffb297f5f5671599c780f09c451"
+    },
+    {
+      "id": "house_pair_l3_vertical_workshop-v1",
+      "size": [
+        183,
+        183
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "930c08eb25720658a6271b78258bd11dde00d0f20a5a889d2a40d1ad50e598a5"
+    },
+    {
+      "id": "house_pair_l4_horizontal_hall-v1",
+      "size": [
+        204,
+        204
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "ff8167308be2fbd9713f67ee18e6ec7f2a66178c2b1133c6c3241fb84a1f29dd"
+    },
+    {
+      "id": "house_pair_l4_vertical_court-v1",
+      "size": [
+        184,
+        184
+      ],
+      "alphaPaddingPass": true,
+      "sha256": "533122e7b7cd8b7af217e94e69ac9ec069a619eb34c76ff53cbbb76654dfd9a5"
+    }
+  ]
+}

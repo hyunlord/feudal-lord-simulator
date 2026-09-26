@@ -197,12 +197,20 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | UX1-3 | 잠긴 분류·도구·층위와 시대 잠김 건물은 숨기지 않고 🔒 + 이유. 튜토리얼 뒤 방어는 목책 단계까지 잠김, 방향 층위는 늘 잠김(P2). 튜토리얼 끄면 방어까지 열림 | 사용자 결정(1절 A) + 렌더/UI 결정 | 2026-09-25 | [OS-3](../design/onboarding-shell.md) |
 | UX1-4 | FIX-1(`needs_road` 배치 규칙) 뒤 대본의 "집 → 길"을 "길 한 칸 → 그 길가에 집"으로 바꿨다. 체크리스트의 임시 "도로 연결 권장"은 병합 때 걷고 판정 결과를 그대로 보인다 | 렌더/UI 결정(본선 FIX-1 병합) | 2026-09-25 | [OS-1·OS-7](../design/onboarding-shell.md) |
 | UX1-5 | 구역을 건설 분류에서 빼 `직접 / 구역 / 방향` 층위로, 분류는 생활·길·생업·저장·유통·공공·신앙·방어. 날짜·속도·설정은 상단 오른쪽, 지도·오버레이는 아래 오른쪽 보기 계층, 경고 스택·왼쪽 inspector | 조사 E 권고(지시서 만들 것 5·6·9) | 2026-09-25 | [OS-5·OS-6](../design/onboarding-shell.md) |
+| UX2-1 | UI 그림은 CSS 9-slice(`border-image`, 원본 여백 ÷ 2 = CSS 폭, DPR 2에서 1:1)로 입히고, 누름·켜짐·잠김·focus 같은 상태는 그림이 아니라 코드(밝기·안쪽 도장색 선·1 px 내려앉음·흑백)로 그린다 | 지시서 만들 것 3·4 | 2026-09-26 | [UI 아트 스킨 US-3·US-4](../design/ui-art-skin.md) |
+| UX2-2 | 아이콘은 96 px 시트에서 칸별 Lanczos 24/32/48/64 사본을 스크립트로 한 번 만들어 커밋하고, CSS 크기마다 1x·2x를 `image-set`으로 고른다(실행 중 축소 없음). 파생 파일도 런타임 대장 행을 가진다 | 지시서 세부 "96 원본에서 24/32/48 축소본" | 2026-09-26 | [US-1](../design/ui-art-skin.md) |
+| UX2-3 | 목표 카드 "주의" 틀은 마을에 즉시 경고(경고 스택 ▲)가 있을 때 진행 중인 카드에 입힌다. 청지기 표정은 대사의 `tone`(neutral·concern·success)으로 고른다 | 렌더/UI 결정(0-A 목표 카드 주의 · 세부 tone 필드) | 2026-09-26 | [US-3·US-5](../design/ui-art-skin.md) |
+| UX2-4 | 글꼴은 저장소에 넣지 않고 `@fontsource/noto-sans-kr`·`noto-serif-kr` 5.3.0(OFL)을 고정 의존성으로 번들한다. 라이선스 전문은 `docs/provenance/fonts/`와 빌드의 `public/licenses/fonts/` | 지시서 만들 것 8 | 2026-09-26 | [US-6](../design/ui-art-skin.md) |
 | IN4e1 | 성문 v2는 옛 NW-SE 성문 조각과 알파가 같아 옛 등록을 그대로 쓰고, NE-SW 성문은 v2를 좌우 반전(등록도 반전)해 쓴다. 벽 띠 경로에서만 v2, 띠 끔·곡선 지면 끔은 옛 조각. 통로(논리) 그대로, 통로 중심 0.044~0.065칸·땅선 0° | 렌더 결정(INSTALL-4e, 지시서 "통로 논리 그대로 그림만") | 2026-09-25 | [성벽 WL-7](../design/wall-faces.md) |
 | IN4e2 | 석벽 정면 기본은 잡석 a·b, ashlar v2 a·b·c는 성문에서 2.8칸(여유 0.8 + 2) 안, 0.5칸 알파 넘김. 90° 탑은 격자점 해시로 원통 / 사각 b, 탑은 닿은 모든 팔이 그린다(앞쪽 모서리 가림 수정). 135° 기둥은 반전 없이 | 렌더 결정(INSTALL-4e) | 2026-09-25 | [성벽 WL-7](../design/wall-faces.md) |
 | IN4e3 | 물가 띠 기본 풀은 `shoreline_deep_{a,b}`, 4b·4d 띠 a–f는 등록만(얕은 물 풀). y 다리 앞쪽은 SW 교대, x 다리 뒤쪽은 NW a / NW b 해시. 나루는 등록만 | 렌더 결정(INSTALL-4e) | 2026-09-25 | [물가 SH-5](../design/shoreline.md) |
 | IN4e4 | 마당 울타리: 한쪽 끝부터 1/4·1/2·3/4 채워진 변은 그 길이의 판, 앞변에 온전한 변이 없고 1/2 변이 있으면 짧은 문. 돼지는 공유림 구역, 없으면 숲 가장자리 변 48개 중 하나꼴로 0.8칸 밖 풀밭(과수원·목초지 아님, 8칸 간격). 달력 겨울 헛간은 `farmstead_winter` | 렌더 결정(INSTALL-4e) | 2026-09-25 | [경작지 띠 FS-6](../design/field-strips.md) |
 | IN4e5 | 상인 외투는 상인 템플릿 몸(상인 남 2·귀족 남 1)만, 머리 튀어나옴 검사 없이(모자 제외해 그린 외투). WK3의 상인 템플릿 제외를 바꾼다. 직물 +실 꾸러미, 하인 +에일 단지(각 1/3) | 렌더 결정(INSTALL-4e, 지시서 "상인 외투는 actor_merchant 몸에만") | 2026-09-25 | [주민 합성기 WC-9](../design/walker-composer.md) |
 | IN4e6 | Wave 5b 아이·노인 자유 생성 시트 3장은 `rejected`(보행 교대 실패). 성인 시민 시트에서 스크립트로 파생한 템플릿 4장(`scripts/deriveActorTemplates.ts`, 결정론)을 Astra 재스킨 참조로 두고 설치하지 않는다(Wave 5c) | 확정(INSTALL-4e 지시서 추가 절) | 2026-09-25 | [assets-inbox/derived-templates](../../assets-inbox/derived-templates/README.md) |
+| IN5c1 | 지시서 ZIP(`to_ClaudeCode_INSTALL5c.zip`)을 찾지 못해, 사용자 요청 한 줄(아이·노인 워커 · 석문 v3 · 135° 기둥 · 얕은 물)과 Wave 5c 대장·검수 기록(INBOX-1 보관, 판정표 confirmed 14장)으로 진행했다 | 진행 판단(사용자 요청 2026-09-26) | 2026-09-26 | [보고서](../verification/install5c/REPORT.md) |
+| IN5c2 | 아이는 혼자 걷지 않고, 집안 어른의 시장·교회 길 절반에 0.3칸 옆으로 동행한다. 상한 40의 남은 자리만 쓰므로 어른은 MOVE-1 그대로다. 노인은 심부름과 무관하게 노인 몸 | 사용자 요청("아이는 어른과 동행") + 렌더 결정 | 2026-09-26 | [RM-8](../design/resident-movement.md) · [WC-10](../design/walker-composer.md) |
+| IN5c3 | 석문 v3는 통로 폭에 맞춘 한 배율로 통째로 그린다(판 늘이기 없음). 꺾인 점의 성문(고정 장면 8/10)은 본선처럼 석조 덩어리로 남긴다 | 렌더 결정 | 2026-09-26 | [WL-8](../design/wall-faces.md) |
+| IN5c4 | 135° 기둥 b·c는 축 팔의 화면 방향으로 고른다(기둥에 격자점·두 팔을 더함, 기준선 해시 불변). 얕은 물 채움은 d·e로 바꾸고 a–c는 등록만 | 렌더 결정 | 2026-09-26 | [WL-8](../design/wall-faces.md) · [SH-6](../design/shoreline.md) |
 
 ## R1-fix 확정 규칙
 

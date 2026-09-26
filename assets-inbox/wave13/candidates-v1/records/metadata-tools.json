@@ -1,0 +1,474 @@
+[
+  {
+    "id": "work_whip_ne-v1",
+    "file": "assets/work/work_whip_ne-v1.png",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48,
+    "pivot": [
+      24,
+      24
+    ],
+    "role": "object",
+    "status": "candidate",
+    "sha256": "eb2c236f5f30b26bb1a9f5cd5b5a79a33b262152b3237fdd3feda5473823a4b9",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One detached late medieval English cattle drover leather whip: short thick wood handgrip, supple dark brown leather lash making ONE generously open curved loop with trailing tip. NOT rigid stick, NOT metal tool. Reference sprite only sets muted hand-painted material palette; do not draw person or garments. Direction NE, handle butt lower-left to main tip upper-right; elevated fixed isometric view, soft upper-left light. Grip at image center. Whole prop visible with transparent margins. Simple bold readable silhouette for final48x48 pixels, no microtexture. Loop wide enough to stay visibly open after reduction, flexible lash thick enough for 1.5px final width. Genuine transparent RGBA background, no floor, no cast shadow, no text, no border, no other objects. One individual tool only.",
+        "rawFile": "raw/tools/work_whip_ne-v1.png",
+        "referenceImages": [
+          "references/actor_carter-v1.png"
+        ],
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "One uniform downsample and translation; no reflection or rotation; original generated alpha retained.",
+      "sizeReason": "48px chosen to keep whip loop opening and distinguish flexible leather from straight wooden goad",
+      "rawGrip": [
+        645.12,
+        609.28
+      ],
+      "gripSelection": "Visible wooden handle midpoint (whip) or wrapped grip band center (goad), manually registered",
+      "scale": 0.03518295134700442,
+      "rawDimensions": [
+        1536,
+        1024
+      ],
+      "alphaBounds": [
+        532,
+        162,
+        1242,
+        756
+      ]
+    },
+    "qa": {
+      "rgba": true,
+      "nonzeroAlpha": 106,
+      "borderAlphaPixels": 0,
+      "direction": "ne",
+      "directionMethod": "Independent generated viewpoint",
+      "native": "Whip curved leather loop versus straight goad distinguishable",
+      "zoom06": "Partial: coarse curved-versus-straight mark survives; exact material and lash tip not reliably readable",
+      "runtimeIntegrated": false
+    }
+  },
+  {
+    "id": "work_goad_ne-v1",
+    "file": "assets/work/work_goad_ne-v1.png",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48,
+    "pivot": [
+      24,
+      24
+    ],
+    "role": "object",
+    "status": "candidate",
+    "sha256": "79b7ffd2611f3602640c740cbc13933e3bb823fc725c5cbe45cdc9828e4f0b72",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One detached late medieval English cattle goad: long straight sturdy warm ashwood herding stick, blunt plain tip, no crook, no blade, no lash. Reference sprite only sets muted hand-painted material palette; do not draw person or garments. Direction NE, handle butt lower-left to main tip upper-right; elevated fixed isometric view, soft upper-left light. Grip at image center. Whole prop visible with transparent margins. Simple bold readable silhouette for final48x48 pixels, no microtexture. Wood rod thick enough for 2px final width. Grip is at quarter length from butt. Genuine transparent RGBA background, no floor, no cast shadow, no text, no border, no other objects. One individual tool only.",
+        "rawFile": "raw/tools/work_goad_ne-v1.png",
+        "referenceImages": [
+          "references/actor_carter-v1.png"
+        ],
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "One uniform downsample and translation; no reflection or rotation; original generated alpha retained.",
+      "sizeReason": "48px chosen to keep whip loop opening and distinguish flexible leather from straight wooden goad",
+      "rawGrip": [
+        510.89500000000004,
+        741.25
+      ],
+      "gripSelection": "Visible wooden handle midpoint (whip) or wrapped grip band center (goad), manually registered",
+      "scale": 0.029995500674898763,
+      "rawDimensions": [
+        1327,
+        1186
+      ],
+      "alphaBounds": [
+        163,
+        92,
+        1211,
+        1079
+      ]
+    },
+    "qa": {
+      "rgba": true,
+      "nonzeroAlpha": 85,
+      "borderAlphaPixels": 0,
+      "direction": "ne",
+      "directionMethod": "Independent generated viewpoint",
+      "native": "Whip curved leather loop versus straight goad distinguishable",
+      "zoom06": "Partial: coarse curved-versus-straight mark survives; exact material and lash tip not reliably readable",
+      "runtimeIntegrated": false
+    }
+  },
+  {
+    "id": "work_whip_se-v1",
+    "file": "assets/work/work_whip_se-v1.png",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48,
+    "pivot": [
+      24,
+      24
+    ],
+    "role": "object",
+    "status": "candidate",
+    "sha256": "49f1e9876dfdb2dac354d7ce97c89dd7bc499eec62d2ff2ee9239aafbe4ad0c0",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One detached late medieval English cattle drover leather whip: short thick wood handgrip, supple dark brown leather lash making ONE generously open curved loop with trailing tip. NOT rigid stick, NOT metal tool. Reference sprite only sets muted hand-painted material palette; do not draw person or garments. Direction SE, handle butt upper-left to main tip lower-right; elevated fixed isometric view, soft upper-left light. Grip at image center. Whole prop visible with transparent margins. Simple bold readable silhouette for final48x48 pixels, no microtexture. Loop wide enough to stay visibly open after reduction, flexible lash thick enough for 1.5px final width. Genuine transparent RGBA background, no floor, no cast shadow, no text, no border, no other objects. One individual tool only.",
+        "rawFile": "raw/tools/work_whip_se-v1.png",
+        "referenceImages": [
+          "references/actor_carter-v1.png"
+        ],
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "One uniform downsample and translation; no reflection or rotation; original generated alpha retained.",
+      "sizeReason": "48px chosen to keep whip loop opening and distinguish flexible leather from straight wooden goad",
+      "rawGrip": [
+        490.7,
+        252.45000000000002
+      ],
+      "gripSelection": "Visible wooden handle midpoint (whip) or wrapped grip band center (goad), manually registered",
+      "scale": 0.02878486738400384,
+      "rawDimensions": [
+        1402,
+        1122
+      ],
+      "alphaBounds": [
+        342,
+        137,
+        1106,
+        982
+      ]
+    },
+    "qa": {
+      "rgba": true,
+      "nonzeroAlpha": 69,
+      "borderAlphaPixels": 0,
+      "direction": "se",
+      "directionMethod": "Independent generated viewpoint",
+      "native": "Whip curved leather loop versus straight goad distinguishable",
+      "zoom06": "Partial: coarse curved-versus-straight mark survives; exact material and lash tip not reliably readable",
+      "runtimeIntegrated": false
+    }
+  },
+  {
+    "id": "work_goad_se-v1",
+    "file": "assets/work/work_goad_se-v1.png",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48,
+    "pivot": [
+      24,
+      24
+    ],
+    "role": "object",
+    "status": "candidate",
+    "sha256": "04601e7b92f5a4e9a0efa48b01d64f29bc10740dc8e59d17f8d4f717bcdea8e2",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One detached late medieval English cattle goad: long straight sturdy warm ashwood herding stick, blunt plain tip, no crook, no blade, no lash. Reference sprite only sets muted hand-painted material palette; do not draw person or garments. Direction SE, handle butt upper-left to main tip lower-right; elevated fixed isometric view, soft upper-left light. Grip at image center. Whole prop visible with transparent margins. Simple bold readable silhouette for final48x48 pixels, no microtexture. Wood rod thick enough for 2px final width. Grip is at quarter length from butt. Genuine transparent RGBA background, no floor, no cast shadow, no text, no border, no other objects. One individual tool only.",
+        "rawFile": "raw/tools/work_goad_se-v1.png",
+        "referenceImages": [
+          "references/actor_carter-v1.png"
+        ],
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "One uniform downsample and translation; no reflection or rotation; original generated alpha retained.",
+      "sizeReason": "48px chosen to keep whip loop opening and distinguish flexible leather from straight wooden goad",
+      "rawGrip": [
+        473.08799999999997,
+        266.24
+      ],
+      "gripSelection": "Visible wooden handle midpoint (whip) or wrapped grip band center (goad), manually registered",
+      "scale": 0.02819124943617501,
+      "rawDimensions": [
+        1536,
+        1024
+      ],
+      "alphaBounds": [
+        230,
+        67,
+        1218,
+        950
+      ]
+    },
+    "qa": {
+      "rgba": true,
+      "nonzeroAlpha": 60,
+      "borderAlphaPixels": 0,
+      "direction": "se",
+      "directionMethod": "Independent generated viewpoint",
+      "native": "Whip curved leather loop versus straight goad distinguishable",
+      "zoom06": "Partial: coarse curved-versus-straight mark survives; exact material and lash tip not reliably readable",
+      "runtimeIntegrated": false
+    }
+  },
+  {
+    "id": "work_whip_sw-v1",
+    "file": "assets/work/work_whip_sw-v1.png",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48,
+    "pivot": [
+      24,
+      24
+    ],
+    "role": "object",
+    "status": "candidate",
+    "sha256": "b38c8011d4ed01fcb0eedac2dccc1531b88070f5efc408543d14f559a2a9a30e",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One detached late medieval English cattle drover leather whip: short thick wood handgrip, supple dark brown leather lash making ONE generously open curved loop with trailing tip. NOT rigid stick, NOT metal tool. Reference sprite only sets muted hand-painted material palette; do not draw person or garments. Direction SW, handle butt upper-right to main tip lower-left; elevated fixed isometric view, soft upper-left light. Grip at image center. Whole prop visible with transparent margins. Simple bold readable silhouette for final48x48 pixels, no microtexture. Loop wide enough to stay visibly open after reduction, flexible lash thick enough for 1.5px final width. Genuine transparent RGBA background, no floor, no cast shadow, no text, no border, no other objects. One individual tool only.",
+        "rawFile": "raw/tools/work_whip_sw-v1.png",
+        "referenceImages": [
+          "references/actor_carter-v1.png"
+        ],
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "One uniform downsample and translation; no reflection or rotation; original generated alpha retained.",
+      "sizeReason": "48px chosen to keep whip loop opening and distinguish flexible leather from straight wooden goad",
+      "rawGrip": [
+        1075.1999999999998,
+        261.12
+      ],
+      "gripSelection": "Visible wooden handle midpoint (whip) or wrapped grip band center (goad), manually registered",
+      "scale": 0.028759244042728026,
+      "rawDimensions": [
+        1536,
+        1024
+      ],
+      "alphaBounds": [
+        345,
+        148,
+        1272,
+        885
+      ]
+    },
+    "qa": {
+      "rgba": true,
+      "nonzeroAlpha": 76,
+      "borderAlphaPixels": 0,
+      "direction": "sw",
+      "directionMethod": "Independent generated viewpoint",
+      "native": "Whip curved leather loop versus straight goad distinguishable",
+      "zoom06": "Partial: coarse curved-versus-straight mark survives; exact material and lash tip not reliably readable",
+      "runtimeIntegrated": false
+    }
+  },
+  {
+    "id": "work_goad_sw-v1",
+    "file": "assets/work/work_goad_sw-v1.png",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48,
+    "pivot": [
+      24,
+      24
+    ],
+    "role": "object",
+    "status": "candidate",
+    "sha256": "957c606e0519bfd42cf4bb8c604da12caf4f88ea84c572196a3ef4c3d3ad665a",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One detached late medieval English cattle goad: long straight sturdy warm ashwood herding stick, blunt plain tip, no crook, no blade, no lash. Reference sprite only sets muted hand-painted material palette; do not draw person or garments. Direction SW, handle butt upper-right to main tip lower-left; elevated fixed isometric view, soft upper-left light. Grip at image center. Whole prop visible with transparent margins. Simple bold readable silhouette for final48x48 pixels, no microtexture. Wood rod thick enough for 2px final width. Grip is at quarter length from butt. Genuine transparent RGBA background, no floor, no cast shadow, no text, no border, no other objects. One individual tool only.",
+        "rawFile": "raw/tools/work_goad_sw-v1.png",
+        "referenceImages": [
+          "references/actor_carter-v1.png"
+        ],
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "One uniform downsample and translation; no reflection or rotation; original generated alpha retained.",
+      "sizeReason": "48px chosen to keep whip loop opening and distinguish flexible leather from straight wooden goad",
+      "rawGrip": [
+        1013.76,
+        307.2
+      ],
+      "gripSelection": "Visible wooden handle midpoint (whip) or wrapped grip band center (goad), manually registered",
+      "scale": 0.027676735726712004,
+      "rawDimensions": [
+        1536,
+        1024
+      ],
+      "alphaBounds": [
+        255,
+        107,
+        1297,
+        913
+      ]
+    },
+    "qa": {
+      "rgba": true,
+      "nonzeroAlpha": 61,
+      "borderAlphaPixels": 0,
+      "direction": "sw",
+      "directionMethod": "Independent generated viewpoint",
+      "native": "Whip curved leather loop versus straight goad distinguishable",
+      "zoom06": "Partial: coarse curved-versus-straight mark survives; exact material and lash tip not reliably readable",
+      "runtimeIntegrated": false
+    }
+  },
+  {
+    "id": "work_whip_nw-v1",
+    "file": "assets/work/work_whip_nw-v1.png",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48,
+    "pivot": [
+      24,
+      24
+    ],
+    "role": "object",
+    "status": "candidate",
+    "sha256": "56fa1108450aa532d46f8419fb49b7d1b6b42658d8264d931090005b6672e9c9",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One detached late medieval English cattle drover leather whip: short thick wood handgrip, supple dark brown leather lash making ONE generously open curved loop with trailing tip. NOT rigid stick, NOT metal tool. Reference sprite only sets muted hand-painted material palette; do not draw person or garments. Direction NW, handle butt lower-right to main tip upper-left; elevated fixed isometric view, soft upper-left light. Grip at image center. Whole prop visible with transparent margins. Simple bold readable silhouette for final48x48 pixels, no microtexture. Loop wide enough to stay visibly open after reduction, flexible lash thick enough for 1.5px final width. Genuine transparent RGBA background, no floor, no cast shadow, no text, no border, no other objects. One individual tool only.",
+        "rawFile": "raw/tools/work_whip_nw-v1.png",
+        "referenceImages": [
+          "references/actor_carter-v1.png"
+        ],
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "One uniform downsample and translation; no reflection or rotation; original generated alpha retained.",
+      "sizeReason": "48px chosen to keep whip loop opening and distinguish flexible leather from straight wooden goad",
+      "rawGrip": [
+        967.6800000000001,
+        588.8
+      ],
+      "gripSelection": "Visible wooden handle midpoint (whip) or wrapped grip band center (goad), manually registered",
+      "scale": 0.027462467960454044,
+      "rawDimensions": [
+        1536,
+        1024
+      ],
+      "alphaBounds": [
+        203,
+        101,
+        1083,
+        740
+      ]
+    },
+    "qa": {
+      "rgba": true,
+      "nonzeroAlpha": 66,
+      "borderAlphaPixels": 0,
+      "direction": "nw",
+      "directionMethod": "Independent generated viewpoint",
+      "native": "Whip curved leather loop versus straight goad distinguishable",
+      "zoom06": "Partial: coarse curved-versus-straight mark survives; exact material and lash tip not reliably readable",
+      "runtimeIntegrated": false
+    }
+  },
+  {
+    "id": "work_goad_nw-v1",
+    "file": "assets/work/work_goad_nw-v1.png",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48,
+    "pivot": [
+      24,
+      24
+    ],
+    "role": "object",
+    "status": "candidate",
+    "sha256": "13cd2e8f49d6ce1db33374566cc9515ddfe78e82c513ead3897cbd91381beb02",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. One detached late medieval English cattle goad: long straight sturdy warm ashwood herding stick, blunt plain tip, no crook, no blade, no lash. Reference sprite only sets muted hand-painted material palette; do not draw person or garments. Direction NW, handle butt lower-right to main tip upper-left; elevated fixed isometric view, soft upper-left light. Grip at image center. Whole prop visible with transparent margins. Simple bold readable silhouette for final48x48 pixels, no microtexture. Wood rod thick enough for 2px final width. Grip is at quarter length from butt. Genuine transparent RGBA background, no floor, no cast shadow, no text, no border, no other objects. One individual tool only.",
+        "rawFile": "raw/tools/work_goad_nw-v1.png",
+        "referenceImages": [
+          "references/actor_carter-v1.png"
+        ],
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": {
+      "method": "One uniform downsample and translation; no reflection or rotation; original generated alpha retained.",
+      "sizeReason": "48px chosen to keep whip loop opening and distinguish flexible leather from straight wooden goad",
+      "rawGrip": [
+        734.72,
+        743.38
+      ],
+      "gripSelection": "Visible wooden handle midpoint (whip) or wrapped grip band center (goad), manually registered",
+      "scale": 0.030535683126853952,
+      "rawDimensions": [
+        1312,
+        1199
+      ],
+      "alphaBounds": [
+        47,
+        60,
+        1166,
+        1131
+      ]
+    },
+    "qa": {
+      "rgba": true,
+      "nonzeroAlpha": 93,
+      "borderAlphaPixels": 0,
+      "direction": "nw",
+      "directionMethod": "Independent generated viewpoint",
+      "native": "Whip curved leather loop versus straight goad distinguishable",
+      "zoom06": "Partial: coarse curved-versus-straight mark survives; exact material and lash tip not reliably readable",
+      "runtimeIntegrated": false
+    }
+  }
+]

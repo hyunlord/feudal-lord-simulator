@@ -1,0 +1,11 @@
+{
+  "id": "wk_labor_m_02-v1",
+  "prompt": "Use case: identity-preserve, precise-object-edit. EDIT the ATTACHED APPROVED EXISTING WALKER TEMPLATE; this is NOT a new character or pose generation. Asset wk_labor_m_02-v1. Keep every existing one of the EIGHT people in precisely the same canvas positions, NE SE SW NW columns, frame0/frame1 rows, same camera, identical faces, anatomical head centers, shoulders, elbows, hands, legs, boots and gait. Only repaint clothing and replace headwear: muted brick madder above-knee tunic, charcoal brown small open hood with short shoulder cape, pale grey hose, no apron. Southern England 1300-1450, modest low saturation woad/madder/weld/natural wool colors, painterly soft-edged sprite art matching input. NO objects or bags, empty original hands. No scarlet, purple or black luxury clothes. No modern buttons/zips, no printedtext. Genuine transparent RGBA outside people. 4 columns x2 rows exactly, no extra figures, no labels. Preserve original foot pixels and hand pixels; do NOT change skeletal pose or resize the figures. Change garment/headwear fabric only. All eight views are the SAME wardrobe seen from original directions, same two original gait poses.",
+  "refs": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/templates/actor_civilian_man-v1.png"
+  ],
+  "tool": "image_gen built-in EDIT",
+  "model": null,
+  "seed": null,
+  "outputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-6ec0-7401-9af7-3d8334e972ba as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-6ec0-7401-9af7-3d8334e972ba/exec-25cd1734-5a8a-4b3b-8974-17e369eeb43c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}

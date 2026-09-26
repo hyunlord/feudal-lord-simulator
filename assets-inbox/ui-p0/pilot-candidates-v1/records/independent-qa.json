@@ -1,0 +1,27 @@
+{
+  "verdict": "candidate_delivery_acceptable_with_documented_limits",
+  "scope": "12 raster assets and 3 offline proofs",
+  "visuallyInspectedAssetCount": 12,
+  "visuallyInspectedProofCount": 3,
+  "iconCountExcludingCursors": 23,
+  "cursorCount": 4,
+  "checks": {
+    "cleanPanelCenters": true,
+    "decorationAtEdges": true,
+    "noBakedTextOrNumbers": true,
+    "noBarContentsOrSelectionHighlights": true,
+    "iconPrimarySilhouettesAt24px": true,
+    "nineSliceCornersVisuallyFixed": true,
+    "advisorCircleVisuallyFixed": true,
+    "topRightTimeAndSettings": true,
+    "separateLayerAndCategoryControls": true,
+    "oldObjectiveTextLeakFixed": true
+  },
+  "limitations": [
+    "24px secondary details weak; no blind recognition experiment",
+    "advisor requires fixed circle overlay plus nine-slice body",
+    "HUD values and labels are illustrative, not verified simulation state",
+    "no runtime interaction, accessibility, performance or integration validation"
+  ],
+  "runtimeIntegrationClaim": false
+}

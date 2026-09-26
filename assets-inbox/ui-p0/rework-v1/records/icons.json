@@ -1,0 +1,307 @@
+[
+  {
+    "id": "ui/icon_cause_family_sheet",
+    "file": "assets/ui/icon_cause_family_sheet.png",
+    "width": 672,
+    "height": 96,
+    "role": "icon sheet",
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. One isolated transparent raster UI icon for medieval city-building game. Input image is style reference and replacement target. Replace this unclear tunic-shaped access icon entirely with a short winding earth ROAD visibly BLOCKED across its width by ONE horizontal fallen LOG. The dirt path visible both above and below log, 2 broad wheel ruts. Simple blocked road unmistakable at 24px. No shirt, no person, no hammer, no arrow needed. Preserve approved art language: matte hand-painted earth pigments, restrained desaturated warm beige/taupe/oak brown, very thin soft brown outer contour, simplified large readable shapes. C direction 80% functional clarity 20% period decoration. Genuine transparent alpha background, centered object fully visible, generous empty margins. No panel, no ground shadow, no glossy gold, no bright colors, no decorative flourishes. No letters or digits; only help badge may contain requested question mark. Output one square icon only.",
+        "referencePaths": [
+          "sources/icons/access-input.png"
+        ],
+        "rawPath": "sources/icons/access-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: precise-object-edit. One isolated transparent raster UI icon for medieval city-building game. Input image is style reference and replacement target. Replace this hand-and-hammer icon with TWO medieval WORKERS heads and shoulders as simple distinct silhouettes side by side, accompanied by ONE large upright SPADE with visible broad iron blade. No hammer. Two worker heads clearly separate at 24px. Preserve approved art language: matte hand-painted earth pigments, restrained desaturated warm beige/taupe/oak brown, very thin soft brown outer contour, simplified large readable shapes. C direction 80% functional clarity 20% period decoration. Genuine transparent alpha background, centered object fully visible, generous empty margins. No panel, no ground shadow, no glossy gold, no bright colors, no decorative flourishes. No letters or digits; only help badge may contain requested question mark. Output one square icon only.",
+        "referencePaths": [
+          "sources/icons/labor-input.png"
+        ],
+        "rawPath": "sources/icons/labor-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: precise-object-edit. One isolated transparent raster UI icon for medieval city-building game. Input image is style reference and replacement target. Replace this rolled scroll icon with a FOLDED FLAT parchment DOCUMENT with one dog-eared corner and ONE subdued reddish-brown wax SEAL near bottom right. Document is rectangular and planar with visibly folded flap, NOT a roll or scroll. No writing marks, no text, no letters. Preserve approved art language: matte hand-painted earth pigments, restrained desaturated warm beige/taupe/oak brown, very thin soft brown outer contour, simplified large readable shapes. C direction 80% functional clarity 20% period decoration. Genuine transparent alpha background, centered object fully visible, generous empty margins. No panel, no ground shadow, no glossy gold, no bright colors, no decorative flourishes. No letters or digits; only help badge may contain requested question mark. Output one square icon only.",
+        "referencePaths": [
+          "sources/icons/rights-input.png"
+        ],
+        "rawPath": "sources/icons/rights-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": "Replace specified 96x96 cells only from alpha-bbox-cropped generated single icons, proportional Lanczos3 scaling to maximum84px, centered. Every non-target decoded RGBA cell byte-identical to P0. No recoloring or painting.",
+    "qa": {
+      "status": "candidate",
+      "registration": [
+        {
+          "id": "access",
+          "index": 2,
+          "sourceCrop": [
+            263,
+            227,
+            759,
+            816
+          ],
+          "destination": [
+            9,
+            6,
+            78,
+            84
+          ]
+        },
+        {
+          "id": "labor",
+          "index": 3,
+          "sourceCrop": [
+            132,
+            180,
+            990,
+            925
+          ],
+          "destination": [
+            6,
+            9,
+            84,
+            78
+          ]
+        },
+        {
+          "id": "rights",
+          "index": 6,
+          "sourceCrop": [
+            217,
+            153,
+            838,
+            959
+          ],
+          "destination": [
+            11,
+            6,
+            73,
+            84
+          ]
+        }
+      ],
+      "cellChecks": [
+        {
+          "cell": 0,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "3b8f0b46fa56c46d73c0191ad7c2074b91e756746032890736aada9423ede0b9",
+          "newSHA256": "3b8f0b46fa56c46d73c0191ad7c2074b91e756746032890736aada9423ede0b9"
+        },
+        {
+          "cell": 1,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "f3917ba21fa1c6bd7f229385e5bc80ef4c67c1c6b287bb3fcf67385e2e4f3ba8",
+          "newSHA256": "f3917ba21fa1c6bd7f229385e5bc80ef4c67c1c6b287bb3fcf67385e2e4f3ba8"
+        },
+        {
+          "cell": 2,
+          "changed": true,
+          "decodedRGBAIdentical": false,
+          "oldSHA256": "b899917f8f1258c7ccd91076f3acf7b22bea9a4790067396d6a5b6486730a009",
+          "newSHA256": "c174146073368cdf056db741924f8fc34c91b782c166f87b6431180b34c021df"
+        },
+        {
+          "cell": 3,
+          "changed": true,
+          "decodedRGBAIdentical": false,
+          "oldSHA256": "79252aecb46018f13e7a978f8d344c582b1cfc4b553aa8110b51dfdfe255d12d",
+          "newSHA256": "e90d9680d3fab6ec3539c2c1dd6640f482fdc2e664f83264090e0019cbb4209b"
+        },
+        {
+          "cell": 4,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "e7916a6e6d770ac3d2f99e6cd66e559581548039814c1f457fa6170e35708ca5",
+          "newSHA256": "e7916a6e6d770ac3d2f99e6cd66e559581548039814c1f457fa6170e35708ca5"
+        },
+        {
+          "cell": 5,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "4c083f5993fe05474fbdd3a58b4cf86d90d1487c679871d2440691c4591623c8",
+          "newSHA256": "4c083f5993fe05474fbdd3a58b4cf86d90d1487c679871d2440691c4591623c8"
+        },
+        {
+          "cell": 6,
+          "changed": true,
+          "decodedRGBAIdentical": false,
+          "oldSHA256": "3de490b3844ca14ea48f02a72d1870c67c305b9d20df8e6463b37d1903ba772a",
+          "newSHA256": "7472fe29ae152812b21c1f42cda93f1538f08a7d471224d113c224944d26b588"
+        }
+      ]
+    },
+    "cellSize": 96,
+    "cellOrder": [
+      "water droplet",
+      "bread loaf",
+      "road junction",
+      "hand holding tool",
+      "storage crate",
+      "protective shield",
+      "sealed parchment"
+    ],
+    "version": 2
+  },
+  {
+    "id": "ui/icon_objective_action_sheet",
+    "file": "assets/ui/icon_objective_action_sheet.png",
+    "width": 384,
+    "height": 96,
+    "role": "icon sheet",
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. One isolated transparent raster UI icon for medieval city-building game. Input image is style reference and replacement target. Replace this hammer icon with an OPEN wooden DOOR seen frontally, door leaf clearly opened outward to one side exposing dark open doorway, and one simple broad parchment ARROW pointing through the opening toward the right. No hammer, hand, tool, house roof. Preserve approved art language: matte hand-painted earth pigments, restrained desaturated warm beige/taupe/oak brown, very thin soft brown outer contour, simplified large readable shapes. C direction 80% functional clarity 20% period decoration. Genuine transparent alpha background, centered object fully visible, generous empty margins. No panel, no ground shadow, no glossy gold, no bright colors, no decorative flourishes. No letters or digits; only help badge may contain requested question mark. Output one square icon only.",
+        "referencePaths": [
+          "sources/icons/open-input.png"
+        ],
+        "rawPath": "sources/icons/open-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": "Replace specified 96x96 cells only from alpha-bbox-cropped generated single icons, proportional Lanczos3 scaling to maximum84px, centered. Every non-target decoded RGBA cell byte-identical to P0. No recoloring or painting.",
+    "qa": {
+      "status": "candidate",
+      "registration": [
+        {
+          "id": "open",
+          "index": 0,
+          "sourceCrop": [
+            211,
+            159,
+            857,
+            941
+          ],
+          "destination": [
+            9,
+            6,
+            77,
+            84
+          ]
+        }
+      ],
+      "cellChecks": [
+        {
+          "cell": 0,
+          "changed": true,
+          "decodedRGBAIdentical": false,
+          "oldSHA256": "e6e492472081c5e1a8a25ee777a4eb12286c6e57eecd09c8f24926bb39580c93",
+          "newSHA256": "14c6fea94e3a379ac163659340cc8a2f68054226f8943c84940a9d998ce398b4"
+        },
+        {
+          "cell": 1,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "c8791eb56b378d5d571941e1dc5dba60f179ce538f18055d9f3c0aec686fe103",
+          "newSHA256": "c8791eb56b378d5d571941e1dc5dba60f179ce538f18055d9f3c0aec686fe103"
+        },
+        {
+          "cell": 2,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "a76d3587a188ccb37ff70ab25837e4b60586a75abb07ecef4cc0fc67cafeb043",
+          "newSHA256": "a76d3587a188ccb37ff70ab25837e4b60586a75abb07ecef4cc0fc67cafeb043"
+        },
+        {
+          "cell": 3,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "6ec223f999757ab0c8c1df82bd4fb13dd5b812aae70793609d6a3d7ca178b36f",
+          "newSHA256": "6ec223f999757ab0c8c1df82bd4fb13dd5b812aae70793609d6a3d7ca178b36f"
+        }
+      ]
+    },
+    "cellSize": 96,
+    "cellOrder": [
+      "hammer tool",
+      "map with location pin",
+      "open blank book with candle",
+      "upward chevron"
+    ],
+    "version": 2
+  },
+  {
+    "id": "ui/icon_lock_new_sheet",
+    "file": "assets/ui/icon_lock_new_sheet.png",
+    "width": 288,
+    "height": 96,
+    "role": "icon sheet",
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. One isolated transparent raster UI icon for medieval city-building game. Input image is style reference and replacement target. Replace this open book icon with a ROUND parchment BADGE containing a large DARK BROWN QUESTION MARK ?. This exact punctuation ? is explicitly required. No book, no candle, no other text. Question mark clearly centered and readable at 24px. Preserve approved art language: matte hand-painted earth pigments, restrained desaturated warm beige/taupe/oak brown, very thin soft brown outer contour, simplified large readable shapes. C direction 80% functional clarity 20% period decoration. Genuine transparent alpha background, centered object fully visible, generous empty margins. No panel, no ground shadow, no glossy gold, no bright colors, no decorative flourishes. No letters or digits; only help badge may contain requested question mark. Output one square icon only.",
+        "referencePaths": [
+          "sources/icons/help-input.png"
+        ],
+        "rawPath": "sources/icons/help-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": "Replace specified 96x96 cells only from alpha-bbox-cropped generated single icons, proportional Lanczos3 scaling to maximum84px, centered. Every non-target decoded RGBA cell byte-identical to P0. No recoloring or painting.",
+    "qa": {
+      "status": "candidate",
+      "registration": [
+        {
+          "id": "help",
+          "index": 2,
+          "sourceCrop": [
+            210,
+            211,
+            834,
+            823
+          ],
+          "destination": [
+            6,
+            6,
+            84,
+            83
+          ]
+        }
+      ],
+      "cellChecks": [
+        {
+          "cell": 0,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "d19fbdfce86e553c5191c79abaea62e68220a91111c475bbfec035d4e9ecc8d9",
+          "newSHA256": "d19fbdfce86e553c5191c79abaea62e68220a91111c475bbfec035d4e9ecc8d9"
+        },
+        {
+          "cell": 1,
+          "changed": false,
+          "decodedRGBAIdentical": true,
+          "oldSHA256": "2a2e6b99652d4e800ebeb5cde5080cad9cfb57be614af3993fd91bf247b5a69d",
+          "newSHA256": "2a2e6b99652d4e800ebeb5cde5080cad9cfb57be614af3993fd91bf247b5a69d"
+        },
+        {
+          "cell": 2,
+          "changed": true,
+          "decodedRGBAIdentical": false,
+          "oldSHA256": "7d20dd82a7c49b4745a34c5a3deaebc70ea4a11230fe239537270b012f0657d4",
+          "newSHA256": "0aba209ab8dd3e25bac7ec7b6e6861bb6cdddc6cd234939550dfeaedd1cc7f6c"
+        }
+      ]
+    },
+    "cellSize": 96,
+    "cellOrder": [
+      "padlock",
+      "four point spark",
+      "open blank book"
+    ],
+    "version": 2
+  }
+]

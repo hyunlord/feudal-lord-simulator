@@ -1,0 +1,35 @@
+{
+  "method": "Single AI pixel-only review; not human study",
+  "firstGuesses": "records/blind-first-guesses.json",
+  "frames": {
+    "guessesLockedBeforeKey": true,
+    "keyRead": false,
+    "score": "8/8, root compared answer key after first guesses were locked",
+    "weakestPair": [
+      "C",
+      "F"
+    ],
+    "visualBlockingFindings": []
+  },
+  "portraits": {
+    "initialExposure": true,
+    "finalRandomizedVerdictExcluded": true,
+    "needsFreshReviewer": true
+  },
+  "icons": {
+    "reviewedCells": 5,
+    "duplicateMotifs": 0,
+    "visualBlockingFindings": [],
+    "limitations": [
+      "Access at 24 px can resemble a rolled strip or hurdle despite visible transverse obstruction.",
+      "Labor at 24 px merges the two workers and spade details."
+    ]
+  },
+  "notVerified": [
+    "Runtime implementation",
+    "Human recognition",
+    "Preserved-file hashes",
+    "CSV count",
+    "Nine-slice pixel invariants"
+  ]
+}

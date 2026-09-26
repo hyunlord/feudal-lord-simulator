@@ -1,0 +1,680 @@
+{
+  "assets": [
+    {
+      "id": "house_l0_garden-v1",
+      "size": [
+        153,
+        153
+      ],
+      "alphaBounds": [
+        21,
+        53,
+        134,
+        140
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l0_pen-v1",
+      "size": [
+        153,
+        153
+      ],
+      "alphaBounds": [
+        21,
+        57,
+        134,
+        140
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l1_artisan-v1",
+      "size": [
+        139,
+        139
+      ],
+      "alphaBounds": [
+        15,
+        24,
+        128,
+        126
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        71.66148325358851,
+        125.92025518341308
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l1_garden-v1",
+      "size": [
+        139,
+        139
+      ],
+      "alphaBounds": [
+        15,
+        37,
+        128,
+        126
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        71.66148325358851,
+        125.92025518341308
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l2_brewer-v1",
+      "size": [
+        137,
+        137
+      ],
+      "alphaBounds": [
+        14,
+        19,
+        127,
+        132
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l2_weaver-v1",
+      "size": [
+        137,
+        137
+      ],
+      "alphaBounds": [
+        15,
+        8,
+        127,
+        132
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "promoted": true
+    },
+    {
+      "id": "house_l2_garden-v1",
+      "size": [
+        137,
+        137
+      ],
+      "alphaBounds": [
+        14,
+        18,
+        127,
+        132
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "promoted": true
+    },
+    {
+      "id": "house_l3_storage-v1",
+      "size": [
+        142,
+        142
+      ],
+      "alphaBounds": [
+        18,
+        22,
+        131,
+        138
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        74.39712918660287,
+        138.03668261562999
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l3_shop-v1",
+      "size": [
+        142,
+        142
+      ],
+      "alphaBounds": [
+        18,
+        17,
+        131,
+        138
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        74.39712918660287,
+        138.03668261562999
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l3_clothier-v1",
+      "size": [
+        142,
+        142
+      ],
+      "alphaBounds": [
+        18,
+        20,
+        131,
+        138
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        74.39712918660287,
+        138.03668261562999
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l4_courtyard-v1",
+      "size": [
+        161,
+        161
+      ],
+      "alphaBounds": [
+        25,
+        15,
+        139,
+        157
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        81.97647527910686,
+        157.40510366826157
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l4_wing-v1",
+      "size": [
+        161,
+        161
+      ],
+      "alphaBounds": [
+        26,
+        11,
+        138,
+        157
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        81.97647527910686,
+        157.40510366826157
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l4_inn-v1",
+      "size": [
+        161,
+        161
+      ],
+      "alphaBounds": [
+        25,
+        25,
+        139,
+        157
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        81.97647527910686,
+        157.40510366826157
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_l1_thatch-v1",
+      "size": [
+        139,
+        139
+      ],
+      "alphaBounds": [
+        17,
+        21,
+        127,
+        126
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        71.66148325358851,
+        125.92025518341308
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_pair_l3_horizontal_courtyard-v1",
+      "size": [
+        209,
+        167
+      ],
+      "alphaBounds": [
+        21,
+        24,
+        190,
+        163
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        105.3944365192582,
+        163.72549019607843
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_pair_l3_vertical_workshop-v1",
+      "size": [
+        183,
+        183
+      ],
+      "alphaBounds": [
+        10,
+        11,
+        175,
+        170
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        92.52153110047847,
+        170.44976076555025
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_pair_l4_horizontal_hall-v1",
+      "size": [
+        204,
+        204
+      ],
+      "alphaBounds": [
+        19,
+        34,
+        188,
+        200
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        103.38277511961722,
+        201.88516746411483
+      ],
+      "promoted": false
+    },
+    {
+      "id": "house_pair_l4_vertical_court-v1",
+      "size": [
+        184,
+        184
+      ],
+      "alphaBounds": [
+        13,
+        15,
+        176,
+        174
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        94.34768740031897,
+        174.46251993620416
+      ],
+      "promoted": false
+    },
+    {
+      "id": "farm_mixed_seedling-v1",
+      "size": [
+        384,
+        192
+      ],
+      "alphaBounds": [
+        24,
+        16,
+        359,
+        184
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "promoted": false
+    },
+    {
+      "id": "farm_mixed_growing-v1",
+      "size": [
+        384,
+        192
+      ],
+      "alphaBounds": [
+        24,
+        16,
+        359,
+        184
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "promoted": false
+    },
+    {
+      "id": "farm_mixed_ripe-v1",
+      "size": [
+        384,
+        192
+      ],
+      "alphaBounds": [
+        24,
+        16,
+        359,
+        184
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "promoted": false
+    },
+    {
+      "id": "farm_mixed_worked-v1",
+      "size": [
+        384,
+        192
+      ],
+      "alphaBounds": [
+        24,
+        16,
+        359,
+        184
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "promoted": false
+    },
+    {
+      "id": "farm_pastoral_spring-v1",
+      "size": [
+        384,
+        192
+      ],
+      "alphaBounds": [
+        23,
+        16,
+        361,
+        184
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "promoted": false
+    },
+    {
+      "id": "farm_pastoral_summer-v1",
+      "size": [
+        384,
+        192
+      ],
+      "alphaBounds": [
+        19,
+        16,
+        365,
+        184
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "promoted": true
+    },
+    {
+      "id": "farm_pastoral_winter-v1",
+      "size": [
+        384,
+        192
+      ],
+      "alphaBounds": [
+        21,
+        16,
+        362,
+        184
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "promoted": false
+    },
+    {
+      "id": "well_b-v1",
+      "size": [
+        72,
+        80
+      ],
+      "alphaBounds": [
+        19,
+        17,
+        53,
+        64
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        36,
+        64
+      ],
+      "promoted": true
+    },
+    {
+      "id": "well_c-v1",
+      "size": [
+        72,
+        80
+      ],
+      "alphaBounds": [
+        15,
+        41,
+        57,
+        64
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        36,
+        64
+      ],
+      "promoted": false
+    },
+    {
+      "id": "storehouse_b-v1",
+      "size": [
+        160,
+        136
+      ],
+      "alphaBounds": [
+        16,
+        8,
+        144,
+        120
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        80,
+        120
+      ],
+      "promoted": false
+    },
+    {
+      "id": "storehouse_c-v1",
+      "size": [
+        160,
+        136
+      ],
+      "alphaBounds": [
+        8,
+        9,
+        152,
+        120
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        80,
+        120
+      ],
+      "promoted": false
+    },
+    {
+      "id": "windmill-v1",
+      "size": [
+        142,
+        142
+      ],
+      "alphaBounds": [
+        24,
+        8,
+        120,
+        131
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        71.84928229665071,
+        131.01594896331738
+      ],
+      "promoted": false
+    },
+    {
+      "id": "market_active_b-v1",
+      "size": [
+        224,
+        224
+      ],
+      "alphaBounds": [
+        14,
+        87,
+        216,
+        214
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        114.59011164274321,
+        213.6395534290271
+      ],
+      "promoted": true
+    },
+    {
+      "id": "market_active_c-v1",
+      "size": [
+        224,
+        224
+      ],
+      "alphaBounds": [
+        13,
+        48,
+        216,
+        214
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        114.59011164274321,
+        213.6395534290271
+      ],
+      "promoted": false
+    },
+    {
+      "id": "market_quiet_b-v1",
+      "size": [
+        224,
+        224
+      ],
+      "alphaBounds": [
+        14,
+        87,
+        216,
+        214
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        114.59011164274321,
+        213.6395534290271
+      ],
+      "promoted": false
+    },
+    {
+      "id": "chapel_b-v1",
+      "size": [
+        133,
+        133
+      ],
+      "alphaBounds": [
+        14,
+        8,
+        125,
+        125
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        69.57575757575758,
+        126.10606060606061
+      ],
+      "promoted": false
+    },
+    {
+      "id": "chapel_stone-v1",
+      "size": [
+        133,
+        133
+      ],
+      "alphaBounds": [
+        14,
+        22,
+        125,
+        125
+      ],
+      "marginViolations": 0,
+      "pivot": [
+        69.57575757575758,
+        126.10606060606061
+      ],
+      "promoted": false
+    }
+  ],
+  "assetCount": 35,
+  "checkCount": 4,
+  "csvRows": 39,
+  "csvColumns": 20,
+  "fullActualPromptsPresent": true,
+  "allCandidate": true,
+  "hashesMatch": true,
+  "promotionByteIdentical": 5,
+  "mixedPastureExactFromX": 207,
+  "generationAttempts": 35,
+  "gameInstallation": false
+}

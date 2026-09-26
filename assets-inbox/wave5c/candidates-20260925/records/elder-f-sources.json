@@ -1,0 +1,476 @@
+[
+  {
+    "id": "wk_elder_f_01-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-bfc7-77a0-89aa-91ef8535e55e/exec-3c8ef0e3-7c8b-450a-a00e-49c8a0315bc5.png",
+    "prompt": "Use case: identity-preserve. Edit image 1, an existing 288x144 transparent game sprite sheet, NOT free generation. Preserve every cell location, exact pose, walking foot alternation, body outline, head centre and frame order. The sheet has 4 columns directions and 2 rows walk frames, each cell72x72. Image 2 is solely painterly elderly-woman garment inspiration. Reskin image1 into wk_elder_f_01-v1: elderly Southern English woman 1300–1450, pale aged skin and a little grey hair visible beneath a warm ivory linen wimple, long muted blue-grey wool gown with dull ochre narrow belt. Identical wimple silhouette and gown length in all four directions and both frames. Paint fabric folds and skin with soft project hand painted brushwork. No widow black requirement. Do not add props or staff. CRITICAL leave ALL feet, ankles, lower leg poses and the bottom14px of each original cell unchanged. Keep arms/hands where they are. Exact original body silhouette and head position, just paint replacement clothes, skin and hair inside original sprite. Genuine transparent background. No words or grids. Preserve source canvas aspect2:1 and original character placements even if output is larger. Soft upper-left light, minimal tiny contact shadow only.",
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_01-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_01-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_elder_template_f-v1.png",
+      "wk_reskin_P6_widow_f-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:03:22.901Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 90% native paint +10% original shading; native paint area-sampled over5x5 before final registration. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-6 through cell bottom (lower shoe/contact region; all other pose silhouette retained via original alpha). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity. Prompt originally misstated288x144; measured final296x148 is authoritative. Native02 first coif attempt retained veil and was rejected; second edit selected. Full prompt is preserved verbatim.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 26,
+          "y0": 9,
+          "x1": 52,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 146,
+          "y0": 51,
+          "x1": 324,
+          "y1": 405,
+          "w": 179,
+          "h": 355
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 880,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 98,
+          "y0": 9,
+          "x1": 123,
+          "y1": 67,
+          "w": 26,
+          "h": 59
+        },
+        "sourceCrop": {
+          "x0": 570,
+          "y0": 51,
+          "x1": 744,
+          "y1": 405,
+          "w": 175,
+          "h": 355
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 880,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 11,
+          "x1": 199,
+          "y1": 67,
+          "w": 27,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1013,
+          "y0": 57,
+          "x1": 1191,
+          "y1": 405,
+          "w": 179,
+          "h": 349
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 871,
+        "eligiblePixels": 903
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 9,
+          "x1": 269,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 1423,
+          "y0": 51,
+          "x1": 1607,
+          "y1": 405,
+          "w": 185,
+          "h": 355
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 863,
+        "eligiblePixels": 894
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 29,
+          "y0": 83,
+          "x1": 53,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 165,
+          "y0": 479,
+          "x1": 329,
+          "y1": 832,
+          "w": 165,
+          "h": 354
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 850,
+        "eligiblePixels": 873
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 99,
+          "y0": 81,
+          "x1": 124,
+          "y1": 138,
+          "w": 26,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 574,
+          "y0": 470,
+          "x1": 752,
+          "y1": 823,
+          "w": 179,
+          "h": 354
+        },
+        "protectedYFrom": 132,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 860,
+        "eligiblePixels": 901
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 170,
+          "y0": 81,
+          "x1": 197,
+          "y1": 137,
+          "w": 28,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 994,
+          "y0": 472,
+          "x1": 1174,
+          "y1": 823,
+          "w": 181,
+          "h": 352
+        },
+        "protectedYFrom": 131,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 871,
+        "eligiblePixels": 904
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 83,
+          "x1": 267,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1420,
+          "y0": 479,
+          "x1": 1582,
+          "y1": 832,
+          "w": 163,
+          "h": 354
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 823,
+        "eligiblePixels": 856
+      }
+    ]
+  },
+  {
+    "id": "wk_elder_f_02-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-bfc7-77a0-89aa-91ef8535e55e/exec-bb9f3f5d-0948-441d-8117-5d92ce839453.png",
+    "prompt": "Use case: identity-preserve. Edit image 1, an existing 288x144 transparent game sprite sheet, NOT free generation. Preserve every cell location, exact pose, walking foot alternation, body outline, head centre and frame order. The sheet has 4 columns directions and 2 rows walk frames, each cell72x72. Image 2 is solely painterly elderly-woman garment inspiration. Reskin image1 into wk_elder_f_02-v1: elderly Southern English woman 1300–1450, pale aged skin and a little grey hair visible beneath a muted taupe fitted linen coif with grey hair at the temples, long muted sage-olive wool gown with warm umber apron and narrow belt. Identical fitted coif silhouette and gown length in all four directions and both frames. Paint fabric folds and skin with soft project hand painted brushwork. No widow black requirement. Do not add props or staff. CRITICAL leave ALL feet, ankles, lower leg poses and the bottom14px of each original cell unchanged. Keep arms/hands where they are. Exact original body silhouette and head position, just paint replacement clothes, skin and hair inside original sprite. Genuine transparent background. No words or grids. Preserve source canvas aspect2:1 and original character placements even if output is larger. Soft upper-left light, minimal tiny contact shadow only.\nTargeted correction: the first attempt retained a long ivory veil. REPLACE THAT HEAD COVER with a SMALL CLOSE FITTING TAUPE COIF tied under chin, grey hair visible at temples. No long fabric hanging down back. All eight cells show same small coif. Keep each original template head outline/position. Actual edit template image is296x148, eight74px cells; previous288x144 description was erroneous. Preserve296x148 final layout. Keep everything else from this instruction.",
+    "history": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-bfc7-77a0-89aa-91ef8535e55e/exec-9f7453bc-003e-4ce2-99f5-879e8b1e77e9.png",
+        "prompt": "Use case: identity-preserve. Edit image 1, an existing 288x144 transparent game sprite sheet, NOT free generation. Preserve every cell location, exact pose, walking foot alternation, body outline, head centre and frame order. The sheet has 4 columns directions and 2 rows walk frames, each cell72x72. Image 2 is solely painterly elderly-woman garment inspiration. Reskin image1 into wk_elder_f_02-v1: elderly Southern English woman 1300–1450, pale aged skin and a little grey hair visible beneath a muted taupe fitted linen coif with grey hair at the temples, long muted sage-olive wool gown with warm umber apron and narrow belt. Identical fitted coif silhouette and gown length in all four directions and both frames. Paint fabric folds and skin with soft project hand painted brushwork. No widow black requirement. Do not add props or staff. CRITICAL leave ALL feet, ankles, lower leg poses and the bottom14px of each original cell unchanged. Keep arms/hands where they are. Exact original body silhouette and head position, just paint replacement clothes, skin and hair inside original sprite. Genuine transparent background. No words or grids. Preserve source canvas aspect2:1 and original character placements even if output is larger. Soft upper-left light, minimal tiny contact shadow only.",
+        "selected": false,
+        "reason": "Long veil not distinct from01; rejected for headcover difference."
+      }
+    ],
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_02-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_02-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_elder_template_f-v1.png",
+      "wk_reskin_P6_widow_f-v1.png"
+    ],
+    "attempt": 2,
+    "selected": true,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:05:24.539Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 90% native paint +10% original shading; native paint area-sampled over5x5 before final registration. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-6 through cell bottom (lower shoe/contact region; all other pose silhouette retained via original alpha). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity. Prompt originally misstated288x144; measured final296x148 is authoritative. Native02 first coif attempt retained veil and was rejected; second edit selected. Full prompt is preserved verbatim.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 26,
+          "y0": 9,
+          "x1": 52,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 144,
+          "y0": 48,
+          "x1": 321,
+          "y1": 404,
+          "w": 178,
+          "h": 357
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 875,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 98,
+          "y0": 9,
+          "x1": 123,
+          "y1": 67,
+          "w": 26,
+          "h": 59
+        },
+        "sourceCrop": {
+          "x0": 567,
+          "y0": 54,
+          "x1": 738,
+          "y1": 408,
+          "w": 172,
+          "h": 355
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 875,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 11,
+          "x1": 199,
+          "y1": 67,
+          "w": 27,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1025,
+          "y0": 66,
+          "x1": 1202,
+          "y1": 408,
+          "w": 178,
+          "h": 343
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 859,
+        "eligiblePixels": 903
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 9,
+          "x1": 269,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 1437,
+          "y0": 54,
+          "x1": 1614,
+          "y1": 404,
+          "w": 178,
+          "h": 351
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 857,
+        "eligiblePixels": 894
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 29,
+          "y0": 83,
+          "x1": 53,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 165,
+          "y0": 478,
+          "x1": 325,
+          "y1": 831,
+          "w": 161,
+          "h": 354
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 834,
+        "eligiblePixels": 873
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 99,
+          "y0": 81,
+          "x1": 124,
+          "y1": 138,
+          "w": 26,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 571,
+          "y0": 478,
+          "x1": 747,
+          "y1": 828,
+          "w": 177,
+          "h": 351
+        },
+        "protectedYFrom": 132,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 863,
+        "eligiblePixels": 901
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 170,
+          "y0": 81,
+          "x1": 197,
+          "y1": 137,
+          "w": 28,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1014,
+          "y0": 481,
+          "x1": 1192,
+          "y1": 822,
+          "w": 179,
+          "h": 342
+        },
+        "protectedYFrom": 131,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 860,
+        "eligiblePixels": 904
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 83,
+          "x1": 267,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1439,
+          "y0": 478,
+          "x1": 1598,
+          "y1": 833,
+          "w": 160,
+          "h": 356
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 818,
+        "eligiblePixels": 856
+      }
+    ]
+  }
+]

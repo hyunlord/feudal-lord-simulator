@@ -1,0 +1,55 @@
+[
+  {
+    "id": "stone_face_rubble_a-v2",
+    "prompt": "ROLE strip stone_face_rubble_a-v2. EDIT reference wall face texture only. Southern England 1300-1450 painted game texture. Front orthographic flat rectangular wall face, no perspective. Replace rectangular ashlar grid with irregular small rubble stones matching SECOND reference gate infill masonry, warm grey-brown mortar, muted broad shapes, individual stones 12-20px at512x128. Same entire face height as first input. X seamless repeat, Y edges later faded, NO castellations, no scenery, no focal damage, no text. Image should be wide horizontal4:1 texture filling canvas. Quiet rubble, large readable shapes, not photographic grain.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/stone_face_a-v2.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png"
+    ]
+  },
+  {
+    "id": "stone_face_rubble_b-v2",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/wall/stone_face_rubble_a-v2.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/stone_face_a-v2.png"
+    ],
+    "prompt": "Edit first input rubble wall texture into variant B. Keep full wide straight wall face same height, neutral warm grey tones, same stone scale. Change all stone arrangement, a little flatter grey limestone and fewer ochre stones. Broad quiet irregular rubble 12-20px at512x128, no focal patches. 4:1 horizontal front elevation, X seamless only. No crenellations, text, perspective, decorations. Transparent margins only."
+  },
+  {
+    "id": "stone_gate_v2-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/wall/gate_part_stone_arch_nw_se-v1-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/stone_face_a-v2.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/stone_top_a-v1.png"
+    ],
+    "prompt": "ROLE module stone gate v2. Precise input edit: preserve FIRST image entire composition, every outline, arch opening, tower proportions, all pixel positions and same512 square canvas. SECOND image is topology mask white=paint, black must stay transparent. Repaint stone only to match muted warm grey-brown v2 wall reference3 and top reference4: irregular rubble infill, larger dressed arch voussoirs/corner quoins, softly painted not noisy photographic. Southern England1300-1450, upperleft light. No added doors, no objects, no castshadow. True transparent background and arch opening. Same camera NW-SE axis and pivot."
+  },
+  {
+    "id": "palisade_gate_v2-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_timber_frame_nw_se-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/wall/gate_part_timber_frame_nw_se-v1-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/palisade_straight_nw_se.png"
+    ],
+    "prompt": "ROLE module palisade gate v2. EDIT first image frame paint only, preserve exact entire silhouette, position, open passage and512square canvas. Second image is white paint topology mask. Match weathered grey brown oak of third palisade reference, broad handpainted strokes with readable joints and mortise pegs. Southern England1300-1450, upperleft lighting, no long shadow, no added gate doors or beam geometry. Genuine transparency. Same NW-SE direction and pivot."
+  },
+  {
+    "id": "stone_pillar_135-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/wall/stone_pillar_135-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/stone_face_a-v2.png"
+    ],
+    "prompt": "ROLE module. Fill WHITE mask silhouette with one isolated ANGULAR STONE BUTTRESS for a135-degree plan corner. Black region becomes true transparent. Wide1774x887 composition retained; structure within white footprint; no cylinder, no round tower. Two short socket faces meet obtuse135degrees in plan, central chamfered angular pier, broad coping on top, muted warmgrey rubble matching gate reference2 and v2 wall3, squared quoins at corners. 2:1isometric fixed camera, upperleft soft light. No side wall arms, no grass/ground or shadows, no text. Footprint contact point940,810 in1774x887 design."
+  },
+  {
+    "id": "stone_tower_corner_b-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/wall/stone_tower_corner_b-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/stone_tower_corner-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png"
+    ],
+    "prompt": "ROLE module. EDIT reference round tower into SQUARE tower B entirely within first WHITE topology silhouette; black becomes transparent. Same1774x887canvas and basepivot900,855. SQUARE PLAN tower with two flat orthogonal visible walls, angular dressed corner quoins, open crenellated square rooftop walkway, modest buttressed base. Not round or polygonal circular tower. Match muted warmgrey handpainted rubble of reference gate3, 2:1isometric upperleftlighting. Entire solitary tower, no side arms, no ground,no shadow,no heraldry,no text. SouthernEngland1300-1450."
+  }
+]

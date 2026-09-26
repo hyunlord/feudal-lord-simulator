@@ -1,0 +1,190 @@
+[
+  {
+    "id": "prop/held_purse-v1_NE",
+    "prompt": "Edit this same leather purse into its BACK-RIGHT (NE) view. Rotate object to see other side of back panel, plain leather backside and stitched beltloop visible; NO front flap/no closure tab. Preserve exact size,design,material, upperleftlight, transparent background. Not mirror: real3Dturn. ONE isolated smallpurse, nohuman, nohand, no groundshadow, no text, transparentRGBA. Readable at32pixels.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_purse_NW-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-9732e142-03af-41c2-ab00-7e88c75440fe.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_purse-v1_SE",
+    "prompt": "Edit the provided isolated prop to its SE view, keeping exactly same design,material,scale and small painterly style. small supple brown leather belt purse, closed flap, single plain strap loop atTOP. No metalzip, no coins, no text. Attachment anchor top leather loop center. View from FRONT-RIGHT at fixed isometric elevated camera. Object FRONT faces camera; show front flap forpurse; basket handle samearchedstrap, rimtiltconsistent. Turn the object in3D, do not mirror wholepicture. No human,no hand,no background,no shadow,no labels. True transparentRGBA. ONE singleobject only withpadding, final32x32target. Keep counterpart design consistent with reference; light staysupperleft.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_purse_NE-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-b9bfe018-eb4b-42c4-85fc-32ee73aba0ed.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_purse-v1_SW",
+    "prompt": "Edit this same prop into the FRONT-LEFT (SW) view. Preserve exactly the object's design and materials: small supple brown leather belt purse, closed flap, single plain strap loop atTOP. No metalzip, no coins, no text. Attachment anchor top leather loop center. Fixed elevated isometric game camera, upper-left lighting stays fixed. Rotate the object in 3D, do not mirror the image. Show left side instead of right; purse front flap visible. One isolated object, true transparent background, no person or hand or text, no shadow. Readable at 32x32 pixels.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_purse_SE-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-b4cbe70c-323a-4afe-bfe9-76a5ce9c2bcd.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_purse-v1_NW",
+    "prompt": "Edit this same prop into its BACK-LEFT (NW) view. Preserve exact design/material: small supple brown leather belt purse, closed flap, single plain strap loop atTOP. No metalzip, no coins, no text. Attachment anchor top leather loop center. Rotate object in 3D so its BACK is visible. For purse: plain back leather panel and belt-loop stitching, absolutely NO front flap or front closure tab visible. Basket handle remains same arched handle, opposite back weave visible. Fixed elevated isometric game camera, upper-left light staysfixed. Do not mirror image. No human, hand, ground, shadow, labels. True transparent RGBA. ONE isolated object with padding; readable at32x32.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_purse_SW-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-24edbfb0-4d28-437b-9936-1d7db93d6af7.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_sack-v1_NE",
+    "prompt": "Create ONE isolated detachable held-object sprite, not a person. This is the separate prop component explicitly requested beside TEMPLATE-EDITED walkers. Match attached project citizen small painterly sprite art and mutedmaterials, southernEngland1300–1450, fixed2:1isometric elevatedcamera, upperleftsoftlight. small gathered linen grain sack of muted flax beige, tied neck, bulgingsoftbody. Attachment anchor knot/neck atTOP. No hand, no loosegrain, no rope extendingaway. Direction NE: seen from BACK-RIGHT, facing upperright in isometric map. Genuine transparent RGBA, contact/shadow NONE because object is carried. No grid, no ground, no text, no anchor mark burnedintoart. Single centeredobject with12%margin. Readable broadshapes at final32x32 pixels, no photoreal tinytexture. Do not copy any human part fromreference. Oneviewonly.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/references/actor_merchant-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-03e25a51-d86e-4bad-9886-d4b7f74d8efe.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_sack-v1_SE",
+    "prompt": "Edit the provided isolated prop to its SE view, keeping exactly same design,material,scale and small painterly style. small gathered linen grain sack of muted flax beige, tied neck, bulgingsoftbody. Attachment anchor knot/neck atTOP. No hand, no loosegrain, no rope extendingaway. View from FRONT-RIGHT at fixed isometric elevated camera. Object FRONT faces camera; show front flap forpurse; basket handle samearchedstrap, rimtiltconsistent. Turn the object in3D, do not mirror wholepicture. No human,no hand,no background,no shadow,no labels. True transparentRGBA. ONE singleobject only withpadding, final32x32target. Keep counterpart design consistent with reference; light staysupperleft.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_sack_NE-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-a9401a62-29b7-4fc1-b408-31442482bdf2.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_sack-v1_SW",
+    "prompt": "Edit this same prop into the FRONT-LEFT (SW) view. Preserve exactly the object's design and materials: small gathered linen grain sack of muted flax beige, tied neck, bulgingsoftbody. Attachment anchor knot/neck atTOP. No hand, no loosegrain, no rope extendingaway. Fixed elevated isometric game camera, upper-left lighting stays fixed. Rotate the object in 3D, do not mirror the image. Show left side instead of right; purse front flap visible. One isolated object, true transparent background, no person or hand or text, no shadow. Readable at 32x32 pixels.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_sack_SE-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-76414514-c653-4ca5-8856-a47136690ee1.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_sack-v1_NW",
+    "prompt": "Edit this same prop into its BACK-LEFT (NW) view. Preserve exact design/material: small gathered linen grain sack of muted flax beige, tied neck, bulgingsoftbody. Attachment anchor knot/neck atTOP. No hand, no loosegrain, no rope extendingaway. Rotate object in 3D so its BACK is visible. For purse: plain back leather panel and belt-loop stitching, absolutely NO front flap or front closure tab visible. Basket handle remains same arched handle, opposite back weave visible. Fixed elevated isometric game camera, upper-left light staysfixed. Do not mirror image. No human, hand, ground, shadow, labels. True transparent RGBA. ONE isolated object with padding; readable at32x32.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_sack_SW-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-9f0a5700-e02d-4bb3-b256-e9c42bed33df.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_basket-v1_NE",
+    "prompt": "Create ONE isolated detachable held-object sprite, not a person. This is the separate prop component explicitly requested beside TEMPLATE-EDITED walkers. Match attached project citizen small painterly sprite art and mutedmaterials, southernEngland1300–1450, fixed2:1isometric elevatedcamera, upperleftsoftlight. small squat wicker carrying basket of weatheredocher, single arched handle, openemptybasket. Attachment anchor verytopmiddle ofhandle. Broad wovenpaint notmicrogrid. Direction NE: seen from BACK-RIGHT, facing upperright in isometric map. Genuine transparent RGBA, contact/shadow NONE because object is carried. No grid, no ground, no text, no anchor mark burnedintoart. Single centeredobject with12%margin. Readable broadshapes at final32x32 pixels, no photoreal tinytexture. Do not copy any human part fromreference. Oneviewonly.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/references/actor_merchant-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-7d5c354e-c0d0-4aee-b286-9d8cbf7a0cdd.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_basket-v1_SE",
+    "prompt": "Edit the provided isolated prop to its SE view, keeping exactly same design,material,scale and small painterly style. small squat wicker carrying basket of weatheredocher, single arched handle, openemptybasket. Attachment anchor verytopmiddle ofhandle. Broad wovenpaint notmicrogrid. View from FRONT-RIGHT at fixed isometric elevated camera. Object FRONT faces camera; show front flap forpurse; basket handle samearchedstrap, rimtiltconsistent. Turn the object in3D, do not mirror wholepicture. No human,no hand,no background,no shadow,no labels. True transparentRGBA. ONE singleobject only withpadding, final32x32target. Keep counterpart design consistent with reference; light staysupperleft.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_basket_NE-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-7cabf031-020b-410e-902d-2a1aed3c68b3.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_basket-v1_SW",
+    "prompt": "Edit this same prop into the FRONT-LEFT (SW) view. Preserve exactly the object's design and materials: small squat wicker carrying basket of weatheredocher, single arched handle, openemptybasket. Attachment anchor verytopmiddle ofhandle. Broad wovenpaint notmicrogrid. Fixed elevated isometric game camera, upper-left lighting stays fixed. Rotate the object in 3D, do not mirror the image. Show left side instead of right; purse front flap visible. One isolated object, true transparent background, no person or hand or text, no shadow. Readable at 32x32 pixels.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_basket_SE-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-40d7e3cb-17e0-4686-b07e-5c0447d0cb9c.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_basket-v1_NW",
+    "prompt": "Edit this same prop into its BACK-LEFT (NW) view. Preserve exact design/material: small squat wicker carrying basket of weatheredocher, single arched handle, openemptybasket. Attachment anchor verytopmiddle ofhandle. Broad wovenpaint notmicrogrid. Rotate object in 3D so its BACK is visible. For purse: plain back leather panel and belt-loop stitching, absolutely NO front flap or front closure tab visible. Basket handle remains same arched handle, opposite back weave visible. Fixed elevated isometric game camera, upper-left light staysfixed. Do not mirror image. No human, hand, ground, shadow, labels. True transparent RGBA. ONE isolated object with padding; readable at32x32.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_basket_SW-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-055b0d21-227c-417c-9fd2-c0483618031a.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_staff-v1_NE",
+    "prompt": "Create ONE isolated detachable held-object sprite, not a person. This is the separate prop component explicitly requested beside TEMPLATE-EDITED walkers. Match attached project citizen small painterly sprite art and mutedmaterials, southernEngland1300–1450, fixed2:1isometric elevatedcamera, upperleftsoftlight. plain straight weatheredoak walkingstaff, slightlyirregular naturalwood, no crook/no spear/no cross/no ornament. Thin shaft pointeddown andup fromgrip. Attachment anchor center ofshaft, middleheight. No person, nohand. Direction NE: seen from BACK-RIGHT, facing upperright in isometric map. Genuine transparent RGBA, contact/shadow NONE because object is carried. No grid, no ground, no text, no anchor mark burnedintoart. Single centeredobject with12%margin. Readable broadshapes at final32x32 pixels, no photoreal tinytexture. Do not copy any human part fromreference. Oneviewonly.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/references/actor_merchant-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-b098e852-f67f-444e-987d-312c4a6b9459.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_staff-v1_SE",
+    "prompt": "Edit the provided isolated prop to its SE view, keeping exactly same design,material,scale and small painterly style. plain straight weatheredoak walkingstaff, slightlyirregular naturalwood, no crook/no spear/no cross/no ornament. Thin shaft pointeddown andup fromgrip. Attachment anchor center ofshaft, middleheight. No person, nohand. View from FRONT-RIGHT at fixed isometric elevated camera. Object FRONT faces camera; show front flap forpurse; basket handle samearchedstrap, rimtiltconsistent. Turn the object in3D, do not mirror wholepicture. No human,no hand,no background,no shadow,no labels. True transparentRGBA. ONE singleobject only withpadding, final32x32target. Keep counterpart design consistent with reference; light staysupperleft.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_staff_NE-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-ad1f1c22-635a-4aba-84b8-5803afcc935a.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_staff-v1_SW",
+    "prompt": "Edit this same prop into the FRONT-LEFT (SW) view. Preserve exactly the object's design and materials: plain straight weatheredoak walkingstaff, slightlyirregular naturalwood, no crook/no spear/no cross/no ornament. Thin shaft pointeddown andup fromgrip. Attachment anchor center ofshaft, middleheight. No person, nohand. Fixed elevated isometric game camera, upper-left lighting stays fixed. Rotate the object in 3D, do not mirror the image. Show left side instead of right; purse front flap visible. One isolated object, true transparent background, no person or hand or text, no shadow. Readable at 32x32 pixels.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_staff_SE-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-92f829b3-9e39-4cc4-8106-f8e630fd787a.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_staff-v1_NW",
+    "prompt": "Edit this same prop into its BACK-LEFT (NW) view. Preserve exact design/material: plain straight weatheredoak walkingstaff, slightlyirregular naturalwood, no crook/no spear/no cross/no ornament. Thin shaft pointeddown andup fromgrip. Attachment anchor center ofshaft, middleheight. No person, nohand. Rotate object in 3D so its BACK is visible. For purse: plain back leather panel and belt-loop stitching, absolutely NO front flap or front closure tab visible. Basket handle remains same arched handle, opposite back weave visible. Fixed elevated isometric game camera, upper-left light staysfixed. Do not mirror image. No human, hand, ground, shadow, labels. True transparent RGBA. ONE isolated object with padding; readable at32x32.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/held_staff_SW-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-02d31f42-b16b-4939-b4a7-597578c52915.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "prop/held_purse-v1_NE",
+    "prompt": "Create ONE isolated detachable held-object sprite, not a person. This is the separate prop component explicitly requested beside TEMPLATE-EDITED walkers. Match attached project citizen small painterly sprite art and mutedmaterials, southernEngland1300–1450, fixed2:1isometric elevatedcamera, upperleftsoftlight. small supple brown leather belt purse, closed flap, single plain strap loop atTOP. No metalzip, no coins, no text. Attachment anchor top leather loop center. Direction NE: seen from BACK-RIGHT, facing upperright in isometric map. Genuine transparent RGBA, contact/shadow NONE because object is carried. No grid, no ground, no text, no anchor mark burnedintoart. Single centeredobject with12%margin. Readable broadshapes at final32x32 pixels, no photoreal tinytexture. Do not copy any human part fromreference. Oneviewonly.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/references/actor_merchant-v1.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-66c8035e-d5fe-45a6-a29c-bc5a10967d94.png",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null,
+    "rejected": true
+  }
+]

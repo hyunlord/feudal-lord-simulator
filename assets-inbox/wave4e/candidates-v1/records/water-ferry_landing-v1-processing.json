@@ -1,0 +1,14 @@
+{
+  "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/water/ferry_landing-v1-raw.png",
+  "crop": {
+    "left": 160,
+    "top": 240,
+    "width": 1155,
+    "height": 652
+  },
+  "target": [
+    256,
+    192
+  ],
+  "method": "Alpha crop and single resize to topology-mask bounding box. Socket geometry remains a candidate registration; pixel-level walkability not runtime verified."
+}

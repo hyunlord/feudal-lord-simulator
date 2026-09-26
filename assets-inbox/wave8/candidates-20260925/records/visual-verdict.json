@@ -1,0 +1,28 @@
+{
+  "status": "candidate_pass_with_contract_limits",
+  "reviewedAssets": 37,
+  "reviewedProofs": 3,
+  "checks": {
+    "p0Tone": true,
+    "unlabelledRoleSeparation": true,
+    "overlay24pxSilhouette": true,
+    "nineSliceCornerRGBA": true,
+    "keyartWorldStyle": true,
+    "newTextAbsent": true
+  },
+  "limits": [
+    "Minimum native frame dimensions apply; asymmetric insets preserve ornaments without re-centering.",
+    "Original screenshot text remains in reference composites.",
+    "No game integration, runtime input/performance or user comprehension test."
+  ],
+  "evidence": [
+    "checks/01_roles_hud.png",
+    "checks/02_season_icons_slices.png",
+    "checks/03_keyart_comparison.png",
+    "records/proofs-notes.json"
+  ],
+  "resolved": [
+    "Title daylight revised to quiet dawn.",
+    "Ledger stretch corridor residual ornament removed."
+  ]
+}

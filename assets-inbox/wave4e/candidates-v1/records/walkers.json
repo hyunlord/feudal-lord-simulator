@@ -1,0 +1,3199 @@
+[
+  {
+    "id": "wk_labor_f_03-v1",
+    "role": "walker_sheet",
+    "width": 296,
+    "height": 148,
+    "file": "assets/workers/wk_labor_f_03-v1.png",
+    "template": "actor_civilian_woman-v1.png",
+    "files": {
+      "master": "masters/wk_labor_f_03-v1.png",
+      "final": "assets/workers/wk_labor_f_03-v1.png",
+      "raw": "sources/walkers/wk_labor_f_03-v1-raw.png"
+    },
+    "generationRecords": [
+      {
+        "id": "wk_labor_f_03-v1",
+        "sex": "f",
+        "design": "muted weld yellow green kirtle, ochre close wrapped headcloth, no apron",
+        "template": "actor_civilian_woman-v1.png",
+        "prompt": "Use case: identity-preserve. EDIT the input sprite sheet only. Do not invent new people, poses or frame layouts. Retain eight exact figures, four columns NE SE SW NW, two gait frames, same camera and stance. Change ONLY clothes and headwear to: muted weld yellow green kirtle, ochre close wrapped headcloth, no apron. Southern England 1300-1450 hand-painted small game walker style, muted historically available dyes. Keep face, hands, feet positions and silhouettes exactly in place; do not change hem boundary, head height or width. No tools/props. Transparent background. Preserve the input 2:1 sheet with each cell in exactly its original position. No grid, no labels, no shadow, no extra characters.",
+        "rawSource": "sources/walkers/wk_labor_f_03-v1-raw.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenced_image_paths": [
+          "templates/actor_civilian_woman-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "script": "records/walkers-process.cjs",
+      "masterSize": [
+        592,
+        296
+      ],
+      "finalSize": [
+        296,
+        148
+      ],
+      "downsample": 0.5,
+      "cells": [
+        {
+          "direction": "NE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 51,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 9,
+            "w": 64,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              48,
+              9,
+              64,
+              130
+            ],
+            "target": [
+              51,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4789,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 48,
+            "y": 11,
+            "w": 52,
+            "h": 124
+          },
+          "rawNormalizedBounds": {
+            "x": 49,
+            "y": 8,
+            "w": 59,
+            "h": 132
+          },
+          "registration": {
+            "source": [
+              49,
+              8,
+              59,
+              132
+            ],
+            "target": [
+              48,
+              11,
+              52,
+              124
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5198,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 50,
+            "y": 13,
+            "w": 53,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 55,
+            "y": 10,
+            "w": 61,
+            "h": 131
+          },
+          "registration": {
+            "source": [
+              55,
+              10,
+              61,
+              131
+            ],
+            "target": [
+              50,
+              13,
+              53,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5172,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 41,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 9,
+            "w": 64,
+            "h": 131
+          },
+          "registration": {
+            "source": [
+              48,
+              9,
+              64,
+              131
+            ],
+            "target": [
+              41,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4747,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 58,
+            "y": 9,
+            "w": 50,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 55,
+            "y": 9,
+            "w": 59,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              55,
+              9,
+              59,
+              130
+            ],
+            "target": [
+              58,
+              9,
+              50,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4813,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 50,
+            "y": 6,
+            "w": 53,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 6,
+            "w": 60,
+            "h": 132
+          },
+          "registration": {
+            "source": [
+              50,
+              6,
+              60,
+              132
+            ],
+            "target": [
+              50,
+              6,
+              53,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5417,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 44,
+            "y": 6,
+            "w": 55,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 7,
+            "w": 62,
+            "h": 131
+          },
+          "registration": {
+            "source": [
+              50,
+              7,
+              62,
+              131
+            ],
+            "target": [
+              44,
+              6,
+              55,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5486,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 42,
+            "y": 9,
+            "w": 49,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 9,
+            "w": 57,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              48,
+              9,
+              57,
+              130
+            ],
+            "target": [
+              42,
+              9,
+              49,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4796,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate; inspected all 8 directions/frames visually",
+      "rawModelPixelExact": false,
+      "anatomy": "original classified face/hand/feet pixels restored; skin mask is heuristic and exact pixel equality alone does not prove all anatomical landmarks",
+      "constraintWarning": "body alpha is constrained by compositor; do not report this as independent generated pose accuracy",
+      "limitations": [
+        "Original foot pixels may retain a small original hem at ankle.",
+        "Same template body build retained, face anatomy not a new body design.",
+        "Raw edit is not pixel exact and is preserved for audit."
+      ],
+      "measurements": [
+        {
+          "id": "wk_labor_f_03-v1",
+          "direction": "NE",
+          "frame": 0,
+          "headProxyFinalPx": 0.4843988866915022,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_03-v1",
+          "direction": "SE",
+          "frame": 0,
+          "headProxyFinalPx": 0.10308149418481229,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_03-v1",
+          "direction": "SW",
+          "frame": 0,
+          "headProxyFinalPx": 0.18277095337514507,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_03-v1",
+          "direction": "NW",
+          "frame": 0,
+          "headProxyFinalPx": 0.3566373104824207,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_03-v1",
+          "direction": "NE",
+          "frame": 1,
+          "headProxyFinalPx": 0.42621892877739387,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_03-v1",
+          "direction": "SE",
+          "frame": 1,
+          "headProxyFinalPx": 0.25787390398507226,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_03-v1",
+          "direction": "SW",
+          "frame": 1,
+          "headProxyFinalPx": 0.29822161565081895,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_03-v1",
+          "direction": "NW",
+          "frame": 1,
+          "headProxyFinalPx": 0.4141988272124035,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        }
+      ],
+      "lowerBody": "56/56 cells exact alpha y100..147; foot displacement 0",
+      "head": "maximum head silhouette centroid proxy 0.769 finalpx; anatomical head landmarks not independently certified",
+      "direction": "NE/SE/SW/NW and two leg phases preserved through template registration; folds are not physically animated or runtime verified"
+    }
+  },
+  {
+    "id": "wk_labor_f_04-v1",
+    "role": "walker_sheet",
+    "width": 296,
+    "height": 148,
+    "file": "assets/workers/wk_labor_f_04-v1.png",
+    "template": "actor_civilian_woman-v1.png",
+    "files": {
+      "master": "masters/wk_labor_f_04-v1.png",
+      "final": "assets/workers/wk_labor_f_04-v1.png",
+      "raw": "sources/walkers/wk_labor_f_04-v1-raw.png"
+    },
+    "generationRecords": [
+      {
+        "id": "wk_labor_f_04-v1",
+        "sex": "f",
+        "design": "faded madder brick-red kirtle, short dusty blue headscarf tied at nape, charcoal waist apron",
+        "template": "actor_civilian_woman-v1.png",
+        "prompt": "Use case: identity-preserve. EDIT the input sprite sheet only. Do not invent new people, poses or frame layouts. Retain eight exact figures, four columns NE SE SW NW, two gait frames, same camera and stance. Change ONLY clothes and headwear to: faded madder brick-red kirtle, short dusty blue headscarf tied at nape, charcoal waist apron. Southern England 1300-1450 hand-painted small game walker style, muted historically available dyes. Keep face, hands, feet positions and silhouettes exactly in place; do not change hem boundary, head height or width. No tools/props. Transparent background. Preserve the input 2:1 sheet with each cell in exactly its original position. No grid, no labels, no shadow, no extra characters.",
+        "rawSource": "sources/walkers/wk_labor_f_04-v1-raw.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenced_image_paths": [
+          "templates/actor_civilian_woman-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "script": "records/walkers-process.cjs",
+      "masterSize": [
+        592,
+        296
+      ],
+      "finalSize": [
+        296,
+        148
+      ],
+      "downsample": 0.5,
+      "cells": [
+        {
+          "direction": "NE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 51,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 9,
+            "w": 63,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              48,
+              9,
+              63,
+              130
+            ],
+            "target": [
+              51,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4789,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 48,
+            "y": 11,
+            "w": 52,
+            "h": 124
+          },
+          "rawNormalizedBounds": {
+            "x": 46,
+            "y": 9,
+            "w": 60,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              46,
+              9,
+              60,
+              130
+            ],
+            "target": [
+              48,
+              11,
+              52,
+              124
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5198,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 50,
+            "y": 13,
+            "w": 53,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 47,
+            "y": 10,
+            "w": 62,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              47,
+              10,
+              62,
+              129
+            ],
+            "target": [
+              50,
+              13,
+              53,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5172,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 41,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 41,
+            "y": 10,
+            "w": 64,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              41,
+              10,
+              64,
+              129
+            ],
+            "target": [
+              41,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4747,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 58,
+            "y": 9,
+            "w": 50,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 55,
+            "y": 8,
+            "w": 56,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              55,
+              8,
+              56,
+              129
+            ],
+            "target": [
+              58,
+              9,
+              50,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4813,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 50,
+            "y": 6,
+            "w": 53,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 46,
+            "y": 5,
+            "w": 62,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              46,
+              5,
+              62,
+              129
+            ],
+            "target": [
+              50,
+              6,
+              53,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5417,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 44,
+            "y": 6,
+            "w": 55,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 41,
+            "y": 5,
+            "w": 63,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              41,
+              5,
+              63,
+              129
+            ],
+            "target": [
+              44,
+              6,
+              55,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5486,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 42,
+            "y": 9,
+            "w": 49,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 41,
+            "y": 9,
+            "w": 56,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              41,
+              9,
+              56,
+              128
+            ],
+            "target": [
+              42,
+              9,
+              49,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4796,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate; inspected all 8 directions/frames visually",
+      "rawModelPixelExact": false,
+      "anatomy": "original classified face/hand/feet pixels restored; skin mask is heuristic and exact pixel equality alone does not prove all anatomical landmarks",
+      "constraintWarning": "body alpha is constrained by compositor; do not report this as independent generated pose accuracy",
+      "limitations": [
+        "Original foot pixels may retain a small original hem at ankle.",
+        "Same template body build retained, face anatomy not a new body design.",
+        "Raw edit is not pixel exact and is preserved for audit."
+      ],
+      "measurements": [
+        {
+          "id": "wk_labor_f_04-v1",
+          "direction": "NE",
+          "frame": 0,
+          "headProxyFinalPx": 0.32483054890887103,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_04-v1",
+          "direction": "SE",
+          "frame": 0,
+          "headProxyFinalPx": 0.21294861928827524,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_04-v1",
+          "direction": "SW",
+          "frame": 0,
+          "headProxyFinalPx": 0.1539482704188839,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_04-v1",
+          "direction": "NW",
+          "frame": 0,
+          "headProxyFinalPx": 0.29516535662777915,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_04-v1",
+          "direction": "NE",
+          "frame": 1,
+          "headProxyFinalPx": 0.5522010059668138,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_04-v1",
+          "direction": "SE",
+          "frame": 1,
+          "headProxyFinalPx": 0.7147054866927792,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_04-v1",
+          "direction": "SW",
+          "frame": 1,
+          "headProxyFinalPx": 0.13622989234070934,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_04-v1",
+          "direction": "NW",
+          "frame": 1,
+          "headProxyFinalPx": 0.2621407565402552,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        }
+      ],
+      "lowerBody": "56/56 cells exact alpha y100..147; foot displacement 0",
+      "head": "maximum head silhouette centroid proxy 0.769 finalpx; anatomical head landmarks not independently certified",
+      "direction": "NE/SE/SW/NW and two leg phases preserved through template registration; folds are not physically animated or runtime verified"
+    }
+  },
+  {
+    "id": "wk_labor_f_05-v1",
+    "role": "walker_sheet",
+    "width": 296,
+    "height": 148,
+    "file": "assets/workers/wk_labor_f_05-v1.png",
+    "template": "actor_civilian_woman-v1.png",
+    "files": {
+      "master": "masters/wk_labor_f_05-v1.png",
+      "final": "assets/workers/wk_labor_f_05-v1.png",
+      "raw": "sources/walkers/wk_labor_f_05-v1-raw.png"
+    },
+    "generationRecords": [
+      {
+        "id": "wk_labor_f_05-v1",
+        "sex": "f",
+        "design": "light natural warm oatmeal grey kirtle, compact soft moss-green coif, muted reddish waist apron",
+        "template": "actor_civilian_woman-v1.png",
+        "prompt": "Use case: identity-preserve. EDIT the input sprite sheet only. Do not invent new people, poses or frame layouts. Retain eight exact figures, four columns NE SE SW NW, two gait frames, same camera and stance. Change ONLY clothes and headwear to: light natural warm oatmeal grey kirtle, compact soft moss-green coif, muted reddish waist apron. Southern England 1300-1450 hand-painted small game walker style, muted historically available dyes. Keep face, hands, feet positions and silhouettes exactly in place; do not change hem boundary, head height or width. No tools/props. Transparent background. Preserve the input 2:1 sheet with each cell in exactly its original position. No grid, no labels, no shadow, no extra characters.",
+        "rawSource": "sources/walkers/wk_labor_f_05-v1-raw.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenced_image_paths": [
+          "templates/actor_civilian_woman-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "script": "records/walkers-process.cjs",
+      "masterSize": [
+        592,
+        296
+      ],
+      "finalSize": [
+        296,
+        148
+      ],
+      "downsample": 0.5,
+      "cells": [
+        {
+          "direction": "NE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 51,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 9,
+            "w": 62,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              50,
+              9,
+              62,
+              130
+            ],
+            "target": [
+              51,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4789,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 48,
+            "y": 11,
+            "w": 52,
+            "h": 124
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 10,
+            "w": 59,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              50,
+              10,
+              59,
+              130
+            ],
+            "target": [
+              48,
+              11,
+              52,
+              124
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5198,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 50,
+            "y": 13,
+            "w": 53,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 55,
+            "y": 11,
+            "w": 59,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              55,
+              11,
+              59,
+              129
+            ],
+            "target": [
+              50,
+              13,
+              53,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5172,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 41,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 10,
+            "w": 62,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              48,
+              10,
+              62,
+              130
+            ],
+            "target": [
+              41,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4747,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 58,
+            "y": 9,
+            "w": 50,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 57,
+            "y": 11,
+            "w": 56,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              57,
+              11,
+              56,
+              128
+            ],
+            "target": [
+              58,
+              9,
+              50,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4813,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 50,
+            "y": 6,
+            "w": 53,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 51,
+            "y": 7,
+            "w": 60,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              51,
+              7,
+              60,
+              130
+            ],
+            "target": [
+              50,
+              6,
+              53,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5417,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 44,
+            "y": 6,
+            "w": 55,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 7,
+            "w": 60,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              50,
+              7,
+              60,
+              130
+            ],
+            "target": [
+              44,
+              6,
+              55,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5486,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 42,
+            "y": 9,
+            "w": 49,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 11,
+            "w": 55,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              48,
+              11,
+              55,
+              128
+            ],
+            "target": [
+              42,
+              9,
+              49,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4796,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate; inspected all 8 directions/frames visually",
+      "rawModelPixelExact": false,
+      "anatomy": "original classified face/hand/feet pixels restored; skin mask is heuristic and exact pixel equality alone does not prove all anatomical landmarks",
+      "constraintWarning": "body alpha is constrained by compositor; do not report this as independent generated pose accuracy",
+      "limitations": [
+        "Original foot pixels may retain a small original hem at ankle.",
+        "Same template body build retained, face anatomy not a new body design.",
+        "Raw edit is not pixel exact and is preserved for audit."
+      ],
+      "measurements": [
+        {
+          "id": "wk_labor_f_05-v1",
+          "direction": "NE",
+          "frame": 0,
+          "headProxyFinalPx": 0.3301854211524781,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_05-v1",
+          "direction": "SE",
+          "frame": 0,
+          "headProxyFinalPx": 0.24089415199274683,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_05-v1",
+          "direction": "SW",
+          "frame": 0,
+          "headProxyFinalPx": 0.2097104971729375,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_05-v1",
+          "direction": "NW",
+          "frame": 0,
+          "headProxyFinalPx": 0.4369268167002251,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_05-v1",
+          "direction": "NE",
+          "frame": 1,
+          "headProxyFinalPx": 0.42650780228252444,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_05-v1",
+          "direction": "SE",
+          "frame": 1,
+          "headProxyFinalPx": 0.3648796042725884,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_05-v1",
+          "direction": "SW",
+          "frame": 1,
+          "headProxyFinalPx": 0.43051050192902357,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_labor_f_05-v1",
+          "direction": "NW",
+          "frame": 1,
+          "headProxyFinalPx": 0.48380819713779577,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        }
+      ],
+      "lowerBody": "56/56 cells exact alpha y100..147; foot displacement 0",
+      "head": "maximum head silhouette centroid proxy 0.769 finalpx; anatomical head landmarks not independently certified",
+      "direction": "NE/SE/SW/NW and two leg phases preserved through template registration; folds are not physically animated or runtime verified"
+    }
+  },
+  {
+    "id": "wk_servant_f_03-v1",
+    "role": "walker_sheet",
+    "width": 296,
+    "height": 148,
+    "file": "assets/workers/wk_servant_f_03-v1.png",
+    "template": "actor_civilian_woman-v1.png",
+    "files": {
+      "master": "masters/wk_servant_f_03-v1.png",
+      "final": "assets/workers/wk_servant_f_03-v1.png",
+      "raw": "sources/walkers/wk_servant_f_03-v1-raw.png"
+    },
+    "generationRecords": [
+      {
+        "id": "wk_servant_f_03-v1",
+        "sex": "f",
+        "design": "muted brick red practical kirtle, small pale cream close tied cap with no long veil, light grey waist apron, narrow red livery wrist patch",
+        "template": "actor_civilian_woman-v1.png",
+        "prompt": "Use case: identity-preserve. EDIT the input sprite sheet only. Do not invent new people, poses or frame layouts. Retain eight exact figures, four columns NE SE SW NW, two gait frames, same camera and stance. Change ONLY clothes and headwear to: muted brick red practical kirtle, small pale cream close tied cap with no long veil, light grey waist apron, narrow red livery wrist patch. Southern England 1300-1450 hand-painted small game walker style, muted historically available dyes. Keep face, hands, feet positions and silhouettes exactly in place; do not change hem boundary, head height or width. No tools/props. Transparent background. Preserve the input 2:1 sheet with each cell in exactly its original position. No grid, no labels, no shadow, no extra characters.",
+        "rawSource": "sources/walkers/wk_servant_f_03-v1-raw.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenced_image_paths": [
+          "templates/actor_civilian_woman-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "script": "records/walkers-process.cjs",
+      "masterSize": [
+        592,
+        296
+      ],
+      "finalSize": [
+        296,
+        148
+      ],
+      "downsample": 0.5,
+      "cells": [
+        {
+          "direction": "NE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 51,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 49,
+            "y": 10,
+            "w": 60,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              49,
+              10,
+              60,
+              128
+            ],
+            "target": [
+              51,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4789,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 48,
+            "y": 11,
+            "w": 52,
+            "h": 124
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 9,
+            "w": 59,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              48,
+              9,
+              59,
+              130
+            ],
+            "target": [
+              48,
+              11,
+              52,
+              124
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5198,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 50,
+            "y": 13,
+            "w": 53,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 55,
+            "y": 10,
+            "w": 58,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              55,
+              10,
+              58,
+              130
+            ],
+            "target": [
+              50,
+              13,
+              53,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5172,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 41,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 11,
+            "w": 61,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              48,
+              11,
+              61,
+              128
+            ],
+            "target": [
+              41,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4747,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 58,
+            "y": 9,
+            "w": 50,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 56,
+            "y": 10,
+            "w": 55,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              56,
+              10,
+              55,
+              128
+            ],
+            "target": [
+              58,
+              9,
+              50,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4813,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 50,
+            "y": 6,
+            "w": 53,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 7,
+            "w": 60,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              50,
+              7,
+              60,
+              129
+            ],
+            "target": [
+              50,
+              6,
+              53,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5417,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 44,
+            "y": 6,
+            "w": 55,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 49,
+            "y": 7,
+            "w": 61,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              49,
+              7,
+              61,
+              129
+            ],
+            "target": [
+              44,
+              6,
+              55,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5486,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 42,
+            "y": 9,
+            "w": 49,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 10,
+            "w": 54,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              48,
+              10,
+              54,
+              128
+            ],
+            "target": [
+              42,
+              9,
+              49,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4796,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate; inspected all 8 directions/frames visually",
+      "rawModelPixelExact": false,
+      "anatomy": "original classified face/hand/feet pixels restored; skin mask is heuristic and exact pixel equality alone does not prove all anatomical landmarks",
+      "constraintWarning": "body alpha is constrained by compositor; do not report this as independent generated pose accuracy",
+      "limitations": [
+        "Original foot pixels may retain a small original hem at ankle.",
+        "Same template body build retained, face anatomy not a new body design.",
+        "Raw edit is not pixel exact and is preserved for audit."
+      ],
+      "measurements": [
+        {
+          "id": "wk_servant_f_03-v1",
+          "direction": "NE",
+          "frame": 0,
+          "headProxyFinalPx": 0.22309976552552813,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_03-v1",
+          "direction": "SE",
+          "frame": 0,
+          "headProxyFinalPx": 0.40736033823761575,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_03-v1",
+          "direction": "SW",
+          "frame": 0,
+          "headProxyFinalPx": 0.2486469183889372,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_03-v1",
+          "direction": "NW",
+          "frame": 0,
+          "headProxyFinalPx": 0.7686231852455087,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_03-v1",
+          "direction": "NE",
+          "frame": 1,
+          "headProxyFinalPx": 0.25969599277616323,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_03-v1",
+          "direction": "SE",
+          "frame": 1,
+          "headProxyFinalPx": 0.7191112426784939,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_03-v1",
+          "direction": "SW",
+          "frame": 1,
+          "headProxyFinalPx": 0.2079633937180411,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_03-v1",
+          "direction": "NW",
+          "frame": 1,
+          "headProxyFinalPx": 0.19013920573555645,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        }
+      ],
+      "lowerBody": "56/56 cells exact alpha y100..147; foot displacement 0",
+      "head": "maximum head silhouette centroid proxy 0.769 finalpx; anatomical head landmarks not independently certified",
+      "direction": "NE/SE/SW/NW and two leg phases preserved through template registration; folds are not physically animated or runtime verified"
+    }
+  },
+  {
+    "id": "wk_servant_f_04-v1",
+    "role": "walker_sheet",
+    "width": 296,
+    "height": 148,
+    "file": "assets/workers/wk_servant_f_04-v1.png",
+    "template": "actor_civilian_woman-v1.png",
+    "files": {
+      "master": "masters/wk_servant_f_04-v1.png",
+      "final": "assets/workers/wk_servant_f_04-v1.png",
+      "raw": "sources/walkers/wk_servant_f_04-v1-raw.png"
+    },
+    "generationRecords": [
+      {
+        "id": "wk_servant_f_04-v1",
+        "sex": "f",
+        "design": "dusty purple grey practical long kirtle, ochre short headwrap crossing at forehead tied behind head, no apron, narrow red livery cuff patch",
+        "template": "actor_civilian_woman-v1.png",
+        "prompt": "Use case: identity-preserve. EDIT the input sprite sheet only. Do not invent new people, poses or frame layouts. Retain eight exact figures, four columns NE SE SW NW, two gait frames, same camera and stance. Change ONLY clothes and headwear to: dusty purple grey practical long kirtle, ochre short headwrap crossing at forehead tied behind head, no apron, narrow red livery cuff patch. Southern England 1300-1450 hand-painted small game walker style, muted historically available dyes. Keep face, hands, feet positions and silhouettes exactly in place; do not change hem boundary, head height or width. No tools/props. Transparent background. Preserve the input 2:1 sheet with each cell in exactly its original position. No grid, no labels, no shadow, no extra characters.",
+        "rawSource": "sources/walkers/wk_servant_f_04-v1-raw.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenced_image_paths": [
+          "templates/actor_civilian_woman-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "script": "records/walkers-process.cjs",
+      "masterSize": [
+        592,
+        296
+      ],
+      "finalSize": [
+        296,
+        148
+      ],
+      "downsample": 0.5,
+      "cells": [
+        {
+          "direction": "NE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 51,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 9,
+            "w": 63,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              48,
+              9,
+              63,
+              130
+            ],
+            "target": [
+              51,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4789,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 48,
+            "y": 11,
+            "w": 52,
+            "h": 124
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 10,
+            "w": 58,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              50,
+              10,
+              58,
+              130
+            ],
+            "target": [
+              48,
+              11,
+              52,
+              124
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5198,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 50,
+            "y": 13,
+            "w": 53,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 55,
+            "y": 11,
+            "w": 61,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              55,
+              11,
+              61,
+              129
+            ],
+            "target": [
+              50,
+              13,
+              53,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5172,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 41,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 46,
+            "y": 10,
+            "w": 63,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              46,
+              10,
+              63,
+              129
+            ],
+            "target": [
+              41,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4747,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 58,
+            "y": 9,
+            "w": 50,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 55,
+            "y": 10,
+            "w": 58,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              55,
+              10,
+              58,
+              129
+            ],
+            "target": [
+              58,
+              9,
+              50,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4813,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 50,
+            "y": 6,
+            "w": 53,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 7,
+            "w": 61,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              50,
+              7,
+              61,
+              128
+            ],
+            "target": [
+              50,
+              6,
+              53,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5417,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 44,
+            "y": 6,
+            "w": 55,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 7,
+            "w": 61,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              50,
+              7,
+              61,
+              129
+            ],
+            "target": [
+              44,
+              6,
+              55,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5486,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 42,
+            "y": 9,
+            "w": 49,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 46,
+            "y": 9,
+            "w": 56,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              46,
+              9,
+              56,
+              130
+            ],
+            "target": [
+              42,
+              9,
+              49,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4796,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate; inspected all 8 directions/frames visually",
+      "rawModelPixelExact": false,
+      "anatomy": "original classified face/hand/feet pixels restored; skin mask is heuristic and exact pixel equality alone does not prove all anatomical landmarks",
+      "constraintWarning": "body alpha is constrained by compositor; do not report this as independent generated pose accuracy",
+      "limitations": [
+        "Original foot pixels may retain a small original hem at ankle.",
+        "Same template body build retained, face anatomy not a new body design.",
+        "Raw edit is not pixel exact and is preserved for audit."
+      ],
+      "measurements": [
+        {
+          "id": "wk_servant_f_04-v1",
+          "direction": "NE",
+          "frame": 0,
+          "headProxyFinalPx": 0.3127930838781688,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_04-v1",
+          "direction": "SE",
+          "frame": 0,
+          "headProxyFinalPx": 0.309862388721239,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_04-v1",
+          "direction": "SW",
+          "frame": 0,
+          "headProxyFinalPx": 0.3015604462147467,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_04-v1",
+          "direction": "NW",
+          "frame": 0,
+          "headProxyFinalPx": 0.629470459814241,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_04-v1",
+          "direction": "NE",
+          "frame": 1,
+          "headProxyFinalPx": 0.21530053786641223,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_04-v1",
+          "direction": "SE",
+          "frame": 1,
+          "headProxyFinalPx": 0.672966058489856,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_04-v1",
+          "direction": "SW",
+          "frame": 1,
+          "headProxyFinalPx": 0.2618332443917315,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_servant_f_04-v1",
+          "direction": "NW",
+          "frame": 1,
+          "headProxyFinalPx": 0.3500940514701991,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        }
+      ],
+      "lowerBody": "56/56 cells exact alpha y100..147; foot displacement 0",
+      "head": "maximum head silhouette centroid proxy 0.769 finalpx; anatomical head landmarks not independently certified",
+      "direction": "NE/SE/SW/NW and two leg phases preserved through template registration; folds are not physically animated or runtime verified"
+    }
+  },
+  {
+    "id": "wk_poor_m_02-v1",
+    "role": "walker_sheet",
+    "width": 296,
+    "height": 148,
+    "file": "assets/workers/wk_poor_m_02-v1.png",
+    "template": "actor_civilian_man-v1.png",
+    "files": {
+      "master": "masters/wk_poor_m_02-v1.png",
+      "final": "assets/workers/wk_poor_m_02-v1.png",
+      "raw": "sources/walkers/wk_poor_m_02-v1-raw.png"
+    },
+    "generationRecords": [
+      {
+        "id": "wk_poor_m_02-v1",
+        "sex": "m",
+        "design": "faded weld ochre knee tunic, frayed grey close coif, faded blue elbow repair patch and dull green front skirt patch, grey hose, empty hands",
+        "template": "actor_civilian_man-v1.png",
+        "prompt": "Use case: identity-preserve. EDIT the input sprite sheet only. Do not invent new people, poses or frame layouts. Retain eight exact figures, four columns NE SE SW NW, two gait frames, same camera and stance. Change ONLY clothes and headwear to: faded weld ochre knee tunic, frayed grey close coif, faded blue elbow repair patch and dull green front skirt patch, grey hose, empty hands. Southern England 1300-1450 hand-painted small game walker style, muted historically available dyes. Keep face, hands, feet positions and silhouettes exactly in place; do not change hem boundary, head height or width. No tools/props. Transparent background. Preserve the input 2:1 sheet with each cell in exactly its original position. No grid, no labels, no shadow, no extra characters.",
+        "rawSource": "sources/walkers/wk_poor_m_02-v1-raw.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenced_image_paths": [
+          "templates/actor_civilian_man-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "script": "records/walkers-process.cjs",
+      "masterSize": [
+        592,
+        296
+      ],
+      "finalSize": [
+        296,
+        148
+      ],
+      "downsample": 0.5,
+      "cells": [
+        {
+          "direction": "NE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 62,
+            "y": 5,
+            "w": 60,
+            "h": 130
+          },
+          "rawNormalizedBounds": {
+            "x": 60,
+            "y": 3,
+            "w": 68,
+            "h": 137
+          },
+          "registration": {
+            "source": [
+              60,
+              3,
+              68,
+              137
+            ],
+            "target": [
+              62,
+              5,
+              60,
+              130
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 7622,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all local y>=99"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 43,
+            "y": 6,
+            "w": 58,
+            "h": 131
+          },
+          "rawNormalizedBounds": {
+            "x": 45,
+            "y": 5,
+            "w": 65,
+            "h": 136
+          },
+          "registration": {
+            "source": [
+              45,
+              5,
+              65,
+              136
+            ],
+            "target": [
+              43,
+              6,
+              58,
+              131
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 8127,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all local y>=99"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 46,
+            "y": 6,
+            "w": 57,
+            "h": 130
+          },
+          "rawNormalizedBounds": {
+            "x": 52,
+            "y": 4,
+            "w": 63,
+            "h": 137
+          },
+          "registration": {
+            "source": [
+              52,
+              4,
+              63,
+              137
+            ],
+            "target": [
+              46,
+              6,
+              57,
+              130
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 8136,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all local y>=99"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 25,
+            "y": 5,
+            "w": 61,
+            "h": 131
+          },
+          "rawNormalizedBounds": {
+            "x": 33,
+            "y": 3,
+            "w": 68,
+            "h": 137
+          },
+          "registration": {
+            "source": [
+              33,
+              3,
+              68,
+              137
+            ],
+            "target": [
+              25,
+              5,
+              61,
+              131
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 7687,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all local y>=99"
+          }
+        },
+        {
+          "direction": "NE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 62,
+            "y": 4,
+            "w": 62,
+            "h": 131
+          },
+          "rawNormalizedBounds": {
+            "x": 60,
+            "y": 5,
+            "w": 70,
+            "h": 138
+          },
+          "registration": {
+            "source": [
+              60,
+              5,
+              70,
+              138
+            ],
+            "target": [
+              62,
+              4,
+              62,
+              131
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 7577,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all local y>=99"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 45,
+            "y": 3,
+            "w": 61,
+            "h": 133
+          },
+          "rawNormalizedBounds": {
+            "x": 46,
+            "y": 5,
+            "w": 68,
+            "h": 138
+          },
+          "registration": {
+            "source": [
+              46,
+              5,
+              68,
+              138
+            ],
+            "target": [
+              45,
+              3,
+              61,
+              133
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 8161,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all local y>=99"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 42,
+            "y": 5,
+            "w": 62,
+            "h": 130
+          },
+          "rawNormalizedBounds": {
+            "x": 48,
+            "y": 6,
+            "w": 69,
+            "h": 137
+          },
+          "registration": {
+            "source": [
+              48,
+              6,
+              69,
+              137
+            ],
+            "target": [
+              42,
+              5,
+              62,
+              130
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 8172,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all local y>=99"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 24,
+            "y": 5,
+            "w": 62,
+            "h": 129
+          },
+          "rawNormalizedBounds": {
+            "x": 31,
+            "y": 6,
+            "w": 71,
+            "h": 136
+          },
+          "registration": {
+            "source": [
+              31,
+              6,
+              71,
+              136
+            ],
+            "target": [
+              24,
+              5,
+              62,
+              129
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 7599,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all local y>=99"
+          }
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate; inspected all 8 directions/frames visually",
+      "rawModelPixelExact": false,
+      "anatomy": "original classified face/hand/feet pixels restored; skin mask is heuristic and exact pixel equality alone does not prove all anatomical landmarks",
+      "constraintWarning": "body alpha is constrained by compositor; do not report this as independent generated pose accuracy",
+      "limitations": [
+        "Original foot pixels may retain a small original hem at ankle.",
+        "Same template body build retained, face anatomy not a new body design.",
+        "Raw edit is not pixel exact and is preserved for audit."
+      ],
+      "measurements": [
+        {
+          "id": "wk_poor_m_02-v1",
+          "direction": "NE",
+          "frame": 0,
+          "headProxyFinalPx": 0.11846733866639994,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_m_02-v1",
+          "direction": "SE",
+          "frame": 0,
+          "headProxyFinalPx": 0.2216505815946123,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_m_02-v1",
+          "direction": "SW",
+          "frame": 0,
+          "headProxyFinalPx": 0.10101911879504592,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_m_02-v1",
+          "direction": "NW",
+          "frame": 0,
+          "headProxyFinalPx": 0.15047210385364793,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_m_02-v1",
+          "direction": "NE",
+          "frame": 1,
+          "headProxyFinalPx": 0.204930100234266,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_m_02-v1",
+          "direction": "SE",
+          "frame": 1,
+          "headProxyFinalPx": 0.46618149267229453,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_m_02-v1",
+          "direction": "SW",
+          "frame": 1,
+          "headProxyFinalPx": 0.24886777214140335,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_m_02-v1",
+          "direction": "NW",
+          "frame": 1,
+          "headProxyFinalPx": 0.11395892349831548,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        }
+      ],
+      "lowerBody": "56/56 cells exact alpha y100..147; foot displacement 0",
+      "head": "maximum head silhouette centroid proxy 0.769 finalpx; anatomical head landmarks not independently certified",
+      "direction": "NE/SE/SW/NW and two leg phases preserved through template registration; folds are not physically animated or runtime verified"
+    }
+  },
+  {
+    "id": "wk_poor_f_02-v1",
+    "role": "walker_sheet",
+    "width": 296,
+    "height": 148,
+    "file": "assets/workers/wk_poor_f_02-v1.png",
+    "template": "actor_civilian_woman-v1.png",
+    "files": {
+      "master": "masters/wk_poor_f_02-v1.png",
+      "final": "assets/workers/wk_poor_f_02-v1.png",
+      "raw": "sources/walkers/wk_poor_f_02-v1-raw.png"
+    },
+    "generationRecords": [
+      {
+        "id": "wk_poor_f_02-v1",
+        "sex": "f",
+        "design": "faded muted green long kirtle, dull blue short close headcloth, natural linen patch on right elbow and brick red patch low left skirt, no apron",
+        "template": "actor_civilian_woman-v1.png",
+        "prompt": "Use case: identity-preserve. EDIT the input sprite sheet only. Do not invent new people, poses or frame layouts. Retain eight exact figures, four columns NE SE SW NW, two gait frames, same camera and stance. Change ONLY clothes and headwear to: faded muted green long kirtle, dull blue short close headcloth, natural linen patch on right elbow and brick red patch low left skirt, no apron. Southern England 1300-1450 hand-painted small game walker style, muted historically available dyes. Keep face, hands, feet positions and silhouettes exactly in place; do not change hem boundary, head height or width. No tools/props. Transparent background. Preserve the input 2:1 sheet with each cell in exactly its original position. No grid, no labels, no shadow, no extra characters.",
+        "rawSource": "sources/walkers/wk_poor_f_02-v1-raw.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenced_image_paths": [
+          "templates/actor_civilian_woman-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "script": "records/walkers-process.cjs",
+      "masterSize": [
+        592,
+        296
+      ],
+      "finalSize": [
+        296,
+        148
+      ],
+      "downsample": 0.5,
+      "cells": [
+        {
+          "direction": "NE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 51,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 49,
+            "y": 9,
+            "w": 62,
+            "h": 130
+          },
+          "registration": {
+            "source": [
+              49,
+              9,
+              62,
+              130
+            ],
+            "target": [
+              51,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4789,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 0,
+          "templateBounds": {
+            "x": 48,
+            "y": 11,
+            "w": 52,
+            "h": 124
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 8,
+            "w": 58,
+            "h": 131
+          },
+          "registration": {
+            "source": [
+              50,
+              8,
+              58,
+              131
+            ],
+            "target": [
+              48,
+              11,
+              52,
+              124
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5198,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 50,
+            "y": 13,
+            "w": 53,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 56,
+            "y": 11,
+            "w": 59,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              56,
+              11,
+              59,
+              129
+            ],
+            "target": [
+              50,
+              13,
+              53,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5172,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 0,
+          "templateBounds": {
+            "x": 41,
+            "y": 11,
+            "w": 56,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 8,
+            "w": 62,
+            "h": 131
+          },
+          "registration": {
+            "source": [
+              50,
+              8,
+              62,
+              131
+            ],
+            "target": [
+              41,
+              11,
+              56,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4747,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 58,
+            "y": 9,
+            "w": 50,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 55,
+            "y": 10,
+            "w": 57,
+            "h": 128
+          },
+          "registration": {
+            "source": [
+              55,
+              10,
+              57,
+              128
+            ],
+            "target": [
+              58,
+              9,
+              50,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4813,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SE",
+          "frame": 1,
+          "templateBounds": {
+            "x": 50,
+            "y": 6,
+            "w": 53,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 7,
+            "w": 60,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              50,
+              7,
+              60,
+              129
+            ],
+            "target": [
+              50,
+              6,
+              53,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5417,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "SW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 44,
+            "y": 6,
+            "w": 55,
+            "h": 123
+          },
+          "rawNormalizedBounds": {
+            "x": 50,
+            "y": 7,
+            "w": 61,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              50,
+              7,
+              61,
+              129
+            ],
+            "target": [
+              44,
+              6,
+              55,
+              123
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 5486,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        },
+        {
+          "direction": "NW",
+          "frame": 1,
+          "templateBounds": {
+            "x": 42,
+            "y": 9,
+            "w": 49,
+            "h": 122
+          },
+          "rawNormalizedBounds": {
+            "x": 49,
+            "y": 10,
+            "w": 56,
+            "h": 129
+          },
+          "registration": {
+            "source": [
+              49,
+              10,
+              56,
+              129
+            ],
+            "target": [
+              42,
+              9,
+              49,
+              122
+            ],
+            "method": "per-cell bbox affine registration; may anisotropically resize edited cloth"
+          },
+          "protectedPixelCount": 4796,
+          "bodyAlphaConstraint": {
+            "startY": 40,
+            "rule": "template alpha retained below local master y40; this is a mask constraint, not an independent pose measurement"
+          },
+          "maskRules": {
+            "face": "front direction skin-colour pixels local y12..37 within16px ofbboxcentre",
+            "hands": "skin-colour pixels local y55..89 beyond15px ofbboxcentre",
+            "feet": "all y>=126 plus darkbrown pixels y>=117"
+          }
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate; inspected all 8 directions/frames visually",
+      "rawModelPixelExact": false,
+      "anatomy": "original classified face/hand/feet pixels restored; skin mask is heuristic and exact pixel equality alone does not prove all anatomical landmarks",
+      "constraintWarning": "body alpha is constrained by compositor; do not report this as independent generated pose accuracy",
+      "limitations": [
+        "Original foot pixels may retain a small original hem at ankle.",
+        "Same template body build retained, face anatomy not a new body design.",
+        "Raw edit is not pixel exact and is preserved for audit."
+      ],
+      "measurements": [
+        {
+          "id": "wk_poor_f_02-v1",
+          "direction": "NE",
+          "frame": 0,
+          "headProxyFinalPx": 0.3166724155007436,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_f_02-v1",
+          "direction": "SE",
+          "frame": 0,
+          "headProxyFinalPx": 0.08651686048401465,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_f_02-v1",
+          "direction": "SW",
+          "frame": 0,
+          "headProxyFinalPx": 0.21748111572992598,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_f_02-v1",
+          "direction": "NW",
+          "frame": 0,
+          "headProxyFinalPx": 0.3108829954215715,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_f_02-v1",
+          "direction": "NE",
+          "frame": 1,
+          "headProxyFinalPx": 0.5646414196477202,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_f_02-v1",
+          "direction": "SE",
+          "frame": 1,
+          "headProxyFinalPx": 0.4668174986900266,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_f_02-v1",
+          "direction": "SW",
+          "frame": 1,
+          "headProxyFinalPx": 0.12388014953573451,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        },
+        {
+          "id": "wk_poor_f_02-v1",
+          "direction": "NW",
+          "frame": 1,
+          "headProxyFinalPx": 0.40505650887421235,
+          "footFinalPx": 0,
+          "lowerBodyAlphaDifferentMasterPixels": 0
+        }
+      ],
+      "lowerBody": "56/56 cells exact alpha y100..147; foot displacement 0",
+      "head": "maximum head silhouette centroid proxy 0.769 finalpx; anatomical head landmarks not independently certified",
+      "direction": "NE/SE/SW/NW and two leg phases preserved through template registration; folds are not physically animated or runtime verified"
+    }
+  },
+  {
+    "id": "overlay_cloak_merchant_m-v1",
+    "file": "assets/overlays/overlay_cloak_merchant_m-v1.png",
+    "role": "walker_overlay",
+    "width": 296,
+    "height": 148,
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "mode": "template image edit",
+        "model": null,
+        "seed": null,
+        "prompt": "Use case: precise-object-edit. Input is a merchant sprite sheet, four directions NE SE SW NW, two walk frames. Produce only a detachable muted dark woad blue winter wool cloak overlay for the EXACT eight merchant poses. Retain exact body position and shoulder alignment. Remove human body, skin, hands, legs and hat from output, keep only the cloak. No hood: neck opening must start below the existing merchant hat and face, leave entire hat and face unobstructed. Short practical half cloak below waist, open front reveals hands and gait. Transparent openings and background, no shirt or trousers. Eight cloak layers in same 4 columns 2 rows at identical input coordinates, 2:1 sheet. Same hand-painted South England 1300-1450 style. No added people or props, no labels, no grid.",
+        "referenced_image_paths": [
+          "templates/actor_merchant-v1.png"
+        ],
+        "raw": "sources/walkers/overlay-raw.png"
+      }
+    ],
+    "processing": {
+      "script": "records/walkers-overlay.cjs",
+      "registration": "per-cell content box to torso at master y31..94, hat excluded",
+      "cellSize": [
+        74,
+        74
+      ],
+      "masterCell": [
+        148,
+        148
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "hatClipping": "none, overlay starts below head at y31 master",
+      "limitations": [
+        "Cloak partly occludes hands and carried inventory if present; only empty merchant template tested",
+        "Independent garment animation consistency requires runtime check"
+      ]
+    }
+  }
+]

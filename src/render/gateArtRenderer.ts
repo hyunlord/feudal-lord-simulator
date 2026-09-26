@@ -39,12 +39,31 @@ function gateV2Image(material: GateMaterial, axis: StoneWallAxis): CanvasImageSo
   return canvas;
 }
 
-/** `v2`: the wall strips draw the Wave 4e gate v2 art (the old pieces keep the Phase gate parts). */
+// Stone gate v3 (INSTALL-5c, Wave 5c; wall strips only): one painting per axis, 512 x 384, drawn whole (no panel
+// stretch, so the arch keeps its curve). Its geometry record puts the portal feet 204 px apart about the pivot (252,
+// 249) on a 2:1 ground line; the passage is 2 x GATE_HALF_CLEARANCE tiles = 51.2 screen px at zoom 1, so the painting
+// is drawn at 51.2 / 204 (its 112 px local height is then 28 px, the wall strip's height).
+const V3_PIVOT = { x: 252, y: 249 } as const;
+const V3_PORTAL_SPAN = 204;
+const V3_SIZE = { width: 512, height: 384 } as const;
+export const GATE_V3_SCALE = (GATE_HALF_CLEARANCE * 2 * 32) / V3_PORTAL_SPAN;
+function drawGateV3(context: CanvasRenderingContext2D, axis: StoneWallAxis, center: { readonly x: number; readonly y: number }): boolean {
+  const image = wallFaceAsset((axis === 'descending' ? TERRAIN_VARIANTS.stoneGateV3[0] : TERRAIN_VARIANTS.stoneGateV3[1]) as WallFaceKey);
+  if (image === null) return false;
+  drawCroppedWorldSprite(context, image, { x: 0, y: 0, ...V3_SIZE },
+    { x: center.x - V3_PIVOT.x * GATE_V3_SCALE, y: center.y - V3_PIVOT.y * GATE_V3_SCALE,
+      width: V3_SIZE.width * GATE_V3_SCALE, height: V3_SIZE.height * GATE_V3_SCALE }, false, true);
+  return true;
+}
+
+/** `v2`: the wall strips draw the Wave 4e gate v2 art (the stone gate the Wave 5c v3); the old pieces keep the Phase gate parts. */
 export function drawRegisteredGate(context: CanvasRenderingContext2D, node: StoneWallNode, material: GateMaterial, v2 = false): boolean {
   if (gateHasSharedOpening(node)) return false;
   void preloadGateAssets();
   const axis = gateArtAxis(node);
   if (axis === null) return false;
+  const v3Center = v2 && material === 'stone' ? palisadeScreenPath([node.point])[0] : undefined;
+  if (v3Center !== undefined && drawGateV3(context, axis, v3Center)) { drawGateLeaves(context, axis, v3Center); return true; }
   const v2Frame = v2 ? gateV2Image(material, axis) : null;
   const frame = v2Frame ?? gateArtImage(material === 'stone' ? 'stone_arch' : 'timber_frame', axis);
   const doors = gateArtImage('doors_open', axis);
@@ -66,8 +85,16 @@ export function drawRegisteredGate(context: CanvasRenderingContext2D, node: Ston
     drawCroppedWorldSprite(context, frame, { x: crop.x*pixel, y: 0, width: crop.width*pixel, height: GATE_CANVAS*pixel }, crop, false, true);
     context.restore();
   }
-  // Independently generated leaves are registered as narrow outward folded panels.
-  // Closed-leaf sources are review-only: completed gates remain logically open.
+  drawGateLeaves(context, axis, center);
+  return true;
+}
+
+/** Independently generated leaves are registered as narrow outward folded panels.
+ * Closed-leaf sources are review-only: completed gates remain logically open. */
+function drawGateLeaves(context: CanvasRenderingContext2D, axis: StoneWallAxis, center: { readonly x: number; readonly y: number }): void {
+  const doors = gateArtImage('doors_open', axis);
+  if (!doors) return;
+  const slope = axis === 'descending' ? 0.5 : -0.5;
   for (const side of [-1,1]) {
     const x = center.x+side*(GATE_HALF_CLEARANCE*32+3);
     const y = center.y+slope*(x-center.x);
@@ -78,5 +105,4 @@ export function drawRegisteredGate(context: CanvasRenderingContext2D, node: Ston
     drawCroppedWorldSprite(context, doors, { x:crop.x,y:crop.y,width:crop.w,height:crop.h },
       { x:x+(left ? -10 : 0),y:y-27,width:10,height:27 }, false, true);
   }
-  return true;
 }

@@ -1,0 +1,21 @@
+{
+  "verdict": "CANDIDATE_DELIVERY_WITH_LIMITATIONS",
+  "reviewer": "wave3_workers",
+  "independence": {"workers": "self-review; reviewer authored five worker sheets", "other_assets_and_checks": "independent visual review"},
+  "png_count_observed": 87,
+  "asset_count": 82,
+  "check_count": 5,
+  "checks_opened": ["01-ale-chain.png", "02-textile-chain.png", "03-piles-cargo-zoom06.png", "04-buildings-workers.png", "05-icons-24px.png"],
+  "actual_low_zoom_scale_reviewed": 0.3,
+  "delivery_blockers_observed": [],
+  "full_visual_pass_claim_supported": false,
+  "limitations": [
+    "Some cargo material identities remain borderline at actual0.3scale: wool bales vs raw cloth; low quantity fleece vs yarn",
+    "Building icons differ in silhouette but exact functional recognition of alehouse/brewhouse/dyehouse at24px remains uncertain",
+    "Ale-stake, distaff/spindle, loom and internal hammer details are not independently legible in lowzoom chain composite",
+    "Large regular barley ear rhythm remains visible; lowzoom barley-vs-wheat botanical identification not guaranteed",
+    "Active overlay is faint when isolated; combined runtime active-state legibility not tested"
+  ],
+  "worker_saved_png_invariants": {"frames": 40, "head_rgba_changes": 0, "both_boot_rgba_changes": 0, "alpha_changes": 0, "scope": "self-review"},
+  "not_tested": ["game integration", "runtime pivot rendering", "animation assembly", "runtime zoom/DPR", "ZIP integrity and CSV final audit are delegated to lead"]
+}

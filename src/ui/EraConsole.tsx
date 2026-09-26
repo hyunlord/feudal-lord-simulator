@@ -21,6 +21,7 @@ import { palisadeFootprintsForState, proposalSummaryForState } from "./eraConsol
 import { draftPalisadePredictionLines, proposalPredictionLines } from "./wallPrediction";
 import { PREDICTION_SEVERITY_TONE, type PredictionLine } from "./predictionTypes";
 import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
+import { UiIcon } from "./UiIcon";
 
 export type EraConsoleAction = {
   readonly enabled: boolean;
@@ -208,9 +209,9 @@ export function EraConsole({
       {model.wallProgress !== null && onPriorityChange !== undefined ? (
         <div className="era-wall-priority" role="group" aria-label="성벽 공사 자재 우선순위">
           <button type="button" aria-pressed={priority === 'balanced'}
-            onClick={() => onPriorityChange('balanced')}>{priority === 'balanced' ? '✓ ' : ''}균형 · 25% 비축</button>
+            onClick={() => onPriorityChange('balanced')}>{priority === 'balanced' ? <UiIcon sheet="prediction" cell="ok" /> : null}균형 · 25% 비축</button>
           <button type="button" aria-pressed={priority === 'priority'}
-            onClick={() => onPriorityChange('priority')}>{priority === 'priority' ? '✓ ' : ''}공사 우선</button>
+            onClick={() => onPriorityChange('priority')}>{priority === 'priority' ? <UiIcon sheet="prediction" cell="ok" /> : null}공사 우선</button>
           {model.reserveDeadlock && priority === 'balanced' ? (
             <button type="button" onClick={() => onPriorityChange('priority')}>{CONSTRUCTION_DEADLOCK_COPY.action}</button>
           ) : null}

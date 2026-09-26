@@ -1,0 +1,19 @@
+{
+  "reviewer": "wave7r_boards, independent of snow and frost creation",
+  "scope": "Snow and frost visual review of final synthetic winter proof; own boards are not independently certified here",
+  "evidence": ["proofs/01-winter-street.png", "records/snow-l0-registration.png", "records/snow-l1-registration.png", "records/snow-l2-registration.png", "records/snow-l3-registration.png", "records/snow-l4-registration.png", "records/frost-all-grass-proof.png"],
+  "status": "PASS_WITH_LIMITATIONS",
+  "blockingIssues": [],
+  "observations": [
+    "All five roof snow overlays cover broad roof areas rather than former thin ridge lines; exposed thatch and tile patches remain visible.",
+    "All five remain attached to roof planes in enlarged, native and native x0.6 views; no obvious floating snow or wall spill visible.",
+    "L3 roof ridges and multi-plane gable remain identifiable.",
+    "Frost appears as thin translucent ground residue with irregular gaps, not raised clouds. Grass texture remains visible in the dedicated grass proof.",
+    "Final proof labels its synthetic status and distinguishes native house x0.6 from frost x0.3."
+  ],
+  "limitations": [
+    "At proof frost x0.3 individual crystal texture collapses to small pale marks; flatness remains clear but fine variety is weak.",
+    "This is static composite inspection; no runtime zoom, occlusion or gameplay integration was tested.",
+    "Coverage percentages are creator measurements using roof-region masks and alpha threshold 128; this visual review did not independently redraw the masks."
+  ]
+}

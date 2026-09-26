@@ -6,6 +6,7 @@ import { CAUSE_REGISTRY, causeMarkerSeverity, type CauseMarkerSeverity } from '.
 import { buildingCauseSnapshot } from '../ui/houseProgressModel';
 import { tileToScreen } from './iso';
 import { groupCauseMarkers, type CauseMarker } from './causeMarkerLayout';
+import { CAUSE_ICON, drawUiIcon } from '../ui/uiArt';
 
 /** The shape carries the severity (UX1): ▲ act now, ◆ caution. The cause stays in the colour and the glyph. */
 const SEVERITY_SHAPES: Readonly<Record<CauseMarkerSeverity, { readonly points: readonly (readonly [number, number])[]; readonly textY: number }>> = {
@@ -66,6 +67,8 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
         context.beginPath(); context.arc(0, 0, 8, -Math.PI / 2,
           -Math.PI / 2 + Math.max(0, Math.min(1, marker.progressFraction)) * Math.PI * 2); context.stroke();
       }
+    } else if (drawPaintedMarker(context, marker, marker.causeId)) {
+      // UX-2: the painted marker (triangle act now / diamond caution) with the cause icon beside it.
     } else {
       const shape = SEVERITY_SHAPES[marker.severity];
       context.beginPath();
@@ -80,4 +83,24 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
     context.restore();
   }
   context.restore();
+}
+
+/** UX-2 painted marker: the severity sprite (its pointer on the anchor), the cause icon to its right, a cluster's count
+ * on a vellum chip. False until the sheets have loaded (the vector shape draws meanwhile). */
+function drawPaintedMarker(context: CanvasRenderingContext2D, marker: CauseMarker, causeId: string | null): boolean {
+  if (marker.severity === null) return false;
+  if (!drawUiIcon(context, 'marker', marker.severity === 'block' ? 'urgent' : 'warn', 0, -4, 34)) return false;
+  const causeIcon = causeId === null ? undefined : CAUSE_ICON[causeId];
+  if (marker.buildingIds.length > 1) {
+    context.fillStyle = SEMANTIC_PALETTE.vellum;
+    context.beginPath(); context.arc(17, -14, 9, 0, Math.PI * 2); context.fill();
+    applyPaletteStroke(context, SEMANTIC_PALETTE.ink, 0.5); context.stroke();
+    context.fillStyle = SEMANTIC_PALETTE.ink;
+    context.font = 'bold 12px "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
+    context.textAlign = 'center'; context.textBaseline = 'middle';
+    context.fillText(String(marker.buildingIds.length), 17, -13);
+  } else if (causeIcon !== undefined) {
+    drawUiIcon(context, 'cause', causeIcon, 22, -6, 22);
+  }
+  return true;
 }

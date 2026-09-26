@@ -1,0 +1,640 @@
+[
+  {
+    "id": "ui/icon_resource_sheet",
+    "file": "assets/ui/icon_resource_sheet.png",
+    "width": 576,
+    "height": 96,
+    "role": "icon_resource_sheet",
+    "cellSize": 96,
+    "cellOrder": [
+      "인구",
+      "빵",
+      "목재",
+      "석재",
+      "돈",
+      "달력"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create transparent PNG artwork only for historical city-builder UI, 80% functional 20% medieval character. Use attached project's building art for PALETTE and brushwork only. Hand-painted clean pictogram icons, bold DARK INK BROWN outline, warm BONE/off-white and OAK brown fills, very low detail, no surrounding panels, no text labels, NO LETTERS, NO NUMBERS, no progress bars, no highlight or selection rectangles. No photographic texture. Maximum silhouette distinction when shrunk to 24px. All icons equally sized and centered within equal grid cells, generous empty spacing, no cell lines or background. exactly six icons in a 3-column 2-row regular grid, row-major: group of three people's bust silhouettes; single round rustic loaf with two broad scores; three stacked short oak logs; two angular pale grey rubble stones; stack of plain dull gold coins; blank parchment calendar with two binder loops and only a few square cutouts NO numbers NO lettering. Muted brick red is sole general accent. Green and blue ONLY for status symbols. Transparent background with genuine alpha, no checkerboard painted. Front-facing pictogram style, no complex illustration. Do not reproduce houses from reference. Output landscape canvas for grids or very wide landscape for single row.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "raw": "sources/icons/icon_resource_sheet.png",
+        "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-0eda2bb9-f801-4ce1-b2de-39cfa53bd4f1.png"
+      }
+    ],
+    "processing": {
+      "method": "Equal-grid extraction; alpha >128 content bounds plus3px, discard alpha below32 and remap32..255, proportional Lanczos3 resize into84%cell then center, remove disconnected alpha specks smaller than0.5%largest component; no new pictogram drawing.",
+      "transforms": [
+        {
+          "cell": 0,
+          "sourceRect": [
+            54,
+            144,
+            458,
+            348
+          ],
+          "destination": [
+            7,
+            17,
+            81,
+            62
+          ]
+        },
+        {
+          "cell": 1,
+          "sourceRect": [
+            512,
+            162,
+            445,
+            317
+          ],
+          "destination": [
+            103,
+            19,
+            81,
+            58
+          ]
+        },
+        {
+          "cell": 2,
+          "sourceRect": [
+            1054,
+            159,
+            418,
+            331
+          ],
+          "destination": [
+            199,
+            16,
+            81,
+            64
+          ]
+        },
+        {
+          "cell": 3,
+          "sourceRect": [
+            81,
+            597,
+            379,
+            315
+          ],
+          "destination": [
+            295,
+            14,
+            81,
+            67
+          ]
+        },
+        {
+          "cell": 4,
+          "sourceRect": [
+            588,
+            600,
+            343,
+            298
+          ],
+          "destination": [
+            391,
+            13,
+            81,
+            70
+          ]
+        },
+        {
+          "cell": 5,
+          "sourceRect": [
+            1109,
+            569,
+            308,
+            335
+          ],
+          "destination": [
+            491,
+            7,
+            74,
+            81
+          ]
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "native24pxReview": "Distinct primary silhouettes reviewed at actual24px. Living well, storage sack and craft sickle secondary detail limited; user recognition study not performed.",
+      "gameInstalled": false,
+      "noLettersNumbersBars": true,
+      "colorReview": "Blue info, green ok only; cursors green only valid-status check. General accents brick red/neutral ochre.",
+      "hotspot": null
+    }
+  },
+  {
+    "id": "ui/icon_build_category_sheet",
+    "file": "assets/ui/icon_build_category_sheet.png",
+    "width": 768,
+    "height": 128,
+    "role": "icon_build_category_sheet",
+    "cellSize": 128,
+    "cellOrder": [
+      "생활",
+      "길",
+      "생업",
+      "저장유통",
+      "공공신앙",
+      "방어"
+    ],
+    "generationRecords": [
+      {
+        "initial": {
+          "prompt": "Create transparent PNG artwork only for historical city-builder UI, 80% functional 20% medieval character. Use attached project's building art for PALETTE and brushwork only. Hand-painted clean pictogram icons, bold DARK INK BROWN outline, warm BONE/off-white and OAK brown fills, very low detail, no surrounding panels, no text labels, NO LETTERS, NO NUMBERS, no progress bars, no highlight or selection rectangles. No photographic texture. Maximum silhouette distinction when shrunk to 24px. All icons equally sized and centered within equal grid cells, generous empty spacing, no cell lines or background. exactly six icons in a 3-column 2-row regular grid, row-major: compact medieval timber house with a tiny well sidekick; broad curving dirt road; two wheat stalks and a sickle over tiny furrow base; large tied sack in front of simple storehouse silhouette; small full medieval chapel with belfry; three pointed wooden palisade posts. Muted brick red is sole general accent. Green and blue ONLY for status symbols. Transparent background with genuine alpha, no checkerboard painted. Front-facing pictogram style, no complex illustration. Do not reproduce houses from reference. Output landscape canvas for grids or very wide landscape for single row.",
+          "references": [
+            "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+          ],
+          "tool": "image_gen.imagegen",
+          "model": null,
+          "seed": null,
+          "raw": "sources/icons/icon_build_category_sheet-initial.png",
+          "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-cb0a65ec-8f8f-42ea-a4f7-8f96db27e89f.png"
+        },
+        "revision": {
+          "prompt": "Edit this exact six-icon sheet, preserve grid and all six subjects. Correct ONLY: remove the chimney from the top-left house roof, leaving continuous roof; replace every green grass/leaf tuft beside the road with muted warm ochre-brown dry tufts, NO green anywhere. Remove the little crates and barrel from storage icon bottom-left, keeping the large sack and simple warehouse. Keep the same brushwork, warm cream/oak/inkbrown plus dull brickred roofs. Transparent background, absolutely no text or numbers. No new subjects.",
+          "references": [
+            "sources/icons/icon_build_category_sheet-initial.png"
+          ],
+          "raw": "sources/icons/icon_build_category_sheet.png",
+          "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-72a66782-6398-4aa0-8146-dc3b060fba75.png",
+          "tool": "image_gen.imagegen",
+          "model": null,
+          "seed": null
+        }
+      }
+    ],
+    "processing": {
+      "method": "Equal-grid extraction; alpha >128 content bounds plus3px, discard alpha below32 and remap32..255, proportional Lanczos3 resize into84%cell then center, remove disconnected alpha specks smaller than0.5%largest component; no new pictogram drawing.",
+      "transforms": [
+        {
+          "cell": 0,
+          "sourceRect": [
+            50,
+            87,
+            425,
+            387
+          ],
+          "destination": [
+            10,
+            15,
+            108,
+            98
+          ]
+        },
+        {
+          "cell": 1,
+          "sourceRect": [
+            585,
+            74,
+            379,
+            406
+          ],
+          "destination": [
+            141,
+            10,
+            101,
+            108
+          ]
+        },
+        {
+          "cell": 2,
+          "sourceRect": [
+            1080,
+            78,
+            405,
+            390
+          ],
+          "destination": [
+            266,
+            12,
+            108,
+            104
+          ]
+        },
+        {
+          "cell": 3,
+          "sourceRect": [
+            33,
+            574,
+            441,
+            375
+          ],
+          "destination": [
+            394,
+            18,
+            108,
+            92
+          ]
+        },
+        {
+          "cell": 4,
+          "sourceRect": [
+            587,
+            522,
+            362,
+            432
+          ],
+          "destination": [
+            530,
+            10,
+            91,
+            108
+          ]
+        },
+        {
+          "cell": 5,
+          "sourceRect": [
+            1097,
+            583,
+            369,
+            367
+          ],
+          "destination": [
+            650,
+            10,
+            108,
+            107
+          ]
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "native24pxReview": "Distinct primary silhouettes reviewed at actual24px. Living well, storage sack and craft sickle secondary detail limited; user recognition study not performed.",
+      "gameInstalled": false,
+      "noLettersNumbersBars": true,
+      "colorReview": "Blue info, green ok only; cursors green only valid-status check. General accents brick red/neutral ochre.",
+      "hotspot": null
+    }
+  },
+  {
+    "id": "ui/icon_layer_mode_sheet",
+    "file": "assets/ui/icon_layer_mode_sheet.png",
+    "width": 384,
+    "height": 128,
+    "role": "icon_layer_mode_sheet",
+    "cellSize": 128,
+    "cellOrder": [
+      "직접",
+      "구역",
+      "방향"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create transparent PNG artwork only for historical city-builder UI, 80% functional 20% medieval character. Use attached project's building art for PALETTE and brushwork only. Hand-painted clean pictogram icons, bold DARK INK BROWN outline, warm BONE/off-white and OAK brown fills, very low detail, no surrounding panels, no text labels, NO LETTERS, NO NUMBERS, no progress bars, no highlight or selection rectangles. No photographic texture. Maximum silhouette distinction when shrunk to 24px. All icons equally sized and centered within equal grid cells, generous empty spacing, no cell lines or background. exactly three icons in one horizontal row: large human hand gripping a hammer; wide paintbrush over a brown small diamond patch of land; blank partly unrolled parchment with small brick-red wax seal. Muted brick red is sole general accent. Green and blue ONLY for status symbols. Transparent background with genuine alpha, no checkerboard painted. Front-facing pictogram style, no complex illustration. Do not reproduce houses from reference. Output landscape canvas for grids or very wide landscape for single row.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "raw": "sources/icons/icon_layer_mode_sheet.png",
+        "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-5f9b04c0-49fa-4414-a6a8-526b0ef0bcf4.png"
+      }
+    ],
+    "processing": {
+      "method": "Equal-grid extraction; alpha >128 content bounds plus3px, discard alpha below32 and remap32..255, proportional Lanczos3 resize into84%cell then center, remove disconnected alpha specks smaller than0.5%largest component; no new pictogram drawing.",
+      "transforms": [
+        {
+          "cell": 0,
+          "sourceRect": [
+            222,
+            100,
+            452,
+            520
+          ],
+          "destination": [
+            17,
+            10,
+            94,
+            108
+          ]
+        },
+        {
+          "cell": 1,
+          "sourceRect": [
+            840,
+            93,
+            490,
+            517
+          ],
+          "destination": [
+            141,
+            10,
+            102,
+            108
+          ]
+        },
+        {
+          "cell": 2,
+          "sourceRect": [
+            1506,
+            131,
+            404,
+            501
+          ],
+          "destination": [
+            276,
+            10,
+            87,
+            108
+          ]
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "native24pxReview": "Distinct primary silhouettes reviewed at actual24px. Living well, storage sack and craft sickle secondary detail limited; user recognition study not performed.",
+      "gameInstalled": false,
+      "noLettersNumbersBars": true,
+      "colorReview": "Blue info, green ok only; cursors green only valid-status check. General accents brick red/neutral ochre.",
+      "hotspot": null
+    }
+  },
+  {
+    "id": "ui/icon_status_sheet",
+    "file": "assets/ui/icon_status_sheet.png",
+    "width": 768,
+    "height": 96,
+    "role": "icon_status_sheet",
+    "cellSize": 96,
+    "cellOrder": [
+      "info",
+      "ok",
+      "warn",
+      "block",
+      "주의",
+      "즉시",
+      "잠김",
+      "새로움"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create transparent PNG artwork only for historical city-builder UI, 80% functional 20% medieval character. Use attached project's building art for PALETTE and brushwork only. Hand-painted clean pictogram icons, bold DARK INK BROWN outline, warm BONE/off-white and OAK brown fills, very low detail, no surrounding panels, no text labels, NO LETTERS, NO NUMBERS, no progress bars, no highlight or selection rectangles. No photographic texture. Maximum silhouette distinction when shrunk to 24px. All icons equally sized and centered within equal grid cells, generous empty spacing, no cell lines or background. exactly eight icons in a 4-column 2-row regular grid row-major: bluegrey round speechbubble with two cream dots (information, NO letter i); mossgreen circle with cream checkmark; ochre bell (warning); brickred octagon with pale diagonal cross; ochre hollow diamond with central solid dot (caution); brickred triangle with central solid dot (urgent); darkbrown chunky padlock with bone keyhole; cream-and-brickred four-point sparkle (new). Each icon unique silhouette. Muted brick red is sole general accent. Green and blue ONLY for status symbols. Transparent background with genuine alpha, no checkerboard painted. Front-facing pictogram style, no complex illustration. Do not reproduce houses from reference. Output landscape canvas for grids or very wide landscape for single row.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "raw": "sources/icons/icon_status_sheet.png",
+        "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-ca1bb494-1751-4984-ba1a-589f32020a1b.png"
+      }
+    ],
+    "processing": {
+      "method": "Equal-grid extraction; alpha >128 content bounds plus3px, discard alpha below32 and remap32..255, proportional Lanczos3 resize into84%cell then center, remove disconnected alpha specks smaller than0.5%largest component; no new pictogram drawing.",
+      "transforms": [
+        {
+          "cell": 0,
+          "sourceRect": [
+            99,
+            89,
+            324,
+            312
+          ],
+          "destination": [
+            7,
+            9,
+            81,
+            78
+          ]
+        },
+        {
+          "cell": 1,
+          "sourceRect": [
+            530,
+            89,
+            316,
+            316
+          ],
+          "destination": [
+            103,
+            7,
+            81,
+            81
+          ]
+        },
+        {
+          "cell": 2,
+          "sourceRect": [
+            948,
+            78,
+            296,
+            344
+          ],
+          "destination": [
+            205,
+            7,
+            70,
+            81
+          ]
+        },
+        {
+          "cell": 3,
+          "sourceRect": [
+            1379,
+            88,
+            317,
+            318
+          ],
+          "destination": [
+            295,
+            7,
+            81,
+            81
+          ]
+        },
+        {
+          "cell": 4,
+          "sourceRect": [
+            80,
+            473,
+            344,
+            347
+          ],
+          "destination": [
+            392,
+            7,
+            80,
+            81
+          ]
+        },
+        {
+          "cell": 5,
+          "sourceRect": [
+            491,
+            485,
+            366,
+            305
+          ],
+          "destination": [
+            487,
+            14,
+            81,
+            68
+          ]
+        },
+        {
+          "cell": 6,
+          "sourceRect": [
+            961,
+            473,
+            276,
+            332
+          ],
+          "destination": [
+            590,
+            7,
+            67,
+            81
+          ]
+        },
+        {
+          "cell": 7,
+          "sourceRect": [
+            1367,
+            477,
+            326,
+            335
+          ],
+          "destination": [
+            680,
+            7,
+            79,
+            81
+          ]
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "native24pxReview": "Distinct primary silhouettes reviewed at actual24px. Living well, storage sack and craft sickle secondary detail limited; user recognition study not performed.",
+      "gameInstalled": false,
+      "noLettersNumbersBars": true,
+      "colorReview": "Blue info, green ok only; cursors green only valid-status check. General accents brick red/neutral ochre.",
+      "hotspot": null
+    }
+  },
+  {
+    "id": "ui/cursor_sheet",
+    "file": "assets/ui/cursor_sheet.png",
+    "width": 256,
+    "height": 64,
+    "role": "cursor_sheet",
+    "cellSize": 64,
+    "cellOrder": [
+      "선택",
+      "배치 가능",
+      "배치 불가",
+      "길 긋기"
+    ],
+    "generationRecords": [
+      {
+        "initial": {
+          "prompt": "Create transparent PNG artwork only for historical city-builder UI, 80% functional 20% medieval character. Use attached project's building art for PALETTE and brushwork only. Hand-painted clean pictogram icons, bold DARK INK BROWN outline, warm BONE/off-white and OAK brown fills, very low detail, no surrounding panels, no text labels, NO LETTERS, NO NUMBERS, no progress bars, no highlight or selection rectangles. No photographic texture. Maximum silhouette distinction when shrunk to 24px. All icons equally sized and centered within equal grid cells, generous empty spacing, no cell lines or background. exactly four icons in a 2-column 2-row regular grid row-major: cream arrow pointer with ink outline; same arrow pointer with small mossgreen checkmark beside lower right; same arrow pointer with brickred crossed circle beside lower right; same arrow pointer with small curving brown road trail beside lower right. Arrow points up-left in all four.. Muted brick red is sole general accent. Green and blue ONLY for status symbols. Transparent background with genuine alpha, no checkerboard painted. Front-facing pictogram style, no complex illustration. Do not reproduce houses from reference. Output landscape canvas for grids or very wide landscape for single row.",
+          "references": [
+            "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+          ],
+          "tool": "image_gen.imagegen",
+          "model": null,
+          "seed": null,
+          "raw": "sources/icons/cursor_sheet-initial.png",
+          "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-23e318b6-8856-4c5c-9e6e-36f8538fb1eb.png"
+        },
+        "revision": {
+          "prompt": "Edit this exact four-cursor sprite sheet without changing positions or other artwork. In bottom-right road-drawing cursor ONLY recolor all green roadside grass tufts to muted warm dry ochre brown. Keep top-right checkmark moss green because it is a status signal. Keep all four arrows, red blocked symbol, same hand-painted style. True transparent background, no words, letters or numbers. No other modifications.",
+          "references": [
+            "sources/icons/cursor_sheet-initial.png"
+          ],
+          "raw": "sources/icons/cursor_sheet.png",
+          "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-bc7a91fa-0ba3-4f3c-ac14-c4befab23518.png",
+          "tool": "image_gen.imagegen",
+          "model": null,
+          "seed": null
+        }
+      }
+    ],
+    "processing": {
+      "method": "Equal-grid extraction; alpha >128 content bounds plus3px, discard alpha below32 and remap32..255, proportional Lanczos3 resize into84%cell then center, remove disconnected alpha specks smaller than0.5%largest component; no new pictogram drawing.",
+      "transforms": [
+        {
+          "cell": 0,
+          "sourceRect": [
+            264,
+            135,
+            283,
+            321
+          ],
+          "destination": [
+            8,
+            5,
+            48,
+            54
+          ]
+        },
+        {
+          "cell": 1,
+          "sourceRect": [
+            890,
+            137,
+            334,
+            354
+          ],
+          "destination": [
+            70,
+            5,
+            51,
+            54
+          ]
+        },
+        {
+          "cell": 2,
+          "sourceRect": [
+            251,
+            606,
+            358,
+            369
+          ],
+          "destination": [
+            134,
+            5,
+            52,
+            54
+          ]
+        },
+        {
+          "cell": 3,
+          "sourceRect": [
+            886,
+            606,
+            377,
+            371
+          ],
+          "destination": [
+            197,
+            5,
+            54,
+            53
+          ]
+        }
+      ]
+    },
+    "qa": {
+      "status": "candidate",
+      "native24pxReview": "Distinct primary silhouettes reviewed at actual24px. Living well, storage sack and craft sickle secondary detail limited; user recognition study not performed.",
+      "gameInstalled": false,
+      "noLettersNumbersBars": true,
+      "colorReview": "Blue info, green ok only; cursors green only valid-status check. General accents brick red/neutral ochre.",
+      "hotspot": "Not runtime integrated: arrow tips vary by cell; renderer must choose per-cell hotspot."
+    }
+  }
+]

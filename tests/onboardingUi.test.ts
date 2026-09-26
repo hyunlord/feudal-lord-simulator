@@ -123,7 +123,7 @@ test("world canvas exposes crosshair styling only while a placement tool is arme
   );
 
   // Then
-  assert.match(armedMarkup, /class="game-canvas game-canvas--placement-armed"/);
+  assert.match(armedMarkup, /class="game-canvas game-canvas--placement-armed game-canvas--place"/);
   assert.doesNotMatch(idleMarkup, /game-canvas--placement-armed/);
 });
 

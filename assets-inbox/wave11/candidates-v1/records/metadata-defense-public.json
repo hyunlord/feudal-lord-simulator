@@ -1,0 +1,1363 @@
+[
+  {
+    "id": "kit_public/stage_frame_church-v1",
+    "file": "assets/kit_public/stage_frame_church-v1.png",
+    "width": 233,
+    "height": 233,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      116.5,
+      200
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Edit this exact project church into its 55–85% construction stage as ONE transparent RGBA sprite. Preserve entire canvas framing, camera, footprint corners and ground contact positions of reference exactly. Southern England 1300–1450 hand-painted game sprite soft upper-left light. REMOVE all tile roof and roof timber. Nave walls half built, west square tower only half height, interior open sky. Add substantial OAK scaffold with horizontal working platforms and one unmistakable wooden TREADWHEEL CRANE: large vertical circular wheel inside simple timber supports and horizontal boom above nave. No people, no material heaps, no carts, no text, no ground slab, no castshadow. Keep restrained rough warm limestone, thin mortar joints. Stage must look unfinished, low openwalls and distinct crane silhouette at reduced size; NOT complete church with scaffolding pasted over. Reference canvas 233x233; maintain relative reference footprint unchanged.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/church-v2.png"
+        ],
+        "rawFile": "sources/defense-public/church-frame-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvasSize": [
+        233,
+        233
+      ],
+      "sourceContacts": [
+        [
+          10,
+          181
+        ],
+        [
+          52,
+          201
+        ],
+        [
+          221,
+          161
+        ]
+      ],
+      "targetContacts": [
+        [
+          8,
+          188
+        ],
+        [
+          51,
+          214
+        ],
+        [
+          225,
+          169
+        ]
+      ],
+      "affine": [
+        1.0276679841897234,
+        0.02766798418972332,
+        -0.008102766798418972,
+        1.241897233201581,
+        -0.8100790513834002,
+        -37.06007905138338
+      ],
+      "fringeRemoved": 2518,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_defense/stage_plot_gate-v1",
+    "file": "assets/kit_defense/stage_plot_gate-v1.png",
+    "width": 512,
+    "height": 384,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      256,
+      288
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Reference is low arched stone gate between two wall piers. REMOVE masonry. Only short survey stakes and taut strings marking the EXACT two pier base footprints and span, seated where original feet touch ground. Entire arch-span remains empty. A few shallow trench outlines, thin subtle soil trace only. Keep original 512x384 canvas proportions.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/stone_gate_v3_nwse-v1.png"
+        ],
+        "rawFile": "sources/defense-public/gate-plot-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Two outer ground endpoints; vertical axis preserved; middle point audited only. One raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "canvasSize": [
+        512,
+        384
+      ],
+      "sourceContacts": [
+        [
+          23,
+          159
+        ],
+        [
+          110,
+          197
+        ],
+        [
+          469,
+          324
+        ]
+      ],
+      "targetContacts": [
+        [
+          26,
+          161
+        ],
+        [
+          115,
+          202
+        ],
+        [
+          460,
+          333
+        ]
+      ],
+      "affine": [
+        0.9730941704035875,
+        0.01569506726457399,
+        0,
+        1,
+        3.6188340807174875,
+        1.63901345291481
+      ],
+      "fringeRemoved": 10297,
+      "contactResidualPx": [
+        0,
+        4.638,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_defense/stage_foundation_gate-v1",
+    "file": "assets/kit_defense/stage_foundation_gate-v1.png",
+    "width": 512,
+    "height": 384,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      256,
+      288
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Low stone footings 3 courses high at EXACT original left and right pier ground positions; outline arch opening remains bare empty. No tall walls or arch yet. Preserve original low gate footprint and 512x384 framing.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/stone_gate_v3_nwse-v1.png"
+        ],
+        "rawFile": "sources/defense-public/gate-foundation-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Two outer ground endpoints; vertical axis preserved; middle point audited only. One raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "canvasSize": [
+        512,
+        384
+      ],
+      "sourceContacts": [
+        [
+          31,
+          165
+        ],
+        [
+          116,
+          204
+        ],
+        [
+          463,
+          323
+        ]
+      ],
+      "targetContacts": [
+        [
+          26,
+          161
+        ],
+        [
+          115,
+          202
+        ],
+        [
+          460,
+          333
+        ]
+      ],
+      "affine": [
+        1.0046296296296295,
+        0.032407407407407406,
+        0,
+        1,
+        -5.1435185185185155,
+        -5.004629629629619
+      ],
+      "fringeRemoved": 116,
+      "contactResidualPx": [
+        0,
+        3.685,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_defense/stage_frame_gate-v1",
+    "file": "assets/kit_defense/stage_frame_gate-v1.png",
+    "width": 512,
+    "height": 384,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      256,
+      288
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Gate 55–85%: half-built left and right rubble-stone PIERS and incomplete arch stones supported on a massive oak semicircular arch CENTERING. Obvious radiating timber ribs, plank curve and vertical shores under opening. Original gate is LOW and has no tall round towers, preserve that low silhouette/footprint and 512x384 framing. Small wooden scaffold at piers only. No stone completearch.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/stone_gate_v3_nwse-v1.png"
+        ],
+        "rawFile": "sources/defense-public/gate-frame-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Two outer ground endpoints; vertical axis preserved; middle point audited only. One raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "canvasSize": [
+        512,
+        384
+      ],
+      "sourceContacts": [
+        [
+          33,
+          164
+        ],
+        [
+          118,
+          201
+        ],
+        [
+          451,
+          328
+        ]
+      ],
+      "targetContacts": [
+        [
+          26,
+          161
+        ],
+        [
+          115,
+          202
+        ],
+        [
+          460,
+          333
+        ]
+      ],
+      "affine": [
+        1.0382775119617225,
+        0.019138755980861243,
+        0,
+        1,
+        -8.263157894736842,
+        -3.6315789473684106
+      ],
+      "fringeRemoved": 719,
+      "contactResidualPx": [
+        0,
+        2.488,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_defense/stage_roof_gate-v1",
+    "file": "assets/kit_defense/stage_roof_gate-v1.png",
+    "width": 512,
+    "height": 384,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      256,
+      288
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Gate85–100%: completed broad rubble-stone arch and flanking low piers exactly on reference positions, with small exposed oak gatehouse rafter assembly along the arch top, NO finished roof tile. Timber arch centering mostly removed, one narrow temporary platform. Do NOT add tall towers. Original512x384framing.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/stone_gate_v3_nwse-v1.png"
+        ],
+        "rawFile": "sources/defense-public/gate-roof-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Two outer ground endpoints; vertical axis preserved; middle point audited only. One raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "canvasSize": [
+        512,
+        384
+      ],
+      "sourceContacts": [
+        [
+          26,
+          162
+        ],
+        [
+          119,
+          205
+        ],
+        [
+          460,
+          338
+        ]
+      ],
+      "targetContacts": [
+        [
+          26,
+          161
+        ],
+        [
+          115,
+          202
+        ],
+        [
+          460,
+          333
+        ]
+      ],
+      "affine": [
+        1,
+        -0.009216589861751152,
+        0,
+        1,
+        0,
+        -0.7603686635944769
+      ],
+      "fringeRemoved": 2546,
+      "contactResidualPx": [
+        0,
+        4.16,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_defense/stage_plot_tower-v1",
+    "file": "assets/kit_defense/stage_plot_tower-v1.png",
+    "width": 512,
+    "height": 384,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      256,
+      289
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Separate ROUND defensive tower construction plot, in same512x384 canvas as gate. Choose centered circular base ground ellipse bounds x160..352,y230..326. Short survey stakes and rope ellipse only. No masonry. Tower will rise from this SAME circle in later stages.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/stone_gate_v3_nwse-v1.png"
+        ],
+        "rawFile": "sources/defense-public/tower-plot-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "canvasSize": [
+        512,
+        384
+      ],
+      "sourceContacts": [
+        [
+          159,
+          249
+        ],
+        [
+          354,
+          249
+        ],
+        [
+          256,
+          288
+        ]
+      ],
+      "targetContacts": [
+        [
+          160,
+          289
+        ],
+        [
+          352,
+          289
+        ],
+        [
+          256,
+          326
+        ]
+      ],
+      "affine": [
+        0.9846153846153847,
+        0,
+        0.0126232741617357,
+        0.9487179487179487,
+        0.30295857988164476,
+        52.769230769230774
+      ],
+      "fringeRemoved": 143,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_defense/stage_foundation_tower-v1",
+    "file": "assets/kit_defense/stage_foundation_tower-v1.png",
+    "width": 512,
+    "height": 384,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      256,
+      289
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Separate ROUND defensive tower LOW circular stone ring foundation, three courses, hollow center. Same512x384canvas. Circular ground ellipse bounds x160..352,y230..326; do not enlarge. Original gate reference is only material/camera guidance. No wall extensions.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/stone_gate_v3_nwse-v1.png"
+        ],
+        "rawFile": "sources/defense-public/tower-foundation-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "canvasSize": [
+        512,
+        384
+      ],
+      "sourceContacts": [
+        [
+          164,
+          234
+        ],
+        [
+          349,
+          234
+        ],
+        [
+          256,
+          274
+        ]
+      ],
+      "targetContacts": [
+        [
+          160,
+          289
+        ],
+        [
+          352,
+          289
+        ],
+        [
+          256,
+          326
+        ]
+      ],
+      "affine": [
+        1.037837837837838,
+        0,
+        0.012972972972972972,
+        0.925,
+        -13.241081081081104,
+        72.54999999999998
+      ],
+      "fringeRemoved": 149,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_defense/stage_frame_tower-v1",
+    "file": "assets/kit_defense/stage_frame_tower-v1.png",
+    "width": 512,
+    "height": 384,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      256,
+      289
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Separate ROUND defensive tower HALF HEIGHT: cylindrical unfinished rubble wall with open ring top at y155, base ground ellipse x160..352,y230..326 on512x384canvas. Wooden exterior scaffold and platform. NO battlements, no roof, no wall extensions. Original gate is material/camera reference only.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/stone_gate_v3_nwse-v1.png"
+        ],
+        "rawFile": "sources/defense-public/tower-frame-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "canvasSize": [
+        512,
+        384
+      ],
+      "sourceContacts": [
+        [
+          135,
+          253
+        ],
+        [
+          293,
+          253
+        ],
+        [
+          214,
+          282
+        ]
+      ],
+      "targetContacts": [
+        [
+          160,
+          289
+        ],
+        [
+          352,
+          289
+        ],
+        [
+          256,
+          326
+        ]
+      ],
+      "affine": [
+        1.2151898734177216,
+        0,
+        0,
+        1.2758620689655173,
+        -4.050632911392398,
+        -33.79310344827587
+      ],
+      "fringeRemoved": 393,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_defense/stage_roof_tower-v1",
+    "file": "assets/kit_defense/stage_roof_tower-v1.png",
+    "width": 512,
+    "height": 384,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      256,
+      289
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Separate ROUND defensive tower NEAR COMPLETION before battlements: full cylindrical rubble wall, open flat top with plain uncrenellated parapet work course at y72, oak interior floor joists and scaffolding. BASEellipse x160..352,y230..326 on512x384canvas. No battlements, no conicalroof, no wall extensions.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/stone_gate_v3_nwse-v1.png"
+        ],
+        "rawFile": "sources/defense-public/tower-roof-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "canvasSize": [
+        512,
+        384
+      ],
+      "sourceContacts": [
+        [
+          158,
+          280
+        ],
+        [
+          362,
+          280
+        ],
+        [
+          259,
+          313
+        ]
+      ],
+      "targetContacts": [
+        [
+          160,
+          289
+        ],
+        [
+          352,
+          289
+        ],
+        [
+          256,
+          326
+        ]
+      ],
+      "affine": [
+        0.9411764705882353,
+        0,
+        0.0285204991087344,
+        1.121212121212121,
+        3.3083778966131794,
+        -24.93939393939388
+      ],
+      "fringeRemoved": 241,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_public/stage_plot_church-v1",
+    "file": "assets/kit_public/stage_plot_church-v1.png",
+    "width": 233,
+    "height": 233,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      116.5,
+      200
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Churchstage0–25%. REMOVE whole building and crane: only thin survey strings and short stakes tracing exact long nave outline, west square tower footprint and narrower east chancel of this reference church at their ORIGINAL ground coordinates. Sparse shallow trench edges. Canvas233square originalframing; nozoom.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/church-v2.png"
+        ],
+        "rawFile": "sources/defense-public/church-plot-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvasSize": [
+        233,
+        233
+      ],
+      "sourceContacts": [
+        [
+          13,
+          155
+        ],
+        [
+          50,
+          181
+        ],
+        [
+          220,
+          115
+        ]
+      ],
+      "targetContacts": [
+        [
+          8,
+          188
+        ],
+        [
+          51,
+          214
+        ],
+        [
+          225,
+          169
+        ]
+      ],
+      "affine": [
+        1.0728650539201399,
+        0.07956863888079277,
+        0.127076654036724,
+        0.8867677062081026,
+        -25.644127076654037,
+        49.51661323229379
+      ],
+      "fringeRemoved": 10856,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_public/stage_foundation_church-v1",
+    "file": "assets/kit_public/stage_foundation_church-v1.png",
+    "width": 233,
+    "height": 233,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      116.5,
+      200
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Churchstage25–55%: low rubble foundation 3courses following exact reference long nave, west square tower, narrow east chancel. A few first wall courses at tower but underkneehigh; no complete walls, roof, windows or crane. Canvas233square originalframing; nozoom.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/church-v2.png"
+        ],
+        "rawFile": "sources/defense-public/church-foundation-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvasSize": [
+        233,
+        233
+      ],
+      "sourceContacts": [
+        [
+          10,
+          174
+        ],
+        [
+          47,
+          198
+        ],
+        [
+          226,
+          136
+        ]
+      ],
+      "targetContacts": [
+        [
+          8,
+          188
+        ],
+        [
+          51,
+          214
+        ],
+        [
+          225,
+          169
+        ]
+      ],
+      "affine": [
+        1.0382397572078907,
+        0.08072837632776934,
+        0.19104704097116842,
+        0.958877086494689,
+        -35.62458270106222,
+        20.348103186646426
+      ],
+      "fringeRemoved": 296,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_public/stage_roof_church-v1",
+    "file": "assets/kit_public/stage_roof_church-v1.png",
+    "width": 233,
+    "height": 233,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      116.5,
+      200
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Churchstage85–100%: nave stone walls complete and westsquaretower nearfullheight, but tiled roofs COMPLETELY REPLACED by exposed substantial oak trusses and rafters over nave and chancel. Clear repeated triangularribs open to sky. Wooden scaffolds. A modest treadwheelcrane at tower side ifroom, but do not coverroof skeleton. Maintain exactreferencegroundfootprint and233squareframing.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/church-v2.png"
+        ],
+        "rawFile": "sources/defense-public/church-roof-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvasSize": [
+        233,
+        233
+      ],
+      "sourceContacts": [
+        [
+          8,
+          188
+        ],
+        [
+          53,
+          214
+        ],
+        [
+          227,
+          171
+        ]
+      ],
+      "targetContacts": [
+        [
+          8,
+          188
+        ],
+        [
+          51,
+          214
+        ],
+        [
+          225,
+          169
+        ]
+      ],
+      "affine": [
+        0.9866852453940238,
+        -0.008050781854776281,
+        -0.0538783093358105,
+        1.013934045517882,
+        10.235640191980183,
+        -2.555194302523603
+      ],
+      "fringeRemoved": 2023,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_public/stage_plot_keep-v1",
+    "file": "assets/kit_public/stage_plot_keep-v1.png",
+    "width": 266,
+    "height": 266,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      133,
+      238
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Square tower KEEP survey plot: removeallstone/timber building and retain onlyshort survey stakes/string markingexact square tower base and small entranceforebuildingfootprint. Thin trenchtraceonly. Same266squarecanvas andgroundposition asreference;nozoom.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/keep-v2.png"
+        ],
+        "rawFile": "sources/defense-public/keep-plot-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvasSize": [
+        266,
+        266
+      ],
+      "sourceContacts": [
+        [
+          60,
+          171
+        ],
+        [
+          142,
+          219
+        ],
+        [
+          217,
+          177
+        ]
+      ],
+      "targetContacts": [
+        [
+          48,
+          202
+        ],
+        [
+          136,
+          248
+        ],
+        [
+          225,
+          203
+        ]
+      ],
+      "affine": [
+        1.131175468483816,
+        -0.03236797274275979,
+        -0.09909142532651902,
+        1.0136286201022147,
+        -2.925894378194201,
+        30.611584327086888
+      ],
+      "fringeRemoved": 10757,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "forebuildingRegistration": "Only projected forebuilding survey-stake zone below y246 compressed vertically0.65 to stay on same266canvas; main square footprint anchors retained, approximately1–3px tracing uncertainty.",
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_public/stage_foundation_keep-v1",
+    "file": "assets/kit_public/stage_foundation_keep-v1.png",
+    "width": 266,
+    "height": 266,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      133,
+      238
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Square tower KEEP foundation: thick lowroughstone square ring 3courses, emptyinterior and beginning stairentrancefoundation. Exactbasefootprint/groundcontacts asreference. No tallwalls, no roof, no battlements. Same266squarecanvas;nozoom.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/keep-v2.png"
+        ],
+        "rawFile": "sources/defense-public/keep-foundation-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvasSize": [
+        266,
+        266
+      ],
+      "sourceContacts": [
+        [
+          50,
+          190
+        ],
+        [
+          141,
+          240
+        ],
+        [
+          216,
+          194
+        ]
+      ],
+      "targetContacts": [
+        [
+          48,
+          202
+        ],
+        [
+          136,
+          248
+        ],
+        [
+          225,
+          203
+        ]
+      ],
+      "affine": [
+        1.0708165322580645,
+        -0.01688508064516129,
+        -0.1888860887096774,
+        0.9507308467741935,
+        30.34753024193548,
+        22.20539314516131
+      ],
+      "fringeRemoved": 469,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_public/stage_frame_keep-v1",
+    "file": "assets/kit_public/stage_frame_keep-v1.png",
+    "width": 266,
+    "height": 266,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      133,
+      238
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Square tower KEEP half-built: thick square rubble walls halfreferenceheight, exposed brokenworkcourse openinterior. Heavywoodenscaffolding andinclinedplankramp. No battlements, no roof, no completedentranceporch. Same266squarecanvas andexactgroundfootprint.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/keep-v2.png"
+        ],
+        "rawFile": "sources/defense-public/keep-frame-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvasSize": [
+        266,
+        266
+      ],
+      "sourceContacts": [
+        [
+          59,
+          202
+        ],
+        [
+          146,
+          245
+        ],
+        [
+          220,
+          205
+        ]
+      ],
+      "targetContacts": [
+        [
+          48,
+          202
+        ],
+        [
+          136,
+          248
+        ],
+        [
+          225,
+          203
+        ]
+      ],
+      "affine": [
+        1.102821975382768,
+        -0.014259981987391174,
+        -0.1847793455418793,
+        1.0986190333233263,
+        20.258931251876305,
+        -19.079705794055855
+      ],
+      "fringeRemoved": 765,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  },
+  {
+    "id": "kit_public/stage_roof_keep-v1",
+    "file": "assets/kit_public/stage_roof_keep-v1.png",
+    "width": 266,
+    "height": 266,
+    "role": "object",
+    "pivot": [
+      0,
+      0
+    ],
+    "pivotConvention": "reference-canvas top-left; reuse reference runtime pivot when integrating; attached PNGs contain no authored pivot metadata",
+    "suggestedGroundAnchor": [
+      133,
+      238
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA construction-stage game sprite by editing the reference. Keep fixed 2:1 isometric camera, southwest-facing structure, warm hand-painted Southern England 1300–1450 style, soft upper-left light. No people, no loose material heaps, no carts, no text, no labels, no ground platform, no long shadow. Ground footprint must stay at SAME original reference coordinates; preserve blank canvas and framing; do not zoom to fit low stages. Square tower KEEP nearcompletion beforebattlements: fullheightroughstone square walls atreferencebaseposition, plain openuncrenellated topedge withheavy horizontalfloorjoists; no finishedbattlements. Wooden scaffold andunfinishedfrontentranceoakroofrafters, no tiles. Same266squarecanvas exactgroundfootprint.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/keep-v2.png"
+        ],
+        "rawFile": "sources/defense-public/keep-roof-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Three noncollinear ground contacts affine-registered; one raw resize. Red low-alpha contamination cleared.",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "canvasSize": [
+        266,
+        266
+      ],
+      "sourceContacts": [
+        [
+          54,
+          200
+        ],
+        [
+          137,
+          243
+        ],
+        [
+          222,
+          201
+        ]
+      ],
+      "targetContacts": [
+        [
+          48,
+          202
+        ],
+        [
+          136,
+          248
+        ],
+        [
+          225,
+          203
+        ]
+      ],
+      "affine": [
+        1.0534939084161883,
+        -0.0004201092283993838,
+        0.0130233860803809,
+        1.0705783503710964,
+        -11.493348270550346,
+        -12.092984175885704
+      ],
+      "fringeRemoved": 602,
+      "contactResidualPx": [
+        0,
+        0,
+        0
+      ],
+      "alphaCleanup": "Alpha below6 cleared after resampling to remove isolated near-transparent edge pixels."
+    },
+    "qa": {
+      "status": "candidate",
+      "registration": "manual ground anchors; approximately 1–3px tracing uncertainty",
+      "noPeople": true,
+      "noMaterialHeaps": true
+    }
+  }
+]

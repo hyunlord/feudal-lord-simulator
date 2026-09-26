@@ -1,0 +1,146 @@
+{
+  "generationCalls": 12,
+  "selectedCandidates": 6,
+  "model": "not exposed",
+  "seed": "not provided",
+  "referenceZip": {
+    "path": "/Users/rexxa/Downloads/astra-wave2-reference-files.zip",
+    "sha256": "06265d76346dc4618f1a3ae9cb10dafbb421395268da97f1ec7c63138d3a24dd"
+  },
+  "references": [
+    {
+      "filename": "house_l1-v2.png",
+      "sha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac"
+    },
+    {
+      "filename": "house_l2-v2.png",
+      "sha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e"
+    },
+    {
+      "filename": "house_l3-v2.png",
+      "sha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc"
+    },
+    {
+      "filename": "market_active-v2.png",
+      "sha256": "c1dda89871ac0270737e607a2bd487a6532088695259444ff32395141a6bc0ef"
+    },
+    {
+      "filename": "pasture.png",
+      "sha256": "78ecfa7f5ba6a41933ac17e31d34d4750522ef26fc2352a9ffdec29e82e01bd9"
+    },
+    {
+      "filename": "well.png",
+      "sha256": "8cfeda1db0dcbee81282db95013b411a1456c0eb572361ada361570470a0ad70"
+    },
+    {
+      "filename": "wheat_farm_ripe-v4.png",
+      "sha256": "0c954dd543045d5b3717a592aa9eeacd99a86d1b67d87ece40b8c1f5f27d14f2"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "house_l2_brewer-pilot",
+      "attempt": 1,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-a215b2f4-2ee7-47f6-a0ce-60d852399a4d.png",
+      "sha256": "29c3f5e0d74e598ef920d5be689ad522522321e04e8ad77ab7158fd1b613e4f7",
+      "generatedAt": "2026-09-24T12:43:12.992Z"
+    },
+    {
+      "id": "house_l2_weaver-pilot",
+      "attempt": 1,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-1710b675-50d1-482c-9631-da2559054d0b.png",
+      "sha256": "14393c71e80be6bff52ab9bc9d87b07c52c4457c7f0f8e3dbe2d7275b32bd173",
+      "generatedAt": "2026-09-24T12:39:45.936Z"
+    },
+    {
+      "id": "house_l2_garden-pilot",
+      "attempt": 1,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-48bbb8d5-96d1-4fc9-a720-32a9e00aa17d.png",
+      "sha256": "5bfc70dc98b7188a27f9a44807b05a04eb7ce02d711c1fdee507e25bcf463fba",
+      "generatedAt": "2026-09-24T12:40:34.503Z"
+    },
+    {
+      "id": "wheat_farm_pastoral_ripe-pilot",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-658ae0df-2f4b-4cd7-9f79-1345fd4acaf6.png",
+      "sha256": "d719dcfe74b0277c28b09d3700efbaa8a51423aebdf438f3030af5a9e7c30d3a",
+      "generatedAt": "2026-09-24T12:41:11.853Z"
+    },
+    {
+      "id": "well_b-pilot",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-25644473-18c9-4bd9-abea-42a48fea38b4.png",
+      "sha256": "f2d193856c35606390d4c38c61cd6ceda95237ee10798bdc1bedb62cdb68d082",
+      "generatedAt": "2026-09-24T12:42:35.866Z"
+    },
+    {
+      "id": "market_active_b-pilot",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-2fadeef8-199b-4feb-b246-1c881bbee5a5.png",
+      "sha256": "4922092f57394f51b53cbb926e29665b2af032dd213048dde3ad1f35b9b16a2b",
+      "generatedAt": "2026-09-24T12:41:56.221Z"
+    },
+    {
+      "id": "house_l2_brewer-pilot",
+      "attempt": 2,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-244341cc-4096-4ad5-9a25-57b9a12cd244.png",
+      "sha256": "7bf5a163dd473c7b21d3850d9b55a9f731c24273df72d4eebeafd037b153b41e",
+      "generatedAt": "2026-09-24T12:46:08.110Z"
+    },
+    {
+      "id": "house_l2_weaver-pilot",
+      "attempt": 2,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-99a35b53-e7f1-4c96-8fcd-b4003570f975.png",
+      "sha256": "a276849e2f680814d51d211d1a7595a5f2fb6c25524314df20d44e449b6460a7",
+      "generatedAt": "2026-09-24T12:45:10.744Z"
+    },
+    {
+      "id": "house_l2_garden-pilot",
+      "attempt": 2,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-778d28a6-1af8-4447-b966-60d03f0b1cff.png",
+      "sha256": "0e5e1a55541d69dadf27fbfbb9bb14e4a8ed2b73a8de9122b8408b81fea77748",
+      "generatedAt": "2026-09-24T12:46:53.306Z"
+    },
+    {
+      "id": "house_l2_brewer-pilot",
+      "attempt": 3,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-909f5d73-3bb5-4725-8343-2ababdeb89e3.png",
+      "sha256": "3aa2fd1f82bad8e57b08fd0957544444e985f0dc15ce9e878f3fa12018edd3e3",
+      "generatedAt": "2026-09-24T12:50:49.054Z"
+    },
+    {
+      "id": "house_l2_garden-pilot",
+      "attempt": 3,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-2cb4d397-7b20-454e-949a-0a4eff6f3dad.png",
+      "sha256": "cac9a571a71e690c3056154ed982ad7bd4d5ef8ff6ddfc8b2053fbd5a3796cd9",
+      "generatedAt": "2026-09-24T12:50:07.686Z"
+    },
+    {
+      "id": "house_l2_garden-pilot",
+      "attempt": 4,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-7d090d0c-7a43-49aa-a530-4dd07d032252.png",
+      "sha256": "ac857cfa7637e1ceaf91edefaf0ed917996435b3f2df8ff24f926d86ddfb2e44",
+      "generatedAt": "2026-09-24T13:01:30.608Z"
+    }
+  ],
+  "csv": {
+    "columns": 20,
+    "rows": 8,
+    "priorHeaderMatch": true,
+    "fullTextRoundtrip": true
+  },
+  "noGameInstallation": true,
+  "rawSourcesPackaged": false
+}

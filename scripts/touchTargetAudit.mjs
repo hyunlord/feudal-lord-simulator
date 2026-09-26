@@ -52,8 +52,12 @@ function measure({ minTarget, minText }) {
   };
 }
 
+// The tutorial off (UX-1: a fresh profile starts it and locks the zone layer), so every state below is reachable.
+const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
+
 async function open(browser, state, dismiss) {
   const context = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, deviceScaleFactor: 1 });
+  await context.addInitScript(TUTORIAL_OFF);
   const page = await context.newPage();
   await page.routeWebSocket('**', socket => socket.close());
   if (state !== null) {
@@ -95,7 +99,7 @@ async function main() {
 
   const { context, page } = await open(browser, city, true);
   await record('hud', page);
-  await clickIfPresent(page, '.build-menu-category'); await record('build-menu', page, 'first category open');
+  await clickIfPresent(page, '.build-menu-category[data-category]'); await record('build-menu', page, 'first category open');
   const zoneCategory = page.locator('.build-menu-category', { hasText: '구역' });
   if (await zoneCategory.count()) { await zoneCategory.click(); await page.waitForTimeout(300); await clickIfPresent(page, '.zone-tool'); }
   await record('zone-brush', page, 'zone card armed');
@@ -104,8 +108,10 @@ async function main() {
   await clickIfPresent(page, '.resource-bar__coin');
   await clickIfPresent(page, '.resource-bar__population'); await record('population', page, 'population drawer open');
   await clickIfPresent(page, '.resource-bar__population');
+  // UX-1 moved the settlement panel into the goal drawer: open the drawer so its disclosure can be measured.
+  await clickIfPresent(page, '.goal-drawer-toggle');
   for (const [name, selector] of [['resource-detail', '.resource-bar__more > summary'], ['settlement', '.right-info-rail details > summary'],
-    ['map', '.map-recess summary'], ['view', '.ledger-stack > summary'], ['settings', '.settings-disclosure > summary']]) {
+    ['map', '.ledger-recess .command-disclosure:not(.ledger-stack) > summary'], ['view', '.ledger-stack > summary'], ['settings', '.settings-disclosure > summary']]) {
     if (await clickIfPresent(page, selector)) { await record(name, page); await clickIfPresent(page, selector); }
   }
   await context.close();
@@ -115,6 +121,7 @@ async function main() {
     const tile = [house.tx, house.ty];
     const camera = { zoom: 1, panX: WIDTH / 2 - (tile[0] - tile[1]) * 32, panY: HEIGHT / 2 - (tile[0] + tile[1]) * 16 };
     const card = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, deviceScaleFactor: 1 });
+    await card.addInitScript(TUTORIAL_OFF);
     const cardPage = await card.newPage();
     await cardPage.routeWebSocket('**', socket => socket.close());
     const source = JSON.stringify(city);

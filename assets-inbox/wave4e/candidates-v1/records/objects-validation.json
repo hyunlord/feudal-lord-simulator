@@ -1,0 +1,122 @@
+[
+  {
+    "id": "fence/hurdle_quarter-v1",
+    "size": [
+      32,
+      64
+    ],
+    "expected": [
+      32,
+      64
+    ],
+    "opaque": 654,
+    "transparent": 1394,
+    "maskAlphaDifferentPixels": 0,
+    "passed": true
+  },
+  {
+    "id": "animal/sheep_flock_b-v1",
+    "size": [
+      128,
+      96
+    ],
+    "expected": [
+      128,
+      96
+    ],
+    "opaque": 3398,
+    "transparent": 8890,
+    "maskAlphaDifferentPixels": null,
+    "passed": true
+  },
+  {
+    "id": "farmstead_winter-v1",
+    "size": [
+      160,
+      136
+    ],
+    "expected": [
+      160,
+      136
+    ],
+    "opaque": 9682,
+    "transparent": 12078,
+    "maskAlphaDifferentPixels": null,
+    "passed": true
+  },
+  {
+    "id": "fence/hurdle_three_quarter-v1",
+    "size": [
+      96,
+      64
+    ],
+    "expected": [
+      96,
+      64
+    ],
+    "opaque": 1358,
+    "transparent": 4786,
+    "maskAlphaDifferentPixels": 0,
+    "passed": true
+  },
+  {
+    "id": "fence/hurdle_gate_short-v1",
+    "size": [
+      64,
+      64
+    ],
+    "expected": [
+      64,
+      64
+    ],
+    "opaque": 1024,
+    "transparent": 3072,
+    "maskAlphaDifferentPixels": 0,
+    "passed": true
+  },
+  {
+    "id": "animal/sheep_flock_c-v1",
+    "size": [
+      128,
+      96
+    ],
+    "expected": [
+      128,
+      96
+    ],
+    "opaque": 2675,
+    "transparent": 9613,
+    "maskAlphaDifferentPixels": null,
+    "passed": true
+  },
+  {
+    "id": "animal/sheep_flock_d-v1",
+    "size": [
+      128,
+      96
+    ],
+    "expected": [
+      128,
+      96
+    ],
+    "opaque": 1853,
+    "transparent": 10435,
+    "maskAlphaDifferentPixels": null,
+    "passed": true
+  },
+  {
+    "id": "animal/pig_pair-v1",
+    "size": [
+      128,
+      96
+    ],
+    "expected": [
+      128,
+      96
+    ],
+    "opaque": 3314,
+    "transparent": 8974,
+    "maskAlphaDifferentPixels": null,
+    "passed": true
+  }
+]

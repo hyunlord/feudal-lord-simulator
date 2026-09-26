@@ -24,15 +24,20 @@ import { INPUT_HINT_COPY, ZONE_BRUSH_HINT_COPY } from "./inputHintCopy.ko";
 import { BUILD_CARD_PURPOSE, BUILD_MENU_COPY } from "./buildMenuCopy.ko";
 import { TUTORIAL_COPY } from "./tutorial/tutorialCopy.ko";
 import { tutorialAccess, type ControlLayer, type TutorialAccess } from "./tutorial/tutorialModel";
+import { UiIcon } from "./UiIcon";
+import type { UiIconCell } from "./uiArt";
 
-/** Zone cards (C1b): plots, arable, pasture, orchard and the eraser, in the zone layer (UX-1). */
-const ZONE_CARDS: readonly { readonly target: ZoneBrushTarget; readonly label: string; readonly hint: string; readonly glyph: string; readonly thumbnail: string | null }[] = [
-  { target: "burgage", label: ZONE_KIND_LABELS.burgage, hint: ZONE_BRUSH_COPY.cardHint.burgage, glyph: "⌂", thumbnail: null },
-  { target: "arable", label: ZONE_KIND_LABELS.arable, hint: ZONE_BRUSH_COPY.cardHint.arable, glyph: "≡", thumbnail: null },
-  { target: "pasture", label: ZONE_KIND_LABELS.pasture, hint: ZONE_BRUSH_COPY.cardHint.pasture, glyph: "", thumbnail: "/assets/zones/pasture_a-v1.png" },
-  { target: "orchard", label: ZONE_KIND_LABELS.orchard, hint: ZONE_BRUSH_COPY.cardHint.orchard, glyph: "", thumbnail: "/assets/zones/orchard_floor_a-v1.png" },
-  { target: "erase", label: ZONE_BRUSH_COPY.eraser, hint: ZONE_BRUSH_COPY.eraserHint, glyph: "⌫", thumbnail: null },
+/** Zone cards (C1b): plots, arable, pasture, orchard and the eraser, in the zone layer (UX-1); UX-2 painted icons. */
+type ZoneCardIcon = { readonly sheet: "building"; readonly cell: UiIconCell<"building"> } | { readonly sheet: "prediction"; readonly cell: UiIconCell<"prediction"> };
+const ZONE_CARDS: readonly { readonly target: ZoneBrushTarget; readonly label: string; readonly hint: string; readonly icon: ZoneCardIcon | null; readonly thumbnail: string | null }[] = [
+  { target: "burgage", label: ZONE_KIND_LABELS.burgage, hint: ZONE_BRUSH_COPY.cardHint.burgage, icon: { sheet: "building", cell: "burgage" }, thumbnail: null },
+  { target: "arable", label: ZONE_KIND_LABELS.arable, hint: ZONE_BRUSH_COPY.cardHint.arable, icon: { sheet: "building", cell: "field" }, thumbnail: null },
+  { target: "pasture", label: ZONE_KIND_LABELS.pasture, hint: ZONE_BRUSH_COPY.cardHint.pasture, icon: null, thumbnail: "/assets/zones/pasture_a-v1.png" },
+  { target: "orchard", label: ZONE_KIND_LABELS.orchard, hint: ZONE_BRUSH_COPY.cardHint.orchard, icon: null, thumbnail: "/assets/zones/orchard_floor_a-v1.png" },
+  { target: "erase", label: ZONE_BRUSH_COPY.eraser, hint: ZONE_BRUSH_COPY.eraserHint, icon: { sheet: "prediction", cell: "block" }, thumbnail: null },
 ];
+/** UX-2: tools without a building thumbnail show their first-session icon (the road). */
+const TOOL_ICON: Partial<Record<PlacementTool, UiIconCell<"building">>> = { road: "road", farmstead: "barn" };
 /** UX-1: the arable brush also sits in the trade (생업) category of the direct layer, the script's first field. */
 const ARABLE_CARD = { ...ZONE_CARDS[1]!, hint: BUILD_MENU_COPY.arableCardHint };
 
@@ -118,11 +123,12 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           onZoneToolChange?.({ target: card.target, radius: zoneTool?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: zoneTool?.polygon ?? false }); setCatalogOpen(false);
         }}>
         <span className="build-tool-art" aria-hidden="true">
-          {card.thumbnail === null ? <span className="zone-tool-glyph">{card.glyph}</span> : <img src={card.thumbnail} width="80" height="40" alt="" draggable={false} />}
+          {card.thumbnail !== null ? <img src={card.thumbnail} width="80" height="40" alt="" draggable={false} />
+            : card.icon === null ? null : card.icon.sheet === "building" ? <UiIcon sheet="building" cell={card.icon.cell} size={48} /> : <UiIcon sheet="prediction" cell={card.icon.cell} size={48} />}
         </span>
         <span className="build-seal-label" aria-hidden="true">{card.label}</span>
         <span className="build-tool-cost">{card.hint}</span>
-        {open ? null : <span className="build-tool-lock"><span aria-hidden="true">🔒</span> {TUTORIAL_COPY.locked}</span>}
+        {open ? null : <span className="build-tool-lock"><UiIcon sheet="lock" cell="locked" /> {TUTORIAL_COPY.locked}</span>}
       </button>
     );
   };
@@ -146,12 +152,13 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         onClick={() => { if (toolAffordable) { onSelect(option.tool); setCatalogOpen(false); setPreview(null); setPinned(null); setLockNote(null); } else if (locked) { setLockNote(`${option.label} · ${lockText}`); setPinned(null); } else setPinned(option.tool); }}>
         <span id={`${id}-tool-${option.tool}`} className="visually-hidden">{buildToolTooltipLines(option.tool, menuState).join(". ")}</span>
         <span className="build-tool-art" aria-hidden="true">
-          {thumbnail === null ? <BuildGlyph tool={option.tool} /> : <img src={thumbnail} width="80" height="64" alt="" draggable={false} />}
+          {thumbnail !== null ? <img src={thumbnail} width="80" height="64" alt="" draggable={false} />
+            : TOOL_ICON[option.tool] !== undefined ? <UiIcon sheet="building" cell={TOOL_ICON[option.tool]!} size={48} /> : <BuildGlyph tool={option.tool} />}
         </span>
         <span className="build-seal-label" aria-hidden="true">{option.label}</span>
         <span className="build-tool-purpose">{BUILD_CARD_PURPOSE[option.tool]}</span>
         <span className="build-tool-cost">{buildCostLabel(option)}</span>
-        {locked ? <span className="build-tool-lock"><span aria-hidden="true">🔒</span> {eraLock ?? TUTORIAL_COPY.locked}</span>
+        {locked ? <span className="build-tool-lock"><UiIcon sheet="lock" cell="locked" /> {eraLock ?? TUTORIAL_COPY.locked}</span>
           : !affordability.affordable && <span className="build-tool-shortfall">{shortfallText(option, affordability.spendable)}</span>}
       </button>
     );
@@ -173,7 +180,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
               if (item === "zone") { onLayerChange?.("zone"); setCatalogOpen(!(catalogOpen && layer === "zone")); return; }
               onLayerChange?.(item); if (item === "direct") onZoneToolChange?.(null);
             }}>
-            {TUTORIAL_COPY.layers[item]}{open ? null : <span className="control-layer-lock" aria-hidden="true">🔒</span>}
+            <UiIcon sheet="layer" cell={item} />{TUTORIAL_COPY.layers[item]}{open ? null : <UiIcon sheet="lock" cell="locked" className="control-layer-lock" />}
           </button>;
         })}
       </div>
@@ -189,7 +196,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
               setLockNote(null);
               onSelect(buildCategorySelection(item.key)); setDetailsOpen(false); setCatalogOpen(!catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); setPinned(null);
             }}>
-            {item.label}{open ? null : <span className="build-menu-category-lock" aria-hidden="true">🔒</span>}
+            <UiIcon sheet="category" cell={item.key} />{item.label}{open ? null : <UiIcon sheet="lock" cell="locked" className="build-menu-category-lock" />}
             {options.some((option) => buildCategory(option.tool) === item.key && highlightedTools.includes(option.tool)) && <span className="build-menu-task" aria-label="현재 과업">·</span>}
           </button>
           );
@@ -199,7 +206,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
       <div className="build-menu-body" hidden={!catalogOpen}>
         <div className="build-menu-quick-road" role="group" aria-label={KO_UI.roadTool}>{toolButton(ROAD_TOOL_OPTION)}</div>
         <div className="build-menu-catalog">
-          {lockNote !== null ? <p className="build-menu-pinned build-menu-lock-note" role="status">🔒 {lockNote}</p>
+          {lockNote !== null ? <p className="build-menu-pinned build-menu-lock-note" role="status"><UiIcon sheet="lock" cell="locked" /> {lockNote}</p>
             : pinned === null ? null : <p className="build-menu-pinned" role="status">{buildToolTooltipLines(pinned, menuState).join(" · ")}</p>}
           {layer === "zone" && onZoneToolChange !== undefined ? <section id={`${id}-zone`} aria-label={`${TUTORIAL_COPY.layers.zone} 도구`} className="build-menu-tools">
             {ZONE_CARDS.map(card => zoneCard(card, access.zoneTargets(card.target)))}
@@ -212,7 +219,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
                 <button type="button" className={`build-seal build-tool${palisadeDrawing ? ' build-tool--selected' : ''}`}
                   aria-label={WALL_COPY.drawTool} aria-pressed={palisadeDrawing} aria-disabled={!palisadeReady}
                   onClick={() => { if (palisadeReady) { onStartPalisadeDrawing(); setCatalogOpen(false); } }}>
-                  <span className="build-tool-art" aria-hidden="true">⌁</span>
+                  <span className="build-tool-art" aria-hidden="true"><UiIcon sheet="building" cell="palisade" size={48} /></span>
                   <span className="build-seal-label" aria-hidden="true">{WALL_COPY.drawTool}</span>
                   <span className="build-tool-cost">{WALL_COPY.drawCost}</span>
                   {!palisadeReady ? <span className="build-tool-shortfall">{palisadeReason}</span> : null}
@@ -242,7 +249,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           {radius !== undefined && radius > 0 && <span>반경 {radius}칸</span>}
           {service && <span>수용 {service.capacity}필지</span>}
         </>}
-        <button type="button" className="build-info-toggle" aria-label="선택 도구 상세 안내" aria-expanded={detailsOpen} aria-controls={`${id}-details`} onClick={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }}>i</button>
+        <button type="button" className="build-info-toggle" aria-label="선택 도구 상세 안내" aria-expanded={detailsOpen} aria-controls={`${id}-details`} onClick={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }}><UiIcon sheet="action" cell="log" size={32} /></button>
       </div>
       <div id={`${id}-details`} className="build-menu-details" aria-label="건설 안내" hidden={!detailsOpen}>
         {palisadeDrawing ? <p>{WALL_COPY.drawHint}</p> : selectedOption === null ? <p>선택 도구 없음 · 건설 카드를 눌러 도구를 선택하세요.</p> : <>

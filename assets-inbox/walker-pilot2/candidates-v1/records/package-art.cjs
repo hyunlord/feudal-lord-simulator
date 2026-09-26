@@ -1,0 +1,38 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const {createCanvas,loadImage}=require('/tmp/astra-wave4b-work-20260925/node_modules/@napi-rs/canvas');
+const root=path.resolve(__dirname,'..'), dirs=['NE','SE','SW','NW'];
+const ids={P1:'wk_reskin_P1_merchant_m-v1',P4:'wk_reskin_P4_labour_m-v1',P5:'wk_reskin_P5_labour_f-v1',P6:'wk_reskin_P6_widow_f-v1'};
+const read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8')); const write=(p,x)=>fs.writeFileSync(path.join(root,p),typeof x==='string'?x:JSON.stringify(x,null,2));
+const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex');
+async function canvas(p){const im=await loadImage(path.join(root,p)),c=createCanvas(im.width,im.height);c.getContext('2d').drawImage(im,0,0);return c;}
+function bbox(c){let x0=c.width,y0=c.height,x1=0,y1=0;const a=c.getContext('2d').getImageData(0,0,c.width,c.height).data;for(let y=0;y<c.height;y++)for(let x=0;x<c.width;x++)if(a[(y*c.width+x)*4+3]>8){x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}return{x:x0,y:y0,w:x1-x0+1,h:y1-y0+1};}
+function label(ctx,s,x,y,size=16,color='#292d30'){ctx.fillStyle=color;ctx.font=`${size}px sans-serif`;ctx.fillText(s,x,y);}
+function bg(ctx,w,h){ctx.fillStyle='#e9e7df';ctx.fillRect(0,0,w,h);}
+function cross(ctx,x,y,color){ctx.strokeStyle=color;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x-4,y);ctx.lineTo(x+4,y);ctx.moveTo(x,y-4);ctx.lineTo(x,y+4);ctx.stroke();}
+(async()=>{
+fs.mkdirSync(path.join(root,'assets/props'),{recursive:true});fs.mkdirSync(path.join(root,'proofs'),{recursive:true});
+const propRows=[], records=read('records/prop-generation.json');
+for(const kind of ['purse','sack','basket','staff'])for(const dir of dirs){const source=`sources/held_${kind}_${dir}-v1.png`,c=await canvas(source),b=bbox(c),out=createCanvas(32,32),ctx=out.getContext('2d');const target={purse:14,sack:20,basket:20,staff:28}[kind],scale=Math.min(target/b.h,28/b.w),w=b.w*scale,h=b.h*scale,x=(32-w)/2,y=(32-h)/2;ctx.drawImage(c,b.x,b.y,b.w,b.h,x,y,w,h);const name=`assets/props/held_${kind}_${dir}-v1.png`;fs.writeFileSync(path.join(root,name),out.toBuffer('image/png'));let anchorY=y+({purse:.08,sack:.32,basket:.045,staff:.5}[kind])*h;const a=ctx.getImageData(0,0,32,32).data;let sx=0,n=0;for(let yy=Math.max(0,Math.round(anchorY)-1);yy<=Math.min(31,Math.round(anchorY)+1);yy++)for(let xx=0;xx<32;xx++)if(a[(yy*32+xx)*4+3]>40){sx+=xx;n++;}propRows.push({kind,direction:dir,file:name,size:[32,32],anchor:[Number((n?sx/n:16).toFixed(2)),Number(anchorY.toFixed(2))],anchorMeaning:kind==='sack'?'tied neck':kind==='staff'?'midshaft grip':'top handle/loop',anchorMethod:'visible attachment row alpha centroid, candidate for runtime calibration',source,crop:b,uniformScale:scale,sha256:sha(name)});}
+write('records/prop-anchors.json',propRows);
+const manual=read('records/independent-visual-qa.json').rows,measure=[];
+const overlay=createCanvas(1520,1060),oc=overlay.getContext('2d');bg(oc,1520,1060);label(oc,'Walker pilot 2 | Template silhouette 50% overlay | CANDIDATE',24,32,23);label(oc,'H: anatomical head estimate (final px), F: foot silhouette centroid (final px). Cyan: template; red: result head.',24,57,15);label(oc,'Head estimates carry ±1 px point uncertainty; 32/32 precise anatomy pass is NOT certified. No game installation.',24,80,15);
+const gait=createCanvas(1520,1320),gc=gait.getContext('2d');bg(gc,1520,1320);label(gc,'Walker pilot 2 | Original template / reskin, frame 0 + frame 1',24,32,23);label(gc,'4 sheets × 4 directions = 16 gait pairs. Below: separate props at 1× and 3×; red cross = attachment anchor.',24,58,15);
+for(const [row,[id,name]] of Object.entries(ids).entries()){
+const t=await canvas(`templates/${id}.png`),c=await canvas(`assets/workers/${name}.png`),tm=await canvas(`templates/masters/${id}.png`),cm=await canvas(`masters/${name}.png`);label(oc,id,12,125+row*228,19);label(gc,id,18,92+row*232,19);
+for(let f=0;f<2;f++)for(let d=0;d<4;d++){
+const ma=manual.find(r=>r.id===id&&r.frame===f&&r.direction===dirs[d]);const x=54+(f*4+d)*180,y=118+row*228;
+const footCent=(cv)=>{const data=cv.getContext('2d').getImageData(d*148,f*148,148,148).data;let sx=0,sy=0,n=0;for(let yy=128;yy<148;yy++)for(let xx=0;xx<148;xx++){let a=data[(yy*148+xx)*4+3];if(a>32){sx+=xx*a;sy+=yy*a;n+=a;}}return[sx/n,sy/n];};const ft=footCent(tm),fc=footCent(cm),fd=Math.hypot(ft[0]-fc[0],ft[1]-fc[1])/2;
+measure.push({...ma,footTemplateMaster:ft,footCandidateMaster:fc,footSilhouetteDistanceFinalPx:fd,footPass:fd<=2,headCentralEstimatePass:ma.headDistanceFinalPx<=2});
+oc.drawImage(c,d*74,f*74,74,74,x,y,148,148);
+const sil=createCanvas(74,74),sc=sil.getContext('2d');sc.drawImage(t,d*74,f*74,74,74,0,0,74,74);sc.globalCompositeOperation='source-in';sc.fillStyle='#008fbb';sc.fillRect(0,0,74,74);oc.globalAlpha=.5;oc.drawImage(sil,x,y,148,148);oc.globalAlpha=1;cross(oc,x+ma.templateHeadMasterPx[0],y+ma.templateHeadMasterPx[1],'#006986');cross(oc,x+ma.candidateHeadMasterPx[0],y+ma.candidateHeadMasterPx[1],'#c14430');label(oc,`${dirs[d]} f${f}  H≈${ma.headDistanceFinalPx.toFixed(2)}`,x,y+169,14);label(oc,`F=${fd.toFixed(2)}  anatomy: estimate`,x,y+189,12);
+const gx=160+d*326+f*148,gy=108+row*232;gc.drawImage(t,d*74,f*74,74,74,gx,gy,111,111);gc.drawImage(c,d*74,f*74,74,74,gx,gy+112,111,111);if(f===0)label(gc,dirs[d],gx,gy-5,16);if(d===0&&f===0){label(gc,'Template',20,gy+55,14);label(gc,'Candidate',20,gy+170,14);}
+}
+}
+label(oc,'Foot result measures silhouette/contact, not newly generated gait. Protected template pixels and alpha are explicitly recorded.',24,1040,15);
+for(const [i,p] of propRows.entries()){const im=await loadImage(path.join(root,p.file)),x=25+(i%8)*186,y=1050+Math.floor(i/8)*130;gc.drawImage(im,x,y+20,32,32);gc.drawImage(im,x+55,y+8,96,96);cross(gc,x+55+p.anchor[0]*3,y+8+p.anchor[1]*3,'#cd251b');label(gc,`${p.kind} ${p.direction}`,x,y+119,14);}
+fs.writeFileSync(path.join(root,'proofs/01-template-overlay.png'),overlay.toBuffer('image/png'));fs.writeFileSync(path.join(root,'proofs/02-gait-and-props.png'),gait.toBuffer('image/png'));write('records/position-measurements.json',measure);
+const rows=[];for(const [id,name] of Object.entries(ids)){const gens=fs.readdirSync(path.join(root,'records')).filter(n=>n===`generation-${id}.json`||n.startsWith(id+'_')&&n.endsWith('-edit.json')).map(n=>read('records/'+n));rows.push({asset_id:name,status:'candidate',file:`assets/workers/${name}.png`,width:296,height:148,template:`templates/masters/${id}.png`,full_generation_records:JSON.stringify(gens),postprocess:`records/reskin-${id}.json`,sha256:sha(`assets/workers/${name}.png`),qa:'head estimates within2px but uncertainty; exact arm/hand pixels not certified; see SELF_QA.md'});}
+for(const p of propRows){rows.push({asset_id:`held_${p.kind}_${p.direction}-v1`,status:'candidate',file:p.file,width:32,height:32,template:'separate prop; no human template',full_generation_records:JSON.stringify(records.filter(r=>r.id===`prop/held_${p.kind}-v1_${p.direction}`)),postprocess:JSON.stringify(p),sha256:p.sha256,qa:'separate transparent prop; anchor in prop-anchors.json; no runtime attachment validation'});}
+const keys=Object.keys(rows[0]),quote=s=>'"'+String(s??'').replaceAll('"','""')+'"';write('assets.csv','\uFEFF'+[keys.map(quote).join(','),...rows.map(r=>keys.map(k=>quote(r[k])).join(','))].join('\r\n')+'\r\n');
+console.log(JSON.stringify({workers:4,props:propRows.length,csvRows:rows.length,measured:measure.length,maxHead:Math.max(...measure.map(r=>r.headDistanceFinalPx)),maxFoot:Math.max(...measure.map(r=>r.footSilhouetteDistanceFinalPx))}));
+})().catch(e=>{console.error(e);process.exit(1)});

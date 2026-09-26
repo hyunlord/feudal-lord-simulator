@@ -1,0 +1,53 @@
+<!doctype html><meta charset="utf-8"><script>
+(async()=>{try{
+const C=(w,h)=>Object.assign(document.createElement('canvas'),{width:w,height:h});
+const load=u=>new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=u;});
+const save=async(c,p)=>{const b=await new Promise(r=>c.toBlob(r,'image/png'));await fetch('/save/'+encodeURIComponent(p),{method:'POST',body:b});};
+const bounds=(d,w,h)=>{let l=w,t=h,r=-1,b=-1;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(d[(y*w+x)*4+3]>2){l=Math.min(l,x);t=Math.min(t,y);r=Math.max(r,x);b=Math.max(b,y);}return[l,t,r-l+1,b-t+1];};
+const refs=await Promise.all([0,1,2,3,4,5,6].map(i=>load('/ref/'+i))),srcs=await Promise.all([0,1,2,3,4,5].map(i=>load('/source/'+i)));
+const hp=[(132+1035/2)*137/1254,(62+1147)*137/1254],hc=[132*137/1254,62*137/1254,1035*137/1254,1147*137/1254],hk=56.32/hc[2];
+const configs=[
+ {id:'house_l2_brewer-pilot',size:[137,137],pivot:hp,box:[hc[2],hp[1]-8],bottomPad:4,ref:0},
+ {id:'house_l2_weaver-pilot',size:[137,137],pivot:hp,box:[hc[2],hp[1]-8],bottomPad:4,ref:0},
+ {id:'house_l2_garden-pilot',size:[137,137],pivot:hp,box:[hc[2],hp[1]-8],bottomPad:4,ref:0},
+ {id:'wheat_farm_pastoral_ripe-pilot',size:[384,192],pivot:[885*384/1774,850*192/887],box:[352,168],bottomPad:8,ref:5},
+ {id:'well_b-pilot',size:[72,80],pivot:[36,64],box:[34,56],bottomPad:8,ref:3},
+ {id:'market_active_b-pilot',size:[224,224],pivot:[(35+1213/2)*224/1254,(50+1146)*224/1254],box:[202,202],bottomPad:8,ref:4}
+];
+const assets=[],metrics=[];
+for(let n=0;n<6;n++){
+ const cfg=configs[n],src=srcs[n],sc=C(src.width,src.height),sg=sc.getContext('2d');sg.drawImage(src,0,0);let si=sg.getImageData(0,0,sc.width,sc.height);for(let i=0;i<si.data.length;i+=4)if(si.data[i+3]<=2)si.data.fill(0,i,i+4);sg.putImageData(si,0,0);const bb=bounds(si.data,sc.width,sc.height),[w,h]=cfg.size,c=C(w,h),g=c.getContext('2d',{willReadFrequently:true});g.imageSmoothingQuality='high';
+ const scale=Math.min(cfg.box[0]/bb[2],cfg.box[1]/bb[3]),dw=bb[2]*scale,dh=bb[3]*scale,dx=cfg.pivot[0]-dw/2,dy=cfg.pivot[1]-dh;
+ g.drawImage(sc,...bb,dx,dy,dw,dh);const im=g.getImageData(0,0,w,h),d=im.data;let marginClearCount=0;
+ for(let y=0;y<h;y++)for(let x=0;x<w;x++){const k=(y*w+x)*4;if(x<8||x>=w-8||y<8||y>=h-cfg.bottomPad){if(d[k+3])marginClearCount++;d.fill(0,k,k+4);}else if(d[k+3]<=2)d.fill(0,k,k+4);}
+ g.putImageData(im,0,0);await save(c,'assets/'+cfg.id+'.png');assets.push(c);
+ metrics.push({assetId:cfg.id,sourceSize:[src.width,src.height],sourceCrop:bb,size:cfg.size,pivot:cfg.pivot,bounds:bounds(d,w,h),scaleUniform:scale,placement:[dx,dy,dw,dh],mappedSourceRegistration:[bb[0]+bb[2]/2,bb[1]+bb[3]],pivotMappingError:0,margin:{left:8,right:8,top:8,bottom:cfg.bottomPad},marginClearCount,nativeRequestedSizeHonored:src.width===w&&src.height===h,manualEdits:'remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur'});
+}
+const fill=(g,x,y,w,h,col)=>{g.fillStyle=col;g.fillRect(x,y,w,h);};
+const text=(g,s,x,y,size=18,col='#e9e6da')=>{g.font=`${size}px "Apple SD Gothic Neo",sans-serif`;g.fillStyle=col;g.fillText(s,x,y);};
+const cross=(g,x,y,col)=>{g.strokeStyle=col;g.lineWidth=.75;g.beginPath();g.moveTo(x-3,y);g.lineTo(x+3,y);g.moveTo(x,y-3);g.lineTo(x,y+3);g.stroke();};
+const scene=C(784,190),s=scene.getContext('2d'),groundY=128;
+fill(s,0,0,784,190,'#697157');fill(s,0,129,784,30,'#998267');
+const order=[refs[0],assets[0],refs[0],assets[1],refs[0],assets[2],refs[0],assets[0]],labels=['기준','양조','기준','직조','기준','생계','기준','양조'];
+const pivots=[];
+for(let i=0;i<8;i++){const x=56+i*94;s.drawImage(order[i],...hc,x-hc[2]*hk/2,groundY-hc[3]*hk,hc[2]*hk,hc[3]*hk);pivots.push([x,groundY]);}
+s.strokeStyle='#f4d98a';s.lineWidth=.8;s.setLineDash([4,4]);s.beginPath();s.moveTo(12,groundY);s.lineTo(770,groundY);s.stroke();s.setLineDash([]);
+for(let i=0;i<8;i++){cross(s,pivots[i][0],groundY,'#75e0e4');text(s,labels[i],pivots[i][0]-15,179,12,'#e9e6da');}
+const silhouette=im=>{const c=C(im.width,im.height),g=c.getContext('2d');g.drawImage(im,0,0);g.globalCompositeOperation='source-in';g.fillStyle='#191e1a';g.fillRect(0,0,c.width,c.height);return c;};
+const monochrome=[refs[0],...assets.slice(0,3)].map(silhouette);
+for(let pass=0;pass<2;pass++){
+ const zoom=pass===0?1:.6,board=C(1440,1040),g=board.getContext('2d');fill(g,0,0,1440,1040,'#202821');text(g,`Wave 2 · 같은 L2, 다른 실루엣 · 줌 ${zoom.toFixed(1)}`,32,43,29);text(g,'후보 PNG의 오프라인 거리 합성 / 게임 설치·게임 캡처 아님 / 화면을 100%로 열어 비교',32,80,18);
+ text(g,`실제 표시 배율 · 타일 ${64*zoom}×${32*zoom}px · 후보별 별도 크기 맞춤 없음`,32,132,20);g.drawImage(scene,32,153,scene.width*zoom,scene.height*zoom);
+ text(g,`노란 점선: 공통 접지 기준 / 청록 십자: 8채 피벗 / 화면 Y=${(153+groundY*zoom).toFixed(1)} 모두 동일`,32,376,17);text(g,'주택 원본 피벗 (70.9581, 132.0837) 유지 · 하단만 4px 예외, 좌우·상단 8px',32,406,17);
+ text(g,'색을 제거한 실루엣 비교 · 기준 / 양조 / 직조 / 생계',32,455,20);fill(g,32,478,784,120,'#a6ab96');for(let i=0;i<4;i++){const x=100+i*182;g.drawImage(monochrome[i],...hc,x-hc[2]*hk*zoom/2,568-hc[3]*hk*zoom,hc[2]*hk*zoom,hc[3]*hk*zoom);}
+ text(g,'원본 1:1 검토 · 양조 / 직조 / 생계',878,132,20);for(let i=0;i<3;i++){fill(g,878+i*178,151,150,160,'#697157');g.drawImage(assets[i],884+i*178,159);}
+ text(g,'양조 덧지붕·통 / 직조 틀 / 과수·좁은 뒤뜰',878,360,16);text(g,'2층 본채 유지. 높이와 부속 공간을 함께 비교.',878,390,16);
+ text(g,'나머지 후보 · 원본 픽셀 1:1 (거리 배율과 별도)',32,652,20);
+ fill(g,32,680,1374,260,'#697157');g.drawImage(assets[3],44,700);g.drawImage(refs[5],444,700);text(g,'목축형 384×192',54,920,16);text(g,'기준 밀밭 384×192',455,920,16);g.drawImage(assets[4],858,727);g.drawImage(refs[3],948,727);text(g,'우물 B / 기준',855,846,15);g.drawImage(assets[5],1138,691);text(g,'시장 B 224×224',1148,932,15);
+ text(g,'참조는 첨부 게임 그림만 사용. 전체 원본의 알파를 일괄 색칠한 실루엣 검사는 색상 변형 여부 확인용이다.',32,982,17);
+ await save(board,pass===0?'checks/01-street-zoom1.png':'checks/02-street-zoom06.png');
+}
+await fetch('/save/records%2Ftechnical-qa.json',{method:'POST',body:JSON.stringify({assets:metrics,boundsFormat:'x,y,width,height',house:{referencePixelSize:[137,137],referenceCrop:hc,pivot:hp,sourcePixelToScreenAtZoom1:hk,referenceCropDisplay:[56.32,hc[3]*hk],fullCanvasPreview:false,cropNote:'All street and silhouette sprites use the same legacy L2 crop, pivot and screen density. Reference pixels beyond legacy crop are clipped exactly as the renderer does. No per-candidate normalization during preview.',paddingException:'User explicitly authorized only house bottom4px, top/left/right8px'},preview:{order:labels,sceneSize:[784,190],pivots,groundY,zoom1BoardGroundY:281,zoom06BoardGroundY:229.8,offline:true}},null,2)});
+await fetch('/done');
+}catch(e){await fetch('/error',{method:'POST',body:String(e.stack||e)})}})();
+</script>

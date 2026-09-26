@@ -1,0 +1,62 @@
+[
+  {
+    "id": "hurdle_quarter-v1",
+    "width": 32,
+    "height": 64,
+    "ports": [
+      [
+        8,
+        56
+      ],
+      [
+        24,
+        48
+      ]
+    ],
+    "pivot": [
+      16,
+      52
+    ],
+    "mask": "sources/objects/hurdle_quarter-v1-mask.png"
+  },
+  {
+    "id": "hurdle_three_quarter-v1",
+    "width": 96,
+    "height": 64,
+    "ports": [
+      [
+        24,
+        56
+      ],
+      [
+        72,
+        32
+      ]
+    ],
+    "pivot": [
+      48,
+      44
+    ],
+    "mask": "sources/objects/hurdle_three_quarter-v1-mask.png"
+  },
+  {
+    "id": "hurdle_gate_short-v1",
+    "width": 64,
+    "height": 64,
+    "ports": [
+      [
+        16,
+        56
+      ],
+      [
+        48,
+        40
+      ]
+    ],
+    "pivot": [
+      32,
+      48
+    ],
+    "mask": "sources/objects/hurdle_gate_short-v1-mask.png"
+  }
+]

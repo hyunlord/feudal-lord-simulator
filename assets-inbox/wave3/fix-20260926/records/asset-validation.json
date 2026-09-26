@@ -1,0 +1,99 @@
+{
+  "assets": 10,
+  "checks": 1,
+  "csvRows": 10,
+  "csvColumns": 20,
+  "fullPromptRoundtrip": true,
+  "files": [
+    {
+      "file": "field/ridge_barley_ripe_a-v1.png",
+      "width": 512,
+      "height": 64,
+      "transparentPixels": 12917,
+      "visiblePixels": 19851,
+      "xEndpointMaxRGBA": 0,
+      "sha256": "c802e3af1e798e488d0bb0c4bb8c27bc552b598a5d804514c39424bdd86cf303"
+    },
+    {
+      "file": "field/ridge_barley_ripe_b-v1.png",
+      "width": 512,
+      "height": 64,
+      "transparentPixels": 14666,
+      "visiblePixels": 18102,
+      "xEndpointMaxRGBA": 0,
+      "sha256": "f5737d6614b015f6ecd7366688e03c2d2bf8df3c70d5726447bd1bb5dcd04bb8"
+    },
+    {
+      "file": "loads/cart_load_barley_ne-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4938,
+      "visiblePixels": 1206,
+      "xEndpointMaxRGBA": null,
+      "sha256": "19add5467dfc8eb32ab3b14b027b86be7cafd8656e403be9506c0d936546c070"
+    },
+    {
+      "file": "loads/cart_load_barley_nw-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5086,
+      "visiblePixels": 1058,
+      "xEndpointMaxRGBA": null,
+      "sha256": "a0c40a2f00571c310347710e8b7bc7fa0f2894bee437f48fd5a2e7d22a813272"
+    },
+    {
+      "file": "loads/cart_load_cloth_dyed_ne-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5483,
+      "visiblePixels": 661,
+      "xEndpointMaxRGBA": null,
+      "sha256": "c27a5541da0eb8fc8a1a3db6ceee48915f9728830029228b8c9a028b91088a5a"
+    },
+    {
+      "file": "loads/cart_load_cloth_dyed_nw-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5437,
+      "visiblePixels": 707,
+      "xEndpointMaxRGBA": null,
+      "sha256": "0a9f424713d717c7224b19ba1ca58e4a1186a5dfbe682ea29598b1d50fd8c53f"
+    },
+    {
+      "file": "pile/barley_sacks_1-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4941,
+      "visiblePixels": 1203,
+      "xEndpointMaxRGBA": null,
+      "sha256": "dbf056248c3711db3732972136c04989b5a392a86d11fef4a28b1475efb747c3"
+    },
+    {
+      "file": "pile/barley_sacks_2-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4112,
+      "visiblePixels": 2032,
+      "xEndpointMaxRGBA": null,
+      "sha256": "966c4db27aa2125038a74cbcaa3c90ab8aa2bd364d6805bbeca3538f8a4d3b33"
+    },
+    {
+      "file": "pile/barley_sacks_3-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 3625,
+      "visiblePixels": 2519,
+      "xEndpointMaxRGBA": null,
+      "sha256": "2e29cbe52045585e027da64f649e16bc1ab8238e0030c6fae3d6be3072f4c98d"
+    },
+    {
+      "file": "yard/tenter_frames_dyed-v1.png",
+      "width": 384,
+      "height": 192,
+      "transparentPixels": 51124,
+      "visiblePixels": 22604,
+      "xEndpointMaxRGBA": null,
+      "sha256": "f63a99fd7e77a6fb985fb03d5d8d14181aaaa53d8d327c006121c9febf60d791"
+    }
+  ]
+}

@@ -1,0 +1,686 @@
+[
+  {
+    "id": "bld/alehouse_a",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-7cadd693-bca2-47e0-b30d-76526010a9b8.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. EDIT house L2 architecture, preserve exact scale, orientation, ground contact bottom near y132, pivot70.96,132.08, keep137square canvas. Add one clearly legible ALE STAKE: wooden pole over FRONT door bearing a dense green leafy BUSH, NOT a printed sign. A barrel at door. No chimneys, hops, lettering. Keep8px top/sides,4px bottom.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/house_l2-v2.png"
+    ],
+    "dimensions": [
+      137,
+      137
+    ],
+    "transform": {
+      "sx": 107,
+      "sy": 41,
+      "sw": 1037,
+      "sh": 1145,
+      "dx": 14.768251812540498,
+      "dy": 8,
+      "dw": 112.37976431750275,
+      "dh": 124.08373205741626
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/alehouse_a.png",
+    "pivot": [
+      70.95813397129187,
+      132.08373205741626
+    ],
+    "nativeDimensions": [
+      1254,
+      1254
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.4980801861842801,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/malthouse_b",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-80d6abe1-500c-4590-bdc4-e3b64335ca05.png",
+    "prompt": "Use case: precise-object-edit. Only remove the dark metal or ceramic RING/POT at the very top of the malt kiln flue and the metal band at its thatch junction. Replace with plain rough stone masonry rim and ordinary thatch junction. Preserve the short STONE kiln vent itself, open top with no added chimney pot. All other building timber, roofs, composition, scale, alpha background exactly unchanged. Southern English1300-1450 malt kiln, transparent RGBA.",
+    "referencePaths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-12c68be4-8df9-4131-a099-c807c7dd38d1.png"
+    ],
+    "dimensions": [
+      160,
+      136
+    ],
+    "attempts": [
+      {
+        "id": "bld/malthouse_b",
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-12c68be4-8df9-4131-a099-c807c7dd38d1.png",
+        "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 2x2 footprint. Malt drying house alternative SILHOUETTE: long low thatched roof, attached rounded stone malt drying kiln at RIGHT, short kiln flue. Not a recolour, different roof/wing layout. Requested final canvas 160x136. Leave clean transparent margins.",
+        "referencePaths": [
+          "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png",
+          "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png"
+        ],
+        "dimensions": [
+          160,
+          136
+        ]
+      }
+    ],
+    "transform": {
+      "sx": 85,
+      "sy": 183,
+      "sw": 1209,
+      "sh": 789,
+      "dx": 8,
+      "dy": 34.024813895781634,
+      "dw": 144,
+      "dh": 93.97518610421837
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/malthouse_b.png",
+    "pivot": [
+      80,
+      128
+    ],
+    "nativeDimensions": [
+      1358,
+      1159
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected second attempt: plain stone kiln vent, removed dark rim/pot.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/malthouse_a",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-2ab5565a-0eeb-46c4-b333-7b99b5843d95.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 2x2 footprint. Low squat stone malt drying kiln with a short drying KILN FLUE, attached modest thatched timber malt house. Kiln flue is historical exception. Low chimney, not industrial smokestack. No waterwheel. A broad roof and front-left kiln. Requested final canvas 160x136. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png"
+    ],
+    "dimensions": [
+      160,
+      136
+    ],
+    "transform": {
+      "sx": 122,
+      "sy": 123,
+      "sw": 1148,
+      "sh": 877,
+      "dx": 8,
+      "dy": 17.99303135888502,
+      "dw": 144,
+      "dh": 110.00696864111498
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/malthouse_a.png",
+    "pivot": [
+      80,
+      128
+    ],
+    "nativeDimensions": [
+      1359,
+      1157
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/alehouse_b",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-8ac1a816-f479-4a9b-b793-35fb4bae3ff4.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. L2 alehouse variant with different lean-to entry silhouette, same scale and137square framing as house reference, exact pivot70.96,132.08. Visible pole over doorway with leafy green BUSH ale-stake; TWO barrels near door. No text signs, no hops, no chimney.8px sides/top,4pxbottom. Requested final canvas 137x137. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/house_l2-v2.png"
+    ],
+    "dimensions": [
+      137,
+      137
+    ],
+    "transform": {
+      "sx": 182,
+      "sy": 61,
+      "sw": 915,
+      "sh": 1048,
+      "dx": 16.789901703860636,
+      "dy": 8,
+      "dw": 108.33646453486247,
+      "dh": 124.08373205741626
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/alehouse_b.png",
+    "pivot": [
+      70.95813397129187,
+      132.08373205741626
+    ],
+    "nativeDimensions": [
+      1254,
+      1254
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.4980801861842801,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/brewhouse",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-748d3f3c-be6e-43bf-8298-1e1cb3f0ecf4.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 2x2 footprint professional brewhouse. Timber/plaster building, roof with open ridge vent NO residential chimney, open-sided work bay clearly showing large copper brewing cauldron and wooden vats. Tiny steam puff from vat and open bay, not smokestack. No hops. Distinct lower open work wing. Requested final canvas 160x136. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png"
+    ],
+    "dimensions": [
+      160,
+      136
+    ],
+    "transform": {
+      "sx": 98,
+      "sy": 50,
+      "sw": 1150,
+      "sh": 1010,
+      "dx": 11.683168316831683,
+      "dy": 8,
+      "dw": 136.63366336633663,
+      "dh": 120
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/brewhouse.png",
+    "pivot": [
+      80,
+      128
+    ],
+    "nativeDimensions": [
+      1360,
+      1156
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/weaver_house_b",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-eadd9e54-fd31-417e-8161-8d5d51d1d31f.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. L2 weaver house variant, subtly wider ground floor shutter opening and side lean-to distinct silhouette, same137square scale and pivot70.96,132.08. Visible HORIZONTAL TREADLE LOOM in front room, wooden frame warp and foot treadle, not spinning wheel. No chimney.8px top/sides4pxbottom. Requested final canvas 137x137. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/house_l2-v2.png"
+    ],
+    "dimensions": [
+      137,
+      137
+    ],
+    "transform": {
+      "sx": 110,
+      "sy": 73,
+      "sw": 1060,
+      "sh": 1078,
+      "dx": 14.421052631578952,
+      "dy": 17.089442087207715,
+      "dw": 113.07416267942584,
+      "dh": 114.99428997020854
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/weaver_house_b.png",
+    "pivot": [
+      70.95813397129187,
+      132.08373205741626
+    ],
+    "nativeDimensions": [
+      1254,
+      1254
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.4980801861842801,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/weaver_house_a",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-2b617427-611b-4504-b430-5258a64bfa00.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. L2 house same exact scale and pivot70.96,132.08 within137square. Ground floor front shutters OPEN WIDE to clearly show a HORIZONTAL TREADLE LOOM: rectangular wooden frame, stretched pale warp and foot treadle beneath. No spinning wheel, no chimney.8px top/sides,4pxbottom. Requested final canvas 137x137. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/house_l2-v2.png"
+    ],
+    "dimensions": [
+      137,
+      137
+    ],
+    "transform": {
+      "sx": 137,
+      "sy": 55,
+      "sw": 994,
+      "sh": 1120,
+      "dx": 15.895977870813411,
+      "dy": 8,
+      "dw": 110.12431220095692,
+      "dh": 124.08373205741626
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/weaver_house_a.png",
+    "pivot": [
+      70.95813397129187,
+      132.08373205741626
+    ],
+    "nativeDimensions": [
+      1254,
+      1254
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.4980801861842801,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/fulling_mill_nwse",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-483b1632-685a-4fea-adbc-05372fc872ad.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 2x3 riverside FULLING WATERMILL, elongated timber stone workshop ridge on NW-SE axis (screen upper-left to lower-right). Large external vertical wooden WATERWHEEL, short stone water channel; through open working bay show wooden fulling HAMMER beams striking cloth trough. NOT grain windmill, absolutely NO wind sails. Wheel attached side nearest viewer. No river landscape, just integral narrow channel. Requested final canvas 200x160. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png"
+    ],
+    "dimensions": [
+      200,
+      160
+    ],
+    "transform": {
+      "sx": 91,
+      "sy": 54,
+      "sw": 1232,
+      "sh": 947,
+      "dx": 8,
+      "dy": 10.56493506493507,
+      "dw": 184,
+      "dh": 141.43506493506493
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/fulling_mill_nwse.png",
+    "pivot": [
+      100,
+      152
+    ],
+    "nativeDimensions": [
+      1402,
+      1122
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/woolhouse",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-e5e83b64-8e54-4b2d-9fc0-c9d5156381e0.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 2x2 footprint wool warehouse. Broad timber doors open, lofty timber gable with pale FLEECE bundles stacked in open loft window and doorway. No chimney. Distinct tall storage silhouette and broad loading opening. Requested final canvas 160x136. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png"
+    ],
+    "dimensions": [
+      160,
+      136
+    ],
+    "transform": {
+      "sx": 207,
+      "sy": 87,
+      "sw": 985,
+      "sh": 923,
+      "dx": 15.969664138678226,
+      "dy": 8.000000000000014,
+      "dw": 128.06067172264355,
+      "dh": 119.99999999999999
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/woolhouse.png",
+    "pivot": [
+      80,
+      128
+    ],
+    "nativeDimensions": [
+      1358,
+      1159
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/fulling_mill_nesw",
+    "prompt": "Use case: precise-object-edit. Remove ONLY the small stone chimney on the roof ridge, replacing it with matching plain terracotta ridge tiles. Preserve ALL other image pixels and architecture, roof slope, waterwheel, water channel, hammer bay, transparency and camera composition. No new elements. Transparent RGBA.",
+    "referencePaths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-75fb68bd-836b-4e83-a550-6e43132ad88e.png"
+    ],
+    "dimensions": [
+      200,
+      160
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-384e5ba4-5693-45be-941c-d7b094a6f099.png",
+    "attempts": [
+      {
+        "id": "bld/fulling_mill_nesw",
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-75fb68bd-836b-4e83-a550-6e43132ad88e.png",
+        "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 2x3 riverside FULLING WATERMILL, elongated timber stone workshop ridge on NE-SW axis (screen upper-right to lower-left). Large external vertical wooden WATERWHEEL attached opposite lateral side relative NWSE variant; short stone water channel; visible wooden fulling HAMMER beams striking cloth trough in working bay. NOT grain windmill, NO wind sails. No river landscape, integral narrow channel only. Requested final canvas 200x160. Leave clean transparent margins.",
+        "referencePaths": [
+          "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png",
+          "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png"
+        ],
+        "dimensions": [
+          200,
+          160
+        ]
+      }
+    ],
+    "reason": "Selected second attempt: removed unintended chimney.",
+    "transform": {
+      "sx": 97,
+      "sy": 106,
+      "sw": 1254,
+      "sh": 918,
+      "dx": 8,
+      "dy": 17.301435406698545,
+      "dw": 184,
+      "dh": 134.69856459330146
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/fulling_mill_nesw.png",
+    "pivot": [
+      100,
+      152
+    ],
+    "nativeDimensions": [
+      1402,
+      1122
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/dyehouse_a",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-67d51c5b-23c9-420f-ad95-8427351a509f.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 2x2 riverside dye workshop. Low timber/plaster shed with attached open-front roofed work bay, three big round wooden vats: muted indigo-blue, earthy madder red, dull weld yellow. Small fire under one vat, subdued blue/red drained stains just at vat feet, no giant ground slab. No chimney. Roof modest, vats unmistakable. Requested final canvas 160x136. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png"
+    ],
+    "dimensions": [
+      160,
+      136
+    ],
+    "transform": {
+      "sx": 115,
+      "sy": 140,
+      "sw": 1148,
+      "sh": 864,
+      "dx": 8,
+      "dy": 19.62369337979095,
+      "dw": 144,
+      "dh": 108.37630662020905
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/dyehouse_a.png",
+    "pivot": [
+      80,
+      128
+    ],
+    "nativeDimensions": [
+      1360,
+      1156
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/dyehouse_b",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-2b9497b1-6257-4415-b805-ea800badf430.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 2x2 dye workshop alternate silhouette: narrow taller timber gable at LEFT with wide low open bay at RIGHT holding TWO big vats dull blue and madder red; small fire below one vat. Muted colours, tiny drained stains only at vats. No chimney, no broad terrain platform. Requested final canvas 160x136. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png"
+    ],
+    "dimensions": [
+      160,
+      136
+    ],
+    "transform": {
+      "sx": 123,
+      "sy": 90,
+      "sw": 1151,
+      "sh": 919,
+      "dx": 8,
+      "dy": 13.025195482189389,
+      "dw": 144,
+      "dh": 114.97480451781061
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/dyehouse_b.png",
+    "pivot": [
+      80,
+      128
+    ],
+    "nativeDimensions": [
+      1358,
+      1159
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/cloth_hall",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-1fcbc3da-5aaa-41b2-b2bf-b6ecc1f5c06c.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 3x2 cloth trading hall SELD, long low building with long ground-floor open timber ARCADE and restrained timber/plaster upper storey under tiled roof. Cloth rolls stacked along arcade in subdued linen/woad/madder colours. No chimney, no text. Clearly longer than storehouse. Requested final canvas 200x160. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/storehouse.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/house_l2-v2.png"
+    ],
+    "dimensions": [
+      200,
+      160
+    ],
+    "transform": {
+      "sx": 111,
+      "sy": 114,
+      "sw": 1190,
+      "sh": 907,
+      "dx": 8,
+      "dy": 11.757983193277312,
+      "dw": 184,
+      "dh": 140.2420168067227
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/cloth_hall.png",
+    "pivot": [
+      100,
+      152
+    ],
+    "nativeDimensions": [
+      1402,
+      1122
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/shepherd_hut",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-9139e85f-f8ec-4f9d-8f05-91c51c2f018b.png",
+    "prompt": "Use case: historical-scene. Create ONE southern English 1300-1450 city-builder building sprite, SW fixed 2:1 isometric view. Attached project images are STYLE and SCALE references only. Match their crisp hand-painted miniature timber framing, cream plaster, warm wood, muted earth palette and soft upper-left light. True transparent RGBA background, no background tile or terrain slab, only minimal contact AO. No text, labels, people, fantasy, hops, bright dyes, no long shadows. Big readable forms at tiny game scale, not photographic detail. All building and tiny associated props contained within canvas. 1x1 tiny shepherd hut on short wooden wheels, simple low thatched roof and rough timber walls, closed little door. Very modest structure, no chimney, no landscape, no people. Requested final canvas 122x122. Leave clean transparent margins.",
+    "referencePaths": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/sawmill-v2.png"
+    ],
+    "dimensions": [
+      122,
+      122
+    ],
+    "transform": {
+      "sx": 288,
+      "sy": 247,
+      "sw": 761,
+      "sh": 755,
+      "dx": 8.000000000000007,
+      "dy": 8.835742444152444,
+      "dw": 105.99999999999999,
+      "dh": 105.16425755584756
+    },
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/shepherd_hut.png",
+    "pivot": [
+      61,
+      114
+    ],
+    "nativeDimensions": [
+      1254,
+      1254
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  },
+  {
+    "id": "bld/dyehouse_state_active-overlay",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-cdd63f7f-ae2f-4620-bc79-b54484f36a94.png",
+    "prompt": "Use case: precise-object-edit. Extract/create ONLY operating effects aligned to attached dyehouse image: three faint short curls of pale steam immediately above vats and tiny muted blue/red liquid trickles at vat feet. EVERYTHING ELSE fully transparent: no building, no vats, no roof, no ground. Preserve exact reference full-frame positioning of effects so placing this layer on top reconstructs active dyehouse. No white background, no checkerboard, no labels. Transparent RGBA effects-only overlay. Desired160x136 canvas.",
+    "referencePaths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-67d51c5b-23c9-420f-ad95-8427351a509f.png"
+    ],
+    "dimensions": [
+      160,
+      136
+    ],
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/dyehouse_state_active-overlay.png",
+    "pivot": [
+      80,
+      128
+    ],
+    "nativeDimensions": [
+      1360,
+      1156
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "reason": "Selected first native generation for requested historical production silhouette; candidate, not game-installed.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26",
+    "registration": {
+      "target": "bld/dyehouse_a",
+      "canvas": [
+        160,
+        136
+      ],
+      "targetTransform": {
+        "sx": 115,
+        "sy": 140,
+        "sw": 1148,
+        "sh": 864,
+        "dx": 8,
+        "dy": 19.62369337979095,
+        "dw": 144,
+        "dh": 108.37630662020905
+      },
+      "vatCentersApproximate": [
+        [
+          75.10801393728222,
+          94.38327526132404
+        ],
+        [
+          98.31358885017421,
+          89.86759581881533
+        ],
+        [
+          124.02787456445994,
+          83.59581881533101
+        ]
+      ],
+      "note": "Approximate visual vat mouth anchors; same native full-frame crop transform, no re-centering of overlay."
+    }
+  },
+  {
+    "id": "bld/fulling_mill_wheel_sheet",
+    "prompt": "Use case: precise-object-edit. Correct attached four-frame UPRIGHT wooden waterwheel animation. Keep exact upright perspective, four cell sizes and same central axle positions. Change ONLY angular positions of spokes and paddles. Frame1: a spoke points straight UP at12oclock. Frame2: that spoke rotated clockwise15degrees towards12:30. Frame3: that spoke rotated30degrees towards1oclock. Frame4: that spoke rotated45degrees towards1:30. Make all4 phases obviously DIFFERENT. Do not simply duplicate wheel or recolour. Keep genuinely transparent background; no labels no text. One horizontal sheet four64x64cells, final256x64. Each wheel fits with8px transparent margin, same stationary axle center.",
+    "referencePaths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-d4076f0f-6f75-441d-bc82-daf4ed3d5aa7.png"
+    ],
+    "dimensions": [
+      256,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-71507361-3f63-4c0d-92bc-7dd87fc9f198.png",
+    "attempts": [
+      {
+        "id": "bld/fulling_mill_wheel_sheet",
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-32d27153-cfbf-4a28-84f2-309eb087d4f2.png",
+        "prompt": "Use case: precise-object-edit. Create a transparent WATERWHEEL ANIMATION SHEET of the attached fulling mill wheel ONLY. Exactly FOUR equal64x64 cells in one horizontal strip256x64, four frames same camera angle and SAME stationary axle center in each cell, wheel spokes rotated0,15,30,45degrees respectively. Same wooden rim, paddles, warm brown texture, muted steel pins, 2:1 isometric perspective as reference wheel. No building or channel or ground, no labels/text/grid. Keep wheel entirely inside each cell with8px padding, transparent RGBA. One sheet four visibly different rotation phases.",
+        "referencePaths": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-483b1632-685a-4fea-adbc-05372fc872ad.png"
+        ],
+        "dimensions": [
+          256,
+          64
+        ]
+      },
+      {
+        "id": "bld/fulling_mill_wheel_sheet",
+        "prompt": "Use case: precise-object-edit. Extract the large VERTICAL waterwheel from the attached building and create four rotation frames in one horizontal animation strip, final256x64 (four64square cells). CRITICAL wheel remains upright VERTICAL in a wall plane as seen in this reference, tall near-circular ellipse, NOT lying flat like a horizontal table. Four exact SAME upright oblique perspectives and SAME axle center, spoke rotation phases0,15,30,45degrees only. Thick timber rim, radial spokes, outer paddles. Preserve original attached wheel shape. Transparent background, no building, no terrain, no water, no frame borders, no labels, no letters. True RGBA,8px margins eachcell. All4wheels same size and height.",
+        "referencePaths": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-483b1632-685a-4fea-adbc-05372fc872ad.png"
+        ],
+        "dimensions": [
+          256,
+          64
+        ],
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-4c57-7243-af8e-b51a1955fbcf/exec-d4076f0f-6f75-441d-bc82-daf4ed3d5aa7.png",
+        "reason": "Corrected visual review failure: upright wheel orientation"
+      }
+    ],
+    "reason": "Selected third attempt: upright waterwheel with distinct spoke phases; exact mathematical angles/runtime registration unverified.",
+    "output": "/tmp/astra-wave3-candidates-20260926/bld/fulling_mill_wheel_sheet.png",
+    "pivot": [
+      32,
+      32
+    ],
+    "nativeDimensions": [
+      1983,
+      793
+    ],
+    "manualEdits": "Native RGBA preserved; CanvasJS alpha-bounds crop and uniform resample into contracted canvas; bottom-center pivot registration. No painted content edits.",
+    "screenScale": 0.5,
+    "status": "candidate",
+    "model": "not exposed",
+    "tool": "image_gen.imagegen",
+    "generatedAt": "2026-09-26"
+  }
+]

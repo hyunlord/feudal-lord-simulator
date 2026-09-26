@@ -1,0 +1,846 @@
+[
+  {
+    "id": "work_trowel_ne-v1",
+    "prompt": "Edit this detached medieval mason trowel only. Preserve northeast direction (handle at lower left, blade tip upper right), materials and transparent background. Make the iron triangular blade much BROADER and SHORTER, almost equilateral triangle with an approximately 90-degree point, clearly distinct from a narrow saw. Shorten the bent tang and oak handle by 25 percent so wide triangle dominates silhouette. Show broad blade face toward camera, not edge-on. Thick strong simple silhouette intended for 32x32 sprite. No person, floor, shadow, text or other objects. True transparent RGBA.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-0821a475-6392-414c-9009-83907416469b.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-0821a475-6392-414c-9009-83907416469b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-6145c2c5-3e0f-49ac-a827-a30580792fa5.png",
+    "rawFile": "sources/tools/work_trowel_ne-v1-raw-broad.png",
+    "gripNormalized": [
+      0.225,
+      0.76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Project game sprite: ONE detached mason's trowel, broad pointed triangular dull iron blade and a short oak grip connected by a bent tang. Blade unmistakably triangular, not shovel. Image reference gives hand-painted muted medieval material style ONLY, do not draw hammer. Northeast orientation: handle butt toward lower-left, working blade toward upper-right; fixed elevated isometric camera, visible top and near-left surface. Keep entire prop in square transparent canvas, bold simple silhouette filling 84%, minimum details for final 32x32 pixels. Warm oak and weathered gray iron, soft upper-left light. No person, hands, floor, cast shadow, text, border, grid, background or extra objects. Genuine transparent RGBA. One asset only.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/work_hammer-v1.png"
+        ],
+        "rawFile": "sources/tools/work_trowel_ne-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      },
+      {
+        "prompt": "Edit this detached medieval mason trowel only. Preserve northeast direction (handle at lower left, blade tip upper right), materials and transparent background. Make the iron triangular blade much BROADER and SHORTER, almost equilateral triangle with an approximately 90-degree point, clearly distinct from a narrow saw. Shorten the bent tang and oak handle by 25 percent so wide triangle dominates silhouette. Show broad blade face toward camera, not edge-on. Thick strong simple silhouette intended for 32x32 sprite. No person, floor, shadow, text or other objects. True transparent RGBA.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-0821a475-6392-414c-9009-83907416469b.png"
+        ],
+        "rawFile": "sources/tools/work_trowel_ne-v1-raw-broad.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_trowel_ne-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        282.15000000000003,
+        953.04
+      ],
+      "alphaBounds": [
+        70,
+        69,
+        1198,
+        1185
+      ],
+      "scale": 0.015286346017360923
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "ne",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 117,
+      "alphaZeroPixels": 907,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "9ec24d9e6581c0f8a5ac0a9b79aeeae96a0ce4b30c383314711032e72d7444f5"
+  },
+  {
+    "id": "work_saw_ne-v1",
+    "prompt": "Use case: stylized-concept. Project game sprite: ONE detached medieval short hand saw, straight broad tapered iron blade with coarse teeth on one long edge, simple straight oak grip, no modern enclosed plastic handle. Image reference gives hand-painted muted medieval material style ONLY, do not draw hammer. Northeast orientation: handle butt toward lower-left, working blade toward upper-right; fixed elevated isometric camera, visible top and near-left surface. Keep entire prop in square transparent canvas, bold simple silhouette filling 84%, minimum details for final 32x32 pixels. Warm oak and weathered gray iron, soft upper-left light. No person, hands, floor, cast shadow, text, border, grid, background or extra objects. Genuine transparent RGBA. One asset only.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/work_hammer-v1.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a2ea5e8-eaf3-4e41-828c-d55f3fa4afab.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a2ea5e8-eaf3-4e41-828c-d55f3fa4afab.png",
+    "rawFile": "sources/tools/work_saw_ne-v1-raw.png",
+    "gripNormalized": [
+      0.25,
+      0.725
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Project game sprite: ONE detached medieval short hand saw, straight broad tapered iron blade with coarse teeth on one long edge, simple straight oak grip, no modern enclosed plastic handle. Image reference gives hand-painted muted medieval material style ONLY, do not draw hammer. Northeast orientation: handle butt toward lower-left, working blade toward upper-right; fixed elevated isometric camera, visible top and near-left surface. Keep entire prop in square transparent canvas, bold simple silhouette filling 84%, minimum details for final 32x32 pixels. Warm oak and weathered gray iron, soft upper-left light. No person, hands, floor, cast shadow, text, border, grid, background or extra objects. Genuine transparent RGBA. One asset only.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/work_hammer-v1.png"
+        ],
+        "rawFile": "sources/tools/work_saw_ne-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_saw_ne-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        313.5,
+        909.15
+      ],
+      "alphaBounds": [
+        65,
+        80,
+        1203,
+        1172
+      ],
+      "scale": 0.015739179314221474
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "ne",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 70,
+      "alphaZeroPixels": 954,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "f956b92c96e7c46ac17087985c7a4092b1c41ed7c4d6254f87871437041160fc"
+  },
+  {
+    "id": "work_adze_ne-v1",
+    "prompt": "Use case: stylized-concept. Project game sprite: ONE detached carpenter's adze, stout oak shaft and curved broad iron blade set TRANSVERSE to shaft, blade wide side-on, clearly a crosswise hoe-like cutting head not axe. Image reference gives hand-painted muted medieval material style ONLY, do not draw hammer. Northeast orientation: handle butt toward lower-left, working blade toward upper-right; fixed elevated isometric camera, visible top and near-left surface. Keep entire prop in square transparent canvas, bold simple silhouette filling 84%, minimum details for final 32x32 pixels. Warm oak and weathered gray iron, soft upper-left light. No person, hands, floor, cast shadow, text, border, grid, background or extra objects. Genuine transparent RGBA. One asset only.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/work_hammer-v1.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-4147ef3b-ff7d-4044-9b7e-115cdf89bb95.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-4147ef3b-ff7d-4044-9b7e-115cdf89bb95.png",
+    "rawFile": "sources/tools/work_adze_ne-v1-raw.png",
+    "gripNormalized": [
+      0.32,
+      0.67
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Project game sprite: ONE detached carpenter's adze, stout oak shaft and curved broad iron blade set TRANSVERSE to shaft, blade wide side-on, clearly a crosswise hoe-like cutting head not axe. Image reference gives hand-painted muted medieval material style ONLY, do not draw hammer. Northeast orientation: handle butt toward lower-left, working blade toward upper-right; fixed elevated isometric camera, visible top and near-left surface. Keep entire prop in square transparent canvas, bold simple silhouette filling 84%, minimum details for final 32x32 pixels. Warm oak and weathered gray iron, soft upper-left light. No person, hands, floor, cast shadow, text, border, grid, background or extra objects. Genuine transparent RGBA. One asset only.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/work_hammer-v1.png"
+        ],
+        "rawFile": "sources/tools/work_adze_ne-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_adze_ne-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        401.28000000000003,
+        840.1800000000001
+      ],
+      "alphaBounds": [
+        72,
+        109,
+        1181,
+        1114
+      ],
+      "scale": 0.017955163391986866
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "ne",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 109,
+      "alphaZeroPixels": 915,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "a9d1dfeccaa2e3eba20df85db3c917ecd08cfca7ab8952d18021e3c6b4af6c10"
+  },
+  {
+    "id": "work_trowel_se-v1",
+    "prompt": "Edit attached detached mason trowel, keep direction and true transparency. Make blade MUCH BROADER, SHORTER, nearly equilateral broad triangular iron plate, blunt wide triangle with 90 degree pointed tip. Shorten narrow tang and oak handle by 30 percent. Triangle must dominate silhouette so cannot resemble thin saw at32px. handle butt toward upper-left and cutting blade toward lower-right. Show its opposite near side with visible thickness, NOT a reflected duplicate. Keep warm oak gray iron hand-painted style. No shadow/ground/person/text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-f2a64cab-8807-4f44-9e74-772971a98878.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-f2a64cab-8807-4f44-9e74-772971a98878.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-d30dae18-0aec-4d09-9eca-c3c89d19c844.png",
+    "rawFile": "sources/tools/work_trowel_se-v1-raw-broad.png",
+    "gripNormalized": [
+      0.25,
+      0.26
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached mason's trowel, broad pointed triangular dull iron blade and a short oak grip connected by a bent tang. Blade unmistakably triangular, not shovel. Create ONE new SE view of SAME construction tool: handle butt toward upper-left and cutting blade toward lower-right. Show its opposite near side with visible thickness, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-0821a475-6392-414c-9009-83907416469b.png"
+        ],
+        "rawFile": "sources/tools/work_trowel_se-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      },
+      {
+        "prompt": "Edit attached detached mason trowel, keep direction and true transparency. Make blade MUCH BROADER, SHORTER, nearly equilateral broad triangular iron plate, blunt wide triangle with 90 degree pointed tip. Shorten narrow tang and oak handle by 30 percent. Triangle must dominate silhouette so cannot resemble thin saw at32px. handle butt toward upper-left and cutting blade toward lower-right. Show its opposite near side with visible thickness, NOT a reflected duplicate. Keep warm oak gray iron hand-painted style. No shadow/ground/person/text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-f2a64cab-8807-4f44-9e74-772971a98878.png"
+        ],
+        "rawFile": "sources/tools/work_trowel_se-v1-raw-broad.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_trowel_se-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        313.5,
+        326.04
+      ],
+      "alphaBounds": [
+        115,
+        124,
+        1236,
+        1164
+      ],
+      "scale": 0.015176151761517615
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "se",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 106,
+      "alphaZeroPixels": 918,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "80c03a36933bac46633ad558566ea3972e6f102d91ec44bdb4e6cebb6c44fc47"
+  },
+  {
+    "id": "work_trowel_sw-v1",
+    "prompt": "Edit attached detached mason trowel, keep direction and true transparency. Make blade MUCH BROADER, SHORTER, nearly equilateral broad triangular iron plate, blunt wide triangle with 90 degree pointed tip. Shorten narrow tang and oak handle by 30 percent. Triangle must dominate silhouette so cannot resemble thin saw at32px. handle butt toward upper-right and cutting blade toward lower-left. Show underside and inner blade structure with upper-left light kept fixed, NOT a reflected duplicate. Keep warm oak gray iron hand-painted style. No shadow/ground/person/text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-654b624c-92fc-42b2-8d52-04a5fa8d9c25.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-654b624c-92fc-42b2-8d52-04a5fa8d9c25.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2258e1bf-9de3-4c37-94c6-dbd20f660277.png",
+    "rawFile": "sources/tools/work_trowel_sw-v1-raw-broad.png",
+    "gripNormalized": [
+      0.795,
+      0.235
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached mason's trowel, broad pointed triangular dull iron blade and a short oak grip connected by a bent tang. Blade unmistakably triangular, not shovel. Create ONE new SW view of SAME construction tool: handle butt toward upper-right and cutting blade toward lower-left. Show underside and inner blade structure with upper-left light kept fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-0821a475-6392-414c-9009-83907416469b.png"
+        ],
+        "rawFile": "sources/tools/work_trowel_sw-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      },
+      {
+        "prompt": "Edit attached detached mason trowel, keep direction and true transparency. Make blade MUCH BROADER, SHORTER, nearly equilateral broad triangular iron plate, blunt wide triangle with 90 degree pointed tip. Shorten narrow tang and oak handle by 30 percent. Triangle must dominate silhouette so cannot resemble thin saw at32px. handle butt toward upper-right and cutting blade toward lower-left. Show underside and inner blade structure with upper-left light kept fixed, NOT a reflected duplicate. Keep warm oak gray iron hand-painted style. No shadow/ground/person/text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-654b624c-92fc-42b2-8d52-04a5fa8d9c25.png"
+        ],
+        "rawFile": "sources/tools/work_trowel_sw-v1-raw-broad.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_trowel_sw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        996.9300000000001,
+        294.69
+      ],
+      "alphaBounds": [
+        140,
+        109,
+        1182,
+        1165
+      ],
+      "scale": 0.016086222150727903
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "sw",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 115,
+      "alphaZeroPixels": 909,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "b886f5934804668f8e9c571f63050fec53a48834f1705286377969b416815c91"
+  },
+  {
+    "id": "work_trowel_nw-v1",
+    "prompt": "Edit attached detached mason trowel, keep direction and true transparency. Make blade MUCH BROADER, SHORTER, nearly equilateral broad triangular iron plate, blunt wide triangle with 90 degree pointed tip. Shorten narrow tang and oak handle by 30 percent. Triangle must dominate silhouette so cannot resemble thin saw at32px. handle butt toward lower-right and cutting blade toward upper-left. Show the rear/back surface and blade thickness with upper-left lighting fixed, NOT a reflected duplicate. Keep warm oak gray iron hand-painted style. No shadow/ground/person/text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-7e695958-e582-4fef-8db1-4b0a3a3bcefe.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-7e695958-e582-4fef-8db1-4b0a3a3bcefe.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-f3010a4b-ea86-49e8-a429-fe618f3421a8.png",
+    "rawFile": "sources/tools/work_trowel_nw-v1-raw-broad.png",
+    "gripNormalized": [
+      0.76,
+      0.76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached mason's trowel, broad pointed triangular dull iron blade and a short oak grip connected by a bent tang. Blade unmistakably triangular, not shovel. Create ONE new NW view of SAME construction tool: handle butt toward lower-right and cutting blade toward upper-left. Show the rear/back surface and blade thickness with upper-left lighting fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-0821a475-6392-414c-9009-83907416469b.png"
+        ],
+        "rawFile": "sources/tools/work_trowel_nw-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      },
+      {
+        "prompt": "Edit attached detached mason trowel, keep direction and true transparency. Make blade MUCH BROADER, SHORTER, nearly equilateral broad triangular iron plate, blunt wide triangle with 90 degree pointed tip. Shorten narrow tang and oak handle by 30 percent. Triangle must dominate silhouette so cannot resemble thin saw at32px. handle butt toward lower-right and cutting blade toward upper-left. Show the rear/back surface and blade thickness with upper-left lighting fixed, NOT a reflected duplicate. Keep warm oak gray iron hand-painted style. No shadow/ground/person/text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-7e695958-e582-4fef-8db1-4b0a3a3bcefe.png"
+        ],
+        "rawFile": "sources/tools/work_trowel_nw-v1-raw-broad.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_trowel_nw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        953.04,
+        953.04
+      ],
+      "alphaBounds": [
+        97,
+        79,
+        1177,
+        1156
+      ],
+      "scale": 0.016017573566427166
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "nw",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 117,
+      "alphaZeroPixels": 907,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "09ea7c77b5e895cc7abbe93768600e64c2e12c7aacbe54552d0d9b463aa2be16"
+  },
+  {
+    "id": "work_saw_se-v1",
+    "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached medieval short hand saw, straight broad tapered iron blade with coarse teeth on one long edge, simple straight oak grip, no modern enclosed plastic handle. Create ONE new SE view of SAME construction tool: handle butt toward upper-left and cutting blade toward lower-right. Show its opposite near side with visible thickness, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a2ea5e8-eaf3-4e41-828c-d55f3fa4afab.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a8274ef-5a5c-497d-8c99-20d6d88ae353.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a8274ef-5a5c-497d-8c99-20d6d88ae353.png",
+    "rawFile": "sources/tools/work_saw_se-v1-raw.png",
+    "gripNormalized": [
+      0.23,
+      0.23
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached medieval short hand saw, straight broad tapered iron blade with coarse teeth on one long edge, simple straight oak grip, no modern enclosed plastic handle. Create ONE new SE view of SAME construction tool: handle butt toward upper-left and cutting blade toward lower-right. Show its opposite near side with visible thickness, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a2ea5e8-eaf3-4e41-828c-d55f3fa4afab.png"
+        ],
+        "rawFile": "sources/tools/work_saw_se-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_saw_se-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        288.42,
+        288.42
+      ],
+      "alphaBounds": [
+        55,
+        97,
+        1199,
+        1160
+      ],
+      "scale": 0.015374816051307959
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "se",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 62,
+      "alphaZeroPixels": 962,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "d74f7745d9afd126ea41fa8120d971400a75e2b691a6fb3e413ecb4583c3dce8"
+  },
+  {
+    "id": "work_saw_sw-v1",
+    "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached medieval short hand saw, straight broad tapered iron blade with coarse teeth on one long edge, simple straight oak grip, no modern enclosed plastic handle. Create ONE new SW view of SAME construction tool: handle butt toward upper-right and cutting blade toward lower-left. Show underside and inner blade structure with upper-left light kept fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a2ea5e8-eaf3-4e41-828c-d55f3fa4afab.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-0a02a31b-38c4-44fe-a4fb-d312adf2027a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-0a02a31b-38c4-44fe-a4fb-d312adf2027a.png",
+    "rawFile": "sources/tools/work_saw_sw-v1-raw.png",
+    "gripNormalized": [
+      0.79,
+      0.23
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached medieval short hand saw, straight broad tapered iron blade with coarse teeth on one long edge, simple straight oak grip, no modern enclosed plastic handle. Create ONE new SW view of SAME construction tool: handle butt toward upper-right and cutting blade toward lower-left. Show underside and inner blade structure with upper-left light kept fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a2ea5e8-eaf3-4e41-828c-d55f3fa4afab.png"
+        ],
+        "rawFile": "sources/tools/work_saw_sw-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_saw_sw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        990.6600000000001,
+        288.42
+      ],
+      "alphaBounds": [
+        37,
+        78,
+        1232,
+        1175
+      ],
+      "scale": 0.014680284378080237
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "sw",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 60,
+      "alphaZeroPixels": 964,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "3a36575bfbca78844821df68b6c6a8140a33c5433ef8f78c5685661ff1bb76bc"
+  },
+  {
+    "id": "work_saw_nw-v1",
+    "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached medieval short hand saw, straight broad tapered iron blade with coarse teeth on one long edge, simple straight oak grip, no modern enclosed plastic handle. Create ONE new NW view of SAME construction tool: handle butt toward lower-right and cutting blade toward upper-left. Show the rear/back surface and blade thickness with upper-left lighting fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a2ea5e8-eaf3-4e41-828c-d55f3fa4afab.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-69b6452b-8846-4ad0-97c2-165383cf035b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-69b6452b-8846-4ad0-97c2-165383cf035b.png",
+    "rawFile": "sources/tools/work_saw_nw-v1-raw.png",
+    "gripNormalized": [
+      0.775,
+      0.76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached medieval short hand saw, straight broad tapered iron blade with coarse teeth on one long edge, simple straight oak grip, no modern enclosed plastic handle. Create ONE new NW view of SAME construction tool: handle butt toward lower-right and cutting blade toward upper-left. Show the rear/back surface and blade thickness with upper-left lighting fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-2a2ea5e8-eaf3-4e41-828c-d55f3fa4afab.png"
+        ],
+        "rawFile": "sources/tools/work_saw_nw-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_saw_nw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        971.85,
+        953.04
+      ],
+      "alphaBounds": [
+        72,
+        86,
+        1176,
+        1167
+      ],
+      "scale": 0.015558148580318941
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "nw",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 64,
+      "alphaZeroPixels": 960,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "fcbdc18b95c14e5c5fc6444e29718a258c82d205a5e711085854d0fe83711d30"
+  },
+  {
+    "id": "work_adze_se-v1",
+    "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached carpenter's adze, stout oak shaft and curved broad iron blade set TRANSVERSE to shaft, blade wide side-on, clearly a crosswise hoe-like cutting head not axe. Create ONE new SE view of SAME construction tool: handle butt toward upper-left and cutting blade toward lower-right. Show its opposite near side with visible thickness, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-4147ef3b-ff7d-4044-9b7e-115cdf89bb95.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-898f3b02-2c6c-4d04-9510-3f6d07e28592.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-898f3b02-2c6c-4d04-9510-3f6d07e28592.png",
+    "rawFile": "sources/tools/work_adze_se-v1-raw.png",
+    "gripNormalized": [
+      0.34,
+      0.34
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached carpenter's adze, stout oak shaft and curved broad iron blade set TRANSVERSE to shaft, blade wide side-on, clearly a crosswise hoe-like cutting head not axe. Create ONE new SE view of SAME construction tool: handle butt toward upper-left and cutting blade toward lower-right. Show its opposite near side with visible thickness, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-4147ef3b-ff7d-4044-9b7e-115cdf89bb95.png"
+        ],
+        "rawFile": "sources/tools/work_adze_se-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_adze_se-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        426.36,
+        426.36
+      ],
+      "alphaBounds": [
+        94,
+        111,
+        1080,
+        1149
+      ],
+      "scale": 0.019373408612863945
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "se",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 112,
+      "alphaZeroPixels": 912,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "166236f26eb200f8661c9cc1fdb48362afd6916fb423aee2a7cef259936723bd"
+  },
+  {
+    "id": "work_adze_sw-v1",
+    "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached carpenter's adze, stout oak shaft and curved broad iron blade set TRANSVERSE to shaft, blade wide side-on, clearly a crosswise hoe-like cutting head not axe. Create ONE new SW view of SAME construction tool: handle butt toward upper-right and cutting blade toward lower-left. Show underside and inner blade structure with upper-left light kept fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-4147ef3b-ff7d-4044-9b7e-115cdf89bb95.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-c416823a-7628-4429-b4a2-91efacef32be.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-c416823a-7628-4429-b4a2-91efacef32be.png",
+    "rawFile": "sources/tools/work_adze_sw-v1-raw.png",
+    "gripNormalized": [
+      0.755,
+      0.31
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached carpenter's adze, stout oak shaft and curved broad iron blade set TRANSVERSE to shaft, blade wide side-on, clearly a crosswise hoe-like cutting head not axe. Create ONE new SW view of SAME construction tool: handle butt toward upper-right and cutting blade toward lower-left. Show underside and inner blade structure with upper-left light kept fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-4147ef3b-ff7d-4044-9b7e-115cdf89bb95.png"
+        ],
+        "rawFile": "sources/tools/work_adze_sw-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_adze_sw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        946.77,
+        388.74
+      ],
+      "alphaBounds": [
+        43,
+        95,
+        1224,
+        1019
+      ],
+      "scale": 0.015490666873208893
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "sw",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 88,
+      "alphaZeroPixels": 936,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "11325b6edeedbb330870fb49ee5b2c812bfe95340c7bf3d55e33263dbe33b6c5"
+  },
+  {
+    "id": "work_adze_nw-v1",
+    "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached carpenter's adze, stout oak shaft and curved broad iron blade set TRANSVERSE to shaft, blade wide side-on, clearly a crosswise hoe-like cutting head not axe. Create ONE new NW view of SAME construction tool: handle butt toward lower-right and cutting blade toward upper-left. Show the rear/back surface and blade thickness with upper-left lighting fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-4147ef3b-ff7d-4044-9b7e-115cdf89bb95.png"
+    ],
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-6b725d7d-d254-4151-aa7e-12833c49c8e1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "rawSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-6b725d7d-d254-4151-aa7e-12833c49c8e1.png",
+    "rawFile": "sources/tools/work_adze_nw-v1-raw.png",
+    "gripNormalized": [
+      0.7,
+      0.7
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Attached image is the approved design of a detached carpenter's adze, stout oak shaft and curved broad iron blade set TRANSVERSE to shaft, blade wide side-on, clearly a crosswise hoe-like cutting head not axe. Create ONE new NW view of SAME construction tool: handle butt toward lower-right and cutting blade toward upper-left. Show the rear/back surface and blade thickness with upper-left lighting fixed, NOT a reflected duplicate. Camera stays elevated isometric; physically rotate object in world, do not flip bitmap. Preserve same oak handle length, blade shape, restrained gray iron and honey oak, painterly texture. Object alone centered with 10% margin on true transparent RGBA background. Strong simple silhouette for final 32x32. No hand/person, ground, shadow, backdrop, border, label or text.",
+        "references": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d930-1892-7d30-9c44-829ad269e0d5/exec-4147ef3b-ff7d-4044-9b7e-115cdf89bb95.png"
+        ],
+        "rawFile": "sources/tools/work_adze_nw-v1-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not provided by tool",
+        "seed": "not provided by tool"
+      }
+    ],
+    "file": "assets/work/work_adze_nw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      16,
+      16
+    ],
+    "processing": "Single uniform downsample from generated original, translated to hand-grip pivot [16,16]; native alpha retained; no bitmap reflection/rotation.",
+    "registration": {
+      "rawGrip": [
+        877.8,
+        877.8
+      ],
+      "alphaBounds": [
+        87,
+        118,
+        1184,
+        1082
+      ],
+      "scale": 0.01770359129994942
+    },
+    "qa": {
+      "transparentRGBA": true,
+      "direction": "nw",
+      "directionMethod": "independent generated view",
+      "runtimeIntegrated": false,
+      "alphaNonzeroPixels": 92,
+      "alphaZeroPixels": 932,
+      "edgeNonzeroPixels": 0,
+      "noPerson": true,
+      "noMaterialPile": true,
+      "noCastShadow": true,
+      "noText": true,
+      "orientation": "independent rendered viewpoint verified; no bitmap flip",
+      "historicalForm": "simple iron blade and oak grip, no modern plastic or closed modern saw handle",
+      "smallScale": "At 32px widened trowel triangle differs from narrow saw; 0.3 display scale does not reliably preserve semantic distinction or saw teeth.",
+      "attachment": "All hand-grip anchors registered to [16,16]; actual animated hand occlusion and joint fitting not runtime tested."
+    },
+    "sha256": "bf7fe4c57bb6952ed6ca971756166e9f209922e19dddbcf652f6c362356ec6f1"
+  }
+]

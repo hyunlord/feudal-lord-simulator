@@ -1,0 +1,214 @@
+[
+  {
+    "id": "animal_walk/sheep_single-v1",
+    "file": "assets/animal_walk/sheep_single-v1.png",
+    "cell": [
+      48,
+      40
+    ],
+    "sheet": [
+      192,
+      80
+    ],
+    "pivot": [
+      24,
+      36
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create a transparent RGBA hand-painted medieval game sheep direction reference sheet. Image 1 style reference only. Four equal columns in ONE horizontal row, same SINGLE cream wool medieval sheep standing, no horns. Orthographic isometric camera elevated 30 degrees. Column1 facing NE upper-right head farther than rump, col2 SE lower-right head nearer, col3 SW lower-left head nearer,col4 NW upper-left head farther. Show clearly 4 stout brown lower legs extended beneath white wool body. SAME animal and proportions all4, no scenery no shadows no text no labels. Each sheep centered separate, generous transparent gutters. Fine warm painted project style but strong compact readable silhouette for48x40cells. Transparentbackground. Do NOT mirror directions; render true four views.",
+        "rawFile": "raw/small-animals/sheep-base.png",
+        "referenceImages": [
+          "references/sheep_flock-v1.png"
+        ]
+      },
+      {
+        "prompt": "Edit this exact four-sheep reference sheet. Keep ALL wool bodies, heads, ears, tails, scale, positions, four directional camera views and transparent background identical. Change ONLY the dark lower legs below the wool: alternate the walking pose, near front leg swings forward several pixels and near hind leg back, far legs opposite. Make a clearly separated step, no legs added, no body bobbing, no head movement. Four columns remain same. This is second animation frame, not new sheep.",
+        "rawFile": "raw/small-animals/sheep-step.png",
+        "referenceImages": [
+          "raw/small-animals/sheep-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "tool": "builtin imagegen + sharp",
+      "normalization": "Each generated direction alpha100 bbox cropped;fit contain cell-8,4pxpadding;singleLanczos resize; frame2 lower-leg rectangles imported only; all otherRGBA copied verbatim from frame1.",
+      "protectedMaskConvention": "white255 protected,black0 editable; rects hand-inspected avoidbodyheadtail",
+      "masks": [
+        "records/small-animals-sheep-protected-0.png",
+        "records/small-animals-sheep-protected-1.png",
+        "records/small-animals-sheep-protected-2.png",
+        "records/small-animals-sheep-protected-3.png"
+      ],
+      "noMirroring": true,
+      "model": "not provided",
+      "seed": "not provided"
+    },
+    "qa": {
+      "status": "candidate",
+      "measurementFile": "records/small-animals-sheep-qa.json",
+      "legAlternation": "Visible at native/enlarged; small source0.3 projection weak especiallydog/goose",
+      "directionConsistency": "four distinct views",
+      "bodyHeadTailProtectedPixelDifferences": 0
+    }
+  },
+  {
+    "id": "animal_walk/pig_single-v1",
+    "file": "assets/animal_walk/pig_single-v1.png",
+    "cell": [
+      48,
+      40
+    ],
+    "sheet": [
+      192,
+      80
+    ],
+    "pivot": [
+      24,
+      36
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create a transparent RGBA hand-painted medieval game animal four-direction reference sheet. Image1style palette only. Four equal columns in ONE horizontal row, ONE a lean brown-grey bristly medieval domestic pig, long snout floppyears thin curlingtail, NOT pinkmodernbreed percolumn. Sameanimal all4. Orthographicisometric camera30degree elevated. Column1 NE facingupper-right,headfarther; col2 SE lower-right headnearer; col3 SW lower-leftheadnearer; col4 NW upper-leftheadfarther. Realdistinctviews notmirroring. Feetclearlyseparate beneath body. Standingneutralpose for firstframe. Warmquiet painterly gameasset rendered withreadable silhouette for tiny48x40 cell. Upperleftlight, transparentbackground,noearth,noshadows,nootherobjects,nopeople,notext. Generoustransparentgutters.",
+        "rawFile": "raw/small-animals/pig-base.png",
+        "referenceImages": [
+          "references/pig_pair-v1.png"
+        ]
+      },
+      {
+        "prompt": "Edit exact pig fourdirection sheet to SECOND walkingframe. Keep body,head,neck,ears,tail,wings,furrgba positions EXACTLY unchanged. ONLY lowerlegs and feet swing alternate: nearfrontfoot forward, other back (nearforeleg and farhindleg forward,otherlegsback). Visible2-3pxstepdifferenceatfinalcell. No translation,bob,mirror. SamefourcolumnsNE SE SW NW transparentRGBA no addedobjects/text.",
+        "rawFile": "raw/small-animals/pig-step.png",
+        "referenceImages": [
+          "raw/small-animals/pig-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "tool": "builtin imagegen + sharp",
+      "normalization": "Each generated direction alpha100 bbox cropped;fit contain cell-8,4pxpadding;singleLanczos resize; frame2 lower-leg rectangles imported only; all otherRGBA copied verbatim from frame1.",
+      "protectedMaskConvention": "white255 protected,black0 editable; rects hand-inspected avoidbodyheadtail",
+      "masks": [
+        "records/small-animals-pig-protected-0.png",
+        "records/small-animals-pig-protected-1.png",
+        "records/small-animals-pig-protected-2.png",
+        "records/small-animals-pig-protected-3.png"
+      ],
+      "noMirroring": true,
+      "model": "not provided",
+      "seed": "not provided"
+    },
+    "qa": {
+      "status": "candidate",
+      "measurementFile": "records/small-animals-pig-qa.json",
+      "legAlternation": "Visible at native/enlarged; small source0.3 projection weak especiallydog/goose",
+      "directionConsistency": "four distinct views",
+      "bodyHeadTailProtectedPixelDifferences": 0
+    }
+  },
+  {
+    "id": "animal_walk/goose_single-v1",
+    "file": "assets/animal_walk/goose_single-v1.png",
+    "cell": [
+      32,
+      32
+    ],
+    "sheet": [
+      128,
+      64
+    ],
+    "pivot": [
+      16,
+      28
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create a transparent RGBA hand-painted medieval game animal four-direction reference sheet. Image1style palette only. Four equal columns in ONE horizontal row, ONE a domestic grey-and-warm-white goose, orangebeak and two orangewebbedfeet, longuprightneck, noeggs percolumn. Sameanimal all4. Orthographicisometric camera30degree elevated. Column1 NE facingupper-right,headfarther; col2 SE lower-right headnearer; col3 SW lower-leftheadnearer; col4 NW upper-leftheadfarther. Realdistinctviews notmirroring. Feetclearlyseparate beneath body. Standingneutralpose for firstframe. Warmquiet painterly gameasset rendered withreadable silhouette for tiny32x32 cell. Upperleftlight, transparentbackground,noearth,noshadows,nootherobjects,nopeople,notext. Generoustransparentgutters.",
+        "rawFile": "raw/small-animals/goose-base.png",
+        "referenceImages": [
+          "references/sheep_flock-v1.png"
+        ]
+      },
+      {
+        "prompt": "Edit exact goose fourdirection sheet to SECOND walkingframe. Keep body,head,neck,ears,tail,wings,furrgba positions EXACTLY unchanged. ONLY lowerlegs and feet swing alternate: nearfrontfoot forward, other back (two webbedfeet alternate one lifted bent backoneplantedforward). Visible2-3pxstepdifferenceatfinalcell. No translation,bob,mirror. SamefourcolumnsNE SE SW NW transparentRGBA no addedobjects/text.",
+        "rawFile": "raw/small-animals/goose-step.png",
+        "referenceImages": [
+          "raw/small-animals/goose-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "tool": "builtin imagegen + sharp",
+      "normalization": "Each generated direction alpha100 bbox cropped;fit contain cell-8,4pxpadding;singleLanczos resize; frame2 lower-leg rectangles imported only; all otherRGBA copied verbatim from frame1.",
+      "protectedMaskConvention": "white255 protected,black0 editable; rects hand-inspected avoidbodyheadtail",
+      "masks": [
+        "records/small-animals-goose-protected-0.png",
+        "records/small-animals-goose-protected-1.png",
+        "records/small-animals-goose-protected-2.png",
+        "records/small-animals-goose-protected-3.png"
+      ],
+      "noMirroring": true,
+      "model": "not provided",
+      "seed": "not provided"
+    },
+    "qa": {
+      "status": "candidate",
+      "measurementFile": "records/small-animals-goose-qa.json",
+      "legAlternation": "Visible at native/enlarged; small source0.3 projection weak especiallydog/goose",
+      "directionConsistency": "NE/NW rearquarter reads shallow; all4 distinct unmirroredpaintings",
+      "bodyHeadTailProtectedPixelDifferences": 0
+    }
+  },
+  {
+    "id": "animal_walk/dog_herding-v1",
+    "file": "assets/animal_walk/dog_herding-v1.png",
+    "cell": [
+      40,
+      32
+    ],
+    "sheet": [
+      160,
+      64
+    ],
+    "pivot": [
+      20,
+      28
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create a transparent RGBA hand-painted medieval game animal four-direction reference sheet. Image1style palette only. Four equal columns in ONE horizontal row, ONE a medieval medium herdingdog, lean grey-brown wiry shaggycoat, natural hangingears,longtail, no modern breed markings,nocollar percolumn. Sameanimal all4. Orthographicisometric camera30degree elevated. Column1 NE facingupper-right,headfarther; col2 SE lower-right headnearer; col3 SW lower-leftheadnearer; col4 NW upper-leftheadfarther. Realdistinctviews notmirroring. Feetclearlyseparate beneath body. Standingneutralpose for firstframe. Warmquiet painterly gameasset rendered withreadable silhouette for tiny40x32 cell. Upperleftlight, transparentbackground,noearth,noshadows,nootherobjects,nopeople,notext. Generoustransparentgutters.",
+        "rawFile": "raw/small-animals/dog-base.png",
+        "referenceImages": [
+          "references/sheep_flock-v1.png"
+        ]
+      },
+      {
+        "prompt": "Edit exact dog fourdirection sheet to SECOND walkingframe. Keep body,head,neck,ears,tail,wings,furrgba positions EXACTLY unchanged. ONLY lowerlegs and feet swing alternate: nearfrontfoot forward, other back (nearforeleg and farhindleg forward,otherlegsback). Visible2-3pxstepdifferenceatfinalcell. No translation,bob,mirror. SamefourcolumnsNE SE SW NW transparentRGBA no addedobjects/text.",
+        "rawFile": "raw/small-animals/dog-step.png",
+        "referenceImages": [
+          "raw/small-animals/dog-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "tool": "builtin imagegen + sharp",
+      "normalization": "Each generated direction alpha100 bbox cropped;fit contain cell-8,4pxpadding;singleLanczos resize; frame2 lower-leg rectangles imported only; all otherRGBA copied verbatim from frame1.",
+      "protectedMaskConvention": "white255 protected,black0 editable; rects hand-inspected avoidbodyheadtail",
+      "masks": [
+        "records/small-animals-dog-protected-0.png",
+        "records/small-animals-dog-protected-1.png",
+        "records/small-animals-dog-protected-2.png",
+        "records/small-animals-dog-protected-3.png"
+      ],
+      "noMirroring": true,
+      "model": "not provided",
+      "seed": "not provided"
+    },
+    "qa": {
+      "status": "candidate",
+      "measurementFile": "records/small-animals-dog-qa.json",
+      "legAlternation": "Visible at native/enlarged; small source0.3 projection weak especiallydog/goose",
+      "directionConsistency": "four distinct views",
+      "bodyHeadTailProtectedPixelDifferences": 0
+    }
+  }
+]

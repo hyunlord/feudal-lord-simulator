@@ -1,0 +1,155 @@
+{
+  "schema": [
+    "assetId",
+    "version",
+    "runtimePath",
+    "runtimeSha256",
+    "sourcePath",
+    "sourceSha256",
+    "tool",
+    "model",
+    "generatedAt",
+    "prompt",
+    "referenceInputs",
+    "seed",
+    "candidates",
+    "manualEdits",
+    "artBible",
+    "historicalProfile",
+    "owner",
+    "usedIn",
+    "status",
+    "notes"
+  ],
+  "rowCount": 7,
+  "columnCount": 20,
+  "exactFullTextRoundtrip": true,
+  "statusAllCandidate": true,
+  "sourceAttempts": [
+    {
+      "id": "road/earth_strip-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-a0cf1b00-9111-4a48-88e7-0d613ef20f2f.png",
+      "tool": "image_gen",
+      "model": "not exposed",
+      "prompt": "Use case: stylized-concept. Production game sprite candidate for Feudal Lord Simulator, southern England 1300–1450, historical profile S_England_1300_1450_v1, art bible AB_2026-09-19_v1.\nFour attached PROJECT-OWNED images are reference inputs only: Image 1 grass.png sets the subdued olive grass palette; Image 2 forest_floor.png sets the warm dark leaf-litter earth; Image 3 packed_earth_road.png sets the muted pale warm compacted earth; Image 4 wheat_farm_ripe-v4.png sets the hand-painted isometric sprite finish. Use ALL four to keep a coherent game palette. Do not reproduce the wheat crop unless requested (none is requested here).\nPrioritize final display readability: source tile 128×64 pixels displays as 64×32 CSS pixels at zoom 1 and 38.4×19.2 at zoom .6. Draw BIG SIMPLE COHERENT forms at the stated asset dimensions. Do not make a highly detailed large painting. No tiny noisy marks. Main tufts, rut ridges and silhouette changes must remain several screen pixels wide at .6 zoom.\nGenuine transparent PNG alpha, no white or black backdrop, no checkerboard painted into image. Soft upper-left light but no directional cast shadow. Crisp painterly edges, no Gaussian blur, no bloom, no smeared shading, no photographic noise. No text, labels, watermark, grid, raised tile base, buildings, people, animals, modern objects, flowers, fantasy plants. No outside artworks.\nASSET: earth road repeating strip. Exact requested final canvas 512×64px, perfectly overhead TOP-DOWN, no isometric tilt and no perspective. Horizontal left-to-right road direction. Road surface must reach the LEFT and RIGHT canvas edges: USER EXPLICITLY EXEMPTED the left/right 8px padding for this road only. Leave rows 0..7 and 56..63 fully transparent. Between these blank rows and the central road, about 8px of irregular sparse earth-and-grass coverage creates alpha edge transition; this is material breakup, NOT blurry fog. The central flat compacted earth is warm gray-brown matching packed_earth_road.png. TWO understated, readable horizontal wagon wheel ruts, not modern tire tracks, about 6–8px wide at source scale, separated by a quiet crown. A few very small low-contrast stones, a few short olive grass blades at the outer long edges. Leftmost and rightmost 16px must form matching continuation bands so three exact copies placed edge-to-edge are seamless: rut heights, alpha profile, earth value and brush shapes continue smoothly. Avoid any unique focal stone or strong periodic motif. Flat strip only; no scene, no decorative frame.",
+      "attempt": 1,
+      "selected": true,
+      "sha256": "76fc5135d452445d54d014c5a72ad833d2da4ff45f37126f3522ddec8380a51a",
+      "generatedAt": "2026-09-24T04:37:15.925Z"
+    },
+    {
+      "id": "boundary/forest_fringe_a-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-d03e0a33-e234-4724-84f0-1aad4141137b.png",
+      "tool": "image_gen",
+      "model": "not exposed",
+      "prompt": "Use case: stylized-concept. Production game sprite candidate for Feudal Lord Simulator, southern England 1300–1450, historical profile S_England_1300_1450_v1, art bible AB_2026-09-19_v1.\nFour attached PROJECT-OWNED images are reference inputs only: Image 1 grass.png sets the subdued olive grass palette; Image 2 forest_floor.png sets the warm dark leaf-litter earth; Image 3 packed_earth_road.png sets the muted pale warm compacted earth; Image 4 wheat_farm_ripe-v4.png sets the hand-painted isometric sprite finish. Use ALL four to keep a coherent game palette. Do not reproduce the wheat crop unless requested (none is requested here).\nPrioritize final display readability: source tile 128×64 pixels displays as 64×32 CSS pixels at zoom 1 and 38.4×19.2 at zoom .6. Draw BIG SIMPLE COHERENT forms at the stated asset dimensions. Do not make a highly detailed large painting. No tiny noisy marks. Main tufts, rut ridges and silhouette changes must remain several screen pixels wide at .6 zoom.\nGenuine transparent PNG alpha, no white or black backdrop, no checkerboard painted into image. Soft upper-left light but no directional cast shadow. Crisp painterly edges, no Gaussian blur, no bloom, no smeared shading, no photographic noise. No text, labels, watermark, grid, raised tile base, buildings, people, animals, modern objects, flowers, fantasy plants. No outside artworks.\nASSET: forest-edge decal A, exact requested final canvas 128×96px. 2:1 orthographic isometric ground view, ground axes ±26.565 degrees, no tile base. One low thin boundary grouping spanning about one tile: only 2–3 BIG, simple olive grass tufts, a warm dark leaf-litter patch that blends grass.png into forest_floor.png, and ONE small squat fern/bush. Most foliage mass is on the LEFT; right half tapers to a small tuft and scattered leaf shapes. Keep all painted alpha inside x=8..119 and y=8..87; outer 8px on all four sides completely transparent. Ground contact pivot at lower middle near (64,87); grouping spreads upward/back from it. Side ends disappear as fewer individual grass/leaf shapes with honest alpha, not blur. Sparse earth under plants, no thick oval ground slab. No tree trunks, branches, crops, flowers or cast shadow. Large grouped silhouettes with few broad leaf lobes, suitable for a 64×48px displayed decal at zoom1 and 38×29 at .6. A low vegetation EDGE, not a standalone dense ornamental shrub.",
+      "attempt": 1,
+      "selected": false,
+      "sha256": "d76c93103f4ed7fab5b5d14829aa9727d4b83fda34a67c5945566f2a0687309f",
+      "generatedAt": "2026-09-24T04:36:25.098Z"
+    },
+    {
+      "id": "boundary/forest_fringe_b-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-6a8e9ef9-1e45-497c-9f40-9e18c4aae7bc.png",
+      "tool": "image_gen",
+      "model": "not exposed",
+      "prompt": "Use case: stylized-concept. Production game sprite candidate for Feudal Lord Simulator, southern England 1300–1450, historical profile S_England_1300_1450_v1, art bible AB_2026-09-19_v1.\nFour attached PROJECT-OWNED images are reference inputs only: Image 1 grass.png sets the subdued olive grass palette; Image 2 forest_floor.png sets the warm dark leaf-litter earth; Image 3 packed_earth_road.png sets the muted pale warm compacted earth; Image 4 wheat_farm_ripe-v4.png sets the hand-painted isometric sprite finish. Use ALL four to keep a coherent game palette. Do not reproduce the wheat crop unless requested (none is requested here).\nPrioritize final display readability: source tile 128×64 pixels displays as 64×32 CSS pixels at zoom 1 and 38.4×19.2 at zoom .6. Draw BIG SIMPLE COHERENT forms at the stated asset dimensions. Do not make a highly detailed large painting. No tiny noisy marks. Main tufts, rut ridges and silhouette changes must remain several screen pixels wide at .6 zoom.\nGenuine transparent PNG alpha, no white or black backdrop, no checkerboard painted into image. Soft upper-left light but no directional cast shadow. Crisp painterly edges, no Gaussian blur, no bloom, no smeared shading, no photographic noise. No text, labels, watermark, grid, raised tile base, buildings, people, animals, modern objects, flowers, fantasy plants. No outside artworks.\nASSET: forest-edge decal B, exact requested final canvas 128×96px. 2:1 orthographic isometric ground view, ground axes ±26.565 degrees, no tile base. One low boundary grouping spanning about one tile: 2–3 BIG simple olive grass tufts, sparse warm dark leaf litter, ONE small broad squat fern/bush. Unlike variant A, the main foliage mass is on the RIGHT, with a lower open gap at center-left and a short left tuft. Make a DIFFERENT silhouette and leaf grouping, NOT simply a mirrored A. All painted alpha inside x=8..119 and y=8..87, outer 8px fully transparent on all sides. Lower-middle ground contact pivot near (64,87). Left/right ends taper through sparse leaf and blade coverage, no blur. No tree trunks, branches, crops, flowers, raised earth base or shadow. Keep the same low height, muted value range and brush style as project ground references. Large grouped forms for display at 64×48px (zoom1), 38×29px (.6).",
+      "attempt": 1,
+      "selected": false,
+      "sha256": "adde9fee09924e7b5b5fe24649cb8b349db873e46385e581d52b32a47f68d510",
+      "generatedAt": "2026-09-24T04:38:30.442Z"
+    },
+    {
+      "id": "boundary/field_furrow-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-c695b895-c37a-4793-bb06-cef21cf2ba97.png",
+      "tool": "image_gen",
+      "model": "not exposed",
+      "prompt": "Use case: stylized-concept. Production game sprite candidate for Feudal Lord Simulator, southern England 1300–1450, historical profile S_England_1300_1450_v1, art bible AB_2026-09-19_v1.\nFour attached PROJECT-OWNED images are reference inputs only: Image 1 grass.png sets the subdued olive grass palette; Image 2 forest_floor.png sets the warm dark leaf-litter earth; Image 3 packed_earth_road.png sets the muted pale warm compacted earth; Image 4 wheat_farm_ripe-v4.png sets the hand-painted isometric sprite finish. Use ALL four to keep a coherent game palette. Do not reproduce the wheat crop unless requested (none is requested here).\nPrioritize final display readability: source tile 128×64 pixels displays as 64×32 CSS pixels at zoom 1 and 38.4×19.2 at zoom .6. Draw BIG SIMPLE COHERENT forms at the stated asset dimensions. Do not make a highly detailed large painting. No tiny noisy marks. Main tufts, rut ridges and silhouette changes must remain several screen pixels wide at .6 zoom.\nGenuine transparent PNG alpha, no white or black backdrop, no checkerboard painted into image. Soft upper-left light but no directional cast shadow. Crisp painterly edges, no Gaussian blur, no bloom, no smeared shading, no photographic noise. No text, labels, watermark, grid, raised tile base, buildings, people, animals, modern objects, flowers, fantasy plants. No outside artworks.\nASSET: shallow field furrow decal, exact requested final canvas 128×64px, orthographic 2:1 isometric view. One SINGLE short shallow earth groove running along the rising-right isometric ground axis (screen slope -1/2). Two modest broad warm-earth lips alongside the central dark groove; small low raised soil ridges, NOT a ditch, wall, log, trench, cliff or mound. The groove must read as one clear simple dark-brown line with a restrained lighter upper-left soil rim even when shown at 64×32 then 38×19px. Match earth beneath wheat_farm_ripe-v4.png and packed_earth_road.png, do NOT include wheat or any crops, grass, stones or props. Fully transparent background, paint restricted to x=8..119 y=8..55, all four outer 8px margins fully transparent. Side ends taper in amount of soil and alpha. Lower-middle ground contact anchor near (64,55), no separate cast shadow. Crisp hand-painted soil shapes, no fuzzy blur/no micro-noise. The whole decal is only the slim furrow and its two low earthen lips.",
+      "attempt": 1,
+      "selected": true,
+      "sha256": "b3a660aee11ffdf0fd757ede2d10849be33e478b2e2764f8b8aae9720ee01e27",
+      "generatedAt": "2026-09-24T04:37:49.936Z"
+    },
+    {
+      "id": "boundary/grass_edge-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-b27cc880-dc33-4cfc-93f2-4df20aa4d569.png",
+      "tool": "image_gen",
+      "model": "not exposed",
+      "prompt": "Use case: stylized-concept. Production game sprite candidate for Feudal Lord Simulator, southern England 1300–1450, historical profile S_England_1300_1450_v1, art bible AB_2026-09-19_v1.\nFour attached PROJECT-OWNED images are reference inputs only: Image 1 grass.png sets the subdued olive grass palette; Image 2 forest_floor.png sets the warm dark leaf-litter earth; Image 3 packed_earth_road.png sets the muted pale warm compacted earth; Image 4 wheat_farm_ripe-v4.png sets the hand-painted isometric sprite finish. Use ALL four to keep a coherent game palette. Do not reproduce the wheat crop unless requested (none is requested here).\nPrioritize final display readability: source tile 128×64 pixels displays as 64×32 CSS pixels at zoom 1 and 38.4×19.2 at zoom .6. Draw BIG SIMPLE COHERENT forms at the stated asset dimensions. Do not make a highly detailed large painting. No tiny noisy marks. Main tufts, rut ridges and silhouette changes must remain several screen pixels wide at .6 zoom.\nGenuine transparent PNG alpha, no white or black backdrop, no checkerboard painted into image. Soft upper-left light but no directional cast shadow. Crisp painterly edges, no Gaussian blur, no bloom, no smeared shading, no photographic noise. No text, labels, watermark, grid, raised tile base, buildings, people, animals, modern objects, flowers, fantasy plants. No outside artworks.\nASSET: grass edge decal, exact requested final canvas 128×64px, 2:1 orthographic isometric ground view. A short low GRASS-TO-BARE-GROUND boundary segment covering about one tile along the rising-right isometric axis (screen slope -1/2). Its UPPER/back side is subdued olive grass matching grass.png; its LOWER/front side is genuine transparent alpha to overlay dirt supplied by the game. Irregular short grass fingers extend down into transparency, with 2–3 clearly grouped squat tufts. Do not paint a brown ground plate or a complete grass diamond. Narrow broken fringe, not a large bush. Outer 8px all four sides completely transparent, painted area x=8..119 y=8..55. Lower middle ground anchor near (64,55). Left/right ends taper naturally as sparse blades, no blur. Large readable silhouette scallops, crisp broad painterly marks, no tiny repeated comb teeth, no flowers/crops/shadow. Intended runtime size 64×32px at zoom1, about38×19px at .6.",
+      "attempt": 1,
+      "selected": true,
+      "sha256": "aefa168f9d89fa8efffb98b6671889451c6c86a7defc39b2dae591ecbef2a2bc",
+      "generatedAt": "2026-09-24T04:39:05.239Z"
+    },
+    {
+      "id": "boundary/forest_fringe_a-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-e3e21cc7-8c65-45c8-b203-dc019e5ab5bd.png",
+      "tool": "image_gen",
+      "model": "not exposed",
+      "prompt": "Edit the first attached project-owned candidate sprite. The remaining four project images are grass.png, forest_floor.png, packed_earth_road.png, wheat_farm_ripe-v4.png and are palette/style references. This is a TARGETED READABILITY REVISION, not a new scene.\nKeep a true transparent background and the same medieval English low vegetation edge subject. Keep variant A main foliage on the LEFT. Exact delivery target is 128×96 pixels, with 8px fully empty alpha margin all around and bottom-center ground anchor. The current candidate disappears at 38×29px runtime. REDRAW into much larger, simpler, chunkier forms: only TWO broad grass tufts and ONE small squat fern, fewer broad leaf lobes, strongly simplified coherent silhouette. Reduce the leaf-litter ground plate to a thin narrow broken line. The occupied artwork should be about112px WIDE and72–76px TALL at target resolution, not a wide flat smear; plant mass should occupy most of that height. Raise the foliage midtones about15 percent relative to the dark leaf litter, still muted olive matching the existing grass. Modest tight contact darks at roots only, NO cast shadow. Some negative-space gap between tufts, do not turn into a full hedge.\nDraw as a consciously low-resolution game icon: broad opaque leaf masses with 2–3 tonal planes, no vein detail, no speckle, no fine leaf confetti, no tiny repeated blades. 2:1 orthographic isometric ground perspective. Do NOT add tree trunks, flowers, stones, buildings, text, tile base or blur. Preserve left/right alpha taper. Distinct A/B silhouette, not mirror clones. Make the final 64×48 and38×29 presentation readable without sharpening filters.",
+      "attempt": 2,
+      "selected": true,
+      "sha256": "cebfdd871ef563e8362be326347a6aa6c98ce5b104fd30e5c74b1e10b08c07f8",
+      "generatedAt": "2026-09-24T04:43:58.514Z"
+    },
+    {
+      "id": "boundary/forest_fringe_b-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-0d654feb-edf3-4eb1-af0f-ea741c305ae3.png",
+      "tool": "image_gen",
+      "model": "not exposed",
+      "prompt": "Edit the first attached project-owned candidate sprite. The remaining four project images are grass.png, forest_floor.png, packed_earth_road.png, wheat_farm_ripe-v4.png and are palette/style references. This is a TARGETED READABILITY REVISION, not a new scene.\nKeep a true transparent background and the same medieval English low vegetation edge subject. Keep variant B main foliage on the RIGHT. Exact delivery target is 128×96 pixels, with 8px fully empty alpha margin all around and bottom-center ground anchor. The current candidate disappears at 38×29px runtime. REDRAW into much larger, simpler, chunkier forms: only TWO broad grass tufts and ONE small squat fern, fewer broad leaf lobes, strongly simplified coherent silhouette. Reduce the leaf-litter ground plate to a thin narrow broken line. The occupied artwork should be about112px WIDE and72–76px TALL at target resolution, not a wide flat smear; plant mass should occupy most of that height. Raise the foliage midtones about15 percent relative to the dark leaf litter, still muted olive matching the existing grass. Modest tight contact darks at roots only, NO cast shadow. Some negative-space gap between tufts, do not turn into a full hedge.\nDraw as a consciously low-resolution game icon: broad opaque leaf masses with 2–3 tonal planes, no vein detail, no speckle, no fine leaf confetti, no tiny repeated blades. 2:1 orthographic isometric ground perspective. Do NOT add tree trunks, flowers, stones, buildings, text, tile base or blur. Preserve left/right alpha taper. Distinct A/B silhouette, not mirror clones. Make the final 64×48 and38×29 presentation readable without sharpening filters.",
+      "attempt": 2,
+      "selected": true,
+      "sha256": "3a6589f6e7965d6e2a432620b5de67aaec6aecf0714816734a70aacf704530f1",
+      "generatedAt": "2026-09-24T04:44:36.659Z"
+    }
+  ],
+  "references": [
+    {
+      "filename": "grass.png",
+      "localPath": "/tmp/astra-D1-work-20260924/references/astra-D1-reference-files/grass.png",
+      "sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+    },
+    {
+      "filename": "forest_floor.png",
+      "localPath": "/tmp/astra-D1-work-20260924/references/astra-D1-reference-files/forest_floor.png",
+      "sha256": "dee8eb3c4c016f92ee212df5f5517a8c16a03e493e57b22a130fb74d347b3799"
+    },
+    {
+      "filename": "packed_earth_road.png",
+      "localPath": "/tmp/astra-D1-work-20260924/references/astra-D1-reference-files/packed_earth_road.png",
+      "sha256": "d9c7d7c69424615971e6343e945c5767b9ffca69dda51de8e500913596aca2a9"
+    },
+    {
+      "filename": "wheat_farm_ripe-v4.png",
+      "localPath": "/tmp/astra-D1-work-20260924/references/astra-D1-reference-files/wheat_farm_ripe-v4.png",
+      "sha256": "0c954dd543045d5b3717a592aa9eeacd99a86d1b67d87ece40b8c1f5f27d14f2"
+    }
+  ],
+  "referenceArchive": {
+    "path": "/Users/rexxa/Downloads/astra-D1-reference-files.zip",
+    "sha256": "1fcae42095a51052c37b7c116f6e8c471bd90cdf76c6f9409d82de2a6739f68f"
+  },
+  "comparisonScreenshot": {
+    "filename": "corrected-screenshot-04-final-observation.png",
+    "localPath": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0-v2/combined-service-delivery-browser-corrected/corrected-screenshot-04-final-observation.png",
+    "sha256": "1f14e65f82e5d7c1f3d8a7286f21bc00a1d3a31a72016d1d8d9345c500f81736",
+    "generationInput": false,
+    "nativeZoom": "unknown"
+  },
+  "revisionInputs": [
+    {
+      "filename": "forest_fringe_a-v1.png",
+      "localPath": "/tmp/astra-D1-work-20260924/iteration1/forest_fringe_a-v1.png",
+      "sha256": "8c5d23a4c55132d63d9e4bad200367f82df816d91ebfcae6fee338d94609c674"
+    },
+    {
+      "filename": "forest_fringe_b-v1.png",
+      "localPath": "/tmp/astra-D1-work-20260924/iteration1/forest_fringe_b-v1.png",
+      "sha256": "22419ecc192420e68e0a32c1906d4defdaea414f7988be597c4f8127d23ee0af"
+    }
+  ],
+  "boundsFormat": "[x,y,width,height]; independent visual review uses [left,top,rightExclusive,bottomExclusive]",
+  "sourceOriginalsPackaged": false,
+  "note": "원본 생성 PNG 및 참조 PNG는 기록된 로컬 경로에 보존. ZIP은 요청된 PNG 7장만 포함."
+}

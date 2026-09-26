@@ -1,0 +1,878 @@
+[
+  {
+    "id": "cart_load_bread_ne-v1",
+    "file": "assets/cart_load_bread_ne-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: ONE low broad dark-brown woven wicker BASKET FILLED WITH FOUR LARGE GOLDEN ROUND BREAD LOAVES, golden domes project visibly above a deep dark basket rim, NO sacks. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from lower-left to upper-right (NE-SW, like leftmost cart), foreground end lower-left. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/bread_ne.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 420,
+        "y0": 210,
+        "x1": 1219,
+        "y1": 835
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        36,
+        28
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 0
+      },
+      "cartBedPivot": {
+        "hand": [
+          31,
+          78
+        ],
+        "ox": [
+          26,
+          80
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "e1a55c9991a2366d3ef5fab4b2aa3538395fd0ab55daeffa7e707c15384d897b",
+      "rgba": true,
+      "transparentPixels": 5389,
+      "nonzeroAlphaPixels": 755,
+      "softAlphaPixels": 706,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_bread_nw-v1",
+    "file": "assets/cart_load_bread_nw-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: ONE low broad dark-brown woven wicker BASKET FILLED WITH FOUR LARGE GOLDEN ROUND BREAD LOAVES, golden domes project visibly above a deep dark basket rim, NO sacks. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from upper-left to lower-right (NW-SE, like SECOND cart); foreground end lower-right. The length slopes DOWN toward the RIGHT. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/bread_nw.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 311,
+        "y0": 159,
+        "x1": 1190,
+        "y1": 846
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        36,
+        28
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 1
+      },
+      "cartBedPivot": {
+        "hand": [
+          29,
+          68
+        ],
+        "ox": [
+          25,
+          66
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "72b21c39c3eba87d87a30327bb8ae35873218ac01ed31b260f044f234725d86c",
+      "rgba": true,
+      "transparentPixels": 5423,
+      "nonzeroAlphaPixels": 721,
+      "softAlphaPixels": 667,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_grainsack_ne-v1",
+    "file": "assets/cart_load_grainsack_ne-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: THREE plump tightly tied oatmeal linen GRAIN SACKS, bulging pear silhouettes with distinct tied necks, broad simple folds. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from lower-left to upper-right (NE-SW, like leftmost cart), foreground end lower-left. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/grainsack_ne.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 441,
+        "y0": 140,
+        "x1": 1170,
+        "y1": 874
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        29,
+        29
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 0
+      },
+      "cartBedPivot": {
+        "hand": [
+          31,
+          78
+        ],
+        "ox": [
+          26,
+          80
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "61b5e8545e1719608c3ae16ea04d78fb71b54fc69b5e7befcc31c18b7dcb96c9",
+      "rgba": true,
+      "transparentPixels": 5590,
+      "nonzeroAlphaPixels": 554,
+      "softAlphaPixels": 508,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_grainsack_nw-v1",
+    "file": "assets/cart_load_grainsack_nw-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Create ONE isolated low mound of THREE plump tightly tied oatmeal-colored coarse linen GRAIN SACKS, broad bulbous silhouettes, no printed marks. Cart cargo ONLY: no cart, wheels, ground, people, shadow or glow. Reference cart sheet supplies painterly medieval style and isometric camera. Arrangement has narrow rectangular footprint long axis lower-right to upper-left (NW-SE, second cart in reference), evenly tied bulging sacks clustered in two rows. Soft upper-left light, warm muted beige, strong broad folds, no micro texture. True transparent RGBA background all the way to crisp object edges. Absolutely no outer glow, atmosphere, drop shadow, floor or background. Center object with generous transparent margins. Designed for 96x64 layer later downsized, shape must read at 20 pixels. No text or border.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/grainsack_nw.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 386,
+        "y0": 147,
+        "x1": 1139,
+        "y1": 885
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        30,
+        29
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 1
+      },
+      "cartBedPivot": {
+        "hand": [
+          29,
+          68
+        ],
+        "ox": [
+          25,
+          66
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "5259ce23d09617005064098161c1460b99219e46c94e64371ec6b307ac2a4cbe",
+      "rgba": true,
+      "transparentPixels": 5539,
+      "nonzeroAlphaPixels": 605,
+      "softAlphaPixels": 561,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_log_ne-v1",
+    "file": "assets/cart_load_log_ne-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Create ONE isolated compact load of FOUR SHORT ROUND LOGS, stacked two layers, with very obvious large pale circular cut end faces and dark bark. This is ONLY cargo, NO cart, wheels, shafts, ground or person. Reference image is the project's cart sheet, for painterly brown medieval game style and camera only. View orthographic isometric, load long axis from lower-left to upper-right (NE-SW, same axis as leftmost cart). Cut ends face lower-left. Chunky clean silhouettes readable at tiny 20px width, soft upper-left light, subdued warm palette, minimal grain texture. True transparent RGBA background, contact shading only inside load, no outside shadow. Center subject with generous transparent margins. Final use is cargo fitted within 96x64 transparent layer; low short stack and narrow diamond base. No text, no border, no cartoon outlines.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/log_ne.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 485,
+        "y0": 244,
+        "x1": 1090,
+        "y1": 767
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        34,
+        29
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 0
+      },
+      "cartBedPivot": {
+        "hand": [
+          31,
+          78
+        ],
+        "ox": [
+          26,
+          80
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "73c5fcde0050e5c83398a68b691a9f051054ade8f9df69b1fc9d5d96c2803c73",
+      "rgba": true,
+      "transparentPixels": 5411,
+      "nonzeroAlphaPixels": 733,
+      "softAlphaPixels": 679,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_log_nw-v1",
+    "file": "assets/cart_load_log_nw-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: FOUR short ROUND LOGS stacked in two layers, very obvious LARGE pale circular cut ends, dark brown bark, tied together. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from upper-left to lower-right (NW-SE, like SECOND cart); foreground end lower-right. The length slopes DOWN toward the RIGHT. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/log_nw.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 399,
+        "y0": 219,
+        "x1": 1137,
+        "y1": 789
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        36,
+        28
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 1
+      },
+      "cartBedPivot": {
+        "hand": [
+          29,
+          68
+        ],
+        "ox": [
+          25,
+          66
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "a19d1bfad456494a858c59f9a9c14483cf045c584c64c590708c6552c075ec5d",
+      "rgba": true,
+      "transparentPixels": 5456,
+      "nonzeroAlphaPixels": 688,
+      "softAlphaPixels": 638,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_rawstone_ne-v1",
+    "file": "assets/cart_load_rawstone_ne-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: THREE rough unworked RAW ROCK chunks, dark slate-gray, jagged irregular triangular shapes of different sizes, broken craggy silhouette, NO square masonry. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from lower-left to upper-right (NE-SW, like leftmost cart), foreground end lower-left. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/rawstone_ne.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 483,
+        "y0": 275,
+        "x1": 1103,
+        "y1": 793
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        35,
+        29
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 0
+      },
+      "cartBedPivot": {
+        "hand": [
+          31,
+          78
+        ],
+        "ox": [
+          26,
+          80
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "777c24284823f4cbbae8aa53ff7e453fc83ca988efa0ba36b7b15a0219ffe228",
+      "rgba": true,
+      "transparentPixels": 5489,
+      "nonzeroAlphaPixels": 655,
+      "softAlphaPixels": 601,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_rawstone_nw-v1",
+    "file": "assets/cart_load_rawstone_nw-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: THREE rough unworked RAW ROCK chunks, dark slate-gray, jagged irregular triangular shapes of different sizes, broken craggy silhouette, NO square masonry. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from upper-left to lower-right (NW-SE, like SECOND cart); foreground end lower-right. The length slopes DOWN toward the RIGHT. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/rawstone_nw.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 424,
+        "y0": 186,
+        "x1": 1124,
+        "y1": 833
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        31,
+        29
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 1
+      },
+      "cartBedPivot": {
+        "hand": [
+          29,
+          68
+        ],
+        "ox": [
+          25,
+          66
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "b43cc7ffc5a2a50402d31a7bfc52a6dd0ad9c18b41d358ddaf6065326fbfe1f8",
+      "rgba": true,
+      "transparentPixels": 5572,
+      "nonzeroAlphaPixels": 572,
+      "softAlphaPixels": 525,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_stone_ne-v1",
+    "file": "assets/cart_load_stone_ne-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: THREE large DRESSED STONE BLOCKS squared ashlar masonry, pale cool gray, sharp right-angle corners, broad flat faces, geometric staggered stack. NO round rocks. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from lower-left to upper-right (NE-SW, like leftmost cart), foreground end lower-left. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/stone_ne.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 434,
+        "y0": 176,
+        "x1": 1140,
+        "y1": 874
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        29,
+        29
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 0
+      },
+      "cartBedPivot": {
+        "hand": [
+          31,
+          78
+        ],
+        "ox": [
+          26,
+          80
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "823cfc3797a48aee83d4e88ef6eb0670c27e2b9a86fda3fdca04385f93ccacd6",
+      "rgba": true,
+      "transparentPixels": 5531,
+      "nonzeroAlphaPixels": 613,
+      "softAlphaPixels": 563,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_stone_nw-v1",
+    "file": "assets/cart_load_stone_nw-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: THREE large DRESSED STONE BLOCKS squared ashlar masonry, pale cool gray, sharp right-angle corners, broad flat faces, geometric staggered stack. NO round rocks. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from upper-left to lower-right (NW-SE, like SECOND cart); foreground end lower-right. The length slopes DOWN toward the RIGHT. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/stone_nw.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 453,
+        "y0": 226,
+        "x1": 1082,
+        "y1": 812
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        31,
+        29
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 1
+      },
+      "cartBedPivot": {
+        "hand": [
+          29,
+          68
+        ],
+        "ox": [
+          25,
+          66
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "ed7816104ecff8b7b6d8338ed37570836e9a0a3202279bcecdad4a8d6d863fcf",
+      "rgba": true,
+      "transparentPixels": 5483,
+      "nonzeroAlphaPixels": 661,
+      "softAlphaPixels": 615,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_timber_ne-v1",
+    "file": "assets/cart_load_timber_ne-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: FOUR LONG flat sawn wooden BOARDS neatly stacked in two layers: long straight parallel edges, flat rectangular end faces, pale honey wood. NOT round logs. Clear elongated flat stack silhouette. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from lower-left to upper-right (NE-SW, like leftmost cart), foreground end lower-left. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/timber_ne.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 431,
+        "y0": 255,
+        "x1": 1198,
+        "y1": 806
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        36,
+        26
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 0
+      },
+      "cartBedPivot": {
+        "hand": [
+          31,
+          78
+        ],
+        "ox": [
+          26,
+          80
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "c21201698e5f6046994bf17e9d393334334c528afb59ff99e2bf8f0fa1240076",
+      "rgba": true,
+      "transparentPixels": 5560,
+      "nonzeroAlphaPixels": 584,
+      "softAlphaPixels": 539,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  },
+  {
+    "id": "cart_load_timber_nw-v1",
+    "file": "assets/cart_load_timber_nw-v1.png",
+    "width": 96,
+    "height": 64,
+    "role": "object",
+    "pivot": [
+      48,
+      48
+    ],
+    "status": "candidate",
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ROLE object/cart cargo overlay. Generate ONE isolated cargo arrangement: FOUR LONG flat sawn wooden BOARDS neatly stacked in two layers: long straight parallel edges, flat rectangular end faces, pale honey wood. NOT round logs. Clear elongated flat stack silhouette. Only cargo, no vehicle, wheels, shafts, person or ground. Reference image is project cart sheet for hand-painted medieval miniature style and camera ONLY. Orthographic isometric view, footprint long axis from upper-left to lower-right (NW-SE, like SECOND cart); foreground end lower-right. The length slopes DOWN toward the RIGHT. Low compact narrow rectangular base appropriate for cartbed. Soft upper-left light, muted medieval natural colors, broad simple forms that remain distinct when reduced to 11px wide. Actual transparent RGBA background with crisp object edge: no outer glow, background, drop shadow or floor. Center with generous transparent margins. Destination is96x64 layer with fitted cargo around36x29; emphasize distinctive silhouette over tiny details. No text, border, watermark, photo texture or cartoon outline.",
+        "references": [
+          "../../references/astra-wave7-package/reference-files/astra-wave7-reference-files/cart_hand-v4.png"
+        ],
+        "rawFile": "sources/loads/timber_nw.png",
+        "model": null,
+        "seed": null,
+        "tool": "builtin imagegen"
+      }
+    ],
+    "processing": {
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "crop": {
+        "x0": 228,
+        "y0": 245,
+        "x1": 1182,
+        "y1": 903
+      },
+      "cropDefinition": "bounds of source alpha >16, source pixels and alpha otherwise preserved",
+      "resize": "one Lanczos resize from alpha crop, inside36x29, preserve aspect",
+      "visibleSize": [
+        36,
+        25
+      ],
+      "placement": "transparent96x64 canvas centerX48 bottomY48",
+      "script": "records/loads-fit.cjs",
+      "cartTemplateFrames": {
+        "width": 80,
+        "height": 128,
+        "frameIndex": 1
+      },
+      "cartBedPivot": {
+        "hand": [
+          29,
+          68
+        ],
+        "ox": [
+          25,
+          66
+        ]
+      }
+    },
+    "qa": {
+      "sha256": "0b328e92214cee1f25ce450b06f84870acea9a4e0d5ec2466310e341555f07de",
+      "rgba": true,
+      "transparentPixels": 5623,
+      "nonzeroAlphaPixels": 521,
+      "softAlphaPixels": 480,
+      "borderNonzeroAlpha": 0,
+      "proof": "proofs/02-cart-loads.png",
+      "fit": "manually inspected on hand and ox cart, both axes, no vehicle pixels in cargo",
+      "visual": "six family shapes differentiated at native scale; actual .3 scale cargo is about11px wide, so log rings and sack ties lose detail; complete categorical readability at zoom.6 is not established",
+      "representativeGate": "log_ne and grainsack_nw composed and inspected at .3 before other10 generation; this was two-cart fit proof, not a12x12 scene",
+      "runtime": "not installed; no game state, DPR or animation tests",
+      "widthTradeoff": "Diagnostic logs+sacks both axes compared crop-fit36/40/44px.40 appears plausible on handcart but adds only1.2screen px at.3;44 crowds or crosses rail footprint. Retained conservative36px fit; six-family zoom.6 readability remains unproven. Evidence records/loads-width-study.png at2x inspection magnification."
+    }
+  }
+]

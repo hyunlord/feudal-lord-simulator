@@ -1,0 +1,350 @@
+[
+  {
+    "id": "wk_drover_m-v1",
+    "file": "assets/workers/wk_drover_m-v1.png",
+    "width": 296,
+    "height": 148,
+    "cell": [
+      74,
+      74
+    ],
+    "role": "livestock and transport worker reskin sheet, 4 directions x 2 frames",
+    "pivot": [
+      37,
+      69
+    ],
+    "pivotConvention": "proposed cell ground anchor; image coordinates exact template; no source numeric runtime pivot provided",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: identity-preserve. EDIT the provided medieval walker sprite sheet, do not invent or regenerate poses. A male livestock drover. Muted faded woad slate blue wool tunic, narrow worn tan belt. Keep existing brown hood and leggings. No whip or props. Preserve exact original 4 columns x 2 rows, direction order NE SE SW NW and alternating walk frames. Every head hand leg boot, body proportion, spacing, camera angle, shadow, silhouette and pixel position unchanged. Change ONLY clothing surface colours/materials on the torso (and skirt for woman), keep all headwear geometry. South England 1300-1450 wool and linen, muted hand-painted isometric project style. No people added, no accessories in hands, no text, no grid, no background; transparent RGBA. Full original composition including all eight figures, same framing.",
+        "rawFile": "raw/workers/drover_m-raw.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave13-candidates-v1/sources/workers/template-man-original.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawSha256": "222440fd424669108f2b8c7a9d5b34ff4b2fa597ecc8acb7b1ce816e2a0c138c",
+        "rawSize": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1774,
+          "height": 887,
+          "space": "srgb",
+          "channels": 4,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": true,
+          "autoOrient": {
+            "width": 1774,
+            "height": 887
+          }
+        }
+      }
+    ],
+    "processing": {
+      "template": "sources/workers/template-man-original.png",
+      "source": "references/astra-wave13/astra-wave13-reference-files/actor_civilian_man-v1.png",
+      "method": "Source padded right/bottom to296x148 without rescaling. Builtin edit registered by per-cell alpha bounds. Generated clothing only, source head/hands/legs/boots and complete alpha silhouette retained verbatim. Exact raw sizes in generation record. No prop baked. Proposed anchor [37,69], source runtime pivot not supplied."
+    },
+    "qa": {
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "headFootMaxDifferencePx": 0,
+      "overlay": "proofs/04-workers-overlay.png",
+      "table": "records/workers-overlay-table.md",
+      "status": "candidate, not installed",
+      "image": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 36055,
+        "width": 296,
+        "height": 148,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 296,
+          "height": 148
+        }
+      }
+    },
+    "sha256": "6b358cae1a5041c33917dc4560ccf258eacac886506e28ee87dbb5db296bfd4d"
+  },
+  {
+    "id": "wk_packhorse_leader-v1",
+    "file": "assets/workers/wk_packhorse_leader-v1.png",
+    "width": 296,
+    "height": 148,
+    "cell": [
+      74,
+      74
+    ],
+    "role": "livestock and transport worker reskin sheet, 4 directions x 2 frames",
+    "pivot": [
+      37,
+      69
+    ],
+    "pivotConvention": "proposed cell ground anchor; image coordinates exact template; no source numeric runtime pivot provided",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: identity-preserve. EDIT the provided medieval walker sprite sheet, do not invent or regenerate poses. A male packhorse leader. Dull weld yellow green wool tunic with oatmeal shoulder collar and simple brown belt. Keep existing brown hood and exact original hands, no invented rein-holding pose. No reins rope animal or props. Preserve exact original 4 columns x 2 rows, direction order NE SE SW NW and alternating walk frames. Every head hand leg boot, body proportion, spacing, camera angle, shadow, silhouette and pixel position unchanged. Change ONLY clothing surface colours/materials on the torso (and skirt for woman), keep all headwear geometry. South England 1300-1450 wool and linen, muted hand-painted isometric project style. No people added, no accessories in hands, no text, no grid, no background; transparent RGBA. Full original composition including all eight figures, same framing.",
+        "rawFile": "raw/workers/packhorse_leader-raw.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave13-candidates-v1/sources/workers/template-man-original.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawSha256": "6412bbb65e8e29de3ee6699600376bad126e22334c67aed2b6a862ab6c10bc09",
+        "rawSize": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1774,
+          "height": 887,
+          "space": "srgb",
+          "channels": 4,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": true,
+          "autoOrient": {
+            "width": 1774,
+            "height": 887
+          }
+        }
+      }
+    ],
+    "processing": {
+      "template": "sources/workers/template-man-original.png",
+      "source": "references/astra-wave13/astra-wave13-reference-files/actor_civilian_man-v1.png",
+      "method": "Source padded right/bottom to296x148 without rescaling. Builtin edit registered by per-cell alpha bounds. Generated clothing only, source head/hands/legs/boots and complete alpha silhouette retained verbatim. Exact raw sizes in generation record. No prop baked. Proposed anchor [37,69], source runtime pivot not supplied."
+    },
+    "qa": {
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "headFootMaxDifferencePx": 0,
+      "overlay": "proofs/04-workers-overlay.png",
+      "table": "records/workers-overlay-table.md",
+      "status": "candidate, not installed",
+      "image": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 36465,
+        "width": 296,
+        "height": 148,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 296,
+          "height": 148
+        }
+      }
+    },
+    "sha256": "1243449598bc97bc0413e079cf5feec2e408b14f81dce440b2ed4a5eb3376fa5"
+  },
+  {
+    "id": "wk_goosegirl_f-v1",
+    "file": "assets/workers/wk_goosegirl_f-v1.png",
+    "width": 296,
+    "height": 148,
+    "cell": [
+      74,
+      74
+    ],
+    "role": "livestock and transport worker reskin sheet, 4 directions x 2 frames",
+    "pivot": [
+      37,
+      69
+    ],
+    "pivotConvention": "proposed cell ground anchor; image coordinates exact template; no source numeric runtime pivot provided",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: identity-preserve. EDIT the provided medieval walker sprite sheet, do not invent or regenerate poses. A female goose keeper. Muted grey blue wool kirtle with warm oatmeal apron. Keep original white linen headcover, dress silhouette and original hands. No stick, goose or props. Preserve exact original 4 columns x 2 rows, direction order NE SE SW NW and alternating walk frames. Every head hand leg boot, body proportion, spacing, camera angle, shadow, silhouette and pixel position unchanged. Change ONLY clothing surface colours/materials on the torso (and skirt for woman), keep all headwear geometry. South England 1300-1450 wool and linen, muted hand-painted isometric project style. No people added, no accessories in hands, no text, no grid, no background; transparent RGBA. Full original composition including all eight figures, same framing.",
+        "rawFile": "raw/workers/goosegirl_f-raw.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave13-candidates-v1/sources/workers/template-woman-original.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawSha256": "6d573e808ccb1d0e2f71eae0f37ca97fde2c8824d971a7f479ee53082bc74279",
+        "rawSize": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1774,
+          "height": 887,
+          "space": "srgb",
+          "channels": 4,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": true,
+          "autoOrient": {
+            "width": 1774,
+            "height": 887
+          }
+        }
+      }
+    ],
+    "processing": {
+      "template": "sources/workers/template-woman-original.png",
+      "source": "output/astra-walker-pilot2-v1/references/actor_civilian_woman-v1.png",
+      "method": "Source padded right/bottom to296x148 without rescaling. Builtin edit registered by per-cell alpha bounds. Generated clothing only, source head/hands/legs/boots and complete alpha silhouette retained verbatim. Exact raw sizes in generation record. No prop baked. Proposed anchor [37,69], source runtime pivot not supplied."
+    },
+    "qa": {
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "headFootMaxDifferencePx": 0,
+      "overlay": "proofs/04-workers-overlay.png",
+      "table": "records/workers-overlay-table.md",
+      "status": "candidate, not installed",
+      "image": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 36793,
+        "width": 296,
+        "height": 148,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 296,
+          "height": 148
+        }
+      }
+    },
+    "sha256": "205406eb760ef394e094af1872e90b5c00733529409ef15a796efbf6898566f9"
+  },
+  {
+    "id": "wk_swineherd_m-v1",
+    "file": "assets/workers/wk_swineherd_m-v1.png",
+    "width": 296,
+    "height": 148,
+    "cell": [
+      74,
+      74
+    ],
+    "role": "livestock and transport worker reskin sheet, 4 directions x 2 frames",
+    "pivot": [
+      37,
+      69
+    ],
+    "pivotConvention": "proposed cell ground anchor; image coordinates exact template; no source numeric runtime pivot provided",
+    "generationRecords": [
+      {
+        "tool": "builtin image_gen",
+        "prompt": "Use case: identity-preserve. EDIT the provided medieval walker sprite sheet, do not invent or regenerate poses. A male swineherd. Worn dull madder brick red wool tunic with charcoal shoulder cowl, simple brown belt. Keep existing brown hood and original hands and legs. No staff or props. Preserve exact original 4 columns x 2 rows, direction order NE SE SW NW and alternating walk frames. Every head hand leg boot, body proportion, spacing, camera angle, shadow, silhouette and pixel position unchanged. Change ONLY clothing surface colours/materials on the torso (and skirt for woman), keep all headwear geometry. South England 1300-1450 wool and linen, muted hand-painted isometric project style. No people added, no accessories in hands, no text, no grid, no background; transparent RGBA. Full original composition including all eight figures, same framing.",
+        "rawFile": "raw/workers/swineherd_m-raw.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave13-candidates-v1/sources/workers/template-man-original.png"
+        ],
+        "model": "not supplied by tool",
+        "seed": "not supplied by tool",
+        "rawSha256": "193367dd7f1e8b0070967662cfdb3178357be7f138612c7a586ceabd342fe35a",
+        "rawSize": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1774,
+          "height": 887,
+          "space": "srgb",
+          "channels": 4,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": true,
+          "autoOrient": {
+            "width": 1774,
+            "height": 887
+          }
+        }
+      }
+    ],
+    "processing": {
+      "template": "sources/workers/template-man-original.png",
+      "source": "references/astra-wave13/astra-wave13-reference-files/actor_civilian_man-v1.png",
+      "method": "Source padded right/bottom to296x148 without rescaling. Builtin edit registered by per-cell alpha bounds. Generated clothing only, source head/hands/legs/boots and complete alpha silhouette retained verbatim. Exact raw sizes in generation record. No prop baked. Proposed anchor [37,69], source runtime pivot not supplied."
+    },
+    "qa": {
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "headFootMaxDifferencePx": 0,
+      "overlay": "proofs/04-workers-overlay.png",
+      "table": "records/workers-overlay-table.md",
+      "status": "candidate, not installed",
+      "image": {
+        "format": "png",
+        "mediaType": "image/png",
+        "size": 36245,
+        "width": 296,
+        "height": 148,
+        "space": "srgb",
+        "channels": 4,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": true,
+        "autoOrient": {
+          "width": 296,
+          "height": 148
+        }
+      }
+    },
+    "sha256": "f9b667b0d187f1dfcc8303c722bb3d251310b6ea61a4bf7deb1035f617d849ea"
+  }
+]
