@@ -7,6 +7,8 @@ import type { PlacementFeedback } from "./placementFeedback";
 import type { PlacementFailure } from "../world/placement";
 import type { TileCoordinate } from "../world/grid";
 import type { PlacementTool } from "./renderer";
+import { drawMarkTile, drawTileMarks } from "./placementTileOverlay";
+import type { TileMark } from "./placementTileMarks";
 
 export type PlacementPreviewOverlayInput = {
   readonly tool: PlacementTool | null;
@@ -16,6 +18,8 @@ export type PlacementPreviewOverlayInput = {
   readonly reason: PlacementFailure | import("../zones/zonePlacement").ZonePlacementFailure | null;
   readonly cursor: TileCoordinate | null;
   readonly prediction?: import("../ui/predictionTypes").PlacementPrediction;
+  /** UX-3 S-52: footprint + ring validity per tile (buildings). */
+  readonly marks?: readonly TileMark[];
 };
 
 function traceDiamond(context: CanvasRenderingContext2D, coordinate: TileCoordinate): void {
@@ -65,13 +69,18 @@ export function drawPlacementPreviewOverlay(
   preview: PlacementPreviewOverlayInput,
   zoom: number,
 ): void {
-  const coordinates = preview.tool === "road" ? preview.roadPath : preview.footprint;
-  context.fillStyle = withAlpha(preview.ok ? SEMANTIC_PALETTE.sage : PALETTE.vermilion, 0.35);
-  for (const coordinate of coordinates) {
-    traceDiamond(context, coordinate);
-    context.fill();
-    applyInkOutline(context, zoom);
-    context.stroke();
+  if (preview.marks !== undefined && preview.marks.length > 0) drawTileMarks(context, preview.marks, zoom);
+  else {
+    // A road path (or a preview without per-tile marks): one verdict for every tile; a failing road is hatched too.
+    const coordinates = preview.tool === "road" ? preview.roadPath : preview.footprint;
+    context.fillStyle = withAlpha(preview.ok ? SEMANTIC_PALETTE.sage : PALETTE.vermilion, 0.35);
+    for (const coordinate of coordinates) {
+      if (preview.tool === "road" && !preview.ok) { drawMarkTile(context, { ...coordinate, ok: false, reason: null, icon: false, ring: false }, zoom); continue; }
+      traceDiamond(context, coordinate);
+      context.fill();
+      applyInkOutline(context, zoom);
+      context.stroke();
+    }
   }
   if (preview.prediction === undefined && !preview.ok && preview.reason !== null && preview.cursor !== null) {
     drawFailureText(context, preview.cursor, placementReasonLabel(preview.reason), zoom);

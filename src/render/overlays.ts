@@ -53,6 +53,10 @@ export type PlacementPreview = {
   readonly zoneRule?: import("../zones/zone.types").ZoneKind;
   readonly cursor: { readonly tx: number; readonly ty: number } | null;
   readonly timberCost?: number | null;
+  /** UX-3 S-52: per-tile validity of the footprint and its ring (buildings). */
+  readonly marks?: readonly import("./placementTileMarks").TileMark[];
+  /** UX-3 S-53: the cursor chip. */
+  readonly chip?: import("../ui/placementChip").PlacementChip;
 };
 
 export type PlacementOverlayInput = {

@@ -8,6 +8,8 @@ export type OnboardingGuidanceOverlayInput = {
   readonly targets: readonly OnboardingGuidanceTarget[];
   readonly zoom: number;
   readonly safeRightInset?: number;
+  /** UX-3 S-22: the target's diamond / region only while a placement tool is picked; before that its label alone. */
+  readonly tiles?: boolean;
 };
 
 type PlaqueBounds = {
@@ -25,8 +27,10 @@ export function drawOnboardingGuidanceOverlay(
 
   context.save();
   for (const target of input.targets) {
-    if (target.region === undefined) drawTargetDiamond(context, target.origin, input.zoom);
-    else drawTargetRegion(context, target.region);
+    if (input.tiles !== false) {
+      if (target.region === undefined) drawTargetDiamond(context, target.origin, input.zoom);
+      else drawTargetRegion(context, target.region);
+    }
     drawTargetPlaque(context, target, input);
   }
   context.restore();
