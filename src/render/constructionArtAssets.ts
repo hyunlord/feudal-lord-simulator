@@ -4,6 +4,7 @@ import type { ConstructionSite } from '../economy/construction';
 import { constructionSiteFootprint } from '../economy/construction';
 import type { ConstructionRenderSignature } from './constructionStageBands';
 import { tileToScreen } from './iso';
+import { drawWave7 } from './wave7Art';
 import { assetUrlForBase } from './worldAssets';
 
 const FILES = {
@@ -79,12 +80,36 @@ export function constructionArtLayers(site: ConstructionSite, stage: Constructio
   if (stage === 'frame') return [foundation, frame, scaffold];
   return [foundation, frame, layer('roof', span, 0, -span * 0.18), scaffold];
 }
+/**
+ * INSTALL-7 roof truss size class (visibility design P1 B): 1 x 1 small, 2 x 1 medium, 2 x 2 large, the stone-built
+ * 2 x 2s (church, keep) the stone large truss. The truss is drawn at half its canvas (a 128 px small truss over a
+ * 64 px tile), its base plate's front on the timber frame's eaves line (TRUSS_LIFT of the footprint span above the
+ * front vertex).
+ */
+export function roofTrussFor(site: ConstructionSite): 'roof_frame_small' | 'roof_frame_medium' | 'roof_frame_large' | 'roof_frame_stone_large' {
+  const footprint = constructionSiteFootprint(site);
+  const area = footprint.width * footprint.height;
+  if (area >= 4) return site.kind === 'church' || site.kind === 'keep' ? 'roof_frame_stone_large' : 'roof_frame_large';
+  return area >= 2 ? 'roof_frame_medium' : 'roof_frame_small';
+}
+const TRUSS_SCALE = 0.5;
+const TRUSS_LIFT = 0.62;
+function drawRoofTruss(context: CanvasRenderingContext2D, site: ConstructionSite): boolean {
+  const footprint = constructionSiteFootprint(site);
+  const center = tileToScreen(footprint.tx + (footprint.width - 1) / 2, footprint.ty + (footprint.height - 1) / 2);
+  const span = (footprint.width + footprint.height) * 27;
+  const front = center.sy + (footprint.width + footprint.height) * 7;
+  return drawWave7(context, roofTrussFor(site), center.sx, front - span * TRUSS_LIFT, TRUSS_SCALE * (footprint.width + footprint.height) / 2 / (roofTrussFor(site) === 'roof_frame_small' ? 1 : roofTrussFor(site) === 'roof_frame_medium' ? 1.5 : 2));
+}
+
 export function drawConstructionArt(context: CanvasRenderingContext2D, site: ConstructionSite, stage: ConstructionRenderSignature): boolean {
   const layers = constructionArtLayers(site, stage);
   if (layers.length === 0 || layers.some(layer => constructionArtImage(layer.key) === null)) return false;
   context.save();
   context.imageSmoothingEnabled = true;
   for (const layer of layers) {
+    // INSTALL-7: the roof stage's truss by the building's size class (Wave 7); the generic roof frame stands in.
+    if (layer.key === 'roof' && drawRoofTruss(context, site)) continue;
     const image = constructionArtImage(layer.key);
     if (image !== null) drawCroppedWorldSprite(context, image, { x: 0, y: 0, width: 1774, height: 887 }, layer, false, true);
   }

@@ -1,5 +1,6 @@
 import { constructionSiteFootprint, type ConstructionSite } from "../economy/construction";
 import { tileToScreen } from "./iso";
+import { drawWave7 } from "./wave7Art";
 import { visibilityArt } from "./visibilityArtManifest";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { constructionMaterialShare, constructionStageIndex, constructionWorkProgress } from "./constructionVisibility";
@@ -59,11 +60,17 @@ export function forgetGoneConstructionSites(sites: readonly ConstructionSite[]):
 export function drawSiteDust(context: CanvasRenderingContext2D, site: ConstructionSite, moment: ReturnType<typeof constructionMoment>): void {
   const age = Math.min(moment.previousStage === null ? Infinity : moment.stageAgeMs, moment.placedAgeMs ?? Infinity);
   if (!(age < DUST_MS)) return;
-  const image = visibilityArt("dust_puff");
-  if (image === null) return;
   const footprint = constructionSiteFootprint(site);
   const center = tileToScreen(footprint.tx + (footprint.width - 1) / 2, footprint.ty + (footprint.height - 1) / 2);
   const t = age / DUST_MS;
+  // INSTALL-7: the Wave 7 four-frame dust sheet over the puff's life, sized to the footprint; else the Wave 6 puff.
+  context.save();
+  context.globalAlpha *= 1 - t * 0.7;
+  const sheetDrawn = drawWave7(context, "dust_puff_sheet", center.sx, center.sy + 4, (footprint.width + footprint.height) * 24 / 64, Math.min(3, Math.floor(t * 4)));
+  context.restore();
+  if (sheetDrawn) return;
+  const image = visibilityArt("dust_puff");
+  if (image === null) return;
   const size = (footprint.width + footprint.height) * 16 * (0.8 + 0.5 * t);
   context.save();
   context.globalAlpha *= 1 - t;

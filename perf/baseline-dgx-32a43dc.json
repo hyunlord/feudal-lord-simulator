@@ -1,0 +1,155 @@
+{
+  "kind": "dgx-perf-baseline",
+  "commit": "32a43dc3975af09da408a948c84b44f760324a7d",
+  "dirtySource": false,
+  "measuredAt": "2026-09-26T03:00:57.362Z",
+  "host": {
+    "platform": "linux",
+    "release": "6.14.0-1015-nvidia",
+    "arch": "arm64",
+    "cpu": "unknown"
+  },
+  "browser": "151.0.7922.34",
+  "harness": "scripts/renderStageBenchmark.mjs",
+  "harnessSha256": "e7448715872b8a2c472e7fefd349ce31afd306c8dcef82c061eadefa097ce4d1",
+  "protocol": "3 rounds × 240 draws, round 0 discarded, 1× game speed",
+  "server": "vite dev server on the DGX (127.0.0.1, port 4300-4399)",
+  "limits": "systemd user scope MemoryMax=48G CPUQuota=1200%, nice 10 (scripts/remote/run.sh)",
+  "cells": [
+    {
+      "name": "lots24-1280x800-dpr1-cpu1-drag",
+      "city": "lots24",
+      "dpr": 1,
+      "camera": "drag",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 480,
+        "median": 5.800000004470348,
+        "p95": 9.300000004470348,
+        "mean": 6.270624999934808
+      },
+      "tickWorkMs": {
+        "count": 177,
+        "median": 1.2000000029802322,
+        "p95": 4.299999997019768,
+        "mean": 1.972316383768273
+      },
+      "rafMs": {
+        "count": 480,
+        "median": 16.699999999999818,
+        "p95": 33.30000000000018,
+        "mean": 18.50604166666666
+      },
+      "effectiveSpeed": 0.9962962546015378,
+      "errors": 0
+    },
+    {
+      "name": "lots24-1280x800-dpr1-cpu1-still",
+      "city": "lots24",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 480,
+        "median": 5,
+        "p95": 9,
+        "mean": 5.810208333206052
+      },
+      "tickWorkMs": {
+        "count": 170,
+        "median": 1.2999999970197678,
+        "p95": 3.5,
+        "mean": 1.9564705882440596
+      },
+      "rafMs": {
+        "count": 480,
+        "median": 16.699999999999818,
+        "p95": 33.30000000000018,
+        "mean": 17.742499999999996
+      },
+      "effectiveSpeed": 0.9980743036963974,
+      "errors": 0
+    },
+    {
+      "name": "lots24-1280x800-dpr2-cpu1-still",
+      "city": "lots24",
+      "dpr": 2,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 480,
+        "median": 18.30000000447035,
+        "p95": 21,
+        "mean": 18.054791666691504
+      },
+      "tickWorkMs": {
+        "count": 281,
+        "median": 1,
+        "p95": 3.2000000029802322,
+        "mean": 1.5999999999257593
+      },
+      "rafMs": {
+        "count": 480,
+        "median": 33.30000000000018,
+        "p95": 50,
+        "mean": 29.338958333333323
+      },
+      "effectiveSpeed": 0.9976780020876679,
+      "errors": 0
+    },
+    {
+      "name": "newgame-1280x800-dpr1-cpu1-still",
+      "city": "newgame",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 480,
+        "median": 4.100000001490116,
+        "p95": 5.600000001490116,
+        "mean": 4.3072916666356225
+      },
+      "tickWorkMs": {
+        "count": 162,
+        "median": 0.20000000298023224,
+        "p95": 0.3999999985098839,
+        "mean": 0.24135802525245112
+      },
+      "rafMs": {
+        "count": 480,
+        "median": 16.699999999999818,
+        "p95": 16.799999999999272,
+        "mean": 16.97812500000001
+      },
+      "effectiveSpeed": 0.9939260077305357,
+      "errors": 0
+    },
+    {
+      "name": "pop176-1280x800-dpr1-cpu1-still",
+      "city": "pop176",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 480,
+        "median": 4,
+        "p95": 12.299999997019768,
+        "mean": 4.969791666837409
+      },
+      "tickWorkMs": {
+        "count": 169,
+        "median": 0.5,
+        "p95": 0.7999999970197678,
+        "mean": 0.521301774804056
+      },
+      "rafMs": {
+        "count": 480,
+        "median": 16.699999999999818,
+        "p95": 16.800000000000182,
+        "mean": 17.568958333333324
+      },
+      "effectiveSpeed": 1.002004008016032,
+      "errors": 0
+    }
+  ]
+}
