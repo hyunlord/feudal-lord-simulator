@@ -1,8 +1,13 @@
 # 현재 상태
 
-갱신: 2026-09-26(F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
+
+- **F0-C1 흐름 뼈대 3 — 대기근·첫 청원·연대기·1장 끝: 관문 ①~⑤ 결과는 [보고서](verification/f0c1-famine/REPORT.md)**(Claude Code, 엔진 세션, 렌더 0줄): [1장 명세](design/flow-chapter-one.md) FC-1~FC-7, 결정 FC1~FC8.
+  - 대기근 = 시대 사건(준비도, 1320 강제): 예고 1312~, 수확 반 2~3번, 값 × 3, 값 충격(가난한 1/4). 대응 4종(구휼·가격 통제·방관·투기)이 장부·사다리·값에 효과.
+  - 첫 청원(상인 시장권, 1305–1308): 수락·거절·가격 붙여 수락 → 권리 목록 한 줄, 좌판세, 상인 게이지. 연대기 한 쪽(결정 3개), 1장 끝(시장도시 ∧ 60 % 생존). 저장 v14.
+  - 관문 ② 1장 완주 5/5, ③ 구휼이 이탈 0 대 방관 72, 금고 5/5 적음.
 
 - **F0-B 흐름 뼈대 2 — 사건 뼈대: 관문 ①②④⑤ 통과, ③ 가드레일 4/5(seed 3 작은 성벽 교착, 결정 EV8 알려진 정지), 사용자 지시로 본선 병합**(Claude Code, 엔진 세션, 렌더는 `buildingVisualState` +2줄): [사건 명세](design/flow-events.md) EV-1~EV-9, [보고서](verification/f0b-events/REPORT.md), 결정 EV1~EV7.
   - 사건 정의 데이터(`EventDef`)와 seed 파생 일정·날씨, 예고 사다리(소문 → 징후 → 도래 → 회복, `eventForecast`), 저장 v13(`events`, 불탄 집, 재건 공사장).

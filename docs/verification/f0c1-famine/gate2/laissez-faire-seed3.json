@@ -3,49 +3,49 @@
  "famineResponse": "laissez_faire",
  "maxTicks": 100000,
  "famineEra": {
-  "tick": 80000,
-  "year": 1320,
+  "tick": 72450,
+  "year": 1318,
   "season": "spring",
-  "forced": true
+  "forced": false
  },
  "famine": {
   "id": "great_famine@61",
   "arrival": {
-   "tick": 80000,
-   "year": 1320,
+   "tick": 72450,
+   "year": 1318,
    "season": "spring"
   },
   "end": {
-   "tick": 93500,
-   "year": 1323,
+   "tick": 85500,
+   "year": 1321,
    "season": "summer"
   },
-  "harvestFromYear": 20,
+  "harvestFromYear": 18,
   "harvestYears": 3,
   "response": {
    "choice": "laissez_faire",
-   "tick": 80003
+   "tick": 72563
   },
-  "populationAtArrival": 212,
-  "populationAtEnd": 190,
+  "populationAtArrival": 214,
+  "populationAtEnd": 265,
   "losses": {
    "burntHouses": 0,
-   "departures": 6,
-   "harvestLost": 1048
+   "departures": 9,
+   "harvestLost": 2286
   }
  },
- "departuresInFamine": 8,
- "minPopulationInFamine": 176,
- "treasuryAtArrival": 3186,
+ "departuresInFamine": 11,
+ "minPopulationInFamine": 214,
+ "treasuryAtArrival": 2549,
  "reliefSpent": 0,
  "chapterEnd": {
-  "tick": 93500,
-  "year": 1323,
+  "tick": 85500,
+  "year": 1321,
   "season": "summer",
   "chronicle": {
    "chapter": 1,
    "fromYear": 1300,
-   "toYear": 1323,
+   "toYear": 1321,
    "events": [
     {
      "eventId": "first_fire@13",
@@ -80,18 +80,18 @@
     {
      "eventId": "great_famine@61",
      "defId": "great_famine",
-     "year": 1320,
+     "year": 1318,
      "losses": {
       "burntHouses": 0,
-      "departures": 6,
-      "harvestLost": 1048
+      "departures": 9,
+      "harvestLost": 2286
      }
     }
    ],
    "decisions": [
     {
      "kind": "famine_response",
-     "tick": 80003,
+     "tick": 72563,
      "eventId": "great_famine@61",
      "choice": "laissez_faire"
     },
@@ -108,17 +108,17 @@
    ],
    "stats": {
     "populationStart": 12,
-    "populationEnd": 190,
-    "peakPopulation": 219,
-    "houses": 10,
+    "populationEnd": 265,
+    "peakPopulation": 284,
+    "houses": 15,
     "burntHouses": 2,
-    "departures": 6,
-    "harvestLost": 1248,
-    "treasury": 4110,
+    "departures": 9,
+    "harvestLost": 2486,
+    "treasury": 3445,
     "famine": {
-     "year": 1320,
-     "populationAtArrival": 212,
-     "populationAtEnd": 190
+     "year": 1318,
+     "populationAtArrival": 214,
+     "populationAtEnd": 265
     }
    }
   }
@@ -146,8 +146,8 @@
  "final": {
   "tick": 100000,
   "era": "palisade",
-  "population": 220,
-  "houses": 10,
-  "treasury": 4825
+  "population": 376,
+  "houses": 17,
+  "treasury": 4507
  }
 }
