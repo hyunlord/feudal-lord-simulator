@@ -12,7 +12,7 @@ import { buildingRoadAccessTiles } from './routing';
 import { allocateHouseServices, type ServiceAllocation } from '../population/serviceAllocation';
 import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingUnlocked, placementSpendableResource } from '../world/placement';
 import { householdServices } from './householdServices';
-import { marketRoadService } from './marketService';
+import { anotherMarketAllowed, marketRoadService } from './marketService';
 import { serviceAccessDistances } from './autoplayServiceAccess';
 import { hasConnectedConstructionRoute } from './autoplayConstructionRoute';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
@@ -198,9 +198,9 @@ export function marketGapHouses(state: GameState): readonly Building[] {
   return gap.length >= BOT_RECOVERY_MIN_HOUSES ? gap : [];
 }
 
-/** The facility cap the guardrail checks (efficientGrowthAcceptance `markets`) and the service planner keeps. */
+/** MARKET-1 (MK-2): no further market is allowed (fewer than 12 lots unserved) — the cap the planner and the guardrail keep. */
 function marketCapReached(state: GameState): boolean {
-  return state.buildings.filter(building => building.kind === 'market').length >= Math.ceil(housingLotCount(state) / 24) + 1;
+  return !anotherMarketAllowed(state, householdServices(state));
 }
 
 const marketAffordable = (state: GameState): boolean =>
@@ -266,12 +266,10 @@ export function marketGapAction(state: GameState, collector?: BotRecoveryCollect
   return none;
 }
 
-/** The market cap for the town the policy wants (the guardrail's `markets` check at the target lots). */
-const targetMarketCap = (targetLots: number): number => Math.ceil(targetLots / 24) + 1;
-
-function marketsAtTargetCap(state: GameState, targetLots: number): readonly Building[] | null {
+/** AR-5 with MARKET-1 (MK-2): the markets are at their cap when no further market is allowed and none is being built. */
+function marketsAtTargetCap(state: GameState, _targetLots: number): readonly Building[] | null {
   const markets = state.buildings.filter(building => building.kind === 'market');
-  if (markets.length < targetMarketCap(targetLots)
+  if (markets.length === 0 || !marketCapReached(state)
     || state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === 'market')) return null;
   return markets;
 }

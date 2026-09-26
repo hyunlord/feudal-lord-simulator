@@ -71,7 +71,9 @@ export function allocateHouseServices(input: ServiceAllocationInput): ServiceAll
       const home = buildingsById.get(house.buildingId);
       if (home === undefined) return [];
       const demand = houseLotArea(home);
-      const nearby = facilities.filter(p => buildingFootprintDistance(home, p) <= definition.serviceRadius);
+      // MARKET-1 (MK-1): a market reaches the homes within its road reach (when the road service knows it), not a radius.
+      const marketReach = service === 'market' ? input.roadService?.marketReach : undefined;
+      const nearby = facilities.filter(p => marketReach !== undefined ? marketReach(home, p) : buildingFootprintDistance(home, p) <= definition.serviceRadius);
       const operating = nearby.filter(p => !operationSuspended(p));
       const staffed = operating.filter(p => p.workers >= definition.workersRequired);
       const reachable = staffed.filter(p => !config.roadRequired || input.roadService?.(home, p) === true)

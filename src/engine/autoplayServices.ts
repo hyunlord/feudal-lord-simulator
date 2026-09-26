@@ -12,7 +12,7 @@ import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingUnlocked } from
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
 import { householdServices } from './householdServices';
-import { marketRoadService } from './marketService';
+import { anotherMarketAllowed, marketRoadService } from './marketService';
 import { hasConnectedConstructionRoute } from './autoplayConstructionRoute';
 import { plannedBuildingRoadAction, roadActionToTargets } from './autoplayConstructionRoads';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
@@ -69,8 +69,11 @@ export function urbanServiceAction(state: GameState, diagnostic?: ServicePlannin
     });
     if (needsBuilding.length === 0) continue;
     const planned = state.constructionSites.filter(isBuildingConstructionSite);
-    const cap = Math.ceil(housingLotCount(state) / (kind === 'market' ? 24 : 32)) + 1;
-    if (providers.length + planned.filter(site => site.kind === kind).length >= cap) {
+    // MARKET-1 (MK-2): no count cap on markets; another only while 12 lots or more go unserved (churches keep theirs).
+    const capped = kind === 'market'
+      ? planned.some(site => site.kind === 'market') || !anotherMarketAllowed(state, current)
+      : providers.length + planned.filter(site => site.kind === kind).length >= Math.ceil(housingLotCount(state) / 32) + 1;
+    if (capped) {
       if (diagnostic !== undefined) diagnostic.services = [...(diagnostic.services ?? []), { service: kind, reason: 'facility_limit' }];
       continue;
     }
