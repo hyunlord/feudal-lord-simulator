@@ -59,8 +59,8 @@ export function buildingFrontage(grid: Grid, building: Building, seed: number): 
       const across = sign * (width + feather) + Math.sin(distance * Math.PI) * Math.sin(phase) * 0.035;
       return { tx: origin.tx + dx * distance - dy * across, ty: origin.ty + dy * distance + dx * across };
     });
-    const legacyAnchor = building.kind === "storehouse" || building.kind === "granary";
-    const anchor = legacyAnchor ? { tx: building.tx + size.width - 1, ty: building.ty + size.height - 1 } : center;
+    // R0-2: the storehouse and granary art now stands on the footprint's centre (buildingSpriteFit), like the rest.
+    const anchor = center;
     const end = { tx: origin.tx + dx * 0.24, ty: origin.ty + dy * 0.24 };
     const length = Math.hypot(end.tx - anchor.tx, end.ty - anchor.ty);
     const forward = { tx: (end.tx - anchor.tx) / length, ty: (end.ty - anchor.ty) / length };
@@ -78,8 +78,7 @@ export function buildingFrontage(grid: Grid, building: Building, seed: number): 
 
 export function buildingContactPolygon(building: Building): Polygon {
   const size = buildingFootprint(building);
-  const divisor = building.kind === "storehouse" || building.kind === "granary" ? 1 : 2;
-  const center = { tx: building.tx + (size.width - 1) / divisor, ty: building.ty + (size.height - 1) / divisor };
+  const center = { tx: building.tx + (size.width - 1) / 2, ty: building.ty + (size.height - 1) / 2 }; // R0-2: footprint centre
   return ([[-0.18, -0.09], [0.05, -0.17], [0.24, -0.04], [0.19, 0.16], [-0.03, 0.22], [-0.20, 0.07]] as const)
     .map(([x, y]) => ({ tx: center.tx + x * size.width, ty: center.ty + y * size.height }));
 }

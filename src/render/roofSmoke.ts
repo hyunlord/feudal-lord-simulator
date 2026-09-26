@@ -56,7 +56,7 @@ export function drawMillOvenSmoke(context: CanvasRenderingContext2D, building: B
   if (!millOvenBurning(building)) return;
   const center = tileToScreen(building.tx, building.ty);
   const scale = millRegistration.bodyDisplayWidth / millRegistration.body.width;
-  const left = center.sx - millRegistration.bodyDisplayWidth / 2;
+  const left = center.sx - millRegistration.bodyCentreX * scale;
   const top = center.sy + TILE_H / 2 - millRegistration.groundY * scale;
   drawSmokePlume(context, left + MILL_OVEN.fx * millRegistration.body.width * scale, top + MILL_OVEN.fy * millRegistration.body.height * scale, 1, nowMs, building.tx);
 }

@@ -9,7 +9,8 @@ import { COMPLETION_SEQUENCE_MS, constructionCompletionEffectsForFrame, createCo
 import { setPresentationSpeed } from "../src/render/presentationSpeed";
 import { calendarArrivalLabel } from "../src/ui/calendarArrival";
 import { drawConstructionGhost, GHOST_ALPHA } from "../src/render/constructionGhost";
-import { constructionPlaqueModel } from "../src/render/constructionPlaque";
+import { constructionPlaqueModel, shownConstructionBlocker } from "../src/render/constructionPlaque";
+import { SIGNAL_PERSIST_TICKS } from "../src/render/signalPersistence";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 const barn = (patch: Record<string, unknown> = {}) => ({ ...createConstructionSite({ ordinal: 7, kind: "farmstead", tx: 4, ty: 4, startedTick: 0 }), ...patch });
@@ -72,10 +73,25 @@ test("F0-V completion sequence: 1.2 s at 1x, only the 0.4 s dust at 5x", () => {
 test("F0-V plaque: zoomed out, nearby sites with the same blocker show one icon with the group's count", () => {
   const site = (ordinal: number, tx: number) => ({ ...createConstructionSite({ ordinal, kind: "well", tx, ty: 38, startedTick: 0 }), stall: "no_builders" as const });
   const far = { ...createConstructionSite({ ordinal: 3, kind: "well", tx: 20, ty: 10, startedTick: 0 }), stall: "no_builders" as const };
-  const state = { ...DEFAULT_GAME_STATE, constructionSites: [site(1, 47), site(2, 49), far] };
+  const sites = [site(1, 47), site(2, 49), far];
+  const first = { ...DEFAULT_GAME_STATE, tick: 1_000, constructionSites: sites };
+  assert.deepEqual(sites.map(item => constructionPlaqueModel(first, item, 0, 0.6).blockerCount), [0, 0, 0], "R0-1: not yet a cycle");
+  const state = { ...first, tick: 1_000 + SIGNAL_PERSIST_TICKS };
   const counts = (zoom: number) => state.constructionSites.map(item => constructionPlaqueModel(state, item, 0, zoom).blockerCount);
   assert.deepEqual(counts(0.6), [2, 0, 1], "the first near site leads its group; the far one stands alone");
   assert.deepEqual(counts(1), [1, 1, 1], "closer in, every blocked site shows its own icon");
+});
+
+test("R0-1 S8: a stall shows on the plaque only after a distribution cycle; one that clears within it never does", () => {
+  const stalled = { ...createConstructionSite({ ordinal: 41, kind: "well", tx: 47, ty: 38, startedTick: 0 }), stall: "no_builders" as const };
+  const at = (tick: number, site: typeof stalled | ReturnType<typeof createConstructionSite>) => shownConstructionBlocker({ ...DEFAULT_GAME_STATE, tick, constructionSites: [site] }, site);
+  assert.equal(SIGNAL_PERSIST_TICKS, 250, "a quarter of a 1,000-tick season");
+  assert.equal(at(3_000, stalled), null);
+  assert.equal(at(3_249, stalled), null);
+  assert.equal(at(3_250, stalled), "workers");
+  const cleared = { ...stalled, stall: "awaiting_materials" as const };
+  assert.equal(at(3_300, cleared), null);
+  assert.equal(at(3_400, stalled), null, "the stall came back: its cycle starts again");
 });
 
 test("F0-V ghost: the completed building shows faintly over the plot and foundation, not from the frame on", () => {

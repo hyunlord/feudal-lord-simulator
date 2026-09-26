@@ -4,6 +4,7 @@ import type { GameState } from "../engine/engine.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { housePressureStatus } from "../population/housePressure";
+import { persistentSignals } from "./signalPersistence";
 import { burgageParcels } from "../zones/zoneFillAgent";
 import { tileToScreen } from "./iso";
 import { applyPaletteStroke } from "./style";
@@ -15,6 +16,7 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //  - S2 road cut: dirt footprints from a building that needs a road but touches none, toward the nearest road.
 //  - S4 cold house: residents but no bread in store, or an F0-A household leaving / a house it abandoned, so no or thin
 //    smoke (roofSmoke) — only its emphasis is drawn here.
+// S2 and S4 wait one distribution cycle (R0-1, signalPersistence.ts); S1 shows at once.
 // At most MAX_EMPHASIS signs in view are emphasised (a steady ring), road cut first, then cold houses, then empty
 // plots, nearest the view's centre first. Everything is read from the state; nothing is stored.
 export type WorldSignKind = "road_cut" | "cold_house" | "empty_plot";
@@ -38,8 +40,18 @@ export function worldSigns(state: GameState): readonly WorldSign[] {
   }
   for (const site of state.constructionSites) if ("tx" in site) occupied.add(site.ty * state.width + site.tx);
   const signs: WorldSign[] = [];
-  for (const building of state.buildings) {
-    if (!BUILDING_CONFIG_BY_KIND[building.kind].requiresRoad || buildingRoadAccessTiles(state, building).length > 0) continue;
+  // R0-1: S2 and S4 show once their condition has held for a distribution cycle (signalPersistence).
+  const cut = state.buildings.filter(building => BUILDING_CONFIG_BY_KIND[building.kind].requiresRoad && buildingRoadAccessTiles(state, building).length === 0);
+  const cutShown = persistentSignals("road_cut", state, cut.map(building => building.id));
+  const coldHouses = state.houses.filter(house => housePressureStatus(house) !== "settled" || (house.residents > 0 && house.breadStock <= 0));
+  const byId = new Map(coldHouses.map(house => [house.buildingId, house]));
+  const coldShown = persistentSignals("cold_house", state, coldHouses.map(house => house.buildingId), id => {
+    const house = byId.get(id)!;
+    // Leaving / abandoned already mean a season short (FP-3); an empty larder counts from the engine's shortage start.
+    return housePressureStatus(house) !== "settled" ? -Infinity : house.foodShortSinceTick;
+  });
+  for (const building of cut) {
+    if (!cutShown.has(building.id)) continue;
     const toward = nearestRoad(state, building.tx, building.ty);
     // The track starts from the footprint's edge tile nearest that road (a farm's anchor is under its field).
     const size = buildingFootprint(building);
@@ -47,10 +59,9 @@ export function worldSigns(state: GameState): readonly WorldSign[] {
       : { tx: Math.max(building.tx, Math.min(building.tx + size.width - 1, toward.tx)), ty: Math.max(building.ty, Math.min(building.ty + size.height - 1, toward.ty)) };
     signs.push({ kind: "road_cut", tx: edge.tx, ty: edge.ty, toward });
   }
-  for (const house of state.houses) {
+  for (const house of coldHouses) {
     // F0-A: a household preparing to leave, or a house it left, is cold whatever its larder (FP-3 stages 1-2).
-    const pressure = housePressureStatus(house);
-    if (pressure === "settled" && (house.residents <= 0 || house.breadStock > 0)) continue;
+    if (!coldShown.has(house.buildingId)) continue;
     const building = state.buildings.find(candidate => candidate.id === house.buildingId);
     if (building === undefined) continue;
     const size = buildingFootprint(building); // the ring goes round the footprint's middle, not its top corner

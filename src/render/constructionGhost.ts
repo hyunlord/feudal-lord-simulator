@@ -8,6 +8,8 @@ import { drawFarmsteadSprite } from "./farmsteadArt";
 import { drawHistoricalFacility } from "./historicalFacilityAssets";
 import { drawHistoricalHouse } from "./historicalHouseAssets";
 import { buildingSpriteKey } from "./buildingSprites";
+import { drawFittedBuildingSprite, isFittedSpriteKey } from "./buildingSpriteFit";
+import { getSpriteSource } from "./worldAssets";
 import { tileToScreen } from "./iso";
 import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 
@@ -40,9 +42,18 @@ export function drawConstructionGhost(context: CanvasRenderingContext2D, state: 
   const drawn = building.kind === "house" ? drawHistoricalHouse(context, building, 0)
     : building.kind === "farmstead" ? drawFarmsteadSprite(context, building, state, options)
       : drawHistoricalFacility(context, building, state)
-        || drawWorldSprite(context, buildingSpriteKey(building, 0), building.tx, building.ty, options); // e.g. the storehouse
+        || drawGhostSprite(context, building, options); // e.g. the storehouse
   context.restore();
   return drawn;
+}
+
+function drawGhostSprite(context: CanvasRenderingContext2D, building: Building, options: WorldSpriteOptions): boolean {
+  const key = buildingSpriteKey(building, 0);
+  if (!isFittedSpriteKey(key)) return drawWorldSprite(context, key, building.tx, building.ty, options);
+  const image = getSpriteSource(key);
+  if (image === null) return false;
+  drawFittedBuildingSprite(context, key, building, image); // R0-2: where the finished building will stand
+  return true;
 }
 
 /** The building's icon on the sign post's board (drawConstructionSign: the post stands at the footprint's left). */

@@ -24,8 +24,8 @@ import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor } fr
 import { drawWalker } from "./drawWalkers";
 import { drawZoneProp } from "./zonePropSprites";
 import type { TileRange, ViewportSize } from "./renderer";
-import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
-import { worldSpriteVariantImage } from "./buildingVariantAssets";
+import type { WorldSpriteOptions } from "./worldSprite";
+import { drawBuildingSprite } from "./buildingSpriteFit";
 import { drawFarmsteadSprite } from "./farmsteadArt";
 import { drawFarmProp } from "./farmProps";
 import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
@@ -167,7 +167,7 @@ function drawBuildingDetail(
       return;
     }
     const spriteKey = buildingSpriteKey(building, visualState.houseLevel);
-    const spriteDrawn = drawWorldSprite(context, spriteKey, building.tx, building.ty, { ...spriteOptions, image: worldSpriteVariantImage(building, spriteKey) });
+    const spriteDrawn = drawBuildingSprite(context, building, spriteKey, spriteOptions);
     if (spriteDrawn) {
       drawKindDetail(context, { hideProblemMarker: true,
         architecture: spriteMeta(spriteKey)?.bakedArchitecture === true ? "baked" : "procedural",

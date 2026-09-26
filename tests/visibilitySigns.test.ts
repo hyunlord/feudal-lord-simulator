@@ -7,6 +7,7 @@ import { MAX_LOOPS, SOUND_BANK } from "../src/audio/audioEngine";
 import { houseSmokeStrength, millOvenBurning } from "../src/render/roofSmoke";
 import { ROOF_SMOKE_ANCHORS } from "../src/render/roofSmokeAnchors.generated";
 import { emphasisedSigns, MAX_EMPHASIS, worldSigns, type WorldSign } from "../src/render/worldSigns";
+import { SIGNAL_PERSIST_TICKS } from "../src/render/signalPersistence";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 const ROOT = new URL("..", import.meta.url).pathname;
@@ -51,7 +52,9 @@ test("F0-V world signs: road cut, cold house and empty plot appear only under th
   const base = DEFAULT_GAME_STATE;
   const signs = worldSigns(base);
   for (const sign of signs) assert.ok(["road_cut", "cold_house", "empty_plot"].includes(sign.kind));
-  const cold = worldSigns({ ...base, houses: base.houses.map(house => ({ ...house, residents: 3, breadStock: 0 })) });
+  const coldHouses = base.houses.map(house => ({ ...house, residents: 3, breadStock: 0 }));
+  worldSigns({ ...base, tick: 500, houses: coldHouses });
+  const cold = worldSigns({ ...base, tick: 500 + SIGNAL_PERSIST_TICKS, houses: coldHouses });
   assert.equal(cold.filter(sign => sign.kind === "cold_house").length, base.houses.length);
   const fed = worldSigns({ ...base, houses: base.houses.map(house => ({ ...house, residents: 3, breadStock: 4 })) });
   assert.equal(fed.filter(sign => sign.kind === "cold_house").length, 0);
@@ -64,6 +67,18 @@ test("F0-V world signs: road cut, cold house and empty plot appear only under th
   assert.deepEqual(emphasised.map(sign => sign.kind), ["road_cut", "cold_house", "empty_plot"]);
   const inView = emphasisedSigns(many, { x: 0, y: 0 }, 400);
   assert.ok(!inView.some(sign => sign.kind === "road_cut"), "the road cut at (20,20) is out of view and takes no ring");
+});
+
+test("R0-1: a new game shows no cold house; an empty larder shows after a cycle, or at once from the engine's shortage start", () => {
+  const fresh = worldSigns(DEFAULT_GAME_STATE);
+  assert.equal(fresh.filter(sign => sign.kind === "cold_house").length, 0, "the opening village before its first bread round");
+  const empty = DEFAULT_GAME_STATE.houses.map(house => ({ ...house, residents: 3, breadStock: 0 }));
+  const cold = (tick: number, houses = empty) => worldSigns({ ...DEFAULT_GAME_STATE, tick, houses }).filter(sign => sign.kind === "cold_house").length;
+  assert.equal(cold(2_000), 0);
+  assert.equal(cold(2_100), 0, "a larder empty for 100 ticks is one bread round, not a signal");
+  assert.equal(cold(2_000 + SIGNAL_PERSIST_TICKS), empty.length);
+  const shortLong = empty.map(house => ({ ...house, foodShortSinceTick: 1_000 }));
+  assert.equal(cold(5_000, shortLong), empty.length, "the engine has counted the shortage since 1,000 (a load mid-shortage)");
 });
 
 test("F0-V sounds: the 15 P0 sounds are installed, on three buses, with at most four loops", () => {
