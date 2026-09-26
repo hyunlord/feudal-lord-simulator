@@ -312,11 +312,15 @@ export function marketRelocationAction(state: GameState, targetLots: number, col
 export function keepsHouseInMarketReach(state: GameState, targetLots: number): (coordinate: TileCoordinate) => boolean {
   const markets = marketsAtTargetCap(state, targetLots);
   if (markets === null) return () => true;
-  // MARKET-1 (MK-4): in reach is along the road now (40 steps), as the service allocation reads it.
+  // MARKET-1 (MK-4): in reach is along the road now (40 steps), as the service allocation reads it; a site whose road is
+  // not laid yet keeps the radius stand-in (as the bot's other proofs over roads to come).
   const reach = marketRoadService(state).marketReach!;
+  const radius = BUILDING_CONFIG_BY_KIND.market.serviceRadius;
   return coordinate => {
     const home: Building = { id: 'autoplay-market-reach-house', kind: 'house', tx: coordinate.tx, ty: coordinate.ty,
       workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
-    return (state.palisade === null || insideWall(state, 'house', coordinate)) && markets.some(market => reach(home, market));
+    if (state.palisade !== null && !insideWall(state, 'house', coordinate)) return false;
+    const roadless = buildingRoadAccessTiles(state, home).length === 0;
+    return markets.some(market => reach(home, market) || (roadless && buildingFootprintDistance(home, market) <= radius));
   };
 }
