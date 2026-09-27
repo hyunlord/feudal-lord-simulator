@@ -89,6 +89,11 @@ function supportedLevel(
   return supported;
 }
 
+/** F2-A (WR-6): the people a house holds at its level on its lot. */
+export function houseCapacity(house: Pick<House, "level">, lotArea: number): number {
+  return definitionForLevel(house.level).capacity * lotArea;
+}
+
 function definitionForLevel(level: number): HousingDefinition {
   return HOUSING_CONFIG.find((definition) => definition.level === level) ??
     HOUSING_CONFIG[0];

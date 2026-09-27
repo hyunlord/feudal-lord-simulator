@@ -188,7 +188,8 @@ function withoutPressure(house: House): House {
   return rest;
 }
 
-function abandon(house: House, tick: number): House {
+/** FP-3 stage 2: the household left (F2-A: the war tax drives one out the same way). */
+export function abandonHouse(house: House, tick: number): House {
   return { ...withoutPressure(house), residents: 0, breadStock: 0, emptyFoodTicks: 0, promotionTicks: 0, abandonedTick: tick };
 }
 
@@ -230,7 +231,7 @@ function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
     .filter(({ house }) => house.leavingSinceTick !== undefined && house.abandonedTick === undefined && tick - house.leavingSinceTick >= SEASON)
     .sort((a, b) => a.house.breadStock - b.house.breadStock || a.house.level - b.house.level || a.house.buildingId.localeCompare(b.house.buildingId))
     .slice(0, room);
-  for (const { house, index } of due) houses[index] = abandon(house, tick);
+  for (const { house, index } of due) houses[index] = abandonHouse(house, tick);
   let resettled = 0;
   if (!reserveShort) {
     const lots = new Map(state.buildings.map(building => [building.id, building]));

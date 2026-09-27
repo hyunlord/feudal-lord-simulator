@@ -64,6 +64,8 @@ export interface ArchetypeDef {
   readonly id: string;
   /** Filled by B5/C1 (land system, resource package). */
   readonly resourcePackage: Readonly<Record<string, unknown>>;
+  /** F2-A (WR-5): on the coast (or a tidal river's mouth) — the war of 1337 lights its beacon and raids it. */
+  readonly coastal?: boolean;
 }
 
 export interface WallPolicy {

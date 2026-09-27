@@ -80,7 +80,9 @@ test("L-3 before the first posting the treasury is the opening balance; the firs
   assert.deepEqual(LEDGER_CATEGORIES, ["opening_balance", "market_sale", "construction", "upkeep",
     "toll", "stall_fee", "rent", "mill_toll", "demesne_sale", "project", "famine_relief", "famine_sale", "charter_fee",
     // FAIL-3 (FL-6, FL-7)
-    "restoration_fee", "house_change"]);
+    "restoration_fee", "house_change",
+    // F2-A (WR-2…WR-8)
+    "wool_levy", "war_exemption", "war_subsidy", "war_loan", "war_tax", "raid_loot", "purveyance", "refugee_fee", "murage"]);
 });
 
 test("L-4 roll-ups keep every account total while only the last 6 periods stay as entries", () => {

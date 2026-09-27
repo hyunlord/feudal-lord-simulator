@@ -26,6 +26,7 @@ import { foodPricePermille } from "./eventSchedule";
 import { hashSeed, rollPermille } from "./prng";
 import { choosePortraitIdentity, identityHasBand, portraitFor, type PortraitChoice } from "./portraits";
 import { calendar, scenarioOf } from "./scenarioState";
+import { conscriptsAway } from "./war";
 import { MANOR_HOUSEHOLD, type DeathCause, type Person, type PersonAgeBand, type PersonBuild, type PersonClassBand, type PersonRole, type PersonSex, type PersonState } from "./persons.types";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
@@ -245,9 +246,11 @@ function membersOf(house: House, people: readonly Person[], year: number): House
 }
 
 /** PS-1: the town's labour: its adults in houses. */
-export function labourPool(state: Pick<GameState, "houses" | "persons" | "population">): number {
-  if (state.persons === undefined) return Math.floor(Math.max(0, state.population) * BALANCE.WORKERS_PER_RESIDENT);
-  return state.houses.reduce((sum, house) => sum + (house.members?.adults ?? 0), 0);
+export function labourPool(state: Pick<GameState, "houses" | "persons" | "population"> & Partial<Pick<GameState, "war">>): number {
+  // F2-A (WR-3): the men the commission of array took do not work while they are away.
+  const away = conscriptsAway(state);
+  if (state.persons === undefined) return Math.max(0, Math.floor(Math.max(0, state.population) * BALANCE.WORKERS_PER_RESIDENT) - away);
+  return Math.max(0, state.houses.reduce((sum, house) => sum + (house.members?.adults ?? 0), 0) - away);
 }
 
 /** PS-6 (save v16 promotion, new towns): persons for the residents already in the houses, and the steward. */

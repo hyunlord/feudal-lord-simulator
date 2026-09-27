@@ -25,6 +25,16 @@ export const LEDGER_CATEGORY_LABELS = {
   // FAIL-3 (FL-6, FL-7)
   restoration_fee: "권리 되사기",
   house_change: "가문 교체",
+  // F2-A (WR-2…WR-8)
+  wool_levy: "양모 공납",
+  war_exemption: "징집 면제금",
+  war_subsidy: "전쟁 보조세",
+  war_loan: "상인 전쟁 차입",
+  war_tax: "전쟁 세금",
+  raid_loot: "습격 약탈",
+  purveyance: "왕실 조달",
+  refugee_fee: "피란민 입주금",
+  murage: "성벽세",
 } as const satisfies Record<LedgerCategory, string>;
 
 export const LEDGER_WINDOW_LABELS = {

@@ -59,6 +59,18 @@ export const LORD_HOUSE_NAMES_KO: Readonly<Record<string, string>> = {
   Willoughby: "윌러비", Berkeley: "버클리", Despenser: "디스펜서", Montagu: "몬태규",
 };
 const houseName = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;
+/** F2-A (WR-2…WR-8): what each petition is, and what its three answers mean. */
+const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
+  market_charter: "상인의 시장권 청원", restore_right: "권리 복원 청원",
+  wool_payment: "양모 공납 칙령", levy_response: "징집 명령", war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
+};
+const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
+  wool_payment: { accept: "현물로 낸다", accept_with_price: "현금으로 낸다", refuse: "거절", expired: "답하지 않음" },
+  levy_response: { accept: "사람을 보낸다", accept_with_price: "면제금을 낸다", refuse: "거절", expired: "답하지 않음" },
+  war_funding: { accept: "상인에게 빌린다", accept_with_price: "세금을 올린다", refuse: "거절", expired: "답하지 않음" },
+  refugee_admission: { accept: "모두 받아들인다", accept_with_price: "절반만 받는다", refuse: "돌려보낸다", expired: "답하지 않음" },
+  wall_or_market: { accept: "석벽을 쌓는다", accept_with_price: "성벽세로 석벽을 쌓는다", refuse: "시장을 넓힌다", expired: "답하지 않음" },
+};
 const DEATH_CAUSES: Readonly<Record<string, string>> = {
   age: "세상을 떠났다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
 };
@@ -66,7 +78,16 @@ const DEATH_CAUSES: Readonly<Record<string, string>> = {
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
   "decision.famine_response": params => { const label = choice(s(params, "chosen")); return `대기근에 ${label}${josa(label, "을", "를")} 택했다`; },
-  "decision.petition_response": params => { const label = choice(s(params, "chosen")); return `상인의 시장권 청원에 답했다: ${label}`; },
+  "decision.petition_response": params => { const label = choice(s(params, "chosen")); return `${PETITION_SUBJECTS[s(params, "defId")] ?? "상인의 시장권 청원"}에 답했다: ${WAR_CHOICES[s(params, "defId")]?.[s(params, "chosen")] ?? label}`; },
+  // F2-A (WR-1…WR-7): the war of 1337.
+  "war.messenger": () => "국왕의 전령이 왔다 — 프랑스와 전쟁이 시작되었다",
+  "war.beacon": () => "해안의 봉화가 올랐다",
+  "war.raid": params => `해안 습격이 닥쳤다 — 불탄 집 ${n(params, "burntHouses")}, 빼앗긴 물자 ${n(params, "looted")}, 빼앗긴 돈 ${n(params, "coin")}d`,
+  "war.conscripts_left": params => `징집된 남자 ${n(params, "men")}명이 떠났다`,
+  "war.conscripts_returned": params => n(params, "lost") === 0 ? `징집된 남자 ${n(params, "men")}명이 모두 돌아왔다` : `징집된 남자들이 돌아왔다 — ${n(params, "lost")}명은 돌아오지 못했다`,
+  "war.favour_lost": () => "왕실의 신임을 잃었다",
+  "war.licence": () => "왕실 조달 면허를 받았다",
+  "war.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
   // FAIL-3 (FL-5…FL-8): the lordship's fall and the chapter's turn.
   "decline.entered": params => `영지가 쇠퇴했다 — ${DECLINE_CAUSES[s(params, "cause")] ?? s(params, "cause")}, ${s(params, "right") === "none" ? "잃은 권리 없이" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} ${s(params, "by") === "overlord" ? "상위 영주가 맡았고" : "상인들이 가져갔고"}`} 칭호가 강등되었다`,
   "decline.recovered": params => s(params, "right") === "none" ? "쇠퇴에서 벗어나 칭호를 되찾았다" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} 되사 쇠퇴에서 벗어났다`,

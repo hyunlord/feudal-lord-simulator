@@ -69,6 +69,8 @@ export interface AutoplayPolicy {
    * food in a derelict town and never buys a lost right back.
    */
   readonly naiveUpkeep?: boolean;
+  /** F2-A gate (WR-10): the wall-or-market answer (the bot's own rule unless a gate variant fixes it). */
+  readonly wallChoice?: "wall" | "market";
 }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
@@ -389,7 +391,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AdvisorAction {
   // F0-C1 (FC-6): the famine and the petition are answered as soon as they come.
-  const answer = chapterDecisionAction(state, policy.famineResponse ?? "relief", policy.petitionResponse ?? "accept", policy.naiveUpkeep === true ? "refuse" : "pay");
+  const answer = chapterDecisionAction(state, policy.famineResponse ?? "relief", policy.petitionResponse ?? "accept", policy.naiveUpkeep === true ? "refuse" : "pay", policy.wallChoice);
   if (answer !== null) return answer;
   // F0-B (EV-7): a burnt house is rebuilt first (its household waits in the ruin).
   const rebuild = rebuildBurntHouseAction(state);
