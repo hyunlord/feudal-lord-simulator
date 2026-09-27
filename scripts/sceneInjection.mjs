@@ -29,7 +29,7 @@ export function admitSceneState(input, newGame, codec) {
   if (typeof input.schemaVersion === 'number' && 'state' in input) return codec.decodeSave(new TextEncoder().encode(JSON.stringify(input))).envelope.state;
   const stale = codec.staleStateKeys(input, newGame, codec);
   if (stale.length > 0) {
-    const error = new Error(`StaleSceneStateError: scene state is an old bare save (no ${stale.join(', ')}): read it with loadSaveFile, which runs the migration chain`);
+    const error = new Error(`Scene state is an old bare save (no ${stale.join(', ')}): read it with loadSaveFile, which runs the migration chain`);
     error.name = 'StaleSceneStateError';
     throw error;
   }
