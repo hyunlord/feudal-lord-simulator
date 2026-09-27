@@ -64,8 +64,10 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
   );
 }
 
-export function ChronicleScreen({ state, onClose, onLookAt }: {
+export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = null }: {
   readonly state: GameState; readonly onClose: () => void; readonly onLookAt: (tile: Tile) => void;
+  /** UI-5: opened from a person card's [전기 보기], on that person's biography. */
+  readonly initialPersonId?: string | null;
 }) {
   const [filter, setFilter] = useState<ChronicleFilter>(DEFAULT_CHRONICLE_FILTER);
   const [selected, setSelected] = useState<string | null>(null);
@@ -74,7 +76,7 @@ export function ChronicleScreen({ state, onClose, onLookAt }: {
   const [zoomTick, setZoomTick] = useState(state.tick);
   const [compare, setCompare] = useState(false);
   const [detailView, setDetailView] = useState<"record" | "map">("record");
-  const [personId, setPersonId] = useState<string | null>(null);
+  const [personId, setPersonId] = useState<string | null>(initialPersonId);
   const [scrollTop, setScrollTop] = useState(0);
   const [viewport, setViewport] = useState({ list: 480, page: 640 });
   const list = useRef<HTMLDivElement>(null);

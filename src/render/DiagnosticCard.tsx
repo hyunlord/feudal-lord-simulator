@@ -7,6 +7,9 @@ import { BALANCE } from "../content/balanceConfig";
 import type { HouseProgressModel } from "../ui/houseProgressModel";
 import type { HouseDiagnosisModel } from "../ui/houseDiagnosisModel";
 import type { WalkerDiagnosisModel } from "../ui/walkerDiagnosisModel";
+import type { PersonRow, WalkerHeadline } from "../ui/persons/personModels";
+import { PersonList, PersonPortrait } from "../ui/persons/PersonViews";
+import { PERSONS_COPY } from "../ui/persons/personsCopy.ko";
 import type { ConstructionSiteCardModel } from "../ui/constructionSiteCardModel";
 
 import { BuildGlyph } from "../ui/BuildGlyph";
@@ -56,16 +59,22 @@ export function placeDiagnosticCard(viewport: Size, target: Rect, card: Size): P
   };
 }
 
-function HouseCard({ model, onDemolishHouse, onMergeHouses }: {
+function HouseCard({ model, onDemolishHouse, onMergeHouses, members, onPerson }: {
   readonly model: HouseDiagnosisModel;
   readonly onDemolishHouse: ((buildingId: string) => void) | undefined;
   readonly onMergeHouses: ((sourceBuildingId: string, targetBuildingId: string) => void) | undefined;
+  readonly members: readonly PersonRow[];
+  readonly onPerson: ((personId: string) => void) | undefined;
 }): ReactElement {
   return (
     <>
       {model.pressure === undefined || model.pressure === null ? null
         : <p className="inspector-pressure" role="status"><UiIcon sheet="cause" cell="food" />{model.pressure}</p>}
       <p>생활 등급 {model.level} · 주민 {model.residents}명 / 정원 {model.capacity}명 · {model.footprintLabel}칸</p>
+      {members.length === 0 ? null : <section key={model.buildingId} className="inspector-members" aria-label={PERSONS_COPY.membersHeading}>
+        <h3>{PERSONS_COPY.membersHeading}</h3>
+        <PersonList rows={members} onOpen={onPerson} />
+      </section>}
       <dl>
         <div><dt>건축 단계</dt><dd>{model.builtLevel}단계 · {model.conditionLabel}</dd></div>
         <div><dt>물</dt><dd>{model.water.label}</dd></div>
@@ -117,9 +126,11 @@ function HouseCard({ model, onDemolishHouse, onMergeHouses }: {
   );
 }
 
-function WalkerCard({ model }: { readonly model: WalkerDiagnosisModel }): ReactElement {
+function WalkerCard({ model, headline }: { readonly model: WalkerDiagnosisModel; readonly headline: WalkerHeadline | null }): ReactElement {
   return (
     <>
+      {headline === null ? null : <p className="walker-headline" data-walker-headline={model.walkerId} data-person={headline.personId ?? undefined}
+        data-portrait-exact={headline.personId === null ? undefined : headline.exact ? "true" : "false"}>{headline.line}</p>}
       <dl>
         <div><dt>화물</dt><dd>{model.cargoLabel}</dd></div>
         <div><dt>출발</dt><dd>{model.sourceLabel}</dd></div>
@@ -175,7 +186,7 @@ function ConstructionSiteCard({
   );
 }
 
-function cardIdentity(model: DiagnosticCardModel): Readonly<{ name: string; type: string; label: string; art: ReactElement }> {
+function cardIdentity(model: DiagnosticCardModel, headline: WalkerHeadline | null = null): Readonly<{ name: string; type: string; label: string; art: ReactElement }> {
   switch (model.kind) {
     case "house": return {
       name: model.value.name, type: `주택 · 생활 등급 ${model.value.level}`, label: `${model.value.name} 원인 진단`,
@@ -193,7 +204,9 @@ function cardIdentity(model: DiagnosticCardModel): Readonly<{ name: string; type
       return { name: model.value.name, type: STORE_INSPECTOR_COPY.type, label: STORE_INSPECTOR_COPY.label(model.value.name),
         art: source === null ? <BuildGlyph tool={model.value.kind} /> : <img src={source} alt="" /> };
     }
-    case "walker": return { name: model.value.roleLabel, type: "주민 · 이동과 운송", label: `${model.value.roleLabel} 임무 진단`, art: <span>이동</span> };
+    case "walker": return { name: headline?.name === null || headline?.name === undefined ? model.value.roleLabel : PERSONS_COPY.walkerName(headline.name, model.value.roleLabel),
+      type: "주민 · 이동과 운송", label: `${model.value.roleLabel} 임무 진단`,
+      art: headline?.portraitId === null || headline?.portraitId === undefined ? <span>이동</span> : <PersonPortrait portraitId={headline.portraitId} size={44} /> };
     case "construction_site": return { name: model.value.name, type: "건설 현장", label: `${model.value.name} 건설 진단`, art: <span>공사</span> };
   }
 }
@@ -207,6 +220,9 @@ export function DiagnosticCard({
   onMergeHouses,
   onCancelConstruction,
   onClose,
+  walkerHeadline = null,
+  houseMembers = [],
+  onPerson,
 }: Readonly<{
   model: DiagnosticCardModel;
   /** The hover tooltip's cause line for a selected building (same text, UI-1 / B9). */
@@ -218,8 +234,13 @@ export function DiagnosticCard({
   onCancelConstruction?: (siteId: string) => void;
   onClose?: () => void;
   position: Position;
+  /** UI-5: the person behind a selected walker and what they do (verb + what + where + progress). */
+  walkerHeadline?: WalkerHeadline | null;
+  /** UI-5: a house's members (head first; portrait, name, age, role), each opening their person card. */
+  houseMembers?: readonly PersonRow[];
+  onPerson?: (personId: string) => void;
 }>): ReactElement {
-  const identity = cardIdentity(model);
+  const identity = cardIdentity(model, walkerHeadline);
   return (
     <div className="diagnostic-card-position" onKeyDown={(event) => {
       event.stopPropagation();
@@ -238,8 +259,8 @@ export function DiagnosticCard({
             <p>L{causeSummary.nextLevel}까지 조건 유지 {Math.floor(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) / 60)}:{String(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) % 60).padStart(2, '0')} 남음</p> : null}
         </div>}
         <div className="inspector-body">
-          {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} /> : null}
-          {model.kind === "walker" ? <WalkerCard model={model.value} /> : null}
+          {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} members={houseMembers} onPerson={onPerson} /> : null}
+          {model.kind === "walker" ? <WalkerCard model={model.value} headline={walkerHeadline} /> : null}
           {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}
           {model.kind === "building" ? <><p>{model.value.purpose}</p>{buildingOperation === undefined ? null : <section className="inspector-actions"><button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onClick={() => buildingOperation.onToggle()}>{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"

@@ -1,0 +1,77 @@
+{
+ "match": {
+  "carrying": {
+   "exact": 49,
+   "total": 49,
+   "percent": 100
+  },
+  "aging-eve": {
+   "exact": 104,
+   "total": 107,
+   "percent": 97.1
+  },
+  "petition-open": {
+   "exact": 347,
+   "total": 347,
+   "percent": 100
+  },
+  "famine-arrival": {
+   "exact": 529,
+   "total": 529,
+   "percent": 100
+  },
+  "chapter-end": {
+   "exact": 502,
+   "total": 502,
+   "percent": 100
+  },
+  "merchant-town": {
+   "exact": 756,
+   "total": 769,
+   "percent": 98.3
+  }
+ },
+ "arms": {
+  "1": "knightly.azure.per_fess.sable...stag_head.or",
+  "2": "knightly.vert...chief.or.eagle.argent"
+ },
+ "armsSameSeedTwice": true,
+ "merchantMarks": [
+  {
+   "householdId": "construction-site-000025",
+   "mark": "circle.topcross.double_fork",
+   "emblem": "merchant"
+  },
+  {
+   "householdId": "house-46-42-0",
+   "mark": "shield.rake.steps",
+   "emblem": "merchant"
+  }
+ ],
+ "steward": {
+  "carrying": {
+   "id": "p-000013",
+   "members": 1
+  },
+  "aging-eve": {
+   "id": "p-000013",
+   "members": 1
+  },
+  "petition-open": {
+   "id": "p-000013",
+   "members": 1
+  },
+  "famine-arrival": {
+   "id": "p-000013",
+   "members": 1
+  },
+  "chapter-end": {
+   "id": "p-001038",
+   "members": 1
+  },
+  "merchant-town": {
+   "id": "p-000769",
+   "members": 1
+  }
+ }
+}

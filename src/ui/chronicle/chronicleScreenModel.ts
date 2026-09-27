@@ -11,6 +11,8 @@ import { MANOR_HOUSEHOLD } from "../../engine/persons.types";
 import { portraitFor } from "../../engine/portraits";
 import { calendar, scenarioOf } from "../../engine/scenarioState";
 import { chronicleIllustration } from "../chronicleModel";
+import { PERSONS_COPY } from "../persons/personsCopy.ko";
+import { drawnPortraitId } from "../portraitArt";
 import type { Wave16ImageId } from "../wave16Art";
 import type { Wave17ImageId } from "../wave17Art";
 import { CHRONICLE_SCREEN_COPY, OCCUPATION_TITLES } from "./chronicleScreenCopy.ko";
@@ -236,7 +238,8 @@ function recordPerson(state: Pick<GameState, "persons">, record: HistoryRecord):
 
 /** The person's picture as they were in `year` (the aging chain's stage of that age). */
 export function portraitAt(person: Person, year: number) {
-  return portraitFor(person, ageBandOf(ageOf(person, Math.min(year, person.deathYear ?? person.leftYear ?? year))));
+  const pick = portraitFor(person, ageBandOf(ageOf(person, Math.min(year, person.deathYear ?? person.leftYear ?? year))));
+  return { ...pick, portraitId: drawnPortraitId(person, pick.portraitId) };
 }
 
 export function recordArt(state: Pick<GameState, "persons" | "scenarioId">, record: HistoryRecord): ChronicleArt {
@@ -358,7 +361,7 @@ export function biographyView(state: GameState, personId: string): BiographyView
   const members = personsOf(state, person.householdId).filter(member => member.id !== person.id)
     .sort((a, b) => (RELATION_ORDER[a.role] ?? 9) - (RELATION_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear);
   const relations = members.map(member => ({ id: member.id, line: CHRONICLE_SCREEN_COPY.relation(person.role, member.role, displayName(member)),
-    portraitId: persons.portrait(state, member).portraitId }));
+    portraitId: drawnPortraitId(member, persons.portrait(state, member).portraitId) }));
   // The small circle: the spouse of a head (or the head of a spouse), else the head of the house.
   const companion = members.find(member => member.role === (person.role === "head" ? "spouse" : "head"));
   const offices: string[] = [];
@@ -376,13 +379,15 @@ export function biographyView(state: GameState, personId: string): BiographyView
   const shared = history.query(state, { actors: [{ type: "person", id: personId }], severity: 1 }).slice(-6).reverse();
   const end = biography.died ?? biography.left;
   return {
-    id: person.id, name: biography.name, portraitId: biography.portrait.portraitId, portraitExact: biography.portrait.exact,
-    portraitLine: CHRONICLE_SCREEN_COPY.portraitMatch(biography.portrait.identityId, biography.portrait.stage, biography.portrait.exact),
+    id: person.id, name: biography.name, portraitId: drawnPortraitId(person, biography.portrait.portraitId), portraitExact: person.role === "steward" || biography.portrait.exact,
+    portraitLine: person.role === "steward" ? PERSONS_COPY.stewardPortrait
+      : CHRONICLE_SCREEN_COPY.portraitMatch(biography.portrait.identityId, biography.portrait.stage, biography.portrait.exact),
     life: CHRONICLE_SCREEN_COPY.life(person.birthYear, end, biography.age, biography.died !== null, biography.left !== null && biography.died === null),
-    role: CHRONICLE_SCREEN_COPY.role(person.role, occupationName(person.occupation)),
+    // The steward's trade is the office itself (not "청지기 · 청지기").
+    role: CHRONICLE_SCREEN_COPY.role(person.role, person.occupation === person.role ? "" : occupationName(person.occupation)),
     household: person.role === "head" ? null : person.householdId === MANOR_HOUSEHOLD ? CHRONICLE_SCREEN_COPY.household(null)
       : CHRONICLE_SCREEN_COPY.household(householdName(state, person.householdId)),
-    companion: companion === undefined ? null : { id: companion.id, portraitId: persons.portrait(state, companion).portraitId,
+    companion: companion === undefined ? null : { id: companion.id, portraitId: drawnPortraitId(companion, persons.portrait(state, companion).portraitId),
       label: CHRONICLE_SCREEN_COPY.companion(person.role, companion.role) },
     events: biography.events.map((event, index) => ({ id: event.id, date: CHRONICLE_SCREEN_COPY.date(event.date.year, event.date.season), sentence: event.summary,
       last: index === biography.events.length - 1 && end !== null })),

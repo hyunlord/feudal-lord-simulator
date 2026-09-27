@@ -6,6 +6,10 @@ import type { FamineDecisionView, PetitionDecisionView } from "../decisionModels
 import { UiIcon } from "../UiIcon";
 import { wave8ContentStyle, wave8FrameLayerStyle, wave8ImageStyle, wave8Url } from "../wave8Art";
 import { wave16ImageStyle, wave16Url } from "../wave16Art";
+import { PersonChip, PersonPortrait } from "../persons/PersonViews";
+import type { PersonRow } from "../persons/personModels";
+import { PERSONS_COPY } from "../persons/personsCopy.ko";
+import { STEWARD_PORTRAIT } from "../portraitArt";
 
 // UI-4 story modals (state machine modals: time stops while one is up, and closing it returns to the state under it).
 //  - The Great Famine's answer: the 1315 loading keyart behind, the intro illustration, four answers each with its
@@ -13,14 +17,21 @@ import { wave16ImageStyle, wave16Url } from "../wave16Art";
 //  - The merchants' petition: the Wave 8 petition frame, the petitioners and their demand, three answers with seals.
 //  - The chronicle page at the chapter's end, and the chapter 2 preview.
 
-export function FamineDecisionModal({ view, onChoose, onLater }: {
+export function FamineDecisionModal({ view, onChoose, onLater, steward = null, onPerson }: {
   readonly view: FamineDecisionView; readonly onChoose: (choice: FamineResponseChoice) => void; readonly onLater: () => void;
+  /** UI-5: the lord's steward, who brings the matter (the fixed portrait's look of concern, the name; the chip opens the card). */
+  readonly steward?: PersonRow | null; readonly onPerson?: (personId: string) => void;
 }) {
   return (
     <div className="story-modal-backdrop story-modal-backdrop--famine" role="presentation" style={{ backgroundImage: `url("${wave8Url("loading_1315_famine")}")` }}>
       <section className="story-modal famine-decision" role="dialog" aria-modal="true" aria-label={DECISION_COPY.famineTitle} data-decision={view.eventId}>
         <div className="story-modal-art" aria-hidden="true" style={wave16ImageStyle("decision_famine_intro", 320)} />
         <h2>{DECISION_COPY.famineTitle}</h2>
+        {steward === null ? null : <div className="decision-steward" data-steward={steward.id}>
+          {onPerson === undefined ? <PersonPortrait portraitId={STEWARD_PORTRAIT.concern} size={64} />
+            : <PersonChip row={{ ...steward, portraitId: STEWARD_PORTRAIT.concern }} size={64} onOpen={id => onPerson(id)} />}
+          <p className="decision-steward-advice">{PERSONS_COPY.stewardAdvice}</p>
+        </div>}
         <p>{DECISION_COPY.famineIntro}</p>
         <ol className="famine-options">
           {view.options.map(option => (
@@ -40,17 +51,31 @@ export function FamineDecisionModal({ view, onChoose, onLater }: {
   );
 }
 
-export function PetitionModal({ view, onRespond, onLater }: {
+export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPerson }: {
   readonly view: PetitionDecisionView; readonly onRespond: (response: PetitionResponse) => void; readonly onLater: () => void;
+  /** UI-5: the heads who bring the petition (PERSON-0 PS-4: two or three), each a chip that opens their card. */
+  readonly petitioners?: readonly PersonRow[]; readonly onPerson?: (personId: string) => void;
 }) {
   return (
     <div className="story-modal-backdrop" role="presentation">
       <section className="story-modal petition-card" role="dialog" aria-modal="true" aria-label={DECISION_COPY.petitionTitle} data-petition={view.petitionId}>
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
         <div className="petition-body" style={wave8ContentStyle("frame_petition")}>
-          <div className="story-modal-art" aria-hidden="true" style={wave16ImageStyle("event_market_petition", 300)} />
-          <h2>{DECISION_COPY.petitionTitle}</h2>
-          <p className="petition-who"><UiIcon sheet="resource" cell="population" />{DECISION_COPY.petitioners}</p>
+          {petitioners.length === 0 || onPerson === undefined ? <>
+            <div className="story-modal-art" aria-hidden="true" style={wave16ImageStyle("event_market_petition", 300)} />
+            <h2>{DECISION_COPY.petitionTitle}</h2>
+            <p className="petition-who"><UiIcon sheet="resource" cell="population" />{DECISION_COPY.petitioners}</p>
+          </> : <>
+            {/* The petitioners stand beside the scene (no height added: the answers stay inside the frame). */}
+            <div className="petition-scene">
+              <div className="story-modal-art" aria-hidden="true" style={wave16ImageStyle("event_market_petition", 300)} />
+              <section className="petition-people" aria-label={PERSONS_COPY.petitionersHeading}>
+                <h3>{PERSONS_COPY.petitionersHeading}</h3>
+                <ul className="person-list">{petitioners.map(row => <li key={row.id}><PersonChip row={row} onOpen={id => onPerson(id)} /></li>)}</ul>
+              </section>
+            </div>
+            <h2>{DECISION_COPY.petitionTitle}</h2>
+          </>}
           <p>{DECISION_COPY.demand}</p>
           <p>{DECISION_COPY.petitionIntro}</p>
           <ol className="petition-options">

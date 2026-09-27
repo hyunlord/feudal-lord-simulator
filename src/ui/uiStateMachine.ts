@@ -19,7 +19,9 @@ export type UiMode =
   | "goals"; // the goal log drawer
 /** UI-4: `decision` the famine's answer, `petition` a petition, `chronicle` the chapter's page and its next-chapter preview.
  * CHRON-1: `history` the full chronicle screen (the ledger drawer's tab, C, or the chapter page's [전체 연대기 보기]). */
-export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "petition" | "chronicle" | "chapter_preview" | "history";
+export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "petition" | "chronicle" | "chapter_preview" | "history"
+  /** UI-5: a person's card (from a house's members, a petition's petitioners, the famine's steward). */
+  | "person_card";
 export type UiState = Readonly<{ mode: UiMode; modals: readonly { readonly modal: UiModal; readonly under: UiMode }[]; hudHidden: boolean }>;
 export type UiEvent =
   | { readonly type: "open_build" } | { readonly type: "toggle_build" }

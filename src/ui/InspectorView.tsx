@@ -7,9 +7,14 @@ import { UiIcon } from "./UiIcon";
 import { StoreInspectorBody } from "./StoreInspector";
 import { storeInspectorModel } from "./storeInspectorModel";
 import type { StoreStockHistory } from "./storeStockHistory";
+import { householdRows } from "./persons/personModels";
+import { PersonList } from "./persons/PersonViews";
+import { PERSONS_COPY } from "./persons/personsCopy.ko";
 
 export type InspectorProps = Readonly<{
   state: GameState;
+  /** UI-5: a house's member opens their person card. */
+  onPerson?: (personId: string) => void;
   /** Selected building or construction-site id; null hides the inspector. */
   buildingId: string | null;
   onClose: () => void;
@@ -18,10 +23,12 @@ export type InspectorProps = Readonly<{
 }>;
 
 /** Markup of the left inspector; `Inspector.tsx` adds its stylesheet (kept apart so node tests can render this). */
-export function Inspector({ state, buildingId, onClose, storeHistory = null }: InspectorProps): ReactElement | null {
+export function Inspector({ state, buildingId, onClose, storeHistory = null, onPerson }: InspectorProps): ReactElement | null {
   const model = inspectorModel(state, buildingId);
   if (model === null) return null;
   const store = buildingId === null ? null : storeInspectorModel(state, buildingId, storeHistory);
+  const house = buildingId === null || state.persons === undefined ? null : state.houses.find(entry => entry.buildingId === buildingId) ?? null;
+  const members = house === null ? [] : householdRows(state, house.buildingId);
   return (
     <section className="left-inspector" aria-label={INSPECTOR_COPY.regionLabel} data-target={model.target}>
       <header className="left-inspector-heading">
@@ -34,6 +41,10 @@ export function Inspector({ state, buildingId, onClose, storeHistory = null }: I
         </button>
       </header>
       {store !== null ? <div className="left-inspector-body"><StoreInspectorBody model={store} /></div> : <div className="left-inspector-body">
+        {house === null ? null : <section className="left-inspector-members" aria-label={PERSONS_COPY.membersHeading}>
+          <h3>{PERSONS_COPY.membersHeading}</h3>
+          {members.length === 0 ? <p className="left-inspector-empty">{PERSONS_COPY.membersEmpty}</p> : <PersonList key={house.buildingId} rows={members} onOpen={onPerson} />}
+        </section>}
         <h3>{INSPECTOR_COPY.whyHeading}</h3>
         <ul className="left-inspector-why">
           {model.why.length === 0
