@@ -29,10 +29,16 @@ if (rootElement === null) {
   throw new Error("Root element not found");
 }
 
-createRoot(rootElement).render(
-  <StrictMode>
-    <GameProvider>
-      <App />
-    </GameProvider>
-  </StrictMode>,
-);
+// UI-KIT-1: /dev/ui-kit is the kit gallery (a developer screen, loaded only there), not the game.
+const galleryPath = new URL("dev/ui-kit", new URL(import.meta.env.BASE_URL, window.location.origin)).pathname;
+if (window.location.pathname.replace(/\/$/, "") === galleryPath) {
+  void import("./ui/kit/UiKitGallery").then(({ UiKitGallery }) => createRoot(rootElement).render(<StrictMode><UiKitGallery /></StrictMode>));
+} else {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <GameProvider>
+        <App />
+      </GameProvider>
+    </StrictMode>,
+  );
+}

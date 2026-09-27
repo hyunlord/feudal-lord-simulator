@@ -211,3 +211,17 @@
 }
 :root .ui-divider.ui-divider { height: 8px; margin: var(--space-1) 0; background: var(--art-rule-light) center / 100% 8px no-repeat; border: 0; }
 :root .ui-divider.ui-divider--dark { background-image: var(--art-rule-dark); }
+
+/* ---- /dev/ui-kit gallery (a developer screen) ---- */
+.app-shell.ui-kit-gallery { box-sizing: border-box; height: 100dvh; padding: var(--space-2) var(--space-3) var(--space-3); overflow-y: auto; overflow-x: hidden; background: var(--parchment) var(--art-texture-light) repeat; }
+.ui-kit-gallery-head h1 { margin: 0 0 var(--space-half); font-family: var(--ui-font-serif); font-size: 24px; }
+.ui-kit-gallery-head p { max-width: 70ch; margin: 0 0 var(--space-2); font-size: var(--text-14); }
+.ui-kit-gallery-section { margin: 0 0 var(--space-2); padding: 20px 24px; border: 3px solid transparent; }
+.ui-kit-gallery-section h2 { margin: var(--space-1) 0; font-family: var(--ui-font-serif); font-size: var(--text-18); }
+.ui-kit-gallery-section h3 { margin: var(--space-1) 0 var(--space-half); font-size: var(--text-14); color: var(--ink-soft); }
+.ui-kit-gallery-row { display: flex; flex-wrap: wrap; gap: var(--space-1); align-items: center; margin-bottom: var(--space-1); }
+.ui-kit-gallery-row--select { min-height: 60px; }
+.ui-kit-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-2); }
+.ui-kit-gallery-frame { min-height: 96px; padding: 16px 18px; border: 3px solid transparent; font-size: var(--text-13); }
+.ui-kit-gallery-frame p { margin: var(--space-half) 0 0; }
+.ui-kit-gallery-dark { display: flex; flex-wrap: wrap; gap: var(--space-1); align-items: center; margin-top: var(--space-2); padding: 16px 18px; border: 2px solid transparent; }
