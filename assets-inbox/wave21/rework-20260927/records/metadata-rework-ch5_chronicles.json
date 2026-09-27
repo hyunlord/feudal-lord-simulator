@@ -1,0 +1,150 @@
+[
+  {
+    "id": "ch5_chronicle_city_seal",
+    "file": "assets/ch5_records/ch5_chronicle_city_seal.png",
+    "width": 384,
+    "height": 384,
+    "description": "길드홀 앞 손에 든 도시 인장 원형",
+    "historyNotes": "Southern England 1400–1450; invented motifs; no writing; candidate only.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Redraw this project chronicle illustration as an entirely NEW square composition; reference only for muted hand-painted gouache brush style. Southern England 1400–1450. CLOSE-UP of one workworn hand holding upright a bronze city seal matrix alone before a shadowed guildhall doorway. Dominant centered bronze circle with a simple invented TWO-TOWER relief and plain rim without lettering. No councillor, no face, no meeting, no desk or table. Slight manuscript-illumination clarity of silhouette, natural warm bronze against charcoal oak, fine visible painted grain, not photorealism. Scene fills square edge to edge, no decorative border or aged parchment tint. NO TEXT, letters, numerals, pseudowriting, watermark, captions, real heraldry, house chimneys. Make the bronze face large enough to read at 384px.",
+        "rawFile": "raw/rework-ch5_chronicles/ch5_chronicle_city_seal-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_chronicle_city_seal.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-f64a-7762-86de-abade65b82b7/exec-644d5e5b-1010-496e-b101-cc468be8f434.png"
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize to 384×384, no painted edits.",
+    "qa": {
+      "status": "pass",
+      "method": "Individual final 384px PNG and 2x2 contact visually inspected",
+      "sceneDistinct": true,
+      "textObserved": false,
+      "domesticChimneyObserved": false,
+      "limitations": "Legal status and exact chronology require game context; offline candidate review only."
+    },
+    "sha256": "50f8294e2d973f35af477179526d4ee1a112344430226a3f9a0281bc4d54fdec"
+  },
+  {
+    "id": "ch5_chronicle_charter_sealing",
+    "file": "assets/ch5_records/ch5_chronicle_charter_sealing.png",
+    "width": 384,
+    "height": 384,
+    "description": "길드홀 발코니의 헌장 공포",
+    "historyNotes": "Southern England 1400–1450; invented motifs; no writing; candidate only.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Completely REDRAW composition of input, retain only handpainted low-saturation gouache quality. Southern England 1400–1450 chronicle square scene. LOW ANGLE exterior of a medieval timber guildhall balcony. Two standing civic figures (plain brown and blue-grey wool, no red caps) unfurl one large BLANK parchment charter over the oak railing; a large dull-red wax seal hangs on cords beneath charter. A few heads of townspeople seen from behind at bottom looking upward. Hanging parchment and balcony geometry dominant; sky above, no desk, no tabletop, no ink stamping, no close-up court meeting. Distinct public proclamation. Slight manuscript-illumination compositional clarity with finely painted materials; no ornate border or parchment tint. NO letters, text, numerals or pseudo-writing anywhere, no heraldic text, no chimneys, no plague marks. Square edge-to-edge illustration, readable at 384px.",
+        "rawFile": "raw/rework-ch5_chronicles/ch5_chronicle_charter_sealing-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_chronicle_charter_sealing.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-f64a-7762-86de-abade65b82b7/exec-6f2ddb09-085c-4f2e-bdac-53410c2bb1d9.png"
+      },
+      {
+        "prompt": "Precise local edit ONLY: remove the fleur-de-lis emblem from the hanging vertical banner at upper right, making banner plain solid faded russet-brown cloth with worn weave, no ornament or text. Preserve entire balcony scene, two figures, blank charter and red wax seal, crowd, perspective, brush texture, lighting and square canvas EXACTLY. No other changes.",
+        "rawFile": "raw/rework-ch5_chronicles/ch5_chronicle_charter_sealing-v2.png",
+        "referenceImages": [
+          "raw/rework-ch5_chronicles/ch5_chronicle_charter_sealing-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-f64a-7762-86de-abade65b82b7/exec-4b0803a5-6344-4338-906e-e0af5a1bef00.png"
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize to 384×384, no painted edits.",
+    "qa": {
+      "status": "pass",
+      "method": "Individual final 384px PNG and 2x2 contact visually inspected",
+      "sceneDistinct": true,
+      "textObserved": false,
+      "domesticChimneyObserved": false,
+      "limitations": "Legal status and exact chronology require game context; offline candidate review only.",
+      "correction": "Fleur-de-lis banner replaced with plain faded cloth."
+    },
+    "sha256": "47ad8c1f406f2da001fe2210ba959e03d867e8edaa7fb6b390207496791f2e4d"
+  },
+  {
+    "id": "ch5_chronicle_heir",
+    "file": "assets/ch5_records/ch5_chronicle_heir.png",
+    "width": 384,
+    "height": 384,
+    "description": "문밖으로 나서는 방패 든 후계자",
+    "historyNotes": "Southern England 1400–1450; invented motifs; no writing; candidate only.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Entirely NEW composition from input; keep only muted handpainted gouache medieval chronicle style. Southern England 1400–1450. Full figure single young adult FEMALE heir striding out through manor doorway into daylight, inherited small heater shield carried on forearm. Older woman stands back in doorway shadow watching her leave, not touching, not awarding anything. Camera slightly below waist level, doorway left-back, heir steps diagonally forward right, leading boot and determined face clear. Shield has one simple invented pale oakleaf on weathered muted blue-grey field, NO real heraldry. Brown wool kirtle and muted russet short cloak, no fantasy armour. No old lord/redcap, no ceremony, no bed, table, documents, throne or crowd. Clean timber doorway and stonefloor, no distant chimneys. Slight manuscript-illumination silhouette clarity but no decorative border or aged paper tint. No letters, numerals, writing, symbols resembling text. Square full scene, legible at 384px.",
+        "rawFile": "raw/rework-ch5_chronicles/ch5_chronicle_heir-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_chronicle_heir.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-f64a-7762-86de-abade65b82b7/exec-00a43ba3-6ffc-4ced-b1b1-2795c71ecbef.png"
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize to 384×384, no painted edits.",
+    "qa": {
+      "status": "pass",
+      "method": "Individual final 384px PNG and 2x2 contact visually inspected",
+      "sceneDistinct": true,
+      "textObserved": false,
+      "domesticChimneyObserved": false,
+      "limitations": "Legal status and exact chronology require game context; offline candidate review only."
+    },
+    "sha256": "f9b69021139871ce08988a0e23fdcb22174908682df710e8a725e5d200eaf3f2"
+  },
+  {
+    "id": "ch5_chronicle_legacy_sealing",
+    "file": "assets/ch5_records/ch5_chronicle_legacy_sealing.png",
+    "width": 384,
+    "height": 384,
+    "description": "바닥 보관함에 내려놓는 봉인된 연대기",
+    "historyNotes": "Southern England 1400–1450; invented motifs; no writing; candidate only.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Completely redraw input as NEW CLOSE OBLIQUE overhead composition, keep muted handpainted gouache brush character only. Southern England 1400–1450 chronicle. THREE human hands from two unseen people carefully LOWER a closed thick leather chronicle, tied with linen cords and one dull red wax seal, into a large OPEN OAK ARCHIVE CHEST sitting directly on rough grey stonefloor. Two hands grip book edges, third supports underside; proper five finger anatomy. Raised heavy wooden lid behind, black iron hinges; a large plain iron key rests on the stone floor beside chest. Focus on descent into dark protected storage, the archive chest occupies full lower picture. No tabletop, no faces, no standing old man, no wallcupboard, no window landscape, no writing or paper sheets. Book closed with plain weathered leather, seal abstract simple leaf with no text. Gentle diagonal composition, manuscript-like clarity but NO ornate border, NO paper tint. Square edge-to-edge picture readable at 384px; no text, letters, numerals, pseudowriting, watermark.",
+        "rawFile": "raw/rework-ch5_chronicles/ch5_chronicle_legacy_sealing-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_chronicle_legacy_sealing.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-f64a-7762-86de-abade65b82b7/exec-33aeb88b-d503-497f-a37f-972226610f28.png"
+      },
+      {
+        "prompt": "Precise local edit ONLY to this archive-chest illustration: remove the UPPER RIGHT hand resting atop the book at its upper-right corner and the corresponding forearm. Restore uninterrupted dark chest interior behind where that hand was. Retain the two hands at left gripping the book and the single hand at LOWER RIGHT supporting underneath. Exactly THREE hands total. Preserve book, cords, wax seal, open oak chest, floor key, painted texture, square framing and all other objects unchanged. No text or extra objects.",
+        "rawFile": "raw/rework-ch5_chronicles/ch5_chronicle_legacy_sealing-v2.png",
+        "referenceImages": [
+          "raw/rework-ch5_chronicles/ch5_chronicle_legacy_sealing-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-f64a-7762-86de-abade65b82b7/exec-96d74b71-c745-40d9-bb73-e3b0e8269409.png"
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize to 384×384, no painted edits.",
+    "qa": {
+      "status": "pass",
+      "method": "Individual final 384px PNG and 2x2 contact visually inspected",
+      "sceneDistinct": true,
+      "textObserved": false,
+      "domesticChimneyObserved": false,
+      "limitations": "Legal status and exact chronology require game context; offline candidate review only.",
+      "correction": "Four hands corrected to three."
+    },
+    "sha256": "65c0dac24e14c692eb0284b917dac537055ae3d593d70cbcd6c14c67f9d03251"
+  }
+]

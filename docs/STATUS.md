@@ -1,11 +1,19 @@
 # 현재 상태
 
-갱신: 2026-09-27(UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **BOT-3 식량 물류 — 관문 통과(규칙 diff = 수레 배정 한 곳 · 가드레일 5/5), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/bot3-food-logistics/REPORT.md), [노동 명세](design/labour.md) LB-15, 결정 LB10·BT11.
+  - **수레 규칙 LB-15**(사용자 판정 두 번): 밀이 400 이상 쌓인 헛간이 있으면 방앗간 입고 수레의 후보에서 다른 헛간이 빠진다. 곡창은 제자리이고, 남은 후보 가운데 가장 가까운 곳으로 간다. 플레이어 게임의 수레도 같이 바뀐다. 방앗간 상한은 그대로다.
+  - **지시서 진단과 다른 점:** barn_mill(AR-8)은 방앗간 상한을 보지 않는다. seed 3의 밀 907 헛간은 도로 2칸에 방앗간이 있었고, 입고 수레 9대 가운데 그 헛간으로 가는 수레가 없었다.
+  - **처음 규칙에서 좁힌 이유:** 처음 규칙은 쌓인 헛간을 곡창보다도 먼저 골랐다. 그러자 R-T15 seed 1 마을의 빵이 요청 아래(414~498 대 약 485)로 떨어졌고, 가드레일 1회차 seed 2는 L4 0/24에서 멈췄다. 헛간끼리로 좁힌 규칙은 그 마을에서 규칙 없음과 같다.
+  - **가드레일 2회차(`c5c778ec`) 5/5, 알려진 정지 MK6 해소:** 승리 틱 138,849 · 228,549 · 168,810 · 181,180 · 278,726. 새 기준선 `seeds/baseline-c5c778e.json`. seed 2는 +33 %다(기록만). 셋째 창고가 늦어 석조 단계가 약 64,000틱 밀렸고, 원인은 다음 후보로 남겼다.
+  - **검증:** 시나리오 LB-15 9/9, 고정값 B4를 다시 적음(본선은 옛 값), 전체 회귀 `a4ed050` 3,144/3,144, 깨끗한 클론 `4562186` 3,148/3,148.
+  - **렌더가 넘겨받을 것:** 수레가 넘치는 헛간으로 가는 것이 화면에서 보이면 좋다(적재물 그림은 이미 있음).
 
 - **UX-0b2 UX-0b 수정 범위 추가: MARKET-1·WALL-2를 화면에 — 본선 병합**(Claude Code, UI·렌더·스타일·스크립트·시험·문서만, 엔진 0줄, 검증 DGX, 사용자 지시): [보고서](verification/ux0b2/REPORT.md), 결정 UX0B2-D1~D3.
   - **MARKET-1:** 집 배치 칩 "시장까지 길 d걸음 / 40"(넘으면 "닿지 않음", 길 없음), 시장 배치 미리보기와 시장을 고를 때 길 40걸음 안 길 칸·닿는 집(옛 8칸 원 대신).
@@ -48,7 +56,7 @@
 - **MARKET-1 시장 도달 범위 — 관문 통과(가드레일 4/5, 알려진 정지 MK6), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/market1-reach/REPORT.md), [시장 도달 범위 명세](design/market-reach.md) MK-1~MK-5, 결정 MK1~MK6·GR1·PS9.
   - 시장은 길 40걸음 안의 집을 받는다(건물 거리 8 반경 대신, 우물·교회는 그대로). 두 번째 시장부터는 받지 못하는 필지가 12 이상일 때만 짓는다(봇·가드레일 수용 1 + ⌊필지 ÷ 12⌋, 플레이어는 제한 없음). 예측 API `marketReach`·`marketRoadDistance`·`anotherMarketAllowed`.
   - AR-5(MK-5, 사용자 판정): 길로 먼 집은 길 연장 → 새 시장(시설 상한 안) → 빈 집·L0·L1 옮기기 순서다. 사람이 사는 L2 이상은 헐지 않는다. 예전 규칙 도시에서 L3 9채(seed 5)와 L4 4채(seed 1)를 헐지 않고 길로 넣었다.
-  - 가드레일 3회차(마지막, 사용자 허락) 4/5: seed 3 식량 물류 정지(동쪽 밭 밀 907, 서쪽 방앗간·곡창 빔) → 알려진 정지, **BOT-3**. 기준선 `baseline-cbc84d0` 유지(PERSON-0 seed 4 +19.7 %는 수용, PS9). 가드레일 3회차는 앞으로 사용자 허락 뒤에만(GR1). 전체 회귀 `fd7e673` 3,100/3,100, 깨끗한 클론 `a1416c1` 3,101/3,101.
+  - 가드레일 3회차(마지막, 사용자 허락) 4/5: seed 3 식량 물류 정지(동쪽 밭 밀 907, 서쪽 방앗간·곡창 빔) → 알려진 정지, **BOT-3**(BOT-3에서 해소). 기준선 `baseline-cbc84d0` 유지(PERSON-0 seed 4 +19.7 %는 수용, PS9). 가드레일 3회차는 앞으로 사용자 허락 뒤에만(GR1). 전체 회귀 `fd7e673` 3,100/3,100, 깨끗한 클론 `a1416c1` 3,101/3,101.
   - 렌더가 넘겨받을 것: 범위 원 대신 `marketReach`의 길 칸, "거리 d / 범위 8" → "길 d걸음 / 40"(`serviceDiagnosisModel`·`placementPrediction`·`houseDiagnosisModel`). 그리고 시간에 좌우되는 시험 `tests/seasonArt.test.ts` "held chunk raster … stepped blend"(40ms 페이드를 실제 시계로 잼, DGX가 바쁠 때 깨끗한 클론 두 번 실패 — 시계 주입 권함).
 
 - **FIX-3 투기 판매액 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄 · 봇 0줄 · 저장 형식 그대로, 검증 DGX): [보고서](verification/fix3-speculation-sale/REPORT.md), [1장 명세](design/flow-chapter-one.md) FC-2b, 결정 FC13.
@@ -162,7 +170,7 @@
   - Astra P0 43장(초판 29 + 재작업 14, `caBX` 제거)과 파생 54장(아이콘 24/32/48/64, 커서 32, 초상 96)을 설치했다. 대장 97행, 받은 편지함 `ui-p0`(초판 12 superseded · 파일럿 12).
   - 9-slice 틀·버튼·탭·chip(상태는 코드), 아이콘 57, 커서 6, 청지기 3표정(대사 `tone`), Noto Sans/Serif KR(OFL)을 입혔다. 🔒 ▲ ◆ ✓ · "청" 등 글리프를 모두 그림으로 바꿨다.
   - 재생 감사 잔재 0(본선 1,027), 터치 44 px·12 px 0건, 9-slice 모서리 18/18 동일, p95 48~102%, 깨끗한 클론 `5584cb3` 2,900/2,900. 아이콘 24 px 실루엣은 3쌍이 IoU 0.85를 넘어 Astra 후보로 넘겼다.
-- **INBOX-1 Astra 산출물 전량 보관 — 본선 커밋**(Claude Code, inbox·docs만): `/tmp/astra-*.zip` 30개와 `output/astra-*` 13개를 `assets-inbox/<wave>/<batch>/{assets,proofs,records}`에 받은 바이트 그대로 보관, 장부 [`assets-inbox/INBOX_LEDGER.csv`](../assets-inbox/INBOX_LEDGER.csv) 1,380행(= inbox PNG 1,380장), 구조·상태 뜻 [`ASSET_INBOX.md`](ASSET_INBOX.md). `ui-p0/`는 UX-2 브랜치와 같은 경로·같은 바이트. `sources/`·`references/`(약 826MB)는 보관하지 않음. Wave 12·Wave 10 재작업·Wave 3 재작업은 아직 없음. 2차(09시): 판정 4건 반영(Wave 9 33 확정·UI 파일럿 icon_status_sheet superseded·Wave 10 pilot-reuse rework_pending·zone-ground-pilot rejected), Wave 13·Wave 3 재작업 수령(장부 1,509행), 원본은 저장소 밖 `~/feudal-lord-analysis/astra-raw/`에 복사. 3차(09시): Wave 12(오버레이 4 confirmed·24 rework_pending), Wave 14(1 rework_pending), Wave 10 v2(v1 재작업 대기분 superseded, 초상 방식 전환으로 v1·v2 레이어 rejected 예정) 수령, 장부 2,217행. 4차(11시): Wave 3·11·12·13·14·15 확정 반영, 질감·오버레이 재작업 수령, 초상 방식 전환으로 Wave 10 레이어 전부 rejected·완성 초상 풀 첫 묶음(`portrait-pool/`) 48장 confirmed, 장부 2,399행. 5차(09-27 14시, INBOX-1j): 초상 풀 3차 72장 confirmed(풀 304장), Wave 21(3장 18 confirmed·`ch3_ending` rework_pending·4·5장 39 candidate)·Wave 22(35 confirmed·지면 fill 15와 `sand_beach_a` rework_pending) 수령, 장부 3,071행 = PNG 3,071.
+- **INBOX-1 Astra 산출물 전량 보관 — 본선 커밋**(Claude Code, inbox·docs만): `/tmp/astra-*.zip` 30개와 `output/astra-*` 13개를 `assets-inbox/<wave>/<batch>/{assets,proofs,records}`에 받은 바이트 그대로 보관, 장부 [`assets-inbox/INBOX_LEDGER.csv`](../assets-inbox/INBOX_LEDGER.csv) 1,380행(= inbox PNG 1,380장), 구조·상태 뜻 [`ASSET_INBOX.md`](ASSET_INBOX.md). `ui-p0/`는 UX-2 브랜치와 같은 경로·같은 바이트. `sources/`·`references/`(약 826MB)는 보관하지 않음. Wave 12·Wave 10 재작업·Wave 3 재작업은 아직 없음. 2차(09시): 판정 4건 반영(Wave 9 33 확정·UI 파일럿 icon_status_sheet superseded·Wave 10 pilot-reuse rework_pending·zone-ground-pilot rejected), Wave 13·Wave 3 재작업 수령(장부 1,509행), 원본은 저장소 밖 `~/feudal-lord-analysis/astra-raw/`에 복사. 3차(09시): Wave 12(오버레이 4 confirmed·24 rework_pending), Wave 14(1 rework_pending), Wave 10 v2(v1 재작업 대기분 superseded, 초상 방식 전환으로 v1·v2 레이어 rejected 예정) 수령, 장부 2,217행. 4차(11시): Wave 3·11·12·13·14·15 확정 반영, 질감·오버레이 재작업 수령, 초상 방식 전환으로 Wave 10 레이어 전부 rejected·완성 초상 풀 첫 묶음(`portrait-pool/`) 48장 confirmed, 장부 2,399행. 5차(09-27 14시, INBOX-1j): 초상 풀 3차 72장 confirmed(풀 304장), Wave 21(3장 18 confirmed·`ch3_ending` rework_pending·4·5장 39 candidate)·Wave 22(35 confirmed·지면 fill 15와 `sand_beach_a` rework_pending) 수령, 장부 3,071행 = PNG 3,071. 6차(15시, INBOX-1k): Wave 21 재작업 24 confirmed·v1 24 superseded·원본 34 confirmed(Wave 21 58장 확정), Wave 22 재작업 49장 candidate(v1 16 superseded), 장부 3,147행.
 
 - **MOVE-1 주민 이동 v0 — 관문 통과, 본선 병합**(Claude Code, 표현 워커, 시뮬레이션 0줄, 렌더는 V2 매핑 표 줄만): [주민 이동 명세](design/resident-movement.md) RM-1~RM-7, [보고서](verification/move1-residents/REPORT.md), 결정 MV1~MV5.
   - 가구 어른이 우물·시장·교회에 걷고, 헛간 일꾼이 들일을 오간다. 시장일 방문객, 교회↔예배당 성직자, 성문 경비가 있다. 모두 상태와 틱에서 파생하며 저장하지 않는다(v11 그대로).
@@ -272,7 +280,7 @@
 
 ## 다음 작업
 
-- **BOT-3 식량 물류(엔진, 봇)**: MARKET-1 가드레일 3회차 seed 3(MK6). 밭이 한쪽 끝에 몰리고 방앗간·곡창이 반대쪽에 서면 밀이 건너가지 않는다. 봇이 지역별 빵 부족을 보고 밭 가까이 방앗간을 옮기거나(상한 안) 곡창 사이 흐름을 만들어야 한다.
+- **FIX-4 사람 플레이 규칙 결함 E1~E11 + 초상 선택(엔진)**: 다음 작업(사용자 지시, 6시간). 가장 중요한 것은 E6(사람이 칠한 필지 채우기)이고, 그다음 E1·E2·E3·E4·E5·E9 순이다. 관문은 사람 대본 생존(1302년 끝 인구 ≥ 60, 교착 0)과 필지 채우기(12칸 칠함 → 2년 안 8채 이상)다. 그 뒤 FAIL-3·C4·F2-A·FACTION-0.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.

@@ -1,0 +1,985 @@
+{
+  "seed": "wave22-rework-20260927-preview-158",
+  "algorithm": "scatter-v1",
+  "checks": [
+    {
+      "family": "chalk_down",
+      "count": 8,
+      "visibleCount": 5,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    },
+    {
+      "family": "heath",
+      "count": 7,
+      "visibleCount": 7,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    },
+    {
+      "family": "fen",
+      "count": 6,
+      "visibleCount": 4,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    },
+    {
+      "family": "coastal_grass",
+      "count": 6,
+      "visibleCount": 5,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    },
+    {
+      "family": "woodland_floor",
+      "count": 6,
+      "visibleCount": 5,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    }
+  ],
+  "scenes": [
+    {
+      "family": "chalk_down",
+      "seed": "wave22-rework-20260927-preview-158",
+      "chunks": [
+        {
+          "x": 0,
+          "y": 1,
+          "variant": "a"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "variant": "b"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "variant": "a"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "variant": "a"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "variant": "b"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "variant": "b"
+        }
+      ],
+      "decals": [
+        {
+          "cell": [
+            0,
+            2
+          ],
+          "x": 42,
+          "y": 385,
+          "variant": "b",
+          "asset": "decals/chalk_exposure_b-v1.png",
+          "priority": 2586579345,
+          "active": true,
+          "rect": {
+            "x": 172.5,
+            "y": 150.75,
+            "w": 80,
+            "h": 48
+          },
+          "anchor": {
+            "x": 48,
+            "y": 56
+          }
+        },
+        {
+          "cell": [
+            1,
+            2
+          ],
+          "x": 269,
+          "y": 392,
+          "variant": "a",
+          "asset": "decals/chalk_exposure_a-v1.png",
+          "priority": 3306822090,
+          "active": true,
+          "rect": {
+            "x": 298.5,
+            "y": 225.25,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            1,
+            3
+          ],
+          "x": 288,
+          "y": 555,
+          "variant": "a",
+          "asset": "decals/chalk_exposure_a-v1.png",
+          "priority": 2245409778,
+          "active": true,
+          "rect": {
+            "x": 226.5,
+            "y": 270.75,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            4,
+            3
+          ],
+          "x": 714,
+          "y": 588,
+          "variant": "c",
+          "asset": "decals/chalk_exposure_c-v1.png",
+          "priority": 572652451,
+          "active": true,
+          "rect": {
+            "x": 391,
+            "y": 337.5,
+            "w": 112,
+            "h": 80
+          },
+          "anchor": {
+            "x": 64,
+            "y": 88
+          }
+        },
+        {
+          "cell": [
+            2,
+            4
+          ],
+          "x": 434,
+          "y": 697,
+          "variant": "b",
+          "asset": "decals/chalk_exposure_b-v1.png",
+          "priority": 2202835620,
+          "active": true,
+          "rect": {
+            "x": 212.5,
+            "y": 326.75,
+            "w": 80,
+            "h": 48
+          },
+          "anchor": {
+            "x": 48,
+            "y": 56
+          }
+        }
+      ],
+      "existingObjects": [
+        {
+          "key": "house_l1-v2",
+          "world": [
+            280,
+            200
+          ]
+        },
+        {
+          "key": "tree_oak_small",
+          "world": [
+            170,
+            185
+          ]
+        },
+        {
+          "key": "tree_birch",
+          "world": [
+            595,
+            220
+          ]
+        },
+        {
+          "key": "tree_oak_large",
+          "world": [
+            620,
+            660
+          ]
+        }
+      ]
+    },
+    {
+      "family": "heath",
+      "seed": "wave22-rework-20260927-preview-158",
+      "chunks": [
+        {
+          "x": 0,
+          "y": 1,
+          "variant": "b"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "variant": "b"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "variant": "b"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "variant": "b"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "variant": "a"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "variant": "b"
+        }
+      ],
+      "decals": [
+        {
+          "cell": [
+            0,
+            2
+          ],
+          "x": 97,
+          "y": 370,
+          "variant": "a",
+          "asset": "decals/heath_patch_a-v1.png",
+          "priority": 557104645,
+          "active": true,
+          "rect": {
+            "x": 223.5,
+            "y": 176.75,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            1,
+            2
+          ],
+          "x": 281,
+          "y": 357,
+          "variant": "c",
+          "asset": "decals/heath_patch_c-v1.png",
+          "priority": 1962837424,
+          "active": true,
+          "rect": {
+            "x": 290,
+            "y": 171.5,
+            "w": 112,
+            "h": 80
+          },
+          "anchor": {
+            "x": 64,
+            "y": 88
+          }
+        },
+        {
+          "cell": [
+            1,
+            3
+          ],
+          "x": 224,
+          "y": 584,
+          "variant": "b",
+          "asset": "decals/heath_patch_b-v1.png",
+          "priority": 2231461262,
+          "active": true,
+          "rect": {
+            "x": 164,
+            "y": 246,
+            "w": 80,
+            "h": 48
+          },
+          "anchor": {
+            "x": 48,
+            "y": 56
+          }
+        },
+        {
+          "cell": [
+            2,
+            3
+          ],
+          "x": 439,
+          "y": 560,
+          "variant": "b",
+          "asset": "decals/heath_patch_b-v1.png",
+          "priority": 441037061,
+          "active": true,
+          "rect": {
+            "x": 283.5,
+            "y": 293.75,
+            "w": 80,
+            "h": 48
+          },
+          "anchor": {
+            "x": 48,
+            "y": 56
+          }
+        },
+        {
+          "cell": [
+            0,
+            4
+          ],
+          "x": 108,
+          "y": 720,
+          "variant": "a",
+          "asset": "decals/heath_patch_a-v1.png",
+          "priority": 4117278100,
+          "active": true,
+          "rect": {
+            "x": 54,
+            "y": 267,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            1,
+            4
+          ],
+          "x": 265,
+          "y": 715,
+          "variant": "a",
+          "asset": "decals/heath_patch_a-v1.png",
+          "priority": 913071448,
+          "active": true,
+          "rect": {
+            "x": 135,
+            "y": 305,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            2,
+            4
+          ],
+          "x": 422,
+          "y": 680,
+          "variant": "a",
+          "asset": "decals/heath_patch_a-v1.png",
+          "priority": 3501915746,
+          "active": true,
+          "rect": {
+            "x": 231,
+            "y": 335.5,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        }
+      ],
+      "existingObjects": [
+        {
+          "key": "house_l1-v2",
+          "world": [
+            280,
+            200
+          ]
+        },
+        {
+          "key": "tree_oak_small",
+          "world": [
+            170,
+            185
+          ]
+        },
+        {
+          "key": "tree_birch",
+          "world": [
+            595,
+            220
+          ]
+        },
+        {
+          "key": "tree_oak_large",
+          "world": [
+            620,
+            660
+          ]
+        }
+      ]
+    },
+    {
+      "family": "fen",
+      "seed": "wave22-rework-20260927-preview-158",
+      "chunks": [
+        {
+          "x": 0,
+          "y": 1,
+          "variant": "b"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "variant": "b"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "variant": "a"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "variant": "b"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "variant": "b"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "variant": "b"
+        }
+      ],
+      "decals": [
+        {
+          "cell": [
+            0,
+            3
+          ],
+          "x": 67,
+          "y": 515,
+          "variant": "c",
+          "asset": "decals/fen_pool_c-v1.png",
+          "priority": 415432714,
+          "active": true,
+          "rect": {
+            "x": 104,
+            "y": 157.5,
+            "w": 112,
+            "h": 80
+          },
+          "anchor": {
+            "x": 64,
+            "y": 88
+          }
+        },
+        {
+          "cell": [
+            1,
+            3
+          ],
+          "x": 268,
+          "y": 532,
+          "variant": "b",
+          "asset": "decals/fen_pool_b-v1.png",
+          "priority": 284790540,
+          "active": true,
+          "rect": {
+            "x": 212,
+            "y": 244,
+            "w": 80,
+            "h": 48
+          },
+          "anchor": {
+            "x": 48,
+            "y": 56
+          }
+        },
+        {
+          "cell": [
+            3,
+            3
+          ],
+          "x": 575,
+          "y": 526,
+          "variant": "a",
+          "asset": "decals/fen_pool_a-v1.png",
+          "priority": 3281931573,
+          "active": true,
+          "rect": {
+            "x": 384.5,
+            "y": 335.25,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            1,
+            4
+          ],
+          "x": 269,
+          "y": 732,
+          "variant": "a",
+          "asset": "decals/fen_pool_a-v1.png",
+          "priority": 3323236936,
+          "active": true,
+          "rect": {
+            "x": 128.5,
+            "y": 310.25,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        }
+      ],
+      "existingObjects": [
+        {
+          "key": "house_l1-v2",
+          "world": [
+            280,
+            200
+          ]
+        },
+        {
+          "key": "tree_oak_small",
+          "world": [
+            170,
+            185
+          ]
+        },
+        {
+          "key": "tree_birch",
+          "world": [
+            595,
+            220
+          ]
+        },
+        {
+          "key": "tree_oak_large",
+          "world": [
+            620,
+            660
+          ]
+        }
+      ]
+    },
+    {
+      "family": "coastal_grass",
+      "seed": "wave22-rework-20260927-preview-158",
+      "chunks": [
+        {
+          "x": 0,
+          "y": 1,
+          "variant": "a"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "variant": "a"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "variant": "b"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "variant": "b"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "variant": "b"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "variant": "a"
+        }
+      ],
+      "decals": [
+        {
+          "cell": [
+            0,
+            2
+          ],
+          "x": 38,
+          "y": 434,
+          "variant": "a",
+          "asset": "decals/coastal_sand_a-v1.png",
+          "priority": 546094208,
+          "active": true,
+          "rect": {
+            "x": 162,
+            "y": 178,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            1,
+            2
+          ],
+          "x": 269,
+          "y": 411,
+          "variant": "b",
+          "asset": "decals/coastal_sand_b-v1.png",
+          "priority": 903018748,
+          "active": true,
+          "rect": {
+            "x": 273,
+            "y": 214,
+            "w": 80,
+            "h": 48
+          },
+          "anchor": {
+            "x": 48,
+            "y": 56
+          }
+        },
+        {
+          "cell": [
+            1,
+            3
+          ],
+          "x": 246,
+          "y": 532,
+          "variant": "a",
+          "asset": "decals/coastal_sand_a-v1.png",
+          "priority": 1797979001,
+          "active": true,
+          "rect": {
+            "x": 217,
+            "y": 254.5,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            4,
+            3
+          ],
+          "x": 680,
+          "y": 561,
+          "variant": "c",
+          "asset": "decals/coastal_sand_c-v1.png",
+          "priority": 631644637,
+          "active": true,
+          "rect": {
+            "x": 387.5,
+            "y": 322.25,
+            "w": 112,
+            "h": 80
+          },
+          "anchor": {
+            "x": 64,
+            "y": 88
+          }
+        },
+        {
+          "cell": [
+            2,
+            4
+          ],
+          "x": 434,
+          "y": 707,
+          "variant": "c",
+          "asset": "decals/coastal_sand_c-v1.png",
+          "priority": 2219991169,
+          "active": true,
+          "rect": {
+            "x": 191.5,
+            "y": 297.25,
+            "w": 112,
+            "h": 80
+          },
+          "anchor": {
+            "x": 64,
+            "y": 88
+          }
+        }
+      ],
+      "existingObjects": [
+        {
+          "key": "house_l1-v2",
+          "world": [
+            280,
+            200
+          ]
+        },
+        {
+          "key": "tree_oak_small",
+          "world": [
+            170,
+            185
+          ]
+        },
+        {
+          "key": "tree_birch",
+          "world": [
+            595,
+            220
+          ]
+        },
+        {
+          "key": "tree_oak_large",
+          "world": [
+            620,
+            660
+          ]
+        }
+      ]
+    },
+    {
+      "family": "woodland_floor",
+      "seed": "wave22-rework-20260927-preview-158",
+      "chunks": [
+        {
+          "x": 0,
+          "y": 1,
+          "variant": "a"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "variant": "b"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "variant": "a"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "variant": "a"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "variant": "a"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "variant": "b"
+        }
+      ],
+      "decals": [
+        {
+          "cell": [
+            1,
+            2
+          ],
+          "x": 213,
+          "y": 403,
+          "variant": "c",
+          "asset": "decals/woodland_litter_c-v1.png",
+          "priority": 1406837783,
+          "active": true,
+          "rect": {
+            "x": 233,
+            "y": 166,
+            "w": 112,
+            "h": 80
+          },
+          "anchor": {
+            "x": 64,
+            "y": 88
+          }
+        },
+        {
+          "cell": [
+            3,
+            2
+          ],
+          "x": 537,
+          "y": 370,
+          "variant": "a",
+          "asset": "decals/woodland_litter_a-v1.png",
+          "priority": 2572292103,
+          "active": true,
+          "rect": {
+            "x": 443.5,
+            "y": 286.75,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            0,
+            3
+          ],
+          "x": 121,
+          "y": 549,
+          "variant": "a",
+          "asset": "decals/woodland_litter_a-v1.png",
+          "priority": 733012590,
+          "active": true,
+          "rect": {
+            "x": 146,
+            "y": 227.5,
+            "w": 48,
+            "h": 32
+          },
+          "anchor": {
+            "x": 32,
+            "y": 40
+          }
+        },
+        {
+          "cell": [
+            2,
+            3
+          ],
+          "x": 422,
+          "y": 595,
+          "variant": "c",
+          "asset": "decals/woodland_litter_c-v1.png",
+          "priority": 1552147203,
+          "active": true,
+          "rect": {
+            "x": 241.5,
+            "y": 266.25,
+            "w": 112,
+            "h": 80
+          },
+          "anchor": {
+            "x": 64,
+            "y": 88
+          }
+        },
+        {
+          "cell": [
+            0,
+            4
+          ],
+          "x": 35,
+          "y": 718,
+          "variant": "b",
+          "asset": "decals/woodland_litter_b-v1.png",
+          "priority": 1043370217,
+          "active": true,
+          "rect": {
+            "x": 2.5,
+            "y": 232.25,
+            "w": 80,
+            "h": 48
+          },
+          "anchor": {
+            "x": 48,
+            "y": 56
+          }
+        }
+      ],
+      "existingObjects": [
+        {
+          "key": "house_l1-v2",
+          "world": [
+            280,
+            200
+          ]
+        },
+        {
+          "key": "tree_oak_small",
+          "world": [
+            170,
+            185
+          ]
+        },
+        {
+          "key": "tree_birch",
+          "world": [
+            595,
+            220
+          ]
+        },
+        {
+          "key": "tree_oak_large",
+          "world": [
+            620,
+            660
+          ]
+        }
+      ]
+    }
+  ]
+}

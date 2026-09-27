@@ -1,0 +1,27 @@
+[
+  {
+    "id": "ch3_ending",
+    "file": "assets/ch3_events/ch3_ending.png",
+    "width": 1920,
+    "height": 1080,
+    "description": "반쯤 빈 도시의 저녁, 닫힌 집들 사이에서 두 지붕만 수선 중",
+    "historyNotes": "1362년 무렵. 문 표식 없이 인구 감소를 빈 길·닫힌 덧창으로 표현. 전쟁 폐허나 번성한 시장 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Redraw attached project chapter-ending painting to CORRECT ITS STORY. Keep same hand-painted low-chroma brushwork, southern England circa1362, 16:9 landscape. It MUST look half-empty and impoverished after plague, NOT prosperous or busy. View closer across a nearly deserted main lane at dusk: half or more of surviving timber-plaster houses have shut weathered shutters and sagging or partially stripped roofs; weeds in doorsteps, vacant garden strips and gaps between dwellings. Do not turn it into a burned war ruin. Old parish church and quiet small quay behind; just ONE tied boat, NO market stalls, no trading crowds. ONLY TWO humble replacement roofs underway amid many silent dwellings: one foreground worker fixing a few fresh rafters and two distant workers laying thatch. Roads otherwise empty. No cheerful foreground family/horse cart. Empty space, shuttered facades and neglect dominate 70% of composition; new pale rafters occupy small localized accents. Desaturated grey-blue dusk with restrained warm last evening light on the two new roofs. Very few people, no bustle. Clean uninterrupted domestic roof ridges without chimney stacks. NO chimneys, no door plague crosses or marks, no letters/numerals/signage, no blood, no smoke, no modern buildings, no bright flags. Render ONE complete painting, no border, no labels.\n",
+        "rawFile": "raw/rework-root/ch3_ending-v2.png",
+        "referenceImages": [
+          "references/previous/ch3_ending.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Proportional cover resize to1920x1080; original1672x941 retained.",
+    "qa": {
+      "visual": "Viewed generated full composition: empty lane/quay, shuttered houses and weeds dominate; onlytwo freshroofworksites withthreeworkers. No marketcrowds/door marks/chimneys/text observed.",
+      "limitation": "Approximate half vacancy communicated visually, not mathematical occupancy census."
+    }
+  }
+]

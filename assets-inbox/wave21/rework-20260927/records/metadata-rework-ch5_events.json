@@ -1,0 +1,204 @@
+[
+  {
+    "id": "ch5_event_mayor_demand",
+    "file": "assets/ch5_events/ch5_event_mayor_demand.png",
+    "width": 960,
+    "height": 540,
+    "description": "Guildhall broad exterior steps, merchants below thrust hands upward toward an EMPTY civic chair placed at top landing, spokesman standingonstep appeals. Strongupward crowdgesture/chair silhouette; no table/papers.",
+    "historyNotes": "잉글랜드 남부1400–1450. 단일장면 재구성; 빈문서·가상인장·무굴뚝. 표식·홉·유혈·문자 금지.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. COMPLETELY REDRAW this illustration with a NEW composition described below. Attached image is ONLY brushwork/palette reference, NOT composition or character reference. Retain hand-painted low-chroma gouache/oil texture, natural late-medieval South England1400–1450 materials. Do not reuse old red-capped bearded man, old room, old table or harbor window. Make ONE coherent wide16:9 narrative painting, finaltarget960x540. NEW SCENE: Guildhall broad exterior steps, merchants below thrust hands upward toward an EMPTY civic chair placed at top landing, spokesman standingonstep appeals. Strongupward crowdgesture/chair silhouette; no table/papers. Strongly emphasize this specified place, gesture and focal object. No modern items. All domestic roofs uninterrupted claytile/thatch ridges, zero chimneys/pots/vents even distant. No letters/numbers/pseudowriting, labels, UIframes, watermark, real heraldry, plague door marks, hops, hexagonal coffins, blood. Blankcharters truly blank, seals pictorial invented nonlettered. Restrained warm earth/gray/moss/burgundy palette, no brightprimary flags.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_mayor_demand-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_event_mayor_demand.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise object correction. Replace ONLY the gold fleur-de-lis motifs on both burgundy hanging banners with an invented design: three small irregular offset lozenges linked by a thin curved stem, NOT a lily, no crown, no heraldic animal. Keep every person, empty civic chair, steps, architecture, palette, brushtexture and camera exactly.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_mayor_demand-v2.png",
+        "referenceImages": [
+          "raw/rework-ch5_events/ch5_event_mayor_demand-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Full imagegen composition redraw; targeted correction where recorded; Sharp centre-cover resize960x540 and RGBA PNG.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "All six inspected at960x540 and contact480x270. Distinct empty-chair steps, mounted stonebridge cavalcade, two-heir bedside, macro engraving, suspended waxseal, standing wallarchive. No tabletop council scenes. Roof correction confirmed; banners use invented lozenges. No visible writing.",
+      "limits": "Exact political/legal meaning still benefits game event context; no scene-identification user study."
+    },
+    "sha256": "367707c044725d098212052fc90d52d85d9f6a7f2080d20834f7bac4d76a963f"
+  },
+  {
+    "id": "ch5_event_royal_tax_envoy",
+    "file": "assets/ch5_events/ch5_event_royal_tax_envoy.png",
+    "width": 960,
+    "height": 540,
+    "description": "Sidewideview royal taxenvoy cavalcade crossing narrow medievalstonebridge overriver, leadrider muted tabard with simpleinventedgoldmotif, modeststandard and two mountedattendants plus baggagecoffer. No letterhandoff/gateforeground.",
+    "historyNotes": "잉글랜드 남부1400–1450. 단일장면 재구성; 빈문서·가상인장·무굴뚝. 표식·홉·유혈·문자 금지.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. COMPLETELY REDRAW this illustration with a NEW composition described below. Attached image is ONLY brushwork/palette reference, NOT composition or character reference. Retain hand-painted low-chroma gouache/oil texture, natural late-medieval South England1400–1450 materials. Do not reuse old red-capped bearded man, old room, old table or harbor window. Make ONE coherent wide16:9 narrative painting, finaltarget960x540. NEW SCENE: Sidewideview royal taxenvoy cavalcade crossing narrow medievalstonebridge overriver, leadrider muted tabard with simpleinventedgoldmotif, modeststandard and two mountedattendants plus baggagecoffer. No letterhandoff/gateforeground. Strongly emphasize this specified place, gesture and focal object. No modern items. All domestic roofs uninterrupted claytile/thatch ridges, zero chimneys/pots/vents even distant. No letters/numbers/pseudowriting, labels, UIframes, watermark, real heraldry, plague door marks, hops, hexagonal coffins, blood. Blankcharters truly blank, seals pictorial invented nonlettered. Restrained warm earth/gray/moss/burgundy palette, no brightprimary flags.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_royal_tax_envoy-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_event_royal_tax_envoy.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise object correction. Replace ONLY all fleur-de-lis motifs on banner and lead rider's tabard with an invented gold motif: three small irregular offset lozenges linked by a thin curved stem, NOT lily or crown. Keep bridge, riders, baggagehorse, river, church, all composition and painterlytexture identical. Noletters.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_royal_tax_envoy-v2.png",
+        "referenceImages": [
+          "raw/rework-ch5_events/ch5_event_royal_tax_envoy-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Full imagegen composition redraw; targeted correction where recorded; Sharp centre-cover resize960x540 and RGBA PNG.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "All six inspected at960x540 and contact480x270. Distinct empty-chair steps, mounted stonebridge cavalcade, two-heir bedside, macro engraving, suspended waxseal, standing wallarchive. No tabletop council scenes. Roof correction confirmed; banners use invented lozenges. No visible writing.",
+      "limits": "Exact political/legal meaning still benefits game event context; no scene-identification user study."
+    },
+    "sha256": "f4d7c18d3723dab67f3bbc0d633f272796c2ce00e70fbf87bfc2f2177bd1957f"
+  },
+  {
+    "id": "ch5_event_succession",
+    "file": "assets/ch5_events/ch5_event_succession.png",
+    "width": 960,
+    "height": 540,
+    "description": "Dim manorbedchamber, elderlylord reclines in oakbed underplaintapestry, adultdaughter/son atfoot, priest bends by bedside with closedplainbook; claspedhand foreground. Intimateverticalbedshape, no table.",
+    "historyNotes": "잉글랜드 남부1400–1450. 단일장면 재구성; 빈문서·가상인장·무굴뚝. 표식·홉·유혈·문자 금지.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. COMPLETELY REDRAW this illustration with a NEW composition described below. Attached image is ONLY brushwork/palette reference, NOT composition or character reference. Retain hand-painted low-chroma gouache/oil texture, natural late-medieval South England1400–1450 materials. Do not reuse old red-capped bearded man, old room, old table or harbor window. Make ONE coherent wide16:9 narrative painting, finaltarget960x540. NEW SCENE: Dim manorbedchamber, elderlylord reclines in oakbed underplaintapestry, adultdaughter/son atfoot, priest bends by bedside with closedplainbook; claspedhand foreground. Intimateverticalbedshape, no table. Strongly emphasize this specified place, gesture and focal object. No modern items. All domestic roofs uninterrupted claytile/thatch ridges, zero chimneys/pots/vents even distant. No letters/numbers/pseudowriting, labels, UIframes, watermark, real heraldry, plague door marks, hops, hexagonal coffins, blood. Blankcharters truly blank, seals pictorial invented nonlettered. Restrained warm earth/gray/moss/burgundy palette, no brightprimary flags.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_succession-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_event_succession.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise object correction. Add the absent SECOND adult heir: an adult young man with short dark hair in simple mutedolive wool gown, standing at foot of bed behind the youngwoman on left, grieving and watching oldlord. Keep woman clasping oldlordhand, priest withclosedbook, reclinedlord and entirebed composition. No table, no additional documents. Keepbrushstyle. Noletters.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_succession-v2.png",
+        "referenceImages": [
+          "raw/rework-ch5_events/ch5_event_succession-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Full imagegen composition redraw; targeted correction where recorded; Sharp centre-cover resize960x540 and RGBA PNG.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "All six inspected at960x540 and contact480x270. Distinct empty-chair steps, mounted stonebridge cavalcade, two-heir bedside, macro engraving, suspended waxseal, standing wallarchive. No tabletop council scenes. Roof correction confirmed; banners use invented lozenges. No visible writing.",
+      "limits": "Exact political/legal meaning still benefits game event context; no scene-identification user study."
+    },
+    "sha256": "2923906f06bc2671150f66d8207e5d3a5dfc3d264333fc3b6b7ded0c44b5c91a"
+  },
+  {
+    "id": "ch5_event_city_seal_making",
+    "file": "assets/ch5_events/ch5_event_city_seal_making.png",
+    "width": 960,
+    "height": 540,
+    "description": "Macro over shoulder craftsman at open workshop doorway engraving small bronze seal matrix grippedin vise, enormous hands/burin/metalshavings, luminous metalroundel shows inventedtwotowermotif withoutletters. No councillors/tablemeeting; croppedtechnicalworkfocus.",
+    "historyNotes": "잉글랜드 남부1400–1450. 단일장면 재구성; 빈문서·가상인장·무굴뚝. 표식·홉·유혈·문자 금지.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. COMPLETELY REDRAW this illustration with a NEW composition described below. Attached image is ONLY brushwork/palette reference, NOT composition or character reference. Retain hand-painted low-chroma gouache/oil texture, natural late-medieval South England1400–1450 materials. Do not reuse old red-capped bearded man, old room, old table or harbor window. Make ONE coherent wide16:9 narrative painting, finaltarget960x540. NEW SCENE: Macro over shoulder craftsman at open workshop doorway engraving small bronze seal matrix grippedin vise, enormous hands/burin/metalshavings, luminous metalroundel shows inventedtwotowermotif withoutletters. No councillors/tablemeeting; croppedtechnicalworkfocus. Strongly emphasize this specified place, gesture and focal object. No modern items. All domestic roofs uninterrupted claytile/thatch ridges, zero chimneys/pots/vents even distant. No letters/numbers/pseudowriting, labels, UIframes, watermark, real heraldry, plague door marks, hops, hexagonal coffins, blood. Blankcharters truly blank, seals pictorial invented nonlettered. Restrained warm earth/gray/moss/burgundy palette, no brightprimary flags.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_city_seal_making-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_event_city_seal_making.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise object correction. Remove ONLY ALL domestic chimney stacks and pots from backgroundhouse roofs, especially tiny stack at x310,y104 relative960x540image, and any other ridges. Replacewithsmoothuninterruptedtile matching roofs. Keep churchtower intact. Keep hugehands, seal, burin, vise, metalshavings, framing andpainterlytexture unchanged. Noletters.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_city_seal_making-v2.png",
+        "referenceImages": [
+          "raw/rework-ch5_events/ch5_event_city_seal_making-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Full imagegen composition redraw; targeted correction where recorded; Sharp centre-cover resize960x540 and RGBA PNG.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "All six inspected at960x540 and contact480x270. Distinct empty-chair steps, mounted stonebridge cavalcade, two-heir bedside, macro engraving, suspended waxseal, standing wallarchive. No tabletop council scenes. Roof correction confirmed; banners use invented lozenges. No visible writing.",
+      "limits": "Exact political/legal meaning still benefits game event context; no scene-identification user study."
+    },
+    "sha256": "1be19b6bda072f1e181ac7ad1ec5e1402547c468d636ba1d8701bba967dc7b60"
+  },
+  {
+    "id": "ch5_event_charter_sealing",
+    "file": "assets/ch5_events/ch5_event_charter_sealing.png",
+    "width": 960,
+    "height": 540,
+    "description": "Extremecloseup a hand lifts loweredge of BLANKcharter so fresh large redwaxpendant seal descends suspendedon two cords midair, fingertipsrelease metalmatrix besideit; shallow abstract exteriorstonebackground, no table/faces. Seal simpleinventedtower noletters.",
+    "historyNotes": "잉글랜드 남부1400–1450. 단일장면 재구성; 빈문서·가상인장·무굴뚝. 표식·홉·유혈·문자 금지.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. COMPLETELY REDRAW this illustration with a NEW composition described below. Attached image is ONLY brushwork/palette reference, NOT composition or character reference. Retain hand-painted low-chroma gouache/oil texture, natural late-medieval South England1400–1450 materials. Do not reuse old red-capped bearded man, old room, old table or harbor window. Make ONE coherent wide16:9 narrative painting, finaltarget960x540. NEW SCENE: Extremecloseup a hand lifts loweredge of BLANKcharter so fresh large redwaxpendant seal descends suspendedon two cords midair, fingertipsrelease metalmatrix besideit; shallow abstract exteriorstonebackground, no table/faces. Seal simpleinventedtower noletters. Strongly emphasize this specified place, gesture and focal object. No modern items. All domestic roofs uninterrupted claytile/thatch ridges, zero chimneys/pots/vents even distant. No letters/numbers/pseudowriting, labels, UIframes, watermark, real heraldry, plague door marks, hops, hexagonal coffins, blood. Blankcharters truly blank, seals pictorial invented nonlettered. Restrained warm earth/gray/moss/burgundy palette, no brightprimary flags.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_charter_sealing-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_event_charter_sealing.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Full imagegen composition redraw; targeted correction where recorded; Sharp centre-cover resize960x540 and RGBA PNG.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "All six inspected at960x540 and contact480x270. Distinct empty-chair steps, mounted stonebridge cavalcade, two-heir bedside, macro engraving, suspended waxseal, standing wallarchive. No tabletop council scenes. Roof correction confirmed; banners use invented lozenges. No visible writing.",
+      "limits": "Exact political/legal meaning still benefits game event context; no scene-identification user study."
+    },
+    "sha256": "c30c4e72c5f4b2d2f6bdf6046399fbcf70b303312ae662369fee62d48ec2d859"
+  },
+  {
+    "id": "ch5_event_legacy_record",
+    "file": "assets/ch5_events/ch5_event_legacy_record.png",
+    "width": 960,
+    "height": 540,
+    "description": "Churchside stonearchive alcove, aged chronicler STANDING slots boundclosedchronicle into wooden wallcupboard while youngassistant holdscandle. Dooropen shelves/booksvisible, sideprofile, no table, no writing.",
+    "historyNotes": "잉글랜드 남부1400–1450. 단일장면 재구성; 빈문서·가상인장·무굴뚝. 표식·홉·유혈·문자 금지.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. COMPLETELY REDRAW this illustration with a NEW composition described below. Attached image is ONLY brushwork/palette reference, NOT composition or character reference. Retain hand-painted low-chroma gouache/oil texture, natural late-medieval South England1400–1450 materials. Do not reuse old red-capped bearded man, old room, old table or harbor window. Make ONE coherent wide16:9 narrative painting, finaltarget960x540. NEW SCENE: Churchside stonearchive alcove, aged chronicler STANDING slots boundclosedchronicle into wooden wallcupboard while youngassistant holdscandle. Dooropen shelves/booksvisible, sideprofile, no table, no writing. Strongly emphasize this specified place, gesture and focal object. No modern items. All domestic roofs uninterrupted claytile/thatch ridges, zero chimneys/pots/vents even distant. No letters/numbers/pseudowriting, labels, UIframes, watermark, real heraldry, plague door marks, hops, hexagonal coffins, blood. Blankcharters truly blank, seals pictorial invented nonlettered. Restrained warm earth/gray/moss/burgundy palette, no brightprimary flags.",
+        "rawFile": "raw/rework-ch5_events/ch5_event_legacy_record-v1.png",
+        "referenceImages": [
+          "references/previous/ch5_event_legacy_record.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Full imagegen composition redraw; targeted correction where recorded; Sharp centre-cover resize960x540 and RGBA PNG.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "All six inspected at960x540 and contact480x270. Distinct empty-chair steps, mounted stonebridge cavalcade, two-heir bedside, macro engraving, suspended waxseal, standing wallarchive. No tabletop council scenes. Roof correction confirmed; banners use invented lozenges. No visible writing.",
+      "limits": "Exact political/legal meaning still benefits game event context; no scene-identification user study."
+    },
+    "sha256": "fd582cf16517aa68e260ea8997f1b3d3ec52c4700cf586d8bc8ea0aeaab3f007"
+  }
+]
