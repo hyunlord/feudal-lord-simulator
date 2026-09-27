@@ -3,14 +3,20 @@
 # Pushes to the trunk (codex/phase15-organic-ground) or main — updates and deletions alike — pass only with
 # FLS_PUSH_OK=1 in the environment:  FLS_PUSH_OK=1 git push origin HEAD:codex/phase15-organic-ground
 # Work-branch pushes are unchanged. See AGENTS.md rule 14.
+# Allowed trunk/main pushes then run the merge checks (scripts/checks/mergeChecks.mjs, AGENTS.md rule 19) over
+# exactly the commits being pushed (remote head..local head); a failure refuses the push.
 # Afterwards the hook that was here before (usually git-lfs's, kept as pre-push.chained) runs with the same input;
 # without one, git lfs pre-push runs directly so LFS objects are still uploaded.
 input=$(cat)
 
 protected=""
+ranges=""
+zero=0000000000000000000000000000000000000000
 while read -r local_ref local_sha remote_ref remote_sha; do
   case "$remote_ref" in
-    refs/heads/codex/phase15-organic-ground|refs/heads/main) protected="$protected ${remote_ref#refs/heads/}" ;;
+    refs/heads/codex/phase15-organic-ground|refs/heads/main)
+      protected="$protected ${remote_ref#refs/heads/}"
+      [ "$local_sha" = "$zero" ] || ranges="$ranges $remote_sha:$local_sha" ;;
   esac
 done <<EOF_INPUT
 $input
@@ -24,6 +30,25 @@ if [ -n "$protected" ] && [ "${FLS_PUSH_OK:-}" != 1 ]; then
     echo "  Do not chain it after other commands (AGENTS.md rule 14). Work-branch pushes need nothing."
   } >&2
   exit 1
+fi
+
+if [ -n "$ranges" ]; then
+  top=$(git rev-parse --show-toplevel)
+  if [ ! -f "$top/scripts/checks/mergeChecks.mjs" ]; then
+    echo "pre-push: scripts/checks/mergeChecks.mjs is missing in this checkout; merge the trunk into your branch first." >&2
+    exit 1
+  fi
+  for range in $ranges; do
+    remote_sha=${range%%:*}; local_sha=${range#*:}
+    # Base: what the remote has now; for a new branch, or a remote head this clone lacks, the merge-base with the trunk.
+    base_rev=""
+    if [ "$remote_sha" != "$zero" ] && git cat-file -e "$remote_sha^{commit}" 2>/dev/null; then base_rev=$remote_sha; fi
+    echo "pre-push: merge checks for ${local_sha%"${local_sha#????????}"} (npm run check:merge)" >&2
+    if ! node "$top/scripts/checks/mergeChecks.mjs" ${base_rev:+--base "$base_rev"} --head "$local_sha" >&2; then
+      echo "pre-push: merge checks failed; push refused (AGENTS.md rule 19)." >&2
+      exit 1
+    fi
+  done
 fi
 
 feed() { [ -z "$input" ] || printf '%s\n' "$input"; }

@@ -63,6 +63,29 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 - 비교: `npm run remote:perf -- --baseline perf/baseline-dgx-<sha>.json`을 실행하면 `.remote-runs/<run>/perf/compare.md`에 칸별 p95 비가 나온다.
 - 성능 측정은 다른 원격 실행과 겹치지 않게 돌린다. `--status`로 먼저 확인한다.
 
+## 병합 전 자동 검사
+본선(`codex/phase15-organic-ground`)과 main에 들어가는 것은 pre-push 훅이 먼저 검사한다(AGENTS.md 규칙 19, REVIEW-1).
+- **실행**: `npm run check:merge [-- --base <rev> --head <rev>]`. 기본 범위는 본선과의 merge-base..HEAD다. 훅은 `FLS_PUSH_OK=1 git push …`로 푸시할 때 원격 머리..로컬 머리를 넘긴다.
+  - 검사 네 가지 가운데 하나라도 실패하면 푸시를 거부한다.
+  - 이 작업 트리가 `<head>`와 다르거나 수정돼 있으면, `<head>`의 임시 워크트리(LFS는 포인터)에서 ESLint·tsc를 돌린다.
+- **검사**:
+  1. `scripts/checks/pinChanges.mjs`: 고정값 파일·테스트 해시 값이 바뀌었으면, 같은 범위에서 결정 목록(`docs/decisions/**`, `docs/DECISIONS.md`)에 더한 줄에 그 파일 이름이나 상위 폴더가 있어야 한다.
+  2. `scripts/checks/lintExceptions.mjs`: 새 `eslint-disable…`·`@ts-ignore`·`@ts-expect-error`·`as any`(캐스트)에 `// why:`가 같은 줄이나 윗줄에 있어야 한다. 기존 것은 `scripts/checks/lint-exceptions-baseline.json`(25건, 파일 + 줄 내용으로 대조)에 있다.
+  3. ESLint(`tools/eslint/`): 바뀐 코드 파일만 본다. `tools/eslint/eslint-suppressions.json`(122건: 금지 컨트롤 118, exhaustive-deps 4)에 없는 위반만 실패한다.
+  4. typecheck: 루트 `node_modules`의 `tsc --noEmit`.
+- **ESLint 설치가 따로인 이유**
+  - typescript-eslint는 TypeScript 6.1 미만만 지원한다. 루트의 TypeScript 7(네이티브 포트)에는 JS 컴파일러 API가 없다.
+  - 그래서 `tools/eslint/`에 ESLint 10.11 · @typescript-eslint/parser 8.70 · TypeScript 6.0.3(파싱 전용) · react-hooks 7.1.1을 자체 lock으로 둔다. 루트 package.json의 의존성과 lock에는 넣지 않는다.
+  - 첫 검사 때 `npm ci`가 저절로 된다(몇 초). ESLint는 저장소 루트에서 돈다(설정의 패턴이 작업 디렉터리 기준).
+  - typescript-eslint가 TS 7을 지원하면 루트로 옮길지 그때 결정한다.
+- **금지 컨트롤 규칙 파일: `tools/eslint/uiControls.mjs`**
+  - 이것이 원본이다. `src/ui`의 네이티브 `<select>`·`<input>`·맨 `<button>`을 금지하고, UI 부품 폴더 `src/ui/kit/`는 예외다.
+  - UI-KIT-1의 ESLint 설정도 이 파일의 `uiControlsConfig`를 가져다 써서 규칙을 하나로 유지한다.
+- **목록 관리**
+  - 억제·예외 목록은 줄이기만 한다. 위반을 고쳤으면 본선에서 `node scripts/checks/lintExceptions.mjs --write-baseline`, `tools/eslint/node_modules/.bin/eslint -c tools/eslint/eslint.config.mjs --suppressions-location tools/eslint/eslint-suppressions.json --prune-suppressions .`를 실행한다.
+  - 새 위반을 목록에 넣어 통과시키지 않는다.
+- **자체 시험**: `bash scripts/checks/selfTest.sh`. 버려도 되는 저장소에서 위반 네 종류(고정값·예외·금지 컨트롤·타입)는 거부되고, 고친 변경·일반 변경·작업 브랜치는 통과해야 한다.
+
 ## DGX 준비(한 번, 다시 해도 됨)
 `npm run remote:setup`은 `scripts/remote/setup-dgx.sh`를 DGX에서 실행한다. sudo 없이 `~/fls-runs`와 `~/.config/systemd/user`만 쓴다.
 - Node 24 LTS를 `~/fls-runs/_tools/node`에 설치한다(버전·SHA256 고정). 시스템 `/usr/bin/node`는 건드리지 않는다.

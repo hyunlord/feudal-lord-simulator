@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+# Self-test of the merge checks (REVIEW-1): bash scripts/checks/selfTest.sh
+# In a throwaway repository with this checkout's scripts/checks, scripts/git-hooks and tools/eslint, pushes to the
+# trunk are refused for each violation kind (pin without decision, lint exception without "// why:", native control
+# in src/ui, type error) and pass for their fixed versions, ordinary changes and work branches. Needs npm ci here.
+set -u
+REPO=$(cd "$(dirname "$0")/../.." && pwd)
+T=$(mktemp -d /tmp/fls-review1-gate.XXXXXX)
+TRUNK=codex/phase15-organic-ground
+cd "$T" && git init -q --bare remote.git && git init -q -b "$TRUNK" work && cd work
+git config user.email gate@test; git config user.name gate
+mkdir -p scripts tools/eslint src/ui/kit seeds docs/decisions tests
+cp -R "$REPO/scripts/checks" "$REPO/scripts/git-hooks" scripts/
+cp "$REPO"/tools/eslint/{package.json,package-lock.json,eslint.config.mjs,uiControls.mjs} tools/eslint/
+echo '{}' > tools/eslint/eslint-suppressions.json
+echo '{"exceptions":[]}' > scripts/checks/lint-exceptions-baseline.json
+ln -s "$REPO/node_modules" node_modules
+printf 'node_modules\n' > .gitignore
+cat > tsconfig.json <<'J'
+{ "compilerOptions": { "jsx": "react-jsx", "strict": true, "noEmit": true, "module": "esnext", "moduleResolution": "bundler", "target": "es2022", "skipLibCheck": true, "types": [] }, "include": ["src"] }
+J
+cat > src/ui/kit/Button.tsx <<'J'
+export function Button(props: { label: string }) { return <button type="button">{props.label}</button>; }
+J
+cat > src/ui/Panel.tsx <<'J'
+import { Button } from "./kit/Button";
+export function Panel() { return <div><Button label="ok" /></div>; }
+J
+echo '{"seed":1,"tick":1000}' > seeds/baseline-a.json
+printf '# 결정 목록\n\n| 번호 | 제목 |\n|---|---|\n' > docs/decisions/README.md
+cat > tests/pin.test.ts <<'J'
+export const PINNED = "0123456789abcdef0123456789abcdef";
+J
+git add -A && git commit -qm init && git remote add origin "$T/remote.git"
+git push -q --no-verify origin "$TRUNK" && git fetch -q origin   # bootstrap only
+sh scripts/git-hooks/install.sh > /dev/null
+pass=0; fail=0
+try() { # try <name> <expect: refused|passes> <push args...>
+  local name=$1 expect=$2; shift 2
+  if "$@" > "$T/out" 2>&1; then got=passes; else got=refused; fi
+  local reason; reason=$(grep -hE "MISSING|no-restricted-syntax|refused a push|error TS|FAILED" "$T/out" | head -2 | sed 's/^ *//' | cut -c1-110 | tr '\n' ' ')
+  if [ "$got" = "$expect" ]; then pass=$((pass+1)); mark=OK; else fail=$((fail+1)); mark=WRONG; fi
+  printf '%-5s %-58s %-8s %s\n' "$mark" "$name" "$got" "$reason"
+}
+trunk_push() { FLS_PUSH_OK=1 git push -q origin HEAD:$TRUNK; }
+branch() { git fetch -q origin; git checkout -q -B "case/$1" "origin/$TRUNK"; }
+commit() { git add -A && git commit -qm "$1"; }
+
+branch pin; echo '{"seed":1,"tick":1200}' > seeds/baseline-a.json; commit "re-pin"
+try "1 pin file re-recorded, no decision"            refused trunk_push
+perl -pi -e 's/0123456789abcdef0123456789abcdef/fedcba9876543210fedcba9876543210/' tests/pin.test.ts; commit "test pin"
+printf '| T1 | seeds/baseline-a.json 재기록: 틱 1200까지 관측 |\n' >> docs/decisions/README.md; commit "decision for one"
+try "1b decision names the baseline, test pin unnamed" refused trunk_push
+printf '| T2 | pin.test.ts 해시 재기록: 입력 형식 변경 |\n' >> docs/decisions/README.md; commit "decision for both"
+try "1c both pins named in the decision list"        passes  trunk_push
+
+branch lint; printf 'export function f(x: unknown) { return (x as any).y; }\n' > src/ui/cast.ts; commit "as any"
+try "2 new 'as any' without // why:"                 refused trunk_push
+printf 'export function f(x: unknown) {\n  // why: fixture objects carry arbitrary fields\n  return (x as any).y;\n}\n' > src/ui/cast.ts; commit "why"
+try "2b same cast with // why: on the line above"    passes  trunk_push
+
+branch control; printf 'import { Button } from "./kit/Button";\nexport function Panel() { return <div><Button label="ok" /><select /></div>; }\n' > src/ui/Panel.tsx; commit "select"
+try "3 native <select> in src/ui"                    refused trunk_push
+printf 'export function Picker() { return <select />; }\n' > src/ui/kit/Select.tsx; git checkout -q "origin/$TRUNK" -- src/ui/Panel.tsx; commit "into kit"
+try "3b native <select> inside src/ui/kit"           passes  trunk_push
+
+branch plain; printf 'export const answer = 42;\n' > src/ui/answer.ts; commit "plain"
+try "4 ordinary change"                              passes  trunk_push
+branch types; printf 'export const broken: number = "no";\n' > src/ui/broken.ts; commit "type error"
+try "5 type error"                                   refused trunk_push
+try "6 same bad commit to a work branch"             passes  git push -q origin HEAD:refs/heads/work/types
+branch nook; printf 'export const x = 1;\n' > src/ui/x.ts; commit "x"
+try "7 trunk push without FLS_PUSH_OK"               refused git push -q origin HEAD:$TRUNK
+echo "gate: $pass as expected, $fail wrong"
+cd / && rm -rf "$T"
+[ "$fail" = 0 ]
