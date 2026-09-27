@@ -1,8 +1,9 @@
 // FAIL-3 gate (spec docs/design/failure-ladder-campaign.md FL-12): runs the bot from a seed's growth opening and records
 // when the failure ladder reaches stage 3 (decline: the right lost, by whom) and stage 4 (the house withdrew), when
 // chapter 2 begins, and the worst dereliction and arrears on the way. The run stops at the first house change.
-//   tsx scripts/failureLadderRun.ts <seed> <maxTicks> [--naive] > seed.json
-// `--naive` is the variant that ignores its debts and reserves (naiveUpkeep + naiveReserve); without it, the guardrail bot.
+//   tsx scripts/failureLadderRun.ts <seed> <maxTicks> [--naive-upkeep] [--naive-reserve] [--famine-response=<choice>] > seed.json
+// Without flags, the guardrail bot. `--naive-upkeep` ignores its debts (FL-12), `--naive-reserve` its reserves (FP-6),
+// `--famine-response` answers the Great Famine otherwise than relief (FC-2).
 import { arrearsPeriods, derelictPermille } from "../src/engine/lordship";
 import { lordHouse, lordshipOf, lordTitle } from "../src/engine/lordshipState";
 import type { GameState } from "../src/engine/engine.types";
@@ -12,7 +13,11 @@ import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
 const [seedArg, maxArg] = process.argv.slice(2);
 const seed = Number(seedArg);
 const maxTicks = Number(maxArg ?? 400_000);
-const naive = process.argv.includes("--naive");
+const naiveUpkeep = process.argv.includes("--naive-upkeep");
+const naiveReserve = process.argv.includes("--naive-reserve");
+const famineArg = process.argv.find(arg => arg.startsWith("--famine-response="))?.split("=")[1];
+const famineResponse = famineArg as import("../src/content/chapterConfig").FamineResponseChoice | undefined;
+const naive = { naiveUpkeep, naiveReserve, famineResponse: famineResponse ?? "relief" };
 
 const when = (state: GameState) => ({ tick: state.tick, year: stateCalendar(state).year });
 let stage3: (ReturnType<typeof when> & { cause: string; lost: string | null; by: string }) | null = null;
@@ -27,7 +32,8 @@ let last: GameState | null = null;
 
 class Stop extends Error {}
 try {
-  runPhase19NaturalGrowth({ targetLots: 24, maxTicks, seed, ...(naive ? { naiveReserve: true, naiveUpkeep: true } : {}), onTick: state => {
+  runPhase19NaturalGrowth({ targetLots: 24, maxTicks, seed, ...(naiveUpkeep ? { naiveUpkeep: true } : {}), ...(naiveReserve ? { naiveReserve: true } : {}),
+    ...(famineResponse === undefined ? {} : { famineResponse }), onTick: state => {
     last = state;
     if (state.tick % 50 !== 0) return;
     maxDerelict = Math.max(maxDerelict, derelictPermille(state) ?? 0);
