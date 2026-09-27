@@ -19,7 +19,8 @@ import { confirmPalisadeProclamation } from "./engine/palisade";
 import { canProclaimPalisadeEra } from "./engine/era";
 import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
-import { applyPalisadeIntent, initialOpenPalisadeDraft, initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
+import { applyPalisadeIntent, initialExpansionDraft, initialOpenPalisadeDraft, initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
+import { cachedExpansionPreview, expansionStartCandidate } from "./ui/wallExpansionModel";
 import { DEFAULT_ZONE_BRUSH_RADIUS, type ZoneBrushTool } from "./render/zoneBrushInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameStore } from "./state/gameStore";
@@ -490,6 +491,21 @@ export function App() {
     dispatch({ type: "confirm_palisade_proclamation", candidatePath });
     setPalisadeDraft(null);
   };
+  // UX-0b2 WALL-2: widen the standing wall — a draft from the wall as it stands, proclaimed when the engine accepts it.
+  const beginPalisadeExpansion = () => {
+    const candidate = expansionStartCandidate(state);
+    if (candidate === null) return;
+    setSelectedTool(null);
+    setZoneTool(null);
+    setPalisadeDraft(initialExpansionDraft(candidate));
+  };
+  const confirmPalisadeExpansion = () => {
+    if (palisadeDraft === null || palisadeDraft.purpose !== "expand") return;
+    const candidatePath = palisadeDraft.candidate?.path ?? palisadeDraft.path;
+    if (!cachedExpansionPreview(state, candidatePath).ok) return;
+    dispatch({ type: "expand_palisade", candidatePath });
+    setPalisadeDraft(null);
+  };
   const proclaimStoneTown = () => {
     dispatch({ type: "confirm_stone_town_proclamation" });
     setPalisadeDraft(null);
@@ -592,6 +608,8 @@ export function App() {
                 onEraseDraftSegment={() => setPalisadeDraft(current => current === null || current.selectedRunIndex === null
                   ? current : applyPalisadeIntent({ state, draft: current, intent: { type: 'eraseSegment', index: current.selectedRunIndex } }))}
                 onProclaimStoneTown={proclaimStoneTown}
+                onBeginExpansion={beginPalisadeExpansion}
+                onConfirmExpansion={confirmPalisadeExpansion}
               />
             } />
           </GoalDrawer>

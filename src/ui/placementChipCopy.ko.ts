@@ -13,6 +13,12 @@ export const PLACEMENT_CHIP_COPY = {
   ledgerShort: (resource: string, cost: number, stock: number) => `${resource} ${cost} / 보유 ${stock} · ${cost - stock} 부족 — 배치 불가`,
   more: (count: number) => ` +${count}`,
   reach: (houses: number) => `집 ${houses}채 도달`,
+  /** UX-0b2 MARKET-1: a market reaches the homes within this many road steps (not a radius). */
+  reachRoad: (houses: number, reach: number) => `길 ${reach}걸음 안 집 ${houses}채`,
+  /** UX-0b2 MARKET-1: a house's road steps to the nearest market, against the reach. */
+  market: (steps: number, reach: number) => `시장까지 길 ${steps}걸음 / ${reach}`,
+  marketFar: (steps: number, reach: number) => `시장까지 길 ${steps}걸음 / ${reach} — 닿지 않음`,
+  marketNoRoad: "시장까지 이어진 길 없음",
   /** UI-3 (FP-2 placement ledger): per ledger period, only the parts that are not zero. */
   period: (parts: readonly string[]) => `장부 기간마다 ${parts.join(" · ")}`,
   rent: (value: number) => `지대 +${pence(value)}`,

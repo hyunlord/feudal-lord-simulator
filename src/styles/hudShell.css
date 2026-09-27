@@ -152,6 +152,12 @@
 .app-shell .placement-chip p { display: flex; gap: 4px; align-items: center; margin: 0; }
 .app-shell .placement-chip-title { font-weight: 700; }
 .app-shell .placement-chip-ledger[data-short="true"], .app-shell .placement-chip-reason { color: var(--palette-vermilion); font-weight: 600; }
+/* UX-0b2 MARKET-1: a house's road steps to the market; beyond the reach (or no road) in the warning tone. */
+.app-shell .placement-chip-market[data-far="true"] { color: var(--palette-vermilion); font-weight: 600; }
+/* UX-0b2 WALL-2: the era console's expansion lines; its buttons take the tablet's 48 px (over the shell's 44 px floor). */
+.app-shell .era-expansion-hint, .app-shell .era-expansion-pending { margin: 4px 0; font-size: 13px; }
+.app-shell .era-expansion-pending { color: var(--palette-vermilion); font-weight: 600; }
+@media (pointer: coarse) { .app-shell .era-console :is(.era-action, .era-wall-priority button) { min-height: 48px !important; } }
 
 /* The map's selection card in the panel slot (S-25): right side, 312 x 400 at most (the 18 % budget with the HUD, with room for Linux font metrics). */
 .app-shell .diagnostic-card-position { inset: 66px 8px auto auto !important; width: min(312px, calc(100% - 16px)); }

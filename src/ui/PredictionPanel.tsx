@@ -35,6 +35,8 @@ export function PredictionPanel({ lines, position, chip }: PredictionPresentatio
     {chip.ledger.map(line => <p key={line.text} className="placement-chip-ledger" data-short={line.short ? 'true' : undefined}>{line.text}</p>)}
     {chip.reason === null ? null : <p className="placement-chip-reason"><UiIcon sheet="prediction" cell="block" label={LINE_SYMBOLS.block.label} />{chip.reason}</p>}
     {chip.reach === null ? null : <p className="placement-chip-reach">{chip.reach}</p>}
+    {chip.market === null ? null : <p className="placement-chip-market" data-far={chip.market.far ? 'true' : undefined}>
+      {chip.market.far ? <UiIcon sheet="prediction" cell="warn" label={LINE_SYMBOLS.warn.label} /> : null}{chip.market.text}</p>}
     {chip.period === null ? null : <p className="placement-chip-period">{chip.period}</p>}
   </aside>;
   if (lines.length === 0) return null;

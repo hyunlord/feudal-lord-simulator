@@ -22,6 +22,8 @@ import { draftPalisadePredictionLines, proposalPredictionLines } from "./wallPre
 import { PREDICTION_SEVERITY_TONE, type PredictionLine } from "./predictionTypes";
 import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
 import { UiIcon } from "./UiIcon";
+import { cachedExpansionPreview, expansionLines, pendingPastureWarning } from "./wallExpansionModel";
+import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
 
 export type EraConsoleAction = {
   readonly enabled: boolean;
@@ -55,6 +57,14 @@ export type EraConsoleModel = {
   readonly diagnostic: string | null;
   readonly reserveDeadlock: boolean;
   readonly irreversibleNotice: string | null;
+  /** UX-0b2 WALL-2: widening the standing wall — the entry, the draft's preview lines, and the fields still to turn. */
+  readonly expansion: {
+    readonly available: boolean;
+    readonly editing: boolean;
+    readonly ok: boolean;
+    readonly lines: readonly PredictionLine[];
+    readonly pending: string | null;
+  };
 };
 
 const PROCLAMATION_TOOLTIPS = {
@@ -71,6 +81,8 @@ export function buildEraConsoleModel(input: {
   readonly draft: PalisadeDraftState | null;
 }): EraConsoleModel {
   const requirements = evaluateEraRequirements(input.state);
+  const expanding = input.draft?.purpose === 'expand';
+  const expansionPreview = expanding && input.draft !== null ? cachedExpansionPreview(input.state, input.draft.candidate?.path ?? input.draft.path) : null;
   const proposal = input.state.era === "hamlet"
     ? proposalSummaryForState(input.state, palisadeFootprintsForState(input.state))
     : null;
@@ -100,7 +112,10 @@ export function buildEraConsoleModel(input: {
     requirements,
     tooltip: input.state.era === "hamlet" ? PROCLAMATION_TOOLTIPS.hamlet
       : LABOUR_COPY.assigned(input.state.constructionSites.filter(isWallConstructionSite).reduce((sum, site) => sum + site.assignedBuilders, 0)),
-    action: {
+    action: expansionPreview !== null ? {
+      enabled: expansionPreview.ok, label: WALL_EXPANSION_COPY.confirm, targetEra,
+      reason: expansionPreview.ok ? null : WALL_EXPANSION_COPY.failure[expansionPreview.reason],
+    } : {
       enabled: canBegin,
       label: actionLabel({ state: input.state, draft: input.draft }),
       reason: actionReason({ firstUnmet, state: input.state, draft: input.draft }),
@@ -130,6 +145,13 @@ export function buildEraConsoleModel(input: {
     irreversibleNotice: input.state.palisade === null
       ? null
       : A_TRIPLE_PRIME_WALL_COPY.proclamationNotice,
+    expansion: {
+      available: input.state.palisade !== null && input.draft === null,
+      editing: expansionPreview !== null,
+      ok: expansionPreview?.ok === true,
+      lines: expansionPreview === null ? [] : expansionLines(input.state, expansionPreview),
+      pending: pendingPastureWarning(input.state)?.line ?? null,
+    },
   };
 }
 
@@ -141,6 +163,8 @@ export function EraConsole({
   onCancelProposal,
   onEraseDraftSegment = () => undefined,
   onProclaimStoneTown = () => undefined,
+  onBeginExpansion,
+  onConfirmExpansion,
   priority = 'balanced',
   onPriorityChange,
 }: {
@@ -151,6 +175,9 @@ export function EraConsole({
   readonly onCancelProposal: () => void;
   readonly onEraseDraftSegment?: () => void;
   readonly onProclaimStoneTown?: () => void;
+  /** UX-0b2 WALL-2: start widening the standing wall, and proclaim the widened ring. */
+  readonly onBeginExpansion?: () => void;
+  readonly onConfirmExpansion?: () => void;
   readonly priority?: WallConstructionPriority;
   readonly onPriorityChange?: (priority: WallConstructionPriority) => void;
 }) {
@@ -158,8 +185,8 @@ export function EraConsole({
   useLayoutEffect(() => {
     if (model.draft.editing) actionReasonRef.current?.scrollIntoView({ block: 'nearest' });
   }, [model.draft.editing, model.draft.selectedRunLabel, model.draft.failure]);
-  const actionHandler = model.action.targetEra === "stone_town"
-    ? onProclaimStoneTown
+  const actionHandler = model.expansion.editing ? onConfirmExpansion
+    : model.action.targetEra === "stone_town" ? onProclaimStoneTown
     : model.draft.editing ? onConfirmProposal : onBeginDraw;
   return (
     <section className="era-console" aria-label={KO_UI.eraConsole}>
@@ -198,6 +225,14 @@ export function EraConsole({
           {model.projectLines.map(line => <li className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`} key={line.id}>{line.text}</li>)}
         </ul>
       ) : null}
+      {model.expansion.editing ? <>
+        <p className="era-expansion-hint">{WALL_EXPANSION_COPY.hint}</p>
+        <ul className="era-proposal-lines era-expansion-lines" aria-label={WALL_EXPANSION_COPY.begin}>
+          {model.expansion.lines.map(line => <li className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`} key={line.id}
+            data-expansion-line={line.id}>{line.text}</li>)}
+        </ul>
+      </> : null}
+      {model.expansion.pending === null ? null : <p className="era-expansion-pending" role="status">{model.expansion.pending}</p>}
       {model.draft.editing ? (
         <p className="era-draft-status">
           {model.draft.selectedRunLabel ?? WALL_COPY.drawOrMove}
@@ -238,8 +273,11 @@ export function EraConsole({
         ) : null}
         {model.draft.editing ? (
           <button className="era-action era-action--secondary" type="button" onClick={() => onCancelProposal()}>
-            {WALL_COPY.cancelDraft}
+            {model.expansion.editing ? WALL_EXPANSION_COPY.cancel : WALL_COPY.cancelDraft}
           </button>
+        ) : null}
+        {model.expansion.available && onBeginExpansion !== undefined ? (
+          <button className="era-action era-action--secondary" type="button" data-action="begin-expansion" onClick={() => onBeginExpansion()}>{WALL_EXPANSION_COPY.begin}</button>
         ) : null}
       </div>
       <small ref={actionReasonRef} id="era-action-reason" className="era-action-reason">

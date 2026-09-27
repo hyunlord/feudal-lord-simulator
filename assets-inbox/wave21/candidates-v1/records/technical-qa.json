@@ -1,0 +1,527 @@
+{
+  "assetCount": 58,
+  "checks": [
+    {
+      "id": "ch3_event_harbour_fever",
+      "width": 960,
+      "height": 540,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "a59659296867a6df1f406d4cfd4855f4d0bfc1cf54eb208b8421831c9c91a7e7"
+    },
+    {
+      "id": "ch3_event_priest_death",
+      "width": 960,
+      "height": 540,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "29398cda973002226b20dcd983034b1ab89a54188577db0151954275d6ef8e69"
+    },
+    {
+      "id": "ch3_event_empty_streets",
+      "width": 960,
+      "height": 540,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "f9d75e967f0790622e1362ee941a6a3ae77fd33441896bcdc23202b0957ea922"
+    },
+    {
+      "id": "ch3_event_new_graves",
+      "width": 960,
+      "height": 540,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "79081c5f2636798e4d6442c54b9c545e1f4b8e7e2240bdcf7c7546bc7e6a876a"
+    },
+    {
+      "id": "ch3_event_abandoned_fields",
+      "width": 960,
+      "height": 540,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "cc3786494b554464d3785dbb7e2faca10301b241ea0bd3721741857ae9a92179"
+    },
+    {
+      "id": "ch3_event_wage_demand",
+      "width": 960,
+      "height": 540,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "833d5304b21a9964e48a4c936de52c40382cac3bc81aa156200da1d96289e57e"
+    },
+    {
+      "id": "ch3_event_ordinance_reading",
+      "width": 960,
+      "height": 540,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "9bacfdfc4800a9e7bae8722402669f2bd3b77551d0b1a031805be8a31fd653a5"
+    },
+    {
+      "id": "ch3_event_resettlement",
+      "width": 960,
+      "height": 540,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "16d5a9b16c7856d3850351824de4811c4523487de14e26f7906b7fde9ffbe690"
+    },
+    {
+      "id": "ch3_decision_wages",
+      "width": 640,
+      "height": 480,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "48c838bac75127e99c7703c793934c4e6d71dc35ecbf75c8c69b1c78035c5f24"
+    },
+    {
+      "id": "ch3_decision_land_redistribution",
+      "width": 640,
+      "height": 480,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "57eec023ca097f6c4b3fd9fdc40f299c544b8c4958997beff92c516f8dd993f4"
+    },
+    {
+      "id": "ch3_decision_vacant_priest",
+      "width": 640,
+      "height": 480,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "8f5a34b2581363f54ac3230c7687d6bca667a491b41624838778d8962d92e08b"
+    },
+    {
+      "id": "ch3_decision_cash_rent",
+      "width": 640,
+      "height": 480,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "888f7d651574d8d56f02a55bb55fb9d2f651ac8d8966364732ceee6ce92cf7c6"
+    },
+    {
+      "id": "ch3_chronicle_first_death",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "5394c74b3bb247676341fa73a99def3b63ffc0d5b8f0f872d387d83c84d3412c"
+    },
+    {
+      "id": "ch3_chronicle_churchyard",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "b21d99ef369d16a6fdf27a008b6edfc9e0b092941147eaa18d630c8349a16f8a"
+    },
+    {
+      "id": "ch3_chronicle_abandoned_fields",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "dde1f2fdc9f8d321a6a584b8539a2d5af93236a984880d638823047cb471adb0"
+    },
+    {
+      "id": "ch3_chronicle_ordinance",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "04f6c61ea501987e2db8d1e1c9b8ff69499b4d6a99e0b31cbcca92bd52e219c0"
+    },
+    {
+      "id": "ch3_chronicle_resettlement",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "063b159ab99cfe816dfc8b36315d7bcbc82c19d9df81e6ac301800e7c5a3d432"
+    },
+    {
+      "id": "ch3_chronicle_spring_recovery",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "d5a702f23b84b6d6b71f6fb09258539936960979856ef122159f4e62c25f9a7e"
+    },
+    {
+      "id": "ch3_ending",
+      "width": 1920,
+      "height": 1080,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 2073600,
+      "sha256": "00b0f23544309be90b17184122bcd7e1e1e72fcd05c5a8691062c2a6c32f53fb"
+    },
+    {
+      "id": "ch4_event_wage_competition",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "7a97714354f6fd6b44e3dff339efc4ebf80d2c0d29bbe7521a0d2b2be465e08a"
+    },
+    {
+      "id": "ch4_event_petitions",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "652f03f88ea4a6d2a931b448e48fefda7259abfaed36cc5390c62d7032a7cdd1"
+    },
+    {
+      "id": "ch4_event_rebellion_1381",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "0f7b27289b527075faceee0a0fe3809bf24df5544d4e2e6b97eb7e757d82922c"
+    },
+    {
+      "id": "ch4_event_autonomy_request",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "2c4e9e49d1b8d2cb827a2be0e07e450aadfb2606b009db2545fbec5238360b5f"
+    },
+    {
+      "id": "ch4_event_textile_growth",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "0797335e3f903d4e992b1c6711e4a37e2665461eed1bcfac29d04655469c7084"
+    },
+    {
+      "id": "ch4_event_alehouse",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "9616d1b4ce173d35b9c05965455aadc5ef5e1569acd105631594ec3d6db872db"
+    },
+    {
+      "id": "ch4_event_guild_foundation",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "02faf00a227beace857b0727f7e4cde55b6d3576122fa76df684cff0fb8ca3e6"
+    },
+    {
+      "id": "ch4_event_lord_warning",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "2017d175d1e5f5773d8d1676e9e8d70f93d117e9e99fe1c2e4e3848c6c64566b"
+    },
+    {
+      "id": "ch4_decision_charter_negotiation",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "99fdb4079f9f83088a40748f5f521785970e375f4509c4305092823c2f0f6fea"
+    },
+    {
+      "id": "ch4_decision_guild_approval",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "507a6d214099cb6e6b895a514633a9f3437bcd25e44fd83213bd89b1ce080a69"
+    },
+    {
+      "id": "ch4_decision_tax_collection",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "6a169531216e6bdb9da3b852328180a05c9e6ffa63b5c2f9a0a3ead3b6aa91ef"
+    },
+    {
+      "id": "ch4_decision_textile_or_grain",
+      "width": 640,
+      "height": 480,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "e007541d2487a5c173c34c60b32a3fcff90a524989409a8a5176136b216b2e01"
+    },
+    {
+      "id": "ch4_chronicle_wage_competition",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "1e91e2379b587f6815b7a7cc130d05d17bc7839d105e9585ec6e16a30305c6fa"
+    },
+    {
+      "id": "ch4_chronicle_petitions",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "9ee2a00704e911fa50ab7c1ba29281fe66079091b0f386cafb6254bbc326f9c4"
+    },
+    {
+      "id": "ch4_chronicle_rebellion_rumour",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "86fc127f531a346b96272c976619677e9a83ced68951cb3e5898de05cbfc845b"
+    },
+    {
+      "id": "ch4_chronicle_guild",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "89d9659f3a20e49e75a750684d7b866efa905224fde8145826304f3fe2fdbb4c"
+    },
+    {
+      "id": "ch4_chronicle_textile_street",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "cdc9abadbaca86cc519f976009b3b1886f308b8da7497f031a621eac7ca860ce"
+    },
+    {
+      "id": "ch4_chronicle_charter_negotiation",
+      "width": 384,
+      "height": 384,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "8b313658560a0304260fce35d826b5d62992a468478d4e07d25988ec401b8be0"
+    },
+    {
+      "id": "ch4_ending",
+      "width": 1920,
+      "height": 1080,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 2073600,
+      "sha256": "0061b3a8a5d96b757068ce4ed82daae4fda500229caae7fd74ff41d09b0af9e1"
+    },
+    {
+      "id": "ch5_event_mayor_demand",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "64aa287769c6e353931f5fb938dc709a8f4a3d226e37708160506b315b0b49b8"
+    },
+    {
+      "id": "ch5_event_royal_tax_envoy",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "f170d121c528a63565442f2575ea941f717568e2c54476c6472ca775ab5fa313"
+    },
+    {
+      "id": "ch5_event_succession",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "5880346366722963f8bfeb993798180ee21fc546f703b1c184852f18804ee6c3"
+    },
+    {
+      "id": "ch5_event_city_seal_making",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "252b8a5a2dfdd0ad168456592eea67d98034d33066fcc30e2ee821396acf50f7"
+    },
+    {
+      "id": "ch5_event_charter_sealing",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "678fe1ce6cb65cd600e312522ddcedeadaba09128809829253cd09029a702110"
+    },
+    {
+      "id": "ch5_event_family_departure",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "30ecea394a8b4154a57a8c2ba437eb167fed8aecfc2d031116d458c87720380c"
+    },
+    {
+      "id": "ch5_event_legacy_record",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "1f3d33301dbb89b04ec15fbb29f3f5a7d86ac6d9ed5066c01a4065168f6a5c7a"
+    },
+    {
+      "id": "ch5_event_last_market",
+      "width": 960,
+      "height": 540,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 518400,
+      "sha256": "5b6720b5857c21e1b42ef239cc3b16de016436c1a9938bc8acac1d531cf57c35"
+    },
+    {
+      "id": "ch5_decision_autonomy",
+      "width": 640,
+      "height": 480,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "b62886ae2071c639708cf21feed4335cc2447d607861e418c6ddfceed2b530c8"
+    },
+    {
+      "id": "ch5_decision_heir_choice",
+      "width": 640,
+      "height": 480,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "47e312a63d383c0db2c9140bbf1211e20a47098ed7121ce14a469aa2269dbd1d"
+    },
+    {
+      "id": "ch5_decision_royal_tax_response",
+      "width": 640,
+      "height": 480,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "3446a0f605960821d8d9a1874817b4f92f901c4c76e52b6390fcc5c3c8f322cc"
+    },
+    {
+      "id": "ch5_decision_legacy",
+      "width": 640,
+      "height": 480,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 307200,
+      "sha256": "82c97d46206110fa66d02e64de73cbf950869c709a17d51188fbd58458ceb07c"
+    },
+    {
+      "id": "ch5_chronicle_mayor_election",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "a9d96149058f9479a57ef6359d0c96acdc35f00c2f114cd77ab80865cc467bdd"
+    },
+    {
+      "id": "ch5_chronicle_city_seal",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "30a19fffca7a64df3b7ba4b607072fe34f129855bd998e21971ff7813823d6c1"
+    },
+    {
+      "id": "ch5_chronicle_charter_sealing",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "5ed7a216d36fedad1a91f5fe8dd3541dd576d554ea968ac42267a7eb67007d56"
+    },
+    {
+      "id": "ch5_chronicle_heir",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "e5cc998470f510c00fb29caa73f54ec57ec22b64af6117b2ff463d20813a4c57"
+    },
+    {
+      "id": "ch5_chronicle_legacy_sealing",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "2cb1de38b42aac945aa3870c069edb3cd2af3c130f849b3eb6d64165e22e2bb7"
+    },
+    {
+      "id": "ch5_chronicle_last_market",
+      "width": 384,
+      "height": 384,
+      "channels": 3,
+      "clearPixels": 0,
+      "visiblePixels": 147456,
+      "sha256": "ce8a3d9e793f072e907cc0a00573a2763539f8c1f23dd2a56dce3aa7649e7986"
+    },
+    {
+      "id": "ch5_ending",
+      "width": 1920,
+      "height": 1080,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 2073600,
+      "sha256": "416e458bd616d08383494f0629eed4ef0da8c7928b9e57c68a361410fedd7596"
+    },
+    {
+      "id": "ch5_campaign_ending",
+      "width": 1920,
+      "height": 1080,
+      "channels": 4,
+      "clearPixels": 0,
+      "visiblePixels": 2073600,
+      "sha256": "e2eca183fd785611d9ea9fddc3b4e8e603cd4e86af21b0ff76764b399e4339a9"
+    }
+  ]
+}

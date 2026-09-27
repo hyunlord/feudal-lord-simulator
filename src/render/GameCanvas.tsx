@@ -1,4 +1,5 @@
 import { householdRows, walkerHeadline } from "../ui/persons/personModels";
+import { marketReachLine } from "../ui/marketReachModel";
 import { PredictionPanel, type PredictionPresentation } from "../ui/PredictionPanel";
 import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 
@@ -183,6 +184,7 @@ export function GameCanvas({
           position={selection.position}
           walkerHeadline={selection.kind === 'walker' ? walkerHeadline(state, selection.walkerId) : null}
           houseMembers={selection.kind === 'building' && cardModel.kind === 'house' ? householdRows(state, selection.buildingId) : []}
+          reachLine={selection.kind === 'building' ? marketReachLine(state, selection.buildingId) : null}
           {...(onPerson === undefined ? {} : { onPerson })}
         />
       ) : null}

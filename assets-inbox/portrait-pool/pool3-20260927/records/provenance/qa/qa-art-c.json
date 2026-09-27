@@ -1,0 +1,151 @@
+{
+  "status": "PASS_WITH_LIMITATIONS",
+  "method": "Direct visual inspection of six side-by-side three-stage chains at 256px and separately rasterized 96px in qa-art-c-board.png",
+  "scope": "I113-I118, 18 final portraits",
+  "identity_preserved": true,
+  "authority_natural": true,
+  "caricature": false,
+  "forbidden_ermine": false,
+  "books_scrolls": 0,
+  "notes": {
+    "I113": {
+      "props": "wooden prayer beads all three ages",
+      "fur": "none",
+      "headwear": "visible tonsure all three",
+      "identity": "round full face, widely spaced eyes, wide short nose and chin preserved",
+      "age": "old grey thinning ring and facial folds clear; young to mature subtle at 96px"
+    },
+    "I114": {
+      "props": "empty hands; rope cincture part of habit",
+      "fur": "none",
+      "headwear": "tonsure all three",
+      "identity": "long narrow face, prominent ears and long drooping nose preserved",
+      "age": "mature lines subtle at 96px; elderly thin grey hair and sunken face clearly older"
+    },
+    "I115": {
+      "props": "brass balance scales all three",
+      "fur": "grey-white mottled squirrel miniver, no black tail tips",
+      "headwear": "below-ear black bob aging to grey",
+      "identity": "broad jaw and bulb-ended nose preserved",
+      "age": "progressive greying, eye bags, wrinkles readable"
+    },
+    "I116": {
+      "props": "folded indigo cloth sample all three",
+      "fur": "grey-white mottled squirrel miniver, no black tail tips",
+      "headwear": "below-ear red-brown bob aging to grey",
+      "identity": "broad high oval and wide chin preserved",
+      "age": "young to mature subtle; old grey hair and facial sag distinct"
+    },
+    "I117": {
+      "props": "closed carved wooden casket all three",
+      "fur": "unspotted squirrel-miniver trim",
+      "headwear": "blue tied scarf / white linen coif / blue wool hood",
+      "identity": "narrow diamond face and high cheekbones preserved",
+      "age": "old revision 2 strengthened wrinkles and neck aging; same identity readable at 256 and 96"
+    },
+    "I118": {
+      "props": "empty hands below frame all three",
+      "fur": "unspotted squirrel-miniver collar",
+      "headwear": "uncovered ribbon / uncovered ribbon / ochre tied scarf",
+      "identity": "frontal long tapered jaw and broad straight nose preserved",
+      "age": "old revision 2 strengthened eyelid, jowl and neck aging; same identity readable at 256 and 96"
+    }
+  },
+  "limitations": [
+    "Numerical ages are narrative metadata, not measurable exact ages.",
+    "Young-to-mature changes are intentionally moderate and less obvious at 96px, particularly I114 and I116.",
+    "Small seals and miniver texture resolve better at 256px; 96px supports broad clothing and identity reads."
+  ],
+  "files": [
+    {
+      "id": "I113_young",
+      "sha256": "3691c245d3e8afbe581344bba5c4b8e4e3e5fad99c94b9bc59aba95eb1b58c52",
+      "status": "PASS"
+    },
+    {
+      "id": "I113_mature",
+      "sha256": "c75009596e8295f597c4bee902a65444bb85c23a9dd5fef9fea07534a3d7d126",
+      "status": "PASS"
+    },
+    {
+      "id": "I113_old",
+      "sha256": "9719fa149b6485a079d8f1227bd18c3d82ebb303b6389aa8fe18e52f2a0d3711",
+      "status": "PASS"
+    },
+    {
+      "id": "I114_young",
+      "sha256": "689a57c2e057c3f1cfa99b774a08792ee8f81d50f03f0d00cb3cdd20603df6dd",
+      "status": "PASS"
+    },
+    {
+      "id": "I114_mature",
+      "sha256": "75e3abeb3efc7318a8df5eebb4170c1d0ec7b16314b87b38e72374a2a86aa25e",
+      "status": "PASS"
+    },
+    {
+      "id": "I114_old",
+      "sha256": "5d7bd0d5a6a650119cbc4ec002ee4774fc893ef696e930fe14f6e79ecf83a2b3",
+      "status": "PASS"
+    },
+    {
+      "id": "I115_young",
+      "sha256": "a0014d7c2a7dc7eadd4a720dfbd86fc1a453b927ca801fcf166ad1a1b99486eb",
+      "status": "PASS"
+    },
+    {
+      "id": "I115_mature",
+      "sha256": "13d6e643c49180d1318fe04d85c985d48055bdc04993754c062c1920e3dba99f",
+      "status": "PASS"
+    },
+    {
+      "id": "I115_old",
+      "sha256": "956463770473aa019538eb29e350b61f21239a756118a248a896c2393867e19b",
+      "status": "PASS"
+    },
+    {
+      "id": "I116_young",
+      "sha256": "28b35d11a3e58032a559e2aa27856da60f6510a06d81645a60f36f0b1b22413d",
+      "status": "PASS"
+    },
+    {
+      "id": "I116_mature",
+      "sha256": "97a10bc7f7fd42e44e754055049e17a138bb2ad35022efc56570720fd07fe0ad",
+      "status": "PASS"
+    },
+    {
+      "id": "I116_old",
+      "sha256": "a007ee7dec4b47058a79172bc004712eb70164583108e543c832b2281bf58828",
+      "status": "PASS"
+    },
+    {
+      "id": "I117_young",
+      "sha256": "c1e9704e73e271ae6bc204294b0195154b28249b1126b1448de1d4e8dac66668",
+      "status": "PASS"
+    },
+    {
+      "id": "I117_mature",
+      "sha256": "c954f83dea920bbebc818ce9c4aa3dc8a00ad37edcfe4e265da7ff1ded6431f4",
+      "status": "PASS"
+    },
+    {
+      "id": "I117_old",
+      "sha256": "d689ac30a97995d97428062f61e9c3b53ef2f50f5714322644f0488d7c700036",
+      "status": "PASS"
+    },
+    {
+      "id": "I118_young",
+      "sha256": "3efbac76a73e14aa97af834ae54543b5b8f9059e4a4178a188e59a9966e45360",
+      "status": "PASS"
+    },
+    {
+      "id": "I118_mature",
+      "sha256": "c4f71ab59fffc8cf80da78d7c42a1ab40a15e8ad229fa9de08c8a4088b261c19",
+      "status": "PASS"
+    },
+    {
+      "id": "I118_old",
+      "sha256": "01b79ac14150ecb8b49dc6e2b7c2aa87c2f94f90623b1021aed4cd5daccffb79",
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,11 +1,26 @@
 # 현재 상태
 
-갱신: 2026-09-27(UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UX-0b2 UX-0b 수정 범위 추가: MARKET-1·WALL-2를 화면에 — 본선 병합**(Claude Code, UI·렌더·스타일·스크립트·시험·문서만, 엔진 0줄, 검증 DGX, 사용자 지시): [보고서](verification/ux0b2/REPORT.md), 결정 UX0B2-D1~D3.
+  - **MARKET-1:** 집 배치 칩 "시장까지 길 d걸음 / 40"(넘으면 "닿지 않음", 길 없음), 시장 배치 미리보기와 시장을 고를 때 길 40걸음 안 길 칸·닿는 집(옛 8칸 원 대신).
+  - **WALL-2:** 시대 콘솔 [목책 넓히기] → 한 변을 끌어 넓히기, 미리보기(새 목책 걸음·목재, 성 안 A→B칸, "밭 N칸 → {해 계절} 목초지" 경고와 붉은 칸), [목책 확장 선포]; 확장 뒤 콘솔 줄·구역 칠하기의 붉은 칸·위기 줄.
+  - **고친 것:** 초안에서 한 변을 끌 때 거절된 걸음이 시작점을 옮겨 거절 자리를 넘지 못하던 결함, 시대 콘솔 단추 태블릿 44 → 48 px.
+  - **관문:** 캡처 9장, UX-3 회귀 세트 통과, 깨끗한 클론 `5da4f6b` 3,139/3,139. 위기 줄 순위(UX0B2-D2)와 문구는 판정 대기.
+
+- **ASSET-1 에셋 전수 점검 — 관문 ①~④ 통과, 본선(문서만)**(Claude Code, INBOX 세션, `docs/verification/asset-audit/`·STATUS·로드맵만, 코드·에셋·장부 0줄): [보고서](verification/asset-audit/REPORT.md). 수정하지 않고 목록만 — 사용자 판정 후 ASSET-2.
+  - **runtime 대조:** `public/assets` 885개와 빌드 파생 507개를 모두 분류(미분류 0). superseded·rejected·retired 바이트는 게임에 0. 판정 전 초상 풀 2차 92장이 CHRON-1 설치로 빌드 파생 184개로 들어가 있고, 옛 버전이 코드에 등록된 파일 7(도로 v2 2·성벽 면 v1 5), 장부·설치 대장에 없고 코드도 읽지 않는 파일 10(예약 목책 5·빵 바구니 1·옛 UI 질감 4, 예약 6은 caBX 남음). 확정인데 미설치 388장(walker-pilot2 88·Wave 3 82·Wave 12 60·Wave 17 52·Wave 13 34·Wave 14 24·Wave 20 20 등).
+  - **일관성 시트 8장**(게임 줌 1.0 크기, 건물은 발판 마름모): Wave 9 이야기 워커가 일반 워커의 약 1.8배, Wave 13 동물을 규격(원본×0.5)대로 넣으면 지금 동물의 두 배 넘게 큼, 파일럿 초상이 풀보다 밝음. 묶음 안 밝기·채도 z ±2 밖 97장.
+  - **기계 결함:** 규격(캔버스·피벗·알파 바운딩) 1,148건 불일치 0, 빈 파일 0, DPR·크기 파생 누락 0, 헤일로 기준 3(눈으로는 빛 받은 윗면), 말뚝 면 v2 색 띠 1(눈 확인).
+
+- **TEST-1 seasonArt "held chunk raster" 시험 결정론 — 본선 병합**(Claude Code, 렌더 시계 인자·시험·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/test1/REPORT.md).
+  - 지면 청크 캐시에 시계를 주입하고(게임은 기본값 `performance.now`), 시험은 가짜 시계로 20·30·5 ms를 넘긴다. DGX가 바쁠 때 깨끗한 클론을 깨던 시험(MARKET-1 보고서, 두 번)이다.
+  - 30 ms 늦게 깨는 타이머로 본선 시험은 같은 실패(섞임 0 / 2), 이 시험은 통과. DGX 100회 연속 100/100, 깨끗한 클론 `798a9ec` 3,135/3,135(DGX가 바쁠 때 통과).
 
 - **UI-5 인물이 화면에 — 관문 ①~④ 통과, 본선 병합**(Claude Code, UI·렌더 카드·스타일·에셋 설치·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/ui5/REPORT.md), 결정 UI5-D1~D5.
   - **사람이 보인다:** 청원 카드의 청원자 2~3명(칩 → 인물 카드), 대기근 결정 모달의 청지기(걱정 표정·이름·조언), 집 카드·왼쪽 inspector의 식구(가구주 먼저, 다섯 넘으면 넷 + [식구 N명 모두 보기]), 워커 카드의 사람과 "목재를 방앗간 공사장으로 나르는 중 · 8/30", 청지기 말풍선의 이름.
@@ -147,7 +162,7 @@
   - Astra P0 43장(초판 29 + 재작업 14, `caBX` 제거)과 파생 54장(아이콘 24/32/48/64, 커서 32, 초상 96)을 설치했다. 대장 97행, 받은 편지함 `ui-p0`(초판 12 superseded · 파일럿 12).
   - 9-slice 틀·버튼·탭·chip(상태는 코드), 아이콘 57, 커서 6, 청지기 3표정(대사 `tone`), Noto Sans/Serif KR(OFL)을 입혔다. 🔒 ▲ ◆ ✓ · "청" 등 글리프를 모두 그림으로 바꿨다.
   - 재생 감사 잔재 0(본선 1,027), 터치 44 px·12 px 0건, 9-slice 모서리 18/18 동일, p95 48~102%, 깨끗한 클론 `5584cb3` 2,900/2,900. 아이콘 24 px 실루엣은 3쌍이 IoU 0.85를 넘어 Astra 후보로 넘겼다.
-- **INBOX-1 Astra 산출물 전량 보관 — 본선 커밋**(Claude Code, inbox·docs만): `/tmp/astra-*.zip` 30개와 `output/astra-*` 13개를 `assets-inbox/<wave>/<batch>/{assets,proofs,records}`에 받은 바이트 그대로 보관, 장부 [`assets-inbox/INBOX_LEDGER.csv`](../assets-inbox/INBOX_LEDGER.csv) 1,380행(= inbox PNG 1,380장), 구조·상태 뜻 [`ASSET_INBOX.md`](ASSET_INBOX.md). `ui-p0/`는 UX-2 브랜치와 같은 경로·같은 바이트. `sources/`·`references/`(약 826MB)는 보관하지 않음. Wave 12·Wave 10 재작업·Wave 3 재작업은 아직 없음. 2차(09시): 판정 4건 반영(Wave 9 33 확정·UI 파일럿 icon_status_sheet superseded·Wave 10 pilot-reuse rework_pending·zone-ground-pilot rejected), Wave 13·Wave 3 재작업 수령(장부 1,509행), 원본은 저장소 밖 `~/feudal-lord-analysis/astra-raw/`에 복사. 3차(09시): Wave 12(오버레이 4 confirmed·24 rework_pending), Wave 14(1 rework_pending), Wave 10 v2(v1 재작업 대기분 superseded, 초상 방식 전환으로 v1·v2 레이어 rejected 예정) 수령, 장부 2,217행. 4차(11시): Wave 3·11·12·13·14·15 확정 반영, 질감·오버레이 재작업 수령, 초상 방식 전환으로 Wave 10 레이어 전부 rejected·완성 초상 풀 첫 묶음(`portrait-pool/`) 48장 confirmed, 장부 2,399행.
+- **INBOX-1 Astra 산출물 전량 보관 — 본선 커밋**(Claude Code, inbox·docs만): `/tmp/astra-*.zip` 30개와 `output/astra-*` 13개를 `assets-inbox/<wave>/<batch>/{assets,proofs,records}`에 받은 바이트 그대로 보관, 장부 [`assets-inbox/INBOX_LEDGER.csv`](../assets-inbox/INBOX_LEDGER.csv) 1,380행(= inbox PNG 1,380장), 구조·상태 뜻 [`ASSET_INBOX.md`](ASSET_INBOX.md). `ui-p0/`는 UX-2 브랜치와 같은 경로·같은 바이트. `sources/`·`references/`(약 826MB)는 보관하지 않음. Wave 12·Wave 10 재작업·Wave 3 재작업은 아직 없음. 2차(09시): 판정 4건 반영(Wave 9 33 확정·UI 파일럿 icon_status_sheet superseded·Wave 10 pilot-reuse rework_pending·zone-ground-pilot rejected), Wave 13·Wave 3 재작업 수령(장부 1,509행), 원본은 저장소 밖 `~/feudal-lord-analysis/astra-raw/`에 복사. 3차(09시): Wave 12(오버레이 4 confirmed·24 rework_pending), Wave 14(1 rework_pending), Wave 10 v2(v1 재작업 대기분 superseded, 초상 방식 전환으로 v1·v2 레이어 rejected 예정) 수령, 장부 2,217행. 4차(11시): Wave 3·11·12·13·14·15 확정 반영, 질감·오버레이 재작업 수령, 초상 방식 전환으로 Wave 10 레이어 전부 rejected·완성 초상 풀 첫 묶음(`portrait-pool/`) 48장 confirmed, 장부 2,399행. 5차(09-27 14시, INBOX-1j): 초상 풀 3차 72장 confirmed(풀 304장), Wave 21(3장 18 confirmed·`ch3_ending` rework_pending·4·5장 39 candidate)·Wave 22(35 confirmed·지면 fill 15와 `sand_beach_a` rework_pending) 수령, 장부 3,071행 = PNG 3,071.
 
 - **MOVE-1 주민 이동 v0 — 관문 통과, 본선 병합**(Claude Code, 표현 워커, 시뮬레이션 0줄, 렌더는 V2 매핑 표 줄만): [주민 이동 명세](design/resident-movement.md) RM-1~RM-7, [보고서](verification/move1-residents/REPORT.md), 결정 MV1~MV5.
   - 가구 어른이 우물·시장·교회에 걷고, 헛간 일꾼이 들일을 오간다. 시장일 방문객, 교회↔예배당 성직자, 성문 경비가 있다. 모두 상태와 틱에서 파생하며 저장하지 않는다(v11 그대로).

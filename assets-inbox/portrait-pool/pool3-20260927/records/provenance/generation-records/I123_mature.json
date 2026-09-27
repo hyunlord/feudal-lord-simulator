@@ -1,0 +1,17 @@
+{
+  "id": "I123_mature",
+  "prompt": "IDENTITY-PRESERVE EDIT of the supplied young portrait. Paint THIS EXACT PERSON at the requested older age, retaining individual face architecture, nose, eye spacing, chin, sex, body, directional pose and background. Keep cloth and exact props. Aging must visibly read at thumbnail scale, never merely change hair. ONE completed hand-painted natural realistic bust of I123, a 45-year-old man, southern England circa 1325, role earl_steward. Orientation: genuinely turned toward image LEFT in three-quarter view; draw this direction, NEVER mirror. Permanent distinctive anatomy: narrow high rectangular face; broad temples; large close-set blue eyes; straight long nose with squared tip; short fine lips; distinctly broad flat chin. Build: ordinary medium neck, cheeks and shoulders; human natural proportions, no caricature. Skin: light cool beige; never link complexion or body to class or morality. Hair: ash blond with grey strands. Headwear: uncovered natural medieval blunt bob reaching BELOW both ears, no modern faded or cropped sides. Age: same person at forty-five, moderate forehead and eye wrinkles, mature cheeks and clear grey strands. Expression: alert assessing narrowed eyes and one slightly raised eyebrow, closed calm mouth, not a villain. Authority must arise from composed upright posture, focused eyes and natural presence, not aggression or grotesque anatomy. Costume: excellent dark green wool livery gown, narrow grey-white squirrel-miniver collar WITHOUT black tail tips, small household badge, no ermine despite serving earl. Absolutely NO white fur with black tail tips and NO ermine; squirrel miniver is subtly mottled GREY-WHITE without black spots. No silk, crown, mitre, armor or modern clerical collar. Prop exactly: short plain oak household staff visible only along lower outer edge. No book, scroll, sheet or document. No extra generic props. Preserve unique skull, nose, eyes, lips, ears and chin across all three ages. Whole portrait painted together, no assembled layers. Entire headwear stays in frame, enough lower torso to read clothes and stated object. Soft upper-left light, opaque flat muted grey-brown background, 256x256 square composition, painterly realism matching approved pilot. No captions, borders or lettering.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e096-4a1d-7170-89aa-066ae8bffe56/exec-1f08f511-d345-44aa-9127-88361d7b1e4f.png",
+  "references": [
+    "/tmp/astra-portrait-pool3-work/reference-snapshots/I123_mature-r1-ref0.png"
+  ],
+  "method": "native_imagegen_identity_age",
+  "revision": 1,
+  "metadata_overrides": {
+    "expression": "slight_smile"
+  },
+  "packaged_source": "provenance/raw/I123_mature.png",
+  "packaged_references": [
+    "provenance/references/fbadf985cf1e-I123_mature-r1-ref0.png"
+  ]
+}

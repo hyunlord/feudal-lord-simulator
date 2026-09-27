@@ -105,7 +105,12 @@ export type GroundChunkCache = {
   entry(id: string): { readonly contentKey: string; readonly scale: number; readonly raster: ChunkCanvas } | null;
 };
 
-export function createGroundChunkCache(factory: ChunkCanvasFactory | null = browserChunkCanvas): GroundChunkCache {
+/** The cache's clock (ms): raster timing, the frame's age and fades. Tests pass a fake one (TEST-1: a wall clock under
+ * load let a 20 ms wait run past a 40 ms fade). */
+export type ChunkClock = () => number;
+const performanceClock: ChunkClock = () => typeof performance === "undefined" ? 0 : performance.now();
+
+export function createGroundChunkCache(factory: ChunkCanvasFactory | null = browserChunkCanvas, clock: ChunkClock = performanceClock): GroundChunkCache {
   const entries = new Map<string, Entry>();
   const stats: GroundChunkCacheStats = { hits: 0, prefetched: 0, contentRasters: 0, zoomRasters: 0, deferredZoom: 0, deferredContent: 0, evictions: 0,
     rasterMs: 0, entries: 0, pixels: 0, lastFrameRasters: 0, lastFrameRasterMs: 0, fades: 0, staged: 0, stagedUsed: 0 };
@@ -116,7 +121,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
   let forcedThisFrame = false;
   const deferredFrames = new Map<string, number>();
   const drawnThisFrame = new Set<string>();
-  const now = (): number => typeof performance === "undefined" ? 0 : performance.now();
+  const now = clock;
 
   const raster = (request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void, fresh = false): Entry | null => {
     if (factory === null) return null;

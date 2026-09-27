@@ -1,0 +1,110 @@
+{
+  "sourcePaths": [
+    "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_summer-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_autumn-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_winter-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/heath_summer-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/heath_autumn-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/heath_winter-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/fen_summer-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/fen_autumn-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/fen_winter-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_summer-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_autumn-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_winter-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/woodland_floor_summer-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/woodland_floor_autumn-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/terrain/woodland_floor_winter-v1.png",
+    "/tmp/astra-wave22-work-20260927/astra-wave22-reference-files/grass.png",
+    "/tmp/astra-wave22-candidates-20260927/boundary/chalk_edge_a-v1.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/buildings/historical-houses/house_l1-v2.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_birch.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+    "/tmp/astra-wave22-candidates-20260927/props/chalk_outcrop_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/chalk_outcrop_b-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/sheep_stone_wall_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/boundary/heath_edge_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/fern_bush_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/fern_bush_b-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/gorse_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/boundary/fen_edge_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/reed_clump_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/reed_clump_b-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/fen_puddle_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/boundary/coastal_edge_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/driftwood_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/driftwood_b-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/rock_pool-v1.png",
+    "/tmp/astra-wave22-work-20260927/astra-wave22-reference-files/forest_fringe_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/fallen_tree-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/props/mushrooms-v1.png",
+    "/tmp/astra-wave22-work-20260927/astra-wave22-reference-files/water.png",
+    "/tmp/astra-wave22-work-20260927/astra-wave22-reference-files/shoreline_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/shore/sand_beach_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/shore/sand_beach_b-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/shore/shingle_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/shore/shingle_b-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/shore/salt_marsh_a-v1.png",
+    "/tmp/astra-wave22-candidates-20260927/shore/salt_marsh_b-v1.png"
+  ],
+  "groundProjection": {
+    "a": 0.5,
+    "b": 0.25,
+    "c": -0.5,
+    "d": 0.25,
+    "worldTile": 128,
+    "fillUV": {
+      "x": 256,
+      "y": 128,
+      "worldSquare": 256
+    }
+  },
+  "outputScales": {
+    "zoom1": 0.5,
+    "zoom06": 0.3
+  },
+  "fixedProps": [
+    {
+      "x": 300,
+      "y": 430
+    },
+    {
+      "x": 455,
+      "y": 410
+    },
+    {
+      "x": 570,
+      "y": 555
+    }
+  ],
+  "house": {
+    "source": "historical-houses/house_l1-v2.png",
+    "sourceManifest": "historicalHouseAssetManifest.generated.ts",
+    "crop": [
+      137,
+      187,
+      1019,
+      949
+    ],
+    "manifestCanvas": 1254,
+    "screenWidthZoom1": 56.32,
+    "pivot": "alphaBounds bottom centre"
+  },
+  "treeAnchors": "/tmp/astra-wave15-work-20260926/foliage-runtime-anchors.json",
+  "notes": "Mechanical offline composition only. Fill UV assumes 2x2 logical tiles per texture for this proof; equality to actual engine UV and runtime integration is NOT verified. Source sprites are never regenerated. Missing files throw; no fallback substitutes.",
+  "visualVerdict": {
+    "status": "conditional-pass",
+    "reviewedFinalRevision": "chalk/coastal 6 native-edit revisions",
+    "tone": "pass offline scene",
+    "archetypeReadabilityZoom06": "pass with type props",
+    "seamGaps": "none observed",
+    "repetitionRisk": "continuous diagonal lanes reduced; repeated blotch rhythm remains visible on repeated fill especially heath/coastal",
+    "winterCoastal": "Broad pale grey frost/sand ground, brighter than other winter fills; no thick raised snow outline",
+    "limitations": [
+      "offline UV assumption 2x2; no engine equivalence test",
+      "small mushrooms weak at zoom 0.6",
+      "salt_marsh_b resembles ordinary shoreline more than a"
+    ]
+  }
+}

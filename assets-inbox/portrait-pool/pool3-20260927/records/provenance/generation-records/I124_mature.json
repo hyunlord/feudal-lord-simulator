@@ -1,0 +1,19 @@
+{
+  "id": "I124_mature",
+  "prompt": "IDENTITY PRESERVING AGE EDIT. The supplied young portrait is the exact person to keep. Render him at 45 years with moderate forehead lines, eye creases, mature cheeks and noticeable grey threads, small gentle smile. Keep exactly his individual skull, nose shape, eye spacing, lips, chin and identity. Keep pose, direction, body, all garments, exact same single prop, lighting, square bust composition and grey brown backdrop. Natural painted realism matching reference. Maintain medieval below-ear bob, never modern haircut. Make age readily distinct at 96px without caricature. Retain light brown dark blond remnants in greying hair, high receding temples, prominent round eyes, very small short upturned nose and small receding chin. Clerk with only one closed green ledger. No text, border or new props.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e096-4a1d-7170-89aa-066ae8bffe56/exec-a2f09004-7576-49e9-afad-b2c6e4116ffc.png",
+  "references": [
+    "/tmp/astra-portrait-pool3-work/reference-snapshots/I124_mature-r1-ref0.png"
+  ],
+  "method": "native_imagegen_identity_age",
+  "revision": 1,
+  "metadata_overrides": {
+    "features": "round high receding forehead; prominent large round widely spaced grey-green eyes; very short small upturned nose; broad thin asymmetric mouth; compact receding round chin; light brown dark blond below-ear bob",
+    "hair_color": "light brown dark blond with grey strands",
+    "expression": "slight_smile"
+  },
+  "packaged_source": "provenance/raw/I124_mature.png",
+  "packaged_references": [
+    "provenance/references/56d4e0f8edb0-I124_mature-r1-ref0.png"
+  ]
+}

@@ -1,0 +1,947 @@
+{
+  "status": "complete",
+  "reviewer": "independent visual audit",
+  "reviewed_count": 72,
+  "expected_count": 72,
+  "reviewed_at_utc": "2026-09-27T02:21:37.696Z",
+  "basis": "Actual PNG visual review at256 and exact96, original commission and visible costume; roster used only as checklist.",
+  "result": "PASS with explicitly recorded scale limitations; no remaining hard costume or identity-chain defects observed.",
+  "hard_open_issues": [],
+  "resolved_issues": [
+    {
+      "id": "I108_mature",
+      "issue": "Initial coif duplicated young, missing barbette+fillet",
+      "resolution": "Revision2 visually confirms white underchin band and horizontal fillet at256 and96."
+    },
+    {
+      "id": "I121",
+      "issue": "Near resemblance to I106 young",
+      "resolution": "All3 revision2 alter anatomy; viewed and same-person chain preserved."
+    },
+    {
+      "id": "I124",
+      "issue": "Near resemblance to I120 young",
+      "resolution": "All3 revision2 alter forehead, nose, hairline; viewed and same-person chain preserved."
+    },
+    {
+      "id": "I104",
+      "issue": "CSV uncovered bob did not describe draped hood",
+      "resolution": "Leader changed headwear metadata; visible hood retained."
+    }
+  ],
+  "limitations": [
+    "At96, young versus mature is subtle for several chains, notably I101,I106,I114,I119,I120. Old-stage greying/wrinkles distinguish aging more strongly. Same-person judgment passes; exact numerical age cannot be read from portrait alone.",
+    "At96, royal tabard quartering and3 horizontal gold charges are readable; individual lion facial orientation and tiny fleur-de-lis cannot be independently resolved at that scale. Detailed heraldic judgment uses256.",
+    "Expression taxonomy is subjective: real visible modest smiles, concern and stern assessment are present without caricature, but neutral versus sharp-suspicious is not reliably separable in every96 portrait. No claim of exact96 expression classification.",
+    "Fur species cannot be zoologically proved from painted texture. Visual rule verified: white with black ermine tail tips only I101–I103; all other pale fur is unspotted mottled grey miniver."
+  ],
+  "checks": {
+    "identity_chains": {
+      "count": 24,
+      "verdict": "same person reads across3 stages at256 and96"
+    },
+    "ermine": {
+      "allowed": "I101,I102,I103 all3 stages",
+      "observed_spotted_ermine_images": 9,
+      "disallowed_ermine_observed": 0
+    },
+    "herald": {
+      "young": "red field, exactly3 gold horizontal lions stacked",
+      "mature": "red field, exactly3 gold horizontal lions stacked",
+      "old": "only quarterly variant: blue semy upper-left/lower-right; red3 lions upper-right/lower-left",
+      "verdict_256": "pass"
+    },
+    "knights": "I107/I109 all stages everyday wool and sword belt, no armor",
+    "clerics": "I111/I112 tonsure, cross and daily robes without mitre/modern clerical collar; bishop ring visible. I113 black habit, I114 grey-brown habit.",
+    "merchants": "I115–I118 all stages blue/ochre/green wool, no purple/scarlet, nonspotted grey miniver and seal",
+    "authority": "Composed posture and focused gazes; no grotesque caricature observed.",
+    "props": {
+      "empty": 21,
+      "closed_book_or_ledger": 6,
+      "other": 45,
+      "observed": true
+    },
+    "female_headwear": {
+      "counts": {
+        "barbette_fillet": 2,
+        "white_veil": 2,
+        "veil_wimple": 2,
+        "coif": 2,
+        "hood": 2,
+        "widow_veil": 2,
+        "colored_headscarf": 2,
+        "loose_unmarried": 2,
+        "straw_hat": 2
+      },
+      "rows": [
+        {
+          "file": "I102_young.png",
+          "observed": "barbette_fillet"
+        },
+        {
+          "file": "I102_mature.png",
+          "observed": "white_veil"
+        },
+        {
+          "file": "I102_old.png",
+          "observed": "veil_wimple"
+        },
+        {
+          "file": "I108_young.png",
+          "observed": "coif"
+        },
+        {
+          "file": "I108_mature.png",
+          "observed": "barbette_fillet"
+        },
+        {
+          "file": "I108_old.png",
+          "observed": "hood"
+        },
+        {
+          "file": "I110_young.png",
+          "observed": "white_veil"
+        },
+        {
+          "file": "I110_mature.png",
+          "observed": "veil_wimple"
+        },
+        {
+          "file": "I110_old.png",
+          "observed": "widow_veil"
+        },
+        {
+          "file": "I117_young.png",
+          "observed": "colored_headscarf"
+        },
+        {
+          "file": "I117_mature.png",
+          "observed": "coif"
+        },
+        {
+          "file": "I117_old.png",
+          "observed": "hood"
+        },
+        {
+          "file": "I118_young.png",
+          "observed": "loose_unmarried"
+        },
+        {
+          "file": "I118_mature.png",
+          "observed": "loose_unmarried"
+        },
+        {
+          "file": "I118_old.png",
+          "observed": "colored_headscarf"
+        },
+        {
+          "file": "I122_young.png",
+          "observed": "straw_hat"
+        },
+        {
+          "file": "I122_mature.png",
+          "observed": "straw_hat"
+        },
+        {
+          "file": "I122_old.png",
+          "observed": "widow_veil"
+        }
+      ],
+      "verdict": "9 visually distinguishable categories each twice after I108_mature correction"
+    }
+  },
+  "rows": [
+    {
+      "file": "I101_young.png",
+      "sha256": "2763b9003b5354503caf2aabd169431e3ea7e522d34ab21d9fade8f7d0da112e",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "ermine",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Long lean profile and projecting jaw retained; ermine with black tips; hands empty. Mature increment subtle at 96."
+    },
+    {
+      "file": "I101_mature.png",
+      "sha256": "a597e9eae134128936a8c2b4dc351da4377e14b5d9d15fe226cb8ada96bf12a3",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "ermine",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Long lean profile and projecting jaw retained; ermine with black tips; hands empty. Mature increment subtle at 96."
+    },
+    {
+      "file": "I101_old.png",
+      "sha256": "df8b97a7add610a386530879c659e1436573f7a2784b67808206d719c3835d48",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "ermine",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Long lean profile and projecting jaw retained; ermine with black tips; hands empty. Mature increment subtle at 96."
+    },
+    {
+      "file": "I102_young.png",
+      "sha256": "3ab93a52018c20ad6be249370df3c4929d60deae88cbd982abe96decde2ea820",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "embroidered_glove",
+      "observed_fur": "ermine",
+      "headwear_observed": "barbette_fillet",
+      "observations": "Broad lower cheeks, small chin retained; glove low in frame; ermine; young barbette/fillet, mature white veil, old veil+wimple."
+    },
+    {
+      "file": "I102_mature.png",
+      "sha256": "a77115d49aeaaf96852bdc3a1638537644861f73d6cfb1abb91fac07e529ad17",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "embroidered_glove",
+      "observed_fur": "ermine",
+      "headwear_observed": "white_veil",
+      "observations": "Broad lower cheeks, small chin retained; glove low in frame; ermine; young barbette/fillet, mature white veil, old veil+wimple."
+    },
+    {
+      "file": "I102_old.png",
+      "sha256": "22a4bb34d7cc3702e22ea5a13df17668c5184c85f1eb6aa9e473aeb8fc29ec82",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "embroidered_glove",
+      "observed_fur": "ermine",
+      "headwear_observed": "veil_wimple",
+      "observations": "Broad lower cheeks, small chin retained; glove low in frame; ermine; young barbette/fillet, mature white veil, old veil+wimple."
+    },
+    {
+      "file": "I103_young.png",
+      "sha256": "ec71d82649776ce9b8ac17dc41890d64a0174d9806194ccf924941791c836a65",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "ermine",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Frontal long nose and longer jaw distinct; ermine; empty hands below frame."
+    },
+    {
+      "file": "I103_mature.png",
+      "sha256": "f54d159d02b3098f95e9d63d29338da6e831ef73a1e1a5e8715c902fc1bf92e4",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "ermine",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Frontal long nose and longer jaw distinct; ermine; empty hands below frame."
+    },
+    {
+      "file": "I103_old.png",
+      "sha256": "89e8c805f88e03469826ce852ad5de4e098f00b9b56ef1358bc3703e0872a7b1",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "ermine",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Frontal long nose and longer jaw distinct; ermine; empty hands below frame."
+    },
+    {
+      "file": "I104_young.png",
+      "sha256": "aafa68daee169166e407883e2d27d06faaeb5b8cacaef819bc02ae890891bcd5",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "seal_purse",
+      "observed_fur": "miniver",
+      "headwear_observed": "hood",
+      "observations": "Broad flushed face and rounded nose retained, friendly authority; nonspotted grey miniver, seal purse and draped green hood. Metadata hood discrepancy resolved by leader."
+    },
+    {
+      "file": "I104_mature.png",
+      "sha256": "f285964825e2c66d8ea4b3ed9a1c0e5dde35262e1b849648ca066976ae99fcfa",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "seal_purse",
+      "observed_fur": "miniver",
+      "headwear_observed": "hood",
+      "observations": "Broad flushed face and rounded nose retained, friendly authority; nonspotted grey miniver, seal purse and draped green hood. Metadata hood discrepancy resolved by leader."
+    },
+    {
+      "file": "I104_old.png",
+      "sha256": "2e2c78eb637db5a792bc427157bea82d3a941992d7312718b65ce9f409b04ba3",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "seal_purse",
+      "observed_fur": "miniver",
+      "headwear_observed": "hood",
+      "observations": "Broad flushed face and rounded nose retained, friendly authority; nonspotted grey miniver, seal purse and draped green hood. Metadata hood discrepancy resolved by leader."
+    },
+    {
+      "file": "I105_young.png",
+      "sha256": "8c2b6836924c78af9b73ce9ddba58880c6aac85d22401b5bb89f163aaf6bf0d2",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "key_ring",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Narrow anxious profile, long nose; grey miniver; key ring visible."
+    },
+    {
+      "file": "I105_mature.png",
+      "sha256": "9ab1a5da459bcc2a6727e8e3bed83a70ae1958dbecd2b80d8d4d54a6ca332023",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "key_ring",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Narrow anxious profile, long nose; grey miniver; key ring visible."
+    },
+    {
+      "file": "I105_old.png",
+      "sha256": "75fe54e3d3f7a4a762c70f3a0fe0f1ad97d87c252efd34c3d8e00eb8e35673b4",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "key_ring",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Narrow anxious profile, long nose; grey miniver; key ring visible."
+    },
+    {
+      "file": "I106_young.png",
+      "sha256": "58c3da87e6257e02e3e29c3e0527d917064df5dd5332ece1270feca01cf5b74c",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "herald_baton",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Narrow frontal face and reddish bob retained. Young/mature red tabard each exactly three gold lions. Old quarterly: blue semy top-left/bottom-right, red three lions top-right/bottom-left. Baton visible. Heraldic detail necessarily small at96."
+    },
+    {
+      "file": "I106_mature.png",
+      "sha256": "f67d4b515e2010ae6a3a59b3d3eeb6c29b3fcc8ebf0dfde9f03e10872da6d7f7",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "herald_baton",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Narrow frontal face and reddish bob retained. Young/mature red tabard each exactly three gold lions. Old quarterly: blue semy top-left/bottom-right, red three lions top-right/bottom-left. Baton visible. Heraldic detail necessarily small at96."
+    },
+    {
+      "file": "I106_old.png",
+      "sha256": "e9733e0a0327e6392a1ef5a478bb32df7404c93a4818699f6d5e4b5a60ed7898",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "herald_baton",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Narrow frontal face and reddish bob retained. Young/mature red tabard each exactly three gold lions. Old quarterly: blue semy top-left/bottom-right, red three lions top-right/bottom-left. Baton visible. Heraldic detail necessarily small at96."
+    },
+    {
+      "file": "I107_young.png",
+      "sha256": "b7ba1addcc4bbb61ca9c28255d8c435b5bbec1721f721825a596874427878a1f",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "fox",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Broad stern jaw, right turn; ordinary wool + tawny fox mantle, sword hilt/belt, no armor."
+    },
+    {
+      "file": "I107_mature.png",
+      "sha256": "c5d8c5a845a829961052968f9125597d5604a8e31cff3544a23308c12efd81c2",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "fox",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Broad stern jaw, right turn; ordinary wool + tawny fox mantle, sword hilt/belt, no armor."
+    },
+    {
+      "file": "I107_old.png",
+      "sha256": "78bff75ee86c8a4ecbeb79cf03896a62f0b114c1db4740039f2583572f0865d8",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "fox",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Broad stern jaw, right turn; ordinary wool + tawny fox mantle, sword hilt/belt, no armor."
+    },
+    {
+      "file": "I108_young.png",
+      "sha256": "4c8d59e6be272b957d7392bb4d29a0301ba7bc9070a3332842f7391d2b728a70",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "small_flower",
+      "observed_fur": "miniver",
+      "headwear_observed": "coif",
+      "observations": "Frontal narrow oval face retained. Blue wool/miniver and small flowers. Young coif, mature revision2 clear horizontal fillet plus underchin barbette, old blue hood."
+    },
+    {
+      "file": "I108_mature.png",
+      "sha256": "120e36e62e5d5364bcf4400bb4e767996609c9718b212febb26bb58be821ba2d",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "small_flower",
+      "observed_fur": "miniver",
+      "headwear_observed": "barbette_fillet",
+      "observations": "Frontal narrow oval face retained. Blue wool/miniver and small flowers. Young coif, mature revision2 clear horizontal fillet plus underchin barbette, old blue hood."
+    },
+    {
+      "file": "I108_old.png",
+      "sha256": "63c7284af2bb09fde73b763c7f4b9fbb1f7d6709e37a2e1ceb510a5d6bc76628",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "small_flower",
+      "observed_fur": "miniver",
+      "headwear_observed": "hood",
+      "observations": "Frontal narrow oval face retained. Blue wool/miniver and small flowers. Young coif, mature revision2 clear horizontal fillet plus underchin barbette, old blue hood."
+    },
+    {
+      "file": "I109_young.png",
+      "sha256": "7e0fed2630c329865c5fa599d199a0e06865b8c8ec7138998026cb99c2f29fd2",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "gloves",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Lean left-facing smile and prominent curved nose retained; green/ochre everyday wool, grey miniver, gloves and swordbelt. Old revision2 convincingly elderly with white hair, deep facial and hand lines; no armor."
+    },
+    {
+      "file": "I109_mature.png",
+      "sha256": "be0ec71d563f10bcab3115c051b14d6d476f28441af41539d5544fc0e4a5cae7",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "gloves",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Lean left-facing smile and prominent curved nose retained; green/ochre everyday wool, grey miniver, gloves and swordbelt. Old revision2 convincingly elderly with white hair, deep facial and hand lines; no armor."
+    },
+    {
+      "file": "I109_old.png",
+      "sha256": "5ed50204e23789ca246b91ad0849a391796b797a1f4393fe75102acb59bed620",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "gloves",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Lean left-facing smile and prominent curved nose retained; green/ochre everyday wool, grey miniver, gloves and swordbelt. Old revision2 convincingly elderly with white hair, deep facial and hand lines; no armor."
+    },
+    {
+      "file": "I110_young.png",
+      "sha256": "3a5ba34b4c4f478992b529eb22903b63ed4e89a3aa8f951b4c139298f408e1f7",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "fox",
+      "headwear_observed": "white_veil",
+      "observations": "Full face turned left, fur-trimmed red/green wool; fox not ermine; young white veil."
+    },
+    {
+      "file": "I110_mature.png",
+      "sha256": "60ae4a92da96d25b0357e7f0ea641a55917c14cf6aea38e2f20cea626278e704",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "fox",
+      "headwear_observed": "veil_wimple",
+      "observations": "Full face turned left, fur-trimmed red/green wool; fox not ermine; young white veil."
+    },
+    {
+      "file": "I110_old.png",
+      "sha256": "5a3c7599b3cd9c3130994c4fc0bbfcecb140ceac8ba930ab2b2b0492aa42ad76",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "fox",
+      "headwear_observed": "widow_veil",
+      "observations": "Full face turned left, fur-trimmed red/green wool; fox not ermine; young white veil."
+    },
+    {
+      "file": "I111_young.png",
+      "sha256": "3aa0d30353bcb0b8441fa1d3c0887e437a5f2f2543e6f9b9032b42a6a931e77f",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Long right-facing nose, tonsure; dark red ordinary robe, gold cross and visible ring, no mitre or modern collar."
+    },
+    {
+      "file": "I111_mature.png",
+      "sha256": "320a048db1237cd4dbe0dd9739b88177e0cb69cc789ee76929122f212c47f2a2",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Long right-facing nose, tonsure; dark red ordinary robe, gold cross and visible ring, no mitre or modern collar."
+    },
+    {
+      "file": "I111_old.png",
+      "sha256": "f9df5bea5c37ba8d713dd6158b0dcfee03795ad4c92acf992aa9331deccf4ff1",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Long right-facing nose, tonsure; dark red ordinary robe, gold cross and visible ring, no mitre or modern collar."
+    },
+    {
+      "file": "I112_young.png",
+      "sha256": "1fb71824ee92560af8bd947a54064691c3fac342f45e0a252cea42862037a518",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "closed_book",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Narrow frontal face, tonsure; dark grey-blue robe, cross, closed book; no mitre or modern collar."
+    },
+    {
+      "file": "I112_mature.png",
+      "sha256": "c53a8d65d7b612877d9cac13afe858449212d119b3e476d808eb7a1e2575f435",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "closed_book",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Narrow frontal face, tonsure; dark grey-blue robe, cross, closed book; no mitre or modern collar."
+    },
+    {
+      "file": "I112_old.png",
+      "sha256": "4fd89862685ff51b18aa966d2ebae0243a5caabe30f9133d486459bf8ccc71d3",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "closed_book",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Narrow frontal face, tonsure; dark grey-blue robe, cross, closed book; no mitre or modern collar."
+    },
+    {
+      "file": "I113_young.png",
+      "sha256": "3691c245d3e8afbe581344bba5c4b8e4e3e5fad99c94b9bc59aba95eb1b58c52",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "prayer_beads",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Broad frontal cheeks maintained; black Benedictine habit, tonsure, beads; gentle expression."
+    },
+    {
+      "file": "I113_mature.png",
+      "sha256": "c75009596e8295f597c4bee902a65444bb85c23a9dd5fef9fea07534a3d7d126",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "prayer_beads",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Broad frontal cheeks maintained; black Benedictine habit, tonsure, beads; gentle expression."
+    },
+    {
+      "file": "I113_old.png",
+      "sha256": "9719fa149b6485a079d8f1227bd18c3d82ebb303b6389aa8fe18e52f2a0d3711",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "prayer_beads",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Broad frontal cheeks maintained; black Benedictine habit, tonsure, beads; gentle expression."
+    },
+    {
+      "file": "I114_young.png",
+      "sha256": "689a57c2e057c3f1cfa99b774a08792ee8f81d50f03f0d00cb3cdd20603df6dd",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Very lean long-nosed left profile maintained; grey-brown coarse Franciscan habit, rope belt, tonsure, empty hands."
+    },
+    {
+      "file": "I114_mature.png",
+      "sha256": "75e3abeb3efc7318a8df5eebb4170c1d0ec7b16314b87b38e72374a2a86aa25e",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Very lean long-nosed left profile maintained; grey-brown coarse Franciscan habit, rope belt, tonsure, empty hands."
+    },
+    {
+      "file": "I114_old.png",
+      "sha256": "5d7bd0d5a6a650119cbc4ec002ee4774fc893ef696e930fe14f6e79ecf83a2b3",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "none",
+      "headwear_observed": "tonsure",
+      "observations": "Very lean long-nosed left profile maintained; grey-brown coarse Franciscan habit, rope belt, tonsure, empty hands."
+    },
+    {
+      "file": "I115_young.png",
+      "sha256": "a0014d7c2a7dc7eadd4a720dfbd86fc1a453b927ca801fcf166ad1a1b99486eb",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "coin_scale",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Broad square nose/jaw, black bob, right turn maintained; blue fine wool, grey miniver, seal and balance; no purple/scarlet."
+    },
+    {
+      "file": "I115_mature.png",
+      "sha256": "13d6e643c49180d1318fe04d85c985d48055bdc04993754c062c1920e3dba99f",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "coin_scale",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Broad square nose/jaw, black bob, right turn maintained; blue fine wool, grey miniver, seal and balance; no purple/scarlet."
+    },
+    {
+      "file": "I115_old.png",
+      "sha256": "956463770473aa019538eb29e350b61f21239a756118a248a896c2393867e19b",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "coin_scale",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Broad square nose/jaw, black bob, right turn maintained; blue fine wool, grey miniver, seal and balance; no purple/scarlet."
+    },
+    {
+      "file": "I116_young.png",
+      "sha256": "28b35d11a3e58032a559e2aa27856da60f6510a06d81645a60f36f0b1b22413d",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "folded_cloth",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Round heavy face and red bob; ochre/green fine wool, grey miniver, seal and folded blue cloth; no purple/scarlet."
+    },
+    {
+      "file": "I116_mature.png",
+      "sha256": "97a10bc7f7fd42e44e754055049e17a138bb2ad35022efc56570720fd07fe0ad",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "folded_cloth",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Round heavy face and red bob; ochre/green fine wool, grey miniver, seal and folded blue cloth; no purple/scarlet."
+    },
+    {
+      "file": "I116_old.png",
+      "sha256": "a007ee7dec4b47058a79172bc004712eb70164583108e543c832b2281bf58828",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "folded_cloth",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Round heavy face and red bob; ochre/green fine wool, grey miniver, seal and folded blue cloth; no purple/scarlet."
+    },
+    {
+      "file": "I117_young.png",
+      "sha256": "c1e9704e73e271ae6bc204294b0195154b28249b1126b1448de1d4e8dac66668",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "small_casket",
+      "observed_fur": "miniver",
+      "headwear_observed": "colored_headscarf",
+      "observations": "Narrow face left, blue fine wool, grey miniver, seal, decorated small casket; young colored blue headscarf."
+    },
+    {
+      "file": "I117_mature.png",
+      "sha256": "c954f83dea920bbebc818ce9c4aa3dc8a00ad37edcfe4e265da7ff1ded6431f4",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "small_casket",
+      "observed_fur": "miniver",
+      "headwear_observed": "coif",
+      "observations": "Narrow face left, blue fine wool, grey miniver, seal, decorated small casket; young colored blue headscarf."
+    },
+    {
+      "file": "I117_old.png",
+      "sha256": "d689ac30a97995d97428062f61e9c3b53ef2f50f5714322644f0488d7c700036",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "small_casket",
+      "observed_fur": "miniver",
+      "headwear_observed": "hood",
+      "observations": "Narrow face left, blue fine wool, grey miniver, seal, decorated small casket; young colored blue headscarf."
+    },
+    {
+      "file": "I118_young.png",
+      "sha256": "3efbac76a73e14aa97af834ae54543b5b8f9059e4a4178a188e59a9966e45360",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "miniver",
+      "headwear_observed": "loose_unmarried",
+      "observations": "Broad frontal cheekbones, long loose brown-blond hair; ochre/green fine wool, grey miniver and seal, no hand prop."
+    },
+    {
+      "file": "I118_mature.png",
+      "sha256": "c4f71ab59fffc8cf80da78d7c42a1ab40a15e8ad229fa9de08c8a4088b261c19",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "miniver",
+      "headwear_observed": "loose_unmarried",
+      "observations": "Broad frontal cheekbones, long loose brown-blond hair; ochre/green fine wool, grey miniver and seal, no hand prop."
+    },
+    {
+      "file": "I118_old.png",
+      "sha256": "01b79ac14150ecb8b49dc6e2b7c2aa87c2f94f90623b1021aed4cd5daccffb79",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "none",
+      "observed_fur": "miniver",
+      "headwear_observed": "colored_headscarf",
+      "observations": "Broad frontal cheekbones, long loose brown-blond hair; ochre/green fine wool, grey miniver and seal, no hand prop."
+    },
+    {
+      "file": "I119_young.png",
+      "sha256": "2ffd1ca1bc909c66c522e0eca41181afab24161aeba845e27007217a1175745f",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "civic_mace",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Heavy low-jawed left profile preserved; blue wool, grey miniver, gold civic chain and mace."
+    },
+    {
+      "file": "I119_mature.png",
+      "sha256": "6aa0ba8d980b0f6126e2001a89f8d571a4868fce99c1b675109aac4449cfb9bd",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "civic_mace",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Heavy low-jawed left profile preserved; blue wool, grey miniver, gold civic chain and mace."
+    },
+    {
+      "file": "I119_old.png",
+      "sha256": "02305031b62090a06ea6671b57cf5b7bda0b2a00bafa0173921101c51ce67923",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "civic_mace",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Heavy low-jawed left profile preserved; blue wool, grey miniver, gold civic chain and mace."
+    },
+    {
+      "file": "I120_young.png",
+      "sha256": "6eb3586837b6f9f358b7a6536c913720d7f7594654ce8c9a7b40e20394ec94ac",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "measuring_rule",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Square jaw with right turn maintained; ordinary brown wool and blue work apron, rule visible."
+    },
+    {
+      "file": "I120_mature.png",
+      "sha256": "7a24286254e08b74c6bab95af10c48a6be83ea81f1e8ebced1a9c1013b4f98e2",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "measuring_rule",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Square jaw with right turn maintained; ordinary brown wool and blue work apron, rule visible."
+    },
+    {
+      "file": "I120_old.png",
+      "sha256": "9091cd7faa3f6b04aa97e6b6b28a61a48f25f1e2a10108db7b6a4d98b03e057a",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "measuring_rule",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Square jaw with right turn maintained; ordinary brown wool and blue work apron, rule visible."
+    },
+    {
+      "file": "I121_young.png",
+      "sha256": "f691f1785bc3c3897a232e2c84d459aea9eef994956d0d8255ecb78dbe9446be",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "seed_pouch",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Revision2 all stages: flatter broad angular nose and long square chin, dark bob, frontal lean face clearly differs from I106. Rough ochre cape and seed pouch retained. Same identity through old wrinkles and grey hair."
+    },
+    {
+      "file": "I121_mature.png",
+      "sha256": "fba2a246d780c4e25dd7757f679c97c0768f3b18c0fdd333336bcefe2cf12d2a",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "seed_pouch",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Revision2 all stages: flatter broad angular nose and long square chin, dark bob, frontal lean face clearly differs from I106. Rough ochre cape and seed pouch retained. Same identity through old wrinkles and grey hair."
+    },
+    {
+      "file": "I121_old.png",
+      "sha256": "540bc3a8a3ed4b163e9bf6cd8e77e4639a5ad4d84e9f21492480e280636511a4",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "seed_pouch",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Revision2 all stages: flatter broad angular nose and long square chin, dark bob, frontal lean face clearly differs from I106. Rough ochre cape and seed pouch retained. Same identity through old wrinkles and grey hair."
+    },
+    {
+      "file": "I122_young.png",
+      "sha256": "dd1d86d9e19c9cd3deb8bee9347fc28b20b51ea8f58608eb946f50156f847e23",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "wooden_cup",
+      "observed_fur": "none",
+      "headwear_observed": "straw_hat",
+      "observations": "Broad frontal face, straw hat and linen coif, rust dress/work apron, wooden cup."
+    },
+    {
+      "file": "I122_mature.png",
+      "sha256": "be2602fddd61ac1fe776cf894ac244ef63cf19630ca91ea0aaa03ed2a9cfd16b",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "wooden_cup",
+      "observed_fur": "none",
+      "headwear_observed": "straw_hat",
+      "observations": "Broad frontal face, straw hat and linen coif, rust dress/work apron, wooden cup."
+    },
+    {
+      "file": "I122_old.png",
+      "sha256": "40c11a51451ff6937605b5cd875a51e33946bae0f1934bf99c53b7fbdf09c75e",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "wooden_cup",
+      "observed_fur": "none",
+      "headwear_observed": "widow_veil",
+      "observations": "Broad frontal face, straw hat and linen coif, rust dress/work apron, wooden cup."
+    },
+    {
+      "file": "I123_young.png",
+      "sha256": "fbadf985cf1ed4606ba411b9924dd73d775c3536e4732d377b3c9daa024e9cba",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "household_staff",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Lean left face, ash-blond bob, slight smile, green livery; grey miniver without black tips, staff."
+    },
+    {
+      "file": "I123_mature.png",
+      "sha256": "0dace1db58a855b985dc98a9b7aad29f2609df310b29d65114d4b1b63df4b294",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "household_staff",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Lean left face, ash-blond bob, slight smile, green livery; grey miniver without black tips, staff."
+    },
+    {
+      "file": "I123_old.png",
+      "sha256": "fda59420510140708b72d8a817ffab2576bdd4f357d3415265f5f327053acb62",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "household_staff",
+      "observed_fur": "miniver",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Lean left face, ash-blond bob, slight smile, green livery; grey miniver without black tips, staff."
+    },
+    {
+      "file": "I124_young.png",
+      "sha256": "56d4e0f8edb010c85ff5b02c7aa8609cbff59df72efbadb8de94ae9ead268702",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "closed_ledger",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Revision2 all stages: high rounded forehead, receding light-brown bob, short small nose, thin right-facing face distinguishes from I120. Blue/tawny clothes and closed ledger, stable anatomy through aging."
+    },
+    {
+      "file": "I124_mature.png",
+      "sha256": "b4dde41c79f69ef707f52bbc427809934b795aa66e5014f093045628971dbe24",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "closed_ledger",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Revision2 all stages: high rounded forehead, receding light-brown bob, short small nose, thin right-facing face distinguishes from I120. Blue/tawny clothes and closed ledger, stable anatomy through aging."
+    },
+    {
+      "file": "I124_old.png",
+      "sha256": "1e6d511e8037edcc798046b144700c354be8dea3e9ef4e9e0a68cad72bcad7ac",
+      "reviewed_256": true,
+      "reviewed_96": true,
+      "visual_verdict": "pass_with_global_scale_limitations",
+      "observed_prop": "closed_ledger",
+      "observed_fur": "none",
+      "headwear_observed": "uncovered_bob",
+      "observations": "Revision2 all stages: high rounded forehead, receding light-brown bob, short small nose, thin right-facing face distinguishes from I120. Blue/tawny clothes and closed ledger, stable anatomy through aging."
+    }
+  ]
+}

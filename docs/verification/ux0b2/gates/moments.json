@@ -1,0 +1,140 @@
+{
+ "market": {
+  "tick": 679252,
+  "near": {
+   "tile": {
+    "tx": 49,
+    "ty": 45
+   },
+   "distance": {
+    "steps": 4,
+    "reach": 40
+   }
+  },
+  "far": {
+   "tile": {
+    "tx": 34,
+    "ty": 45
+   },
+   "distance": {
+    "steps": 41,
+    "reach": 40
+   }
+  },
+  "marketSpot": {
+   "tx": 35,
+   "ty": 46
+  },
+  "marketSpots": [
+   {
+    "tx": 35,
+    "ty": 46,
+    "homes": 0,
+    "roadTiles": 94
+   },
+   {
+    "tx": 36,
+    "ty": 46,
+    "homes": 0,
+    "roadTiles": 90
+   },
+   {
+    "tx": 37,
+    "ty": 46,
+    "homes": 0,
+    "roadTiles": 86
+   },
+   {
+    "tx": 39,
+    "ty": 47,
+    "homes": 0,
+    "roadTiles": 77
+   },
+   {
+    "tx": 40,
+    "ty": 47,
+    "homes": 0,
+    "roadTiles": 75
+   },
+   {
+    "tx": 41,
+    "ty": 47,
+    "homes": 0,
+    "roadTiles": 73
+   },
+   {
+    "tx": 42,
+    "ty": 47,
+    "homes": 0,
+    "roadTiles": 71
+   },
+   {
+    "tx": 44,
+    "ty": 48,
+    "homes": 0,
+    "roadTiles": 66
+   },
+   {
+    "tx": 47,
+    "ty": 52,
+    "homes": 0,
+    "roadTiles": 50
+   },
+   {
+    "tx": 48,
+    "ty": 52,
+    "homes": 0,
+    "roadTiles": 48
+   },
+   {
+    "tx": 62,
+    "ty": 46,
+    "homes": 0,
+    "roadTiles": 4
+   },
+   {
+    "tx": 62,
+    "ty": 47,
+    "homes": 0,
+    "roadTiles": 4
+   },
+   {
+    "tx": 62,
+    "ty": 48,
+    "homes": 0,
+    "roadTiles": 4
+   }
+  ],
+  "market": {
+   "id": "construction-site-000051",
+   "tx": 42,
+   "ty": 30
+  }
+ },
+ "wall": {
+  "tick": 792000,
+  "era": "stone_town",
+  "runs": 26,
+  "drag": {
+   "run": 22,
+   "steps": 4,
+   "normal": {
+    "x": 0,
+    "y": 1
+   },
+   "middle": {
+    "x": 9,
+    "y": 15
+   },
+   "target": {
+    "x": 9,
+    "y": 19
+   },
+   "newSteps": 20,
+   "timber": 300,
+   "fields": 22,
+   "before": 156,
+   "after": 188
+  }
+ }
+}

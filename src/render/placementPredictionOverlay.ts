@@ -4,6 +4,7 @@ import { buildingFootprint } from '../geometry/buildingFootprint';
 import { PALETTE, SEMANTIC_PALETTE } from '../content/palette';
 import { applyPaletteStroke, withAlpha, type PaletteStrokeContext } from './style';
 import { TILE_H, TILE_W, tileToScreen } from './iso';
+import type { TileCoordinate } from '../world/grid';
 
 type PredictionDrawingContext = PaletteStrokeContext & Pick<CanvasRenderingContext2D,
   'save' | 'restore' | 'beginPath' | 'closePath' | 'ellipse' | 'moveTo' | 'lineTo' |
@@ -24,7 +25,52 @@ export function drawPlacementPrediction(context: PredictionDrawingContext, state
     context.stroke();
     context.setLineDash([]);
   }
-  const highlighted = new Set(prediction.houseIds);
+  if (prediction.reachTiles !== undefined) drawReachTiles(context, prediction.reachTiles, zoom);
+  drawHomeOutlines(context, state, prediction.houseIds, zoom);
+  for (const segment of prediction.roadSegments) {
+    const center = tileToScreen(segment.tile.tx, segment.tile.ty);
+    applyPaletteStroke(context, segment.kind === 'bridge' ? PALETTE.ultramarine : PALETTE.ink, zoom);
+    context.beginPath();
+    if (segment.kind === 'bridge') {
+      for (const offset of [-6, 0, 6]) {
+        context.moveTo(center.sx - 12, center.sy + offset - 4);
+        context.lineTo(center.sx + 12, center.sy + offset + 4);
+      }
+    } else {
+      context.moveTo(center.sx - 3, center.sy);
+      context.lineTo(center.sx + 3, center.sy);
+    }
+    context.stroke();
+  }
+  context.restore();
+}
+
+/** UX-0b2 MARKET-1: a selected market's reach — the road tiles within its road steps and the homes it reaches. */
+export function drawMarketReach(context: PredictionDrawingContext, state: GameState, reach: { readonly roadTiles: readonly TileCoordinate[]; readonly homeIds: readonly string[] },
+  zoom: number): void {
+  context.save();
+  drawReachTiles(context, reach.roadTiles, zoom);
+  drawHomeOutlines(context, state, reach.homeIds, zoom);
+  context.restore();
+}
+
+/** The road tiles a market reaches, each tile's diamond tinted (MARKET-1: road steps, not a radius). */
+function drawReachTiles(context: PredictionDrawingContext, tiles: readonly TileCoordinate[], zoom: number): void {
+  context.beginPath();
+  for (const tile of tiles) {
+    const corners = [[tile.tx - .5, tile.ty - .5], [tile.tx + .5, tile.ty - .5], [tile.tx + .5, tile.ty + .5], [tile.tx - .5, tile.ty + .5]] as const;
+    corners.forEach(([tx, ty], index) => { const point = tileToScreen(tx, ty); if (index === 0) context.moveTo(point.sx, point.sy); else context.lineTo(point.sx, point.sy); });
+    context.closePath();
+  }
+  context.fillStyle = withAlpha(SEMANTIC_PALETTE.sage, 0.34);
+  context.fill();
+  applyPaletteStroke(context, PALETTE.gold, zoom);
+  context.lineWidth = 1.5 / zoom;
+  context.stroke();
+}
+
+function drawHomeOutlines(context: PredictionDrawingContext, state: GameState, homeIds: readonly string[], zoom: number): void {
+  const highlighted = new Set(homeIds);
   for (const building of state.buildings) {
     if (!highlighted.has(building.id)) continue;
     const size = buildingFootprint(building);
@@ -42,20 +88,4 @@ export function drawPlacementPrediction(context: PredictionDrawingContext, state
     context.lineWidth = 3 / zoom;
     context.stroke();
   }
-  for (const segment of prediction.roadSegments) {
-    const center = tileToScreen(segment.tile.tx, segment.tile.ty);
-    applyPaletteStroke(context, segment.kind === 'bridge' ? PALETTE.ultramarine : PALETTE.ink, zoom);
-    context.beginPath();
-    if (segment.kind === 'bridge') {
-      for (const offset of [-6, 0, 6]) {
-        context.moveTo(center.sx - 12, center.sy + offset - 4);
-        context.lineTo(center.sx + 12, center.sy + offset + 4);
-      }
-    } else {
-      context.moveTo(center.sx - 3, center.sy);
-      context.lineTo(center.sx + 3, center.sy);
-    }
-    context.stroke();
-  }
-  context.restore();
 }

@@ -1,0 +1,19 @@
+{
+  "id": "I121_old",
+  "prompt": "IDENTITY PRESERVING AGE EDIT. The supplied young portrait is the exact person to keep. Render him at 70 years with clear deep wrinkles, age spots, sagging eyelids and cheeks, thinning predominantly white grey hair, calm attentive closed mouth. Keep exactly his individual skull, nose shape, eye spacing, lips, chin and identity. Keep pose, direction, body, all garments, exact same single prop, lighting, square bust composition and grey brown backdrop. Natural painted realism matching reference. Maintain medieval below-ear bob, never modern haircut. Make age readily distinct at 96px without caricature. Retain dark brown remnants in greying hair, crooked broad flat nose and long forward square chin. Farmer with only seed pouch, no book. No text, border or new props.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e096-4a1d-7170-89aa-066ae8bffe56/exec-2593764a-fbba-40be-88e4-e65cd6b2d6f1.png",
+  "references": [
+    "/tmp/astra-portrait-pool3-work/reference-snapshots/I121_old-r2-ref0.png"
+  ],
+  "method": "native_imagegen_identity_age",
+  "revision": 2,
+  "metadata_overrides": {
+    "features": "long lean face; deep-set wide-spaced pale eyes; broad asymmetric crooked nasal bridge and flat broad tip; thin upper lip; long forward squared chin; dark brown below-ear bob",
+    "hair_color": "grey with remnants of dark brown",
+    "expression": "neutral"
+  },
+  "packaged_source": "provenance/raw/I121_old.png",
+  "packaged_references": [
+    "provenance/references/f691f1785bc3-I121_old-r2-ref0.png"
+  ]
+}

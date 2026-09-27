@@ -1,0 +1,335 @@
+{
+  "status": "PASS_WITH_LIMITATIONS",
+  "scope": "I107-I112 18 portraits",
+  "method": "Individually viewed every final256PNG and deterministic96chain board",
+  "limitations": [
+    "Nominal exact ages are not visually provable.",
+    "Young to mature difference is subtle at96 particularly I107 and I111; old stages remain distinct."
+  ],
+  "portraits": [
+    {
+      "id": "I107_young",
+      "sha256": "b7ba1addcc4bbb61ca9c28255d8c435b5bbec1721f721825a596874427878a1f",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "right",
+      "prop_actual": "none",
+      "fur_actual": "fox",
+      "headwear_actual": "uncovered_bob",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Heavy rectangular knight; fox collar and sheathed sword belt visible; no armor. Mature changes subtle at96, old clear."
+    },
+    {
+      "id": "I107_mature",
+      "sha256": "c5d8c5a845a829961052968f9125597d5604a8e31cff3544a23308c12efd81c2",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "right",
+      "prop_actual": "none",
+      "fur_actual": "fox",
+      "headwear_actual": "uncovered_bob",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Heavy rectangular knight; fox collar and sheathed sword belt visible; no armor. Mature changes subtle at96, old clear."
+    },
+    {
+      "id": "I107_old",
+      "sha256": "78bff75ee86c8a4ecbeb79cf03896a62f0b114c1db4740039f2583572f0865d8",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "right",
+      "prop_actual": "none",
+      "fur_actual": "fox",
+      "headwear_actual": "uncovered_bob",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Heavy rectangular knight; fox collar and sheathed sword belt visible; no armor. Mature changes subtle at96, old clear."
+    },
+    {
+      "id": "I108_young",
+      "sha256": "4c8d59e6be272b957d7392bb4d29a0301ba7bc9070a3332842f7391d2b728a70",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "front",
+      "prop_actual": "small_flower",
+      "fur_actual": "miniver",
+      "headwear_actual": "coif",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Frontal diamond face retained; coif -> distinct barbette and fillet corrected r2 -> blue hood. Rosemary stays identifiable."
+    },
+    {
+      "id": "I108_mature",
+      "sha256": "120e36e62e5d5364bcf4400bb4e767996609c9718b212febb26bb58be821ba2d",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "front",
+      "prop_actual": "small_flower",
+      "fur_actual": "miniver",
+      "headwear_actual": "barbette_fillet",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Frontal diamond face retained; coif -> distinct barbette and fillet corrected r2 -> blue hood. Rosemary stays identifiable."
+    },
+    {
+      "id": "I108_old",
+      "sha256": "63c7284af2bb09fde73b763c7f4b9fbb1f7d6709e37a2e1ceb510a5d6bc76628",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "front",
+      "prop_actual": "small_flower",
+      "fur_actual": "miniver",
+      "headwear_actual": "hood",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Frontal diamond face retained; coif -> distinct barbette and fillet corrected r2 -> blue hood. Rosemary stays identifiable."
+    },
+    {
+      "id": "I109_young",
+      "sha256": "7e0fed2630c329865c5fa599d199a0e06865b8c8ec7138998026cb99c2f29fd2",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "left",
+      "prop_actual": "gloves",
+      "fur_actual": "miniver",
+      "headwear_actual": "uncovered_bob",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Long narrow knight face retained. Old r2 strengthened senescence and white thinning hair; gloves and sword belt preserved. Miniver grey-white without black tails."
+    },
+    {
+      "id": "I109_mature",
+      "sha256": "be0ec71d563f10bcab3115c051b14d6d476f28441af41539d5544fc0e4a5cae7",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "left",
+      "prop_actual": "gloves",
+      "fur_actual": "miniver",
+      "headwear_actual": "uncovered_bob",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Long narrow knight face retained. Old r2 strengthened senescence and white thinning hair; gloves and sword belt preserved. Miniver grey-white without black tails."
+    },
+    {
+      "id": "I109_old",
+      "sha256": "5ed50204e23789ca246b91ad0849a391796b797a1f4393fe75102acb59bed620",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "left",
+      "prop_actual": "gloves",
+      "fur_actual": "miniver",
+      "headwear_actual": "uncovered_bob",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Long narrow knight face retained. Old r2 strengthened senescence and white thinning hair; gloves and sword belt preserved. Miniver grey-white without black tails."
+    },
+    {
+      "id": "I110_young",
+      "sha256": "3a5ba34b4c4f478992b529eb22903b63ed4e89a3aa8f951b4c139298f408e1f7",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "left",
+      "prop_actual": "none",
+      "fur_actual": "fox",
+      "headwear_actual": "white_veil",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Round broad lady face, heavy body preserved. Warm fox fur r2, white veil -> wimple -> dark widow veil. No objects."
+    },
+    {
+      "id": "I110_mature",
+      "sha256": "60ae4a92da96d25b0357e7f0ea641a55917c14cf6aea38e2f20cea626278e704",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "left",
+      "prop_actual": "none",
+      "fur_actual": "fox",
+      "headwear_actual": "veil_wimple",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Round broad lady face, heavy body preserved. Warm fox fur r2, white veil -> wimple -> dark widow veil. No objects."
+    },
+    {
+      "id": "I110_old",
+      "sha256": "5a3c7599b3cd9c3130994c4fc0bbfcecb140ceac8ba930ab2b2b0492aa42ad76",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "left",
+      "prop_actual": "none",
+      "fur_actual": "fox",
+      "headwear_actual": "widow_veil",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Round broad lady face, heavy body preserved. Warm fox fur r2, white veil -> wimple -> dark widow veil. No objects."
+    },
+    {
+      "id": "I111_young",
+      "sha256": "3aa0d30353bcb0b8441fa1d3c0887e437a5f2f2543e6f9b9032b42a6a931e77f",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "right",
+      "prop_actual": "none",
+      "fur_actual": "none",
+      "headwear_actual": "tonsure",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Plain claret daily bishop robe r2, tonsure and ring/cross preserved. No fur, mitre, embroidered stole or modern collar. Young/mature subtle at96."
+    },
+    {
+      "id": "I111_mature",
+      "sha256": "320a048db1237cd4dbe0dd9739b88177e0cb69cc789ee76929122f212c47f2a2",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "right",
+      "prop_actual": "none",
+      "fur_actual": "none",
+      "headwear_actual": "tonsure",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Plain claret daily bishop robe r2, tonsure and ring/cross preserved. No fur, mitre, embroidered stole or modern collar. Young/mature subtle at96."
+    },
+    {
+      "id": "I111_old",
+      "sha256": "f9df5bea5c37ba8d713dd6158b0dcfee03795ad4c92acf992aa9331deccf4ff1",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "right",
+      "prop_actual": "none",
+      "fur_actual": "none",
+      "headwear_actual": "tonsure",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Plain claret daily bishop robe r2, tonsure and ring/cross preserved. No fur, mitre, embroidered stole or modern collar. Young/mature subtle at96."
+    },
+    {
+      "id": "I112_young",
+      "sha256": "1fb71824ee92560af8bd947a54064691c3fac342f45e0a252cea42862037a518",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "front",
+      "prop_actual": "closed_book",
+      "fur_actual": "none",
+      "headwear_actual": "tonsure",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Frontal narrow angular deputy; tonsure, simple blue-grey cape and small closed brown book maintained. Old clear, middle subtle at96."
+    },
+    {
+      "id": "I112_mature",
+      "sha256": "c53a8d65d7b612877d9cac13afe858449212d119b3e476d808eb7a1e2575f435",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "front",
+      "prop_actual": "closed_book",
+      "fur_actual": "none",
+      "headwear_actual": "tonsure",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Frontal narrow angular deputy; tonsure, simple blue-grey cape and small closed brown book maintained. Old clear, middle subtle at96."
+    },
+    {
+      "id": "I112_old",
+      "sha256": "4fd89862685ff51b18aa966d2ebae0243a5caabe30f9133d486459bf8ccc71d3",
+      "reviewed_sizes": [
+        256,
+        96
+      ],
+      "same_identity": true,
+      "age_stage_readable": true,
+      "direction_actual": "front",
+      "prop_actual": "closed_book",
+      "fur_actual": "none",
+      "headwear_actual": "tonsure",
+      "no_ermine": true,
+      "no_armor_mitre_modern_collar": true,
+      "verdict": "PASS",
+      "notes": "Frontal narrow angular deputy; tonsure, simple blue-grey cape and small closed brown book maintained. Old clear, middle subtle at96."
+    }
+  ]
+}

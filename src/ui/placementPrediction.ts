@@ -4,7 +4,8 @@ import { constructionSiteId } from '../economy/construction';
 import { hasConnectedConstructionRoute } from '../engine/autoplayConstructionRoute';
 import type { GameState } from '../engine/engine.types';
 import { householdServices } from '../engine/householdServices';
-import { marketRoadService } from '../engine/marketService';
+import { MARKET_ROAD_REACH, marketReach, marketRoadService } from '../engine/marketService';
+import { MARKET_REACH_COPY } from './marketReachCopy.ko';
 import { buildingHasRequiredRoadAccess } from '../engine/roadAccess';
 import { roadPlacementAssessment, roadTimberCost } from '../engine/roadPlacement';
 import { buildingRoadAccessTiles } from '../engine/routing';
@@ -36,7 +37,7 @@ function cached(state: GameState, key: string, compute: () => PlacementPredictio
 function failureLine(placement: PlacementResult): readonly PredictionLine[] {
   return placement.ok ? [] : [{ id: 'placement', severity: 'block', sources: [], text: PLACEMENT_REASON_LABELS[placement.reason] }];
 }
-function virtualFacility(state: GameState, kind: BuildingKind, tile: TileCoordinate): Building {
+export function virtualFacility(state: GameState, kind: BuildingKind, tile: TileCoordinate): Building {
   return { id: constructionSiteId(state.nextConstructionOrdinal), kind, ...tile, workers: 0,
     inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
 }
@@ -59,9 +60,11 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
     const virtual = projectedState(state, candidate);
     const facility = virtual.buildings.find(b => b.id === candidate.id) ?? candidate;
     const service = SERVICES[kind];
-    const radius = service !== undefined ? definition.serviceRadius : kind === 'granary' ? HOUSING_CONFIG[3].granaryRadius : null;
+    // UX-0b2 MARKET-1: a market reaches homes by road (MK-1), so it has road tiles, not a radius.
+    const reach = kind === 'market' ? marketReach(virtual, facility) : null;
+    const radius = reach !== null ? null : service !== undefined ? definition.serviceRadius : kind === 'granary' ? HOUSING_CONFIG[3].granaryRadius : null;
     const housesById = new Map(state.houses.map(h => [h.buildingId, h]));
-    const houseIds = radius === null ? [] : state.buildings.filter(b => {
+    const houseIds = reach !== null ? reach.homeIds : radius === null ? [] : state.buildings.filter(b => {
       const home = housesById.get(b.id);
       return home !== undefined && (kind !== 'granary' || home.level < 4)
         && buildingFootprintDistance(b, candidate) <= radius;
@@ -78,6 +81,7 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
     }
     if (kind === 'granary') lines.push({ id: 'granary', severity: 'info', sources: [], text: `L3 곡창 거리 조건 ${houseIds.length}가구 · 빵 배송은 별도` });
     if (radius !== null) lines.push({ id: 'range', severity: 'info', sources: [], text: `범위 ${radius}칸 · 실제 대상은 주택 윤곽으로 표시` });
+    if (reach !== null) lines.push({ id: 'range', severity: 'info', sources: [], text: MARKET_REACH_COPY.placementRange(MARKET_ROAD_REACH, reach.roadTiles.length, reach.homeIds.length) });
     const road = buildingRoadAccessTiles(virtual, candidate).length > 0;
     // FIX-1 made needs_road a placement rule: the checklist shows the verdict (UX-1 C: no interim "권장" wording).
     lines.push(predictionCheck('road', '도로 연결', road, !definition.requiresRoad ? '(운영에 불필요)' : ''));
@@ -88,7 +92,8 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
         delivery, delivery ? '' : A_TRIPLE_PRIME_ROAD_COPY.foodDeliveryRouteMissing));
     }
     if (kind === 'market') lines.push(predictionCheck('workers', '일꾼', facility.workers >= definition.workersRequired, `${facility.workers}/${definition.workersRequired}명`));
-    return { lines, houseIds, range: radius === null ? null : { center: { tx: tile.tx + (definition.width - 1) / 2, ty: tile.ty + (definition.height - 1) / 2 }, radius }, roadSegments: [], placement };
+    return { lines, houseIds, range: radius === null ? null : { center: { tx: tile.tx + (definition.width - 1) / 2, ty: tile.ty + (definition.height - 1) / 2 }, radius },
+      ...(reach === null ? {} : { reachTiles: reach.roadTiles }), roadSegments: [], placement };
   });
 }
 

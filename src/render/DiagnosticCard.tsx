@@ -223,6 +223,7 @@ export function DiagnosticCard({
   walkerHeadline = null,
   houseMembers = [],
   onPerson,
+  reachLine = null,
 }: Readonly<{
   model: DiagnosticCardModel;
   /** The hover tooltip's cause line for a selected building (same text, UI-1 / B9). */
@@ -239,6 +240,8 @@ export function DiagnosticCard({
   /** UI-5: a house's members (head first; portrait, name, age, role), each opening their person card. */
   houseMembers?: readonly PersonRow[];
   onPerson?: (personId: string) => void;
+  /** UX-0b2 MARKET-1: a market's reach ("길 40걸음 안 집 15채"; the map shows the road tiles). */
+  reachLine?: string | null;
 }>): ReactElement {
   const identity = cardIdentity(model, walkerHeadline);
   return (
@@ -262,7 +265,7 @@ export function DiagnosticCard({
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} members={houseMembers} onPerson={onPerson} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} headline={walkerHeadline} /> : null}
           {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}
-          {model.kind === "building" ? <><p>{model.value.purpose}</p>{buildingOperation === undefined ? null : <section className="inspector-actions"><button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onClick={() => buildingOperation.onToggle()}>{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
+          {model.kind === "building" ? <><p>{model.value.purpose}</p>{reachLine === null ? null : <p className="inspector-market-reach" data-market-reach="true">{reachLine}</p>}{buildingOperation === undefined ? null : <section className="inspector-actions"><button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onClick={() => buildingOperation.onToggle()}>{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"
             ? onCancelConstruction === undefined
               ? <ConstructionSiteCard model={model.value} />

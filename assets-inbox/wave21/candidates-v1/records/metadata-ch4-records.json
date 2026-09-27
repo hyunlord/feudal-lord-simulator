@@ -1,0 +1,283 @@
+[
+  {
+    "id": "ch4_decision_charter_negotiation",
+    "file": "assets/ch4_records/ch4_decision_charter_negotiation.png",
+    "width": 640,
+    "height": 480,
+    "description": "자치 특허 협상: 부분 허용과 거부",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. A natural 4:3 horizontal scene inside an open timber guildhall: town delegates across a table from a lord, blank charter half-unrolled between them, lord's one hand offers a modest key while his other hand firmly holds the unopened seal box back. Delegates point toward modest town street seen through arch. Visually express partial municipal concession versus refusal in one coherent negotiation, no split screen.",
+        "rawFile": "raw/ch4_records/ch4_decision_charter_negotiation-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Edit only the architectural roofs in the background of this image: remove ALL chimneys, chimney stacks and roof protrusions from EVERY domestic house including the prominent brick stack on the roof left of center and tiny stacks farther back. Replace each stack with continuous plain sloping flat clay tile roof. Keep church tower and all people, blank documents, keys, tabletop, scene, palette and composition exactly intact. No text. This world has zero domestic chimneys.",
+        "rawFile": "raw/ch4_records/ch4_decision_charter_negotiation-v2.png",
+        "referenceImages": [
+          "raw/ch4_records/ch4_decision_charter_negotiation-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "배경 굴뚝 발견 후 삭제 편집, 전체 재검수. 열쇠와 봉인함의 보류로 부분 허용/거부 표현.",
+      "limitations": "부분 허용과 거부의 구체적 법적 차이는 게임 선택지 설명이 필요함. 그림은 협상과 보류를 표현."
+    }
+  },
+  {
+    "id": "ch4_decision_guild_approval",
+    "file": "assets/ch4_records/ch4_decision_guild_approval.png",
+    "width": 640,
+    "height": 480,
+    "description": "길드 인가",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. A natural 4:3 scene at a medieval town workshop hall: a wool weaver and carpenter present their neatly laid shuttle and wooden square beside a blank charter to a seated lord with an unpressed plain wax seal. He pauses deciding whether to sanction a craft guild; the artisans wait expectantly. Tools and hands focal, woven cloth behind. No decorative writing or symbols.",
+        "rawFile": "raw/ch4_records/ch4_decision_guild_approval-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "직물·목공 도구와 빈 특허장으로 길드 인가 맥락 표시. 문서에 문자 없음."
+    }
+  },
+  {
+    "id": "ch4_decision_tax_collection",
+    "file": "assets/ch4_records/ch4_decision_tax_collection.png",
+    "width": 640,
+    "height": 480,
+    "description": "직접 징수와 공동체 위임",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. One coherent 4:3 market courtyard decision scene: a central town elder weighs an empty communal collection chest in his hands beside a table; at left a lord's official with coin purse personally receives coins from a household; at right several household representatives gather coins into one communal bowl. Compare direct tax collection and community delegation spatially in a unified natural scene, not panels. Unlettered objects, clearly different group actions.",
+        "rawFile": "raw/ch4_records/ch4_decision_tax_collection-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Remove EVERY domestic chimney, chimney stack, chimney pot, square stack and protrusion on all background house roofs, including tiny distant houses. Replace each with clean continuous pitched tile or thatch roof. Preserve church towers, walls, people, hands, blank documents, scene, color and composition. No other changes. No writing.",
+        "rawFile": "raw/ch4_records/ch4_decision_tax_collection-v2.png",
+        "referenceImages": [
+          "raw/ch4_records/ch4_decision_tax_collection-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "좌측 개별 징수와 우측 공동 모금 대비. 배경 작은 굴뚝 제거 후 재검수."
+    }
+  },
+  {
+    "id": "ch4_decision_textile_or_grain",
+    "file": "assets/ch4_records/ch4_decision_textile_or_grain.png",
+    "width": 640,
+    "height": 480,
+    "description": "직물 전문화 투자와 곡물",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. One coherent 4:3 elevated courtyard scene: central lord and steward deciding between a weaver offering muted wool cloth and a farmer holding ripe wheat sheaf. Left background open timber weaving workshop and textile tenter frames in field, right background grain field and sacks. The central table holds unmarked coin purse. Natural contiguous landscape, no diagram or divider.",
+        "rawFile": "raw/ch4_records/ch4_decision_textile_or_grain-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "전체 원본 검수: 장면 읽힘, 무문자·무굴뚝, 역사 금지 요소 관측 없음."
+    }
+  },
+  {
+    "id": "ch4_chronicle_wage_competition",
+    "file": "assets/ch4_records/ch4_chronicle_wage_competition.png",
+    "width": 384,
+    "height": 384,
+    "description": "임금 경쟁",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. Square chronicle scene, lightly illuminated-manuscript clarity of arrangement but same painted colors, NO parchment border or tint: two manor stewards at a rural fork offer different small coin purses to three departing labourers carrying bundles and wooden tools; the labourers turn toward the more inviting employer. Timber manor distant, no text, no scales or labels.",
+        "rawFile": "raw/ch4_records/ch4_chronicle_wage_competition-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "전체 원본 검수: 장면 읽힘, 무문자·무굴뚝, 역사 금지 요소 관측 없음."
+    }
+  },
+  {
+    "id": "ch4_chronicle_petitions",
+    "file": "assets/ch4_records/ch4_chronicle_petitions.png",
+    "width": 384,
+    "height": 384,
+    "description": "청원 무리",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. Square chronicle scene, slight illuminated-manuscript compositional clarity without border or aged tint: townspeople crowd orderly at a manor porch, a woman and craftsman lift several blank folded petitions toward a weary seated steward, more petitioners wait behind. Hands and blank petitions focal, diverse humble medieval clothing, no marks on paper.",
+        "rawFile": "raw/ch4_records/ch4_chronicle_petitions-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "전체 원본 검수: 장면 읽힘, 무문자·무굴뚝, 역사 금지 요소 관측 없음."
+    }
+  },
+  {
+    "id": "ch4_chronicle_rebellion_rumour",
+    "file": "assets/ch4_records/ch4_chronicle_rebellion_rumour.png",
+    "width": 384,
+    "height": 384,
+    "description": "1381 반란 소문: 징수원을 쫓는 주민",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. Square chronicle scene slightly manuscript-like clear storytelling without frame or tint: in 1381 an alarmed tax collector with a closed coin satchel runs away down an English village lane, looking backward; a group of unarmed villagers follow at distance gesturing that he must leave, their arms pointing outward not striking. Strong separation, no physical contact, weapons, blood, injury or gore. No text on satchel or houses.",
+        "rawFile": "raw/ch4_records/ch4_chronicle_rebellion_rumour-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "도망가는 징수원과 거리 둔 비무장 주민. 접촉·유혈·타격·부상 없이 추방 읽힘."
+    }
+  },
+  {
+    "id": "ch4_chronicle_guild",
+    "file": "assets/ch4_records/ch4_chronicle_guild.png",
+    "width": 384,
+    "height": 384,
+    "description": "길드 결성",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. Square chronicle scene slightly manuscript-like arrangement, same low-chroma painted palette no parchment tint or border: five craftspeople at a simple timber hall table clasp hands over a plain blank charter; neatly placed shuttle, wood plane and folded wool show trades. Community association forming, calm serious pride. No symbols, lettering, candles on books, real heraldry.",
+        "rawFile": "raw/ch4_records/ch4_chronicle_guild-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "전체 원본 검수: 장면 읽힘, 무문자·무굴뚝, 역사 금지 요소 관측 없음."
+    }
+  },
+  {
+    "id": "ch4_chronicle_textile_street",
+    "file": "assets/ch4_records/ch4_chronicle_textile_street.png",
+    "width": 384,
+    "height": 384,
+    "description": "직물 거리",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. Square chronicle scene with slight manuscript compositional clarity without border/tint: thriving English weaving street with open workshop showing wooden loom, woman winding wool, muted cloth hanging to dry; in the rear a field of rectangular wooden tenter frames stretching wool cloth. No chimneys, no industrial mechanisms, no letters, low-chroma earthy wool colors.",
+        "rawFile": "raw/ch4_records/ch4_chronicle_textile_street-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Remove EVERY domestic chimney, chimney stack, chimney pot, square stack and protrusion on all background house roofs, including tiny distant houses. Replace each with clean continuous pitched tile or thatch roof. Preserve church towers, walls, people, hands, blank documents, scene, color and composition. No other changes. No writing. Specifically remove the pale vertical chimney on the distant house behind the tree near the upper left-center, and the tiny pale vertical stack on the right hillside thatch house.",
+        "rawFile": "raw/ch4_records/ch4_chronicle_textile_street-v2.png",
+        "referenceImages": [
+          "raw/ch4_records/ch4_chronicle_textile_street-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "직조기·털실·텐터 들판으로 직물 거리 읽힘. 먼 배경 굴뚝 두 개 삭제 편집 후 원본 재검수."
+    }
+  },
+  {
+    "id": "ch4_chronicle_charter_negotiation",
+    "file": "assets/ch4_records/ch4_chronicle_charter_negotiation.png",
+    "width": 384,
+    "height": 384,
+    "description": "특허 협상",
+    "historyNotes": "잉글랜드 남부 1362–1400. 1381 반란은 비무장 추방 장면, 신체 접촉·유혈 없음. 문서 무문자. 연대기 인위적 양피지 틴트 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One standalone illustration, not a sheet. Match attached project Wave17 painterly style only, never its captions. South England 1362–1400, low-chroma hand-painted gouache/oil narrative realism, warm limewash, weathered oak, rubble bases, flat clay tile or thatch, soft daylight. NO letters, numbers, pseudowriting, captions, borders, watermarks, real heraldry, saturated primary colors, chimneys, modern objects, hops, plague door marks, blood or injury. Blank documents allowed. Full bleed opaque illustration. STRICT roof geometry: every roof ridge clean and uninterrupted. ZERO roof protrusions, no chimney stacks or chimney pots anywhere, including tiny distant houses. Square chronicle scene slight illuminated manuscript arrangement without tint/border: under timber guildhall porch, a lord and town representative on opposite sides of a small table negotiate over blank parchment and a plain seal; their hands meet in a restrained agreement while two witnesses look on. A simple town key between hands emphasizes civic concession. No writing, no heraldry.",
+        "rawFile": "raw/ch4_records/ch4_chronicle_charter_negotiation-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Generated raster resized with Lanczos3 to requested size, cover center, ensureAlpha; no painted content synthesized by code.",
+    "qa": {
+      "status": "pass",
+      "notes": "전체 원본 검수: 장면 읽힘, 무문자·무굴뚝, 역사 금지 요소 관측 없음."
+    }
+  }
+]

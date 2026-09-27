@@ -1,0 +1,14 @@
+{
+  "id": "I118_old",
+  "prompt": "Use case identity-preserve. This image is intended as age SEVENTY but looks middle-aged. Make the SAME woman clearly elderly: deeply creased forehead, crow's feet, substantial fine wrinkles under eyes, modest upper eyelid sag, visible jowls and neck folds, grey-white hair visible at temples and hairline under the existing headwear. Preserve her exact identity, skull, nose, eyes spacing, facial proportions, body size, existing clothing, headwear, hands and object, orientation, framing, palette and soft painterly realism. Respectful natural elder with authority, no caricature or grotesque exaggeration. No added elements. Entire portrait finished painting, retain 256-square composition.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e096-082e-7622-8661-7e23b4730038/exec-4142cab8-c57a-4b8b-aa64-7c8c43d65017.png",
+  "references": [
+    "/tmp/astra-portrait-pool3-work/revisions/I118_old-before-r2.png"
+  ],
+  "method": "native_imagegen_identity_age_refinement",
+  "revision": 2,
+  "packaged_source": "provenance/raw/I118_old.png",
+  "packaged_references": [
+    "provenance/references/72aa0c332b93-I118_old-before-r2.png"
+  ]
+}

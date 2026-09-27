@@ -1,0 +1,276 @@
+[
+  {
+    "id": "ch4_event_wage_competition",
+    "file": "assets/ch4_events/ch4_event_wage_competition.png",
+    "width": 960,
+    "height": 540,
+    "description": "임금 경쟁: 이웃 장원으로 떠나는 일꾼",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. Foreground skilled laborers carrying handtools and tied travel bundles walk away from a disappointed manor steward on the left toward a welcoming neighboring manor agent on the right offering a noticeably fuller open purse. The departing workers are the focus, winding lane joins two manor settlements in the distance. Make competitive recruitment and voluntary departure readable, no robbery.",
+        "rawFile": "raw/ch4_events/ch4_event_wage_competition.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Edit this exact painting only to remove ALL domestic chimney stacks and chimney pots on every house roof, including tiny distant roofs, replacing each removed stack with uninterrupted matching roof tiles or the sky/foliage behind it. Keep the church tower, all buildings, composition, people, facial expressions, objects, actions, palette, aspect ratio and painterly style exactly unchanged. NO other changes. No text or lettering.",
+        "rawFile": "raw/ch4_events/ch4_event_wage_competition-v2.png",
+        "referenceImages": [
+          "raw/ch4_events/ch4_event_wage_competition.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 960x540, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  },
+  {
+    "id": "ch4_event_petitions",
+    "file": "assets/ch4_events/ch4_event_petitions.png",
+    "width": 960,
+    "height": 540,
+    "description": "청원 급증: 영주관 앞 청원 무리",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. A crowd of townspeople queues and presses politely in front of a timber manor entrance, several holding completely blank parchment sheets toward an overwhelmed seated clerk whose table is piled with blank rolled petitions. Diverse ordinary adult townspeople, no armed crowd. The crowded petition queue is the unmistakable focus.",
+        "rawFile": "raw/ch4_events/ch4_event_petitions.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Edit this exact painting only to remove ALL domestic chimney stacks and chimney pots on every house roof, including tiny distant roofs, replacing each removed stack with uninterrupted matching roof tiles or the sky/foliage behind it. Keep the church tower, all buildings, composition, people, facial expressions, objects, actions, palette, aspect ratio and painterly style exactly unchanged. NO other changes. No text or lettering.",
+        "rawFile": "raw/ch4_events/ch4_event_petitions-v2.png",
+        "referenceImages": [
+          "raw/ch4_events/ch4_event_petitions.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 960x540, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  },
+  {
+    "id": "ch4_event_rebellion_1381",
+    "file": "assets/ch4_events/ch4_event_rebellion_1381.png",
+    "width": 960,
+    "height": 540,
+    "description": "1381 반란 소문: 세금 징수원을 쫓는 군중",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. 1381 English peasants rebellion expressed without violence: an anxious tax collector in a sober long gown runs toward the right foreground clutching a leather revenue purse and a shut blank-bound account book, looking back at a crowd of angry unarmed peasants chasing him from a market street behind. Crowd pointing and shouting; clear several-meter empty gap, nobody touches anyone, no weapons, strikes, injuries, blood or fire. Collector visibly flees, no heroic battle.",
+        "rawFile": "raw/ch4_events/ch4_event_rebellion_1381.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Edit this exact painting only to remove ALL domestic chimney stacks and chimney pots on every house roof, including tiny distant roofs, replacing each removed stack with uninterrupted matching roof tiles or the sky/foliage behind it. Keep the church tower, all buildings, composition, people, facial expressions, objects, actions, palette, aspect ratio and painterly style exactly unchanged. NO other changes. No text or lettering.",
+        "rawFile": "raw/ch4_events/ch4_event_rebellion_1381-v2.png",
+        "referenceImages": [
+          "raw/ch4_events/ch4_event_rebellion_1381.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 960x540, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  },
+  {
+    "id": "ch4_event_autonomy_request",
+    "file": "assets/ch4_events/ch4_event_autonomy_request.png",
+    "width": 960,
+    "height": 540,
+    "description": "자치 요구서 전달",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. Critical roof constraint: every roof ridge is uninterrupted, bare of ALL chimney stacks, pipes and smoking outlets, including tiny distant roof silhouettes. Towers only belong to the single church. Formal delegation of town merchants and artisans hands one large completely blank unrolled parchment request to the manor lord at the open timber doorway. The delegation spokesperson extends it in both hands, lord reluctantly receives it; other delegates stand expectantly behind. Town autonomy petition, civic negotiating dignity. No writing, no wax heraldic crest.",
+        "rawFile": "raw/ch4_events/ch4_event_autonomy_request.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 960x540, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  },
+  {
+    "id": "ch4_event_textile_growth",
+    "file": "assets/ch4_events/ch4_event_textile_growth.png",
+    "width": 960,
+    "height": 540,
+    "description": "직물 사슬 성장: 직조공 거리와 텐터 들판",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. Critical roof constraint: every roof ridge is uninterrupted, bare of ALL chimney stacks, pipes and smoking outlets, including tiny distant roof silhouettes. Towers only belong to the single church. View from a bustling weavers lane where large upright wooden looms are clearly visible through open workshop bays, bolts of muted wool cloth carried down the lane, to an adjacent open field lined with wooden tenter frames stretching rectangular cloth panels. Both weaver street foreground and tenter field midground visually legible, workers engaged in cloth production. No industrial factory, no machine gears.",
+        "rawFile": "raw/ch4_events/ch4_event_textile_growth.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 960x540, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  },
+  {
+    "id": "ch4_event_alehouse",
+    "file": "assets/ch4_events/ch4_event_alehouse.png",
+    "width": 960,
+    "height": 540,
+    "description": "에일하우스 성황",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. Critical roof constraint: every roof ridge is uninterrupted, bare of ALL chimney stacks, pipes and smoking outlets, including tiny distant roof silhouettes. Towers only belong to the single church. A prosperous crowded medieval alehouse courtyard with oak trestle benches, ordinary townspeople sharing ceramic drinking jugs and cups, a woman alewife drawing ale from a large wooden cask. Open low timber house behind, earthy textiles, warm convivial daylight. Unhopped medieval ale; absolutely no hop plants, hop cones, beer logos, glass beer mugs or written hanging signs. Drink service and lively custom obvious.",
+        "rawFile": "raw/ch4_events/ch4_event_alehouse.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 960x540, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  },
+  {
+    "id": "ch4_event_guild_foundation",
+    "file": "assets/ch4_events/ch4_event_guild_foundation.png",
+    "width": 960,
+    "height": 540,
+    "description": "길드 결성",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. Critical roof constraint: every roof ridge is uninterrupted, bare of ALL chimney stacks, pipes and smoking outlets, including tiny distant roof silhouettes. Towers only belong to the single church. A circle of artisan masters in a modest timber meeting room solemnly joins hands above an oak table bearing a closed wooden guild chest and representative plain craft tools, shears, spindle and small plane. Their shared oath and new association readable through joined hands and attentive faces. No weapons, no heraldic flags, no lettering, no secret occult symbols.",
+        "rawFile": "raw/ch4_events/ch4_event_guild_foundation.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 960x540, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  },
+  {
+    "id": "ch4_event_lord_warning",
+    "file": "assets/ch4_events/ch4_event_lord_warning.png",
+    "width": 960,
+    "height": 540,
+    "description": "상위 영주의 경고 서한",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. Critical roof constraint: every roof ridge is uninterrupted, bare of ALL chimney stacks, pipes and smoking outlets, including tiny distant roof silhouettes. Towers only belong to the single church. Close narrative scene in a modest manor hall: a stern mounted messenger now standing beside the table presents a completely blank open parchment with a plain dark-red wax seal to the local lord, who sits tense and worried, hand braced on oak table. A council adviser looks concerned. Messenger's closed travel pouch and riding cloak identify official delivery. Warning conveyed by faces and imposing posture, no writing on parchment or visible insignia.",
+        "rawFile": "raw/ch4_events/ch4_event_lord_warning.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 960x540, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  },
+  {
+    "id": "ch4_ending",
+    "file": "assets/ch4_events/ch4_ending.png",
+    "width": 1920,
+    "height": 1080,
+    "description": "길드홀 앞 협상 테이블",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝·비실존 문장. 1381은 비무장 추격이며 접촉·유혈 없음. 에일에는 홉 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished illustration, full-bleed landscape 16:9, no borders, NOT a collage. Match the attached project-owned Wave17 sheet's muted hand-painted narrative painting style ONLY; do not copy its labels, heraldry or scenes. Southern England market town, 1362–1400. Warm plaster, weathered oak framing, rubble foundations, flat dull clay tiles or thatch; no domestic chimneys. Natural legible gestures, textured gouache/oil brushwork, low-chroma ochre, gray-green, dusty earth and restrained burgundy, soft atmospheric light. No text, letters, numbers, pseudo-writing, signs, watermark, flags, recognizable real heraldry, hops, plague door marks, gore, blood, firearms or later fashions. Blank parchment is completely blank. Critical roof constraint: every roof ridge is uninterrupted, bare of ALL chimney stacks, pipes and smoking outlets, including tiny distant roof silhouettes. Towers only belong to the single church. Wide panoramic chapter-ending painting of a long negotiation table in the square immediately outside a substantial late-fourteenth-century English timber guildhall. Town merchants and artisan delegates on one side, manor lord and steward on the other, reaching a tentative agreement over entirely blank parchments and a small closed chest. Townspeople quietly observe at edges. Evening light, sense of labor and civic rights being renegotiated, church and weavers street in background. Architecture warm plaster oak flat clay tiles, no chimneys, not palace or parliament. Distinct guildhall frontage and public negotiation focal center.",
+        "rawFile": "raw/ch4_events/ch4_ending.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Edit this exact painting only to remove ALL domestic chimney stacks and chimney pots on every house roof, including tiny distant roofs, replacing each removed stack with uninterrupted matching roof tiles or the sky/foliage behind it. Keep the church tower, all buildings, composition, people, facial expressions, objects, actions, palette, aspect ratio and painterly style exactly unchanged. NO other changes. No text or lettering.",
+        "rawFile": "raw/ch4_events/ch4_ending-v2.png",
+        "referenceImages": [
+          "raw/ch4_events/ch4_ending.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize from 1672x941 to 1920x1080, ensureAlpha; no painted content added.",
+    "qa": {
+      "status": "pass",
+      "text": "육안 검사: 글자·숫자·유사문자 없음. 장면별 행위 구분.",
+      "history": "지붕·도구·문서 확인. 굴뚝 발생 4개 장면은 별도 생성 편집 후 재검토. 1381 추격은 비접촉·비무장·무유혈. 에일 장면 홉 없음."
+    }
+  }
+]

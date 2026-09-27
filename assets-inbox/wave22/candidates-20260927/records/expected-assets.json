@@ -1,0 +1,311 @@
+{
+  "approvedScope": "brief exact table 15+16+20",
+  "assets": [
+    {
+      "id": "terrain/chalk_down_summer-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/chalk_down_autumn-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/chalk_down_winter-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_summer-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_autumn-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_winter-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_summer-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_autumn-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_winter-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_summer-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_autumn-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_winter-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_summer-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_autumn-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_winter-v1",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "boundary/chalk_edge_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/chalk_edge_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/heath_edge_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/heath_edge_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/fen_edge_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/fen_edge_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/coastal_edge_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/coastal_edge_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "shore/sand_beach_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/sand_beach_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/shingle_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/shingle_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/salt_marsh_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/salt_marsh_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "boundary/reed_bed_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "boundary/reed_bed_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "props/chalk_outcrop_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/chalk_outcrop_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/chalk_outcrop_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/sheep_stone_wall_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/sheep_stone_wall_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/fern_bush_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/fern_bush_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/fern_bush_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/gorse_a-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "props/gorse_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "props/reed_clump_a-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "id": "props/reed_clump_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "id": "props/reed_clump_c-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "id": "props/fen_puddle_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/fen_puddle_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/driftwood_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/driftwood_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/rock_pool-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/fallen_tree-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/mushrooms-v1",
+      "role": "decal",
+      "width": 64,
+      "height": 48
+    }
+  ]
+}

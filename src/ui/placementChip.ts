@@ -4,13 +4,16 @@ import type { GameState } from "../engine/engine.types";
 import { placementSpendableResource } from "../world/placement";
 import { blockingReasons, type TileMark } from "../render/placementTileMarks";
 import { RESOURCE_NAMES } from "./hud/hudCopy.ko";
+import { MARKET_ROAD_REACH } from "../engine/marketService";
+import type { HouseMarketDistance } from "./marketReachModel";
 import { PLACEMENT_CHIP_COPY } from "./placementChipCopy.ko";
 
 // UX-3 S-53 / S-54 / S-55: the chip beside the placement cursor replaces the resource bar for the one decision at
 // hand. Line 1 the building and its cost; line 2 the ledger (cost / spendable stock / what is left — spendable as
 // placement counts it, so it matches the verdict); line 3 the one most important reason it cannot go here (+N more),
 // or, for a building with a service range, how many houses it reaches. The engine refuses a placement it cannot pay
-// for (insufficient_materials), so a shortfall says "배치 불가" rather than "공사장 대기 예상".
+// for (insufficient_materials), so a shortfall says "배치 불가" rather than "공사장 대기 예상". UX-0b2: a house also says
+// how many road steps it is from the nearest market against MARKET-1's reach ("시장까지 길 12걸음 / 40").
 export type PlacementChip = {
   readonly title: string;
   readonly ledger: readonly { readonly text: string; readonly short: boolean }[];
@@ -18,6 +21,8 @@ export type PlacementChip = {
   readonly reach: string | null;
   /** UI-3: what the building does to the ledger each period (rent, upkeep, labour), null when all are zero. */
   readonly period: string | null;
+  /** UX-0b2 MARKET-1: a house's road steps to the nearest market (`far` beyond the reach), null with no market. */
+  readonly market: Readonly<{ text: string; far: boolean }> | null;
 };
 
 type ChipInput = {
@@ -31,6 +36,8 @@ type ChipInput = {
   readonly reachHouses: number | null;
   /** UI-3: the engine's placement ledger prediction (predictPlacementLedger) for a building. */
   readonly ledger?: { readonly rentPerPeriod: number; readonly upkeepPerPeriod: number; readonly labourDemand: number };
+  /** UX-0b2: a house's distance to the nearest market by road (`houseMarketDistance`). */
+  readonly market?: HouseMarketDistance | null;
 };
 
 export function placementChipModel(state: GameState, input: ChipInput): PlacementChip {
@@ -57,6 +64,15 @@ export function placementChipModel(state: GameState, input: ChipInput): Placemen
     ...(input.ledger.labourDemand > 0 ? [PLACEMENT_CHIP_COPY.labour(input.ledger.labourDemand)] : []),
   ];
   return { title: PLACEMENT_CHIP_COPY.title(name, costLabel), ledger, reason,
-    reach: input.reachHouses === null ? null : PLACEMENT_CHIP_COPY.reach(input.reachHouses),
-    period: parts.length === 0 ? null : PLACEMENT_CHIP_COPY.period(parts) };
+    reach: input.reachHouses === null ? null
+      : input.tool === "market" ? PLACEMENT_CHIP_COPY.reachRoad(input.reachHouses, MARKET_ROAD_REACH) : PLACEMENT_CHIP_COPY.reach(input.reachHouses),
+    period: parts.length === 0 ? null : PLACEMENT_CHIP_COPY.period(parts),
+    market: marketLine(input.market ?? null) };
+}
+
+function marketLine(distance: HouseMarketDistance | null): PlacementChip["market"] {
+  if (distance === null) return null;
+  if (distance.steps === null) return { text: PLACEMENT_CHIP_COPY.marketNoRoad, far: true };
+  return distance.steps <= distance.reach ? { text: PLACEMENT_CHIP_COPY.market(distance.steps, distance.reach), far: false }
+    : { text: PLACEMENT_CHIP_COPY.marketFar(distance.steps, distance.reach), far: true };
 }

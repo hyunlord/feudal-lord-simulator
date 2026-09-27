@@ -1,0 +1,647 @@
+{
+  "assets": 51,
+  "checks": 3,
+  "csvRows": 51,
+  "csvColumns": 20,
+  "fullPromptRoundtrip": true,
+  "files": [
+    {
+      "file": "terrain/chalk_down_summer-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "68429931f4ba4bc46750149c75f94d070c9bda1c382a56b399cbf321a2a41534"
+    },
+    {
+      "file": "terrain/chalk_down_autumn-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "6867ce21a504afb3b28967a138b3001073022432f4977b6b1a8ce807a9141082"
+    },
+    {
+      "file": "terrain/chalk_down_winter-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "e42a9e5edaa9f96703d967ee4e19102b183a0c289cba36bdd2d125ffd4ed5c7c"
+    },
+    {
+      "file": "terrain/heath_summer-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "0d9a2e4e5a375cf16d83ae431101776ec4c43a10e7576cb328603e2918950323"
+    },
+    {
+      "file": "terrain/heath_autumn-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "916c3aef86718fb707ef84866bb6772aed3808832105f21a6b70b8985f9ad676"
+    },
+    {
+      "file": "terrain/heath_winter-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "8f782c8fa1a6b398c83267781e4db64b323d260c50dcfab7e3cc9eb44aaf05f2"
+    },
+    {
+      "file": "terrain/fen_summer-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "076a46d3b8cb9a4d0bc733bc4e03d8393fd825b7d9d38e7fc9e82d8bf6f666c0"
+    },
+    {
+      "file": "terrain/fen_autumn-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "4e46e5f8bd75cec003137d8318749daf7376891cb49b59367c62704b2f621579"
+    },
+    {
+      "file": "terrain/fen_winter-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "7af0124411a8c93d2a0d21b1e67b9a0e394ab028cd8de735eb0b53115b4a6b0e"
+    },
+    {
+      "file": "terrain/coastal_grass_summer-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "de7c9b85184b615cfa3e0ac76728a79b8a74d28ace86b36a614bbf803d75860d"
+    },
+    {
+      "file": "terrain/coastal_grass_autumn-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "80f8f2622235feee1f02d56483900a90976f3c353798200a0b5fe55de5e452a8"
+    },
+    {
+      "file": "terrain/coastal_grass_winter-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "47f3a38b98b0a92d106c68ed2f97600b3054562b062d633c1c06884f3f5eb1c2"
+    },
+    {
+      "file": "terrain/woodland_floor_summer-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "e78be8604e2a5b69396734f3f32af0134b96fb325bd967a7b9359b615df74bb3"
+    },
+    {
+      "file": "terrain/woodland_floor_autumn-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "85c36042deea7353755fc739d0f81fb392b6cf74c611c66ec343410fe0b533b0"
+    },
+    {
+      "file": "terrain/woodland_floor_winter-v1.png",
+      "width": 256,
+      "height": 128,
+      "role": "fill",
+      "visible": 32768,
+      "transparent": 0,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0,
+        "y": 0
+      },
+      "sha256": "598aca6e4643fca54500fe204aabba63d77b4412c500ce203b472928aca8fa92"
+    },
+    {
+      "file": "boundary/chalk_edge_a-v1.png",
+      "width": 512,
+      "height": 64,
+      "role": "strip",
+      "visible": 23552,
+      "transparent": 9216,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "94359bd063e112ae41acf4ad02ecf0be85ea9d2f38076cd3e5050cbca0974550"
+    },
+    {
+      "file": "boundary/chalk_edge_b-v1.png",
+      "width": 512,
+      "height": 64,
+      "role": "strip",
+      "visible": 23552,
+      "transparent": 9216,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "e791e124887a716597bedac6262317299914b38ebe97b4d184131f0b0449702b"
+    },
+    {
+      "file": "boundary/heath_edge_a-v1.png",
+      "width": 512,
+      "height": 64,
+      "role": "strip",
+      "visible": 23552,
+      "transparent": 9216,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "6266f03521f4d2a18d1a2fcac146e52cf957d41fbfde735dd970b814b1b9c09f"
+    },
+    {
+      "file": "boundary/heath_edge_b-v1.png",
+      "width": 512,
+      "height": 64,
+      "role": "strip",
+      "visible": 23301,
+      "transparent": 9467,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "29d4b93f8718eceb6371c5ea27b64ad3ec06fad9aa3d07ee1ffc2f12a4db197a"
+    },
+    {
+      "file": "boundary/fen_edge_a-v1.png",
+      "width": 512,
+      "height": 64,
+      "role": "strip",
+      "visible": 23549,
+      "transparent": 9219,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "c55f84e9a1a915bbc04c6277092b3d7f2acf5511c0aafae2e8194005e97e56fd"
+    },
+    {
+      "file": "boundary/fen_edge_b-v1.png",
+      "width": 512,
+      "height": 64,
+      "role": "strip",
+      "visible": 23407,
+      "transparent": 9361,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "7dd6eda8be10db54fb28434ac89d3fbb650ff0d0a542144cd221aab30e11466b"
+    },
+    {
+      "file": "boundary/coastal_edge_a-v1.png",
+      "width": 512,
+      "height": 64,
+      "role": "strip",
+      "visible": 23421,
+      "transparent": 9347,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "2c4aa1f9dd0e57b1807e2899da276f155864cd9c067c4ad08d2076bef6f35536"
+    },
+    {
+      "file": "boundary/coastal_edge_b-v1.png",
+      "width": 512,
+      "height": 64,
+      "role": "strip",
+      "visible": 23552,
+      "transparent": 9216,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "f7a00447ae4d48f52ec60f182b93cbf7395a90cf97cfd6a6a6254d7c03b369e0"
+    },
+    {
+      "file": "shore/sand_beach_a-v1.png",
+      "width": 512,
+      "height": 96,
+      "role": "strip",
+      "visible": 39936,
+      "transparent": 9216,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "42e3b147bb0acbc1cedee65551887aab2ea5007d677faec610b55929e3d238a2"
+    },
+    {
+      "file": "shore/sand_beach_b-v1.png",
+      "width": 512,
+      "height": 96,
+      "role": "strip",
+      "visible": 39363,
+      "transparent": 9789,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "7fff380523b622f0c16ed9b23fe3ebbc252ccc6850ef7cc06e885fbbc3d5e494"
+    },
+    {
+      "file": "shore/shingle_a-v1.png",
+      "width": 512,
+      "height": 96,
+      "role": "strip",
+      "visible": 39936,
+      "transparent": 9216,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "8c5d55a09830fab912e94b0f76b87bdd462a1de459625eff50c85b09cfa370df"
+    },
+    {
+      "file": "shore/shingle_b-v1.png",
+      "width": 512,
+      "height": 96,
+      "role": "strip",
+      "visible": 38868,
+      "transparent": 10284,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "11cadcc47ecdd96807ed599c876fb8d41acca37cb5f268c804dae84df1164e10"
+    },
+    {
+      "file": "shore/salt_marsh_a-v1.png",
+      "width": 512,
+      "height": 96,
+      "role": "strip",
+      "visible": 39936,
+      "transparent": 9216,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "e0785b34d8b53ba9cacdd366a7557258e7c2c162dfad51399795b561bfcab16c"
+    },
+    {
+      "file": "shore/salt_marsh_b-v1.png",
+      "width": 512,
+      "height": 96,
+      "role": "strip",
+      "visible": 39801,
+      "transparent": 9351,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "30c6b4bf8b44fda0b8832c98434fe2e3d9c661860256b5df71a804ece4b23558"
+    },
+    {
+      "file": "boundary/reed_bed_a-v1.png",
+      "width": 512,
+      "height": 96,
+      "role": "strip",
+      "visible": 39334,
+      "transparent": 9818,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "61c7e11ff283903d0c79e7e45968bbef65b9c28ba848f3c961aa8e7c846cfa41"
+    },
+    {
+      "file": "boundary/reed_bed_b-v1.png",
+      "width": 512,
+      "height": 96,
+      "role": "strip",
+      "visible": 39188,
+      "transparent": 9964,
+      "marginViolations": 0,
+      "seams": {
+        "x": 0
+      },
+      "sha256": "17365aec25511431e52c1bd0f948539e7fdecafbb9ce45677976b9bcac592b4e"
+    },
+    {
+      "file": "props/chalk_outcrop_a-v1.png",
+      "width": 128,
+      "height": 96,
+      "role": "decal",
+      "visible": 4021,
+      "transparent": 8267,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "979691201311908d39b1965751e61e91c88eaf78b403c754f25b69b1938e0b80"
+    },
+    {
+      "file": "props/chalk_outcrop_b-v1.png",
+      "width": 128,
+      "height": 96,
+      "role": "decal",
+      "visible": 3845,
+      "transparent": 8443,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "b40330b4e968512753eac56dda666699bf068e8b115ae0b7924d2e969f697dae"
+    },
+    {
+      "file": "props/chalk_outcrop_c-v1.png",
+      "width": 128,
+      "height": 96,
+      "role": "decal",
+      "visible": 2532,
+      "transparent": 9756,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "61bf737df50b741c4c66df49ad0f87a9b6ef64ecc8e0e9796e00443f2eea7987"
+    },
+    {
+      "file": "props/sheep_stone_wall_a-v1.png",
+      "width": 128,
+      "height": 96,
+      "role": "decal",
+      "visible": 2661,
+      "transparent": 9627,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "667fe4bb213275cc65951f98a9a0a9055d4fc0251e8b80f8d0b9e36fb8a9f78a"
+    },
+    {
+      "file": "props/sheep_stone_wall_b-v1.png",
+      "width": 128,
+      "height": 96,
+      "role": "decal",
+      "visible": 2174,
+      "transparent": 10114,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "a0aa575ef0383cae0c9b2309a5d218de859bdf715eee7ac63b3295ecc5877208"
+    },
+    {
+      "file": "props/fern_bush_a-v1.png",
+      "width": 128,
+      "height": 96,
+      "role": "decal",
+      "visible": 4171,
+      "transparent": 8117,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "843664b13d99e78b23174da08bde3cd29449e7b2c798f2fb63d6b5ae357e25b5"
+    },
+    {
+      "file": "props/fern_bush_b-v1.png",
+      "width": 128,
+      "height": 96,
+      "role": "decal",
+      "visible": 3054,
+      "transparent": 9234,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "4fdd5d16957c8a8779b62ba05f7bcfd38f944107e43483739dd7469849c00823"
+    },
+    {
+      "file": "props/fern_bush_c-v1.png",
+      "width": 128,
+      "height": 96,
+      "role": "decal",
+      "visible": 3031,
+      "transparent": 9257,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "7485024738cec64eedebe01b9b61d919f2f4be053968b75277a0b2fb4c30fd70"
+    },
+    {
+      "file": "props/gorse_a-v1.png",
+      "width": 96,
+      "height": 64,
+      "role": "decal",
+      "visible": 2109,
+      "transparent": 4035,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "3e4a49502e6c3fbf6607e84d28a45e596e876b34ceebb5e8bbdf1a27255a7895"
+    },
+    {
+      "file": "props/gorse_b-v1.png",
+      "width": 96,
+      "height": 64,
+      "role": "decal",
+      "visible": 2262,
+      "transparent": 3882,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "e08fc9018b60103361c51b1b5edf64c2801bce62a010bd0a833c65a4d9eacdaa"
+    },
+    {
+      "file": "props/reed_clump_a-v1.png",
+      "width": 96,
+      "height": 96,
+      "role": "decal",
+      "visible": 3021,
+      "transparent": 6195,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "68e6b21f59917cff4f429b588a5464f29aa393649eb681e0c07e199804558cbf"
+    },
+    {
+      "file": "props/reed_clump_b-v1.png",
+      "width": 96,
+      "height": 96,
+      "role": "decal",
+      "visible": 1852,
+      "transparent": 7364,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "6016aaff2ad82b0ad050c0e4289050fa028ca736cc29513aa9fc2b3fdb9be79f"
+    },
+    {
+      "file": "props/reed_clump_c-v1.png",
+      "width": 96,
+      "height": 96,
+      "role": "decal",
+      "visible": 2111,
+      "transparent": 7105,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "fe5ca3e48d0dd1003e6f107a5b804a78c787700612a886f428027c6160728724"
+    },
+    {
+      "file": "props/fen_puddle_a-v1.png",
+      "width": 128,
+      "height": 64,
+      "role": "decal",
+      "visible": 3274,
+      "transparent": 4918,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "a76fcaaac669944ee3470f8a4e1fa2b9f114e1899cefab67461e64cbbd64c10c"
+    },
+    {
+      "file": "props/fen_puddle_b-v1.png",
+      "width": 128,
+      "height": 64,
+      "role": "decal",
+      "visible": 2738,
+      "transparent": 5454,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "3154bdee9b7bfa1e0dcf8a34efc832d35ca22439327635b39622c64f3b4e3f41"
+    },
+    {
+      "file": "props/driftwood_a-v1.png",
+      "width": 128,
+      "height": 64,
+      "role": "decal",
+      "visible": 2282,
+      "transparent": 5910,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "45e19776c878acd51f9139454c837a55651298e74024da8c17aa363a2b972601"
+    },
+    {
+      "file": "props/driftwood_b-v1.png",
+      "width": 128,
+      "height": 64,
+      "role": "decal",
+      "visible": 2097,
+      "transparent": 6095,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "2f20870a21dd13f028c4e04a2930717ad5d317688bed57212be56be440bb6d0e"
+    },
+    {
+      "file": "props/rock_pool-v1.png",
+      "width": 128,
+      "height": 64,
+      "role": "decal",
+      "visible": 3049,
+      "transparent": 5143,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "46a0a759dec36867478b55af556fff49aa91bc35dd4df26564bbeca2ee67884f"
+    },
+    {
+      "file": "props/fallen_tree-v1.png",
+      "width": 128,
+      "height": 64,
+      "role": "decal",
+      "visible": 2853,
+      "transparent": 5339,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "f6d138c69720490c391ba6b9d793758df23725eb1dcf82be715eb588cae41db6"
+    },
+    {
+      "file": "props/mushrooms-v1.png",
+      "width": 64,
+      "height": 48,
+      "role": "decal",
+      "visible": 905,
+      "transparent": 2167,
+      "marginViolations": 0,
+      "seams": {},
+      "sha256": "fa719e4218a201c724fa1d76568f356c2368d33a121a131c40681650bb7eebf3"
+    }
+  ]
+}

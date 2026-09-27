@@ -1,0 +1,165 @@
+family,n,scale,basis
+boundary,2,0.500,drawGroundBoundaries 64×32
+boundary,3,0.500,drawGroundBoundaries 64×48 × decal scale
+buildings,13,0.433–1.000,worldAssetManifest renderScale
+buildings,1,0.970,"buildingSpriteFit (2×2, fill 0.75)"
+buildings,1,0.640,"buildingSpriteFit (1×1, fill 0.87)"
+buildings,1,0.801,"buildingSpriteFit (2×2, fill 0.87)"
+buildings,1,0.708,"buildingSpriteFit (1×1, fill 0.52)"
+buildings/farmstead,4,0.406,farmsteadArt 0.85×64 ÷ opaque width
+buildings/historical-facilities-v1,11,0.498–0.533,historicalFacilityManifest displayWidth / source rect
+buildings/historical-gate,4,0.090,gateArtRenderer door leaves — vertical scale
+buildings/historical-gate,4,0.118–0.147,"gateArtRenderer panels — non-uniform, vertical scale"
+buildings/historical-gate,1,0.250,timberGateRenderer post texture — vertical scale
+buildings/historical-houses,5,0.498–0.500,historicalHouseAssets 0.88×64 opaque width
+buildings/historical-houses,6,0.497–0.500,houseCompoundAssets (w+h)×32×0.88
+buildings/historical-palisade-reserved,5,0.100,미사용(그리는 코드 없음) — 0.1로 표시
+buildings/historical-wall,2,0.083,stoneWallGeometry (only with render-wall-strips=0)
+buildings/runtime-mill-v1,1,0.500,animatedMill 68 px
+buildings/runtime-mill-v1,1,0.492,"animatedMill (skewed, rotated — nominal)"
+buildings/variants-wave2,28,0.498–0.801,buildingVariantAssets: same frame as the base
+complete-art-v1/water-bridges,7,0.630,미사용(bridgeWaterKit 호출 없음) — 나무 다리 배율로 표시
+complete-art-v1/water-bridges,2,0.630,drawBridges affine (deck ≈0.63 along)
+complete-art-v1/water-bridges,1,0.422,drawWater 742 px crop → 128
+fields,4,0.400,drawArableFields 64×length÷1.4 (0.268–0.536)
+fields,10,0.280,drawArableFields: 128 PNG px per tile (along the axis)
+fields,2,0.500,drawZones floor pattern
+foliage,4,1.000,groundCoverLayout per-instance 0.75–1.25
+foliage,1,0.750,treeLayout 0.62–0.88
+foliage,1,0.560,treeLayout 0.40–0.72
+foliage,6,0.533–0.800,worldAssetManifest renderScale
+inbox:derived-templates,4,0.293–0.419,미설치 — 워커 합성기 규칙(설치된 같은 계열): walkerComposer: figure drawn 17.6 px tall
+inbox:walker-pilot2/candidates-v1/assets/props,16,0.180,미설치 — 워커 합성기 규칙(설치된 같은 계열): 0.65 × carrier factor (adult ≈0.27)
+inbox:walker-pilot2/candidates-v1/assets/workers,4,0.259–0.288,미설치 — 워커 합성기 규칙(설치된 같은 계열): walkerComposer: figure drawn 17.6 px tall
+inbox:wave12/candidates-20260926/assets/active,4,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave12/candidates-20260926/assets/bld,29,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave12/rework-20260926/assets/active,24,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave13/candidates-v1/assets/animal_walk,8,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave13/candidates-v1/assets/cart,4,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave13/candidates-v1/assets/herd,6,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave13/candidates-v1/assets/pack,3,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave13/candidates-v1/assets/rider,1,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave13/candidates-v1/assets/work,8,0.178,미설치 — 워커 합성기 규칙(설치된 같은 계열): 설치된 손 소품 계열(0.65 × 운반자 배율) — 추정
+inbox:wave13/candidates-v1/assets/workers,4,0.271,미설치 — 워커 합성기 규칙(설치된 같은 계열): walkerComposer: figure drawn 17.6 px tall
+inbox:wave17/candidates-20260926/assets/bld,4,0.500,Astra records game_zoom_1_source_scale
+inbox:wave17/candidates-20260926/assets/decal,1,0.500,Astra records game_zoom_1_source_scale
+inbox:wave17/candidates-20260926/assets/event,2,0.500,Astra records game_zoom_1_source_scale
+inbox:wave17/candidates-20260926/assets/herd,1,0.500,Astra records game_zoom_1_source_scale
+inbox:wave17/candidates-20260926/assets/prop,17,0.500,Astra records game_zoom_1_source_scale
+inbox:wave17/candidates-20260926/assets/wall,1,0.500,Astra records game_zoom_1_source_scale
+inbox:wave17/candidates-20260926/assets/wk,6,0.259–0.288,미설치 — 워커 합성기 규칙(설치된 같은 계열): walkerComposer: figure drawn 17.6 px tall
+inbox:wave20/candidates-20260926/assets/houses,8,0.499–0.500,Astra records native_to_world_scale
+inbox:wave20/rework-20260927/assets/houses,12,0.498–0.498,Astra records native_to_world_scale
+inbox:wave3/candidates-20260926/assets/bld,16,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave3/candidates-20260926/assets/field,2,0.280,미설치 — 설치된 같은 계열 배율: drawArableFields: 128 PNG px per tile (along the axis)
+inbox:wave3/candidates-20260926/assets/loads,8,0.269,미설치 — 설치된 같은 계열 배율: drawWalkers 17.6×0.55÷36
+inbox:wave3/candidates-20260926/assets/pasture,3,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave3/candidates-20260926/assets/pile,18,0.300,미설치 — 설치된 같은 계열 배율: stockPiles PILE_SCALE
+inbox:wave3/candidates-20260926/assets/props,16,0.270,미설치 — 워커 합성기 규칙(설치된 같은 계열): walkerComposer: 1.0 in the cell × carrier factor
+inbox:wave3/candidates-20260926/assets/workers,5,0.271,미설치 — 워커 합성기 규칙(설치된 같은 계열): walkerComposer: figure drawn 17.6 px tall
+inbox:wave3/candidates-20260926/assets/yard,2,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+inbox:wave3/fix-20260926/assets/field,2,0.280,미설치 — 설치된 같은 계열 배율: drawArableFields: 128 PNG px per tile (along the axis)
+inbox:wave3/fix-20260926/assets/loads,4,0.269,미설치 — 설치된 같은 계열 배율: drawWalkers 17.6×0.55÷36
+inbox:wave3/fix-20260926/assets/pile,3,0.300,미설치 — 설치된 같은 계열 배율: stockPiles PILE_SCALE
+inbox:wave3/fix-20260926/assets/yard,1,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+module,6,0.250,drawShoreline abutment 64 px wide (ferry_landing 등록만)
+phase16-house-condition,33,0.336–0.450,houseConditionOverlay: house rectangle
+phase16-landscape,3,0.333–0.377,townLandscapeManifest displayWidth/width
+road,7,0.363,drawRoadRibbons (along a tile axis; v1·v2 URL override only)
+road,1,0.485,drawRoadRibbons (along a tile axis)
+runtime-actors-v1,9,0.267–0.279,walkerComposer: figure drawn 17.6 px tall
+runtime-actors-v1,2,0.255,runtimeActorAssets: cart 17.6 px wide
+runtime-construction-v1,2,0.123–0.126,constructionArtAssets (1×1)
+runtime-construction-v1,1,0.119,"constructionArtAssets (1×1, wave7 truss 없을 때)"
+runtime-construction-v1,2,0.120,미사용(reserved) — 형제 배율로 표시
+runtime-construction-v1,1,0.058,constructionArtAssets span×0.30 (1×1)
+runtime-construction-v1,1,0.060,houseConditionOverlay fallback (0.03–0.09)
+runtime-construction-v1,2,0.250,constructionCompletionEffects 32×64 per 128×256 frame
+runtime-reserved-v1,1,0.100,미사용(그리는 코드 없음) — 0.1로 표시
+shore,5,0.500,drawShoreline pattern
+shore,6,0.280,등록만(로드 안 함) — 같은 계열 배율
+shore,5,0.250,drawShoreline fixed width
+shore,2,0.280,drawShoreline 128 PNG px per tile
+terrain,5,1.000,terrainPatterns 1.0
+visibility-v1/construction,8,0.500,constructionPlaque / worldSigns fixed
+visibility-v1/construction,1,0.720,constructionPlaque fixed
+visibility-v1/fx,1,0.548,constructionCompletionEffects (1×1)
+visibility-v1/fx,1,0.800,constructionMoments fallback (1×1)
+visibility-v1/fx,2,0.500,미사용 — 0.5로 표시
+visibility-v1/fx,1,0.440,constructionCompletionEffects
+visibility-v1/fx,2,0.300,roofSmoke fallback
+visibility-v1/marker,1,0.500,constructionPlaque / worldSigns fixed
+visibility-v1/work,5,0.180,0.65 × carrier factor (adult ≈0.27)
+walker-props-v1,32,0.180,0.65 × carrier factor (adult ≈0.27)
+walker-props-v1,3,0.275,walkerComposer: copied 1:1 into the adult cell
+walkers-v2,44,0.259–0.419,walkerComposer: figure drawn 17.6 px tall
+wall,13,0.170,"drawWallFaces strip: 205 PNG px per tile along the wall, 128 rows → 20 px (v1 미사용)"
+wall,5,0.156,drawWallFaces tops (vertical)
+wall,1,0.074,drawWallFaces crop 44 px tall
+wall,2,0.147,gateArtRenderer panels — vertical scale
+wall,3,0.043,drawWallFaces crop 30 px tall
+wall,1,0.057,drawWallFaces crop 48 px tall
+wall,2,0.251,gateArtRenderer 51.2÷204
+water,3,0.500,drawShoreline pattern
+wave11/kit_defense,8,0.200,constructionKits tower 0.2 (gate 미사용 — 같은 값으로 표시)
+wave11/kit_public,4,0.500,constructionKits: church rectangle
+wave11/kit_public,4,0.533,constructionKits: keep rectangle
+wave11/kit_stone,4,0.801,constructionKits: storehouse 2×2 fit
+wave11/kit_stone,4,0.498,constructionKits: masonry rectangle
+wave11/kit_timber,1,0.340,constructionKits site prop
+wave11/kit_timber,4,0.498,constructionKits: L2 house rectangle
+wave11/kit_timber,4,0.500,constructionKits: L0 house rectangle
+wave11/site,4,0.400,constructionKits site prop (ramp_plank 미사용)
+wave11/site,2,0.340–0.450,constructionKits site prop
+wave11/site,2,0.500,Astra 규격 기본(원본×0.5) — 코드 배율 미확인
+wave11/work,12,0.178,0.65 × carrier factor
+wave11/workers,2,0.271,walkerComposer: figure drawn 17.6 px tall
+wave15/boundary,8,0.500,drawGroundBoundaries 64×48 × decal scale
+wave15/fields,1,0.280,drawArableFields: 128 PNG px per tile (along the axis)
+wave15/fields,1,0.500,drawZones floor pattern
+wave15/foliage,9,1.000,groundCoverLayout per-instance 0.75–1.25
+wave15/foliage,1,0.750,treeLayout 0.62–0.88
+wave15/foliage,1,0.560,treeLayout 0.40–0.72
+wave15/foliage,6,0.520–0.533,same as base tree
+wave15/foliage,8,0.514–0.544,same as base tree (renderScale)
+wave15/fx,1,0.750,seasonFx LEAF_SCALE
+wave15/fx,1,1.000,"screen-space fill, 1 CSS px per PNG px"
+wave15/orchard,18,0.170,zoneLayer 43 × prop scale (0.155–0.180)
+wave15/season,5,0.500,seasonalDecals DECAL_SCALE
+wave15/terrain,2,0.500,seasonGround pattern 0.5
+wave15/zones,1,0.500,seasonalDecals 0.5 × prop scale
+wave15/zones,2,0.500,drawZones floor pattern
+wave7/cart,12,0.269,drawWalkers 17.6×0.55÷36
+wave7/construction,4,0.500,constructionArtAssets TRUSS_SCALE
+wave7/fx,1,0.750,constructionMoments (1×1)
+wave7/fx,3,0.300,roofSmoke SMOKE_SCALE
+wave7/fx,1,0.500,미사용 — 0.5로 표시
+wave7/overlay,5,0.498–0.500,house rectangle (buildingOverlays)
+wave7/pile,12,0.300,stockPiles PILE_SCALE
+wave7/season,5,0.498–0.500,house rectangle (buildingOverlays)
+wave7/season,8,0.500,seasonalDecals DECAL_SCALE
+wave7/signifier,2,0.420,worldSigns SIGN_PROP_SCALE
+wave7/signifier,1,0.400,worldSigns SIGN_STALL_SCALE
+wave7/signifier,3,0.500,worldSigns fixed
+wave7/work,20,0.270,walkerComposer: 1.0 in the cell × carrier factor
+wave9/decal,6,0.500,seasonalDecals fixed (graves·weeds 미사용)
+wave9/decal,1,0.700,buildingOverlays fixed
+wave9/event,16,0.498–0.500,house rectangle (abandoned·plague_shut 미사용)
+wave9/event,1,0.550,storyWorldProps fixed
+wave9/field,3,0.280,drawArableFields: 128 PNG px per tile (along the axis)
+wave9/fx,1,0.550,buildingOverlays fixed
+wave9/fx,1,1.000,"screen-space fill, 1 CSS px per PNG px"
+wave9/pile,1,0.300,미사용 — 더미 배율로 표시
+wave9/prop,1,0.500,storyWorldProps WALKER_SCALE 0.5 per cell px
+wave9/prop,4,0.300,미사용 — 더미 배율로 표시
+wave9/signifier,1,0.300,미사용 — 더미 배율로 표시
+wave9/walker,5,0.500,storyWorldProps WALKER_SCALE 0.5 per cell px
+yards,3,0.273,zoneAssetManifest displayWidth 35
+yards,10,0.500,zoneAssetManifest displayWidth = half
+zones,1,0.234,zoneAssetManifest displayWidth 30
+zones,1,0.203,zoneAssetManifest displayWidth 26
+zones,4,0.219,zoneAssetManifest displayWidth 28
+zones,8,0.170,zoneLayer 43 × prop scale (0.155–0.180)
+zones,5,0.500,drawZones floor pattern
+zones/animals,6,0.234,zoneAssetManifest displayWidth 30
+zones/animals,2,0.240,zoneAssetManifest displayWidth 46

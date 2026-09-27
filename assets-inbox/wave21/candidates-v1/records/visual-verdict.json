@@ -1,0 +1,30 @@
+{
+  "status": "PASS with documented context limitations",
+  "assets": 58,
+  "proofs": 3,
+  "csvRows": 58,
+  "technicalAssertions": 312,
+  "individualVisualReview": 58,
+  "independentVisualReview": 48,
+  "rootOtherIndividualReview": 10,
+  "openVisualFindings": 0,
+  "reviewedHashMismatches": 0,
+  "generationRecords": 90,
+  "gameInstalled": false,
+  "proofType": "offline card composites",
+  "score": 92,
+  "verdict": "pass",
+  "scoreMeaning": "Subjective visual review score, not a runtime or historical accuracy measurement",
+  "strengths": [
+    "58 requested scenes rendered with legible figures and props",
+    "No visible text or prohibited plague door marks in reviewed finals",
+    "Nonviolent rebellion chase and covered funeral biers",
+    "Three proof atlases complete and visually checked"
+  ],
+  "limitations": [
+    "Exact legal distinctions, chronology and named historical event require surrounding game context; images are not evidence of historical fact.",
+    "Visual QA is reviewer judgment, not OCR or formal historical expert validation.",
+    "Chapter-ending settlement layouts evoke continuity but are separate compositions, not surveyed identical-map reconstructions.",
+    "Offline image review only: no installation, gameplay, DPR or runtime readability validation."
+  ]
+}

@@ -1,0 +1,1254 @@
+{
+  "status": "PASS",
+  "assertions": 312,
+  "checks": [
+    {
+      "name": "58 unique expected IDs",
+      "pass": true
+    },
+    {
+      "name": "58 CSV rows",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_harbour_fever asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_harbour_fever prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_harbour_fever packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_harbour_fever packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_harbour_fever packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_harbour_fever packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_harbour_fever packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_priest_death asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_priest_death prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_priest_death packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_priest_death packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_priest_death packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_empty_streets asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_empty_streets prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_empty_streets packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_empty_streets packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_empty_streets packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_new_graves asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_new_graves prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_new_graves packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_new_graves packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_new_graves packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_abandoned_fields asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_abandoned_fields prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_abandoned_fields packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_abandoned_fields packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_abandoned_fields packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_abandoned_fields packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_abandoned_fields packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_wage_demand asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_wage_demand prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_wage_demand packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_wage_demand packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_wage_demand packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_ordinance_reading asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_ordinance_reading prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_ordinance_reading packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_ordinance_reading packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_ordinance_reading packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_ordinance_reading packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_ordinance_reading packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_event_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_wages asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_wages prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_wages packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_wages packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_land_redistribution asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_land_redistribution prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_land_redistribution packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_land_redistribution packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_vacant_priest asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_vacant_priest prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_vacant_priest packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_vacant_priest packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_cash_rent asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_cash_rent prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_cash_rent packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_cash_rent packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_cash_rent packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_decision_cash_rent packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_first_death asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_first_death prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_first_death packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_first_death packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_first_death packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_first_death packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_churchyard asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_churchyard prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_churchyard packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_churchyard packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_churchyard packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_churchyard packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_abandoned_fields asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_abandoned_fields prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_abandoned_fields packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_abandoned_fields packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_abandoned_fields packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_abandoned_fields packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_ordinance asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_ordinance prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_ordinance packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_ordinance packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_ordinance packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_ordinance packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_resettlement asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_resettlement prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_resettlement packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_resettlement packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_resettlement packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_spring_recovery asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_spring_recovery prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_spring_recovery packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_spring_recovery packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_spring_recovery packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_chronicle_spring_recovery packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_ending asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch3_ending prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch3_ending packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch3_ending packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch3_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_wage_competition asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_wage_competition prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_wage_competition packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_wage_competition packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_wage_competition packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_wage_competition packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_petitions asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_petitions prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_petitions packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_petitions packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_petitions packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_petitions packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_rebellion_1381 asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_rebellion_1381 prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_rebellion_1381 packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_rebellion_1381 packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_rebellion_1381 packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_rebellion_1381 packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_autonomy_request asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_autonomy_request prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_autonomy_request packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_autonomy_request packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_textile_growth asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_textile_growth prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_textile_growth packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_textile_growth packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_alehouse asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_alehouse prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_alehouse packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_alehouse packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_guild_foundation asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_guild_foundation prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_guild_foundation packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_guild_foundation packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_lord_warning asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_lord_warning prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_lord_warning packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_event_lord_warning packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_charter_negotiation asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_charter_negotiation prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_charter_negotiation packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_charter_negotiation packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_charter_negotiation packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_charter_negotiation packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_guild_approval asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_guild_approval prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_guild_approval packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_guild_approval packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_tax_collection asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_tax_collection prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_tax_collection packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_tax_collection packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_tax_collection packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_tax_collection packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_textile_or_grain asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_textile_or_grain prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_textile_or_grain packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_decision_textile_or_grain packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_wage_competition asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_wage_competition prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_wage_competition packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_wage_competition packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_petitions asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_petitions prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_petitions packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_petitions packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_rebellion_rumour asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_rebellion_rumour prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_rebellion_rumour packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_rebellion_rumour packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_guild asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_guild prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_guild packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_guild packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_textile_street asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_textile_street prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_textile_street packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_textile_street packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_textile_street packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_textile_street packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_charter_negotiation asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_charter_negotiation prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_charter_negotiation packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_chronicle_charter_negotiation packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_ending asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch4_ending prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch4_ending packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch4_ending packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch4_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_mayor_demand asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_mayor_demand prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_mayor_demand packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_mayor_demand packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_mayor_demand packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_mayor_demand packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_royal_tax_envoy asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_royal_tax_envoy prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_royal_tax_envoy packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_royal_tax_envoy packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_royal_tax_envoy packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_royal_tax_envoy packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_succession asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_succession prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_succession packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_succession packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_succession packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_succession packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_city_seal_making asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_city_seal_making prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_city_seal_making packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_city_seal_making packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_city_seal_making packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_city_seal_making packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_charter_sealing asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_charter_sealing prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_charter_sealing packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_charter_sealing packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_charter_sealing packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_charter_sealing packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_family_departure asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_family_departure prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_family_departure packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_family_departure packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_family_departure packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_family_departure packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_legacy_record asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_legacy_record prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_legacy_record packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_legacy_record packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_legacy_record packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_legacy_record packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_last_market asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_last_market prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_last_market packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_event_last_market packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_autonomy asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_autonomy prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_autonomy packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_autonomy packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_heir_choice asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_heir_choice prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_heir_choice packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_heir_choice packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_royal_tax_response asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_royal_tax_response prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_royal_tax_response packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_royal_tax_response packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_legacy asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_legacy prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_legacy packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_decision_legacy packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_mayor_election asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_mayor_election prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_mayor_election packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_mayor_election packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_city_seal asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_city_seal prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_city_seal packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_city_seal packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_charter_sealing asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_charter_sealing prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_charter_sealing packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_charter_sealing packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_heir asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_heir prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_heir packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_heir packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_legacy_sealing asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_legacy_sealing prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_legacy_sealing packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_legacy_sealing packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_last_market asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_last_market prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_last_market packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_chronicle_last_market packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_ending asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_ending prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_ending packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_ending packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_campaign_ending asset hash",
+      "pass": true
+    },
+    {
+      "name": "ch5_campaign_ending prompt provenance",
+      "pass": true
+    },
+    {
+      "name": "ch5_campaign_ending packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_campaign_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "ch5_campaign_ending packaged raw",
+      "pass": true
+    },
+    {
+      "name": "ch5_campaign_ending packaged reference",
+      "pass": true
+    },
+    {
+      "name": "proof 01-chapter3.png",
+      "pass": true
+    },
+    {
+      "name": "proof 02-chapter4.png",
+      "pass": true
+    },
+    {
+      "name": "proof 03-chapter5.png",
+      "pass": true
+    },
+    {
+      "name": "exactly 3 final proofs",
+      "pass": true
+    },
+    {
+      "name": "exactly 58 final assets",
+      "pass": true
+    }
+  ]
+}
