@@ -1,0 +1,19 @@
+{
+  "tool": "artifact-tool authoring/reimport",
+  "checks": [
+    {
+      "file": "assets.csv",
+      "dataRows": 58,
+      "columns": 15,
+      "allCellsRoundtrip": true,
+      "jsonFieldsParsed": true
+    },
+    {
+      "file": "rework.csv",
+      "dataRows": 24,
+      "columns": 15,
+      "allCellsRoundtrip": true,
+      "jsonFieldsParsed": true
+    }
+  ]
+}

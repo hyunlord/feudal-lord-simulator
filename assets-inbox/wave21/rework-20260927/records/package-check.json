@@ -1,0 +1,243 @@
+{
+  "status": "PASS",
+  "assetCount": 58,
+  "proofCount": 3,
+  "reworked": 24,
+  "excludedContactsAbsent": true,
+  "independentReviewFile": "records/independent-rework-review.json",
+  "reviewStatus": "pass_with_context_and_retained_pair_caveats",
+  "fileHashes": [
+    {
+      "file": "assets/ch3_events/ch3_ending.png",
+      "sha256": "b7b63af537fbbb8ea1eff32297a1e7c63c23bceac48e4a295eea77b189244089"
+    },
+    {
+      "file": "assets/ch3_events/ch3_event_abandoned_fields.png",
+      "sha256": "cc3786494b554464d3785dbb7e2faca10301b241ea0bd3721741857ae9a92179"
+    },
+    {
+      "file": "assets/ch3_events/ch3_event_empty_streets.png",
+      "sha256": "f9d75e967f0790622e1362ee941a6a3ae77fd33441896bcdc23202b0957ea922"
+    },
+    {
+      "file": "assets/ch3_events/ch3_event_harbour_fever.png",
+      "sha256": "a59659296867a6df1f406d4cfd4855f4d0bfc1cf54eb208b8421831c9c91a7e7"
+    },
+    {
+      "file": "assets/ch3_events/ch3_event_new_graves.png",
+      "sha256": "79081c5f2636798e4d6442c54b9c545e1f4b8e7e2240bdcf7c7546bc7e6a876a"
+    },
+    {
+      "file": "assets/ch3_events/ch3_event_ordinance_reading.png",
+      "sha256": "9bacfdfc4800a9e7bae8722402669f2bd3b77551d0b1a031805be8a31fd653a5"
+    },
+    {
+      "file": "assets/ch3_events/ch3_event_priest_death.png",
+      "sha256": "29398cda973002226b20dcd983034b1ab89a54188577db0151954275d6ef8e69"
+    },
+    {
+      "file": "assets/ch3_events/ch3_event_resettlement.png",
+      "sha256": "16d5a9b16c7856d3850351824de4811c4523487de14e26f7906b7fde9ffbe690"
+    },
+    {
+      "file": "assets/ch3_events/ch3_event_wage_demand.png",
+      "sha256": "833d5304b21a9964e48a4c936de52c40382cac3bc81aa156200da1d96289e57e"
+    },
+    {
+      "file": "assets/ch3_records/ch3_chronicle_abandoned_fields.png",
+      "sha256": "dde1f2fdc9f8d321a6a584b8539a2d5af93236a984880d638823047cb471adb0"
+    },
+    {
+      "file": "assets/ch3_records/ch3_chronicle_churchyard.png",
+      "sha256": "b21d99ef369d16a6fdf27a008b6edfc9e0b092941147eaa18d630c8349a16f8a"
+    },
+    {
+      "file": "assets/ch3_records/ch3_chronicle_first_death.png",
+      "sha256": "5394c74b3bb247676341fa73a99def3b63ffc0d5b8f0f872d387d83c84d3412c"
+    },
+    {
+      "file": "assets/ch3_records/ch3_chronicle_ordinance.png",
+      "sha256": "04f6c61ea501987e2db8d1e1c9b8ff69499b4d6a99e0b31cbcca92bd52e219c0"
+    },
+    {
+      "file": "assets/ch3_records/ch3_chronicle_resettlement.png",
+      "sha256": "063b159ab99cfe816dfc8b36315d7bcbc82c19d9df81e6ac301800e7c5a3d432"
+    },
+    {
+      "file": "assets/ch3_records/ch3_chronicle_spring_recovery.png",
+      "sha256": "d5a702f23b84b6d6b71f6fb09258539936960979856ef122159f4e62c25f9a7e"
+    },
+    {
+      "file": "assets/ch3_records/ch3_decision_cash_rent.png",
+      "sha256": "888f7d651574d8d56f02a55bb55fb9d2f651ac8d8966364732ceee6ce92cf7c6"
+    },
+    {
+      "file": "assets/ch3_records/ch3_decision_land_redistribution.png",
+      "sha256": "57eec023ca097f6c4b3fd9fdc40f299c544b8c4958997beff92c516f8dd993f4"
+    },
+    {
+      "file": "assets/ch3_records/ch3_decision_vacant_priest.png",
+      "sha256": "8f5a34b2581363f54ac3230c7687d6bca667a491b41624838778d8962d92e08b"
+    },
+    {
+      "file": "assets/ch3_records/ch3_decision_wages.png",
+      "sha256": "48c838bac75127e99c7703c793934c4e6d71dc35ecbf75c8c69b1c78035c5f24"
+    },
+    {
+      "file": "assets/ch4_events/ch4_ending.png",
+      "sha256": "0061b3a8a5d96b757068ce4ed82daae4fda500229caae7fd74ff41d09b0af9e1"
+    },
+    {
+      "file": "assets/ch4_events/ch4_event_alehouse.png",
+      "sha256": "9616d1b4ce173d35b9c05965455aadc5ef5e1569acd105631594ec3d6db872db"
+    },
+    {
+      "file": "assets/ch4_events/ch4_event_autonomy_request.png",
+      "sha256": "2c4e9e49d1b8d2cb827a2be0e07e450aadfb2606b009db2545fbec5238360b5f"
+    },
+    {
+      "file": "assets/ch4_events/ch4_event_guild_foundation.png",
+      "sha256": "3a59fe029c82a810e7a37fe2053e298109e8b90d677299222e84cc27da9a3120"
+    },
+    {
+      "file": "assets/ch4_events/ch4_event_lord_warning.png",
+      "sha256": "f231668a19a2c84637255a0e602e6f1eb3ddd8e8f28d9f4ce2f31ff20ce07169"
+    },
+    {
+      "file": "assets/ch4_events/ch4_event_petitions.png",
+      "sha256": "652f03f88ea4a6d2a931b448e48fefda7259abfaed36cc5390c62d7032a7cdd1"
+    },
+    {
+      "file": "assets/ch4_events/ch4_event_rebellion_1381.png",
+      "sha256": "0f7b27289b527075faceee0a0fe3809bf24df5544d4e2e6b97eb7e757d82922c"
+    },
+    {
+      "file": "assets/ch4_events/ch4_event_textile_growth.png",
+      "sha256": "0797335e3f903d4e992b1c6711e4a37e2665461eed1bcfac29d04655469c7084"
+    },
+    {
+      "file": "assets/ch4_events/ch4_event_wage_competition.png",
+      "sha256": "7a97714354f6fd6b44e3dff339efc4ebf80d2c0d29bbe7521a0d2b2be465e08a"
+    },
+    {
+      "file": "assets/ch4_records/ch4_chronicle_charter_negotiation.png",
+      "sha256": "e8e88bf15c085c99917c311f505d44fe7e670d1fc8bef2fabdcf75699ffe21c9"
+    },
+    {
+      "file": "assets/ch4_records/ch4_chronicle_guild.png",
+      "sha256": "cb5584270ca4dd52a68503ca500c580d8786cb178d01b9a9bbc5ec26f255d9ab"
+    },
+    {
+      "file": "assets/ch4_records/ch4_chronicle_petitions.png",
+      "sha256": "11484027c4a0bc6997aab97a7408bfe886ef970925f54e7ae787fb8573c6d567"
+    },
+    {
+      "file": "assets/ch4_records/ch4_chronicle_rebellion_rumour.png",
+      "sha256": "86fc127f531a346b96272c976619677e9a83ced68951cb3e5898de05cbfc845b"
+    },
+    {
+      "file": "assets/ch4_records/ch4_chronicle_textile_street.png",
+      "sha256": "cdc9abadbaca86cc519f976009b3b1886f308b8da7497f031a621eac7ca860ce"
+    },
+    {
+      "file": "assets/ch4_records/ch4_chronicle_wage_competition.png",
+      "sha256": "1e91e2379b587f6815b7a7cc130d05d17bc7839d105e9585ec6e16a30305c6fa"
+    },
+    {
+      "file": "assets/ch4_records/ch4_decision_charter_negotiation.png",
+      "sha256": "29b8262e643d460ad194c8c58f256897d9d36727ee32ffda6f9995ea8c61478a"
+    },
+    {
+      "file": "assets/ch4_records/ch4_decision_guild_approval.png",
+      "sha256": "41c09f21acda0db4ab28f38c650ca99614c409953ee15dc4a08e734f8c4518eb"
+    },
+    {
+      "file": "assets/ch4_records/ch4_decision_tax_collection.png",
+      "sha256": "daa819eaff781e9a5f743e065718d5f4d8d3868747027176450592925a9d7baf"
+    },
+    {
+      "file": "assets/ch4_records/ch4_decision_textile_or_grain.png",
+      "sha256": "777e877dd9912761fa54dc177e85360cb3db5d63fae19e07229b238c129ee729"
+    },
+    {
+      "file": "assets/ch5_events/ch5_campaign_ending.png",
+      "sha256": "e2eca183fd785611d9ea9fddc3b4e8e603cd4e86af21b0ff76764b399e4339a9"
+    },
+    {
+      "file": "assets/ch5_events/ch5_ending.png",
+      "sha256": "416e458bd616d08383494f0629eed4ef0da8c7928b9e57c68a361410fedd7596"
+    },
+    {
+      "file": "assets/ch5_events/ch5_event_charter_sealing.png",
+      "sha256": "c30c4e72c5f4b2d2f6bdf6046399fbcf70b303312ae662369fee62d48ec2d859"
+    },
+    {
+      "file": "assets/ch5_events/ch5_event_city_seal_making.png",
+      "sha256": "1be19b6bda072f1e181ac7ad1ec5e1402547c468d636ba1d8701bba967dc7b60"
+    },
+    {
+      "file": "assets/ch5_events/ch5_event_family_departure.png",
+      "sha256": "30ecea394a8b4154a57a8c2ba437eb167fed8aecfc2d031116d458c87720380c"
+    },
+    {
+      "file": "assets/ch5_events/ch5_event_last_market.png",
+      "sha256": "5b6720b5857c21e1b42ef239cc3b16de016436c1a9938bc8acac1d531cf57c35"
+    },
+    {
+      "file": "assets/ch5_events/ch5_event_legacy_record.png",
+      "sha256": "fd582cf16517aa68e260ea8997f1b3d3ec52c4700cf586d8bc8ea0aeaab3f007"
+    },
+    {
+      "file": "assets/ch5_events/ch5_event_mayor_demand.png",
+      "sha256": "367707c044725d098212052fc90d52d85d9f6a7f2080d20834f7bac4d76a963f"
+    },
+    {
+      "file": "assets/ch5_events/ch5_event_royal_tax_envoy.png",
+      "sha256": "f4d7c18d3723dab67f3bbc0d633f272796c2ce00e70fbf87bfc2f2177bd1957f"
+    },
+    {
+      "file": "assets/ch5_events/ch5_event_succession.png",
+      "sha256": "2923906f06bc2671150f66d8207e5d3a5dfc3d264333fc3b6b7ded0c44b5c91a"
+    },
+    {
+      "file": "assets/ch5_records/ch5_chronicle_charter_sealing.png",
+      "sha256": "47ad8c1f406f2da001fe2210ba959e03d867e8edaa7fb6b390207496791f2e4d"
+    },
+    {
+      "file": "assets/ch5_records/ch5_chronicle_city_seal.png",
+      "sha256": "50f8294e2d973f35af477179526d4ee1a112344430226a3f9a0281bc4d54fdec"
+    },
+    {
+      "file": "assets/ch5_records/ch5_chronicle_heir.png",
+      "sha256": "f9b69021139871ce08988a0e23fdcb22174908682df710e8a725e5d200eaf3f2"
+    },
+    {
+      "file": "assets/ch5_records/ch5_chronicle_last_market.png",
+      "sha256": "ce8a3d9e793f072e907cc0a00573a2763539f8c1f23dd2a56dce3aa7649e7986"
+    },
+    {
+      "file": "assets/ch5_records/ch5_chronicle_legacy_sealing.png",
+      "sha256": "65c0dac24e14c692eb0284b917dac537055ae3d593d70cbcd6c14c67f9d03251"
+    },
+    {
+      "file": "assets/ch5_records/ch5_chronicle_mayor_election.png",
+      "sha256": "a9d96149058f9479a57ef6359d0c96acdc35f00c2f114cd77ab80865cc467bdd"
+    },
+    {
+      "file": "assets/ch5_records/ch5_decision_autonomy.png",
+      "sha256": "3167637d2f66967d3482b9fee15416635e0335916bb0fc2ffa07e47ade9589a3"
+    },
+    {
+      "file": "assets/ch5_records/ch5_decision_heir_choice.png",
+      "sha256": "22aac61c66641d968c1ea46dacf2836fb88151d008337b1d0f49f7ca4a58722b"
+    },
+    {
+      "file": "assets/ch5_records/ch5_decision_legacy.png",
+      "sha256": "1612d7eddb3c0fbf40b35e419dabbe3daff72952d1bd878cb1e12e46ac60b42c"
+    },
+    {
+      "file": "assets/ch5_records/ch5_decision_royal_tax_response.png",
+      "sha256": "9dbf8fcb64aadbc27f2b52150aaed910569279ff76bb9a96bed272d4ba9a0f7f"
+    }
+  ]
+}

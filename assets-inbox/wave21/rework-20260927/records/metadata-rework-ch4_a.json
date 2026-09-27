@@ -1,0 +1,138 @@
+[
+  {
+    "id": "ch4_event_guild_foundation",
+    "file": "assets/ch4_events/ch4_event_guild_foundation.png",
+    "width": 960,
+    "height": 540,
+    "description": "Low-angle street procession of artisans carrying shears, mallet and shuttle beneath ONE tall muted guild banner bearing simple shears motif. Striding figures diagonal, no paperwork or table.",
+    "historyNotes": "잉글랜드 남부 1362–1400. 문서 무문자, 가상 단순 문양, 주택 무굴뚝, 무유혈.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene illustration edit/redraw. Completely replace this painting's composition with the new scene below, preserving ONLY its hand-painted low-chroma gouache/oil texture and Southern England 1362–1400 setting. This is a DISTINCT new illustration, not a partial table repaint. Do NOT repeat the old seated redcap greybeard, shared window/room, table, map, or paperwork group. One coherent full-bleed scene, no panels. Warm plaster, weathered oak, simple wool and linen, rubble stone, flat dull clay tile or thatch; every house roof ridge uninterrupted WITHOUT chimneys or chimney pots even in distance. Muted earth, gray-green, ochre, restrained burgundy. No letters, numbers, pseudowriting, watermark, labels, bright flags, real heraldry, plague door marks, hops, gore, blood. Any document fully BLANK, simple plain waxseal allowed. Strong focal gesture and distinct location silhouette readable without caption. NEW SCENE: Low-angle street procession of artisans carrying shears, mallet and shuttle beneath ONE tall muted guild banner bearing simple shears motif. Striding figures diagonal, no paperwork or table. Output landscape 16:9.",
+        "rawFile": "raw/rework-ch4_a/ch4_event_guild_foundation.png",
+        "referenceImages": [
+          "references/previous/ch4_event_guild_foundation.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize 1672x941 to 960x540; ensureAlpha, no drawn additions.",
+    "qa": {
+      "status": "pass",
+      "notes": "Full target-size and contact reviewed. Outdoor composition unique among five; no visible text/chimneys. Warning letter corrected to folded banded parchment; no tabletop scene remains."
+    }
+  },
+  {
+    "id": "ch4_event_lord_warning",
+    "file": "assets/ch4_events/ch4_event_lord_warning.png",
+    "width": 960,
+    "height": 540,
+    "description": "At narrow stone gate, mounted earls messenger leans from saddle and thrusts sealed blank folded letter toward nervous gatekeeper on foot. Very close horse flank and gate arch. No standard procession/bridge; isolated rider.",
+    "historyNotes": "잉글랜드 남부 1362–1400. 문서 무문자, 가상 단순 문양, 주택 무굴뚝, 무유혈.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene illustration edit/redraw. Completely replace this painting's composition with the new scene below, preserving ONLY its hand-painted low-chroma gouache/oil texture and Southern England 1362–1400 setting. This is a DISTINCT new illustration, not a partial table repaint. Do NOT repeat the old seated redcap greybeard, shared window/room, table, map, or paperwork group. One coherent full-bleed scene, no panels. Warm plaster, weathered oak, simple wool and linen, rubble stone, flat dull clay tile or thatch; every house roof ridge uninterrupted WITHOUT chimneys or chimney pots even in distance. Muted earth, gray-green, ochre, restrained burgundy. No letters, numbers, pseudowriting, watermark, labels, bright flags, real heraldry, plague door marks, hops, gore, blood. Any document fully BLANK, simple plain waxseal allowed. Strong focal gesture and distinct location silhouette readable without caption. NEW SCENE: At narrow stone gate, mounted earls messenger leans from saddle and thrusts sealed blank folded letter toward nervous gatekeeper on foot. Very close horse flank and gate arch. No standard procession/bridge; isolated rider. Output landscape 16:9.",
+        "rawFile": "raw/rework-ch4_a/ch4_event_lord_warning.png",
+        "referenceImages": [
+          "references/previous/ch4_event_lord_warning.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "id": "ch4_event_lord_warning",
+        "prompt": "Precise historical object correction ONLY. Keep this painting entirely identical including rider, horse, gatekeeper, stone gate, pose, palette, clothing, background and framing. Replace the small modern-looking triangular-flap envelope between their hands with a late-medieval folded parchment letter: plain rectangular parchment sheet folded into horizontal bands, wrapped with one narrow parchment strip bearing a small dark wax seal; NO triangular envelope flap and NO diagonal flap seams. Blank parchment, no writing. Same small position, same hand positions, same hand-painted texture.",
+        "rawFile": "raw/rework-ch4_a/ch4_event_lord_warning-v2.png",
+        "referenceImages": [
+          "raw/rework-ch4_a/ch4_event_lord_warning-edit-input.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize 1672x941 to 960x540; ensureAlpha, no drawn additions.",
+    "qa": {
+      "status": "pass",
+      "notes": "Full target-size and contact reviewed. Outdoor composition unique among five; no visible text/chimneys. Warning letter corrected to folded banded parchment; no tabletop scene remains."
+    }
+  },
+  {
+    "id": "ch4_decision_charter_negotiation",
+    "file": "assets/ch4_records/ch4_decision_charter_negotiation.png",
+    "width": 640,
+    "height": 480,
+    "description": "Wide market-cross square public reading. Steward standing high on stone marketcross steps holds open blankcharter; citizens below divided in response. Noble remains to one side weighing assent; no table. Landmark stonecross central and crowd semicircle.",
+    "historyNotes": "잉글랜드 남부 1362–1400. 문서 무문자, 가상 단순 문양, 주택 무굴뚝, 무유혈.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene illustration edit/redraw. Completely replace this painting's composition with the new scene below, preserving ONLY its hand-painted low-chroma gouache/oil texture and Southern England 1362–1400 setting. This is a DISTINCT new illustration, not a partial table repaint. Do NOT repeat the old seated redcap greybeard, shared window/room, table, map, or paperwork group. One coherent full-bleed scene, no panels. Warm plaster, weathered oak, simple wool and linen, rubble stone, flat dull clay tile or thatch; every house roof ridge uninterrupted WITHOUT chimneys or chimney pots even in distance. Muted earth, gray-green, ochre, restrained burgundy. No letters, numbers, pseudowriting, watermark, labels, bright flags, real heraldry, plague door marks, hops, gore, blood. Any document fully BLANK, simple plain waxseal allowed. Strong focal gesture and distinct location silhouette readable without caption. NEW SCENE: Wide market-cross square public reading. Steward standing high on stone marketcross steps holds open blankcharter; citizens below divided in response. Noble remains to one side weighing assent; no table. Landmark stonecross central and crowd semicircle. Output landscape 4:3.",
+        "rawFile": "raw/rework-ch4_a/ch4_decision_charter_negotiation.png",
+        "referenceImages": [
+          "references/previous/ch4_decision_charter_negotiation.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize 1448x1086 to 640x480; ensureAlpha, no drawn additions.",
+    "qa": {
+      "status": "pass",
+      "notes": "Full target-size and contact reviewed. Outdoor composition unique among five; no visible text/chimneys. Warning letter corrected to folded banded parchment; no tabletop scene remains."
+    }
+  },
+  {
+    "id": "ch4_decision_guild_approval",
+    "file": "assets/ch4_records/ch4_decision_guild_approval.png",
+    "width": 640,
+    "height": 480,
+    "description": "Outside guildhall Gothic arcade, two artisans on short ladder hang large blank sealed charter vertically against oak pillar, large dangling waxseal; official witnesses from ground. Upward composition, no reading table/crowdprocession.",
+    "historyNotes": "잉글랜드 남부 1362–1400. 문서 무문자, 가상 단순 문양, 주택 무굴뚝, 무유혈.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene illustration edit/redraw. Completely replace this painting's composition with the new scene below, preserving ONLY its hand-painted low-chroma gouache/oil texture and Southern England 1362–1400 setting. This is a DISTINCT new illustration, not a partial table repaint. Do NOT repeat the old seated redcap greybeard, shared window/room, table, map, or paperwork group. One coherent full-bleed scene, no panels. Warm plaster, weathered oak, simple wool and linen, rubble stone, flat dull clay tile or thatch; every house roof ridge uninterrupted WITHOUT chimneys or chimney pots even in distance. Muted earth, gray-green, ochre, restrained burgundy. No letters, numbers, pseudowriting, watermark, labels, bright flags, real heraldry, plague door marks, hops, gore, blood. Any document fully BLANK, simple plain waxseal allowed. Strong focal gesture and distinct location silhouette readable without caption. NEW SCENE: Outside guildhall Gothic arcade, two artisans on short ladder hang large blank sealed charter vertically against oak pillar, large dangling waxseal; official witnesses from ground. Upward composition, no reading table/crowdprocession. Output landscape 4:3.",
+        "rawFile": "raw/rework-ch4_a/ch4_decision_guild_approval.png",
+        "referenceImages": [
+          "references/previous/ch4_decision_guild_approval.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize 1448x1086 to 640x480; ensureAlpha, no drawn additions.",
+    "qa": {
+      "status": "pass",
+      "notes": "Full target-size and contact reviewed. Outdoor composition unique among five; no visible text/chimneys. Warning letter corrected to folded banded parchment; no tabletop scene remains."
+    }
+  },
+  {
+    "id": "ch4_decision_tax_collection",
+    "file": "assets/ch4_records/ch4_decision_tax_collection.png",
+    "width": 640,
+    "height": 480,
+    "description": "One coherent winding residential street: near left collector knocks at cottage doorway, householder puts small coin into his purse; deeper right elected community representative brings one gathered coffer with neighbors toward bailiff by well. Spatial direct vs pooled collection; no splitpanels, no tables.",
+    "historyNotes": "잉글랜드 남부 1362–1400. 문서 무문자, 가상 단순 문양, 주택 무굴뚝, 무유혈.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene illustration edit/redraw. Completely replace this painting's composition with the new scene below, preserving ONLY its hand-painted low-chroma gouache/oil texture and Southern England 1362–1400 setting. This is a DISTINCT new illustration, not a partial table repaint. Do NOT repeat the old seated redcap greybeard, shared window/room, table, map, or paperwork group. One coherent full-bleed scene, no panels. Warm plaster, weathered oak, simple wool and linen, rubble stone, flat dull clay tile or thatch; every house roof ridge uninterrupted WITHOUT chimneys or chimney pots even in distance. Muted earth, gray-green, ochre, restrained burgundy. No letters, numbers, pseudowriting, watermark, labels, bright flags, real heraldry, plague door marks, hops, gore, blood. Any document fully BLANK, simple plain waxseal allowed. Strong focal gesture and distinct location silhouette readable without caption. NEW SCENE: One coherent winding residential street: near left collector knocks at cottage doorway, householder puts small coin into his purse; deeper right elected community representative brings one gathered coffer with neighbors toward bailiff by well. Spatial direct vs pooled collection; no splitpanels, no tables. Output landscape 4:3.",
+        "rawFile": "raw/rework-ch4_a/ch4_decision_tax_collection.png",
+        "referenceImages": [
+          "references/previous/ch4_decision_tax_collection.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize 1448x1086 to 640x480; ensureAlpha, no drawn additions.",
+    "qa": {
+      "status": "pass",
+      "notes": "Full target-size and contact reviewed. Outdoor composition unique among five; no visible text/chimneys. Warning letter corrected to folded banded parchment; no tabletop scene remains."
+    }
+  }
+]

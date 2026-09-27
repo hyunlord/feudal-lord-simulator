@@ -1,0 +1,130 @@
+{
+  "runner": "DGX, scripts/remote/run.sh --task guardrail (REMOTE-1)",
+  "baseline": "seeds/baseline-cbc84d0.json (victory tick is recorded, not gated)",
+  "trunkReference": "MARKET-1 run 3 fd7e6735 (seed 3 was the MK6 stall)",
+  "runs": {
+    "run1@bea1f902 (first form: a piled barn before granaries too)": [
+      {
+        "seed": 1,
+        "status": "passed",
+        "victoryTick": 136495,
+        "finalTick": 281074,
+        "stopReason": "target-scale-stable"
+      },
+      {
+        "seed": 2,
+        "status": "stopped",
+        "lastProgress": {
+          "tick": 660000,
+          "lots": 24,
+          "l4": 0
+        },
+        "note": "24 lots from 60,000 ticks, L4 0/24 through 660,000; stopped by hand when the user narrowed the rule (run 2 decides)"
+      },
+      {
+        "seed": 3,
+        "status": "passed",
+        "victoryTick": 160553,
+        "finalTick": 219502,
+        "stopReason": "target-scale-stable"
+      },
+      {
+        "seed": 4,
+        "status": "passed",
+        "victoryTick": 183232,
+        "finalTick": 289399,
+        "stopReason": "target-scale-stable"
+      },
+      {
+        "seed": 5,
+        "status": "passed",
+        "victoryTick": 283122,
+        "finalTick": 399386,
+        "stopReason": "target-scale-stable"
+      }
+    ],
+    "run2@c5c778ec (LB-15 as narrowed, the gate)": [
+      {
+        "seed": 1,
+        "status": "passed",
+        "victoryTick": 138849,
+        "baselineVictoryTick": 143648,
+        "victoryChangePercent": -3.3,
+        "trunkVictoryTick": 174294,
+        "finalTick": 254047,
+        "baselineFinalTick": 282868,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 1,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 566
+      },
+      {
+        "seed": 2,
+        "status": "passed",
+        "victoryTick": 228549,
+        "baselineVictoryTick": 171536,
+        "victoryChangePercent": 33.2,
+        "trunkVictoryTick": 165897,
+        "finalTick": 268349,
+        "baselineFinalTick": 214105,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 1,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 532
+      },
+      {
+        "seed": 3,
+        "status": "passed",
+        "victoryTick": 168810,
+        "baselineVictoryTick": 149819,
+        "victoryChangePercent": 12.7,
+        "trunkVictoryTick": null,
+        "finalTick": 313274,
+        "baselineFinalTick": 287126,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 1,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 1134
+      },
+      {
+        "seed": 4,
+        "status": "passed",
+        "victoryTick": 181180,
+        "baselineVictoryTick": 180922,
+        "victoryChangePercent": 0.1,
+        "trunkVictoryTick": 180192,
+        "finalTick": 275756,
+        "baselineFinalTick": 219124,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 1,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 496
+      },
+      {
+        "seed": 5,
+        "status": "passed",
+        "victoryTick": 278726,
+        "baselineVictoryTick": 281230,
+        "victoryChangePercent": -0.9,
+        "trunkVictoryTick": 278726,
+        "finalTick": 409227,
+        "baselineFinalTick": 422579,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 12,
+        "markets": 2,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 942
+      }
+    ]
+  },
+  "note": "Run 1 is the rule the user replaced; run 2 is the one judged (user: '2회차 바로 돌리고 그 결과로 판정해')."
+}

@@ -1,0 +1,124 @@
+[
+  {
+    "id": "ch4_decision_textile_or_grain",
+    "file": "assets/ch4_records/ch4_decision_textile_or_grain.png",
+    "width": 640,
+    "height": 480,
+    "description": "갈림길의 직물 투자와 곡물 선택",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝, 실존 문장 없음. 사건과 다른 장소·행동으로 재구성.",
+    "generationRecords": [
+      {
+        "prompt": "COMPLETELY REDRAW this project illustration, keep only its low-chroma hand-painted brush texture and period materials; change camera, place, protagonists, gestures completely. South England 1362–1400. One coherent full-bleed scene, no panels. No letters, numbers, pseudo-text, watermark, paper border, artificial aged tint. NO TABLE, DESK, SEATED CLERK, RED-CAPPED BEARDED OLD LORD, generic interior meeting, default window, chimneys anywhere, hops, door plague marks, blood. Clean uninterrupted roof ridges. Muted earthcolors, warm limewash, weathered oak, flat clay tiles/thatch. 4:3 landscape. OUTDOOR WIDE VIEW FROM BEHIND: a younger dark-haired bareheaded lord in muted blue-grey mantle and an older woman steward stand small at a clearly Y-shaped country path junction. Lord extends one arm toward left, steward points right. LEFT branch goes toward broad wool-cloth tenter drying frames and workers; RIGHT branch goes into golden ripe grain strips with harvesters. Two contrasting productive landscapes dominate, standing figures are secondary. No documents or furniture, no merchants proffering goods.",
+        "rawFile": "raw/rework-ch4_b/ch4_decision_textile_or_grain-v1.png",
+        "referenceImages": [
+          "references/previous/ch4_decision_textile_or_grain.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 cover-centre resize to exact requested canvas, ensureAlpha. No code-painted scene contents.",
+    "qa": {
+      "status": "pass",
+      "sceneDistinct": true
+    }
+  },
+  {
+    "id": "ch4_chronicle_petitions",
+    "file": "assets/ch4_records/ch4_chronicle_petitions.png",
+    "width": 384,
+    "height": 384,
+    "description": "닫힌 영주관 문틈의 청원",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝, 실존 문장 없음. 사건과 다른 장소·행동으로 재구성.",
+    "generationRecords": [
+      {
+        "prompt": "COMPLETELY REDRAW this project illustration, keep only its low-chroma hand-painted brush texture and period materials; change camera, place, protagonists, gestures completely. South England 1362–1400. One coherent full-bleed scene, no panels. No letters, numbers, pseudo-text, watermark, paper border, artificial aged tint. NO TABLE, DESK, SEATED CLERK, RED-CAPPED BEARDED OLD LORD, generic interior meeting, default window, chimneys anywhere, hops, door plague marks, blood. Clean uninterrupted roof ridges. Muted earthcolors, warm limewash, weathered oak, flat clay tiles/thatch. SQUARE CLOSE OBLIQUE VIEW of a tall locked oak manor wicket with massive iron hinges and a narrow rectangular petition slit at eye height. THREE peasants crowded at left, a grey-haired woman and two younger men, push multiple BLANK folded parchment petitions through that slit. Cropped hands/paper and imposing vertical door dominate, faces in profile, no recipient visible. Outdoor stone jamb and green weeds. Nothing written anywhere; no table, no clerk, no open porch.",
+        "rawFile": "raw/rework-ch4_b/ch4_chronicle_petitions-v1.png",
+        "referenceImages": [
+          "references/previous/ch4_chronicle_petitions.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precisely remove the small pale chimney from the distant house at upper left. Make the roof ridge clean and uninterrupted, continuous weathered flat clay tile. Keep all petitioners, hands, blank papers, oak gate slit and composition unchanged. No text. No chimneys anywhere.",
+        "rawFile": "raw/rework-ch4_b/ch4_chronicle_petitions-v2.png",
+        "referenceImages": [
+          "raw/rework-ch4_b/ch4_chronicle_petitions-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 cover-centre resize to exact requested canvas, ensureAlpha. No code-painted scene contents.",
+    "qa": {
+      "status": "pass",
+      "sceneDistinct": true,
+      "notes": "배경 굴뚝 제거 후 원본 재검수. 실내 탁자 없이 문틈/성문 장면으로 구별."
+    }
+  },
+  {
+    "id": "ch4_chronicle_guild",
+    "file": "assets/ch4_records/ch4_chronicle_guild.png",
+    "width": 384,
+    "height": 384,
+    "description": "도구를 들어 올린 장인의 길드 서약",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝, 실존 문장 없음. 사건과 다른 장소·행동으로 재구성.",
+    "generationRecords": [
+      {
+        "prompt": "COMPLETELY REDRAW this project illustration, keep only its low-chroma hand-painted brush texture and period materials; change camera, place, protagonists, gestures completely. South England 1362–1400. One coherent full-bleed scene, no panels. No letters, numbers, pseudo-text, watermark, paper border, artificial aged tint. NO TABLE, DESK, SEATED CLERK, RED-CAPPED BEARDED OLD LORD, generic interior meeting, default window, chimneys anywhere, hops, door plague marks, blood. Clean uninterrupted roof ridges. Muted earthcolors, warm limewash, weathered oak, flat clay tiles/thatch. SQUARE VERY LOW ANGLE close group: three artisans stationary under outdoor workshop eaves enthusiastically raise a wooden weaving shuttle, iron spring shears and a wooden mallet together overhead. Each tool held separately and recognizable, hands and tools make a triangular composition across upper half; smiling young faces below. Tiny muted ochre guild banner behind bears ONE simple invented shears silhouette without words. Oath of craftspeople, not marching, no paper or furniture, no crowd procession.",
+        "rawFile": "raw/rework-ch4_b/ch4_chronicle_guild-v1.png",
+        "referenceImages": [
+          "references/previous/ch4_chronicle_guild.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 cover-centre resize to exact requested canvas, ensureAlpha. No code-painted scene contents.",
+    "qa": {
+      "status": "pass",
+      "sceneDistinct": true
+    }
+  },
+  {
+    "id": "ch4_chronicle_charter_negotiation",
+    "file": "assets/ch4_records/ch4_chronicle_charter_negotiation.png",
+    "width": 384,
+    "height": 384,
+    "description": "성문 문턱에서 열쇠 사슬을 잡은 특허 협상",
+    "historyNotes": "잉글랜드 남부 1362–1400. 무문자·무굴뚝, 실존 문장 없음. 사건과 다른 장소·행동으로 재구성.",
+    "generationRecords": [
+      {
+        "prompt": "COMPLETELY REDRAW this project illustration, keep only its low-chroma hand-painted brush texture and period materials; change camera, place, protagonists, gestures completely. South England 1362–1400. One coherent full-bleed scene, no panels. No letters, numbers, pseudo-text, watermark, paper border, artificial aged tint. NO TABLE, DESK, SEATED CLERK, RED-CAPPED BEARDED OLD LORD, generic interior meeting, default window, chimneys anywhere, hops, door plague marks, blood. Clean uninterrupted roof ridges. Muted earthcolors, warm limewash, weathered oak, flat clay tiles/thatch. SQUARE CLOSE VIEW of a medieval TOWN GATE THRESHOLD with tall partly-open oak gate vertically dividing depth. At left INSIDE stands a bareheaded noblewoman in muted slate-blue wool; at right OUTSIDE stands a clean-shaven middle-aged citizen in brown hood. Both touch the same heavy iron chain carrying three large town keys, chain suspended BETWEEN THEIR HANDS at chest level. Serious restrained negotiation, the gate and tangible keys dominate. No handshake, no paperwork, no table, no market cross, no red hat.",
+        "rawFile": "raw/rework-ch4_b/ch4_chronicle_charter_negotiation-v1.png",
+        "referenceImages": [
+          "references/previous/ch4_chronicle_charter_negotiation.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precisely remove ALL domestic chimneys from distant roofs in upper right background behind the man's head, especially pale vertical stack near center-right and grey stack at extreme upper right. Replace with clean uninterrupted flat clay-tiled roof ridges. Preserve gate, tower battlements, two people, faces, hanging keys and chain exactly. No other changes, no text.",
+        "rawFile": "raw/rework-ch4_b/ch4_chronicle_charter_negotiation-v2.png",
+        "referenceImages": [
+          "raw/rework-ch4_b/ch4_chronicle_charter_negotiation-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 cover-centre resize to exact requested canvas, ensureAlpha. No code-painted scene contents.",
+    "qa": {
+      "status": "pass",
+      "sceneDistinct": true,
+      "notes": "배경 굴뚝 제거 후 원본 재검수. 실내 탁자 없이 문틈/성문 장면으로 구별."
+    }
+  }
+]

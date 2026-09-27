@@ -1,0 +1,102 @@
+[
+  {
+    "id": "ch5_decision_autonomy",
+    "file": "assets/ch5_records/ch5_decision_autonomy.png",
+    "width": 640,
+    "height": 480,
+    "description": "성벽 위에서 도시 열쇠를 건넬지 망설이는 영주",
+    "historyNotes": "1400–1450 잉글랜드 남부. 기존 탁자 회의 구도를 완전히 교체한 야외 장면. 가상 문장과 무문자 문서.",
+    "generationRecords": [
+      {
+        "prompt": "Completely redraw this previous game illustration with a radically different composition, preserving only low-chroma hand-painted historical brush style. Single full-bleed landscape 4:3 scene for medieval English town, 1400–1450. DO NOT retain the original room, table, window, seated man, red cap or figures' poses. Outdoors, no meeting table anywhere. Restrained earth palette, detailed painterly warm plaster/weathered oak/flat clay roofs. Absolutely NO domestic chimneys: every house roof has uninterrupted clean ridge. NO text, letters, numerals, pseudo-writing, watermark, border, real heraldry, bright flags, plague door marks, hops, hexagonal coffins, blood. Any document utterly blank. Outdoor battlement overlook. An elderly bareheaded lord in dark muted blue mantle stands left; a middle-aged citizen representative in ochre wool stands right, facing one another across a conspicuous wide gap. Lord holds large iron town keys halfway toward the citizen but still grips them, citizen's open palms wait: choice of autonomy versus retaining family rule. Distant rooftops well below stone parapet, high horizon. Both full standing silhouettes, tense equality, bright open sky. No paperwork.",
+        "rawFile": "raw/rework-ch5_decisions/ch5_decision_autonomy.png",
+        "referenceImages": [
+          "references/previous/ch5_decision_autonomy.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize only; no painted additions.",
+    "qa": {
+      "status": "pass",
+      "visualReview": "All four finals inspected at 640x480 and contact. Composition distinguishes battlement keys, courtyard shield, quay coin chest/petition, sunset hill legacy. No table, text or obvious domestic chimney. Tax background square turret has battlements and is interpreted as town fortification, not chimney. Fine distant roof details remain below reliable historical verification."
+    }
+  },
+  {
+    "id": "ch5_decision_heir_choice",
+    "file": "assets/ch5_records/ch5_decision_heir_choice.png",
+    "width": 640,
+    "height": 480,
+    "description": "마당에서 문장 방패를 두 후계자 사이에 내미는 영주",
+    "historyNotes": "1400–1450 잉글랜드 남부. 기존 탁자 회의 구도를 완전히 교체한 야외 장면. 가상 문장과 무문자 문서.",
+    "generationRecords": [
+      {
+        "prompt": "Completely redraw this previous game illustration with a radically different composition, preserving only low-chroma hand-painted historical brush style. Single full-bleed landscape 4:3 scene for medieval English town, 1400–1450. DO NOT retain the original room, table, window, seated man, red cap or figures' poses. Outdoors, no meeting table anywhere. Restrained earth palette, detailed painterly warm plaster/weathered oak/flat clay roofs. Absolutely NO domestic chimneys: every house roof has uninterrupted clean ridge. NO text, letters, numerals, pseudo-writing, watermark, border, real heraldry, bright flags, plague door marks, hops, hexagonal coffins, blood. Any document utterly blank. Manor courtyard at an armory doorway. Aged bareheaded lord in brown wool stands between two adult heirs, a woman in grey-blue and a man in muted green. He holds ONE medieval shield outward in BOTH hands undecided, heirs reach slightly toward each side. Shield dominant central shape with a simple invented faded ochre sprig on dull grey field, not any real arms. Weapon rack faintly inside shadowed doorway, cobbled courtyard. Camera near waistheight; no bed, table or papers.",
+        "rawFile": "raw/rework-ch5_decisions/ch5_decision_heir_choice.png",
+        "referenceImages": [
+          "references/previous/ch5_decision_heir_choice.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize only; no painted additions.",
+    "qa": {
+      "status": "pass",
+      "visualReview": "All four finals inspected at 640x480 and contact. Composition distinguishes battlement keys, courtyard shield, quay coin chest/petition, sunset hill legacy. No table, text or obvious domestic chimney. Tax background square turret has battlements and is interpreted as town fortification, not chimney. Fine distant roof details remain below reliable historical verification."
+    }
+  },
+  {
+    "id": "ch5_decision_royal_tax_response",
+    "file": "assets/ch5_records/ch5_decision_royal_tax_response.png",
+    "width": 640,
+    "height": 480,
+    "description": "나루 세관에서 동전 상자와 청원서로 과세에 대응",
+    "historyNotes": "1400–1450 잉글랜드 남부. 기존 탁자 회의 구도를 완전히 교체한 야외 장면. 가상 문장과 무문자 문서.",
+    "generationRecords": [
+      {
+        "prompt": "Completely redraw this previous game illustration with a radically different composition, preserving only low-chroma hand-painted historical brush style. Single full-bleed landscape 4:3 scene for medieval English town, 1400–1450. DO NOT retain the original room, table, window, seated man, red cap or figures' poses. Outdoors, no meeting table anywhere. Restrained earth palette, detailed painterly warm plaster/weathered oak/flat clay roofs. Absolutely NO domestic chimneys: every house roof has uninterrupted clean ridge. NO text, letters, numerals, pseudo-writing, watermark, border, real heraldry, bright flags, plague door marks, hops, hexagonal coffins, blood. Any document utterly blank. Outdoor quay customs post. Foreground kneeling treasurer in plain brown opens a small coin chest ON THE GROUND left. Right a standing citizen in muted blue raises a completely BLANK folded petition. Center back stern royal official in grey traveling cloak beside a saddled packhorse waits. One coherent open scene: payment versus petition. Low camera emphasizes open coffer and silver coins; river timber quay and simple moored boat backdrop. No table, no seated council, no red capped elderly ruler.",
+        "rawFile": "raw/rework-ch5_decisions/ch5_decision_royal_tax_response.png",
+        "referenceImages": [
+          "references/previous/ch5_decision_royal_tax_response.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize only; no painted additions.",
+    "qa": {
+      "status": "pass",
+      "visualReview": "All four finals inspected at 640x480 and contact. Composition distinguishes battlement keys, courtyard shield, quay coin chest/petition, sunset hill legacy. No table, text or obvious domestic chimney. Tax background square turret has battlements and is interpreted as town fortification, not chimney. Fine distant roof details remain below reliable historical verification."
+    }
+  },
+  {
+    "id": "ch5_decision_legacy",
+    "file": "assets/ch5_records/ch5_decision_legacy.png",
+    "width": 640,
+    "height": 480,
+    "description": "언덕에서 도시·가문·교회 대표 사이 유산 선택",
+    "historyNotes": "1400–1450 잉글랜드 남부. 기존 탁자 회의 구도를 완전히 교체한 야외 장면. 가상 문장과 무문자 문서.",
+    "generationRecords": [
+      {
+        "prompt": "Completely redraw this previous game illustration with a radically different composition, preserving only low-chroma hand-painted historical brush style. Single full-bleed landscape 4:3 scene for medieval English town, 1400–1450. DO NOT retain the original room, table, window, seated man, red cap or figures' poses. Outdoors, no meeting table anywhere. Restrained earth palette, detailed painterly warm plaster/weathered oak/flat clay roofs. Absolutely NO domestic chimneys: every house roof has uninterrupted clean ridge. NO text, letters, numerals, pseudo-writing, watermark, border, real heraldry, bright flags, plague door marks, hops, hexagonal coffins, blood. Any document utterly blank. Wide outdoor grassy hill above city at sunset. Elderly bareheaded lord seen partly from back beside standing boundary stone faces THREE representatives distinctly separated: mayor on left bearing large iron town key, adult woman family heir in center bearing simple invented shield with faded sprig, priest at right bearing plain closed book. Four full silhouettes spread across frame, town church and manor visible far below, very wide natural landscape. NO furniture, no paper, no table. Contemplative choice where legacy belongs.",
+        "rawFile": "raw/rework-ch5_decisions/ch5_decision_legacy.png",
+        "referenceImages": [
+          "references/previous/ch5_decision_legacy.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp centre-cover resize only; no painted additions.",
+    "qa": {
+      "status": "pass",
+      "visualReview": "All four finals inspected at 640x480 and contact. Composition distinguishes battlement keys, courtyard shield, quay coin chest/petition, sunset hill legacy. No table, text or obvious domestic chimney. Tax background square turret has battlements and is interpreted as town fortification, not chimney. Fine distant roof details remain below reliable historical verification."
+    }
+  }
+]

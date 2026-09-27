@@ -1,0 +1,411 @@
+{
+  "status": "pass_with_context_and_retained_pair_caveats",
+  "scope": "Independent visual review of24 redraws and unlabelled fullchapter4/5 proofatlases. Scene identities learned from brief before review; shuffle mapping not read until slot descriptions recorded.",
+  "chapter3Ending": {
+    "pass": true,
+    "notes": "Closed decaying shutters dominate; empty weedgrown lane and quay; only two active roof repairs. Population-loss mood reads clearly rather than prosperouscity."
+  },
+  "blindObservations": {
+    "chapter4": [
+      "Outdoor alehouse gathering, drinker/tankard service and benches.",
+      "Textile street with cloth rolls and drying frames behind workshops.",
+      "Public blank-charter reading on market-cross steps, crowd below.",
+      "Burdened workers departing street between rival beckoning men.",
+      "Forked country path: cloth tenterfield left, grain harvest right.",
+      "One delegation hands blank request to lord at house doorway.",
+      "Redclad tax official runs away from pursuing angry villagers.",
+      "Tool-bearing artisans march under shears banner.",
+      "Two people at gate hold same chain of keys across threshold.",
+      "Workers hang blank sealed charter high on arcade pillar.",
+      "Many petitioners crowd a seated clerk outside building.",
+      "Burdened travelers pass along lane between two beckoning patrons.",
+      "Busy weaving lane with cloth bolts and field drying frames.",
+      "Three artisans raise tools together in closeup oath.",
+      "Mounted messenger hands sealed letter down at narrow gate.",
+      "Long public negotiation table outside guildhall at evening.",
+      "Door-to-door coin collection left; grouped coffer delivery right.",
+      "Fleeing redclad official looks back at pursuing crowd in market.",
+      "Several petitioners push papers into a closed door slot."
+    ],
+    "chapter5": [
+      "Oldlord on hill faces civic, familyshield and clerical representatives.",
+      "Two civic figures display blank hanging charter from balcony.",
+      "Small market exchange, seller/customer and child.",
+      "Raisedhands crowd appeals toward empty civic chair on exteriorsteps.",
+      "Craftsman engraves round metal seal at workshop doorway.",
+      "Standing old chronicler puts sealed book into wall cupboard, candleheldbyassistant.",
+      "Oldlord between two potentialheirs holds one central heraldicshield.",
+      "Indoor civic assembly raises hands toward a standing officeholder.",
+      "Single young heir steps out of doorway with shield, olderwomanwatches.",
+      "Broad flourishing walled town at sunset with active harbour.",
+      "Royal mounted convoy crosses stone bridge.",
+      "Closeup large red wax seal hangs from blankcharter beside metalmatrix.",
+      "Wide crowded marketday overview with many stalls.",
+      "Quayside choice: coinchest opened below official; raised petition opposite.",
+      "Hand holds bronze cityseal matrix against doorway.",
+      "Hands lower sealed book into large open oak chest.",
+      "Hands close a thick chroniclebook on table.",
+      "Bedridden oldlord, priest and adultheir at bedside.",
+      "Family carries household bundles out from manor.",
+      "Standing lord hands keys toward citizen atop wall above city."
+    ]
+  },
+  "potentialConfusions": [
+    {
+      "chapter": 4,
+      "slots": [
+        4,
+        12
+      ],
+      "type": "retained event/chronicle pair",
+      "note": "Both show laden workers moving between rival beckoners. Different camera and landscape distinguish images, but underlying action is intentionally same and neither proves wage competition without context."
+    },
+    {
+      "chapter": 4,
+      "slots": [
+        2,
+        13
+      ],
+      "type": "retained textile pair",
+      "note": "Both textile street/tenterfield. View and scale differ, near-identical subjectfamily; no independent legal distinction."
+    },
+    {
+      "chapter": 4,
+      "slots": [
+        7,
+        18
+      ],
+      "type": "retained rebellion pair",
+      "note": "Both redclad fleeing collector with pursuing crowd. Outdoor country-vs-market setting differs; same event family."
+    },
+    {
+      "chapter": 5,
+      "slots": [
+        3,
+        13
+      ],
+      "type": "retained market pair",
+      "note": "Small personal transaction vswide crowded market, easy scale distinction but 'last' marketday requires campaigncontext."
+    },
+    {
+      "chapter": 5,
+      "slots": [
+        4,
+        8
+      ],
+      "type": "mayor demand/election",
+      "note": "Both raisedhands assembly. Distinguishing cue exterior EMPTY chair versus indoor standing officeholder; comparatively closest civic pair."
+    }
+  ],
+  "historicalFindings": [
+    {
+      "id": "ch5_event_city_seal_making",
+      "issue": "Small domestic chimneys in background",
+      "status": "resolved; corrected full PNG visually checked with chimney-free cottage roofs"
+    }
+  ],
+  "notes": [
+    "Exact ordinance, charter and tax authority cannot be read from deliberatelyblank documents. Visual distinguishability is not exact legal-name recognition.",
+    "No blind-layout mapping opened before these descriptions."
+  ],
+  "mappingComparison": [
+    {
+      "chapter": 4,
+      "slots": [
+        {
+          "slot": 1,
+          "id": "ch4_event_alehouse",
+          "observation": "Outdoor alehouse gathering, drinker/tankard service and benches.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 2,
+          "id": "ch4_chronicle_textile_street",
+          "observation": "Textile street with cloth rolls and drying frames behind workshops.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 3,
+          "id": "ch4_decision_charter_negotiation",
+          "observation": "Public blank-charter reading on market-cross steps, crowd below.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 4,
+          "id": "ch4_event_wage_competition",
+          "observation": "Burdened workers departing street between rival beckoning men.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 5,
+          "id": "ch4_decision_textile_or_grain",
+          "observation": "Forked country path: cloth tenterfield left, grain harvest right.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 6,
+          "id": "ch4_event_autonomy_request",
+          "observation": "One delegation hands blank request to lord at house doorway.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 7,
+          "id": "ch4_chronicle_rebellion_rumour",
+          "observation": "Redclad tax official runs away from pursuing angry villagers.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 8,
+          "id": "ch4_event_guild_foundation",
+          "observation": "Tool-bearing artisans march under shears banner.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 9,
+          "id": "ch4_chronicle_charter_negotiation",
+          "observation": "Two people at gate hold same chain of keys across threshold.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 10,
+          "id": "ch4_decision_guild_approval",
+          "observation": "Workers hang blank sealed charter high on arcade pillar.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 11,
+          "id": "ch4_event_petitions",
+          "observation": "Many petitioners crowd a seated clerk outside building.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 12,
+          "id": "ch4_chronicle_wage_competition",
+          "observation": "Burdened travelers pass along lane between two beckoning patrons.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 13,
+          "id": "ch4_event_textile_growth",
+          "observation": "Busy weaving lane with cloth bolts and field drying frames.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 14,
+          "id": "ch4_chronicle_guild",
+          "observation": "Three artisans raise tools together in closeup oath.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 15,
+          "id": "ch4_event_lord_warning",
+          "observation": "Mounted messenger hands sealed letter down at narrow gate.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 16,
+          "id": "ch4_ending",
+          "observation": "Long public negotiation table outside guildhall at evening.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 17,
+          "id": "ch4_decision_tax_collection",
+          "observation": "Door-to-door coin collection left; grouped coffer delivery right.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 18,
+          "id": "ch4_event_rebellion_1381",
+          "observation": "Fleeing redclad official looks back at pursuing crowd in market.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 19,
+          "id": "ch4_chronicle_petitions",
+          "observation": "Several petitioners push papers into a closed door slot.",
+          "visualSceneCompatible": true
+        }
+      ],
+      "result": "All slot descriptions compatible with depicted actions after mapping opened. Exact legal event-name identification not claimed."
+    },
+    {
+      "chapter": 5,
+      "slots": [
+        {
+          "slot": 1,
+          "id": "ch5_decision_legacy",
+          "observation": "Oldlord on hill faces civic, familyshield and clerical representatives.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 2,
+          "id": "ch5_chronicle_charter_sealing",
+          "observation": "Two civic figures display blank hanging charter from balcony.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 3,
+          "id": "ch5_chronicle_last_market",
+          "observation": "Small market exchange, seller/customer and child.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 4,
+          "id": "ch5_event_mayor_demand",
+          "observation": "Raisedhands crowd appeals toward empty civic chair on exteriorsteps.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 5,
+          "id": "ch5_event_city_seal_making",
+          "observation": "Craftsman engraves round metal seal at workshop doorway.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 6,
+          "id": "ch5_event_legacy_record",
+          "observation": "Standing old chronicler puts sealed book into wall cupboard, candleheldbyassistant.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 7,
+          "id": "ch5_decision_heir_choice",
+          "observation": "Oldlord between two potentialheirs holds one central heraldicshield.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 8,
+          "id": "ch5_chronicle_mayor_election",
+          "observation": "Indoor civic assembly raises hands toward a standing officeholder.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 9,
+          "id": "ch5_chronicle_heir",
+          "observation": "Single young heir steps out of doorway with shield, olderwomanwatches.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 10,
+          "id": "ch5_ending",
+          "observation": "Broad flourishing walled town at sunset with active harbour.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 11,
+          "id": "ch5_event_royal_tax_envoy",
+          "observation": "Royal mounted convoy crosses stone bridge.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 12,
+          "id": "ch5_event_charter_sealing",
+          "observation": "Closeup large red wax seal hangs from blankcharter beside metalmatrix.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 13,
+          "id": "ch5_event_last_market",
+          "observation": "Wide crowded marketday overview with many stalls.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 14,
+          "id": "ch5_decision_royal_tax_response",
+          "observation": "Quayside choice: coinchest opened below official; raised petition opposite.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 15,
+          "id": "ch5_chronicle_city_seal",
+          "observation": "Hand holds bronze cityseal matrix against doorway.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 16,
+          "id": "ch5_chronicle_legacy_sealing",
+          "observation": "Hands lower sealed book into large open oak chest.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 17,
+          "id": "ch5_campaign_ending",
+          "observation": "Hands close a thick chroniclebook on table.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 18,
+          "id": "ch5_event_succession",
+          "observation": "Bedridden oldlord, priest and adultheir at bedside.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 19,
+          "id": "ch5_event_family_departure",
+          "observation": "Family carries household bundles out from manor.",
+          "visualSceneCompatible": true
+        },
+        {
+          "slot": 20,
+          "id": "ch5_decision_autonomy",
+          "observation": "Standing lord hands keys toward citizen atop wall above city.",
+          "visualSceneCompatible": true
+        }
+      ],
+      "result": "All slot descriptions compatible with depicted actions after mapping opened. Exact legal event-name identification not claimed."
+    }
+  ],
+  "score": 93,
+  "reviewedRedraws": [
+    "ch3_ending",
+    "ch4_event_guild_foundation",
+    "ch4_event_lord_warning",
+    "ch4_decision_charter_negotiation",
+    "ch4_decision_guild_approval",
+    "ch4_decision_tax_collection",
+    "ch4_decision_textile_or_grain",
+    "ch4_chronicle_petitions",
+    "ch4_chronicle_guild",
+    "ch4_chronicle_charter_negotiation",
+    "ch5_event_mayor_demand",
+    "ch5_event_royal_tax_envoy",
+    "ch5_event_succession",
+    "ch5_event_city_seal_making",
+    "ch5_event_charter_sealing",
+    "ch5_event_legacy_record",
+    "ch5_decision_autonomy",
+    "ch5_decision_heir_choice",
+    "ch5_decision_royal_tax_response",
+    "ch5_decision_legacy",
+    "ch5_chronicle_city_seal",
+    "ch5_chronicle_charter_sealing",
+    "ch5_chronicle_heir",
+    "ch5_chronicle_legacy_sealing"
+  ],
+  "reviewedRedrawCount": 24,
+  "blindProofSlotCount": 39,
+  "proofHashes": [
+    {
+      "file": "proofs/01-ch3-ending-before-after.png",
+      "sha256": "b9da6019c2d2ea328e9a3a298cdba353d2079646b1395d50d2a86fbcff7fdbc7"
+    },
+    {
+      "file": "proofs/02-chapter4-unlabelled.png",
+      "sha256": "32c21ffe4332058fd1e14ed7c57f2021ebb3a6a4a2f8afb9d36319a35b52c0fd"
+    },
+    {
+      "file": "proofs/03-chapter5-unlabelled.png",
+      "sha256": "340d5e1604f18f858c0c9a35eda20f307a28e087e789f9c1398a0545c9871314"
+    }
+  ],
+  "newCompositionVerdict": "24 redraws pass distinct place/action treatment. Remaining common subjects are explicitly listed retained pairs; no newtablemeeting repetition.",
+  "finalChecks": {
+    "all24VisuallyReviewed": true,
+    "latestChapter5CorrectionsChecked": true,
+    "noObservedTextOrPlagueDoorMarks": true,
+    "noObservedGore": true,
+    "noObviousDomesticChimneysObservedInNewFinals": true,
+    "campaignMeaningRequiresContext": true
+  }
+}
