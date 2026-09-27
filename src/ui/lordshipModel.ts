@@ -49,7 +49,7 @@ export function lordshipView(state: GameState): LordshipView {
     house: LORDSHIP_COPY.house(house.name, house.order, yearOfTick(state, house.since)),
     arms: lordHouseArms(state), armsLabel: LORDSHIP_COPY.houseArms(house.name),
     pastHouses: lordship.pastHouses.length === 0 ? null : LORDSHIP_COPY.pastHouses(lordship.pastHouses.map(past => past.name)),
-    title: LORDSHIP_COPY.title(title.rank), demoted: title.demoted ? LORDSHIP_COPY.demoted(title.base) : null,
+    title: LORDSHIP_COPY.title(title.rank), demoted: title.demoted && title.rank !== title.base ? LORDSHIP_COPY.demoted(title.base) : null,
     rights: lordRights(state).map(right => ({
       id: right.id, name: LORD_RIGHT_NAMES[right.id] ?? right.id, icon: RIGHT_ICON[right.id] ?? "icon_right_court", present: right.present,
       lost: right.status !== "held", status: right.present || right.status !== "held" ? LORDSHIP_COPY.status[right.status] ?? right.status : LORDSHIP_COPY.absent,

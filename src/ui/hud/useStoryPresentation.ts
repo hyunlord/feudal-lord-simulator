@@ -17,6 +17,9 @@ const MAX_CHIPS = 3;
 
 type Seen = { beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean };
 
+/** A chapter's page opens only this long after its end (one season). */
+const CHAPTER_PAGE_TICKS = 1_000;
+
 export function useStoryPresentation(input: {
   readonly state: GameState; readonly nowMs: number; readonly blocked: boolean; readonly topModal: UiModal | null;
   readonly pushModal: (modal: UiModal) => void; readonly pause: () => void;
@@ -53,7 +56,10 @@ export function useStoryPresentation(input: {
   // why: keyed by the visible beats' ids (a new list each render); the pause setting is read when one is new
   }, [visibleKey]); // eslint-disable-line react-hooks/exhaustive-deps
   // Decisions and the chronicle open once, after the world first.
-  const famine = famineStatus(state); const petition = openPetitions(state)[0]; const end = latestChapterEnd(state);
+  const famine = famineStatus(state); const petition = openPetitions(state)[0];
+  // UI-6: a chapter's page opens when the chapter ends (within its season), not again on every later load of the town.
+  const latest = latestChapterEnd(state);
+  const end = latest !== null && state.tick - latest.tick < CHAPTER_PAGE_TICKS ? latest : null;
   const ready = (id: string) => { const entry = seenRef.current.get(id); return entry !== undefined && nowMs - entry.firstSeenMs >= delayMs; };
   useEffect(() => {
     if (blocked || topModal !== null) return;

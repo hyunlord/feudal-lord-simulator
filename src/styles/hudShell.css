@@ -344,9 +344,11 @@
 .app-shell .ledger-rights h3 { margin: 8px 0 2px; font-size: 13px; }
 .app-shell .ledger-rights ul { margin: 0; padding-left: 18px; font-size: 13px; }
 /* UI-6: the rights register (Wave 14 frame as a border image; the arms beside the house; a lost right in red ochre). */
-.app-shell .ledger-rights { display: grid; gap: 4px; margin-top: 8px; padding: 4px 8px; }
-.ledger-rights-house { display: flex; gap: 12px; align-items: center; }
+.app-shell .ledger-rights { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 40px; margin-top: 8px; padding: 4px 8px; }
+.ledger-rights-page { display: grid; align-content: start; gap: 4px; min-width: 0; }
+.ledger-rights-house { display: flex; gap: 10px; align-items: flex-start; }
 .ledger-rights-house p { margin: 0; font-size: 13px; }
+.ledger-rights-house-name { font-weight: 700; }
 .app-shell .ledger-rights h4 { margin: 6px 0 2px; font-size: 13px; }
 .app-shell .ledger-rights .ledger-rights-list { display: grid; gap: 4px; padding: 0; list-style: none; }
 .ledger-rights-list li { display: grid; grid-template-columns: 32px 1fr; grid-template-rows: auto auto; column-gap: 8px; align-items: center; }
