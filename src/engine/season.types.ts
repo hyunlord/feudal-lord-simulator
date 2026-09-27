@@ -26,7 +26,9 @@ export type SeasonEvent =
  * dearth is rumoured (stock up before the bad harvest); `fire_break` = a dry summer is rumoured (wells, gaps between
  * thatch); `rebuild` = burnt houses wait for rebuilding. Null = nothing pressing.
  */
-export type NextObjectiveHint = "food_reserve" | "harvest_reserve" | "resettle" | "dearth_reserve" | "fire_break" | "rebuild" | null;
+export type NextObjectiveHint = "food_reserve" | "harvest_reserve" | "resettle" | "dearth_reserve" | "fire_break" | "rebuild"
+  /** FIX-5b (FL-14): an emptied town was resettled this season; its settlers' bread lasts until `resettledFood`. */
+  | "resettled_food" | null;
 
 /**
  * FIX-4 E11 (HR-11): what a food hint asks for. `arableCells` = more arable cells the town's bread needs than it has
@@ -54,6 +56,8 @@ export interface SeasonLedger {
   readonly foodNeeds?: FoodNeeds;
   /** FAIL-3 (FL-5, FL-7): the lordship's fall in the season — a decline begun, a house withdrawn. Absent = neither (and before v19). */
   readonly lordship?: SeasonLordshipLine;
+  /** FIX-5b (FL-14): with the `resettled_food` hint, the season (0 spring … 3 winter) and year the settlers' bread runs out. */
+  readonly resettledFood?: { readonly season: number; readonly year: number };
 }
 
 /** FAIL-3 (FL-5, FL-7): what befell the lordship in a closed season. */

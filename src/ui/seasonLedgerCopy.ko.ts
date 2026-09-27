@@ -60,6 +60,7 @@ export const SEASON_LEDGER_COPY = {
     dearth_reserve: "다음: 흉년 전에 비축을",
     fire_break: "다음: 마른 여름 — 우물과 초가 사이 틈을",
     rebuild: "다음: 불탄 집을 다시 세우세요",
+    resettled_food: "다음: 재정착민의 식량이 떨어지기 전에",
   } satisfies Record<Exclude<NextObjectiveHint, null>, string>,
   resume: "계속",
   autoOn: "계절마다 결산 띄우기: 켬",
