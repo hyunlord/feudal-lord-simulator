@@ -13,6 +13,7 @@ import { persons } from "../src/engine/personsApi";
 import { decodeSave } from "../src/save/saveCodec";
 import { ChronicleScreen } from "../src/ui/chronicle/ChronicleScreen";
 import { FACTION_PAGE_SLOTS, FactionPage } from "../src/ui/chronicle/FactionPage";
+import { heraldryArms } from "../src/ui/heraldry/heraldry";
 import {
   biographyView, chronicleItems, chroniclePeople, decisionCompare, DEFAULT_CHRONICLE_FILTER, itemIndexAt, recordCard, seasonWindow,
   snapshotFor, SEASON_WINDOW, timelineMarkers, timelineSegments, timelineTickAt, timelineX, type ChronicleFilter,
@@ -214,11 +215,12 @@ test("CHRON-1 30,000 records: the data the screen opens on (rows, markers, peopl
   assert.ok(elapsed < 120, `${elapsed.toFixed(1)} ms`);
 });
 
-test("CHRON-1 faction page: the Wave 19 frame registered with its slots (no faction opens it before the E stage)", () => {
-  const markup = renderToStaticMarkup(createElement(FactionPage, { scale: 0.5, view: { id: "count", name: "백작", leaderPortraitId: "P05", relation: 20,
-    demands: [], promises: [], ourEvents: [], theirEvents: [] } }));
+test("CHRON-1 faction page: the Wave 19 frame with its slots, the relation pin on the scale (UI-6 fills it: tests/factionChronicleTab)", () => {
+  const markup = renderToStaticMarkup(createElement(FactionPage, { scale: 0.5, onRecord: () => undefined, view: { id: "overlord", name: "해로미어 백작", kind: "상위 영주",
+    emblem: { kind: "arms", recipe: heraldryArms(1) }, emblemLabel: "문장", leader: { id: "f-000001", name: "Roger 드 로슈펠", role: "백작", line: "백작 · 40살", portraitId: "P05" },
+    relation: 20, relationX: 0.6, relationText: "호의 +20", demands: [], promises: [], memory: [], timeline: [] } }));
   assert.match(markup, /frame_faction_page\.png/);
   assert.match(markup, /relation_scale_track\.png/);
   assert.match(markup, /left:60%/, "the relation pin at +20 of −100…100");
-  assert.equal(Object.keys(FACTION_PAGE_SLOTS).length, 8);
+  assert.equal(Object.keys(FACTION_PAGE_SLOTS).length, 9);
 });

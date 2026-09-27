@@ -8,7 +8,7 @@ import { BIOGRAPHY_PAGE, BiographyPage } from "./BiographyPage";
 import { ChronicleTimeline } from "./ChronicleTimeline";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import {
-  biographyView, CHRONICLE_KINDS, chronicleDate, chronicleItems, chroniclePeople, chronicleYears, decisionCompare, DEFAULT_CHRONICLE_FILTER,
+  biographyView, CHRONICLE_KINDS, chronicleDate, factionNameOf, chronicleItems, chroniclePeople, chronicleYears, decisionCompare, DEFAULT_CHRONICLE_FILTER,
   itemIndexAt, recordCard, seasonWindow, timelineChapters, timelineMarkers, timelineSegments, timelineTickAt,
   type ChronicleFilter, type ChronicleItem, type ChronicleKind, type TimelineMarkerKind,
   yearOfTick,
@@ -16,12 +16,21 @@ import {
 import { DECISION_FRAME, DecisionCompareFrame } from "./DecisionCompareFrame";
 import { CARD_ROW, RecordCardView } from "./RecordCardView";
 import { SnapshotMapView } from "./SnapshotMapView";
-import { Button, Select } from "../kit";
+import { FACTION_PAGE, FactionPage } from "./FactionPage";
+import { FactionTab } from "./FactionTab";
+import { factionPageView, factionRows, worldLines } from "./factionTabModel";
+import type { FactionId } from "../../content/factionConfig";
+import { INTENT_ORDER } from "../../input/intentBus";
+import { platformServices } from "../../platform/platform";
+import { Button, Select, Tabs } from "../kit";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): a full-screen modal over the town (the state machine's
 // `history` modal: time stops while it is up). The timeline on top, the filters, the record cards (a virtual list:
 // only the rows in view are built, so 30,000 records open like 30), and beside them the picked record — the map as it
 // was (and today's beside it), or a decision's record. A person opens their biography in place of the list.
+// UI-6 (CHRON-2 first pass): the "세력" tab beside the records — the nine factions and the world beyond, a faction's
+// page in place of the list; its remembered records open in the list (filtered to the faction) with a way back. Esc
+// steps back one page (a faction's page -> the factions; a record opened from it -> that page) before it closes.
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const OVERSCAN = 3;
 /** Room above the first card and below the last for the picked card's ring. */
@@ -32,10 +41,10 @@ const DECISION_SCALE = 0.96;
 type Tile = { readonly tx: number; readonly ty: number };
 
 /** The picked record: a decision's record (or, on [그때 지도], its map), any other record's map as it was. */
-function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLookAt, onPerson }: {
+function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLookAt, onPerson, onFaction }: {
   readonly state: GameState; readonly item: ChronicleItem; readonly view: "record" | "map"; readonly compare: boolean;
   readonly onView: (view: "record" | "map") => void; readonly onCompare: () => void;
-  readonly onLookAt: (tile: Tile) => void; readonly onPerson: (personId: string) => void;
+  readonly onLookAt: (tile: Tile) => void; readonly onPerson: (personId: string) => void; readonly onFaction: (factionId: string) => void;
 }) {
   const card = recordCard(state, item);
   const decision = decisionCompare(state, item.record);
@@ -60,6 +69,8 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
             onPress={() => { if (card.place !== null) onLookAt(card.place); }} variant="secondary"><UiIcon sheet="action" cell="look" />{COPY.lookAt}</Button>}
           {card.personId === null || card.personName === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.personLabelFor(card.personName)}
             onPress={() => { if (card.personId !== null) onPerson(card.personId); }} variant="secondary"><UiIcon sheet="resource" cell="population" />{COPY.person}</Button>}
+          {card.factionId === null || card.factionName === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.factionLabelFor(card.factionName)}
+            onPress={() => { if (card.factionId !== null) onFaction(card.factionId); }} variant="secondary"><UiIcon sheet="cause" cell="rights" />{COPY.faction}</Button>}
         </div>
       </div>
     </div>
@@ -79,6 +90,10 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   const [compare, setCompare] = useState(false);
   const [detailView, setDetailView] = useState<"record" | "map">("record");
   const [personId, setPersonId] = useState<string | null>(initialPersonId);
+  const [tab, setTab] = useState<"records" | "factions">("records");
+  const [factionId, setFactionId] = useState<FactionId | null>(null);
+  /** A record opened from a faction's page: the page Esc (or [세력 연대기로]) returns to. */
+  const [returnFaction, setReturnFaction] = useState<FactionId | null>(null);
   const [scrollTop, setScrollTop] = useState(0);
   const [viewport, setViewport] = useState({ list: 480, page: 640 });
   const list = useRef<HTMLDivElement>(null);
@@ -106,9 +121,19 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   const seasons = useMemo(() => zoomed ? seasonWindow({ ...scenario, tick: seasonNow }, items, zoomTick) : [], [zoomed, items, zoomTick, scenario, seasonNow]);
   // why: a biography reads the ledger and the persons (time stands still while it is open)
   const biography = useMemo(() => personId === null ? null : biographyView(state, personId), [personId, state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps
+  // The faction tab reads the factions, the ledger, the persons, the petitions and the war (time stands still while it is open).
+  const view = personId !== null ? "person" : tab === "records" ? "records" : factionId === null ? "factions" : "faction";
+  // why: the rows and the page are rebuilt when the tab or page opens; the state is still while the screen is up
+  const rows = useMemo(() => view === "factions" ? factionRows(state) : [], [view, state.factions, state.history, state.politics, state.war]); // eslint-disable-line react-hooks/exhaustive-deps
+  // why: the world's events move only with the year
+  const world = useMemo(() => view === "factions" ? worldLines(state) : [], [view, yearNow]); // eslint-disable-line react-hooks/exhaustive-deps
+  // why: as the rows
+  const factionPage = useMemo(() => view === "faction" && factionId !== null ? factionPageView(state, factionId) : null, [view, factionId, state.factions, state.history, state.politics, state.war]); // eslint-disable-line react-hooks/exhaustive-deps
+  const returnName = returnFaction === null ? null : factionNameOf(state, returnFaction);
+  const filterFactionName = filter.factionId == null ? null : factionNameOf(state, filter.factionId);
 
-  // The list and the biography page swap in and out: observe the one shown.
-  const onList = personId === null;
+  // The list and the pages swap in and out: observe the one shown.
+  const onList = view === "records";
   useEffect(() => {
     const observer = new ResizeObserver(() => {
       setViewport({ list: list.current?.clientHeight ?? 480, page: body.current?.clientHeight ?? 640 });
@@ -116,7 +141,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     if (list.current !== null) observer.observe(list.current);
     if (body.current !== null) observer.observe(body.current);
     return () => observer.disconnect();
-  }, [onList]);
+  }, [onList, view]);
 
   const scrollTo = (index: number) => {
     const top = Math.max(0, index * CARD_ROW - CARD_ROW);
@@ -136,6 +161,24 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     setSelected(items[index]!.key); scrollTo(index);
   };
   const openPerson = (id: string) => { setPersonId(id); };
+  const openFaction = (id: string) => { setPersonId(null); setTab("factions"); setFactionId(id as FactionId); setReturnFaction(null); };
+  /** A faction page's remembered record: the faction's whole ledger (every severity, every kind), with it picked. */
+  const openFactionRecord = (recordId: string, tick: number) => {
+    const from = factionId;
+    setTab("records"); setFactionId(null); setReturnFaction(from);
+    setFilter({ ...DEFAULT_CHRONICLE_FILTER, severity: 0, factionId: from });
+    setSelected(recordId); setPickedTick(tick); setZoomTick(tick); setDetailView("record");
+  };
+  const backToFaction = () => { if (returnFaction === null) return; setTab("factions"); setFactionId(returnFaction); setReturnFaction(null); };
+  const chooseTab = (next: "records" | "factions") => { setPersonId(null); setTab(next); setFactionId(null); setReturnFaction(null); };
+  // Esc steps back one page first (the global `cancel` intent, before the app shell pops the modal).
+  useEffect(() => platformServices().input.subscribe(intent => {
+    if (intent.kind !== "cancel" || intent.world !== undefined) return;
+    if (personId === null && tab === "factions" && factionId !== null) { setFactionId(null); return "consumed"; }
+    if (personId === null && tab === "records" && returnFaction !== null) { backToFaction(); return "consumed"; }
+    return undefined;
+  // why: backToFaction reads the same state as the deps
+  }, INTENT_ORDER.app - 1), [personId, tab, factionId, returnFaction]); // eslint-disable-line react-hooks/exhaustive-deps
   const openRecord = (recordId: string, tick: number) => {
     // A record from a biography: the person's whole ledger (every severity), with it picked.
     const person = personId;
@@ -143,13 +186,13 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     setFilter({ ...DEFAULT_CHRONICLE_FILTER, severity: 0, personId: person });
     setSelected(recordId); setPickedTick(tick); setZoomTick(tick);
   };
-  // After a biography's record link, scroll to the record once the list is back.
+  // After a biography's or a faction page's record link, scroll to the record once the list is back.
   useEffect(() => {
-    if (personId !== null || selected === null) return;
+    if (view !== "records" || selected === null) return;
     const index = indexOf.get(selected);
     if (index !== undefined && list.current !== null && (index * CARD_ROW < list.current.scrollTop || index * CARD_ROW > list.current.scrollTop + viewport.list)) scrollTo(index);
   // why: only on coming back to the list (or a new row order); the selection and scroll are read then
-  }, [personId, indexOf]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [view, indexOf]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const selectedIndex = selected === null ? (items.length > 0 ? 0 : -1) : indexOf.get(selected) ?? -1;
   const selectedItem = selectedIndex < 0 ? undefined : items[selectedIndex];
@@ -160,14 +203,21 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     kinds: filter.kinds.includes(kind) ? filter.kinds.filter(entry => entry !== kind) : CHRONICLE_KINDS.filter(entry => entry === kind || filter.kinds.includes(entry)) });
   const yearValue = (value: string) => value === "" ? null : Number(value);
   const pageScale = Math.min(1, Math.max(0.5, (viewport.page - 8) / BIOGRAPHY_PAGE.height));
+  const factionScale = Math.min(1, Math.max(0.5, (viewport.page - 8) / FACTION_PAGE.height));
 
   return (
     <div className="chronicle-screen" role="dialog" aria-modal="true" aria-label={COPY.title} data-chronicle="open" data-records={items.length}
-      data-view={personId === null ? "records" : "person"}>
+      data-view={view}>
       <header className="chronicle-header">
         <h2>{COPY.title}</h2>
+        <Tabs label={COPY.viewsLabel} className="chronicle-tabs" tabClassName="chronicle-tab" selected={personId === null ? tab : "records"}
+          tabs={[{ key: "records", label: COPY.recordsTab }, { key: "factions", label: COPY.factionsTab }]} onSelect={key => chooseTab(key)} />
         <span className="chronicle-now">{COPY.now(chronicleDate(state, state.tick))}</span>
-        {personId === null ? (
+        {view === "faction" ? <Button type="button" className="chronicle-back" onPress={() => setFactionId(null)} variant="secondary"><UiIcon sheet="action" cell="log" />{COPY.backToFactions}</Button>
+          : view === "factions" ? null
+          : view === "records" && returnName !== null ? <Button type="button" className="chronicle-back" aria-label={COPY.backToFactionLabel(returnName)} onPress={() => backToFaction()}
+            variant="secondary"><UiIcon sheet="action" cell="log" />{COPY.backToFaction}</Button>
+          : personId === null ? (
           <ul className="chronicle-legend" aria-label={COPY.legendLabel}>
             {(Object.keys(COPY.markerLegend) as TimelineMarkerKind[]).map(kind => (
               <li key={kind}><span aria-hidden="true" style={wave19ImageStyle(`timeline_marker_${kind}`, 18)} />{COPY.markerLegend[kind]}</li>
@@ -180,6 +230,15 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
         <div className="chronicle-page-body" ref={body}>
           {biography === null ? <p className="chronicle-empty">{COPY.lifeEmpty}</p>
             : <BiographyPage view={biography} scale={pageScale} onPerson={id => openPerson(id)} onRecord={(recordId, tick) => openRecord(recordId, tick)} />}
+        </div>
+      ) : view === "factions" ? (
+        <div className="chronicle-page-body chronicle-page-body--factions" ref={body}>
+          <FactionTab rows={rows} world={world} onOpen={id => openFaction(id)} />
+        </div>
+      ) : view === "faction" ? (
+        <div className="chronicle-page-body" ref={body}>
+          {factionPage === null ? <p className="chronicle-empty">{COPY.noFactions}</p>
+            : <FactionPage view={factionPage} scale={factionScale} onRecord={(recordId, tick) => openFactionRecord(recordId, tick)} />}
         </div>
       ) : <>
         <ChronicleTimeline segments={segments} markers={markers} chapters={chapters} nowTick={state.tick} pickedTick={pickedTick} zoomed={zoomed}
@@ -213,6 +272,9 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
                 // A person's own lines are mostly everyday: choosing one shows every severity.
                 changeFilter({ ...filter, personId: id, severity: id === null ? filter.severity : 0 });
               }} /></div>
+          {filterFactionName === null ? null : <Button type="button" className="chronicle-kind chronicle-faction-filter" aria-pressed={true}
+            aria-label={COPY.factionFilterClear(filterFactionName)} onPress={() => { setReturnFaction(null); changeFilter({ ...filter, factionId: null }); }}
+            variant="toggle">{COPY.factionFilter(filterFactionName)}</Button>}
           <span className="chronicle-count" role="status">{COPY.count(items.length)}</span>
         </div>
         <div className="chronicle-body">
@@ -225,7 +287,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
                     onSelect={id => { setSelected(id); setPickedTick(item.tick); setDetailView("record"); }}
                     onLookAt={tile => onLookAt(tile)}
                     onMap={id => { setSelected(id); setPickedTick(item.tick); setDetailView("map"); }}
-                    onPerson={id => openPerson(id)} />
+                    onPerson={id => openPerson(id)} onFaction={id => openFaction(id)} />
                 ))}
               </div>)}
           </div>
@@ -233,7 +295,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
             {selectedItem === undefined ? <p className="chronicle-hint">{COPY.pickHint}</p>
               : <ChronicleDetail state={state} item={selectedItem} view={detailView} compare={compare} onView={view => setDetailView(view)}
                 onCompare={() => setCompare(value => !value)}
-                onLookAt={tile => onLookAt(tile)} onPerson={id => openPerson(id)} />}
+                onLookAt={tile => onLookAt(tile)} onPerson={id => openPerson(id)} onFaction={id => openFaction(id)} />}
           </aside>
         </div>
       </>}

@@ -190,6 +190,13 @@ await step('chapter-end', async () => {
   // The whole chronicle of a live run (seed 2, 1323: two eras entered, three ahead at their nominal years).
   await page.locator('.chronicle-full').click(); await pause(1500);
   await audit('chronicle-live', page, 's17-chronicle-live.jpg');
+  // UI-6: the chronicle's faction tab (the nine factions, the world strip) and one faction's page — the first that
+  // remembers something, so its record links (buttons) are audited too.
+  await page.getByRole('tab', { name: '세력' }).click(); await pause(1500);
+  await audit('chronicle-factions', page, 's18-chronicle-factions.jpg');
+  const remembering = page.locator('.chronicle-factions-row:not([data-memory="0"])');
+  await (await remembering.count() > 0 ? remembering.first() : page.locator('.chronicle-factions-row').first()).click(); await pause(1500);
+  await audit('chronicle-faction-page', page, 's19-chronicle-faction-page.jpg');
   await context.close();
 });
 
@@ -222,7 +229,7 @@ await step('sheet', async () => {
 });
 
 await browser.close();
-const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'gallery-desktop', 'gallery-tablet'];
+const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet'];
 result.missing = expected.filter(name => result.states[name] === undefined);
 result.pass = result.total.skinless === 0 && result.missing.length === 0;
 writeFileSync(join(out, 'audit.json'), JSON.stringify(result, null, 1) + '\n');
