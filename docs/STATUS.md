@@ -20,6 +20,7 @@
     - ② 튜토리얼 뒤 필지 12개 → 2년 안 12곳 입주. "필지 12칸"은 필지 12개로 읽음(12칸으로는 많아야 6필지).
     - ③ E2~E11 시나리오, ④ 초상.
     - ⑤ 가드레일 1회차 `3da4fd58` 5/5: 승리 틱 BOT-3 기준선 대비 −19~−53 %, 새 기준선 `seeds/baseline-3da4fd5.json`.
+    - ⑥ 깨끗한 클론 `9900659` 3,169/3,169.
   - **저장 v18**: 계절 `starved`·`foodNeeds`·`residents_starved`, v18 저장 픽스처.
   - **렌더가 넘겨받을 것**: `zoneSettlementStatus`(필지 패널·청지기), `foodNeeds`·`residents_starved`(결산), 초상 `silhouette`, `rentRelief`·`upkeepCharges`(집 카드·재무 표), E5 뒤의 식량 일수. WIP UI 6개 파일은 렌더 세션이 검토.
 
