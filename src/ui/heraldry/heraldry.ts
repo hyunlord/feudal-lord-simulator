@@ -68,3 +68,11 @@ export function merchantRecipe(seed: number, household: string): MerchantRecipe 
 export const armsKey = (recipe: ArmsRecipe) => [recipe.shield, recipe.field, recipe.partition?.id, recipe.partition?.tincture, recipe.ordinary?.id,
   recipe.ordinary?.tincture, recipe.charge?.id, recipe.charge?.tincture].join(".");
 export const merchantKey = (recipe: MerchantRecipe) => [recipe.frame, recipe.staff, recipe.branch].join(".");
+
+/**
+ * UI-6 (FACTION-0 FX-1): arms and a merchant's mark from an engine `heraldrySeed` (the nine factions'). One key for every
+ * screen that draws a faction, so the chronicle's faction tab and any other place show the same shield. The lord's own
+ * house keeps its own key (`MANOR_HOUSEHOLD`, the arms the screens drew before FAIL-3).
+ */
+export const heraldryArms = (heraldrySeed: number): ArmsRecipe => armsRecipe(heraldrySeed, "heraldry");
+export const heraldryMark = (heraldrySeed: number): MerchantRecipe => merchantRecipe(heraldrySeed, "heraldry");

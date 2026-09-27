@@ -144,13 +144,59 @@
   overflow: hidden; text-overflow: ellipsis; background: var(--palette-vellum); border: 1px solid var(--palette-ink-muted); }
 .chronicle-biography-chip-face { flex: none; border-radius: 50%; }
 
-/* Faction page (frame registered; nothing opens it before the E stage's factions). */
+/* UI-6: the records / factions tabs in the header. */
+.chronicle-tabs { display: flex; gap: 4px; }
+.chronicle-tab { min-width: 72px; min-height: 44px; padding: 0 14px; font-weight: 700; }
+.chronicle-screen:is([data-view="factions"], [data-view="faction"]) { grid-template-rows: auto minmax(0, 1fr); }
+
+/* UI-6 faction tab: nine rows (kit buttons) and the world strip under them. */
+.chronicle-page-body--factions { justify-items: stretch; }
+.chronicle-factions { display: grid; grid-template-rows: auto auto; align-content: start; gap: 10px; width: 100%; max-width: 1180px; margin: 0 auto; }
+.chronicle-factions-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.chronicle-factions-row { display: grid; width: 100%; min-height: 60px; padding: 6px 14px; box-sizing: border-box; align-items: center; gap: 14px; text-align: left;
+  grid-template-columns: 48px minmax(0, 1.3fr) minmax(0, 1.4fr) auto minmax(0, 0.8fr); }
+.chronicle-factions-emblem { display: grid; place-items: center; width: 48px; height: 48px; }
+.chronicle-factions-name, .chronicle-factions-leader-text, .chronicle-factions-counts { display: grid; gap: 1px; min-width: 0; }
+.chronicle-factions-name strong { font-family: var(--ui-font-serif); font-size: 16px; line-height: 1.2; }
+.chronicle-factions-name span, .chronicle-factions-leader-text span, .chronicle-factions-counts span { font-size: 12px; font-weight: 400; color: var(--palette-ink-muted); }
+.chronicle-factions-leader { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.chronicle-factions-leader-text strong { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chronicle-factions-face { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--palette-ink) 55%, transparent); }
+.chronicle-factions-face--none { background: color-mix(in srgb, var(--palette-ink) 12%, transparent); }
+.chronicle-factions-scale { display: grid; justify-items: center; gap: 2px; }
+.chronicle-factions-track { position: relative; display: block; height: 14px; background-size: 100% 100%; }
+.chronicle-factions-pin { position: absolute; top: 50%; transform: translate(-50%, -50%); }
+.chronicle-factions-reading { font-size: 12px; font-weight: 700; }
+.chronicle-world { display: grid; gap: 4px; }
+.chronicle-world h3 { margin: 0; font-family: var(--ui-font-serif); font-size: 15px; }
+.chronicle-world-strip { display: flex; gap: 6px; margin: 0; padding: 4px 2px 8px; list-style: none; overflow-x: auto; }
+.chronicle-world-strip:focus-visible { outline: 3px solid var(--palette-ultramarine); outline-offset: 1px; }
+.chronicle-world-strip li { flex: none; display: grid; gap: 1px; max-width: 220px; padding: 6px 10px; font-size: 12px; line-height: 1.35;
+  background: color-mix(in srgb, var(--palette-vellum) 80%, transparent); border: 1px solid color-mix(in srgb, var(--palette-ink) 35%, transparent); }
+.chronicle-world-strip strong { font-size: 13px; }
+.chronicle-world-empty { margin: 0; font-size: 12px; }
+
+/* CHRON-2 faction page (frame_faction_page slots, placed in % of the page so they scale with it). */
 .chronicle-faction-leader { border-radius: 50%; }
-.chronicle-faction-name { display: grid; place-items: center; font-family: var(--ui-font-serif); font-size: 18px; }
+.chronicle-faction-crest { display: grid; place-items: center; }
+.chronicle-faction-name { display: grid; align-content: center; justify-items: center; gap: 2px; text-align: center; overflow: hidden; }
+.chronicle-faction-name h3 { margin: 0; font-family: var(--ui-font-serif); font-size: 19px; line-height: 1.2; }
+.chronicle-faction-name p { margin: 0; font-size: 12px; line-height: 1.3; }
+.chronicle-faction-kind { color: var(--palette-ink-muted); }
+.chronicle-faction-name .chronicle-faction-leader-name { margin-top: 4px; font-size: 14px; font-weight: 700; }
 .chronicle-faction-relation { display: grid; align-items: center; }
-.chronicle-faction-track { position: absolute; inset: 25% 0; background-size: 100% 100%; }
-.chronicle-faction-pin { position: absolute; top: 50%; transform: translate(-50%, -50%); }
-.chronicle-faction-list { overflow: hidden; padding: 8px 10px; list-style: none; font-size: 12px; }
+.chronicle-faction-track { position: absolute; inset: 28% 5%; background-size: 100% 100%; }
+.chronicle-faction-pin { position: absolute; top: 50%; transform: translate(-50%, -50%); margin-left: 0; }
+.chronicle-faction-reading { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; font-size: 12px; }
+.chronicle-faction-reading strong { font-size: 13px; }
+.chronicle-faction-box { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 4px; padding: 8px 12px; overflow: hidden; }
+.chronicle-faction-box h4 { margin: 0; font-size: 13px; }
+.chronicle-faction-box ul { display: grid; align-content: start; gap: 4px; margin: 0; padding: 0; list-style: none; font-size: 12px; line-height: 1.35; overflow-y: auto; min-height: 0; }
+.chronicle-faction-box ul:focus-visible { outline: 3px solid var(--palette-ultramarine); outline-offset: -3px; }
+.chronicle-faction-empty { margin: 0; font-size: 12px; font-style: italic; }
+.chronicle-faction-date { font-weight: 700; margin-right: 6px; white-space: nowrap; }
+.chronicle-faction-record { display: block; width: 100%; min-height: 44px; padding: 4px 8px; box-sizing: border-box; text-align: left; font-size: 12px; line-height: 1.3; }
+.chronicle-faction-record-line { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
 .app-shell .ledger-tab-list { display: flex; gap: 4px; }
 .ledger-tab--chronicle { margin-left: auto; font-weight: 700; }
@@ -159,5 +205,6 @@
 /* A touch tablet: 48 px targets. `height`, since uiBoundaries.css pins every control's min-height to 44 px (!important). */
 @media (pointer: coarse) {
   .chronicle-screen :is(.chronicle-close, .chronicle-back, .chronicle-zoom, .chronicle-kind, .chronicle-card-action, .chronicle-detail-action,
-    .chronicle-season-shift, .chronicle-season, .chronicle-biography-chip, .chronicle-select select) { height: 48px; }
+    .chronicle-season-shift, .chronicle-season, .chronicle-biography-chip, .chronicle-select select, .chronicle-tab) { height: 48px; }
+  .chronicle-screen .chronicle-faction-record { height: 48px; }
 }
