@@ -10,12 +10,18 @@ import type { Person } from "../../engine/persons.types";
 import { MANOR_HOUSEHOLD } from "../../engine/persons.types";
 import { portraitFor } from "../../engine/portraits";
 import { calendar, scenarioOf } from "../../engine/scenarioState";
+import { factionDisplayName } from "../../content/factionCopy.ko";
+import type { FactionRecord } from "../../engine/faction.types";
+import { lordHouseHeraldrySeed, lordshipOf } from "../../engine/lordshipState";
 import { chronicleIllustration } from "../chronicleModel";
+import type { EmblemSpec } from "../heraldry/EmblemImage";
+import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
 import { drawnPortraitId } from "../portraitArt";
 import type { Wave16ImageId } from "../wave16Art";
 import type { Wave17ImageId } from "../wave17Art";
 import { CHRONICLE_SCREEN_COPY, OCCUPATION_TITLES } from "./chronicleScreenCopy.ko";
+import { WAVE17_IMAGES } from "../wave17ArtManifest.generated";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): the whole history ledger read on three axes — the town's
 // timeline (a 1300→1450 strip of the scenario's eras, one Wave 19 segment each, markers for the weightiest record of
@@ -28,11 +34,14 @@ const YEAR = 4 * SEASON;
 /** CHRONICLE_DESIGN 2.1: the strip runs to the campaign's last year. */
 export const CHRONICLE_END_YEAR = 1450;
 
-export const CHRONICLE_KINDS = ["decision", "event", "era", "milestone", "person", "ledger"] as const satisfies readonly HistoryKind[];
+/** UI-6: `faction` — a faction's relation moved (FACTION-0 FX-4 `faction.relation`), shown as the "관계" kind. */
+export const CHRONICLE_KINDS = ["decision", "event", "era", "milestone", "person", "ledger", "faction"] as const satisfies readonly HistoryKind[];
 export type ChronicleKind = (typeof CHRONICLE_KINDS)[number];
-export type ChronicleFilter = Readonly<{ kinds: readonly ChronicleKind[]; severity: HistorySeverity; fromYear: number | null; toYear: number | null; personId: string | null }>;
+/** `factionId` (UI-6): only the records a faction is the subject or an actor of (a faction page's record link sets it). */
+export type ChronicleFilter = Readonly<{ kinds: readonly ChronicleKind[]; severity: HistorySeverity; fromYear: number | null; toYear: number | null; personId: string | null;
+  factionId?: string | null }>;
 /** CHRONICLE_DESIGN 0.5: the screen opens on the weighty records; "모든 기록" shows the everyday ones too. */
-export const DEFAULT_CHRONICLE_FILTER: ChronicleFilter = { kinds: CHRONICLE_KINDS, severity: 1, fromYear: null, toYear: null, personId: null };
+export const DEFAULT_CHRONICLE_FILTER: ChronicleFilter = { kinds: CHRONICLE_KINDS, severity: 1, fromYear: null, toYear: null, personId: null, factionId: null };
 
 export const yearOfTick = (state: Pick<GameState, "scenarioId">, tick: number) => calendar(tick, scenarioOf(state).startYear).year;
 const tickOfYear = (state: Pick<GameState, "scenarioId">, year: number) => (year - scenarioOf(state).startYear) * YEAR;
@@ -50,7 +59,9 @@ export type ChronicleItem = Readonly<{ key: string; tick: number; record: Histor
 export function chronicleQuery(state: Pick<GameState, "scenarioId">, filter: ChronicleFilter): HistoryQuery {
   const range = { ...(filter.fromYear === null ? {} : { from: tickOfYear(state, filter.fromYear) }),
     ...(filter.toYear === null ? {} : { to: tickOfYear(state, filter.toYear + 1) - 1 }) };
-  return { kinds: filter.kinds, severity: filter.severity, range, ...(filter.personId === null ? {} : { actors: [{ type: "person" as const, id: filter.personId }] }) };
+  const actors = [...(filter.personId === null ? [] : [{ type: "person" as const, id: filter.personId }]),
+    ...(filter.factionId == null ? [] : [{ type: "faction" as const, id: filter.factionId }])];
+  return { kinds: filter.kinds, severity: filter.severity, range, ...(actors.length === 0 ? {} : { actors }) };
 }
 
 /** CHRONICLE_DESIGN 2.4: frequent decisions (placement and the like) are one card a season — the engine's lines per kind, joined. */
@@ -217,10 +228,12 @@ export function snapshotFor(state: Pick<GameState, "history">, tick: number, own
 
 export type RecordFrameId = "frame_record_decision" | "frame_record_era" | "frame_record_event" | "frame_record_ledger" | "frame_record_milestone" | "frame_record_person";
 export type ChronicleArt = Readonly<{ kind: "wave16"; id: Wave16ImageId }> | Readonly<{ kind: "wave17"; id: Wave17ImageId }>
-  | Readonly<{ kind: "portrait"; portraitId: string }> | null;
+  | Readonly<{ kind: "portrait"; portraitId: string }> | Readonly<{ kind: "emblem"; emblem: EmblemSpec }> | null;
 export type RecordCard = Readonly<{
   id: string; kind: HistoryKind; frame: RecordFrameId; date: string; sentence: string; numbers: string | null; art: ChronicleArt;
   place: Readonly<{ tx: number; ty: number }> | null; snapshot: SnapshotRef | null; personId: string | null; personName: string | null;
+  /** UI-6: the faction the record is about or names ([세력] opens its page), with its display name. */
+  factionId: string | null; factionName: string | null;
   decision: boolean; folded: boolean;
 }>;
 
@@ -247,9 +260,77 @@ export function portraitAt(person: Person, year: number) {
   return { ...pick, portraitId: drawnPortraitId(person, pick.portraitId) };
 }
 
-export function recordArt(state: Pick<GameState, "persons" | "scenarioId">, record: HistoryRecord): ChronicleArt {
+// ---------------------------------------------------------------------------------------------------------------
+// UI-6: factions on the cards (FACTION-0). Arms and marks from the faction's heraldry seed (`heraldryArms`, one key for
+// every screen); the lord's houses keep the manor's key (FAIL-3: the first house's arms are the ones drawn before).
+
+/**
+ * The merchant houses bear a merchant's mark; the rest arms — both from the faction's seed (FX-1). UI-6b: the Crown bears
+ * the king's arms of `year` (England, quartered with France from 1340), not a seed's.
+ */
+export const factionEmblem = (faction: Pick<FactionRecord, "kind" | "heraldrySeed">, year: number): EmblemSpec => faction.kind === "crown"
+  ? { kind: "royal", arms: royalArms(year) } : faction.kind === "merchant_house"
+    ? { kind: "merchant", recipe: heraldryMark(faction.heraldrySeed) } : { kind: "arms", recipe: heraldryArms(faction.heraldrySeed) };
+
+/** The faction a record is about or names (a relation's subject, a petition's or a war record's actor). */
+export function recordFaction(record: Pick<HistoryRecord, "subject" | "actors">): string | null {
+  if (record.subject.type === "faction") return record.subject.id;
+  return record.actors?.find(actor => actor.type === "faction")?.id ?? null;
+}
+
+/** A faction's name by id (FIX-5: only through `factionDisplayName`), or null when the town has no such faction. */
+export function factionNameOf(state: Partial<Pick<GameState, "factions">>, id: string): string | null {
+  const faction = state.factions?.factions.find(entry => entry.id === id);
+  return faction === undefined ? null : factionDisplayName(faction.id, faction.name);
+}
+
+/** A lord's house by its record (`order`, else its name among the houses): its arms (FAIL-3 FL-7). */
+function houseArms(state: Pick<GameState, "seed" | "lordship">, record: HistoryRecord): ChronicleArt {
+  const order = record.params?.order;
+  const lordship = lordshipOf(state as GameState);
+  const seed = typeof order === "number" ? lordHouseHeraldrySeed(state.seed, order)
+    : [lordship.house, ...lordship.pastHouses].find(house => house.name === record.params?.name)?.heraldrySeed;
+  return seed === undefined ? null : { kind: "emblem", emblem: { kind: "arms", recipe: armsRecipe(seed, MANOR_HOUSEHOLD) } };
+}
+
+/** F2-A (WR-2…WR-8): a royal demand or the war's choice by its petition — its chronicle scene, else its Wave 17 decision card. */
+const WAR_DEMAND_ART: Readonly<Record<string, Wave17ImageId>> = {
+  wool_payment: "chronicle_wool_levy", levy_response: "chronicle_conscription", war_funding: "decision_war_funding",
+  refugee_admission: "decision_refugee_admission", wall_or_market: "decision_wall_or_market",
+};
+/** F2-A (WR-1…WR-7): the war's records. `favour_lost` and the men's return borrow the messenger's and the levy's scenes. */
+const WAR_RECORD_ART: Readonly<Record<string, Wave17ImageId>> = {
+  "war.messenger": "chronicle_messenger", "war.beacon": "chronicle_beacon", "war.raid": "chronicle_raid", "war.conscripts_left": "chronicle_conscription",
+  "war.conscripts_returned": "chronicle_conscription", "war.licence": "chronicle_purveyance_licence", "war.favour_lost": "chronicle_messenger",
+};
+
+/** The record's picture that F2-A, FACTION-0 and FAIL-3 brought (null: the CHRON-1 rules below decide). */
+function chapterTwoArt(state: Pick<GameState, "seed" | "lordship" | "factions" | "scenarioId">, record: HistoryRecord): ChronicleArt {
+  const param = (key: string) => String(record.params?.[key] ?? "");
+  const war = WAR_RECORD_ART[record.template];
+  if (war !== undefined) return { kind: "wave17", id: war };
+  if (record.template === "war.unanswered") { const id = WAR_DEMAND_ART[param("defId")]; return id === undefined ? null : { kind: "wave17", id }; }
+  if (record.template === "decision.petition_response") {
+    if (param("defId") === "wall_or_market" && param("chosen") !== "expired") return param("chosen") === "refuse" ? { kind: "wave16", id: "chronicle_market_day" } : { kind: "wave17", id: "stonewall_start" };
+    const id = WAR_DEMAND_ART[param("defId")];
+    return id === undefined ? null : { kind: "wave17", id };
+  }
+  if (record.template === "faction.relation") {
+    const faction = state.factions?.factions.find(entry => entry.id === record.subject.id);
+    // The arms borne when the record was written (the Crown's changed in 1340).
+    return faction === undefined ? null : { kind: "emblem", emblem: factionEmblem(faction, history.date({ tick: record.tick }, state).year) };
+  }
+  if (record.template === "house.withdrew" || record.template === "house.arrived" || record.template === "house.resettled") return houseArms(state, record);
+  if (record.template === "milestone.chapter_start" && param("chapter") === "2") return { kind: "wave16", id: "chapter2_intro" };
+  if (record.template === "milestone.chapter_end" && param("chapter") === "2") return { kind: "wave17", id: "chapter2_end" };
+  return null;
+}
+
+export function recordArt(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, record: HistoryRecord): ChronicleArt {
   if (record.template === "decision.stone_town") return { kind: "wave17", id: "stonewall_start" };
   if (record.template === "milestone.stone_town") return { kind: "wave17", id: "stonewall_complete" };
+  const later = chapterTwoArt(state as Pick<GameState, "seed" | "lordship" | "factions">, record);
+  if (later !== null) return later;
   if (record.kind === "person") {
     const person = recordPerson(state, record);
     return person === undefined ? null : { kind: "portrait", portraitId: portraitAt(person, yearOfTick(state, record.tick)).portraitId };
@@ -260,7 +341,8 @@ export function recordArt(state: Pick<GameState, "persons" | "scenarioId">, reco
     const defId = String(record.params?.defId ?? "");
     return { kind: "wave16", id: defId === "great_famine" ? "event_famine_omen" : defId === "dearth_rehearsal" ? "event_wet_summer" : "event_fire_warning" };
   }
-  return { kind: "wave16", id: chronicleIllustration(record) };
+  const id = chronicleIllustration(record);
+  return id in WAVE17_IMAGES ? { kind: "wave17", id: id as Wave17ImageId } : { kind: "wave16", id: id as Wave16ImageId };
 }
 
 const label = (key: string) => HISTORY_CHOICE_LABELS[key] ?? key;
@@ -289,7 +371,7 @@ function recordNumbers(record: HistoryRecord, bundle: readonly HistoryRecord[] |
   return null;
 }
 
-export function recordCard(state: Pick<GameState, "history" | "persons" | "scenarioId" | "houses">, item: ChronicleItem): RecordCard {
+export function recordCard(state: Pick<GameState, "history" | "persons" | "scenarioId" | "houses" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, item: ChronicleItem): RecordCard {
   const { record, bundle } = item;
   const person = recordPerson(state, record);
   const summary = bundle !== null ? CHRONICLE_SCREEN_COPY.bundleTitle : history.summary(record);
@@ -301,6 +383,8 @@ export function recordCard(state: Pick<GameState, "history" | "persons" | "scena
     numbers: recordNumbers(record, bundle), art: recordArt(state, record),
     place: record.place === undefined ? null : { tx: record.place.tx, ty: record.place.ty },
     snapshot: snapshotFor(state, record.tick, record.snapshotId), personId: person?.id ?? null, personName,
+    ...(() => { const factionId = bundle === null ? recordFaction(record) : null; const factionName = factionId === null ? null : factionNameOf(state, factionId);
+      return factionName === null ? { factionId: null, factionName: null } : { factionId, factionName }; })(),
     decision: record.decision !== undefined, folded: record.template === "ledger.rollup",
   };
 }
@@ -313,7 +397,7 @@ export type DecisionCompareView = Readonly<{
   id: string; heading: string; chosen: string; alternatives: readonly string[]; art: ChronicleArt; rows: readonly DecisionRow[]; pending: string | null;
 }>;
 
-export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId">, record: HistoryRecord): DecisionCompareView | null {
+export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, record: HistoryRecord): DecisionCompareView | null {
   const decision = record.decision;
   if (decision === undefined) return null;
   const kind = String(record.params?.decisionKind ?? record.template.slice("decision.".length));

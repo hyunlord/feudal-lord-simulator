@@ -15,9 +15,9 @@ const ledger = readFileSync("docs/provenance/assets.csv", "utf8");
 const jpegSize = (bytes: Buffer) => { const sof = bytes.indexOf(Buffer.from([0xff, 0xc0])); return [bytes.readUInt16BE(sof + 7), bytes.readUInt16BE(sof + 5)]; };
 
 test("every PERSON-0 pool picture is installed: a received PNG in the inbox ledger, a provenance row, a 256 and a 96 derivative", () => {
-  assert.equal(PORTRAIT_POOL.length, 232);
+  assert.equal(PORTRAIT_POOL.length, 304); // FIX-6: pool 3 (I101–I124, the factions' leaders) joins the 232
   assert.deepEqual(Object.keys(PORTRAIT_IMAGES).sort(), PORTRAIT_POOL.map(entry => entry.id).sort());
-  assert.equal(PORTRAIT_DERIVATIVES.length, 464);
+  assert.equal(PORTRAIT_DERIVATIVES.length, 608);
   for (const entry of PORTRAIT_POOL) {
     const image = PORTRAIT_IMAGES[entry.id as keyof typeof PORTRAIT_IMAGES];
     assert.ok(image.source.endsWith(entry.file), `${entry.id}: ${image.source} is the pool's ${entry.file}`);
@@ -50,10 +50,14 @@ test("the runtime asks for the 96 at 1x and the 256 at 2x in small slots, the 25
   assert.equal(portraitStyle("Z999", 44), null);
 });
 
-test("Wave 17: the stone town proclaimed and finished, JPEG derivatives of their confirmed received PNGs", () => {
-  assert.deepEqual(WAVE17_DERIVATIVES.map(item => item.id), ["stonewall_start", "stonewall_complete"]);
+test("Wave 17: CHRON-1's stone town and UI-6's chapter 2 scenes, JPEG derivatives of their confirmed received PNGs", () => {
+  // Decision cards 640 x 480, event cards 960 x 540, chronicle scenes 384 x 384, chapter 2's end page 1920 x 1080.
+  const size = (id: string) => id.startsWith("decision_") ? [640, 480] : id.startsWith("event_") ? [960, 540] : id === "chapter2_end" ? [1920, 1080] : [384, 384];
+  assert.equal(WAVE17_DERIVATIVES.length, 22);
+  assert.deepEqual(WAVE17_DERIVATIVES.slice(0, 2).map(item => item.id), ["stonewall_start", "stonewall_complete"]);
   for (const item of WAVE17_DERIVATIVES) {
     assert.ok(inbox.includes(sha256(readFileSync(item.source))), item.id);
-    assert.deepEqual(jpegSize(buildKeyartDerivative(item)), [384, 384], item.id);
+    assert.ok(ledger.includes(item.source), `${item.id}: provenance row`);
+    assert.deepEqual(jpegSize(buildKeyartDerivative(item)), size(item.id), item.id);
   }
 });

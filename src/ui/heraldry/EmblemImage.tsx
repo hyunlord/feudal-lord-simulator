@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { assetUrlForBase } from "../../render/worldAssets";
 import { drawCroppedWorldSprite } from "../../render/worldSprite";
 import { WAVE14_IMAGES } from "../wave14ArtManifest.generated";
-import { armsKey, INK, merchantKey, OUTLINE, TINCTURES, type ArmsRecipe, type MerchantRecipe } from "./heraldry";
+import { armsKey, INK, merchantKey, OUTLINE, ROYAL_LAYOUT, TINCTURES, type ArmsRecipe, type MerchantRecipe, type RoyalArms, type Tincture } from "./heraldry";
 
 // UI-5: composes arms and merchant marks from the Wave 14 masks in the browser, by the batch's contract
 // (records/HERALDRY_COMPOSITION.md): the shield PNG's alpha is the silhouette, alpha × luminance the fill and the rest the
@@ -58,18 +58,16 @@ function toPicture(data: Uint8ClampedArray<ArrayBuffer>, size: number): Picture 
   return { url: canvas.toDataURL("image/png"), digest: digestOf(data) };
 }
 
-async function composeArms(recipe: ArmsRecipe): Promise<Picture> {
-  const [shield, partition, ordinary, charge, multiply, screen] = await Promise.all([
-    mask(`shield_${recipe.shield}`, SIZE),
-    recipe.partition === null ? null : mask(`partition_${recipe.partition.id}`, SIZE),
-    recipe.ordinary === null ? null : mask(`ordinary_${recipe.ordinary.id}`, SIZE),
-    recipe.charge === null ? null : mask(`charge_${recipe.charge.id}`, SIZE, { x: 70, y: recipe.ordinary?.id === "chief" ? 82 : 64, width: 116, height: 116 }),
-    mask("shield_surface_texture_multiply", SIZE), mask("shield_surface_texture_screen", SIZE),
-  ]);
-  const field = channelsOf(TINCTURES[recipe.field]); const outline = channelsOf(OUTLINE);
-  const second = recipe.partition === null ? field : channelsOf(TINCTURES[recipe.partition.tincture]);
-  const onIt = recipe.ordinary === null ? field : channelsOf(TINCTURES[recipe.ordinary.tincture]);
-  const chargeColour = recipe.charge === null ? field : channelsOf(TINCTURES[recipe.charge.tincture]);
+type Masks = Readonly<{ shield: Uint8ClampedArray; multiply: Uint8ClampedArray; screen: Uint8ClampedArray }>;
+/**
+ * The arms' paint: the field, a partition's second tincture by weight `m`, an ordinary's or chief's by `o`, the charges'
+ * by `c` (the weights per pixel from `weights`), then the textures and the outline.
+ */
+function paintArms(masks: Masks, tinctures: Readonly<{ field: Tincture; second: Tincture; onIt: Tincture; charge: Tincture }>,
+  weights: (at: number) => readonly [number, number, number]): Picture {
+  const { shield, multiply, screen } = masks;
+  const field = channelsOf(TINCTURES[tinctures.field]); const outline = channelsOf(OUTLINE);
+  const second = channelsOf(TINCTURES[tinctures.second]); const onIt = channelsOf(TINCTURES[tinctures.onIt]); const chargeColour = channelsOf(TINCTURES[tinctures.charge]);
   const out = new Uint8ClampedArray(new ArrayBuffer(SIZE * SIZE * 4));
   for (let y = 0; y < SIZE; y += 1) {
     // The fill's span on this row: the textures' row UV.
@@ -80,10 +78,8 @@ async function composeArms(recipe: ArmsRecipe): Promise<Picture> {
       const alpha = shield[at + 3]! / 255;
       if (alpha === 0) continue;
       const fill = alpha * ((shield[at]! + shield[at + 1]! + shield[at + 2]!) / 765);
-      // The layers' weights at this pixel (a partition's, an ordinary's or chief's, a charge's coverage).
-      const m = partition === null ? 0 : partition[at + 3]! / 255;
-      const o = ordinary === null ? 0 : ordinary[at + 3]! / 255;
-      const c = charge === null ? 0 : charge[at + 3]! / 255;
+      // The layers' weights at this pixel (a partition's, an ordinary's or chief's, the charges' coverage).
+      const [m, o, c] = weights(at);
       const u = first < 0 || last <= first ? 0 : Math.min(SIZE - 1, Math.max(0, Math.round((x - first) / (last - first) * (SIZE - 1))));
       const sample = (y * SIZE + u) * 4;
       const darken = multiply[sample]! / 255; const lighten = screen[sample]! / 255;
@@ -102,6 +98,36 @@ async function composeArms(recipe: ArmsRecipe): Promise<Picture> {
   return toPicture(out, SIZE);
 }
 
+async function composeArms(recipe: ArmsRecipe): Promise<Picture> {
+  const [shield, partition, ordinary, charge, multiply, screen] = await Promise.all([
+    mask(`shield_${recipe.shield}`, SIZE),
+    recipe.partition === null ? null : mask(`partition_${recipe.partition.id}`, SIZE),
+    recipe.ordinary === null ? null : mask(`ordinary_${recipe.ordinary.id}`, SIZE),
+    recipe.charge === null ? null : mask(`charge_${recipe.charge.id}`, SIZE, { x: 70, y: recipe.ordinary?.id === "chief" ? 82 : 64, width: 116, height: 116 }),
+    mask("shield_surface_texture_multiply", SIZE), mask("shield_surface_texture_screen", SIZE),
+  ]);
+  return paintArms({ shield, multiply, screen }, { field: recipe.field, second: recipe.partition?.tincture ?? recipe.field,
+    onIt: recipe.ordinary?.tincture ?? recipe.field, charge: recipe.charge?.tincture ?? recipe.field },
+  at => [partition === null ? 0 : partition[at + 3]! / 255, ordinary === null ? 0 : ordinary[at + 3]! / 255, charge === null ? 0 : charge[at + 3]! / 255]);
+}
+
+/** UI-6b: the king's arms (`ROYAL_LAYOUT`): the lions on gules, and from 1340 the quarters 1 and 4 azure semé de lis. */
+async function composeRoyal(arms: RoyalArms): Promise<Picture> {
+  const layout = ROYAL_LAYOUT[arms];
+  const quartered = layout.lis.length > 0;
+  const [shield, multiply, screen, quarters, lions, lis] = await Promise.all([
+    mask("shield_heater", SIZE), mask("shield_surface_texture_multiply", SIZE), mask("shield_surface_texture_screen", SIZE),
+    quartered ? mask("partition_quarterly", SIZE) : null,
+    Promise.all(layout.lions.map(box => mask("charge_lion_passant", SIZE, box))), Promise.all(layout.lis.map(box => mask("charge_fleur_de_lis", SIZE, box))),
+  ]);
+  const cover = (charges: readonly Uint8ClampedArray[], at: number) => charges.reduce((most, charge) => Math.max(most, charge[at + 3]! / 255), 0);
+  return paintArms({ shield, multiply, screen }, { field: "gules", second: "azure", onIt: "gules", charge: "or" }, at => {
+    // France in the quarters the quarterly mask marks (1 and 4), England's lions in the others.
+    const m = quarters === null ? 0 : quarters[at + 3]! / 255;
+    return [m, 0, Math.max(cover(lions, at) * (1 - m), cover(lis, at) * m)];
+  });
+}
+
 async function composeMark(recipe: MerchantRecipe): Promise<Picture> {
   const [frame, staff, branch, ink] = await Promise.all([
     mask(`merchant_frame_${recipe.frame}`, MARK), mask(`merchant_staff_${recipe.staff}`, MARK), mask(`merchant_branch_${recipe.branch}`, MARK),
@@ -118,26 +144,33 @@ async function composeMark(recipe: MerchantRecipe): Promise<Picture> {
   return toPicture(out, MARK);
 }
 
+/** The emblem's key (the element's `data-emblem`): its recipe (arms, a merchant's mark) or the king's arms of the year. */
+export const emblemKey = (emblem: EmblemSpec): string => emblem.kind === "arms" ? armsKey(emblem.recipe)
+  : emblem.kind === "merchant" ? merchantKey(emblem.recipe) : `royal.${emblem.arms}`;
+
 export function composedEmblem(emblem: EmblemSpec): Promise<Picture> {
-  const key = emblem.kind === "arms" ? `arms:${armsKey(emblem.recipe)}` : `mark:${merchantKey(emblem.recipe)}`;
+  const key = `${emblem.kind}:${emblemKey(emblem)}`;
   let pending = composed.get(key);
-  if (pending === undefined) { pending = emblem.kind === "arms" ? composeArms(emblem.recipe) : composeMark(emblem.recipe); composed.set(key, pending); }
+  if (pending === undefined) {
+    pending = emblem.kind === "arms" ? composeArms(emblem.recipe) : emblem.kind === "merchant" ? composeMark(emblem.recipe) : composeRoyal(emblem.arms);
+    composed.set(key, pending);
+  }
   return pending;
 }
 
-export type EmblemSpec = Readonly<{ kind: "arms"; recipe: ArmsRecipe }> | Readonly<{ kind: "merchant"; recipe: MerchantRecipe }>;
+export type EmblemSpec = Readonly<{ kind: "arms"; recipe: ArmsRecipe }> | Readonly<{ kind: "merchant"; recipe: MerchantRecipe }> | Readonly<{ kind: "royal"; arms: RoyalArms }>;
 
 /** The arms or the mark as an image `size` px wide (nothing until composed; the digest is on the element). */
 export function EmblemImage({ emblem, size, label }: { readonly emblem: EmblemSpec; readonly size: number; readonly label: string }) {
   const [picture, setPicture] = useState<Picture | null>(null);
-  const key = emblem.kind === "arms" ? armsKey(emblem.recipe) : merchantKey(emblem.recipe);
+  const key = emblemKey(emblem);
   useEffect(() => {
     let live = true;
     setPicture(null);
     void composedEmblem(emblem).then(result => { if (live) setPicture(result); }).catch(() => undefined);
     return () => { live = false; };
   // why: keyed by the recipe's content (a new recipe object each render composes the same picture)
-  }, [emblem.kind, key]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [key]); // eslint-disable-line react-hooks/exhaustive-deps
   return picture === null ? <span className="emblem-image emblem-image--pending" style={{ width: size, height: size }} aria-hidden="true" />
     : <img className="emblem-image" src={picture.url} width={size} height={size} alt={label} data-emblem={key} data-digest={picture.digest} />;
 }

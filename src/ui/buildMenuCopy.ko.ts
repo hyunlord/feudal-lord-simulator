@@ -1,25 +1,9 @@
+import { buildingCopy } from "../content/buildingCatalog.ko";
 import type { PlacementTool } from "../render/renderer";
 
-// UX-1 build cards (research E "건설 card"): one line of what the building does, under its name, beside the cost.
-export const BUILD_CARD_PURPOSE = {
-  house: "주민이 삽니다",
-  well: "반경 6칸 집에 물",
-  road: "사람·물자의 통로",
-  wheat_farm: "밀을 기릅니다",
-  farmstead: "경작지를 갈고 거둡니다",
-  mill: "밀을 빵으로",
-  malt_kiln: "보리를 엿기름으로",
-  logging_camp: "숲에서 통나무",
-  sawmill: "통나무를 목재로",
-  quarry: "바위에서 원석",
-  masonry: "원석을 석재로",
-  storehouse: "목재·통나무 보관",
-  granary: "밀·빵을 보관합니다",
-  market: "남는 물자를 팝니다",
-  chapel: "신앙 · 목책 조건",
-  church: "주변 집에 신앙",
-  keep: "석조 도시의 성채",
-} as const satisfies Record<PlacementTool, string>;
+// UX-1 build cards (research E "건설 card"): one line of what the building does, under its name, beside the cost —
+// the building's line in the catalog (BLD-REG), the road's here.
+export const buildCardPurpose = (tool: PlacementTool): string => tool === "road" ? ROAD_TOOL_COPY.card : buildingCopy(tool).card;
 
 export const BUILD_MENU_COPY = {
   categoryGroup: "건설 분류",
@@ -49,25 +33,14 @@ export const BUILD_TOOL_GROUP_LABELS = {
   service: "서비스",
 } as const;
 
-export const BUILD_TOOL_PURPOSE = {
-  house: "주민을 받아 인구 목표를 늘립니다",
-  wheat_farm: "밀을 길러 방앗간에 보냅니다",
-  farmstead: "경작지 띠를 갈고 거두어 밀을 곳간에 모읍니다. 경작지 구역 안이나 옆에 짓습니다",
-  mill: "밀을 빵으로 바꿔 배급을 돕습니다",
-  malt_kiln: "보리를 싹 틔워 말려 엿기름을 만듭니다. 집집의 아낙이 에일로 빚습니다",
-  logging_camp: "숲 가장자리에서 통나무를 냅니다",
-  sawmill: "통나무를 목재로 켭니다",
-  quarry: "바위 가장자리에서 원석을 캐냅니다",
-  masonry: "원석을 석재로 다듬습니다",
-  market: "남는 물자를 팔아 재정 수입을 얻습니다",
-  church: "주변 집에 신앙 서비스를 제공합니다",
-  keep: "석조 도시의 중심 성채를 세웁니다",
-  storehouse: "목재와 통나무를 보관합니다",
-  granary: "밀과 빵을 보관합니다",
-  chapel: "목책마을 선포 조건을 준비합니다",
-  well: "주변 집에 물을 공급합니다",
-  road: "육지 길은 무료. 양쪽 강둑을 직선으로 이으면 최대 8칸 목교를 놓습니다. 다리·접속 길 철거 시 다리 전체를 걷습니다",
-} as const satisfies Record<PlacementTool, string>;
+/** The road's words (it is a tool, not a building kind). */
+export const ROAD_TOOL_COPY = {
+  card: "사람·물자의 통로",
+  purpose: "육지 길은 무료. 양쪽 강둑을 직선으로 이으면 최대 8칸 목교를 놓습니다. 다리·접속 길 철거 시 다리 전체를 걷습니다",
+} as const;
+
+/** The tool's purpose (the build menu model): the building's line in the catalog (BLD-REG), the road's here. */
+export const buildToolPurpose = (tool: PlacementTool): string => tool === "road" ? ROAD_TOOL_COPY.purpose : buildingCopy(tool).purpose;
 
 export const BUILD_MENU_MODEL_COPY = {
   requiresRoad: "길 인접 필요",

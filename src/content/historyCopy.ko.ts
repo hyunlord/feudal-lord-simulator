@@ -2,6 +2,7 @@
  * F0-C2 history ledger sentences (spec docs/design/history-ledger.md HL-1): one template per record kind. A record
  * saves only the template id and its parameters; `historySummary` rebuilds the sentence from here.
  */
+import { buildingHistoryName } from "./buildingCatalog.ko";
 import { factionDisplayName, factionReasonLine } from "./factionCopy.ko";
 import { GENTRY_NAMES_KO } from "./gentryNames";
 
@@ -9,11 +10,8 @@ type P = Readonly<Record<string, number | string>>;
 const n = (params: P, key: string): number => Number(params[key] ?? 0);
 const s = (params: P, key: string): string => String(params[key] ?? "");
 
-export const HISTORY_BUILDING_NAMES: Readonly<Record<string, string>> = {
-  house: "집", well: "우물", storehouse: "창고", granary: "곡창", chapel: "예배당", wheat_farm: "밀밭", farmstead: "헛간",
-  mill: "방앗간", logging_camp: "벌목장", sawmill: "제재소", market: "시장", church: "교회", masonry: "석공장", quarry: "채석장",
-};
-const building = (kind: string) => HISTORY_BUILDING_NAMES[kind] ?? kind;
+// BLD-REG: a building's name in the ledger's sentences is its catalog line (`buildingCatalog.ko.ts` `history`).
+const building = buildingHistoryName;
 
 /** The particle after a word: the first form after a final consonant (받침), the second after a vowel. */
 function josa(word: string, withFinal: string, withoutFinal: string): string {
@@ -54,17 +52,17 @@ export const HISTORY_OCCUPATIONS: Readonly<Record<string, string>> = {
   granger: "곡창", storekeeper: "창고",
 };
 /** FAIL-3 (FL-3, FL-1, FL-7): the decline's causes, the lord's rights and the houses' names in Korean. */
-const DECLINE_CAUSES: Readonly<Record<string, string>> = { derelict: "빈 필지가 늘어", arrears: "유지비가 밀려", depopulated: "사람이 떠나", empty: "도시가 비어" };
+export const DECLINE_CAUSES: Readonly<Record<string, string>> = { derelict: "빈 필지가 늘어", arrears: "유지비가 밀려", depopulated: "사람이 떠나", empty: "도시가 비어" };
 export const LORD_RIGHT_NAMES: Readonly<Record<string, string>> = { market: "시장 좌판세", tolls: "통행세", mill: "방앗간 사용료" };
 /** FIX-5: the invented houses' Korean readings (`gentryNames.ts`). */
 export const LORD_HOUSE_NAMES_KO: Readonly<Record<string, string>> = GENTRY_NAMES_KO;
 const houseName = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;
 /** F2-A (WR-2…WR-8): what each petition is, and what its three answers mean. */
-const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
+export const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
   market_charter: "상인의 시장권 청원", restore_right: "권리 복원 청원",
   wool_payment: "양모 공납 칙령", levy_response: "징집 명령", war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
 };
-const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
+export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   wool_payment: { accept: "현물로 낸다", accept_with_price: "현금으로 낸다", refuse: "거절", expired: "답하지 않음" },
   levy_response: { accept: "사람을 보낸다", accept_with_price: "면제금을 낸다", refuse: "거절", expired: "답하지 않음" },
   war_funding: { accept: "상인에게 빌린다", accept_with_price: "세금을 올린다", refuse: "거절", expired: "답하지 않음" },

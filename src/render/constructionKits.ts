@@ -1,3 +1,4 @@
+import { BUILDING_CATALOG, buildingEntry, type ConstructionKitKey } from "../content/buildingCatalog";
 import type { Building, BuildingKind } from "../content/buildingConfig";
 import { constructionSiteFootprint, type ConstructionSite } from "../economy/construction";
 import { isBuildingConstructionSite } from "../economy/constructionSiteAccessors";
@@ -43,18 +44,21 @@ const TIMBER_SMALL: Kit = { family: "timber", prefix: "kit_timber_stage_%_small"
 const TIMBER_MEDIUM: Kit = { family: "timber", prefix: "kit_timber_stage_%_medium", reference: house(2) };
 const STONE_MEDIUM: Kit = { family: "stone", prefix: "kit_stone_stage_%_medium", reference: facility("masonry", "masonry") };
 const STONE_LARGE: Kit = { family: "stone", prefix: "kit_stone_stage_%_large", reference: storehouseFrame };
-const KITS: Partial<Readonly<Record<BuildingKind, Kit>>> = {
-  house: TIMBER_SMALL, logging_camp: TIMBER_SMALL,
-  farmstead: TIMBER_MEDIUM, sawmill: TIMBER_MEDIUM, mill: TIMBER_MEDIUM,
-  masonry: STONE_MEDIUM, chapel: STONE_MEDIUM,
-  storehouse: STONE_LARGE, granary: STONE_LARGE,
-  church: { family: "public", prefix: "kit_public_stage_%_church", reference: facility("church", "church") },
-  keep: { family: "public", prefix: "kit_public_stage_%_keep", reference: facility("keep", "keep") },
+/** The kits by key; BLD-REG: a building's kit is its catalog `kit`. */
+const KIT_BY_KEY: { readonly [K in ConstructionKitKey]: Kit } = {
+  timber_small: TIMBER_SMALL, timber_medium: TIMBER_MEDIUM, stone_medium: STONE_MEDIUM, stone_large: STONE_LARGE,
+  public_church: { family: "public", prefix: "kit_public_stage_%_church", reference: facility("church", "church") },
+  public_keep: { family: "public", prefix: "kit_public_stage_%_keep", reference: facility("keep", "keep") },
+};
+const kitOf = (kind: ConstructionSite["kind"]): Kit | undefined => {
+  if (!Object.hasOwn(BUILDING_CATALOG, kind)) return undefined;
+  const key = buildingEntry(kind as BuildingKind).kit;
+  return key === undefined ? undefined : KIT_BY_KEY[key];
 };
 
 /** The site's kit family and size (null: the common four-stage art). */
 export function constructionKitFor(kind: ConstructionSite["kind"]): { readonly family: KitFamily; readonly key: (stage: number) => Wave11Key } | null {
-  const kit = KITS[kind as BuildingKind];
+  const kit = kitOf(kind);
   if (kit === undefined) return kind === "stone_wall_segment" ? { family: "defense", key: stage => `kit_defense_stage_${STAGES[stage]!}_tower` as Wave11Key } : null;
   return { family: kit.family, key: stage => kit.prefix.replace("%", STAGES[Math.max(0, Math.min(3, stage))]!) as Wave11Key };
 }
@@ -66,7 +70,7 @@ function siteBuilding(site: ConstructionSite): Building | null {
 
 /** Draws the kit's painting for `stage` (0-3) on the site; false for a kind without a kit or while it loads. */
 export function drawKitStage(context: CanvasRenderingContext2D, site: ConstructionSite, stage: number): boolean {
-  const kit = KITS[site.kind as BuildingKind];
+  const kit = kitOf(site.kind);
   const building = siteBuilding(site);
   if (kit === undefined || building === null) return false;
   const rect = kit.reference.rect(building);

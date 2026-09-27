@@ -322,9 +322,9 @@
 .petition-seal { grid-row: 1 / 4; }
 .chronicle-page { position: relative; width: min(920px, 96vw); height: min(780px, 94vh); }
 .chronicle-frame { position: absolute; inset: 0; box-sizing: border-box; }
-.chronicle-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; padding: 4px 10px; color: var(--palette-ink); }
-.chronicle-body h2 { margin: 0; font-size: 22px; }
-.chronicle-body h3 { margin: 6px 0 0; font-size: 15px; }
+.chapter-page-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; padding: 4px 10px; color: var(--palette-ink); }
+.chapter-page-body h2 { margin: 0; font-size: 22px; }
+.chapter-page-body h3 { margin: 6px 0 0; font-size: 15px; }
 .chronicle-timeline, .chronicle-decisions { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .chronicle-columns { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 16px; }
 .chronicle-entry { display: grid; grid-template-columns: 56px auto; grid-template-rows: auto auto; gap: 0 10px; align-items: center; font-size: 13px; }
@@ -343,6 +343,18 @@
 .app-shell .season-strip-forecast[data-stage="rumour"] { opacity: 0.7; }
 .app-shell .ledger-rights h3 { margin: 8px 0 2px; font-size: 13px; }
 .app-shell .ledger-rights ul { margin: 0; padding-left: 18px; font-size: 13px; }
+/* UI-6: the rights register (Wave 14 frame as a border image; the arms beside the house; a lost right in red ochre). */
+.app-shell .ledger-rights { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 40px; margin-top: 8px; padding: 4px 8px; }
+.ledger-rights-page { display: grid; align-content: start; gap: 4px; min-width: 0; }
+.ledger-rights-house { display: flex; gap: 10px; align-items: flex-start; }
+.ledger-rights-house p { margin: 0; font-size: 13px; }
+.ledger-rights-house-name { font-weight: 700; }
+.app-shell .ledger-rights h4 { margin: 6px 0 2px; font-size: 13px; }
+.app-shell .ledger-rights .ledger-rights-list { display: grid; gap: 4px; padding: 0; list-style: none; }
+.ledger-rights-list li { display: grid; grid-template-columns: 32px 1fr; grid-template-rows: auto auto; column-gap: 8px; align-items: center; }
+.ledger-rights-list li > span:first-child { grid-row: 1 / 3; }
+.ledger-rights-list li[data-present="false"]:not([data-lost]) { opacity: 0.6; }
+.ledger-rights-lost { color: var(--palette-vermilion); font-weight: 600; }
 /* AUDIO-1 mixer: master on / off and volume, then one slider per bus (screen, alerts, town). */
 .audio-controls { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
 .audio-bus { display: grid; gap: 2px; min-width: 180px; font-size: 13px; }
@@ -382,6 +394,11 @@
 .petition-people { display: grid; gap: 4px; min-width: 0; }
 .petition-people h3 { margin: 0; font-size: 13px; }
 .petition-people .person-list { margin: 0; }
+/* UI-6: the Crown's writ — the hanging wax seal with the Crown's arms on its disc. */
+/* UI-6b: the Wave 8 petition frame's roundel — its centre at (68, 110) of the corner slice, drawn at half size (34, 55). */
+.petition-roundel { position: absolute; left: 15px; top: 36px; width: 38px; height: 38px; pointer-events: none; }
+.petition-writ { position: relative; flex: none; }
+.petition-writ-arms { position: absolute; left: 7px; bottom: 7px; }
 .decision-steward { display: flex; align-items: center; gap: 10px; }
 .decision-steward .person-chip { flex: none; }
 .decision-steward-advice { margin: 0; }

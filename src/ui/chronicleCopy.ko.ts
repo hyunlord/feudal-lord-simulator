@@ -11,6 +11,8 @@ const METRICS: Readonly<Record<string, (value: number) => string>> = {
 };
 const metricLine = (values: Readonly<Record<string, number>>) => Object.entries(values).map(([key, value]) => (METRICS[key] ?? (v => `${key} ${v}`))(value)).join(" · ");
 
+const WALL_OUTCOME: Readonly<Record<string, string>> = { stone_wall: "석벽 완공", market: "시장을 넓힘", unfinished: "석벽 미완" };
+
 export const CHRONICLE_COPY = {
   label: "연대기",
   title: (chapter: number, from: number, to: number) => `제${chapter}장 연대기 · ${from}–${to}`,
@@ -22,13 +24,25 @@ export const CHRONICLE_COPY = {
   alternatives: (labels: readonly string[]) => labels.length === 0 ? "" : `다른 길: ${labels.join(", ")}`,
   outcome: (predicted: Readonly<Record<string, number>>, actual: Readonly<Record<string, number>> | null) =>
     actual === null ? `예측 ${metricLine(predicted)}` : `예측 ${metricLine(predicted)} / 실제 ${metricLine(actual)}`,
-  stats: (stats: ChronicleEntry["stats"]) => [
+  stats: (stats: ChronicleEntry["stats"], chapter = 1) => [
     `인구 처음 ${stats.populationStart} · 끝 ${stats.populationEnd} · 가장 많을 때 ${stats.peakPopulation}`,
     `집 ${stats.houses}채 · 불탄 집 ${stats.burntHouses} · 떠난 가구 ${stats.departures}`,
     `잃은 수확 밀 ${stats.harvestLost} · 금고 ${pence(stats.treasury)}`,
-    ...(stats.famine === null ? [] : [`대기근(${stats.famine.year}) 인구 닥칠 때 ${stats.famine.populationAtArrival} · 끝날 때 ${stats.famine.populationAtEnd}`]),
+    ...(stats.famine === null || chapter !== 1 ? [] : [`대기근(${stats.famine.year}) 인구 닥칠 때 ${stats.famine.populationAtArrival} · 끝날 때 ${stats.famine.populationAtEnd}`]),
+    // UI-6 (F2-A WR-9): chapter 2's war.
+    ...(stats.war === undefined ? [] : [
+      stats.war.raidYear === null || stats.war.raidLosses === null ? "해안 습격 없음" : `해안 습격(${stats.war.raidYear}) 불탄 집 ${stats.war.raidLosses.burntHouses} · 빼앗긴 돈 ${pence(stats.war.raidLosses.coin)} · 성벽 방어 ${Math.round((stats.war.defencePermille ?? 0) / 10)} %`,
+      `징집 ${stats.war.men}명 · 돌아오지 못한 사람 ${stats.war.lostMen}명 · ${WALL_OUTCOME[stats.war.wall]}`]),
   ],
   nextChapter: "제2장으로",
+  nextChapterOf: (chapter: number) => `제${chapter + 1}장으로`,
+  // UI-6 (FAIL-3 FL-8): chapter 2 is played in the same town; its opening screen (Wave 16 chapter2_intro) lists its goals.
+  chapterTwoStartTitle: "제2장 · 전쟁의 그늘 · 1318–1347",
+  chapterTwoStartLine: "기근이 지나간 도시에 새 세대가 자랐습니다. 이제 왕의 전쟁이 돈과 사람을 청구합니다",
+  chapterTwoGoalsHeading: "이 장의 목표",
+  chapterTwoStart: "제2장 시작",
+  laterTitle: (chapter: number) => `제${chapter}장 — 예고`,
+  laterLine: "다음 장은 아직 준비 중입니다",
   keepPlaying: "계속 (샌드박스)",
   openFull: "전체 연대기 보기",
   chapterTwoTitle: "제2장 — 예고",

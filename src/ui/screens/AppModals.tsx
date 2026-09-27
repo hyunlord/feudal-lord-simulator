@@ -21,6 +21,9 @@ import { SEASON_LEDGER_COPY } from "../seasonLedgerCopy.ko";
 import { topModal, type UiEvent, type UiState } from "../stateMachine/uiStateMachine";
 import { TutorialToggle } from "../tutorial/TutorialShell";
 import type { TutorialController } from "../tutorial/useTutorialController";
+import { chapterGoals } from "../../engine/politics";
+import { CHAPTER_COPY } from "../chapterCopy.ko";
+import { latestChapterEnd } from "../chronicleModel";
 
 /**
  * CODE-1c (from App): the modal screens on top of the town — the season card, the famine decision, a petition, the
@@ -74,7 +77,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onBiography={id => { onChroniclePerson(id); sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "history" }); }} /> : null}
     {top === "history" ? <ChronicleScreen state={state} initialPersonId={chroniclePersonId} onClose={() => { onChroniclePerson(null); sendUi({ type: "pop_modal" }); }}
       onLookAt={tile => { sendUi({ type: "pop_modal" }); platformServices().input.emit({ kind: "lookAt", tile }); }} /> : null}
-    {top === "chapter_preview" ? <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} /> : null}
+    {top === "chapter_preview" ? <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} chapter={(latestChapterEnd(state)?.chapter ?? 1) + 1}
+      goals={chapterGoals(state).filter(goal => goal.chapter === 2).map(goal => CHAPTER_COPY.goals[goal.id] ?? goal.id)} /> : null}
     {top === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
       settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
         <PresentationToggle preference="eventPause" /><PresentationToggle preference="rainOverlay" />

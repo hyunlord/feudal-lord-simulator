@@ -90,6 +90,7 @@ import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
 import { AppModals } from "./ui/screens/AppModals";
 import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
+import { menAwayLine } from "./ui/lordshipModel";
 
 /** UX-0b: how long the season card waits after the last press before it opens (a press in flight is not swallowed). */
 const LEDGER_PRESS_GRACE_MS = 700;
@@ -473,7 +474,7 @@ export function App() {
         </aside> : null}
         {ui.mode === "population" ? (
           <div id="population-ledger-drawer" className="ledger-population-drawer slot-panel">
-            <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
+            <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} note={menAwayLine(state)} />
           </div>
         ) : null}
         {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} onClose={() => sendUi({ type: "deselect" })}

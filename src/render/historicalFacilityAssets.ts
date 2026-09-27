@@ -1,6 +1,7 @@
 import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { drawAnimatedMill } from "./animatedMill";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
+import { buildingEntry } from "../content/buildingCatalog";
 import { productionOperation } from "../economy/production";
 import { buildingHasRequiredRoadAccess } from "../engine/roadAccess";
 import type { GameState } from "../engine/engine.types";
@@ -76,21 +77,21 @@ export function historicalFacilityReady(building: Building, state?: GameState): 
   return assets.some(asset => asset.meta.id === id && asset.status === "ready");
 }
 
+/**
+ * BLD-REG: the kind's facility picture (`buildingCatalog.ts` `facilityArt`): one id, or its quiet and active pictures by
+ * the market's trade or the building's production. A catalog id the manifest lacks draws nothing (the tests pin them).
+ */
 export function historicalFacilityAssetId(building: Building, state?: GameState): HistoricalFacilityAssetId | null {
-  switch (building.kind) {
-    case "mill": case "masonry": case "sawmill": case "chapel": case "church": case "keep":
-      return building.kind;
-    case "market":
-      return state !== undefined && marketIsActive(state, building) ? "market_active" : "market_quiet";
-    case "quarry": {
-      const definition = BUILDING_CONFIG_BY_KIND.quarry;
-      return productionOperation(building, definition, state !== undefined && buildingHasRequiredRoadAccess(state, building)) === "working"
-        ? "quarry_active" : "quarry_idle";
-    }
-    case "house": case "well": case "storehouse": case "granary": case "wheat_farm": case "farmstead": case "logging_camp": case "malt_kiln":
-      return null;
-  }
+  const art = buildingEntry(building.kind).facilityArt;
+  if (art === undefined) return null;
+  if ("id" in art) return facilityId(art.id);
+  const active = art.activeWhen === "market" ? state !== undefined && marketIsActive(state, building)
+    : productionOperation(building, BUILDING_CONFIG_BY_KIND[building.kind], state !== undefined && buildingHasRequiredRoadAccess(state, building)) === "working";
+  return facilityId(active ? art.active : art.quiet);
 }
+
+const FACILITY_IDS: ReadonlySet<string> = new Set(historicalFacilityManifest.map(entry => entry.id));
+const facilityId = (id: string): HistoricalFacilityAssetId | null => FACILITY_IDS.has(id) ? id as HistoricalFacilityAssetId : null;
 
 export function getHistoricalFacilityPresentation(kind: BuildingKind) {
   const asset = assets.find(candidate => candidate.meta.kind === kind);

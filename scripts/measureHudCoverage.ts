@@ -14,7 +14,6 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { inflateSync } from "node:zlib";
 
-// @ts-expect-error plain JS helper
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 const [out] = process.argv.slice(2);

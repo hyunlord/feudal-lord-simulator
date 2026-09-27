@@ -19,10 +19,13 @@ import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory";
-import { DECISION_COPY } from "../decisionCopy.ko";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
 import { Button } from "../kit";
+import { EmblemImage } from "../heraldry/EmblemImage";
+import { LORDSHIP_COPY } from "../lordshipCopy.ko";
+import { lordshipView, type LordshipView } from "../lordshipModel";
+import { wave14FrameStyle, wave14ImageStyle } from "../wave14Art";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -148,12 +151,39 @@ export function CrisisIcons({ rows: all, onInspect }: { readonly rows: ReturnTyp
   );
 }
 
-type LedgerTab = "stock" | "alerts" | "view" | "map";
+type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map";
 /**
  * Ledger drawer (S-26): resource x storage with the total, this week's change and (for food) how long it lasts; a
  * row lights the buildings holding it on the map, a column head opens that store's inspector (UX-3R2). Alerts,
  * overlays and the map are its other tabs.
  */
+/** UI-6 (FAIL-3, F2-A): the rights tab — Wave 14's rights register frame, the house's arms, each right with its icon. */
+function RightsRegister({ view }: { readonly view: LordshipView }) {
+  return (
+    <section className="ledger-rights" aria-label={LORDSHIP_COPY.heading} style={wave14FrameStyle("frame_rights_register")}>
+      {/* The register is a book open on two pages: the house (its arms, title, a decline) on the left, its rights, what it
+          granted and the war on the right. */}
+      <div className="ledger-rights-page">
+      <header className="ledger-rights-house">
+        <EmblemImage emblem={view.arms} size={44} label={view.armsLabel} />
+        <div><p className="ledger-rights-house-name">{view.house}</p><p>{view.title}{view.demoted === null ? null : <> · <span className="ledger-rights-lost">{view.demoted}</span></>}</p>
+          {view.pastHouses === null ? null : <p>{view.pastHouses}</p>}</div>
+      </header>
+      {view.decline === null ? null : <p className="ledger-rights-lost" role="status">{view.decline}</p>}
+      {view.war.length === 0 ? null : <><h4>{LORDSHIP_COPY.warHeading}</h4><ul>{view.war.map(line => <li key={line}>{line}</li>)}</ul></>}
+      </div>
+      <div className="ledger-rights-page">
+      <h4>{LORDSHIP_COPY.rightsHeading}</h4>
+      <ul className="ledger-rights-list">{view.rights.map(right => (
+        <li key={right.id} data-right={right.id} data-lost={right.lost ? "true" : undefined} data-present={right.present ? "true" : "false"}>
+          <span aria-hidden="true" style={wave14ImageStyle(right.icon, 32)} /><strong>{right.name}</strong>
+          <span className={right.lost ? "ledger-rights-lost" : undefined}>{right.status}{right.since === null ? "" : ` · ${right.since}`}</span></li>))}</ul>
+      {view.granted.length === 0 ? null : <><h4>{LORDSHIP_COPY.grantedHeading}</h4><ul>{view.granted.map(line => <li key={line}>{line}</li>)}</ul></>}
+      </div>
+    </section>
+  );
+}
+
 export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight, onOpenChronicle }: {
   readonly state: GameState; readonly onInspect: (id: string) => void; readonly onClose: () => void;
   readonly viewTab: ReactNode; readonly mapTab: ReactNode;
@@ -199,11 +229,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
               {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}</tr>);
           })}</tbody>
         </table></div>)) : null}
-      {/* UI-4 (FC-4): the lord's grants, one line each (the petition's result). */}
-      {tab === "stock" && (state.politics?.rights.length ?? 0) > 0 ? <section className="ledger-rights" aria-label={DECISION_COPY.rightsHeading}>
-        <h3>{DECISION_COPY.rightsHeading}</h3>
-        <ul>{state.politics!.rights.map(right => <li key={right.id}>{DECISION_COPY.right(right.holder, right.stallFeePermille)}</li>)}</ul>
-      </section> : null}
+      {/* UI-6: the rights register (the house, its arms, the title, the lord's rights and the ones he granted, the war). */}
+      {tab === "rights" ? <RightsRegister view={lordshipView(state)} /> : null}
       {tab === "alerts" ? (alerts.length === 0 ? <p>{HUD_COPY.ledgerNoAlerts}</p> : <ul className="ledger-alerts">{alerts.map(row => (
         <li key={row.id}><strong>{row.title}</strong> · {row.countLabel}<br /><span>{row.cause}</span>
           <Button type="button" className="ledger-alert-look" onPress={() => { const first = row.targetIds[0]; if (first !== undefined) { platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); } }} variant="secondary">

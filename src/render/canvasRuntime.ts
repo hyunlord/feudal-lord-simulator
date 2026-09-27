@@ -1,3 +1,4 @@
+import { buildingSpriteKeyOf } from "../content/buildingCatalog";
 import type { GameState } from "../engine/engine.types";
 import {
   OPENING_VILLAGE_CENTER,
@@ -194,8 +195,7 @@ function openingSpriteMinPx(key: "house_l0" | "well"): number {
 
 function openingSpriteKey(building: InitialCameraState["buildings"][number]): string {
   if (building.kind === "house") return "house_l0";
-  if (building.kind === "granary") return "barn";
-  return building.kind;
+  return buildingSpriteKeyOf(building.kind);
 }
 
 function openingRuntimeSpriteMeta(key: string): OpeningSpriteMeta {

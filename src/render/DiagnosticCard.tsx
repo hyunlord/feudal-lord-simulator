@@ -20,8 +20,12 @@ import { StoreInspectorBody } from "../ui/StoreInspector";
 import { STORE_INSPECTOR_COPY } from "../ui/storeInspectorCopy.ko";
 import { Button, Disclosure } from "../ui/kit";
 import { DIAGNOSTIC_CARD_COPY } from "./diagnosticCardCopy.ko";
+import type { WallInspectorModel } from "./wallInspectorModel";
+import { WALL_INSPECTOR_COPY } from "./wallInspectorCopy.ko";
 
 type Size = Readonly<{ width: number; height: number }>;
+/** A construction site's card; a wall site's also carries the ring's defence against a raid (UI-6, WR-5). */
+type SiteCardModel = ConstructionSiteCardModel & { readonly ringDefence?: { readonly label: string; readonly value: string } | null };
 type Rect = Readonly<{ x: number; y: number; width: number; height: number }>;
 type Position = Readonly<{ x: number; y: number }>;
 
@@ -29,9 +33,11 @@ export type DiagnosticCardModel =
   | { readonly kind: "house"; readonly value: HouseDiagnosisModel }
   | { readonly kind: "building"; readonly value: BuildingInspectorModel }
   | { readonly kind: "walker"; readonly value: WalkerDiagnosisModel }
-  | { readonly kind: "construction_site"; readonly value: ConstructionSiteCardModel }
+  | { readonly kind: "construction_site"; readonly value: SiteCardModel }
   /** UX-3R2: a storehouse or granary (capacity, items, the week's change, who uses it). */
-  | { readonly kind: "store"; readonly value: StoreInspectorModel };
+  | { readonly kind: "store"; readonly value: StoreInspectorModel }
+  /** UI-6: a finished wall segment (the ring's defence against a raid, WR-5). */
+  | { readonly kind: "wall"; readonly value: WallInspectorModel };
 
 function fits(position: Position, viewport: Size, card: Size): boolean {
   return position.x >= 8
@@ -157,7 +163,7 @@ function ConstructionSiteCard({
   model,
   onCancelConstruction,
 }: {
-  readonly model: ConstructionSiteCardModel;
+  readonly model: SiteCardModel;
   readonly onCancelConstruction?: (siteId: string) => void;
 }): ReactElement {
   const cancellation = model.cancellation ?? { enabled: true, reason: null };
@@ -170,6 +176,8 @@ function ConstructionSiteCard({
         {model.rows.map((row) => (
           <div key={row.label}><dt>{row.label}</dt><dd>{row.value}</dd></div>
         ))}
+        {model.ringDefence === undefined || model.ringDefence === null ? null
+          : <div data-ring-defence="true"><dt>{model.ringDefence.label}</dt><dd>{model.ringDefence.value}</dd></div>}
       </dl>
       <Button
         type="button"
@@ -208,6 +216,7 @@ function cardIdentity(model: DiagnosticCardModel, headline: WalkerHeadline | nul
     case "walker": return { name: headline?.name === null || headline?.name === undefined ? model.value.roleLabel : PERSONS_COPY.walkerName(headline.name, model.value.roleLabel),
       type: DIAGNOSTIC_CARD_COPY.walkerType, label: DIAGNOSTIC_CARD_COPY.walkerLabel(model.value.roleLabel),
       art: headline?.portraitId === null || headline?.portraitId === undefined ? <span>{DIAGNOSTIC_CARD_COPY.walkerArt}</span> : <PersonPortrait portraitId={headline.portraitId} size={44} /> };
+    case "wall": return { name: model.value.name, type: WALL_INSPECTOR_COPY.type, label: WALL_INSPECTOR_COPY.label(model.value.name), art: <span>{WALL_INSPECTOR_COPY.art}</span> };
     case "construction_site": return { name: model.value.name, type: DIAGNOSTIC_CARD_COPY.siteType, label: DIAGNOSTIC_CARD_COPY.siteLabel(model.value.name), art: <span>{DIAGNOSTIC_CARD_COPY.siteArt}</span> };
   }
 }
@@ -271,6 +280,7 @@ export function DiagnosticCard({
           {model.kind === "walker" ? <WalkerCard model={model.value} headline={walkerHeadline} /> : null}
           {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}
           {model.kind === "building" ? <><p>{model.value.purpose}</p>{reachLine === null ? null : <p className="inspector-market-reach" data-market-reach="true">{reachLine}</p>}{buildingOperation === undefined ? null : <section className="inspector-actions"><Button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onPress={() => buildingOperation.onToggle()} variant="secondary">{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</Button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>{DIAGNOSTIC_CARD_COPY.operationsHeading}</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
+          {model.kind === "wall" ? <><p>{model.value.purpose}</p><ul className="inspector-facts" data-wall-segment={model.value.segmentId}>{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"
             ? onCancelConstruction === undefined
               ? <ConstructionSiteCard model={model.value} />

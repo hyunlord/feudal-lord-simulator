@@ -7,6 +7,9 @@ import type { BuildCategory } from "./buildMenuPresentation";
 import { SEASON_LEDGER_COPY } from "./seasonLedgerCopy.ko";
 import { seasonLedgerScenes, type SeasonSceneId } from "./seasonLedgerScenes";
 import { resourceName } from "../content/resourceCatalog.ko";
+import { DECLINE_CAUSES, LORD_RIGHT_NAMES } from "../content/historyCopy.ko";
+import { conscriptsAway } from "../engine/war";
+import { LORDSHIP_COPY } from "./lordshipCopy.ko";
 
 // UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes
 // (UI-4b: from the history ledger, as Wave 19 scene icons, seasonLedgerScenes.ts), money, population and stock beside
@@ -64,7 +67,7 @@ function hintText(ledger: SeasonLedger): string {
 const TROUBLE: ReadonlySet<SeasonSceneId> = new Set(["population_down", "household_departure", "house_hungry", "bread_shortage", "timber_shortage",
   "stone_shortage", "construction_blocked", "fire", "poor_harvest", "great_famine", "market_quiet", "hungry_gap"]);
 
-export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenarioId" | "history"> & Partial<Pick<GameState, "buildings">>): SeasonLedgerCardModel | null {
+export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenarioId" | "history"> & Partial<Pick<GameState, "buildings" | "war">>): SeasonLedgerCardModel | null {
   const history = state.seasons?.history ?? [];
   const ledger = history.at(-1);
   if (ledger === undefined) return null;
@@ -73,7 +76,14 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
   const scenes = seasonLedgerScenes(state, ledger, before).map(scene => ({ ...scene, name: SEASON_LEDGER_COPY.scene[scene.id] }));
   const population = SEASON_LEDGER_COPY.population(ledger.popDelta) + (before === undefined ? "" : ` ${SEASON_LEDGER_COPY.versus(before.popDelta)}`);
   const stock = SEASON_STOCK_KEYS.map(key => SEASON_LEDGER_COPY.stock(resourceName(key), Math.round(ledger.stockDelta[key]))).join(" · ");
-  const events = ledger.notableEvents.map(event => eventLine(state, event));
+  // UI-6: the lordship's fall in the season (FAIL-3: a decline begun, a house changed) and the men away at war (F2-A).
+  const lordship = ledger.lordship;
+  const away = state.war === undefined ? 0 : conscriptsAway({ war: state.war });
+  const events = [...ledger.notableEvents.map(event => eventLine(state, event)),
+    ...(lordship?.declined === undefined ? [] : [LORDSHIP_COPY.seasonDeclined(DECLINE_CAUSES[lordship.declined.cause] ?? lordship.declined.cause,
+      lordship.declined.right === null ? null : LORD_RIGHT_NAMES[lordship.declined.right] ?? lordship.declined.right, lordship.declined.by === "overlord")]),
+    ...(lordship?.houseChanged === undefined ? [] : [LORDSHIP_COPY.seasonHouse(lordship.houseChanged.withdrew, lordship.houseChanged.arrived)]),
+    ...(away > 0 ? [LORDSHIP_COPY.seasonAway(away)] : [])];
   return {
     key: `${ledger.year}:${ledger.season}`,
     title: SEASON_LEDGER_COPY.title(year, ledger.season),

@@ -169,7 +169,8 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // barley, malt and ale to the hashed stock totals (0 here: chapter 1 need not brew), re-recorded at C4 (was
   // 57b48964ac5b3c9e, which the same state still gives without the three goods; the full-state hash below is unchanged).
   assert.equal(hashEconomyState(state), "4811a678f2a882b5");
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "6ec1cf75c490e2260a5c6819e120d396bb7474abd6553ee70dc85edc6993f763");
+  // FIX-6: the factions' leaders wear pool 3's faces (was 6ec1cf75…; with every portraitIdentity removed the state is the same).
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "e7a38e2061423c2f2c486a4710de847d6505fe72dbd892785afd805373f4bbdc");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {

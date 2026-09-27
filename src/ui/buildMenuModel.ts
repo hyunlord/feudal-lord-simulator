@@ -1,5 +1,4 @@
 import {
-  BUILDING_CONFIG,
   BUILDING_CONFIG_BY_KIND,
   isRetiredBuildingKind,
   type BuildingKind,
@@ -10,7 +9,9 @@ import type { PlacementTool } from "../render/renderer";
 import { buildingUnlockStage, isBuildingUnlocked, placementSpendableResource } from "../world/placement";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { resourceName } from "../content/resourceCatalog.ko";
-import { BUILD_MENU_MODEL_COPY, BUILD_TOOL_GROUP_LABELS, BUILD_TOOL_PURPOSE } from "./buildMenuCopy.ko";
+import { BUILD_MENU_MODEL_COPY, BUILD_TOOL_GROUP_LABELS, buildToolPurpose } from "./buildMenuCopy.ko";
+import { buildingEntry, CATALOG_BUILDING_KINDS, type BuildToolGroup as CatalogToolGroup } from "../content/buildingCatalog";
+import { buildingCopy } from "../content/buildingCatalog.ko";
 
 export type BuildToolOption = {
   readonly tool: PlacementTool;
@@ -26,7 +27,7 @@ type BuildingToolOption = BuildToolOption & {
   readonly tool: BuildingKind;
 };
 
-export type BuildToolGroupKey = "dwelling" | "production" | "storage" | "service";
+export type BuildToolGroupKey = CatalogToolGroup;
 
 export type BuildToolGroup = {
   readonly key: BuildToolGroupKey;
@@ -38,27 +39,8 @@ const GROUP_LABELS: Record<BuildToolGroupKey, string> = BUILD_TOOL_GROUP_LABELS;
 
 const GROUP_ORDER = ["dwelling", "production", "storage", "service"] as const satisfies readonly BuildToolGroupKey[];
 
-const TOOL_GROUPS: Record<PlacementTool, BuildToolGroupKey> = {
-  house: "dwelling",
-  wheat_farm: "production",
-  farmstead: "production",
-  mill: "production",
-  malt_kiln: "production",
-  logging_camp: "production",
-  sawmill: "production",
-  quarry: "production",
-  masonry: "production",
-  market: "service",
-  church: "service",
-  keep: "service",
-  storehouse: "storage",
-  granary: "storage",
-  chapel: "service",
-  well: "service",
-  road: "service",
-};
-
-const TOOL_PURPOSES: Record<PlacementTool, string> = BUILD_TOOL_PURPOSE;
+// BLD-REG: a building's group and purpose are its catalog lines; the road is a service tool.
+const toolGroup = (tool: PlacementTool): BuildToolGroupKey => tool === "road" ? "service" : buildingEntry(tool).group;
 
 function requirementsFor(kind: BuildingKind, scenarioId?: string): readonly string[] {
   const definition = BUILDING_CONFIG_BY_KIND[kind];
@@ -77,19 +59,19 @@ export const ROAD_TOOL_OPTION: BuildToolOption = {
   timberCost: 0,
   cost: {},
   group: "service",
-  purpose: TOOL_PURPOSES.road,
+  purpose: buildToolPurpose("road"),
   requirements: [BUILD_MENU_MODEL_COPY.noRequirements],
 };
 
-// AF-12: retired kinds (the wheat farm) have no build tool.
-const BUILDING_TOOL_OPTIONS: readonly BuildingToolOption[] = BUILDING_CONFIG.filter(definition => !isRetiredBuildingKind(definition.kind)).map((definition) => ({
-  tool: definition.kind,
-  label: definition.name,
-  timberCost: definition.buildCost.timber ?? 0,
-  cost: definition.buildCost,
-  group: TOOL_GROUPS[definition.kind],
-  purpose: TOOL_PURPOSES[definition.kind],
-  requirements: requirementsFor(definition.kind),
+// AF-12: retired kinds (the wheat farm) have no build tool. BLD-REG: in the catalog's order, named by its words.
+const BUILDING_TOOL_OPTIONS: readonly BuildingToolOption[] = CATALOG_BUILDING_KINDS.filter(kind => !isRetiredBuildingKind(kind)).map((kind) => ({
+  tool: kind,
+  label: buildingCopy(kind).name,
+  timberCost: BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0,
+  cost: BUILDING_CONFIG_BY_KIND[kind].buildCost,
+  group: toolGroup(kind),
+  purpose: buildToolPurpose(kind),
+  requirements: requirementsFor(kind),
 }));
 
 export const BUILD_TOOL_OPTIONS: readonly BuildToolOption[] = [

@@ -9,6 +9,7 @@ import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
 import { BuildSeals } from "../src/ui/BuildMenu";
 import { buildMenuGroups, buildToolTooltipLines, BUILD_TOOL_OPTIONS } from "../src/ui/buildMenuModel";
 import { BUILD_CATEGORIES, buildCategory, buildCostLabel, buildThumbnail } from "../src/ui/buildMenuPresentation";
+import { buildingEntry } from "../src/content/buildingCatalog";
 
 test("build menu exposes all building tools plus road in reachable order", () => {
   // Given
@@ -177,8 +178,8 @@ test("category presentation covers every existing tool and preserves the canonic
 test("each thumbnail resolves to its installed artwork including historical chapel", async () => {
   for (const option of BUILD_TOOL_OPTIONS) {
     const path = buildThumbnail(option.tool);
-    // The farmstead and the malt kiln have no artwork yet (render hand-offs, AF-12 and C4 AL6): their glyphs stand in.
-    if (option.tool === "road" || option.tool === "farmstead" || option.tool === "malt_kiln") { assert.equal(path, null); continue; }
+    // BLD-REG: a kind whose catalog line names no thumbnail (the farmstead: its barn icon; a new kind: its glyph) has none.
+    if (option.tool === "road" || buildingEntry(option.tool).thumbnail === undefined) { assert.equal(path, null); continue; }
     assert.ok(path);
     await access(new URL(`../public${path}`, import.meta.url));
   }

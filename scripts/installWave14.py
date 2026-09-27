@@ -33,6 +33,11 @@ WANTED = (["ui-frames/frame_person_card-v1.png"]
           + [f"merchant/merchant_frame_{name}-v1.png" for name in ("circle", "shield")]
           + [f"merchant/merchant_staff_{name}-v1.png" for name in ("figure4", "pennant", "rake", "topcross")]
           + [f"merchant/merchant_branch_{name}-v1.png" for name in ("diagonal", "diamond", "double_fork", "horizontal", "loop", "steps", "v", "w")])
+# UI-6: the lord's rights register (the ledger drawer's rights tab), its six right icons, and the hanging wax seal the
+# Crown's writs carry on the chapter 2 decision cards.
+WANTED_UI6 = (["ui-frames/frame_rights_register-v1.png", "seals/wax_seal_hanging.png"]
+              + [f"ui-icons/icon_right_{name}-v1.png" for name in ("burgage", "court", "fair", "guild", "market", "toll")])
+USED_IN_UI6 = "src/ui/wave14ArtManifest.generated.ts (UI-6: the ledger drawer's rights register and right icons; the Crown's writ seal)"
 REWORKED = ["shield_surface_texture_multiply.png", "shield_surface_texture_screen.png", "merchant/merchant_ink_stamp_texture.png"]
 
 
@@ -49,7 +54,10 @@ def main() -> None:
     by_file = {row["file"]: row for row in inbox}
     batch_records, rework_records = records(BATCH), records(REWORK)
     rows, installed, images = [], set(), {}
-    sources = [(BATCH, f"assets/{file}", batch_records) for file in WANTED] + [(REWORK, f"assets/{file}", rework_records) for file in REWORKED]
+    sources = ([(BATCH, f"assets/{file}", batch_records) for file in WANTED] + [(REWORK, f"assets/{file}", rework_records) for file in REWORKED]
+               + [(BATCH, f"assets/{file}", batch_records) for file in WANTED_UI6])
+    ui6 = {f"assets/{file}" for file in WANTED_UI6}
+    installed_by = {}
     for batch, relative, table in sources:
         source = batch / relative
         inbox_key = source.relative_to(ROOT / "assets-inbox").as_posix()
@@ -63,13 +71,16 @@ def main() -> None:
         runtime.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, runtime)
         assert sha(runtime) == digest, relative
-        key = record["asset_id"]
+        key = record["asset_id"].removesuffix("-v1")
         entry = {"url": f"assets/wave14/{group}/{name}", "width": int(record["width"]), "height": int(record["height"]), "group": group}
         if key == "frame_person_card":
             # records/asset-rows.json: insets (top, right, bottom, left) 136, 64, 20, 112, minimum 320 x 200; the generation
             # prompt's slots: portrait recess centre (60, 94) radius 39, emblem slot centre (279, 45) 40 x 48.
             entry["nineSlice"] = {"insets": {"left": 112, "top": 136, "right": 64, "bottom": 20}, "minimumSize": {"width": 320, "height": 200}}
             entry["slots"] = {"portrait": {"x": 60, "y": 94, "radius": 39}, "emblem": {"x": 279, "y": 45, "width": 40, "height": 48}}
+        if key == "frame_rights_register":
+            # records/asset-rows.json: insets (top, right, bottom, left) 24 each, minimum 512 x 512 (two facing pages).
+            entry["nineSlice"] = {"insets": {"left": 24, "top": 24, "right": 24, "bottom": 24}, "minimumSize": {"width": 512, "height": 512}}
         images[key] = entry
         generations = json.loads(record["generation_records"] or "[]")
         prompt = ROOT / "docs/provenance/prompts" / f"{key}-wave14.txt"
@@ -80,11 +91,13 @@ def main() -> None:
                      "tool": (generations[0].get("tool") if generations else None) or "native image_gen", "model": "not exposed", "generatedAt": "",
                      "prompt": str(prompt.relative_to(ROOT)), "referenceInputs": ";".join(references) or "none", "seed": "not exposed",
                      "candidates": str(max(1, len(generations))), "manualEdits": record["processing"], "artBible": "AB_2026-09-19_v1",
-                     "historicalProfile": "S_England_1300_1450_v1", "owner": "Astra wave14", "usedIn": USED_IN, "status": "runtime",
-                     "notes": f"Astra wave14 {key} (confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-26) installed by UI-5 on 2026-09-27 "
+                     "historicalProfile": "S_England_1300_1450_v1", "owner": "Astra wave14", "usedIn": USED_IN_UI6 if relative in ui6 else USED_IN, "status": "runtime",
+                     "notes": f"Astra wave14 {key} (confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-26) installed by "
+                              f"{'UI-6 on 2026-09-28' if relative in ui6 else 'UI-5 on 2026-09-27'} "
                               f"from {batch.relative_to(ROOT)}; received bytes = runtime bytes."})
         installed.add(inbox_key)
-    assert len(images) == 50, len(images)
+        if relative in ui6: installed_by[inbox_key] = "UI-6"
+    assert len(images) == 58, len(images)
     header = next(csv.reader(open(LEDGER, encoding="utf-8")))
     kept = [row for row in csv.DictReader(open(LEDGER, encoding="utf-8")) if not row["runtimePath"].startswith("public/assets/wave14/")]
     with open(LEDGER, "w", newline="", encoding="utf-8") as handle:
@@ -93,7 +106,7 @@ def main() -> None:
     fields = list(inbox[0].keys())
     for row in inbox:
         if row["file"] in installed:
-            row["installed_by"] = "UI-5"
+            row["installed_by"] = installed_by.get(row["file"], "UI-5")
     with open(INBOX_LEDGER, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\r\n")
         writer.writeheader(); writer.writerows(inbox)

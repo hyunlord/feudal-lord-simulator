@@ -28,7 +28,8 @@ import {
   needsPopulationHouseGuidance,
   populationHouseGuidanceTargets,
 } from "./onboardingHouseGuidance";
-import { ONBOARDING_BUILDING_TARGET_LABELS, ONBOARDING_WORLD_GUIDANCE_COPY } from "./onboardingWorldGuidanceCopy.ko";
+import { ONBOARDING_WORLD_GUIDANCE_COPY } from "./onboardingWorldGuidanceCopy.ko";
+import { buildingCopy } from "../content/buildingCatalog.ko";
 
 export const onboardingRoadTargetLabel = ONBOARDING_WORLD_GUIDANCE_COPY.roadTarget;
 export const onboardingRoadExtensionTargetLabel = ONBOARDING_WORLD_GUIDANCE_COPY.roadExtensionTarget;
@@ -41,7 +42,6 @@ const CARDINAL_OFFSETS = [
   { tx: -1, ty: 0 },
 ] as const satisfies readonly TileCoordinate[];
 
-const BUILDING_TARGET_LABELS = ONBOARDING_BUILDING_TARGET_LABELS;
 type GuidanceWorld = GameState;
 
 export type OnboardingGuidanceTarget = {
@@ -140,13 +140,13 @@ function buildingTargetsForCurrentTask(state: GuidanceWorld): readonly Onboardin
       const origin = region[0] ?? null;
       if (origin === null) continue;
       reserveFootprint(reserved, kind, origin);
-      targets.push({ kind, label: BUILDING_TARGET_LABELS[kind], origin, region });
+      targets.push({ kind, label: buildingCopy(kind).worldTarget, origin, region });
       continue;
     }
     const origin = firstBuildableOriginForKind(state, kind, reserved, candidateOrigins);
     if (origin === null) continue;
     reserveFootprint(reserved, kind, origin);
-    targets.push({ kind, label: BUILDING_TARGET_LABELS[kind], origin });
+    targets.push({ kind, label: buildingCopy(kind).worldTarget, origin });
   }
 
   if (targets.length > 0) return targets;
@@ -170,7 +170,7 @@ function foodChainGuidanceTargetsForTask(
       ? state
       : { ...state, tiles: inputState.tiles, roadRevision: state.roadRevision + 1, pathCache: {} };
     const origin = firstBuildableOriginForKind(trialState, kind, reserved, candidateOrigins);
-    return origin === null ? null : { kind, label: BUILDING_TARGET_LABELS[kind], origin };
+    return origin === null ? null : { kind, label: buildingCopy(kind).worldTarget, origin };
   });
   return result.kind === "road"
     ? [{ kind: "road", label: onboardingRoadExtensionTargetLabel, origin: result.origin }]

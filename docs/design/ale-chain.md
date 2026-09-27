@@ -5,7 +5,7 @@
 - 역사 기준: 14세기 잉글랜드의 양조는 대부분 가정의 여성(alewife)이 맡았다. 에일집은 장대 끝의 표지(ale-stake)로 알렸다. 홉은 1400년대에야 들어왔다.
 - [노동 명세](labour.md) LB-8(가내 생산 슬롯), [자원 목록](../../src/content/resourceCatalog.ts)(RES-REG)
 
-결정: [결정 목록](../decisions/README.md) AL1~AL9. 조항 번호(AL-*)는 `tests/aleChain.test.ts`의 시험 이름(A1~A8)과 이어진다. `tests/humanPathAle.test.ts`는 사람 경로(명령 재생) 시험이다. 화면(헛간 작물 선택, 보리밭, 가마, 양조 통, 에일 장대)은 렌더 몫이다. 이 명세는 렌더가 읽을 API까지다.
+결정: [결정 목록](../decisions/README.md) AL1~AL10. 조항 번호(AL-*)는 `tests/aleChain.test.ts`의 시험 이름(A1~A8)과 이어진다. `tests/humanPathAle.test.ts`는 사람 경로(명령 재생) 시험이다. 화면(헛간 작물 선택, 보리밭, 가마, 양조 통, 에일 장대)은 렌더 몫이다. 이 명세는 렌더가 읽을 API까지다.
 
 ## AL-1 자원과 다섯 분류
 - `resourceCatalog.ts`에 세 줄을 넣었다.
@@ -69,7 +69,7 @@
 |---|---|
 | `set_farmstead_crop` 명령, `Building.crop` | 헛간 inspector의 작물 선택(밀/보리) |
 | `ArableStripRecord.crop`(`arableStripStates`의 `crop`) | 보리밭 띠(밀과 색·이삭 구별, 에셋 계획 "보리밭 4상태") |
-| `malt_kiln` | 가마 그림(지금은 방앗간 계열 글리프·기본 몸체, 결정 AL6) |
+| `malt_kiln` | 가마 그림(지금은 목록 `buildingCatalog.ts`의 방앗간 글리프·원뿔 지붕 몸체, 결정 AL6 — INSTALL-3이 그림을 채운다) |
 | `brewingSlot(house)` | 집 뒤뜰 양조 통·재고 |
 | `isAlehouse(house)`, `alehouses(state)` | 에일 장대 |
 | `aleRequired(state)`, `aleServedHouses(state)` | 에일 막힘(집 진행 카드의 요건 줄) |

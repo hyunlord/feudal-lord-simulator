@@ -3,7 +3,8 @@ import {
   type Building,
   type BuildingKind,
 } from "../content/buildingConfig";
-import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
+import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
+import { buildingEntry } from "../content/buildingCatalog";
 import type { HouseMaterialEra, HouseMaterialWave } from "./buildingMaterialWave";
 import { houseMaterialEraForBuilding } from "./buildingMaterialWave";
 import type { ResourceType } from "../content/resourceConfig";
@@ -199,37 +200,11 @@ function stock(
   return Math.max(0, record[resource] ?? 0);
 }
 
+/** BLD-REG: the catalog's body (palette tokens); a kind without one: a plain timber body the width of its footprint. */
 function nonHouseBodyProfile(kind: Exclude<BuildingKind, "house">): BodyProfile {
-  switch (kind) {
-    case "well":
-      return { width: 26, height: 12, roof: 0, fill: SEMANTIC_PALETTE.stoneDark, roofColor: SEMANTIC_PALETTE.stone, roofShape: "none" };
-    case "storehouse":
-      return { width: 64, height: 30, roof: 6, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "flat" };
-    case "granary":
-      return { width: 58, height: 32, roof: 16, fill: SEMANTIC_PALETTE.parchment, roofColor: SEMANTIC_PALETTE.goldDark, roofShape: "dome" };
-    case "chapel":
-      return { width: 42, height: 48, roof: 18, fill: SEMANTIC_PALETTE.parchment, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "cone" };
-    case "wheat_farm":
-      return { width: 72, height: 10, roof: 0, fill: SEMANTIC_PALETTE.earth, roofColor: PALETTE.gold, roofShape: "none" };
-    case "farmstead":
-      return { width: 40, height: 24, roof: 12, fill: SEMANTIC_PALETTE.earth, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "shed" };
-    case "mill":
-      return { width: 38, height: 62, roof: 24, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "cone" };
-    case "logging_camp":
-      return { width: 38, height: 20, roof: 12, fill: SEMANTIC_PALETTE.earth, roofColor: SEMANTIC_PALETTE.forest, roofShape: "shed" };
-    case "sawmill":
-      return { width: 66, height: 32, roof: 14, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "shed" };
-    case "quarry":
-      return { width: 74, height: 18, roof: 0, fill: SEMANTIC_PALETTE.stoneDark, roofColor: SEMANTIC_PALETTE.stone, roofShape: "none" };
-    case "masonry":
-      return { width: 44, height: 28, roof: 10, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "shed" };
-    case "malt_kiln":
-      return { width: 52, height: 34, roof: 18, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "cone" };
-    case "market":
-      return { width: 66, height: 34, roof: 12, fill: SEMANTIC_PALETTE.parchment, roofColor: SEMANTIC_PALETTE.goldDark, roofShape: "flat" };
-    case "church":
-      return { width: 78, height: 92, roof: 34, fill: SEMANTIC_PALETTE.parchment, roofColor: SEMANTIC_PALETTE.stoneDark, roofShape: "cone" };
-    case "keep":
-      return { width: 86, height: 116, roof: 44, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.stoneDark, roofShape: "tower" };
+  const body = buildingEntry(kind).body;
+  if (body === undefined) {
+    return { width: 36 * BUILDING_CONFIG_BY_KIND[kind].width, height: 26, roof: 12, fill: SEMANTIC_PALETTE.earth, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "shed" };
   }
+  return { width: body.width, height: body.height, roof: body.roof, fill: SEMANTIC_PALETTE[body.fill], roofColor: SEMANTIC_PALETTE[body.roofColor], roofShape: body.roofShape };
 }

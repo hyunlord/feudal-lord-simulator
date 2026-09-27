@@ -27,6 +27,7 @@ import { platformServices } from "../platform/platform";
 import { preloadVisibilityArt } from "./visibilityArtManifest";
 import { preloadWave7Art } from "./wave7Art";
 import { preloadWave9Art } from "./wave9Art";
+import { preloadWave17WorldArt } from "./warWorldProps";
 import { preloadWave11Art } from "./wave11Art";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
@@ -66,7 +67,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     void preloadGameArt();
     // F0-V: the visibility art and the canvas icon sheets load with the rest (a paused first frame then has them).
     preloadVisibilityArt();
-    preloadWave7Art(); preloadWave9Art();
+    preloadWave7Art(); preloadWave9Art(); preloadWave17WorldArt();
     preloadWave11Art();
     preloadCanvasIcons();
 

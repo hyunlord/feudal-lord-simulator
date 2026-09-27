@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
 import type { GameState } from "../../engine/engine.types";
-import { chapterEnd, famineStatus, openPetitions } from "../../engine/politics";
+import { famineStatus, openPetitions } from "../../engine/politics";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
 import type { UiModal } from "../stateMachine/uiStateMachine";
+import { latestChapterEnd } from "../chronicleModel";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
 // it by then: the burning roof, the blighted fields, the petitioners at the gate) and stays until dismissed or a
@@ -15,6 +16,9 @@ const LINGER_MS = 60_000;
 const MAX_CHIPS = 3;
 
 type Seen = { beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismissed: boolean };
+
+/** A chapter's page opens only this long after its end (one season). */
+const CHAPTER_PAGE_TICKS = 1_000;
 
 export function useStoryPresentation(input: {
   readonly state: GameState; readonly nowMs: number; readonly blocked: boolean; readonly topModal: UiModal | null;
@@ -28,6 +32,9 @@ export function useStoryPresentation(input: {
   const [, setRevision] = useState(0);
   const [delayMs] = useState(eventWorldFirstMs);
   const beats = storyBeats(state);
+  // UI-6: a chapter's page opens when the chapter ends (within its season), not again on every later load of the town.
+  const latest = latestChapterEnd(state);
+  const end = latest !== null && state.tick - latest.tick < CHAPTER_PAGE_TICKS ? latest : null;
   // why: every render on purpose: it records what the model shows now and re-renders only when a beat is new
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -36,6 +43,13 @@ export function useStoryPresentation(input: {
       const entry = seen.get(beat.id);
       if (entry === undefined) { seen.set(beat.id, { beat, firstSeenMs: now, lastSeenMs: now, dismissed: false }); changed = true; }
       else { entry.beat = beat; entry.lastSeenMs = now; }
+    }
+    // A chapter's end first seen: its page is due `delayMs` on. CODE-1c follow-up: the wake timer below is computed at
+    // render, so a first sighting re-renders to set it (a paused game, the presentation clock resting, would otherwise
+    // never open the chapter's page).
+    const chapterKey = end === null ? null : `chapter:${end.chapter}`;
+    if (chapterKey !== null && !openedRef.current.has(chapterKey) && !chapterSeenRef.current.has(chapterKey)) {
+      chapterSeenRef.current.set(chapterKey, now); changed = true;
     }
     if (changed) setRevision(revision => revision + 1);
   });
@@ -52,7 +66,7 @@ export function useStoryPresentation(input: {
   // why: keyed by the visible beats' ids (a new list each render); the pause setting is read when one is new
   }, [visibleKey]); // eslint-disable-line react-hooks/exhaustive-deps
   // Decisions and the chronicle open once, after the world first.
-  const famine = famineStatus(state); const petition = openPetitions(state)[0]; const end = chapterEnd(state);
+  const famine = famineStatus(state); const petition = openPetitions(state)[0];
   const ready = (id: string) => { const entry = seenRef.current.get(id); return entry !== undefined && nowMs - entry.firstSeenMs >= delayMs; };
   useEffect(() => {
     if (blocked || topModal !== null) return;
@@ -63,11 +77,8 @@ export function useStoryPresentation(input: {
       openedRef.current.add(petition.id); pushModal("petition"); return;
     }
     const chapterKey = end === null ? null : `chapter:${end.chapter}`;
-    if (chapterKey !== null && !openedRef.current.has(chapterKey)) {
-      const since = chapterSeenRef.current.get(chapterKey) ?? Date.now();
-      chapterSeenRef.current.set(chapterKey, since);
-      if (nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); }
-    }
+    const since = chapterKey === null || openedRef.current.has(chapterKey) ? undefined : chapterSeenRef.current.get(chapterKey);
+    if (chapterKey !== null && since !== undefined && nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); }
   });
   // CODE-1c: no presentation clock for the story — one timer wakes this hook when the next chip is due (its delay out),
   // a lingering chip goes, or a chapter end's chronicle may open. App's 100 ms clock stops when nothing else needs it.

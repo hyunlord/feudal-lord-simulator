@@ -5,7 +5,7 @@
 // carries that art. Native <select>, <input> (other than the kit slider) and <textarea> are failures too.
 // Writes <out>/audit.json (per state: counts and every skinless element) and a capture per state with the skinless
 // elements outlined, plus sheet-desktop.jpg (every state) and the gallery at desktop and tablet size (gate ③).
-//   PLAYWRIGHT_MODULE=... node scripts/uiSkinAudit.mjs <out-dir> --url <url> --states <dir of scripts/ui5States.ts>
+//   PLAYWRIGHT_MODULE=... node scripts/uiSkinAudit.mjs <out-dir> --url <url> --states <dir of scripts/ui5States.ts> [--states6 <dir of scripts/ui6States.ts>]
 // Exit 1 when any state has a skinless element or a state could not be opened.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -157,17 +157,18 @@ await step('pause', async () => {
   await context.close();
 });
 
-// The petition card and the famine decision (seed 2 chapter 1).
+// The petition card and the famine decision (seed 2 chapter 1). The story waits 5 s: openScene's opening Escape closes
+// a card that opened sooner (as a player's Escape does), and the fallback chip may be another event's.
 await step('petition', async () => {
   const state = load('petition-open');
-  const { context, page } = await scene('petition-open', houseTile(state));
+  const { context, page } = await scene('petition-open', houseTile(state), { query: '&story-delay=5000' });
   await storyModal(page, '.petition-card', 'x-petition-timeout.jpg'); await pause(600);
   await audit('petition', page, 's13-petition.jpg');
   await context.close();
 });
 await step('decision', async () => {
   const state = load('famine-arrival');
-  const { context, page } = await scene('famine-arrival', houseTile(state));
+  const { context, page } = await scene('famine-arrival', houseTile(state), { query: '&story-delay=5000' });
   await storyModal(page, '.famine-decision', 'x-decision-timeout.jpg'); await pause(800);
   await audit('decision', page, 's14-decision.jpg');
   await context.close();
@@ -190,8 +191,56 @@ await step('chapter-end', async () => {
   // The whole chronicle of a live run (seed 2, 1323: two eras entered, three ahead at their nominal years).
   await page.locator('.chronicle-full').click(); await pause(1500);
   await audit('chronicle-live', page, 's17-chronicle-live.jpg');
+  // UI-6: the chronicle's faction tab (the nine factions, the world strip) and one faction's page — the first that
+  // remembers something, so its record links (buttons) are audited too.
+  await page.getByRole('tab', { name: '세력' }).click(); await pause(1500);
+  await audit('chronicle-factions', page, 's18-chronicle-factions.jpg');
+  const remembering = page.locator('.chronicle-factions-row:not([data-memory="0"])');
+  await (await remembering.count() > 0 ? remembering.first() : page.locator('.chronicle-factions-row').first()).click(); await pause(1500);
+  await audit('chronicle-faction-page', page, 's19-chronicle-faction-page.jpg');
   await context.close();
 });
+
+// UI-6: chapter 2 (the states of scripts/ui6States.ts, with --states6): two of the war's decision cards (the Crown's
+// writ; the bishop's refugees), the ledger's rights tab at a decline (a right lost) and at chapter 2's end, and chapter
+// 2's page. The story waits 5 s (as scripts/ui6Captures.ts): the scene's opening Escape (openScene) would close a
+// page that opened sooner, as a player's Escape does.
+const states6 = flag('states6');
+const load6 = name => JSON.parse(readFileSync(join(states6, `${name}.json`), 'utf8'));
+const keepTile = state => { const keep = state.buildings.find(building => building.kind === 'keep') ?? state.buildings.find(building => building.kind === 'house'); return [keep.tx, keep.ty]; };
+async function scene6(stateName, extra = {}) {
+  const state = load6(stateName);
+  const opened = await openScene(browser, { state, tile: keepTile(state), baseUrl: url, width: 1280, height: 800, zoom: 1.1, run: false,
+    initScript: TUTORIAL_OFF, query: extra.query ?? '' });
+  opened.page.on('pageerror', error => result.errors.push(`${stateName}: ${String(error)}`));
+  return opened;
+}
+if (states6 !== undefined) {
+  for (const [name, stateName] of [['war-petition-writ', 'wool_payment'], ['war-petition-refugees', 'refugee_admission']]) {
+    await step(name, async () => {
+      const { context, page } = await scene6(stateName, { query: '&story-delay=5000' });
+      await storyModal(page, '.petition-card', `x-${name}-timeout.jpg`); await pause(700);
+      await audit(name, page, `s20-${name}.jpg`);
+      await context.close();
+    });
+  }
+  for (const [name, stateName] of [['rights-decline', 'decline'], ['rights-chapter2', 'chapter2-end']]) {
+    await step(name, async () => {
+      const { context, page } = await scene6(stateName, { query: '&story-delay=600000' });
+      await pause(1000);
+      await page.locator("[data-dock='ledger']").click(); await pause(500);
+      await page.locator('.ledger-tab', { hasText: /^권리$/ }).click(); await pause(700);
+      await audit(name, page, `s21-${name}.jpg`);
+      await context.close();
+    });
+  }
+  await step('chapter2-page', async () => {
+    const { context, page } = await scene6('chapter2-end', { query: '&story-delay=5000' });
+    await page.locator('.chronicle-page').waitFor({ timeout: 30_000 }); await pause(800);
+    await audit('chapter2-page', page, 's22-chapter2-page.jpg');
+    await context.close();
+  });
+}
 
 // Gate ③: the gallery at desktop and tablet size (full page), audited as well.
 for (const [name, viewport, touch] of [['gallery-desktop', { width: 1280, height: 800 }, false], ['gallery-tablet', { width: 1180, height: 820 }, true]]) {
@@ -222,7 +271,8 @@ await step('sheet', async () => {
 });
 
 await browser.close();
-const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'gallery-desktop', 'gallery-tablet'];
+const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet',
+  ...(states6 === undefined ? [] : ['war-petition-writ', 'war-petition-refugees', 'rights-decline', 'rights-chapter2', 'chapter2-page'])];
 result.missing = expected.filter(name => result.states[name] === undefined);
 result.pass = result.total.skinless === 0 && result.missing.length === 0;
 writeFileSync(join(out, 'audit.json'), JSON.stringify(result, null, 1) + '\n');

@@ -1,8 +1,12 @@
-import { FAMINE_RESPONSE_CHOICES, PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
+import { FAMINE_RESPONSE_CHOICES, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import type { GameState } from "../engine/engine.types";
 import { recordDecision } from "../engine/history";
+import { WAR_PETITION_IDS } from "../content/warConfig";
+import { warDecisionForecast } from "../engine/war";
+import { treasuryBalance } from "../ledger/ledger";
 import { famineResponse, famineStatus, openPetitions, respondToPetition } from "../engine/politics";
 import { DECISION_COPY } from "./decisionCopy.ko";
+import { petitionPresentation, type PetitionPresentation } from "./petitionPresentation";
 import type { Wave8ImageId } from "./wave8Art";
 import type { Wave16ImageId } from "./wave16Art";
 
@@ -32,21 +36,28 @@ export function famineDecisionView(state: GameState): FamineDecisionView | null 
   };
 }
 
-export type PetitionDecisionView = Readonly<{ petitionId: string; options: readonly (DecisionOption<PetitionResponse> & { readonly seal: Wave8ImageId })[] }>;
+export type PetitionDecisionView = Readonly<{ petitionId: string; presentation: PetitionPresentation;
+  options: readonly (DecisionOption<PetitionResponse> & { readonly seal: Wave8ImageId })[] }>;
 const SEALS: Readonly<Record<PetitionResponse, Wave8ImageId>> = { accept: "seal_petition_accept", accept_with_price: "seal_petition_price", refuse: "seal_petition_reject" };
 const ORDER: readonly PetitionResponse[] = ["accept", "accept_with_price", "refuse"];
 
+/** UI-6: the open petition as its kind presents it (`petitionPresentation`: scene, title, demand, who, each answer's line). */
 export function petitionDecisionView(state: GameState): PetitionDecisionView | null {
   const petition = openPetitions(state)[0];
   if (petition === undefined) return null;
-  const def = PETITION_DEFS.find(candidate => candidate.id === petition.defId) ?? PETITION_DEFS[0]!;
+  const presentation = petitionPresentation(state, petition);
   const now = { treasury: state.treasuryCoin, merchantGauge: state.politics?.merchantGauge ?? 50 };
+  // UI-6: the war's demands (F2-A) predict the treasury two seasons on with the rules' own forecast (HL-3
+  // `warDecisionForecast`); the decision record keeps no metric for them.
+  const war = (WAR_PETITION_IDS as readonly string[]).includes(petition.defId);
+  const warNow = { treasury: treasuryBalance(state) };
   return {
     petitionId: petition.id,
+    presentation,
     options: ORDER.map(response => ({
-      response, choice: response, label: DECISION_COPY.petition[response].label, seal: SEALS[response],
-      line: DECISION_COPY.petition[response].line(def.outcomes[response].stallFeePermille, def.outcomes[response].charterFee),
-      predicted: DECISION_COPY.predicted(now, predicted(state, respondToPetition(state, petition.id, response), { type: "petition_response", petitionId: petition.id, response })),
+      response, choice: response, label: presentation.label(response), seal: SEALS[response], line: presentation.line(response),
+      predicted: war ? DECISION_COPY.predicted(warNow, { treasury: warDecisionForecast(state, petition.defId, response) })
+        : DECISION_COPY.predicted(now, predicted(state, respondToPetition(state, petition.id, response), { type: "petition_response", petitionId: petition.id, response })),
     })),
   };
 }

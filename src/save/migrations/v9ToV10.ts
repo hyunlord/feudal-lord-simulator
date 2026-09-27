@@ -199,7 +199,6 @@ export function migrateStateV9ToV10(input: GameState): GameState {
       if (better) best = { site, farms: inReach.map(entry => entry.farm), distance, onField };
     }
     if (best === null) { unplaced += 1; uncovered = uncovered.slice(1); continue; }
-    if (process.env.MIG_DEBUG) console.log("site", best.site % width, Math.floor(best.site / width), best.onField, best.farms.map(f => `${f.id}@${f.tx},${f.ty}:${zoneOfFarm.get(f.id)}`).join(" "));
     const served = new Set(best.farms.map(farm => farm.id));
     const built = best.farms.filter(farm => farmBuildings.some(building => building.id === farm.id)).length;
     const wheat = best.farms.reduce((sum, farm) => sum + farm.wheat, 0) + Math.floor(built * reserveTicks / FARM_TICKS_PER_WHEAT);

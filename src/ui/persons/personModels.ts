@@ -3,12 +3,14 @@ import { BUILDING_CONFIG_BY_KIND } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
 import { hashSeed } from "../../engine/prng";
 import { ageOf, currentYear, displayName, inTown, personById } from "../../engine/persons";
+import { lordHouse } from "../../engine/lordshipState";
 import { persons } from "../../engine/personsApi";
 import { MANOR_HOUSEHOLD, type Person, type PersonClassBand } from "../../engine/persons.types";
 import type { PetitionRecord } from "../../engine/politics.types";
 import { walkerLook, type WalkerClassBand } from "../../render/walkerLook";
 import { armsRecipe, merchantRecipe } from "../heraldry/heraldry";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
+import { GENTRY_NAMES_KO } from "../../content/gentryNames";
 import { resourceName } from "../../content/resourceCatalog.ko";
 import { drawnPortraitId } from "../portraitArt";
 import { PERSONS_COPY } from "./personsCopy.ko";
@@ -40,6 +42,30 @@ export function personRow(state: GameState, person: Person): PersonRow {
   const age = ageOf(person, person.deathYear ?? person.leftYear ?? currentYear(state));
   return { id: person.id, name: displayName(person), line: PERSONS_COPY.memberLine(PERSONS_COPY.role(person.role), PERSONS_COPY.age(age), occupationOf(person)),
     portraitId: portrait.portraitId, exact: portrait.exact };
+}
+
+/**
+ * UI-6: a faction's leader as a chip — the king by his Korean reading, others by their name; the line says whose
+ * leader (the faction's display name, `factionDisplayName`) and the age, not a town household's role.
+ */
+/**
+ * A faction leader's name as every screen writes it (the petition card, the chronicle's faction tab): a king by his
+ * Korean regnal name, an outside faction's gentry or clergy by their given name and the Korean reading of their
+ * (invented) surname, a townsman as the town's people are named.
+ */
+export function factionLeaderName(person: Pick<Person, "givenName" | "surname" | "epithet" | "occupation" | "householdId">): string {
+  if (person.occupation === "king") return PERSONS_COPY.kings[person.givenName] ?? person.givenName;
+  if (person.householdId.startsWith("faction:")) {
+    return [person.givenName, person.surname === undefined ? undefined : GENTRY_NAMES_KO[person.surname] ?? person.surname].filter(part => part !== undefined && part !== "").join(" ");
+  }
+  return displayName(person);
+}
+
+export function factionLeaderRow(state: GameState, person: Person, factionName: string): PersonRow {
+  const row = personRow(state, person);
+  const name = factionLeaderName(person);
+  const age = ageOf(person, person.deathYear ?? person.leftYear ?? currentYear(state));
+  return { ...row, name, line: PERSONS_COPY.leaderLine(factionName, PERSONS_COPY.age(age)) };
 }
 
 /** A house's members as the inspector lists them: head, spouse, kin, children (then by age). */
@@ -88,8 +114,16 @@ export function walkerPerson(state: GameState, walker: Walker): Person | null {
 }
 
 /** The emblem a person's card shows: the lord's arms for the manor household, its mark for a merchant household (one with a merchant). */
-export function personEmblem(state: Pick<GameState, "seed" | "persons">, person: Person): EmblemSpec | null {
-  if (person.householdId === MANOR_HOUSEHOLD) return { kind: "arms", recipe: armsRecipe(state.seed, MANOR_HOUSEHOLD) };
+/**
+ * UI-6 (FL-7): the ruling house's arms — the first house's are the game seed's (as the screens drew them before FAIL-3),
+ * a later house (the 4th rung's change) its own seed's, under the same key.
+ */
+export function lordHouseArms(state: Pick<GameState, "seed" | "lordship">): EmblemSpec {
+  return { kind: "arms", recipe: armsRecipe(lordHouse(state).heraldrySeed, MANOR_HOUSEHOLD) };
+}
+
+export function personEmblem(state: Pick<GameState, "seed" | "persons"> & Partial<Pick<GameState, "lordship">>, person: Person): EmblemSpec | null {
+  if (person.householdId === MANOR_HOUSEHOLD) return lordHouseArms(state);
   const merchant = person.classBand === "merchant" || persons.of(state as GameState, person.householdId).some(member => member.classBand === "merchant");
   return merchant ? { kind: "merchant", recipe: merchantRecipe(state.seed, person.householdId) } : null;
 }

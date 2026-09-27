@@ -1,3 +1,4 @@
+import { buildingEntry, type BuildingDetailPart } from "../content/buildingCatalog";
 import type { BuildingKind } from "../content/buildingConfig";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import type { BuildingVisualState } from "./buildingVisualState";
@@ -43,55 +44,27 @@ export function drawKindDetail(
   }
 }
 
+/** BLD-REG: the procedural parts each kind shows (`buildingCatalog.ts` `details`), painted in the list's order. */
+const DETAIL_PAINTERS: { readonly [P in BuildingDetailPart]: (context: CanvasRenderingContext2D, input: BuildingDetailInput) => void } = {
+  house: (context, input) => drawHouseDetails(context, input),
+  well_rim: (context, input) => drawWellRim(context, input.center, input.zoom),
+  crates: (context, input) => drawCrates(context, input.center, input.zoom),
+  stilts: (context, input) => drawStilts(context, input.center, input.zoom),
+  flag: (context, input) => drawFlag(context, input.tick, input.center, input.zoom),
+  flag_when_working: (context, input) => { if (input.visualState.production === "working") drawFlag(context, input.tick, input.center, input.zoom); },
+  field_rows: (context, input) => drawFieldRows(context, input.center, input.zoom),
+  wheel: (context, input) => drawWheel(context, input.tick, input.center, input.zoom),
+  logging_rack: (context, input) => drawLoggingRack(context, input.center, input.zoom),
+  saw: (context, input) => drawSaw(context, input.tick, input.center, input.zoom),
+  planks: (context, input) => drawPlanks(context, input.center, input.zoom),
+  door: (context, input) => drawDoor(context, input.center, input.zoom),
+};
+
 function drawBaseKindDetail(
   context: CanvasRenderingContext2D,
   input: BuildingDetailInput,
 ): void {
-  switch (input.kind) {
-    case "house":
-      drawHouseDetails(context, input);
-      return;
-    case "well":
-      drawWellRim(context, input.center, input.zoom);
-      return;
-    case "storehouse":
-      drawCrates(context, input.center, input.zoom);
-      return;
-    case "granary":
-      drawStilts(context, input.center, input.zoom);
-      return;
-    case "chapel":
-      drawFlag(context, input.tick, input.center, input.zoom);
-      return;
-    case "wheat_farm":
-      drawFieldRows(context, input.center, input.zoom);
-      return;
-    case "mill":
-      drawWheel(context, input.tick, input.center, input.zoom);
-      if (input.visualState.production === "working") {
-        drawFlag(context, input.tick, input.center, input.zoom);
-      }
-      return;
-    case "logging_camp":
-      drawLoggingRack(context, input.center, input.zoom);
-      return;
-    case "sawmill":
-      drawSaw(context, input.tick, input.center, input.zoom);
-      drawPlanks(context, input.center, input.zoom);
-      return;
-    case "quarry":
-    case "masonry":
-    case "market":
-      drawCrates(context, input.center, input.zoom);
-      return;
-    case "church":
-      drawFlag(context, input.tick, input.center, input.zoom);
-      drawDoor(context, input.center, input.zoom);
-      return;
-    case "keep":
-      drawDoor(context, input.center, input.zoom);
-      return;
-  }
+  for (const part of buildingEntry(input.kind).details ?? []) DETAIL_PAINTERS[part](context, input);
 }
 
 function drawHouseDetails(

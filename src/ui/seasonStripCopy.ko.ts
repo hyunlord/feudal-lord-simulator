@@ -15,6 +15,9 @@ export const SEASON_STRIP_COPY = {
   row: (kind: string, when: string) => `${kind} — ${when}`,
   /** UI-4 forecast marks: what is coming and how sure (rumour / sign). */
   forecast: (kind: "fire" | "dearth", famine: boolean, sign: boolean) => `${kind === "fire" ? "불 위험" : famine ? "대기근" : "흉년"}(${sign ? "징후" : "소문"})`,
+  /** UI-6: the war's coming steps (F2-A `warForecast`). */
+  war: { messenger: "국왕의 전령", wool_levy: "양모 공납 칙령", commission: "징집 명령", subsidy: "전쟁 보조세 요구", beacon: "해안 봉화",
+    raid: "해안 습격", refugees: "피란민", recovery: "왕실의 회복 조처" } as Readonly<Record<string, string>>,
   /** Judgement 2026-09-26: the pill's food days, with the calendar point they reach ("식량 270일 — 가을 초까지"). */
   foodUntil: (days: number, season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
     `식량 ${days}일 — ${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}까지`,

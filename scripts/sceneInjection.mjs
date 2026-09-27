@@ -55,8 +55,18 @@ export function injectSceneState(moduleText, stateJson) {
 export async function routeSceneState(page, state) {
   const stateJson = typeof state === 'string' ? state : JSON.stringify(state);
   await page.route(GAME_STORE_ROUTE, async route => {
-    const response = await route.fetch();
-    await route.fulfill({ response, body: injectSceneState(await response.text(), stateJson) });
+    // BLD-REG: a dev server that drops the connection once (ECONNRESET on the shared DGX) is asked again, up to three
+    // times, instead of the unhandled rejection ending the whole run.
+    for (let attempt = 1; ; attempt += 1) {
+      try {
+        const response = await route.fetch();
+        await route.fulfill({ response, body: injectSceneState(await response.text(), stateJson) });
+        return;
+      } catch (error) {
+        if (attempt >= 3 || !/ECONNRESET|ECONNREFUSED|socket hang up/.test(String(error))) throw error;
+        await new Promise(resolve => setTimeout(resolve, 500 * attempt));
+      }
+    }
   });
 }
 
