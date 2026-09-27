@@ -35,7 +35,7 @@ export function buildCategory(tool: PlacementTool): BuildCategory {
 }
 
 export function buildThumbnail(tool: PlacementTool): string | null {
-  if (tool === "road" || tool === "farmstead") return null;
+  if (tool === "road" || tool === "farmstead" || tool === "malt_kiln") return null;
   if (tool === "house") return historicalHouseAssetMeta(0)?.url ?? null;
   const facility = getHistoricalFacilityPresentation(tool);
   if (facility !== null) return facility.url;

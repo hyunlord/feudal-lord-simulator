@@ -38,6 +38,7 @@ const BUILDING_KINDS = [
   "market",
   "church",
   "keep",
+  "malt_kiln",
 ] as const satisfies readonly BuildingKind[];
 
 test("BUILDING_CONFIG keeps the construction recipe inputs that the domain model mirrors", () => {

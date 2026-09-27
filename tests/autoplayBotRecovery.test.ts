@@ -165,8 +165,10 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // the rules on purpose (a barn piled with 400+ wheat drops the other barns from a mill's intake choice, spec LB-15),
   // re-recorded at BOT-3. FIX-4 changes them again (upkeep order and old debt, rent relief, the first-year sowing window,
   // plot settlement, spec HR-*), re-recorded at FIX-4. FAIL-3 keeps the prosperity milestone but the campaign is won only
-  // at chapter 5's end (FL-9): the prosperous town's outcome is "ongoing" (was "victory"), re-recorded at FAIL-3.
-  assert.equal(hashEconomyState(state), "57b48964ac5b3c9e");
+  // at chapter 5's end (FL-9): the prosperous town's outcome is "ongoing" (was "victory"), re-recorded at FAIL-3. C4 adds
+  // barley, malt and ale to the hashed stock totals (0 here: chapter 1 need not brew), re-recorded at C4 (was
+  // 57b48964ac5b3c9e, which the same state still gives without the three goods; the full-state hash below is unchanged).
+  assert.equal(hashEconomyState(state), "4811a678f2a882b5");
   assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "6ec1cf75c490e2260a5c6819e120d396bb7474abd6553ee70dc85edc6993f763");
 });
 

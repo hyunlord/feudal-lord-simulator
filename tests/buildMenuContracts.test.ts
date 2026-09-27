@@ -177,8 +177,8 @@ test("category presentation covers every existing tool and preserves the canonic
 test("each thumbnail resolves to its installed artwork including historical chapel", async () => {
   for (const option of BUILD_TOOL_OPTIONS) {
     const path = buildThumbnail(option.tool);
-    // The farmstead has no artwork yet (render hand-off, AF-12): its glyph stands in.
-    if (option.tool === "road" || option.tool === "farmstead") { assert.equal(path, null); continue; }
+    // The farmstead and the malt kiln have no artwork yet (render hand-offs, AF-12 and C4 AL6): their glyphs stand in.
+    if (option.tool === "road" || option.tool === "farmstead" || option.tool === "malt_kiln") { assert.equal(path, null); continue; }
     assert.ok(path);
     await access(new URL(`../public${path}`, import.meta.url));
   }
