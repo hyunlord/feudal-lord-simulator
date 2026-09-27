@@ -1,3 +1,4 @@
+import { BUILDING_CATALOG, buildingEntry } from "../content/buildingCatalog";
 import type { Building, BuildingKind } from "../content/buildingConfig";
 import { constructionSiteFootprint, type ConstructionSite } from "../economy/construction";
 import { isBuildingConstructionSite } from "../economy/constructionSiteAccessors";
@@ -21,10 +22,9 @@ import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 export const GHOST_ALPHA = 0.22;
 const GHOST_STAGES = 2;
 
-const SIGN_ICON: Partial<Readonly<Record<BuildingKind, UiIconCell<"building">>>> = {
-  house: "hut", well: "well", farmstead: "barn", mill: "windmill", granary: "granary", storehouse: "warehouse",
-  chapel: "chapel", church: "chapel", market: "market",
-};
+/** BLD-REG: the sign's icon is the kind's catalog `signIcon` (a site that is no building has none). */
+const signIcon = (kind: ConstructionSite["kind"]): UiIconCell<"building"> | undefined =>
+  Object.hasOwn(BUILDING_CATALOG, kind) ? buildingEntry(kind as BuildingKind).signIcon : undefined;
 
 function ghostBuilding(site: ConstructionSite): Building | null {
   if (!isBuildingConstructionSite(site)) return null;
@@ -58,7 +58,7 @@ function drawGhostSprite(context: CanvasRenderingContext2D, building: Building, 
 
 /** The building's icon on the sign post's board (drawConstructionSign: the post stands at the footprint's left). */
 export function drawConstructionSignIcon(context: CanvasRenderingContext2D, site: ConstructionSite): boolean {
-  const cell = SIGN_ICON[site.kind as BuildingKind];
+  const cell = signIcon(site.kind);
   if (cell === undefined) return false;
   const footprint = constructionSiteFootprint(site);
   const center = tileToScreen(footprint.tx + (footprint.width - 1) / 2, footprint.ty + (footprint.height - 1) / 2);

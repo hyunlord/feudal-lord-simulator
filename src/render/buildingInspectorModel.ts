@@ -9,7 +9,8 @@ import { providerServiceRows } from "../ui/serviceDiagnosisModel";
 import { buildingProblemCause } from "../ui/problemCauseModel";
 import { storageUsage } from '../economy/storage';
 import { resourceName } from "../content/resourceCatalog.ko";
-import { BUILDING_INSPECTOR_COPY, BUILDING_INSPECTOR_PURPOSE } from "./buildingInspectorCopy.ko";
+import { BUILDING_INSPECTOR_COPY } from "./buildingInspectorCopy.ko";
+import { buildingCopy } from "../content/buildingCatalog.ko";
 
 export type BuildingInspectorModel = {
   readonly kind: Building["kind"];
@@ -19,8 +20,7 @@ export type BuildingInspectorModel = {
 };
 
 const HOUSE_NAMES = BUILDING_INSPECTOR_COPY.houseNames;
-// A new building kind's purpose line (AGENTS.md rule 18) now goes in buildingInspectorCopy.ko.ts.
-const PURPOSES = BUILDING_INSPECTOR_PURPOSE;
+// BLD-REG: a building's purpose line (AGENTS.md rule 18) is its catalog line (`buildingCatalog.ko.ts` `inspector`).
 
 export function buildingInspectorModel(
   state: GameState,
@@ -40,7 +40,7 @@ export function buildingInspectorModel(
     return {
       kind: building.kind,
       name: `${HOUSE_NAMES[builtLevel] ?? HOUSE_NAMES[0]}${building.houseLot === undefined ? "" : BUILDING_INSPECTOR_COPY.mergedHouseSuffix}`,
-      purpose: PURPOSES.house,
+      purpose: buildingCopy("house").inspector,
       rows: [
         BUILDING_INSPECTOR_COPY.houseLevel(level, house?.residents ?? 0),
         BUILDING_INSPECTOR_COPY.builtStage(builtLevel, houseConditionLabel(condition)),
@@ -73,5 +73,5 @@ export function buildingInspectorModel(
       ? []
       : [BUILDING_INSPECTOR_COPY.cause(problemCause)]),
   ];
-  return { kind: building.kind, name: config.name, purpose: PURPOSES[building.kind], rows };
+  return { kind: building.kind, name: config.name, purpose: buildingCopy(building.kind).inspector, rows };
 }

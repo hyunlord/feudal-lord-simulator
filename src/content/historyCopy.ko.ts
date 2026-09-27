@@ -2,6 +2,7 @@
  * F0-C2 history ledger sentences (spec docs/design/history-ledger.md HL-1): one template per record kind. A record
  * saves only the template id and its parameters; `historySummary` rebuilds the sentence from here.
  */
+import { buildingHistoryName } from "./buildingCatalog.ko";
 import { factionDisplayName, factionReasonLine } from "./factionCopy.ko";
 import { GENTRY_NAMES_KO } from "./gentryNames";
 
@@ -9,11 +10,8 @@ type P = Readonly<Record<string, number | string>>;
 const n = (params: P, key: string): number => Number(params[key] ?? 0);
 const s = (params: P, key: string): string => String(params[key] ?? "");
 
-export const HISTORY_BUILDING_NAMES: Readonly<Record<string, string>> = {
-  house: "집", well: "우물", storehouse: "창고", granary: "곡창", chapel: "예배당", wheat_farm: "밀밭", farmstead: "헛간",
-  mill: "방앗간", logging_camp: "벌목장", sawmill: "제재소", market: "시장", church: "교회", masonry: "석공장", quarry: "채석장",
-};
-const building = (kind: string) => HISTORY_BUILDING_NAMES[kind] ?? kind;
+// BLD-REG: a building's name in the ledger's sentences is its catalog line (`buildingCatalog.ko.ts` `history`).
+const building = buildingHistoryName;
 
 /** The particle after a word: the first form after a final consonant (받침), the second after a vowel. */
 function josa(word: string, withFinal: string, withoutFinal: string): string {

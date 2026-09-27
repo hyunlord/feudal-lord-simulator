@@ -1,3 +1,4 @@
+import { buildingEntry } from '../content/buildingCatalog';
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from '../content/buildingConfig';
 import { HOUSING_CONFIG } from '../content/housingConfig';
 import { constructionSiteId } from '../economy/construction';
@@ -22,7 +23,6 @@ import type { PlacementPrediction, PredictionLine } from './predictionTypes';
 import { zonePlacementLines } from './zonePrediction';
 import { ROAD_PLACEMENT_COPY } from './roadPlacementCopy.ko';
 
-const SERVICES: Partial<Record<BuildingKind, HouseholdService>> = { well: 'water', market: 'market', church: 'church' };
 const cache = new Map<string, { readonly stateKey: string; readonly value: PlacementPrediction }>();
 function cached(state: GameState, key: string, compute: () => PlacementPrediction): PlacementPrediction {
   const stateKey = predictionStateKey(state);
@@ -59,7 +59,7 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
     const candidate = virtualFacility(state, kind, tile);
     const virtual = projectedState(state, candidate);
     const facility = virtual.buildings.find(b => b.id === candidate.id) ?? candidate;
-    const service = SERVICES[kind];
+    const service: HouseholdService | undefined = buildingEntry(kind).service;
     // UX-0b2 MARKET-1: a market reaches homes by road (MK-1), so it has road tiles, not a radius.
     const reach = kind === 'market' ? marketReach(virtual, facility) : null;
     const radius = reach !== null ? null : service !== undefined ? definition.serviceRadius : kind === 'granary' ? HOUSING_CONFIG[3].granaryRadius : null;

@@ -1,3 +1,4 @@
+import { buildingSpriteKeyOf } from "../content/buildingCatalog";
 import type { Building } from "../economy/economy.types";
 import type { CameraState } from "./camera";
 import type { ViewportSize } from "./renderer";
@@ -7,10 +8,8 @@ export function buildingSpriteKey(building: Building, houseLevel: number): strin
   if (building.kind === "house") {
     return `house_l${Math.max(0, Math.min(4, houseLevel))}`;
   }
-  if (building.kind === "granary") {
-    return "barn";
-  }
-  return building.kind;
+  // BLD-REG: the kind's catalog `spriteKey` (the granary draws the barn), else the kind.
+  return buildingSpriteKeyOf(building.kind);
 }
 
 export function spriteOptionsFor(input: {

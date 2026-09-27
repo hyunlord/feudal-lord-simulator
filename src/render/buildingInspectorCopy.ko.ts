@@ -1,21 +1,5 @@
-// Player-facing copy of the building inspector model (purpose line and fact rows).
-export const BUILDING_INSPECTOR_PURPOSE = {
-  house: "주민이 생활하고 성장하는 집",
-  well: "주변 가구에 물을 공급",
-  storehouse: "목재와 통나무를 보관",
-  granary: "밀과 빵을 보관하고 배급",
-  chapel: "마을의 시대 선포 조건을 채우는 예배당",
-  wheat_farm: "일꾼이 밀을 재배",
-  farmstead: "일꾼이 경작지를 갈고 거둔 밀을 보관",
-  mill: "밀을 빵으로 가공",
-  logging_camp: "숲에서 통나무를 생산",
-  sawmill: "통나무를 목재로 가공",
-  quarry: "바위에서 원석을 채굴",
-  masonry: "원석을 석재로 가공",
-  market: "남는 물자를 팔아 재정 수입",
-  church: "주변 가구에 교회 서비스를 제공",
-  keep: "석조 도시의 중심 성채",
-} as const;
+// Player-facing copy of the building inspector model (fact rows).
+// The purpose line of each building is its catalog line (BLD-REG, `buildingCatalog.ko.ts` `inspector`).
 
 export const BUILDING_INSPECTOR_COPY = {
   houseNames: ["오두막", "소가옥", "장인가옥", "상인가옥", "도시 대가옥"],

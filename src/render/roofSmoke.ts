@@ -1,4 +1,5 @@
-import { operationSuspended, type Building } from "../content/buildingConfig";
+import { buildingEntry } from "../content/buildingCatalog";
+import { BUILDING_CONFIG_BY_KIND, operationSuspended, type Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { housePressureStatus } from "../population/housePressure";
 import { frameBuildingVariant } from "./buildingVariants";
@@ -31,9 +32,11 @@ export function houseSmokeStrength(state: Pick<GameState, "houses">, building: P
   return pressure === "leaving" || house.breadStock <= 1 ? 0.35 : 1;
 }
 
+/** A working fire burns (BLD-REG: a kind whose catalog `smoke` is `work_fire` — the mill's oven) while it is manned and has its input or a batch under way. */
 export function millOvenBurning(building: Building): boolean {
-  return building.kind === "mill" && building.workers > 0 && !operationSuspended(building)
-    && ((building.inventory.wheat ?? 0) > 0 || building.productionProgress > 0);
+  const input = BUILDING_CONFIG_BY_KIND[building.kind].production?.input ?? null;
+  return buildingEntry(building.kind).smoke === "work_fire" && building.workers > 0 && !operationSuspended(building)
+    && ((input === null ? 0 : building.inventory[input] ?? 0) > 0 || building.productionProgress > 0);
 }
 
 /** Smoke from the house's ridge (single or pair art, variants included), when it has any. */

@@ -1,3 +1,4 @@
+import { buildingEntry } from "../content/buildingCatalog";
 import type { PlacementTool } from "../render/renderer";
 import type { BuildToolOption } from "./buildMenuModel";
 import { getHistoricalFacilityPresentation } from "../render/historicalFacilityAssets";
@@ -24,23 +25,19 @@ export function buildCategorySelection(category: BuildCategory): PlacementTool |
   return category === "paths" ? "road" : null;
 }
 
+/** BLD-REG: a building's category is its catalog line; the road's is the paths. */
 export function buildCategory(tool: PlacementTool): BuildCategory {
-  const categories = {
-    house: "living", well: "living", road: "paths",
-    wheat_farm: "trade", farmstead: "trade", mill: "trade", logging_camp: "trade", sawmill: "trade", quarry: "trade", masonry: "trade",
-    storehouse: "storage", granary: "storage", market: "storage",
-    chapel: "public", church: "public", keep: "defense",
-  } as const satisfies Record<PlacementTool, BuildCategory>;
-  return categories[tool];
+  return tool === "road" ? "paths" : buildingEntry(tool).category;
 }
 
+/** The build card's picture (BLD-REG `thumbnail`): the first house, the kind's facility picture or an early file; null: its icon or glyph. */
 export function buildThumbnail(tool: PlacementTool): string | null {
-  if (tool === "road" || tool === "farmstead") return null;
-  if (tool === "house") return historicalHouseAssetMeta(0)?.url ?? null;
-  const facility = getHistoricalFacilityPresentation(tool);
-  if (facility !== null) return facility.url;
-  const asset = tool === "granary" ? "barn" : tool;
-  return `/assets/buildings/${asset}.png`;
+  if (tool === "road") return null;
+  const thumbnail = buildingEntry(tool).thumbnail;
+  if (thumbnail === undefined) return null;
+  if (thumbnail === "house") return historicalHouseAssetMeta(0)?.url ?? null;
+  if (thumbnail === "facility") return getHistoricalFacilityPresentation(tool)?.url ?? null;
+  return `/assets/buildings/${thumbnail.file}.png`;
 }
 
 export function buildCostLabel(option: BuildToolOption): string {

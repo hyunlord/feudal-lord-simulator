@@ -1,6 +1,8 @@
+import { buildingGlyph, type BuildGlyphKey } from "../content/buildingCatalog";
 import type { PlacementTool } from "../render/renderer";
 
-const GLYPH_PATHS: Record<PlacementTool, readonly string[]> = {
+// BLD-REG: the glyphs by glyph key; a building takes its catalog glyph (a new one without its own: its category's).
+const GLYPH_PATHS: { readonly [K in BuildGlyphKey]: readonly string[] } = {
   house: ["M3 11 12 4l9 7", "M5 10v10h14V10", "M10 20v-6h4v6"],
   well: ["M5 10q7-4 14 0v7q-7 4-14 0Z", "M7 10V6m10 4V6", "M6 6q6-4 12 0"],
   storehouse: ["M3 10 12 4l9 6v10H3Z", "M8 20v-7h8v7", "M5 11h14"],
@@ -34,7 +36,7 @@ export function BuildGlyph({ tool }: BuildGlyphProps) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      {GLYPH_PATHS[tool].map((path) => <path key={path} d={path} />)}
+      {GLYPH_PATHS[tool === "road" ? "road" : buildingGlyph(tool)].map((path) => <path key={path} d={path} />)}
     </svg>
   );
 }

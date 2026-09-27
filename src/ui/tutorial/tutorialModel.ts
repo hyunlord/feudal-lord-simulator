@@ -1,4 +1,4 @@
-import type { BuildingKind } from "../../content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
 import type { PlacementTool } from "../../render/renderer";
 import type { ZoneBrushTarget } from "../../render/zoneBrushInteraction";
@@ -209,9 +209,8 @@ function candidates(state: GameState): readonly TileCoordinate[] {
   return list.sort((a, b) => a.distance - b.distance || a.tile.ty - b.tile.ty || a.tile.tx - b.tile.tx).map(entry => entry.tile);
 }
 
-const FOOTPRINT: Partial<Record<BuildingKind, number>> = { granary: 2, storehouse: 2, market: 2, church: 2, keep: 2, quarry: 2 };
 function footprintTiles(kind: BuildingKind, origin: TileCoordinate): readonly TileCoordinate[] {
-  const size = FOOTPRINT[kind] ?? 1;
+  const size = BUILDING_CONFIG_BY_KIND[kind].width;
   const tiles: TileCoordinate[] = [];
   for (let dy = 0; dy < size; dy += 1) for (let dx = 0; dx < size; dx += 1) tiles.push({ tx: origin.tx + dx, ty: origin.ty + dy });
   return tiles;

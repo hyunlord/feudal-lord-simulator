@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from "react";
 
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { buildingEntry } from "../content/buildingCatalog";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import { HOUSEHOLD_SERVICE_CONFIG } from "../population/serviceAllocation";
 
@@ -20,7 +21,7 @@ import { platformServices } from "../platform/platform";
 import { INTENT_ORDER } from "../input/intentBus";
 import { lastInputDevice, subscribeInputDevice, type InputDevice } from "../input/inputDevice";
 import { INPUT_HINT_COPY, ZONE_BRUSH_HINT_COPY } from "./inputHintCopy.ko";
-import { BUILD_CARD_PURPOSE, BUILD_MENU_COPY } from "./buildMenuCopy.ko";
+import { BUILD_MENU_COPY, buildCardPurpose } from "./buildMenuCopy.ko";
 import { TUTORIAL_COPY } from "./tutorial/tutorialCopy.ko";
 import { tutorialAccess, type ControlLayer, type TutorialAccess } from "./tutorial/tutorialModel";
 import { UiIcon } from "./UiIcon";
@@ -38,8 +39,8 @@ const ZONE_CARDS: readonly { readonly target: ZoneBrushTarget; readonly label: s
   { target: "orchard", label: ZONE_KIND_LABELS.orchard, hint: ZONE_BRUSH_COPY.cardHint.orchard, icon: null, thumbnail: "/assets/zones/orchard_floor_a-v1.png" },
   { target: "erase", label: ZONE_BRUSH_COPY.eraser, hint: ZONE_BRUSH_COPY.eraserHint, icon: { sheet: "prediction", cell: "block" }, thumbnail: null },
 ];
-/** UX-2: tools without a building thumbnail show their first-session icon (the road). */
-const TOOL_ICON: Partial<Record<PlacementTool, UiIconCell<"building">>> = { road: "road", farmstead: "barn" };
+/** UX-2: tools without a building thumbnail show their first-session icon (the road; a building's catalog `menuIcon`). */
+const toolIcon = (tool: PlacementTool): UiIconCell<"building"> | undefined => tool === "road" ? "road" : buildingEntry(tool).menuIcon;
 /** UX-1: the arable brush also sits in the trade (생업) category of the direct layer, the script's first field. */
 const ARABLE_CARD = { ...ZONE_CARDS[1]!, hint: BUILD_MENU_COPY.arableCardHint };
 
@@ -154,6 +155,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
     const toolAffordable = affordability.affordable && !locked;
     const selected = selectedTool === option.tool;
     const thumbnail = buildThumbnail(option.tool);
+    const icon = toolIcon(option.tool);
     return (
       <Button key={option.tool} type="button"
         className={`build-seal build-tool${selected ? " build-tool--selected" : ""}${locked ? " build-tool--locked" : ""}`}
@@ -165,10 +167,10 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         <span id={`${id}-tool-${option.tool}`} className="visually-hidden">{buildToolTooltipLines(option.tool, menuState).join(". ")}</span>
         <span className="build-tool-art" aria-hidden="true">
           {thumbnail !== null ? <img src={thumbnail} width="80" height="64" alt="" draggable={false} />
-            : TOOL_ICON[option.tool] !== undefined ? <UiIcon sheet="building" cell={TOOL_ICON[option.tool]!} size={48} /> : <BuildGlyph tool={option.tool} />}
+            : icon !== undefined ? <UiIcon sheet="building" cell={icon} size={48} /> : <BuildGlyph tool={option.tool} />}
         </span>
         <span className="build-seal-label" aria-hidden="true">{option.label}</span>
-        <span className="build-tool-purpose">{BUILD_CARD_PURPOSE[option.tool]}</span>
+        <span className="build-tool-purpose">{buildCardPurpose(option.tool)}</span>
         <span className="build-tool-cost">{buildCostLabel(option)}</span>
         {locked ? <span className="build-tool-lock"><UiIcon sheet="lock" cell="locked" /> {eraLock ?? TUTORIAL_COPY.locked}</span>
           : !affordability.affordable && <span className="build-tool-shortfall">{shortfallText(option, affordability.spendable)}</span>}
