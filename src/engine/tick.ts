@@ -30,6 +30,7 @@ import { advanceEvents } from "./events";
 import { advancePolitics, endChapterTwo } from "./politics";
 import { advanceLordship } from "./lordship";
 import { advanceWar } from "./war";
+import { advanceFactions } from "./factions";
 import { advanceHistory } from "./history";
 import { carterCrossings } from "./tollCrossings";
 import { updateHousing } from "../population/housing";
@@ -253,7 +254,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
 
 /** F2-A (WR-1…WR-9): the war's season, after the lordship; chapter 2's end is written by the politics. */
 function advanceWarTick(state: GameState): GameState {
-  return advanceWar(state, endChapterTwo);
+  // FACTION-0 (FX-1, FX-2, FX-5): then the factions' season (their leaders, their year).
+  return advanceFactions(advanceWar(state, endChapterTwo));
 }
 
 export function advanceTick(state: GameState): GameState {
