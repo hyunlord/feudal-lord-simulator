@@ -1,0 +1,77 @@
+{
+ "runner": "DGX, scripts/remote/run.sh (REMOTE-1)",
+ "guardrail": {
+  "run1@463d4843": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 112942,
+    "finalTick": 235846,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": null,
+    "factionNames": {
+     "overlord": "Saltwold",
+     "neighbour_1": "de Ivrecourt",
+     "neighbour_2": "de Ambreth",
+     "bishop": "Kelborough"
+    }
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 155362,
+    "finalTick": 218692,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": null,
+    "factionNames": {
+     "overlord": "Estmarch",
+     "neighbour_1": "de Lisonde",
+     "neighbour_2": "de Thornell",
+     "bishop": "Wyncaster"
+    }
+   },
+   {
+    "seed": 3,
+    "status": "passed",
+    "victoryTick": 129628,
+    "finalTick": 281084,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": "de Merrowen",
+    "factionNames": {
+     "overlord": "Brackmoor",
+     "neighbour_1": "de Corbelle",
+     "neighbour_2": "de Heronel",
+     "bishop": "Aldminster"
+    }
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 109392,
+    "finalTick": 259712,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": null,
+    "factionNames": {
+     "overlord": "Aldwyne",
+     "neighbour_1": "de Ambreth",
+     "neighbour_2": "de Corbelle",
+     "bishop": "Wyncaster"
+    }
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 130780,
+    "finalTick": 315741,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": null,
+    "factionNames": {
+     "overlord": "Thornhollow",
+     "neighbour_1": "de Gildermoor",
+     "neighbour_2": "de Ivrecourt",
+     "bishop": "Aldminster"
+    }
+   }
+  ]
+ }
+}
