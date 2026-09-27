@@ -46,7 +46,8 @@ test("welcome parchment renders exact opening copy and dismiss affordance", () =
 test("app starts with no armed placement tool and consumes welcome dismissal locally", async () => {
   // Given / When
   const markup = renderApp();
-  const source = await readFile(APP_SOURCE, "utf8");
+  // CODE-1c: the welcome parchment is its own screen (src/ui/screens/WelcomeScreen.tsx); App shows it.
+  const source = `${await readFile(APP_SOURCE, "utf8")}\n${await readFile(new URL("../src/ui/screens/WelcomeScreen.tsx", import.meta.url), "utf8")}`;
   const runtimeSource = await readFile(CANVAS_RUNTIME_SOURCE, "utf8");
   const runtimeRefsSource = await readFile(CANVAS_RUNTIME_REFS_SOURCE, "utf8");
   const placementMarkup = markup.slice(

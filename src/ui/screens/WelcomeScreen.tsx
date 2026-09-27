@@ -1,0 +1,113 @@
+import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent, type PointerEvent } from "react";
+import { CORE_SCENARIOS, DEFAULT_SCENARIO_ID } from "../../content/scenario/coreScenarios";
+import { SCENARIO_COPY } from "../../content/scenario/scenarioCopy.ko";
+import { KO_UI } from "../../content/locale.ko";
+import { SAVE_COPY } from "../../content/saveCopy.ko";
+import { platformServices } from "../../platform/platform";
+import { Button } from "../kit";
+import { TITLE_COPY } from "../titleCopy.ko";
+import { TutorialToggle } from "../tutorial/TutorialShell";
+import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
+import { wave8ImageStyle, wave8Url } from "../wave8Art";
+
+// CODE-1c (from App): the title screen — the welcome parchment, the saved city on offer, the mode choice.
+const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
+
+export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame, onChooseMode, tutorialEnabled, onTutorialChange }: {
+  readonly tutorialEnabled: boolean;
+  readonly onTutorialChange: (enabled: boolean) => void;
+  readonly onDismiss: () => void;
+  readonly continueLine: string | null;
+  readonly archiveNotice: string | null;
+  readonly onContinue: () => void;
+  readonly onNewGame: (scenarioId: string) => void;
+  readonly onChooseMode: (scenarioId: string) => void;
+}) {
+  const [confirmingNewGame, setConfirmingNewGame] = useState(false);
+  const dialogRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    dialogRef.current?.focus();
+  }, []);
+
+  const consumeDismissal = (event: MouseEvent | PointerEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    // With a saved city on offer the player must choose explicitly; a stray click must not start over.
+    if (continueLine === null) onDismiss();
+  };
+  const containKeyboard = (event: ReactKeyboardEvent) => {
+    event.stopPropagation();
+  };
+
+  return (
+    <div
+      className="welcome-dismiss-layer title-screen"
+      data-screen={confirmingNewGame ? "mode" : "title"}
+      style={{ backgroundImage: `url("${wave8Url(confirmingNewGame ? "keyart_mode_select" : "keyart_title_bg")}")` }}
+      onPointerDown={consumeDismissal}
+      onClick={consumeDismissal}
+      onKeyDown={containKeyboard}
+    >
+      {/* UI-3: the title keyart behind the welcome, the emblem above it; choosing a new game over a save shows the mode backdrop. */}
+      <span className="title-emblem" aria-hidden="true" style={wave8ImageStyle("keyart_title_emblem", 176)} />
+      <section
+        ref={dialogRef}
+        className="welcome-parchment"
+        role="dialog"
+        aria-modal="true"
+        aria-label={KO_UI.openingGuidance}
+        tabIndex={-1}
+      >
+        <h2>{TITLE_COPY.heading}</h2>
+        <p>{TITLE_COPY.howTo}</p>
+        <p>{TITLE_COPY.camera}</p>
+        <TutorialToggle enabled={tutorialEnabled} onChange={onTutorialChange} />
+        {continueLine === null ? <>
+          <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId)} />
+          <p className="welcome-dismiss">{TITLE_COPY.dismiss}</p>
+        </> : (
+          <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
+            <p>{continueLine}</p>
+            <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => onContinue()} variant="primary">
+              {SAVE_COPY.continueGame}
+            </Button>
+            {confirmingNewGame ? <>
+              <p role="status">{archiveNotice}</p>
+              <ScenarioModeButtons onChoose={onNewGame} />
+              <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => setConfirmingNewGame(false)} variant="secondary">
+                {SAVE_COPY.cancel}
+              </Button>
+            </> : (
+              <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => setConfirmingNewGame(true)} variant="secondary">
+                {SAVE_COPY.newGame}
+              </Button>
+            )}
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
+
+/** New-game mode choice (B2): one button per registered scenario, in registration order. */
+function ScenarioModeButtons({ onChoose }: {
+  readonly onChoose: (scenarioId: string) => void;
+}) {
+  return <div className="welcome-modes" role="group" aria-label={SCENARIO_COPY.modePrompt}>
+    {CORE_SCENARIOS.map(scenario => <div key={scenario.id}>
+      <Button className="autoplay-toggle save-control-button" type="button"
+        data-scenario={scenario.id} isolate onPress={() => onChoose(scenario.id)} variant="primary">
+        {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}
+      </Button>
+      <p className="welcome-mode-line">{TUTORIAL_COPY.modeLines[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}</p>
+    </div>)}
+  </div>;
+}
+
+export function readWelcomeDismissed(): boolean {
+  return platformServices().preferences.get(WELCOME_DISMISSED_KEY) === "1";
+}
+
+export function writeWelcomeDismissed(): void {
+  platformServices().preferences.set(WELCOME_DISMISSED_KEY, "1");
+}

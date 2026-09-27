@@ -1,7 +1,7 @@
 # UI 상태 설계 (UX-3 수정본 1차·2차, 조사 15)
 
 헌장 3절 "화면 원칙"의 구현 명세. 근거: UX-3 수정본 지시서(조사 15 Claude·Gemini), [설계서 12절 M12-C10 UI 원칙](DESIGN_MASTER.md).
-코드: `src/ui/uiStateMachine.ts`(상태), `src/ui/hud/`(상시 HUD·장부 서랍·일시정지 메뉴), `src/styles/hudShell.css`(배치),
+코드: `src/ui/stateMachine/uiStateMachine.ts`(상태, App의 연결은 `useUiStateMachine.ts`), `src/ui/hud/`(상시 HUD·장부 서랍·일시정지 메뉴), `src/styles/hudShell.css`(배치),
 `src/render/placementTileMarks.ts`·`placementTileOverlay.ts`(배치 칸 판정·그림), `src/ui/placementChip.ts`(커서 칩).
 관문: `scripts/measureHudCoverage.ts`(상태별 면적), `scripts/ux3Verification.sh`(DGX 회귀 묶음).
 

@@ -1,4 +1,4 @@
-import { CORE_SCENARIOS, DEFAULT_SCENARIO_ID } from "./content/scenario/coreScenarios";
+import { DEFAULT_SCENARIO_ID } from "./content/scenario/coreScenarios";
 import { SCENARIO_COPY } from "./content/scenario/scenarioCopy.ko";
 import {
   useCallback,
@@ -7,32 +7,29 @@ import {
   useRef,
   useState,
   type CSSProperties,
-  type KeyboardEvent as ReactKeyboardEvent,
-  type MouseEvent,
-  type PointerEvent,
 } from "react";
 
 import { CauseLegend } from "./ui/CauseLegend";
 import { KO_UI } from "./content/locale.ko";
-import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
+import type { GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
 import { canProclaimPalisadeEra } from "./engine/era";
 import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
 import { applyPalisadeIntent, initialExpansionDraft, initialOpenPalisadeDraft, initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
 import { cachedExpansionPreview, expansionStartCandidate } from "./ui/wallExpansionModel";
-import { DEFAULT_ZONE_BRUSH_RADIUS, type ZoneBrushTool } from "./render/zoneBrushInteraction";
+import type { ZoneBrushTool } from "./render/zoneBrushInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameApi, useGameSpeed, useGameUiSelector } from "./state/gameStore";
 import { presentedState } from "./render/presentation/presentedState";
 import { usePresentationClock } from "./ui/usePresentationClock";
 import { nextDistributorRouteHistoryCommit, useTickObservers } from "./ui/useTickObservers";
 import { useSaveSystemContext } from "./state/saveSystem";
-import { formatNewGameArchiveNotice, SAVE_COPY } from "./content/saveCopy.ko";
+import { formatNewGameArchiveNotice } from "./content/saveCopy.ko";
 import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
 import { createHouseMaterialWave, palisadeCenter } from "./render/buildingMaterialWave";
 import { BuildSeals } from "./ui/BuildMenu";
-import { EconomyOverlayControls, toggleOverlayByKey } from "./ui/EconomyOverlayControls";
+import { EconomyOverlayControls } from "./ui/EconomyOverlayControls";
 import { SettlementStatusLine } from "./ui/InfoPanel";
 import { SettlementPanel } from "./ui/SettlementPanel";
 import { PopulationEventPanel } from "./ui/PopulationEventPanel";
@@ -45,14 +42,11 @@ import { MapShield } from "./ui/OverlayControls";
 import { releaseControlFocus } from "./input/domInputBindings";
 import { stateCalendar } from "./engine/scenarioState";
 import { TITLE_COPY } from "./ui/titleCopy.ko";
-import { wave8ImageStyle, wave8Url } from "./ui/wave8Art";
-import { SEASON_LEDGER_COPY } from "./ui/seasonLedgerCopy.ko";
-import { SeasonLedgerCard } from "./ui/hud/SeasonLedgerCard";
-import { seasonJustClosed, seasonLedgerCardModel } from "./ui/seasonLedgerCard";
+import { wave8Url } from "./ui/wave8Art";
+import { seasonJustClosed } from "./ui/seasonLedgerCard";
 import { seasonLedgerAuto, setSeasonLedgerAuto } from "./ui/seasonLedgerPreference";
 import type { BuildCategory } from "./ui/buildMenuPresentation";
 import { autoPlacementOverlay } from "./ui/placementAutoOverlay";
-import { PlacementPaletteToggle } from "./render/PlacementPaletteToggle";
 import { SpeedSeals } from "./ui/SpeedControls";
 import { EraConsole, buildEraConsoleModel } from "./ui/EraConsole";
 import {
@@ -67,9 +61,9 @@ import { palisadeCoreFootprintsForState } from './engine/palisadeFootprints';
 import { wallConstructionPriority } from './engine/constructionReserve';
 import { platformServices } from "./platform/platform";
 import { INTENT_ORDER } from "./input/intentBus";
-import { SPEED_STEPS, speedStepOf } from "./input/inputIntent";
+import { useAppIntents, ZONE_TOOL_OFF, ZONE_TOOL_PREFIX } from "./input/useAppIntents";
+import { speedStepOf } from "./input/inputIntent";
 import { bindPressClock, lastPressAt } from "./input/inputDevice";
-import { steppedPlacementTool } from "./render/placementToolCycle";
 import { UiIcon } from "./ui/UiIcon";
 import { setPresentationSpeed } from "./render/presentationSpeed";
 import { playSound, unlockAudio } from "./audio/audioEngine";
@@ -79,36 +73,27 @@ import { COMPLETION_TOAST_COPY } from "./ui/completionToastCopy.ko";
 import { alertStackRows } from "./ui/alertStackModel";
 import { useTutorialController } from "./ui/tutorial/useTutorialController";
 import { GoalCards, GoalDrawer, PauseVeil, TutorialToggle, UnlockBanner } from "./ui/tutorial/TutorialShell";
-import { TUTORIAL_COPY } from "./ui/tutorial/tutorialCopy.ko";
 import type { ControlLayer } from "./ui/tutorial/tutorialModel";
 import { BUILD_MENU_COPY } from "./ui/buildMenuCopy.ko";
 import { tutorialTargetCanvasPoint } from "./ui/tutorial/tutorialMapChannel";
 import { readTutorialRecord } from "./ui/tutorial/tutorialStore";
 import { Inspector } from "./ui/InspectorView";
-import { escapeOnce, hudVisibility, INITIAL_UI_STATE, reduceUi, timeStopped, topModal, type UiEvent, type UiState } from "./ui/uiStateMachine";
-import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, PauseMenu, StatusPill } from "./ui/hud/HudShell";
+import { hudVisibility, reduceUi, topModal } from "./ui/stateMachine/uiStateMachine";
+import { useUiStateMachine } from "./ui/stateMachine/useUiStateMachine";
+import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, StatusPill } from "./ui/hud/HudShell";
 import { statusPillModel } from "./ui/hud/statusPillModel";
 import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
 import { zoneEditHistory } from "./render/zoneEditHistory";
 import type { ZoneKind } from "./zones/zone.types";
 import { EventCards } from "./ui/hud/EventCards";
-import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "./ui/hud/StoryModals";
-import { ChronicleScreen } from "./ui/chronicle/ChronicleScreen";
-import { personCardView, personRow, petitionerRows, stewardPerson } from "./ui/persons/personModels";
-import { PersonCardModal } from "./ui/persons/PersonViews";
+import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
-import { famineDecisionView, petitionDecisionView } from "./ui/decisionModels";
-import { chronicleView } from "./ui/chronicleModel";
-import { PresentationToggle } from "./render/PresentationToggle";
-import { Button } from "./ui/kit";
+import { AppModals } from "./ui/screens/AppModals";
+import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
 
 /** UX-0b: how long the season card waits after the last press before it opens (a press in flight is not swallowed). */
 const LEDGER_PRESS_GRACE_MS = 700;
-/** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
-const ZONE_TOOL_PREFIX = "zone:";
-const ZONE_TOOL_OFF = "zone:off";
 
-const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
 const CHAPTER_LOADING_MS = 900;
 /** UX-2: the season icon beside the date (calendar season index → resource-sheet cell). */
 
@@ -147,14 +132,11 @@ export function App() {
   // UI-5: the person card on screen (a modal) and the person a chronicle opens on.
   const [personCardId, setPersonCardId] = useState<string | null>(null);
   const [chroniclePersonId, setChroniclePersonId] = useState<string | null>(null);
-  // UX-3: which UI is on screen is one state (uiStateMachine: one panel slot, Esc one step, modals push / pop).
-  const [ui, setUi] = useState<UiState>(INITIAL_UI_STATE);
-  const uiRef = useRef(ui);
-  uiRef.current = ui;
-  const sendUi = useCallback((event: UiEvent) => setUi(current => reduceUi(current, event)), []);
+  // UX-3: which UI is on screen is one state (ui/stateMachine: one panel slot, Esc one step, modals push / pop).
+  const { ui, uiRef, setUi, sendUi } = useUiStateMachine(store);
   const openInspector = useCallback((id: string) => { setInspectedId(id); sendUi({ type: "select" }); }, [sendUi]);
   // The map's own selection card (GameCanvas) takes the same slot; closing it there leaves the selection state.
-  const onCanvasSelection = useCallback((open: boolean) => { if (open) sendUi({ type: "select" }); else if (uiRef.current.mode === "selection") sendUi({ type: "deselect" }); }, [sendUi]);
+  const onCanvasSelection = useCallback((open: boolean) => { if (open) sendUi({ type: "select" }); else if (uiRef.current.mode === "selection") sendUi({ type: "deselect" }); }, [sendUi, uiRef]);
   const palisadeDraftRef = useRef(palisadeDraft);
   const gameStateRef = useRef(state);
   palisadeDraftRef.current = palisadeDraft;
@@ -221,75 +203,9 @@ export function App() {
     if (tool !== null && !accessRef.current.tools(tool)) return;
     setPalisadeDraft(null); setSelectedTool(tool); if (tool !== null) { setZoneTool(null); setLayer("direct"); }
   };
-  // The app shell's input intents (B9): after the map's handler, before menus (src/input/intentBus.ts). Esc / Z on a
-  // palisade draft cancel or undo it (not while typing), Esc otherwise disarms every tool; O and 1-4 toggle views;
-  // tool and speed intents come from the build menu, the speed seals and Q / E / Space.
-  const speedRef = useRef(speed);
-  const resumeSpeedRef = useRef<GameSpeed>(speed === 0 ? 1 : speed);
-  speedRef.current = speed;
-  if (speed !== 0) resumeSpeedRef.current = speed;
-  const selectedToolRef = useRef(selectedTool);
-  selectedToolRef.current = selectedTool;
-  useEffect(() => platformServices().input.subscribe((intent, context) => {
-    switch (intent.kind) {
-      case "cancel":
-        if (intent.world !== undefined) return;
-        if (context.target !== "text" && palisadeDraftRef.current !== null) {
-          setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state: gameStateRef.current, draft: current, intent: { type: "cancel" } }));
-          return "handled";
-        }
-        if (selectedToolRef.current !== null || palisadeDraftRef.current !== null) playSound("place_cancel");
-        // UX-3 S-31: one step back (placement -> build drawer -> idle -> pause menu); the mode effect below drops the
-        // zone brush or the inspector the new state no longer holds. A placement tool is dropped here, in the same
-        // render as the step (as before UX-3), so a drag right after Esc already pans.
-        if (uiRef.current.mode === "placement" || uiRef.current.mode === "line") setSelectedTool(null);
-        setUi(current => escapeOnce(current));
-        return "handled";
-      case "panel":
-        if (intent.panel === "hud") setUi(current => reduceUi(current, { type: "toggle_hud" }));
-        // CHRON-1: C opens the chronicle over a state with no modal up, and closes it.
-        else if (intent.panel === "chronicle") setUi(current => topModal(current) === "history" ? reduceUi(current, { type: "pop_modal" })
-          : current.modals.length === 0 ? reduceUi(current, { type: "push_modal", modal: "history" }) : current);
-        else setUi(current => reduceUi(current, { type: intent.panel === "build" ? "toggle_build" : "toggle_ledger" }));
-        return "handled";
-      case "undo":
-        if (context.target === "text" || palisadeDraftRef.current === null) return;
-        setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state: gameStateRef.current, draft: current, intent: { type: "undo" } }));
-        return "handled";
-      case "problemView":
-        setProblemOnly(value => !value);
-        return "handled";
-      case "overlayToggle":
-        setOverlayMode(mode => toggleOverlayByKey(`Digit${intent.slot}`, mode));
-        return "handled";
-      case "toolSelect":
-        if (intent.toolId === ZONE_TOOL_OFF) { setPalisadeDraft(null); setSelectedTool(null); setZoneTool(null); return "handled"; }
-        if (intent.toolId?.startsWith(ZONE_TOOL_PREFIX) === true) {
-          const target = intent.toolId.slice(ZONE_TOOL_PREFIX.length) as ZoneBrushTool["target"];
-          const access = accessRef.current;
-          const arableFromTrade = target === "arable" && access.arableCard;
-          if (!access.zoneTargets(target) && !arableFromTrade) return "handled";
-          setLayer(access.layers.zone && !(arableFromTrade && !access.zoneTargets(target)) ? "zone" : "direct");
-          setPalisadeDraft(null);
-          setSelectedTool(null);
-          setZoneTool(current => ({ target, radius: current?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: current?.polygon ?? false }));
-          return "handled";
-        }
-        selectPlacementTool(intent.toolId as PlacementTool | null);
-        return "handled";
-      case "toolStep":
-        selectPlacementTool(steppedPlacementTool(gameStateRef.current, selectedToolRef.current, intent.step));
-        return "handled";
-      case "speed":
-        setSpeed(SPEED_STEPS[intent.value]);
-        return "handled";
-      case "pauseToggle":
-        setSpeed(speedRef.current === 0 ? resumeSpeedRef.current : 0);
-        return "handled";
-      default:
-        return;
-    }
-  }, INTENT_ORDER.app), [setSpeed]);
+  // The app shell's input intents (B9, src/input/useAppIntents.ts).
+  const { selectedToolRef } = useAppIntents({ speed, setSpeed, selectedTool, setSelectedTool, selectPlacementTool, palisadeDraftRef, setPalisadeDraft,
+    gameStateRef, uiRef, setUi, setProblemOnly, setOverlayMode, setZoneTool, setLayer, accessRef });
 
   // UX-3: the underlying tool / zone / inspector states follow the UI state (and a tool picked by any route moves it).
   // UX-0b: the arable brush armed from the build drawer on the direct layer is a line tool like the road, so the drawer
@@ -308,13 +224,7 @@ export function App() {
     if (ui.mode !== "zone" && ui.mode !== "build" && !placing) { setZoneTool(null); setLayer(current => current === "zone" ? "direct" : current); }
     if (ui.mode !== "selection") setInspectedId(null);
     if (ui.mode !== "ledger") setLedgerHighlight([]);
-  }, [ui.mode]);
-  // S-32: a modal stops time; the speed before it comes back when the last modal closes.
-  const modalPauseRef = useRef<GameSpeed | null>(null);
-  useEffect(() => {
-    if (timeStopped(ui) && modalPauseRef.current === null) { modalPauseRef.current = speedRef.current; setSpeed(0); }
-    if (!timeStopped(ui) && modalPauseRef.current !== null) { setSpeed(modalPauseRef.current === 0 ? 0 : modalPauseRef.current); modalPauseRef.current = null; }
-  }, [ui, setSpeed]);
+  }, [ui.mode, selectedToolRef]);
   // S-51: the placed building's overlay while its tool is up; the overlay before it comes back afterwards.
   const overlayModeRef = useRef(overlayMode);
   overlayModeRef.current = overlayMode;
@@ -344,8 +254,7 @@ export function App() {
     if (wait <= 0) { open(); return; }
     const timer = window.setTimeout(open, wait);
     return () => window.clearTimeout(timer);
-  }, [lastClosedEnd, priorClosedEnd, ledgerAuto, welcomeVisible]);
-  const seasonCard = topModal(ui) === "season_ledger" ? seasonLedgerCardModel(state) : null;
+  }, [lastClosedEnd, priorClosedEnd, ledgerAuto, welcomeVisible, setUi, uiRef]);
   // The card's next objective opens the build drawer at its category (the tutorial's request path, its own nonce).
   const [menuRequest, setMenuRequest] = useState<{ readonly category: BuildCategory; readonly nonce: number } | null>(null);
   useEffect(() => { setMenuRequest(null); }, [tutorial.openRequest]);
@@ -354,20 +263,9 @@ export function App() {
   // and the chronicle as modals (useStoryPresentation).
   const story = useStoryPresentation({ state, nowMs: presentationNowMs, blocked: welcomeVisible, topModal: topModal(ui),
     pushModal: modal => sendUi({ type: "push_modal", modal }), pause: () => setSpeed(0) });
-  const famineView = topModal(ui) === "decision" ? famineDecisionView(state) : null;
-  const petitionView = topModal(ui) === "petition" ? petitionDecisionView(state) : null;
-  const chronicle = topModal(ui) === "chronicle" ? chronicleView(state) : null;
   const stewardOfTown = stewardPerson(state);
   const steward = stewardOfTown === null ? null : personRow(state, stewardOfTown);
-  const personCard = topModal(ui) === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
   const openPerson = (id: string) => { setPersonCardId(id); sendUi({ type: "push_modal", modal: "person_card" }); };
-  // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
-  const famineGone = famineView === null; const petitionGone = petitionView === null;
-  const chronicleGone = chronicle === null; const personCardGone = personCard === null;
-  useEffect(() => {
-    if ((topModal(ui) === "decision" && famineGone) || (topModal(ui) === "petition" && petitionGone) || (topModal(ui) === "chronicle" && chronicleGone)
-      || (topModal(ui) === "person_card" && personCardGone)) sendUi({ type: "pop_modal" });
-  }, [ui, famineGone, petitionGone, chronicleGone, personCardGone, sendUi]);
   // UX-3R2 zone toolbar: the brush and the polygon paint the last kind chosen (the first open kind before any); the
   // redo list belongs to one painting session (cleared when the zone tool goes down).
   const [lastZoneKind, setLastZoneKind] = useState<ZoneKind | null>(null);
@@ -636,28 +534,10 @@ export function App() {
           />
         </aside>
       </div>
-      {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto}
-        onAutoChange={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
-        onResume={() => sendUi({ type: "pop_modal" })}
-        onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) setMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
-      {famineView === null ? null : <FamineDecisionModal view={famineView} onLater={() => sendUi({ type: "pop_modal" })} steward={steward} onPerson={openPerson}
-        onChoose={choice => { dispatch({ type: "famine_response", choice }); sendUi({ type: "pop_modal" }); }} />}
-      {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })} onPerson={openPerson}
-        petitioners={petitionerRows(state, state.politics?.petitions.find(petition => petition.id === petitionView.petitionId) ?? {})}
-        onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
-      {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
-        onNextChapter={() => { sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "chapter_preview" }); }}
-        onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} />}
-      {topModal(ui) === "person_card" && personCard !== null ? <PersonCardModal view={personCard} onClose={() => sendUi({ type: "pop_modal" })}
-        onBiography={id => { setChroniclePersonId(id); sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "history" }); }} /> : null}
-      {topModal(ui) === "history" ? <ChronicleScreen state={state} initialPersonId={chroniclePersonId} onClose={() => { setChroniclePersonId(null); sendUi({ type: "pop_modal" }); }}
-        onLookAt={tile => { sendUi({ type: "pop_modal" }); platformServices().input.emit({ kind: "lookAt", tile }); }} /> : null}
-      {topModal(ui) === "chapter_preview" ? <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} /> : null}
-      {topModal(ui) === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
-        settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
-          <PresentationToggle preference="eventPause" /><PresentationToggle preference="rainOverlay" />
-          <Button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
-            onPress={() => { setLedgerAuto(!ledgerAuto); setSeasonLedgerAuto(!ledgerAuto); }} variant="toggle">{ledgerAuto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button></>} /> : null}
+      {/* CODE-1c: the modal screens (ui/screens/AppModals), reading the game themselves while one is up. */}
+      <AppModals ui={ui} sendUi={sendUi} personCardId={personCardId} chroniclePersonId={chroniclePersonId} onChroniclePerson={setChroniclePersonId}
+        steward={steward} onPerson={openPerson} ledgerAuto={ledgerAuto} onLedgerAuto={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
+        onMenuRequest={setMenuRequest} tutorial={tutorial} />
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
         <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment
@@ -672,103 +552,4 @@ export function App() {
       /> : null}
     </main>
   );
-}
-
-function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame, onChooseMode, tutorialEnabled, onTutorialChange }: {
-  readonly tutorialEnabled: boolean;
-  readonly onTutorialChange: (enabled: boolean) => void;
-  readonly onDismiss: () => void;
-  readonly continueLine: string | null;
-  readonly archiveNotice: string | null;
-  readonly onContinue: () => void;
-  readonly onNewGame: (scenarioId: string) => void;
-  readonly onChooseMode: (scenarioId: string) => void;
-}) {
-  const [confirmingNewGame, setConfirmingNewGame] = useState(false);
-  const dialogRef = useRef<HTMLElement | null>(null);
-  useEffect(() => {
-    dialogRef.current?.focus();
-  }, []);
-
-  const consumeDismissal = (event: MouseEvent | PointerEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-    // With a saved city on offer the player must choose explicitly; a stray click must not start over.
-    if (continueLine === null) onDismiss();
-  };
-  const containKeyboard = (event: ReactKeyboardEvent) => {
-    event.stopPropagation();
-  };
-
-  return (
-    <div
-      className="welcome-dismiss-layer title-screen"
-      data-screen={confirmingNewGame ? "mode" : "title"}
-      style={{ backgroundImage: `url("${wave8Url(confirmingNewGame ? "keyart_mode_select" : "keyart_title_bg")}")` }}
-      onPointerDown={consumeDismissal}
-      onClick={consumeDismissal}
-      onKeyDown={containKeyboard}
-    >
-      {/* UI-3: the title keyart behind the welcome, the emblem above it; choosing a new game over a save shows the mode backdrop. */}
-      <span className="title-emblem" aria-hidden="true" style={wave8ImageStyle("keyart_title_emblem", 176)} />
-      <section
-        ref={dialogRef}
-        className="welcome-parchment"
-        role="dialog"
-        aria-modal="true"
-        aria-label={KO_UI.openingGuidance}
-        tabIndex={-1}
-      >
-        <h2>{TITLE_COPY.heading}</h2>
-        <p>{TITLE_COPY.howTo}</p>
-        <p>{TITLE_COPY.camera}</p>
-        <TutorialToggle enabled={tutorialEnabled} onChange={onTutorialChange} />
-        {continueLine === null ? <>
-          <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId)} />
-          <p className="welcome-dismiss">{TITLE_COPY.dismiss}</p>
-        </> : (
-          <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
-            <p>{continueLine}</p>
-            <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => onContinue()} variant="primary">
-              {SAVE_COPY.continueGame}
-            </Button>
-            {confirmingNewGame ? <>
-              <p role="status">{archiveNotice}</p>
-              <ScenarioModeButtons onChoose={onNewGame} />
-              <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => setConfirmingNewGame(false)} variant="secondary">
-                {SAVE_COPY.cancel}
-              </Button>
-            </> : (
-              <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => setConfirmingNewGame(true)} variant="secondary">
-                {SAVE_COPY.newGame}
-              </Button>
-            )}
-          </div>
-        )}
-      </section>
-    </div>
-  );
-}
-
-/** New-game mode choice (B2): one button per registered scenario, in registration order. */
-function ScenarioModeButtons({ onChoose }: {
-  readonly onChoose: (scenarioId: string) => void;
-}) {
-  return <div className="welcome-modes" role="group" aria-label={SCENARIO_COPY.modePrompt}>
-    {CORE_SCENARIOS.map(scenario => <div key={scenario.id}>
-      <Button className="autoplay-toggle save-control-button" type="button"
-        data-scenario={scenario.id} isolate onPress={() => onChoose(scenario.id)} variant="primary">
-        {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}
-      </Button>
-      <p className="welcome-mode-line">{TUTORIAL_COPY.modeLines[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}</p>
-    </div>)}
-  </div>;
-}
-
-function readWelcomeDismissed(): boolean {
-  return platformServices().preferences.get(WELCOME_DISMISSED_KEY) === "1";
-}
-
-function writeWelcomeDismissed(): void {
-  platformServices().preferences.set(WELCOME_DISMISSED_KEY, "1");
 }

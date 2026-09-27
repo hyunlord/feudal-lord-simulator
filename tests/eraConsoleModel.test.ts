@@ -286,8 +286,11 @@ test("era console source uses presentation-only draft state and Escape without s
   assert.doesNotMatch(appSource, /palisadeDraft:\s*state/);
   assert.match(runtimeSource, /palisadeDraftRef/);
   assert.match(appSource, /applyPalisadeIntent/);
-  // Esc reaches the app shell as the `cancel` input intent (B9, src/input/mouseKeyboardTranslator.ts).
-  assert.match(appSource, /case "cancel":/);
+  // Esc reaches the app shell as the `cancel` input intent (B9, src/input/mouseKeyboardTranslator.ts), handled in the
+  // app's intents (CODE-1c: src/input/useAppIntents.ts), which apply it to the draft.
+  const intents = await readFile(new URL("../src/input/useAppIntents.ts", import.meta.url), "utf8");
+  assert.match(intents, /case "cancel":/);
+  assert.match(intents, /applyPalisadeIntent\(\{ state: gameStateRef\.current, draft: current, intent: \{ type: "cancel" \} \}\)/);
 });
 
 test("hamlet keeps proposal failure details even when all requirements hide the proposal", () => {

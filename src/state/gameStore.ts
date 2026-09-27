@@ -49,6 +49,7 @@ import type {
 } from "./gameStore.types";
 import { decisionSaveReason } from "../save/autosavePolicy";
 import { SaveSystemContext, useSaveSystem } from "./saveSystem";
+import { createUiChannel } from "./uiChannel";
 import {
   browserAnimationFrameScheduler,
   createFixedTickLoop,
@@ -197,35 +198,21 @@ export function GameProvider({ children }: GameProviderProps) {
   // The state the store starts from (scripts/sceneInjection.mjs replaces this call to start a scene).
   const [initialState] = useState(DEFAULT_GAME_STATE);
   const stateRef = useRef(initialState);
-  const uiStateRef = useRef(initialState);
   const previousRenderStateRef = useRef<PreviousRenderState>(initialState);
   const loopRef = useRef<FixedTickLoop | null>(null);
   const speedRef = useRef<GameSpeed>(0);
   const listenersRef = useRef(new Set<Listener>());
-  const uiListenersRef = useRef(new Set<Listener>());
-  const uiTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const uiPublishedAtRef = useRef(Number.NEGATIVE_INFINITY);
+  const [ui] = useState(() => createUiChannel({ initial: initialState, read: () => stateRef.current, intervalMs: UI_REFRESH_MS,
+    now: () => performance.now(), setTimer: (run, delayMs) => setTimeout(run, delayMs), clearTimer: timer => clearTimeout(timer as ReturnType<typeof setTimeout>) }));
   const requestSaveRef = useRef<((reason: import("../save/autosavePolicy").SaveReason) => void) | null>(null);
   const newSessionRef = useRef<(() => void) | null>(null);
 
-  const publishUi = useCallback(() => {
-    if (uiTimerRef.current !== null) { clearTimeout(uiTimerRef.current); uiTimerRef.current = null; }
-    uiPublishedAtRef.current = performance.now();
-    if (uiStateRef.current === stateRef.current) return;
-    uiStateRef.current = stateRef.current;
-    for (const listener of [...uiListenersRef.current]) listener();
-  }, []);
-  // A committed tick reaches the UI at most every UI_REFRESH_MS, and the last one always does (a trailing timer).
-  const publishUiThrottled = useCallback(() => {
-    const wait = uiPublishedAtRef.current + UI_REFRESH_MS - performance.now();
-    if (wait <= 0) { publishUi(); return; }
-    if (uiTimerRef.current === null) uiTimerRef.current = setTimeout(publishUi, wait);
-  }, [publishUi]);
+  // A committed tick reaches the UI at most every UI_REFRESH_MS (the last one always does); an action at once.
   const notify = useCallback((simulation: boolean) => {
     for (const listener of [...listenersRef.current]) listener();
-    if (simulation) publishUiThrottled(); else publishUi();
-  }, [publishUi, publishUiThrottled]);
-  useEffect(() => () => { if (uiTimerRef.current !== null) clearTimeout(uiTimerRef.current); }, []);
+    if (simulation) ui.publishThrottled(); else ui.publish();
+  }, [ui]);
+  useEffect(() => () => ui.dispose(), [ui]);
 
   const setSpeedNow = useCallback((nextSpeed: GameSpeed) => {
     if (speedRef.current === nextSpeed) return;
@@ -289,12 +276,12 @@ export function GameProvider({ children }: GameProviderProps) {
     getPreviousRenderState: () => previousRenderStateRef.current,
     getSpeed: () => speedRef.current,
     subscribe: (listener) => { listenersRef.current.add(listener); return () => { listenersRef.current.delete(listener); }; },
-    getUiState: () => uiStateRef.current,
-    subscribeUi: (listener) => { uiListenersRef.current.add(listener); return () => { uiListenersRef.current.delete(listener); }; },
+    getUiState: ui.getState,
+    subscribeUi: ui.subscribe,
     interpolationAlpha: () => loopRef.current?.interpolationAlpha() ?? 1,
     dispatch,
     setSpeed,
-  }), [dispatch, setSpeed]);
+  }), [dispatch, setSpeed, ui]);
   return createElement(GameStoreContext.Provider, { value: api },
     createElement(SaveSystemContext.Provider, { value: saveSystem.value }, createElement(Fragment, { key: sessionKey }, children)));
 }

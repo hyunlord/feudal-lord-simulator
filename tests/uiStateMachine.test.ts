@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { escapeOnce, hudVisibility, INITIAL_UI_STATE, panelSlot, reduceUi, timeStopped, topModal, type UiEvent, type UiState } from "../src/ui/uiStateMachine";
+import { escapeOnce, hudVisibility, INITIAL_UI_STATE, panelSlot, reduceUi, timeStopped, topModal, type UiEvent, type UiState } from "../src/ui/stateMachine/uiStateMachine";
 
 const run = (events: readonly UiEvent[], from: UiState = INITIAL_UI_STATE) => events.reduce(reduceUi, from);
 

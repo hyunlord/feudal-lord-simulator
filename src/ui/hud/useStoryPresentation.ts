@@ -4,7 +4,7 @@ import type { GameState } from "../../engine/engine.types";
 import { chapterEnd, famineStatus, openPetitions } from "../../engine/politics";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
-import type { UiModal } from "../uiStateMachine";
+import type { UiModal } from "../stateMachine/uiStateMachine";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
 // it by then: the burning roof, the blighted fields, the petitioners at the gate) and stays until dismissed or a

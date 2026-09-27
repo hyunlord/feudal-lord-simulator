@@ -17,7 +17,7 @@ import {
   biographyView, chronicleItems, chroniclePeople, decisionCompare, DEFAULT_CHRONICLE_FILTER, itemIndexAt, recordCard, seasonWindow,
   snapshotFor, SEASON_WINDOW, timelineMarkers, timelineSegments, timelineTickAt, timelineX, type ChronicleFilter,
 } from "../src/ui/chronicle/chronicleScreenModel";
-import { reduceUi, INITIAL_UI_STATE, timeStopped, topModal } from "../src/ui/uiStateMachine";
+import { reduceUi, INITIAL_UI_STATE, timeStopped, topModal } from "../src/ui/stateMachine/uiStateMachine";
 import { createMouseKeyboardTranslator } from "../src/input/mouseKeyboardTranslator";
 import type { InputIntent } from "../src/input/inputIntent";
 

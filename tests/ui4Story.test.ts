@@ -7,7 +7,7 @@ import { storyBeats } from "../src/ui/eventStory";
 import { famineDecisionView, petitionDecisionView } from "../src/ui/decisionModels";
 import { chronicleIllustration } from "../src/ui/chronicleModel";
 import { forecastMarks } from "../src/ui/seasonStrip";
-import { INITIAL_UI_STATE, reduceUi, timeStopped, topModal } from "../src/ui/uiStateMachine";
+import { INITIAL_UI_STATE, reduceUi, timeStopped, topModal } from "../src/ui/stateMachine/uiStateMachine";
 
 // UI-4: the story beats read from the engine's state, the decisions' predictions, the modal round trip.
 const house = DEFAULT_GAME_STATE.buildings.find(building => building.kind === "house")!;

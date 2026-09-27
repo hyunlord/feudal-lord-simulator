@@ -19,7 +19,7 @@ import { Inspector } from "../src/ui/InspectorView";
 import { DiagnosticCard } from "../src/render/DiagnosticCard";
 import { houseDiagnosisModel } from "../src/ui/houseDiagnosisModel";
 import { PetitionModal } from "../src/ui/hud/StoryModals";
-import { INITIAL_UI_STATE, reduceUi, timeStopped, topModal } from "../src/ui/uiStateMachine";
+import { INITIAL_UI_STATE, reduceUi, timeStopped, topModal } from "../src/ui/stateMachine/uiStateMachine";
 import { WAVE14_IMAGES } from "../src/ui/wave14ArtManifest.generated";
 
 // UI-5 people on screen, on the v17 fixtures' towns (PERSON-0 persons): the rows, the card, the steward, the walker's
