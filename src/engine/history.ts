@@ -37,6 +37,7 @@ import { speculationSaleForecast, speculationSalePosted } from "./famineSale";
 import { housingLotCount } from "../population/housing";
 import type { SourceRef } from "../contracts";
 import type { Person } from "./persons.types";
+import { lordshipOf } from "./lordshipState";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const TOWN: ActorRef = { type: "town", id: "town" };
@@ -127,7 +128,9 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
   }
   if (kind === "petition_response") {
     const chosen = String(command.response) as PetitionResponse;
-    const outcome = PETITION_DEFS[0]!.outcomes[chosen];
+    // FAIL-3 (FL-6): the petition's own terms (a restoration costs the treasury its fee).
+    const defId = before.politics?.petitions.find(petition => petition.id === command.petitionId)?.defId;
+    const outcome = (PETITION_DEFS.find(def => def.id === defId) ?? PETITION_DEFS[0]!).outcomes[chosen];
     return { chosen, alternatives: (["accept", "accept_with_price", "refuse"] as const).filter(option => option !== chosen),
       predicted: { treasury: now.treasury! + outcome.charterFee, merchantGauge: Math.max(0, Math.min(100, now.merchantGauge! + outcome.gauge)) }, actualDueTick: due };
   }
@@ -379,6 +382,29 @@ export function compactHistory(history: HistoryState, tick: number): HistoryStat
   return { ...history, records, snapshots };
 }
 
+/**
+ * FAIL-3 (FL-5, FL-7, FL-8): the lordship's turns — a decline begun (a right lost, the title demoted) or ended, a house
+ * withdrawn and the new one, and a new chapter begun.
+ */
+function lordshipDrafts(before: GameState, after: GameState): Draft[] {
+  const drafts: Draft[] = [];
+  const was = lordshipOf(before), now = lordshipOf(after);
+  if (now.house.order > was.house.order) {
+    drafts.push({ tick: after.tick, kind: "milestone", template: "house.withdrew", params: { name: was.house.name, order: was.house.order }, subject: TOWN, severity: 3 });
+    drafts.push({ tick: after.tick, kind: "milestone", template: "house.arrived", params: { name: now.house.name, order: now.house.order }, subject: TOWN, severity: 2 });
+  } else if (now.decline !== null && was.decline === null) {
+    drafts.push({ tick: after.tick, kind: "milestone", template: "decline.entered",
+      params: { cause: now.decline.cause, right: now.decline.lost ?? "none", by: now.decline.by }, subject: TOWN, severity: 3 });
+  } else if (now.decline === null && was.decline !== null) {
+    drafts.push({ tick: after.tick, kind: "milestone", template: "decline.recovered", params: { right: was.decline.lost ?? "none" }, subject: TOWN, severity: 2 });
+  }
+  const chapter = after.politics?.chapter.number ?? 1;
+  if (chapter > (before.politics?.chapter.number ?? 1)) {
+    drafts.push({ tick: after.tick, kind: "milestone", template: "milestone.chapter_start", params: { chapter }, subject: TOWN, severity: 2 });
+  }
+  return drafts;
+}
+
 /** One tick of the ledger: `before` is the state the tick started from. */
 export function advanceHistory(before: GameState, after: GameState): GameState {
   let history = historyOf(after);
@@ -393,6 +419,7 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
     drafts.push({ tick: after.tick, kind: "milestone", template: "milestone.chapter_end", params: { chapter: end.chapter }, subject: TOWN, severity: 3,
       thumbnail: { state: after, size: 256 } });
   }
+  drafts.push(...lordshipDrafts(before, after));
   drafts.push(...personDrafts(before, after));
   let milestones = history.milestones;
   if (after.tick % PRESSURE_BALANCE.sampleTicks === 0) {

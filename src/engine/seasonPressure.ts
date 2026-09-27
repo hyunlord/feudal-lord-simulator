@@ -25,6 +25,7 @@ import { foodReserveTicks, seasonalFoodReserveShort } from "../population/foodRe
 import { householdShortOfFood } from "../population/housePressure";
 import { houseIsStarving } from "../population/houseFood";
 import { withHouseholdMembers } from "../population/householdMembers";
+import { lordshipOf } from "./lordshipState";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { advanceHistoricalEras, calendar, scenarioOf } from "./scenarioState";
@@ -33,6 +34,7 @@ import {
   SEASON_STOCK_KEYS,
   type FoodNeeds,
   type NextObjectiveHint,
+  type SeasonLordshipLine,
   type SeasonEvent,
   type SeasonLedger,
   type SeasonState,
@@ -141,6 +143,22 @@ function closedEvents(tally: SeasonTally): SeasonEvent[] {
   return events;
 }
 
+/**
+ * FAIL-3 (FL-5, FL-7): a decline begun or a house changed in the season. The ladder steps at a season's start after the
+ * season has closed in the same tick, so its changes belong to the season that starts there: [startTick, endTick).
+ */
+function lordshipLine(state: GameState, startTick: number): Pick<SeasonLedger, "lordship"> {
+  const lordship = lordshipOf(state);
+  const inSeason = (tick: number) => tick >= startTick && tick < state.tick;
+  const decline = lordship.decline;
+  const past = lordship.pastHouses.at(-1);
+  const line: SeasonLordshipLine = {
+    ...(decline !== null && inSeason(decline.since) ? { declined: { cause: decline.cause, right: decline.lost, by: decline.by } } : {}),
+    ...(past?.until !== undefined && inSeason(past.until) ? { houseChanged: { withdrew: past.name, arrived: lordship.house.name } } : {}),
+  };
+  return line.declined === undefined && line.houseChanged === undefined ? {} : { lordship: line };
+}
+
 function hintOf(state: GameState): Pick<SeasonLedger, "nextObjectiveHint" | "foodNeeds"> {
   const hint = nextObjectiveHint(state);
   return hint === "food_reserve" || hint === "harvest_reserve" ? { nextObjectiveHint: hint, foodNeeds: foodNeeds(state) } : { nextObjectiveHint: hint };
@@ -159,6 +177,7 @@ function closeSeason(state: GameState, seasons: SeasonState): SeasonState {
     popDelta: state.population - tally.population,
     notableEvents: closedEvents(tally),
     ...hintOf(state),
+    ...lordshipLine(state, tally.startTick),
   };
   const history = [...seasons.history, ledger].slice(-PRESSURE_BALANCE.seasonLedgerHistory);
   return { ...seasons, current: openTally(state, state.tick), history };

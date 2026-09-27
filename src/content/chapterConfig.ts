@@ -30,8 +30,8 @@ export const FAMINE_RESPONSE_CONFIG = {
   speculationDepartureCap: 3,
 } as const;
 
-/** FC-3: petitioners (the gauge starts at 50 of 100). */
-export type Petitioner = "merchants";
+/** FC-3: petitioners (the gauge starts at 50 of 100). FAIL-3 (FL-6): the overlord asks too, to hand back a right he holds. */
+export type Petitioner = "merchants" | "overlord";
 export const MERCHANT_GAUGE_START = 50;
 
 export type PetitionResponse = "accept" | "refuse" | "accept_with_price";
@@ -62,9 +62,13 @@ export interface PetitionDef {
   readonly requiresLots: number;
   readonly outcomes: Readonly<Record<PetitionResponse, PetitionOutcome>>;
   readonly expiredGauge: number;
+  /** FAIL-3 (FL-6): how it arrives — by the calendar (FC-3, absent) or when a decline's cause has cleared (`lordship.ts`). */
+  readonly trigger?: "calendar" | "decline_recovered";
 }
 
 export const MARKET_CHARTER_PETITION_ID = "market_charter";
+/** FAIL-3 (FL-6): the holder of a right the lord lost offers it back once the decline's cause has cleared. */
+export const RESTORE_RIGHT_PETITION_ID = "restore_right";
 export const MARKET_CHARTER_RIGHT_ID = "market_charter";
 
 export const PETITION_DEFS: readonly PetitionDef[] = [
@@ -80,9 +84,31 @@ export const PETITION_DEFS: readonly PetitionDef[] = [
     },
     expiredGauge: -10,
   },
+  {
+    // FAIL-3 (FL-6): renegotiation. The lord buys the right back (100d, the title with it) or haggles (50d, the title a
+    // year later) or refuses (the petition comes again a year later). `charterFee` is what the treasury pays out.
+    id: RESTORE_RIGHT_PETITION_ID, petitioner: "merchants", demand: "restore_right", fromYear: 1300, toYear: 1450, requiresLots: 0,
+    trigger: "decline_recovered",
+    outcomes: {
+      accept: { right: null, stallFeePermille: 1000, charterFee: -100, gauge: 10 },
+      accept_with_price: { right: null, stallFeePermille: 1000, charterFee: -50, gauge: 0 },
+      refuse: { right: null, stallFeePermille: 1000, charterFee: 0, gauge: -10 },
+    },
+    expiredGauge: 0,
+  },
 ];
 
 /** FC-5: chapter 1 ends with a market town that came through the famine with this share of its people. */
+/** FAIL-3 (FL-9): the campaign's chapters; its victory is the last one's end. */
+export const CAMPAIGN_CHAPTERS = 5;
+
+/** FAIL-3 (FL-8): chapter 2 of the campaign, the same town from the end of chapter 1 (counted from 1318 at the earliest). */
+export const CHAPTER_TWO = {
+  chapter: 2,
+  fromYear: 1318,
+  toYear: 1347,
+} as const;
+
 export const CHAPTER_ONE = {
   chapter: 1,
   fromYear: 1300,

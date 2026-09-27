@@ -17,6 +17,8 @@ export const LEDGER_CATEGORIES = [
   "toll", "stall_fee", "rent", "mill_toll", "demesne_sale", "project",
   // F0-C1 (FC-2, FC-3): famine relief bought, granary grain sold in the famine, a charter's price.
   "famine_relief", "famine_sale", "charter_fee",
+  // FAIL-3 (FL-6, FL-7): a lost right bought back; the treasury share a withdrawing house takes with it.
+  "restoration_fee", "house_change",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

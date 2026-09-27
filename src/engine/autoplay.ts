@@ -1,3 +1,6 @@
+import { MONEY_BALANCE } from "../content/balanceConfig";
+import { LORDSHIP_BALANCE } from "../content/lordshipConfig";
+import { arrearsPeriods, derelictPermille } from "./lordship";
 import { autoplayCanPlace, clearZoneExclusions, excludeZoneRefusal, zoneRefusesAction } from "./autoplayZones";
 import { zoneRuleActive } from "../zones/zonePlacement";
 import { zoneFillAction } from "../zones/zoneFillAgent";
@@ -61,6 +64,11 @@ export interface AutoplayPolicy {
   /** F0-C1 (FC-6): the bot's famine answer (relief unless a gate variant says otherwise) and petition answer (accept). */
   readonly famineResponse?: import("../content/chapterConfig").FamineResponseChoice;
   readonly petitionResponse?: import("../content/chapterConfig").PetitionResponse;
+  /**
+   * FAIL-3 gate (FL-12): the naive variant ignores its debts — it builds upkeep facilities in arrears, puts homes before
+   * food in a derelict town and never buys a lost right back.
+   */
+  readonly naiveUpkeep?: boolean;
 }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
@@ -324,6 +332,12 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     recordBotRecovery(diagnostic, "interior_plots", [], action, "refused");
     return false;
   };
+  // FAIL-3 (FL-11): in arrears over two periods no new facility that owes upkeep; with a fifth of the houses derelict,
+  // food before homes. The naive variant (FL-12) does neither.
+  const careful = policy.naiveUpkeep !== true;
+  const upkeepHeld = careful && arrearsPeriods(state) >= LORDSHIP_BALANCE.botArrearsPeriods;
+  const homesHeld = careful && (derelictPermille(state) ?? 0) >= LORDSHIP_BALANCE.botDerelictPermille;
+  const keepsDebts = (action: AutoplayAction): boolean => !upkeepHeld || action.kind !== "place_building" || !(action.building in MONEY_BALANCE.upkeep);
   // F0-A (FP-6): the autumn winter-reserve check, before the ordinary food step; the naive variant has none.
   const winterReserve = (current: GameState): AutoplayAction => policy.naiveReserve === true ? NONE : winterReserveAction(current, buildAction);
   // F0-B (EV-7): the unprepared variant digs no wells.
@@ -333,16 +347,16 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve, barnMill,
       (current: GameState) => foodAction(current, buildAction, diagnostic), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
-      (current: GameState) => housingAction(current, policy)]) {
+      (current: GameState): AutoplayAction => homesHeld ? NONE : housingAction(current, policy)]) {
       const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
       if (action.foodTransient !== undefined) metadata = action;
-      if (action.kind !== "none" && keepsSites(action)) return carryFoodTransient(action, metadata);
+      if (action.kind !== "none" && keepsSites(action) && keepsDebts(action)) return carryFoodTransient(action, metadata);
     }
     return carryFoodTransient(NONE, metadata);
   }
   const eraPhase = () => autoplayEraAction(state, buildAction, policy.maxHousingLots);
   const servicePhase = () => serviceDecision(state);
-  const housingPhase = () => housingAction(state, policy);
+  const housingPhase = (): AutoplayAction => homesHeld ? NONE : housingAction(state, policy);
   for (const decide of [
     () => water(state),
     () => roadAccessAction(state),
@@ -368,14 +382,14 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     const wide = decide === eraPhase || decide === servicePhase || (decide === housingPhase && state.palisade !== null);
     const action = runAutoplaySearchPhase(decide, wide ? ERA_PHASE_SEARCH_WORK : undefined);
     if (action.foodTransient !== undefined) metadata = action;
-    if (action.kind !== "none" && keepsSites(action)) return carryFoodTransient(action, metadata);
+    if (action.kind !== "none" && keepsSites(action) && keepsDebts(action)) return carryFoodTransient(action, metadata);
   }
   return carryFoodTransient(NONE, metadata);
 }
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AdvisorAction {
   // F0-C1 (FC-6): the famine and the petition are answered as soon as they come.
-  const answer = chapterDecisionAction(state, policy.famineResponse ?? "relief", policy.petitionResponse ?? "accept");
+  const answer = chapterDecisionAction(state, policy.famineResponse ?? "relief", policy.petitionResponse ?? "accept", policy.naiveUpkeep === true ? "refuse" : "pay");
   if (answer !== null) return answer;
   // F0-B (EV-7): a burnt house is rebuilt first (its household waits in the ruin).
   const rebuild = rebuildBurntHouseAction(state);

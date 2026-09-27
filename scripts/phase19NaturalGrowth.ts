@@ -123,12 +123,13 @@ export function runPhase19NaturalGrowth(options: {
     maximumLots = Math.max(maximumLots, current.lots);
     if (targetReachedTick === null && current.lots >= targetLots) { targetReachedTick = state.tick; record("target-reached"); }
     eligibleStreak = prosperityEligible(state) ? eligibleStreak + 1 : 0;
-    if (victoryTick === null && state.settlement?.outcome === "victory") {
+    // FAIL-3 (FL-9): the victory tick is the prosperity milestone (the campaign's own victory is chapter 5's end).
+    if (victoryTick === null && (state.settlement?.milestones.prosperity ?? null) !== null) {
       victoryTick = state.tick; victoryEligibleTicks = eligibleStreak; record("victory");
       if (eligibleStreak < SETTLEMENT_CONFIG.prosperityHoldTicks) failures.push("Premature victory");
     }
     stability.observe({ tick: state.tick, lots: current.lots,
-      victory: state.settlement?.outcome === "victory", fullService: fullServicePopulation(state) });
+      victory: (state.settlement?.milestones.prosperity ?? null) !== null, fullService: fullServicePopulation(state) });
     const window = stability.report();
     options.onTick?.(state, window.stableSince);
     if (window.stableSince !== null) {
