@@ -38,7 +38,7 @@ export function FactionTab({ rows, world, onOpen }: {
             const face = row.leader === null ? null : portraitStyle(row.leader.portraitId, FACE);
             return (
               <li key={row.id}>
-                <Button type="button" className="chronicle-factions-row" data-faction={row.id} data-relation={row.relation} aria-label={row.label}
+                <Button type="button" className="chronicle-factions-row" data-faction={row.id} data-relation={row.relation} data-memory={row.memory} aria-label={row.label}
                   onPress={() => onOpen(row.id)} variant="secondary">
                   <span className="chronicle-factions-emblem" aria-hidden="true"><EmblemImage emblem={row.emblem} size={EMBLEM} label="" /></span>
                   <span className="chronicle-factions-name"><strong>{row.name}</strong>{row.kind === row.name ? null : <span>{row.kind}</span>}</span>
