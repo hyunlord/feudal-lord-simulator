@@ -1,11 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-27(UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **TEST-1 seasonArt "held chunk raster" 시험 결정론 — 본선 병합**(Claude Code, 렌더 시계 인자·시험·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/test1/REPORT.md).
+  - 지면 청크 캐시에 시계를 주입하고(게임은 기본값 `performance.now`), 시험은 가짜 시계로 20·30·5 ms를 넘긴다. DGX가 바쁠 때 깨끗한 클론을 깨던 시험(MARKET-1 보고서, 두 번)이다.
+  - 30 ms 늦게 깨는 타이머로 본선 시험은 같은 실패(섞임 0 / 2), 이 시험은 통과. DGX 100회 연속 100/100. 깨끗한 클론은 다음 커밋에 적는다.
 
 - **UI-5 인물이 화면에 — 관문 ①~④ 통과, 본선 병합**(Claude Code, UI·렌더 카드·스타일·에셋 설치·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/ui5/REPORT.md), 결정 UI5-D1~D5.
   - **사람이 보인다:** 청원 카드의 청원자 2~3명(칩 → 인물 카드), 대기근 결정 모달의 청지기(걱정 표정·이름·조언), 집 카드·왼쪽 inspector의 식구(가구주 먼저, 다섯 넘으면 넷 + [식구 N명 모두 보기]), 워커 카드의 사람과 "목재를 방앗간 공사장으로 나르는 중 · 8/30", 청지기 말풍선의 이름.
