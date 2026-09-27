@@ -1,5 +1,5 @@
 {
- "url": "http://127.0.0.1:4300/",
+ "url": "http://127.0.0.1:4303/",
  "threshold": 24,
  "budgets": {
   "normal": [
@@ -46,7 +46,7 @@
   {
    "resolution": "1280x800",
    "state": "placement",
-   "percent": 5.6,
+   "percent": 5.7,
    "budget": 6,
    "pass": true
   },
@@ -60,7 +60,7 @@
   {
    "resolution": "1280x800",
    "state": "selection",
-   "percent": 16.4,
+   "percent": 17.1,
    "budget": 18,
    "pass": true
   },
@@ -104,7 +104,7 @@
   {
    "resolution": "1920x1080",
    "state": "placement",
-   "percent": 2.9,
+   "percent": 3,
    "budget": 6,
    "pass": true
   },
@@ -118,7 +118,7 @@
   {
    "resolution": "1920x1080",
    "state": "selection",
-   "percent": 8.3,
+   "percent": 8.6,
    "budget": 18,
    "pass": true
   },
@@ -155,7 +155,7 @@
   {
    "resolution": "tablet-1180x820",
    "state": "build",
-   "percent": 17.8,
+   "percent": 17.9,
    "budget": 20,
    "pass": true
   },
@@ -169,14 +169,14 @@
   {
    "resolution": "tablet-1180x820",
    "state": "ledger",
-   "percent": 19.5,
+   "percent": 19.6,
    "budget": 30,
    "pass": true
   },
   {
    "resolution": "tablet-1180x820",
    "state": "selection",
-   "percent": 17.4,
+   "percent": 18.2,
    "budget": 24,
    "pass": true
   },
@@ -198,7 +198,7 @@
   {
    "resolution": "tablet-1180x820",
    "state": "zone",
-   "percent": 7.9,
+   "percent": 8,
    "view": "armed",
    "budget": 12,
    "pass": true

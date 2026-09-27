@@ -1,5 +1,5 @@
 {
- "url": "http://127.0.0.1:4350/",
+ "url": "http://127.0.0.1:4353/",
  "viewport": {
   "width": 1280,
   "height": 800
@@ -8,13 +8,13 @@
  "allSteps": true,
  "locksMatch": true,
  "presses": 22,
- "seconds": 31,
+ "seconds": 36,
  "rows": [
   {
    "step": "greet",
    "locksMatch": true,
    "file": "01-greet.jpg",
-   "atSeconds": 2.3,
+   "atSeconds": 2.5,
    "card": "영지를 둘러보세요 | 시작하기",
    "categories": [
     "living:open",
@@ -39,7 +39,7 @@
    "step": "arable",
    "locksMatch": true,
    "file": "02-arable.jpg",
-   "atSeconds": 3.6,
+   "atSeconds": 4.2,
    "card": "식량 기반: 경작지 | 0/8 | 경작지 칠하기",
    "categories": [
     "living:open",
@@ -65,7 +65,7 @@
    "step": "arable_limits",
    "locksMatch": true,
    "file": "03-arable_limits.jpg",
-   "atSeconds": 5.8,
+   "atSeconds": 6.6,
    "card": "칠할 수 없는 땅 알아보기 | 알겠습니다",
    "categories": [
     "living:open",
@@ -90,7 +90,7 @@
    "step": "food_chain",
    "locksMatch": true,
    "file": "04-food_chain.jpg",
-   "atSeconds": 7.1,
+   "atSeconds": 8,
    "card": "헛간과 방앗간 짓기 | 0/2 | 헛간 놓기",
    "categories": [
     "living:open",
@@ -118,7 +118,7 @@
    "step": "well",
    "locksMatch": true,
    "file": "05-well.jpg",
-   "atSeconds": 11.5,
+   "atSeconds": 13.4,
    "card": "집 가까이에 우물 설치 | 0/1 | 우물 놓기",
    "categories": [
     "living:open",
@@ -144,7 +144,7 @@
    "step": "well_done",
    "locksMatch": true,
    "file": "06-well_done.jpg",
-   "atSeconds": 14.6,
+   "atSeconds": 17.3,
    "card": "결과를 먼저 보고 놓기 | 계속",
    "categories": [
     "living:open",
@@ -169,7 +169,7 @@
    "step": "road",
    "locksMatch": true,
    "file": "07-road.jpg",
-   "atSeconds": 15.9,
+   "atSeconds": 18.7,
    "card": "길 한 칸 내기 | 0/1 | 길 놓기",
    "categories": [
     "living:open",
@@ -195,7 +195,7 @@
    "step": "house",
    "locksMatch": true,
    "file": "08-house.jpg",
-   "atSeconds": 18.3,
+   "atSeconds": 21.6,
    "card": "새 길가에 집 짓기 | 0/1 | 집 놓기",
    "categories": [
     "living:open",
@@ -221,7 +221,7 @@
    "step": "sawmill",
    "locksMatch": true,
    "file": "09-sawmill.jpg",
-   "atSeconds": 20.8,
+   "atSeconds": 25.3,
    "card": "제재소 짓기 | 0/1 | 제재소 놓기",
    "categories": [
     "living:open",
@@ -247,7 +247,7 @@
    "step": "zone_unlock",
    "locksMatch": true,
    "file": "10-zone_unlock.jpg",
-   "atSeconds": 23.9,
+   "atSeconds": 28.6,
    "card": "땅의 용도 정하기 | 구역 열기",
    "categories": [
     "living:open",
@@ -272,7 +272,7 @@
    "step": "burgage",
    "locksMatch": true,
    "file": "11-burgage.jpg",
-   "atSeconds": 25.2,
+   "atSeconds": 30,
    "card": "첫 필지 구역 칠하기 | 0/1 | 필지 칠하기",
    "categories": [
     "living:open",
@@ -298,8 +298,8 @@
    "step": "burgage_done",
    "locksMatch": true,
    "file": "12-burgage_done.jpg",
-   "atSeconds": 27.4,
-   "card": "필지 안에 집 두기 | 알겠습니다",
+   "atSeconds": 32.3,
+   "card": "필지에 사람이 모입니다 | 알겠습니다",
    "categories": [
     "living:open",
     "paths:open",
@@ -313,7 +313,7 @@
     "zone:open",
     "direction:locked"
    ],
-   "advisor": "이제 새 집은 필지 안에 두십시오. 직접 둔 건물은 그대로 보호됩니다. 길만 잘 이어 주십시오.",
+   "advisor": "굶는 집이 없으면 이주 가구가 빈 필지에 집을 짓습니다. 우물과 빵이 닿게 길을 이어 주십시오.",
    "pressesBefore": 20,
    "presses": [
     "알겠습니다"
@@ -323,7 +323,7 @@
    "step": "wrap_up",
    "locksMatch": true,
    "file": "13-wrap_up.jpg",
-   "atSeconds": 28.6,
+   "atSeconds": 33.9,
    "card": "다음: 예배당과 시장 도시 | 안내 마치기",
    "categories": [
     "living:open",
@@ -346,7 +346,7 @@
   }
  ],
  "state": {
-  "tick": 531,
+  "tick": 587,
   "speed": "1배속",
   "sites": [
    "well@48,42",
