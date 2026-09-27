@@ -1,0 +1,231 @@
+{
+  "source": "references/현재_평소화면.jpg",
+  "method": "Offline source-over composition, no repaint. Main image source pixel exact outside overlay alpha.",
+  "animalCount": 8,
+  "placements": [
+    {
+      "id": "clothesline_a",
+      "file": "assets/life_props/clothesline_a.png",
+      "anchor": [
+        571,
+        410
+      ],
+      "frame": 0,
+      "scale": 0.145,
+      "pivot": [
+        64,
+        124
+      ],
+      "animalCount": 0
+    },
+    {
+      "id": "clothesline_b",
+      "file": "assets/life_props/clothesline_b.png",
+      "anchor": [
+        684,
+        410
+      ],
+      "frame": 0,
+      "scale": 0.145,
+      "pivot": [
+        64,
+        124
+      ],
+      "animalCount": 0
+    },
+    {
+      "id": "child_hoop",
+      "file": "assets/life_props/child_hoop.png",
+      "anchor": [
+        598,
+        398
+      ],
+      "frame": 0,
+      "scale": 0.095,
+      "pivot": [
+        32,
+        60
+      ],
+      "animalCount": 0
+    },
+    {
+      "id": "child_ball",
+      "file": "assets/life_props/child_ball.png",
+      "anchor": [
+        603,
+        402
+      ],
+      "frame": 0,
+      "scale": 0.039,
+      "pivot": [
+        32,
+        60
+      ],
+      "animalCount": 0
+    },
+    {
+      "id": "child_wooden_sword",
+      "file": "assets/life_props/child_wooden_sword.png",
+      "anchor": [
+        609,
+        400
+      ],
+      "frame": 0,
+      "scale": 0.1,
+      "pivot": [
+        32,
+        60
+      ],
+      "animalCount": 0
+    },
+    {
+      "id": "doorstep_chair",
+      "file": "assets/life_props/doorstep_chair.png",
+      "anchor": [
+        630,
+        443
+      ],
+      "frame": 0,
+      "scale": 0.063,
+      "pivot": [
+        48,
+        92
+      ],
+      "animalCount": 0
+    },
+    {
+      "id": "doorstep_barrel",
+      "file": "assets/life_props/doorstep_barrel.png",
+      "anchor": [
+        718,
+        410
+      ],
+      "frame": 0,
+      "scale": 0.069,
+      "pivot": [
+        48,
+        92
+      ],
+      "animalCount": 0
+    },
+    {
+      "id": "well_bucket",
+      "file": "assets/life_props/well_bucket.png",
+      "anchor": [
+        644,
+        408
+      ],
+      "frame": 0,
+      "scale": 0.062,
+      "pivot": [
+        32,
+        60
+      ],
+      "animalCount": 0
+    },
+    {
+      "id": "chicken_flock_a",
+      "file": "assets/life_ground/chicken_flock_a.png",
+      "anchor": [
+        610,
+        456
+      ],
+      "frame": 0,
+      "scale": 0.04886843249051477,
+      "pivot": [
+        68,
+        100
+      ],
+      "animalCount": 2
+    },
+    {
+      "id": "cat_idle_a",
+      "file": "assets/life_ground/cat_idle_a.png",
+      "anchor": [
+        624,
+        411
+      ],
+      "frame": 0,
+      "scale": 0.09839676409189656,
+      "pivot": [
+        36,
+        68
+      ],
+      "animalCount": 1
+    },
+    {
+      "id": "village_dog_sleep",
+      "file": "assets/life_ground/village_dog_sleep.png",
+      "anchor": [
+        700,
+        420
+      ],
+      "frame": 0,
+      "scale": 0.06968825577851699,
+      "pivot": [
+        36,
+        68
+      ],
+      "animalCount": 1
+    },
+    {
+      "id": "crow_flight_sheet",
+      "file": "assets/life_birds/crow_flight_sheet.png",
+      "anchor": [
+        738,
+        361
+      ],
+      "frame": 0,
+      "scale": 0.10048149688426661,
+      "pivot": [
+        32,
+        38
+      ],
+      "animalCount": 1
+    },
+    {
+      "id": "pigeon_perched_a",
+      "file": "assets/life_birds/pigeon_perched_a.png",
+      "anchor": [
+        632,
+        419
+      ],
+      "frame": 0,
+      "scale": 0.03640510709207324,
+      "pivot": [
+        32,
+        58
+      ],
+      "animalCount": 1
+    },
+    {
+      "id": "reference_cattle_pair",
+      "file": "references/cattle_pair-v1.png",
+      "topLeft": [
+        499,
+        458
+      ],
+      "scale": 0.24,
+      "animalCount": 2
+    }
+  ],
+  "sourcePixelsChanged": 541,
+  "changedOutsideOverlayAlpha": 0,
+  "crop": {
+    "source": [
+      480,
+      310,
+      320,
+      180
+    ],
+    "scales": [
+      1,
+      0.6
+    ]
+  },
+  "verdict": "candidate_with_visibility_limit",
+  "limitations": [
+    "At accurate cattle scale, small species and toy details are not identifiable at zoom0.6. Native-size inspection inset is explicitly not world scale.",
+    "One fixed screenshot composite, not installed runtime, occlusion or animation verification."
+  ]
+}

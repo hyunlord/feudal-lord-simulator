@@ -1,0 +1,330 @@
+[
+  {
+    "id": "life_props/child_hoop",
+    "file": "assets/life_props/child_hoop.png",
+    "width": 64,
+    "height": 64,
+    "description": "굴렁쇠와 밀대",
+    "role": "object",
+    "blendMode": "normal",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": {
+      "x": 32,
+      "y": 60
+    },
+    "displayScale": 0.095,
+    "qa": {
+      "status": "candidate",
+      "native": "Target-size contact inspected; transparent isolated object, no people or ground slab.",
+      "world": "Cattle-scale world preview stays physically small; very small toy detail is not reliably identifiable at zoom 0.6."
+    },
+    "generationRecords": [
+      {
+        "id": "child_hoop",
+        "prompt": "Create ONE isolated transparent RGBA hand-painted game sprite: a medieval child's rolling hoop with its short pushing stick resting diagonally beside it. Southern England 1300–1450, bent pale ash wood hoop, chunky clearly visible ring thickness, hand-cut wooden stick. 2:1 dimetric orthographic view, no perspective, hoop stands slightly tilted, bottom contact at lower centre. Restrained gouache brushwork, muted honey oak and umber, soft upper-left light. Broad readable silhouette for 64x64 final sprite. Entire hoop and stick visible with transparent margin. No child, no people, no ground slab, no background, no lettering, no shadow except tiny contact AO. Genuine transparent background, not white or checkerboard.",
+        "rawFile": "raw/life_props/child_hoop.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Trim transparent margins, proportional one-step Lanczos downsample, pad RGBA to square; no repaint.",
+      "contentBox": {
+        "left": 4,
+        "top": 15,
+        "width": 56,
+        "height": 45
+      }
+    }
+  },
+  {
+    "id": "life_props/child_ball",
+    "file": "assets/life_props/child_ball.png",
+    "width": 64,
+    "height": 64,
+    "description": "꿰맨 가죽 공",
+    "role": "object",
+    "blendMode": "normal",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": {
+      "x": 32,
+      "y": 60
+    },
+    "displayScale": 0.039,
+    "qa": {
+      "status": "candidate",
+      "native": "Target-size contact inspected; transparent isolated object, no people or ground slab.",
+      "world": "Cattle-scale world preview stays physically small; very small toy detail is not reliably identifiable at zoom 0.6."
+    },
+    "generationRecords": [
+      {
+        "id": "child_ball",
+        "prompt": "Create ONE isolated transparent RGBA hand-painted game sprite: a single hand-stitched medieval leather ball, four broad warm tan leather panels, slightly uneven stuffed sphere, dark stitched seams. Ball alone, no hoop, no other props. Southern England 1300–1450. 2:1 dimetric orthographic view, camera from above, no perspective. Restrained gouache broad brushwork, muted earth tones, soft upper-left light, hand-painted historical city builder matching project screenshot. Readable strong silhouette at 64px final. Entire object with transparent margins, bottom contact at lower centre. No people, no terrain slab, no background, no lettering, no cast shadow except tiny contact AO. Genuine transparent background, not white or checkerboard.",
+        "rawFile": "raw/life_props/child_ball.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Trim transparent margins, proportional one-step Lanczos downsample, pad RGBA to square; no repaint.",
+      "contentBox": {
+        "left": 4,
+        "top": 4,
+        "width": 55,
+        "height": 56
+      }
+    }
+  },
+  {
+    "id": "life_props/child_wooden_sword",
+    "file": "assets/life_props/child_wooden_sword.png",
+    "width": 64,
+    "height": 64,
+    "description": "무딘 나무 장난감 칼",
+    "role": "object",
+    "blendMode": "normal",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": {
+      "x": 32,
+      "y": 60
+    },
+    "displayScale": 0.1,
+    "qa": {
+      "status": "candidate",
+      "native": "Target-size contact inspected; transparent isolated object, no people or ground slab.",
+      "world": "Cattle-scale world preview stays physically small; very small toy detail is not reliably identifiable at zoom 0.6."
+    },
+    "generationRecords": [
+      {
+        "id": "child_wooden_sword",
+        "prompt": "Create ONE isolated transparent RGBA hand-painted game sprite: one child's plain blunt wooden toy sword lying diagonally on ground plane, simple thick pale ash blade, short oak crossguard, rounded blunt tip, no metal or ornament. Southern England 1300–1450. 2:1 dimetric orthographic view, camera from above, no perspective. Restrained gouache broad brushwork, muted earth tones, soft upper-left light. Readable strong silhouette at 64px final. Entire object with transparent margins, bottom contact at lower centre. No people, no terrain slab, no background, no lettering, no cast shadow except tiny contact AO. Genuine transparent background, not white or checkerboard.",
+        "rawFile": "raw/life_props/child_wooden_sword.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Trim transparent margins, proportional one-step Lanczos downsample, pad RGBA to square; no repaint.",
+      "contentBox": {
+        "left": 4,
+        "top": 32,
+        "width": 56,
+        "height": 28
+      }
+    }
+  },
+  {
+    "id": "life_props/clothesline_a",
+    "file": "assets/life_props/clothesline_a.png",
+    "width": 128,
+    "height": 128,
+    "description": "린넨·적갈색 튜닉 빨래줄",
+    "role": "object",
+    "blendMode": "normal",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": {
+      "x": 64,
+      "y": 124
+    },
+    "displayScale": 0.145,
+    "qa": {
+      "status": "candidate",
+      "native": "Target-size contact inspected; transparent isolated object, no people or ground slab.",
+      "world": "Cattle-scale world preview stays physically small; very small toy detail is not reliably identifiable at zoom 0.6."
+    },
+    "generationRecords": [
+      {
+        "id": "clothesline_a",
+        "prompt": "Create ONE isolated transparent RGBA hand-painted game sprite: two weathered forked oak stakes supporting a slightly sagging hemp clothesline, three laundry pieces: broad undyed linen sheet, muted russet small tunic, cream hose, pegged with simple split wooden pegs. Complete stakes stand on ground, clothes suspended, no other objects. Southern England 1300–1450. 2:1 dimetric orthographic view, camera from above, no perspective. Restrained gouache broad brushwork, muted earth tones, soft upper-left light. Readable strong silhouette at 128px final. Entire object with transparent margins, bottom contact at lower centre. No people, no terrain slab, no background, no lettering, no cast shadow except tiny contact AO. Genuine transparent background, not white or checkerboard.",
+        "rawFile": "raw/life_props/clothesline_a.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Trim transparent margins, proportional one-step Lanczos downsample, pad RGBA to square; no repaint.",
+      "contentBox": {
+        "left": 4,
+        "top": 54,
+        "width": 120,
+        "height": 70
+      }
+    }
+  },
+  {
+    "id": "life_props/clothesline_b",
+    "file": "assets/life_props/clothesline_b.png",
+    "width": 128,
+    "height": 128,
+    "description": "청회색 속옷·수건 빨래줄",
+    "role": "object",
+    "blendMode": "normal",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": {
+      "x": 64,
+      "y": 124
+    },
+    "displayScale": 0.145,
+    "qa": {
+      "status": "candidate",
+      "native": "Target-size contact inspected; transparent isolated object, no people or ground slab.",
+      "world": "Cattle-scale world preview stays physically small; very small toy detail is not reliably identifiable at zoom 0.6."
+    },
+    "generationRecords": [
+      {
+        "id": "clothesline_b",
+        "prompt": "Create ONE isolated transparent RGBA hand-painted game sprite: two unequal rough oak poles with a taut low hemp line, laundry is a faded blue-grey long linen shift and two warm flax towels, arranged asymmetrically fluttering slightly. No modern clothespins, only split wooden pegs. No other objects. Southern England 1300–1450. 2:1 dimetric orthographic view, camera from above, no perspective. Restrained gouache broad brushwork, muted earth tones, soft upper-left light. Readable strong silhouette at 128px final. Entire object with transparent margins, bottom contact at lower centre. No people, no terrain slab, no background, no lettering, no cast shadow except tiny contact AO. Genuine transparent background, not white or checkerboard.",
+        "rawFile": "raw/life_props/clothesline_b.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Trim transparent margins, proportional one-step Lanczos downsample, pad RGBA to square; no repaint.",
+      "contentBox": {
+        "left": 4,
+        "top": 41,
+        "width": 120,
+        "height": 83
+      }
+    }
+  },
+  {
+    "id": "life_props/doorstep_chair",
+    "file": "assets/life_props/doorstep_chair.png",
+    "width": 96,
+    "height": 96,
+    "description": "문 앞 낮은 목제 의자",
+    "role": "object",
+    "blendMode": "normal",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": {
+      "x": 48,
+      "y": 92
+    },
+    "displayScale": 0.063,
+    "qa": {
+      "status": "candidate",
+      "native": "Target-size contact inspected; transparent isolated object, no people or ground slab.",
+      "world": "Cattle-scale world preview stays physically small; very small toy detail is not reliably identifiable at zoom 0.6."
+    },
+    "generationRecords": [
+      {
+        "id": "doorstep_chair",
+        "prompt": "Create ONE isolated transparent RGBA hand-painted game sprite: one humble medieval three-legged oak low chair with simple broad plank back and solid square wooden seat, front faces southwest, sturdy irregular hand-cut legs, no carving or upholstery. Southern England 1300–1450. 2:1 dimetric orthographic view, camera from above, no perspective. Restrained gouache broad brushwork, muted earth tones, soft upper-left light. Readable strong silhouette at 96px final. Entire object with transparent margins, bottom contact at lower centre. No people, no terrain slab, no background, no lettering, no cast shadow except tiny contact AO. Genuine transparent background, not white or checkerboard.",
+        "rawFile": "raw/life_props/doorstep_chair.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Trim transparent margins, proportional one-step Lanczos downsample, pad RGBA to square; no repaint.",
+      "contentBox": {
+        "left": 19,
+        "top": 4,
+        "width": 58,
+        "height": 88
+      }
+    }
+  },
+  {
+    "id": "life_props/doorstep_barrel",
+    "file": "assets/life_props/doorstep_barrel.png",
+    "width": 96,
+    "height": 96,
+    "description": "문 앞 작은 참나무 통",
+    "role": "object",
+    "blendMode": "normal",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": {
+      "x": 48,
+      "y": 92
+    },
+    "displayScale": 0.069,
+    "qa": {
+      "status": "candidate",
+      "native": "Target-size contact inspected; transparent isolated object, no people or ground slab.",
+      "world": "Cattle-scale world preview stays physically small; very small toy detail is not reliably identifiable at zoom 0.6."
+    },
+    "generationRecords": [
+      {
+        "id": "doorstep_barrel",
+        "prompt": "Create ONE isolated transparent RGBA hand-painted game sprite: one small upright medieval coopered oak household barrel with two broad dark wooden hoops, visible simple wood lid, squat rounded staves, no metal tap, no branding. Southern England 1300–1450. 2:1 dimetric orthographic view, camera from above, no perspective. Restrained gouache broad brushwork, muted earth tones, soft upper-left light. Readable strong silhouette at 96px final. Entire object with transparent margins, bottom contact at lower centre. No people, no terrain slab, no background, no lettering, no cast shadow except tiny contact AO. Genuine transparent background, not white or checkerboard.",
+        "rawFile": "raw/life_props/doorstep_barrel.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Trim transparent margins, proportional one-step Lanczos downsample, pad RGBA to square; no repaint.",
+      "contentBox": {
+        "left": 15,
+        "top": 4,
+        "width": 66,
+        "height": 88
+      }
+    }
+  },
+  {
+    "id": "life_props/well_bucket",
+    "file": "assets/life_props/well_bucket.png",
+    "width": 64,
+    "height": 64,
+    "description": "우물가 목제 물통",
+    "role": "object",
+    "blendMode": "normal",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": {
+      "x": 32,
+      "y": 60
+    },
+    "displayScale": 0.062,
+    "qa": {
+      "status": "candidate",
+      "native": "Target-size contact inspected; transparent isolated object, no people or ground slab.",
+      "world": "Cattle-scale world preview stays physically small; very small toy detail is not reliably identifiable at zoom 0.6."
+    },
+    "generationRecords": [
+      {
+        "id": "well_bucket",
+        "prompt": "Create ONE isolated transparent RGBA hand-painted game sprite: one medieval open wooden water bucket with broad coopered pale oak staves, dark wooden hoops, arched thick rope handle, dark water visible inside, no other object. Southern England 1300–1450. 2:1 dimetric orthographic view, camera from above, no perspective. Restrained gouache broad brushwork, muted earth tones, soft upper-left light. Readable strong silhouette at 64px final. Entire object with transparent margins, bottom contact at lower centre. No people, no terrain slab, no background, no lettering, no cast shadow except tiny contact AO. Genuine transparent background, not white or checkerboard.",
+        "rawFile": "raw/life_props/well_bucket.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Trim transparent margins, proportional one-step Lanczos downsample, pad RGBA to square; no repaint.",
+      "contentBox": {
+        "left": 12,
+        "top": 4,
+        "width": 39,
+        "height": 56
+      }
+    }
+  }
+]

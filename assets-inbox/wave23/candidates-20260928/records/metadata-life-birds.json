@@ -1,0 +1,476 @@
+[
+  {
+    "id": "crow_flight_sheet",
+    "file": "assets/life_birds/crow_flight_sheet.png",
+    "width": 256,
+    "height": 64,
+    "description": "crow_flight_sheet",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 64,
+      "cellHeight": 64,
+      "count": 4,
+      "order": [
+        "wings_up",
+        "wings_level",
+        "wings_down",
+        "wings_return"
+      ],
+      "direction": "SW"
+    },
+    "pivot": [
+      32,
+      38
+    ],
+    "displayScale": 0.10048149688426661,
+    "bodyProportion": {
+      "reference": "references/cattle_pair-v1.png",
+      "cowTorsoEndpoints": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "cowTorsoPixels": 31.3,
+      "cowScale": 0.24,
+      "birdTorsoPixels": 14.952006554305678,
+      "birdTorsoEndpoints": [
+        [
+          24.75,
+          35.5
+        ],
+        [
+          38.75,
+          40.75
+        ]
+      ],
+      "torsoRatioToCow": 0.2,
+      "renderedTorsoPixelsAtZoom1": 1.5024,
+      "measurement": "Manual shoulder-rump approximate segment; excludes beak/head/tail/wings"
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": true,
+      "flightCycle": "Four distinct wing phases; body/head visually consistent but not pixel-locked (wing cycle exempt from walking leg-only rule).",
+      "zoom06": "At cattle-proportional scale the torso is below 1px at zoom0.6; species is NOT reliably identifiable. Larger native-size inset needed for species QA. No artificial enlargement in world proof."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create a transparent RGBA sprite sheet for a hand-painted medieval English isometric town game. Reference goose image is STYLE ONLY: earthy tiny painterly gouache, soft upper-left lighting, no outlines. Subject ONE black carrion crow in flight facing diagonally lower-left / southwest, seen from elevated 2:1 isometric camera. Exactly FOUR equal SQUARE CELLS arranged in ONE horizontal row, bird body centered identically in each cell; same body, head, tail and scale in all 4 cells, only wings change in clean flight cycle: wings fully up, wings level spread, wings down, wings level returning. Each silhouette entirely within its own cell with generous margins. Dark charcoal wings, lighter gray-brown feather highlights, thick crow beak; readable broad shapes rather than feather micro-noise. Real transparent background, no ground, no shadows, no cell borders, no text, no numbers, no checkerboard. Output 4:1 horizontal sheet. This will become 4 cells 64x64; preserve simple strong silhouettes.",
+        "rawFile": "raw/life_birds/crow_flight_sheet-generated.png",
+        "referenceImages": [
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      {
+        "frame": 0,
+        "crop": [
+          0,
+          100,
+          477,
+          590
+        ],
+        "resize": [
+          56,
+          56
+        ],
+        "fit": "contain",
+        "offset": [
+          2,
+          4
+        ],
+        "registration": "manual thorax center translation; four-pixel safety gutter"
+      },
+      {
+        "frame": 1,
+        "crop": [
+          477,
+          100,
+          517,
+          590
+        ],
+        "resize": [
+          56,
+          56
+        ],
+        "fit": "contain",
+        "offset": [
+          2,
+          5
+        ],
+        "registration": "manual thorax center translation; four-pixel safety gutter"
+      },
+      {
+        "frame": 2,
+        "crop": [
+          994,
+          100,
+          458,
+          590
+        ],
+        "resize": [
+          56,
+          56
+        ],
+        "fit": "contain",
+        "offset": [
+          5,
+          5
+        ],
+        "registration": "manual thorax center translation; four-pixel safety gutter"
+      },
+      {
+        "frame": 3,
+        "crop": [
+          1452,
+          100,
+          531,
+          590
+        ],
+        "resize": [
+          56,
+          56
+        ],
+        "fit": "contain",
+        "offset": [
+          6,
+          6
+        ],
+        "registration": "manual thorax center translation; four-pixel safety gutter"
+      }
+    ]
+  },
+  {
+    "id": "sparrow_flight_sheet",
+    "file": "assets/life_birds/sparrow_flight_sheet.png",
+    "width": 192,
+    "height": 48,
+    "description": "sparrow_flight_sheet",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 4,
+      "order": [
+        "wings_up",
+        "wings_level",
+        "wings_down",
+        "wings_return"
+      ],
+      "direction": "SW"
+    },
+    "pivot": [
+      24,
+      29
+    ],
+    "displayScale": 0.06057532594712143,
+    "bodyProportion": {
+      "reference": "references/cattle_pair-v1.png",
+      "cowTorsoEndpoints": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "cowTorsoPixels": 31.3,
+      "cowScale": 0.24,
+      "birdTorsoPixels": 10.540925533894594,
+      "birdTorsoEndpoints": [
+        [
+          17.333333333333336,
+          26.333333333333332
+        ],
+        [
+          27.333333333333332,
+          29.666666666666668
+        ]
+      ],
+      "torsoRatioToCow": 0.085,
+      "renderedTorsoPixelsAtZoom1": 0.63852,
+      "measurement": "Manual shoulder-rump approximate segment; excludes beak/head/tail/wings"
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": true,
+      "flightCycle": "Four distinct wing phases; body/head visually consistent but not pixel-locked (wing cycle exempt from walking leg-only rule).",
+      "zoom06": "At cattle-proportional scale the torso is below 1px at zoom0.6; species is NOT reliably identifiable. Larger native-size inset needed for species QA. No artificial enlargement in world proof."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Hand-painted medieval English 2:1 isometric town sprite, elevated orthographic camera, earthy opaque gouache, soft upper-left light, gentle painterly marks and broad small-size shapes like project goose reference (style only). Exactly FOUR isolated flight frames of ONE small house sparrow, same bird facing diagonally southwest, arranged ONE horizontal row with generous gaps. Body/head/tail identical scale and same pose, wings alone go up, level, down, level returning. Warm muted brown back, buff belly, dark cheek and short conical beak, compact rounded body and short tail. Four square cells planned 48x48, clear bold tiny silhouette. Actual transparent RGBA background, no text, no numbers, no border, no checkerboard, no floor or cast shadow, no other objects or birds.",
+        "rawFile": "raw/life_birds/sparrow_flight_sheet-generated.png",
+        "referenceImages": [
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      {
+        "frame": 0,
+        "crop": [
+          0,
+          250,
+          424,
+          440
+        ],
+        "resize": [
+          40,
+          40
+        ],
+        "fit": "contain",
+        "offset": [
+          4,
+          3
+        ],
+        "registration": "manual thorax center translation; four-pixel safety gutter"
+      },
+      {
+        "frame": 1,
+        "crop": [
+          424,
+          250,
+          441,
+          440
+        ],
+        "resize": [
+          40,
+          40
+        ],
+        "fit": "contain",
+        "offset": [
+          4,
+          4
+        ],
+        "registration": "manual thorax center translation; four-pixel safety gutter"
+      },
+      {
+        "frame": 2,
+        "crop": [
+          865,
+          250,
+          400,
+          440
+        ],
+        "resize": [
+          40,
+          40
+        ],
+        "fit": "contain",
+        "offset": [
+          4,
+          5
+        ],
+        "registration": "manual thorax center translation; four-pixel safety gutter"
+      },
+      {
+        "frame": 3,
+        "crop": [
+          1265,
+          250,
+          452,
+          440
+        ],
+        "resize": [
+          40,
+          40
+        ],
+        "fit": "contain",
+        "offset": [
+          4,
+          4
+        ],
+        "registration": "manual thorax center translation; four-pixel safety gutter"
+      }
+    ]
+  },
+  {
+    "id": "pigeon_perched_a",
+    "file": "assets/life_birds/pigeon_perched_a.png",
+    "width": 64,
+    "height": 64,
+    "description": "pigeon_perched_a",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "columns": 1,
+      "rows": 1,
+      "cellWidth": 64,
+      "cellHeight": 64,
+      "count": 1,
+      "order": [
+        "perched"
+      ],
+      "direction": "SW"
+    },
+    "pivot": [
+      32,
+      58
+    ],
+    "displayScale": 0.03640510709207324,
+    "bodyProportion": {
+      "reference": "references/cattle_pair-v1.png",
+      "cowTorsoEndpoints": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "cowTorsoPixels": 31.3,
+      "cowScale": 0.24,
+      "birdTorsoPixels": 33.015148038438355,
+      "birdTorsoEndpoints": [
+        [
+          15,
+          25
+        ],
+        [
+          42,
+          44
+        ]
+      ],
+      "torsoRatioToCow": 0.16,
+      "renderedTorsoPixelsAtZoom1": 1.2019199999999999,
+      "measurement": "Manual shoulder-rump approximate segment; excludes beak/head/tail/wings"
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": true,
+      "flightCycle": null,
+      "zoom06": "At cattle-proportional scale the torso is below 1px at zoom0.6; species is NOT reliably identifiable. Larger native-size inset needed for species QA. No artificial enlargement in world proof."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Hand-painted medieval English 2:1 isometric town sprite, elevated orthographic camera, earthy opaque gouache, soft upper-left light, gentle painterly marks and broad small-size shapes like project goose reference (style only). ONE gray rock dove pigeon perched with folded wings, facing southwest/lower-left, plump upright chest, compact neck with very muted violet hint, slate wing with two charcoal wing bars, small red-brown feet. Single object centered with transparent space, no roof or perch object. Final64x64 sprite. Actual transparent RGBA background, no text, no numbers, no border, no checkerboard, no floor or cast shadow, no other objects or birds.",
+        "rawFile": "raw/life_birds/pigeon_perched_a-generated.png",
+        "referenceImages": [
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      {
+        "trim": "alpha tight crop threshold5",
+        "resize": "fit inside52x52 preserving aspect",
+        "anchor": [
+          32,
+          58
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pigeon_perched_b",
+    "file": "assets/life_birds/pigeon_perched_b.png",
+    "width": 64,
+    "height": 64,
+    "description": "pigeon_perched_b",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "columns": 1,
+      "rows": 1,
+      "cellWidth": 64,
+      "cellHeight": 64,
+      "count": 1,
+      "order": [
+        "perched"
+      ],
+      "direction": "SE"
+    },
+    "pivot": [
+      32,
+      58
+    ],
+    "displayScale": 0.04796182940896622,
+    "bodyProportion": {
+      "reference": "references/cattle_pair-v1.png",
+      "cowTorsoEndpoints": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "cowTorsoPixels": 31.3,
+      "cowScale": 0.24,
+      "birdTorsoPixels": 25.059928172283335,
+      "birdTorsoEndpoints": [
+        [
+          43,
+          47
+        ],
+        [
+          21,
+          35
+        ]
+      ],
+      "torsoRatioToCow": 0.16,
+      "renderedTorsoPixelsAtZoom1": 1.2019199999999999,
+      "measurement": "Manual shoulder-rump approximate segment; excludes beak/head/tail/wings"
+    },
+    "qa": {
+      "status": "candidate",
+      "alpha": true,
+      "flightCycle": null,
+      "zoom06": "At cattle-proportional scale the torso is below 1px at zoom0.6; species is NOT reliably identifiable. Larger native-size inset needed for species QA. No artificial enlargement in world proof."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Hand-painted medieval English 2:1 isometric town sprite, elevated orthographic camera, earthy opaque gouache, soft upper-left light, gentle painterly marks and broad small-size shapes like project goose reference (style only). ONE gray rock dove pigeon crouching low on invisible roof, facing southeast/lower-right, neck stretched slightly forward as it looks downward, folded wings with two charcoal bars, plump body, small reddish feet. This is a different drawn pose, not mirrored. Single object centered with transparent space, no roof/perch object. Final64x64 sprite. Actual transparent RGBA background, no text, no numbers, no border, no checkerboard, no floor or cast shadow, no other objects or birds.",
+        "rawFile": "raw/life_birds/pigeon_perched_b-generated.png",
+        "referenceImages": [
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      {
+        "trim": "alpha tight crop threshold5",
+        "resize": "fit inside52x52 preserving aspect",
+        "anchor": [
+          32,
+          58
+        ]
+      }
+    ]
+  }
+]

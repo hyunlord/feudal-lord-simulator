@@ -1,0 +1,191 @@
+{
+  "type": "offline compositing, same source screenshot; zoom0.6 is resampling not actual game camera",
+  "source": "references/현재_평소화면.jpg",
+  "hud": [
+    [
+      0,
+      0,
+      382,
+      56
+    ],
+    [
+      0,
+      55,
+      304,
+      57
+    ],
+    [
+      1073,
+      0,
+      207,
+      58
+    ],
+    [
+      0,
+      740,
+      290,
+      60
+    ],
+    [
+      1120,
+      730,
+      160,
+      70
+    ],
+    [
+      759,
+      305,
+      90,
+      40
+    ]
+  ],
+  "states": [
+    {
+      "state": "clear",
+      "recipe": [
+        {
+          "id": "cloud_shadow_a",
+          "alpha": 0.1,
+          "blend": "multiply",
+          "x": 100,
+          "y": 120,
+          "w": 580,
+          "h": 440,
+          "tiled": false
+        }
+      ],
+      "hudDifferingChannels": 0
+    },
+    {
+      "state": "wet",
+      "recipe": [
+        {
+          "id": "overcast_tint",
+          "alpha": 0.12,
+          "blend": "multiply",
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 800,
+          "tiled": true
+        },
+        {
+          "id": "drizzle_sheet",
+          "alpha": 0.08,
+          "blend": "source-over",
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 800,
+          "tiled": true
+        },
+        {
+          "id": "fog_bank_a",
+          "alpha": 0.1,
+          "blend": "source-over",
+          "x": 820,
+          "y": 350,
+          "w": 460,
+          "h": 230,
+          "tiled": false
+        },
+        {
+          "id": "wet_ground_sheen",
+          "alpha": 0.04,
+          "blend": "screen",
+          "x": 365,
+          "y": 480,
+          "w": 470,
+          "h": 210,
+          "tiled": true
+        }
+      ],
+      "hudDifferingChannels": 0
+    },
+    {
+      "state": "dry",
+      "recipe": [
+        {
+          "id": "dry_dust_a",
+          "alpha": 0.18,
+          "blend": "source-over",
+          "x": 220,
+          "y": 485,
+          "w": 370,
+          "h": 150,
+          "tiled": false
+        },
+        {
+          "id": "dry_dust_b",
+          "alpha": 0.16,
+          "blend": "source-over",
+          "x": 660,
+          "y": 520,
+          "w": 320,
+          "h": 140,
+          "tiled": false
+        },
+        {
+          "id": "heat_cracked_ground",
+          "alpha": 0.2,
+          "blend": "multiply",
+          "x": 440,
+          "y": 570,
+          "w": 128,
+          "h": 64,
+          "tiled": false
+        }
+      ],
+      "hudDifferingChannels": 0
+    },
+    {
+      "state": "cold",
+      "recipe": [
+        {
+          "id": "frost_morning_tint",
+          "alpha": 0.1,
+          "blend": "source-over",
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 800,
+          "tiled": true
+        },
+        {
+          "id": "fog_bank_b",
+          "alpha": 0.16,
+          "blend": "source-over",
+          "x": 730,
+          "y": 370,
+          "w": 512,
+          "h": 256,
+          "tiled": false
+        }
+      ],
+      "hudDifferingChannels": 0
+    }
+  ],
+  "edges": [
+    {
+      "id": "overcast_tint",
+      "opposingEdgeMaxDelta": 0
+    },
+    {
+      "id": "drizzle_sheet",
+      "opposingEdgeMaxDelta": 0
+    },
+    {
+      "id": "storm_rain_sheet",
+      "opposingEdgeMaxDelta": 0
+    },
+    {
+      "id": "wet_ground_sheen",
+      "opposingEdgeMaxDelta": 0
+    },
+    {
+      "id": "frost_morning_tint",
+      "opposingEdgeMaxDelta": 0
+    }
+  ],
+  "combinedLayerAlphaCap": 0.38
+}

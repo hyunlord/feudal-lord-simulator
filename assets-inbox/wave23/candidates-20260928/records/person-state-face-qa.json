@@ -1,0 +1,150 @@
+{
+  "status": "PASS",
+  "distinctPortraitIdentities": 12,
+  "checks": [
+    {
+      "id": "mourning",
+      "portraitIdentity": "P6",
+      "reference": "references/person_state/P6.png",
+      "originalSource": "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/assets/portraits/pt_pilot_P6-v1_96.png",
+      "sourceSHA256": "5678c192c208b8ecf1fb78bfa22f9d674bd39dee551e82d6c899468bb5957fdb",
+      "copiedSHA256": "5678c192c208b8ecf1fb78bfa22f9d674bd39dee551e82d6c899468bb5957fdb",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 0,
+      "portraitResize": "Existing 96px used directly"
+    },
+    {
+      "id": "sick",
+      "portraitIdentity": "P3",
+      "reference": "references/person_state/P3.png",
+      "originalSource": "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/assets/portraits/pt_pilot_P3-v1_96.png",
+      "sourceSHA256": "50a84892150e2ca77f947029e1ae0a6a37d505829151924ed5b1835a9bf2cff2",
+      "copiedSHA256": "50a84892150e2ca77f947029e1ae0a6a37d505829151924ed5b1835a9bf2cff2",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 11,
+      "portraitResize": "Existing 96px used directly"
+    },
+    {
+      "id": "pregnant",
+      "portraitIdentity": "P2",
+      "reference": "references/person_state/P2.png",
+      "originalSource": "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/assets/portraits/pt_pilot_P2-v1_96.png",
+      "sourceSHA256": "2371184b891267dc8dacb9755a84c5ed7331050dbd637b553c262bbb89916a38",
+      "copiedSHA256": "2371184b891267dc8dacb9755a84c5ed7331050dbd637b553c262bbb89916a38",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 5,
+      "portraitResize": "Existing 96px used directly"
+    },
+    {
+      "id": "newborn",
+      "portraitIdentity": "I068_child",
+      "reference": "references/person_state/I068_child.png",
+      "originalSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I068_child.png",
+      "sourceSHA256": "e54b1dabed80331169479ef6971e8ce3df0d1701601723ccc8e09a720b89c748",
+      "copiedSHA256": "e54b1dabed80331169479ef6971e8ce3df0d1701601723ccc8e09a720b89c748",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 0,
+      "portraitResize": "Existing 256px resized once to96px; no repaint/retouch"
+    },
+    {
+      "id": "dead",
+      "portraitIdentity": "I047_old",
+      "reference": "references/person_state/I047_old.png",
+      "originalSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I047_old.png",
+      "sourceSHA256": "87122908aa15954708537bc76b2a7e2df38a97808838a521d6f03e742df5a6c1",
+      "copiedSHA256": "87122908aa15954708537bc76b2a7e2df38a97808838a521d6f03e742df5a6c1",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 0,
+      "portraitResize": "Existing 256px resized once to96px; no repaint/retouch"
+    },
+    {
+      "id": "hunger",
+      "portraitIdentity": "P1",
+      "reference": "references/person_state/P1.png",
+      "originalSource": "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/assets/portraits/pt_pilot_P1-v1_96.png",
+      "sourceSHA256": "ca447ed4e84e5bdb0e625b2ab3d9c498fd446b32378077afa9e7d08a960d165e",
+      "copiedSHA256": "ca447ed4e84e5bdb0e625b2ab3d9c498fd446b32378077afa9e7d08a960d165e",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 8,
+      "portraitResize": "Existing 96px used directly"
+    },
+    {
+      "id": "injury",
+      "portraitIdentity": "P4",
+      "reference": "references/person_state/P4.png",
+      "originalSource": "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/assets/portraits/pt_pilot_P4-v1_96.png",
+      "sourceSHA256": "dfaa08cd5e174178de3e9cb4c294e42d750d3e69d10021a5767fb37dd0f25c1b",
+      "copiedSHA256": "dfaa08cd5e174178de3e9cb4c294e42d750d3e69d10021a5767fb37dd0f25c1b",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 8,
+      "portraitResize": "Existing 96px used directly"
+    },
+    {
+      "id": "pilgrim",
+      "portraitIdentity": "I056_mature",
+      "reference": "references/person_state/I056_mature.png",
+      "originalSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I056_mature.png",
+      "sourceSHA256": "61b60f093df3cc4564192731abcb9cac954dd33342934a2a3376a14c4bf8152b",
+      "copiedSHA256": "61b60f093df3cc4564192731abcb9cac954dd33342934a2a3376a14c4bf8152b",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 0,
+      "portraitResize": "Existing 256px resized once to96px; no repaint/retouch"
+    },
+    {
+      "id": "marriage",
+      "portraitIdentity": "P5",
+      "reference": "references/person_state/P5.png",
+      "originalSource": "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/assets/portraits/pt_pilot_P5-v1_96.png",
+      "sourceSHA256": "725c5d3876aaa968e8e7ffbd55f2d21e45f9599dc4c1eea7816ac83c9e6dbc80",
+      "copiedSHA256": "725c5d3876aaa968e8e7ffbd55f2d21e45f9599dc4c1eea7816ac83c9e6dbc80",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 10,
+      "portraitResize": "Existing 96px used directly"
+    },
+    {
+      "id": "reeve",
+      "portraitIdentity": "I039_mature",
+      "reference": "references/person_state/I039_mature.png",
+      "originalSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I039_mature.png",
+      "sourceSHA256": "234e8233a6914a09b480d7f4676abaecf785113f584f9c870586a090a8d55bbf",
+      "copiedSHA256": "234e8233a6914a09b480d7f4676abaecf785113f584f9c870586a090a8d55bbf",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 0,
+      "portraitResize": "Existing 256px resized once to96px; no repaint/retouch"
+    },
+    {
+      "id": "bailiff",
+      "portraitIdentity": "I041_young",
+      "reference": "references/person_state/I041_young.png",
+      "originalSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I041_young.png",
+      "sourceSHA256": "6619dd413e360e700a7ba0baccfed2a6f72ce6f19c3f5ec621de3a6c51917056",
+      "copiedSHA256": "6619dd413e360e700a7ba0baccfed2a6f72ce6f19c3f5ec621de3a6c51917056",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 7,
+      "portraitResize": "Existing 256px resized once to96px; no repaint/retouch"
+    },
+    {
+      "id": "steward",
+      "portraitIdentity": "I042_mature",
+      "reference": "references/person_state/I042_mature.png",
+      "originalSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I042_mature.png",
+      "sourceSHA256": "5e54ef05df9e42e3e346c5432280494aec025b570b6da972532947f10810951a",
+      "copiedSHA256": "5e54ef05df9e42e3e346c5432280494aec025b570b6da972532947f10810951a",
+      "centralFacePixelsChanged": 0,
+      "centralFacePixelsCovered": 0,
+      "clearedProtectionPixels": 0,
+      "portraitResize": "Existing 256px resized once to96px; no repaint/retouch"
+    }
+  ]
+}
