@@ -24,7 +24,8 @@ import { recordFoodObservationActivity, refreshFoodObservation } from "./autopla
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { settleMarkets } from "./marketSettlement";
 import { accrueTollCrossings, settleMoneyPeriod } from "./moneyRules";
-import { advanceSeasons } from "./seasonPressure";
+import { advanceSeasons, recordStarvation } from "./seasonPressure";
+import { advanceZoneSettlement } from "../zones/zoneSettlement";
 import { advanceEvents } from "./events";
 import { advancePolitics } from "./politics";
 import { advanceHistory } from "./history";
@@ -252,6 +253,6 @@ export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
   return advanceHistory(state, updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceSeasons(settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))))),
+    advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))))))),
   )))));
 }

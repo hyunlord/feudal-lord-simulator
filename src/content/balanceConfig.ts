@@ -13,7 +13,16 @@ export const BALANCE = {
   STARVATION_WINDOW: 300,
   WORKERS_PER_RESIDENT: 0.5,
   CONSTRUCTION_MIN_WORKER_SHARE: 0.2,
-  STARTING_TIMBER: 120,
+  /**
+   * FIX-4 E9 (HR-9): 120 → 160. The UX-0b audit's second run spent 100 of 120 on a well, barn, mill and granary and
+   * could not afford the sawmill (30), the only source of timber: a dead end. 160 leaves the sawmill after that order.
+   */
+  STARTING_TIMBER: 160,
+  /**
+   * FIX-4 E1 (HR-1): the new game's treasury, in pennies (was 0). At least three periods of a tutorial town's upkeep
+   * (mill 8 · two wells 2 · storehouse 2 = 12 a period): a mill charged from 0d before the first rent stopped for good.
+   */
+  STARTING_COIN: 60,
   /**
    * Provisional (C1c): four 1,000-tick seasons, so autoplay's 24-lot victories (280–630k ticks) land in about
    * 1370–1460 from a 1300 start. Derived only (no state field); tune after player timing.

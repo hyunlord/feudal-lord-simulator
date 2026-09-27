@@ -4,7 +4,8 @@
  * Tolls and mill grinding are counted as they happen (`accrue*`); everything is charged at the period
  * close (tick divisible by `LEDGER_PERIOD_TICKS`) in a fixed order: income (rent, stall fees, mill tolls,
  * tolls), then this period's upkeep, then arrears oldest first. Upkeep the treasury cannot pay goes to
- * the arrears account and idles the facility (`upkeepUnpaid`) until it is paid.
+ * the arrears account and idles the facility (`upkeepUnpaid`) for that period; a facility that pays the next
+ * period's upkeep runs again while its old debt waits (FIX-4 E3).
  */
 import { stallFeePermille, stallFeeRightSource } from "./politics";
 import type { SourceRef } from "../contracts";
@@ -14,6 +15,7 @@ import { LEDGER_PERIOD_TICKS, postLedgerEntries, treasuryBalance } from "../ledg
 import type { LedgerPosting } from "../ledger/ledger.types";
 import { deriveParcels } from "../zones/parcels";
 import { zonesOf } from "../zones/zoneEdits";
+import { houseIsStarving } from "../population/houseFood";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { householdServices } from "./householdServices";
@@ -23,6 +25,19 @@ import { builtGatePointIds, tollPointSource } from "./tollCrossings";
 
 type UpkeepKind = keyof typeof MONEY_BALANCE.upkeep;
 const BUILDING_UPKEEP_KINDS: readonly string[] = ["well", "market", "church", "mill", "storehouse"] satisfies UpkeepKind[];
+/**
+ * FIX-4 E2 (HR-2): upkeep charge rank — the food chain first (a mill, and a barn or granary should they owe upkeep),
+ * then services (well, market, church), then everything else. Was building id order, so a new well (1d) paid before
+ * the mill and the mill stopped (UX-0b audit).
+ */
+const UPKEEP_RANK: Readonly<Record<string, number>> = { mill: 0, farmstead: 0, granary: 0, well: 1, market: 1, church: 1 };
+const OTHER_UPKEEP_RANK = 2;
+
+/** Within a rank the oldest building first: the opening village's buildings, then construction order. */
+function buildingAge(building: Building): number {
+  const ordinal = /^construction-site-(\d+)$/.exec(building.id)?.[1];
+  return ordinal === undefined ? -1 : Number(ordinal);
+}
 
 export function moneyOf(state: Pick<GameState, "money">): MoneyState {
   return state.money ?? EMPTY_MONEY;
@@ -66,6 +81,15 @@ export function homePlots(state: GameState): ReadonlyMap<string, { readonly zone
   return plots;
 }
 
+/**
+ * FIX-4 E10 (HR-10): a starving household pays no rent and one getting ready to leave (FP-3 stage 1) pays half, so the
+ * lord's rent does not press a hungry town a second time. Half rounds down.
+ */
+export function rentRelief(house: House, tick: number, rent: number): number {
+  if (houseIsStarving(house, tick)) return 0;
+  return house.leavingSinceTick !== undefined ? Math.floor(rent / 2) : rent;
+}
+
 function marketOperating(building: Building): boolean {
   return building.kind === "market" && building.operationPaused !== true && building.upkeepUnpaid !== true
     && building.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired;
@@ -92,7 +116,7 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
     // EV-4: a burnt house pays no rent until it is rebuilt.
     if (house.residents <= 0 || house.burntTick !== undefined) continue;
     const plot = plots.get(house.buildingId);
-    const amount = homeRent(house, plot?.width ?? null);
+    const amount = rentRelief(house, state.tick, homeRent(house, plot?.width ?? null));
     if (amount <= 0) continue;
     const sourceRefs: [SourceRef, ...SourceRef[]] = [buildingSource(house.buildingId, `level:${house.level}`)];
     if (plot !== undefined) sourceRefs.push({ type: "zone", id: plot.zoneId, detail: `frontage:${plot.width}` });
@@ -121,11 +145,12 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
   return { postings, millWheat };
 }
 
-/** Facilities that owe upkeep this period, in charge order: buildings by id, then gates by id. */
+/** Facilities that owe upkeep this period, in charge order (E2): buildings by rank, then age, then gates by id. */
 export function upkeepCharges(state: GameState): readonly { readonly facility: SourceRef; readonly amount: number }[] {
+  const rank = (building: Building) => UPKEEP_RANK[building.kind] ?? OTHER_UPKEEP_RANK;
   const buildings = state.buildings
     .filter(building => BUILDING_UPKEEP_KINDS.includes(building.kind) && building.operationPaused !== true)
-    .sort((a, b) => a.id.localeCompare(b.id))
+    .sort((a, b) => rank(a) - rank(b) || buildingAge(a) - buildingAge(b) || a.id.localeCompare(b.id))
     .map(building => ({ facility: buildingSource(building.id), amount: MONEY_BALANCE.upkeep[building.kind as UpkeepKind] }));
   const gates = builtGatePointIds(state.palisade).map(pointId => ({ facility: tollPointSource(pointId), amount: MONEY_BALANCE.upkeep.gate }));
   return [...buildings, ...gates];
@@ -142,7 +167,7 @@ export function settleMoneyPeriod(state: GameState): GameState {
   const postings: LedgerPosting[] = [...income.postings];
   let cash = treasuryBalance(state) + income.postings.reduce((sum, posting) => sum + posting.amount, 0);
 
-  // M-6: this period's upkeep first (buildings by id, then gates), so an old debt cannot idle a facility
+  // M-6: this period's upkeep first (E2 rank order, then gates), so an old debt cannot idle a facility
   // the treasury can pay for now; then arrears oldest first, stopping at the first charge it cannot cover.
   const arrears: UpkeepArrear[] = [];
   for (const charge of upkeepCharges(state)) {
@@ -166,7 +191,9 @@ export function settleMoneyPeriod(state: GameState): GameState {
   }
   arrears.unshift(...money.arrears.slice(paid));
 
-  const unpaid = new Set(arrears.filter(arrear => arrear.facility.type === "building").map(arrear => arrear.facility.id));
+  // FIX-4 E3 (M-6): only this period's unpaid charge idles a building; an old debt stays on the arrears account (and
+  // in the finance cell) but does not stop a facility that paid this period. Was every building with any debt left.
+  const unpaid = new Set(arrears.filter(arrear => arrear.tick === state.tick && arrear.facility.type === "building").map(arrear => arrear.facility.id));
   const buildings = state.buildings.map(building => {
     const owes = unpaid.has(building.id);
     if (owes === (building.upkeepUnpaid === true)) return building;

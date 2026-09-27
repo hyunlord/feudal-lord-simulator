@@ -28,10 +28,11 @@ export function isWinter(tick: number): boolean {
   return inYearTick(tick) >= ARABLE_CONFIG.winterFrom;
 }
 
-/** Ploughing and sowing: late winter, spring and early summer (the window wraps the year end). */
+/** Ploughing and sowing: late winter, spring and early summer (the window wraps the year end); the first year to late spring's end (E4). */
 export function inFieldWorkWindow(tick: number): boolean {
   const t = inYearTick(tick);
-  return t >= ARABLE_CONFIG.fieldWorkFrom || t < ARABLE_CONFIG.fieldWorkUntil;
+  const until = tick >= 0 && tick < YEAR ? ARABLE_CONFIG.firstYearFieldWorkUntil : ARABLE_CONFIG.fieldWorkUntil;
+  return t >= ARABLE_CONFIG.fieldWorkFrom || t < until;
 }
 
 /** Non-winter ticks in [0, n). */

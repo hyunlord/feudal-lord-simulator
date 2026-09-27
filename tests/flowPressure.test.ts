@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { houseIsStarving } from "../src/population/houseFood";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
@@ -116,7 +117,9 @@ test("P2 a hut's predicted rent, upkeep and labour match what the ledger charges
     state = advanceTick(state);
     const house = state.houses.find(entry => entry.buildingId === id);
     if (completed === null && house !== undefined) completed = state.tick;
-    if (completed === null || house === undefined || state.tick % LEDGER_PERIOD_TICKS !== 0 || state.tick < completed + 600 || house.residents <= 0) continue;
+    // FIX-4 E10: a starving household pays no rent and one getting ready to leave half; the prediction is a fed hut's.
+    if (completed === null || house === undefined || state.tick % LEDGER_PERIOD_TICKS !== 0 || state.tick < completed + 600 || house.residents <= 0
+      || house.leavingSinceTick !== undefined || houseIsStarving(house, state.tick)) continue;
     const rent = state.ledger!.entries.filter(entry => entry.tick === state.tick && entry.category === "rent" && entry.sourceRefs[0].id === id)
       .reduce((sum, entry) => sum + entry.amount, 0);
     charged = { tick: state.tick, rent, level: house.level };

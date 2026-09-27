@@ -327,7 +327,12 @@ function namePetitioners(town: Town, state: GameState): GameState {
     const heads = town.people.filter(person => person.role === "head" && person.householdId !== MANOR_HOUSEHOLD && ageOf(person, town.year) >= 18)
       .sort((a, b) => (rank[a.classBand] ?? 9) - (rank[b.classBand] ?? 9) || (hashSeed(town.seed, petition.id, Number(a.id.slice(2))) - hashSeed(town.seed, petition.id, Number(b.id.slice(2)))));
     const count = 2 + hashSeed(town.seed, `petitioners:${petition.id}`) % 2;
-    const chosen = heads.slice(0, count);
+    // FIX-4 (HR-12): the petitioners stand side by side, so no two of them show the same face (identity).
+    const chosen: Person[] = [];
+    for (const head of heads) {
+      if (chosen.length >= count) break;
+      if (!chosen.some(other => other.portraitIdentity === head.portraitIdentity)) chosen.push(head);
+    }
     for (const person of chosen) town.replace(person.id, { tags: [...person.tags, `petitioner:${petition.id}`] });
     return { ...petition, petitionerIds: chosen.map(person => person.id) };
   });
@@ -459,5 +464,6 @@ export function personById(state: Pick<GameState, "persons">, id: string): Perso
 }
 
 export function personPortrait(state: Pick<GameState, "tick" | "scenarioId">, person: Person): PortraitChoice {
-  return portraitFor(person, ageBandOf(ageOf(person, person.deathYear ?? currentYear(state))));
+  const age = ageOf(person, person.deathYear ?? currentYear(state));
+  return portraitFor(person, ageBandOf(age), age);
 }

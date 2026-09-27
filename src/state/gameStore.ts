@@ -72,7 +72,7 @@ export const DEFAULT_GAME_STATE: GameState = withOpeningVillageServices({
   population: STARTING_HOUSES.reduce((total, house) => total + house.residents, 0),
   idleWorkers: 0,
   treasuryTimber: BALANCE.STARTING_TIMBER,
-  treasuryCoin: 0,
+  treasuryCoin: BALANCE.STARTING_COIN,
   wallTick: 0,
   era: "hamlet",
   eraProclaimedTick: null,

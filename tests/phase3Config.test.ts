@@ -25,7 +25,8 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
     STARVATION_WINDOW: 300,
     WORKERS_PER_RESIDENT: 0.5,
     CONSTRUCTION_MIN_WORKER_SHARE: 0.2,
-    STARTING_TIMBER: 120,
+    STARTING_TIMBER: 160,
+    STARTING_COIN: 60,
     TICKS_PER_YEAR: 4000,
   });
 });
