@@ -127,7 +127,7 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
       style={{ backgroundImage: `url("${view.chapter === 2 ? wave17Url("chapter2_end") : wave16Url("chapter1_end")}")` }}>
       <section className="chronicle-page" role="dialog" aria-modal="true" aria-label={view.title}>
         <span className="chronicle-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_chronicle_page")} />
-        <div className="chronicle-body" style={wave8ContentStyle("frame_chronicle_page")}>
+        <div className="chronicle-page-body" style={wave8ContentStyle("frame_chronicle_page")}>
           <h2>{view.title}</h2>
           <div className="chronicle-columns">
           <section><h3>{CHRONICLE_COPY.timelineHeading}</h3>

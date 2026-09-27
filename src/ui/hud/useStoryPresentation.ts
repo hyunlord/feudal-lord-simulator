@@ -65,8 +65,12 @@ export function useStoryPresentation(input: {
     }
     const chapterKey = end === null ? null : `chapter:${end.chapter}`;
     if (chapterKey !== null && !openedRef.current.has(chapterKey)) {
-      const since = chapterSeenRef.current.get(chapterKey) ?? Date.now();
+      const seen = chapterSeenRef.current.get(chapterKey);
+      const since = seen ?? Date.now();
       chapterSeenRef.current.set(chapterKey, since);
+      // CODE-1c follow-up: the wake timer below is computed at render; a first sighting re-renders so it is set (a
+      // paused game with the presentation clock resting would otherwise never open the chapter's page).
+      if (seen === undefined) setRevision(revision => revision + 1);
       if (nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); }
     }
   });

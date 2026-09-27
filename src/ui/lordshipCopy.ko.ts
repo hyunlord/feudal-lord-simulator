@@ -21,6 +21,7 @@ export const LORDSHIP_COPY = {
   warHeading: "전쟁",
   favour: (held: boolean) => held ? "왕실의 신임: 있음" : "왕실의 신임: 잃음(조달 면허·성벽세 없음)",
   away: (men: number) => `징집되어 떠난 사람 ${men}명`,
+  awayUntil: (men: number, year: number, season: string) => `징집되어 떠난 사람 ${men}명 · ${year}년 ${season}에 돌아옵니다`,
   defence: (percent: number, closed: boolean) => closed ? `성벽의 방어 ${percent} %` : "성벽에 틈이 있어 방어 0 %",
   seasonDeclined: (cause: string, right: string | null, byOverlord: boolean) =>
     `영지가 쇠퇴했습니다 — ${cause} ${right === null ? "잃은 권리 없이" : `${right}${byOverlord ? "를 상위 영주가 맡았고" : "를 상인들이 가져갔고"}`} 칭호가 강등되었습니다`,

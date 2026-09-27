@@ -88,7 +88,7 @@ for (const [key, name, focus, expected] of MOMENTS) {
   }
   if (key === 'chapter_end' && after.modal === 'chronicle') {
     moment.page = await page.evaluate(() => ({ entries: document.querySelectorAll('.chronicle-entry').length, decisions: document.querySelectorAll('.chronicle-decisions li').length,
-      text: document.querySelector('.chronicle-body')?.innerText.slice(0, 1200) }));
+      text: document.querySelector('.chronicle-page-body')?.innerText.slice(0, 1200) }));
     await shot(page, 'chapter_end-3-chronicle.jpg');
     await page.locator('.chronicle-next').click(); await page.waitForTimeout(500);
     moment.preview = await page.locator('.chapter-preview').count() > 0;

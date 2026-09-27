@@ -24,11 +24,11 @@ export const CHRONICLE_COPY = {
   alternatives: (labels: readonly string[]) => labels.length === 0 ? "" : `다른 길: ${labels.join(", ")}`,
   outcome: (predicted: Readonly<Record<string, number>>, actual: Readonly<Record<string, number>> | null) =>
     actual === null ? `예측 ${metricLine(predicted)}` : `예측 ${metricLine(predicted)} / 실제 ${metricLine(actual)}`,
-  stats: (stats: ChronicleEntry["stats"]) => [
+  stats: (stats: ChronicleEntry["stats"], chapter = 1) => [
     `인구 처음 ${stats.populationStart} · 끝 ${stats.populationEnd} · 가장 많을 때 ${stats.peakPopulation}`,
     `집 ${stats.houses}채 · 불탄 집 ${stats.burntHouses} · 떠난 가구 ${stats.departures}`,
     `잃은 수확 밀 ${stats.harvestLost} · 금고 ${pence(stats.treasury)}`,
-    ...(stats.famine === null ? [] : [`대기근(${stats.famine.year}) 인구 닥칠 때 ${stats.famine.populationAtArrival} · 끝날 때 ${stats.famine.populationAtEnd}`]),
+    ...(stats.famine === null || chapter !== 1 ? [] : [`대기근(${stats.famine.year}) 인구 닥칠 때 ${stats.famine.populationAtArrival} · 끝날 때 ${stats.famine.populationAtEnd}`]),
     // UI-6 (F2-A WR-9): chapter 2's war.
     ...(stats.war === undefined ? [] : [
       stats.war.raidYear === null || stats.war.raidLosses === null ? "해안 습격 없음" : `해안 습격(${stats.war.raidYear}) 불탄 집 ${stats.war.raidLosses.burntHouses} · 빼앗긴 돈 ${pence(stats.war.raidLosses.coin)} · 성벽 방어 ${Math.round((stats.war.defencePermille ?? 0) / 10)} %`,

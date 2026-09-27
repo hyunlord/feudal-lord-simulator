@@ -8,6 +8,7 @@ import type { EmblemSpec } from "./heraldry/EmblemImage";
 import { LORDSHIP_COPY } from "./lordshipCopy.ko";
 import { lordHouseArms } from "./persons/personModels";
 import type { Wave14ImageId } from "./wave14Art";
+import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 
 /**
  * UI-6: the ledger drawer's rights tab (FAIL-3 FL-1…FL-8, F2-A): the ruling house (name, arms from its heraldry seed,
@@ -28,6 +29,15 @@ export type LordshipView = Readonly<{
   decline: string | null;
   war: readonly string[];
 }>;
+
+/** UI-6 (F2-A WR-3): the men away and when they come back (the population drawer's line), or null. */
+export function menAwayLine(state: GameState): string | null {
+  const men = conscriptsAway(state);
+  const back = warOf(state)?.conscripts?.returnTick;
+  if (men === 0 || back === undefined) return null;
+  const when = calendar(back, scenarioOf(state).startYear);
+  return LORDSHIP_COPY.awayUntil(men, when.year, SCENARIO_COPY.seasons[when.season as 0 | 1 | 2 | 3]);
+}
 
 export function lordshipView(state: GameState): LordshipView {
   const lordship = lordshipOf(state);
