@@ -54,6 +54,14 @@ export type ObjectRenderItem =
       readonly anchorTx: number;
     }
   | {
+      /** UI-6 chapter 2's war (warWorldProps.ts): the coastal beacon, the raid's burning quay and smoke, display only. */
+      readonly kind: "war_prop";
+      readonly id: string;
+      readonly prop: import("./warWorldProps").WarProp;
+      readonly depth: number;
+      readonly anchorTx: number;
+    }
+  | {
       /** Orchard trees and haycocks of painted zones (C1b), from the ground scene's zone layer. */
       readonly kind: "zone_prop";
       readonly id: string;

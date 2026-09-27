@@ -16,6 +16,7 @@ import { groundBoundaryScene } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { farmProps, type FarmProp } from "./farmProps";
 import { hurdleAssetKey } from "./hurdleArt";
+import { warProps, type WarProp } from "./warWorldProps";
 
 type ObjectRenderFrameInput = {
   readonly state: GameState;
@@ -40,7 +41,7 @@ const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderC
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
-  const staticItems = withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input);
+  const staticItems = withWarProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
@@ -120,6 +121,23 @@ const withFarmProps = (queue: readonly RenderQueueItem[], input: ObjectRenderFra
     .sort(compareObjectRenderItems);
   const result = visible.length === 0 ? queue : mergeObjectRenderItems(queue, visible);
   lastFarmMerge = { queue, props, range, result };
+  return result;
+};
+
+/** UI-6 the war's beacon, burning quay and raid smoke (warWorldProps.ts): only while the town is at war on the coast. */
+// Cache: the last merge, keyed on the incoming queue, the prop list (the same array while the state is) and the range.
+let lastWarMerge: { readonly queue: readonly RenderQueueItem[]; readonly props: readonly WarProp[]; readonly range: string; readonly result: readonly RenderQueueItem[] } | null = null;
+const withWarProps = (queue: readonly RenderQueueItem[], input: ObjectRenderFrameInput): readonly RenderQueueItem[] => {
+  if (input.state.war === undefined) return queue;
+  const props = warProps(input.state);
+  if (props.length === 0) return queue;
+  const range = `${input.range.minTx},${input.range.minTy},${input.range.maxTx},${input.range.maxTy}`;
+  if (lastWarMerge !== null && lastWarMerge.queue === queue && lastWarMerge.props === props && lastWarMerge.range === range) return lastWarMerge.result;
+  const visible = props.filter(prop => tileIsVisibleInRange(prop.tx, prop.ty, input.range))
+    .map(prop => ({ kind: "war_prop" as const, id: prop.id, prop, depth: prop.depth, anchorTx: prop.tx }))
+    .sort(compareObjectRenderItems);
+  const result = visible.length === 0 ? queue : mergeObjectRenderItems(queue, visible);
+  lastWarMerge = { queue, props, range, result };
   return result;
 };
 

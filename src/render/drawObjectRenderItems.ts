@@ -20,6 +20,7 @@ import { renderStageProbe, stageForRenderItem } from "./renderStageProbe";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 import { beginBuildingVariantFrame } from "./buildingVariants";
+import { drawWarProp } from "./warWorldProps";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -67,6 +68,10 @@ export function drawObjectRenderItems(
     probe?.enter(stageForRenderItem(item.kind));
     if (item.kind === "bridge_rail") {
       drawBridgeRail(context, item.piece);
+      continue;
+    }
+    if (item.kind === "war_prop") { // UI-6 the war's beacon, burning quay and raid smoke
+      if (viewMode === "normal") drawWarProp(context, item.prop, input.zoom, input.nowMs ?? 0);
       continue;
     }
     if (item.kind === "walker" && !stoneGates.some(gate =>

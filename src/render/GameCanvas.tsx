@@ -11,6 +11,7 @@ import type { PlacementTool } from "./renderer";
 import { useGameApi, useGameUiSelector } from "../state/gameStore";
 import { presentedState } from "./presentation/presentedState";
 import { buildingInspectorModel } from "./buildingInspectorModel";
+import { ringDefenceRow, wallInspectorModel } from "./wallInspectorModel";
 import { BuildingInspector, buildingCauseLine, type HoveredBuilding } from "./BuildingInspector";
 import { useGameCanvasRuntime } from "./useGameCanvasRuntime";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
@@ -127,12 +128,13 @@ export function GameCanvas({
   } else if (selection?.kind === "walker") {
     const value = walkerDiagnosisModel(state, selection.walkerId);
     if (value !== null) cardModel = { kind: "walker", value };
+  } else if (selection?.kind === "wall_segment") {
+    const value = wallInspectorModel(state, selection.segmentId);
+    if (value !== null) cardModel = { kind: "wall", value };
   } else if (selection?.kind === "construction_site") {
     const site = state.constructionSites.find((candidate) => candidate.id === selection.siteId);
     if (site !== undefined) {
-      cardModel = {
-        kind: "construction_site",
-        value: { blockerLine: constructionBlockerLine(state, site), ...constructionSiteCardModel(site, {
+      const siteCard = constructionSiteCardModel(site, {
           constructionSites: state.constructionSites,
           materialDiagnosisState: {
             buildings: state.buildings,
@@ -143,7 +145,12 @@ export function GameCanvas({
           cancellationDisabledReason: state.palisade === null
             ? null
             : constructionCancellationDisabledReason(site),
-        }) },
+        });
+      // UI-6: a wall site's card also shows what the ring holds against a raid now (0 while a gap remains).
+      const defence = site.kind === "palisade_segment" ? ringDefenceRow(state) : null;
+      cardModel = {
+        kind: "construction_site",
+        value: { blockerLine: constructionBlockerLine(state, site), ...siteCard, ringDefence: defence },
       };
     }
   }
