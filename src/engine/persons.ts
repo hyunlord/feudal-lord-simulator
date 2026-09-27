@@ -17,6 +17,7 @@
  *   heads, the most substantial first, named on each petition).
  * - PS-2 names and PS-5 portraits are fixed when a person appears (namesakes get bynames; see `personNames.ts`).
  */
+import { EPITHETS_KO, GIVEN_NAMES_KO, KING_NAMES_KO, PERSON_NAME_COPY, SURNAMES_KO } from "../content/personNames.ko";
 import { FEMALE_GIVEN_NAMES, HAIR_COLOURS, MALE_GIVEN_NAMES, NAMESAKE_EPITHETS, OCCUPATIONAL_SURNAMES, ORDINAL_EPITHETS, PATRONYMIC_SURNAMES, TOPOGRAPHIC_SURNAMES, type WeightedName } from "../content/personNames";
 import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { houseHasFood } from "../population/houseFood";
@@ -71,6 +72,19 @@ export function inTown(person: Person): boolean {
 /** PS-2: "John atte Well the younger". */
 export function displayName(person: Pick<Person, "givenName" | "surname" | "epithet">): string {
   return [person.givenName, person.surname, person.epithet].filter(part => part !== undefined && part !== "").join(" ");
+}
+
+/**
+ * FIX-6 ③ (decision FX6-4): the name every screen writes — read in Korean (`personNames.ko.ts`): a king by his regnal
+ * name, anyone else as byname-epithet, given name, surname ("나이 든 토머스 애덤슨", "윌리엄 드 리종드"). A name missing
+ * from the tables is written as it is (the tables are checked to cover every name the game gives).
+ */
+export function personDisplayName(person: Pick<Person, "givenName" | "surname" | "epithet" | "occupation">): string {
+  if (person.occupation === "king") return KING_NAMES_KO[person.givenName] ?? person.givenName;
+  const epithet = person.epithet === undefined || person.epithet === "" ? null
+    : EPITHETS_KO[person.epithet] ?? (person.epithet.startsWith("no. ") ? PERSON_NAME_COPY.numberedEpithet(String(Number(person.epithet.slice(4)))) : person.epithet);
+  const surname = person.surname === undefined || person.surname === "" ? null : SURNAMES_KO[person.surname] ?? person.surname;
+  return PERSON_NAME_COPY.fullName(epithet, GIVEN_NAMES_KO[person.givenName] ?? person.givenName, surname);
 }
 
 /** A name from a weighted list by a roll (FACTION-0: the factions' people are named so too). */

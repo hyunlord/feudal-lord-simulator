@@ -1,6 +1,6 @@
 import type { GameState } from "./engine.types";
 import { historyDate, historyQuery, historySummary } from "./history";
-import { ageBandOf, ageOf, currentYear, displayName, personById, personPortrait, personsByRole, personsOf } from "./persons";
+import { ageBandOf, ageOf, currentYear, displayName, personById, personDisplayName, personPortrait, personsByRole, personsOf } from "./persons";
 
 /**
  * PERSON-0 PS-7: the persons API for the render (UI-5 portraits, CHRON-1 biographies): `persons.of(state, household)`,
@@ -20,4 +20,6 @@ export function personBiography(state: GameState, id: string) {
   };
 }
 
-export const persons = { of: personsOf, byRole: personsByRole, biography: personBiography, portrait: personPortrait, name: displayName } as const;
+// FIX-6 ③: `displayName` is the name the screens write (Korean readings, `personDisplayName`); `name` the period English.
+export const persons = { of: personsOf, byRole: personsByRole, biography: personBiography, portrait: personPortrait, name: displayName,
+  displayName: personDisplayName } as const;
