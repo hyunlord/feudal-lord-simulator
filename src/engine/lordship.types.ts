@@ -32,7 +32,8 @@ export interface LordHouse {
 /** FL-3: the decline (stage 3). */
 export interface DeclineState {
   readonly since: number;
-  readonly cause: "derelict" | "arrears";
+  /** FIX-5 (FL-13, FL-14): or the town lost most of its people, or all of them. */
+  readonly cause: "derelict" | "arrears" | "depopulated" | "empty";
   /** The right lost when the decline began (none if the lord held none). */
   readonly lost: LordRightId | null;
   readonly by: LordRightHolder;

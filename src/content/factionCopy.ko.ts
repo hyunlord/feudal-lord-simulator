@@ -2,16 +2,19 @@
  * FACTION-0 (spec docs/design/factions.md FX-*): the factions' Korean copy — their kinds, the world's events, their own
  * affairs and what moved their relation. Proper nouns (earldoms, houses, sees, kings) stay as the period wrote them.
  */
+import { GENTRY_NAMES_KO } from "./gentryNames";
+
 export const FACTION_KIND_NAMES: Readonly<Record<string, string>> = {
   overlord: "상위 영주", crown: "국왕과 왕실", neighbour: "이웃 영주", church: "주교", merchant_house: "상인 가문", town: "도시 공동체", commons: "농민 공동체",
 };
 
-/** A faction's Korean name from its id and its (proper-noun) name. */
+/** A faction's Korean name from its id and its (proper-noun) name (FIX-5: the invented names' Korean readings). */
 export function factionDisplayName(id: string, name: string): string {
-  if (id === "overlord") return `${name} 백작`;
+  const read = GENTRY_NAMES_KO[name] ?? name;
+  if (id === "overlord") return `${read} 백작`;
   if (id === "crown") return "국왕과 왕실";
-  if (id === "neighbour_1" || id === "neighbour_2") return `${name} 가문(이웃 영주)`;
-  if (id === "bishop") return `${name} 주교`;
+  if (id === "neighbour_1" || id === "neighbour_2") return `${read} 가문(이웃 영주)`;
+  if (id === "bishop") return `${read} 주교`;
   if (id === "merchant_house_1" || id === "merchant_house_2") return `${name} 상인 가문`;
   return FACTION_KIND_NAMES[name] ?? name;
 }
@@ -52,7 +55,7 @@ export function factionReasonLine(reason: string): string {
   const [kind, a, b] = reason.split(":");
   if (kind === "petition") return `${PETITION_NAMES[a ?? ""] ?? a}에 ${ANSWERS[b ?? ""] ?? b}`;
   if (kind === "famine") return `대기근에 ${a === "relief" ? "구휼" : a === "price_control" ? "가격 통제" : a === "laissez_faire" ? "방관" : "투기"}`;
-  if (kind === "decline") return a === "arrears" ? "유지비 미납으로 쇠퇴" : "빈 필지가 늘어 쇠퇴";
+  if (kind === "decline") return a === "arrears" ? "유지비 미납으로 쇠퇴" : a === "depopulated" ? "사람이 떠나 쇠퇴" : a === "empty" ? "도시가 비어 쇠퇴" : "빈 필지가 늘어 쇠퇴";
   if (kind === "restored") return "권리를 되삼";
   if (kind === "house_change") return "영주 가문이 바뀜";
   if (kind === "raid") return a === "held" ? "습격에 성벽이 버팀" : "습격에 성벽이 뚫림";

@@ -241,8 +241,9 @@ export function factionChanges(before: GameState, after: GameState): readonly Fa
       if (delta !== 0) changes.push({ factionId: def.id, delta, reason: "house_change" });
     }
   } else if (lordAfter.decline !== null && lordBefore.decline === null) {
-    changes.push(lordAfter.decline.cause === "arrears" ? { factionId: "overlord", delta: RELATION_RULES.declineArrears, reason: "decline:arrears" }
-      : { factionId: "town", delta: RELATION_RULES.declineDerelict, reason: "decline:derelict" });
+    // FIX-5: a town emptied of its people fails the overlord as one in arrears does.
+    changes.push(lordAfter.decline.cause === "derelict" ? { factionId: "town", delta: RELATION_RULES.declineDerelict, reason: "decline:derelict" }
+      : { factionId: "overlord", delta: RELATION_RULES.declineArrears, reason: `decline:${lordAfter.decline.cause}` });
   } else if (lordAfter.decline === null && lordBefore.decline !== null && lordBefore.decline.lost !== null) {
     changes.push({ factionId: lordBefore.decline.by === "overlord" ? "overlord" : "merchant_house_1", delta: RELATION_RULES.restored, reason: "restored" });
   }

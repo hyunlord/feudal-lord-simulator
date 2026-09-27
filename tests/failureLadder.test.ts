@@ -13,7 +13,8 @@ import { LORDSHIP_BALANCE, LORD_HOUSE_NAMES } from "../src/content/lordshipConfi
 import { SANDBOX_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 import { chapterDecisionAction } from "../src/engine/autoplayEvents";
 import type { GameState } from "../src/engine/engine.types";
-import { advanceLordship, arrearsPeriods, declineCause, derelictPermille } from "../src/engine/lordship";
+import { advanceLordship, arrearsPeriods, declineCause, depopulated, derelictPermille, townEmpty } from "../src/engine/lordship";
+import { advanceTick } from "../src/engine/tick";
 import { lordHouse, lordRights, lordshipOf, lordTitle } from "../src/engine/lordshipState";
 import { settleMoneyPeriod } from "../src/engine/moneyRules";
 import { advancePolitics, chapterGoals, initialPolitics, openPetitions, respondToPetition } from "../src/engine/politics";
@@ -229,3 +230,66 @@ test("F8 (FL-9) prosperity is a chapter goal: its milestone stays, the campaign 
   assert.deepEqual([sandbox.settlement!.milestones.prosperity, sandbox.settlement!.outcome], [null, "ongoing"], "the sandbox has no prosperity goal and no victory");
   assert.ok(MONEY_BALANCE.upkeep.mill > 0);
 });
+
+/** FIX-5: a tick on a ladder sample that is not a season's start (the collapse rungs do not wait for the season). */
+const offSeason = (state: GameState) => ({ ...state, tick: state.tick - state.tick % SEASON + 3 * PRESSURE_BALANCE.sampleTicks });
+const withPeople = (state: GameState, keep: number) => {
+  const houses = state.houses.map((house, index) => ({ ...house, residents: index < keep ? house.residents : 0 }));
+  return { ...state, houses, population: houses.reduce((sum, house) => sum + house.residents, 0) };
+};
+
+test("F9 (FL-13) a town under 30 % of its chapter's starting population declines at once, the overlord taking the tolls in custody", () => {
+  const base = city();
+  const start = base.politics!.chapter.populationStart;
+  const few = offSeason(withPeople(base, 2));
+  assert.ok(few.population * 10 < start * 3, `${few.population} of ${start}`);
+  assert.equal(depopulated(few), true);
+  assert.equal(depopulated(offSeason(withPeople(base, 12))), false);
+  const declined = advanceLordship(few);
+  const decline = lordshipOf(declined).decline!;
+  assert.deepEqual({ cause: decline.cause, lost: decline.lost, by: decline.by, since: decline.since }, { cause: "depopulated", lost: "tolls", by: "overlord", since: few.tick });
+  assert.equal(lordTitle(declined).demoted, true);
+  assert.equal(lordHouse(declined).order, 1, "the house stays while people remain");
+  const record = advanceHistory(few, declined).history!.records.find(entry => entry.template === "decline.entered")!;
+  assert.equal(historySummary(record), "영지가 쇠퇴했다 — 사람이 떠나, 통행세를 상위 영주가 맡았고 칭호가 강등되었다");
+});
+
+test("F10 (FL-14) an empty town declines, its house withdraws and the new house resettles it at once; the campaign is not lost", () => {
+  const base = city();
+  const empty = offSeason(withPeople(base, 0));
+  assert.equal(townEmpty(empty), true);
+  const next = advanceLordship(empty);
+  const lordship = lordshipOf(next);
+  assert.equal(lordship.house.order, 2);
+  assert.equal(lordship.pastHouses[0]!.name, lordHouse(base).name);
+  assert.equal(lordship.decline, null);
+  const standing = empty.houses.filter(house => house.burntTick === undefined).length;
+  assert.equal(next.houses.filter(house => house.residents > 0).length, standing);
+  assert.ok(next.population > 0 && next.houses.every(house => house.residents === 0 || (house.starvationGraceUntilTick ?? 0) > empty.tick));
+  const templates = advanceHistory(empty, next).history!.records.map(record => record.template);
+  assert.deepEqual(templates.filter(template => template.startsWith("house.") || template === "decline.entered"), ["house.withdrew", "house.arrived", "house.resettled"]);
+  // Through the tick: the settlement never counts its 600 empty ticks, so the campaign goes on with the new house.
+  let state: GameState = { ...empty, tick: empty.tick - 1 };
+  for (let step = 0; step < 700; step += 1) state = advanceTick(state);
+  assert.notEqual(state.settlement?.outcome, "abandoned");
+  assert.equal(lordshipOf(state).house.order, 2);
+  assert.ok(state.population > 0);
+});
+
+test("F11 (FL-3) forced by the rules: a town whose houses burnt pays no rent, its upkeep goes unpaid four periods and it declines by arrears", () => {
+  const base = city();
+  let tick = Math.ceil(base.tick / LEDGER_PERIOD_TICKS) * LEDGER_PERIOD_TICKS;
+  const drained = postLedgerEntries({ ...base, tick: tick - 1 }, [{ account: "cash", category: "opening_balance", amount: -treasuryBalance(base), sourceRefs: [{ type: "scenario", id: "failure-ladder-test" }] }]);
+  // EV-4: a burnt house pays no rent; its household stays (no dereliction, no depopulation).
+  let state: GameState = { ...base, ledger: drained.ledger, treasuryCoin: drained.treasuryCoin,
+    houses: base.houses.map(house => ({ ...house, burntTick: base.tick, burntByEventId: `fire@${Math.floor(base.tick / SEASON)}` })) };
+  for (let period = 1; period <= LORDSHIP_BALANCE.arrearsPeriods; period += 1) {
+    state = settleMoneyPeriod({ ...state, tick });
+    assert.equal(arrearsPeriods(state), period, `period ${period}`);
+    tick += LEDGER_PERIOD_TICKS;
+  }
+  assert.deepEqual([declineCause(state), derelictPermille(state), depopulated(state)], ["arrears", 0, false]);
+  const declined = atSeasonStart(state, tick + SEASON);
+  assert.deepEqual(lordshipOf(declined).decline && { cause: lordshipOf(declined).decline!.cause, lost: lordshipOf(declined).decline!.lost }, { cause: "arrears", lost: "tolls" });
+});
+

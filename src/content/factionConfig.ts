@@ -4,6 +4,7 @@
  * Values are integers; names are the period's proper nouns (the Korean copy is `factionCopy.ko.ts`).
  */
 import type { Petitioner } from "./chapterConfig";
+import { BISHOP_SURNAMES, EARL_SURNAMES, EARLDOM_TITLES, NEIGHBOUR_SURNAMES, SEE_NAMES } from "./gentryNames";
 
 export type FactionKind = "overlord" | "crown" | "neighbour" | "church" | "merchant_house" | "town" | "commons";
 export type FactionId = "overlord" | "crown" | "neighbour_1" | "neighbour_2" | "bishop" | "merchant_house_1" | "merchant_house_2" | "town" | "commons";
@@ -35,14 +36,14 @@ export const FACTION_OF_PETITIONER: Readonly<Record<Petitioner, FactionId>> = {
   merchants: "merchant_house_1", overlord: "overlord", crown: "crown", townsfolk: "town", refugees: "bishop",
 };
 
-/** FX-1: the seed picks the overlord's earldom, the neighbours' houses and the see (names in English, the period's proper nouns). */
-export const EARLDOMS: readonly { readonly title: string; readonly surname: string }[] = [
-  { title: "Arundel", surname: "FitzAlan" }, { title: "Warwick", surname: "Beauchamp" }, { title: "Hereford", surname: "de Bohun" },
-  { title: "Pembroke", surname: "de Valence" }, { title: "Oxford", surname: "de Vere" }, { title: "Devon", surname: "Courtenay" },
-];
-export const NEIGHBOUR_HOUSES: readonly string[] = ["Basset", "Zouche", "Lovel", "Scrope", "Willoughby", "Berkeley", "Talbot", "Grey"];
-export const SEES: readonly string[] = ["Lincoln", "Winchester", "Exeter", "Salisbury", "Worcester", "Norwich"];
-export const BISHOP_SURNAMES: readonly string[] = ["de Gravesend", "de Stratford", "de Grandisson", "de Wyvil", "de Cobham", "de Ayremynne"];
+/**
+ * FX-1: the seed picks the overlord's earldom, the neighbours' houses and the see. FIX-5 (decision FN11): all invented
+ * (`gentryNames.ts`); only the kings and the world's events are history's.
+ */
+export const EARLDOMS: readonly { readonly title: string; readonly surname: string }[] = EARLDOM_TITLES.map((title, index) => ({ title, surname: EARL_SURNAMES[index]! }));
+export const NEIGHBOUR_HOUSES: readonly string[] = NEIGHBOUR_SURNAMES;
+export const SEES: readonly string[] = SEE_NAMES;
+export { BISHOP_SURNAMES };
 
 /** FX-5: England's kings 1272–1461, the Crown's leaders by the calendar (not the seed). */
 export const KINGS: readonly { readonly name: string; readonly born: number; readonly from: number; readonly until: number }[] = [

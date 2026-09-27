@@ -59,7 +59,7 @@ export interface SeasonLedger {
 /** FAIL-3 (FL-5, FL-7): what befell the lordship in a closed season. */
 export interface SeasonLordshipLine {
   /** Stage 3 began: its cause, the right lost (none if the lord held none) and who took it. */
-  readonly declined?: { readonly cause: "derelict" | "arrears"; readonly right: string | null; readonly by: "overlord" | "merchants" };
+  readonly declined?: { readonly cause: "derelict" | "arrears" | "depopulated" | "empty"; readonly right: string | null; readonly by: "overlord" | "merchants" };
   /** Stage 4: the house that withdrew and the one that came. */
   readonly houseChanged?: { readonly withdrew: string; readonly arrived: string };
 }
