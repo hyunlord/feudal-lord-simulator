@@ -8,7 +8,7 @@
 - [기록·연대기 설계](CHRONICLE_DESIGN.md) 2.3 세력 연대기
 - [1장 명세](flow-chapter-one.md) FC-3(청원), [실패 사다리](failure-ladder-campaign.md) FL-6(복원 청원), [2장 사건](chapter-two-war.md) WR-2~WR-8(전쟁 청원)
 
-결정: [결정 목록](../decisions/README.md) FX1~FX9. 조항 번호(FX-*)는 `tests/factions.test.ts`의 시험 이름(X1~X8)과 이어진다. 화면(세력 연대기 CHRON-2, 문장·초상)은 렌더 몫이고, 이 명세는 렌더가 읽을 상태 API까지다.
+결정: [결정 목록](../decisions/README.md) FN1~FN9. 조항 번호(FX-*)는 `tests/factions.test.ts`의 시험 이름(X1~X8)과 이어진다. 화면(세력 연대기 CHRON-2, 문장·초상)은 렌더 몫이고, 이 명세는 렌더가 읽을 상태 API까지다.
 
 청원과 사건 뒤에 누가 있는지가 개체가 된다. 세력마다 수장(인물)·관계·요구·약속·기억·연표가 있다. FACTION-0은 기초라서 세력이 시뮬레이션을 바꾸지는 않는다. 관계는 권리·정치 작업(RIGHTS)이 읽을 재료이고, 세력 연대기(CHRON-2)의 데이터다.
 
