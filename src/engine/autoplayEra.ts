@@ -44,7 +44,8 @@ export function aleChainAction(state: GameState, buildAction: (state: GameState,
   const years = new Map(farmsteadYears(state).map(year => [year.farmsteadId, year.wheat]));
   const spare = state.buildings.filter(building => building.kind === "farmstead")
     .sort((a, b) => (years.get(a.id) ?? 0) - (years.get(b.id) ?? 0) || a.id.localeCompare(b.id))
-    .find(barn => !arableSupplyShort(setFarmsteadCrop(state, barn.id, "barley")));
+    // A barn tending no strips would grow nothing (run 2's seed 3 turned an empty barn to barley).
+    .find(barn => (years.get(barn.id) ?? 0) > 0 && !arableSupplyShort(setFarmsteadCrop(state, barn.id, "barley")));
   return spare === undefined ? NONE : { kind: "set_farmstead_crop", buildingId: spare.id, crop: "barley" };
 }
 

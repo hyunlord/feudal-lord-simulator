@@ -45,10 +45,9 @@ function hasBrewster(state: GameState, house: House): boolean {
   return state.persons.people.some(person => person.householdId === house.buildingId && person.sex === "female" && ageOf(person, year) >= 14);
 }
 
-/** AL-5: the house hangs out the ale-stake (level 2 or more, ale in its brewing slot). */
+/** AL-5: the house hangs out the ale-stake (level 2 or more, brewing: the stake stays up while she brews, sold out or not). */
 export function isAlehouse(house: House): boolean {
-  return house.level >= ALE_BALANCE.alehouseMinLevel && house.residents > 0 && house.burntTick === undefined
-    && (brewingSlot(house)?.stock.ale ?? 0) > 0;
+  return house.level >= ALE_BALANCE.alehouseMinLevel && house.residents > 0 && house.burntTick === undefined && brewingSlot(house) !== null;
 }
 
 /** AL-5 API: the town's alehouses (house ids, by id). */
@@ -65,17 +64,10 @@ export function aleRequired(state: Pick<GameState, "tick" | "scenarioId" | "poli
   return currentYear(state) >= ALE_BALANCE.requiredFromYear;
 }
 
-/** AL-5/AL-6: the houses with an alehouse in reach (the alehouses themselves included). */
-export function aleServedHouses(state: Pick<GameState, "houses" | "buildings">): ReadonlySet<string> {
-  const buildings = new Map(state.buildings.map(building => [building.id, building]));
-  const stakes = state.houses.filter(isAlehouse).map(house => buildings.get(house.buildingId)).filter((building): building is Building => building !== undefined);
-  const served = new Set<string>();
-  if (stakes.length === 0) return served;
-  for (const house of state.houses) {
-    const home = buildings.get(house.buildingId);
-    if (home !== undefined && stakes.some(stake => buildingFootprintDistance(home, stake) <= ALE_BALANCE.alehouseReach)) served.add(house.buildingId);
-  }
-  return served;
+/** AL-5/AL-6: the households served by ale now — they drank this season or the last, or keep an alehouse with ale in it. */
+export function aleServedHouses(state: Pick<GameState, "houses" | "tick">): ReadonlySet<string> {
+  return new Set(state.houses.filter(house => (house.aleUntilTick ?? -1) >= state.tick
+    || (isAlehouse(house) && (brewingSlot(house)?.stock.ale ?? 0) > 0)).map(house => house.buildingId));
 }
 
 function withSlot(house: House, slot: HouseholdSlot): House {
@@ -94,7 +86,8 @@ function brewBatch(state: GameState): GameState {
   let buildings = [...state.buildings];
   const index = new Map(buildings.map((building, at) => [building.id, at]));
   let changed = false;
-  const houses = [...state.houses].sort((a, b) => a.buildingId.localeCompare(b.buildingId)).map(original => {
+  // The higher houses (the alehouses) fetch first when the malt is short.
+  const houses = [...state.houses].sort((a, b) => b.level - a.level || a.buildingId.localeCompare(b.buildingId)).map(original => {
     let house = original;
     if (house.residents <= 0 || house.burntTick !== undefined || house.abandonedTick !== undefined || house.level < Math.min(...craft.levels)) return house;
     let slot = brewingSlot(house);
@@ -127,17 +120,17 @@ function brewBatch(state: GameState): GameState {
   return { ...state, houses, buildings };
 }
 
-/** AL-5: the season's drinking — each house of level 2+ from its nearest alehouse; the alehouses' dues on their sales. */
+/** AL-5: the season's drinking — each house of level 1+ from its nearest alehouse with ale; the alehouses' dues on their sales. */
 function drinkSeason(state: GameState): GameState {
   const buildings = new Map(state.buildings.map(building => [building.id, building]));
   const houses = [...state.houses];
   const at = new Map(houses.map((house, index) => [house.buildingId, index]));
   const sold = new Map<string, number>();
   for (const house of [...state.houses].sort((a, b) => a.buildingId.localeCompare(b.buildingId))) {
-    if (house.level < ALE_BALANCE.requiredFromLevel || house.residents <= 0) continue;
+    if (house.level < 1 || house.residents <= 0) continue;
     const home = buildings.get(house.buildingId);
     if (home === undefined) continue;
-    const stake = houses.filter(entry => isAlehouse(entry) && buildings.has(entry.buildingId)
+    const stake = houses.filter(entry => isAlehouse(entry) && (brewingSlot(entry)?.stock.ale ?? 0) > 0 && buildings.has(entry.buildingId)
       && buildingFootprintDistance(home, buildings.get(entry.buildingId)!) <= ALE_BALANCE.alehouseReach)
       .sort((a, b) => buildingFootprintDistance(home, buildings.get(a.buildingId)!) - buildingFootprintDistance(home, buildings.get(b.buildingId)!)
         || a.buildingId.localeCompare(b.buildingId))[0];
@@ -146,6 +139,8 @@ function drinkSeason(state: GameState): GameState {
     const drink = Math.min(ALE_BALANCE.alePerHouseSeason, slot.stock.ale ?? 0);
     if (drink <= 0) continue;
     houses[at.get(stake.buildingId)!] = withSlot(stake, { ...slot, stock: { ...slot.stock, ale: (slot.stock.ale ?? 0) - drink } });
+    const drinker = houses[at.get(house.buildingId)!]!;
+    houses[at.get(house.buildingId)!] = { ...drinker, aleUntilTick: state.tick + ALE_BALANCE.aleServedTicks };
     sold.set(stake.buildingId, (sold.get(stake.buildingId) ?? 0) + drink);
   }
   if (sold.size === 0) return state;

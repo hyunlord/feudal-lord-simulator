@@ -199,7 +199,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryCoin: state.treasuryCoin,
   });
   // C4 (AL-6): from 1318 a house rises to level 2 or more only with an alehouse in reach.
-  const ale = aleRequired({ ...state, tick }) ? { fromLevel: ALE_BALANCE.requiredFromLevel, served: aleServedHouses(marketSettled) } : undefined;
+  const ale = aleRequired({ ...state, tick }) ? { fromLevel: ALE_BALANCE.requiredFromLevel, served: aleServedHouses({ houses: marketSettled.houses, tick }) } : undefined;
   const housing = updateHousing(servedHouses, marketSettled.buildings, tick, state.palisade,
     undefined, householdServices(marketSettled), ale);
   const activeWalkers = movedDistributors.walkers.filter((walker) => walker.kind !== "builder");

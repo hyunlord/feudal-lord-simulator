@@ -12,10 +12,12 @@ export const ALE_BALANCE = {
   slotAleCap: 8,
   /** AL-5: a house of this level whose brewing slot holds ale hangs out the ale-stake: it is an alehouse. */
   alehouseMinLevel: 2,
-  /** AL-5: houses this close to an alehouse with ale drink from it (footprint distance). */
-  alehouseReach: 12,
-  /** AL-5: each house of level 2 or more drinks this much ale a season from its nearest alehouse. */
+  /** AL-5: houses this close to an alehouse drink from it (footprint distance). */
+  alehouseReach: 16,
+  /** AL-5: each house of level 1 or more drinks this much ale a season from its nearest alehouse with ale… */
   alePerHouseSeason: 1,
+  /** …and counts as served by ale this long after (two seasons: a season the alehouse ran dry does not undo it). */
+  aleServedTicks: 2_000,
   /** AL-6: from chapter 2 (1318; the sandbox from 1318), a house needs an alehouse in reach to rise to level 2 or more. */
   requiredFromYear: 1318,
   requiredFromLevel: 2,

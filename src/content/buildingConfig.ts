@@ -354,7 +354,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 40 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    production: { output: "malt", input: "barley", inputPerOutput: 1, ticksPerOutput: 40, outputHoldLimit: 20 },
+    production: { output: "malt", input: "barley", inputPerOutput: 1, ticksPerOutput: 20, outputHoldLimit: 20 },
     storageCapacity: 40,
     serviceRadius: 0,
   },

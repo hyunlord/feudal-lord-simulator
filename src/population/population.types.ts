@@ -46,4 +46,6 @@ export interface House {
   burntTick?: number;
   /** F0-B (save v13): the event (`EventRecord.id`) that burnt it, the cause the player reads (SourceRef type `event`). */
   burntByEventId?: string;
+  /** C4 (AL-5, save v23): the household drank ale from an alehouse and counts as served until this tick. */
+  aleUntilTick?: number;
 }
