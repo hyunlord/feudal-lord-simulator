@@ -102,6 +102,7 @@ export function chronicleYears(state: Pick<GameState, "scenarioId" | "tick">): r
 
 // ---------------------------------------------------------------------------------------------------------------
 // Timeline: one strip segment per scenario era (entered: from its entry; ahead: from its year or now, whichever later).
+// An era not entered yet is labelled with its nominal year (UI-KIT-1b: an overdue one read "now", e.g. 1469, before).
 
 export type TimelineSegment = Readonly<{ eraId: string; label: string; from: number; to: number; fromYear: number; entered: boolean }>;
 export type TimelineMarkerKind = "decision" | "era" | "event" | "milestone" | "person";
@@ -120,8 +121,11 @@ export function timelineSegments(state: Pick<GameState, "scenarioId" | "tick" | 
     const at = entered.get(era.id) ?? Math.max(nominal, index === 0 ? 0 : state.tick + 1);
     starts.push(Math.max(previous + 1, at));
   }
-  return scenario.eras.map((era, index) => ({ eraId: era.id, label: era.name, from: index === 0 ? 0 : starts[index]!, to: starts[index + 1] ?? end,
-    fromYear: yearOfTick(state, index === 0 ? 0 : starts[index]!), entered: index === 0 || entered.has(era.id) }));
+  return scenario.eras.map((era, index) => {
+    const isEntered = index === 0 || entered.has(era.id);
+    return { eraId: era.id, label: era.name, from: index === 0 ? 0 : starts[index]!, to: starts[index + 1] ?? end,
+      fromYear: isEntered ? yearOfTick(state, index === 0 ? 0 : starts[index]!) : era.enterWhen.yearAtLeast ?? scenario.startYear, entered: isEntered };
+  });
 }
 
 /** Where a tick falls along the band (0–1): each segment an equal share, linear in time inside it. */

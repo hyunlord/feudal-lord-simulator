@@ -87,6 +87,10 @@ test("CHRON-1 timeline: one equal strip segment per era, x and tick invert, one 
   assert.equal(segments.length, 5, "the strip's five coloured segments are the five eras");
   assert.deepEqual(segments.map(segment => segment.fromYear), [1300, 1302, 1337, 1348, 1380]);
   assert.equal(segments[1]!.from, 10_000, "an entered era starts where it entered");
+  // UI-KIT-1b: in 1469 with only two eras entered, the overdue ones keep their nominal years (not "now") and read as not yet come.
+  const late = timelineSegments({ ...state, tick: 169 * 4_000 + 100 });
+  assert.deepEqual(late.map(segment => [segment.fromYear, segment.entered]), [[1300, true], [1302, true], [1337, false], [1348, false], [1380, false]]);
+  assert.ok(late[2]!.from > 169 * 4_000, "an overdue era still sits after now on the strip");
   for (const tick of [0, 4_000, 10_000, 10_500, 200_000]) assert.ok(Math.abs(timelineTickAt(segments, timelineX(segments, tick)) - tick) <= 2, `${tick}`);
   assert.equal(timelineX(segments, 10_000), 0.2);
   // Ten stretches: the first era's halves (the mill; the fire outweighing the decisions and the burnt house), the famine's start.
