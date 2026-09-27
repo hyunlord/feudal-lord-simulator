@@ -69,12 +69,17 @@ test("prosperity needs 1200 uninterrupted ticks but no stone-town era or stone w
   const marketTown = { ...base, era: "palisade" as const, population: 140 };
   const almost = advance(marketTown, 1199);
   assert.equal(almost.settlement?.outcome, "ongoing");
-  assert.equal(advance(almost, 1).settlement?.outcome, "victory");
+  // FAIL-3 (FL-9): prosperity is a chapter goal (its milestone); the campaign goes on.
+  assert.notEqual(advance(almost, 1).settlement?.milestones.prosperity ?? null, null);
+  assert.equal(advance(almost, 1).settlement?.outcome, "ongoing");
   // An unfinished stone replacement no longer holds victory back.
   const replacing = { ...marketTown, era: "stone_town" as const, palisade: { ...base.palisade, segments: base.palisade.segments.map(segment => ({ ...segment, replacementConstructionSiteId: "replacement" })) } };
   const victory = advance(replacing, 1200);
-  assert.equal(victory.settlement?.outcome, "victory");
-  assert.equal(advance({ ...victory, population: 0, houses: [] }, 7000).settlement?.outcome, "victory");
+  assert.notEqual(victory.settlement?.milestones.prosperity ?? null, null);
+  // The goal reached stays reached; a town that then empties is abandoned (the campaign had not been won).
+  const emptied = advance({ ...victory, population: 0, houses: [] }, 7000);
+  assert.equal(emptied.settlement?.milestones.prosperity, victory.settlement?.milestones.prosperity);
+  assert.equal(emptied.settlement?.outcome, "abandoned");
 });
 
 test("food crisis warns at 300 ticks and recovery resets it immediately", () => {

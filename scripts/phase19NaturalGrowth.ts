@@ -62,6 +62,8 @@ export function runPhase19NaturalGrowth(options: {
   readonly noWells?: boolean;
   /** F0-C1 gate ③: the bot's famine answer (`--famine-response=<choice>`, spec FC-6). */
   readonly famineResponse?: import("../src/content/chapterConfig").FamineResponseChoice;
+  /** FAIL-3 gate (FL-12): the naive variant that ignores its debts (`AutoplayPolicy.naiveUpkeep`). */
+  readonly naiveUpkeep?: boolean;
   readonly additionalAcceptance?: (state: GameState) => boolean;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
@@ -71,7 +73,8 @@ export function runPhase19NaturalGrowth(options: {
   const { targetLots, maxTicks, seed } = parseGrowthOptions([String(options.targetLots), String(options.maxTicks), "", String(options.seed ?? 1)]);
   const policy = { maxHousingLots: targetLots, ...(options.naiveReserve === true ? { naiveReserve: true } : {}),
     ...(options.noWells === true ? { noWells: true } : {}),
-    ...(options.famineResponse === undefined ? {} : { famineResponse: options.famineResponse }) };
+    ...(options.famineResponse === undefined ? {} : { famineResponse: options.famineResponse }),
+    ...(options.naiveUpkeep === true ? { naiveUpkeep: true } : {}) };
   const source = provenance();
   const started = performance.now();
   const opening = createGrowthOpening(seed);
@@ -123,12 +126,13 @@ export function runPhase19NaturalGrowth(options: {
     maximumLots = Math.max(maximumLots, current.lots);
     if (targetReachedTick === null && current.lots >= targetLots) { targetReachedTick = state.tick; record("target-reached"); }
     eligibleStreak = prosperityEligible(state) ? eligibleStreak + 1 : 0;
-    if (victoryTick === null && state.settlement?.outcome === "victory") {
+    // FAIL-3 (FL-9): the victory tick is the prosperity milestone (the campaign's own victory is chapter 5's end).
+    if (victoryTick === null && (state.settlement?.milestones.prosperity ?? null) !== null) {
       victoryTick = state.tick; victoryEligibleTicks = eligibleStreak; record("victory");
       if (eligibleStreak < SETTLEMENT_CONFIG.prosperityHoldTicks) failures.push("Premature victory");
     }
     stability.observe({ tick: state.tick, lots: current.lots,
-      victory: state.settlement?.outcome === "victory", fullService: fullServicePopulation(state) });
+      victory: (state.settlement?.milestones.prosperity ?? null) !== null, fullService: fullServicePopulation(state) });
     const window = stability.report();
     options.onTick?.(state, window.stableSince);
     if (window.stableSince !== null) {

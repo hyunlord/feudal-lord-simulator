@@ -42,7 +42,7 @@ for (let step = 0; step < requestedTicks; step += 1) {
   }
   if (state.tick % 6000 === 0 && checkpoint) writeFileSync(checkpoint, JSON.stringify(state));
   if (state.tick % 3000 === 0) console.log(JSON.stringify({ tick: state.tick, population: state.population, era: state.era, idle: state.idleWorkers, requirements: evaluateEraRequirements(state), buildings: state.buildings.map(building => ({ kind: building.kind, workers: building.workers, inventory: building.inventory, tx: building.tx, ty: building.ty })), sites: state.constructionSites, action: driver.appliedActions.at(-1), houses: state.houses, settlement: state.settlement }));
-  if (state.settlement?.outcome === 'victory' && victoryTick === null) victoryTick = state.tick;
+  if ((state.settlement?.milestones.prosperity ?? null) !== null && victoryTick === null) victoryTick = state.tick;
   if (state.settlement?.outcome === 'abandoned') { stopReason = 'abandoned'; break; }
   if (victoryTick !== null && state.tick >= victoryTick + 6000) { stopReason = 'victory_followed_by_6000_ticks'; break; }
 }

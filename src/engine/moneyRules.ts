@@ -16,6 +16,7 @@ import type { LedgerPosting } from "../ledger/ledger.types";
 import { deriveParcels } from "../zones/parcels";
 import { zonesOf } from "../zones/zoneEdits";
 import { houseIsStarving } from "../population/houseFood";
+import { rightHeld } from "./lordshipState";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { householdServices } from "./householdServices";
@@ -122,7 +123,9 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
     if (plot !== undefined) sourceRefs.push({ type: "zone", id: plot.zoneId, detail: `frontage:${plot.width}` });
     postings.push({ account: "cash", category: "rent", amount, sourceRefs });
   }
-  for (const market of [...state.buildings].filter(building => building.kind === "market").sort((a, b) => a.id.localeCompare(b.id))) {
+  // FAIL-3 (FL-1): a right lost to the overlord or the merchants pays its holder, not the treasury.
+  const markets = rightHeld(state, "market"), tolls = rightHeld(state, "tolls"), mill = rightHeld(state, "mill");
+  for (const market of [...state.buildings].filter(building => markets && building.kind === "market").sort((a, b) => a.id.localeCompare(b.id))) {
     const stalls = marketStalls(state, market);
     // FC-3/FC-4: a market charter lowers the dues (the right is a source of the posting).
     const right = stallFeeRightSource(state);
@@ -135,11 +138,11 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
     const units = Math.floor(wheat / MONEY_BALANCE.millTollWheat);
     const remainder = wheat - units * MONEY_BALANCE.millTollWheat;
     if (remainder > 0 && state.buildings.some(building => building.id === millId)) millWheat[millId] = remainder;
-    if (units > 0) postings.push({ account: "cash", category: "mill_toll", amount: units * MONEY_BALANCE.millTollPerUnit,
+    if (units > 0 && mill) postings.push({ account: "cash", category: "mill_toll", amount: units * MONEY_BALANCE.millTollPerUnit,
       sourceRefs: [buildingSource(millId, `wheat:${units * MONEY_BALANCE.millTollWheat}`)] });
   }
   for (const [pointId, count] of Object.entries(money.crossings).sort(([a], [b]) => a.localeCompare(b))) {
-    if (count > 0) postings.push({ account: "cash", category: "toll", amount: count * MONEY_BALANCE.tollPerCrossing,
+    if (count > 0 && tolls) postings.push({ account: "cash", category: "toll", amount: count * MONEY_BALANCE.tollPerCrossing,
       sourceRefs: [tollPointSource(pointId), { type: "trade", id: "carter_crossings", detail: `crossings:${count}` }] });
   }
   return { postings, millWheat };

@@ -52,6 +52,16 @@ export interface SeasonLedger {
   readonly nextObjectiveHint: NextObjectiveHint;
   /** FIX-4 E11: with a food hint (`food_reserve`, `harvest_reserve`), what the town lacks. Absent otherwise (and before v18). */
   readonly foodNeeds?: FoodNeeds;
+  /** FAIL-3 (FL-5, FL-7): the lordship's fall in the season — a decline begun, a house withdrawn. Absent = neither (and before v19). */
+  readonly lordship?: SeasonLordshipLine;
+}
+
+/** FAIL-3 (FL-5, FL-7): what befell the lordship in a closed season. */
+export interface SeasonLordshipLine {
+  /** Stage 3 began: its cause, the right lost (none if the lord held none) and who took it. */
+  readonly declined?: { readonly cause: "derelict" | "arrears"; readonly right: string | null; readonly by: "overlord" | "merchants" };
+  /** Stage 4: the house that withdrew and the one that came. */
+  readonly houseChanged?: { readonly withdrew: string; readonly arrived: string };
 }
 
 /** The season being counted: its start snapshot and the events so far. */

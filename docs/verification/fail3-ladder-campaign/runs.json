@@ -1,0 +1,333 @@
+{
+  "runner": "DGX, scripts/remote/run.sh (REMOTE-1)",
+  "naiveRuns": [
+    {
+      "variant": "--naive-upkeep --famine-response=speculation",
+      "seed": 1,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 69500,
+        "year": 1317
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 219888,
+      "finalPopulation": 768,
+      "houseAtEnd": "Hastings"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=speculation",
+      "seed": 2,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 77500,
+        "year": 1319
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 269456,
+      "finalPopulation": 768,
+      "houseAtEnd": "Despenser"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=speculation",
+      "seed": 3,
+      "stage3": {
+        "tick": 22000,
+        "year": 1305,
+        "cause": "derelict",
+        "lost": "mill",
+        "by": "merchants"
+      },
+      "stage4": {
+        "tick": 30000,
+        "year": 1307,
+        "withdrew": "Willoughby",
+        "arrived": "Lovel"
+      },
+      "chapter2": null,
+      "maxDerelictPermille": 400,
+      "maxArrearsPeriods": 0,
+      "finalTick": 30000,
+      "finalPopulation": 188,
+      "houseAtEnd": "Lovel"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=speculation",
+      "seed": 4,
+      "stage3": {
+        "tick": 69000,
+        "year": 1317,
+        "cause": "derelict",
+        "lost": "market",
+        "by": "merchants"
+      },
+      "stage4": {
+        "tick": 77000,
+        "year": 1319,
+        "withdrew": "Neville",
+        "arrived": "Courtenay"
+      },
+      "chapter2": null,
+      "maxDerelictPermille": 500,
+      "maxArrearsPeriods": 0,
+      "finalTick": 77000,
+      "finalPopulation": 374,
+      "houseAtEnd": "Courtenay"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=speculation",
+      "seed": 5,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 89500,
+        "year": 1322
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 350892,
+      "finalPopulation": 768,
+      "houseAtEnd": "Ferrers"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=laissez_faire",
+      "seed": 1,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 69500,
+        "year": 1317
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 239433,
+      "finalPopulation": 768,
+      "houseAtEnd": "Hastings"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=laissez_faire",
+      "seed": 2,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 77500,
+        "year": 1319
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 250433,
+      "finalPopulation": 768,
+      "houseAtEnd": "Despenser"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=laissez_faire",
+      "seed": 3,
+      "stage3": {
+        "tick": 22000,
+        "year": 1305,
+        "cause": "derelict",
+        "lost": "mill",
+        "by": "merchants"
+      },
+      "stage4": {
+        "tick": 30000,
+        "year": 1307,
+        "withdrew": "Willoughby",
+        "arrived": "Lovel"
+      },
+      "chapter2": null,
+      "maxDerelictPermille": 400,
+      "maxArrearsPeriods": 0,
+      "finalTick": 30000,
+      "finalPopulation": 188,
+      "houseAtEnd": "Lovel"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=laissez_faire",
+      "seed": 4,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 69500,
+        "year": 1317
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 215779,
+      "finalPopulation": 768,
+      "houseAtEnd": "Neville"
+    },
+    {
+      "variant": "--naive-upkeep --famine-response=laissez_faire",
+      "seed": 5,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 89500,
+        "year": 1322
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 315891,
+      "finalPopulation": 768,
+      "houseAtEnd": "Ferrers"
+    },
+    {
+      "variant": "--naive-upkeep",
+      "seed": 1,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 69500,
+        "year": 1317
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 229541,
+      "finalPopulation": 768,
+      "houseAtEnd": "Hastings"
+    },
+    {
+      "variant": "--naive-upkeep",
+      "seed": 2,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 77500,
+        "year": 1319
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 218300,
+      "finalPopulation": 768,
+      "houseAtEnd": "Despenser"
+    },
+    {
+      "variant": "--naive-upkeep",
+      "seed": 3,
+      "stage3": {
+        "tick": 22000,
+        "year": 1305,
+        "cause": "derelict",
+        "lost": "mill",
+        "by": "merchants"
+      },
+      "stage4": {
+        "tick": 30000,
+        "year": 1307,
+        "withdrew": "Willoughby",
+        "arrived": "Lovel"
+      },
+      "chapter2": null,
+      "maxDerelictPermille": 400,
+      "maxArrearsPeriods": 0,
+      "finalTick": 30000,
+      "finalPopulation": 188,
+      "houseAtEnd": "Lovel"
+    },
+    {
+      "variant": "--naive-upkeep",
+      "seed": 4,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 69500,
+        "year": 1317
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 220272,
+      "finalPopulation": 768,
+      "houseAtEnd": "Neville"
+    },
+    {
+      "variant": "--naive-upkeep",
+      "seed": 5,
+      "stage3": null,
+      "stage4": null,
+      "chapter2": {
+        "tick": 89500,
+        "year": 1322
+      },
+      "maxDerelictPermille": 266,
+      "maxArrearsPeriods": 0,
+      "finalTick": 315591,
+      "finalPopulation": 768,
+      "houseAtEnd": "Ferrers"
+    }
+  ],
+  "guardrail": {
+    "run1@14a1bf16": [
+      {
+        "seed": 1,
+        "status": "passed",
+        "victoryTick": 112942,
+        "baselineVictoryTick": 112942,
+        "victoryChangePercent": 0.0,
+        "finalTick": 229541,
+        "baselineFinalTick": 229541,
+        "chapter2Tick": 69500,
+        "declines": [],
+        "houseOrderAtEnd": 1,
+        "stopReason": "target-scale-stable"
+      },
+      {
+        "seed": 2,
+        "status": "passed",
+        "victoryTick": 155362,
+        "baselineVictoryTick": 155362,
+        "victoryChangePercent": 0.0,
+        "finalTick": 218300,
+        "baselineFinalTick": 218300,
+        "chapter2Tick": 77500,
+        "declines": [],
+        "houseOrderAtEnd": 1,
+        "stopReason": "target-scale-stable"
+      },
+      {
+        "seed": 3,
+        "status": "passed",
+        "victoryTick": 129628,
+        "baselineVictoryTick": 131640,
+        "victoryChangePercent": -1.5,
+        "finalTick": 279538,
+        "baselineFinalTick": 262500,
+        "chapter2Tick": 93500,
+        "declines": [
+          22000
+        ],
+        "houseOrderAtEnd": 1,
+        "stopReason": "target-scale-stable"
+      },
+      {
+        "seed": 4,
+        "status": "passed",
+        "victoryTick": 109392,
+        "baselineVictoryTick": 109392,
+        "victoryChangePercent": 0.0,
+        "finalTick": 220272,
+        "baselineFinalTick": 220272,
+        "chapter2Tick": 69500,
+        "declines": [],
+        "houseOrderAtEnd": 1,
+        "stopReason": "target-scale-stable"
+      },
+      {
+        "seed": 5,
+        "status": "passed",
+        "victoryTick": 130780,
+        "baselineVictoryTick": 130780,
+        "victoryChangePercent": 0.0,
+        "finalTick": 315591,
+        "baselineFinalTick": 315591,
+        "chapter2Tick": 89500,
+        "declines": [],
+        "houseOrderAtEnd": 1,
+        "stopReason": "target-scale-stable"
+      }
+    ]
+  }
+}

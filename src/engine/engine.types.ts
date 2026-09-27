@@ -165,6 +165,8 @@ export interface GameState {
   readonly events?: import("./events.types").EventState;
   /** F0-C1 petitions, rights, the merchants' gauge, decisions and chapter ends (save v14, spec FC-2…FC-5). */
   readonly politics?: import("./politics.types").PoliticsState;
+  /** FAIL-3 (save v19, FL-*): the lord's house, lost rights, title demotion and decline. Absent = the first house, all held. */
+  readonly lordship?: import("./lordship.types").LordshipState;
   /** F0-C2 history ledger: append-only records and map thumbnails (save v15, spec HL-1…HL-9). Absent until the first record. */
   readonly history?: import("./history.types").HistoryState;
   /** PERSON-0 persons: the named people of the town, the dead and those who left (save v16, spec PS-1…PS-9). */

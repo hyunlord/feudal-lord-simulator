@@ -87,8 +87,10 @@ test("T1 SC-7 prosperity victory is reached with a timber palisade and no stone 
   assert.equal(settlementMetrics(state).completedStoneWall, false);
   assert.equal(state.buildings.some(building => building.kind === "church"), true);
   assert.equal(victoryConditionsMet(state), true, "victory conditions hold without a stone town or stone wall");
-  for (let step = 0; step < 1300 && state.settlement?.outcome !== "victory"; step += 1) state = advanceTick(state);
-  assert.equal(state.settlement?.outcome, "victory");
+  for (let step = 0; step < 1300 && (state.settlement?.milestones.prosperity ?? null) === null; step += 1) state = advanceTick(state);
+  // FAIL-3 (FL-9): prosperity is a chapter goal (its milestone); the campaign's victory is chapter 5's end.
+  assert.notEqual(state.settlement?.milestones.prosperity ?? null, null);
+  assert.equal(state.settlement?.outcome, "ongoing");
   assert.equal(state.era, "palisade");
   assert.equal(settlementMetrics(state).completedStoneWall, false);
 });

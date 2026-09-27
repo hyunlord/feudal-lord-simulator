@@ -58,7 +58,7 @@ for (let step = 0; step < maxTicks; step += 1) {
   tickCount += 1;
   if (state.tick !== previousTick + 1 || state.settlement?.outcome === 'abandoned' || invalidGrowthResources(state)) { stopReason = 'stopped-or-invalid-state'; break; }
   // Sampling every tick intentionally mirrors the existing natural-growth stability definition.
-  stability.observe({ tick: state.tick, lots: growthSnapshot(state).lots, victory: state.settlement?.outcome === 'victory', fullService: fullServicePopulation(state) });
+  stability.observe({ tick: state.tick, lots: growthSnapshot(state).lots, victory: (state.settlement?.milestones.prosperity ?? null) !== null, fullService: fullServicePopulation(state) });
 }
 await send({ ...snapshot('final'), stopReason });
 process.disconnect?.();

@@ -1,5 +1,5 @@
 {
-  "description": "Money-free world state after PERSON-0 (the town's persons: names, births, deaths, offices, save v16) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money, history and Building.upkeepUnpaid. PERSON-0 changes the world by design (the state records persons; mortality takes residents where a house cannot grow, spec PS-3), so the F0-C1 world no longer applies. The cache must still match the ledger on every tick. MARKET-1 re-pinned seed1City2400 (the market reaches homes along the road; the new-game case is unchanged). MARKET-1 MK-5 re-pinned it again: the trace runs the bot, and AR-5 now lays a road (44,43) that brings four lived-in L4 homes into the markets' reach where it used to demolish one of them (the rules are unchanged; at the merge before MK-5 the hash was 67db5f18). FIX-4 re-pinned newGame10000: the new game opens with 60d and 160 timber, and upkeep is charged food chain first with old debt no longer idling a facility (spec HR-1, HR-2, HR-3, HR-9); seed1City2400 is unchanged.",
+  "description": "Money-free world state after PERSON-0 (the town's persons: names, births, deaths, offices, save v16) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money, history and Building.upkeepUnpaid. PERSON-0 changes the world by design (the state records persons; mortality takes residents where a house cannot grow, spec PS-3), so the F0-C1 world no longer applies. The cache must still match the ledger on every tick. MARKET-1 re-pinned seed1City2400 (the market reaches homes along the road; the new-game case is unchanged). MARKET-1 MK-5 re-pinned it again: the trace runs the bot, and AR-5 now lays a road (44,43) that brings four lived-in L4 homes into the markets' reach where it used to demolish one of them (the rules are unchanged; at the merge before MK-5 the hash was 67db5f18). FIX-4 re-pinned newGame10000: the new game opens with 60d and 160 timber, and upkeep is charged food chain first with old debt no longer idling a facility (spec HR-1, HR-2, HR-3, HR-9); seed1City2400 is unchanged. FAIL-3 re-pinned seed1City2400: the city has long reached prosperity, which is now a chapter goal; its settlement outcome is \"ongoing\" instead of \"victory\" (spec FL-9), nothing else in the world moves.",
   "sourceCommit": "person0-persons",
   "previousBaseline": "fixtures/ledger/world-baseline-f0c1-famine.json",
   "cases": {
@@ -17,7 +17,7 @@
       "endTick": 681651,
       "ticks": 2400,
       "stateFile": "fixtures/determinism/seed1/final-state.json",
-      "finalWorldHashWithoutMoney": "df321a59fc4468b7f60a50bfa36e3725e298fceaa99d785a95005ef3cc69e49c"
+      "finalWorldHashWithoutMoney": "afc8aeefd62a095a3f67fe04a1f4fc75e1c2082a152110e958930b6e0533e1f7"
     }
   }
 }

@@ -98,7 +98,7 @@ export function runPhase16NaturalValidation(options: {
       firstFourL4Tick = state.tick;
       record("first-four-l4");
     }
-    if (victoryTick === null && state.settlement?.outcome === "victory") {
+    if (victoryTick === null && (state.settlement?.milestones.prosperity ?? null) !== null) {
       victoryTick = state.tick;
       victoryEligibleTicks = eligibleStreak;
       if (eligibleStreak < SETTLEMENT_CONFIG.prosperityHoldTicks) {

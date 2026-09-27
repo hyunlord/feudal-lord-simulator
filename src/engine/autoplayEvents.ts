@@ -8,7 +8,9 @@ import { EVENT_DEF_BY_ID } from "../content/eventConfig";
 import { foodReserveTicks } from "../population/foodReserve";
 import { isBuildingConstructionSite } from "../economy/construction";
 import type { FamineResponseAdvice, PetitionResponseAdvice, RebuildHouseAdvice } from "./autoplayBotRecovery";
-import type { FamineResponseChoice, PetitionResponse } from "../content/chapterConfig";
+import { RESTORE_RIGHT_PETITION_ID, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
+import { LORDSHIP_BALANCE } from "../content/lordshipConfig";
+import { treasuryBalance } from "../ledger/ledger";
 import { famineStatus, openPetitions } from "./politics";
 import type { GameState } from "./engine.types";
 import { eventForecast } from "./eventSchedule";
@@ -48,8 +50,18 @@ export function dearthArableMargin(state: GameState, margin: number): number {
 }
 
 /** FC-6: the bot's answer to an arriving famine it has not answered, then to an open petition; null when none waits. */
-export function chapterDecisionAction(state: GameState, famine: FamineResponseChoice, petition: PetitionResponse): FamineResponseAdvice | PetitionResponseAdvice | null {
+export function chapterDecisionAction(state: GameState, famine: FamineResponseChoice, petition: PetitionResponse,
+  restoration: "pay" | "refuse" = "pay"): FamineResponseAdvice | PetitionResponseAdvice | null {
   if ((famineStatus(state)?.choices.length ?? 0) > 0) return { kind: "famine_response", choice: famine };
   const open = openPetitions(state)[0];
-  return open === undefined ? null : { kind: "petition_response", petitionId: open.id, response: petition };
+  if (open === undefined) return null;
+  // FAIL-3 (FL-11): a restoration is bought back when the treasury has the fee, haggled when it has half (the naive
+  // variant refuses: it never pays for a right).
+  if (open.defId === RESTORE_RIGHT_PETITION_ID) {
+    const cash = treasuryBalance(state);
+    const response: PetitionResponse = restoration === "refuse" ? "refuse"
+      : cash >= LORDSHIP_BALANCE.restoreFee ? "accept" : cash >= LORDSHIP_BALANCE.restoreFeeHaggled ? "accept_with_price" : "refuse";
+    return { kind: "petition_response", petitionId: open.id, response };
+  }
+  return { kind: "petition_response", petitionId: open.id, response: petition };
 }

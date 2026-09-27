@@ -22,6 +22,9 @@ export const LEDGER_CATEGORY_LABELS = {
   famine_relief: "구휼",
   famine_sale: "기근 곡물 판매",
   charter_fee: "특허 대가",
+  // FAIL-3 (FL-6, FL-7)
+  restoration_fee: "권리 되사기",
+  house_change: "가문 교체",
 } as const satisfies Record<LedgerCategory, string>;
 
 export const LEDGER_WINDOW_LABELS = {

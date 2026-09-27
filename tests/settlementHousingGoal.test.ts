@@ -25,14 +25,16 @@ test("prosperity requires four occupied L4 lots for the full 1200-tick hold", ()
   const almost = observe(ready(4), 1199);
   assert.equal(almost.settlement?.outcome, "ongoing");
   const victory = updateSettlementProgress({ ...almost, tick: almost.tick + 1 });
-  assert.equal(victory.settlement?.outcome, "victory");
+  // FAIL-3 (FL-9): prosperity is a chapter goal (its milestone); the campaign goes on.
+  assert.equal(victory.settlement?.milestones.prosperity, victory.tick);
+  assert.equal(victory.settlement?.outcome, "ongoing");
 });
 test("merged homes count two lots, but vacant and declined L4 buildings do not count", () => {
   const state = ready(2);
   const merged = { ...state, buildings: state.buildings.map(building => ({ ...building, houseLot: "horizontal" as const })) };
   assert.equal(settlementMetrics(merged).occupiedL4Lots, 4);
   assert.equal(settlementMetrics({ ...state, buildings: state.buildings.map(building => ({ ...building, houseLot: "vertical" as const })) }).occupiedL4Lots, 4);
-  assert.equal(observe(merged, 1200).settlement?.outcome, "victory");
+  assert.notEqual(observe(merged, 1200).settlement?.milestones.prosperity ?? null, null);
   assert.equal(settlementMetrics({ ...merged, houses: merged.houses.map(house => ({ ...house, residents: 0 })) }).occupiedL4Lots, 0);
   assert.equal(settlementMetrics({ ...merged, houses: merged.houses.map(house => ({ ...house, level: 3 as const })) }).occupiedL4Lots, 0);
   assert.equal(settlementMetrics({ ...merged, buildings: [] }).occupiedL4Lots, 0);
@@ -43,7 +45,8 @@ test("L4 loss resets the hold; already-earned victory survives new goal and serv
   assert.equal(loss.settlement?.prosperityTicks, 0);
   assert.equal(loss.settlement?.outcome, "ongoing");
   const won = observe(ready(4), 1200);
-  assert.equal(updateSettlementProgress({ ...won, tick: won.tick + 1, population: 0, houses: [], buildings: [] }).settlement?.outcome, "victory");
+  const lost = updateSettlementProgress({ ...won, tick: won.tick + 1, population: 0, houses: [], buildings: [] });
+  assert.equal(lost.settlement?.milestones.prosperity, won.settlement?.milestones.prosperity, "the goal reached stays reached");
 });
 test("shared goal presentation explains the live four-lot requirement", () => {
   const view = getSettlementView(ready(3));

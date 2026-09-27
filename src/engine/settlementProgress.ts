@@ -1,4 +1,5 @@
 import { SETTLEMENT_CONFIG as CONFIG } from "../content/settlementConfig";
+import { CAMPAIGN_CHAPTERS } from "../content/chapterConfig";
 import type { GameState } from "./engine.types";
 import { conditionsMet, scenarioOf } from "./scenarioState";
 import { settlementMetrics } from "./settlementMetrics";
@@ -12,7 +13,8 @@ export function settlementProgress(state: GameState): SettlementProgress {
 }
 /**
  * Objectives, victory and failure come from the state's scenario (spec SC-7..SC-10). The saved counters
- * keep their pre-B2 roles: `selfSufficientTicks` holds the first objective, `prosperityTicks` the victory.
+ * keep their pre-B2 roles: `selfSufficientTicks` holds the first objective, `prosperityTicks` the victory conditions'
+ * hold (FAIL-3: in the campaign a chapter goal, `milestones.prosperity`).
  */
 export function updateSettlementProgress(state: GameState): GameState {
   const previous = settlementProgress(state);
@@ -45,7 +47,10 @@ export function updateSettlementProgress(state: GameState): GameState {
   const foodShortageTicks = metrics.occupiedHouses > 0 && metrics.foodPercent < CONFIG.servicePercent
     ? Math.min(CONFIG.foodCrisisTicks, (consecutive ? previous.foodShortageTicks : 0) + 1) : 0;
   const failed = scenario.failure !== null && conditionsMet(state, scenario.failure, { ...context, emptyTicks });
-  const outcome = prosperity !== null ? "victory" : failed ? "abandoned" : "ongoing";
+  // FAIL-3 (FL-9): in the campaign prosperity is a chapter goal (its milestone stays); the campaign's victory is its
+  // last chapter's end.
+  const won = scenario.mode === "campaign" ? (state.politics?.chapterEnds ?? []).some(end => end.chapter >= CAMPAIGN_CHAPTERS) : prosperity !== null;
+  const outcome = won ? "victory" : failed ? "abandoned" : "ongoing";
   return { ...state, settlement: {
     lastUpdatedTick: state.tick, selfSufficientTicks, prosperityTicks, foodShortageTicks,
     emptyTicks, hadResidents, milestones: { selfSufficient, palisade, prosperity }, outcome,

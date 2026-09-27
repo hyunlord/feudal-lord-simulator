@@ -50,6 +50,15 @@ export const HISTORY_OCCUPATIONS: Readonly<Record<string, string>> = {
   miller: "방앗간", sawyer: "제재소", mason: "석공장", chapman: "시장", husbandman: "헛간", woodward: "벌목장", quarrier: "채석장",
   granger: "곡창", storekeeper: "창고",
 };
+/** FAIL-3 (FL-3, FL-1, FL-7): the decline's causes, the lord's rights and the houses' names in Korean. */
+const DECLINE_CAUSES: Readonly<Record<string, string>> = { derelict: "빈 필지가 늘어", arrears: "유지비가 밀려" };
+export const LORD_RIGHT_NAMES: Readonly<Record<string, string>> = { market: "시장 좌판세", tolls: "통행세", mill: "방앗간 사용료" };
+export const LORD_HOUSE_NAMES_KO: Readonly<Record<string, string>> = {
+  Mortimer: "모티머", Beauchamp: "보샴", Clifford: "클리퍼드", Neville: "네빌", Percy: "퍼시", Grey: "그레이", Talbot: "톨벗", Stafford: "스태퍼드",
+  Courtenay: "코트니", Hastings: "헤이스팅스", Mowbray: "모브레이", Ferrers: "페러스", Basset: "배싯", Zouche: "주시", Lovel: "러블", Scrope: "스크루프",
+  Willoughby: "윌러비", Berkeley: "버클리", Despenser: "디스펜서", Montagu: "몬태규",
+};
+const houseName = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;
 const DEATH_CAUSES: Readonly<Record<string, string>> = {
   age: "세상을 떠났다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
 };
@@ -58,6 +67,12 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
   "decision.famine_response": params => { const label = choice(s(params, "chosen")); return `대기근에 ${label}${josa(label, "을", "를")} 택했다`; },
   "decision.petition_response": params => { const label = choice(s(params, "chosen")); return `상인의 시장권 청원에 답했다: ${label}`; },
+  // FAIL-3 (FL-5…FL-8): the lordship's fall and the chapter's turn.
+  "decline.entered": params => `영지가 쇠퇴했다 — ${DECLINE_CAUSES[s(params, "cause")] ?? s(params, "cause")}, ${s(params, "right") === "none" ? "잃은 권리 없이" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} ${s(params, "by") === "overlord" ? "상위 영주가 맡았고" : "상인들이 가져갔고"}`} 칭호가 강등되었다`,
+  "decline.recovered": params => s(params, "right") === "none" ? "쇠퇴에서 벗어나 칭호를 되찾았다" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} 되사 쇠퇴에서 벗어났다`,
+  "house.withdrew": params => `${houseName(s(params, "name"))} 가문이 물러났다`,
+  "house.arrived": params => `${houseName(s(params, "name"))} 가문이 영지를 맡았다`,
+  "milestone.chapter_start": params => `${n(params, "chapter")}장이 시작되었다`,
   "decision.market_town": () => "목책을 두르고 시장도시를 선포했다",
   "decision.stone_town": () => "석벽 사업을 선포했다",
   "decision.rebuild": () => "불탄 집을 다시 짓기 시작했다",

@@ -13,13 +13,18 @@
  * - FC-4 rights: `rights[]`, one line per right, published in the B1 pipe with source `{type:"right"}`.
  * - FC-5 chronicle and chapter end: when the famine is over, the town came through it with at least 60 % of its people
  *   and it is a market town, chapter 1 ends and its chronicle page is written.
+ * - FAIL-3 (FL-8): in the campaign chapter 2 begins at the same tick, the same town (sandbox has no chapters).
+ * - FAIL-3 (FL-6): a restoration petition (`restore_right`) arrives from `lordship.ts`, not by the calendar; its answer is
+ *   `answerRestoration`.
  */
 import { EffectRegistry, SETTLEMENT_REGION_ID, type SourceRef } from "../contracts";
 import {
   CHAPTER_ONE,
+  CHAPTER_TWO,
   FAMINE_RESPONSE_CONFIG,
   MERCHANT_GAUGE_START,
   PETITION_DEFS,
+  RESTORE_RIGHT_PETITION_ID,
   type FamineResponseChoice,
   type PetitionDef,
   type PetitionResponse,
@@ -38,6 +43,7 @@ import type { ChapterEnd, ChronicleEntry, DecisionRecord, PetitionRecord, Politi
 import { hashSeed } from "./prng";
 import { chapterPageRecords } from "./history";
 import { calendar, scenarioOf } from "./scenarioState";
+import { answerRestoration } from "./lordship";
 import { housingLotCount } from "../population/housing";
 
 const SAMPLE = 50;
@@ -158,13 +164,21 @@ export function respondToPetition(state: GameState, petitionId: string, response
   const def = petition === undefined ? undefined : petitionDef(petition);
   if (petition === undefined || def === undefined) return state;
   const outcome = def.outcomes[response];
+  const decision: DecisionRecord = { kind: "petition_response", tick: state.tick, petitionId, choice: response };
+  if (def.id === RESTORE_RIGHT_PETITION_ID) {
+    // FAIL-3 (FL-6): the fee and the restoration are the lordship's; the merchants' gauge moves only for their own offer.
+    const answered = answerRestoration(state, petition, response);
+    return { ...answered, politics: { ...politics,
+      merchantGauge: petition.petitioner === "merchants" ? clampGauge(politics.merchantGauge + outcome.gauge) : politics.merchantGauge,
+      petitions: politics.petitions.map(entry => entry === petition ? { ...entry, response, respondedTick: state.tick } : entry),
+      decisions: [...politics.decisions, decision] } };
+  }
   let next: GameState = state;
   if (outcome.charterFee > 0) {
     const posted = postLedgerEntries(state, [{ account: "cash", category: "charter_fee", amount: outcome.charterFee,
       sourceRefs: [{ type: "right", id: outcome.right ?? def.id, detail: `petition:${petition.id}` }, { type: "actor", id: def.petitioner }] }]);
     next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };
   }
-  const decision: DecisionRecord = { kind: "petition_response", tick: state.tick, petitionId, choice: response };
   return {
     ...next,
     politics: {
@@ -247,6 +261,26 @@ export function chapterEnd(state: Pick<GameState, "politics">): ChapterEnd | nul
   return state.politics?.chapterEnds.find(end => end.chapter === CHAPTER_ONE.chapter) ?? null;
 }
 
+/** FAIL-3 (FL-9): the goal of a chapter — chapter 1 the market town through the famine (FC-5), chapter 2 prosperity. */
+export type ChapterGoalId = "famine_market_town" | "prosperity";
+export interface ChapterGoal {
+  readonly chapter: number;
+  readonly id: ChapterGoalId;
+  /** The tick the goal was reached, or null. */
+  readonly reachedTick: number | null;
+}
+
+/**
+ * FAIL-3 (FL-9) API: the campaign's chapter goals so far, the current chapter's last. Prosperity (the scenario's victory
+ * conditions held, `settlement.milestones.prosperity`) is a chapter goal; the campaign's own victory is chapter 5's end.
+ */
+export function chapterGoals(state: Pick<GameState, "politics" | "settlement">): readonly ChapterGoal[] {
+  const chapter = state.politics?.chapter.number ?? CHAPTER_ONE.chapter;
+  const goals: ChapterGoal[] = [{ chapter: CHAPTER_ONE.chapter, id: "famine_market_town", reachedTick: chapterEnd(state)?.tick ?? null }];
+  if (chapter >= CHAPTER_TWO.chapter) goals.push({ chapter: CHAPTER_TWO.chapter, id: "prosperity", reachedTick: state.settlement?.milestones.prosperity ?? null });
+  return goals;
+}
+
 /** One tick of F0-C1 (no-op between 50-tick samples, and for a scenario without the famine). */
 export function advancePolitics(state: GameState): GameState {
   if (state.tick % SAMPLE !== 0 && state.politics !== undefined) return state;
@@ -265,6 +299,7 @@ export function advancePolitics(state: GameState): GameState {
   const startYear = scenarioOf(next).startYear;
   const year = calendar(tick, startYear).year;
   for (const def of PETITION_DEFS) {
+    if ((def.trigger ?? "calendar") !== "calendar") continue;
     const existing = politics.petitions.find(petition => petition.defId === def.id);
     if (existing === undefined) {
       const ready = housingLotCount(next) >= def.requiresLots;
@@ -287,6 +322,10 @@ export function advancePolitics(state: GameState): GameState {
   if (chapterEnd(next) === null && famineSurvived(next) && next.era !== "hamlet") {
     const chronicle = chronicleEntry(next);
     politics = { ...politics, chapterEnds: [...politics.chapterEnds, { chapter: CHAPTER_ONE.chapter, tick, chronicle }] };
+    // FAIL-3 (FL-8): the campaign goes on with chapter 2, the same town; its chapter counts start afresh.
+    if (scenarioOf(next).mode === "campaign") {
+      politics = { ...politics, chapter: { number: CHAPTER_TWO.chapter, startTick: tick, populationStart: next.population, peakPopulation: next.population } };
+    }
     next = { ...next, politics };
   }
   return next === state ? state : next;
