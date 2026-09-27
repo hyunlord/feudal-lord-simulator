@@ -1,11 +1,16 @@
 # 현재 상태
 
-갱신: 2026-09-27(FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UI-KIT-1b 후속 둘 — 통과, 본선 병합**(Claude Code, 렌더 세션, UI·스타일·시험·스크립트·문서만, 엔진 0줄, 검증 DGX, 사용자 지시): [보고서](verification/uikit1b/REPORT.md).
+  - 일시정지 설정은 줄바꿈되는 줄이 됐다(색약 모드 설명이 다음 단추 밑으로 흐르던 것).
+  - 연대 띠는 진입 안 한 시대를 명목 연도와 "아직 오지 않음"(옅게)으로 보인다(밀린 시대가 "지금 연도"로 찍히던 것).
+  - UI-KIT-1 전후 캡처의 1469는 옛 형식 고정 저장(seed 1 봇 판, 시대 필드 없음)을 이주 없이 넣어 첫 틱에 다섯 시대가 한꺼번에 진입한 것이다. 엔진 결함이 아니다(현재 형식 실제 판: 1300·1320 진입).
 
 - **FAIL-3 실패 사다리 3~4단 + 장 이어하기 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더·UI 0줄, 검증 DGX, 사용자 지시 엔진 2장 작업 첫째): [보고서](verification/fail3-ladder-campaign/REPORT.md), [명세](design/failure-ladder-campaign.md) FL-1~FL-12, 결정 FL1~FL13.
   - **3단 쇠퇴**
