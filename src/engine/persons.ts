@@ -24,7 +24,7 @@ import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { foodPricePermille } from "./eventSchedule";
 import { hashSeed, rollPermille } from "./prng";
-import { choosePortraitIdentity, identityHasBand, portraitFor, type PortraitChoice } from "./portraits";
+import { choosePortraitIdentity, identityFaction, identityHasBand, portraitFor, type PortraitChoice } from "./portraits";
 import { calendar, scenarioOf } from "./scenarioState";
 import { conscriptsAway } from "./war";
 import { factionPerson, petitionFactionLeaders } from "./factions";
@@ -418,13 +418,14 @@ export function advancePersons(state: GameState): GameState {
   }
 
   // PS-5: at the year's start, a person whose face no longer matches (a new age band the identity lacks, or a class
-  // the picture does not show) takes a better one if the pool has it; a child of 14 becomes a labourer.
+  // the picture does not show) takes a better one if the pool has it; a child of 14 becomes a labourer. CODE-1a: a
+  // faction leader's pool-3 face is kept while it has the age band (its class is the faction's, not the trade's).
   if (seasonStart && state.tick % YEAR === 0) {
     for (const person of [...town.people]) {
       const band = ageBandOf(ageOf(person, year));
       const grown = person.occupation === "child" && band !== "child" ? { occupation: "labourer" } : {};
       const current = { ...person, ...grown };
-      if (identityHasBand(current.portraitIdentity, band) && portraitFor(current, band).exact) {
+      if (identityHasBand(current.portraitIdentity, band) && (portraitFor(current, band).exact || identityFaction(current.portraitIdentity) !== undefined)) {
         if (grown.occupation !== undefined) town.replace(person.id, grown);
         continue;
       }
