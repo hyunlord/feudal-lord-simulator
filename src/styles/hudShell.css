@@ -136,6 +136,10 @@
 /* contrast-audit selector=".pause-menu" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
 .pause-menu { display: grid; gap: 10px; min-width: 280px; padding: 16px 20px; color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
 .pause-menu h2 { margin: 0; font-size: 18px; }
+/* UI-KIT-1b: the settings are items of a wrapping row (they were inline and a switch's line ran under the next button);
+   a switch and its line stay together. */
+.pause-menu-settings { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.setting-pair { display: inline-flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; max-width: 100%; }
 .pause-menu-resume { display: inline-flex; gap: 6px; align-items: center; justify-content: center; min-height: 48px; font-size: 15px; font-weight: 700; }
 
 /* Tablets: 48 px targets (research 15 section 8). */

@@ -37,6 +37,8 @@ export const CHRONICLE_SCREEN_COPY = {
   date: (year: number, season: 0 | 1 | 2 | 3) => `${year}년 ${SCENARIO_COPY.seasons[season]}`,
   seasonShort: (season: 0 | 1 | 2 | 3) => SCENARIO_COPY.seasons[season],
   eraLabel: (year: number, era: string) => `${year} ${era}`,
+  /** UI-KIT-1b: under the label of an era not entered yet (its nominal year). */
+  eraAhead: "아직 오지 않음",
   chapter: (chapter: number) => `제${chapter}장`,
   // Timeline.
   timelineLabel: "연대 띠 — 누른 때의 기록으로 갑니다",

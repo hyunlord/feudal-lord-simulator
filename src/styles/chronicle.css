@@ -28,6 +28,10 @@
 .chronicle-strip-labels { position: relative; height: 36px; margin-right: 120px; }
 .chronicle-era-label { position: absolute; top: 0; font-size: 12px; white-space: nowrap; color: var(--palette-ink-muted); }
 .chronicle-era-label[data-entered="true"] { color: var(--palette-ink); font-weight: 700; }
+/* UI-KIT-1b: an era not entered yet (its nominal year, "아직 오지 않음" on a second line) reads faint; a label stays in its fifth of the strip. */
+.chronicle-era-label { max-width: calc(20% - 8px); overflow: hidden; text-overflow: ellipsis; }
+.chronicle-era-label:not([data-entered]) { opacity: 0.6; }
+.chronicle-era-ahead { display: block; font-size: 12px; }
 .chronicle-chapter-bar { position: absolute; top: 18px; height: 16px; overflow: hidden; padding: 0 4px; box-sizing: border-box; font-size: 12px; line-height: 16px;
   white-space: nowrap; background: color-mix(in srgb, var(--palette-gold) 45%, transparent); border-left: 2px solid var(--palette-ink); }
 .chronicle-seasons { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px; align-items: stretch; }

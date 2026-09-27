@@ -1,0 +1,344 @@
+{
+  "checks": [
+    {
+      "name": "exactly six snow overlays",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l2_1350-v4 dimensions",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l2_1350-v4 transparent margins",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 3164
+      }
+    },
+    {
+      "name": "roof_snow_l2_1350-v4 SHA",
+      "pass": true
+    },
+    {
+      "name": "house_l2_1350_a-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "house_l2_1350_b-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l3_1350-v4 dimensions",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l3_1350-v4 transparent margins",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 2132
+      }
+    },
+    {
+      "name": "roof_snow_l3_1350-v4 SHA",
+      "pass": true
+    },
+    {
+      "name": "house_l3_1350_a-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "house_l3_1350_b-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l4_1350-v4 dimensions",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l4_1350-v4 transparent margins",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 2964
+      }
+    },
+    {
+      "name": "roof_snow_l4_1350-v4 SHA",
+      "pass": true
+    },
+    {
+      "name": "house_l4_1350_a-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "house_l4_1350_b-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l2_1400-v4 dimensions",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l2_1400-v4 transparent margins",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 2163
+      }
+    },
+    {
+      "name": "roof_snow_l2_1400-v4 SHA",
+      "pass": true
+    },
+    {
+      "name": "house_l2_1400_a-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "house_l2_1400_b-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l3_1400-v4 dimensions",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l3_1400-v4 transparent margins",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 1901
+      }
+    },
+    {
+      "name": "roof_snow_l3_1400-v4 SHA",
+      "pass": true
+    },
+    {
+      "name": "house_l3_1400_a-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "house_l3_1400_b-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l4_1400-v4 dimensions",
+      "pass": true
+    },
+    {
+      "name": "roof_snow_l4_1400-v4 transparent margins",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 2309
+      }
+    },
+    {
+      "name": "roof_snow_l4_1400-v4 SHA",
+      "pass": true
+    },
+    {
+      "name": "house_l4_1400_a-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "house_l4_1400_b-v2.png unchanged reference",
+      "pass": true
+    },
+    {
+      "name": "preserved_source/houses/house_l0_1350_a-v1.png",
+      "pass": true,
+      "detail": {
+        "sha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l0_1350_b-v1.png",
+      "pass": true,
+      "detail": {
+        "sha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l0_1400_a-v1.png",
+      "pass": true,
+      "detail": {
+        "sha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l0_1400_b-v1.png",
+      "pass": true,
+      "detail": {
+        "sha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l1_1350_a-v1.png",
+      "pass": true,
+      "detail": {
+        "sha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l1_1350_b-v1.png",
+      "pass": true,
+      "detail": {
+        "sha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l1_1400_a-v1.png",
+      "pass": true,
+      "detail": {
+        "sha256": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l1_1400_b-v1.png",
+      "pass": true,
+      "detail": {
+        "sha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l2_1350_a-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "eae7260cade74a7ccb9b22e20e913f2c4634e6fe132fe2ed13fe2ef2469c0f55"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l2_1350_b-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "e5d5b9e33ab6b6a901382679bcd7d79241301f49b6abbbc84b6eaa21b03932e9"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l2_1400_a-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "8c4720c8a7eb07679726c80a924282820343dc0ad811df7d50fc705319ed22b6"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l2_1400_b-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "21a2a3895a0a87357d35e72c5eb976dcf8e9a1390d1d220018d8872191471f1b"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l3_1350_a-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "01eda02bd43199fd9096a493ec7c509b9e67a29dcc80afc4f2334098f5df19f7"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l3_1350_b-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "258c7638867d9b9185873a3b946176cb67ace0b26e0ec2fad3614b7eb7051084"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l3_1400_a-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "7b883d60b9041ce6d46122d5f7adac2ec728faf64643473f909a82a3f434b1f9"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l3_1400_b-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "376eb6afed0fd2b883ca45bce863e2e87614e1f33e2078248c89e6759c333e68"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l4_1350_a-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "ba148ecfb3f672c361ced58c49d2a25f58b9d2b5cd2fa3e295d2ebb885a64ff8"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l4_1350_b-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "4483abd9716330547de21493ea0307f17a388573ad993c51fbda8e77428a7631"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l4_1400_a-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "c8cec83c79194ff0ad59139011dfb2f16adefd3d471490714422f0b1dbdc466b"
+      }
+    },
+    {
+      "name": "preserved_source/houses/house_l4_1400_b-v2.png",
+      "pass": true,
+      "detail": {
+        "sha256": "62c8c2b14ea45a4bc0ea460c24c2dc74baed5d8f97d46b8d5b46596f417acfe7"
+      }
+    },
+    {
+      "name": "preserved_source/overlays/boarded_l2_1350-v3.png",
+      "pass": true,
+      "detail": {
+        "sha256": "5746b6d65c42a49794270491cecbbc49e071b5fddfac3d4e8ce489f3be5e2c39"
+      }
+    },
+    {
+      "name": "preserved_source/overlays/boarded_l2_1400-v3.png",
+      "pass": true,
+      "detail": {
+        "sha256": "126a09ae77818cb16dbc0879c5bbc4bf0b58f750ed314faeb88df47a7ea03787"
+      }
+    },
+    {
+      "name": "preserved_source/overlays/boarded_l3_1350-v3.png",
+      "pass": true,
+      "detail": {
+        "sha256": "70433fae506ec25fadb70648f2922fc79a7d0ac63e32a7859a426cd07bc314e4"
+      }
+    },
+    {
+      "name": "preserved_source/overlays/boarded_l3_1400-v3.png",
+      "pass": true,
+      "detail": {
+        "sha256": "1da3f94fe23acd56326b9156342fc44309f4f84bcfb72a910455dae6de97516c"
+      }
+    },
+    {
+      "name": "preserved_source/overlays/boarded_l4_1350-v3.png",
+      "pass": true,
+      "detail": {
+        "sha256": "2d839d7571c0d7991c771324edc89c370e5da4e57dd6b8eb76caf8143c3aac3e"
+      }
+    },
+    {
+      "name": "preserved_source/overlays/boarded_l4_1400-v3.png",
+      "pass": true,
+      "detail": {
+        "sha256": "75b48f6b52e74a7014d9da683686457fcbf8a5eb1aaacd0678084a37f2410403"
+      }
+    },
+    {
+      "name": "proof 10",
+      "pass": true
+    },
+    {
+      "name": "proof 06",
+      "pass": true
+    }
+  ],
+  "passed": 59,
+  "failed": []
+}
