@@ -7,7 +7,7 @@
 | 부품 | 무엇 | 아트 |
 |---|---|---|
 | `Button` | 변형 `primary`·`secondary`·`quiet`·`danger`·`icon`·`toggle`·`tab`·`surface`, 크기 `sm`·`md`·`lg`(없으면 화면의 배치 그대로), `tone="dark"` | P0 `button_primary_base`·`button_secondary_base`·`button_icon_square_base`·`tab_build_base`, quiet는 `divider_manuscript_*` 밑줄 |
-| `IconButton` | 네모 아이콘 단추. `label`이 접근성 이름과 툴팁 | `button_icon_square_base` |
+| `IconButton` | 네모 아이콘 단추. `label`이 접근성 이름(호버에서만 보이는 `title` 툴팁은 없다) | `button_icon_square_base` |
 | `Select` | 네이티브 `<select>` 대신 보조 단추 + 밝은 틀 목록 | 단추 아트 + `frame_panel_light` |
 | `Toggle` | 켜기·끄기(`role="switch"`): 양피지 홈 위 봉랍 인장이 미끄러진다 | 보조 단추 + 어두운 양피지 결 |
 | `Checkbox` | 인장 모양 둥근 칸, 켜면 예측 시트의 확인 표시 | 밝은 양피지 결 + `icon_prediction_sheet` ok |
@@ -40,7 +40,7 @@
 
 **KIT-2a 우선순위:**
 - 배치와 글자(`display`·정렬·크기·글자색)는 명시도 0인 `:where(.ui-btn…)`에 둔다. 화면의 자리·흐름·색(격자인 대기근 선택지, 붉은 부족 칸)이 이긴다.
-- 스킨(채움·틀·모서리)은 `:root .ui-btn.ui-btn`(0-3-0)에 둔다. 옛 화면 규칙(가장 높은 것이 0-2-1 `.app-shell .era-console button`)이 스킨을 지우지 못한다.
+- 스킨(채움·틀·모서리)은 `:root .ui-btn.ui-btn:not(.ui-btn--surface)`와 변형 `:root .ui-btn.ui-btn.ui-btn--x`(0-4-0)에 둔다. 옛 화면 규칙(가장 높은 것이 0-2-1 `.app-shell .era-console button`)이 스킨을 지우지 못한다. 표면은 이 규칙에서 빠진다(`background`가 화면의 크기·반복까지 지우므로).
 
 ## KIT-3 금지 규칙 (`tools/eslint/uiControls.mjs`, `npm run lint`)
 
