@@ -15,7 +15,7 @@
   - **관문**
     - 시나리오 X1~X8.
     - 가드레일 1회차 `e511d14` 5/5: `baseline-9efac4c`와 해시 빼고 같다(시뮬레이션 무변화). 새 기준선 `seeds/baseline-e511d14.json`.
-    - 전체 회귀 `2dded99` 3,222/3,222, 깨끗한 클론 CLONE_STATUS.
+    - 전체 회귀 `2dded99` 3,222/3,222, 깨끗한 클론 `5e95843` 3,222/3,222.
   - **렌더가 넘겨받을 것**: 세력 연대기 화면(CHRON-2, `factionChronicle`), 문장 `heraldrySeed`, 수장 초상 `personById`, 청원 카드의 청원자 문구(세력 이름).
 
 - **F2-A 2장 사건(전쟁 1337) — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더·UI 0줄, 검증 DGX, 사용자 지시 엔진 2장 작업 둘째): [보고서](verification/f2a-chapter2-war/REPORT.md), [명세](design/chapter-two-war.md) WR-1~WR-10, 결정 WR1~WR12.
