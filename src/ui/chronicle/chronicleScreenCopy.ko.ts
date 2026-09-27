@@ -190,11 +190,6 @@ export const LEADER_ROLES: Readonly<Record<string, string>> = {
 };
 
 /** UI-6: the kings' names in Korean (the kings stay as history had them, FIX-5). */
-export const KING_NAMES_KO: Readonly<Record<string, string>> = {
-  "Edward I": "에드워드 1세", "Edward II": "에드워드 2세", "Edward III": "에드워드 3세", "Richard II": "리처드 2세", "Henry IV": "헨리 4세",
-  "Henry V": "헨리 5세", "Henry VI": "헨리 6세",
-};
-
 /** UI-6: the petitions a faction waits on (FX-3 `demands`). */
 export const DEMAND_NAMES: Readonly<Record<string, string>> = {
   market_charter: "시장권 청원", restore_right: "권리 복원 청원", wool_payment: "양모 공납 칙령", levy_response: "징집 명령",

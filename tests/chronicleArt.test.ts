@@ -50,10 +50,14 @@ test("the runtime asks for the 96 at 1x and the 256 at 2x in small slots, the 25
   assert.equal(portraitStyle("Z999", 44), null);
 });
 
-test("Wave 17: the stone town proclaimed and finished, JPEG derivatives of their confirmed received PNGs", () => {
-  assert.deepEqual(WAVE17_DERIVATIVES.map(item => item.id), ["stonewall_start", "stonewall_complete"]);
+test("Wave 17: CHRON-1's stone town and UI-6's chapter 2 scenes, JPEG derivatives of their confirmed received PNGs", () => {
+  // Decision cards 640 x 480, event cards 960 x 540, chronicle scenes 384 x 384, chapter 2's end page 1920 x 1080.
+  const size = (id: string) => id.startsWith("decision_") ? [640, 480] : id.startsWith("event_") ? [960, 540] : id === "chapter2_end" ? [1920, 1080] : [384, 384];
+  assert.equal(WAVE17_DERIVATIVES.length, 22);
+  assert.deepEqual(WAVE17_DERIVATIVES.slice(0, 2).map(item => item.id), ["stonewall_start", "stonewall_complete"]);
   for (const item of WAVE17_DERIVATIVES) {
     assert.ok(inbox.includes(sha256(readFileSync(item.source))), item.id);
-    assert.deepEqual(jpegSize(buildKeyartDerivative(item)), [384, 384], item.id);
+    assert.ok(ledger.includes(item.source), `${item.id}: provenance row`);
+    assert.deepEqual(jpegSize(buildKeyartDerivative(item)), size(item.id), item.id);
   }
 });

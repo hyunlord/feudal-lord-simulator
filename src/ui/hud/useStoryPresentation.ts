@@ -32,6 +32,9 @@ export function useStoryPresentation(input: {
   const [, setRevision] = useState(0);
   const [delayMs] = useState(eventWorldFirstMs);
   const beats = storyBeats(state);
+  // UI-6: a chapter's page opens when the chapter ends (within its season), not again on every later load of the town.
+  const latest = latestChapterEnd(state);
+  const end = latest !== null && state.tick - latest.tick < CHAPTER_PAGE_TICKS ? latest : null;
   // why: every render on purpose: it records what the model shows now and re-renders only when a beat is new
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -40,6 +43,13 @@ export function useStoryPresentation(input: {
       const entry = seen.get(beat.id);
       if (entry === undefined) { seen.set(beat.id, { beat, firstSeenMs: now, lastSeenMs: now, dismissed: false }); changed = true; }
       else { entry.beat = beat; entry.lastSeenMs = now; }
+    }
+    // A chapter's end first seen: its page is due `delayMs` on. CODE-1c follow-up: the wake timer below is computed at
+    // render, so a first sighting re-renders to set it (a paused game, the presentation clock resting, would otherwise
+    // never open the chapter's page).
+    const chapterKey = end === null ? null : `chapter:${end.chapter}`;
+    if (chapterKey !== null && !openedRef.current.has(chapterKey) && !chapterSeenRef.current.has(chapterKey)) {
+      chapterSeenRef.current.set(chapterKey, now); changed = true;
     }
     if (changed) setRevision(revision => revision + 1);
   });
@@ -57,9 +67,6 @@ export function useStoryPresentation(input: {
   }, [visibleKey]); // eslint-disable-line react-hooks/exhaustive-deps
   // Decisions and the chronicle open once, after the world first.
   const famine = famineStatus(state); const petition = openPetitions(state)[0];
-  // UI-6: a chapter's page opens when the chapter ends (within its season), not again on every later load of the town.
-  const latest = latestChapterEnd(state);
-  const end = latest !== null && state.tick - latest.tick < CHAPTER_PAGE_TICKS ? latest : null;
   const ready = (id: string) => { const entry = seenRef.current.get(id); return entry !== undefined && nowMs - entry.firstSeenMs >= delayMs; };
   useEffect(() => {
     if (blocked || topModal !== null) return;
@@ -70,15 +77,8 @@ export function useStoryPresentation(input: {
       openedRef.current.add(petition.id); pushModal("petition"); return;
     }
     const chapterKey = end === null ? null : `chapter:${end.chapter}`;
-    if (chapterKey !== null && !openedRef.current.has(chapterKey)) {
-      const seen = chapterSeenRef.current.get(chapterKey);
-      const since = seen ?? Date.now();
-      chapterSeenRef.current.set(chapterKey, since);
-      // CODE-1c follow-up: the wake timer below is computed at render; a first sighting re-renders so it is set (a
-      // paused game with the presentation clock resting would otherwise never open the chapter's page).
-      if (seen === undefined) setRevision(revision => revision + 1);
-      if (nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); }
-    }
+    const since = chapterKey === null || openedRef.current.has(chapterKey) ? undefined : chapterSeenRef.current.get(chapterKey);
+    if (chapterKey !== null && since !== undefined && nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); }
   });
   // CODE-1c: no presentation clock for the story — one timer wakes this hook when the next chip is due (its delay out),
   // a lingering chip goes, or a chapter end's chronicle may open. App's 100 ms clock stops when nothing else needs it.

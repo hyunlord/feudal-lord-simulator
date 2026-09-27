@@ -1,16 +1,15 @@
 import { FACTION_AFFAIR_LINES, FACTION_KIND_NAMES, FACTION_LEADER_LINES, factionDisplayName, WORLD_EVENT_LINES } from "../../content/factionCopy.ko";
-import { GENTRY_NAMES_KO } from "../../content/gentryNames";
 import type { FactionId } from "../../content/factionConfig";
 import type { GameState } from "../../engine/engine.types";
 import type { FactionTimelineEntry, FactionView } from "../../engine/faction.types";
 import { factionChronicle, factionsList, worldTimeline } from "../../engine/factions";
 import { history } from "../../engine/history";
-import { ageOf, currentYear, displayName, personById, personPortrait } from "../../engine/persons";
-import type { Person } from "../../engine/persons.types";
+import { ageOf, currentYear, personById, personPortrait } from "../../engine/persons";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
+import { factionLeaderName } from "../persons/personModels";
 import { drawnPortraitId } from "../portraitArt";
 import { chronicleDate, factionEmblem } from "./chronicleScreenModel";
-import { CHRONICLE_SCREEN_COPY as COPY, DEMAND_NAMES, KING_NAMES_KO, LEADER_ROLES, RELATION_BANDS } from "./chronicleScreenCopy.ko";
+import { CHRONICLE_SCREEN_COPY as COPY, DEMAND_NAMES, LEADER_ROLES, RELATION_BANDS } from "./chronicleScreenCopy.ko";
 
 // UI-6 faction tab (CHRONICLE_DESIGN 2.3, FACTION-0 FX-6): the chronicle's "세력" view — the nine factions (their arms
 // from the engine's heraldry seed, their name, their leader with the pool portrait, where they stand on the Wave 19
@@ -42,17 +41,7 @@ export function relationBand(value: number): string {
   return (RELATION_BANDS.find(band => relation >= band.from) ?? RELATION_BANDS[RELATION_BANDS.length - 1]!).label;
 }
 
-/**
- * A leader's name as the screen writes it: a king by his Korean regnal name, an outside faction's gentry or clergy by
- * their given name and the Korean reading of their (invented) surname, a townsman as the town's people are named.
- */
-export function factionLeaderName(person: Pick<Person, "givenName" | "surname" | "epithet" | "occupation" | "householdId">): string {
-  if (person.occupation === "king") return KING_NAMES_KO[person.givenName] ?? person.givenName;
-  if (person.householdId.startsWith("faction:")) {
-    return [person.givenName, person.surname === undefined ? undefined : GENTRY_NAMES_KO[person.surname] ?? person.surname].filter(part => part !== undefined && part !== "").join(" ");
-  }
-  return displayName(person);
-}
+export { factionLeaderName };
 
 function leaderView(state: GameState, faction: FactionView): FactionLeaderView | null {
   if (faction.leaderId === null) return null;

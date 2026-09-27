@@ -9,7 +9,7 @@ import type { PetitionRecord } from "../engine/politics.types";
 import { levyMen, refugeeRoom, subsidyAmount, warOf, woolLevyAmount } from "../engine/war";
 import { DECISION_COPY } from "./decisionCopy.ko";
 import type { EmblemSpec } from "./heraldry/EmblemImage";
-import { heraldryArms } from "./heraldry/heraldry";
+import { factionEmblem } from "./chronicle/chronicleScreenModel";
 import { PETITION_COPY } from "./petitionCopy.ko";
 import { factionLeaderRow, type PersonRow } from "./persons/personModels";
 import type { Wave16ImageId } from "./wave16Art";
@@ -105,7 +105,7 @@ function petitionFrom(state: GameState, petition: PetitionRecord): PetitionFrom 
   if (view === undefined) return null;
   const leader = view.leaderId === null ? undefined : personById(state, view.leaderId);
   const name = factionDisplayName(view.id, view.name);
-  return { factionId: id, name, arms: { kind: "arms", recipe: heraldryArms(view.heraldrySeed) },
+  return { factionId: id, name, arms: factionEmblem(view),
     leader: leader === undefined ? null : factionLeaderRow(state, leader, name), writ: petition.petitioner === "crown" };
 }
 

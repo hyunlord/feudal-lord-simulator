@@ -60,11 +60,6 @@ export function armsRecipe(seed: number, household: string): ArmsRecipe {
   return { shield, field, partition: { id: pick(PARTITIONS), tincture: other }, ordinary: null, charge: { id: pick(CHARGES), tincture: metal } };
 }
 
-/** FACTION-0 / UI-6: a faction's arms from its heraldry seed (the nine factions; the lord's house keeps its own key). */
-export function heraldryArms(heraldrySeed: number): ArmsRecipe {
-  return armsRecipe(heraldrySeed, "heraldry");
-}
-
 export function merchantRecipe(seed: number, household: string): MerchantRecipe {
   const pick = picker(seed, "merchant", household);
   return { frame: pick(MERCHANT_FRAMES), staff: pick(MERCHANT_STAFFS), branch: pick(MERCHANT_BRANCHES) };
