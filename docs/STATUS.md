@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-27(RES-REG · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -13,6 +13,17 @@
   - 캡처·감사는 저장을 코덱으로만 넣는다(옛 맨 저장은 페이지가 거부). 엔진에 넘길 발견: `v9ToV10.ts`의 `process.env`가 브라우저에서 던진다.
   - **C4 재개 가능**: 목록에 줄 추가하는 방법은 보고서 8절.
   - 검증: DGX 전체 회귀 3,197/3,197(C25 재기록 없음), 스킨 감사 0 / 714, UX-3 회귀 세트 통과, 깨끗한 클론 `850f52e` 3,216/3,216·build(F2-A 받은 뒤).
+
+- **FACTION-0 세력 기초 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더·UI 0줄, 검증 DGX, 사용자 지시 엔진 2장 작업 셋째): [보고서](verification/faction0-factions/REPORT.md), [명세](design/factions.md) FX-1~FX-8, 결정 FN1~FN10.
+  - **세력 아홉**: 상위 영주(백작)·왕실(그해의 국왕)·이웃 영주 둘·주교·상인 가문 둘·도시 공동체·농민 공동체. 이름·문장 seed, 수장은 인물이다(바깥은 세력의 사람·후계, 마을은 가구주).
+  - **귀속**: 청원자 → 세력. 바깥 세력 청원의 청원자는 수장이고, 청원 결정·전쟁 기록에 세력이 붙는다.
+  - **관계·기억**: 청원 답·칙령·대기근·쇠퇴·되사기·가문 교체·습격이 관계를 움직인다. 기억 = 원장 `faction.relation` 기록 id. 상인 게이지와 따로다.
+  - **연표**: 세계 사건 19건(고정), 수장 후계, 바깥 세력의 일(seed). API `factionsList`·`factionChronicle`·`worldTimeline`. 저장 v21.
+  - **관문**
+    - 시나리오 X1~X8.
+    - 가드레일 1회차 `e511d14` 5/5: `baseline-9efac4c`와 해시 빼고 같다(시뮬레이션 무변화). 새 기준선 `seeds/baseline-e511d14.json`.
+    - 전체 회귀 `2dded99` 3,222/3,222, 깨끗한 클론 `5e95843` 3,222/3,222.
+  - **렌더가 넘겨받을 것**: 세력 연대기 화면(CHRON-2, `factionChronicle`), 문장 `heraldrySeed`, 수장 초상 `personById`, 청원 카드의 청원자 문구(세력 이름).
 
 - **F2-A 2장 사건(전쟁 1337) — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더·UI 0줄, 검증 DGX, 사용자 지시 엔진 2장 작업 둘째): [보고서](verification/f2a-chapter2-war/REPORT.md), [명세](design/chapter-two-war.md) WR-1~WR-10, 결정 WR1~WR12.
   - **순서**: 1337 전령 → 양모 공납 → 징집 → 전쟁 보조세 → 봉화 → 해안 습격(1339·1340) → 피란민 → 회복(왕실 조달 면허·석벽 대 시장). 한 계절 무응답은 거절이고, 왕실 거절은 신임을 잃는다.
@@ -347,7 +358,7 @@
 
 ## 다음 작업
 
-- **엔진 2장 작업(사용자 지시 순서, C4는 판정으로 뒤로)**: FAIL-3 완료 → F2-A 완료 → FACTION-0(세력 기초) → C4(렌더의 `resourceCatalog` 뒤). 작업마다 본선 병합·브랜치 삭제.
+- **엔진 2장 작업(사용자 지시 순서, C4는 판정으로 뒤로)**: FAIL-3 완료 → F2-A 완료 → FACTION-0 완료 → C4(렌더의 `resourceCatalog` 뒤). 다음 엔진 후보는 관계를 읽는 규칙(RIGHTS)이다. 작업마다 본선 병합·브랜치 삭제.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
