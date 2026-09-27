@@ -45,8 +45,8 @@ assets-inbox/
 | wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | `asset-trial` | 23 |  | 2 |  |  | 21 |  | 0 |
-| `d1` | 7 | 2 | 5 |  |  |  |  | 5 |
-| `d1b` | 4 | 2 | 2 |  |  |  |  | 2 |
+| `d1` | 7 |  | 7 |  |  |  |  | 5 |
+| `d1b` | 4 |  | 4 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
@@ -64,25 +64,25 @@ assets-inbox/
 | `wave17` | 64 |  | 64 |  |  |  |  | 2 |
 | `wave18` | 48 |  | 48 |  |  |  |  | 0 |
 | `wave19` | 57 |  | 57 |  |  |  |  | 53 |
-| `wave2` | 42 | 14 | 27 |  | 1 |  |  | 27 |
+| `wave2` | 42 | 3 | 33 |  | 1 | 1 | 4 | 27 |
 | `wave20` | 97 |  | 82 |  | 15 |  |  | 0 |
 | `wave21` | 90 |  | 66 |  | 24 |  |  | 0 |
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
 | `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
-| `wave4b` | 57 | 4 | 53 |  |  |  |  | 53 |
-| `wave4c` | 29 | 11 | 18 |  |  |  |  | 18 |
-| `wave4d` | 25 | 3 | 22 |  |  |  |  | 22 |
-| `wave4e` | 53 | 18 | 35 |  |  |  |  | 35 |
+| `wave4b` | 57 |  | 57 |  |  |  |  | 53 |
+| `wave4c` | 29 |  | 29 |  |  |  |  | 18 |
+| `wave4d` | 25 |  | 25 |  |  |  |  | 22 |
+| `wave4e` | 53 |  | 42 |  | 8 | 3 |  | 35 |
 | `wave5a` | 151 |  | 61 |  | 3 | 87 |  | 55 |
-| `wave5b` | 36 | 4 |  |  |  | 32 |  | 0 |
+| `wave5b` | 36 |  |  |  | 4 | 32 |  | 0 |
 | `wave5c` | 17 |  | 17 |  |  |  |  | 14 |
 | `wave6` | 25 |  | 25 |  |  |  |  | 22 |
 | `wave7` | 206 |  | 172 |  | 34 |  |  | 77 |
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3196** | **58** | **2063** | **0** | **162** | **897** | **16** | **956** |
+| **합계** | **3196** | **3** | **2098** | **0** | **174** | **901** | **20** | **956** |
 
 ## 4. 찾는 법
 
@@ -207,6 +207,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 21**: 58장 확정(15시 판정). 재작업(`wave21/rework-20260927/`) 24장 `confirmed` — `ch3_ending`과 4·5장 23장 — 이고 그 v1 24장은 `superseded`(→ 같은 이름의 재작업본). 바뀌지 않은 원본 34장(3장 18·4장 10·5장 6)은 `confirmed`. 확인 그림은 처음 묶음 5장(`*-contact.png` 2장 포함)과 재작업 3장 모두 `confirmed`. `raw/`는 넣지 않았다.
 - **Wave 22**: 81장 확정(16시 판정). 처음 묶음의 소품 20·전이 띠 10·해안 띠 5 `confirmed`, 재작업(`wave22/rework-20260927/`, 14:36 도착)의 지면 fill v2 30장(15종 × a·b)·특징 데칼 15·`shore/sand_beach_a-v2` `confirmed`. 옛 fill 15와 `sand_beach_a-v1`은 `superseded`(fill은 a·b 두 장을 `replaced_by`에 `;`로 적음). 확인 그림은 처음 3·재작업 3 모두 `confirmed`. 흩뿌리기 배치 코드(오프라인 결정론 배치 `scatter-v1`)는 `records/proofs.cjs`, 배치 계약 `records/proofs-placement-contract.md`, 결과 좌표 `records/proofs-placement.json`에 있다(게임 코드 아님).
 - **오래된 candidate 172행 정리**(21시, 사용자 규칙): ① runtime에 같은 SHA·caBX만 다른 바이트·같은 픽셀 → confirmed + `installed_by`: 해당 0행. ② 같은 ID의 더 새 판 확정 → superseded: `wave2/pilot-20260924/assets/house_l2_brewer-pilot.png` 1행(→ `wave2/house_l2_brewer-v1.png`). ③ `asset-trial`·`wave4-pilot` → rejected "방식 시험용, 제품 아님" 24행, 비교 그림 `asset-comparison.png`·`comparison.png` 2행은 확인 그림으로 confirmed. ④ Wave 5a 후보판(`candidates-v1`·`candidates-v2-29sheets`) → 설치된 V2 워커 시트와 픽셀이 같은 것이 없어 87행 rejected "V2 설치에서 선택되지 않음". 규칙 밖 58행은 `candidate` 그대로 두고 비고에 "규칙 밖: 사유 — 제안"을 적었다. 각 행 비고 끝에 "(2026-09-27 정리)".
+- **규칙 밖 58행 판정**(21시, 사용자 판정, INBOX-1p): 확정 묶음의 확인·기록 그림 30행 → confirmed "확인 그림". `wave4e/candidates-v1/assets/masters` 워커·망토 8장 → superseded, `replaced_by`에 같은 이름의 확정본(`wave4e/workers`·`wave4e/overlays`; 같은 그림의 먼저 받은 판, 바이트만 다름). `wave4e/candidates-v1/assets/templates/actor_*` 3장 → rejected "재스킨 참조 템플릿, 제품 아님(확정 템플릿은 derived-templates)". `wave4c` 울타리 이음 위상 마스크 5장 → confirmed "보조 자료(기록), 게임 코드 미사용". `wave2/farm_mixed_*` 4장 → retired(같은 바이트가 `retired/buildings/variants-wave2/`에 있음, C1f 퇴역). `wave5b/.../reused/held_staff_*` 4장 → superseded, `replaced_by`에 `walker-pilot2/candidates-v1/assets/props/`의 같은 바이트 확정본("다른 Wave 중복"). `wave2/hold/farm_pastoral_*` 3장 → candidate 유지 "C5(직물·목축) 때 판정 — 보류". `wave2/production-20260924/assets/house_l1_thatch-v1.png` → rejected "L1 초가는 runtime house_l1-v2가 담당, 이 판은 설치되지 않음". `asset-trial/evidence` 캡처 12장은 rejected 그대로. 각 행 비고 앞에 판정, 끝에 "(2026-09-27 판정) · 정리 때 비고: …". 남은 candidate는 목축형 농장 3행뿐.
 
 ## 7. 찾지 못한 것
 
