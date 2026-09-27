@@ -39,6 +39,7 @@ import type { SourceRef } from "../contracts";
 import type { Person } from "./persons.types";
 import { lordshipOf } from "./lordshipState";
 import { beaconLit, raidEventId, warDecisionForecast } from "./war";
+import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
 import { WAR_PETITION_IDS } from "../content/warConfig";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
@@ -175,9 +176,31 @@ export function recordDecision(before: GameState, after: GameState, command: { r
     if (defId !== undefined) params.defId = defId;
   }
   const place = kind === "rebuild" ? after.buildings.find(entry => entry.id === command.buildingId) : undefined;
+  // FACTION-0 (FX-3): a petition's decision names its faction.
+  const petitioner = kind === "petition_response" ? before.politics?.petitions.find(petition => petition.id === command.petitionId)?.petitioner : undefined;
   // FAIL-3 (FL-6): a restoration answered by the command ends the decline there, so its record comes with the decision.
-  return { ...after, history: append(history, [{ tick: after.tick, kind: "decision", template: `decision.${kind}`, params, subject: TOWN,
-    ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }, ...lordshipDrafts(before, after)]) };
+  return withFactionRecords(after, history, append(history, [{ tick: after.tick, kind: "decision", template: `decision.${kind}`, params, subject: TOWN,
+    ...(petitioner === undefined ? {} : { actors: [{ type: "faction" as const, id: factionOfPetitioner(petitioner) }] }),
+    ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }, ...lordshipDrafts(before, after),
+    ...factionDrafts(before, after)]));
+}
+
+/** FACTION-0 (FX-4): a faction's relation moved — one record each, the faction's memory. */
+function factionDrafts(before: GameState, after: GameState): Draft[] {
+  return factionChanges(before, after).map(change => {
+    const faction = after.factions?.factions.find(entry => entry.id === change.factionId);
+    const relation = faction?.relation ?? 0;
+    return { tick: after.tick, kind: "faction" as const, template: "faction.relation", subject: { type: "faction" as const, id: change.factionId },
+      params: { faction: change.factionId, name: faction?.name ?? change.factionId, delta: change.delta, reason: change.reason,
+        relation: Math.max(-100, Math.min(100, relation + change.delta)) }, severity: 1 as const };
+  });
+}
+
+/** FACTION-0 (FX-4): the history with its new records, and the factions moved by the new `faction.relation` records. */
+function withFactionRecords(after: GameState, before: HistoryState, history: HistoryState): GameState {
+  const added = history.records.slice(before.records.length);
+  const factions = after.factions === undefined ? undefined : applyFactionRecords(after.factions, added);
+  return { ...after, history, ...(factions === undefined || factions === after.factions ? {} : { factions }) };
 }
 
 function eventCause(eventId: string, defId: string): SourceRef {
@@ -424,11 +447,13 @@ function warDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: 
   const was = before.war, now = after.war;
   if (now === undefined || was === now) return [];
   const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];
-  const at = { tick: after.tick, subject: TOWN };
+  // FACTION-0 (FX-3): the war's records name the faction behind them — the Crown's demands and grants, the town's raid.
+  const by = (id: string) => ({ actors: [{ type: "faction" as const, id }] });
+  const at = { tick: after.tick, subject: TOWN, ...by("crown") };
   if (was === undefined) drafts.push({ ...at, kind: "event", template: "war.messenger", severity: 2 });
-  if (beaconLit(after) && !beaconLit(before)) drafts.push({ ...at, kind: "event", template: "war.beacon", severity: 2 });
+  if (beaconLit(after) && !beaconLit(before)) drafts.push({ ...at, ...by("town"), kind: "event", template: "war.beacon", severity: 2 });
   if (now.raid !== undefined && was?.raid === undefined) {
-    drafts.push({ ...at, kind: "event", template: "war.raid", severity: 3, params: { burntHouses: now.raid.losses.burntHouses, looted: now.raid.losses.looted,
+    drafts.push({ ...at, ...by("town"), kind: "event", template: "war.raid", severity: 3, params: { burntHouses: now.raid.losses.burntHouses, looted: now.raid.losses.looted,
       coin: now.raid.losses.coin, defence: now.raid.defencePermille }, cause: { type: "event", id: raidEventId(now.raid.tick), detail: "coastal_raid" },
       thumbnail: { state: after, size: 256 } });
   }
@@ -440,7 +465,8 @@ function warDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: 
   if (now.licenceSeasonsLeft !== undefined && was?.licenceSeasonsLeft === undefined) drafts.push({ ...at, kind: "event", template: "war.licence", severity: 2 });
   for (const [defId, answer] of Object.entries(now.answers)) {
     if (answer === "expired" && was?.answers[defId] !== "expired" && (WAR_PETITION_IDS as readonly string[]).includes(defId)) {
-      drafts.push({ ...at, kind: "event", template: "war.unanswered", severity: 2, params: { defId } });
+      const petitioner = after.politics?.petitions.find(petition => petition.defId === defId)?.petitioner;
+      drafts.push({ ...at, ...(petitioner === undefined ? {} : by(factionOfPetitioner(petitioner))), kind: "event", template: "war.unanswered", severity: 2, params: { defId } });
     }
   }
   return drafts;
@@ -462,6 +488,7 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   }
   drafts.push(...lordshipDrafts(before, after));
   drafts.push(...warDrafts(before, after));
+  drafts.push(...factionDrafts(before, after));
   drafts.push(...personDrafts(before, after));
   let milestones = history.milestones;
   if (after.tick % PRESSURE_BALANCE.sampleTicks === 0) {
@@ -472,9 +499,14 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   const season = seasonDrafts(after, history);
   drafts.push(...season.drafts);
   if (milestones !== history.milestones || season.closed) history = { ...history, milestones, ...(season.closed ? { seasonDecisions: {} } : {}) };
-  history = fillActuals(append(history, drafts), after);
+  const appended = append(history, drafts);
+  // FACTION-0 (FX-4): the factions remember by the records just written.
+  const added = appended.records.slice(history.records.length);
+  const factions = after.factions === undefined || added.length === 0 ? after.factions : applyFactionRecords(after.factions, added);
+  history = fillActuals(appended, after);
   if (season.closed) history = compactHistory(history, after.tick);
-  return history === historyOf(after) ? after : { ...after, history };
+  if (history === historyOf(after) && factions === after.factions) return after;
+  return { ...after, history, ...(factions === undefined || factions === after.factions ? {} : { factions }) };
 }
 
 /**

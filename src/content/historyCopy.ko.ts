@@ -2,6 +2,8 @@
  * F0-C2 history ledger sentences (spec docs/design/history-ledger.md HL-1): one template per record kind. A record
  * saves only the template id and its parameters; `historySummary` rebuilds the sentence from here.
  */
+import { factionDisplayName, factionReasonLine } from "./factionCopy.ko";
+
 type P = Readonly<Record<string, number | string>>;
 const n = (params: P, key: string): number => Number(params[key] ?? 0);
 const s = (params: P, key: string): string => String(params[key] ?? "");
@@ -88,6 +90,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "war.favour_lost": () => "왕실의 신임을 잃었다",
   "war.licence": () => "왕실 조달 면허를 받았다",
   "war.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
+  // FACTION-0 (FX-4): a faction's relation moved.
+  "faction.relation": params => `${factionDisplayName(s(params, "faction"), s(params, "name"))}의 마음이 ${n(params, "delta") > 0 ? "누그러졌다" : "돌아섰다"}(${n(params, "delta") > 0 ? "+" : ""}${n(params, "delta")}, 이제 ${n(params, "relation")}) — ${factionReasonLine(s(params, "reason"))}`,
   // FAIL-3 (FL-5…FL-8): the lordship's fall and the chapter's turn.
   "decline.entered": params => `영지가 쇠퇴했다 — ${DECLINE_CAUSES[s(params, "cause")] ?? s(params, "cause")}, ${s(params, "right") === "none" ? "잃은 권리 없이" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} ${s(params, "by") === "overlord" ? "상위 영주가 맡았고" : "상인들이 가져갔고"}`} 칭호가 강등되었다`,
   "decline.recovered": params => s(params, "right") === "none" ? "쇠퇴에서 벗어나 칭호를 되찾았다" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} 되사 쇠퇴에서 벗어났다`,

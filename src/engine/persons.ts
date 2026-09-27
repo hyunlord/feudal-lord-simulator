@@ -27,6 +27,7 @@ import { hashSeed, rollPermille } from "./prng";
 import { choosePortraitIdentity, identityHasBand, portraitFor, type PortraitChoice } from "./portraits";
 import { calendar, scenarioOf } from "./scenarioState";
 import { conscriptsAway } from "./war";
+import { factionPerson, petitionFactionLeaders } from "./factions";
 import { MANOR_HOUSEHOLD, type DeathCause, type Person, type PersonAgeBand, type PersonBuild, type PersonClassBand, type PersonRole, type PersonSex, type PersonState } from "./persons.types";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
@@ -72,7 +73,8 @@ export function displayName(person: Pick<Person, "givenName" | "surname" | "epit
   return [person.givenName, person.surname, person.epithet].filter(part => part !== undefined && part !== "").join(" ");
 }
 
-function weighted(names: readonly WeightedName[], roll: number): string {
+/** A name from a weighted list by a roll (FACTION-0: the factions' people are named so too). */
+export function weightedName(names: readonly WeightedName[], roll: number): string {
   const total = names.reduce((sum, entry) => sum + entry.weight, 0);
   let left = roll % total;
   for (const entry of names) { if (left < entry.weight) return entry.name; left -= entry.weight; }
@@ -116,8 +118,8 @@ class Town {
   name(sex: PersonSex, surname: string | undefined, householdId: string, id: string, birthYear: number): { givenName: string; epithet?: string } {
     const pool = sex === "male" ? MALE_GIVEN_NAMES : FEMALE_GIVEN_NAMES;
     const kin = new Set(this.household(householdId).map(person => person.givenName));
-    let givenName = weighted(pool, hashSeed(this.seed, "person-name", this.ordinal));
-    for (let attempt = 1; attempt < 6 && kin.has(givenName); attempt += 1) givenName = weighted(pool, hashSeed(this.seed, "person-name", this.ordinal, attempt));
+    let givenName = weightedName(pool, hashSeed(this.seed, "person-name", this.ordinal));
+    for (let attempt = 1; attempt < 6 && kin.has(givenName); attempt += 1) givenName = weightedName(pool, hashSeed(this.seed, "person-name", this.ordinal, attempt));
     const namesakes = this.people.filter(person => person.givenName === givenName && person.surname === surname);
     if (namesakes.length === 0) return { givenName };
     const used = new Set(namesakes.map(person => person.epithet));
@@ -327,6 +329,9 @@ function namePetitioners(town: Town, state: GameState): GameState {
   const rank: Readonly<Record<string, number>> = { merchant: 0, artisan: 1, labour: 2, poor_servant: 3, gentry: 4, clerical: 5 };
   const next = petitions.map(petition => {
     if (petition.petitionerIds !== undefined) return petition;
+    // FACTION-0 (FX-3): an outside faction's petition is brought in its leader's name (the king's writ, the earl, the bishop's letter).
+    const leaders = petitionFactionLeaders(state, petition.petitioner);
+    if (leaders !== null) return { ...petition, petitionerIds: leaders };
     const heads = town.people.filter(person => person.role === "head" && person.householdId !== MANOR_HOUSEHOLD && ageOf(person, town.year) >= 18)
       .sort((a, b) => (rank[a.classBand] ?? 9) - (rank[b.classBand] ?? 9) || (hashSeed(town.seed, petition.id, Number(a.id.slice(2))) - hashSeed(town.seed, petition.id, Number(b.id.slice(2)))));
     const count = 2 + hashSeed(town.seed, `petitioners:${petition.id}`) % 2;
@@ -462,8 +467,9 @@ export function personsByRole(state: Pick<GameState, "persons">, role: PersonRol
   return (state.persons?.people ?? []).filter(person => person.role === role || person.tags.some(tag => tag === role || tag.startsWith(`${role}:`)));
 }
 
-export function personById(state: Pick<GameState, "persons">, id: string): Person | undefined {
-  return state.persons?.people.find(person => person.id === id) ?? state.persons?.past.find(person => person.id === id);
+export function personById(state: Pick<GameState, "persons"> & Partial<Pick<GameState, "factions">>, id: string): Person | undefined {
+  // FACTION-0 (FX-2): the outside factions' leaders are persons too.
+  return state.persons?.people.find(person => person.id === id) ?? state.persons?.past.find(person => person.id === id) ?? factionPerson(state, id);
 }
 
 export function personPortrait(state: Pick<GameState, "tick" | "scenarioId">, person: Person): PortraitChoice {
