@@ -51,7 +51,8 @@ function nextConstructionOrdinal(state: GameState): number {
 }
 
 function buildableSettlement(treasuryTimber = 500): GameState {
-  const roadTxs = new Set(Array.from({ length: 34 }, (_unused, index) => index));
+  // C4: the road reaches x 37 for the malt kiln at x 36.
+  const roadTxs = new Set(Array.from({ length: 38 }, (_unused, index) => index));
   return {
     ...DEFAULT_GAME_STATE,
     tiles: DEFAULT_GAME_STATE.tiles.map((tile) => ({
