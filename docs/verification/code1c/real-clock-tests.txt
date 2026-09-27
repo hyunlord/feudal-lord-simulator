@@ -50,3 +50,6 @@ tests/resourceCatalogExtensibility.test.ts node:test { timeout: 600_000 }
   None of these asserts on elapsed time or waits on a timer; a child that finishes passes at once. The 3 s and 5 s
   guards include a cold `node --import tsx` start, so a very loaded host could hit them. Next candidate: raise them
   (for example to 60 s) if a clean clone ever fails on one.
+
+== Decided (render session, CODE-1c) ==
+tests/chronicleScreen.test.ts CHRON-1: best of three runs < 120 ms (as H8 takes the best of five). Both stay wall-clock budgets by design.

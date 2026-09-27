@@ -199,13 +199,18 @@ test("CHRON-1 30,000 records: the data the screen opens on (rows, markers, peopl
     big.push({ ...source, id: `h-${String(index + 1).padStart(6, "0")}`, tick: Math.floor(index * 4) });
   }
   const heavy: GameState = { ...state, tick: 120_000, history: { ...state.history!, records: big } };
-  const started = performance.now();
-  const items = chronicleItems(heavy, DEFAULT_CHRONICLE_FILTER);
-  const markers = timelineMarkers(items.map(item => item.record), timelineSegments(heavy));
-  const people = chroniclePeople(heavy);
-  const cards = items.slice(0, 12).map(item => recordCard(heavy, item));
-  const elapsed = performance.now() - started;
-  assert.ok(items.length > 10_000 && markers.length > 0 && people.length > 0 && cards.length === 12);
+  // CODE-1c: a wall-clock budget by design (the CHRON-1 gate); the best of three runs, as H8 takes the best of five, so
+  // a shared machine's one slow run does not fail it.
+  let elapsed = Number.POSITIVE_INFINITY;
+  for (let run = 0; run < 3; run += 1) {
+    const started = performance.now();
+    const items = chronicleItems(heavy, DEFAULT_CHRONICLE_FILTER);
+    const markers = timelineMarkers(items.map(item => item.record), timelineSegments(heavy));
+    const people = chroniclePeople(heavy);
+    const cards = items.slice(0, 12).map(item => recordCard(heavy, item));
+    elapsed = Math.min(elapsed, performance.now() - started);
+    assert.ok(items.length > 10_000 && markers.length > 0 && people.length > 0 && cards.length === 12);
+  }
   assert.ok(elapsed < 120, `${elapsed.toFixed(1)} ms`);
 });
 
