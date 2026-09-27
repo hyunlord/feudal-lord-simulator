@@ -16,6 +16,7 @@ import { drawnPortraitId } from "../portraitArt";
 import type { Wave16ImageId } from "../wave16Art";
 import type { Wave17ImageId } from "../wave17Art";
 import { CHRONICLE_SCREEN_COPY, OCCUPATION_TITLES } from "./chronicleScreenCopy.ko";
+import { WAVE17_IMAGES } from "../wave17ArtManifest.generated";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): the whole history ledger read on three axes — the town's
 // timeline (a 1300→1450 strip of the scenario's eras, one Wave 19 segment each, markers for the weightiest record of
@@ -260,7 +261,8 @@ export function recordArt(state: Pick<GameState, "persons" | "scenarioId">, reco
     const defId = String(record.params?.defId ?? "");
     return { kind: "wave16", id: defId === "great_famine" ? "event_famine_omen" : defId === "dearth_rehearsal" ? "event_wet_summer" : "event_fire_warning" };
   }
-  return { kind: "wave16", id: chronicleIllustration(record) };
+  const id = chronicleIllustration(record);
+  return id in WAVE17_IMAGES ? { kind: "wave17", id: id as Wave17ImageId } : { kind: "wave16", id: id as Wave16ImageId };
 }
 
 const label = (key: string) => HISTORY_CHOICE_LABELS[key] ?? key;

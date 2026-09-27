@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
 import type { GameState } from "../../engine/engine.types";
-import { chapterEnd, famineStatus, openPetitions } from "../../engine/politics";
+import { famineStatus, openPetitions } from "../../engine/politics";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
 import type { UiModal } from "../stateMachine/uiStateMachine";
+import { latestChapterEnd } from "../chronicleModel";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
 // it by then: the burning roof, the blighted fields, the petitioners at the gate) and stays until dismissed or a
@@ -52,7 +53,7 @@ export function useStoryPresentation(input: {
   // why: keyed by the visible beats' ids (a new list each render); the pause setting is read when one is new
   }, [visibleKey]); // eslint-disable-line react-hooks/exhaustive-deps
   // Decisions and the chronicle open once, after the world first.
-  const famine = famineStatus(state); const petition = openPetitions(state)[0]; const end = chapterEnd(state);
+  const famine = famineStatus(state); const petition = openPetitions(state)[0]; const end = latestChapterEnd(state);
   const ready = (id: string) => { const entry = seenRef.current.get(id); return entry !== undefined && nowMs - entry.firstSeenMs >= delayMs; };
   useEffect(() => {
     if (blocked || topModal !== null) return;

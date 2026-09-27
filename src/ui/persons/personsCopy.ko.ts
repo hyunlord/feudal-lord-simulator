@@ -17,6 +17,11 @@ export const PERSONS_COPY = {
   role: (role: string) => ROLES[role] ?? role,
   occupation: (occupation: string) => TITLES[occupation] ?? HISTORY_OCCUPATIONS[occupation] ?? occupation,
   age: (age: number) => `${age}살`,
+  /** UI-6: a faction's leader (the king, an earl, a bishop, a house's head): the faction it leads and the age. */
+  leaderLine: (faction: string, age: string) => `${faction}의 수장 · ${age}`,
+  /** UI-6: England's kings by the calendar (FX-5 `KINGS`), read in Korean. */
+  kings: { "Edward I": "에드워드 1세", "Edward II": "에드워드 2세", "Edward III": "에드워드 3세", "Richard II": "리처드 2세",
+    "Henry IV": "헨리 4세", "Henry V": "헨리 5세", "Henry VI": "헨리 6세" } as Readonly<Record<string, string>>,
   memberLine: (role: string, age: string, occupation: string | null) => occupation === null ? `${role} · ${age}` : `${role} · ${age} · ${occupation}`,
   householdOf: (name: string) => `${name}의 집`,
   manor: "영주의 집안",

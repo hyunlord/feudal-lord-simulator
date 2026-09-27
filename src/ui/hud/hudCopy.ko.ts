@@ -19,7 +19,7 @@ export const HUD_COPY = {
   undo: "되돌리기",
   layerLocked: (label: string, reason: string) => `${label} · ${reason}`,
   ledgerTitle: "자원 장부",
-  ledgerTabs: { stock: "자원", alerts: "알림", view: "보기", map: "지도" },
+  ledgerTabs: { stock: "자원", alerts: "알림", rights: "권리", view: "보기", map: "지도" },
   ledgerTotal: "합계",
   ledgerLasts: "버팀",
   ledgerWeek: "이번 주",

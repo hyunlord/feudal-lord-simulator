@@ -89,4 +89,26 @@ export const EVENT_STORY_COPY = {
     line: "마을을 두르는 목책이 섰습니다",
     advice: "성문 쪽 길을 넓혀 두세요",
   },
+  // UI-6 (F2-A WR-1…WR-8): the war of 1337 — the messenger, the demands, the beacon, the raid, the men away, the wall.
+  war: {
+    messenger: { title: "국왕의 전령", line: "왕의 전령이 말을 달려 왔습니다. 전쟁이 시작되었고, 왕실이 계절마다 요구를 보낼 것입니다",
+      advice: "금고를 채워 두고, 해안이라면 성벽을 닫아 두십시오" },
+    demand: { advice: "한 계절 안에 답하지 않으면 거절로 칩니다. 왕실을 거절하면 신임을 잃습니다" },
+    beacon: { title: "봉화가 올랐다", line: "해안의 봉화대에 불이 올랐습니다. 다음 계절에 습격선이 올 것입니다",
+      advice: "성벽의 틈을 메우고, 창고와 금고를 성 안에 두십시오" },
+    raid: { title: "해안 습격", line: "습격선이 부두에 닿았습니다. 성 밖의 집과 창고가 불타고 약탈당합니다",
+      advice: "불탄 집은 다시 지을 수 있습니다" },
+    raidAfter: { title: "습격이 지나간 뒤", line: "연기가 걷히자 잃은 것이 드러났습니다", advice: "불탄 집을 다시 짓고, 성벽을 돌로 바꾸면 다음엔 덜 잃습니다" },
+    away: { title: "일손이 빈 공방", line: "징집된 사람들이 떠나 공방과 밭에 일손이 비었습니다", advice: "두 계절 뒤에 돌아옵니다. 다섯에 하나는 돌아오지 못합니다" },
+    wall: { title: "석벽 인가", line: "석벽을 쌓기로 했습니다. 돌이 오면 목책을 하나씩 돌로 바꿉니다", advice: "채석장과 석공소를 갖추십시오" },
+    losses: (burnt: number, looted: number, coin: string, defence: number) =>
+      `불탄 집 ${burnt}채 · 빼앗긴 물자 ${looted} · 빼앗긴 돈 ${coin} · 성벽 방어 ${defence} %`,
+    awayCount: (men: number) => `떠나 있는 사람 ${men}명`,
+    raidBy: (year: number, season: string) => `${year}년 ${season}에 습격`,
+  },
+  stewardWar: {
+    messenger: "전쟁입니다. 왕의 요구가 계절마다 올 것입니다",
+    beacon: "봉화가 올랐습니다. 다음 계절에 습격이 옵니다 — 성벽을 닫으십시오",
+    raidAhead: (year: number) => `해안 습격이 ${year}년 여름쯤 올 것입니다. 성벽을 돌로 닫아 두십시오`,
+  },
 } as const;

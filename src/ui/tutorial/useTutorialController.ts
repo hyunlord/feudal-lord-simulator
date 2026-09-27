@@ -23,6 +23,8 @@ import {
 } from "./tutorialModel";
 import { readTutorialRecord, writeTutorialRecord, type TutorialRecord } from "./tutorialStore";
 import { setTutorialGuidanceActive, setTutorialMapTarget } from "./tutorialMapChannel";
+import { chapterGoals } from "../../engine/politics";
+import { CHAPTER_COPY } from "../chapterCopy.ko";
 
 // UX-1 tutorial controller (App shell): the record, the current step, the goal cards (the active one, the last
 // completion held SUCCESS_HOLD_MS, "이미 갖춰짐 ✓" for steps the game had already met), unlock banners, the steward's
@@ -286,6 +288,16 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
   const cards: GoalCard[] = []; const actions = new Map<string, TutorialAction>();
   const view = getSettlementView(state);
   const goal = view.currentGoal;
+  // UI-6 (FAIL-3 FL-9): from chapter 2 on, the chapter's own card first — its title, its goals reached, the next one.
+  const chapter = state.politics?.chapter.number ?? 1;
+  if (chapter >= 2) {
+    const goals = chapterGoals(state).filter(entry => entry.chapter === chapter);
+    const next = goals.find(entry => entry.reachedTick === null);
+    const reached = goals.filter(entry => entry.reachedTick !== null).length;
+    if (goals.length > 0) cards.push({ key: "chapter", title: CHAPTER_COPY.card(chapter, reached, goals.length),
+      why: next === undefined ? CHAPTER_COPY.reached(CHAPTER_COPY.goals[goals.at(-1)?.id ?? ""] ?? "") : CHAPTER_COPY.goals[next.id] ?? next.id,
+      progress: { current: reached, target: goals.length }, ctaLabel: CHAPTER_COPY.cta, status: "active", help: null, hasTarget: false });
+  }
   if (goal !== null) {
     const next = goal.criteria.find(item => !item.met) ?? goal.criteria[0];
     cards.push({ key: "settlement", title: goal.title, why: humanizeTicks(next?.label ?? goal.description), progress: next === undefined ? null : { current: Math.floor(next.current), target: next.target },

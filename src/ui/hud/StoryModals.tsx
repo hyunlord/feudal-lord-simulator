@@ -11,6 +11,11 @@ import type { PersonRow } from "../persons/personModels";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
 import { STEWARD_PORTRAIT } from "../portraitArt";
 import { Button } from "../kit";
+import { EmblemImage } from "../heraldry/EmblemImage";
+import { PETITION_COPY } from "../petitionCopy.ko";
+import { wave14ImageStyle } from "../wave14Art";
+import { wave17ImageStyle, wave17Url } from "../wave17Art";
+import { storyArtStyle } from "../storyArt";
 
 // UI-4 story modals (state machine modals: time stops while one is up, and closing it returns to the state under it).
 //  - The Great Famine's answer: the 1315 loading keyart behind, the intro illustration, four answers each with its
@@ -52,33 +57,47 @@ export function FamineDecisionModal({ view, onChoose, onLater, steward = null, o
   );
 }
 
+/** UI-6: the scene of a petition's kind (Wave 16 for chapter 1's, the Wave 17 decision cards for the war's five). */
+function PetitionArt({ art }: { readonly art: PetitionDecisionView["presentation"]["art"] }) {
+  // The Wave 17 scenes are 4:3 (taller than Wave 16's): a little narrower, so the three answers stay inside the frame.
+  return <div className="story-modal-art" aria-hidden="true" style={art.sheet === "wave16" ? wave16ImageStyle(art.id, 300) : wave17ImageStyle(art.id, 208)} />;
+}
+
 export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPerson }: {
   readonly view: PetitionDecisionView; readonly onRespond: (response: PetitionResponse) => void; readonly onLater: () => void;
   /** UI-5: the heads who bring the petition (PERSON-0 PS-4: two or three), each a chip that opens their card. */
   readonly petitioners?: readonly PersonRow[]; readonly onPerson?: (personId: string) => void;
 }) {
+  const { presentation } = view;
+  const from = presentation.from;
+  // UI-6: who brings it — the faction by its display name and arms; the Crown's writ hangs its seal with those arms;
+  // the faction's leader (a person: the king, the earl, the refugees' or townsfolk's head) as a chip beside the town's heads.
+  const people = [...(from?.leader === null || from?.leader === undefined ? [] : [from.leader]), ...petitioners.filter(row => row.id !== from?.leader?.id)];
   return (
     <div className="story-modal-backdrop" role="presentation">
-      <section className="story-modal petition-card" role="dialog" aria-modal="true" aria-label={DECISION_COPY.petitionTitle} data-petition={view.petitionId}>
+      <section className="story-modal petition-card" role="dialog" aria-modal="true" aria-label={presentation.title} data-petition={view.petitionId}
+        data-def={presentation.defId}>
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
         <div className="petition-body" style={wave8ContentStyle("frame_petition")}>
-          {petitioners.length === 0 || onPerson === undefined ? <>
-            <div className="story-modal-art" aria-hidden="true" style={wave16ImageStyle("event_market_petition", 300)} />
-            <h2>{DECISION_COPY.petitionTitle}</h2>
-            <p className="petition-who"><UiIcon sheet="resource" cell="population" />{DECISION_COPY.petitioners}</p>
-          </> : <>
-            {/* The petitioners stand beside the scene (no height added: the answers stay inside the frame). */}
-            <div className="petition-scene">
-              <div className="story-modal-art" aria-hidden="true" style={wave16ImageStyle("event_market_petition", 300)} />
+          <div className="petition-scene">
+            <PetitionArt art={presentation.art} />
+            {people.length === 0 || onPerson === undefined ? null : (
               <section className="petition-people" aria-label={PERSONS_COPY.petitionersHeading}>
-                <h3>{PERSONS_COPY.petitionersHeading}</h3>
-                <ul className="person-list">{petitioners.map(row => <li key={row.id}><PersonChip row={row} onOpen={id => onPerson(id)} /></li>)}</ul>
+                <h3>{from?.writ === true ? PETITION_COPY.senderHeading : PERSONS_COPY.petitionersHeading}</h3>
+                <ul className="person-list">{people.map(row => <li key={row.id}><PersonChip row={row} onOpen={id => onPerson(id)} /></li>)}</ul>
               </section>
-            </div>
-            <h2>{DECISION_COPY.petitionTitle}</h2>
-          </>}
-          <p>{DECISION_COPY.demand}</p>
-          <p>{DECISION_COPY.petitionIntro}</p>
+            )}
+          </div>
+          <h2>{presentation.title}</h2>
+          {from === null ? null : (
+            <p className="petition-who" data-faction={from.factionId}>
+              {from.writ ? <span className="petition-writ" role="img" aria-label={PETITION_COPY.writ} style={wave14ImageStyle("wax_seal_hanging", 36)}>
+                <span className="petition-writ-arms"><EmblemImage emblem={from.arms} size={22} label={from.name} /></span></span>
+                : <EmblemImage emblem={from.arms} size={28} label={from.name} />}
+              {PETITION_COPY.from(from.name)}
+            </p>
+          )}
+          <p>{presentation.demand}</p>
           <ol className="petition-options">
             {view.options.map(option => (
               <li key={option.choice}>
@@ -104,7 +123,8 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
   readonly onOpenChronicle?: () => void;
 }) {
   return (
-    <div className="story-modal-backdrop story-modal-backdrop--chronicle" role="presentation" style={{ backgroundImage: `url("${wave16Url("chapter1_end")}")` }}>
+    <div className="story-modal-backdrop story-modal-backdrop--chronicle" role="presentation"
+      style={{ backgroundImage: `url("${view.chapter === 2 ? wave17Url("chapter2_end") : wave16Url("chapter1_end")}")` }}>
       <section className="chronicle-page" role="dialog" aria-modal="true" aria-label={view.title}>
         <span className="chronicle-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_chronicle_page")} />
         <div className="chronicle-body" style={wave8ContentStyle("frame_chronicle_page")}>
@@ -114,7 +134,7 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
           <ol className="chronicle-timeline">
             {view.entries.map(entry => (
               <li key={entry.id} className="chronicle-entry">
-                <span className="chronicle-entry-art" aria-hidden="true" style={wave16ImageStyle(entry.illustration, 56)} />
+                <span className="chronicle-entry-art" aria-hidden="true" style={storyArtStyle(entry.illustration, 56)} />
                 <span className="chronicle-entry-date">{entry.date}</span><span className="chronicle-entry-line">{entry.sentence}</span>
               </li>
             ))}
@@ -128,7 +148,7 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
           <h3>{CHRONICLE_COPY.statsHeading}</h3>
           <ul className="chronicle-stats">{view.stats.map(line => <li key={line}>{line}</li>)}</ul>
           <div className="chronicle-actions">
-            <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{CHRONICLE_COPY.nextChapter}</Button>
+            <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{CHRONICLE_COPY.nextChapterOf(view.chapter)}</Button>
             <Button type="button" className="chronicle-keep" onPress={() => onKeepPlaying()} variant="secondary"><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.keepPlaying}</Button>
             {onOpenChronicle === undefined ? null : <Button type="button" className="chronicle-full" onPress={() => onOpenChronicle()} variant="primary">
               <UiIcon sheet="action" cell="log" />{CHRONICLE_COPY.openFull}</Button>}
@@ -140,13 +160,23 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
   );
 }
 
-/** The chapter 2 preview (Wave 16 chapter2_intro): chapter 2 is not built yet, so it returns to this town. */
-export function ChapterTwoPreview({ onContinue }: { readonly onContinue: () => void }) {
+/**
+ * The next chapter's screen after a chapter's page. UI-6: chapter 2 is played in the same town (FAIL-3 FL-8) — its
+ * opening (Wave 16 chapter2_intro) names the chapter and lists its goals; a chapter not built yet (3 on) says so.
+ */
+export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [] }: {
+  readonly onContinue: () => void; readonly chapter?: number; readonly goals?: readonly string[];
+}) {
+  const open = chapter === 2;
   return (
-    <div className="chapter-preview" role="dialog" aria-modal="true" aria-label={CHRONICLE_COPY.chapterTwoTitle} style={{ backgroundImage: `url("${wave16Url("chapter2_intro")}")` }}>
-      <p className="chapter-loading-title">{CHRONICLE_COPY.chapterTwoTitle}</p>
-      <p className="chapter-loading-line">{CHRONICLE_COPY.chapterTwoLine}</p>
-      <Button type="button" className="chapter-preview-continue" onPress={() => onContinue()} variant="primary"><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.chapterTwoContinue}</Button>
+    <div className="chapter-preview" role="dialog" aria-modal="true" aria-label={open ? CHRONICLE_COPY.chapterTwoStartTitle : CHRONICLE_COPY.laterTitle(chapter)}
+      data-chapter={chapter} style={{ backgroundImage: `url("${wave16Url("chapter2_intro")}")` }}>
+      <p className="chapter-loading-title">{open ? CHRONICLE_COPY.chapterTwoStartTitle : CHRONICLE_COPY.laterTitle(chapter)}</p>
+      <p className="chapter-loading-line">{open ? CHRONICLE_COPY.chapterTwoStartLine : CHRONICLE_COPY.laterLine}</p>
+      {open && goals.length > 0 ? <section className="chapter-preview-goals" aria-label={CHRONICLE_COPY.chapterTwoGoalsHeading}>
+        <h3>{CHRONICLE_COPY.chapterTwoGoalsHeading}</h3><ul>{goals.map(goal => <li key={goal}>{goal}</li>)}</ul></section> : null}
+      <Button type="button" className="chapter-preview-continue" onPress={() => onContinue()} variant="primary"><UiIcon sheet="time" cell="play" />
+        {open ? CHRONICLE_COPY.chapterTwoStart : CHRONICLE_COPY.chapterTwoContinue}</Button>
     </div>
   );
 }

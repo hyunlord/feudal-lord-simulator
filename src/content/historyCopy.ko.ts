@@ -54,17 +54,17 @@ export const HISTORY_OCCUPATIONS: Readonly<Record<string, string>> = {
   granger: "곡창", storekeeper: "창고",
 };
 /** FAIL-3 (FL-3, FL-1, FL-7): the decline's causes, the lord's rights and the houses' names in Korean. */
-const DECLINE_CAUSES: Readonly<Record<string, string>> = { derelict: "빈 필지가 늘어", arrears: "유지비가 밀려", depopulated: "사람이 떠나", empty: "도시가 비어" };
+export const DECLINE_CAUSES: Readonly<Record<string, string>> = { derelict: "빈 필지가 늘어", arrears: "유지비가 밀려", depopulated: "사람이 떠나", empty: "도시가 비어" };
 export const LORD_RIGHT_NAMES: Readonly<Record<string, string>> = { market: "시장 좌판세", tolls: "통행세", mill: "방앗간 사용료" };
 /** FIX-5: the invented houses' Korean readings (`gentryNames.ts`). */
 export const LORD_HOUSE_NAMES_KO: Readonly<Record<string, string>> = GENTRY_NAMES_KO;
 const houseName = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;
 /** F2-A (WR-2…WR-8): what each petition is, and what its three answers mean. */
-const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
+export const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
   market_charter: "상인의 시장권 청원", restore_right: "권리 복원 청원",
   wool_payment: "양모 공납 칙령", levy_response: "징집 명령", war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
 };
-const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
+export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   wool_payment: { accept: "현물로 낸다", accept_with_price: "현금으로 낸다", refuse: "거절", expired: "답하지 않음" },
   levy_response: { accept: "사람을 보낸다", accept_with_price: "면제금을 낸다", refuse: "거절", expired: "답하지 않음" },
   war_funding: { accept: "상인에게 빌린다", accept_with_price: "세금을 올린다", refuse: "거절", expired: "답하지 않음" },

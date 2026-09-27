@@ -71,7 +71,7 @@ def main() -> None:
         runtime.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, runtime)
         assert sha(runtime) == digest, relative
-        key = record["asset_id"]
+        key = record["asset_id"].removesuffix("-v1")
         entry = {"url": f"assets/wave14/{group}/{name}", "width": int(record["width"]), "height": int(record["height"]), "group": group}
         if key == "frame_person_card":
             # records/asset-rows.json: insets (top, right, bottom, left) 136, 64, 20, 112, minimum 320 x 200; the generation

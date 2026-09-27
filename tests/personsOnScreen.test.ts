@@ -21,6 +21,7 @@ import { houseDiagnosisModel } from "../src/ui/houseDiagnosisModel";
 import { PetitionModal } from "../src/ui/hud/StoryModals";
 import { INITIAL_UI_STATE, reduceUi, timeStopped, topModal } from "../src/ui/stateMachine/uiStateMachine";
 import { WAVE14_IMAGES } from "../src/ui/wave14ArtManifest.generated";
+import { petitionPresentation } from "../src/ui/petitionPresentation";
 
 // UI-5 people on screen, on the v17 fixtures' towns (PERSON-0 persons): the rows, the card, the steward, the walker's
 // person and line, the arms and marks (the same seed, the same emblem), and how many portraits match.
@@ -70,7 +71,8 @@ test("UI-5 petitioners: the petition's two or three heads by name (PERSON-0 PS-4
   const rows = petitionerRows(town, { petitionerIds: heads.map(person => person.id) });
   assert.deepEqual(rows.map(row => row.id), heads.map(person => person.id));
   assert.deepEqual(petitionerRows(town, {}), []);
-  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: { petitionId: "market_rights@1", options: [] }, onRespond: () => undefined,
+  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: { petitionId: "market_rights@1", options: [],
+    presentation: petitionPresentation(town, { id: "market_rights@1", defId: "market_charter", petitioner: "merchants", arrivedTick: town.tick }) }, onRespond: () => undefined,
     onLater: () => undefined, petitioners: rows, onPerson: () => undefined }));
   assert.match(markup, new RegExp(PERSONS_COPY.petitionersHeading));
   for (const row of rows) assert.match(markup, new RegExp(`data-person="${row.id}"`));
