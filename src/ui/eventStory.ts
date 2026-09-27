@@ -5,6 +5,7 @@ import { eventForecast } from "../engine/eventSchedule";
 import { famineStatus, openPetitions } from "../engine/politics";
 import { stateCalendar } from "../engine/scenarioState";
 import { wetSummer } from "../render/wetSummer";
+import { beaconSpot, raidQuaySpot } from "../render/warWorldProps";
 import { EVENT_STORY_COPY } from "./eventStoryCopy.ko";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { beaconLit, conscriptsAway, warForecast, warOf } from "../engine/war";
@@ -150,7 +151,7 @@ function warBeats(state: GameState): readonly StoryBeat[] {
   if (beaconLit(state)) {
     const raid = warForecast(state).find(step => step.id === "raid");
     const when = raid === undefined ? null : stateCalendar({ ...state, tick: raid.tick });
-    beats.push({ id: `beacon:${war.messengerTick}`, kind: "beacon", illustration: "event_beacon_warning", tile: null, decision: null,
+    beats.push({ id: `beacon:${war.messengerTick}`, kind: "beacon", illustration: "event_beacon_warning", tile: spotTile(beaconSpot(state)), decision: null,
       title: copy.beacon.title, line: copy.beacon.line, advice: copy.beacon.advice,
       facts: when === null ? [] : [copy.raidBy(when.year, SCENARIO_COPY.seasons[when.season as 0 | 1 | 2 | 3])] });
   }
@@ -158,8 +159,8 @@ function warBeats(state: GameState): readonly StoryBeat[] {
   if (raid !== undefined && state.tick - raid.tick < 2 * SEASON) {
     const facts = [copy.losses(raid.losses.burntHouses, raid.losses.looted, pence(raid.losses.coin), Math.round(raid.defencePermille / 10))];
     beats.push(state.tick - raid.tick < SEASON
-      ? { id: `raid:${raid.tick}`, kind: "raid", illustration: "event_coastal_raid", tile: null, decision: null, title: copy.raid.title, line: copy.raid.line, advice: copy.raid.advice, facts }
-      : { id: `raid_after:${raid.tick}`, kind: "raid_aftermath", illustration: "event_raid_aftermath", tile: null, decision: null,
+      ? { id: `raid:${raid.tick}`, kind: "raid", illustration: "event_coastal_raid", tile: spotTile(raidQuaySpot(state)), decision: null, title: copy.raid.title, line: copy.raid.line, advice: copy.raid.advice, facts }
+      : { id: `raid_after:${raid.tick}`, kind: "raid_aftermath", illustration: "event_raid_aftermath", tile: spotTile(raidQuaySpot(state)), decision: null,
         title: copy.raidAfter.title, line: copy.raidAfter.line, advice: copy.raidAfter.advice, facts });
   }
   const away = conscriptsAway(state);
@@ -186,6 +187,11 @@ export function forecastStewardLine(state: GameState): { readonly key: string; r
   const lines = EVENT_STORY_COPY.steward;
   const text = entry.kind === "fire" ? lines.fire(entry.stage === "sign") : entry.defId === GREAT_FAMINE_EVENT_ID ? lines.famine(entry.stage === "sign") : lines.dearth(entry.stage === "sign");
   return { key: `forecast:${entry.id}:${entry.stage}`, text };
+}
+
+/** UI-6: where the beacon or the burning quay stands (render/warWorldProps), as the chip's [위치로] tile. */
+function spotTile(spot: { readonly tx: number; readonly ty: number } | null) {
+  return spot === null ? null : { tx: spot.tx, ty: spot.ty };
 }
 
 function keepTile(state: GameState) {
