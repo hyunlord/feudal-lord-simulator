@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-27(UX-0b2 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -12,6 +12,11 @@
   - **WALL-2:** 시대 콘솔 [목책 넓히기] → 한 변을 끌어 넓히기, 미리보기(새 목책 걸음·목재, 성 안 A→B칸, "밭 N칸 → {해 계절} 목초지" 경고와 붉은 칸), [목책 확장 선포]; 확장 뒤 콘솔 줄·구역 칠하기의 붉은 칸·위기 줄.
   - **고친 것:** 초안에서 한 변을 끌 때 거절된 걸음이 시작점을 옮겨 거절 자리를 넘지 못하던 결함, 시대 콘솔 단추 태블릿 44 → 48 px.
   - **관문:** 캡처 9장, UX-3 회귀 세트 통과, 맥 3,139/3,139. 깨끗한 클론은 다음 커밋에 적는다. 위기 줄 순위(UX0B2-D2)와 문구는 판정 대기.
+
+- **ASSET-1 에셋 전수 점검 — 관문 ①~④ 통과, 본선(문서만)**(Claude Code, INBOX 세션, `docs/verification/asset-audit/`·STATUS·로드맵만, 코드·에셋·장부 0줄): [보고서](verification/asset-audit/REPORT.md). 수정하지 않고 목록만 — 사용자 판정 후 ASSET-2.
+  - **runtime 대조:** `public/assets` 885개와 빌드 파생 507개를 모두 분류(미분류 0). superseded·rejected·retired 바이트는 게임에 0. 판정 전 초상 풀 2차 92장이 CHRON-1 설치로 빌드 파생 184개로 들어가 있고, 옛 버전이 코드에 등록된 파일 7(도로 v2 2·성벽 면 v1 5), 장부·설치 대장에 없고 코드도 읽지 않는 파일 10(예약 목책 5·빵 바구니 1·옛 UI 질감 4, 예약 6은 caBX 남음). 확정인데 미설치 388장(walker-pilot2 88·Wave 3 82·Wave 12 60·Wave 17 52·Wave 13 34·Wave 14 24·Wave 20 20 등).
+  - **일관성 시트 8장**(게임 줌 1.0 크기, 건물은 발판 마름모): Wave 9 이야기 워커가 일반 워커의 약 1.8배, Wave 13 동물을 규격(원본×0.5)대로 넣으면 지금 동물의 두 배 넘게 큼, 파일럿 초상이 풀보다 밝음. 묶음 안 밝기·채도 z ±2 밖 97장.
+  - **기계 결함:** 규격(캔버스·피벗·알파 바운딩) 1,148건 불일치 0, 빈 파일 0, DPR·크기 파생 누락 0, 헤일로 기준 3(눈으로는 빛 받은 윗면), 말뚝 면 v2 색 띠 1(눈 확인).
 
 - **TEST-1 seasonArt "held chunk raster" 시험 결정론 — 본선 병합**(Claude Code, 렌더 시계 인자·시험·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/test1/REPORT.md).
   - 지면 청크 캐시에 시계를 주입하고(게임은 기본값 `performance.now`), 시험은 가짜 시계로 20·30·5 ms를 넘긴다. DGX가 바쁠 때 깨끗한 클론을 깨던 시험(MARKET-1 보고서, 두 번)이다.
