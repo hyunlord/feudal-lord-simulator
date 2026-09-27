@@ -1,6 +1,6 @@
 # RES-REG 자원 목록을 한 곳으로 — 보고서
 
-관문: 통과 — ① 가짜 자원 한 줄을 넣은 복사본이 다른 파일 수정 없이 tsc·렌더/UI 시험 115개 통과 ② 목록 파일 밖 `Record<ResourceType` 전수 표 0개(시험 관문) ③ C25 판 동일(재기록 없음)·스킨 감사 0 / 714·UX-3 회귀 세트·튜토리얼 22 = 22 ④ DGX 전체 회귀 3,197/3,197·깨끗한 클론 `850f52e` 3,216/3,216
+관문: 통과 — ① 가짜 자원 한 줄을 넣은 복사본이 다른 파일 수정 없이 tsc·렌더/UI 시험 115개 통과 ② 목록 파일 밖 `Record<ResourceType` 전수 표 0개(시험 관문) ③ C25 판 동일(재기록 없음)·스킨 감사 0 / 714·UX-3 회귀 세트·튜토리얼 22 = 22 ④ DGX 전체 회귀 3,197/3,197·깨끗한 클론 `c5c3850` 3,233/3,233
 
 ## 1. 목록
 - **`src/content/resourceCatalog.ts`** — 자원마다 한 줄: `id`, `storage`(granary/storehouse/none), `group`(food/raw/goods/money), `hudPriority`(장부 서랍 줄 순서), `carrier`(길 위의 운반인 모습), `cartLoadKey`·`cartPileKey`(수레 적재물), `iconKey`(`runtime-icons-v1`), `sheetCell`(HUD 24px 칸), `cargoIconCell`(가까운 줌의 짐 아이콘), `color`(`SEMANTIC_PALETTE` 토큰 이름), `bulk`(수레 적재 계수, 아직 읽는 곳 없음).
@@ -51,8 +51,8 @@
   - 성능: HUD 프레임 p95 98.2 %, 건설 서랍 98.1 %(유효 5/5, rAF 16.7 ms), [perf.json](gates/perf.json).
   - 장부 서랍 캡처: [ledger-after.jpg](ledger-after.jpg)(통나무).
 - 로컬: typecheck, lint(`npm run lint`), 관련 시험 141파일 1,050/1,050.
-- 깨끗한 클론 `850f52e`(본선 F2-A를 받은 뒤): npm ci, typecheck, 3,216/3,216, build. `npm run check:merge` 통과.
-- 시간: 21:00(지시서 풀기) → 22:18(클론 통과, KST 벽시계), 약 1시간 18분.
+- 깨끗한 클론 `850f52e`(본선 F2-A를 받은 뒤) 3,216/3,216, 본선 FACTION-0을 받은 병합 `c5c3850`에서 다시: npm ci, typecheck, 3,233/3,233, build. `npm run check:merge` 통과.
+- 시간: 21:00(지시서 풀기) → 22:27(마지막 클론 통과, KST 벽시계), 약 1시간 27분.
 
 ## 8. 엔진 세션에 — 목록에 줄 추가하는 방법(C4)
 1. `src/content/resourceCatalog.ts`의 `RESOURCE_CATALOG`에 한 줄: `{ id: "barley", storage: "granary", group: "raw", hudPriority: 8, carrier: "farmer", color: "gold", bulk: 1 }` (그림 키는 그림이 설치될 때 더한다. 그 전엔 범용 자루·상자와 이름). 돈 줄보다 앞에 둔다.
