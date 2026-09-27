@@ -2,7 +2,7 @@ import type { Walker } from "../../agents/walker.types";
 import { BUILDING_CONFIG_BY_KIND } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
 import { hashSeed } from "../../engine/prng";
-import { ageOf, currentYear, displayName, inTown, personById } from "../../engine/persons";
+import { ageOf, currentYear, inTown, personById, personDisplayName } from "../../engine/persons";
 import { lordHouse } from "../../engine/lordshipState";
 import { persons } from "../../engine/personsApi";
 import { MANOR_HOUSEHOLD, type Person, type PersonClassBand } from "../../engine/persons.types";
@@ -10,7 +10,6 @@ import type { PetitionRecord } from "../../engine/politics.types";
 import { walkerLook, type WalkerClassBand } from "../../render/walkerLook";
 import { armsRecipe, merchantRecipe } from "../heraldry/heraldry";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
-import { GENTRY_NAMES_KO } from "../../content/gentryNames";
 import { resourceName } from "../../content/resourceCatalog.ko";
 import { drawnPortraitId } from "../portraitArt";
 import { PERSONS_COPY } from "./personsCopy.ko";
@@ -40,7 +39,7 @@ function drawnPortrait(state: GameState, person: Person) {
 export function personRow(state: GameState, person: Person): PersonRow {
   const portrait = drawnPortrait(state, person);
   const age = ageOf(person, person.deathYear ?? person.leftYear ?? currentYear(state));
-  return { id: person.id, name: displayName(person), line: PERSONS_COPY.memberLine(PERSONS_COPY.role(person.role), PERSONS_COPY.age(age), occupationOf(person)),
+  return { id: person.id, name: personDisplayName(person), line: PERSONS_COPY.memberLine(PERSONS_COPY.role(person.role), PERSONS_COPY.age(age), occupationOf(person)),
     portraitId: portrait.portraitId, exact: portrait.exact };
 }
 
@@ -48,22 +47,9 @@ export function personRow(state: GameState, person: Person): PersonRow {
  * UI-6: a faction's leader as a chip — the king by his Korean reading, others by their name; the line says whose
  * leader (the faction's display name, `factionDisplayName`) and the age, not a town household's role.
  */
-/**
- * A faction leader's name as every screen writes it (the petition card, the chronicle's faction tab): a king by his
- * Korean regnal name, an outside faction's gentry or clergy by their given name and the Korean reading of their
- * (invented) surname, a townsman as the town's people are named.
- */
-export function factionLeaderName(person: Pick<Person, "givenName" | "surname" | "epithet" | "occupation" | "householdId">): string {
-  if (person.occupation === "king") return PERSONS_COPY.kings[person.givenName] ?? person.givenName;
-  if (person.householdId.startsWith("faction:")) {
-    return [person.givenName, person.surname === undefined ? undefined : GENTRY_NAMES_KO[person.surname] ?? person.surname].filter(part => part !== undefined && part !== "").join(" ");
-  }
-  return displayName(person);
-}
-
 export function factionLeaderRow(state: GameState, person: Person, factionName: string): PersonRow {
   const row = personRow(state, person);
-  const name = factionLeaderName(person);
+  const name = personDisplayName(person);
   const age = ageOf(person, person.deathYear ?? person.leftYear ?? currentYear(state));
   return { ...row, name, line: PERSONS_COPY.leaderLine(factionName, PERSONS_COPY.age(age)) };
 }
@@ -136,9 +122,9 @@ export function personCardView(state: GameState, personId: string): PersonCardVi
   const head = persons.of(state, person.householdId).find(member => member.role === "head");
   const emblem = personEmblem(state, person);
   return {
-    id: person.id, name: displayName(person), role: PERSONS_COPY.cardRole(PERSONS_COPY.role(person.role), occupationOf(person)),
+    id: person.id, name: personDisplayName(person), role: PERSONS_COPY.cardRole(PERSONS_COPY.role(person.role), occupationOf(person)),
     life: PERSONS_COPY.cardLife(person.birthYear, ageOf(person, year)),
-    household: person.householdId === MANOR_HOUSEHOLD ? PERSONS_COPY.manor : PERSONS_COPY.householdOf(displayName(head ?? person)),
+    household: person.householdId === MANOR_HOUSEHOLD ? PERSONS_COPY.manor : PERSONS_COPY.householdOf(personDisplayName(head ?? person)),
     portraitId: portrait.portraitId, exact: portrait.exact,
     match: portrait.fixed ? PERSONS_COPY.stewardPortrait : PERSONS_COPY.portraitMatch(portrait.identityId, portrait.stage, portrait.exact),
     emblem, emblemLabel: emblem === null ? PERSONS_COPY.noEmblem : emblem.kind === "arms" ? PERSONS_COPY.arms : PERSONS_COPY.merchantMark,
@@ -163,7 +149,7 @@ export function walkerHeadline(state: GameState, walkerId: string): WalkerHeadli
   if (walker === undefined || walker.kind === "builder") return null;
   const person = walkerPerson(state, walker);
   const portrait = person === null ? null : drawnPortrait(state, person);
-  const who = { personId: person?.id ?? null, name: person === null ? null : displayName(person), portraitId: portrait?.portraitId ?? null, exact: portrait?.exact ?? false };
+  const who = { personId: person?.id ?? null, name: person === null ? null : personDisplayName(person), portraitId: portrait?.portraitId ?? null, exact: portrait?.exact ?? false };
   const cargo = walker.cargo === null ? null : resourceName(walker.cargo.resource);
   if (walker.kind === "distributor") return { ...who, line: cargo === null ? PERSONS_COPY.returningHome : PERSONS_COPY.delivering(cargo) };
   const home = state.buildings.find(building => building.id === walker.homeBuildingId);

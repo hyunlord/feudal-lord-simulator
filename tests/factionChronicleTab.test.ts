@@ -25,7 +25,8 @@ import { ChronicleScreen } from "../src/ui/chronicle/ChronicleScreen";
 import { FactionPage, FACTION_PAGE_SLOTS } from "../src/ui/chronicle/FactionPage";
 import { FactionTab } from "../src/ui/chronicle/FactionTab";
 import { CHRONICLE_KINDS, chronicleItems, DEFAULT_CHRONICLE_FILTER, recordCard, type ChronicleItem } from "../src/ui/chronicle/chronicleScreenModel";
-import { clampRelation, factionLeaderName, factionPageView, factionRows, relationBand, worldLines } from "../src/ui/chronicle/factionTabModel";
+import { clampRelation, factionPageView, factionRows, relationBand, worldLines } from "../src/ui/chronicle/factionTabModel";
+import { personDisplayName } from "../src/engine/persons";
 import { armsKey, armsRecipe, heraldryArms, heraldryMark, merchantKey, royalArms } from "../src/ui/heraldry/heraldry";
 import { emblemKey } from "../src/ui/heraldry/EmblemImage";
 import { portraitStyle } from "../src/ui/portraitArt";
@@ -89,10 +90,13 @@ test("UI-6 faction tab: no stored gentry, see, earldom or king name leaks into t
   const markup = renderToStaticMarkup(createElement(FactionTab, { rows, world: worldLines(state), onOpen: () => undefined }))
     + pages.map(view => renderToStaticMarkup(createElement(FactionPage, { view, scale: 0.8, onRecord: () => undefined }))).join("");
   assert.deepEqual(leaks(markup), []);
-  // A leader of an outside faction: given name and the Korean reading of the invented surname.
+  // NAME-1: a leader of an outside faction is named as every person is (FIX-6 `personDisplayName`): in Korean, the
+  // invented surname by its Korean reading, no Latin letter.
   const earl = state.factions!.people.find(person => person.householdId === "faction:overlord")!;
   assert.ok(earl.surname !== undefined && GENTRY_SURNAMES.includes(earl.surname as (typeof GENTRY_SURNAMES)[number]));
-  assert.equal(factionLeaderName(earl), `${earl.givenName} ${factionDisplayName("overlord", earl.surname!).replace(/ 백작$/, "")}`);
+  assert.equal(rows.find(row => row.id === "overlord")!.leader!.name, personDisplayName(earl));
+  assert.ok(personDisplayName(earl).endsWith(factionDisplayName("overlord", earl.surname!).replace(/ 백작$/, "")));
+  assert.doesNotMatch(markup, /<[^>]*>[^<]*[A-Za-z]{2,}[^<]*<\/(?:p|strong|h3|span)>/, "no Latin person name on the tab or the pages");
 });
 
 test("UI-6 relation scale: −100…100 held at the ends, the pin at its place, the band's word", () => {

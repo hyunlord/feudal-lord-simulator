@@ -4,9 +4,8 @@ import type { GameState } from "../../engine/engine.types";
 import type { FactionTimelineEntry, FactionView } from "../../engine/faction.types";
 import { factionChronicle, factionsList, worldTimeline } from "../../engine/factions";
 import { history } from "../../engine/history";
-import { ageOf, currentYear, personById, personPortrait } from "../../engine/persons";
+import { ageOf, currentYear, personById, personDisplayName, personPortrait } from "../../engine/persons";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
-import { factionLeaderName } from "../persons/personModels";
 import { drawnPortraitId } from "../portraitArt";
 import { chronicleDate, factionEmblem } from "./chronicleScreenModel";
 import { CHRONICLE_SCREEN_COPY as COPY, DEMAND_NAMES, LEADER_ROLES, RELATION_BANDS } from "./chronicleScreenCopy.ko";
@@ -41,8 +40,6 @@ export function relationBand(value: number): string {
   return (RELATION_BANDS.find(band => relation >= band.from) ?? RELATION_BANDS[RELATION_BANDS.length - 1]!).label;
 }
 
-export { factionLeaderName };
-
 function leaderView(state: GameState, faction: FactionView): FactionLeaderView | null {
   if (faction.leaderId === null) return null;
   const person = personById(state, faction.leaderId);
@@ -51,7 +48,7 @@ function leaderView(state: GameState, faction: FactionView): FactionLeaderView |
     : faction.kind === "commons" && person.tags.includes("reeve") ? LEADER_ROLES.reeve! : LEADER_ROLES[faction.kind] ?? "";
   const year = currentYear(state);
   const age = person.alive ? ageOf(person, year) : null;
-  return { id: person.id, name: factionLeaderName(person), role, line: COPY.leaderLine(role, age),
+  return { id: person.id, name: personDisplayName(person), role, line: COPY.leaderLine(role, age),
     portraitId: drawnPortraitId(person, personPortrait(state, person).portraitId) };
 }
 
@@ -75,7 +72,7 @@ function timelineLine(state: GameState, entry: FactionTimelineEntry): string {
   if (entry.kind === "affair") return FACTION_AFFAIR_LINES[entry.id] ?? "";
   const line = FACTION_LEADER_LINES[entry.id] ?? "";
   const person = entry.personId === undefined ? undefined : personById(state, entry.personId);
-  return person === undefined ? line : COPY.timelineLeader(line, factionLeaderName(person));
+  return person === undefined ? line : COPY.timelineLeader(line, personDisplayName(person));
 }
 
 /** FX-6 `factionChronicle`: a faction's page. Its records and its timeline newest first, as the chronicle's list reads. */
