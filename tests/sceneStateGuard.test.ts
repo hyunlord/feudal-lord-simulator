@@ -6,7 +6,6 @@ import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { loadSaveFile } from "../scripts/loadSaveFile";
 import { admitSceneState, staleStateKeys } from "../scripts/sceneState";
-// @ts-expect-error why: a plain .mjs helper for the browser scripts (no types); the test only calls its string rewrite.
 import { injectSceneState } from "../scripts/sceneInjection.mjs";
 
 // RES-REG (code review): captures and audits put a state into the game only through the save codec. The UI-KIT-1
@@ -46,7 +45,7 @@ test("a hand-built town past tick 0 that never ticked is refused: its first tick
 
 test("the page's store starts from admitSceneState, and no script replaces the store's state another way", () => {
   const served = "import { useState } from 'react';\nconst [state, setState] = useState(DEFAULT_GAME_STATE);";
-  const rewritten = injectSceneState(served, "{\"tick\":1}") as string;
+  const rewritten = injectSceneState(served, "{\"tick\":1}");
   // The codec comes from /src (in every build, the trunk before included); the check is this file's own function.
   assert.match(rewritten, /^import \{ decodeSave as __decodeSave, assertGameStateSnapshot as __assertSnapshot \} from "\/src\/save\/saveCodec\.ts";/);
   assert.match(rewritten, /const __admitSceneState = function admitSceneState\(input, newGame, codec\)/);
