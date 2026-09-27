@@ -1,3 +1,4 @@
+import { wallConstructionPriority } from "./constructionReserve";
 import { MONEY_BALANCE } from "../content/balanceConfig";
 import { LORDSHIP_BALANCE } from "../content/lordshipConfig";
 import { arrearsPeriods, derelictPermille } from "./lordship";
@@ -69,7 +70,11 @@ export interface AutoplayPolicy {
    * food in a derelict town and never buys a lost right back.
    */
   readonly naiveUpkeep?: boolean;
-  /** F2-A gate (WR-10): the wall-or-market answer (the bot's own rule unless a gate variant fixes it). */
+  /**
+   * F2-A gate (WR-10): the wall-or-market answer (the bot's own rule unless a gate variant fixes it). FIX-5 (WR-11):
+   * `wall` is the stone-wall variant — from chapter 2 it seeks the stone project right after food (quarry, masonry,
+   * stone, the proclamation) and, once proclaimed, puts the wall's work first.
+   */
   readonly wallChoice?: "wall" | "market";
 }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
@@ -346,6 +351,8 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   const water = (current: GameState): AutoplayAction => policy.noWells === true ? NONE : waterAction(current);
   // F0-A (AR-8): a mill beside a barn the mills cannot empty while homes lose their levels (seed 4, run 1).
   const barnMill = (current: GameState): AutoplayAction => barnMillAction(current, buildAction, diagnostic);
+  const stoneFirst = policy.wallChoice === "wall" && (state.politics?.chapter.number ?? 1) >= 2;
+  if (state.era === "stone_town" && stoneFirst && wallConstructionPriority(state) !== "priority") return { kind: 'set_wall_construction_priority', priority: 'priority' };
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve, barnMill,
       (current: GameState) => foodAction(current, buildAction, diagnostic), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
@@ -370,6 +377,8 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => winterReserve(state),
     () => barnMill(state),
     () => foodAction(state, buildAction, diagnostic),
+    // FIX-5 (WR-11): the stone-wall variant seeks its project before homes.
+    ...(stoneFirst ? [eraPhase] : []),
     housingPhase,
     // WALL-2 (AR-12): a built wall too small for the lots still wanted is widened.
     () => autoplayWallExpansionAction(state, policy.maxHousingLots),
