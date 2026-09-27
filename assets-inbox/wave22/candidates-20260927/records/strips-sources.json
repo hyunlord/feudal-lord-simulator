@@ -1,0 +1,540 @@
+[
+  {
+    "id": "boundary/chalk_edge_a-v1",
+    "prompt": "Use case: precise-object-edit. Edit this exact terrain transition strip. KEEP original contour, horizontal orientation, olive grass upper side and pale warm ivory chalk lower side, proportions. REPAINT its surface into smooth broad 12–24px painterly masses at final512x64. Remove ALL photographic tiny grain, speckles, sand grains and hairline grass. Preserve natural soft tonal undulations, not flat camouflage. The existing boundary's broad irregular lobes remain. Full-width X-only seamless ribbon on true transparent background, Y8px clear plus8px organic fade. No text, shadows or objects.",
+    "referenceInputs": [
+      "boundary/chalk_edge_a-v1.png (own first candidate; project reference derived)"
+    ],
+    "generatedAt": "2026-09-27T02:03:05.393Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-75dcdaf2-d32b-4376-8763-f90a4f9940a5.png",
+    "height": 64,
+    "priorAttempts": [
+      {
+        "id": "boundary/chalk_edge_a-v1",
+        "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. SOURCE_SIZE 512x64. Upper side existing olive grass, lower side pale warm ivory chalk-down soil with short grass. Broad low chalk exposures alternating with grass tongues, uneven spacing. Variant A long shallow grass peninsulas.",
+        "referenceInputs": [
+          "grass.png",
+          "shoreline_a-v1.png"
+        ],
+        "generatedAt": "2026-09-27T01:59:10.635Z",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-aa9b794c-19eb-4f12-8382-243cb3befb65.png",
+        "height": 64
+      }
+    ],
+    "candidates": 2,
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/chalk_edge_a-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      266,
+      2172,
+      196
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/chalk_edge_b-v1",
+    "height": 64,
+    "prompt": "Use case: precise-object-edit. Edit this exact terrain transition strip. KEEP original contour, horizontal orientation, olive grass upper side and pale warm ivory chalk lower side, proportions. REPAINT its surface into smooth broad 12–24px painterly masses at final512x64. Remove ALL photographic tiny grain, speckles, sand grains and hairline grass. Preserve natural soft tonal undulations, not flat camouflage. The existing boundary's broad irregular lobes remain. Full-width X-only seamless ribbon on true transparent background, Y8px clear plus8px organic fade. No text, shadows or objects.",
+    "referenceInputs": [
+      "boundary/chalk_edge_b-v1.png (own first candidate; project reference derived)"
+    ],
+    "generatedAt": "2026-09-27T02:03:27.118Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-088c5c93-3498-4723-89f6-cb0fc3a10958.png",
+    "priorAttempts": [
+      {
+        "id": "boundary/chalk_edge_b-v1",
+        "height": 64,
+        "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. SOURCE_SIZE 512x64. Upper olive grass lower chalk-down pale warm ivory soil. Variant B broken scallops and a few broad separated chalk exposures, substantially different geometry from A.",
+        "referenceInputs": [
+          "grass.png",
+          "shoreline_a-v1.png"
+        ],
+        "generatedAt": "2026-09-27T02:00:08.142Z",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-efe6b8d3-9ec4-43cf-a0d8-f2d8f3673d66.png"
+      }
+    ],
+    "candidates": 2,
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/chalk_edge_b-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      277,
+      2172,
+      188
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/heath_edge_a-v1",
+    "height": 64,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x64. Upper olive grass lower brown olive heather ground, subdued ochre bracken patches, tiny amount muted dusky mauve broad heather mats. A shallow wide lobes with soil bays.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:01:29.364Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-806195f6-e6e5-4862-98ad-ef6f944265f9.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/heath_edge_a-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      187,
+      2172,
+      356
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/heath_edge_b-v1",
+    "height": 64,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x64. Upper olive grass lower brown olive heather ground, subdued ochre bracken patches, tiny amount muted dusky mauve broad heather mats. B irregular short grass fingers separated by larger low heath masses.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:01:57.795Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-f5b82eeb-2f20-4634-afd0-118dce5f5519.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/heath_edge_b-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      191,
+      2172,
+      341
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/fen_edge_a-v1",
+    "height": 64,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x64. Upper olive grass lower darker wet olive fen soil, broad dull blue-grey shallow wet patches and flat sedge mats. A extended sloping wet bays. No tall reeds.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:03:46.462Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-d4e34f63-ef65-4b8f-a056-c9bb050c66f9.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/fen_edge_a-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      192,
+      2172,
+      365
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/fen_edge_b-v1",
+    "height": 64,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x64. Upper olive grass lower darker wet olive fen soil, broad dull blue-grey shallow wet patches and flat sedge mats. B wider solid wet-ground masses with staggered little grass peninsulas. No tall reeds.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:04:12.789Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-14068e0a-313f-4710-b93e-87d9a84ed1fb.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/fen_edge_b-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      140,
+      2172,
+      443
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/coastal_edge_a-v1",
+    "height": 64,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x64. Upper olive grass lower pale tawny sand and faded salt-tolerant grass. A long irregular sandy inlet shapes. No waves.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:04:41.983Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-39d414a4-e62d-4b2c-83a3-d824fe49f77d.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/coastal_edge_a-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      181,
+      2172,
+      361
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/coastal_edge_b-v1",
+    "height": 64,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x64. Upper olive grass lower pale tawny sand and faded salt-tolerant grass. B broad blunt grass lobes and discontinuous wide sand patches. No waves.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:05:06.946Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-4943ce1f-4405-418b-9a9a-953c17fb3788.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/coastal_edge_b-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      210,
+      2172,
+      310
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "shore/sand_beach_a-v1",
+    "height": 96,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x96. Upper edge faded olive coastal grass then broad warm grey-beige sand band then lower cool desaturated slate-teal shallow water which fades transparent. A long low irregular tidal scallops. No tiny sand grains or white surf.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:05:54.035Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-7ef453a0-2f14-4ede-b635-d5c7517aeebc.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/shore/sand_beach_a-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2048,
+      768
+    ],
+    "crop": [
+      0,
+      208,
+      2048,
+      350
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top land, bottom water",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "shore/sand_beach_b-v1",
+    "height": 96,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x96. Upper faded olive coastal grass then broad warm grey-beige sand then lower slate-teal shallow water fading transparent. B longer broad sand spit interspersed with deeper water bays, distinctly different horizontal contour. No tiny sand grains or white surf.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:06:21.420Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-41b18e83-e6ee-4966-af19-6fb88074fd8f.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/shore/sand_beach_b-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2048,
+      768
+    ],
+    "crop": [
+      0,
+      133,
+      2048,
+      493
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top land, bottom water",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "shore/shingle_a-v1",
+    "height": 96,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x96. Upper coastal olive land then broad flat rounded grey taupe shingle stones minimum 16–24px each final size; lower bluegrey water fades transparent. A few loose connected broad pebble banks, no tiny gravel noise.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:07:09.937Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-32f00d74-14ba-49af-a63e-6520bccaa3c9.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/shore/shingle_a-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      182,
+      2172,
+      379
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top land, bottom water",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "shore/shingle_b-v1",
+    "height": 96,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x96. Upper coastal olive land then broad flat rounded grey taupe shingle stones minimum16–24px each; lower bluegrey water fades transparent. B wider irregular shelves with staggered sparse clusters, no tiny gravel noise.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:07:39.075Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-d55fcb3d-25ec-4a7e-ba64-8d15567bb5f0.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/shore/shingle_b-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      144,
+      2172,
+      426
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top land, bottom water",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "shore/salt_marsh_a-v1",
+    "height": 96,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x96. Upper muted olive salt marsh turf, irregular low turf lobes over dark warm mud and broad slate-teal tidal channels along lower half fading transparent. A branching shallow broad bays, no individual reeds.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:08:24.959Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-f7713a0d-71ef-4cdc-9bf1-1053fc7b9843.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/shore/salt_marsh_a-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2048,
+      768
+    ],
+    "crop": [
+      0,
+      133,
+      2048,
+      496
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top land, bottom water",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "shore/salt_marsh_b-v1",
+    "height": 96,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x96. Upper muted olive salt marsh turf, irregular low turf lobes over dark warm mud and broad slate-teal tidal channels lower half fading transparent. B flatter widely spaced grass platforms and longer channel, no individual reeds.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:08:53.185Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-31d0ffce-b598-4f22-92dd-28a59b6a6b2f.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/shore/salt_marsh_b-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      167,
+      2172,
+      407
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top land, bottom water",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/reed_bed_a-v1",
+    "height": 96,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x96. A low dense ribbon of reed beds, olive and tan broad grouped reed clumps minimum18px wide with broad 8px stalk marks, no hairlines. Upper side dry grassy bank, lower side darker wet soil and sparse slate-teal water fading transparent. Vary clump heights and gaps, dominant long low reed groups. Reeds reference for tan/olive hues only. Avoid individual fine grasses: grouped solid blade-shapes.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png",
+      "reeds_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:09:38.109Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-e456f39d-35bd-4c05-8f31-ee99a8b74225.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/reed_bed_a-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2048,
+      768
+    ],
+    "crop": [
+      0,
+      165,
+      2048,
+      456
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "id": "boundary/reed_bed_b-v1",
+    "height": 96,
+    "prompt": "Use case: stylized-concept. ROLE strip, production game terrain surface for southern England 1300–1450. Match attached project art muted olive, warm soil, painterly low-frequency broad forms. FLAT PLAN VIEW rectangular horizontal ribbon; no perspective, no isometric diamond. X-axis seamless full width, no left/right margin. Transparent PNG; top and bottom 8 px clear at final size and inner 8 px broken organic alpha transition, no white halo. Broad 12–24 px motifs at final size, no tiny grains, hairlines, photonoise or focal objects. Soft even upper-left lighting, no cast shadows, no text. Draw ribbon filling full width at requested ratio, material boundary primarily horizontal with shallow irregular lobes. IMPORTANT ignore photographic fine grain in grass reference; use only its olive color. Render extremely simple broad painterly masses, minimal detail, no fine surface stipple. Think final 512px not oversized painting. SOURCE_SIZE 512x96. A low dense ribbon of reed beds, olive and tan broad grouped reed clumps minimum18px wide with broad 8px stalk marks, no hairlines. Upper dry grassy bank lower wet soil sparse slate-teal water fading transparent. B staggered shorter broad groups separated by larger muddy bays, no tall evenly spaced tufts. Reeds reference for tan/olive hues only. Avoid individual fine grasses: grouped solid blade-shapes.",
+    "referenceInputs": [
+      "grass.png",
+      "shoreline_a-v1.png",
+      "reeds_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:10:08.739Z",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-924c-73e0-b593-e0cef4078ae2/exec-19be4803-1db6-4685-81df-6e07ff8e7c55.png",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/boundary/reed_bed_b-v1.png",
+    "width": 512,
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      193,
+      2172,
+      383
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top ordinary grass/dry bank, bottom named terrain/wetland",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code.",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen"
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "status": "PASS_WITH_LIMITATIONS",
+  "reviewer": "art_d_self_review",
+  "sizes_reviewed": [
+    256,
+    96
+  ],
+  "method": "Viewed six rows of three final portraits at native256 and96, young/mature/old, after redesign I121 and I124. One whole native imagegen painting per file; Swift resize and board only.",
+  "limitations": [
+    "Exact numerical age not objectively determinable from painted portraits. Young-to-mature changes are restrained at96, especially I119 and I121.",
+    "Mature I123 expression reads as assessing slight smile, less sharply suspicious than requested."
+  ],
+  "identities": [
+    {
+      "identity_id": "I119",
+      "same_person_three_ages": true,
+      "distinct_age_stages": true,
+      "actual_prop": "civic_mace",
+      "actual_fur": "grey-white squirrel miniver, no black ermine tails",
+      "actual_headwear": "uncovered below-ear bob",
+      "authority_and_age_notes": "Concerned young and composed mature civic posture, old slight smile; 45 subtle at96.",
+      "caricature": false,
+      "unresolved_blocking_defects": []
+    },
+    {
+      "identity_id": "I120",
+      "same_person_three_ages": true,
+      "distinct_age_stages": true,
+      "actual_prop": "measuring_rule",
+      "actual_fur": "none",
+      "actual_headwear": "uncovered below-ear bob",
+      "authority_and_age_notes": "Assessing eyes and lifted chin; moderate45 facial creases, visibly grey70; same jaw/nose.",
+      "caricature": false,
+      "unresolved_blocking_defects": []
+    },
+    {
+      "identity_id": "I121",
+      "same_person_three_ages": true,
+      "distinct_age_stages": true,
+      "actual_prop": "seed_pouch",
+      "actual_fur": "none",
+      "actual_headwear": "uncovered dark brown bob, grey with dark remnants when old",
+      "authority_and_age_notes": "Redesigned longer squared chin and broad crooked nose reduce I106 resemblance. Mature change mild96, old wrinkled cheeks and forehead clear.",
+      "caricature": false,
+      "unresolved_blocking_defects": []
+    },
+    {
+      "identity_id": "I122",
+      "same_person_three_ages": true,
+      "distinct_age_stages": true,
+      "actual_prop": "wooden_cup",
+      "actual_fur": "none",
+      "actual_headwear": "young/mature straw hat with linen undercap; old dark widow veil",
+      "authority_and_age_notes": "Firm level frontal gaze, strong jaw; mature worried creases and old sagging cheeks. All same woman.",
+      "caricature": false,
+      "unresolved_blocking_defects": []
+    },
+    {
+      "identity_id": "I123",
+      "same_person_three_ages": true,
+      "distinct_age_stages": true,
+      "actual_prop": "household_staff",
+      "actual_fur": "grey-white squirrel miniver, no black ermine tails",
+      "actual_headwear": "uncovered blond below-ear bob, greywhite old",
+      "authority_and_age_notes": "Upright composed stance; mature assessing expression remains close to a small smile. Identical broad chin, long nose and eyes across chain.",
+      "caricature": false,
+      "unresolved_blocking_defects": []
+    },
+    {
+      "identity_id": "I124",
+      "same_person_three_ages": true,
+      "distinct_age_stages": true,
+      "actual_prop": "closed_ledger",
+      "actual_fur": "none",
+      "actual_headwear": "receding temple light brown dark blond below-ear bob, greying",
+      "authority_and_age_notes": "Redesigned receding forehead, large round eyes and short upturned nose distinguish I120. Mature small smile, old neutral concern. Same anatomy throughout.",
+      "caricature": false,
+      "unresolved_blocking_defects": []
+    }
+  ],
+  "files": [
+    {
+      "id": "I119_young",
+      "sha256": "2ffd1ca1bc909c66c522e0eca41181afab24161aeba845e27007217a1175745f"
+    },
+    {
+      "id": "I119_mature",
+      "sha256": "6aa0ba8d980b0f6126e2001a89f8d571a4868fce99c1b675109aac4449cfb9bd"
+    },
+    {
+      "id": "I119_old",
+      "sha256": "02305031b62090a06ea6671b57cf5b7bda0b2a00bafa0173921101c51ce67923"
+    },
+    {
+      "id": "I120_young",
+      "sha256": "6eb3586837b6f9f358b7a6536c913720d7f7594654ce8c9a7b40e20394ec94ac"
+    },
+    {
+      "id": "I120_mature",
+      "sha256": "7a24286254e08b74c6bab95af10c48a6be83ea81f1e8ebced1a9c1013b4f98e2"
+    },
+    {
+      "id": "I120_old",
+      "sha256": "9091cd7faa3f6b04aa97e6b6b28a61a48f25f1e2a10108db7b6a4d98b03e057a"
+    },
+    {
+      "id": "I121_young",
+      "sha256": "f691f1785bc3c3897a232e2c84d459aea9eef994956d0d8255ecb78dbe9446be"
+    },
+    {
+      "id": "I121_mature",
+      "sha256": "fba2a246d780c4e25dd7757f679c97c0768f3b18c0fdd333336bcefe2cf12d2a"
+    },
+    {
+      "id": "I121_old",
+      "sha256": "540bc3a8a3ed4b163e9bf6cd8e77e4639a5ad4d84e9f21492480e280636511a4"
+    },
+    {
+      "id": "I122_young",
+      "sha256": "dd1d86d9e19c9cd3deb8bee9347fc28b20b51ea8f58608eb946f50156f847e23"
+    },
+    {
+      "id": "I122_mature",
+      "sha256": "be2602fddd61ac1fe776cf894ac244ef63cf19630ca91ea0aaa03ed2a9cfd16b"
+    },
+    {
+      "id": "I122_old",
+      "sha256": "40c11a51451ff6937605b5cd875a51e33946bae0f1934bf99c53b7fbdf09c75e"
+    },
+    {
+      "id": "I123_young",
+      "sha256": "fbadf985cf1ed4606ba411b9924dd73d775c3536e4732d377b3c9daa024e9cba"
+    },
+    {
+      "id": "I123_mature",
+      "sha256": "0dace1db58a855b985dc98a9b7aad29f2609df310b29d65114d4b1b63df4b294"
+    },
+    {
+      "id": "I123_old",
+      "sha256": "fda59420510140708b72d8a817ffab2576bdd4f357d3415265f5f327053acb62"
+    },
+    {
+      "id": "I124_young",
+      "sha256": "56d4e0f8edb010c85ff5b02c7aa8609cbff59df72efbadb8de94ae9ead268702"
+    },
+    {
+      "id": "I124_mature",
+      "sha256": "b4dde41c79f69ef707f52bbc427809934b795aa66e5014f093045628971dbe24"
+    },
+    {
+      "id": "I124_old",
+      "sha256": "1e6d511e8037edcc798046b144700c354be8dea3e9ef4e9e0a68cad72bcad7ac"
+    }
+  ]
+}

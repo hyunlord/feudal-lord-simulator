@@ -1,0 +1,17 @@
+{
+  "scope": "ch4_records",
+  "count": 10,
+  "status": "pass_with_semantic_caveat",
+  "review": "All ten generated originals visually inspected, final resize contact inspected. Three targeted edits remove distant domestic chimneys; v1 retained as provenance, not candidates.",
+  "checks": {
+    "dimensions": true,
+    "rgba": true,
+    "textAbsent": true,
+    "bloodAbsent": true,
+    "rebellionNoncontact": true,
+    "chronicleNoParchmentTint": true
+  },
+  "caveats": [
+    "Charter negotiation imagery conveys bargaining/concession; precise partial-allow/refuse policy needs game choice text."
+  ]
+}

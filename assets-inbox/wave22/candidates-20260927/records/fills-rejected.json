@@ -1,0 +1,41 @@
+[
+  {
+    "id": "terrain/chalk_down_summer-v1",
+    "prompt": "Use case: stylized-concept. Create ONE production terrain fill texture terrain/chalk_down_summer-v1 for a hand-painted medieval southern England city builder. Reference grass.png is palette/style reference only: muted olive grass, warm natural subdued light. ROLE fill, flat top-down orthographic texture, rectangular aspect 2:1 target 256x128 pixels, opaque full canvas, seamless BOTH X and Y, no borders. Short sheep-grazed chalk down grass with a few broad very low-contrast pale warm limestone/chalk exposures blended into dry olive short turf. Quiet background with broad painterly 12-24 final-pixel brush shapes, not camouflage islands; few chalk areas, no single focal spot. No literal blades, pebbles, stippling, photographic grain, 1-4px noise, flowers, trees, animals, objects, text, shadows or vignette. The motif must read after downsampling to 77x38px. All edges continuous; surface fills entire rectangle. Soft even daylight. Match supplied project palette; deliberately simplified flat paint, muted olive and pale chalk tan, avoid bright white.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-fc09b159-fad2-4bce-8613-20c56ec73bf6.png",
+    "referenceInputs": [
+      "grass.png"
+    ],
+    "generatedAt": "2026-09-27T01:58:52.003Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "status": "candidate",
+    "candidates": 1
+  },
+  {
+    "id": "terrain/chalk_down_autumn-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-698c43ac-ac57-452a-97f2-0a48b16f208a.png",
+    "prompt": "Use case: lighting-weather. EDIT attached chalk down summer terrain texture into autumn for southern England 1300-1450. Keep exactly the same chalk exposures, turf patch positions and sizes, top-down rectangular 2:1 canvas and XY seamless layout. Grass turns muted ochre olive, straw tan and brown-gold; chalk remains pale warm stone. No red. Production target256x128 full opaque fill. Very quiet broad painterly 12-24px shapes at final resolution; simplify tiny texture instead of adding noise. No new objects, holes, dark vignette, directional shadow, text, finegrassblade noise. Same game style and surface layout as source.",
+    "referenceInputs": [
+      "chalk_down_summer-v1 generated source"
+    ],
+    "generatedAt": "2026-09-27T02:00:02.691Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "status": "candidate",
+    "candidates": 1
+  },
+  {
+    "id": "terrain/chalk_down_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-ab84c39b-1791-4896-996f-66ab315c7de4.png",
+    "prompt": "Use case: lighting-weather. EDIT attached chalk down summer terrain texture into winter for southern England 1300-1450. Keep exactly the same chalk exposures, turf patch positions and sizes, top-down rectangular 2:1 canvas and XY seamless layout. Grass dormant cool grey olive and muted straw, sparse very thin pale frost catching existing turf and chalk edges, only 10-15 percent frosted, soil clearly visible, no snow blanket. Production target256x128 full opaque fill. Very quiet broad painterly 12-24px shapes at final resolution; simplify tiny texture instead of adding noise. No new objects, holes, dark vignette, directional shadow, text, finegrassblade noise. Same game style and surface layout as source.",
+    "referenceInputs": [
+      "chalk_down_summer-v1 generated source"
+    ],
+    "generatedAt": "2026-09-27T02:00:26.953Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "status": "candidate",
+    "candidates": 1
+  }
+]

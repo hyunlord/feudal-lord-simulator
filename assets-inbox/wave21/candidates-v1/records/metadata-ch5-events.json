@@ -1,0 +1,362 @@
+[
+  {
+    "id": "ch5_event_mayor_demand",
+    "file": "assets/ch5_events/ch5_event_mayor_demand.png",
+    "width": 960,
+    "height": 540,
+    "description": "상인 엘리트의 시장 선출 요구",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. A delegation of prosperous town merchants in sober wool gowns and soft caps stands in the lord's timber guild chamber, firmly presenting one blank petition and gesturing toward an empty civic chair; the old lord listens across a table. Clearly merchants asking to elect their own mayor, political negotiation not market commerce.",
+        "rawFile": "raw/ch5_events/ch5_event_mayor_demand-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_event_mayor_demand-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_event_mayor_demand-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "64aa287769c6e353931f5fb938dc709a8f4a3d226e37708160506b315b0b49b8"
+  },
+  {
+    "id": "ch5_event_royal_tax_envoy",
+    "file": "assets/ch5_events/ch5_event_royal_tax_envoy.png",
+    "width": 960,
+    "height": 540,
+    "description": "국왕의 과세 사절",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. At a stone town gate, an official royal tax envoy in a muted burgundy cloak presents a blank unlettered parchment with a plain wax seal to a concerned town steward, while one clerk holds a small coin chest. Town merchants behind them watch; royal authority conveyed through escort and bearing, no actual heraldry or crown emblem.",
+        "rawFile": "raw/ch5_events/ch5_event_royal_tax_envoy-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_event_royal_tax_envoy-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_event_royal_tax_envoy-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "f170d121c528a63565442f2575ea941f717568e2c54476c6472ca775ab5fa313"
+  },
+  {
+    "id": "ch5_event_succession",
+    "file": "assets/ch5_events/ch5_event_succession.png",
+    "width": 960,
+    "height": 540,
+    "description": "가문 상속 문제와 후계자",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. In an aging lord's oak chamber, an elderly parent sits between two adult heirs, a young woman and young man in restrained late medieval wool clothes. A large iron manor key rests centered on a small plain table, the parent's open hand hovering between heirs; tense thoughtful faces, clear question of family succession. No documents or writing.",
+        "rawFile": "raw/ch5_events/ch5_event_succession-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_event_succession-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_event_succession-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "5880346366722963f8bfeb993798180ee21fc546f703b1c184852f18804ee6c3"
+  },
+  {
+    "id": "ch5_event_city_seal_making",
+    "file": "assets/ch5_events/ch5_event_city_seal_making.png",
+    "width": 960,
+    "height": 540,
+    "description": "도시 인장 제작",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. Close view inside an English engraver's workshop: a craftsman at an oak bench carefully cuts a bronze town seal matrix using a small burin. The bronze circular matrix and several plain wax test impressions show one simple invented gate-and-three-leaf device with no lettering. A town merchant and clerk look over his shoulder. Clearly physical seal manufacture, warm window light.",
+        "rawFile": "raw/ch5_events/ch5_event_city_seal_making-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_event_city_seal_making-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_event_city_seal_making-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "252b8a5a2dfdd0ad168456592eea67d98034d33066fcc30e2ee821396acf50f7"
+  },
+  {
+    "id": "ch5_event_charter_sealing",
+    "file": "assets/ch5_events/ch5_event_charter_sealing.png",
+    "width": 960,
+    "height": 540,
+    "description": "자치 특허 인장 날인",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. Close narrative scene at an oak civic table: a lord's hand presses a bronze seal onto a pendant red-brown wax disk attached by pale cords to a completely BLANK parchment charter. Town representatives solemnly watch in background. Charter granting autonomy, pressing action and wax focal, no writing whatsoever on document or surrounding objects.",
+        "rawFile": "raw/ch5_events/ch5_event_charter_sealing-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_event_charter_sealing-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_event_charter_sealing-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "678fe1ce6cb65cd600e312522ddcedeadaba09128809829253cd09029a702110"
+  },
+  {
+    "id": "ch5_event_family_departure",
+    "file": "assets/ch5_events/ch5_event_family_departure.png",
+    "width": 960,
+    "height": 540,
+    "description": "가문의 영주관 퇴거",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. At the doorway of an old oak-and-plaster manor, a modest aristocratic family leaves carrying household belongings: father with a strapped wooden chest, mother with folded linens, adolescent carrying a bundle. They glance back at the empty manor doorway, new civic officials visible distantly in square. Calm bittersweet departure, not refugees, no soldiers or violence.",
+        "rawFile": "raw/ch5_events/ch5_event_family_departure-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_event_family_departure-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_event_family_departure-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "30ecea394a8b4154a57a8c2ba437eb167fed8aecfc2d031116d458c87720380c"
+  },
+  {
+    "id": "ch5_event_legacy_record",
+    "file": "assets/ch5_events/ch5_event_legacy_record.png",
+    "width": 960,
+    "height": 540,
+    "description": "유산 기록과 연대기 책 봉인",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. An elderly keeper of a town chronicle at an oak desk closes a thick leather-bound manuscript and fastens a cord and simple invented heraldic wax seal around it; hands, closed book, seal focal. Through a narrow plain open shutter the evolved town is visible. Quiet legacy being preserved; all book covers blank except geometric stamped ornament, no writing, no candles shaped like modern lamps.",
+        "rawFile": "raw/ch5_events/ch5_event_legacy_record-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_event_legacy_record-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_event_legacy_record-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "1f3d33301dbb89b04ec15fbb29f3f5a7d86ac6d9ed5066c01a4065168f6a5c7a"
+  },
+  {
+    "id": "ch5_event_last_market",
+    "file": "assets/ch5_events/ch5_event_last_market.png",
+    "width": 960,
+    "height": 540,
+    "description": "마지막 장날",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. Warm late afternoon in a mature English market town circa1450: generations of townspeople trade bread, wool, earthenware, apples and cloth under simple canvas stalls. Elderly former manor family watches contentedly at foreground, young families and merchants fill square, guildhall and church beyond, harbor mast distant. A celebratory ordinary last market day, not carnival. No shop signs, letters, chimneys or hops. All domestic roof silhouettes must be completely uninterrupted, absolutely zero chimney stacks, roof vents or pipes even in distant background. No smoke. Town church towers are broad square stone structures, never narrow domestic stacks.",
+        "rawFile": "raw/ch5_events/ch5_event_last_market-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "5b6720b5857c21e1b42ef239cc3b16de016436c1a9938bc8acac1d531cf57c35"
+  },
+  {
+    "id": "ch5_ending",
+    "file": "assets/ch5_events/ch5_ending.png",
+    "width": 1920,
+    "height": 1080,
+    "description": "1450년 도시 전경과 150년의 흔적",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. Sweeping panoramic elevated view of one small southern English coastal market town circa1450, showing 150 years of organic growth: old crooked timber-and-thatch lane in foreground, newer limeplaster oak houses with muted flat red clay tile roofs, substantial rubble-stone town wall and gate, civic guildhall facing market square, parish church square tower, small tidal harbor with modest medieval sailing cogs. Old irregular plots and surviving modest houses among civic improvements, green gardens and ample countryside. Human-scale town, not immense fantasy city. Late golden evening. All domestic roof silhouettes must be completely uninterrupted, absolutely zero chimney stacks, roof vents or pipes even in distant background. No smoke. Town church towers are broad square stone structures, never narrow domestic stacks.",
+        "rawFile": "raw/ch5_events/ch5_ending-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_ending-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_ending-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "416e458bd616d08383494f0629eed4ef0da8c7928b9e57c68a361410fedd7596"
+  },
+  {
+    "id": "ch5_campaign_ending",
+    "file": "assets/ch5_events/ch5_campaign_ending.png",
+    "width": 1920,
+    "height": 1080,
+    "description": "연대기 책을 덮는 손",
+    "historyNotes": "잉글랜드 남부 1400–1450; 빈 문서·가상 인장, 문자·현대 소재·가정 굴뚝 금지. 장면은 역사 삽화 해석이며 고증 실사 재현이 아님.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Create ONE finished narrative illustration, wide16:9 landscape, no panels or montage. Match attached project-owned Wave17 reference ONLY for muted hand-painted gouache/oil story illustration, visible gentle brushwork and material texture, warm plaster, weathered oak, gray rubble, low-chroma ochre/brown/moss green/burgundy, natural light. Do NOT reproduce reference layout, labels or lettering. Southern England1400–1450. No text, numbers, pseudo-writing, signatures, UI or border. No plague door marks, no beaked doctors, no hops, no hexagonal coffins, no domestic chimneys, no saturated primary flags, no real heraldry, no gore. Human anatomy and period clothes coherent. Intimate cinematic wide close-up of two weathered hands gently closing a large leather-bound medieval chronicle on an oak table. Thick cream page edges, worn dark chestnut leather, an invented plain heraldic shield seal with three simple leaves suspended on cord, no actual family emblem. Soft window light, out-of-focus mature medieval English town beyond open shutters. End of a150-year civic history conveyed by worn book and old hands. Book fully closing, absolutely no visible writing or pseudo letters anywhere. All domestic roof silhouettes must be completely uninterrupted, absolutely zero chimney stacks, roof vents or pipes even in distant background. No smoke. Town church towers are broad square stone structures, never narrow domestic stacks.",
+        "rawFile": "raw/ch5_events/ch5_campaign_ending-v1.png",
+        "referenceImages": [
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise historical correction to this exact illustration. Preserve ALL people, expressions, actions, composition, objects, blank papers, seals and painterly style. REMOVE EVERY domestic chimney stack, chimney pot, roof pipe and rooftop vent from ALL house rooftops in the distant town and foreground; replace each with uninterrupted sloping clay tile or thatch, matching neighboring roof. Inspect especially tiny reddish upright spikes poking out of roof ridges. Keep broad church bell towers, town wall gate towers, masts, and stone market cross unchanged. No smoke. No letters or numbers. Return same wide16:9 framing. Do not introduce anything else.",
+        "rawFile": "raw/ch5_events/ch5_campaign_ending-v2.png",
+        "referenceImages": [
+          "raw/ch5_events/ch5_campaign_ending-v1.png"
+        ],
+        "tool": "image_gen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Selected raw image resized with Sharp centre-cover to requested dimensions and RGBA PNG. Targeted imagegen historical correction removes domestic chimney stacks; original raw retained.",
+    "qa": {
+      "status": "pass_visual",
+      "review": "10 delivered images inspected as contact; original full-size all inspected; corrected envoy and both endings re-inspected full-size. Domestic roof stacks removed in nine targeted edits. Blank charters, no lettering or blood, fictional leaf/gate seals preserved. Mayor-election context still benefits game event text; image alone reads civic petition.",
+      "candidateOnly": true
+    },
+    "sha256": "e2eca183fd785611d9ea9fddc3b4e8e603cd4e86af21b0ff76764b399e4339a9"
+  }
+]

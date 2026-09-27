@@ -1,0 +1,387 @@
+[
+  {
+    "id": "terrain/chalk_down_summer-v1",
+    "prompt": "Use case: precise-object-edit. Repaint ONLY layout of this chalkdown summer terrain fill to remove its diagonal stripes. The existing long parallel pale ribbons resemble agriculture rows and MUST disappear. Keep EXACT muted olive and cream palette, soft broad gouache style and lowcontrast. Instead uneven very short irregular pale chalk exposures each12-24px at final256x128, shapes with assorted orientations, scattered NOT arranged in rows, NOT equalspacing; about6 modestexposures. Mostly uninterrupted olive turf, big quiet broad brushmasses. Do not rotate wholepattern. Break ALL longcontinuous lines into irregular offsetshortpatches. Avoidpolkadots/camouflage by lowcontrast andinfrequentchalk. Fullopaque topdown 2:1rectangle 256x128target, BOTHXYseamless. No marks smaller8px at finalsize, no grain/blades/speckles/detail/objects/text/border/shadows. Lowfrequency painterlyfield supportinggameobjects.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-246ff2e9-9c1a-4622-b54e-bfa6030436a9.png",
+    "referenceInputs": [
+      "chalk_down_summer-v1 previous candidate"
+    ],
+    "generatedAt": "2026-09-27T02:14:05.646Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 4,
+    "status": "candidate",
+    "priorAttempts": [
+      {
+        "id": "terrain/chalk_down_summer-v1",
+        "prompt": "Use case: stylized-concept. Paint a seamless medieval city-builder CHALK DOWN SUMMER terrain background. WIDE 2:1 full opaque rectangle. FINAL SIZE256x128. REFERENCE used for COLOR ONLY, DO NOT COPY texture. Muted olive base, exposed warm cream chalk. ALL MARKS MUST BE HUGE: a total of about 25 broad gently irregular brush areas across whole picture, each40-160pixels wide at final256x128; quiet contrast olive-on-olive. Only five modest broad cream chalk exposures, each20-45pxwide with smooth painted edges. Fully solid colors inside each painted area, no surface texture whatsoever. Gouache color-block painting, calm natural irregular forms, broad overlapping flat paint masses. Seamless across both X and Y. Top down flat ground, no perspective. NO grass blades, NO pebbles, NO grain, NO small flecks, NO tiny brush strokes, NO dithering, NO stippling, NO camouflage spots, NO speckles, NO shadows, NO objects, NO text, NO border. Not a photograph. Very simplified background supporting detailed game objects. Aim quiet painterly ground in olive #868861 and pale chalk #aaa68a.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-24155403-ffc4-4923-b3b7-af3d6953e53a.png",
+        "referenceInputs": [
+          "grass.png"
+        ],
+        "generatedAt": "2026-09-27T02:01:05.338Z",
+        "tool": "image_gen",
+        "model": "not exposed",
+        "candidates": 2,
+        "status": "candidate"
+      },
+      {
+        "id": "terrain/chalk_down_summer-v1",
+        "prompt": "Use case: precise-object-edit. Correct attached terrain tile. Keep palette olive grass and beige chalk, opaque 2:1rectangle, bothXY seamless. Replace round smooth-edged camouflage blobs with broad quiet dry-gouache brushwork: around 60 interlocking elongated 15-30px strokes in final256x128, overlapping along varied directions with rough blunt ends. Every stroke is broad flat color; no marks smaller than8px at final256x128. Chalk must be 3 or4 subtle broken broad exposed low ridges, not isolated round spots. Only slight color difference between neighboring paints. Add no microscopic texture or grain, no photo/noise/stippling. It should look handpainted broad-brush earth rather than vector camouflage. Gentle subdued contrast, no shading/gradients/objects/text. Do not reproduce the finegrain of realgrass. Large painterly strokes only.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-95114e90-d4cb-40f3-9486-805316fc8256.png",
+        "referenceInputs": [
+          "chalk_down_summer attempt2"
+        ],
+        "generatedAt": "2026-09-27T02:01:44.265Z",
+        "tool": "image_gen",
+        "model": "not exposed",
+        "candidates": 3,
+        "status": "candidate",
+        "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_summer-v1.png",
+        "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+        "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded.",
+        "rejectedReason": "Diagonal pale ribbons resembled agricultural rows in isometric scene."
+      }
+    ],
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_summer-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Composition correction itself was a native image edit, not code-drawn. All previous prompts and source paths retained in priorAttempts; initial rejected chalk season set retained in fills-rejected.json.",
+    "selectionReason": "Final reviewer-selected correction: long parallel diagonal exposures were replaced by short irregular nonparallel patches; same corrected summer layout retained in autumn and winter. Earlier diagonal candidate rejected because it resembled cultivated rows in the isometric scene."
+  },
+  {
+    "id": "terrain/chalk_down_autumn-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-fab898c9-e940-4e3a-a15c-b072c3cef4d0.png",
+    "prompt": "Use case: lighting-weather. Edit this exact corrected chalkdown terrain to autumn. Preserve short scattered palechalkpatches inexactpositions, all broadgrassmasses and their sizes. DO NOT restore any stripes/ribbons/rows or change layout. Mutedgrey strawtan, dullbrown-gold dormant grass, chalk palecream, no saturatedorange/red. Fullopaque2:1rectangle target256x128 XYseamless. Keep broadquiet paint no micrograin/speckles/blades/newobjects/text/shadows. Only seasonalcolor change, majorfeaturesidentical.",
+    "referenceInputs": [
+      "chalk_down_summer-v1 corrected short patches"
+    ],
+    "generatedAt": "2026-09-27T02:15:37.872Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 3,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_autumn-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork. Composition correction itself was a native image edit, not code-drawn. All previous prompts and source paths retained in priorAttempts; initial rejected chalk season set retained in fills-rejected.json.",
+    "selectionReason": "Final reviewer-selected correction: long parallel diagonal exposures were replaced by short irregular nonparallel patches; same corrected summer layout retained in autumn and winter. Earlier diagonal candidate rejected because it resembled cultivated rows in the isometric scene.",
+    "priorAttempts": [
+      {
+        "id": "terrain/chalk_down_autumn-v1",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-468cfd30-e739-4a49-a8e9-2e3c7eeefe03.png",
+        "prompt": "Use case: lighting-weather. Edit this exact broad-brush chalkdown terrain texture from summer to autumn. Preserve every stroke, pale chalk ribbon, size and location. Change olive grass to subdued straw-ochre, grey warmbrown gold; chalk remains pale neutralcream. Low saturation, no orange orred. Keep huge solid gouache strokes, no addedgrain/detail/blades/noise. Fullopaque 2:1rectangle final256x128 XYseamless. No objects, text, gradients, shadows. Change season palette only while exactlayout stays.",
+        "referenceInputs": [
+          "chalk_down_summer-v1"
+        ],
+        "generatedAt": "2026-09-27T02:02:25.262Z",
+        "tool": "image_gen",
+        "model": "not exposed",
+        "candidates": 2,
+        "status": "candidate",
+        "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_autumn-v1.png",
+        "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork.",
+        "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded.",
+        "rejectedReason": "Inherited diagonal pale ribbons looked like agricultural rows."
+      }
+    ]
+  },
+  {
+    "id": "terrain/chalk_down_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-e3729671-cf4a-4872-a9e9-97c7119f006b.png",
+    "prompt": "Use case: lighting-weather. Edit this exact corrected chalkdown terrain to winter. Preserve short scattered palechalkpatches inexactpositions, all broadgrassmasses and their sizes. DO NOT restore any stripes/ribbons/rows or change layout. Coolgreyolive andtaupe grass withthin lightfrost onexisting palechalkedges, no thick snow. Fullopaque2:1rectangle target256x128 XYseamless. Keep broadquiet paint no micrograin/speckles/blades/newobjects/text/shadows. Only seasonalcolor change, majorfeaturesidentical.",
+    "referenceInputs": [
+      "chalk_down_summer-v1 corrected short patches"
+    ],
+    "generatedAt": "2026-09-27T02:16:06.331Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 3,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_winter-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Composition correction itself was a native image edit, not code-drawn. All previous prompts and source paths retained in priorAttempts; initial rejected chalk season set retained in fills-rejected.json.",
+    "selectionReason": "Final reviewer-selected correction: long parallel diagonal exposures were replaced by short irregular nonparallel patches; same corrected summer layout retained in autumn and winter. Earlier diagonal candidate rejected because it resembled cultivated rows in the isometric scene.",
+    "priorAttempts": [
+      {
+        "id": "terrain/chalk_down_winter-v1",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-73e6adaa-a8c0-43f3-8259-30f2bd568e27.png",
+        "prompt": "Use case: lighting-weather. Edit this exact broad-brush chalkdown terrain texture from summer to winter. Preserve every stroke, pale chalk ribbon, size and location. Change grass to dormant cool grey olive and taupe with a very light frost veil on existing paler strokes; only thin patchy frost, no solid snow. Keep huge solid gouache strokes, no addedgrain/detail/blades/noise. Fullopaque 2:1rectangle final256x128 XYseamless. No objects, text, gradients, shadows. Change season palette only while exactlayout stays.",
+        "referenceInputs": [
+          "chalk_down_summer-v1"
+        ],
+        "generatedAt": "2026-09-27T02:02:55.199Z",
+        "tool": "image_gen",
+        "model": "not exposed",
+        "candidates": 2,
+        "status": "candidate",
+        "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/chalk_down_winter-v1.png",
+        "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+        "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded.",
+        "rejectedReason": "Inherited diagonal pale ribbons looked like agricultural rows."
+      }
+    ]
+  },
+  {
+    "id": "terrain/heath_summer-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-01830e87-c674-4ca6-b314-46f4f5c48fc9.png",
+    "prompt": "Use case: precise-object-edit. Simplify attached heath texture severely for game256x128output. KEEP major fern patch locations, palette and topdown2:1opaque format. REMOVE EVERY small leaf, gravel pebble, tiny brush stroke, speckle. Replace internal fern markings with solid broad angular olive paint masses 15-30px wide at256x128; gravel with 3 broad palegrey painted swaths. Only roughly40to60 brush areasTOTAL across wholecanvas, overlapping blunt broad flat opaque gouache. No tiny gaps. No detail thinner8pxfinal. No dots/no grain. More calm and less contrast. Must resemble quiet coarse handpainted earth, not noisy foliagepattern. Both XandY tileable. No text or shadows.",
+    "referenceInputs": [
+      "heath_summer attempt1"
+    ],
+    "generatedAt": "2026-09-27T02:04:18.075Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 2,
+    "status": "candidate",
+    "priorAttempts": [
+      {
+        "id": "terrain/heath_summer-v1",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-cfcf64c6-8de8-4f49-84de-24b82deebd74.png",
+        "prompt": "Use case: stylized-concept. Paint ONE HEATH SUMMER ground fill for medieval southern England city-builder. Reference1 is APPROACH TO BROADBRUSH SIZE ONLY, not chalk content; reference2 is project mutedolive palette. Full opaque flat topdown2:1rectangle final256x128, bothXandYseamless. Ground of sparse low heath: subdued olive-brown wiry scrub masses, brownish peat, a few understated greybeige gravel streaks, broad fern silhouettes merged into ground. NO brightpurple heather. Wide quiet drygouache overlapping blunt strokes15-30px at finalsize;50-60 broadmarks across wholecanvas, no marks smaller8px. Different layout fromchalk: smaller low scrub masses with angular fern fans, no palechalkribbon. Lowcontrast warmgrey olive earth, nofocalpoint. NOmicrograin,speckles,tinyplants,roundcamoislands,photo,surfacegrain,trees,objects,castshadows,text,border. Backgroundmust stayquiet with greenerypainted as masses notindividualblades.",
+        "referenceInputs": [
+          "chalk_down_summer-v1",
+          "grass.png"
+        ],
+        "generatedAt": "2026-09-27T02:03:34.718Z",
+        "tool": "image_gen",
+        "model": "not exposed",
+        "candidates": 1,
+        "status": "candidate"
+      }
+    ],
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/heath_summer-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  },
+  {
+    "id": "terrain/heath_autumn-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-53c87cf8-8985-4915-b3e9-76ed41b692ff.png",
+    "prompt": "Use case: lighting-weather. EDIT attached heathsummer toautumn, preserve exact fernshapes, gravelpatches, brushmasslocations and scale. Olive heath turns muted brown, tan and subduedoldgold; no orange/red/purple. Same simplified broad angular gouache solidpaint, no newtexture orfineleafdetail, no micrograin. Quiet lowcontrast background, fullopaque256x128target2:1, seamlessXandY. No objects/text/shadows.",
+    "referenceInputs": [
+      "heath_summer-v1"
+    ],
+    "generatedAt": "2026-09-27T02:04:59.481Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/heath_autumn-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  },
+  {
+    "id": "terrain/heath_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-49259cae-7fb5-4603-ac08-e4d60cd57601.png",
+    "prompt": "Use case: lighting-weather. EDIT attached heathsummer towinter, preserve exact fernshapes, gravelpatches, brushmasslocations and scale. Dormant heath greyish umber and coololive, minimal pale frost onexisting lighterpaint only, no blanket snow. Same simplified broad angular gouache solidpaint, no newtexture orfineleafdetail, no micrograin. Quiet lowcontrast background, fullopaque256x128target2:1, seamlessXandY. No objects/text/shadows.",
+    "referenceInputs": [
+      "heath_summer-v1"
+    ],
+    "generatedAt": "2026-09-27T02:05:19.739Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/heath_winter-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  },
+  {
+    "id": "terrain/fen_summer-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-5e9346de-e8e5-451e-80ca-8c441b2188f6.png",
+    "prompt": "Use case: stylized-concept. Create ONE quiet FEN SUMMER terrain fill. Broad coarse gouache painting as reference1 but ENTIRELY DIFFERENT ground layout: wet darkolive meadow peat with THREE shallow mutedgreyteal puddles each30-45pixelswide at256x128, irregular flattened long poolforms NOTroundpolkadots; squat broadreedgroup masses surround edges. Subdued wet green brown and greyteal palette borrowing watercolor fromreference2. Topdownflat 2:1 fullopaque256x128 tile, XYseamless. Minimumbrushstroke8-12pixels inFINALimage; entirepaintingabout40-60 broadsolidinterlockingmarks. Flatcoloredquietnegative-spacepools andsoftdrybrushmeadow strokes, no fine reeds orblades, no ripples, no granularnoise, no tiny leaves orspeckles. No chalk/palegravelstripes, no forest, no buildings, no objects, no shadows, no borders or text. Needsdistinctfromdrygrassat77x38pxwhilequietbackground. No photographicdetail.",
+    "referenceInputs": [
+      "chalk_down_summer-v1",
+      "shallow_a-v1.png"
+    ],
+    "generatedAt": "2026-09-27T02:06:18.552Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/fen_summer-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  },
+  {
+    "id": "terrain/fen_autumn-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-4b9c323c-acb7-4590-887b-a57637f00e26.png",
+    "prompt": "Use case: lighting-weather. Edit attached fen summer terrain into autumn. Preserve exactly all THREE pool silhouettes, reedmass outlines, sizes andpositions. Reedandgrass masses change to brown-gold, muted straw and ochre; poolgreytealunchanged. Not vivid yellow ororange. Fullopaque256x128target2:1rectangleXYseamless; broad quiet gouachebluntstrokes15-30px, no addedmicronoise, tiny reeds, pebbles orspecks. No newobjects, text, borders, shadows. Change season only.",
+    "referenceInputs": [
+      "fen_summer-v1"
+    ],
+    "generatedAt": "2026-09-27T02:07:02.560Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/fen_autumn-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  },
+  {
+    "id": "terrain/fen_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-43e49f3d-6b4d-4cde-8904-6d26f882b929.png",
+    "prompt": "Use case: lighting-weather. Edit attached fen summer terrain into winter. Preserve exactly all THREE pool silhouettes, reedmass outlines, sizes andpositions. Reedandgrass dormant grey-brown, muted taupe; thin pale frost onexisting broad strokes only, small slivers ofthinice atpool edges, poolsmostlyopen dullgreyteal. No snowblanket. Fullopaque256x128target2:1rectangleXYseamless; broad quiet gouachebluntstrokes15-30px, no addedmicronoise, tiny reeds, pebbles orspecks. No newobjects, text, borders, shadows. Change season only.",
+    "referenceInputs": [
+      "fen_summer-v1"
+    ],
+    "generatedAt": "2026-09-27T02:07:30.459Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/fen_winter-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  },
+  {
+    "id": "terrain/coastal_grass_summer-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-d5090245-f5ce-4cad-90f0-d3ef44799f3f.png",
+    "prompt": "Use case: precise-object-edit. Correct this coastalgrass summer fill: remove ALL diagonal windrows and parallel sandbands, they look like cultivated rows. Keep identical muted greybeige sand and olivepalette, broad gouachestyle. Recompose as irregular interlocking sandopenings and squat ragged grasscarpets with varying orientation. Grass patches shouldbe wide squarish/triangular and short, never stripes. Unequalspacing andsizes, no commonangle. Eachpatch20-40px at final256x128, internalmarks minimum8-12px. Lowcontrast, quiet background, sandybase60percent olivegrass40percent. No rounded polkadots, no camouflage vectorlook, no micrograin/speckles/blades. Fullopaque flat topdown2:1 256x128target XYseamless. No objects/text/shadows/borders. Broadpaletteareas remainlowfrequency. Do not merely rotatepattern; reorganize it into nonparallel short irregular patches.",
+    "referenceInputs": [
+      "coastal_grass_summer-v1 previous candidate"
+    ],
+    "generatedAt": "2026-09-27T02:14:46.920Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 2,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_summer-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Composition correction itself was a native image edit, not code-drawn. All previous prompts and source paths retained in priorAttempts; initial rejected chalk season set retained in fills-rejected.json.",
+    "selectionReason": "Final reviewer-selected correction: long parallel diagonal exposures were replaced by short irregular nonparallel patches; same corrected summer layout retained in autumn and winter. Earlier diagonal candidate rejected because it resembled cultivated rows in the isometric scene.",
+    "priorAttempts": [
+      {
+        "id": "terrain/coastal_grass_summer-v1",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-000bb6bb-d56f-4f17-b225-0b87572e909f.png",
+        "prompt": "Use case: stylized-concept. Create ONE COASTAL SALTGRASS SUMMER terrainfill for southernEngland medievalgame. Referenceattached defines BROAD GOUACHE style/olivepaletteonly. Differentcomposition: chiefly sandy warmgrey buff ground about60percent with widelyspaced low flattened sage-olive grass carpets about40percent, broad gentlyhorizontal wind-combed paint swaths. NO CHALK streaks, no exposedwhitepatches, no fern, no ponds. Entireimage about40 overlapping blunt brushforms, each12-30px at FINAL256x128. Greyed dunegrass and muted beige fine-sand shown as solidpaint not grains. Quiet LOWcontrast background. Fullopaque flat topdown2:1rectangle, seamlessBOTHXY. No detail smaller8pxfinal, no individualgrassblades, no speckles,no photographicgrain, no camospots, objects, shadows, borders,text. Shapes mustremainvisible at77x38pxwithoutlookingbusy.",
+        "referenceInputs": [
+          "chalk_down_summer-v1"
+        ],
+        "generatedAt": "2026-09-27T02:08:09.006Z",
+        "tool": "image_gen",
+        "model": "not exposed",
+        "candidates": 1,
+        "status": "candidate",
+        "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_summer-v1.png",
+        "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+        "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded.",
+        "rejectedReason": "Diagonal sand bands resembled agricultural rows in isometric scene."
+      }
+    ]
+  },
+  {
+    "id": "terrain/coastal_grass_autumn-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-da2fb983-4fc3-4196-9179-6404b0747d6f.png",
+    "prompt": "Use case: lighting-weather. Edit exact corrected coastalgrass fill intoautumn. Preserve irregular NONPARALLEL shortgrass patches andsandopeninglayout exactly. Neverrestore diagonalstripes/rows/windrows. Grass dusty strawgrey brown with faintgold, sandneutralbeige; low saturation noorange/red. Same quietcoarsegouache marksminimum8-12px atfinal256x128, noaddedfinegrain/noise/speckles/blades. FullopaqueXYseamlessflat2:1rectangle. Seasonalcolorsonly, notnewgeometry. Noobjects,text,shadow,border.",
+    "referenceInputs": [
+      "coastal_grass_summer-v1 corrected irregular patches"
+    ],
+    "generatedAt": "2026-09-27T02:16:52.455Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 2,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_autumn-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork. Composition correction itself was a native image edit, not code-drawn. All previous prompts and source paths retained in priorAttempts; initial rejected chalk season set retained in fills-rejected.json.",
+    "selectionReason": "Final reviewer-selected correction: long parallel diagonal exposures were replaced by short irregular nonparallel patches; same corrected summer layout retained in autumn and winter. Earlier diagonal candidate rejected because it resembled cultivated rows in the isometric scene.",
+    "priorAttempts": [
+      {
+        "id": "terrain/coastal_grass_autumn-v1",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-c9aacc35-88b2-4e3a-a405-988e9e4ff5e8.png",
+        "prompt": "Use case: lighting-weather. EDIT attached coastalgrasssummer texture into autumn; preserve exact broadgrassswaths andsandshapes. Saltgrass goes dusty grey-brown straw with gentle gold; sand retains neutralbeige. Very mutedcolors, desaturatedearth, no orange orred. Same broadquiet gouache strokes notphotoreal; no additionaldetail or grain. Fullopaque2:1target256x128, XYseamless. Noobjects/text/shadows. Same groundlayout changesseasononly.",
+        "referenceInputs": [
+          "coastal_grass_summer-v1"
+        ],
+        "generatedAt": "2026-09-27T02:08:48.024Z",
+        "tool": "image_gen",
+        "model": "not exposed",
+        "candidates": 1,
+        "status": "candidate",
+        "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_autumn-v1.png",
+        "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork.",
+        "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded.",
+        "rejectedReason": "Inherited diagonal sand bands looked like agricultural rows."
+      }
+    ]
+  },
+  {
+    "id": "terrain/coastal_grass_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-32f3899d-914b-4947-a4aa-0641afa9a88a.png",
+    "prompt": "Use case: lighting-weather. Edit exact corrected coastalgrass fill intowinter. Preserve irregular NONPARALLEL shortgrass patches andsandopeninglayout exactly. Neverrestore diagonalstripes/rows/windrows. Grass coolgreyolive andsandgreybuff; verythin white frost onexisting lightpaint, no thickblanketsnow. Same quietcoarsegouache marksminimum8-12px atfinal256x128, noaddedfinegrain/noise/speckles/blades. FullopaqueXYseamlessflat2:1rectangle. Seasonalcolorsonly, notnewgeometry. Noobjects,text,shadow,border.",
+    "referenceInputs": [
+      "coastal_grass_summer-v1 corrected irregular patches"
+    ],
+    "generatedAt": "2026-09-27T02:17:20.752Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 2,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_winter-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Composition correction itself was a native image edit, not code-drawn. All previous prompts and source paths retained in priorAttempts; initial rejected chalk season set retained in fills-rejected.json.",
+    "selectionReason": "Final reviewer-selected correction: long parallel diagonal exposures were replaced by short irregular nonparallel patches; same corrected summer layout retained in autumn and winter. Earlier diagonal candidate rejected because it resembled cultivated rows in the isometric scene.",
+    "priorAttempts": [
+      {
+        "id": "terrain/coastal_grass_winter-v1",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-b14c2c1a-1b5b-4ba5-a18b-fb9c858cb3fa.png",
+        "prompt": "Use case: lighting-weather. EDIT attached coastalgrasssummer texture into winter; preserve exact broadgrassswaths andsandshapes. Saltgrass mutedgreyolive, sand coolgreybuff; verythin patchyfrost alongexisting paleedges, only10percent frost no snowblanket. Same broadquiet gouache strokes notphotoreal; no additionaldetail or grain. Fullopaque2:1target256x128, XYseamless. Noobjects/text/shadows. Same groundlayout changesseasononly.",
+        "referenceInputs": [
+          "coastal_grass_summer-v1"
+        ],
+        "generatedAt": "2026-09-27T02:09:10.613Z",
+        "tool": "image_gen",
+        "model": "not exposed",
+        "candidates": 1,
+        "status": "candidate",
+        "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/coastal_grass_winter-v1.png",
+        "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+        "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded.",
+        "rejectedReason": "Inherited diagonal sand bands looked like agricultural rows."
+      }
+    ]
+  },
+  {
+    "id": "terrain/woodland_floor_summer-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-64712040-c1d2-4ca5-a6ad-422268b90f2c.png",
+    "prompt": "Use case: stylized-concept. ONE WOODLAND FLOOR SUMMER terrain fill for medieval southern England game. Reference1 BROADPAINTSIZEonly, notchalklayout; reference2forest_floor paletteonly DO NOT COPY finegrain. Entirely differentquiet surface: muted umber/taupe woodland humus, broad interlocking rusty-brown leaflitter masses, olive moss at soil hollows, shaded mediumwarmbrown but no directional shadows. No palechalk or diagonalgrassribbons. Around45 large overlapping blunt gouachepaint patches, each12-30px at final256x128. Leaflitter as few broad flattened leafshapes joinedtogether, NOT manyindividualleaves, no sticks orroots. Mossasquietroundedlowcontrast paint. Fullopaque 2:1 flat topdown XYseamless rectangularfill. Minimum8-12px permark at256x128; nofinegrain,speckles,dots,smallleafveins,photographictexture,brightcolors,objects,trees,castshadows,text,edges. Matchquiet citybuilder palette fromprojectforestfloor, simplifygreatly.",
+    "referenceInputs": [
+      "chalk_down_summer-v1",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T02:09:52.396Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/woodland_floor_summer-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.82. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  },
+  {
+    "id": "terrain/woodland_floor_autumn-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-f55d3ff9-1acc-4f9f-9882-58db1d49b061.png",
+    "prompt": "Use case: lighting-weather. EDIT this woodlandfloor summer fill into autumn; preserve leaflitter clusters, barehumus andmossplacesexactly. Leaflitter gentlylightens to muted greyedgoldandtans, moss staysolive; subduedEnglishbrownnotred/orange. Brownleafpatchesremainbroad quietpaint. SAMEflat2:1opaque256x128target XYtileable. Simplified broadgouache areas12-30px, no newgrains, tiny leaves or specks. Noobjects/shadows/borders/text. Change seasononlywhilelayoutunchanged.",
+    "referenceInputs": [
+      "woodland_floor_summer-v1"
+    ],
+    "generatedAt": "2026-09-27T02:10:41.295Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/woodland_floor_autumn-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  },
+  {
+    "id": "terrain/woodland_floor_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-434a-78e2-b605-78702859f4be/exec-3613bf61-31e4-456e-9f14-db380c8550dd.png",
+    "prompt": "Use case: lighting-weather. EDIT this woodlandfloor summer fill into winter; preserve leaflitter clusters, barehumus andmossplacesexactly. Coolgrey-brown litter, olivegrey moss, thinwhitefrost onfewexistingpalebrushpatches onlyabout10-15percent, no snowblanket. Groundstaysclearlyvisible. SAMEflat2:1opaque256x128target XYtileable. Simplified broadgouache areas12-30px, no newgrains, tiny leaves or specks. Noobjects/shadows/borders/text. Change seasononlywhilelayoutunchanged.",
+    "referenceInputs": [
+      "woodland_floor_summer-v1"
+    ],
+    "generatedAt": "2026-09-27T02:11:06.521Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-candidates-20260927/terrain/woodland_floor_winter-v1.png",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork.",
+    "selectionReason": "Selected broad paint masses for low zoom readability; same-family seasons edited from summer with retained major features. Earlier noisy or camouflage attempts rejected where recorded."
+  }
+]

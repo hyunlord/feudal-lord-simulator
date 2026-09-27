@@ -1,0 +1,176 @@
+[
+  {
+    "chapter": 3,
+    "file": "proofs/01-chapter3.png",
+    "size": [
+      1488,
+      1660
+    ],
+    "captions": "none",
+    "events": {
+      "order": [
+        "ch3_event_harbour_fever",
+        "ch3_event_priest_death",
+        "ch3_event_empty_streets",
+        "ch3_event_new_graves",
+        "ch3_event_abandoned_fields",
+        "ch3_event_wage_demand",
+        "ch3_event_ordinance_reading",
+        "ch3_event_resettlement"
+      ],
+      "imageDisplay": [
+        320,
+        180
+      ],
+      "layout": "4x2"
+    },
+    "decisions": {
+      "order": [
+        "ch3_decision_wages",
+        "ch3_decision_land_redistribution",
+        "ch3_decision_vacant_priest",
+        "ch3_decision_cash_rent"
+      ],
+      "imageDisplay": [
+        320,
+        240
+      ],
+      "layout": "4x1"
+    },
+    "chronicles": {
+      "order": [
+        "ch3_chronicle_first_death",
+        "ch3_chronicle_churchyard",
+        "ch3_chronicle_abandoned_fields",
+        "ch3_chronicle_ordinance",
+        "ch3_chronicle_resettlement",
+        "ch3_chronicle_spring_recovery"
+      ],
+      "imageDisplay": [
+        200,
+        200
+      ],
+      "layout": "6x1"
+    },
+    "endings": [
+      "ch3_ending"
+    ]
+  },
+  {
+    "chapter": 4,
+    "file": "proofs/02-chapter4.png",
+    "size": [
+      1488,
+      1660
+    ],
+    "captions": "none",
+    "events": {
+      "order": [
+        "ch4_event_wage_competition",
+        "ch4_event_petitions",
+        "ch4_event_rebellion_1381",
+        "ch4_event_autonomy_request",
+        "ch4_event_textile_growth",
+        "ch4_event_alehouse",
+        "ch4_event_guild_foundation",
+        "ch4_event_lord_warning"
+      ],
+      "imageDisplay": [
+        320,
+        180
+      ],
+      "layout": "4x2"
+    },
+    "decisions": {
+      "order": [
+        "ch4_decision_charter_negotiation",
+        "ch4_decision_guild_approval",
+        "ch4_decision_tax_collection",
+        "ch4_decision_textile_or_grain"
+      ],
+      "imageDisplay": [
+        320,
+        240
+      ],
+      "layout": "4x1"
+    },
+    "chronicles": {
+      "order": [
+        "ch4_chronicle_wage_competition",
+        "ch4_chronicle_petitions",
+        "ch4_chronicle_rebellion_rumour",
+        "ch4_chronicle_guild",
+        "ch4_chronicle_textile_street",
+        "ch4_chronicle_charter_negotiation"
+      ],
+      "imageDisplay": [
+        200,
+        200
+      ],
+      "layout": "6x1"
+    },
+    "endings": [
+      "ch4_ending"
+    ]
+  },
+  {
+    "chapter": 5,
+    "file": "proofs/03-chapter5.png",
+    "size": [
+      1488,
+      2120
+    ],
+    "captions": "none",
+    "events": {
+      "order": [
+        "ch5_event_mayor_demand",
+        "ch5_event_royal_tax_envoy",
+        "ch5_event_succession",
+        "ch5_event_city_seal_making",
+        "ch5_event_charter_sealing",
+        "ch5_event_family_departure",
+        "ch5_event_legacy_record",
+        "ch5_event_last_market"
+      ],
+      "imageDisplay": [
+        320,
+        180
+      ],
+      "layout": "4x2"
+    },
+    "decisions": {
+      "order": [
+        "ch5_decision_autonomy",
+        "ch5_decision_heir_choice",
+        "ch5_decision_royal_tax_response",
+        "ch5_decision_legacy"
+      ],
+      "imageDisplay": [
+        320,
+        240
+      ],
+      "layout": "4x1"
+    },
+    "chronicles": {
+      "order": [
+        "ch5_chronicle_mayor_election",
+        "ch5_chronicle_city_seal",
+        "ch5_chronicle_charter_sealing",
+        "ch5_chronicle_heir",
+        "ch5_chronicle_legacy_sealing",
+        "ch5_chronicle_last_market"
+      ],
+      "imageDisplay": [
+        200,
+        200
+      ],
+      "layout": "6x1"
+    },
+    "endings": [
+      "ch3_ending",
+      "ch4_ending",
+      "ch5_ending",
+      "ch5_campaign_ending"
+    ]
+  }
+]
