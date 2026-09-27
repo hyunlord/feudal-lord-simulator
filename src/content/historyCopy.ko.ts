@@ -3,6 +3,7 @@
  * saves only the template id and its parameters; `historySummary` rebuilds the sentence from here.
  */
 import { factionDisplayName, factionReasonLine } from "./factionCopy.ko";
+import { GENTRY_NAMES_KO } from "./gentryNames";
 
 type P = Readonly<Record<string, number | string>>;
 const n = (params: P, key: string): number => Number(params[key] ?? 0);
@@ -53,13 +54,10 @@ export const HISTORY_OCCUPATIONS: Readonly<Record<string, string>> = {
   granger: "곡창", storekeeper: "창고",
 };
 /** FAIL-3 (FL-3, FL-1, FL-7): the decline's causes, the lord's rights and the houses' names in Korean. */
-const DECLINE_CAUSES: Readonly<Record<string, string>> = { derelict: "빈 필지가 늘어", arrears: "유지비가 밀려" };
+const DECLINE_CAUSES: Readonly<Record<string, string>> = { derelict: "빈 필지가 늘어", arrears: "유지비가 밀려", depopulated: "사람이 떠나", empty: "도시가 비어" };
 export const LORD_RIGHT_NAMES: Readonly<Record<string, string>> = { market: "시장 좌판세", tolls: "통행세", mill: "방앗간 사용료" };
-export const LORD_HOUSE_NAMES_KO: Readonly<Record<string, string>> = {
-  Mortimer: "모티머", Beauchamp: "보샴", Clifford: "클리퍼드", Neville: "네빌", Percy: "퍼시", Grey: "그레이", Talbot: "톨벗", Stafford: "스태퍼드",
-  Courtenay: "코트니", Hastings: "헤이스팅스", Mowbray: "모브레이", Ferrers: "페러스", Basset: "배싯", Zouche: "주시", Lovel: "러블", Scrope: "스크루프",
-  Willoughby: "윌러비", Berkeley: "버클리", Despenser: "디스펜서", Montagu: "몬태규",
-};
+/** FIX-5: the invented houses' Korean readings (`gentryNames.ts`). */
+export const LORD_HOUSE_NAMES_KO: Readonly<Record<string, string>> = GENTRY_NAMES_KO;
 const houseName = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;
 /** F2-A (WR-2…WR-8): what each petition is, and what its three answers mean. */
 const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
@@ -97,6 +95,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "decline.recovered": params => s(params, "right") === "none" ? "쇠퇴에서 벗어나 칭호를 되찾았다" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} 되사 쇠퇴에서 벗어났다`,
   "house.withdrew": params => `${houseName(s(params, "name"))} 가문이 물러났다`,
   "house.arrived": params => `${houseName(s(params, "name"))} 가문이 영지를 맡았다`,
+  // FIX-5 (FL-14): the new house resettles the emptied town.
+  "house.resettled": params => `${houseName(s(params, "name"))} 가문이 이주민 ${n(params, "settlers")}명을 데려와 빈 도시에 다시 살게 했다`,
   "milestone.chapter_start": params => `${n(params, "chapter")}장이 시작되었다`,
   "decision.market_town": () => "목책을 두르고 시장도시를 선포했다",
   "decision.stone_town": () => "석벽 사업을 선포했다",

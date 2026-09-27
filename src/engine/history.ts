@@ -426,6 +426,10 @@ function lordshipDrafts(before: GameState, after: GameState): Draft[] {
   if (now.house.order > was.house.order) {
     drafts.push({ tick: after.tick, kind: "milestone", template: "house.withdrew", params: { name: was.house.name, order: was.house.order }, subject: TOWN, severity: 3 });
     drafts.push({ tick: after.tick, kind: "milestone", template: "house.arrived", params: { name: now.house.name, order: now.house.order }, subject: TOWN, severity: 2 });
+    // FIX-5 (FL-14): an emptied town's new house brings settlers.
+    if (before.population <= 0 && after.population > 0) {
+      drafts.push({ tick: after.tick, kind: "milestone", template: "house.resettled", params: { name: now.house.name, settlers: after.population }, subject: TOWN, severity: 3 });
+    }
   } else if (now.decline !== null && was.decline === null) {
     drafts.push({ tick: after.tick, kind: "milestone", template: "decline.entered",
       params: { cause: now.decline.cause, right: now.decline.lost ?? "none", by: now.decline.by }, subject: TOWN, severity: 3 });

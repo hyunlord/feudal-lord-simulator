@@ -2,10 +2,18 @@
  * FAIL-3 lordship (spec docs/design/failure-ladder-campaign.md FL-*): the failure ladder's third and fourth rungs — the
  * lord's rights, title and house. Integers: permille for shares, pennies for money, ticks for time.
  */
+import { LORD_HOUSE_SURNAMES } from "./gentryNames";
 export const LORDSHIP_BALANCE = {
   /** FL-3: a town of `minHouses` houses or more declines when this share of them stands derelict (FP-3 stage 2). */
   derelictPermille: 300,
   minHouses: 8,
+  /**
+   * FIX-5 (FL-13): a town fallen under this share of its chapter's starting population declines at once (checked at
+   * every ladder sample, not the season's start); an empty town declines and its house withdraws at once (FL-14).
+   */
+  depopulatedPermille: 300,
+  /** FL-14: the settlers the new house brings in each standing house (one household), fed for a season. */
+  resettleGraceTicks: 1_000,
   /** FL-3: unpaid upkeep spread over this many distinct ledger periods. */
   arrearsPeriods: 4,
   /** FL-6: the restoration's price; haggled down, the title comes back `titleReturnTicks` later. */
@@ -35,8 +43,5 @@ export const SEIZURE_ORDER = ["market", "mill", "tolls"] as const satisfies read
 export type LordTitleRank = "manor" | "market" | "borough";
 export const TITLE_RANKS = ["manor", "market", "borough"] as const satisfies readonly LordTitleRank[];
 
-/** FL-7: English gentry surnames of the fourteenth century for the lord's houses (by seed and order). */
-export const LORD_HOUSE_NAMES = [
-  "Mortimer", "Beauchamp", "Clifford", "Neville", "Percy", "Grey", "Talbot", "Stafford", "Courtenay", "Hastings",
-  "Mowbray", "Ferrers", "Basset", "Zouche", "Lovel", "Scrope", "Willoughby", "Berkeley", "Despenser", "Montagu",
-] as const;
+/** FL-7: the lord's houses (by seed and order) — invented Anglo-Norman surnames (FIX-5, decision FN11). */
+export const LORD_HOUSE_NAMES = LORD_HOUSE_SURNAMES;

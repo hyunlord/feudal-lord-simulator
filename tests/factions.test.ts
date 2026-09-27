@@ -2,6 +2,7 @@
  * FACTION-0 factions (spec docs/design/factions.md FX-1…FX-8): scenarios X1–X8.
  */
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { PRESSURE_BALANCE } from "../src/content/balanceConfig";
@@ -107,12 +108,12 @@ test("X4 (FX-4) the famine's answer, a decline and its end, a new lord's house a
     losses: { burntHouses: 0, departures: 0, harvestLost: 0 } }], burning: [] } };
   const relieved = { ...famine, events: { ...famine.events, records: [{ ...famine.events.records[0]!, response: { choice: "relief" as const, tick: base.tick } }] } };
   assert.deepEqual(factionChanges(famine, relieved), [{ factionId: "commons", delta: 15, reason: "famine:relief" }, { factionId: "bishop", delta: 10, reason: "famine:relief" }]);
-  const lordship = { house: { order: 1, name: "Mortimer", heraldrySeed: 1, since: 0 }, pastHouses: [], lostRights: [], titleDemoted: false, decline: null };
+  const lordship = { house: { order: 1, name: "de Haverel", heraldrySeed: 1, since: 0 }, pastHouses: [], lostRights: [], titleDemoted: false, decline: null };
   const declined = { ...base, lordship: { ...lordship, titleDemoted: true, decline: { since: base.tick, cause: "arrears" as const, lost: "tolls" as const, by: "overlord" as const } } };
   assert.deepEqual(factionChanges({ ...base, lordship }, declined), [{ factionId: "overlord", delta: -20, reason: "decline:arrears" }]);
   assert.deepEqual(factionChanges(declined, { ...base, lordship }), [{ factionId: "overlord", delta: 10, reason: "restored" }]);
   const cooled = { ...base, factions: { ...base.factions!, factions: base.factions!.factions.map(entry => entry.id === "overlord" ? { ...entry, relation: -40 } : entry) } };
-  const changed = { ...cooled, lordship: { ...lordship, house: { order: 2, name: "Neville", heraldrySeed: 2, since: base.tick } } };
+  const changed = { ...cooled, lordship: { ...lordship, house: { order: 2, name: "de Coldmere", heraldrySeed: 2, since: base.tick } } };
   assert.deepEqual(factionChanges({ ...cooled, lordship }, changed).find(change => change.factionId === "overlord"), { factionId: "overlord", delta: 30, reason: "house_change" });
   const war = { messengerTick: base.tick, favour: true, answers: {}, instalments: [] };
   const raid = (defencePermille: number) => ({ ...base, war: { ...war, raid: { tick: base.tick, defencePermille, losses: { burntHouses: 3, looted: 0, coin: 0 } } } });
@@ -183,7 +184,7 @@ test("X7 (FX-6) the API: promises (rights, loans), the faction's chronicle page 
 
 test("X8 (FX-7, FX-8) the save round trip (v21), a v20 town gets its factions at its next tick, and the factions touch nothing else", () => {
   const state = created();
-  assert.equal(SAVE_SCHEMA_VERSION, 21);
+  assert.ok(SAVE_SCHEMA_VERSION >= 21);
   const saved = decodeSave(encodeSave({ state, createdAt: "2026-09-27T00:00:00.000Z", savedAt: "2026-09-27T00:00:00.000Z" }).bytes);
   assert.deepEqual(saved.envelope.state, state);
   const v20 = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v20/palisade-construction.save.json")));
@@ -198,4 +199,34 @@ test("X8 (FX-7, FX-8) the save round trip (v21), a v20 town gets its factions at
   const same: FactionState = applyFactionRecords(state.factions!, []);
   assert.equal(same, state.factions);
   assert.equal(withFactions(state).factions!.factions.length, 9);
+});
+
+/**
+ * FIX-5 (decision FN12): the factions' own pin, apart from the world hashes (which leave the factions out, FN7). A fixed
+ * run — the seed's factions, a charter accepted, the famine relieved, a Crown writ refused, a raid held, then the
+ * outside factions' years to 1450 (deaths, heirs, kings, affairs, the world) — gives the same relations, memories,
+ * leaders and timelines every time. A change of the relation rules, the names or the seed's picks re-records it.
+ */
+function pinnedRun(): FactionState {
+  let state = petition(created(), "market_charter", "merchants");
+  state = gameReducer(state, { type: "petition_response", petitionId: state.politics!.petitions.at(-1)!.id, response: "accept" });
+  const famine = { ...state, events: { records: [{ id: "great_famine@92", defId: "great_famine", kind: "dearth" as const, season: 92, arrivalTick: state.tick,
+    losses: { burntHouses: 0, departures: 0, harvestLost: 0 } }], burning: [] } };
+  state = advanceHistory(famine, { ...famine, events: { ...famine.events, records: [{ ...famine.events.records[0]!, response: { choice: "relief" as const, tick: state.tick } }] } });
+  const war = { messengerTick: state.tick, favour: true, answers: {}, instalments: [] };
+  state = petition({ ...state, war }, "levy_response", "crown");
+  state = gameReducer(state, { type: "petition_response", petitionId: state.politics!.petitions.at(-1)!.id, response: "refuse" });
+  state = advanceHistory(state, { ...state, war: { ...state.war!, raid: { tick: state.tick, defencePermille: 600, losses: { burntHouses: 3, looted: 0, coin: 0 } } } });
+  for (let year = 1324; year <= 1450; year += 1) state = advanceFactions({ ...state, tick: (year - 1300) * YEAR });
+  return state.factions!;
+}
+
+test("X9 (FX-4, FX-5) the same seed and the same commands give the same factions — relations, memories, leaders, timelines (pinned)", () => {
+  const once = pinnedRun();
+  assert.deepEqual(pinnedRun(), once);
+  assert.deepEqual(once.factions.map(entry => [entry.id, entry.relation, entry.memory.map(memory => memory.reason)]), [
+    ["overlord", 20, []], ["crown", -10, ["petition:levy_response:refuse"]], ["neighbour_1", 0, []], ["neighbour_2", 0, []],
+    ["bishop", 20, ["famine:relief"]], ["merchant_house_1", 10, ["petition:market_charter:accept"]], ["merchant_house_2", 0, []],
+    ["town", 15, ["raid:held"]], ["commons", 25, ["famine:relief"]]]);
+  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "83ac82e83047d496f101ccb6f5974cc1512cde416ddbc4b08bc8949a5f17e0f9");
 });

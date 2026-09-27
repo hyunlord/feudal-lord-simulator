@@ -6,6 +6,7 @@ import { CHAPTER_TWO } from "../src/content/chapterConfig";
 import { WAR_BALANCE } from "../src/content/warConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { lordshipOf } from "../src/engine/lordshipState";
+import { evaluateEraRequirements } from "../src/engine/era";
 import { chapterEnd } from "../src/engine/politics";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { raidLosses, raidSeasonOffset, ringDefencePermille } from "../src/engine/war";
@@ -25,6 +26,8 @@ let beforeRaid: { readonly tick: number; readonly defencePermille: number;
   readonly counterfactual: Readonly<Record<"none" | "timber" | "stone", { burntHouses: number; looted: number; coin: number }>> } | null = null;
 let stoneProclaimed: number | null = null;
 let houseChanged = false;
+/** FIX-5: every 4,000 ticks of chapter 2, the stone project's unmet conditions and the wall's stone segments. */
+const stoneTrace: { tick: number; era: string; unmet: string[]; quarries: number; masonries: number; stoneSegments: number; segments: number }[] = [];
 let last: GameState | null = null;
 
 class Stop extends Error {}
@@ -34,6 +37,12 @@ try {
     if ((state.politics?.chapter.number ?? 1) >= CHAPTER_TWO.chapter) chapter2 ??= when(state);
     if (state.war !== undefined) messenger ??= when(state);
     if (state.era === "stone_town") stoneProclaimed ??= state.tick;
+    if (chapter2 !== null && state.tick % 4000 === 0) {
+      const segments = state.palisade?.segments ?? [];
+      stoneTrace.push({ tick: state.tick, era: state.era, unmet: state.era === "palisade" ? evaluateEraRequirements(state).filter(entry => !entry.met).map(entry => `${entry.key}:${entry.current}/${entry.target}`) : [],
+        quarries: state.buildings.filter(building => building.kind === "quarry").length, masonries: state.buildings.filter(building => building.kind === "masonry").length,
+        stoneSegments: segments.filter(segment => segment.completed && segment.material === "stone" && segment.replacementConstructionSiteId == null).length, segments: segments.length });
+    }
     if (lordshipOf(state).house.order > 1) houseChanged = true;
     // The tick before the raid: the rule's losses for this town with no ring, a timber one and a finished stone one.
     const war = state.war;
@@ -50,7 +59,7 @@ try {
 const final = last as GameState | null;
 const end = final === null ? null : chapterEnd(final, CHAPTER_TWO.chapter);
 process.stdout.write(`${JSON.stringify({ seed, wallChoice: wallChoice ?? "bot", maxTicks, chapter2, messenger, beforeRaid,
-  war: final?.war ?? null, stoneProclaimed, houseChanged,
+  war: final?.war ?? null, stoneProclaimed, houseChanged, stoneTrace,
   chapterEnd: end === null ? null : { tick: end.tick, year: end.chronicle.toYear, war: end.chronicle.stats.war ?? null, populationEnd: end.chronicle.stats.populationEnd },
   final: final === null ? null : { ...when(final), era: final.era, houses: final.houses.length, burnt: final.houses.filter(house => house.burntTick !== undefined).length,
     outcome: final.settlement?.outcome ?? null, chapter: final.politics?.chapter.number ?? 1 } }, null, 1)}\n`);

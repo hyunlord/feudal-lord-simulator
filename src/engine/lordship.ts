@@ -6,17 +6,21 @@
  *   for the dereliction (unilateral seizure) — and the lord's title is demoted.
  * - Recovery: once the cause has cleared, the right's holder offers it back (a `restore_right` petition, FL-6).
  * - Stage 4: a decline two years unbroken ends the house; a new one carries on with the town (no game over).
+ * - FIX-5 (FL-13, FL-14): at every ladder sample, a town under 30 % of its chapter's starting population declines at
+ *   once; an empty town declines, its house withdraws and the new house resettles the standing houses at once.
  */
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { RESTORE_RIGHT_PETITION_ID, type PetitionResponse } from "../content/chapterConfig";
 import { LORDSHIP_BALANCE, SEIZURE_ORDER, SUSPENSION_ORDER } from "../content/lordshipConfig";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { GameState } from "./engine.types";
+import { houseLotArea } from "../geometry/buildingFootprint";
 import type { DeclineState, LordshipState } from "./lordship.types";
 import { lordHouseHeraldrySeed, lordHouseName, lordshipOf, rightHeld, rightPresent } from "./lordshipState";
 import type { PetitionRecord } from "./politics.types";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
+const SAMPLE = PRESSURE_BALANCE.sampleTicks;
 
 /** FL-3: the share of the houses (permille) standing derelict, or null for a town under `minHouses` houses. */
 export function derelictPermille(state: Pick<GameState, "houses">): number | null {
@@ -29,17 +33,31 @@ export function arrearsPeriods(state: Pick<GameState, "money">): number {
   return new Set((state.money?.arrears ?? []).map(arrear => arrear.tick)).size;
 }
 
-/** FL-3: why the town would decline now (arrears first), or null. */
+/** FL-13: the town's people are fewer than 30 % of its chapter's starting population (none: FL-14). */
+export function depopulated(state: Pick<GameState, "population" | "politics">): boolean {
+  const start = state.politics?.chapter.populationStart ?? 0;
+  return start > 0 && state.population * 1000 < start * LORDSHIP_BALANCE.depopulatedPermille;
+}
+
+/** FL-14: nobody lives in the town any more (a town that had people: its chapter started with some). */
+export function townEmpty(state: Pick<GameState, "population" | "politics">): boolean {
+  return state.population <= 0 && (state.politics?.chapter.populationStart ?? 0) > 0;
+}
+
+/** FL-3: why the town would decline now (arrears first; FL-13/FL-14 an emptied town), or null. */
 export function declineCause(state: GameState): DeclineState["cause"] | null {
   if (arrearsPeriods(state) >= LORDSHIP_BALANCE.arrearsPeriods) return "arrears";
   const share = derelictPermille(state);
-  return share !== null && share >= LORDSHIP_BALANCE.derelictPermille ? "derelict" : null;
+  if (share !== null && share >= LORDSHIP_BALANCE.derelictPermille) return "derelict";
+  return townEmpty(state) ? "empty" : depopulated(state) ? "depopulated" : null;
 }
 
 /** FL-4: stage 3 begins — the first right held in the path's order is lost, and the title is demoted. */
 function enterDecline(state: GameState, lordship: LordshipState, cause: DeclineState["cause"]): LordshipState {
-  const by = cause === "arrears" ? "overlord" as const : "merchants" as const;
-  const order = cause === "arrears" ? SUSPENSION_ORDER : SEIZURE_ORDER;
+  // FL-13/FL-14: a town that cannot render its dues for want of people is taken in custody like one in arrears.
+  const custody = cause !== "derelict";
+  const by = custody ? "overlord" as const : "merchants" as const;
+  const order = custody ? SUSPENSION_ORDER : SEIZURE_ORDER;
   const lost = order.find(id => rightPresent(state, id) && rightHeld(state, id)) ?? null;
   const { titleReturnsTick: _returns, ...rest } = lordship;
   return {
@@ -84,6 +102,15 @@ export function advanceLordship(state: GameState): GameState {
   if (state.tick <= 0) return state;
   let lordship = lordshipOf(state);
   let next = state;
+  // FL-13/FL-14: an emptied town does not wait for the season — it declines at the sample, and an empty one changes
+  // its house and is resettled there and then (before the settlement's abandonment count can run out).
+  if (state.tick % SAMPLE === 0 && (townEmpty(state) || (lordship.decline === null && depopulated(state)))) {
+    if (lordship.decline === null) {
+      lordship = enterDecline(state, lordship, townEmpty(state) ? "empty" : "depopulated");
+      next = { ...next, lordship };
+    }
+    return townEmpty(next) ? resettleTown(changeHouse(next, lordship)) : next;
+  }
   // FL-6: a haggled restoration gives the title back a year later.
   if (lordship.titleReturnsTick !== undefined && state.tick >= lordship.titleReturnsTick) {
     const { titleReturnsTick: _returns, ...rest } = lordship;
@@ -129,4 +156,15 @@ export function answerRestoration(state: GameState, petition: PetitionRecord, re
     decline: null,
   };
   return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, lordship: restored };
+}
+
+/** FL-14: the new house brings settlers — one household in each standing house (not burnt), fed for a season. */
+export function resettleTown(state: GameState): GameState {
+  const lots = new Map(state.buildings.map(building => [building.id, building]));
+  const houses = state.houses.map(house => {
+    if (house.burntTick !== undefined || house.residents > 0) return house;
+    const { abandonedTick: _abandoned, leavingSinceTick: _leaving, foodShortSinceTick: _short, ...rest } = house;
+    return { ...rest, residents: houseLotArea(lots.get(house.buildingId)), emptyFoodTicks: 0, starvationGraceUntilTick: state.tick + LORDSHIP_BALANCE.resettleGraceTicks };
+  });
+  return { ...state, houses, population: houses.reduce((sum, house) => sum + Math.max(0, house.residents), 0) };
 }
