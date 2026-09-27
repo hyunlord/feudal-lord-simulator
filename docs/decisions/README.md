@@ -278,6 +278,7 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | IN7-D1~D5 | INSTALL-7: 적재물·소품 LOD 0.8, 장식 0.6 / 들일 소품은 달력 / 지붕 눈·판자는 단독 필지만 / S12·빈집을 S4에서 분리, 강조 순위 / 볏단은 수확 줄 칸 수 | INSTALL-7 지시서 + 렌더 결정 | 2026-09-26 | [보고서](../verification/install7/REPORT.md) · [명세](../design/bread-chain-winter.md) |
 | IN11-D1~D3 | INSTALL-11: 방어 키트는 석벽 모퉁이 탑만(성문 키트는 등록) / 예배당·곡창은 석조 키트, 장터·채석장은 공통 그림 / 철거 역순은 이어지는 상태에서만 표현 | INSTALL-11 지시서 + 렌더 결정 | 2026-09-26 | [보고서](../verification/install11/REPORT.md) · [명세](../design/construction-kits.md) |
 | RV1 | REVIEW-1 병합 전 자동 검사: 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`(고정값 재기록 ↔ 결정 목록, 린트 예외 ↔ `// why:`, ESLint 금지 컨트롤·exhaustive-deps, typecheck)를 돌린다. 기존 위반은 목록으로 둔다: `scripts/checks/lint-exceptions-baseline.json` 25건, `tools/eslint/eslint-suppressions.json` 122건(금지 컨트롤 118, exhaustive-deps 4). 새 것만 실패한다. ESLint는 `tools/eslint/`에 따로 둔다(typescript-eslint가 TS 7을 못 씀, TS 6.0은 파싱 전용). 금지 컨트롤 규칙 원본은 `tools/eslint/uiControls.mjs` | 사용자 지시(REVIEW-1) + 사용자 판정(ESLint 설치 위치·규칙) | 2026-09-27 | [사용법](../REMOTE_RUNS.md#병합-전-자동-검사) · AGENTS.md 규칙 19 |
+| UIKIT-D1~D6 | UI-KIT-1: 틀 안의 칸·행·카드는 `surface`(둘레 틀이 스킨) / 배치는 명시도 0, 스킨은 0-4-0 / ESLint는 REVIEW-1의 `tools/eslint` 하나(공유 `uiControls.mjs` 확장, 억제 0) / 호출한 쪽 속성 순서·클래스 앞, 부품 속성·`title` 없음 / 전체 음량 −·+ → 밀대 / 연대기 띠·장·계절 보기는 계절 키 | 렌더 결정(UI-KIT-1 지시서) | 2026-09-27 | [보고서](../verification/uikit1/REPORT.md) · [명세](../design/ui-kit.md) |
 
 ## R1-fix 확정 규칙
 

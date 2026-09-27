@@ -1,11 +1,21 @@
 # 현재 상태
 
-갱신: 2026-09-27(BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(UI-KIT-1 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UI-KIT-1 디자인 통일 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 렌더 세션, UI·스타일·린트 규칙·스크립트·시험·문서만, 엔진 0줄, 검증 DGX, 사용자 판정): [보고서](verification/uikit1/REPORT.md), [공용 부품 명세](design/ui-kit.md) KIT-1~KIT-5, 결정 UIKIT-D1~D6.
+  - **부품 `src/ui/kit/`:** `Button`(변형 여덟·크기 셋)·`IconButton`·`Select`(네이티브 없이 단추 + 틀 목록)·`Toggle`·`Checkbox`·`Slider`·`Tabs`·`Chip`·`Panel`/`Card`/`Modal`(틀 일곱)·`Tooltip`·`Divider`·`Disclosure`. 토큰은 `uiSkin.css` `:root` 한 곳이다. 부품 핸들러는 이벤트 객체를 넘기지 않고(R2~R4), R4는 부품 핸들러 속성에도 걸린다.
+  - **전수 적용:**
+    - 단추 127개 → `Button`·`Toggle`, 셀렉트 4 → `Select`, 범위 입력 3 → `Slider`, `<details>` 5 → `Disclosure`.
+    - 전체 음량 −·+ → 밀대.
+    - 틀 없던 상태 알약·HUD 판 자리·일시정지 판에 틀을 입혔다.
+  - **금지 규칙:** REVIEW-1의 `tools/eslint/uiControls.mjs`에 `App.tsx`·`src/render`와 `textarea`·`details`·`summary`를 더했다. 억제 122 → 0, `npm run lint`. 경고 끄기 22줄은 8곳을 고치고 14곳에 `// why:`를 달았다(새로 찾은 4건 중 2건은 고침, 2건은 이유를 적고 남김).
+  - **갤러리 `/dev/ui-kit`와 스킨 감사 `scripts/uiSkinAudit.mjs`(18개 상태):** 스킨 없는 요소 0 / 661(본선 307 / 481·네이티브 7).
+  - **회귀·성능:** 면적 24/24, 튜토리얼 22 = 22, B9·TOUCH 14/14, 터치 대상 위반 0, 패드·포커스 통과. 성능 p95 97.9 %·100 %(rAF 16.7 ms). DGX 3,148/3,148. 부품 모양과 새 틀은 사용자 판정 대기.
 
 - **REVIEW-1 병합 전 자동 검사 — 관문 통과, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`를 돌린다. 고정값(기준선·지문·C25 판·장부 세계·테스트 해시)을 재기록하면 같은 브랜치의 결정 목록에 파일 이름이 있어야 하고, 새 `eslint-disable`·`@ts-ignore`·`@ts-expect-error`·`as any`에는 `// why:`가 있어야 한다. ESLint(`tools/eslint/`, TS 6.0 파싱 전용)는 `exhaustive-deps`와 `src/ui` 네이티브 컨트롤 금지를 보고, typecheck도 돈다. 기존 것은 목록(예외 25, ESLint 억제 122). 금지 컨트롤 규칙 원본은 `tools/eslint/uiControls.mjs`. [사용법](REMOTE_RUNS.md#병합-전-자동-검사), AGENTS.md 규칙 19, 결정 RV1.
 - **BOT-3 식량 물류 — 관문 통과(규칙 diff = 수레 배정 한 곳 · 가드레일 5/5), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/bot3-food-logistics/REPORT.md), [노동 명세](design/labour.md) LB-15, 결정 LB10·BT11.

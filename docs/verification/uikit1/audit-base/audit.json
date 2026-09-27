@@ -1,0 +1,1690 @@
+{
+ "url": "http://127.0.0.1:4350/",
+ "errors": [
+  "ledger: TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('.chronicle-select .ui-select-trigger').first()\n",
+  "gallery-desktop: TimeoutError: locator.waitFor: Timeout 60000ms exceeded.\nCall log:\n  - waiting for locator('[data-testid=\"ui-kit-gallery\"]') to be visible\n",
+  "gallery-tablet: TimeoutError: locator.waitFor: Timeout 60000ms exceeded.\nCall log:\n  - waiting for locator('[data-testid=\"ui-kit-gallery\"]') to be visible\n"
+ ],
+ "states": {
+  "title": {
+   "elements": 20,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 7,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기",
+     "native": false
+    }
+   ]
+  },
+  "normal": {
+   "elements": 18,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 7,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 Hugh de Wendover",
+     "native": false
+    }
+   ]
+  },
+  "drawer": {
+   "elements": 25,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 7,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 Hugh de Wendover",
+     "native": false
+    }
+   ]
+  },
+  "placement": {
+   "elements": 9,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 4,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    }
+   ]
+  },
+  "zone": {
+   "elements": 24,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 14,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-kinds > button.zone-toolbar-button.zone-tool",
+     "text": "필지",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-kinds > button.zone-toolbar-button.zone-tool",
+     "text": "경작지",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-kinds > button.zone-toolbar-button.zone-tool",
+     "text": "목초지",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-kinds > button.zone-toolbar-button.zone-tool",
+     "text": "과수원",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-tools > button.zone-toolbar-button",
+     "text": "붓",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-tools > button.zone-toolbar-button",
+     "text": "다각형",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-tools > button.zone-toolbar-button",
+     "text": "지우개",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-tools > button.zone-toolbar-button",
+     "text": "마지막 획 되돌리기 (Z)",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-tools > button.zone-toolbar-button",
+     "text": "되돌린 획 다시 칠하기 (Shift+Z)",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > nav.zone-toolbar > div.zone-toolbar-tools > button.zone-toolbar-button",
+     "text": "붓 크기 2칸 — 누르면 바뀜",
+     "native": false
+    }
+   ]
+  },
+  "selection": {
+   "elements": 26,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 16,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.diagnostic-card-position > aside.diagnostic-card > header.inspector-heading > button.inspector-close",
+     "text": "상세 정보 닫기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Juliana Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Thomas Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "William Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Simon Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > section.inspector-members > button.person-list-toggle",
+     "text": "식구 32명 모두 보기",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > details.inspector-development > summary",
+     "text": "주택 발전 조건",
+     "native": false
+    },
+    {
+     "path": "div.inspector-body > section.inspector-actions.inspector-merge > div > button.diagnostic-card-merge",
+     "text": "오른쪽 아래 주택과 2×1 합필",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > section.inspector-actions > button.diagnostic-card-cancel",
+     "text": "주택 철거",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 Hugh de Wendover",
+     "native": false
+    }
+   ]
+  },
+  "person-card": {
+   "elements": 28,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 18,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.diagnostic-card-position > aside.diagnostic-card > header.inspector-heading > button.inspector-close",
+     "text": "상세 정보 닫기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Juliana Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Thomas Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "William Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Simon Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > section.inspector-members > button.person-list-toggle",
+     "text": "식구 32명 모두 보기",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > details.inspector-development > summary",
+     "text": "주택 발전 조건",
+     "native": false
+    },
+    {
+     "path": "div.inspector-body > section.inspector-actions.inspector-merge > div > button.diagnostic-card-merge",
+     "text": "오른쪽 아래 주택과 2×1 합필",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > section.inspector-actions > button.diagnostic-card-cancel",
+     "text": "주택 철거",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 Hugh de Wendover",
+     "native": false
+    },
+    {
+     "path": "div.person-card-backdrop > section.person-card > div.person-card-actions > button.person-card-action",
+     "text": "전기 보기",
+     "native": false
+    },
+    {
+     "path": "div.person-card-backdrop > section.person-card > div.person-card-actions > button.person-card-action",
+     "text": "인물 카드 닫기",
+     "native": false
+    }
+   ]
+  },
+  "biography": {
+   "elements": 59,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 49,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.diagnostic-card-position > aside.diagnostic-card > header.inspector-heading > button.inspector-close",
+     "text": "상세 정보 닫기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Juliana Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Thomas Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "William Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.inspector-members > ul.person-list > li > button.person-chip",
+     "text": "Simon Gibson의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > section.inspector-members > button.person-list-toggle",
+     "text": "식구 32명 모두 보기",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > details.inspector-development > summary",
+     "text": "주택 발전 조건",
+     "native": false
+    },
+    {
+     "path": "div.inspector-body > section.inspector-actions.inspector-merge > div > button.diagnostic-card-merge",
+     "text": "오른쪽 아래 주택과 2×1 합필",
+     "native": false
+    },
+    {
+     "path": "aside.diagnostic-card > div.inspector-body > section.inspector-actions > button.diagnostic-card-cancel",
+     "text": "주택 철거",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 Hugh de Wendover",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.chronicle-screen > header.chronicle-header > button.chronicle-back",
+     "text": "연대기로",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.chronicle-screen > header.chronicle-header > button.chronicle-close",
+     "text": "연대기 닫기",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "배우자 Thomas Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 John Gibson the younger",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Nicholas Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Beatrice Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Jordan Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Alice Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Emma Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Matilda Gibson the elder",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Geoffrey Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Walter Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Matilda Gibson the younger",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Hawise Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Denise Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Joan Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Avice Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Cecily Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "자녀 Matthew Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 William Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Simon Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 John Gibson the elder",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Rose Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Agnes Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Robert Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Roger Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Adam Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Richard Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Philip Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Petronilla Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Ralph Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Andrew Gibson",
+     "native": false
+    },
+    {
+     "path": "section.chronicle-biography-band > ul > li > button.chronicle-biography-chip",
+     "text": "친척 Margaret Gibson",
+     "native": false
+    }
+   ]
+  },
+  "ledger": {
+   "elements": 61,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 51,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > section.ledger-drawer.slot-panel > header.slot-panel-heading > button.slot-panel-close",
+     "text": "닫기",
+     "native": false
+    },
+    {
+     "path": "section.ledger-drawer.slot-panel > div.ledger-tabs > div.ledger-tab-list > button.ledger-tab",
+     "text": "자원",
+     "native": false
+    },
+    {
+     "path": "section.ledger-drawer.slot-panel > div.ledger-tabs > div.ledger-tab-list > button.ledger-tab",
+     "text": "알림",
+     "native": false
+    },
+    {
+     "path": "section.ledger-drawer.slot-panel > div.ledger-tabs > div.ledger-tab-list > button.ledger-tab",
+     "text": "보기",
+     "native": false
+    },
+    {
+     "path": "section.ledger-drawer.slot-panel > div.ledger-tabs > div.ledger-tab-list > button.ledger-tab",
+     "text": "지도",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > section.ledger-drawer.slot-panel > div.ledger-tabs > button.ledger-tab.ledger-tab--chronicle",
+     "text": "연대기 열기 — 시간이 멈춥니다 (C)",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "창고 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "제재소 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 2",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "창고 2",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 2",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 3",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 2",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 3",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 3",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 4",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 4",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 5",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 4",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 5",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 5",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 6",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 6",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 7",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 6",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 8",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "석공소 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 7",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "창고 3",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "창고 4",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 9",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 8",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 10",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 9",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 11",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "밀 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "빵 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "원목 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "목재 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "원석 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "석재 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 Hugh de Wendover",
+     "native": false
+    }
+   ]
+  },
+  "chronicle": {
+   "elements": 85,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 74,
+   "native": 4,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > section.ledger-drawer.slot-panel > header.slot-panel-heading > button.slot-panel-close",
+     "text": "닫기",
+     "native": false
+    },
+    {
+     "path": "section.ledger-drawer.slot-panel > div.ledger-tabs > div.ledger-tab-list > button.ledger-tab",
+     "text": "자원",
+     "native": false
+    },
+    {
+     "path": "section.ledger-drawer.slot-panel > div.ledger-tabs > div.ledger-tab-list > button.ledger-tab",
+     "text": "알림",
+     "native": false
+    },
+    {
+     "path": "section.ledger-drawer.slot-panel > div.ledger-tabs > div.ledger-tab-list > button.ledger-tab",
+     "text": "보기",
+     "native": false
+    },
+    {
+     "path": "section.ledger-drawer.slot-panel > div.ledger-tabs > div.ledger-tab-list > button.ledger-tab",
+     "text": "지도",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > section.ledger-drawer.slot-panel > div.ledger-tabs > button.ledger-tab.ledger-tab--chronicle",
+     "text": "연대기 열기 — 시간이 멈춥니다 (C)",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "창고 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "제재소 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 2",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "창고 2",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 2",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 3",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 2",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 3",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 3",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 4",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 4",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 5",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 4",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 5",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 5",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 6",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "곡창 6",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 7",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 6",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 8",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "석공소 1",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 7",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "창고 3",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "창고 4",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 9",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 8",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 10",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "방앗간 9",
+     "native": false
+    },
+    {
+     "path": "thead > tr > th > button.ledger-store",
+     "text": "밀밭 11",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "밀 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "빵 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "원목 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "목재 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "원석 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "tbody > tr > th > button.ledger-row",
+     "text": "석재 — 지도에서 보관한 곳 밝히기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 Hugh de Wendover",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.chronicle-screen > header.chronicle-header > button.chronicle-close",
+     "text": "연대기 닫기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-screen > section.chronicle-timeline-block > div.chronicle-strip-row > button.chronicle-zoom",
+     "text": "계절 보기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > div.chronicle-kinds > button.chronicle-kind",
+     "text": "결정 기록 숨기기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > div.chronicle-kinds > button.chronicle-kind",
+     "text": "사건 기록 숨기기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > div.chronicle-kinds > button.chronicle-kind",
+     "text": "시대 기록 숨기기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > div.chronicle-kinds > button.chronicle-kind",
+     "text": "이정표 기록 숨기기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > div.chronicle-kinds > button.chronicle-kind",
+     "text": "인물 기록 숨기기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > div.chronicle-kinds > button.chronicle-kind",
+     "text": "결산 기록 숨기기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > label.chronicle-select > select",
+     "text": "모든 기록이정표·큰 결정 이상사건 이상시대만",
+     "native": true
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > label.chronicle-select > select",
+     "text": "처음13001301130213031304130513061307130813",
+     "native": true
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > label.chronicle-select > select",
+     "text": "지금13001301130213031304130513061307130813",
+     "native": true
+    },
+    {
+     "path": "div.chronicle-screen > div.chronicle-filters > label.chronicle-select.chronicle-select--person > select",
+     "text": "모든 인물Eleanor atte Hill (1)Henry atte Fie",
+     "native": true
+    },
+    {
+     "path": "div.chronicle-list > div.chronicle-list-space > article.chronicle-card.chronicle-card--era > button.chronicle-card-body",
+     "text": "1469년 겨울 — 재편과 전문화의 시대가 왔다",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list-space > article.chronicle-card.chronicle-card--era > div.chronicle-card-actions > button.chronicle-card-action",
+     "text": "1469년 겨울의 지도 보기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list > div.chronicle-list-space > article.chronicle-card.chronicle-card--era > button.chronicle-card-body",
+     "text": "1469년 겨울 — 인구 붕괴와 노동 반전의 시대가 왔다",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list-space > article.chronicle-card.chronicle-card--era > div.chronicle-card-actions > button.chronicle-card-action",
+     "text": "1469년 겨울의 지도 보기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list > div.chronicle-list-space > article.chronicle-card.chronicle-card--era > button.chronicle-card-body",
+     "text": "1469년 겨울 — 전쟁 동원의 시대가 왔다",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list-space > article.chronicle-card.chronicle-card--era > div.chronicle-card-actions > button.chronicle-card-action",
+     "text": "1469년 겨울의 지도 보기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list > div.chronicle-list-space > article.chronicle-card.chronicle-card--era > button.chronicle-card-body",
+     "text": "1469년 겨울 — 기근과 취약의 시대가 왔다",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list-space > article.chronicle-card.chronicle-card--era > div.chronicle-card-actions > button.chronicle-card-action",
+     "text": "1469년 겨울의 지도 보기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list > div.chronicle-list-space > article.chronicle-card.chronicle-card--era > button.chronicle-card-body",
+     "text": "1469년 겨울 — 포화의 시대가 왔다",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-list-space > article.chronicle-card.chronicle-card--era > div.chronicle-card-actions > button.chronicle-card-action",
+     "text": "1469년 겨울의 지도 보기",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-detail-body > div.chronicle-detail-map > div.chronicle-detail-actions > button.chronicle-detail-action",
+     "text": "그때 지도와 지금 지도를 나란히 보기",
+     "native": false
+    }
+   ]
+  },
+  "pause-settings": {
+   "elements": 30,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 11,
+   "native": 3,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 Hugh de Wendover",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.pause-menu-backdrop > section.pause-menu > button.pause-menu-resume",
+     "text": "계속",
+     "native": false
+    },
+    {
+     "path": "div.pause-menu-settings > div.audio-controls > label.audio-bus > input",
+     "text": "화면 소리 크기",
+     "native": true
+    },
+    {
+     "path": "div.pause-menu-settings > div.audio-controls > label.audio-bus > input",
+     "text": "알림 소리 크기",
+     "native": true
+    },
+    {
+     "path": "div.pause-menu-settings > div.audio-controls > label.audio-bus > input",
+     "text": "마을 소리 크기",
+     "native": true
+    }
+   ]
+  },
+  "petition": {
+   "elements": 27,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 15,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > section.event-cards > div.event-chips > button.event-chip",
+     "text": "상인들의 청원 — 카드 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 William de Ashby",
+     "native": false
+    },
+    {
+     "path": "section.petition-people > ul.person-list > li > button.person-chip",
+     "text": "Ralph atte Wood의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.petition-people > ul.person-list > li > button.person-chip",
+     "text": "William atte Lane의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.petition-people > ul.person-list > li > button.person-chip",
+     "text": "Stephen Northwood의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "div.petition-body > ol.petition-options > li > button.petition-option",
+     "text": "수락 — 고르기",
+     "native": false
+    },
+    {
+     "path": "div.petition-body > ol.petition-options > li > button.petition-option",
+     "text": "가격을 붙여 수락 — 고르기",
+     "native": false
+    },
+    {
+     "path": "div.petition-body > ol.petition-options > li > button.petition-option",
+     "text": "거절 — 고르기",
+     "native": false
+    },
+    {
+     "path": "div.story-modal-backdrop > section.story-modal.petition-card > div.petition-body > button.story-modal-later",
+     "text": "나중에 정하기",
+     "native": false
+    }
+   ]
+  },
+  "decision": {
+   "elements": 25,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 14,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > section.event-cards > div.event-chips > button.event-chip",
+     "text": "대기근 — 카드 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 William de Ashby",
+     "native": false
+    },
+    {
+     "path": "div.story-modal-backdrop.story-modal-backdrop--famine > section.story-modal.famine-decision > div.decision-steward > button.person-chip",
+     "text": "William de Ashby의 인물 카드 열기",
+     "native": false
+    },
+    {
+     "path": "section.story-modal.famine-decision > ol.famine-options > li > button.famine-option",
+     "text": "구휼 — 고르기",
+     "native": false
+    },
+    {
+     "path": "section.story-modal.famine-decision > ol.famine-options > li > button.famine-option",
+     "text": "가격 통제 — 고르기",
+     "native": false
+    },
+    {
+     "path": "section.story-modal.famine-decision > ol.famine-options > li > button.famine-option",
+     "text": "방관 — 고르기",
+     "native": false
+    },
+    {
+     "path": "section.story-modal.famine-decision > ol.famine-options > li > button.famine-option",
+     "text": "투기 — 고르기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.story-modal-backdrop.story-modal-backdrop--famine > section.story-modal.famine-decision > button.story-modal-later",
+     "text": "나중에 정하기",
+     "native": false
+    }
+   ]
+  },
+  "season": {
+   "elements": 20,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 9,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 William de Ashby",
+     "native": false
+    },
+    {
+     "path": "section.season-ledger-card > div.season-ledger-body > div.season-ledger-actions > button.season-ledger-resume",
+     "text": "계속",
+     "native": false
+    },
+    {
+     "path": "div.season-ledger-backdrop > section.season-ledger-card > div.season-ledger-body > button.season-ledger-auto",
+     "text": "계절마다 결산 띄우기: 켬",
+     "native": false
+    }
+   ]
+  },
+  "chapter-end": {
+   "elements": 24,
+   "kit": 0,
+   "surfaces": 0,
+   "skinless": 11,
+   "native": 0,
+   "list": [
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell.status-pill-date",
+     "text": "계절 띠 — 다가오는 일 보기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "인구 기록 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.status-pill > button.status-pill-cell",
+     "text": "자원 장부 열기",
+     "native": false
+    },
+    {
+     "path": "div.app-interaction-layer > section.event-cards > div.event-chips > button.event-chip",
+     "text": "대기근 — 카드 열기",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "건설",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "장부",
+     "native": false
+    },
+    {
+     "path": "main.app-shell > div.app-interaction-layer > nav.action-dock > button.action-dock-button",
+     "text": "청지기 William de Ashby",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-columns > section > div.chronicle-actions > button.chronicle-next",
+     "text": "제2장으로",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-columns > section > div.chronicle-actions > button.chronicle-keep",
+     "text": "계속 (샌드박스)",
+     "native": false
+    },
+    {
+     "path": "div.chronicle-columns > section > div.chronicle-actions > button.chronicle-full",
+     "text": "전체 연대기 보기",
+     "native": false
+    }
+   ]
+  }
+ },
+ "total": {
+  "elements": 481,
+  "skinless": 307,
+  "native": 7
+ },
+ "missing": [
+  "gallery-desktop",
+  "gallery-tablet"
+ ],
+ "pass": false
+}
