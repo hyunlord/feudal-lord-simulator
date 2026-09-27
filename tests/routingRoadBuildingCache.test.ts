@@ -141,10 +141,13 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // PERSON-0: the state records the town's persons (names, births, deaths, offices), so it differs from F0-C1
   // (295502ea… / 24f719ed…). Cold and warm caches still agree (below).
   // MARKET-1: the market reaches homes along the road (40 steps), so services and levels differ from PERSON-0 (ffe8e1a6… / 180663ef…).
-  assert.equal(hash(warm), 'ab549654e97ba91f114396916059c4d23f0238dbc81c946224ceb86c642e1948');
+  // FIX-6: the factions' leaders wear pool 3's faces and the town's portrait usage follows (ab549654…; without the
+  // portraits the state is unchanged).
+  assert.equal(hash(warm), 'c11f6dbef46d200b0274735ad973b521e0ec4c3486dfa4298a83492de0678406');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, history: _history, factions: _factions, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'c0931baf70a48b111857191cd4f15b8a9aa3687227e38150a2d231009c453739');
+  // FIX-6: the same faces (was c0931baf…).
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'd86be291c2be4809e68225a7fa942a2c973519742b108623b5217c4fcd3cdcba');
   assert.equal(hash(coldState), hash(warm));
   assert.deepEqual(coldState.history, warm.history);
 });

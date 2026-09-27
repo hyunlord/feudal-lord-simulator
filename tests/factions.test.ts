@@ -6,7 +6,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { PRESSURE_BALANCE } from "../src/content/balanceConfig";
-import { FACTION_DEFS, FACTION_EVENT_PERMILLE, RELATION_RULES } from "../src/content/factionConfig";
+import { FACTION_DEFS, FACTION_EVENT_PERMILLE, FACTION_PORTRAIT_POOLS, RELATION_RULES } from "../src/content/factionConfig";
 import type { GameState } from "../src/engine/engine.types";
 import {
   advanceFactions, applyFactionRecords, factionChanges, factionChronicle, factionOfPetitioner, factionsList, kingOf, worldTimeline,
@@ -15,6 +15,7 @@ import type { FactionState } from "../src/engine/faction.types";
 import { advanceHistory, historySummary } from "../src/engine/history";
 import { advancePersons, personById } from "../src/engine/persons";
 import { initialPolitics } from "../src/engine/politics";
+import { identityFaction } from "../src/engine/portraits";
 import { hashSeed } from "../src/engine/prng";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
@@ -191,10 +192,15 @@ test("X8 (FX-7, FX-8) the save round trip (v21), a v20 town gets its factions at
   assert.deepEqual([v20.migratedFrom, (v20.envelope.state as GameState).factions], [20, undefined]);
   const opened = advanceFactions({ ...(v20.envelope.state as GameState), tick: (v20.envelope.state as GameState).tick + 1 });
   assert.equal(opened.factions!.factions.length, 9);
-  // Only `factions` changes.
+  // Only `factions` changes — and (CODE-1a) the town factions' leaders take their faction's pool-3 face.
+  const townLeaders = new Map(opened.factions!.factions.filter(faction => FACTION_DEFS.find(def => def.id === faction.id)!.leaders === "town" && faction.leaderId !== null)
+    .map(faction => [faction.leaderId!, faction.id]));
   const { factions: _added, ...rest } = opened;
   const { factions: _none, ...before } = { ...(v20.envelope.state as GameState), tick: opened.tick };
-  assert.deepEqual(rest, before);
+  const faces = rest.persons!.people.filter((person, index) => person.portraitIdentity !== before.persons!.people[index]!.portraitIdentity);
+  assert.ok(faces.length > 0 && faces.every(person => townLeaders.has(person.id)
+    && FACTION_PORTRAIT_POOLS[townLeaders.get(person.id)!].includes(identityFaction(person.portraitIdentity) ?? "")), "the changed faces are town leaders' pool-3 faces");
+  assert.deepEqual({ ...rest, persons: { ...rest.persons!, people: rest.persons!.people.map((person, index) => ({ ...person, portraitIdentity: before.persons!.people[index]!.portraitIdentity })) } }, before);
   // Records without a faction change nothing.
   const same: FactionState = applyFactionRecords(state.factions!, []);
   assert.equal(same, state.factions);
@@ -228,5 +234,6 @@ test("X9 (FX-4, FX-5) the same seed and the same commands give the same factions
     ["overlord", 20, []], ["crown", -10, ["petition:levy_response:refuse"]], ["neighbour_1", 0, []], ["neighbour_2", 0, []],
     ["bishop", 20, ["famine:relief"]], ["merchant_house_1", 10, ["petition:market_charter:accept"]], ["merchant_house_2", 0, []],
     ["town", 15, ["raid:held"]], ["commons", 25, ["famine:relief"]]]);
-  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "83ac82e83047d496f101ccb6f5974cc1512cde416ddbc4b08bc8949a5f17e0f9");
+  // CODE-1a (decision FX6-2): the leaders and heirs wear their pool-3 faces (was 83ac82e83047d496f101ccb6f5974cc1512cde416ddbc4b08bc8949a5f17e0f9).
+  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "9dcbe59c87fa6768743debf96f09fc9a57057af1faa066461147bf940c988020");
 });

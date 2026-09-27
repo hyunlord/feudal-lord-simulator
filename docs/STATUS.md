@@ -1,11 +1,19 @@
 # 현재 상태
 
-갱신: 2026-09-28(UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-6 저장 이행 Node 전역·초상 풀 3차·사람 이름 한글 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 생성 파일 재생성 예외·손으로 쓴 렌더 0줄, 검증 DGX, 사용자 지시 UI-6 넘김 셋): [보고서](verification/fix6-save-portraits-names/REPORT.md), 결정 FX6-1~FX6-5.
+  - **저장**: `v9ToV10`의 `process.env` 제거(브라우저에서 v9 이하 이행이 멈췄다). 코덱과 이행 단계가 닿는 189모듈에 Node 전역·내장 모듈 금지 시험.
+  - **초상 풀 3차**(I101~I124, 72장)는 세력 수장 몫이다. 9세력 수장·후계가 제 세력 얼굴(수장 계급 먼저)을 쓰고, 도시 사람은 뽑지 않는다. `installChronicleArt.py`로 manifest를 다시 생성했다(304장). 수장 9명 전원 초상이 manifest에 있다(seed 1~5, 1450까지).
+  - **이름**: `personNames.ko.ts` 읽기 표(세례명 60·성·별칭 18·국왕 7). 별칭은 앞의 수식어("나이 든 토머스 애덤슨")다. 화면용은 `personDisplayName`(`persons.displayName`)이다.
+  - **관문**: 전체 회귀 `300585c` 3,278/3,278, 깨끗한 클론 `300585c` 3,278/3,278·build. 얼굴을 빼면 상태가 본선과 같다(고정값 재기록 FX6-5, 가드레일 해당 없음).
+  - **렌더가 넘겨받을 것**: 이름 쓰는 곳을 `personDisplayName`으로(`personModels`·`factionTabModel`·`chronicleScreenModel`·전기). `PERSONS_COPY.kings`는 `KING_NAMES_KO`와 같다.
+  - **C4**: 가드레일 1회차가 교착(seed 2·3·5 L4 16·17·21)이었다. AL9로 고친 뒤 확인 실행도 seed 2·3·5가 16·16·22에서 멈췄다. 원인은 아직 모르고, 브랜치에 남아 있다(본선 미병합).
 
 - **UI-6 2장 화면 — 관문 통과(⑧ 사용자 판정 대기), 본선 병합**(Claude Code, 렌더 세션, 렌더·UI·스크립트·시험·문서, 엔진 파일은 조회만·규칙 0줄, 검증 DGX, 사용자 지시): [보고서](verification/ui6/REPORT.md), 결정 UI6-D1~D8.
   - 청원 카드는 defId별 표현 표: 2장 결정 다섯이 Wave 17 삽화·원장의 선택지 이름·규칙의 수·`warDecisionForecast` 예측, 보낸 이는 세력(이름·문장·수장 초상), 왕실은 밀랍 인장.

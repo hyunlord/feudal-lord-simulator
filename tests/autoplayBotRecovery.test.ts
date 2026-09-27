@@ -167,7 +167,8 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // plot settlement, spec HR-*), re-recorded at FIX-4. FAIL-3 keeps the prosperity milestone but the campaign is won only
   // at chapter 5's end (FL-9): the prosperous town's outcome is "ongoing" (was "victory"), re-recorded at FAIL-3.
   assert.equal(hashEconomyState(state), "57b48964ac5b3c9e");
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "6ec1cf75c490e2260a5c6819e120d396bb7474abd6553ee70dc85edc6993f763");
+  // FIX-6: the factions' leaders wear pool 3's faces (was 6ec1cf75…; with every portraitIdentity removed the state is the same).
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "e7a38e2061423c2f2c486a4710de847d6505fe72dbd892785afd805373f4bbdc");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {

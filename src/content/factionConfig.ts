@@ -45,6 +45,19 @@ export const NEIGHBOUR_HOUSES: readonly string[] = NEIGHBOUR_SURNAMES;
 export const SEES: readonly string[] = SEE_NAMES;
 export { BISHOP_SURNAMES };
 
+/**
+ * CODE-1a (decision FX6-2): the portrait pool 3 factions (`PortraitEntry.faction`) each faction's leaders and heirs are
+ * drawn from. The Crown's are its officers (sheriff, escheator, herald: the pool paints no crowns); the town community's
+ * its mayor, council clerk and guild; the commons' their rural and community representatives.
+ */
+export const FACTION_PORTRAIT_POOLS: Readonly<Record<FactionId, readonly string[]>> = {
+  overlord: ["earl_house"], crown: ["crown"], neighbour_1: ["neighbor_a"], neighbour_2: ["neighbor_b"], bishop: ["diocese"],
+  merchant_house_1: ["merchant_a"], merchant_house_2: ["merchant_b"], town: ["town", "town_council", "guild"], commons: ["rural_community", "community"],
+};
+/** CODE-1a: the pool-3 ranks a leader prefers (the earl before his heir, the bishop before his deputy). */
+export const FACTION_HEAD_RANKS: readonly string[] = ["earl", "sheriff", "escheator", "herald", "knight_lord", "bishop", "house_head", "mayor_candidate",
+  "clerk", "guild_representative", "rural_representative", "community_representative"];
+
 /** FX-5: England's kings 1272–1461, the Crown's leaders by the calendar (not the seed). */
 export const KINGS: readonly { readonly name: string; readonly born: number; readonly from: number; readonly until: number }[] = [
   { name: "Edward I", born: 1239, from: 1272, until: 1307 }, { name: "Edward II", born: 1284, from: 1307, until: 1327 },

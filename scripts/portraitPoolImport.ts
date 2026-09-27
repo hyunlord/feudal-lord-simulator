@@ -1,10 +1,11 @@
 // PERSON-0 (spec docs/design/persons.md PS-5): builds `src/content/portraitPool.ts` from the portrait pool CSVs
-// (pilot P01–P36, pool 1 and pool 2 I037–I100, docs/design/portraits/). Only the attributes the matcher reads are kept.
+// (pilot P01–P36, pool 1 and pool 2 I037–I100, pool 3 I101–I124 — the factions' leaders — docs/design/portraits/). Only
+// the attributes the matcher reads are kept.
 //   tsx scripts/portraitPoolImport.ts
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 
-const FILES = ["portrait_pilot.csv", "portrait_pool1.csv", "portrait_pool2.csv"] as const;
+const FILES = ["portrait_pilot.csv", "portrait_pool1.csv", "portrait_pool2.csv", "portrait_pool3.csv"] as const;
 
 /** RFC 4180 rows (quoted fields, doubled quotes, commas and newlines inside quotes). */
 function parseCsv(text: string): string[][] {
@@ -46,6 +47,7 @@ for (const file of FILES) {
       id: col(row, "id"), identityId: col(row, "identity_id"), stage, band, file: col(row, "file"),
       sex: col(row, "sex") === "f" ? "female" : "male", age: Number(col(row, "age")), classBand: col(row, "class"),
       occupation: col(row, "occupation"), role: col(row, "role"), build: body === "fat" || body === "heavy" ? "heavy" : body,
+      ...(col(row, "faction") === "" ? {} : { faction: col(row, "faction"), rank: col(row, "rank") }),
     }));
   }
 }
@@ -65,6 +67,9 @@ export interface PortraitEntry {
   readonly occupation: string;
   readonly role: string;
   readonly build: "thin" | "average" | "heavy";
+  /** Pool 3 (CODE-1a): the faction whose leaders and heirs wear the face (earl_house, crown, neighbor_a …) and the rank. */
+  readonly faction?: string;
+  readonly rank?: string;
 }
 
 export const PORTRAIT_POOL: readonly PortraitEntry[] = [
