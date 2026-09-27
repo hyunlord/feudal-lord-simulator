@@ -1,5 +1,6 @@
 import { MONEY_BALANCE } from "../balanceConfig";
 import { DEARTH_REHEARSAL_EVENT_ID, FIRE_EVENT_ID, FIRST_FIRE_EVENT_ID, GREAT_FAMINE_EFFECTS, GREAT_FAMINE_EVENT_ID, WEATHER_EVENT_ID } from "../eventConfig";
+import { WAR_ERA_EFFECTS, WAR_SEQUENCE_ID } from "../warConfig";
 import { SCENARIO_COPY } from "./scenarioCopy.ko";
 import type { ArchetypeDef, EraDef, ObjectiveDef, ScenarioDef, StageDef } from "./types";
 
@@ -39,7 +40,8 @@ const ERAS: readonly EraDef[] = [
     { kind: "housing_lots_at_least", value: 12 },
     { kind: "building_count_at_least", building: "market", value: 1 },
   ] } }, effects: GREAT_FAMINE_EFFECTS },
-  { id: "war", name: SCENARIO_COPY.eras.war, enterWhen: { yearAtLeast: 1337 }, effects: [] },
+  // F2-A (WR-1): the War era brings the royal messenger and what follows (`war.ts`).
+  { id: "war", name: SCENARIO_COPY.eras.war, enterWhen: { yearAtLeast: 1337 }, effects: WAR_ERA_EFFECTS },
   { id: "collapse", name: SCENARIO_COPY.eras.collapse, enterWhen: { yearAtLeast: 1348 }, effects: [] },
   { id: "specialisation", name: SCENARIO_COPY.eras.specialisation, enterWhen: { yearAtLeast: 1380 }, effects: [] },
 ];
@@ -72,13 +74,14 @@ const WALLS = {
 /** C2 money rules: the lord's mill monopoly is on, demesne sales are off (goods belong to residents). */
 const ECONOMY_RULES = { millMonopoly: true, demesneSale: false } as const satisfies ScenarioDef["economyRules"];
 
-export const CORE_ARCHETYPES: readonly ArchetypeDef[] = [{ id: "core:open_field", resourcePackage: {} }];
+/** F2-A (WR-5, decision WR2): the open-field town stands at a tidal river's mouth — the war's raiders reach it. */
+export const CORE_ARCHETYPES: readonly ArchetypeDef[] = [{ id: "core:open_field", resourcePackage: {}, coastal: true }];
 
 /**
  * F0-B (EV-1): the weather and chapter 1's events — the first fire, later fires and the first dearth (the rehearsal).
- * F0-C1 (FC-1): and the Great Famine, which comes with the famine era.
+ * F0-C1 (FC-1): and the Great Famine, which comes with the famine era. F2-A (WR-1): and the war of 1337.
  */
-const CHAPTER_ONE_EVENTS = [WEATHER_EVENT_ID, FIRST_FIRE_EVENT_ID, FIRE_EVENT_ID, DEARTH_REHEARSAL_EVENT_ID, GREAT_FAMINE_EVENT_ID] as const;
+const CORE_EVENTS = [WEATHER_EVENT_ID, FIRST_FIRE_EVENT_ID, FIRE_EVENT_ID, DEARTH_REHEARSAL_EVENT_ID, GREAT_FAMINE_EVENT_ID, WAR_SEQUENCE_ID] as const;
 
 export const CORE_SCENARIOS: readonly ScenarioDef[] = [
   {
@@ -98,7 +101,7 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     ], holdTicks: 1200 },
     failure: { all: [{ kind: "settlement_empty_for", ticks: 600 }] },
     walls: WALLS,
-    activeEvents: CHAPTER_ONE_EVENTS,
+    activeEvents: CORE_EVENTS,
     economyRules: ECONOMY_RULES,
   },
   {
@@ -113,7 +116,7 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     victory: null,
     failure: null,
     walls: WALLS,
-    activeEvents: CHAPTER_ONE_EVENTS,
+    activeEvents: CORE_EVENTS,
     economyRules: ECONOMY_RULES,
   },
 ];

@@ -19,6 +19,9 @@ export const LEDGER_CATEGORIES = [
   "famine_relief", "famine_sale", "charter_fee",
   // FAIL-3 (FL-6, FL-7): a lost right bought back; the treasury share a withdrawing house takes with it.
   "restoration_fee", "house_change",
+  // F2-A (WR-2…WR-8): the wool levy, the array's exemption, the lay subsidy, the merchants' war loan, the war tax, the
+  // raid's plunder, the purveyors' wheat, the refugees' fee, murage.
+  "wool_levy", "war_exemption", "war_subsidy", "war_loan", "war_tax", "raid_loot", "purveyance", "refugee_fee", "murage",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

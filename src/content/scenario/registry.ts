@@ -1,5 +1,6 @@
 import { BUILDING_CONFIG_BY_KIND } from "../buildingConfig";
 import { EVENT_DEF_BY_ID, WEATHER_EVENT_ID } from "../eventConfig";
+import { WAR_SEQUENCE_ID } from "../warConfig";
 import { CORE_ARCHETYPES, CORE_SCENARIOS, DEFAULT_SCENARIO_ID } from "./coreScenarios";
 import { CONDITION_KINDS, STAGE_ORDER, type ArchetypeDef, type Condition, type ConditionSet, type ScenarioDef, type StageDef, type StageId } from "./types";
 
@@ -26,6 +27,10 @@ export class ScenarioRegistry {
 
   get(id: string): ScenarioDef | undefined {
     return this.scenarios.get(id);
+  }
+
+  archetype(id: string): ArchetypeDef | undefined {
+    return this.archetypes.get(id);
   }
 
   /** Registration order, which is also the order shown to the player. */
@@ -122,7 +127,7 @@ function validateScenario(scenario: ScenarioDef, archetypes: ReadonlyMap<string,
   validateSet(id, scenario.walls.stoneWallPrereq, "walls.stoneWallPrereq");
   // F0-B (EV-1): active events name known definitions; events need the weather.
   for (const eventId of scenario.activeEvents) {
-    if (eventId !== WEATHER_EVENT_ID && !EVENT_DEF_BY_ID.has(eventId)) fail(id, `unknown active event ${eventId}`);
+    if (eventId !== WEATHER_EVENT_ID && eventId !== WAR_SEQUENCE_ID && !EVENT_DEF_BY_ID.has(eventId)) fail(id, `unknown active event ${eventId}`);
   }
   if (scenario.activeEvents.some(eventId => eventId !== WEATHER_EVENT_ID) && !scenario.activeEvents.includes(WEATHER_EVENT_ID)) fail(id, "events need the weather");
 }
@@ -141,6 +146,11 @@ export function scenarioById(id: string | undefined): ScenarioDef {
   const scenario = SCENARIOS.get(id ?? DEFAULT_SCENARIO_ID);
   if (scenario === undefined) throw new ScenarioValidationError(`Unknown scenario ${String(id)}`);
   return scenario;
+}
+
+/** F2-A (WR-5): the scenario's map archetype (its coast). */
+export function archetypeOf(scenario: ScenarioDef): ArchetypeDef | undefined {
+  return SCENARIOS.archetype(scenario.archetype);
 }
 
 export function stageDef(scenario: ScenarioDef, stage: StageId): StageDef {

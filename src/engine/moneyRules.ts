@@ -8,6 +8,7 @@
  * period's upkeep runs again while its old debt waits (FIX-4 E3).
  */
 import { stallFeePermille, stallFeeRightSource } from "./politics";
+import { marketExpansionPermille, murageTollPermille, warTaxPermille } from "./war";
 import type { SourceRef } from "../contracts";
 import { MONEY_BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
@@ -113,6 +114,7 @@ function buildingSource(id: string, detail?: string): SourceRef {
 function periodIncome(state: GameState, money: MoneyState): { readonly postings: LedgerPosting[]; readonly millWheat: Record<string, number> } {
   const postings: LedgerPosting[] = [];
   const plots = homePlots(state);
+  let rent = 0;
   for (const house of state.houses) {
     // EV-4: a burnt house pays no rent until it is rebuilt.
     if (house.residents <= 0 || house.burntTick !== undefined) continue;
@@ -122,14 +124,19 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
     const sourceRefs: [SourceRef, ...SourceRef[]] = [buildingSource(house.buildingId, `level:${house.level}`)];
     if (plot !== undefined) sourceRefs.push({ type: "zone", id: plot.zoneId, detail: `frontage:${plot.width}` });
     postings.push({ account: "cash", category: "rent", amount, sourceRefs });
+    rent += amount;
   }
+  // F2-A (WR-4): the war tax adds its surcharge to the period's rent.
+  const warTax = Math.round(rent * warTaxPermille(state) / 1000);
+  if (warTax > 0) postings.push({ account: "cash", category: "war_tax", amount: warTax, sourceRefs: [{ type: "actor", id: "crown" }, { type: "claim", id: "war_tax", detail: `rent:${rent}` }] });
   // FAIL-3 (FL-1): a right lost to the overlord or the merchants pays its holder, not the treasury.
   const markets = rightHeld(state, "market"), tolls = rightHeld(state, "tolls"), mill = rightHeld(state, "mill");
   for (const market of [...state.buildings].filter(building => markets && building.kind === "market").sort((a, b) => a.id.localeCompare(b.id))) {
     const stalls = marketStalls(state, market);
     // FC-3/FC-4: a market charter lowers the dues (the right is a source of the posting).
     const right = stallFeeRightSource(state);
-    const fee = Math.round(stalls * MONEY_BALANCE.stallFeePerStall * stallFeePermille(state) / 1000);
+    // F2-A (WR-8): the market chosen over the wall raises the dues a quarter.
+    const fee = Math.round(stalls * MONEY_BALANCE.stallFeePerStall * stallFeePermille(state) / 1000 * marketExpansionPermille(state) / 1000);
     if (stalls > 0 && fee > 0) postings.push({ account: "cash", category: "stall_fee", amount: fee,
       sourceRefs: [buildingSource(market.id, `stalls:${stalls}`), ...(right === null ? [] : [right])] });
   }
@@ -144,6 +151,10 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
   for (const [pointId, count] of Object.entries(money.crossings).sort(([a], [b]) => a.localeCompare(b))) {
     if (count > 0 && tolls) postings.push({ account: "cash", category: "toll", amount: count * MONEY_BALANCE.tollPerCrossing,
       sourceRefs: [tollPointSource(pointId), { type: "trade", id: "carter_crossings", detail: `crossings:${count}` }] });
+    // F2-A (WR-8): murage, the Crown's toll for the stone wall, while it is building.
+    const murage = Math.round(count * MONEY_BALANCE.tollPerCrossing * (murageTollPermille(state) - 1000) / 1000);
+    if (count > 0 && tolls && murage > 0) postings.push({ account: "cash", category: "murage", amount: murage,
+      sourceRefs: [tollPointSource(pointId), { type: "right", id: "murage", detail: `crossings:${count}` }] });
   }
   return { postings, millWheat };
 }
@@ -187,9 +198,10 @@ export function settleMoneyPeriod(state: GameState): GameState {
   for (const arrear of money.arrears) {
     if (cash < arrear.amount) break;
     cash -= arrear.amount;
-    const sourceRefs: [SourceRef, ...SourceRef[]] = [arrear.facility, { type: "claim", id: `upkeep:${arrear.tick}`, detail: "arrears_paid" }];
-    postings.push({ account: "cash", category: "upkeep", amount: -arrear.amount, sourceRefs });
-    postings.push({ account: "arrears", category: "upkeep", amount: -arrear.amount, sourceRefs });
+    const category = arrear.category ?? "upkeep";
+    const sourceRefs: [SourceRef, ...SourceRef[]] = [arrear.facility, { type: "claim", id: `${category}:${arrear.tick}`, detail: "arrears_paid" }];
+    postings.push({ account: "cash", category, amount: -arrear.amount, sourceRefs });
+    postings.push({ account: "arrears", category, amount: -arrear.amount, sourceRefs });
     paid += 1;
   }
   arrears.unshift(...money.arrears.slice(paid));

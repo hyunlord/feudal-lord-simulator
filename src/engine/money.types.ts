@@ -3,6 +3,7 @@
  * accrued and nothing owed. Money itself lives only in the ledger; this holds counts and the arrears queue.
  */
 import type { SourceRef } from "../contracts";
+import type { LedgerCategory } from "../ledger/ledger.types";
 
 /** One unpaid upkeep charge (M-6). The queue is paid oldest first; its sum is the arrears balance. */
 export interface UpkeepArrear {
@@ -10,6 +11,8 @@ export interface UpkeepArrear {
   readonly amount: number;
   /** The facility that was not paid: a building, or a gate toll point (`right`, `gate:x,y`). */
   readonly facility: SourceRef;
+  /** F2-A (save v20): a war charge left unpaid (the wool levy, the subsidy, a loan instalment…); absent = upkeep. */
+  readonly category?: LedgerCategory;
 }
 
 export interface MoneyState {

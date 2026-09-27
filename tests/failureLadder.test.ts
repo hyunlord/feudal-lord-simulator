@@ -187,7 +187,9 @@ test("F6 (FL-8) chapter 1's end begins chapter 2 at the same tick, the same town
   assert.equal(next.politics!.chapterEnds.length, 1);
   assert.deepEqual(next.politics!.chapter, { number: CHAPTER_TWO.chapter, startTick: town.tick, populationStart: town.population, peakPopulation: town.population });
   assert.deepEqual([next.buildings, next.houses, next.treasuryCoin, next.persons], [town.buildings, town.houses, town.treasuryCoin, town.persons], "same town");
-  assert.deepEqual(chapterGoals(next).map(goal => [goal.chapter, goal.id, goal.reachedTick]), [[1, "famine_market_town", town.tick], [2, "prosperity", null]]);
+  assert.deepEqual(chapterGoals(next).map(goal => [goal.chapter, goal.id, goal.reachedTick]), [[1, "famine_market_town", town.tick], [2, "prosperity", null],
+    // F2-A (WR-9): chapter 2's war goal, reached at its end.
+    [2, "wall_or_market", null]]);
   const recorded = advanceHistory(town, next).history!.records.map(record => record.template);
   assert.ok(recorded.includes("milestone.chapter_end") && recorded.includes("milestone.chapter_start"));
   const sandbox = advancePolitics(throughFamine(SANDBOX_SCENARIO_ID));
