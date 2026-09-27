@@ -7,8 +7,9 @@
 # set as UX-0b ran it (HUD area, the tutorial's steps this and base, touch targets, B9 input replay vs base, TOUCH-1
 # touch replay, gamepad replay, focus return). Each step runs even when one before it fails; the summary lists the codes.
 set -u
+# UI6_OUT: another task's evidence folder (UI-6b: docs/verification/ui6b), so a later run keeps UI-6's.
 mode=${1:-all}
-out=docs/verification/ui6
+out=${UI6_OUT:-docs/verification/ui6}
 states=${UI6_STATES:-$HOME/fls-ui6-states}
 states5=${UI5_STATES:-$HOME/fls-ui5-states}
 mkdir -p "$out/captures" "$out/audit" "$out/audit-base" "$out/gates" "$states" "$states5"
