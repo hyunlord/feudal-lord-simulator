@@ -1,0 +1,1020 @@
+{
+ "gate": "F2-A chapter 2 bot run (scripts/chapterTwoRun.ts <seed> 200000)",
+ "runs": [
+  {
+   "commit": "0006b7ac",
+   "note": "bot rule 1: murage whenever the Crown favours the town (seed 3 stopped before its end)",
+   "seeds": [
+    {
+     "seed": 1,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 69500,
+      "year": 1317,
+      "population": 528,
+      "treasury": 3159
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 13598
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1314,
+        "coin": 2000
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1114
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 860,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1097
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 182161,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1097
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 20314,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    },
+    {
+     "seed": 2,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 77500,
+      "year": 1319,
+      "population": 528,
+      "treasury": 2482
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 520,
+      "treasury": 7798
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1072,
+        "coin": 1537
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 680,
+        "coin": 614
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 431,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 680,
+        "coin": 605
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 680,
+        "coin": 605
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 11550,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    },
+    {
+     "seed": 4,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 69500,
+      "year": 1317,
+      "population": 528,
+      "treasury": 2752
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 9013
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1309,
+        "coin": 1727
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 881,
+        "coin": 691
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 613,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 881,
+        "coin": 680
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 189898,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 881,
+        "coin": 680
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 9691,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    },
+    {
+     "seed": 5,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 89500,
+      "year": 1322,
+      "population": 528,
+      "treasury": 3649
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 9759
+     },
+     "beforeRaid": {
+      "tick": 160999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 849,
+        "coin": 1929
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 771
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 594,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 161000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 760
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1340,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 760
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 14279,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    }
+   ]
+  },
+  {
+   "commit": "9efac4c2",
+   "note": "bot rule 2: the stone wall only when its project can begin now, else the market",
+   "seeds": [
+    {
+     "seed": 1,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 69500,
+      "year": 1317,
+      "population": 528,
+      "treasury": 3159
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 13598
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1314,
+        "coin": 2000
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1114
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 860,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "refuse"
+      },
+      "instalments": [
+       {
+        "category": "war_loan",
+        "perSeason": 210,
+        "seasonsLeft": 2
+       }
+      ],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1097
+       }
+      },
+      "licenceSeasonsLeft": 7,
+      "wall": "market"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 160000,
+      "year": 1340,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1097
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "market"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 160000,
+      "year": 1340,
+      "population": 768,
+      "treasury": 12402,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    },
+    {
+     "seed": 2,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 77500,
+      "year": 1319,
+      "population": 528,
+      "treasury": 2482
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 520,
+      "treasury": 7798
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1072,
+        "coin": 1537
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 680,
+        "coin": 614
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 431,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "refuse"
+      },
+      "instalments": [
+       {
+        "category": "war_loan",
+        "perSeason": 115,
+        "seasonsLeft": 2
+       }
+      ],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 680,
+        "coin": 605
+       }
+      },
+      "licenceSeasonsLeft": 7,
+      "wall": "market"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 160000,
+      "year": 1340,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 680,
+        "coin": 605
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "market"
+      },
+      "populationEnd": 728
+     },
+     "final": {
+      "tick": 160000,
+      "year": 1340,
+      "population": 728,
+      "treasury": 6946,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    },
+    {
+     "seed": 3,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 93500,
+      "year": 1323,
+      "population": 325,
+      "treasury": 2134
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 5731
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 842,
+        "coin": 1152
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 645,
+        "coin": 460
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 519,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "refuse"
+      },
+      "instalments": [
+       {
+        "category": "war_loan",
+        "perSeason": 85,
+        "seasonsLeft": 2
+       }
+      ],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 645,
+        "coin": 454
+       }
+      },
+      "licenceSeasonsLeft": 7,
+      "wall": "market"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 160000,
+      "year": 1340,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 645,
+        "coin": 454
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "market"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 160000,
+      "year": 1340,
+      "population": 768,
+      "treasury": 5207,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    },
+    {
+     "seed": 4,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 69500,
+      "year": 1317,
+      "population": 528,
+      "treasury": 2752
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 9013
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1309,
+        "coin": 1727
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 881,
+        "coin": 691
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 613,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "refuse"
+      },
+      "instalments": [
+       {
+        "category": "war_loan",
+        "perSeason": 131,
+        "seasonsLeft": 2
+       }
+      ],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 881,
+        "coin": 680
+       }
+      },
+      "licenceSeasonsLeft": 7,
+      "wall": "market"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 160000,
+      "year": 1340,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 881,
+        "coin": 680
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "market"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 160000,
+      "year": 1340,
+      "population": 768,
+      "treasury": 7600,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    },
+    {
+     "seed": 5,
+     "wallChoice": "bot",
+     "chapter2": {
+      "tick": 89500,
+      "year": 1322,
+      "population": 528,
+      "treasury": 3649
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 9759
+     },
+     "beforeRaid": {
+      "tick": 160999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 849,
+        "coin": 1929
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 771
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 594,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "refuse"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 161000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 760
+       }
+      },
+      "licenceSeasonsLeft": 7,
+      "wall": "market"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 164000,
+      "year": 1341,
+      "war": {
+       "raidYear": 1340,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 760
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "market"
+      },
+      "populationEnd": 758
+     },
+     "final": {
+      "tick": 164000,
+      "year": 1341,
+      "population": 758,
+      "treasury": 8843,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     }
+    }
+   ]
+  }
+ ],
+ "guardrail": {
+  "run1@9efac4c2": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 112942,
+    "baselineVictoryTick": 112942,
+    "finalTick": 235846,
+    "baselineFinalTick": 229541,
+    "chapter1End": 69500,
+    "chapter2End": 160000,
+    "chapterAtEnd": 3,
+    "warAnswers": {
+     "wool_payment": "accept_with_price",
+     "levy_response": "accept_with_price",
+     "war_funding": "accept",
+     "refugee_admission": "refuse",
+     "wall_or_market": "refuse"
+    },
+    "raid": {
+     "tick": 157000,
+     "defencePermille": 600,
+     "losses": {
+      "burntHouses": 3,
+      "looted": 1029,
+      "coin": 1097
+     }
+    },
+    "wall": "market",
+    "stoneProclaimed": 182160,
+    "l4Houses": 24,
+    "warningRatio": 0.05,
+    "baselineWarningRatio": 0.0375,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 155362,
+    "baselineVictoryTick": 155362,
+    "finalTick": 218692,
+    "baselineFinalTick": 218300,
+    "chapter1End": 77500,
+    "chapter2End": 160000,
+    "chapterAtEnd": 3,
+    "warAnswers": {
+     "wool_payment": "accept_with_price",
+     "levy_response": "accept_with_price",
+     "war_funding": "accept",
+     "refugee_admission": "refuse",
+     "wall_or_market": "refuse"
+    },
+    "raid": {
+     "tick": 157000,
+     "defencePermille": 600,
+     "losses": {
+      "burntHouses": 3,
+      "looted": 680,
+      "coin": 605
+     }
+    },
+    "wall": "market",
+    "stoneProclaimed": null,
+    "l4Houses": 24,
+    "warningRatio": 0,
+    "baselineWarningRatio": 0,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 3,
+    "status": "passed",
+    "victoryTick": 129628,
+    "baselineVictoryTick": 129628,
+    "finalTick": 281084,
+    "baselineFinalTick": 279538,
+    "chapter1End": 93500,
+    "chapter2End": 160000,
+    "chapterAtEnd": 3,
+    "warAnswers": {
+     "wool_payment": "accept_with_price",
+     "levy_response": "accept_with_price",
+     "war_funding": "accept",
+     "refugee_admission": "refuse",
+     "wall_or_market": "refuse"
+    },
+    "raid": {
+     "tick": 157000,
+     "defencePermille": 600,
+     "losses": {
+      "burntHouses": 3,
+      "looted": 645,
+      "coin": 454
+     }
+    },
+    "wall": "market",
+    "stoneProclaimed": 233664,
+    "l4Houses": 24,
+    "warningRatio": 0.023809523809523808,
+    "baselineWarningRatio": 0.03571428571428571,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 109392,
+    "baselineVictoryTick": 109392,
+    "finalTick": 259712,
+    "baselineFinalTick": 220272,
+    "chapter1End": 69500,
+    "chapter2End": 160000,
+    "chapterAtEnd": 3,
+    "warAnswers": {
+     "wool_payment": "accept_with_price",
+     "levy_response": "accept_with_price",
+     "war_funding": "accept",
+     "refugee_admission": "refuse",
+     "wall_or_market": "refuse"
+    },
+    "raid": {
+     "tick": 157000,
+     "defencePermille": 600,
+     "losses": {
+      "burntHouses": 3,
+      "looted": 881,
+      "coin": 680
+     }
+    },
+    "wall": "market",
+    "stoneProclaimed": 189897,
+    "l4Houses": 24,
+    "warningRatio": 0.012195121951219513,
+    "baselineWarningRatio": 0,
+    "stopReason": "target-scale-stable"
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 130780,
+    "baselineVictoryTick": 130780,
+    "finalTick": 315741,
+    "baselineFinalTick": 315591,
+    "chapter1End": 89500,
+    "chapter2End": 164000,
+    "chapterAtEnd": 3,
+    "warAnswers": {
+     "wool_payment": "accept_with_price",
+     "levy_response": "accept_with_price",
+     "war_funding": "accept",
+     "refugee_admission": "refuse",
+     "wall_or_market": "refuse"
+    },
+    "raid": {
+     "tick": 161000,
+     "defencePermille": 600,
+     "losses": {
+      "burntHouses": 3,
+      "looted": 689,
+      "coin": 760
+     }
+    },
+    "wall": "market",
+    "stoneProclaimed": 209529,
+    "l4Houses": 24,
+    "warningRatio": 0.024096385542168676,
+    "baselineWarningRatio": 0.04819277108433735,
+    "stopReason": "target-scale-stable"
+   }
+  ]
+ }
+}
