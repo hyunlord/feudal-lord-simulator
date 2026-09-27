@@ -1,11 +1,18 @@
 # 현재 상태
 
-갱신: 2026-09-27(F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(RES-REG · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **RES-REG 자원 목록을 한 곳으로 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 렌더·UI·content·스크립트·시험·문서, 엔진 파일 셋은 목록 조회만·규칙 0줄, 검증 DGX, 사용자 지시): [보고서](verification/resreg/REPORT.md), 결정 RESREG-D1~D5.
+  - 자원은 `src/content/resourceCatalog.ts` 한 줄 + `.ko.ts` 이름 한 줄이다. `ResourceType`·저장 가능 목록·창고 종류와 흩어진 전수 표 29개 파일이 목록에서 나온다.
+  - 가짜 자원 한 줄을 넣은 복사본이 다른 파일 수정 없이 tsc·렌더/UI 시험 115개를 통과한다. 그림이 없으면 수레·그림이 Wave 7 자루(곡창 물품)·상자(창고 물품)와 이름 칩이다.
+  - 캡처·감사는 저장을 코덱으로만 넣는다(옛 맨 저장은 페이지가 거부). 엔진에 넘길 발견: `v9ToV10.ts`의 `process.env`가 브라우저에서 던진다.
+  - **C4 재개 가능**: 목록에 줄 추가하는 방법은 보고서 8절.
+  - CLONE_NOTE
 
 - **F2-A 2장 사건(전쟁 1337) — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더·UI 0줄, 검증 DGX, 사용자 지시 엔진 2장 작업 둘째): [보고서](verification/f2a-chapter2-war/REPORT.md), [명세](design/chapter-two-war.md) WR-1~WR-10, 결정 WR1~WR12.
   - **순서**: 1337 전령 → 양모 공납 → 징집 → 전쟁 보조세 → 봉화 → 해안 습격(1339·1340) → 피란민 → 회복(왕실 조달 면허·석벽 대 시장). 한 계절 무응답은 거절이고, 왕실 거절은 신임을 잃는다.
