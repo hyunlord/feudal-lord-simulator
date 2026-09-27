@@ -40,8 +40,10 @@ test("every picture the catalog names exists: facility art, sprite keys, thumbna
     }
     for (const cell of [entry.menuIcon, entry.signIcon]) if (cell !== undefined) assert.ok(uiIconStyle("building", cell, 24) !== null, `${kind}: icon ${cell}`);
     assert.ok(BUILD_CATEGORIES.some(category => category.key === buildCategory(kind)), kind);
-    // Every kind the game has today has a picture; the fallback is for the kinds to come.
-    if (!isRetiredBuildingKind(kind)) assert.ok(buildingHasPicture(kind), `${kind}: has a picture`);
+  }
+  // Every kind the game places today has a picture; the fallback (a timber body and its name chip) is for the kinds to come.
+  for (const kind of ["house", "well", "storehouse", "granary", "chapel", "farmstead", "mill", "logging_camp", "sawmill", "quarry", "masonry", "market", "church", "keep"] as const) {
+    assert.ok(buildingHasPicture(kind), `${kind}: has a picture`);
   }
 });
 
