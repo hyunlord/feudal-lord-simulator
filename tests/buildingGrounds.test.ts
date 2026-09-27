@@ -177,7 +177,10 @@ test("Given the zone brush When the wheel turns Then it zooms: the brush runtime
 });
 
 test("Given a held chunk raster When only its zones changed in a live frame past the budget Then the held raster stands in and the next frames catch up", () => {
-  const cache = createGroundChunkCache(((w: number, h: number) => recordingCanvas(w, h)) as unknown as Parameters<typeof createGroundChunkCache>[0]);
+  // A fake clock (CODE-1c, as TEST-1): the frame's age and raster time are what the test says, not a busy machine's wall clock.
+  const clockMs = 1_000;
+  const cache = createGroundChunkCache(((w: number, h: number) => recordingCanvas(w, h)) as unknown as Parameters<typeof createGroundChunkCache>[0],
+    () => clockMs);
   const diamond = [{ x: 0, y: -64 }, { x: 128, y: 0 }, { x: 0, y: 64 }, { x: -128, y: 0 }] as const;
   const target = recordingCanvas(512, 512).context;
   let painted = 0;
@@ -186,12 +189,12 @@ test("Given a held chunk raster When only its zones changed in a live frame past
   cache.draw(target, { id: "ground:0,0", contentKey: "a|zones1", deferKey: "a", scale: 1, diamond }, paint);
   assert.equal(painted, 1);
   // A zone-only change in a frame that is already 20 ms old: shown from the held raster, not painted.
-  cache.beginFrame(performance.now() - 20);
+  cache.beginFrame(clockMs - 20);
   cache.draw(target, { id: "ground:0,0", contentKey: "a|zones2", deferKey: "a", scale: 1, diamond }, paint);
   assert.equal(painted, 1); assert.equal(cache.pending(), 1);
   // A different ground base (roads, buildings, fields) is never deferred.
   cache.draw(target, { id: "ground:1,0", contentKey: "b", deferKey: "b", scale: 1, diamond }, paint);
-  cache.beginFrame(performance.now() - 20);
+  cache.beginFrame(clockMs - 20);
   cache.draw(target, { id: "ground:1,0", contentKey: "c", deferKey: "c", scale: 1, diamond }, paint);
   assert.equal(painted, 3);
   // Outside live frames (no frame start: tests, tools) nothing waits.
@@ -200,7 +203,7 @@ test("Given a held chunk raster When only its zones changed in a live frame past
   assert.equal(painted, 4); assert.equal(cache.pending(), 0);
   // A chunk that keeps waiting is re-rastered after MAX_DEFERRED_FRAMES frames even when every frame is late.
   for (let frame = 0; frame < 5; frame += 1) {
-    cache.beginFrame(performance.now() - 20);
+    cache.beginFrame(clockMs - 20);
     cache.draw(target, { id: "ground:0,0", contentKey: "a|zones3", deferKey: "a", scale: 1, diamond }, paint);
   }
   assert.equal(painted, 5, "re-rastered once within the frames it waited");

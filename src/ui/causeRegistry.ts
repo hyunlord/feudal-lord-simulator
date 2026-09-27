@@ -4,19 +4,20 @@ import { SEMANTIC_PALETTE } from '../content/palette';
 import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
 import type { SourceRef } from '../contracts';
 import type { BuildingCausePresentation } from './houseProgressModel';
+import { CAUSE_REGISTRY_COPY } from './causeRegistryCopy.ko';
 
 export const CAUSE_REGISTRY = {
   operation_paused: { color: SEMANTIC_PALETTE.inkMuted, glyphId: 'operation_paused', glyphText: BUILDING_OPERATION_COPY.glyph, shortLabel: BUILDING_OPERATION_COPY.shortLabel },
   storage_overflow: { color: SEMANTIC_PALETTE.earthDark, glyphId: 'storage_overflow', glyphText: STORAGE_OVERFLOW_COPY.glyph, shortLabel: STORAGE_OVERFLOW_COPY.shortLabel },
-  water: { color: SEMANTIC_PALETTE.water, glyphId: 'water', glyphText: '물', shortLabel: '물' },
-  bread: { color: SEMANTIC_PALETTE.earthDark, glyphId: 'bread', glyphText: '빵', shortLabel: '빵' },
-  delivery: { color: SEMANTIC_PALETTE.inkMuted, glyphId: 'delivery', glyphText: '길', shortLabel: '도로·운송' },
-  market: { color: SEMANTIC_PALETTE.gold, glyphId: 'market', glyphText: '시', shortLabel: '시장' },
-  church: { color: SEMANTIC_PALETTE.ultramarine, glyphId: 'church', glyphText: '교', shortLabel: '교회' },
-  wall: { color: SEMANTIC_PALETTE.stoneDark, glyphId: 'wall', glyphText: '벽', shortLabel: '성벽' },
-  workers: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'workers', glyphText: '일', shortLabel: '일꾼' },
-  construction_access: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'construction_access', glyphText: '공', shortLabel: '공사 접근' },
-  reserve_deadlock: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'reserve_deadlock', glyphText: '비', shortLabel: CONSTRUCTION_DEADLOCK_COPY.shortLabel },
+  water: { color: SEMANTIC_PALETTE.water, glyphId: 'water', glyphText: CAUSE_REGISTRY_COPY.water.glyphText, shortLabel: CAUSE_REGISTRY_COPY.water.shortLabel },
+  bread: { color: SEMANTIC_PALETTE.earthDark, glyphId: 'bread', glyphText: CAUSE_REGISTRY_COPY.bread.glyphText, shortLabel: CAUSE_REGISTRY_COPY.bread.shortLabel },
+  delivery: { color: SEMANTIC_PALETTE.inkMuted, glyphId: 'delivery', glyphText: CAUSE_REGISTRY_COPY.delivery.glyphText, shortLabel: CAUSE_REGISTRY_COPY.delivery.shortLabel },
+  market: { color: SEMANTIC_PALETTE.gold, glyphId: 'market', glyphText: CAUSE_REGISTRY_COPY.market.glyphText, shortLabel: CAUSE_REGISTRY_COPY.market.shortLabel },
+  church: { color: SEMANTIC_PALETTE.ultramarine, glyphId: 'church', glyphText: CAUSE_REGISTRY_COPY.church.glyphText, shortLabel: CAUSE_REGISTRY_COPY.church.shortLabel },
+  wall: { color: SEMANTIC_PALETTE.stoneDark, glyphId: 'wall', glyphText: CAUSE_REGISTRY_COPY.wall.glyphText, shortLabel: CAUSE_REGISTRY_COPY.wall.shortLabel },
+  workers: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'workers', glyphText: CAUSE_REGISTRY_COPY.workers.glyphText, shortLabel: CAUSE_REGISTRY_COPY.workers.shortLabel },
+  construction_access: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'construction_access', glyphText: CAUSE_REGISTRY_COPY.construction_access.glyphText, shortLabel: CAUSE_REGISTRY_COPY.construction_access.shortLabel },
+  reserve_deadlock: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'reserve_deadlock', glyphText: CAUSE_REGISTRY_COPY.reserve_deadlock.glyphText, shortLabel: CONSTRUCTION_DEADLOCK_COPY.shortLabel },
 } as const;
 export type CauseId = keyof typeof CAUSE_REGISTRY;
 export type CauseDetail = Readonly<{

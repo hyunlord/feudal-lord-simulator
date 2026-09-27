@@ -19,6 +19,7 @@ import type { StoreInspectorModel } from "../ui/storeInspectorModel";
 import { StoreInspectorBody } from "../ui/StoreInspector";
 import { STORE_INSPECTOR_COPY } from "../ui/storeInspectorCopy.ko";
 import { Button, Disclosure } from "../ui/kit";
+import { DIAGNOSTIC_CARD_COPY } from "./diagnosticCardCopy.ko";
 
 type Size = Readonly<{ width: number; height: number }>;
 type Rect = Readonly<{ x: number; y: number; width: number; height: number }>;
@@ -71,27 +72,27 @@ function HouseCard({ model, onDemolishHouse, onMergeHouses, members, onPerson }:
     <>
       {model.pressure === undefined || model.pressure === null ? null
         : <p className="inspector-pressure" role="status"><UiIcon sheet="cause" cell="food" />{model.pressure}</p>}
-      <p>생활 등급 {model.level} · 주민 {model.residents}명 / 정원 {model.capacity}명 · {model.footprintLabel}칸</p>
+      <p>{DIAGNOSTIC_CARD_COPY.houseSummary(model.level, model.residents, model.capacity, model.footprintLabel)}</p>
       {members.length === 0 ? null : <section key={model.buildingId} className="inspector-members" aria-label={PERSONS_COPY.membersHeading}>
         <h3>{PERSONS_COPY.membersHeading}</h3>
         <PersonList rows={members} onOpen={onPerson} />
       </section>}
       <dl>
-        <div><dt>건축 단계</dt><dd>{model.builtLevel}단계 · {model.conditionLabel}</dd></div>
-        <div><dt>물</dt><dd>{model.water.label}</dd></div>
-        <div><dt>빵</dt><dd>{model.bread.label}</dd></div>
-        <div><dt>인구</dt><dd>{model.population.label}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.builtStageTerm}</dt><dd>{DIAGNOSTIC_CARD_COPY.builtStage(model.builtLevel, model.conditionLabel)}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.waterTerm}</dt><dd>{model.water.label}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.breadTerm}</dt><dd>{model.bread.label}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.populationTerm}</dt><dd>{model.population.label}</dd></div>
       </dl>
-      <Disclosure className="inspector-development" summary="주택 발전 조건">
+      <Disclosure className="inspector-development" summary={DIAGNOSTIC_CARD_COPY.developmentSummary}>
         <dl>
-          <div><dt>성벽</dt><dd>{model.protection.label}</dd></div>
-          <div><dt>시장</dt><dd>{model.market.label}</dd></div>
-          <div><dt>교회</dt><dd>{model.church.label}</dd></div>
-          <div><dt>도시 대가옥</dt><dd>{model.stoneHouse.label}</dd></div>
+          <div><dt>{DIAGNOSTIC_CARD_COPY.protectionTerm}</dt><dd>{model.protection.label}</dd></div>
+          <div><dt>{DIAGNOSTIC_CARD_COPY.marketTerm}</dt><dd>{model.market.label}</dd></div>
+          <div><dt>{DIAGNOSTIC_CARD_COPY.churchTerm}</dt><dd>{model.church.label}</dd></div>
+          <div><dt>{DIAGNOSTIC_CARD_COPY.stoneHouseTerm}</dt><dd>{model.stoneHouse.label}</dd></div>
         </dl>
       </Disclosure>
-      <section className="inspector-actions inspector-merge" aria-label="인접 주택 합필">
-        <h3>인접 주택 합필</h3>
+      <section className="inspector-actions inspector-merge" aria-label={DIAGNOSTIC_CARD_COPY.mergeHeading}>
+        <h3>{DIAGNOSTIC_CARD_COPY.mergeHeading}</h3>
         <p>{model.mergeStatus}</p>
         {model.mergeOptions.map((option) => (
           <div key={option.targetBuildingId}>
@@ -111,14 +112,14 @@ function HouseCard({ model, onDemolishHouse, onMergeHouses, members, onPerson }:
       </section>
       {onDemolishHouse === undefined ? null : (
         <section className="inspector-actions">
-          <p>철거하면 주민 {model.residents}명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.</p>
+          <p>{DIAGNOSTIC_CARD_COPY.demolishWarning(model.residents)}</p>
           <Button
             type="button"
             className="diagnostic-card-cancel"
             data-action="demolish-house"
             onPress={() => onDemolishHouse(model.buildingId)}
            variant="secondary">
-            주택 철거
+            {DIAGNOSTIC_CARD_COPY.demolishHouse}
           </Button>
         </section>
       )}
@@ -132,20 +133,20 @@ function WalkerCard({ model, headline }: { readonly model: WalkerDiagnosisModel;
       {headline === null ? null : <p className="walker-headline" data-walker-headline={model.walkerId} data-person={headline.personId ?? undefined}
         data-portrait-exact={headline.personId === null ? undefined : headline.exact ? "true" : "false"}>{headline.line}</p>}
       <dl>
-        <div><dt>화물</dt><dd>{model.cargoLabel}</dd></div>
-        <div><dt>출발</dt><dd>{model.sourceLabel}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.cargoTerm}</dt><dd>{model.cargoLabel}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.sourceTerm}</dt><dd>{model.sourceLabel}</dd></div>
         {model.sourceDirectionLabel === null || model.sourceDistance === null ? null : (
-          <div><dt>출발 위치</dt><dd>{model.sourceDirectionLabel} {model.sourceDistance}칸</dd></div>
+          <div><dt>{DIAGNOSTIC_CARD_COPY.sourcePositionTerm}</dt><dd>{DIAGNOSTIC_CARD_COPY.sourcePosition(model.sourceDirectionLabel, model.sourceDistance)}</dd></div>
         )}
-        <div><dt>목적</dt><dd>{model.destinationLabel}</dd></div>
-        <div><dt>상태</dt><dd>{model.statusLabel}</dd></div>
-        <div><dt>남은 길</dt><dd>{Math.max(0, Math.round(model.remainingDistance))}칸 · {durationLabel(model.etaTicks)}</dd></div>
-        <div><dt>통과</dt><dd>지난 집 {model.housesPassed}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.destinationTerm}</dt><dd>{model.destinationLabel}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.statusTerm}</dt><dd>{model.statusLabel}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.remainingTerm}</dt><dd>{DIAGNOSTIC_CARD_COPY.remaining(Math.max(0, Math.round(model.remainingDistance)), durationLabel(model.etaTicks))}</dd></div>
+        <div><dt>{DIAGNOSTIC_CARD_COPY.passedTerm}</dt><dd>{DIAGNOSTIC_CARD_COPY.passed(model.housesPassed)}</dd></div>
         {model.tilesTravelled === null ? null : (
-          <div><dt>순회</dt><dd>이동 {model.tilesTravelled}칸</dd></div>
+          <div><dt>{DIAGNOSTIC_CARD_COPY.roundTerm}</dt><dd>{DIAGNOSTIC_CARD_COPY.travelled(model.tilesTravelled)}</dd></div>
         )}
         {model.cancellationLabel === null ? null : (
-          <div><dt>취소</dt><dd>{model.cancellationLabel}</dd></div>
+          <div><dt>{DIAGNOSTIC_CARD_COPY.cancellationTerm}</dt><dd>{model.cancellationLabel}</dd></div>
         )}
       </dl>
     </>
@@ -179,7 +180,7 @@ function ConstructionSiteCard({
           if (cancellationEnabled) onCancelConstruction?.(model.siteId);
         }}
        variant="secondary">
-        {cancellationEnabled ? "공사 포기" : "공사 포기 불가"}
+        {cancellationEnabled ? DIAGNOSTIC_CARD_COPY.abandonConstruction : DIAGNOSTIC_CARD_COPY.abandonConstructionUnavailable}
       </Button>
       {cancellation.reason === null ? null : <p>{cancellation.reason}</p>}
     </>
@@ -189,14 +190,14 @@ function ConstructionSiteCard({
 function cardIdentity(model: DiagnosticCardModel, headline: WalkerHeadline | null = null): Readonly<{ name: string; type: string; label: string; art: ReactElement }> {
   switch (model.kind) {
     case "house": return {
-      name: model.value.name, type: `주택 · 생활 등급 ${model.value.level}`, label: `${model.value.name} 원인 진단`,
+      name: model.value.name, type: DIAGNOSTIC_CARD_COPY.houseType(model.value.level), label: DIAGNOSTIC_CARD_COPY.houseLabel(model.value.name),
       art: model.value.thumbnailUrl === null
-        ? <span>{model.value.footprintLabel} 주택</span>
+        ? <span>{DIAGNOSTIC_CARD_COPY.houseArt(model.value.footprintLabel)}</span>
         : <img src={model.value.thumbnailUrl} alt="" />,
     };
     case "building": {
       const source = buildThumbnail(model.value.kind);
-      return { name: model.value.name, type: "도시 시설", label: `${model.value.name} 시설 진단`,
+      return { name: model.value.name, type: DIAGNOSTIC_CARD_COPY.facilityType, label: DIAGNOSTIC_CARD_COPY.facilityLabel(model.value.name),
         art: source === null ? <BuildGlyph tool={model.value.kind} /> : <img src={source} alt="" /> };
     }
     case "store": {
@@ -205,9 +206,9 @@ function cardIdentity(model: DiagnosticCardModel, headline: WalkerHeadline | nul
         art: source === null ? <BuildGlyph tool={model.value.kind} /> : <img src={source} alt="" /> };
     }
     case "walker": return { name: headline?.name === null || headline?.name === undefined ? model.value.roleLabel : PERSONS_COPY.walkerName(headline.name, model.value.roleLabel),
-      type: "주민 · 이동과 운송", label: `${model.value.roleLabel} 임무 진단`,
-      art: headline?.portraitId === null || headline?.portraitId === undefined ? <span>이동</span> : <PersonPortrait portraitId={headline.portraitId} size={44} /> };
-    case "construction_site": return { name: model.value.name, type: "건설 현장", label: `${model.value.name} 건설 진단`, art: <span>공사</span> };
+      type: DIAGNOSTIC_CARD_COPY.walkerType, label: DIAGNOSTIC_CARD_COPY.walkerLabel(model.value.roleLabel),
+      art: headline?.portraitId === null || headline?.portraitId === undefined ? <span>{DIAGNOSTIC_CARD_COPY.walkerArt}</span> : <PersonPortrait portraitId={headline.portraitId} size={44} /> };
+    case "construction_site": return { name: model.value.name, type: DIAGNOSTIC_CARD_COPY.siteType, label: DIAGNOSTIC_CARD_COPY.siteLabel(model.value.name), art: <span>{DIAGNOSTIC_CARD_COPY.siteArt}</span> };
   }
 }
 
@@ -253,19 +254,23 @@ export function DiagnosticCard({
         <header className="inspector-heading">
           <div className="inspector-thumbnail" aria-hidden="true">{identity.art}</div>
           <div><p>{identity.type}</p><h2>{identity.name}</h2></div>
-          {onClose === undefined ? null : <Button className="inspector-close" type="button" aria-label="상세 정보 닫기" onPress={() => onClose()} variant="icon">×</Button>}
+          {onClose === undefined ? null : <Button className="inspector-close" type="button" aria-label={DIAGNOSTIC_CARD_COPY.close} onPress={() => onClose()} variant="icon">×</Button>}
         </header>
         {causeLine === null ? null : <p className="inspector-cause-line" role="status">{causeLine}</p>}
         {causeSummary == null ? null : <div className="inspector-cause-summary">
-          다음: {causeSummary.nextLevel === null ? '최고 단계' : `L${causeSummary.nextLevel}`} / {causeSummary.currentLevel === 4 ? '유지 위험' : '첫 방해'}: {causeSummary.blocker?.label ?? (causeSummary.status === 'ready' ? '없음 · 승급 대기' : '없음')}
+          {DIAGNOSTIC_CARD_COPY.causeSummary(
+            causeSummary.nextLevel === null ? DIAGNOSTIC_CARD_COPY.topLevel : DIAGNOSTIC_CARD_COPY.nextLevel(causeSummary.nextLevel),
+            causeSummary.currentLevel === 4 ? DIAGNOSTIC_CARD_COPY.keepRisk : DIAGNOSTIC_CARD_COPY.firstBlocker,
+            causeSummary.blocker?.label ?? (causeSummary.status === 'ready' ? DIAGNOSTIC_CARD_COPY.noneAwaitingPromotion : DIAGNOSTIC_CARD_COPY.none),
+          )}
           {causeSummary.status === 'ready' && causeSummary.remainingTicks !== null && causeSummary.nextLevel !== null ?
-            <p>L{causeSummary.nextLevel}까지 조건 유지 {Math.floor(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) / 60)}:{String(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) % 60).padStart(2, '0')} 남음</p> : null}
+            <p>{DIAGNOSTIC_CARD_COPY.holdRemaining(causeSummary.nextLevel, Math.floor(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) / 60), String(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) % 60).padStart(2, '0'))}</p> : null}
         </div>}
         <div className="inspector-body">
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} members={houseMembers} onPerson={onPerson} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} headline={walkerHeadline} /> : null}
           {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}
-          {model.kind === "building" ? <><p>{model.value.purpose}</p>{reachLine === null ? null : <p className="inspector-market-reach" data-market-reach="true">{reachLine}</p>}{buildingOperation === undefined ? null : <section className="inspector-actions"><Button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onPress={() => buildingOperation.onToggle()} variant="secondary">{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</Button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
+          {model.kind === "building" ? <><p>{model.value.purpose}</p>{reachLine === null ? null : <p className="inspector-market-reach" data-market-reach="true">{reachLine}</p>}{buildingOperation === undefined ? null : <section className="inspector-actions"><Button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onPress={() => buildingOperation.onToggle()} variant="secondary">{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</Button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>{DIAGNOSTIC_CARD_COPY.operationsHeading}</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"
             ? onCancelConstruction === undefined
               ? <ConstructionSiteCard model={model.value} />

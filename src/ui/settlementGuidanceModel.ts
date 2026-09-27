@@ -30,10 +30,10 @@ export type SettlementGuidance = {
 };
 
 const PROBLEM_GLYPHS: Record<SettlementProblemKind, SettlementProblemGlyph> = {
-  water: { kind: "water", glyph: "水", label: "물 부족" },
-  bread: { kind: "bread", glyph: "빵", label: "빵 부족" },
-  labour: { kind: "labour", glyph: "人", label: "일손 부족" },
-  storage: { kind: "storage", glyph: "箱", label: "창고 가득" },
+  water: { kind: "water", glyph: SETTLEMENT_GUIDANCE_COPY.waterGlyph, label: SETTLEMENT_GUIDANCE_COPY.waterShort },
+  bread: { kind: "bread", glyph: SETTLEMENT_GUIDANCE_COPY.breadGlyph, label: SETTLEMENT_GUIDANCE_COPY.breadShort },
+  labour: { kind: "labour", glyph: SETTLEMENT_GUIDANCE_COPY.labourGlyph, label: SETTLEMENT_GUIDANCE_COPY.labourShort },
+  storage: { kind: "storage", glyph: SETTLEMENT_GUIDANCE_COPY.storageGlyph, label: SETTLEMENT_GUIDANCE_COPY.storageFull },
 };
 
 export function settlementProblemGlyphs(state: GameState): readonly SettlementProblemGlyph[] {
@@ -60,7 +60,7 @@ export function settlementGuidance(state: GameState): SettlementGuidance {
     populationGoal,
     completedGoal: state.population >= marketTownPopulation ? marketTownPopulation : null,
     sampledTick: Math.floor(state.tick / 60) * 60,
-    statusLine: priority?.label ?? "정착지는 안정적입니다",
+    statusLine: priority?.label ?? SETTLEMENT_GUIDANCE_COPY.stable,
     priority,
     problems,
     idleLine: (state.labour?.idle ?? 0) > 0 ? HOUSEHOLD_LABOUR_COPY.idleLine(state.labour?.idle ?? 0) : null,
@@ -68,19 +68,19 @@ export function settlementGuidance(state: GameState): SettlementGuidance {
 }
 
 function guidancePriority(state: GameState): SettlementProblemGlyph | null {
-  if (hasWaterProblem(state)) return { ...PROBLEM_GLYPHS.water, label: "우물이 필요합니다" };
-  if (hasBreadProblem(state)) return { ...PROBLEM_GLYPHS.bread, label: "식량이 부족합니다" };
+  if (hasWaterProblem(state)) return { ...PROBLEM_GLYPHS.water, label: SETTLEMENT_GUIDANCE_COPY.wellNeeded };
+  if (hasBreadProblem(state)) return { ...PROBLEM_GLYPHS.bread, label: SETTLEMENT_GUIDANCE_COPY.foodShort };
   if (state.idleWorkers > 0 && hasLabourProblem(state)) {
     return {
       ...PROBLEM_GLYPHS.labour,
-      label: "일꾼이 놀고 있습니다 — 길이 끊겼는지 확인하세요",
+      label: SETTLEMENT_GUIDANCE_COPY.idleWorkersRoad,
     };
   }
   if (!state.buildings.some((building) => building.kind === "granary")) {
-    return { kind: "storage", glyph: "箱", label: "곡창이 필요합니다" };
+    return { kind: "storage", glyph: SETTLEMENT_GUIDANCE_COPY.storageGlyph, label: SETTLEMENT_GUIDANCE_COPY.granaryNeeded };
   }
   if (placementSpendableResource(state, "timber") < 30) {
-    return { kind: "storage", glyph: "箱", label: "목재가 부족합니다" };
+    return { kind: "storage", glyph: SETTLEMENT_GUIDANCE_COPY.storageGlyph, label: SETTLEMENT_GUIDANCE_COPY.timberShort };
   }
   if (idleLabourHighlighted(state)) return { ...PROBLEM_GLYPHS.labour, label: HOUSEHOLD_LABOUR_COPY.idleHint };
   // FIX-1: household larders can be full while the stores run out; "stable" needs a season of stored food.

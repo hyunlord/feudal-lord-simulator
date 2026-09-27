@@ -7,7 +7,7 @@ import { HOUSEHOLD_SERVICE_CONFIG } from "../population/serviceAllocation";
 import { KO_UI } from "../content/locale.ko";
 import type { GameState } from "../engine/engine.types";
 import { canProclaimPalisadeEra, evaluateEraRequirements } from "../engine/era";
-import { A_QUADRUPLE_PRIME_WALL_COPY as WALL_COPY } from "./aQuadruplePrimeWallCopy";
+import { WALL_DRAFT_COPY as WALL_COPY } from "./wallDraftCopy.ko";
 import type { PlacementTool } from "../render/renderer";
 import { DEFAULT_GAME_STATE } from "../state/gameStore";
 import { BuildGlyph } from "./BuildGlyph";
@@ -209,7 +209,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
               onSelect(buildCategorySelection(item.key)); setDetailsOpen(false); setCatalogOpen(open !== undefined || !catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); setPinned(null);
             }} variant="tab">
             <UiIcon sheet="category" cell={item.key} />{item.label}{open ? null : <UiIcon sheet="lock" cell="locked" className="build-menu-category-lock" />}
-            {options.some((option) => buildCategory(option.tool) === item.key && highlightedTools.includes(option.tool)) && <span className="build-menu-task" aria-label="현재 과업">·</span>}
+            {options.some((option) => buildCategory(option.tool) === item.key && highlightedTools.includes(option.tool)) && <span className="build-menu-task" aria-label={BUILD_MENU_COPY.currentTask}>·</span>}
           </Button>
           );
         })}
@@ -220,12 +220,12 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         <div className="build-menu-catalog">
           {lockNote !== null ? <p className="build-menu-pinned build-menu-lock-note" role="status"><UiIcon sheet="lock" cell="locked" /> {lockNote}</p>
             : pinned === null ? null : <p className="build-menu-pinned" role="status">{buildToolTooltipLines(pinned, menuState).join(" · ")}</p>}
-          {layer === "zone" && onZoneToolChange !== undefined ? <section id={`${id}-zone`} aria-label={`${TUTORIAL_COPY.layers.zone} 도구`} className="build-menu-tools">
+          {layer === "zone" && onZoneToolChange !== undefined ? <section id={`${id}-zone`} aria-label={BUILD_MENU_COPY.toolsLabel(TUTORIAL_COPY.layers.zone)} className="build-menu-tools">
             {/* UX-3R2: in the UX-3 shell the eraser, the polygon and the size are on the left zone toolbar. */}
             {ZONE_CARDS.filter(card => open === undefined || card.target !== "erase").map(card => zoneCard(card, access.zoneTargets(card.target)))}
           </section> : null}
           {BUILD_CATEGORIES.map((item) => (
-            <section key={item.key} id={`${id}-${item.key}`} hidden={layer === "zone" || category !== item.key} aria-label={`${item.label} 도구`} className="build-menu-tools">
+            <section key={item.key} id={`${id}-${item.key}`} hidden={layer === "zone" || category !== item.key} aria-label={BUILD_MENU_COPY.toolsLabel(item.label)} className="build-menu-tools">
               {item.key === "trade" && access.arableCard && onZoneToolChange !== undefined ? zoneCard(ARABLE_CARD, true) : null}
               {options.filter((option) => buildCategory(option.tool) === item.key).map(toolButton)}
               {item.key === 'defense' && onStartPalisadeDrawing !== undefined ? (
@@ -238,8 +238,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
                   {!palisadeReady ? <span className="build-tool-shortfall">{palisadeReason}</span> : null}
                 </Button>
               ) : null}
-              {item.key === "paths" && <p className="build-menu-empty">드래그로 길을 연결하세요. 강 양쪽을 직선으로 이으면 목교를 놓습니다.<br />다리는 물 한 칸당 목재 4, 최대 8칸입니다. 다리나 접속 길을 누르면 다리 전체를 걷습니다.</p>}
-              {item.key === "defense" && !options.some((option) => buildCategory(option.tool) === "defense") && onStartPalisadeDrawing === undefined && <p className="build-menu-empty">성채는 석조 도시에서 건설할 수 있습니다.</p>}
+              {item.key === "paths" && <p className="build-menu-empty">{BUILD_MENU_COPY.pathsHint}<br />{BUILD_MENU_COPY.bridgeHint}</p>}
+              {item.key === "defense" && !options.some((option) => buildCategory(option.tool) === "defense") && onStartPalisadeDrawing === undefined && <p className="build-menu-empty">{BUILD_MENU_COPY.keepLocked}</p>}
             </section>
           ))}
         </div>
@@ -261,13 +261,13 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         </> : palisadeDrawing ? <><strong>{WALL_COPY.drawTool}</strong><span>{WALL_COPY.drawHint}</span></>
           : selectedTool === null && preview === null ? <span className="build-menu-pick">{TUTORIAL_COPY.pickTool}</span> : <>
           <strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span>
-          {radius !== undefined && radius > 0 && <span>반경 {radius}칸</span>}
-          {service && <span>수용 {service.capacity}필지</span>}
+          {radius !== undefined && radius > 0 && <span>{BUILD_MENU_COPY.radius(radius)}</span>}
+          {service && <span>{BUILD_MENU_COPY.capacity(service.capacity)}</span>}
         </>}
-        {open !== undefined ? null : <Button type="button" className="build-info-toggle" aria-label="선택 도구 상세 안내" aria-expanded={detailsOpen} aria-controls={`${id}-details`} onPress={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }} variant="icon"><UiIcon sheet="action" cell="log" size={32} /></Button>}
+        {open !== undefined ? null : <Button type="button" className="build-info-toggle" aria-label={BUILD_MENU_COPY.toolDetailToggle} aria-expanded={detailsOpen} aria-controls={`${id}-details`} onPress={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }} variant="icon"><UiIcon sheet="action" cell="log" size={32} /></Button>}
       </div>}
-      <div id={`${id}-details`} className="build-menu-details" aria-label="건설 안내" hidden={!detailsOpen}>
-        {palisadeDrawing ? <p>{WALL_COPY.drawHint}</p> : selectedOption === null ? <p>선택 도구 없음 · 건설 카드를 눌러 도구를 선택하세요.</p> : <>
+      <div id={`${id}-details`} className="build-menu-details" aria-label={BUILD_MENU_COPY.detailsLabel} hidden={!detailsOpen}>
+        {palisadeDrawing ? <p>{WALL_COPY.drawHint}</p> : selectedOption === null ? <p>{BUILD_MENU_COPY.noToolSelected}</p> : <>
           <div className="build-menu-detail-heading"><strong>{selectedOption.label}</strong><span>{buildCostLabel(selectedOption)}</span></div>
           <p>{selectedOption.purpose}</p><p>{selectedOption.requirements.join(" · ")}</p>
           <p className={buildToolAffordability(selectedOption.tool, menuState).affordable ? "build-menu-ready" : "build-menu-shortfall"}>{buildToolTooltipLines(selectedOption.tool, menuState).at(-1)}</p>
@@ -282,6 +282,6 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
 
 function shortfallText(option: BuildToolOption, spendable: Partial<Record<ResourceType, number>>): string {
   return RESOURCE_TYPES.filter(resource => (option.cost[resource] ?? 0) > (spendable[resource] ?? 0))
-    .map(resource => `${resourceName(resource)} 부족 ${spendable[resource] ?? 0}/${option.cost[resource] ?? 0}`)
+    .map(resource => BUILD_MENU_COPY.shortfall(resourceName(resource), spendable[resource] ?? 0, option.cost[resource] ?? 0))
     .join(" · ");
 }

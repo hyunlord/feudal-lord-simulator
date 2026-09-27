@@ -1,0 +1,52 @@
+CODE-1c part B: tests that use the real clock -> fake clock
+Base: trunk codex/phase15-organic-ground 5f7584a2.
+Search: tests/** (incl. tests/helpers, fixtures, *.py) for setTimeout, setInterval, setImmediate, waitForTimeout,
+performance.now(), Date.now(), new Date(), delay(, sleep(, requestAnimationFrame, and `timeout:` options.
+The review's grep (setTimeout / setInterval / waitForTimeout / performance.now() / Date.now()) matches eight files:
+buildingGrounds, chronicleScreen, historyLedger, inputIntentBoundary, inputIntents, phase12PublishedProofRuntime,
+stoneWallAssetLoading, touchGamepadInput. Three of them already used fakes. The other rows come from the wider search.
+
+== Changed: now deterministic ==
+tests/buildingGrounds.test.ts
+  "held chunk raster ... live frame past the budget": beginFrame(performance.now() - 20) against the cache's real clock
+  (frame age and raster time). Now createGroundChunkCache(factory, () => clockMs) with a fixed fake clock and
+  beginFrame(clockMs - 20), as TEST-1 did for seasonArt. Same assertions.
+tests/inputIntentBoundary.test.ts
+  "controller action table ... keyboard bindings": the translator stamped key presses with performance.now() and the
+  test read performance.now() for frame(now + 50, now + 34). Production: TranslatorContext gets an optional
+  `now?: () => number` (src/input/mouseKeyboardTranslator.ts; default performance.now(), so the game is unchanged).
+  The test passes now: () => 1000 and calls frame(1050, 1034). Same assertions.
+tests/stoneWallAssetLoading.test.ts
+  The child script raced the preload against a real 200 ms setTimeout ("preload never settled"). The stub Image
+  answers in a microtask, so the check is now: the preload has settled once the event loop reaches its next
+  macrotask (setImmediate), whatever the machine's load. Checked that a stub that never answers still fails with
+  "preload never settled". The execFileSync kill guard (timeout: 5000) is unchanged, see "Not changed" below.
+
+== Not changed: already on an injected fake clock ==
+tests/inputIntents.test.ts             setTimeout/clearTimeout in the file are fakes passed to the translators (() => 1).
+tests/touchGamepadInput.test.ts        fake setTimeout queue + now: () => nowMs, advanced by hand (fireTimers, advance).
+tests/phase12PublishedProofRuntime.test.ts  the frame probe gets a fake performance ({ now: () => now }), a fake
+                                       requestAnimationFrame and a setTimeout that only queues; the test drains it.
+tests/phase19FrameWork.test.ts         mocks performance.now with context.mock.method (a counter / 0).
+tests/saveSystem.test.ts, tests/saveStorageRoute.test.ts  fake `now: () => new Date(...)` passed to the save service.
+
+== Not changed: wall-clock performance budgets (asserted, by design) ==
+tests/chronicleScreen.test.ts
+  "CHRON-1 30,000 records ... well under 200 ms": asserts elapsed < 120 ms on performance.now(). This is the CHRON-1
+  gate itself (open 30k records < 200 ms); on a fake clock the elapsed time would always be 0 and the test would
+  check nothing. Left as is. Options for a decision: move it to the DGX perf lane, or take the best of N runs as
+  H8 does (a warm-run budget, a slight change of meaning from "the first opening").
+tests/historyLedger.test.ts
+  "H8 a query over 10,000 records takes under 5 ms": best of 5 performance.now() runs < 5 ms. Same reason (the H8
+  budget); already best-of-5, so a single load spike does not fail it. Left as is.
+
+== Not changed: child-process kill guards (not waits; they bound a hang) ==
+tests/autoplayMaterialOpportunity.test.ts  spawnSync(..., { timeout: 3000 })
+tests/gateArtAssets.test.ts                execFileSync(..., { timeout: 5000 })
+tests/stoneWallAssetLoading.test.ts        execFileSync(..., { timeout: 5000 })
+tests/historicalHouseRaster.test.ts        execFileSync(..., { timeout: 10000 })
+tests/phase13Part7BrowserProof.test.ts     browser proof run, timeout: 45_000
+tests/resourceCatalogExtensibility.test.ts node:test { timeout: 600_000 }
+  None of these asserts on elapsed time or waits on a timer; a child that finishes passes at once. The 3 s and 5 s
+  guards include a cold `node --import tsx` start, so a very loaded host could hit them. Next candidate: raise them
+  (for example to 60 s) if a clean clone ever fails on one.

@@ -1,6 +1,7 @@
 import { ZonePlacementFailure } from "../zones/zonePlacement";
 import type { ZoneKind } from "../zones/zone.types";
 import { ZONE_BRUSH_COPY } from "./zoneBrushCopy.ko";
+import { PLACEMENT_FEEDBACK_COPY } from "./placementFeedbackCopy.ko";
 import {
   BUILDING_CONFIG_BY_KIND,
   type BuildingKind,
@@ -71,25 +72,25 @@ export function formatPlacementFailure(
   const reason = request.reason;
   switch (reason) {
     case PlacementFailure.occupied:
-      return "이미 건물이 있습니다";
+      return PLACEMENT_FEEDBACK_COPY.occupied;
     case PlacementFailure.wall_clearance:
-      return "성벽과 최소 1칸 간격을 두세요";
+      return PLACEMENT_FEEDBACK_COPY.wallClearance;
     case PlacementFailure.wrong_terrain:
-      return "물 위에는 지을 수 없습니다";
+      return PLACEMENT_FEEDBACK_COPY.wrongTerrain;
     case PlacementFailure.out_of_bounds:
-      return "영지 밖입니다";
+      return PLACEMENT_FEEDBACK_COPY.outOfBounds;
     case PlacementFailure.needs_road:
-      return "길에 닿아야 합니다 — 먼저 길을 놓으세요";
+      return PLACEMENT_FEEDBACK_COPY.needsRoad;
     case PlacementFailure.needs_adjacent_terrain:
-      return "숲 옆에 지어야 합니다";
+      return PLACEMENT_FEEDBACK_COPY.needsForest;
     case PlacementFailure.insufficient_materials: {
       const shortfallLabel = resourceAmountsLabel(request.shortfalls ?? {});
-      if (shortfallLabel !== "없음") return `자원이 부족합니다 — ${shortfallLabel}`;
+      if (shortfallLabel !== PLACEMENT_FEEDBACK_COPY.none) return PLACEMENT_FEEDBACK_COPY.resourcesShort(shortfallLabel);
       const timberCost = BUILDING_CONFIG_BY_KIND[request.buildingKind].buildCost.timber ?? 0;
-      return `목재가 부족합니다 (필요 ${timberCost})`;
+      return PLACEMENT_FEEDBACK_COPY.timberShort(timberCost);
     }
     case PlacementFailure.locked_era:
-      return "목책마을 이후 건설할 수 있습니다";
+      return PLACEMENT_FEEDBACK_COPY.lockedEra;
     case ZonePlacementFailure.outside_zone:
       return request.zoneRule === "burgage" ? ZONE_BRUSH_COPY.outsideBurgage
         : request.zoneRule === "arable" ? ZONE_BRUSH_COPY.outsideArable : ZONE_BRUSH_COPY.outsideZone;
@@ -103,18 +104,18 @@ export function formatPlacementFailure(
 function resourceAmountsLabel(amounts: Partial<Record<ResourceType, number>>): string {
   const parts = RESOURCE_TYPES
     .filter((resource) => (amounts[resource] ?? 0) > 0)
-    .map((resource) => `${resourceName(resource)} ${amounts[resource] ?? 0}`);
-  return parts.length === 0 ? "없음" : parts.join(" · ");
+    .map((resource) => PLACEMENT_FEEDBACK_COPY.resourceAmount(resourceName(resource), amounts[resource] ?? 0));
+  return parts.length === 0 ? PLACEMENT_FEEDBACK_COPY.none : parts.join(" · ");
 }
 
 export function getPlacementToolStatus(tool: PlacementTool | null): string {
-  if (tool === null) return "도구를 선택하세요";
+  if (tool === null) return PLACEMENT_FEEDBACK_COPY.chooseTool;
 
   switch (tool.kind) {
     case "building":
-      return `지을 곳을 클릭하세요 — ${BUILDING_CONFIG_BY_KIND[tool.buildingKind].name} · 취소하려면 Esc`;
+      return PLACEMENT_FEEDBACK_COPY.placeBuilding(BUILDING_CONFIG_BY_KIND[tool.buildingKind].name);
     case "road":
-      return "드래그하여 길을 놓으세요 · 취소하려면 Esc";
+      return PLACEMENT_FEEDBACK_COPY.placeRoad;
     default:
       return assertNever(tool);
   }

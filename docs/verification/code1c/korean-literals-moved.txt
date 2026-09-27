@@ -1,0 +1,31 @@
+CODE-1c part A: hard-coded Korean moved out of the top 20 non-ko render/UI files
+Base: trunk codex/phase15-organic-ground 5f7584a2. Counted by a comment-aware scan: lines holding a Korean syllable
+(U+AC00-U+D7A3) in non-comment code (string/template literals, JSX text), per src/**/*.ts(x) file that is not *.ko.ts
+and not *generated*. Ranked among src/ui, src/render, src/input, src/audio, src/platform, excluding the files another
+agent owns (src/App.tsx, src/state/gameStore.ts, src/render/GameCanvas.tsx, src/render/canvasRuntime.ts, src/ui/SpeedControls.tsx).
+Skipped: src/render/renderStageProbe.ts (10) - proof-mode benchmark stage groups, only reported by the ?phase10-proof=1
+benchmark tables; no player sees them. Next in line taken instead: src/ui/causeRegistry.ts (9; tie with problemCauseModel.ts, alphabetical).
+
+before	after	file	copy file
+35	0	src/ui/aQuadruplePrimeWallCopy.ts	src/ui/wallDraftCopy.ko.ts (the file itself, renamed; it was already a copy module without the .ko suffix)
+34	0	src/render/DiagnosticCard.tsx	src/render/diagnosticCardCopy.ko.ts (new)
+32	0	src/ui/buildMenuModel.ts	src/ui/buildMenuCopy.ko.ts (existing; BUILD_TOOL_GROUP_LABELS, BUILD_TOOL_PURPOSE, BUILD_MENU_MODEL_COPY)
+31	0	src/ui/houseDiagnosisModel.ts	src/ui/houseDiagnosisCopy.ko.ts (new)
+30	0	src/render/buildingInspectorModel.ts	src/render/buildingInspectorCopy.ko.ts (new)
+21	0	src/ui/onboardingTaskModel.ts	src/ui/onboardingTaskCopy.ko.ts (new)
+18	0	src/ui/distributorRouteHistory.ts	src/ui/distributorRouteCopy.ko.ts (new)
+17	0	src/ui/onboardingWorldGuidance.ts	src/ui/onboardingWorldGuidanceCopy.ko.ts (new)
+17	0	src/ui/walkerDiagnosisModel.ts	src/ui/walkerDiagnosisCopy.ko.ts (new)
+15	0	src/ui/constructionSiteCardModel.ts	src/ui/constructionSiteCardCopy.ko.ts (new)
+13	0	src/render/placementFeedback.ts	src/render/placementFeedbackCopy.ko.ts (new)
+13	0	src/ui/houseProgressModel.ts	src/ui/houseProgressCopy.ko.ts (new)
+12	0	src/ui/constructionMaterialDiagnosis.ts	src/ui/constructionMaterialDiagnosisCopy.ko.ts (new)
+12	0	src/ui/ResourceBar.tsx	src/ui/resourceBarCopy.ko.ts (existing)
+11	0	src/ui/BuildMenu.tsx	src/ui/buildMenuCopy.ko.ts (existing; BUILD_MENU_COPY)
+11	0	src/ui/EraConsole.tsx	src/ui/eraConsoleCopy.ko.ts (new)
+11	0	src/ui/serviceDiagnosisModel.ts	src/ui/serviceDiagnosisCopy.ko.ts (existing)
+10	0	src/ui/settlementGuidanceModel.ts	src/ui/settlementGuidanceCopy.ko.ts (existing)
+10	0	src/ui/SettlementPanel.tsx	src/ui/settlementPanelCopy.ko.ts (existing)
+9	0	src/ui/causeRegistry.ts	src/ui/causeRegistryCopy.ko.ts (new)
+
+Total: 362 -> 0 lines.

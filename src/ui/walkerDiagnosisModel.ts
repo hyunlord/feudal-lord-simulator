@@ -13,10 +13,11 @@ import { remainingCarterTravelCost } from '../agents/carterTravelCost';
 import { getTile } from '../world/grid';
 import { stoneReplacementSiteId } from '../engine/era';
 import { resourceName } from "../content/resourceCatalog.ko";
+import { WALKER_DIAGNOSIS_COPY } from "./walkerDiagnosisCopy.ko";
 
 export type WalkerDiagnosisModel = {
   readonly walkerId: string;
-  readonly roleLabel: "운반인" | "배급자";
+  readonly roleLabel: typeof WALKER_DIAGNOSIS_COPY.carterRole | typeof WALKER_DIAGNOSIS_COPY.distributorRole;
   readonly cargoLabel: string;
   readonly sourceLabel: string;
   readonly sourceDirectionLabel: string | null;
@@ -37,13 +38,13 @@ function assertNever(value: never): never {
 export function carterCancellationLabel(reason: CarterCancellationReason): string {
   switch (reason) {
     case "destination_unavailable":
-      return "목적지를 이용할 수 없음";
+      return WALKER_DIAGNOSIS_COPY.destinationUnavailable;
     case "manual":
-      return "수동 취소";
+      return WALKER_DIAGNOSIS_COPY.manualCancel;
     case "road_removed":
-      return "도로가 끊김";
+      return WALKER_DIAGNOSIS_COPY.roadRemoved;
     case "source_unavailable":
-      return "출발지 재고를 이용할 수 없음";
+      return WALKER_DIAGNOSIS_COPY.sourceUnavailable;
     default:
       return assertNever(reason);
   }
@@ -56,10 +57,10 @@ function distance(left: TilePos, right: TilePos): number {
 function directionLabel(from: TilePos, to: TilePos): string {
   const dx = to.tx - from.tx;
   const dy = to.ty - from.ty;
-  const vertical = dy < 0 ? "북" : dy > 0 ? "남" : "";
-  const horizontal = dx < 0 ? "서" : dx > 0 ? "동" : "";
+  const vertical = dy < 0 ? WALKER_DIAGNOSIS_COPY.north : dy > 0 ? WALKER_DIAGNOSIS_COPY.south : "";
+  const horizontal = dx < 0 ? WALKER_DIAGNOSIS_COPY.west : dx > 0 ? WALKER_DIAGNOSIS_COPY.east : "";
   const label = `${vertical}${horizontal}`;
-  return label === "" ? "같은 위치" : `${label}쪽`;
+  return label === "" ? WALKER_DIAGNOSIS_COPY.samePosition : WALKER_DIAGNOSIS_COPY.directionSide(label);
 }
 
 function remainingPathDistance(walker: Walker): number {
@@ -110,18 +111,18 @@ function destinationPosition(state: GameState, destination: CarterDestination): 
 }
 
 function cargoLabel(walker: Walker): string {
-  if (walker.kind === "builder") return "화물 없음";
-  if (walker.cargo === null) return "화물 없음";
+  if (walker.kind === "builder") return WALKER_DIAGNOSIS_COPY.noCargo;
+  if (walker.cargo === null) return WALKER_DIAGNOSIS_COPY.noCargo;
   return `${resourceName(walker.cargo.resource)} ${walker.cargo.amount}`;
 }
 
 function carterStatus(walker: CarterWalker): string {
-  if (walker.cancellation !== null) return "배송 취소";
+  if (walker.cancellation !== null) return WALKER_DIAGNOSIS_COPY.deliveryCancelled;
   switch (walker.phase) {
     case "outbound":
-      return walker.mission === "deliver" ? "배송 중" : "수령하러 이동 중";
+      return walker.mission === "deliver" ? WALKER_DIAGNOSIS_COPY.delivering : WALKER_DIAGNOSIS_COPY.goingToCollect;
     case "returning":
-      return "출발지로 귀환 중";
+      return WALKER_DIAGNOSIS_COPY.returningToSource;
     default:
       return assertNever(walker.phase);
   }
@@ -173,7 +174,7 @@ function carterDiagnosis(
     : distance(targetPosition, sourcePosition);
   return {
     walkerId: walker.id,
-    roleLabel: "운반인",
+    roleLabel: WALKER_DIAGNOSIS_COPY.carterRole,
     cargoLabel: cargoLabel(walker),
     sourceLabel,
     sourceDirectionLabel,
@@ -205,13 +206,13 @@ export function walkerDiagnosisModel(
     case "distributor":
       return {
         walkerId: walker.id,
-        roleLabel: "배급자",
+        roleLabel: WALKER_DIAGNOSIS_COPY.distributorRole,
         cargoLabel: cargoLabel(walker),
         sourceLabel: buildingLabel(state, walker.homeBuildingId),
         sourceDirectionLabel: null,
         sourceDistance: null,
-        destinationLabel: walker.phase === "returning" ? "홈 곡창" : "도로 순회",
-        statusLabel: walker.phase === "returning" ? "곡창으로 귀환 중" : "주택 배급 순회 중",
+        destinationLabel: walker.phase === "returning" ? WALKER_DIAGNOSIS_COPY.homeGranary : WALKER_DIAGNOSIS_COPY.roadRound,
+        statusLabel: walker.phase === "returning" ? WALKER_DIAGNOSIS_COPY.returningToGranary : WALKER_DIAGNOSIS_COPY.distributing,
         remainingDistance,
         etaTicks: Math.ceil(remainingDistance / BALANCE.DISTRIBUTOR_SPEED),
         housesPassed: adjacentHouseCount(state, walker),

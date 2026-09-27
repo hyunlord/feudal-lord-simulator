@@ -20,8 +20,12 @@ for (const mode of ["ready", "error", "constructor_throw", "src_throw", "raster_
       };
       const pending = preloadStoneWallAssets();
       assert.equal(pending, preloadStoneWallAssets());
-      let timer;
-      await Promise.race([pending, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('preload never settled')), 200); })]).finally(() => clearTimeout(timer));
+      // No wall-clock race (CODE-1c): the stub image answers in a microtask, so the preload must have settled by the
+      // time the event loop reaches its next macrotask, however busy the machine is.
+      let settled = false;
+      pending.then(() => { settled = true; }, () => { settled = true; });
+      await new Promise(resolve => setImmediate(resolve));
+      assert.ok(settled, 'preload never settled');
       await preloadStoneWallAssets();
       assert.equal(count, 2);
       const usable = '${mode}' === 'ready' || '${mode}'.startsWith('raster_');

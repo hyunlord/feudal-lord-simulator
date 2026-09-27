@@ -10,6 +10,7 @@ import type { PlacementTool } from "../render/renderer";
 import { buildingUnlockStage, isBuildingUnlocked, placementSpendableResource } from "../world/placement";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { resourceName } from "../content/resourceCatalog.ko";
+import { BUILD_MENU_MODEL_COPY, BUILD_TOOL_GROUP_LABELS, BUILD_TOOL_PURPOSE } from "./buildMenuCopy.ko";
 
 export type BuildToolOption = {
   readonly tool: PlacementTool;
@@ -33,12 +34,7 @@ export type BuildToolGroup = {
   readonly options: readonly BuildToolOption[];
 };
 
-const GROUP_LABELS: Record<BuildToolGroupKey, string> = {
-  dwelling: "주거",
-  production: "생산",
-  storage: "저장",
-  service: "서비스",
-};
+const GROUP_LABELS: Record<BuildToolGroupKey, string> = BUILD_TOOL_GROUP_LABELS;
 
 const GROUP_ORDER = ["dwelling", "production", "storage", "service"] as const satisfies readonly BuildToolGroupKey[];
 
@@ -61,44 +57,27 @@ const TOOL_GROUPS: Record<PlacementTool, BuildToolGroupKey> = {
   road: "service",
 };
 
-const TOOL_PURPOSES: Record<PlacementTool, string> = {
-  house: "주민을 받아 인구 목표를 늘립니다",
-  wheat_farm: "밀을 길러 방앗간에 보냅니다",
-  farmstead: "경작지 띠를 갈고 거두어 밀을 곳간에 모읍니다. 경작지 구역 안이나 옆에 짓습니다",
-  mill: "밀을 빵으로 바꿔 배급을 돕습니다",
-  logging_camp: "숲 가장자리에서 통나무를 냅니다",
-  sawmill: "통나무를 목재로 켭니다",
-  quarry: "바위 가장자리에서 원석을 캐냅니다",
-  masonry: "원석을 석재로 다듬습니다",
-  market: "남는 물자를 팔아 재정 수입을 얻습니다",
-  church: "주변 집에 신앙 서비스를 제공합니다",
-  keep: "석조 도시의 중심 성채를 세웁니다",
-  storehouse: "목재와 통나무를 보관합니다",
-  granary: "밀과 빵을 보관합니다",
-  chapel: "목책마을 선포 조건을 준비합니다",
-  well: "주변 집에 물을 공급합니다",
-  road: "육지 길은 무료. 양쪽 강둑을 직선으로 이으면 최대 8칸 목교를 놓습니다. 다리·접속 길 철거 시 다리 전체를 걷습니다",
-};
+const TOOL_PURPOSES: Record<PlacementTool, string> = BUILD_TOOL_PURPOSE;
 
 function requirementsFor(kind: BuildingKind, scenarioId?: string): readonly string[] {
   const definition = BUILDING_CONFIG_BY_KIND[kind];
   const requirements: string[] = [];
-  if (definition.requiresRoad) requirements.push("길 인접 필요");
-  if (definition.requiresAdjacentTerrain === "forest") requirements.push("숲 인접 필요");
-  if (definition.requiresAdjacentTerrain === "rock") requirements.push("바위 인접 필요");
+  if (definition.requiresRoad) requirements.push(BUILD_MENU_MODEL_COPY.requiresRoad);
+  if (definition.requiresAdjacentTerrain === "forest") requirements.push(BUILD_MENU_MODEL_COPY.requiresForest);
+  if (definition.requiresAdjacentTerrain === "rock") requirements.push(BUILD_MENU_MODEL_COPY.requiresRock);
   const stage = buildingUnlockStage(kind, scenarioId);
   if (stage !== "village") requirements.push(SCENARIO_COPY.unlockedAfter(SCENARIO_COPY.stages[stage]));
-  return requirements.length === 0 ? ["요구 조건 없음"] : requirements;
+  return requirements.length === 0 ? [BUILD_MENU_MODEL_COPY.noRequirements] : requirements;
 }
 
 export const ROAD_TOOL_OPTION: BuildToolOption = {
   tool: "road",
-  label: "길",
+  label: BUILD_MENU_MODEL_COPY.roadLabel,
   timberCost: 0,
   cost: {},
   group: "service",
   purpose: TOOL_PURPOSES.road,
-  requirements: ["요구 조건 없음"],
+  requirements: [BUILD_MENU_MODEL_COPY.noRequirements],
 };
 
 // AF-12: retired kinds (the wheat farm) have no build tool.
@@ -164,14 +143,14 @@ export function buildToolTooltipLines(tool: PlacementTool, state: GameState): re
   if (option === undefined) return [];
   const affordability = buildToolAffordability(tool, state);
   const affordabilityLine = affordability.affordable
-    ? `건설 가능 · 보유 ${resourceAmountsLabel(affordability.spendable)}`
-    : `건설 불가 · 부족 ${shortfallLabel(affordability.shortfalls)}`;
-  const costLine = tool === "road" ? "비용 목재 0" : `비용 ${resourceAmountsLabel(option.cost)}`;
+    ? BUILD_MENU_MODEL_COPY.buildable(resourceAmountsLabel(affordability.spendable))
+    : BUILD_MENU_MODEL_COPY.notBuildable(shortfallLabel(affordability.shortfalls));
+  const costLine = tool === "road" ? BUILD_MENU_MODEL_COPY.roadCost : BUILD_MENU_MODEL_COPY.cost(resourceAmountsLabel(option.cost));
   return [
     option.label,
     costLine,
-    `목적 ${option.purpose}`,
-    `조건 ${option.requirements.join(", ")}`,
+    BUILD_MENU_MODEL_COPY.purpose(option.purpose),
+    BUILD_MENU_MODEL_COPY.requirements(option.requirements.join(", ")),
     affordabilityLine,
   ];
 }
@@ -190,8 +169,8 @@ function positiveResourceAmounts(
 function resourceAmountsLabel(amounts: Partial<Record<ResourceType, number>>): string {
   const parts = RESOURCE_TYPES
     .filter((resource) => (amounts[resource] ?? 0) > 0)
-    .map((resource) => `${resourceName(resource)} ${amounts[resource] ?? 0}`);
-  return parts.length === 0 ? "없음" : parts.join(" · ");
+    .map((resource) => BUILD_MENU_MODEL_COPY.resourceAmount(resourceName(resource), amounts[resource] ?? 0));
+  return parts.length === 0 ? BUILD_MENU_MODEL_COPY.none : parts.join(" · ");
 }
 
 function shortfallLabel(amounts: Partial<Record<ResourceType, number>>): string {

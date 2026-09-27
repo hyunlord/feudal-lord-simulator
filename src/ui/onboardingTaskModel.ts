@@ -3,6 +3,7 @@ import { getSettlementView } from "../engine/settlementView";
 import type { Building, BuildingKind } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { arableCellCount, hasPalisadeTimberStorage, ONBOARDING_ARABLE_CELLS } from "./onboardingBuildingTaskProgress";
+import { ONBOARDING_TASK_COPY } from "./onboardingTaskCopy.ko";
 
 export type OnboardingTaskId =
   | "task-1"
@@ -26,7 +27,7 @@ export type OnboardingTask = {
 
 export type OnboardingFlourish = {
   readonly taskId: OnboardingTaskId;
-  readonly label: "완료";
+  readonly label: typeof ONBOARDING_TASK_COPY.done;
   readonly startedAtMs: number;
 };
 
@@ -42,7 +43,7 @@ export type OnboardingTaskViewItem = {
   readonly hint: string;
   readonly highlightTools: readonly OnboardingHighlightTool[];
   readonly isComplete: boolean;
-  readonly flourishLabel: "완료" | null;
+  readonly flourishLabel: typeof ONBOARDING_TASK_COPY.done | null;
 };
 
 export type OnboardingTaskView = {
@@ -52,62 +53,62 @@ export type OnboardingTaskView = {
 };
 
 const FLOURISH_HOLD_MS = 600;
-const PHASE_4F_OPEN_GOAL_TITLE = "기초 운영 완료 · 도시 목표와 공급 상태를 확인하세요";
+const PHASE_4F_OPEN_GOAL_TITLE = ONBOARDING_TASK_COPY.openGoalTitle;
 
 export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   {
     id: "task-1",
-    title: "길을 놓아 오두막을 이으세요",
-    hint: "오두막 바로 옆 칸에 길을 놓으세요.",
+    title: ONBOARDING_TASK_COPY.tasks["task-1"].title,
+    hint: ONBOARDING_TASK_COPY.tasks["task-1"].hint,
     highlightTools: ["road"],
     isComplete: hasRoadAdjacentToStartingHouse,
   },
   {
     id: "task-2",
-    title: "숲 옆에 벌목소를 지으세요",
-    hint: "벌목소 도장을 고르고 숲 가장자리를 클릭하세요.",
+    title: ONBOARDING_TASK_COPY.tasks["task-2"].title,
+    hint: ONBOARDING_TASK_COPY.tasks["task-2"].hint,
     highlightTools: ["logging_camp"],
     isComplete: hasBuildingKind("logging_camp"),
   },
   {
     id: "task-3",
-    title: "경작지를 칠하고 헛간과 방앗간을 지으세요",
-    hint: "구역에서 경작지로 길가 땅을 칠하고, 그 옆에 헛간과 방앗간을 길로 이으세요. 목재가 떨어지기 전에 제재소를 지을 수 있도록 남겨둡니다.",
+    title: ONBOARDING_TASK_COPY.tasks["task-3"].title,
+    hint: ONBOARDING_TASK_COPY.tasks["task-3"].hint,
     highlightTools: ["farmstead", "mill"],
     isComplete: hasFirstFoodChain,
   },
   {
     id: "task-4",
-    title: "제재소를 지어 목재를 만드세요",
-    hint: "제재소가 통나무를 목재로 바꿉니다.",
+    title: ONBOARDING_TASK_COPY.tasks["task-4"].title,
+    hint: ONBOARDING_TASK_COPY.tasks["task-4"].hint,
     highlightTools: ["sawmill"],
     isComplete: hasBuildingKind("sawmill"),
   },
   {
     id: "task-5",
-    title: "경작지를 넓히고 곡창·창고를 갖추세요",
-    hint: "인구 60명을 먹이려면 경작지 8칸과 곡창이 필요합니다. 수확은 가을에 몰리니 곡창에 비축하세요. 목책 목재 250을 모을 창고도 제재소 길에 이으세요.",
+    title: ONBOARDING_TASK_COPY.tasks["task-5"].title,
+    hint: ONBOARDING_TASK_COPY.tasks["task-5"].hint,
     highlightTools: ["farmstead", "granary", "storehouse"],
     isComplete: hasExpandedFoodAndStorage,
   },
   {
     id: "task-6",
-    title: "우물과 예배당을 갖추세요",
-    hint: "우물은 집에서 6칸 안에 두고, 인구를 늘리기 전에 목책 선포에 필요한 예배당을 완공하세요.",
+    title: ONBOARDING_TASK_COPY.tasks["task-6"].title,
+    hint: ONBOARDING_TASK_COPY.tasks["task-6"].hint,
     highlightTools: ["well", "chapel"],
     isComplete: hasWellAndChapel,
   },
   {
     id: "task-7",
-    title: "인구를 30명까지 늘리세요",
-    hint: "집에 물과 빵이 공급되면 주민이 입주합니다. 가구 비축과 일손을 확인하세요.",
+    title: ONBOARDING_TASK_COPY.tasks["task-7"].title,
+    hint: ONBOARDING_TASK_COPY.tasks["task-7"].hint,
     highlightTools: ["house"],
     isComplete: hasPopulationAtLeast(30),
   },
   {
     id: "task-8",
-    title: "인구를 50명까지 늘리세요",
-    hint: "주민이 늘면 식량 소비도 늘어납니다. 공급이 안정된 뒤 집을 더 지으세요.",
+    title: ONBOARDING_TASK_COPY.tasks["task-8"].title,
+    hint: ONBOARDING_TASK_COPY.tasks["task-8"].hint,
     highlightTools: ["house"],
     isComplete: hasPopulationAtLeast(50),
   },
@@ -133,7 +134,7 @@ export function updateOnboardingPresentationState(input: {
 
   return {
     ...input.presentation,
-    flourish: { taskId: currentTask.id, label: "완료", startedAtMs: input.nowMs },
+    flourish: { taskId: currentTask.id, label: ONBOARDING_TASK_COPY.done, startedAtMs: input.nowMs },
   };
 }
 
@@ -190,7 +191,7 @@ function taskViewItem(
     hint: task.hint,
     highlightTools: task.highlightTools,
     isComplete: task.isComplete(state),
-    flourishLabel: isFlourishing ? "완료" : null,
+    flourishLabel: isFlourishing ? ONBOARDING_TASK_COPY.done : null,
   };
 }
 

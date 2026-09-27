@@ -42,6 +42,8 @@ export type TranslatorContext = {
   readonly emit: (intent: InputIntent, context?: IntentContext) => boolean;
   readonly setTimeout?: (callback: () => void, ms: number) => number;
   readonly clearTimeout?: (handle: number) => void;
+  /** The clock (ms) held camera keys are timed on; the game uses `performance.now`, tests pass a fake one. */
+  readonly now?: () => number;
 };
 
 export type PointerData = {
@@ -78,6 +80,7 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
   const cameraInput = createCameraInputState();
   const setTimer = context.setTimeout ?? ((callback: () => void, ms: number) => window.setTimeout(callback, ms));
   const clearTimer = context.clearTimeout ?? ((handle: number) => window.clearTimeout(handle));
+  const now = context.now ?? (() => performance.now());
   let gesture: Gesture | null = null;
   let space = false;
   /** Space went down and nothing was dragged while it was held: releasing it is a tap (pause). */
@@ -275,7 +278,7 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
         const rect = context.bounds();
         return { preventDefault: context.emit({ kind: "zoom", factor, anchor: { x: rect.width / 2, y: rect.height / 2 } }, at) };
       }
-      const cameraKey = cameraInputKeyDown(cameraInput, key.key, performance.now());
+      const cameraKey = cameraInputKeyDown(cameraInput, key.key, now());
       if (key.code === "Space") {
         if (!space && key.repeat !== true) spaceTap = true;
         space = true;
@@ -284,7 +287,7 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
     },
 
     keyUp(key: KeyData): Outcome {
-      const cameraKey = cameraInputKeyUp(cameraInput, key.key, performance.now());
+      const cameraKey = cameraInputKeyUp(cameraInput, key.key, now());
       const tap = key.code === "Space" && spaceTap;
       if (key.code === "Space") { space = false; spaceTap = false; }
       const target = targetOf(key.target);

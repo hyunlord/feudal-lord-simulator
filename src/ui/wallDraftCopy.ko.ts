@@ -1,4 +1,5 @@
-export const A_QUADRUPLE_PRIME_WALL_COPY = {
+// Player-facing copy of the palisade draft (wall drawing tool, draft checks and failure reasons).
+export const WALL_DRAFT_COPY = {
   drawTool: '목책 긋기',
   drawHint: '지도를 드래그해 목책 둘레를 직접 그립니다',
   drawCost: '둘레에 따라 목재',

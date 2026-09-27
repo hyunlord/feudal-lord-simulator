@@ -2,21 +2,13 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfi
 import type { DistributorWalker } from "../agents/walker.types";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
+import { DISTRIBUTOR_BRANCH_LABELS } from "./distributorRouteCopy.ko";
 export {
   missedHouseRouteReason,
   type DistributorRouteMissReason,
 } from "./distributorMissedRouteReason";
 
-export type DistributorBranchLabel =
-  | "북쪽 가지"
-  | "북동쪽 가지"
-  | "동쪽 가지"
-  | "남동쪽 가지"
-  | "남쪽 가지"
-  | "남서쪽 가지"
-  | "서쪽 가지"
-  | "북서쪽 가지"
-  | "같은 자리";
+export type DistributorBranchLabel = typeof DISTRIBUTOR_BRANCH_LABELS[keyof typeof DISTRIBUTOR_BRANCH_LABELS];
 
 export type DistributorRouteSummary = {
   readonly granaryId: string;
@@ -93,15 +85,15 @@ function branchVector(granary: Building, coordinate: TileCoordinate): DirectionV
 }
 
 function branchLabel(vector: DirectionVector): DistributorBranchLabel {
-  if (vector.dx === 0 && vector.dy === 0) return "같은 자리";
-  if (vector.dx === 0 && vector.dy < 0) return "북쪽 가지";
-  if (vector.dx > 0 && vector.dy < 0) return "북동쪽 가지";
-  if (vector.dx > 0 && vector.dy === 0) return "동쪽 가지";
-  if (vector.dx > 0 && vector.dy > 0) return "남동쪽 가지";
-  if (vector.dx === 0 && vector.dy > 0) return "남쪽 가지";
-  if (vector.dx < 0 && vector.dy > 0) return "남서쪽 가지";
-  if (vector.dx < 0 && vector.dy === 0) return "서쪽 가지";
-  return "북서쪽 가지";
+  if (vector.dx === 0 && vector.dy === 0) return DISTRIBUTOR_BRANCH_LABELS.samePlace;
+  if (vector.dx === 0 && vector.dy < 0) return DISTRIBUTOR_BRANCH_LABELS.north;
+  if (vector.dx > 0 && vector.dy < 0) return DISTRIBUTOR_BRANCH_LABELS.northEast;
+  if (vector.dx > 0 && vector.dy === 0) return DISTRIBUTOR_BRANCH_LABELS.east;
+  if (vector.dx > 0 && vector.dy > 0) return DISTRIBUTOR_BRANCH_LABELS.southEast;
+  if (vector.dx === 0 && vector.dy > 0) return DISTRIBUTOR_BRANCH_LABELS.south;
+  if (vector.dx < 0 && vector.dy > 0) return DISTRIBUTOR_BRANCH_LABELS.southWest;
+  if (vector.dx < 0 && vector.dy === 0) return DISTRIBUTOR_BRANCH_LABELS.west;
+  return DISTRIBUTOR_BRANCH_LABELS.northWest;
 }
 
 function routeSummary(input: {

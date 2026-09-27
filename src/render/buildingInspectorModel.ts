@@ -9,6 +9,7 @@ import { providerServiceRows } from "../ui/serviceDiagnosisModel";
 import { buildingProblemCause } from "../ui/problemCauseModel";
 import { storageUsage } from '../economy/storage';
 import { resourceName } from "../content/resourceCatalog.ko";
+import { BUILDING_INSPECTOR_COPY, BUILDING_INSPECTOR_PURPOSE } from "./buildingInspectorCopy.ko";
 
 export type BuildingInspectorModel = {
   readonly kind: Building["kind"];
@@ -17,24 +18,9 @@ export type BuildingInspectorModel = {
   readonly rows: readonly string[];
 };
 
-const HOUSE_NAMES = ["오두막", "소가옥", "장인가옥", "상인가옥", "도시 대가옥"] as const;
-const PURPOSES = {
-  house: "주민이 생활하고 성장하는 집",
-  well: "주변 가구에 물을 공급",
-  storehouse: "목재와 통나무를 보관",
-  granary: "밀과 빵을 보관하고 배급",
-  chapel: "마을의 시대 선포 조건을 채우는 예배당",
-  wheat_farm: "일꾼이 밀을 재배",
-  farmstead: "일꾼이 경작지를 갈고 거둔 밀을 보관",
-  mill: "밀을 빵으로 가공",
-  logging_camp: "숲에서 통나무를 생산",
-  sawmill: "통나무를 목재로 가공",
-  quarry: "바위에서 원석을 채굴",
-  masonry: "원석을 석재로 가공",
-  market: "남는 물자를 팔아 재정 수입",
-  church: "주변 가구에 교회 서비스를 제공",
-  keep: "석조 도시의 중심 성채",
-} as const;
+const HOUSE_NAMES = BUILDING_INSPECTOR_COPY.houseNames;
+// A new building kind's purpose line (AGENTS.md rule 18) now goes in buildingInspectorCopy.ko.ts.
+const PURPOSES = BUILDING_INSPECTOR_PURPOSE;
 
 export function buildingInspectorModel(
   state: GameState,
@@ -49,43 +35,43 @@ export function buildingInspectorModel(
     const builtLevel = house === undefined ? level : houseBuiltLevel(house);
     const condition = house === undefined ? "maintained" : houseCondition(house);
     const breadService = house?.lastServicedTick === undefined || house.lastServicedTick === 0
-      ? "빵 배급 전"
-      : `마지막 빵 ${durationLabel(state.tick - house.lastServicedTick)} 전`;
+      ? BUILDING_INSPECTOR_COPY.beforeBread
+      : BUILDING_INSPECTOR_COPY.lastBread(durationLabel(state.tick - house.lastServicedTick));
     return {
       kind: building.kind,
-      name: `${HOUSE_NAMES[builtLevel] ?? HOUSE_NAMES[0]}${building.houseLot === undefined ? "" : " · 합필 주택"}`,
+      name: `${HOUSE_NAMES[builtLevel] ?? HOUSE_NAMES[0]}${building.houseLot === undefined ? "" : BUILDING_INSPECTOR_COPY.mergedHouseSuffix}`,
       purpose: PURPOSES.house,
       rows: [
-        `생활 등급 ${level} · 주민 ${house?.residents ?? 0}명`,
-        `건축 단계 ${builtLevel} · ${houseConditionLabel(condition)}`,
-        `대지 ${buildingFootprint(building).width}×${buildingFootprint(building).height}칸`,
-        `물 ${house?.hasWater === true ? "있음" : "없음"}`,
+        BUILDING_INSPECTOR_COPY.houseLevel(level, house?.residents ?? 0),
+        BUILDING_INSPECTOR_COPY.builtStage(builtLevel, houseConditionLabel(condition)),
+        BUILDING_INSPECTOR_COPY.lot(buildingFootprint(building).width, buildingFootprint(building).height),
+        BUILDING_INSPECTOR_COPY.water(house?.hasWater === true),
         breadService,
       ],
     };
   }
   const stock = (RESOURCE_TYPES)
     .filter((resource) => (building.inventory[resource] ?? 0) > 0)
-    .map((resource) => `${resourceName(resource)} ${building.inventory[resource] ?? 0}`)
-    .join(" · ") || "없음";
+    .map((resource) => BUILDING_INSPECTOR_COPY.stockItem(resourceName(resource), building.inventory[resource] ?? 0))
+    .join(" · ") || BUILDING_INSPECTOR_COPY.none;
   const problemCause = buildingProblemCause(state, building.id);
   const usage = building.kind === 'storehouse' || building.kind === 'granary' ? storageUsage(building) : null;
   const overflow = storageOverflowCause(building);
   const rows = [
     ...(overflow === null ? [] : [overflow.label]),
     ...(usage === null ? [] : [
-      `보관 ${usage.used} + 입고 예약 ${usage.incoming} / 한도 ${usage.capacity}`,
-      ...usage.byResource.map(item => `${resourceName(item.resource)} ${item.stored} + 입고 예약 ${item.incoming} / 공동 한도 ${usage.capacity}`),
+      BUILDING_INSPECTOR_COPY.storageTotal(usage.used, usage.incoming, usage.capacity),
+      ...usage.byResource.map(item => BUILDING_INSPECTOR_COPY.storageItem(resourceName(item.resource), item.stored, item.incoming, usage.capacity)),
     ]),
     ...providerServiceRows(state, building),
-    ...(config.workersRequired > 0 ? [`일꾼 ${building.workers}/${config.workersRequired}`] : []),
-    `재고 ${stock}`,
+    ...(config.workersRequired > 0 ? [BUILDING_INSPECTOR_COPY.workers(building.workers, config.workersRequired)] : []),
+    BUILDING_INSPECTOR_COPY.stock(stock),
     ...(config.production === null
       ? []
-      : [`생산 ${building.productionProgress}/${config.production.ticksPerOutput}`]),
+      : [BUILDING_INSPECTOR_COPY.production(building.productionProgress, config.production.ticksPerOutput)]),
     ...(problemCause === null
       ? []
-      : [`원인: ${problemCause}`]),
+      : [BUILDING_INSPECTOR_COPY.cause(problemCause)]),
   ];
   return { kind: building.kind, name: config.name, purpose: PURPOSES[building.kind], rows };
 }

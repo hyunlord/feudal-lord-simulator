@@ -1,5 +1,5 @@
 import { PALETTE, SEMANTIC_PALETTE } from '../content/palette';
-import { A_QUADRUPLE_PRIME_WALL_COPY, palisadeFailureLabel } from '../ui/aQuadruplePrimeWallCopy';
+import { WALL_DRAFT_COPY, palisadeFailureLabel } from '../ui/wallDraftCopy.ko';
 import type { GameState } from '../engine/engine.types';
 import type { PalisadeRouteSegment } from '../engine/palisadeRouteAccess';
 import { palisadeFootprintsForState, palisadeCoreFootprintsForState } from '../engine/palisadeFootprints';
@@ -11,7 +11,7 @@ import { tileToScreen } from './iso';
 import { WALL_CARRY_COPY } from '../ui/wallCarryCopy.ko';
 import { applyPaletteStroke, withAlpha } from './style';
 
-const SHORT_FAILURE_LABELS: Partial<Record<PalisadeFailureReason, string>> = A_QUADRUPLE_PRIME_WALL_COPY.shortFailure;
+const SHORT_FAILURE_LABELS: Partial<Record<PalisadeFailureReason, string>> = WALL_DRAFT_COPY.shortFailure;
 
 let diagnosisCache: { readonly path: PalisadePath; readonly tiles: GameState['tiles'];
   readonly footprintKey: string; readonly diagnosis: PalisadeDraftDiagnosis } | null = null;
@@ -74,7 +74,7 @@ export function drawPalisadeDraftOverlay(
   if (draft.failurePoint !== null && !diagnosis.segments.some(segment => segment.reason !== null)) {
     drawFailureTarget(context, draft.failurePoint, zoom);
     const reason = draft.failureReason;
-    drawFailureLabel(context, draft.failurePoint, reason === null ? A_QUADRUPLE_PRIME_WALL_COPY.recommendationUnavailable
+    drawFailureLabel(context, draft.failurePoint, reason === null ? WALL_DRAFT_COPY.recommendationUnavailable
       : SHORT_FAILURE_LABELS[reason] ?? palisadeFailureLabel(reason), zoom);
   }
   for (const gate of gates) drawGatePreview(context, gate, zoom);
@@ -171,7 +171,7 @@ function drawGatePreview(context: CanvasRenderingContext2D, point: TileEdgePoint
   context.strokeRect(anchor.x - 8 / zoom, anchor.y - 8 / zoom, 16 / zoom, 16 / zoom);
   context.fillStyle = PALETTE.ink;
   context.font = `bold ${12 / zoom}px sans-serif`;
-  context.fillText(A_QUADRUPLE_PRIME_WALL_COPY.gateGlyph, anchor.x - 6 / zoom, anchor.y + 4 / zoom);
+  context.fillText(WALL_DRAFT_COPY.gateGlyph, anchor.x - 6 / zoom, anchor.y + 4 / zoom);
 }
 
 function drawRouteStatus(context: CanvasRenderingContext2D, segment: PalisadeRouteSegment, zoom: number): void {
@@ -181,9 +181,9 @@ function drawRouteStatus(context: CanvasRenderingContext2D, segment: PalisadeRou
   if (anchor === undefined) return;
   const color = segment.status === 'reachable' ? SEMANTIC_PALETTE.sageDark
     : segment.status === 'unreachable' ? PALETTE.vermilion : PALETTE.gold;
-  const label = segment.status === 'reachable' ? A_QUADRUPLE_PRIME_WALL_COPY.routeReachableGlyph
-    : segment.status === 'unreachable' ? A_QUADRUPLE_PRIME_WALL_COPY.routeUnreachableGlyph
-      : A_QUADRUPLE_PRIME_WALL_COPY.routeUnavailableGlyph;
+  const label = segment.status === 'reachable' ? WALL_DRAFT_COPY.routeReachableGlyph
+    : segment.status === 'unreachable' ? WALL_DRAFT_COPY.routeUnreachableGlyph
+      : WALL_DRAFT_COPY.routeUnavailableGlyph;
   context.beginPath();
   context.arc(anchor.x, anchor.y - 13 / zoom, 9 / zoom, 0, Math.PI * 2);
   context.fillStyle = SEMANTIC_PALETTE.vellum;

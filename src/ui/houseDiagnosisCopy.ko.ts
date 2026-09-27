@@ -1,0 +1,23 @@
+// Player-facing copy of the house diagnosis model (water, bread, population, walls, stone house).
+export const HOUSE_DIAGNOSIS_COPY = {
+  noWell: "우물이 없습니다",
+  breadSupplied: "빵이 있습니다",
+  noGranary: "곡창이 없습니다",
+  granaryEmpty: "곡창에 빵이 없습니다 — 방앗간 확인",
+  roadDisconnected: "곡창에서 이 집까지 도로가 이어지지 않음",
+  growthBlockedWater: "성장 정체 — 물 부족",
+  growthBlockedFood: "성장 정체 — 식량 부족",
+  stable: "유지 또는 성장 중",
+  wallInactive: "성벽 미완성",
+  wallInside: "성벽 안 ✅ 편의 +2",
+  wallOutside: "성벽 밖 — 3등급 불가",
+  stoneHouseReady: "도시 대가옥 가능",
+  houseNames: ["오두막", "소가옥", "장인가옥", "상인가옥", "도시 대가옥"],
+  noMarket: "시장 없음",
+  declining: (elapsed: string) => `감소 중 — 식량 없음, ${elapsed} 경과`,
+  freshBreadNeeded: "신선한 빵 필요",
+  insideWallNeeded: "완성된 성벽 안 필요",
+  stoneHouseBlocked: (blockers: string) => `도시 대가옥 불가 — ${blockers}`,
+  noDistributorRecord: "배급자 순회 기록 없음 — 다음 배급 후 다시 확인",
+  mergedHouseSuffix: " · 합필 주택",
+} as const;

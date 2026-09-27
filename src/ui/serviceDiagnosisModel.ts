@@ -12,7 +12,7 @@ export type ServiceDiagnosis = Readonly<{
   distance: number;
   serviceRadius: number;
 }>;
-const NAMES = { water: '우물', market: '시장', church: '교회' } as const;
+const NAMES = SERVICE_DIAGNOSIS_COPY.names;
 
 export function serviceDiagnosis(state: GameState, home: Building, service: HouseholdService): ServiceDiagnosis {
   const allocation = householdServices(state);
@@ -27,15 +27,15 @@ export function serviceDiagnosis(state: GameState, home: Building, service: Hous
   const kind = access?.kind ?? 'missing';
   const name = NAMES[service];
   const capacity = provider === undefined ? undefined : allocation.providers.get(provider.id);
-  const usage = capacity === undefined ? '' : ` · 담당 ${capacity.used}/${capacity.capacity}필지`;
+  const usage = capacity === undefined ? '' : SERVICE_DIAGNOSIS_COPY.usage(capacity.used, capacity.capacity);
   let label: string;
   switch (kind) {
-    case 'served': label = service === 'water' ? `우물에서 ${distance}칸` : `${name} 이용 가능 — 거리 ${distance} / 범위 ${serviceRadius}${usage}`; break;
-    case 'missing': label = service === 'water' ? '우물이 없습니다' : `${name} 없음`; break;
-    case 'outside': label = service === 'water' ? `우물이 너무 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}` : `${name}${service === 'church' ? '가' : '이'} 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}`; break;
+    case 'served': label = service === 'water' ? SERVICE_DIAGNOSIS_COPY.wellServed(distance) : SERVICE_DIAGNOSIS_COPY.served(name, distance, serviceRadius, usage); break;
+    case 'missing': label = service === 'water' ? SERVICE_DIAGNOSIS_COPY.noWell : SERVICE_DIAGNOSIS_COPY.missing(name); break;
+    case 'outside': label = service === 'water' ? SERVICE_DIAGNOSIS_COPY.wellTooFar(distance, serviceRadius) : SERVICE_DIAGNOSIS_COPY.tooFar(name, service === 'church', distance, serviceRadius); break;
     case 'paused': label = SERVICE_DIAGNOSIS_COPY.paused; break;
-    case 'understaffed': label = `가까운 ${name}의 일꾼이 부족합니다`; break;
-    case 'unreachable': label = `${name}까지 연결된 도로가 없습니다`; break;
+    case 'understaffed': label = SERVICE_DIAGNOSIS_COPY.understaffed(name); break;
+    case 'unreachable': label = SERVICE_DIAGNOSIS_COPY.unreachable(name); break;
     case 'capacity': label = SERVICE_DIAGNOSIS_COPY.capacity(name, access?.earlierHomesUsingCapacity ?? 0); break;
   }
   return { kind, label, distance, serviceRadius };
@@ -46,10 +46,10 @@ export function providerServiceRows(state: GameState, building: Building): reado
   const provider = householdServices(state).providers.get(building.id);
   if (provider === undefined) return [];
   return [
-    `서비스 담당 ${provider.used}/${provider.capacity} 주거 필지`,
-    '단독 주택 1 · 합필 주택 2필지, 빈집도 자리 유지',
-    provider.service === 'water' ? '주민이 가까운 우물을 직접 이용합니다' : '범위 안 주택까지 이어진 도로가 필요합니다',
+    SERVICE_DIAGNOSIS_COPY.providerLoad(provider.used, provider.capacity),
+    SERVICE_DIAGNOSIS_COPY.providerLotRule,
+    provider.service === 'water' ? SERVICE_DIAGNOSIS_COPY.wellDirect : SERVICE_DIAGNOSIS_COPY.roadNeeded,
     ...(building.upkeepUnpaid === true ? [MONEY_RULE_COPY.serviceUnpaid] : building.operationPaused === true ? [SERVICE_DIAGNOSIS_COPY.paused]
-      : provider.workers < provider.requiredWorkers ? ['서비스 중단: 일꾼 부족'] : []),
+      : provider.workers < provider.requiredWorkers ? [SERVICE_DIAGNOSIS_COPY.noWorkers] : []),
   ];
 }
