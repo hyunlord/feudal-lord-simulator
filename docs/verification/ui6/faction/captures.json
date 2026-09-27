@@ -1,0 +1,9 @@
+{
+ "task": "UI-6 faction chronicle (CHRON-2 first pass)",
+ "source": "auto-growth replay: scripts/chapterTwoProbe.ts seed 2 to tick 172000 (1343 spring, chapter 3 begun at 160000), opened in the local dev server at 1280x800 through scripts/renderCommitProbe.mjs openScene; then scripted presses (not natural play)",
+ "captures": {
+  "faction-list.jpg": "the chronicle's 세력 tab: nine rows (arms, factionDisplayName, leader portrait and name, relation scale), the world strip under them",
+  "faction-page-crown.jpg": "the Crown's page (opened by keyboard: Tab + Enter): Edward III's pool portrait, the arms, the scale at +25, demands, promises, remembered records as buttons, its timeline",
+  "faction-record-link.jpg": "a record link from the town community's page: the list filtered to the faction (5 records), the relation record picked; war.raid and war.beacon cards with their Wave 17 scenes"
+ }
+}

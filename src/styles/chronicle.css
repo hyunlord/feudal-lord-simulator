@@ -146,14 +146,14 @@
 
 /* UI-6: the records / factions tabs in the header. */
 .chronicle-tabs { display: flex; gap: 4px; }
-.chronicle-tab { min-width: 72px; min-height: 44px; padding: 0 14px; font-weight: 700; }
+.chronicle-screen .chronicle-tab { min-width: 72px; min-height: 44px; padding: 0 14px; font-weight: 700; font-size: 14px; color: var(--parchment-light); }
 .chronicle-screen:is([data-view="factions"], [data-view="faction"]) { grid-template-rows: auto minmax(0, 1fr); }
 
 /* UI-6 faction tab: nine rows (kit buttons) and the world strip under them. */
 .chronicle-page-body--factions { justify-items: stretch; }
-.chronicle-factions { display: grid; grid-template-rows: auto auto; align-content: start; gap: 10px; width: 100%; max-width: 1180px; margin: 0 auto; }
-.chronicle-factions-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
-.chronicle-factions-row { display: grid; width: 100%; min-height: 60px; padding: 6px 14px; box-sizing: border-box; align-items: center; gap: 14px; text-align: left;
+.chronicle-factions { display: grid; grid-template-rows: auto auto; align-content: start; gap: 8px; width: 100%; max-width: 1180px; margin: 0 auto; }
+.chronicle-factions-list { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.chronicle-factions-row { display: grid; width: 100%; min-height: 56px; padding: 4px 14px; box-sizing: border-box; align-items: center; gap: 14px; text-align: left;
   grid-template-columns: 48px minmax(0, 1.3fr) minmax(0, 1.4fr) auto minmax(0, 0.8fr); }
 .chronicle-factions-emblem { display: grid; place-items: center; width: 48px; height: 48px; }
 .chronicle-factions-name, .chronicle-factions-leader-text, .chronicle-factions-counts { display: grid; gap: 1px; min-width: 0; }

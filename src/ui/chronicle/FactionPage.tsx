@@ -40,7 +40,7 @@ export function FactionPage({ view, scale, onRecord }: {
       </span>
       <header className="chronicle-faction-name" style={FACTION_PAGE_SLOTS.name}>
         <h3>{view.name}</h3>
-        <p className="chronicle-faction-kind">{view.kind}</p>
+        {view.kind === view.name ? null : <p className="chronicle-faction-kind">{view.kind}</p>}
         <p className="chronicle-faction-leader-name">{view.leader === null ? COPY.noLeader : view.leader.name}</p>
         {view.leader === null ? null : <p>{view.leader.line}</p>}
       </header>
