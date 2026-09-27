@@ -20,6 +20,12 @@ export const ARABLE_CONFIG = {
   /** AF-4: ploughing and sowing run from late winter through spring into early summer (wraps the year end). */
   fieldWorkFrom: 3500,
   fieldWorkUntil: 1500,
+  /**
+   * FIX-4 E4 (HR-4): in the first year only (tick < ticksPerYear) ploughing and sowing run to late spring's end, so a
+   * barn raised after the tutorial still sows for the first harvest (it ripens short at `forcedRipeFrom`). The UX-0b
+   * audit town's barn stood at in-year ~1,700 and missed the whole 1300 crop.
+   */
+  firstYearFieldWorkUntil: 2000,
   /** AF-4: growing ticks (winter excluded) from sowing to a ripe crop; `growingAt` of them makes it `growing`. */
   growTicks: 1500,
   growingAt: 500,

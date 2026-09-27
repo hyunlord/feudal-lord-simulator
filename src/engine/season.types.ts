@@ -15,6 +15,8 @@ export type SeasonEvent =
   | { readonly kind: "households_resettled"; readonly count: number }
   | { readonly kind: "era_entered"; readonly eraId: string; readonly forced: boolean }
   | { readonly kind: "first_winter_warning" }
+  /** FIX-4 E7 (HR-7): people lost to hunger in the season (residents, not households). */
+  | { readonly kind: "residents_starved"; readonly count: number }
   | EventSeasonEvent;
 
 /**
@@ -26,6 +28,16 @@ export type SeasonEvent =
  */
 export type NextObjectiveHint = "food_reserve" | "harvest_reserve" | "resettle" | "dearth_reserve" | "fire_break" | "rebuild" | null;
 
+/**
+ * FIX-4 E11 (HR-11): what a food hint asks for. `arableCells` = more arable cells the town's bread needs than it has
+ * painted; `farmstead` = no barn, or too few for those cells; `mill` = no mill grinding, or too few to keep up with the
+ * town's bread. All zero or false = the chain is there and only the harvest is awaited.
+ */
+export interface FoodNeeds {
+  readonly arableCells: number;
+  readonly farmstead: boolean;
+  readonly mill: boolean;
+}
 /** FP-1: one closed season. Income and expense are the cash ledger's entries in (startTick, endTick]. */
 export interface SeasonLedger {
   readonly season: 0 | 1 | 2 | 3;
@@ -38,6 +50,8 @@ export interface SeasonLedger {
   readonly popDelta: number;
   readonly notableEvents: readonly SeasonEvent[];
   readonly nextObjectiveHint: NextObjectiveHint;
+  /** FIX-4 E11: with a food hint (`food_reserve`, `harvest_reserve`), what the town lacks. Absent otherwise (and before v18). */
+  readonly foodNeeds?: FoodNeeds;
 }
 
 /** The season being counted: its start snapshot and the events so far. */
@@ -52,13 +66,16 @@ export interface SeasonTally {
   readonly resettled: number;
   readonly eras: readonly { readonly eraId: string; readonly forced: boolean }[];
   readonly firstWinterWarning: boolean;
+  /** FIX-4 E7: residents lost to hunger so far this season. Absent = none (v17 tallies). */
+  readonly starved?: number;
   /** F0-B (EV-9): event forecast, arrival and recovery lines raised this season. Absent = none (v12 tallies). */
   readonly events?: readonly EventSeasonEvent[];
 }
 
 /**
- * FP-4 (FP9): raised once, at the start of the first autumn whose food (in store and still in the fields) will not last
- * through the winter and the lean spring to the next harvest.
+ * FP-4 (FP9): raised at the start of an autumn whose food (FIX-4 E8: every such autumn, was the first only; the
+ * latest is kept) — in store and still in the fields — will not last through the winter and the lean spring to the
+ * next harvest.
  */
 export interface FirstWinterWarning {
   readonly tick: number;

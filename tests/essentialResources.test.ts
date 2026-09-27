@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { BALANCE } from "../src/content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { TerrainType } from "../src/content/terrainConfig";
 import type { GameState } from "../src/engine/engine.types";
@@ -181,8 +182,9 @@ test("seed 2 essential resource guarantee adds quarryable rock without moving wa
   for (const [index, terrain] of before.entries()) {
     if (terrain === "water") assert.equal(after[index], "water", `water tile ${index} moved`);
   }
-  assert.equal(state.treasuryTimber, 120);
-  assert.equal(state.treasuryCoin, 0);
+  // FIX-4 E1·E9: the opening stocks are the balance's (160 timber, 60d).
+  assert.equal(state.treasuryTimber, BALANCE.STARTING_TIMBER);
+  assert.equal(state.treasuryCoin, BALANCE.STARTING_COIN);
   assert.deepEqual(state.walkers, []);
 });
 

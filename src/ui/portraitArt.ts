@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import type { Person } from "../engine/persons.types";
 import { assetUrlForBase } from "../render/worldAssets";
 import { PORTRAIT_IMAGES } from "./portraitArtManifest.generated";
+import { silhouetteUrl } from "./portraitSilhouette";
 import { UI_ART_MANIFEST } from "./uiArtManifest.generated";
 import type { StewardTone } from "./uiArt";
 
@@ -15,10 +16,13 @@ export const STEWARD_PORTRAIT: Readonly<Record<StewardTone, string>> = { neutral
 const STEWARD_TONES: readonly StewardTone[] = ["neutral", "concern", "success"];
 
 const hasPortrait = (id: string): id is PortraitImageId => Object.hasOwn(PORTRAIT_IMAGES, id);
-const url = (path: string) => assetUrlForBase(path, import.meta.env?.BASE_URL ?? "/");
+const url = (path: string) => path.startsWith("data:") ? path : assetUrlForBase(path, import.meta.env?.BASE_URL ?? "/");
 /** The picture's 96 px and full-size files (the pool's JPEGs, or the P0 steward's PNGs). */
 function imageOf(portraitId: string): Readonly<{ url: string; url96: string }> | null {
   if (hasPortrait(portraitId)) return PORTRAIT_IMAGES[portraitId];
+  // FIX-4 (HR-12): under 8 the engine gives a silhouette key; the figure is one SVG for every size.
+  const figure = silhouetteUrl(portraitId);
+  if (figure !== null) return { url: figure, url96: figure };
   const tone = STEWARD_TONES.find(entry => STEWARD_PORTRAIT[entry] === portraitId);
   if (tone === undefined) return null;
   const steward = UI_ART_MANIFEST.portraits[`advisor_steward_portrait_${tone}`];

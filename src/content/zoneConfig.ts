@@ -49,3 +49,10 @@ export const PARCEL_RULES = {
 
 /** ZoneFillAgent v0 (Z-14): at most this many house plots under construction at once. */
 export const ZONE_FILL_MAX_PARCELS = 10;
+
+/**
+ * FIX-4 E6 (HR-6): plot settlement in every game. One house per `cadenceTicks` — the bot's decision cadence
+ * (`AUTOPLAY_TICK_CADENCE`), so plots fill as fast as under auto growth — while fewer than `maxWaitingHomes` homes
+ * wait for their first household.
+ */
+export const ZONE_SETTLEMENT = { cadenceTicks: 120, maxWaitingHomes: 2 } as const;

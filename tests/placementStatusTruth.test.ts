@@ -82,9 +82,15 @@ test("PT-3 a town with 30 game seconds of stored bread is not stable: food reser
   assert.equal(settlementGuidance(season).statusLine, "정착지는 안정적입니다");
 });
 
-test("PT-3 wheat counts as the bread a mill makes of it", () => {
+test("PT-3 wheat counts as the bread a mill makes of it — only while a mill grinds it (FIX-4 E5)", () => {
   const empty = withStoredBread(0);
   const store = empty.buildings.find(building => building.kind === "storehouse" || building.kind === "granary")!;
   const wheat = { ...empty, buildings: empty.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, wheat: 40 } } : building) };
-  assert.equal(foodReserveTicks(wheat), foodReserveTicks(withStoredBread(20)));
+  assert.equal(foodReserveTicks(wheat), 0, "no mill: the wheat feeds no one");
+  const mill: Building = { id: "mill-test", kind: "mill", tx: 0, ty: 0, workers: BUILDING_CONFIG_BY_KIND.mill.workersRequired,
+    inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+  const grinding = { ...wheat, buildings: [...wheat.buildings, mill] };
+  assert.equal(foodReserveTicks(grinding), foodReserveTicks(withStoredBread(20)), "a staffed mill keeps up with 40 wheat");
+  assert.equal(foodReserveTicks({ ...grinding, buildings: grinding.buildings.map(building => building.id === mill.id ? { ...building, upkeepUnpaid: true } : building) }), 0,
+    "a mill stopped for unpaid upkeep grinds nothing");
 });

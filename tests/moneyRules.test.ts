@@ -13,7 +13,7 @@ import {
   accrueTollCrossings,
   marketStalls,
   moneyOf,
-  settleMoneyPeriod,
+  settleMoneyPeriod, outstandingArrears,
   upkeepCharges,
 } from "../src/engine/moneyRules";
 import { settleMarkets } from "../src/engine/marketSettlement";
@@ -35,7 +35,8 @@ function building(id: string, kind: Building["kind"], patch: Partial<Building> =
 }
 
 function base(patch: Partial<GameState> = {}): GameState {
-  return { ...structuredClone(DEFAULT_GAME_STATE), buildings: [], houses: [], tick: PERIOD, ...patch };
+  // The money rules from an empty treasury (a new game opens with BALANCE.STARTING_COIN, FIX-4 E1).
+  return { ...structuredClone(DEFAULT_GAME_STATE), buildings: [], houses: [], tick: PERIOD, treasuryCoin: 0, ...patch };
 }
 
 function postedAt(state: GameState, category: LedgerEntry["category"], account: LedgerEntry["account"] = "cash"): readonly LedgerEntry[] {
@@ -182,35 +183,43 @@ test("M-5 an operating market with five stalls pays 20; a paused market pays not
   assert.ok(upkeepCharges(paused).every(charge => !markets.some(market => market.id === charge.facility.id)), "a paused market owes no upkeep");
 });
 
-test("M-6 upkeep beyond the balance goes to arrears, idles the facility and is repaid oldest first", () => {
+test("M-6 upkeep beyond the balance goes to arrears and idles the facility that period; old arrears are repaid oldest first", () => {
   const facilities = [building("a-church", "church", { workers: 3 }), building("b-well", "well"), building("c-mill", "mill", { workers: 2 })];
   const { church, well, mill } = MONEY_BALANCE.upkeep;
   let state = settleMoneyPeriod(base({ buildings: facilities, treasuryCoin: 0 }));
   assert.equal(treasuryBalance(state), 0);
   assert.equal(accountBalance(state.ledger!, "arrears"), church + well + mill);
-  assert.deepEqual(moneyOf(state).arrears.map(arrear => arrear.facility.id), ["a-church", "b-well", "c-mill"]);
+  // FIX-4 E2: the charge order is the food chain (mill), then services (church, well by age, then id).
+  assert.deepEqual(moneyOf(state).arrears.map(arrear => arrear.facility.id), ["c-mill", "a-church", "b-well"]);
   assert.ok(state.buildings.every(candidate => candidate.upkeepUnpaid === true && candidate.workers === 0));
   const labour = allocateBuildingAndConstructionLabour(state.buildings, [], 100, { era: "hamlet", tick: state.tick, eraProclaimedTick: null }, () => true);
   assert.ok(labour.buildings.every(candidate => candidate.workers === 0), "an unpaid facility takes no workers, like a paused one");
 
-  // Rent covers this period's upkeep plus the church's old charge: this period is paid first, then the oldest
-  // arrear (the church); the queue stops at the well's old charge, so the well and the mill stay idle.
+  // Rent covers this period's upkeep plus the mill's old charge: this period is paid first, then the oldest arrear
+  // (the mill's); the queue stops at the church's old charge. FIX-4 E3: every facility paid this period, so none is
+  // idle — the church's and the well's old charges wait on the arrears account.
   const home = { buildingId: "home", level: 0, residents: 3, hasWater: true, breadStock: 0, lastServicedTick: 0, unmetRequirementTicks: 0 };
   const homes = (count: number) => Array.from({ length: count }, (_, index) => ({ ...home, buildingId: `home-${index}` }));
-  const income = (church + well + mill) + church;
+  const income = (church + well + mill) + mill;
   state = settleMoneyPeriod({ ...state, tick: PERIOD * 2, houses: homes(income / MONEY_BALANCE.rentByLevel[0]) });
   const upkeep = postedAt(state, "upkeep");
-  assert.deepEqual(upkeep.filter(entry => entry.sourceRefs.length === 1).map(entry => entry.sourceRefs[0].id), ["a-church", "b-well", "c-mill"]);
-  assert.deepEqual(upkeep.filter(entry => entry.sourceRefs[1]?.detail === "arrears_paid").map(entry => entry.sourceRefs[0].id), ["a-church"]);
-  assert.deepEqual(moneyOf(state).arrears.map(arrear => [arrear.facility.id, arrear.tick]), [["b-well", PERIOD], ["c-mill", PERIOD]]);
-  assert.deepEqual(state.buildings.filter(candidate => candidate.upkeepUnpaid === true).map(candidate => candidate.id), ["b-well", "c-mill"]);
+  assert.deepEqual(upkeep.filter(entry => entry.sourceRefs.length === 1).map(entry => entry.sourceRefs[0].id), ["c-mill", "a-church", "b-well"]);
+  assert.deepEqual(upkeep.filter(entry => entry.sourceRefs[1]?.detail === "arrears_paid").map(entry => entry.sourceRefs[0].id), ["c-mill"]);
+  assert.deepEqual(moneyOf(state).arrears.map(arrear => [arrear.facility.id, arrear.tick]), [["a-church", PERIOD], ["b-well", PERIOD]]);
+  assert.deepEqual(state.buildings.filter(candidate => candidate.upkeepUnpaid === true).map(candidate => candidate.id), []);
+  assert.equal(outstandingArrears(state).total, church + well, "the old debt is still shown");
+
+  // A period the treasury cannot pay idles only the facilities it could not pay this period.
+  const short = settleMoneyPeriod({ ...state, tick: PERIOD * 3, houses: homes(mill / MONEY_BALANCE.rentByLevel[0]) });
+  assert.deepEqual(short.buildings.filter(candidate => candidate.upkeepUnpaid === true).map(candidate => candidate.id), ["a-church", "b-well"]);
 
   // A large balance clears every old charge oldest first after this period's upkeep.
-  const withCash = settleMoneyPeriod({ ...state, tick: PERIOD * 3, houses: homes(200) });
+  const withCash = settleMoneyPeriod({ ...short, tick: PERIOD * 4, houses: homes(400) });
   assert.equal(accountBalance(withCash.ledger!, "arrears"), 0);
   assert.deepEqual(moneyOf(withCash).arrears, []);
   assert.ok(withCash.buildings.every(candidate => candidate.upkeepUnpaid === undefined), "paid facilities work again");
-  assert.deepEqual(postedAt(withCash, "upkeep").filter(entry => entry.sourceRefs[1]?.detail === "arrears_paid").map(entry => entry.sourceRefs[0].id), ["b-well", "c-mill"]);
+  assert.deepEqual(postedAt(withCash, "upkeep").filter(entry => entry.sourceRefs[1]?.detail === "arrears_paid").map(entry => entry.sourceRefs[0].id),
+    ["a-church", "b-well", "a-church", "b-well"]);
 });
 
 function stoneReady(patch: Partial<GameState> = {}): GameState {

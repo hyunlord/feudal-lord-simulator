@@ -35,6 +35,8 @@ export const SEASON_LEDGER_COPY = {
     households_resettled: (count: number) => `다시 든 가구 ${count}`,
     era_entered: (name: string, forced: boolean) => forced ? `${name} 시대가 준비 없이 왔습니다` : `${name} 시대에 들어섰습니다`,
     first_winter_warning: "다음 수확까지 비축이 모자랍니다",
+    /** FIX-4 E7: people lost to hunger this season (the engine's `residents_starved`). */
+    residents_starved: (people: number) => `굶주려 ${people}명이 줄었습니다`,
     event_rumour: (name: string) => `${name} 소문이 돕니다`,
     event_sign: (name: string) => `${name} 조짐이 보입니다`,
     event_arrived: (name: string) => `${name}이 닥쳤습니다`,
@@ -44,6 +46,14 @@ export const SEASON_LEDGER_COPY = {
   quiet: "큰 일 없이 지나간 계절입니다",
   /** UX-0b: the season's own loss when no event names it (starvation is not an engine event). */
   populationFell: (people: number) => `사람이 ${people}명 줄었습니다`,
+  /** FIX-4 E11: a food hint says with what (the engine's `foodNeeds`). */
+  needs: {
+    arableCells: (cells: number) => `경작지 ${cells}칸`,
+    farmstead: "헛간",
+    mill: "방앗간",
+    line: (parts: readonly string[]) => `다음: 식량 — ${parts.join("·")}이 필요합니다`,
+    harvest: "다음: 식량 — 밭·헛간·방앗간은 모자라지 않습니다. 수확까지 버티세요",
+  },
   hints: {
     food_reserve: "다음: 식량 비축 — 곡창을 채우세요",
     harvest_reserve: "다음: 다음 수확까지 — 경작지를 늘리세요",

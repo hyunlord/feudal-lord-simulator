@@ -178,7 +178,7 @@ test("DEFAULT_GAME_STATE opens with stocked buildings and a legal connected road
     { id: "logging-camp-50-40-0", kind: "logging_camp", tx: 50, ty: 40, workers: 3, inventory: {} },
     { id: "storehouse-41-40-0", kind: "storehouse", tx: 41, ty: 40, workers: 1, inventory: { logs: 20 } },
   ]);
-  assert.equal(state.treasuryTimber, 120);
+  assert.equal(state.treasuryTimber, 160);
   const roadTiles = state.tiles.filter((tile) => tile.hasRoad);
   assert.deepEqual(
     roadTiles
