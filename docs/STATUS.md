@@ -16,7 +16,7 @@
     - 시나리오 E11~E20.
     - 2장 봇 완주 5/5: 다섯 seed 모두 시장, 1340~1341.
     - 가드레일 1회차 `9efac4c` 5/5: 승리·1장 끝 틱은 기준선과 같다. 새 기준선 `seeds/baseline-9efac4c.json`.
-    - 전체 회귀 `9efac4c` 3,205/3,205, 깨끗한 클론 CLONE_STATUS.
+    - 전체 회귀 `9efac4c` 3,205/3,205, 깨끗한 클론 `7b88a6f` 3,205/3,205.
   - **렌더가 넘겨받을 것**: 결정 카드 다섯의 문구·그림(`openPetitions` `defId`), `warForecast`·`beaconLit`·`raidLosses`·`conscriptsAway`, 연대기 `stats.war`, 원장 `war.*`, 장부 새 분류 아홉.
 
 - **C4 에일 사슬 — 멈춤(사용자 판정 2026-09-27)**: 보리·말트·에일을 `ResourceType`에 넣으면 렌더·UI 23개 파일의 자원 전수 표가 깨진다([목록](verification/c4-ale/type-impact.txt) — 원격 브랜치 `claude/c4-ale`). 렌더 세션이 자원 목록을 `content/resourceCatalog.ts` 한 곳으로 모으면, C4는 그 목록에 세 줄만 넣는 방식으로 다시 잇는다.
