@@ -1,0 +1,482 @@
+[
+  {
+    "assetId": "decals/chalk_exposure_a-v1",
+    "prompt": "Create ONE transparent RGBA game ground decal, chalk_exposure_a-v1. Project references shown are style and colour only. Low flat chalk exposure in southern English grassland: three small connected irregular ivory chalk-soil chips lying flush in sparse dull olive short turf. NOT a boulder, not a raised rock, not a complete island or terrain tile. 2:1 isometric ground-plane view, very low relief, natural unequal broken outline, soft top-left light, no long shadow. Painted game art matching reference muted palette; readable broad 8px masses after small reduction, no photoreal speckle. Final canvas64x48 with8px transparent margin, artwork occupies48x32, bottomcenter ground anchor32,40. Compose cleanly centred at this aspect. True transparent background; no text, labels, grid, border, flowers or objects. This is a unique small exposure fragment A; no multiple panels.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-beae38bd-06b8-4736-89b7-46df90caee85.png",
+    "width": 64,
+    "height": 48,
+    "referenceInputs": [
+      "chalk_outcrop_a-v1.png",
+      "grass.png"
+    ],
+    "generatedAt": "2026-09-27T05:21:52.040Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/chalk_exposure_a-v1.png",
+    "outputSize": [
+      64,
+      48
+    ],
+    "pivot": [
+      32,
+      40
+    ],
+    "manualEdits": "Alpha bounding-box crop (224,343,1011,411); one high-quality downsample into 64x48 at (8,20,48,20); bottom-center pivot 32,40; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/chalk_exposure_a-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/chalk_exposure_b-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal chalk_exposure_b-v1. Project images are colour/paint style references only. Subject: one irregular crescent of flush pale chalk earth with a split bare centre and two tiny olive turf tongues, a low worn soil exposure not rocks. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 96x64px with transparent8px margin all sides, bottom-centre ground anchor(48,56); artwork occupies at most 80x48. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-0aed7b6b-eee1-4b0e-ae42-a1385895990b.png",
+    "width": 96,
+    "height": 64,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:23:37.196Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/chalk_exposure_b-v1.png",
+    "outputSize": [
+      96,
+      64
+    ],
+    "pivot": [
+      48,
+      56
+    ],
+    "manualEdits": "Alpha bounding-box crop (89,204,1359,600); one high-quality downsample into 96x64 at (8,21,80,35); bottom-center pivot 48,56; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/chalk_exposure_b-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/chalk_exposure_c-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal chalk_exposure_c-v1. Project images are colour/paint style references only. Subject: a broad asymmetrical branching fork of exposed pale chalk soil, flat cream earth with three disconnected small edge chips and sparse low olive turf, not raised boulders. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 128x96px with transparent8px margin all sides, bottom-centre ground anchor(64,88); artwork occupies at most 112x80. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-6a1e9454-9b0d-4ee7-86f3-004bcf2cce79.png",
+    "width": 128,
+    "height": 96,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:24:18.377Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/chalk_exposure_c-v1.png",
+    "outputSize": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      88
+    ],
+    "manualEdits": "Alpha bounding-box crop (82,154,1297,781); one high-quality downsample into 128x96 at (8,21,112,67); bottom-center pivot 64,88; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/chalk_exposure_c-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/heath_patch_a-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal heath_patch_a-v1. Project images are colour/paint style references only. Subject: one small low heather mat, muted dusty mauve-brown foliage with two olive fern fans, spreading flat uneven triangular footprint, no tall bush. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 64x48px with transparent8px margin all sides, bottom-centre ground anchor(32,40); artwork occupies at most 48x32. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-533877bf-432d-4ea3-8a34-1e49c9edb4a1.png",
+    "width": 64,
+    "height": 48,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:24:56.983Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/heath_patch_a-v1.png",
+    "outputSize": [
+      64,
+      48
+    ],
+    "pivot": [
+      32,
+      40
+    ],
+    "manualEdits": "Alpha bounding-box crop (136,298,1199,486); one high-quality downsample into 64x48 at (8,21,48,19); bottom-center pivot 32,40; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/heath_patch_a-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/heath_patch_b-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal heath_patch_b-v1. Project images are colour/paint style references only. Subject: two separate low heather cushions, one wide left cushion and small right crescent, dusty mauve-brown and olive, tiny restrained flower impression not bright flowers. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 96x64px with transparent8px margin all sides, bottom-centre ground anchor(48,56); artwork occupies at most 80x48. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-26af1a62-0fbf-4806-a9c4-86b1aeb3bf2d.png",
+    "width": 96,
+    "height": 64,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:25:34.809Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/heath_patch_b-v1.png",
+    "outputSize": [
+      96,
+      64
+    ],
+    "pivot": [
+      48,
+      56
+    ],
+    "manualEdits": "Alpha bounding-box crop (130,290,1285,433); one high-quality downsample into 96x64 at (8,29,80,27); bottom-center pivot 48,56; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/heath_patch_b-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/heath_patch_c-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal heath_patch_c-v1. Project images are colour/paint style references only. Subject: low sprawling heather and bracken patch with a distinct open centre, three unequal lobes around exposed peat, olive and muted dusty mauve-brown, no tall bush. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 128x96px with transparent8px margin all sides, bottom-centre ground anchor(64,88); artwork occupies at most 112x80. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-71eee2b9-d393-46f2-92ce-bb0904c3ac56.png",
+    "width": 128,
+    "height": 96,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:26:18.121Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/heath_patch_c-v1.png",
+    "outputSize": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      88
+    ],
+    "manualEdits": "Alpha bounding-box crop (96,162,1305,774); one high-quality downsample into 128x96 at (8,22,112,66); bottom-center pivot 64,88; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/heath_patch_c-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/fen_pool_a-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal fen_pool_a-v1. Project images are colour/paint style references only. Subject: one small shallow quiet grey-green water puddle, asymmetric bean footprint, dark damp peat lip only at back with two very short olive grass tufts, no stones or tall reeds. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 64x48px with transparent8px margin all sides, bottom-centre ground anchor(32,40); artwork occupies at most 48x32. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-a5b73ad7-86d0-461a-ad89-e9e3fae5f56d.png",
+    "width": 64,
+    "height": 48,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:26:52.047Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/fen_pool_a-v1.png",
+    "outputSize": [
+      64,
+      48
+    ],
+    "pivot": [
+      32,
+      40
+    ],
+    "manualEdits": "Alpha bounding-box crop (336,319,789,399); one high-quality downsample into 64x48 at (8,16,48,24); bottom-center pivot 32,40; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/fen_pool_a-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/fen_pool_b-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal fen_pool_b-v1. Project images are colour/paint style references only. Subject: two connected shallow quiet grey-olive water puddles, wide left and narrow right, interrupted earthy bank with one low wetgrass tongue, no waves and no tall reeds. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 96x64px with transparent8px margin all sides, bottom-centre ground anchor(48,56); artwork occupies at most 80x48. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-e8d77033-e249-41eb-a353-a4f558d05ecd.png",
+    "width": 96,
+    "height": 64,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:27:25.466Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/fen_pool_b-v1.png",
+    "outputSize": [
+      96,
+      64
+    ],
+    "pivot": [
+      48,
+      56
+    ],
+    "manualEdits": "Alpha bounding-box crop (66,284,1406,472); one high-quality downsample into 96x64 at (8,29,80,27); bottom-center pivot 48,56; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/fen_pool_b-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/fen_pool_c-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal fen_pool_c-v1. Project images are colour/paint style references only. Subject: one wide shallow still fen pool with two irregular projecting arms and a small peat islet near right edge, subdued grey-green water, low wetgrass only at three edges, no tall reeds. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 128x96px with transparent8px margin all sides, bottom-centre ground anchor(64,88); artwork occupies at most 112x80. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-91672666-7043-4c1e-97d9-c07e9750f31d.png",
+    "width": 128,
+    "height": 96,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:28:05.031Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/fen_pool_c-v1.png",
+    "outputSize": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      88
+    ],
+    "manualEdits": "Alpha bounding-box crop (147,222,1213,633); one high-quality downsample into 128x96 at (8,30,112,58); bottom-center pivot 64,88; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/fen_pool_c-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/coastal_sand_a-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal coastal_sand_a-v1. Project images are colour/paint style references only. Subject: a small low flat irregular pale tan sand trace, split into three connected smears among sparse muted olive shortgrass, not a mound or island. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 64x48px with transparent8px margin all sides, bottom-centre ground anchor(32,40); artwork occupies at most 48x32. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-847cdb76-108a-4fde-bb63-7882eb9891ce.png",
+    "width": 64,
+    "height": 48,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:28:40.525Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/coastal_sand_a-v1.png",
+    "outputSize": [
+      64,
+      48
+    ],
+    "pivot": [
+      32,
+      40
+    ],
+    "manualEdits": "Alpha bounding-box crop (196,296,1078,470); one high-quality downsample into 64x48 at (8,19,48,21); bottom-center pivot 32,40; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/coastal_sand_a-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/coastal_sand_b-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal coastal_sand_b-v1. Project images are colour/paint style references only. Subject: a long oblique broken sand tongue with a narrow opening and two small detached sandy fragments, light warm grey-tan, a few short olive grass blades, completely flat. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 96x64px with transparent8px margin all sides, bottom-centre ground anchor(48,56); artwork occupies at most 80x48. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-6dec6cff-59d6-4fac-97b2-a8835b432ebd.png",
+    "width": 96,
+    "height": 64,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:29:14.515Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/coastal_sand_b-v1.png",
+    "outputSize": [
+      96,
+      64
+    ],
+    "pivot": [
+      48,
+      56
+    ],
+    "manualEdits": "Alpha bounding-box crop (126,198,1284,633); one high-quality downsample into 96x64 at (8,17,80,39); bottom-center pivot 48,56; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/coastal_sand_b-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/coastal_sand_c-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal coastal_sand_c-v1. Project images are colour/paint style references only. Subject: a broad irregular branching windblown sand trace with deep cut-in gaps and sparse grey-olive grass tufts, asymmetric three-finger footprint, flat grey-tan surface. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 128x96px with transparent8px margin all sides, bottom-centre ground anchor(64,88); artwork occupies at most 112x80. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-9c9476ff-6bac-4b31-bbf6-10c385ffd50b.png",
+    "width": 128,
+    "height": 96,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:29:55.175Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/coastal_sand_c-v1.png",
+    "outputSize": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      88
+    ],
+    "manualEdits": "Alpha bounding-box crop (89,102,1292,852); one high-quality downsample into 128x96 at (8,14,112,74); bottom-center pivot 64,88; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/coastal_sand_c-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/woodland_litter_a-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal woodland_litter_a-v1. Project images are colour/paint style references only. Subject: one small asymmetric low patch of muted russet-brown fallen leaf litter with a little dark olive moss, only three or four broad leaf shapes, flat ground decal. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 64x48px with transparent8px margin all sides, bottom-centre ground anchor(32,40); artwork occupies at most 48x32. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-d438496c-45d4-4ad0-9e6f-974c1eda362c.png",
+    "width": 64,
+    "height": 48,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:30:29.527Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/woodland_litter_a-v1.png",
+    "outputSize": [
+      64,
+      48
+    ],
+    "pivot": [
+      32,
+      40
+    ],
+    "manualEdits": "Alpha bounding-box crop (258,342,945,388); one high-quality downsample into 64x48 at (8,20,48,20); bottom-center pivot 32,40; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/woodland_litter_a-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/woodland_litter_b-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal woodland_litter_b-v1. Project images are colour/paint style references only. Subject: two unequal low clusters of tan brown fallen leaves and subdued olive moss with transparent gap between, broad readable leaf clumps, flat ground decal. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 96x64px with transparent8px margin all sides, bottom-centre ground anchor(48,56); artwork occupies at most 80x48. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-f9ecc2a5-a1b2-4091-9ceb-dc86cbd55e54.png",
+    "width": 96,
+    "height": 64,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:31:07.018Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/woodland_litter_b-v1.png",
+    "outputSize": [
+      96,
+      64
+    ],
+    "pivot": [
+      48,
+      56
+    ],
+    "manualEdits": "Alpha bounding-box crop (88,195,1380,635); one high-quality downsample into 96x64 at (8,19,80,37); bottom-center pivot 48,56; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/woodland_litter_b-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  },
+  {
+    "assetId": "decals/woodland_litter_c-v1",
+    "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game ground decal woodland_litter_c-v1. Project images are colour/paint style references only. Subject: a low spreading curved trail of muted ochre-brown leaf litter with three moss cushions and exposed dark earth gaps, asymmetric branching footprint, flat ground decal. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 128x96px with transparent8px margin all sides, bottom-centre ground anchor(64,88); artwork occupies at most 112x80. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-f8f5-7802-b94e-021c4f4a0d8d/exec-54696c08-a9cc-4383-95a2-c3f4d30d2dc5.png",
+    "width": 128,
+    "height": 96,
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:31:47.585Z",
+    "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave22-rework-candidates-20260927/decals/woodland_litter_c-v1.png",
+    "outputSize": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      88
+    ],
+    "manualEdits": "Alpha bounding-box crop (112,156,1266,749); one high-quality downsample into 128x96 at (8,22,112,66); bottom-center pivot 64,88; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+    "selectedReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "id": "decals/woodland_litter_c-v1",
+    "selectionReason": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.",
+    "role": "decal",
+    "repeatAxes": "none",
+    "seasonPolicy": "Neutral natural palette; no baked snow or flowering-season dependence. Overlay season handling belongs to integration."
+  }
+]

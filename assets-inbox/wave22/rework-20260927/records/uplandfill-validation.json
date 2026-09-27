@@ -1,0 +1,155 @@
+{
+  "grassLowFrequency16pxStd": 1.1830169664095056,
+  "pairs": [
+    {
+      "type": "chalk_down",
+      "season": "summer",
+      "ids": [
+        "terrain/chalk_down_summer_a-v2",
+        "terrain/chalk_down_summer_b-v2"
+      ],
+      "maxCrossVariantXRGBA": 0,
+      "maxCrossVariantYRGBA": 0,
+      "dimensions": [
+        [
+          256,
+          128
+        ],
+        [
+          256,
+          128
+        ]
+      ],
+      "opaque": true,
+      "lowFrequency16pxStd": [
+        0.8702913220515269,
+        1.0569538563563268
+      ]
+    },
+    {
+      "type": "chalk_down",
+      "season": "autumn",
+      "ids": [
+        "terrain/chalk_down_autumn_a-v2",
+        "terrain/chalk_down_autumn_b-v2"
+      ],
+      "maxCrossVariantXRGBA": 0,
+      "maxCrossVariantYRGBA": 0,
+      "dimensions": [
+        [
+          256,
+          128
+        ],
+        [
+          256,
+          128
+        ]
+      ],
+      "opaque": true,
+      "lowFrequency16pxStd": [
+        0.9365976033059493,
+        0.9049105744851599
+      ]
+    },
+    {
+      "type": "chalk_down",
+      "season": "winter",
+      "ids": [
+        "terrain/chalk_down_winter_a-v2",
+        "terrain/chalk_down_winter_b-v2"
+      ],
+      "maxCrossVariantXRGBA": 0,
+      "maxCrossVariantYRGBA": 0,
+      "dimensions": [
+        [
+          256,
+          128
+        ],
+        [
+          256,
+          128
+        ]
+      ],
+      "opaque": true,
+      "lowFrequency16pxStd": [
+        1.206163942447443,
+        1.3047703305074478
+      ]
+    },
+    {
+      "type": "heath",
+      "season": "summer",
+      "ids": [
+        "terrain/heath_summer_a-v2",
+        "terrain/heath_summer_b-v2"
+      ],
+      "maxCrossVariantXRGBA": 0,
+      "maxCrossVariantYRGBA": 0,
+      "dimensions": [
+        [
+          256,
+          128
+        ],
+        [
+          256,
+          128
+        ]
+      ],
+      "opaque": true,
+      "lowFrequency16pxStd": [
+        0.9643168608293528,
+        0.765684644300795
+      ]
+    },
+    {
+      "type": "heath",
+      "season": "autumn",
+      "ids": [
+        "terrain/heath_autumn_a-v2",
+        "terrain/heath_autumn_b-v2"
+      ],
+      "maxCrossVariantXRGBA": 0,
+      "maxCrossVariantYRGBA": 0,
+      "dimensions": [
+        [
+          256,
+          128
+        ],
+        [
+          256,
+          128
+        ]
+      ],
+      "opaque": true,
+      "lowFrequency16pxStd": [
+        0.9784393497334354,
+        0.7545666251431192
+      ]
+    },
+    {
+      "type": "heath",
+      "season": "winter",
+      "ids": [
+        "terrain/heath_winter_a-v2",
+        "terrain/heath_winter_b-v2"
+      ],
+      "maxCrossVariantXRGBA": 0,
+      "maxCrossVariantYRGBA": 0,
+      "dimensions": [
+        [
+          256,
+          128
+        ],
+        [
+          256,
+          128
+        ]
+      ],
+      "opaque": true,
+      "lowFrequency16pxStd": [
+        0.9149946271006217,
+        1.2070063244936275
+      ]
+    }
+  ]
+}

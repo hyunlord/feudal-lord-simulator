@@ -1,0 +1,216 @@
+[
+  {
+    "id": "terrain/fen_summer_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-b829de28-8b51-4a10-a6cb-49eadc5aa7d2.png",
+    "prompt": "Create ONE seamless opaque top-down game terrain FILL texture for medieval southern English fen summer, 2:1 rectangular 256x128 final tile. Use attached project grass.png as the exact visual target for fine quiet painterly grain scale, uniformity, very low contrast and absence of focal shapes. Fen distinction ONLY subdued cooler grey olive base grass tone and fine damp grass fibers evenly distributed. Absolutely no pools, water, reeds, islands, clumps, moss patches, cloud blotches, large light/dark masses, diagonal ribbons, directional bands, contours or objects. Fill is background color plus small subdued brush grain only. Constant average color and density throughout; no vignette. Must repeat seamlessly BOTH X and Y and look inconspicuous over 4x4 repetitions. No text, border, grid, transparency, photo-real high contrast noise. Summer A variant. Output image only.",
+    "referenceInputs": [
+      "grass.png"
+    ],
+    "generatedAt": "2026-09-27T05:20:58.619Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Fine quiet low-contrast background matching project grass reference",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_summer_a-v2.png"
+  },
+  {
+    "id": "terrain/fen_summer_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-0ca4a3a3-cef2-4844-bf88-66451cc5e8e9.png",
+    "prompt": "Create ONE opaque seamless top-down terrain fill texture, fen summer B, rectangular 2:1 final256x128. Attached grass is project style reference. Attached fen summer A defines SAME palette and exact tiny understated brush grain density. Make independent rearrangement of only this fine grain; no large identifiable feature or value patches. Uniform subdued grey olive summer grass with fine wet fibers. No water,pools,reeds,islands,bands,clumps,cloudblotches,sand,objects. No vignette. BOTH XY tileable with consistent edge average. Very low contrast, no individual flecks that stand out. Must disappear into quiet background over4x4 and mix seamlessly next to A. No text/grid/transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "fen_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:22:34.106Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Independent fine grain layout without large patches",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_summer_b-v2.png"
+  },
+  {
+    "id": "terrain/fen_autumn_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-04650ee2-1e5d-46e3-9d3d-71fa4c1824d2.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL fen autumn A, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain, reference fen A defines complete absence of identifiable shapes. Change to muted grey olive brown damp dormant grass, slightly more fine dry straw fibers but uniformly scattered with no leaves or patches. Independent fine grain arrangement for varianta; same-season A/B must share palette and edge averages. No pools,water,reeds,islands,mossclumps,bands,largeclouds,diagonalribbons,sand,objects,shadows orvignette. Uniform very low contrast and consistent average across all areas; BOTH XY seamless, no visible repeating stamp at4x4. No text,border,grid or transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "fen_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:23:35.903Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Uniform fine seasonal brush grain without conspicuous terrain motifs",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_autumn_a-v2.png"
+  },
+  {
+    "id": "terrain/fen_autumn_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-630c0f28-6eae-4af6-a68e-e2efeb1dad96.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL fen autumn B, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain, reference fen A defines complete absence of identifiable shapes. Change to muted grey olive brown damp dormant grass, slightly more fine dry straw fibers but uniformly scattered with no leaves or patches. Independent fine grain arrangement for variantb; same-season A/B must share palette and edge averages. No pools,water,reeds,islands,mossclumps,bands,largeclouds,diagonalribbons,sand,objects,shadows orvignette. Uniform very low contrast and consistent average across all areas; BOTH XY seamless, no visible repeating stamp at4x4. No text,border,grid or transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "fen_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:24:15.254Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Uniform fine seasonal brush grain without conspicuous terrain motifs",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_autumn_b-v2.png"
+  },
+  {
+    "id": "terrain/fen_winter_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-b9c48258-2e5e-44ec-a2b8-1b18fa34d945.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL fen winter A, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain, reference fen A defines complete absence of identifiable shapes. Change to cool desaturated grey olive fine dormant grass with extremely thin evenly distributed pale frost dust, no white snow masses or patches; maintain quiet grass grain. Independent fine grain arrangement for varianta; same-season A/B must share palette and edge averages. No pools,water,reeds,islands,mossclumps,bands,largeclouds,diagonalribbons,sand,objects,shadows orvignette. Uniform very low contrast and consistent average across all areas; BOTH XY seamless, no visible repeating stamp at4x4. No text,border,grid or transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "fen_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:24:35.310Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Uniform fine seasonal brush grain without conspicuous terrain motifs",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_winter_a-v2.png"
+  },
+  {
+    "id": "terrain/fen_winter_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-cf0e3e81-80c8-4ecf-878c-b4267d67316a.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL fen winter B, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain, reference fen A defines complete absence of identifiable shapes. Change to cool desaturated grey olive fine dormant grass with extremely thin evenly distributed pale frost dust, no white snow masses or patches; maintain quiet grass grain. Independent fine grain arrangement for variantb; same-season A/B must share palette and edge averages. No pools,water,reeds,islands,mossclumps,bands,largeclouds,diagonalribbons,sand,objects,shadows orvignette. Uniform very low contrast and consistent average across all areas; BOTH XY seamless, no visible repeating stamp at4x4. No text,border,grid or transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "fen_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:25:00.977Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Uniform fine seasonal brush grain without conspicuous terrain motifs",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_winter_b-v2.png"
+  },
+  {
+    "id": "terrain/coastal_grass_summer_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-a7032ef7-d5a1-4b11-a565-be908004626d.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL coastal_grass summer A, 2:1 rectangular final256x128. Attached project grass defines fine quiet tiny brush grain and very low contrast. Render warm pale olive short coastal grass with a uniform sandy beige undertone, absolutely no visible sand patches, dunes, paths, tufts, shells,rocks,objects or distinct shapes. Ground color and minute brush texture ONLY. Flat uniform average across image; no clouds,masses,diagonalbands,vignette or shadows. BOTH XY seamless and invisible repeated4x4. Grain should be subtle and small like reference, not decorative blobs. No text,grid,border,transparency.",
+    "referenceInputs": [
+      "grass.png"
+    ],
+    "generatedAt": "2026-09-27T05:25:33.745Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Fine uniform coastal grass base without sand patches",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_summer_a-v2.png"
+  },
+  {
+    "id": "terrain/coastal_grass_summer_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-360e9c34-edd1-4088-a8f3-e2ccd3b493eb.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL coastal_grass summer B, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain; coastal A defines uniformity. Warm pale olive summer short grass with sandy beige ONLY as uniform base undertone. Independent fine grain layout for variantb; same-season A/B samepalette and edge averages. Absolutely no recognizable sand patches,dunes,paths,tufts,shells,rocks,objects,leaves,cloudblotches,large lightdark shapes,bands,vignettes. Color and minute brush grain only, uniformly very low contrast. BOTH XY seamless; inconspicuous repeated4x4 and mixedAB. No text,grid,transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "coastal_grass_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:26:44.636Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Fine uniform seasonal coastal grain without sand patches or identifiable features",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_summer_b-v2.png"
+  },
+  {
+    "id": "terrain/coastal_grass_autumn_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-154a93a8-f94a-4084-a0fc-913d006a461d.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL coastal_grass autumn A, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain; coastal A defines uniformity. Muted warm beige olive dormant autumn grass, fine dry straw fibers evenly distributed, sandy undertone. No red colors. Independent fine grain layout for varianta; same-season A/B samepalette and edge averages. Absolutely no recognizable sand patches,dunes,paths,tufts,shells,rocks,objects,leaves,cloudblotches,large lightdark shapes,bands,vignettes. Color and minute brush grain only, uniformly very low contrast. BOTH XY seamless; inconspicuous repeated4x4 and mixedAB. No text,grid,transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "coastal_grass_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:27:07.333Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Fine uniform seasonal coastal grain without sand patches or identifiable features",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_autumn_a-v2.png"
+  },
+  {
+    "id": "terrain/coastal_grass_autumn_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-217d8818-01bb-4810-b654-1573e8609f62.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL coastal_grass autumn B, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain; coastal A defines uniformity. Muted warm beige olive dormant autumn grass, fine dry straw fibers evenly distributed, sandy undertone. No red colors. Independent fine grain layout for variantb; same-season A/B samepalette and edge averages. Absolutely no recognizable sand patches,dunes,paths,tufts,shells,rocks,objects,leaves,cloudblotches,large lightdark shapes,bands,vignettes. Color and minute brush grain only, uniformly very low contrast. BOTH XY seamless; inconspicuous repeated4x4 and mixedAB. No text,grid,transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "coastal_grass_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:27:27.498Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Fine uniform seasonal coastal grain without sand patches or identifiable features",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_autumn_b-v2.png"
+  },
+  {
+    "id": "terrain/coastal_grass_winter_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-167c94af-d1de-45a4-be51-2e0bccfc5fc2.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL coastal_grass winter A, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain; coastal A defines uniformity. Cool desaturated pale grey beige winter short grass, extremely thin uniformly dispersed pale frost with no white snow masses. Independent fine grain layout for varianta; same-season A/B samepalette and edge averages. Absolutely no recognizable sand patches,dunes,paths,tufts,shells,rocks,objects,leaves,cloudblotches,large lightdark shapes,bands,vignettes. Color and minute brush grain only, uniformly very low contrast. BOTH XY seamless; inconspicuous repeated4x4 and mixedAB. No text,grid,transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "coastal_grass_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:27:49.725Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Fine uniform seasonal coastal grain without sand patches or identifiable features",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_winter_a-v2.png"
+  },
+  {
+    "id": "terrain/coastal_grass_winter_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-71a1-77a0-8809-82f9d0926a36/exec-3a196db6-cb72-4fdf-a379-1ccc917ec99a.png",
+    "prompt": "Create ONE opaque seamless top-down game terrain FILL coastal_grass winter B, rectangular2:1 final256x128. Project grass reference defines tiny quiet fine painterly grain; coastal A defines uniformity. Cool desaturated pale grey beige winter short grass, extremely thin uniformly dispersed pale frost with no white snow masses. Independent fine grain layout for variantb; same-season A/B samepalette and edge averages. Absolutely no recognizable sand patches,dunes,paths,tufts,shells,rocks,objects,leaves,cloudblotches,large lightdark shapes,bands,vignettes. Color and minute brush grain only, uniformly very low contrast. BOTH XY seamless; inconspicuous repeated4x4 and mixedAB. No text,grid,transparency.",
+    "referenceInputs": [
+      "grass.png",
+      "coastal_grass_summer_a-v2 (native)"
+    ],
+    "generatedAt": "2026-09-27T05:28:11.011Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "manualEdits": "Native image resized to 256x128; 8px opposing XY seam strips symmetrically blended; exact opaque alpha; uniform mean RGB palette matched per type/season and local RGB contrast multiplied by0.85. B mean RGB matched to A and 8px perimeter blended to A for mixed chunk compatibility. No procedural artwork.",
+    "selectionReason": "Fine uniform seasonal coastal grain without sand patches or identifiable features",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_winter_b-v2.png"
+  }
+]

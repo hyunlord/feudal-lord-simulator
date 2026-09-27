@@ -1,0 +1,35 @@
+[
+  {
+    "id": "shore/sand_beach_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-5d0a6958-2686-46e9-a7b3-ce0343eec599.png",
+    "prompt": "Use case: precise-object-edit. Edit target image1 is project's sand_beach_a-v1. Image2 is accepted sand_beach_b-v1 style and irregularity reference. Make ONE replacement strip road-independent shoreline sand_beach_a-v2, flat topdown 512x96 final asset, horizontal X repetition ONLY, full width, transparent top and bottom 8px blank plus inner soft material alpha fringe. Preserve muted olive land on top, warm sand middle, grey teal water below, same vertical width/values/brush density as accepted B. REPLACE regular scalloped sine-wave shoreline with natural asymmetric shoreline: unevenly spaced shallow incisions, one long almost-straight angled reach, a short narrow spit, varied curve radii; no repeating rhythmic identical waves or scallops. Do not make large deep bays exceeding current sandband thickness. Left and right endpoints seamless in colour and contour with same height. Painterly soft broad understated shore shapes matching project, no micro sand speckles, no stones/trees/objects/text/watermark/grid, no long shadows. True transparent PNG, a single full-length strip not a sheet, no perspective/isometric tilt.",
+    "referenceInputs": [
+      "/tmp/astra-wave22-candidates-20260927/shore/sand_beach_a-v1.png",
+      "/tmp/astra-wave22-candidates-20260927/shore/sand_beach_b-v1.png"
+    ],
+    "generatedAt": "2026-09-27T05:22:29.394Z",
+    "tool": "native image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "height": 96,
+    "selectionReason": "Irregular asymmetric beach profile replacing regular scallops.",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/shore/sand_beach_a-v2.png",
+    "width": 512,
+    "nativeSize": [
+      2173,
+      724
+    ],
+    "crop": [
+      0,
+      220,
+      2173,
+      284
+    ],
+    "role": "strip",
+    "repeat": "X only",
+    "orientation": "top land, bottom water",
+    "selectedReason": "Native project-referenced candidate; broad terrain contour retained, X seam normalized.",
+    "manualEdits": "Alpha-supported Y crop; one high-quality resample to full-width strip interior; 8px clear Y margins plus inner 8px alpha fade; 24px X endpoint cross-blend, exact endpoint RGBA equality. No generated art drawn by code."
+  }
+]

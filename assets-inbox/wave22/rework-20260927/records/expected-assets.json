@@ -1,0 +1,491 @@
+{
+  "scope": "35 accepted byte-identical +30 replacement fills +15 feature decals +1 shoreline",
+  "assets": [
+    {
+      "id": "boundary/chalk_edge_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/chalk_edge_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/heath_edge_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/heath_edge_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/fen_edge_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/fen_edge_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/coastal_edge_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "boundary/coastal_edge_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 64
+    },
+    {
+      "id": "shore/sand_beach_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/shingle_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/shingle_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/salt_marsh_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "shore/salt_marsh_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "boundary/reed_bed_a-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "boundary/reed_bed_b-v1",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    },
+    {
+      "id": "props/chalk_outcrop_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/chalk_outcrop_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/chalk_outcrop_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/sheep_stone_wall_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/sheep_stone_wall_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/fern_bush_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/fern_bush_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/fern_bush_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "props/gorse_a-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "props/gorse_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "props/reed_clump_a-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "id": "props/reed_clump_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "id": "props/reed_clump_c-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "id": "props/fen_puddle_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/fen_puddle_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/driftwood_a-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/driftwood_b-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/rock_pool-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/fallen_tree-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 64
+    },
+    {
+      "id": "props/mushrooms-v1",
+      "role": "decal",
+      "width": 64,
+      "height": 48
+    },
+    {
+      "id": "terrain/chalk_down_summer_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/chalk_down_summer_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/chalk_down_autumn_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/chalk_down_autumn_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/chalk_down_winter_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/chalk_down_winter_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_summer_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_summer_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_autumn_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_autumn_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_winter_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/heath_winter_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_summer_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_summer_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_autumn_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_autumn_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_winter_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/fen_winter_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_summer_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_summer_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_autumn_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_autumn_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_winter_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/coastal_grass_winter_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_summer_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_summer_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_autumn_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_autumn_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_winter_a-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "terrain/woodland_floor_winter_b-v2",
+      "role": "fill",
+      "width": 256,
+      "height": 128
+    },
+    {
+      "id": "decals/chalk_exposure_a-v1",
+      "role": "decal",
+      "width": 64,
+      "height": 48
+    },
+    {
+      "id": "decals/chalk_exposure_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "decals/chalk_exposure_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "decals/heath_patch_a-v1",
+      "role": "decal",
+      "width": 64,
+      "height": 48
+    },
+    {
+      "id": "decals/heath_patch_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "decals/heath_patch_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "decals/fen_pool_a-v1",
+      "role": "decal",
+      "width": 64,
+      "height": 48
+    },
+    {
+      "id": "decals/fen_pool_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "decals/fen_pool_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "decals/coastal_sand_a-v1",
+      "role": "decal",
+      "width": 64,
+      "height": 48
+    },
+    {
+      "id": "decals/coastal_sand_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "decals/coastal_sand_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "decals/woodland_litter_a-v1",
+      "role": "decal",
+      "width": 64,
+      "height": 48
+    },
+    {
+      "id": "decals/woodland_litter_b-v1",
+      "role": "decal",
+      "width": 96,
+      "height": 64
+    },
+    {
+      "id": "decals/woodland_litter_c-v1",
+      "role": "decal",
+      "width": 128,
+      "height": 96
+    },
+    {
+      "id": "shore/sand_beach_a-v2",
+      "role": "strip",
+      "width": 512,
+      "height": 96
+    }
+  ]
+}
