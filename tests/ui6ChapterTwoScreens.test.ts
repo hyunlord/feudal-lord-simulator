@@ -16,6 +16,9 @@ import { decodeSave } from "../src/save/saveCodec";
 import { petitionDecisionView } from "../src/ui/decisionModels";
 import { storyBeats } from "../src/ui/eventStory";
 import { PetitionModal } from "../src/ui/hud/StoryModals";
+import { ROYAL_LAYOUT, ROYAL_QUARTERED_FROM_YEAR, royalArms } from "../src/ui/heraldry/heraldry";
+import { emblemKey } from "../src/ui/heraldry/EmblemImage";
+import { factionEmblem } from "../src/ui/chronicle/chronicleScreenModel";
 import { lordshipView, menAwayLine } from "../src/ui/lordshipModel";
 import { warMarks } from "../src/ui/seasonStrip";
 import { SeasonStripPanel } from "../src/ui/hud/SeasonStrip";
@@ -155,4 +158,31 @@ test("UI-6 the season strip lists the war's coming steps within the year, soones
   assert.match(markup, /data-mark="war_wool_levy"/);
   assert.match(markup, /양모 공납 칙령 — (내년 )?.+쯤/);
   assert.match(markup, /data-icon="cause\.rights"/);
+});
+
+test("UI-6b the Crown bears the king's arms of the year: England's lions until 1340, then quartered with France", () => {
+  assert.equal(royalArms(1339), "england");
+  assert.equal(royalArms(ROYAL_QUARTERED_FROM_YEAR), "france_england");
+  assert.deepEqual(factionEmblem({ kind: "crown", heraldrySeed: 7 }, 1339), { kind: "royal", arms: "england" });
+  assert.deepEqual(factionEmblem({ kind: "crown", heraldrySeed: 7 }, 1340), { kind: "royal", arms: "france_england" });
+  assert.equal(factionEmblem({ kind: "overlord", heraldrySeed: 7 }, 1340).kind, "arms", "the others keep their seed's arms");
+  // Three lions in pale; quartered: three in each of 2 and 3, and a semé of lis over 1 and 4.
+  assert.equal(ROYAL_LAYOUT.england.lions.length, 3);
+  assert.deepEqual(ROYAL_LAYOUT.england.lions.map(box => box.y), [...ROYAL_LAYOUT.england.lions.map(box => box.y)].sort((a, b) => a - b));
+  assert.equal(ROYAL_LAYOUT.france_england.lions.length, 6);
+  assert.ok(ROYAL_LAYOUT.france_england.lis.length >= 8);
+  assert.equal(emblemKey({ kind: "royal", arms: "england" }), "royal.england");
+});
+
+test("UI-6b the decision card puts the sender's arms in the frame's roundel; the bishop brings the refugees' plea on their behalf", () => {
+  const cards = new Map<string, NonNullable<ReturnType<typeof petitionDecisionView>>>();
+  run(15, (state, defId) => { const view = petitionDecisionView(state); if (view !== null && !cards.has(defId)) cards.set(defId, view); });
+  const render = (view: NonNullable<ReturnType<typeof petitionDecisionView>>) =>
+    renderToStaticMarkup(createElement(PetitionModal, { view, onRespond: () => undefined, onLater: () => undefined, onPerson: () => undefined }));
+  const wool = cards.get("wool_payment")!;
+  assert.deepEqual(wool.presentation.from?.arms, { kind: "royal", arms: "england" }, "1337: England's arms");
+  assert.match(render(wool), /class="petition-roundel"/);
+  const refugees = render(cards.get("refugee_admission")!);
+  assert.match(refugees, /보낸 이: .+ \(피란민을 대신해\)/);
+  assert.doesNotMatch(render(wool), /대신해/);
 });

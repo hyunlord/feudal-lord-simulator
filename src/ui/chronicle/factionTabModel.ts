@@ -55,7 +55,6 @@ function leaderView(state: GameState, faction: FactionView): FactionLeaderView |
     portraitId: drawnPortraitId(person, personPortrait(state, person).portraitId) };
 }
 
-const emblemOf = factionEmblem;
 const nameOf = (faction: Pick<FactionView, "id" | "name">) => factionDisplayName(faction.id, faction.name);
 
 /** FX-6 `factionsList`: the nine rows of the tab, in the engine's order (overlord, Crown, neighbours, bishop, the town's). */
@@ -65,7 +64,7 @@ export function factionRows(state: GameState): readonly FactionRow[] {
     const leader = leaderView(state, faction);
     const relation = clampRelation(faction.relation);
     const relationText = COPY.relationText(relationBand(relation), relation);
-    return { id: faction.id, name, kind: FACTION_KIND_NAMES[faction.kind] ?? "", emblem: emblemOf(faction), emblemLabel: COPY.crestLabel, leader,
+    return { id: faction.id, name, kind: FACTION_KIND_NAMES[faction.kind] ?? "", emblem: factionEmblem(faction, currentYear(state)), emblemLabel: COPY.crestLabel, leader,
       relation, relationX: relationX(relation), relationText, demands: faction.demands.length, promises: faction.promises.length, memory: faction.memory.length,
       label: COPY.factionRowLabel(name, leader?.name ?? COPY.noLeader, relationText, faction.demands.length) };
   });
@@ -93,7 +92,7 @@ export function factionPageView(state: GameState, id: FactionId): FactionPageVie
   }
   const rights = state.politics?.rights ?? [];
   return {
-    id: faction.id, name: nameOf(faction), kind: FACTION_KIND_NAMES[faction.kind] ?? "", emblem: emblemOf(faction), emblemLabel: COPY.crestLabel,
+    id: faction.id, name: nameOf(faction), kind: FACTION_KIND_NAMES[faction.kind] ?? "", emblem: factionEmblem(faction, currentYear(state)), emblemLabel: COPY.crestLabel,
     leader: leaderView(state, faction), relation, relationX: relationX(relation), relationText: COPY.relationText(relationBand(relation), relation),
     demands: faction.demands.map(demand => ({ key: demand.petitionId, date: chronicleDate(state, demand.arrivedTick),
       line: COPY.demand(DEMAND_NAMES[demand.defId] ?? COPY.demandsHeading, chronicleDate(state, demand.arrivedTick)) })),

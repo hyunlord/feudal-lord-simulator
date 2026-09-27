@@ -16,12 +16,30 @@ export const FACTION_PAGE = { width: 640, height: 800 } as const;
 
 const slot = (left: number, top: number, width: number, height: number): CSSProperties =>
   ({ left: `${left / 6.4}%`, top: `${top / 8}%`, width: `${width / 6.4}%`, height: `${height / 8}%` });
-/** Measured on frame_faction_page.png. */
+/**
+ * UI-6b: the art drawn in horizontal bands, so the records' box at the foot is taller and the demands' and promises'
+ * boxes shorter, their ornaments untouched: rows 380–520 (the two boxes' plain sides, 371–530 on the art) are drawn
+ * 70 px tall, rows 610–730 (the foot box's plain sides, 603–738) 190 px; the rest at its size. The page stays 800 tall.
+ */
+export const FACTION_PAGE_BANDS: readonly Readonly<{ from: number; to: number; at: number; height: number }>[] = [
+  { from: 0, to: 380, at: 0, height: 380 }, { from: 380, to: 520, at: 380, height: 70 }, { from: 520, to: 610, at: 450, height: 90 },
+  { from: 610, to: 730, at: 540, height: 190 }, { from: 730, to: 800, at: 730, height: 70 },
+];
+/** Measured on frame_faction_page.png, then moved with the bands (the boxes 70 shorter, the foot box 70 taller). */
 export const FACTION_PAGE_SLOTS = {
   leader: slot(66, 92, 148, 148), crest: slot(490, 92, 88, 104), name: slot(236, 84, 240, 180), relation: slot(70, 296, 500, 32),
-  relationText: slot(70, 330, 500, 24), demands: slot(50, 364, 266, 172), promises: slot(326, 364, 268, 172),
-  ourEvents: slot(50, 598, 276, 148), theirEvents: slot(326, 598, 268, 148),
+  relationText: slot(70, 330, 500, 24), demands: slot(50, 364, 266, 102), promises: slot(326, 364, 268, 102),
+  ourEvents: slot(50, 528, 276, 218), theirEvents: slot(326, 528, 268, 218),
 } as const;
+
+function PageArt({ scale }: { readonly scale: number }) {
+  const url = `url("${wave19Url("frame_faction_page")}")`;
+  return <>{FACTION_PAGE_BANDS.map(band => {
+    const stretch = band.height / (band.to - band.from);
+    return <span key={band.from} className="chronicle-faction-band" aria-hidden="true" style={{ top: band.at * scale, height: band.height * scale, backgroundImage: url,
+      backgroundSize: `${FACTION_PAGE.width * scale}px ${FACTION_PAGE.height * scale * stretch}px`, backgroundPosition: `0 ${-band.from * scale * stretch}px` }} />;
+  })}</>;
+}
 
 /** The shield's inside on the art (the printed outline around it stays visible). */
 const CREST_ART = 88;
@@ -32,7 +50,8 @@ export function FactionPage({ view, scale, onRecord }: {
   const leader = view.leader === null ? null : portraitStyle(view.leader.portraitId, Math.round(148 * scale));
   return (
     <article className="chronicle-faction" aria-label={COPY.factionTitle(view.name)} data-faction={view.id} data-relation={view.relation}
-      style={{ width: FACTION_PAGE.width * scale, height: FACTION_PAGE.height * scale, backgroundImage: `url("${wave19Url("frame_faction_page")}")` }}>
+      style={{ width: FACTION_PAGE.width * scale, height: FACTION_PAGE.height * scale }}>
+      <PageArt scale={scale} />
       {leader === null || view.leader === null ? null
         : <span className="chronicle-faction-leader" role="img" aria-label={view.leader.name} data-portrait={view.leader.portraitId} style={{ ...FACTION_PAGE_SLOTS.leader, ...leader }} />}
       <span className="chronicle-faction-crest" style={FACTION_PAGE_SLOTS.crest}>

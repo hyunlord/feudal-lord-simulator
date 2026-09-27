@@ -18,6 +18,7 @@ import { advanceFactions, factionsList, worldTimeline } from "../src/engine/fact
 import type { ActorRef, HistoryRecord } from "../src/engine/history.types";
 import { lordHouseHeraldrySeed, lordshipOf } from "../src/engine/lordshipState";
 import { MANOR_HOUSEHOLD } from "../src/engine/persons.types";
+import { currentYear } from "../src/engine/persons";
 import { initialPolitics } from "../src/engine/politics";
 import { decodeSave } from "../src/save/saveCodec";
 import { ChronicleScreen } from "../src/ui/chronicle/ChronicleScreen";
@@ -25,7 +26,8 @@ import { FactionPage, FACTION_PAGE_SLOTS } from "../src/ui/chronicle/FactionPage
 import { FactionTab } from "../src/ui/chronicle/FactionTab";
 import { CHRONICLE_KINDS, chronicleItems, DEFAULT_CHRONICLE_FILTER, recordCard, type ChronicleItem } from "../src/ui/chronicle/chronicleScreenModel";
 import { clampRelation, factionLeaderName, factionPageView, factionRows, relationBand, worldLines } from "../src/ui/chronicle/factionTabModel";
-import { armsKey, armsRecipe, heraldryArms, heraldryMark, merchantKey } from "../src/ui/heraldry/heraldry";
+import { armsKey, armsRecipe, heraldryArms, heraldryMark, merchantKey, royalArms } from "../src/ui/heraldry/heraldry";
+import { emblemKey } from "../src/ui/heraldry/EmblemImage";
 import { portraitStyle } from "../src/ui/portraitArt";
 
 const YEAR = 4_000;
@@ -60,8 +62,10 @@ test("UI-6 faction tab: nine rows in the engine's order, each named by factionDi
   assert.deepEqual(rows.map(row => row.id), factions.map(faction => faction.id));
   for (const [index, row] of rows.entries()) {
     assert.equal(row.name, factionDisplayName(factions[index]!.id, factions[index]!.name), row.id);
-    const expected = factions[index]!.kind === "merchant_house" ? merchantKey(heraldryMark(factions[index]!.heraldrySeed)) : armsKey(heraldryArms(factions[index]!.heraldrySeed));
-    assert.equal(row.emblem.kind === "arms" ? armsKey(row.emblem.recipe) : merchantKey(row.emblem.recipe), expected, `${row.id}: the emblem from its heraldry seed`);
+    // The Crown bears the king's arms of the year (UI-6b); the rest their seed's.
+    const expected = factions[index]!.kind === "crown" ? `royal.${royalArms(currentYear(state))}`
+      : factions[index]!.kind === "merchant_house" ? merchantKey(heraldryMark(factions[index]!.heraldrySeed)) : armsKey(heraldryArms(factions[index]!.heraldrySeed));
+    assert.equal(emblemKey(row.emblem), expected, `${row.id}: the emblem from its heraldry seed`);
   }
   // The outside factions always have their own leader (FX-2); each one's portrait is in the pool.
   for (const id of ["overlord", "crown", "neighbour_1", "neighbour_2", "bishop"]) {
@@ -191,7 +195,7 @@ test("UI-6 new ledger records are cards: war, faction and house records have the
   const state = withRecords(base, cases.map(([entry]) => entry));
   for (const [entry, art, line] of cases) {
     const card = recordCard(state, item(entry));
-    const got = card.art === null ? "none" : card.art.kind === "emblem" ? `${card.art.emblem.kind}:${card.art.emblem.kind === "arms" ? armsKey(card.art.emblem.recipe) : merchantKey(card.art.emblem.recipe)}`
+    const got = card.art === null ? "none" : card.art.kind === "emblem" ? `${card.art.emblem.kind}:${emblemKey(card.art.emblem)}`
       : card.art.kind === "portrait" ? `portrait:${card.art.portraitId}` : `${card.art.kind}:${card.art.id}`;
     assert.equal(got, art, entry.template);
     assert.match(card.sentence, line, entry.template);

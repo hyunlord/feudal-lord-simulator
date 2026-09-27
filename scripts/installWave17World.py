@@ -5,6 +5,9 @@ no C2PA chunks (asserted): received bytes = runtime bytes. One docs/provenance/a
 rows for these runtime paths) with one prompt file each (records/assets.csv `full_prompt`), `installed_by` = UI-6 in
 the inbox ledger, and src/render/wave17WorldManifest.generated.ts: url, size, cell size, frames and the ground pivot
 (records/assets.csv pivot_x/pivot_y, cell_width/cell_height, frames, game_zoom_1_source_scale).
+UI-6b: with them the Wave 12 quay (bld/quay-v1, confirmed) that the burning quay lies on during the raid — the same
+256 x 128 cell and ground pivot (68, 119) as raid_burning_quay, drawn under it; its record has no footprint or scale
+columns, so it takes the burning quay's (2 x 2 tiles, 0.5), and `installed_by` = UI-6b.
 Run: python3 scripts/installWave17World.py   (then python3 scripts/installChronicleArt.py keeps these rows)
 """
 import csv
@@ -23,6 +26,9 @@ RUNTIME = ROOT / "public/assets/wave17/world"
 MANIFEST = ROOT / "src/render/wave17WorldManifest.generated.ts"
 WANTED = {"beacon_idle": "bld/beacon_idle-v1.png", "beacon_lit": "bld/beacon_lit-v1.png",
           "raid_burning_quay": "event/raid_burning_quay-v1.png", "raid_smoke_column_sheet": "event/raid_smoke_column_sheet-v1.png"}
+WAVE12 = ROOT / "assets-inbox/wave12/candidates-20260926"
+WAVE12_QUAY = "bld/quay-v1.png"
+RUNTIME12 = ROOT / "public/assets/wave12/world"
 USED_IN = "src/render/wave17WorldManifest.generated.ts (UI-6: the coastal beacon and the raid's burning quay and smoke, src/render/warWorldProps.ts)"
 C2PA_CHUNKS = {b"caBX", b"jumb", b"c2pa"}
 csv.field_size_limit(sys.maxsize)
@@ -79,6 +85,35 @@ def main() -> None:
                               f"on 2026-09-28 from {BATCH.relative_to(ROOT)}; no C2PA chunk, received bytes = runtime bytes."})
         installed.add(inbox_key)
     assert len(images) == 4, len(images)
+    # UI-6b: the Wave 12 quay under the burning quay.
+    source = WAVE12 / "assets" / WAVE12_QUAY
+    inbox_key = source.relative_to(ROOT / "assets-inbox").as_posix()
+    digest = sha(source)
+    assert by_file[inbox_key]["sha256"] == digest and by_file[inbox_key]["status"] == "confirmed", inbox_key
+    record = {row["file"]: row for row in csv.DictReader(open(WAVE12 / "records/assets.csv", encoding="utf-8-sig"))}[f"assets/{WAVE12_QUAY}"]
+    assert record["sha256"] == digest, WAVE12_QUAY
+    assert not C2PA_CHUNKS & set(png_chunks(source.read_bytes())), f"{WAVE12_QUAY} carries a C2PA chunk"
+    burning = images["raid_burning_quay"]
+    assert (int(record["width"]), int(record["height"])) == (burning["width"], burning["height"]), "the quay's cell is the burning quay's"
+    assert {"x": int(record["pivot_x"]), "y": int(record["pivot_y"])} == burning["pivot"], "the quay's pivot is the burning quay's"
+    runtime = RUNTIME12 / source.name
+    runtime.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, runtime)
+    assert sha(runtime) == digest, WAVE12_QUAY
+    images["quay"] = {"url": f"assets/wave12/world/{source.name}", "width": burning["width"], "height": burning["height"], "pivot": burning["pivot"],
+                      "cell": burning["cell"], "footprint": burning["footprint"], "zoom1Scale": burning["zoom1Scale"]}
+    prompt = ROOT / "docs/provenance/prompts" / "quay-wave12.txt"
+    prompt.write_text((record.get("full_prompt") or "(no prompt recorded)").strip() + "\n")
+    rows.append({"assetId": "wave12/quay", "version": "v1", "runtimePath": str(runtime.relative_to(ROOT)), "runtimeSha256": digest,
+                 "sourcePath": str(source.relative_to(ROOT)), "sourceSha256": digest, "tool": "native image_gen", "model": "not exposed",
+                 "generatedAt": "2026-09-26", "prompt": str(prompt.relative_to(ROOT)), "referenceInputs": record.get("references", "") or "none",
+                 "seed": "not exposed", "candidates": "1", "manualEdits": record.get("processing", ""),
+                 "artBible": "AB_2026-09-19_v1", "historicalProfile": "S_England_1300_1450_v1", "owner": "Astra wave12",
+                 "usedIn": "src/render/wave17WorldManifest.generated.ts (UI-6b: the quay under the raid's burning quay, src/render/warWorldProps.ts)",
+                 "status": "runtime",
+                 "notes": f"Astra wave12 quay (confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-26) installed by UI-6b on 2026-09-28 from "
+                          f"{WAVE12.relative_to(ROOT)}; no C2PA chunk, received bytes = runtime bytes; footprint and scale as raid_burning_quay."})
+    quay_inbox = inbox_key
     header = next(csv.reader(open(LEDGER, encoding="utf-8")))
     ours = {row["runtimePath"] for row in rows}
     kept = [row for row in csv.DictReader(open(LEDGER, encoding="utf-8")) if row["runtimePath"] not in ours]
@@ -89,13 +124,15 @@ def main() -> None:
     for row in inbox:
         if row["file"] in installed:
             row["installed_by"] = "UI-6"
+        elif row["file"] == quay_inbox:
+            row["installed_by"] = "UI-6b"
     with open(INBOX_LEDGER, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\r\n")
         writer.writeheader(); writer.writerows(inbox)
     body = "\n".join(f"  {key}: {json.dumps(value, separators=(', ', ': '))}," for key, value in sorted(images.items()))
-    MANIFEST.write_text("// Generated by scripts/installWave17World.py — Wave 17 world sprites (UI-6): url, size, ground pivot (Astra's\n"
-                        "// registration, source px), cell and, for the smoke sheet, its frames; footprint in tiles; zoom1Scale = world px per\n"
-                        "// source px (game_zoom_1_source_scale).\n"
+    MANIFEST.write_text("// Generated by scripts/installWave17World.py — Wave 17 world sprites (UI-6) and the Wave 12 quay under the burning\n"
+                        "// quay (UI-6b): url, size, ground pivot (Astra's registration, source px), cell and, for the smoke sheet, its\n"
+                        "// frames; footprint in tiles; zoom1Scale = world px per source px (game_zoom_1_source_scale).\n"
                         "export const WAVE17_WORLD_IMAGES = {\n" + body + "\n} as const;\n")
     print(len(rows), "rows;", len(images), "installed")
 

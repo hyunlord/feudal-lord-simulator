@@ -177,6 +177,7 @@
 .chronicle-world-empty { margin: 0; font-size: 12px; }
 
 /* CHRON-2 faction page (frame_faction_page slots, placed in % of the page so they scale with it). */
+.chronicle-faction-band { position: absolute; left: 0; right: 0; background-repeat: no-repeat; pointer-events: none; }
 .chronicle-faction-leader { border-radius: 50%; }
 .chronicle-faction-crest { display: grid; place-items: center; }
 .chronicle-faction-name { display: grid; align-content: center; justify-items: center; gap: 2px; text-align: center; overflow: hidden; }

@@ -20,9 +20,10 @@ import { WAVE17_WORLD_IMAGES } from "./wave17WorldManifest.generated";
 //    not the burnt houses, is its reference: the houses are rebuilt within the window and the quay would jump); a smoke
 //    column (four frames, SMOKE_FRAME_MS each, by presentation time) over each house the raid burnt while it stays burnt. The burnt house itself is the Wave 9 burnt
 //    painting like any fire's (buildingOverlays.ts, `burntTick`).
+// UI-6b: the burning quay lies on the Wave 12 quay (its cell and ground pivot), drawn just before it on the same tile.
 // All three join the object queue (drawObjectRenderItems): beacon and quay sorted by their tile like farm props and drawn
 // at every zoom; each smoke column right after its house, at full and simplified detail (zoom > 0.5) so it reads at 0.6.
-export type WarPropKind = "beacon_idle" | "beacon_lit" | "raid_burning_quay" | "raid_smoke_column_sheet";
+export type WarPropKind = "beacon_idle" | "beacon_lit" | "quay" | "raid_burning_quay" | "raid_smoke_column_sheet";
 /** `tx`, `ty`: the tile it sorts and culls by; `x`, `y`: its foot (tile units); `depth`: its place in the object queue. */
 export type WarProp = { readonly kind: WarPropKind; readonly tx: number; readonly ty: number; readonly x: number; readonly y: number;
   readonly depth: number; readonly id: string };
@@ -37,6 +38,8 @@ const QUAY_REACH = 3;
 const SMOKE_FRAME_MS = 180;
 /** A smoke column sorts right after its row (its house's front tile), before the trees and props just in front of it. */
 const SMOKE_DEPTH_AFTER_HOUSE = 0.001;
+/** The quay sorts just before its fire on the same tile. */
+const QUAY_DEPTH_BEFORE_FIRE = 0.0005;
 
 const wave17World = manifestArt<keyof typeof WAVE17_WORLD_IMAGES>(WAVE17_WORLD_IMAGES);
 export const preloadWave17WorldArt = wave17World.preload;
@@ -167,7 +170,10 @@ export function warProps(state: GameState): readonly WarProp[] {
   if (beacon !== null) {
     props.push({ kind: beaconLit(state) ? "beacon_lit" : "beacon_idle", ...beacon, x: beacon.tx, y: beacon.ty, depth: depthKey(beacon.tx, beacon.ty), id: "war:beacon" });
     const quay = raidQuaySpot(state);
-    if (quay !== null) props.push({ kind: "raid_burning_quay", ...quay, x: quay.tx, y: quay.ty, depth: depthKey(quay.tx, quay.ty), id: "war:quay" });
+    if (quay !== null) {
+      props.push({ kind: "quay", ...quay, x: quay.tx, y: quay.ty, depth: depthKey(quay.tx, quay.ty) - QUAY_DEPTH_BEFORE_FIRE, id: "war:quay-stone" });
+      props.push({ kind: "raid_burning_quay", ...quay, x: quay.tx, y: quay.ty, depth: depthKey(quay.tx, quay.ty), id: "war:quay" });
+    }
   }
   const burnt = new Set(raidBurntHouseIds(state));
   for (const building of state.buildings) {

@@ -4,7 +4,7 @@ import { factionDisplayName } from "../content/factionCopy.ko";
 import { PETITION_SUBJECTS, WAR_CHOICES } from "../content/historyCopy.ko";
 import type { GameState } from "../engine/engine.types";
 import { faction, factionOfPetitioner } from "../engine/factions";
-import { personById } from "../engine/persons";
+import { currentYear, personById } from "../engine/persons";
 import type { PetitionRecord } from "../engine/politics.types";
 import { levyMen, refugeeRoom, subsidyAmount, warOf, woolLevyAmount } from "../engine/war";
 import { DECISION_COPY } from "./decisionCopy.ko";
@@ -105,7 +105,7 @@ function petitionFrom(state: GameState, petition: PetitionRecord): PetitionFrom 
   if (view === undefined) return null;
   const leader = view.leaderId === null ? undefined : personById(state, view.leaderId);
   const name = factionDisplayName(view.id, view.name);
-  return { factionId: id, name, arms: factionEmblem(view),
+  return { factionId: id, name, arms: factionEmblem(view, currentYear(state)),
     leader: leader === undefined ? null : factionLeaderRow(state, leader, name), writ: petition.petitioner === "crown" };
 }
 

@@ -395,6 +395,8 @@
 .petition-people h3 { margin: 0; font-size: 13px; }
 .petition-people .person-list { margin: 0; }
 /* UI-6: the Crown's writ — the hanging wax seal with the Crown's arms on its disc. */
+/* UI-6b: the Wave 8 petition frame's roundel — its centre at (68, 110) of the corner slice, drawn at half size (34, 55). */
+.petition-roundel { position: absolute; left: 15px; top: 36px; width: 38px; height: 38px; pointer-events: none; }
 .petition-writ { position: relative; flex: none; }
 .petition-writ-arms { position: absolute; left: 7px; bottom: 7px; }
 .decision-steward { display: flex; align-items: center; gap: 10px; }

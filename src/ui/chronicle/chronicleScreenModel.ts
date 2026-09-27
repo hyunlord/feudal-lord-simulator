@@ -15,7 +15,7 @@ import type { FactionRecord } from "../../engine/faction.types";
 import { lordHouseHeraldrySeed, lordshipOf } from "../../engine/lordshipState";
 import { chronicleIllustration } from "../chronicleModel";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
-import { armsRecipe, heraldryArms, heraldryMark } from "../heraldry/heraldry";
+import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
 import { drawnPortraitId } from "../portraitArt";
 import type { Wave16ImageId } from "../wave16Art";
@@ -264,9 +264,13 @@ export function portraitAt(person: Person, year: number) {
 // UI-6: factions on the cards (FACTION-0). Arms and marks from the faction's heraldry seed (`heraldryArms`, one key for
 // every screen); the lord's houses keep the manor's key (FAIL-3: the first house's arms are the ones drawn before).
 
-/** The merchant houses bear a merchant's mark; the rest arms — both from the faction's seed (FX-1). */
-export const factionEmblem = (faction: Pick<FactionRecord, "kind" | "heraldrySeed">): EmblemSpec => faction.kind === "merchant_house"
-  ? { kind: "merchant", recipe: heraldryMark(faction.heraldrySeed) } : { kind: "arms", recipe: heraldryArms(faction.heraldrySeed) };
+/**
+ * The merchant houses bear a merchant's mark; the rest arms — both from the faction's seed (FX-1). UI-6b: the Crown bears
+ * the king's arms of `year` (England, quartered with France from 1340), not a seed's.
+ */
+export const factionEmblem = (faction: Pick<FactionRecord, "kind" | "heraldrySeed">, year: number): EmblemSpec => faction.kind === "crown"
+  ? { kind: "royal", arms: royalArms(year) } : faction.kind === "merchant_house"
+    ? { kind: "merchant", recipe: heraldryMark(faction.heraldrySeed) } : { kind: "arms", recipe: heraldryArms(faction.heraldrySeed) };
 
 /** The faction a record is about or names (a relation's subject, a petition's or a war record's actor). */
 export function recordFaction(record: Pick<HistoryRecord, "subject" | "actors">): string | null {
@@ -301,7 +305,7 @@ const WAR_RECORD_ART: Readonly<Record<string, Wave17ImageId>> = {
 };
 
 /** The record's picture that F2-A, FACTION-0 and FAIL-3 brought (null: the CHRON-1 rules below decide). */
-function chapterTwoArt(state: Pick<GameState, "seed" | "lordship" | "factions">, record: HistoryRecord): ChronicleArt {
+function chapterTwoArt(state: Pick<GameState, "seed" | "lordship" | "factions" | "scenarioId">, record: HistoryRecord): ChronicleArt {
   const param = (key: string) => String(record.params?.[key] ?? "");
   const war = WAR_RECORD_ART[record.template];
   if (war !== undefined) return { kind: "wave17", id: war };
@@ -313,7 +317,8 @@ function chapterTwoArt(state: Pick<GameState, "seed" | "lordship" | "factions">,
   }
   if (record.template === "faction.relation") {
     const faction = state.factions?.factions.find(entry => entry.id === record.subject.id);
-    return faction === undefined ? null : { kind: "emblem", emblem: factionEmblem(faction) };
+    // The arms borne when the record was written (the Crown's changed in 1340).
+    return faction === undefined ? null : { kind: "emblem", emblem: factionEmblem(faction, history.date({ tick: record.tick }, state).year) };
   }
   if (record.template === "house.withdrew" || record.template === "house.arrived" || record.template === "house.resettled") return houseArms(state, record);
   if (record.template === "milestone.chapter_start" && param("chapter") === "2") return { kind: "wave16", id: "chapter2_intro" };

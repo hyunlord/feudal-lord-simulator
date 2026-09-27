@@ -70,6 +70,7 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
 }) {
   const { presentation } = view;
   const from = presentation.from;
+  const behalf = PETITION_COPY.onBehalf[presentation.defId];
   // UI-6: who brings it — the faction by its display name and arms; the Crown's writ hangs its seal with those arms;
   // the faction's leader (a person: the king, the earl, the refugees' or townsfolk's head) as a chip beside the town's heads.
   const people = [...(from?.leader === null || from?.leader === undefined ? [] : [from.leader]), ...petitioners.filter(row => row.id !== from?.leader?.id)];
@@ -78,6 +79,8 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
       <section className="story-modal petition-card" role="dialog" aria-modal="true" aria-label={presentation.title} data-petition={view.petitionId}
         data-def={presentation.defId}>
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
+        {/* UI-6b: the sender's arms in the frame's empty roundel (its top-left corner). */}
+        {from === null ? null : <span className="petition-roundel"><EmblemImage emblem={from.arms} size={38} label={PETITION_COPY.arms(from.name)} /></span>}
         <div className="petition-body" style={wave8ContentStyle("frame_petition")}>
           <div className="petition-scene">
             <PetitionArt art={presentation.art} />
@@ -92,9 +95,8 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
           {from === null ? null : (
             <p className="petition-who" data-faction={from.factionId}>
               {from.writ ? <span className="petition-writ" role="img" aria-label={PETITION_COPY.writ} style={wave14ImageStyle("wax_seal_hanging", 36)}>
-                <span className="petition-writ-arms"><EmblemImage emblem={from.arms} size={22} label={from.name} /></span></span>
-                : <EmblemImage emblem={from.arms} size={28} label={from.name} />}
-              {PETITION_COPY.from(from.name)}
+                <span className="petition-writ-arms"><EmblemImage emblem={from.arms} size={22} label={from.name} /></span></span> : null}
+              {behalf === undefined ? PETITION_COPY.from(from.name) : PETITION_COPY.fromOnBehalf(from.name, behalf)}
             </p>
           )}
           <p>{presentation.demand}</p>

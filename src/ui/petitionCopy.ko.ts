@@ -53,5 +53,9 @@ export const PETITION_COPY = {
   writ: "국왕의 칙서",
   senderHeading: "보낸 사람",
   from: (name: string) => `보낸 이: ${name}`,
+  /** UI-6b: a faction that brings another's plea (the refugees' by the bishop, FX-3), and whose arms fill the roundel. */
+  onBehalf: { refugee_admission: "피란민을 대신해" } as Readonly<Record<string, string>>,
+  fromOnBehalf: (name: string, behalf: string) => `보낸 이: ${name} (${behalf})`,
+  arms: (name: string) => `${name}의 문장`,
   leader: (name: string) => `대표: ${name}`,
 } as const;

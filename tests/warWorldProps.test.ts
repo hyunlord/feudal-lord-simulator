@@ -91,8 +91,12 @@ test("the raid's aftermath: quay and smoke from the raid's tick for two seasons,
   const burnt = raided.houses.filter(house => house.burntByEventId === raidEventId(raid!.tick)).map(house => house.buildingId);
   assert.ok(burnt.length > 0, "the raid burnt houses behind a timber ring");
   assert.deepEqual([...raidBurntHouseIds(raided)].sort(), [...burnt].sort());
-  assert.deepEqual(warProps(raided).map(prop => prop.kind), ["beacon_idle", "raid_burning_quay", ...burnt.map(() => "raid_smoke_column_sheet")]);
+  assert.deepEqual(warProps(raided).map(prop => prop.kind), ["beacon_idle", "quay", "raid_burning_quay", ...burnt.map(() => "raid_smoke_column_sheet")]);
   assert.deepEqual(warProps(raided).filter(prop => prop.kind === "raid_smoke_column_sheet").map(prop => prop.id).sort(), burnt.map(id => `war:smoke:${id}`).sort());
+  // UI-6b: the Wave 12 quay lies under the fire, on its tile, sorted just before it.
+  const [stone, fire] = ["quay", "raid_burning_quay"].map(kind => warProps(raided).find(prop => prop.kind === kind)!);
+  assert.deepEqual([stone!.tx, stone!.ty, stone!.x, stone!.y], [fire!.tx, fire!.ty, fire!.x, fire!.y]);
+  assert.ok(stone!.depth < fire!.depth && fire!.depth - stone!.depth < 0.001);
   const quay = raidQuaySpot(raided)!;
   const beacon = beaconSpot(raided)!;
   assert.ok(Math.max(Math.abs(quay.tx - beacon.tx), Math.abs(quay.ty - beacon.ty)) >= 3, "the quay stands apart from the beacon");
