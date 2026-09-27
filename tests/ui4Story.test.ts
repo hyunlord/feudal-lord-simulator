@@ -52,7 +52,8 @@ test("UI-4: an open petition is a decision beat; its answers carry the engine's 
   assert.equal(storyBeats(state).find(beat => beat.kind === "petition")?.decision, "petition");
   const view = petitionDecisionView(state)!;
   assert.deepEqual(view.options.map(option => option.choice), ["accept", "accept_with_price", "refuse"]);
-  assert.match(view.options[1]!.predicted, /금고 150d\(지금 0d\)/, "the charter fee");
+  // FIX-4 E1: the game opens with 60d (was 0d); the charter fee is 150d on top.
+  assert.match(view.options[1]!.predicted, /금고 210d\(지금 60d\)/, "the charter fee");
   assert.match(view.options[2]!.predicted, /상인 게이지 30\(지금 50\)/, "refusing costs the gauge 20");
 });
 

@@ -16,8 +16,9 @@ import { ONBOARDING_TASKS } from "../src/ui/onboardingTaskModel";
 
 const OPENING_CENTER = { tx: 45, ty: 41 } as const;
 // FIX-1: the opening houses are watered at creation (was 839a86230db877de / 2e036754c2d05951 with hasWater false).
-const EXPECTED_ECONOMY_HASH = "a0b2bbd0dd5b032b";
-const EXPECTED_OPENING_HASH = "efe743579d152e19";
+// FIX-4 E1·E9: the opening treasury (60d, was 0d) and timber (160, was 120) are in both hashes (were a0b2bbd0dd5b032b / efe743579d152e19).
+const EXPECTED_ECONOMY_HASH = "6818a289e7d06743";
+const EXPECTED_OPENING_HASH = "554ec34e9e648193";
 function roadKeys(): readonly string[] {
   return DEFAULT_GAME_STATE.tiles
     .filter((tile) => tile.hasRoad)
@@ -57,7 +58,8 @@ test("DEFAULT_GAME_STATE opens with the authored four-cottage village around the
   );
   assert.equal(state.houses[0]?.buildingId, "house-46-40-0");
   assert.equal(state.population, 12);
-  assert.equal(state.treasuryTimber, 120);
+  assert.equal(state.treasuryTimber, 160, "FIX-4 E9: 160 (was 120)");
+  assert.equal(state.treasuryCoin, 60, "FIX-4 E1: 60d (was 0)");
   assert.deepEqual(
     authoredEconomy.map(({ id, kind, tx, ty, workers, inventory }) => ({ id, kind, tx, ty, workers, inventory })),
     [

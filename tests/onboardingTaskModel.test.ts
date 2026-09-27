@@ -182,12 +182,14 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
   assert.equal(ONBOARDING_TASKS[7]?.isComplete(withSettlement({ population: 50 })), true);
 });
 
-test("opening construction fits initial timber before the sawmill, then defers expansion", () => {
+test("opening construction fits initial timber before the sawmill, and the audit's old order still leaves the sawmill (FIX-4 E9)", () => {
   const timber = (kind: Building["kind"]): number => BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0;
   const opening = timber("logging_camp") + timber("farmstead") + timber("mill") + timber("sawmill");
-  const prematureExpansion = opening + timber("farmstead") + timber("granary");
   assert.ok(opening <= DEFAULT_GAME_STATE.treasuryTimber, `${opening} > ${DEFAULT_GAME_STATE.treasuryTimber}`);
-  assert.ok(prematureExpansion > DEFAULT_GAME_STATE.treasuryTimber);
+  // UX-0b audit run 2 spent the starting timber on a well, a barn, a mill and a granary and could not afford the only
+  // source of timber. With 160 (was 120) the sawmill still fits after that order.
+  const auditOrder = timber("well") + timber("farmstead") + timber("mill") + timber("granary");
+  assert.ok(auditOrder + timber("sawmill") <= DEFAULT_GAME_STATE.treasuryTimber, `${auditOrder} + sawmill > ${DEFAULT_GAME_STATE.treasuryTimber}`);
 });
 
 test("storage guidance stays open until a second storehouse joins the timber road network", () => {
