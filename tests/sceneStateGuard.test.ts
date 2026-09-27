@@ -18,7 +18,7 @@ const ticked = (ticks: number) => { let state = structuredClone(DEFAULT_GAME_STA
 
 test("an old bare save is refused at the scene and names what it lacks", () => {
   assert.throws(() => admitSceneState(oldTown(), DEFAULT_GAME_STATE), (error: unknown) =>
-    error instanceof Error && error.name === "StaleSceneStateError" && /scenarioId/.test(error.message) && /historicalEras/.test(error.message) && /loadSaveFile/.test(error.message));
+    error instanceof Error && error.name === "StaleSceneStateError" && /scenarioId/.test(error.message) && /loadSaveFile/.test(error.message));
 });
 
 test("the same file read through the codec enters: the chain brought it to today's schema", () => {

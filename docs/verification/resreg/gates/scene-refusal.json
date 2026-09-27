@@ -4,13 +4,20 @@
   "path": "fixtures/determinism/seed1/final-state.json",
   "admitted": false,
   "error": "TimeoutError: page.waitForFunction: Timeout 60000ms exceeded.",
-  "seconds": 62.6
+  "seconds": 60.5,
+  "pageErrors": [
+   "console: [vite] failed to connect to websocket.\nyour current setup:\n  (browser) 127.0.0.1:4301/ <--[HTTP]--> 127.0.0.1:4301/ (server)\n  (browser) 127.0.0.1:4301/ <--[WebSocket (failing)]--> 127.0.0.1:4301/ (server)\nCheck out your Vite / network configuration and https://vite.dev/config/server-options.html#se",
+   "pageerror: ReferenceError: process is not defined"
+  ]
  },
  "current": {
   "path": "/home/hyunlord/fls-ui5-states-resreg/chapter-end.json",
-  "tick": 77500,
   "admitted": true,
-  "seconds": 5.9
+  "tick": 77500,
+  "seconds": 1.1,
+  "pageErrors": [
+   "console: [vite] failed to connect to websocket.\nyour current setup:\n  (browser) 127.0.0.1:4301/ <--[HTTP]--> 127.0.0.1:4301/ (server)\n  (browser) 127.0.0.1:4301/ <--[WebSocket (failing)]--> 127.0.0.1:4301/ (server)\nCheck out your Vite / network configuration and https://vite.dev/config/server-options.html#se"
+  ]
  },
  "pass": false
 }

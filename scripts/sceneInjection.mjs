@@ -15,7 +15,8 @@ const ANCHOR = 'useState(DEFAULT_GAME_STATE)';
 /** The keys a bare state lacks that a state of today's schema carries (empty: it is current). No free variables. */
 export function staleStateKeys(state, newGame, codec) {
   const missing = Object.keys(newGame).filter(key => !(key in state));
-  if (typeof state.tick !== 'number' || state.tick <= newGame.tick) return missing;
+  // Older than today's new game: refused without running the chain (in the page, v9 -> v10 reads Node's process).
+  if (missing.length > 0 || typeof state.tick !== 'number' || state.tick <= newGame.tick) return missing;
   const firstTick = new Set(Object.keys(codec.advanceTick(structuredClone(newGame))));
   // A bare file counts as schema v0 to the codec, so the chain shows what an older state still misses.
   const migrated = codec.migrateSaveToLatest(structuredClone(state)).value.state;
