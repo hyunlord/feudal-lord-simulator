@@ -77,7 +77,9 @@ async function scene(stateName, tile, extra = {}) {
 async function storyModal(page, selector, file) {
   const card = page.locator(selector);
   if (!await card.waitFor({ timeout: 8_000 }).then(() => true).catch(() => false)) {
+    // As a player opens it: the chip, then the event card's [결정하기].
     await page.locator('.event-chip').first().click({ timeout: 20_000 }).catch(() => undefined);
+    await page.locator('.event-card-decide').first().click({ timeout: 10_000 }).catch(() => undefined);
     await card.waitFor({ timeout: 30_000 }).catch(async error => { await page.screenshot({ path: join(out, file), type: 'jpeg' }); throw error; });
   }
 }
