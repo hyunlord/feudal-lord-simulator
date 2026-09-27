@@ -37,7 +37,7 @@ export function PersonPortrait({ portraitId, size, className = "" }: { readonly 
 export function PersonChip({ row, onOpen, size = 48 }: { readonly row: PersonRow; readonly onOpen: (personId: string) => void; readonly size?: number }) {
   return (
     <Button type="button" className="person-chip" data-person={row.id} data-portrait-exact={row.exact ? "true" : "false"} aria-label={PERSONS_COPY.openCard(row.name)}
-      onPress={() => onOpen(row.id)} variant="surface">
+      onPress={() => onOpen(row.id)} variant="secondary">
       <PersonPortrait portraitId={row.portraitId} size={size} />
       <span className="person-chip-text"><strong>{row.name}</strong><span>{row.line}</span></span>
     </Button>

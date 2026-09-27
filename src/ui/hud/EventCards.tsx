@@ -24,7 +24,7 @@ export function EventCards({ beats, onDismiss, onDecide }: {
       <div className="event-chips">
         {beats.map(beat => (
           <Button key={beat.id} type="button" className="event-chip" data-story={beat.kind} aria-expanded={openId === beat.id}
-            aria-label={EVENT_STORY_COPY.chipLabel(beat.title)} onPress={() => setOpenId(current => current === beat.id ? null : beat.id)} variant="surface">
+            aria-label={EVENT_STORY_COPY.chipLabel(beat.title)} onPress={() => setOpenId(current => current === beat.id ? null : beat.id)} variant="secondary">
             <span className="event-chip-art" aria-hidden="true" style={wave16ImageStyle(beat.illustration, 64)} />{beat.title}
           </Button>
         ))}

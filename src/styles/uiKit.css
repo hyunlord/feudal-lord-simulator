@@ -5,8 +5,10 @@
    - States are code: hover a little lighter (never the only cue), pressed sinks 1 px, the focus ring in seal red,
      pressed / on a seal-red inner rule, disabled grey. Touch targets stay >= 44 px (uiBoundaries.css floor). */
 
-/* ---- Button ---- */
-:root .ui-btn.ui-btn {
+/* ---- Button ----
+   Layout and type at specificity 0 (`:where`): a screen's own rules for its place, size, flow and colour win (a famine
+   option is a grid, a warning cell is red). The skin — fill, frame, radius — at 0-3-0: no older rule drops it. */
+:where(.ui-btn) {
   display: inline-flex;
   gap: var(--space-half);
   align-items: center;
@@ -15,41 +17,49 @@
   font-family: var(--ui-font-sans);
   text-align: center;
   cursor: pointer;
+}
+:where(.ui-btn--primary) { font-weight: 700; }
+:where(.ui-btn--danger) { color: var(--seal-red-deep); font-weight: 700; }
+:where(.ui-btn--icon) { display: inline-grid; place-items: center; padding: 2px; }
+:where(.ui-btn--tab) { color: var(--parchment-light); }
+:where(.ui-btn--quiet.ui-btn--dark) { color: var(--parchment-light); }
+:where(.ui-btn--surface) { color: inherit; text-align: inherit; justify-content: flex-start; }
+:root .ui-btn.ui-btn {
   background: none;
   border-color: transparent;
   border-radius: 0;
   border-image: var(--art-button-secondary);
 }
-:root .ui-btn.ui-btn--primary { font-weight: 700; border-image: var(--art-button-primary); }
-:root .ui-btn.ui-btn--danger { color: var(--seal-red-deep); font-weight: 700; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--seal-red) 55%, transparent); }
-:root .ui-btn.ui-btn--icon { display: inline-grid; place-items: center; padding: 2px; border-image: var(--art-button-icon); }
-:root .ui-btn.ui-btn--tab { color: var(--parchment-light); border-image: var(--art-tab); }
-:root .ui-btn.ui-btn--quiet {
-  color: var(--ink);
-  border-image: none;
-  background: var(--art-rule-light) center bottom / 100% 6px no-repeat;
-}
-:root .ui-btn.ui-btn--quiet.ui-btn--dark { color: var(--parchment-light); background: var(--art-rule-dark) center bottom / 100% 6px no-repeat; }
-/* A cell, row or card of a framed strip or panel: the frame around it is its skin (the audit checks that frame). */
-/* It keeps the screen's own fill (a season cell's colour, the Wave 19 strip) and never takes the button art. */
-:root .ui-btn.ui-btn--surface { color: inherit; text-align: inherit; justify-content: flex-start; border-image: none; }
+:root .ui-btn.ui-btn--primary { border-image: var(--art-button-primary); }
+:root .ui-btn.ui-btn--danger { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--seal-red) 55%, transparent); }
+:root .ui-btn.ui-btn--icon { border-image: var(--art-button-icon); }
+:root .ui-btn.ui-btn--tab { border-image: var(--art-tab); }
+:root .ui-btn.ui-btn--quiet { border-image: none; background: var(--art-rule-light) center bottom / 100% 6px no-repeat; }
+:root .ui-btn.ui-btn--quiet.ui-btn--dark { background: var(--art-rule-dark) center bottom / 100% 6px no-repeat; }
+/* A cell, row or card of a framed strip or panel: the frame around it is its skin (the audit checks that frame).
+   It keeps the screen's own fill (a season cell's colour, the Wave 19 strip) and never takes the button art. */
+:root .ui-btn.ui-btn--surface { border-image: none; }
 :root .ui-btn.ui-btn--surface:not(:disabled):hover { background-color: color-mix(in srgb, var(--gold-rule) 16%, transparent); filter: none; }
 :root .ui-btn.ui-btn--surface.ui-btn--dark:not(:disabled):hover { background-color: color-mix(in srgb, var(--parchment-light) 12%, transparent); }
 
-:root .ui-btn.ui-btn--sm { min-height: 32px; padding: 2px 10px; font-size: var(--text-13); }
-:root .ui-btn.ui-btn--md { min-height: 40px; padding: 6px 14px; font-size: var(--text-14); }
-:root .ui-btn.ui-btn--lg { min-height: 48px; padding: 10px 22px; font-size: var(--text-16); }
+:where(.ui-btn--sm) { min-height: 32px; padding: 2px 10px; font-size: var(--text-13); }
+:where(.ui-btn--md) { min-height: 40px; padding: 6px 14px; font-size: var(--text-14); }
+:where(.ui-btn--lg) { min-height: 48px; padding: 10px 22px; font-size: var(--text-16); }
 
 :root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):hover { filter: brightness(1.06); }
 :root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); filter: brightness(0.96); }
 :root .ui-btn.ui-btn:focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
 :root .ui-btn.ui-btn:is(:disabled, [aria-disabled="true"]) { cursor: default; filter: grayscale(0.6); opacity: 0.6; }
 :root .ui-btn.ui-btn:is([aria-pressed="true"], [aria-checked="true"], [aria-current="true"], [aria-current="page"]):not(.ui-btn--tab):not(.ui-toggle):not(.ui-checkbox) {
-  font-weight: 700;
   filter: brightness(1.08);
   box-shadow: inset 0 0 0 2px var(--seal-red);
 }
 :root .ui-btn.ui-btn--tab:is([aria-selected="true"], [aria-pressed="true"]) { filter: brightness(1.45); box-shadow: inset 0 -3px 0 var(--status-warn); }
+
+:where(.ui-btn:is([aria-pressed="true"], [aria-checked="true"])) { font-weight: 700; }
+
+/* ---- Screen containers the kit's surfaces sit in (their frame is the surfaces' skin) ---- */
+:root .app-shell .status-pill { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: var(--art-frame-tooltip); }
 
 /* ---- Select: a secondary button and a light-framed list ---- */
 .ui-select { position: relative; display: inline-block; min-width: 0; vertical-align: middle; }

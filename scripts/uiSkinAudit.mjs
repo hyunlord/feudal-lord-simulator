@@ -62,7 +62,7 @@ async function audit(name, page, file) {
 }
 
 async function scene(stateName, tile, extra = {}) {
-  const opened = await openScene(browser, { state: load(stateName), tile, baseUrl: url, width: extra.width ?? 1280, height: extra.height ?? 800, zoom: 1.4, run: extra.run ?? false,
+  const opened = await openScene(browser, { state: load(stateName), tile, baseUrl: url, width: extra.width ?? 1280, height: extra.height ?? 800, zoom: extra.zoom ?? 1.4, run: extra.run ?? false,
     initScript: TUTORIAL_OFF, query: extra.query ?? '', hasTouch: extra.hasTouch ?? false, isMobile: extra.isMobile ?? false });
   opened.page.on('pageerror', error => result.errors.push(`${stateName}: ${String(error)}`));
   return opened;
@@ -84,38 +84,51 @@ await step('title', async () => {
   await context.close();
 });
 
-// The town at rest and its drawers (the seed 1 merchant town).
+// The town at rest and its drawers (the seed 1 merchant town): each group of states on its own fresh page.
+const town = () => load('merchant-town');
 await step('town', async () => {
-  const state = load('merchant-town');
-  const { context, page } = await scene('merchant-town', houseTile(state));
+  const { context, page } = await scene('merchant-town', houseTile(town()));
   await pause(800);
   await audit('normal', page, 's02-normal.jpg');
   await page.locator("[data-dock='build']").click(); await pause(400);
   await audit('drawer', page, 's03-build-drawer.jpg');
-  await page.locator('button.build-menu-category[data-category]').first().click(); await pause(300);
-  await page.locator('.build-menu .build-tool:not([aria-disabled="true"])').first().click(); await pause(500);
-  const tile = await page.evaluate(at => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint(at), houseTile(state).map(value => value + 3));
-  await page.mouse.move(tile.clientX, tile.clientY, { steps: 3 }); await pause(500);
+  await page.locator('button.build-menu-category[data-category]', { hasText: /^생활/ }).click(); await pause(300);
+  await page.locator('button[aria-label="오두막"]:visible').first().click(); await pause(500);
+  const tile = await page.evaluate(at => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint(at), houseTile(town()).map(value => value + 3));
+  await page.mouse.move(tile.clientX, tile.clientY, { steps: 3 }); await pause(600);
   await audit('placement', page, 's04-placement.jpg');
-  await page.keyboard.press('Escape'); await pause(200); await page.keyboard.press('Escape'); await pause(300);
-  await page.locator('.layer-switch .control-layer').nth(1).click(); await pause(500);
+  await context.close();
+});
+await step('zone', async () => {
+  const { context, page } = await scene('merchant-town', houseTile(town()));
+  await pause(600);
+  await page.locator('.control-layer', { hasText: '구역' }).first().click(); await pause(600);
   await audit('zone', page, 's05-zone.jpg');
-  await page.keyboard.press('Escape'); await pause(200); await page.keyboard.press('Escape'); await pause(300);
-  const house = await page.evaluate(at => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint(at), houseTile(state));
-  await page.mouse.click(house.clientX, house.clientY); await pause(700);
+  await context.close();
+});
+await step('selection', async () => {
+  const { context, page } = await scene('merchant-town', houseTile(town()), { zoom: 1.6 });
+  await pause(600);
+  const house = await page.evaluate(at => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint(at), houseTile(town()));
+  await page.mouse.click(house.clientX, house.clientY); await pause(800);
   await audit('selection', page, 's06-selection.jpg');
-  const chip = page.locator('.person-chip').first();
-  if (await chip.count()) { await chip.click(); await pause(600); await audit('person-card', page, 's07-person-card.jpg'); await page.keyboard.press('Escape'); await pause(300); }
-  await page.keyboard.press('Escape'); await pause(300);
-  await page.locator("[data-dock='ledger']").click(); await pause(500);
+  const chip = page.locator('.person-chip:visible').first();
+  if (await chip.count()) { await chip.click(); await pause(700); await audit('person-card', page, 's07-person-card.jpg'); }
+  await context.close();
+});
+await step('ledger', async () => {
+  const { context, page } = await scene('merchant-town', houseTile(town()));
+  await pause(600);
+  await page.locator("[data-dock='ledger']").click(); await pause(600);
   await audit('ledger', page, 's08-ledger.jpg');
-  await page.locator('.ledger-tab--chronicle').click(); await pause(1200);
+  await page.locator('.ledger-tab--chronicle').click(); await pause(1500);
   await audit('chronicle', page, 's09-chronicle.jpg');
-  await page.locator('.chronicle-select .ui-select-trigger').first().click(); await pause(300);
+  await page.locator('.chronicle-select .ui-select-trigger').first().click(); await pause(400);
   await audit('chronicle-select-open', page, 's10-chronicle-select.jpg');
-  await page.keyboard.press('Escape'); await pause(200);
-  const person = page.locator('.chronicle-card-action', { hasText: '인물' }).first();
-  if (await person.count()) { await person.click(); await pause(900); await audit('biography', page, 's11-biography.jpg'); }
+  await page.keyboard.press('Escape'); await pause(300);
+  const person = page.locator('.chronicle-card-action:visible', { hasText: '인물' }).first();
+  await person.click(); await pause(1000);
+  await audit('biography', page, 's11-biography.jpg');
   await context.close();
 });
 
