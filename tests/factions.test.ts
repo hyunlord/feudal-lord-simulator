@@ -173,6 +173,12 @@ test("X7 (FX-6) the API: promises (rights, loans), the faction's chronicle page 
   assert.deepEqual(page.records.map(record => record.template), ["decision.petition_response", "faction.relation"]);
   assert.equal(page.faction.relation, factionOf(base, "merchant_house_1").relation + RELATION_RULES.petition.accept_with_price);
   assert.equal(factionChronicle(answered, "bishop")!.records.length, 0);
+  // Chapter 2's events belong to factions too: the messenger to the Crown, the raid to the town.
+  const war = { messengerTick: base.tick, favour: true, answers: {}, instalments: [] };
+  const met = advanceHistory(base, { ...base, war });
+  assert.deepEqual(factionChronicle(met, "crown")!.records.map(record => record.template), ["war.messenger"]);
+  const raided = advanceHistory({ ...base, war }, { ...base, war: { ...war, raid: { tick: base.tick, defencePermille: 600, losses: { burntHouses: 3, looted: 10, coin: 5 } } } });
+  assert.deepEqual(factionChronicle(raided, "town")!.records.map(record => record.template), ["war.raid", "faction.relation"]);
 });
 
 test("X8 (FX-7, FX-8) the save round trip (v21), a v20 town gets its factions at its next tick, and the factions touch nothing else", () => {

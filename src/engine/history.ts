@@ -447,11 +447,13 @@ function warDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: 
   const was = before.war, now = after.war;
   if (now === undefined || was === now) return [];
   const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];
-  const at = { tick: after.tick, subject: TOWN };
+  // FACTION-0 (FX-3): the war's records name the faction behind them — the Crown's demands and grants, the town's raid.
+  const by = (id: string) => ({ actors: [{ type: "faction" as const, id }] });
+  const at = { tick: after.tick, subject: TOWN, ...by("crown") };
   if (was === undefined) drafts.push({ ...at, kind: "event", template: "war.messenger", severity: 2 });
-  if (beaconLit(after) && !beaconLit(before)) drafts.push({ ...at, kind: "event", template: "war.beacon", severity: 2 });
+  if (beaconLit(after) && !beaconLit(before)) drafts.push({ ...at, ...by("town"), kind: "event", template: "war.beacon", severity: 2 });
   if (now.raid !== undefined && was?.raid === undefined) {
-    drafts.push({ ...at, kind: "event", template: "war.raid", severity: 3, params: { burntHouses: now.raid.losses.burntHouses, looted: now.raid.losses.looted,
+    drafts.push({ ...at, ...by("town"), kind: "event", template: "war.raid", severity: 3, params: { burntHouses: now.raid.losses.burntHouses, looted: now.raid.losses.looted,
       coin: now.raid.losses.coin, defence: now.raid.defencePermille }, cause: { type: "event", id: raidEventId(now.raid.tick), detail: "coastal_raid" },
       thumbnail: { state: after, size: 256 } });
   }
@@ -463,7 +465,8 @@ function warDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: 
   if (now.licenceSeasonsLeft !== undefined && was?.licenceSeasonsLeft === undefined) drafts.push({ ...at, kind: "event", template: "war.licence", severity: 2 });
   for (const [defId, answer] of Object.entries(now.answers)) {
     if (answer === "expired" && was?.answers[defId] !== "expired" && (WAR_PETITION_IDS as readonly string[]).includes(defId)) {
-      drafts.push({ ...at, kind: "event", template: "war.unanswered", severity: 2, params: { defId } });
+      const petitioner = after.politics?.petitions.find(petition => petition.defId === defId)?.petitioner;
+      drafts.push({ ...at, ...(petitioner === undefined ? {} : by(factionOfPetitioner(petitioner))), kind: "event", template: "war.unanswered", severity: 2, params: { defId } });
     }
   }
   return drafts;
