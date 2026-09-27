@@ -1,8 +1,8 @@
 # 노동·가구·가내 생산 슬롯·방앗간 운반 명세 (C3)
 
-지시서: C3 노동 모델·가내 생산 슬롯·계절 노동·방앗간 운반. 설계: [콘텐츠 설계서](CONTENT_DESIGN.md) 6절(사람·시간)·3절(가내 생산 = 실제 재고, K3), [설계서](DESIGN_MASTER.md) 7절 노동, R1 명세 [S5](rule-repairs/S5-labour.md)(R-3 공사 최소 몫), [경작지 명세](arable-fields.md) AF-7·AF-9·AF-15. 결정: [결정 목록](../decisions/README.md) LB1~LB9.
+지시서: C3 노동 모델·가내 생산 슬롯·계절 노동·방앗간 운반. 설계: [콘텐츠 설계서](CONTENT_DESIGN.md) 6절(사람·시간)·3절(가내 생산 = 실제 재고, K3), [설계서](DESIGN_MASTER.md) 7절 노동, R1 명세 [S5](rule-repairs/S5-labour.md)(R-3 공사 최소 몫), [경작지 명세](arable-fields.md) AF-7·AF-9·AF-15. 결정: [결정 목록](../decisions/README.md) LB1~LB10.
 
-조항 번호(LB-*)는 `tests/labourHousehold.test.ts`(시나리오 L1~L10)의 테스트 이름에 쓴다. 수치는 `src/content/balanceConfig.ts`의 `LABOUR_BALANCE`(`BALANCE_CONFIG.labour`)·`SEASON_BALANCE`(`BALANCE_CONFIG.season`) 한 곳에 있다.
+조항 번호(LB-*)는 `tests/labourHousehold.test.ts`(시나리오 L1~L10)와 `tests/deliveryBarnBacklog.test.ts`(LB-15)의 테스트 이름에 쓴다. 수치는 `src/content/balanceConfig.ts`의 `LABOUR_BALANCE`(`BALANCE_CONFIG.labour`)·`SEASON_BALANCE`(`BALANCE_CONFIG.season`) 한 곳에 있다.
 
 ## 가구 구성원
 
