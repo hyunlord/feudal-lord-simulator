@@ -6,6 +6,7 @@
 // goal log (+ settlement disclosure), settings, pause menu, and the diagnostic card (a house selected).
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, sceneStates } from './renderCommitProbe.mjs';
+import { routeSceneState } from './sceneInjection.mjs';
 
 const [target] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -61,12 +62,7 @@ async function open(browser, state, dismiss) {
   const page = await context.newPage();
   await page.routeWebSocket('**', socket => socket.close());
   if (state !== null) {
-    const source = JSON.stringify(state);
-    await page.route('**/src/state/gameStore.ts*', async route => {
-      const response = await route.fetch(); const text = await response.text(); const anchor = 'useState(DEFAULT_GAME_STATE)';
-      if (!text.includes(anchor)) throw new Error('State injection anchor changed');
-      await route.fulfill({ response, body: text.replace(anchor, `useState(${source})`) });
-    });
+    await routeSceneState(page, state);
   }
   await page.goto(`${url}?phase10-proof=1`);
   await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
@@ -138,11 +134,7 @@ async function main() {
     await card.addInitScript(TUTORIAL_OFF);
     const cardPage = await card.newPage();
     await cardPage.routeWebSocket('**', socket => socket.close());
-    const source = JSON.stringify(city);
-    await cardPage.route('**/src/state/gameStore.ts*', async route => {
-      const response = await route.fetch(); const text = await response.text();
-      await route.fulfill({ response, body: text.replace('useState(DEFAULT_GAME_STATE)', `useState(${source})`) });
-    });
+    await routeSceneState(cardPage, city);
     await cardPage.route('**/src/render/canvasRuntime.ts*', async route => {
       const response = await route.fetch(); const text = await response.text(); const anchor = 'const house = startingHouse(state.buildings);';
       await route.fulfill({ response, body: text.replace(anchor, `return ${JSON.stringify(camera)};` + anchor) });

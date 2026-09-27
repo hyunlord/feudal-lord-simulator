@@ -213,7 +213,8 @@ test("walker presentation switches keep compiler-backed exhaustive defaults", ()
   );
 
   // Then
-  assert.equal(assertNeverDefaults.length, 6);
+  // RES-REG: the resource switch became a catalog lookup (its carrier), so a new good needs no case here: 6 -> 5.
+  assert.equal(assertNeverDefaults.length, 5);
 });
 
 function recordingCanvasContext(): {

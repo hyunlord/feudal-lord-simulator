@@ -1,4 +1,4 @@
-import { MONEY_LABEL } from "../content/moneyCopy.ko";
+import { resourceName } from "../content/resourceCatalog.ko";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
   CONSTRUCTION,
@@ -59,16 +59,6 @@ export type ConstructionRefunds = {
   readonly deliveredLost: ConstructionResourceAmounts;
   readonly reservedRelease: ConstructionResourceAmounts;
 };
-
-const RESOURCE_LABELS = {
-  wheat: "밀",
-  bread: "빵",
-  logs: "통나무",
-  timber: "목재",
-  stone_raw: "원석",
-  stone: "석재",
-  coin: MONEY_LABEL,
-} as const satisfies Record<ResourceType, string>;
 
 function assertNever(value: never): never {
   throw new Error(`Unhandled construction variant: ${JSON.stringify(value)}`);
@@ -152,9 +142,9 @@ export function constructionOnSiteLabel(site: ConstructionSite): string {
     case "none":
       return "";
     case "awaiting_materials":
-      return `🪵 ${RESOURCE_LABELS[resource]} 오는 중 (${amount(site.delivered, resource)}/${amount(site.required, resource)})`;
+      return `🪵 ${resourceName(resource)} 오는 중 (${amount(site.delivered, resource)}/${amount(site.required, resource)})`;
     case "no_material_source":
-      return `🪵 창고에 ${RESOURCE_LABELS[resource]} 없음`;
+      return `🪵 창고에 ${resourceName(resource)} 없음`;
     case "no_route":
       return "🚧 창고에서 길이 이어지지 않음";
     case "reserve_held":

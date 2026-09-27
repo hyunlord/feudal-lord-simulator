@@ -1,4 +1,5 @@
-import { RESOURCE_NAMES } from "./hud/hudCopy.ko";
+import { resourceName } from "../content/resourceCatalog.ko";
+import type { ResourceType } from "../content/resourceConfig";
 
 // UX-3R2 site inspector first line: "목재 4 대기 — 가장 가까운 창고 12칸, 운반꾼 0".
 export const CONSTRUCTION_BLOCKER_COPY = {
@@ -6,5 +7,5 @@ export const CONSTRUCTION_BLOCKER_COPY = {
   nearest: (store: string, tiles: number) => `가장 가까운 ${store} ${tiles}칸`,
   treasury: "영주 창고의 목재",
   none: "쌓아 둔 곳 없음",
-  resource: (resource: keyof typeof RESOURCE_NAMES) => RESOURCE_NAMES[resource],
+  resource: (resource: ResourceType) => resourceName(resource),
 } as const;

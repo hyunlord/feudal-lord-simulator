@@ -11,7 +11,9 @@ import { UiIcon } from "../UiIcon";
 import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
 import type { TutorialController } from "../tutorial/useTutorialController";
 import type { ControlLayer } from "../tutorial/tutorialModel";
-import { HUD_COPY, RESOURCE_NAMES } from "./hudCopy.ko";
+import { HUD_COPY } from "./hudCopy.ko";
+import { resourceName } from "../../content/resourceCatalog.ko";
+import { resourceEntry } from "../../content/resourceCatalog";
 import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
@@ -188,11 +190,11 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
             const holders = matrix.stores.filter((_store, index) => (row.byStore[index] ?? 0) > 0).map(store => store.id);
             const lit = holders.length > 0 && holders.every(id => highlighted.includes(id)) && highlighted.length === holders.length;
             const week = history === null ? null : weeklyTotalChange(history, row.resource, state);
-            const lasts = (row.resource === "bread" || row.resource === "wheat") && food.days !== null ? HUD_COPY.ledgerDays(food.days) : HUD_COPY.ledgerNoLasts;
+            const lasts = resourceEntry(row.resource).group === "food" && food.days !== null ? HUD_COPY.ledgerDays(food.days) : HUD_COPY.ledgerNoLasts;
             return (
             <tr key={row.resource} data-resource={row.resource} data-lit={lit ? "true" : undefined}>
-              <th scope="row"><Button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(RESOURCE_NAMES[row.resource])}
-                onPress={() => onHighlight?.(lit ? [] : holders)} variant="surface">{RESOURCE_NAMES[row.resource]}</Button></th>
+              <th scope="row"><Button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(resourceName(row.resource))}
+                onPress={() => onHighlight?.(lit ? [] : holders)} variant="surface">{resourceName(row.resource)}</Button></th>
               <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td>
               {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}</tr>);
           })}</tbody>

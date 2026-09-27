@@ -4,9 +4,8 @@
 // reach, road-side tiles for a new market (what each reaches), the standing market, and one side of the wall that dragged outward makes
 // an expansion the engine accepts, taking fields in (the run's middle and where to drag it, in tile-edge points).
 //   tsx scripts/ux0b2States.ts <out-dir>
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import type { GameState } from "../src/engine/engine.types";
 import { previewPalisadeExpansion } from "../src/engine/palisade";
 import { advanceTick } from "../src/engine/tick";
 import { canPlaceBuilding } from "../src/world/placement";
@@ -14,14 +13,15 @@ import { dragPalisadeRun } from "../src/world/palisadeGeometry";
 import { houseMarketDistance } from "../src/ui/marketReachModel";
 import { buildingPlacementPrediction, virtualFacility } from "../src/ui/placementPrediction";
 import { expansionDraftFootprints, expansionStartCandidate } from "../src/ui/wallExpansionModel";
-import { loadAutoplayFixture } from "./autoplayStallProbe";
+import { loadSaveFile } from "./loadSaveFile";
 
 const [out] = process.argv.slice(2);
 mkdirSync(out!, { recursive: true });
 const moments: Record<string, unknown> = {};
 
 // MARKET-1: the market town.
-const town = advanceTick(JSON.parse(readFileSync("fixtures/determinism/seed1/final-state.json", "utf8")) as GameState);
+// RES-REG: saved towns through the save codec (a bare file is schema v0: the whole migration chain).
+const town = advanceTick(loadSaveFile("fixtures/determinism/seed1/final-state.json"));
 writeFileSync(join(out!, "market-town.json"), JSON.stringify(town));
 const roadSide = town.tiles.filter(tile => !tile.hasRoad && tile.buildingId === null && tile.terrain === "grass"
   && [[0, 1], [1, 0], [0, -1], [-1, 0]].some(([dx, dy]) => town.tiles[(tile.ty + dy!) * town.width + tile.tx + dx!]?.hasRoad === true));
@@ -41,7 +41,7 @@ moments.market = { tick: town.tick, near, far: far ?? null, marketSpot: marketSp
   market: { id: market.id, tx: market.tx, ty: market.ty } };
 
 // WALL-2: the walled town and a side that widens it.
-const walled = loadAutoplayFixture("fixtures/autoplay/seed3-792000.json.gz");
+const walled = loadSaveFile("fixtures/autoplay/seed3-792000.json.gz");
 writeFileSync(join(out!, "walled-town.json"), JSON.stringify(walled));
 const start = expansionStartCandidate(walled)!;
 const { footprints, enclosure } = expansionDraftFootprints(walled);

@@ -6,6 +6,8 @@ export const RESOURCE_BAR_COPY = {
   timberDetail: (total: number, spendable: number) => `목재 전체 보유량 ${total} · 건설 가능 ${spendable} · 실제 예약·운송 중 물량 제외`,
   stoneDetail: (total: number, spendable: number) => `석재 전체 보유량 ${total} · 건설 가능 ${spendable} · 실제 예약·운송 중 물량 제외`,
   populationTrend: "인구 추세는 명 단위입니다.",
+  /** RES-REG: the name chip beside the generic picture when the population picture fails. */
+  populationName: "인구",
   trend: (delta: number, ticks: number) => `${delta > 0 ? "+" : ""}${delta} / ${durationLabel(ticks)}`,
   breadDuration: (lots: number, ticks: number) => `${lots}가구 기준 ${durationLabel(ticks)}`,
   /** F0-V: the bread stock as a calendar arrival point ("4가구 · 여름 초쯤까지"). */

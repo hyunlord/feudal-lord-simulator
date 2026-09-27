@@ -30,7 +30,7 @@ type CourtLedgerProps = {
   readonly selectedTool: PlacementTool | null;
   readonly population?: number;
   readonly idleWorkers?: number;
-  readonly stockTotals?: EconomyStockTotals;
+  readonly stockTotals?: Partial<EconomyStockTotals>;
   readonly populationEvents?: readonly PopulationEvent[];
   readonly populationDrawerOpen?: boolean;
   readonly onPopulationDrawerToggle?: () => void;

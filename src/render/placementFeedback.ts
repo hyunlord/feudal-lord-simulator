@@ -8,6 +8,7 @@ import {
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { TileCoordinate } from "../world/grid";
 import { PlacementFailure } from "../world/placement";
+import { resourceName } from "../content/resourceCatalog.ko";
 
 const PLACEMENT_FEEDBACK_DURATION_MS = {
   success: 600,
@@ -99,20 +100,10 @@ export function formatPlacementFailure(
   }
 }
 
-const RESOURCE_LABELS = {
-  wheat: "밀",
-  bread: "빵",
-  logs: "통나무",
-  timber: "목재",
-  stone_raw: "원석",
-  stone: "석재",
-  coin: "돈",
-} as const satisfies Record<ResourceType, string>;
-
 function resourceAmountsLabel(amounts: Partial<Record<ResourceType, number>>): string {
   const parts = RESOURCE_TYPES
     .filter((resource) => (amounts[resource] ?? 0) > 0)
-    .map((resource) => `${RESOURCE_LABELS[resource]} ${amounts[resource] ?? 0}`);
+    .map((resource) => `${resourceName(resource)} ${amounts[resource] ?? 0}`);
   return parts.length === 0 ? "없음" : parts.join(" · ");
 }
 

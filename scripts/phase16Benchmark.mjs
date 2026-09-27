@@ -5,6 +5,7 @@ import { resolve } from 'node:path';
 import { cpus, platform, release, arch } from 'node:os';
 import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { routeSceneState } from './sceneInjection.mjs';
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
 const task = flags.task ?? 'A';
 const sourceRoot = resolve(flags['source-root'] ?? '.');
@@ -33,12 +34,7 @@ try {
     const page = await browser.newPage({ viewport: { width: 1600, height: 1100 }, deviceScaleFactor: dpr });
     page.on('pageerror', error => errors.push(error.message));
     await page.routeWebSocket('**', socket => socket.close());
-    await page.route('**/src/state/gameStore.ts*', async route => {
-      const response = await route.fetch();
-      const text = await response.text();
-      if (!text.includes('useState(DEFAULT_GAME_STATE)')) throw new Error('State injection anchor changed');
-      await route.fulfill({ response, body: text.replace('useState(DEFAULT_GAME_STATE)', `useState(${source})`) });
-    });
+    await routeSceneState(page, source);
     await page.route('**/src/render/canvasRuntime.ts*', async route => {
       const response = await route.fetch();
       const text = await response.text();

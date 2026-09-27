@@ -1,6 +1,7 @@
 import type { GameState } from "../engine/engine.types";
 import type { Walker } from "../agents/walker.types";
 import type { ResourceType } from "../content/resourceConfig";
+import { resourceEntry } from "../content/resourceCatalog";
 import { stateCalendar, type CalendarDate } from "../engine/scenarioState";
 import { householdMembers, type MemberSex } from "../population/householdMembers";
 import { boundaryHash, hashNumbers } from "../world/boundary/boundaryGeometry";
@@ -82,12 +83,7 @@ export function walkerOccupation(walker: Walker): WalkerOccupation {
 }
 
 function occupationForResource(resource: ResourceType): WalkerOccupation {
-  switch (resource) {
-    case "wheat": case "bread": return "farmer";
-    case "logs": case "timber": return "logger";
-    case "stone_raw": case "stone": return "quarryman";
-    case "coin": return "coin_carter";
-  }
+  return resourceEntry(resource).carrier;
 }
 
 function walkerSex(state: Pick<GameState, "houses" | "seed">, walker: Walker, key: number): MemberSex {

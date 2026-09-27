@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import type { Walker } from "../src/agents/walker.types";
 import type { Building } from "../src/content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../src/content/resourceConfig";
+import { emptyResourceTotals, type ResourceTotals } from "../src/content/resourceCatalog";
 import type { ConstructionSite } from "../src/economy/construction";
 import type { ForestHarvest, GameState, PalisadeSegment, PalisadeState } from "../src/engine/engine.types";
 import { wallGatePoints } from "../src/world/wallTraversal";
@@ -22,11 +23,10 @@ export function amount(
 
 export function sortedResources(
   record: Partial<Record<ResourceType, number>>,
-): Record<ResourceType, number> {
-  const empty = { wheat: 0, bread: 0, logs: 0, timber: 0, stone_raw: 0, stone: 0, coin: 0 };
-  return RESOURCE_TYPES.reduce<Record<ResourceType, number>>(
+): ResourceTotals {
+  return RESOURCE_TYPES.reduce<ResourceTotals>(
     (result, resource) => ({ ...result, [resource]: amount(record, resource) }),
-    empty,
+    emptyResourceTotals(),
   );
 }
 

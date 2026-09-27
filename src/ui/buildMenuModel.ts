@@ -1,4 +1,3 @@
-import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import {
   BUILDING_CONFIG,
   BUILDING_CONFIG_BY_KIND,
@@ -10,6 +9,7 @@ import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
 import { buildingUnlockStage, isBuildingUnlocked, placementSpendableResource } from "../world/placement";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
+import { resourceName } from "../content/resourceCatalog.ko";
 
 export type BuildToolOption = {
   readonly tool: PlacementTool;
@@ -176,16 +176,6 @@ export function buildToolTooltipLines(tool: PlacementTool, state: GameState): re
   ];
 }
 
-const RESOURCE_LABELS = {
-  wheat: "밀",
-  bread: "빵",
-  logs: "통나무",
-  timber: "목재",
-  stone_raw: "원석",
-  stone: "석재",
-  coin: MONEY_LABEL,
-} as const satisfies Record<ResourceType, string>;
-
 function positiveResourceAmounts(
   valueForResource: (resource: ResourceType) => number,
 ): Partial<Record<ResourceType, number>> {
@@ -200,7 +190,7 @@ function positiveResourceAmounts(
 function resourceAmountsLabel(amounts: Partial<Record<ResourceType, number>>): string {
   const parts = RESOURCE_TYPES
     .filter((resource) => (amounts[resource] ?? 0) > 0)
-    .map((resource) => `${RESOURCE_LABELS[resource]} ${amounts[resource] ?? 0}`);
+    .map((resource) => `${resourceName(resource)} ${amounts[resource] ?? 0}`);
   return parts.length === 0 ? "없음" : parts.join(" · ");
 }
 

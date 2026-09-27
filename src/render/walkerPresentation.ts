@@ -1,6 +1,7 @@
 import type { TilePos, Walker } from "../agents/walker.types";
 import { currentRoadTile } from "../agents/movement";
 import type { ResourceType } from "../content/resourceConfig";
+import { resourceEntry } from "../content/resourceCatalog";
 
 export type WalkerPresentationDirection = "NE" | "SE" | "SW" | "NW";
 export type WalkerPresentationRole = "builder" | "farmer" | "logger" | "carter";
@@ -42,22 +43,10 @@ function carterRole(walker: Extract<Walker, { readonly kind: "carter" }>): Walke
   return resourceRole(resource);
 }
 
+/** The farmer and the logger have their own look; a quarryman, the coin collector and an empty hand wear the carter's. */
 function resourceRole(resource: ResourceType | null): WalkerPresentationRole {
-  switch (resource) {
-    case "wheat":
-    case "bread":
-      return "farmer";
-    case "logs":
-    case "timber":
-      return "logger";
-    case "stone_raw":
-    case "stone":
-    case "coin":
-    case null:
-      return "carter";
-    default:
-      return assertNever(resource);
-  }
+  const carrier = resource === null ? null : resourceEntry(resource).carrier;
+  return carrier === "farmer" || carrier === "logger" ? carrier : "carter";
 }
 
 function directionForWalker(walker: Walker): WalkerPresentationDirection {

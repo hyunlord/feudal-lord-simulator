@@ -1,5 +1,4 @@
-import { MONEY_LABEL, MONEY_RULE_COPY } from "../content/moneyCopy.ko";
-import type { ResourceType } from "../content/resourceConfig";
+import { MONEY_RULE_COPY } from "../content/moneyCopy.ko";
 import { BUILDING_OPERATION_COPY } from "./buildingOperationCopy.ko";
 import { CONSTRUCTION_DEADLOCK_COPY } from "./constructionDeadlockCopy.ko";
 import { STORAGE_OVERFLOW_COPY } from "./storageOverflowCopy.ko";
@@ -22,9 +21,6 @@ export const ALERT_STACK_COPY = {
   },
   mixedName: "건물",
   siteName: "공사",
-  resource: {
-    wheat: "밀", bread: "빵", logs: "통나무", timber: "목재", stone_raw: "원석", stone: "석재", coin: MONEY_LABEL,
-  } satisfies Record<ResourceType, string>,
   /** Facility titles by production state (`buildingCauseSnapshot` blocker reason). */
   facility: {
     inputMissing: (resource: string) => `${resource} 공급 없음`,

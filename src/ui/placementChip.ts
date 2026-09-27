@@ -3,7 +3,7 @@ import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import { placementSpendableResource } from "../world/placement";
 import { blockingReasons, type TileMark } from "../render/placementTileMarks";
-import { RESOURCE_NAMES } from "./hud/hudCopy.ko";
+import { resourceName } from "../content/resourceCatalog.ko";
 import { MARKET_ROAD_REACH } from "../engine/marketService";
 import type { HouseMarketDistance } from "./marketReachModel";
 import { PLACEMENT_CHIP_COPY } from "./placementChipCopy.ko";
@@ -47,11 +47,11 @@ export function placementChipModel(state: GameState, input: ChipInput): Placemen
   const items = RESOURCE_TYPES.filter(resource => (cost[resource] ?? 0) > 0).slice(0, 3);
   const name = input.tool === "road" ? PLACEMENT_CHIP_COPY.road : BUILDING_CONFIG_BY_KIND[input.tool].name;
   const costLabel = items.length === 0 ? PLACEMENT_CHIP_COPY.free
-    : items.map(resource => PLACEMENT_CHIP_COPY.cost(RESOURCE_NAMES[resource], cost[resource] ?? 0)).join(PLACEMENT_CHIP_COPY.costJoin);
+    : items.map(resource => PLACEMENT_CHIP_COPY.cost(resourceName(resource), cost[resource] ?? 0)).join(PLACEMENT_CHIP_COPY.costJoin);
   const ledger = items.map(resource => {
     const need = cost[resource] ?? 0, stock = placementSpendableResource(state, resource);
-    return stock >= need ? { text: PLACEMENT_CHIP_COPY.ledger(RESOURCE_NAMES[resource], need, stock), short: false }
-      : { text: PLACEMENT_CHIP_COPY.ledgerShort(RESOURCE_NAMES[resource], need, stock), short: true };
+    return stock >= need ? { text: PLACEMENT_CHIP_COPY.ledger(resourceName(resource), need, stock), short: false }
+      : { text: PLACEMENT_CHIP_COPY.ledgerShort(resourceName(resource), need, stock), short: true };
   });
   const reasons = blockingReasons(input.marks ?? []).filter(entry => entry.reason !== "materials" || !ledger.some(line => line.short));
   const first = reasons[0];

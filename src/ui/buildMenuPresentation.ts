@@ -1,4 +1,3 @@
-import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import type { PlacementTool } from "../render/renderer";
 import type { BuildToolOption } from "./buildMenuModel";
 import { getHistoricalFacilityPresentation } from "../render/historicalFacilityAssets";
@@ -6,6 +5,8 @@ import { historicalHouseAssetMeta } from "../render/historicalHouseAssets";
 import { BRIDGE_TIMBER_PER_TILE } from "../world/bridges";
 import { TUTORIAL_COPY } from "./tutorial/tutorialCopy.ko";
 import type { BuildCategoryKey } from "./tutorial/tutorialModel";
+import { RESOURCE_TYPES } from "../content/resourceConfig";
+import { resourceName } from "../content/resourceCatalog.ko";
 
 // UX-1 build menu (research E "건설 메뉴 재분류"): six categories; zones left the categories for the control layer switch
 // (직접 / 구역 / 방향, BuildMenu.tsx). The labels live in tutorialCopy.ko.ts.
@@ -44,10 +45,9 @@ export function buildThumbnail(tool: PlacementTool): string | null {
 
 export function buildCostLabel(option: BuildToolOption): string {
   if (option.tool === "road") return `육지 무료 · 다리 목재 ${BRIDGE_TIMBER_PER_TILE}/칸`;
-  const labels = { wheat: "밀", bread: "빵", logs: "통나무", timber: "목재", stone_raw: "원석", stone: "석재", coin: MONEY_LABEL } as const;
-  const parts = Object.entries(labels).flatMap(([resource, label]) => {
-    const amount = option.cost[resource as keyof typeof labels] ?? 0;
-    return amount > 0 ? [`${label} ${amount}`] : [];
+  const parts = RESOURCE_TYPES.flatMap(resource => {
+    const amount = option.cost[resource] ?? 0;
+    return amount > 0 ? [`${resourceName(resource)} ${amount}`] : [];
   });
   return parts.length > 0 ? parts.join(" · ") : "무료";
 }

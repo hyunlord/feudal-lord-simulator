@@ -1,5 +1,6 @@
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { ResourceType } from "../content/resourceConfig";
+import { resourceEntry, type ResourceCartPileKey } from "../content/resourceCatalog";
 import type { GameState } from "../engine/engine.types";
 import type { Walker } from "../agents/walker.types";
 import { applyInkOutline, snapPointToDevicePixel, snapToPixel, withAlpha } from "./style";
@@ -16,16 +17,6 @@ import { drawUiIcon } from "../ui/uiArt";
 
 const VILLAGER_WORLD_SCALE = 0.55;
 
-const CARGO_COLOR_BY_RESOURCE = {
-  wheat: PALETTE.gold,
-  bread: SEMANTIC_PALETTE.earth,
-  logs: SEMANTIC_PALETTE.forest,
-  timber: SEMANTIC_PALETTE.earthDark,
-  stone_raw: SEMANTIC_PALETTE.stoneDark,
-  stone: SEMANTIC_PALETTE.stone,
-  coin: SEMANTIC_PALETTE.gold,
-} as const satisfies Record<ResourceType, PaletteColor>;
-
 export function drawWalkers(
   context: CanvasRenderingContext2D,
   state: GameState,
@@ -37,7 +28,7 @@ export function drawWalkers(
 }
 
 export function cargoColor(resource: ResourceType): PaletteColor {
-  return CARGO_COLOR_BY_RESOURCE[resource];
+  return SEMANTIC_PALETTE[resourceEntry(resource).color];
 }
 
 export function walkerScaleForZoom(zoom: number): number {
@@ -94,7 +85,7 @@ export function drawWalker(
   const loafInHand = composed && walkerAppearance(state!, walker).prop === "loaf";
   // F0-V: no colour square over the head. Goods the cart does not show (grain, bread, coin) get their resource icon
   // at the close zoom only (1.35); below it the walker, its cart and its payload say enough.
-  const onCart = composed && walker.kind === "carter" && walker.cargo !== null && CART_PAYLOAD[walker.cargo.resource] !== undefined;
+  const onCart = composed && walker.kind === "carter" && walker.cargo !== null && cartLoadArt(walker.cargo.resource, presentation.direction) !== null;
   if (walker.kind !== "builder" && walker.cargo !== null && !loafInHand && !onCart) {
     if (zoom >= CLOSE_ZOOM) drawCargoIcon(context, footX, footY, walker.cargo.resource, scale);
     else if (!composed) drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom);
@@ -104,26 +95,30 @@ export function drawWalker(
 const RUNTIME_ACTOR_MIN_ZOOM = 0.7;
 const CLOSE_ZOOM = 1.3;
 // INSTALL-7: the Wave 7 cart loads, one per good and cart axis (NE / SW carts: the `_ne` load; SE / NW: `_nw`); the
-// F0-V Wave 6 pile stands in while they load. Coin rides in the collector's purse, not on a cart.
-const CART_PAYLOAD: Partial<Record<ResourceType, "log" | "timber" | "rawstone" | "stone" | "grainsack" | "bread">> = {
-  logs: "log", timber: "timber", stone_raw: "rawstone", stone: "stone", wheat: "grainsack", bread: "bread",
-};
-const CART_PAYLOAD_FALLBACK: Partial<Record<ResourceType, "pile_wood_1" | "pile_stone_1">> = {
-  logs: "pile_wood_1", timber: "pile_wood_1", stone_raw: "pile_stone_1", stone: "pile_stone_1",
-};
+// F0-V Wave 6 pile stands in while they load. Coin rides in the collector's purse, not on a cart. RES-REG: a good with
+// no cart load of its own rides as the Wave 7 sacks (granary goods) or crates (storehouse goods).
+const GENERIC_CART_PILE = { granary: "pile_sacks_1", storehouse: "pile_crates_1" } as const;
 /** LOD: below this zoom the cart's load is not drawn (it reads as a few pixels; the cart and carter say enough). */
 export const CART_LOAD_MIN_ZOOM = 0.8;
-const CARGO_ICON: Partial<Record<ResourceType, "bread" | "timber" | "stone" | "coin">> = { bread: "bread", coin: "coin", wheat: "bread" };
+
+/** RES-REG: what a cart shows for a good — its Wave 7 load (`width`: the art's cargo width) with the F0-V pile behind it,
+ * else the generic sacks or crates; null: it rides in the collector's purse. */
+export function cartLoadArt(resource: ResourceType, direction: string): { readonly key: Parameters<typeof drawWave7>[1]; readonly width: number; readonly pile: ResourceCartPileKey | null } | null {
+  const entry = resourceEntry(resource);
+  if (entry.storage === "none") return null;
+  // The generic pile's goods span 72 of its 96 px (the crop the F0-V piles use below).
+  if (entry.cartLoadKey === undefined) return { key: GENERIC_CART_PILE[entry.storage], width: 72, pile: null };
+  const axis = direction === "NE" || direction === "SW" ? "ne" : "nw";
+  return { key: `cart_load_${entry.cartLoadKey}_${axis}` as const, width: 36, pile: entry.cartPileKey ?? null };
+}
 
 function drawCartPayload(context: CanvasRenderingContext2D, cart: { readonly x: number; readonly y: number; readonly width: number; readonly height: number },
   resource: ResourceType, direction: string): void {
-  const load = CART_PAYLOAD[resource];
-  if (load === undefined) return;
-  // The load's pivot (bottom centre of its 36 px cargo) on the cart bed, the cargo about 0.55 of the cart's width.
-  const axis = direction === "NE" || direction === "SW" ? "ne" : "nw";
-  if (drawWave7(context, `cart_load_${load}_${axis}`, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / 36)) return;
-  const key = CART_PAYLOAD_FALLBACK[resource];
-  const image = key === undefined ? null : visibilityArt(key);
+  const art = cartLoadArt(resource, direction);
+  if (art === null) return;
+  // The load's pivot (bottom centre of its cargo) on the cart bed, the cargo about 0.55 of the cart's width.
+  if (drawWave7(context, art.key, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / art.width)) return;
+  const image = art.pile === null ? null : visibilityArt(art.pile);
   if (image === null) return;
   const width = cart.width * 0.62;
   drawCroppedWorldSprite(context, image, { x: 12, y: 16, width: 72, height: 44 },
@@ -131,7 +126,7 @@ function drawCartPayload(context: CanvasRenderingContext2D, cart: { readonly x: 
 }
 
 function drawCargoIcon(context: CanvasRenderingContext2D, footX: number, footY: number, resource: ResourceType, scale: number): void {
-  const cell = CARGO_ICON[resource];
+  const cell = resourceEntry(resource).cargoIconCell;
   if (cell === undefined) return;
   drawUiIcon(context, "resource", cell, footX, footY - 44 * scale, 11 * scale / 0.55);
 }

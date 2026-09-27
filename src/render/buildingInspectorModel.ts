@@ -2,12 +2,13 @@ import { storageOverflowCause } from '../ui/storageOverflowModel';
 import { durationLabel } from "../ui/gameTimeCopy.ko";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
-import type { ResourceType } from "../content/resourceConfig";
+import { RESOURCE_TYPES } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import { houseBuiltLevel, houseCondition, houseConditionLabel } from "../population/houseCondition";
 import { providerServiceRows } from "../ui/serviceDiagnosisModel";
 import { buildingProblemCause } from "../ui/problemCauseModel";
 import { storageUsage } from '../economy/storage';
+import { resourceName } from "../content/resourceCatalog.ko";
 
 export type BuildingInspectorModel = {
   readonly kind: Building["kind"];
@@ -34,15 +35,6 @@ const PURPOSES = {
   church: "주변 가구에 교회 서비스를 제공",
   keep: "석조 도시의 중심 성채",
 } as const;
-const RESOURCE_NAMES = {
-  wheat: "밀",
-  bread: "빵",
-  logs: "통나무",
-  timber: "목재",
-  stone_raw: "원석",
-  stone: "석재",
-  coin: "돈",
-} as const satisfies Record<ResourceType, string>;
 
 export function buildingInspectorModel(
   state: GameState,
@@ -72,9 +64,9 @@ export function buildingInspectorModel(
       ],
     };
   }
-  const stock = (Object.keys(RESOURCE_NAMES) as ResourceType[])
+  const stock = (RESOURCE_TYPES)
     .filter((resource) => (building.inventory[resource] ?? 0) > 0)
-    .map((resource) => `${RESOURCE_NAMES[resource]} ${building.inventory[resource] ?? 0}`)
+    .map((resource) => `${resourceName(resource)} ${building.inventory[resource] ?? 0}`)
     .join(" · ") || "없음";
   const problemCause = buildingProblemCause(state, building.id);
   const usage = building.kind === 'storehouse' || building.kind === 'granary' ? storageUsage(building) : null;
@@ -83,7 +75,7 @@ export function buildingInspectorModel(
     ...(overflow === null ? [] : [overflow.label]),
     ...(usage === null ? [] : [
       `보관 ${usage.used} + 입고 예약 ${usage.incoming} / 한도 ${usage.capacity}`,
-      ...usage.byResource.map(item => `${RESOURCE_NAMES[item.resource]} ${item.stored} + 입고 예약 ${item.incoming} / 공동 한도 ${usage.capacity}`),
+      ...usage.byResource.map(item => `${resourceName(item.resource)} ${item.stored} + 입고 예약 ${item.incoming} / 공동 한도 ${usage.capacity}`),
     ]),
     ...providerServiceRows(state, building),
     ...(config.workersRequired > 0 ? [`일꾼 ${building.workers}/${config.workersRequired}`] : []),

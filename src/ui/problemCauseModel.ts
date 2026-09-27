@@ -1,10 +1,10 @@
 import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
 import { HOUSEHOLD_LABOUR_COPY } from "./householdLabourCopy.ko";
 import { outstandingArrears } from '../engine/moneyRules';
-import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { STORABLE_RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
+import { resourceEntry } from "../content/resourceCatalog";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import type { GameState } from "../engine/engine.types";
 import { buildingHasRequiredRoadAccess, ROAD_ACCESS_MARKER } from "../engine/roadAccess";
@@ -13,26 +13,11 @@ import { acceptsResource, availableSpace, storageCapacityBlock, storageIntakeSpa
 import { existingRoadComponent } from "../world/roadGraph";
 import { farmsteadCause } from "../zones/arableStrips";
 import { ARABLE_CAUSE_LABELS, FARMSTEAD_COPY } from "../zones/arableCopy.ko";
+import { resourceName } from "../content/resourceCatalog.ko";
 
-const RESOURCE_LABELS = {
-  wheat: "밀",
-  bread: "빵",
-  logs: "통나무",
-  timber: "목재",
-  stone_raw: "원석",
-  stone: "석재",
-  coin: MONEY_LABEL,
-} as const satisfies Record<ResourceType, string>;
-
-const STORAGE_LABELS = {
-  wheat: "곡창",
-  bread: "곡창",
-  logs: "창고",
-  timber: "창고",
-  stone_raw: "창고",
-  stone: "창고",
-  coin: "창고",
-} as const satisfies Record<ResourceType, "곡창" | "창고">;
+/** The store a good waits for: its granary or storehouse (money has none; its causes name the storehouse). */
+const storeLabelOf = (resource: ResourceType): string =>
+  BUILDING_CONFIG_BY_KIND[resourceEntry(resource).storage === "granary" ? "granary" : "storehouse"].name;
 
 function roadComponentKeys(state: GameState, target: Building): ReadonlySet<string> {
   return new Set(
@@ -68,7 +53,7 @@ function outputDestinationCause(
   target: Building,
   resource: ResourceType,
 ): string {
-  const storageLabel = STORAGE_LABELS[resource];
+  const storageLabel = storeLabelOf(resource);
   const destinations = state.buildings.filter((candidate) =>
     candidate.id !== target.id && acceptsResource(candidate.kind, resource),
   );
@@ -81,7 +66,7 @@ function outputDestinationCause(
       availableSpace(candidate, BUILDING_CONFIG_BY_KIND[candidate.kind])) > 0,
   );
   if (!available.some((candidate) => isRoadConnected(state, target, candidate))) {
-    return `${storageLabel}까지 경로가 없습니다 — ${RESOURCE_LABELS[resource]} 운반 불가`;
+    return `${storageLabel}까지 경로가 없습니다 — ${resourceName(resource)} 운반 불가`;
   }
   return `운반인이 ${storageLabel}으로 옮기기를 기다리는 중`;
 }
@@ -115,8 +100,8 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
     operation === "no_input" && production.input !== null
   ) {
     const inputResource = production.input;
-    const label = RESOURCE_LABELS[inputResource];
-    const storageLabel = STORAGE_LABELS[inputResource];
+    const label = resourceName(inputResource);
+    const storageLabel = storeLabelOf(inputResource);
     const anySupply = state.buildings.some(
       (candidate) => (candidate.inventory[inputResource] ?? 0) > 0,
     );
@@ -130,7 +115,7 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
   const outputResource = STORABLE_RESOURCE_TYPES.find((candidate) => candidate === production.output);
   if (outputResource !== undefined && (building.inventory[outputResource] ?? 0) > 0) {
     const blocked = storageCapacityBlock(state.buildings.filter((candidate) => candidate.id !== building.id), outputResource);
-    if (blocked !== null) return `${STORAGE_LABELS[outputResource]} 가득 참 (${blocked.used}/${blocked.capacity})`;
+    if (blocked !== null) return `${storeLabelOf(outputResource)} 가득 참 (${blocked.used}/${blocked.capacity})`;
   }
   return null;
 }

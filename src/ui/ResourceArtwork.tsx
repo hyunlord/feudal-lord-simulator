@@ -1,17 +1,17 @@
 import { useState } from "react";
+import { resourceEntry } from "../content/resourceCatalog";
+import { resourceName } from "../content/resourceCatalog.ko";
 import type { ResourceType } from "../content/resourceConfig";
 import { assetUrlForBase } from "../render/worldAssets";
+import { RESOURCE_BAR_COPY } from "./resourceBarCopy.ko";
 import { UiIcon } from "./UiIcon";
 
 export type ResourceArtworkKind = ResourceType | "population";
 
-const FALLBACK = {
-  population: "인", wheat: "밀", bread: "빵", logs: "목",
-  timber: "재", stone_raw: "암", stone: "석", coin: "금",
-} as const satisfies Record<ResourceArtworkKind, string>;
+/** RES-REG: a good with no picture of its own (or whose picture failed) shows the Wave 7 sacks or crates and its name. */
+const GENERIC_ART = { granary: "assets/wave7/pile/sacks_1-v1.png", storehouse: "assets/wave7/pile/crates_1-v1.png", none: "assets/wave7/pile/crates_1-v1.png" } as const;
 
-/** UX-2: the kinds the P0 resource sheet paints (24 px); the others keep their runtime-icons-v1 picture. */
-const SHEET_CELL = { population: "population", bread: "bread", timber: "timber", stone: "stone", coin: "coin" } as const;
+const art = (path: string) => assetUrlForBase(path, import.meta.env?.BASE_URL ?? "/");
 
 export function ResourceArtwork({ kind, small = false }: {
   readonly kind: ResourceArtworkKind;
@@ -19,10 +19,19 @@ export function ResourceArtwork({ kind, small = false }: {
 }) {
   const [failed, setFailed] = useState(false);
   const className = small ? "resource-artwork resource-artwork--small" : "resource-artwork resource-bar__icon";
-  if (!small && kind in SHEET_CELL) return <UiIcon sheet="resource" cell={SHEET_CELL[kind as keyof typeof SHEET_CELL]} className={className} />;
-  return failed
-    ? <span className={className} aria-hidden="true">{FALLBACK[kind]}</span>
-    : <img className={className} width={32} height={32} alt="" aria-hidden="true"
-        src={assetUrlForBase(`assets/runtime-icons-v1/${kind}.png`, import.meta.env?.BASE_URL ?? "/")}
-        onError={() => setFailed(true)} />;
+  // UX-2: the kinds the P0 resource sheet paints (24 px); the others keep their runtime-icons-v1 picture.
+  const entry = kind === "population" ? null : resourceEntry(kind);
+  const cell = kind === "population" ? "population" : entry?.sheetCell;
+  if (!small && cell !== undefined) return <UiIcon sheet="resource" cell={cell} className={className} />;
+  const icon = kind === "population" ? "population" : entry?.iconKey;
+  if (icon !== undefined && !failed) {
+    return <img className={className} width={32} height={32} alt="" aria-hidden="true"
+      src={art(`assets/runtime-icons-v1/${icon}.png`)} onError={() => setFailed(true)} />;
+  }
+  return (
+    <span className="resource-artwork-generic" aria-hidden="true">
+      <img className={className} width={32} height={32} alt="" src={art(GENERIC_ART[entry?.storage ?? "none"])} />
+      <span className="resource-name-chip">{kind === "population" ? RESOURCE_BAR_COPY.populationName : resourceName(kind)}</span>
+    </span>
+  );
 }

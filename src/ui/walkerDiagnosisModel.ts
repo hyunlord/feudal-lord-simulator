@@ -1,4 +1,3 @@
-import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import type {
   CarterCancellationReason,
   CarterDestination,
@@ -8,12 +7,12 @@ import type {
 } from "../agents/walker.types";
 import { BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
-import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import { constructionSiteAnchor } from "../economy/construction";
 import { remainingCarterTravelCost } from '../agents/carterTravelCost';
 import { getTile } from '../world/grid';
 import { stoneReplacementSiteId } from '../engine/era';
+import { resourceName } from "../content/resourceCatalog.ko";
 
 export type WalkerDiagnosisModel = {
   readonly walkerId: string;
@@ -30,16 +29,6 @@ export type WalkerDiagnosisModel = {
   readonly tilesTravelled: number | null;
   readonly cancellationLabel: string | null;
 };
-
-const RESOURCE_LABELS = {
-  wheat: "밀",
-  bread: "빵",
-  logs: "통나무",
-  timber: "목재",
-  stone_raw: "원석",
-  stone: "석재",
-  coin: MONEY_LABEL,
-} as const satisfies Record<ResourceType, string>;
 
 function assertNever(value: never): never {
   throw new Error(`Unhandled diagnostic variant: ${JSON.stringify(value)}`);
@@ -123,7 +112,7 @@ function destinationPosition(state: GameState, destination: CarterDestination): 
 function cargoLabel(walker: Walker): string {
   if (walker.kind === "builder") return "화물 없음";
   if (walker.cargo === null) return "화물 없음";
-  return `${RESOURCE_LABELS[walker.cargo.resource]} ${walker.cargo.amount}`;
+  return `${resourceName(walker.cargo.resource)} ${walker.cargo.amount}`;
 }
 
 function carterStatus(walker: CarterWalker): string {

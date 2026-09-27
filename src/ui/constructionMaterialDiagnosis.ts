@@ -1,4 +1,3 @@
-import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { durationLabel } from "./gameTimeCopy.ko";
 import type { CarterWalker, TilePos, Walker } from "../agents/walker.types";
 import { BALANCE } from "../content/balanceConfig";
@@ -9,16 +8,7 @@ import {
   constructionSiteAnchor,
   type ConstructionSite,
 } from "../economy/construction";
-
-const RESOURCE_LABELS = {
-  wheat: "밀",
-  bread: "빵",
-  logs: "통나무",
-  timber: "목재",
-  stone_raw: "원석",
-  stone: "석재",
-  coin: MONEY_LABEL,
-} as const satisfies Record<ResourceType, string>;
+import { resourceName } from "../content/resourceCatalog.ko";
 
 export type ConstructionMaterialDiagnosisState = Readonly<{
   buildings: readonly Building[];
@@ -150,7 +140,7 @@ function sourceFacts(
 }
 
 function fallbackLabel(site: ConstructionSite, progress: MaterialProgress): string {
-  const prefix = `${RESOURCE_LABELS[progress.resource]} ${progress.delivered}/${progress.required}`;
+  const prefix = `${resourceName(progress.resource)} ${progress.delivered}/${progress.required}`;
   switch (site.stall) {
     case "no_material_source":
       return `${prefix} · 공급처 없음 · ETA 확인 불가`;
@@ -172,7 +162,7 @@ function carrierLabel(
   remainingPathDistance: number,
   etaTicks: number,
 ): string {
-  const prefix = `${RESOURCE_LABELS[progress.resource]} ${progress.delivered}/${progress.required} · 예약 ${progress.reserved}`;
+  const prefix = `${resourceName(progress.resource)} ${progress.delivered}/${progress.required} · 예약 ${progress.reserved}`;
   const source = facts === null
     ? "공급처 확인 불가"
     : `${facts.label} ${facts.directionLabel} ${facts.distance}칸`;

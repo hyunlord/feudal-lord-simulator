@@ -1,4 +1,3 @@
-import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { useEffect, useId, useState } from "react";
 
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
@@ -28,6 +27,7 @@ import { UiIcon } from "./UiIcon";
 import type { UiIconCell } from "./uiArt";
 import { ZoneLandLegend } from "./hud/ZoneToolbar";
 import { Button } from "./kit";
+import { resourceName } from "../content/resourceCatalog.ko";
 
 /** Zone cards (C1b): plots, arable, pasture, orchard and the eraser, in the zone layer (UX-1); UX-2 painted icons. */
 type ZoneCardIcon = { readonly sheet: "building"; readonly cell: UiIconCell<"building"> } | { readonly sheet: "prediction"; readonly cell: UiIconCell<"prediction"> };
@@ -280,10 +280,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   );
 }
 
-const RESOURCE_LABELS = { wheat: "밀", bread: "빵", logs: "통나무", timber: "목재", stone_raw: "원석", stone: "석재", coin: MONEY_LABEL } as const satisfies Record<ResourceType, string>;
-
 function shortfallText(option: BuildToolOption, spendable: Partial<Record<ResourceType, number>>): string {
   return RESOURCE_TYPES.filter(resource => (option.cost[resource] ?? 0) > (spendable[resource] ?? 0))
-    .map(resource => `${RESOURCE_LABELS[resource]} 부족 ${spendable[resource] ?? 0}/${option.cost[resource] ?? 0}`)
+    .map(resource => `${resourceName(resource)} 부족 ${spendable[resource] ?? 0}/${option.cost[resource] ?? 0}`)
     .join(" · ");
 }

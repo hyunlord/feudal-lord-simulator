@@ -10,6 +10,7 @@ import { constructionAccessModel, type ConstructionAccessCause } from "./constru
 import { buildingCauseSnapshot, type BuildingCausePresentation } from "./houseProgressModel";
 import { pendingPastureWarning } from "./wallExpansionModel";
 import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
+import { resourceName } from "../content/resourceCatalog.ko";
 
 // Warning stack (right side, under the goal cards). Rows come from the same per-building cause model the cause map
 // draws (`buildingCauseSnapshot`: houses and facilities, status + blocker `CauseDetail`) plus the construction-site
@@ -70,9 +71,9 @@ function facilityTitle(building: Building, blocker: CauseDetail): string {
   const copy = ALERT_STACK_COPY.facility;
   switch (blocker.reason) {
     case "no_input": return production?.input == null ? copy.inputMissing(CAUSE_REGISTRY[blocker.causeId].shortLabel)
-      : copy.inputMissing(ALERT_STACK_COPY.resource[production.input]);
+      : copy.inputMissing(resourceName(production.input));
     case "output_full": return production === null ? CAUSE_REGISTRY[blocker.causeId].shortLabel
-      : copy.outputFull(ALERT_STACK_COPY.resource[production.output]);
+      : copy.outputFull(resourceName(production.output));
     case "no_road": return copy.noRoad;
     case "understaffed": return copy.understaffed;
     case "paused": return copy.paused;

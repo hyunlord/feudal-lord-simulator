@@ -2,8 +2,8 @@ import { BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import {
   STORAGE_KIND_BY_RESOURCE,
+  isStorableResource,
   type ResourceType,
-  type StorableResourceType,
 } from "../content/resourceConfig";
 import { amountOf } from "./deliveryCommon";
 import { storageIntakeSpace } from "../economy/storage";
@@ -30,20 +30,6 @@ function bestCandidate(candidates: readonly RouteCandidate[], replenishBread = f
     }
     return left.building.id.localeCompare(right.building.id);
   })[0] ?? null;
-}
-
-function isStorableResource(resource: ResourceType): resource is StorableResourceType {
-  switch (resource) {
-    case "wheat":
-    case "bread":
-    case "logs":
-    case "timber":
-    case "stone_raw":
-    case "stone":
-      return true;
-    case "coin":
-      return false;
-  }
 }
 
 export function deliverCandidate(

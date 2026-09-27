@@ -80,8 +80,10 @@ function building(kind: Building["kind"]): Building {
 
 test("Phase 9 resource contracts include stone while coin remains treasury-only", () => {
   // Given / When / Then
-  assert.deepEqual(RESOURCE_TYPES, ["wheat", "bread", "logs", "timber", "stone_raw", "stone", "coin"]);
-  assert.deepEqual(STORABLE_RESOURCE_TYPES, ["wheat", "bread", "logs", "timber", "stone_raw", "stone"]);
+  // RES-REG: the list grows with the catalog; the Phase 9 goods keep their places and coin stays last and unstored.
+  assert.deepEqual(RESOURCE_TYPES.slice(0, 6), ["wheat", "bread", "logs", "timber", "stone_raw", "stone"]);
+  assert.equal(RESOURCE_TYPES.at(-1), "coin");
+  assert.deepEqual(STORABLE_RESOURCE_TYPES, RESOURCE_TYPES.filter(resource => resource !== "coin"));
   assert.equal(acceptsResource("storehouse", "stone_raw"), true);
   assert.equal(acceptsResource("storehouse", "stone"), true);
   assert.equal(acceptsResource("granary", "stone_raw"), false);

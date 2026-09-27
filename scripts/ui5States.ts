@@ -7,7 +7,7 @@
 // Beside the states: moments.json (what each moment is about) and summary.json (the portrait match rates of every
 // state, the arms of each seed, the merchant households).
 //   tsx scripts/ui5States.ts <seed> <maxTicks> <out-dir>
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
 import { persons } from "../src/engine/personsApi";
@@ -19,6 +19,7 @@ import { walkerVisualAnchor } from "../src/render/walkerAnchor";
 import { armsKey, armsRecipe, merchantKey, merchantRecipe } from "../src/ui/heraldry/heraldry";
 import { householdRows, personEmblem, portraitMatchRate, stewardPerson, walkerHeadline } from "../src/ui/persons/personModels";
 import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
+import { loadSaveFile } from "./loadSaveFile";
 
 const [seedArg, maxArg, out] = process.argv.slice(2);
 mkdirSync(out!, { recursive: true });
@@ -73,7 +74,8 @@ runPhase19NaturalGrowth({ targetLots: 24, maxTicks: Number(maxArg ?? 200_000), s
 }, additionalAcceptance: (state: GameState) => chapterEnd(state) !== null });
 
 // The merchant households: the seed 1 determinism town (two markets) run on until its markets have masters (PS-4).
-let town = JSON.parse(readFileSync("fixtures/determinism/seed1/final-state.json", "utf8")) as GameState;
+// RES-REG: through the save codec (a bare file is schema v0: the whole migration chain), never parsed into the game.
+let town = loadSaveFile("fixtures/determinism/seed1/final-state.json");
 const merchants = (state: GameState) => (state.persons?.people ?? []).filter(person => person.classBand === "merchant");
 for (let step = 0; step < 2_000 && merchants(town).length === 0; step += 1) town = advanceTick(town);
 const merchant = merchants(town)[0];

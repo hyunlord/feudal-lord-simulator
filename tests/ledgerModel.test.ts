@@ -3,6 +3,7 @@ import test from "node:test";
 
 import type { CarterWalker, DistributorWalker } from "../src/agents/walker.types";
 import type { Building } from "../src/content/buildingConfig";
+import { emptyResourceTotals } from "../src/content/resourceCatalog";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { economyStockTotals } from "../src/ui/ledgerModel";
 
@@ -75,13 +76,13 @@ test("ledger totals treasury, building inventory, and walker cargo without count
     }],
   });
 
+  // RES-REG: every other good (the catalog may list more) totals 0.
   assert.deepEqual(totals, {
+    ...emptyResourceTotals(),
     wheat: 10,
     bread: 15,
     logs: 4,
     timber: 11,
-    stone_raw: 0,
-    stone: 0,
     coin: 7,
   });
 });

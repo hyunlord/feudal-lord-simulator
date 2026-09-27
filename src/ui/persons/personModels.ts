@@ -9,7 +9,7 @@ import type { PetitionRecord } from "../../engine/politics.types";
 import { walkerLook, type WalkerClassBand } from "../../render/walkerLook";
 import { armsRecipe, merchantRecipe } from "../heraldry/heraldry";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
-import { RESOURCE_NAMES } from "../hud/hudCopy.ko";
+import { resourceName } from "../../content/resourceCatalog.ko";
 import { drawnPortraitId } from "../portraitArt";
 import { PERSONS_COPY } from "./personsCopy.ko";
 
@@ -130,7 +130,7 @@ export function walkerHeadline(state: GameState, walkerId: string): WalkerHeadli
   const person = walkerPerson(state, walker);
   const portrait = person === null ? null : drawnPortrait(state, person);
   const who = { personId: person?.id ?? null, name: person === null ? null : displayName(person), portraitId: portrait?.portraitId ?? null, exact: portrait?.exact ?? false };
-  const cargo = walker.cargo === null ? null : RESOURCE_NAMES[walker.cargo.resource];
+  const cargo = walker.cargo === null ? null : resourceName(walker.cargo.resource);
   if (walker.kind === "distributor") return { ...who, line: cargo === null ? PERSONS_COPY.returningHome : PERSONS_COPY.delivering(cargo) };
   const home = state.buildings.find(building => building.id === walker.homeBuildingId);
   if (cargo === null || walker.phase === "returning") return { ...who, line: PERSONS_COPY.returning(home === undefined ? null : BUILDING_CONFIG_BY_KIND[home.kind].name) };

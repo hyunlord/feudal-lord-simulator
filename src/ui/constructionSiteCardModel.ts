@@ -1,4 +1,3 @@
-import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { GAME_TIME_COPY } from "./gameTimeCopy.ko";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
@@ -21,16 +20,7 @@ import { A_TRIPLE_PRIME_ROAD_COPY } from './aTriplePrimeRoadCopy';
 import type { GameState } from '../engine/engine.types';
 import { calendarArrivalLabel } from "./calendarArrival";
 import { scenarioOf } from "../engine/scenarioState";
-
-const RESOURCE_LABELS = {
-  wheat: "밀",
-  bread: "빵",
-  logs: "통나무",
-  timber: "목재",
-  stone_raw: "원석",
-  stone: "석재",
-  coin: MONEY_LABEL,
-} as const satisfies Record<ResourceType, string>;
+import { resourceName } from "../content/resourceCatalog.ko";
 
 export type ConstructionSiteCardRow = Readonly<{
   label: "부지" | "자재 확보" | "자재 배달" | "건축 작업" | "자재 진단" | "원인" | "연결 길";
@@ -87,7 +77,7 @@ function securedLabel(site: ConstructionSite): string {
     const required = amount(site.required, resource);
     const reserved = amount(site.reserved, resource);
     const suffix = reserved > 0 ? ` · 예약 ${reserved}` : "";
-    return `${RESOURCE_LABELS[resource]} ${delivered}/${required} 확보${suffix}`;
+    return `${resourceName(resource)} ${delivered}/${required} 확보${suffix}`;
   });
   return parts.length === 0 ? "필요 없음" : parts.join(" · ");
 }
@@ -98,7 +88,7 @@ function deliveryLabel(site: ConstructionSite): string {
       0,
       amount(site.required, resource) - amount(site.delivered, resource) - amount(site.reserved, resource),
     );
-    return remaining > 0 ? `${RESOURCE_LABELS[resource]} ${remaining} 남음` : null;
+    return remaining > 0 ? `${resourceName(resource)} ${remaining} 남음` : null;
   });
   return parts.length === 0 ? "배달 대기 없음" : parts.join(" · ");
 }

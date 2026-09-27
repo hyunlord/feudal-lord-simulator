@@ -1,27 +1,15 @@
 import { treasuryBalance } from "../ledger/ledger";
-import {
-  RESOURCE_TYPES,
-  type ResourceType,
-} from "../content/resourceConfig";
+import { RESOURCE_TYPES } from "../content/resourceConfig";
+import { emptyResourceTotals, type ResourceTotals } from "../content/resourceCatalog";
 import type { GameState } from "../engine/engine.types";
 
-export type EconomyStockTotals = Record<ResourceType, number>;
-
-const emptyTotals = (): EconomyStockTotals => ({
-  wheat: 0,
-  bread: 0,
-  logs: 0,
-  timber: 0,
-  stone_raw: 0,
-  stone: 0,
-  coin: 0,
-});
+export type EconomyStockTotals = ResourceTotals;
 
 const stockAmount = (amount: number | undefined): number =>
   Number.isFinite(amount) ? Math.max(0, amount ?? 0) : 0;
 
 export function economyStockTotals(state: GameState): EconomyStockTotals {
-  const totals = emptyTotals();
+  const totals = emptyResourceTotals();
   totals.timber += stockAmount(state.treasuryTimber);
   // Spec L-3: the treasury is the ledger's cash balance.
   totals.coin += stockAmount(treasuryBalance(state));

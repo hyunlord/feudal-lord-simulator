@@ -1,4 +1,5 @@
-import { RESOURCE_NAMES } from "./hud/hudCopy.ko";
+import { resourceName } from "../content/resourceCatalog.ko";
+import type { ResourceType } from "../content/resourceConfig";
 
 // UX-3R2 storage inspector (UX3R 6절): capacity, what it takes, stock per item with the week's change, who uses it.
 export const STORE_INSPECTOR_COPY = {
@@ -19,5 +20,5 @@ export const STORE_INSPECTOR_COPY = {
   distributors: (count: number) => `배급꾼 ${count}명이 여기서 떠남`,
   site: (name: string) => `${name} 공사장`,
   lookAt: "위치로",
-  resource: (resource: keyof typeof RESOURCE_NAMES) => RESOURCE_NAMES[resource],
+  resource: (resource: ResourceType) => resourceName(resource),
 } as const;

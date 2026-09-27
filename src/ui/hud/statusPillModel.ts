@@ -1,4 +1,5 @@
-import { RESOURCE_TYPES, type ResourceType } from "../../content/resourceConfig";
+import { STORABLE_RESOURCE_TYPES, type ResourceType } from "../../content/resourceConfig";
+import { resourceEntry } from "../../content/resourceCatalog";
 import { BALANCE } from "../../content/balanceConfig";
 import type { GameState } from "../../engine/engine.types";
 import { BUILDING_CONFIG_BY_KIND, operationSuspended } from "../../content/buildingConfig";
@@ -57,13 +58,14 @@ export type LedgerMatrix = Readonly<{
 export function ledgerMatrix(state: GameState): LedgerMatrix {
   const counters = new Map<string, number>();
   const stores = state.buildings
-    .filter(building => RESOURCE_TYPES.some(resource => resource !== "coin" && (building.inventory[resource] ?? 0) > 0))
+    .filter(building => STORABLE_RESOURCE_TYPES.some(resource => (building.inventory[resource] ?? 0) > 0))
     .map(building => {
       const index = (counters.get(building.kind) ?? 0) + 1; counters.set(building.kind, index);
       return { id: building.id, kind: building.kind, index, stock: building.inventory };
     });
   const totals = economyStockTotals(state);
-  const rows = RESOURCE_TYPES.filter(resource => resource !== "coin").map(resource => ({
+  // RES-REG: the stored goods in the catalog's ledger order (hudPriority).
+  const rows = [...STORABLE_RESOURCE_TYPES].sort((a, b) => resourceEntry(a).hudPriority - resourceEntry(b).hudPriority).map(resource => ({
     resource, byStore: stores.map(store => Math.floor(store.stock[resource] ?? 0)), total: Math.floor(totals[resource]),
   })).filter(row => row.total > 0);
   return { stores, rows };

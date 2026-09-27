@@ -5,6 +5,7 @@ import { scenarioOf } from "../engine/scenarioState";
 import type { BuildCategory } from "./buildMenuPresentation";
 import { SEASON_LEDGER_COPY } from "./seasonLedgerCopy.ko";
 import { seasonLedgerScenes, type SeasonSceneId } from "./seasonLedgerScenes";
+import { resourceName } from "../content/resourceCatalog.ko";
 
 // UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes
 // (UI-4b: from the history ledger, as Wave 19 scene icons, seasonLedgerScenes.ts), money, population and stock beside
@@ -69,7 +70,7 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
   const year = ledger.year;
   const scenes = seasonLedgerScenes(state, ledger, before).map(scene => ({ ...scene, name: SEASON_LEDGER_COPY.scene[scene.id] }));
   const population = SEASON_LEDGER_COPY.population(ledger.popDelta) + (before === undefined ? "" : ` ${SEASON_LEDGER_COPY.versus(before.popDelta)}`);
-  const stock = SEASON_STOCK_KEYS.map(key => SEASON_LEDGER_COPY.stock(SEASON_LEDGER_COPY.stockNames[key], Math.round(ledger.stockDelta[key]))).join(" · ");
+  const stock = SEASON_STOCK_KEYS.map(key => SEASON_LEDGER_COPY.stock(resourceName(key), Math.round(ledger.stockDelta[key]))).join(" · ");
   const events = ledger.notableEvents.map(event => eventLine(state, event));
   return {
     key: `${ledger.year}:${ledger.season}`,

@@ -8,6 +8,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium } from './renderCommitProbe.mjs';
+import { routeSceneState } from './sceneInjection.mjs';
 
 const [out] = process.argv.slice(2);
 const flag = name => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
@@ -30,12 +31,7 @@ async function open(name, state, tile, zoom = 1.1) {
   const page = await context.newPage();
   page.on('pageerror', error => result.errors.push(`${name}: ${String(error)}`));
   await page.routeWebSocket('**', socket => socket.close());
-  const source = JSON.stringify(state);
-  await page.route('**/src/state/gameStore.ts*', async route => {
-    const response = await route.fetch(); const text = await response.text(); const anchor = 'useState(DEFAULT_GAME_STATE)';
-    if (!text.includes(anchor)) throw new Error('State injection anchor changed');
-    await route.fulfill({ response, body: text.replace(anchor, `useState(${source})`) });
-  });
+  await routeSceneState(page, state);
   const camera = { zoom, panX: 640 - (tile[0] - tile[1]) * 32 * zoom, panY: 360 - (tile[0] + tile[1]) * 16 * zoom };
   await page.route('**/src/render/canvasRuntime.ts*', async route => {
     const response = await route.fetch(); const text = await response.text(); const anchor = 'const house = startingHouse(state.buildings);';

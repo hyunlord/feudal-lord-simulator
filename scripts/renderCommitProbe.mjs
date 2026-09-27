@@ -12,6 +12,7 @@
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { routeSceneState, sceneStateRefusal } from './sceneInjection.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -51,14 +52,7 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
   if (initScript !== null) await context.addInitScript(initScript);
   const page = await context.newPage();
   await page.routeWebSocket('**', socket => socket.close());
-  if (state !== null) {
-    const source = JSON.stringify(state);
-    await page.route('**/src/state/gameStore.ts*', async route => {
-      const response = await route.fetch(); const text = await response.text(); const anchor = 'useState(DEFAULT_GAME_STATE)';
-      if (!text.includes(anchor)) throw new Error('State injection anchor changed');
-      await route.fulfill({ response, body: text.replace(anchor, `useState(${source})`) });
-    });
-  }
+  if (state !== null) await routeSceneState(page, state);
   const camera = { zoom, panX: width / 2 - (tile[0] - tile[1]) * 32 * zoom, panY: height / 2 - (tile[0] + tile[1]) * 16 * zoom };
   await page.route('**/src/render/canvasRuntime.ts*', async route => {
     const response = await route.fetch(); const text = await response.text(); const anchor = 'const house = startingHouse(state.buildings);';
@@ -73,7 +67,8 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
     });
   }
   await page.goto(`${baseUrl}?phase10-proof=1${query}`);
-  await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
+  // A state the save codec refuses (an old bare save) fails the scene at once instead of at the 60 s wait.
+  await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 }), sceneStateRefusal(page)]);
   if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click();
   await page.keyboard.press('Escape');
   // UX-3 S-31: Esc on the idle screen opens the pause menu; a scene starts without it.

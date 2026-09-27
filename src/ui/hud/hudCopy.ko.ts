@@ -1,4 +1,3 @@
-import type { ResourceType } from "../../content/resourceConfig";
 
 /** A sum of money in pennies: "120d" (the coin icon goes beside it where there is room). */
 export const pence = (value: number | string): string => `${value}d`;
@@ -43,4 +42,3 @@ export const HUD_COPY = {
   stewardQuiet: "청지기가 전할 말이 없습니다",
 } as const;
 
-export const RESOURCE_NAMES = { wheat: "밀", bread: "빵", logs: "원목", timber: "목재", stone_raw: "원석", stone: "석재", coin: "돈" } as const satisfies Record<ResourceType, string>;

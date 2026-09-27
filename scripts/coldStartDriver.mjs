@@ -15,6 +15,7 @@
 import { createServer } from 'node:http';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { routeSceneState } from './sceneInjection.mjs';
 
 const [outDir] = process.argv.slice(2);
 const flag = name => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
@@ -94,11 +95,7 @@ async function run(op) {
       session.page.on('pageerror', error => session.errors.push(`[pageerror] ${String(error).slice(0, 300)}`));
       session.page.on('console', message => { if (message.type() === 'error') session.errors.push(`[console] ${message.text().slice(0, 300)}`); });
       const source = readFileSync(join(statesDir, `${op.state}.json`), 'utf8');
-      await session.page.route('**/src/state/gameStore.ts*', async route => {
-        const response = await route.fetch(); const text = await response.text(); const anchor = 'useState(DEFAULT_GAME_STATE)';
-        if (!text.includes(anchor)) throw new Error('State injection anchor changed');
-        await route.fulfill({ response, body: text.replace(anchor, `useState(${source})`) });
-      });
+      await routeSceneState(session.page, source);
       await session.page.goto(url, { waitUntil: 'load' });
       await session.page.waitForSelector('canvas', { timeout: 90_000 });
       await session.page.waitForTimeout(4000);

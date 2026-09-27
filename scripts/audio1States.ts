@@ -3,13 +3,14 @@
 // change: its stinger and the ambience crossfade) and the wet summer of the dearth rehearsal (its rain). The market day comes from the seed 1 determinism town (two markets;
 // the seed 2 chapter builds none under MARKET-1's rules): run on tick by tick until six marketgoers crowd a market.
 //   tsx scripts/audio1States.ts <seed> <maxTicks> <out-dir>
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
 import { wetSummer } from "../src/render/wetSummer";
 import { advanceTick } from "../src/engine/tick";
 import { residentWalkers } from "../src/ui/residentTrips";
 import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
+import { loadSaveFile } from "./loadSaveFile";
 
 const [seedArg, maxArg, out] = process.argv.slice(2);
 mkdirSync(out!, { recursive: true });
@@ -37,7 +38,8 @@ const crowded = (state: GameState) => {
   return state.buildings.filter(building => building.kind === "market")
     .some(market => goers.filter(walker => Math.hypot(walker.position.tx - market.tx, walker.position.ty - market.ty) <= 6).length >= 6);
 };
-let town = JSON.parse(readFileSync("fixtures/determinism/seed1/final-state.json", "utf8")) as GameState;
+// RES-REG: through the save codec (a bare file is schema v0: the whole migration chain), never parsed into the game.
+let town = loadSaveFile("fixtures/determinism/seed1/final-state.json");
 for (let step = 0; step < 4_000 && !crowded(town); step += 1) town = advanceTick(town);
 if (crowded(town)) save("market-day", town);
 writeFileSync(join(out!, "moments.json"), JSON.stringify(Object.fromEntries(found), null, 1) + "\n");
