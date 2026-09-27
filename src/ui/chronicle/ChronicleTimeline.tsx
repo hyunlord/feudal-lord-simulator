@@ -51,7 +51,8 @@ export function ChronicleTimeline({ segments, markers, chapters, nowTick, picked
       <div className="chronicle-strip-labels" aria-hidden="true">
         {segments.map((segment, index) => (
           <span key={segment.eraId} className="chronicle-era-label" data-entered={segment.entered ? "true" : undefined} style={bandLeft(index / segments.length)}>
-            {segment.entered ? COPY.eraLabel(segment.fromYear, segment.label) : COPY.eraLabelAhead(segment.fromYear, segment.label)}
+            {COPY.eraLabel(segment.fromYear, segment.label)}
+            {segment.entered ? null : <span className="chronicle-era-ahead">{COPY.eraAhead}</span>}
           </span>
         ))}
         {chapters.map(chapter => {
