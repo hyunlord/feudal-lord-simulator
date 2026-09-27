@@ -17,6 +17,7 @@
  *   heads, the most substantial first, named on each petition).
  * - PS-2 names and PS-5 portraits are fixed when a person appears (namesakes get bynames; see `personNames.ts`).
  */
+import { EPITHETS_KO, GIVEN_NAMES_KO, KING_NAMES_KO, PERSON_NAME_COPY, SURNAMES_KO } from "../content/personNames.ko";
 import { FEMALE_GIVEN_NAMES, HAIR_COLOURS, MALE_GIVEN_NAMES, NAMESAKE_EPITHETS, OCCUPATIONAL_SURNAMES, ORDINAL_EPITHETS, PATRONYMIC_SURNAMES, TOPOGRAPHIC_SURNAMES, type WeightedName } from "../content/personNames";
 import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { houseHasFood } from "../population/houseFood";
@@ -24,7 +25,7 @@ import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { foodPricePermille } from "./eventSchedule";
 import { hashSeed, rollPermille } from "./prng";
-import { choosePortraitIdentity, identityHasBand, portraitFor, type PortraitChoice } from "./portraits";
+import { choosePortraitIdentity, identityFaction, identityHasBand, portraitFor, type PortraitChoice } from "./portraits";
 import { calendar, scenarioOf } from "./scenarioState";
 import { conscriptsAway } from "./war";
 import { factionPerson, petitionFactionLeaders } from "./factions";
@@ -71,6 +72,19 @@ export function inTown(person: Person): boolean {
 /** PS-2: "John atte Well the younger". */
 export function displayName(person: Pick<Person, "givenName" | "surname" | "epithet">): string {
   return [person.givenName, person.surname, person.epithet].filter(part => part !== undefined && part !== "").join(" ");
+}
+
+/**
+ * FIX-6 ③ (decision FX6-4): the name every screen writes — read in Korean (`personNames.ko.ts`): a king by his regnal
+ * name, anyone else as byname-epithet, given name, surname ("나이 든 토머스 애덤슨", "윌리엄 드 리종드"). A name missing
+ * from the tables is written as it is (the tables are checked to cover every name the game gives).
+ */
+export function personDisplayName(person: Pick<Person, "givenName" | "surname" | "epithet" | "occupation">): string {
+  if (person.occupation === "king") return KING_NAMES_KO[person.givenName] ?? person.givenName;
+  const epithet = person.epithet === undefined || person.epithet === "" ? null
+    : EPITHETS_KO[person.epithet] ?? (person.epithet.startsWith("no. ") ? PERSON_NAME_COPY.numberedEpithet(String(Number(person.epithet.slice(4)))) : person.epithet);
+  const surname = person.surname === undefined || person.surname === "" ? null : SURNAMES_KO[person.surname] ?? person.surname;
+  return PERSON_NAME_COPY.fullName(epithet, GIVEN_NAMES_KO[person.givenName] ?? person.givenName, surname);
 }
 
 /** A name from a weighted list by a roll (FACTION-0: the factions' people are named so too). */
@@ -418,13 +432,14 @@ export function advancePersons(state: GameState): GameState {
   }
 
   // PS-5: at the year's start, a person whose face no longer matches (a new age band the identity lacks, or a class
-  // the picture does not show) takes a better one if the pool has it; a child of 14 becomes a labourer.
+  // the picture does not show) takes a better one if the pool has it; a child of 14 becomes a labourer. CODE-1a: a
+  // faction leader's pool-3 face is kept while it has the age band (its class is the faction's, not the trade's).
   if (seasonStart && state.tick % YEAR === 0) {
     for (const person of [...town.people]) {
       const band = ageBandOf(ageOf(person, year));
       const grown = person.occupation === "child" && band !== "child" ? { occupation: "labourer" } : {};
       const current = { ...person, ...grown };
-      if (identityHasBand(current.portraitIdentity, band) && portraitFor(current, band).exact) {
+      if (identityHasBand(current.portraitIdentity, band) && (portraitFor(current, band).exact || identityFaction(current.portraitIdentity) !== undefined)) {
         if (grown.occupation !== undefined) town.replace(person.id, grown);
         continue;
       }

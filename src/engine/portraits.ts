@@ -1,12 +1,16 @@
+import { FACTION_HEAD_RANKS } from "../content/factionConfig";
 import { PORTRAIT_POOL, type PortraitEntry } from "../content/portraitPool";
 import { hashSeed } from "./prng";
 import type { Person, PersonAgeBand } from "./persons.types";
 
 /**
- * PERSON-0 PS-5: portraits from the pool (232 pictures, 100 identities; aging chains child → young → mature → old).
+ * PERSON-0 PS-5: portraits from the pool (304 pictures, 124 identities; aging chains child → young → mature → old).
  * A person keeps one identity; its stage follows the person's age band. The identity is chosen deterministically from
  * sex, age band, class, build and trade or office, preferring the identities least used in the town; a person whose
  * identity has no picture for a new age band is given a new identity (a pilot face has one age only).
+ *
+ * CODE-1a: pool 3 (I101–I124) is the factions' leaders' own — the town's people never draw it; a faction's leaders and
+ * heirs are drawn from its pool-3 faces only (`chooseFactionPortraitIdentity`).
  *
  * FIX-4 (HR-12): under `PORTRAIT_MIN_AGE` a person has no portrait — `portraitFor` returns a silhouette key (infant
  * under `INFANT_AGE`, else child) that the screens draw as a figure. From 8 to 13 (the child band) only the pool's
@@ -21,7 +25,7 @@ export const PORTRAIT_BAND: Readonly<Record<PersonAgeBand, PortraitEntry["band"]
 
 const BY_IDENTITY = new Map<string, PortraitEntry[]>();
 for (const entry of PORTRAIT_POOL) BY_IDENTITY.set(entry.identityId, [...(BY_IDENTITY.get(entry.identityId) ?? []), entry]);
-const IDENTITIES = [...BY_IDENTITY.keys()].sort();
+const IDENTITIES = [...BY_IDENTITY.keys()].filter(identityId => BY_IDENTITY.get(identityId)![0]!.faction === undefined).sort();
 const CHILD_IDENTITIES = IDENTITIES.filter(identityId => (BY_IDENTITY.get(identityId) ?? []).some(entry => entry.band === "child"));
 const BAND_ORDER: readonly PortraitEntry["band"][] = ["child", "young", "mature", "old"];
 
@@ -69,11 +73,31 @@ function exactFor(person: Pick<Person, "sex" | "classBand">, band: PortraitEntry
  */
 export function choosePortraitIdentity(stateSeed: number, person: Pick<Person, "id" | "sex" | "classBand" | "build" | "occupation" | "tags" | "role">,
   band: PersonAgeBand, usage: ReadonlyMap<string, number>, exclude: ReadonlySet<string> = new Set()): string {
-  const target = PORTRAIT_BAND[band];
-  let best: { identityId: string; score: number; tie: number } | null = null;
   // HR-12: a child (and a baby, whose face comes at 8) is chosen among the child pictures only.
   const pool = identitiesForBand(band).filter(identityId => !exclude.has(identityId));
-  for (const identityId of pool.length > 0 ? pool : identitiesForBand(band)) {
+  return bestIdentity(stateSeed, person, band, usage, pool.length > 0 ? pool : identitiesForBand(band)) ?? identitiesForBand(band)[0]!;
+}
+
+/**
+ * CODE-1a: a faction's leader — the best of its pool-3 faces (`factions`: `PortraitEntry.faction` values) by the same
+ * scores, a head's rank first (`FACTION_HEAD_RANKS`); `exclude` (a predecessor's face) unless it is the only one left.
+ * Null when none is of the person's sex (the person keeps the town's pick).
+ */
+export function chooseFactionPortraitIdentity(stateSeed: number, person: Pick<Person, "id" | "sex" | "classBand" | "build" | "occupation" | "tags" | "role">,
+  band: PersonAgeBand, usage: ReadonlyMap<string, number>, factions: readonly string[], exclude: ReadonlySet<string> = new Set()): string | null {
+  const faces = [...BY_IDENTITY.keys()].sort().filter(identityId => factions.includes(BY_IDENTITY.get(identityId)![0]!.faction ?? "")
+    && BY_IDENTITY.get(identityId)![0]!.sex === person.sex);
+  const heads = faces.filter(identityId => FACTION_HEAD_RANKS.includes(BY_IDENTITY.get(identityId)![0]!.rank ?? ""));
+  const preferred = heads.filter(identityId => !exclude.has(identityId));
+  const rest = faces.filter(identityId => !exclude.has(identityId));
+  return bestIdentity(stateSeed, person, band, usage, preferred.length > 0 ? preferred : rest.length > 0 ? rest : faces);
+}
+
+function bestIdentity(stateSeed: number, person: Pick<Person, "id" | "sex" | "classBand" | "build" | "occupation" | "tags" | "role">,
+  band: PersonAgeBand, usage: ReadonlyMap<string, number>, candidates: readonly string[]): string | null {
+  const target = PORTRAIT_BAND[band];
+  let best: { identityId: string; score: number; tie: number } | null = null;
+  for (const identityId of candidates) {
     const picture = pictureFor(identityId, target);
     if (picture === null) continue;
     const { entry, exactBand } = picture;
@@ -89,7 +113,7 @@ export function choosePortraitIdentity(stateSeed: number, person: Pick<Person, "
     const tie = hashSeed(stateSeed, `portrait:${person.id}`, ...[...identityId].map(char => char.charCodeAt(0)));
     if (best === null || score > best.score || (score === best.score && tie < best.tie)) best = { identityId, score, tie };
   }
-  return best?.identityId ?? identitiesForBand(band)[0]!;
+  return best?.identityId ?? null;
 }
 
 /** HR-12: the figure drawn instead of a portrait. It matches the person (a figure is the right picture under 8). */
@@ -108,6 +132,11 @@ export function portraitFor(person: Pick<Person, "portraitIdentity" | "sex" | "c
   if (picture === null) return silhouetteChoice(person, "child", false);
   return { identityId: picture.entry.identityId, stage: picture.entry.stage, portraitId: picture.entry.id, file: picture.entry.file,
     exact: exactFor(person, target, picture.entry, picture.exactBand) };
+}
+
+/** CODE-1a: the pool-3 faction a face belongs to (undefined for the town's pools). */
+export function identityFaction(identityId: string): string | undefined {
+  return BY_IDENTITY.get(identityId)?.[0]?.faction;
 }
 
 /** HR-12: identities that can be shown in the band — for the child band only those with a child picture. */

@@ -10,10 +10,12 @@
  *   faction's memory points to (`factionChanges`, applied by the history ledger with the record ids, `applyFactionRecords`).
  * - FX-5 the world's timeline (the kings, the wars, the plagues) and each outside faction's own affairs, from the seed.
  * - FX-6 API `factions.*`.
+ * - CODE-1a (decision FX6-2): every faction's leader wears one of its own pool-3 faces (`FACTION_PORTRAIT_POOLS`): the
+ *   outside factions' people from their making, a town head from the season they are chosen.
  * Factions change nothing in the simulation yet (FACTION-0 is the base the rights and chronicle work builds on).
  */
 import {
-  BISHOP_SURNAMES, EARLDOMS, FACTION_DEFS, FACTION_EVENTS, FACTION_EVENT_PERMILLE, FACTION_OF_PETITIONER, KINGS, NEIGHBOUR_HOUSES,
+  BISHOP_SURNAMES, EARLDOMS, FACTION_DEF_BY_ID, FACTION_DEFS, FACTION_EVENTS, FACTION_PORTRAIT_POOLS, FACTION_EVENT_PERMILLE, FACTION_OF_PETITIONER, KINGS, NEIGHBOUR_HOUSES,
   RELATION_RULES, SEES, WORLD_EVENTS, type FactionDef, type FactionId,
 } from "../content/factionConfig";
 import { HAIR_COLOURS, MALE_GIVEN_NAMES } from "../content/personNames";
@@ -25,7 +27,7 @@ import type { HistoryRecord } from "./history.types";
 import { lordshipOf } from "./lordshipState";
 import { ageBandOf, ageOf, currentYear, seasonDeathPermille, weightedName } from "./persons";
 import type { Person, PersonBuild, PersonClassBand } from "./persons.types";
-import { choosePortraitIdentity } from "./portraits";
+import { chooseFactionPortraitIdentity, choosePortraitIdentity, identityFaction } from "./portraits";
 import { hashSeed } from "./prng";
 import { WAR_BALANCE } from "../content/warConfig";
 
@@ -54,12 +56,16 @@ function portraitUsage(state: Pick<GameState, "persons" | "factions">, extra: re
 /** FX-2: an outside faction's person (a leader or an heir). */
 function outsidePerson(state: Pick<GameState, "seed" | "persons" | "factions">, ordinal: number, fields: { readonly factionId: FactionId;
   readonly givenName?: string; readonly surname?: string; readonly birthYear: number; readonly classBand: PersonClassBand; readonly occupation: string;
-  readonly year: number }, made: readonly Person[]): Person {
+  readonly year: number; readonly predecessorFace?: string }, made: readonly Person[]): Person {
   const id = `f-${String(ordinal).padStart(6, "0")}`;
   const roll = hashSeed(state.seed, "faction-person", ordinal);
   const build: PersonBuild = (["thin", "average", "average", "heavy"] as const)[roll % 4]!;
   const draft = { id, sex: "male" as const, classBand: fields.classBand, build, occupation: fields.occupation, tags: [`faction:${fields.factionId}`], role: "head" as const };
-  const portraitIdentity = choosePortraitIdentity(state.seed, draft, ageBandOf(fields.year - fields.birthYear), portraitUsage(state, made));
+  const band = ageBandOf(fields.year - fields.birthYear);
+  const usage = portraitUsage(state, made);
+  const portraitIdentity = chooseFactionPortraitIdentity(state.seed, draft, band, usage, FACTION_PORTRAIT_POOLS[fields.factionId],
+    new Set(fields.predecessorFace === undefined ? [] : [fields.predecessorFace]))
+    ?? choosePortraitIdentity(state.seed, draft, band, usage);
   return { ...draft, givenName: fields.givenName ?? weightedName(MALE_GIVEN_NAMES, hashSeed(state.seed, "faction-name", ordinal)),
     ...(fields.surname === undefined ? {} : { surname: fields.surname }), birthYear: fields.birthYear, householdId: `faction:${fields.factionId}`,
     hair: HAIR_COLOURS[(roll >>> 4) % HAIR_COLOURS.length]!, alive: true, portraitIdentity };
@@ -161,9 +167,11 @@ function yearTurn(state: GameState, factionState: FactionState): FactionState {
       if (dies) {
         people[index.get(leaderId)!] = { ...leader, alive: false, deathYear: year, deathCause: "age" };
         const heir = faction.id === "crown"
-          ? outsidePerson(state, ordinal, { factionId: "crown", givenName: king.name, birthYear: king.born, classBand: "gentry", occupation: "king", year }, people)
+          ? outsidePerson(state, ordinal, { factionId: "crown", givenName: king.name, birthYear: king.born, classBand: "gentry", occupation: "king", year,
+            predecessorFace: leader.portraitIdentity }, people)
           : outsidePerson(state, ordinal, { factionId: faction.id, ...(leader.surname === undefined ? {} : { surname: leader.surname }),
-            birthYear: year - 20 - hashSeed(state.seed, "faction-heir", ordinal) % 16, classBand: leader.classBand, occupation: leader.occupation, year }, people);
+            birthYear: year - 20 - hashSeed(state.seed, "faction-heir", ordinal) % 16, classBand: leader.classBand, occupation: leader.occupation, year,
+            predecessorFace: leader.portraitIdentity }, people);
         ordinal += 1;
         people.push(heir);
         index.set(heir.id, people.length - 1);
@@ -178,6 +186,37 @@ function yearTurn(state: GameState, factionState: FactionState): FactionState {
     return { ...faction, leaderId, timeline };
   });
   return { factions, people, nextOrdinal: ordinal };
+}
+
+/**
+ * CODE-1a: each faction's living leader in one of its pool-3 faces — a town head takes the face the season they are
+ * chosen (and a leader of a save made before pool 3 at its next season). A leader of a sex the faction's faces lack
+ * keeps their own.
+ */
+function withLeaderFaces(state: GameState): GameState {
+  const current = state.factions;
+  if (current === undefined) return state;
+  const year = currentYear(state);
+  const usage = portraitUsage(state);
+  let town = state.persons?.people;
+  let outside = current.people;
+  for (const faction of current.factions) {
+    if (faction.leaderId === null) continue;
+    const pools = FACTION_PORTRAIT_POOLS[faction.id];
+    const isOutside = FACTION_DEF_BY_ID.get(faction.id)?.leaders === "outside";
+    const list = isOutside ? outside : town ?? [];
+    const at = list.findIndex(person => person.id === faction.leaderId);
+    const leader = list[at];
+    if (leader === undefined || !leader.alive || pools.includes(identityFaction(leader.portraitIdentity) ?? "")) continue;
+    const face = chooseFactionPortraitIdentity(state.seed, leader, ageBandOf(ageOf(leader, year)), usage, pools);
+    if (face === null) continue;
+    usage.set(leader.portraitIdentity, Math.max(0, (usage.get(leader.portraitIdentity) ?? 1) - 1));
+    usage.set(face, (usage.get(face) ?? 0) + 1);
+    const next = list.map((person, index) => index === at ? { ...person, portraitIdentity: face } : person);
+    if (isOutside) outside = next; else town = next;
+  }
+  if (outside === current.people && town === state.persons?.people) return state;
+  return { ...state, factions: { ...current, people: outside }, ...(state.persons === undefined || town === undefined ? {} : { persons: { ...state.persons, people: town } }) };
 }
 
 /** One tick of FACTION-0: the factions at the first tick; then at each season start the town's leaders, and each year's turn. */
@@ -202,7 +241,7 @@ export function advanceFactions(state: GameState): GameState {
       }) };
     }
   }
-  return current === state.factions ? state : { ...state, factions: current };
+  return withLeaderFaces(current === state.factions ? state : { ...state, factions: current });
 }
 
 /** FX-4: a change of a faction's relation, before the ledger gives it a record. */

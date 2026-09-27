@@ -1,5 +1,5 @@
 """CHRON-1: register the portrait pool (PERSON-0's 232 pictures: the pivot pilot's 36 and its 12 aging frames, pool 1's
-92 and pool 2's 92, I037-I100) and the two Wave 17 chronicle illustrations the ledger's records use now (stone town
+92 and pool 2's 92, I037-I100; FIX-6 adds pool 3's 72, I101-I124, the factions' leaders — 304 in all) and the two Wave 17 chronicle illustrations the ledger's records use now (stone town
 proclaimed / finished) as build-time web derivatives (judgement 2026-09-26, scripts/keyartDerivatives.ts: the PNGs
 stay in assets-inbox; a portrait ships as a 256 px and a 96 px baseline JPEG, the received eXIf chunk dropped).
 One docs/provenance/assets.csv row each (replacing earlier CHRON-1 rows) with one prompt file each,
@@ -22,7 +22,9 @@ LEDGER = ROOT / "docs/provenance/assets.csv"
 INBOX_LEDGER = ROOT / "assets-inbox/INBOX_LEDGER.csv"
 POOL = ROOT / "src/content/portraitPool.ts"
 PACKS = [ROOT / "assets-inbox/portrait-pool/pivot-pilot-20260926", ROOT / "assets-inbox/portrait-pool/pool1-20260926",
-         ROOT / "assets-inbox/portrait-pool/pool2-20260926"]
+         ROOT / "assets-inbox/portrait-pool/pool2-20260926", ROOT / "assets-inbox/portrait-pool/pool3-20260927"]
+# FIX-6 (CODE-1a, decision FX6-3): pool 3 is installed by FIX-6 on 2026-09-28; the earlier packs keep CHRON-1's rows.
+PACK_INSTALL = {"pool3-20260927": ("FIX-6", "2026-09-28", "2026-09-27")}
 WAVE17 = ROOT / "assets-inbox/wave17/candidates-20260926"
 # CHRON-1's two chronicle scenes, then UI-6's chapter 2 illustrations (decision cards, event cards, chronicle, chapter end).
 WAVE17_IDS = {"stonewall_start": "illustration/chronicle/stonewall_start.png", "stonewall_complete": "illustration/chronicle/stonewall_complete.png"}
@@ -63,10 +65,11 @@ def main() -> None:
         for picture in sorted((pack / "assets").glob("*/*.png")):
             located[f"{picture.parent.name}/{picture.name}"] = (pack, picture, csv_rows)
     entries = pool_entries()
-    assert len(entries) == 232, len(entries)
+    assert len(entries) == 304, len(entries)
     rows, installed, portraits, images17, installed_by = [], set(), {}, {}, {}
     for entry in entries:
         pack, source, csv_rows = located[entry["file"]]
+        by, installed_on, generated_on = PACK_INSTALL.get(pack.name, (INSTALLED_BY, "2026-09-27", "2026-09-26"))
         relative = source.relative_to(ROOT / "assets-inbox").as_posix()
         digest = sha(source)
         inbox_row = by_file[relative]
@@ -85,15 +88,17 @@ def main() -> None:
         judged = "confirmed" if inbox_row["status"] == "confirmed" else f"{inbox_row['status']} — {inbox_row['verdict_note']}"
         rows.append({"assetId": f"portrait/{entry['id']}", "version": "v1", "runtimePath": str(source.relative_to(ROOT)), "runtimeSha256": digest,
                      "sourcePath": str(source.relative_to(ROOT)), "sourceSha256": digest, "tool": "native image_gen",
-                     "model": "not exposed", "generatedAt": "2026-09-26", "prompt": str(prompt.relative_to(ROOT)),
+                     "model": "not exposed", "generatedAt": generated_on, "prompt": str(prompt.relative_to(ROOT)),
                      "referenceInputs": ";".join(references), "seed": "not exposed", "candidates": "1",
                      "manualEdits": generation.get("method", "256x256 downscale of the generated picture (pack records)"),
                      "artBible": "AB_2026-09-19_v1", "historicalProfile": "S_England_1300_1450_v1", "owner": "Astra portrait-pool",
                      "usedIn": USED_IN_PORTRAITS, "status": "runtime",
-                     "notes": f"Astra portrait-pool {pack.name} {entry['id']} (assets-inbox/INBOX_LEDGER.csv: {judged}) installed by CHRON-1 "
-                              f"on 2026-09-27; runtime is the web derivatives {url} and {url96} made at build time from this received "
+                     "notes": f"Astra portrait-pool {pack.name} {entry['id']} (assets-inbox/INBOX_LEDGER.csv: {judged}) installed by {by} "
+                              f"on {installed_on}; runtime is the web derivatives {url} and {url96} made at build time from this received "
                               f"file by scripts/keyartDerivatives.ts (the PNG stays in assets-inbox only; the eXIf chunk is not carried)."})
         installed.add(relative)
+        if by != INSTALLED_BY:
+            installed_by[relative] = by
     wave17_records = {row["file"]: row for row in csv.DictReader(open(WAVE17 / "records/assets.csv", encoding="utf-8-sig"))}
     for asset_id, file in {**WAVE17_IDS, **WAVE17_UI6}.items():
         by = "UI-6" if asset_id in WAVE17_UI6 else INSTALLED_BY

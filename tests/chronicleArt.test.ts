@@ -15,9 +15,9 @@ const ledger = readFileSync("docs/provenance/assets.csv", "utf8");
 const jpegSize = (bytes: Buffer) => { const sof = bytes.indexOf(Buffer.from([0xff, 0xc0])); return [bytes.readUInt16BE(sof + 7), bytes.readUInt16BE(sof + 5)]; };
 
 test("every PERSON-0 pool picture is installed: a received PNG in the inbox ledger, a provenance row, a 256 and a 96 derivative", () => {
-  assert.equal(PORTRAIT_POOL.length, 232);
+  assert.equal(PORTRAIT_POOL.length, 304); // FIX-6: pool 3 (I101–I124, the factions' leaders) joins the 232
   assert.deepEqual(Object.keys(PORTRAIT_IMAGES).sort(), PORTRAIT_POOL.map(entry => entry.id).sort());
-  assert.equal(PORTRAIT_DERIVATIVES.length, 464);
+  assert.equal(PORTRAIT_DERIVATIVES.length, 608);
   for (const entry of PORTRAIT_POOL) {
     const image = PORTRAIT_IMAGES[entry.id as keyof typeof PORTRAIT_IMAGES];
     assert.ok(image.source.endsWith(entry.file), `${entry.id}: ${image.source} is the pool's ${entry.file}`);
