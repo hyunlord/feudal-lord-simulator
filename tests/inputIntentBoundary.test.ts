@@ -28,16 +28,17 @@ test("Given the patterns the old canvas runtime used When they are checked Then 
 });
 
 test("Given the controller action table When its keyboard bindings are pressed Then each emits the action's intent", () => {
+  // A fake clock (CODE-1c): the key press and the frame are timed on the same clock the test sets.
+  const nowMs = 1_000;
   for (const action of CONTROLLER_ACTIONS) {
     for (const code of action.keyboard) {
       const intents: InputIntent[] = [];
       const translator = createMouseKeyboardTranslator({ bounds: () => ({ left: 0, top: 0, width: 800, height: 600 }), camera: () => ({ zoom: 1, panX: 0, panY: 0 }),
         world: () => ({ minX: -10_000, minY: -10_000, maxX: 10_000, maxY: 10_000 }), armed: () => ({ zone: false, zonePolygon: false, palisade: false, road: false }),
-        emit: intent => { intents.push(intent); return true; } });
+        emit: intent => { intents.push(intent); return true; }, now: () => nowMs });
       const key = code.startsWith("Key") ? code.slice(3).toLowerCase() : code === "Space" ? " " : code;
       translator.keyDown({ code, key, target: null });
-      const now = performance.now();
-      translator.frame(now + 50, now + 34, { width: 800, height: 600 });
+      translator.frame(nowMs + 50, nowMs + 34, { width: 800, height: 600 });
       translator.keyUp({ code, key, target: null });
       assert.ok(intents.some(intent => intent.kind === action.intent), `${action.id} ${code} -> ${action.intent} (got ${intents.map(intent => intent.kind).join(",")})`);
     }
