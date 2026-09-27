@@ -1,0 +1,276 @@
+[
+  {
+    "id": "terrain/chalk_down_summer_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-119f4623-77ba-4882-bccd-9eb8613bd594.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make chalk down summer BASE ONLY: uniform muted dry grey olive short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly dry grey olive hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant A.",
+    "referenceInputs": [
+      "grass.png"
+    ],
+    "generatedAt": "2026-09-27T05:20:59.735Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_summer_a-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      -1.524688720703125,
+      1.970184326171875,
+      2.16357421875
+    ]
+  },
+  {
+    "id": "terrain/chalk_down_summer_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-3a15e85a-a689-400c-907b-30ffbf8db2c7.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make chalk down summer BASE ONLY: uniform muted dry grey muted olive short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly dry grey muted olive hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant B. Independently redistribute fine brush grain so not a duplicate; equal mean palette to sibling A. Seasonal change only base hue; no signature objects.",
+    "referenceInputs": [
+      "grass.png",
+      "chalk_down_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:22:39.718Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_summer_b-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      -1.524688720703125,
+      1.970184326171875,
+      2.16357421875
+    ]
+  },
+  {
+    "id": "terrain/chalk_down_autumn_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-413a19a7-68ea-4934-8d5b-39bd9d003bf8.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make chalk down autumn BASE ONLY: uniform muted quiet grey golden brown olive, no red short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly quiet grey golden brown olive, no red hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant A. Seasonal change only overall base hue; preserve tiny brush grain and uniformity.",
+    "referenceInputs": [
+      "grass.png",
+      "chalk_down_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:23:26.641Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_autumn_a-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      1.18768310546875,
+      -1.01806640625,
+      -6.8778076171875
+    ]
+  },
+  {
+    "id": "terrain/chalk_down_autumn_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-7165f014-3be2-4c44-b0c2-d1bddfc49eac.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make chalk down autumn BASE ONLY: uniform muted quiet grey golden brown olive, no red short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly quiet grey golden brown olive, no red hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant B. Seasonal change only overall base hue; preserve tiny brush grain and uniformity. A and B must share same mean hue but independent fine brushstroke arrangement.",
+    "referenceInputs": [
+      "grass.png",
+      "chalk_down_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:24:05.670Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_autumn_b-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      1.18768310546875,
+      -1.01806640625,
+      -6.8778076171875
+    ]
+  },
+  {
+    "id": "terrain/chalk_down_winter_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-9da136e9-d8a9-421a-a3cf-185433a4a2bd.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make chalk down winter BASE ONLY: uniform muted dormant pale grey beige olive, thin even frost dust only, no white snow patches short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly dormant pale grey beige olive, thin even frost dust only, no white snow patches hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant A. Seasonal change only overall base hue; preserve tiny brush grain and uniformity. A and B must share same mean hue but independent fine brushstroke arrangement.",
+    "referenceInputs": [
+      "grass.png",
+      "chalk_down_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:24:34.851Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_winter_a-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      0.368865966796875,
+      1.851104736328125,
+      5.05072021484375
+    ]
+  },
+  {
+    "id": "terrain/chalk_down_winter_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-5ace5693-b876-49b9-a25a-6b29d2d6dfc4.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make chalk down winter BASE ONLY: uniform muted dormant pale grey beige olive, thin even frost dust only, no white snow patches short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly dormant pale grey beige olive, thin even frost dust only, no white snow patches hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant B. Seasonal change only overall base hue; preserve tiny brush grain and uniformity. A and B must share same mean hue but independent fine brushstroke arrangement.",
+    "referenceInputs": [
+      "grass.png",
+      "chalk_down_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:24:55.777Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_winter_b-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      0.368865966796875,
+      1.851104736328125,
+      5.05072021484375
+    ]
+  },
+  {
+    "id": "terrain/heath_summer_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-87d6f75a-5ac3-41f9-b1ba-166604780683.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make heath summer BASE ONLY: uniform muted dark brown peat olive short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly dark brown peat olive hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant A. Heath is noticeably darker and browner than chalk, but equal overall contrast and fine quiet paint grain to grass. No heather bushes or flowers; these are separate decals.",
+    "referenceInputs": [
+      "grass.png"
+    ],
+    "generatedAt": "2026-09-27T05:25:30.340Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_summer_a-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      1.473541259765625,
+      2.32452392578125,
+      5.62060546875
+    ]
+  },
+  {
+    "id": "terrain/heath_summer_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-e591f46c-7288-433c-b603-3ae9ddceab1f.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make heath summer BASE ONLY: uniform muted dark brown peat olive short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly dark brown peat olive hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant B. Heath remains darker brown than chalk. Seasonal change only overall base hue; preserve fine short strokes and uniformity. A and B must share same mean hue but independent fine brushstroke arrangement. No heather shrubs or purple flowers; those are separate decals.",
+    "referenceInputs": [
+      "grass.png",
+      "heath_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:26:18.455Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_summer_b-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      1.473541259765625,
+      2.32452392578125,
+      5.62060546875
+    ]
+  },
+  {
+    "id": "terrain/heath_autumn_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-c7704e3f-bcc6-4e0f-aaf9-b0fb47e5a130.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make heath autumn BASE ONLY: uniform muted dark peat umber brown olive with subdued tawny undertone, no red short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly dark peat umber brown olive with subdued tawny undertone, no red hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant A. Heath remains darker brown than chalk. Seasonal change only overall base hue; preserve fine short strokes and uniformity. A and B must share same mean hue but independent fine brushstroke arrangement. No heather shrubs or purple flowers; those are separate decals.",
+    "referenceInputs": [
+      "grass.png",
+      "heath_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:26:42.744Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_autumn_a-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      0.828643798828125,
+      1.241180419921875,
+      1.826690673828125
+    ]
+  },
+  {
+    "id": "terrain/heath_autumn_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-b8294f4c-a904-4d1d-bf4a-1dc9968fc6cb.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make heath autumn BASE ONLY: uniform muted dark peat umber brown olive with subdued tawny undertone, no red short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly dark peat umber brown olive with subdued tawny undertone, no red hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant B. Heath remains darker brown than chalk. Seasonal change only overall base hue; preserve fine short strokes and uniformity. A and B must share same mean hue but independent fine brushstroke arrangement. No heather shrubs or purple flowers; those are separate decals.",
+    "referenceInputs": [
+      "grass.png",
+      "heath_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:27:07.363Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_autumn_b-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 0.68. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      0.828643798828125,
+      1.241180419921875,
+      1.826690673828125
+    ]
+  },
+  {
+    "id": "terrain/heath_winter_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-8334f885-c349-4d9f-adba-e187a720cfb6.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make heath winter BASE ONLY: uniform muted cool muted dark grey peat olive, slight even frost dust tint only, no snow patches short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly cool muted dark grey peat olive, slight even frost dust tint only, no snow patches hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant A. Heath remains darker brown than chalk. Seasonal change only overall base hue; preserve fine short strokes and uniformity. A and B must share same mean hue but independent fine brushstroke arrangement. No heather shrubs or purple flowers; those are separate decals.",
+    "referenceInputs": [
+      "grass.png",
+      "heath_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:27:27.904Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_winter_a-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      3.8365478515625,
+      3.538360595703125,
+      3.01495361328125
+    ]
+  },
+  {
+    "id": "terrain/heath_winter_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-2f3a-7c52-9f4d-ec787f34d610/exec-5c6aa815-6167-4bce-ae0f-91fae63aabc7.png",
+    "prompt": "Use case: stylized-concept. One single seamless terrain base fill for medieval southern England city builder. Reference image grass.png is the exact desired fine, quiet painted ground texture and density. Make heath winter BASE ONLY: uniform muted cool muted dark grey peat olive, slight even frost dust tint only, no snow patches short turf, fine low-contrast tiny interwoven painterly grass strokes, same scale of grain as reference. Type identity ONLY in slightly cool muted dark grey peat olive, slight even frost dust tint only, no snow patches hue. Absolutely NO exposed chalk, rocks, bare patches, cloud patches, diagonal bands, clumps, plants, flowers, objects, vignettes or lighting gradients. No large brush blobs. This is an unobtrusive statistically uniform background beneath separately placed decals; a 4x4 repeat must not reveal large shapes or grid rhythm. Top down flat opaque rectangular 2:1 texture, target 256x128. X and Y seamless, matching opposite edges, equal local tone throughout including corners. Fine nonphotographic painted grain, very low contrast like reference, no text or border. Soft even ambient light. Variant B. Heath remains darker brown than chalk. Seasonal change only overall base hue; preserve fine short strokes and uniformity. A and B must share same mean hue but independent fine brushstroke arrangement. No heather shrubs or purple flowers; those are separate decals.",
+    "referenceInputs": [
+      "grass.png",
+      "heath_summer_a-v2 (native source)"
+    ],
+    "generatedAt": "2026-09-27T05:27:49.350Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidates": 1,
+    "priorAttempts": [],
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_winter_b-v2.png",
+    "selectionReason": "Selected quiet fine brush grain with no terrain signature patches; independent variant generation.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Pair-level B mean RGB matched to A; shared X/Y edge 8px bands quadratically blended for exact cross-variant endpoint match, no blur filter or new painting.",
+    "meanPaletteOffsetB": [
+      3.8365478515625,
+      3.538360595703125,
+      3.01495361328125
+    ]
+  }
+]

@@ -1,0 +1,272 @@
+{
+  "inputs": [
+    {
+      "path": "/tmp/astra-wave22-work-20260927/astra-wave22-reference-files/grass.png",
+      "sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_summer_a-v2.png",
+      "sha256": "43a00762d9289baec34a66113af18bf7e7570738ed11009ea8168ca493fc63c1"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_summer_b-v2.png",
+      "sha256": "0bf229302256bad00389a9cf061ecbe238edae725a1479918b3abcf085d0dc2d"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_autumn_a-v2.png",
+      "sha256": "32ae2bd572fb65e68c4588a437de8d5b7d023dd3d28f091afc15aa5ab9a4b1bc"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_autumn_b-v2.png",
+      "sha256": "ced98bf4c40c7073950aebb0ad5fe14dfea41600bafd8083bf6dbd8f717a4a26"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_winter_a-v2.png",
+      "sha256": "868fe4645be8dd9ef1eb90183c78a2db37b8fa71f4f0b8bf51af04240980dfca"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/chalk_down_winter_b-v2.png",
+      "sha256": "1dd9a28893ab5e1eba303d75ce0cc0bc091e161578a5eadfe5a4aef8859e3f23"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_summer_a-v2.png",
+      "sha256": "c3819dd703c927893e8e4fdeeae10e070fc9e3720caab4435d26367e5215a86f"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_summer_b-v2.png",
+      "sha256": "8f6493dae1fb10ee898c88c23a64ec080fc189a854d6360a0bb06ab37a8dd7db"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_autumn_a-v2.png",
+      "sha256": "79ddb9a7eba3d981d8b3ce4e4e6e04635ee79f9199631f62e67e2a9f2524d4bd"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_autumn_b-v2.png",
+      "sha256": "83d771544cee18ddce659b56f012f43c2919ee8df244813083c532145459ff7c"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_winter_a-v2.png",
+      "sha256": "292c05d1e6552ccdc37a93952de7b42e8e9e04a7ad44f8d5e330c36571280f0b"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/heath_winter_b-v2.png",
+      "sha256": "2fd5ba349c6609b617d89db3408bd89ac09ec4893e86ea9d3acff74b7edd4153"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_summer_a-v2.png",
+      "sha256": "68e3b98c6b3bd76c04b12d568613d8e156f44a24d81b61b592a96571171bd3d8"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_summer_b-v2.png",
+      "sha256": "6788977b77d0cab48f166d437ebf7295a70ae61a4dc7b6c22f782bd7f23fef5e"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_autumn_a-v2.png",
+      "sha256": "7c879ba998d2ae409605b85b6904a55ccbeb37706fb02ba7ea36f08c65202d14"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_autumn_b-v2.png",
+      "sha256": "485ad555c5b64f810d221781a12b4fd5dc5930fb24c0447bcd09edf0231ff679"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_winter_a-v2.png",
+      "sha256": "cec139c429ce8b6961435f50a6bf12d5be657f48fd24e23a8384ef0bc6c0d5fc"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/fen_winter_b-v2.png",
+      "sha256": "2f0f886a15109418746645218ebc6896b78e1d7094ee6a64fcb17b06db8a346f"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_summer_a-v2.png",
+      "sha256": "ce5b7302f4c05d74a17e0131f232ccc6270eb442df42abf8c3e7e945233cb4c7"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_summer_b-v2.png",
+      "sha256": "ebe1ed3b37adda660effdbb4b77e01a452717b258fbc8fe80ec0df832d837f45"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_autumn_a-v2.png",
+      "sha256": "67d3f3eb93bb5cbac257f5770d358044984c99c3d4dfb424d0ba47371eaaa095"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_autumn_b-v2.png",
+      "sha256": "0c5007c58400f5ecceef930c7610aea03f290c6ffb16d0ef6f575b1517281d94"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_winter_a-v2.png",
+      "sha256": "a10ca3299e081f9bc6ffb054702a10e8181dcdd7b4a0627d766f42d20ee5a0f7"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/coastal_grass_winter_b-v2.png",
+      "sha256": "799c4e9da2c1efd7fce40932681afe154f54082c62ab1843f7e258abe4238ca4"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_summer_a-v2.png",
+      "sha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_summer_b-v2.png",
+      "sha256": "d6f727456bff3f059e33b36d528613b0623b4fafd2af43fdecb031cf58d9fa61"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_autumn_a-v2.png",
+      "sha256": "a58733faa04df765ac3d8c36e8361099482ec8e756563e9ba27f519b26727481"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_autumn_b-v2.png",
+      "sha256": "5a427f7e440df12714cd9fbf22f58b8b98feaaa691f54f07ae2bf953edd7b9ed"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_winter_a-v2.png",
+      "sha256": "db73565fdb3c0ea1900a394ead017898201e88054cdde37f20d5d7506d79b673"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_winter_b-v2.png",
+      "sha256": "4966004d404c0a316485077bc46a3acfc4c15855c795b7bb8e5a7ce59121ee22"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/boundary/chalk_edge_a-v1.png",
+      "sha256": "94359bd063e112ae41acf4ad02ecf0be85ea9d2f38076cd3e5050cbca0974550"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/chalk_exposure_b-v1.png",
+      "sha256": "ad985d6dd9ce38cec89d382597e3059a9a8fb637423081ab9a6d34248c09e601"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/chalk_exposure_a-v1.png",
+      "sha256": "69bfb8fb0ef6fd2a79827b5da3ac714c295722815a41f6a1fbca7de5e99cfa8d"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/chalk_exposure_c-v1.png",
+      "sha256": "8ead025c06f8064cabe0b2e1701a41362814c60205828f6572cce90f68d3d4c1"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/buildings/historical-houses/house_l1-v2.png",
+      "sha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac"
+    },
+    {
+      "path": "/tmp/astra-wave15-work-20260926/foliage-runtime-anchors.json",
+      "sha256": "d8a639e86c2107a9335ec12374fbde63259d7159133766ef2bfddd2c0efa6e75"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+      "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_birch.png",
+      "sha256": "d97dc399fbe522e4a3f499f7610f826cdea258dad9c7ee169dd2e0b6b14f6db8"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/boundary/heath_edge_a-v1.png",
+      "sha256": "6266f03521f4d2a18d1a2fcac146e52cf957d41fbfde735dd970b814b1b9c09f"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/heath_patch_a-v1.png",
+      "sha256": "dc24ac33e8869c47977d1adea44ed6a939f94079eb26b4a1d44592ef0ca2576a"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/heath_patch_c-v1.png",
+      "sha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/heath_patch_b-v1.png",
+      "sha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/boundary/fen_edge_a-v1.png",
+      "sha256": "c55f84e9a1a915bbc04c6277092b3d7f2acf5511c0aafae2e8194005e97e56fd"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/fen_pool_c-v1.png",
+      "sha256": "a1f92ac806e45991d68a4174a369fcce49710d37d69720985a3242252e560bec"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/fen_pool_b-v1.png",
+      "sha256": "47c76ae3f6ed2a86f59321b723c3f59cf2a80be506ddb31de6f6a773c7ed8cc3"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/fen_pool_a-v1.png",
+      "sha256": "2c0ed90f4688037d1dc4b9189f0b8380c883485a2bd3db3b3d37669f1f0b9a97"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/boundary/coastal_edge_a-v1.png",
+      "sha256": "2c4aa1f9dd0e57b1807e2899da276f155864cd9c067c4ad08d2076bef6f35536"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/coastal_sand_a-v1.png",
+      "sha256": "33b98cfafd82ac822b042f5c4f90324ac87460b7168b7b78d19eb196774e8674"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/coastal_sand_b-v1.png",
+      "sha256": "154cfd97f2f352639469435f443056727371f733176dcb7d727a8d1d6076cd9a"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/coastal_sand_c-v1.png",
+      "sha256": "dab5c76f3c58d24adc5b0234ad5a635111a800698a24dcaa561be07e6212b80a"
+    },
+    {
+      "path": "/tmp/astra-wave22-work-20260927/astra-wave22-reference-files/forest_fringe_a-v1.png",
+      "sha256": "6393ecd9131b4b77a671d462a4b531f86294c70bd2e08f1bca3e8bb6a5b6eac1"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/woodland_litter_c-v1.png",
+      "sha256": "73ce5fd24d3236e77c32d0360c4d62ec59f332d074618d2f1c1538b0f69cf8da"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/woodland_litter_a-v1.png",
+      "sha256": "5a00ce1f7d6bf2dca3998156338d1d4cf6a8d087c2ea4cb93b6a7e9927e08ab5"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/decals/woodland_litter_b-v1.png",
+      "sha256": "53f1e78a31f232f606debd0048ef5d78edbd1163d9e2a361e949f22f622206f5"
+    },
+    {
+      "path": "/tmp/astra-wave22-work-20260927/astra-wave22-reference-files/water.png",
+      "sha256": "ff47499c738d90db40052b61fbf75424c8370d9d4ae2d0aa5b8fcc42eaf8b2d7"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/shore/sand_beach_a-v2.png",
+      "sha256": "7c41101fb27f3fd1df809e627f53aa2fdd62d13570d6da1d7f46bba7fdef58ac"
+    },
+    {
+      "path": "/tmp/astra-wave22-rework-candidates-20260927/shore/sand_beach_b-v1.png",
+      "sha256": "7fff380523b622f0c16ed9b23fe3ebbc252ccc6850ef7cc06e885fbbc3d5e494"
+    },
+    {
+      "path": "/tmp/astra-wave22-work-20260927/astra-wave22-reference-files/shoreline_a-v1.png",
+      "sha256": "037a4bd5162c997f1566f28abd47be973a7c72de17fbcbafd849c73f913dfc95"
+    }
+  ],
+  "comparisonUV": {
+    "newSource": [
+      256,
+      128
+    ],
+    "grassSource": [
+      256,
+      256
+    ],
+    "displayUV": [
+      256,
+      128
+    ],
+    "grassTransform": "whole source compressed vertically, no crop"
+  },
+  "sceneProjection": {
+    "a": 0.5,
+    "b": 0.25,
+    "c": -0.5,
+    "d": 0.25,
+    "worldTile": 128,
+    "fillUVWorldSquare": 256
+  },
+  "outputScales": {
+    "zoom1": 0.5,
+    "zoom06": 0.3
+  },
+  "notes": "Mechanical offline proof. Runtime UV, chunk blending and placement integration not tested. Existing sprites retain documented runtime anchors. No generated substitutes for missing inputs."
+}

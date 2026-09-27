@@ -1,0 +1,452 @@
+[
+  {
+    "id": "ch3_event_harbour_fever",
+    "file": "assets/ch3_events/ch3_event_harbour_fever.png",
+    "width": 960,
+    "height": 540,
+    "description": "항구의 열병 소문",
+    "historyNotes": "열병 소문은 항구의 병든 선원과 염려하는 하역 인부로 표현.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. At a timber harbour quay, a recently arrived weary sailor sits hunched on a low coil of rope, fully clothed with a damp cloth held to his brow. Two dockworkers lean close whispering anxiously and a merchant stops unloading a sack, glancing toward the sick sailor. Small medieval sailing cog moored behind, quiet town and church beyond. Concern and interrupted trade, no horror imagery.",
+        "rawFile": "raw/ch3_events/ch3_event_harbour_fever.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-c620fcd3-7a71-4886-8601-1d922d7449d5.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      },
+      {
+        "prompt": "Precise edit of this single painting. Remove ALL domestic chimney stacks and chimney pots from every distant house roof in the background town. Replace each with uninterrupted matching thatch or flat clay tile roof and natural sky or foliage behind. Keep church towers, ship masts, cranes, posts, wall towers intact. Preserve ALL foreground sailors/dockworkers, sick seated man, props, layout, lighting and painterly texture exactly. No letters or new objects. Chimney-free domestic roof silhouettes.",
+        "rawFile": "raw/ch3_events/ch3_event_harbour_fever-v2.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_event_harbour_fever-edit-input-v2.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-1e67ef8e-9c18-4ff8-8eda-a2f15a1ec541.png",
+        "rawWidth": 1672,
+        "rawHeight": 941,
+        "referenceNote": "Exact resized derivative supplied to edit tool, recreated losslessly from preserved prior raw with same Sharp processing."
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "9-image contact plus all full-size final images inspected. Church crosses and market cross are religious structures, not plague door marks.",
+      "caveats": null
+    },
+    "sha256": "a59659296867a6df1f406d4cfd4855f4d0bfc1cf54eb208b8421831c9c91a7e7"
+  },
+  {
+    "id": "ch3_event_priest_death",
+    "file": "assets/ch3_events/ch3_event_priest_death.png",
+    "width": 960,
+    "height": 540,
+    "description": "사제의 죽음",
+    "historyNotes": "사제의 죽음은 완전히 덮인 장례 들것과 빈 의자로 표현, 시신 노출 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. Inside a small English parish church, a completely linen-shrouded human form lies on a plain rectangular wooden funeral bier; no body parts exposed. A folded simple priest's stole and closed unlettered prayer book rest beside it. Two mourning parishioners stand with bowed heads, an empty priest's chair beyond. Soft window daylight, solemn not macabre. No written inscription or decorated coffin.",
+        "rawFile": "raw/ch3_events/ch3_event_priest_death.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-b7cd4287-6929-4c0b-bea1-a35a98a63944.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "9-image contact plus all full-size final images inspected. Church crosses and market cross are religious structures, not plague door marks.",
+      "caveats": "Priest identity conveyed by stole and church setting; shroud hides all body parts."
+    },
+    "sha256": "29398cda973002226b20dcd983034b1ab89a54188577db0151954275d6ef8e69"
+  },
+  {
+    "id": "ch3_event_empty_streets",
+    "file": "assets/ch3_events/ch3_event_empty_streets.png",
+    "width": 960,
+    "height": 540,
+    "description": "빈 거리",
+    "historyNotes": "문 표식 없이 닫힌 덧창과 빈 시장길로 인구 상실 표현.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. A deserted medieval market lane at midday. All wooden shop shutters closed, no markings on unmarked doors, unused stall benches, a dropped empty wicker basket and faint grass in the lane. Weathered timber plaster houses create deep perspective toward a small parish church. Absolutely no people. Quiet vacancy after plague, not ruined by war, no smoke or corpses.",
+        "rawFile": "raw/ch3_events/ch3_event_empty_streets.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-01077969-a17d-4096-bd6b-fd4282122925.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "9-image contact plus all full-size final images inspected. Church crosses and market cross are religious structures, not plague door marks.",
+      "caveats": null
+    },
+    "sha256": "f9d75e967f0790622e1362ee941a6a3ae77fd33441896bcdc23202b0957ea922"
+  },
+  {
+    "id": "ch3_event_new_graves",
+    "file": "assets/ch3_events/ch3_event_new_graves.png",
+    "width": 960,
+    "height": 540,
+    "description": "교회 묘지의 새 무덤들",
+    "historyNotes": "교회 묘지의 새 흙무덤과 들것, 주택 문 표식 없음.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. Outside a modest English parish church, six freshly turned low earthen graves contrast with older grass-covered mounds. Simple unlettered wooden grave markers only inside churchyard, never on houses or doors. Two exhausted gravediggers stand beside a plain rectangular shrouded wooden bier awaiting burial; one leans on a spade. No open pit with corpse, no bones. Overcast low-chroma light.",
+        "rawFile": "raw/ch3_events/ch3_event_new_graves.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-e7b9fb55-0a84-4cde-a8e0-56c05af71bf7.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "9-image contact plus all full-size final images inspected. Church crosses and market cross are religious structures, not plague door marks.",
+      "caveats": null
+    },
+    "sha256": "79081c5f2636798e4d6442c54b9c545e1f4b8e7e2240bdcf7c7546bc7e6a876a"
+  },
+  {
+    "id": "ch3_event_abandoned_fields",
+    "file": "assets/ch3_events/ch3_event_abandoned_fields.png",
+    "width": 960,
+    "height": 540,
+    "description": "버려진 밭",
+    "historyNotes": "중세 경작 띠와 방치된 목제 쟁기로 노동력 부족 표현.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. Foreground abandoned medieval arable strips, flattened unharvested grain tangled with weeds, a wooden ard plough idle and partly overgrown beside a broken low hurdle. No people. In distance quiet thatched settlement with closed shutters beneath wide gray clouds. Strong foreground overgrown furrows make absence of labor legible, no modern farming.",
+        "rawFile": "raw/ch3_events/ch3_event_abandoned_fields.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-9dfa3781-6e43-4f59-974c-a7fe219bc330.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      },
+      {
+        "prompt": "Precise edit of this single painting. Remove ALL domestic chimney stacks and chimney pots from every cottage roof across middle-distance village band: especially near x140,253,377,533,586 of 960px image. Replace them with uninterrupted thatch/clay tile roofs and foliage/sky behind. Keep church towers, distant bridge posts intact. Preserve abandoned field, plough, texture, palette, layout exactly. No newobjects or letters. All domestic silhouettes chimney-free.",
+        "rawFile": "raw/ch3_events/ch3_event_abandoned_fields-v2.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_event_abandoned_fields-edit-input-v2.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-2e333747-8781-4dea-83a7-5e529d9dcaa1.png",
+        "rawWidth": 1672,
+        "rawHeight": 941,
+        "referenceNote": "Exact resized derivative supplied to edit tool, recreated losslessly from preserved prior raw with same Sharp processing."
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "9-image contact plus all full-size final images inspected. Church crosses and market cross are religious structures, not plague door marks.",
+      "caveats": null
+    },
+    "sha256": "cc3786494b554464d3785dbb7e2faca10301b241ea0bd3721741857ae9a92179"
+  },
+  {
+    "id": "ch3_event_wage_demand",
+    "file": "assets/ch3_events/ch3_event_wage_demand.png",
+    "width": 960,
+    "height": 540,
+    "description": "임금 요구",
+    "historyNotes": "영주관 앞 일꾼의 임금 요구, 폭력 없이 손짓과 동전으로 표현.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. Five surviving laborers in simple coifs and brown wool stand peacefully at a manor doorway, one open palm gesturing firmly toward a few small coins held by a steward. Another holds an idle wooden field tool at his side. Steward listens from the step; workers look resolute rather than violent. Modest timber-and-rubble manor, unmarked blank door, no placards. Medium wide scene with exchange clear.",
+        "rawFile": "raw/ch3_events/ch3_event_wage_demand.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-5e4f9786-7042-49e9-bc6a-6c0562fe00df.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "9-image contact plus all full-size final images inspected. Church crosses and market cross are religious structures, not plague door marks.",
+      "caveats": null
+    },
+    "sha256": "833d5304b21a9964e48a4c936de52c40382cac3bc81aa156200da1d96289e57e"
+  },
+  {
+    "id": "ch3_event_ordinance_reading",
+    "file": "assets/ch3_events/ch3_event_ordinance_reading.png",
+    "width": 960,
+    "height": 540,
+    "description": "노동자 조례 낭독",
+    "historyNotes": "조례 낭독 행위만 표현, 양피지는 글자 없이 비움.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. In the market square a sober official stands on one low step publicly reading from a plainly BLANK parchment sheet facing slightly away. Four laborers and two townspeople listen uneasily, one clasps worn cap. No written marks whatsoever on parchment, buildings or props. Quiet firm legal proclamation, medieval parish church and shut stalls behind. No banners.",
+        "rawFile": "raw/ch3_events/ch3_event_ordinance_reading.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-730f33cc-a07a-4bc3-b871-eae65eb4bf22.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      },
+      {
+        "prompt": "Precise edit of this single painting. Remove ALL domestic chimney stacks and chimney pots, including tall masonry stack above upper-left thatched roof and small stacks on every background roof, replacing them with uninterrupted matching thatch or clay tiles and natural sky/trees behind. Keep church tower and market stone cross intact. Preserve every person, the blank parchment, layout, colors, hand-painted texture, proportions and all other details. No text, no new objects. Final houses have completely chimney-free roof silhouettes.",
+        "rawFile": "raw/ch3_events/ch3_event_ordinance_reading-v2.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_event_ordinance_reading-edit-input-v2.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-b677711e-761a-4eb7-9108-5342d89ee2fe.png",
+        "rawWidth": 1672,
+        "rawHeight": 941,
+        "referenceNote": "Exact resized derivative supplied to edit tool, recreated losslessly from preserved prior raw with same Sharp processing."
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "9-image contact plus all full-size final images inspected. Church crosses and market cross are religious structures, not plague door marks.",
+      "caveats": "Blank parchment signals proclamation; exact legal content requires game context."
+    },
+    "sha256": "9bacfdfc4800a9e7bae8722402669f2bd3b77551d0b1a031805be8a31fd653a5"
+  },
+  {
+    "id": "ch3_event_resettlement",
+    "file": "assets/ch3_events/ch3_event_resettlement.png",
+    "width": 960,
+    "height": 540,
+    "description": "재정착",
+    "historyNotes": "새 이주 가족이 빈집을 여는 행위와 살림짐으로 재정착 표현.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. A new family enters a long-empty timber house. Mother holding bundled household blankets steps through the open unmarked doorway while father carries a wooden chest; a small child peers through newly opened shutters. Neighbour welcomes them with extended hand. Dusty empty room behind, early spring daylight, evidence of reopening and hopeful habitation, no text or painted door symbols.",
+        "rawFile": "raw/ch3_events/ch3_event_resettlement.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-f32875a5-d6ab-475c-b182-964024a0422e.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      },
+      {
+        "prompt": "Precise edit of this single painting. Remove ALL domestic chimney stacks and chimney pots from every house roof, especially the small chimney at far-right tiled roof near x947,y221 of960x540 image. Replace with uninterrupted clay tile roof and sky/foliage behind. Keep church tower and ship masts intact. Preserve family, blankets, chest, welcome gesture, open shutters, every composition detail, colors and hand-painted texture. No newobjects or text. All domestic silhouettes chimney-free.",
+        "rawFile": "raw/ch3_events/ch3_event_resettlement-v2.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_event_resettlement-edit-input-v2.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-9ce82007-c831-4427-b83b-d7addea43ccc.png",
+        "rawWidth": 1672,
+        "rawHeight": 941,
+        "referenceNote": "Exact resized derivative supplied to edit tool, recreated losslessly from preserved prior raw with same Sharp processing."
+      },
+      {
+        "prompt": "Correct ONLY the far right background red tiled house roof in this image. At the right edge, above that roof ridge beside the overhanging tree, a small vertical brown chimney stack remains. ERASE that chimney completely down to roof level. The whole far-right red tiled roof must have a single smooth uninterrupted sloping/ridge silhouette with no vertical brown protrusion anywhere. Fill the removed protrusion with background sky/tree. Keep foreground family and all other scenery exactly the same. Do not add text or any objects.",
+        "rawFile": "raw/ch3_events/ch3_event_resettlement-v3.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_event_resettlement-edit-input-v3.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-53bfc836-4ebc-4b2c-83ef-f320a9914086.png",
+        "rawWidth": 1672,
+        "rawHeight": 941,
+        "referenceNote": "Exact resized derivative supplied to edit tool, recreated losslessly from preserved prior raw with same Sharp processing."
+      },
+      {
+        "prompt": "Edit this painting: REPLACE THE ENTIRE FAR-RIGHT BACKGROUND HOUSE ROOF with a simple unbroken golden straw THATCh roof, including its ridge. Remove its existing orange tiled roof and ALL vertical roof protrusions/chimneys completely. This little background house is directly behind the welcoming older woman, at the far right edge, above the descending path. Its new straw roof is completely smooth, low and plain with NO chimney or pot. Preserve all foreground people, their gestures, chest, blankets, main doorway and every other part. No text.",
+        "rawFile": "raw/ch3_events/ch3_event_resettlement-v4.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_event_resettlement-edit-input-v4.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-31e96ab4-6a7f-4f1e-9ef9-bf459df75b1e.png",
+        "rawWidth": 1672,
+        "rawHeight": 941,
+        "referenceNote": "Exact resized derivative supplied to edit tool, recreated losslessly from preserved prior raw with same Sharp processing."
+      },
+      {
+        "prompt": "Remove the ENTIRE tiny background house at the far RIGHT edge, behind the welcoming woman and descending path, including ALL of its roof, walls, roofline protrusion and chimney. Replace that small background area with dense leafy orchard trees and low meadow ground continuing the hill. No building remains at the far right edge. Preserve foreground main house, all people and child, open doorway, chest and blankets, church tower and distant town. No text. Only this far-right small background house is removed.",
+        "rawFile": "raw/ch3_events/ch3_event_resettlement-v5.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_event_resettlement-edit-input-v5.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-8acce989-3f7e-48c4-b517-69084e102113.png",
+        "rawWidth": 1672,
+        "rawHeight": 941,
+        "referenceNote": "Exact resized derivative supplied to edit tool, recreated losslessly from preserved prior raw with same Sharp processing."
+      },
+      {
+        "prompt": "Precise LOCAL background edit to this original hand-painted picture. Replace ONLY the tiny far-right BACKGROUND house and its complete chimney/roof region (approximately x860–960, y204–323 in this960x540image) with softly natural leafy orchard trees continuing the hillside. No chimney, house roof or upright pipe remains in that small far-right background patch. Preserve the ENTIRE FOREGROUND pixel composition and fine painterly brush texture: people/faces/hair/coifs, blanket folds, chest hardware, timber beams, plaster wall, doorway and child must remain crisp and exactly like input. Do not smooth, warp, melt, redraw or alter foreground. This is a one-region replacement, not a global style transfer. Maintain all colors, lighting, perspective. No letters, numbers or text. Source original texture is the standard.",
+        "rawFile": "raw/ch3_events/ch3_event_resettlement-v6.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_event_resettlement-edit-input-v2.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-96bff40c-5133-4d9d-917b-78352da49e13.png",
+        "referenceNote": "Single local edit restarted from original v1 final, not serial v5.",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "Full960x540 v6 inspected: foreground fine brush texture restored relative to v5; no obvious domestic chimney or text; family action clear.",
+      "caveats": "v6 restarted from original v1 in one local edit; tiny right background house replaced by orchard, foreground family action retained. Earlier serial edit v5 rejected for wavy texture."
+    },
+    "sha256": "16d5a9b16c7856d3850351824de4811c4523487de14e26f7906b7fde9ffbe690"
+  },
+  {
+    "id": "ch3_ending",
+    "file": "assets/ch3_events/ch3_ending.png",
+    "width": 1920,
+    "height": 1080,
+    "description": "반쯤 빈 도시와 새 지붕",
+    "historyNotes": "반쯤 비어 있는 도시 속 소수 새 지붕으로 회복 시작 표현.",
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. One single finished 16:9 narrative painting for a medieval city-builder event, not a sheet. Match attached project paintings' hand-painted low-chroma gouache/oil texture, quiet earthy ochres, weathered oak, warm plaster, muted brown-red and moss wool, bluegray sky. Southern England 1348–1362, realistic humane figures, legible central action. No letters, numbers, pseudowriting, caption, border, watermark, bright primaries, plague door marks, beaked doctors, blood, gore, visible corpse, hexagonal coffin, hops, domestic chimneys or modern objects. Houses have unmarked doors and plain shutters, thatch or flat clay tiles. Reference sheets only guide painting style, NEVER copy their labels. Panoramic evening view of a southern English walled market town beside a river after plague, around 1362. Half the residential plots visibly quiet and empty: roofless foundation footprints and overgrown gaps among shuttered older timber houses. Here and there THREE newly raised warm oak roof frames and freshly thatched small roofs signal rebuilding. Tiny builders only in distant scale. Parish church and modest harbour anchor same settlement, warm sunset and melancholy hope. No sprawling metropolis, no fires or battle destruction. Wide coherent city painting 16:9, not isometric game sprite.",
+        "rawFile": "raw/ch3_events/ch3_ending.png",
+        "referenceImages": [
+          "references/Wave16_1장_사건카드_화풍기준.jpg",
+          "references/Wave17_2장_삽화.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-eaf7eb3d-7617-4399-b3bc-04fe6f8cd0e8.png",
+        "rawWidth": 1672,
+        "rawHeight": 941
+      },
+      {
+        "prompt": "Precise edit of this single painting. Remove ALL domestic chimney stacks and chimney pots, especially the tall pale masonry chimney on foreground new roof at lower right and little chimneys across middle/background houses. Replace each with uninterrupted matching thatch or clay tile roof and the naturally visible surface/sky behind. KEEP cathedral church tower, walls, gatehouses, roof frames, cranes intact. Preserve figures, halfempty settlement, new roofs, sunset, layout, all colors, painterly texture. No text/newobjects. Final houses completely chimney-free roof silhouettes.",
+        "rawFile": "raw/ch3_events/ch3_ending-v2.png",
+        "referenceImages": [
+          "raw/ch3_events/ch3_ending-edit-input-v2.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-7237f72b-b103-46cc-9043-eacffa91979a.png",
+        "rawWidth": 1672,
+        "rawHeight": 941,
+        "referenceNote": "Exact resized derivative supplied to edit tool, recreated losslessly from preserved prior raw with same Sharp processing."
+      }
+    ],
+    "processing": "Sharp resize cover centre to target dimensions; no painting edits.",
+    "qa": {
+      "status": "pass_visual",
+      "sceneReadable": true,
+      "textObserved": false,
+      "doorPlagueMarksObserved": false,
+      "goreObserved": false,
+      "domesticChimneysObserved": false,
+      "review": "9-image contact plus all full-size final images inspected. Church crosses and market cross are religious structures, not plague door marks.",
+      "caveats": "Empty plots and rebuilding visible; exact one-half vacancy is narrative, not counted simulation data."
+    },
+    "sha256": "00b0f23544309be90b17184122bcd7e1e1e72fcd05c5a8691062c2a6c32f53fb"
+  }
+]

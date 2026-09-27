@@ -1,0 +1,12 @@
+{
+  "name": "feudal-lord-simulator-eslint",
+  "private": true,
+  "description": "ESLint for the merge checks (REVIEW-1). Kept apart from the root because typescript-eslint cannot use the root TypeScript 7 (no JS compiler API); TypeScript 6.0 here only parses. See docs/REMOTE_RUNS.md#merge-checks.",
+  "type": "module",
+  "devDependencies": {
+    "@typescript-eslint/parser": "8.70.1",
+    "eslint": "10.11.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "typescript": "6.0.3"
+  }
+}

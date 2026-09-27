@@ -1,0 +1,216 @@
+{
+  "assets": [
+    {
+      "id": "terrain/fen_summer_a-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        110.97836303710938,
+        121.02157592773438,
+        92.00140380859375
+      ],
+      "block16MeanLumaRange": 3.954210156249971
+    },
+    {
+      "id": "terrain/fen_summer_b-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        110.92160034179688,
+        120.92535400390625,
+        91.93701171875
+      ],
+      "block16MeanLumaRange": 4.5905796874997975
+    },
+    {
+      "id": "terrain/fen_autumn_a-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        126.01370239257812,
+        119.01055908203125,
+        88.01004028320312
+      ],
+      "block16MeanLumaRange": 4.452914843750037
+    },
+    {
+      "id": "terrain/fen_autumn_b-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        126.05242919921875,
+        119.05178833007812,
+        88.05877685546875
+      ],
+      "block16MeanLumaRange": 4.985773437500171
+    },
+    {
+      "id": "terrain/fen_winter_a-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        137.02313232421875,
+        144.99075317382812,
+        135.019775390625
+      ],
+      "block16MeanLumaRange": 5.893652343750034
+    },
+    {
+      "id": "terrain/fen_winter_b-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        137.04470825195312,
+        145.01361083984375,
+        135.03158569335938
+      ],
+      "block16MeanLumaRange": 6.553104687499854
+    },
+    {
+      "id": "terrain/coastal_grass_summer_a-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        148.01876831054688,
+        144.99398803710938,
+        104.97817993164062
+      ],
+      "block16MeanLumaRange": 3.5212796874999412
+    },
+    {
+      "id": "terrain/coastal_grass_summer_b-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        148.0078125,
+        145.01092529296875,
+        104.9879150390625
+      ],
+      "block16MeanLumaRange": 3.866199218750012
+    },
+    {
+      "id": "terrain/coastal_grass_autumn_a-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        155.01583862304688,
+        142.0184326171875,
+        106.99600219726562
+      ],
+      "block16MeanLumaRange": 4.182821874999888
+    },
+    {
+      "id": "terrain/coastal_grass_autumn_b-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        155.04684448242188,
+        142.05032348632812,
+        106.98922729492188
+      ],
+      "block16MeanLumaRange": 3.3651843750000694
+    },
+    {
+      "id": "terrain/coastal_grass_winter_a-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        169.98779296875,
+        170.98043823242188,
+        152.005859375
+      ],
+      "block16MeanLumaRange": 4.483322656249953
+    },
+    {
+      "id": "terrain/coastal_grass_winter_b-v2",
+      "width": 256,
+      "height": 128,
+      "opaque": true,
+      "seamX": 0,
+      "seamY": 0,
+      "meanRGB": [
+        169.95120239257812,
+        170.96844482421875,
+        152.00112915039062
+      ],
+      "block16MeanLumaRange": 5.291834375000178
+    }
+  ],
+  "mixed": [
+    {
+      "family": "terrain/fen_summer",
+      "seamX_AB": 0,
+      "seamY_AB": 0,
+      "seamX_BA": 0,
+      "seamY_BA": 0
+    },
+    {
+      "family": "terrain/fen_autumn",
+      "seamX_AB": 0,
+      "seamY_AB": 0,
+      "seamX_BA": 0,
+      "seamY_BA": 0
+    },
+    {
+      "family": "terrain/fen_winter",
+      "seamX_AB": 0,
+      "seamY_AB": 0,
+      "seamX_BA": 0,
+      "seamY_BA": 0
+    },
+    {
+      "family": "terrain/coastal_grass_summer",
+      "seamX_AB": 0,
+      "seamY_AB": 0,
+      "seamX_BA": 0,
+      "seamY_BA": 0
+    },
+    {
+      "family": "terrain/coastal_grass_autumn",
+      "seamX_AB": 0,
+      "seamY_AB": 0,
+      "seamX_BA": 0,
+      "seamY_BA": 0
+    },
+    {
+      "family": "terrain/coastal_grass_winter",
+      "seamX_AB": 0,
+      "seamY_AB": 0,
+      "seamX_BA": 0,
+      "seamY_BA": 0
+    }
+  ]
+}

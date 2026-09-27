@@ -1,0 +1,6 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const root=path.resolve(__dirname,'..');
+const rows=JSON.parse(fs.readFileSync(path.join(root,'records/metadata-ch3-events.json'),'utf8'));
+(async()=>{const tiles=[];for(let i=0;i<rows.length;i++){const r=rows[i],g=r.generationRecords.at(-1);fs.mkdirSync(path.dirname(path.join(root,g.rawFile)),{recursive:true});fs.mkdirSync(path.dirname(path.join(root,r.file)),{recursive:true});if(!fs.existsSync(path.join(root,g.rawFile)))fs.copyFileSync(g.originalPath,path.join(root,g.rawFile));const m=await sharp(path.join(root,g.rawFile)).metadata();g.rawWidth=m.width;g.rawHeight=m.height;await sharp(path.join(root,g.rawFile)).resize(r.width,r.height,{fit:'cover',position:'centre'}).png().toFile(path.join(root,r.file));tiles.push({input:await sharp(path.join(root,r.file)).resize(480,270).png().toBuffer(),left:(i%3)*480,top:Math.floor(i/3)*270});}await sharp({create:{width:1440,height:810,channels:3,background:'#ddd2bd'}}).composite(tiles).png().toFile(path.join(root,'raw/ch3_events/contact.png'));fs.writeFileSync(path.join(root,'records/metadata-ch3-events.json'),JSON.stringify(rows,null,2)+'\n');console.log('9 files processed');})();

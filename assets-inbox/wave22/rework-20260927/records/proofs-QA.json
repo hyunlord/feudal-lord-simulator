@@ -1,0 +1,96 @@
+{
+  "status": "candidate",
+  "verdict": "pass",
+  "inspection": "Directly opened five fill family crops and final proof 02/03",
+  "checks": [
+    {
+      "path": "checks/01-fill-repeats.png",
+      "sha256": "fab101c159519a9d8fb6627ff5b6ca17eef5f4ef94bb8ea0c89da4b30f13f57b",
+      "visualPass": true
+    },
+    {
+      "path": "checks/02-archetype-scenes.png",
+      "sha256": "d7b169098a269f76231aaf71150df45a409f26d896b8c82888781bc5c89c24cf",
+      "visualPass": true
+    },
+    {
+      "path": "checks/03-sand-beach-comparison.png",
+      "sha256": "a1812e12f8715d1c301fcfe6d9bc2790b4888f50de20acfdf2384ab7d60d4e72",
+      "visualPass": true
+    }
+  ],
+  "placement": [
+    {
+      "family": "chalk_down",
+      "count": 8,
+      "visibleCount": 5,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    },
+    {
+      "family": "heath",
+      "count": 7,
+      "visibleCount": 7,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    },
+    {
+      "family": "fen",
+      "count": 6,
+      "visibleCount": 4,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    },
+    {
+      "family": "coastal_grass",
+      "count": 6,
+      "visibleCount": 5,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    },
+    {
+      "family": "woodland_floor",
+      "count": 6,
+      "visibleCount": 5,
+      "visibleVariants": [
+        "a",
+        "b",
+        "c"
+      ],
+      "replay": true,
+      "insertionInvariant": true,
+      "noDecalBoundsOverlap": true
+    }
+  ],
+  "limitations": [
+    "Offline proof only; no game installation or runtime integration verified.",
+    "Small A decals lose internal detail at zoom 0.6; B/C convey characteristic outlines.",
+    "Viewport boundary clips partial decals; full forms are shown in the legend.",
+    "Existing grass is normalized from 256x256 to 256x128 comparison UV.",
+    "Single repeated strip retains a long-distance contour period."
+  ]
+}

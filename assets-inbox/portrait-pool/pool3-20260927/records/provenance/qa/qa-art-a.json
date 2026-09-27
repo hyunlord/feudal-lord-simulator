@@ -1,0 +1,335 @@
+{
+  "status": "PASS_WITH_LIMITATIONS",
+  "scope": "I101-I106, all18 images",
+  "review_method": "Viewed native final256 portraits and board with corresponding96 renderings; no mirroring or composited layers. Board art-a-board.png.",
+  "files": [
+    {
+      "id": "I101_young",
+      "sha256": "2763b9003b5354503caf2aabd169431e3ea7e522d34ab21d9fade8f7d0da112e",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "empty hands clasped, no object",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I101_mature",
+      "sha256": "a597e9eae134128936a8c2b4dc351da4377e14b5d9d15fe226cb8ada96bf12a3",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "empty hands clasped, no object",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I101_old",
+      "sha256": "df8b97a7add610a386530879c659e1436573f7a2784b67808206d719c3835d48",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "empty hands clasped, no object",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I102_young",
+      "sha256": "3ab93a52018c20ad6be249370df3c4929d60deae88cbd982abe96decde2ea820",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "embroidered folded brown riding glove",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "barbette_fillet"
+    },
+    {
+      "id": "I102_mature",
+      "sha256": "a77115d49aeaaf96852bdc3a1638537644861f73d6cfb1abb91fac07e529ad17",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "embroidered folded brown riding glove",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "white_veil"
+    },
+    {
+      "id": "I102_old",
+      "sha256": "22a4bb34d7cc3702e22ea5a13df17668c5184c85f1eb6aa9e473aeb8fc29ec82",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "embroidered folded brown riding glove",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "veil_wimple"
+    },
+    {
+      "id": "I103_young",
+      "sha256": "ec71d82649776ce9b8ac17dc41890d64a0174d9806194ccf924941791c836a65",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "no object",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I103_mature",
+      "sha256": "f54d159d02b3098f95e9d63d29338da6e831ef73a1e1a5e8715c902fc1bf92e4",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "no object",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I103_old",
+      "sha256": "89e8c805f88e03469826ce852ad5de4e098f00b9b56ef1358bc3703e0872a7b1",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "no object",
+      "fur_observed": "white ermine with sparse black tail tips",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I104_young",
+      "sha256": "aafa68daee169166e407883e2d27d06faaeb5b8cacaef819bc02ae890891bcd5",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "closed seal purse",
+      "fur_observed": "grey-white mottled unspotted squirrel miniver",
+      "headwear_observed": "hood"
+    },
+    {
+      "id": "I104_mature",
+      "sha256": "f285964825e2c66d8ea4b3ed9a1c0e5dde35262e1b849648ca066976ae99fcfa",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "closed seal purse",
+      "fur_observed": "grey-white mottled unspotted squirrel miniver",
+      "headwear_observed": "hood"
+    },
+    {
+      "id": "I104_old",
+      "sha256": "2e2c78eb637db5a792bc427157bea82d3a941992d7312718b65ce9f409b04ba3",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "closed seal purse",
+      "fur_observed": "grey-white mottled unspotted squirrel miniver",
+      "headwear_observed": "hood"
+    },
+    {
+      "id": "I105_young",
+      "sha256": "8c2b6836924c78af9b73ce9ddba58880c6aac85d22401b5bb89f163aaf6bf0d2",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "iron key ring",
+      "fur_observed": "grey-white mottled unspotted squirrel miniver",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I105_mature",
+      "sha256": "9ab1a5da459bcc2a6727e8e3bed83a70ae1958dbecd2b80d8d4d54a6ca332023",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "iron key ring",
+      "fur_observed": "grey-white mottled unspotted squirrel miniver",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I105_old",
+      "sha256": "75fe54e3d3f7a4a762c70f3a0fe0f1ad97d87c252efd34c3d8e00eb8e35673b4",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "iron key ring",
+      "fur_observed": "grey-white mottled unspotted squirrel miniver",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I106_young",
+      "sha256": "58c3da87e6257e02e3e29c3e0527d917064df5dd5332ece1270feca01cf5b74c",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "wooden herald baton held at far side",
+      "fur_observed": "none",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I106_mature",
+      "sha256": "f67d4b515e2010ae6a3a59b3d3eeb6c29b3fcc8ebf0dfde9f03e10872da6d7f7",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "wooden herald baton held at far side",
+      "fur_observed": "none",
+      "headwear_observed": "uncovered_bob"
+    },
+    {
+      "id": "I106_old",
+      "sha256": "e9733e0a0327e6392a1ef5a478bb32df7404c93a4818699f6d5e4b5a60ed7898",
+      "size": [
+        256,
+        256
+      ],
+      "visual_256": "pass",
+      "visual_96": "pass_with_limitations",
+      "same_identity_across_chain": true,
+      "prop_observed": "wooden herald baton held at far side",
+      "fur_observed": "none",
+      "headwear_observed": "uncovered_bob"
+    }
+  ],
+  "chains": [
+    {
+      "identity_id": "I101",
+      "identity_256": "pass",
+      "identity_96": "pass",
+      "age_order": "young-mature-old preserved",
+      "notes": "Young to mature changes are restrained at96; old hair and facial lines clearer. Exact numerical age not visually asserted."
+    },
+    {
+      "identity_id": "I102",
+      "identity_256": "pass",
+      "identity_96": "pass",
+      "age_order": "young-mature-old preserved",
+      "notes": "Young to mature changes are restrained at96; old hair and facial lines clearer. Exact numerical age not visually asserted."
+    },
+    {
+      "identity_id": "I103",
+      "identity_256": "pass",
+      "identity_96": "pass",
+      "age_order": "young-mature-old preserved",
+      "notes": "Young to mature changes are restrained at96; old hair and facial lines clearer. Exact numerical age not visually asserted."
+    },
+    {
+      "identity_id": "I104",
+      "identity_256": "pass",
+      "identity_96": "pass",
+      "age_order": "young-mature-old preserved",
+      "notes": "Young to mature changes are restrained at96; old hair and facial lines clearer. Exact numerical age not visually asserted."
+    },
+    {
+      "identity_id": "I105",
+      "identity_256": "pass",
+      "identity_96": "pass",
+      "age_order": "young-mature-old preserved",
+      "notes": "Young to mature changes are restrained at96; old hair and facial lines clearer. Exact numerical age not visually asserted."
+    },
+    {
+      "identity_id": "I106",
+      "identity_256": "pass",
+      "identity_96": "pass",
+      "age_order": "young-mature-old preserved",
+      "notes": "Young to mature changes are restrained at96; old hair and facial lines clearer. Exact numerical age not visually asserted."
+    }
+  ],
+  "heraldry": {
+    "I106_young": {
+      "256": "exactly3 gold horizontal lions passant guardant stacked on red; all complete, no obstruction",
+      "96": "threegoldanimal rows readable; fineguardantface detail limitedby96resolution"
+    },
+    "I106_mature": {
+      "256": "exactly3 gold horizontal lions passant guardant stacked on red; all complete, no obstruction",
+      "96": "threegoldanimal rows readable; fineguardantface detail limitedby96resolution"
+    },
+    "I106_old": {
+      "256": "correctfourquarters: viewerupperleft/loweright bluesemy manygold fleurs-de-lys; upperright/lowerleft redthreegoldwalkinglions each. NoFrance-modern threefleur motif.",
+      "96": "quarter colors and opposite placement readable; tinyanimalanatomy cannot be fullyjudged at96"
+    }
+  },
+  "metadata_corrections": [
+    {
+      "identity_id": "I104",
+      "stages": [
+        "young",
+        "mature",
+        "old"
+      ],
+      "field": "headwear_type",
+      "actual": "hood",
+      "reason": "All three depict greenhoodup with medievalbobvisible; costume also explicitly requestedhood."
+    }
+  ],
+  "remaining_limitations": [
+    "I101, I104, I105 and I106 young-to-mature age increment is subtle at96; no identityfailure.",
+    "Fine heraldic anatomy requires256 orraw view;96 supports arrangement andcount better than facialdetails."
+  ],
+  "known_blocking_defects": []
+}

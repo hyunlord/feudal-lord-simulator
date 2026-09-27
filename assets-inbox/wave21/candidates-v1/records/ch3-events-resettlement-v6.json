@@ -1,0 +1,12 @@
+{
+  "prompt": "Precise LOCAL background edit to this original hand-painted picture. Replace ONLY the tiny far-right BACKGROUND house and its complete chimney/roof region (approximately x860–960, y204–323 in this960x540image) with softly natural leafy orchard trees continuing the hillside. No chimney, house roof or upright pipe remains in that small far-right background patch. Preserve the ENTIRE FOREGROUND pixel composition and fine painterly brush texture: people/faces/hair/coifs, blanket folds, chest hardware, timber beams, plaster wall, doorway and child must remain crisp and exactly like input. Do not smooth, warp, melt, redraw or alter foreground. This is a one-region replacement, not a global style transfer. Maintain all colors, lighting, perspective. No letters, numbers or text. Source original texture is the standard.",
+  "rawFile": "raw/ch3_events/ch3_event_resettlement-v6.png",
+  "referenceImages": [
+    "raw/ch3_events/ch3_event_resettlement-edit-input-v2.png"
+  ],
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e095-ac52-78a1-928a-dfcfe71dfa1b/exec-96bff40c-5133-4d9d-917b-78352da49e13.png",
+  "referenceNote": "Single local edit restarted from original v1 final, not serial v5."
+}

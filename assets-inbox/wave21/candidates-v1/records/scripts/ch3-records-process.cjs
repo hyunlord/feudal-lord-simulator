@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path');
+const sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const root=path.resolve(__dirname,'..');
+(async()=>{const rows=JSON.parse(fs.readFileSync(path.join(root,'records/metadata-ch3-records.json')));for(const row of rows){const g=row.generationRecords.at(-1);for(const rec of row.generationRecords){if(!fs.existsSync(path.join(root,rec.rawFile)))fs.copyFileSync(rec.sourcePath,path.join(root,rec.rawFile));}await sharp(path.join(root,g.rawFile)).resize(row.width,row.height,{fit:'cover',position:'centre'}).png().toFile(path.join(root,row.file));const m=await sharp(path.join(root,row.file)).metadata();if(m.width!==row.width||m.height!==row.height)throw Error(row.id); }console.log('processed',rows.length);})();

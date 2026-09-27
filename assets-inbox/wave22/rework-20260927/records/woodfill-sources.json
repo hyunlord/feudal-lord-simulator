@@ -1,0 +1,101 @@
+[
+  {
+    "id": "terrain/woodland_floor_summer_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-afc1-7a23-9f68-661562d146b0/exec-b5a833e0-3f9c-49ed-be29-6582d3657bf9.png",
+    "prompt": "Use case: stylized-concept. Asset terrain/woodland_floor_summer_a-v2, one seamless ground fill, flat overhead rectangular 2:1 image, opaque full bleed. Project reference 1 grass.png supplies the exact very fine low-contrast brush texture density and homogeneity. Reference 2 forest_floor.png supplies muted warm grey-brown olive earth palette only. Repaint a summer woodland bare soil BASE only, evenly distributed fine quiet brush grain like the grass reference, with no features. Keep almost uniform midtone throughout, no large patches, no clouds, no diagonal strokes or bands, no recognizable leaves, stones, twigs, branches, moss islands, puddles, snow, shadows or objects. Small individual brush marks and tiny subtle soil fibres, but no photographic sharpening or salt pepper specks. All four edges seamless in X and Y, no edge darkening, no light/dark gradient. This tile will repeat 4 by 4 at 256x128 final size and must show NO repeating landmark or macro patch grid. Midtone woodland colour subdued olive warm grey-brown, very low contrast, matching existing medieval English game terrain. No text, no border. One asset only.",
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png"
+    ],
+    "generatedAt": "2026-09-27T05:21:21.691Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_summer_a-v2.png",
+    "selectionReason": "Fine homogeneous low contrast brush grain; no terrain landmark or large macro patch.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Per-season A/B RGB mean colour matched by constant channel offset; shared edge profiles blended within X 8px/Y 6px, exact common endpoints, no procedural painting."
+  },
+  {
+    "id": "terrain/woodland_floor_summer_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-afc1-7a23-9f68-661562d146b0/exec-05c99274-49fc-498f-8e09-7970aaa10bd9.png",
+    "prompt": "Use case: stylized-concept. Asset terrain/woodland_floor_summer_a-v2, one seamless ground fill, flat overhead rectangular 2:1 image, opaque full bleed. Project reference 1 grass.png supplies the exact very fine low-contrast brush texture density and homogeneity. Reference 2 forest_floor.png supplies muted warm grey-brown olive earth palette only. Repaint a summer woodland bare soil BASE only, evenly distributed fine quiet brush grain like the grass reference, with no features. Keep almost uniform midtone throughout, no large patches, no clouds, no diagonal strokes or bands, no recognizable leaves, stones, twigs, branches, moss islands, puddles, snow, shadows or objects. Small individual brush marks and tiny subtle soil fibres, but no photographic sharpening or salt pepper specks. All four edges seamless in X and Y, no edge darkening, no light/dark gradient. This tile will repeat 4 by 4 at 256x128 final size and must show NO repeating landmark or macro patch grid. Midtone woodland colour subdued olive warm grey-brown, very low contrast, matching existing medieval English game terrain. No text, no border. One asset only.\nVariant B: new independent distribution of fine brush grain, different tiny stroke placements from input image3 summerA. Match its exact overall palette, contrast and density for mixing neighbouring chunks. Absolutely no new large motifs or directional patches. Keep same season summer.",
+    "referenceInputs": [
+      "grass.png",
+      "forest_floor.png",
+      "woodland_floor_summer_a-v2 generated source"
+    ],
+    "generatedAt": "2026-09-27T05:22:49.858Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_summer_b-v2.png",
+    "selectionReason": "Fine homogeneous low contrast brush grain; no terrain landmark or large macro patch.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Per-season A/B RGB mean colour matched by constant channel offset; shared edge profiles blended within X 8px/Y 6px, exact common endpoints, no procedural painting."
+  },
+  {
+    "id": "terrain/woodland_floor_autumn_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-afc1-7a23-9f68-661562d146b0/exec-791071cb-e5b8-435e-a84b-1b71c9c03f0d.png",
+    "prompt": "Use case: lighting-weather. Edit this exact project woodland soil base to autumn, one opaque seamless 2:1 texture. Change only overall season palette to muted warmer umber grey-brown with a very faint tawny undertone. Retain the same fine quiet brush grain, low contrast and almost homogeneous coverage. NO leaves or leaf silhouettes, NO moss islands, NO macro patches, NO objects, NO diagonal bands, NO blotches. This is only a ground base; all leaf litter will be separate decals. Keep exposure uniform, all four edges tileable in X/Y, no vignette. At 256x128 output repeated 4x4 no obvious repeated landmark. Southern England autumn subdued brown/gold, never bright red. No text or border.",
+    "referenceInputs": [
+      "woodland_floor_summer_a-v2 generated source"
+    ],
+    "generatedAt": "2026-09-27T05:25:02.482Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_autumn_a-v2.png",
+    "selectionReason": "Fine homogeneous low contrast brush grain; no terrain landmark or large macro patch.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Per-season A/B RGB mean colour matched by constant channel offset; shared edge profiles blended within X 8px/Y 6px, exact common endpoints, no procedural painting."
+  },
+  {
+    "id": "terrain/woodland_floor_autumn_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-afc1-7a23-9f68-661562d146b0/exec-9edb415e-cf9f-49a2-a163-c9bd9aa56b49.png",
+    "prompt": "Use case: lighting-weather. Edit this exact project woodland soil base to autumn, one opaque seamless 2:1 texture. Change only overall season palette to muted warmer umber grey-brown with a very faint tawny undertone. Retain the same fine quiet brush grain, low contrast and almost homogeneous coverage. NO leaves or leaf silhouettes, NO moss islands, NO macro patches, NO objects, NO diagonal bands, NO blotches. This is only a ground base; all leaf litter will be separate decals. Keep exposure uniform, all four edges tileable in X/Y, no vignette. At 256x128 output repeated 4x4 no obvious repeated landmark. Southern England autumn subdued brown/gold, never bright red. No text or border. This is B grain variant, preserve B microscopic placement while matching autumn A palette.",
+    "referenceInputs": [
+      "woodland_floor_summer_b-v2 generated source"
+    ],
+    "generatedAt": "2026-09-27T05:25:02.485Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_autumn_b-v2.png",
+    "selectionReason": "Fine homogeneous low contrast brush grain; no terrain landmark or large macro patch.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Per-season A/B RGB mean colour matched by constant channel offset; shared edge profiles blended within X 8px/Y 6px, exact common endpoints, no procedural painting."
+  },
+  {
+    "id": "terrain/woodland_floor_winter_a-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-afc1-7a23-9f68-661562d146b0/exec-360d7e3e-a029-4a70-9a96-721f9d823cc7.png",
+    "prompt": "Use case: lighting-weather. Edit this exact project woodland soil base to southern England winter, one opaque seamless 2:1 texture. Change only overall season palette to cool muted grey-brown olive, somewhat lighter, as a very thin uniform dry frost over soil, with ground still visible. Keep exactly same fine quiet brush grain and almost homogeneous low contrast coverage. NO snow islands, NO patches of white, NO leaves, NO branches, NO moss features, NO objects, NO diagonal bands, NO large clouds, NO vignette. All features belong on separate decals. X and Y seamless, even exposure edge to edge. At 256x128 final output and 4x4 repetitions must have no repeating landmarks. No text or border.",
+    "referenceInputs": [
+      "woodland_floor_summer_a-v2 generated source"
+    ],
+    "generatedAt": "2026-09-27T05:25:02.489Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_winter_a-v2.png",
+    "selectionReason": "Fine homogeneous low contrast brush grain; no terrain landmark or large macro patch.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Per-season A/B RGB mean colour matched by constant channel offset; shared edge profiles blended within X 8px/Y 6px, exact common endpoints, no procedural painting."
+  },
+  {
+    "id": "terrain/woodland_floor_winter_b-v2",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e14e-afc1-7a23-9f68-661562d146b0/exec-995ec64e-50f7-4f83-be5c-aee04736dd1b.png",
+    "prompt": "Use case: lighting-weather. Edit this exact project woodland soil base to southern England winter, one opaque seamless 2:1 texture. Change only overall season palette to cool muted grey-brown olive, somewhat lighter, as a very thin uniform dry frost over soil, with ground still visible. Keep exactly same fine quiet brush grain and almost homogeneous low contrast coverage. NO snow islands, NO patches of white, NO leaves, NO branches, NO moss features, NO objects, NO diagonal bands, NO large clouds, NO vignette. All features belong on separate decals. X and Y seamless, even exposure edge to edge. At 256x128 final output and 4x4 repetitions must have no repeating landmarks. No text or border. This is B grain variant, retain variant B fine stroke placements but exactly the same winter palette and contrast as A.",
+    "referenceInputs": [
+      "woodland_floor_summer_b-v2 generated source"
+    ],
+    "generatedAt": "2026-09-27T05:25:02.492Z",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave22-rework-candidates-20260927/terrain/woodland_floor_winter_b-v2.png",
+    "selectionReason": "Fine homogeneous low contrast brush grain; no terrain landmark or large macro patch.",
+    "manualEdits": "Native full-rectangle resized once to 256x128; opposing X 16px and Y 12px edge strips symmetrically blended to exact equal endpoints; opaque alpha normalized. RGB chroma about luminance multiplied by 1. No procedural artwork. Per-season A/B RGB mean colour matched by constant channel offset; shared edge profiles blended within X 8px/Y 6px, exact common endpoints, no procedural painting."
+  }
+]

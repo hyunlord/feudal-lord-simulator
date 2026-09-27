@@ -134,6 +134,18 @@
 17. **에셋 받은 편지함**: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS로 커밋한다(설치 여부와 무관). 설치는 여기서 꺼내 `public/assets/`로 옮기고, 불채택은 inbox에 남긴 채 대장 상태 `rejected`.
     - Astra 산출물은 도착하면 설치 여부와 관계없이 `assets-inbox/<wave>/`에 보관하고 `INBOX_LEDGER.csv`에 상태를 기록한다([구조·상태 뜻](docs/ASSET_INBOX.md)).
 18. **렌더 수정 금지의 예외**: 새 건물 종류를 추가할 때 렌더의 종류별 분기 세 곳(`buildingInspectorModel` 용도 문구, `buildingVisualState` 몸체, `historicalFacilityAssets` 그림 id)에 최소 줄을 넣는 것은 렌더 수정 금지의 예외다. 그 밖의 렌더는 건드리지 않고, 보고서에 "렌더 세션이 넘겨받을 것"으로 적는다.
+19. **병합 전 자동 검사**: 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`를 푸시하는 범위(원격 머리..로컬 머리)에 돌린다(`FLS_PUSH_OK=1`일 때도). 하나라도 실패하면 푸시를 거부한다. 기존 위반은 목록으로 두고 새 것만 본다. [사용법](docs/REMOTE_RUNS.md#병합-전-자동-검사)
+    - **고정값 재기록은 결정 목록에 이유와 함께 한다.**
+      - 대상: 가드레일 기준선 `seeds/baseline-*`, DGX 성능 기준선 `perf/baseline-dgx-*`, 저장 지문 `src/save/schemaFingerprint*.json`, C25 판 `c25-board*.json`, 장부 세계 기준 `fixtures/ledger/world-baseline-*`, `fixtures/determinism/`, `fixtures/saves/`, 테스트 파일 안의 16자 이상 해시 값.
+      - 이 가운데 하나를 추가·변경·삭제한 브랜치는 같은 브랜치에서 `docs/decisions/README.md`(또는 `docs/DECISIONS.md`)에 그 파일 이름(또는 두 단계 이상의 상위 폴더)과 재기록 이유를 적은 줄을 더한다.
+    - **린트 예외는 이유 주석과 함께 넣는다.**
+      - 새 `eslint-disable…`·`@ts-ignore`·`@ts-expect-error`·`as any`에는 같은 줄이나 윗줄에 `// why: <이유>`를 단다.
+      - 기존 25건은 `scripts/checks/lint-exceptions-baseline.json` 목록에 있다. 이 목록은 줄이기만 하고, 손으로 늘리지 않는다.
+    - **ESLint**(`tools/eslint/`, 루트와 따로 설치)
+      - 바뀐 파일에서 `react-hooks/exhaustive-deps`와 금지 컨트롤을 본다. 금지 컨트롤은 `src/ui`의 네이티브 `<select>`·`<input>`·맨 `<button>`이며, UI 부품 폴더 `src/ui/kit/`는 예외다.
+      - 기존 위반은 `tools/eslint/eslint-suppressions.json`에 있다.
+      - **금지 컨트롤 규칙의 원본은 `tools/eslint/uiControls.mjs`다.** 다른 ESLint 설정(UI-KIT-1 등)은 이 파일을 가져다 쓰고 복사하지 않는다.
+    - typecheck도 함께 돈다. 새 억제·예외 목록 항목을 손으로 추가해 검사를 통과시키지 않는다.
 
 ### 보고 양식
 맨 위 한 줄 판정: `관문: 통과/실패 — <관문 지표>`. 이어서 커밋 / 관문 결과 / 가드레일(해당 시) / 필수 조건(마지막 커밋 기준 전체 회귀 N/N · typecheck · build) / 다음 후보 / 소요 시간. A4 2장 이내.

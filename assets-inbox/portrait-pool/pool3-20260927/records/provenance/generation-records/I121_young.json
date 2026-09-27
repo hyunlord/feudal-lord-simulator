@@ -1,0 +1,18 @@
+{
+  "id": "I121_young",
+  "prompt": "Edit the supplied portrait to redesign the sitters identity, maintaining exact pose frontal, clothing, seed pouch, body slender, painted realism and background. Give him a visibly wider, asymmetric crooked nasal bridge with a broad flattened tip, longer forward-projecting squared chin, and DARK BROWN below-ear medieval bob instead of red hair. His head is long with deep-set wide-spaced eyes and a prominent lower jaw. Natural adult age 24, focused composed authority, no caricature. These anatomy changes must clearly change identity even at 96px. No other edits, no extra objects, full square bust.",
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e096-4a1d-7170-89aa-066ae8bffe56/exec-e48b9860-8424-4bf7-8aaf-816d1572e453.png",
+  "references": [
+    "/tmp/astra-portrait-pool3-work/revisions/I121_young-before-r2.png"
+  ],
+  "method": "native_imagegen",
+  "revision": 2,
+  "metadata_overrides": {
+    "features": "long lean face; deep-set wide-spaced pale eyes; broad asymmetric crooked nasal bridge and flat broad tip; thin upper lip; long forward squared chin; dark brown below-ear bob",
+    "hair_color": "dark brown"
+  },
+  "packaged_source": "provenance/raw/I121_young.png",
+  "packaged_references": [
+    "provenance/references/eff8429cdde7-I121_young-before-r2.png"
+  ]
+}
