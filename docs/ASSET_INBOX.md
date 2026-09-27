@@ -40,11 +40,11 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-27 20시 갱신)
+## 3. 현재 장부 요약 (2026-09-27 21시 갱신)
 
 | wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| `asset-trial` | 23 | 23 |  |  |  |  |  | 0 |
+| `asset-trial` | 23 |  | 2 |  |  | 21 |  | 0 |
 | `d1` | 7 | 2 | 5 |  |  |  |  | 5 |
 | `d1b` | 4 | 2 | 2 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
@@ -64,17 +64,17 @@ assets-inbox/
 | `wave17` | 64 |  | 64 |  |  |  |  | 2 |
 | `wave18` | 48 |  | 48 |  |  |  |  | 0 |
 | `wave19` | 57 |  | 57 |  |  |  |  | 53 |
-| `wave2` | 42 | 15 | 27 |  |  |  |  | 27 |
+| `wave2` | 42 | 14 | 27 |  | 1 |  |  | 27 |
 | `wave20` | 97 |  | 82 |  | 15 |  |  | 0 |
 | `wave21` | 90 |  | 66 |  | 24 |  |  | 0 |
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
-| `wave4-pilot` | 15 | 3 | 12 |  |  |  |  | 12 |
+| `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
 | `wave4b` | 57 | 4 | 53 |  |  |  |  | 53 |
 | `wave4c` | 29 | 11 | 18 |  |  |  |  | 18 |
 | `wave4d` | 25 | 3 | 22 |  |  |  |  | 22 |
 | `wave4e` | 53 | 18 | 35 |  |  |  |  | 35 |
-| `wave5a` | 151 | 87 | 61 |  | 3 |  |  | 55 |
+| `wave5a` | 151 |  | 61 |  | 3 | 87 |  | 55 |
 | `wave5b` | 36 | 4 |  |  |  | 32 |  | 0 |
 | `wave5c` | 17 |  | 17 |  |  |  |  | 14 |
 | `wave6` | 25 |  | 25 |  |  |  |  | 22 |
@@ -82,7 +82,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3196** | **172** | **2061** | **0** | **161** | **786** | **16** | **956** |
+| **합계** | **3196** | **58** | **2063** | **0** | **162** | **897** | **16** | **956** |
 
 ## 4. 찾는 법
 
@@ -206,6 +206,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **초상 풀 3차**(`portrait-pool/pool3-20260927`): 세력 인물 24명(I101~I124) × 청년·장년·노년 72장 `confirmed`(14시 판정), 확인 그림 5·기록 그림(수정 전 판) 10도 `confirmed`. 풀 합계 304장(파일럿 48·1차 92·2차 92·3차 72). ID로 센 인물은 124명(P01~P36 36명 + I037~I124 88명)이고, README의 "100명"은 청년 비교 격자(풀 88명 + 파일럿 12명) 기준이다. 2차 92장은 아직 `candidate`.
 - **Wave 21**: 58장 확정(15시 판정). 재작업(`wave21/rework-20260927/`) 24장 `confirmed` — `ch3_ending`과 4·5장 23장 — 이고 그 v1 24장은 `superseded`(→ 같은 이름의 재작업본). 바뀌지 않은 원본 34장(3장 18·4장 10·5장 6)은 `confirmed`. 확인 그림은 처음 묶음 5장(`*-contact.png` 2장 포함)과 재작업 3장 모두 `confirmed`. `raw/`는 넣지 않았다.
 - **Wave 22**: 81장 확정(16시 판정). 처음 묶음의 소품 20·전이 띠 10·해안 띠 5 `confirmed`, 재작업(`wave22/rework-20260927/`, 14:36 도착)의 지면 fill v2 30장(15종 × a·b)·특징 데칼 15·`shore/sand_beach_a-v2` `confirmed`. 옛 fill 15와 `sand_beach_a-v1`은 `superseded`(fill은 a·b 두 장을 `replaced_by`에 `;`로 적음). 확인 그림은 처음 3·재작업 3 모두 `confirmed`. 흩뿌리기 배치 코드(오프라인 결정론 배치 `scatter-v1`)는 `records/proofs.cjs`, 배치 계약 `records/proofs-placement-contract.md`, 결과 좌표 `records/proofs-placement.json`에 있다(게임 코드 아님).
+- **오래된 candidate 172행 정리**(21시, 사용자 규칙): ① runtime에 같은 SHA·caBX만 다른 바이트·같은 픽셀 → confirmed + `installed_by`: 해당 0행. ② 같은 ID의 더 새 판 확정 → superseded: `wave2/pilot-20260924/assets/house_l2_brewer-pilot.png` 1행(→ `wave2/house_l2_brewer-v1.png`). ③ `asset-trial`·`wave4-pilot` → rejected "방식 시험용, 제품 아님" 24행, 비교 그림 `asset-comparison.png`·`comparison.png` 2행은 확인 그림으로 confirmed. ④ Wave 5a 후보판(`candidates-v1`·`candidates-v2-29sheets`) → 설치된 V2 워커 시트와 픽셀이 같은 것이 없어 87행 rejected "V2 설치에서 선택되지 않음". 규칙 밖 58행은 `candidate` 그대로 두고 비고에 "규칙 밖: 사유 — 제안"을 적었다. 각 행 비고 끝에 "(2026-09-27 정리)".
 
 ## 7. 찾지 못한 것
 
