@@ -9,6 +9,7 @@ import {
   type ConstructionSite,
 } from "../economy/construction";
 import { resourceName } from "../content/resourceCatalog.ko";
+import { CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY } from "./constructionMaterialDiagnosisCopy.ko";
 
 export type ConstructionMaterialDiagnosisState = Readonly<{
   buildings: readonly Building[];
@@ -54,10 +55,10 @@ function distance(left: TilePos, right: TilePos): number {
 function directionLabel(from: TilePos, to: TilePos): string {
   const dx = to.tx - from.tx;
   const dy = to.ty - from.ty;
-  const vertical = dy < 0 ? "북" : dy > 0 ? "남" : "";
-  const horizontal = dx < 0 ? "서" : dx > 0 ? "동" : "";
+  const vertical = dy < 0 ? CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.north : dy > 0 ? CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.south : "";
+  const horizontal = dx < 0 ? CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.west : dx > 0 ? CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.east : "";
   const label = `${vertical}${horizontal}`;
-  return label === "" ? "같은 위치" : `${label}쪽`;
+  return label === "" ? CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.samePosition : CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.directionSide(label);
 }
 
 function remainingPathDistance(carrier: CarterWalker): number | null {
@@ -131,7 +132,7 @@ function sourceFacts(
       const home = state.buildings.find((building) => building.id === carrier.homeBuildingId);
       if (home === undefined) return null;
       return {
-        label: "영주 비축",
+        label: CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.lordReserve,
         directionLabel: directionLabel(anchor, home),
         distance: distance(anchor, home),
       };
@@ -143,15 +144,15 @@ function fallbackLabel(site: ConstructionSite, progress: MaterialProgress): stri
   const prefix = `${resourceName(progress.resource)} ${progress.delivered}/${progress.required}`;
   switch (site.stall) {
     case "no_material_source":
-      return `${prefix} · 공급처 없음 · ETA 확인 불가`;
+      return CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.noSource(prefix);
     case "no_route":
-      return `${prefix} · 공급처까지 도로 없음 · ETA 확인 불가`;
+      return CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.noRoute(prefix);
     case 'reserve_held':
-      return `${prefix} · 비축분 유지 중 · ETA 확인 불가`;
+      return CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.reserveHeld(prefix);
     case "awaiting_materials":
     case "none":
     case "no_builders":
-      return `${prefix} · 예약 ${progress.reserved} · 배정된 운반인 없음 · ETA 확인 불가`;
+      return CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.noCarrier(prefix, progress.reserved);
   }
 }
 
@@ -162,11 +163,11 @@ function carrierLabel(
   remainingPathDistance: number,
   etaTicks: number,
 ): string {
-  const prefix = `${resourceName(progress.resource)} ${progress.delivered}/${progress.required} · 예약 ${progress.reserved}`;
+  const prefix = CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.carrierPrefix(resourceName(progress.resource), progress.delivered, progress.required, progress.reserved);
   const source = facts === null
-    ? "공급처 확인 불가"
-    : `${facts.label} ${facts.directionLabel} ${facts.distance}칸`;
-  return `${prefix} · ${source} · 운반 ${carrier.id} · 남은 길 ${remainingPathDistance}칸 · 예상 ${durationLabel(etaTicks)}`;
+    ? CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.sourceUnknown
+    : CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.source(facts.label, facts.directionLabel, facts.distance);
+  return CONSTRUCTION_MATERIAL_DIAGNOSIS_COPY.carrier(prefix, source, carrier.id, remainingPathDistance, durationLabel(etaTicks));
 }
 
 export function constructionMaterialDiagnosis(

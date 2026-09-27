@@ -21,9 +21,10 @@ import type { GameState } from '../engine/engine.types';
 import { calendarArrivalLabel } from "./calendarArrival";
 import { scenarioOf } from "../engine/scenarioState";
 import { resourceName } from "../content/resourceCatalog.ko";
+import { CONSTRUCTION_SITE_CARD_COPY } from "./constructionSiteCardCopy.ko";
 
 export type ConstructionSiteCardRow = Readonly<{
-  label: "부지" | "자재 확보" | "자재 배달" | "건축 작업" | "자재 진단" | "원인" | "연결 길";
+  label: typeof CONSTRUCTION_SITE_CARD_COPY.siteTerm | typeof CONSTRUCTION_SITE_CARD_COPY.securedTerm | typeof CONSTRUCTION_SITE_CARD_COPY.deliveryTerm | typeof CONSTRUCTION_SITE_CARD_COPY.builderWorkTerm | typeof CONSTRUCTION_SITE_CARD_COPY.materialDiagnosisTerm | typeof CONSTRUCTION_SITE_CARD_COPY.causeTerm | typeof CONSTRUCTION_SITE_CARD_COPY.connectingRoadTerm;
   value: string;
 }>;
 
@@ -76,10 +77,10 @@ function securedLabel(site: ConstructionSite): string {
     const delivered = amount(site.delivered, resource);
     const required = amount(site.required, resource);
     const reserved = amount(site.reserved, resource);
-    const suffix = reserved > 0 ? ` · 예약 ${reserved}` : "";
-    return `${resourceName(resource)} ${delivered}/${required} 확보${suffix}`;
+    const suffix = reserved > 0 ? CONSTRUCTION_SITE_CARD_COPY.reservedSuffix(reserved) : "";
+    return CONSTRUCTION_SITE_CARD_COPY.secured(resourceName(resource), delivered, required, suffix);
   });
-  return parts.length === 0 ? "필요 없음" : parts.join(" · ");
+  return parts.length === 0 ? CONSTRUCTION_SITE_CARD_COPY.noneNeeded : parts.join(" · ");
 }
 
 function deliveryLabel(site: ConstructionSite): string {
@@ -88,9 +89,9 @@ function deliveryLabel(site: ConstructionSite): string {
       0,
       amount(site.required, resource) - amount(site.delivered, resource) - amount(site.reserved, resource),
     );
-    return remaining > 0 ? `${resourceName(resource)} ${remaining} 남음` : null;
+    return remaining > 0 ? CONSTRUCTION_SITE_CARD_COPY.remaining(resourceName(resource), remaining) : null;
   });
-  return parts.length === 0 ? "배달 대기 없음" : parts.join(" · ");
+  return parts.length === 0 ? CONSTRUCTION_SITE_CARD_COPY.noDeliveryWaiting : parts.join(" · ");
 }
 
 function currentStallLabel(
@@ -99,7 +100,7 @@ function currentStallLabel(
 ): string {
   const schedule = palisadeConstructionSchedule(site, options.constructionSites ?? [site]);
   return schedule.kind === "queued"
-    ? site.kind === 'palisade_segment' ? '대기(경로 없음)' : `대기 중 · 성문 기준 ${schedule.position}번째 구간`
+    ? site.kind === 'palisade_segment' ? CONSTRUCTION_SITE_CARD_COPY.queuedNoRoute : CONSTRUCTION_SITE_CARD_COPY.queuedFromGate(schedule.position)
     : options.accessState === undefined
       ? constructionOnSiteLabel(site)
       : currentConstructionSiteLabel(options.accessState, site);
@@ -112,7 +113,7 @@ function materialDiagnosisRows(
   if (options.materialDiagnosisState === undefined) return [];
   const diagnoses = constructionMaterialDiagnosis(site, options.materialDiagnosisState);
   return diagnoses.length === 0 ? [] : [{
-    label: "자재 진단",
+    label: CONSTRUCTION_SITE_CARD_COPY.materialDiagnosisTerm,
     value: diagnoses.map((diagnosis) => diagnosis.label).join(" / "),
   }];
 }
@@ -126,27 +127,27 @@ export function constructionSiteCardModel(
   const cancellationReason = options.cancellationDisabledReason ?? null;
   return {
     siteId: site.id,
-    name: `${name} 부지`,
+    name: CONSTRUCTION_SITE_CARD_COPY.siteName(name),
     currentStallLabel: currentStallLabel(site, options),
     cancellation: cancellationReason === null
       ? { enabled: true, reason: null }
       : { enabled: false, reason: cancellationReason },
     rows: [
-      { label: "부지", value: `${anchor.tx}, ${anchor.ty} · ${name}` },
-      { label: "자재 확보", value: securedLabel(site) },
-      { label: "자재 배달", value: deliveryLabel(site) },
-      { label: "건축 작업", value: builderWorkLabel(site, options.accessState) },
+      { label: CONSTRUCTION_SITE_CARD_COPY.siteTerm, value: `${anchor.tx}, ${anchor.ty} · ${name}` },
+      { label: CONSTRUCTION_SITE_CARD_COPY.securedTerm, value: securedLabel(site) },
+      { label: CONSTRUCTION_SITE_CARD_COPY.deliveryTerm, value: deliveryLabel(site) },
+      { label: CONSTRUCTION_SITE_CARD_COPY.builderWorkTerm, value: builderWorkLabel(site, options.accessState) },
       ...materialDiagnosisRows(site, options),
       ...(options.accessState === undefined ? [] : (() => {
         const access = constructionAccessModel(options.accessState, site);
         const grouped = groupedConstructionCause(options.accessState, access.cause);
         const routeInstruction = access.missingRoadTiles.length === 0 ? [] : [{
-          label: '연결 길' as const,
+          label: CONSTRUCTION_SITE_CARD_COPY.connectingRoadTerm,
           value: access.missingRoadTiles.length === 1
             ? A_TRIPLE_PRIME_ROAD_COPY.oneTileInstruction
             : A_TRIPLE_PRIME_ROAD_COPY.multipleTileInstruction,
         }];
-        return [...(grouped === null ? [] : [{ label: '원인' as const, value: grouped }]), ...routeInstruction];
+        return [...(grouped === null ? [] : [{ label: CONSTRUCTION_SITE_CARD_COPY.causeTerm, value: grouped }]), ...routeInstruction];
       })()),
     ],
   };

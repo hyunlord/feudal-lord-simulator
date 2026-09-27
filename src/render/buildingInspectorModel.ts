@@ -19,6 +19,7 @@ export type BuildingInspectorModel = {
 };
 
 const HOUSE_NAMES = BUILDING_INSPECTOR_COPY.houseNames;
+// A new building kind's purpose line (AGENTS.md rule 18) now goes in buildingInspectorCopy.ko.ts.
 const PURPOSES = BUILDING_INSPECTOR_PURPOSE;
 
 export function buildingInspectorModel(

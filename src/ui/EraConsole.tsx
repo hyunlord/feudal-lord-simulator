@@ -16,7 +16,7 @@ import type { Era } from "../content/eraConfig";
 import type { EraRequirement, GameState } from "../engine/engine.types";
 import type { PalisadeDraftState } from "../render/palisadeDraftInteraction";
 import { A_TRIPLE_PRIME_WALL_COPY } from './aTriplePrimeWallCopy';
-import { A_QUADRUPLE_PRIME_WALL_COPY as WALL_COPY, palisadeFailureLabel } from './aQuadruplePrimeWallCopy';
+import { WALL_DRAFT_COPY as WALL_COPY, palisadeFailureLabel } from './wallDraftCopy.ko';
 import { palisadeFootprintsForState, proposalSummaryForState } from "./eraConsoleModel";
 import { draftPalisadePredictionLines, proposalPredictionLines } from "./wallPrediction";
 import { PREDICTION_SEVERITY_TONE, type PredictionLine } from "./predictionTypes";
@@ -25,6 +25,7 @@ import { UiIcon } from "./UiIcon";
 import { cachedExpansionPreview, expansionLines, pendingPastureWarning } from "./wallExpansionModel";
 import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
 import { Button } from "./kit";
+import { ERA_CONSOLE_COPY } from "./eraConsoleCopy.ko";
 
 export type EraConsoleAction = {
   readonly enabled: boolean;
@@ -71,7 +72,7 @@ export type EraConsoleModel = {
 const PROCLAMATION_TOOLTIPS = {
   hamlet: LABOUR_COPY.palisadeProclamation,
   palisade: LABOUR_COPY.stoneProclamation,
-  stone_town: "석조 도시가 선포되었습니다",
+  stone_town: ERA_CONSOLE_COPY.stoneTownProclaimed,
 } as const satisfies Record<Era, string>;
 
 /** Current settlement stage label, from the scenario's stage names (B2). */
@@ -192,10 +193,10 @@ export function EraConsole({
   return (
     <section className="era-console" aria-label={KO_UI.eraConsole}>
       <header className="era-console__header">
-        <span className="era-console__kicker">현재 시대</span>
+        <span className="era-console__kicker">{ERA_CONSOLE_COPY.currentEra}</span>
         <strong>{model.currentEraLabel}</strong>
       </header>
-      <dl className="era-requirements" aria-label="시대 요구 조건">
+      <dl className="era-requirements" aria-label={ERA_CONSOLE_COPY.requirementsLabel}>
         {model.requirements.map((requirement) => (
           <div
             className={requirement.met ? "era-requirement era-requirement--met" : "era-requirement"}
@@ -217,12 +218,12 @@ export function EraConsole({
         </p>
       ) : null}
       {model.proposal.visible && model.predictionLines.length > 0 ? (
-        <ul className="era-proposal-lines" aria-label="목책 공사 예측">
+        <ul className="era-proposal-lines" aria-label={ERA_CONSOLE_COPY.palisadePrediction}>
           {model.predictionLines.map(line => <li className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`} key={line.id}>{line.text}</li>)}
         </ul>
       ) : null}
       {model.projectLines.length > 0 ? (
-        <ul className="era-project-lines" aria-label="석벽 사업 재원 예측">
+        <ul className="era-project-lines" aria-label={ERA_CONSOLE_COPY.stoneProjectPrediction}>
           {model.projectLines.map(line => <li className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`} key={line.id}>{line.text}</li>)}
         </ul>
       ) : null}
@@ -243,11 +244,11 @@ export function EraConsole({
       {model.wallProgress === null ? null : <p className="era-wall-progress">{model.wallProgress}</p>}
       {model.diagnostic === null ? null : <p className="era-diagnostic">{model.diagnostic}</p>}
       {model.wallProgress !== null && onPriorityChange !== undefined ? (
-        <div className="era-wall-priority" role="group" aria-label="성벽 공사 자재 우선순위">
+        <div className="era-wall-priority" role="group" aria-label={ERA_CONSOLE_COPY.wallPriorityLabel}>
           <Button type="button" aria-pressed={priority === 'balanced'}
-            onPress={() => onPriorityChange('balanced')} variant="secondary">{priority === 'balanced' ? <UiIcon sheet="prediction" cell="ok" /> : null}균형 · 25% 비축</Button>
+            onPress={() => onPriorityChange('balanced')} variant="secondary">{priority === 'balanced' ? <UiIcon sheet="prediction" cell="ok" /> : null}{ERA_CONSOLE_COPY.priorityBalanced}</Button>
           <Button type="button" aria-pressed={priority === 'priority'}
-            onPress={() => onPriorityChange('priority')} variant="secondary">{priority === 'priority' ? <UiIcon sheet="prediction" cell="ok" /> : null}공사 우선</Button>
+            onPress={() => onPriorityChange('priority')} variant="secondary">{priority === 'priority' ? <UiIcon sheet="prediction" cell="ok" /> : null}{ERA_CONSOLE_COPY.priorityConstruction}</Button>
           {model.reserveDeadlock && priority === 'balanced' ? (
             <Button type="button" onPress={() => onPriorityChange('priority')} variant="secondary">{CONSTRUCTION_DEADLOCK_COPY.action}</Button>
           ) : null}
@@ -293,7 +294,7 @@ function actionReason(input: {
   readonly state: GameState;
   readonly draft: PalisadeDraftState | null;
 }): string | null {
-  if (input.state.era === "stone_town") return "이미 석조 도시가 선포되었습니다";
+  if (input.state.era === "stone_town") return ERA_CONSOLE_COPY.stoneTownAlreadyProclaimed;
   if (input.state.era === "palisade" && !stoneWallProjectAvailable(input.state)) return SCENARIO_COPY.stoneWallClosed;
   if (input.firstUnmet !== null) {
     return WALL_COPY.requirementProgress(input.firstUnmet.label, input.firstUnmet.current, input.firstUnmet.target);
@@ -308,8 +309,8 @@ function actionLabel(input: {
   readonly state: GameState;
   readonly draft: PalisadeDraftState | null;
 }): string {
-  if (input.state.era === "palisade") return "석조 도시 선포";
-  if (input.state.era === "stone_town") return "석조 도시 선포 완료";
+  if (input.state.era === "palisade") return ERA_CONSOLE_COPY.proclaimStoneTown;
+  if (input.state.era === "stone_town") return ERA_CONSOLE_COPY.stoneTownProclamationDone;
   return input.draft === null ? WALL_COPY.drawTool : input.draft.candidate === null ? WALL_COPY.closeDraft : WALL_COPY.confirm;
 }
 

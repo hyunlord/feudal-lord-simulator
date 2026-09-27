@@ -1,0 +1,47 @@
+CODE-1c part A: non-ko source files that still hold Korean literals after the move (sorted by count)
+Same scan as korean-literals-moved.txt (lines with a Korean syllable in non-comment code; *.ko.ts and *generated* excluded).
+Scope column: render/UI = this session may move them later; other = owned by the engine/content sessions or by the agent
+rewriting App/gameStore/GameCanvas/canvasRuntime/SpeedControls (not touched here).
+
+count	scope	file
+92	other	src/content/portraitPool.ts
+17	other	src/engine/houseMerge.ts
+15	other	src/content/buildingConfig.ts
+10	render/UI (dev probe, skipped)	src/render/renderStageProbe.ts
+9	render/UI	src/ui/problemCauseModel.ts
+8	render/UI	src/ui/constructionAccessModel.ts
+8	render/UI	src/ui/predictionRegistry.ts
+7	other	src/engine/era.ts
+7	render/UI	src/ui/placementPrediction.ts
+6	other	src/engine/settlementView.ts
+6	other	src/population/marketAccess.ts
+6	render/UI	src/ui/eraCeremonyModel.tsx
+5	other	src/content/housingConfig.ts
+5	other	src/economy/construction.ts
+5	render/UI	src/ui/aTriplePrimeRoadCopy.ts
+5	render/UI	src/ui/wallPrediction.ts
+4	other	src/population/houseCondition.ts
+4	render/UI	src/render/roadInteractionAttempts.ts
+4	render/UI	src/ui/aTriplePrimeWallCopy.ts
+4	render/UI	src/ui/autoplayPresentation.ts
+4	render/UI	src/ui/EconomyOverlayControls.tsx
+4	render/UI	src/ui/InfoPanel.tsx
+4	render/UI	src/ui/populationEventModel.ts
+4	other	src/ui/SpeedControls.tsx
+3	render/UI	src/render/BuildingInspector.tsx
+3	render/UI	src/ui/CauseLegend.tsx
+3	render/UI	src/ui/distributorMissedRouteReason.ts
+3	render/UI	src/ui/PopulationEventPanel.tsx
+3	render/UI	src/ui/PredictionPanel.tsx
+2	other	src/economy/constructionSiteAccessors.ts
+2	render/UI	src/ui/buildMenuPresentation.ts
+1	other	src/economy/palisadeConstruction.ts
+1	other	src/engine/roadAccess.ts
+1	render/UI	src/render/drawPalisadeConstructionSites.ts
+1	render/UI	src/render/interactions.ts
+1	render/UI	src/render/townLandscape.ts
+1	render/UI	src/ui/alertStackModel.ts
+1	render/UI	src/ui/eraConsoleModel.ts
+1	render/UI	src/ui/onboardingHouseGuidance.ts
+
+Total: 270 lines in 39 files (before: 632 lines in 59 files).

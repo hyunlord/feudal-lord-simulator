@@ -1,6 +1,7 @@
 import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
 import { storageOverflowCause } from './storageOverflowModel';
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
+import { HOUSE_PROGRESS_COPY } from './houseProgressCopy.ko';
 import { operationSuspended, BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { HOUSING_CONFIG, type HousingRequirement } from '../content/housingConfig';
 import type { GameState } from '../engine/engine.types';
@@ -52,12 +53,12 @@ function serviceBlocker(state: GameState, home: Building, service: HouseholdServ
   const eligible = providers.find(b => !operationSuspended(b) && buildingFootprintDistance(home, b) <= definition.serviceRadius
     && b.workers >= definition.workersRequired && (!config.roadRequired || road(home, b)));
   const allocation = eligible === undefined ? undefined : householdServices(state).providers.get(eligible.id);
-  const usage = allocation === undefined ? '' : ` · 담당 ${allocation.used}/${allocation.capacity}필지`;
+  const usage = allocation === undefined ? '' : HOUSE_PROGRESS_COPY.serviceUsage(allocation.used, allocation.capacity);
   const distance = eligible === undefined ? diagnosis.distance : buildingFootprintDistance(home, eligible);
   return {
     causeId: diagnosis.kind === 'paused' ? 'operation_paused' : diagnosis.kind === 'unreachable' ? 'delivery' : diagnosis.kind === 'understaffed' ? 'workers' : service,
     requirement: service, reason: diagnosis.kind,
-    label: `${diagnosis.label}${usage}${['capacity', 'understaffed', 'unreachable'].includes(diagnosis.kind) && Number.isFinite(distance) ? ` · 거리 ${distance} / 범위 ${diagnosis.serviceRadius}` : ''}`,
+    label: `${diagnosis.label}${usage}${['capacity', 'understaffed', 'unreachable'].includes(diagnosis.kind) && Number.isFinite(distance) ? HOUSE_PROGRESS_COPY.serviceRange(distance, diagnosis.serviceRadius) : ''}`,
     ...(eligible === undefined ? {} : { providerId: eligible.id }),
     ...(allocation === undefined ? {} : { used: allocation.used, capacity: allocation.capacity }),
     sources: [buildingSource(home.id)],
@@ -78,9 +79,9 @@ function requirementBlockers(state: GameState, house: House, home: Building, roa
   const deliveryDistance = Math.min(...deliveryDistances);
   const breadReason = granaries.length === 0 ? 'no_granary' : stocked.length === 0 ? 'granary_empty'
     : deliveryDistances.length === 0 ? 'road_disconnected' : deliveryDistance > BALANCE.DISTRIBUTOR_RANGE ? 'delivery_range' : 'awaiting_delivery';
-  const breadLabels = { no_granary: '빵이 없고 배급할 곡창이 없습니다', granary_empty: '빵이 없고 곡창의 빵 재고가 없습니다',
-    awaiting_delivery: '집에 빵이 없습니다 — 배급을 기다립니다', road_disconnected: '집에 빵이 없습니다 — 곡창의 배급 출구에서 도달할 수 없습니다',
-    delivery_range: `빵 배급 범위 밖입니다 — 도로거리 ${deliveryDistance} / 범위 ${BALANCE.DISTRIBUTOR_RANGE}` } as const;
+  const breadLabels = { no_granary: HOUSE_PROGRESS_COPY.breadNoGranary, granary_empty: HOUSE_PROGRESS_COPY.breadGranaryEmpty,
+    awaiting_delivery: HOUSE_PROGRESS_COPY.breadAwaitingDelivery, road_disconnected: HOUSE_PROGRESS_COPY.breadRoadDisconnected,
+    delivery_range: HOUSE_PROGRESS_COPY.breadDeliveryRange(deliveryDistance, BALANCE.DISTRIBUTOR_RANGE) } as const;
   const protection = palisadeProtectionForBuilding(home, state.palisade);
   return {
     water: serviceBlocker(state, home, 'water', road),
@@ -89,14 +90,14 @@ function requirementBlockers(state: GameState, house: House, home: Building, roa
       causeId: 'operation_paused', requirement: 'granary', reason: 'paused', label: BUILDING_OPERATION_COPY.paused, sources: [buildingSource(home.id)],
     } : {
       causeId: 'delivery', requirement: 'granary', reason: 'granary_proximity',
-      label: Number.isFinite(nearest) ? `가까운 곡창이 필요합니다 — 거리 ${nearest} / 범위 ${HOUSING_CONFIG[3].granaryRadius}` : '가까운 곡창이 필요합니다',
+      label: Number.isFinite(nearest) ? HOUSE_PROGRESS_COPY.granaryNeededAt(nearest, HOUSING_CONFIG[3].granaryRadius) : HOUSE_PROGRESS_COPY.granaryNeeded,
       ...(Number.isFinite(nearest) ? { distance: nearest } : {}),
       sources: [buildingSource(home.id)],
     },
     market: serviceBlocker(state, home, 'market', road),
     church: serviceBlocker(state, home, 'church', road),
     protected: protection === 'inside' ? null : { causeId: 'wall', requirement: 'protected', reason: protection,
-      label: protection === 'outside' ? '완성된 성벽 밖에 있습니다' : '완성된 성벽의 보호가 필요합니다', sources: [buildingSource(home.id)] },
+      label: protection === 'outside' ? HOUSE_PROGRESS_COPY.outsideWall : HOUSE_PROGRESS_COPY.wallNeeded, sources: [buildingSource(home.id)] },
   };
 }
 function firstRequirement(requirements: readonly HousingRequirement[], blockers: Readonly<Record<HousingRequirement, CauseDetail | null>>): CauseDetail | null {
@@ -126,8 +127,8 @@ function deriveHouse(state: GameState, house: House, home: Building, road: RoadS
   const remainingTicks = ready && requiredTicks !== null ? requiredTicks - progressTicks : null;
   const remainingSeconds = remainingTicks === null ? 0 : Math.ceil(remainingTicks / BALANCE.TICKS_PER_SECOND);
   const remainingLabel = `${Math.floor(remainingSeconds / 60)}:${String(remainingSeconds % 60).padStart(2, '0')}`;
-  const summary = risk ? `생활 L${house.level} 유지 위험 · ${blocker?.label ?? ''}` : ready ? `L${nextLevel} ${nextName ?? ''} 승급 대기 · ${remainingLabel} 남음`
-    : blocker === null ? `생활 L${house.level} 유지 중` : `L${nextLevel} ${nextName ?? ''} 필요 · ${blocker.label}`;
+  const summary = risk ? HOUSE_PROGRESS_COPY.riskSummary(house.level, blocker?.label ?? '') : ready ? HOUSE_PROGRESS_COPY.readySummary(nextLevel, nextName ?? '', remainingLabel)
+    : blocker === null ? HOUSE_PROGRESS_COPY.steadySummary(house.level) : HOUSE_PROGRESS_COPY.blockedSummary(nextLevel, nextName ?? '', blocker.label);
   return { buildingId: home.id, name, currentLevel: house.level, nextLevel, status, blocker, summary,
     progressTicks, requiredTicks, remainingTicks };
 }
@@ -141,15 +142,15 @@ function deriveFacility(state: GameState, building: Building): BuildingCausePres
   const overflow = storageOverflowCause(building);
   if (overflow !== null) return { buildingId: building.id, name: definition.name, status: 'blocked', blocker: overflow, summary: overflow.label };
   const marker = problemMarkerKind({ kind: building.kind, visualState: buildBuildingVisualState(building, []) });
-  if (marker === null) return { buildingId: building.id, name: definition.name, status: 'normal', blocker: null, summary: `${definition.name} 운영 정보` };
+  if (marker === null) return { buildingId: building.id, name: definition.name, status: 'normal', blocker: null, summary: HOUSE_PROGRESS_COPY.facilityInfo(definition.name) };
   const road = buildingHasRequiredRoadAccess(state, building);
   const operation = definition.production === null ? (!road ? 'no_road' : building.workers < definition.workersRequired ? 'understaffed' : 'working')
     : productionOperation(building, definition, road);
-  const label = buildingProblemCause(state, building.id) ?? (operation === 'no_road' ? '운영에 필요한 도로가 없습니다'
-    : operation === 'understaffed' ? `일꾼 부족 — ${building.workers}/${definition.workersRequired}명` : '');
+  const label = buildingProblemCause(state, building.id) ?? (operation === 'no_road' ? HOUSE_PROGRESS_COPY.noRoad
+    : operation === 'understaffed' ? HOUSE_PROGRESS_COPY.understaffed(building.workers, definition.workersRequired) : '');
   const blocker: CauseDetail | null = marker !== null ? { causeId: marker === 'labour' ? 'workers' : marker === 'bread' ? 'bread' : 'delivery', requirement: 'production', reason: operation, label, sources: [buildingSource(building.id)] } : null;
   return { buildingId: building.id, name: definition.name, status: blocker === null ? 'normal' : 'blocked', blocker,
-    summary: blocker === null ? `${definition.name} 운영 중` : `${definition.name} · ${blocker.label}` };
+    summary: blocker === null ? HOUSE_PROGRESS_COPY.facilityRunning(definition.name) : HOUSE_PROGRESS_COPY.facilityBlocked(definition.name, blocker.label) };
 }
 
 /** Presentation only. Immutable identity also invalidates paused road and staffing edits. */

@@ -3,7 +3,7 @@ import { palisadePerimeterSteps, type PalisadePath } from '../world/palisadeGeom
 import { placementSpendableResource } from '../world/placement';
 import { previewPalisadeDraftRouteAccess, previewPalisadeRouteAccess, type PalisadeRouteAccess } from '../engine/palisadeRouteAccess';
 import { A_TRIPLE_PRIME_WALL_COPY } from './aTriplePrimeWallCopy';
-import { A_QUADRUPLE_PRIME_WALL_COPY } from './aQuadruplePrimeWallCopy';
+import { WALL_DRAFT_COPY } from './wallDraftCopy.ko';
 import { suggestedConstructionRoad } from './constructionAccessModel';
 import { getTile } from '../world/grid';
 import type { PredictionLine } from './predictionTypes';
@@ -68,7 +68,7 @@ function predictionLines(state: GameState, path: PalisadePath, access: PalisadeR
   }
   if (access.provisional) {
     lines.push({ id: 'route-provisional', severity: unreachable > 0 ? 'warn' : 'info', sources: [],
-      text: A_QUADRUPLE_PRIME_WALL_COPY.provisionalRoute(unreachable) });
+      text: WALL_DRAFT_COPY.provisionalRoute(unreachable) });
   }
   if (unreachable > 0 && !access.provisional) {
     lines.push({ id: 'no-route', severity: 'warn', sources: [], text: WALL_CARRY_COPY.unreachable(unreachable) });
@@ -76,8 +76,8 @@ function predictionLines(state: GameState, path: PalisadePath, access: PalisadeR
   if (unreachable > 0) {
     const roadTiles = nearestWallAnchorCandidate(access)?.roadTiles ?? null;
     lines.push({ id: 'road-length', severity: 'warn', sources: [], text: roadTiles === null
-      ? A_QUADRUPLE_PRIME_WALL_COPY.noConnectingRoad
-      : A_QUADRUPLE_PRIME_WALL_COPY.connectingRoads(roadTiles) });
+      ? WALL_DRAFT_COPY.noConnectingRoad
+      : WALL_DRAFT_COPY.connectingRoads(roadTiles) });
   }
   if (access.unavailableSiteIds.length > 0) {
     lines.push({ id: 'no-source', severity: 'warn', sources: [],

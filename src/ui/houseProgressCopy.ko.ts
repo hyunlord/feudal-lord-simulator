@@ -1,0 +1,23 @@
+// Player-facing copy of the house progress and facility cause presentation (blocker labels and summaries).
+export const HOUSE_PROGRESS_COPY = {
+  serviceUsage: (used: number, capacity: number) => ` · 담당 ${used}/${capacity}필지`,
+  serviceRange: (distance: number, radius: number) => ` · 거리 ${distance} / 범위 ${radius}`,
+  breadNoGranary: '빵이 없고 배급할 곡창이 없습니다',
+  breadGranaryEmpty: '빵이 없고 곡창의 빵 재고가 없습니다',
+  breadAwaitingDelivery: '집에 빵이 없습니다 — 배급을 기다립니다',
+  breadRoadDisconnected: '집에 빵이 없습니다 — 곡창의 배급 출구에서 도달할 수 없습니다',
+  breadDeliveryRange: (distance: number, range: number) => `빵 배급 범위 밖입니다 — 도로거리 ${distance} / 범위 ${range}`,
+  granaryNeededAt: (distance: number, radius: number) => `가까운 곡창이 필요합니다 — 거리 ${distance} / 범위 ${radius}`,
+  granaryNeeded: '가까운 곡창이 필요합니다',
+  outsideWall: '완성된 성벽 밖에 있습니다',
+  wallNeeded: '완성된 성벽의 보호가 필요합니다',
+  riskSummary: (level: number, blocker: string) => `생활 L${level} 유지 위험 · ${blocker}`,
+  readySummary: (nextLevel: number | null, nextName: string, remaining: string) => `L${nextLevel} ${nextName} 승급 대기 · ${remaining} 남음`,
+  steadySummary: (level: number) => `생활 L${level} 유지 중`,
+  blockedSummary: (nextLevel: number | null, nextName: string, blocker: string) => `L${nextLevel} ${nextName} 필요 · ${blocker}`,
+  facilityInfo: (name: string) => `${name} 운영 정보`,
+  noRoad: '운영에 필요한 도로가 없습니다',
+  understaffed: (workers: number, required: number) => `일꾼 부족 — ${workers}/${required}명`,
+  facilityRunning: (name: string) => `${name} 운영 중`,
+  facilityBlocked: (name: string, blocker: string) => `${name} · ${blocker}`,
+} as const;

@@ -27,6 +27,17 @@ export const BUILD_MENU_COPY = {
   lockedBadge: "잠김",
   undo: "되돌리기",
   undoHint: "마지막 공사를 취소합니다",
+  currentTask: "현재 과업",
+  toolsLabel: (group: string) => `${group} 도구`,
+  pathsHint: "드래그로 길을 연결하세요. 강 양쪽을 직선으로 이으면 목교를 놓습니다.",
+  bridgeHint: "다리는 물 한 칸당 목재 4, 최대 8칸입니다. 다리나 접속 길을 누르면 다리 전체를 걷습니다.",
+  keepLocked: "성채는 석조 도시에서 건설할 수 있습니다.",
+  radius: (radius: number) => `반경 ${radius}칸`,
+  capacity: (capacity: number) => `수용 ${capacity}필지`,
+  toolDetailToggle: "선택 도구 상세 안내",
+  detailsLabel: "건설 안내",
+  noToolSelected: "선택 도구 없음 · 건설 카드를 눌러 도구를 선택하세요.",
+  shortfall: (resource: string, spendable: number, cost: number) => `${resource} 부족 ${spendable}/${cost}`,
 } as const;
 
 // Build menu model (tool groups, tool purposes, requirement and tooltip lines).

@@ -34,21 +34,21 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
   const bread = state.houses.reduce((total, house) => total + house.breadStock, 0);
   const ration = state.houses.reduce((total, house) => total + (house.residents > 0 ? houseFoodRation(house) : 0), 0);
   const scenario = scenarioOf(state);
-  const title = view.outcome === "abandoned" ? "정착지가 비었습니다"
-    : view.outcome === "victory" ? SCENARIO_COPY.victoryTitle(SCENARIO_COPY.objectives.prosperity.title) : goal?.title ?? "영지의 기록";
+  const title = view.outcome === "abandoned" ? SETTLEMENT_PANEL_COPY.abandonedTitle
+    : view.outcome === "victory" ? SCENARIO_COPY.victoryTitle(SCENARIO_COPY.objectives.prosperity.title) : goal?.title ?? SETTLEMENT_PANEL_COPY.recordTitle;
   const milestoneTotal = scenario.objectives.length + (scenario.victory === null ? 0 : 1);
   const stoneReserve = scenario.walls.stoneWall === "off" ? undefined
     : scenario.walls.stoneWallPrereq?.all.find(condition => condition.kind === "spendable_resource_at_least" && condition.resource === "stone");
-  return <section className={`settlement-progress${highlight ? " settlement-progress--changed" : ""}`} aria-label="영지 목표와 수급">
+  return <section className={`settlement-progress${highlight ? " settlement-progress--changed" : ""}`} aria-label={SETTLEMENT_PANEL_COPY.regionLabel}>
     <Disclosure onToggle={open => setExpanded(open)}
-      summary={<><strong>{title} · 도시 발전 조건</strong><span>물·빵 {view.metrics.suppliedHouses}/{view.metrics.occupiedHouses}가구</span><span className="settlement-disclosure">{expanded ? "접기" : "펼치기"}</span></>}>
+      summary={<><strong>{SETTLEMENT_PANEL_COPY.summaryTitle(title)}</strong><span>{SETTLEMENT_PANEL_COPY.suppliedHouses(view.metrics.suppliedHouses, view.metrics.occupiedHouses)}</span><span className="settlement-disclosure">{expanded ? SETTLEMENT_PANEL_COPY.collapse : SETTLEMENT_PANEL_COPY.expand}</span></>}>
       <div className="settlement-progress-body">
         <p className="settlement-calendar">{calendarLabel(state)} · {SCENARIO_COPY.eraLabel(historicalEra(state).name)}</p>
         <p>{SETTLEMENT_PANEL_COPY.householdBread(bread, calendarDays(HOUSE_FOOD_INTERVAL), ration)}</p>
-        <p>가구별 세 끼를 비축합니다. 가구가 늘면 경작지·방앗간·배급 길도 함께 늘리세요.</p>
+        <p>{SETTLEMENT_PANEL_COPY.larderRule}</p>
         {goal === null ? <p>{view.mode === "sandbox" ? SCENARIO_COPY.sandboxGoal : SCENARIO_COPY.allGoalsDone}</p> : <>
           <ul>{goal.criteria.map(item => <li key={item.id}>
-            <span>{humanizeTicks(item.label)}</span><strong>{Math.floor(item.current)}/{item.target}{item.met ? " 충족" : ""}</strong>
+            <span>{humanizeTicks(item.label)}</span><strong>{Math.floor(item.current)}/{item.target}{item.met ? SETTLEMENT_PANEL_COPY.met : ""}</strong>
           </li>)}</ul>
           {goal.requiredHoldTicks > 0 ? <label className="settlement-hold">
             {SETTLEMENT_PANEL_COPY.hold(durationLabel(goal.holdTicks), durationLabel(goal.requiredHoldTicks))}
@@ -62,13 +62,13 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
       </div>
     </Disclosure>
     <div className="settlement-crisis-slot" aria-live="polite">
-      {view.crisis === "food_shortage" ? <p className="settlement-crisis" role="status">배급 부족이 이어집니다. 경작지·방앗간의 일손과 곡창에서 집까지의 길을 확인하세요.</p> : null}
+      {view.crisis === "food_shortage" ? <p className="settlement-crisis" role="status">{SETTLEMENT_PANEL_COPY.foodShortage}</p> : null}
       {view.crisis === "abandonment_risk" && view.outcome !== "abandoned" ? <p className="settlement-crisis" role="status">{SETTLEMENT_PANEL_COPY.abandonmentRisk(durationLabel(SETTLEMENT_CONFIG.abandonmentTicks - view.progress.emptyTicks))}</p> : null}
     </div>
     {view.outcome === "abandoned" ? <div className="settlement-restart">
-      <p>주민 없는 상태가 이어져 영지 운영이 멈췄습니다.</p>
-      {confirmRestart ? <><p>현재 영지를 끝내고 처음부터 시작합니다.</p><Button type="button" onPress={() => onRestart()} variant="secondary">처음부터 시작</Button><Button type="button" onPress={() => setConfirmRestart(false)} variant="secondary">취소</Button></>
-        : <Button type="button" onPress={() => setConfirmRestart(true)} variant="secondary">새 영지 시작</Button>}
+      <p>{SETTLEMENT_PANEL_COPY.stopped}</p>
+      {confirmRestart ? <><p>{SETTLEMENT_PANEL_COPY.restartConfirm}</p><Button type="button" onPress={() => onRestart()} variant="secondary">{SETTLEMENT_PANEL_COPY.restart}</Button><Button type="button" onPress={() => setConfirmRestart(false)} variant="secondary">{SETTLEMENT_PANEL_COPY.cancel}</Button></>
+        : <Button type="button" onPress={() => setConfirmRestart(true)} variant="secondary">{SETTLEMENT_PANEL_COPY.newSettlement}</Button>}
     </div> : null}
   </section>;
 }
