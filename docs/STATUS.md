@@ -13,7 +13,7 @@
   - 주민 표현 워커는 `render/presentation`(state가 ui를 가져오지 않음). App 821 → 555줄: `ui/stateMachine`·`ui/screens`·`input/useAppIntents`.
   - 문구 상위 20파일 `*.ko.ts`로(남은 목록은 CODE-1b 재료), 실제 시계 시험 셋은 가짜 시계, 시간 예산 둘(H8·CHRON-1)은 최선값으로 남김.
   - 주의: 면적 한 번 6.1 % / 6 %(1280 평소) — 세 번 다시 재면 5.9 %(본선과 같음).
-  - CLONE_NOTE
+  - 검증: DGX 전체 회귀 3,236/3,236(C25 재기록 없음), 스킨 감사 0 / 714, UX-3 회귀 세트, 깨끗한 클론 `9ff76d5` 3,236/3,236·build.
 
 - **RES-REG 자원 목록을 한 곳으로 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 렌더·UI·content·스크립트·시험·문서, 엔진 파일 셋은 목록 조회만·규칙 0줄, 검증 DGX, 사용자 지시): [보고서](verification/resreg/REPORT.md), 결정 RESREG-D1~D5.
   - 자원은 `src/content/resourceCatalog.ts` 한 줄 + `.ko.ts` 이름 한 줄이다. `ResourceType`·저장 가능 목록·창고 종류와 흩어진 전수 표 29개 파일이 목록에서 나온다.
