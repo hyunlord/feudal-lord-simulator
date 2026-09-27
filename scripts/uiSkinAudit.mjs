@@ -157,17 +157,18 @@ await step('pause', async () => {
   await context.close();
 });
 
-// The petition card and the famine decision (seed 2 chapter 1).
+// The petition card and the famine decision (seed 2 chapter 1). The story waits 5 s: openScene's opening Escape closes
+// a card that opened sooner (as a player's Escape does), and the fallback chip may be another event's.
 await step('petition', async () => {
   const state = load('petition-open');
-  const { context, page } = await scene('petition-open', houseTile(state));
+  const { context, page } = await scene('petition-open', houseTile(state), { query: '&story-delay=5000' });
   await storyModal(page, '.petition-card', 'x-petition-timeout.jpg'); await pause(600);
   await audit('petition', page, 's13-petition.jpg');
   await context.close();
 });
 await step('decision', async () => {
   const state = load('famine-arrival');
-  const { context, page } = await scene('famine-arrival', houseTile(state));
+  const { context, page } = await scene('famine-arrival', houseTile(state), { query: '&story-delay=5000' });
   await storyModal(page, '.famine-decision', 'x-decision-timeout.jpg'); await pause(800);
   await audit('decision', page, 's14-decision.jpg');
   await context.close();
