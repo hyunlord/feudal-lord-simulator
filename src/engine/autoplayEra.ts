@@ -26,16 +26,22 @@ export function wallInteriorCells(state: GameState): number {
 }
 
 /**
- * FIX-5 (WR-11): the stone-wall variant's own step — a quarry, then a masonry, then the stone proclamation as soon as
- * its conditions hold. Unlike the era phase it does not wait for every building site to finish (a growing town always
- * has one, which kept the variant's stone project behind the houses in its first run).
+ * FIX-5 (WR-11): the stone-wall variant's own step — two quarries and two masonries, then the stone proclamation as
+ * soon as its conditions hold. Unlike the era phase it does not wait for every building site to finish (a growing town
+ * always has one, which kept the variant's stone project behind the houses in its first run); the second pair doubles
+ * the stone (one pair made about five a thousand ticks, too few for 400 by 1340 in four seeds of five).
  */
+export const STONE_PROJECT_PAIRS = 2;
 export function stoneProjectAction(state: GameState, buildAction: (state: GameState, kind: BuildingKind) => AutoplayAction): AutoplayAction {
   if (state.era !== "palisade") return NONE;
-  for (const kind of ["quarry", "masonry"] as const) {
-    if (hasBuiltOrPlannedBuilding(state, kind)) continue;
-    const action = buildAction(state, kind);
-    return action.kind === "none" ? NONE : action;
+  const count = (kind: BuildingKind) => state.buildings.filter(building => building.kind === kind).length
+    + state.constructionSites.filter(site => isBuildingConstructionSite(site) && site.kind === kind).length;
+  for (let pair = 1; pair <= STONE_PROJECT_PAIRS; pair += 1) {
+    for (const kind of ["quarry", "masonry"] as const) {
+      if (count(kind) >= pair) continue;
+      const action = buildAction(state, kind);
+      if (action.kind !== "none") return action;
+    }
   }
   return evaluateEraRequirements(state).every(requirement => requirement.met) ? { kind: "proclaim_era" } : NONE;
 }
