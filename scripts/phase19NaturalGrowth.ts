@@ -64,6 +64,8 @@ export function runPhase19NaturalGrowth(options: {
   readonly famineResponse?: import("../src/content/chapterConfig").FamineResponseChoice;
   /** FAIL-3 gate (FL-12): the naive variant that ignores its debts (`AutoplayPolicy.naiveUpkeep`). */
   readonly naiveUpkeep?: boolean;
+  /** F2-A gate (WR-10): the wall-or-market answer fixed (`AutoplayPolicy.wallChoice`). */
+  readonly wallChoice?: "wall" | "market";
   readonly additionalAcceptance?: (state: GameState) => boolean;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
@@ -74,7 +76,8 @@ export function runPhase19NaturalGrowth(options: {
   const policy = { maxHousingLots: targetLots, ...(options.naiveReserve === true ? { naiveReserve: true } : {}),
     ...(options.noWells === true ? { noWells: true } : {}),
     ...(options.famineResponse === undefined ? {} : { famineResponse: options.famineResponse }),
-    ...(options.naiveUpkeep === true ? { naiveUpkeep: true } : {}) };
+    ...(options.naiveUpkeep === true ? { naiveUpkeep: true } : {}),
+    ...(options.wallChoice === undefined ? {} : { wallChoice: options.wallChoice }) };
   const source = provenance();
   const started = performance.now();
   const opening = createGrowthOpening(seed);
