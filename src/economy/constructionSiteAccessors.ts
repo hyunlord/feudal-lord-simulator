@@ -34,6 +34,7 @@ export function isBuildingConstructionSite(
     case "market":
     case "church":
     case "keep":
+    case "malt_kiln":
       return true;
     default:
       return assertNever(site);
@@ -72,6 +73,7 @@ export function constructionSiteAnchor(site: ConstructionSite): TileCoordinate {
     case "market":
     case "church":
     case "keep":
+    case "malt_kiln":
       return { tx: site.tx, ty: site.ty };
     default:
       return assertNever(site);
@@ -118,7 +120,8 @@ export function constructionSiteFootprint(site: ConstructionSite): ConstructionS
     case "masonry":
     case "market":
     case "church":
-    case "keep": {
+    case "keep":
+    case "malt_kiln": {
       const definition = BUILDING_CONFIG_BY_KIND[site.kind];
       return { tx: site.tx, ty: site.ty, width: definition.width, height: definition.height };
     }
@@ -148,6 +151,7 @@ export function constructionSiteDisplayName(site: ConstructionSite): string {
     case "market":
     case "church":
     case "keep":
+    case "malt_kiln":
       return BUILDING_CONFIG_BY_KIND[site.kind].name;
     default:
       return assertNever(site);
@@ -181,6 +185,7 @@ export function constructionSiteCacheKey(site: ConstructionSite): string {
     case "market":
     case "church":
     case "keep":
+    case "malt_kiln":
       return `${site.kind}:${site.id}:${site.tx}:${site.ty}`;
     default:
       return assertNever(site);

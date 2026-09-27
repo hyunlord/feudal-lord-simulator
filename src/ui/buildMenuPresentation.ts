@@ -27,7 +27,7 @@ export function buildCategorySelection(category: BuildCategory): PlacementTool |
 export function buildCategory(tool: PlacementTool): BuildCategory {
   const categories = {
     house: "living", well: "living", road: "paths",
-    wheat_farm: "trade", farmstead: "trade", mill: "trade", logging_camp: "trade", sawmill: "trade", quarry: "trade", masonry: "trade",
+    wheat_farm: "trade", farmstead: "trade", mill: "trade", malt_kiln: "trade", logging_camp: "trade", sawmill: "trade", quarry: "trade", masonry: "trade",
     storehouse: "storage", granary: "storage", market: "storage",
     chapel: "public", church: "public", keep: "defense",
   } as const satisfies Record<PlacementTool, BuildCategory>;

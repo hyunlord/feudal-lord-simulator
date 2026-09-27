@@ -15,6 +15,7 @@ export const ONBOARDING_BUILDING_TARGET_LABELS = {
   wheat_farm: "여기에 밀밭을 지으세요",
   farmstead: "여기에 헛간을 지으세요",
   mill: "여기에 방앗간을 지으세요",
+  malt_kiln: "여기에 엿기름 가마를 지으세요",
   logging_camp: "여기에 벌목소를 지으세요",
   sawmill: "여기에 제재소를 지으세요",
   quarry: "여기에 채석장을 지으세요",

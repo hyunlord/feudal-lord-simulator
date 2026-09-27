@@ -29,6 +29,7 @@ const VALID_ORIGINS = {
   church: { tx: 27, ty: 1 },
   keep: { tx: 30, ty: 1 },
   farmstead: { tx: 33, ty: 1 },
+  malt_kiln: { tx: 36, ty: 1 },
 } as const satisfies Record<BuildingKind, { readonly tx: number; readonly ty: number }>;
 
 function constructionSites(state: GameState): readonly ConstructionSite[] {

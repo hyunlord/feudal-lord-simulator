@@ -87,7 +87,7 @@ export function historicalFacilityAssetId(building: Building, state?: GameState)
       return productionOperation(building, definition, state !== undefined && buildingHasRequiredRoadAccess(state, building)) === "working"
         ? "quarry_active" : "quarry_idle";
     }
-    case "house": case "well": case "storehouse": case "granary": case "wheat_farm": case "farmstead": case "logging_camp":
+    case "house": case "well": case "storehouse": case "granary": case "wheat_farm": case "farmstead": case "logging_camp": case "malt_kiln":
       return null;
   }
 }

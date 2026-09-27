@@ -8,6 +8,7 @@ export const BUILDING_INSPECTOR_PURPOSE = {
   wheat_farm: "일꾼이 밀을 재배",
   farmstead: "일꾼이 경작지를 갈고 거둔 밀을 보관",
   mill: "밀을 빵으로 가공",
+  malt_kiln: "보리를 엿기름으로 말립니다",
   logging_camp: "숲에서 통나무를 생산",
   sawmill: "통나무를 목재로 가공",
   quarry: "바위에서 원석을 채굴",

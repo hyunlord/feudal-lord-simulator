@@ -17,6 +17,9 @@ export const RESOURCE_COPY = {
   timber: { name: "목재", unit: "단", short: "켠 나무 · 건물과 목책을 짓습니다" },
   stone_raw: { name: "원석", unit: "덩이", short: "채석장에서 캔 돌 · 석공소가 다듬습니다" },
   stone: { name: "석재", unit: "덩이", short: "다듬은 돌 · 돌집과 석벽을 짓습니다" },
+  barley: { name: "보리", unit: "자루", short: "보리 밭에서 거둔 곡식 · 엿기름 가마가 엿기름으로 말립니다" },
+  malt: { name: "엿기름", unit: "자루", short: "싹 틔워 말린 보리 · 집집의 아낙이 에일로 빚습니다" },
+  ale: { name: "에일", unit: "통", short: "홉 없이 빚은 술 · 에일집이 팔고 집집이 마십니다" },
   coin: { name: MONEY_LABEL, unit: "페니", short: "장부에 남는 영지의 돈" },
 } as const satisfies { readonly [K in ResourceType]: ResourceCopy };
 

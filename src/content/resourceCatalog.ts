@@ -10,8 +10,8 @@ import type { SemanticPaletteName } from "./palette";
  * goods; `hudPriority` orders the ledger drawer's stock rows.
  */
 export type ResourceStorage = "granary" | "storehouse" | "none";
-/** 식량 · 원자재 · 가공품 · 돈. */
-export type ResourceGroup = "food" | "raw" | "goods" | "money";
+/** 식량 · 원자재 · 가공품 · 음료 · 돈 (C4, E9.5: the ledger's five groups). */
+export type ResourceGroup = "food" | "raw" | "goods" | "drink" | "money";
 /** Who carries it on the roads (the walker's look): a farmer, a logger, a quarryman or the coin collector. */
 export type ResourceCarrier = "farmer" | "logger" | "quarryman" | "coin_carter";
 /** The Wave 7 cart load (`cart_load_<key>_<axis>`). */
@@ -50,7 +50,11 @@ export const RESOURCE_CATALOG = [
   { id: "timber", storage: "storehouse", group: "goods", hudPriority: 4, carrier: "logger", cartLoadKey: "timber", cartPileKey: "pile_wood_1", iconKey: "timber", sheetCell: "timber", color: "earthDark", bulk: 1 },
   { id: "stone_raw", storage: "storehouse", group: "raw", hudPriority: 5, carrier: "quarryman", cartLoadKey: "rawstone", cartPileKey: "pile_stone_1", iconKey: "stone_raw", color: "stoneDark", bulk: 1 },
   { id: "stone", storage: "storehouse", group: "goods", hudPriority: 6, carrier: "quarryman", cartLoadKey: "stone", cartPileKey: "pile_stone_1", iconKey: "stone", sheetCell: "stone", color: "stone", bulk: 1 },
-  { id: "coin", storage: "none", group: "money", hudPriority: 7, carrier: "coin_carter", iconKey: "coin", sheetCell: "coin", cargoIconCell: "coin", color: "gold", bulk: 1 },
+  // C4 the ale chain: barley from the fields, malt from the kiln, ale brewed in the households (no hops before 1400s).
+  { id: "barley", storage: "granary", group: "raw", hudPriority: 7, carrier: "farmer", cartLoadKey: "grainsack", color: "goldDark", bulk: 1 },
+  { id: "malt", storage: "granary", group: "goods", hudPriority: 8, carrier: "farmer", cartLoadKey: "grainsack", color: "earth", bulk: 1 },
+  { id: "ale", storage: "storehouse", group: "drink", hudPriority: 9, carrier: "farmer", color: "earthDark", bulk: 1 },
+  { id: "coin", storage: "none", group: "money", hudPriority: 10, carrier: "coin_carter", iconKey: "coin", sheetCell: "coin", cargoIconCell: "coin", color: "gold", bulk: 1 },
 ] as const satisfies readonly ResourceEntry[];
 
 type CatalogLine = (typeof RESOURCE_CATALOG)[number];

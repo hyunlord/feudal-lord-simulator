@@ -43,6 +43,7 @@ const TOOL_GROUPS: Record<PlacementTool, BuildToolGroupKey> = {
   wheat_farm: "production",
   farmstead: "production",
   mill: "production",
+  malt_kiln: "production",
   logging_camp: "production",
   sawmill: "production",
   quarry: "production",

@@ -58,6 +58,7 @@ test("BUILDING_CONFIG keeps the construction recipe inputs that the domain model
     market: { timber: 60 },
     church: { timber: 100, stone: 60 },
     keep: { stone: 150 },
+    malt_kiln: { timber: 40 },
   } as const satisfies Record<BuildingKind, object>;
 
   // When
@@ -92,6 +93,7 @@ test("CONSTRUCTION constants pin builder capacity, visibility floor, and require
     market: 700,
     church: 900,
     keep: 1200,
+    malt_kiln: 500,
   } satisfies Record<BuildingKind, number>);
 });
 

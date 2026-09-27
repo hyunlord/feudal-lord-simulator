@@ -17,7 +17,8 @@ export type BuildingKind =
   | "masonry"
   | "market"
   | "church"
-  | "keep";
+  | "keep"
+  | "malt_kiln";
 
 export interface ProductionSpec {
   readonly output: ResourceType;
@@ -63,10 +64,33 @@ export interface Building {
   readonly operationPaused?: boolean;
   /** Save v8: its upkeep is in arrears (money rule M-6); it stands idle exactly like a paused building. */
   readonly upkeepUnpaid?: true;
+  /** C4 (AL-2, save v23): a farmstead's crop for the strips it sows next (absent = wheat). */
+  readonly crop?: FieldCrop;
   readonly inventory: Partial<Record<ResourceType, number>>;
   readonly reserved: Partial<Record<ResourceType, number>>;
   readonly stockReserved: Partial<Record<ResourceType, number>>;
   readonly productionProgress: number;
+}
+
+/** C4 (AL-2): the crops a farmstead's strips can grow. */
+export type FieldCrop = "wheat" | "barley";
+export const FIELD_CROPS: readonly FieldCrop[] = ["wheat", "barley"];
+
+/**
+ * C4 (AL-2): the field good a building's barn holds and hauls — its crop, but the other crop first while any of it is
+ * still in the barn (a farmstead switched to barley still carts out its last wheat).
+ */
+export function fieldOutputResource(building: Pick<Building, "kind" | "crop" | "inventory">): FieldCrop | undefined {
+  if (BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === undefined) return undefined;
+  const crop = building.crop ?? "wheat";
+  const other: FieldCrop = crop === "barley" ? "wheat" : "barley";
+  return (building.inventory[other] ?? 0) > 0 ? other : crop;
+}
+
+/** C4 (AL-2): the building is a barn that holds `resource` (its crop, or the other crop left from before). */
+export function barnHolds(building: Pick<Building, "kind" | "crop" | "inventory">, resource: ResourceType): boolean {
+  if (BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === undefined) return false;
+  return (building.crop ?? "wheat") === resource || (FIELD_CROPS as readonly string[]).includes(resource) && (building.inventory[resource] ?? 0) > 0;
 }
 
 /**
@@ -318,6 +342,20 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     requiresRoad: true,
     production: null,
     storageCapacity: 0,
+    serviceRadius: 0,
+  },
+  // C4 (AL-3): the malt kiln — barley steeped, sprouted and dried over the kiln floor into malt, by labour (no fuel good).
+  malt_kiln: {
+    kind: "malt_kiln",
+    name: "엿기름 가마",
+    width: 2,
+    height: 2,
+    workersRequired: 2,
+    buildCost: { timber: 40 },
+    requiresAdjacentTerrain: null,
+    requiresRoad: true,
+    production: { output: "malt", input: "barley", inputPerOutput: 1, ticksPerOutput: 40, outputHoldLimit: 20 },
+    storageCapacity: 40,
     serviceRadius: 0,
   },
 };

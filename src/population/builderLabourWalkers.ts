@@ -41,6 +41,7 @@ function constructionLabourSiteAnchor(site: ConstructionLabourSite): TileCoordin
     case "market":
     case "church":
     case "keep":
+    case "malt_kiln":
       return { tx: site.tx, ty: site.ty };
   }
 }
