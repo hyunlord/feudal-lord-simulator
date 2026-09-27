@@ -128,6 +128,8 @@ test("UI-6 chapter 2's page: its own range, the war's decisions quoted with thei
   assert.match(view.title, /^제2장 연대기/);
   assert.ok(view.entries.some(entry => entry.illustration === "chronicle_raid" && /해안 습격/.test(entry.sentence)));
   assert.ok(view.entries.some(entry => entry.illustration === "chronicle_beacon"));
+  assert.ok(view.entries.some(entry => entry.sentence === "2장이 끝났다"));
+  assert.ok(view.entries.every(entry => entry.sentence !== "3장이 시작되었다"), "the next chapter's start, on the same tick, is its own page's");
   assert.ok(view.stats.some(line => /^해안 습격\(1339\) 불탄 집 \d+/.test(line)), view.stats.join(" | "));
   assert.ok(view.stats.some(line => /시장을 넓힘$/.test(line)));
   assert.ok(view.stats.every(line => !line.startsWith("대기근")));

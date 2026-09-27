@@ -64,7 +64,9 @@ export function chronicleView(state: GameState): ChronicleView | null {
   const ends = state.politics?.chapterEnds ?? [];
   const from = ends[ends.indexOf(end) - 1]?.tick ?? 0;
   const records = history.query(state, { severity: 1, range: { from, to: end.tick } })
-    .filter(record => record.kind !== "person" && record.kind !== "ledger");
+    .filter(record => record.kind !== "person" && record.kind !== "ledger")
+    // The chapters meet on one tick: the page keeps its own chapter's start and end, not the one before's or after's.
+    .filter(record => !record.template.startsWith("milestone.chapter_") || String(record.params?.chapter ?? end.chapter) === String(end.chapter));
   const chosen = [...records].sort((a, b) => b.severity - a.severity || a.tick - b.tick).slice(0, CHRONICLE_ENTRIES).sort((a, b) => a.tick - b.tick);
   const dateOf = (tick: number) => { const date = history.date({ tick }, state); return CHRONICLE_COPY.date(date.year, date.season); };
   const label = (key: string) => HISTORY_CHOICE_LABELS[key] ?? key;

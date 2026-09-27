@@ -79,12 +79,18 @@ await step("factions", async () => {
   await page.waitForTimeout(1_000);
   await page.locator("[data-dock='ledger']").first().click(); await page.waitForTimeout(500);
   await page.locator(".ledger-tab--chronicle").first().click(); await page.waitForTimeout(1_000);
-  await page.locator("[data-chronicle-tab='factions'], .chronicle-tab--factions").first().click({ timeout: 5_000 }); await page.waitForTimeout(800);
+  await page.evaluate(() => { for (const tab of document.querySelectorAll<HTMLElement>(".chronicle-tab")) if (tab.textContent?.trim() === "세력") tab.click(); });
+  await page.waitForTimeout(800);
   await page.screenshot({ path: join(out!, "f1-faction-tab.jpg"), type: "jpeg", quality: 68 });
-  await page.locator(".chronicle-faction-row, [data-faction-row]").first().click({ timeout: 5_000 }); await page.waitForTimeout(800);
+  const rows = await page.evaluate(() => [...document.querySelectorAll(".chronicle-factions-row")].map(row => ({ faction: row.getAttribute("data-faction"),
+    relation: row.getAttribute("data-relation"), text: row.textContent?.replace(/\s+/g, " ").trim().slice(0, 120) ?? "" })));
+  // The Crown's page: the war's demands, the wool levy's instalments, its remembered records.
+  await page.locator(".chronicle-factions-row[data-faction='crown']").first().click({ timeout: 5_000 }); await page.waitForTimeout(800);
   await page.screenshot({ path: join(out!, "f2-faction-page.jpg"), type: "jpeg", quality: 68 });
-  result.factions = await page.evaluate(() => ({ rows: document.querySelectorAll(".chronicle-faction-row, [data-faction-row]").length,
-    page: document.querySelector(".chronicle-faction")?.getAttribute("data-faction") ?? null }));
+  result.factions = await page.evaluate(() => ({
+    page: document.querySelector(".chronicle-faction")?.getAttribute("data-faction") ?? null,
+    text: document.querySelector(".chronicle-faction")?.textContent?.replace(/\s+/g, " ").trim().slice(0, 400) ?? null }));
+  result.factions = { rows, ...(result.factions as object) };
   await close();
 });
 

@@ -161,7 +161,8 @@ type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map";
 function RightsRegister({ view }: { readonly view: LordshipView }) {
   return (
     <section className="ledger-rights" aria-label={LORDSHIP_COPY.heading} style={wave14FrameStyle("frame_rights_register")}>
-      {/* The register is a book open on two pages: the house and its rights on the left, what it granted and the war on the right. */}
+      {/* The register is a book open on two pages: the house (its arms, title, a decline) on the left, its rights, what it
+          granted and the war on the right. */}
       <div className="ledger-rights-page">
       <header className="ledger-rights-house">
         <EmblemImage emblem={view.arms} size={44} label={view.armsLabel} />
@@ -169,15 +170,15 @@ function RightsRegister({ view }: { readonly view: LordshipView }) {
           {view.pastHouses === null ? null : <p>{view.pastHouses}</p>}</div>
       </header>
       {view.decline === null ? null : <p className="ledger-rights-lost" role="status">{view.decline}</p>}
+      {view.war.length === 0 ? null : <><h4>{LORDSHIP_COPY.warHeading}</h4><ul>{view.war.map(line => <li key={line}>{line}</li>)}</ul></>}
+      </div>
+      <div className="ledger-rights-page">
       <h4>{LORDSHIP_COPY.rightsHeading}</h4>
       <ul className="ledger-rights-list">{view.rights.map(right => (
         <li key={right.id} data-right={right.id} data-lost={right.lost ? "true" : undefined} data-present={right.present ? "true" : "false"}>
           <span aria-hidden="true" style={wave14ImageStyle(right.icon, 32)} /><strong>{right.name}</strong>
           <span className={right.lost ? "ledger-rights-lost" : undefined}>{right.status}{right.since === null ? "" : ` · ${right.since}`}</span></li>))}</ul>
-      </div>
-      <div className="ledger-rights-page">
       {view.granted.length === 0 ? null : <><h4>{LORDSHIP_COPY.grantedHeading}</h4><ul>{view.granted.map(line => <li key={line}>{line}</li>)}</ul></>}
-      {view.war.length === 0 ? null : <><h4>{LORDSHIP_COPY.warHeading}</h4><ul>{view.war.map(line => <li key={line}>{line}</li>)}</ul></>}
       </div>
     </section>
   );
