@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-27 15시 갱신)
+## 3. 현재 장부 요약 (2026-09-27 16시 갱신)
 
 | wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -67,7 +67,7 @@ assets-inbox/
 | `wave2` | 42 | 15 | 27 |  |  |  |  | 27 |
 | `wave20` | 48 | 9 | 27 |  | 12 |  |  | 0 |
 | `wave21` | 90 |  | 66 |  | 24 |  |  | 0 |
-| `wave22` | 103 | 49 | 38 |  | 16 |  |  | 0 |
+| `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
 | `wave4-pilot` | 15 | 3 | 12 |  |  |  |  | 12 |
 | `wave4b` | 57 | 4 | 53 |  |  |  |  | 53 |
@@ -82,7 +82,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3147** | **384** | **1803** | **0** | **158** | **786** | **16** | **956** |
+| **합계** | **3147** | **335** | **1852** | **0** | **158** | **786** | **16** | **956** |
 
 ## 4. 찾는 법
 
@@ -204,7 +204,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 3**: 재작업본 10장 `confirmed`, 해당 v1 10장 `superseded`(→ `wave3/fix-20260926/assets/…`). Wave 3 에셋 82장 확정.
 - **초상 풀 3차**(`portrait-pool/pool3-20260927`): 세력 인물 24명(I101~I124) × 청년·장년·노년 72장 `confirmed`(14시 판정), 확인 그림 5·기록 그림(수정 전 판) 10도 `confirmed`. 풀 합계 304장(파일럿 48·1차 92·2차 92·3차 72). ID로 센 인물은 124명(P01~P36 36명 + I037~I124 88명)이고, README의 "100명"은 청년 비교 격자(풀 88명 + 파일럿 12명) 기준이다. 2차 92장은 아직 `candidate`.
 - **Wave 21**: 58장 확정(15시 판정). 재작업(`wave21/rework-20260927/`) 24장 `confirmed` — `ch3_ending`과 4·5장 23장 — 이고 그 v1 24장은 `superseded`(→ 같은 이름의 재작업본). 바뀌지 않은 원본 34장(3장 18·4장 10·5장 6)은 `confirmed`. 확인 그림은 처음 묶음 5장(`*-contact.png` 2장 포함)과 재작업 3장 모두 `confirmed`. `raw/`는 넣지 않았다.
-- **Wave 22**: 소품 20·전이 띠 10·해안 띠 5 `confirmed`, 지면 fill 15와 `shore/sand_beach_a`는 `rework_pending`(14시 판정). 확인 그림 3 `confirmed`. 재작업(`wave22/rework-20260927/`, 14:36 도착): 지면 fill v2 30장(15종 × a·b)·`sand_beach_a-v2`·새 데칼 15장과 확인 그림 3장, 판정 전이라 `candidate`. 재작업 대기였던 v1 16장은 `superseded`(fill은 a·b 두 장을 `;`로 적음).
+- **Wave 22**: 81장 확정(16시 판정). 처음 묶음의 소품 20·전이 띠 10·해안 띠 5 `confirmed`, 재작업(`wave22/rework-20260927/`, 14:36 도착)의 지면 fill v2 30장(15종 × a·b)·특징 데칼 15·`shore/sand_beach_a-v2` `confirmed`. 옛 fill 15와 `sand_beach_a-v1`은 `superseded`(fill은 a·b 두 장을 `replaced_by`에 `;`로 적음). 확인 그림은 처음 3·재작업 3 모두 `confirmed`. 흩뿌리기 배치 코드(오프라인 결정론 배치 `scatter-v1`)는 `records/proofs.cjs`, 배치 계약 `records/proofs-placement-contract.md`, 결과 좌표 `records/proofs-placement.json`에 있다(게임 코드 아님).
 
 ## 7. 찾지 못한 것
 
