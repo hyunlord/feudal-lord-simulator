@@ -1,11 +1,18 @@
 # 현재 상태
 
-갱신: 2026-09-27(RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-5 가상 이름·실패 사다리 확장·세력 고정값·석벽 완공 경로 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더·UI 0줄, 검증 DGX, 사용자 지시): [보고서](verification/fix5-names-ladder-wall/REPORT.md), 결정 FL14·FL15·WR13·FN11~FN13.
+  - **이름**: 영주 가문·이웃·백작과 백작령·교구와 주교를 가상으로 바꿨다(`gentryNames.ts`, 성 42·백작령 8). 국왕·세계 사건은 실제대로다. 저장 v22가 옛 저장의 이름을 바꾼다.
+  - **실패 사다리**: 장 시작 인구의 30 % 아래 → 표본에서 3단. 빈 도시 → 3단·4단·재정착(포기 없음). 미납 3단은 불탄 도시 시나리오로 강제했다(F9~F11).
+  - **세력 고정값** X9(세력 상태 sha256, 세계 해시와 따로).
+  - **석벽 변형 봇**(`--wall-choice=wall`): 2장 완공 4/5(seed 1·4는 습격 전 완공, 불탄 집 0).
+  - **관문**: 표준 봇 가드레일 1회차 `463d484` 5/5(기준선과 해시 빼고 같음), 새 기준선 `seeds/baseline-463d484.json`. 전체 회귀 `da97dab` 3,249/3,249, 깨끗한 클론 CLONE_STATUS.
 
 - **RES-REG 자원 목록을 한 곳으로 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 렌더·UI·content·스크립트·시험·문서, 엔진 파일 셋은 목록 조회만·규칙 0줄, 검증 DGX, 사용자 지시): [보고서](verification/resreg/REPORT.md), 결정 RESREG-D1~D5.
   - 자원은 `src/content/resourceCatalog.ts` 한 줄 + `.ko.ts` 이름 한 줄이다. `ResourceType`·저장 가능 목록·창고 종류와 흩어진 전수 표 29개 파일이 목록에서 나온다.
@@ -358,7 +365,7 @@
 
 ## 다음 작업
 
-- **엔진 2장 작업(사용자 지시 순서, C4는 판정으로 뒤로)**: FAIL-3 완료 → F2-A 완료 → FACTION-0 완료 → C4(렌더의 `resourceCatalog` 뒤). 다음 엔진 후보는 관계를 읽는 규칙(RIGHTS)이다. 작업마다 본선 병합·브랜치 삭제.
+- **엔진 2장 작업(사용자 지시 순서, C4는 판정으로 뒤로)**: FAIL-3 완료 → F2-A 완료 → FACTION-0 완료 → FIX-5 완료 → C4(렌더 RES-REG가 본선에 있음, 다음). 다음 엔진 후보는 관계를 읽는 규칙(RIGHTS)이다. 작업마다 본선 병합·브랜치 삭제.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
