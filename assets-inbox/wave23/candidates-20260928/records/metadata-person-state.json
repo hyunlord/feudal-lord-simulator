@@ -1,0 +1,1106 @@
+[
+  {
+    "id": "person_state/mourning_96",
+    "file": "assets/person_state/mourning_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "상중 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: One black mourning ribbon tied in a simple compact loop knot with two broad hanging tails. Charcoal cloth subtle highlight, solemn, no modern badge outlines.",
+        "rawFile": "raw/person_state/mourning.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/mourning_48",
+    "file": "assets/person_state/mourning_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "상중 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: One black mourning ribbon tied in a simple compact loop knot with two broad hanging tails. Charcoal cloth subtle highlight, solemn, no modern badge outlines.",
+        "rawFile": "raw/person_state/mourning.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/sick_96",
+    "file": "assets/person_state/sick_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "병 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A folded cream linen bandage roll with a single small sage-green medicinal herb sprig laid diagonally over it. Clearly both fabric and leaves.",
+        "rawFile": "raw/person_state/sick.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 11
+    }
+  },
+  {
+    "id": "person_state/sick_48",
+    "file": "assets/person_state/sick_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "병 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A folded cream linen bandage roll with a single small sage-green medicinal herb sprig laid diagonally over it. Clearly both fabric and leaves.",
+        "rawFile": "raw/person_state/sick.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 11
+    }
+  },
+  {
+    "id": "person_state/pregnant_96",
+    "file": "assets/person_state/pregnant_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "임신 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A tiny empty medieval wooden rocking cradle, side view, strong curved rocker feet and empty hollow basin. No child, no person, no pregnancy body depiction.",
+        "rawFile": "raw/person_state/pregnant.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 5
+    }
+  },
+  {
+    "id": "person_state/pregnant_48",
+    "file": "assets/person_state/pregnant_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "임신 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A tiny empty medieval wooden rocking cradle, side view, strong curved rocker feet and empty hollow basin. No child, no person, no pregnancy body depiction.",
+        "rawFile": "raw/person_state/pregnant.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 5
+    }
+  },
+  {
+    "id": "person_state/newborn_96",
+    "file": "assets/person_state/newborn_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "새로 태어남 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A cream swaddling bundle tied around a small round covered head opening, entirely wrapped with no face drawn. Compact tapering cocoon shape with folded cloth edges.",
+        "rawFile": "raw/person_state/newborn.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/newborn_48",
+    "file": "assets/person_state/newborn_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "새로 태어남 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A cream swaddling bundle tied around a small round covered head opening, entirely wrapped with no face drawn. Compact tapering cocoon shape with folded cloth edges.",
+        "rawFile": "raw/person_state/newborn.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/dead_96",
+    "file": "assets/person_state/dead_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "사망 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A single short beeswax candle lit with tiny warm flame in front of a small dark wooden Christian cross. No skull, no face, no text.",
+        "rawFile": "raw/person_state/dead.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/dead_48",
+    "file": "assets/person_state/dead_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "사망 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A single short beeswax candle lit with tiny warm flame in front of a small dark wooden Christian cross. No skull, no face, no text.",
+        "rawFile": "raw/person_state/dead.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/hunger_96",
+    "file": "assets/person_state/hunger_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "굶주림 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: An entirely empty shallow wooden bowl seen obliquely, dark hollow interior clearly visible, no spoon or food.",
+        "rawFile": "raw/person_state/hunger.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 8
+    }
+  },
+  {
+    "id": "person_state/hunger_48",
+    "file": "assets/person_state/hunger_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "굶주림 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: An entirely empty shallow wooden bowl seen obliquely, dark hollow interior clearly visible, no spoon or food.",
+        "rawFile": "raw/person_state/hunger.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 8
+    }
+  },
+  {
+    "id": "person_state/injury_96",
+    "file": "assets/person_state/injury_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "부상 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A compact bandage roll of cream linen, curled loose end, simple crossed red-brown cloth fastening. No leaves, no wound, no blood.",
+        "rawFile": "raw/person_state/injury.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 8
+    }
+  },
+  {
+    "id": "person_state/injury_48",
+    "file": "assets/person_state/injury_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "부상 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A compact bandage roll of cream linen, curled loose end, simple crossed red-brown cloth fastening. No leaves, no wound, no blood.",
+        "rawFile": "raw/person_state/injury.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 8
+    }
+  },
+  {
+    "id": "person_state/pilgrim_96",
+    "file": "assets/person_state/pilgrim_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "순례 중 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: One broad scallop shell pilgrim badge, cream and warm grey, fan-shaped ridges with two ears at hinge, cord loop.",
+        "rawFile": "raw/person_state/pilgrim.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/pilgrim_48",
+    "file": "assets/person_state/pilgrim_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "순례 중 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: One broad scallop shell pilgrim badge, cream and warm grey, fan-shaped ridges with two ears at hinge, cord loop.",
+        "rawFile": "raw/person_state/pilgrim.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/marriage_96",
+    "file": "assets/person_state/marriage_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "혼인 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: Two plain narrow golden rings joined on a dark red-brown knotted cord. Clear overlapping circles, no gems.",
+        "rawFile": "raw/person_state/marriage.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 10
+    }
+  },
+  {
+    "id": "person_state/marriage_48",
+    "file": "assets/person_state/marriage_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "혼인 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: Two plain narrow golden rings joined on a dark red-brown knotted cord. Clear overlapping circles, no gems.",
+        "rawFile": "raw/person_state/marriage.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 10
+    }
+  },
+  {
+    "id": "person_state/reeve_96",
+    "file": "assets/person_state/reeve_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "Reeve · 막대 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A short dark oak reeve's rod of office with simple rounded brass knob, diagonally oriented, one discreet cream cord wrap. Not a sword or hammer.",
+        "rawFile": "raw/person_state/reeve.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/reeve_48",
+    "file": "assets/person_state/reeve_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "Reeve · 막대 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A short dark oak reeve's rod of office with simple rounded brass knob, diagonally oriented, one discreet cream cord wrap. Not a sword or hammer.",
+        "rawFile": "raw/person_state/reeve.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/bailiff_96",
+    "file": "assets/person_state/bailiff_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "Bailiff · 한 열쇠 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: One large black iron medieval door key, broad oval bow and conspicuous rectangular bit. Diagonal, single key only.",
+        "rawFile": "raw/person_state/bailiff.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 7
+    }
+  },
+  {
+    "id": "person_state/bailiff_48",
+    "file": "assets/person_state/bailiff_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "Bailiff · 한 열쇠 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: One large black iron medieval door key, broad oval bow and conspicuous rectangular bit. Diagonal, single key only.",
+        "rawFile": "raw/person_state/bailiff.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 7
+    }
+  },
+  {
+    "id": "person_state/steward_96",
+    "file": "assets/person_state/steward_96.png",
+    "width": 96,
+    "height": 96,
+    "description": "청지기 · 열쇠 꾸러미 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "count": 1
+    },
+    "pivot": {
+      "x": 48,
+      "y": 48
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 31,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A ring carrying THREE small bronze medieval household keys with distinctly different bits, hanging together in a fan, cream cord at top. Distinct from one large iron key.",
+        "rawFile": "raw/person_state/steward.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  },
+  {
+    "id": "person_state/steward_48",
+    "file": "assets/person_state/steward_48.png",
+    "width": 48,
+    "height": 48,
+    "description": "청지기 · 열쇠 꾸러미 · 초상 틀 바깥 장식",
+    "role": "portrait-frame-ornament",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "cellWidth": 48,
+      "cellHeight": 48,
+      "count": 1
+    },
+    "pivot": {
+      "x": 24,
+      "y": 24
+    },
+    "displayScale": 1,
+    "qa": {
+      "centralFaceDiskRadius": 15.5,
+      "centralFaceAlphaMax": 0,
+      "facesGenerated": false,
+      "limitation": "48px 장식은 축소 표식이며 정확한 상태명은 UI 문구와 병행 권장"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE isolated small hand-painted medieval game UI portrait-frame ornament, not a portrait or frame. Match attached project P0 icon tone: restrained ochre parchment, worn dark ink edges, subtle gouache brush shading, legible chunky silhouette at 28 pixels. Center the single ornament alone filling 75% of a square transparent RGBA canvas. True alpha background, no panel, no ground, no text/numbers, no face or human figure. This will be placed outside the lower-right edge of a circular portrait. Subject: A ring carrying THREE small bronze medieval household keys with distinctly different bits, hanging together in a fan, cream cord at top. Distinct from one large iron key.",
+        "rawFile": "raw/person_state/steward.png",
+        "referenceImages": [
+          "references/icon_cause_family_sheet.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceResolution": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    ],
+    "processing": {
+      "method": "Generated ornament alpha trim, one proportional reduction to 29px, place at (67,67) on transparent 96px frame. Clear central disk radius31. 48px derivative resized from 96px; protected disk re-cleared.",
+      "clearedProtectionPixels": 0
+    }
+  }
+]

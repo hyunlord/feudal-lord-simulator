@@ -1,0 +1,278 @@
+[
+  {
+    "id": "chicken_flock_a",
+    "animalCount": 2,
+    "landmarkPoints": [
+      [
+        53,
+        54
+      ],
+      [
+        22,
+        71
+      ]
+    ],
+    "torsoPixels": 35.35533905932738,
+    "speciesRatio": 0.23,
+    "displayScale": 0.04886843249051477,
+    "displayedTorsoAtZoom1": 1.72776,
+    "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+    "reference": {
+      "file": "references/cattle_pair-v1.png",
+      "points": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "torsoPixels": 31.3,
+      "displayScale": 0.24
+    }
+  },
+  {
+    "id": "chicken_flock_b",
+    "animalCount": 3,
+    "landmarkPoints": [
+      [
+        71,
+        68
+      ],
+      [
+        51,
+        65
+      ]
+    ],
+    "torsoPixels": 20.223748416156685,
+    "speciesRatio": 0.23,
+    "displayScale": 0.08543223365158649,
+    "displayedTorsoAtZoom1": 1.72776,
+    "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+    "reference": {
+      "file": "references/cattle_pair-v1.png",
+      "points": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "torsoPixels": 31.3,
+      "displayScale": 0.24
+    }
+  },
+  {
+    "id": "chicken_flock_c",
+    "animalCount": 3,
+    "landmarkPoints": [
+      [
+        78,
+        47
+      ],
+      [
+        59,
+        57
+      ]
+    ],
+    "torsoPixels": 21.470910553583888,
+    "speciesRatio": 0.23,
+    "displayScale": 0.08046980567908915,
+    "displayedTorsoAtZoom1": 1.72776,
+    "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+    "reference": {
+      "file": "references/cattle_pair-v1.png",
+      "points": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "torsoPixels": 31.3,
+      "displayScale": 0.24
+    }
+  },
+  {
+    "id": "cat_idle_a",
+    "animalCount": 1,
+    "landmarkPoints": [
+      [
+        42,
+        44
+      ],
+      [
+        29,
+        29
+      ]
+    ],
+    "torsoPixels": 19.849433241279208,
+    "speciesRatio": 0.26,
+    "displayScale": 0.09839676409189656,
+    "displayedTorsoAtZoom1": 1.95312,
+    "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+    "reference": {
+      "file": "references/cattle_pair-v1.png",
+      "points": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "torsoPixels": 31.3,
+      "displayScale": 0.24
+    }
+  },
+  {
+    "id": "cat_idle_b",
+    "animalCount": 1,
+    "landmarkPoints": [
+      [
+        21,
+        26
+      ],
+      [
+        40,
+        36
+      ]
+    ],
+    "torsoPixels": 21.470910553583888,
+    "speciesRatio": 0.26,
+    "displayScale": 0.09096586728940513,
+    "displayedTorsoAtZoom1": 1.95312,
+    "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+    "reference": {
+      "file": "references/cattle_pair-v1.png",
+      "points": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "torsoPixels": 31.3,
+      "displayScale": 0.24
+    }
+  },
+  {
+    "id": "village_dog_sleep",
+    "animalCount": 1,
+    "landmarkPoints": [
+      [
+        45,
+        34
+      ],
+      [
+        34,
+        16
+      ],
+      [
+        17,
+        30
+      ]
+    ],
+    "torsoPixels": 43.11773865527423,
+    "speciesRatio": 0.4,
+    "displayScale": 0.06968825577851699,
+    "displayedTorsoAtZoom1": 3.0048,
+    "method": "Hand-marked two-segment curved torso estimate",
+    "reference": {
+      "file": "references/cattle_pair-v1.png",
+      "points": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "torsoPixels": 31.3,
+      "displayScale": 0.24
+    }
+  },
+  {
+    "id": "chicken_walk_sheet",
+    "animalCount": 1,
+    "landmarkPoints": [
+      [
+        24,
+        35
+      ],
+      [
+        37,
+        28
+      ]
+    ],
+    "torsoPixels": 14.7648230602334,
+    "speciesRatio": 0.23,
+    "displayScale": 0.11701867289242597,
+    "displayedTorsoAtZoom1": 1.72776,
+    "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+    "reference": {
+      "file": "references/cattle_pair-v1.png",
+      "points": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "torsoPixels": 31.3,
+      "displayScale": 0.24
+    }
+  },
+  {
+    "id": "village_dog_walk_sheet",
+    "animalCount": 1,
+    "landmarkPoints": [
+      [
+        25,
+        32
+      ],
+      [
+        40,
+        23
+      ]
+    ],
+    "torsoPixels": 17.4928556845359,
+    "speciesRatio": 0.4,
+    "displayScale": 0.17177298287873685,
+    "displayedTorsoAtZoom1": 3.0048,
+    "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+    "reference": {
+      "file": "references/cattle_pair-v1.png",
+      "points": [
+        [
+          56,
+          49
+        ],
+        [
+          28,
+          63
+        ]
+      ],
+      "torsoPixels": 31.3,
+      "displayScale": 0.24
+    }
+  }
+]

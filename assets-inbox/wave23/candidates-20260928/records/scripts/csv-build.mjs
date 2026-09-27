@@ -1,0 +1,17 @@
+import fs from 'node:fs/promises';
+import {Workbook} from '@oai/artifact-tool';
+const root='/Users/rexxa/github/feudal-lord-simulator/output/astra-wave23-candidates-v1';
+const rows=JSON.parse(await fs.readFile(root+'/records/asset-rows.json','utf8'));
+if(rows.length!==82)throw Error('Expected82PNG');
+const headers=Object.keys(rows[0]),data=[headers,...rows.map(a=>headers.map(k=>a[k]))];
+if(headers.length!==17)throw Error('Expected17columns');
+const book=Workbook.create(),sheet=book.worksheets.add('Assets'),range='A1:Q83';
+sheet.getRange(range).values=data;book.recalculate();
+const quote=v=>'"'+String(v??'').replaceAll('"','""')+'"';
+const csv=sheet.getRange(range).values.map(r=>r.map(quote).join(',')).join('\r\n')+'\r\n';
+const imported=await Workbook.fromCSV(csv,{sheetName:'Check'}),back=imported.worksheets.getItem('Check').getRange(range).values;
+for(let i=0;i<data.length;i++)for(let j=0;j<17;j++)if(String(back[i][j])!==String(data[i][j]))throw Error(`CSV roundtrip ${i}:${j}`);
+for(const r of back.slice(1))for(const j of [10,11,12,13,14,15])JSON.parse(r[j]);
+await fs.writeFile(root+'/assets.csv','\uFEFF'+csv);
+await fs.writeFile(root+'/records/csv-validation.json',JSON.stringify({tool:'artifact-tool author/reimport',dataRows:82,columns:17,allCellsRoundtrip:true,jsonFieldsParsed:true,weatherCaps:rows.filter(r=>r.family==='weather').map(r=>({id:r.asset_id,opacityMax:r.opacity_max,blend:r.blend_mode}))},null,2));
+console.log('PASS82rows17columns fullCSVroundtrip');

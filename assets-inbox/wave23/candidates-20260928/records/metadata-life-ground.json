@@ -1,0 +1,706 @@
+[
+  {
+    "id": "chicken_flock_a",
+    "file": "assets/life_ground/chicken_flock_a.png",
+    "width": 136,
+    "height": 104,
+    "description": "chicken_flock_a",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": [
+      68,
+      100
+    ],
+    "displayScale": 0.04886843249051477,
+    "animalCount": 2,
+    "qa": {
+      "status": "candidate",
+      "nativeSize": "Reviewed light/dark contact and enlarged silhouette",
+      "scaleMeasurement": {
+        "id": "chicken_flock_a",
+        "animalCount": 2,
+        "landmarkPoints": [
+          [
+            53,
+            54
+          ],
+          [
+            22,
+            71
+          ]
+        ],
+        "torsoPixels": 35.35533905932738,
+        "speciesRatio": 0.23,
+        "displayScale": 0.04886843249051477,
+        "displayedTorsoAtZoom1": 1.72776,
+        "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+        "reference": {
+          "file": "references/cattle_pair-v1.png",
+          "points": [
+            [
+              56,
+              49
+            ],
+            [
+              28,
+              63
+            ]
+          ],
+          "torsoPixels": 31.3,
+          "displayScale": 0.24
+        }
+      },
+      "legProtection": null,
+      "limitations": "At requested cattle-relative scale chicken/cat/dog torsos are only 1.73/1.95/3.00 screen px at zoom 1; at 0.6 species detail and stepping are not reliably readable. No world-size inflation. Sprite anatomy and gait readable in native-size review only.",
+      "directionConsistency": null
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create a single game sprite of TWO small medieval domestic hens, one russet hen pecking toward lower left, one pale buff hen standing toward upper right, distinct non-overlapping bodies. Match supplied project goose and cattle hand-painted gouache sprite texture, muted earthy palette, orthographic 2:1 isometric viewed from above, upper-left light. Transparent RGBA background, only tiny contact AO beneath feet, no ground patch, no text, no scenery. Whole group centered generous transparent margin; clear simple silhouettes for tiny 128x96 delivery. These are chickens, short neck, red comb, small compact wing/body, no giant rooster tails. Two birds total.",
+        "rawFile": "raw/life_ground/chicken_flock_a-generated.png",
+        "referenceImages": [
+          "references/goose_single-v1.png",
+          "references/cattle_pair-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "resize": "Single resize from generated raw crop to final size, transparent contain",
+      "extraction": null,
+      "animation": null
+    }
+  },
+  {
+    "id": "chicken_flock_b",
+    "file": "assets/life_ground/chicken_flock_b.png",
+    "width": 136,
+    "height": 104,
+    "description": "chicken_flock_b",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": [
+      68,
+      100
+    ],
+    "displayScale": 0.08543223365158649,
+    "animalCount": 3,
+    "qa": {
+      "status": "candidate",
+      "nativeSize": "Reviewed light/dark contact and enlarged silhouette",
+      "scaleMeasurement": {
+        "id": "chicken_flock_b",
+        "animalCount": 3,
+        "landmarkPoints": [
+          [
+            71,
+            68
+          ],
+          [
+            51,
+            65
+          ]
+        ],
+        "torsoPixels": 20.223748416156685,
+        "speciesRatio": 0.23,
+        "displayScale": 0.08543223365158649,
+        "displayedTorsoAtZoom1": 1.72776,
+        "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+        "reference": {
+          "file": "references/cattle_pair-v1.png",
+          "points": [
+            [
+              56,
+              49
+            ],
+            [
+              28,
+              63
+            ]
+          ],
+          "torsoPixels": 31.3,
+          "displayScale": 0.24
+        }
+      },
+      "legProtection": null,
+      "limitations": "At requested cattle-relative scale chicken/cat/dog torsos are only 1.73/1.95/3.00 screen px at zoom 1; at 0.6 species detail and stepping are not reliably readable. No world-size inflation. Sprite anatomy and gait readable in native-size review only.",
+      "directionConsistency": null
+    },
+    "generationRecords": [
+      {
+        "prompt": "Paint a transparent RGBA medieval game sprite, project hand-painted earthy gouache, orthographic 2:1 isometric elevated view, soft upper-left lighting, only small contact AO at feet, no ground patch/scenery/text, broad readable silhouettes not tiny texture. THREE hens loose triangular group, charcoal hen pecking at lower right, cream hen looking left, mottled russet hen rear-facing upper left. Exactly three compact chickens, muted tiny red combs. Wide separations, same bird size.",
+        "rawFile": "raw/life_ground/chicken_flock_b-generated.png",
+        "referenceImages": [
+          "references/dog_herding-v1.png",
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "resize": "Single resize from generated raw crop to final size, transparent contain",
+      "extraction": null,
+      "animation": null
+    }
+  },
+  {
+    "id": "chicken_flock_c",
+    "file": "assets/life_ground/chicken_flock_c.png",
+    "width": 136,
+    "height": 104,
+    "description": "chicken_flock_c",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": [
+      68,
+      100
+    ],
+    "displayScale": 0.08046980567908915,
+    "animalCount": 3,
+    "qa": {
+      "status": "candidate",
+      "nativeSize": "Reviewed light/dark contact and enlarged silhouette",
+      "scaleMeasurement": {
+        "id": "chicken_flock_c",
+        "animalCount": 3,
+        "landmarkPoints": [
+          [
+            78,
+            47
+          ],
+          [
+            59,
+            57
+          ]
+        ],
+        "torsoPixels": 21.470910553583888,
+        "speciesRatio": 0.23,
+        "displayScale": 0.08046980567908915,
+        "displayedTorsoAtZoom1": 1.72776,
+        "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+        "reference": {
+          "file": "references/cattle_pair-v1.png",
+          "points": [
+            [
+              56,
+              49
+            ],
+            [
+              28,
+              63
+            ]
+          ],
+          "torsoPixels": 31.3,
+          "displayScale": 0.24
+        }
+      },
+      "legProtection": null,
+      "limitations": "At requested cattle-relative scale chicken/cat/dog torsos are only 1.73/1.95/3.00 screen px at zoom 1; at 0.6 species detail and stepping are not reliably readable. No world-size inflation. Sprite anatomy and gait readable in native-size review only.",
+      "directionConsistency": null
+    },
+    "generationRecords": [
+      {
+        "prompt": "Paint a transparent RGBA medieval game sprite, project hand-painted earthy gouache, orthographic 2:1 isometric elevated view, soft upper-left lighting, only small contact AO at feet, no ground patch/scenery/text, broad readable silhouettes not tiny texture. THREE chickens in loose winding line, rusty rooster with short green-black sickle tail at front lower left, small buff hen center and grey hen behind right, two pecking one alert. Exactly three birds same approximate body size; quiet earthy plumage.",
+        "rawFile": "raw/life_ground/chicken_flock_c-generated.png",
+        "referenceImages": [
+          "references/dog_herding-v1.png",
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "resize": "Single resize from generated raw crop to final size, transparent contain",
+      "extraction": null,
+      "animation": null
+    }
+  },
+  {
+    "id": "cat_idle_a",
+    "file": "assets/life_ground/cat_idle_a.png",
+    "width": 72,
+    "height": 72,
+    "description": "cat_idle_a",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": [
+      36,
+      68
+    ],
+    "displayScale": 0.09839676409189656,
+    "animalCount": 1,
+    "qa": {
+      "status": "candidate",
+      "nativeSize": "Reviewed light/dark contact and enlarged silhouette",
+      "scaleMeasurement": {
+        "id": "cat_idle_a",
+        "animalCount": 1,
+        "landmarkPoints": [
+          [
+            42,
+            44
+          ],
+          [
+            29,
+            29
+          ]
+        ],
+        "torsoPixels": 19.849433241279208,
+        "speciesRatio": 0.26,
+        "displayScale": 0.09839676409189656,
+        "displayedTorsoAtZoom1": 1.95312,
+        "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+        "reference": {
+          "file": "references/cattle_pair-v1.png",
+          "points": [
+            [
+              56,
+              49
+            ],
+            [
+              28,
+              63
+            ]
+          ],
+          "torsoPixels": 31.3,
+          "displayScale": 0.24
+        }
+      },
+      "legProtection": null,
+      "limitations": "At requested cattle-relative scale chicken/cat/dog torsos are only 1.73/1.95/3.00 screen px at zoom 1; at 0.6 species detail and stepping are not reliably readable. No world-size inflation. Sprite anatomy and gait readable in native-size review only.",
+      "directionConsistency": null
+    },
+    "generationRecords": [
+      {
+        "prompt": "Paint a transparent RGBA medieval game sprite, project hand-painted earthy gouache, orthographic 2:1 isometric elevated view, soft upper-left lighting, only small contact AO at feet, no ground patch/scenery/text, broad readable silhouettes not tiny texture. ONE medieval village short-haired ginger tabby cat sitting alert in leftward three-quarter SW direction. Straight forelegs, tail curled around feet, back visible from above. Natural farm cat, not cute caricature.",
+        "rawFile": "raw/life_ground/cat_idle_a-generated.png",
+        "referenceImages": [
+          "references/dog_herding-v1.png",
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "resize": "Single resize from generated raw crop to final size, transparent contain",
+      "extraction": "Generated unsolicited 4x2 sheet; select upper-row SW view column3 only.",
+      "animation": null
+    }
+  },
+  {
+    "id": "cat_idle_b",
+    "file": "assets/life_ground/cat_idle_b.png",
+    "width": 72,
+    "height": 72,
+    "description": "cat_idle_b",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": [
+      36,
+      68
+    ],
+    "displayScale": 0.09096586728940513,
+    "animalCount": 1,
+    "qa": {
+      "status": "candidate",
+      "nativeSize": "Reviewed light/dark contact and enlarged silhouette",
+      "scaleMeasurement": {
+        "id": "cat_idle_b",
+        "animalCount": 1,
+        "landmarkPoints": [
+          [
+            21,
+            26
+          ],
+          [
+            40,
+            36
+          ]
+        ],
+        "torsoPixels": 21.470910553583888,
+        "speciesRatio": 0.26,
+        "displayScale": 0.09096586728940513,
+        "displayedTorsoAtZoom1": 1.95312,
+        "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+        "reference": {
+          "file": "references/cattle_pair-v1.png",
+          "points": [
+            [
+              56,
+              49
+            ],
+            [
+              28,
+              63
+            ]
+          ],
+          "torsoPixels": 31.3,
+          "displayScale": 0.24
+        }
+      },
+      "legProtection": null,
+      "limitations": "At requested cattle-relative scale chicken/cat/dog torsos are only 1.73/1.95/3.00 screen px at zoom 1; at 0.6 species detail and stepping are not reliably readable. No world-size inflation. Sprite anatomy and gait readable in native-size review only.",
+      "directionConsistency": null
+    },
+    "generationRecords": [
+      {
+        "prompt": "Paint a transparent RGBA medieval game sprite, project hand-painted earthy gouache, orthographic 2:1 isometric elevated view, soft upper-left lighting, only small contact AO at feet, no ground patch/scenery/text, broad readable silhouettes not tiny texture. ONE slate-grey medieval village short-haired cat crouching low, front paws tucked and tail curling beside rump, facing SE lower-right, ears pricked. Natural cat proportions, broad muted grey fur, no accessories.",
+        "rawFile": "raw/life_ground/cat_idle_b-generated.png",
+        "referenceImages": [
+          "references/dog_herding-v1.png",
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "resize": "Single resize from generated raw crop to final size, transparent contain",
+      "extraction": null,
+      "animation": null
+    }
+  },
+  {
+    "id": "village_dog_sleep",
+    "file": "assets/life_ground/village_dog_sleep.png",
+    "width": 72,
+    "height": 72,
+    "description": "village_dog_sleep",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": null,
+    "pivot": [
+      36,
+      68
+    ],
+    "displayScale": 0.06968825577851699,
+    "animalCount": 1,
+    "qa": {
+      "status": "candidate",
+      "nativeSize": "Reviewed light/dark contact and enlarged silhouette",
+      "scaleMeasurement": {
+        "id": "village_dog_sleep",
+        "animalCount": 1,
+        "landmarkPoints": [
+          [
+            45,
+            34
+          ],
+          [
+            34,
+            16
+          ],
+          [
+            17,
+            30
+          ]
+        ],
+        "torsoPixels": 43.11773865527423,
+        "speciesRatio": 0.4,
+        "displayScale": 0.06968825577851699,
+        "displayedTorsoAtZoom1": 3.0048,
+        "method": "Hand-marked two-segment curved torso estimate",
+        "reference": {
+          "file": "references/cattle_pair-v1.png",
+          "points": [
+            [
+              56,
+              49
+            ],
+            [
+              28,
+              63
+            ]
+          ],
+          "torsoPixels": 31.3,
+          "displayScale": 0.24
+        }
+      },
+      "legProtection": null,
+      "limitations": "At requested cattle-relative scale chicken/cat/dog torsos are only 1.73/1.95/3.00 screen px at zoom 1; at 0.6 species detail and stepping are not reliably readable. No world-size inflation. Sprite anatomy and gait readable in native-size review only.",
+      "directionConsistency": null
+    },
+    "generationRecords": [
+      {
+        "prompt": "Paint a transparent RGBA medieval game sprite, project hand-painted earthy gouache, orthographic 2:1 isometric elevated view, soft upper-left lighting, only small contact AO at feet, no ground patch/scenery/text, broad readable silhouettes not tiny texture. ONE ordinary medium-small brown medieval village mongrel asleep curled in crescent, muzzle tucked into hind feet, curved tail near nose, overhead isometric. No collar, no modern breed extreme.",
+        "rawFile": "raw/life_ground/village_dog_sleep-generated.png",
+        "referenceImages": [
+          "references/dog_herding-v1.png",
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "resize": "Single resize from generated raw crop to final size, transparent contain",
+      "extraction": null,
+      "animation": null
+    }
+  },
+  {
+    "id": "chicken_walk_sheet",
+    "file": "assets/life_ground/chicken_walk_sheet.png",
+    "width": 256,
+    "height": 128,
+    "description": "chicken_walk_sheet",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "columns": 4,
+      "rows": 2,
+      "cellWidth": 64,
+      "cellHeight": 64,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "framesPerDirection": 2,
+      "order": "direction columns; frame rows"
+    },
+    "pivot": [
+      32,
+      60
+    ],
+    "displayScale": 0.11701867289242597,
+    "animalCount": 1,
+    "qa": {
+      "status": "candidate",
+      "nativeSize": "Reviewed light/dark contact and enlarged silhouette",
+      "scaleMeasurement": {
+        "id": "chicken_walk_sheet",
+        "animalCount": 1,
+        "landmarkPoints": [
+          [
+            24,
+            35
+          ],
+          [
+            37,
+            28
+          ]
+        ],
+        "torsoPixels": 14.7648230602334,
+        "speciesRatio": 0.23,
+        "displayScale": 0.11701867289242597,
+        "displayedTorsoAtZoom1": 1.72776,
+        "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+        "reference": {
+          "file": "references/cattle_pair-v1.png",
+          "points": [
+            [
+              56,
+              49
+            ],
+            [
+              28,
+              63
+            ]
+          ],
+          "torsoPixels": 31.3,
+          "displayScale": 0.24
+        }
+      },
+      "legProtection": [
+        {
+          "id": "chicken_walk_sheet",
+          "direction": "NE",
+          "changedLegPixels": 198,
+          "changedVisibleLegPixels": 130,
+          "protectedPixelDifferences": 0,
+          "mask": "records/life-ground-chicken_walk_sheet-0-protected.png"
+        },
+        {
+          "id": "chicken_walk_sheet",
+          "direction": "SE",
+          "changedLegPixels": 323,
+          "changedVisibleLegPixels": 232,
+          "protectedPixelDifferences": 0,
+          "mask": "records/life-ground-chicken_walk_sheet-1-protected.png"
+        },
+        {
+          "id": "chicken_walk_sheet",
+          "direction": "SW",
+          "changedLegPixels": 300,
+          "changedVisibleLegPixels": 226,
+          "protectedPixelDifferences": 0,
+          "mask": "records/life-ground-chicken_walk_sheet-2-protected.png"
+        },
+        {
+          "id": "chicken_walk_sheet",
+          "direction": "NW",
+          "changedLegPixels": 207,
+          "changedVisibleLegPixels": 142,
+          "protectedPixelDifferences": 0,
+          "mask": "records/life-ground-chicken_walk_sheet-3-protected.png"
+        }
+      ],
+      "limitations": "At requested cattle-relative scale chicken/cat/dog torsos are only 1.73/1.95/3.00 screen px at zoom 1; at 0.6 species detail and stepping are not reliably readable. No world-size inflation. Sprite anatomy and gait readable in native-size review only.",
+      "directionConsistency": "All four intended front/rear quadrants present; NE/NW are rear-three-quarter. Frames share protected body pixels after masked lower-leg replacement."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Paint a transparent RGBA medieval game sprite, project hand-painted earthy gouache, orthographic 2:1 isometric elevated view, soft upper-left lighting, only small contact AO at feet, no ground patch/scenery/text, broad readable silhouettes not tiny texture. SPRITE SHEET exactly 4 equal columns and 2 equal rows of ONE identical buff-brown hen. Columns are NE upper right (rear view), SE lower right (front view), SW lower left (front view), NW upper left (rear view). Upper row walking pose A, lower row opposite stepping pose B. Each cell animal same center and size, generous transparent margins. Body/head/tail MUST identical between rows; ONLY two thin legs and toes change. True individually drawn directional anatomy, no mirrored lighting. Aligned 4x2 sheet, NO labels, no borders.",
+        "rawFile": "raw/life_ground/chicken_walk_sheet-generated.png",
+        "referenceImages": [
+          "references/dog_herding-v1.png",
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "resize": "Single resize from generated raw crop to final size, transparent contain",
+      "extraction": null,
+      "animation": "Generated 4x2 views; normalize cells, restore frame A outside explicit lower-leg masks. No mirroring, no drawn replacement art. Mask includes antialiased leg edges/foot-contact zone."
+    }
+  },
+  {
+    "id": "village_dog_walk_sheet",
+    "file": "assets/life_ground/village_dog_walk_sheet.png",
+    "width": 256,
+    "height": 128,
+    "description": "village_dog_walk_sheet",
+    "role": "object",
+    "blendMode": "source-over",
+    "opacityMax": 1,
+    "frameLayout": {
+      "columns": 4,
+      "rows": 2,
+      "cellWidth": 64,
+      "cellHeight": 64,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "framesPerDirection": 2,
+      "order": "direction columns; frame rows"
+    },
+    "pivot": [
+      32,
+      60
+    ],
+    "displayScale": 0.17177298287873685,
+    "animalCount": 1,
+    "qa": {
+      "status": "candidate",
+      "nativeSize": "Reviewed light/dark contact and enlarged silhouette",
+      "scaleMeasurement": {
+        "id": "village_dog_walk_sheet",
+        "animalCount": 1,
+        "landmarkPoints": [
+          [
+            25,
+            32
+          ],
+          [
+            40,
+            23
+          ]
+        ],
+        "torsoPixels": 17.4928556845359,
+        "speciesRatio": 0.4,
+        "displayScale": 0.17177298287873685,
+        "displayedTorsoAtZoom1": 3.0048,
+        "method": "Hand-marked projected shoulder-to-rump estimate; excludes head/tail",
+        "reference": {
+          "file": "references/cattle_pair-v1.png",
+          "points": [
+            [
+              56,
+              49
+            ],
+            [
+              28,
+              63
+            ]
+          ],
+          "torsoPixels": 31.3,
+          "displayScale": 0.24
+        }
+      },
+      "legProtection": [
+        {
+          "id": "village_dog_walk_sheet",
+          "direction": "NE",
+          "changedLegPixels": 293,
+          "changedVisibleLegPixels": 240,
+          "protectedPixelDifferences": 0,
+          "mask": "records/life-ground-village_dog_walk_sheet-0-protected.png"
+        },
+        {
+          "id": "village_dog_walk_sheet",
+          "direction": "SE",
+          "changedLegPixels": 317,
+          "changedVisibleLegPixels": 243,
+          "protectedPixelDifferences": 0,
+          "mask": "records/life-ground-village_dog_walk_sheet-1-protected.png"
+        },
+        {
+          "id": "village_dog_walk_sheet",
+          "direction": "SW",
+          "changedLegPixels": 343,
+          "changedVisibleLegPixels": 286,
+          "protectedPixelDifferences": 0,
+          "mask": "records/life-ground-village_dog_walk_sheet-2-protected.png"
+        },
+        {
+          "id": "village_dog_walk_sheet",
+          "direction": "NW",
+          "changedLegPixels": 378,
+          "changedVisibleLegPixels": 336,
+          "protectedPixelDifferences": 0,
+          "mask": "records/life-ground-village_dog_walk_sheet-3-protected.png"
+        }
+      ],
+      "limitations": "At requested cattle-relative scale chicken/cat/dog torsos are only 1.73/1.95/3.00 screen px at zoom 1; at 0.6 species detail and stepping are not reliably readable. No world-size inflation. Sprite anatomy and gait readable in native-size review only.",
+      "directionConsistency": "All four intended front/rear quadrants present; NE/NW are rear-three-quarter. Frames share protected body pixels after masked lower-leg replacement."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Paint a transparent RGBA medieval game sprite, project hand-painted earthy gouache, orthographic 2:1 isometric elevated view, soft upper-left lighting, only small contact AO at feet, no ground patch/scenery/text, broad readable silhouettes not tiny texture. SPRITE SHEET exactly 4 equal columns and 2 equal rows of ONE identical modest brown medieval village mongrel with lighter muzzle and chest, medium-small, short coat, uncurled tail. Columns NE upper right rear view, SE lower right front view, SW lower left front view, NW upper left rear view. Upper row walking A, lower row opposite leg gait B. Body/head/tail MUST identical between rows; ONLY four lower legs change. Each dog aligned same size center, generous transparent margin, individually drawn views not mirrored light. No labels, no borders, no collar.",
+        "rawFile": "raw/life_ground/village_dog_walk_sheet-generated.png",
+        "referenceImages": [
+          "references/dog_herding-v1.png",
+          "references/goose_single-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "resize": "Single resize from generated raw crop to final size, transparent contain",
+      "extraction": null,
+      "animation": "Generated 4x2 views; normalize cells, restore frame A outside explicit lower-leg masks. No mirroring, no drawn replacement art. Mask includes antialiased leg edges/foot-contact zone."
+    }
+  }
+]

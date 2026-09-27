@@ -1,0 +1,26 @@
+{
+  "recipe": [
+    [
+      "overcast_tint",
+      0.18,
+      "multiply",
+      true
+    ],
+    [
+      "storm_rain_sheet",
+      0.1,
+      "source-over",
+      true
+    ],
+    [
+      "fog_bank_a",
+      0.1,
+      "source-over",
+      false
+    ]
+  ],
+  "conservativeOpacitySum": 0.38,
+  "maximumCombinedEffectiveAlphaUpperBound": 0.3357999999999999,
+  "hudRestored": true,
+  "scope": "Stress composite. All fourteen maximumcaps together prohibited. Alphaofeachassetfurtherreducesactualcoverage."
+}

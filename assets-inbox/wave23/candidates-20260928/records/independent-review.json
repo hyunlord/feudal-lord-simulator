@@ -1,0 +1,543 @@
+{
+  "status": "PASS_WITH_RECORDED_LIMITATIONS",
+  "reviewer": "w23_birds; own bird lane excluded from independent scope",
+  "scope": [
+    "weather",
+    "life_ground",
+    "life_props",
+    "person_state",
+    "royal",
+    "pad",
+    "four proof composites"
+  ],
+  "observations": [
+    "Weather14 light/dark firstframes plus fullrain/ripple4frames inspected. Final3x3 repeats no sharp seams; slight periodicity only atfullstrength, muted atcaps.",
+    "Fourweatherstates sameworld proof viewed1.0/0.6. Individual14opacitycaps and combined0.38stress preservehouses, roads, forests and UI. No runtimeperformance claim.",
+    "Lifeground8+props8 nativecontacts and villageproof inspected. Actual8animalsinclcattle reference; scale not inflated. At0.6 tiny species/toys not reliably identifiable; clothesline remains a silhouette.",
+    "Portrait12 identities proof96/48 inspected. Centralfaces unobscured;24ornamentalpha masks independentlychecked0covered. Reeve staff, bailiff singlekey, steward keycluster distinct at96.",
+    "Royal2colored heater shields256/96 inspected. Englandthreepassantguardant vertically arranged; quarteredFranceanciensemy in1/4 andEngland2/3. Exactheaterpixelmaskalignmentnotclaimed.",
+    "Pad10types2sizes inspected inproof04. A/B/X/Y letters, crossDpad, flatshoulderL/R, talltriggerL/R, stickpress, menu, view discernibleat32; nobrandcolors/logos."
+  ],
+  "pending": [],
+  "limitations": [
+    "Birdlane was produced by thisreviewer; itsindependentreview delegatedtoroot, excludedfrom78assetcount.",
+    "Atcattle31.30px torso×0.24 scale, tinyanimals andtoys notspecies-identifiable atzoom0.6. This is not hiddenor compensated byinflation.",
+    "48portraitornament is about14px: cradlemayreadasboat; blackmourningribbon lowcontrastondark; exactstateneedsUIlabels. Illness/injurybandages sharemotif butherbsdiffer.",
+    "Weatherproofs static offline composites;zoom0.6resampling notactualcamera. Runtimeanimation/performance/collision nottested.",
+    "Fullstrengthweatherrepeat hasfaintperiodicity; recommendedopacity reduces it. Combinedsumcap0.38 needed, notallmaximaconcurrent.",
+    "Royalheateroutlines handpaintedvariantsnotpixelidenticaltoWave14mask."
+  ],
+  "independentLegRecalculation": [
+    {
+      "id": "chicken_walk_sheet",
+      "direction": "NE",
+      "changedPixels": 198,
+      "protectedChanged": 0
+    },
+    {
+      "id": "chicken_walk_sheet",
+      "direction": "SE",
+      "changedPixels": 323,
+      "protectedChanged": 0
+    },
+    {
+      "id": "chicken_walk_sheet",
+      "direction": "SW",
+      "changedPixels": 300,
+      "protectedChanged": 0
+    },
+    {
+      "id": "chicken_walk_sheet",
+      "direction": "NW",
+      "changedPixels": 207,
+      "protectedChanged": 0
+    },
+    {
+      "id": "village_dog_walk_sheet",
+      "direction": "NE",
+      "changedPixels": 293,
+      "protectedChanged": 0
+    },
+    {
+      "id": "village_dog_walk_sheet",
+      "direction": "SE",
+      "changedPixels": 317,
+      "protectedChanged": 0
+    },
+    {
+      "id": "village_dog_walk_sheet",
+      "direction": "SW",
+      "changedPixels": 343,
+      "protectedChanged": 0
+    },
+    {
+      "id": "village_dog_walk_sheet",
+      "direction": "NW",
+      "changedPixels": 378,
+      "protectedChanged": 0
+    }
+  ],
+  "independentFaceAlphaRecalculation": [
+    {
+      "id": "person_state/mourning_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/mourning_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/sick_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/sick_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/pregnant_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/pregnant_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/newborn_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/newborn_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/dead_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/dead_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/hunger_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/hunger_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/injury_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/injury_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/pilgrim_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/pilgrim_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/marriage_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/marriage_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/reeve_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/reeve_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/bailiff_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/bailiff_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/steward_96",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    },
+    {
+      "id": "person_state/steward_48",
+      "centralFaceCoveredPixels": 0,
+      "maxAlpha": 0
+    }
+  ],
+  "score": 91,
+  "verdict": "Candidate offline production scope passed; tiny-scale species semantics not passed and explicitly limited",
+  "category_match": true,
+  "reviewedAssetCount": 78,
+  "resolvedFindings": [
+    {
+      "issue": "DogNE lowerlegmask touched tailunderside17..20x43..45",
+      "resolution": "Ownerprotectsx<=21,y<=46. Redpixel-diff reinspection tailunchanged; independentprotected0, legchanges293."
+    },
+    {
+      "issue": "Weatheruppercaps hadonlylowerrecipeworldproof",
+      "resolution": "Owneraddedall14individualmaxcropandcombined0.38stress. Visuallyreadable, all14capsatonceexplicitlyprohibited."
+    }
+  ],
+  "differences": [
+    "Birdlane was produced by thisreviewer; itsindependentreview delegatedtoroot, excludedfrom78assetcount.",
+    "Atcattle31.30px torso×0.24 scale, tinyanimals andtoys notspecies-identifiable atzoom0.6. This is not hiddenor compensated byinflation.",
+    "48portraitornament is about14px: cradlemayreadasboat; blackmourningribbon lowcontrastondark; exactstateneedsUIlabels. Illness/injurybandages sharemotif butherbsdiffer.",
+    "Weatherproofs static offline composites;zoom0.6resampling notactualcamera. Runtimeanimation/performance/collision nottested.",
+    "Fullstrengthweatherrepeat hasfaintperiodicity; recommendedopacity reduces it. Combinedsumcap0.38 needed, notallmaximaconcurrent.",
+    "Royalheateroutlines handpaintedvariantsnotpixelidenticaltoWave14mask."
+  ],
+  "suggestions": [
+    "Use documentedblend/opacity/scale/frame/pivot contracts atfutureintegration.",
+    "Retain state labels for48px portraits and speciescontext for tinyanimals."
+  ],
+  "reasoning": "Requiredcandidateassets/proofs preserveprojecttone and statedconstraints; detectedtailmaskandcap-evidencegaps corrected. Reducedscale limits explicitlyreportedratherthanfalsePASS.",
+  "reviewedHashes": [
+    {
+      "file": "assets/weather/cloud_shadow_a.png",
+      "sha256": "e4dfd75d9d447ee2bd4073208ea1b9a475e3d456bcff920a8acc49cc01e7ecd1"
+    },
+    {
+      "file": "assets/weather/cloud_shadow_b.png",
+      "sha256": "4c843f0710d4359c38299cd04d419f38a535e32547cb3542928b6cc2bd3fb63c"
+    },
+    {
+      "file": "assets/weather/drizzle_sheet.png",
+      "sha256": "fccc97c4e354a128ee386ba8ca46a65443c7996dfeed74bb562b985c73a926c1"
+    },
+    {
+      "file": "assets/weather/dry_dust_a.png",
+      "sha256": "a18cd4f560eebe1e1c81c5ef39f82e4bd08e6f914efe1d6b93911ce7fde6603b"
+    },
+    {
+      "file": "assets/weather/dry_dust_b.png",
+      "sha256": "e1eca92ecbeb9cd148014d12bc0966e327af5cc2b4b79c52dcfdb3fc401f36c5"
+    },
+    {
+      "file": "assets/weather/fog_bank_a.png",
+      "sha256": "bab50ebfe2ec06ef83bf730f377054c1d07910721435cd788d2fd784768c1a53"
+    },
+    {
+      "file": "assets/weather/fog_bank_b.png",
+      "sha256": "f809ba976050100991944ff5dd77c92c55aa3327c2939c47f851decab350f33f"
+    },
+    {
+      "file": "assets/weather/fog_bank_c.png",
+      "sha256": "d610469705d952deb40a43918bffe25e829753289372a42477201076fa6723c5"
+    },
+    {
+      "file": "assets/weather/frost_morning_tint.png",
+      "sha256": "b3bffbb8830676041715c21b9319362884f18646db32eabe39fbd6e8d7671ad6"
+    },
+    {
+      "file": "assets/weather/heat_cracked_ground.png",
+      "sha256": "7b07e69ae11265ab4dcfb44463c4b57eb71feb010fbc4de212e6f425f553514c"
+    },
+    {
+      "file": "assets/weather/overcast_tint.png",
+      "sha256": "0af10e8a53c7232cbaa9205713dbf3eca0041d428d9e6cae2990118b2866d57d"
+    },
+    {
+      "file": "assets/weather/puddle_ripple_sheet.png",
+      "sha256": "a50734656c88ec36758e8cae86211efc318bcaba1692df39cedaa3b79c6baa0f"
+    },
+    {
+      "file": "assets/weather/storm_rain_sheet.png",
+      "sha256": "213890ebbec37403154abb5bcd82847b8b8ef83da4870332f9665c7459470d99"
+    },
+    {
+      "file": "assets/weather/wet_ground_sheen.png",
+      "sha256": "73140e0d7c3a89bd75dbc61ac9ce054667b2fbddf19c99e07737505eae0d1daf"
+    },
+    {
+      "file": "assets/life_ground/cat_idle_a.png",
+      "sha256": "e2ca3aab06fed88d9d15a0bee0fcbbf072d7579e1f98da050ade702c5da1b0bb"
+    },
+    {
+      "file": "assets/life_ground/cat_idle_b.png",
+      "sha256": "b647f9eecdf40768fdf7b91e4f5d394e00aac825a1b499a134ba1ba536197182"
+    },
+    {
+      "file": "assets/life_ground/chicken_flock_a.png",
+      "sha256": "2a2c065cca551e71d165e40b3abf4415c760736cb41910df46f7e1d79b9cbc1c"
+    },
+    {
+      "file": "assets/life_ground/chicken_flock_b.png",
+      "sha256": "2ae5a72a01278eccbd901fbe423b9b7d1ebbdbd36f53913a64c4c7cd11ce0c18"
+    },
+    {
+      "file": "assets/life_ground/chicken_flock_c.png",
+      "sha256": "74716a11ade6ca13dcbdc7fb3cae46eebe4a771ad618445947d223171599fdea"
+    },
+    {
+      "file": "assets/life_ground/chicken_walk_sheet.png",
+      "sha256": "8561a49b2555bb92217537d872065b7ea8659b911af73b3dab17167211d49eff"
+    },
+    {
+      "file": "assets/life_ground/village_dog_sleep.png",
+      "sha256": "78c89e63ca3a658e1c77370d2970a53b9db25ab968265bc11972df4caa27a56f"
+    },
+    {
+      "file": "assets/life_ground/village_dog_walk_sheet.png",
+      "sha256": "51de9f247b38a6d5a30980b900d1220002d21582eaac966f72983d7aed82851b"
+    },
+    {
+      "file": "assets/life_props/child_ball.png",
+      "sha256": "4b38a69d59bc43cd76c8c3de5f6f317ce3b8fe3b9d4b5837759d9335ffba7527"
+    },
+    {
+      "file": "assets/life_props/child_hoop.png",
+      "sha256": "387d25355e4b84a2c0c244252fa7b8900d0d810d1fed9b80f3c7c3032fc4fb29"
+    },
+    {
+      "file": "assets/life_props/child_wooden_sword.png",
+      "sha256": "bc7deceb4e2b43eeccd202c5b31bf4babee7cf44b1bddf7bcd4b0772049989d9"
+    },
+    {
+      "file": "assets/life_props/clothesline_a.png",
+      "sha256": "4eedc2220affa5c568b408d93f43e6f5b0245b75b75437b5247e11068798b802"
+    },
+    {
+      "file": "assets/life_props/clothesline_b.png",
+      "sha256": "f0165c416b7654fef0736db8883d5b49a562cee49f54768d2957ba80b816c8f2"
+    },
+    {
+      "file": "assets/life_props/doorstep_barrel.png",
+      "sha256": "eae431c2410ae6e85b5edeb0bb4b750ecf842d84aae526e46a17e6a345ee8c67"
+    },
+    {
+      "file": "assets/life_props/doorstep_chair.png",
+      "sha256": "5be5bfe6fb2a0d1045a45d856cf1cd56ff31213371a7b976ffb47961d111f8a1"
+    },
+    {
+      "file": "assets/life_props/well_bucket.png",
+      "sha256": "d0d652f173a3a6b5ef5883c03418cb68b181e64b42d997b3865422e56dbfefc9"
+    },
+    {
+      "file": "assets/person_state/bailiff_48.png",
+      "sha256": "935ae32445d7ff7a79d6b0274f904862710f7b0399390356bea61b24afc3272e"
+    },
+    {
+      "file": "assets/person_state/bailiff_96.png",
+      "sha256": "aba6aa3e2abcad15c10c27dd0d2a4d42815e0ae86d4a7e14bf2260449cee6bff"
+    },
+    {
+      "file": "assets/person_state/dead_48.png",
+      "sha256": "0f043980dd0b9aa9f3442cf0bda4f5013f47ac08f2f25b78a96dc2f26fed74f5"
+    },
+    {
+      "file": "assets/person_state/dead_96.png",
+      "sha256": "4659e965c46f96831378b080537b30b5f0868c9f1bac0ebaff31f213e7e47f53"
+    },
+    {
+      "file": "assets/person_state/hunger_48.png",
+      "sha256": "4b4f19fc2b32386b616a410b5a4004908d6f7155b5fd0ea398cbb1fc61f0becf"
+    },
+    {
+      "file": "assets/person_state/hunger_96.png",
+      "sha256": "f805c642eae0947831ee52be1c7aaf2030ea97f2ebb8513e8b0a8d14ebe2aafe"
+    },
+    {
+      "file": "assets/person_state/injury_48.png",
+      "sha256": "ad2ccb7dea4724981401dc861e652cf34a1848bbf61d0493a143c7b840618957"
+    },
+    {
+      "file": "assets/person_state/injury_96.png",
+      "sha256": "7d21afe33e0ac95aa41d8184e7c6f9089f976d4d63200fef1cf2df59d5ab6e7f"
+    },
+    {
+      "file": "assets/person_state/marriage_48.png",
+      "sha256": "b2bfc7a3c58e080e264474f520d2f46d84a4d0c728b700777e6541bc356c6a0f"
+    },
+    {
+      "file": "assets/person_state/marriage_96.png",
+      "sha256": "ba6fea32c51ddd08e0273d2241351b0e9c67672e26fa016637f99afc320c0613"
+    },
+    {
+      "file": "assets/person_state/mourning_48.png",
+      "sha256": "d3f86355d660067379375acb30d25060845020393065f086e43650b7fdeac112"
+    },
+    {
+      "file": "assets/person_state/mourning_96.png",
+      "sha256": "80ad892108bcba36df87351b87d694beff29a3add27259a9bebea941af068f45"
+    },
+    {
+      "file": "assets/person_state/newborn_48.png",
+      "sha256": "ea28e260e991f23ce22888a0f851e022d74288ce7f5fd5bae572c56509b3621f"
+    },
+    {
+      "file": "assets/person_state/newborn_96.png",
+      "sha256": "c178fe3e24aa11d31ee4bd708ed170741f896c77755ec4402575db354a2713a0"
+    },
+    {
+      "file": "assets/person_state/pilgrim_48.png",
+      "sha256": "4edf2d7bfabaa6629faffe7e88d584a7174cbb82e37dc6f9b19353b1c5ab29bf"
+    },
+    {
+      "file": "assets/person_state/pilgrim_96.png",
+      "sha256": "d3686f47d18abf161fdd9c9570dc6a59bc7d1bc9a6fd7e4739948e8aa536a743"
+    },
+    {
+      "file": "assets/person_state/pregnant_48.png",
+      "sha256": "c999487593c1e989253f619aef2fd598ebbe2fa1c99091b0d238d622eecc043a"
+    },
+    {
+      "file": "assets/person_state/pregnant_96.png",
+      "sha256": "1fb0986029f56003a5c5ccc0892e83325852881ef7b6c64bb034d3884f8d83d3"
+    },
+    {
+      "file": "assets/person_state/reeve_48.png",
+      "sha256": "ded9b1c015452e07810272b306f3eb58756e4e08d8fb04c5bcf358c0cd04c416"
+    },
+    {
+      "file": "assets/person_state/reeve_96.png",
+      "sha256": "754ad8fdfb36998c6f68b72845b7740d3695b9056377f8c8845b778a9d68af17"
+    },
+    {
+      "file": "assets/person_state/sick_48.png",
+      "sha256": "514b972fff0bdef3a83e7dd1f261ce4967a42b51ada35794c9f51b32a03ba718"
+    },
+    {
+      "file": "assets/person_state/sick_96.png",
+      "sha256": "1c4d954d39ecdb5f31176f9dc03d27dfb8aa8809b28a31ea3b861de50c167637"
+    },
+    {
+      "file": "assets/person_state/steward_48.png",
+      "sha256": "eee23497f0fe05aa3f8b1f22ec4778d245bbf042be826f10beebcc6f357f9d64"
+    },
+    {
+      "file": "assets/person_state/steward_96.png",
+      "sha256": "a86edc2c292dbbe737ba849fde1721e47b545da76da4ed7f21f8f3aadb0d4c2c"
+    },
+    {
+      "file": "assets/royal/arms_royal_england_1340_256.png",
+      "sha256": "8d9205aee202c605dfaf57de99639ccdf1ae2c545efc18158bf7cbc52a1b9ca9"
+    },
+    {
+      "file": "assets/royal/arms_royal_england_1340_96.png",
+      "sha256": "1cc67d2fb65252c7b2cc7bfb70bc6ebadbab13580f958b9071d5b17ffbbe3539"
+    },
+    {
+      "file": "assets/royal/arms_royal_england_pre1340_256.png",
+      "sha256": "7ee87bb3c9431db348a137953635d7faebe29433cdf55529b70dda228ed574b0"
+    },
+    {
+      "file": "assets/royal/arms_royal_england_pre1340_96.png",
+      "sha256": "8272a332f9b1b3896b9b747c0a8b5368fe434608d39c914830daaa77f83e2375"
+    },
+    {
+      "file": "assets/pad/pad_a_32.png",
+      "sha256": "436422857064556ededf84198ad176cd3651abb337bfa626dd23088c42b8acfe"
+    },
+    {
+      "file": "assets/pad/pad_a_48.png",
+      "sha256": "1f7bc902545d48eec0fa425f30fee24a87ddeb153e19919d70b15f03d312b840"
+    },
+    {
+      "file": "assets/pad/pad_b_32.png",
+      "sha256": "2b51d366e5750736c13669da198aa3b9c26a2495fffe9f8e7401d17375c6f7fc"
+    },
+    {
+      "file": "assets/pad/pad_b_48.png",
+      "sha256": "7f898983c8857c09bf9ea1c843497f61bbdfd888e0a2b41f1573ef067e03c174"
+    },
+    {
+      "file": "assets/pad/pad_dpad_32.png",
+      "sha256": "1a06132b8eb5aaada5655c9190fe669a4cf9fb0a2127ac24158d86012b9be787"
+    },
+    {
+      "file": "assets/pad/pad_dpad_48.png",
+      "sha256": "c6c325fad21ed35e82a5e76ec93ab798e9fbd6ac9e72b39a928886622c6af4b3"
+    },
+    {
+      "file": "assets/pad/pad_menu_32.png",
+      "sha256": "9a0cc79d455a59ebab618f6ca58ceff777944bf3019d07e926649733394c0e8e"
+    },
+    {
+      "file": "assets/pad/pad_menu_48.png",
+      "sha256": "3f5ab2bf0c1be9a27a219426de43baf6295bc39ac145f40ac5de6bc49dac7b6d"
+    },
+    {
+      "file": "assets/pad/pad_shoulder_32.png",
+      "sha256": "46c4314216a8974e5c39514d0e1874b4ce55ed4463f95b932fea51f2b062dcdb"
+    },
+    {
+      "file": "assets/pad/pad_shoulder_48.png",
+      "sha256": "1ccf310a92af7f5c34b792cec209680c3b286ec8a2363d53611be0e8c4827b08"
+    },
+    {
+      "file": "assets/pad/pad_stick_press_32.png",
+      "sha256": "2d2c8402d015744af61b356e52a11a4e48718743226f6459b01b60ce46ed178f"
+    },
+    {
+      "file": "assets/pad/pad_stick_press_48.png",
+      "sha256": "50494022ad33935bb56a88945c45b2719ee6a6291cee1acd430f5a9f5de422c3"
+    },
+    {
+      "file": "assets/pad/pad_trigger_32.png",
+      "sha256": "9d5acdb909a2b20ba66c6fefd56983e321a1326fa5d8a6794786a97d93450f6b"
+    },
+    {
+      "file": "assets/pad/pad_trigger_48.png",
+      "sha256": "b9e8e84e15b5285c1f25ad42d0e031082b6003f6c6e6fe45ab96b4af20ba62a8"
+    },
+    {
+      "file": "assets/pad/pad_view_32.png",
+      "sha256": "d9f61f3ca2600812744abcf26bf790d2f2f59f651dd150231078e63d067c8492"
+    },
+    {
+      "file": "assets/pad/pad_view_48.png",
+      "sha256": "9b29049be4f700c5f25db0e774f606aeb5bce03fac8a9831b05f6caccced50b6"
+    },
+    {
+      "file": "assets/pad/pad_x_32.png",
+      "sha256": "47de396ceca01543a922dd05e0bd6381136768bb04515a216c497c69bcc467c9"
+    },
+    {
+      "file": "assets/pad/pad_x_48.png",
+      "sha256": "081d69f306c09e6dc11a46068ef37637c359d2304c3d1586226aa995517ff869"
+    },
+    {
+      "file": "assets/pad/pad_y_32.png",
+      "sha256": "3d92114651c951fe0b2d526840fb02940e04bfcf519b857b314926dd1615184b"
+    },
+    {
+      "file": "assets/pad/pad_y_48.png",
+      "sha256": "a43dfce0cd64730e2be677714ea28bbba2f59f2e839785c2e0e378f8758733b2"
+    }
+  ]
+}

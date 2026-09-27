@@ -1,0 +1,736 @@
+[
+  {
+    "id": "weather/overcast_tint",
+    "file": "assets/weather/overcast_tint.png",
+    "width": 256,
+    "height": 256,
+    "description": "overcast tint",
+    "role": "fill",
+    "blendMode": "multiply",
+    "opacityMax": 0.18,
+    "frameLayout": null,
+    "pivot": [
+      0,
+      0
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. Square XY seamless cloud-cover MULTIPLY tint tile. Very quiet blue-grey desaturated wash covering whole image, evenly low-frequency hand brushed variation, no focal cloud or vignette, all four edges must match. This is a neutral lighting filter not a cloud illustration. Opaque pale slate-grey RGB approximately 155 166 177, will be used at max 18% opacity. 1:1 image.",
+        "rawFile": "raw/weather/overcast_tint.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "Central52percent crop removes generated edge falloff; quiet painted interior used for tint.",
+      "Quiet tint color normalization:retain25percent RGB variation around generated mean, suppress repeating broad exposure bands.",
+      "12px opposite-edge blending repairs XY repeat; exact opposing edgeRGBA match.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 0 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/fog_bank_a",
+    "file": "assets/weather/fog_bank_a.png",
+    "width": 512,
+    "height": 256,
+    "description": "fog bank a",
+    "role": "decal",
+    "blendMode": "normal",
+    "opacityMax": 0.2,
+    "frameLayout": null,
+    "pivot": [
+      256,
+      128
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. Transparent horizontal morning river mist bank, aspect2:1. Long low flat wispy gauze band, translucent cool grey-white, irregular open holes and feathered transparent margins on every side. VERY low, nearly flat, no bulbous cloud masses. A long broken tapering wisp rises slightly at left and thins right. No shadow. Entire canvas background actual transparent. No black or white backdrop.",
+        "rawFile": "raw/weather/fog_bank_a.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "8px alpha edge feather prevents clipped transparent decal margins; no painted motif added.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 3817 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/fog_bank_b",
+    "file": "assets/weather/fog_bank_b.png",
+    "width": 512,
+    "height": 256,
+    "description": "fog bank b",
+    "role": "decal",
+    "blendMode": "normal",
+    "opacityMax": 0.2,
+    "frameLayout": null,
+    "pivot": [
+      256,
+      128
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. Actual transparent2:1 canvas. A diffuse very flat disconnected horizontal river mist ribbon, two long wisps with a CLEAR TRANSPARENT GAP at middle, quieter than cloud, thin grey-white translucent scumble. No round cloud lobes, no3Dvolume, no darkedge. All margins transparent. Lowopacity overlay intended20% maximum; don't include landscape.",
+        "rawFile": "raw/weather/fog_bank_b.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "8px alpha edge feather prevents clipped transparent decal margins; no painted motif added.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 3060 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/fog_bank_c",
+    "file": "assets/weather/fog_bank_c.png",
+    "width": 512,
+    "height": 256,
+    "description": "fog bank c",
+    "role": "decal",
+    "blendMode": "normal",
+    "opacityMax": 0.2,
+    "frameLayout": null,
+    "pivot": [
+      256,
+      128
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. Actual transparent2:1 canvas. A very thin broad S-curving morning mist ground ribbon seen in isometric projection, diagonally drifts lowerleft to upperright; sparse feathered cool offwhite translucent glaze, several large transparentbreaks, no3Dcloud volume, no shadows. Generous transparent margins. No landscape.",
+        "rawFile": "raw/weather/fog_bank_c.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "8px alpha edge feather prevents clipped transparent decal margins; no painted motif added.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 6687 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/drizzle_sheet",
+    "file": "assets/weather/drizzle_sheet.png",
+    "width": 1024,
+    "height": 256,
+    "description": "drizzle sheet",
+    "role": "fill",
+    "blendMode": "normal",
+    "opacityMax": 0.22,
+    "frameLayout": {
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 256,
+      "cellHeight": 256,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "pivot": [
+      0,
+      0
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Generate ONE hand-painted game VFX SPRITE SHEET, TRANSPARENT RGBA. Four SQUARE animation cells arranged exactly 2 columns x 2 rows, no gutters borders labels or separators. Every cell shows sparse thin pale grey slanted drizzle streaks drifting down-right, no background, no land or clouds. Each frame phase offset slightly, intensity identical, 10-16 streaks per cell. Each individual cell is seamless XY. Brush soft muted no bright white. No checkerboard painted. Project reference rain is heavier; create much sparser finer lighter variant. Later cells rearranged horizontal and reduced to256px cells. Frames TL0 TR1 BL2 BR3.",
+        "rawFile": "raw/weather/drizzle_sheet.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "Generated2x2 cells extracted, downsampled once to256square,12px XY edge seam blend percell, assembled4x1.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 34773 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/storm_rain_sheet",
+    "file": "assets/weather/storm_rain_sheet.png",
+    "width": 1024,
+    "height": 256,
+    "description": "storm rain sheet",
+    "role": "fill",
+    "blendMode": "normal",
+    "opacityMax": 0.28,
+    "frameLayout": {
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 256,
+      "cellHeight": 256,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "pivot": [
+      0,
+      0
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. ONE VFX animation sheet actualtransparentRGBA, exact2x2 grid of FOUR squarecells without gaps/borders/text. Everycell has dense longer fine slanting down-right rain streaks grey-blue, 40-60 small narrowstreaks, scattered evenly notclumped. Four consecutivephasepositions of fallingrain intensityconstant. Eachcell XYseamless. No sky, fog, background, ground orlightning. Rain only. Overall square sheet, laterrearrangedhorizontal at256cellsize.",
+        "rawFile": "raw/weather/storm_rain_sheet.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "Generated2x2 cells extracted, downsampled once to256square,12px XY edge seam blend percell, assembled4x1.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 73713 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/wet_ground_sheen",
+    "file": "assets/weather/wet_ground_sheen.png",
+    "width": 256,
+    "height": 128,
+    "description": "wet ground sheen",
+    "role": "fill",
+    "blendMode": "screen",
+    "opacityMax": 0.16,
+    "frameLayout": null,
+    "pivot": [
+      0,
+      0
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Hand-painted game texture overlay, transparent RGBA, 2:1 landscape. FLAT isometric wet earth sheen only: many very faint silver blue grey broken horizontal glints, broad sparse irregular streak patches angled along two isometric30degree axes, no puddle outlines, no scene, no soil background, no objects. XY repeat seamless pattern. Soft dry-brush glaze at low contrast, intended screen blend at18percent. No white background, no checkerboard, no text, no central focal shape, no castshadow.",
+        "rawFile": "raw/weather/wet_ground_sheen.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "12px opposite-edge blending repairs XY repeat; exact opposing edgeRGBA match.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 7044 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/puddle_ripple_sheet",
+    "file": "assets/weather/puddle_ripple_sheet.png",
+    "width": 256,
+    "height": 32,
+    "description": "puddle ripple sheet",
+    "role": "decal",
+    "blendMode": "screen",
+    "opacityMax": 0.35,
+    "frameLayout": {
+      "columns": 4,
+      "rows": 1,
+      "cellWidth": 64,
+      "cellHeight": 32,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "pivot": [
+      128,
+      16
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. ONE transparentRGBA sprite animation sheet four panels in ONE horizontalrow aspect4:1overall. Each panel is2:1flat isometric oval raindrop ripple, framesfromleft: tinyimpactdot; smallbrokenellipse; mediumtwobrokenellipses; largefaintdissolvingellipse. No puddlebase, no ground, no castshadow. Greysilver thinhandpainted ripples withgaps. Exactequalpanelcells, nocellborders, labelsorbackground. Eachfinalcell64x32 so largesimplemarks.",
+        "rawFile": "raw/weather/puddle_ripple_sheet.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "Four generated ripple frames horizontally extracted and downsampled once to64x32cells.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 507 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/dry_dust_a",
+    "file": "assets/weather/dry_dust_a.png",
+    "width": 256,
+    "height": 128,
+    "description": "dry dust a",
+    "role": "decal",
+    "blendMode": "normal",
+    "opacityMax": 0.18,
+    "frameLayout": null,
+    "pivot": [
+      128,
+      64
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Hand-painted gouache GAME EFFECT isolated on actual transparent RGBA. Aspect2:1 landscape, flat low drifting dust ribbon warm muted ochre taupe. Thin trailing wisps from left to right, airy uneven gaps, no bulky cloud or smoke, no ground base, no cast shadow, no objects, no text. All edges fade to fully transparent with generous margins. Broad brush marks survive256x128 resize, low contrast. No white/checkerboard backdrop.",
+        "rawFile": "raw/weather/dry_dust_a.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "8px alpha edge feather prevents clipped transparent decal margins; no painted motif added.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 669 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/dry_dust_b",
+    "file": "assets/weather/dry_dust_b.png",
+    "width": 256,
+    "height": 128,
+    "description": "dry dust b",
+    "role": "decal",
+    "blendMode": "normal",
+    "opacityMax": 0.18,
+    "frameLayout": null,
+    "pivot": [
+      128,
+      64
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. Actualtransparent2:1canvas. Verylow dry-earth duststream, three separate thinlong winddrawnwisps at30degree isometric angle towardupperright, muteddesaturatedsandtaupe, noopaquecloud, no3Dvolume, nocastshadow. Open transparentholes, featheredtransparentallmargins. No groundbase orobjects. Distinctfromsingleribbon:3disconnectedwisps.",
+        "rawFile": "raw/weather/dry_dust_b.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "8px alpha edge feather prevents clipped transparent decal margins; no painted motif added.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 1206 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/heat_cracked_ground",
+    "file": "assets/weather/heat_cracked_ground.png",
+    "width": 128,
+    "height": 64,
+    "description": "heat cracked ground",
+    "role": "decal",
+    "blendMode": "multiply",
+    "opacityMax": 0.32,
+    "frameLayout": null,
+    "pivot": [
+      64,
+      32
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. Actualtransparent2:1canvas. Flat isometric DROUGHT CRACK decal only: sparseirregular branching fissures in warmgrey-brownearth, roughlyoval footprintwithbrokenedges, onlydarkcracklines andtinyearthlips, transparentnegative spaces. Sixlargeirregularcells, no denseweb, no stone slabs, nogroundplatform, no volume/castshadow. Broadhandpaintedflattexture final128x64. Noplantsorobjects.",
+        "rawFile": "raw/weather/heat_cracked_ground.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "8px alpha edge feather prevents clipped transparent decal margins; no painted motif added.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 524 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/frost_morning_tint",
+    "file": "assets/weather/frost_morning_tint.png",
+    "width": 256,
+    "height": 256,
+    "description": "frost morning tint",
+    "role": "fill",
+    "blendMode": "normal",
+    "opacityMax": 0.1,
+    "frameLayout": null,
+    "pivot": [
+      0,
+      0
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. SquareXY seamless FROST LIGHTING TINT TILE, quiet palegrey-blue brush wash. FULLY FILLED square with NO centralspot,NO transparentborder,NO vignette,NO icecrystals or snowparticles. Even verylowcontrast coolpaintedvariation throughoutfourmatchingedges. It is a coolmorningcolorfilter, notcloudillustration. Pale RGB190205215 intendednormalblend10percent.",
+        "rawFile": "raw/weather/frost_morning_tint.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "Central52percent crop removes generated edge falloff; quiet painted interior used for tint.",
+      "Quiet tint color normalization:retain25percent RGB variation around generated mean, suppress repeating broad exposure bands.",
+      "12px opposite-edge blending repairs XY repeat; exact opposing edgeRGBA match.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 0 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/cloud_shadow_a",
+    "file": "assets/weather/cloud_shadow_a.png",
+    "width": 512,
+    "height": 512,
+    "description": "cloud shadow a",
+    "role": "decal",
+    "blendMode": "multiply",
+    "opacityMax": 0.12,
+    "frameLayout": null,
+    "pivot": [
+      256,
+      256
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Hand-painted game overhead CLOUD SHADOW overlay alone, actual transparent RGBA square. A very broad diffuse cool slate-brown dark translucent silhouette of one stretched irregular cloud shadow, wispy broken outline, three connected lobes but extremely soft indistinct shape, no white cloud, no highlights or3D form, no scene objects sky text. Low contrast gouache glaze, fade to transparent well before every edge, no hard contour. Used multiply at max12percent over painted village.",
+        "rawFile": "raw/weather/cloud_shadow_a.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "8px alpha edge feather prevents clipped transparent decal margins; no painted motif added.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 13108 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  },
+  {
+    "id": "weather/cloud_shadow_b",
+    "file": "assets/weather/cloud_shadow_b.png",
+    "width": 512,
+    "height": 512,
+    "description": "cloud shadow b",
+    "role": "decal",
+    "blendMode": "multiply",
+    "opacityMax": 0.12,
+    "frameLayout": null,
+    "pivot": [
+      256,
+      256
+    ],
+    "displayScale": 1,
+    "qa": {
+      "status": "offline_checked",
+      "combinedLayerCap": 0.38,
+      "scope": "Offline composite only; never apply to HUD. Same-pixel cumulative alpha <=0.38; use either drizzle or storm, not both.",
+      "visual": "All14 actual targetsize light/dark reviewed; individualcaps and combinedsum0.38 stress preserve roof/road/tree silhouettes. Raw saturatedblue pixels onlyalpha1-2/255 removed by documentedalpha hygiene. Allrain/ripple4frames reviewed.",
+      "evidence": [
+        "records/weather-light-dark.png",
+        "records/weather-repeat-3x3.png",
+        "records/weather-cap-check.png",
+        "records/weather-combined-cap038.png",
+        "proofs/proof01-weather.png"
+      ],
+      "limitations": [
+        "0.6 proof is offline resampling, not runtime camera",
+        "No runtime scrolling animation/performance/terrain occlusion verified",
+        "Use either drizzle or storm; do not stack all assetcaps together",
+        "Tint tiles retain subtle lowfrequency periodicity at100percent; applycaps"
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. A SINGLE finished hand-painted weather overlay texture for a medieval English isometric town game, muted gouache/scumbled brush feel, broad quiet motifs, no photographic noise, no objects, no buildings, no landscape, no text or border. True transparent RGBA where requested, never checkerboard painted into RGB. Square actualtransparentcloudSHADOW overlay. A broad flat diffuse darkgrey-brown silhouette shapedlike two stretched connectedbands withclearirregulargap, diagonallyoriented. No whitecloud, no volumeorhighlight, noobjectslandscapetext. Extremelyfeatheredouteredges fullytransparentbeforecanvasedge. Darkmutedgouache usedmultiplymax12percent, quietnotvignette.",
+        "rawFile": "raw/weather/cloud_shadow_b.png",
+        "referenceImages": [],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": [
+      "8px alpha edge feather prevents clipped transparent decal margins; no painted motif added.",
+      "Single downsample; actual generated alpha preserved.",
+      "RGBA nearzero-alpha hygiene:alpha<=2/255 cleared, 57488 nearinvisiblepixels; removes saturated hiddenRGB thumbnails, visiblepaintpreserved."
+    ]
+  }
+]
