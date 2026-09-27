@@ -30,6 +30,8 @@
 - DGX UI 관문 `f65a338`, 본선 `41c38ca2` 대비([gates.json](gates/gates.json)): 면적 1280 5.9 % / 6 %, 태블릿 6.4 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 게임패드·초점 복귀, 터치 대상·글자 위반 0. 캡처 16단계 오류 0.
 - 스킨 감사: 첫 실행에서 대기근 결정 상태가 빠졌다 — 기본 지연 1.5 초에 결정 카드가 `openScene`의 첫 Esc 전에 열려 닫혔고, 대신 누른 칩이 "젖은 여름"이었다(불러오기 속도에 따라 본선은 통과). 청원·대기근 단계의 이야기 지연을 5 초로 하고 감사만 `b77dd03`에서 다시 돌려 0 / 909, 26개 상태 모두([audit.json](audit/audit.json)). 그 실행의 본선 감사는 장 끝 단계에서 멈췄다(첫 실행 본선 0 / 788 통과). `gates/exit-codes.txt`의 감사 1은 첫 실행 값이다.
 - 깨끗한 클론 `6eb46d1`(DGX): npm ci, typecheck, 3,272/3,272, build. `npm run check:merge` 통과.
+- 본선 FIX-6을 받은 병합 `1ebb130`(문서 넷 충돌, 양쪽 줄 유지; 출처 장부는 본선 쪽에 설치 스크립트를 다시 돌려 부두 줄): 깨끗한 클론 3,280/3,280, build.
+- 넘겨받을 것(FIX-6 보고서): 화면의 사람 이름을 `persons.displayName`(한글) 하나로 — `personModels`·`factionLeaderName`·`factionTabModel`·`chronicleScreenModel`, 겹치는 국왕 표 하나 지우기. UI-6b 범위 밖이라 따로 한다.
 - 시간: 01:56(작업 가지 생성) → 02:42(클론 통과, KST 벽시계), 약 46분.
 - 증거 0.5 MB.
 
