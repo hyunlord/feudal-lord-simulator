@@ -1,11 +1,19 @@
 # 현재 상태
 
-갱신: 2026-09-28(FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UI-6 2장 화면 — 관문 통과(⑧ 사용자 판정 대기), 본선 병합**(Claude Code, 렌더 세션, 렌더·UI·스크립트·시험·문서, 엔진 파일은 조회만·규칙 0줄, 검증 DGX, 사용자 지시): [보고서](verification/ui6/REPORT.md), 결정 UI6-D1~D8.
+  - 청원 카드는 defId별 표현 표: 2장 결정 다섯이 Wave 17 삽화·원장의 선택지 이름·규칙의 수·`warDecisionForecast` 예측, 보낸 이는 세력(이름·문장·수장 초상), 왕실은 밀랍 인장.
+  - 전쟁 세계 → UI: 봉화대(꺼짐·켜짐)·부두 불·불탄 집 연기 기둥(세계), 전령·봉화·습격·습격 뒤·빈 일터·석벽 칩과 사건 카드, 계절 띠 전쟁 예고, 성벽 카드 방어도, 떠난 사람 줄.
+  - 장부 서랍 "권리" 탭(가문 문장·칭호·세 권리·쇠퇴·전쟁), 연대기 "세력" 탭(아홉 세력·척도·수장·연표, 세력 쪽), 2장 목표 카드·시작·끝 쪽.
+  - 고침: 멈춘 게임의 장 끝 쪽(CODE-1c 후속), 장 쪽 제목 눌림(CHRON-1 이후 클래스 겹침), 2장 쪽의 앞뒤 장 이정표, 목표 카드 두 번 센 수.
+  - 검증: DGX 전체 회귀 3,269/3,269, 스킨 감사 0 / 909(26개 상태), 면적 5.9 % / 6 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 캡처 16단계 오류 0.
+  - 판정 대기: 화면 전체, 부두 아래 Wave 12 `quay-v1`, 초상 풀 3차(엔진 CODE-1a), 피란민 청원자가 주교 세력, 사람 영어 이름.
 
 - **FIX-5b 재정착민의 빵 — 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 판정): [보고서](verification/fix5b-resettle-bread/REPORT.md), 결정 FL16. 재정착 가구마다 한 계절분 빵(곡창, 없으면 가구 재고)을 넣고, 결산 힌트로 "재정착민의 식량은 ○○까지"를 보인다(UI 두 파일은 허락받은 상태 분기 예외). 가드레일 1회차 `361101f` 5/5(해시까지 기준선과 같음), 전체 회귀 3,250/3,250, 클론 `860bbe7` 3,250/3,250.
 
