@@ -5,7 +5,7 @@
 // carries that art. Native <select>, <input> (other than the kit slider) and <textarea> are failures too.
 // Writes <out>/audit.json (per state: counts and every skinless element) and a capture per state with the skinless
 // elements outlined, plus sheet-desktop.jpg (every state) and the gallery at desktop and tablet size (gate ③).
-//   PLAYWRIGHT_MODULE=... node scripts/uiSkinAudit.mjs <out-dir> --url <url> --states <dir of scripts/ui5States.ts>
+//   PLAYWRIGHT_MODULE=... node scripts/uiSkinAudit.mjs <out-dir> --url <url> --states <dir of scripts/ui5States.ts> [--states6 <dir of scripts/ui6States.ts>]
 // Exit 1 when any state has a skinless element or a state could not be opened.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -200,6 +200,46 @@ await step('chapter-end', async () => {
   await context.close();
 });
 
+// UI-6: chapter 2 (the states of scripts/ui6States.ts, with --states6): two of the war's decision cards (the Crown's
+// writ; the bishop's refugees), the ledger's rights tab at a decline (a right lost) and at chapter 2's end, and chapter
+// 2's page.
+const states6 = flag('states6');
+const load6 = name => JSON.parse(readFileSync(join(states6, `${name}.json`), 'utf8'));
+const keepTile = state => { const keep = state.buildings.find(building => building.kind === 'keep') ?? state.buildings.find(building => building.kind === 'house'); return [keep.tx, keep.ty]; };
+async function scene6(stateName, extra = {}) {
+  const state = load6(stateName);
+  const opened = await openScene(browser, { state, tile: keepTile(state), baseUrl: url, width: 1280, height: 800, zoom: 1.1, run: false,
+    initScript: TUTORIAL_OFF, query: extra.query ?? '' });
+  opened.page.on('pageerror', error => result.errors.push(`${stateName}: ${String(error)}`));
+  return opened;
+}
+if (states6 !== undefined) {
+  for (const [name, stateName] of [['war-petition-writ', 'wool_payment'], ['war-petition-refugees', 'refugee_admission']]) {
+    await step(name, async () => {
+      const { context, page } = await scene6(stateName, { query: '&story-delay=600' });
+      await storyModal(page, '.petition-card', `x-${name}-timeout.jpg`); await pause(700);
+      await audit(name, page, `s20-${name}.jpg`);
+      await context.close();
+    });
+  }
+  for (const [name, stateName] of [['rights-decline', 'decline'], ['rights-chapter2', 'chapter2-end']]) {
+    await step(name, async () => {
+      const { context, page } = await scene6(stateName, { query: '&story-delay=600000' });
+      await pause(1000);
+      await page.locator("[data-dock='ledger']").click(); await pause(500);
+      await page.locator('.ledger-tab', { hasText: /^권리$/ }).click(); await pause(700);
+      await audit(name, page, `s21-${name}.jpg`);
+      await context.close();
+    });
+  }
+  await step('chapter2-page', async () => {
+    const { context, page } = await scene6('chapter2-end', { query: '&story-delay=600' });
+    await page.locator('.chronicle-page').waitFor({ timeout: 30_000 }); await pause(800);
+    await audit('chapter2-page', page, 's22-chapter2-page.jpg');
+    await context.close();
+  });
+}
+
 // Gate ③: the gallery at desktop and tablet size (full page), audited as well.
 for (const [name, viewport, touch] of [['gallery-desktop', { width: 1280, height: 800 }, false], ['gallery-tablet', { width: 1180, height: 820 }, true]]) {
   await step(name, async () => {
@@ -229,7 +269,8 @@ await step('sheet', async () => {
 });
 
 await browser.close();
-const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet'];
+const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet',
+  ...(states6 === undefined ? [] : ['war-petition-writ', 'war-petition-refugees', 'rights-decline', 'rights-chapter2', 'chapter2-page'])];
 result.missing = expected.filter(name => result.states[name] === undefined);
 result.pass = result.total.skinless === 0 && result.missing.length === 0;
 writeFileSync(join(out, 'audit.json'), JSON.stringify(result, null, 1) + '\n');
