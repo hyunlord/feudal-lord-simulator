@@ -59,9 +59,14 @@ export async function routeSceneState(page, state) {
   });
 }
 
-/** Never resolves; rejects as soon as the page refuses its scene state (race it with the wait for the app). */
+/** Never resolves; rejects as soon as the page refuses its scene state (race it with the wait for the app). Attach it
+ * before the page loads. React reports the store's throw as a page error and on the console; either one counts. */
 export function sceneStateRefusal(page) {
-  return new Promise((_resolve, reject) => {
-    page.on('pageerror', error => { if (String(error).includes('StaleSceneStateError')) reject(error); });
+  const refused = new Promise((_resolve, reject) => {
+    const refuse = text => { if (text.includes('StaleSceneStateError')) reject(new Error(text.slice(0, 400))); };
+    page.on('pageerror', error => refuse(String(error)));
+    page.on('console', message => { if (message.type() === 'error') refuse(message.text()); });
   });
+  refused.catch(() => undefined); // a caller that never races it must not see an unhandled rejection
+  return refused;
 }

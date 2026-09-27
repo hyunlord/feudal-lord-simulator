@@ -1,0 +1,296 @@
+{
+ "urls": {
+  "base": "http://127.0.0.1:4351/",
+  "this": "http://127.0.0.1:4301/"
+ },
+ "summary": {
+  "hud": {
+   "base": 5.5,
+   "this": 5.4000000059604645,
+   "ratio": 98.2,
+   "valid": {
+    "base": 5,
+    "this": 5
+   },
+   "rounds": 5
+  },
+  "build-drawer": {
+   "base": 5.300000011920929,
+   "this": 5.200000017881393,
+   "ratio": 98.1,
+   "valid": {
+    "base": 5,
+    "this": 5
+   },
+   "rounds": 5
+  },
+  "chronicle-open": {
+   "base": 86,
+   "this": 103,
+   "ratio": 119.8
+  }
+ },
+ "pass": true,
+ "rows": [
+  {
+   "round": 0,
+   "build": "base",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 4,
+   "frameWorkP95Ms": 5.5,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.799999999999272
+  },
+  {
+   "round": 0,
+   "build": "base",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 4,
+   "frameWorkP95Ms": 5.300000011920929,
+   "rafMedianMs": 16.69999999999709,
+   "rafP95Ms": 16.700000000000728
+  },
+  {
+   "round": 0,
+   "build": "base",
+   "scene": "chronicle-open",
+   "openMs": 63
+  },
+  {
+   "round": 0,
+   "build": "this",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.399999976158142,
+   "rafMedianMs": 16.69999999999891,
+   "rafP95Ms": 16.799999999999272
+  },
+  {
+   "round": 0,
+   "build": "this",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.100000023841858,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.700000000000728
+  },
+  {
+   "round": 0,
+   "build": "this",
+   "scene": "chronicle-open",
+   "openMs": 103
+  },
+  {
+   "round": 1,
+   "build": "base",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.299999982118607,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.700000000000728
+  },
+  {
+   "round": 1,
+   "build": "base",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.300000011920929,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.799999999999272
+  },
+  {
+   "round": 1,
+   "build": "base",
+   "scene": "chronicle-open",
+   "openMs": 86
+  },
+  {
+   "round": 1,
+   "build": "this",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.4000000059604645,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.799999999999272
+  },
+  {
+   "round": 1,
+   "build": "this",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.199999988079071,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 50.099999999998545
+  },
+  {
+   "round": 1,
+   "build": "this",
+   "scene": "chronicle-open",
+   "openMs": 200
+  },
+  {
+   "round": 2,
+   "build": "base",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 5.0999999940395355,
+   "frameWorkP95Ms": 36.30000001192093,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 50.10000000000218
+  },
+  {
+   "round": 2,
+   "build": "base",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 5.399999976158142,
+   "frameWorkP95Ms": 32.099999994039536,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 50.099999999998545
+  },
+  {
+   "round": 2,
+   "build": "base",
+   "scene": "chronicle-open",
+   "openMs": 178
+  },
+  {
+   "round": 2,
+   "build": "this",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 5.0999999940395355,
+   "frameWorkP95Ms": 31.899999976158142,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 50
+  },
+  {
+   "round": 2,
+   "build": "this",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 5.100000023841858,
+   "frameWorkP95Ms": 31.899999976158142,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 50
+  },
+  {
+   "round": 2,
+   "build": "this",
+   "scene": "chronicle-open",
+   "openMs": 218
+  },
+  {
+   "round": 3,
+   "build": "base",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 5.199999988079071,
+   "frameWorkP95Ms": 41.400000005960464,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 50.10000000000218
+  },
+  {
+   "round": 3,
+   "build": "base",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 5.199999988079071,
+   "frameWorkP95Ms": 29.80000001192093,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 50
+  },
+  {
+   "round": 3,
+   "build": "base",
+   "scene": "chronicle-open",
+   "openMs": 181
+  },
+  {
+   "round": 3,
+   "build": "this",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 4.399999976158142,
+   "frameWorkP95Ms": 6.5,
+   "rafMedianMs": 16.69999999999709,
+   "rafP95Ms": 16.799999999999272
+  },
+  {
+   "round": 3,
+   "build": "this",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 4.100000023841858,
+   "frameWorkP95Ms": 5.600000023841858,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.799999999999272
+  },
+  {
+   "round": 3,
+   "build": "this",
+   "scene": "chronicle-open",
+   "openMs": 89
+  },
+  {
+   "round": 4,
+   "build": "base",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 4,
+   "frameWorkP95Ms": 5.300000011920929,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.700000000000728
+  },
+  {
+   "round": 4,
+   "build": "base",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.100000023841858,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.700000000000728
+  },
+  {
+   "round": 4,
+   "build": "base",
+   "scene": "chronicle-open",
+   "openMs": 74
+  },
+  {
+   "round": 4,
+   "build": "this",
+   "scene": "hud",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.4000000059604645,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.700000000000728
+  },
+  {
+   "round": 4,
+   "build": "this",
+   "scene": "build-drawer",
+   "frames": 480,
+   "frameWorkMedianMs": 3.9000000059604645,
+   "frameWorkP95Ms": 5.200000017881393,
+   "rafMedianMs": 16.69999999999709,
+   "rafP95Ms": 16.700000000000728
+  },
+  {
+   "round": 4,
+   "build": "this",
+   "scene": "chronicle-open",
+   "openMs": 99
+  }
+ ]
+}

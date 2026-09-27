@@ -1,0 +1,16 @@
+{
+ "url": "http://127.0.0.1:4301/",
+ "old": {
+  "path": "fixtures/determinism/seed1/final-state.json",
+  "admitted": false,
+  "error": "TimeoutError: page.waitForFunction: Timeout 60000ms exceeded.",
+  "seconds": 60.7
+ },
+ "current": {
+  "path": "/home/hyunlord/fls-ui5-states-resreg/chapter-end.json",
+  "tick": 77500,
+  "admitted": true,
+  "seconds": 3.8
+ },
+ "pass": false
+}

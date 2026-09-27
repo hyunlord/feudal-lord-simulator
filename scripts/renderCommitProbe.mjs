@@ -66,9 +66,11 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
       await route.fulfill({ response, body: text.replace(from, to) });
     });
   }
+  // A state the save codec refuses (an old bare save) fails the scene at once instead of at the 60 s wait; the
+  // listener is on before the page loads (the store's first render throws during the load).
+  const refused = sceneStateRefusal(page);
   await page.goto(`${baseUrl}?phase10-proof=1${query}`);
-  // A state the save codec refuses (an old bare save) fails the scene at once instead of at the 60 s wait.
-  await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 }), sceneStateRefusal(page)]);
+  await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 }), refused]);
   if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click();
   await page.keyboard.press('Escape');
   // UX-3 S-31: Esc on the idle screen opens the pause menu; a scene starts without it.
