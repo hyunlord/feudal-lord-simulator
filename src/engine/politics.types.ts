@@ -65,6 +65,15 @@ export interface ChronicleEntry {
     readonly treasury: number;
     /** The famine's population at arrival and at its end. */
     readonly famine: { readonly year: number; readonly populationAtArrival: number; readonly populationAtEnd: number } | null;
+    /** F2-A (WR-9): chapter 2's war — the raid (year, losses, the ring's defence), the men the array took and lost, the wall. */
+    readonly war?: {
+      readonly raidYear: number | null;
+      readonly raidLosses: import("./war.types").RaidLosses | null;
+      readonly defencePermille: number | null;
+      readonly men: number;
+      readonly lostMen: number;
+      readonly wall: "stone_wall" | "market" | "unfinished";
+    };
   };
 }
 

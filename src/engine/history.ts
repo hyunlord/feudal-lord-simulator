@@ -38,6 +38,8 @@ import { housingLotCount } from "../population/housing";
 import type { SourceRef } from "../contracts";
 import type { Person } from "./persons.types";
 import { lordshipOf } from "./lordshipState";
+import { beaconLit, raidEventId, warDecisionForecast } from "./war";
+import { WAR_PETITION_IDS } from "../content/warConfig";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const TOWN: ActorRef = { type: "town", id: "town" };
@@ -130,9 +132,12 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
     const chosen = String(command.response) as PetitionResponse;
     // FAIL-3 (FL-6): the petition's own terms (a restoration costs the treasury its fee).
     const defId = before.politics?.petitions.find(petition => petition.id === command.petitionId)?.defId;
-    const outcome = (PETITION_DEFS.find(def => def.id === defId) ?? PETITION_DEFS[0]!).outcomes[chosen];
+    const def = PETITION_DEFS.find(entry => entry.id === defId) ?? PETITION_DEFS[0]!;
+    const outcome = def.outcomes[chosen];
+    // F2-A (WR-2…WR-8): a war decision's sums follow the town (the war's own forecast).
+    const treasury = def.trigger === "war" ? warDecisionForecast(before, def.id, chosen) : now.treasury! + outcome.charterFee;
     return { chosen, alternatives: (["accept", "accept_with_price", "refuse"] as const).filter(option => option !== chosen),
-      predicted: { treasury: now.treasury! + outcome.charterFee, merchantGauge: Math.max(0, Math.min(100, now.merchantGauge! + outcome.gauge)) }, actualDueTick: due };
+      predicted: { treasury, merchantGauge: Math.max(0, Math.min(100, now.merchantGauge! + outcome.gauge)) }, actualDueTick: due };
   }
   if (kind === "stone_town") {
     return { chosen: "proclaim", alternatives: ["wait"], predicted: { treasury: now.treasury! - MONEY_BALANCE.stoneWallProjectCost, lots: now.lots! }, actualDueTick: due };
@@ -164,6 +169,11 @@ export function recordDecision(before: GameState, after: GameState, command: { r
   // FC-2a, FC-2b: the relief's or speculation's actual is its posted cost or sale on the treasury at the decision (`fillActuals`).
   const famine = kind === "famine_response" && (decision.chosen === "relief" || decision.chosen === "speculation") ? famineOf(before) : undefined;
   if (famine !== undefined) Object.assign(params, { eventId: famine.id, treasuryAtDecision: before.treasuryCoin });
+  // F2-A: which petition was answered (the war's five read their own sentence).
+  if (kind === "petition_response") {
+    const defId = before.politics?.petitions.find(petition => petition.id === command.petitionId)?.defId;
+    if (defId !== undefined) params.defId = defId;
+  }
   const place = kind === "rebuild" ? after.buildings.find(entry => entry.id === command.buildingId) : undefined;
   // FAIL-3 (FL-6): a restoration answered by the command ends the decline there, so its record comes with the decision.
   return { ...after, history: append(history, [{ tick: after.tick, kind: "decision", template: `decision.${kind}`, params, subject: TOWN,
@@ -406,6 +416,36 @@ function lordshipDrafts(before: GameState, after: GameState): Draft[] {
   return drafts;
 }
 
+/**
+ * F2-A (WR-1…WR-7): the war's turns — the messenger, the beacon, the raid (what it took), the men gone and home, a
+ * royal demand left unanswered, the Crown's favour lost, the purveyance licence.
+ */
+function warDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] {
+  const was = before.war, now = after.war;
+  if (now === undefined || was === now) return [];
+  const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];
+  const at = { tick: after.tick, subject: TOWN };
+  if (was === undefined) drafts.push({ ...at, kind: "event", template: "war.messenger", severity: 2 });
+  if (beaconLit(after) && !beaconLit(before)) drafts.push({ ...at, kind: "event", template: "war.beacon", severity: 2 });
+  if (now.raid !== undefined && was?.raid === undefined) {
+    drafts.push({ ...at, kind: "event", template: "war.raid", severity: 3, params: { burntHouses: now.raid.losses.burntHouses, looted: now.raid.losses.looted,
+      coin: now.raid.losses.coin, defence: now.raid.defencePermille }, cause: { type: "event", id: raidEventId(now.raid.tick), detail: "coastal_raid" },
+      thumbnail: { state: after, size: 256 } });
+  }
+  if (now.conscripts !== undefined && was?.conscripts === undefined) drafts.push({ ...at, kind: "event", template: "war.conscripts_left", severity: 2, params: { men: now.conscripts.men } });
+  if (now.conscripts?.returned === true && was?.conscripts?.returned === false) {
+    drafts.push({ ...at, kind: "event", template: "war.conscripts_returned", severity: 2, params: { men: now.conscripts.men, lost: now.conscripts.lostHouseIds.length } });
+  }
+  if (was !== undefined && was.favour && !now.favour) drafts.push({ ...at, kind: "event", template: "war.favour_lost", severity: 2 });
+  if (now.licenceSeasonsLeft !== undefined && was?.licenceSeasonsLeft === undefined) drafts.push({ ...at, kind: "event", template: "war.licence", severity: 2 });
+  for (const [defId, answer] of Object.entries(now.answers)) {
+    if (answer === "expired" && was?.answers[defId] !== "expired" && (WAR_PETITION_IDS as readonly string[]).includes(defId)) {
+      drafts.push({ ...at, kind: "event", template: "war.unanswered", severity: 2, params: { defId } });
+    }
+  }
+  return drafts;
+}
+
 /** One tick of the ledger: `before` is the state the tick started from. */
 export function advanceHistory(before: GameState, after: GameState): GameState {
   let history = historyOf(after);
@@ -421,6 +461,7 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
       thumbnail: { state: after, size: 256 } });
   }
   drafts.push(...lordshipDrafts(before, after));
+  drafts.push(...warDrafts(before, after));
   drafts.push(...personDrafts(before, after));
   let milestones = history.milestones;
   if (after.tick % PRESSURE_BALANCE.sampleTicks === 0) {

@@ -2,6 +2,7 @@
  * F0-C1 chapter 1 content (spec docs/design/flow-chapter-one.md FC-*): the famine responses, the first petition and the
  * chapter's end. Values are integers (permille for fractions, pennies for money).
  */
+import { WAR_PETITION_DEFS } from "./warConfig";
 
 /** FC-2: the lord's answer to the Great Famine. */
 export type FamineResponseChoice = "relief" | "price_control" | "laissez_faire" | "speculation";
@@ -30,8 +31,11 @@ export const FAMINE_RESPONSE_CONFIG = {
   speculationDepartureCap: 3,
 } as const;
 
-/** FC-3: petitioners (the gauge starts at 50 of 100). FAIL-3 (FL-6): the overlord asks too, to hand back a right he holds. */
-export type Petitioner = "merchants" | "overlord";
+/**
+ * FC-3: petitioners (the gauge starts at 50 of 100). FAIL-3 (FL-6): the overlord asks too, to hand back a right he holds.
+ * F2-A (WR-2…WR-8): the Crown demands, the refugees ask, the townsfolk choose the wall or the market.
+ */
+export type Petitioner = "merchants" | "overlord" | "crown" | "refugees" | "townsfolk";
 export const MERCHANT_GAUGE_START = 50;
 
 export type PetitionResponse = "accept" | "refuse" | "accept_with_price";
@@ -62,8 +66,11 @@ export interface PetitionDef {
   readonly requiresLots: number;
   readonly outcomes: Readonly<Record<PetitionResponse, PetitionOutcome>>;
   readonly expiredGauge: number;
-  /** FAIL-3 (FL-6): how it arrives — by the calendar (FC-3, absent) or when a decline's cause has cleared (`lordship.ts`). */
-  readonly trigger?: "calendar" | "decline_recovered";
+  /**
+   * FAIL-3 (FL-6): how it arrives — by the calendar (FC-3, absent) or when a decline's cause has cleared (`lordship.ts`).
+   * F2-A (WR-2…WR-8): or in the war's sequence (`war.ts`).
+   */
+  readonly trigger?: "calendar" | "decline_recovered" | "war";
 }
 
 export const MARKET_CHARTER_PETITION_ID = "market_charter";
@@ -96,6 +103,7 @@ export const PETITION_DEFS: readonly PetitionDef[] = [
     },
     expiredGauge: 0,
   },
+  ...WAR_PETITION_DEFS,
 ];
 
 /** FC-5: chapter 1 ends with a market town that came through the famine with this share of its people. */

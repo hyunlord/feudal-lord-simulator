@@ -27,8 +27,9 @@ import { accrueTollCrossings, settleMoneyPeriod } from "./moneyRules";
 import { advanceSeasons, recordStarvation } from "./seasonPressure";
 import { advanceZoneSettlement } from "../zones/zoneSettlement";
 import { advanceEvents } from "./events";
-import { advancePolitics } from "./politics";
+import { advancePolitics, endChapterTwo } from "./politics";
 import { advanceLordship } from "./lordship";
+import { advanceWar } from "./war";
 import { advanceHistory } from "./history";
 import { carterCrossings } from "./tollCrossings";
 import { updateHousing } from "../population/housing";
@@ -250,10 +251,15 @@ export function advanceSimulationSubstep(input: GameState): GameState {
   }), materialEvents), tollCrossings);
 }
 
+/** F2-A (WR-1…WR-9): the war's season, after the lordship; chapter 2's end is written by the politics. */
+function advanceWarTick(state: GameState): GameState {
+  return advanceWar(state, endChapterTwo);
+}
+
 export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
   return advanceHistory(state, updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))),
+    advanceWarTick(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))))))))),
   )))));
 }

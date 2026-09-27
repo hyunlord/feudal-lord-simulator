@@ -167,6 +167,8 @@ export interface GameState {
   readonly politics?: import("./politics.types").PoliticsState;
   /** FAIL-3 (save v19, FL-*): the lord's house, lost rights, title demotion and decline. Absent = the first house, all held. */
   readonly lordship?: import("./lordship.types").LordshipState;
+  /** F2-A the war of 1337 (save v20, spec WR-1…WR-9). Absent until the War era's messenger. */
+  readonly war?: import("./war.types").WarState;
   /** F0-C2 history ledger: append-only records and map thumbnails (save v15, spec HL-1…HL-9). Absent until the first record. */
   readonly history?: import("./history.types").HistoryState;
   /** PERSON-0 persons: the named people of the town, the dead and those who left (save v16, spec PS-1…PS-9). */

@@ -98,8 +98,8 @@ export function igniteFire(state: GameState, eventId: string): { readonly state:
   };
 }
 
-/** EV-4: a burnt house — level and larder lost, rent-free, no promotion; the household stays. */
-function burnt(house: House, tick: number, eventId: string): House {
+/** EV-4: a burnt house — level and larder lost, rent-free, no promotion; the household stays. F2-A: the raid burns so too. */
+export function burntHouse(house: House, tick: number, eventId: string): House {
   const { promotionTicks: _promotion, ...rest } = house;
   return { ...rest, level: 0, builtLevel: 0, breadStock: 0, unmetRequirementTicks: 0, burntTick: tick, burntByEventId: eventId };
 }
@@ -138,7 +138,7 @@ export function stepFires(state: GameState): FireStep {
   const outIds = new Map(out.map(fire => [fire.buildingId, fire.eventId]));
   const houses = out.length === 0 ? state.houses : state.houses.map(house => {
     const eventId = outIds.get(house.buildingId);
-    return eventId === undefined ? house : burnt(house, tick, eventId);
+    return eventId === undefined ? house : burntHouse(house, tick, eventId);
   });
   return {
     state: { ...state, houses, events: { ...events, burning: burning.filter(fire => tick < fire.outTick) } },

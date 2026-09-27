@@ -16,6 +16,8 @@
  * - FAIL-3 (FL-8): in the campaign chapter 2 begins at the same tick, the same town (sandbox has no chapters).
  * - FAIL-3 (FL-6): a restoration petition (`restore_right`) arrives from `lordship.ts`, not by the calendar; its answer is
  *   `answerRestoration`.
+ * - F2-A (WR-2…WR-8): the war's five decisions arrive from `war.ts`; their answers are `answerWarPetition`. Chapter 2's
+ *   end (WR-9) is written here (`endChapterTwo`), called by the war.
  */
 import { EffectRegistry, SETTLEMENT_REGION_ID, type SourceRef } from "../contracts";
 import {
@@ -44,6 +46,7 @@ import { hashSeed } from "./prng";
 import { chapterPageRecords } from "./history";
 import { calendar, scenarioOf } from "./scenarioState";
 import { answerRestoration } from "./lordship";
+import { answerWarPetition, chapterTwoWallOutcome } from "./war";
 import { housingLotCount } from "../population/housing";
 
 const SAMPLE = 50;
@@ -165,6 +168,15 @@ export function respondToPetition(state: GameState, petitionId: string, response
   if (petition === undefined || def === undefined) return state;
   const outcome = def.outcomes[response];
   const decision: DecisionRecord = { kind: "petition_response", tick: state.tick, petitionId, choice: response };
+  if (def.trigger === "war") {
+    // F2-A (WR-2…WR-8): the war's rules answer; the petitioners' gauge moves as the definition says.
+    const answered = answerWarPetition(state, petition, response);
+    const after = answered.politics ?? politics;
+    return { ...answered, politics: { ...after,
+      merchantGauge: clampGauge(after.merchantGauge + outcome.gauge),
+      petitions: after.petitions.map(entry => entry.id === petition.id ? { ...entry, response, respondedTick: state.tick } : entry),
+      decisions: [...after.decisions, decision] } };
+  }
   if (def.id === RESTORE_RIGHT_PETITION_ID) {
     // FAIL-3 (FL-6): the fee and the restoration are the lordship's; the merchants' gauge moves only for their own offer.
     const answered = answerRestoration(state, petition, response);
@@ -256,13 +268,34 @@ export function famineSurvived(state: Pick<GameState, "events">): boolean {
   return record.populationAtEnd * 1000 >= record.populationAtArrival * CHAPTER_ONE.survivalPermille;
 }
 
-/** FC-5 API: the chapter the town ended (chapter 1 once it has), or null. */
-export function chapterEnd(state: Pick<GameState, "politics">): ChapterEnd | null {
-  return state.politics?.chapterEnds.find(end => end.chapter === CHAPTER_ONE.chapter) ?? null;
+/** FC-5 API: the chapter the town ended (chapter 1 once it has; F2-A: another chapter by number), or null. */
+export function chapterEnd(state: Pick<GameState, "politics">, chapter: number = CHAPTER_ONE.chapter): ChapterEnd | null {
+  return state.politics?.chapterEnds.find(end => end.chapter === chapter) ?? null;
 }
 
-/** FAIL-3 (FL-9): the goal of a chapter — chapter 1 the market town through the famine (FC-5), chapter 2 prosperity. */
-export type ChapterGoalId = "famine_market_town" | "prosperity";
+/**
+ * F2-A (WR-9): chapter 2 ends — its chronicle page is written (with the war's line) and chapter 3 begins at the same
+ * tick, the same town (chapter 3's content comes later).
+ */
+export function endChapterTwo(state: GameState): GameState {
+  const politics = politicsOf(state);
+  if (politics.chapter.number !== CHAPTER_TWO.chapter || chapterEnd(state, CHAPTER_TWO.chapter) !== null) return state;
+  const page = chronicleEntry(state);
+  const war = state.war;
+  const chronicle: ChronicleEntry = war === undefined ? page : { ...page, stats: { ...page.stats, war: {
+    raidYear: war.raid === undefined ? null : calendar(war.raid.tick, scenarioOf(state).startYear).year,
+    raidLosses: war.raid?.losses ?? null, defencePermille: war.raid?.defencePermille ?? null,
+    men: war.conscripts?.men ?? 0, lostMen: war.conscripts?.lostHouseIds.length ?? 0, wall: chapterTwoWallOutcome(state) } } };
+  return { ...state, politics: { ...politics,
+    chapterEnds: [...politics.chapterEnds, { chapter: CHAPTER_TWO.chapter, tick: state.tick, chronicle }],
+    chapter: { number: CHAPTER_TWO.chapter + 1, startTick: state.tick, populationStart: state.population, peakPopulation: state.population } } };
+}
+
+/**
+ * FAIL-3 (FL-9): the goal of a chapter — chapter 1 the market town through the famine (FC-5), chapter 2 prosperity.
+ * F2-A (WR-9): and chapter 2's war goal, the stone wall built or the market chosen (reached at chapter 2's end).
+ */
+export type ChapterGoalId = "famine_market_town" | "prosperity" | "wall_or_market";
 export interface ChapterGoal {
   readonly chapter: number;
   readonly id: ChapterGoalId;
@@ -277,7 +310,10 @@ export interface ChapterGoal {
 export function chapterGoals(state: Pick<GameState, "politics" | "settlement">): readonly ChapterGoal[] {
   const chapter = state.politics?.chapter.number ?? CHAPTER_ONE.chapter;
   const goals: ChapterGoal[] = [{ chapter: CHAPTER_ONE.chapter, id: "famine_market_town", reachedTick: chapterEnd(state)?.tick ?? null }];
-  if (chapter >= CHAPTER_TWO.chapter) goals.push({ chapter: CHAPTER_TWO.chapter, id: "prosperity", reachedTick: state.settlement?.milestones.prosperity ?? null });
+  if (chapter >= CHAPTER_TWO.chapter) {
+    goals.push({ chapter: CHAPTER_TWO.chapter, id: "prosperity", reachedTick: state.settlement?.milestones.prosperity ?? null });
+    goals.push({ chapter: CHAPTER_TWO.chapter, id: "wall_or_market", reachedTick: chapterEnd(state, CHAPTER_TWO.chapter)?.tick ?? null });
+  }
   return goals;
 }
 

@@ -10,6 +10,10 @@ import { isBuildingConstructionSite } from "../economy/construction";
 import type { FamineResponseAdvice, PetitionResponseAdvice, RebuildHouseAdvice } from "./autoplayBotRecovery";
 import { RESTORE_RIGHT_PETITION_ID, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import { LORDSHIP_BALANCE } from "../content/lordshipConfig";
+import { LEVY_RESPONSE_PETITION_ID, REFUGEE_ADMISSION_PETITION_ID, WALL_OR_MARKET_PETITION_ID, WAR_BALANCE, WAR_FUNDING_PETITION_ID,
+  WAR_PETITION_IDS, WOOL_PAYMENT_PETITION_ID } from "../content/warConfig";
+import { levyMen, refugeeRoom, woolLevyAmount } from "./war";
+import { canProclaimStoneTownEra } from "./era";
 import { treasuryBalance } from "../ledger/ledger";
 import { famineStatus, openPetitions } from "./politics";
 import type { GameState } from "./engine.types";
@@ -51,7 +55,7 @@ export function dearthArableMargin(state: GameState, margin: number): number {
 
 /** FC-6: the bot's answer to an arriving famine it has not answered, then to an open petition; null when none waits. */
 export function chapterDecisionAction(state: GameState, famine: FamineResponseChoice, petition: PetitionResponse,
-  restoration: "pay" | "refuse" = "pay"): FamineResponseAdvice | PetitionResponseAdvice | null {
+  restoration: "pay" | "refuse" = "pay", wallChoice?: "wall" | "market"): FamineResponseAdvice | PetitionResponseAdvice | null {
   if ((famineStatus(state)?.choices.length ?? 0) > 0) return { kind: "famine_response", choice: famine };
   const open = openPetitions(state)[0];
   if (open === undefined) return null;
@@ -63,5 +67,36 @@ export function chapterDecisionAction(state: GameState, famine: FamineResponseCh
       : cash >= LORDSHIP_BALANCE.restoreFee ? "accept" : cash >= LORDSHIP_BALANCE.restoreFeeHaggled ? "accept_with_price" : "refuse";
     return { kind: "petition_response", petitionId: open.id, response };
   }
+  // F2-A (WR-10): the war's decisions by the bot's own rule.
+  if ((WAR_PETITION_IDS as readonly string[]).includes(open.defId)) return { kind: "petition_response", petitionId: open.id, response: warAnswer(state, open.defId, wallChoice) };
   return { kind: "petition_response", petitionId: open.id, response: petition };
+}
+
+/** Coins the bot keeps back when it pays a war charge in cash. */
+const WAR_CASH_RESERVE = 50;
+
+/**
+ * F2-A (WR-10): wool and the exemption in cash when the treasury has them and a reserve (else in kind, else the men),
+ * the subsidy on the merchants' loan, refugees as far as the empty homes and room hold them, and the stone wall only
+ * when its project can begin now or has (with murage while the Crown favours the town) — else the market, which ends
+ * the chapter rather than leave a wall unbuilt at 1348 (the first run: every seed chose murage and built too late).
+ */
+function warAnswer(state: GameState, defId: string, wallChoice?: "wall" | "market"): PetitionResponse {
+  const cash = treasuryBalance(state);
+  switch (defId) {
+    case WOOL_PAYMENT_PETITION_ID: return cash >= woolLevyAmount(state) + WAR_CASH_RESERVE ? "accept_with_price" : "accept";
+    case LEVY_RESPONSE_PETITION_ID: return cash >= levyMen(state) * WAR_BALANCE.exemptionPerMan + WAR_CASH_RESERVE ? "accept_with_price" : "accept";
+    case WAR_FUNDING_PETITION_ID: return "accept";
+    case REFUGEE_ADMISSION_PETITION_ID: {
+      const room = refugeeRoom(state);
+      const all = WAR_BALANCE.refugeeHouseholds * WAR_BALANCE.refugeesPerHousehold;
+      return room >= all ? "accept" : room >= all / 2 ? "accept_with_price" : "refuse";
+    }
+    case WALL_OR_MARKET_PETITION_ID: {
+      if (wallChoice === "market") return "refuse";
+      const wall = state.war?.favour === true ? "accept_with_price" : "accept";
+      return wallChoice === "wall" || state.era === "stone_town" || canProclaimStoneTownEra(state) ? wall : "refuse";
+    }
+    default: return "accept";
+  }
 }
