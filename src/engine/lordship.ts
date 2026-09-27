@@ -15,6 +15,8 @@ import { LORDSHIP_BALANCE, SEIZURE_ORDER, SUSPENSION_ORDER } from "../content/lo
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { GameState } from "./engine.types";
 import { houseLotArea } from "../geometry/buildingFootprint";
+import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
 import type { DeclineState, LordshipState } from "./lordship.types";
 import { lordHouseHeraldrySeed, lordHouseName, lordshipOf, rightHeld, rightPresent } from "./lordshipState";
 import type { PetitionRecord } from "./politics.types";
@@ -158,13 +160,34 @@ export function answerRestoration(state: GameState, petition: PetitionRecord, re
   return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, lordship: restored };
 }
 
-/** FL-14: the new house brings settlers — one household in each standing house (not burnt), fed for a season. */
+/**
+ * FL-14: the new house brings settlers — one household in each standing house (not burnt). FIX-5b (decision FL16):
+ * each household brings a season of bread at its ration, stored in the first working granary with room and the rest in
+ * the households' own larders, and a meal's grace for the carts. A town that grows no food starves again after it.
+ */
 export function resettleTown(state: GameState): GameState {
   const lots = new Map(state.buildings.map(building => [building.id, building]));
-  const houses = state.houses.map(house => {
+  const settled = new Set<string>();
+  let houses = state.houses.map(house => {
     if (house.burntTick !== undefined || house.residents > 0) return house;
+    settled.add(house.buildingId);
     const { abandonedTick: _abandoned, leavingSinceTick: _leaving, foodShortSinceTick: _short, ...rest } = house;
     return { ...rest, residents: houseLotArea(lots.get(house.buildingId)), emptyFoodTicks: 0, starvationGraceUntilTick: state.tick + LORDSHIP_BALANCE.resettleGraceTicks };
   });
-  return { ...state, houses, population: houses.reduce((sum, house) => sum + Math.max(0, house.residents), 0) };
+  const seasonOf = (house: typeof houses[number]) => Math.ceil(houseFoodRation(house) * LORDSHIP_BALANCE.resettleBreadTicks / HOUSE_FOOD_INTERVAL);
+  const bread = houses.reduce((sum, house) => sum + (settled.has(house.buildingId) ? seasonOf(house) : 0), 0);
+  const granary = state.buildings.filter(building => building.kind === "granary" && building.operationPaused !== true).sort((a, b) => a.id.localeCompare(b.id))
+    .map(building => ({ building, room: BUILDING_CONFIG_BY_KIND.granary.storageCapacity - Object.values(building.inventory).reduce((sum, amount) => sum + (amount ?? 0), 0) }))
+    .find(entry => entry.room > 0);
+  const stored = Math.min(bread, granary?.room ?? 0);
+  let left = bread - stored;
+  if (left > 0) houses = houses.map(house => {
+    if (!settled.has(house.buildingId) || left <= 0) return house;
+    const share = Math.min(left, seasonOf(house));
+    left -= share;
+    return { ...house, breadStock: house.breadStock + share };
+  });
+  const buildings = stored <= 0 || granary === undefined ? state.buildings : state.buildings.map(building => building.id === granary.building.id
+    ? { ...building, inventory: { ...building.inventory, bread: (building.inventory.bread ?? 0) + stored } } : building);
+  return { ...state, houses, buildings, population: houses.reduce((sum, house) => sum + Math.max(0, house.residents), 0) };
 }

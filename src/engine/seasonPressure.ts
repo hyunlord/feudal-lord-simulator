@@ -29,6 +29,7 @@ import { lordshipOf } from "./lordshipState";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { advanceHistoricalEras, calendar, scenarioOf } from "./scenarioState";
+import { LORDSHIP_BALANCE } from "../content/lordshipConfig";
 import { departureCapPerSeason, eventForecast, famineShortHouses } from "./eventSchedule";
 import {
   SEASON_STOCK_KEYS,
@@ -117,7 +118,17 @@ function householdsHungry(state: GameState, reserveShort: boolean): boolean {
     || householdShortOfFood(house, reserveShort, state.tick));
 }
 
+/** FIX-5b (FL-14): the tick an emptied town was resettled in the season now closing, or null. */
+function resettledThisSeason(state: GameState): number | null {
+  const records = state.history?.records ?? [];
+  let record: (typeof records)[number] | undefined;
+  for (let index = records.length - 1; index >= 0 && record === undefined; index -= 1) if (records[index]!.template === "house.resettled") record = records[index];
+  return record !== undefined && record.tick > state.tick - SEASON && record.tick <= state.tick ? record.tick : null;
+}
+
 function nextObjectiveHint(state: GameState): NextObjectiveHint {
+  // FIX-5b: a resettled town hears first how long its settlers' bread lasts.
+  if (resettledThisSeason(state) !== null) return "resettled_food";
   // FIX-4 E11: a hungry town hears about its food before any rumour (a starving town was told "마른 여름").
   if (householdsHungry(state, seasonalFoodReserveShort(state, state.tick))) return "food_reserve";
   const reserve = harvestOutlookTicks(state);
@@ -159,8 +170,12 @@ function lordshipLine(state: GameState, startTick: number): Pick<SeasonLedger, "
   return line.declined === undefined && line.houseChanged === undefined ? {} : { lordship: line };
 }
 
-function hintOf(state: GameState): Pick<SeasonLedger, "nextObjectiveHint" | "foodNeeds"> {
+function hintOf(state: GameState): Pick<SeasonLedger, "nextObjectiveHint" | "foodNeeds" | "resettledFood"> {
   const hint = nextObjectiveHint(state);
+  if (hint === "resettled_food") {
+    const until = calendar(resettledThisSeason(state)! + LORDSHIP_BALANCE.resettleBreadTicks, scenarioOf(state).startYear);
+    return { nextObjectiveHint: hint, resettledFood: { season: until.season, year: until.year } };
+  }
   return hint === "food_reserve" || hint === "harvest_reserve" ? { nextObjectiveHint: hint, foodNeeds: foodNeeds(state) } : { nextObjectiveHint: hint };
 }
 

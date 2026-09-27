@@ -1,3 +1,4 @@
+import { PRESSURE_COPY } from "../content/pressureCopy.ko";
 import { EVENT_DEF_BY_ID, GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
 import { SEASON_STOCK_KEYS, type NextObjectiveHint, type SeasonLedger } from "../engine/season.types";
 import type { GameState } from "../engine/engine.types";
@@ -21,7 +22,7 @@ export type SeasonLedgerCardModel = Readonly<{
 }>;
 
 const HINT_CATEGORY: Readonly<Record<Exclude<NextObjectiveHint, null>, BuildCategory>> = {
-  food_reserve: "storage", harvest_reserve: "trade", resettle: "storage", dearth_reserve: "storage", fire_break: "living", rebuild: "living",
+  food_reserve: "storage", harvest_reserve: "trade", resettle: "storage", dearth_reserve: "storage", fire_break: "living", rebuild: "living", resettled_food: "storage",
 };
 
 function eventName(defId: string): string {
@@ -49,6 +50,7 @@ function eventLine(state: Pick<GameState, "scenarioId">, event: SeasonLedger["no
 function hintText(ledger: SeasonLedger): string {
   const hint = ledger.nextObjectiveHint!;
   const needs = ledger.foodNeeds;
+  if (hint === "resettled_food" && ledger.resettledFood !== undefined) return PRESSURE_COPY.resettledFood(ledger.resettledFood.season);
   if ((hint !== "food_reserve" && hint !== "harvest_reserve") || needs === undefined) return SEASON_LEDGER_COPY.hints[hint];
   const parts = [
     ...(needs.arableCells > 0 ? [SEASON_LEDGER_COPY.needs.arableCells(needs.arableCells)] : []),

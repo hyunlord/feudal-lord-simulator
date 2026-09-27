@@ -15,6 +15,8 @@ import { chapterDecisionAction } from "../src/engine/autoplayEvents";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceLordship, arrearsPeriods, declineCause, depopulated, derelictPermille, townEmpty } from "../src/engine/lordship";
 import { advanceTick } from "../src/engine/tick";
+import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../src/content/houseFoodConfig";
+import { seasonLedgerCardModel } from "../src/ui/seasonLedgerCard";
 import { lordHouse, lordRights, lordshipOf, lordTitle } from "../src/engine/lordshipState";
 import { settleMoneyPeriod } from "../src/engine/moneyRules";
 import { advancePolitics, chapterGoals, initialPolitics, openPetitions, respondToPetition } from "../src/engine/politics";
@@ -293,3 +295,28 @@ test("F11 (FL-3) forced by the rules: a town whose houses burnt pays no rent, it
   assert.deepEqual(lordshipOf(declined).decline && { cause: lordshipOf(declined).decline!.cause, lost: lordshipOf(declined).decline!.lost }, { cause: "arrears", lost: "tolls" });
 });
 
+
+test("F12 (FL-14, FIX-5b) the settlers bring a season of bread (the granary first, else their larders) and the season's card says until when", () => {
+  const base = city();
+  const empty = offSeason(withPeople(base, 0));
+  const granaryBread = (state: GameState) => state.buildings.filter(building => building.kind === "granary").reduce((sum, building) => sum + (building.inventory.bread ?? 0), 0);
+  const larders = (state: GameState) => state.houses.reduce((sum, house) => sum + house.breadStock, 0);
+  const next = advanceLordship(empty);
+  const settled = next.houses.filter(house => house.residents > 0);
+  const season = settled.reduce((sum, house) => sum + Math.ceil(houseFoodRation(house) * LORDSHIP_BALANCE.resettleBreadTicks / HOUSE_FOOD_INTERVAL), 0);
+  assert.equal(granaryBread(next) - granaryBread(empty) + larders(next) - larders(empty), season);
+  assert.ok(settled.every(house => house.starvationGraceUntilTick === empty.tick + LORDSHIP_BALANCE.resettleGraceTicks));
+  // No granary: into the households' larders.
+  const bare = { ...empty, buildings: empty.buildings.filter(building => building.kind !== "granary") };
+  const housed = advanceLordship(bare);
+  assert.equal(larders(housed) - larders(bare), season);
+  // The season's close: the card's hint names the season the bread runs out (one season on).
+  const recorded = advanceHistory(empty, next);
+  const closeTick = recorded.tick - recorded.tick % SEASON + SEASON;
+  const closed = advanceSeasons({ ...recorded, tick: closeTick }).seasons!.history.at(-1)!;
+  const until = (Math.floor((empty.tick + LORDSHIP_BALANCE.resettleBreadTicks) / SEASON)) % 4;
+  assert.equal(closed.nextObjectiveHint, "resettled_food");
+  assert.equal(closed.resettledFood!.season, until);
+  const card = seasonLedgerCardModel(advanceSeasons({ ...recorded, tick: closeTick }))!;
+  assert.equal(card.hint!.text, `다음: 재정착민의 식량은 ${["봄", "여름", "가을", "겨울"][until]}까지`);
+});
