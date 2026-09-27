@@ -1,6 +1,7 @@
 import { BALANCE } from "../content/balanceConfig";
 import { SEASON_BALANCE } from "../content/balanceConfig";
 import type { GameState } from "../engine/engine.types";
+import type { WarStep } from "../engine/war.types";
 import { LEDGER_PERIOD_TICKS } from "../ledger/ledger";
 import { absoluteDay, dayStartTick, MARKET_DAY_OF_MONTH } from "../render/presentation/residentTrips";
 
@@ -53,4 +54,14 @@ export function arrivalOf(now: number, tick: number): { readonly season: 0 | 1 |
   const season = Math.floor(inYear * 4 / YEAR) as 0 | 1 | 2 | 3;
   const third = Math.min(2, Math.floor((inYear - season * YEAR / 4) * 3 / (YEAR / 4))) as 0 | 1 | 2;
   return { season, third, nextYear: Math.floor(tick / YEAR) > Math.floor(now / YEAR) };
+}
+
+/**
+ * UI-6 (F2-A WR-1…WR-7): the war's coming steps within a year (the rules' own forecast, `warForecast`), on the strip
+ * beside the ladder's: the Crown's demands, the beacon and the raid, the refugees, the recovery.
+ */
+export type WarMark = { readonly id: WarStep["id"]; readonly tick: number; readonly fraction: number };
+export function warMarks(steps: readonly Pick<WarStep, "id" | "tick" | "state">[], now: number): readonly WarMark[] {
+  return steps.filter(step => step.state === "ahead" && step.tick >= now && step.tick - now < YEAR)
+    .map(step => ({ id: step.id, tick: step.tick, fraction: yearFraction(step.tick) })).sort((a, b) => a.tick - b.tick);
 }

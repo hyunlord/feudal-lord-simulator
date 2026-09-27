@@ -10,13 +10,15 @@ import { WAR_PETITION_IDS } from "../src/content/warConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceFactions } from "../src/engine/factions";
 import { endChapterTwo, initialPolitics, openPetitions, respondToPetition } from "../src/engine/politics";
-import { advanceWar, beaconLit } from "../src/engine/war";
+import { advanceWar, beaconLit, warForecast } from "../src/engine/war";
 import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { decodeSave } from "../src/save/saveCodec";
 import { petitionDecisionView } from "../src/ui/decisionModels";
 import { storyBeats } from "../src/ui/eventStory";
 import { PetitionModal } from "../src/ui/hud/StoryModals";
 import { lordshipView, menAwayLine } from "../src/ui/lordshipModel";
+import { warMarks } from "../src/ui/seasonStrip";
+import { SeasonStripPanel } from "../src/ui/hud/SeasonStrip";
 import { chronicleIllustration, chronicleView, latestChapterEnd } from "../src/ui/chronicleModel";
 import { advanceHistory } from "../src/engine/history";
 
@@ -141,4 +143,16 @@ test("UI-6 chapter 2's page: its own range, the war's decisions quoted with thei
   const withOne: GameState = { ...quoted, politics: { ...quoted.politics!, chapterEnds: [{ ...end, chapter: 1, tick: M + 3 * SEASON }, ...quoted.politics!.chapterEnds] } };
   const ranged = chronicleView(withOne)!;
   assert.ok(ranged.entries.every(entry => !/전령/.test(entry.sentence)), "the messenger came before chapter 1's (moved) end");
+});
+
+test("UI-6 the season strip lists the war's coming steps within the year, soonest first, with the cause icons", () => {
+  const met = advanceWar(warTown(), endChapterTwo);
+  const marks = warMarks(warForecast(met), met.tick);
+  assert.equal(marks[0]?.id, "wool_levy");
+  assert.deepEqual(marks.map(mark => mark.tick), [...marks.map(mark => mark.tick)].sort((a, b) => a - b));
+  assert.ok(marks.every(mark => mark.tick > met.tick && mark.tick - met.tick < 4 * SEASON), "within a year of now");
+  const markup = renderToStaticMarkup(createElement(SeasonStripPanel, { state: met, food: { days: null, untilTick: null }, onClose: () => undefined }));
+  assert.match(markup, /data-mark="war_wool_levy"/);
+  assert.match(markup, /양모 공납 칙령 — (내년 )?.+쯤/);
+  assert.match(markup, /data-icon="cause\.rights"/);
 });

@@ -2,6 +2,7 @@
 //  ① the war in order, world before UI — for each step (messenger, wool levy, commission, subsidy, beacon, raid,
 //    refugees, wall or market, chapter 2's end) a shot of the world before the chip or card (the story waits
 //    STORY_DELAY_MS) and one after it; the raid also from the tick before it;
+//    and the season strip's war forecast at the messenger's season;
 //  ② the five decision cards (the "after" shots of the five demands);
 //  ③ the chronicle's faction tab and one faction's page;
 //  ④ the house change (FAIL-3 naive seed 3): the rights tab at the decline (a right lost) and after the change, and the
@@ -72,6 +73,16 @@ for (const [index, name] of WAR.entries()) {
     await close();
   });
 }
+
+// ① the war's forecast on the season strip (the messenger's season: the Crown's demands, the beacon, the raid ahead).
+await step("season-strip", async () => {
+  const { page, close } = await scene("messenger", 600_000);
+  await page.waitForTimeout(1_000);
+  await page.locator("[data-testid='hud-calendar']").first().click(); await page.waitForTimeout(600);
+  await page.screenshot({ path: join(out!, "w00-season-strip.jpg"), type: "jpeg", quality: 68 });
+  result["season-strip"] = await page.evaluate(() => [...document.querySelectorAll(".season-strip-list li[data-mark^='war_']")].map(item => item.textContent?.trim() ?? ""));
+  await close();
+});
 
 // ③ the chronicle's faction tab and a faction's page (chapter 2's end: the war's records and the nine factions).
 await step("factions", async () => {
