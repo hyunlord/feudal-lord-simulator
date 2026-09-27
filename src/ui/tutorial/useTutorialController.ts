@@ -294,7 +294,7 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
     const goals = chapterGoals(state).filter(entry => entry.chapter === chapter);
     const next = goals.find(entry => entry.reachedTick === null);
     const reached = goals.filter(entry => entry.reachedTick !== null).length;
-    if (goals.length > 0) cards.push({ key: "chapter", title: CHAPTER_COPY.card(chapter, reached, goals.length),
+    if (goals.length > 0) cards.push({ key: "chapter", title: CHAPTER_COPY.card(chapter),
       why: next === undefined ? CHAPTER_COPY.reached(CHAPTER_COPY.goals[goals.at(-1)?.id ?? ""] ?? "") : CHAPTER_COPY.goals[next.id] ?? next.id,
       progress: { current: reached, target: goals.length }, ctaLabel: CHAPTER_COPY.cta, status: "active", help: null, hasTarget: false });
   }

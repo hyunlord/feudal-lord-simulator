@@ -6,7 +6,8 @@ export const CHAPTER_COPY = {
     prosperity: "번영하는 시장도시를 이룬다",
     wall_or_market: "전쟁을 넘긴 뒤 석벽을 다 쌓거나 장을 넓힌다",
   } as Readonly<Record<string, string>>,
-  card: (chapter: number, reached: number, total: number) => `${CHAPTER_COPY.titles[chapter] ?? `제${chapter}장`} · 목표 ${reached}/${total}`,
+  /** The goal card's title; the card shows the count itself (its progress, "0/2"). */
+  card: (chapter: number) => CHAPTER_COPY.titles[chapter] ?? `제${chapter}장`,
   reached: (goal: string) => `${goal} — 이룸`,
   cta: "목표 보기",
 } as const;
