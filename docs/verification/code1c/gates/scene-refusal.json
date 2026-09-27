@@ -1,0 +1,23 @@
+{
+ "url": "http://127.0.0.1:4302/",
+ "old": {
+  "path": "fixtures/determinism/seed1/final-state.json",
+  "admitted": false,
+  "error": "Error: StaleSceneStateError: Scene state is an old bare save (no scenarioId, zones, nextZoneOrdinal): read it with loadSaveFile, which runs the migration chain",
+  "seconds": 0.6,
+  "pageErrors": [
+   "console: [vite] failed to connect to websocket.\nyour current setup:\n  (browser) 127.0.0.1:4302/ <--[HTTP]--> 127.0.0.1:4302/ (server)\n  (browser) 127.0.0.1:4302/ <--[WebSocket (failing)]--> 127.0.0.1:4302/ (server)\nCheck out your Vite / network configuration and https://vite.dev/config/server-options.html#se",
+   "pageerror: StaleSceneStateError: Scene state is an old bare save (no scenarioId, zones, nextZoneOrdinal): read it with loadSaveFile, which runs the migration chain"
+  ]
+ },
+ "current": {
+  "path": "/home/hyunlord/fls-ui5-states-resreg/chapter-end.json",
+  "admitted": true,
+  "tick": 77500,
+  "seconds": 1.2,
+  "pageErrors": [
+   "console: [vite] failed to connect to websocket.\nyour current setup:\n  (browser) 127.0.0.1:4302/ <--[HTTP]--> 127.0.0.1:4302/ (server)\n  (browser) 127.0.0.1:4302/ <--[WebSocket (failing)]--> 127.0.0.1:4302/ (server)\nCheck out your Vite / network configuration and https://vite.dev/config/server-options.html#se"
+  ]
+ },
+ "pass": true
+}
