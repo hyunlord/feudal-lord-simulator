@@ -55,7 +55,8 @@ export async function ledgerBalanceTrace(root: string, kind: string, ticks: numb
   // C2: the world without any money field (treasury, ledger, money-rule counts, unpaid flags). Equal before and
   // after C2 while no upkeep goes unpaid and no stone-wall project is proclaimed.
   // F0-C2: the history ledger is a record of the world, not part of it (spec HL-9), so the world hash leaves it out.
-  const { treasuryCoin: _treasury, money: _money, history: _history, buildings, ...world } = rest as AnyState & { money?: unknown; history?: unknown; buildings: Record<string, unknown>[] };
+  // FACTION-0 (FN7): the factions only remember the town and never feed it, so it leaves them out too.
+  const { treasuryCoin: _treasury, money: _money, history: _history, factions: _factions, buildings, ...world } = rest as AnyState & { money?: unknown; history?: unknown; factions?: unknown; buildings: Record<string, unknown>[] };
   const worldBuildings = buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building);
   return {
     kind, stateFile: stateFile ?? null, startTick, endTick: state.tick, ticks,
