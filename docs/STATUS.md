@@ -1,11 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-28(BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **NAME-1 화면의 사람 이름 한글 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/name1/REPORT.md), 결정 NAME1-D1~D2.
+  - 식구·인물 카드·가구·워커·청원 칩·연대기 카드·전기·세력 탭과 쪽의 사람 이름을 `persons.displayName`(FIX-6) 하나로, 국왕 표는 `KING_NAMES_KO` 하나. 상인 가문 이름도 한글 읽기.
+  - 관문: 연대기·전기·세력 탭·세력 쪽·청원 둘·워커 카드 캡처의 사람 이름 라틴 0. DGX 전체 회귀 3,286/3,286.
 
 - **BLD-REG 건물 목록을 한 곳으로 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 렌더·UI·content·스크립트·시험·문서, 엔진 파일 0줄, 검증 DGX, 사용자 지시): [보고서](verification/bldreg/REPORT.md), 결정 BLDREG-D1~D4.
   - 건물은 `src/content/buildingCatalog.ts` 한 줄 + `.ko.ts` 한 줄(엔진 `BuildingKind` 전수 표). 메뉴 분류·그룹·글리프·썸네일·아이콘·스프라이트 키·시설 그림(Wave 12 가동)·키트·몸체·세부·연기·배치 오버레이·서비스와 이름·카드·용도·인스펙터·세계 안내·연대기 이름이 여기서 나온다(보고서 2절의 표와 switch 셋을 흡수).
