@@ -1,5 +1,6 @@
 /**
- * LB-15 (BOT-3, spec docs/design/labour.md): a mill's intake cart draws a barn backed up with 400+ wheat first.
+ * LB-15 (BOT-3, spec docs/design/labour.md): a mill's intake cart draws a barn backed up with 400+ wheat before the
+ * other barns; granaries keep their place (nearest first).
  */
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -26,14 +27,25 @@ test("LB-15 the threshold is 400 wheat", () => {
   assert.equal(BARN_BACKLOG_STOCK, 400);
 });
 
-test("LB-15 a far barn with 400 wheat goes before a nearer granary and a nearer barn", () => {
+test("LB-15 a far barn with 400 wheat goes before nearer barns", () => {
   const home = mill();
-  const store = building("near", "granary", { inventory: { wheat: 40 } });
-  const barn = building("store", "farmstead", { inventory: { wheat: 60 } });
+  const barn = building("near", "farmstead", { inventory: { wheat: 40 } });
+  const other = building("store", "farmstead", { inventory: { wheat: 60 } });
   const backlog = building("far", "farmstead", { inventory: { wheat: BARN_BACKLOG_STOCK } });
-  const choice = fetchCandidate(home, "wheat", [home, store, barn, backlog], DELIVERY_INVENTORY, routes);
+  const choice = fetchCandidate(home, "wheat", [home, barn, other, backlog], DELIVERY_INVENTORY, routes);
   assert.equal(choice?.building.id, "far");
   assert.equal(choice?.amount, 12, "a full intake load");
+});
+
+test("LB-15 granaries keep their place: a nearer granary with wheat still goes first, a farther one does not", () => {
+  const home = mill();
+  const backlog = building("far", "farmstead", { inventory: { wheat: 907 } });
+  const nearer = building("near", "granary", { inventory: { wheat: 40 } });
+  assert.equal(fetchCandidate(home, "wheat", [home, nearer, backlog], DELIVERY_INVENTORY, routes)?.building.id, "near");
+  const farther = building("farther", "granary", { inventory: { wheat: 40 } });
+  const barn = building("near", "farmstead", { inventory: { wheat: 40 } });
+  assert.equal(fetchCandidate(home, "wheat", [home, barn, farther, backlog], DELIVERY_INVENTORY, routes)?.building.id, "far",
+    "the nearer barn drops out, the backed-up barn is nearer than the granary");
 });
 
 test("LB-15 among backed-up barns the nearest", () => {
@@ -52,7 +64,7 @@ test("LB-15 below 400 the nearest store or barn, as before (LB-7)", () => {
 
 test("LB-15 the pile counts the barn's physical wheat; a pile other carts have all claimed is not a candidate", () => {
   const home = mill();
-  const store = building("near", "granary", { inventory: { wheat: 40 } });
+  const store = building("near", "farmstead", { inventory: { wheat: 40 } });
   const claimed = building("far", "farmstead", { inventory: { wheat: 400 }, stockReserved: { wheat: 400 } });
   assert.equal(fetchCandidate(home, "wheat", [home, store, claimed], DELIVERY_INVENTORY, routes)?.building.id, "near");
   const partly = building("far", "farmstead", { inventory: { wheat: 400 }, stockReserved: { wheat: 390 } });
@@ -69,7 +81,7 @@ test("LB-15 only barns: a granary holding 400 wheat does not go first", () => {
 });
 
 test("LB-15 the delivery step sends the mill's intake cart to the backed-up barn", () => {
-  const store = building("near", "granary", { inventory: { wheat: 40 } });
+  const store = building("near", "farmstead", { inventory: { wheat: 40 } });
   const backlog = building("far", "farmstead", { inventory: { wheat: 907 } });
   const result = spawnCarters({ tick: 1, buildings: [mill(), store, backlog], walkers: [], inventory: DELIVERY_INVENTORY, routes });
   const intake = result.walkers.find(walker => walker.kind === "carter" && walker.homeBuildingId === "mill" && walker.cart === "intake");
@@ -78,7 +90,7 @@ test("LB-15 the delivery step sends the mill's intake cart to the backed-up barn
   assert.equal(result.buildings.find(entry => entry.id === "far")?.stockReserved.wheat, 12);
 });
 
-test("LB-15 seed 3 stall (MK6): every new intake cart goes to the 907-wheat barn and draws it down", () => {
+test("LB-15 seed 3 stall (MK6): no intake cart goes to another barn while the 907-wheat barn is piled; it is drawn down", () => {
   let state: GameState = loadAutoplayFixture(SEED3_BACKLOG);
   const barnWheat = (current: GameState) => current.buildings.find(entry => entry.id === BACKLOG_BARN)?.inventory.wheat ?? 0;
   assert.equal(barnWheat(state), 907);
@@ -95,7 +107,9 @@ test("LB-15 seed 3 stall (MK6): every new intake cart goes to the 907-wheat barn
       destinations.set(walker.destination.buildingId, (destinations.get(walker.destination.buildingId) ?? 0) + 1);
     }
   }
-  assert.deepEqual([...destinations.keys()], [BACKLOG_BARN]);
+  const kindOf = (id: string) => state.buildings.find(entry => entry.id === id)?.kind;
+  assert.deepEqual([...destinations.keys()].filter(id => kindOf(id) === "farmstead"), [BACKLOG_BARN], "other barns drop out");
+  assert.ok([...destinations.keys()].every(id => id === BACKLOG_BARN || kindOf(id) === "granary"), "granaries keep their place");
   assert.ok((destinations.get(BACKLOG_BARN) ?? 0) >= 20, `intake carts ${destinations.get(BACKLOG_BARN)}`);
   assert.ok(barnWheat(state) < 907 - 200 && barnWheat(state) >= BARN_BACKLOG_STOCK, `barn wheat ${barnWheat(state)}`);
 });

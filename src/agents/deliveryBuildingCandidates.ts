@@ -98,10 +98,11 @@ export function fetchCandidate(
     return amount > 0 ? [{ building, path, amount }] : [];
   });
   const stored = from(building => building.kind === storeKind || BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === resource);
-  // LB-15 (BOT-3): a barn piled with the input is drawn first, nearest of those; otherwise the nearest store or barn.
-  const backlog = stored.filter(({ building }) => BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === resource
-    && amountOf(building.inventory, resource) >= BARN_BACKLOG_STOCK);
-  const candidates = backlog.length > 0 ? backlog : stored.length > 0 ? stored
+  // LB-15 (BOT-3): while a barn is piled with the input the other barns drop out; stores keep their place.
+  const barn = (building: Building) => BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === resource;
+  const piled = (building: Building) => barn(building) && amountOf(building.inventory, resource) >= BARN_BACKLOG_STOCK;
+  const drawn = stored.some(({ building }) => piled(building)) ? stored.filter(({ building }) => !barn(building) || piled(building)) : stored;
+  const candidates = drawn.length > 0 ? drawn
     : from(building => building.id !== converter.id && BUILDING_CONFIG_BY_KIND[building.kind].production?.output === resource);
   const production = BUILDING_CONFIG_BY_KIND[converter.kind].production;
   const physical = amountOf(converter.inventory, resource);
