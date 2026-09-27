@@ -1,0 +1,3935 @@
+{
+ "runner": "DGX, scripts/remote/run.sh (REMOTE-1)",
+ "guardrail": {
+  "run1@463d4843": [
+   {
+    "seed": 1,
+    "status": "passed",
+    "victoryTick": 112942,
+    "finalTick": 235846,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": null,
+    "factionNames": {
+     "overlord": "Saltwold",
+     "neighbour_1": "de Ivrecourt",
+     "neighbour_2": "de Ambreth",
+     "bishop": "Kelborough"
+    }
+   },
+   {
+    "seed": 2,
+    "status": "passed",
+    "victoryTick": 155362,
+    "finalTick": 218692,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": null,
+    "factionNames": {
+     "overlord": "Estmarch",
+     "neighbour_1": "de Lisonde",
+     "neighbour_2": "de Thornell",
+     "bishop": "Wyncaster"
+    }
+   },
+   {
+    "seed": 3,
+    "status": "passed",
+    "victoryTick": 129628,
+    "finalTick": 281084,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": "de Merrowen",
+    "factionNames": {
+     "overlord": "Brackmoor",
+     "neighbour_1": "de Corbelle",
+     "neighbour_2": "de Heronel",
+     "bishop": "Aldminster"
+    }
+   },
+   {
+    "seed": 4,
+    "status": "passed",
+    "victoryTick": 109392,
+    "finalTick": 259712,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": null,
+    "factionNames": {
+     "overlord": "Aldwyne",
+     "neighbour_1": "de Ambreth",
+     "neighbour_2": "de Corbelle",
+     "bishop": "Wyncaster"
+    }
+   },
+   {
+    "seed": 5,
+    "status": "passed",
+    "victoryTick": 130780,
+    "finalTick": 315741,
+    "differentFromBaselineE511d14": [],
+    "lordHouse": null,
+    "factionNames": {
+     "overlord": "Thornhollow",
+     "neighbour_1": "de Gildermoor",
+     "neighbour_2": "de Ivrecourt",
+     "bishop": "Aldminster"
+    }
+   }
+  ]
+ },
+ "wallVariant": [
+  {
+   "commit": "d5506e0e (run 2, one quarry–masonry pair; run 1 at 463d4843 used the era phase and proclaimed at 178,907/190,632 or not at all)",
+   "note": "the variant's own stone step; one pair made ~5 stone a thousand ticks — seed 4 finished in 1347, the others fell short",
+   "seeds": [
+    {
+     "seed": 1,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 69500,
+      "year": 1317,
+      "population": 528,
+      "treasury": 3159
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 13598
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1314,
+        "coin": 2000
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1114
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 860,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1097
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 182161,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 1029,
+        "coin": 1097
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 20528,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 72000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 76000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 80000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 84000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 88000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 92000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "stone:5/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "stone:27/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "stone:2/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "stone:38/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "stone:5/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "stone:41/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "stone:63/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:74/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:92/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 136000,
+       "era": "palisade",
+       "unmet": [
+        "stone:98/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 140000,
+       "era": "palisade",
+       "unmet": [
+        "stone:137/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 144000,
+       "era": "palisade",
+       "unmet": [
+        "stone:173/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 148000,
+       "era": "palisade",
+       "unmet": [
+        "stone:206/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 152000,
+       "era": "palisade",
+       "unmet": [
+        "stone:237/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 156000,
+       "era": "palisade",
+       "unmet": [
+        "stone:271/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 160000,
+       "era": "palisade",
+       "unmet": [
+        "stone:235/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 164000,
+       "era": "palisade",
+       "unmet": [
+        "stone:264/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 168000,
+       "era": "palisade",
+       "unmet": [
+        "stone:288/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 172000,
+       "era": "palisade",
+       "unmet": [
+        "stone:317/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 176000,
+       "era": "palisade",
+       "unmet": [
+        "stone:350/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 180000,
+       "era": "palisade",
+       "unmet": [
+        "stone:387/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 184000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 13,
+       "segments": 20
+      },
+      {
+       "tick": 188000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 17,
+       "segments": 20
+      },
+      {
+       "tick": 192000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 1,
+       "masonries": 2,
+       "stoneSegments": 18,
+       "segments": 20
+      }
+     ]
+    },
+    {
+     "seed": 2,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 77500,
+      "year": 1319,
+      "population": 528,
+      "treasury": 2482
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 520,
+      "treasury": 7791
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 969,
+        "coin": 1552
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 615,
+        "coin": 621
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 395,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 614,
+        "coin": 611
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 614,
+        "coin": 611
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 11522,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 80000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 84000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 88000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 92000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:24/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 136000,
+       "era": "palisade",
+       "unmet": [
+        "stone:59/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 140000,
+       "era": "palisade",
+       "unmet": [
+        "stone:9/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 144000,
+       "era": "palisade",
+       "unmet": [
+        "stone:15/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 148000,
+       "era": "palisade",
+       "unmet": [
+        "stone:23/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 152000,
+       "era": "palisade",
+       "unmet": [
+        "stone:2/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 156000,
+       "era": "palisade",
+       "unmet": [
+        "stone:10/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 160000,
+       "era": "palisade",
+       "unmet": [
+        "stone:7/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 164000,
+       "era": "palisade",
+       "unmet": [
+        "stone:49/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 168000,
+       "era": "palisade",
+       "unmet": [
+        "stone:65/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 172000,
+       "era": "palisade",
+       "unmet": [
+        "stone:99/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 176000,
+       "era": "palisade",
+       "unmet": [
+        "stone:131/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 180000,
+       "era": "palisade",
+       "unmet": [
+        "stone:143/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 184000,
+       "era": "palisade",
+       "unmet": [
+        "stone:148/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 188000,
+       "era": "palisade",
+       "unmet": [
+        "stone:155/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 192000,
+       "era": "palisade",
+       "unmet": [
+        "stone:162/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 19
+      }
+     ]
+    },
+    {
+     "seed": 3,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 93500,
+      "year": 1323,
+      "population": 325,
+      "treasury": 2134
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 5992
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1087,
+        "coin": 1194
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 897,
+        "coin": 477
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 776,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 897,
+        "coin": 470
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 897,
+        "coin": 470
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 8724,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "market:0/1",
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "market:0/1",
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "market:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "market:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "stone:18/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "stone:46/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "stone:6/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "stone:31/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:58/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:70/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 136000,
+       "era": "palisade",
+       "unmet": [
+        "stone:87/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 140000,
+       "era": "palisade",
+       "unmet": [
+        "stone:103/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 144000,
+       "era": "palisade",
+       "unmet": [
+        "stone:126/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 148000,
+       "era": "palisade",
+       "unmet": [
+        "stone:137/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 152000,
+       "era": "palisade",
+       "unmet": [
+        "stone:150/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 156000,
+       "era": "palisade",
+       "unmet": [
+        "stone:167/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 160000,
+       "era": "palisade",
+       "unmet": [
+        "stone:149/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 164000,
+       "era": "palisade",
+       "unmet": [
+        "stone:164/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 168000,
+       "era": "palisade",
+       "unmet": [
+        "stone:176/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 172000,
+       "era": "palisade",
+       "unmet": [
+        "stone:197/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 176000,
+       "era": "palisade",
+       "unmet": [
+        "stone:213/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 180000,
+       "era": "palisade",
+       "unmet": [
+        "stone:229/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 184000,
+       "era": "palisade",
+       "unmet": [
+        "stone:242/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 188000,
+       "era": "palisade",
+       "unmet": [
+        "stone:257/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 192000,
+       "era": "palisade",
+       "unmet": [
+        "stone:270/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      }
+     ]
+    },
+    {
+     "seed": 4,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 69500,
+      "year": 1317,
+      "population": 528,
+      "treasury": 2752
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 9005
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1203,
+        "coin": 1735
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 891,
+        "coin": 694
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 691,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 891,
+        "coin": 683
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 188584,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 191000,
+      "year": 1347,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 891,
+        "coin": 683
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "stone_wall"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 191000,
+      "year": 1347,
+      "population": 768,
+      "treasury": 9515,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 72000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 76000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 80000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 84000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 88000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 92000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 1,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "stone:31/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "stone:2/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "stone:41/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "stone:11/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "stone:46/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "stone:75/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "stone:99/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:133/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:157/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 136000,
+       "era": "palisade",
+       "unmet": [
+        "stone:194/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 140000,
+       "era": "palisade",
+       "unmet": [
+        "stone:215/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 144000,
+       "era": "palisade",
+       "unmet": [
+        "stone:221/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 148000,
+       "era": "palisade",
+       "unmet": [
+        "stone:242/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 152000,
+       "era": "palisade",
+       "unmet": [
+        "stone:265/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 156000,
+       "era": "palisade",
+       "unmet": [
+        "stone:297/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 160000,
+       "era": "palisade",
+       "unmet": [
+        "stone:259/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 164000,
+       "era": "palisade",
+       "unmet": [
+        "stone:287/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 168000,
+       "era": "palisade",
+       "unmet": [
+        "stone:303/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 172000,
+       "era": "palisade",
+       "unmet": [
+        "stone:319/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 176000,
+       "era": "palisade",
+       "unmet": [
+        "stone:332/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 180000,
+       "era": "palisade",
+       "unmet": [
+        "stone:346/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 184000,
+       "era": "palisade",
+       "unmet": [
+        "stone:357/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 188000,
+       "era": "palisade",
+       "unmet": [
+        "stone:399/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 15
+      }
+     ]
+    },
+    {
+     "seed": 5,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 89500,
+      "year": 1322,
+      "population": 528,
+      "treasury": 3649
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 9759
+     },
+     "beforeRaid": {
+      "tick": 160999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 849,
+        "coin": 1929
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 771
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 594,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 161000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 760
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": null,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1340,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 689,
+        "coin": 760
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 14279,
+      "era": "palisade",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 92000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "stone:1/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "stone:31/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "stone:53/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:24/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:43/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 136000,
+       "era": "palisade",
+       "unmet": [
+        "stone:7/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 140000,
+       "era": "palisade",
+       "unmet": [
+        "stone:27/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 144000,
+       "era": "palisade",
+       "unmet": [
+        "stone:51/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 148000,
+       "era": "palisade",
+       "unmet": [
+        "stone:86/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 152000,
+       "era": "palisade",
+       "unmet": [
+        "stone:110/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 156000,
+       "era": "palisade",
+       "unmet": [
+        "stone:138/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 160000,
+       "era": "palisade",
+       "unmet": [
+        "stone:162/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 164000,
+       "era": "palisade",
+       "unmet": [
+        "stone:157/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 168000,
+       "era": "palisade",
+       "unmet": [
+        "stone:184/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 172000,
+       "era": "palisade",
+       "unmet": [
+        "stone:202/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 176000,
+       "era": "palisade",
+       "unmet": [
+        "stone:222/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 180000,
+       "era": "palisade",
+       "unmet": [
+        "stone:246/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 184000,
+       "era": "palisade",
+       "unmet": [
+        "stone:268/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 188000,
+       "era": "palisade",
+       "unmet": [
+        "stone:283/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 192000,
+       "era": "palisade",
+       "unmet": [
+        "stone:309/400"
+       ],
+       "quarries": 1,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "commit": "ec6a88bf (run 3, two pairs)",
+   "note": "judged run: four seeds of five finish the stone wall in chapter 2",
+   "seeds": [
+    {
+     "seed": 1,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 69500,
+      "year": 1317,
+      "population": 528,
+      "treasury": 3159
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 14393
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 1000,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1122,
+        "coin": 2000
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 868,
+        "coin": 1176
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 708,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [
+       {
+        "category": "war_loan",
+        "perSeason": 221,
+        "seasonsLeft": 2
+       }
+      ],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 1000,
+       "losses": {
+        "burntHouses": 0,
+        "looted": 708,
+        "coin": 0
+       }
+      },
+      "licenceSeasonsLeft": 7,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 134092,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 160000,
+      "year": 1340,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 0,
+        "looted": 708,
+        "coin": 0
+       },
+       "defencePermille": 1000,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "stone_wall"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 160000,
+      "year": 1340,
+      "population": 768,
+      "treasury": 14325,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 72000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 76000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 80000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 84000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 88000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 92000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 1,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "stone:46/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "stone:44/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "stone:41/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "stone:114/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "stone:191/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "stone:230/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:290/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:362/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 20
+      },
+      {
+       "tick": 136000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 11,
+       "segments": 20
+      },
+      {
+       "tick": 140000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 19,
+       "segments": 20
+      },
+      {
+       "tick": 144000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 20,
+       "segments": 20
+      },
+      {
+       "tick": 148000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 20,
+       "segments": 20
+      },
+      {
+       "tick": 152000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 20,
+       "segments": 20
+      },
+      {
+       "tick": 156000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 20,
+       "segments": 20
+      },
+      {
+       "tick": 160000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 20,
+       "segments": 20
+      }
+     ]
+    },
+    {
+     "seed": 2,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 77500,
+      "year": 1319,
+      "population": 528,
+      "treasury": 2482
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 528,
+      "treasury": 7849
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 788,
+        "coin": 1599
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 536,
+        "coin": 639
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 382,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 536,
+        "coin": 630
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 191618,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 192000,
+      "year": 1348,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 536,
+        "coin": 630
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "unfinished"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 192000,
+      "year": 1348,
+      "population": 768,
+      "treasury": 11309,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 80000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 84000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 88000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 92000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:24/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 136000,
+       "era": "palisade",
+       "unmet": [
+        "stone:57/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 140000,
+       "era": "palisade",
+       "unmet": [
+        "stone:15/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 144000,
+       "era": "palisade",
+       "unmet": [
+        "stone:29/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 148000,
+       "era": "palisade",
+       "unmet": [
+        "stone:11/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 152000,
+       "era": "palisade",
+       "unmet": [
+        "stone:27/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 156000,
+       "era": "palisade",
+       "unmet": [
+        "stone:45/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 160000,
+       "era": "palisade",
+       "unmet": [
+        "stone:96/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 164000,
+       "era": "palisade",
+       "unmet": [
+        "stone:168/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 168000,
+       "era": "palisade",
+       "unmet": [
+        "stone:247/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 172000,
+       "era": "palisade",
+       "unmet": [
+        "stone:288/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 176000,
+       "era": "palisade",
+       "unmet": [
+        "stone:315/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 180000,
+       "era": "palisade",
+       "unmet": [
+        "stone:325/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 184000,
+       "era": "palisade",
+       "unmet": [
+        "stone:338/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 188000,
+       "era": "palisade",
+       "unmet": [
+        "stone:339/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 19
+      },
+      {
+       "tick": 192000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 5,
+       "segments": 19
+      }
+     ]
+    },
+    {
+     "seed": 3,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 93500,
+      "year": 1323,
+      "population": 325,
+      "treasury": 2134
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 6028
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1024,
+        "coin": 1204
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 827,
+        "coin": 481
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 702,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 827,
+        "coin": 474
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 171066,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 180000,
+      "year": 1345,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 827,
+        "coin": 474
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "stone_wall"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 180000,
+      "year": 1345,
+      "population": 768,
+      "treasury": 7189,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "market:0/1",
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "market:0/1",
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "market:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 1,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "stone:33/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "stone:16/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "stone:62/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:111/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:157/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 136000,
+       "era": "palisade",
+       "unmet": [
+        "stone:189/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 140000,
+       "era": "palisade",
+       "unmet": [
+        "stone:229/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 144000,
+       "era": "palisade",
+       "unmet": [
+        "stone:262/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 148000,
+       "era": "palisade",
+       "unmet": [
+        "stone:288/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 152000,
+       "era": "palisade",
+       "unmet": [
+        "stone:332/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 156000,
+       "era": "palisade",
+       "unmet": [
+        "stone:357/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 160000,
+       "era": "palisade",
+       "unmet": [
+        "stone:306/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 164000,
+       "era": "palisade",
+       "unmet": [
+        "stone:344/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 168000,
+       "era": "palisade",
+       "unmet": [
+        "stone:379/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 17
+      },
+      {
+       "tick": 172000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 5,
+       "segments": 17
+      },
+      {
+       "tick": 176000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 13,
+       "segments": 17
+      },
+      {
+       "tick": 180000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 17,
+       "segments": 17
+      }
+     ]
+    },
+    {
+     "seed": 4,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 69500,
+      "year": 1317,
+      "population": 528,
+      "treasury": 2752
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 768,
+      "treasury": 8863
+     },
+     "beforeRaid": {
+      "tick": 156999,
+      "defencePermille": 1000,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 1111,
+        "coin": 1705
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 841,
+        "coin": 682
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 674,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [
+       {
+        "category": "war_loan",
+        "perSeason": 129,
+        "seasonsLeft": 2
+       }
+      ],
+      "raid": {
+       "tick": 157000,
+       "defencePermille": 1000,
+       "losses": {
+        "burntHouses": 0,
+        "looted": 674,
+        "coin": 0
+       }
+      },
+      "licenceSeasonsLeft": 7,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 132886,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 160000,
+      "year": 1340,
+      "war": {
+       "raidYear": 1339,
+       "raidLosses": {
+        "burntHouses": 0,
+        "looted": 674,
+        "coin": 0
+       },
+       "defencePermille": 1000,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "stone_wall"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 160000,
+      "year": 1340,
+      "population": 768,
+      "treasury": 8203,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 72000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 76000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 80000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 84000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 88000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 92000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "stone:21/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "stone:17/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "stone:22/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "stone:94/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "stone:152/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "stone:215/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "stone:264/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:326/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:392/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 15
+      },
+      {
+       "tick": 136000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 11,
+       "segments": 15
+      },
+      {
+       "tick": 140000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 15,
+       "segments": 15
+      },
+      {
+       "tick": 144000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 15,
+       "segments": 15
+      },
+      {
+       "tick": 148000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 15,
+       "segments": 15
+      },
+      {
+       "tick": 152000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 15,
+       "segments": 15
+      },
+      {
+       "tick": 156000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 15,
+       "segments": 15
+      },
+      {
+       "tick": 160000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 15,
+       "segments": 15
+      }
+     ]
+    },
+    {
+     "seed": 5,
+     "wallChoice": "wall",
+     "chapter2": {
+      "tick": 89500,
+      "year": 1322,
+      "population": 528,
+      "treasury": 3649
+     },
+     "messenger": {
+      "tick": 148000,
+      "year": 1337,
+      "population": 763,
+      "treasury": 9733
+     },
+     "beforeRaid": {
+      "tick": 160999,
+      "defencePermille": 600,
+      "counterfactual": {
+       "none": {
+        "burntHouses": 8,
+        "looted": 833,
+        "coin": 1885
+       },
+       "timber": {
+        "burntHouses": 3,
+        "looted": 725,
+        "coin": 754
+       },
+       "stone": {
+        "burntHouses": 0,
+        "looted": 659,
+        "coin": 0
+       }
+      }
+     },
+     "war": {
+      "messengerTick": 148000,
+      "favour": true,
+      "answers": {
+       "wool_payment": "accept_with_price",
+       "levy_response": "accept_with_price",
+       "war_funding": "accept",
+       "refugee_admission": "refuse",
+       "wall_or_market": "accept_with_price"
+      },
+      "instalments": [],
+      "raid": {
+       "tick": 161000,
+       "defencePermille": 600,
+       "losses": {
+        "burntHouses": 3,
+        "looted": 725,
+        "coin": 742
+       }
+      },
+      "licenceSeasonsLeft": 0,
+      "wall": "murage"
+     },
+     "stoneProclaimed": 169701,
+     "houseChanged": false,
+     "chapterEnd": {
+      "tick": 190000,
+      "year": 1347,
+      "war": {
+       "raidYear": 1340,
+       "raidLosses": {
+        "burntHouses": 3,
+        "looted": 725,
+        "coin": 742
+       },
+       "defencePermille": 600,
+       "men": 0,
+       "lostMen": 0,
+       "wall": "stone_wall"
+      },
+      "populationEnd": 768
+     },
+     "final": {
+      "tick": 190000,
+      "year": 1347,
+      "population": 768,
+      "treasury": 14020,
+      "era": "stone_town",
+      "houses": 24,
+      "burnt": 0,
+      "outcome": "ongoing",
+      "chapter": 3
+     },
+     "stoneTrace": [
+      {
+       "tick": 92000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 96000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 100000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 104000,
+       "era": "palisade",
+       "unmet": [
+        "masonry:0/1",
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 0,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 108000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 1,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 112000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 0,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 116000,
+       "era": "palisade",
+       "unmet": [
+        "stone:0/400"
+       ],
+       "quarries": 1,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 120000,
+       "era": "palisade",
+       "unmet": [
+        "stone:41/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 124000,
+       "era": "palisade",
+       "unmet": [
+        "stone:30/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 128000,
+       "era": "palisade",
+       "unmet": [
+        "stone:6/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 132000,
+       "era": "palisade",
+       "unmet": [
+        "stone:51/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 136000,
+       "era": "palisade",
+       "unmet": [
+        "stone:92/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 140000,
+       "era": "palisade",
+       "unmet": [
+        "stone:138/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 144000,
+       "era": "palisade",
+       "unmet": [
+        "stone:190/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 148000,
+       "era": "palisade",
+       "unmet": [
+        "stone:238/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 152000,
+       "era": "palisade",
+       "unmet": [
+        "stone:289/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 156000,
+       "era": "palisade",
+       "unmet": [
+        "stone:328/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 160000,
+       "era": "palisade",
+       "unmet": [
+        "stone:369/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 164000,
+       "era": "palisade",
+       "unmet": [
+        "stone:335/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 168000,
+       "era": "palisade",
+       "unmet": [
+        "stone:382/400"
+       ],
+       "quarries": 2,
+       "masonries": 2,
+       "stoneSegments": 0,
+       "segments": 26
+      },
+      {
+       "tick": 172000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 15,
+       "segments": 26
+      },
+      {
+       "tick": 176000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 18,
+       "segments": 26
+      },
+      {
+       "tick": 180000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 21,
+       "segments": 26
+      },
+      {
+       "tick": 184000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 22,
+       "segments": 26
+      },
+      {
+       "tick": 188000,
+       "era": "stone_town",
+       "unmet": [],
+       "quarries": 2,
+       "masonries": 3,
+       "stoneSegments": 24,
+       "segments": 26
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
