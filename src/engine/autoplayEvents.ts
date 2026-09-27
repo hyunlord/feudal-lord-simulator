@@ -3,7 +3,7 @@
  * signed dearth. The naive variant (`--naive-reserve`, FP-6) rebuilds too (rebuilding is not a reserve measure) but
  * does not stock up for the dearth.
  */
-import { MONEY_BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
+import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { EVENT_DEF_BY_ID } from "../content/eventConfig";
 import { foodReserveTicks } from "../population/foodReserve";
 import { isBuildingConstructionSite } from "../economy/construction";
@@ -13,6 +13,7 @@ import { LORDSHIP_BALANCE } from "../content/lordshipConfig";
 import { LEVY_RESPONSE_PETITION_ID, REFUGEE_ADMISSION_PETITION_ID, WALL_OR_MARKET_PETITION_ID, WAR_BALANCE, WAR_FUNDING_PETITION_ID,
   WAR_PETITION_IDS, WOOL_PAYMENT_PETITION_ID } from "../content/warConfig";
 import { levyMen, refugeeRoom, woolLevyAmount } from "./war";
+import { canProclaimStoneTownEra } from "./era";
 import { treasuryBalance } from "../ledger/ledger";
 import { famineStatus, openPetitions } from "./politics";
 import type { GameState } from "./engine.types";
@@ -76,8 +77,9 @@ const WAR_CASH_RESERVE = 50;
 
 /**
  * F2-A (WR-10): wool and the exemption in cash when the treasury has them and a reserve (else in kind, else the men),
- * the subsidy on the merchants' loan, refugees as far as the empty homes and room hold them, and the stone wall
- * (with murage while the Crown favours the town, else from the treasury if it can, else the market).
+ * the subsidy on the merchants' loan, refugees as far as the empty homes and room hold them, and the stone wall only
+ * when its project can begin now or has (with murage while the Crown favours the town) — else the market, which ends
+ * the chapter rather than leave a wall unbuilt at 1348 (the first run: every seed chose murage and built too late).
  */
 function warAnswer(state: GameState, defId: string, wallChoice?: "wall" | "market"): PetitionResponse {
   const cash = treasuryBalance(state);
@@ -90,10 +92,11 @@ function warAnswer(state: GameState, defId: string, wallChoice?: "wall" | "marke
       const all = WAR_BALANCE.refugeeHouseholds * WAR_BALANCE.refugeesPerHousehold;
       return room >= all ? "accept" : room >= all / 2 ? "accept_with_price" : "refuse";
     }
-    case WALL_OR_MARKET_PETITION_ID:
+    case WALL_OR_MARKET_PETITION_ID: {
       if (wallChoice === "market") return "refuse";
-      if (state.war?.favour === true) return "accept_with_price";
-      return wallChoice === "wall" || cash >= MONEY_BALANCE.stoneWallProjectCost ? "accept" : "refuse";
+      const wall = state.war?.favour === true ? "accept_with_price" : "accept";
+      return wallChoice === "wall" || state.era === "stone_town" || canProclaimStoneTownEra(state) ? wall : "refuse";
+    }
     default: return "accept";
   }
 }

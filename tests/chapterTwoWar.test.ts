@@ -270,6 +270,11 @@ test("E20 (WR-10) the bot's answers, an unanswered demand refused, the save roun
   assert.deepEqual(bot, { kind: "petition_response", petitionId: open(edict, WOOL_PAYMENT_PETITION_ID)!.id, response: "accept_with_price" });
   const poor = season(season(warTown(10), 0), 1);
   assert.equal((chapterDecisionAction(poor, "relief", "accept") as { response: string }).response, "accept");
+  // The wall only when its project can begin now (this town has no masonry): else the market.
+  const recovery = recoverySeasonOffset(town);
+  const choice = season({ ...town, tick: M + (recovery - 1) * SEASON }, recovery);
+  assert.equal((chapterDecisionAction(choice, "relief", "accept") as { response: string }).response, "refuse");
+  assert.equal((chapterDecisionAction(choice, "relief", "accept", "pay", "wall") as { response: string }).response, "accept_with_price");
   // Left a season unanswered, the Crown takes the refusal: seized wool, the favour lost, the ledger's line.
   const ignored = season(edict, 2);
   assert.deepEqual([ignored.war!.answers[WOOL_PAYMENT_PETITION_ID], ignored.war!.favour], ["expired", false]);
