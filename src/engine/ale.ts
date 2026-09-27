@@ -56,9 +56,12 @@ export function alehouses(state: Pick<GameState, "houses">): readonly string[] {
   return state.houses.filter(isAlehouse).map(house => house.buildingId).sort();
 }
 
-/** AL-6: from 1318 (the campaign's chapter 2 at the latest), a house needs an alehouse in reach to rise to level 2+. */
+/**
+ * AL-6: a house needs an alehouse in reach to rise to level 2+ — in the campaign from chapter 2 (chapter 1 may brew, it
+ * need not, however long its famine keeps it past 1318), in the sandbox from 1318.
+ */
 export function aleRequired(state: Pick<GameState, "tick" | "scenarioId" | "politics">): boolean {
-  if (scenarioOf(state).mode === "campaign" && (state.politics?.chapter.number ?? 1) >= CHAPTER_TWO.chapter) return true;
+  if (scenarioOf(state).mode === "campaign") return (state.politics?.chapter.number ?? 1) >= CHAPTER_TWO.chapter;
   return currentYear(state) >= ALE_BALANCE.requiredFromYear;
 }
 

@@ -129,6 +129,7 @@ test("A5 (AL-5) a level-2 house with ale is an alehouse; each season the houses 
 test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only with an alehouse in reach, and never falls for want of ale", () => {
   const base = town();
   assert.equal(aleRequired({ ...base, tick: 60_000 }), false);
+  assert.equal(aleRequired({ ...base, tick: 80_000 }), false, "a campaign still in chapter 1 after 1318 need not brew");
   assert.equal(aleRequired({ ...base, tick: 60_000, politics: { ...base.politics!, chapter: { ...base.politics!.chapter, number: CHAPTER_TWO.chapter } } }), true);
   assert.equal(aleRequired({ ...base, tick: 72_000, scenarioId: SANDBOX_SCENARIO_ID }), true);
   const house: House = { buildingId: "h", level: 1, residents: 8, hasWater: true, breadStock: 9, lastServicedTick: 0, unmetRequirementTicks: 0, promotionTicks: 2_399 };
