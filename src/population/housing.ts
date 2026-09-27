@@ -27,8 +27,8 @@ export type HouseUpdateContext = {
   readonly hasMarketAccess?: boolean;
   readonly hasChurchAccess?: boolean;
   readonly palisadeProtection?: PalisadeProtection;
-  /** C4 (AL-6): the house may not rise to `aleFromLevel` or above (no alehouse in reach while ale is required). */
-  readonly aleBlocked?: boolean;
+  /** C4 (AL-6): while ale is required, whether the house is served by ale (absent: ale asks nothing). */
+  readonly aleServed?: boolean;
 };
 
 /** C4 (AL-6): what the ale requirement asks of the town's houses this tick (absent = nothing). */
@@ -130,6 +130,14 @@ function stepResidents(house: House, tick: number, lotArea: number): House {
   return house;
 }
 
+/** C4 (AL-6): the level's hold under the ale rule — longer unserved (`delay`), shorter served below the required level. */
+function aleHoldTicks(next: HousingDefinition, served: boolean | undefined): number {
+  if (served === undefined) return next.promotionHoldTicks;
+  const permille = !served && ALE_BALANCE.rule === "delay" && next.level >= ALE_BALANCE.requiredFromLevel ? ALE_BALANCE.unservedHoldPermille
+    : served && next.level >= ALE_BALANCE.servedBonusFromLevel && next.level < ALE_BALANCE.requiredFromLevel ? ALE_BALANCE.servedHoldPermille : 1_000;
+  return Math.ceil(next.promotionHoldTicks * permille / 1_000);
+}
+
 export function updateHouse(
   house: House,
   context: HouseUpdateContext,
@@ -146,13 +154,13 @@ export function updateHouse(
   const next = HOUSING_CONFIG.find((definition) => definition.level === house.level + 1);
   const nextEligible = next !== undefined
     && !(context.palisadeProtection === "outside" && house.level < 3 && next.level >= 3)
-    // C4 (AL-6): rising to level 2 or more needs an alehouse in reach once ale is required (it never pulls a house down).
-    && !(context.aleBlocked === true && next.level >= ALE_BALANCE.requiredFromLevel)
+    // C4 (AL-6): under the `require` rule rising to `requiredFromLevel` or more needs ale (it never pulls a house down).
+    && !(context.aleServed === false && ALE_BALANCE.rule === "require" && next.level >= ALE_BALANCE.requiredFromLevel)
     && next.requires.every((requirement) => requirementMet(requirement, house, context));
 
   if (nextEligible && next !== undefined) {
     const promotionTicks = (house.promotionTicks ?? 0) + 1;
-    updated = promotionTicks >= next.promotionHoldTicks
+    updated = promotionTicks >= aleHoldTicks(next, context.aleServed)
       ? { ...house, level: next.level, promotionTicks: 0, unmetRequirementTicks: 0 }
       : { ...house, promotionTicks, unmetRequirementTicks: 0 };
   } else if (targetLevel >= house.level) {
@@ -214,7 +222,7 @@ export function updateHousing(
       hasChurchAccess: services.houses.get(house.buildingId)?.church.kind === "served",
       palisadeProtection:
         home === null ? "inactive" : palisadeProtectionForBuilding(home, palisade),
-      ...(ale === undefined ? {} : { aleBlocked: !ale.served.has(house.buildingId) }),
+      ...(ale === undefined ? {} : { aleServed: ale.served.has(house.buildingId) }),
     });
   });
   return {

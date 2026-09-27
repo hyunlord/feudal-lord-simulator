@@ -143,8 +143,8 @@ test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only when served
   const house: House = { buildingId: "h", level: 1, residents: 8, hasWater: true, breadStock: 9, lastServicedTick: 0, unmetRequirementTicks: 0, promotionTicks: 2_399 };
   const context = { tick: 100, hasGranaryNearby: true, hasMarketAccess: true, hasChurchAccess: true, palisadeProtection: "inside" as const };
   assert.equal(updateHouse(house, context).level, 2, "no ale needed");
-  assert.equal(updateHouse(house, { ...context, aleBlocked: true }).level, 1, "blocked without ale");
-  assert.equal(updateHouse({ ...house, level: 2, promotionTicks: 0 }, { ...context, aleBlocked: true }).level, 2, "kept without ale");
+  assert.equal(updateHouse(house, { ...context, aleServed: false }).level, 1, "blocked without ale");
+  assert.equal(updateHouse({ ...house, level: 2, promotionTicks: 0 }, { ...context, aleServed: false }).level, 2, "kept without ale");
 });
 
 test("A7 (AL-8) the bot, once ale is required: the malt kiln first, then the smallest barn the wheat can spare turns to barley", () => {

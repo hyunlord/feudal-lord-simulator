@@ -19,6 +19,16 @@ export const ALE_BALANCE = {
   /** AL-6: from chapter 2 (1318; the sandbox from 1318), a house needs ale (its own brew or an alehouse in reach) to rise to level 2 or more. */
   requiredFromYear: 1318,
   requiredFromLevel: 2,
+  /**
+   * AL-6 how the requirement bites (the rule the user judges between; decision AL11):
+   * - `require`: a house rises to `requiredFromLevel` or more only when served by ale;
+   * - `delay`: it rises without ale, but waits `unservedHoldPermille` of the level's hold (from `requiredFromLevel`).
+   * A served house rising to a level in [`servedBonusFromLevel`, `requiredFromLevel`) waits `servedHoldPermille`.
+   */
+  rule: "require" as "require" | "delay",
+  unservedHoldPermille: 1_000,
+  servedBonusFromLevel: 2,
+  servedHoldPermille: 1_000,
   /** AL-7: ale's market price (pennies a cask), and the alehouse's dues a ledger period: this share of its sales. */
   alePrice: 3,
   alehouseDuesPermille: 200,
