@@ -26,6 +26,21 @@ export function wallInteriorCells(state: GameState): number {
 }
 
 /**
+ * FIX-5 (WR-11): the stone-wall variant's own step — a quarry, then a masonry, then the stone proclamation as soon as
+ * its conditions hold. Unlike the era phase it does not wait for every building site to finish (a growing town always
+ * has one, which kept the variant's stone project behind the houses in its first run).
+ */
+export function stoneProjectAction(state: GameState, buildAction: (state: GameState, kind: BuildingKind) => AutoplayAction): AutoplayAction {
+  if (state.era !== "palisade") return NONE;
+  for (const kind of ["quarry", "masonry"] as const) {
+    if (hasBuiltOrPlannedBuilding(state, kind)) continue;
+    const action = buildAction(state, kind);
+    return action.kind === "none" ? NONE : action;
+  }
+  return evaluateEraRequirements(state).every(requirement => requirement.met) ? { kind: "proclaim_era" } : NONE;
+}
+
+/**
  * LB-12 (C3): among the candidate walls, autoplay proclaims the palisade with one that encloses at least
  * `wallCellsPerLot` cells for every lot its policy wants when there is one; otherwise with the first the old rule
  * accepted (waiting for a roomier wall kept seed 3's hamlet at 12 lots). Faster growth met the palisade requirements

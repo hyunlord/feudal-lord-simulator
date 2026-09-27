@@ -1,3 +1,4 @@
+import { lordshipOf } from "../src/engine/lordshipState";
 import { validatePalisadeCandidate } from '../src/world/palisadeGeometry';
 import { palisadeFootprintsForState } from '../src/engine/palisadeFootprints';
 import assert from "node:assert/strict";
@@ -76,7 +77,9 @@ function maxPopulation(points: readonly PopulationPoint[]): number {
   return points.reduce((max, point) => Math.max(max, point.population), 0);
 }
 
-test("Given no new food production When the opening reserve is exhausted Then abandonment freezes a deterministic settlement and preserves built history", () => {
+// FIX-5 (FL-14): an emptied campaign town is no longer abandoned — its lord's house withdraws and the new house brings
+// settlers (who starve again here, with no food: the ladder turns again). Was: abandoned after 600 empty ticks, frozen.
+test("Given no new food production When the opening reserve is exhausted Then the emptied town changes its house and is resettled, deterministically, keeping its built history", () => {
   let state = DEFAULT_GAME_STATE;
   let replay = structuredClone(DEFAULT_GAME_STATE);
 
@@ -86,12 +89,12 @@ test("Given no new food production When the opening reserve is exhausted Then ab
   }
 
   assert.equal(hashEconomyState(state), hashEconomyState(replay));
-  assert.equal(state.population, 0);
-  assert.equal(state.settlement?.outcome, "abandoned");
-  assert.equal(state.settlement?.emptyTicks, 600);
-  assert.ok(state.tick > 6_000 && state.tick < 12_000);
-  assert.equal(totalBread(state), 0);
-  assert.equal(advanceTick(state), state);
+  assert.equal(state.tick, 12_000);
+  assert.notEqual(state.settlement?.outcome, "abandoned");
+  assert.ok(lordshipOf(state).house.order >= 2, "the house withdrew");
+  const resettled = (state.history?.records ?? []).filter(record => record.template === "house.resettled");
+  assert.ok(resettled.length >= 1 && resettled[0]!.tick > 6_000, `resettled at ${resettled.map(record => record.tick).join(", ")}`);
+  assert.equal(totalBread(state), totalBread(replay));
   assert.ok(state.houses.some(house => (house.builtLevel ?? house.level) > house.level));
 });
 
