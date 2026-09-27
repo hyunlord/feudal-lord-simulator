@@ -165,8 +165,9 @@ export function recordDecision(before: GameState, after: GameState, command: { r
   const famine = kind === "famine_response" && (decision.chosen === "relief" || decision.chosen === "speculation") ? famineOf(before) : undefined;
   if (famine !== undefined) Object.assign(params, { eventId: famine.id, treasuryAtDecision: before.treasuryCoin });
   const place = kind === "rebuild" ? after.buildings.find(entry => entry.id === command.buildingId) : undefined;
+  // FAIL-3 (FL-6): a restoration answered by the command ends the decline there, so its record comes with the decision.
   return { ...after, history: append(history, [{ tick: after.tick, kind: "decision", template: `decision.${kind}`, params, subject: TOWN,
-    ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }]) };
+    ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }, ...lordshipDrafts(before, after)]) };
 }
 
 function eventCause(eventId: string, defId: string): SourceRef {

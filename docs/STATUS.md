@@ -1,11 +1,24 @@
 # 현재 상태
 
-갱신: 2026-09-27(FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(FAIL-3 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FAIL-3 실패 사다리 3~4단 + 장 이어하기 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 렌더·UI 0줄, 검증 DGX, 사용자 지시 엔진 2장 작업 첫째): [보고서](verification/fail3-ladder-campaign/REPORT.md), [명세](design/failure-ladder-campaign.md) FL-1~FL-12, 결정 FL1~FL13.
+  - **3단 쇠퇴**
+    - 조건: 황폐 ≥ 30 %(집 8채 이상) 또는 미납 4기간.
+    - 결과: 권리 하나를 잃는다. 미납이면 상위 영주가 통행세부터 맡고, 황폐면 상인이 시장 좌판세부터 인수한다. 칭호가 강등되고, 원장·결산에 남는다.
+    - 회복: 원인이 풀리면 복원 청원이 온다(100d 권리·칭호, 50d 권리만).
+  - **4단**: 3단이 2년 이어지면 가문 교체(새 이름·문장 seed, 금고 절반, 권리 복원). 게임 오버는 없다.
+  - **장 이어하기**: 캠페인에서 1장 끝 틱에 2장이 시작한다(같은 도시). 번영은 장 목표이고 캠페인 승리는 5장 끝이다. 저장 v19.
+  - **관문**
+    - 시나리오 F1~F8.
+    - naive 봇(유지비 무시 + 투기): seed 3·4가 3단 → 4단.
+    - 가드레일 1회차 `14a1bf16` 5/5: seed 3만 1305년 쇠퇴 → 복원, 나머지는 기준선 그대로. 새 기준선 `seeds/baseline-14a1bf1.json`.
+  - **렌더가 넘겨받을 것**: `lordRights`·`lordTitle`·`lordHouse`(영주 문장은 `heraldrySeed`), 결산 `lordship` 줄, 원장 새 문구, 복원 청원 카드 문구, `chapterGoals`(정착 판 승리 제목 → 장 목표).
 
 - **FIX-4 사람 플레이 규칙 결함 E1~E11 + 초상 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 엔진 세션, 검증 DGX. 다른 세션의 WIP `cf6fd966`을 사용자 판정으로 이어받음. WIP의 UI 6개 파일은 그대로): [보고서](verification/fix4-player-rules/REPORT.md), [사람 플레이 규칙 명세](design/human-play-rules.md) HR-1~HR-13, 결정 HR1~HR13.
   - **규칙**(사람·봇 공통)
@@ -298,7 +311,7 @@
 
 ## 다음 작업
 
-- **엔진 2장 작업(사용자 지시 순서)**: FAIL-3(실패 3~4단·장 이어하기) → C4(에일 사슬) → F2-A(2장 사건) → FACTION-0(세력 기초). 작업마다 본선 병합·브랜치 삭제.
+- **엔진 2장 작업(사용자 지시 순서)**: FAIL-3 완료 → C4(에일 사슬) → F2-A(2장 사건) → FACTION-0(세력 기초). 작업마다 본선 병합·브랜치 삭제.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.

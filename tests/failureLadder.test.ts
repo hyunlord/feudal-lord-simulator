@@ -23,6 +23,7 @@ import { advanceHistory, historySummary } from "../src/engine/history";
 import { LEDGER_PERIOD_TICKS, postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
+import { gameReducer } from "../src/state/gameStore";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const YEAR = BALANCE.TICKS_PER_YEAR;
@@ -118,6 +119,10 @@ test("F4 (FL-6) the cause cleared: the holder offers the right back — bought, 
   assert.equal(petition.petitioner, "merchants");
   const cash = treasuryBalance(cleared);
   const bought = respondToPetition(cleared, petition.id, "accept");
+  // Answered through the game's command (as the bot and the player do), the ledger records the recovery with the decision.
+  const commanded = gameReducer(cleared, { type: "petition_response", petitionId: petition.id, response: "accept" });
+  assert.deepEqual(commanded.history!.records.slice(-2).map(record => record.template), ["decision.petition_response", "decline.recovered"]);
+  assert.equal(historySummary(commanded.history!.records.at(-1)!), "시장 좌판세를 되사 쇠퇴에서 벗어났다");
   assert.equal(treasuryBalance(bought), cash - LORDSHIP_BALANCE.restoreFee);
   assert.equal(lordshipOf(bought).decline, null);
   assert.deepEqual(lordRights(bought).find(right => right.id === "market")?.status, "held");
