@@ -40,6 +40,8 @@ export function deliverCandidate(
   routes: DeliveryRoutePort,
 ): RouteCandidate | null {
   if (!isStorableResource(resource)) return null;
+  // C4 (AL-2, decision AL4): barley waits in its barn for the kiln to fetch it; it never fills the granaries' room.
+  if (resource === "barley") return null;
   // Stock another carter already claimed (a mill fetching from a barn, AF-9) stays for that carter.
   const stock = Math.min(amountOf(producer.inventory, resource), inventory.availableStock(producer, resource));
   if (stock === 0) return null;

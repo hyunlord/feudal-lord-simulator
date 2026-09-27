@@ -5,7 +5,9 @@ import { computeReachablePalisadeProposalForState } from './palisadeRouteAccess'
 import { confirmPalisadeProclamation } from './palisade';
 import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
 import { evaluateEraRequirements } from './era';
-import { aleRequired } from './ale';
+import { aleRequired, setFarmsteadCrop } from './ale';
+import { arableSupplyShort } from './autoplayArable';
+import { farmsteadYears } from '../zones/arableOutlook';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
 import { LABOUR_BALANCE } from '../content/balanceConfig';
@@ -27,18 +29,29 @@ export function wallInteriorCells(state: GameState): number {
 }
 
 /**
- * C4 (AL-8): once ale is required (chapter 2), the bot sets one barn to barley (the last of two or more, so wheat keeps
- * the rest) and builds a malt kiln; the households brew by themselves.
+ * C4 (AL-8): once ale is required (chapter 2), the bot builds a malt kiln first; when it stands, it sets to barley the
+ * smallest barn the town's wheat can spare — the wheat outlook without it still meets the planner's margin (AF-13). No
+ * barn to spare: the food step plants with a wider margin until one is (`aleWantsBarley`). The households brew by themselves.
+ * (Run 1 switched a barn at 1318 before its kiln: three towns of five lost their bread to it, decision AL5.)
  */
 export function aleChainAction(state: GameState, buildAction: (state: GameState, kind: BuildingKind) => AutoplayAction): AutoplayAction {
   if (!aleRequired(state) || state.era === "hamlet") return NONE;
-  const barns = state.buildings.filter(building => building.kind === "farmstead").sort((a, b) => a.id.localeCompare(b.id));
-  if (!barns.some(building => building.crop === "barley")) {
-    return barns.length >= 2 ? { kind: "set_farmstead_crop", buildingId: barns.at(-1)!.id, crop: "barley" } : NONE;
+  if (!hasBuiltOrPlannedBuilding(state, "malt_kiln")) {
+    const action = buildAction(state, "malt_kiln");
+    return action.kind === "none" ? NONE : action;
   }
-  if (hasBuiltOrPlannedBuilding(state, "malt_kiln")) return NONE;
-  const action = buildAction(state, "malt_kiln");
-  return action.kind === "none" ? NONE : action;
+  if (!state.buildings.some(building => building.kind === "malt_kiln") || state.buildings.some(building => building.crop === "barley")) return NONE;
+  const years = new Map(farmsteadYears(state).map(year => [year.farmsteadId, year.wheat]));
+  const spare = state.buildings.filter(building => building.kind === "farmstead")
+    .sort((a, b) => (years.get(a.id) ?? 0) - (years.get(b.id) ?? 0) || a.id.localeCompare(b.id))
+    .find(barn => !arableSupplyShort(setFarmsteadCrop(state, barn.id, "barley")));
+  return spare === undefined ? NONE : { kind: "set_farmstead_crop", buildingId: spare.id, crop: "barley" };
+}
+
+/** C4 (AL-8): the kiln stands and no barn grows barley yet — the food step plants with `ALE_ARABLE_MARGIN_PERMILLE`. */
+export const ALE_ARABLE_MARGIN_PERMILLE = 1500;
+export function aleWantsBarley(state: GameState): boolean {
+  return aleRequired(state) && state.buildings.some(building => building.kind === "malt_kiln") && !state.buildings.some(building => building.crop === "barley");
 }
 
 /**

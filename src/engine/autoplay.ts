@@ -13,7 +13,7 @@ import { needsStoneStorageRecovery } from './autoplayStorageRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
-import { aleChainAction, autoplayEraAction, stoneProjectAction } from './autoplayEra';
+import { ALE_ARABLE_MARGIN_PERMILLE, aleChainAction, aleWantsBarley, autoplayEraAction, stoneProjectAction } from './autoplayEra';
 import { autoplayWallExpansionAction } from './autoplayWallRoom';
 import { preservesAutoplayServiceSpace, serviceSafeRoadAction } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
@@ -76,6 +76,10 @@ export interface AutoplayPolicy {
    * stone, the proclamation) and, once proclaimed, puts the wall's work first.
    */
   readonly wallChoice?: "wall" | "market";
+}
+/** C4 (AL-8): while the kiln waits for a barn the wheat can spare, the food step plants with a wider margin. */
+function aleFood(state: GameState, decide: () => AutoplayAction): AutoplayAction {
+  return aleWantsBarley(state) ? withArableMargin(ALE_ARABLE_MARGIN_PERMILLE, decide) : decide();
 }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
@@ -355,7 +359,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   if (state.era === "stone_town" && stoneFirst && wallConstructionPriority(state) !== "priority") return { kind: 'set_wall_construction_priority', priority: 'priority' };
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve, barnMill,
-      (current: GameState) => foodAction(current, buildAction, diagnostic), (current: GameState) => aleChainAction(current, buildAction), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
+      (current: GameState) => aleFood(current, () => foodAction(current, buildAction, diagnostic)), (current: GameState) => aleChainAction(current, buildAction), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
       (current: GameState): AutoplayAction => homesHeld ? NONE : housingAction(current, policy)]) {
       const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
       if (action.foodTransient !== undefined) metadata = action;
@@ -376,7 +380,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => timberAction(state, diagnostic),
     () => winterReserve(state),
     () => barnMill(state),
-    () => foodAction(state, buildAction, diagnostic),
+    () => aleFood(state, () => foodAction(state, buildAction, diagnostic)),
     // C4 (AL-8): the ale chain once it is required.
     () => aleChainAction(state, buildAction),
     // FIX-5 (WR-11): the stone-wall variant seeks its project before homes.

@@ -11,7 +11,9 @@ import { RESOURCE_CATALOG, STORAGE_KIND_BY_RESOURCE } from "../src/content/resou
 import { RESOURCE_COPY } from "../src/content/resourceCatalog.ko";
 import { SANDBOX_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 import { advanceAle, aleRequired, aleServedHouses, alehouses, brewingSlot, setFarmsteadCrop } from "../src/engine/ale";
-import { aleChainAction } from "../src/engine/autoplayEra";
+import { aleChainAction, aleWantsBarley } from "../src/engine/autoplayEra";
+import { arableSupplyShort } from "../src/engine/autoplayArable";
+import { deliverCandidate } from "../src/agents/deliveryBuildingCandidates";
 import type { GameState } from "../src/engine/engine.types";
 import { initialPolitics } from "../src/engine/politics";
 import { stepProduction } from "../src/economy/production";
@@ -136,15 +138,26 @@ test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only with an ale
   assert.equal(updateHouse({ ...house, level: 2, promotionTicks: 0 }, { ...context, aleBlocked: true }).level, 2, "kept without ale");
 });
 
-test("A7 (AL-8) the bot, once ale is required: one barn to barley (the last of two or more), then a malt kiln", () => {
+test("A7 (AL-8) the bot, once ale is required: the malt kiln first, then the smallest barn the wheat can spare turns to barley", () => {
   const base = town();
   const chapter2 = { ...base, politics: { ...base.politics!, chapter: { ...base.politics!.chapter, number: CHAPTER_TWO.chapter } } };
   const build = (_state: GameState, kind: string) => ({ kind: "place_building" as const, building: kind as "malt_kiln", tx: 1, ty: 1 });
-  assert.deepEqual(aleChainAction({ ...base, tick: 60_000 }, build), { kind: "none" });
-  assert.deepEqual(aleChainAction(chapter2, build), { kind: "set_farmstead_crop", buildingId: barns(base).at(-1)!.id, crop: "barley" });
-  const barley = setFarmsteadCrop(chapter2, barns(base).at(-1)!.id, "barley");
-  assert.deepEqual(aleChainAction(barley, build), { kind: "place_building", building: "malt_kiln", tx: 1, ty: 1 });
-  assert.deepEqual(aleChainAction(withKiln(barley, 0), build), { kind: "none" });
+  assert.deepEqual(aleChainAction({ ...base, tick: 60_000 }, build), { kind: "none" }, "not before ale is required");
+  assert.deepEqual(aleChainAction(chapter2, build), { kind: "place_building", building: "malt_kiln", tx: 1, ty: 1 }, "the kiln first");
+  const kiln = withKiln(chapter2, 0);
+  const action = aleChainAction(kiln, build);
+  // A barn is switched only if the wheat outlook without it still meets the planner's margin.
+  if (action.kind === "set_farmstead_crop") {
+    assert.equal(arableSupplyShort(setFarmsteadCrop(kiln, action.buildingId, "barley")), false);
+    assert.equal(aleWantsBarley(kiln), true);
+    assert.equal(aleWantsBarley(setFarmsteadCrop(kiln, action.buildingId, "barley")), false);
+  } else {
+    assert.deepEqual(action, { kind: "none" });
+    assert.ok(barns(kiln).every(barn => arableSupplyShort(setFarmsteadCrop(kiln, barn.id, "barley"))), "no barn to spare");
+    assert.equal(aleWantsBarley(kiln), true, "the food step plants wider");
+  }
+  // Barley waits in its barn: no cart takes it to a granary.
+  assert.equal(deliverCandidate({ ...barns(kiln)[0]!, crop: "barley", inventory: { barley: 20 } }, "barley", kiln.buildings, { availableStock: () => 20, availableSpace: () => 800 } as never, { betweenBuildings: () => [{ tx: 0, ty: 0 }] } as never), null);
 });
 
 test("A8 (AL-9) the save round trip (v23) keeps the crop and the brewing slots; a v22 town opens growing wheat; the same batches twice", () => {
