@@ -1,3 +1,4 @@
+import { ALE_BALANCE } from "../content/aleConfig";
 import { operationSuspended } from "../content/buildingConfig";
 import { houseGrowthPhase, houseHasFood, houseIsStarving, stepHouseFood } from "./houseFood";
 import { BALANCE } from "../content/balanceConfig";
@@ -26,7 +27,12 @@ export type HouseUpdateContext = {
   readonly hasMarketAccess?: boolean;
   readonly hasChurchAccess?: boolean;
   readonly palisadeProtection?: PalisadeProtection;
+  /** C4 (AL-6): the house may not rise to `aleFromLevel` or above (no alehouse in reach while ale is required). */
+  readonly aleBlocked?: boolean;
 };
+
+/** C4 (AL-6): what the ale requirement asks of the town's houses this tick (absent = nothing). */
+export type AleRequirement = { readonly fromLevel: number; readonly served: ReadonlySet<string> };
 
 export type HousingUpdate = {
   readonly houses: readonly House[];
@@ -140,6 +146,8 @@ export function updateHouse(
   const next = HOUSING_CONFIG.find((definition) => definition.level === house.level + 1);
   const nextEligible = next !== undefined
     && !(context.palisadeProtection === "outside" && house.level < 3 && next.level >= 3)
+    // C4 (AL-6): rising to level 2 or more needs an alehouse in reach once ale is required (it never pulls a house down).
+    && !(context.aleBlocked === true && next.level >= ALE_BALANCE.requiredFromLevel)
     && next.requires.every((requirement) => requirementMet(requirement, house, context));
 
   if (nextEligible && next !== undefined) {
@@ -190,6 +198,7 @@ export function updateHousing(
   palisade: PalisadeProtectionSource = null,
   marketService?: MarketRoadService,
   services: ServiceAllocation = allocateHouseServices({ houses, buildings, roadService: marketService }),
+  ale?: AleRequirement,
 ): HousingUpdate {
   const watered = houses.map(house => {
     const hasWater = services.houses.get(house.buildingId)?.water.kind === "served";
@@ -205,6 +214,7 @@ export function updateHousing(
       hasChurchAccess: services.houses.get(house.buildingId)?.church.kind === "served",
       palisadeProtection:
         home === null ? "inactive" : palisadeProtectionForBuilding(home, palisade),
+      ...(ale === undefined ? {} : { aleBlocked: !ale.served.has(house.buildingId) }),
     });
   });
   return {

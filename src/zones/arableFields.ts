@@ -3,6 +3,7 @@
  * labour and the harvest into the farmstead's barn. Everything here is deterministic integer arithmetic on
  * saved state (`arableFields`, save v10) plus the calendar; layouts and tending are derived and unsaved.
  */
+import { ALE_BALANCE } from "../content/aleConfig";
 import { ARABLE_CONFIG } from "../content/arableConfig";
 import { BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
@@ -396,17 +397,21 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
         continue;
       }
       if (entry.task === "plough") setRecord(entry.field, entry.strip, withStage(record, "ploughed", state.tick));
-      else if (entry.task === "sow") setRecord(entry.field, entry.strip, withStage(record, "sown", state.tick, { sownTick: state.tick }));
+      // C4 (AL-2): a strip is sown with its farmstead's crop.
+      else if (entry.task === "sow") setRecord(entry.field, entry.strip, withStage(record, "sown", state.tick, { sownTick: state.tick, crop: farmstead.crop ?? "wheat" }));
       else {
-        const grown = stripYield(strip, record, record.completionPermille ?? 1000);
+        const barley = record.crop === "barley";
+        // C4 (AL-2): barley yields more to the strip than wheat (decision AL1).
+        const grown = Math.floor(stripYield(strip, record, record.completionPermille ?? 1000) * (barley ? ALE_BALANCE.barleyYieldPermille : 1000) / 1000);
         // EV-3, EV-5: a wet summer or a dearth takes its share of the crop grown.
         const amount = Math.floor(grown * harvestPermille / 1000);
         if (amount > availableSpace(farmstead, BUILDING_CONFIG_BY_KIND.farmstead)) {
           if (record.work !== required) setRecord(entry.field, entry.strip, { ...record, work: required });
           continue;
         }
-        farmstead = { ...farmstead, inventory: { ...farmstead.inventory, wheat: (farmstead.inventory.wheat ?? 0) + amount } };
+        farmstead = { ...farmstead, inventory: { ...farmstead.inventory, [record.crop]: (farmstead.inventory[record.crop] ?? 0) + amount } };
         setRecord(entry.field, entry.strip, withStage(record, "harvested", state.tick));
+        if (barley) continue;
         harvestedWheat += amount;
         weatherLostWheat += grown - amount;
         fieldTotals.set(entry.field, (fieldTotals.get(entry.field) ?? 0) + amount);

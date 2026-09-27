@@ -31,6 +31,8 @@ import { advancePolitics, endChapterTwo } from "./politics";
 import { advanceLordship } from "./lordship";
 import { advanceWar } from "./war";
 import { advanceFactions } from "./factions";
+import { advanceAle, aleRequired, aleServedHouses } from "./ale";
+import { ALE_BALANCE } from "../content/aleConfig";
 import { advanceHistory } from "./history";
 import { carterCrossings } from "./tollCrossings";
 import { updateHousing } from "../population/housing";
@@ -196,8 +198,10 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryTimber: movedCarters.treasuryTimber,
     treasuryCoin: state.treasuryCoin,
   });
+  // C4 (AL-6): from 1318 a house rises to level 2 or more only with an alehouse in reach.
+  const ale = aleRequired({ ...state, tick }) ? { fromLevel: ALE_BALANCE.requiredFromLevel, served: aleServedHouses(marketSettled) } : undefined;
   const housing = updateHousing(servedHouses, marketSettled.buildings, tick, state.palisade,
-    undefined, householdServices(marketSettled));
+    undefined, householdServices(marketSettled), ale);
   const activeWalkers = movedDistributors.walkers.filter((walker) => walker.kind !== "builder");
   const walkers = [...activeWalkers, ...builderWalkersForSites(labour.constructionSites)];
   const produced = runProduction(recordFoodMeals(recordRecurringDelivery({
@@ -254,8 +258,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
 
 /** F2-A (WR-1…WR-9): the war's season, after the lordship; chapter 2's end is written by the politics. */
 function advanceWarTick(state: GameState): GameState {
-  // FACTION-0 (FX-1, FX-2, FX-5): then the factions' season (their leaders, their year).
-  return advanceFactions(advanceWar(state, endChapterTwo));
+  // FACTION-0 (FX-1, FX-2, FX-5): then the factions' season (their leaders, their year). C4 (AL-4, AL-5): then the ale.
+  return advanceAle(advanceFactions(advanceWar(state, endChapterTwo)));
 }
 
 export function advanceTick(state: GameState): GameState {

@@ -1,0 +1,9 @@
+{
+  "id": "brew_ale",
+  "name": "에일 빚기",
+  "levels": [1, 2, 3, 4],
+  "workers": 1,
+  "input": { "malt": 1 },
+  "output": { "ale": 2 },
+  "ticksPerBatch": 400
+}

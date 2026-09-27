@@ -22,11 +22,13 @@ export interface FarmsteadYear {
 /** AF-10: the season's expected wheat per farmstead (strip order; cells past its labour share do not count). */
 export function farmsteadYears(state: GameState, layouts: readonly ArableZoneLayout[] = arableLayouts(state)): readonly FarmsteadYear[] {
   const tending = stripTending(state, layouts);
+  // C4 (AL-2): a barley farmstead's strips feed no one (the town's wheat outlook leaves them out).
+  const barley = new Set(state.buildings.filter(building => building.crop === "barley").map(building => building.id));
   const years = new Map<string, { strips: number; cells: number; wheat: number }>();
   for (const layout of layouts) {
     for (const strip of layout.strips) {
       const assigned = tending.get(strip.id);
-      if (assigned?.status !== "tended" || assigned.farmsteadId === null) continue;
+      if (assigned?.status !== "tended" || assigned.farmsteadId === null || barley.has(assigned.farmsteadId)) continue;
       const year = years.get(assigned.farmsteadId) ?? { strips: 0, cells: 0, wheat: 0 };
       if (year.cells < ARABLE_CONFIG.predictedCellsPerFarmstead) year.wheat += stripSeasonYield(strip);
       year.strips += 1;

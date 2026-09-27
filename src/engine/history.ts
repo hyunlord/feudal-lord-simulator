@@ -58,7 +58,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   place_building: "build", place_road_line: "road", remove_road: "road",
   zone_paint: "zone", zone_erase: "zone", zone_remove: "zone", zone_undo_stroke: "zone",
   demolish_house: "house", merge_houses: "house", cancel_construction: "cancel", set_building_operation: "operation",
-  set_wall_construction_priority: "wall_priority", rebuild_house: "rebuild",
+  set_wall_construction_priority: "wall_priority", rebuild_house: "rebuild", set_farmstead_crop: "operation",
   confirm_palisade_proclamation: "market_town", confirm_stone_town_proclamation: "stone_town",
   famine_response: "famine_response", petition_response: "petition_response", expand_palisade: "wall_expand",
 };

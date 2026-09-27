@@ -18,7 +18,7 @@ export type ArableStripState = "ploughed" | "seedling" | "growing" | "fallow";
 export interface ArableStrip {
   readonly id: string;
   readonly cells: readonly TileCoordinate[];
-  readonly crop: "wheat";
+  readonly crop: "wheat" | "barley";
   readonly stage: ArableStage;
   /** Tick the strip entered `stage`. */
   readonly stageTick: number;

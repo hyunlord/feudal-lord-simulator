@@ -5,6 +5,7 @@ import { computeReachablePalisadeProposalForState } from './palisadeRouteAccess'
 import { confirmPalisadeProclamation } from './palisade';
 import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
 import { evaluateEraRequirements } from './era';
+import { aleRequired } from './ale';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
 import { LABOUR_BALANCE } from '../content/balanceConfig';
@@ -23,6 +24,21 @@ export function wallInteriorCells(state: GameState): number {
   let cells = 0;
   for (let index = 0; index < state.tiles.length; index += 1) if (cellInsideWall(state, index)) cells += 1;
   return cells;
+}
+
+/**
+ * C4 (AL-8): once ale is required (chapter 2), the bot sets one barn to barley (the last of two or more, so wheat keeps
+ * the rest) and builds a malt kiln; the households brew by themselves.
+ */
+export function aleChainAction(state: GameState, buildAction: (state: GameState, kind: BuildingKind) => AutoplayAction): AutoplayAction {
+  if (!aleRequired(state) || state.era === "hamlet") return NONE;
+  const barns = state.buildings.filter(building => building.kind === "farmstead").sort((a, b) => a.id.localeCompare(b.id));
+  if (!barns.some(building => building.crop === "barley")) {
+    return barns.length >= 2 ? { kind: "set_farmstead_crop", buildingId: barns.at(-1)!.id, crop: "barley" } : NONE;
+  }
+  if (hasBuiltOrPlannedBuilding(state, "malt_kiln")) return NONE;
+  const action = buildAction(state, "malt_kiln");
+  return action.kind === "none" ? NONE : action;
 }
 
 /**

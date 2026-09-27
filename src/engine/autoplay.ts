@@ -13,7 +13,7 @@ import { needsStoneStorageRecovery } from './autoplayStorageRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
-import { autoplayEraAction, stoneProjectAction } from './autoplayEra';
+import { aleChainAction, autoplayEraAction, stoneProjectAction } from './autoplayEra';
 import { autoplayWallExpansionAction } from './autoplayWallRoom';
 import { preservesAutoplayServiceSpace, serviceSafeRoadAction } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
@@ -355,7 +355,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   if (state.era === "stone_town" && stoneFirst && wallConstructionPriority(state) !== "priority") return { kind: 'set_wall_construction_priority', priority: 'priority' };
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve, barnMill,
-      (current: GameState) => foodAction(current, buildAction, diagnostic), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
+      (current: GameState) => foodAction(current, buildAction, diagnostic), (current: GameState) => aleChainAction(current, buildAction), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
       (current: GameState): AutoplayAction => homesHeld ? NONE : housingAction(current, policy)]) {
       const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
       if (action.foodTransient !== undefined) metadata = action;
@@ -377,6 +377,8 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => winterReserve(state),
     () => barnMill(state),
     () => foodAction(state, buildAction, diagnostic),
+    // C4 (AL-8): the ale chain once it is required.
+    () => aleChainAction(state, buildAction),
     // FIX-5 (WR-11): the stone-wall variant seeks its project before homes.
     ...(stoneFirst ? [() => stoneProjectAction(state, buildAction)] : []),
     housingPhase,

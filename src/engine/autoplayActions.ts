@@ -72,6 +72,8 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
       return { type: "famine_response", choice: action.choice };
     case "petition_response":
       return { type: "petition_response", petitionId: action.petitionId, response: action.response };
+    case "set_farmstead_crop":
+      return { type: "set_farmstead_crop", buildingId: action.buildingId, crop: action.crop };
     case "none":
       return null;
     default:
