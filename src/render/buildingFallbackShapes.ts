@@ -3,6 +3,7 @@ import type { Building } from "../economy/economy.types";
 import { applyInkOutline, shade, snapToPixel } from "./style";
 import { SEMANTIC_PALETTE } from "../content/palette";
 import type { HouseMaterialEra } from "./buildingMaterialWave";
+import { drawPicturelessName } from "./buildingNameChip";
 
 type Point = { readonly x: number; readonly y: number };
 
@@ -52,11 +53,17 @@ export function drawBody(
   context.stroke();
 }
 
+/** The fallback roof; BLD-REG: then, for a kind with no picture yet, its name above it. */
 export function drawRoof(
   context: CanvasRenderingContext2D,
   input: BuildingShapeInput,
 ): void {
   const body = buildingBodyProfile(input.building.kind, input.houseLevel, input.houseMaterialEra);
+  drawRoofShape(context, input, body);
+  drawPicturelessName(context, input.building.kind, input.center, body, input.zoom);
+}
+
+function drawRoofShape(context: CanvasRenderingContext2D, input: BuildingShapeInput, body: BodyProfile): void {
   if (body.roofShape === "none") return;
   context.fillStyle = input.winter === true ? SEMANTIC_PALETTE.snow : body.roofColor;
   if (body.roofShape === "flat") {

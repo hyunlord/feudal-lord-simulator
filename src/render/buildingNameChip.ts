@@ -14,6 +14,12 @@ export function buildingHasPicture(kind: BuildingKind): boolean {
   return kind === "house" || kind === "farmstead" || buildingEntry(kind).facilityArt !== undefined || spriteMeta(buildingSpriteKeyOf(kind)) !== null;
 }
 
+/** A kind with no picture says what it is: its name above its body (drawBuildings' fallback, after the body and roof). */
+export function drawPicturelessName(context: CanvasRenderingContext2D, kind: BuildingKind, center: { readonly x: number; readonly y: number },
+  body: { readonly height: number; readonly roof: number }, zoom: number): void {
+  if (!buildingHasPicture(kind)) drawBuildingNameChip(context, kind, center, body.height + body.roof, zoom);
+}
+
 /** The name chip, its bottom `lift` screen px above `center` (the body's top). */
 export function drawBuildingNameChip(context: CanvasRenderingContext2D, kind: BuildingKind, center: { readonly x: number; readonly y: number }, lift: number, zoom: number): void {
   const scale = 1 / Math.max(zoom, 0.5);

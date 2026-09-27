@@ -16,9 +16,8 @@ import type { TileCoordinate } from "../world/grid";
 import type { CameraState } from "./camera";
 import { tileToScreen } from "./iso";
 import { spriteMeta } from "./worldAssets";
-import { buildingHasPicture, drawBuildingNameChip } from "./buildingNameChip";
 import { drawKindDetail } from "./drawBuildingDetails";
-import { buildBuildingVisualState, buildingBodyProfile, renderDetailLevel } from "./buildingVisualState";
+import { buildBuildingVisualState, renderDetailLevel } from "./buildingVisualState";
 import { houseMaterialEraFromEra, type HouseMaterialWave } from "./buildingMaterialWave";
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
 import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
@@ -194,11 +193,6 @@ function drawBuildingDetail(
   }
   drawBody(context, shape);
   drawRoof(context, shape);
-  // BLD-REG: a kind with no picture yet says what it is.
-  if (!buildingHasPicture(building.kind)) {
-    const body = buildingBodyProfile(building.kind, visualState.houseLevel, visualState.houseMaterialEra);
-    drawBuildingNameChip(context, building.kind, center, body.height + body.roof, input.zoom);
-  }
   if (detailLevel === "full") {
     drawKindDetail(context, { hideProblemMarker: true,
       tick: input.state.tick,
