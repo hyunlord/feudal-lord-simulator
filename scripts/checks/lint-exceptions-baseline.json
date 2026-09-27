@@ -1,6 +1,6 @@
 {
   "note": "Lint/type exceptions that existed before REVIEW-1. New ones need a \"// why:\" comment. Shrink only; never add entries by hand.",
-  "recordedAt": "ea30ffb0d69f86bfe47e86dec95c995aafe7e32a",
+  "recordedAt": "b87575ec047c63c081576ed190fba35aa8058572",
   "exceptions": [
     {
       "path": "fixtures/rule-repair-probes/service-priority.ts",

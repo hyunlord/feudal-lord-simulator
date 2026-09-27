@@ -7,6 +7,7 @@
 
 ## 현재 단계
 
+- **REVIEW-1 병합 전 자동 검사 — 관문 통과, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`를 돌린다. 고정값(기준선·지문·C25 판·장부 세계·테스트 해시)을 재기록하면 같은 브랜치의 결정 목록에 파일 이름이 있어야 하고, 새 `eslint-disable`·`@ts-ignore`·`@ts-expect-error`·`as any`에는 `// why:`가 있어야 한다. ESLint(`tools/eslint/`, TS 6.0 파싱 전용)는 `exhaustive-deps`와 `src/ui` 네이티브 컨트롤 금지를 보고, typecheck도 돈다. 기존 것은 목록(예외 25, ESLint 억제 122). 금지 컨트롤 규칙 원본은 `tools/eslint/uiControls.mjs`. [사용법](REMOTE_RUNS.md#병합-전-자동-검사), AGENTS.md 규칙 19, 결정 RV1.
 - **BOT-3 식량 물류 — 관문 통과(규칙 diff = 수레 배정 한 곳 · 가드레일 5/5), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/bot3-food-logistics/REPORT.md), [노동 명세](design/labour.md) LB-15, 결정 LB10·BT11.
   - **수레 규칙 LB-15**(사용자 판정 두 번): 밀이 400 이상 쌓인 헛간이 있으면 방앗간 입고 수레의 후보에서 다른 헛간이 빠진다. 곡창은 제자리이고, 남은 후보 가운데 가장 가까운 곳으로 간다. 플레이어 게임의 수레도 같이 바뀐다. 방앗간 상한은 그대로다.
   - **지시서 진단과 다른 점:** barn_mill(AR-8)은 방앗간 상한을 보지 않는다. seed 3의 밀 907 헛간은 도로 2칸에 방앗간이 있었고, 입고 수레 9대 가운데 그 헛간으로 가는 수레가 없었다.
