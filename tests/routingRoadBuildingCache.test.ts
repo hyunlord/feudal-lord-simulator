@@ -146,7 +146,8 @@ test('natural seed3 full state including serialized pathCache stays identical af
   assert.equal(hash(warm), 'c11f6dbef46d200b0274735ad973b521e0ec4c3486dfa4298a83492de0678406');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, history: _history, factions: _factions, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'c0931baf70a48b111857191cd4f15b8a9aa3687227e38150a2d231009c453739');
+  // FIX-6: the same faces (was c0931baf…).
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'd86be291c2be4809e68225a7fa942a2c973519742b108623b5217c4fcd3cdcba');
   assert.equal(hash(coldState), hash(warm));
   assert.deepEqual(coldState.history, warm.history);
 });
