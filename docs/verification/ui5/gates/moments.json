@@ -1,0 +1,50 @@
+{
+ "carrying": {
+  "tick": 5540,
+  "walkerId": "carter:house-44-42-0:5533",
+  "tile": {
+   "tx": 43,
+   "ty": 38
+  },
+  "siteId": "construction-site-000005",
+  "headline": {
+   "personId": "p-000022",
+   "name": "Petronilla atte Well",
+   "portraitId": "I059_young",
+   "line": "목재를 방앗간 공사장으로 나르는 중 · 8/30"
+  }
+ },
+ "aging-eve": {
+  "tick": 11880,
+  "houseId": "house-46-40-0",
+  "personId": "p-000007",
+  "from": "I081_young",
+  "to": "I081_mature",
+  "within": 120
+ },
+ "petition-open": {
+  "tick": 30001,
+  "petitionId": "market_charter@30000",
+  "petitionerIds": [
+   "p-000103",
+   "p-000241",
+   "p-000188"
+  ]
+ },
+ "famine-arrival": {
+  "tick": 80000,
+  "steward": "p-000013"
+ },
+ "chapter-end": {
+  "tick": 93500
+ },
+ "merchant-town": {
+  "tick": 679252,
+  "merchantId": "p-000353",
+  "householdId": "construction-site-000025",
+  "households": [
+   "construction-site-000025",
+   "house-46-42-0"
+  ]
+ }
+}

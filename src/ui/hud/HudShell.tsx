@@ -19,6 +19,7 @@ import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory";
 import { DECISION_COPY } from "../decisionCopy.ko";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
+import { PERSONS_COPY } from "../persons/personsCopy.ko";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -80,8 +81,10 @@ export function LayerSwitch({ layer, access, onChange, pulse, hidden = false }: 
   );
 }
 
-export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, onDismissAdvisor, undo, hidden = false }: {
+export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, onDismissAdvisor, undo, hidden = false, stewardName = null }: {
   readonly hidden?: boolean;
+  /** UI-5: the steward is a person (PERSON-0): his name beside the P0 portrait's three expressions. */
+  readonly stewardName?: string | null;
   readonly buildOpen: boolean; readonly ledgerOpen: boolean; readonly onBuild: () => void; readonly onLedger: () => void;
   readonly advisor: TutorialController["advisor"]; readonly onDismissAdvisor: () => void;
   /** The newest site can be taken back (the tutorial points at it after the well). */
@@ -111,11 +114,13 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
         <UiIcon sheet="action" cell="log" size={32} />{HUD_COPY.ledger}
       </button>
       <button type="button" className="action-dock-button" data-dock="steward" aria-expanded={stewardOpen || speaking} data-speaking={speaking ? "true" : undefined}
+        aria-label={stewardName === null ? undefined : PERSONS_COPY.steward(stewardName)}
         onClick={() => { if (speaking) setExpanded(open => !open); else setStewardOpen(open => !open); }}>
         <span className="action-dock-portrait" aria-hidden="true" style={stewardPortraitStyle(advisor?.tone ?? "neutral")} />{HUD_COPY.steward}
       </button>
       {speaking && (fresh || expanded) ? <aside className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
-        aria-label={TUTORIAL_COPY.stewardName} data-advisor={advisor.key} data-tone={advisor.tone}>
+        aria-label={stewardName === null ? TUTORIAL_COPY.stewardName : PERSONS_COPY.steward(stewardName)} data-advisor={advisor.key} data-tone={advisor.tone}>
+        {expanded && stewardName !== null ? <p className="steward-name">{PERSONS_COPY.steward(stewardName)}</p> : null}
         <p className="steward-line">{advisor.text}</p>
         {expanded ? <button type="button" className="steward-button" onClick={() => onDismissAdvisor()}>{TUTORIAL_COPY.advisorButton}</button> : null}
       </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}

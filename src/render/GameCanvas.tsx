@@ -1,3 +1,4 @@
+import { householdRows, walkerHeadline } from "../ui/persons/personModels";
 import { PredictionPanel, type PredictionPresentation } from "../ui/PredictionPanel";
 import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 
@@ -47,6 +48,8 @@ type GameCanvasProps = {
   /** UX-3 S-30: the selection card holds the one panel slot — false (another panel took it, or Esc) drops it. */
   readonly selectionOpen?: boolean;
   readonly onSelectionChange?: (open: boolean) => void;
+  /** UI-5: a house member's chip opens their person card. */
+  readonly onPerson?: (personId: string) => void;
 };
 
 export function GameCanvas({
@@ -65,6 +68,7 @@ export function GameCanvas({
   onZoneRadiusChange,
   selectionOpen,
   onSelectionChange,
+  onPerson,
 }: GameCanvasProps) {
   const { state, previousRenderState, interpolationAlpha, dispatch } = useGameStore();
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
@@ -177,6 +181,9 @@ export function GameCanvas({
             setHoveredBuilding(null);
           }}
           position={selection.position}
+          walkerHeadline={selection.kind === 'walker' ? walkerHeadline(state, selection.walkerId) : null}
+          houseMembers={selection.kind === 'building' && cardModel.kind === 'house' ? householdRows(state, selection.buildingId) : []}
+          {...(onPerson === undefined ? {} : { onPerson })}
         />
       ) : null}
     </>

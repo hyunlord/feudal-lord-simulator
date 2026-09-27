@@ -1,0 +1,697 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "errors": [],
+ "gates": {
+  "petition": {
+   "moment": {
+    "tick": 30001,
+    "petitionId": "market_charter@30000",
+    "petitionerIds": [
+     "p-000103",
+     "p-000241",
+     "p-000188"
+    ]
+   },
+   "petitioners": [
+    {
+     "person": "p-000103",
+     "text": "Ralph atte Wood | 가구주 · 44살 · 방앗간지기",
+     "portrait": "I069_mature"
+    },
+    {
+     "person": "p-000241",
+     "text": "William atte Lane | 가구주 · 24살 · 방앗간지기",
+     "portrait": "I069_young"
+    },
+    {
+     "person": "p-000188",
+     "text": "Stephen Northwood | 가구주 · 26살 · 톱장이",
+     "portrait": "I049_young"
+    }
+   ],
+   "opened": {
+    "person": "p-000103",
+    "portrait": "I069_mature",
+    "exact": "true",
+    "face": "http://127.0.0.1:4300/assets/portraits/256/I069_mature.jpg",
+    "name": "Ralph atte Wood",
+    "lines": [
+     "가구주 · 방앗간지기",
+     "1263년생 · 44살",
+     "Ralph atte Wood의 집",
+     "초상 I069 장년 · 성별·나이대·계층 일치"
+    ],
+    "emblemKind": "none",
+    "emblem": null,
+    "digest": null,
+    "emblemLoaded": null,
+    "frame": true
+   },
+   "back": {
+    "petition": true,
+    "card": 0
+   },
+   "fit": {
+    "options": [
+     true,
+     true,
+     true
+    ],
+    "later": false,
+    "bodyHeight": 571,
+    "contentHeight": 589
+   },
+   "baseFit": {
+    "options": [
+     true,
+     true,
+     true
+    ],
+    "later": false,
+    "bodyHeight": 571,
+    "contentHeight": 589
+   }
+  },
+  "famine": {
+   "moment": {
+    "tick": 80000,
+    "steward": "p-000013"
+   },
+   "steward": {
+    "person": "p-000013",
+    "text": "William de Ashby | 청지기 · 61살",
+    "portrait": "steward_concern",
+    "advice": "영주님, 굶는 집이 늘기 전에 정하셔야 합니다"
+   },
+   "stewardCard": {
+    "person": "p-000013",
+    "portrait": "steward_neutral",
+    "exact": "true",
+    "face": "http://127.0.0.1:4300/assets/ui-p0/advisor_steward_portrait_neutral.png",
+    "name": "William de Ashby",
+    "lines": [
+     "청지기",
+     "1259년생 · 61살",
+     "영주의 집안",
+     "초상 청지기 고정 인물 · 직책 일치",
+     "영주 가문의 문장"
+    ],
+    "emblemKind": "arms",
+    "emblem": "knightly.vert...chief.or.eagle.argent",
+    "digest": "c769fd21",
+    "emblemLoaded": true,
+    "frame": true
+   },
+   "biography": {
+    "person": "p-000013",
+    "portrait": "steward_neutral",
+    "match": "초상 청지기 고정 인물 · 직책 일치"
+   },
+   "back": {
+    "chronicle": 0,
+    "famine": true
+   }
+  },
+  "determinism": {
+   "stateSeed": 2,
+   "firstLoad": "c769fd21",
+   "secondLoad": "c769fd21",
+   "sameAcrossLoads": true,
+   "directSeedMatchesCard": true,
+   "seeds": [
+    {
+     "seed": 1,
+     "key": "knightly.azure.per_fess.sable...stag_head.or",
+     "digest": "f7b2948d"
+    },
+    {
+     "seed": 2,
+     "key": "knightly.vert...chief.or.eagle.argent",
+     "digest": "c769fd21"
+    },
+    {
+     "seed": 3,
+     "key": "heater.gules.paly.sable...fleur_de_lis.or",
+     "digest": "934cebdd"
+    },
+    {
+     "seed": 4,
+     "key": "heater.gules.quarterly.sable...cartwheel.or",
+     "digest": "bf58ed68"
+    },
+    {
+     "seed": 5,
+     "key": "knightly.gules.per_saltire.sable...crescent.or",
+     "digest": "463b0b2b"
+    },
+    {
+     "seed": 6,
+     "key": "knightly.vert.per_pale.azure...fish.argent",
+     "digest": "9bf4b241"
+    },
+    {
+     "seed": 7,
+     "key": "knightly.vert...chief.argent.mullet.or",
+     "digest": "60a86379"
+    },
+    {
+     "seed": 8,
+     "key": "rounded.sable...chief.argent.tower.argent",
+     "digest": "a311d0de"
+    }
+   ],
+   "distinctDigests": 8,
+   "distinctRecipes": 8
+  },
+  "compose": {
+   "seed": 2,
+   "arms": {
+    "cold": 26,
+    "cached": 0,
+    "warm": [
+     2.7,
+     2.7,
+     2,
+     2.2,
+     2.1,
+     2.2,
+     2
+    ],
+    "warmMedian": 2.2
+   },
+   "mark": {
+    "cold": 20.1,
+    "cached": 0,
+    "warm": [
+     0.4,
+     0.4,
+     0.3,
+     0.5,
+     0.3,
+     0.4,
+     0.3,
+     0.4,
+     0.3,
+     0.5
+    ],
+    "warmMedian": 0.4
+   }
+  },
+  "merchant": {
+   "moment": {
+    "tick": 679252,
+    "merchantId": "p-000353",
+    "householdId": "construction-site-000025",
+    "households": [
+     "construction-site-000025",
+     "house-46-42-0"
+    ]
+   },
+   "members": [
+    {
+     "person": "p-000353",
+     "text": "John Chapman the elder | 가구주 · 26살 · 행상"
+    },
+    {
+     "person": "p-000354",
+     "text": "Matilda Chapman | 배우자 · 20살"
+    },
+    {
+     "person": "p-000365",
+     "text": "Thomas Chapman | 친척 · 70살"
+    },
+    {
+     "person": "p-000359",
+     "text": "Simon Chapman the elder | 친척 · 65살"
+    }
+   ],
+   "toggle": "식구 32명 모두 보기",
+   "expanded": 32,
+   "collapsedAgain": 4,
+   "running": [
+    679273,
+    679290
+   ],
+   "card": {
+    "person": "p-000353",
+    "portrait": "I072_young",
+    "exact": "false",
+    "face": "http://127.0.0.1:4300/assets/portraits/256/I072_young.jpg",
+    "name": "John Chapman the elder",
+    "lines": [
+     "가구주 · 행상",
+     "1443년생 · 26살",
+     "John Chapman the elder의 집",
+     "초상 I072 청년 · 가장 가까운 그림",
+     "상인 가구의 표식"
+    ],
+    "emblemKind": "merchant",
+    "emblem": "circle.topcross.double_fork",
+    "digest": "a24a113e",
+    "emblemLoaded": true,
+    "frame": true
+   },
+   "held": [
+    679295,
+    679295
+   ],
+   "resumed": 679322,
+   "cardClosedHouseCardKept": true,
+   "timeStopped": true,
+   "secondLoad": "a24a113e",
+   "sameAcrossLoads": true
+  },
+  "family": {
+   "house": "house-46-40-0",
+   "members": [
+    {
+     "person": "p-000017",
+     "text": "Joan atte Field the elder | 가구주 · 50살 · 산지기"
+    },
+    {
+     "person": "p-000396",
+     "text": "Philip atte Field the elder | 배우자 · 50살"
+    },
+    {
+     "person": "p-000470",
+     "text": "Martin atte Field the elder | 친척 · 76살"
+    },
+    {
+     "person": "p-000025",
+     "text": "Hugh atte Field | 친척 · 53살"
+    },
+    {
+     "person": "p-000050",
+     "text": "Sibyl atte Field the elder | 친척 · 51살"
+    },
+    {
+     "person": "p-000042",
+     "text": "Agnes atte Field the elder | 친척 · 49살"
+    },
+    {
+     "person": "p-000496",
+     "text": "Cecily atte Field the younger | 친척 · 44살"
+    },
+    {
+     "person": "p-000444",
+     "text": "Edith atte Field the elder | 친척 · 41살"
+    },
+    {
+     "person": "p-000285",
+     "text": "Peter atte Field the elder | 친척 · 35살"
+    },
+    {
+     "person": "p-000307",
+     "text": "William atte Field the elder | 친척 · 33살"
+    },
+    {
+     "person": "p-000008",
+     "text": "Matthew atte Field | 자녀 · 30살"
+    },
+    {
+     "person": "p-000009",
+     "text": "Denise atte Field | 자녀 · 24살"
+    },
+    {
+     "person": "p-000187",
+     "text": "Margery atte Field the elder | 자녀 · 19살"
+    },
+    {
+     "person": "p-000268",
+     "text": "Alice atte Field the younger | 자녀 · 18살"
+    },
+    {
+     "person": "p-000341",
+     "text": "Avice atte Field | 자녀 · 18살"
+    },
+    {
+     "person": "p-000417",
+     "text": "Isabel atte Field the elder | 자녀 · 16살"
+    },
+    {
+     "person": "p-000422",
+     "text": "Roger atte Field the younger | 자녀 · 16살"
+    },
+    {
+     "person": "p-000429",
+     "text": "Matilda atte Field the younger | 자녀 · 16살"
+    },
+    {
+     "person": "p-000457",
+     "text": "John atte Field the younger | 자녀 · 16살"
+    },
+    {
+     "person": "p-000484",
+     "text": "Nicholas atte Field the elder | 자녀 · 16살"
+    },
+    {
+     "person": "p-000536",
+     "text": "Christina atte Field the younger | 자녀 · 16살"
+    },
+    {
+     "person": "p-000961",
+     "text": "Juliana atte Field the elder | 자녀 · 3살"
+    }
+   ],
+   "head": {
+    "person": "p-000017",
+    "portrait": "I087_mature",
+    "exact": "true",
+    "face": "http://127.0.0.1:4300/assets/portraits/256/I087_mature.jpg",
+    "name": "Joan atte Field the elder",
+    "lines": [
+     "가구주 · 산지기",
+     "1273년생 · 50살",
+     "Joan atte Field the elder의 집",
+     "초상 I087 장년 · 성별·나이대·계층 일치"
+    ],
+    "emblemKind": "none",
+    "emblem": null,
+    "digest": null,
+    "emblemLoaded": null,
+    "frame": true
+   }
+  },
+  "walker": {
+   "moment": {
+    "tick": 5540,
+    "walkerId": "carter:house-44-42-0:5533",
+    "tile": {
+     "tx": 43,
+     "ty": 38
+    },
+    "siteId": "construction-site-000005",
+    "headline": {
+     "personId": "p-000022",
+     "name": "Petronilla atte Well",
+     "portraitId": "I059_young",
+     "line": "목재를 방앗간 공사장으로 나르는 중 · 8/30"
+    }
+   },
+   "state": 5540,
+   "walker": {
+    "line": "목재를 방앗간 공사장으로 나르는 중 · 8/30",
+    "person": "p-000022",
+    "exact": "true",
+    "title": "Petronilla atte Well · 운반인",
+    "portrait": "I059_young",
+    "text": "주민 · 이동과 운송 | Petronilla atte Well · 운반인 | × | 목재를 방앗간 공사장으로 나르는 중 · 8/30 | 화물 | 목재 8 | 출발 | 오두막 | 출발 위치 | 남서쪽 3칸 | 목적 | construction-site-000005 | 상태 | 배송 중 | 남은 길 | 4칸 · 약 3일 | 통과 | 지난 집 2"
+   },
+   "look": {
+    "id": "carter:house-44-42-0:5533",
+    "tx": 43.019999999999996,
+    "ty": 38,
+    "sheetId": "wk_artisan_f_01",
+    "band": "artisan",
+    "sex": "female",
+    "occupation": "logger",
+    "prop": null,
+    "cloak": null
+   }
+  },
+  "aging": {
+   "moment": {
+    "tick": 11880,
+    "houseId": "house-46-40-0",
+    "personId": "p-000007",
+    "from": "I081_young",
+    "to": "I081_mature",
+    "within": 120
+   },
+   "before": "I081_young",
+   "during": {
+    "out": "person-portrait-layer person-portrait-layer--out",
+    "in": "person-portrait-layer person-portrait-layer--in",
+    "shown": "I081_mature",
+    "opacity": [
+     "0.91",
+     "0.09"
+    ],
+    "midOpacity": [
+     "0.23",
+     "0.77"
+    ]
+   },
+   "after": "I081_mature",
+   "layersAfter": 1,
+   "waitedMs": 32530,
+   "crossfaded": true
+  },
+  "bubble": {
+   "name": "청지기 John de Ashby",
+   "label": "청지기 John de Ashby",
+   "dock": "청지기 John de Ashby",
+   "line": "이곳을 시장 도시로 키우십시오. 먼저 먹을 것부터 챙기지요. 봄에 밭을 칠해야 올해 거둡니다. 목표 카드의 단추를 누르시면 됩니다.",
+   "face": true
+  },
+  "tablet": {
+   "coarse": true,
+   "targets": 2,
+   "targetsUnder48": [],
+   "textUnder12": []
+  },
+  "shownMatch": {
+   "people": 59,
+   "exact": 58,
+   "percent": 98.3
+  }
+ },
+ "shown": {
+  "p-000103": {
+   "exact": true,
+   "where": "petition"
+  },
+  "p-000241": {
+   "exact": true,
+   "where": "petition"
+  },
+  "p-000188": {
+   "exact": true,
+   "where": "petition"
+  },
+  "p-000013": {
+   "exact": true,
+   "where": "steward card"
+  },
+  "p-000353": {
+   "exact": false,
+   "where": "house card (all members)"
+  },
+  "p-000354": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000365": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000359": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000357": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000356": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000360": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000367": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000355": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000362": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000366": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000358": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000363": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000364": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000368": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000361": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000369": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000370": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000378": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000375": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000374": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000380": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000373": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000371": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000377": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000379": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000372": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000376": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000383": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000381": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000382": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000384": {
+   "exact": true,
+   "where": "house card (all members)"
+  },
+  "p-000017": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000396": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000470": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000025": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000050": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000042": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000496": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000444": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000285": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000307": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000008": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000009": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000187": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000268": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000341": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000417": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000422": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000429": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000457": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000484": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000536": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000961": {
+   "exact": true,
+   "where": "family house card (all members)"
+  },
+  "p-000022": {
+   "exact": true,
+   "where": "walker card"
+  }
+ }
+}

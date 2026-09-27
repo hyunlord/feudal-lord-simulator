@@ -1,11 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-27(AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UI-5 인물이 화면에 — 관문 ①~④ 통과, 본선 병합**(Claude Code, UI·렌더 카드·스타일·에셋 설치·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/ui5/REPORT.md), 결정 UI5-D1~D5.
+  - **사람이 보인다:** 청원 카드의 청원자 2~3명(칩 → 인물 카드), 대기근 결정 모달의 청지기(걱정 표정·이름·조언), 집 카드·왼쪽 inspector의 식구(가구주 먼저, 다섯 넘으면 넷 + [식구 N명 모두 보기]), 워커 카드의 사람과 "목재를 방앗간 공사장으로 나르는 중 · 8/30", 청지기 말풍선의 이름.
+  - **인물 카드**(Wave 14 `frame_person_card`, 모달·시간 정지): 초상·이름·역할·생년과 나이·가구·초상 일치, 영주 가솔은 영주 문장, 상인 가구는 상인 표식, [전기 보기] → 연대기 전기. 초상은 CHRON-1 풀 런타임, 노화 단계가 바뀌면 600 ms 크로스페이드. 청지기는 누구든 P0 청지기 얼굴(판정 대기).
+  - **문장·표식:** Wave 14 50개 설치(대장 50행), seed·가구 해시 레시피(분할·치프·오디너리 세 꼴, 색 위 금속), 합성 계약대로 브라우저에서(마스크가 풀린 뒤 문장 2.2 ms·표식 0.4 ms, 첫 장 26 ms).
+  - **관문:** 캡처 15장(+본선 청원 카드 1), 화면 초상 일치 98.3 %(59명 중 58), 상태 전체 97.1~100 %, 같은 seed 같은 픽셀 지문(두 번 불러 `c769fd21`), seed 1~8 여덟 문장 모두 다름, UX-3 회귀 세트 통과. 깨끗한 클론은 다음 커밋에 적는다.
 
 - **AUDIO-1 소리 P1 — 관문 ①~④ 통과, 본선 병합**(Claude Code, 소리·설정 UI·음원·라이선스·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/audio1/REPORT.md), [소리 출처](AUDIO_LICENSES.md), 결정 AU-D1~D4.
   - **소리 37개(새 22):** 환경 넷(봄 새·여름 벌레·가을 바람·겨울 바람, 계절 크로스페이드·줌아웃일수록 큼), 가동 여섯(방앗간 날개·화덕, 제재소 톱, 채석 망치, 장날 시장 웅성, 일요일·장 끝 교회 종), 워커 셋(수레·황소·양 방울), 사건 다섯(화재·젖은 여름 비·기근 예고 종·청원 노크·대기근), 계절 전환 넷·해금·완공 팡파르. 합성 17(이 프로젝트, 이음새 없는 주기 루프) + Kenney CC0.

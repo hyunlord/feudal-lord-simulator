@@ -101,6 +101,8 @@ import { createStoreStockHistory, observeStoreStockHistory } from "./ui/storeSto
 import { EventCards } from "./ui/hud/EventCards";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "./ui/hud/StoryModals";
 import { ChronicleScreen } from "./ui/chronicle/ChronicleScreen";
+import { personCardView, personRow, petitionerRows, stewardPerson } from "./ui/persons/personModels";
+import { PersonCardModal } from "./ui/persons/PersonViews";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
 import { famineDecisionView, petitionDecisionView } from "./ui/decisionModels";
 import { chronicleView } from "./ui/chronicleModel";
@@ -149,6 +151,9 @@ export function App() {
   const [layer, setLayer] = useState<ControlLayer>("direct");
   // UX-1: the left inspector (a warning's `[보기]`: cause and action of that building).
   const [inspectedId, setInspectedId] = useState<string | null>(null);
+  // UI-5: the person card on screen (a modal) and the person a chronicle opens on.
+  const [personCardId, setPersonCardId] = useState<string | null>(null);
+  const [chroniclePersonId, setChroniclePersonId] = useState<string | null>(null);
   // UX-3: which UI is on screen is one state (uiStateMachine: one panel slot, Esc one step, modals push / pop).
   const [ui, setUi] = useState<UiState>(INITIAL_UI_STATE);
   const uiRef = useRef(ui);
@@ -389,10 +394,15 @@ export function App() {
   const famineView = topModal(ui) === "decision" ? famineDecisionView(state) : null;
   const petitionView = topModal(ui) === "petition" ? petitionDecisionView(state) : null;
   const chronicle = topModal(ui) === "chronicle" ? chronicleView(state) : null;
+  const stewardOfTown = stewardPerson(state);
+  const steward = stewardOfTown === null ? null : personRow(state, stewardOfTown);
+  const personCard = topModal(ui) === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
+  const openPerson = (id: string) => { setPersonCardId(id); sendUi({ type: "push_modal", modal: "person_card" }); };
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
   useEffect(() => {
-    if ((topModal(ui) === "decision" && famineView === null) || (topModal(ui) === "petition" && petitionView === null) || (topModal(ui) === "chronicle" && chronicle === null)) sendUi({ type: "pop_modal" });
-  }, [ui, famineView === null, petitionView === null, chronicle === null]); // eslint-disable-line react-hooks/exhaustive-deps
+    if ((topModal(ui) === "decision" && famineView === null) || (topModal(ui) === "petition" && petitionView === null) || (topModal(ui) === "chronicle" && chronicle === null)
+      || (topModal(ui) === "person_card" && personCard === null)) sendUi({ type: "pop_modal" });
+  }, [ui, famineView === null, petitionView === null, chronicle === null, personCard === null]); // eslint-disable-line react-hooks/exhaustive-deps
   // UX-3R2 zone toolbar: the brush and the polygon paint the last kind chosen (the first open kind before any); the
   // redo list belongs to one painting session (cleared when the zone tool goes down).
   const [lastZoneKind, setLastZoneKind] = useState<ZoneKind | null>(null);
@@ -553,7 +563,7 @@ export function App() {
           onPalisadeDraftCancel={cancelPalisadeDraft}
           zoneTool={zoneTool}
           onZoneRadiusChange={radius => setZoneTool(current => current === null ? current : { ...current, radius })}
-          selectionOpen={ui.mode === "selection"} onSelectionChange={onCanvasSelection}
+          selectionOpen={ui.mode === "selection"} onSelectionChange={onCanvasSelection} onPerson={openPerson}
         />
         <PauseVeil paused={speed === 0 && !welcomeVisible && topModal(ui) === null} />
         <div className="hud-time-cluster" role="group" aria-label={SCENARIO_COPY.calendarAria} hidden={!visibility.speed}>
@@ -591,7 +601,8 @@ export function App() {
             <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
           </div>
         ) : null}
-        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} onClose={() => sendUi({ type: "deselect" })} /></div> : null}
+        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} onClose={() => sendUi({ type: "deselect" })}
+          onPerson={openPerson} /></div> : null}
         {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
           history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
@@ -616,7 +627,8 @@ export function App() {
         <ActionDock hidden={!visibility.dock} buildOpen={ui.mode === "build"} ledgerOpen={ui.mode === "ledger"}
           onBuild={() => sendUi({ type: "toggle_build" })} onLedger={() => sendUi({ type: "toggle_ledger" })}
           advisor={tutorial.advisor} onDismissAdvisor={tutorial.dismissAdvisor}
-          undo={{ enabled: newestSite !== undefined, attention: tutorial.cards.some(card => card.key === "well_done"), label: BUILD_MENU_COPY.undoHint, onUndo: undoLastSite }} />
+          undo={{ enabled: newestSite !== undefined, attention: tutorial.cards.some(card => card.key === "well_done"), label: BUILD_MENU_COPY.undoHint, onUndo: undoLastSite }}
+          stewardName={steward === null ? null : steward.name} />
         {/* S-21 build drawer (and the zone bar in S-24): the catalogue stays mounted so a goal card can open it. */}
         {/* UX-3R2: in the zone state the left zone panel holds the kinds and tools; the drawer stays closed. */}
         <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" ? "true" : undefined}>
@@ -651,14 +663,17 @@ export function App() {
         onAutoChange={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
         onResume={() => sendUi({ type: "pop_modal" })}
         onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) setMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
-      {famineView === null ? null : <FamineDecisionModal view={famineView} onLater={() => sendUi({ type: "pop_modal" })}
+      {famineView === null ? null : <FamineDecisionModal view={famineView} onLater={() => sendUi({ type: "pop_modal" })} steward={steward} onPerson={openPerson}
         onChoose={choice => { dispatch({ type: "famine_response", choice }); sendUi({ type: "pop_modal" }); }} />}
-      {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })}
+      {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })} onPerson={openPerson}
+        petitioners={petitionerRows(state, state.politics?.petitions.find(petition => petition.id === petitionView.petitionId) ?? {})}
         onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
       {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
         onNextChapter={() => { sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "chapter_preview" }); }}
         onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} />}
-      {topModal(ui) === "history" ? <ChronicleScreen state={state} onClose={() => sendUi({ type: "pop_modal" })}
+      {topModal(ui) === "person_card" && personCard !== null ? <PersonCardModal view={personCard} onClose={() => sendUi({ type: "pop_modal" })}
+        onBiography={id => { setChroniclePersonId(id); sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "history" }); }} /> : null}
+      {topModal(ui) === "history" ? <ChronicleScreen state={state} initialPersonId={chroniclePersonId} onClose={() => { setChroniclePersonId(null); sendUi({ type: "pop_modal" }); }}
         onLookAt={tile => { sendUi({ type: "pop_modal" }); platformServices().input.emit({ kind: "lookAt", tile }); }} /> : null}
       {topModal(ui) === "chapter_preview" ? <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} /> : null}
       {topModal(ui) === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
