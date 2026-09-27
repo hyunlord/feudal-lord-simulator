@@ -12,8 +12,12 @@ export const LORDSHIP_BALANCE = {
    * every ladder sample, not the season's start); an empty town declines and its house withdraws at once (FL-14).
    */
   depopulatedPermille: 300,
-  /** FL-14: the settlers the new house brings in each standing house (one household), fed for a season. */
-  resettleGraceTicks: 1_000,
+  /**
+   * FL-14 (FIX-5b): the settlers the new house brings in each standing house (one household) come with a season of
+   * bread each — into a granary with room, else into their houses — and a meal's grace for the carts to bring it.
+   */
+  resettleBreadTicks: 1_000,
+  resettleGraceTicks: 400,
   /** FL-3: unpaid upkeep spread over this many distinct ledger periods. */
   arrearsPeriods: 4,
   /** FL-6: the restoration's price; haggled down, the title comes back `titleReturnTicks` later. */
