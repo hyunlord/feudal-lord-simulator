@@ -100,7 +100,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   useEffect(() => {
     if (openRequest === null) return;
     setCategory(openRequest.category); setCatalogOpen(true); setDetailsOpen(false); setPinned(null);
-  }, [openRequest]); // eslint-disable-line react-hooks/exhaustive-deps -- a request is applied once, when it arrives; setCatalogOpen is a new forwarder each render
+  // why: a request is applied once, when it arrives; setCatalogOpen is a new forwarder each render
+  }, [openRequest]); // eslint-disable-line react-hooks/exhaustive-deps
   const pulseKey = pulse === null ? null : `${pulse.key}#${pulse.nonce}`;
   const pulsing = (key: string) => pulse !== null && pulse.key === key ? pulseKey ?? undefined : undefined;
   // Esc (the global `cancel` intent, after the map and the app shell) closes the catalog and the details (B9). A

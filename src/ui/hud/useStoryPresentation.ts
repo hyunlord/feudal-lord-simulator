@@ -28,7 +28,8 @@ export function useStoryPresentation(input: {
   const [, setRevision] = useState(0);
   const [delayMs] = useState(eventWorldFirstMs);
   const beats = storyBeats(state);
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- every render on purpose: it records what the model shows now and re-renders only when a beat is new
+  // why: every render on purpose: it records what the model shows now and re-renders only when a beat is new
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const seen = seenRef.current; const now = Date.now(); let changed = false;
     for (const beat of beats) {
@@ -48,7 +49,8 @@ export function useStoryPresentation(input: {
     let fresh = false;
     for (const beat of visible) if (!announcedRef.current.has(beat.id)) { announcedRef.current.add(beat.id); fresh = true; }
     if (fresh && !blocked && presentationPreference("eventPause")) pause();
-  }, [visibleKey]); // eslint-disable-line react-hooks/exhaustive-deps -- keyed by the visible beats' ids (a new list each render); the pause setting is read when one is new
+  // why: keyed by the visible beats' ids (a new list each render); the pause setting is read when one is new
+  }, [visibleKey]); // eslint-disable-line react-hooks/exhaustive-deps
   // Decisions and the chronicle open once, after the world first.
   const famine = famineStatus(state); const petition = openPetitions(state)[0]; const end = chapterEnd(state);
   const ready = (id: string) => { const entry = seenRef.current.get(id); return entry !== undefined && nowMs - entry.firstSeenMs >= delayMs; };

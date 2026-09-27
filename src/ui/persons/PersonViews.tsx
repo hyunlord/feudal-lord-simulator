@@ -24,7 +24,8 @@ export function PersonPortrait({ portraitId, size, className = "" }: { readonly 
     setPrevious(shown); setShown(portraitId);
     const timer = window.setTimeout(() => setPrevious(null), FADE_MS);
     return () => window.clearTimeout(timer);
-  }, [portraitId]); // eslint-disable-line react-hooks/exhaustive-deps -- the crossfade starts when the portrait id changes; the face shown until then is read at that moment
+  // why: the crossfade starts when the portrait id changes; the face shown until then is read at that moment
+  }, [portraitId]); // eslint-disable-line react-hooks/exhaustive-deps
   const style = (id: string) => portraitStyle(id, size) ?? { width: size, height: size };
   return (
     <span className={`person-portrait ${className}`} aria-hidden="true" data-portrait={shown} style={{ width: size, height: size }}>

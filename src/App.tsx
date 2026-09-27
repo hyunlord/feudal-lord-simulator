@@ -195,7 +195,8 @@ export function App() {
       under = x >= box.left - 24 && x <= box.right + 24 && y >= box.top - 24 && y <= box.bottom + 24;
     }
     if (under !== railSeeThrough) setRailSeeThrough(under);
-  }, [presentationNowMs]); // eslint-disable-line react-hooks/exhaustive-deps -- once a presentation frame (the frame clock is the key): the rail and the canvas are measured then
+  // why: once a presentation frame (the frame clock is the key): the rail and the canvas are measured then
+  }, [presentationNowMs]); // eslint-disable-line react-hooks/exhaustive-deps
   const [onboardingPresentation, setOnboardingPresentation] = useState(
     createOnboardingPresentationState,
   );

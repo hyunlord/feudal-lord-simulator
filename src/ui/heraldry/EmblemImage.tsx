@@ -136,7 +136,8 @@ export function EmblemImage({ emblem, size, label }: { readonly emblem: EmblemSp
     setPicture(null);
     void composedEmblem(emblem).then(result => { if (live) setPicture(result); }).catch(() => undefined);
     return () => { live = false; };
-  }, [emblem.kind, key]); // eslint-disable-line react-hooks/exhaustive-deps -- keyed by the recipe's content (a new recipe object each render composes the same picture)
+  // why: keyed by the recipe's content (a new recipe object each render composes the same picture)
+  }, [emblem.kind, key]); // eslint-disable-line react-hooks/exhaustive-deps
   return picture === null ? <span className="emblem-image emblem-image--pending" style={{ width: size, height: size }} aria-hidden="true" />
     : <img className="emblem-image" src={picture.url} width={size} height={size} alt={label} data-emblem={key} data-digest={picture.digest} />;
 }

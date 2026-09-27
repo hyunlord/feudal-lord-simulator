@@ -87,7 +87,8 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   // Memo (key: the ledger and the filter; the timeline adds the eras and now): the rows filter and fold the whole ledger,
   // and time is stopped while the screen is up, so nothing else rebuilds them. Measured (chron1Captures, DGX): 30,000
   // records open, rows to first painted frame, in 57–162 ms; the model part alone about 12 ms (tests/chronicleScreen).
-  const items = useMemo(() => chronicleItems(state, filter), [state.history, filter]); // eslint-disable-line react-hooks/exhaustive-deps -- the rows read only the ledger (and the scenario, fixed in a game)
+  // why: the rows read only the ledger (and the scenario, fixed in a game)
+  const items = useMemo(() => chronicleItems(state, filter), [state.history, filter]); // eslint-disable-line react-hooks/exhaustive-deps
   const indexOf = useMemo(() => new Map(items.map((item, index) => [item.key, index])), [items]);
   // UI-KIT-1: the strip, the chapter bars and the zoomed ruler are keyed by the season, not the tick (they were rebuilt
   // every tick); "now" on them moves by seasons, the now pin keeps the exact tick.
@@ -98,10 +99,13 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   const segments = useMemo(() => timelineSegments({ ...scenario, ...(historicalEras === undefined ? {} : { historicalEras }), tick: seasonNow }), [scenario, historicalEras, seasonNow]);
   const markers = useMemo(() => timelineMarkers(items.map(item => item.record), segments), [items, segments]);
   const chapters = useMemo(() => timelineChapters({ ...(politics === undefined ? {} : { politics }), tick: seasonNow }), [politics, seasonNow]);
-  const people = useMemo(() => chroniclePeople(state), [state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps -- the people come from the ledger and the persons only
-  const years = useMemo(() => chronicleYears({ ...scenario, tick: seasonNow }), [scenario, yearNow]); // eslint-disable-line react-hooks/exhaustive-deps -- a new year adds a year; seasonNow within it gives the same list
+  // why: the people come from the ledger and the persons only
+  const people = useMemo(() => chroniclePeople(state), [state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps
+  // why: a new year adds a year; seasonNow within it gives the same list
+  const years = useMemo(() => chronicleYears({ ...scenario, tick: seasonNow }), [scenario, yearNow]); // eslint-disable-line react-hooks/exhaustive-deps
   const seasons = useMemo(() => zoomed ? seasonWindow({ ...scenario, tick: seasonNow }, items, zoomTick) : [], [zoomed, items, zoomTick, scenario, seasonNow]);
-  const biography = useMemo(() => personId === null ? null : biographyView(state, personId), [personId, state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps -- a biography reads the ledger and the persons (time stands still while it is open)
+  // why: a biography reads the ledger and the persons (time stands still while it is open)
+  const biography = useMemo(() => personId === null ? null : biographyView(state, personId), [personId, state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // The list and the biography page swap in and out: observe the one shown.
   const onList = personId === null;
@@ -144,7 +148,8 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     if (personId !== null || selected === null) return;
     const index = indexOf.get(selected);
     if (index !== undefined && list.current !== null && (index * CARD_ROW < list.current.scrollTop || index * CARD_ROW > list.current.scrollTop + viewport.list)) scrollTo(index);
-  }, [personId, indexOf]); // eslint-disable-line react-hooks/exhaustive-deps -- only on coming back to the list (or a new row order); the selection and scroll are read then
+  // why: only on coming back to the list (or a new row order); the selection and scroll are read then
+  }, [personId, indexOf]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const selectedIndex = selected === null ? (items.length > 0 ? 0 : -1) : indexOf.get(selected) ?? -1;
   const selectedItem = selectedIndex < 0 ? undefined : items[selectedIndex];

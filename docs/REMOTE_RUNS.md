@@ -71,7 +71,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 - **검사**:
   1. `scripts/checks/pinChanges.mjs`: 고정값 파일·테스트 해시 값이 바뀌었으면, 같은 범위에서 결정 목록(`docs/decisions/**`, `docs/DECISIONS.md`)에 더한 줄에 그 파일 이름이나 상위 폴더가 있어야 한다.
   2. `scripts/checks/lintExceptions.mjs`: 새 `eslint-disable…`·`@ts-ignore`·`@ts-expect-error`·`as any`(캐스트)에 `// why:`가 같은 줄이나 윗줄에 있어야 한다. 기존 것은 `scripts/checks/lint-exceptions-baseline.json`(25건, 파일 + 줄 내용으로 대조)에 있다.
-  3. ESLint(`tools/eslint/`): 바뀐 코드 파일만 본다. `tools/eslint/eslint-suppressions.json`(122건: 금지 컨트롤 118, exhaustive-deps 4)에 없는 위반만 실패한다.
+  3. ESLint(`tools/eslint/`): 바뀐 코드 파일만 본다. `tools/eslint/eslint-suppressions.json`에 없는 위반만 실패한다(REVIEW-1 때 122건: 금지 컨트롤 118, exhaustive-deps 4. UI-KIT-1이 모두 고쳐 0건).
   4. typecheck: 루트 `node_modules`의 `tsc --noEmit`.
 - **ESLint 설치가 따로인 이유**
   - typescript-eslint는 TypeScript 6.1 미만만 지원한다. 루트의 TypeScript 7(네이티브 포트)에는 JS 컴파일러 API가 없다.
