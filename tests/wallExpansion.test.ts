@@ -140,8 +140,8 @@ test("W6 the expansion is a big decision in the ledger (keep is the alternative)
   assert.deepEqual(Object.keys(record.decision!.predicted).sort(), ["lots", "population"]);
   assert.equal(historySummary(record), "목책을 넓혀 새로 두르기로 했다");
   const loaded = decodeSave(encodeSave({ state: after, createdAt: "2026-09-27T00:00:00.000Z", savedAt: "2026-09-27T00:00:00.000Z" }).bytes);
-  assert.equal(SAVE_SCHEMA_VERSION, 17);
-  assert.equal(loaded.envelope.schemaVersion, 17);
+  assert.ok(SAVE_SCHEMA_VERSION >= 17, "WALL-2 added the expansion in v17 (FIX-4 is v18)");
+  assert.equal(loaded.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
   assert.equal((loaded.envelope.state as GameState).palisade!.expansion!.tick, after.tick);
   assert.deepEqual(loaded.envelope.state, after);
   // A town with room for its lots is not widened; a hamlet has no wall to widen.

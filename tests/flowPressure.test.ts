@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { houseIsStarving } from "../src/population/houseFood";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
@@ -114,9 +115,13 @@ test("P2 a hut's predicted rent, upkeep and labour match what the ledger charges
   let charged: { tick: number; rent: number; level: number } | null = null;
   for (let step = 0; step < 20_000 && charged === null; step += 1) {
     state = advanceTick(state);
+    // FIX-4 E10: the opening village grows no bread, so its larders are kept full: the prediction is a fed hut's rent.
+    state = { ...state, houses: state.houses.map(entry => ({ ...entry, breadStock: Math.max(entry.breadStock, 20) })) };
     const house = state.houses.find(entry => entry.buildingId === id);
     if (completed === null && house !== undefined) completed = state.tick;
-    if (completed === null || house === undefined || state.tick % LEDGER_PERIOD_TICKS !== 0 || state.tick < completed + 600 || house.residents <= 0) continue;
+    // FIX-4 E10: a starving household pays no rent and one getting ready to leave half; the prediction is a fed hut's.
+    if (completed === null || house === undefined || state.tick % LEDGER_PERIOD_TICKS !== 0 || state.tick < completed + 600 || house.residents <= 0
+      || house.leavingSinceTick !== undefined || houseIsStarving(house, state.tick)) continue;
     const rent = state.ledger!.entries.filter(entry => entry.tick === state.tick && entry.category === "rent" && entry.sourceRefs[0].id === id)
       .reduce((sum, entry) => sum + entry.amount, 0);
     charged = { tick: state.tick, rent, level: house.level };
@@ -282,8 +287,11 @@ test("P8 the first-winter warning: autumn opens with less food (in store and in 
   assert.deepEqual(warned.seasons!.firstWinterWarning, { tick: autumn, reserveTicks: reserve, untilHarvestTicks: 3_700 });
   assert.equal(firstWinterWarningActive(warned), true);
   assert.equal(firstWinterWarningActive({ ...warned, tick: autumn + 2 * SEASON }), false, "over when the winter ends");
+  // FIX-4 E8 (HR-8): the next autumn that opens short is warned again (was once a game); the same tick is not raised twice.
+  assert.equal(advanceSeasons(warned).seasons!.firstWinterWarning!.tick, autumn, "one warning a tick");
   const again = advanceSeasons({ ...warned, tick: autumn + 4000 });
-  assert.equal(again.seasons!.firstWinterWarning!.tick, autumn, "raised once");
+  assert.equal(again.seasons!.firstWinterWarning!.tick, autumn + 4000, "raised again the next short autumn");
+  assert.equal(firstWinterWarningActive(again), true);
   // A town whose store lasts a winter (the old test) but not to the next harvest is warned too.
   const winterOnly = foodTown(Math.ceil(WINTER_NEED_TICKS * 1.5));
   assert.ok(foodReserveTicks(winterOnly)! >= WINTER_NEED_TICKS && harvestOutlookTicks(winterOnly)! < 3_700);

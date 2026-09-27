@@ -1,5 +1,5 @@
 {
-  "description": "Money-free world state after PERSON-0 (the town's persons: names, births, deaths, offices, save v16) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money, history and Building.upkeepUnpaid. PERSON-0 changes the world by design (the state records persons; mortality takes residents where a house cannot grow, spec PS-3), so the F0-C1 world no longer applies. The cache must still match the ledger on every tick. MARKET-1 re-pinned seed1City2400 (the market reaches homes along the road; the new-game case is unchanged). MARKET-1 MK-5 re-pinned it again: the trace runs the bot, and AR-5 now lays a road (44,43) that brings four lived-in L4 homes into the markets' reach where it used to demolish one of them (the rules are unchanged; at the merge before MK-5 the hash was 67db5f18).",
+  "description": "Money-free world state after PERSON-0 (the town's persons: names, births, deaths, offices, save v16) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money, history and Building.upkeepUnpaid. PERSON-0 changes the world by design (the state records persons; mortality takes residents where a house cannot grow, spec PS-3), so the F0-C1 world no longer applies. The cache must still match the ledger on every tick. MARKET-1 re-pinned seed1City2400 (the market reaches homes along the road; the new-game case is unchanged). MARKET-1 MK-5 re-pinned it again: the trace runs the bot, and AR-5 now lays a road (44,43) that brings four lived-in L4 homes into the markets' reach where it used to demolish one of them (the rules are unchanged; at the merge before MK-5 the hash was 67db5f18). FIX-4 re-pinned newGame10000: the new game opens with 60d and 160 timber, and upkeep is charged food chain first with old debt no longer idling a facility (spec HR-1, HR-2, HR-3, HR-9); seed1City2400 is unchanged.",
   "sourceCommit": "person0-persons",
   "previousBaseline": "fixtures/ledger/world-baseline-f0c1-famine.json",
   "cases": {
@@ -9,7 +9,7 @@
       "endTick": 10000,
       "ticks": 10000,
       "stateFile": null,
-      "finalWorldHashWithoutMoney": "4287ead65773c63df3454bf5007db9014731351d1fb7c1b51c9d8b25636b35c7"
+      "finalWorldHashWithoutMoney": "5123793cc272a029737df89b198b4e6f993fcba7e4788fa3f83fb715c424ce9b"
     },
     "seed1City2400": {
       "kind": "state",

@@ -16,13 +16,14 @@
  */
 import { ARABLE_CONFIG } from "../content/arableConfig";
 import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, operationSuspended } from "../content/buildingConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
 import { arableLayouts, stripTending, stripYield } from "../zones/arableFields";
 import { EMPTY_LEDGER } from "../ledger/ledger";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { foodReserveTicks, seasonalFoodReserveShort } from "../population/foodReserve";
 import { householdShortOfFood } from "../population/housePressure";
+import { houseIsStarving } from "../population/houseFood";
 import { withHouseholdMembers } from "../population/householdMembers";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
@@ -30,6 +31,7 @@ import { advanceHistoricalEras, calendar, scenarioOf } from "./scenarioState";
 import { departureCapPerSeason, eventForecast, famineShortHouses } from "./eventSchedule";
 import {
   SEASON_STOCK_KEYS,
+  type FoodNeeds,
   type NextObjectiveHint,
   type SeasonEvent,
   type SeasonLedger,
@@ -84,8 +86,38 @@ function cashFlow(state: GameState, start: number, end: number): { readonly inco
   return { income, expense };
 }
 
+/**
+ * FIX-4 E11 (HR-11): what the town's bread needs and it lacks — arable cells for a year's bread (a year's meals, winter
+ * at × 1.2, 2 wheat a loaf, a cell counted at its headland yield), barns for those cells, mills to keep up.
+ */
+export function foodNeeds(state: GameState): FoodNeeds {
+  const ration = state.houses.reduce((sum, house) => sum + (house.residents > 0 ? houseFoodRation(house) : 0), 0);
+  const year = BALANCE.TICKS_PER_YEAR;
+  const winterShare = (year - PRESSURE_BALANCE.winterFrom) / year;
+  const yearBread = ration * (year / HOUSE_FOOD_INTERVAL) * (1 + winterShare * (PRESSURE_BALANCE.winterRationPermille - 1000) / 1000);
+  const mill = BUILDING_CONFIG_BY_KIND.mill.production!;
+  const cellYield = Math.floor(ARABLE_CONFIG.baseYieldPerCell * ARABLE_CONFIG.headlandPermille / 1000);
+  const neededCells = Math.ceil(yearBread * mill.inputPerOutput / cellYield);
+  const painted = (state.zones ?? []).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0);
+  const barns = state.buildings.filter(building => building.kind === "farmstead" && !operationSuspended(building)).length;
+  const mills = state.buildings.filter(building => building.kind === "mill" && !operationSuspended(building)).length;
+  const breadPerTick = yearBread / year;
+  return {
+    arableCells: Math.max(0, neededCells - painted),
+    farmstead: barns === 0 || barns * ARABLE_CONFIG.predictedCellsPerFarmstead < Math.max(painted, neededCells),
+    mill: mills === 0 || mills / mill.ticksPerOutput < breadPerTick,
+  };
+}
+
+/** A household is short of food, starving or getting ready to leave: the season's hint is about food first (E11). */
+function householdsHungry(state: GameState, reserveShort: boolean): boolean {
+  return state.houses.some(house => house.leavingSinceTick !== undefined || houseIsStarving(house, state.tick)
+    || householdShortOfFood(house, reserveShort, state.tick));
+}
+
 function nextObjectiveHint(state: GameState): NextObjectiveHint {
-  if (state.houses.some(house => house.leavingSinceTick !== undefined) || seasonalFoodReserveShort(state, state.tick)) return "food_reserve";
+  // FIX-4 E11: a hungry town hears about its food before any rumour (a starving town was told "마른 여름").
+  if (householdsHungry(state, seasonalFoodReserveShort(state, state.tick))) return "food_reserve";
   const reserve = harvestOutlookTicks(state);
   if (reserve !== null && reserve < ticksUntilNextHarvest(state.tick)) return "harvest_reserve";
   // F0-B (EV-2): a rumoured or signed event asks for its preparation; burnt houses wait for rebuilding.
@@ -99,6 +131,7 @@ function nextObjectiveHint(state: GameState): NextObjectiveHint {
 function closedEvents(tally: SeasonTally): SeasonEvent[] {
   const events: SeasonEvent[] = [];
   if (tally.firstWinterWarning) events.push({ kind: "first_winter_warning" });
+  if ((tally.starved ?? 0) > 0) events.push({ kind: "residents_starved", count: tally.starved! });
   if (tally.leaving > 0) events.push({ kind: "households_leaving", count: tally.leaving });
   if (tally.abandoned > 0) events.push({ kind: "households_abandoned", count: tally.abandoned });
   if (tally.resettled > 0) events.push({ kind: "households_resettled", count: tally.resettled });
@@ -106,6 +139,11 @@ function closedEvents(tally: SeasonTally): SeasonEvent[] {
   // F0-B (EV-9): the season's event lines — forecasts, arrivals and recoveries with their losses.
   events.push(...(tally.events ?? []));
   return events;
+}
+
+function hintOf(state: GameState): Pick<SeasonLedger, "nextObjectiveHint" | "foodNeeds"> {
+  const hint = nextObjectiveHint(state);
+  return hint === "food_reserve" || hint === "harvest_reserve" ? { nextObjectiveHint: hint, foodNeeds: foodNeeds(state) } : { nextObjectiveHint: hint };
 }
 
 /** FP-1: closes the season that ends at `state.tick` and opens the next. */
@@ -120,7 +158,7 @@ function closeSeason(state: GameState, seasons: SeasonState): SeasonState {
       timber: stock.timber - tally.stock.timber, stone: stock.stone - tally.stock.stone },
     popDelta: state.population - tally.population,
     notableEvents: closedEvents(tally),
-    nextObjectiveHint: nextObjectiveHint(state),
+    ...hintOf(state),
   };
   const history = [...seasons.history, ledger].slice(-PRESSURE_BALANCE.seasonLedgerHistory);
   return { ...seasons, current: openTally(state, state.tick), history };
@@ -239,9 +277,12 @@ export function harvestOutlookTicks(state: GameState): number | null {
   return stored + Math.floor(Math.floor(standing / wheatPerBread) * HOUSE_FOOD_INTERVAL / ration);
 }
 
-/** FP-4 (FP9): at the start of autumn, the first time the food in store and in the fields will not last to the next harvest. */
+/**
+ * FP-4 (FP9): at the start of an autumn whose food in store and in the fields will not last to the next harvest.
+ * FIX-4 E8 (HR-8): every such autumn (was the first only, so a town that got through its first winter was never warned again).
+ */
 function firstWinterWarning(state: GameState, seasons: SeasonState): SeasonState {
-  if (seasons.firstWinterWarning !== undefined) return seasons;
+  if (seasons.firstWinterWarning?.tick === state.tick) return seasons;
   if (calendar(state.tick, scenarioOf(state).startYear).season !== 2 || state.tick % SEASON !== 0) return seasons;
   const reserve = harvestOutlookTicks(state);
   const need = ticksUntilNextHarvest(state.tick);
@@ -254,6 +295,24 @@ function firstWinterWarning(state: GameState, seasons: SeasonState): SeasonState
 export function firstWinterWarningActive(state: Pick<GameState, "tick" | "seasons">): boolean {
   const warning = state.seasons?.firstWinterWarning;
   return warning !== undefined && state.tick >= warning.tick && state.tick < warning.tick + 2 * SEASON;
+}
+
+/**
+ * FIX-4 E7 (HR-7): residents a tick's housing step took from starving homes (the old rule: a starving house loses a
+ * lot's worth each growth interval) are counted into the season, so the ledger names the loss. The simulation substep
+ * changes residents only through growth and starvation; deaths and departures come later in the tick.
+ */
+export function recordStarvation(before: GameState, after: GameState): GameState {
+  if (after.seasons === undefined) return after;
+  const was = new Map(before.houses.map(house => [house.buildingId, house]));
+  let starved = 0;
+  for (const house of after.houses) {
+    const old = was.get(house.buildingId);
+    if (old !== undefined && house.residents < old.residents && house.abandonedTick === undefined) starved += old.residents - house.residents;
+  }
+  if (starved === 0) return after;
+  const current = after.seasons.current;
+  return { ...after, seasons: { ...after.seasons, current: { ...current, starved: (current.starved ?? 0) + starved } } };
 }
 
 /** One tick of F0-A pressure. Returns the state unchanged between samples. */

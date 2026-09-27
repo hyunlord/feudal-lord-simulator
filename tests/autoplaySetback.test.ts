@@ -7,6 +7,7 @@ import { hasAutoplayBuildingClearance } from '../src/engine/autoplaySetback';
 import { decideNextAction } from '../src/engine/autoplay';
 import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
 import { DEFAULT_GAME_STATE, gameReducer } from '../src/state/gameStore';
+import type { GameState } from '../src/engine/engine.types';
 
 function ground() {
   const state = structuredClone(DEFAULT_GAME_STATE);
@@ -34,9 +35,21 @@ test('Given a map edge Then the advisor reserves a full land ring instead of tra
   assert.equal(hasAutoplayBuildingClearance(ground(), 'house', { tx: 1, ty: 4 }), true);
 });
 
+/** FIX-4 E9: with 160 timber the advisor paints its first field before it builds; apply that and take its first building. */
+function firstBuildingDecision(start: GameState): { readonly state: GameState; readonly action: ReturnType<typeof decideNextAction> } {
+  let state = start;
+  for (let step = 0; step < 3; step += 1) {
+    const action = decideNextAction(state);
+    if (action.kind !== 'paint_zone') return { state, action };
+    const command = autoplayActionToGameAction(action, state);
+    assert.ok(command);
+    state = gameReducer(state, command);
+  }
+  return { state, action: decideNextAction(state) };
+}
+
 test('Given the default start When the advisor builds Then the legal reducer action preserves a dry perimeter', () => {
-  const state = structuredClone(DEFAULT_GAME_STATE);
-  const action = decideNextAction(state);
+  const { state, action } = firstBuildingDecision(structuredClone(DEFAULT_GAME_STATE));
   assert.equal(action.kind, 'place_building');
   if (action.kind !== 'place_building') return;
   assert.equal(hasAutoplayBuildingClearance(state, action.building, action), true);
@@ -57,8 +70,7 @@ for (const completed of [false, true]) for (const axis of ['x', 'y'] as const) {
 }
 
 test('Given a narrow coast at the first candidate When the advisor chooses a well Then it moves inland and remains buildable', () => {
-  const state = structuredClone(DEFAULT_GAME_STATE);
-  const first = decideNextAction(state);
+  const { state, action: first } = firstBuildingDecision(structuredClone(DEFAULT_GAME_STATE));
   assert.equal(first.kind, 'place_building');
   if (first.kind !== 'place_building') return;
   state.tiles = state.tiles.map(tile => tile.tx === first.tx - 1 && tile.ty === first.ty - 1 ? { ...tile, terrain: 'water' } : tile);

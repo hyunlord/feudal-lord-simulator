@@ -110,6 +110,8 @@ test("the tuned default-map grant commits the first missing economy chain pieces
       "sawmill",
       "storehouse",
       "farmstead",
+      // FIX-4 E9: 160 timber (was 120) also commits the mill.
+      "mill",
       "house",
       "house",
       "house",
@@ -118,6 +120,6 @@ test("the tuned default-map grant commits the first missing economy chain pieces
       "house",
     ],
   );
-  assert.equal(state.treasuryTimber, 120);
-  assert.equal(placementSpendableResource(state, "timber"), 15);
+  assert.equal(state.treasuryTimber, 160);
+  assert.equal(placementSpendableResource(state, "timber"), 25);
 });

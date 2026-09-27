@@ -36,11 +36,25 @@ function eventLine(state: Pick<GameState, "scenarioId">, event: SeasonLedger["no
     case "households_resettled": return copy.households_resettled(event.count);
     case "era_entered": return copy.era_entered(scenarioOf(state).eras.find(era => era.id === event.eraId)?.name ?? event.eraId, event.forced);
     case "first_winter_warning": return copy.first_winter_warning;
+    case "residents_starved": return copy.residents_starved(event.count);
     case "event_rumour": return copy.event_rumour(eventName(event.defId));
     case "event_sign": return copy.event_sign(eventName(event.defId));
     case "event_arrived": return copy.event_arrived(eventName(event.defId));
     case "event_recovered": return copy.event_recovered(eventName(event.defId));
   }
+}
+
+/** FIX-4 E11: a food hint names what the town lacks (arable cells, a barn, a mill); the old line only said "fill the granary". */
+function hintText(ledger: SeasonLedger): string {
+  const hint = ledger.nextObjectiveHint!;
+  const needs = ledger.foodNeeds;
+  if ((hint !== "food_reserve" && hint !== "harvest_reserve") || needs === undefined) return SEASON_LEDGER_COPY.hints[hint];
+  const parts = [
+    ...(needs.arableCells > 0 ? [SEASON_LEDGER_COPY.needs.arableCells(needs.arableCells)] : []),
+    ...(needs.farmstead ? [SEASON_LEDGER_COPY.needs.farmstead] : []),
+    ...(needs.mill ? [SEASON_LEDGER_COPY.needs.mill] : []),
+  ];
+  return parts.length === 0 ? SEASON_LEDGER_COPY.needs.harvest : SEASON_LEDGER_COPY.needs.line(parts);
 }
 
 /** Scenes that say the season went badly: with any of them (or fewer people) it was no quiet season. */
@@ -66,7 +80,7 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     // UX-0b: "큰 일 없이 지나간 계절입니다" only for a calm season (the audit read it beside "인구 줄음 −62%").
     events: events.length > 0 ? events : ledger.popDelta < 0 ? [SEASON_LEDGER_COPY.populationFell(-ledger.popDelta)]
       : scenes.some(scene => TROUBLE.has(scene.id)) ? [] : [SEASON_LEDGER_COPY.quiet],
-    hint: ledger.nextObjectiveHint === null ? null : { text: SEASON_LEDGER_COPY.hints[ledger.nextObjectiveHint], category: HINT_CATEGORY[ledger.nextObjectiveHint] },
+    hint: ledger.nextObjectiveHint === null ? null : { text: hintText(ledger), category: HINT_CATEGORY[ledger.nextObjectiveHint] },
   };
 }
 

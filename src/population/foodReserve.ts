@@ -5,14 +5,34 @@ import { HOUSE_FOOD_INTERVAL, houseFoodRation, isWinterTick } from "../content/h
 /** The parts of the game state the reserve reads (population may not import the engine's state type). */
 export interface FoodReserveWorld {
   readonly houses: readonly { readonly residents: number }[];
-  readonly buildings: readonly { readonly inventory: Partial<Record<string, number>> }[];
+  readonly buildings: readonly {
+    readonly kind: string;
+    readonly workers: number;
+    readonly inventory: Partial<Record<string, number>>;
+    readonly operationPaused?: boolean;
+    readonly upkeepUnpaid?: boolean;
+  }[];
   readonly walkers: readonly { readonly cargo: { readonly resource: string; readonly amount: number } | null }[];
+}
+
+/** FIX-4 E5: wheat per tick the mills grind now — mills that are staffed and neither paused nor stopped for upkeep. */
+export function millGrindRate(state: Pick<FoodReserveWorld, "buildings">): number {
+  const mill = BUILDING_CONFIG_BY_KIND.mill;
+  const production = mill.production;
+  if (production === null || production.ticksPerOutput <= 0) return 0;
+  const running = state.buildings.filter(building => building.kind === "mill" && building.operationPaused !== true && building.upkeepUnpaid !== true
+    && building.workers >= mill.workersRequired).length;
+  return running * production.inputPerOutput / production.ticksPerOutput;
 }
 
 /**
  * FIX-1 food reserve: how long the town's stored food lasts at its current consumption, in ticks. Stored food is the
- * bread and wheat in buildings and on carts (the resource bar's stock; household larders excluded), wheat counted as
- * the bread a mill makes of it (2 wheat → 1 bread). Consumption is every occupied house's ration per meal interval.
+ * bread and wheat in buildings and on carts (the resource bar's stock; household larders excluded).
+ *
+ * FIX-4 E5 (HR-5): wheat counts only as the bread the mills can make of it in that time. With bread B, wheat W,
+ * consumption c bread a tick and mills grinding r wheat a tick (2 wheat → 1 bread), the food lasts the T where
+ * B + min(W, r·T)/2 = c·T. Was B + W/2 whatever the mills: the UX-0b audit town read 900 days with its only mill
+ * stopped, so the ladder, the first-winter warning and the season hint stayed quiet while it starved.
  * Null when no house eats.
  */
 export function foodReserveTicks(state: FoodReserveWorld): number | null {
@@ -21,8 +41,15 @@ export function foodReserveTicks(state: FoodReserveWorld): number | null {
   const amount = (resource: "bread" | "wheat") => state.buildings.reduce((sum, building) => sum + Math.max(0, building.inventory[resource] ?? 0), 0)
     + state.walkers.reduce((sum, walker) => sum + (walker.cargo?.resource === resource ? Math.max(0, walker.cargo.amount) : 0), 0);
   const wheatPerBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2;
-  const bread = amount("bread") + Math.floor(amount("wheat") / wheatPerBread);
-  return Math.floor(bread * HOUSE_FOOD_INTERVAL / ration);
+  const bread = amount("bread");
+  const wheat = amount("wheat");
+  const eat = ration / HOUSE_FOOD_INTERVAL;
+  const grind = millGrindRate(state) / wheatPerBread;
+  // The mills keep up (or the wheat runs out first): every grain becomes bread in time.
+  const whole = (bread + Math.floor(wheat / wheatPerBread)) / eat;
+  if (grind >= eat || grind * whole * wheatPerBread >= wheat) return Math.floor(whole);
+  // The mills fall behind: bread runs down at c − r/2 while the wheat lasts.
+  return Math.floor(bread / (eat - grind));
 }
 
 /**

@@ -75,7 +75,9 @@ test("game state stays JSON-safe after ticks and player actions", () => {
 
 test("a corrupted state fails the checksum", () => {
   const encoded = encodeSave({ state: playedState(3), createdAt: TIME, savedAt: TIME });
-  const text = new TextDecoder().decode(encoded.bytes).replace('"treasuryCoin":0', '"treasuryCoin":9');
+  const coin = playedState(3).treasuryCoin;
+  const text = new TextDecoder().decode(encoded.bytes).replace(`"treasuryCoin":${coin}`, `"treasuryCoin":${coin + 9}`);
+  assert.notEqual(text, new TextDecoder().decode(encoded.bytes), "the treasury was corrupted");
   assert.throws(() => decodeSave(new TextEncoder().encode(text)), SaveChecksumError);
   assert.throws(() => decodeSave(new TextEncoder().encode("{not json")), SaveFormatError);
 });

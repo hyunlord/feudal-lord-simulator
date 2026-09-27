@@ -5,6 +5,7 @@ import { allocateBuildingLabour, availableWorkers } from '../src/population/labo
 import { stepProduction } from '../src/economy/production';
 import { buildingHasRequiredRoadAccess } from '../src/engine/roadAccess';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
+import { advanceTick } from '../src/engine/tick';
 import { foodAction } from '../src/engine/autoplayFood';
 import { decideNextAction } from '../src/engine/autoplay';
 import { roadActionToTargets, plannedBuildingRoadAction } from '../src/engine/autoplayConstructionRoads';
@@ -15,10 +16,22 @@ import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
 import { buildingRoadAccessTiles, resolveBuildingRoute, resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
 
 test('Given starting timber and an existing logging camp When autoplay chooses development Then it secures renewable timber before expansion', () => {
-  const state = structuredClone(DEFAULT_GAME_STATE);
+  // FIX-4 E9: with 160 timber the advisor starts the food chain first (field, barn, mill); the sawmill still comes
+  // before any house.
+  let state = structuredClone(DEFAULT_GAME_STATE);
   state.houses = state.houses.map(house => ({ ...house, hasWater: true }));
-  const action = decideNextAction(state);
-  assert.equal(action.kind === 'place_building' && action.building, 'sawmill');
+  const placed: string[] = [];
+  for (let tick = 0; tick < 1_200 && !placed.includes('sawmill') && !placed.includes('house'); tick += 1) {
+    if (tick % 120 === 0) {
+      const action = decideNextAction(state);
+      const command = autoplayActionToGameAction(action, state);
+      if (action.kind === 'place_building') placed.push(action.building);
+      if (command !== null) state = gameReducer(state, command);
+    }
+    state = advanceTick(state);
+  }
+  assert.ok(placed.includes('sawmill'), `placed ${placed.join(', ')}`);
+  assert.equal(placed.includes('house'), false, 'no house before the sawmill');
 });
 
 

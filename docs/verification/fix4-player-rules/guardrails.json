@@ -1,0 +1,83 @@
+{
+  "runner": "DGX, scripts/remote/run.sh --task guardrail (REMOTE-1)",
+  "baseline": "seeds/baseline-c5c778e.json (victory tick is recorded, not gated)",
+  "runs": {
+    "run1@3da4fd58": [
+      {
+        "seed": 1,
+        "status": "passed",
+        "victoryTick": 112942,
+        "baselineVictoryTick": 138849,
+        "victoryChangePercent": -18.7,
+        "finalTick": 229541,
+        "baselineFinalTick": 254047,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 1,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 742
+      },
+      {
+        "seed": 2,
+        "status": "passed",
+        "victoryTick": 155362,
+        "baselineVictoryTick": 228549,
+        "victoryChangePercent": -32.0,
+        "finalTick": 218300,
+        "baselineFinalTick": 268349,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 1,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 779
+      },
+      {
+        "seed": 3,
+        "status": "passed",
+        "victoryTick": 131640,
+        "baselineVictoryTick": 168810,
+        "victoryChangePercent": -22.0,
+        "finalTick": 262500,
+        "baselineFinalTick": 313274,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 1,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 951
+      },
+      {
+        "seed": 4,
+        "status": "passed",
+        "victoryTick": 109392,
+        "baselineVictoryTick": 181180,
+        "victoryChangePercent": -39.6,
+        "finalTick": 220272,
+        "baselineFinalTick": 275756,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 1,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 795
+      },
+      {
+        "seed": 5,
+        "status": "passed",
+        "victoryTick": 130780,
+        "baselineVictoryTick": 278726,
+        "victoryChangePercent": -53.1,
+        "finalTick": 315591,
+        "baselineFinalTick": 409227,
+        "finalL4": 24,
+        "finalLots": 24,
+        "mills": 11,
+        "markets": 2,
+        "stopReason": "target-scale-stable",
+        "elapsedSeconds": 1041
+      }
+    ]
+  }
+}

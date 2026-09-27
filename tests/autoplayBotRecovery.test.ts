@@ -162,9 +162,10 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // adds politics to the state (the economy hash stays), re-recorded at F0-C1. PERSON-0 adds the town's persons to the
   // state (the economy hash stays: a fed house fills a dead one's place at once), re-recorded at PERSON-0. BOT-3 changes
   // the rules on purpose (a barn piled with 400+ wheat drops the other barns from a mill's intake choice, spec LB-15),
-  // re-recorded at BOT-3.
-  assert.equal(hashEconomyState(state), "bc442d959f36afd4");
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "fe4932ef30910a8fc586a645103dd0e4fae10d8b6c9c7f4bc1faa354d0dd8691");
+  // re-recorded at BOT-3. FIX-4 changes them again (upkeep order and old debt, rent relief, the first-year sowing window,
+  // plot settlement, spec HR-*), re-recorded at FIX-4.
+  assert.equal(hashEconomyState(state), "586524b693af31bf");
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "48329ac7b37fd23f7eaa4686eb3e205253cc78794cd2d85d49890903561fd6b5");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {

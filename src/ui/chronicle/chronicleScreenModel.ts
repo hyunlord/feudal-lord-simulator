@@ -238,7 +238,8 @@ function recordPerson(state: Pick<GameState, "persons">, record: HistoryRecord):
 
 /** The person's picture as they were in `year` (the aging chain's stage of that age). */
 export function portraitAt(person: Person, year: number) {
-  const pick = portraitFor(person, ageBandOf(ageOf(person, Math.min(year, person.deathYear ?? person.leftYear ?? year))));
+  const age = ageOf(person, Math.min(year, person.deathYear ?? person.leftYear ?? year));
+  const pick = portraitFor(person, ageBandOf(age), age);
   return { ...pick, portraitId: drawnPortraitId(person, pick.portraitId) };
 }
 
