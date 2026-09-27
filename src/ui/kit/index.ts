@@ -3,3 +3,4 @@ export { Button, IconButton, type ButtonProps, type ButtonSize, type ButtonVaria
 export { Checkbox, Chip, Divider, Slider, Tabs, Toggle, Tooltip, type TabItem } from "./Controls";
 export { Card, Modal, Panel, type FrameKind } from "./Frame";
 export { Select, type SelectOption } from "./Select";
+export { Disclosure } from "./Disclosure";

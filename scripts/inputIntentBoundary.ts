@@ -10,7 +10,9 @@ import { parseAst } from "rolldown/parseAst";
 //  R3  A host element's on* handler (JSX or createElement props) is an inline function or a local function that
 //      takes no event or is a DOM-only helper: a bare reference like onClick={onClose} would receive the event.
 //  R4  Host element handlers do not call the game's tool / speed setters or dispatch directly: tools and speeds go
-//      through the `toolSelect` / `speed` intents (PlatformServices.input).
+//      through the `toolSelect` / `speed` intents (PlatformServices.input). UI-KIT-1: the same holds for the kit parts'
+//      handler props (`<Button onPress>`, `<Select onChange>` …): the kit renders the host element, so its props are the
+//      host handlers in effect.
 // Usage: npx tsx scripts/inputIntentBoundary.ts  (prints violations as JSON; exit 1 when there are any)
 
 export type Violation = { readonly file: string; readonly line: number; readonly rule: "R1" | "R2" | "R3" | "R4"; readonly text: string };
@@ -21,6 +23,8 @@ const INPUT_EVENTS = /^(mouse\w*|pointer\w*|touch\w*|key\w*|wheel|click|dblclick
 const EVENT_TYPE = /\b\w*(Mouse|Pointer|Wheel|Keyboard|Touch)Event\b/;
 const DOM_ONLY_METHODS = new Set(["preventDefault", "stopPropagation", "stopImmediatePropagation"]);
 const SINKS = new Set(["setSpeed", "setSelectedTool", "setZoneTool", "dispatch"]);
+/** UI-KIT-1: kit parts (src/ui/kit) whose `on*` props are host handlers in effect (R4). */
+const KIT_PARTS = new Set(["Button", "IconButton", "Toggle", "Checkbox", "Slider", "Tabs", "Select", "Disclosure"]);
 
 type Node = { readonly type: string; readonly start: number; readonly end: number; readonly [key: string]: unknown };
 
@@ -101,6 +105,15 @@ export function checkSource(file: string, source: string): Violation[] {
     return false;
   };
 
+  const kitHandler = (node: Node): boolean => {
+    const parent = parents.get(node);
+    if (parent?.type !== "JSXExpressionContainer") return false;
+    const attribute = parents.get(parent);
+    const element = attribute === undefined ? undefined : parents.get(attribute);
+    return attribute?.type === "JSXAttribute" && /^on[A-Z]/.test(nameOf(attribute.name) ?? "")
+      && element?.type === "JSXOpeningElement" && KIT_PARTS.has(nameOf(element.name) ?? "");
+  };
+
   for (const node of all) {
     // R1
     if (node.type === "CallExpression" && (node.callee as Node).type === "MemberExpression") {
@@ -129,8 +142,8 @@ export function checkSource(file: string, source: string): Violation[] {
         report(use, "R2");
       }
     }
-    // R4: game setters called straight from a host element handler.
-    if (handler) {
+    // R4: game setters called straight from a host element handler (or a kit part's handler prop).
+    if (handler || kitHandler(node)) {
       const visit = (inner: Node) => {
         if (inner.type === "CallExpression" && SINKS.has(nameOf(inner.callee) ?? "")) report(inner, "R4");
         for (const child of children(inner)) if (!isFunction(child)) visit(child);

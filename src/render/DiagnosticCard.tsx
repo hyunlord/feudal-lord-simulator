@@ -18,7 +18,7 @@ import type { BuildingInspectorModel } from "./buildingInspectorModel";
 import type { StoreInspectorModel } from "../ui/storeInspectorModel";
 import { StoreInspectorBody } from "../ui/StoreInspector";
 import { STORE_INSPECTOR_COPY } from "../ui/storeInspectorCopy.ko";
-import { Button } from "../ui/kit";
+import { Button, Disclosure } from "../ui/kit";
 
 type Size = Readonly<{ width: number; height: number }>;
 type Rect = Readonly<{ x: number; y: number; width: number; height: number }>;
@@ -82,15 +82,14 @@ function HouseCard({ model, onDemolishHouse, onMergeHouses, members, onPerson }:
         <div><dt>빵</dt><dd>{model.bread.label}</dd></div>
         <div><dt>인구</dt><dd>{model.population.label}</dd></div>
       </dl>
-      <details className="inspector-development">
-        <summary>주택 발전 조건</summary>
+      <Disclosure className="inspector-development" summary="주택 발전 조건">
         <dl>
           <div><dt>성벽</dt><dd>{model.protection.label}</dd></div>
           <div><dt>시장</dt><dd>{model.market.label}</dd></div>
           <div><dt>교회</dt><dd>{model.church.label}</dd></div>
           <div><dt>도시 대가옥</dt><dd>{model.stoneHouse.label}</dd></div>
         </dl>
-      </details>
+      </Disclosure>
       <section className="inspector-actions inspector-merge" aria-label="인접 주택 합필">
         <h3>인접 주택 합필</h3>
         <p>{model.mergeStatus}</p>

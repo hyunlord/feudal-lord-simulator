@@ -8,7 +8,7 @@ import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { calendarLabel, historicalEra, scenarioOf } from "../engine/scenarioState";
 import { calendarDays, durationLabel, humanizeTicks } from "./gameTimeCopy.ko";
 import { SETTLEMENT_PANEL_COPY } from "./settlementPanelCopy.ko";
-import { Button } from "./kit";
+import { Button, Disclosure } from "./kit";
 
 export function SettlementPanel({ state, onRestart, developmentContent }: {
   readonly state: GameState;
@@ -40,8 +40,8 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
   const stoneReserve = scenario.walls.stoneWall === "off" ? undefined
     : scenario.walls.stoneWallPrereq?.all.find(condition => condition.kind === "spendable_resource_at_least" && condition.resource === "stone");
   return <section className={`settlement-progress${highlight ? " settlement-progress--changed" : ""}`} aria-label="영지 목표와 수급">
-    <details onToggle={event => setExpanded(event.currentTarget.open)}>
-      <summary><strong>{title} · 도시 발전 조건</strong><span>물·빵 {view.metrics.suppliedHouses}/{view.metrics.occupiedHouses}가구</span><span className="settlement-disclosure">{expanded ? "접기" : "펼치기"}</span></summary>
+    <Disclosure onToggle={open => setExpanded(open)}
+      summary={<><strong>{title} · 도시 발전 조건</strong><span>물·빵 {view.metrics.suppliedHouses}/{view.metrics.occupiedHouses}가구</span><span className="settlement-disclosure">{expanded ? "접기" : "펼치기"}</span></>}>
       <div className="settlement-progress-body">
         <p className="settlement-calendar">{calendarLabel(state)} · {SCENARIO_COPY.eraLabel(historicalEra(state).name)}</p>
         <p>{SETTLEMENT_PANEL_COPY.householdBread(bread, calendarDays(HOUSE_FOOD_INTERVAL), ration)}</p>
@@ -60,7 +60,7 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
         {state.era === "palisade" && stoneReserve?.kind === "spendable_resource_at_least" ? <p>{SCENARIO_COPY.stoneReserve(stoneReserve.value)}</p> : null}
         {developmentContent}
       </div>
-    </details>
+    </Disclosure>
     <div className="settlement-crisis-slot" aria-live="polite">
       {view.crisis === "food_shortage" ? <p className="settlement-crisis" role="status">배급 부족이 이어집니다. 경작지·방앗간의 일손과 곡창에서 집까지의 길을 확인하세요.</p> : null}
       {view.crisis === "abandonment_risk" && view.outcome !== "abandoned" ? <p className="settlement-crisis" role="status">{SETTLEMENT_PANEL_COPY.abandonmentRisk(durationLabel(SETTLEMENT_CONFIG.abandonmentTicks - view.progress.emptyTicks))}</p> : null}

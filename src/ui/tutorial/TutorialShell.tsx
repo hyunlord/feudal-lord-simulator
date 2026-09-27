@@ -4,7 +4,7 @@ import { stewardPortraitStyle } from "../uiArt";
 import { UiIcon } from "../UiIcon";
 import { TUTORIAL_COPY } from "./tutorialCopy.ko";
 import type { GoalCard, TutorialController } from "./useTutorialController";
-import { Button } from "../kit";
+import { Button, Disclosure } from "../kit";
 
 // UX-1 shell pieces (research E "Objective card / Advisor / Highlight"): goal cards (title 18 px, progress and bar, a
 // reason of at most two lines, one button, `?` help; at most two on screen), the steward (96 px portrait slot, one
@@ -56,7 +56,7 @@ function GoalCardView({ card, warn, onPress, onLook }: { readonly card: GoalCard
       <div className="goal-card-actions">
         {card.ctaLabel === null ? null : <Button type="button" className="goal-card-cta" data-tutorial-cta={card.key} onPress={() => onPress()} variant="primary">{card.ctaLabel}</Button>}
         {card.hasTarget ? <Button type="button" className="goal-card-secondary" onPress={() => onLook()} variant="secondary"><UiIcon sheet="action" cell="look" />{TUTORIAL_COPY.lookHere}</Button> : null}
-        {card.help === null ? null : <details className="goal-card-help"><summary aria-label={TUTORIAL_COPY.help}><UiIcon sheet="lock" cell="help" size={32} /></summary><p>{card.help}</p></details>}
+        {card.help === null ? null : <Disclosure className="goal-card-help" variant="icon" summaryLabel={TUTORIAL_COPY.help} summary={<UiIcon sheet="lock" cell="help" size={32} />}><p>{card.help}</p></Disclosure>}
       </div>
     </article>
   );

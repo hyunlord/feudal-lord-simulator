@@ -21,8 +21,10 @@ test("Given the patterns the old canvas runtime used When they are checked Then 
     const ok = () => <button onClick={event => { keep(event); run(event.clientX); }} onPointerDown={keep}>a</button>;
     const bad = () => <button onClick={onClose} onKeyDown={event => handle(event)}>b</button>;
     const sink = () => <button onClick={() => setSpeed(3)}>c</button>;
-    const component = () => <Menu onSelect={select} />;`).map(violation => `${violation.rule}:${violation.line}`);
-  assert.deepEqual(found.sort(), ["R1:2", "R2:3", "R2:4", "R2:7", "R3:7", "R4:8"].sort());
+    const component = () => <Menu onSelect={select} />;
+    const kit = () => <Button onPress={() => dispatch({ type: "x" })} />;
+    const kitOk = () => <Select onChange={value => setFilter(value)} />;`).map(violation => `${violation.rule}:${violation.line}`);
+  assert.deepEqual(found.sort(), ["R1:2", "R2:3", "R2:4", "R2:7", "R3:7", "R4:8", "R4:10"].sort());
 });
 
 test("Given the controller action table When its keyboard bindings are pressed Then each emits the action's intent", () => {

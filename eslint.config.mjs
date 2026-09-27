@@ -28,7 +28,7 @@ export default [
     },
   },
   {
-    // The screens: every button, select, input and text field is a kit part.
+    // The screens: every button, select, input, text field and disclosure is a kit part.
     files: ["src/ui/**/*.tsx", "src/App.tsx", "src/render/**/*.tsx"],
     ignores: ["src/ui/kit/**"],
     rules: {
@@ -37,6 +37,8 @@ export default [
         NATIVE_CONTROL("select", "Select"),
         NATIVE_CONTROL("input", "Slider / Toggle / Checkbox"),
         NATIVE_CONTROL("textarea", "parts"),
+        NATIVE_CONTROL("details", "Disclosure"),
+        NATIVE_CONTROL("summary", "Disclosure"),
       ],
     },
   },

@@ -23,7 +23,7 @@ test("Given desktop speed controls When rendered in the ledger grid Then speed r
   assert.match(markup, /^<div class="speed-control-stack">/);
   assert.match(
     markup,
-    /^<div class="speed-control-stack"><div class="speed-seals"[\s\S]*<details class="command-disclosure settings-disclosure"><summary>설정<\/summary>[\s\S]*<div class="command-popover autoplay-control"/,
+    /^<div class="speed-control-stack"><div class="speed-seals"[\s\S]*<details class="command-disclosure settings-disclosure ui-disclosure"><summary class="ui-btn[^"]*">설정<\/summary>[\s\S]*<div class="command-popover autoplay-control"/,
   );
 });
 

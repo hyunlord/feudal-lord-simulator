@@ -16,7 +16,7 @@ import { RESOURCE_BAR_COPY } from "./resourceBarCopy.ko";
 import { calendarArrivalLabel } from "./calendarArrival";
 import { scenarioOf } from "../engine/scenarioState";
 import { UiIcon } from "./UiIcon";
-import { Button } from "./kit";
+import { Button, Disclosure } from "./kit";
 
 type ResourceBarProps = {
   readonly state: GameState;
@@ -80,7 +80,7 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
       </Button>
       {/* UX-1: the date moved beside the speed controls (App `hud-time-cluster`). */}
       {coinOpen ? <LedgerPanel id="resource-coin-detail" state={state} onHighlightBuildings={onHighlightBuildings} /> : null}
-      <details className="resource-bar__more"><summary>자원 상세</summary><p>밀 {stock.wheat} · 원목 {stock.logs} · 원석 {stock.stone_raw}</p><p>{breadTitle}</p><p>{RESOURCE_BAR_COPY.timberDetail(stock.timber, timber)}</p><p>{RESOURCE_BAR_COPY.stoneDetail(stock.stone, stone)}</p><p>{RESOURCE_BAR_COPY.trendDetail(RESOURCE_TREND_WINDOW)}</p><p>{RESOURCE_BAR_COPY.populationTrend}</p></details>
+      <Disclosure className="resource-bar__more" summary="자원 상세"><p>밀 {stock.wheat} · 원목 {stock.logs} · 원석 {stock.stone_raw}</p><p>{breadTitle}</p><p>{RESOURCE_BAR_COPY.timberDetail(stock.timber, timber)}</p><p>{RESOURCE_BAR_COPY.stoneDetail(stock.stone, stone)}</p><p>{RESOURCE_BAR_COPY.trendDetail(RESOURCE_TREND_WINDOW)}</p><p>{RESOURCE_BAR_COPY.populationTrend}</p></Disclosure>
     </section>
   );
 }

@@ -17,7 +17,7 @@ import {
   presentThenScheduleAutoplayAction,
   publishAutoplayPulse,
 } from "./autoplayPresentation";
-import { Button } from "./kit";
+import { Button, Disclosure } from "./kit";
 
 /** The advisor with nothing to do (one object, so the scheduling effect below does not rerun each render). */
 const NO_ACTION = { kind: "none" } as const;
@@ -114,7 +114,7 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
           </Button>
         ))}
       </div>
-      <details className="command-disclosure settings-disclosure"><summary>설정</summary>
+      <Disclosure className="command-disclosure settings-disclosure" summary="설정">
       <div className="command-popover autoplay-control" aria-label="자동 발전 제어">
         <Button
           className="autoplay-toggle"
@@ -128,7 +128,7 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
         {extraSettings}
         <BoundaryRenderToggle />
         <SaveControls />
-      </div></details>
+      </div></Disclosure>
     </div>
   );
 }
