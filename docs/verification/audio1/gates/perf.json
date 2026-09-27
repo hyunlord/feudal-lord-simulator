@@ -3,25 +3,25 @@
   "base": "http://127.0.0.1:4350/",
   "this": "http://127.0.0.1:4300/"
  },
- "measuredAt": "2026-09-27T00:29:45.963Z",
+ "measuredAt": "2026-09-27T00:39:08.798Z",
  "verdict": [
   {
    "scene": "pop176-village",
-   "baseP95Ms": 3.7000000178813934,
-   "thisP95Ms": 3.7999999821186066,
-   "ratio": 1.027,
-   "baseMedianMs": 3.4000000059604645,
-   "thisMedianMs": 3.4000000059604645,
+   "baseP95Ms": 3.9000000059604645,
+   "thisP95Ms": 4,
+   "ratio": 1.026,
+   "baseMedianMs": 3.7999999821186066,
+   "thisMedianMs": 3.800000011920929,
    "rafThis": 16.700000000000728,
-   "rafBase": 16.700000000000728
+   "rafBase": 16.69999999999709
   },
   {
    "scene": "market-day",
-   "baseP95Ms": 7.299999982118607,
-   "thisP95Ms": 7.299999982118607,
-   "ratio": 1,
-   "baseMedianMs": 4.200000017881393,
-   "thisMedianMs": 4.299999982118607,
+   "baseP95Ms": 7.9000000059604645,
+   "thisP95Ms": 8,
+   "ratio": 1.013,
+   "baseMedianMs": 4.699999988079071,
+   "thisMedianMs": 4.699999988079071,
    "rafThis": 16.700000000000728,
    "rafBase": 16.700000000000728
   }
@@ -33,10 +33,10 @@
    "build": "base",
    "scene": "pop176-village",
    "frames": 480,
-   "frameWorkMedianMs": 3.399999976158142,
+   "frameWorkMedianMs": 3.2000000178813934,
    "frameWorkP95Ms": 3.699999988079071,
    "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.799999999999272,
+   "rafP95Ms": 16.700000000000728,
    "loops": []
   },
   {
@@ -44,10 +44,10 @@
    "build": "base",
    "scene": "market-day",
    "frames": 480,
-   "frameWorkMedianMs": 4.200000017881393,
-   "frameWorkP95Ms": 7.299999982118607,
-   "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.799999999999272,
+   "frameWorkMedianMs": 4.199999988079071,
+   "frameWorkP95Ms": 7.5,
+   "rafMedianMs": 16.69999999999709,
+   "rafP95Ms": 16.700000000000728,
    "loops": [
     "cart"
    ]
@@ -57,9 +57,9 @@
    "build": "this",
    "scene": "pop176-village",
    "frames": 480,
-   "frameWorkMedianMs": 3.4000000059604645,
+   "frameWorkMedianMs": 3.399999976158142,
    "frameWorkP95Ms": 3.7000000178813934,
-   "rafMedianMs": 16.69999999999891,
+   "rafMedianMs": 16.700000000000728,
    "rafP95Ms": 16.700000000000728,
    "loops": [
     "ambience:3"
@@ -67,60 +67,6 @@
   },
   {
    "round": 0,
-   "build": "this",
-   "scene": "market-day",
-   "frames": 480,
-   "frameWorkMedianMs": 4.299999982118607,
-   "frameWorkP95Ms": 7.300000011920929,
-   "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.700000000000728,
-   "loops": [
-    "ambience:3",
-    "market:construction-site-000051",
-    "cart",
-    "mill:construction-site-000057",
-    "mill:construction-site-000065"
-   ]
-  },
-  {
-   "round": 1,
-   "build": "base",
-   "scene": "pop176-village",
-   "frames": 480,
-   "frameWorkMedianMs": 3.4000000059604645,
-   "frameWorkP95Ms": 3.7000000178813934,
-   "rafMedianMs": 16.69999999999891,
-   "rafP95Ms": 16.700000000000728,
-   "loops": []
-  },
-  {
-   "round": 1,
-   "build": "base",
-   "scene": "market-day",
-   "frames": 480,
-   "frameWorkMedianMs": 4.299999982118607,
-   "frameWorkP95Ms": 7.100000023841858,
-   "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.700000000000728,
-   "loops": [
-    "cart"
-   ]
-  },
-  {
-   "round": 1,
-   "build": "this",
-   "scene": "pop176-village",
-   "frames": 480,
-   "frameWorkMedianMs": 3.300000011920929,
-   "frameWorkP95Ms": 3.600000023841858,
-   "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.799999999999272,
-   "loops": [
-    "ambience:3"
-   ]
-  },
-  {
-   "round": 1,
    "build": "this",
    "scene": "market-day",
    "frames": 480,
@@ -137,79 +83,133 @@
    ]
   },
   {
-   "round": 2,
+   "round": 1,
    "build": "base",
    "scene": "pop176-village",
    "frames": 480,
-   "frameWorkMedianMs": 3.399999976158142,
-   "frameWorkP95Ms": 3.699999988079071,
-   "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.700000000000728,
-   "loops": []
-  },
-  {
-   "round": 2,
-   "build": "base",
-   "scene": "market-day",
-   "frames": 480,
-   "frameWorkMedianMs": 4.200000017881393,
-   "frameWorkP95Ms": 7.399999976158142,
-   "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.700000000000728,
-   "loops": [
-    "cart"
-   ]
-  },
-  {
-   "round": 2,
-   "build": "this",
-   "scene": "pop176-village",
-   "frames": 480,
-   "frameWorkMedianMs": 3.4000000059604645,
-   "frameWorkP95Ms": 3.7999999821186066,
-   "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.700000000000728,
-   "loops": [
-    "ambience:3"
-   ]
-  },
-  {
-   "round": 2,
-   "build": "this",
-   "scene": "market-day",
-   "frames": 480,
-   "frameWorkMedianMs": 4.100000023841858,
-   "frameWorkP95Ms": 7.199999988079071,
+   "frameWorkMedianMs": 3.2000000178813934,
+   "frameWorkP95Ms": 3.7000000178813934,
    "rafMedianMs": 16.69999999999709,
    "rafP95Ms": 16.799999999999272,
-   "loops": [
-    "ambience:3",
-    "market:construction-site-000051",
-    "cart",
-    "mill:construction-site-000057",
-    "mill:construction-site-000065"
-   ]
-  },
-  {
-   "round": 3,
-   "build": "base",
-   "scene": "pop176-village",
-   "frames": 480,
-   "frameWorkMedianMs": 3.5,
-   "frameWorkP95Ms": 3.9000000059604645,
-   "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.700000000000728,
    "loops": []
   },
   {
-   "round": 3,
+   "round": 1,
    "build": "base",
    "scene": "market-day",
    "frames": 480,
    "frameWorkMedianMs": 4.299999982118607,
    "frameWorkP95Ms": 7.5,
    "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 50.099999999998545,
+   "loops": [
+    "cart"
+   ]
+  },
+  {
+   "round": 1,
+   "build": "this",
+   "scene": "pop176-village",
+   "frames": 480,
+   "frameWorkMedianMs": 4.100000023841858,
+   "frameWorkP95Ms": 30,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 33.39999999999782,
+   "loops": [
+    "ambience:3"
+   ]
+  },
+  {
+   "round": 1,
+   "build": "this",
+   "scene": "market-day",
+   "frames": 480,
+   "frameWorkMedianMs": 7.800000011920929,
+   "frameWorkP95Ms": 32.80000001192093,
+   "rafMedianMs": 33.29999999999927,
+   "rafP95Ms": 50,
+   "loops": [
+    "ambience:3",
+    "market:construction-site-000051",
+    "cart",
+    "mill:construction-site-000057",
+    "mill:construction-site-000065"
+   ]
+  },
+  {
+   "round": 2,
+   "build": "base",
+   "scene": "pop176-village",
+   "frames": 480,
+   "frameWorkMedianMs": 4.0999999940395355,
+   "frameWorkP95Ms": 7.5999999940395355,
+   "rafMedianMs": 16.69999999999709,
+   "rafP95Ms": 33.29999999999927,
+   "loops": []
+  },
+  {
+   "round": 2,
+   "build": "base",
+   "scene": "market-day",
+   "frames": 480,
+   "frameWorkMedianMs": 7.0999999940395355,
+   "frameWorkP95Ms": 24.5,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 33.400000000001455,
+   "loops": [
+    "cart"
+   ]
+  },
+  {
+   "round": 2,
+   "build": "this",
+   "scene": "pop176-village",
+   "frames": 480,
+   "frameWorkMedianMs": 4.199999988079071,
+   "frameWorkP95Ms": 11.200000017881393,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 33.29999999999927,
+   "loops": [
+    "ambience:3"
+   ]
+  },
+  {
+   "round": 2,
+   "build": "this",
+   "scene": "market-day",
+   "frames": 480,
+   "frameWorkMedianMs": 7.699999988079071,
+   "frameWorkP95Ms": 27.599999994039536,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 33.39999999999782,
+   "loops": [
+    "ambience:3",
+    "market:construction-site-000051",
+    "cart",
+    "mill:construction-site-000057",
+    "mill:construction-site-000065"
+   ]
+  },
+  {
+   "round": 3,
+   "build": "base",
+   "scene": "pop176-village",
+   "frames": 480,
+   "frameWorkMedianMs": 4.0999999940395355,
+   "frameWorkP95Ms": 4.4000000059604645,
+   "rafMedianMs": 16.700000000000728,
    "rafP95Ms": 16.700000000000728,
+   "loops": []
+  },
+  {
+   "round": 3,
+   "build": "base",
+   "scene": "market-day",
+   "frames": 480,
+   "frameWorkMedianMs": 4.9000000059604645,
+   "frameWorkP95Ms": 8.599999994039536,
+   "rafMedianMs": 16.69999999999709,
+   "rafP95Ms": 16.799999999999272,
    "loops": [
     "cart"
    ]
@@ -219,9 +219,9 @@
    "build": "this",
    "scene": "pop176-village",
    "frames": 480,
-   "frameWorkMedianMs": 3.4000000059604645,
-   "frameWorkP95Ms": 3.7999999821186066,
-   "rafMedianMs": 16.700000000000728,
+   "frameWorkMedianMs": 3.800000011920929,
+   "frameWorkP95Ms": 4,
+   "rafMedianMs": 16.69999999999709,
    "rafP95Ms": 16.700000000000728,
    "loops": [
     "ambience:3"
@@ -232,10 +232,10 @@
    "build": "this",
    "scene": "market-day",
    "frames": 480,
-   "frameWorkMedianMs": 4.200000017881393,
-   "frameWorkP95Ms": 7.200000017881393,
+   "frameWorkMedianMs": 4.699999988079071,
+   "frameWorkP95Ms": 8,
    "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.799999999999272,
+   "rafP95Ms": 16.700000000000728,
    "loops": [
     "ambience:3",
     "market:construction-site-000051",
@@ -249,8 +249,8 @@
    "build": "base",
    "scene": "pop176-village",
    "frames": 480,
-   "frameWorkMedianMs": 3.5,
-   "frameWorkP95Ms": 3.7999999821186066,
+   "frameWorkMedianMs": 3.7999999821186066,
+   "frameWorkP95Ms": 3.9000000059604645,
    "rafMedianMs": 16.69999999999709,
    "rafP95Ms": 16.700000000000728,
    "loops": []
@@ -260,10 +260,10 @@
    "build": "base",
    "scene": "market-day",
    "frames": 480,
-   "frameWorkMedianMs": 4.200000017881393,
-   "frameWorkP95Ms": 7.299999982118607,
+   "frameWorkMedianMs": 4.699999988079071,
+   "frameWorkP95Ms": 7.9000000059604645,
    "rafMedianMs": 16.700000000000728,
-   "rafP95Ms": 16.799999999999272,
+   "rafP95Ms": 16.700000000000728,
    "loops": [
     "cart"
    ]
@@ -273,7 +273,7 @@
    "build": "this",
    "scene": "pop176-village",
    "frames": 480,
-   "frameWorkMedianMs": 3.5,
+   "frameWorkMedianMs": 3.600000023841858,
    "frameWorkP95Ms": 3.800000011920929,
    "rafMedianMs": 16.700000000000728,
    "rafP95Ms": 16.700000000000728,
@@ -286,10 +286,10 @@
    "build": "this",
    "scene": "market-day",
    "frames": 480,
-   "frameWorkMedianMs": 4.299999982118607,
-   "frameWorkP95Ms": 7.5,
-   "rafMedianMs": 16.69999999999891,
-   "rafP95Ms": 16.799999999999272,
+   "frameWorkMedianMs": 4.699999988079071,
+   "frameWorkP95Ms": 8,
+   "rafMedianMs": 16.700000000000728,
+   "rafP95Ms": 16.80000000000109,
    "loops": [
     "ambience:3",
     "market:construction-site-000051",

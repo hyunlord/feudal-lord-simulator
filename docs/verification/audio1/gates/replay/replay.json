@@ -14,7 +14,7 @@
    "step": "greet",
    "locksMatch": true,
    "file": "01-greet.jpg",
-   "atSeconds": 2.4,
+   "atSeconds": 2.2,
    "card": "영지를 둘러보세요 | 시작하기",
    "categories": [
     "living:open",
@@ -39,7 +39,7 @@
    "step": "arable",
    "locksMatch": true,
    "file": "02-arable.jpg",
-   "atSeconds": 3.7,
+   "atSeconds": 3.5,
    "card": "식량 기반: 경작지 | 0/8 | 경작지 칠하기",
    "categories": [
     "living:open",
@@ -65,7 +65,7 @@
    "step": "arable_limits",
    "locksMatch": true,
    "file": "03-arable_limits.jpg",
-   "atSeconds": 5.8,
+   "atSeconds": 5.7,
    "card": "칠할 수 없는 땅 알아보기 | 알겠습니다",
    "categories": [
     "living:open",
@@ -90,7 +90,7 @@
    "step": "food_chain",
    "locksMatch": true,
    "file": "04-food_chain.jpg",
-   "atSeconds": 7,
+   "atSeconds": 6.9,
    "card": "헛간과 방앗간 짓기 | 0/2 | 헛간 놓기",
    "categories": [
     "living:open",
@@ -118,7 +118,7 @@
    "step": "well",
    "locksMatch": true,
    "file": "05-well.jpg",
-   "atSeconds": 11.5,
+   "atSeconds": 11.4,
    "card": "집 가까이에 우물 설치 | 0/1 | 우물 놓기",
    "categories": [
     "living:open",
@@ -169,7 +169,7 @@
    "step": "road",
    "locksMatch": true,
    "file": "07-road.jpg",
-   "atSeconds": 15.8,
+   "atSeconds": 15.7,
    "card": "길 한 칸 내기 | 0/1 | 길 놓기",
    "categories": [
     "living:open",
@@ -195,7 +195,7 @@
    "step": "house",
    "locksMatch": true,
    "file": "08-house.jpg",
-   "atSeconds": 18.2,
+   "atSeconds": 18.1,
    "card": "새 길가에 집 짓기 | 0/1 | 집 놓기",
    "categories": [
     "living:open",
@@ -221,7 +221,7 @@
    "step": "sawmill",
    "locksMatch": true,
    "file": "09-sawmill.jpg",
-   "atSeconds": 20.7,
+   "atSeconds": 20.6,
    "card": "제재소 짓기 | 0/1 | 제재소 놓기",
    "categories": [
     "living:open",
@@ -247,7 +247,7 @@
    "step": "zone_unlock",
    "locksMatch": true,
    "file": "10-zone_unlock.jpg",
-   "atSeconds": 23.8,
+   "atSeconds": 23.7,
    "card": "땅의 용도 정하기 | 구역 열기",
    "categories": [
     "living:open",
@@ -346,7 +346,7 @@
   }
  ],
  "state": {
-  "tick": 526,
+  "tick": 532,
   "speed": "1배속",
   "sites": [
    "well@48,42",
