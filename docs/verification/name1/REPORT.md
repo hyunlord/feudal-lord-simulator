@@ -1,6 +1,6 @@
 # NAME-1 화면의 사람 이름을 한글 읽기 하나로 — 보고서
 
-관문: 통과 — 연대기·전기·세력 탭·세력 쪽·청원 카드 둘·워커 카드 캡처에서 사람 이름의 라틴 문자 0(`captures/names.json`) · DGX 전체 회귀 3,286/3,286 · 병합 전 검사 · 클론(아래)
+관문: 통과 — 연대기·전기·세력 탭·세력 쪽·청원 카드 둘·워커 카드 캡처에서 사람 이름의 라틴 문자 0(`captures/names.json`) · DGX 전체 회귀 3,286/3,286 · 병합 전 검사 · 클론 `ec05abd` 3,286/3,286
 
 ## 1. 바꾼 것
 - 사람 이름은 모두 엔진 FIX-6의 `personDisplayName`(API `persons.displayName`, 표 `personNames.ko.ts`)으로 쓴다. 저장 상태의 시대 영어 이름(`displayName`·`persons.name`·전기 `name`)은 그대로다.
@@ -26,6 +26,8 @@
 - 로컬: typecheck, lint, 관련 시험(세력 탭·인물·연대기·UI-6·이름·원장·세력 52개).
 - DGX 전체 회귀 `ec618e3`: 3,286/3,286.
 - 캡처 `ca1f884`: 7개 화면 라틴 0, 오류 0.
+- 깨끗한 클론 `ec05abd`(본선 INBOX-1r을 받은 병합, DGX): npm ci, typecheck, 3,286/3,286, build. `npm run check:merge` 통과.
+- 시간: 08:18(작업 가지 생성) → 08:51(클론 통과, KST 벽시계), 약 33분.
 - 증거 0.4 MB.
 
 ## 4. 본 것(다음 후보)
