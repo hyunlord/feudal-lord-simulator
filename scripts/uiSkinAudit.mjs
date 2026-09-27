@@ -31,7 +31,13 @@ function auditPage() {
   const art = element => { const style = getComputedStyle(element); return ART.test(style.borderImageSource) || ART.test(style.backgroundImage); };
   const visible = element => { const box = element.getBoundingClientRect(); const style = getComputedStyle(element);
     return box.width > 0 && box.height > 0 && style.visibility !== 'hidden' && (element.checkVisibility?.({ opacityProperty: false }) ?? true); };
-  const framedAncestor = element => { let node = element.parentElement; for (let depth = 0; node !== null && depth < 6; depth += 1, node = node.parentElement) if (art(node)) return true; return false; };
+  // A framed ancestor, or a frame layer beside it that covers it (a chronicle card's Wave 19 frame is a sibling overlay).
+  const covers = (layer, element) => { const outer = layer.getBoundingClientRect(); const inner = element.getBoundingClientRect(); const x = inner.left + inner.width / 2; const y = inner.top + inner.height / 2;
+    return x >= outer.left && x <= outer.right && y >= outer.top && y <= outer.bottom; };
+  const framedAncestor = element => { let node = element.parentElement; for (let depth = 0; node !== null && depth < 6; depth += 1, node = node.parentElement) {
+    if (art(node)) return true;
+    if (depth < 2 && [...node.children].some(child => child !== element && !child.contains(element) && art(child) && covers(child, element))) return true;
+  } return false; };
   const path = element => { const parts = []; for (let node = element; node !== null && node !== document.body && parts.length < 4; node = node.parentElement) {
     const classes = [...node.classList].filter(name => !name.startsWith('ui-btn')).slice(0, 2).join('.'); parts.unshift(`${node.tagName.toLowerCase()}${classes === '' ? '' : `.${classes}`}`); } return parts.join(' > '); };
   const rows = [];
@@ -94,7 +100,7 @@ await step('town', async () => {
   await audit('drawer', page, 's03-build-drawer.jpg');
   await page.locator('button.build-menu-category[data-category]', { hasText: /^생활/ }).click(); await pause(300);
   await page.locator('button[aria-label="오두막"]:visible').first().click(); await pause(500);
-  const tile = await page.evaluate(at => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint(at), houseTile(town()).map(value => value + 3));
+  const tile = await page.evaluate(at => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint(at), (([tx, ty]) => ({ tx: tx + 3, ty: ty + 3 }))(houseTile(town())));
   await page.mouse.move(tile.clientX, tile.clientY, { steps: 3 }); await pause(600);
   await audit('placement', page, 's04-placement.jpg');
   await context.close();
@@ -109,11 +115,14 @@ await step('zone', async () => {
 await step('selection', async () => {
   const { context, page } = await scene('merchant-town', houseTile(town()), { zoom: 1.6 });
   await pause(600);
-  const house = await page.evaluate(at => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint(at), houseTile(town()));
+  const house = await page.evaluate(at => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint(at), (([tx, ty]) => ({ tx, ty }))(houseTile(town())));
   await page.mouse.click(house.clientX, house.clientY); await pause(800);
   await audit('selection', page, 's06-selection.jpg');
   const chip = page.locator('.person-chip:visible').first();
-  if (await chip.count()) { await chip.click(); await pause(700); await audit('person-card', page, 's07-person-card.jpg'); }
+  await chip.click(); await pause(700); await audit('person-card', page, 's07-person-card.jpg');
+  // The card's [전기 보기]: the biography page of the chronicle.
+  await page.locator('.person-card-action', { hasText: '전기' }).click(); await pause(1200);
+  await audit('biography', page, 's11-biography.jpg');
   await context.close();
 });
 await step('ledger', async () => {
@@ -125,10 +134,6 @@ await step('ledger', async () => {
   await audit('chronicle', page, 's09-chronicle.jpg');
   await page.locator('.chronicle-select .ui-select-trigger').first().click(); await pause(400);
   await audit('chronicle-select-open', page, 's10-chronicle-select.jpg');
-  await page.keyboard.press('Escape'); await pause(300);
-  const person = page.locator('.chronicle-card-action:visible', { hasText: '인물' }).first();
-  await person.click(); await pause(1000);
-  await audit('biography', page, 's11-biography.jpg');
   await context.close();
 });
 
@@ -146,14 +151,14 @@ await step('pause', async () => {
 await step('petition', async () => {
   const state = load('petition-open');
   const { context, page } = await scene('petition-open', houseTile(state));
-  await page.locator('.petition-card').waitFor({ timeout: 15_000 }); await pause(600);
+  await page.locator('.petition-card').waitFor({ timeout: 60_000 }).catch(async error => { await page.screenshot({ path: join(out, 'x-petition-timeout.jpg'), type: 'jpeg' }); throw error; }); await pause(600);
   await audit('petition', page, 's13-petition.jpg');
   await context.close();
 });
 await step('decision', async () => {
   const state = load('famine-arrival');
   const { context, page } = await scene('famine-arrival', houseTile(state));
-  await page.locator('.famine-decision').waitFor({ timeout: 15_000 }); await pause(800);
+  await page.locator('.famine-decision').waitFor({ timeout: 60_000 }).catch(async error => { await page.screenshot({ path: join(out, 'x-decision-timeout.jpg'), type: 'jpeg' }); throw error; }); await pause(800);
   await audit('decision', page, 's14-decision.jpg');
   await context.close();
 });

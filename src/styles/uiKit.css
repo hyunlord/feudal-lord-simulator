@@ -60,6 +60,9 @@
 
 /* ---- Screen containers the kit's surfaces sit in (their frame is the surfaces' skin) ---- */
 :root .app-shell .status-pill { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: var(--art-frame-tooltip); }
+/* The HUD's panel slot (goal log, ledger drawer, inspector): the light panel frame, drawn 10 px wide so it fits the
+   slot's own 10 px padding (was a flat vellum box with an ink rule). */
+:root .app-shell .slot-panel { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: url("/assets/ui-p0/frame_panel_light.png") 32 fill / 10px / 0 stretch; }
 
 /* ---- Select: a secondary button and a light-framed list ---- */
 .ui-select { position: relative; display: inline-block; min-width: 0; vertical-align: middle; }
