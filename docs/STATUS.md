@@ -1,11 +1,27 @@
 # 현재 상태
 
-갱신: 2026-09-27(BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-4 사람 플레이 규칙 결함 E1~E11 + 초상 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 엔진 세션, 검증 DGX. 다른 세션의 WIP `cf6fd966`을 사용자 판정으로 이어받음. WIP의 UI 6개 파일은 그대로): [보고서](verification/fix4-player-rules/REPORT.md), [사람 플레이 규칙 명세](design/human-play-rules.md) HR-1~HR-13, 결정 HR1~HR13.
+  - **규칙**(사람·봇 공통)
+    - 시작: 금고 60d, 목재 160.
+    - 유지비: 식량 사슬 먼저, 옛 빚은 이번 기간을 낸 시설을 멈추지 않음.
+    - 경작·식량: 첫해 파종 2,000틱까지, 식량 버팀은 빻을 수 있는 밀만.
+    - **필지 입주**: 칠한 필지에 120틱마다 한 채. 굶거나 빈 집 2채가 기다리면 멈춤.
+    - 굶는 가구 지대 0(떠날 채비는 절반), 굶어 준 사람은 계절 사건, 첫겨울 경고는 해마다, 식량 힌트는 모자란 것(경작지 칸·헛간·방앗간)을 실음.
+    - 초상: 8세 미만 실루엣, 아이는 아이 얼굴만, 청원자는 다른 얼굴.
+  - **관문**
+    - ① 튜토리얼 × 1.0·1.8·2.4 → 1302년 끝 76·77·77명, 교착 0.
+    - ② 튜토리얼 뒤 필지 12개 → 2년 안 12곳 입주. "필지 12칸"은 필지 12개로 읽음(12칸으로는 많아야 6필지).
+    - ③ E2~E11 시나리오, ④ 초상.
+    - ⑤ 가드레일 1회차 `3da4fd58` 5/5: 승리 틱 BOT-3 기준선 대비 −19~−53 %, 새 기준선 `seeds/baseline-3da4fd5.json`.
+  - **저장 v18**: 계절 `starved`·`foodNeeds`·`residents_starved`, v18 저장 픽스처.
+  - **렌더가 넘겨받을 것**: `zoneSettlementStatus`(필지 패널·청지기), `foodNeeds`·`residents_starved`(결산), 초상 `silhouette`, `rentRelief`·`upkeepCharges`(집 카드·재무 표), E5 뒤의 식량 일수. WIP UI 6개 파일은 렌더 세션이 검토.
 
 - **REVIEW-1 병합 전 자동 검사 — 관문 통과, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`를 돌린다. 고정값(기준선·지문·C25 판·장부 세계·테스트 해시)을 재기록하면 같은 브랜치의 결정 목록에 파일 이름이 있어야 하고, 새 `eslint-disable`·`@ts-ignore`·`@ts-expect-error`·`as any`에는 `// why:`가 있어야 한다. ESLint(`tools/eslint/`, TS 6.0 파싱 전용)는 `exhaustive-deps`와 `src/ui` 네이티브 컨트롤 금지를 보고, typecheck도 돈다. 기존 것은 목록(예외 25, ESLint 억제 122). 금지 컨트롤 규칙 원본은 `tools/eslint/uiControls.mjs`. [사용법](REMOTE_RUNS.md#병합-전-자동-검사), AGENTS.md 규칙 19, 결정 RV1.
 - **BOT-3 식량 물류 — 관문 통과(규칙 diff = 수레 배정 한 곳 · 가드레일 5/5), 본선 병합**(Claude Code, 엔진 세션, 렌더 0줄, 검증 DGX): [보고서](verification/bot3-food-logistics/REPORT.md), [노동 명세](design/labour.md) LB-15, 결정 LB10·BT11.
@@ -281,7 +297,7 @@
 
 ## 다음 작업
 
-- **FIX-4 사람 플레이 규칙 결함 E1~E11 + 초상 선택(엔진)**: 다음 작업(사용자 지시, 6시간). 가장 중요한 것은 E6(사람이 칠한 필지 채우기)이고, 그다음 E1·E2·E3·E4·E5·E9 순이다. 관문은 사람 대본 생존(1302년 끝 인구 ≥ 60, 교착 0)과 필지 채우기(12칸 칠함 → 2년 안 8채 이상)다. 그 뒤 FAIL-3·C4·F2-A·FACTION-0.
+- **엔진 2장 작업(사용자 지시 순서)**: FAIL-3(실패 3~4단·장 이어하기) → C4(에일 사슬) → F2-A(2장 사건) → FACTION-0(세력 기초). 작업마다 본선 병합·브랜치 삭제.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
