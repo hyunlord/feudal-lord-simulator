@@ -147,6 +147,24 @@ test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only when served
   assert.equal(updateHouse({ ...house, level: 2, promotionTicks: 0 }, { ...context, aleServed: false }).level, 2, "kept without ale");
 });
 
+test("A9 (AL-6, decision AL11) the rule's settings: require (today) blocks; A requires ale from level 3 and speeds a served rise to 2; B delays an unserved rise by half", () => {
+  const house: House = { buildingId: "h", level: 1, residents: 8, hasWater: true, breadStock: 9, lastServicedTick: 0, unmetRequirementTicks: 0, promotionTicks: 0 };
+  const context = { tick: 100, hasGranaryNearby: true, hasMarketAccess: true, hasChurchAccess: true, palisadeProtection: "inside" as const };
+  const balance = ALE_BALANCE as unknown as Record<string, unknown>;
+  const saved = { ...balance };
+  const rises = (ticks: number, served: boolean, level = 1) => updateHouse({ ...house, level, promotionTicks: ticks - 1 }, { ...context, aleServed: served }).level > level;
+  try {
+    assert.deepEqual([rises(2_400, true), rises(2_400, false), rises(1_800, true)], [true, false, false], "require: the hold, and no rise unserved");
+    Object.assign(balance, { requiredFromLevel: 3, servedBonusFromLevel: 2, servedHoldPermille: 750 });
+    assert.deepEqual([rises(1_800, true), rises(1_800, false), rises(2_400, false)], [true, false, true], "A: served 75 %, unserved the plain hold");
+    assert.deepEqual([rises(8_400, true, 2), rises(8_400, false, 2)], [true, false], "A: level 3 needs ale");
+    Object.assign(balance, { ...saved, rule: "delay", unservedHoldPermille: 1_500 });
+    assert.deepEqual([rises(2_400, true), rises(2_400, false), rises(3_600, false), rises(12_600, false, 2)], [true, false, true, true], "B: unserved 150 %");
+  } finally {
+    Object.assign(balance, saved);
+  }
+});
+
 test("A7 (AL-8) the bot, once ale is required: the malt kiln first, then the smallest barn the wheat can spare turns to barley", () => {
   const base = town();
   const chapter2 = { ...base, politics: { ...base.politics!, chapter: { ...base.politics!.chapter, number: CHAPTER_TWO.chapter } } };
