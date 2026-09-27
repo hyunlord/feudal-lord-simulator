@@ -1,6 +1,6 @@
 # CODE-1c 표현 워커 이동·App 분리·문구 이전·가짜 시계 — 보고서
 
-관문: 통과 — 5배속 pop176 React 커밋 25.2 → 2.4 / 초(9.5 %), 프레임 작업 p95 3.8 → 3.9 ms(102.6 %, 틱은 13 → 15 / 초) · 결정론 불변(DGX 전체 회귀 3,236/3,236, C25 재기록 없음) · 스킨 감사 0 / 714 · UX-3 회귀 세트(면적은 아래 주의) · 병합 전 검사·클론(아래)
+관문: 통과 — 5배속 pop176 React 커밋 25.2 → 2.4 / 초(9.5 %), 프레임 작업 p95 3.8 → 3.9 ms(102.6 %, 틱은 13 → 15 / 초) · 결정론 불변(DGX 전체 회귀 3,236/3,236, C25 재기록 없음) · 스킨 감사 0 / 714 · UX-3 회귀 세트 통과(면적: 첫 실행 1280 평소 6.1 % / 6 % 한 번, 다시 재면 세 번 모두 5.9 % = 본선) · 병합 전 검사·클론(아래)
 
 ## 1. 표현 워커 → `render/presentation/`
 - `src/ui/residentTrips.ts` → `src/render/presentation/residentTrips.ts`, `src/state/residentWalkerState.ts` → `src/render/presentation/residentWalkerState.ts`.
