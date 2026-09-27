@@ -202,7 +202,8 @@ await step('chapter-end', async () => {
 
 // UI-6: chapter 2 (the states of scripts/ui6States.ts, with --states6): two of the war's decision cards (the Crown's
 // writ; the bishop's refugees), the ledger's rights tab at a decline (a right lost) and at chapter 2's end, and chapter
-// 2's page.
+// 2's page. The story waits 5 s (as scripts/ui6Captures.ts): the scene's opening Escape (openScene) would close a
+// page that opened sooner, as a player's Escape does.
 const states6 = flag('states6');
 const load6 = name => JSON.parse(readFileSync(join(states6, `${name}.json`), 'utf8'));
 const keepTile = state => { const keep = state.buildings.find(building => building.kind === 'keep') ?? state.buildings.find(building => building.kind === 'house'); return [keep.tx, keep.ty]; };
@@ -216,7 +217,7 @@ async function scene6(stateName, extra = {}) {
 if (states6 !== undefined) {
   for (const [name, stateName] of [['war-petition-writ', 'wool_payment'], ['war-petition-refugees', 'refugee_admission']]) {
     await step(name, async () => {
-      const { context, page } = await scene6(stateName, { query: '&story-delay=600' });
+      const { context, page } = await scene6(stateName, { query: '&story-delay=5000' });
       await storyModal(page, '.petition-card', `x-${name}-timeout.jpg`); await pause(700);
       await audit(name, page, `s20-${name}.jpg`);
       await context.close();
@@ -233,7 +234,7 @@ if (states6 !== undefined) {
     });
   }
   await step('chapter2-page', async () => {
-    const { context, page } = await scene6('chapter2-end', { query: '&story-delay=600' });
+    const { context, page } = await scene6('chapter2-end', { query: '&story-delay=5000' });
     await page.locator('.chronicle-page').waitFor({ timeout: 30_000 }); await pause(800);
     await audit('chapter2-page', page, 's22-chapter2-page.jpg');
     await context.close();
