@@ -42,22 +42,23 @@ export const WAR_BALANCE = {
   answerSeasons: 1,
 
   /** WR-2 wool levy: per lived-in house. In kind (C4 turns it into wool): 125 % in four seasonal payments; refused: 150 % seized at once. */
-  woolLevyPerHouse: 4,
+  woolLevyPerHouse: 20,
   woolInKindPermille: 1250,
   woolInKindSeasons: 4,
   woolSeizedPermille: 1500,
 
-  /** WR-3 commission of array: one man per `housesPerMan` lived-in houses (at least `minMen`), away two seasons. */
-  housesPerMan: 10,
+  /** WR-3 commission of array: one man in `adultsPerMan` of the town's adults (at least `minMen`), away two seasons. */
+  adultsPerMan: 20,
   minMen: 2,
   awaySeasons: 2,
   /** One man in this many does not come back (his household is one smaller). */
   lostEvery: 5,
   /** The exemption, per man. Refused: no men and no fine, but the Crown's favour is lost (as for every royal demand). */
-  exemptionPerMan: 30,
+  exemptionPerMan: 20,
 
-  /** WR-4 lay subsidy: per lived-in house. */
-  subsidyPerHouse: 6,
+  /** WR-4 lay subsidy: a tenth of the treasury (the borough's "tenth" of its movables), at least this per lived-in house. */
+  subsidyTreasuryPermille: 100,
+  subsidyPerHouse: 10,
   /** The merchants' loan: repaid with this interest in `loanSeasons` payments; their gauge rises. */
   loanInterestPermille: 200,
   loanSeasons: 8,
@@ -67,11 +68,11 @@ export const WAR_BALANCE = {
   taxSeasons: 4,
   taxFlightPermille: 334,
 
-  /** WR-5 the raid: houses burnt in a town with no defence, the stores' share looted, the treasury's share taken (at most `treasuryLootMax`). */
+  /** WR-5 the raid: houses burnt in a town with no defence, the stores' share looted, the treasury's share taken (at most `raidTreasuryMax`). */
   raidHouses: 8,
   raidLootPermille: 300,
   raidTreasuryPermille: 200,
-  raidTreasuryMax: 400,
+  raidTreasuryMax: 2000,
   /** Defence of a closed ring: each stone segment holds this much, each timber segment this much (permille). */
   stoneDefencePermille: 1000,
   timberDefencePermille: 600,
@@ -84,9 +85,9 @@ export const WAR_BALANCE = {
   /** WR-7 royal purveyance licence: seasons, and the share of the granaries' wheat the purveyors buy each season at the market price. */
   licenceSeasons: 8,
   licenceWheatPermille: 100,
-  /** WR-8 the wall or the market: murage doubles the tolls while the stone wall is building; the market's dues rise a quarter. */
+  /** WR-8 the wall or the market: murage doubles the tolls while the stone wall is building; the market's dues double (a fair). */
   murageTollPermille: 2000,
-  marketExpansionPermille: 1250,
+  marketExpansionPermille: 2000,
   /** WR-9 chapter 2 ends by the spring of 1348 whatever the wall's state. */
   chapterEndYear: 1348,
 } as const;

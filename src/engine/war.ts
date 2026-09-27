@@ -75,14 +75,17 @@ export function woolLevyAmount(state: Pick<GameState, "houses">): number {
   return livedIn(state).length * WAR_BALANCE.woolLevyPerHouse;
 }
 
-/** WR-3: the men the commission of array asks for. */
+const adultsOf = (house: House) => house.members?.adults ?? Math.ceil(house.residents / 2);
+
+/** WR-3: the men the commission of array asks for (one in twenty of the adults in lived-in houses). */
 export function levyMen(state: Pick<GameState, "houses">): number {
-  return Math.max(WAR_BALANCE.minMen, Math.ceil(livedIn(state).length / WAR_BALANCE.housesPerMan));
+  const adults = livedIn(state).reduce((sum, house) => sum + adultsOf(house), 0);
+  return Math.max(WAR_BALANCE.minMen, Math.ceil(adults / WAR_BALANCE.adultsPerMan));
 }
 
-/** WR-4: the lay subsidy (pennies). */
-export function subsidyAmount(state: Pick<GameState, "houses">): number {
-  return livedIn(state).length * WAR_BALANCE.subsidyPerHouse;
+/** WR-4: the lay subsidy (pennies): a tenth of the treasury, at least `subsidyPerHouse` a lived-in house. */
+export function subsidyAmount(state: Pick<GameState, "houses" | "ledger" | "treasuryCoin">): number {
+  return Math.max(livedIn(state).length * WAR_BALANCE.subsidyPerHouse, Math.floor(Math.max(0, treasuryBalance(state)) * WAR_BALANCE.subsidyTreasuryPermille / 1000));
 }
 
 /** WR-3: the men away now (they do not work: `labourPool` leaves them out). */
@@ -196,12 +199,23 @@ function raid(state: GameState, war: WarState): GameState {
   return withWar(next, { ...war, raid: { tick: state.tick, defencePermille, losses: { burntHouses: losses.burntHouses, looted: losses.looted, coin: losses.coin } } });
 }
 
-/** WR-3: the households the array takes a man from (two adults or more, seed order), and those who lose him. */
+/**
+ * WR-3: the households the array takes its men from — one man a household a round, in the seed's order, never a
+ * household's last adult — and every fifth man's household, which will not see him again.
+ */
 function conscriptsFor(state: GameState, men: number): Conscripts {
-  const houses = livedIn(state).filter(house => (house.members?.adults ?? Math.ceil(house.residents / 2)) >= 2)
-    .sort((a, b) => hashSeed(state.seed, "war:array", ...[...a.buildingId].map(c => c.charCodeAt(0))) - hashSeed(state.seed, "war:array", ...[...b.buildingId].map(c => c.charCodeAt(0)))
-      || a.buildingId.localeCompare(b.buildingId));
-  const taken = houses.slice(0, men).map(house => house.buildingId);
+  const key = (house: House) => hashSeed(state.seed, "war:array", ...[...house.buildingId].map(char => char.charCodeAt(0)));
+  const houses = [...livedIn(state)].sort((a, b) => key(a) - key(b) || a.buildingId.localeCompare(b.buildingId));
+  const left = new Map(houses.map(house => [house.buildingId, adultsOf(house) - 1]));
+  const taken: string[] = [];
+  while (taken.length < men && houses.some(house => left.get(house.buildingId)! > 0)) {
+    for (const house of houses) {
+      if (taken.length >= men) break;
+      if (left.get(house.buildingId)! <= 0) continue;
+      left.set(house.buildingId, left.get(house.buildingId)! - 1);
+      taken.push(house.buildingId);
+    }
+  }
   const seasonStart = Math.ceil(state.tick / SEASON) * SEASON;
   return { men: taken.length, returnTick: seasonStart + WAR_BALANCE.awaySeasons * SEASON, houseIds: taken,
     lostHouseIds: taken.filter((_, index) => index % WAR_BALANCE.lostEvery === WAR_BALANCE.lostEvery - 1), returned: false };
@@ -418,12 +432,14 @@ function seasonalCharges(state: GameState, war: WarState): GameState {
 /** WR-3: the men come home; one in five does not, and his household is one smaller. */
 function conscriptsReturn(state: GameState, war: WarState): GameState {
   const conscripts = war.conscripts!;
-  const lost = new Set(conscripts.lostHouseIds);
+  const lost = new Map<string, number>();
+  for (const id of conscripts.lostHouseIds) lost.set(id, (lost.get(id) ?? 0) + 1);
   let population = state.population;
   const houses = state.houses.map(house => {
-    if (!lost.has(house.buildingId) || house.residents <= 0) return house;
-    population -= 1;
-    return { ...house, residents: house.residents - 1 };
+    const gone = Math.min(lost.get(house.buildingId) ?? 0, Math.max(0, house.residents));
+    if (gone === 0) return house;
+    population -= gone;
+    return { ...house, residents: house.residents - gone };
   });
   return withWar({ ...state, houses, population }, { ...war, conscripts: { ...conscripts, returned: true } });
 }

@@ -31,8 +31,8 @@ const SEASON = PRESSURE_BALANCE.seasonTicks;
 /** Spring 1337: the War era enters. */
 const M = 148_000;
 
-/** The 24-house walled town (v19 fixture) in chapter 2 at spring 1337, its ring closed (timber), 400d in hand. */
-function warTown(treasury = 400): GameState {
+/** The 24-house walled town (v19 fixture) in chapter 2 at spring 1337, its ring closed (timber), 5,000d in hand. */
+function warTown(treasury = 5000): GameState {
   const state = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v19/palisade-construction.save.json"))).envelope.state as GameState;
   const palisade = state.palisade === null ? null : { ...state.palisade, segments: state.palisade.segments.map(segment => ({ ...segment, completed: true, material: "timber" as const })) };
   const funded = postLedgerEntries({ ...state, tick: M }, [{ account: "cash", category: "opening_balance", amount: treasury - treasuryBalance(state),
@@ -86,12 +86,12 @@ test("E12 (WR-2) the wool levy: in kind 125 % over four seasons, in cash 100 % n
   const levy = woolLevyAmount(edict);
   assert.equal(levy, 24 * WAR_BALANCE.woolLevyPerHouse);
   const cash = respondToPetition(edict, petition.id, "accept_with_price");
-  assert.equal(treasuryBalance(cash), 400 - levy);
+  assert.equal(treasuryBalance(cash), 5000 - levy);
   const refused = respondToPetition(edict, petition.id, "refuse");
-  assert.equal(treasuryBalance(refused), 400 - Math.ceil(levy * 1.5));
+  assert.equal(treasuryBalance(refused), 5000 - Math.ceil(levy * 1.5));
   assert.equal(refused.war!.favour, false);
   const inKind = respondToPetition(edict, petition.id, "accept");
-  assert.equal(treasuryBalance(inKind), 400);
+  assert.equal(treasuryBalance(inKind), 5000);
   const paid = run(inKind, 2, 6);
   assert.equal(-cashOf(paid, "wool_levy"), 4 * Math.ceil(Math.ceil(levy * 1.25) / 4));
   assert.deepEqual(paid.war!.instalments, []);
@@ -111,7 +111,9 @@ test("E13 (WR-3) the commission of array: the men leave the work for two seasons
   const town = run(warTown(), 0, 4, defId => defId === WOOL_PAYMENT_PETITION_ID ? "accept_with_price" : undefined as never);
   const petition = open(town, LEVY_RESPONSE_PETITION_ID)!;
   const men = levyMen(town);
-  assert.equal(men, Math.max(WAR_BALANCE.minMen, Math.ceil(24 / WAR_BALANCE.housesPerMan)));
+  const adults = town.houses.reduce((sum, house) => sum + (house.members?.adults ?? Math.ceil(house.residents / 2)), 0);
+  assert.equal(men, Math.max(WAR_BALANCE.minMen, Math.ceil(adults / WAR_BALANCE.adultsPerMan)));
+  assert.ok(men > 10, `${men} men from ${adults} adults`);
   const pool = labourPool(town);
   const sent = respondToPetition(town, petition.id, "accept");
   assert.equal(labourPool(sent), pool - men);
@@ -137,6 +139,7 @@ test("E14 (WR-4) the lay subsidy: the merchants' loan repaid with interest over 
   const town = run(warTown(), 0, 6, defId => defId === WOOL_PAYMENT_PETITION_ID || defId === LEVY_RESPONSE_PETITION_ID ? "accept_with_price" : undefined as never);
   const petition = open(town, WAR_FUNDING_PETITION_ID)!;
   const subsidy = subsidyAmount(town);
+  assert.equal(subsidy, Math.max(24 * WAR_BALANCE.subsidyPerHouse, Math.floor(treasuryBalance(town) / 10)));
   const gauge = town.politics!.merchantGauge;
   const loan = respondToPetition(town, petition.id, "accept");
   assert.equal(treasuryBalance(loan), treasuryBalance(town));
@@ -220,7 +223,7 @@ test("E17 (WR-7) the recovery: with the Crown's favour the purveyance licence se
   assert.equal(respondToPetition(favoured, open(favoured, WALL_OR_MARKET_PETITION_ID)!.id, "accept_with_price").war!.wall, "murage");
 });
 
-test("E18 (WR-8) murage doubles the tolls while the stone wall is building; the market chosen raises the dues a quarter", () => {
+test("E18 (WR-8) murage doubles the tolls while the stone wall is building; the market chosen doubles the dues", () => {
   const town = season(warTown(), 0);
   const periodTick = Math.ceil((town.tick + 1) / LEDGER_PERIOD_TICKS) * LEDGER_PERIOD_TICKS;
   const gate = Object.keys(town.money?.crossings ?? {})[0] ?? "gate:0,0";
@@ -232,7 +235,7 @@ test("E18 (WR-8) murage doubles the tolls while the stone wall is building; the 
   assert.equal(toll(plain, "murage"), 0);
   const market = settleMoneyPeriod({ ...crossing, tick: periodTick, war: { ...town.war!, wall: "market" } });
   assert.ok(toll(market, "stall_fee") >= toll(plain, "stall_fee"));
-  assert.equal(toll(market, "stall_fee"), toll(plain, "stall_fee") === 0 ? 0 : Math.round(toll(plain, "stall_fee") * 1.25));
+  assert.equal(toll(market, "stall_fee"), Math.round(toll(plain, "stall_fee") * WAR_BALANCE.marketExpansionPermille / 1000));
 });
 
 test("E19 (WR-9) chapter 2 ends once the war has passed and the market is chosen or the stone wall stands, by 1348 at the latest; chapter 3 begins", () => {

@@ -17,7 +17,7 @@ export interface RaidLosses {
 export interface Conscripts {
   readonly men: number;
   readonly returnTick: number;
-  /** The households they came from (one man each, in order), and those who will not come back. */
+  /** The household each man came from (in order; a household may give several), and those of the men who will not come back. */
   readonly houseIds: readonly string[];
   readonly lostHouseIds: readonly string[];
   readonly returned: boolean;
