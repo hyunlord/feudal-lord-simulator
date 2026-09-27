@@ -8,7 +8,7 @@ import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
 import { wetSummer } from "../src/render/wetSummer";
 import { advanceTick } from "../src/engine/tick";
-import { residentWalkers } from "../src/ui/residentTrips";
+import { residentWalkers } from "../src/render/presentation/residentTrips";
 import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
 import { loadSaveFile } from "./loadSaveFile";
 

@@ -1,6 +1,6 @@
 import type { Dispatch, RefObject, SetStateAction } from "react";
 
-import type { GameState, OverlayMode } from "../engine/engine.types";
+import type { OverlayMode } from "../engine/engine.types";
 import type { GameAction } from "../state/gameStore.types";
 import type { HoveredBuilding } from "./BuildingInspector";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
@@ -13,8 +13,8 @@ import type { DragState } from "./canvasRuntime";
 export type GameCanvasRuntimeInput = {
   readonly setPrediction?: ((value: import("../ui/PredictionPanel").PredictionPresentation | null) => void) | undefined;
   readonly canvasRef: RefObject<HTMLCanvasElement | null>;
-  readonly state: GameState;
-  readonly previousRenderState: Pick<GameState, "constructionSites" | "walkers">;
+  /** CODE-1c: the store; the runtime follows each committed tick through it (no React render per tick). */
+  readonly store: import("../state/gameStore.types").GameStoreApi;
   readonly interpolationAlpha: () => number;
   readonly dispatch: Dispatch<GameAction>;
   readonly selectedTool: PlacementTool | null;

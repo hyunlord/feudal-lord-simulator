@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 
+import type { GameStoreApi } from "../state/gameStore.types";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
+import { presentedPreviousState, presentedState } from "./presentation/presentedState";
 
 export function useGameCanvasRuntimeRefs(input: {
-  readonly state: GameCanvasRuntimeInput["state"];
-  readonly previousRenderState: GameCanvasRuntimeInput["previousRenderState"];
+  readonly store: GameStoreApi;
   readonly selectedTool: GameCanvasRuntimeInput["selectedTool"];
   readonly overlayMode: GameCanvasRuntimeInput["overlayMode"];
   readonly problemOnly?: boolean;
@@ -15,8 +16,9 @@ export function useGameCanvasRuntimeRefs(input: {
   readonly palisadeCeremonyStartedAtMs: NonNullable<GameCanvasRuntimeInput["palisadeCeremonyStartedAtMs"]> | null;
   readonly zoneTool?: GameCanvasRuntimeInput["zoneTool"];
 }) {
-  const stateRef = useRef(input.state);
-  const previousRenderStateRef = useRef(input.previousRenderState);
+  // CODE-1c: the canvas follows every committed tick through the store, not through a React render.
+  const stateRef = useRef(presentedState(input.store.getState()));
+  const previousRenderStateRef = useRef(presentedPreviousState(input.store.getPreviousRenderState(), input.store.getState()));
   const selectedToolRef = useRef(input.selectedTool);
   const overlayModeRef = useRef(input.overlayMode);
   const problemOnlyRef = useRef(input.problemOnly ?? false);
@@ -27,9 +29,18 @@ export function useGameCanvasRuntimeRefs(input: {
   const palisadeCeremonyStartedAtMsRef = useRef(input.palisadeCeremonyStartedAtMs);
   const zoneToolRef = useRef(input.zoneTool ?? null);
 
+  const { store } = input;
   useEffect(() => {
-    stateRef.current = input.state;
-    previousRenderStateRef.current = input.previousRenderState;
+    const follow = () => {
+      const state = store.getState();
+      stateRef.current = presentedState(state);
+      previousRenderStateRef.current = presentedPreviousState(store.getPreviousRenderState(), state);
+    };
+    follow();
+    return store.subscribe(follow);
+  }, [store]);
+
+  useEffect(() => {
     selectedToolRef.current = input.selectedTool;
     overlayModeRef.current = input.overlayMode;
     problemOnlyRef.current = input.problemOnly ?? false;
@@ -49,8 +60,6 @@ export function useGameCanvasRuntimeRefs(input: {
     input.palisadeDraft,
     input.selectedTool,
     input.selection,
-    input.state,
-    input.previousRenderState,
   ]);
 
   return {

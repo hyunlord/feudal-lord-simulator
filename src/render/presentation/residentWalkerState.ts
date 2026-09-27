@@ -1,5 +1,5 @@
-import type { GameState } from "../engine/engine.types";
-import { residentWalkers } from "../ui/residentTrips";
+import type { GameState } from "../../engine/engine.types";
+import { residentWalkers } from "./residentTrips";
 
 /**
  * MOVE-1 (RM-5): the state the screen draws: the simulation's walkers plus the presentation walkers of that tick.

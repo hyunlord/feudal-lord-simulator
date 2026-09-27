@@ -5,7 +5,7 @@ import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { arrivalOf, seasonMarks, yearFraction } from "../src/ui/seasonStrip";
 import { SEASON_STRIP_COPY } from "../src/ui/seasonStripCopy.ko";
-import { isMarketDay } from "../src/ui/residentTrips";
+import { isMarketDay } from "../src/render/presentation/residentTrips";
 import { LEDGER_PERIOD_TICKS } from "../src/ledger/ledger";
 
 const at = (tick: number) => ({ ...DEFAULT_GAME_STATE, tick });

@@ -5,10 +5,11 @@ import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 
 
 import { houseProgressModel } from "../ui/houseProgressModel";
 import { KO_UI } from "../content/locale.ko";
-import type { OverlayMode } from "../engine/engine.types";
+import type { GameState, OverlayMode } from "../engine/engine.types";
 import { DEFAULT_PLACEMENT_TOOL } from "./interactions";
 import type { PlacementTool } from "./renderer";
-import { useGameStore } from "../state/gameStore";
+import { useGameApi, useGameUiSelector } from "../state/gameStore";
+import { presentedState } from "./presentation/presentedState";
 import { buildingInspectorModel } from "./buildingInspectorModel";
 import { BuildingInspector, buildingCauseLine, type HoveredBuilding } from "./BuildingInspector";
 import { useGameCanvasRuntime } from "./useGameCanvasRuntime";
@@ -71,9 +72,16 @@ export function GameCanvas({
   onSelectionChange,
   onPerson,
 }: GameCanvasProps) {
-  const { state, previousRenderState, interpolationAlpha, dispatch } = useGameStore();
+  const store = useGameApi();
+  const { interpolationAlpha, dispatch } = store;
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
   const [selection, setSelection] = useState<AnchoredWorldSelection | null>(null);
+  // CODE-1c: the map draws every tick from the store (the runtime's refs); this component reads the state only while a
+  // card is up (a selection or the hover card), on the UI channel. Otherwise it keeps the first state and does not
+  // re-render on a tick.
+  const idleStateRef = useRef<GameState | null>(null);
+  const cardUp = selection !== null || hoveredBuilding !== null;
+  const state = useGameUiSelector(cardUp ? presentedState : (current: GameState) => (idleStateRef.current ??= presentedState(current)));
   const [prediction, setPrediction] = useState<PredictionPresentation | null>(null);
   // UX-3R2 tablet placement: the tile a tap left the ghost on, waiting for the confirm bar (null: no bar).
   const [pendingPlacement, setPendingPlacement] = useState<TileCoordinate | null>(null);
@@ -86,8 +94,7 @@ export function GameCanvas({
   useGameCanvasRuntime({
     canvasRef,
     setPrediction,
-    state,
-    previousRenderState,
+    store,
     interpolationAlpha,
     dispatch,
     selectedTool,

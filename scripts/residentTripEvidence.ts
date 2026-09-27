@@ -17,8 +17,8 @@ import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
 import { walkerVisualAnchor } from "../src/render/walkerAnchor";
 import { walkerLook } from "../src/render/walkerLook";
-import { withResidentWalkers } from "../src/state/residentWalkerState";
-import { isMarketDay, isResidentWalker } from "../src/ui/residentTrips";
+import { withResidentWalkers } from "../src/render/presentation/residentWalkerState";
+import { isMarketDay, isResidentWalker } from "../src/render/presentation/residentTrips";
 import { loadSeed2City } from "./walkerLookEvidence";
 import { tileToScreen } from "../src/render/iso";
 

@@ -2,7 +2,7 @@ import { drawUiIcon } from "../ui/uiArt";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import { BUILDING_CONFIG_BY_KIND, operationSuspended, type Building } from "../content/buildingConfig";
 import { marketHasSaleCandidate } from "../engine/marketSettlement";
-import { isMarketDay } from "../ui/residentTrips";
+import { isMarketDay } from "./presentation/residentTrips";
 import type { GameState } from "../engine/engine.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingFootprint } from "../geometry/buildingFootprint";

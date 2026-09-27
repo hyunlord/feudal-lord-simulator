@@ -80,11 +80,24 @@ type GameCommand =
   | { readonly type: "zone_undo_stroke" }
   | { readonly type: "set_wall_construction_priority"; readonly priority: import("../engine/constructionReserve").WallConstructionPriority };
 
-export interface GameStoreContextValue {
-  state: GameState;
-  previousRenderState: Pick<GameState, "constructionSites" | "walkers">;
-  interpolationAlpha: () => number;
-  dispatch: Dispatch<GameAction>;
-  speed: GameSpeed;
-  setSpeed: (speed: GameSpeed) => void;
+/** The walkers and sites of the frame before, for the canvas's interpolation. */
+export type PreviousRenderState = Pick<GameState, "constructionSites" | "walkers">;
+
+/**
+ * CODE-1c: the store outside React. The provider does not re-render on a tick; components read what they need with
+ * `useGameUiSelector` (the UI channel) and the canvas and per-tick observers read every change through `subscribe`.
+ */
+export interface GameStoreApi {
+  /** The simulation's state (plain: the screen adds the presentation walkers, `render/presentation`). */
+  readonly getState: () => GameState;
+  readonly getPreviousRenderState: () => PreviousRenderState;
+  readonly getSpeed: () => GameSpeed;
+  /** Every change: each committed tick, each action, each speed change. */
+  readonly subscribe: (listener: () => void) => () => void;
+  /** The state the UI shows: actions at once, committed ticks at most every UI_REFRESH_MS (the last one kept). */
+  readonly getUiState: () => GameState;
+  readonly subscribeUi: (listener: () => void) => () => void;
+  readonly interpolationAlpha: () => number;
+  readonly dispatch: Dispatch<GameAction>;
+  readonly setSpeed: (speed: GameSpeed) => void;
 }

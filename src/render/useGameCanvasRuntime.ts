@@ -47,15 +47,15 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     selection,
     setHoveredBuilding,
     setSelection,
-    state,
+    store,
     palisadeDraft = null,
     houseMaterialWave = null,
     palisadeCeremonyStartedAtMs = null,
     onPalisadeDraftChange,
-    onPalisadeDraftCancel, previousRenderState, interpolationAlpha,
+    onPalisadeDraftCancel, interpolationAlpha,
   } = input;
   const { problemOnlyRef, highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, previousRenderStateRef, selectedToolRef, selectionRef, stateRef, zoneToolRef } =
-    useGameCanvasRuntimeRefs({ state, previousRenderState, selectedTool, overlayMode, problemOnly, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs, zoneTool: input.zoneTool ?? null });
+    useGameCanvasRuntimeRefs({ store, selectedTool, overlayMode, problemOnly, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs, zoneTool: input.zoneTool ?? null });
   const zoneRadiusRef = useRef(input.onZoneRadiusChange); zoneRadiusRef.current = input.onZoneRadiusChange;
   const pendingRef = useRef(input.setPendingPlacement); pendingRef.current = input.setPendingPlacement;
 

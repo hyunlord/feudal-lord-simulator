@@ -12,7 +12,7 @@ import { FAST_PRESENTATION_SPEED, presentationSpeed } from "../render/presentati
 import { millOvenBurning } from "../render/roofSmoke";
 import { wetSummer } from "../render/wetSummer";
 import { ZONE_VARIANTS } from "../render/zoneAssetManifest";
-import { absoluteDay, residentWalkers, SUNDAY_WEEKDAY, weekday, type ResidentWalker } from "../ui/residentTrips";
+import { absoluteDay, residentWalkers, SUNDAY_WEEKDAY, weekday, type ResidentWalker } from "../render/presentation/residentTrips";
 import { MAX_LOOPS, playSound, releaseLoops, setAudioListener, setLoop, spatial, type SoundId } from "./audioEngine";
 
 // F0-V world sounds from what the state shows, once per drawn frame (the canvas runtime calls it), and AUDIO-1 (P1):

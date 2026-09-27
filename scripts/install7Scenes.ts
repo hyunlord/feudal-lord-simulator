@@ -10,7 +10,7 @@ import { gzipSync } from "node:zlib";
 
 import type { Building } from "../src/content/buildingConfig";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
-import { isMarketDay } from "../src/ui/residentTrips";
+import { isMarketDay } from "../src/render/presentation/residentTrips";
 
 const base = DEFAULT_GAME_STATE;
 const out = "docs/verification/install7/scene";

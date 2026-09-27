@@ -1,13 +1,13 @@
-import type { BuilderWalker, TilePos } from "../agents/walker.types";
-import { operationSuspended, type Building } from "../content/buildingConfig";
-import { BALANCE } from "../content/balanceConfig";
-import type { GameState } from "../engine/engine.types";
-import { householdServices } from "../engine/householdServices";
-import { buildingRoadAccessTiles } from "../engine/routing";
-import { householdMembers, type MemberAgeBand, type MemberSex } from "../population/householdMembers";
-import { boundaryHash, hashNumbers } from "../world/boundary/boundaryGeometry";
-import { getOrthogonalRoadNeighbors } from "../world/roadGraph";
-import type { Tile } from "../world/world.types";
+import type { BuilderWalker, TilePos } from "../../agents/walker.types";
+import { operationSuspended, type Building } from "../../content/buildingConfig";
+import { BALANCE } from "../../content/balanceConfig";
+import type { GameState } from "../../engine/engine.types";
+import { householdServices } from "../../engine/householdServices";
+import { buildingRoadAccessTiles } from "../../engine/routing";
+import { householdMembers, type MemberAgeBand, type MemberSex } from "../../population/householdMembers";
+import { boundaryHash, hashNumbers } from "../../world/boundary/boundaryGeometry";
+import { getOrthogonalRoadNeighbors } from "../../world/roadGraph";
+import type { Tile } from "../../world/world.types";
 
 /**
  * MOVE-1 resident trips (spec docs/design/resident-movement.md RM-1..RM-7): household members, market-day visitors,

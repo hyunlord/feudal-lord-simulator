@@ -1,3 +1,4 @@
+import type { GameState } from "../engine/engine.types";
 import { causeMarkerAtCanvasPoint } from "./causeMapInteraction";
 import { resolveCanvasClick } from "./canvasClickResolution";
 import { worldToCanvas } from "./camera";
@@ -16,7 +17,7 @@ type SelectRuntimeInput = {
   readonly world: WorldPoint;
   readonly canvas: HTMLCanvasElement;
   readonly refs: CanvasMutableRefs;
-  readonly stateRef: { current: GameCanvasRuntimeInput["state"] };
+  readonly stateRef: { current: GameState };
   readonly selectedToolRef: { current: GameCanvasRuntimeInput["selectedTool"] };
   readonly palisadeDraftRef: { current: GameCanvasRuntimeInput["palisadeDraft"] };
   readonly setSelection: GameCanvasRuntimeInput["setSelection"];

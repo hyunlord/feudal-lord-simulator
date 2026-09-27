@@ -2,7 +2,7 @@ import { BALANCE } from "../content/balanceConfig";
 import { SEASON_BALANCE } from "../content/balanceConfig";
 import type { GameState } from "../engine/engine.types";
 import { LEDGER_PERIOD_TICKS } from "../ledger/ledger";
-import { absoluteDay, dayStartTick, MARKET_DAY_OF_MONTH } from "./residentTrips";
+import { absoluteDay, dayStartTick, MARKET_DAY_OF_MONTH } from "../render/presentation/residentTrips";
 
 // UI-3 season strip (Wave 8 season_strip): one calendar year, spring to winter, with a pin at today and marks for
 // what comes next. The marks are the engine's own dates: the sowing and harvest labour bands (SEASON_BALANCE, in-year

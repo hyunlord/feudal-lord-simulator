@@ -6,7 +6,8 @@ import { decideNextAction } from "../engine/autoplay";
 import { shouldRetryAutoplayAfterMillReplenishment } from "../engine/autoplayMillReplenishment";
 import { sampleAutoplayDecision, type AutoplayDecisionCache, type AutoplayDecision } from "./autoplayDecisionCache";
 import type { GameState, GameSpeed } from "../engine/engine.types";
-import { useGameStore } from "../state/gameStore";
+import { useGameApi, useGameSelector } from "../state/gameStore";
+import { presentedState } from "../render/presentation/presentedState";
 import { SaveControls } from "./SaveControls";
 import { UiIcon } from "./UiIcon";
 import { BoundaryRenderToggle } from "../render/BoundaryRenderToggle";
@@ -46,8 +47,12 @@ type SpeedSealsProps = {
 };
 
 export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) {
-  const { state, dispatch } = useGameStore();
+  const { dispatch } = useGameApi();
   const [autoplayEnabled, setAutoplayEnabled] = useState(false);
+  // CODE-1c: the autoplay follows every tick while it is on; off, the seals keep the first state and do not re-render
+  // on a tick (the decision sampler returns nothing when disabled).
+  const idleStateRef = useRef<GameState | null>(null);
+  const state = useGameSelector(autoplayEnabled ? presentedState : (current: GameState) => (idleStateRef.current ??= presentedState(current)));
   const latestTickRef = useRef(state.tick);
   const lastAutoplayCommitTickRef = useRef(-AUTOPLAY_TICK_CADENCE);
   const cancelPendingCommitRef = useRef<(() => void) | null>(null);

@@ -1,3 +1,4 @@
+import type { GameState } from "../engine/engine.types";
 import type { IntentHandler } from "../input/intentBus";
 import type { InputIntent } from "../input/inputIntent";
 import { worldToCanvas, type CameraState, type WorldBounds } from "./camera";
@@ -29,7 +30,7 @@ import { resolveBuildingPlacementAttempt } from "./interactions";
 type Deps = {
   readonly canvas: HTMLCanvasElement;
   readonly refs: CanvasMutableRefs;
-  readonly stateRef: { current: GameCanvasRuntimeInput["state"] };
+  readonly stateRef: { current: GameState };
   readonly selectedToolRef: { current: GameCanvasRuntimeInput["selectedTool"] };
   readonly palisadeDraftRef: { current: PalisadeDraftState | null };
   readonly zone: ReturnType<typeof createZoneBrushContext>;

@@ -23,7 +23,10 @@ import { applyPalisadeIntent, initialExpansionDraft, initialOpenPalisadeDraft, i
 import { cachedExpansionPreview, expansionStartCandidate } from "./ui/wallExpansionModel";
 import { DEFAULT_ZONE_BRUSH_RADIUS, type ZoneBrushTool } from "./render/zoneBrushInteraction";
 import type { PlacementTool } from "./render/renderer";
-import { useGameStore } from "./state/gameStore";
+import { useGameApi, useGameSpeed, useGameUiSelector } from "./state/gameStore";
+import { presentedState } from "./render/presentation/presentedState";
+import { usePresentationClock } from "./ui/usePresentationClock";
+import { nextDistributorRouteHistoryCommit, useTickObservers } from "./ui/useTickObservers";
 import { useSaveSystemContext } from "./state/saveSystem";
 import { formatNewGameArchiveNotice, SAVE_COPY } from "./content/saveCopy.ko";
 import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
@@ -62,16 +65,6 @@ import {
 import { palisadeFootprintsForState, proposalSummaryForState } from "./ui/eraConsoleModel";
 import { palisadeCoreFootprintsForState } from './engine/palisadeFootprints';
 import { wallConstructionPriority } from './engine/constructionReserve';
-import {
-  appendPopulationEvents,
-  diffPopulationEvents,
-  type PopulationEvent,
-} from "./ui/populationEventModel";
-import {
-  createDistributorRouteHistory,
-  observeDistributorRouteHistory,
-  type DistributorRouteHistory,
-} from "./ui/distributorRouteHistory";
 import { platformServices } from "./platform/platform";
 import { INTENT_ORDER } from "./input/intentBus";
 import { SPEED_STEPS, speedStepOf } from "./input/inputIntent";
@@ -81,7 +74,7 @@ import { UiIcon } from "./ui/UiIcon";
 import { setPresentationSpeed } from "./render/presentationSpeed";
 import { playSound, unlockAudio } from "./audio/audioEngine";
 import { AudioControls } from "./ui/AudioControls";
-import { COMPLETION_GROUP_MS, COMPLETION_TOAST_MS, completedSiteNames } from "./ui/completionToast";
+import { COMPLETION_TOAST_MS } from "./ui/completionToast";
 import { COMPLETION_TOAST_COPY } from "./ui/completionToastCopy.ko";
 import { alertStackRows } from "./ui/alertStackModel";
 import { useTutorialController } from "./ui/tutorial/useTutorialController";
@@ -98,7 +91,6 @@ import { statusPillModel } from "./ui/hud/statusPillModel";
 import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
 import { zoneEditHistory } from "./render/zoneEditHistory";
 import type { ZoneKind } from "./zones/zone.types";
-import { createStoreStockHistory, observeStoreStockHistory } from "./ui/storeStockHistory";
 import { EventCards } from "./ui/hud/EventCards";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "./ui/hud/StoryModals";
 import { ChronicleScreen } from "./ui/chronicle/ChronicleScreen";
@@ -129,17 +121,16 @@ export function nextOnboardingPresentationCommit(input: {
   return nextPresentation === input.presentation ? null : nextPresentation;
 }
 
-export function nextDistributorRouteHistoryCommit(input: {
-  readonly previousState: GameState;
-  readonly nextState: GameState;
-  readonly history: DistributorRouteHistory;
-}): DistributorRouteHistory | null {
-  const nextHistory = observeDistributorRouteHistory(input);
-  return nextHistory === input.history ? null : nextHistory;
-}
+/** Kept here for its callers (tests): the tick observers own it now (`ui/useTickObservers`). */
+export { nextDistributorRouteHistoryCommit };
 
 export function App() {
-  const { state, dispatch, speed, setSpeed } = useGameStore();
+  // CODE-1c: App reads the game on the UI channel (actions at once, ticks at most four times a second); the map and
+  // the per-tick memories follow every tick through the store without rendering App.
+  const store = useGameApi();
+  const { dispatch, setSpeed } = store;
+  const speed = useGameSpeed();
+  const state = useGameUiSelector(presentedState);
   setPresentationSpeed(speed);
   const [selectedTool, setSelectedTool] = useState<PlacementTool | null>(null);
   const [problemOnly, setProblemOnly] = useState(false);
@@ -168,21 +159,15 @@ export function App() {
   const gameStateRef = useRef(state);
   palisadeDraftRef.current = palisadeDraft;
   gameStateRef.current = state;
-  // UX-3R2: the stores' stock samples and cart uses (weekly change, "who uses it"); presentation memory, per tick.
-  const storeHistoryRef = useRef(createStoreStockHistory());
-  useEffect(() => { storeHistoryRef.current = observeStoreStockHistory(storeHistoryRef.current, state); }, [state]);
+  // UX-3R2 / F0-V: the stores' stock samples, distributor routes, the population log and completed sites, per tick.
+  const { storeHistoryRef, distributorRouteHistoryRef, populationEvents, completionToast } = useTickObservers(store);
   // UX-3R2: a ledger row lights the stores holding that resource on the map (cleared when the ledger closes).
   const [ledgerHighlight, setLedgerHighlight] = useState<readonly string[]>([]);
-  const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
   const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
-  const [distributorRouteHistory, setDistributorRouteHistory] = useState(
-    createDistributorRouteHistory,
-  );
-  const distributorRouteHistoryRef = useRef(distributorRouteHistory);
   const [eraPresentation, setEraPresentation] = useState(() => createEraCeremonyPresentation(state.era));
-  const previousPopulationStateRef = useRef(state);
-  const previousDistributorRouteStateRef = useRef(state);
-  const [presentationNowMs, setPresentationNowMs] = useState(() => Date.now());
+  // CODE-1c: the 100 ms presentation clock runs only while something on screen is timed by it (set below).
+  const [clockWanted, setClockWanted] = useState(true);
+  const presentationNowMs = usePresentationClock(clockWanted);
   // UX-0 H: the goal rail turns see-through while the tutorial's map target lies under it (checked on the 100 ms clock).
   const railRef = useRef<HTMLElement | null>(null);
   const [railSeeThrough, setRailSeeThrough] = useState(false);
@@ -209,31 +194,6 @@ export function App() {
   if (guidanceSnapshotRef.current.sample !== guidanceSample) {
     guidanceSnapshotRef.current = { sample: guidanceSample, state };
   }
-
-  useEffect(() => {
-    const nextHistory = nextDistributorRouteHistoryCommit({
-      previousState: previousDistributorRouteStateRef.current,
-      nextState: state,
-      history: distributorRouteHistoryRef.current,
-    });
-    previousDistributorRouteStateRef.current = state;
-    if (nextHistory === null) return;
-    distributorRouteHistoryRef.current = nextHistory;
-    setDistributorRouteHistory(nextHistory);
-  }, [state]);
-
-  useEffect(() => {
-    const incoming = diffPopulationEvents(previousPopulationStateRef.current, state);
-    previousPopulationStateRef.current = state;
-    if (incoming.length > 0) {
-      setPopulationEvents((existing) => appendPopulationEvents(existing, incoming));
-    }
-  }, [state]);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => setPresentationNowMs(Date.now()), 100);
-    return () => window.clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const nextPresentation = nextOnboardingPresentationCommit({
@@ -446,18 +406,11 @@ export function App() {
   // Sound starts with the player's first input intent (a press or key, so the browser's autoplay rule allows it).
   useEffect(() => platformServices().input.subscribe(() => { unlockAudio(import.meta.env?.BASE_URL ?? "/"); return undefined; }, INTENT_ORDER.world - 1), []);
   // F0-V: completions grouped into one toast (names within COMPLETION_GROUP_MS, shown for COMPLETION_TOAST_MS).
-  const previousCompletionStateRef = useRef(state);
-  const [completionToast, setCompletionToast] = useState<{ readonly names: readonly string[]; readonly firstAtMs: number } | null>(null);
-  useEffect(() => {
-    const names = completedSiteNames(previousCompletionStateRef.current, state);
-    previousCompletionStateRef.current = state;
-    if (names.length === 0) return;
-    const now = Date.now();
-    setCompletionToast(current => current !== null && now - current.firstAtMs < COMPLETION_GROUP_MS
-      ? { names: [...current.names, ...names], firstAtMs: current.firstAtMs } : { names, firstAtMs: now });
-  }, [state]);
   const toastVisible = completionToast !== null && presentationNowMs - completionToast.firstAtMs < COMPLETION_TOAST_MS;
   const visibleCeremony = visibleEraCeremony(eraPresentation, presentationNowMs);
+  // CODE-1c: the clock runs for the tutorial, the era ceremony and the toast (story chips wake themselves).
+  const clockNeeded = tutorial.awaitsClock || visibleCeremony !== null || toastVisible;
+  useEffect(() => { setClockWanted(clockNeeded); }, [clockNeeded]);
   const houseMaterialWave = eraPresentation.ceremony === null || state.palisade === null
     ? null
     : createHouseMaterialWave({
@@ -577,7 +530,7 @@ export function App() {
           problemOnly={problemOnly}
           highlightedHouseIds={ledgerHighlight.length > 0 ? ledgerHighlight : highlightedHouseIds}
           storeHistory={storeHistoryRef.current}
-          distributorRouteHistory={distributorRouteHistory}
+          distributorRouteHistory={distributorRouteHistoryRef.current}
           palisadeDraft={palisadeDraft}
           houseMaterialWave={houseMaterialWave}
           palisadeCeremonyStartedAtMs={visibleCeremony?.startedAtMs ?? null}

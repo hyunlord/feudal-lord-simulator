@@ -11,7 +11,7 @@ import { weatherAt } from "../src/engine/eventSchedule";
 import { initialPolitics } from "../src/engine/politics";
 import { tileToScreen } from "../src/render/iso";
 import { decodeSave } from "../src/save/saveCodec";
-import { dayStartTick, SUNDAY_WEEKDAY, type ResidentWalker } from "../src/ui/residentTrips";
+import { dayStartTick, SUNDAY_WEEKDAY, type ResidentWalker } from "../src/render/presentation/residentTrips";
 
 // AUDIO-1 sound P1 (visibility design 6절 P1): the bank, and the director's plan over a town (fixtures v17
 // population-176: two mills, a sawmill, a chapel, carts) set up for each sound.

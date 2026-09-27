@@ -11,6 +11,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
 } from "react";
 
 import { granaryCoverageTargetIds } from '../engine/autoplayFoodCoverage';
@@ -40,11 +41,11 @@ import {
   openingVillageHouses,
   withOpeningVillageServices,
 } from "./openingVillage";
-import { withPreviousResidentWalkers, withResidentWalkers } from "./residentWalkerState";
 import type {
   GameAction,
   GameProviderProps,
-  GameStoreContextValue,
+  GameStoreApi,
+  PreviousRenderState,
 } from "./gameStore.types";
 import { decisionSaveReason } from "../save/autosavePolicy";
 import { SaveSystemContext, useSaveSystem } from "./saveSystem";
@@ -86,7 +87,7 @@ export const DEFAULT_GAME_STATE: GameState = withOpeningVillageServices({
   nextZoneOrdinal: 1,
 });
 
-export const GameStoreContext = createContext<GameStoreContextValue | null>(null);
+export const GameStoreContext = createContext<GameStoreApi | null>(null);
 
 function assertNever(action: never): never {
   throw new Error(`Unhandled game action: ${JSON.stringify(action)}`);
@@ -183,16 +184,54 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
   }
 }
 
+/**
+ * CODE-1c: how often the UI channel passes a committed tick on (actions pass at once). At 5x a tick lands about every
+ * 77 ms; the UI reads four states a second, the canvas every one (measured: scripts/reactCommitPerf.mjs, pop176 at 5x).
+ */
+export const UI_REFRESH_MS = 250;
+
+type Listener = () => void;
+
 export function GameProvider({ children }: GameProviderProps) {
-  const [state, setState] = useState(DEFAULT_GAME_STATE);
   const [sessionKey, setSessionKey] = useState(0);
-  const stateRef = useRef(state);
-  const previousRenderStateRef = useRef<Pick<GameState, "constructionSites" | "walkers">>(state);
+  // The state the store starts from (scripts/sceneInjection.mjs replaces this call to start a scene).
+  const [initialState] = useState(DEFAULT_GAME_STATE);
+  const stateRef = useRef(initialState);
+  const uiStateRef = useRef(initialState);
+  const previousRenderStateRef = useRef<PreviousRenderState>(initialState);
   const loopRef = useRef<FixedTickLoop | null>(null);
-  const [speed, setSpeedState] = useState<GameSpeed>(0);
-  const speedRef = useRef(speed);
+  const speedRef = useRef<GameSpeed>(0);
+  const listenersRef = useRef(new Set<Listener>());
+  const uiListenersRef = useRef(new Set<Listener>());
+  const uiTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const uiPublishedAtRef = useRef(Number.NEGATIVE_INFINITY);
   const requestSaveRef = useRef<((reason: import("../save/autosavePolicy").SaveReason) => void) | null>(null);
   const newSessionRef = useRef<(() => void) | null>(null);
+
+  const publishUi = useCallback(() => {
+    if (uiTimerRef.current !== null) { clearTimeout(uiTimerRef.current); uiTimerRef.current = null; }
+    uiPublishedAtRef.current = performance.now();
+    if (uiStateRef.current === stateRef.current) return;
+    uiStateRef.current = stateRef.current;
+    for (const listener of [...uiListenersRef.current]) listener();
+  }, []);
+  // A committed tick reaches the UI at most every UI_REFRESH_MS, and the last one always does (a trailing timer).
+  const publishUiThrottled = useCallback(() => {
+    const wait = uiPublishedAtRef.current + UI_REFRESH_MS - performance.now();
+    if (wait <= 0) { publishUi(); return; }
+    if (uiTimerRef.current === null) uiTimerRef.current = setTimeout(publishUi, wait);
+  }, [publishUi]);
+  const notify = useCallback((simulation: boolean) => {
+    for (const listener of [...listenersRef.current]) listener();
+    if (simulation) publishUiThrottled(); else publishUi();
+  }, [publishUi, publishUiThrottled]);
+  useEffect(() => () => { if (uiTimerRef.current !== null) clearTimeout(uiTimerRef.current); }, []);
+
+  const setSpeedNow = useCallback((nextSpeed: GameSpeed) => {
+    if (speedRef.current === nextSpeed) return;
+    speedRef.current = nextSpeed;
+    notify(false);
+  }, [notify]);
 
   const dispatch = useCallback((action: GameAction) => {
     const currentState = stateRef.current;
@@ -202,38 +241,31 @@ export function GameProvider({ children }: GameProviderProps) {
         ? action.previousState
         : nextState;
     stateRef.current = nextState;
-    if (nextState.settlement?.outcome === "abandoned" || action.type === "restart_settlement") {
-      speedRef.current = 0;
-      setSpeedState(0);
-    }
+    if (nextState.settlement?.outcome === "abandoned" || action.type === "restart_settlement") speedRef.current = 0;
     if (action.type === "load_saved_state" || action.type === "start_new_game") {
       previousRenderStateRef.current = nextState;
       speedRef.current = 0;
-      setSpeedState(0);
     }
     if ((action.type === "restart_settlement" || action.type === "load_saved_state" || action.type === "start_new_game") && nextState !== currentState) {
       setSessionKey(key => key + 1);
     }
-    setState(nextState);
+    notify(action.type === "commit_simulation_state");
     const decision = action.type === "load_saved_state" || action.type === "restart_settlement" || action.type === "start_new_game"
       ? null : decisionSaveReason(currentState, nextState);
     if (action.type === "restart_settlement" && nextState !== currentState) newSessionRef.current?.();
     if (decision !== null) requestSaveRef.current?.(decision);
-  }, []);
+  }, [notify]);
   const onLoaded = useCallback((loaded: GameState) => dispatch({ type: "load_saved_state", state: loaded }), [dispatch]);
   const saveSystem = useSaveSystem({ stateRef, onLoaded });
   requestSaveRef.current = saveSystem.requestSave;
   newSessionRef.current = saveSystem.value.declineContinue;
 
-  const interpolationAlpha = useCallback(() => loopRef.current?.interpolationAlpha() ?? 1, []);
-
   const setSpeed = useCallback((nextSpeed: GameSpeed) => {
     if (stateRef.current.settlement?.outcome === "abandoned") return;
     const pausing = nextSpeed === 0 && speedRef.current !== 0;
-    speedRef.current = nextSpeed;
     if (pausing) requestSaveRef.current?.("pause");
-    setSpeedState(nextSpeed);
-  }, []);
+    setSpeedNow(nextSpeed);
+  }, [setSpeedNow]);
 
   useEffect(() => {
     const loop = createFixedTickLoop({
@@ -252,18 +284,57 @@ export function GameProvider({ children }: GameProviderProps) {
     };
   }, [dispatch]);
 
-  // MOVE-1: the published state carries the presentation walkers of its tick; the simulation keeps `stateRef`.
-  const value = useMemo(
-    () => ({ state: withResidentWalkers(state), previousRenderState: withPreviousResidentWalkers(previousRenderStateRef.current, state),
-      interpolationAlpha, dispatch, speed, setSpeed }),
-    [dispatch, interpolationAlpha, setSpeed, speed, state],
-  );
-  return createElement(GameStoreContext.Provider, { value },
+  const api = useMemo<GameStoreApi>(() => ({
+    getState: () => stateRef.current,
+    getPreviousRenderState: () => previousRenderStateRef.current,
+    getSpeed: () => speedRef.current,
+    subscribe: (listener) => { listenersRef.current.add(listener); return () => { listenersRef.current.delete(listener); }; },
+    getUiState: () => uiStateRef.current,
+    subscribeUi: (listener) => { uiListenersRef.current.add(listener); return () => { uiListenersRef.current.delete(listener); }; },
+    interpolationAlpha: () => loopRef.current?.interpolationAlpha() ?? 1,
+    dispatch,
+    setSpeed,
+  }), [dispatch, setSpeed]);
+  return createElement(GameStoreContext.Provider, { value: api },
     createElement(SaveSystemContext.Provider, { value: saveSystem.value }, createElement(Fragment, { key: sessionKey }, children)));
 }
 
-export function useGameStore(): GameStoreContextValue {
+export function useGameApi(): GameStoreApi {
   const value = useContext(GameStoreContext);
   if (value === null) throw new Error("GameProvider is missing");
   return value;
+}
+
+/**
+ * What a component reads of the game on the UI channel: it re-renders only when `select` gives a value `isEqual`
+ * calls different. A selector that closes over component state may change on each render; the value is recomputed then.
+ */
+export function useGameUiSelector<T>(select: (state: GameState) => T, isEqual: (a: T, b: T) => boolean = Object.is): T {
+  const api = useGameApi();
+  return useSelected(api.subscribeUi, api.getUiState, select, isEqual);
+}
+
+/** The same on every change (each tick): only for what must follow each tick in React (the autoplay decision). */
+export function useGameSelector<T>(select: (state: GameState) => T, isEqual: (a: T, b: T) => boolean = Object.is): T {
+  const api = useGameApi();
+  return useSelected(api.subscribe, api.getState, select, isEqual);
+}
+
+export function useGameSpeed(): GameSpeed {
+  const api = useGameApi();
+  return useSyncExternalStore(api.subscribe, api.getSpeed, api.getSpeed);
+}
+
+function useSelected<T>(subscribe: (listener: () => void) => () => void, read: () => GameState,
+  select: (state: GameState) => T, isEqual: (a: T, b: T) => boolean): T {
+  const memo = useRef<{ state: GameState; select: (state: GameState) => T; value: T } | null>(null);
+  const snapshot = () => {
+    const state = read(); const current = memo.current;
+    if (current !== null && current.state === state && current.select === select) return current.value;
+    const next = select(state);
+    const value = current !== null && isEqual(current.value, next) ? current.value : next;
+    memo.current = { state, select, value };
+    return value;
+  };
+  return useSyncExternalStore(subscribe, snapshot, snapshot);
 }

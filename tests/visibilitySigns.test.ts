@@ -8,7 +8,7 @@ import { houseSmokeStrength, millOvenBurning } from "../src/render/roofSmoke";
 import { ROOF_SMOKE_ANCHORS } from "../src/render/roofSmokeAnchors.generated";
 import { emphasisedSigns, MAX_EMPHASIS, worldSigns, type WorldSign } from "../src/render/worldSigns";
 import { SIGNAL_PERSIST_TICKS } from "../src/render/signalPersistence";
-import { isMarketDay } from "../src/ui/residentTrips";
+import { isMarketDay } from "../src/render/presentation/residentTrips";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 const ROOT = new URL("..", import.meta.url).pathname;

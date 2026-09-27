@@ -7,9 +7,9 @@ import { householdMembers } from "../src/population/householdMembers";
 import { OCCUPATION_BANDS, walkerLook, walkerLooks, walkerSheet, ELDER_BANDS } from "../src/render/walkerLook";
 import { walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
-import { withResidentWalkers } from "../src/state/residentWalkerState";
+import { withResidentWalkers } from "../src/render/presentation/residentWalkerState";
 import { absoluteDay, dayStartTick, isMarketDay, isResidentWalker, MARKET_DAY_OF_MONTH, RESIDENT_WALKER_CAP, residentWalkers, VISITOR_REACH,
-  type ResidentOccupation } from "../src/ui/residentTrips";
+  type ResidentOccupation } from "../src/render/presentation/residentTrips";
 import { hashEconomyState } from "../scripts/economyHarnessSerializer";
 import { loadSeed2City } from "../scripts/walkerLookEvidence";
 

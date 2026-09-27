@@ -58,8 +58,11 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.doesNotMatch(placementMarkup, /class="build-seal[^"]*"[^>]*aria-pressed="true"/);
   assert.match(source, /useState<PlacementTool \| null>\(null\)/);
   assert.doesNotMatch(source, /useState<PlacementTool \| null>\(DEFAULT_PLACEMENT_TOOL\)/);
+  // CODE-1c: the presentation clock is its own hook (it runs only while something on screen is timed by it).
+  const clockSource = await readFile(new URL("../src/ui/usePresentationClock.ts", import.meta.url), "utf8");
   assert.match(source, /presentationNowMs/);
-  assert.match(source, /setPresentationNowMs\(Date\.now\(\)\)/);
+  assert.match(source, /usePresentationClock\(/);
+  assert.match(clockSource, /setPresentationNowMs\(Date\.now\(\)\)/);
   assert.match(source, /stopPropagation\(\)/);
   assert.match(source, /dialogRef\.current\?\.focus\(\)/);
   assert.match(source, /onKeyDown=\{containKeyboard\}/);
@@ -106,11 +109,13 @@ test("app observes distributor route history only at the React presentation boun
   const source = await readFile(APP_SOURCE, "utf8");
   const gameCanvasInvocation = requiredMatch(source, /<GameCanvas[\s\S]*?\/>/, "GameCanvas invocation");
 
-  // Then
-  assert.match(source, /createDistributorRouteHistory/);
-  assert.match(source, /observeDistributorRouteHistory/);
-  assert.match(source, /previousDistributorRouteStateRef/);
-  assert.match(gameCanvasInvocation, /distributorRouteHistory=\{distributorRouteHistory\}/);
+  // Then: CODE-1c — the tick observers follow each tick through the store (ui/useTickObservers), App passes the result.
+  const observers = await readFile(new URL("../src/ui/useTickObservers.ts", import.meta.url), "utf8");
+  assert.match(observers, /createDistributorRouteHistory/);
+  assert.match(observers, /observeDistributorRouteHistory/);
+  assert.match(observers, /store\.subscribe\(observe\)/);
+  assert.match(source, /useTickObservers\(store\)/);
+  assert.match(gameCanvasInvocation, /distributorRouteHistory=\{distributorRouteHistoryRef\.current\}/);
 });
 
 test("world canvas exposes crosshair styling only while a placement tool is armed", () => {

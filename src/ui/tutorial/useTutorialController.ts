@@ -82,6 +82,8 @@ export function isFreshGame(state: GameState): boolean {
 export type TutorialController = {
   readonly enabled: boolean;
   readonly running: boolean;
+  /** CODE-1c: the presentation clock must run (the tutorial runs, a banner shows or a step's "완료" holds). */
+  readonly awaitsClock: boolean;
   readonly access: TutorialAccess;
   readonly cards: readonly GoalCard[];
   readonly advisor: { readonly text: string; readonly key: string; readonly tone: StewardTone } | null;
@@ -257,6 +259,8 @@ export function useTutorialController(input: {
     cards: cards.slice(-2),
     advisor,
     banner: banner !== null && banner.until > nowMs ? banner.text : null,
+    // CODE-1c: the tutorial needs the presentation clock while it runs, a banner shows or a step's "완료" holds.
+    awaitsClock: running || (banner !== null && banner.until > nowMs) || liveTransitions.length > 0,
     log: record?.log ?? [],
     pulse, openRequest,
     press,

@@ -69,6 +69,22 @@ export function useStoryPresentation(input: {
       if (nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); }
     }
   });
+  // CODE-1c: no presentation clock for the story — one timer wakes this hook when the next chip is due (its delay out),
+  // a lingering chip goes, or a chapter end's chronicle may open. App's 100 ms clock stops when nothing else needs it.
+  const wakes: number[] = [];
+  for (const entry of seenRef.current.values()) {
+    if (entry.dismissed) continue;
+    if (nowMs - entry.firstSeenMs < delayMs) wakes.push(entry.firstSeenMs + delayMs);
+    else if (!current.has(entry.beat.id) && nowMs - entry.lastSeenMs < LINGER_MS) wakes.push(entry.lastSeenMs + LINGER_MS);
+  }
+  const chapterSince = end === null || openedRef.current.has(`chapter:${end.chapter}`) ? undefined : chapterSeenRef.current.get(`chapter:${end.chapter}`);
+  if (chapterSince !== undefined) wakes.push(chapterSince + delayMs);
+  const nextWakeMs = wakes.length === 0 ? null : Math.min(...wakes);
+  useEffect(() => {
+    if (nextWakeMs === null) return undefined;
+    const timer = window.setTimeout(() => setRevision(revision => revision + 1), Math.max(0, nextWakeMs - Date.now()) + 1);
+    return () => window.clearTimeout(timer);
+  }, [nextWakeMs]);
   return {
     visible,
     dismiss: (id: string) => { const entry = seenRef.current.get(id); if (entry !== undefined) { entry.dismissed = true; setRevision(revision => revision + 1); } },
