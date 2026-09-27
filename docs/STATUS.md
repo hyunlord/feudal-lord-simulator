@@ -1,11 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-28(UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(UI-6b · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UI-6b 국왕 문장·결정 카드 원형 틀·세력 쪽 기록 칸·습격 부두·피란민 문구 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/ui6b/REPORT.md), 결정 UI6B-D1~D3.
+  - 국왕은 그해의 왕실 문장(1340년 전 사자 셋, 1340년부터 프랑스 백합과 4분할, Wave 14 사자는 passant — guardant는 Astra Wave 23 뒤), 결정 카드 원형 틀에 보낸 세력의 문장, 세력 쪽 기록 칸 148 → 218 px, 습격 부두 불 아래 Wave 12 `quay-v1`, "(피란민을 대신해)".
+  - 검증: DGX 전체 회귀 3,272/3,272, 스킨 감사 0 / 909, 면적 5.9 % / 6 %, 튜토리얼 22 = 22, B9·TOUCH 14/14.
 
 - **UI-6 2장 화면 — 관문 통과(⑧ 사용자 판정 대기), 본선 병합**(Claude Code, 렌더 세션, 렌더·UI·스크립트·시험·문서, 엔진 파일은 조회만·규칙 0줄, 검증 DGX, 사용자 지시): [보고서](verification/ui6/REPORT.md), 결정 UI6-D1~D8.
   - 청원 카드는 defId별 표현 표: 2장 결정 다섯이 Wave 17 삽화·원장의 선택지 이름·규칙의 수·`warDecisionForecast` 예측, 보낸 이는 세력(이름·문장·수장 초상), 왕실은 밀랍 인장.
