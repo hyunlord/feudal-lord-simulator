@@ -18,6 +18,7 @@
     - 시나리오 F1~F8.
     - naive 봇(유지비 무시 + 투기): seed 3·4가 3단 → 4단.
     - 가드레일 1회차 `14a1bf16` 5/5: seed 3만 1305년 쇠퇴 → 복원, 나머지는 기준선 그대로. 새 기준선 `seeds/baseline-14a1bf1.json`.
+    - 깨끗한 클론 `f1c2ad8` 3,186/3,186.
   - **렌더가 넘겨받을 것**: `lordRights`·`lordTitle`·`lordHouse`(영주 문장은 `heraldrySeed`), 결산 `lordship` 줄, 원장 새 문구, 복원 청원 카드 문구, `chapterGoals`(정착 판 승리 제목 → 장 목표).
 
 - **FIX-4 사람 플레이 규칙 결함 E1~E11 + 초상 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 엔진 세션, 검증 DGX. 다른 세션의 WIP `cf6fd966`을 사용자 판정으로 이어받음. WIP의 UI 6개 파일은 그대로): [보고서](verification/fix4-player-rules/REPORT.md), [사람 플레이 규칙 명세](design/human-play-rules.md) HR-1~HR-13, 결정 HR1~HR13.
