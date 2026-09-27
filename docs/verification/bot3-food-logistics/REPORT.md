@@ -1,4 +1,4 @@
-관문: 통과 — 규칙 diff = 수레 배정 한 곳(`src/agents/deliveryBuildingCandidates.ts` 9줄, `ruleClosureDiff`) · 가드레일 2회차(`c5c778ec`) 5/5, 알려진 정지 MK6 해소 · 새 기준선 `seeds/baseline-c5c778e.json` · 시나리오 LB-15 9/9 · 전체 회귀 `a4ed0502` 3,144/3,144
+관문: 통과 — 규칙 diff = 수레 배정 한 곳(`src/agents/deliveryBuildingCandidates.ts` 9줄, `ruleClosureDiff`) · 가드레일 2회차(`c5c778ec`) 5/5, 알려진 정지 MK6 해소 · 새 기준선 `seeds/baseline-c5c778e.json` · 시나리오 LB-15 9/9 · 전체 회귀 `a4ed0502` 3,144/3,144 · 깨끗한 클론 `4562186` 3,148/3,148
 
 # BOT-3 식량 물류 보고서
 
@@ -67,7 +67,7 @@
   - seed 1·3·4·5는 승리했다(136,495 · 160,553 · 183,232 · 283,122).
   - seed 2는 60,000틱에 24필지가 된 뒤 660,000틱까지 L4 0/24였다. 판정 ②로 규칙을 바꿔서 그 자리에서 멈췄다(부분 결과 `guardrails.json`).
 - **새 기준선** `seeds/baseline-c5c778e.json`(필드는 cbc84d0와 같음), `seeds/README.md`에 한 절.
-- **필수 조건**: 전체 회귀 `a4ed0502` 3,144/3,144, typecheck 통과. 깨끗한 클론은 병합 커밋에서 잰다(아래).
+- **필수 조건**: 전체 회귀 `a4ed0502` 3,144/3,144, typecheck 통과. 깨끗한 클론 `4562186`(본선 INBOX-1j까지 합친 뒤) 3,148/3,148 · typecheck · build 통과.
 
 ## 렌더가 넘겨받을 것
 - 수레가 넘치는 헛간으로 가는 것이 화면에서 보이면 좋다. 적재물 그림은 이미 있다.
