@@ -7,7 +7,8 @@
 
 /* ---- Button ----
    Layout and type at specificity 0 (`:where`): a screen's own rules for its place, size, flow and colour win (a famine
-   option is a grid, a warning cell is red). The skin — fill, frame, radius — at 0-3-0: no older rule drops it. */
+   option is a grid, a warning cell is red). The skin — fill, frame, radius — at 0-4-0 (`:root .ui-btn.ui-btn:not(surface)`,
+   the variants `:root .ui-btn.ui-btn.ui-btn--x`): no older rule drops it. A surface keeps its screen's fill. */
 :where(.ui-btn) {
   display: inline-flex;
   gap: var(--space-half);
@@ -24,21 +25,21 @@
 :where(.ui-btn--tab) { color: var(--parchment-light); }
 :where(.ui-btn--quiet.ui-btn--dark) { color: var(--parchment-light); }
 :where(.ui-btn--surface) { color: inherit; text-align: inherit; justify-content: flex-start; }
-:root .ui-btn.ui-btn {
+:root .ui-btn.ui-btn:not(.ui-btn--surface) {
   background: none;
   border-color: transparent;
   border-radius: 0;
   border-image: var(--art-button-secondary);
 }
-:root .ui-btn.ui-btn--primary { border-image: var(--art-button-primary); }
-:root .ui-btn.ui-btn--danger { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--seal-red) 55%, transparent); }
-:root .ui-btn.ui-btn--icon { border-image: var(--art-button-icon); }
-:root .ui-btn.ui-btn--tab { border-image: var(--art-tab); }
-:root .ui-btn.ui-btn--quiet { border-image: none; background: var(--art-rule-light) center bottom / 100% 6px no-repeat; }
-:root .ui-btn.ui-btn--quiet.ui-btn--dark { background: var(--art-rule-dark) center bottom / 100% 6px no-repeat; }
+:root .ui-btn.ui-btn.ui-btn--primary { border-image: var(--art-button-primary); }
+:root .ui-btn.ui-btn.ui-btn--danger { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--seal-red) 55%, transparent); }
+:root .ui-btn.ui-btn.ui-btn--icon { border-image: var(--art-button-icon); }
+:root .ui-btn.ui-btn.ui-btn--tab { border-image: var(--art-tab); }
+:root .ui-btn.ui-btn.ui-btn--quiet { border-image: none; background: var(--art-rule-light) center bottom / 100% 6px no-repeat; }
+:root .ui-btn.ui-btn.ui-btn--quiet.ui-btn--dark { background: var(--art-rule-dark) center bottom / 100% 6px no-repeat; }
 /* A cell, row or card of a framed strip or panel: the frame around it is its skin (the audit checks that frame).
    It keeps the screen's own fill (a season cell's colour, the Wave 19 strip) and never takes the button art. */
-:root .ui-btn.ui-btn--surface { border-image: none; }
+:root .ui-btn.ui-btn--surface { border-image: none; } /* only the frame: `background` would reset the screen's size and repeat */
 :root .ui-btn.ui-btn--surface:not(:disabled):hover { background-color: color-mix(in srgb, var(--gold-rule) 16%, transparent); filter: none; }
 :root .ui-btn.ui-btn--surface.ui-btn--dark:not(:disabled):hover { background-color: color-mix(in srgb, var(--parchment-light) 12%, transparent); }
 
@@ -63,6 +64,11 @@
 /* The HUD's panel slot (goal log, ledger drawer, inspector): the light panel frame, drawn 10 px wide so it fits the
    slot's own 10 px padding (was a flat vellum box with an ink rule). */
 :root .app-shell .slot-panel { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: url("/assets/ui-p0/frame_panel_light.png") 32 fill / 10px / 0 stretch; }
+
+/* The pause menu's settings are on the light plate: the console's light hint colour read as blank there. */
+:root .app-shell .pause-menu-settings .autoplay-hint { color: var(--ink-soft); }
+/* The pause menu is a dialog: the modal frame (was a flat vellum box with an ink rule). */
+:root .app-shell .pause-menu { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: var(--art-frame-modal); }
 
 /* ---- Select: a secondary button and a light-framed list ---- */
 .ui-select { position: relative; display: inline-block; min-width: 0; vertical-align: middle; }

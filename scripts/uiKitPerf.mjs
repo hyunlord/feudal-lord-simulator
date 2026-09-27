@@ -24,7 +24,8 @@ const ROUNDS = 5;
 for (let round = 0; round < ROUNDS; round += 1) {
   for (const build of ['base', 'this']) {
     for (const scene of ['hud', 'build-drawer']) {
-      const { context, page } = await openScene(browser, { state: cities.pop176, tile: [46, 39], baseUrl: urls[build], width: 1280, height: 720, zoom: 1.1, initScript: TUTORIAL_OFF });
+      // No story modal over the dock while it measures (the pop176 town has a beat due).
+      const { context, page } = await openScene(browser, { state: cities.pop176, tile: [46, 39], baseUrl: urls[build], width: 1280, height: 720, zoom: 1.1, initScript: TUTORIAL_OFF, query: '&story-delay=600000' });
       if (await page.locator('.pause-menu').count()) await page.keyboard.press('Escape');
       if (scene === 'build-drawer') await page.locator("[data-dock='build']").click();
       await page.waitForTimeout(8_000);
@@ -37,7 +38,7 @@ for (let round = 0; round < ROUNDS; round += 1) {
       await context.close();
     }
     // The chronicle: press [연대기] in the ledger drawer, time to the first record card on screen (two animation frames).
-    const { context, page } = await openScene(browser, { state: town, tile: [townHouse.tx, townHouse.ty], baseUrl: urls[build], width: 1280, height: 800, zoom: 1.4, run: false, initScript: TUTORIAL_OFF });
+    const { context, page } = await openScene(browser, { state: town, tile: [townHouse.tx, townHouse.ty], baseUrl: urls[build], width: 1280, height: 800, zoom: 1.4, run: false, initScript: TUTORIAL_OFF, query: '&story-delay=600000' });
     await page.locator("[data-dock='ledger']").click(); await page.waitForTimeout(600);
     const openMs = await page.evaluate(() => new Promise(resolve => {
       const start = performance.now();
