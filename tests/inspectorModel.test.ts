@@ -113,5 +113,5 @@ test("the inspector renders name, state line, 왜?/조치 and a close button", (
   assert.match(markup, /<h3>왜\?<\/h3>/);
   assert.match(markup, /<h3>조치<\/h3>/);
   assert.match(markup, /class="left-inspector-line left-inspector-line--block">우물이 없습니다</);
-  assert.match(markup, /<button type="button" class="left-inspector-close" aria-label="닫기">/);
+  assert.match(markup, /<button type="button" class="left-inspector-close ui-btn[^"]*" aria-label="닫기">/);
 });

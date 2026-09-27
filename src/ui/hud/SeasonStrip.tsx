@@ -5,6 +5,7 @@ import { arrivalOf, forecastMarks, seasonMarks, yearFraction, type SeasonMarkKin
 import { UiIcon } from "../UiIcon";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle, wave8Url, type Wave8ImageId } from "../wave8Art";
+import { Button } from "../kit";
 
 // UI-3 season strip, small by default (UX-3): a thin strip under the date in the status pill with the pin at today;
 // a tap on the date opens the full Wave 8 strip with the event marks and the list of what comes next.
@@ -55,7 +56,7 @@ export function SeasonStripPanel({ state, food, onClose }: {
             {SEASON_STRIP_COPY.row(SEASON_STRIP_COPY.kinds[mark.kind], SEASON_STRIP_COPY.arrival(when.season, when.third, when.nextYear))}</li>;
         })}
       </ul>
-      <button type="button" className="season-strip-close" onClick={() => onClose()}>{SEASON_STRIP_COPY.close}</button>
+      <Button type="button" className="season-strip-close" onPress={() => onClose()} variant="icon">{SEASON_STRIP_COPY.close}</Button>
     </section>
   );
 }

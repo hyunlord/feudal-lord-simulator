@@ -5,6 +5,7 @@ import { platformServices } from "../platform/platform";
 import { ALERT_STACK_COPY } from "./alertStackCopy.ko";
 import { alertRowLookAtIntent, alertStackRows, type AlertRow } from "./alertStackModel";
 import { UiIcon } from "./UiIcon";
+import { Button } from "./kit";
 
 export type AlertStackProps = Readonly<{
   state: GameState;
@@ -34,14 +35,14 @@ export function AlertStack({ state, onInspect }: AlertStackProps): ReactElement 
               <p className="alert-stack-title"><strong>{row.title}</strong> · <span>{row.countLabel}</span></p>
               <p className="alert-stack-cause">{row.cause}</p>
             </div>
-            <button
+            <Button
               type="button"
               className="alert-stack-inspect"
               aria-label={ALERT_STACK_COPY.inspectLabel(row.title)}
-              onClick={() => inspectAlertRow(row, onInspect)}
-            >
+              onPress={() => inspectAlertRow(row, onInspect)}
+             variant="secondary">
               <UiIcon sheet="action" cell="look" />{ALERT_STACK_COPY.inspect}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>

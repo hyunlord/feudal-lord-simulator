@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { AUDIO_COPY } from "../audio/audioCopy.ko";
 import { audioSettings, setAudioSettings, type SoundBus } from "../audio/audioEngine";
+import { Slider, Toggle } from "./kit";
 
 /**
  * F0-V: sound on / off and the volume in steps of 10 % (44 px buttons; the choice is a platform preference).
@@ -16,20 +17,21 @@ export function AudioControls() {
       {(["ui", "alert", "world"] as const satisfies readonly SoundBus[]).map(bus => {
         const level = Math.round(settings.buses[bus] * 100);
         return (
-          <label key={bus} className="audio-bus" data-bus={bus}>
-            <span className="autoplay-hint">{AUDIO_COPY.busLevel(AUDIO_COPY.buses[bus], level)}</span>
-            <input type="range" min={0} max={100} step={10} value={level} aria-label={AUDIO_COPY.busLabel(AUDIO_COPY.buses[bus])}
-              onChange={event => apply({ ...settings, buses: { ...settings.buses, [bus]: Number(event.currentTarget.value) / 100 } })} />
-          </label>
+          <div key={bus} className="audio-bus" data-bus={bus}>
+            <span className="autoplay-hint" aria-hidden="true">{AUDIO_COPY.busLevel(AUDIO_COPY.buses[bus], level)}</span>
+            <Slider min={0} max={100} step={10} value={level} label={AUDIO_COPY.busLabel(AUDIO_COPY.buses[bus])} valueText={AUDIO_COPY.busLevel(AUDIO_COPY.buses[bus], level)}
+              onChange={value => apply({ ...settings, buses: { ...settings.buses, [bus]: value / 100 } })} />
+          </div>
         );
       })}
-      <button type="button" role="switch" aria-checked={!settings.muted} className="autoplay-toggle"
-        onClick={() => apply({ ...settings, muted: !settings.muted })}>{AUDIO_COPY.mute} {settings.muted ? AUDIO_COPY.off : AUDIO_COPY.on}</button>
-      <button type="button" className="autoplay-toggle" aria-label={AUDIO_COPY.quieter} disabled={percent <= 0}
-        onClick={() => apply({ ...settings, volume: Math.max(0, Math.round(settings.volume * 10 - 1) / 10) })}>−</button>
-      <span className="autoplay-hint">{AUDIO_COPY.volume(percent)}</span>
-      <button type="button" className="autoplay-toggle" aria-label={AUDIO_COPY.louder} disabled={percent >= 100}
-        onClick={() => apply({ ...settings, volume: Math.min(1, Math.round(settings.volume * 10 + 1) / 10) })}>+</button>
+      <Toggle className="autoplay-toggle" checked={!settings.muted} label={`${AUDIO_COPY.mute} ${settings.muted ? AUDIO_COPY.off : AUDIO_COPY.on}`}
+        onChange={on => apply({ ...settings, muted: !on })} />
+      {/* UI-KIT-1: the whole volume is a slider too (was − and + buttons: symbols standing in for icons). */}
+      <div className="audio-bus" data-bus="master">
+        <span className="autoplay-hint" aria-hidden="true">{AUDIO_COPY.volume(percent)}</span>
+        <Slider min={0} max={100} step={10} value={percent} label={AUDIO_COPY.volumeLabel} valueText={AUDIO_COPY.volume(percent)}
+          onChange={value => apply({ ...settings, volume: value / 100 })} />
+      </div>
     </div>
   );
 }

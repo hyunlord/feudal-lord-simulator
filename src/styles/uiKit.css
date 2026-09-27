@@ -1,0 +1,213 @@
+/* UI-KIT-1 parts (src/ui/kit; spec docs/design/ui-kit.md). Loaded after uiSkin.css. Only the :root tokens of uiSkin.css:
+   colours, spacing, type and the `--art-*` 9-slices. Selectors carry the class twice under :root (`:root .ui-btn.ui-btn`, 0-3-0) so a
+   screen's older rule for the same element (at most 0-2-1, `.app-shell .era-console button`) cannot drop the skin; a screen's own sheet keeps only layout (place, size, gaps).
+   - The frame paints into the padding (`border-image-width`), the border widths stay the screens' own.
+   - States are code: hover a little lighter (never the only cue), pressed sinks 1 px, the focus ring in seal red,
+     pressed / on a seal-red inner rule, disabled grey. Touch targets stay >= 44 px (uiBoundaries.css floor). */
+
+/* ---- Button ---- */
+:root .ui-btn.ui-btn {
+  display: inline-flex;
+  gap: var(--space-half);
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  font-family: var(--ui-font-sans);
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border-color: transparent;
+  border-radius: 0;
+  border-image: var(--art-button-secondary);
+}
+:root .ui-btn.ui-btn--primary { font-weight: 700; border-image: var(--art-button-primary); }
+:root .ui-btn.ui-btn--danger { color: var(--seal-red-deep); font-weight: 700; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--seal-red) 55%, transparent); }
+:root .ui-btn.ui-btn--icon { display: inline-grid; place-items: center; padding: 2px; border-image: var(--art-button-icon); }
+:root .ui-btn.ui-btn--tab { color: var(--parchment-light); border-image: var(--art-tab); }
+:root .ui-btn.ui-btn--quiet {
+  color: var(--ink);
+  border-image: none;
+  background: var(--art-rule-light) center bottom / 100% 6px no-repeat;
+}
+:root .ui-btn.ui-btn--quiet.ui-btn--dark { color: var(--parchment-light); background: var(--art-rule-dark) center bottom / 100% 6px no-repeat; }
+/* A cell, row or card of a framed strip or panel: the frame around it is its skin (the audit checks that frame). */
+/* It keeps the screen's own fill (a season cell's colour, the Wave 19 strip) and never takes the button art. */
+:root .ui-btn.ui-btn--surface { color: inherit; text-align: inherit; justify-content: flex-start; border-image: none; }
+:root .ui-btn.ui-btn--surface:not(:disabled):hover { background-color: color-mix(in srgb, var(--gold-rule) 16%, transparent); filter: none; }
+:root .ui-btn.ui-btn--surface.ui-btn--dark:not(:disabled):hover { background-color: color-mix(in srgb, var(--parchment-light) 12%, transparent); }
+
+:root .ui-btn.ui-btn--sm { min-height: 32px; padding: 2px 10px; font-size: var(--text-13); }
+:root .ui-btn.ui-btn--md { min-height: 40px; padding: 6px 14px; font-size: var(--text-14); }
+:root .ui-btn.ui-btn--lg { min-height: 48px; padding: 10px 22px; font-size: var(--text-16); }
+
+:root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):hover { filter: brightness(1.06); }
+:root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); filter: brightness(0.96); }
+:root .ui-btn.ui-btn:focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
+:root .ui-btn.ui-btn:is(:disabled, [aria-disabled="true"]) { cursor: default; filter: grayscale(0.6); opacity: 0.6; }
+:root .ui-btn.ui-btn:is([aria-pressed="true"], [aria-checked="true"], [aria-current="true"], [aria-current="page"]):not(.ui-btn--tab):not(.ui-toggle):not(.ui-checkbox) {
+  font-weight: 700;
+  filter: brightness(1.08);
+  box-shadow: inset 0 0 0 2px var(--seal-red);
+}
+:root .ui-btn.ui-btn--tab:is([aria-selected="true"], [aria-pressed="true"]) { filter: brightness(1.45); box-shadow: inset 0 -3px 0 var(--status-warn); }
+
+/* ---- Select: a secondary button and a light-framed list ---- */
+.ui-select { position: relative; display: inline-block; min-width: 0; vertical-align: middle; }
+:root .ui-select .ui-select-trigger.ui-btn { justify-content: space-between; width: 100%; min-width: 96px; padding: 4px 6px 4px 12px; font-size: var(--text-14); }
+.ui-select-value { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.ui-select-chevron { transform: rotate(180deg) scale(0.75); }
+.ui-select[data-open="true"] .ui-select-chevron { transform: scale(0.75); }
+:root .ui-select-list.ui-frame {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  z-index: 40;
+  box-sizing: border-box;
+  min-width: 100%;
+  max-height: 320px;
+  margin: 0;
+  padding: 8px 6px;
+  overflow-y: auto;
+  list-style: none;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 35%, transparent);
+}
+.ui-select-list:focus { outline: none; }
+.ui-select-list:focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
+.ui-select-option {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  color: var(--ink);
+  font-size: var(--text-14);
+  white-space: nowrap;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+.ui-select-option[aria-selected="true"] { font-weight: 700; border-left-color: var(--seal-red); }
+.ui-select-option--active { background-color: color-mix(in srgb, var(--gold-rule) 28%, transparent); }
+
+/* ---- Toggle (switch) and checkbox: seals ---- */
+.ui-btn.ui-toggle { gap: var(--space-1); padding: 4px 12px 4px 8px; }
+.ui-toggle-track {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 22px;
+  background: var(--art-texture-dark);
+  border-radius: 11px;
+  box-shadow: inset 0 0 0 1px var(--ink), inset 0 2px 3px color-mix(in srgb, var(--ink) 50%, transparent);
+}
+.ui-toggle-seal {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 35% 35%, var(--parchment-light) 0 18%, var(--ink-soft) 20% 100%);
+  border-radius: 50%;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 60%, transparent);
+  transition: transform 140ms ease-out, background 140ms ease-out;
+}
+.ui-toggle[aria-checked="true"] .ui-toggle-seal { background: radial-gradient(circle at 35% 35%, var(--parchment-light) 0 16%, var(--seal-red) 18% 100%); transform: translateX(18px); }
+.ui-toggle[aria-checked="true"] { font-weight: 700; }
+.ui-btn.ui-checkbox { gap: var(--space-1); padding: 4px 8px; }
+.ui-checkbox-box {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  background: var(--art-texture-light);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--ink-soft);
+}
+.ui-checkbox[aria-checked="true"] .ui-checkbox-box { box-shadow: inset 0 0 0 2px var(--seal-red); }
+
+/* ---- Slider: a parchment groove, a seal thumb ---- */
+:root .ui-slider.ui-slider {
+  width: 160px;
+  height: 44px;
+  margin: 0;
+  cursor: pointer;
+  appearance: none;
+  background: var(--art-rule-light) center / 100% 6px no-repeat;
+}
+.ui-slider::-webkit-slider-runnable-track {
+  height: 10px;
+  background: linear-gradient(to right, var(--gold-rule) 0 var(--ui-slider-fill, 0%), var(--parchment-deep) var(--ui-slider-fill, 0%) 100%);
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px var(--ink-soft), inset 0 2px 2px color-mix(in srgb, var(--ink) 35%, transparent);
+}
+.ui-slider::-moz-range-track {
+  height: 10px;
+  background: linear-gradient(to right, var(--gold-rule) 0 var(--ui-slider-fill, 0%), var(--parchment-deep) var(--ui-slider-fill, 0%) 100%);
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px var(--ink-soft);
+}
+.ui-slider::-webkit-slider-thumb {
+  width: 24px;
+  height: 24px;
+  margin-top: -7px;
+  appearance: none;
+  background: radial-gradient(circle at 35% 35%, var(--parchment-light) 0 16%, var(--seal-red) 18% 100%);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--ink) 60%, transparent), inset 0 0 0 2px var(--seal-red-deep);
+}
+.ui-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle at 35% 35%, var(--parchment-light) 0 16%, var(--seal-red) 18% 100%);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--seal-red-deep);
+}
+.ui-slider:focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
+.ui-slider:disabled { cursor: default; filter: grayscale(0.6); opacity: 0.6; }
+
+/* ---- Tabs ---- */
+.ui-tabs { display: flex; flex-wrap: wrap; gap: var(--space-half); }
+
+/* ---- Chip ---- */
+:root .ui-chip.ui-chip {
+  display: inline-flex;
+  gap: 2px;
+  align-items: center;
+  padding: 1px 8px;
+  color: var(--ink);
+  font-size: var(--text-12);
+  background: none;
+  border: 1px solid transparent;
+  border-image: var(--art-chip);
+}
+.ui-chip--ok { color: var(--status-ok); }
+.ui-chip--warn { color: var(--oak); font-weight: 700; }
+.ui-chip--block { color: var(--status-block); font-weight: 700; }
+.ui-chip--info { color: var(--status-info); }
+
+/* ---- Frames ---- */
+:root .ui-frame.ui-frame { border-color: transparent; border-radius: 0; }
+:root .ui-frame.ui-frame--light { color: var(--ink); background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--art-frame-light); }
+:root .ui-frame.ui-frame--dark { color: var(--parchment-light); background: var(--oak) var(--art-texture-dark) repeat; border-image: var(--art-frame-dark); }
+:root .ui-frame.ui-frame--objective { color: var(--ink); background: none; border-image: var(--art-frame-objective); }
+:root .ui-frame.ui-frame--objective-complete { border-image: var(--art-frame-objective-complete); }
+:root .ui-frame.ui-frame--objective-warn { border-image: var(--art-frame-objective-warn); }
+:root .ui-frame.ui-frame--advisor { color: var(--ink); background: none; border-image: var(--art-frame-advisor); }
+:root .ui-frame.ui-frame--advisor-warn { border-image: var(--art-frame-advisor-warn); }
+:root .ui-frame.ui-frame--modal { color: var(--ink); background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--art-frame-modal); }
+:root .ui-frame.ui-frame--tooltip { color: var(--ink); background: none; border-image: var(--art-frame-tooltip); }
+:root .ui-frame.ui-frame--record { color: var(--ink); background: none; border-image: var(--art-frame-record); }
+
+/* ---- Tooltip and divider ---- */
+:root .ui-tooltip.ui-tooltip {
+  display: inline-block;
+  max-width: 320px;
+  padding: 6px 10px;
+  color: var(--ink);
+  font-size: var(--text-13);
+  background: none;
+  border: 2px solid transparent;
+  border-image: var(--art-frame-tooltip);
+}
+:root .ui-divider.ui-divider { height: 8px; margin: var(--space-1) 0; background: var(--art-rule-light) center / 100% 8px no-repeat; border: 0; }
+:root .ui-divider.ui-divider--dark { background-image: var(--art-rule-dark); }

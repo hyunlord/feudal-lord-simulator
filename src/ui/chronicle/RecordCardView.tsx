@@ -4,6 +4,7 @@ import { wave19FrameLayerStyle } from "../wave19Art";
 import { ChronicleArtView } from "./ChronicleArtView";
 import type { RecordCard } from "./chronicleScreenModel";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
+import { Button } from "../kit";
 
 // CHRON-1 record card (CHRONICLE_DESIGN 2.1): the kind's Wave 19 frame (drawn at CARD_SCALE: 320 x 160 art -> 112 px
 // tall, stretched across), the record's picture, its date, one line and its numbers; [위치로] moves the current map's
@@ -25,21 +26,21 @@ export function RecordCardView({ card, selected, position, total, style, onSelec
       data-record={card.id} data-kind={card.kind} data-place={card.place === null ? undefined : `${card.place.tx},${card.place.ty}`}
       data-selected={selected ? "true" : undefined} style={style}>
       <span className="chronicle-card-frame" aria-hidden="true" style={wave19FrameLayerStyle(card.frame, CARD_SCALE)} />
-      <button type="button" className="chronicle-card-body" aria-pressed={selected} aria-label={COPY.selectLabel(card.date, card.sentence)} onClick={() => onSelect(card.id)}>
+      <Button type="button" className="chronicle-card-body" aria-pressed={selected} aria-label={COPY.selectLabel(card.date, card.sentence)} onPress={() => onSelect(card.id)} variant="surface">
         <ChronicleArtView art={card.art} size={card.art?.kind === "portrait" ? PORTRAIT_SIZE : ART_SIZE} className="chronicle-card-art" />
         <span className="chronicle-card-text">
           <span className="chronicle-card-date">{card.date}</span>
           <span className="chronicle-card-line">{card.sentence}</span>
           {card.numbers === null ? null : <span className="chronicle-card-numbers">{card.numbers}</span>}
         </span>
-      </button>
+      </Button>
       <div className="chronicle-card-actions">
-        {card.place === null ? null : <button type="button" className="chronicle-card-action" aria-label={COPY.lookAtLabel(card.date)}
-          onClick={() => { if (card.place !== null) onLookAt(card.place); }}><UiIcon sheet="action" cell="look" />{COPY.lookAt}</button>}
-        {card.snapshot === null ? null : <button type="button" className="chronicle-card-action" aria-label={COPY.thenMapLabel(card.date)}
-          onClick={() => onMap(card.id)}><UiIcon sheet="layer" cell="zone" />{COPY.thenMap}</button>}
-        {card.personId === null || card.personName === null ? null : <button type="button" className="chronicle-card-action" aria-label={COPY.personLabelFor(card.personName)}
-          onClick={() => { if (card.personId !== null) onPerson(card.personId); }}><UiIcon sheet="resource" cell="population" />{COPY.person}</button>}
+        {card.place === null ? null : <Button type="button" className="chronicle-card-action" aria-label={COPY.lookAtLabel(card.date)}
+          onPress={() => { if (card.place !== null) onLookAt(card.place); }} variant="secondary"><UiIcon sheet="action" cell="look" />{COPY.lookAt}</Button>}
+        {card.snapshot === null ? null : <Button type="button" className="chronicle-card-action" aria-label={COPY.thenMapLabel(card.date)}
+          onPress={() => onMap(card.id)} variant="secondary"><UiIcon sheet="layer" cell="zone" />{COPY.thenMap}</Button>}
+        {card.personId === null || card.personName === null ? null : <Button type="button" className="chronicle-card-action" aria-label={COPY.personLabelFor(card.personName)}
+          onPress={() => { if (card.personId !== null) onPerson(card.personId); }} variant="secondary"><UiIcon sheet="resource" cell="population" />{COPY.person}</Button>}
       </div>
     </article>
   );

@@ -16,6 +16,7 @@ import { RESOURCE_BAR_COPY } from "./resourceBarCopy.ko";
 import { calendarArrivalLabel } from "./calendarArrival";
 import { scenarioOf } from "../engine/scenarioState";
 import { UiIcon } from "./UiIcon";
+import { Button } from "./kit";
 
 type ResourceBarProps = {
   readonly state: GameState;
@@ -61,22 +62,22 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
   const breadTitle = RESOURCE_BAR_COPY.breadDetail(HOUSE_FOOD_INTERVAL);
   return (
     <section className="resource-bar" aria-label="영지 자원 현황">
-      <button type="button" className="resource-bar__cell resource-bar__population" aria-label="인구 기록" aria-expanded={populationDrawerOpen} aria-controls="population-ledger-drawer" onClick={() => onPopulationDrawerToggle()}>
+      <Button type="button" className="resource-bar__cell resource-bar__population" aria-label="인구 기록" aria-expanded={populationDrawerOpen} aria-controls="population-ledger-drawer" onPress={() => onPopulationDrawerToggle()} variant="surface">
         <ResourceArtwork kind="population" />
         <span className="resource-bar__detail">
           <span className="resource-bar__primary"><span>인구</span><strong>{state.population}</strong></span>
           <span className="resource-bar__trend">{trend("population")}</span>
           <span className="resource-bar__secondary">유휴 일꾼 <b>{state.labour?.idle ?? state.idleWorkers}</b><UiIcon sheet="action" cell="up" className="resource-bar__disclosure" /></span>
         </span>
-      </button>
+      </Button>
       <ResourceCell kind="bread" label="빵" value={stock.bread} secondary={`${breadLabel}${breadFull ? " · 가득" : ""}`} trend={trend("bread")} />
       <ResourceCell kind="timber" label="가용 목재" value={timber} trend={trend("timber")} secondary={`공사 예약 ${timberReserved}${woodFull ? " · 가득" : ""}`} />
       <ResourceCell kind="stone" label="가용 석재" value={stone} trend={trend("stone")} secondaryKind="stone_raw" secondary={`원석 ${stock.stone_raw}${stoneFull ? " · 가득" : ""}`} />
-      <button type="button" className="resource-bar__cell resource-bar__coin" aria-label="재정 수입과 지출 상세" aria-expanded={coinOpen} aria-controls="resource-coin-detail" onClick={() => setCoinOpen(!coinOpen)}>
+      <Button type="button" className="resource-bar__cell resource-bar__coin" aria-label="재정 수입과 지출 상세" aria-expanded={coinOpen} aria-controls="resource-coin-detail" onPress={() => setCoinOpen(!coinOpen)} variant="surface">
         <ResourceArtwork kind="coin" />
         <span className="resource-bar__detail"><span className="resource-bar__primary"><span>재정</span><strong>{stock.coin}</strong></span>
           <span className="resource-bar__trend">{trend("coin")}</span><span className="resource-bar__secondary">{coinSecondary}<UiIcon sheet="action" cell="up" className="resource-bar__disclosure" /></span></span>
-      </button>
+      </Button>
       {/* UX-1: the date moved beside the speed controls (App `hud-time-cluster`). */}
       {coinOpen ? <LedgerPanel id="resource-coin-detail" state={state} onHighlightBuildings={onHighlightBuildings} /> : null}
       <details className="resource-bar__more"><summary>자원 상세</summary><p>밀 {stock.wheat} · 원목 {stock.logs} · 원석 {stock.stone_raw}</p><p>{breadTitle}</p><p>{RESOURCE_BAR_COPY.timberDetail(stock.timber, timber)}</p><p>{RESOURCE_BAR_COPY.stoneDetail(stock.stone, stone)}</p><p>{RESOURCE_BAR_COPY.trendDetail(RESOURCE_TREND_WINDOW)}</p><p>{RESOURCE_BAR_COPY.populationTrend}</p></details>

@@ -9,6 +9,7 @@ import {
   type MinimapViewportRect,
 } from "../render/minimapCameraJump";
 import type { Grid, TileCoordinate } from "../world/grid";
+import { Button } from "./kit";
 
 const SAMPLE_AXIS_LIMIT = 12;
 const MAP_VIEWBOX_SIZE = 120;
@@ -109,12 +110,12 @@ export function MapOverview({ grid, onJumpToTile, viewportRect }: MapOverviewPro
 
   return (
     <div className="map-overview-wrap">
-      <button
+      <Button
         type="button"
         className="map-overview"
         aria-label={KO_UI.map.jumpLabel}
-        onPointerDown={event => jumpToTile({ clientX: event.clientX, clientY: event.clientY }, event.currentTarget.getBoundingClientRect())}
-      >
+        onPressAt={at => { if (!at.keyboard) jumpToTile({ clientX: at.clientX, clientY: at.clientY }, at.rect); }}
+       variant="surface">
         <svg viewBox="0 0 120 120" role="img" aria-labelledby={titleId}>
           <title id={titleId}>{KO_UI.map.title}</title>
           <g>
@@ -137,7 +138,7 @@ export function MapOverview({ grid, onJumpToTile, viewportRect }: MapOverviewPro
             height={currentViewport.height}
           />
         </svg>
-      </button>
+      </Button>
     </div>
   );
 }

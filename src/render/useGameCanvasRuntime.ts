@@ -136,5 +136,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       disposeZoneTouch(); setGroundSceneZoneDeferral(false);
       cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeEvents(); disposeProofRuntime(); disposeHandler();
     };
-  }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection, setPrediction]);
+  }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection, setPrediction,
+    // UI-KIT-1 (lint): the refs and the store's `interpolationAlpha` callback keep one identity, so listing them does not rebind the canvas.
+    interpolationAlpha, highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef,
+    previousRenderStateRef, problemOnlyRef, selectedToolRef, selectionRef, stateRef, zoneToolRef]);
 }

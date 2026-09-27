@@ -21,6 +21,7 @@ import {
   retargetResourceCounterTween,
   type ResourceCounterTween,
 } from "./resourceCounterTween";
+import { Button } from "./kit";
 
 type CourtLedgerProps = {
   readonly tick: number;
@@ -103,15 +104,15 @@ export function CourtLedger({
       <div className="court-ledger" aria-label={KO_UI.ledger.ariaLabel}>
         <span className="ledger-heading">{KO_UI.ledger.heading}</span>
         {onPopulationDrawerToggle === undefined ? null : (
-          <button
+          <Button
             className="ledger-population-toggle"
             type="button"
             aria-expanded={populationDrawerOpen}
             aria-controls="population-ledger-drawer"
-            onClick={() => onPopulationDrawerToggle()}
-          >
+            onPress={() => onPopulationDrawerToggle()}
+           variant="toggle">
             인구 기록
-          </button>
+          </Button>
         )}
         <dl>
           <LedgerRow full={KO_UI.ledger.timber} compact={KO_UI.ledger.timber} value={displayedResources.timber} />

@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { wave19ImageStyle, wave19Url } from "../wave19Art";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import { timelineX, type SeasonCell, type TimelineChapter, type TimelineMarker, type TimelineSegment } from "./chronicleScreenModel";
+import { Button } from "../kit";
 
 // CHRON-1 timeline (CHRONICLE_DESIGN 2.1): the Wave 19 strip (1024 x 64 art; its five coloured segments are the
 // scenario's five eras, each an equal share, linear in time inside it), the weightiest record of each stretch as a
@@ -33,19 +34,19 @@ export function ChronicleTimeline({ segments, markers, chapters, nowTick, picked
   return (
     <section className="chronicle-timeline-block" aria-label={COPY.timelineLabel}>
       <div className="chronicle-strip-row">
-        <button type="button" className="chronicle-strip" aria-label={COPY.timelineLabel}
+        <Button type="button" className="chronicle-strip" aria-label={COPY.timelineLabel}
           style={{ backgroundImage: `url("${wave19Url("timeline_strip_base")}")` }}
-          onClick={event => onPick(event.detail === 0 ? null : stripFraction(event.clientX, event.currentTarget.getBoundingClientRect()))}>
+          onPressAt={at => onPick(at.keyboard ? null : stripFraction(at.clientX, at.rect))} variant="surface">
           {markers.map(marker => (
             <span key={marker.recordId} className={`chronicle-marker chronicle-marker--${marker.kind}`} aria-hidden="true" data-marker={marker.kind}
               style={{ ...bandLeft(marker.x), ...wave19ImageStyle(`timeline_marker_${marker.kind}`, MARKER_SIZE) }} />
           ))}
           <span className="chronicle-pin chronicle-pin--now" aria-hidden="true" style={{ ...bandLeft(timelineX(segments, nowTick)), ...wave19ImageStyle("timeline_pin_now", PIN_SIZE) }} />
           <span className="chronicle-pin chronicle-pin--select" aria-hidden="true" style={{ ...bandLeft(timelineX(segments, pickedTick)), ...wave19ImageStyle("timeline_pin_select", RING_SIZE) }} />
-        </button>
-        <button type="button" className="chronicle-zoom" aria-pressed={zoomed} onClick={() => onZoom()}>
+        </Button>
+        <Button type="button" className="chronicle-zoom" aria-pressed={zoomed} onPress={() => onZoom()} variant="toggle">
           <span aria-hidden="true" style={wave19ImageStyle("timeline_zoom_handle", 24)} />{zoomed ? COPY.zoomOut : COPY.zoomIn}
-        </button>
+        </Button>
       </div>
       <div className="chronicle-strip-labels" aria-hidden="true">
         {segments.map((segment, index) => (
@@ -61,22 +62,22 @@ export function ChronicleTimeline({ segments, markers, chapters, nowTick, picked
       </div>
       {zoomed ? (
         <div className="chronicle-seasons" role="group" aria-label={COPY.seasonsLabel}>
-          <button type="button" className="chronicle-season-shift" onClick={() => onShift(-8)}>{COPY.earlier}</button>
+          <Button type="button" className="chronicle-season-shift" onPress={() => onShift(-8)} variant="secondary">{COPY.earlier}</Button>
           <ol className="chronicle-season-cells">
             {seasons.map(cell => (
               <li key={cell.index}>
-                <button type="button" className={`chronicle-season chronicle-season--${cell.season}`} aria-pressed={cell.index === pickedSeason}
-                  aria-label={COPY.seasonCell(cell.label, cell.count)} data-season-index={cell.index} onClick={() => onPickSeason(cell)}>
+                <Button type="button" className={`chronicle-season chronicle-season--${cell.season}`} aria-pressed={cell.index === pickedSeason}
+                  aria-label={COPY.seasonCell(cell.label, cell.count)} data-season-index={cell.index} onPress={() => onPickSeason(cell)} variant="surface">
                   <span className="chronicle-season-name">{cell.season === 0 ? cell.label : COPY.seasonShort(cell.season)}</span>
                   <span className="chronicle-season-marks" aria-hidden="true">
                     {cell.kinds.slice(0, 3).map(kind => <span key={kind} style={wave19ImageStyle(`timeline_marker_${kind}`, 14)} />)}
                     {cell.count > 0 ? <span className="chronicle-season-count">{cell.count}</span> : null}
                   </span>
-                </button>
+                </Button>
               </li>
             ))}
           </ol>
-          <button type="button" className="chronicle-season-shift" onClick={() => onShift(8)}>{COPY.later}</button>
+          <Button type="button" className="chronicle-season-shift" onPress={() => onShift(8)} variant="secondary">{COPY.later}</Button>
         </div>
       ) : null}
     </section>

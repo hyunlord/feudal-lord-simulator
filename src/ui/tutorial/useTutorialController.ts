@@ -141,7 +141,7 @@ export function useTutorialController(input: {
     }));
     setTransitions(current => [...current, ...closed]);
     updateRecord(current => ({ ...current, log: [...current.log, ...closed.filter(item => !current.log.some(entry => entry.id === item.id)).map(({ id, title, already }) => ({ id, title, already }))] }));
-  }, [index]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [index]); // eslint-disable-line react-hooks/exhaustive-deps -- when the step index moves only: acks, the clock and the switch are read then (more keys would log a step twice)
   useEffect(() => {
     const before = previousAccess.current;
     previousAccess.current = access;
@@ -149,15 +149,15 @@ export function useTutorialController(input: {
     if (!before.layers.zone && access.layers.zone) { setBanner({ text: TUTORIAL_COPY.zoneBanner, until: nowMs + BANNER_HOLD_MS }); return; }
     const opened = (Object.keys(access.categories) as BuildCategoryKey[]).filter(key => !before.categories[key] && access.categories[key]);
     if (opened.length > 0) setBanner({ text: TUTORIAL_COPY.unlocked(opened.map(key => TUTORIAL_COPY.categories[key]).join(" · ")), until: nowMs + BANNER_HOLD_MS });
-  }, [access]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [access]); // eslint-disable-line react-hooks/exhaustive-deps -- when an unlock arrives only: the clock and the switch are read then
   const liveTransitions = transitions.filter(item => item.until > nowMs);
-  useEffect(() => { if (liveTransitions.length !== transitions.length) setTransitions(liveTransitions); }, [nowMs]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { setTransitions(current => { const live = current.filter(item => item.until > nowMs); return live.length === current.length ? current : live; }); }, [nowMs]);
 
   // Map halo of the current step (drawn by the renderer's guidance pass).
   useEffect(() => {
     setTutorialGuidanceActive(running);
     setTutorialMapTarget(running && target !== null && stepId !== null ? { ...target, label: TUTORIAL_COPY.mapLabels[stepId] ?? "" } : null);
-  }, [running, stepId, target === null ? null : JSON.stringify(target)]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [running, stepId, target === null ? null : JSON.stringify(target)]); // eslint-disable-line react-hooks/exhaustive-deps -- keyed by the target's content (the model builds a new target object each render)
   useEffect(() => () => { setTutorialMapTarget(null); setTutorialGuidanceActive(false); }, []);
 
   // Menu pulse (twice, once per target) and catalogue requests.

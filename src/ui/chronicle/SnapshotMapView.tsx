@@ -82,10 +82,10 @@ function FramedMap({ pixels, size, crop, frame, scale, label, caption, testId }:
 export function SnapshotMapView({ state, snapshot, compare, compact }: {
   readonly state: GameState; readonly snapshot: SnapshotRef | null; readonly compare: boolean; readonly compact: boolean;
 }) {
-  const then = useMemo(() => snapshot === null ? null : history.snapshot(state, snapshot.id), [state.history, snapshot?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  const then = useMemo(() => snapshot === null ? null : history.snapshot(state, snapshot.id), [state.history, snapshot?.id]); // eslint-disable-line react-hooks/exhaustive-deps -- a snapshot decodes from the ledger by its id; no other part of the state changes it
   // Today's map at the thumbnail's size, only while it is shown (a 256² raster of the whole map: a few ms).
   const now = useMemo(() => !compare || then === null ? null : decodeSnapshot(rasterizeSnapshot(state, "now", then.size === 256 ? 256 : 128)),
-    [compare, then, state.tick]); // eslint-disable-line react-hooks/exhaustive-deps
+    [compare, then, state.tick]); // eslint-disable-line react-hooks/exhaustive-deps -- today's raster, redrawn when the tick moves (time stands still while the chronicle is open: once per opening)
   const present = useMemo(() => {
     if (then === null) return [];
     const seen = new Set<number>(); for (const value of then.pixels) seen.add(value);

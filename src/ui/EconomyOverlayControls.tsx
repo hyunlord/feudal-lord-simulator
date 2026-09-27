@@ -7,6 +7,7 @@ import {
   subscribeObjectRenderViewMode,
   toggleObjectRenderViewMode,
 } from "../render/objectRenderViewMode";
+import { Button } from "./kit";
 
 export type EconomyOverlayControlsProps = {
   readonly overlayMode: OverlayMode;
@@ -88,37 +89,37 @@ export function EconomyOverlayControls({
     <section className="economy-overlays" aria-label={KO_UI.overlays.ariaLabel}>
       <span className="overlay-heading">{KO_UI.overlays.heading}</span>
       <div className="overlay-seals">
-        <button className="overlay-seal" type="button" aria-pressed={problemOnly}
-          aria-label="문제만 보기, 단축키 O" onClick={() => onProblemOnlyChange?.(!problemOnly)}>
+        <Button className="overlay-seal" type="button" aria-pressed={problemOnly}
+          aria-label="문제만 보기, 단축키 O" onPress={() => onProblemOnlyChange?.(!problemOnly)} variant="toggle">
           <span className="overlay-label">문제만 보기</span><span className="overlay-key">O</span>
-        </button>
+        </Button>
         {ECONOMY_OVERLAYS.map((option) => (
-          <button
+          <Button
             key={option.mode}
             className="overlay-seal"
             type="button"
             aria-pressed={overlayMode === option.mode}
             aria-label={`${option.label} 보기, ${KO_UI.overlays.shortcut} ${option.shortcut}`}
-            onClick={() => onChange(overlayMode === option.mode ? "none" : option.mode)}
-          >
+            onPress={() => onChange(overlayMode === option.mode ? "none" : option.mode)}
+           variant="toggle">
             <span className="overlay-label overlay-label--full">{option.label}</span>
             <span className="overlay-label overlay-label--compact" aria-hidden="true">{option.compactLabel}</span>
             <span className="overlay-key">{option.shortcut}</span>
             <span className="overlay-legend">{option.legend}</span>
-          </button>
+          </Button>
         ))}
-        <button
+        <Button
           className="overlay-seal"
           type="button"
           aria-pressed={outlinesEnabled}
           aria-label={`${KO_UI.overlays.outlines.label} 보기`}
-          onClick={toggleOutlines}
-        >
+          onPress={toggleOutlines}
+         variant="toggle">
           <span className="overlay-label overlay-label--full">{KO_UI.overlays.outlines.label}</span>
           <span className="overlay-label overlay-label--compact" aria-hidden="true">{KO_UI.overlays.outlines.compact}</span>
 
           <span className="overlay-legend">{KO_UI.overlays.outlines.legend}</span>
-        </button>
+        </Button>
       </div>
     </section>
   );

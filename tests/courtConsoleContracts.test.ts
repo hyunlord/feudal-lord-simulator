@@ -76,7 +76,7 @@ test("minimap renders a compact rectangular click target without shield ornament
   );
 
   // Then
-  assert.match(markup, /class="map-overview"/);
+  assert.match(markup, /class="map-overview ui-btn[^"]*"/);
   assert.match(markup, /<button[^>]+type="button"[^>]+aria-label="영지 지형 지도 이동"/);
   assert.match(markup, /<svg[^>]+viewBox="0 0 120 120"/);
   assert.match(markup, /class="map-overview-viewport"/);
@@ -126,7 +126,7 @@ test("UX-3: the actual app keeps one build drawer (closed at start) and only the
   // Gone from the default screen: the resource bar, the console recesses and the minimap (the ledger's map tab).
   assert.doesNotMatch(markup, /class="resource-bar"/);
   assert.doesNotMatch(markup, /class="court-recess /);
-  assert.doesNotMatch(markup, /class="map-overview"/);
+  assert.doesNotMatch(markup, /class="map-overview ui-btn[^"]*"/);
 });
 
 test("reusable console controls create unique referenced DOM and SVG ids", () => {
@@ -161,7 +161,7 @@ test("build seals surface the road and armed styling states for the console layo
   // Then
   assert.match(
     markup,
-    /class="build-seal build-tool build-tool--selected"[^>]*aria-label="길"[^>]*aria-pressed="true"[^>]*data-highlighted="road"/,
+    /class="build-seal build-tool build-tool--selected ui-btn[^"]*"[^>]*aria-label="길"[^>]*aria-pressed="true"[^>]*data-highlighted="road"/,
   );
   assert.match(markup, /class="build-menu-quick-road"/);
 });

@@ -108,6 +108,7 @@ import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
 import { famineDecisionView, petitionDecisionView } from "./ui/decisionModels";
 import { chronicleView } from "./ui/chronicleModel";
 import { PresentationToggle } from "./render/PresentationToggle";
+import { Button } from "./ui/kit";
 
 /** UX-0b: how long the season card waits after the last press before it opens (a press in flight is not swallowed). */
 const LEDGER_PRESS_GRACE_MS = 700;
@@ -194,7 +195,7 @@ export function App() {
       under = x >= box.left - 24 && x <= box.right + 24 && y >= box.top - 24 && y <= box.bottom + 24;
     }
     if (under !== railSeeThrough) setRailSeeThrough(under);
-  }, [presentationNowMs]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [presentationNowMs]); // eslint-disable-line react-hooks/exhaustive-deps -- once a presentation frame (the frame clock is the key): the rail and the canvas are measured then
   const [onboardingPresentation, setOnboardingPresentation] = useState(
     createOnboardingPresentationState,
   );
@@ -400,15 +401,19 @@ export function App() {
   const personCard = topModal(ui) === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
   const openPerson = (id: string) => { setPersonCardId(id); sendUi({ type: "push_modal", modal: "person_card" }); };
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
+  const famineGone = famineView === null; const petitionGone = petitionView === null;
+  const chronicleGone = chronicle === null; const personCardGone = personCard === null;
   useEffect(() => {
-    if ((topModal(ui) === "decision" && famineView === null) || (topModal(ui) === "petition" && petitionView === null) || (topModal(ui) === "chronicle" && chronicle === null)
-      || (topModal(ui) === "person_card" && personCard === null)) sendUi({ type: "pop_modal" });
-  }, [ui, famineView === null, petitionView === null, chronicle === null, personCard === null]); // eslint-disable-line react-hooks/exhaustive-deps
+    if ((topModal(ui) === "decision" && famineGone) || (topModal(ui) === "petition" && petitionGone) || (topModal(ui) === "chronicle" && chronicleGone)
+      || (topModal(ui) === "person_card" && personCardGone)) sendUi({ type: "pop_modal" });
+  }, [ui, famineGone, petitionGone, chronicleGone, personCardGone, sendUi]);
   // UX-3R2 zone toolbar: the brush and the polygon paint the last kind chosen (the first open kind before any); the
   // redo list belongs to one painting session (cleared when the zone tool goes down).
   const [lastZoneKind, setLastZoneKind] = useState<ZoneKind | null>(null);
-  useEffect(() => { if (zoneTool !== null && zoneTool.target !== "erase") setLastZoneKind(zoneTool.target); }, [zoneTool?.target]); // eslint-disable-line react-hooks/exhaustive-deps
-  useEffect(() => { if (zoneTool === null) zoneEditHistory.clear(); }, [zoneTool === null]); // eslint-disable-line react-hooks/exhaustive-deps
+  const zoneTarget = zoneTool?.target ?? null;
+  useEffect(() => { if (zoneTarget !== null && zoneTarget !== "erase") setLastZoneKind(zoneTarget); }, [zoneTarget]);
+  const zoneToolDown = zoneTool === null;
+  useEffect(() => { if (zoneToolDown) zoneEditHistory.clear(); }, [zoneToolDown]);
   const toolbarKind = lastZoneKind ?? (["burgage", "arable", "pasture", "orchard"] as const).find(kind => tutorial.access.zoneTargets(kind)) ?? null;
   const pickZoneMode = (target: ZoneKind | "erase", polygon: boolean) => {
     if (target !== zoneTool?.target) platformServices().input.emit({ kind: "toolSelect", toolId: `${ZONE_TOOL_PREFIX}${target}` });
@@ -697,8 +702,8 @@ export function App() {
       {topModal(ui) === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
         settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
           <PresentationToggle preference="eventPause" /><PresentationToggle preference="rainOverlay" />
-          <button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
-            onClick={() => { setLedgerAuto(!ledgerAuto); setSeasonLedgerAuto(!ledgerAuto); }}>{ledgerAuto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</button></>} /> : null}
+          <Button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
+            onPress={() => { setLedgerAuto(!ledgerAuto); setSeasonLedgerAuto(!ledgerAuto); }} variant="toggle">{ledgerAuto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button></>} /> : null}
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
         <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment
@@ -740,9 +745,6 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
   const containKeyboard = (event: ReactKeyboardEvent) => {
     event.stopPropagation();
   };
-  const keepChoice = (event: MouseEvent | PointerEvent) => {
-    event.stopPropagation();
-  };
 
   return (
     <div
@@ -768,27 +770,24 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
         <p>{TITLE_COPY.camera}</p>
         <TutorialToggle enabled={tutorialEnabled} onChange={onTutorialChange} />
         {continueLine === null ? <>
-          <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId)} keepChoice={keepChoice} />
+          <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId)} />
           <p className="welcome-dismiss">{TITLE_COPY.dismiss}</p>
         </> : (
           <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
             <p>{continueLine}</p>
-            <button className="autoplay-toggle save-control-button" type="button"
-              onPointerDown={keepChoice} onClick={event => { keepChoice(event); onContinue(); }}>
+            <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => onContinue()} variant="primary">
               {SAVE_COPY.continueGame}
-            </button>
+            </Button>
             {confirmingNewGame ? <>
               <p role="status">{archiveNotice}</p>
-              <ScenarioModeButtons onChoose={onNewGame} keepChoice={keepChoice} />
-              <button className="autoplay-toggle save-control-button" type="button"
-                onPointerDown={keepChoice} onClick={event => { keepChoice(event); setConfirmingNewGame(false); }}>
+              <ScenarioModeButtons onChoose={onNewGame} />
+              <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => setConfirmingNewGame(false)} variant="secondary">
                 {SAVE_COPY.cancel}
-              </button>
+              </Button>
             </> : (
-              <button className="autoplay-toggle save-control-button" type="button"
-                onPointerDown={keepChoice} onClick={event => { keepChoice(event); setConfirmingNewGame(true); }}>
+              <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => setConfirmingNewGame(true)} variant="secondary">
                 {SAVE_COPY.newGame}
-              </button>
+              </Button>
             )}
           </div>
         )}
@@ -798,16 +797,15 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
 }
 
 /** New-game mode choice (B2): one button per registered scenario, in registration order. */
-function ScenarioModeButtons({ onChoose, keepChoice }: {
+function ScenarioModeButtons({ onChoose }: {
   readonly onChoose: (scenarioId: string) => void;
-  readonly keepChoice: (event: MouseEvent | PointerEvent) => void;
 }) {
   return <div className="welcome-modes" role="group" aria-label={SCENARIO_COPY.modePrompt}>
     {CORE_SCENARIOS.map(scenario => <div key={scenario.id}>
-      <button className="autoplay-toggle save-control-button" type="button"
-        data-scenario={scenario.id} onPointerDown={keepChoice} onClick={event => { keepChoice(event); onChoose(scenario.id); }}>
+      <Button className="autoplay-toggle save-control-button" type="button"
+        data-scenario={scenario.id} isolate onPress={() => onChoose(scenario.id)} variant="primary">
         {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}
-      </button>
+      </Button>
       <p className="welcome-mode-line">{TUTORIAL_COPY.modeLines[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}</p>
     </div>)}
   </div>;

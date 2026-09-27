@@ -2,6 +2,7 @@ import { platformServices } from "../platform/platform";
 import { STORE_INSPECTOR_COPY } from "./storeInspectorCopy.ko";
 import type { StoreInspectorModel } from "./storeInspectorModel";
 import { UiIcon } from "./UiIcon";
+import { Button } from "./kit";
 
 // UX-3R2 storage inspector body (UX3R 6절): the capacity bar, the items it takes (by rule; no per-store switch yet),
 // stock per item with this week's change, the buildings and sites its carts serve, and [위치로].
@@ -24,8 +25,8 @@ export function StoreInspectorBody({ model }: { readonly model: StoreInspectorMo
         {model.distributors > 0 ? <li>{STORE_INSPECTOR_COPY.distributors(model.distributors)}</li> : null}
         {model.users.length === 0 && model.distributors === 0 ? <li>{STORE_INSPECTOR_COPY.usersNone}</li> : model.users.map(user => <li key={user.key}>{user.text}</li>)}
       </ul>
-      <button type="button" className="store-look" onClick={() => { platformServices().input.emit({ kind: "lookAt", tile: model.tile }); }}>
-        <UiIcon sheet="action" cell="look" />{STORE_INSPECTOR_COPY.lookAt}</button>
+      <Button type="button" className="store-look" onPress={() => { platformServices().input.emit({ kind: "lookAt", tile: model.tile }); }} variant="secondary">
+        <UiIcon sheet="action" cell="look" />{STORE_INSPECTOR_COPY.lookAt}</Button>
     </div>
   );
 }

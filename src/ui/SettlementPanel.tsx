@@ -8,6 +8,7 @@ import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { calendarLabel, historicalEra, scenarioOf } from "../engine/scenarioState";
 import { calendarDays, durationLabel, humanizeTicks } from "./gameTimeCopy.ko";
 import { SETTLEMENT_PANEL_COPY } from "./settlementPanelCopy.ko";
+import { Button } from "./kit";
 
 export function SettlementPanel({ state, onRestart, developmentContent }: {
   readonly state: GameState;
@@ -66,8 +67,8 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
     </div>
     {view.outcome === "abandoned" ? <div className="settlement-restart">
       <p>주민 없는 상태가 이어져 영지 운영이 멈췄습니다.</p>
-      {confirmRestart ? <><p>현재 영지를 끝내고 처음부터 시작합니다.</p><button type="button" onClick={() => onRestart()}>처음부터 시작</button><button type="button" onClick={() => setConfirmRestart(false)}>취소</button></>
-        : <button type="button" onClick={() => setConfirmRestart(true)}>새 영지 시작</button>}
+      {confirmRestart ? <><p>현재 영지를 끝내고 처음부터 시작합니다.</p><Button type="button" onPress={() => onRestart()} variant="secondary">처음부터 시작</Button><Button type="button" onPress={() => setConfirmRestart(false)} variant="secondary">취소</Button></>
+        : <Button type="button" onPress={() => setConfirmRestart(true)} variant="secondary">새 영지 시작</Button>}
     </div> : null}
   </section>;
 }

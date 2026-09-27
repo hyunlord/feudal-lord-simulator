@@ -10,6 +10,7 @@ import { PersonChip, PersonPortrait } from "../persons/PersonViews";
 import type { PersonRow } from "../persons/personModels";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
 import { STEWARD_PORTRAIT } from "../portraitArt";
+import { Button } from "../kit";
 
 // UI-4 story modals (state machine modals: time stops while one is up, and closing it returns to the state under it).
 //  - The Great Famine's answer: the 1315 loading keyart behind, the intro illustration, four answers each with its
@@ -36,16 +37,16 @@ export function FamineDecisionModal({ view, onChoose, onLater, steward = null, o
         <ol className="famine-options">
           {view.options.map(option => (
             <li key={option.choice}>
-              <button type="button" className="famine-option" data-choice={option.choice} aria-label={DECISION_COPY.choose(option.label)} onClick={() => onChoose(option.choice)}>
+              <Button type="button" className="famine-option" data-choice={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onChoose(option.choice)} variant="primary">
                 <span className="famine-option-art" aria-hidden="true" style={wave16ImageStyle(option.illustration, 132)} />
                 <strong>{option.label}</strong>
                 <span className="famine-option-line">{option.line}</span>
                 <span className="famine-option-predicted">{DECISION_COPY.predictedLine(option.predicted)}</span>
-              </button>
+              </Button>
             </li>
           ))}
         </ol>
-        <button type="button" className="story-modal-later" onClick={() => onLater()}>{DECISION_COPY.later}</button>
+        <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
       </section>
     </div>
   );
@@ -81,16 +82,16 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
           <ol className="petition-options">
             {view.options.map(option => (
               <li key={option.choice}>
-                <button type="button" className="petition-option" data-response={option.choice} aria-label={DECISION_COPY.choose(option.label)} onClick={() => onRespond(option.choice)}>
+                <Button type="button" className="petition-option" data-response={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onRespond(option.choice)} variant="primary">
                   <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.seal, 44)} />
                   <strong>{option.label}</strong>
                   <span>{option.line}</span>
                   <span className="petition-predicted">{DECISION_COPY.predictedLine(option.predicted)}</span>
-                </button>
+                </Button>
               </li>
             ))}
           </ol>
-          <button type="button" className="story-modal-later" onClick={() => onLater()}>{DECISION_COPY.later}</button>
+          <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
         </div>
       </section>
     </div>
@@ -127,10 +128,10 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
           <h3>{CHRONICLE_COPY.statsHeading}</h3>
           <ul className="chronicle-stats">{view.stats.map(line => <li key={line}>{line}</li>)}</ul>
           <div className="chronicle-actions">
-            <button type="button" className="chronicle-next" onClick={() => onNextChapter()}><UiIcon sheet="action" cell="open" />{CHRONICLE_COPY.nextChapter}</button>
-            <button type="button" className="chronicle-keep" onClick={() => onKeepPlaying()}><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.keepPlaying}</button>
-            {onOpenChronicle === undefined ? null : <button type="button" className="chronicle-full" onClick={() => onOpenChronicle()}>
-              <UiIcon sheet="action" cell="log" />{CHRONICLE_COPY.openFull}</button>}
+            <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{CHRONICLE_COPY.nextChapter}</Button>
+            <Button type="button" className="chronicle-keep" onPress={() => onKeepPlaying()} variant="secondary"><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.keepPlaying}</Button>
+            {onOpenChronicle === undefined ? null : <Button type="button" className="chronicle-full" onPress={() => onOpenChronicle()} variant="primary">
+              <UiIcon sheet="action" cell="log" />{CHRONICLE_COPY.openFull}</Button>}
           </div></section>
           </div>
         </div>
@@ -145,7 +146,7 @@ export function ChapterTwoPreview({ onContinue }: { readonly onContinue: () => v
     <div className="chapter-preview" role="dialog" aria-modal="true" aria-label={CHRONICLE_COPY.chapterTwoTitle} style={{ backgroundImage: `url("${wave16Url("chapter2_intro")}")` }}>
       <p className="chapter-loading-title">{CHRONICLE_COPY.chapterTwoTitle}</p>
       <p className="chapter-loading-line">{CHRONICLE_COPY.chapterTwoLine}</p>
-      <button type="button" className="chapter-preview-continue" onClick={() => onContinue()}><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.chapterTwoContinue}</button>
+      <Button type="button" className="chapter-preview-continue" onPress={() => onContinue()} variant="primary"><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.chapterTwoContinue}</Button>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { WAVE14_IMAGES } from "../wave14ArtManifest.generated";
 import { assetUrlForBase } from "../../render/worldAssets";
 import type { PersonCardView, PersonRow } from "./personModels";
 import { PERSONS_COPY } from "./personsCopy.ko";
+import { Button } from "../kit";
 
 // UI-5 people on screen: a portrait (the pool's 96 px JPEG, the 256 px one at 2x; when the person's age band moves to
 // the next picture of their aging chain the new one fades in over the old), a person chip (portrait, name, line — a
@@ -23,7 +24,7 @@ export function PersonPortrait({ portraitId, size, className = "" }: { readonly 
     setPrevious(shown); setShown(portraitId);
     const timer = window.setTimeout(() => setPrevious(null), FADE_MS);
     return () => window.clearTimeout(timer);
-  }, [portraitId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [portraitId]); // eslint-disable-line react-hooks/exhaustive-deps -- the crossfade starts when the portrait id changes; the face shown until then is read at that moment
   const style = (id: string) => portraitStyle(id, size) ?? { width: size, height: size };
   return (
     <span className={`person-portrait ${className}`} aria-hidden="true" data-portrait={shown} style={{ width: size, height: size }}>
@@ -35,11 +36,11 @@ export function PersonPortrait({ portraitId, size, className = "" }: { readonly 
 
 export function PersonChip({ row, onOpen, size = 48 }: { readonly row: PersonRow; readonly onOpen: (personId: string) => void; readonly size?: number }) {
   return (
-    <button type="button" className="person-chip" data-person={row.id} data-portrait-exact={row.exact ? "true" : "false"} aria-label={PERSONS_COPY.openCard(row.name)}
-      onClick={() => onOpen(row.id)}>
+    <Button type="button" className="person-chip" data-person={row.id} data-portrait-exact={row.exact ? "true" : "false"} aria-label={PERSONS_COPY.openCard(row.name)}
+      onPress={() => onOpen(row.id)} variant="surface">
       <PersonPortrait portraitId={row.portraitId} size={size} />
       <span className="person-chip-text"><strong>{row.name}</strong><span>{row.line}</span></span>
-    </button>
+    </Button>
   );
 }
 
@@ -55,8 +56,8 @@ export function PersonList({ rows, onOpen }: { readonly rows: readonly PersonRow
         ? <span className="person-chip" data-person={row.id} data-portrait-exact={row.exact ? "true" : "false"}><PersonPortrait portraitId={row.portraitId} size={48} />
           <span className="person-chip-text"><strong>{row.name}</strong><span>{row.line}</span></span></span>
         : <PersonChip row={row} onOpen={onOpen} />}</li>)}</ul>
-      {shown.length === rows.length && !open ? null : <button type="button" className="person-list-toggle" aria-expanded={open}
-        onClick={() => setOpen(value => !value)}>{open ? PERSONS_COPY.membersFewer : PERSONS_COPY.membersAll(rows.length)}</button>}
+      {shown.length === rows.length && !open ? null : <Button type="button" className="person-list-toggle" aria-expanded={open}
+        onPress={() => setOpen(value => !value)} variant="toggle">{open ? PERSONS_COPY.membersFewer : PERSONS_COPY.membersAll(rows.length)}</Button>}
     </>
   );
 }
@@ -86,8 +87,8 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
           {view.emblem === null ? null : <p className="person-card-emblem-label">{view.emblemLabel}</p>}
         </div>
         <div className="person-card-actions" style={slot(112, 148, 196, 40)}>
-          <button type="button" className="person-card-action" onClick={() => onBiography(view.id)}><UiIcon sheet="action" cell="log" />{PERSONS_COPY.biography}</button>
-          <button type="button" className="person-card-action" aria-label={PERSONS_COPY.closeLabel} onClick={() => onClose()}>{PERSONS_COPY.close}</button>
+          <Button type="button" className="person-card-action" onPress={() => onBiography(view.id)} variant="secondary"><UiIcon sheet="action" cell="log" />{PERSONS_COPY.biography}</Button>
+          <Button type="button" className="person-card-action" aria-label={PERSONS_COPY.closeLabel} onPress={() => onClose()} variant="secondary">{PERSONS_COPY.close}</Button>
         </div>
       </section>
     </div>

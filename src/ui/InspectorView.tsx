@@ -10,6 +10,7 @@ import type { StoreStockHistory } from "./storeStockHistory";
 import { householdRows } from "./persons/personModels";
 import { PersonList } from "./persons/PersonViews";
 import { PERSONS_COPY } from "./persons/personsCopy.ko";
+import { Button } from "./kit";
 
 export type InspectorProps = Readonly<{
   state: GameState;
@@ -36,9 +37,9 @@ export function Inspector({ state, buildingId, onClose, storeHistory = null, onP
           <h2>{model.name}</h2>
           <p className="left-inspector-state">{model.stateLine}</p>
         </div>
-        <button type="button" className="left-inspector-close" aria-label={INSPECTOR_COPY.close} onClick={() => onClose()}>
+        <Button type="button" className="left-inspector-close" aria-label={INSPECTOR_COPY.close} onPress={() => onClose()} variant="icon">
           <UiIcon sheet="prediction" cell="block" />
-        </button>
+        </Button>
       </header>
       {store !== null ? <div className="left-inspector-body"><StoreInspectorBody model={store} /></div> : <div className="left-inspector-body">
         {house === null ? null : <section className="left-inspector-members" aria-label={PERSONS_COPY.membersHeading}>

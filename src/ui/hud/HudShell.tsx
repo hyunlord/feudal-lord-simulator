@@ -20,6 +20,7 @@ import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory"
 import { DECISION_COPY } from "../decisionCopy.ko";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
+import { Button } from "../kit";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -34,22 +35,22 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
   const [stripOpen, setStripOpen] = useState(false);
   return (
     <nav className="status-pill" aria-label={HUD_COPY.pill}>
-      <button type="button" className="status-pill-cell status-pill-date" data-testid="hud-calendar" aria-label={SEASON_STRIP_COPY.label}
-        aria-expanded={stripOpen} onClick={() => setStripOpen(open => !open)}>
+      <Button type="button" className="status-pill-cell status-pill-date" data-testid="hud-calendar" aria-label={SEASON_STRIP_COPY.label}
+        aria-expanded={stripOpen} onPress={() => setStripOpen(open => !open)} variant="surface">
         <span className="status-pill-date-text"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
         <SeasonStripMini tick={state.tick} />
-      </button>
+      </Button>
       {stripOpen ? <SeasonStripPanel state={state} food={{ days: model.foodDays, untilTick: model.foodUntilTick }} onClose={() => setStripOpen(false)} /> : null}
-      <button type="button" className="status-pill-cell" aria-label={HUD_COPY.populationOpens} onClick={() => onOpenPopulation()}>
+      <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.populationOpens} onPress={() => onOpenPopulation()} variant="surface">
         <UiIcon sheet="resource" cell="population" />{HUD_COPY.population(model.population)}
-      </button>
-      <button type="button" className="status-pill-cell" aria-label={HUD_COPY.pillOpensLedger} data-food-days={model.foodDays ?? ""} onClick={() => onOpenLedger()}
-        data-short={model.foodDays !== null && model.foodDays < 14 ? "true" : undefined}>
+      </Button>
+      <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.pillOpensLedger} data-food-days={model.foodDays ?? ""} onPress={() => onOpenLedger()}
+        data-short={model.foodDays !== null && model.foodDays < 14 ? "true" : undefined} variant="surface">
         <UiIcon sheet="resource" cell="bread" />{model.foodDays === null ? HUD_COPY.foodNone : HUD_COPY.foodDays(model.foodDays)}
-      </button>
-      <button type="button" className="status-pill-cell" aria-label={HUD_COPY.pillOpensLedger} onClick={() => onOpenLedger()}>
+      </Button>
+      <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.pillOpensLedger} onPress={() => onOpenLedger()} variant="surface">
         <UiIcon sheet="resource" cell="coin" />{HUD_COPY.money(model.coin)}
-      </button>
+      </Button>
     </nav>
   );
 }
@@ -65,15 +66,15 @@ export function LayerSwitch({ layer, access, onChange, pulse, hidden = false }: 
       {(["direct", "zone", "direction"] as const).map(item => {
         const open = access.layers[item];
         return (
-          <button key={item} type="button" className={`control-layer${item === "zone" ? " build-menu-category" : ""}${open ? "" : " control-layer--locked"}`}
+          <Button key={item} type="button" className={`control-layer${item === "zone" ? " build-menu-category" : ""}${open ? "" : " control-layer--locked"}`}
             aria-pressed={layer === item} aria-disabled={!open} data-layer={item}
             data-pulse={pulse !== null && pulse.key === `layer:${item}` ? `${pulse.key}#${pulse.nonce}` : undefined}
-            onClick={() => {
+            onPress={() => {
               if (!open) { setNote(HUD_COPY.layerLocked(TUTORIAL_COPY.layers[item], TUTORIAL_COPY.lockedLayer[item === "direction" ? "direction" : "zone"])); return; }
               setNote(null); onChange(item);
-            }}>
+            }} variant="toggle">
             <UiIcon sheet="layer" cell={item} />{TUTORIAL_COPY.layers[item]}{open ? null : <UiIcon sheet="lock" cell="locked" className="control-layer-lock" />}
-          </button>
+          </Button>
         );
       })}
       {note === null ? null : <p className="layer-switch-note" role="status"><UiIcon sheet="lock" cell="locked" />{note}</p>}
@@ -105,24 +106,24 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
   }, [advisorKey]);
   return (
     <nav className="action-dock" aria-label={HUD_COPY.dock} hidden={hidden}>
-      {undo.enabled ? <button type="button" className="hud-undo action-dock-small" aria-label={undo.label} data-attention={undo.attention ? "true" : undefined}
-        onClick={() => undo.onUndo()}><UiIcon sheet="action" cell="up" />{HUD_COPY.undo}</button> : null}
-      <button type="button" className="action-dock-button" aria-expanded={buildOpen} data-dock="build" onClick={() => onBuild()}>
+      {undo.enabled ? <Button type="button" className="hud-undo action-dock-small" aria-label={undo.label} data-attention={undo.attention ? "true" : undefined}
+        onPress={() => undo.onUndo()} variant="secondary"><UiIcon sheet="action" cell="up" />{HUD_COPY.undo}</Button> : null}
+      <Button type="button" className="action-dock-button" aria-expanded={buildOpen} data-dock="build" onPress={() => onBuild()} variant="secondary">
         <UiIcon sheet="category" cell="living" size={32} />{HUD_COPY.build}
-      </button>
-      <button type="button" className="action-dock-button" aria-expanded={ledgerOpen} data-dock="ledger" onClick={() => onLedger()}>
+      </Button>
+      <Button type="button" className="action-dock-button" aria-expanded={ledgerOpen} data-dock="ledger" onPress={() => onLedger()} variant="secondary">
         <UiIcon sheet="action" cell="log" size={32} />{HUD_COPY.ledger}
-      </button>
-      <button type="button" className="action-dock-button" data-dock="steward" aria-expanded={stewardOpen || speaking} data-speaking={speaking ? "true" : undefined}
+      </Button>
+      <Button type="button" className="action-dock-button" data-dock="steward" aria-expanded={stewardOpen || speaking} data-speaking={speaking ? "true" : undefined}
         aria-label={stewardName === null ? undefined : PERSONS_COPY.steward(stewardName)}
-        onClick={() => { if (speaking) setExpanded(open => !open); else setStewardOpen(open => !open); }}>
+        onPress={() => { if (speaking) setExpanded(open => !open); else setStewardOpen(open => !open); }} variant="secondary">
         <span className="action-dock-portrait" aria-hidden="true" style={stewardPortraitStyle(advisor?.tone ?? "neutral")} />{HUD_COPY.steward}
-      </button>
+      </Button>
       {speaking && (fresh || expanded) ? <aside className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
         aria-label={stewardName === null ? TUTORIAL_COPY.stewardName : PERSONS_COPY.steward(stewardName)} data-advisor={advisor.key} data-tone={advisor.tone}>
         {expanded && stewardName !== null ? <p className="steward-name">{PERSONS_COPY.steward(stewardName)}</p> : null}
         <p className="steward-line">{advisor.text}</p>
-        {expanded ? <button type="button" className="steward-button" onClick={() => onDismissAdvisor()}>{TUTORIAL_COPY.advisorButton}</button> : null}
+        {expanded ? <Button type="button" className="steward-button" onPress={() => onDismissAdvisor()} variant="primary">{TUTORIAL_COPY.advisorButton}</Button> : null}
       </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
     </nav>
   );
@@ -135,11 +136,11 @@ export function CrisisIcons({ rows: all, onInspect }: { readonly rows: ReturnTyp
   return (
     <section className="crisis-icons" aria-label={HUD_COPY.crisis}>
       {rows.map(row => (
-        <button key={row.id} type="button" className={`crisis-icon alert-stack-inspect crisis-icon--${row.severity}`} aria-label={HUD_COPY.crisisLabel(ALERT_STACK_COPY.inspectLabel(row.title), row.cause)}
-          onClick={() => { const first = row.targetIds[0]; if (first === undefined) return; platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); }}>
+        <Button key={row.id} type="button" className={`crisis-icon alert-stack-inspect crisis-icon--${row.severity}`} aria-label={HUD_COPY.crisisLabel(ALERT_STACK_COPY.inspectLabel(row.title), row.cause)}
+          onPress={() => { const first = row.targetIds[0]; if (first === undefined) return; platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); }} variant="icon">
           {/* UI-3: the Wave 8 alert bells (threat = immediate, bad = caution). */}
           <span className="crisis-bell" aria-hidden="true" style={wave8ImageStyle(row.severity === "immediate" ? "icon_alert_bell_threat" : "icon_alert_bell_bad", 32)} />
-        </button>
+        </Button>
       ))}
     </section>
   );
@@ -165,24 +166,24 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   return (
     <section className="ledger-drawer slot-panel" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
-        <button type="button" className="slot-panel-close" aria-label={HUD_COPY.close} onClick={() => onClose()}>{HUD_COPY.closeMark}</button></header>
+        <Button type="button" className="slot-panel-close" aria-label={HUD_COPY.close} onPress={() => onClose()} variant="icon">{HUD_COPY.closeMark}</Button></header>
       <div className="ledger-tabs">
         <div className="ledger-tab-list" role="tablist">
           {(Object.keys(HUD_COPY.ledgerTabs) as LedgerTab[]).map(key => (
-            <button key={key} type="button" role="tab" aria-selected={tab === key} className="ledger-tab" onClick={() => setTab(key)}>{HUD_COPY.ledgerTabs[key]}</button>
+            <Button key={key} type="button" role="tab" aria-selected={tab === key} className="ledger-tab" onPress={() => setTab(key)} variant="tab">{HUD_COPY.ledgerTabs[key]}</Button>
           ))}
         </div>
         {/* CHRON-1: not a tab of the drawer — it opens the chronicle screen over it. */}
-        {onOpenChronicle === undefined ? null : <button type="button" className="ledger-tab ledger-tab--chronicle" aria-haspopup="dialog"
-          aria-label={CHRONICLE_SCREEN_COPY.ledgerTabLabel} data-ledger-chronicle="open" onClick={() => onOpenChronicle()}>{CHRONICLE_SCREEN_COPY.ledgerTab}</button>}
+        {onOpenChronicle === undefined ? null : <Button type="button" className="ledger-tab ledger-tab--chronicle" aria-haspopup="dialog"
+          aria-label={CHRONICLE_SCREEN_COPY.ledgerTabLabel} data-ledger-chronicle="open" onPress={() => onOpenChronicle()} variant="tab">{CHRONICLE_SCREEN_COPY.ledgerTab}</Button>}
       </div>
       {tab === "stock" ? (matrix.rows.length === 0 ? <p>{HUD_COPY.ledgerEmpty}</p> : (
         // UX-0b: at 1280 the store columns pushed the total, the week and the lasts out of the drawer; they come first now.
         <div className="ledger-matrix-scroll"><table className="ledger-matrix">
           <thead><tr><th scope="col" /><th scope="col">{HUD_COPY.ledgerTotal}</th><th scope="col">{HUD_COPY.ledgerWeek}</th><th scope="col">{HUD_COPY.ledgerLasts}</th>
             {matrix.stores.map(store => (
-            <th key={store.id} scope="col"><button type="button" className="ledger-store" onClick={() => onInspect(store.id)}>
-              {HUD_COPY.ledgerStore(BUILDING_CONFIG_BY_KIND[store.kind as BuildingKind].name, store.index)}</button></th>))}</tr></thead>
+            <th key={store.id} scope="col"><Button type="button" className="ledger-store" onPress={() => onInspect(store.id)} variant="secondary">
+              {HUD_COPY.ledgerStore(BUILDING_CONFIG_BY_KIND[store.kind as BuildingKind].name, store.index)}</Button></th>))}</tr></thead>
           <tbody>{matrix.rows.map(row => {
             const holders = matrix.stores.filter((_store, index) => (row.byStore[index] ?? 0) > 0).map(store => store.id);
             const lit = holders.length > 0 && holders.every(id => highlighted.includes(id)) && highlighted.length === holders.length;
@@ -190,8 +191,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
             const lasts = (row.resource === "bread" || row.resource === "wheat") && food.days !== null ? HUD_COPY.ledgerDays(food.days) : HUD_COPY.ledgerNoLasts;
             return (
             <tr key={row.resource} data-resource={row.resource} data-lit={lit ? "true" : undefined}>
-              <th scope="row"><button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(RESOURCE_NAMES[row.resource])}
-                onClick={() => onHighlight?.(lit ? [] : holders)}>{RESOURCE_NAMES[row.resource]}</button></th>
+              <th scope="row"><Button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(RESOURCE_NAMES[row.resource])}
+                onPress={() => onHighlight?.(lit ? [] : holders)} variant="surface">{RESOURCE_NAMES[row.resource]}</Button></th>
               <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td>
               {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}</tr>);
           })}</tbody>
@@ -203,8 +204,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
       </section> : null}
       {tab === "alerts" ? (alerts.length === 0 ? <p>{HUD_COPY.ledgerNoAlerts}</p> : <ul className="ledger-alerts">{alerts.map(row => (
         <li key={row.id}><strong>{row.title}</strong> · {row.countLabel}<br /><span>{row.cause}</span>
-          <button type="button" className="ledger-alert-look" onClick={() => { const first = row.targetIds[0]; if (first !== undefined) { platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); } }}>
-            <UiIcon sheet="action" cell="look" />{ALERT_STACK_COPY.inspect}</button></li>))}</ul>) : null}
+          <Button type="button" className="ledger-alert-look" onPress={() => { const first = row.targetIds[0]; if (first !== undefined) { platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); } }} variant="secondary">
+            <UiIcon sheet="action" cell="look" />{ALERT_STACK_COPY.inspect}</Button></li>))}</ul>) : null}
       {tab === "view" ? viewTab : null}
       {tab === "map" ? mapTab : null}
     </section>
@@ -216,7 +217,7 @@ export function PauseMenu({ onResume, settings }: { readonly onResume: () => voi
     <div className="pause-menu-backdrop" role="presentation">
       <section className="pause-menu" role="dialog" aria-modal="true" aria-label={HUD_COPY.pauseTitle}>
         <h2>{HUD_COPY.pauseTitle}</h2>
-        <button type="button" className="pause-menu-resume" onClick={() => onResume()}><UiIcon sheet="time" cell="play" />{HUD_COPY.pauseResume}</button>
+        <Button type="button" className="pause-menu-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{HUD_COPY.pauseResume}</Button>
         <div className="pause-menu-settings">{settings}</div>
       </section>
     </div>

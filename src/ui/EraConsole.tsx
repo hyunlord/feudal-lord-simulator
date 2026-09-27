@@ -24,6 +24,7 @@ import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
 import { UiIcon } from "./UiIcon";
 import { cachedExpansionPreview, expansionLines, pendingPastureWarning } from "./wallExpansionModel";
 import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
+import { Button } from "./kit";
 
 export type EraConsoleAction = {
   readonly enabled: boolean;
@@ -243,12 +244,12 @@ export function EraConsole({
       {model.diagnostic === null ? null : <p className="era-diagnostic">{model.diagnostic}</p>}
       {model.wallProgress !== null && onPriorityChange !== undefined ? (
         <div className="era-wall-priority" role="group" aria-label="성벽 공사 자재 우선순위">
-          <button type="button" aria-pressed={priority === 'balanced'}
-            onClick={() => onPriorityChange('balanced')}>{priority === 'balanced' ? <UiIcon sheet="prediction" cell="ok" /> : null}균형 · 25% 비축</button>
-          <button type="button" aria-pressed={priority === 'priority'}
-            onClick={() => onPriorityChange('priority')}>{priority === 'priority' ? <UiIcon sheet="prediction" cell="ok" /> : null}공사 우선</button>
+          <Button type="button" aria-pressed={priority === 'balanced'}
+            onPress={() => onPriorityChange('balanced')} variant="secondary">{priority === 'balanced' ? <UiIcon sheet="prediction" cell="ok" /> : null}균형 · 25% 비축</Button>
+          <Button type="button" aria-pressed={priority === 'priority'}
+            onPress={() => onPriorityChange('priority')} variant="secondary">{priority === 'priority' ? <UiIcon sheet="prediction" cell="ok" /> : null}공사 우선</Button>
           {model.reserveDeadlock && priority === 'balanced' ? (
-            <button type="button" onClick={() => onPriorityChange('priority')}>{CONSTRUCTION_DEADLOCK_COPY.action}</button>
+            <Button type="button" onPress={() => onPriorityChange('priority')} variant="secondary">{CONSTRUCTION_DEADLOCK_COPY.action}</Button>
           ) : null}
         </div>
       ) : null}
@@ -256,28 +257,28 @@ export function EraConsole({
         <p className="era-irrevocable">{model.irreversibleNotice}</p>
       )}
       <div className="era-actions">
-        <button
+        <Button
           className="era-action"
           type="button"
           disabled={!model.action.enabled}
-          onClick={() => actionHandler?.()}
+          onPress={() => actionHandler?.()}
           aria-describedby="era-action-reason"
-        >
+         variant="primary">
           {model.action.label}
-        </button>
+        </Button>
         {model.proposal.recommendEnabled ? (
-          <button className="era-action era-action--secondary" type="button" onClick={() => onBeginProposal()}>{WALL_COPY.recommend}</button>
+          <Button className="era-action era-action--secondary" type="button" onPress={() => onBeginProposal()} variant="secondary">{WALL_COPY.recommend}</Button>
         ) : null}
         {model.draft.canErase ? (
-          <button className="era-action era-action--secondary" type="button" onClick={() => onEraseDraftSegment?.()}>{WALL_COPY.eraseSegment}</button>
+          <Button className="era-action era-action--secondary" type="button" onPress={() => onEraseDraftSegment?.()} variant="secondary">{WALL_COPY.eraseSegment}</Button>
         ) : null}
         {model.draft.editing ? (
-          <button className="era-action era-action--secondary" type="button" onClick={() => onCancelProposal()}>
+          <Button className="era-action era-action--secondary" type="button" onPress={() => onCancelProposal()} variant="secondary">
             {model.expansion.editing ? WALL_EXPANSION_COPY.cancel : WALL_COPY.cancelDraft}
-          </button>
+          </Button>
         ) : null}
         {model.expansion.available && onBeginExpansion !== undefined ? (
-          <button className="era-action era-action--secondary" type="button" data-action="begin-expansion" onClick={() => onBeginExpansion()}>{WALL_EXPANSION_COPY.begin}</button>
+          <Button className="era-action era-action--secondary" type="button" data-action="begin-expansion" onPress={() => onBeginExpansion()} variant="secondary">{WALL_EXPANSION_COPY.begin}</Button>
         ) : null}
       </div>
       <small ref={actionReasonRef} id="era-action-reason" className="era-action-reason">

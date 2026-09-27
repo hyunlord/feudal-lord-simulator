@@ -3,6 +3,7 @@ import type { SeasonLedgerCardModel } from "../seasonLedgerCard";
 import { SEASON_LEDGER_COPY } from "../seasonLedgerCopy.ko";
 import { wave8ContentStyle, wave8FrameLayerStyle } from "../wave8Art";
 import { seasonSceneStyle } from "../wave19Art";
+import { Button } from "../kit";
 
 // UI-3 season ledger card (S-28, a modal: time stops while it is up). The Wave 8 scroll: three scenes (the season's
 // biggest changes, UI-4b: Wave 19 icons chosen from the history ledger) in its header slots, their names under the
@@ -28,12 +29,12 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
           {model.lines.map(line => <p key={line} className="season-ledger-line">{line}</p>)}
           <ul className="season-ledger-events">{model.events.map(event => <li key={event}>{event}</li>)}</ul>
           <div className="season-ledger-actions">
-            {model.hint === null ? null : <button type="button" className="season-ledger-hint" onClick={() => onHint()}>
-              <UiIcon sheet="action" cell="open" />{model.hint.text}</button>}
-            <button type="button" className="season-ledger-resume" onClick={() => onResume()}><UiIcon sheet="time" cell="play" />{SEASON_LEDGER_COPY.resume}</button>
+            {model.hint === null ? null : <Button type="button" className="season-ledger-hint" onPress={() => onHint()} variant="secondary">
+              <UiIcon sheet="action" cell="open" />{model.hint.text}</Button>}
+            <Button type="button" className="season-ledger-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{SEASON_LEDGER_COPY.resume}</Button>
           </div>
-          <button type="button" className="season-ledger-auto" aria-pressed={auto} onClick={() => onAutoChange(!auto)}>
-            {auto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</button>
+          <Button type="button" className="season-ledger-auto" aria-pressed={auto} onPress={() => onAutoChange(!auto)} variant="toggle">
+            {auto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button>
         </div>
       </section>
     </div>

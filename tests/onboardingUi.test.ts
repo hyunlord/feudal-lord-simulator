@@ -173,7 +173,7 @@ test("UX-3: the goal chip rail shows the active goal cards; the goal log (era ga
 
   // Then
   assert.match(railMarkup, /class="goal-chip-rail"|class="goal-cards"/);
-  assert.match(railMarkup, /class="goal-drawer-toggle" aria-expanded="false"/);
+  assert.match(railMarkup, /class="goal-drawer-toggle ui-btn[^"]*" aria-expanded="false"/);
   assert.doesNotMatch(markup, /class="goal-drawer"/, "the goal log is not mounted until it takes the slot");
   assert.doesNotMatch(markup, /aria-label="시대 선포"/);
   assert.ok((railMarkup.match(/class="goal-card"/g) ?? []).length <= 2);

@@ -3,6 +3,7 @@ import { portraitStyle } from "../portraitArt";
 import { wave19ImageStyle, wave19Url } from "../wave19Art";
 import type { BiographyView } from "./chronicleScreenModel";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
+import { Button } from "../kit";
 
 // CHRON-1 biography (CHRONICLE_DESIGN 2.2): the Wave 19 `frame_biography` page (640 x 800 art, drawn at one scale so
 // its printed slots stay where they are): the portrait in the great circle (the pool picture of the person's age now,
@@ -55,16 +56,16 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
         {view.relations.length === 0 ? <p className="chronicle-biography-empty">{COPY.noRelations}</p> : (
           <ul>{view.relations.map(relation => {
             const face = relation.portraitId === null ? null : portraitStyle(relation.portraitId, 32);
-            return <li key={relation.id}><button type="button" className="chronicle-biography-chip" onClick={() => onPerson(relation.id)}>
-              {face === null ? null : <span aria-hidden="true" className="chronicle-biography-chip-face" style={face} />}{relation.line}</button></li>;
+            return <li key={relation.id}><Button type="button" className="chronicle-biography-chip" onPress={() => onPerson(relation.id)} variant="secondary">
+              {face === null ? null : <span aria-hidden="true" className="chronicle-biography-chip-face" style={face} />}{relation.line}</Button></li>;
           })}</ul>)}
       </section>
       <section className="chronicle-biography-band" aria-label={COPY.recordsHeading} style={SLOTS.records}>
         <h4>{COPY.recordsHeading}</h4>
         {view.records.length === 0 ? <p className="chronicle-biography-empty">{COPY.recordsEmpty}</p> : (
           <ul>{view.records.map(record => (
-            <li key={record.id}><button type="button" className="chronicle-biography-chip chronicle-biography-record" onClick={() => onRecord(record.id, record.tick)}>
-              <span className="chronicle-biography-date">{record.date}</span>{record.sentence}</button></li>
+            <li key={record.id}><Button type="button" className="chronicle-biography-chip chronicle-biography-record" onPress={() => onRecord(record.id, record.tick)} variant="secondary">
+              <span className="chronicle-biography-date">{record.date}</span>{record.sentence}</Button></li>
           ))}</ul>)}
       </section>
     </article>

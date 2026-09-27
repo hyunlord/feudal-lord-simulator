@@ -7,14 +7,19 @@
    - Button states are code, not art: brightness for hover / pressed, a 1 px offset for active, the focus ring.
    - Mobile rules hold: targets stay >= 44 px (the floor in uiConsole.css), text >= 12 px, nothing only on hover. */
 
-.app-shell {
-  /* Design tokens (colours sampled from the art: flat reading field, oak field, ink rule, wax seal, icon status). */
+/* UI-KIT-1: the design tokens live here, on :root, so the kit parts (src/ui/kit, src/styles/uiKit.css) read the same
+   values in the game, its modals and the /dev/ui-kit gallery. The kit uses only these variables. */
+:root {
+  /* Colours sampled from the art: flat reading field, oak field, ink rule, wax seal, icon status. */
   --parchment: #decda8;
   --parchment-light: #e1d1ae;
+  --parchment-deep: #cdb98f;
   --oak: #514334;
   --ink: #3b2a1c;
   --ink-soft: #5c4a36;
   --seal-red: #a85038;
+  --seal-red-deep: #7e3826;
+  --gold-rule: #b8883c;
   --status-ok: #687040;
   --status-warn: #b8883c;
   --status-block: #a85038;
@@ -27,7 +32,6 @@
   /* Type: body sans, titles and the steward serif (both OFL, bundled via @fontsource; docs/provenance/fonts). */
   --ui-font-sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --ui-font-serif: "Noto Serif KR", "Nanum Myeongjo", Georgia, serif;
-  --ui-body-font: var(--ui-font-sans);
   --text-12: 12px;
   --text-13: 13px;
   --text-14: 14px;
@@ -44,6 +48,30 @@
   --slice-tooltip: 6px;
   --slice-banner: 24px;
   --slice-toast: 12px;
+  /* The P0 art as whole border-image / background values (source insets from src/ui/uiArtManifest.generated.ts). */
+  --art-button-primary: url("/assets/ui-p0/button_primary_base.png") 12 fill / var(--slice-button) / 0 stretch;
+  --art-button-secondary: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--slice-button) / 0 stretch;
+  --art-button-icon: url("/assets/ui-p0/button_icon_square_base.png") 10 fill / var(--slice-square) / 0 stretch;
+  --art-tab: url("/assets/ui-p0/tab_build_base.png") 12 fill / var(--slice-button) / 0 stretch;
+  --art-chip: url("/assets/ui-p0/chip_condition_base.png") 8 fill / var(--slice-chip) / 0 stretch;
+  --art-frame-light: url("/assets/ui-p0/frame_panel_light.png") 32 fill / var(--slice-panel) / 0 stretch;
+  --art-frame-dark: url("/assets/ui-p0/frame_panel_dark.png") 24 fill / var(--slice-strip) / 0 stretch;
+  --art-frame-objective: url("/assets/ui-p0/frame_objective_normal.png") 32 fill / var(--slice-card) / 0 stretch;
+  --art-frame-objective-complete: url("/assets/ui-p0/frame_objective_complete.png") 32 fill / var(--slice-card) / 0 stretch;
+  --art-frame-objective-warn: url("/assets/ui-p0/frame_objective_warn.png") 32 fill / var(--slice-card) / 0 stretch;
+  --art-frame-advisor: url("/assets/ui-p0/frame_advisor_normal.png") 24 fill / var(--slice-advisor) / 0 stretch;
+  --art-frame-advisor-warn: url("/assets/ui-p0/frame_advisor_warn.png") 24 fill / var(--slice-advisor) / 0 stretch;
+  --art-frame-modal: url("/assets/ui-p0/frame_modal.png") 32 fill / 16px / 0 stretch;
+  --art-frame-tooltip: url("/assets/ui-p0/frame_tooltip.png") 12 fill / var(--slice-tooltip) / 0 stretch;
+  --art-frame-record: url("/assets/ui-p0/toast_small.png") 24 fill / var(--slice-toast) / 0 stretch;
+  --art-texture-light: url("/assets/ui-p0/texture_vellum_light.png");
+  --art-texture-dark: url("/assets/ui-p0/texture_vellum_dark.png");
+  --art-rule-light: url("/assets/ui-p0/divider_manuscript_light.png");
+  --art-rule-dark: url("/assets/ui-p0/divider_manuscript_dark.png");
+}
+
+.app-shell {
+  --ui-body-font: var(--ui-font-sans);
   font-family: var(--ui-font-sans);
 }
 

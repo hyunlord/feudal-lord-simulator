@@ -5,6 +5,7 @@ import {
   populationGroupLabel,
   type PopulationEvent,
 } from "./populationEventModel";
+import { Button } from "./kit";
 
 type PopulationEventPanelProps = Readonly<{
   events: readonly PopulationEvent[];
@@ -26,9 +27,9 @@ export function PopulationEventPanel({
         <ol>
           {groups.map((group) => (
             <li key={`${group.firstTick}-${group.cause}`}>
-              <button type="button" onClick={() => onSelectHouseIds(group.houseIds)}>
+              <Button type="button" onPress={() => onSelectHouseIds(group.houseIds)} variant="secondary">
                 {populationGroupLabel(group)}
-              </button>
+              </Button>
             </li>
           ))}
         </ol>

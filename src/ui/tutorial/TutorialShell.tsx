@@ -4,6 +4,7 @@ import { stewardPortraitStyle } from "../uiArt";
 import { UiIcon } from "../UiIcon";
 import { TUTORIAL_COPY } from "./tutorialCopy.ko";
 import type { GoalCard, TutorialController } from "./useTutorialController";
+import { Button } from "../kit";
 
 // UX-1 shell pieces (research E "Objective card / Advisor / Highlight"): goal cards (title 18 px, progress and bar, a
 // reason of at most two lines, one button, `?` help; at most two on screen), the steward (96 px portrait slot, one
@@ -27,9 +28,9 @@ export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false, 
   return (
     <section className="goal-cards" aria-label={TUTORIAL_COPY.cardsLabel}>
       {shown.map(card => <GoalCardView key={card.key} card={card} warn={warn} onPress={() => tutorial.press(card.key)} onLook={tutorial.lookAt} />)}
-      <button type="button" className="goal-drawer-toggle" aria-expanded={drawerOpen} onClick={() => onToggleDrawer()}>
+      <Button type="button" className="goal-drawer-toggle" aria-expanded={drawerOpen} onPress={() => onToggleDrawer()} variant="toggle">
         <UiIcon sheet="action" cell="log" /><span className="goal-drawer-toggle-label">{TUTORIAL_COPY.drawer}{tutorial.log.length > 0 ? ` (${tutorial.log.length})` : ""}</span>
-      </button>
+      </Button>
     </section>
   );
 }
@@ -53,8 +54,8 @@ function GoalCardView({ card, warn, onPress, onLook }: { readonly card: GoalCard
       {ratio === null ? null : <span className="goal-card-bar" aria-hidden="true"><span style={{ width: `${Math.round(ratio * 100)}%` }} /></span>}
       {card.why === "" ? null : <p className="goal-card-why">{card.why}</p>}
       <div className="goal-card-actions">
-        {card.ctaLabel === null ? null : <button type="button" className="goal-card-cta" data-tutorial-cta={card.key} onClick={() => onPress()}>{card.ctaLabel}</button>}
-        {card.hasTarget ? <button type="button" className="goal-card-secondary" onClick={() => onLook()}><UiIcon sheet="action" cell="look" />{TUTORIAL_COPY.lookHere}</button> : null}
+        {card.ctaLabel === null ? null : <Button type="button" className="goal-card-cta" data-tutorial-cta={card.key} onPress={() => onPress()} variant="primary">{card.ctaLabel}</Button>}
+        {card.hasTarget ? <Button type="button" className="goal-card-secondary" onPress={() => onLook()} variant="secondary"><UiIcon sheet="action" cell="look" />{TUTORIAL_COPY.lookHere}</Button> : null}
         {card.help === null ? null : <details className="goal-card-help"><summary aria-label={TUTORIAL_COPY.help}><UiIcon sheet="lock" cell="help" size={32} /></summary><p>{card.help}</p></details>}
       </div>
     </article>
@@ -69,7 +70,7 @@ export function StewardAdvisor({ advisor, onDismiss }: { readonly advisor: Tutor
       <div className="steward-body">
         <strong className="steward-name">{TUTORIAL_COPY.stewardName}</strong>
         <p className="steward-line">{advisor.text}</p>
-        <button type="button" className="steward-button" onClick={() => onDismiss()}>{TUTORIAL_COPY.advisorButton}</button>
+        <Button type="button" className="steward-button" onPress={() => onDismiss()} variant="primary">{TUTORIAL_COPY.advisorButton}</Button>
       </div>
     </aside>
   );
@@ -101,11 +102,10 @@ export function GoalDrawer({ open, log, children }: { readonly open: boolean; re
 export function TutorialToggle({ enabled, onChange }: { readonly enabled: boolean; readonly onChange: (enabled: boolean) => void }) {
   return (
     <div className="tutorial-toggle">
-      <button type="button" role="switch" aria-checked={enabled} className="tutorial-switch"
-        onPointerDown={event => event.stopPropagation()}
-        onClick={event => { event.stopPropagation(); onChange(!enabled); }}>
+      <Button type="button" role="switch" aria-checked={enabled} className="tutorial-switch" isolate
+        onPress={() => onChange(!enabled)} variant="toggle">
         {TUTORIAL_COPY.tutorialToggle} {enabled ? TUTORIAL_COPY.tutorialOn : TUTORIAL_COPY.tutorialOff}
-      </button>
+      </Button>
       {enabled ? null : <small>{TUTORIAL_COPY.tutorialOffNote}</small>}
     </div>
   );

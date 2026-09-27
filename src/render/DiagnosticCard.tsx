@@ -18,6 +18,7 @@ import type { BuildingInspectorModel } from "./buildingInspectorModel";
 import type { StoreInspectorModel } from "../ui/storeInspectorModel";
 import { StoreInspectorBody } from "../ui/StoreInspector";
 import { STORE_INSPECTOR_COPY } from "../ui/storeInspectorCopy.ko";
+import { Button } from "../ui/kit";
 
 type Size = Readonly<{ width: number; height: number }>;
 type Rect = Readonly<{ x: number; y: number; width: number; height: number }>;
@@ -95,16 +96,16 @@ function HouseCard({ model, onDemolishHouse, onMergeHouses, members, onPerson }:
         <p>{model.mergeStatus}</p>
         {model.mergeOptions.map((option) => (
           <div key={option.targetBuildingId}>
-            <button
+            <Button
               type="button"
               className="diagnostic-card-merge"
               data-action="merge-houses"
               data-target-building-id={option.targetBuildingId}
               disabled={!option.enabled || onMergeHouses === undefined}
-              onClick={() => {
+              onPress={() => {
                 if (option.enabled) onMergeHouses?.(model.buildingId, option.targetBuildingId);
               }}
-            >{option.label}</button>
+             variant="secondary">{option.label}</Button>
             {option.reason === null ? null : <p>{option.reason}</p>}
           </div>
         ))}
@@ -112,14 +113,14 @@ function HouseCard({ model, onDemolishHouse, onMergeHouses, members, onPerson }:
       {onDemolishHouse === undefined ? null : (
         <section className="inspector-actions">
           <p>철거하면 주민 {model.residents}명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.</p>
-          <button
+          <Button
             type="button"
             className="diagnostic-card-cancel"
             data-action="demolish-house"
-            onClick={() => onDemolishHouse(model.buildingId)}
-          >
+            onPress={() => onDemolishHouse(model.buildingId)}
+           variant="secondary">
             주택 철거
-          </button>
+          </Button>
         </section>
       )}
     </>
@@ -170,17 +171,17 @@ function ConstructionSiteCard({
           <div key={row.label}><dt>{row.label}</dt><dd>{row.value}</dd></div>
         ))}
       </dl>
-      <button
+      <Button
         type="button"
         className="diagnostic-card-cancel"
         data-action="cancel-construction"
         disabled={!cancellationEnabled}
-        onClick={() => {
+        onPress={() => {
           if (cancellationEnabled) onCancelConstruction?.(model.siteId);
         }}
-      >
+       variant="secondary">
         {cancellationEnabled ? "공사 포기" : "공사 포기 불가"}
-      </button>
+      </Button>
       {cancellation.reason === null ? null : <p>{cancellation.reason}</p>}
     </>
   );
@@ -253,7 +254,7 @@ export function DiagnosticCard({
         <header className="inspector-heading">
           <div className="inspector-thumbnail" aria-hidden="true">{identity.art}</div>
           <div><p>{identity.type}</p><h2>{identity.name}</h2></div>
-          {onClose === undefined ? null : <button className="inspector-close" type="button" aria-label="상세 정보 닫기" onClick={() => onClose()}>×</button>}
+          {onClose === undefined ? null : <Button className="inspector-close" type="button" aria-label="상세 정보 닫기" onPress={() => onClose()} variant="icon">×</Button>}
         </header>
         {causeLine === null ? null : <p className="inspector-cause-line" role="status">{causeLine}</p>}
         {causeSummary == null ? null : <div className="inspector-cause-summary">
@@ -265,7 +266,7 @@ export function DiagnosticCard({
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} members={houseMembers} onPerson={onPerson} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} headline={walkerHeadline} /> : null}
           {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}
-          {model.kind === "building" ? <><p>{model.value.purpose}</p>{reachLine === null ? null : <p className="inspector-market-reach" data-market-reach="true">{reachLine}</p>}{buildingOperation === undefined ? null : <section className="inspector-actions"><button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onClick={() => buildingOperation.onToggle()}>{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
+          {model.kind === "building" ? <><p>{model.value.purpose}</p>{reachLine === null ? null : <p className="inspector-market-reach" data-market-reach="true">{reachLine}</p>}{buildingOperation === undefined ? null : <section className="inspector-actions"><Button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onPress={() => buildingOperation.onToggle()} variant="secondary">{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</Button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"
             ? onCancelConstruction === undefined
               ? <ConstructionSiteCard model={model.value} />

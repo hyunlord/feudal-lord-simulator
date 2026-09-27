@@ -20,6 +20,8 @@ import "@fontsource/noto-sans-kr/400.css";
 import "@fontsource/noto-sans-kr/700.css";
 import "@fontsource/noto-serif-kr/600.css";
 import "./styles/uiSkin.css";
+// UI-KIT-1: the shared controls and frames, after the skin tokens.
+import "./styles/uiKit.css";
 
 const rootElement = document.getElementById("root");
 

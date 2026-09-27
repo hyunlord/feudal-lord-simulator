@@ -183,9 +183,9 @@ test("UX-3: the overlay controls are the ledger drawer's 보기 tab, the speed s
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
-  assert.match(ledger, /role="tab" aria-selected="true" class="ledger-tab">자원/);
-  assert.match(ledger, /role="tab" aria-selected="false" class="ledger-tab">보기/);
-  assert.match(ledger, /role="tab" aria-selected="false" class="ledger-tab">지도/);
+  assert.match(ledger, /role="tab" aria-selected="true" class="ledger-tab ui-btn[^"]*">자원/);
+  assert.match(ledger, /role="tab" aria-selected="false" class="ledger-tab ui-btn[^"]*">보기/);
+  assert.match(ledger, /role="tab" aria-selected="false" class="ledger-tab ui-btn[^"]*">지도/);
   assert.doesNotMatch(markup, /aria-label="경제 보기"/, "no overlay bar on the default screen");
   const cluster = markup.indexOf('class="hud-time-cluster"');
   assert.ok(cluster >= 0 && cluster < markup.indexOf('class="speed-seals"'));

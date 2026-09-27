@@ -61,7 +61,7 @@ test("UI-5 a house's members: head, spouse, kin, children with name, age, role a
   const crowded = householdRows(town, crowdedHouse.buildingId);
   const long = renderToStaticMarkup(createElement(DiagnosticCard, { position: { x: 8, y: 8 }, model: { kind: "house", value: houseDiagnosisModel(town, crowdedHouse.buildingId)! },
     houseMembers: crowded, onPerson: () => undefined }));
-  assert.equal([...long.matchAll(/class="person-chip"/g)].length, 4);
+  assert.equal([...long.matchAll(/class="person-chip[ "]/g)].length, 4);
   assert.match(long, new RegExp(PERSONS_COPY.membersAll(crowded.length)));
 });
 

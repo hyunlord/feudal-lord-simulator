@@ -17,6 +17,10 @@ import {
   presentThenScheduleAutoplayAction,
   publishAutoplayPulse,
 } from "./autoplayPresentation";
+import { Button } from "./kit";
+
+/** The advisor with nothing to do (one object, so the scheduling effect below does not rerun each render). */
+const NO_ACTION = { kind: "none" } as const;
 
 /** UX-2: the painted time icons (pause · play · two and three chevrons). */
 const SPEED_SEALS: readonly {
@@ -53,7 +57,7 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
     state, enabled: autoplayEnabled, pending: cancelPendingCommitRef.current !== null,
   }, decideNextAction, shouldRetryAutoplayAfterMillReplenishment);
   const decision = decisionCacheRef.current.decision;
-  const nextAction = decision?.action ?? { kind: "none" as const };
+  const nextAction = decision?.action ?? NO_ACTION;
   latestTickRef.current = state.tick;
 
   useEffect(() => {
@@ -98,28 +102,28 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
     <div className="speed-control-stack">
       <div className="speed-seals" role="group" aria-label={KO_UI.speeds.ariaLabel}>
         {SPEED_SEALS.map((option) => (
-          <button
+          <Button
             key={option.speed}
             className="speed-seal"
             type="button"
             aria-label={option.label}
             aria-pressed={speed === option.speed}
-            onClick={() => onChange(option.speed)}
-          >
+            onPress={() => onChange(option.speed)}
+           variant="icon">
             <UiIcon sheet="time" cell={option.icon} size={32} />
-          </button>
+          </Button>
         ))}
       </div>
       <details className="command-disclosure settings-disclosure"><summary>설정</summary>
       <div className="command-popover autoplay-control" aria-label="자동 발전 제어">
-        <button
+        <Button
           className="autoplay-toggle"
           type="button"
           aria-pressed={autoplayEnabled}
-          onClick={() => setAutoplayEnabled((enabled) => !enabled)}
-        >
+          onPress={() => setAutoplayEnabled((enabled) => !enabled)}
+         variant="toggle">
           자동 발전
-        </button>
+        </Button>
         <span className="autoplay-hint">{autoplayEnabled ? autoplayActionLabel(nextAction) : "자동 발전 꺼짐"}</span>
         {extraSettings}
         <BoundaryRenderToggle />

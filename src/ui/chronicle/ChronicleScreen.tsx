@@ -11,10 +11,12 @@ import {
   biographyView, CHRONICLE_KINDS, chronicleDate, chronicleItems, chroniclePeople, chronicleYears, decisionCompare, DEFAULT_CHRONICLE_FILTER,
   itemIndexAt, recordCard, seasonWindow, timelineChapters, timelineMarkers, timelineSegments, timelineTickAt,
   type ChronicleFilter, type ChronicleItem, type ChronicleKind, type TimelineMarkerKind,
+  yearOfTick,
 } from "./chronicleScreenModel";
 import { DECISION_FRAME, DecisionCompareFrame } from "./DecisionCompareFrame";
 import { CARD_ROW, RecordCardView } from "./RecordCardView";
 import { SnapshotMapView } from "./SnapshotMapView";
+import { Button, Select } from "../kit";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): a full-screen modal over the town (the state machine's
 // `history` modal: time stops while it is up). The timeline on top, the filters, the record cards (a virtual list:
@@ -49,15 +51,15 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
         {showMap ? <SnapshotMapView state={state} snapshot={card.snapshot} compare={compare} compact={false} /> : null}
         <div className="chronicle-detail-actions">
           {decision === null ? null : showMap
-            ? <button type="button" className="chronicle-detail-action" onClick={() => onView("record")}><UiIcon sheet="action" cell="log" />{COPY.decisionRecord}</button>
-            : card.snapshot === null ? null : <button type="button" className="chronicle-detail-action" aria-label={COPY.thenMapLabel(card.date)}
-              onClick={() => onView("map")}><UiIcon sheet="layer" cell="zone" />{COPY.thenMap}</button>}
-          {!showMap || card.snapshot === null ? null : <button type="button" className="chronicle-detail-action" aria-pressed={compare} aria-label={COPY.mapCompareLabel}
-            onClick={() => onCompare()}><UiIcon sheet="layer" cell="zone" />{COPY.mapCompare}</button>}
-          {card.place === null ? null : <button type="button" className="chronicle-detail-action" aria-label={COPY.lookAtLabel(card.date)}
-            onClick={() => { if (card.place !== null) onLookAt(card.place); }}><UiIcon sheet="action" cell="look" />{COPY.lookAt}</button>}
-          {card.personId === null || card.personName === null ? null : <button type="button" className="chronicle-detail-action" aria-label={COPY.personLabelFor(card.personName)}
-            onClick={() => { if (card.personId !== null) onPerson(card.personId); }}><UiIcon sheet="resource" cell="population" />{COPY.person}</button>}
+            ? <Button type="button" className="chronicle-detail-action" onPress={() => onView("record")} variant="secondary"><UiIcon sheet="action" cell="log" />{COPY.decisionRecord}</Button>
+            : card.snapshot === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.thenMapLabel(card.date)}
+              onPress={() => onView("map")} variant="secondary"><UiIcon sheet="layer" cell="zone" />{COPY.thenMap}</Button>}
+          {!showMap || card.snapshot === null ? null : <Button type="button" className="chronicle-detail-action" aria-pressed={compare} aria-label={COPY.mapCompareLabel}
+            onPress={() => onCompare()} variant="secondary"><UiIcon sheet="layer" cell="zone" />{COPY.mapCompare}</Button>}
+          {card.place === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.lookAtLabel(card.date)}
+            onPress={() => { if (card.place !== null) onLookAt(card.place); }} variant="secondary"><UiIcon sheet="action" cell="look" />{COPY.lookAt}</Button>}
+          {card.personId === null || card.personName === null ? null : <Button type="button" className="chronicle-detail-action" aria-label={COPY.personLabelFor(card.personName)}
+            onPress={() => { if (card.personId !== null) onPerson(card.personId); }} variant="secondary"><UiIcon sheet="resource" cell="population" />{COPY.person}</Button>}
         </div>
       </div>
     </div>
@@ -85,16 +87,24 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   // Memo (key: the ledger and the filter; the timeline adds the eras and now): the rows filter and fold the whole ledger,
   // and time is stopped while the screen is up, so nothing else rebuilds them. Measured (chron1Captures, DGX): 30,000
   // records open, rows to first painted frame, in 57–162 ms; the model part alone about 12 ms (tests/chronicleScreen).
-  const items = useMemo(() => chronicleItems(state, filter), [state.history, filter]); // eslint-disable-line react-hooks/exhaustive-deps
+  const items = useMemo(() => chronicleItems(state, filter), [state.history, filter]); // eslint-disable-line react-hooks/exhaustive-deps -- the rows read only the ledger (and the scenario, fixed in a game)
   const indexOf = useMemo(() => new Map(items.map((item, index) => [item.key, index])), [items]);
-  const segments = useMemo(() => timelineSegments(state), [state.scenarioId, state.historicalEras, state.tick]); // eslint-disable-line react-hooks/exhaustive-deps
+  // UI-KIT-1: the strip, the chapter bars and the zoomed ruler are keyed by the season, not the tick (they were rebuilt
+  // every tick); "now" on them moves by seasons, the now pin keeps the exact tick.
+  const seasonNow = Math.floor(state.tick / SEASON) * SEASON;
+  const yearNow = yearOfTick(state, state.tick);
+  const { scenarioId, historicalEras, politics } = state;
+  const scenario = useMemo(() => scenarioId === undefined ? {} : { scenarioId }, [scenarioId]);
+  const segments = useMemo(() => timelineSegments({ ...scenario, ...(historicalEras === undefined ? {} : { historicalEras }), tick: seasonNow }), [scenario, historicalEras, seasonNow]);
   const markers = useMemo(() => timelineMarkers(items.map(item => item.record), segments), [items, segments]);
-  const chapters = useMemo(() => timelineChapters(state), [state.politics, state.tick]); // eslint-disable-line react-hooks/exhaustive-deps
-  const people = useMemo(() => chroniclePeople(state), [state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps
-  const years = useMemo(() => chronicleYears(state), [state.scenarioId, state.tick]); // eslint-disable-line react-hooks/exhaustive-deps
-  const seasons = useMemo(() => zoomed ? seasonWindow(state, items, zoomTick) : [], [zoomed, items, zoomTick, state.tick]); // eslint-disable-line react-hooks/exhaustive-deps
-  const biography = useMemo(() => personId === null ? null : biographyView(state, personId), [personId, state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps
+  const chapters = useMemo(() => timelineChapters({ ...(politics === undefined ? {} : { politics }), tick: seasonNow }), [politics, seasonNow]);
+  const people = useMemo(() => chroniclePeople(state), [state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps -- the people come from the ledger and the persons only
+  const years = useMemo(() => chronicleYears({ ...scenario, tick: seasonNow }), [scenario, yearNow]); // eslint-disable-line react-hooks/exhaustive-deps -- a new year adds a year; seasonNow within it gives the same list
+  const seasons = useMemo(() => zoomed ? seasonWindow({ ...scenario, tick: seasonNow }, items, zoomTick) : [], [zoomed, items, zoomTick, scenario, seasonNow]);
+  const biography = useMemo(() => personId === null ? null : biographyView(state, personId), [personId, state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps -- a biography reads the ledger and the persons (time stands still while it is open)
 
+  // The list and the biography page swap in and out: observe the one shown.
+  const onList = personId === null;
   useEffect(() => {
     const observer = new ResizeObserver(() => {
       setViewport({ list: list.current?.clientHeight ?? 480, page: body.current?.clientHeight ?? 640 });
@@ -102,7 +112,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     if (list.current !== null) observer.observe(list.current);
     if (body.current !== null) observer.observe(body.current);
     return () => observer.disconnect();
-  }, [personId === null]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [onList]);
 
   const scrollTo = (index: number) => {
     const top = Math.max(0, index * CARD_ROW - CARD_ROW);
@@ -134,7 +144,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     if (personId !== null || selected === null) return;
     const index = indexOf.get(selected);
     if (index !== undefined && list.current !== null && (index * CARD_ROW < list.current.scrollTop || index * CARD_ROW > list.current.scrollTop + viewport.list)) scrollTo(index);
-  }, [personId, indexOf]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [personId, indexOf]); // eslint-disable-line react-hooks/exhaustive-deps -- only on coming back to the list (or a new row order); the selection and scroll are read then
 
   const selectedIndex = selected === null ? (items.length > 0 ? 0 : -1) : indexOf.get(selected) ?? -1;
   const selectedItem = selectedIndex < 0 ? undefined : items[selectedIndex];
@@ -158,8 +168,8 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
               <li key={kind}><span aria-hidden="true" style={wave19ImageStyle(`timeline_marker_${kind}`, 18)} />{COPY.markerLegend[kind]}</li>
             ))}
           </ul>
-        ) : <button type="button" className="chronicle-back" onClick={() => setPersonId(null)}><UiIcon sheet="action" cell="log" />{COPY.back}</button>}
-        <button type="button" className="chronicle-close" aria-label={COPY.closeLabel} onClick={() => onClose()}>{COPY.close}</button>
+        ) : <Button type="button" className="chronicle-back" onPress={() => setPersonId(null)} variant="secondary"><UiIcon sheet="action" cell="log" />{COPY.back}</Button>}
+        <Button type="button" className="chronicle-close" aria-label={COPY.closeLabel} onPress={() => onClose()} variant="icon">{COPY.close}</Button>
       </header>
       {personId !== null ? (
         <div className="chronicle-page-body" ref={body}>
@@ -176,33 +186,28 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
           <div className="chronicle-kinds">
             {CHRONICLE_KINDS.map(kind => {
               const on = filter.kinds.includes(kind);
-              return <button key={kind} type="button" className="chronicle-kind" data-kind={kind} aria-pressed={on} aria-label={COPY.kindToggle(COPY.kinds[kind], on)}
-                onClick={() => toggleKind(kind)}>{COPY.kinds[kind]}</button>;
+              return <Button key={kind} type="button" className="chronicle-kind" data-kind={kind} aria-pressed={on} aria-label={COPY.kindToggle(COPY.kinds[kind], on)}
+                onPress={() => toggleKind(kind)} variant="toggle">{COPY.kinds[kind]}</Button>;
             })}
           </div>
-          <label className="chronicle-select">{COPY.severityLabel}
-            <select value={filter.severity} onChange={event => changeFilter({ ...filter, severity: Number(event.currentTarget.value) as HistorySeverity })}>
-              {COPY.severities.map((name, level) => <option key={name} value={level}>{name}</option>)}
-            </select></label>
-          <label className="chronicle-select">{COPY.fromLabel}
-            <select value={filter.fromYear ?? ""} onChange={event => changeFilter({ ...filter, fromYear: yearValue(event.currentTarget.value) })}>
-              <option value="">{COPY.firstYear}</option>
-              {years.map(year => <option key={year} value={year}>{year}</option>)}
-            </select></label>
-          <label className="chronicle-select">{COPY.toLabel}
-            <select value={filter.toYear ?? ""} onChange={event => changeFilter({ ...filter, toYear: yearValue(event.currentTarget.value) })}>
-              <option value="">{COPY.lastYear}</option>
-              {years.map(year => <option key={year} value={year}>{year}</option>)}
-            </select></label>
-          <label className="chronicle-select chronicle-select--person">{COPY.personLabel}
-            <select value={filter.personId ?? ""} onChange={event => {
-              const id = event.currentTarget.value === "" ? null : event.currentTarget.value;
-              // A person's own lines are mostly everyday: choosing one shows every severity.
-              changeFilter({ ...filter, personId: id, severity: id === null ? filter.severity : 0 });
-            }}>
-              <option value="">{COPY.anyPerson}</option>
-              {people.map(person => <option key={person.id} value={person.id}>{COPY.personOption(person.name, person.count)}</option>)}
-            </select></label>
+          {/* UI-KIT-1: kit selects (no native <select>); a <div>, not a <label>, so a press on the open list is not sent to the button. */}
+          <div className="chronicle-select"><span aria-hidden="true">{COPY.severityLabel}</span>
+            <Select label={COPY.severityLabel} value={filter.severity} options={COPY.severities.map((name, level) => ({ value: level, label: name }))}
+              onChange={level => changeFilter({ ...filter, severity: level as HistorySeverity })} /></div>
+          <div className="chronicle-select"><span aria-hidden="true">{COPY.fromLabel}</span>
+            <Select label={COPY.fromLabel} value={filter.fromYear ?? ""} options={[{ value: "", label: COPY.firstYear }, ...years.map(year => ({ value: year, label: String(year) }))]}
+              onChange={year => changeFilter({ ...filter, fromYear: yearValue(String(year)) })} /></div>
+          <div className="chronicle-select"><span aria-hidden="true">{COPY.toLabel}</span>
+            <Select label={COPY.toLabel} value={filter.toYear ?? ""} options={[{ value: "", label: COPY.lastYear }, ...years.map(year => ({ value: year, label: String(year) }))]}
+              onChange={year => changeFilter({ ...filter, toYear: yearValue(String(year)) })} /></div>
+          <div className="chronicle-select chronicle-select--person"><span aria-hidden="true">{COPY.personLabel}</span>
+            <Select label={COPY.personLabel} value={filter.personId ?? ""}
+              options={[{ value: "", label: COPY.anyPerson }, ...people.map(person => ({ value: person.id, label: COPY.personOption(person.name, person.count) }))]}
+              onChange={value => {
+                const id = value === "" ? null : String(value);
+                // A person's own lines are mostly everyday: choosing one shows every severity.
+                changeFilter({ ...filter, personId: id, severity: id === null ? filter.severity : 0 });
+              }} /></div>
           <span className="chronicle-count" role="status">{COPY.count(items.length)}</span>
         </div>
         <div className="chronicle-body">
