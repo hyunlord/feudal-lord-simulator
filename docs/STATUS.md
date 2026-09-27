@@ -1,11 +1,16 @@
 # 현재 상태
 
-갱신: 2026-09-27(CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **AUDIO-1 소리 P1 — 관문 ①~④ 통과, 본선 병합**(Claude Code, 소리·설정 UI·음원·라이선스·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/audio1/REPORT.md), [소리 출처](AUDIO_LICENSES.md), 결정 AU-D1~D4.
+  - **소리 37개(새 22):** 환경 넷(봄 새·여름 벌레·가을 바람·겨울 바람, 계절 크로스페이드·줌아웃일수록 큼), 가동 여섯(방앗간 날개·화덕, 제재소 톱, 채석 망치, 장날 시장 웅성, 일요일·장 끝 교회 종), 워커 셋(수레·황소·양 방울), 사건 다섯(화재·젖은 여름 비·기근 예고 종·청원 노크·대기근), 계절 전환 넷·해금·완공 팡파르. 합성 17(이 프로젝트, 이음새 없는 주기 루프) + Kenney CC0.
+  - **믹서:** 버스 셋(화면·알림·마을) 슬라이더, 음소거, 위치 루프 최대 4(가장 크게 들리는 것), 멈춤이면 위치 루프 없음, 5배속 루프 0.35배.
+  - **관문:** 브라우저 37/37 재생, 계절 전환·장날·화재·젖은 여름 스펙트럼 로그(분석기 8옥타브), 프레임 작업 p95 102.7 %·100 %(rAF 16.7 ms), UX-3 회귀 세트 통과. 합성 음색은 사용자 판정 대기.
 
 - **CHRON-1 연대기 화면 — 관문 ①~⑥ 통과, 본선 병합**(Claude Code, 렌더·UI·입력·스타일·에셋 등록·대장·스크립트·테스트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/chron1/REPORT.md), [연대기 화면 명세](design/chronicle-screen.md) CH-1~CH-12, 결정 CH-D1~D4.
   - **연대기:** 장부 서랍 [연대기] 탭·C·장 끝 [전체 연대기 보기]로 여는 전체 화면 모달(시간 정지). Wave 19 연대 띠(다섯 칸 = 다섯 시대, 표식 다섯 종, 지금·고른 때 핀, 장 막대, 계절 보기 16칸), 종류별 틀 여섯의 기록 카드(Wave 16·17 삽화, 그 해 나이의 초상, 원장 문장·수치, [위치로]·[그때 지도]·[인물]), 계절 손길 묶음·접힌 요약(펼치기 없음), 거르기 넷(종류·중요도·해·인물).

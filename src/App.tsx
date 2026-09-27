@@ -424,7 +424,8 @@ export function App() {
     if (fresh.some(row => row.severity === "immediate")) playSound("alert_urgent");
     else if (fresh.length > 0) playSound("alert_warn");
   }, [alertRows]);
-  useEffect(() => { if (tutorial.banner !== null) playSound("alert_info"); }, [tutorial.banner]);
+  // AUDIO-1: an unlock banner rings its own short call (the info tone stays the alert rows').
+  useEffect(() => { if (tutorial.banner !== null) playSound("unlock_banner"); }, [tutorial.banner]);
   // Sound starts with the player's first input intent (a press or key, so the browser's autoplay rule allows it).
   useEffect(() => platformServices().input.subscribe(() => { unlockAudio(import.meta.env?.BASE_URL ?? "/"); return undefined; }, INTENT_ORDER.world - 1), []);
   // F0-V: completions grouped into one toast (names within COMPLETION_GROUP_MS, shown for COMPLETION_TOAST_MS).

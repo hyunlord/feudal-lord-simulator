@@ -7,4 +7,8 @@ export const AUDIO_COPY = {
   quieter: "소리 줄이기",
   louder: "소리 키우기",
   volume: (percent: number) => `음량 ${percent}%`,
+  // AUDIO-1 mixer: the three buses.
+  buses: { ui: "화면", alert: "알림", world: "마을" },
+  busLevel: (bus: string, percent: number) => `${bus} 소리 ${percent}%`,
+  busLabel: (bus: string) => `${bus} 소리 크기`,
 } as const;

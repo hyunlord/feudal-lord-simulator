@@ -98,7 +98,9 @@ test("R0-1: a new game shows no cold house; an empty larder shows after a cycle,
 
 test("F0-V sounds: the 15 P0 sounds are installed, on three buses, with at most four loops", () => {
   const entries = Object.entries(SOUND_BANK);
-  assert.equal(entries.length, 15);
+  const P0 = ["place_ok", "place_cancel", "place_blocked", "alert_info", "alert_warn", "alert_urgent", "hammer_1", "hammer_2", "hammer_3",
+    "unload_wood", "unload_stone", "stage_thud", "complete", "cart_loop", "spring_ambience"];
+  assert.deepEqual(P0.filter(id => !(id in SOUND_BANK)), [], "AUDIO-1 adds to the bank; the P0 sounds stay");
   assert.deepEqual([...new Set(entries.map(([, entry]) => entry.bus))].sort(), ["alert", "ui", "world"]);
   assert.deepEqual(entries.filter(([, entry]) => !existsSync(join(ROOT, "public", entry.file))).map(([id]) => id), []);
   assert.equal(MAX_LOOPS, 4);

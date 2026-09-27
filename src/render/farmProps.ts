@@ -144,6 +144,23 @@ export function farmProps(state: GameState): readonly FarmProp[] {
   return props;
 }
 
+/**
+ * AUDIO-1: the animals the sound director hears — the pasture's flocks and herds and the farmsteads' ox teams at work.
+ * Not the pigs: they stand on the forest's edge, whose geometry belongs to the curved-ground modules (which run only
+ * with RENDER_BOUNDARY_V2 on). Each part is cached on its own inputs as in `farmProps`.
+ */
+export function heardFarmAnimals(state: GameState): readonly FarmProp[] {
+  const props = [...pastureAnimals(state)];
+  for (const [farmsteadId, work] of farmsteadFieldWork(state)) {
+    for (const [cells, kind] of [[work.ploughed, "ox_plough_team"], [work.harvested, "ox_cart_hay"]] as const) {
+      if (cells === null || cells.length === 0) continue;
+      const cell = cells[Math.floor(cells.length / 2)] as { readonly tx: number; readonly ty: number };
+      props.push({ kind, x: cell.tx, y: cell.ty, id: `farm-prop:${farmsteadId}:${kind}` });
+    }
+  }
+  return props;
+}
+
 export function drawFarmProp(context: CanvasRenderingContext2D, prop: FarmProp): void {
   const meta = ZONE_ASSETS.find(asset => asset.key === prop.kind);
   const image = zoneAsset(prop.kind);
