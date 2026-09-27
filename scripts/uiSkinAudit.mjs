@@ -73,6 +73,14 @@ async function scene(stateName, tile, extra = {}) {
   opened.page.on('pageerror', error => result.errors.push(`${stateName}: ${String(error)}`));
   return opened;
 }
+/** A story modal: it opens on its own, or from its event chip (the chip is the way in when the card waits). */
+async function storyModal(page, selector, file) {
+  const card = page.locator(selector);
+  if (!await card.waitFor({ timeout: 8_000 }).then(() => true).catch(() => false)) {
+    await page.locator('.event-chip').first().click({ timeout: 20_000 }).catch(() => undefined);
+    await card.waitFor({ timeout: 30_000 }).catch(async error => { await page.screenshot({ path: join(out, file), type: 'jpeg' }); throw error; });
+  }
+}
 async function step(name, run) {
   try { await run(); } catch (error) { result.errors.push(`${name}: ${String(error).slice(0, 300)}`); console.log(`${name}: FAILED ${String(error).slice(0, 200)}`); }
 }
@@ -151,14 +159,14 @@ await step('pause', async () => {
 await step('petition', async () => {
   const state = load('petition-open');
   const { context, page } = await scene('petition-open', houseTile(state));
-  await page.locator('.petition-card').waitFor({ timeout: 60_000 }).catch(async error => { await page.screenshot({ path: join(out, 'x-petition-timeout.jpg'), type: 'jpeg' }); throw error; }); await pause(600);
+  await storyModal(page, '.petition-card', 'x-petition-timeout.jpg'); await pause(600);
   await audit('petition', page, 's13-petition.jpg');
   await context.close();
 });
 await step('decision', async () => {
   const state = load('famine-arrival');
   const { context, page } = await scene('famine-arrival', houseTile(state));
-  await page.locator('.famine-decision').waitFor({ timeout: 60_000 }).catch(async error => { await page.screenshot({ path: join(out, 'x-decision-timeout.jpg'), type: 'jpeg' }); throw error; }); await pause(800);
+  await storyModal(page, '.famine-decision', 'x-decision-timeout.jpg'); await pause(800);
   await audit('decision', page, 's14-decision.jpg');
   await context.close();
 });

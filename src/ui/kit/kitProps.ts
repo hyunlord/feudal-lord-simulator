@@ -8,7 +8,7 @@ export function kitClass(base: string, modifiers: readonly (string | undefined |
  * without the kit's own props: the caller's class first and the kit's classes after it, a `type` in front when the
  * caller gave none. No attribute of the kit's own: a kit part is known by its `ui-*` class (the skin audit reads it).
  */
-export function orderedHostProps(props: object, kitKeys: ReadonlySet<string>, kitClasses: string, part: string,
+export function orderedHostProps(props: object, kitKeys: ReadonlySet<string>, kitClasses: string,
   defaults: Readonly<Record<string, string>> = { type: "button" }): Record<string, unknown> {
   const host: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(defaults)) if (!(key in props)) host[key] = value;
@@ -17,6 +17,5 @@ export function orderedHostProps(props: object, kitKeys: ReadonlySet<string>, ki
     if (kitKeys.has(key)) continue;
     host[key] = key === "className" ? (typeof value === "string" && value !== "" ? `${value} ${kitClasses}` : kitClasses) : value;
   }
-  void part;
   return host;
 }

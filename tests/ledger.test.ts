@@ -25,6 +25,7 @@ import { highlightedHouseTiles } from "../src/ui/diagnosticOverlayModel";
 import { LedgerPanelView } from "../src/ui/LedgerPanel";
 import { ledgerPanelModel } from "../src/ui/ledgerPanelModel";
 import { ledgerBalanceTrace } from "../scripts/ledgerBalanceTrace";
+import { Button } from "../src/ui/kit";
 
 const BASELINE = JSON.parse(readFileSync("fixtures/ledger/world-baseline-person0.json", "utf8")) as {
   readonly cases: Record<string, { readonly kind: string; readonly ticks: number; readonly stateFile: string | null;
@@ -137,11 +138,12 @@ test("L-7 recent, previous and all windows split the entries by 2,400 ticks", ()
   assert.equal(ledgerView(at, "cash", "all").total, 13);
 });
 
-function findButtons(node: ReactNode, into: ReactElement<{ onClick?: () => void; "data-source"?: string; "data-entry"?: string; children?: ReactNode }>[] = []) {
+// UI-KIT-1: the rows are kit buttons (`onPress`, no event).
+function findButtons(node: ReactNode, into: ReactElement<{ onPress?: () => void; "data-source"?: string; "data-entry"?: string; children?: ReactNode }>[] = []) {
   if (Array.isArray(node)) for (const child of node) findButtons(child, into);
   else if (node !== null && typeof node === "object" && "props" in node) {
-    const element = node as ReactElement<{ children?: ReactNode; onClick?: () => void }>;
-    if (element.type === "button") into.push(element as never);
+    const element = node as ReactElement<{ children?: ReactNode; onPress?: () => void }>;
+    if (element.type === Button) into.push(element as never);
     findButtons(element.props.children, into);
   }
   return into;
@@ -159,12 +161,12 @@ test("L-8 pressing a ledger source row outlines the selling market through the m
   const tree = LedgerPanelView({ id: "ledger", model, onSelectAccount: () => undefined, onSelectWindow: () => undefined, onHighlightBuildings: ids => highlighted.push(ids) });
   const sourceButton = findButtons(tree).find(button => button.props["data-source"] === `building:${market.id}`);
   assert.ok(sourceButton !== undefined);
-  sourceButton.props.onClick!();
+  sourceButton.props.onPress!();
   assert.deepEqual(highlighted, [[market.id]]);
   // The ids reach the map as the market's four footprint tiles (houses are no longer the only kind).
   assert.deepEqual(highlightedHouseTiles(state, highlighted[0]!), [{ tx: 12, ty: 8 }, { tx: 13, ty: 8 }, { tx: 12, ty: 9 }, { tx: 13, ty: 9 }]);
   const entryButton = findButtons(tree).find(button => button.props["data-entry"] === "ledger-000002");
-  entryButton!.props.onClick!();
+  entryButton!.props.onPress!();
   assert.deepEqual(highlighted.at(-1), [market.id]);
 });
 

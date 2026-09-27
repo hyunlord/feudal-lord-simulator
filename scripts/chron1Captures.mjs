@@ -20,6 +20,16 @@ const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const result = { url, errors: [], gates: {} };
+// UI-KIT-1: the chronicle's filters are kit selects (a button and a list panel), not native <select>s. Opens the one
+// labelled `label` (null: the person filter), presses its option `index`; returns every option's text.
+const kitSelect = async (page, label, index) => {
+  const box = label === null ? page.locator('.chronicle-select--person') : page.locator('.chronicle-select').filter({ hasText: label });
+  await box.locator('.ui-select-trigger').click();
+  const options = box.locator('[role="option"]');
+  const texts = await options.allTextContents();
+  await options.nth(Math.max(0, Math.min(index, texts.length - 1))).click();
+  return texts;
+};
 const shot = (page, file, clip) => page.screenshot({ path: join(out, file), type: 'jpeg', quality: 72, ...(clip ? { clip } : {}) });
 const state = JSON.parse(readFileSync(join(statesDir, 'chapter-end.json'), 'utf8'));
 const tileOf = () => { const b = state.buildings.find(x => x.kind === 'chapel') ?? state.buildings[0]; return [b.tx, b.ty]; };
@@ -59,7 +69,7 @@ async function open(name, extra = {}) {
   await shot(page, 'c02b-famine-era.jpg');
   const famineEra = await facts(page);
   // Every severity: the everyday cards (season lines, bundles, people) join the weighty ones.
-  await page.locator('.chronicle-select').filter({ hasText: '중요도' }).locator('select').selectOption('0');
+  await kitSelect(page, '중요도', 0);
   await page.waitForTimeout(300);
   await shot(page, 'c03-all-records.jpg');
   const all = await facts(page);
@@ -89,22 +99,19 @@ async function open(name, extra = {}) {
   const marketTown = await page.evaluate(() => [...document.querySelectorAll('.chronicle-decision-row')].map(row => ({ delta: row.getAttribute('data-delta'), text: row.textContent })));
   // Years and person: a year range, then the most recorded person.
   for (const kind of ['event', 'era', 'milestone', 'person', 'ledger']) await page.locator(`.chronicle-kind[data-kind="${kind}"]`).click();
-  const years = await page.locator('.chronicle-select').filter({ hasText: '부터' }).locator('select option').allTextContents();
-  await page.locator('.chronicle-select').filter({ hasText: '부터' }).locator('select').selectOption(years[3] ?? years.at(-1));
-  await page.locator('.chronicle-select').filter({ hasText: '까지' }).locator('select').selectOption(years[4] ?? years.at(-1));
+  const years = await kitSelect(page, '부터', 3);
+  await kitSelect(page, '까지', Math.min(4, years.length - 1));
   await page.waitForTimeout(300);
   await shot(page, 'c06-year-range.jpg');
   const range = { from: years[3], to: years[4], ...(await facts(page)) };
-  await page.locator('.chronicle-select').filter({ hasText: '부터' }).locator('select').selectOption('');
-  await page.locator('.chronicle-select').filter({ hasText: '까지' }).locator('select').selectOption('');
-  const personSelect = page.locator('.chronicle-select--person select');
-  const personOption = await personSelect.locator('option').nth(1).getAttribute('value');
-  await personSelect.selectOption(personOption);
+  await kitSelect(page, '부터', 0);
+  await kitSelect(page, '까지', 0);
+  await kitSelect(page, null, 1);
   await page.waitForTimeout(300);
   await shot(page, 'c07-person-filter.jpg');
   const person = { id: personOption, ...(await facts(page)) };
   // The season ruler around a picked time.
-  await personSelect.selectOption('');
+  await kitSelect(page, null, 0);
   await page.getByRole('button', { name: '계절 보기' }).click();
   await page.waitForTimeout(300);
   const cells = page.locator('.chronicle-season');
@@ -126,7 +133,7 @@ async function open(name, extra = {}) {
   await page.getByRole('button', { name: '계속 (샌드박스)' }).click().catch(() => undefined);
   await page.keyboard.press('KeyC');
   await screen(page).waitFor();
-  await page.locator('.chronicle-select').filter({ hasText: '중요도' }).locator('select').selectOption('0');
+  await kitSelect(page, '중요도', 0);
   for (const kind of ['decision', 'event', 'era', 'milestone', 'person']) await page.locator(`.chronicle-kind[data-kind="${kind}"]`).click();
   await page.waitForTimeout(300);
   const maps = []; let ledgerCards = [];
@@ -170,8 +177,7 @@ async function open(name, extra = {}) {
   await page.getByRole('button', { name: '계속 (샌드박스)' }).click().catch(() => undefined);
   await page.keyboard.press('KeyC');
   await screen(page).waitFor();
-  const personSelect = page.locator('.chronicle-select--person select');
-  await personSelect.selectOption(await personSelect.locator('option').nth(1).getAttribute('value'));
+  await kitSelect(page, null, 1);
   await page.waitForTimeout(300);
   await page.locator('.chronicle-card-action', { hasText: '인물' }).first().click();
   await page.locator('.chronicle-biography').waitFor();

@@ -42,7 +42,7 @@ const KIT_KEYS = new Set(["variant", "size", "tone", "onPress", "onPressAt", "is
 export function Button(props: ButtonProps) {
   const { variant = "secondary", size, tone, onPress, onPressAt, isolate = false, onHover, onFocusChange, children } = props;
   const classes = kitClass("ui-btn", [variant, size, tone === "dark" ? "dark" : undefined]);
-  const host = orderedHostProps(props, KIT_KEYS, classes, "button");
+  const host = orderedHostProps(props, KIT_KEYS, classes);
   return (
     <button {...host}
       onMouseEnter={onHover === undefined ? undefined : () => onHover(true)}
@@ -62,8 +62,8 @@ export function Button(props: ButtonProps) {
   );
 }
 
-/** A square icon button (P0 `button_icon_square_base`); `label` is its accessible name (and tooltip). */
+/** A square icon button (P0 `button_icon_square_base`); `label` is its accessible name (no `title`: no hover-only text). */
 export function IconButton(props: Omit<ButtonProps, "variant" | "aria-label"> & { readonly label: string }) {
   const { label, ...rest } = props;
-  return <Button aria-label={label} title={rest.title ?? label} {...rest} variant="icon" />;
+  return <Button aria-label={label} {...rest} variant="icon" />;
 }

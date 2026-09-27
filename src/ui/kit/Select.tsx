@@ -47,9 +47,9 @@ export function Select<V extends string | number>(props: {
   };
   const optionId = (index: number) => `${id}-option-${index}`;
   return (
-    <div className={className === undefined ? "ui-select" : `${className} ui-select`} data-ui-kit="select" data-open={open ? "true" : undefined}
+    <div className={className === undefined ? "ui-select" : `${className} ui-select`} data-open={open ? "true" : undefined}
       onBlur={event => { if (open && !event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false); }}>
-      <button ref={trigger} type="button" className="ui-btn ui-btn--secondary ui-select-trigger" data-ui-kit="select-trigger"
+      <button ref={trigger} type="button" className="ui-btn ui-btn--secondary ui-select-trigger"
         aria-haspopup="listbox" aria-expanded={open} aria-controls={open ? `${id}-list` : undefined} aria-label={`${label}: ${options[chosen]?.label ?? ""}`}
         disabled={disabled}
         onClick={() => { if (open) close(false); else show(chosen); }}
@@ -64,7 +64,7 @@ export function Select<V extends string | number>(props: {
       </button>
       {open ? (
         <ul ref={list} id={`${id}-list`} role="listbox" tabIndex={-1} aria-label={label} aria-activedescendant={optionId(active)}
-          className="ui-frame ui-frame--light ui-select-list" data-ui-kit="select-list"
+          className="ui-frame ui-frame--light ui-select-list"
           onKeyDown={event => {
             const last = options.length - 1;
             const move: Readonly<Record<string, number>> = { ArrowDown: Math.min(last, active + 1), ArrowUp: Math.max(0, active - 1), Home: 0, End: last };
@@ -78,7 +78,7 @@ export function Select<V extends string | number>(props: {
           }}>
           {options.map((option, index) => (
             <li key={String(option.value)} id={optionId(index)} role="option" aria-selected={index === chosen}
-              className={`ui-select-option${index === active ? " ui-select-option--active" : ""}`} data-ui-kit="select-option"
+              className={`ui-select-option${index === active ? " ui-select-option--active" : ""}`}
               onPointerMove={() => { if (index !== active) setActive(index); }}
               onClick={() => choose(index)}>
               {option.label}

@@ -62,7 +62,7 @@ export function Slider(props: {
   const { value, min, max, step, onChange, label, valueText, className, disabled } = props;
   const fill = max > min ? ((value - min) / (max - min)) * 100 : 0;
   return (
-    <input type="range" className={className === undefined ? "ui-slider" : `${className} ui-slider`} data-ui-kit="slider"
+    <input type="range" className={className === undefined ? "ui-slider" : `${className} ui-slider`}
       min={min} max={max} step={step} value={value} aria-label={label} aria-valuetext={valueText} disabled={disabled}
       style={{ "--ui-slider-fill": `${fill}%` } as CSSProperties}
       onChange={event => onChange(Number(event.currentTarget.value))} />
@@ -87,7 +87,7 @@ export function Tabs<K extends string>(props: {
     if (next !== undefined && next.disabled !== true) onSelect(next.key);
   };
   return (
-    <div role="tablist" aria-label={label} className={className === undefined ? "ui-tabs" : `${className} ui-tabs`} data-ui-kit="tabs"
+    <div role="tablist" aria-label={label} className={className === undefined ? "ui-tabs" : `${className} ui-tabs`}
       onKeyDown={event => {
         if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
         event.preventDefault();
@@ -105,20 +105,20 @@ export function Tabs<K extends string>(props: {
 }
 
 /** A chip (P0 `chip_condition_base`): a condition, count or tag. `tone` colours the text by status. */
-export function Chip(props: { readonly children: ReactNode; readonly tone?: "ok" | "warn" | "block" | "info"; readonly className?: string | undefined; readonly title?: string }) {
-  const { children, tone, className, title } = props;
+export function Chip(props: { readonly children: ReactNode; readonly tone?: "ok" | "warn" | "block" | "info"; readonly className?: string | undefined }) {
+  const { children, tone, className } = props;
   const classes = kitClass("ui-chip", [tone]);
-  return <span className={className === undefined ? classes : `${className} ${classes}`} title={title} data-ui-kit="chip">{children}</span>;
+  return <span className={className === undefined ? classes : `${className} ${classes}`}>{children}</span>;
 }
 
 /** A tooltip body (P0 `frame_tooltip`). It is shown by its owner on focus or press as well as hover (no hover-only text). */
 export function Tooltip(props: { readonly children: ReactNode; readonly id?: string; readonly className?: string }) {
   const { children, id, className } = props;
-  return <span role="tooltip" id={id} className={className === undefined ? "ui-tooltip" : `${className} ui-tooltip`} data-ui-kit="tooltip">{children}</span>;
+  return <span role="tooltip" id={id} className={className === undefined ? "ui-tooltip" : `${className} ui-tooltip`}>{children}</span>;
 }
 
 /** A manuscript rule (P0 `divider_manuscript_*`). */
 export function Divider(props: { readonly tone?: "light" | "dark"; readonly className?: string }) {
   const classes = kitClass("ui-divider", [props.tone === "dark" ? "dark" : undefined]);
-  return <hr className={props.className === undefined ? classes : `${props.className} ${classes}`} data-ui-kit="divider" />;
+  return <hr className={props.className === undefined ? classes : `${props.className} ${classes}`} />;
 }

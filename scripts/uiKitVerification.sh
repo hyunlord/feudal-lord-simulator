@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # UI-KIT-1 gates on the DGX, this build ($URL) beside the trunk before it ($BASE_URL):
-#   scripts/remote/run.sh render-UIKIT1 -- bash scripts/remote/with-base-build.sh <trunk-sha> -- bash scripts/uiKitVerification.sh [audit|all]
+#   scripts/remote/run.sh render-UIKIT1 -- bash scripts/remote/with-base-build.sh <trunk-sha> -- bash scripts/uiKitVerification.sh [audit|perf|all]
 # ① ③ the skin audit and the gallery (scripts/uiSkinAudit.mjs) on the states of scripts/ui5States.ts (kept between runs
 # in ~/fls-ui5-states; deterministic), the same audit on the trunk before for the before count; ④ before/after captures
-# (scripts/uiKitCaptures.mjs); with `all`, ⑤ the UX-3 regression set as UX-0b ran it. Each step runs even when one
+# (scripts/uiKitCaptures.mjs); with `perf` or `all`, ⑥ the kit's frame and chronicle cost (scripts/uiKitPerf.mjs); with `all`,
+# ⑤ the UX-3 regression set as UX-0b ran it. Each step runs even when one
 # before it fails; the summary lists the codes.
 set -u
 mode=${1:-all}
@@ -16,6 +17,7 @@ if [ ! -f "$states/merchant-town.json" ]; then step states npx tsx scripts/ui5St
 step audit node scripts/uiSkinAudit.mjs "$out/audit" --url "$URL" --states "$states"
 step audit-base node scripts/uiSkinAudit.mjs "$out/audit-base" --url "$BASE_URL" --states "$states"
 if [ -f scripts/uiKitCaptures.mjs ]; then step captures node scripts/uiKitCaptures.mjs "$out/captures" --url "$URL" --base "$BASE_URL" --states "$states"; fi
+if [ "$mode" = "perf" ] || [ "$mode" = "all" ]; then step perf node scripts/uiKitPerf.mjs "$out/gates/perf.json" --url "$URL" --base "$BASE_URL" --states "$states"; fi
 if [ "$mode" = "all" ]; then
   mkdir -p "$out/gates/replay" "$out/gates/replay-base" "$out/gates/gamepad"
   step hud-coverage npx tsx scripts/measureHudCoverage.ts "$out/gates/hud-coverage.json" --url "$URL"

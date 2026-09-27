@@ -19,7 +19,9 @@ const CSS_FILES = [...files("src/styles", /\.css$/), ...files("src/ui", /\.css$/
 
 /** Hover handlers kept on purpose, with the tap path that shows the same thing. */
 const HOVER_ALLOWLIST: Readonly<Record<string, string>> = {
-  "src/ui/BuildMenu.tsx:onMouseEnter": "desktop preview of the build summary; a tap on an unbuildable card pins the same lines, a selected card shows them in the summary and the detail panel",
+  // UI-KIT-1: the kit button's `onHover` prop is the one host hover handler; each screen that passes `onHover` is listed.
+  "src/ui/kit/Button.tsx:onMouseEnter": "the kit's `onHover` prop (never the only path: every user below has a tap path)",
+  "src/ui/BuildMenu.tsx:onHover": "desktop preview of the build summary; a tap on an unbuildable card pins the same lines, a selected card shows them in the summary and the detail panel",
 };
 
 test("Given the UI components When their attributes are read Then no title tooltip carries information", () => {
@@ -30,7 +32,7 @@ test("Given the UI components When their attributes are read Then no title toolt
 test("Given the UI components When hover handlers are listed Then only allowlisted ones remain, each with a tap path", () => {
   const found: string[] = [];
   for (const file of TSX_FILES) {
-    for (const match of read(file).matchAll(/\b(onMouseEnter|onMouseOver|onPointerEnter|onPointerOver)=/g)) found.push(`${file}:${match[1]}`);
+    for (const match of read(file).matchAll(/\b(onMouseEnter|onMouseOver|onPointerEnter|onPointerOver|onHover)=/g)) found.push(`${file}:${match[1]}`);
   }
   const unexplained = found.filter(entry => HOVER_ALLOWLIST[entry] === undefined);
   assert.deepEqual(unexplained, []);
