@@ -38,6 +38,8 @@ export interface PlacementPrediction {
   readonly lines: readonly PresentablePredictionLine[];
   readonly houseIds: readonly string[];
   readonly range: { readonly center: TileCoordinate; readonly radius: number } | null;
+  /** UX-0b2 MARKET-1: a market's reach is road tiles within MARKET_ROAD_REACH steps, not a radius (`range` is null). */
+  readonly reachTiles?: readonly TileCoordinate[];
   readonly roadSegments: readonly { readonly tile: TileCoordinate; readonly kind: 'land' | 'bridge' }[];
   readonly placement: PlacementResult;
 }

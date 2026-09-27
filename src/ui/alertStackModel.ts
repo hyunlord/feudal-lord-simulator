@@ -8,6 +8,8 @@ import { ALERT_STACK_COPY } from "./alertStackCopy.ko";
 import { CAUSE_REGISTRY, type CauseDetail, type CauseId } from "./causeRegistry";
 import { constructionAccessModel, type ConstructionAccessCause } from "./constructionAccessModel";
 import { buildingCauseSnapshot, type BuildingCausePresentation } from "./houseProgressModel";
+import { pendingPastureWarning } from "./wallExpansionModel";
+import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
 
 // Warning stack (right side, under the goal cards). Rows come from the same per-building cause model the cause map
 // draws (`buildingCauseSnapshot`: houses and facilities, status + blocker `CauseDetail`) plus the construction-site
@@ -47,7 +49,7 @@ const IMMEDIATE_SITE_CAUSES: ReadonlySet<ConstructionAccessCause> = new Set([
 ]);
 const NO_ROWS: readonly AlertRow[] = Object.freeze([]);
 
-type AlertEntry = Readonly<{
+export type AlertEntry = Readonly<{
   key: string;
   severity: AlertSeverity;
   title: string;
@@ -123,7 +125,24 @@ function storyEntries(state: GameState): readonly AlertEntry[] {
   const leaving = state.houses.flatMap(house => { const building = house.leavingSinceTick !== undefined && house.abandonedTick === undefined ? at(house.buildingId) : undefined;
     return building === undefined ? [] : [{ key: "caution|story|leaving", severity: "caution" as const, title: copy.leavingTitle, cause: copy.leavingCause, causeId: null,
       name: ALERT_STACK_COPY.houseName, targetId: building.id, tile: footprintCentre(building) }]; });
-  return [...fires, ...leaving];
+  const pasture = pastureAlertEntry(state);
+  return [...fires, ...leaving, ...(pasture === null ? [] : [pasture])];
+}
+
+/**
+ * UX-0b2 WALL-2 (WX-4): fields an expansion took in that turn to pasture a season on — a caution row whose [보기] goes
+ * to the nearest farmstead (null without one). Like every caution it competes for the stack's three rows.
+ */
+export function pastureAlertEntry(state: GameState): AlertEntry | null {
+  const pasture = pendingPastureWarning(state);
+  const first = pasture?.cells[0];
+  if (pasture === null || first === undefined) return null;
+  const tile = { tx: first % state.width, ty: Math.floor(first / state.width) };
+  const farm = state.buildings.filter(building => building.kind === "farmstead" || building.kind === "wheat_farm")
+    .sort((a, b) => Math.abs(a.tx - tile.tx) + Math.abs(a.ty - tile.ty) - (Math.abs(b.tx - tile.tx) + Math.abs(b.ty - tile.ty)) || a.id.localeCompare(b.id))[0];
+  if (farm === undefined) return null;
+  return { key: "caution|story|pasture", severity: "caution", title: WALL_EXPANSION_COPY.alertTitle, cause: WALL_EXPANSION_COPY.alertCause(pasture.cells.length, pasture.date),
+    causeId: null, name: BUILDING_CONFIG_BY_KIND[farm.kind].name, targetId: farm.id, tile };
 }
 
 function deriveRows(state: GameState): readonly AlertRow[] {

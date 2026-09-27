@@ -1,11 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-27(TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-27(UX-0b2 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **UX-0b2 UX-0b 수정 범위 추가: MARKET-1·WALL-2를 화면에 — 본선 병합**(Claude Code, UI·렌더·스타일·스크립트·시험·문서만, 엔진 0줄, 검증 DGX, 사용자 지시): [보고서](verification/ux0b2/REPORT.md), 결정 UX0B2-D1~D3.
+  - **MARKET-1:** 집 배치 칩 "시장까지 길 d걸음 / 40"(넘으면 "닿지 않음", 길 없음), 시장 배치 미리보기와 시장을 고를 때 길 40걸음 안 길 칸·닿는 집(옛 8칸 원 대신).
+  - **WALL-2:** 시대 콘솔 [목책 넓히기] → 한 변을 끌어 넓히기, 미리보기(새 목책 걸음·목재, 성 안 A→B칸, "밭 N칸 → {해 계절} 목초지" 경고와 붉은 칸), [목책 확장 선포]; 확장 뒤 콘솔 줄·구역 칠하기의 붉은 칸·위기 줄.
+  - **고친 것:** 초안에서 한 변을 끌 때 거절된 걸음이 시작점을 옮겨 거절 자리를 넘지 못하던 결함, 시대 콘솔 단추 태블릿 44 → 48 px.
+  - **관문:** 캡처 9장, UX-3 회귀 세트 통과, 맥 3,139/3,139. 깨끗한 클론은 다음 커밋에 적는다. 위기 줄 순위(UX0B2-D2)와 문구는 판정 대기.
 
 - **TEST-1 seasonArt "held chunk raster" 시험 결정론 — 본선 병합**(Claude Code, 렌더 시계 인자·시험·스크립트·문서만, 엔진 0줄, 검증 DGX): [보고서](verification/test1/REPORT.md).
   - 지면 청크 캐시에 시계를 주입하고(게임은 기본값 `performance.now`), 시험은 가짜 시계로 20·30·5 ms를 넘긴다. DGX가 바쁠 때 깨끗한 클론을 깨던 시험(MARKET-1 보고서, 두 번)이다.

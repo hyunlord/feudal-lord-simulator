@@ -4,6 +4,7 @@ import { screenToTile, tileToScreen } from './iso';
 import type { TileEdgePoint } from '../world/palisadeGeometry';
 import { palisadeFootprintsForState } from "../ui/eraConsoleModel";
 import { palisadeCoreFootprintsForState } from '../engine/palisadeFootprints';
+import { expansionDraftFootprints } from '../ui/wallExpansionModel';
 import type { TileCoordinate } from "../world/grid";
 import type { Point } from "./camera";
 import type { DragState } from "./canvasRuntime";
@@ -78,13 +79,15 @@ export function advancePalisadeDraftDrag(input: {
     return next === input.draft ? null : next;
   }
   if (input.draft.dragStartTile === null || input.hover === null) return null;
+  // UX-0b2 WALL-2: an expansion's drags skip the buildings already crowding the standing wall (the preview does not).
+  const expansion = input.draft.purpose === 'expand' ? expansionDraftFootprints(input.state) : null;
   const next = dragDraftRunByTiles({
     grid: input.state,
     draft: input.draft,
     startTile: input.draft.dragStartTile,
     currentTile: input.hover,
-    footprints: palisadeFootprintsForState(input.state),
-    enclosureFootprints: palisadeCoreFootprintsForState(input.state),
+    footprints: expansion?.footprints ?? palisadeFootprintsForState(input.state),
+    enclosureFootprints: expansion?.enclosure ?? palisadeCoreFootprintsForState(input.state),
     minimumEnclosureRatio: 1,
   });
   return next === input.draft ? null : next;

@@ -11,6 +11,7 @@ import {
 import type { Grid, TileCoordinate } from "../world/grid";
 import type { GameState } from '../engine/engine.types';
 import { palisadeFootprintsForState, palisadeCoreFootprintsForState } from '../engine/palisadeFootprints';
+import { expansionDraftFootprints } from '../ui/wallExpansionModel';
 
 export type PalisadeDraftState = {
   readonly status: "editing";
@@ -29,6 +30,8 @@ export type PalisadeDraftState = {
   readonly gestureBasePath: PalisadePath | null;
   readonly gestureEnd: 'start' | 'end' | null;
   readonly gesturePoint: TileEdgePoint | null;
+  /** UX-0b2 WALL-2: the draft widens a standing wall (`expand_palisade`) instead of proclaiming one. */
+  readonly purpose?: 'expand';
 };
 
 export function initialOpenPalisadeDraft(): PalisadeDraftState {
@@ -45,6 +48,11 @@ export function initialPalisadeDraft(candidate: ValidPalisadeCandidate): Palisad
   return {
     ...initialOpenPalisadeDraft(), mode: 'edit', path: candidate.path, candidate, failureReason: null,
   };
+}
+
+/** UX-0b2 WALL-2: an expansion draft starts from the standing wall, in edit mode (a side dragged outward). */
+export function initialExpansionDraft(candidate: ValidPalisadeCandidate): PalisadeDraftState {
+  return { ...initialPalisadeDraft(candidate), purpose: 'expand' };
 }
 
 export type PalisadeDraftIntent =
@@ -146,14 +154,17 @@ export function applyPalisadeIntent(input: {
         mode: 'draw', strokes: draft.strokes.slice(0, -1), selectedRunIndex: null,
         selectedVertexIndex: null, cancelArmed: intent.type === 'cancel' });
       if (intent.type === 'undo') return draft;
+      // An expansion has nothing to fall back to: Esc with nothing to undo ends it.
+      if (draft.purpose === 'expand') return null;
       return draft.path.length > 0 ? { ...initialOpenPalisadeDraft(), cancelArmed: true } : null;
     }
   }
 }
 
 function validatePath(state: GameState, draft: PalisadeDraftState): PalisadeDraftState {
-  const diagnosis = diagnosePalisadeDraft(state, draft.path,
-    palisadeFootprintsForState(state), palisadeCoreFootprintsForState(state), 1);
+  const expansion = draft.purpose === 'expand' ? expansionDraftFootprints(state) : null;
+  const diagnosis = diagnosePalisadeDraft(state, draft.path, expansion?.footprints ?? palisadeFootprintsForState(state),
+    expansion?.enclosure ?? palisadeCoreFootprintsForState(state), 1);
   return diagnosis.validation.ok
     ? { ...draft, candidate: diagnosis.validation.candidate,
       path: draft.activeGesture === null ? diagnosis.validation.candidate.path : draft.path,
@@ -245,10 +256,11 @@ export function dragDraftRunByTiles(input: {
     input.enclosureFootprints,
     input.minimumEnclosureRatio,
   );
+  // A refused step keeps the start: the pointer's offset keeps counting from the last valid ring, so a side can be
+  // dragged past a position that is refused (one step out too near a building, four clear) — UX-0b2, found widening a wall.
   if (!result.ok) {
     return {
       ...input.draft,
-      dragStartTile: input.currentTile,
       failureReason: result.reason,
     };
   }
