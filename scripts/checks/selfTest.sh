@@ -2,14 +2,15 @@
 # Self-test of the merge checks (REVIEW-1): bash scripts/checks/selfTest.sh
 # In a throwaway repository with this checkout's scripts/checks, scripts/git-hooks and tools/eslint, pushes to the
 # trunk are refused for each violation kind (pin without decision, lint exception without "// why:", native control
-# in src/ui, type error) and pass for their fixed versions, ordinary changes and work branches. Needs npm ci here.
+# in src/ui, type error, inbox ledger replaced_by that is not a ledger row) and pass for their fixed versions,
+# ordinary changes and work branches. Needs npm ci here.
 set -u
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
 T=$(mktemp -d /tmp/fls-review1-gate.XXXXXX)
 TRUNK=codex/phase15-organic-ground
 cd "$T" && git init -q --bare remote.git && git init -q -b "$TRUNK" work && cd work
 git config user.email gate@test; git config user.name gate
-mkdir -p scripts tools/eslint src/ui/kit seeds docs/decisions tests
+mkdir -p scripts tools/eslint src/ui/kit seeds docs/decisions tests assets-inbox
 cp -R "$REPO/scripts/checks" "$REPO/scripts/git-hooks" scripts/
 cp "$REPO"/tools/eslint/{package.json,package-lock.json,eslint.config.mjs,uiControls.mjs} tools/eslint/
 echo '{}' > tools/eslint/eslint-suppressions.json
@@ -31,6 +32,7 @@ printf '# 결정 목록\n\n| 번호 | 제목 |\n|---|---|\n' > docs/decisions/RE
 cat > tests/pin.test.ts <<'J'
 export const PINNED = "0123456789abcdef0123456789abcdef";
 J
+printf 'wave,file,sha256,status,replaced_by,verdict_note,installed_by\r\nw1,w1/a-v1.png,00,superseded,w1/a-v2.png,"old, first",\r\nw1,w1/a-v2.png,11,confirmed,,,\r\n' > assets-inbox/INBOX_LEDGER.csv
 git add -A && git commit -qm init && git remote add origin "$T/remote.git"
 git push -q --no-verify origin "$TRUNK" && git fetch -q origin   # bootstrap only
 sh scripts/git-hooks/install.sh > /dev/null
@@ -71,6 +73,11 @@ try "5 type error"                                   refused trunk_push
 try "6 same bad commit to a work branch"             passes  git push -q origin HEAD:refs/heads/work/types
 branch nook; printf 'export const x = 1;\n' > src/ui/x.ts; commit "x"
 try "7 trunk push without FLS_PUSH_OK"               refused git push -q origin HEAD:$TRUNK
+branch ledger; printf 'w1,w1/b-v1.png,22,superseded,w1/b-*.png(2장),,\r\n' >> assets-inbox/INBOX_LEDGER.csv; commit "pattern"
+try "8 ledger replaced_by is a pattern, not a row"    refused trunk_push
+printf 'w1,w1/b-v2.png,33,confirmed,,,\r\nw1,w1/b-v3.png,44,confirmed,,,\r\n' >> assets-inbox/INBOX_LEDGER.csv
+perl -pi -e 's{w1/b-\*\.png\(2장\)}{w1/b-v2.png;w1/b-v3.png}' assets-inbox/INBOX_LEDGER.csv; commit "paths"
+try "8b the two replacement rows joined with ;"        passes  trunk_push
 echo "gate: $pass as expected, $fail wrong"
 cd / && rm -rf "$T"
 [ "$fail" = 0 ]
