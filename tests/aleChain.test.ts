@@ -108,25 +108,33 @@ test("A4 (AL-4) a household with a woman takes up brewing, fetches malt from a s
   assert.equal(advanceAle(atBatch(town())).houses.some(house => brewingSlot(house) !== null), false);
 });
 
-test("A5 (AL-5) a level-2 house with ale is an alehouse; each season the houses in reach drink a cask and the alehouse pays its dues", () => {
-  let state = withKiln(town(), 40);
+test("A5 (AL-5) a brewing level-2 house is an alehouse; each season a brewer drinks her own ale, the other houses in reach buy a cask and the alehouse pays its dues", () => {
+  // Every other house has no woman of fourteen or more: it cannot brew and buys its ale.
+  const base = withKiln(town(), 40);
+  const buyers = new Set(base.houses.filter((_house, index) => index % 2 === 1).map(house => house.buildingId));
+  let state: GameState = { ...base, persons: { ...base.persons!, people: base.persons!.people.map(person => buyers.has(person.householdId ?? "") ? { ...person, sex: "male" as const } : person) } };
   for (let batch = 0; batch < 3; batch += 1) state = advanceAle(atBatch(state));
   const stakes = alehouses(state);
   assert.ok(stakes.length > 0, "alehouses");
   assert.ok(stakes.every(id => state.houses.find(house => house.buildingId === id)!.level >= ALE_BALANCE.alehouseMinLevel));
+  assert.ok(state.houses.filter(house => buyers.has(house.buildingId)).every(house => brewingSlot(house) === null), "the buyers do not brew");
   const served = aleServedHouses(state);
-  assert.ok(served.size >= stakes.length);
-  const aleBefore = state.houses.reduce((sum, house) => sum + (brewingSlot(house)?.stock.ale ?? 0), 0);
+  assert.ok(state.houses.filter(house => (brewingSlot(house)?.stock.ale ?? 0) > 0).every(house => served.has(house.buildingId)), "a brewer with ale is served by it");
   const seasonTick = Math.ceil((state.tick + 1) / 1000) * 1000;
   const drunk = advanceAle({ ...state, tick: seasonTick % BATCH === 0 ? seasonTick + 1000 * 2 : seasonTick });
-  const aleAfter = drunk.houses.reduce((sum, house) => sum + (brewingSlot(house)?.stock.ale ?? 0), 0);
-  const drinkers = state.houses.filter(house => house.level >= 2 && house.residents > 0 && served.has(house.buildingId)).length;
-  assert.ok(aleAfter < aleBefore + 2 * state.houses.length, "some was drunk");
-  const dues = drunk.ledger!.entries.filter(entry => entry.category === "stall_fee" && entry.sourceRefs.some(ref => String(ref.detail).startsWith("alehouse:")));
-  assert.ok(dues.length > 0 && drinkers > 0);
+  const brewers = state.houses.filter(house => (brewingSlot(house)?.stock.ale ?? 0) > 0);
+  for (const brewer of brewers) {
+    const after = drunk.houses.find(house => house.buildingId === brewer.buildingId)!;
+    assert.ok(after.aleUntilTick === drunk.tick + ALE_BALANCE.aleServedTicks, `${brewer.buildingId} drank`);
+  }
+  const boughtBy = drunk.houses.filter(house => buyers.has(house.buildingId) && house.level >= 1 && house.aleUntilTick === drunk.tick + ALE_BALANCE.aleServedTicks);
+  assert.ok(boughtBy.length > 0, "buyers drank from an alehouse");
+  const dues = drunk.ledger!.entries.filter(entry => entry.tick === drunk.tick && entry.category === "stall_fee" && entry.sourceRefs.some(ref => String(ref.detail).startsWith("alehouse:")));
+  const casks = dues.reduce((sum, entry) => sum + Number(String(entry.sourceRefs[0]!.detail).split(":")[1]), 0);
+  assert.equal(casks, boughtBy.length, "the alehouses are paid for what the buyers drank, not for the brewers' own");
 });
 
-test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only with an alehouse in reach, and never falls for want of ale", () => {
+test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only when served by ale, and never falls for want of ale", () => {
   const base = town();
   assert.equal(aleRequired({ ...base, tick: 60_000 }), false);
   assert.equal(aleRequired({ ...base, tick: 80_000 }), false, "a campaign still in chapter 1 after 1318 need not brew");
@@ -135,7 +143,7 @@ test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only with an ale
   const house: House = { buildingId: "h", level: 1, residents: 8, hasWater: true, breadStock: 9, lastServicedTick: 0, unmetRequirementTicks: 0, promotionTicks: 2_399 };
   const context = { tick: 100, hasGranaryNearby: true, hasMarketAccess: true, hasChurchAccess: true, palisadeProtection: "inside" as const };
   assert.equal(updateHouse(house, context).level, 2, "no ale needed");
-  assert.equal(updateHouse(house, { ...context, aleBlocked: true }).level, 1, "blocked without an alehouse");
+  assert.equal(updateHouse(house, { ...context, aleBlocked: true }).level, 1, "blocked without ale");
   assert.equal(updateHouse({ ...house, level: 2, promotionTicks: 0 }, { ...context, aleBlocked: true }).level, 2, "kept without ale");
 });
 

@@ -2,12 +2,13 @@
  * C4 the ale chain (spec docs/design/ale-chain.md AL-1…AL-9):
  *
  * - AL-4 household brewing: every batch (the craft's `ticksPerBatch`), a house of level 1 or more with a woman among its
- *   adults brews ale in its first slot once the town has malt; she fetches one malt from a store in reach, and the batch
- *   turns it into ale in the slot's stock.
- * - AL-5 alehouses: a house of level 2 or more whose slot holds ale hangs out the ale-stake. At each season's start every
- *   house of level 2 or more drinks from the nearest alehouse in reach; the alehouse pays its dues on what it sold.
- * - AL-6 the requirement: from 1318 (chapter 2), a house rises to level 2 or more only with an alehouse in reach
- *   (a house already there does not fall for want of ale).
+ *   adults brews ale in its first slot once the town has malt; she fetches one malt from the nearest of the town's stores
+ *   that holds it (bought as from the maltster: no reach, decision AL9), and the batch turns it into ale in the slot.
+ * - AL-5 alehouses: a brewing house of level 2 or more hangs out the ale-stake. At each season's start every house of
+ *   level 1 or more drinks a cask, its own brew first, else from the nearest alehouse in reach with ale; the alehouse
+ *   pays its dues on what it sold.
+ * - AL-6 the requirement: from 1318 (chapter 2), a house rises to level 2 or more only when served by ale (it drank
+ *   within two seasons, or its own slot holds ale); a house already there does not fall for want of ale.
  */
 import { ALE_BALANCE } from "../content/aleConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
@@ -64,10 +65,10 @@ export function aleRequired(state: Pick<GameState, "tick" | "scenarioId" | "poli
   return currentYear(state) >= ALE_BALANCE.requiredFromYear;
 }
 
-/** AL-5/AL-6: the households served by ale now — they drank this season or the last, or keep an alehouse with ale in it. */
+/** AL-5/AL-6: the households served by ale now — they drank this season or the last, or their own slot holds ale. */
 export function aleServedHouses(state: Pick<GameState, "houses" | "tick">): ReadonlySet<string> {
   return new Set(state.houses.filter(house => (house.aleUntilTick ?? -1) >= state.tick
-    || (isAlehouse(house) && (brewingSlot(house)?.stock.ale ?? 0) > 0)).map(house => house.buildingId));
+    || (brewingSlot(house)?.stock.ale ?? 0) > 0).map(house => house.buildingId));
 }
 
 function withSlot(house: House, slot: HouseholdSlot): House {
@@ -96,10 +97,10 @@ function brewBatch(state: GameState): GameState {
       slot = { craftId: craft.id, workers: craft.workers, input: { ...craft.input }, output: { ...craft.output }, stock: {} };
     }
     const home = byId.get(house.buildingId);
-    // She fetches a batch's malt from the nearest store in reach that has it.
+    // She fetches a batch's malt from the nearest of the town's stores that has it (decision AL9: run 3's kilns carted
+    // their malt to granaries 14–30 tiles from the nearest house, where a reach of 12 left every slot dry).
     if ((slot.stock.malt ?? 0) < (craft.input.malt ?? 1) && home !== undefined) {
-      const store = buildings.filter(building => MALT_STORES.has(building.kind) && (building.inventory.malt ?? 0) > 0
-        && buildingFootprintDistance(home, building) <= ALE_BALANCE.maltReach)
+      const store = buildings.filter(building => MALT_STORES.has(building.kind) && (building.inventory.malt ?? 0) > 0)
         .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id))[0];
       if (store !== undefined) {
         buildings[index.get(store.id)!] = { ...store, inventory: { ...store.inventory, malt: (store.inventory.malt ?? 0) - 1 } };
@@ -120,7 +121,10 @@ function brewBatch(state: GameState): GameState {
   return { ...state, houses, buildings };
 }
 
-/** AL-5: the season's drinking — each house of level 1+ from its nearest alehouse with ale; the alehouses' dues on their sales. */
+/**
+ * AL-5: the season's drinking — each house of level 1+ drinks its own brew first (decision AL9: a level-1 brewer with a
+ * full slot went dry when the alehouses did), else from its nearest alehouse with ale; the alehouses' dues on their sales.
+ */
 function drinkSeason(state: GameState): GameState {
   const buildings = new Map(state.buildings.map(building => [building.id, building]));
   const houses = [...state.houses];
@@ -130,6 +134,13 @@ function drinkSeason(state: GameState): GameState {
     if (house.level < 1 || house.residents <= 0) continue;
     const home = buildings.get(house.buildingId);
     if (home === undefined) continue;
+    const own = houses[at.get(house.buildingId)!]!;
+    const ownSlot = brewingSlot(own);
+    if (ownSlot !== null && (ownSlot.stock.ale ?? 0) >= ALE_BALANCE.alePerHouseSeason) {
+      houses[at.get(house.buildingId)!] = { ...withSlot(own, { ...ownSlot, stock: { ...ownSlot.stock, ale: (ownSlot.stock.ale ?? 0) - ALE_BALANCE.alePerHouseSeason } }),
+        aleUntilTick: state.tick + ALE_BALANCE.aleServedTicks };
+      continue;
+    }
     const stake = houses.filter(entry => isAlehouse(entry) && (brewingSlot(entry)?.stock.ale ?? 0) > 0 && buildings.has(entry.buildingId)
       && buildingFootprintDistance(home, buildings.get(entry.buildingId)!) <= ALE_BALANCE.alehouseReach)
       .sort((a, b) => buildingFootprintDistance(home, buildings.get(a.buildingId)!) - buildingFootprintDistance(home, buildings.get(b.buildingId)!)
@@ -143,13 +154,13 @@ function drinkSeason(state: GameState): GameState {
     houses[at.get(house.buildingId)!] = { ...drinker, aleUntilTick: state.tick + ALE_BALANCE.aleServedTicks };
     sold.set(stake.buildingId, (sold.get(stake.buildingId) ?? 0) + drink);
   }
-  if (sold.size === 0) return state;
+  const next = { ...state, houses };
+  if (sold.size === 0) return next;
   const postings: LedgerPosting[] = [];
   for (const [id, casks] of [...sold.entries()].sort(([a], [b]) => a.localeCompare(b))) {
     const dues = Math.ceil(casks * ALE_BALANCE.alePrice * ALE_BALANCE.alehouseDuesPermille / 1000);
     if (dues > 0) postings.push({ account: "cash", category: "stall_fee", amount: dues, sourceRefs: [{ type: "building", id, detail: `alehouse:${casks}` }] });
   }
-  const next = { ...state, houses };
   if (postings.length === 0) return next;
   const posted = postLedgerEntries(next, postings);
   return { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };
