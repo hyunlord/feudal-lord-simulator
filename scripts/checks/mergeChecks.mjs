@@ -7,7 +7,9 @@
 //  3. eslint      tools/eslint (own install)         files changed in the range; only violations that are not
 //                                                    in tools/eslint/eslint-suppressions.json fail
 //  4. typecheck   tsc --noEmit (root node_modules)
-// 1 and 2 read git objects. 3 and 4 need files: they run in this checkout when it is at <head> with no tracked
+//  5. ledger      scripts/checks/inboxLedger.mjs     every replaced_by path in assets-inbox/INBOX_LEDGER.csv is a
+//                                                    ledger row
+// 1, 2 and 5 read git objects. 3 and 4 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules.
 import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -17,6 +19,7 @@ import { join } from 'node:path';
 import { changedFiles, git, resolveRange } from './gitRange.mjs';
 import { checkPinChanges, formatPinResult } from './pinChanges.mjs';
 import { checkLintExceptions, formatLintResult } from './lintExceptions.mjs';
+import { checkInboxLedger, formatLedgerResult } from './inboxLedger.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
 const ESLINT_DIR = 'tools/eslint';
@@ -35,6 +38,8 @@ const pins = checkPinChanges({ base, head });
 report('pins', pins.missing.length === 0, formatPinResult(pins));
 const exceptions = checkLintExceptions({ head });
 report('exceptions', exceptions.unexplained.length === 0, formatLintResult(exceptions));
+const ledger = checkInboxLedger({ head });
+report('ledger', ledger.dangling.length === 0, formatLedgerResult(ledger));
 
 // Files for ESLint and tsc: this checkout if it is exactly <head>, else a temporary worktree.
 const clean = git(['status', '--porcelain', '--untracked-files=no']).trim() === '';

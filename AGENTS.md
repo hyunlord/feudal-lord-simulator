@@ -146,6 +146,7 @@
       - 기존 위반은 `tools/eslint/eslint-suppressions.json`에 있다.
       - **금지 컨트롤 규칙의 원본은 `tools/eslint/uiControls.mjs`다.** 다른 ESLint 설정(UI-KIT-1 등)은 이 파일을 가져다 쓰고 복사하지 않는다.
     - typecheck도 함께 돈다. 새 억제·예외 목록 항목을 손으로 추가해 검사를 통과시키지 않는다.
+    - **Astra 장부의 `replaced_by`는 장부에 있는 파일 경로만 쓴다**(`scripts/checks/inboxLedger.mjs`). 여러 장이면 `;`로 잇고, 패턴·설명은 `verdict_note`에 쓴다.
 
 ### 보고 양식
 맨 위 한 줄 판정: `관문: 통과/실패 — <관문 지표>`. 이어서 커밋 / 관문 결과 / 가드레일(해당 시) / 필수 조건(마지막 커밋 기준 전체 회귀 N/N · typecheck · build) / 다음 후보 / 소요 시간. A4 2장 이내.

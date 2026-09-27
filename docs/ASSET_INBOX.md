@@ -35,7 +35,7 @@ assets-inbox/
 | `rejected` | 채택하지 않음(inbox에만 남김) |
 | `retired` | 채택했다가 거둬들임(예: 역사 오류) |
 
-장부 열: `wave, file(assets-inbox 기준 경로), sha256(받은 바이트), status, replaced_by, verdict_note, installed_by`. 대체본이 여러 장이면 `replaced_by`에 경로를 `;`로 잇는다.
+장부 열: `wave, file(assets-inbox 기준 경로), sha256(받은 바이트), status, replaced_by, verdict_note, installed_by`. 대체본이 여러 장이면 `replaced_by`에 경로를 `;`로 잇는다. `replaced_by`의 경로는 모두 장부의 다른 행이어야 하고, 병합 전 검사(`scripts/checks/inboxLedger.mjs`, AGENTS.md 규칙 19)가 아니면 본선 푸시를 거부한다.
 확인 그림·기록 PNG도 한 행씩 있으며, 상태는 그 그림이 확인하는 묶음의 상태를 따른다(`verdict_note`에 `확인 그림`/`기록 그림`).
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
@@ -208,6 +208,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 22**: 81장 확정(16시 판정). 처음 묶음의 소품 20·전이 띠 10·해안 띠 5 `confirmed`, 재작업(`wave22/rework-20260927/`, 14:36 도착)의 지면 fill v2 30장(15종 × a·b)·특징 데칼 15·`shore/sand_beach_a-v2` `confirmed`. 옛 fill 15와 `sand_beach_a-v1`은 `superseded`(fill은 a·b 두 장을 `replaced_by`에 `;`로 적음). 확인 그림은 처음 3·재작업 3 모두 `confirmed`. 흩뿌리기 배치 코드(오프라인 결정론 배치 `scatter-v1`)는 `records/proofs.cjs`, 배치 계약 `records/proofs-placement-contract.md`, 결과 좌표 `records/proofs-placement.json`에 있다(게임 코드 아님).
 - **오래된 candidate 172행 정리**(21시, 사용자 규칙): ① runtime에 같은 SHA·caBX만 다른 바이트·같은 픽셀 → confirmed + `installed_by`: 해당 0행. ② 같은 ID의 더 새 판 확정 → superseded: `wave2/pilot-20260924/assets/house_l2_brewer-pilot.png` 1행(→ `wave2/house_l2_brewer-v1.png`). ③ `asset-trial`·`wave4-pilot` → rejected "방식 시험용, 제품 아님" 24행, 비교 그림 `asset-comparison.png`·`comparison.png` 2행은 확인 그림으로 confirmed. ④ Wave 5a 후보판(`candidates-v1`·`candidates-v2-29sheets`) → 설치된 V2 워커 시트와 픽셀이 같은 것이 없어 87행 rejected "V2 설치에서 선택되지 않음". 규칙 밖 58행은 `candidate` 그대로 두고 비고에 "규칙 밖: 사유 — 제안"을 적었다. 각 행 비고 끝에 "(2026-09-27 정리)".
 - **규칙 밖 58행 판정**(21시, 사용자 판정, INBOX-1p): 확정 묶음의 확인·기록 그림 30행 → confirmed "확인 그림". `wave4e/candidates-v1/assets/masters` 워커·망토 8장 → superseded, `replaced_by`에 같은 이름의 확정본(`wave4e/workers`·`wave4e/overlays`; 같은 그림의 먼저 받은 판, 바이트만 다름). `wave4e/candidates-v1/assets/templates/actor_*` 3장 → rejected "재스킨 참조 템플릿, 제품 아님(확정 템플릿은 derived-templates)". `wave4c` 울타리 이음 위상 마스크 5장 → confirmed "보조 자료(기록), 게임 코드 미사용". `wave2/farm_mixed_*` 4장 → retired(같은 바이트가 `retired/buildings/variants-wave2/`에 있음, C1f 퇴역). `wave5b/.../reused/held_staff_*` 4장 → superseded, `replaced_by`에 `walker-pilot2/candidates-v1/assets/props/`의 같은 바이트 확정본("다른 Wave 중복"). `wave2/hold/farm_pastoral_*` 3장 → candidate 유지 "C5(직물·목축) 때 판정 — 보류". `wave2/production-20260924/assets/house_l1_thatch-v1.png` → rejected "L1 초가는 runtime house_l1-v2가 담당, 이 판은 설치되지 않음". `asset-trial/evidence` 캡처 12장은 rejected 그대로. 각 행 비고 앞에 판정, 끝에 "(2026-09-27 판정) · 정리 때 비고: …". 남은 candidate는 목축형 농장 3행뿐.
+- **replaced_by 경로 검사**(2026-09-28, INBOX-1q): `ui-p0/pilot/cursor_sheet.png`의 `replaced_by`가 패턴(`ui-p0/ui/cursor_*.png(6장)`)이던 것을 실제 경로 6개(`cursor_select`·`cursor_place_valid`·`cursor_place_invalid`·`cursor_road_draw`·`cursor_zone_brush`·`cursor_inspect`)로 고쳤다. 이 행이 장부 전체에서 없는 파일을 가리키던 유일한 행이었다. 같은 커밋부터 `npm run check:merge`의 다섯째 검사 `ledger`가 장부에 없는 `replaced_by` 경로를 실패로 본다.
 
 ## 7. 찾지 못한 것
 
