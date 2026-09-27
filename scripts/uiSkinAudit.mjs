@@ -187,6 +187,9 @@ await step('chapter-end', async () => {
   const { context, page } = await scene('chapter-end', houseTile(state));
   await pause(1500);
   await audit('chapter-end', page, 's16-chapter-end.jpg');
+  // The whole chronicle of a live run (seed 2, 1323: two eras entered, three ahead at their nominal years).
+  await page.locator('.chronicle-full').click(); await pause(1500);
+  await audit('chronicle-live', page, 's17-chronicle-live.jpg');
   await context.close();
 });
 
