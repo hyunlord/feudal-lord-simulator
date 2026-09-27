@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-27 17시 갱신)
+## 3. 현재 장부 요약 (2026-09-27 20시 갱신)
 
 | wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -65,7 +65,7 @@ assets-inbox/
 | `wave18` | 48 |  | 48 |  |  |  |  | 0 |
 | `wave19` | 57 |  | 57 |  |  |  |  | 53 |
 | `wave2` | 42 | 15 | 27 |  |  |  |  | 27 |
-| `wave20` | 48 |  | 33 | 3 | 12 |  |  | 0 |
+| `wave20` | 97 |  | 82 |  | 15 |  |  | 0 |
 | `wave21` | 90 |  | 66 |  | 24 |  |  | 0 |
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
@@ -82,7 +82,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3147** | **172** | **2012** | **3** | **158** | **786** | **16** | **956** |
+| **합계** | **3196** | **172** | **2061** | **0** | **161** | **786** | **16** | **956** |
 
 ## 4. 찾는 법
 
@@ -177,6 +177,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave21-rework-20260927.zip` (09-27 14:36) | `wave21/rework-20260927` | 509,389 KB | `eb436feb9583e6ee…` | 67 | 41 | `raw/`(408MB)·`references/` 제외 | 바뀌지 않은 원본 34장은 같은 바이트라 건너뜀
 | `output/astra-wave21-rework-v1/` (작업 폴더) | `wave21/rework-20260927` | — | — | 0(ZIP과 같음) | — | 〃 |
 | `/tmp/astra-wave22-rework-candidates-20260927.zip` (09-27 14:36) | `wave22/rework-20260927` | 15,554 KB | `799d6938e40cb12f…` | 81 | 35 | 없음 | 소품 20·전이 띠 10·해안 띠 5는 같은 바이트라 건너뜀
+| `/tmp/astra-wave20-snow-v4.zip` (09-27 20:27) | `wave20/snow-v4-20260927` | 6,279 KB | `f9741e51eca68f8b…` | 80 | 0 | `references/`·`raw_*`·`generated_*`·`ref_*` 제외 | 확인 그림 2장·`qa/roof-audit/`는 사용자 지시로 `records/`
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -197,7 +198,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 15**: 계절 자연 65장 `confirmed`.
 - **Wave 18**: 에셋 41장 `confirmed`(17시 판정), 확인 그림 3·기록 그림 4도 `confirmed`. 재사용 계절 알약 `reused/pill_season_*` 4장은 Wave 8 원본과 SHA가 다르고, UI-P0 `icon_resource_sheet.png`의 셀 5~8을 잘라낸 것과 픽셀이 같다(비고에 표시, 중복으로 빼지 않음).
 - **Wave 19**: 에셋 53장 `confirmed`(확인·기록 그림 포함).
-- **Wave 20**: 집 20장 확정 — L0·L1 v1 8장 `confirmed`, L2~L4 v1 12장 `superseded`(→ `rework-20260927`의 v2), v2 12장 `confirmed`. 재작업 묶음의 새 오버레이 9장(`boarded_*-v3`·`roof_snow_*-v3`)은 판정 전이라 `candidate`. `provenance/generated/*-raw.png`는 원시 생성본이라 넣지 않았다. v3 오버레이(17시 판정): `boarded_l2~l4_{1350,1400}-v3` 6장 `confirmed`, `roof_snow_l2~l4_shared-v3` 3장 `rework_pending`.
+- **Wave 20**: 집 20장 확정 — L0·L1 v1 8장 `confirmed`, L2~L4 v1 12장 `superseded`(→ `rework-20260927`의 v2), v2 12장 `confirmed`. 재작업 묶음의 새 오버레이 9장(`boarded_*-v3`·`roof_snow_*-v3`)은 판정 전이라 `candidate`. `provenance/generated/*-raw.png`는 원시 생성본이라 넣지 않았다. v3 오버레이(17시 판정): `boarded_l2~l4_{1350,1400}-v3` 6장 `confirmed`, `roof_snow_l2~l4_shared-v3` 3장 `rework_pending`. 지붕 눈 v4(`wave20/snow-v4-20260927/`, 20시 판정): `roof_snow_l{2,3,4}_{1350,1400}-v4` 6장 `confirmed`, `roof_snow_l2~l4_shared-v3` 3장은 `superseded`(→ 같은 등급의 1350·1400 v4 두 장). 확인 그림 2장과 지붕 마스크 검수 29장은 `records/`에 두고 `confirmed`. **Wave 20 확정 = 본체 20 + 판자 6 + 눈 6 = 32장.**
 - **초상 풀 2차**(`portrait-pool/pool2-20260926`): 초상 92장과 확인·기록 그림 14장 `confirmed`(17시 판정). CHRON-1이 판정 전에 설치한 빌드 파생 184개가 이제 확정본이다.
 - **Wave 17**: 57장 `confirmed`(13시 판정). 그중 `animal_walk/ox-v1`·`cart/ox_cart_body-v1`은 Wave 13의 같은 이름 파일과 SHA가 같아 중복으로 보고 `wave17/`에서 빼고 Wave 13 행 비고에 표시했다(inbox에는 55장). `wall/stone_wall_repair_scaffold`는 비고 "설치 시 석벽 v2 옆에서 톤 확인". 확인·기록 그림 9장도 `confirmed`.
 - **Wave 16**: 11:21 도착. 에셋 35장 `confirmed`(13시 판정), 확인 그림 11·기록 그림 3도 `confirmed`(비고에 표시).

@@ -1,0 +1,6 @@
+{
+  "prompt": "Use case: lighting-weather, transparent game sprite overlay. Input image1 is exact geometry target house L2 1350; image2 snow style reference only. Produce ONLY the snow deposited on the main orange tiled roof of image1; remove the entire underlying house/roof so all other pixels are genuinely transparent. Keep exactly the same square canvas framing, roof position, scale, perspective and camera as image1. Snow must cover about 70 percent (60-80%) of the FULL visible roof plane, large continuous irregular blankets from ridge to eaves with broken scalloped irregular edges and scattered genuine transparent holes revealing tiles when composited. Do not reduce snow to a small central patch. Off-white snow, subdued blue-gray edge shadows, painterly isometric game sprite matching image2. No snow below roof, no house, no roof tiles drawn, no ground, no outlines/text/chimney. Snow should fit roof polygon roughly native137px vertices (28,7),(106,41),(85,77),(5,40); preserve placement in full square canvas.",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e298-414a-74a2-a3a4-188fbf3a039c/exec-ca37352c-ac95-47e1-a46a-1e0cf7cb77a9.png",
+  "tool": "built-in image_gen",
+  "reference": "house_l2_1350_a-v2.png"
+}
