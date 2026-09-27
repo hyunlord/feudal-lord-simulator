@@ -32,3 +32,5 @@
   - UX-3 회귀 세트는 커밋 `4709dd5`에서 통과했다: 면적 24/24, 튜토리얼 22 = 22, B9·TOUCH 14/14, 터치 대상·글자 위반 0, 패드·포커스([gates.json](gates.json)). 성능 p95도 통과.
   - 그 뒤 바뀐 것은 연대기 이름표 둘째 줄과 감사 스크립트다.
 - 로컬: typecheck, lint(`npm run lint`), `tests/chronicleScreen.test.ts` 9/9.
+- 깨끗한 클론 `2f27a8c` 3,186/3,186과 build. 그 뒤 본선에서 받은 것(INBOX-1m)은 받은함과 문서뿐이다. `npm run check:merge` 통과.
+- 시간: 20:18(가지 생성) → 20:56(본선 푸시, KST 벽시계), 약 38분.
