@@ -13,6 +13,9 @@ import type {
   RouteCandidate,
 } from "./deliveryTypes";
 
+/** LB-15 (BOT-3): a barn holding this much of its field's output is backed up (a third of a full farmstead's harvest). */
+export const BARN_BACKLOG_STOCK = 400;
+
 function bestCandidate(candidates: readonly RouteCandidate[], replenishBread = false): RouteCandidate | null {
   return [...candidates].sort((left, right) => {
     if (left.path.length !== right.path.length) {
@@ -95,7 +98,10 @@ export function fetchCandidate(
     return amount > 0 ? [{ building, path, amount }] : [];
   });
   const stored = from(building => building.kind === storeKind || BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === resource);
-  const candidates = stored.length > 0 ? stored
+  // LB-15 (BOT-3): a barn piled with the input is drawn first, nearest of those; otherwise the nearest store or barn.
+  const backlog = stored.filter(({ building }) => BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === resource
+    && amountOf(building.inventory, resource) >= BARN_BACKLOG_STOCK);
+  const candidates = backlog.length > 0 ? backlog : stored.length > 0 ? stored
     : from(building => building.id !== converter.id && BUILDING_CONFIG_BY_KIND[building.kind].production?.output === resource);
   const production = BUILDING_CONFIG_BY_KIND[converter.kind].production;
   const physical = amountOf(converter.inventory, resource);
