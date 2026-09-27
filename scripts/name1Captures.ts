@@ -109,7 +109,9 @@ if (states5 !== undefined) {
     await page.locator(`.diagnostic-card [data-walker-headline="${walkerId}"]`).waitFor({ timeout: 10_000 });
     await page.waitForTimeout(500);
     await page.screenshot({ path: join(out!, "n6-walker.jpg"), type: "jpeg", quality: 60 });
-    record("walker", await page.evaluate(id => [document.querySelector(`[data-walker-headline="${id}"]`)?.textContent ?? ""], walkerId));
+    // The card's heading names the walker's person (name · job); the headline is what they do.
+    record("walker", await page.evaluate(id => { const line = document.querySelector(`[data-walker-headline="${id}"]`);
+      return [line?.closest(".diagnostic-card")?.querySelector("h2")?.textContent ?? "", line?.textContent ?? ""]; }, walkerId));
     await close();
   });
 }
