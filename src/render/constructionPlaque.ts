@@ -17,6 +17,7 @@ import { tileToScreen } from "./iso";
 import { applyInkOutline, snapToPixel } from "./style";
 import { visibilityArt } from "./visibilityArtManifest";
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { noteConstructionTag } from "./constructionTagProbe";
 
 // F0-V site plaque (visibility design 2절): one anchor per site, the footprint centre raised by the completed height
 // (`constructionSiteLabelAnchor`, UX-0 F), carries, top to bottom, the name, the four-cell stage bar (brown = the
@@ -137,6 +138,7 @@ export function drawConstructionPlaque(context: CanvasRenderingContext2D, state:
   context.fillStyle = SEMANTIC_PALETTE.vellum;
   context.fillRect(snapToPixel(box.x), snapToPixel(box.y), snapToPixel(box.width), snapToPixel(box.height));
   context.strokeRect(snapToPixel(box.x), snapToPixel(box.y), snapToPixel(box.width), snapToPixel(box.height));
+  noteConstructionTag(context, box.x, box.y, box.width, box.height);
   context.font = FONT.replace("12px", `${12 * scale}px`);
   context.textAlign = "center";
   context.textBaseline = "alphabetic";
@@ -155,6 +157,7 @@ export function drawConstructionPlaque(context: CanvasRenderingContext2D, state:
     context.fillStyle = SEMANTIC_PALETTE.vellum;
     context.fillRect(snapToPixel(tx), snapToPixel(ty), snapToPixel(tab + wide), snapToPixel(tab));
     context.strokeRect(snapToPixel(tx), snapToPixel(ty), snapToPixel(tab + wide), snapToPixel(tab));
+    noteConstructionTag(context, tx, ty, tab + wide, tab);
     drawUiIcon(context, "cause", BLOCKER_ICON[plaque.blocker], tx + tab / 2, ty + tab / 2, 20 * scale);
     context.fillStyle = PALETTE.ink;
     if (wide > 0) context.fillText(CONSTRUCTION_PLAQUE_COPY.blockerCount(plaque.blockerCount), tx + tab + wide / 2 - 1 * scale, ty + tab / 2 + 4 * scale);

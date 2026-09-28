@@ -88,3 +88,11 @@ test("Given the engine keeps eight closed seasons When a ninth and later seasons
   assert.equal(seasonJustClosed(3_000, 9_000, 8_000), false, "a load several seasons on");
   assert.equal(seasonJustClosed(null, 9_000, 8_000), false, "a save opened mid-game");
 });
+
+test("INSTALL-3b ③: the population line gives the head count, then the season's change and the one before, signed (±0 for none)", () => {
+  const card = (ledgers: readonly SeasonLedger[]) => seasonLedgerCardModel({ scenarioId: "core:campaign_market_town", history: EMPTY_HISTORY,
+    seasons: { current: { startTick: 4_000, population: 466, stock: { bread: 0, wheat: 0, timber: 0, stone: 0 } }, history: ledgers } } as never)!;
+  assert.equal(card([ledger(0, { popDelta: 0 }), ledger(1_000, { popDelta: 0 })]).lines[1], "인구 466명 (이번 계절 ±0 · 지난 계절 ±0)");
+  assert.equal(card([ledger(0, { popDelta: -4 }), ledger(1_000, { popDelta: 12 })]).lines[1], "인구 466명 (이번 계절 +12 · 지난 계절 −4)");
+  assert.equal(card([ledger(0, { popDelta: 3 })]).lines[1], "인구 466명 (이번 계절 +3)");
+});

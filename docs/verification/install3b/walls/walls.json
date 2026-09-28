@@ -1,0 +1,42 @@
+{
+ "segments": 32,
+ "works": 1,
+ "shots": {
+  "w1-before-zoom1": {
+   "game": "http://127.0.0.1:4350/",
+   "zoom": 1,
+   "selected": null,
+   "card": false,
+   "tagBoxes": null
+  },
+  "w2-after-zoom1": {
+   "game": "http://127.0.0.1:4300/",
+   "zoom": 1,
+   "selected": null,
+   "card": false,
+   "tagBoxes": 1
+  },
+  "w3-after-zoom1.35": {
+   "game": "http://127.0.0.1:4300/",
+   "zoom": 1.35,
+   "selected": null,
+   "card": false,
+   "tagBoxes": 21
+  },
+  "w4-after-selected": {
+   "game": "http://127.0.0.1:4300/",
+   "zoom": 1,
+   "selected": "palisade-000050-segment-006",
+   "card": true,
+   "tagBoxes": 32
+  }
+ },
+ "files": [
+  "w1-before-zoom1.jpg",
+  "w2-after-zoom1.jpg",
+  "w3-after-zoom1.35.jpg",
+  "w4-after-selected.jpg"
+ ],
+ "jpegBytes": 643858,
+ "errors": []
+}

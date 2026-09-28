@@ -11,12 +11,18 @@
 //   08 the alehouse with its ale stake (world) → a house served by ale (UI: 에일을 마십니다);
 //   09 ale sold at the alehouse (world, the first sale's tick) → the season card's ale line (UI: 지금 영지에 보리·엿기름·에일).
 // Gate ② (zoom 0.6: barley strips told from wheat) is scripts/install3WorldCaptures.ts's field-* shots (one strip's field each).
-// World shots are 640 x 400 crops at zoom 1.4 around the subject; UI shots are the element. JPEG, and captures.json.
+// World shots are 640 x 400 crops at zoom 1.3 around the subject; UI shots are the element. JPEG, and captures.json.
+// INSTALL-3b ②: INSTALL-3's world shots showed forest and rock — the pointer parked at (4, 4) before each shot sat in
+// the 20 px edge-pan band (gameCanvasRuntimeInput EDGE_PAN_MARGIN_PX) and dragged the camera up-left. The pointer now
+// rests on the HUD's date bar (off the canvas, outside the band), buildings are centred on their footprint's middle,
+// and every world shot checks its subject: the subject's tile, read after the shot, must lie inside the crop (the
+// check and the point go to captures.json; a subject outside fails the step).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install3ChainCaptures.ts <out-dir> --url <game> --states <install3States dir>
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
 import { arableLayouts } from "../src/zones/arableFields";
+import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Locator = { first: () => Locator; count: () => Promise<number>; waitFor: (options?: object) => Promise<void>; click: (options?: object) => Promise<void>;
@@ -31,7 +37,9 @@ const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`)
 const url = flag("url")!; const statesDir = flag("states")!;
 mkdirSync(out!, { recursive: true });
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
-const WIDTH = 1600, HEIGHT = 1000, ZOOM = 1.4;
+// INSTALL-3b: zoom 1.3, just under the wall segments' own tags (wallSiteLabels WALL_SEGMENT_LABEL_MIN_ZOOM 1.35): at 1.4
+// every wall segment on screen tagged itself over the chain's subjects.
+const WIDTH = 1600, HEIGHT = 1000, ZOOM = 1.3;
 const CROP = { x: WIDTH / 2 - 320, y: HEIGHT / 2 - 220, width: 640, height: 400 };
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
@@ -40,7 +48,11 @@ const load = (name: string) => JSON.parse(readFileSync(join(statesDir, `${name}.
 const result: Record<string, unknown> = {};
 const errors: string[] = [];
 const files: string[] = [];
-const tileOf = (state: GameState, id: string): [number, number] => { const building = state.buildings.find(candidate => candidate.id === id)!; return [building.tx + 0.5, building.ty + 0.5]; };
+/** The middle of the building's footprint (a 2 x 2 kiln's middle is its origin + 1, not + 0.5). */
+const tileOf = (state: GameState, id: string): [number, number] => { const building = state.buildings.find(candidate => candidate.id === id)!;
+  const size = BUILDING_CONFIG_BY_KIND[building.kind]; return [building.tx + size.width / 2, building.ty + size.height / 2]; };
+/** A point on the HUD's date bar: off the canvas (no hover card) and 20 px or more from every edge (no edge pan). */
+const POINTER_REST = { x: 200, y: 40 };
 
 async function scene(state: GameState, tile: readonly number[], run = false) {
   const { context, page } = await openScene(browser, { state, tile, baseUrl: url, width: WIDTH, height: HEIGHT, zoom: ZOOM, run, initScript: TUTORIAL_OFF,
@@ -50,7 +62,16 @@ async function scene(state: GameState, tile: readonly number[], run = false) {
   await page.waitForTimeout(1_200);
   return { page, close: () => context.close() };
 }
-async function world(page: Page, file: string) { await page.mouse.move(4, 4); await page.waitForTimeout(250); await page.screenshot({ path: join(out!, file), type: "jpeg", quality: 62, clip: CROP }); files.push(file); }
+const framing: Record<string, { subject: readonly number[]; clientX: number; clientY: number; inCrop: boolean }> = {};
+/** The world shot of `subject` (a tile), then the check that the subject is inside the crop. */
+async function world(page: Page, file: string, subject: readonly number[]) {
+  await page.mouse.move(POINTER_REST.x, POINTER_REST.y); await page.waitForTimeout(250);
+  await page.screenshot({ path: join(out!, file), type: "jpeg", quality: 62, clip: CROP }); files.push(file);
+  const at = await page.evaluate(spot => (window as unknown as { __FEUDAL_PHASE10_PROOF__: Proof }).__FEUDAL_PHASE10_PROOF__.tileClientPoint(spot), { tx: subject[0]!, ty: subject[1]! });
+  const inCrop = at.clientX >= CROP.x && at.clientX <= CROP.x + CROP.width && at.clientY >= CROP.y && at.clientY <= CROP.y + CROP.height;
+  framing[file] = { subject, clientX: Math.round(at.clientX), clientY: Math.round(at.clientY), inCrop };
+  if (!inCrop) throw new Error(`${file}: the subject ${subject.join(",")} is at ${Math.round(at.clientX)},${Math.round(at.clientY)}, outside the crop`);
+}
 async function ui(locator: Locator, file: string) { await locator.first().waitFor({ timeout: 10_000 }); await locator.first().screenshot({ path: join(out!, file), type: "jpeg", quality: 62 }); files.push(file); }
 /** Clicks the building at `tile`; a walker or cart passing over it can take the click, so a few nearby points are tried. */
 async function selectAt(page: Page, tile: readonly number[]) {
@@ -89,7 +110,7 @@ function barleyFields(state: GameState, crop: "barley" | "wheat" = "barley"): [n
 await step("01-barn-to-barley", async () => {
   const state = load("m0-before"); const tile = tileOf(state, barnId);
   const { page, close } = await scene(state, tile);
-  await world(page, "g01a-world-barn-wheat.jpg");
+  await world(page, "g01a-world-barn-wheat.jpg", tile);
   await selectAt(page, tile);
   await page.locator(".inspector-crop-select .ui-select-trigger").click(); await page.waitForTimeout(300);
   await page.locator('.inspector-crop-select [role="option"]:nth-child(2)').click(); await page.waitForTimeout(700);
@@ -100,7 +121,7 @@ await step("01-barn-to-barley", async () => {
 await step("02-kiln-site", async () => {
   const state = load("m2-kiln-site"); const at = moments["m2-kiln-site"]!.kilnAt as [number, number];
   const { page, close } = await scene(state, [at[0] + 1, at[1] + 1]);
-  await world(page, "g02a-world-kiln-site.jpg");
+  await world(page, "g02a-world-kiln-site.jpg", [at[0] + 1, at[1] + 1]);
   await close();
   // The kiln armed from the build menu shows its placement chip (the same moment before the command).
   const before = load("m0-before");
@@ -116,8 +137,8 @@ await step("02-kiln-site", async () => {
 });
 await step("03-barley-growing", async () => {
   const state = load("m4-barley-growing"); const tile = tileOf(state, barnId);
-  const fields = await scene(state, barleyFields(state));
-  await world(fields.page, "g03a-world-barley-growing.jpg");
+  const strips = barleyFields(state); const fields = await scene(state, strips);
+  await world(fields.page, "g03a-world-barley-growing.jpg", strips);
   await fields.close();
   const { page, close } = await scene(state, tile);
   await selectAt(page, tile);
@@ -126,15 +147,15 @@ await step("03-barley-growing", async () => {
   return { tick: state.tick };
 });
 await step("04-barley-ripe", async () => {
-  const state = load("m5-barley-ripe"); const { page, close } = await scene(state, barleyFields(state));
-  await world(page, "g04a-world-barley-ripe.jpg");
+  const state = load("m5-barley-ripe"); const strips = barleyFields(state); const { page, close } = await scene(state, strips);
+  await world(page, "g04a-world-barley-ripe.jpg", strips);
   await close();
   return { tick: state.tick };
 });
 await step("05-harvest", async () => {
   const state = load("m7-barley-in-barn"); const tile = tileOf(state, barnId);
   const { page, close } = await scene(state, tile);
-  await world(page, "g05a-world-barn-barley-sacks.jpg");
+  await world(page, "g05a-world-barn-barley-sacks.jpg", tile);
   await selectAt(page, tile);
   await reveal(page, ".inspector-stock");
   await ui(card(page), "g05b-ui-barn-stock.jpg");
@@ -145,7 +166,7 @@ await step("06-malt", async () => {
   const state = load("m8-malt"); const kiln = moments["m8-malt"]!.kiln as string; const tile = tileOf(state, kiln);
   // The flue smokes while the kiln works (manned, barley in hand or a batch under way): read from the state, paused is fine.
   const { page, close } = await scene(state, tile);
-  await world(page, "g06a-world-kiln-working.jpg");
+  await world(page, "g06a-world-kiln-working.jpg", tile);
   await selectAt(page, tile);
   await reveal(page, ".inspector-stock");
   await ui(card(page), "g06b-ui-kiln-stock.jpg");
@@ -155,7 +176,7 @@ await step("06-malt", async () => {
 await step("07-brewing", async () => {
   const state = load("m9-brewing"); const house = moments["m9-brewing"]!.house as string; const tile = tileOf(state, house);
   const { page, close } = await scene(state, tile);
-  await world(page, "g07a-world-house-brewing.jpg");
+  await world(page, "g07a-world-house-brewing.jpg", tile);
   await page.locator("[data-dock='ledger']").first().click(); await page.waitForTimeout(700);
   await ui(page.locator(".ledger-drawer"), "g07b-ui-ledger.jpg");
   await close();
@@ -178,7 +199,7 @@ await step("08-alehouse", async () => {
     const kind = await page.evaluate(() => document.querySelector(".diagnostic-card")?.textContent?.slice(0, 80) ?? "", undefined);
     if (!kind.includes("생활 등급")) { await close(); continue; }
     await page.keyboard.press("Escape"); await page.waitForTimeout(300);
-    await world(page, "g08a-world-alehouse-stake.jpg");
+    await world(page, "g08a-world-alehouse-stake.jpg", tile);
     await selectAt(page, tile);
     await ui(card(page), "g08b-ui-house-served.jpg");
     await close();
@@ -189,7 +210,7 @@ await step("08-alehouse", async () => {
 await step("09-sold", async () => {
   const state = load("m11-ale-sold"); const house = (moments["m11-ale-sold"]!.alehouses as string[])[0]!; const tile = tileOf(state, house);
   const { page, close } = await scene(state, tile);
-  await world(page, "g09a-world-ale-sold.jpg");
+  await world(page, "g09a-world-ale-sold.jpg", tile);
   await close();
   // The season's close after the first sale: the season card's ale line (m9-brewing run at 5x to the close).
   const brewing = load("m9-brewing");
@@ -202,6 +223,6 @@ await step("09-sold", async () => {
 });
 await browser.close();
 const bytes = files.reduce((total, file) => total + statSync(join(out!, file)).size, 0);
-writeFileSync(join(out!, "captures.json"), JSON.stringify({ order: "world → UI per step", steps: result, files, jpegBytes: bytes, errors }, null, 1) + "\n");
+writeFileSync(join(out!, "captures.json"), JSON.stringify({ order: "world → UI per step", steps: result, framing, files, jpegBytes: bytes, errors }, null, 1) + "\n");
 console.log(JSON.stringify({ steps: Object.keys(result).length, files: files.length, bytes, errors }));
 process.exitCode = errors.length === 0 ? 0 : 1;

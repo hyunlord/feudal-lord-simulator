@@ -1,0 +1,147 @@
+{
+ "order": "world → UI per step",
+ "steps": {
+  "01-barn-to-barley": {
+   "tick": 92684,
+   "barn": "farmstead-39-36-0"
+  },
+  "02-kiln-site": {
+   "tick": 92684,
+   "kilnAt": [
+    38,
+    33
+   ]
+  },
+  "03-barley-growing": {
+   "tick": 93198
+  },
+  "04-barley-ripe": {
+   "tick": 94198
+  },
+  "05-harvest": {
+   "tick": 94211,
+   "barley": 150
+  },
+  "06-malt": {
+   "tick": 94280,
+   "kiln": "construction-site-000051"
+  },
+  "07-brewing": {
+   "tick": 94400,
+   "house": "construction-site-000004"
+  },
+  "08-alehouse": {
+   "tick": 94400,
+   "alehouse": "house-46-42-0",
+   "card": "주택 · 생활 등급 2장인가옥×장인가옥 · L3 상인가옥 승급 대기 · 9:05 남음다음: L3 / 첫 방해: 없음 · 승급 대기L3까지 조건 "
+  },
+  "09-sold": {
+   "tick": 95000,
+   "alehouse": "construction-site-000004"
+  }
+ },
+ "framing": {
+  "g01a-world-barn-wheat.jpg": {
+   "subject": [
+    39.5,
+    36.5
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  },
+  "g02a-world-kiln-site.jpg": {
+   "subject": [
+    39,
+    34
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  },
+  "g03a-world-barley-growing.jpg": {
+   "subject": [
+    38.7,
+    37.5
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  },
+  "g04a-world-barley-ripe.jpg": {
+   "subject": [
+    38.7,
+    37.5
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  },
+  "g05a-world-barn-barley-sacks.jpg": {
+   "subject": [
+    39.5,
+    36.5
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  },
+  "g06a-world-kiln-working.jpg": {
+   "subject": [
+    39,
+    34
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  },
+  "g07a-world-house-brewing.jpg": {
+   "subject": [
+    43.5,
+    42.5
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  },
+  "g08a-world-alehouse-stake.jpg": {
+   "subject": [
+    46.5,
+    42.5
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  },
+  "g09a-world-ale-sold.jpg": {
+   "subject": [
+    43.5,
+    42.5
+   ],
+   "clientX": 800,
+   "clientY": 500,
+   "inCrop": true
+  }
+ },
+ "files": [
+  "g01a-world-barn-wheat.jpg",
+  "g01b-ui-barn-barley-chosen.jpg",
+  "g02a-world-kiln-site.jpg",
+  "g02b-ui-kiln-chip.jpg",
+  "g03a-world-barley-growing.jpg",
+  "g03b-ui-barn-barley.jpg",
+  "g04a-world-barley-ripe.jpg",
+  "g05a-world-barn-barley-sacks.jpg",
+  "g05b-ui-barn-stock.jpg",
+  "g06a-world-kiln-working.jpg",
+  "g06b-ui-kiln-stock.jpg",
+  "g07a-world-house-brewing.jpg",
+  "g07b-ui-ledger.jpg",
+  "g08a-world-alehouse-stake.jpg",
+  "g08b-ui-house-served.jpg",
+  "g09a-world-ale-sold.jpg",
+  "g09b-ui-season-ale.jpg"
+ ],
+ "jpegBytes": 538262,
+ "errors": []
+}

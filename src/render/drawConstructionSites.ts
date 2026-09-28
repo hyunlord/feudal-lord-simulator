@@ -17,6 +17,7 @@ import {
   type ConstructionRenderSignature,
 } from "./constructionStageBands";
 import { drawPalisadeConstructionSite } from "./drawPalisadeConstructionSites";
+import { constructionLabelsVisible } from "./constructionTagProbe";
 import { tileToScreen } from "./iso";
 import { applyInkOutline, drawGroundingShadow, snapToPixel } from "./style";
 import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
@@ -90,7 +91,6 @@ export function drawConstructionSite(
   if (isPalisadeConstructionSite(input.site) || isStoneWallConstructionSite(input.site)) {
     drawPalisadeConstructionSite(context, {
       site: input.site,
-      state: input.state,
       schedule: input.schedule ?? { kind: "active" },
       zoom: input.zoom,
     });
@@ -142,7 +142,7 @@ export function drawConstructionSite(
   // F0-V: the builders are the real builder walkers at the site; the static marker (a builder sprite, else a gold
   // square) stays only for still test frames without a state.
   if (input.state === undefined) drawBuilderMarker(context, input.site, anchor, input.zoom);
-  if (input.state !== undefined && (input.viewMode ?? "normal") === "normal") drawConstructionPlaque(context, input.state, input.site, progress, input.zoom);
+  if (input.state !== undefined && (input.viewMode ?? "normal") === "normal" && constructionLabelsVisible()) drawConstructionPlaque(context, input.state, input.site, progress, input.zoom);
 }
 
 const SIGNATURES = ["plot", "foundation", "frame", "roof"] as const satisfies readonly ConstructionRenderSignature[];
