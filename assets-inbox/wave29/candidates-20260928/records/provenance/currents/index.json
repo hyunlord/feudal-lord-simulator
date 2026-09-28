@@ -1,0 +1,262 @@
+[
+  {
+    "id": "current_arrows_ne_sheet",
+    "file": "assets/current_arrows_ne_sheet-v1.png",
+    "frame_width": 128,
+    "frame_height": 64,
+    "frame_count": 6,
+    "sheet_width": 768,
+    "sheet_height": 64,
+    "layout": "horizontal",
+    "fps": 6,
+    "loop": true,
+    "repeat_x": true,
+    "repeat_y": true,
+    "alpha_baked_max": 113,
+    "recommended_alpha": 1,
+    "blend": "source-over",
+    "anchor_x": 64,
+    "anchor_y": 32,
+    "preview_frame": 0,
+    "prompt": "Create a single transparent-background painterly game water-current detail texture, square 1024 by 1024. Reference is style/color only: subdued handpainted muted teal medieval citybuilder water. Paint many broken slender irregular pale blue-gray elongated water streaks and fine scattered foam flecks evenly distributed across canvas, each streak pointing along bottom-left to top-right diagonal at screen angle -45 degrees. Mostly empty transparent space between streaks, subtle soft edges, no underlying solid water plane, no land, no objects, no border, no text, NO LITERAL ARROWS OR CHEVRONS. Streaks have varied lengths and taper naturally like a river current, not geometrical stripes. Overall quiet restrained painterly texture, designed to shrink into a 128x64 iso water detail overlay; no glare or photorealism. Actual alpha transparency.\n",
+    "generation_source": "/tmp/astra-wave29-work/lanes/currents/masters/current.png",
+    "source_sha256": "00ff573080fd0c694c35c0f3f013a7f54e08b6a6d93c7ed079aba5af371cbaf3",
+    "sha256": "5a717792866bd5f218bc59f5c41cbe8c531a9eb26a5af1e59a90e5917989abfb",
+    "notes": "Painterly water streaks, never graphical arrows. Iso flow is screen-space 1,-1. Apply inside water/channel mask. Direction derived by raster mirroring from one coherent painted source.",
+    "processing": {
+      "source_crop": {
+        "left": 300,
+        "top": 300,
+        "size": 430
+      },
+      "base_size": [
+        32,
+        32
+      ],
+      "alpha_cleanup": "remove alpha < 80 or RGB saturation range > 65, scale alpha 0.5",
+      "periodic_edge_blend_px": 5,
+      "period_screen_px": [
+        31.75,
+        15.75
+      ],
+      "flow_pixels_per_frame": [
+        5.291666666666667,
+        -2.625
+      ],
+      "mirror_x": false,
+      "mirror_y": false,
+      "temporal_formula": "t=k/6, translated periodic generated raster, not independent frames; t=1 equals t=0",
+      "rgb_lift_before_premultiply": 42,
+      "time_phase": "(k % 6) / 6"
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "current_arrows_nw_sheet",
+    "file": "assets/current_arrows_nw_sheet-v1.png",
+    "frame_width": 128,
+    "frame_height": 64,
+    "frame_count": 6,
+    "sheet_width": 768,
+    "sheet_height": 64,
+    "layout": "horizontal",
+    "fps": 6,
+    "loop": true,
+    "repeat_x": true,
+    "repeat_y": true,
+    "alpha_baked_max": 113,
+    "recommended_alpha": 1,
+    "blend": "source-over",
+    "anchor_x": 64,
+    "anchor_y": 32,
+    "preview_frame": 0,
+    "prompt": "Create a single transparent-background painterly game water-current detail texture, square 1024 by 1024. Reference is style/color only: subdued handpainted muted teal medieval citybuilder water. Paint many broken slender irregular pale blue-gray elongated water streaks and fine scattered foam flecks evenly distributed across canvas, each streak pointing along bottom-left to top-right diagonal at screen angle -45 degrees. Mostly empty transparent space between streaks, subtle soft edges, no underlying solid water plane, no land, no objects, no border, no text, NO LITERAL ARROWS OR CHEVRONS. Streaks have varied lengths and taper naturally like a river current, not geometrical stripes. Overall quiet restrained painterly texture, designed to shrink into a 128x64 iso water detail overlay; no glare or photorealism. Actual alpha transparency.\n",
+    "generation_source": "/tmp/astra-wave29-work/lanes/currents/masters/current.png",
+    "source_sha256": "00ff573080fd0c694c35c0f3f013a7f54e08b6a6d93c7ed079aba5af371cbaf3",
+    "sha256": "fff8e60530fd333161c4d3cce6e3b3f1c0e9037862b7c8df22a9c266e44353a6",
+    "notes": "Painterly water streaks, never graphical arrows. Iso flow is screen-space -1,-1. Apply inside water/channel mask. Direction derived by raster mirroring from one coherent painted source.",
+    "processing": {
+      "source_crop": {
+        "left": 300,
+        "top": 300,
+        "size": 430
+      },
+      "base_size": [
+        32,
+        32
+      ],
+      "alpha_cleanup": "remove alpha < 80 or RGB saturation range > 65, scale alpha 0.5",
+      "periodic_edge_blend_px": 5,
+      "period_screen_px": [
+        31.75,
+        15.75
+      ],
+      "flow_pixels_per_frame": [
+        -5.291666666666667,
+        -2.625
+      ],
+      "mirror_x": true,
+      "mirror_y": false,
+      "temporal_formula": "t=k/6, translated periodic generated raster, not independent frames; t=1 equals t=0",
+      "rgb_lift_before_premultiply": 42,
+      "time_phase": "(k % 6) / 6"
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "current_arrows_se_sheet",
+    "file": "assets/current_arrows_se_sheet-v1.png",
+    "frame_width": 128,
+    "frame_height": 64,
+    "frame_count": 6,
+    "sheet_width": 768,
+    "sheet_height": 64,
+    "layout": "horizontal",
+    "fps": 6,
+    "loop": true,
+    "repeat_x": true,
+    "repeat_y": true,
+    "alpha_baked_max": 113,
+    "recommended_alpha": 1,
+    "blend": "source-over",
+    "anchor_x": 64,
+    "anchor_y": 32,
+    "preview_frame": 0,
+    "prompt": "Create a single transparent-background painterly game water-current detail texture, square 1024 by 1024. Reference is style/color only: subdued handpainted muted teal medieval citybuilder water. Paint many broken slender irregular pale blue-gray elongated water streaks and fine scattered foam flecks evenly distributed across canvas, each streak pointing along bottom-left to top-right diagonal at screen angle -45 degrees. Mostly empty transparent space between streaks, subtle soft edges, no underlying solid water plane, no land, no objects, no border, no text, NO LITERAL ARROWS OR CHEVRONS. Streaks have varied lengths and taper naturally like a river current, not geometrical stripes. Overall quiet restrained painterly texture, designed to shrink into a 128x64 iso water detail overlay; no glare or photorealism. Actual alpha transparency.\n",
+    "generation_source": "/tmp/astra-wave29-work/lanes/currents/masters/current.png",
+    "source_sha256": "00ff573080fd0c694c35c0f3f013a7f54e08b6a6d93c7ed079aba5af371cbaf3",
+    "sha256": "d19a3dc9d9133aa02b958de2537140d76c2cec1fbdffd1e9a6d0308e21e5455d",
+    "notes": "Painterly water streaks, never graphical arrows. Iso flow is screen-space 1,1. Apply inside water/channel mask. Direction derived by raster mirroring from one coherent painted source.",
+    "processing": {
+      "source_crop": {
+        "left": 300,
+        "top": 300,
+        "size": 430
+      },
+      "base_size": [
+        32,
+        32
+      ],
+      "alpha_cleanup": "remove alpha < 80 or RGB saturation range > 65, scale alpha 0.5",
+      "periodic_edge_blend_px": 5,
+      "period_screen_px": [
+        31.75,
+        15.75
+      ],
+      "flow_pixels_per_frame": [
+        5.291666666666667,
+        2.625
+      ],
+      "mirror_x": false,
+      "mirror_y": true,
+      "temporal_formula": "t=k/6, translated periodic generated raster, not independent frames; t=1 equals t=0",
+      "rgb_lift_before_premultiply": 42,
+      "time_phase": "(k % 6) / 6"
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "current_arrows_sw_sheet",
+    "file": "assets/current_arrows_sw_sheet-v1.png",
+    "frame_width": 128,
+    "frame_height": 64,
+    "frame_count": 6,
+    "sheet_width": 768,
+    "sheet_height": 64,
+    "layout": "horizontal",
+    "fps": 6,
+    "loop": true,
+    "repeat_x": true,
+    "repeat_y": true,
+    "alpha_baked_max": 113,
+    "recommended_alpha": 1,
+    "blend": "source-over",
+    "anchor_x": 64,
+    "anchor_y": 32,
+    "preview_frame": 0,
+    "prompt": "Create a single transparent-background painterly game water-current detail texture, square 1024 by 1024. Reference is style/color only: subdued handpainted muted teal medieval citybuilder water. Paint many broken slender irregular pale blue-gray elongated water streaks and fine scattered foam flecks evenly distributed across canvas, each streak pointing along bottom-left to top-right diagonal at screen angle -45 degrees. Mostly empty transparent space between streaks, subtle soft edges, no underlying solid water plane, no land, no objects, no border, no text, NO LITERAL ARROWS OR CHEVRONS. Streaks have varied lengths and taper naturally like a river current, not geometrical stripes. Overall quiet restrained painterly texture, designed to shrink into a 128x64 iso water detail overlay; no glare or photorealism. Actual alpha transparency.\n",
+    "generation_source": "/tmp/astra-wave29-work/lanes/currents/masters/current.png",
+    "source_sha256": "00ff573080fd0c694c35c0f3f013a7f54e08b6a6d93c7ed079aba5af371cbaf3",
+    "sha256": "750c85eda72458439ad564288003cd3b678b947a1db1d5601f21804205139bf4",
+    "notes": "Painterly water streaks, never graphical arrows. Iso flow is screen-space -1,1. Apply inside water/channel mask. Direction derived by raster mirroring from one coherent painted source.",
+    "processing": {
+      "source_crop": {
+        "left": 300,
+        "top": 300,
+        "size": 430
+      },
+      "base_size": [
+        32,
+        32
+      ],
+      "alpha_cleanup": "remove alpha < 80 or RGB saturation range > 65, scale alpha 0.5",
+      "periodic_edge_blend_px": 5,
+      "period_screen_px": [
+        31.75,
+        15.75
+      ],
+      "flow_pixels_per_frame": [
+        -5.291666666666667,
+        2.625
+      ],
+      "mirror_x": true,
+      "mirror_y": true,
+      "temporal_formula": "t=k/6, translated periodic generated raster, not independent frames; t=1 equals t=0",
+      "rgb_lift_before_premultiply": 42,
+      "time_phase": "(k % 6) / 6"
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "mill_race_sheet",
+    "file": "assets/mill_race_sheet-v1.png",
+    "frame_width": 128,
+    "frame_height": 64,
+    "frame_count": 6,
+    "sheet_width": 768,
+    "sheet_height": 64,
+    "layout": "horizontal",
+    "fps": 8,
+    "loop": true,
+    "repeat_x": true,
+    "repeat_y": true,
+    "alpha_baked_max": 183,
+    "recommended_alpha": 1,
+    "blend": "source-over",
+    "anchor_x": 64,
+    "anchor_y": 32,
+    "preview_frame": 0,
+    "prompt": "Create one square painterly transparent game decal texture of a narrow fast mill-race water channel's foam details. Reference provided is style and palette only: muted handpainted medieval citybuilder water. Many broken narrow elongated OFFWHITE bluegray foam ribbons, irregular little whitewater curls and foam flecks all oriented bottom-left to top-right at screen -45degrees. More energetic and dense than ordinary river current but restrained palette, short staggered foam fragments over entirely transparent space. No water background plane, NO banks, buildings, waterwheel, windmill, arrows, typography, geometric chevrons, rocks, or fish. Evenly distributed texture canvas for seamless repetition, irregular painterly feathered edges. TRUE ALPHA TRANSPARENT background. One coherent still texture, not sheet, not frames.\n",
+    "generation_source": "/tmp/astra-wave29-work/lanes/currents/masters/mill.png",
+    "source_sha256": "afe15ebe465515120dac6c33e7b6ea67909e09a239511087f4b4160d4d39366d",
+    "sha256": "ade919c3f5da22b78b3eb242f24ca32b616550596c4cba16e49312f4e6e86f4c",
+    "notes": "Painterly water streaks, never graphical arrows. Iso flow is screen-space 1,-1. Apply inside water/channel mask. Direction derived by raster mirroring from one coherent painted source.",
+    "processing": {
+      "source_crop": {
+        "left": 300,
+        "top": 300,
+        "size": 600
+      },
+      "base_size": [
+        32,
+        32
+      ],
+      "alpha_cleanup": "remove alpha < 80 or RGB saturation range > 65, scale alpha 0.72",
+      "periodic_edge_blend_px": 5,
+      "period_screen_px": [
+        63.5,
+        31.5
+      ],
+      "flow_pixels_per_frame": [
+        10.583333333333334,
+        -5.25
+      ],
+      "mirror_x": false,
+      "mirror_y": false,
+      "temporal_formula": "t=k/6, translated periodic generated raster, not independent frames; t=1 equals t=0",
+      "rgb_lift_before_premultiply": 0,
+      "time_phase": "(k % 6) / 6"
+    },
+    "status": "candidate"
+  }
+]

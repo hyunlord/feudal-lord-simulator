@@ -1,0 +1,142 @@
+[
+  {
+    "id": "current_arrows_ne_sheet",
+    "steps": [
+      6.65666061102179,
+      6.702889476102971,
+      6.771604650160838,
+      6.8040392108991785,
+      6.711298445159296,
+      6.67373585420499
+    ],
+    "last_to_first": 6.67373585420499,
+    "max_interior": 6.8040392108991785,
+    "boundary_pass": true,
+    "analytical_closure_equal": true,
+    "actual_flow_per_frame": [
+      5.291666666666667,
+      -2.625
+    ],
+    "edges_exact": true,
+    "edge_mismatched_channels": 0,
+    "hidden_rgb_pixel_count": 0,
+    "measured_integer_flow": {
+      "dx": 6,
+      "dy": -3,
+      "error": 17686
+    },
+    "flow_signs_match": true
+  },
+  {
+    "id": "current_arrows_nw_sheet",
+    "steps": [
+      6.656660970052122,
+      6.702891630284961,
+      6.771613027535219,
+      6.804035381242317,
+      6.7112940171185524,
+      6.673739923215406
+    ],
+    "last_to_first": 6.673739923215406,
+    "max_interior": 6.804035381242317,
+    "boundary_pass": true,
+    "analytical_closure_equal": true,
+    "actual_flow_per_frame": [
+      -5.291666666666667,
+      -2.625
+    ],
+    "edges_exact": true,
+    "edge_mismatched_channels": 0,
+    "hidden_rgb_pixel_count": 0,
+    "measured_integer_flow": {
+      "dx": -6,
+      "dy": -3,
+      "error": 17686
+    },
+    "flow_signs_match": true
+  },
+  {
+    "id": "current_arrows_se_sheet",
+    "steps": [
+      6.656656422334544,
+      6.702889476102928,
+      6.7716044108073215,
+      6.804030713848009,
+      6.711274150773592,
+      6.67373094745714
+    ],
+    "last_to_first": 6.67373094745714,
+    "max_interior": 6.804030713848009,
+    "boundary_pass": true,
+    "analytical_closure_equal": true,
+    "actual_flow_per_frame": [
+      5.291666666666667,
+      2.625
+    ],
+    "edges_exact": true,
+    "edge_mismatched_channels": 0,
+    "hidden_rgb_pixel_count": 0,
+    "measured_integer_flow": {
+      "dx": 6,
+      "dy": 3,
+      "error": 17686
+    },
+    "flow_signs_match": true
+  },
+  {
+    "id": "current_arrows_sw_sheet",
+    "steps": [
+      6.656663722617946,
+      6.702903119255502,
+      6.771624277152292,
+      6.804030594171229,
+      6.711273073682601,
+      6.6737363329120996
+    ],
+    "last_to_first": 6.6737363329120996,
+    "max_interior": 6.804030594171229,
+    "boundary_pass": true,
+    "analytical_closure_equal": true,
+    "actual_flow_per_frame": [
+      -5.291666666666667,
+      2.625
+    ],
+    "edges_exact": true,
+    "edge_mismatched_channels": 0,
+    "hidden_rgb_pixel_count": 0,
+    "measured_integer_flow": {
+      "dx": -6,
+      "dy": 3,
+      "error": 17686
+    },
+    "flow_signs_match": true
+  },
+  {
+    "id": "mill_race_sheet",
+    "steps": [
+      32.87889009363523,
+      33.0543668859147,
+      32.74863508635857,
+      33.205475810929784,
+      33.029731660730434,
+      33.08321999942548
+    ],
+    "last_to_first": 33.08321999942548,
+    "max_interior": 33.205475810929784,
+    "boundary_pass": true,
+    "analytical_closure_equal": true,
+    "actual_flow_per_frame": [
+      10.583333333333334,
+      -5.25
+    ],
+    "edges_exact": true,
+    "edge_mismatched_channels": 0,
+    "hidden_rgb_pixel_count": 0,
+    "measured_integer_flow": {
+      "dx": 10,
+      "dy": -5,
+      "error": 31585
+    },
+    "flow_signs_match": true
+  }
+]

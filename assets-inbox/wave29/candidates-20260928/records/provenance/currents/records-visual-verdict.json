@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "score": 90,
+  "inspected": "tile-inspection.png native 4x4 tiling per sheet",
+  "findings": [
+    "No literal arrowhead symbols; flowing painted fragments only.",
+    "Current ribbons remain quiet at native size; mill-race is clearly foamier.",
+    "No hard straight border lines across 4x4 repeats.",
+    "Small internal repeat is visible in still images; this is a deliberate periodic current motif with translation for smooth six-frame loops."
+  ],
+  "limits": [
+    "Game not installed. Direction demonstrated by actual raster correlation plus assigned drift metadata; static screenshots cannot communicate time direction."
+  ]
+}

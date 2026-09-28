@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "viewed": [
+    "ripple_sheet_4x4.png",
+    "ripple_shallow_sheet_4x4.png",
+    "animation-browser-0.png",
+    "animation-browser-1.png",
+    "animation-browser-2.png",
+    "animation-browser-3.png"
+  ],
+  "browser": "Installed Chrome headless, native256x128 GIFs, four screenshots at250ms intervals",
+  "observations": [
+    "Deep water: small wavering horizontal stroke field, subdued but visible at native size.",
+    "Shallow water: thinner interlinked caustics visibly distinct from deep ripple treatment.",
+    "Native4x4 renders have no opaque plate or straight seam lines. Repeated motif rhythm remains subtly detectable as expected for single tile.",
+    "Adjacent browser captures show coherent short drift and caustic intensity changes; no independent frame repaint or teleport."
+  ],
+  "limitations": "Browser composites prove motion at native dimensions. Root should still verify original game-scene composite; no game integration performed."
+}

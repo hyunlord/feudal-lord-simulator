@@ -1,0 +1,816 @@
+{
+  "passed": 101,
+  "failed": [],
+  "checks": [
+    {
+      "name": "14effects",
+      "pass": true
+    },
+    {
+      "name": "ripple_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "ripple_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "ripple_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "ripple_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "ripple_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 63
+      }
+    },
+    {
+      "name": "ripple_sheet faintalpha",
+      "pass": true
+    },
+    {
+      "name": "ripple_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 4.516861440621165,
+        "insideMax": 4.516658498726624,
+        "steps": [
+          4.516658498726624,
+          2.8297397089939533,
+          2.770215442133896,
+          4.512354951746299,
+          4.516337495691642,
+          2.79067427691291,
+          2.774968136058157,
+          4.516861440621165
+        ]
+      }
+    },
+    {
+      "name": "ripple_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          4.516658498726624,
+          2.8297397089939533,
+          2.770215442133896,
+          4.512354951746299,
+          4.516337495691642,
+          2.79067427691291,
+          2.774968136058157,
+          4.516861440621165
+        ]
+      }
+    },
+    {
+      "name": "ripple_shallow_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "ripple_shallow_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "ripple_shallow_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "ripple_shallow_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "ripple_shallow_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 55
+      }
+    },
+    {
+      "name": "ripple_shallow_sheet faintalpha",
+      "pass": true
+    },
+    {
+      "name": "ripple_shallow_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 1.9224338007908095,
+        "insideMax": 2.343047976026269,
+        "steps": [
+          1.8750524483474647,
+          2.3281694898417493,
+          2.1727199479645365,
+          1.907230362237653,
+          1.8699621462353953,
+          2.343047976026269,
+          2.2212871177523303,
+          1.9224338007908095
+        ]
+      }
+    },
+    {
+      "name": "ripple_shallow_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          1.8750524483474647,
+          2.3281694898417493,
+          2.1727199479645365,
+          1.907230362237653,
+          1.8699621462353953,
+          2.343047976026269,
+          2.2212871177523303,
+          1.9224338007908095
+        ]
+      }
+    },
+    {
+      "name": "shore_foam_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "shore_foam_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "shore_foam_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "shore_foam_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "shore_foam_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 235
+      }
+    },
+    {
+      "name": "shore_foam_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 16.04478472541362,
+        "insideMax": 15.983289411956234,
+        "steps": [
+          15.983289411956234,
+          4.759600112017439,
+          10.027046831916337,
+          10.011213594324392,
+          4.760843314376491,
+          16.04478472541362
+        ]
+      }
+    },
+    {
+      "name": "shore_foam_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          15.983289411956234,
+          4.759600112017439,
+          10.027046831916337,
+          10.011213594324392,
+          4.760843314376491,
+          16.04478472541362
+        ]
+      }
+    },
+    {
+      "name": "ice_edge specification",
+      "pass": true
+    },
+    {
+      "name": "ice_edge sheet",
+      "pass": true
+    },
+    {
+      "name": "ice_edge hash",
+      "pass": true
+    },
+    {
+      "name": "ice_edge edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "ice_edge alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 187
+      }
+    },
+    {
+      "name": "ice_edge loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 0,
+        "insideMax": 0,
+        "steps": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "ice_edge actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "current_arrows_ne_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_ne_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_ne_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_ne_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "current_arrows_ne_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 123
+      }
+    },
+    {
+      "name": "current_arrows_ne_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 6.6723805147059165,
+        "insideMax": 6.802778775084231,
+        "steps": [
+          6.6554467294730735,
+          6.701603190104192,
+          6.770312021292887,
+          6.802778775084231,
+          6.709867948644285,
+          6.6723805147059165
+        ]
+      }
+    },
+    {
+      "name": "current_arrows_ne_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          6.6554467294730735,
+          6.701603190104192,
+          6.770312021292887,
+          6.802778775084231,
+          6.709867948644285,
+          6.6723805147059165
+        ]
+      }
+    },
+    {
+      "name": "current_arrows_nw_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_nw_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_nw_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_nw_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "current_arrows_nw_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 123
+      }
+    },
+    {
+      "name": "current_arrows_nw_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 6.672383506625338,
+        "insideMax": 6.80277518478092,
+        "steps": [
+          6.65544493432142,
+          6.701605463962959,
+          6.770320398667265,
+          6.80277518478092,
+          6.70986352060354,
+          6.672383506625338
+        ]
+      }
+    },
+    {
+      "name": "current_arrows_nw_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          6.65544493432142,
+          6.701605463962959,
+          6.770320398667265,
+          6.80277518478092,
+          6.70986352060354,
+          6.672383506625338
+        ]
+      }
+    },
+    {
+      "name": "current_arrows_se_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_se_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_se_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_se_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "current_arrows_se_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 123
+      }
+    },
+    {
+      "name": "current_arrows_se_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 6.672378839231036,
+        "insideMax": 6.802767046760089,
+        "steps": [
+          6.655439309512855,
+          6.7016069000842435,
+          6.770315491919457,
+          6.802767046760089,
+          6.709842577167591,
+          6.672378839231036
+        ]
+      }
+    },
+    {
+      "name": "current_arrows_se_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          6.655439309512855,
+          6.7016069000842435,
+          6.770315491919457,
+          6.802767046760089,
+          6.709842577167591,
+          6.672378839231036
+        ]
+      }
+    },
+    {
+      "name": "current_arrows_sw_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_sw_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_sw_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "current_arrows_sw_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "current_arrows_sw_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 123
+      }
+    },
+    {
+      "name": "current_arrows_sw_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 6.672384224685998,
+        "insideMax": 6.802768243527859,
+        "steps": [
+          6.6554451736749325,
+          6.701618030024498,
+          6.770333443435999,
+          6.802768243527859,
+          6.7098415000766,
+          6.672384224685998
+        ]
+      }
+    },
+    {
+      "name": "current_arrows_sw_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          6.6554451736749325,
+          6.701618030024498,
+          6.770333443435999,
+          6.802768243527859,
+          6.7098415000766,
+          6.672384224685998
+        ]
+      }
+    },
+    {
+      "name": "mill_race_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "mill_race_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "mill_race_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "mill_race_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "mill_race_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 184
+      }
+    },
+    {
+      "name": "mill_race_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 33.0753796147364,
+        "insideMax": 33.196958654067096,
+        "steps": [
+          32.87028174306846,
+          33.04585571289077,
+          32.740977208754366,
+          33.196958654067096,
+          33.02115837545943,
+          33.0753796147364
+        ]
+      }
+    },
+    {
+      "name": "mill_race_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          32.87028174306846,
+          33.04585571289077,
+          32.740977208754366,
+          33.196958654067096,
+          33.02115837545943,
+          33.0753796147364
+        ]
+      }
+    },
+    {
+      "name": "reeds_sway_a_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_a_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_a_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_a_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "reeds_sway_a_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 255
+      }
+    },
+    {
+      "name": "reeds_sway_a_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 7.4530539385895604,
+        "insideMax": 7.4688833997143185,
+        "steps": [
+          7.4688833997143185,
+          7.4688833997143185,
+          7.4530539385895604,
+          7.4530539385895604
+        ]
+      }
+    },
+    {
+      "name": "reeds_sway_a_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          7.4688833997143185,
+          7.4688833997143185,
+          7.4530539385895604,
+          7.4530539385895604
+        ]
+      }
+    },
+    {
+      "name": "reeds_sway_b_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_b_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_b_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_b_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "reeds_sway_b_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 255
+      }
+    },
+    {
+      "name": "reeds_sway_b_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 3.437780309606525,
+        "insideMax": 3.437780309606525,
+        "steps": [
+          3.4343734043096714,
+          3.4343734043096714,
+          3.437780309606525,
+          3.437780309606525
+        ]
+      }
+    },
+    {
+      "name": "reeds_sway_b_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          3.4343734043096714,
+          3.4343734043096714,
+          3.437780309606525,
+          3.437780309606525
+        ]
+      }
+    },
+    {
+      "name": "reeds_sway_c_sheet specification",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_c_sheet sheet",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_c_sheet hash",
+      "pass": true
+    },
+    {
+      "name": "reeds_sway_c_sheet edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "reeds_sway_c_sheet alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 255
+      }
+    },
+    {
+      "name": "reeds_sway_c_sheet loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 5.330184717116112,
+        "insideMax": 5.342134842218234,
+        "steps": [
+          5.342134842218234,
+          5.342134842218234,
+          5.330184717116112,
+          5.330184717116112
+        ]
+      }
+    },
+    {
+      "name": "reeds_sway_c_sheet actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          5.342134842218234,
+          5.342134842218234,
+          5.330184717116112,
+          5.330184717116112
+        ]
+      }
+    },
+    {
+      "name": "sparkle specification",
+      "pass": true
+    },
+    {
+      "name": "sparkle sheet",
+      "pass": true
+    },
+    {
+      "name": "sparkle hash",
+      "pass": true
+    },
+    {
+      "name": "sparkle edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "sparkle alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 255
+      }
+    },
+    {
+      "name": "sparkle loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 1.7147058823529417,
+        "insideMax": 3.4351236979166657,
+        "steps": [
+          1.7147058823529417,
+          3.4351236979166657,
+          1.7350241268382356,
+          1.7350241268382356,
+          3.4351236979166657,
+          1.7147058823529417
+        ]
+      }
+    },
+    {
+      "name": "sparkle actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          1.7147058823529417,
+          3.4351236979166657,
+          1.7350241268382356,
+          1.7350241268382356,
+          3.4351236979166657,
+          1.7147058823529417
+        ]
+      }
+    },
+    {
+      "name": "fish_ring specification",
+      "pass": true
+    },
+    {
+      "name": "fish_ring sheet",
+      "pass": true
+    },
+    {
+      "name": "fish_ring hash",
+      "pass": true
+    },
+    {
+      "name": "fish_ring edges",
+      "pass": true,
+      "detail": {
+        "maxX": 0,
+        "maxY": 0
+      }
+    },
+    {
+      "name": "fish_ring alpha clean",
+      "pass": true,
+      "detail": {
+        "hiddenRGB": 0,
+        "maxAlpha": 210
+      }
+    },
+    {
+      "name": "fish_ring loop boundary",
+      "pass": true,
+      "detail": {
+        "last": 0.849577035675381,
+        "insideMax": 3.3659628608387795,
+        "steps": [
+          0.14242834286492373,
+          0.9896522671568628,
+          2.49564014842048,
+          3.3659628608387795,
+          2.5741481141067557,
+          0.849577035675381
+        ]
+      }
+    },
+    {
+      "name": "fish_ring actual animation",
+      "pass": true,
+      "detail": {
+        "steps": [
+          0.14242834286492373,
+          0.9896522671568628,
+          2.49564014842048,
+          3.3659628608387795,
+          2.5741481141067557,
+          0.849577035675381
+        ]
+      }
+    }
+  ]
+}
