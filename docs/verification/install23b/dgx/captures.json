@@ -1,0 +1,57 @@
+{
+ "rain": {
+  "viewShare": {
+   "drizzle_sheet": 0.0174,
+   "storm_rain_sheet": 0.0879
+  },
+  "bothWhileCrossFading": 0.1053,
+  "meanDiffFromClear": {
+   "wet": 5.58,
+   "storm": 7.79
+  }
+ },
+ "props": {
+  "town": "chapter2-end",
+  "tile": [
+   43.1,
+   39.66
+  ],
+  "clip": {
+   "x": 320,
+   "y": 200,
+   "width": 640,
+   "height": 400
+  },
+  "kindsNearby": [
+   "chicken_walk_sheet",
+   "child_hoop",
+   "clothesline_b",
+   "doorstep_barrel",
+   "doorstep_chair"
+  ]
+ },
+ "pause": {
+  "zoom": 2,
+  "tile": [
+   43.1,
+   39.66
+  ],
+  "weather": "none",
+  "paused": {
+   "changedInView": 0,
+   "changedInAnimalBoxes": 0,
+   "changedInWalkerBoxes": 0,
+   "animalBoxes": 1,
+   "walkerBoxes": 40
+  },
+  "running": {
+   "changedInView": 39064,
+   "changedInAnimalBoxes": 448,
+   "changedInWalkerBoxes": 18789,
+   "animalBoxes": 1,
+   "walkerBoxes": 49
+  }
+ },
+ "jpegBytes": 871876,
+ "errors": []
+}

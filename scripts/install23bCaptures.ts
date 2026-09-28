@@ -5,8 +5,8 @@
 //     the rain streaks cover as the renderer fills them (each sheet's four cells as cut at their scale, unsmoothed, on
 //     a transparent canvas in the page: pixels with any alpha).
 //  ② the props: the chapter-2 end town in summer around its busiest yard at zoom 1.0 (the toys not drawn) and 1.4.
-//  ③ pause: the same yard at zoom 2, weather off, paused from the start — two frames 1.5 s apart; then at 1x — two
-//     frames 1.5 s apart. Changed pixels inside the village's ground animals' and the walkers' boxes and in the whole
+//  ③ pause: the same yard at zoom 2, weather off, paused from the start — two frames 1.63 s apart; then at 1x — two
+//     frames 1.63 s apart. Changed pixels inside the village's ground animals' and the walkers' boxes and in the whole
 //     view, with the difference images (x4).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install23bCaptures.ts <out-dir> --url <game> --states <ui6States dir>
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
@@ -109,6 +109,9 @@ result.props = { town: "chapter2-end", tile, clip: PROPS_CLIP, kindsNearby: [...
 
 // ③ Pause. Screen boxes (view px at zoom 2) of the ground animals and the walkers in view.
 const ZOOM = 2;
+// Not a whole number of smoke cycles (the Wave 7 sheet: 4 frames x 180 ms = 720 ms; 1.5 s is two cycles and a sliver,
+// so both frames showed the same smoke), about nine frames apart.
+const GAP_MS = 1_630;
 const screenOf = (x: number, y: number) => { const at = tileToScreen(x, y); return { x: WIDTH / 2 + (at.sx - tileToScreen(tile[0], tile[1]).sx) * ZOOM, y: HEIGHT / 2 + (at.sy - tileToScreen(tile[0], tile[1]).sy) * ZOOM }; };
 const inView = (box: Rect) => box.x + box.width > 0 && box.y + box.height > 0 && box.x < WIDTH && box.y < HEIGHT;
 const animalBoxes = ground.filter(item => item.animals > 0).map(item => { const at = screenOf(item.x, item.y); return { x: at.x - 48, y: at.y - 40, width: 96, height: 56 }; }).filter(inView);
@@ -143,12 +146,18 @@ async function frames(run: boolean, name: string) {
       return count;
     };
     return { changedInView: total, changedInAnimalBoxes: inside(boxes.animals), changedInWalkerBoxes: inside(boxes.walkers), image: view.toDataURL("image/jpeg", 0.6) };
-  }, { boxes: { animals: animalBoxes, walkers: walkerBoxes }, wait: 1_500 });
+  }, { boxes: { animals: animalBoxes, walkers: walkerBoxes }, wait: GAP_MS });
+  // The walkers themselves: their positions in the game state after the two frames (a box can also catch smoke).
+  const after = await page.evaluate(() => {
+    const proof = (window as unknown as { __FEUDAL_PHASE10_PROOF__?: { state?: () => GameState } }).__FEUDAL_PHASE10_PROOF__;
+    return proof?.state?.().walkers.map(walker => ({ tx: walker.position.tx, ty: walker.position.ty })) ?? null;
+  }, null);
+  const walkersMoved = walkers === null || after === null ? null : after.filter((position, index) => position.tx !== walkers[index]?.tx || position.ty !== walkers[index]?.ty).length;
   writeFileSync(join(out!, `f-${name}-diff.jpg`), Buffer.from(measured.image.split(",")[1]!, "base64"));
   await page.screenshot({ path: join(out!, `f-${name}.jpg`), type: "jpeg", quality: 55 });
   await close();
   const { image: _image, ...counts } = measured;
-  return { ...counts, animalBoxes: animalBoxes.length, walkerBoxes: walkerBoxes.length };
+  return { ...counts, animalBoxes: animalBoxes.length, walkerBoxes: walkerBoxes.length, walkers: walkers?.length ?? null, walkersMoved };
 }
 try {
   result.pause = { zoom: ZOOM, tile, weather: "none", paused: await frames(false, "paused"), running: await frames(true, "running") };
