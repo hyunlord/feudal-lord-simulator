@@ -17,7 +17,7 @@ const ROOT = resolve(import.meta.dirname, "..");
 // [file, anchor, text put before it (every occurrence when `all`)].
 type Insert = readonly [string, string, string, boolean?];
 const ENGINE_LINES: readonly Insert[] = [
-  ["src/content/buildingConfig.ts", '  | "keep";', '  | "test_hall"\n'],
+  ["src/content/buildingConfig.ts", '  | "keep"', '  | "test_hall"\n'],
   ["src/content/buildingConfig.ts", "  keep: {\n    kind: \"keep\",", `  test_hall: {
     kind: "test_hall",
     name: "시험 회관",
@@ -34,9 +34,7 @@ const ENGINE_LINES: readonly Insert[] = [
 `],
   ["src/economy/constructionSites.ts", "    keep: 1200,", "    test_hall: 300,\n"],
   ["src/content/scenario/coreScenarios.ts", '"keep"],', '"test_hall", '],
-  // The engine's switches over the construction site kinds (each lists every building kind).
-  ["src/economy/constructionSiteAccessors.ts", '    case "keep":', '    case "test_hall":\n', true],
-  ["src/population/builderLabourWalkers.ts", '    case "keep":', '    case "test_hall":\n', true],
+  // C4: the construction sites read the kind from BUILDING_CONFIG_BY_KIND (no switch over the kinds to extend).
 ];
 const CATALOG_LINES: readonly Insert[] = [
   ["src/content/buildingCatalog.ts", "  keep: { category:", '  test_hall: { category: "public", group: "service" },\n'],

@@ -13,4 +13,6 @@ type AutoplayCommand =
   | { readonly kind: "set_wall_construction_priority"; readonly priority: "priority" }
   /** AF-13: autoplay paints an arable field block (a zone stroke). */
   | { readonly kind: "paint_zone"; readonly zone: import("../zones/zone.types").ZoneKind; readonly stroke: import("../zones/zone.types").ZoneStroke }
+  /** C4 (AL-8): the bot calls the game command `set_farmstead_crop` (a barn to barley for the ale). */
+  | { readonly kind: "set_farmstead_crop"; readonly buildingId: string; readonly crop: import("../content/buildingConfig").FieldCrop }
   | { readonly kind: "none" };

@@ -59,7 +59,8 @@ test("SC-4 SC-6 proclamation requirement rows keep the pre-B2 labels and targets
 });
 
 test("SC-5 unlocks come from stages: the church moves to market town, everything else is unchanged", () => {
-  const before = { quarry: "palisade", masonry: "palisade", market: "palisade", church: "stone_town", keep: "stone_town" } as const;
+  // C4 (AL-3): the malt kiln opens with the market town.
+  const before = { quarry: "palisade", masonry: "palisade", market: "palisade", church: "stone_town", keep: "stone_town", malt_kiln: "palisade" } as const;
   for (const { kind } of BUILDING_CONFIG) {
     const firstEra = (["hamlet", "palisade", "stone_town"] as const).find(era => isBuildingUnlocked(kind, era));
     // AF-12: the retired wheat farm is never unlocked; the farmstead opens with the village.

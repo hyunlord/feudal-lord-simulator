@@ -20,7 +20,8 @@ const STAGES: readonly StageDef[] = [
       { kind: "spendable_resource_at_least", resource: "timber", value: 250 },
     ] },
     // K4-1: the church moves here from the stone-town proclamation so L4 houses need no stone wall.
-    unlocks: ["quarry", "masonry", "market", "church"],
+    // C4 (AL-3): the malt kiln with the market town (ale is a choice in chapter 1, a need from 1318).
+    unlocks: ["quarry", "masonry", "market", "church", "malt_kiln"],
   },
   {
     id: "fortified_town",

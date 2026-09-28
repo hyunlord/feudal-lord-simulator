@@ -8,36 +8,13 @@ import type {
   WallConstructionSite,
 } from "./constructionSites";
 
-function assertNever(value: never): never {
-  throw new Error(`Unhandled construction site variant: ${JSON.stringify(value)}`);
-}
+// BLD-REG / C4: a site is a wall segment (named here) or a building — any kind of `BUILDING_CONFIG_BY_KIND`, so a new
+// building kind needs no line in this file.
 
 export function isBuildingConstructionSite(
   site: ConstructionSite,
 ): site is BuildingConstructionSite {
-  switch (site.kind) {
-    case "palisade_segment":
-    case "stone_wall_segment":
-      return false;
-    case "house":
-    case "well":
-    case "storehouse":
-    case "granary":
-    case "chapel":
-    case "wheat_farm":
-    case "farmstead":
-    case "mill":
-    case "logging_camp":
-    case "sawmill":
-    case "quarry":
-    case "masonry":
-    case "market":
-    case "church":
-    case "keep":
-      return true;
-    default:
-      return assertNever(site);
-  }
+  return Object.hasOwn(BUILDING_CONFIG_BY_KIND, site.kind);
 }
 
 export function isStoneWallConstructionSite(
@@ -53,136 +30,42 @@ export function isWallConstructionSite(
 }
 
 export function constructionSiteAnchor(site: ConstructionSite): TileCoordinate {
-  switch (site.kind) {
-    case "palisade_segment":
-    case "stone_wall_segment":
-      return site.anchor;
-    case "house":
-    case "well":
-    case "storehouse":
-    case "granary":
-    case "chapel":
-    case "wheat_farm":
-    case "farmstead":
-    case "mill":
-    case "logging_camp":
-    case "sawmill":
-    case "quarry":
-    case "masonry":
-    case "market":
-    case "church":
-    case "keep":
-      return { tx: site.tx, ty: site.ty };
-    default:
-      return assertNever(site);
-  }
+  return isWallConstructionSite(site) ? site.anchor : { tx: site.tx, ty: site.ty };
 }
 
 export function constructionSiteFootprint(site: ConstructionSite): ConstructionSiteFootprint {
-  switch (site.kind) {
-    case "palisade_segment": {
-      const xs = site.path.map((point) => point.x);
-      const ys = site.path.map((point) => point.y);
-      const minX = Math.min(...xs);
-      const minY = Math.min(...ys);
-      return {
-        tx: minX,
-        ty: minY,
-        width: Math.max(1, Math.max(...xs) - minX),
-        height: Math.max(1, Math.max(...ys) - minY),
-      };
-    }
-    case "stone_wall_segment": {
-      const xs = site.path.map((point) => point.x);
-      const ys = site.path.map((point) => point.y);
-      const minX = Math.min(...xs);
-      const minY = Math.min(...ys);
-      return {
-        tx: minX,
-        ty: minY,
-        width: Math.max(1, Math.max(...xs) - minX),
-        height: Math.max(1, Math.max(...ys) - minY),
-      };
-    }
-    case "house":
-    case "well":
-    case "storehouse":
-    case "granary":
-    case "chapel":
-    case "wheat_farm":
-    case "farmstead":
-    case "mill":
-    case "logging_camp":
-    case "sawmill":
-    case "quarry":
-    case "masonry":
-    case "market":
-    case "church":
-    case "keep": {
-      const definition = BUILDING_CONFIG_BY_KIND[site.kind];
-      return { tx: site.tx, ty: site.ty, width: definition.width, height: definition.height };
-    }
-    default:
-      return assertNever(site);
+  if (isWallConstructionSite(site)) {
+    const xs = site.path.map((point) => point.x);
+    const ys = site.path.map((point) => point.y);
+    const minX = Math.min(...xs);
+    const minY = Math.min(...ys);
+    return {
+      tx: minX,
+      ty: minY,
+      width: Math.max(1, Math.max(...xs) - minX),
+      height: Math.max(1, Math.max(...ys) - minY),
+    };
   }
+  const definition = BUILDING_CONFIG_BY_KIND[site.kind];
+  return { tx: site.tx, ty: site.ty, width: definition.width, height: definition.height };
 }
 
 export function constructionSiteDisplayName(site: ConstructionSite): string {
-  switch (site.kind) {
-    case "palisade_segment":
-      return "목책 구간";
-    case "stone_wall_segment":
-      return "석벽 구간";
-    case "house":
-    case "well":
-    case "storehouse":
-    case "granary":
-    case "chapel":
-    case "wheat_farm":
-    case "farmstead":
-    case "mill":
-    case "logging_camp":
-    case "sawmill":
-    case "quarry":
-    case "masonry":
-    case "market":
-    case "church":
-    case "keep":
-      return BUILDING_CONFIG_BY_KIND[site.kind].name;
-    default:
-      return assertNever(site);
-  }
+  if (site.kind === "palisade_segment") return "목책 구간";
+  if (site.kind === "stone_wall_segment") return "석벽 구간";
+  return BUILDING_CONFIG_BY_KIND[site.kind].name;
 }
 
 export function constructionSiteCacheKey(site: ConstructionSite): string {
-  switch (site.kind) {
-    case "palisade_segment":
-    case "stone_wall_segment":
-      return [
-        site.kind,
-        site.id,
-        site.wallId,
-        site.segmentIndex,
-        site.order,
-        site.path.map((point) => `${point.x},${point.y}`).join(";"),
-      ].join(":");
-    case "house":
-    case "well":
-    case "storehouse":
-    case "granary":
-    case "chapel":
-    case "wheat_farm":
-    case "farmstead":
-    case "mill":
-    case "logging_camp":
-    case "sawmill":
-    case "quarry":
-    case "masonry":
-    case "market":
-    case "church":
-    case "keep":
-      return `${site.kind}:${site.id}:${site.tx}:${site.ty}`;
-    default:
-      return assertNever(site);
+  if (isWallConstructionSite(site)) {
+    return [
+      site.kind,
+      site.id,
+      site.wallId,
+      site.segmentIndex,
+      site.order,
+      site.path.map((point) => `${point.x},${point.y}`).join(";"),
+    ].join(":");
   }
+  return `${site.kind}:${site.id}:${site.tx}:${site.ty}`;
 }
