@@ -1,0 +1,77 @@
+{
+ "variant": "opposite",
+ "answers": {
+  "guild_charter": "refuse",
+  "cloth_or_grain": "refuse",
+  "tax_collection": "refuse",
+  "borough_charter": "refuse"
+ },
+ "start": {
+  "tick": 275340,
+  "treasury": 27768,
+  "population": 768
+ },
+ "end": {
+  "tick": 327000,
+  "year": 1381,
+  "chapter": 5,
+  "treasury": 48121,
+  "population": 763,
+  "lived": 24
+ },
+ "cloth": {
+  "sold": 451,
+  "income": 8587,
+  "incomeToTreasury": 8587
+ },
+ "rent": 9866,
+ "pollTax": 3459,
+ "leavers": {
+  "wages": 1,
+  "weavers": 2
+ },
+ "rebellion": {
+  "tick": 325000,
+  "pressure": 50,
+  "outcome": "chased"
+ },
+ "guild": null,
+ "influence": {
+  "town": 61,
+  "merchant_house_1": 62,
+  "merchant_house_2": 37
+ },
+ "relations": {
+  "overlord": 10,
+  "crown": 20,
+  "neighbour_1": -2,
+  "neighbour_2": 0,
+  "bishop": 15,
+  "merchant_house_1": -30,
+  "merchant_house_2": 0,
+  "town": -22,
+  "commons": 15
+ },
+ "chapterFiveStart": {
+  "charter": "refused",
+  "rights": [],
+  "feeFarm": 0,
+  "backlash": 61,
+  "guild": null,
+  "influence": {
+   "town": 61,
+   "merchant_house_1": 62,
+   "merchant_house_2": 37
+  }
+ },
+ "income": {
+  "rent": 9866,
+  "cloth_toll": 3608,
+  "ulnage": 3608,
+  "poll_tax": 3459,
+  "mill_toll": 2630,
+  "toll": 2579,
+  "fulling_toll": 1371,
+  "stall_fee": 888
+ }
+}

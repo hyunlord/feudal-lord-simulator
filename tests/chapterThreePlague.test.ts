@@ -247,7 +247,9 @@ test("P10 (PL-10) chapter 3 ends from 1362 once the town has 70 % of its people 
   assert.equal(end.chronicle.stats.plague!.outcome, "resettled");
   assert.equal(end.chronicle.stats.plague!.dead, shared.plague!.first!.dead);
   assert.equal(ended.politics!.chapter.number, 4);
-  assert.deepEqual(chapterGoals(ended).at(-1), { chapter: 3, id: "resettled", reachedTick: spring(1362) });
+  assert.deepEqual(chapterGoals(ended).find(goal => goal.chapter === 3), { chapter: 3, id: "resettled", reachedTick: spring(1362) });
+  // F4-A (RG-10): chapter 4's goal follows, the charter still to negotiate.
+  assert.deepEqual(chapterGoals(ended).at(-1), { chapter: 4, id: "charter", reachedTick: null });
   // Too few in 1362: the chapter waits; by 1364 it ends by the calendar. The empty plots then return to the ladder.
   const few = { ...base, population: Math.floor(people * 0.6) };
   assert.equal(advancePlague(few, endChapterThree).plague!.endedTick, undefined);
@@ -288,7 +290,8 @@ test("P11 (PL-11) the bot's answers (monastery, wages, settlers, money rent); th
 test("P12 (PL-11) the save round trip (v26) mid-pestilence, the same course twice, chapters 1–2 untouched, and a petition's other answers refused", () => {
   const mid = at(arrival + SEASON + 2);
   const saved = decodeSave(encodeSave({ state: mid, createdAt: "2026-09-28T00:00:00.000Z", savedAt: "2026-09-28T00:00:00.000Z" }).bytes);
-  assert.equal(SAVE_SCHEMA_VERSION, 26);
+  // F4-A: v27 (the reorganisation) carries the pestilence's state as it was.
+  assert.equal(SAVE_SCHEMA_VERSION, 27);
   assert.deepEqual(saved.envelope.state, mid);
   const a = run(mid, mid.tick + 1500), b = run(saved.envelope.state, mid.tick + 1500);
   assert.deepEqual(a, b);

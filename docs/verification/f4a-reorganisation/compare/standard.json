@@ -1,0 +1,86 @@
+{
+ "variant": "standard",
+ "answers": {
+  "guild_charter": "accept",
+  "cloth_or_grain": "accept",
+  "tax_collection": "accept",
+  "borough_charter": "accept"
+ },
+ "start": {
+  "tick": 275340,
+  "treasury": 27768,
+  "population": 768
+ },
+ "end": {
+  "tick": 329000,
+  "year": 1382,
+  "chapter": 5,
+  "treasury": 50725,
+  "population": 768,
+  "lived": 24
+ },
+ "cloth": {
+  "sold": 575,
+  "income": 11988,
+  "incomeToTreasury": 11988
+ },
+ "rent": 10846,
+ "pollTax": 1816,
+ "leavers": {
+  "wages": 1,
+  "weavers": 0
+ },
+ "rebellion": {
+  "tick": 325000,
+  "pressure": 10,
+  "outcome": "quiet"
+ },
+ "guild": {
+  "foundedTick": 289000,
+  "headId": "p-001907"
+ },
+ "influence": {
+  "town": 93,
+  "merchant_house_1": 76,
+  "merchant_house_2": 45
+ },
+ "relations": {
+  "overlord": -20,
+  "crown": 30,
+  "neighbour_1": -2,
+  "neighbour_2": 0,
+  "bishop": 15,
+  "merchant_house_1": 35,
+  "merchant_house_2": 0,
+  "town": 58,
+  "commons": 40
+ },
+ "chapterFiveStart": {
+  "charter": "partial",
+  "rights": [
+   "market_tolls",
+   "bridge_tolls"
+  ],
+  "feeFarm": 120,
+  "backlash": 0,
+  "guild": {
+   "foundedTick": 289000,
+   "headId": "p-001907"
+  },
+  "influence": {
+   "town": 93,
+   "merchant_house_1": 76,
+   "merchant_house_2": 45
+  }
+ },
+ "income": {
+  "rent": 10846,
+  "cloth_toll": 5462,
+  "ulnage": 4600,
+  "mill_toll": 2752,
+  "toll": 2709,
+  "fulling_toll": 1926,
+  "poll_tax": 1816,
+  "stall_fee": 850
+ }
+}
