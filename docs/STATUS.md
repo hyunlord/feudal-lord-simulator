@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-28(BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(INSTALL-3 · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -8,6 +8,12 @@
 ## 현재 단계
 
 - **Wave 24 Steam 그림 후처리 — 완료, 본선 커밋**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 히어로는 생성 원본 2152×731 → Real-ESRGAN x2plus(DGX GPU) → 3840×1240(구도 동일, 가장자리 또렷·붓 질감 매끈, 100% 비교 첨부). 엠블럼·앱 아이콘 PNG·바로가기 아이콘은 알파 8 미만 픽셀을 (0,0,0,0)으로 바꿨다. `assets-inbox/wave24/processed-20260928/` 4장·비교 1 `confirmed`, 원래 4행 `superseded`, 장부 3,855행 = 그림 3,855. [기록](../assets-inbox/wave24/processed-20260928/records/README.md).
+- **INSTALL-3 에일 사슬이 화면에 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시·판정): [보고서](verification/install3/REPORT.md), 결정 INSTALL3-D1~D6.
+  - Wave 3 에일 그림 28장(23장 쓰임): 보리 띠(자람·익음), 엿기름 가마(작업 화로 연기), 에일하우스 장대(단칸 L2, 에일 있을 때만), 보리·엿기름 자루·에일 통 더미, 수레 적재물, 에일 양조 여인·엿기름공(표현 전용 심부름).
+  - 헛간 작물 선택(밀/보리, 다음 파종부터), 보리·엿기름·에일 아이콘(장부·저장소·재고·배치 칩), 에일 없는 집의 승급 대기(엔진 `aleHoldTicks` — `housing.ts` export만)와 결산 줄, 봇 라벨 "다음: 헛간 작물을 보리로".
+  - 관문: 사람 재생 9단계 세계 → UI 캡처, 줌 0.6은 띠 구별(더미·적재물은 IN7-D1, 사용자 판정), 스킨 감사 0 / 912, 면적 5.9 % / 6 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 검증: CLONE_SHA.
+  - 넘길 것: 에일은 집 안에만(장부·수레에 안 나옴), 헛간 작물 명령에 장 제한 없음.
+
 - **BUDGET-1b 글꼴 woff2만·장 그림은 그 장에서 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 BUDGET-1): [보고서](verification/budget1/budget1b/REPORT.md), 결정 BUDGET1b-D1~D2.
   - 글꼴은 woff2만(`scripts/woff2OnlyFonts.ts`): dist 63.60 → 54.45 MB. 장 그림 규칙 `src/render/chapterArt.ts`: 2장 전쟁 소품·3장 흑사병 봉쇄 집을 그 장에 들어갈 때(8장, 해제 1.05 MB — Wave 12 시설은 아직 없고 3~5장 삽화는 원래 늦게).
   - 예산표 "시작 시 불러오는 그림 메모리": 1장 시작 441장·해제 66.04 MB(전부 67.10). 다음 후보: 정착 단계별 불러오기(성곽·방어 킷·옛 성문).

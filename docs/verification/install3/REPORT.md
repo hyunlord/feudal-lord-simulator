@@ -1,6 +1,6 @@
 # INSTALL-3 에일 사슬이 화면에 — 헛간 작물 선택·엿기름 가마·가내 양조·에일하우스·Wave 3 그림 — 보고서
 
-관문: GATES_LINE
+관문: 통과 — ① 사람 재생 9단계 세계 → UI 캡처 오류 0(헛간 보리 전환 → 파종 → 익음 → 수확 → 엿기름 → 양조 → 에일하우스 → 판매) · ② 줌 0.6 보리 띠·밀 띠 구별(더미·적재물은 IN7-D1대로 1.0부터 — 사용자 판정) · ③ 스킨 감사 0 / 912(26개 상태) · 면적 1280 5.9 % / 6 %·태블릿 6.5 % / 8 % · 튜토리얼 22 = 22 · B9·TOUCH 14/14 · ④ 병합 전 검사 · CLONE_LINE
 
 지시서 INSTALL-3(RENDER_C)과 엔진 C4가 넘긴 것(`docs/verification/c4-ale/REPORT.md` 5절). 세계 절반과 UI 절반은 하위 에이전트 둘이 각자 가지(`claude/i3-world`, `claude/i3-ui`)에서 만들었고, 설치·사람 재생 상태·관문 캡처·검토·DGX·보고는 이 세션이 했다.
 
@@ -28,10 +28,23 @@
 
 ## 4. 관문 ① 사람 재생 — 세계 → UI 순서
 - 상태: `scripts/install3States.ts` — C4 사람 경로(`tests/humanPathAle.test.ts`)를 그대로 재생: v22 목책 공사 저장을 2장으로, 명령 둘(첫 헛간을 보리로, 헛간 옆에 가마)을 게임 리듀서로, 그 뒤는 세계가 돈다(중간 편집 없음). 틱: 명령 90,976 → 보리 파종 91,505 → 가마 완공 92,258 → 보리 자람 92,500 → 익음 93,500 → 헛간에 보리 93,505(59) → 엿기름 93,574 → 양조·에일하우스 93,600 → 첫 에일 판매 94,000.
-- 캡처: `scripts/install3ChainCaptures.ts`, 단계마다 세계(주제 둘레 640 × 400, 줌 1.4) 다음 UI(요소) — CHAIN_LIST.
+- 캡처: `scripts/install3ChainCaptures.ts`, 단계마다 세계(주제 둘레 640 × 400, 줌 1.4) 다음 UI(요소), DGX([chain/](chain/), 17장, [captures.json](chain/captures.json)):
+  1. [헛간 — 아직 밀](chain/g01a-world-barn-wheat.jpg) → [카드에서 보리 선택(페이지 클릭, 명령은 스토어로)](chain/g01b-ui-barn-barley-chosen.jpg)
+  2. [가마 공사장](chain/g02a-world-kiln-site.jpg) → [가마 배치 칩](chain/g02b-ui-kiln-chip.jpg)
+  3. [보리 자람](chain/g03a-world-barley-growing.jpg) → [헛간 카드 보리](chain/g03b-ui-barn-barley.jpg)
+  4. [보리 익음](chain/g04a-world-barley-ripe.jpg)(93,500은 젖은 여름이라 두 작물 모두 병든 그림 — 마른 여름의 익은 보리는 [world/barley-ripe-z1.0](world/barley-ripe-z1.0.jpg))
+  5. [헛간 보리 자루](chain/g05a-world-barn-barley-sacks.jpg) → [헛간 재고 보리 59](chain/g05b-ui-barn-stock.jpg)
+  6. [가마 가동·연통 연기](chain/g06a-world-kiln-working.jpg) → [가마 재고 보리 10·엿기름 1](chain/g06b-ui-kiln-stock.jpg)
+  7. [양조하는 집](chain/g07a-world-house-brewing.jpg) → [장부 서랍 보리·엿기름](chain/g07b-ui-ledger.jpg)
+  8. [에일하우스](chain/g08a-world-alehouse-stake.jpg) → [집 카드 에일 줄](chain/g08b-ui-house-served.jpg) — 이 순간의 에일하우스들은 두 칸 필지·L3라 장대가 없다; 장대는 94,400틱의 단칸 L2 에일하우스 [world/alehouse-z1.0](world/alehouse-z1.0.jpg)·[z2.0](world/alehouse-z2.0.jpg), 에일 없을 때 [alehouse-dry](world/alehouse-dry-z1.0.jpg)
+  9. [첫 판매 순간](chain/g09a-world-ale-sold.jpg) → [계절 카드 "지금 영지에 보리·엿기름·에일"](chain/g09b-ui-season-ale.jpg)
+- 가까이 본 세계 그림(줌 1.0·2.0, 필요하면 재생을 이어서 — `ranOn`): [world/](world/)([captures.json](world/captures.json)) — 가마·보리 자루·엿기름 자루·양조 문 앞 통·수레(보리·엿기름)·에일 양조 여인·엿기름공. UI는 [ui/](ui/)(u01~u12, 계절 카드 계속 단추 1280 44 px·태블릿 48 px 스크롤 없이).
 
 ## 5. 검증
-VERIFY_SECTION
+- 로컬: typecheck, lint, 관련 시험(새 `aleWorldArt` 8·`aleScreens` 6, 렌더 원천 검사·C25 그대로·`humanPathAle`·출처 등) 모두 통과, `check:merge` 통과(한글 문자열 새 0).
+- DGX 전체 회귀 `87fa663`: 3,369/3,370, 실패 1 — 엔진 시험 `autoplayMaterialOpportunity`의 자식 프로세스가 고정 3 초 제한에 걸림(`spawnSync … ETIMEDOUT`; 그 실행 전체가 885 초로 보통 540 초보다 느렸다 — DGX 부하). 로컬에서 330 ms로 통과, 이 가지와 무관한 엔진 시험이라 손대지 않았다. 아래 깨끗한 클론이 전체를 다시 돈다.
+- DGX 관문 `fc6f14c`, 본선 대비(`scripts/install3Verification.sh`, 21분): UI-6 묶음 [gates.json](gates/gates.json) 통과, 스킨 감사 [0 / 912](audit/audit.json)(본선 0 / 791), 사람 재생 상태·세계·UI 캡처 오류 0. 사슬 캡처는 알맞은 카드를 여는지 고친 뒤 `2b4dea5`에서 다시 찍었다(에일하우스 칸의 목책 공사장이 클릭을 가져가 집 카드 대신 공사장 카드가 떴던 것, 지나가는 워커가 클릭을 가져가는 것, 재고 줄이 카드 아래로 접힌 것).
+- 증거 1.9 MB(사슬 17장·세계 31장·UI 12장·스킨 감사 시트 960 px; UI-6 캡처 묶음·재생 폴더·로그는 뺐다).
 
 ## 6. 판정 대기·넘길 것
 - 에일이 집 안에만 있어 장부 서랍·저장소·수레에 나오지 않는다(엔진 설계). 에일을 시장·창고로 옮기는 규칙이 생기면 적재물·아이콘은 이미 연결돼 있다.
