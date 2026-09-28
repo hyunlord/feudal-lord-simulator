@@ -143,11 +143,12 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // MARKET-1: the market reaches homes along the road (40 steps), so services and levels differ from PERSON-0 (ffe8e1a6… / 180663ef…).
   // FIX-6: the factions' leaders wear pool 3's faces and the town's portrait usage follows (ab549654…; without the
   // portraits the state is unchanged).
-  assert.equal(hash(warm), 'c11f6dbef46d200b0274735ad973b521e0ec4c3486dfa4298a83492de0678406');
+  // PERSON-1a (LN7): the persons' traits, lineage, parents and the lord's family (was c11f6dbe…).
+  assert.equal(hash(warm), 'bf113ee3b202ce894654c9ee58fa20c4d2d74f3b032553c3f494f61ba4de275f');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, history: _history, factions: _factions, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
-  // FIX-6: the same faces (was c0931baf…).
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'd86be291c2be4809e68225a7fa942a2c973519742b108623b5217c4fcd3cdcba');
+  // FIX-6: the same faces (was c0931baf…). PERSON-1a: the persons' lineage layer (was d86be291…).
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '380d346a1427a22324c02240881d5d6e5657dad6badcc124b1e65273362b310e');
   assert.equal(hash(coldState), hash(warm));
   assert.deepEqual(coldState.history, warm.history);
 });

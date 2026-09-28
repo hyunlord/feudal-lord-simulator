@@ -209,7 +209,7 @@ test("A8 (AL-9) the save round trip (v23) keeps the crop and the brewing slots; 
   state = advanceAle(atBatch(state));
   const again = advanceAle(atBatch(setFarmsteadCrop(withKiln(town(), 10), barns(town())[0]!.id, "barley")));
   assert.deepEqual(again, state);
-  assert.equal(SAVE_SCHEMA_VERSION, 23);
+  assert.ok(SAVE_SCHEMA_VERSION >= 23); // PERSON-1a: v24
   const saved = decodeSave(encodeSave({ state, createdAt: "2026-09-28T00:00:00.000Z", savedAt: "2026-09-28T00:00:00.000Z" }).bytes);
   assert.deepEqual(saved.envelope.state, state);
   const v22 = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v22/palisade-construction.save.json")));

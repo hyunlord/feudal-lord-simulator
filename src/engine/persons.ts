@@ -527,15 +527,17 @@ const TOWN_SETS: Readonly<Record<"merchant" | "reeve" | "miller", readonly strin
 function nameLineages(town: Town, state: GameState): void {
   const named = new Set(town.lineages.map(lineage => lineage.id));
   const taken = new Set(town.lineages.map(lineage => lineage.set).filter((set): set is string => set !== null));
-  const add = (id: string, kind: NamedLineage["kind"], sets: readonly string[]) => {
+  const add = (id: string, kind: NamedLineage["kind"], sets: readonly string[], always = false) => {
     if (named.has(id)) return;
     const set = sets.find(candidate => !taken.has(candidate)) ?? null;
+    // A family of note is named while its kind has a set to give (the first merchants, reeves, miller); the lord's always.
+    if (set === null && !always) return;
     town.lineages.push({ id, kind, set, since: state.tick, slots: {} });
     named.add(id);
     if (set !== null) taken.add(set);
   };
   const order = lordHouse(state).order;
-  add(`lord:${order}`, "lord", order === 1 ? ["L3"] : order === 2 ? ["L1"] : []);
+  add(`lord:${order}`, "lord", order === 1 ? ["L3"] : order === 2 ? ["L1"] : [], true);
   for (const head of town.people.filter(person => person.role === "head" && person.householdId !== MANOR_HOUSEHOLD).sort((a, b) => a.id.localeCompare(b.id))) {
     if (named.has(head.lineageId)) continue;
     if (head.classBand === "merchant") add(head.lineageId, "merchant", TOWN_SETS.merchant);
@@ -556,24 +558,26 @@ function fillSlots(town: Town, index: number): void {
   const places = setPlaces(lineage.set);
   const slots: Record<string, string> = { ...lineage.slots };
   const slotOf = new Map(Object.entries(slots).map(([identity, personId]) => [personId, identity]));
-  const generationOf = (identity: string) => places.find(place => place.identityId === identity)?.generation ?? 0;
-  const blood = town.people.filter(person => person.lineageId === lineage.id);
-  const bloodIds = new Set(blood.map(person => person.id));
-  const households = new Set(blood.filter(person => person.role === "head" || person.role === "spouse").map(person => person.householdId));
-  const inLaws = town.people.filter(person => !bloodIds.has(person.id) && households.has(person.householdId) && (person.role === "head" || person.role === "spouse")
-    && (person.householdId !== MANOR_HOUSEHOLD || person.tags.includes(LORD_FAMILY_TAG)));
-  const family = [...blood, ...inLaws].filter(person => person.householdId !== MANOR_HOUSEHOLD || person.tags.includes(LORD_FAMILY_TAG))
-    .sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id));
+  const generationOf = (identity: string | undefined) => places.find(place => place.identityId === identity)?.generation ?? 0;
+  const inSet = (person: Person) => person.householdId !== MANOR_HOUSEHOLD || person.tags.includes(LORD_FAMILY_TAG);
+  // The main line: the heads of the lineage's households and their spouses, their children, and so on down (the set
+  // is a family's three generations: its collateral kin keep the town's faces).
+  const heads = town.people.filter(person => person.lineageId === lineage.id && person.role === "head" && inSet(person));
+  const households = new Set(heads.map(person => person.householdId));
+  const couple = town.people.filter(person => households.has(person.householdId) && (person.role === "head" || person.role === "spouse") && inSet(person));
+  const line = new Set([...couple.map(person => person.id), ...Object.values(slots)]);
+  const born = town.people.filter(person => person.lineageId === lineage.id && inSet(person) && [person.fatherId, person.motherId].some(id => id !== undefined && line.has(id)));
+  const family = [...couple, ...born.filter(person => !line.has(person.id))].sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id));
   let changed = false;
   for (const person of family) {
     if (slotOf.has(person.id)) continue;
     const current = identityLineage(person.portraitIdentity);
     if (current !== undefined && current !== "common") continue;
-    const parentGeneration = Math.max(0, ...[person.fatherId, person.motherId].map(id => (id === undefined ? undefined : slotOf.get(id))).filter((id): id is string => id !== undefined).map(generationOf));
-    const inLaw = !bloodIds.has(person.id);
-    const partner = inLaw ? family.find(other => bloodIds.has(other.id) && other.householdId === person.householdId && (other.role === "head" || other.role === "spouse")) : undefined;
-    const generation = inLaw ? (partner === undefined ? 0 : generationOf(slotOf.get(partner.id) ?? "")) || 1
-      : parentGeneration > 0 ? parentGeneration + 1 : person.role === "head" || person.role === "spouse" || Object.keys(slots).length === 0 ? 1 : 2;
+    const inLaw = person.lineageId !== lineage.id;
+    const parentGeneration = Math.max(0, ...[person.fatherId, person.motherId].map(id => generationOf(id === undefined ? undefined : slotOf.get(id))));
+    const partner = inLaw ? couple.find(other => other.lineageId === lineage.id && other.householdId === person.householdId) : undefined;
+    const generation = inLaw ? generationOf(partner === undefined ? undefined : slotOf.get(partner.id)) || 1
+      : parentGeneration > 0 ? parentGeneration + 1 : 1;
     const age = ageOf(person, town.year);
     const band = age < PORTRAIT_MIN_AGE ? youngStageOf(age) : PORTRAIT_BAND[ageBandOf(age)];
     const free = places.filter(place => place.sex === person.sex && place.generation === generation && slots[place.identityId] === undefined

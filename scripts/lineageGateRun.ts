@@ -36,16 +36,18 @@ const born = everyone.filter(person => person.motherId !== undefined || person.f
 const both = born.filter(person => person.motherId !== undefined && person.fatherId !== undefined && byId.has(person.motherId) && byId.has(person.fatherId));
 const hairOf = (id: string | undefined) => (id === undefined ? undefined : byId.get(id)?.traits.hair);
 const matches = (group: readonly Person[]) => group.filter(person => person.traits.hair === hairOf(person.motherId) || person.traits.hair === hairOf(person.fatherId)).length;
-// The set families: the lord's family, the town's named lineages with a set (and those married into their households),
-// and the noble factions' people with a set.
+// The set families as the player meets them: each set lineage's household now — its head, the spouse and their living
+// children — and the noble factions' living leaders with a set.
 const sets = new Map((final.persons!.lineages ?? []).filter(lineage => lineage.set !== null).map(lineage => [lineage.id, lineage.set!]));
 const living = final.persons!.people;
-const householdsOf = new Map<string, string>();
-for (const person of living) if (sets.has(person.lineageId) && (person.role === "head" || person.role === "spouse")) householdsOf.set(person.householdId, sets.get(person.lineageId)!);
-const family = living.filter(person => sets.has(person.lineageId) || ((person.role === "head" || person.role === "spouse") && householdsOf.has(person.householdId)
-  && (person.householdId !== "manor" || person.tags.includes(LORD_FAMILY_TAG))))
-  .map(person => ({ person, set: sets.get(person.lineageId) ?? householdsOf.get(person.householdId)! }));
-const factionFamily = (final.factions?.people ?? []).filter(person => person.alive).flatMap(person => {
+const heads = living.filter(person => person.role === "head" && sets.has(person.lineageId) && (person.householdId !== "manor" || person.tags.includes(LORD_FAMILY_TAG)));
+const family = heads.flatMap(head => {
+  const spouse = living.find(person => person.householdId === head.householdId && person.role === "spouse" && (head.householdId !== "manor" || person.tags.includes(LORD_FAMILY_TAG)));
+  const couple = [head, ...(spouse === undefined ? [] : [spouse])];
+  const children = living.filter(person => couple.some(parent => person.fatherId === parent.id || person.motherId === parent.id));
+  return [...couple, ...children].map(person => ({ person, set: sets.get(head.lineageId)! }));
+});
+const factionFamily = (final.factions?.people ?? []).filter(person => person.alive && (final.factions?.factions ?? []).some(faction => faction.leaderId === person.id)).flatMap(person => {
   const faction = person.householdId.slice("faction:".length) as keyof typeof FACTION_LINEAGE_SETS;
   const set = FACTION_LINEAGE_SETS[faction];
   return set === undefined ? [] : [{ person, set }];
@@ -57,7 +59,7 @@ const setPeople = [...family, ...factionFamily];
 process.stdout.write(`${JSON.stringify({ seed, maxTicks, final: { tick: final.tick, year: stateCalendar(final).year, chapter: final.politics?.chapter.number ?? 1, population: final.population },
   hair: { bornWithParents: born.length, bothParents: both.length, bothMatch: matches(both), bothRate: both.length === 0 ? null : matches(both) / both.length,
     anyParentMatch: matches(born), anyRate: born.length === 0 ? null : matches(born) / born.length },
-  sets: { namedLineages: (final.persons!.lineages ?? []).map(lineage => ({ id: lineage.id, kind: lineage.kind, set: lineage.set, places: Object.keys(lineage.slots).length })),
+  sets: { namedLineages: (final.persons!.lineages ?? []).map(lineage => ({ id: lineage.id, kind: lineage.kind, set: lineage.set, placesGiven: Object.keys(lineage.slots).length })),
     people: setPeople.length, wearingSet: setPeople.filter(wearsSet).length, rate: setPeople.length === 0 ? null : setPeople.filter(wearsSet).length / setPeople.length,
     notWearing: setPeople.filter(entry => !wearsSet(entry)).map(entry => `${entry.person.id}:${entry.set}:${entry.person.portraitIdentity}:${entry.person.birthYear}`).slice(0, 20) },
   ledgerStates: counts }, null, 1)}\n`);

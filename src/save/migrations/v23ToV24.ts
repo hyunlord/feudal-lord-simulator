@@ -63,7 +63,10 @@ function promotePeople(people: readonly Row[], faction: boolean): Row[] {
     lineage.set(row.id, id);
     return id;
   };
-  return people.map(row => ({ ...row, ...(parents.get(row.id) ?? {}), lineageId: lineageOf(row), traits: traitsOf(row) }));
+  // A person made by an earlier step of this load (v15 → v16 builds the town's persons with today's rules) already has
+  // their traits, lineage and parents: kept as made.
+  return people.map(row => (row.traits !== undefined && row.lineageId !== undefined ? row
+    : { ...row, ...(parents.get(row.id) ?? {}), lineageId: lineageOf(row), traits: traitsOf(row) }));
 }
 
 export function migrateV23ToV24(input: unknown): unknown {

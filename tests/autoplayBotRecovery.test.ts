@@ -170,7 +170,9 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // 57b48964ac5b3c9e, which the same state still gives without the three goods; the full-state hash below is unchanged).
   assert.equal(hashEconomyState(state), "4811a678f2a882b5");
   // FIX-6: the factions' leaders wear pool 3's faces (was 6ec1cf75…; with every portraitIdentity removed the state is the same).
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "e7a38e2061423c2f2c486a4710de847d6505fe72dbd892785afd805373f4bbdc");
+  // PERSON-1a: the persons carry their traits, lineage and parents, the lord's family lives in the manor (was e7a38e20…;
+  // without persons, factions and petitioners the state is trunk's, decision LN7).
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "366558f48ab37be89c173948cc1d8a1781cd77069d40e0adae2acdd67429a658");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {
