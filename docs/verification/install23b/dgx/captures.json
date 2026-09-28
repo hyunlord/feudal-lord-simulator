@@ -6,8 +6,8 @@
   },
   "bothWhileCrossFading": 0.1053,
   "meanDiffFromClear": {
-   "wet": 5.58,
-   "storm": 7.79
+   "wet": 5.57,
+   "storm": 7.78
   }
  },
  "props": {
@@ -38,20 +38,24 @@
   ],
   "weather": "none",
   "paused": {
-   "changedInView": 0,
+   "changedInView": 3455,
    "changedInAnimalBoxes": 0,
-   "changedInWalkerBoxes": 0,
+   "changedInWalkerBoxes": 326,
    "animalBoxes": 1,
-   "walkerBoxes": 40
+   "walkerBoxes": 40,
+   "walkers": 67,
+   "walkersMoved": 0
   },
   "running": {
-   "changedInView": 39064,
-   "changedInAnimalBoxes": 448,
-   "changedInWalkerBoxes": 18789,
+   "changedInView": 50245,
+   "changedInAnimalBoxes": 468,
+   "changedInWalkerBoxes": 18407,
    "animalBoxes": 1,
-   "walkerBoxes": 49
+   "walkerBoxes": 49,
+   "walkers": 76,
+   "walkersMoved": 75
   }
  },
- "jpegBytes": 871876,
+ "jpegBytes": 885593,
  "errors": []
 }
