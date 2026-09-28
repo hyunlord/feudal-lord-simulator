@@ -20,6 +20,7 @@ import { renderStageProbe, stageForRenderItem } from "./renderStageProbe";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 import { beginBuildingVariantFrame } from "./buildingVariants";
+import { beginHouseVariantFrame } from "./wave26HouseArt";
 import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
 
@@ -50,6 +51,7 @@ export function drawObjectRenderItems(
   const spriteOptions = { camera: input.camera, dpr: input.dpr, viewport: input.viewport }; // the site ghost's culling
   probe?.enter("farmland");
   beginBuildingVariantFrame(input.state);
+  beginHouseVariantFrame(input.state); // INSTALL-26 the Wave 26 house paintings
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   const viewMode = getObjectRenderViewMode();
   // RENDER_BOUNDARY_V2 draws road ribbons in the ground chunks, under frontage and objects. (The V1 wheat-farm soil

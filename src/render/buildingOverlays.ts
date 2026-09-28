@@ -9,6 +9,7 @@ import { drawWave9, drawWave9Overlay, type Wave9Key } from "./wave9Art";
 import { tileToScreen } from "./iso";
 import { drawStoryProps } from "./storyWorldProps";
 import { seasonBlend, seasonForObject } from "./seasonTransition";
+import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./wave26HouseArt";
 
 // INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (full detail only):
 //  - winter (calendar season 3): snow on the roof of a single-lot house, the Wave 7 layer painted on that level's own
@@ -20,6 +21,8 @@ import { seasonBlend, seasonForObject } from "./seasonTransition";
 // level's canvas) under a black smoke column (four frames, 150 ms each) and, when its household draws water from a
 // well, two buckets set down on the way to the nearest well; once out, a burnt house (`burntTick`) is the burnt_lN
 // painting (same alpha as the house) until its rebuild completes. Pair lots show the smoke column and, burnt, soot.
+// INSTALL-26: a house showing a Wave 26 painting takes that painting's own layers instead of Wave 7's — its weathered
+// or fresh (houseVariantChoice.ts houseStateLayer), then boarded and snow by the same rules as above.
 const SMOKE_FRAME_MS = 150;
 export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
   if (building.kind === "house") drawHouseEventOverlays(context, state, building);
@@ -30,9 +33,16 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
       const rect = historicalHouseSpriteRect(building, meta);
       const clamped = Math.max(0, Math.min(4, level));
       const house = state.houses.find(candidate => candidate.buildingId === building.id);
-      if (house !== undefined && housePressureStatus(house) === "abandoned") drawWave7Overlay(context, `boarded_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
+      const boarded = house !== undefined && housePressureStatus(house) === "abandoned";
       // INSTALL-15: while the season turns, each roof takes or loses its snow at its own moment, with the trees.
-      if (seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3) drawWave7Overlay(context, `roof_snow_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
+      const snow = seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3;
+      const wave26 = house === undefined ? null : shownHouseVariant(building, level);
+      if (wave26 !== null && house !== undefined) {
+        drawWave26HouseLayers(context, wave26, meta.alphaBounds, rect, { state: houseStateLayerNow(state, house), boarded, snow });
+      } else {
+        if (boarded) drawWave7Overlay(context, `boarded_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
+        if (snow) drawWave7Overlay(context, `roof_snow_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
+      }
     }
   }
   drawStockPiles(context, state, building);
