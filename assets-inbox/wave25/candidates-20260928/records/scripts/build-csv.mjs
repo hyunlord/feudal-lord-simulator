@@ -1,0 +1,9 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {Workbook} from '/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const {assets}=JSON.parse(await fs.readFile(root+'/records/asset-manifest.json','utf8'));
+const headers=['id','file','width','height','format','status','nine_slice_ltrb','repeat_ports','source_record','processing','alpha_min','transparent_pixels','model','seed','qa_note','sha256'];
+const rows=assets.map(a=>{let frame=a.id.startsWith('tree_node_frame'),label=a.id.includes('label')||a.id.includes('banner'),control=['tree_expand','tree_collapse','tree_outside_spouse_marker'].includes(a.id);return[a.id,a.file,a.width,a.height,'RGBA PNG','candidate',a.nine_slice_ltrb?.join(';')||'',a.id.startsWith('tree_line_')?'8px common ports; see manifest':'',frame?'records/frames.json':label?'records/labels.json':control?'records/controls.json':'records/root-generation.json;records/lines.json',frame||label||control?'imagegen + exact size normalization':'generated ink/rings + deterministic repeat/join processing',a.alpha_min,a.transparent_pixels,'not provided','not provided',frame?'parchment center opaque; portrait separate96px; deceased inset20':a.id.startsWith('tree_line_')?'repeat/join port mismatch0':'actual-size offline review',a.sha256]});
+const wb=Workbook.create(),sheet=wb.worksheets.add('Candidates');sheet.getRange('A1:P17').values=[headers,...rows];const matrix=sheet.getRange('A1:P17').values;const quote=x=>'"'+String(x??'').replaceAll('"','""')+'"';await fs.writeFile(root+'/generation-records.csv','\uFEFF'+matrix.map(r=>r.map(quote).join(',')).join('\r\n')+'\r\n');console.log(JSON.stringify({rows:rows.length,unique_ids:new Set(rows.map(r=>r[0])).size}));

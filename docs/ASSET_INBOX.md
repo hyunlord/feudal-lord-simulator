@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-28 16시 갱신)
+## 3. 현재 장부 요약 (2026-09-28 20시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -49,8 +49,8 @@ assets-inbox/
 | `d1b` | 4 |  | 4 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
-| `lineage` | 374 |  | 333 |  | 41 |  |  | 0 |
-| `lineage-pilot` | 117 |  | 79 |  | 30 | 8 |  | 0 |
+| `lineage` | 374 |  | 333 |  | 41 |  |  | 260 |
+| `lineage-pilot` | 117 |  | 79 |  | 30 | 8 |  | 66 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
 | `portrait-pool` | 340 |  | 340 |  |  |  |  | 304 |
 | `retired` | 29 |  |  |  |  |  | 29 | 16 |
@@ -72,7 +72,8 @@ assets-inbox/
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave23` | 120 |  | 120 |  |  |  |  | 82 |
 | `wave24` | 32 |  | 28 |  | 4 |  |  | 0 |
-| `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
+| `wave25` | 17 |  | 17 |  |  |  |  | 0 |
+| `wave3` | 98 |  | 88 |  | 10 |  |  | 28 |
 | `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
 | `wave4b` | 57 |  | 57 |  |  |  |  | 53 |
 | `wave4c` | 29 |  | 29 |  |  |  |  | 18 |
@@ -86,7 +87,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3855** | **3** | **2658** | **0** | **249** | **909** | **36** | **1159** |
+| **합계** | **3872** | **3** | **2675** | **0** | **249** | **909** | **36** | **1513** |
 
 ## 4. 찾는 법
 
@@ -189,6 +190,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-lineage-prod1-costume-v2-20260928-lite.zip` (09-28 13:00, 경량판) | `lineage/prod1-costume-v2-20260928` | 14,921 KB | `cc3ca41753c300e2…` | 80 | 0 | `references/`(편집 전 41장 사본) 제외 | 작업 폴더 `output/astra-lineage-prod1-costume-v2`와 바이트 같음(작업 폴더의 `node_modules` 링크 제외). ZIP 밖 `astra-lineage-prod1-costume-v2-delivery.json`은 `records/delivery.json`으로. 생성 고해상도 원본은 Astra가 `astra-raw/lineage-prod1-costume-v2/`(83MB)에 직접 둠
 | `/tmp/astra-lineage-prod2-candidates-20260928-lite.zip` (09-28 14:15, 경량판) | `lineage/prod2-20260928` | 55,609 KB | `e0e4aa373fac7bcc…` | 199 | 31 | `references/` 제외 | 재사용한 세력 수장 14장은 초상 풀 3차와 같은 바이트라 넣지 않고 풀 3차 행 비고에 연결을 적음. `records/`의 교정본 사본 16장(`L7_*-v2`·`L7_303_young-attempt1`·`-selected-v2`)과 `proof-work/costume-preliminary.png`는 같은 묶음의 `assets/`·`proofs/`와 같은 바이트라 건너뜀(처음 커밋 7802f8a6에 들어갔다가 다음 커밋에서 뺌). 작업 폴더 `output/astra-lineage-prod2-v1`에만 있던 `records/delivery.json`·`records/proof-work/`(PNG 4)를 합침. 전체판 `astra-raw/zips/astra-lineage-prod2-candidates-20260928-full.zip`(343,605 KB, `fffbb843e5ecdc98…`)과 고해상도 원본 `astra-raw/lineage-prod2-20260928/`(286MB)은 Astra가 직접 둠, 저장소에 넣지 않음
 | `/tmp/astra-wave24-candidates-20260928-lite.zip` (09-28 16:41, 경량판) | `wave24/candidates-20260928` | 47,185 KB | `4e35c0631dc02930…` | 54 | 0 | `references/` 제외 | `guides/` → `proofs/guides/`, `exports/` → `assets/exports/`. 작업 폴더 `output/astra-wave24-v1`에만 있던 검수 그림 4·`PLAN.md`·`package-result.json`을 합침, 생성 원본 `*-native*.png` 22장은 제외(Astra가 `astra-raw/wave24-20260928/` 148MB에 직접 둠)
+| `/tmp/astra-wave25-candidates-20260928-lite.zip` (09-28 20:08, 경량판) | `wave25/candidates-20260928` | 1,485 KB | `50de4fa93b118140…` | 38 | 0 | `references/` 제외 | 작업 폴더 `output/astra-wave25-v1`에만 있던 `records/package-result.json`을 합침, 생성 원본·중간본(`native/`, `records/*-native*.png`·`frame-base-initial.png`)은 제외(Astra가 `astra-raw/wave25-20260928/` 14MB에 직접 둠)
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -235,6 +237,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **혈통 본 제작 2차**(`lineage/prod2-20260928`, 2026-09-28 15시 판정, 경량판): L6 백작 가문·L7 인접 기사 가문·L8 방앗간 가문 각 12명 38단계 = 114장 가운데 새 초상 100장(L6 30·L7 32·L8 38) `confirmed`. 재사용한 세력 수장 14장(L6_101·102, L7_101·102의 청년·장년·노년, L6_201의 청년·장년)은 초상 풀 3차 I101·I102·I107·I108·I103과 바이트가 같아 파일을 넣지 않았다. 장부 행 = PNG 수를 지키려고 새 행을 만들지 않고, 풀 3차의 해당 14행(`confirmed`) 비고에 "초상 풀 3차 I1xx와 동일 — 혈통 L6/L7_…로 연결"을 더했다. 확인 그림 4·기록 그림 34(작업 폴더의 `proof-work` 3 포함) `confirmed`. 같은 묶음 안에서 `assets/`·`proofs/`와 바이트가 같은 기록 사본 17장은 넣지 않았다.
 - **replaced_by 경로 검사**(2026-09-28, INBOX-1q): `ui-p0/pilot/cursor_sheet.png`의 `replaced_by`가 패턴(`ui-p0/ui/cursor_*.png(6장)`)이던 것을 실제 경로 6개(`cursor_select`·`cursor_place_valid`·`cursor_place_invalid`·`cursor_road_draw`·`cursor_zone_brush`·`cursor_inspect`)로 고쳤다. 이 행이 장부 전체에서 없는 파일을 가리키던 유일한 행이었다. 같은 커밋부터 `npm run check:merge`의 다섯째 검사 `ledger`가 장부에 없는 `replaced_by` 경로를 실패로 본다.
 
+- **Wave 25 가계도 UI 부품**(`wave25/candidates-20260928`, 2026-09-28 20시 판정, 경량판): 부품 16장(인물 틀 기본·선택·고인 176×216 9-slice, 혈통 배너, 세대 라벨, 가지선 가로·세로·코너 4·T자, 혼인 고리, 바깥 배우자 표식, 펼치기·접기) `confirmed`. 확인 그림 1장 `confirmed`, 비고 "바깥 배우자가 부모 가지선에 매달린 배치는 틀림 — UI-7에서 혼인 고리로만 연결".
 ## 7. 찾지 못한 것
 
 | 항목 | 상태 |

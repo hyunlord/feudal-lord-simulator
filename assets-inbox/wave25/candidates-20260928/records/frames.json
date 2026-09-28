@@ -1,0 +1,117 @@
+{
+  "tool": "built-in image_gen__imagegen",
+  "status": "candidate",
+  "model_version": null,
+  "seed": null,
+  "references": [
+    "references/Wave19_전기_세력쪽_틀.jpg",
+    "references/UI-KIT_부품_톤.jpg"
+  ],
+  "generations": [
+    {
+      "saved": "records/frame-base-initial.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a8-e706-7870-ab29-c322a55f896e/exec-3f230164-f903-45d2-b81e-eff02c1d3cdf.png",
+      "prompt": "Use case: ui-mockup. Create ONE raster game UI frame, no mockup scene. References show ONLY the warm muted parchment and oak material/color style; ignore ALL their content and typography. Asset is a plain upright rectangular genealogy card, target aspect 176:216. Canvas exactly tightly enclosing rectangle, no background margin. True reusable 9-slice: ALL oak brown frame, fine double edging and extremely restrained corner ornaments stay in outermost 5% width and outermost 4% height (12 pixels at final176x216). Large interior is uninterrupted flat warm pale parchment with very subtle texture, no rings, no circles, no slots, no separators, no illustrations. Portrait and labels will be overlaid later, so do not depict them. Thin brown oak framing, softly clipped corners with genuine transparent exterior corner pixels, opaque parchment center. Orthographic flat UI asset. Absolutely NO text, numbers, letters, symbols, people, portrait, cross, shield, circle, internal lines, highlights, cast shadows, surrounding backdrop. Make the full outer frame rectangular and flush to all four canvas edges."
+    },
+    {
+      "saved": "records/frame-base-native.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a8-e706-7870-ab29-c322a55f896e/exec-38397000-7cab-4d90-9279-35a753150dd9.png",
+      "prompt": "Precise UI asset correction. Keep this exact frame and its aspect ratio, edge alignment, brown oak and parchment. Remove all FOUR dark leaf ornaments from the parchment inner corners and fill them seamlessly with matching blank parchment. Preserve thin straight inner edging but do not decorate any of the central parchment. Outer corner square caps may stay, but make each of the four outermost corner tips slightly diagonally clipped with genuine transparent pixels outside the clipped tips. Everything else unchanged. Result is one standalone tightly cropped frame with opaque parchment center, no surrounding background, no text or symbols. This is true 9-slice, all decoration must be wholly within outer 6 percent of width and 5 percent height."
+    },
+    {
+      "saved": "records/frame-selected-native.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a8-e706-7870-ab29-c322a55f896e/exec-068f402c-8f56-4ca8-97de-d80f44608e16.png",
+      "prompt": "Use case: precise-object-edit. This attached exact UI frame is the edit target. Create its SELECTED state. Change ONLY all outer oak frame bars and square corner caps to restrained antique GOLD/brass edging, noticeably golden at tiny UI size. Keep exact outer rectangular geometry, same frame widths, same corner squares positions and sizes, exactly same blank parchment center and texture, same dimensions. No new ornament, text, circle, portrait or internal line. Single standalone frame flush to canvas. All artwork remains confined within outer 12px when image reduced to176x216. No glowing halo or shadow. Preserve parchment center unaltered."
+    },
+    {
+      "saved": "records/frame-deceased-native.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a8-e706-7870-ab29-c322a55f896e/exec-0f5fe5fc-1af4-4724-90dc-1d6973ec2d98.png",
+      "prompt": "Use case: precise-object-edit. This attached exact UI frame is the edit target. Create DECEASED state. Change ONLY all outer oak frame bars and square corner caps to muted desaturated grey-brown (clearly greyer than original). At TOP RIGHT square corner cap, replace its diagonal X engraving with ONE small simple ivory Latin cross, vertical stroke longer than horizontal. Cross fully inside that tiny cap. Keep exact outer rectangular geometry, same frame widths, same corner positions and sizes, exactly same blank warm parchment center, same dimensions. No other ornament, text, circle, portrait or internal line. Single standalone frame flush to canvas. All artwork remains confined within outer 12px when image reduced to176x216. No glowing halo or shadow. Preserve parchment center unaltered."
+    },
+    {
+      "saved": "records/frame-deceased-final-native.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a8-e706-7870-ab29-c322a55f896e/exec-7d944aa8-7a16-41b2-8fa3-aa2b5249062e.png",
+      "prompt": "Precise single detail correction to attached UI card. Keep all geometry, textures, borders, parchment and grey-brown colors exactly. Enlarge ONLY the small ivory Latin cross at the TOP RIGHT so it is clearly legible after reduction to176x216: cross should be about6 pixels wide and9 pixels high at that size. It may occupy top-right12x12 corner area but must NOT extend left ofx164 or belowy12 at final176x216 size. High contrast ivory cross on dark grey-brown cap. No other changes, no new symbols. Keep same1133x1388 native dimensions, tightly cropped outer rectangle."
+    },
+    {
+      "saved": "records/frame-deceased-cross20-native.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a8-e706-7870-ab29-c322a55f896e/exec-78b1d0ac-0699-47a9-afe3-285f3a7c4b7b.png",
+      "prompt": "Use case: precise-object-edit. Attached image is an existing176x216 genealogy UI card with grey-brown oak border and warm blank parchment. Preserve this exact rectangle, border widths and quiet parchment. Make ONE change: top-right deceased marker must be clearly readable at actual small UI size. Enlarge top-right corner cap into a dark grey-brown20x20px square inset flush top and right, occupyingx156..175,y0..19. On this cap place one prominent simple solid ivory LATIN CROSS,10px wide and16px high, centered with margin. Strong contrast; cross vertical stem extends below crossbar. Its cap may intrude slightly into blank parchment. Other three corner caps and borders stay unchanged. No other symbols, no text, no letters, no numerals, no portrait, no circle or separator. Target176x216 ratio; you can render larger but maintain exact relative proportions. The cross must be visibly about8percent of card height, not a tiny engraving."
+    }
+  ],
+  "assets": [
+    {
+      "id": "tree_node_frame",
+      "native": "records/frame-base-native.png",
+      "width": 176,
+      "height": 216,
+      "native_width": 1133,
+      "native_height": 1388
+    },
+    {
+      "id": "tree_node_frame_selected",
+      "native": "records/frame-selected-native.png",
+      "width": 176,
+      "height": 216,
+      "native_width": 1133,
+      "native_height": 1388
+    },
+    {
+      "id": "tree_node_frame_deceased",
+      "native": "records/frame-deceased-cross20-native.png",
+      "width": 176,
+      "height": 216,
+      "native_width": 1132,
+      "native_height": 1390,
+      "nine_slice_insets": {
+        "left": 20,
+        "top": 20,
+        "right": 20,
+        "bottom": 20
+      }
+    }
+  ],
+  "nine_slice_insets": {
+    "left": 12,
+    "top": 12,
+    "right": 12,
+    "bottom": 12
+  },
+  "portrait_slot": {
+    "x": 40,
+    "y": 20,
+    "width": 96,
+    "height": 96,
+    "shape": "circle",
+    "baked": false
+  },
+  "name_area": {
+    "y": 130,
+    "baked": false
+  },
+  "limitations": [
+    "Offline candidate only; runtime 9-slice rendering unverified.",
+    "Gold and deceased fully opaque; base has slight edge semitransparency alpha82..255. There are no fully transparent pixels. Rectangular parchment-backed frame accepted by lead.",
+    "Generated variants may have subtle material texture changes; outer silhouette is identically rectangular."
+  ],
+  "postprocessing": "Lanczos3 technical resize only to176x216 with Sharp; no redrawing.",
+  "qa": {
+    "actual_size_visual": "Normal brown, selected gold, deceased grey-brown with enlarged ivory top-right cross; quiet parchment center",
+    "alpha": {
+      "tree_node_frame": [
+        82,
+        255
+      ],
+      "tree_node_frame_selected": [
+        255,
+        255
+      ],
+      "tree_node_frame_deceased": [
+        255,
+        255
+      ]
+    },
+    "outer_bounds": "all176x216 exact rectangular silhouette; base corner semitransparency retained",
+    "nine_slice": "Normal/selected12px edge; deceased20px edge to preserve enlarged cross corner cap"
+  }
+}
