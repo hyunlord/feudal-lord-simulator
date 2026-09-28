@@ -42,7 +42,7 @@ import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderStageProbe } from "./renderStageProbe";
 import { forgetGoneConstructionSites } from "./constructionMoments";
-import { drawCountryFields, drawSeasonalDecals, drawStoryWorldOverlays, drawWeatherGround, drawWorldSigns } from "./worldSigns";
+import { drawBackyardDecals, drawCountryFields, drawSeasonalDecals, drawStoryWorldOverlays, drawWeatherGround, drawWorldSigns } from "./worldSigns";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -125,7 +125,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         zoom: input.camera.zoom,
         objectRenderItems,
       });
-      drawCountryFields(input.context, input.state, range, input.camera.zoom); drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom, objectRenderItems); drawWeatherGround(input.context, input.state, visibleTiles, input.camera.zoom, input.nowMs ?? 0); // INSTALL-28 wildflower patches under the INSTALL-7 / INSTALL-15 season decals, INSTALL-23 weather ground
+      drawCountryFields(input.context, input.state, range, input.camera.zoom); drawBackyardDecals(input.context, input.state, range, input.camera.zoom); drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom, objectRenderItems); drawWeatherGround(input.context, input.state, visibleTiles, input.camera.zoom, input.nowMs ?? 0); // INSTALL-28 wildflower patches, INSTALL-27 backyards, INSTALL-7 / INSTALL-15 season decals, INSTALL-23 weather ground
     },
     objects: () => objectPassForProof &&
       drawObjectRenderItems(input.context, {
