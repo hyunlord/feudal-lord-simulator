@@ -61,6 +61,7 @@ const houseName = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;
 export const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
   market_charter: "상인의 시장권 청원", restore_right: "권리 복원 청원",
   wool_payment: "양모 공납 칙령", levy_response: "징집 명령", war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
+  vacant_priest: "빈 사제 자리", wages: "일꾼들의 임금 요구", land_redistribution: "빈 필지의 주인", cash_rent: "부역을 돈으로 바꾸자는 청원",
 };
 export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   wool_payment: { accept: "현물로 낸다", accept_with_price: "현금으로 낸다", refuse: "거절", expired: "답하지 않음" },
@@ -68,6 +69,10 @@ export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string
   war_funding: { accept: "상인에게 빌린다", accept_with_price: "세금을 올린다", refuse: "거절", expired: "답하지 않음" },
   refugee_admission: { accept: "모두 받아들인다", accept_with_price: "절반만 받는다", refuse: "돌려보낸다", expired: "답하지 않음" },
   wall_or_market: { accept: "석벽을 쌓는다", accept_with_price: "성벽세로 석벽을 쌓는다", refuse: "시장을 넓힌다", expired: "답하지 않음" },
+  vacant_priest: { accept: "수도원에 사제를 청한다", refuse: "평신도 서기를 세운다", expired: "답하지 않음" },
+  wages: { accept: "임금을 올린다", refuse: "조례대로 묶는다", expired: "답하지 않음" },
+  land_redistribution: { accept: "이웃 가구가 넓혀 쓴다", accept_with_price: "새 이주민을 받는다", expired: "답하지 않음" },
+  cash_rent: { accept: "돈으로 바꾼다", refuse: "부역을 지킨다", expired: "답하지 않음" },
 };
 /** PERSON-1a (LN-4): a birth's line by where the child's name came from. */
 const NAME_FROM: Readonly<Record<string, string>> = {
@@ -86,6 +91,19 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "decision.petition_response": params => { const label = choice(s(params, "chosen")); return `${PETITION_SUBJECTS[s(params, "defId")] ?? "상인의 시장권 청원"}에 답했다: ${WAR_CHOICES[s(params, "defId")]?.[s(params, "chosen")] ?? label}`; },
   // F2-A (WR-1…WR-7): the war of 1337.
   "war.messenger": () => "국왕의 전령이 왔다 — 프랑스와 전쟁이 시작되었다",
+  // F3-A (PL-1…PL-10): the Black Death.
+  "plague.rumour": () => "항구에서 열병이 돈다는 소문이 들어왔다",
+  "plague.arrived": () => "역병이 도시에 들어왔다",
+  "plague.priest_died": () => "사제가 역병으로 죽었다 — 교회가 비었다",
+  "plague.priest_filled": params => s(params, "by") === "monastery" ? "수도원이 보낸 사제가 왔다" : "평신도 서기가 교회의 기도를 맡았다",
+  "plague.new_graves": params => `교회 묘지에 새 무덤이 늘었다 — ${n(params, "dead")}명`,
+  "plague.empty_streets": params => `거리가 비었다 — 빈집 ${n(params, "houses")}채`,
+  "plague.abandoned_fields": params => `역병이 물러갔다 — ${n(params, "population")}명 가운데 ${n(params, "dead")}명이 죽고, 빈 필지 ${n(params, "houses")}곳, 밭이 버려졌다`,
+  "plague.ordinance": params => n(params, "fine") > 0 ? `노동자 조례가 낭독되었다 — 임금을 올린 영주에게 벌금 ${n(params, "fine")}d` : "노동자 조례가 낭독되었다",
+  "plague.resettlement": () => "빈집에 새 가족이 들기 시작했다",
+  "plague.second": () => "두 번째 역병이 왔다",
+  "plague.second_ended": params => `두 번째 역병이 물러갔다 — ${n(params, "dead")}명이 죽었다`,
+  "plague.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
   "war.beacon": () => "해안의 봉화가 올랐다",
   "war.raid": params => `해안 습격이 닥쳤다 — 불탄 집 ${n(params, "burntHouses")}, 빼앗긴 물자 ${n(params, "looted")}, 빼앗긴 돈 ${n(params, "coin")}d`,
   "war.conscripts_left": params => `징집된 남자 ${n(params, "men")}명이 떠났다`,

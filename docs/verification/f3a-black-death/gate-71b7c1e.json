@@ -1,0 +1,620 @@
+{
+ "source": "DGX engine-F3A-ch3-71b7c1e (scripts/chapterThreeRun.ts <seed> 280000)",
+ "seeds": {
+  "1": {
+   "seed": 1,
+   "maxTicks": 280000,
+   "chapter3": {
+    "tick": 160000,
+    "year": 1340,
+    "population": 768,
+    "labour": 455,
+    "treasury": 12987,
+    "lived": 24,
+    "houses": 24,
+    "l4": 21
+   },
+   "arrival": {
+    "tick": 194000,
+    "year": 1348,
+    "population": 768,
+    "labour": 637,
+    "treasury": 18274,
+    "lived": 24,
+    "houses": 24,
+    "l4": 24
+   },
+   "arrivalEnd": {
+    "tick": 198000,
+    "year": 1349,
+    "population": 406,
+    "labour": 340,
+    "treasury": 18324,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "lowest": {
+    "tick": 197001,
+    "year": 1349,
+    "population": 401,
+    "labour": 340,
+    "treasury": 18324,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "plague": {
+    "eraTick": 192000,
+    "rumourTick": 193000,
+    "first": {
+     "arrivalTick": 194000,
+     "populationAtArrival": 768,
+     "deathPermille": 479,
+     "dead": 367,
+     "manorDead": 1,
+     "wipedHouses": 4,
+     "endTick": 198000
+    },
+    "second": {
+     "arrivalTick": 244000,
+     "populationAtArrival": 652,
+     "deathPermille": 120,
+     "dead": 78,
+     "manorDead": 2,
+     "wipedHouses": 0,
+     "endTick": 246000
+    },
+    "deathRate": 0.4778645833333333,
+    "answers": {
+     "vacant_priest": "accept",
+     "wages": "accept",
+     "land_redistribution": "accept_with_price",
+     "cash_rent": "accept"
+    },
+    "curacy": {
+     "vacantSince": 194000,
+     "filledTick": 196000,
+     "by": "monastery"
+    },
+    "ordinanceTick": 204000,
+    "statuteFine": 100,
+    "resettled": 4,
+    "recovered": 250,
+    "fled": 0,
+    "vacantNow": 0,
+    "endedTick": 248000
+   },
+   "ledger": {
+    "church_fee": -60,
+    "wages": -2728,
+    "statute_fine": -100,
+    "entry_fine": 40
+   },
+   "houseChanges": [],
+   "declines": [],
+   "chapterEnd": {
+    "tick": 248000,
+    "year": 1362,
+    "plague": {
+     "arrivalYear": 1348,
+     "populationAtArrival": 768,
+     "dead": 367,
+     "manorDead": 1,
+     "secondDead": 78,
+     "resettled": 4,
+     "fled": 0,
+     "outcome": "resettled"
+    },
+    "populationEnd": 589
+   },
+   "final": {
+    "tick": 248000,
+    "year": 1362,
+    "population": 589,
+    "labour": 362,
+    "treasury": 23194,
+    "lived": 24,
+    "houses": 24,
+    "l4": 24,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 4
+   }
+  },
+  "2": {
+   "seed": 2,
+   "maxTicks": 280000,
+   "chapter3": {
+    "tick": 160000,
+    "year": 1340,
+    "population": 739,
+    "labour": 438,
+    "treasury": 7025,
+    "lived": 24,
+    "houses": 24,
+    "l4": 19
+   },
+   "arrival": {
+    "tick": 194000,
+    "year": 1348,
+    "population": 768,
+    "labour": 433,
+    "treasury": 11156,
+    "lived": 24,
+    "houses": 24,
+    "l4": 24
+   },
+   "arrivalEnd": {
+    "tick": 198000,
+    "year": 1349,
+    "population": 435,
+    "labour": 258,
+    "treasury": 11138,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "lowest": {
+    "tick": 197001,
+    "year": 1349,
+    "population": 430,
+    "labour": 258,
+    "treasury": 11138,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "plague": {
+    "eraTick": 192000,
+    "rumourTick": 193000,
+    "first": {
+     "arrivalTick": 194000,
+     "populationAtArrival": 768,
+     "deathPermille": 441,
+     "dead": 338,
+     "manorDead": 4,
+     "wipedHouses": 4,
+     "endTick": 198000
+    },
+    "second": {
+     "arrivalTick": 244000,
+     "populationAtArrival": 681,
+     "deathPermille": 120,
+     "dead": 81,
+     "manorDead": 2,
+     "wipedHouses": 0,
+     "endTick": 246000
+    },
+    "deathRate": 0.4401041666666667,
+    "answers": {
+     "vacant_priest": "accept",
+     "wages": "accept",
+     "land_redistribution": "accept_with_price",
+     "cash_rent": "accept"
+    },
+    "curacy": {
+     "vacantSince": 194000,
+     "filledTick": 196000,
+     "by": "monastery"
+    },
+    "ordinanceTick": 204000,
+    "statuteFine": 100,
+    "resettled": 4,
+    "recovered": 250,
+    "fled": 0,
+    "vacantNow": 0,
+    "endedTick": 248000
+   },
+   "ledger": {
+    "church_fee": -60,
+    "wages": -2446,
+    "statute_fine": -100,
+    "entry_fine": 40
+   },
+   "houseChanges": [
+    {
+     "tick": 239000,
+     "year": 1359
+    }
+   ],
+   "declines": [],
+   "chapterEnd": {
+    "tick": 248000,
+    "year": 1362,
+    "plague": {
+     "arrivalYear": 1348,
+     "populationAtArrival": 768,
+     "dead": 338,
+     "manorDead": 4,
+     "secondDead": 81,
+     "resettled": 4,
+     "fled": 0,
+     "outcome": "resettled"
+    },
+    "populationEnd": 615
+   },
+   "final": {
+    "tick": 248000,
+    "year": 1362,
+    "population": 615,
+    "labour": 371,
+    "treasury": 8210,
+    "lived": 24,
+    "houses": 24,
+    "l4": 24,
+    "era": "palisade",
+    "outcome": "ongoing",
+    "chapter": 4
+   }
+  },
+  "3": {
+   "seed": 3,
+   "maxTicks": 280000,
+   "chapter3": {
+    "tick": 160000,
+    "year": 1340,
+    "population": 768,
+    "labour": 429,
+    "treasury": 5485,
+    "lived": 24,
+    "houses": 24,
+    "l4": 21
+   },
+   "arrival": {
+    "tick": 194000,
+    "year": 1348,
+    "population": 768,
+    "labour": 629,
+    "treasury": 9134,
+    "lived": 24,
+    "houses": 24,
+    "l4": 24
+   },
+   "arrivalEnd": {
+    "tick": 198000,
+    "year": 1349,
+    "population": 445,
+    "labour": 383,
+    "treasury": 9084,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "lowest": {
+    "tick": 197001,
+    "year": 1349,
+    "population": 440,
+    "labour": 383,
+    "treasury": 9076,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "plague": {
+    "eraTick": 192000,
+    "rumourTick": 193000,
+    "first": {
+     "arrivalTick": 194000,
+     "populationAtArrival": 768,
+     "deathPermille": 428,
+     "dead": 328,
+     "manorDead": 4,
+     "wipedHouses": 4,
+     "endTick": 198000
+    },
+    "second": {
+     "arrivalTick": 244000,
+     "populationAtArrival": 691,
+     "deathPermille": 120,
+     "dead": 82,
+     "manorDead": 0,
+     "wipedHouses": 0,
+     "endTick": 246000
+    },
+    "deathRate": 0.4270833333333333,
+    "answers": {
+     "vacant_priest": "accept",
+     "wages": "accept",
+     "land_redistribution": "accept_with_price",
+     "cash_rent": "accept"
+    },
+    "curacy": {
+     "vacantSince": 194000,
+     "filledTick": 196000,
+     "by": "monastery"
+    },
+    "ordinanceTick": 204000,
+    "statuteFine": 100,
+    "resettled": 4,
+    "recovered": 250,
+    "fled": 0,
+    "vacantNow": 0,
+    "endedTick": 248000
+   },
+   "ledger": {
+    "church_fee": -60,
+    "wages": -2787,
+    "statute_fine": -100,
+    "entry_fine": 40
+   },
+   "houseChanges": [],
+   "declines": [
+    {
+     "tick": 22000,
+     "cause": "derelict"
+    }
+   ],
+   "chapterEnd": {
+    "tick": 248000,
+    "year": 1362,
+    "plague": {
+     "arrivalYear": 1348,
+     "populationAtArrival": 768,
+     "dead": 328,
+     "manorDead": 4,
+     "secondDead": 82,
+     "resettled": 4,
+     "fled": 0,
+     "outcome": "resettled"
+    },
+    "populationEnd": 624
+   },
+   "final": {
+    "tick": 248000,
+    "year": 1362,
+    "population": 624,
+    "labour": 385,
+    "treasury": 12735,
+    "lived": 24,
+    "houses": 24,
+    "l4": 24,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 4
+   }
+  },
+  "4": {
+   "seed": 4,
+   "maxTicks": 280000,
+   "chapter3": {
+    "tick": 160000,
+    "year": 1340,
+    "population": 767,
+    "labour": 487,
+    "treasury": 7416,
+    "lived": 24,
+    "houses": 24,
+    "l4": 21
+   },
+   "arrival": {
+    "tick": 194000,
+    "year": 1348,
+    "population": 762,
+    "labour": 649,
+    "treasury": 10191,
+    "lived": 24,
+    "houses": 24,
+    "l4": 22
+   },
+   "arrivalEnd": {
+    "tick": 198000,
+    "year": 1349,
+    "population": 447,
+    "labour": 386,
+    "treasury": 10348,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "lowest": {
+    "tick": 197001,
+    "year": 1349,
+    "population": 442,
+    "labour": 386,
+    "treasury": 10348,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "plague": {
+    "eraTick": 192000,
+    "rumourTick": 193000,
+    "first": {
+     "arrivalTick": 194000,
+     "populationAtArrival": 762,
+     "deathPermille": 421,
+     "dead": 320,
+     "manorDead": 5,
+     "wipedHouses": 4,
+     "endTick": 198000
+    },
+    "second": {
+     "arrivalTick": 244000,
+     "populationAtArrival": 692,
+     "deathPermille": 120,
+     "dead": 83,
+     "manorDead": 0,
+     "wipedHouses": 0,
+     "endTick": 246000
+    },
+    "deathRate": 0.4199475065616798,
+    "answers": {
+     "vacant_priest": "accept",
+     "wages": "accept",
+     "land_redistribution": "accept_with_price",
+     "cash_rent": "accept"
+    },
+    "curacy": {
+     "vacantSince": 194000,
+     "filledTick": 196000,
+     "by": "monastery"
+    },
+    "ordinanceTick": 204000,
+    "statuteFine": 100,
+    "resettled": 4,
+    "recovered": 250,
+    "fled": 0,
+    "vacantNow": 0,
+    "endedTick": 248000
+   },
+   "ledger": {
+    "church_fee": -60,
+    "wages": -2772,
+    "statute_fine": -100,
+    "entry_fine": 40
+   },
+   "houseChanges": [],
+   "declines": [],
+   "chapterEnd": {
+    "tick": 248000,
+    "year": 1362,
+    "plague": {
+     "arrivalYear": 1348,
+     "populationAtArrival": 762,
+     "dead": 320,
+     "manorDead": 5,
+     "secondDead": 83,
+     "resettled": 4,
+     "fled": 0,
+     "outcome": "resettled"
+    },
+    "populationEnd": 624
+   },
+   "final": {
+    "tick": 248000,
+    "year": 1362,
+    "population": 624,
+    "labour": 387,
+    "treasury": 16000,
+    "lived": 24,
+    "houses": 24,
+    "l4": 24,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 4
+   }
+  },
+  "5": {
+   "seed": 5,
+   "maxTicks": 280000,
+   "chapter3": {
+    "tick": 164000,
+    "year": 1341,
+    "population": 674,
+    "labour": 395,
+    "treasury": 8627,
+    "lived": 24,
+    "houses": 24,
+    "l4": 12
+   },
+   "arrival": {
+    "tick": 194000,
+    "year": 1348,
+    "population": 700,
+    "labour": 535,
+    "treasury": 11922,
+    "lived": 24,
+    "houses": 24,
+    "l4": 20
+   },
+   "arrivalEnd": {
+    "tick": 198000,
+    "year": 1349,
+    "population": 397,
+    "labour": 312,
+    "treasury": 11906,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "lowest": {
+    "tick": 197001,
+    "year": 1349,
+    "population": 392,
+    "labour": 312,
+    "treasury": 11896,
+    "lived": 20,
+    "houses": 24,
+    "l4": 0
+   },
+   "plague": {
+    "eraTick": 192000,
+    "rumourTick": 193000,
+    "first": {
+     "arrivalTick": 194000,
+     "populationAtArrival": 700,
+     "deathPermille": 434,
+     "dead": 303,
+     "manorDead": 1,
+     "wipedHouses": 4,
+     "endTick": 198000
+    },
+    "second": {
+     "arrivalTick": 244000,
+     "populationAtArrival": 643,
+     "deathPermille": 120,
+     "dead": 77,
+     "manorDead": 1,
+     "wipedHouses": 0,
+     "endTick": 246000
+    },
+    "deathRate": 0.4328571428571429,
+    "answers": {
+     "vacant_priest": "accept",
+     "wages": "accept",
+     "land_redistribution": "accept_with_price",
+     "cash_rent": "accept"
+    },
+    "curacy": {
+     "vacantSince": 194000,
+     "filledTick": 196000,
+     "by": "monastery"
+    },
+    "ordinanceTick": 204000,
+    "statuteFine": 100,
+    "resettled": 4,
+    "recovered": 250,
+    "fled": 0,
+    "vacantNow": 0,
+    "endedTick": 248000
+   },
+   "ledger": {
+    "church_fee": -60,
+    "wages": -2943,
+    "statute_fine": -100,
+    "entry_fine": 40
+   },
+   "houseChanges": [],
+   "declines": [],
+   "chapterEnd": {
+    "tick": 248000,
+    "year": 1362,
+    "plague": {
+     "arrivalYear": 1348,
+     "populationAtArrival": 700,
+     "dead": 303,
+     "manorDead": 1,
+     "secondDead": 77,
+     "resettled": 4,
+     "fled": 0,
+     "outcome": "resettled"
+    },
+    "populationEnd": 581
+   },
+   "final": {
+    "tick": 248000,
+    "year": 1362,
+    "population": 581,
+    "labour": 341,
+    "treasury": 17264,
+    "lived": 24,
+    "houses": 24,
+    "l4": 24,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 4
+   }
+  }
+ }
+}

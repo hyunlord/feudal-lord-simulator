@@ -27,8 +27,9 @@ import { accrueTollCrossings, settleMoneyPeriod } from "./moneyRules";
 import { advanceSeasons, recordStarvation } from "./seasonPressure";
 import { advanceZoneSettlement } from "../zones/zoneSettlement";
 import { advanceEvents } from "./events";
-import { advancePolitics, endChapterTwo } from "./politics";
+import { advancePolitics, endChapterThree, endChapterTwo } from "./politics";
 import { advanceLordship } from "./lordship";
+import { advancePlague, plagueHousing } from "./plague";
 import { advanceWar } from "./war";
 import { advanceFactions } from "./factions";
 import { advanceAle, aleRequired, aleServedHouses } from "./ale";
@@ -201,7 +202,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
   // C4 (AL-6): from 1318 a house rises to level 2 or more only with an alehouse in reach.
   const ale = aleRequired({ ...state, tick }) ? { fromLevel: ALE_BALANCE.requiredFromLevel, served: aleServedHouses({ houses: marketSettled.houses, tick }) } : undefined;
   const housing = updateHousing(servedHouses, marketSettled.buildings, tick, state.palisade,
-    undefined, householdServices(marketSettled), ale);
+    undefined, householdServices(marketSettled), ale, plagueHousing(state));
   const activeWalkers = movedDistributors.walkers.filter((walker) => walker.kind !== "builder");
   const walkers = [...activeWalkers, ...builderWalkersForSites(labour.constructionSites)];
   const produced = runProduction(recordFoodMeals(recordRecurringDelivery({
@@ -259,7 +260,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
 /** F2-A (WR-1…WR-9): the war's season, after the lordship; chapter 2's end is written by the politics. */
 function advanceWarTick(state: GameState): GameState {
   // FACTION-0 (FX-1, FX-2, FX-5): then the factions' season (their leaders, their year). C4 (AL-4, AL-5): then the ale.
-  return advanceAle(advanceFactions(advanceWar(state, endChapterTwo)));
+  // F3-A (PL-1…PL-10): the Black Death's season after the war's; chapter 3's end is written by the politics.
+  return advanceAle(advanceFactions(advancePlague(advanceWar(state, endChapterTwo), endChapterThree)));
 }
 
 export function advanceTick(state: GameState): GameState {

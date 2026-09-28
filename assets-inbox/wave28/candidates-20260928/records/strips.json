@@ -1,0 +1,701 @@
+{
+  "builtin_calls": 12,
+  "assets": [
+    {
+      "id": "hedgerow_a_summer",
+      "family": "hedgerow_a",
+      "season": "summer",
+      "file": "assets/hedgerow_a_summer.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/hedgerow_a_summer.png",
+      "prompt": "Use case: historical-scene. Create ONE transparent RGBA game sprite strip for a 14th century southern England city builder: A continuous low mixed hawthorn, hazel and dog-rose hedgerow, irregular rounded shrub clusters, one small oak sapling just slightly higher than shrubs. SUMMER: restrained olive green, tiny subdued dog rose flowers only if hedge. Match the supplied project reference painterly miniature aesthetic and soft upper-left light, NO text, no diagram labels, no frame, no scenery, no checkerboard painted in. Technical composition: extremely long thin HORIZONTAL X-repeat strip with perfectly horizontal ground contact, extends fully across left and right edges, straight-on strip profile seen from above with 2:1 ground depth, no vanishing point. Final intended dimensions 512x64: compose all visible content within a centered band of height one-eighth its width on transparent background, nothing above or below this band. Do NOT make a diagonal isometric building. Left and right ends continue seamlessly, no end caps. Fine handpainted organic texture, subdued colors, realistic tiny proportions, genuine transparent surroundings. Reference is style only, never reproduce its UI or text.",
+      "references": [
+        "references/Wave23_규격.jpg"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-1b2e6f5a-bf0d-4924-90da-590471676aa0.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "ee9bd34bbb352ce9f68d8a2297831aa041e6964afff9ccf259304f2263310be4",
+      "sha256": "c50680eb312b582e31986e3564710039390f1b0a52c87647eb8f3d795ca75b5c",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 261,
+          "width": 2172,
+          "height": 161
+        },
+        "resize": {
+          "width": 512,
+          "height": 38
+        },
+        "placement": {
+          "left": 0,
+          "top": 18
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 20751,
+        "partial_alpha_pixels": 11592,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "hedgerow_a_autumn",
+      "family": "hedgerow_a",
+      "season": "autumn",
+      "file": "assets/hedgerow_a_autumn.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/hedgerow_a_autumn.png",
+      "prompt": "Use case: lighting-weather. Edit this exact project game sprite to autumn. Keep its exact horizontal boundary layout, shrub/sapling or stone positions, ground baseline, transparent canvas, width, height and scale. Muted dry ochre and brown foliage with some dull olive, no flowers, very restrained rust leaves. Preserve hand-painted miniature style, upper-left light, 14th century southern England. Transparent RGBA background with no solid backdrop. One horizontal X-repeat asset strip, no labels, no scene. Do not add or remove trees or wall sections, no large trees.",
+      "references": [
+        "native/strips/hedgerow_a_summer.png"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-4897d661-f1c4-41ee-b448-62aa16c0fd44.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "db1be3562845afcd5dd7c3adabb47e793042089719af665681a1b8adf8c40625",
+      "sha256": "cf31675d73580abecf4689f2af70b45ad824290a62ace57f3e8849f003fefe3c",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 254,
+          "width": 2172,
+          "height": 166
+        },
+        "resize": {
+          "width": 512,
+          "height": 39
+        },
+        "placement": {
+          "left": 0,
+          "top": 17
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 20308,
+        "partial_alpha_pixels": 11768,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "hedgerow_a_winter",
+      "family": "hedgerow_a",
+      "season": "winter",
+      "file": "assets/hedgerow_a_winter.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/hedgerow_a_winter.png",
+      "prompt": "Use case: lighting-weather. Edit this exact project game sprite to winter. Keep its exact horizontal boundary layout, shrub/sapling or stone positions, ground baseline, transparent canvas, width, height and scale. Bare fine twigs for deciduous shrubs and sapling, dormant straw grass, delicate white frost dusting along upward-facing edges, no deep snow. Preserve hand-painted miniature style, upper-left light, 14th century southern England. Transparent RGBA background with no solid backdrop. One horizontal X-repeat asset strip, no labels, no scene. Do not add or remove trees or wall sections, no large trees.",
+      "references": [
+        "native/strips/hedgerow_a_summer.png"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-ede8d0a1-f7f4-4626-b85e-b50519f9b7eb.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "55085584f0e093a9acc98c1bfbdba4d00d9bb14f33c30cff0d3388ac03d96bf0",
+      "sha256": "b8bedb5c2de38a3138bf6100e3ff90d919035e73ac5ae577f06a984835c5a6bd",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 260,
+          "width": 2172,
+          "height": 158
+        },
+        "resize": {
+          "width": 512,
+          "height": 37
+        },
+        "placement": {
+          "left": 0,
+          "top": 19
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 21004,
+        "partial_alpha_pixels": 11257,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Frosted dense branch silhouette; fine bare-twig openness is subdued at final scale."
+      }
+    },
+    {
+      "id": "hedgerow_b_summer",
+      "family": "hedgerow_b",
+      "season": "summer",
+      "file": "assets/hedgerow_b_summer.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/hedgerow_b_summer.png",
+      "prompt": "Use case: historical-scene. Create ONE transparent RGBA game sprite strip for a 14th century southern England city builder: A continuous sparse country hedge of hawthorn, hazel and dog-rose with twiggy visible lower branches and grassy gaps, one small oak sapling just slightly higher than shrubs. SUMMER: restrained olive green, tiny subdued dog rose flowers only if hedge. Match the supplied project reference painterly miniature aesthetic and soft upper-left light, NO text, no diagram labels, no frame, no scenery, no checkerboard painted in. Technical composition: extremely long thin HORIZONTAL X-repeat strip with perfectly horizontal ground contact, extends fully across left and right edges, straight-on strip profile seen from above with 2:1 ground depth, no vanishing point. Final intended dimensions 512x64: compose all visible content within a centered band of height one-eighth its width on transparent background, nothing above or below this band. Do NOT make a diagonal isometric building. Left and right ends continue seamlessly, no end caps. Fine handpainted organic texture, subdued colors, realistic tiny proportions, genuine transparent surroundings. Reference is style only, never reproduce its UI or text.",
+      "references": [
+        "references/Wave23_규격.jpg"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-d9da3de8-c5af-45ec-89d2-e268738dcf97.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "cb2e996bc42d678222dc155ccd985802d192b1b0e5a4a508f07fb80a9339a9a0",
+      "sha256": "c892437f6447e987ad23831bd44a897968e948104a84cd52ebdf1ad16a56520e",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 276,
+          "width": 2172,
+          "height": 179
+        },
+        "resize": {
+          "width": 512,
+          "height": 42
+        },
+        "placement": {
+          "left": 0,
+          "top": 14
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 18027,
+        "partial_alpha_pixels": 14517,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "hedgerow_b_autumn",
+      "family": "hedgerow_b",
+      "season": "autumn",
+      "file": "assets/hedgerow_b_autumn.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/hedgerow_b_autumn.png",
+      "prompt": "Use case: lighting-weather. Edit this exact project game sprite to autumn. Keep its exact horizontal boundary layout, shrub/sapling or stone positions, ground baseline, transparent canvas, width, height and scale. Muted dry ochre and brown foliage with some dull olive, no flowers, very restrained rust leaves. Preserve hand-painted miniature style, upper-left light, 14th century southern England. Transparent RGBA background with no solid backdrop. One horizontal X-repeat asset strip, no labels, no scene. Do not add or remove trees or wall sections, no large trees.",
+      "references": [
+        "native/strips/hedgerow_b_summer.png"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-544907fc-fd69-44d2-a8d3-226c99019f08.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "b9ca7ab091e2d1fe916c7dc7af7af51d043b140f68d8426c4ed5459bbe97ea82",
+      "sha256": "c5f308bcb12f8562df6cd978913e3b8f27b45ba35e21a2fa30c42caa13f216d7",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 267,
+          "width": 2172,
+          "height": 182
+        },
+        "resize": {
+          "width": 512,
+          "height": 43
+        },
+        "placement": {
+          "left": 0,
+          "top": 13
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 17424,
+        "partial_alpha_pixels": 14820,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "hedgerow_b_winter",
+      "family": "hedgerow_b",
+      "season": "winter",
+      "file": "assets/hedgerow_b_winter.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/hedgerow_b_winter.png",
+      "prompt": "Use case: lighting-weather. Edit this exact project game sprite to winter. Keep its exact horizontal boundary layout, shrub/sapling or stone positions, ground baseline, transparent canvas, width, height and scale. Bare fine twigs for deciduous shrubs and sapling, dormant straw grass, delicate white frost dusting along upward-facing edges, no deep snow. Preserve hand-painted miniature style, upper-left light, 14th century southern England. Transparent RGBA background with no solid backdrop. One horizontal X-repeat asset strip, no labels, no scene. Do not add or remove trees or wall sections, no large trees.",
+      "references": [
+        "native/strips/hedgerow_b_summer.png"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-3e70b322-b534-4b69-b42a-1cd711fae013.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "4341c3c052f6a096509065194af6202f45a89a34c00266fa501f10b81994e747",
+      "sha256": "81df81b151cf09f85c553b7ab1db34b265ccd5e2eacf66eaa3eba5f5494dd2d1",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 277,
+          "width": 2172,
+          "height": 177
+        },
+        "resize": {
+          "width": 512,
+          "height": 42
+        },
+        "placement": {
+          "left": 0,
+          "top": 14
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 17807,
+        "partial_alpha_pixels": 14555,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Frosted dense branch silhouette; fine bare-twig openness is subdued at final scale."
+      }
+    },
+    {
+      "id": "baulk_summer",
+      "family": "baulk",
+      "season": "summer",
+      "file": "assets/baulk_summer.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/baulk_summer.png",
+      "prompt": "Use case: historical-scene. Create ONE transparent RGBA game sprite strip for a 14th century southern England city builder: A continuous very low grass-covered earth baulk field boundary, gently lumpy bank, tiny grass tufts and muted earth, NO shrubs or trees. SUMMER: restrained olive green, tiny subdued dog rose flowers only if hedge. Match the supplied project reference painterly miniature aesthetic and soft upper-left light, NO text, no diagram labels, no frame, no scenery, no checkerboard painted in. Technical composition: extremely long thin HORIZONTAL X-repeat strip with perfectly horizontal ground contact, extends fully across left and right edges, straight-on strip profile seen from above with 2:1 ground depth, no vanishing point. Final intended dimensions 512x64: compose all visible content within a centered band of height one-eighth its width on transparent background, nothing above or below this band. Do NOT make a diagonal isometric building. Left and right ends continue seamlessly, no end caps. Fine handpainted organic texture, subdued colors, realistic tiny proportions, genuine transparent surroundings. Reference is style only, never reproduce its UI or text.",
+      "references": [
+        "references/Wave23_규격.jpg"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-59c2817c-f5cf-41f0-8d09-528b36a6c577.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "9ca6aff7106348b0b2cc6847a70944bbe76e120d942bcc60f4a454d906a8615c",
+      "sha256": "68700af6dc3b77a1052e67916e525fd1f3d71b7136d6210cdb2eb01ebbbda743",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 312,
+          "width": 2172,
+          "height": 111
+        },
+        "resize": {
+          "width": 512,
+          "height": 26
+        },
+        "placement": {
+          "left": 0,
+          "top": 30
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 21865,
+        "partial_alpha_pixels": 10494,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "baulk_autumn",
+      "family": "baulk",
+      "season": "autumn",
+      "file": "assets/baulk_autumn.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/baulk_autumn.png",
+      "prompt": "Use case: lighting-weather. Edit this exact project game sprite to autumn. Keep its exact horizontal boundary layout, shrub/sapling or stone positions, ground baseline, transparent canvas, width, height and scale. Muted dry ochre and brown foliage with some dull olive, no flowers, very restrained rust leaves. Preserve hand-painted miniature style, upper-left light, 14th century southern England. Transparent RGBA background with no solid backdrop. One horizontal X-repeat asset strip, no labels, no scene. Do not add or remove trees or wall sections, no large trees.",
+      "references": [
+        "native/strips/baulk_summer.png"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-34555057-b91e-4f7c-8844-f3a00a1c6309.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "03ac69bbeb55ab91a5adf53758f8b1b00f7225388fb542e96cd65521695a149d",
+      "sha256": "df66ecd10781c6e531762b8a415c0b118e013204d8a8d5fd42e68270638dc557",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 296,
+          "width": 2172,
+          "height": 121
+        },
+        "resize": {
+          "width": 512,
+          "height": 29
+        },
+        "placement": {
+          "left": 0,
+          "top": 27
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 20590,
+        "partial_alpha_pixels": 11603,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "baulk_winter",
+      "family": "baulk",
+      "season": "winter",
+      "file": "assets/baulk_winter.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/baulk_winter.png",
+      "prompt": "Use case: lighting-weather. Edit this exact project game sprite to winter. Keep its exact horizontal boundary layout, shrub/sapling or stone positions, ground baseline, transparent canvas, width, height and scale. Bare fine twigs for deciduous shrubs and sapling, dormant straw grass, delicate white frost dusting along upward-facing edges, no deep snow. Preserve hand-painted miniature style, upper-left light, 14th century southern England. Transparent RGBA background with no solid backdrop. One horizontal X-repeat asset strip, no labels, no scene. Do not add or remove trees or wall sections, no large trees.",
+      "references": [
+        "native/strips/baulk_summer.png"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-89e77d3b-e622-499e-89a3-7c2ee256c83c.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "d6ec4d1adf81b395506db60291f19f7440e7bf7972b5f31a8d1c24623a7b740e",
+      "sha256": "6c6fc2056e4e7bfafc6841c4014d7999cd352890ef79a5fd63586a916b536943",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 308,
+          "width": 2172,
+          "height": 112
+        },
+        "resize": {
+          "width": 512,
+          "height": 26
+        },
+        "placement": {
+          "left": 0,
+          "top": 30
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 21769,
+        "partial_alpha_pixels": 10346,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "dry_stone_wall_summer",
+      "family": "dry_stone_wall",
+      "season": "summer",
+      "file": "assets/dry_stone_wall_summer.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/dry_stone_wall_summer.png",
+      "prompt": "Use case: historical-scene. Create ONE transparent RGBA game sprite strip for a 14th century southern England city builder: A continuous low rustic dry-stone boundary wall of irregular pale chalk and dark flint stones, lichen, no mortar, modest grass at base, NOT a fortification. SUMMER: restrained olive green, tiny subdued dog rose flowers only if hedge. Match the supplied project reference painterly miniature aesthetic and soft upper-left light, NO text, no diagram labels, no frame, no scenery, no checkerboard painted in. Technical composition: extremely long thin HORIZONTAL X-repeat strip with perfectly horizontal ground contact, extends fully across left and right edges, straight-on strip profile seen from above with 2:1 ground depth, no vanishing point. Final intended dimensions 512x64: compose all visible content within a centered band of height one-eighth its width on transparent background, nothing above or below this band. Do NOT make a diagonal isometric building. Left and right ends continue seamlessly, no end caps. Fine handpainted organic texture, subdued colors, realistic tiny proportions, genuine transparent surroundings. Reference is style only, never reproduce its UI or text.",
+      "references": [
+        "references/Wave23_규격.jpg"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-16c2b910-7312-4b8f-8663-b793b56715e1.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "182389251f949ded4709110c79044335e205744f0170a5f3c7544ce73d53b468",
+      "sha256": "a085c2e2549d1e75892564b29a929d1f6ab238e70d8e9cf2eefa25f49d59f06e",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 306,
+          "width": 2172,
+          "height": 120
+        },
+        "resize": {
+          "width": 512,
+          "height": 28
+        },
+        "placement": {
+          "left": 0,
+          "top": 28
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 19624,
+        "partial_alpha_pixels": 12548,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "dry_stone_wall_autumn",
+      "family": "dry_stone_wall",
+      "season": "autumn",
+      "file": "assets/dry_stone_wall_autumn.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/dry_stone_wall_autumn.png",
+      "prompt": "Use case: lighting-weather. Edit this exact project game sprite to autumn. Keep its exact horizontal boundary layout, shrub/sapling or stone positions, ground baseline, transparent canvas, width, height and scale. Muted dry ochre and brown foliage with some dull olive, no flowers, very restrained rust leaves. Preserve hand-painted miniature style, upper-left light, 14th century southern England. Transparent RGBA background with no solid backdrop. One horizontal X-repeat asset strip, no labels, no scene. Do not add or remove trees or wall sections, no large trees.",
+      "references": [
+        "native/strips/dry_stone_wall_summer.png"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-7cbf4b38-d4be-4eb9-9d55-137d2ca21d01.png"
+      },
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "native_sha256": "42e48b633cc7e7cb08df54afefbd45ec9d1f73f2fd16b6f8c49c51721836c36d",
+      "sha256": "0c2753accca0a22799541d3b4e6fd76101d7dc11115368664214d4b0efd1f2b3",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 305,
+          "width": 2172,
+          "height": 123
+        },
+        "resize": {
+          "width": 512,
+          "height": 29
+        },
+        "placement": {
+          "left": 0,
+          "top": 27
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 19030,
+        "partial_alpha_pixels": 13113,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    },
+    {
+      "id": "dry_stone_wall_winter",
+      "family": "dry_stone_wall",
+      "season": "winter",
+      "file": "assets/dry_stone_wall_winter.png",
+      "width": 512,
+      "height": 64,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      },
+      "status": "candidate",
+      "native": "native/strips/dry_stone_wall_winter.png",
+      "prompt": "Use case: lighting-weather. Edit this exact project game sprite to winter. Keep its exact horizontal boundary layout, shrub/sapling or stone positions, ground baseline, transparent canvas, width, height and scale. Bare fine twigs for deciduous shrubs and sapling, dormant straw grass, delicate white frost dusting along upward-facing edges, no deep snow. Preserve hand-painted miniature style, upper-left light, 14th century southern England. Transparent RGBA background with no solid backdrop. One horizontal X-repeat asset strip, no labels, no scene. Do not add or remove trees or wall sections, no large trees.",
+      "references": [
+        "native/strips/dry_stone_wall_summer.png"
+      ],
+      "generation": {
+        "tool": "builtin image_gen",
+        "calls": 1,
+        "model": "not provided",
+        "seed": "not provided",
+        "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-086b-7003-b581-5ca8df0a07e7/exec-276c0ec8-d77f-4817-9c39-ce5fbacb1850.png"
+      },
+      "native_dimensions": {
+        "width": 2167,
+        "height": 725
+      },
+      "native_sha256": "317f3a00ca2e59e63a0954a98d5c83d5a3418a30f87e730aeb85e3578dede8d3",
+      "sha256": "aefb4d5e86a16f756b005d64d2549784638977e17c2448a99e26d663b9efa508",
+      "processing": {
+        "alpha": "Generated alpha preserved, resized and pair-blended at seam",
+        "crop": {
+          "left": 0,
+          "top": 305,
+          "width": 2167,
+          "height": 123
+        },
+        "resize": {
+          "width": 512,
+          "height": 29
+        },
+        "placement": {
+          "left": 0,
+          "top": 27
+        },
+        "baseline": 56,
+        "seam": "8-pixel opposing-edge weighted average on all RGBA channels, edge weight 1"
+      },
+      "qa": {
+        "x_edge_max_rgba_difference": 0,
+        "x_edge_mismatched_channels": 0,
+        "transparent_pixels": 19131,
+        "partial_alpha_pixels": 12947,
+        "repeat_review": "native/strips/repeat-x3.png",
+        "limitations": "Offline candidate only; runtime placement untested."
+      }
+    }
+  ]
+}

@@ -250,7 +250,10 @@ function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
   let resettled = 0;
   if (!reserveShort) {
     const lots = new Map(state.buildings.map(building => [building.id, building]));
-    const index = houses.findIndex(house => house.abandonedTick !== undefined && house.hasWater && tick - house.abandonedTick >= PRESSURE_BALANCE.resettleAfterTicks);
+    // F3-A (PL-3): a house the pestilence emptied waits for its resettlement (`plague.ts`), not for the ladder's household.
+    const held = state.plague?.first !== undefined && state.plague.endedTick === undefined ? new Set(state.plague.vacantHouseIds) : null;
+    const index = houses.findIndex(house => house.abandonedTick !== undefined && house.hasWater && tick - house.abandonedTick >= PRESSURE_BALANCE.resettleAfterTicks
+      && held?.has(house.buildingId) !== true);
     const house = houses[index];
     if (house !== undefined) {
       const { abandonedTick: _abandoned, ...rest } = house;

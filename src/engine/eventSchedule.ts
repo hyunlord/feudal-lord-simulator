@@ -24,6 +24,7 @@ import type { GameState } from "./engine.types";
 import type { EventForecastEntry, EventRecord, EventStage, WeatherReport } from "./events.types";
 import { rollPermille, hashSeed } from "./prng";
 import { FAMINE_RESPONSE_CONFIG } from "../content/chapterConfig";
+import { PLAGUE_BALANCE } from "../content/plagueConfig";
 import { calendar, scenarioOf } from "./scenarioState";
 
 export const SEASON_TICKS = PRESSURE_BALANCE.seasonTicks;
@@ -31,7 +32,7 @@ const SEASONS_PER_YEAR = BALANCE.TICKS_PER_YEAR / SEASON_TICKS;
 const SUMMER = 1;
 
 /** The schedule reads the seed and scenario; F0-C1's era events also read what arrived and the eras entered. */
-type EventWorld = Pick<GameState, "seed" | "scenarioId"> & Partial<Pick<GameState, "events" | "historicalEras">>;
+type EventWorld = Pick<GameState, "seed" | "scenarioId"> & Partial<Pick<GameState, "events" | "historicalEras" | "plague">>;
 
 export function seasonIndexOf(tick: number): number {
   return Math.floor(tick / SEASON_TICKS);
@@ -288,6 +289,9 @@ export function foodPricePermille(state: EventWorld, tick: number): number {
     const span = dearthWindow(def, season);
     if (tick >= span.arrivalTick && tick < span.endTick) price = Math.max(price, def.foodPricePermille);
   }
+  // F3-A (PL-4): after the pestilence, fewer mouths — bread and wheat sell at four fifths (a dearth's price still rises).
+  const plague = state.plague;
+  if (plague?.first !== undefined && plague.endedTick === undefined && tick >= plague.first.arrivalTick) price = Math.round(price * PLAGUE_BALANCE.grainPricePermille / 1000);
   return price;
 }
 

@@ -1,0 +1,632 @@
+{
+  "expected": 39,
+  "assets": 39,
+  "failures": [],
+  "checks": [
+    {
+      "id": "hedgerow_a_summer",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 20751,
+      "partial": 11592,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "hedgerow_a_autumn",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 20308,
+      "partial": 11768,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "hedgerow_a_winter",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 21004,
+      "partial": 11257,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "hedgerow_b_summer",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 18027,
+      "partial": 14517,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "hedgerow_b_autumn",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 17424,
+      "partial": 14820,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "hedgerow_b_winter",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 17807,
+      "partial": 14555,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "baulk_summer",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 21865,
+      "partial": 10494,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "baulk_autumn",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 20590,
+      "partial": 11603,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "baulk_winter",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 21769,
+      "partial": 10346,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "dry_stone_wall_summer",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 19624,
+      "partial": 12548,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "dry_stone_wall_autumn",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 19030,
+      "partial": 13113,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "dry_stone_wall_winter",
+      "dimensions": [
+        512,
+        64
+      ],
+      "channels": 4,
+      "transparent": 19131,
+      "partial": 12947,
+      "edge": 0,
+      "seam": 0,
+      "pivot": {
+        "x": 256,
+        "y": 56
+      }
+    },
+    {
+      "id": "oak_solitary_summer",
+      "dimensions": [
+        192,
+        224
+      ],
+      "channels": 4,
+      "transparent": 29660,
+      "partial": 12704,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 96,
+        "y": 204
+      }
+    },
+    {
+      "id": "oak_solitary_autumn",
+      "dimensions": [
+        192,
+        224
+      ],
+      "channels": 4,
+      "transparent": 29402,
+      "partial": 12982,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 96,
+        "y": 204
+      }
+    },
+    {
+      "id": "oak_solitary_winter",
+      "dimensions": [
+        192,
+        224
+      ],
+      "channels": 4,
+      "transparent": 32546,
+      "partial": 9870,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 96,
+        "y": 204
+      }
+    },
+    {
+      "id": "willow_pollard_summer",
+      "dimensions": [
+        160,
+        192
+      ],
+      "channels": 4,
+      "transparent": 18135,
+      "partial": 11676,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 80,
+        "y": 176
+      }
+    },
+    {
+      "id": "willow_pollard_autumn",
+      "dimensions": [
+        160,
+        192
+      ],
+      "channels": 4,
+      "transparent": 17842,
+      "partial": 12379,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 80,
+        "y": 176
+      }
+    },
+    {
+      "id": "willow_pollard_winter",
+      "dimensions": [
+        160,
+        192
+      ],
+      "channels": 4,
+      "transparent": 21407,
+      "partial": 8890,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 80,
+        "y": 176
+      }
+    },
+    {
+      "id": "roadside_cross_summer",
+      "dimensions": [
+        64,
+        96
+      ],
+      "channels": 4,
+      "transparent": 4290,
+      "partial": 1696,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 32,
+        "y": 88
+      }
+    },
+    {
+      "id": "roadside_cross_autumn",
+      "dimensions": [
+        64,
+        96
+      ],
+      "channels": 4,
+      "transparent": 4331,
+      "partial": 1650,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 32,
+        "y": 88
+      }
+    },
+    {
+      "id": "roadside_cross_winter",
+      "dimensions": [
+        64,
+        96
+      ],
+      "channels": 4,
+      "transparent": 4327,
+      "partial": 1658,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 32,
+        "y": 88
+      }
+    },
+    {
+      "id": "haystack_summer",
+      "dimensions": [
+        128,
+        112
+      ],
+      "channels": 4,
+      "transparent": 10653,
+      "partial": 3598,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 64,
+        "y": 100
+      }
+    },
+    {
+      "id": "haystack_autumn",
+      "dimensions": [
+        128,
+        112
+      ],
+      "channels": 4,
+      "transparent": 10399,
+      "partial": 3804,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 64,
+        "y": 100
+      }
+    },
+    {
+      "id": "haystack_winter",
+      "dimensions": [
+        128,
+        112
+      ],
+      "channels": 4,
+      "transparent": 11695,
+      "partial": 2507,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 64,
+        "y": 100
+      }
+    },
+    {
+      "id": "hurdle_fold_summer",
+      "dimensions": [
+        160,
+        112
+      ],
+      "channels": 4,
+      "transparent": 13118,
+      "partial": 4602,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 80,
+        "y": 100
+      }
+    },
+    {
+      "id": "hurdle_fold_autumn",
+      "dimensions": [
+        160,
+        112
+      ],
+      "channels": 4,
+      "transparent": 12956,
+      "partial": 4688,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 80,
+        "y": 100
+      }
+    },
+    {
+      "id": "hurdle_fold_winter",
+      "dimensions": [
+        160,
+        112
+      ],
+      "channels": 4,
+      "transparent": 12955,
+      "partial": 4678,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 80,
+        "y": 100
+      }
+    },
+    {
+      "id": "skep_row_summer",
+      "dimensions": [
+        96,
+        64
+      ],
+      "channels": 4,
+      "transparent": 4189,
+      "partial": 1793,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 48,
+        "y": 60
+      }
+    },
+    {
+      "id": "skep_row_autumn",
+      "dimensions": [
+        96,
+        64
+      ],
+      "channels": 4,
+      "transparent": 4129,
+      "partial": 1836,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 48,
+        "y": 60
+      }
+    },
+    {
+      "id": "skep_row_winter",
+      "dimensions": [
+        96,
+        64
+      ],
+      "channels": 4,
+      "transparent": 4160,
+      "partial": 1816,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 48,
+        "y": 60
+      }
+    },
+    {
+      "id": "boundary_stone_summer",
+      "dimensions": [
+        48,
+        64
+      ],
+      "channels": 4,
+      "transparent": 1616,
+      "partial": 1368,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 24,
+        "y": 60
+      }
+    },
+    {
+      "id": "boundary_stone_autumn",
+      "dimensions": [
+        48,
+        64
+      ],
+      "channels": 4,
+      "transparent": 1564,
+      "partial": 1409,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 24,
+        "y": 60
+      }
+    },
+    {
+      "id": "boundary_stone_winter",
+      "dimensions": [
+        48,
+        64
+      ],
+      "channels": 4,
+      "transparent": 1610,
+      "partial": 1357,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 24,
+        "y": 60
+      }
+    },
+    {
+      "id": "wildflower_small_summer",
+      "dimensions": [
+        128,
+        64
+      ],
+      "channels": 4,
+      "transparent": 6039,
+      "partial": 2082,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 64,
+        "y": 32
+      }
+    },
+    {
+      "id": "wildflower_small_autumn",
+      "dimensions": [
+        128,
+        64
+      ],
+      "channels": 4,
+      "transparent": 6049,
+      "partial": 2077,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 64,
+        "y": 32
+      }
+    },
+    {
+      "id": "wildflower_small_winter",
+      "dimensions": [
+        128,
+        64
+      ],
+      "channels": 4,
+      "transparent": 6079,
+      "partial": 2022,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 64,
+        "y": 32
+      }
+    },
+    {
+      "id": "wildflower_large_summer",
+      "dimensions": [
+        256,
+        128
+      ],
+      "channels": 4,
+      "transparent": 22817,
+      "partial": 9714,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 128,
+        "y": 64
+      }
+    },
+    {
+      "id": "wildflower_large_autumn",
+      "dimensions": [
+        256,
+        128
+      ],
+      "channels": 4,
+      "transparent": 20904,
+      "partial": 11705,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 128,
+        "y": 64
+      }
+    },
+    {
+      "id": "wildflower_large_winter",
+      "dimensions": [
+        256,
+        128
+      ],
+      "channels": 4,
+      "transparent": 22254,
+      "partial": 10201,
+      "edge": 0,
+      "seam": null,
+      "pivot": {
+        "x": 128,
+        "y": 64
+      }
+    }
+  ],
+  "candidate_only": true
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "key": "hay_summer",
+    "prompt": "Use case: historical-scene. Create ONE isolated game sprite, hand-painted low-chroma medieval city-builder art, South England circa 1300–1450, fine natural texture but readable silhouette at tiny size. True transparent RGBA background, no ground tile or rectangular base, no text, no people, no animals, no modern objects. Fixed isometric 2:1 camera, ground axes slope 1:2, orthographic, light upper left. Tight faint contact shadow only. Center sprite with clear empty margins. Project screenshot is style reference only, do not reproduce its UI or whole scene. Subject: SUMMER haystack being stacked, unfinished low loose golden-olive hay mound, irregular partly conical pile with loose wisps, a plain central wooden stacking pole. No tools or carts. Narrow incidental grass only directly at base. Intended final canvas 128x112, pivot bottom-center at (64,100).",
+    "rawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-1d1812bb-4bf5-45b2-bc2a-9942916437c9.png",
+    "references": [
+      "references/현재_성벽밖_밋밋함.jpg"
+    ]
+  },
+  {
+    "key": "hay_autumn",
+    "prompt": "Use case: precise-object-edit. Edit the provided summer haystack into AUTUMN: complete tall conical hayrick, neatly combed and thatched outer hay surface, dry muted golden straw, no green grass. Same South England 14th century hand-painted low-chroma city-builder sprite. Preserve camera 2:1 isometric, center pole position, base ground center, light from upper left and original canvas framing. Build hay upward around the pole, almost cover pole, crisp conical roof-like hay surface but no separate building. True transparent RGBA, no background, no text, no people, no animals, no extra tools. Small localized ground contact only. Final intended canvas 128x112 pivot (64,100).",
+    "rawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-6ae75539-662b-4420-ae08-6a626f8aa16f.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-1d1812bb-4bf5-45b2-bc2a-9942916437c9.png"
+    ]
+  },
+  {
+    "key": "hay_winter",
+    "prompt": "Use case: precise-object-edit. Edit the provided summer haystack into WINTER: half-used smaller hay pile, clearly cut-away loose side, faded straw and delicate sparse frost dusting on upward-facing straw, no thick snow blanket. Same South England 14th century hand-painted low-chroma city-builder sprite. Preserve camera 2:1 isometric, center pole position, base ground center, light from upper left and original canvas framing. Reduce hay volume to about half of autumn, pile only around lower part of pole. True transparent RGBA, no background, no text, no people, no animals, no extra tools. Small localized ground contact only. Final intended canvas 128x112 pivot (64,100).",
+    "rawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-1bf70a51-9d63-44ec-a53e-032565652abe.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-1d1812bb-4bf5-45b2-bc2a-9942916437c9.png"
+    ]
+  },
+  {
+    "key": "fold_summer",
+    "prompt": "Use case: historical-scene. Create ONE isolated SUMMER hurdle fold game sprite: an empty small square livestock pen of lightweight woven hazel wattle hurdles on rough slim wooden stakes. Four sides in an isometric diamond, modest entrance opening in near right side. No roof, no animals, no people, no tools. Sparse summer grass at fence feet, interior predominantly transparent. Hand-painted low-chroma medieval city-builder art, South England circa 1300–1450, natural texture readable at tiny size. True transparent RGBA background, no ground tile or rectangular base, no text. Fixed isometric 2:1 camera, ground axes slope 1:2, orthographic, light upper left. Tight faint contact shadow only. Center sprite with empty margins. Intended final canvas 160x112, pivot bottom-center (80,100). Diamond corners on ground: left (14,62), back (80,29), right (146,62), front (80,95). Low fence height 21 pixels at target scale. Project screenshot is style reference only, do not reproduce UI or whole scene.",
+    "rawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-9d8abcec-e6d7-42c6-a0fe-4d841d39787b.png",
+    "references": [
+      "references/현재_성벽밖_밋밋함.jpg"
+    ]
+  },
+  {
+    "key": "fold_autumn",
+    "prompt": "Use case: lighting-weather. Edit the provided summer hurdle fold into AUTUMN: dry muted ochre grass tufts at fence feet instead of green summer grass. STRICT geometry preservation: keep EVERY stake and fence panel, all four corner locations, entry opening, silhouette, camera, scale, perspective, canvas and ground-contact position exactly unchanged. Change seasonal material appearance only. The interior remains transparent and empty. South England 14th century, hand-painted low-chroma isometric 2:1 game sprite. True transparent RGBA. No animals, people, roof, extra props, text, ground tile. Final intended canvas 160x112 pivot (80,100).",
+    "rawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-52274db4-840c-4063-9215-dcdc027dcfd7.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-9d8abcec-e6d7-42c6-a0fe-4d841d39787b.png"
+    ]
+  },
+  {
+    "key": "fold_winter",
+    "prompt": "Use case: lighting-weather. Edit the provided summer hurdle fold into WINTER: sparse frost on upward facing hurdle branches and tiny dry dormant tufts at feet, no thick snow. STRICT geometry preservation: keep EVERY stake and fence panel, all four corner locations, entry opening, silhouette, camera, scale, perspective, canvas and ground-contact position exactly unchanged. Change seasonal material appearance only. The interior remains transparent and empty. South England 14th century, hand-painted low-chroma isometric 2:1 game sprite. True transparent RGBA. No animals, people, roof, extra props, text, ground tile. Final intended canvas 160x112 pivot (80,100).",
+    "rawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-026dd2f9-2dcb-4b5f-8345-73a1ba316b49.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-9d8abcec-e6d7-42c6-a0fe-4d841d39787b.png"
+    ]
+  }
+]

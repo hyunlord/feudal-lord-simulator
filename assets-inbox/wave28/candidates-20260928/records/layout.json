@@ -1,0 +1,170 @@
+{
+  "source": "references/현재_성벽밖_밋밋함.jpg",
+  "outside_polygon": [
+    [
+      0,
+      104
+    ],
+    [
+      152,
+      91
+    ],
+    [
+      224,
+      130
+    ],
+    [
+      228,
+      204
+    ],
+    [
+      235,
+      260
+    ],
+    [
+      245,
+      307
+    ],
+    [
+      270,
+      337
+    ],
+    [
+      200,
+      378
+    ],
+    [
+      185,
+      438
+    ],
+    [
+      235,
+      479
+    ],
+    [
+      317,
+      545
+    ],
+    [
+      349,
+      600
+    ],
+    [
+      0,
+      600
+    ]
+  ],
+  "exclude_rects": [
+    [
+      0,
+      557,
+      194,
+      43
+    ],
+    [
+      0,
+      41,
+      43,
+      45
+    ]
+  ],
+  "placements": [
+    {
+      "id": "hedgerow_a",
+      "x": 22,
+      "y": 209,
+      "w": 132,
+      "slope": 0.5,
+      "texture_scale": 0.5,
+      "source_x": 180
+    },
+    {
+      "id": "hedgerow_b",
+      "x": 22,
+      "y": 387,
+      "w": 115,
+      "slope": 0.5,
+      "texture_scale": 0.5,
+      "source_x": 0
+    },
+    {
+      "id": "baulk",
+      "x": 79,
+      "y": 318,
+      "w": 105,
+      "slope": 0.5,
+      "texture_scale": 0.5,
+      "source_x": 0
+    },
+    {
+      "id": "dry_stone_wall",
+      "x": 30,
+      "y": 498,
+      "w": 107,
+      "slope": -0.5,
+      "texture_scale": 0.5,
+      "source_x": 0
+    },
+    {
+      "id": "oak_solitary",
+      "x": 180,
+      "y": 202,
+      "scale": 0.44
+    },
+    {
+      "id": "willow_pollard",
+      "x": 169,
+      "y": 416,
+      "scale": 0.28
+    },
+    {
+      "id": "roadside_cross",
+      "x": 225,
+      "y": 272,
+      "scale": 0.24
+    },
+    {
+      "id": "haystack",
+      "x": 104,
+      "y": 380,
+      "scale": 0.32
+    },
+    {
+      "id": "hurdle_fold",
+      "x": 81,
+      "y": 320,
+      "scale": 0.36
+    },
+    {
+      "id": "skep_row",
+      "x": 64,
+      "y": 284,
+      "scale": 0.36
+    },
+    {
+      "id": "boundary_stone",
+      "x": 43,
+      "y": 448,
+      "scale": 0.3
+    },
+    {
+      "id": "wildflower_small",
+      "x": 84,
+      "y": 168,
+      "scale": 0.46
+    },
+    {
+      "id": "wildflower_large",
+      "x": 85,
+      "y": 524,
+      "scale": 0.42
+    },
+    {
+      "id": "wildflower_small",
+      "x": 172,
+      "y": 355,
+      "scale": 0.42
+    }
+  ],
+  "method": "Source screenshot remains identical outside new overlay alpha. Conservative visible outside-grass polygon excludes town/walls/lake/forest/UI. New-overlay nonzero alpha union/outside mask <=0.15 in all seasons. No terrain seasonal repaint. Point assets ground-pivot inherited from family metadata; fallback visible bottom-center recorded. Strips shear baseline ±0.5, do not rotate the vertical axis."
+}
