@@ -266,7 +266,8 @@ test("R12 (RG-11) the save round trip (v27) mid-chapter, the same course twice, 
   const mid = snap(at(1371) + 1);
   const loaded = decodeSave(encodeSave({ state: mid, createdAt: "2026-09-29T00:00:00.000Z", savedAt: "2026-09-29T00:00:00.000Z" }).bytes).envelope;
   assert.equal(loaded.schemaVersion, SAVE_SCHEMA_VERSION);
-  assert.equal(SAVE_SCHEMA_VERSION, 27);
+  // FIX-8: v28 (malt to the storehouse) and later carry the reorganisation as it was.
+  assert.ok(SAVE_SCHEMA_VERSION >= 27);
   const a = runAnswering(loaded.state as GameState, at(1371) + 2 * SEASON, BOT);
   const b = runAnswering(mid, at(1371) + 2 * SEASON, BOT);
   assert.deepEqual(a.reorganisation, b.reorganisation);
