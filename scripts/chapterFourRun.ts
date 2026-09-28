@@ -24,7 +24,8 @@ const when = (state: GameState) => ({ tick: state.tick, year: stateCalendar(stat
   lived: state.houses.filter(house => house.residents > 0).length, l4: state.houses.filter(house => house.level >= 4 && house.residents > 0).length });
 let chapter3End: ReturnType<typeof when> | null = null;
 let chapter4End: ReturnType<typeof when> | null = null;
-const yearly: (ReturnType<typeof when> & { influence: Readonly<Record<string, number>>; relations: Record<string, number>; clothSold: number })[] = [];
+const yearly: (ReturnType<typeof when> & { influence: Readonly<Record<string, number>>; relations: Record<string, number>; clothSold: number;
+  labour: unknown; malt: number })[] = [];
 /** Income by category through chapter 4, and by year (positive cash postings; upkeep and other costs apart). */
 const income = new Map<string, number>();
 const byYear = new Map<number, Map<string, number>>();
@@ -54,7 +55,8 @@ try {
     seen = (state.ledger?.nextEntryOrdinal ?? 1) - 1;
     const r = state.reorganisation;
     if (r !== undefined && state.tick % YEAR === 0) {
-      yearly.push({ ...when(state), influence: r.influence, clothSold: r.clothSold,
+      yearly.push({ ...when(state), influence: r.influence, clothSold: r.clothSold, labour: state.labour ?? null,
+        malt: state.buildings.filter(building => building.kind === "granary").reduce((sum, building) => sum + (building.inventory.malt ?? 0), 0),
         relations: Object.fromEntries((state.factions?.factions ?? []).map(faction => [faction.id, faction.relation])) });
     }
     if (chapterEnd(state, CHAPTER_FOUR.chapter) !== null) { chapter4End ??= when(state); if (!toStability) throw new Stop(); }
