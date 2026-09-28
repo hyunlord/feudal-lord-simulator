@@ -11,14 +11,18 @@
 //                                                    ledger row
 //  6. korean      scripts/checks/koreanStrings.mjs   no new Korean string in src outside *.ko.ts and *.generated.*
 //                                                    (parsed with tools/eslint's TypeScript 6)
+//  7. budget      scripts/checks/distBudget.mjs      `vite build` of <head> into a temporary folder: the total and each
+//                                                    budgeted category (distBudget.config.json) within budget
 // The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
-// 1, 2, 5 and 6 read git objects. 3 and 4 need files: they run in this checkout when it is at <head> with no tracked
-// changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules.
+// 1, 2, 5 and 6 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
+// changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules; step 7
+// checks out there only the received PNGs the build turns into web derivatives (git lfs checkout, from the local store).
 import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { formatBudgetTable, loadBudgetConfig, measureBuild } from './distBudget.mjs';
 import { changedFiles, git, resolveRange } from './gitRange.mjs';
 import { checkPinChanges, formatPinResult } from './pinChanges.mjs';
 import { checkLintExceptions, formatLintResult } from './lintExceptions.mjs';
@@ -61,6 +65,7 @@ if (!(clean && atHead)) {
 try {
   report(...eslintStep(work));
   report(...typecheckStep(work));
+  report(...budgetStep(work));
 } finally {
   if (temporary !== null) {
     spawnSync('git', ['worktree', 'remove', '--force', temporary], { stdio: 'ignore' });
@@ -108,6 +113,36 @@ function typecheckStep(dir) {
   const run = spawnSync(tsc, ['--noEmit'], { cwd: dir, encoding: 'utf8' });
   const output = `${run.stdout}${run.stderr}`.trim();
   return ['typecheck', run.status === 0, `typecheck: ${run.status === 0 ? 'passed' : 'failed'}${output ? `\n${indent(output.split('\n').slice(0, 30).join('\n'))}` : ''}`];
+}
+
+function budgetStep(dir) {
+  const configPath = join(dir, 'scripts', 'checks', 'distBudget.config.json');
+  if (!existsSync(configPath) || !existsSync(join(dir, 'vite.config.ts'))) return ['budget', true, `budget: skipped (no vite.config.ts or distBudget.config.json at ${head.slice(0, 8)})`];
+  if (!existsSync(join(top, 'node_modules', '.bin', 'vite'))) return ['budget', false, 'budget: node_modules missing in this checkout (run npm ci)'];
+  const started = Date.now();
+  try {
+    if (dir !== top) {
+      if (!existsSync(join(dir, 'node_modules'))) symlinkSync(join(top, 'node_modules'), join(dir, 'node_modules'));
+      checkoutDerivativeSources(dir);
+    }
+    const { buildMs, result } = measureBuild({ cwd: dir, config: loadBudgetConfig(configPath) });
+    const mb = bytes => (bytes / result.megabyte).toFixed(2);
+    const over = result.over.map(id => { const row = id === 'total' ? { name: '전체', ...result.total } : result.categories.find(category => category.id === id);
+      return `${row.name} ${mb(row.bytes)} MB > ${mb(row.budgetBytes)} MB`; });
+    const summary = `budget: ${mb(result.total.bytes)} MB of ${mb(result.total.budgetBytes)} MB, ${result.pass ? 'within budget' : `OVER (${over.join(', ')})`}` +
+      ` (build ${(buildMs / 1000).toFixed(1)} s, step ${((Date.now() - started) / 1000).toFixed(1)} s)`;
+    return ['budget', result.pass, `${summary}\n${indent(formatBudgetTable(result))}`];
+  } catch (error) {
+    return ['budget', false, `budget: failed\n${indent(String(error.message ?? error))}`];
+  }
+}
+
+// The build decodes the received keyart, illustration and portrait PNGs (Git LFS, assets-inbox) into web derivatives;
+// a temporary worktree has them as pointers, so check those out from the local LFS store.
+function checkoutDerivativeSources(dir) {
+  const list = "import('./scripts/keyartDerivatives.ts').then(m => console.log([...new Set(m.WEB_ART_DERIVATIVES.map(d => d.source))].join('\\n')))";
+  const sources = execFileSync(join(top, 'node_modules', '.bin', 'tsx'), ['-e', list], { cwd: dir, encoding: 'utf8' }).split('\n').filter(Boolean);
+  execFileSync('git', ['lfs', 'checkout', '--', ...sources], { cwd: dir, stdio: 'ignore' });
 }
 
 function indent(text) { return text.split('\n').map(line => `  ${line}`).join('\n'); }

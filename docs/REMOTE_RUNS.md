@@ -66,8 +66,8 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 ## 병합 전 자동 검사
 본선(`codex/phase15-organic-ground`)과 main에 들어가는 것은 pre-push 훅이 먼저 검사한다(AGENTS.md 규칙 19, REVIEW-1).
 - **실행**: `npm run check:merge [-- --base <rev> --head <rev>]`. 기본 범위는 본선과의 merge-base..HEAD다. 훅은 `FLS_PUSH_OK=1 git push …`로 푸시할 때 원격 머리..로컬 머리를 넘긴다.
-  - 검사 여섯 가지 가운데 하나라도 실패하면 푸시를 거부한다.
-  - 이 작업 트리가 `<head>`와 다르거나 수정돼 있으면, `<head>`의 임시 워크트리(LFS는 포인터)에서 ESLint·tsc를 돌린다.
+  - 검사 일곱 가지 가운데 하나라도 실패하면 푸시를 거부한다.
+  - 이 작업 트리가 `<head>`와 다르거나 수정돼 있으면, `<head>`의 임시 워크트리(LFS는 포인터)에서 ESLint·tsc·빌드 크기 예산을 돌린다. 예산 검사는 빌드가 웹 파생본으로 바꾸는 받은 PNG(키아트·삽화·초상 풀)만 로컬 LFS 저장소에서 꺼낸다(`git lfs checkout`).
 - **검사**:
   1. `scripts/checks/pinChanges.mjs`: 고정값 파일·테스트 해시 값이 바뀌었으면, 같은 범위에서 결정 목록(`docs/decisions/**`, `docs/DECISIONS.md`)에 더한 줄에 그 파일 이름이나 상위 폴더가 있어야 한다.
   2. `scripts/checks/lintExceptions.mjs`: 새 `eslint-disable…`·`@ts-ignore`·`@ts-expect-error`·`as any`(캐스트)에 `// why:`가 같은 줄이나 윗줄에 있어야 한다. 기존 것은 `scripts/checks/lint-exceptions-baseline.json`(25건, 파일 + 줄 내용으로 대조)에 있다.
@@ -77,6 +77,9 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
   6. `scripts/checks/koreanStrings.mjs`(CODE-1b): `<head>`의 `src/**/*.{ts,tsx,js,jsx,mjs,cjs}`에서 한글이 든 문자열·템플릿·JSX 텍스트는 `*.ko.ts`와 `*.generated.*`에만 둘 수 있다(주석 제외).
      - 파싱은 `tools/eslint`의 TypeScript 6으로 한다.
      - 기존 것은 `scripts/checks/korean-strings-baseline.json`(40개 파일, 463개 문구)에 파일별 정확한 문구로 있다. 목록 문구를 고치면 새 문자열로 본다.
+  7. `scripts/checks/distBudget.mjs`(BUDGET-1): `<head>`를 임시 폴더에 `vite build --outDir`로 빌드해(작업 트리의 `dist`는 그대로) 파일 크기를 범주별(세계 그림·초상·삽화·키아트·UI·소리·코드, 규칙에 안 걸리면 기타)로 더하고, 전체나 예산 있는 범주가 넘으면 실패한다. 빌드 폴더는 지운다.
+     - 범주 규칙과 예산(전체 150 MB, 초상 20 MB, 삽화 25 MB; MB = 1,000,000바이트)은 `scripts/checks/distBudget.config.json` 한 파일이다. 새 에셋 폴더가 기타로 잡히면 목록에 이름이 나오니 규칙을 더한다.
+     - 따로 재기: `npm run budget:dist`(같은 빌드·표), 이미 있는 빌드는 `node scripts/checks/distBudget.mjs --dist dist`.
 - **ESLint 설치가 따로인 이유**
   - typescript-eslint는 TypeScript 6.1 미만만 지원한다. 루트의 TypeScript 7(네이티브 포트)에는 JS 컴파일러 API가 없다.
   - 그래서 `tools/eslint/`에 ESLint 10.11 · @typescript-eslint/parser 8.70 · TypeScript 6.0.3(파싱 전용) · react-hooks 7.1.1을 자체 lock으로 둔다. 루트 package.json의 의존성과 lock에는 넣지 않는다.
