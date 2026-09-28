@@ -71,7 +71,7 @@ assets-inbox/
 | `wave21` | 90 |  | 66 |  | 24 |  |  | 0 |
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave23` | 120 |  | 120 |  |  |  |  | 82 |
-| `wave24` | 27 |  | 27 |  |  |  |  | 0 |
+| `wave24` | 32 |  | 28 |  | 4 |  |  | 0 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
 | `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
 | `wave4b` | 57 |  | 57 |  |  |  |  | 53 |
@@ -86,7 +86,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3850** | **3** | **2657** | **0** | **245** | **909** | **36** | **1159** |
+| **합계** | **3855** | **3** | **2658** | **0** | **249** | **909** | **36** | **1159** |
 
 ## 4. 찾는 법
 
@@ -227,6 +227,9 @@ git lfs pull --include="assets-inbox/wave7/**"
   - **복식 교정 v2**(`lineage/prod1-costume-v2-20260928`, 13시 판정): L4 상인 가문 38장(청·자주 고운 모직·모피 깃·후드/혼인별 머리쓰개)과 L5_102 청년·장년·노년 3장(올리브 모직·황토빛 머리수건, 다른 L5와 구별) `confirmed`, 확인 그림 4 `confirmed`. 옛 L4 38장(`rework_pending`)과 옛 L5_102 3장(`confirmed`)은 `superseded`, `replaced_by`에 같은 이름의 v2. 본 제작 1차는 이제 재작업 대기 0.
 - **같은 바이트 정본 표시**(2026-09-28, INBOX-1y): 장부 전체에서 sha256이 같은 행이 215묶음 460행(2장 201·3장 13·19장 1)이었다. 묶음마다 정본을 하나 정하고 나머지 245행 비고에 `○○와 동일 바이트(정본: 경로)`를 더했다. 상태는 바꾸지 않았다. 정본이 confirmed인 묶음 111, confirmed가 없어 가장 먼저 받은 행을 정본으로 둔 묶음 104(대부분 wave5a·wave10·wave7의 rejected·superseded). 정본의 받은 때는 196묶음이 원본 ZIP·작업 폴더 시각, 19묶음이 Wave의 가장 이른 원본 시각(`wave4-pilot/road/` 같은 묶음 폴더 밖 행). 확정본 없는 104묶음은 그대로 둔다(사용자 판정).
 - **Wave 24 Steam 상점 그림**(`wave24/candidates-20260928`, 16시 판정, 경량판): 원화 10(헤더 920×430·작은 캡슐·메인·세로·라이브러리 캡슐·히어로 3840×1240·엠블럼·페이지 배경·앱 아이콘 PNG·바로가기 아이콘), 안전 영역 가이드 10(`proofs/guides/`), 앱 아이콘 JPG 1(`assets/exports/`, 장부의 첫 JPG 행) `confirmed`. `steam_library_hero` 비고 "AI 업스케일 재처리 예정(단순 확대본)" — 2152×731 생성 원본을 확대한 판, `steam_library_logo_emblem` 비고 "알파 8 미만 잔여 픽셀 정리 예정". 확인 그림 2·기록 그림 4 `confirmed`.
+  - **후처리**(`wave24/processed-20260928`, 2026-09-28 17시, 사용자 지시): 4장을 새로 만들어 `confirmed`로 두고, 원래 4행은 `superseded`(`replaced_by`는 새 경로)로 바꿨다. 비교 확인 그림 JPG 1장도 `confirmed`다. 처리 기록은 [`README.md`](../assets-inbox/wave24/processed-20260928/records/README.md)·`processing.json`에 있다.
+    - 히어로: 생성 원본 `hero-native-v4`(2152×731)를 Real-ESRGAN x2plus로 2배 확대하고, Lanczos로 3840×1240에 맞췄다(DGX GPU). 가장자리는 또렷해졌지만 붓 질감은 매끈해졌다. 100% 비교가 `proofs/`에 있다.
+    - 엠블럼·앱 아이콘 PNG·바로가기 아이콘: 알파 8 미만 픽셀(16,541 · 1,052 · 1,761)을 RGBA (0,0,0,0)으로 바꿨다.
   - **정본 순서에 runtime 참조를 맨 앞으로**(2026-09-28, INBOX-1z, 사용자 판정): runtime manifest나 설치 대장이 가리키는 행을 먼저 정본으로 둔다. 가리켜지는 inbox 경로 1,025개(설치 대장 1,025, 그중 초상 manifest 304·Wave 16 삽화 35·Wave 17 22)로 215묶음을 다시 보니 정본이 바뀌는 묶음은 없었다. 가리켜지는 행이 둘인 묶음은 pivot-pilot 4쌍(`P01`·`P08`·`P14`·`P20`의 `portraits/`와 `aging/…_young` — 초상 manifest와 설치 대장이 두 ID로 둘 다 가리킴)뿐이라 사용자 판정대로 `portraits/`를 정본으로 바꿨다.
 - **혈통 본 제작 2차**(`lineage/prod2-20260928`, 2026-09-28 15시 판정, 경량판): L6 백작 가문·L7 인접 기사 가문·L8 방앗간 가문 각 12명 38단계 = 114장 가운데 새 초상 100장(L6 30·L7 32·L8 38) `confirmed`. 재사용한 세력 수장 14장(L6_101·102, L7_101·102의 청년·장년·노년, L6_201의 청년·장년)은 초상 풀 3차 I101·I102·I107·I108·I103과 바이트가 같아 파일을 넣지 않았다. 장부 행 = PNG 수를 지키려고 새 행을 만들지 않고, 풀 3차의 해당 14행(`confirmed`) 비고에 "초상 풀 3차 I1xx와 동일 — 혈통 L6/L7_…로 연결"을 더했다. 확인 그림 4·기록 그림 34(작업 폴더의 `proof-work` 3 포함) `confirmed`. 같은 묶음 안에서 `assets/`·`proofs/`와 바이트가 같은 기록 사본 17장은 넣지 않았다.
 - **replaced_by 경로 검사**(2026-09-28, INBOX-1q): `ui-p0/pilot/cursor_sheet.png`의 `replaced_by`가 패턴(`ui-p0/ui/cursor_*.png(6장)`)이던 것을 실제 경로 6개(`cursor_select`·`cursor_place_valid`·`cursor_place_invalid`·`cursor_road_draw`·`cursor_zone_brush`·`cursor_inspect`)로 고쳤다. 이 행이 장부 전체에서 없는 파일을 가리키던 유일한 행이었다. 같은 커밋부터 `npm run check:merge`의 다섯째 검사 `ledger`가 장부에 없는 `replaced_by` 경로를 실패로 본다.

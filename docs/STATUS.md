@@ -7,6 +7,7 @@
 
 ## 현재 단계
 
+- **Wave 24 Steam 그림 후처리 — 완료, 본선 커밋**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 히어로는 생성 원본 2152×731 → Real-ESRGAN x2plus(DGX GPU) → 3840×1240(구도 동일, 가장자리 또렷·붓 질감 매끈, 100% 비교 첨부). 엠블럼·앱 아이콘 PNG·바로가기 아이콘은 알파 8 미만 픽셀을 (0,0,0,0)으로 바꿨다. `assets-inbox/wave24/processed-20260928/` 4장·비교 1 `confirmed`, 원래 4행 `superseded`, 장부 3,855행 = 그림 3,855. [기록](../assets-inbox/wave24/processed-20260928/records/README.md).
 - **BUDGET-1b 글꼴 woff2만·장 그림은 그 장에서 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 BUDGET-1): [보고서](verification/budget1/budget1b/REPORT.md), 결정 BUDGET1b-D1~D2.
   - 글꼴은 woff2만(`scripts/woff2OnlyFonts.ts`): dist 63.60 → 54.45 MB. 장 그림 규칙 `src/render/chapterArt.ts`: 2장 전쟁 소품·3장 흑사병 봉쇄 집을 그 장에 들어갈 때(8장, 해제 1.05 MB — Wave 12 시설은 아직 없고 3~5장 삽화는 원래 늦게).
   - 예산표 "시작 시 불러오는 그림 메모리": 1장 시작 441장·해제 66.04 MB(전부 67.10). 다음 후보: 정착 단계별 불러오기(성곽·방어 킷·옛 성문).
