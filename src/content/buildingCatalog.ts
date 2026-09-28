@@ -50,7 +50,7 @@ export type FacilityArt = { readonly id: string } | { readonly quiet: string; re
   /** One of these per building, fixed by its id's hash (INSTALL-3: the malt kiln's two paintings). */
   | { readonly variants: readonly string[] };
 /** Cells of the Wave 3 building chain icon sheet (INSTALL-3), for a kind the UX-2 sheet has no cell for. */
-export type ChainBuildingIconCell = "malt_kiln";
+export type ChainBuildingIconCell = "malt_kiln" | "woolhouse" | "weaver_house" | "fulling_mill" | "dyehouse";
 export type SignIcon = BuildingIconCell | { readonly chain: ChainBuildingIconCell };
 
 export type BuildingCatalogEntry = {
@@ -117,6 +117,18 @@ export const BUILDING_CATALOG = {
   malt_kiln: { category: "trade", group: "production", glyph: "mill", thumbnail: "facility", signIcon: { chain: "malt_kiln" },
     facilityArt: { variants: ["malthouse_a", "malthouse_b"] }, smoke: "work_fire",
     body: { width: 52, height: 34, roof: 18, fill: "parchmentDark", roofColor: "earthDark", roofShape: "cone" } },
+  // C5 (CL-2…CL-7) the cloth chain: plain bodies and the Wave 3 chain sheet's signs (the wool house for the fold) until
+  // the render session installs their pictures (the pastoral farm: Wave 2's farm_pastoral, held for C5).
+  pastoral_farm: { category: "trade", group: "production", glyph: "farmstead", signIcon: { chain: "woolhouse" }, kit: "timber_medium",
+    body: { width: 56, height: 22, roof: 12, fill: "earth", roofColor: "earthDark", roofShape: "shed" } },
+  weaver_house: { category: "trade", group: "production", glyph: "house", signIcon: { chain: "weaver_house" }, kit: "timber_small",
+    body: { width: 36, height: 30, roof: 14, fill: "parchmentDark", roofColor: "earthDark", roofShape: "shed" } },
+  fulling_mill: { category: "trade", group: "production", glyph: "mill", signIcon: { chain: "fulling_mill" }, kit: "timber_medium",
+    body: { width: 60, height: 40, roof: 16, fill: "parchmentDark", roofColor: "earthDark", roofShape: "shed" }, details: ["wheel"] },
+  dyehouse: { category: "trade", group: "production", glyph: "sawmill", signIcon: { chain: "dyehouse" }, kit: "timber_medium",
+    body: { width: 54, height: 28, roof: 12, fill: "parchment", roofColor: "earthDark", roofShape: "shed" }, smoke: "work_fire" },
+  tenter_yard: { category: "trade", group: "production", glyph: "wheat_farm",
+    body: { width: 84, height: 12, roof: 0, fill: "earth", roofColor: "parchment", roofShape: "none" }, details: ["field_rows"] },
 } as const satisfies { readonly [K in BuildingKind]: BuildingCatalogEntry };
 
 /** The glyph of a category, for a kind that has none of its own. */

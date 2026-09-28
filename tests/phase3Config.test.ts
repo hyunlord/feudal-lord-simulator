@@ -103,6 +103,28 @@ test("Phase 3 building table includes chapel without changing ordinary building 
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "malt", input: "barley", inputPerOutput: 1, ticksPerOutput: 20, outputHoldLimit: 20 },
       storageCapacity: 40, serviceRadius: 0, carterCapacity: 12,
     },
+    // C5 (CL-2…CL-7) the cloth chain.
+    pastoral_farm: {
+      kind: "pastoral_farm", name: "목축 농장", width: 2, height: 1, workersRequired: 1, buildCost: { timber: 30 },
+      requiresAdjacentTerrain: null, requiresRoad: true, production: null, storageCapacity: 400, serviceRadius: 0, yardOutput: "fleece", carterCapacity: 40,
+    },
+    weaver_house: {
+      kind: "weaver_house", name: "직조공 집", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 }, requiresAdjacentTerrain: null, requiresRoad: true,
+      production: { output: "raw_cloth", input: "yarn", inputPerOutput: 4, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 40, serviceRadius: 0,
+    },
+    fulling_mill: {
+      kind: "fulling_mill", name: "축융 방앗간", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 60 }, requiresAdjacentTerrain: "water", requiresRoad: true,
+      production: { output: "fulled_cloth", input: "raw_cloth", inputPerOutput: 1, ticksPerOutput: 60, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
+    },
+    dyehouse: {
+      kind: "dyehouse", name: "염색집", width: 2, height: 1, workersRequired: 2, buildCost: { timber: 40 }, requiresAdjacentTerrain: "water", requiresRoad: true,
+      production: { output: "dyed_cloth", input: "fulled_cloth", inputPerOutput: 1, ticksPerOutput: 60, outputHoldLimit: 10, alsoConsumes: { resource: "dyes", amount: 1 } },
+      storageCapacity: 40, serviceRadius: 0,
+    },
+    tenter_yard: {
+      kind: "tenter_yard", name: "텐터 틀", width: 3, height: 2, workersRequired: 1, buildCost: { timber: 20 }, requiresAdjacentTerrain: null, requiresRoad: true,
+      production: { output: "finished_cloth", input: "dyed_cloth", inputPerOutput: 1, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
+    },
   });
 });
 

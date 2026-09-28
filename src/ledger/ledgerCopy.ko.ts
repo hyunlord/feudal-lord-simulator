@@ -40,6 +40,9 @@ export const LEDGER_CATEGORY_LABELS = {
   statute_fine: "노동자 조례 벌금",
   church_fee: "수도원 사제 봉급",
   entry_fine: "새 이주민 입주금",
+  // C5 (CL-5, CL-8)
+  fulling_toll: "축융 방앗간 사용료",
+  ulnage: "직물 인장세",
 } as const satisfies Record<LedgerCategory, string>;
 
 export const LEDGER_WINDOW_LABELS = {

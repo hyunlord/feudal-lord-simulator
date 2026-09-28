@@ -10,8 +10,10 @@ const placements = artPlacements();
 
 test("R0-2: every building kind the game draws has its finished art checked (the retired wheat farm draws nothing)", () => {
   const kinds = new Set(placements.map(placement => placement.kind));
-  // C4 (decision AL6): the malt kiln has no finished art yet (its body is drawn until the render hand-off).
-  const expected = (Object.keys(BUILDING_CONFIG_BY_KIND) as BuildingKind[]).filter(kind => kind !== "wheat_farm" && kind !== "malt_kiln");
+  // C4 (decision AL6): the malt kiln has no finished art yet (its body is drawn until the render hand-off); C5 (decision
+  // CL8): nor have the cloth chain's five (the pastoral farm's is Wave 2's held farm_pastoral).
+  const noArtYet: readonly string[] = ["wheat_farm", "malt_kiln", "pastoral_farm", "weaver_house", "fulling_mill", "dyehouse", "tenter_yard"];
+  const expected = (Object.keys(BUILDING_CONFIG_BY_KIND) as BuildingKind[]).filter(kind => !noArtYet.includes(kind));
   assert.deepEqual(expected.filter(kind => !kinds.has(kind)), []);
   assert.ok(placements.length >= 58, `${placements.length} arts`);
 });

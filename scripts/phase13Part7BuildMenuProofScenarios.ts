@@ -33,14 +33,15 @@ export const PROOF_SCENARIOS = [
   {
     name: "hamlet",
     state: DEFAULT_GAME_STATE,
-    // UX-1: the tools the stage has not opened stay visible (locked, with the stage that opens them).
-    expectedButtons: 16,
+    // UX-1: the tools the stage has not opened stay visible (locked, with the stage that opens them). C5: 16 → 21 (the
+    // cloth chain's five).
+    expectedButtons: 21,
     maxCompactRows: 3,
   },
   {
     name: "stone_town",
     state: stoneTownState,
-    expectedButtons: 16,
+    expectedButtons: 21,
     maxCompactRows: 4,
   },
 ] as const;
