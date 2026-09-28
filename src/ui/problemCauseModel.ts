@@ -1,5 +1,6 @@
 import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
 import { HOUSEHOLD_LABOUR_COPY } from "./householdLabourCopy.ko";
+import { PLAGUE_UI_COPY } from "./plagueUiCopy.ko";
 import { outstandingArrears } from '../engine/moneyRules';
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
@@ -75,6 +76,8 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
   const building = state.buildings.find((candidate) => candidate.id === buildingId);
   if (building === undefined) return null;
   if (building.upkeepUnpaid === true) return MONEY_RULE_COPY.upkeepUnpaidDetail(outstandingArrears(state).byFacility.get(building.id) ?? 0);
+  // UI-8: church or chapel whose priest died during the plague gets a dedicated inspector reason (PL-6).
+  if ((building.kind === "church" || building.kind === "chapel") && (building as { curacyVacant?: boolean }).curacyVacant === true) return PLAGUE_UI_COPY.curacyVacant;
   if (building.operationPaused === true) return BUILDING_OPERATION_COPY.paused;
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
   if (building.kind === "farmstead") {

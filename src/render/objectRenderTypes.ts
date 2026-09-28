@@ -76,6 +76,14 @@ export type ObjectRenderItem =
       readonly prop: ZoneProp;
       readonly depth: number;
       readonly anchorTx: number;
+    }
+  | {
+      /** UI-8 chapter 3 plague (plagueWorldProps.ts): fresh grave decals in the churchyard, display only. */
+      readonly kind: "plague_prop";
+      readonly id: string;
+      readonly prop: import("./plagueWorldProps").PlagueProp;
+      readonly depth: number;
+      readonly anchorTx: number;
     };
 
 export type WorldObjectRenderItem = ObjectRenderItem | PalisadeSegmentRenderItem;
