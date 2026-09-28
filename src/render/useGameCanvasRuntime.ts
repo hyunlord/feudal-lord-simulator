@@ -8,7 +8,8 @@ import { cameraAfterViewportResize, initialCamera, resizeCanvas } from "./canvas
 import { createCanvasMutableRefs } from "./canvasRuntimeRefs";
 import { worldBounds } from "./interactions";
 import { publishMinimapViewport } from "./minimapCameraJump";
-import { preloadGameArt } from "./preloadGameArt";
+import { preloadChapterArt, preloadFrameArt, preloadGameArt } from "./preloadGameArt";
+import { artChapterLimit } from "./chapterArt";
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
@@ -24,12 +25,6 @@ import { lastInputDevice } from "../input/inputDevice";
 import { drawMapCursor } from "./mapCursor";
 import { INTENT_ORDER } from "../input/intentBus";
 import { platformServices } from "../platform/platform";
-import { preloadVisibilityArt } from "./visibilityArtManifest";
-import { preloadWave7Art } from "./wave7Art";
-import { preloadWave9Art } from "./wave9Art";
-import { preloadWave17WorldArt } from "./warWorldProps";
-import { preloadWave11Art } from "./wave11Art";
-import { preloadCanvasIcons } from "../ui/uiArt";
 
 // Game canvas runtime: frame loop, camera, and input. Input goes DOM event -> translator (src/input) -> intent bus
 // (PlatformServices.input) -> handlers; the map's handler (canvasIntentHandler.ts) runs first, the app shell's after.
@@ -67,11 +62,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     if (canvas === null || context === null) return undefined;
 
     void preloadGameArt();
-    // F0-V: the visibility art and the canvas icon sheets load with the rest (a paused first frame then has them).
-    preloadVisibilityArt();
-    preloadWave7Art(); preloadWave9Art(); preloadWave17WorldArt();
-    preloadWave11Art();
-    preloadCanvasIcons();
+    // BUDGET-1b: the chapter-bound art up to the chapter being played (a loaded save: its chapter; the sandbox: all).
+    let artChapter = artChapterLimit(stateRef.current);
+    preloadFrameArt(artChapter);
 
     const refs = createCanvasMutableRefs(initialCamera(canvas, stateRef.current));
     const publishPanel = createPredictionPublisher(value => setPrediction?.(value));
@@ -120,6 +113,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       translator.frame(nowMs, lastFrameAtMs, viewport());
       gamepad.frame(nowMs, nowMs - lastFrameAtMs);
       lastFrameAtMs = nowMs;
+      // BUDGET-1b: entering a chapter (or loading a later save) starts its art at once, before its content draws.
+      const chapter = artChapterLimit(stateRef.current);
+      if (chapter > artChapter) { artChapter = chapter; preloadChapterArt(chapter); }
       const work = proofFrameWork.current;
       const startedAt = work === null ? 0 : performance.now();
       drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current, running: getSpeedRef.current() !== 0 });

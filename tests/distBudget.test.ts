@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { categorize, evaluateBudget, formatBudgetTable, globToRegExp, loadBudgetConfig, type BudgetConfig } from "../scripts/checks/distBudget.mjs";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { categorize, decodedImageMemory, evaluateBudget, formatBudgetTable, globToRegExp, imageSize, loadBudgetConfig, type BudgetConfig } from "../scripts/checks/distBudget.mjs";
 
 const config = loadBudgetConfig();
 const MB = config.megabyte;
@@ -89,4 +92,37 @@ test("an unbudgeted category never fails by itself; a rule naming an unknown cat
   assert.equal(evaluateBudget([{ path: "assets/walkers-v2/a.png", bytes: 500 * MB }], small).pass, true);
   const broken: BudgetConfig = { ...config, rules: [{ category: "nope", label: "typo", patterns: ["**"] }] };
   assert.throws(() => evaluateBudget([{ path: "x.png", bytes: 1 }], broken), /unknown category "nope"/);
+});
+
+// BUDGET-1b: the startup image memory reads each file's size from its header (width × height × 4 decoded).
+const png = (width: number, height: number) => {
+  const bytes = Buffer.alloc(33);
+  Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(bytes, 0);
+  bytes.writeUInt32BE(13, 8); bytes.write("IHDR", 12, "latin1"); bytes.writeUInt32BE(width, 16); bytes.writeUInt32BE(height, 20);
+  return bytes;
+};
+// SOI, an APP0 segment, a DHT (C4: no frame size), then SOF2 (progressive) with height 96 and width 256.
+const jpeg = Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0x00, 0x04, 0x00, 0x00, 0xff, 0xc4, 0x00, 0x03, 0x00,
+  0xff, 0xc2, 0x00, 0x0b, 0x08, 0x00, 0x60, 0x01, 0x00, 0x01, 0x01, 0x11, 0x00, 0xff, 0xd9]);
+
+test("image sizes from PNG and JPEG headers; anything else is null", () => {
+  assert.deepEqual(imageSize(png(1254, 627)), { width: 1254, height: 627 });
+  assert.deepEqual(imageSize(jpeg), { width: 256, height: 96 });
+  assert.equal(imageSize(Buffer.from("GIF89a....")), null);
+});
+
+test("decoded memory sums w × h × 4 by category and lists files it cannot read", () => {
+  const dir = mkdtempSync(join(tmpdir(), "fls-image-memory-"));
+  try {
+    writeFileSync(join(dir, "a.png"), png(100, 50));
+    writeFileSync(join(dir, "b.jpg"), jpeg);
+    const memory = decodedImageMemory(["a.png", "b.jpg", "gone.png"], dir, {
+      ...config, rules: [{ category: "world", label: "a", patterns: ["a.png"] }, { category: "ui", label: "b", patterns: ["b.jpg"] }] });
+    assert.equal(memory.images, 2);
+    assert.equal(memory.bytes, 100 * 50 * 4 + 256 * 96 * 4);
+    assert.deepEqual(memory.byCategory, [{ category: "ui", images: 1, bytes: 256 * 96 * 4 }, { category: "world", images: 1, bytes: 100 * 50 * 4 }]);
+    assert.deepEqual(memory.missing, ["gone.png"]);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
