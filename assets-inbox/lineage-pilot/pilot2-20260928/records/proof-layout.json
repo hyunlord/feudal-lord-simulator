@@ -1,0 +1,37 @@
+{
+  "status": "ready for independent judgment",
+  "proofs": [
+    {
+      "file": "proofs/01-same-person-blind.png",
+      "width": 1672,
+      "height": 1232,
+      "sha256": "7de105d26d518a95b014d0a27f77f958d67dc6c1ef77738ad6f4a5c7272b506b"
+    },
+    {
+      "file": "proofs/02-age-chains.png",
+      "width": 1216,
+      "height": 2870,
+      "sha256": "4a5c10cc269d2644cb5ccae18c860da38df0fa89dd91f5fe76972b22b5870031"
+    },
+    {
+      "file": "proofs/03-before-after.png",
+      "width": 670,
+      "height": 1990,
+      "sha256": "e76a301869ccf6692df2a4390e546ebedb24d81b436e7065778d0df4540fb807"
+    }
+  ],
+  "seed": 20260929,
+  "inputCount": 24,
+  "blindPairs": 12,
+  "blindDifferentPairs": 6,
+  "blindSamePairs": 6,
+  "blindPortraitSize": 256,
+  "blindAnnotations": "Pair numbers only. Identical backgrounds, spacing and portrait dimensions.",
+  "agePortraitSizes": [
+    256,
+    96
+  ],
+  "beforeAfterPortraitSize": 256,
+  "processing": "Only uniform canvas compositing and downsampling for 96 px evidence. No portrait edits, individual masks or facial retouching.",
+  "judgment": "No self-judgment or score in this generator. Independent judge coordinated by root."
+}
