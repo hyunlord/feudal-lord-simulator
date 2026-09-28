@@ -1,0 +1,1847 @@
+[
+  {
+    "id": "C_toddler_01",
+    "file": "assets/common/C_toddler_01.png",
+    "identity": "C_toddler_01",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 4,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain clay red wool tunic over linen shift",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "deep warm brown"
+    },
+    "differenceMarkers": [
+      "short tightly curled black hair",
+      "dark brown eyes",
+      "rounded oval face",
+      "small broad nose"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male toddler, age 4 years, Southern England circa 1300–1450. Traits: {\"hair\":\"short tightly curled black hair\",\"skin\":\"deep warm brown\",\"eyes\":\"dark brown\",\"faceShape\":\"rounded oval\",\"nose\":\"small broad\",\"jaw\":\"soft taper\",\"brow\":\"dark straight\"}. Clothing: plain clay red wool tunic over linen shift. Age is crucial: clearly a small preschool child with naturally large head, soft full cheeks, short neck and small shoulders, not a miniature adult. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common-children/C_toddler_01-pilot1.png",
+        "referenceImages": [
+          "references/common-children/초상풀_1차_화풍기준.jpg",
+          "references/common-children/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3",
+      "rawMetadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "reusedSource": {
+      "file": "output/astra-lineage-pilot-v1/assets/common/L0_006_toddler.png",
+      "sha256": "6e1e04b1b3d9192558ccdc3f9636fdbf602343878296f246a40ca090d935f3c1",
+      "originalId": "L0_006_toddler"
+    },
+    "sha256": "6e1e04b1b3d9192558ccdc3f9636fdbf602343878296f246a40ca090d935f3c1",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_02",
+    "file": "assets/common/C_toddler_02.png",
+    "identity": "C_toddler_02",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 3,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain muted green wool gown with linen neckline",
+    "commonTraits": {
+      "hair": "chestnut",
+      "skin": "fair rosy"
+    },
+    "differenceMarkers": [
+      "wavy chestnut bob",
+      "hazel eyes",
+      "round full cheeks face",
+      "short rounded nose"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner female toddler, age 3 years, Southern England circa 1300–1450. Traits: {\"hair\":\"wavy chestnut bob\",\"skin\":\"fair rosy\",\"eyes\":\"hazel\",\"faceShape\":\"round full cheeks\",\"nose\":\"short rounded\",\"jaw\":\"soft broad\",\"brow\":\"fine curved\"}. Clothing: plain muted green wool gown with linen neckline. Age is crucial: clearly a small preschool child with naturally large head, soft full cheeks, short neck and small shoulders, not a miniature adult. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common-children/C_toddler_02-pilot1.png",
+        "referenceImages": [
+          "references/common-children/초상풀_1차_화풍기준.jpg",
+          "references/common-children/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3",
+      "rawMetadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "reusedSource": {
+      "file": "output/astra-lineage-pilot-v1/assets/common/L0_005_toddler.png",
+      "sha256": "baafc2dabec580002fceb27e42dc247dfb0063ea18f1445b53f822e8f741ea3c",
+      "originalId": "L0_005_toddler"
+    },
+    "sha256": "baafc2dabec580002fceb27e42dc247dfb0063ea18f1445b53f822e8f741ea3c",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_03",
+    "file": "assets/common/C_toddler_03.png",
+    "identity": "C_toddler_03",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 3.5,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "ochre brown wool tunic with undyed linen collar",
+    "commonTraits": {
+      "hair": "red",
+      "skin": "medium warm beige"
+    },
+    "differenceMarkers": [
+      "thick auburn short tousled hair",
+      "green brown eyes",
+      "wide round face",
+      "upturned broad tip nose"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male toddler, age 3.5 years, Southern England circa 1300–1450. Traits: {\"hair\":\"thick auburn short tousled hair\",\"skin\":\"medium warm beige\",\"eyes\":\"green brown\",\"faceShape\":\"wide round\",\"nose\":\"upturned broad tip\",\"jaw\":\"round wide\",\"brow\":\"auburn low arc\"}. Clothing: ochre brown wool tunic with undyed linen collar. Age is crucial: clearly a small preschool child with naturally large head, soft full cheeks, short neck and small shoulders, not a miniature adult. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common-children/C_toddler_03-pilot1.png",
+        "referenceImages": [
+          "references/common-children/초상풀_1차_화풍기준.jpg",
+          "references/common-children/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3",
+      "rawMetadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "reusedSource": {
+      "file": "output/astra-lineage-pilot-v1/assets/common/L0_008_toddler.png",
+      "sha256": "eb55227efcc829f9c107f1174f6e896f0df38de549ef954e2bca3999e70b2333",
+      "originalId": "L0_008_toddler"
+    },
+    "sha256": "eb55227efcc829f9c107f1174f6e896f0df38de549ef954e2bca3999e70b2333",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_04",
+    "file": "assets/common/C_toddler_04.png",
+    "identity": "C_toddler_04",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 4,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain muted slate blue wool gown with undyed linen neckline",
+    "commonTraits": {
+      "hair": "dark blond",
+      "skin": "medium olive brown"
+    },
+    "differenceMarkers": [
+      "two short loose braids",
+      "grey blue eyes",
+      "round forehead and delicate little shoulders",
+      "slightly uneven eyebrows"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner girl, clearly age 4 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: dark blond, two short loose braids. Skin medium olive brown. Eyes grey blue. Face/body round forehead and delicate little shoulders; personal mark slightly uneven eyebrows. Clothing plain muted slate blue wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_04.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Requested dark blond reads warm light brown; two short braids remain clear.",
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "dce06845389078206f6a4d2f177d8d72317601e504eeb87f5deccf2e0e71271b",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_05",
+    "file": "assets/common/C_toddler_05.png",
+    "identity": "C_toddler_05",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 5,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain undyed warm oatmeal wool tunic with undyed linen neckline",
+    "commonTraits": {
+      "hair": "dark brown",
+      "skin": "light neutral beige"
+    },
+    "differenceMarkers": [
+      "straight cropped fringe",
+      "amber brown eyes",
+      "small round cheeks and compact shoulders",
+      "small freckle cluster on right cheek"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner boy, clearly age 5 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: dark brown, straight cropped fringe. Skin light neutral beige. Eyes amber brown. Face/body small round cheeks and compact shoulders; personal mark small freckle cluster on right cheek. Clothing plain undyed warm oatmeal wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_05.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "ed384bd15dc6db48d8c12b08995f9c313447dee4ba60abbd2c52c6cddccecde0",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_06",
+    "file": "assets/common/C_toddler_06.png",
+    "identity": "C_toddler_06",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 3,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain smoky brown wool gown with undyed linen neckline",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "medium warm brown"
+    },
+    "differenceMarkers": [
+      "loose shoulder-length waves",
+      "grey green eyes",
+      "slim cheeks and narrow small shoulders",
+      "tiny mole below left eye"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner girl, clearly age 3 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: black, loose shoulder-length waves. Skin medium warm brown. Eyes grey green. Face/body slim cheeks and narrow small shoulders; personal mark tiny mole below left eye. Clothing plain smoky brown wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_06.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "cc60eb37e3422f9d53b662f294faaf875b2944e41155f9e4a7d359dde48d177a",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_07",
+    "file": "assets/common/C_toddler_07.png",
+    "identity": "C_toddler_07",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 4,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain muted moss green wool tunic with undyed linen neckline",
+    "commonTraits": {
+      "hair": "chestnut",
+      "skin": "deep warm brown"
+    },
+    "differenceMarkers": [
+      "short tight curls",
+      "dark brown eyes",
+      "broad child cheeks and stocky small shoulders",
+      "small freckles across nose"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner boy, clearly age 4 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: chestnut, short tight curls. Skin deep warm brown. Eyes dark brown. Face/body broad child cheeks and stocky small shoulders; personal mark small freckles across nose. Clothing plain muted moss green wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_07.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "cb4212e4b1df174ef175754560efba18e42b189291df3645da6eb2e99a2a4e34",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_08",
+    "file": "assets/common/C_toddler_08.png",
+    "identity": "C_toddler_08",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain faded madder russet wool gown with undyed linen neckline",
+    "commonTraits": {
+      "hair": "red",
+      "skin": "fair rosy"
+    },
+    "differenceMarkers": [
+      "wavy bob ending below ears",
+      "hazel eyes",
+      "round forehead and delicate little shoulders",
+      "one tiny mole beside left cheek"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner girl, clearly age 5 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: red, wavy bob ending below ears. Skin fair rosy. Eyes hazel. Face/body round forehead and delicate little shoulders; personal mark one tiny mole beside left cheek. Clothing plain faded madder russet wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_08.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "b94d171e2274b5b1cee8e7e9388558253550b8617e467522e3c5925178c0c3fb",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_09",
+    "file": "assets/common/C_toddler_09.png",
+    "identity": "C_toddler_09",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 3,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain ochre brown wool tunic with undyed linen neckline",
+    "commonTraits": {
+      "hair": "dark blond",
+      "skin": "light warm beige"
+    },
+    "differenceMarkers": [
+      "tousled short uneven crop",
+      "green brown eyes",
+      "small round cheeks and compact shoulders",
+      "one dimple in right cheek"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner boy, clearly age 3 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: dark blond, tousled short uneven crop. Skin light warm beige. Eyes green brown. Face/body small round cheeks and compact shoulders; personal mark one dimple in right cheek. Clothing plain ochre brown wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_09.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "99609d6f2914bc6c28526fceea30a1cb8c25f6edf22e49662fcf5be106c30cb2",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_10",
+    "file": "assets/common/C_toddler_10.png",
+    "identity": "C_toddler_10",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 4,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Plain dusty purple-brown wool gown.",
+    "commonTraits": {
+      "hair": "dark brown",
+      "skin": "medium olive brown"
+    },
+    "differenceMarkers": [
+      "long narrow little face",
+      "delicate shoulders",
+      "straight dark brown hair cut to a smooth chin-length bob with blunt fringe",
+      "very pale grey eyes",
+      "thin lips",
+      "tiny mole ABOVE right eyebrow. Almost front-on. Plain dusty purple-brown wool gown. No braids."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner girl, clearly age 4 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: dark brown, two short loose braids. Skin medium olive brown. Eyes grey blue. Face/body slim cheeks and narrow small shoulders; personal mark slightly uneven eyebrows. Clothing plain muted slate blue wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_10.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. A very small 4-year-old girl, long narrow little face, delicate shoulders, straight dark brown hair cut to a smooth chin-length bob with blunt fringe, very pale grey eyes, thin lips, tiny mole ABOVE right eyebrow. Almost front-on. Plain dusty purple-brown wool gown. No braids. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_toddler_10-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "sha256": "548aa984cd6e977a2e1818dc7a86b6904a15d9e52c2ae74ec3d790f770d7fc37",
+    "correctionDesign": "A very small 4-year-old girl, long narrow little face, delicate shoulders, straight dark brown hair cut to a smooth chin-length bob with blunt fringe, very pale grey eyes, thin lips, tiny mole ABOVE right eyebrow. Almost front-on. Plain dusty purple-brown wool gown. No braids.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_11",
+    "file": "assets/common/C_toddler_11.png",
+    "identity": "C_toddler_11",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 5,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Oatmeal wool tunic.",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "light neutral beige"
+    },
+    "differenceMarkers": [
+      "visibly broad square-shaped child head but soft immature jaw",
+      "very short straight jet-black cropped hair with exposed forehead and big sticking-out ears",
+      "wide dark amber eyes",
+      "slightly parted smile showing small milk teeth",
+      "broad little nose. Turn toward viewer right. Oatmeal wool tunic. NO freckles."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner boy, clearly age 5 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: black, straight cropped fringe. Skin light neutral beige. Eyes amber brown. Face/body broad child cheeks and stocky small shoulders; personal mark small freckle cluster on right cheek. Clothing plain undyed warm oatmeal wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_11.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. A stocky 5-year-old boy, visibly broad square-shaped child head but soft immature jaw, very short straight jet-black cropped hair with exposed forehead and big sticking-out ears, wide dark amber eyes, slightly parted smile showing small milk teeth, broad little nose. Turn toward viewer right. Oatmeal wool tunic. NO freckles. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_toddler_11-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "sha256": "24798976cccdaebc41cec741e0e7757028af4de67c4c6fecce0f1424452b3239",
+    "correctionDesign": "A stocky 5-year-old boy, visibly broad square-shaped child head but soft immature jaw, very short straight jet-black cropped hair with exposed forehead and big sticking-out ears, wide dark amber eyes, slightly parted smile showing small milk teeth, broad little nose. Turn toward viewer right. Oatmeal wool tunic. NO freckles.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_toddler_12",
+    "file": "assets/common/C_toddler_12.png",
+    "identity": "C_toddler_12",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "age": 3,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Russet brown wool dress.",
+    "commonTraits": {
+      "hair": "dark brown",
+      "skin": "deep warm brown"
+    },
+    "differenceMarkers": [
+      "deep warm brown skin",
+      "dark brown hair in two short thick ringlet bunches tied with plain cloth",
+      "small almond-shaped dark eyes and tiny button nose",
+      "distinct little round birthmark on left jaw. Look directly at viewer. Russet brown wool dress."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. Input image is STYLE ONLY; create a distinctly different unrelated person, do not copy face. Southern England 1300–1450 commoner girl, clearly age 3 years. Preschool toddler3–5: very large round head, chubby cheeks, tiny nose, short neck and very small shoulders, clearly not a school-age child. Hair: dark brown, loose shoulder-length waves. Skin medium warm brown. Eyes grey green. Face/body round forehead and delicate little shoulders; personal mark tiny mole below left eye. Clothing plain smoky brown wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image.",
+        "rawFile": "raw/common-children/C_toddler_12.png",
+        "referenceImages": [
+          "references/common-children/style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. A tiny 3-year-old girl with narrow oval face and full toddler cheeks, deep warm brown skin, dark brown hair in two short thick ringlet bunches tied with plain cloth, small almond-shaped dark eyes and tiny button nose, distinct little round birthmark on left jaw. Look directly at viewer. Russet brown wool dress. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_toddler_12-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "3–5",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "sha256": "5d4c3ab8008ab94514114f047548be67e6da9ee856cfe423646f08e3e22381c5",
+    "correctionDesign": "A tiny 3-year-old girl with narrow oval face and full toddler cheeks, deep warm brown skin, dark brown hair in two short thick ringlet bunches tied with plain cloth, small almond-shaped dark eyes and tiny button nose, distinct little round birthmark on left jaw. Look directly at viewer. Russet brown wool dress.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_01",
+    "file": "assets/common/C_child_01.png",
+    "identity": "C_child_01",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 6,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain moss green wool tunic with undyed linen neckline",
+    "commonTraits": {
+      "hair": "chestnut",
+      "skin": "deep golden brown"
+    },
+    "differenceMarkers": [
+      "light brown tight short curls",
+      "dark brown eyes",
+      "short oval full cheeks face",
+      "broad round tip nose"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male child, age 6 years, Southern England circa 1300–1450. Traits: {\"hair\":\"light brown tight short curls\",\"skin\":\"deep golden brown\",\"eyes\":\"dark brown\",\"faceShape\":\"short oval full cheeks\",\"nose\":\"broad round tip\",\"jaw\":\"rounded compact\",\"brow\":\"dark softly curved\"}. Clothing: plain moss green wool tunic with undyed linen neckline. Age is crucial: natural primary-school child anatomy, soft immature jaw and cheeks, modest small shoulders, no adult facial structure. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common-children/C_child_01-pilot1.png",
+        "referenceImages": [
+          "references/common-children/초상풀_1차_화풍기준.jpg",
+          "references/common-children/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3",
+      "rawMetadata": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "reusedSource": {
+      "file": "output/astra-lineage-pilot-v1/assets/common/L0_011_child.png",
+      "sha256": "f522e81c4f61c8128466797337731f5d162108923f217741c54c8c528a8c19bc",
+      "originalId": "L0_011_child"
+    },
+    "sha256": "f522e81c4f61c8128466797337731f5d162108923f217741c54c8c528a8c19bc",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_02",
+    "file": "assets/common/C_child_02.png",
+    "identity": "C_child_02",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 8,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain faded madder russet wool gown with undyed linen neckline",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "fair rosy"
+    },
+    "differenceMarkers": [
+      "wavy bob ending below ears",
+      "hazel eyes",
+      "slim cheeks and narrow small shoulders",
+      "one tiny mole beside left cheek",
+      "wide-set round eyes, broad little nose and wide smiling mouth"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner girl, clearly age 8 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: black, wavy bob ending below ears. Skin fair rosy. Eyes hazel. Face/body slim cheeks and narrow small shoulders; personal mark one tiny mole beside left cheek. Clothing plain faded madder russet wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: wide-set round eyes, broad little nose and wide smiling mouth. Turn face slightly toward viewer RIGHT, opposite the reference.",
+        "rawFile": "raw/common-children/C_child_02.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "efc9e2f45e33e1a3df04e9917d3d9e9254409f0e7a819d5769fa812262612562",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_03",
+    "file": "assets/common/C_child_03.png",
+    "identity": "C_child_03",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 6,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain ochre brown wool tunic with undyed linen neckline",
+    "commonTraits": {
+      "hair": "red",
+      "skin": "light warm beige"
+    },
+    "differenceMarkers": [
+      "tousled short uneven crop",
+      "green brown eyes",
+      "broad child cheeks and stocky small shoulders",
+      "one dimple in right cheek",
+      "narrow sleepy almond eyes, tiny upturned nose, small pursed mouth"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner boy, clearly age 6 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: red, tousled short uneven crop. Skin light warm beige. Eyes green brown. Face/body broad child cheeks and stocky small shoulders; personal mark one dimple in right cheek. Clothing plain ochre brown wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: narrow sleepy almond eyes, tiny upturned nose, small pursed mouth. Face nearly front-on with eyes toward viewer.",
+        "rawFile": "raw/common-children/C_child_03.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "2b9340cd1df40b785205ae70c295fce14ee2254ecd63eede4d38a1daf464771b",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_04",
+    "file": "assets/common/C_child_04.png",
+    "identity": "C_child_04",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 7,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain muted slate blue wool gown with undyed linen neckline",
+    "commonTraits": {
+      "hair": "dark blond",
+      "skin": "medium olive brown"
+    },
+    "differenceMarkers": [
+      "two short loose braids",
+      "grey blue eyes",
+      "round forehead and delicate little shoulders",
+      "slightly uneven eyebrows",
+      "large close-set eyes, short straight nose, prominent child ears"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner girl, clearly age 7 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: dark blond, two short loose braids. Skin medium olive brown. Eyes grey blue. Face/body round forehead and delicate little shoulders; personal mark slightly uneven eyebrows. Clothing plain muted slate blue wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: large close-set eyes, short straight nose, prominent child ears. Turn face slightly toward viewer RIGHT, opposite the reference.",
+        "rawFile": "raw/common-children/C_child_04.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "aa02178f4875bbaeb21aa504fc4a6f261b6a65f65b199cd07e18f6c8010c9c23",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_05",
+    "file": "assets/common/C_child_05.png",
+    "identity": "C_child_05",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain undyed warm oatmeal wool tunic with undyed linen neckline",
+    "commonTraits": {
+      "hair": "dark brown",
+      "skin": "light neutral beige"
+    },
+    "differenceMarkers": [
+      "straight cropped fringe",
+      "amber brown eyes",
+      "small round cheeks and compact shoulders",
+      "small freckle cluster on right cheek",
+      "long oval cheeks, small widely spaced eyes, broad upper lip"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner boy, clearly age 8 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: dark brown, straight cropped fringe. Skin light neutral beige. Eyes amber brown. Face/body small round cheeks and compact shoulders; personal mark small freckle cluster on right cheek. Clothing plain undyed warm oatmeal wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: long oval cheeks, small widely spaced eyes, broad upper lip. Face nearly front-on with eyes toward viewer.",
+        "rawFile": "raw/common-children/C_child_05.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Exact shade, left/right position and small mark intensity may differ from requested trait wording."
+      ]
+    },
+    "sha256": "fd9e271a6b553aeff50ee14f3dad6c8ec3c749003c7f396e87e3c4caf527d60a",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_06",
+    "file": "assets/common/C_child_06.png",
+    "identity": "C_child_06",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 7,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain smoky brown wool gown with undyed linen neckline",
+    "commonTraits": {
+      "hair": "chestnut",
+      "skin": "medium warm brown"
+    },
+    "differenceMarkers": [
+      "straight chestnut blunt fringe and one braid over right shoulder",
+      "narrow wide-set dark hazel almond eyes",
+      "small open smile with missing upper milk tooth",
+      "one protruding ear",
+      "compact square soft child cheeks"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner girl, clearly age 6 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: chestnut, loose shoulder-length waves. Skin medium warm brown. Eyes grey green. Face/body slim cheeks and narrow small shoulders; personal mark tiny mole below left eye. Clothing plain smoky brown wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: very round plump face, wide nose, deep dimples. Turn face slightly toward viewer RIGHT, opposite the reference.",
+        "rawFile": "raw/common-children/C_child_06.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: identity-preserve edit with deliberate identity replacement. Reference is a child-age and painting-style target ONLY. Create ONE different unrelated 7-year-old commoner GIRL, not this same face. Keep the same chestnut hair COLOR, warm medium brown skin tone, handpainted gouache style and grey-brown backdrop. Make the identity clearly different: straight chestnut hair with a very blunt straight fringe just above eyebrows, hair pulled into one long simple braid over RIGHT shoulder; noticeably narrow almond-shaped dark hazel eyes spaced WIDER apart; broad flat small child nose, small slightly open smiling mouth with one missing upper front milk tooth, one protruding ear visible; compact square soft child cheeks rather than the reference round dimpled cheeks; remove reference mole and dimples. She is exactly7, unmistakably primary-school6–8, soft undeveloped small jaw, large head compared with narrow small shoulders and short neck. Not teen, not adult. Face almost front-on, eyes meet viewer, not looking up or sideways. Plain modest brown wool gown with ivory linen neckline, no head covering because little unmarried girl. Headandshoulders portrait fully inside square, soft light upperleft. No hands, no text, no border, no badges, no scenery, no jewelry.",
+        "rawFile": "raw/common-children/C_child_06-v2.png",
+        "referenceImages": [
+          "references/common-children/C_child_06-v1.png"
+        ],
+        "referenceSha256": "fa90228fc9dd6ff7899f6b497e85c1d5297b25e96810921bac3e65def0bc94b1",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-targeted-correction",
+      "reviewedAtSizes": [
+        256,
+        96
+      ],
+      "ageRead": "6–8",
+      "distinctFromCChild02": true,
+      "observedDeviations": [
+        "Wide-set eyes are moderately rounded rather than narrowly almond-shaped. Tooth-gap number is an artistic approximation."
+      ],
+      "reason": "New front-on eye line, blunt fringe and long braid, exposed-tooth smile and missing-tooth gap visibly distinguish from02."
+    },
+    "sha256": "518378d6a56f0b054d259f7cdd73223bb5ddb7f3f6650118b2d7538dd2123ec2",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_07",
+    "file": "assets/common/C_child_07.png",
+    "identity": "C_child_07",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "plain muted moss green wool tunic with undyed linen neckline",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "deep warm brown"
+    },
+    "differenceMarkers": [
+      "short tight curls",
+      "dark brown eyes",
+      "broad child cheeks and stocky small shoulders",
+      "small freckles across nose",
+      "compact square cheeks, tiny button nose, narrow mouth"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner boy, clearly age 7 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: black, short tight curls. Skin deep warm brown. Eyes dark brown. Face/body broad child cheeks and stocky small shoulders; personal mark small freckles across nose. Clothing plain muted moss green wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: compact square cheeks, tiny button nose, narrow mouth. Face nearly front-on with eyes toward viewer.",
+        "rawFile": "raw/common-children/C_child_07.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: identity-preserve age progression. Edit the single reference portrait: the SAME individual boy, grow him about TWO YEARS older to clearly age7–8, an early primary-school child not a toddler. Preserve exactly his skin tone, hair color and hairstyle, eye color, ears, personal marks, clothing color/style, background and painterly brushwork. Modify only natural age proportions: slightly longer face between eyes and chin, less baby cheek fat, slightly longer visible neck and a little wider school-child shoulders, a slightly more developed but still small short child nose. His forehead/head remain large relative to small torso and jaw remains soft undeveloped. NOT10–14, NOTteen, no adult jaw or puberty or facial hair. It must look unambiguously7–8 rather than4–5. Keep same pose, calm expression, lighting, camera and one person only. Full head and shoulders, square painted portrait, no text or props. Preserve black short curls, nose freckles and moss green tunic.",
+        "rawFile": "raw/common-children/C_child_07-v2.png",
+        "referenceImages": [
+          "references/common-children/C_child_07-before-age.png"
+        ],
+        "referenceSha256": "ae42cc428c7382c455646ddad805c036a25fd05c5ac50b86247a94da9ca8a479",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-after-age-correction",
+      "reviewedAtSizes": [
+        256,
+        96
+      ],
+      "ageRead": "6–8",
+      "reason": "Reduced round baby cheeks and longer child face/neck; same curled-hair boy identity, marks and clothing preserved.",
+      "limitations": [
+        "Exact numeric age remains subjective visual judgment."
+      ],
+      "observedDeviations": []
+    },
+    "sha256": "86512c2b05f778ea70eb320a7a5eccd8df7642906472757865b4a2e938af20c3",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_08",
+    "file": "assets/common/C_child_08.png",
+    "identity": "C_child_08",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 7,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Plain rusty brown gown.",
+    "commonTraits": {
+      "hair": "red",
+      "skin": "fair rosy"
+    },
+    "differenceMarkers": [
+      "red straight hair in a long single braid draped over shoulder",
+      "straight fringe above eyebrows",
+      "broad flat child nose",
+      "thin long brows",
+      "pale grey eyes",
+      "delighted open-mouth grin showing one missing upper front milk tooth. Face front-on with head slightly tilted. Plain rusty brown gown. Clearly not teenager."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner girl, clearly age 8 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: red, wavy bob ending below ears. Skin fair rosy. Eyes hazel. Face/body round forehead and delicate little shoulders; personal mark one tiny mole beside left cheek. Clothing plain faded madder russet wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: wide-set round eyes, broad little nose and wide smiling mouth. Turn face slightly toward viewer RIGHT, opposite the reference.",
+        "rawFile": "raw/common-children/C_child_08.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. A 7-year-old girl with pale freckled skin, red straight hair in a long single braid draped over shoulder, straight fringe above eyebrows, broad flat child nose, thin long brows, pale grey eyes, delighted open-mouth grin showing one missing upper front milk tooth. Face front-on with head slightly tilted. Plain rusty brown gown. Clearly not teenager. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_child_08-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Requested one missing upper milk tooth renders as a broad tooth gap; exact number not guaranteed."
+      ]
+    },
+    "sha256": "0314d32e9079aac0ccb15cd0335cb414f13820e5022e3b42424aee0c43da92b3",
+    "correctionDesign": "A 7-year-old girl with pale freckled skin, red straight hair in a long single braid draped over shoulder, straight fringe above eyebrows, broad flat child nose, thin long brows, pale grey eyes, delighted open-mouth grin showing one missing upper front milk tooth. Face front-on with head slightly tilted. Plain rusty brown gown. Clearly not teenager.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_09",
+    "file": "assets/common/C_child_09.png",
+    "identity": "C_child_09",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 6,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Muted deep green wool tunic.",
+    "commonTraits": {
+      "hair": "dark blond",
+      "skin": "light warm beige"
+    },
+    "differenceMarkers": [
+      "small widely spaced grey-green eyes",
+      "visibly long narrow child face but short small nose",
+      "protruding ears",
+      "tiny dot on left cheek",
+      "shy closed narrow smile. Look toward viewer left. Muted deep green wool tunic. No dimple."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner boy, clearly age 6 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: dark blond, tousled short uneven crop. Skin light warm beige. Eyes green brown. Face/body small round cheeks and compact shoulders; personal mark one dimple in right cheek. Clothing plain ochre brown wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: narrow sleepy almond eyes, tiny upturned nose, small pursed mouth. Face nearly front-on with eyes toward viewer.",
+        "rawFile": "raw/common-children/C_child_09.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. A 6-year-old boy with dark blond straight bowl cut, small widely spaced grey-green eyes, visibly long narrow child face but short small nose, protruding ears, tiny dot on left cheek, shy closed narrow smile. Look toward viewer left. Muted deep green wool tunic. No dimple. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_child_09-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "sha256": "2a82c308bfb70cc7fff2cc5bd9034238c095a9e833a7532ac6678d2d46758071",
+    "correctionDesign": "A 6-year-old boy with dark blond straight bowl cut, small widely spaced grey-green eyes, visibly long narrow child face but short small nose, protruding ears, tiny dot on left cheek, shy closed narrow smile. Look toward viewer left. Muted deep green wool tunic. No dimple.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_10",
+    "file": "assets/common/C_child_10.png",
+    "identity": "C_child_10",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 8,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Plain dusty rose-brown wool gown.",
+    "commonTraits": {
+      "hair": "dark brown",
+      "skin": "medium olive brown"
+    },
+    "differenceMarkers": [
+      "long oval child face",
+      "high forehead",
+      "small blue-grey eyes set fairly close",
+      "broad short nose",
+      "thin upper lip",
+      "two freckles near chin. Look front-on. Plain dusty rose-brown wool gown. NO braids."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner girl, clearly age 7 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: dark brown, two short loose braids. Skin medium olive brown. Eyes grey blue. Face/body slim cheeks and narrow small shoulders; personal mark slightly uneven eyebrows. Clothing plain muted slate blue wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: large close-set eyes, short straight nose, prominent child ears. Turn face slightly toward viewer RIGHT, opposite the reference.",
+        "rawFile": "raw/common-children/C_child_10.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. An 8-year-old girl with dark brown cropped wavy pixie hair exposing both ears, long oval child face, high forehead, small blue-grey eyes set fairly close, broad short nose, thin upper lip, two freckles near chin. Look front-on. Plain dusty rose-brown wool gown. NO braids. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_child_10-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Requested two small chin freckles read as two stronger small moles."
+      ]
+    },
+    "sha256": "c02b163c347840228fd2e14b575d16a4c383b53248f9ebc777cebe61b71cd049",
+    "correctionDesign": "An 8-year-old girl with dark brown cropped wavy pixie hair exposing both ears, long oval child face, high forehead, small blue-grey eyes set fairly close, broad short nose, thin upper lip, two freckles near chin. Look front-on. Plain dusty rose-brown wool gown. NO braids.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_11",
+    "file": "assets/common/C_child_11.png",
+    "identity": "C_child_11",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Muted blue wool tunic.",
+    "commonTraits": {
+      "hair": "chestnut",
+      "skin": "light neutral beige"
+    },
+    "differenceMarkers": [
+      "round wide child face",
+      "deep dimples",
+      "wide-set dark brown eyes",
+      "broad little nose",
+      "cheerful open smile with one missing upper front tooth. Look toward viewer left. Muted blue wool tunic. No cropped fringe."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner boy, clearly age 8 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: chestnut, straight cropped fringe. Skin light neutral beige. Eyes amber brown. Face/body broad child cheeks and stocky small shoulders; personal mark small freckle cluster on right cheek. Clothing plain undyed warm oatmeal wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: long oval cheeks, small widely spaced eyes, broad upper lip. Face nearly front-on with eyes toward viewer.",
+        "rawFile": "raw/common-children/C_child_11.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. An 8-year-old stocky boy with chestnut hair in a short curly mop, round wide child face, deep dimples, wide-set dark brown eyes, broad little nose, cheerful open smile with one missing upper front tooth. Look toward viewer left. Muted blue wool tunic. No cropped fringe. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_child_11-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": [
+        "Requested one missing upper milk tooth renders as a broad tooth gap; exact number not guaranteed."
+      ]
+    },
+    "sha256": "a37fd1421dc90316af4e6405b13d9765961d4ed9713d607118a6d56265b111f3",
+    "correctionDesign": "An 8-year-old stocky boy with chestnut hair in a short curly mop, round wide child face, deep dimples, wide-set dark brown eyes, broad little nose, cheerful open smile with one missing upper front tooth. Look toward viewer left. Muted blue wool tunic. No cropped fringe.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_12",
+    "file": "assets/common/C_child_12.png",
+    "identity": "C_child_12",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Muted ochre wool gown.",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "medium warm brown"
+    },
+    "differenceMarkers": [
+      "medium warm brown skin",
+      "compact square child face",
+      "narrow almond-shaped dark brown eyes",
+      "small mouth and tiny button nose",
+      "tiny birthmark beside right nostril. Look front-on with calm serious expression. Muted ochre wool gown. NO waves or dimples."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner girl, clearly age 6 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: black, loose shoulder-length waves. Skin medium warm brown. Eyes grey green. Face/body round forehead and delicate little shoulders; personal mark tiny mole below left eye. Clothing plain smoky brown wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: very round plump face, wide nose, deep dimples. Turn face slightly toward viewer RIGHT, opposite the reference.",
+        "rawFile": "raw/common-children/C_child_12.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. A 6-year-old girl with black straight ear-length bob with blunt fringe, medium warm brown skin, compact square child face, narrow almond-shaped dark brown eyes, small mouth and tiny button nose, tiny birthmark beside right nostril. Look front-on with calm serious expression. Muted ochre wool gown. NO waves or dimples. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_child_12-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "sha256": "2239a10089183d47f82c6b33647ce3b567218285c34c88efb042647fbf001ea3",
+    "correctionDesign": "A 6-year-old girl with black straight ear-length bob with blunt fringe, medium warm brown skin, compact square child face, narrow almond-shaped dark brown eyes, small mouth and tiny button nose, tiny birthmark beside right nostril. Look front-on with calm serious expression. Muted ochre wool gown. NO waves or dimples.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_13",
+    "file": "assets/common/C_child_13.png",
+    "identity": "C_child_13",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Oatmeal tunic.",
+    "commonTraits": {
+      "hair": "red",
+      "skin": "deep warm brown"
+    },
+    "differenceMarkers": [
+      "long oval soft child cheeks",
+      "big protruding ears",
+      "small widely spaced brown eyes",
+      "broad little nose",
+      "faint short healed mark at outer left eyebrow",
+      "quiet closed mouth. Look toward viewer right. Oatmeal tunic. No freckles."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner boy, clearly age 7 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: red, short tight curls. Skin deep warm brown. Eyes dark brown. Face/body small round cheeks and compact shoulders; personal mark small freckles across nose. Clothing plain muted moss green wool tunic with undyed linen neckline.  Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: compact square cheeks, tiny button nose, narrow mouth. Face nearly front-on with eyes toward viewer.",
+        "rawFile": "raw/common-children/C_child_13.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. A 7-year-old slender boy with medium warm brown skin and short reddish tight curls, long oval soft child cheeks, big protruding ears, small widely spaced brown eyes, broad little nose, faint short healed mark at outer left eyebrow, quiet closed mouth. Look toward viewer right. Oatmeal tunic. No freckles. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_child_13-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: identity-preserve age progression. Edit the single reference portrait: the SAME individual boy, grow him about TWO YEARS older to clearly age7–8, an early primary-school child not a toddler. Preserve exactly his skin tone, hair color and hairstyle, eye color, ears, personal marks, clothing color/style, background and painterly brushwork. Modify only natural age proportions: slightly longer face between eyes and chin, less baby cheek fat, slightly longer visible neck and a little wider school-child shoulders, a slightly more developed but still small short child nose. His forehead/head remain large relative to small torso and jaw remains soft undeveloped. NOT10–14, NOTteen, no adult jaw or puberty or facial hair. It must look unambiguously7–8 rather than4–5. Keep same pose, calm expression, lighting, camera and one person only. Full head and shoulders, square painted portrait, no text or props. Preserve reddish tight curls, protruding ears, faint healed left-eyebrow mark and oatmeal tunic.",
+        "rawFile": "raw/common-children/C_child_13-v3.png",
+        "referenceImages": [
+          "references/common-children/C_child_13-before-age.png"
+        ],
+        "referenceSha256": "d3088b9fb2b86f4f80c1dd13f60604bf7202d1c81757edea910a47c182749dc5",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-after-age-correction",
+      "reviewedAtSizes": [
+        256,
+        96
+      ],
+      "ageRead": "6–8",
+      "reason": "Reduced round baby cheeks and longer child face/neck; same curled-hair boy identity, marks and clothing preserved.",
+      "limitations": [
+        "Exact numeric age remains subjective visual judgment."
+      ],
+      "observedDeviations": []
+    },
+    "sha256": "ac0427dad38c2ec15a1e59a6351f7aba36392854ba1535dc21733fcace5775e8",
+    "correctionDesign": "A 7-year-old slender boy with medium warm brown skin and short reddish tight curls, long oval soft child cheeks, big protruding ears, small widely spaced brown eyes, broad little nose, faint short healed mark at outer left eyebrow, quiet closed mouth. Look toward viewer right. Oatmeal tunic. No freckles.",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "C_child_14",
+    "file": "assets/common/C_child_14.png",
+    "identity": "C_child_14",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "age": 8,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Plain moss-green wool gown.",
+    "commonTraits": {
+      "hair": "dark blond",
+      "skin": "fair rosy"
+    },
+    "differenceMarkers": [
+      "pale warm skin",
+      "broad round child face with full cheeks",
+      "pale blue eyes",
+      "short nose",
+      "faint freckles across forehead",
+      "a big dimple on LEFT cheek",
+      "slight asymmetric smile. Face nearly front-on. Plain moss-green wool gown. Not a teenager."
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Exactly ONE individual square handpainted gouache portrait for a medieval game. The contact sheet is ONLY a painterly brushwork and palette reference. Generate ONE new child, not a sheet. Do not replicate any reference person, camera angle or face. Southern England 1300–1450 commoner girl, clearly age 8 years. Primary-school child 6–8: large rounded head compared with very small shoulders, short neck, small short nose, soft round undeveloped jaw, child cheeks. Absolutely not 10–14, not a teenager or miniature adult. Hair: dark blond, wavy bob ending below ears. Skin fair rosy. Eyes hazel. Face/body slim cheeks and narrow small shoulders; personal mark one tiny mole beside left cheek. Clothing plain faded madder russet wool gown with undyed linen neckline. Unmarried little girl with uncovered hair, no veil, no coif, no headscarf. Centered head-and-shoulders bust, whole crown and chin visible, slight three-quarter turn, warm attentive expression, plain muted grey-brown background, soft upper left light. Restrained low-saturation painterly brushwork, readable at96px, match project reference tone. No text, numbers, frame, icon, jewelry, heraldry, props, scenery, adult anatomy, cosmetic makeup. Square image. Face identity priority: wide-set round eyes, broad little nose and wide smiling mouth. Turn face slightly toward viewer RIGHT, opposite the reference.",
+        "rawFile": "raw/common-children/C_child_14.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE wholly new unrelated child portrait. Contact sheet is painterly STYLE and PALETTE ONLY, do NOT copy a face. Individual identity features MUST dominate instead of generic beautiful child face. An 8-year-old girl with dark blond straight hair in two long braids, pale warm skin, broad round child face with full cheeks, pale blue eyes, short nose, faint freckles across forehead, a big dimple on LEFT cheek, slight asymmetric smile. Face nearly front-on. Plain moss-green wool gown. Not a teenager. Southern England1300–1450. Primary age priority: small child anatomy, oversized round cranial vault, short neck, narrow little shoulders, small short undeveloped nose and jaw, no adult proportions. Low-saturation handpainted gouache, visible fine brushwork, plain warm grey-brown background, soft light upperleft. Full head crown to upper chest centered. Child girls uncovered hair, no adult veil, no jewelry, no text, no symbols. Square256px target portrait. Keep face genuinely that child age.",
+        "rawFile": "raw/common-children/C_child_14-v2.png",
+        "referenceImages": [
+          "references/common-children/style-contact.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "operation": "aspect-preserving resize contain",
+      "width": 256,
+      "height": 256,
+      "kernel": "lanczos3"
+    },
+    "qa": {
+      "status": "candidate-visual-pass-with-notes",
+      "reviewedAtSizes": [
+        256,
+        192
+      ],
+      "ageRead": "6–9",
+      "faceVisible": true,
+      "noVeilOnGirls": true,
+      "distinctWithinStage": true,
+      "limitations": [
+        "Exact numeric age and minor color/mark details are visual estimates, not measurable biological ages."
+      ],
+      "observedDeviations": []
+    },
+    "sha256": "05b3bf75772869922d17cdf86499eedce4d7f0e1f612934441e1e8e870900dfe",
+    "correctionDesign": "An 8-year-old girl with dark blond straight hair in two long braids, pale warm skin, broad round child face with full cheeks, pale blue eyes, short nose, faint freckles across forehead, a big dimple on LEFT cheek, slight asymmetric smile. Face nearly front-on. Plain moss-green wool gown. Not a teenager.",
+    "width": 256,
+    "height": 256
+  }
+]

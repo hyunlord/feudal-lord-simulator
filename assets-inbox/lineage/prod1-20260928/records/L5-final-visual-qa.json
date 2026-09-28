@@ -1,0 +1,1437 @@
+{
+  "reviewer": "prod1_age_review",
+  "date": "2026-09-28",
+  "scope": "Final 38 L5 portraits",
+  "method": "Viewed all eight baby-child pairs at 256px and actual 96px, all eight young-mature adult chains with founder old images at 256px, and all four grandchild young adults at 256px. Costume obligation checked against supplied marital metadata only.",
+  "overall": "PASS_WITH_SUBJECTIVE_AGE_LIMITS: latest mature corrections resolve previously flagged subtle aging. All original qualification history retained.",
+  "items": [
+    {
+      "id": "L5_101_mature",
+      "path": "assets/L5/L5_101_mature.png",
+      "sha256": "dfa5afd4ac7c9fbcb60ff882516eba25fe590ece4de7ba9a0f4ed69067f6e79c",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_101_old",
+      "path": "assets/L5/L5_101_old.png",
+      "sha256": "432c4a1fdab50818316cdbd23be44b8438db03d45c2750f0b24b4cd188b3e89c",
+      "estimated_years": [
+        62,
+        75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_101_young",
+      "path": "assets/L5/L5_101_young.png",
+      "sha256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+      "estimated_years": [
+        24,
+        34
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_102_mature",
+      "path": "assets/L5/L5_102_mature.png",
+      "sha256": "cdeb98c090cb2ceaa01e6004c7bbcb811a89c796670898dbc9842ccb247a04de",
+      "estimated_years": [
+        39,
+        51
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_102_old",
+      "path": "assets/L5/L5_102_old.png",
+      "sha256": "b4fca3213c20e6e716e5ac75289f0575b0ac769c12946c5e641b59fabd992e89",
+      "estimated_years": [
+        62,
+        75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_102_young",
+      "path": "assets/L5/L5_102_young.png",
+      "sha256": "6ce61241b7d07b5ec5cfa1aff52ce724ddefd2517c2f4132db47533dfeae04b4",
+      "estimated_years": [
+        24,
+        34
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_201_baby",
+      "path": "assets/L5/L5_201_baby.png",
+      "sha256": "da7ddb508e32518ef3d804ee0304917288be89383039afdffaf5fbd0c2ec0691",
+      "estimated_years": [
+        1,
+        2
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "notes": "Older-infant appearance, plausibly 12-24 months; not a newborn."
+    },
+    {
+      "id": "L5_201_child",
+      "path": "assets/L5/L5_201_child.png",
+      "sha256": "32827296ece8c3b5a02eb0647d195545f31dfcd7ae4e34017056f9bc32dd8b7e",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_201_mature",
+      "path": "assets/L5/L5_201_mature.png",
+      "sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+      "estimated_years": [
+        39,
+        50
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_201_young",
+      "path": "assets/L5/L5_201_young.png",
+      "sha256": "c0e2056ad4023081c8de9c3c5970d018122d712042f172f4259e0b2b1c28ac7b",
+      "estimated_years": [
+        24,
+        34
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_202_baby",
+      "path": "assets/L5/L5_202_baby.png",
+      "sha256": "c3fad8edc60f372f584997d240272815b11e13d470559f5db2841ad8a0a8ec53",
+      "estimated_years": [
+        1,
+        2
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "notes": "Older-infant appearance, plausibly 12-24 months; not a newborn."
+    },
+    {
+      "id": "L5_202_child",
+      "path": "assets/L5/L5_202_child.png",
+      "sha256": "905ac1279910f83c77a0683921f85e061ee0eeadc94ef9d3207de1cc580eded7",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_202_mature",
+      "path": "assets/L5/L5_202_mature.png",
+      "sha256": "a1a4c7da26cd3cb71a4c96cac374164d4d97d52301c9be2e4f739f881060de12",
+      "estimated_years": [
+        38,
+        49
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_202_young",
+      "path": "assets/L5/L5_202_young.png",
+      "sha256": "04b54667e5b3a5dc65569dcf78fd777ac93453bad49df7dea2d9e6e56f671a7c",
+      "estimated_years": [
+        21,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_203_baby",
+      "path": "assets/L5/L5_203_baby.png",
+      "sha256": "b8b9ec693b986d3d1a20121f37b724ec344903ca5c54f17858da3f3682d02e49",
+      "estimated_years": [
+        0.75,
+        1.75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "L5_203_child",
+      "path": "assets/L5/L5_203_child.png",
+      "sha256": "48600b78a29ffecd328fc8bea791411829610abc173a51ae8c354dec500538b7",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_203_mature",
+      "path": "assets/L5/L5_203_mature.png",
+      "sha256": "30346ca20e5c9a5d503e7e4938aa163b03b34346c13f780ada72c86f7aaf1705",
+      "estimated_years": [
+        40,
+        50
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": "Revised mature portrait now has legible forehead, eye and facial folds; reads as 40s."
+    },
+    {
+      "id": "L5_203_young",
+      "path": "assets/L5/L5_203_young.png",
+      "sha256": "743c7261a8369d15f328d894a61d66258bdcdb9e1663b71e99d103547c9dd741",
+      "estimated_years": [
+        24,
+        34
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_204_baby",
+      "path": "assets/L5/L5_204_baby.png",
+      "sha256": "d439609640401b50c43083242ddde5fe9a022c98054faf8bc2d4c863b2a92cdd",
+      "estimated_years": [
+        1,
+        2
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "notes": "Older-infant appearance, plausibly 12-24 months; not a newborn."
+    },
+    {
+      "id": "L5_204_child",
+      "path": "assets/L5/L5_204_child.png",
+      "sha256": "9d00562f3860d3d6ef8899353f11385bbe8fbf857659b335f7705015af909e18",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_204_mature",
+      "path": "assets/L5/L5_204_mature.png",
+      "sha256": "1f3eee0e400cdbfbe4c63daf4c31a3033e25bb629546f15516695ad7c45a2a9a",
+      "estimated_years": [
+        37,
+        48
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_204_young",
+      "path": "assets/L5/L5_204_young.png",
+      "sha256": "857b44c17b60ebb49ddf60fbb6a8d12fd3bb2bf0a3e611d48246beb88cfd7d28",
+      "estimated_years": [
+        22,
+        32
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_205_mature",
+      "path": "assets/L5/L5_205_mature.png",
+      "sha256": "049dc5e60390502ce6324049be588131d82c504c0c15604bdbd6598ffe3186e3",
+      "estimated_years": [
+        40,
+        50
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": "Revised mature portrait now has legible forehead, eye and facial folds; reads as 40s."
+    },
+    {
+      "id": "L5_205_young",
+      "path": "assets/L5/L5_205_young.png",
+      "sha256": "b82a7bf102d62aa4c4ce59d20e3668018749eb07e3b22ae01bb510cb9a3467c9",
+      "estimated_years": [
+        22,
+        32
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_206_mature",
+      "path": "assets/L5/L5_206_mature.png",
+      "sha256": "d54155ca8256da6edee6d7b7230f959cee1bb141d668532d3e036374067d1f29",
+      "estimated_years": [
+        39,
+        50
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_206_young",
+      "path": "assets/L5/L5_206_young.png",
+      "sha256": "b35bb6c873dec57ed9a5c572676b77ac5fefc626fcb3ce1fc4f2b3ca0c6162eb",
+      "estimated_years": [
+        24,
+        34
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_301_baby",
+      "path": "assets/L5/L5_301_baby.png",
+      "sha256": "abdcc410b2e3f59b48170f631474984485289e4001fe42782fd43ca88b35ecd6",
+      "estimated_years": [
+        0.75,
+        1.75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "L5_301_child",
+      "path": "assets/L5/L5_301_child.png",
+      "sha256": "bd48cd7a1ff60472bfcbc9e837779e404153315a16e21926429ac39d68c9dbe5",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_301_young",
+      "path": "assets/L5/L5_301_young.png",
+      "sha256": "de56b7562edcb577b2e4994d85f121bb79593dbca548dfd125bf2402607e0cd8",
+      "estimated_years": [
+        20,
+        30
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_302_baby",
+      "path": "assets/L5/L5_302_baby.png",
+      "sha256": "9470f4a030f7877b20fed5daf30550db80ed68b89041a4e1330c796a58126d2b",
+      "estimated_years": [
+        0.75,
+        1.75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "L5_302_child",
+      "path": "assets/L5/L5_302_child.png",
+      "sha256": "5899eb397e7985ad9a23bffd1f1792d8e7c95befa6538178aac813069e5893fd",
+      "estimated_years": [
+        5,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": "Lower-end estimate overlaps target at 6-8; no adolescent appearance."
+    },
+    {
+      "id": "L5_302_young",
+      "path": "assets/L5/L5_302_young.png",
+      "sha256": "0d08de49b8d96451c2ff72d310eab486a854d9dc2caaabad31f8d8fd9eec2a4c",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_303_baby",
+      "path": "assets/L5/L5_303_baby.png",
+      "sha256": "d22642cbfa6de169905557075ae55763a7c2942c986809fcaea40798ac0b1a3a",
+      "estimated_years": [
+        0.75,
+        1.75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "L5_303_child",
+      "path": "assets/L5/L5_303_child.png",
+      "sha256": "d260354b8fa60269fd76e14d57b7c73a429e2890991990e516f0fdf4d872538e",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_303_young",
+      "path": "assets/L5/L5_303_young.png",
+      "sha256": "2a465cbcd2231b95e23fa1aebda2a8e4e7145f21386f71a446755af5ca0c3b03",
+      "estimated_years": [
+        21,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    },
+    {
+      "id": "L5_304_baby",
+      "path": "assets/L5/L5_304_baby.png",
+      "sha256": "4b6af62a1a4f701197caf0513fb025faa3d09bf8b3f8e3afb61544702c074d42",
+      "estimated_years": [
+        0.75,
+        1.75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "notes": ""
+    },
+    {
+      "id": "L5_304_child",
+      "path": "assets/L5/L5_304_child.png",
+      "sha256": "d722326d64a8dcc5d349cf68919e77093763b9aa2170eb13bdea92f1216a8501",
+      "estimated_years": [
+        5,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": "Lower-end estimate overlaps target at 6-8; no adolescent appearance."
+    },
+    {
+      "id": "L5_304_young",
+      "path": "assets/L5/L5_304_young.png",
+      "sha256": "89122f549f1d8681e56dfbb2459db0074add86e41108de36d331784b43bf11f3",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "inspected_sizes": [
+        256
+      ],
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "notes": ""
+    }
+  ],
+  "chains": [
+    {
+      "id": "L5_101",
+      "young_sha256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+      "mature_sha256": "dfa5afd4ac7c9fbcb60ff882516eba25fe590ece4de7ba9a0f4ed69067f6e79c",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+    },
+    {
+      "id": "L5_102",
+      "young_sha256": "6ce61241b7d07b5ec5cfa1aff52ce724ddefd2517c2f4132db47533dfeae04b4",
+      "mature_sha256": "cdeb98c090cb2ceaa01e6004c7bbcb811a89c796670898dbc9842ccb247a04de",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+    },
+    {
+      "id": "L5_201",
+      "young_sha256": "c0e2056ad4023081c8de9c3c5970d018122d712042f172f4259e0b2b1c28ac7b",
+      "mature_sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+    },
+    {
+      "id": "L5_202",
+      "young_sha256": "04b54667e5b3a5dc65569dcf78fd777ac93453bad49df7dea2d9e6e56f671a7c",
+      "mature_sha256": "a1a4c7da26cd3cb71a4c96cac374164d4d97d52301c9be2e4f739f881060de12",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+    },
+    {
+      "id": "L5_203",
+      "young_sha256": "743c7261a8369d15f328d894a61d66258bdcdb9e1663b71e99d103547c9dd741",
+      "mature_sha256": "30346ca20e5c9a5d503e7e4938aa163b03b34346c13f780ada72c86f7aaf1705",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE_AFTER_CORRECTION",
+      "notes": "Revised eye bags, forehead and facial folds resolve prior subtle-aging concern; visual estimate 40-50."
+    },
+    {
+      "id": "L5_204",
+      "young_sha256": "857b44c17b60ebb49ddf60fbb6a8d12fd3bb2bf0a3e611d48246beb88cfd7d28",
+      "mature_sha256": "1f3eee0e400cdbfbe4c63daf4c31a3033e25bb629546f15516695ad7c45a2a9a",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+    },
+    {
+      "id": "L5_205",
+      "young_sha256": "b82a7bf102d62aa4c4ce59d20e3668018749eb07e3b22ae01bb510cb9a3467c9",
+      "mature_sha256": "049dc5e60390502ce6324049be588131d82c504c0c15604bdbd6598ffe3186e3",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE_AFTER_CORRECTION",
+      "notes": "Revised eye bags, forehead and facial folds resolve prior subtle-aging concern; visual estimate 40-50."
+    },
+    {
+      "id": "L5_206",
+      "young_sha256": "b35bb6c873dec57ed9a5c572676b77ac5fefc626fcb3ce1fc4f2b3ca0c6162eb",
+      "mature_sha256": "d54155ca8256da6edee6d7b7230f959cee1bb141d668532d3e036374067d1f29",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+    }
+  ],
+  "founders_old": "Both founders plausibly read 62-75 and have visibly more wrinkles/gray hair than mature versions.",
+  "youth96": "All baby/child pairs remain legibly different in stage at 96px. Babies retain bonnets and swaddling. Child 302/304 read toward the young end, but target ages 6-8 are plausible. No adolescent appearance.",
+  "covering": "All metadata-married adult women are covered. 204 young, 302 young and 304 young are unmarried and uncovered without violation.",
+  "distinctness": "Common sideward pose, related hair colors and freckles cause family resemblance. Haircuts, eye direction, marks and mouth shapes provide some differentiation; no biometric distinctness claim.",
+  "contacts": [
+    {
+      "path": "records/L5-review-youth.png",
+      "sha256": "eb95225f6eb7bd8b6239fcb935d392b839295b7e27312983a0184547e5b9f10e"
+    },
+    {
+      "path": "records/L5-review-youth-96.png",
+      "sha256": "4c304477449070a736e4d68f968e10407946a3d28acf616d38e3e89885443ee1"
+    },
+    {
+      "path": "records/L5-review-adults.png",
+      "sha256": "a772401cd0f7331899a46d1b4e7303c42792bed102b60479030f28425c663aff"
+    },
+    {
+      "path": "records/L5-review-grandyoung.png",
+      "sha256": "5359cd63478a7b1f57f50f28568eaf88d8926d086fb96010ae433239e22f6d0e"
+    }
+  ],
+  "clear_failures": [],
+  "limitations": [
+    "All age intervals and continuity judgments are subjective visual estimates.",
+    "Exact +20-year aging cannot be proven by images; 203/205 are explicitly qualified.",
+    "Adult 96px inspection, runtime and animation review not performed."
+  ],
+  "art_modified": false,
+  "previous_review_history": {
+    "overall": "PASS_WITH_QUALIFICATIONS: no clear 0-2 infant, 6-9 child, or married-woman-head-covering failure. Adult aging visible; 203/205 twenty-year magnitude is comparatively subtle.",
+    "items": [
+      {
+        "id": "L5_101_mature",
+        "path": "assets/L5/L5_101_mature.png",
+        "sha256": "dfa5afd4ac7c9fbcb60ff882516eba25fe590ece4de7ba9a0f4ed69067f6e79c",
+        "estimated_years": [
+          40,
+          52
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_101_old",
+        "path": "assets/L5/L5_101_old.png",
+        "sha256": "432c4a1fdab50818316cdbd23be44b8438db03d45c2750f0b24b4cd188b3e89c",
+        "estimated_years": [
+          62,
+          75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_101_young",
+        "path": "assets/L5/L5_101_young.png",
+        "sha256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+        "estimated_years": [
+          24,
+          34
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_102_mature",
+        "path": "assets/L5/L5_102_mature.png",
+        "sha256": "cdeb98c090cb2ceaa01e6004c7bbcb811a89c796670898dbc9842ccb247a04de",
+        "estimated_years": [
+          39,
+          51
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_102_old",
+        "path": "assets/L5/L5_102_old.png",
+        "sha256": "b4fca3213c20e6e716e5ac75289f0575b0ac769c12946c5e641b59fabd992e89",
+        "estimated_years": [
+          62,
+          75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_102_young",
+        "path": "assets/L5/L5_102_young.png",
+        "sha256": "6ce61241b7d07b5ec5cfa1aff52ce724ddefd2517c2f4132db47533dfeae04b4",
+        "estimated_years": [
+          24,
+          34
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_201_baby",
+        "path": "assets/L5/L5_201_baby.png",
+        "sha256": "da7ddb508e32518ef3d804ee0304917288be89383039afdffaf5fbd0c2ec0691",
+        "estimated_years": [
+          1,
+          2
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "notes": "Older-infant appearance, plausibly 12-24 months; not a newborn."
+      },
+      {
+        "id": "L5_201_child",
+        "path": "assets/L5/L5_201_child.png",
+        "sha256": "32827296ece8c3b5a02eb0647d195545f31dfcd7ae4e34017056f9bc32dd8b7e",
+        "estimated_years": [
+          6,
+          9
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_201_mature",
+        "path": "assets/L5/L5_201_mature.png",
+        "sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+        "estimated_years": [
+          39,
+          50
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_201_young",
+        "path": "assets/L5/L5_201_young.png",
+        "sha256": "c0e2056ad4023081c8de9c3c5970d018122d712042f172f4259e0b2b1c28ac7b",
+        "estimated_years": [
+          24,
+          34
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_202_baby",
+        "path": "assets/L5/L5_202_baby.png",
+        "sha256": "c3fad8edc60f372f584997d240272815b11e13d470559f5db2841ad8a0a8ec53",
+        "estimated_years": [
+          1,
+          2
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "notes": "Older-infant appearance, plausibly 12-24 months; not a newborn."
+      },
+      {
+        "id": "L5_202_child",
+        "path": "assets/L5/L5_202_child.png",
+        "sha256": "905ac1279910f83c77a0683921f85e061ee0eeadc94ef9d3207de1cc580eded7",
+        "estimated_years": [
+          6,
+          9
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_202_mature",
+        "path": "assets/L5/L5_202_mature.png",
+        "sha256": "a1a4c7da26cd3cb71a4c96cac374164d4d97d52301c9be2e4f739f881060de12",
+        "estimated_years": [
+          38,
+          49
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_202_young",
+        "path": "assets/L5/L5_202_young.png",
+        "sha256": "04b54667e5b3a5dc65569dcf78fd777ac93453bad49df7dea2d9e6e56f671a7c",
+        "estimated_years": [
+          21,
+          31
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_203_baby",
+        "path": "assets/L5/L5_203_baby.png",
+        "sha256": "b8b9ec693b986d3d1a20121f37b724ec344903ca5c54f17858da3f3682d02e49",
+        "estimated_years": [
+          0.75,
+          1.75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "notes": ""
+      },
+      {
+        "id": "L5_203_child",
+        "path": "assets/L5/L5_203_child.png",
+        "sha256": "48600b78a29ffecd328fc8bea791411829610abc173a51ae8c354dec500538b7",
+        "estimated_years": [
+          6,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_203_mature",
+        "path": "assets/L5/L5_203_mature.png",
+        "sha256": "b061867ae79043a189cce9562dcd0b7c898cef6e5187d07f50c54203afe61e64",
+        "estimated_years": [
+          35,
+          47
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_203_young",
+        "path": "assets/L5/L5_203_young.png",
+        "sha256": "743c7261a8369d15f328d894a61d66258bdcdb9e1663b71e99d103547c9dd741",
+        "estimated_years": [
+          24,
+          34
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_204_baby",
+        "path": "assets/L5/L5_204_baby.png",
+        "sha256": "d439609640401b50c43083242ddde5fe9a022c98054faf8bc2d4c863b2a92cdd",
+        "estimated_years": [
+          1,
+          2
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "notes": "Older-infant appearance, plausibly 12-24 months; not a newborn."
+      },
+      {
+        "id": "L5_204_child",
+        "path": "assets/L5/L5_204_child.png",
+        "sha256": "9d00562f3860d3d6ef8899353f11385bbe8fbf857659b335f7705015af909e18",
+        "estimated_years": [
+          6,
+          9
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_204_mature",
+        "path": "assets/L5/L5_204_mature.png",
+        "sha256": "1f3eee0e400cdbfbe4c63daf4c31a3033e25bb629546f15516695ad7c45a2a9a",
+        "estimated_years": [
+          37,
+          48
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_204_young",
+        "path": "assets/L5/L5_204_young.png",
+        "sha256": "857b44c17b60ebb49ddf60fbb6a8d12fd3bb2bf0a3e611d48246beb88cfd7d28",
+        "estimated_years": [
+          22,
+          32
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_205_mature",
+        "path": "assets/L5/L5_205_mature.png",
+        "sha256": "883cd412576bfb9c93f06f2280fbd440cb6304dac729edfa42e8d74bede2a710",
+        "estimated_years": [
+          36,
+          48
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_205_young",
+        "path": "assets/L5/L5_205_young.png",
+        "sha256": "b82a7bf102d62aa4c4ce59d20e3668018749eb07e3b22ae01bb510cb9a3467c9",
+        "estimated_years": [
+          22,
+          32
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_206_mature",
+        "path": "assets/L5/L5_206_mature.png",
+        "sha256": "d54155ca8256da6edee6d7b7230f959cee1bb141d668532d3e036374067d1f29",
+        "estimated_years": [
+          39,
+          50
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_206_young",
+        "path": "assets/L5/L5_206_young.png",
+        "sha256": "b35bb6c873dec57ed9a5c572676b77ac5fefc626fcb3ce1fc4f2b3ca0c6162eb",
+        "estimated_years": [
+          24,
+          34
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_301_baby",
+        "path": "assets/L5/L5_301_baby.png",
+        "sha256": "abdcc410b2e3f59b48170f631474984485289e4001fe42782fd43ca88b35ecd6",
+        "estimated_years": [
+          0.75,
+          1.75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "notes": ""
+      },
+      {
+        "id": "L5_301_child",
+        "path": "assets/L5/L5_301_child.png",
+        "sha256": "bd48cd7a1ff60472bfcbc9e837779e404153315a16e21926429ac39d68c9dbe5",
+        "estimated_years": [
+          6,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_301_young",
+        "path": "assets/L5/L5_301_young.png",
+        "sha256": "de56b7562edcb577b2e4994d85f121bb79593dbca548dfd125bf2402607e0cd8",
+        "estimated_years": [
+          20,
+          30
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_302_baby",
+        "path": "assets/L5/L5_302_baby.png",
+        "sha256": "9470f4a030f7877b20fed5daf30550db80ed68b89041a4e1330c796a58126d2b",
+        "estimated_years": [
+          0.75,
+          1.75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "notes": ""
+      },
+      {
+        "id": "L5_302_child",
+        "path": "assets/L5/L5_302_child.png",
+        "sha256": "5899eb397e7985ad9a23bffd1f1792d8e7c95befa6538178aac813069e5893fd",
+        "estimated_years": [
+          5,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": "Lower-end estimate overlaps target at 6-8; no adolescent appearance."
+      },
+      {
+        "id": "L5_302_young",
+        "path": "assets/L5/L5_302_young.png",
+        "sha256": "0d08de49b8d96451c2ff72d310eab486a854d9dc2caaabad31f8d8fd9eec2a4c",
+        "estimated_years": [
+          20,
+          31
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_303_baby",
+        "path": "assets/L5/L5_303_baby.png",
+        "sha256": "d22642cbfa6de169905557075ae55763a7c2942c986809fcaea40798ac0b1a3a",
+        "estimated_years": [
+          0.75,
+          1.75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "notes": ""
+      },
+      {
+        "id": "L5_303_child",
+        "path": "assets/L5/L5_303_child.png",
+        "sha256": "d260354b8fa60269fd76e14d57b7c73a429e2890991990e516f0fdf4d872538e",
+        "estimated_years": [
+          6,
+          9
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_303_young",
+        "path": "assets/L5/L5_303_young.png",
+        "sha256": "2a465cbcd2231b95e23fa1aebda2a8e4e7145f21386f71a446755af5ca0c3b03",
+        "estimated_years": [
+          21,
+          31
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      },
+      {
+        "id": "L5_304_baby",
+        "path": "assets/L5/L5_304_baby.png",
+        "sha256": "4b6af62a1a4f701197caf0513fb025faa3d09bf8b3f8e3afb61544702c074d42",
+        "estimated_years": [
+          0.75,
+          1.75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "notes": ""
+      },
+      {
+        "id": "L5_304_child",
+        "path": "assets/L5/L5_304_child.png",
+        "sha256": "d722326d64a8dcc5d349cf68919e77093763b9aa2170eb13bdea92f1216a8501",
+        "estimated_years": [
+          5,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256,
+          96
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": "Lower-end estimate overlaps target at 6-8; no adolescent appearance."
+      },
+      {
+        "id": "L5_304_young",
+        "path": "assets/L5/L5_304_young.png",
+        "sha256": "89122f549f1d8681e56dfbb2459db0074add86e41108de36d331784b43bf11f3",
+        "estimated_years": [
+          20,
+          31
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "inspected_sizes": [
+          256
+        ],
+        "head_covering": "NOT_REQUIRED",
+        "swaddle": "NOT_APPLICABLE",
+        "notes": ""
+      }
+    ],
+    "chains": [
+      {
+        "id": "L5_101",
+        "young_sha256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+        "mature_sha256": "dfa5afd4ac7c9fbcb60ff882516eba25fe590ece4de7ba9a0f4ed69067f6e79c",
+        "identity_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+      },
+      {
+        "id": "L5_102",
+        "young_sha256": "6ce61241b7d07b5ec5cfa1aff52ce724ddefd2517c2f4132db47533dfeae04b4",
+        "mature_sha256": "cdeb98c090cb2ceaa01e6004c7bbcb811a89c796670898dbc9842ccb247a04de",
+        "identity_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+      },
+      {
+        "id": "L5_201",
+        "young_sha256": "c0e2056ad4023081c8de9c3c5970d018122d712042f172f4259e0b2b1c28ac7b",
+        "mature_sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+        "identity_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+      },
+      {
+        "id": "L5_202",
+        "young_sha256": "04b54667e5b3a5dc65569dcf78fd777ac93453bad49df7dea2d9e6e56f671a7c",
+        "mature_sha256": "a1a4c7da26cd3cb71a4c96cac374164d4d97d52301c9be2e4f739f881060de12",
+        "identity_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+      },
+      {
+        "id": "L5_203",
+        "young_sha256": "743c7261a8369d15f328d894a61d66258bdcdb9e1663b71e99d103547c9dd741",
+        "mature_sha256": "b061867ae79043a189cce9562dcd0b7c898cef6e5187d07f50c54203afe61e64",
+        "identity_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "QUALIFIED_SUBTLE",
+        "notes": "Eye and facial lines indicate aging, but visual magnitude is modest and a full 20-year interval is not strongly legible."
+      },
+      {
+        "id": "L5_204",
+        "young_sha256": "857b44c17b60ebb49ddf60fbb6a8d12fd3bb2bf0a3e611d48246beb88cfd7d28",
+        "mature_sha256": "1f3eee0e400cdbfbe4c63daf4c31a3033e25bb629546f15516695ad7c45a2a9a",
+        "identity_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+      },
+      {
+        "id": "L5_205",
+        "young_sha256": "b82a7bf102d62aa4c4ce59d20e3668018749eb07e3b22ae01bb510cb9a3467c9",
+        "mature_sha256": "883cd412576bfb9c93f06f2280fbd440cb6304dac729edfa42e8d74bede2a710",
+        "identity_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "QUALIFIED_SUBTLE",
+        "notes": "Eye and facial lines indicate aging, but visual magnitude is modest and a full 20-year interval is not strongly legible."
+      },
+      {
+        "id": "L5_206",
+        "young_sha256": "b35bb6c873dec57ed9a5c572676b77ac5fefc626fcb3ce1fc4f2b3ca0c6162eb",
+        "mature_sha256": "d54155ca8256da6edee6d7b7230f959cee1bb141d668532d3e036374067d1f29",
+        "identity_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "Deeper facial and eye lines and/or temple gray indicate older adulthood while preserving face; exact elapsed years are not verifiable visually."
+      }
+    ]
+  },
+  "correction_reinspection": {
+    "ids": [
+      "L5_203_mature",
+      "L5_205_mature"
+    ],
+    "sizes": [
+      256,
+      96
+    ],
+    "contact": "records/independent-mature-corrections96.png",
+    "contact_sha256": "4702a72e45ae06309991b76af60c2406432687e5b88eb2bbcbeb0b883e3070d9"
+  }
+}

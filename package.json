@@ -24,7 +24,7 @@
     "hooks:install": "sh scripts/git-hooks/install.sh",
     "postinstall": "test ! -f scripts/git-hooks/install.sh || sh scripts/git-hooks/install.sh",
     "check:merge": "node scripts/checks/mergeChecks.mjs",
-    "lint": "npm --prefix tools/eslint ci --no-audit --no-fund --loglevel=error && tools/eslint/node_modules/.bin/eslint -c tools/eslint/eslint.config.mjs --max-warnings 0 src"
+    "lint": "npm --prefix tools/eslint ci --no-audit --no-fund --loglevel=error && tools/eslint/node_modules/.bin/eslint -c tools/eslint/eslint.config.mjs --suppressions-location tools/eslint/eslint-suppressions.json --max-warnings 0 src"
   },
   "dependencies": {
     "@fontsource/noto-sans-kr": "5.3.0",

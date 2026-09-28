@@ -1,0 +1,2223 @@
+[
+  {
+    "id": "L3_101_young",
+    "file": "assets/L3/L3_101_young.png",
+    "identity": "L3_101",
+    "lineage": "L3",
+    "generation": 1,
+    "stage": "young",
+    "age": 25,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short neat wavy hair",
+      "eyes": "gray green",
+      "build": "broad shoulders",
+      "personalMark": "one mole high on left cheek",
+      "age": 25
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE square medieval gentry portrait, chest up, muted painterly gouache matching reference style ONLY, not that identity. New fictional man age25, southern England circa1320. Dark brown short neat wavy hair, LONG OVAL face, straight low eyebrows, gray green eyes, broad shoulders, one mole high on his left cheek, individual broad rounded nose and softly rounded jaw. Married male. Fine muted russet wool tunic and modest fur collar. Soft upper left light, matte warm gray backdrop. Realistic expressive face readable96px. No text numbers logos jewelry crowns or modern things. Not photorealism. Single individual.",
+        "rawFile": "raw/L3/L3_101_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_young.png": "39dfb7329555038cc9962b0b65af88db863d079a65785025732c1ab36b88f830"
+        },
+        "hashAuditNote": "Backfilled after generation; referenced files remained unchanged."
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_101_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_101_mature",
+    "file": "assets/L3/L3_101_mature.png",
+    "identity": "L3_101",
+    "lineage": "L3",
+    "generation": 1,
+    "stage": "mature",
+    "age": 45,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short neat wavy hair",
+      "eyes": "gray green",
+      "build": "broad shoulders",
+      "personalMark": "one mole high on left cheek",
+      "age": 45
+    },
+    "generationRecords": [
+      {
+        "prompt": "Identity-preserving age edit of same man age25 to age45 EXACT20years later. Maintain gray green eyes, long oval facial identity, mole on left cheek, muted russet fine wool fur collar and composition. Make aging strongly visible at96px: forehead lines, crow feet, deeper nasolabial creases, tired under eyes, salt gray temples, slightly receding hair and heavier lower cheeks. Clearly fortyfive not twentyfive. Same painterly medieval England portrait style, square no text.",
+        "rawFile": "raw/L3/L3_101_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74"
+        },
+        "hashAuditNote": "Backfilled after generation; referenced files remained unchanged."
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_101_mature.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_101_old",
+    "file": "assets/L3/L3_101_old.png",
+    "identity": "L3_101",
+    "lineage": "L3",
+    "generation": 1,
+    "stage": "old",
+    "age": 70,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short neat wavy hair",
+      "eyes": "gray green",
+      "build": "broad shoulders",
+      "personalMark": "one mole high on left cheek",
+      "age": 70
+    },
+    "generationRecords": [
+      {
+        "prompt": "Same exact man reference identity aged70, strongly elderly: deeply lined forehead crowfeet and lower face, gray white thinning hair, receding temples, softened slack neck and reduced shoulders, same mole leftcheek and graygreen eyes. Keep square painterly medieval gentry chestup composition muted russet fine wool furcollar graybackdrop. No text.",
+        "rawFile": "raw/L3/L3_101_old.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74"
+        },
+        "hashAuditNote": "Backfilled after generation; referenced files remained unchanged."
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_101_old.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_102_young",
+    "file": "assets/L3/L3_102_young.png",
+    "identity": "L3_102",
+    "lineage": "L3",
+    "generation": 1,
+    "stage": "young",
+    "age": 25,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "smooth hair covered in adulthood",
+      "eyes": "brown",
+      "build": "slender shoulders",
+      "personalMark": "light freckles across nose",
+      "age": 25
+    },
+    "generationRecords": [
+      {
+        "prompt": "Reference style only, completely NEW woman age25 married medieval southern English gentry. Single square chestup painterly gouache portrait soft light gray warm backdrop. Dark brown hair mostly covered by fine linen veil and wimple, only little brow hair visible. LONG OVAL face, straight low eyebrows, brown eyes, slender shoulders, light freckles across nose. Individual short turnedup nose, soft small chin not reference woman's exactfeatures. Muted plum fine wool gown modest furcollar. No jewelry crown text numbers. Face readable96px, clearlytwenties.",
+        "rawFile": "raw/L3/L3_102_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_young.png": "39dfb7329555038cc9962b0b65af88db863d079a65785025732c1ab36b88f830"
+        },
+        "hashAuditNote": "Backfilled after generation; referenced files remained unchanged."
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_102_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_102_mature",
+    "file": "assets/L3/L3_102_mature.png",
+    "identity": "L3_102",
+    "lineage": "L3",
+    "generation": 1,
+    "stage": "mature",
+    "age": 45,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "smooth hair covered in adulthood",
+      "eyes": "brown",
+      "build": "slender shoulders",
+      "personalMark": "light freckles across nose",
+      "age": 45
+    },
+    "generationRecords": [
+      {
+        "prompt": "Age edit SAME woman25to45 twenty years later. Strong visible middleage: crowfeet deeper nasolabial folds forehead fine wrinkles, slightly heavier lower cheeks, more livedin skin, faint gray browhair at temples. Preserve brown eyes, longovalface freckles and identity. Married gentry linen veil wimple MUST remain haircovered, plum fine wool furcollar. Same square painterly mutedportrait no text. Clearly45not25.",
+        "rawFile": "raw/L3/L3_102_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "AGE EDIT SAMEwoman,25to45 exactly20years older visiblyMIDDLEAGED. Preserve identity faceproportion browneyes nosefreckles, sameveilwimple finepurplewoolfurcollar and framing. Pronounced crowfeet, severalforeheadcreases, deepernasolabial lines, under-eye hollowdarkness, saggingcheeksoftness, slightdoublechin necklines, weathered mottledskin, graytemple strandswhereveilopens. At96px must visibly fortyfive, no smoothyouth. NOTelderly70. Samehandpaintedgouache squaregraybackdrop no text.",
+        "rawFile": "raw/L3/L3_102_mature-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Revised after independent 96px reviewer found previous mature too young; visible age45 facial lines and cheek/neck aging.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_102_mature-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_102_old",
+    "file": "assets/L3/L3_102_old.png",
+    "identity": "L3_102",
+    "lineage": "L3",
+    "generation": 1,
+    "stage": "old",
+    "age": 70,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "smooth hair covered in adulthood",
+      "eyes": "brown",
+      "build": "slender shoulders",
+      "personalMark": "light freckles across nose",
+      "age": 70
+    },
+    "generationRecords": [
+      {
+        "prompt": "Age edit SAME woman reference to70elderly. Deep wrinkles forehead crowfeet nasolabial and lips, fine grayhair at hairline with veilcoveringhair, thinner cheeks age spots softneck. Preserve brown eyes freckles longovalidentity. Married medievalgentry linenveilwimple plumfinewool furcollar samecomposition mutedpaintedtexture graybackdrop square no text.",
+        "rawFile": "raw/L3/L3_102_old.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Same exact25yearoldwoman aged70seventy now ELDERLY not60. Deep etched wrinkles aroundeyes forehead lips and cheeks, markedly sunkenoldercheeks, loosejawline saggingneck visibleabove wimple, graywhitefinehair at brow, gentlethinnerlips age spots. Preserve brown eyes freckles faceidentity. Marriedmedievalgentry linenveilwimple plumwoolfurcollar squaregouacheportrait. Dramatic45yearaging no text.",
+        "rawFile": "raw/L3/L3_102_old-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Root requested stronger 70-year age; revised deeper face lines gray hair sunken cheeks",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_102_old-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_205_young",
+    "file": "assets/L3/L3_205_young.png",
+    "identity": "L3_205",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "young",
+    "age": 23,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "chestnut",
+      "faceShape": "round",
+      "brow": "arched"
+    },
+    "differenceMarkers": {
+      "hair": "covered chestnut wavy hair",
+      "eyes": "blue",
+      "build": "broad shoulders",
+      "personalMark": "tiny mole above right eyebrow",
+      "age": 23
+    },
+    "generationRecords": [
+      {
+        "prompt": "Style reference ONLY create completely different new woman age23 medievalgentry England1320. Externalspouse NOT relatedreference. Round fullface, higharched eyebrows, blue eyes, short broad nose, broad shoulders, tiny mole above right eyebrow. Chestnutwavyhair fullycovered ivorylinenveilwimple. Fine muted bluegraywool furcollar. Square chestup graybackdrop softleftlight painterlygouache readable96px. No text. Make face clearlydifferent reference notsamewoman.",
+        "rawFile": "raw/L3/L3_205_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_205_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_205_mature",
+    "file": "assets/L3/L3_205_mature.png",
+    "identity": "L3_205",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "mature",
+    "age": 43,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "chestnut",
+      "faceShape": "round",
+      "brow": "arched"
+    },
+    "differenceMarkers": {
+      "hair": "covered chestnut wavy hair",
+      "eyes": "blue",
+      "build": "broad shoulders",
+      "personalMark": "tiny mole above right eyebrow",
+      "age": 43
+    },
+    "generationRecords": [
+      {
+        "prompt": "Same woman23 to43 EXACT20years later visibly middleaged. Strong foreheadlines crowfeet nasolabial creases and slightly sagging fullcheeks, gray at temples, matureweathered skin notsmoothyouth. Preserve blueeyes roundface mole above right eyebrow. Same marriedgentry veilandwimple finebluegraywoolfurcollar squarepainterlyportrait, no text.",
+        "rawFile": "raw/L3/L3_205_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_205_mature.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_206_young",
+    "file": "assets/L3/L3_206_young.png",
+    "identity": "L3_206",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "young",
+    "age": 26,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "sandy blond",
+      "faceShape": "broad square",
+      "brow": "bushy"
+    },
+    "differenceMarkers": {
+      "hair": "short sandy blond straight hair",
+      "eyes": "brown",
+      "build": "stocky shoulders",
+      "personalMark": "healed pale mark on right cheek",
+      "age": 26
+    },
+    "generationRecords": [
+      {
+        "prompt": "Style only NEW unrelated married man26 medievalgentry England1320. Sandy blond short straight hair sidepart, broad square face, bushy eyebrows brown eyes, stockyshoulders, pale healed diagonal old mark on right cheek. Blunt upturned nose broadchin unlike reference. Muted mossgreen finewool furcollar. Single chestup square gouacheportrait graybackdrop no text. Unrelated newidentity not same man.",
+        "rawFile": "raw/L3/L3_206_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_206_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_206_mature",
+    "file": "assets/L3/L3_206_mature.png",
+    "identity": "L3_206",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "mature",
+    "age": 46,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "sandy blond",
+      "faceShape": "broad square",
+      "brow": "bushy"
+    },
+    "differenceMarkers": {
+      "hair": "short sandy blond straight hair",
+      "eyes": "brown",
+      "build": "stocky shoulders",
+      "personalMark": "healed pale mark on right cheek",
+      "age": 46
+    },
+    "generationRecords": [
+      {
+        "prompt": "Same exact man26to46 twentyyearage edit. Deep foreheadlines crowfeet pronounced nasolabial folds, heavier jowls and neck, thinning sandyhair grayingtemples. Maintain palehealed cheekmark exactlocation browneyes broadface identity. Same mossgreen wool furcollar marriedgentry square gouacheportrait. Clearlymiddleaged46 notyoungadult. No text.",
+        "rawFile": "raw/L3/L3_206_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_206_mature.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_201_young",
+    "file": "assets/L3/L3_201_young.png",
+    "identity": "L3_201",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "young",
+    "age": 24,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short straight cropped hair",
+      "eyes": "gray blue",
+      "build": "heavy broad build",
+      "personalMark": "one mole beside right mouth corner",
+      "age": 24
+    },
+    "generationRecords": [
+      {
+        "prompt": "Parents1father2mother. Create their NEW eldestSON age24, not copyfather. FamilycommonONLY darkbrown hair,longovaloverallface,straightlowbrows. Individual: short STRAIGHT cropped darkbrown hair, grayblueeyes, heavy broadbuild, small mole beside RIGHT mouthcorner, broadshortnose and full lips unlike parents. Marriedgentry fine muted olivewoolfurcollar England1320. Single squarechestup gouacheportrait warmgraybackdrop softleftlight. No text. Distinctperson noexactnosejawcopy.",
+        "rawFile": "raw/L3/L3_201_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_201_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_201_mature",
+    "file": "assets/L3/L3_201_mature.png",
+    "identity": "L3_201",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "mature",
+    "age": 44,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short straight cropped hair",
+      "eyes": "gray blue",
+      "build": "heavy broad build",
+      "personalMark": "one mole beside right mouth corner",
+      "age": 44
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1father2mother3TARGETSON. Same identity TARGETSON24to44 exactly20yearslater. Strong crowfeet forehead wrinkles nasolabialfolds grayingtemples recedinghair heavierjowls, maintain grayblueeyes smallmouthcornermole shortstraightdarkhair and individualface. Onlytargetoneperson shown. Gentry olivewool furcollar marriedmale. Same squarepainterlychestup portrait no text.",
+        "rawFile": "raw/L3/L3_201_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_201_mature.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_201_child",
+    "file": "assets/L3/L3_201_child.png",
+    "identity": "L3_201",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "not applicable",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short straight cropped hair",
+      "eyes": "gray blue",
+      "build": "heavy broad build",
+      "personalMark": "one mole beside right mouth corner",
+      "age": 8
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1 targetson;2father3mother ancestryONLY. DeageTARGETONLY to a genuine8yearold boy. Smallsoftchildface largecranium shortneck smallshoulders, no adolescentbone angles. Grayblue eyes, shortstraightdarkbrowncrop, tiny mole beside mouthcorner retained, overallovalface straightlowbrows. Fine olivewool little furcollar gentry. Square singlechestup medievalpaintedportrait warmgraybackdrop. Not12teenager. No text.",
+        "rawFile": "raw/L3/L3_201_child.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "ONE littleboy age EIGHT, grow BABY image1 to youngschoolchild, retainroundbabycheeks softchildchin largeforehead. Parents2/3 geneticrefs only,4futuregrown identity SECONDARY NOTadultjaw. Shortstraight darkbrowncrop, grayblueeyes molebesideRIGHTmouthcorner. SmallCHILD shoulders SHORTneck, tinysoftchin SHORTnose, noangularadultface. Fineolivewool smallfurcollar. Medievalhandpainted mutedgouache squaregraybackdrop no text. Clearly6–8 not10–12.",
+        "rawFile": "raw/L3/L3_201_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_baby.png": "c667bfb982873069b69e9fe3cb2fc1ddc5b2917e60f21d81be720536b028e3b4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png": "db81f565f470d3ac87f34ee6a6b4c38ef31f9d469553e741e280a4dcc9e5d865"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referencePreservationNote": "Original generation input preserved before later age correction."
+      },
+      {
+        "prompt": "Targeted age progression of SAME BOY image1 from apparent5 to EIGHTyears PRIMARY SCHOOL child. Keep individual shortstraight darkbrowncrop grayblueeyes molebesidemouth, olivefinewoolfurcollar. Grow lowerface moderately longer, slimmerbabycheeks, schoolage nose and chin, child neck and shoulders slightlylarger. Clearly7–8 nottoddler, stillprepubescent not12notteen. Parents2/3 geneticrefs only DON'Tdepictparents. Samehandpaintedportraitstyle squaregraybackdrop ONEperson no text.",
+        "rawFile": "raw/L3/L3_201_child-v3.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_201_child-before-schoolage.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_201_child-before-schoolage.png": "466672f761b785380c310182e42aa654e8fa5b36b5a1fdb9ebd127864b981b75",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Final targeted school-age correction after prior child appeared4–6; child input preserved.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_201_child-v3.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_201_baby",
+    "file": "assets/L3/L3_201_baby.png",
+    "identity": "L3_201",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.9,
+    "sex": "male",
+    "maritalStatus": "not applicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short straight cropped hair",
+      "eyes": "gray blue",
+      "build": "heavy broad build",
+      "personalMark": "one mole beside right mouth corner",
+      "age": 0.9
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGETmale as BABY age10MONTHS;2father3mother references ancestry. True infant NOTtoddler: huge round head, chubby cheeks tinychin shortnose, sparse darkbrownhair, grayblueeyes, tiny subtle mouthcornermole. LinenbabyBONNET framingface and swaddling wrappedwholebody hands tucked, nofurcollar noadultclothes. Recognizable precursorofimage1 but infantproportions. Square warm muted handpainted medievalportrait plain graybackground. No text.",
+        "rawFile": "raw/L3/L3_201_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "ONE tiny INFANT ALONE. Person1 at ageNINE MONTHS old. References2/3actualparents genetics only, NEVERdepictparents. Not toddler, not2years. Huge roundedforehead softbabycheeks tinyundevelopednosechin, neckalmostinvisible, sparse darkbrown hair under plain LINEN BABY BONNET, entire smallbody creamSWADDLING. Grayblueeyes tiny molebesideRIGHTmouth. Same square mutedgouacheportrait graybackdrop. Face visible no text.",
+        "rawFile": "raw/L3/L3_201_baby-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png": "db81f565f470d3ac87f34ee6a6b4c38ef31f9d469553e741e280a4dcc9e5d865"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referencePreservationNote": "Original generation input preserved before later age correction."
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Corrected toddler-like initial attempt to swaddled infant; selected single baby with bonnet and rounded proportions.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_201_baby-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_202_young",
+    "file": "assets/L3/L3_202_young.png",
+    "identity": "L3_202",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "young",
+    "age": 22,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long ear length loose curls",
+      "eyes": "hazel",
+      "build": "slim narrow build",
+      "personalMark": "many freckles across nose and cheeks",
+      "age": 22
+    },
+    "generationRecords": [
+      {
+        "prompt": "Images1father2mother;3olderBROTHER contrastONLY NOTtarget. NEW secondSON age22. FamilyONLY darkbrown hair,longovalface,straightlowbrows. DIFFERENT sibling: long EARLENGTH loose CURLS darkbrown, HAZEL eyes, SLIMnarrowshoulders, MANY nosecheekfreckles, narrower longer nose and thinner lips than broadstocky shorthaired brother. Fine muted bluewool furcollar unmarriedgentry. Single squarechestup painterlyportrait graybackdrop softleftlight. No text. Distinctperson.",
+        "rawFile": "raw/L3/L3_202_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_202_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_202_mature",
+    "file": "assets/L3/L3_202_mature.png",
+    "identity": "L3_202",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "mature",
+    "age": 42,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long ear length loose curls",
+      "eyes": "hazel",
+      "build": "slim narrow build",
+      "personalMark": "many freckles across nose and cheeks",
+      "age": 42
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGETboy22,images2/3parents ancestryonly. SameTARGET age42twentyyearslater. Preserve slenderface hazel eyes curls frecklednose identity, NOTfatheridentity. Visiblemiddleage deepcrowfeet foreheadlines nasolabialcreases gauntercheeks thinningcurls graytemples. Finebluewool furcollar marriedgentry. Square mutedgouacheportrait samebackground no text.",
+        "rawFile": "raw/L3/L3_202_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_young.png": "8d110442c5eb6b59f82ab9b8e4f2cd06047abdbbd969fbb34e38ab6e3026a9e9",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_202_mature.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_202_child",
+    "file": "assets/L3/L3_202_child.png",
+    "identity": "L3_202",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "child",
+    "age": 6,
+    "sex": "male",
+    "maritalStatus": "not applicable",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long ear length loose curls",
+      "eyes": "hazel",
+      "build": "slim narrow build",
+      "personalMark": "many freckles across nose and cheeks",
+      "age": 6
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGET son;2father3mother ancestry. DeageTARGET to6yearold boy veryyoung smallchild, bighead narrow smallshoulders littlechildnose softcheeks, NOteenbone structure. Darkbrown ear-length loose curls hazel eyes manyfreckles. Finebluewool littlefurcollar gentry. Single square chestuppaintedportrait softgraybackground no text. Clearly6not12.",
+        "rawFile": "raw/L3/L3_202_child.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_young.png": "8d110442c5eb6b59f82ab9b8e4f2cd06047abdbbd969fbb34e38ab6e3026a9e9",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "ONE littleboy ONLY. GrowBABYimage1 to SIXYEAR child. Parents2/3 geneticrefs ONLY,4futureadult secondary. Clearly6 NOT10 notteen. Hugeforehead softplumpchildcheeks tinychin shortnose shortneck verysmallshoulders. Darkbrown ear-lengthloosecurls hazel eyes MANYfreckles. Fine mutedbluewool smallfurcollar. Same medievalgouache squaregray backdrop. No text.",
+        "rawFile": "raw/L3/L3_202_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_baby.png": "35b9c14af6b4f92d3fcc638580c50f4da8f3b9b7aef994cfbbafea65ebe59510",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_young.png": "8d110442c5eb6b59f82ab9b8e4f2cd06047abdbbd969fbb34e38ab6e3026a9e9",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png": "db81f565f470d3ac87f34ee6a6b4c38ef31f9d469553e741e280a4dcc9e5d865"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referencePreservationNote": "Original generation input preserved before later age correction."
+      },
+      {
+        "prompt": "Targeted age progression SAME BOY1 apparent4–5 to SEVENyearold PRIMARY SCHOOL child. Retain darkbrown loosecurls hazel eyes MANYfreckles bluefinewoolfurcollar. Modestly elongate lowerface and nose, reduce babycheekroundness, biggerchildneckshoulders. Clearly6–8, nottoddler NOTteen. Parents2/3 genetics only neverdepictparents. Samegouache squareportrait greybackdrop ONEperson no text.",
+        "rawFile": "raw/L3/L3_202_child-v3.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_202_child-before-schoolage.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_202_child-before-schoolage.png": "4c15e781405c7bd542575553e30f9816d7deb5a54af20c562eff211dc248a906",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Final targeted growth to primary-school age after toddler-like review; source child preserved.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_202_child-v3.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_202_baby",
+    "file": "assets/L3/L3_202_baby.png",
+    "identity": "L3_202",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "male",
+    "maritalStatus": "not applicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long ear length loose curls",
+      "eyes": "hazel",
+      "build": "slim narrow build",
+      "personalMark": "many freckles across nose and cheeks",
+      "age": 0.5
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGET futureman as 6MONTHold infant;2father3mother ancestry. BABY nottoddler: roundplumpcheeks tinychin hugehead shortnose sparse darkbrown curlytufts hazeleyes almostno freckles yet. White linenbabybonnet and mutedpaleblue swaddling wholebody hands tucked. Infantface fullyvisible. Square mutedgouachemedievalportrait graybackdrop no text.",
+        "rawFile": "raw/L3/L3_202_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_202_young.png": "8d110442c5eb6b59f82ab9b8e4f2cd06047abdbbd969fbb34e38ab6e3026a9e9",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_202_baby.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_203_young",
+    "file": "assets/L3/L3_203_young.png",
+    "identity": "L3_203",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "young",
+    "age": 24,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long smooth single braid under adult veil",
+      "eyes": "gray green",
+      "build": "slender long neck",
+      "personalMark": "small mole below left eye",
+      "age": 24
+    },
+    "generationRecords": [
+      {
+        "prompt": "1father2mother. Create NEWdaughter24 notcopy. Onlyfamily darkbrown hair longovaloverallface straightLOWbrows. Individual GRAYGREEN widelyspacedalmond eyes, smallMOLE belowLEFTeye, slender longneck narrowshoulders, long narrow nose smallclosedmouth thinupperlip, softpointedchin no squarejaw. Darkbrownlongstraightbraid completelyunder marriedwoman linenveilwimple. Fine muted burgundywool furcollar. Square chestup medievalgentry painterlyportrait graybackdrop no text. Differentperson frommother, NOTexactnosejawcopy.",
+        "rawFile": "raw/L3/L3_203_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_203_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_203_mature",
+    "file": "assets/L3/L3_203_mature.png",
+    "identity": "L3_203",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "mature",
+    "age": 44,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long smooth single braid under adult veil",
+      "eyes": "gray green",
+      "build": "slender long neck",
+      "personalMark": "small mole below left eye",
+      "age": 44
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGETdaughter age24to44,2father3mother ancestryonly. Strongtwentyyearaging visible at96px foreheadlines crowfeet deepernasolabial folds, graytemples, thinnercheeks slightneckcreases. Preserve graygreeneyes smallmolebelowlefteye individual longovalidentity. Marriedwomanmustkeep linenveilwimple, burgundyfinewoolfurcollar, squaremutedgouacheportrait graybackground no text.",
+        "rawFile": "raw/L3/L3_203_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "AGE EDIT woman1 exactly24to44 SAME PERSON now clearlymiddleaged. Parents2/3 geneticreference ONLY. Preserve graygreeneyes smallmole belowLEFTeye, identity, cream veilwimple, red finewoolfurcollar. Strongcrowfeet foreheadcreases nasolabialfolds under-eye hollows slightlysaggingcheeks mottledskintexture graytemple strands. Shouldread44at96pixels NOTsmoothyoungwoman. Notelderly70. Samegouachepainted squareportrait graybackdrop. ONEpersonONLY no text.",
+        "rawFile": "raw/L3/L3_203_mature-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_mature.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_mature.png": "a7a070dc7f0d5c7b0104a8dc0a5a9773125e4904d95f94a3d1bbcc7a5f68098e"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Revised age44 with visible forehead/crowfeet/nasolabial/cheek aging after independent96px review.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_203_mature-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_203_child",
+    "file": "assets/L3/L3_203_child.png",
+    "identity": "L3_203",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "child",
+    "age": 8,
+    "sex": "female",
+    "maritalStatus": "not applicable",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long smooth single braid under adult veil",
+      "eyes": "gray green",
+      "build": "slender long neck",
+      "personalMark": "small mole below left eye",
+      "age": 8
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGETdaughter deaged8yearold. Images2father3mother ancestryonly. Genuine8yearold notteen: shortlittlechildneck roundedcheeks littlebuttonnose largecranium smallshoulders. Graygreeneyes molebelowlefteye darkbrown smoothhair SINGLELOOSEBRAID UNCOVERED HEAD no veilwimple childunmarried. Fineburgundywool littlefurcollar. Squarepainterlymedievalportrait graybackground no text.",
+        "rawFile": "raw/L3/L3_203_child.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "ONE littlegirl ONLY. GrowBABYimage1 to EIGHTYEAR smallschoolchild. Parents2/3geneticrefs only4futureadult secondary NOadultjaw. Face still roundedfullcheeks tinychin highforehead SHORTnose SHORTneck tinyshoulders, NOT11notteen. Graygreeneyes smallmole belowLEFTeye, darkbrown smoothhairlongbraid uncovered NOveilNObonnet. Fine mutedred wool tinyfurcollar. Samepaintedgouache squaregray backdrop no text.",
+        "rawFile": "raw/L3/L3_203_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_baby.png": "5c30d35c47cb1849c4e547e57652513e3ae7db211ec4fbf457fa54a0dc15153d",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png": "db81f565f470d3ac87f34ee6a6b4c38ef31f9d469553e741e280a4dcc9e5d865"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referencePreservationNote": "Original generation input preserved before later age correction."
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Corrected long adult neck/angular jaw from rejected initial child; baby-first eight-year child growth.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_203_child-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_203_baby",
+    "file": "assets/L3/L3_203_baby.png",
+    "identity": "L3_203",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.9,
+    "sex": "female",
+    "maritalStatus": "not applicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long smooth single braid under adult veil",
+      "eyes": "gray green",
+      "build": "slender long neck",
+      "personalMark": "small mole below left eye",
+      "age": 0.9
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGETgirl as10MONTH infant,2father3mother ancestry. Trulybaby roundedchubbyface littlechin shortbuttonnose hugecranium tinyshoulders sparsebrownhair, graygreeneyes tinymoleunderlefteye. Linenbabybonnet and cream swaddling softmutedroseedge, handswrapped noadultgown nofur noadultwimple. Facevisible. Samepaintedmedievalstyle squaregraybackdrop no text.",
+        "rawFile": "raw/L3/L3_203_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_203_baby.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_204_young",
+    "file": "assets/L3/L3_204_young.png",
+    "identity": "L3_204",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "young",
+    "age": 22,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short full curly bob when unmarried",
+      "eyes": "warm brown",
+      "build": "rounder broad shoulders",
+      "personalMark": "dense nose freckles",
+      "age": 22
+    },
+    "generationRecords": [
+      {
+        "prompt": "1father2mother3oldersister CONTRASTnotidentity. NEWyoungerDAUGHTER age22, familyONLY darkbrown hair,longovaloverallface,straightlowbrows. Mustclearlydiffer sister: shortFULL CURLYBOB uncoveredhead UNMARRIED, warmbrown ROUND eyes close-spaced, shortbroadUPTURNEDnose, wider mouth fullbottomlip, roundfullcheeks broadshoulders, dense NOSEFRECKLES nomole. Mutedochrefinewool modestfurcollar gentry. Single square chestup handpaintedportrait graybackdrop no text. Not sameface as sister.",
+        "rawFile": "raw/L3/L3_204_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_204_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_204_mature",
+    "file": "assets/L3/L3_204_mature.png",
+    "identity": "L3_204",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "mature",
+    "age": 42,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short full curly bob when unmarried",
+      "eyes": "warm brown",
+      "build": "rounder broad shoulders",
+      "personalMark": "dense nose freckles",
+      "age": 42
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGET22 to42 exactly20years later. Images2/3parents ancestryonly. Same broadcheek roundbrown eyes densefreckles widefullmouth identity, strong crowfeet foreheadlines nasolabial folds graytemples fullerjowls. NowMARRIED MUSTCOVERHAIR medievalivorylinenVEILandWIMPLE, curls onlyslightatbrow noexposedbob. Fineochrewoolfurcollar. Squarepainterlyportrait no text. Clearly42.",
+        "rawFile": "raw/L3/L3_204_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png": "b14ddd0e147e3f01d53fd2b72720dcf8de118c4c6d49f773af41fd47e9959593",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_204_mature.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_204_child",
+    "file": "assets/L3/L3_204_child.png",
+    "identity": "L3_204",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "not applicable",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short full curly bob when unmarried",
+      "eyes": "warm brown",
+      "build": "rounder broad shoulders",
+      "personalMark": "dense nose freckles",
+      "age": 6
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGETgirl deaged6years. 2father3mother ancestryonly. Genuineveryyoung6yearold littlechild: largehead softplumpcheeks tinybuttonnose shortneck smallroundedshoulders. Darkbrown shortcurlyBOB uncovered, warmbrowneyes densecheeknosefreckles, widefullmouth. Fineochrewool littlefurcollar. Square painterlymedievalportrait graybackdrop no text. Not10teen.",
+        "rawFile": "raw/L3/L3_204_child.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png": "b14ddd0e147e3f01d53fd2b72720dcf8de118c4c6d49f773af41fd47e9959593",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "ONE littlegirl ONLY. BABY1 growto SIXyears old, parents2/3 geneticrefs only4futureadult secondary. CLEARlittlechild roundfullcheeks hugeforehead shortnose tinysoftchin SHORTneck littlechildshoulders. Darkbrown shortFULLCURLYBOB uncoverednoheadwear, brown eyes DENSEfreckles. Fine ochrewool smallfurcollar. Not9–11notteen. Samehandpaintedgouache squaregraybackdrop no text.",
+        "rawFile": "raw/L3/L3_204_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_baby.png": "95c5113433faed0d42944d07960a64551fb36ddb243d801ecbcbe0cedab599c5",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_mature.png": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png": "b14ddd0e147e3f01d53fd2b72720dcf8de118c4c6d49f773af41fd47e9959593",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_102_mature-generation-input.png": "db81f565f470d3ac87f34ee6a6b4c38ef31f9d469553e741e280a4dcc9e5d865"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referencePreservationNote": "Original generation input preserved before later age correction."
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Baby-first six-year correction; no adult veil, stronger cheek/forehead proportions.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_204_child-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_204_baby",
+    "file": "assets/L3/L3_204_baby.png",
+    "identity": "L3_204",
+    "lineage": "L3",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "not applicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L3_101",
+    "motherIdentity": "L3_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short full curly bob when unmarried",
+      "eyes": "warm brown",
+      "build": "rounder broad shoulders",
+      "personalMark": "dense nose freckles",
+      "age": 0.5
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGETgirl as6MONTHBABY. 2father3mother ancestry. Trueinfant chubbyroundcheeks enormousbabyhead tinychin sparse darkbrowncurlytufts browneyes fewbarelyvisiblefreckles. LinenbabyBONNET and mutedpaleochre swaddling armswrapped. Notwalkingchild noadultcostume. Facevisible fully. Square warmgouache medievalportrait plain graybackdrop no text.",
+        "rawFile": "raw/L3/L3_204_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png": "b14ddd0e147e3f01d53fd2b72720dcf8de118c4c6d49f773af41fd47e9959593",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_204_baby.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_301_young",
+    "file": "assets/L3/L3_301_young.png",
+    "identity": "L3_301",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "young",
+    "age": 22,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_201",
+    "motherIdentity": "L3_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown tight curls",
+      "eyes": "blue gray",
+      "build": "narrow shoulders",
+      "personalMark": "one mole beside right mouth corner",
+      "age": 22
+    },
+    "generationRecords": [
+      {
+        "prompt": "Bothparents1father2mother. NEWson22 identity distinct notcopy. FamilyONLY darkbrownhair longovalface straightlowbrows. ShortTIGHTCURLS darkbrown, BLUEGRAY largeeyes, NARROW shoulders leanbuild, tinyMOLE beside rightmouthcorner. Individual sharpfine nose highcheekbones smallthinmouth andsmallpointedchin unlike broadfather. Unmarriedgentry mutedteal finewool modestfurcollar. Square singlechestup gouacheportrait warmgraybackground no text.",
+        "rawFile": "raw/L3/L3_301_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_301_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_301_child",
+    "file": "assets/L3/L3_301_child.png",
+    "identity": "L3_301",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "not applicable",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_201",
+    "motherIdentity": "L3_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown tight curls",
+      "eyes": "blue gray",
+      "build": "narrow shoulders",
+      "personalMark": "one mole beside right mouth corner",
+      "age": 8
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGET as8yearoldboy;2father3mother. Rebuild anatomy genuinely PREPUBESCENT littleboy with disproportionatelyBIGHEAD verySHORTneck tinyNARROWshoulders roundedchildcheeks tinychildchin littlebuttonnose, no angularadolescentface. Tightdarkbrowncurls bluegrayeyes tiny mouthcornermole. Fine mutedtealwool littlefurtrim at verysmallshoulders. Squarechestup paintedmedievalportrait. Clearlychildaround7–8 not12 no text.",
+        "rawFile": "raw/L3/L3_301_child.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_young.png": "afebeb0283da96ae8662f5e49258209838269705f1bdc859fe5668972cba01d4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "ONE littleboy ONLY. Growbaby1to EIGHTYEAR littlechild. Parents2/3geneticrefs only4futureadult secondary. Not11–13, SHORTneck tinyshoulders hugeforehead, roundfullchildcheeks tinychin shortnose NOangularjaw. Shorttightdarkbrown curls, bluegrayeyes smallmolebesideRIGHTmouthcorner. Fine tealwool smallfurcollar. Samehandpaintedgouache squaregraybackdrop no text.",
+        "rawFile": "raw/L3/L3_301_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_baby.png": "e561d410c90ccd75f8fcb275529dbf4147db40bd713e8c0990595aa7a1a0d33d",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_young.png": "afebeb0283da96ae8662f5e49258209838269705f1bdc859fe5668972cba01d4"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Revised after review estimated initial child11–13; baby-first eight-year proportions.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_301_child-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_301_baby",
+    "file": "assets/L3/L3_301_baby.png",
+    "identity": "L3_301",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "baby",
+    "age": 0.9,
+    "sex": "male",
+    "maritalStatus": "not applicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L3_201",
+    "motherIdentity": "L3_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown tight curls",
+      "eyes": "blue gray",
+      "build": "narrow shoulders",
+      "personalMark": "one mole beside right mouth corner",
+      "age": 0.9
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGET boy as 10MONTH baby;2father3mother. Real infant rounded cheeks verytinychin sparse curlydarkbrown hair bluegray eyes tiny mouthmole. Hugebabyhead smallwrappedbody with linenBONNET and cream swaddling narrowtealedge. FACE infantproportions no adultchin. Squarepainted medieval portrait graybackdrop no text.",
+        "rawFile": "raw/L3/L3_301_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_young.png": "afebeb0283da96ae8662f5e49258209838269705f1bdc859fe5668972cba01d4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_301_baby.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_302_young",
+    "file": "assets/L3/L3_302_young.png",
+    "identity": "L3_302",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "young",
+    "age": 20,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_201",
+    "motherIdentity": "L3_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long dark brown straight loose braid",
+      "eyes": "green",
+      "build": "broad shoulders",
+      "personalMark": "few freckles on cheeks",
+      "age": 20
+    },
+    "generationRecords": [
+      {
+        "prompt": "1father2mother3brother contrastonly. NEWdaughter20. FamilyONLY darkbrownhair longovaloverallface straightlowbrows. Distinctindividual longSTRAIGHT hair SINGLELOOSEBRAID uncoveredunmarried, GREEN narrower eyes, BROADshoulders, few lightcheekfreckles no mouthmole. Shortturnedupnose wide lips roundedchin differentbrotherfinefeatures. Fine mutedterracotta wool modestfurcollar. Square chestuppainterlymedievalportrait graybackground no text.",
+        "rawFile": "raw/L3/L3_302_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_301_young.png": "afebeb0283da96ae8662f5e49258209838269705f1bdc859fe5668972cba01d4"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_302_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_302_baby",
+    "file": "assets/L3/L3_302_baby.png",
+    "identity": "L3_302",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "not applicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L3_201",
+    "motherIdentity": "L3_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long dark brown straight loose braid",
+      "eyes": "green",
+      "build": "broad shoulders",
+      "personalMark": "few freckles on cheeks",
+      "age": 0.5
+    },
+    "generationRecords": [
+      {
+        "prompt": "Image1TARGETgirl as6MONTHBABY.2father3mother. Truebabyhugehead roundfatcheeks tinychin sparsestraight darkhair greeneyes. Whitebonnet pinkishbeige swaddling bodywrapped noadultcostume. Fewfreckles barelyvisible notadult. Facefullyvisible squaremedievalpaintedportrait warmgraybackdrop no text. Infantnot3yearold.",
+        "rawFile": "raw/L3/L3_302_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_302_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_302_young.png": "1c85423a9ef2c9a3ca219493dc83c74acd3bf79e00b11032a6128362641b97fd",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "EXACTLY ONE PERSON IN OUTPUT: infantgirl ONLY, no adults no parents nohands from anyoneelse. Input1futureidentity,2father3mother forinheritanceONLY DO NOT DEPICTPARENTS. Square bustportrait ONE6monthold baby withgreeneyes sparsebrownhair chubbyroundface tinychin. Linenbabybonnet pinkbeige swaddling wholebody. Head fills60%canvas facevisible. Mutedpaintedmedievalstyle graybackground no text. SINGLEBABYONLY.",
+        "rawFile": "raw/L3/L3_302_baby-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_302_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_302_young.png": "1c85423a9ef2c9a3ca219493dc83c74acd3bf79e00b11032a6128362641b97fd",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Rejected first attempt displayed parents; regenerated baby alone.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_302_baby-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_302_child",
+    "file": "assets/L3/L3_302_child.png",
+    "identity": "L3_302",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "not applicable",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_201",
+    "motherIdentity": "L3_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "long dark brown straight loose braid",
+      "eyes": "green",
+      "build": "broad shoulders",
+      "personalMark": "few freckles on cheeks",
+      "age": 6
+    },
+    "generationRecords": [
+      {
+        "prompt": "ONEgirlONLY. Image1baby growto6YEARSlittlechild,2father3mother geneticrefs ONLY,4futuregrownidentity secondary. Littlechild roundedcheeks shortneck tinyshoulders foreheadbig shortnose andtinychin. Greeneyes fewfreckles, darkbrown straighthairloosebraid UNCOVERED noadultveil. Fine mutedterracotta wool smallfurtrim. Samegouache squaregraybackdrop. Age6not10notteen. No text noadults.",
+        "rawFile": "raw/L3/L3_302_child.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_302_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_302_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_302_baby.png": "3cca953cefb1629ca3d471bcd793e9c26475d909a9a2806ee789de0220bf8cb2",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_205_young.png": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_302_young.png": "1c85423a9ef2c9a3ca219493dc83c74acd3bf79e00b11032a6128362641b97fd"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_302_child.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_303_young",
+    "file": "assets/L3/L3_303_young.png",
+    "identity": "L3_303",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "young",
+    "age": 22,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_206",
+    "motherIdentity": "L3_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "ear length dark brown straight hair",
+      "eyes": "brown",
+      "build": "wide shoulders",
+      "personalMark": "small mole below left eye",
+      "age": 22
+    },
+    "generationRecords": [
+      {
+        "prompt": "Create ONE PERSON portrait: their new biological SON,22years, not either parent. Genetic refs father image1 mother image2 only. Same handpainted muted gouache medieval English gentry style square plain graybrown backdrop. Son darkbrown ear-length STRAIGHT hair, brown WIDESET eyes, broad shoulders, longoval overall face, lowstraightbrows, small mole below his LEFT eye. DISTINCT individual mouth full bowedupperlip, soft roundedcheeks, shorter upturnednose, visible roundears, NO strongsquarejaw. Fine mutedslate wool and brown furcollar. Bust cropped. No text symbols or extra people.",
+        "rawFile": "raw/L3/L3_303_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_303_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_303_baby",
+    "file": "assets/L3/L3_303_baby.png",
+    "identity": "L3_303",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "baby",
+    "age": 0.9,
+    "sex": "male",
+    "maritalStatus": "not applicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L3_206",
+    "motherIdentity": "L3_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "ear length dark brown straight hair",
+      "eyes": "brown",
+      "build": "wide shoulders",
+      "personalMark": "small mole below left eye",
+      "age": 0.9
+    },
+    "generationRecords": [
+      {
+        "prompt": "ONE baby alone square bust portrait. Rewind person1 to INFANT nine months old, parents2/3 genetics only NEVER depict parents. Actual smallbaby body swaddled cream linen, baby linenbonnet, shortneck, hugeforehead, chubbyroundcheeks, tiny nosechin, sparse darkbrown hair, brown eyes, tiny molebelow left eye. NOadultbody NOtoddler. Handpainted muted gouache medievalportrait sameplain backdrop no text.",
+        "rawFile": "raw/L3/L3_303_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_303_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_303_young.png": "d8e24cb74f9a7dc014cce6002015086c99e9c6b545934c2c117bff164d09df4f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_303_baby.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_303_child",
+    "file": "assets/L3/L3_303_child.png",
+    "identity": "L3_303",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "not applicable",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_206",
+    "motherIdentity": "L3_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "ear length dark brown straight hair",
+      "eyes": "brown",
+      "build": "wide shoulders",
+      "personalMark": "small mole below left eye",
+      "age": 8
+    },
+    "generationRecords": [
+      {
+        "prompt": "ONE littleboy ONLY. Image1 infant growto EIGHTYEARlittlechild. Images2father3mother genetics only,4 futureadult secondaryidentity only. Strongly childish roundedcheeks shortneck smallshoulders highforehead shortnose tinychin, notpreteen NOTadultjaw. Darkbrown straightear-lengthhair browneyes molebelowleft eye. Fine slategrey wool tinyfurcollar. Medieval mutedgouache same squarebackdrop. No text no otherpeople.",
+        "rawFile": "raw/L3/L3_303_child.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_303_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_303_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_303_baby.png": "485b682b514370a561efabb4314293ee20eefe33f4a44a8c8c222663633ba32d",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_303_young.png": "d8e24cb74f9a7dc014cce6002015086c99e9c6b545934c2c117bff164d09df4f"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Ageprogress SAMEboy1 fromapparent5 to EIGHTyearoldPRIMARYSCHOOL. Keepdarkbrown straight ear-lengthhair browneyes molebelowLEFTeye slatewoolfurcollar. Modestgrowth lowerface slightlylonger, cheeks slimmer thanbaby, developedchildnosechin, neckshoulders slightlylarger. Stillsoftprepubescentface notteen. Parents2/3 genetics only DON'Tshowthem. ONEperson samehandpaintedgouache squaregray backdrop no text.",
+        "rawFile": "raw/L3/L3_303_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_303_child-before-schoolage.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_303_child-before-schoolage.png": "8742a93adc13fcf9bfa968817f6293a6dad0d7ff4218a8fab8924e6352d1aa63",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Final targeted school-age growth; original child input preserved.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_303_child-v2.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_304_young",
+    "file": "assets/L3/L3_304_young.png",
+    "identity": "L3_304",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "young",
+    "age": 20,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_206",
+    "motherIdentity": "L3_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown loose waves",
+      "eyes": "gray green",
+      "build": "slim shoulders",
+      "personalMark": "many freckles on nose",
+      "age": 20
+    },
+    "generationRecords": [
+      {
+        "prompt": "ONE new WOMAN portrait 20 years. Images1/2 biologicalparents geneticreferences,3brother contrastONLY. Same handpainted muted gouache English medievalgentry squaregraybackdrop. Daughter slim shoulders, shortdarkbrown LOOSEWAVYBOB uncovered(unmarried), graygreen almondslantedeyes, MANYfine freckles cheeknose, longoval overallface lowstraightbrows but differentnosemouthjaw fromparents: delicatetaperedchin smallupperlip asymmetricsmile, NOTbrother'spout. Muteddustyblue finewool smallfurcollar. Noveil noheaddress no text noothers.",
+        "rawFile": "raw/L3/L3_304_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_303_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_303_young.png": "d8e24cb74f9a7dc014cce6002015086c99e9c6b545934c2c117bff164d09df4f"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_304_young.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_304_baby",
+    "file": "assets/L3/L3_304_baby.png",
+    "identity": "L3_304",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "not applicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L3_206",
+    "motherIdentity": "L3_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown loose waves",
+      "eyes": "gray green",
+      "build": "slim shoulders",
+      "personalMark": "many freckles on nose",
+      "age": 0.5
+    },
+    "generationRecords": [
+      {
+        "prompt": "ONEBABYalone portrait. Person1 as sixMONTH infant girl, parents2/3 genetics ONLY neverdepictparents. BABY linenbonnet cream swaddling NO adultneck NO toddlerbody. Round plump cheeks shorttinychin hugeforehead sparsewavy darkbrown babyhair, graygreeneyes, faintpinpointfreckles. Same mutedmedievalgouache squaregraybackdrop. Facevisible. No text.",
+        "rawFile": "raw/L3/L3_304_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_304_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_304_young.png": "37bc840cd47f785f0d9b12ba171ae64c0b9089fab41e81631ad11fdd958b90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending final independent QA",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_304_baby.png",
+    "status": "candidate"
+  },
+  {
+    "id": "L3_304_child",
+    "file": "assets/L3/L3_304_child.png",
+    "identity": "L3_304",
+    "lineage": "L3",
+    "generation": 3,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "not applicable",
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "fatherIdentity": "L3_206",
+    "motherIdentity": "L3_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "long oval overall",
+      "brow": "straight low brows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown loose waves",
+      "eyes": "gray green",
+      "build": "slim shoulders",
+      "personalMark": "many freckles on nose",
+      "age": 6
+    },
+    "generationRecords": [
+      {
+        "prompt": "ONE littlegirl ONLY. Image1 infant growto SIXYEARold smallchild. Parents2/3 genetics only,4futureadult secondary. Retain childish roundcheeks shortneck tinyshoulders hugeforehead tinychin shortnose. Darkbrown shortwavybob uncovered NOveilNObonnet, graygreeneyes MANYfreckles. Dustybluefinewool smallfurtrim medievalgentry. Handpainted mutedgouache squaregraybackdrop. NOT9 NOTteen. No text noothers.",
+        "rawFile": "raw/L3/L3_304_child.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_304_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_304_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_304_baby.png": "f144bc4b6ab2ab0d4a3ca37771ec5d755089f4344084e2d83a55e71b33219967",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_304_young.png": "37bc840cd47f785f0d9b12ba171ae64c0b9089fab41e81631ad11fdd958b90f8"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      },
+      {
+        "prompt": "Grow SAME GIRL image1 apparent4–5 to SEVENyear PRIMARYSCHOOL. Preserve shortdarkbrownwavybob graygreeneyes densefreckles dustybluewoolfurcollar, uncoveredhair. Moderatelylongerlowerface, slimmerbabycheeks, grownschoolchildnosechin, slightlylongerchildneck smallshoulders. Clearly7 nottoddler NOTteen notadult. Parents2/3geneticrefs only DON'Tdepictparents. ONEportrait mutedgouache samegraybackdrop no text.",
+        "rawFile": "raw/L3/L3_304_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_304_child-before-schoolage.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/L3_304_child-before-schoolage.png": "5577923e14ad9371b3e448078640e481bd81f829510a9fcde9dcbf7ae4c202d5",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_206_young.png": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp contain resize 256x256 only; no face modification",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Final targeted growth to primary-school age after toddler-like review; input preserved.",
+      "runtime": "not installed"
+    },
+    "selectedRawFile": "raw/L3/L3_304_child-v2.png",
+    "status": "candidate"
+  }
+]

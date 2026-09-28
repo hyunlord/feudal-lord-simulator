@@ -1,0 +1,79 @@
+{
+  "reviewer": "prod1_age_review",
+  "date": "2026-09-28",
+  "scope": "Only the latest four L4 generation-2 corrected child portraits.",
+  "method": "Viewed each file at original 256px, then a 384x96 in-memory contact with four 96x96 portraits ordered 201-204. No art edits or extra image files written.",
+  "overall": "PASS: none currently read as age 10-13 or adolescent. L4_201 has a subjective 5-7 interval overlapping the 6-9 target at its lower end; other portraits plausibly read 6-9.",
+  "items": [
+    {
+      "id": "L4_201_child",
+      "path": "assets/L4/L4_201_child.png",
+      "sha256": "2fa927a6c6997c4da99d4bf7a9d46bc8fd8b79faa13a5631f9bc045fa3b11ffd",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "target_years": [
+        6,
+        9
+      ],
+      "verdict": "PASS_WITH_LOW_END_OVERLAP",
+      "adolescent": false,
+      "note": "Round cheeks and compact face read as young child; lower-end overlap with preschool, but age 6-7 plausible."
+    },
+    {
+      "id": "L4_202_child",
+      "path": "assets/L4/L4_202_child.png",
+      "sha256": "ea43b344c888ad7ca48c483c2713d5010e776d15f5edbd459793cab4bfeb127e",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "target_years": [
+        6,
+        9
+      ],
+      "verdict": "PASS",
+      "adolescent": false,
+      "note": "Soft round cheeks, short nose and childlike head-to-shoulder ratio."
+    },
+    {
+      "id": "L4_203_child",
+      "path": "assets/L4/L4_203_child.png",
+      "sha256": "51008f9c6cff788624f71fa2770435d8b7c93db3d9a58ad8e49003c4a55f737d",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "target_years": [
+        6,
+        9
+      ],
+      "verdict": "PASS",
+      "adolescent": false,
+      "note": "Soft cheeks, small chin and young child facial proportions."
+    },
+    {
+      "id": "L4_204_child",
+      "path": "assets/L4/L4_204_child.png",
+      "sha256": "4c364d5811dfe3d006e7c7709908fb9cc7ba7dffc5ff283430e314ee271bfb45",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "target_years": [
+        6,
+        9
+      ],
+      "verdict": "PASS",
+      "adolescent": false,
+      "note": "Slightly fuller hair and broader shoulders, but face remains a young child, not adolescent."
+    }
+  ],
+  "actual96": "All four retain young-child appearance at 96px. Hair shape and facial expression distinguish the four; no obvious duplicate face identified.",
+  "limitations": [
+    "Subjective apparent-age intervals do not establish chronological age.",
+    "Previous older-looking versions were not re-opened during this bounded review; this verdict applies only to listed current hashes.",
+    "No cross-age identity verification or runtime review."
+  ]
+}

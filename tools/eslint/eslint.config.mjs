@@ -1,10 +1,12 @@
 // ESLint for the merge checks (REVIEW-1): npm run check:merge lints the files a branch changes, and fails only on
 // violations that are not in eslint-suppressions.json (the ones that existed when the check was introduced).
 // TypeScript 6.0 in this folder only parses (typescript-eslint cannot use the root TypeScript 7); no type
-// information, no typescript-eslint rules. Rules: react-hooks and the forbidden native controls (uiControls.mjs).
+// information, no typescript-eslint rules. Rules: react-hooks, the forbidden native controls (uiControls.mjs) and the
+// layer rule (layers.mjs: simulation folders do not import src/ui or src/render).
 // Run it from the repository root (patterns are relative to the working directory): scripts/checks/mergeChecks.mjs does.
 import tsParser from '@typescript-eslint/parser';
 import reactHooks from 'eslint-plugin-react-hooks';
+import { layersConfig } from './layers.mjs';
 import { uiControlsConfig } from './uiControls.mjs';
 
 export default [
@@ -28,4 +30,5 @@ export default [
     },
   },
   uiControlsConfig,
+  layersConfig,
 ];

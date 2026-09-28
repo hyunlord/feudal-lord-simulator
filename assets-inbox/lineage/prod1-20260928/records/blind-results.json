@@ -1,0 +1,172 @@
+{
+  "family": {
+    "correct": 28,
+    "total": 30,
+    "accuracy": 0.9333333333333333,
+    "required": 0.8,
+    "pass": true,
+    "bestGroupMapping": [
+      "L3",
+      "L4",
+      "L5"
+    ]
+  },
+  "identity": {
+    "correct": 18,
+    "total": 18,
+    "required": 18,
+    "pass": true,
+    "pairs": [
+      {
+        "number": 1,
+        "left": "L3_301_young",
+        "right": "L3_302_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 2,
+        "left": "L4_301_young",
+        "right": "L4_302_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 3,
+        "left": "L5_201_child",
+        "right": "L5_201_young",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 4,
+        "left": "L3_202_child",
+        "right": "L3_201_child",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 5,
+        "left": "L5_302_young",
+        "right": "L5_301_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 6,
+        "left": "L4_201_child",
+        "right": "L4_202_child",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 7,
+        "left": "L5_203_young",
+        "right": "L5_203_mature",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 8,
+        "left": "L5_201_child",
+        "right": "L5_202_child",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 9,
+        "left": "L3_201_child",
+        "right": "L3_201_young",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 10,
+        "left": "L4_201_young",
+        "right": "L4_201_child",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 11,
+        "left": "L4_101_young",
+        "right": "L4_101_mature",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 12,
+        "left": "L4_203_young",
+        "right": "L4_203_mature",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 13,
+        "left": "L5_203_young",
+        "right": "L5_204_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 14,
+        "left": "L5_101_mature",
+        "right": "L5_101_young",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 15,
+        "left": "L3_203_young",
+        "right": "L3_203_mature",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 16,
+        "left": "L3_101_mature",
+        "right": "L3_101_young",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 17,
+        "left": "L4_203_young",
+        "right": "L4_204_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 18,
+        "left": "L3_204_young",
+        "right": "L3_203_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      }
+    ],
+    "actual96px": {
+      "correct": 18,
+      "total": 18
+    }
+  },
+  "limitations": "Independent AI visual judgment, not human recognition study. Clothing, hair and sex cues are visible. 96px and256px viewing specified in raw judge records.",
+  "pass": true
+}

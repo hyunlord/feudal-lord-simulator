@@ -1,0 +1,37 @@
+{
+  "review_type": "independent_subjective_visual_qa",
+  "review_date": "2026-09-28",
+  "reviewer": "prod1_age_review",
+  "source": "records/common-baby-contact.png",
+  "source_sha256": "f3d0c157948fbbd4ae2bfa400517719c1949a60ff56313c82495349767663c9e",
+  "method": "Inspected the 7-column by 2-row contact sheet in ascending ID order, plus individual 256px C_baby_03 and C_baby_12 to examine the closest smiling three-quarter pair. No art modifications.",
+  "overall": "PASS for apparent 0-2 age, bonnet and swaddling. No obvious exact clone identified. Distinguishability is adequate with qualifications about similar poses and infant facial proportions.",
+  "items": [
+    {"id":"C_baby_01","estimated_months":[5,12],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Sparse brown hair, left-looking serious expression, relatively compact mouth."},
+    {"id":"C_baby_02","estimated_months":[4,10],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Frontal face, dark hair, raised brows and small open round mouth."},
+    {"id":"C_baby_03","estimated_months":[6,14],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Left-looking smiling face, sparse light hair, slightly open smile and chin crease."},
+    {"id":"C_baby_04","estimated_months":[5,12],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Frontal reddish hair, heavy-lidded serious eyes, parted lips."},
+    {"id":"C_baby_05","estimated_months":[4,10],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Very light hair, wide light eyes looking left, small serious mouth."},
+    {"id":"C_baby_06","estimated_months":[5,12],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Rightward gaze, rounded nose and full closed lips, sparse dark hair."},
+    {"id":"C_baby_07","estimated_months":[6,14],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Dark curls at forehead, frontal broad open smile, prominent full cheeks."},
+    {"id":"C_baby_08","estimated_months":[6,14],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Leftward gaze, curled brown fringe, subtle closed smile and cheek dimple."},
+    {"id":"C_baby_09","estimated_months":[5,12],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Frontal red hair, slightly narrowed smiling eyes and compressed wide smile."},
+    {"id":"C_baby_10","estimated_months":[6,14],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Leftward gaze, brown hair, furrowed brows and distinct downturned serious mouth."},
+    {"id":"C_baby_11","estimated_months":[4,11],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Frontal tight dark curls, broad nose, full parted lips and serious expression."},
+    {"id":"C_baby_12","estimated_months":[6,14],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Left-looking light brown hair, large round cheeks and closed smile. Similar pose and proportions to 03, but different mouth and eyes."},
+    {"id":"C_baby_13","estimated_months":[6,14],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Frontal brown curls, open asymmetric smile, narrower face and less full cheeks than 07."},
+    {"id":"C_baby_14","estimated_months":[4,11],"age_pass":true,"bonnet_pass":true,"swaddling_pass":true,"face_cues":"Left-looking red hair, serious closed mouth, compact nose and rounded forehead."}
+  ],
+  "similarity_notes": [
+    "03 and 12 share a strong three-quarter smiling infant template; individual inspection confirms different mouth opening, eyes and hairline, so not an obvious exact clone.",
+    "07 and 13 are both frontal smiling brown-haired infants; face width, cheek fullness and smile shape distinguish them.",
+    "01, 05 and 14 share a serious left-looking pose; hair color and eye/mouth details distinguish them, but these cues may be less legible at 96px."
+  ],
+  "failures": [],
+  "limitations": [
+    "Age ranges are subjective apparent-age estimates, not verified ages.",
+    "The set reads predominantly as older infants rather than newborns; it does not demonstrate a balanced spread across every month from 0 to 24.",
+    "No separate 96px actual-size review or runtime review was performed.",
+    "No biometric distinctness claim or pixel-level duplicate test was made. Shared costume and pose reduce small-size identity cues."
+  ]
+}

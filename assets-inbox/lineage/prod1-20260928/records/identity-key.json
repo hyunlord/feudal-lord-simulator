@@ -1,0 +1,115 @@
+{
+  "seed": 20261002,
+  "algorithm": "Mulberry32 Fisher-Yates plus randomized left/right",
+  "rule": "18 pairs: nine siblings/different and nine cross-stage/same; six young/mature, three child/young. Pair number only, no labels. Pair selection precommitted before images final. Sex/age cues are not controlled; this is not a human psychometric study.",
+  "pairs": [
+    {
+      "relation": "different",
+      "left": "L3_301_young",
+      "right": "L3_302_young",
+      "number": 1
+    },
+    {
+      "relation": "different",
+      "left": "L4_301_young",
+      "right": "L4_302_young",
+      "number": 2
+    },
+    {
+      "relation": "same",
+      "left": "L5_201_child",
+      "right": "L5_201_young",
+      "number": 3
+    },
+    {
+      "relation": "different",
+      "left": "L3_202_child",
+      "right": "L3_201_child",
+      "number": 4
+    },
+    {
+      "relation": "different",
+      "left": "L5_302_young",
+      "right": "L5_301_young",
+      "number": 5
+    },
+    {
+      "relation": "different",
+      "left": "L4_201_child",
+      "right": "L4_202_child",
+      "number": 6
+    },
+    {
+      "relation": "same",
+      "left": "L5_203_young",
+      "right": "L5_203_mature",
+      "number": 7
+    },
+    {
+      "relation": "different",
+      "left": "L5_201_child",
+      "right": "L5_202_child",
+      "number": 8
+    },
+    {
+      "relation": "same",
+      "left": "L3_201_child",
+      "right": "L3_201_young",
+      "number": 9
+    },
+    {
+      "relation": "same",
+      "left": "L4_201_young",
+      "right": "L4_201_child",
+      "number": 10
+    },
+    {
+      "relation": "same",
+      "left": "L4_101_young",
+      "right": "L4_101_mature",
+      "number": 11
+    },
+    {
+      "relation": "same",
+      "left": "L4_203_young",
+      "right": "L4_203_mature",
+      "number": 12
+    },
+    {
+      "relation": "different",
+      "left": "L5_203_young",
+      "right": "L5_204_young",
+      "number": 13
+    },
+    {
+      "relation": "same",
+      "left": "L5_101_mature",
+      "right": "L5_101_young",
+      "number": 14
+    },
+    {
+      "relation": "same",
+      "left": "L3_203_young",
+      "right": "L3_203_mature",
+      "number": 15
+    },
+    {
+      "relation": "same",
+      "left": "L3_101_mature",
+      "right": "L3_101_young",
+      "number": 16
+    },
+    {
+      "relation": "different",
+      "left": "L4_203_young",
+      "right": "L4_204_young",
+      "number": 17
+    },
+    {
+      "relation": "different",
+      "left": "L3_204_young",
+      "right": "L3_203_young",
+      "number": 18
+    }
+  ]
+}

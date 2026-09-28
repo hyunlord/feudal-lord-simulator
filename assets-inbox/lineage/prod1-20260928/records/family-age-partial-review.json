@@ -1,0 +1,141 @@
+{
+  "status": "PARTIAL_REVIEW_NOT_COMPLETE",
+  "reviewedAt": "2026-09-28T01:36:47.123Z",
+  "reviewer": "independent common-baby agent reviewing other lanes only",
+  "sizes": [
+    256,
+    96
+  ],
+  "method": "Visual estimated age, not human judgment or exact chronological measurement",
+  "scope": "Only16 existing generation2 L3/L4 baby/child files. L5 and grandchildren not yet present at review.",
+  "records": [
+    {
+      "id": "L3_201_baby",
+      "file": "assets/L3/L3_201_baby.png",
+      "sha256": "7dcfee9c85122f69ae0cee596dcdd97b605b56bc419ebc5984ca58d4cf576e9c",
+      "estimatedVisualAge": "1.5–2.5",
+      "status": "REVIEW",
+      "reason": "Bonnet and swaddle clear; face slightly toddler-like upper boundary"
+    },
+    {
+      "id": "L3_201_child",
+      "file": "assets/L3/L3_201_child.png",
+      "sha256": "b0932aedf1f83173bc8bba25f6ac67d99dd257b02a5683e7bdf7951700063d9e",
+      "estimatedVisualAge": "10–12",
+      "status": "FAIL",
+      "reason": "Angular cheek and jaw, neck and adolescent expression"
+    },
+    {
+      "id": "L3_202_baby",
+      "file": "assets/L3/L3_202_baby.png",
+      "sha256": "35b9c14af6b4f92d3fcc638580c50f4da8f3b9b7aef994cfbbafea65ebe59510",
+      "estimatedVisualAge": "1–2",
+      "status": "PASS",
+      "reason": "Soft infant cheeks; bonnet swaddle"
+    },
+    {
+      "id": "L3_202_child",
+      "file": "assets/L3/L3_202_child.png",
+      "sha256": "aabd2c138ddc9d5f7a39c4b7aef18efa3aac240ff372ef7143724b1843b351ec",
+      "estimatedVisualAge": "9–11",
+      "status": "REVIEW",
+      "reason": "Borderline older face, not unambiguously6–9"
+    },
+    {
+      "id": "L3_203_baby",
+      "file": "assets/L3/L3_203_baby.png",
+      "sha256": "5c30d35c47cb1849c4e547e57652513e3ae7db211ec4fbf457fa54a0dc15153d",
+      "estimatedVisualAge": "1–2",
+      "status": "PASS",
+      "reason": "Round cheeks small mouth; bonnet swaddle"
+    },
+    {
+      "id": "L3_203_child",
+      "file": "assets/L3/L3_203_child.png",
+      "sha256": "c54b7553984f4a8ecf54312a7d8bbec36fe1f2b3cf53db76d0d3059079c0c4d6",
+      "estimatedVisualAge": "11–13",
+      "status": "FAIL",
+      "reason": "Teen girl face, long neck mature jaw"
+    },
+    {
+      "id": "L3_204_baby",
+      "file": "assets/L3/L3_204_baby.png",
+      "sha256": "95c5113433faed0d42944d07960a64551fb36ddb243d801ecbcbe0cedab599c5",
+      "estimatedVisualAge": "1–2",
+      "status": "PASS",
+      "reason": "Bonnet swaddle chubby infant"
+    },
+    {
+      "id": "L3_204_child",
+      "file": "assets/L3/L3_204_child.png",
+      "sha256": "ac914d4313969f62c7e66e9efa9f3962854ccb888decab2a2d14a9936cfe2584",
+      "estimatedVisualAge": "9–11",
+      "status": "REVIEW",
+      "reason": "Slightly mature cheeks and shoulders"
+    },
+    {
+      "id": "L4_201_baby",
+      "file": "assets/L4/L4_201_baby.png",
+      "sha256": "67027fdd46b8da15a72e12edadeba72d845f0c3cd75faee967e02fdd1519316a",
+      "estimatedVisualAge": "1–2",
+      "status": "PASS",
+      "reason": "Bonnet swaddle infant cheeks; freckles age-unusual but not forbidden"
+    },
+    {
+      "id": "L4_201_child",
+      "file": "assets/L4/L4_201_child.png",
+      "sha256": "d89c6c0e8893af6fff9515d63ee23daee004e3dfd3790f4875cd6d05b1c971d0",
+      "estimatedVisualAge": "11–13",
+      "status": "FAIL",
+      "reason": "Broad shoulder adolescent face and long neck"
+    },
+    {
+      "id": "L4_202_baby",
+      "file": "assets/L4/L4_202_baby.png",
+      "sha256": "f1c7e82385a52b4e4976f2f89d98a221310f2603ab421b5097aa0ba8afb2031c",
+      "estimatedVisualAge": "0.8–1.8",
+      "status": "PASS",
+      "reason": "Plump infant bonnet swaddle"
+    },
+    {
+      "id": "L4_202_child",
+      "file": "assets/L4/L4_202_child.png",
+      "sha256": "2cfdf6e8028c95251bce1fb78538262a3757a6a65b6a1a74fba208fadbd66ba7",
+      "estimatedVisualAge": "10–12",
+      "status": "FAIL",
+      "reason": "Mature cheek/jaw neck shoulder silhouette"
+    },
+    {
+      "id": "L4_203_baby",
+      "file": "assets/L4/L4_203_baby.png",
+      "sha256": "d7800e6b1d512d4fac1f648f1b8e35d34f687855510a65aa6bb8e3d1173d9a27",
+      "estimatedVisualAge": "0.8–1.8",
+      "status": "PASS",
+      "reason": "Plump infant bonnet swaddle"
+    },
+    {
+      "id": "L4_203_child",
+      "file": "assets/L4/L4_203_child.png",
+      "sha256": "5bec2d56a2ee594a6c05f94d9a1e4ab4b95b068c34b4fad0ac461d1ff86f9183",
+      "estimatedVisualAge": "11–13",
+      "status": "FAIL",
+      "reason": "Adolescent face neck and shoulders"
+    },
+    {
+      "id": "L4_204_baby",
+      "file": "assets/L4/L4_204_baby.png",
+      "sha256": "9249b22c00086f02a75bd7bb4e9764fec8236aa4a46061e837db7f1ddaa0f33a",
+      "estimatedVisualAge": "1–2",
+      "status": "PASS",
+      "reason": "Full cheek infant bonnet swaddle"
+    },
+    {
+      "id": "L4_204_child",
+      "file": "assets/L4/L4_204_child.png",
+      "sha256": "521c00a3a94e78ddd77c5397566daa531d6d354dddfdc34926354e89698852c8",
+      "estimatedVisualAge": "10–12",
+      "status": "FAIL",
+      "reason": "Broad adult-ish shoulder and older cheek proportions"
+    }
+  ]
+}

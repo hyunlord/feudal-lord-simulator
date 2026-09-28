@@ -1,0 +1,177 @@
+{
+  "reviewer": "prod1_age_review",
+  "date": "2026-09-28",
+  "scope": "Six final child refinements only",
+  "overall": "PASS_WITH_ONE_LOW_END_QUALIFICATION: L3 four and common13 now plausibly read 6-9. Common07 remains 5-7 by subjective estimate, overlapping target at 6-7; no obvious age-band failure remains.",
+  "method": "Viewed all six current originals at 256px. L3 reviewed on independent actual96 strip; common07/13 reviewed on supplied before-after actual96 board.",
+  "items": [
+    {
+      "id": "L3_201_child",
+      "path": "assets/L3/L3_201_child.png",
+      "sha256": "449992b7d30bd1fc525d7947a279a4ea662c1d73e75c73ae0e0affc18cc02606",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "verdict": "PASS_6_TO_9",
+      "note": "More elongated face/neck and reduced toddler fullness now support young school-age appearance. No adolescent appearance.",
+      "prior_review": {
+        "report": "records/L3-final-visual-qa.json",
+        "sha256": "466672f761b785380c310182e42aa654e8fa5b36b5a1fdb9ebd127864b981b75",
+        "estimated_years": [
+          4,
+          6
+        ],
+        "verdict": "REVIEW_YOUNG"
+      },
+      "hash_changed": true
+    },
+    {
+      "id": "L3_202_child",
+      "path": "assets/L3/L3_202_child.png",
+      "sha256": "10d6d3dd8152f489a443561b3e287b80f9e8929c0b8e4efa55cf34cf041dfe8a",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "verdict": "PASS_6_TO_9",
+      "note": "More elongated face/neck and reduced toddler fullness now support young school-age appearance. No adolescent appearance.",
+      "prior_review": {
+        "report": "records/L3-final-visual-qa.json",
+        "sha256": "4c15e781405c7bd542575553e30f9816d7deb5a54af20c562eff211dc248a906",
+        "estimated_years": [
+          4,
+          6
+        ],
+        "verdict": "REVIEW_YOUNG"
+      },
+      "hash_changed": true
+    },
+    {
+      "id": "L3_303_child",
+      "path": "assets/L3/L3_303_child.png",
+      "sha256": "8413de64a278907d87a19f3dee2b7f7a460c14a68450de2a7c5e0fc9c5abc0ea",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "verdict": "PASS_6_TO_9",
+      "note": "More elongated face/neck and reduced toddler fullness now support young school-age appearance. No adolescent appearance.",
+      "prior_review": {
+        "report": "records/L3-final-visual-qa.json",
+        "sha256": "8742a93adc13fcf9bfa968817f6293a6dad0d7ff4218a8fab8924e6352d1aa63",
+        "estimated_years": [
+          4,
+          6
+        ],
+        "verdict": "REVIEW_YOUNG"
+      },
+      "hash_changed": true
+    },
+    {
+      "id": "L3_304_child",
+      "path": "assets/L3/L3_304_child.png",
+      "sha256": "c5a6df7577d4f9ecca057576fb712fef6be4e3cc67f70a44e188b0e52870fbbe",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "verdict": "PASS_6_TO_9",
+      "note": "More elongated face/neck and reduced toddler fullness now support young school-age appearance. No adolescent appearance.",
+      "prior_review": {
+        "report": "records/L3-final-visual-qa.json",
+        "sha256": "5577923e14ad9371b3e448078640e481bd81f829510a9fcde9dcbf7ae4c202d5",
+        "estimated_years": [
+          4,
+          6
+        ],
+        "verdict": "REVIEW_YOUNG"
+      },
+      "hash_changed": true
+    },
+    {
+      "id": "C_child_07",
+      "path": "assets/common/C_child_07.png",
+      "sha256": "86512c2b05f778ea70eb320a7a5eccd8df7642906472757865b4a2e938af20c3",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "verdict": "PASS_LOW_END_OVERLAP",
+      "note": "Still young-looking, but narrower lower face and longer neck support plausible 6-7. Not an unequivocal 7-8 appearance; no obvious out-of-band failure.",
+      "prior_review": {
+        "report": "records/common-children-independent-qa.json",
+        "sha256": "ae42cc428c7382c455646ddad805c036a25fd05c5ac50b86247a94da9ca8a479",
+        "estimated_years": [
+          4,
+          6
+        ],
+        "verdict": "REVIEW_YOUNG"
+      },
+      "hash_changed": true
+    },
+    {
+      "id": "C_child_13",
+      "path": "assets/common/C_child_13.png",
+      "sha256": "ac0427dad38c2ec15a1e59a6351f7aba36392854ba1535dc21733fcace5775e8",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "verdict": "PASS_6_TO_9",
+      "note": "More elongated face/neck and reduced toddler fullness now support young school-age appearance. No adolescent appearance.",
+      "prior_review": {
+        "report": "records/common-children-independent-qa.json",
+        "sha256": "d3088b9fb2b86f4f80c1dd13f60604bf7202d1c81757edea910a47c182749dc5",
+        "estimated_years": [
+          4,
+          6
+        ],
+        "verdict": "REVIEW_YOUNG"
+      },
+      "hash_changed": true
+    }
+  ],
+  "history_note": "Original younger-looking verdicts and exact prior hashes are retained per item and in the referenced original reports. This report supersedes their age verdicts only for these six new hashes.",
+  "contacts": [
+    {
+      "path": "records/final-child-refinement96.png",
+      "sha256": "f2c82c560b5c8518bc0eaf9346aeed8a703bd75b4511d4808810869bba57626f"
+    },
+    {
+      "path": "records/common-children-07-13-age96.png",
+      "sha256": "88c01123e02c1f9095d4a471e5b8403750ea5d8dd03c1e8487645238644f6991"
+    }
+  ],
+  "clear_failures": [],
+  "limitations": [
+    "Age estimates are subjective visual judgments, not proof of chronological ages.",
+    "Common07 is a lower-bound pass, not unequivocal 7-8.",
+    "No runtime or animation review."
+  ],
+  "art_modified": false
+}

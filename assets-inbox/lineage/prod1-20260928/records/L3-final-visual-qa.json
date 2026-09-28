@@ -1,0 +1,731 @@
+{
+  "reviewer": "prod1_age_review",
+  "date": "2026-09-28",
+  "scope": "Final 38 L3 assets, including current replacement 102/203 mature portraits.",
+  "overall": "REVIEW_REQUIRED_FOR_YOUNG_LOOKING_CHILDREN: adult aging corrections pass; all babies and required married-woman head coverings pass. Four children plausibly read 4-6 rather than unequivocal 6-9.",
+  "items": [
+    {
+      "id": "L3_101_mature",
+      "path": "assets/L3/L3_101_mature.png",
+      "sha256": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_101_old",
+      "path": "assets/L3/L3_101_old.png",
+      "sha256": "ba857dc241a3ba6b8a5297ee5a309c00cd30641d1e06c91861ba14037dc29ab0",
+      "estimated_years": [
+        63,
+        77
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_101_young",
+      "path": "assets/L3/L3_101_young.png",
+      "sha256": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_102_mature",
+      "path": "assets/L3/L3_102_mature.png",
+      "sha256": "a7a070dc7f0d5c7b0104a8dc0a5a9773125e4904d95f94a3d1bbcc7a5f68098e",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_102_old",
+      "path": "assets/L3/L3_102_old.png",
+      "sha256": "f00d96c59783cf3d62e1f74d10aad586e0658f508365c325a56a798778e417d4",
+      "estimated_years": [
+        63,
+        77
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_102_young",
+      "path": "assets/L3/L3_102_young.png",
+      "sha256": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_201_baby",
+      "path": "assets/L3/L3_201_baby.png",
+      "sha256": "c667bfb982873069b69e9fe3cb2fc1ddc5b2917e60f21d81be720536b028e3b4",
+      "estimated_years": [
+        0.5,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_201_child",
+      "path": "assets/L3/L3_201_child.png",
+      "sha256": "466672f761b785380c310182e42aa654e8fa5b36b5a1fdb9ebd127864b981b75",
+      "estimated_years": [
+        4,
+        6
+      ],
+      "age_verdict": "REVIEW_YOUNG",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_201_mature",
+      "path": "assets/L3/L3_201_mature.png",
+      "sha256": "8a90e8b157635e00443ee214504661a9c59a02f890714f58d5899073aa9b8e33",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_201_young",
+      "path": "assets/L3/L3_201_young.png",
+      "sha256": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_202_baby",
+      "path": "assets/L3/L3_202_baby.png",
+      "sha256": "35b9c14af6b4f92d3fcc638580c50f4da8f3b9b7aef994cfbbafea65ebe59510",
+      "estimated_years": [
+        0.5,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_202_child",
+      "path": "assets/L3/L3_202_child.png",
+      "sha256": "4c15e781405c7bd542575553e30f9816d7deb5a54af20c562eff211dc248a906",
+      "estimated_years": [
+        4,
+        6
+      ],
+      "age_verdict": "REVIEW_YOUNG",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_202_mature",
+      "path": "assets/L3/L3_202_mature.png",
+      "sha256": "0587ea7ec9f7d98a43be70675c15af8359197ad9a17ee9a753f6b22cd9d40f2a",
+      "estimated_years": [
+        35,
+        45
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_202_young",
+      "path": "assets/L3/L3_202_young.png",
+      "sha256": "8d110442c5eb6b59f82ab9b8e4f2cd06047abdbbd969fbb34e38ab6e3026a9e9",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_203_baby",
+      "path": "assets/L3/L3_203_baby.png",
+      "sha256": "5c30d35c47cb1849c4e547e57652513e3ae7db211ec4fbf457fa54a0dc15153d",
+      "estimated_years": [
+        0.5,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_203_child",
+      "path": "assets/L3/L3_203_child.png",
+      "sha256": "b5af232976ad846de58c11d66560f34bdff55a0663f033649e30ad43a06f535a",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "age_verdict": "PASS_LOW_END_OVERLAP",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_203_mature",
+      "path": "assets/L3/L3_203_mature.png",
+      "sha256": "6079f40725a4c829bfb4f906ebbe8b781236171247e261065af2787780a9d276",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_203_young",
+      "path": "assets/L3/L3_203_young.png",
+      "sha256": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_204_baby",
+      "path": "assets/L3/L3_204_baby.png",
+      "sha256": "95c5113433faed0d42944d07960a64551fb36ddb243d801ecbcbe0cedab599c5",
+      "estimated_years": [
+        0.5,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_204_child",
+      "path": "assets/L3/L3_204_child.png",
+      "sha256": "67728198c3ef3b47011c2f13ebdd2a9333367fc34f6379bd0ddc6e66c648b77a",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "age_verdict": "PASS_LOW_END_OVERLAP",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_204_mature",
+      "path": "assets/L3/L3_204_mature.png",
+      "sha256": "ed042f4946ccf45f6abc4f36fd80eaa2a64b7955139c10ca549aa164360a1b53",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_204_young",
+      "path": "assets/L3/L3_204_young.png",
+      "sha256": "b14ddd0e147e3f01d53fd2b72720dcf8de118c4c6d49f773af41fd47e9959593",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_205_mature",
+      "path": "assets/L3/L3_205_mature.png",
+      "sha256": "bea49faef4aca0da970746d5d92b24766641550fa188bd5c4c8538fa34d7b410",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_205_young",
+      "path": "assets/L3/L3_205_young.png",
+      "sha256": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_206_mature",
+      "path": "assets/L3/L3_206_mature.png",
+      "sha256": "818332744c890aa12ca68fff970571a1a6329c18dfb9f258ebd57c50b68dd44c",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_206_young",
+      "path": "assets/L3/L3_206_young.png",
+      "sha256": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_301_baby",
+      "path": "assets/L3/L3_301_baby.png",
+      "sha256": "e561d410c90ccd75f8fcb275529dbf4147db40bd713e8c0990595aa7a1a0d33d",
+      "estimated_years": [
+        0.5,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_301_child",
+      "path": "assets/L3/L3_301_child.png",
+      "sha256": "e00d02ba13b32ff4e74ea2d614423adc35fc10c51b2f7ceaee28df1001abea05",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "age_verdict": "PASS_LOW_END_OVERLAP",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_301_young",
+      "path": "assets/L3/L3_301_young.png",
+      "sha256": "afebeb0283da96ae8662f5e49258209838269705f1bdc859fe5668972cba01d4",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256
+      ]
+    },
+    {
+      "id": "L3_302_baby",
+      "path": "assets/L3/L3_302_baby.png",
+      "sha256": "3cca953cefb1629ca3d471bcd793e9c26475d909a9a2806ee789de0220bf8cb2",
+      "estimated_years": [
+        0.5,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_302_child",
+      "path": "assets/L3/L3_302_child.png",
+      "sha256": "9edbc0e51ef586b9598249cb79514ea1c14e7de18cf741451c4a9e73999e6d5c",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "age_verdict": "PASS_LOW_END_OVERLAP",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_302_young",
+      "path": "assets/L3/L3_302_young.png",
+      "sha256": "1c85423a9ef2c9a3ca219493dc83c74acd3bf79e00b11032a6128362641b97fd",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256
+      ]
+    },
+    {
+      "id": "L3_303_baby",
+      "path": "assets/L3/L3_303_baby.png",
+      "sha256": "485b682b514370a561efabb4314293ee20eefe33f4a44a8c8c222663633ba32d",
+      "estimated_years": [
+        0.5,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_303_child",
+      "path": "assets/L3/L3_303_child.png",
+      "sha256": "8742a93adc13fcf9bfa968817f6293a6dad0d7ff4218a8fab8924e6352d1aa63",
+      "estimated_years": [
+        4,
+        6
+      ],
+      "age_verdict": "REVIEW_YOUNG",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_303_young",
+      "path": "assets/L3/L3_303_young.png",
+      "sha256": "d8e24cb74f9a7dc014cce6002015086c99e9c6b545934c2c117bff164d09df4f",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256
+      ]
+    },
+    {
+      "id": "L3_304_baby",
+      "path": "assets/L3/L3_304_baby.png",
+      "sha256": "f144bc4b6ab2ab0d4a3ca37771ec5d755089f4344084e2d83a55e71b33219967",
+      "estimated_years": [
+        0.5,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_304_child",
+      "path": "assets/L3/L3_304_child.png",
+      "sha256": "5577923e14ad9371b3e448078640e481bd81f829510a9fcde9dcbf7ae4c202d5",
+      "estimated_years": [
+        4,
+        6
+      ],
+      "age_verdict": "REVIEW_YOUNG",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256,
+        96
+      ]
+    },
+    {
+      "id": "L3_304_young",
+      "path": "assets/L3/L3_304_young.png",
+      "sha256": "37bc840cd47f785f0d9b12ba171ae64c0b9089fab41e81631ad11fdd958b90f8",
+      "estimated_years": [
+        20,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED",
+      "swaddle": "NOT_APPLICABLE",
+      "inspected_sizes": [
+        256
+      ]
+    }
+  ],
+  "chains": [
+    {
+      "id": "L3_101",
+      "young_sha256": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+      "mature_sha256": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "note": "40s facial lines, folds and/or gray hair are visible."
+    },
+    {
+      "id": "L3_102",
+      "young_sha256": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528",
+      "mature_sha256": "a7a070dc7f0d5c7b0104a8dc0a5a9773125e4904d95f94a3d1bbcc7a5f68098e",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_AFTER_CORRECTION",
+      "note": "40s facial lines, folds and/or gray hair are visible."
+    },
+    {
+      "id": "L3_201",
+      "young_sha256": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4",
+      "mature_sha256": "8a90e8b157635e00443ee214504661a9c59a02f890714f58d5899073aa9b8e33",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "note": "40s facial lines, folds and/or gray hair are visible."
+    },
+    {
+      "id": "L3_202",
+      "young_sha256": "8d110442c5eb6b59f82ab9b8e4f2cd06047abdbbd969fbb34e38ab6e3026a9e9",
+      "mature_sha256": "0587ea7ec9f7d98a43be70675c15af8359197ad9a17ee9a753f6b22cd9d40f2a",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE_LOW_END",
+      "note": "Gray temples permit a 40s reading, though aging is modest."
+    },
+    {
+      "id": "L3_203",
+      "young_sha256": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09",
+      "mature_sha256": "6079f40725a4c829bfb4f906ebbe8b781236171247e261065af2787780a9d276",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_AFTER_CORRECTION",
+      "note": "40s facial lines, folds and/or gray hair are visible."
+    },
+    {
+      "id": "L3_204",
+      "young_sha256": "b14ddd0e147e3f01d53fd2b72720dcf8de118c4c6d49f773af41fd47e9959593",
+      "mature_sha256": "ed042f4946ccf45f6abc4f36fd80eaa2a64b7955139c10ca549aa164360a1b53",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "note": "40s facial lines, folds and/or gray hair are visible."
+    },
+    {
+      "id": "L3_205",
+      "young_sha256": "e9813ba1c2a6db5b131489a4f51632b1c7cc6b899c8c947454fbd8e0728b25c3",
+      "mature_sha256": "bea49faef4aca0da970746d5d92b24766641550fa188bd5c4c8538fa34d7b410",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "note": "40s facial lines, folds and/or gray hair are visible."
+    },
+    {
+      "id": "L3_206",
+      "young_sha256": "6d67d2cf2edfe0de4142a28067e31d047e9fb2386a59c13e4d70b81fc005d9de",
+      "mature_sha256": "818332744c890aa12ca68fff970571a1a6329c18dfb9f258ebd57c50b68dd44c",
+      "identity_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "note": "40s facial lines, folds and/or gray hair are visible."
+    }
+  ],
+  "prior_adult_failure_history": {
+    "ids": [
+      "L3_102_mature",
+      "L3_203_mature"
+    ],
+    "verdict": "INSUFFICIENT_20_YEAR_AGING",
+    "estimated_years": [
+      33,
+      43
+    ],
+    "evidence_contact": "records/L3-adult-independent256.png",
+    "evidence_contact_sha256": "1d7e330ebea5dc4b34c746ef21f475683ae062a16588b87c8dcd3712c4e7cdf7",
+    "note": "Prior 256/96 contacts preserve the earlier subtle mature portraits. Source file hashes were not frozen before replacement; do not represent their current hashes as prior hashes."
+  },
+  "adult_correction": "Latest 102/203 mature portraits were individually reviewed at 256 and in independent-mature-corrections96.png at actual 96. Both now read 40-50 and resolve the earlier aging failure.",
+  "youth": "All eight babies plausibly read 6-20 months with bonnet and swaddle. Children 201/202/303/304 read approximately 4-6, while 203/204/301/302 read 5-7. No adolescent appearance. A 6-year-old interpretation is possible, but the younger-looking group should not be declared unequivocally 6-9.",
+  "head_covering": "All metadata-married adult women have veil/head covering; unmarried young 204/302/304 do not require it.",
+  "review_flags": [
+    "L3_201_child",
+    "L3_202_child",
+    "L3_303_child",
+    "L3_304_child"
+  ],
+  "clear_failures_remaining": [],
+  "contacts": [
+    {
+      "path": "records/L3-adult-independent256.png",
+      "sha256": "1d7e330ebea5dc4b34c746ef21f475683ae062a16588b87c8dcd3712c4e7cdf7"
+    },
+    {
+      "path": "records/L3-adult-independent96.png",
+      "sha256": "f89958865825e69c8cb2bcf0cd3475bf4534844382dc4433333fb793a65a2f31"
+    },
+    {
+      "path": "records/L3-youth-independent256.png",
+      "sha256": "15634968843f485f2a377721189f0868ef583c257a5727eed09bb8a4722b984f"
+    },
+    {
+      "path": "records/L3-youth-independent96.png",
+      "sha256": "bfbe76e52c95d36e8019da29448cb516577148e14b44946d8a5c564730213e88"
+    },
+    {
+      "path": "records/independent-mature-corrections96.png",
+      "sha256": "4702a72e45ae06309991b76af60c2406432687e5b88eb2bbcbeb0b883e3070d9"
+    }
+  ],
+  "limitations": [
+    "Subjective age estimates, not chronological-age or biometric proof.",
+    "Youth age overlap at 6 does not establish an unambiguous target-band reading.",
+    "Original adult contact is explicitly historical for the two corrected mature portraits; their latest individual SHA is in items.",
+    "No runtime or animation testing."
+  ],
+  "art_modified": false
+}

@@ -145,6 +145,12 @@
       - 바뀐 파일에서 `react-hooks/exhaustive-deps`와 금지 컨트롤을 본다. 금지 컨트롤은 `src/ui`의 네이티브 `<select>`·`<input>`·맨 `<button>`이며, UI 부품 폴더 `src/ui/kit/`는 예외다.
       - 기존 위반은 `tools/eslint/eslint-suppressions.json`에 있다.
       - **금지 컨트롤 규칙의 원본은 `tools/eslint/uiControls.mjs`다.** 다른 ESLint 설정(UI-KIT-1 등)은 이 파일을 가져다 쓰고 복사하지 않는다.
+    - **계층**: `src/{engine,population,economy,zones,world,save,ledger,state}/**`는 `src/ui/**`·`src/render/**`를 import하지 않는다.
+      - 표현이 시뮬레이션을 읽고, 반대로는 읽지 않는다. 시뮬레이션에 필요한 문구는 자기 `*.ko.ts`에 두거나, 코드를 돌려주고 UI가 문구를 붙인다.
+      - 규칙 원본은 `tools/eslint/layers.mjs`(ESLint `no-restricted-imports`)다. 기존 위반은 `eslint-suppressions.json`에 있고, CODE-1a가 없앤다.
+    - **한글 문자열은 `*.ko.ts`에만 둔다**(규칙 5·9, `scripts/checks/koreanStrings.mjs`).
+      - `src`의 코드 파일에서 한글이 든 문자열·템플릿·JSX 텍스트는 `*.ko.ts`와 생성 파일(`*.generated.*`)에만 둘 수 있다. 주석은 세지 않는다.
+      - 기존 40개 파일의 문자열 463개는 `scripts/checks/korean-strings-baseline.json` 목록에 있다(파일별 정확한 문구). 목록의 문구를 고치면 새 문자열로 본다.
     - typecheck도 함께 돈다. 새 억제·예외 목록 항목을 손으로 추가해 검사를 통과시키지 않는다.
     - **Astra 장부의 `replaced_by`는 장부에 있는 파일 경로만 쓴다**(`scripts/checks/inboxLedger.mjs`). 여러 장이면 `;`로 잇고, 패턴·설명은 `verdict_note`에 쓴다.
 
