@@ -1,0 +1,30 @@
+[
+  {
+    "key": "fold_autumn",
+    "selected": "original",
+    "reason": "Original eventually completed; original geometry visually stable and first generated timestamp preceded retry",
+    "originalRaw": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-52274db4-840c-4063-9215-dcdc027dcfd7.png",
+    "retryRaw": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-73551ad8-cdb3-43c7-a09d-77757e5f37a5.png",
+    "retryPrompt": "Use case: lighting-weather. Edit the provided summer hurdle fold into AUTUMN: dry muted ochre grass tufts at fence feet instead of green summer grass. STRICT geometry preservation: keep EVERY stake and fence panel, all four corner locations, entry opening, silhouette, camera, scale, perspective, canvas and ground-contact position exactly unchanged. Change seasonal material appearance only. The interior remains transparent and empty. South England 14th century, hand-painted low-chroma isometric 2:1 game sprite. True transparent RGBA. No animals, people, roof, extra props, text, ground tile. Final intended canvas 160x112 pivot (80,100).",
+    "retryReference": "native/farmprops/hurdle_fold_summer.png",
+    "originalCell": "9",
+    "delay": "approximately 18 minutes before original result retrieved",
+    "status": "all original and retry calls completed; no running calls, no cancellation",
+    "modelVersion": null,
+    "seed": null
+  },
+  {
+    "key": "fold_winter",
+    "selected": "original",
+    "reason": "Original eventually completed; original geometry visually stable and first generated timestamp preceded retry",
+    "originalRaw": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-026dd2f9-2dcb-4b5f-8345-73a1ba316b49.png",
+    "retryRaw": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-9733-7472-90d9-e0247fb4af55/exec-4557e9d9-e9dc-4806-88c2-7a32be2edc40.png",
+    "retryPrompt": "Use case: lighting-weather. Edit the provided summer hurdle fold into WINTER: sparse frost on upward facing hurdle branches and tiny dry dormant tufts at feet, no thick snow. STRICT geometry preservation: keep EVERY stake and fence panel, all four corner locations, entry opening, silhouette, camera, scale, perspective, canvas and ground-contact position exactly unchanged. Change seasonal material appearance only. The interior remains transparent and empty. South England 14th century, hand-painted low-chroma isometric 2:1 game sprite. True transparent RGBA. No animals, people, roof, extra props, text, ground tile. Final intended canvas 160x112 pivot (80,100).",
+    "retryReference": "native/farmprops/hurdle_fold_summer.png",
+    "originalCell": "9",
+    "delay": "approximately 18 minutes before original result retrieved",
+    "status": "all original and retry calls completed; no running calls, no cancellation",
+    "modelVersion": null,
+    "seed": null
+  }
+]

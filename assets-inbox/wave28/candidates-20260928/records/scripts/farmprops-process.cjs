@@ -1,0 +1,10 @@
+const fs=require('fs');const path=require('path');const sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const base=path.resolve(__dirname,'..');const inputs=JSON.parse(fs.readFileSync(path.join(base,'native/farmprops/input.json')));
+(async()=>{const rows=[];for(const r of inputs){const hay=r.key.startsWith('hay');const id=r.key.replace(/^hay_/,'haystack_').replace(/^fold_/,'hurdle_fold_');const width=hay?128:160,height=112;const raw=await sharp(r.rawPath).ensureAlpha().raw().toBuffer({resolveWithObject:true});const {width:rw,height:rh}=raw.info;
+let minx=rw,miny=rh,maxx=0,maxy=0;for(let y=0;y<rh;y++)for(let x=0;x<rw;x++)if(raw.data[(y*rw+x)*4+3]>8){minx=Math.min(minx,x);maxx=Math.max(maxx,x);miny=Math.min(miny,y);maxy=Math.max(maxy,y);}
+const native='native/farmprops/'+id+'.png';fs.copyFileSync(r.rawPath,path.join(base,native));
+const scale=hay?0.1:0.128;const cw=maxx-minx+1,ch=maxy-miny+1;const tw=Math.round(cw*scale),th=Math.round(ch*scale);const left=Math.round(width/2-tw/2),top=100-th;
+const image=await sharp(r.rawPath).extract({left:minx,top:miny,width:cw,height:ch}).resize(tw,th,{kernel:'lanczos3'}).toBuffer();const file='assets/'+id+'.png';
+await sharp({create:{width,height,channels:4,background:{r:0,g:0,b:0,alpha:0}}}).composite([{input:image,left,top}]).png().toFile(path.join(base,file));
+rows.push({id,file,width,height,pivot:{x:width/2,y:100},season:r.key.split('_')[1],status:'candidate',prompt:r.prompt,references:r.references||['references/현재_성벽밖_밋밋함.jpg'],rawPath:r.rawPath,native,originalDimensions:{width:rw,height:rh},transform:{alphaBounds:{left:minx,top:miny,width:cw,height:ch},uniformScale:scale,resized:{width:tw,height:th},offset:{x:left,y:top},artDrawnByCode:false},generator:'built-in image_gen',modelVersion:null,seed:null,qa:{alpha:true,dimensions:true,visual:'pending actual-size inspection',runtimeInstalled:false}});}
+fs.writeFileSync(path.join(base,'records/farmprops.json'),JSON.stringify(rows,null,2));console.log(rows.map(r=>({id:r.id,transform:r.transform})));})();

@@ -1,0 +1,1154 @@
+{
+  "passed": 247,
+  "failed": [],
+  "checks": [
+    {
+      "name": "40 PNGs",
+      "pass": true
+    },
+    {
+      "name": "unique ids",
+      "pass": true
+    },
+    {
+      "name": "24 occupations",
+      "pass": true
+    },
+    {
+      "name": "12 states",
+      "pass": true
+    },
+    {
+      "name": "4 common",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 12197
+      }
+    },
+    {
+      "name": "yard_farmer_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15299
+      }
+    },
+    {
+      "name": "yard_farmer_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_farmer_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15871
+      }
+    },
+    {
+      "name": "yard_baker_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 13422
+      }
+    },
+    {
+      "name": "yard_baker_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_baker_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14501
+      }
+    },
+    {
+      "name": "yard_blacksmith_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15824
+      }
+    },
+    {
+      "name": "yard_blacksmith_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_blacksmith_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 13697
+      }
+    },
+    {
+      "name": "yard_carpenter_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14108
+      }
+    },
+    {
+      "name": "yard_carpenter_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_carpenter_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15219
+      }
+    },
+    {
+      "name": "yard_weaver_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 16424
+      }
+    },
+    {
+      "name": "yard_weaver_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_weaver_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15016
+      }
+    },
+    {
+      "name": "yard_dyer_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14659
+      }
+    },
+    {
+      "name": "yard_dyer_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_dyer_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 16444
+      }
+    },
+    {
+      "name": "yard_tanner_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 16872
+      }
+    },
+    {
+      "name": "yard_tanner_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_tanner_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 17922
+      }
+    },
+    {
+      "name": "yard_brewer_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14782
+      }
+    },
+    {
+      "name": "yard_brewer_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_brewer_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 16006
+      }
+    },
+    {
+      "name": "yard_miller_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15618
+      }
+    },
+    {
+      "name": "yard_miller_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_miller_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 12805
+      }
+    },
+    {
+      "name": "yard_merchant_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14834
+      }
+    },
+    {
+      "name": "yard_merchant_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_merchant_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 17770
+      }
+    },
+    {
+      "name": "yard_shepherd_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14600
+      }
+    },
+    {
+      "name": "yard_shepherd_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_shepherd_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 13381
+      }
+    },
+    {
+      "name": "yard_fisher_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15473
+      }
+    },
+    {
+      "name": "yard_fisher_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_fisher_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14857
+      }
+    },
+    {
+      "name": "yard_hungry_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 13984
+      }
+    },
+    {
+      "name": "yard_hungry_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_hungry_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15223
+      }
+    },
+    {
+      "name": "yard_newcomer_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15034
+      }
+    },
+    {
+      "name": "yard_newcomer_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_newcomer_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14463
+      }
+    },
+    {
+      "name": "yard_prosperous_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 13059
+      }
+    },
+    {
+      "name": "yard_prosperous_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_prosperous_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15206
+      }
+    },
+    {
+      "name": "yard_strained_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15149
+      }
+    },
+    {
+      "name": "yard_strained_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_strained_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 16481
+      }
+    },
+    {
+      "name": "yard_vacant_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 15814
+      }
+    },
+    {
+      "name": "yard_vacant_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_vacant_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_a-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_a-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 14993
+      }
+    },
+    {
+      "name": "yard_winter_a-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_a-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_a-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_a-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_b-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_b-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 16046
+      }
+    },
+    {
+      "name": "yard_winter_b-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_b-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_b-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_winter_b-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_pigsty-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_pigsty-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 3560
+      }
+    },
+    {
+      "name": "yard_pigsty-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_pigsty-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_pigsty-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_pigsty-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_chicken_coop-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_chicken_coop-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 4141
+      }
+    },
+    {
+      "name": "yard_chicken_coop-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_chicken_coop-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_chicken_coop-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_chicken_coop-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_manure-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_manure-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 4060
+      }
+    },
+    {
+      "name": "yard_manure-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_manure-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_manure-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_manure-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "yard_rain_barrel-v1 canvas",
+      "pass": true
+    },
+    {
+      "name": "yard_rain_barrel-v1 transparency",
+      "pass": true,
+      "detail": {
+        "border": 0,
+        "nonzero": 3092
+      }
+    },
+    {
+      "name": "yard_rain_barrel-v1 hash",
+      "pass": true
+    },
+    {
+      "name": "yard_rain_barrel-v1 provenance",
+      "pass": true
+    },
+    {
+      "name": "yard_rain_barrel-v1 anchor",
+      "pass": true
+    },
+    {
+      "name": "yard_rain_barrel-v1 scale",
+      "pass": true
+    },
+    {
+      "name": "01_twelve_occupations_zoom10.png readable PNG",
+      "pass": true
+    },
+    {
+      "name": "02_same_parcels_four_states.png readable PNG",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "reeds_sway_a_sheet",
+    "closure_mae": 0,
+    "steps_mae": [
+      7.468608621834416,
+      7.468608621834416,
+      7.453296802662276,
+      7.453296802662276
+    ],
+    "last_to_first": 7.453296802662276,
+    "max_interior": 7.468608621834416,
+    "loop_pass": true,
+    "fixed_base": true,
+    "tip_displacement_amplitude_px": 3,
+    "outer_border_clear": true
+  },
+  {
+    "id": "reeds_sway_b_sheet",
+    "closure_mae": 0,
+    "steps_mae": [
+      3.4342876625476877,
+      3.4342876625476877,
+      3.437835520492964,
+      3.437835520492964
+    ],
+    "last_to_first": 3.437835520492964,
+    "max_interior": 3.437835520492964,
+    "loop_pass": true,
+    "fixed_base": true,
+    "tip_displacement_amplitude_px": 3,
+    "outer_border_clear": true
+  },
+  {
+    "id": "reeds_sway_c_sheet",
+    "closure_mae": 0,
+    "steps_mae": [
+      5.342287071078529,
+      5.342287071078529,
+      5.330489387595417,
+      5.330489387595417
+    ],
+    "last_to_first": 5.330489387595417,
+    "max_interior": 5.342287071078529,
+    "loop_pass": true,
+    "fixed_base": true,
+    "tip_displacement_amplitude_px": 3,
+    "outer_border_clear": true
+  },
+  {
+    "id": "sparkle_sheet",
+    "closure_mae": 0,
+    "steps_mae": [
+      1.712094056372549,
+      3.4369581035539203,
+      1.7351696537990202,
+      1.7351696537990202,
+      3.4369581035539203,
+      1.712094056372549
+    ],
+    "last_to_first": 1.712094056372549,
+    "max_interior": 3.4369581035539203,
+    "loop_pass": true,
+    "fixed_base": null,
+    "tip_displacement_amplitude_px": null,
+    "outer_border_clear": true
+  },
+  {
+    "id": "fish_ring_sheet",
+    "closure_mae": 0,
+    "steps_mae": [
+      0.14242834286492373,
+      0.9897833265250546,
+      2.49586737472767,
+      3.366040305010893,
+      2.5742715141612216,
+      0.8497378812636164
+    ],
+    "last_to_first": 0.8497378812636164,
+    "max_interior": 3.366040305010893,
+    "loop_pass": true,
+    "fixed_base": null,
+    "tip_displacement_amplitude_px": null,
+    "outer_border_clear": true
+  }
+]

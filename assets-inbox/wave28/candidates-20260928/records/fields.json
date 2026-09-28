@@ -1,0 +1,340 @@
+{
+  "assets": [
+    {
+      "id": "wildflower_small_summer",
+      "size": "small",
+      "season": "summer",
+      "prompt": "Use case: stylized-concept. Make ONE transparent RGBA game ground decal for 14th century southern England. SMALL meadow patch, compact asymmetric three-lobed scatter. Season summer. A few muted red poppies and tiny warm ivory daisies scattered sparsely within short grey olive meadow grass. Flowers are sparse tiny accents, never dense bright polka dots. Hand-painted quiet naturalistic medieval isometric sprite matching muted project references. True 2:1 isometric GROUND PLANE, viewed from above at orthographic elevation 30 degrees. Entire patch lies flat on ground at a single elevation, no vertical soil edge, no mound, no floating island, no rounded grass pedestal, no cloud. Transparent outside irregular wispy alpha edge, no rectangular background or baked checkerboard, no hard diamond edge. Low contrast muted tones, subtle texture readable at 128x64 final pixels. Overall ground patch footprint width twice its depth, centered ground anchor at canvas center. Generous transparent margins. No text, border, buildings, trees, rocks, shadows beneath floating objects. Produce a wide 2:1 canvas if possible. References are palette and ground-plane guidance only; do not reproduce their layout or labels.",
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e7-22a3-7b10-84d2-d9ff61458f6d/exec-5aabf994-8980-430f-92be-60eafc4f4e8a.png",
+      "references": [
+        "references/Wave22_지면유형.jpg",
+        "references/Wave15_사계절.jpg"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "status": "candidate",
+      "native_path": "native/fields/wildflower_small_summer.png",
+      "output_path": "assets/wildflower_small_summer.png",
+      "native_dimensions": [
+        1774,
+        887
+      ],
+      "dimensions": [
+        128,
+        64
+      ],
+      "anchor": [
+        64,
+        32
+      ],
+      "anchor_convention": "canvas-center ground placement; same per-size anchor for all seasons",
+      "transform": {
+        "operation": "uniform Lanczos3 contain resize with transparent padding",
+        "alpha": "generated alpha preserved; no keying or art painting",
+        "source": [
+          1774,
+          887
+        ],
+        "destination": [
+          128,
+          64
+        ]
+      },
+      "qa": {
+        "channels": 4,
+        "transparent_pixels": 6039,
+        "partial_alpha_pixels": 2082,
+        "opaque_pixels": 71,
+        "visual": "Actual-size visual inspection passed: flat ground-plane grass/frost, irregular transparent edges, muted flowers, no pedestal or hard rectangle; seasonal silhouettes vary while placement anchor is stable."
+      },
+      "file": "assets/wildflower_small_summer.png",
+      "width": 128,
+      "height": 64,
+      "pivot": {
+        "x": 64,
+        "y": 32
+      }
+    },
+    {
+      "id": "wildflower_small_autumn",
+      "size": "small",
+      "season": "autumn",
+      "prompt": "Use case: stylized-concept. Make ONE transparent RGBA game ground decal for 14th century southern England. SMALL meadow patch, compact asymmetric three-lobed scatter. Season autumn. Dry dull ochre grass, a few brown seedheads and exposed grey olive ground; no blooming flowers. Hand-painted quiet naturalistic medieval isometric sprite matching muted project references. True 2:1 isometric GROUND PLANE, viewed from above at orthographic elevation 30 degrees. Entire patch lies flat on ground at a single elevation, no vertical soil edge, no mound, no floating island, no rounded grass pedestal, no cloud. Transparent outside irregular wispy alpha edge, no rectangular background or baked checkerboard, no hard diamond edge. Low contrast muted tones, subtle texture readable at 128x64 final pixels. Overall ground patch footprint width twice its depth, centered ground anchor at canvas center. Generous transparent margins. No text, border, buildings, trees, rocks, shadows beneath floating objects. Produce a wide 2:1 canvas if possible. References are palette and ground-plane guidance only; do not reproduce their layout or labels.",
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e7-22a3-7b10-84d2-d9ff61458f6d/exec-3ccdae1d-7756-4738-af93-2c0524a3322a.png",
+      "references": [
+        "references/Wave22_지면유형.jpg",
+        "references/Wave15_사계절.jpg"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "status": "candidate",
+      "native_path": "native/fields/wildflower_small_autumn.png",
+      "output_path": "assets/wildflower_small_autumn.png",
+      "native_dimensions": [
+        1774,
+        887
+      ],
+      "dimensions": [
+        128,
+        64
+      ],
+      "anchor": [
+        64,
+        32
+      ],
+      "anchor_convention": "canvas-center ground placement; same per-size anchor for all seasons",
+      "transform": {
+        "operation": "uniform Lanczos3 contain resize with transparent padding",
+        "alpha": "generated alpha preserved; no keying or art painting",
+        "source": [
+          1774,
+          887
+        ],
+        "destination": [
+          128,
+          64
+        ]
+      },
+      "qa": {
+        "channels": 4,
+        "transparent_pixels": 6049,
+        "partial_alpha_pixels": 2077,
+        "opaque_pixels": 66,
+        "visual": "Actual-size visual inspection passed: flat ground-plane grass/frost, irregular transparent edges, muted flowers, no pedestal or hard rectangle; seasonal silhouettes vary while placement anchor is stable."
+      },
+      "file": "assets/wildflower_small_autumn.png",
+      "width": 128,
+      "height": 64,
+      "pivot": {
+        "x": 64,
+        "y": 32
+      }
+    },
+    {
+      "id": "wildflower_small_winter",
+      "size": "small",
+      "season": "winter",
+      "prompt": "Use case: stylized-concept. Make ONE transparent RGBA game ground decal for 14th century southern England. SMALL meadow patch, compact asymmetric three-lobed scatter. Season winter. A wafer-thin broken dusting of grey ivory frost over short dormant olive-brown grass, with several grass tips visible; frost is a flat ground surface, never snow mounds. Hand-painted quiet naturalistic medieval isometric sprite matching muted project references. True 2:1 isometric GROUND PLANE, viewed from above at orthographic elevation 30 degrees. Entire patch lies flat on ground at a single elevation, no vertical soil edge, no mound, no floating island, no rounded grass pedestal, no cloud. Transparent outside irregular wispy alpha edge, no rectangular background or baked checkerboard, no hard diamond edge. Low contrast muted tones, subtle texture readable at 128x64 final pixels. Overall ground patch footprint width twice its depth, centered ground anchor at canvas center. Generous transparent margins. No text, border, buildings, trees, rocks, shadows beneath floating objects. Produce a wide 2:1 canvas if possible. References are palette and ground-plane guidance only; do not reproduce their layout or labels.",
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e7-22a3-7b10-84d2-d9ff61458f6d/exec-5dff4312-3cfb-460c-b72b-06c28f862812.png",
+      "references": [
+        "references/Wave22_지면유형.jpg",
+        "references/Wave15_사계절.jpg"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "status": "candidate",
+      "native_path": "native/fields/wildflower_small_winter.png",
+      "output_path": "assets/wildflower_small_winter.png",
+      "native_dimensions": [
+        1774,
+        887
+      ],
+      "dimensions": [
+        128,
+        64
+      ],
+      "anchor": [
+        64,
+        32
+      ],
+      "anchor_convention": "canvas-center ground placement; same per-size anchor for all seasons",
+      "transform": {
+        "operation": "uniform Lanczos3 contain resize with transparent padding",
+        "alpha": "generated alpha preserved; no keying or art painting",
+        "source": [
+          1774,
+          887
+        ],
+        "destination": [
+          128,
+          64
+        ]
+      },
+      "qa": {
+        "channels": 4,
+        "transparent_pixels": 6079,
+        "partial_alpha_pixels": 2022,
+        "opaque_pixels": 91,
+        "visual": "Actual-size visual inspection passed: flat ground-plane grass/frost, irregular transparent edges, muted flowers, no pedestal or hard rectangle; seasonal silhouettes vary while placement anchor is stable."
+      },
+      "file": "assets/wildflower_small_winter.png",
+      "width": 128,
+      "height": 64,
+      "pivot": {
+        "x": 64,
+        "y": 32
+      }
+    },
+    {
+      "id": "wildflower_large_summer",
+      "size": "large",
+      "season": "summer",
+      "prompt": "Use case: stylized-concept. Make ONE transparent RGBA game ground decal for 14th century southern England. LARGE meadow patch, wider distinctly asymmetrical five-lobed scattered distribution with open gaps, not a scaled duplicate of the small patch. Season summer. A few muted red poppies and tiny warm ivory daisies scattered sparsely within short grey olive meadow grass. Flowers are sparse tiny accents, never dense bright polka dots. Hand-painted quiet naturalistic medieval isometric sprite matching muted project references. True 2:1 isometric GROUND PLANE, viewed from above at orthographic elevation 30 degrees. Entire patch lies flat on ground at a single elevation, no vertical soil edge, no mound, no floating island, no rounded grass pedestal, no cloud. Transparent outside irregular wispy alpha edge, no rectangular background or baked checkerboard, no hard diamond edge. Low contrast muted tones, subtle texture readable at 256x128 final pixels. Overall ground patch footprint width twice its depth, centered ground anchor at canvas center. Generous transparent margins. No text, border, buildings, trees, rocks, shadows beneath floating objects. Produce a wide 2:1 canvas if possible. References are palette and ground-plane guidance only; do not reproduce their layout or labels.",
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e7-22a3-7b10-84d2-d9ff61458f6d/exec-0561ea25-beee-4a3d-b38b-e3a3f24c047d.png",
+      "references": [
+        "references/Wave22_지면유형.jpg",
+        "references/Wave15_사계절.jpg"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "status": "candidate",
+      "native_path": "native/fields/wildflower_large_summer.png",
+      "output_path": "assets/wildflower_large_summer.png",
+      "native_dimensions": [
+        1774,
+        887
+      ],
+      "dimensions": [
+        256,
+        128
+      ],
+      "anchor": [
+        128,
+        64
+      ],
+      "anchor_convention": "canvas-center ground placement; same per-size anchor for all seasons",
+      "transform": {
+        "operation": "uniform Lanczos3 contain resize with transparent padding",
+        "alpha": "generated alpha preserved; no keying or art painting",
+        "source": [
+          1774,
+          887
+        ],
+        "destination": [
+          256,
+          128
+        ]
+      },
+      "qa": {
+        "channels": 4,
+        "transparent_pixels": 22817,
+        "partial_alpha_pixels": 9714,
+        "opaque_pixels": 237,
+        "visual": "Actual-size visual inspection passed: flat ground-plane grass/frost, irregular transparent edges, muted flowers, no pedestal or hard rectangle; seasonal silhouettes vary while placement anchor is stable."
+      },
+      "file": "assets/wildflower_large_summer.png",
+      "width": 256,
+      "height": 128,
+      "pivot": {
+        "x": 128,
+        "y": 64
+      }
+    },
+    {
+      "id": "wildflower_large_autumn",
+      "size": "large",
+      "season": "autumn",
+      "prompt": "Use case: stylized-concept. Make ONE transparent RGBA game ground decal for 14th century southern England. LARGE meadow patch, wider distinctly asymmetrical five-lobed scattered distribution with open gaps, not a scaled duplicate of the small patch. Season autumn. Dry dull ochre grass, a few brown seedheads and exposed grey olive ground; no blooming flowers. Hand-painted quiet naturalistic medieval isometric sprite matching muted project references. True 2:1 isometric GROUND PLANE, viewed from above at orthographic elevation 30 degrees. Entire patch lies flat on ground at a single elevation, no vertical soil edge, no mound, no floating island, no rounded grass pedestal, no cloud. Transparent outside irregular wispy alpha edge, no rectangular background or baked checkerboard, no hard diamond edge. Low contrast muted tones, subtle texture readable at 256x128 final pixels. Overall ground patch footprint width twice its depth, centered ground anchor at canvas center. Generous transparent margins. No text, border, buildings, trees, rocks, shadows beneath floating objects. Produce a wide 2:1 canvas if possible. References are palette and ground-plane guidance only; do not reproduce their layout or labels.",
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e7-22a3-7b10-84d2-d9ff61458f6d/exec-ac84f408-5d35-4eb6-9748-285781ac425d.png",
+      "references": [
+        "references/Wave22_지면유형.jpg",
+        "references/Wave15_사계절.jpg"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "status": "candidate",
+      "native_path": "native/fields/wildflower_large_autumn.png",
+      "output_path": "assets/wildflower_large_autumn.png",
+      "native_dimensions": [
+        1774,
+        887
+      ],
+      "dimensions": [
+        256,
+        128
+      ],
+      "anchor": [
+        128,
+        64
+      ],
+      "anchor_convention": "canvas-center ground placement; same per-size anchor for all seasons",
+      "transform": {
+        "operation": "uniform Lanczos3 contain resize with transparent padding",
+        "alpha": "generated alpha preserved; no keying or art painting",
+        "source": [
+          1774,
+          887
+        ],
+        "destination": [
+          256,
+          128
+        ]
+      },
+      "qa": {
+        "channels": 4,
+        "transparent_pixels": 20904,
+        "partial_alpha_pixels": 11705,
+        "opaque_pixels": 159,
+        "visual": "Actual-size visual inspection passed: flat ground-plane grass/frost, irregular transparent edges, muted flowers, no pedestal or hard rectangle; seasonal silhouettes vary while placement anchor is stable."
+      },
+      "file": "assets/wildflower_large_autumn.png",
+      "width": 256,
+      "height": 128,
+      "pivot": {
+        "x": 128,
+        "y": 64
+      }
+    },
+    {
+      "id": "wildflower_large_winter",
+      "size": "large",
+      "season": "winter",
+      "prompt": "Use case: stylized-concept. Make ONE transparent RGBA game ground decal for 14th century southern England. LARGE meadow patch, wider distinctly asymmetrical five-lobed scattered distribution with open gaps, not a scaled duplicate of the small patch. Season winter. A wafer-thin broken dusting of grey ivory frost over short dormant olive-brown grass, with several grass tips visible; frost is a flat ground surface, never snow mounds. Hand-painted quiet naturalistic medieval isometric sprite matching muted project references. True 2:1 isometric GROUND PLANE, viewed from above at orthographic elevation 30 degrees. Entire patch lies flat on ground at a single elevation, no vertical soil edge, no mound, no floating island, no rounded grass pedestal, no cloud. Transparent outside irregular wispy alpha edge, no rectangular background or baked checkerboard, no hard diamond edge. Low contrast muted tones, subtle texture readable at 256x128 final pixels. Overall ground patch footprint width twice its depth, centered ground anchor at canvas center. Generous transparent margins. No text, border, buildings, trees, rocks, shadows beneath floating objects. Produce a wide 2:1 canvas if possible. References are palette and ground-plane guidance only; do not reproduce their layout or labels.",
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e7-22a3-7b10-84d2-d9ff61458f6d/exec-77fc2635-4788-4ac1-bb07-0e551729e98c.png",
+      "references": [
+        "references/Wave22_지면유형.jpg",
+        "references/Wave15_사계절.jpg"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "status": "candidate",
+      "native_path": "native/fields/wildflower_large_winter.png",
+      "output_path": "assets/wildflower_large_winter.png",
+      "native_dimensions": [
+        1774,
+        887
+      ],
+      "dimensions": [
+        256,
+        128
+      ],
+      "anchor": [
+        128,
+        64
+      ],
+      "anchor_convention": "canvas-center ground placement; same per-size anchor for all seasons",
+      "transform": {
+        "operation": "uniform Lanczos3 contain resize with transparent padding",
+        "alpha": "generated alpha preserved; no keying or art painting",
+        "source": [
+          1774,
+          887
+        ],
+        "destination": [
+          256,
+          128
+        ]
+      },
+      "qa": {
+        "channels": 4,
+        "transparent_pixels": 22254,
+        "partial_alpha_pixels": 10201,
+        "opaque_pixels": 313,
+        "visual": "Actual-size visual inspection passed: flat ground-plane grass/frost, irregular transparent edges, muted flowers, no pedestal or hard rectangle; seasonal silhouettes vary while placement anchor is stable."
+      },
+      "file": "assets/wildflower_large_winter.png",
+      "width": 256,
+      "height": 128,
+      "pivot": {
+        "x": 128,
+        "y": 64
+      }
+    }
+  ]
+}

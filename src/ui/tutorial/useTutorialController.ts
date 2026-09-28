@@ -43,6 +43,11 @@ export type GoalCard = {
   readonly status: "active" | "done" | "already";
   readonly help: string | null;
   readonly hasTarget: boolean;
+  /**
+   * UI-6c: a foldable card (the chapter's) sits as a one-line chip — its title and count — and opens (its reason and
+   * button) when pressed or when this key changes (the next goal); undefined = always open.
+   */
+  readonly foldKey?: string;
 };
 
 type Transition = { readonly id: string; readonly title: string; readonly already: boolean; readonly until: number };
@@ -296,7 +301,8 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
     const reached = goals.filter(entry => entry.reachedTick !== null).length;
     if (goals.length > 0) cards.push({ key: "chapter", title: CHAPTER_COPY.card(chapter),
       why: next === undefined ? CHAPTER_COPY.reached(CHAPTER_COPY.goals[goals.at(-1)?.id ?? ""] ?? "") : CHAPTER_COPY.goals[next.id] ?? next.id,
-      progress: { current: reached, target: goals.length }, ctaLabel: CHAPTER_COPY.cta, status: "active", help: null, hasTarget: false });
+      progress: { current: reached, target: goals.length }, ctaLabel: CHAPTER_COPY.cta, status: "active", help: null, hasTarget: false,
+      foldKey: next?.id ?? "reached" });
   }
   if (goal !== null) {
     const next = goal.criteria.find(item => !item.met) ?? goal.criteria[0];

@@ -1,0 +1,12 @@
+const fs=require('node:fs'),crypto=require('node:crypto');
+const sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const root='/Users/rexxa/github/feudal-lord-simulator/output/astra-wave26-v1';
+const hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+(async()=>{const ref=await sharp(root+'/references/house_l2-v2.png').ensureAlpha().raw().toBuffer(),regs=JSON.parse(fs.readFileSync(root+'/native/l2/registration.json'));let audit=[];
+for(const reg of regs){let p=root+'/assets/house_l2_'+reg.id+'-v1.png',base=await sharp(p).ensureAlpha().raw().toBuffer();let mismatch=0;for(const c of reg.groundContactMask)for(let y=c.yStart;y<137;y++){let k=(y*137+c.x)*4;for(let j=0;j<4;j++)if(base[k+j]!==ref[k+j])mismatch++;}
+let states=[];for(const state of ['weathered','fresh','snow','boarded']){let name='house_l2_'+reg.id+'_'+state+'-v1.png',q=root+'/assets/'+name;if(!fs.existsSync(q))continue;let a=await sharp(q).ensureAlpha().raw().toBuffer(),outside=0,contact=0;for(let k=3;k<a.length;k+=4)if(a[k]&&base[k]===0)outside++;for(const c of reg.groundContactMask)for(let y=c.yStart;y<137;y++)if(a[(y*137+c.x)*4+3])contact++;
+let extra={};if(state==='snow'){let native=root+'/native/l2/'+reg.id+'-snow.png';let raw=await sharp(native).extract(reg.crop).resize(reg.target.width,reg.target.height).ensureAlpha().raw().toBuffer();let denominator=0,numerator=0,weighted=0;for(let y=0;y<reg.target.height;y++)for(let x=0;x<reg.target.width;x++){let pos=((y+reg.target.top)*137+x+reg.target.left)*4,j=(y*reg.target.width+x)*4;if(y+reg.target.top<86&&raw[j+3]>=128&&base[pos+3]>=128){denominator++;if(a[pos+3]>=128)numerator++;weighted+=a[pos+3]/255;}}
+extra={snowRoofMaskMethod:'Native snow rendering includes roof substrate; its alpha>=128, within y<86 final canvas and final base alpha>=128 is denominator. Final overlay alpha>=128 is numerator.',snowRoofPixels:denominator,snowCoveredPixels:numerator,snowCoverage:numerator/denominator,snowWeightedCoverage:weighted/denominator};}
+states.push({state,file:name,sha256:hash(q),exteriorAlphaNonzero:outside,contactAlphaNonzero:contact,...extra});}
+audit.push({id:reg.id,canvas:[137,137],sourceContactRgbaMismatch:mismatch,baseSha256:hash(p),groundContactAnchor:reg.groundContactAnchor,states});}
+fs.writeFileSync(root+'/native/l2/final-audit.json',JSON.stringify(audit,null,2));console.log(JSON.stringify(audit,null,2));})();

@@ -1,0 +1,224 @@
+[
+  {
+    "id": "reeds_sway_a_sheet",
+    "file": "assets/reeds_sway_a_sheet-v1.png",
+    "frame_width": 96,
+    "frame_height": 96,
+    "frame_count": 4,
+    "sheet_width": 384,
+    "sheet_height": 96,
+    "layout": "horizontal",
+    "fps": 4,
+    "loop": true,
+    "repeat_x": false,
+    "repeat_y": false,
+    "alpha_baked_max": 255,
+    "recommended_alpha": 1,
+    "blend": "source-over",
+    "anchor_x": 57.05168820341809,
+    "anchor_y": 87,
+    "preview_frame": 0,
+    "notes": "Original reed bounds and roots registered; bottom16 rows fixed; tips sway3px.",
+    "prompt": "Use case: precise-object-edit. Create a clean transparent RGBA game sprite from supplied reed clump A. Keep exactly the same reed identity, muted olive ochre painterly dry-brush style, upright leaf and seed-head silhouette, top/side/bottom extent and base location as this reference. Only subtly refine the existing painted strokes, no change of pose and no extra stems or scenery. One stationary clump alone centered on transparent canvas; no shadow floor, no water, no text. This is a structural base for a 96x96 animation, preserve all proportions and original reed root point. Do not draw multiple frames.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e8-7ba3-7b31-84c1-fd6298199e72/exec-a3ef717a-291d-4602-94a6-0870a106366c.png",
+    "source_sha256": "387e74b04f514f66f2e3e29cb3be1947a65966b8b69de6e98f10c50d7f352193",
+    "sha256": "3496bceb5837d946a3397b7a43fa25907da10c3f7e8e91ff864a12fe068d8a35",
+    "processing": {
+      "alpha_clean": "a<240 or saturated fringe RGB spread>130 removed; zeros normalized",
+      "registration_box": [
+        8,
+        8,
+        80,
+        80
+      ],
+      "root_registration": {
+        "target_x": 57.05168820341809,
+        "registered_x": 57.05177038626609,
+        "lower_only_shift": 0.462051898300615
+      },
+      "source_bbox": [
+        113,
+        89,
+        1204,
+        1182
+      ],
+      "animation": "x sampling shift=3*sin(2pi*t)*heightWeight^1.5, y>=80 fixed"
+    }
+  },
+  {
+    "id": "reeds_sway_b_sheet",
+    "file": "assets/reeds_sway_b_sheet-v1.png",
+    "frame_width": 96,
+    "frame_height": 96,
+    "frame_count": 4,
+    "sheet_width": 384,
+    "sheet_height": 96,
+    "layout": "horizontal",
+    "fps": 4,
+    "loop": true,
+    "repeat_x": false,
+    "repeat_y": false,
+    "alpha_baked_max": 255,
+    "recommended_alpha": 1,
+    "blend": "source-over",
+    "anchor_x": 43.542258134963966,
+    "anchor_y": 87,
+    "preview_frame": 0,
+    "notes": "Original reed bounds and roots registered; bottom16 rows fixed; tips sway3px.",
+    "prompt": "Use case: precise-object-edit. Create a clean transparent RGBA game sprite from supplied reed clump B. Keep exactly same reed identity, muted olive ochre painterly dry-brush style, low broad fan-shaped seed-head silhouette, top/side/bottom extent and root location as reference. Only subtly refine painted strokes, no change of pose or proportions and no extra stems or scenery. One stationary clump on transparent canvas; no shadow floor, no water, no text. Structural base for 96x96 animation preserving original silhouette, shape and footprint. Do not draw multiple frames.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e8-7ba3-7b31-84c1-fd6298199e72/exec-bd3b1308-d2e6-49b2-9f36-defe1c3843bd.png",
+    "source_sha256": "483714926822064fd4ff0cf2160e2c9bbc764f4d48fdc7236c448bf0379a23ab",
+    "sha256": "ef97b010046ffa6198bbdc255a9cc34fc5510e2f4334301d20877a2bd57de782",
+    "processing": {
+      "alpha_clean": "a<240 or saturated fringe RGB spread>130 removed; zeros normalized",
+      "registration_box": [
+        8,
+        44,
+        80,
+        44
+      ],
+      "root_registration": {
+        "target_x": 43.542258134963966,
+        "registered_x": 43.535683126853954,
+        "lower_only_shift": -3.283184362202306
+      },
+      "source_bbox": [
+        95,
+        511,
+        1221,
+        1114
+      ],
+      "animation": "x sampling shift=3*sin(2pi*t)*heightWeight^1.5, y>=80 fixed"
+    }
+  },
+  {
+    "id": "reeds_sway_c_sheet",
+    "file": "assets/reeds_sway_c_sheet-v1.png",
+    "frame_width": 96,
+    "frame_height": 96,
+    "frame_count": 4,
+    "sheet_width": 384,
+    "sheet_height": 96,
+    "layout": "horizontal",
+    "fps": 4,
+    "loop": true,
+    "repeat_x": false,
+    "repeat_y": false,
+    "alpha_baked_max": 255,
+    "recommended_alpha": 1,
+    "blend": "source-over",
+    "anchor_x": 50.73512035010941,
+    "anchor_y": 87,
+    "preview_frame": 0,
+    "notes": "Original reed bounds and roots registered; bottom16 rows fixed; tips sway3px.",
+    "prompt": "Use case: precise-object-edit. Clean transparent RGBA sprite refinement of supplied reed clump C. Preserve exactly its narrow tall upright silhouette, every principal ochre plume, muted olive leaves, clump height width and root point. Same subdued hand-painted dry brush game style, not photoreal. Only subtle refinement of existing strokes. No extra stems, no soil, no water, no environment, no text. Transparent canvas with one centered stationary clump. Structural base for 96x96 animation, so preserve identical composition proportions and footprint. Do not draw multiple frames.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e8-7ba3-7b31-84c1-fd6298199e72/exec-a5dd278e-55b6-4100-a43a-096550930c1f.png",
+    "source_sha256": "32bc89babe3e9cbf7380f49741bd62c45bf1e48067bb2011a6ee6755f8f93aa5",
+    "sha256": "dfe9920bf896f4994855c9e627e93e12d90f692df86c71a04aa1f8312a1347e8",
+    "processing": {
+      "alpha_clean": "a<240 or saturated fringe RGB spread>130 removed; zeros normalized",
+      "registration_box": [
+        22,
+        8,
+        52,
+        80
+      ],
+      "root_registration": {
+        "target_x": 50.73512035010941,
+        "registered_x": 50.73630608312689,
+        "lower_only_shift": -0.6755030157912358
+      },
+      "source_bbox": [
+        305,
+        84,
+        950,
+        1172
+      ],
+      "animation": "x sampling shift=3*sin(2pi*t)*heightWeight^1.5, y>=80 fixed"
+    }
+  },
+  {
+    "id": "sparkle_sheet",
+    "file": "assets/sparkle_sheet-v1.png",
+    "frame_width": 32,
+    "frame_height": 32,
+    "frame_count": 6,
+    "sheet_width": 192,
+    "sheet_height": 32,
+    "layout": "horizontal",
+    "fps": 6,
+    "loop": true,
+    "repeat_x": false,
+    "repeat_y": false,
+    "alpha_baked_max": 255,
+    "recommended_alpha": 0.4,
+    "blend": "source-over",
+    "anchor_x": 16,
+    "anchor_y": 16,
+    "preview_frame": 0,
+    "notes": "One small painterly sun glimmer with periodic brightness.",
+    "prompt": "Use case: stylized-concept. Single tiny natural sunlight glimmer on flat pond water, rendered as isolated transparent game overlay. Reference image is STYLE/COLOR reference only: restrained painterly gray-teal water, soft chalky brush texture. Paint one small irregular pale cream fleck with two short horizontal broken brushstrokes nearby, no star symbol, no lens flare, no broad glow and no underlying water or background. Transparent RGBA everywhere outside these few painted dabs. Intended final sprite only32x32pixels, simple legible painterly accents. One centered motif occupying middle half canvas with wide fully transparent margins; no text, no frame sheet.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e8-7ba3-7b31-84c1-fd6298199e72/exec-e615a5a7-30c7-4968-ae6a-fb7473887771.png",
+    "source_sha256": "c1095b2e0005916cc58a4ebbf51326102b22a3af1a75423f45e35e39d91b8adf",
+    "sha256": "8b289179247b200b6637ff4620cabb4872795320344f0a240968f0b4708313af",
+    "processing": {
+      "alpha_clean": "a<240 or saturated fringe RGB spread>130 removed; zeros normalized",
+      "registration_box": [
+        5,
+        10,
+        22,
+        10
+      ],
+      "root_registration": null,
+      "source_bbox": [
+        465,
+        584,
+        795,
+        716
+      ],
+      "animation": "alpha=.35+.65*(.5+.5*cos(2pi*t))"
+    }
+  },
+  {
+    "id": "fish_ring_sheet",
+    "file": "assets/fish_ring_sheet-v1.png",
+    "frame_width": 48,
+    "frame_height": 24,
+    "frame_count": 6,
+    "sheet_width": 288,
+    "sheet_height": 24,
+    "layout": "horizontal",
+    "fps": 6,
+    "loop": true,
+    "repeat_x": false,
+    "repeat_y": false,
+    "alpha_baked_max": 210,
+    "recommended_alpha": 0.45,
+    "blend": "source-over",
+    "anchor_x": 24,
+    "anchor_y": 12,
+    "preview_frame": 3,
+    "notes": "Occasional expanding quiet ring. Frame0 intentionally blank; preview3.",
+    "prompt": "Use case: stylized-concept. Isolated transparent game overlay: one quiet elliptical water ripple where a small unseen fish has just surfaced. Same soft muted dry-brush painterly language and bluegray/offwhite water accents as style reference. Draw one slender broken elliptical circular ring viewed at2:1isometric foreshortening, small imperfect secondary arc, irregular softly painted edge and large transparent interior. NO fish body, NO splash spikes, NO droplets, no opaque water, no blue disk, no scenery, no text. Single motif on transparent RGBA canvas, centered with wide clear margins. Will be downsampled to48x24sprite and animated expansion/fade from this one painting, so strong simple low-contrast brush ring, not vector icon and not photoreal.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e8-7ba3-7b31-84c1-fd6298199e72/exec-29977c2b-a420-44b0-a2c5-64cff9d9c3fd.png",
+    "source_sha256": "de7d0425bace7dab9ee6cb8f9c1ee143cea7b446926842015ef818e839d901f2",
+    "sha256": "879173f6913337fe13fd7292072bf0b5dab0149fe791b1371d45af0537dc5b7a",
+    "processing": {
+      "alpha_clean": "a<240 or saturated fringe RGB spread>130 removed; zeros normalized",
+      "registration_box": [
+        3,
+        3,
+        42,
+        18
+      ],
+      "root_registration": null,
+      "source_bbox": [
+        134,
+        251,
+        1593,
+        658
+      ],
+      "animation": "scale=.25+.75*t; alpha=sin(pi*t)^2, blank t=0/1"
+    }
+  }
+]

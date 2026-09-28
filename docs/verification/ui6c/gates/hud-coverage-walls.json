@@ -1,0 +1,75 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "threshold": 24,
+ "budgets": {
+  "normal": [
+   6,
+   8
+  ],
+  "build": [
+   15,
+   20
+  ],
+  "placement": [
+   6,
+   9
+  ],
+  "zone": [
+   8,
+   12
+  ],
+  "selection": [
+   18,
+   24
+  ],
+  "ledger": [
+   25,
+   30
+  ]
+ },
+ "pass": true,
+ "rows": [
+  {
+   "resolution": "1280x800",
+   "state": "normal",
+   "percent": 5.7,
+   "canvasTags": 1,
+   "tagPercent": 0.4,
+   "view": "chapter2-wall-works",
+   "beforeTags": {
+    "tags": 32,
+    "percent": 5.8
+   },
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "normal",
+   "percent": 2.9,
+   "canvasTags": 1,
+   "tagPercent": 0.2,
+   "view": "chapter2-wall-works",
+   "beforeTags": {
+    "tags": 32,
+    "percent": 2.9
+   },
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "normal",
+   "percent": 6.2,
+   "canvasTags": 1,
+   "tagPercent": 0.4,
+   "view": "chapter2-wall-works",
+   "beforeTags": {
+    "tags": 32,
+    "percent": 6.1
+   },
+   "budget": 8,
+   "pass": true
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "shore_foam_sheet",
+    "edge_max": 0,
+    "alpha_top_bottom_zero": true,
+    "temporal_steps": [
+      15.986231246649101,
+      4.7612564984489705,
+      10.0296785840801,
+      10.013921460918299,
+      4.76325916963461,
+      16.04834433162915
+    ],
+    "closure_exact": true,
+    "loop_seam_pass": true
+  },
+  {
+    "id": "ice_edge",
+    "edge_max": 0,
+    "alpha_top_bottom_zero": true,
+    "temporal_steps": [
+      0
+    ],
+    "closure_exact": true,
+    "loop_seam_pass": true
+  }
+]

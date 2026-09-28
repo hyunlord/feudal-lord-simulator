@@ -35,7 +35,12 @@ test('translator ignores native-control keydown but always releases held camera 
   Object.setPrototypeOf(button, (globalThis as unknown as { Element: { prototype: object } }).Element.prototype);
   const pans: unknown[] = [];
   let camera = { zoom: 1, panX: 0, panY: 0 };
+  // UI-6c: the key times on the frames' clock. With the real performance.now() the keyup landed wherever the process
+  // clock stood; on a loaded DGX it fell 1.7–2.0 s in, inside the last frame's 300 ms release glide, and that frame
+  // panned (reproduced with a busy-wait before the test: fails from 1.6 s of delay, passes with this clock).
+  let clock = 984;
   const translator = createMouseKeyboardTranslator({
+    now: () => clock,
     bounds: () => ({ left: 0, top: 0, width: 800, height: 600 }), camera: () => camera, world: () => ({ minX: -4000, minY: -4000, maxX: 4000, maxY: 4000 }),
     armed: () => ({ zone: false, zonePolygon: false, palisade: false, road: false }),
     emit: intent => { if (intent.kind === 'pan') { pans.push(intent); camera = { ...camera, panX: camera.panX + intent.dx }; } return true; },
@@ -50,9 +55,12 @@ test('translator ignores native-control keydown but always releases held camera 
     // Then: nothing moved, and nothing is held
     assert.equal(down.preventDefault, false);
     assert.deepEqual(pans, []);
+    clock = 1_000;
     translator.keyDown({ code: 'KeyD', key: 'd', target: null });
     translator.frame(1_016, 1_000, { width: 800, height: 600 });
     assert.equal(pans.length, 1, 'control: the same key on the map pans');
+    // Released just after that frame: the last frame is past the 300 ms release glide, so a pan there means still held.
+    clock = 1_016;
     translator.keyUp({ code: 'KeyD', key: 'd', target: button as unknown as EventTarget });
     translator.frame(2_000, 1_984, { width: 800, height: 600 });
     assert.equal(pans.length, 1, 'keyup on a control still releases the held key');

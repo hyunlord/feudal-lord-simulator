@@ -1,0 +1,257 @@
+{
+  "status": "candidate",
+  "tool": "builtin imagegen",
+  "calls": 20,
+  "modelVersion": null,
+  "seed": null,
+  "installation": "not installed",
+  "canvas": [
+    137,
+    137
+  ],
+  "pivot": "Inherited unchanged canvas coordinates; engine pivot metadata not supplied. Measured lowest source alpha>=16 contact anchor [86,131] is not an asserted engine pivot.",
+  "transforms": [
+    "Base native alpha>10 bounding crop stretched to source alpha>10 rectangle x14,y6,w114,h126.",
+    "Per-column narrow contact RGBA preserved: source alpha>=16 bottom at y>=0.6H, copy bottom-2 through canvas end. Root canonical edge-mask QA may further refine after handoff.",
+    "States use identical base crop/resize and final base alpha/contact clipping.",
+    "Removed neon fringes; snow isolated by high luminance low saturation; fresh by brighter changed pixels; weathered by darker changed pixels or green moss; boarded isolated native boards. All rules reproducible in scripts/l2-overlays.cjs.",
+    "Final overlay alpha below12 zeroed."
+  ],
+  "compatibilityAudit": {
+    "source": "references/Wave20_눈오버레이_기준.png",
+    "snow": "Original L2 long-gable snow shown in supplied sheet. All new roof/eave shapes differ; regenerated individually.",
+    "boarded": "No separate original L2 boarded PNG in supplied reference folder or output filename search. Changed windows/shop openings prevent assuming registration, so regenerated all four."
+  },
+  "verification": {
+    "registration": "native/l2/registration.json",
+    "audit": "native/l2/final-audit.json",
+    "overlay": "native/l2/overlay-qa.json",
+    "visual": "All 4 bases and 16 state composites visually inspected at actual137px. No chimney, no modern glass. c weathered subtler than others.",
+    "limits": [
+      "Offline candidate PNG QA only; no installation or runtime checks.",
+      "Raw state generations include partial substrate in places; deterministic color-difference extraction removes unchanged house pixels, final states are partial effects not whole-house copies.",
+      "e observed front cross-gable rather than strict half-hip."
+    ]
+  },
+  "rows": [
+    {
+      "id": "house_l2_c-v1",
+      "roofMaterial": "thatch",
+      "roofShape": "long gable",
+      "wall": "warm white limewash",
+      "bracing": "vertical rectangular oak frame",
+      "additions": "shop hatch and wooden shutters",
+      "base": {
+        "prompt": "Use case: precise-object-edit. Asset: single isolated painterly isometric medieval house sprite on real transparent RGBA background. Edit target is supplied house. Create variant L2 c: southern England 1300-1450 two-story modest timber house, golden straw THATCH steep gable roof with ridge along same axis as reference, warm ivory white limewash walls, sparse vertical dark oak braces, tiny wooden-shutter windows and simple timber door. NO CHIMNEY, NO glass, no brick, no slate. Preserve exact camera, framing, occupied footprint, bottom ground-contact diamond and ground anchor of reference. Keep the house wholly in the same bounding rectangle. Clear readable hand-painted game sprite, not photoreal, no scenery, no labels. One house only.",
+        "reference": "references/house_l2-v2.png",
+        "native": "native/l2/c-base.png",
+        "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-401a17dd-5e3d-48b1-95a8-a5d0cf21fbf6.png",
+        "final": "assets/house_l2_c-v1.png"
+      },
+      "states": [
+        {
+          "state": "weathered",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 c house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State weathered: isolated irregular green-gray moss patches and narrow cracks and flaking plaster marks, only small aging marks on thatch roof and plaster. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave only the requested effect marks at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/c-base.png",
+          "native": "native/l2/c-weathered.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-b33487be-4d6d-4290-9ec8-c72efc72a7d9.png",
+          "final": "assets/house_l2_c_weathered-v1.png"
+        },
+        {
+          "state": "fresh",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 c house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State fresh: isolated narrow bright straw repair tufts and pale limewash repair brushstrokes and fresh wood highlights, only small maintenance marks. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave only the requested effect marks at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/c-base.png",
+          "native": "native/l2/c-fresh.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-32c58bce-da1a-47ef-9ad3-771e90c99610.png",
+          "final": "assets/house_l2_c_fresh-v1.png"
+        },
+        {
+          "state": "snow",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 c house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State snow: only irregular white snow caps covering 70 percent of roof surface, leave scattered thatch gaps, snow on eaves; no snow on ground. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave only the requested effect marks at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/c-base.png",
+          "native": "native/l2/c-snow.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-966f6f22-8237-4a0d-9b62-c45d2ab29a44.png",
+          "final": "assets/house_l2_c_snow-v1.png"
+        },
+        {
+          "state": "boarded",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 c house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State boarded: only thick dark rough timber crossed X planks over EACH visible door and window including shop opening; clearly sturdy broad nailed boards. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave only the requested effect marks at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/c-base.png",
+          "native": "native/l2/c-boarded.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-3d7b4fcb-1421-4c66-9838-622b50f1aa44.png",
+          "final": "assets/house_l2_c_boarded-v1.png"
+        }
+      ]
+    },
+    {
+      "id": "house_l2_d-v1",
+      "roofMaterial": "thatch",
+      "roofShape": "hipped",
+      "wall": "ochre limewash",
+      "bracing": "diagonal and square oak frame",
+      "additions": "small thatched lean-to",
+      "base": {
+        "prompt": "Use case: precise-object-edit. Single transparent RGBA painterly isometric game house sprite. Input is reference style and exact footprint/ground anchor. Create L2 variant d: broad hipped THATCH roof, earthy warm ochre limewash, square-grid dark oak timber bracing, small attached lean-to inside original footprint. Southern England 1300-1450, modest two-story timber house. NO CHIMNEY, no glass, no brick, no slate, no scenery or text. Preserve exact reference camera, framing, 1x1 ground footprint and lowest ground-contact diamond. House wholly within same relative bounding rectangle, actual transparent empty exterior. Distinct architecture but same house scale and painterly game style. One house only.",
+        "reference": "references/house_l2-v2.png",
+        "native": "native/l2/d-base.png",
+        "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-f7661570-74b1-4239-bfae-623a0e4b5393.png",
+        "final": "assets/house_l2_d-v1.png"
+      },
+      "states": [
+        {
+          "state": "weathered",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 d house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State weathered: isolated green-gray moss patches and tiny flaking plaster/crack marks only; do not include timber framework or foundation. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/d-base.png",
+          "native": "native/l2/d-weathered.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-1bffa704-debe-45e5-b6b5-37e432e0650e.png",
+          "final": "assets/house_l2_d_weathered-v1.png"
+        },
+        {
+          "state": "fresh",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 d house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State fresh: isolated pale-golden straw repair tufts on thatch or small warm clean tile highlights on tiled roof, limewash repair brushstrokes on walls; no complete timber framework or foundation. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/d-base.png",
+          "native": "native/l2/d-fresh.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-c7ee558e-c6cd-43cb-a158-9557437a7c54.png",
+          "final": "assets/house_l2_d_fresh-v1.png"
+        },
+        {
+          "state": "snow",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 d house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State snow: only irregular white snow caps covering 70 percent of roof surface, leave scattered roofing gaps, snow on eaves; no snow on ground. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/d-base.png",
+          "native": "native/l2/d-snow.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-65f0ca34-7a9b-4439-ba76-f588b9650bd5.png",
+          "final": "assets/house_l2_d_snow-v1.png"
+        },
+        {
+          "state": "boarded",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 d house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State boarded: only thick dark rough timber crossed X planks over EACH visible door and window including shop opening; clearly sturdy broad nailed boards; no walls or framework. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/d-base.png",
+          "native": "native/l2/d-boarded.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-3e072648-6cc5-43ae-bca4-dfa4a57850b4.png",
+          "final": "assets/house_l2_d_boarded-v1.png"
+        }
+      ]
+    },
+    {
+      "id": "house_l2_e-v1",
+      "roofMaterial": "thatch",
+      "roofShape": "projecting front cross-gable; prompted half-hip not fully realized",
+      "wall": "muted pale pink limewash",
+      "bracing": "curved oak braces",
+      "additions": "firewood storage bay",
+      "base": {
+        "prompt": "Use case: precise-object-edit. Single transparent RGBA painterly isometric game house sprite. Input is reference style and exact footprint/ground anchor. Create L2 variant e: half-hipped THATCH roof with front gable orientation different from source, pale muted pink limewash, curved oak braces, stored split firewood under eave within footprint. Southern England 1300-1450, modest two-story timber house. NO CHIMNEY, no glass, no brick, no slate, no scenery or text. Preserve exact reference camera, framing, 1x1 ground footprint and lowest ground-contact diamond. House wholly within same relative bounding rectangle, actual transparent empty exterior. Distinct architecture but same house scale and painterly game style. One house only.",
+        "reference": "references/house_l2-v2.png",
+        "native": "native/l2/e-base.png",
+        "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-421d5d63-4594-4446-b347-416b77feba2c.png",
+        "final": "assets/house_l2_e-v1.png"
+      },
+      "states": [
+        {
+          "state": "weathered",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 e house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State weathered: isolated green-gray moss patches and tiny flaking plaster/crack marks only; do not include timber framework or foundation. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/e-base.png",
+          "native": "native/l2/e-weathered.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-28e6531b-602e-4a9d-9dc9-decc49228428.png",
+          "final": "assets/house_l2_e_weathered-v1.png"
+        },
+        {
+          "state": "fresh",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 e house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State fresh: isolated pale-golden straw repair tufts on thatch or small warm clean tile highlights on tiled roof, limewash repair brushstrokes on walls; no complete timber framework or foundation. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/e-base.png",
+          "native": "native/l2/e-fresh.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-34131334-a669-45d2-932d-157607be3c0b.png",
+          "final": "assets/house_l2_e_fresh-v1.png"
+        },
+        {
+          "state": "snow",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 e house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State snow: only irregular white snow caps covering 70 percent of roof surface, leave scattered roofing gaps, snow on eaves; no snow on ground. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/e-base.png",
+          "native": "native/l2/e-snow.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-c2f167a6-d93a-43a7-b6ac-0bf35a51c7de.png",
+          "final": "assets/house_l2_e_snow-v1.png"
+        },
+        {
+          "state": "boarded",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 e house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State boarded: only thick dark rough timber crossed X planks over EACH visible door and window including shop opening; clearly sturdy broad nailed boards; no walls or framework. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/e-base.png",
+          "native": "native/l2/e-boarded.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-ea32d076-c5e7-445d-a452-316ad521b152.png",
+          "final": "assets/house_l2_e_boarded-v1.png"
+        }
+      ]
+    },
+    {
+      "id": "house_l2_f-v1",
+      "roofMaterial": "muted clay tile",
+      "roofShape": "cross-gable",
+      "wall": "warm white limewash",
+      "bracing": "close vertical and diagonal oak braces",
+      "additions": "wood barred windows and door step",
+      "base": {
+        "prompt": "Use case: precise-object-edit. Single transparent RGBA painterly isometric game house sprite. Input is reference style and exact footprint/ground anchor. Create L2 variant f: muted brown terracotta flat CLAY TILE gabled roof ridge rotated to other isometric axis relative to source, warm white limewash with close vertical dark timbers, wooden barred windows and small door step inside footprint. Southern England 1300-1450, modest two-story timber house. NO CHIMNEY, no glass, no brick, no slate, no scenery or text. Preserve exact reference camera, framing, 1x1 ground footprint and lowest ground-contact diamond. House wholly within same relative bounding rectangle, actual transparent empty exterior. Distinct architecture but same house scale and painterly game style. One house only.",
+        "reference": "references/house_l2-v2.png",
+        "native": "native/l2/f-base.png",
+        "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-c0b0cd92-0b04-4228-88a1-f9682a3581b1.png",
+        "final": "assets/house_l2_f-v1.png"
+      },
+      "states": [
+        {
+          "state": "weathered",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 f house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State weathered: isolated green-gray moss patches and tiny flaking plaster/crack marks only; do not include timber framework or foundation. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/f-base.png",
+          "native": "native/l2/f-weathered.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-cdc1400b-0e1e-4a28-9a37-1198980c8883.png",
+          "final": "assets/house_l2_f_weathered-v1.png"
+        },
+        {
+          "state": "fresh",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 f house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State fresh: isolated pale-golden straw repair tufts on thatch or small warm clean tile highlights on tiled roof, limewash repair brushstrokes on walls; no complete timber framework or foundation. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/f-base.png",
+          "native": "native/l2/f-fresh.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-6de85d7f-e851-4334-8eae-d48c5a8acb98.png",
+          "final": "assets/house_l2_f_fresh-v1.png"
+        },
+        {
+          "state": "snow",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 f house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State snow: only irregular white snow caps covering 70 percent of roof surface, leave scattered roofing gaps, snow on eaves; no snow on ground. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/f-base.png",
+          "native": "native/l2/f-snow.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-0fa9061c-5344-4238-ab2a-903adb6c0132.png",
+          "final": "assets/house_l2_f_snow-v1.png"
+        },
+        {
+          "state": "boarded",
+          "prompt": "Use case: precise-object-edit. EDIT TARGET supplied L2 f house, used solely for exact registration. Output a TRANSPARENT RGBA EFFECTS-ONLY OVERLAY aligned pixel-for-pixel to this full square canvas. State boarded: only thick dark rough timber crossed X planks over EACH visible door and window including shop opening; clearly sturdy broad nailed boards; no walls or framework. REMOVE ALL ORIGINAL HOUSE PIXELS from final output: no underlying house, walls, roof, foundation or shadow. Leave ONLY requested effect marks floating at their original coordinates on a fully transparent background. Keep camera/canvas/scale/object anchor exactly. No chimney, no text. Isolated overlay asset, not a new house.",
+          "reference": "native/l2/f-base.png",
+          "native": "native/l2/f-boarded.png",
+          "originalGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-7e30-7112-830c-ab0206a2cb06/exec-81a17dd4-0e90-4d12-bdbc-1f4f3b6e9255.png",
+          "final": "assets/house_l2_f_boarded-v1.png"
+        }
+      ]
+    }
+  ],
+  "canonical_final_hashes": {
+    "assets/house_l2_c-v1.png": "43953b2b3ca182580d93f10871e2cc98c48bc770877598e04c48e1dd3080b56a",
+    "assets/house_l2_c_weathered-v1.png": "6530f7b0c8e0bed2f4391dc12f72ce5df9bf459fdb4acf61d0822256cc627fe6",
+    "assets/house_l2_c_fresh-v1.png": "6ea77b2e7496db250cde7de57d35b238227be8b595feffb3c1dba49a2655861d",
+    "assets/house_l2_c_snow-v1.png": "0fe4749f897314ee3c9c7883b9d1ff587118b18aca16bf01683630369daf2704",
+    "assets/house_l2_c_boarded-v1.png": "61c9dbdc048b710dbafedb93086d43c160e84064ef92386e79a13cc7d902de53",
+    "assets/house_l2_d-v1.png": "f57b86742865fdc2b0aedd38ba1a562a8d1404050596c0c8a00c817834caf00b",
+    "assets/house_l2_d_weathered-v1.png": "ed68a22e58e7fdb7390bfc8f5fccbd191fa90dc6109dc76712c9dcfc0b27c234",
+    "assets/house_l2_d_fresh-v1.png": "97eb19b453bc10a758fbb6d6582ec5620f4cb10b9b749294cca06788edea47fe",
+    "assets/house_l2_d_snow-v1.png": "a751e5c946d5e0874d7c75ffc5e836009fbe9f8eafeae5393cb0be75ba02c96a",
+    "assets/house_l2_d_boarded-v1.png": "096e7e91e8f1110dff0516ab7fc24433c888c894d571ebe432cf2f37454d65a6",
+    "assets/house_l2_e-v1.png": "ecb65f7725782d23630211a6093e74d1a2952b6c5d32a47ba63a3c8ecec4fe29",
+    "assets/house_l2_e_weathered-v1.png": "8458507940cc7ec7b4b904a0ef64b95faf2307a9f510b21113366f4b340b3b94",
+    "assets/house_l2_e_fresh-v1.png": "feb268a6605de9787a94f7a8d78bc40d2bf247b191c83e58a40bfb3e96e38c1d",
+    "assets/house_l2_e_snow-v1.png": "eb32c3d47bc69fd819fdf97d1b249915ab82a19ed76f77a0410b5e19b37e2d01",
+    "assets/house_l2_e_boarded-v1.png": "c54ab44a94d644597795e33e9188c1553026c15c8459ca5ac320929ad304a044",
+    "assets/house_l2_f-v1.png": "0aa1e7967f9b60364cdd161948d7fbc6f969f531b8afb983a5791b3e2c45fbd1",
+    "assets/house_l2_f_weathered-v1.png": "0f26794f08634878dcfd49dc38d4d59482ad9c33f7bce013f1f8e5892a541883",
+    "assets/house_l2_f_fresh-v1.png": "0e51d6500ea0105eaf1b4b0fc0bcd179a14a9a152d5b3362505daca3c4762886",
+    "assets/house_l2_f_snow-v1.png": "132141cf6e5c8bcc9512d304e134453132bbec06739ed05042c070ff4052a72f",
+    "assets/house_l2_f_boarded-v1.png": "a0eda6182d321fe32cf65ddefff7e3679a07761f2d5b55363bb91560f195f77e"
+  },
+  "canonical_hash_note": "Final delivered hashes after root contact normalization; earlier per-generation/final hashes retained as pre-normalization provenance. CSV and this map are final."
+}
