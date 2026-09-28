@@ -10,7 +10,7 @@
 - **BUDGET-1b 글꼴 woff2만·장 그림은 그 장에서 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 BUDGET-1): [보고서](verification/budget1/budget1b/REPORT.md), 결정 BUDGET1b-D1~D2.
   - 글꼴은 woff2만(`scripts/woff2OnlyFonts.ts`): dist 63.60 → 54.45 MB. 장 그림 규칙 `src/render/chapterArt.ts`: 2장 전쟁 소품·3장 흑사병 봉쇄 집을 그 장에 들어갈 때(8장, 해제 1.05 MB — Wave 12 시설은 아직 없고 3~5장 삽화는 원래 늦게).
   - 예산표 "시작 시 불러오는 그림 메모리": 1장 시작 441장·해제 66.04 MB(전부 67.10). 다음 후보: 정착 단계별 불러오기(성곽·방어 킷·옛 성문).
-  - 검증: CLONE_SHA.
+  - 검증: DGX 회귀 `531786c` 3,352/3,352, 깨끗한 클론 `6cef5b0` 3,354/3,354·build.
 
 - **CODE-1a 계층·사람 경로 상시 관문 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, UI 타입 한 줄·원격 작업 스크립트, 검증 DGX, 사용자 지시): [보고서](verification/code1a/REPORT.md), 결정 CODE1A-D1·D2.
   - `population/marketAccess.ts`는 사유 코드와 거리만 돌려준다(UI 문구 import 0). ESLint 억제 1건·한글 목록 8건을 지웠다.
