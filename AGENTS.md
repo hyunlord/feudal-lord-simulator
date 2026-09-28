@@ -152,7 +152,7 @@
       - `src`의 코드 파일에서 한글이 든 문자열·템플릿·JSX 텍스트는 `*.ko.ts`와 생성 파일(`*.generated.*`)에만 둘 수 있다. 주석은 세지 않는다.
       - 기존 40개 파일의 문자열 463개는 `scripts/checks/korean-strings-baseline.json` 목록에 있다(파일별 정확한 문구). 목록의 문구를 고치면 새 문자열로 본다.
     - typecheck도 함께 돈다. 새 억제·예외 목록 항목을 손으로 추가해 검사를 통과시키지 않는다.
-    - **Astra 장부의 `replaced_by`는 장부에 있는 파일 경로만 쓴다**(`scripts/checks/inboxLedger.mjs`). 여러 장이면 `;`로 잇고, 패턴·설명은 `verdict_note`에 쓴다.
+    - **Astra 장부의 `replaced_by`는 장부에 있는 파일 경로만 쓴다**(`scripts/checks/inboxLedger.mjs`). 여러 장이면 `;`로 잇고, 패턴·설명은 `verdict_note`에 쓴다. 기존 행과 바이트가 같은 행을 새로 넣으면 비고에 `○○와 동일 바이트(정본: 경로)`를 단다(정본 = 같은 바이트 중 confirmed이면서 가장 먼저 받은 행).
 
 ### 보고 양식
 맨 위 한 줄 판정: `관문: 통과/실패 — <관문 지표>`. 이어서 커밋 / 관문 결과 / 가드레일(해당 시) / 필수 조건(마지막 커밋 기준 전체 회귀 N/N · typecheck · build) / 다음 후보 / 소요 시간. A4 2장 이내.

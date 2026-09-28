@@ -1,6 +1,6 @@
 {
   "note": "Korean strings outside *.ko.ts and *.generated.* before CODE-1b, per file. New ones go to *.ko.ts. Shrink only; never add entries by hand.",
-  "recordedAt": "15d15766bb04eaf61432346ccd9074d101ea4b59",
+  "recordedAt": "9cec97360b8105a5f579fcbd3ca3f812f2037e0d",
   "files": {
     "src/content/buildingConfig.ts": [
       "오두막",
@@ -311,16 +311,6 @@
       "관리 부족",
       "보수 필요",
       "빈집"
-    ],
-    "src/population/marketAccess.ts": [
-      "시장 없음",
-      "시장 없음",
-      "시장이 멉니다 — 거리",
-      "/ 범위",
-      "가까운 시장의 일꾼이 부족합니다",
-      "시장까지 연결된 도로가 없습니다",
-      "시장 이용 가능 — 거리",
-      "/ 범위"
     ],
     "src/render/BuildingInspector.tsx": [
       "곳 ·",

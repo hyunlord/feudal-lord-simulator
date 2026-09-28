@@ -74,7 +74,8 @@ export type HouseDiagnosisModel = {
   readonly protection: ProtectionDiagnosis;
   /** UI-3: a leaving or abandoned household and why (the engine's FP-3 cause), first in the card. */
   readonly pressure?: string | null;
-  readonly market: MarketAccessDiagnosis | { readonly kind: "capacity" | "paused"; readonly label: string };
+  // CODE-1a: the engine's reason code with the UI's words.
+  readonly market: (MarketAccessDiagnosis & { readonly label: string }) | { readonly kind: "capacity" | "paused"; readonly label: string };
   readonly church: ServiceDiagnosis;
   readonly stoneHouse: StoneHouseDiagnosis;
 };
