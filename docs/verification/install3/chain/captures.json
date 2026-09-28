@@ -1,0 +1,63 @@
+{
+ "order": "world → UI per step",
+ "steps": {
+  "01-barn-to-barley": {
+   "tick": 90976,
+   "barn": "farmstead-39-36-0"
+  },
+  "02-kiln-site": {
+   "tick": 90976,
+   "kilnAt": [
+    38,
+    33
+   ]
+  },
+  "03-barley-growing": {
+   "tick": 92500
+  },
+  "04-barley-ripe": {
+   "tick": 93500
+  },
+  "05-harvest": {
+   "tick": 93505,
+   "barley": 59
+  },
+  "06-malt": {
+   "tick": 93574,
+   "kiln": "construction-site-000051"
+  },
+  "07-brewing": {
+   "tick": 93600,
+   "house": "construction-site-000004"
+  },
+  "08-alehouse": {
+   "tick": 93600,
+   "alehouse": "construction-site-000004"
+  },
+  "09-sold": {
+   "tick": 94000,
+   "alehouse": "construction-site-000004"
+  }
+ },
+ "files": [
+  "g01a-world-barn-wheat.jpg",
+  "g01b-ui-barn-barley-chosen.jpg",
+  "g02a-world-kiln-site.jpg",
+  "g02b-ui-kiln-chip.jpg",
+  "g03a-world-barley-growing.jpg",
+  "g03b-ui-barn-barley.jpg",
+  "g04a-world-barley-ripe.jpg",
+  "g05a-world-barn-barley-sacks.jpg",
+  "g05b-ui-barn-stock.jpg",
+  "g06a-world-kiln-working.jpg",
+  "g06b-ui-kiln-stock.jpg",
+  "g07a-world-house-brewing.jpg",
+  "g07b-ui-ledger.jpg",
+  "g08a-world-alehouse-stake.jpg",
+  "g08b-ui-house-served.jpg",
+  "g09a-world-ale-sold.jpg",
+  "g09b-ui-season-ale.jpg"
+ ],
+ "jpegBytes": 558365,
+ "errors": []
+}

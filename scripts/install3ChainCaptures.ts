@@ -50,7 +50,7 @@ async function scene(state: GameState, tile: readonly number[], run = false) {
   await page.waitForTimeout(1_200);
   return { page, close: () => context.close() };
 }
-async function world(page: Page, file: string) { await page.screenshot({ path: join(out!, file), type: "jpeg", quality: 62, clip: CROP }); files.push(file); }
+async function world(page: Page, file: string) { await page.mouse.move(4, 4); await page.waitForTimeout(250); await page.screenshot({ path: join(out!, file), type: "jpeg", quality: 62, clip: CROP }); files.push(file); }
 async function ui(locator: Locator, file: string) { await locator.first().waitFor({ timeout: 10_000 }); await locator.first().screenshot({ path: join(out!, file), type: "jpeg", quality: 62 }); files.push(file); }
 async function selectAt(page: Page, tile: readonly number[]) {
   const at = await page.evaluate(spot => (window as unknown as { __FEUDAL_PHASE10_PROOF__: Proof }).__FEUDAL_PHASE10_PROOF__.tileClientPoint(spot), { tx: tile[0], ty: tile[1] });
@@ -153,13 +153,29 @@ await step("07-brewing", async () => {
   return { tick: state.tick, house };
 });
 await step("08-alehouse", async () => {
-  const state = load("m10-alehouse"); const house = moments["m10-alehouse"]!.alehouse as string; const tile = tileOf(state, house);
-  const { page, close } = await scene(state, tile);
-  await world(page, "g08a-world-alehouse-stake.jpg");
-  await selectAt(page, tile);
-  await ui(card(page), "g08b-ui-house-served.jpg");
-  await close();
-  return { tick: state.tick, alehouse: house };
+  // The first alehouse whose click opens its own house card (a palisade site on a nearby tile can take the click).
+  const state = load("m10-alehouse");
+  const ids = [moments["m10-alehouse"]!.alehouse as string, ...state.houses.map(house => house.buildingId)];
+  const { alehouses } = await import("../src/engine/ale");
+  // The stake shows on a single-lot level 2 alehouse holding ale (INSTALL-3 world rule): those first.
+  const stake = (id: string) => { const house = state.houses.find(entry => entry.buildingId === id); const building = state.buildings.find(entry => entry.id === id);
+    return house?.level === 2 && building?.houseLot === undefined ? 0 : 1; };
+  const candidates = [...new Set(ids)].filter(id => alehouses(state).includes(id)).sort((a, b) => stake(a) - stake(b));
+  for (const house of candidates.slice(0, 8)) {
+    const tile = tileOf(state, house);
+    const { page, close } = await scene(state, tile);
+    await selectAt(page, tile);
+    // A house card's heading reads "주택 · 생활 등급 N"; a site's reads "건설 현장".
+    const kind = await page.evaluate(() => document.querySelector(".diagnostic-card")?.textContent?.slice(0, 80) ?? "", undefined);
+    if (!kind.includes("생활 등급")) { await close(); continue; }
+    await page.keyboard.press("Escape"); await page.waitForTimeout(300);
+    await world(page, "g08a-world-alehouse-stake.jpg");
+    await selectAt(page, tile);
+    await ui(card(page), "g08b-ui-house-served.jpg");
+    await close();
+    return { tick: state.tick, alehouse: house, card: kind };
+  }
+  throw new Error("no alehouse card opened");
 });
 await step("09-sold", async () => {
   const state = load("m11-ale-sold"); const house = (moments["m11-ale-sold"]!.alehouses as string[])[0]!; const tile = tileOf(state, house);

@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4456/",
+  "url": "http://127.0.0.1:4302/",
   "states": "scripts/install3States.ts (replayed states, moments m0…m11)",
   "moments": {
     "m0-before": {
@@ -170,7 +170,7 @@
     ],
     "menu": {
       "text": "엿기름 가마. 비용 목재 40. 목적 보리를 싹 틔워 말려 엿기름을 만듭니다. 집집의 아낙이 에일로 빚습니다. 조건 길 인접 필요, 시장도시 이후. 건설 가능 · 보유 목재 196엿기름 가마보리를 엿기름으로목재 40",
-      "art": "glyph"
+      "art": "/assets/wave3/bld/malthouse_a.png"
     },
     "lines": [
       "엿기름 가마 · 목재 40",
@@ -280,7 +280,7 @@
       "굶주려 1명이 줄었습니다"
     ],
     "drink": [
-      "지금 영지에보리 483엿기름 5에일 10"
+      "지금 영지에보리 484엿기름 4에일 10"
     ],
     "icons": [
       "chain.barley",
@@ -314,7 +314,7 @@
       "굶주려 1명이 줄었습니다"
     ],
     "drink": [
-      "지금 영지에보리 484엿기름 4에일 10"
+      "지금 영지에보리 483엿기름 5에일 10"
     ],
     "icons": [
       "chain.barley",
@@ -338,19 +338,19 @@
     "u13": "no replayed state where the bot's next action is set_farmstead_crop (the palisade town's bot does not reach the ale chain in 12,000 ticks; seed 1's natural growth to 200,000 ticks never named it): the label is unit-tested (tests/aleScreens.test.ts, 다음: 헛간 작물을 보리로)"
   },
   "sizes": {
-    "u01-barn-crop-wheat.jpg": 14739,
-    "u02-barn-crop-barley.jpg": 16256,
-    "u04-ledger-drawer.jpg": 17430,
-    "u05-barn-stock.jpg": 13405,
-    "u06-kiln-stock.jpg": 14702,
-    "u08-kiln-chip.jpg": 4834,
-    "u09-house-unserved.jpg": 19444,
-    "u10-house-served.jpg": 16368,
-    "u11-season-cause.jpg": 19101,
-    "u11-season-causet.jpg": 19144,
-    "u12-season-drink.jpg": 18700,
-    "u12-season-drinkt.jpg": 18774
+    "u01-barn-crop-wheat.jpg": 15051,
+    "u02-barn-crop-barley.jpg": 15897,
+    "u04-ledger-drawer.jpg": 17191,
+    "u05-barn-stock.jpg": 13106,
+    "u06-kiln-stock.jpg": 14601,
+    "u08-kiln-chip.jpg": 4655,
+    "u09-house-unserved.jpg": 19109,
+    "u10-house-served.jpg": 16099,
+    "u11-season-cause.jpg": 18904,
+    "u11-season-causet.jpg": 19038,
+    "u12-season-drink.jpg": 18418,
+    "u12-season-drinkt.jpg": 18571
   },
-  "totalBytes": 192897,
+  "totalBytes": 190640,
   "errors": []
 }
