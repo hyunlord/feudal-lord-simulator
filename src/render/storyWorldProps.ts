@@ -5,6 +5,7 @@ import { buildingFootprint } from "../geometry/buildingFootprint";
 import { tileToScreen } from "./iso";
 import { drawWave7 } from "./wave7Art";
 import { drawWave9, wave9Art, wave9Meta, type Wave9Key } from "./wave9Art";
+import { WALKER_FIGURE_PX } from "./walkerComposer";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
 // UI-4 story props in the world, before any card:
@@ -17,7 +18,16 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // Sheet cells: four columns (NE, SE, SW, NW, the actor sheets' order) by two rows (gait frames).
 const DIRECTION_COLUMN = { NE: 0, SE: 1, SW: 2, NW: 3 } as const;
 type Direction = keyof typeof DIRECTION_COLUMN;
-const WALKER_SCALE = 0.5;
+/**
+ * ASSET-2: the story walkers by the walker composer's rule — each figure WALKER_FIGURE_PX (17.6 px) tall — from each
+ * sheet's figure height (the cells' median opaque height, alpha > 32, measured on the Wave 9 sheets); they were drawn at
+ * × 0.5, about 1.8 times an ordinary walker. The child keeps its family's factor, so it stays a child beside them.
+ */
+const FIGURE_HEIGHT = { wk_funeral_bearers: 65, wk_leaving_family: 62, wk_petitioner_m: 65, wk_petitioner_f: 62, wk_royal_messenger: 68 } as const;
+export type StoryWalkerKey = keyof typeof FIGURE_HEIGHT;
+export const storyWalkerScale = (key: StoryWalkerKey): number => WALKER_FIGURE_PX / FIGURE_HEIGHT[key];
+export const STORY_WALKER_FIGURE_HEIGHT: Readonly<Record<StoryWalkerKey, number>> = FIGURE_HEIGHT;
+const CHILD_SCALE = storyWalkerScale("wk_leaving_family");
 const DEPARTURE_MS = 12_000;
 const GAIT_MS = 260;
 
@@ -48,16 +58,16 @@ export function drawStoryProps(context: CanvasRenderingContext2D, state: GameSta
   if (petitionGathering(state)?.id === building.id) {
     const at = door(building);
     drawWave9(context, "event_crowd_manor_gate", at.sx, at.sy + 8, 0.55);
-    drawCell(context, "wk_petitioner_m", "NW", 0, at.sx - 22, at.sy + 18, WALKER_SCALE);
-    drawCell(context, "wk_petitioner_f", "NE", 0, at.sx + 20, at.sy + 20, WALKER_SCALE);
+    drawCell(context, "wk_petitioner_m", "NW", 0, at.sx - 22, at.sy + 18, storyWalkerScale("wk_petitioner_m"));
+    drawCell(context, "wk_petitioner_f", "NE", 0, at.sx + 20, at.sy + 20, storyWalkerScale("wk_petitioner_f"));
   }
   if (building.kind !== "house") return;
   const house = state.houses.find(candidate => candidate.buildingId === building.id);
   if (house === undefined || house.leavingSinceTick === undefined || house.abandonedTick !== undefined) return;
   const at = door(building);
   drawWave7(context, "bundle_family_prop", at.sx + 16, at.sy + 4, 0.5);
-  drawCell(context, "wk_leaving_family", "SW", 0, at.sx - 6, at.sy + 8, WALKER_SCALE);
-  drawCell(context, "prop_leaving_child_sheet", "SW", 0, at.sx + 8, at.sy + 12, WALKER_SCALE);
+  drawCell(context, "wk_leaving_family", "SW", 0, at.sx - 6, at.sy + 8, storyWalkerScale("wk_leaving_family"));
+  drawCell(context, "prop_leaving_child_sheet", "SW", 0, at.sx + 8, at.sy + 12, CHILD_SCALE);
 }
 
 // Departures seen by this renderer (presentation memory: a new game or a load clears it when the clock goes back).
@@ -85,7 +95,7 @@ export function drawDepartures(context: CanvasRenderingContext2D, state: GameSta
     const x = walk.from.x + (walk.to.x - walk.from.x) * t; const y = walk.from.y + (walk.to.y - walk.from.y) * t;
     const direction: Direction = walk.to.x >= walk.from.x ? (walk.to.y >= walk.from.y ? "SE" : "NE") : (walk.to.y >= walk.from.y ? "SW" : "NW");
     const gait = Math.floor(nowMs / GAIT_MS);
-    drawCell(context, "wk_leaving_family", direction, gait, x, y, WALKER_SCALE);
-    drawCell(context, "prop_leaving_child_sheet", direction, gait + 1, x + 10, y + 4, WALKER_SCALE);
+    drawCell(context, "wk_leaving_family", direction, gait, x, y, storyWalkerScale("wk_leaving_family"));
+    drawCell(context, "prop_leaving_child_sheet", direction, gait + 1, x + 10, y + 4, CHILD_SCALE);
   }
 }

@@ -27,7 +27,7 @@ export function setRoadRibbonWidth(value: number): void {
 }
 
 // Road strip set per material (boundaryAssetManifest ROAD_STRIP_SETS / ROAD_STRIP_CHOICE). The URL query
-// `road-strip=v1|v2` overrides the earth choice so the evidence captures can put both sets side by side.
+// `road-strip=v1|v3` overrides the earth choice so the evidence captures can put both sets side by side.
 export const ROAD_STRIP_QUERY = "road-strip";
 let earthOverride: string | null = typeof window === "undefined" ? null : new URLSearchParams(window.location.search).get(ROAD_STRIP_QUERY);
 

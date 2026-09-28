@@ -1,12 +1,10 @@
-// Runtime images for RENDER_BOUNDARY_V2 (Astra D1/D1b, installed by D1a; Wave 4 earth strip v2 by D1a-2; Wave 4b earth
-// strip v3 by C1e; provenance
+// Runtime images for RENDER_BOUNDARY_V2 (Astra D1/D1b, installed by D1a; Wave 4 earth strip v2 by D1a-2, retired by
+// ASSET-2; Wave 4b earth strip v3 by C1e; provenance
 // rows in docs/provenance/assets.csv). Strips are top-down 512x64 textures repeated along a road ribbon; decals are
 // 2:1 isometric, 128 source px per tile.
 export const BOUNDARY_ASSETS = [
   { "key": "earth_strip", "url": "assets/road/earth_strip-v1.png", "width": 512, "height": 64 },
   { "key": "stone_strip", "url": "assets/road/stone_strip-v1.png", "width": 512, "height": 64 },
-  { "key": "earth_strip_a_v2", "url": "assets/road/earth_strip_a-v2.png", "width": 512, "height": 64 },
-  { "key": "earth_strip_b_v2", "url": "assets/road/earth_strip_b-v2.png", "width": 512, "height": 64 },
   { "key": "earth_strip_a_v3", "url": "assets/road/earth_strip_a-v3.png", "width": 512, "height": 64 },
   { "key": "earth_strip_b_v3", "url": "assets/road/earth_strip_b-v3.png", "width": 512, "height": 64 },
   { "key": "earth_strip_c_v3", "url": "assets/road/earth_strip_c-v3.png", "width": 512, "height": 64 },
@@ -30,7 +28,7 @@ export type BoundaryAssetKey = (typeof BOUNDARY_ASSETS)[number]["key"];
 export const ROAD_STRIP_SETS = {
   earth: {
     v1: { "images": ["earth_strip"], "artRows": [8, 56], "rutContrast": 0.45 },
-    v2: { "images": ["earth_strip_a_v2", "earth_strip_b_v2"], "artRows": [0, 64], "rutContrast": 1 },
+    // v2 (Wave 4, the alternating a / b pair) retired by ASSET-2: v3 replaced it (C1e, owner decision RS1).
     // v3 (Wave 4b): v1's brushwork with v2's broken shoulders and quiet ruts; four spans a, b, c, d, so no span repeats
     // within 12 tiles along a ribbon.
     v3: { "images": ["earth_strip_a_v3", "earth_strip_b_v3", "earth_strip_c_v3", "earth_strip_d_v3"], "artRows": [0, 64], "rutContrast": 1 },

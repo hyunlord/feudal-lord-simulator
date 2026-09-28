@@ -37,6 +37,8 @@
 .resource-bar__icon { flex: 0 0 24px; width: 24px; height: 24px; color: var(--palette-gold); }
 .resource-artwork { object-fit: contain; text-align: center; }
 .resource-artwork--small { width: 16px; height: 16px; flex: 0 0 16px; align-self: center; }
+/* ASSET-2: the sheet's 24 px cell drawn at 16 px on the bar's second line. */
+.resource-artwork--small.ui-icon { zoom: 0.6667; }
 /* RES-REG: the generic sacks or crates and the name of a good that has no picture yet. */
 .resource-artwork-generic { display: inline-flex; align-items: center; gap: 4px; flex: 0 0 auto; }
 .resource-name-chip { font-size: 12px; line-height: 16px; padding: 0 4px; border-radius: 4px; background: var(--palette-parchment-dark); color: var(--palette-ink); white-space: nowrap; }

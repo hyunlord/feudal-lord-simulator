@@ -31,9 +31,10 @@ export type ResourceEntry = {
   /** The Wave 7 cart load; none: the generic sacks (granary goods) or crates (storehouse goods). */
   readonly cartLoadKey?: ResourceCartLoadKey;
   readonly cartPileKey?: ResourceCartPileKey;
-  /** `assets/runtime-icons-v1/<iconKey>.png`; none: the generic sack or crate and the name chip. */
-  readonly iconKey?: string;
-  /** The resource-sheet cell the HUD draws at 24 px. */
+  /**
+   * The resource-sheet cell the HUD draws (24 px, and 16 px on the bar's second line); none: the generic sack or crate
+   * and the name chip (ASSET-2: the old runtime-icons-v1 pictures are retired).
+   */
   readonly sheetCell?: ResourceSheetCell;
   /** The sheet cell drawn over a walker carrying it at the close zoom (goods the cart does not show). */
   readonly cargoIconCell?: ResourceSheetCell;
@@ -44,13 +45,13 @@ export type ResourceEntry = {
 };
 
 export const RESOURCE_CATALOG = [
-  { id: "wheat", storage: "granary", group: "food", hudPriority: 1, carrier: "farmer", cartLoadKey: "grainsack", iconKey: "wheat", cargoIconCell: "bread", color: "gold", bulk: 1 },
-  { id: "bread", storage: "granary", group: "food", hudPriority: 2, carrier: "farmer", cartLoadKey: "bread", iconKey: "bread", sheetCell: "bread", cargoIconCell: "bread", color: "earth", bulk: 1 },
-  { id: "logs", storage: "storehouse", group: "raw", hudPriority: 3, carrier: "logger", cartLoadKey: "log", cartPileKey: "pile_wood_1", iconKey: "logs", color: "forest", bulk: 1 },
-  { id: "timber", storage: "storehouse", group: "goods", hudPriority: 4, carrier: "logger", cartLoadKey: "timber", cartPileKey: "pile_wood_1", iconKey: "timber", sheetCell: "timber", color: "earthDark", bulk: 1 },
-  { id: "stone_raw", storage: "storehouse", group: "raw", hudPriority: 5, carrier: "quarryman", cartLoadKey: "rawstone", cartPileKey: "pile_stone_1", iconKey: "stone_raw", color: "stoneDark", bulk: 1 },
-  { id: "stone", storage: "storehouse", group: "goods", hudPriority: 6, carrier: "quarryman", cartLoadKey: "stone", cartPileKey: "pile_stone_1", iconKey: "stone", sheetCell: "stone", color: "stone", bulk: 1 },
-  { id: "coin", storage: "none", group: "money", hudPriority: 7, carrier: "coin_carter", iconKey: "coin", sheetCell: "coin", cargoIconCell: "coin", color: "gold", bulk: 1 },
+  { id: "wheat", storage: "granary", group: "food", hudPriority: 1, carrier: "farmer", cartLoadKey: "grainsack", cargoIconCell: "bread", color: "gold", bulk: 1 },
+  { id: "bread", storage: "granary", group: "food", hudPriority: 2, carrier: "farmer", cartLoadKey: "bread", sheetCell: "bread", cargoIconCell: "bread", color: "earth", bulk: 1 },
+  { id: "logs", storage: "storehouse", group: "raw", hudPriority: 3, carrier: "logger", cartLoadKey: "log", cartPileKey: "pile_wood_1", color: "forest", bulk: 1 },
+  { id: "timber", storage: "storehouse", group: "goods", hudPriority: 4, carrier: "logger", cartLoadKey: "timber", cartPileKey: "pile_wood_1", sheetCell: "timber", color: "earthDark", bulk: 1 },
+  { id: "stone_raw", storage: "storehouse", group: "raw", hudPriority: 5, carrier: "quarryman", cartLoadKey: "rawstone", cartPileKey: "pile_stone_1", color: "stoneDark", bulk: 1 },
+  { id: "stone", storage: "storehouse", group: "goods", hudPriority: 6, carrier: "quarryman", cartLoadKey: "stone", cartPileKey: "pile_stone_1", sheetCell: "stone", color: "stone", bulk: 1 },
+  { id: "coin", storage: "none", group: "money", hudPriority: 7, carrier: "coin_carter", sheetCell: "coin", cargoIconCell: "coin", color: "gold", bulk: 1 },
 ] as const satisfies readonly ResourceEntry[];
 
 type CatalogLine = (typeof RESOURCE_CATALOG)[number];

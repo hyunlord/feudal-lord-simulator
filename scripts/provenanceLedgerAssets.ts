@@ -178,9 +178,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
   ];
   for (const file of constructionFiles) add(`assets/runtime-construction-v1/${file}.png`, "src/render/constructionArtAssets.ts (FILES)");
 
-  // 11) ResourceArtwork.tsx — assets/runtime-icons-v1/${kind}.png for each resource kind.
-  const resourceKinds = ["wheat", "bread", "logs", "timber", "stone_raw", "stone", "coin", "population"];
-  for (const kind of resourceKinds) add(`assets/runtime-icons-v1/${kind}.png`, "src/ui/ResourceArtwork.tsx (kind)");
+  // 11) ResourceArtwork.tsx read assets/runtime-icons-v1/${kind}.png; ASSET-2 retired them (the resource sheet's cells).
 
   // 12) global.css background-image url().
   add("assets/ui/seal_slot.png", "src/styles/global.css");
