@@ -11,7 +11,7 @@
 //   08 the alehouse with its ale stake (world) → a house served by ale (UI: 에일을 마십니다);
 //   09 ale sold at the alehouse (world, the first sale's tick) → the season card's ale line (UI: 지금 영지에 보리·엿기름·에일).
 // Gate ② (zoom 0.6: barley strips told from wheat) is scripts/install3WorldCaptures.ts's field-* shots (one strip's field each).
-// World shots are 640 x 400 crops at zoom 1.4 around the subject; UI shots are the element. JPEG, and captures.json.
+// World shots are 640 x 400 crops at zoom 1.3 around the subject; UI shots are the element. JPEG, and captures.json.
 // INSTALL-3b ②: INSTALL-3's world shots showed forest and rock — the pointer parked at (4, 4) before each shot sat in
 // the 20 px edge-pan band (gameCanvasRuntimeInput EDGE_PAN_MARGIN_PX) and dragged the camera up-left. The pointer now
 // rests on the HUD's date bar (off the canvas, outside the band), buildings are centred on their footprint's middle,
@@ -37,7 +37,9 @@ const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`)
 const url = flag("url")!; const statesDir = flag("states")!;
 mkdirSync(out!, { recursive: true });
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
-const WIDTH = 1600, HEIGHT = 1000, ZOOM = 1.4;
+// INSTALL-3b: zoom 1.3, just under the wall segments' own tags (wallSiteLabels WALL_SEGMENT_LABEL_MIN_ZOOM 1.35): at 1.4
+// every wall segment on screen tagged itself over the chain's subjects.
+const WIDTH = 1600, HEIGHT = 1000, ZOOM = 1.3;
 const CROP = { x: WIDTH / 2 - 320, y: HEIGHT / 2 - 220, width: 640, height: 400 };
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
