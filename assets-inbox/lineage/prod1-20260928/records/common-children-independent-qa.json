@@ -1,0 +1,333 @@
+{
+  "reviewer": "prod1_age_review",
+  "date": "2026-09-28",
+  "method": "Viewed all 26 individual 256px images, full supplied contact and independently resized 96px-per-image contact. No art edits.",
+  "source_contact": {
+    "path": "records/common-children-contact.png",
+    "sha256": "283ab5604b9f65e05de615f8af97de72c95c9498dbc1acb8d0b61adda920df2a"
+  },
+  "actual96_contact": {
+    "path": "records/common-children-independent96.png",
+    "sha256": "309565b50fb3dcd4733eb037f5dd9e8bd9514cd30c3dbf89177ef8eb84f35032",
+    "order": "toddler 01-12 then child 01-14, row-major, seven columns"
+  },
+  "overall": "QUALIFIED: toddler range broadly fits, no adolescent or exact duplicate found. Child 07/13 skew young; child 02/06 have substantial facial similarity. Do not claim all 14 children unequivocally read 6-9.",
+  "items": [
+    {
+      "id": "C_toddler_01",
+      "path": "assets/common/C_toddler_01.png",
+      "sha256": "6e1e04b1b3d9192558ccdc3f9636fdbf602343878296f246a40ca090d935f3c1",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_02",
+      "path": "assets/common/C_toddler_02.png",
+      "sha256": "baafc2dabec580002fceb27e42dc247dfb0063ea18f1445b53f822e8f741ea3c",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_03",
+      "path": "assets/common/C_toddler_03.png",
+      "sha256": "eb55227efcc829f9c107f1174f6e896f0df38de549ef954e2bca3999e70b2333",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_04",
+      "path": "assets/common/C_toddler_04.png",
+      "sha256": "dce06845389078206f6a4d2f177d8d72317601e504eeb87f5deccf2e0e71271b",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_05",
+      "path": "assets/common/C_toddler_05.png",
+      "sha256": "ed384bd15dc6db48d8c12b08995f9c313447dee4ba60abbd2c52c6cddccecde0",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_06",
+      "path": "assets/common/C_toddler_06.png",
+      "sha256": "cc60eb37e3422f9d53b662f294faaf875b2944e41155f9e4a7d359dde48d177a",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_07",
+      "path": "assets/common/C_toddler_07.png",
+      "sha256": "cb4212e4b1df174ef175754560efba18e42b189291df3645da6eb2e99a2a4e34",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_08",
+      "path": "assets/common/C_toddler_08.png",
+      "sha256": "b94d171e2274b5b1cee8e7e9388558253550b8617e467522e3c5925178c0c3fb",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_09",
+      "path": "assets/common/C_toddler_09.png",
+      "sha256": "99609d6f2914bc6c28526fceea30a1cb8c25f6edf22e49662fcf5be106c30cb2",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_10",
+      "path": "assets/common/C_toddler_10.png",
+      "sha256": "548aa984cd6e977a2e1818dc7a86b6904a15d9e52c2ae74ec3d790f770d7fc37",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_11",
+      "path": "assets/common/C_toddler_11.png",
+      "sha256": "24798976cccdaebc41cec741e0e7757028af4de67c4c6fecce0f1424452b3239",
+      "estimated_years": [
+        3,
+        5
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_toddler_12",
+      "path": "assets/common/C_toddler_12.png",
+      "sha256": "5d4c3ab8008ab94514114f047548be67e6da9ee856cfe423646f08e3e22381c5",
+      "estimated_years": [
+        2,
+        4
+      ],
+      "flag": "BORDERLINE_LOW_END",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_01",
+      "path": "assets/common/C_child_01.png",
+      "sha256": "f522e81c4f61c8128466797337731f5d162108923f217741c54c8c528a8c19bc",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_02",
+      "path": "assets/common/C_child_02.png",
+      "sha256": "efc9e2f45e33e1a3df04e9917d3d9e9254409f0e7a819d5769fa812262612562",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "flag": "BORDERLINE_LOW_END",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_03",
+      "path": "assets/common/C_child_03.png",
+      "sha256": "2b9340cd1df40b785205ae70c295fce14ee2254ecd63eede4d38a1daf464771b",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "flag": "BORDERLINE_LOW_END",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_04",
+      "path": "assets/common/C_child_04.png",
+      "sha256": "aa02178f4875bbaeb21aa504fc4a6f261b6a65f65b199cd07e18f6c8010c9c23",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "flag": "BORDERLINE_LOW_END",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_05",
+      "path": "assets/common/C_child_05.png",
+      "sha256": "fd9e271a6b553aeff50ee14f3dad6c8ec3c749003c7f396e87e3c4caf527d60a",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_06",
+      "path": "assets/common/C_child_06.png",
+      "sha256": "fa90228fc9dd6ff7899f6b497e85c1d5297b25e96810921bac3e65def0bc94b1",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "flag": "BORDERLINE_LOW_END",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_07",
+      "path": "assets/common/C_child_07.png",
+      "sha256": "ae42cc428c7382c455646ddad805c036a25fd05c5ac50b86247a94da9ca8a479",
+      "estimated_years": [
+        4,
+        6
+      ],
+      "flag": "REVIEW_YOUNG",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_08",
+      "path": "assets/common/C_child_08.png",
+      "sha256": "0314d32e9079aac0ccb15cd0335cb414f13820e5022e3b42424aee0c43da92b3",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_09",
+      "path": "assets/common/C_child_09.png",
+      "sha256": "2a82c308bfb70cc7fff2cc5bd9034238c095a9e833a7532ac6678d2d46758071",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_10",
+      "path": "assets/common/C_child_10.png",
+      "sha256": "c02b163c347840228fd2e14b575d16a4c383b53248f9ebc777cebe61b71cd049",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_11",
+      "path": "assets/common/C_child_11.png",
+      "sha256": "a37fd1421dc90316af4e6405b13d9765961d4ed9713d607118a6d56265b111f3",
+      "estimated_years": [
+        5,
+        8
+      ],
+      "flag": "BORDERLINE_LOW_END",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_12",
+      "path": "assets/common/C_child_12.png",
+      "sha256": "2239a10089183d47f82c6b33647ce3b567218285c34c88efb042647fbf001ea3",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "flag": "BORDERLINE_LOW_END",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_13",
+      "path": "assets/common/C_child_13.png",
+      "sha256": "d3088b9fb2b86f4f80c1dd13f60604bf7202d1c81757edea910a47c182749dc5",
+      "estimated_years": [
+        4,
+        6
+      ],
+      "flag": "REVIEW_YOUNG",
+      "adolescent": false
+    },
+    {
+      "id": "C_child_14",
+      "path": "assets/common/C_child_14.png",
+      "sha256": "05b3bf75772869922d17cdf86499eedce4d7f0e1f612934441e1e8e870900dfe",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "flag": "PASS",
+      "adolescent": false
+    }
+  ],
+  "similarity_notes": [
+    {
+      "ids": [
+        "C_child_02",
+        "C_child_06"
+      ],
+      "flag": "REVIEW_SIMILAR",
+      "note": "Very similar three-quarter head angle, eyes, nose, cheeks and closed smile. Hair length, fringe and garment differ; not pixel clones, but distinct-person certainty is weak, especially at 96px."
+    },
+    {
+      "ids": [
+        "C_toddler_02",
+        "C_toddler_08"
+      ],
+      "flag": "SIMILAR_TEMPLATE",
+      "note": "Shared pose and round face; hair hue, gaze and smile differ enough for reasonable distinction."
+    }
+  ],
+  "age_notes": [
+    "Child 07 and 13 plausibly read 4-6 and are the strongest youth concerns. A 6-year-old interpretation remains possible; this is a review flag, not proof of a 4-5-year-old subject.",
+    "Child 03 and 12, and several other low-end estimates, overlap target at 6-7. Do not reject solely because subjective intervals include age 5.",
+    "Toddler 12 is the youngest-looking (2-4), but a 3-year-old interpretation fits the requested band."
+  ],
+  "actual96_notes": "96px inspection preserves hair, silhouette, direction and broad expression. Fine freckles and subtle mouth/eye differences are reduced. Child 02/06 similarity persists. Child 07/13 still look young; no new adolescent appearance or obvious exact clone.",
+  "limitations": [
+    "All age intervals and similarity assessments are subjective visual estimates, not verified chronological ages or biometric identities.",
+    "No runtime or animation review.",
+    "Contact retains complete portraits including costume; this is not a blinded face-only identity experiment."
+  ],
+  "art_modified": false
+}

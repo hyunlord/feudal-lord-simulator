@@ -1,0 +1,64 @@
+{
+  "id": "L4_201_mature",
+  "file": "assets/L4/L4_201_mature.png",
+  "identity": "L4_201",
+  "lineage": "L4",
+  "generation": 2,
+  "stage": "mature",
+  "age": 44,
+  "sex": "male",
+  "maritalStatus": "married",
+  "clothing": "muted blue wool merchant tunic",
+  "fatherIdentity": "L4_101",
+  "motherIdentity": "L4_102",
+  "commonTraits3": [
+    "copper auburn hair",
+    "round overall face",
+    "gently arched eyebrows"
+  ],
+  "differenceMarkers": [
+    "short tightly curled hair",
+    "light blue eyes",
+    "stocky broad shoulders",
+    "dense nose freckles",
+    "wide full lower lip"
+  ],
+  "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_201, male, age 44. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: muted blue wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code. CRITICAL CORRECTION: prior middle-aged portrait looked only30. Make this person unmistakably FORTY-FOUR, twenty years beyond age24 reference. Substantial visible crow-feet, horizontal forehead creases, deeper nasolabial folds, under-eye hollows and pouches, heavier changed cheeks, softened aging neck, weathered textured skin. Gray temple hair prominently mixed with auburn through the short curls. Retain the same individual eye spacing, mouth, freckles, head shape and existing clothing. NOT a young smooth face. NOT elderly70. Strong painted midlife aging readable at96px. References remain own young identity first, actual father second and actual mother third. ONE image only.",
+  "referenceImages": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+  ],
+  "generationRecords": [
+    {
+      "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_201, male, age 44. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: muted blue wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+      "rawFile": "raw/L4/L4_201_mature.png",
+      "referenceImages": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+      ],
+      "referenceSHA256": {
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+      },
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "originalWidth": 1254,
+      "originalHeight": 1254
+    }
+  ],
+  "processing": "Sharp resize to256x256 only; no face painting",
+  "qa": {
+    "status": "artist_visual_review_complete_independent_review_pending",
+    "presentation": "Single square bust on muted painted background; no text or frame",
+    "ageReview": "Visible gray hair and facial aging; intended twenty-year interval, perceived age remains subjective",
+    "clothingReview": "Stage-appropriate clothing visually inspected",
+    "limitations": [
+      "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+      "Family and same-person discrimination awaits independent blind review"
+    ]
+  }
+}

@@ -1,0 +1,522 @@
+[
+  {
+    "id": "L1_203_baby-v2",
+    "file": "assets/pilot2-baby/L1_203_baby-v2.png",
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Cream linen swaddling and linen infant bonnet; muted green fine wool outer wrap",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "auburn family range",
+      "faceShape": "oval",
+      "feature": "soft low eyebrow family tendency"
+    },
+    "differenceMarkers": {
+      "age": 0.5,
+      "eyes": "green",
+      "hair": "auburn sparse soft hair, oval face tendency, green eyes",
+      "wrap": "muted green fine wool outer wrap"
+    },
+    "childIdentityReference": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_child.png",
+      "sha256": "05e4bb9b9bb02dfa3ab14dde08727cbe934ccb296b8c20442d7310e67cc09b3a",
+      "packagedFile": "references/pilot2-baby/L1_203_child.png",
+      "role": "Primary personal identity reference"
+    },
+    "previousBaby": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_baby.png",
+      "sha256": "2100561ad6964a812afa0936bdb031b0ff2963987d1d2a5b8b20e1675fc5d8be",
+      "packagedFile": "references/pilot2-baby/L1_203_baby-before.png",
+      "role": "Comparison only, not generator input"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve. Create ONE square portrait of this exact fictional girl as a SIX MONTH OLD INFANT, not a toddler. Input image is her actual older CHILD identity reference: preserve auburn hair color, overall oval family face tendency, green eyes and individual recognizability, but use genuine 0.5-year infant anatomy: very short soft facial proportions, tiny nose, plump baby cheeks, large baby forehead, sparse soft auburn hair. She is bundled snugly in cream linen SWADDLING from neck down, wears a simple soft cream LINEN BABY BONNET surrounding head. No braids at this age. Gentle quiet expression, face fully visible, not faceless. Muted medieval painted gouache matching reference's warm gray background and upper-left light, southern England c1320. A little fine dark green wool outside swaddle suggests gentry, no adult dress or adult fur collar. No text, numbers, frame, logos. One infant only. Do not merely shrink the supplied child's face; visibly de-age her to a real baby.",
+        "rawFile": "raw/pilot2-baby/L1_203_baby-v2-attempt1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_child.png"
+        ],
+        "referenceRoles": [
+          "Primary identity from matching pilot2 child portrait"
+        ],
+        "referenceSHA256": [
+          "05e4bb9b9bb02dfa3ab14dde08727cbe934ccb296b8c20442d7310e67cc09b3a"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "rejected-age-too-old"
+      },
+      {
+        "prompt": "Create ONE new image of an INFANT AGED SIX MONTHS, reference2 gives the correct infant anatomy/age. PRIMARY IDENTITY is reference1 but DE-AGE RADICALLY: auburn hair, green eyes, oval family head shape. Reference2 is AGE PROPORTIONS ONLY, never copy its personal identity. Six-month baby with huge round cranial dome, very short tiny lower face, tiny button nose, no long nose bridge, no formed adolescent jaw, no long neck. Frontal or almost frontal view like reference2, NOT reference1's older-child side profile. Sparse fine hair only, rounded squishy cheeks, very large forehead relative to tiny infant features. A baby, not toddler or preschooler. Wrap full body and shoulders tightly in plain cream linen SWADDLING, add simple linen BABY BONNET covering all but a few sparse wisps, dark muted green wool outside bundle. Serious gentle baby expression. Medieval muted painterly gouache exactly matching references, matte warm gray background, upper-left light. Only one baby portrait, square, no text, symbols or frame. Do NOT paste reference1 face onto swaddle; entirely redesign anatomy as a real 6-month infant.",
+        "rawFile": "raw/pilot2-baby/L1_203_baby-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_child.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_baby.png"
+        ],
+        "referenceRoles": [
+          "Primary matching child personal identity",
+          "Infant anatomy and swaddling only; identity not copied"
+        ],
+        "referenceSHA256": [
+          "05e4bb9b9bb02dfa3ab14dde08727cbe934ccb296b8c20442d7310e67cc09b3a",
+          "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "candidate-final"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256 only. No facial retouch; original pilot2 unchanged.",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Awaiting independent age/identity review; target real infant in swaddling and bonnet.",
+      "runtime": "not installed"
+    },
+    "sha256": "d7b9d9a2f03646014ad68151a211003cd0b62eb67b9e952cef5996852ac2118d"
+  },
+  {
+    "id": "L1_204_baby-v2",
+    "file": "assets/pilot2-baby/L1_204_baby-v2.png",
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Cream linen swaddling and linen infant bonnet; muted russet fine wool outer wrap",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "auburn family range",
+      "faceShape": "round",
+      "feature": "soft low eyebrow family tendency"
+    },
+    "differenceMarkers": {
+      "age": 0.5,
+      "eyes": "hazel brown",
+      "hair": "auburn loosely curly sparse hair, rounder face than her sister, hazel brown eyes, a small cheek mole",
+      "wrap": "muted russet fine wool outer wrap"
+    },
+    "childIdentityReference": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_204_child.png",
+      "sha256": "ec71123129023d9e9b331f99a2648c89d404d2ece6f8548b611a3a5677ae9d29",
+      "packagedFile": "references/pilot2-baby/L1_204_child.png",
+      "role": "Primary personal identity reference"
+    },
+    "previousBaby": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_204_baby.png",
+      "sha256": "c7c6e26f2870c8438e4bb3f3fef6d07556bef3537c9197dc4c210c3f9ad63981",
+      "packagedFile": "references/pilot2-baby/L1_204_baby-before.png",
+      "role": "Comparison only, not generator input"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve. ONE square historical portrait of the exact fictional child in reference as a real 0.8-YEAR OLD INFANT. The reference is PRIMARY IDENTITY, not the target age. Keep auburn loosely curly sparse hair, rounder face than her sister, hazel brown eyes, a small cheek mole, natural identity continuity without copying an older child's anatomy. True under-one-year baby: very short soft face, tiny button nose, plump rounded baby cheeks, large forehead and little chin, sparse infant hair. Bundled snugly in cream linen SWADDLING neck-down, soft cream LINEN BABY BONNET around head, muted russet fine wool outer wrap over swaddle. Fully visible expressive baby face. No toddler or preschool proportions, no braids, no adult clothing. Match reference low-saturation painted gouache, warm gray background and soft upper-left illumination. Medieval southern England c1320. Single baby, chest-up swaddled bundle. No text, numbers, frames or symbols.",
+        "rawFile": "raw/pilot2-baby/L1_204_baby-v2-attempt1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_204_child.png"
+        ],
+        "referenceRoles": [
+          "Primary identity from matching pilot2 child portrait"
+        ],
+        "referenceSHA256": [
+          "ec71123129023d9e9b331f99a2648c89d404d2ece6f8548b611a3a5677ae9d29"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "rejected-age-too-old"
+      },
+      {
+        "prompt": "Create ONE new image of an INFANT AGED SIX MONTHS, reference2 gives the correct infant anatomy/age. PRIMARY IDENTITY is reference1 but DE-AGE RADICALLY: auburn loosely curly sparse hair, rounder face than her sister, hazel brown eyes, a small cheek mole. Reference2 is AGE PROPORTIONS ONLY, never copy its personal identity. Six-month baby with huge round cranial dome, very short tiny lower face, tiny button nose, no long nose bridge, no formed adolescent jaw, no long neck. Frontal or almost frontal view like reference2, NOT reference1's older-child side profile. Sparse fine hair only, rounded squishy cheeks, very large forehead relative to tiny infant features. A baby, not toddler or preschooler. Wrap full body and shoulders tightly in plain cream linen SWADDLING, add simple linen BABY BONNET covering all but a few sparse wisps, muted russet fine wool outer wrap outside bundle. Serious gentle baby expression. Medieval muted painterly gouache exactly matching references, matte warm gray background, upper-left light. Only one baby portrait, square, no text, symbols or frame. Do NOT paste reference1 face onto swaddle; entirely redesign anatomy as a real 6-month infant.",
+        "rawFile": "raw/pilot2-baby/L1_204_baby-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_204_child.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_baby.png"
+        ],
+        "referenceRoles": [
+          "Primary matching child personal identity",
+          "Infant anatomy and swaddling only; identity not copied"
+        ],
+        "referenceSHA256": [
+          "ec71123129023d9e9b331f99a2648c89d404d2ece6f8548b611a3a5677ae9d29",
+          "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "candidate-final"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256 only. No facial retouch; original pilot2 unchanged.",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Awaiting independent age/identity review; target real infant in swaddling and bonnet.",
+      "runtime": "not installed"
+    },
+    "sha256": "147d9bfe77c26f2fb5e4f12711a0631d5a021929eb264cfd9be9d9476cf32c1b"
+  },
+  {
+    "id": "L2_201_baby-v2",
+    "file": "assets/pilot2-baby/L2_201_baby-v2.png",
+    "identity": "L2_201",
+    "lineage": "L2",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Cream linen swaddling and linen infant bonnet; muted blue wool outer wrap",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "auburn family range",
+      "faceShape": "round",
+      "feature": "soft low eyebrow family tendency"
+    },
+    "differenceMarkers": {
+      "age": 0.5,
+      "eyes": "blue",
+      "hair": "light auburn soft curly sparse hair, broad rounded face tendency, blue eyes, warm complexion",
+      "wrap": "muted blue wool outer wrap"
+    },
+    "childIdentityReference": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_child.png",
+      "sha256": "561fab508bfa3ecec14f8b3bc6e664545e3b5b44b0e97d926781bf5bd958aa37",
+      "packagedFile": "references/pilot2-baby/L2_201_child.png",
+      "role": "Primary personal identity reference"
+    },
+    "previousBaby": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_baby.png",
+      "sha256": "117eb06809120c9fad5f23a706fa429ed25530c95361b4f04417fa274ab4fa62",
+      "packagedFile": "references/pilot2-baby/L2_201_baby-before.png",
+      "role": "Comparison only, not generator input"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve. ONE square historical portrait of the exact fictional boy in reference as a real 0.7-YEAR OLD INFANT. The reference is PRIMARY IDENTITY, not target age. Keep light auburn soft curly sparse hair, broad rounded face tendency, blue eyes, warm complexion, recognizable identity adapted to infant anatomy. True under-one-year baby: very short soft face, tiny nose, plump cheeks, large forehead, small chin, sparse hair. Bundled snugly in cream linen SWADDLING neck-down, soft cream LINEN BABY BONNET around head, muted blue wool outer wrap outside swaddle. Fully visible expressive baby face, not preschool child or toddler. No adult clothing. Match reference low-saturation painted gouache, warm gray background and soft upper-left light. Medieval southern England c1320. Single baby, chest-up swaddled bundle. No text, numbers, frames or symbols.",
+        "rawFile": "raw/pilot2-baby/L2_201_baby-v2-attempt1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_child.png"
+        ],
+        "referenceRoles": [
+          "Primary identity from matching pilot2 child portrait"
+        ],
+        "referenceSHA256": [
+          "561fab508bfa3ecec14f8b3bc6e664545e3b5b44b0e97d926781bf5bd958aa37"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "rejected-age-too-old"
+      },
+      {
+        "prompt": "Create ONE new portrait of an INFANT AGED SIX MONTHS. Reference2 gives correct infant anatomy and age, not identity. PRIMARY PERSONAL IDENTITY is reference1 but RADICALLY DE-AGE: light auburn soft curly sparse hair, broad rounded face tendency, blue eyes, warm complexion. Huge rounded baby cranial dome, very short tiny lower face, tiny button nose without a developed long bridge, no adult jaw or long neck, soft squishy baby cheeks, huge forehead, small chin. Frontal/almost-frontal view like reference2, NOT reference1 older child's profile. Sparse wisps only. Real six-month infant, not toddler/preschooler. Full shoulders/body in snug plain cream linen SWADDLING, simple linen BABY BONNET covering hair except sparse wisps. muted blue wool outer wrap over swaddle. Gentle curious infant expression. Match muted handpainted gouache, matte gray-brown backdrop, upperleft lighting. Medieval England c1320. One baby only, no text/numbers/symbols/frame. Do not simply dress the older child as an infant; rebuild the facial proportions as an actual baby.",
+        "rawFile": "raw/pilot2-baby/L2_201_baby-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_child.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_baby.png"
+        ],
+        "referenceRoles": [
+          "Primary matching child personal identity",
+          "Infant anatomy and swaddling only; identity not copied"
+        ],
+        "referenceSHA256": [
+          "561fab508bfa3ecec14f8b3bc6e664545e3b5b44b0e97d926781bf5bd958aa37",
+          "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "candidate-final"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256 only. No facial retouch; original pilot2 unchanged.",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Awaiting independent age/identity review; target real infant in swaddling and bonnet.",
+      "runtime": "not installed"
+    },
+    "sha256": "cf097647507d63b7db6bb79a9b65534939109d2ba1743b1e19bf8378622cf70e"
+  },
+  {
+    "id": "L2_202_baby-v2",
+    "file": "assets/pilot2-baby/L2_202_baby-v2.png",
+    "identity": "L2_202",
+    "lineage": "L2",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Cream linen swaddling and linen infant bonnet; muted russet wool outer wrap",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "auburn family range",
+      "faceShape": "oval",
+      "feature": "soft low eyebrow family tendency"
+    },
+    "differenceMarkers": {
+      "age": 0.5,
+      "eyes": "hazel brown",
+      "hair": "copper auburn sparse straight hair, narrower oval face tendency, hazel brown eyes, distinct small mole on the left cheek",
+      "wrap": "muted russet wool outer wrap"
+    },
+    "childIdentityReference": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_child.png",
+      "sha256": "2588e3ddf9961cae8661c45020239c763bbb04dc61495e90fd6337864b8ee8fc",
+      "packagedFile": "references/pilot2-baby/L2_202_child.png",
+      "role": "Primary personal identity reference"
+    },
+    "previousBaby": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_baby.png",
+      "sha256": "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301",
+      "packagedFile": "references/pilot2-baby/L2_202_baby-before.png",
+      "role": "Comparison only, not generator input"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve. ONE square historical portrait of the exact fictional boy in reference as a real 1-YEAR OLD INFANT. Reference image is PRIMARY IDENTITY, not target age. Keep copper auburn sparse straight hair, narrower oval face tendency, hazel brown eyes, distinct small mole on the left cheek, recognizability naturally adapted to infant anatomy. A real one-year baby, very short soft face, tiny nose, plump cheeks, large forehead, small chin and sparse hair. Bundled in cream linen SWADDLING neck-down, simple soft cream LINEN BABY BONNET around head, muted russet wool outer wrap over swaddle. Fully visible baby face; not an older child wearing a cap. No preschool/toddler body proportions, no long hair at this age. Low-saturation painted gouache matching reference, warm gray backdrop, soft upper-left light. Medieval southern England c1320. Single baby only. No text, numbers, border, symbol.",
+        "rawFile": "raw/pilot2-baby/L2_202_baby-v2-attempt1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_child.png"
+        ],
+        "referenceRoles": [
+          "Primary identity from matching pilot2 child portrait"
+        ],
+        "referenceSHA256": [
+          "2588e3ddf9961cae8661c45020239c763bbb04dc61495e90fd6337864b8ee8fc"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "rejected-age-too-old"
+      },
+      {
+        "prompt": "Create ONE new portrait of an INFANT AGED SIX MONTHS. Reference2 gives correct infant anatomy and age, not identity. PRIMARY PERSONAL IDENTITY is reference1 but RADICALLY DE-AGE: copper auburn sparse straight hair, narrower oval face tendency, hazel brown eyes, distinct small mole on the left cheek. Huge rounded baby cranial dome, very short tiny lower face, tiny button nose without a developed long bridge, no adult jaw or long neck, soft squishy baby cheeks, huge forehead, small chin. Frontal/almost-frontal view like reference2, NOT reference1 older child's profile. Sparse wisps only. Real six-month infant, not toddler/preschooler. Full shoulders/body in snug plain cream linen SWADDLING, simple linen BABY BONNET covering hair except sparse wisps. muted russet wool outer wrap over swaddle. Gentle curious infant expression. Match muted handpainted gouache, matte gray-brown backdrop, upperleft lighting. Medieval England c1320. One baby only, no text/numbers/symbols/frame. Do not simply dress the older child as an infant; rebuild the facial proportions as an actual baby.",
+        "rawFile": "raw/pilot2-baby/L2_202_baby-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_child.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_baby.png"
+        ],
+        "referenceRoles": [
+          "Primary matching child personal identity",
+          "Infant anatomy and swaddling only; identity not copied"
+        ],
+        "referenceSHA256": [
+          "2588e3ddf9961cae8661c45020239c763bbb04dc61495e90fd6337864b8ee8fc",
+          "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "candidate-final"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256 only. No facial retouch; original pilot2 unchanged.",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Awaiting independent age/identity review; target real infant in swaddling and bonnet.",
+      "runtime": "not installed"
+    },
+    "sha256": "b32777e354e8a684eb0b20409c2d08821666957d9dbad5b96b6cf7da88ebbdf1"
+  },
+  {
+    "id": "L2_203_baby-v2",
+    "file": "assets/pilot2-baby/L2_203_baby-v2.png",
+    "identity": "L2_203",
+    "lineage": "L2",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Cream linen swaddling and linen infant bonnet; muted olive wool outer wrap",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "auburn family range",
+      "faceShape": "oval",
+      "feature": "soft low eyebrow family tendency"
+    },
+    "differenceMarkers": {
+      "age": 0.5,
+      "eyes": "green",
+      "hair": "light auburn sparse fine hair, longer oval face tendency, green eyes, warm complexion",
+      "wrap": "muted olive wool outer wrap"
+    },
+    "childIdentityReference": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_203_child.png",
+      "sha256": "3089c8e6cc476327109803cfcee9bf4ab2f8b39e0573b9e9d73d95222c2dec30",
+      "packagedFile": "references/pilot2-baby/L2_203_child.png",
+      "role": "Primary personal identity reference"
+    },
+    "previousBaby": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_203_baby.png",
+      "sha256": "3f60fdf9701ca12922c344e7379aa4faa9ae24b1b7fe2b482df93e6a9b4c33b5",
+      "packagedFile": "references/pilot2-baby/L2_203_baby-before.png",
+      "role": "Comparison only, not generator input"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve. ONE square medieval portrait of the exact fictional girl in reference as a real 0.6-YEAR OLD INFANT. Input is PRIMARY IDENTITY, not age. Keep light auburn sparse fine hair, longer oval face tendency, green eyes, warm complexion and identity continuity but with genuine baby anatomy: very short face, tiny nose, plump soft cheeks, large forehead, tiny chin and sparse soft hair. No braid at infant age. Bundled snugly in cream linen SWADDLING neck-down and a soft cream LINEN BABY BONNET, muted olive wool outer wrap over bundle. Face fully visible. Strongly baby 6–9 months, never preschool child, never toddler face simply reduced. Muted painted gouache exactly consistent with reference style, warm gray background, gentle upper-left lighting. England c1320. One baby only, no text/numbers/symbol/frame.",
+        "rawFile": "raw/pilot2-baby/L2_203_baby-v2-attempt1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_203_child.png"
+        ],
+        "referenceRoles": [
+          "Primary identity from matching pilot2 child portrait"
+        ],
+        "referenceSHA256": [
+          "3089c8e6cc476327109803cfcee9bf4ab2f8b39e0573b9e9d73d95222c2dec30"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "rejected-age-too-old"
+      },
+      {
+        "prompt": "Create ONE new portrait of a baby girl aged SIX MONTHS. Reference2 supplies only infant anatomy and age. PRIMARY PERSONAL IDENTITY comes from reference1, radically younger: light auburn sparse fine hair, longer oval face tendency, green eyes, warm complexion. Rebuild infant proportions: huge round cranial dome, short tiny lower face, tiny button nose, no long developed nose bridge, no adult jaw, no long neck, squishy rounded cheeks, large forehead and little chin. Frontal/almost frontal view like reference2, do NOT use reference1's older-child side profile. Sparse infant hair wisps only. True six-month BABY, not toddler/preschooler. Snug cream linen SWADDLING all shoulders and body, plain soft linen BABY BONNET over head, muted olive wool outer wrap over swaddle. Gentle expressive visible baby face. Medieval England c1320. Muted painterly gouache consistent with references, warm gray background, upperleft soft light. One baby only, no text,numbers,border,symbol. Never paste an older child's face onto swaddle; produce actual infant anatomy.",
+        "rawFile": "raw/pilot2-baby/L2_203_baby-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_203_child.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_baby.png"
+        ],
+        "referenceRoles": [
+          "Primary matching child personal identity",
+          "Infant anatomy and swaddling only; identity not copied"
+        ],
+        "referenceSHA256": [
+          "3089c8e6cc476327109803cfcee9bf4ab2f8b39e0573b9e9d73d95222c2dec30",
+          "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "candidate-final"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256 only. No facial retouch; original pilot2 unchanged.",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Awaiting independent age/identity review; target real infant in swaddling and bonnet.",
+      "runtime": "not installed"
+    },
+    "sha256": "79088c511b9a34f94e65f7051e1a981b5df797c1d1899b206a6cc22d56a884a1"
+  },
+  {
+    "id": "L2_204_baby-v2",
+    "file": "assets/pilot2-baby/L2_204_baby-v2.png",
+    "identity": "L2_204",
+    "lineage": "L2",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Cream linen swaddling and linen infant bonnet; muted rust wool outer wrap",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "auburn family range",
+      "faceShape": "round",
+      "feature": "soft low eyebrow family tendency"
+    },
+    "differenceMarkers": {
+      "age": 0.5,
+      "eyes": "brown",
+      "hair": "Short auburn curl tufts at bonnet edge",
+      "wrap": "muted rust wool outer wrap",
+      "expression": "Open mouth delighted infant expression",
+      "face": "Round wide face, broad cheeks, fuller lower lip"
+    },
+    "childIdentityReference": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_child.png",
+      "sha256": "c23316ee10a1ad782968dad0ee644aa6ff122ab88139edf2960903682dadea68",
+      "packagedFile": "references/pilot2-baby/L2_204_child.png",
+      "role": "Primary personal identity reference"
+    },
+    "previousBaby": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_baby.png",
+      "sha256": "185334bd9441ebe325884c89829db0ec5a1515055a2d44cb3359f2d0fd4412ed",
+      "packagedFile": "references/pilot2-baby/L2_204_baby-before.png",
+      "role": "Comparison only, not generator input"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve. ONE square medieval portrait of the exact fictional girl in reference as a real 0.9-YEAR OLD INFANT. Reference is primary personal IDENTITY, not target age. Keep dark auburn sparse soft curls, round cheek and face tendency, brown eyes, warm complexion, recognizability via eyes/hair/general face tendency, but genuine infant anatomy: extremely short soft face, tiny nose and chin, plump cheeks, large forehead, sparse soft hair. Infant bundled snugly in cream linen SWADDLING neck-down, simple cream LINEN BABY BONNET around head and muted rust wool outer wrap over bundle. Baby face fully visible. Age under one year, NOT 3–5 child, not a miniature mature face, no grown curls. Muted painterly gouache matching reference's warm gray backdrop and upper-left soft light. Southern England c1320. One baby only. No words, numbers, frame, symbol.",
+        "rawFile": "raw/pilot2-baby/L2_204_baby-v2-attempt1.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_child.png"
+        ],
+        "referenceRoles": [
+          "Primary identity from matching pilot2 child portrait"
+        ],
+        "referenceSHA256": [
+          "c23316ee10a1ad782968dad0ee644aa6ff122ab88139edf2960903682dadea68"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "rejected-age-too-old"
+      },
+      {
+        "prompt": "Create ONE new portrait of a baby girl aged SIX MONTHS. Reference2 supplies only infant anatomy and age. PRIMARY PERSONAL IDENTITY comes from reference1, radically younger: dark auburn sparse soft curls, round cheek and face tendency, brown eyes, warm complexion. Rebuild infant proportions: huge round cranial dome, short tiny lower face, tiny button nose, no long developed nose bridge, no adult jaw, no long neck, squishy rounded cheeks, large forehead and little chin. Frontal/almost frontal view like reference2, do NOT use reference1's older-child side profile. Sparse infant hair wisps only. True six-month BABY, not toddler/preschooler. Snug cream linen SWADDLING all shoulders and body, plain soft linen BABY BONNET over head, muted rust wool outer wrap over swaddle. Gentle expressive visible baby face. Medieval England c1320. Muted painterly gouache consistent with references, warm gray background, upperleft soft light. One baby only, no text,numbers,border,symbol. Never paste an older child's face onto swaddle; produce actual infant anatomy.",
+        "rawFile": "raw/pilot2-baby/L2_204_baby-v2-attempt2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_child.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_baby.png"
+        ],
+        "referenceRoles": [
+          "Primary matching child personal identity",
+          "Infant anatomy and swaddling only; identity not copied"
+        ],
+        "referenceSHA256": [
+          "c23316ee10a1ad782968dad0ee644aa6ff122ab88139edf2960903682dadea68",
+          "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "rejected-sibling-too-similar"
+      },
+      {
+        "prompt": "Use case: identity-preserve. Targeted correction of image2 (CURRENT SIX MONTH BABY), image1 is HER OWN OLDER CHILD identity reference. Keep image2 real infant age, large cranial dome, short lowerface, linen bonnet, snug linen swaddling, rust wool wrap, painterly muted gouache/background/light/composition. Change only her personal facial distinctions to more closely match her own child: a distinctly ROUNDER WIDER face with broad full cheeks, slightly wider-set warm brown eyes consistent with image1, fuller lower lip. Give a clearly OPEN MOUTH delighted infant expression with visible pink mouth interior (no adult teeth), not the tiny closed smile in image2. Show a few short soft dark-auburn CURL TUFTS at bonnet edge, not a straight wispy hairline. These features must be readable at 96px yet remain a real six-month infant, not a toddler. Preserve all bonnet/swaddle infant proportions. One baby portrait only, no text, numbers, symbols, frame.",
+        "rawFile": "raw/pilot2-baby/L2_204_baby-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_child.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/references/pilot2-baby/L2_204_baby-v2-before-targeted.png"
+        ],
+        "referenceRoles": [
+          "Own child primary identity",
+          "Own prior infant age/proportions edit target"
+        ],
+        "referenceSHA256": [
+          "c23316ee10a1ad782968dad0ee644aa6ff122ab88139edf2960903682dadea68",
+          "c02cbb7934fd9fb6ede038379f0a27984fafac0913ae64705c4ad2cd26e2c28b"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "selection": "candidate-final"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256 only. No facial retouch; original pilot2 unchanged.",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Awaiting independent age/identity review; target real infant in swaddling and bonnet.",
+      "runtime": "not installed"
+    },
+    "sha256": "ce4799c918dbae644b4a84a1f46a2ee6817013686e8522eb766f4af5e03458c1"
+  }
+]

@@ -1,0 +1,265 @@
+{
+  "status": "PARTIAL_REVIEW",
+  "reviewer": "prod1_proofs independent non-blind age/costume review",
+  "limitations": "Visual age estimates are subjective, not exact age verification. No family/identity blind judgment. Only currently available inputs reviewed.",
+  "board": "records/proof-work/review-01.png",
+  "reviewedCount": 18,
+  "rows": [
+    {
+      "file": "assets/L3/L3_101_mature.png",
+      "sha256": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+      "id": "L3_101_mature",
+      "sha256After": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        42,
+        50
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Fine wool and fur collar visible. Adult female heads covered.",
+      "notes": "Visible wrinkles and structure change vs young; approximately 15–25 years visual separation."
+    },
+    {
+      "file": "assets/L3/L3_101_old.png",
+      "sha256": "ba857dc241a3ba6b8a5297ee5a309c00cd30641d1e06c91861ba14037dc29ab0",
+      "id": "L3_101_old",
+      "sha256After": "ba857dc241a3ba6b8a5297ee5a309c00cd30641d1e06c91861ba14037dc29ab0",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        58,
+        68
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Fine wool and fur collar visible. Adult female heads covered.",
+      "notes": "Gray hair and wrinkles visible, reads around 60–65."
+    },
+    {
+      "file": "assets/L3/L3_101_young.png",
+      "sha256": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+      "id": "L3_101_young",
+      "sha256After": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        23,
+        30
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Fine wool and fur collar visible. Adult female heads covered.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L3/L3_102_mature.png",
+      "sha256": "db81f565f470d3ac87f34ee6a6b4c38ef31f9d469553e741e280a4dcc9e5d865",
+      "id": "L3_102_mature",
+      "sha256After": "db81f565f470d3ac87f34ee6a6b4c38ef31f9d469553e741e280a4dcc9e5d865",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        40,
+        49
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Fine wool and fur collar visible. Adult female heads covered.",
+      "notes": "Visible wrinkles and structure change vs young; approximately 15–25 years visual separation."
+    },
+    {
+      "file": "assets/L3/L3_102_old.png",
+      "sha256": "9709301fc267cbaaf630db406589a43f50083fc4c1f8040564d5500f5bbb4bcf",
+      "id": "L3_102_old",
+      "sha256After": "9709301fc267cbaaf630db406589a43f50083fc4c1f8040564d5500f5bbb4bcf",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        54,
+        65
+      ],
+      "ageStatus": "REVIEW",
+      "costumeObservation": "Fine wool and fur collar visible. Adult female heads covered.",
+      "notes": "Older than mature, but 65+ is borderline; facial aging could read late 50s."
+    },
+    {
+      "file": "assets/L3/L3_102_young.png",
+      "sha256": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528",
+      "id": "L3_102_young",
+      "sha256After": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        23,
+        31
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Fine wool and fur collar visible. Adult female heads covered.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L4/L4_101_young.png",
+      "sha256": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+      "id": "L4_101_young",
+      "sha256After": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        23,
+        30
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Adult married female heads covered; simple wool appropriate broad class cue.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L4/L4_102_young.png",
+      "sha256": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+      "id": "L4_102_young",
+      "sha256After": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        23,
+        30
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Adult married female heads covered; simple wool appropriate broad class cue.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L4/L4_205_young.png",
+      "sha256": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+      "id": "L4_205_young",
+      "sha256After": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        22,
+        30
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Adult married female heads covered; simple wool appropriate broad class cue.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L4/L4_206_young.png",
+      "sha256": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+      "id": "L4_206_young",
+      "sha256After": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        22,
+        29
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Adult married female heads covered; simple wool appropriate broad class cue.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L5/L5_101_young.png",
+      "sha256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+      "id": "L5_101_young",
+      "sha256After": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        23,
+        30
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Adult married female heads covered; simple wool appropriate broad class cue.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L5/L5_102_young.png",
+      "sha256": "6ce61241b7d07b5ec5cfa1aff52ce724ddefd2517c2f4132db47533dfeae04b4",
+      "id": "L5_102_young",
+      "sha256After": "6ce61241b7d07b5ec5cfa1aff52ce724ddefd2517c2f4132db47533dfeae04b4",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        23,
+        31
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Adult married female heads covered; simple wool appropriate broad class cue.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L5/L5_205_young.png",
+      "sha256": "b82a7bf102d62aa4c4ce59d20e3668018749eb07e3b22ae01bb510cb9a3467c9",
+      "id": "L5_205_young",
+      "sha256After": "b82a7bf102d62aa4c4ce59d20e3668018749eb07e3b22ae01bb510cb9a3467c9",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        22,
+        30
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Adult married female heads covered; simple wool appropriate broad class cue.",
+      "notes": ""
+    },
+    {
+      "file": "assets/L5/L5_206_young.png",
+      "sha256": "b882529ab539702737dbd83260f7e00abb1c037dc282575dcfed14a7c50bfe3f",
+      "id": "L5_206_young",
+      "sha256After": "b882529ab539702737dbd83260f7e00abb1c037dc282575dcfed14a7c50bfe3f",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        23,
+        30
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Adult married female heads covered; simple wool appropriate broad class cue.",
+      "notes": ""
+    },
+    {
+      "file": "assets/common/C_child_01.png",
+      "sha256": "f522e81c4f61c8128466797337731f5d162108923f217741c54c8c528a8c19bc",
+      "id": "C_child_01",
+      "sha256After": "f522e81c4f61c8128466797337731f5d162108923f217741c54c8c528a8c19bc",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        6,
+        9
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Simple child wool clothing, no adult veil.",
+      "notes": ""
+    },
+    {
+      "file": "assets/common/C_toddler_01.png",
+      "sha256": "6e1e04b1b3d9192558ccdc3f9636fdbf602343878296f246a40ca090d935f3c1",
+      "id": "C_toddler_01",
+      "sha256After": "6e1e04b1b3d9192558ccdc3f9636fdbf602343878296f246a40ca090d935f3c1",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        2,
+        4
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Simple child wool clothing, no adult veil.",
+      "notes": ""
+    },
+    {
+      "file": "assets/common/C_toddler_02.png",
+      "sha256": "baafc2dabec580002fceb27e42dc247dfb0063ea18f1445b53f822e8f741ea3c",
+      "id": "C_toddler_02",
+      "sha256After": "baafc2dabec580002fceb27e42dc247dfb0063ea18f1445b53f822e8f741ea3c",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        3,
+        5
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Simple child wool clothing, no adult veil.",
+      "notes": ""
+    },
+    {
+      "file": "assets/common/C_toddler_03.png",
+      "sha256": "eb55227efcc829f9c107f1174f6e896f0df38de549ef954e2bca3999e70b2333",
+      "id": "C_toddler_03",
+      "sha256After": "eb55227efcc829f9c107f1174f6e896f0df38de549ef954e2bca3999e70b2333",
+      "stableDuringReview": true,
+      "observedAgeRange": [
+        3,
+        5
+      ],
+      "ageStatus": "PASS",
+      "costumeObservation": "Simple child wool clothing, no adult veil.",
+      "notes": ""
+    }
+  ],
+  "earlyRisks": [
+    "L3_102_old age 65+ not unambiguous.",
+    "L4_101_young and L5_206_young show remarkably similar broad cheek/jaw/red curl templates; family blind judge must evaluate later without this observation."
+  ]
+}

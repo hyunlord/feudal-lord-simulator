@@ -1,0 +1,196 @@
+{
+  "commonTraits": [
+    "dark blond hair",
+    "broad square overall face",
+    "thick horizontal eyebrows"
+  ],
+  "people": {
+    "101": {
+      "sex": "male",
+      "age": 25,
+      "markers": [
+        "blue eyes",
+        "short straight swept hair",
+        "broad sturdy shoulders",
+        "small mole below left lip"
+      ],
+      "clothes": "good moss-brown wool tunic and linen collar"
+    },
+    "102": {
+      "sex": "female",
+      "age": 25,
+      "markers": [
+        "hazel eyes",
+        "straight hair under linen headcloth",
+        "slim sloped shoulders",
+        "freckles across high cheeks"
+      ],
+      "clothes": "good muted clay-red wool gown and cream linen headcloth",
+      "married": true
+    },
+    "201": {
+      "sex": "male",
+      "age": 24,
+      "child": 8,
+      "parents": [
+        101,
+        102
+      ],
+      "markers": [
+        "pale blue eyes",
+        "short tight dark-blond curls",
+        "very broad sturdy shoulders",
+        "conspicuous scattered freckles on nose",
+        "wide mouth with full lower lip"
+      ],
+      "clothes": "quality muted ochre wool tunic and linen"
+    },
+    "202": {
+      "sex": "male",
+      "age": 22,
+      "child": 6,
+      "parents": [
+        101,
+        102
+      ],
+      "markers": [
+        "dark brown eyes",
+        "straight dark-blond ear-length blunt fringe",
+        "slender narrow shoulders",
+        "small dark mole on right cheek",
+        "small mouth with thin lips"
+      ],
+      "clothes": "quality muted blue-gray wool tunic and linen"
+    },
+    "203": {
+      "sex": "female",
+      "age": 24,
+      "child": 8,
+      "parents": [
+        101,
+        102
+      ],
+      "markers": [
+        "green eyes",
+        "long straight dark-blond braid under adult headcloth",
+        "slender tall build",
+        "dense fine freckles on cheeks",
+        "wide smiling mouth"
+      ],
+      "clothes": "good russet wool gown and linen",
+      "married": true
+    },
+    "204": {
+      "sex": "female",
+      "age": 22,
+      "child": 6,
+      "parents": [
+        101,
+        102
+      ],
+      "markers": [
+        "gray-blue eyes",
+        "short loose curly dark-blond bob",
+        "stocky broad shoulders",
+        "distinct mole below left eye",
+        "small pursed mouth"
+      ],
+      "clothes": "good muted sage wool gown and linen"
+    },
+    "205": {
+      "sex": "female",
+      "age": 23,
+      "external": true,
+      "markers": [
+        "deep brown eyes",
+        "dark brown smooth hair under coif",
+        "narrow oval face and slim shoulders",
+        "small mole beside nose"
+      ],
+      "clothes": "good muted ochre wool gown and cream linen coif",
+      "married": true
+    },
+    "206": {
+      "sex": "male",
+      "age": 25,
+      "external": true,
+      "markers": [
+        "gray eyes",
+        "straight near-black shoulder-length hair",
+        "narrow angular face and lanky shoulders",
+        "thin upper lip",
+        "large protruding ears",
+        "small healed eyebrow notch"
+      ],
+      "clothes": "good muted brown-red wool tunic and linen"
+    },
+    "301": {
+      "sex": "male",
+      "age": 22,
+      "child": 8,
+      "parents": [
+        201,
+        205
+      ],
+      "markers": [
+        "gray-green eyes",
+        "short wavy dark-blond side-parted hair",
+        "narrow agile shoulders",
+        "dark mole under right lower lip",
+        "longer narrow individual nose"
+      ],
+      "clothes": "good muted olive wool tunic and linen"
+    },
+    "302": {
+      "sex": "female",
+      "age": 20,
+      "child": 6,
+      "parents": [
+        201,
+        205
+      ],
+      "markers": [
+        "brown eyes",
+        "long dark-blond single braid",
+        "broad sturdy shoulders",
+        "light clustered nose freckles",
+        "small round-tipped individual nose"
+      ],
+      "clothes": "good muted ochre wool gown and linen"
+    },
+    "303": {
+      "sex": "male",
+      "age": 22,
+      "child": 8,
+      "parents": [
+        206,
+        203
+      ],
+      "markers": [
+        "brown eyes",
+        "longer loose dark-blond curls to jaw",
+        "sturdy broad shoulders",
+        "small mole high left cheek",
+        "full lower lip and broad individual nose"
+      ],
+      "clothes": "good muted blue-gray wool tunic and linen"
+    },
+    "304": {
+      "sex": "female",
+      "age": 20,
+      "child": 6,
+      "parents": [
+        206,
+        203
+      ],
+      "markers": [
+        "blue eyes",
+        "straight dark-blond chin-length bob with fringe",
+        "slender narrow shoulders",
+        "two small freckles on right cheek",
+        "thin lips and narrow individual nose"
+      ],
+      "clothes": "good muted brick wool gown and linen"
+    }
+  }
+}

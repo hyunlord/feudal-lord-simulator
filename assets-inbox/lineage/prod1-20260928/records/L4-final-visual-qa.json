@@ -1,0 +1,1256 @@
+{
+  "reviewer": "prod1_age_review",
+  "date": "2026-09-28",
+  "scope": "All 38 final L4 PNGs with matching-hash reuse for four previously reviewed generation-2 children.",
+  "method": "Reviewed adult contact at 256px per portrait, grandchild baby/child/young contact at 256px per portrait, and four generation-2 babies individually. Previously reviewed unchanged generation-2 child files retain their 256/96 verdicts. No art edits.",
+  "overall": "PASS_WITH_SUBJECTIVE_AGE_LIMITS: latest mature corrections resolve previously flagged subtle aging. All original qualification history retained.",
+  "items": [
+    {
+      "id": "L4_101_mature",
+      "path": "assets/L4/L4_101_mature.png",
+      "sha256": "379f4f07efbc5cef632c487f442ec2557a732db4302af58bdae5ac385149ac4e",
+      "estimated_years": [
+        40,
+        52
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_101_old",
+      "path": "assets/L4/L4_101_old.png",
+      "sha256": "a9260f1e99015fa25fc47267e05dcda24f39c1f244af3b077bc8378b8641838f",
+      "estimated_years": [
+        62,
+        75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_101_young",
+      "path": "assets/L4/L4_101_young.png",
+      "sha256": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+      "estimated_years": [
+        23,
+        33
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_102_mature",
+      "path": "assets/L4/L4_102_mature.png",
+      "sha256": "e13d83c2434098038e174b8749067d3ef4f21ae306275b8dbebc18402314c2a3",
+      "estimated_years": [
+        39,
+        50
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_102_old",
+      "path": "assets/L4/L4_102_old.png",
+      "sha256": "2e63eeb999fc2111fb4692b2753915991b599f2cdc4e56a15ec6b237b5022bde",
+      "estimated_years": [
+        62,
+        75
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_102_young",
+      "path": "assets/L4/L4_102_young.png",
+      "sha256": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+      "estimated_years": [
+        23,
+        32
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_201_baby",
+      "path": "assets/L4/L4_201_baby.png",
+      "sha256": "67027fdd46b8da15a72e12edadeba72d845f0c3cd75faee967e02fdd1519316a",
+      "estimated_years": [
+        0.7,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_201_child",
+      "path": "assets/L4/L4_201_child.png",
+      "sha256": "2fa927a6c6997c4da99d4bf7a9d46bc8fd8b79faa13a5631f9bc045fa3b11ffd",
+      "estimated_years": [
+        5,
+        7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Reused matching-SHA prior 256px and 96px child review",
+      "prior_sha_matches": true
+    },
+    {
+      "id": "L4_201_mature",
+      "path": "assets/L4/L4_201_mature.png",
+      "sha256": "edd3581f711fb7fba4563af643d6c1408037e87e091bae74436fc4f011b00e9c",
+      "estimated_years": [
+        40,
+        50
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null,
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "notes": "Revised mature portrait now has legible forehead, eye and facial folds; reads as 40s."
+    },
+    {
+      "id": "L4_201_young",
+      "path": "assets/L4/L4_201_young.png",
+      "sha256": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+      "estimated_years": [
+        23,
+        33
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_202_baby",
+      "path": "assets/L4/L4_202_baby.png",
+      "sha256": "f1c7e82385a52b4e4976f2f89d98a221310f2603ab421b5097aa0ba8afb2031c",
+      "estimated_years": [
+        0.7,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_202_child",
+      "path": "assets/L4/L4_202_child.png",
+      "sha256": "ea43b344c888ad7ca48c483c2713d5010e776d15f5edbd459793cab4bfeb127e",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Reused matching-SHA prior 256px and 96px child review",
+      "prior_sha_matches": true
+    },
+    {
+      "id": "L4_202_mature",
+      "path": "assets/L4/L4_202_mature.png",
+      "sha256": "20b8e55bb7e1725715913bfec9daa63be4db9ff50c77afcd1edd63754d6946fb",
+      "estimated_years": [
+        38,
+        48
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_202_young",
+      "path": "assets/L4/L4_202_young.png",
+      "sha256": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+      "estimated_years": [
+        20,
+        30
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_203_baby",
+      "path": "assets/L4/L4_203_baby.png",
+      "sha256": "d7800e6b1d512d4fac1f648f1b8e35d34f687855510a65aa6bb8e3d1173d9a27",
+      "estimated_years": [
+        0.7,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_203_child",
+      "path": "assets/L4/L4_203_child.png",
+      "sha256": "51008f9c6cff788624f71fa2770435d8b7c93db3d9a58ad8e49003c4a55f737d",
+      "estimated_years": [
+        6,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Reused matching-SHA prior 256px and 96px child review",
+      "prior_sha_matches": true
+    },
+    {
+      "id": "L4_203_mature",
+      "path": "assets/L4/L4_203_mature.png",
+      "sha256": "319aebed8d7c4fcaba61652138dcfffd2738dc8982eb72cdd93ed51b9a92d9c7",
+      "estimated_years": [
+        40,
+        50
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null,
+      "inspected_sizes": [
+        256,
+        96
+      ],
+      "notes": "Revised mature portrait now has legible forehead, eye and facial folds; reads as 40s."
+    },
+    {
+      "id": "L4_203_young",
+      "path": "assets/L4/L4_203_young.png",
+      "sha256": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+      "estimated_years": [
+        23,
+        32
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_204_baby",
+      "path": "assets/L4/L4_204_baby.png",
+      "sha256": "9249b22c00086f02a75bd7bb4e9764fec8236aa4a46061e837db7f1ddaa0f33a",
+      "estimated_years": [
+        0.7,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_204_child",
+      "path": "assets/L4/L4_204_child.png",
+      "sha256": "4c364d5811dfe3d006e7c7709908fb9cc7ba7dffc5ff283430e314ee271bfb45",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Reused matching-SHA prior 256px and 96px child review",
+      "prior_sha_matches": true
+    },
+    {
+      "id": "L4_204_mature",
+      "path": "assets/L4/L4_204_mature.png",
+      "sha256": "9d4e136b0b8e7022ebc39e1fd14f0da09ed57a3734a7c4a1741d016acb3bfcc8",
+      "estimated_years": [
+        36,
+        47
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_204_young",
+      "path": "assets/L4/L4_204_young.png",
+      "sha256": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+      "estimated_years": [
+        22,
+        32
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_205_mature",
+      "path": "assets/L4/L4_205_mature.png",
+      "sha256": "3eefc836b18696e465b0ae261b3bae179c17a283daaded92f41f04fbf116d29e",
+      "estimated_years": [
+        38,
+        49
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_205_young",
+      "path": "assets/L4/L4_205_young.png",
+      "sha256": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+      "estimated_years": [
+        22,
+        32
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_REQUIRED_COVER",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_206_mature",
+      "path": "assets/L4/L4_206_mature.png",
+      "sha256": "d991429f372a234e595efc714186d6efeb4a5afdc280bec4ace70f06a0035774",
+      "estimated_years": [
+        39,
+        50
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_206_young",
+      "path": "assets/L4/L4_206_young.png",
+      "sha256": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+      "estimated_years": [
+        22,
+        32
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_301_baby",
+      "path": "assets/L4/L4_301_baby.png",
+      "sha256": "a45e79ccb8cef0d9e2c40b8e0f74a68bfe3a281bae7d4ad0b8fcac742c313ba4",
+      "estimated_years": [
+        0.7,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_301_child",
+      "path": "assets/L4/L4_301_child.png",
+      "sha256": "d7a71a69500f9d664a6a73a4d018856c6ce5ee9cac9485ed2b17454362d41d69",
+      "estimated_years": [
+        5,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_301_young",
+      "path": "assets/L4/L4_301_young.png",
+      "sha256": "c19103978fdff8da2ada8b745637245022f2afc21055c020c2c66eef644fbd65",
+      "estimated_years": [
+        20,
+        29
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_302_baby",
+      "path": "assets/L4/L4_302_baby.png",
+      "sha256": "936ea1760987da4e5269eb0b7a312e64ffce4bca3a33d27c049a721bf277337c",
+      "estimated_years": [
+        0.7,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_302_child",
+      "path": "assets/L4/L4_302_child.png",
+      "sha256": "399f83727f73356ad5529865033a71c13ce18605574416b91b613f7cafada6a0",
+      "estimated_years": [
+        6,
+        9
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_302_young",
+      "path": "assets/L4/L4_302_young.png",
+      "sha256": "8dd53d9acb862bded7a9ccd7c802a2ee29a3297376bd7092fea7f86f0546a5ad",
+      "estimated_years": [
+        20,
+        30
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_303_baby",
+      "path": "assets/L4/L4_303_baby.png",
+      "sha256": "26abd9805b71b42c6190672c11804d14d58cff663b68686fb3dd072e45628319",
+      "estimated_years": [
+        0.7,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_303_child",
+      "path": "assets/L4/L4_303_child.png",
+      "sha256": "ee3d74234ea63d347935a37933961beacef7c721cd92eb47f3d59a942541e6b6",
+      "estimated_years": [
+        5,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_303_young",
+      "path": "assets/L4/L4_303_young.png",
+      "sha256": "aba59df4e99ad792657f9ebc40e6ccc69d0ed8e048a2880545cc194e1a64b1bc",
+      "estimated_years": [
+        21,
+        31
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_APPLICABLE",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_304_baby",
+      "path": "assets/L4/L4_304_baby.png",
+      "sha256": "9fc45050819ff9e9610ad86569a969fb07c051637c6ba08226ed2f78e32fc395",
+      "estimated_years": [
+        0.7,
+        1.7
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "PASS_BONNET",
+      "swaddle": "PASS",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_304_child",
+      "path": "assets/L4/L4_304_child.png",
+      "sha256": "72072616f175aa6fa6d6995ade857cbd4072b5bcfb0b3a7282b26e56cfe9a433",
+      "estimated_years": [
+        5,
+        8
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    },
+    {
+      "id": "L4_304_young",
+      "path": "assets/L4/L4_304_young.png",
+      "sha256": "3b34bb57f4bf8eebe250f710713c1d6ead7a3d37c3a260d77a4c1dc31eee128a",
+      "estimated_years": [
+        20,
+        30
+      ],
+      "age_verdict": "PASS_SUBJECTIVE",
+      "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+      "swaddle": "NOT_APPLICABLE",
+      "review_basis": "Current 256px visual inspection",
+      "prior_sha_matches": null
+    }
+  ],
+  "chains": [
+    {
+      "identity": "L4_101",
+      "young_sha256": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+      "mature_sha256": "379f4f07efbc5cef632c487f442ec2557a732db4302af58bdae5ac385149ac4e",
+      "same_person_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+    },
+    {
+      "identity": "L4_102",
+      "young_sha256": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+      "mature_sha256": "e13d83c2434098038e174b8749067d3ef4f21ae306275b8dbebc18402314c2a3",
+      "same_person_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+    },
+    {
+      "identity": "L4_201",
+      "young_sha256": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+      "mature_sha256": "edd3581f711fb7fba4563af643d6c1408037e87e091bae74436fc4f011b00e9c",
+      "same_person_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE_AFTER_CORRECTION",
+      "notes": "Revised eye bags, forehead and facial folds resolve prior subtle-aging concern; visual estimate 40-50."
+    },
+    {
+      "identity": "L4_202",
+      "young_sha256": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+      "mature_sha256": "20b8e55bb7e1725715913bfec9daa63be4db9ff50c77afcd1edd63754d6946fb",
+      "same_person_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+    },
+    {
+      "identity": "L4_203",
+      "young_sha256": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+      "mature_sha256": "319aebed8d7c4fcaba61652138dcfffd2738dc8982eb72cdd93ed51b9a92d9c7",
+      "same_person_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE_AFTER_CORRECTION",
+      "notes": "Revised eye bags, forehead and facial folds resolve prior subtle-aging concern; visual estimate 40-50."
+    },
+    {
+      "identity": "L4_204",
+      "young_sha256": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+      "mature_sha256": "9d4e136b0b8e7022ebc39e1fd14f0da09ed57a3734a7c4a1741d016acb3bfcc8",
+      "same_person_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+    },
+    {
+      "identity": "L4_205",
+      "young_sha256": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+      "mature_sha256": "3eefc836b18696e465b0ae261b3bae179c17a283daaded92f41f04fbf116d29e",
+      "same_person_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+    },
+    {
+      "identity": "L4_206",
+      "young_sha256": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+      "mature_sha256": "d991429f372a234e595efc714186d6efeb4a5afdc280bec4ace70f06a0035774",
+      "same_person_continuity": "PASS_VISUAL",
+      "twenty_year_aging": "PASS_PLAUSIBLE",
+      "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+    }
+  ],
+  "founders_old": "Both founders show gray/white hair, increased wrinkles and older facial texture, estimated 62-75; visually distinct from mature stages.",
+  "grandchildren": "All four babies read about 8-20 months with bonnet and swaddle. Children 301/303/304 read 5-8 and 302 reads 6-9; target overlap is plausible and none appear adolescent.",
+  "covering_note": "Married adult female 102,203,205 young/mature and 102 old, plus 204 mature, are covered. 204 young and granddaughters young are unmarried in supplied metadata; exposed hair is not a failure.",
+  "distinctness_notes": [
+    "Repeated pose and family hair/eye colors make some relatives visually similar; no claim of blinded biometric identity separation.",
+    "Generation-2 baby 202/203 and grandbaby 301/302 have related compact features; facial and hair details differ but distinction may be weaker at small sizes."
+  ],
+  "contacts": [
+    {
+      "path": "records/L4-final-adults-contact.png",
+      "sha256": "1f3641fafcf34b64d9e7524689a33a15899e020b01daa8eb4e49591fe10ddd69"
+    },
+    {
+      "path": "records/L4-final-grandchildren-contact.png",
+      "sha256": "99b766b1b54f04f7f33cb512efd26672ed969ae1038b57822da82c687d4f89bb"
+    }
+  ],
+  "limitations": [
+    "Ages are subjective apparent-age estimates.",
+    "No new full-set 96px inspection was completed; only reused generation-2 child review includes 96px.",
+    "No runtime, animation or biometric identity verification."
+  ],
+  "clear_failures": [],
+  "art_modified": false,
+  "previous_review_history": {
+    "overall": "PASS_WITH_QUALIFICATIONS: no clear infant/child-age or married-woman-covering failure. Twenty-year aging is plausible overall, but relatively subtle for 201 and 203; do not claim objectively proven 20-year intervals.",
+    "items": [
+      {
+        "id": "L4_101_mature",
+        "path": "assets/L4/L4_101_mature.png",
+        "sha256": "379f4f07efbc5cef632c487f442ec2557a732db4302af58bdae5ac385149ac4e",
+        "estimated_years": [
+          40,
+          52
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_101_old",
+        "path": "assets/L4/L4_101_old.png",
+        "sha256": "a9260f1e99015fa25fc47267e05dcda24f39c1f244af3b077bc8378b8641838f",
+        "estimated_years": [
+          62,
+          75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_101_young",
+        "path": "assets/L4/L4_101_young.png",
+        "sha256": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+        "estimated_years": [
+          23,
+          33
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_102_mature",
+        "path": "assets/L4/L4_102_mature.png",
+        "sha256": "e13d83c2434098038e174b8749067d3ef4f21ae306275b8dbebc18402314c2a3",
+        "estimated_years": [
+          39,
+          50
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_102_old",
+        "path": "assets/L4/L4_102_old.png",
+        "sha256": "2e63eeb999fc2111fb4692b2753915991b599f2cdc4e56a15ec6b237b5022bde",
+        "estimated_years": [
+          62,
+          75
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_102_young",
+        "path": "assets/L4/L4_102_young.png",
+        "sha256": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+        "estimated_years": [
+          23,
+          32
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_201_baby",
+        "path": "assets/L4/L4_201_baby.png",
+        "sha256": "67027fdd46b8da15a72e12edadeba72d845f0c3cd75faee967e02fdd1519316a",
+        "estimated_years": [
+          0.7,
+          1.7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_201_child",
+        "path": "assets/L4/L4_201_child.png",
+        "sha256": "2fa927a6c6997c4da99d4bf7a9d46bc8fd8b79faa13a5631f9bc045fa3b11ffd",
+        "estimated_years": [
+          5,
+          7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Reused matching-SHA prior 256px and 96px child review",
+        "prior_sha_matches": true
+      },
+      {
+        "id": "L4_201_mature",
+        "path": "assets/L4/L4_201_mature.png",
+        "sha256": "2570dc522276042a5ef677bfdb960161262aacdc43dc98aa6764e604a17dfda8",
+        "estimated_years": [
+          36,
+          48
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_201_young",
+        "path": "assets/L4/L4_201_young.png",
+        "sha256": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+        "estimated_years": [
+          23,
+          33
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_202_baby",
+        "path": "assets/L4/L4_202_baby.png",
+        "sha256": "f1c7e82385a52b4e4976f2f89d98a221310f2603ab421b5097aa0ba8afb2031c",
+        "estimated_years": [
+          0.7,
+          1.7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_202_child",
+        "path": "assets/L4/L4_202_child.png",
+        "sha256": "ea43b344c888ad7ca48c483c2713d5010e776d15f5edbd459793cab4bfeb127e",
+        "estimated_years": [
+          6,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Reused matching-SHA prior 256px and 96px child review",
+        "prior_sha_matches": true
+      },
+      {
+        "id": "L4_202_mature",
+        "path": "assets/L4/L4_202_mature.png",
+        "sha256": "20b8e55bb7e1725715913bfec9daa63be4db9ff50c77afcd1edd63754d6946fb",
+        "estimated_years": [
+          38,
+          48
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_202_young",
+        "path": "assets/L4/L4_202_young.png",
+        "sha256": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+        "estimated_years": [
+          20,
+          30
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_203_baby",
+        "path": "assets/L4/L4_203_baby.png",
+        "sha256": "d7800e6b1d512d4fac1f648f1b8e35d34f687855510a65aa6bb8e3d1173d9a27",
+        "estimated_years": [
+          0.7,
+          1.7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_203_child",
+        "path": "assets/L4/L4_203_child.png",
+        "sha256": "51008f9c6cff788624f71fa2770435d8b7c93db3d9a58ad8e49003c4a55f737d",
+        "estimated_years": [
+          6,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Reused matching-SHA prior 256px and 96px child review",
+        "prior_sha_matches": true
+      },
+      {
+        "id": "L4_203_mature",
+        "path": "assets/L4/L4_203_mature.png",
+        "sha256": "7892a837ec9cac85c6f52d780db660a3408bcd6d2b492ffeb29a2d81a281e5bc",
+        "estimated_years": [
+          35,
+          47
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_203_young",
+        "path": "assets/L4/L4_203_young.png",
+        "sha256": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+        "estimated_years": [
+          23,
+          32
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_204_baby",
+        "path": "assets/L4/L4_204_baby.png",
+        "sha256": "9249b22c00086f02a75bd7bb4e9764fec8236aa4a46061e837db7f1ddaa0f33a",
+        "estimated_years": [
+          0.7,
+          1.7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_204_child",
+        "path": "assets/L4/L4_204_child.png",
+        "sha256": "4c364d5811dfe3d006e7c7709908fb9cc7ba7dffc5ff283430e314ee271bfb45",
+        "estimated_years": [
+          6,
+          9
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Reused matching-SHA prior 256px and 96px child review",
+        "prior_sha_matches": true
+      },
+      {
+        "id": "L4_204_mature",
+        "path": "assets/L4/L4_204_mature.png",
+        "sha256": "9d4e136b0b8e7022ebc39e1fd14f0da09ed57a3734a7c4a1741d016acb3bfcc8",
+        "estimated_years": [
+          36,
+          47
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_204_young",
+        "path": "assets/L4/L4_204_young.png",
+        "sha256": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+        "estimated_years": [
+          22,
+          32
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_205_mature",
+        "path": "assets/L4/L4_205_mature.png",
+        "sha256": "3eefc836b18696e465b0ae261b3bae179c17a283daaded92f41f04fbf116d29e",
+        "estimated_years": [
+          38,
+          49
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_205_young",
+        "path": "assets/L4/L4_205_young.png",
+        "sha256": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+        "estimated_years": [
+          22,
+          32
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_REQUIRED_COVER",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_206_mature",
+        "path": "assets/L4/L4_206_mature.png",
+        "sha256": "d991429f372a234e595efc714186d6efeb4a5afdc280bec4ace70f06a0035774",
+        "estimated_years": [
+          39,
+          50
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_206_young",
+        "path": "assets/L4/L4_206_young.png",
+        "sha256": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+        "estimated_years": [
+          22,
+          32
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_301_baby",
+        "path": "assets/L4/L4_301_baby.png",
+        "sha256": "a45e79ccb8cef0d9e2c40b8e0f74a68bfe3a281bae7d4ad0b8fcac742c313ba4",
+        "estimated_years": [
+          0.7,
+          1.7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_301_child",
+        "path": "assets/L4/L4_301_child.png",
+        "sha256": "d7a71a69500f9d664a6a73a4d018856c6ce5ee9cac9485ed2b17454362d41d69",
+        "estimated_years": [
+          5,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_301_young",
+        "path": "assets/L4/L4_301_young.png",
+        "sha256": "c19103978fdff8da2ada8b745637245022f2afc21055c020c2c66eef644fbd65",
+        "estimated_years": [
+          20,
+          29
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_302_baby",
+        "path": "assets/L4/L4_302_baby.png",
+        "sha256": "936ea1760987da4e5269eb0b7a312e64ffce4bca3a33d27c049a721bf277337c",
+        "estimated_years": [
+          0.7,
+          1.7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_302_child",
+        "path": "assets/L4/L4_302_child.png",
+        "sha256": "399f83727f73356ad5529865033a71c13ce18605574416b91b613f7cafada6a0",
+        "estimated_years": [
+          6,
+          9
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_302_young",
+        "path": "assets/L4/L4_302_young.png",
+        "sha256": "8dd53d9acb862bded7a9ccd7c802a2ee29a3297376bd7092fea7f86f0546a5ad",
+        "estimated_years": [
+          20,
+          30
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_303_baby",
+        "path": "assets/L4/L4_303_baby.png",
+        "sha256": "26abd9805b71b42c6190672c11804d14d58cff663b68686fb3dd072e45628319",
+        "estimated_years": [
+          0.7,
+          1.7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_303_child",
+        "path": "assets/L4/L4_303_child.png",
+        "sha256": "ee3d74234ea63d347935a37933961beacef7c721cd92eb47f3d59a942541e6b6",
+        "estimated_years": [
+          5,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_303_young",
+        "path": "assets/L4/L4_303_young.png",
+        "sha256": "aba59df4e99ad792657f9ebc40e6ccc69d0ed8e048a2880545cc194e1a64b1bc",
+        "estimated_years": [
+          21,
+          31
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_APPLICABLE",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_304_baby",
+        "path": "assets/L4/L4_304_baby.png",
+        "sha256": "9fc45050819ff9e9610ad86569a969fb07c051637c6ba08226ed2f78e32fc395",
+        "estimated_years": [
+          0.7,
+          1.7
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "PASS_BONNET",
+        "swaddle": "PASS",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_304_child",
+        "path": "assets/L4/L4_304_child.png",
+        "sha256": "72072616f175aa6fa6d6995ade857cbd4072b5bcfb0b3a7282b26e56cfe9a433",
+        "estimated_years": [
+          5,
+          8
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      },
+      {
+        "id": "L4_304_young",
+        "path": "assets/L4/L4_304_young.png",
+        "sha256": "3b34bb57f4bf8eebe250f710713c1d6ead7a3d37c3a260d77a4c1dc31eee128a",
+        "estimated_years": [
+          20,
+          30
+        ],
+        "age_verdict": "PASS_SUBJECTIVE",
+        "head_covering": "NOT_REQUIRED_BY_MARITAL_METADATA",
+        "swaddle": "NOT_APPLICABLE",
+        "review_basis": "Current 256px visual inspection",
+        "prior_sha_matches": null
+      }
+    ],
+    "chains": [
+      {
+        "identity": "L4_101",
+        "young_sha256": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+        "mature_sha256": "379f4f07efbc5cef632c487f442ec2557a732db4302af58bdae5ac385149ac4e",
+        "same_person_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+      },
+      {
+        "identity": "L4_102",
+        "young_sha256": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+        "mature_sha256": "e13d83c2434098038e174b8749067d3ef4f21ae306275b8dbebc18402314c2a3",
+        "same_person_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+      },
+      {
+        "identity": "L4_201",
+        "young_sha256": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+        "mature_sha256": "2570dc522276042a5ef677bfdb960161262aacdc43dc98aa6764e604a17dfda8",
+        "same_person_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "QUALIFIED_SUBTLE",
+        "notes": "Visible eye/face lines and skin changes, but +20 years is not strongly legible; older appearance is clearer than exact elapsed interval."
+      },
+      {
+        "identity": "L4_202",
+        "young_sha256": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+        "mature_sha256": "20b8e55bb7e1725715913bfec9daa63be4db9ff50c77afcd1edd63754d6946fb",
+        "same_person_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+      },
+      {
+        "identity": "L4_203",
+        "young_sha256": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+        "mature_sha256": "7892a837ec9cac85c6f52d780db660a3408bcd6d2b492ffeb29a2d81a281e5bc",
+        "same_person_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "QUALIFIED_SUBTLE",
+        "notes": "Visible eye/face lines and skin changes, but +20 years is not strongly legible; older appearance is clearer than exact elapsed interval."
+      },
+      {
+        "identity": "L4_204",
+        "young_sha256": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+        "mature_sha256": "9d4e136b0b8e7022ebc39e1fd14f0da09ed57a3734a7c4a1741d016acb3bfcc8",
+        "same_person_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+      },
+      {
+        "identity": "L4_205",
+        "young_sha256": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+        "mature_sha256": "3eefc836b18696e465b0ae261b3bae179c17a283daaded92f41f04fbf116d29e",
+        "same_person_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+      },
+      {
+        "identity": "L4_206",
+        "young_sha256": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+        "mature_sha256": "d991429f372a234e595efc714186d6efeb4a5afdc280bec4ace70f06a0035774",
+        "same_person_continuity": "PASS_VISUAL",
+        "twenty_year_aging": "PASS_PLAUSIBLE",
+        "notes": "More pronounced eye lines, facial folds or temple gray support older adulthood; a precise 20-year interval cannot be visually proven."
+      }
+    ]
+  },
+  "correction_reinspection": {
+    "ids": [
+      "L4_201_mature",
+      "L4_203_mature"
+    ],
+    "sizes": [
+      256,
+      96
+    ],
+    "contact": "records/independent-mature-corrections96.png",
+    "contact_sha256": "4702a72e45ae06309991b76af60c2406432687e5b88eb2bbcbeb0b883e3070d9"
+  }
+}
