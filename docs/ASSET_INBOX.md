@@ -49,7 +49,7 @@ assets-inbox/
 | `d1b` | 4 |  | 4 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
-| `lineage-pilot` | 117 | 12 | 81 |  | 24 |  |  | 0 |
+| `lineage-pilot` | 117 | 12 | 75 | 6 | 24 |  |  | 0 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
 | `portrait-pool` | 340 |  | 340 |  |  |  |  | 304 |
 | `retired` | 13 |  |  |  |  |  | 13 | 0 |
@@ -84,7 +84,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3433** | **15** | **2299** | **0** | **198** | **901** | **20** | **1061** |
+| **합계** | **3433** | **15** | **2293** | **6** | **198** | **901** | **20** | **1061** |
 
 ## 4. 찾는 법
 
@@ -215,7 +215,8 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **규칙 밖 58행 판정**(21시, 사용자 판정, INBOX-1p): 확정 묶음의 확인·기록 그림 30행 → confirmed "확인 그림". `wave4e/candidates-v1/assets/masters` 워커·망토 8장 → superseded, `replaced_by`에 같은 이름의 확정본(`wave4e/workers`·`wave4e/overlays`; 같은 그림의 먼저 받은 판, 바이트만 다름). `wave4e/candidates-v1/assets/templates/actor_*` 3장 → rejected "재스킨 참조 템플릿, 제품 아님(확정 템플릿은 derived-templates)". `wave4c` 울타리 이음 위상 마스크 5장 → confirmed "보조 자료(기록), 게임 코드 미사용". `wave2/farm_mixed_*` 4장 → retired(같은 바이트가 `retired/buildings/variants-wave2/`에 있음, C1f 퇴역). `wave5b/.../reused/held_staff_*` 4장 → superseded, `replaced_by`에 `walker-pilot2/candidates-v1/assets/props/`의 같은 바이트 확정본("다른 Wave 중복"). `wave2/hold/farm_pastoral_*` 3장 → candidate 유지 "C5(직물·목축) 때 판정 — 보류". `wave2/production-20260924/assets/house_l1_thatch-v1.png` → rejected "L1 초가는 runtime house_l1-v2가 담당, 이 판은 설치되지 않음". `asset-trial/evidence` 캡처 12장은 rejected 그대로. 각 행 비고 앞에 판정, 끝에 "(2026-09-27 판정) · 정리 때 비고: …". 남은 candidate는 목축형 농장 3행뿐.
 - **Wave 23**: 82장 전부 확정(2026-09-28 판정). 날씨 14(비고 "설치 때 세기 조정"), 마을 생활 새 4·동물 8(비고 "설치 때 작은 동물 1.6배 가독성 배율"), 마을 생활 소품 8, 인물 상태 장식 24(12종 × 96·48 px; `person_state/newborn_{48,96}`은 비고 "부모 초상용 '아이를 얻음'으로 사용(이름 변경 예정)"), 왕실 문장 4(1340 전·후 × 256·96), 패드 표시 20(10종 × 48·32). 확인 그림 4·기록 그림 34도 `confirmed`. 다른 Wave와 같은 바이트 없음.
 - **혈통 파일럿 1**(`lineage-pilot/pilot1-20260928`, 2026-09-28): 90장 전부 `candidate`, 비고 "파일럿 1 — 가족 묶기 통과, 형제 구별 실패, 파일럿 2 대기". 두 가문 68장(창시 부부 장년·노년 8, 자녀 4명 × 아기·어린이·청년·장년 32, 손자 4명 × 아기·어린이·청년 24, 외부 배우자 청년 4) + 평민 아기·어린이 공통 풀 12 = 256 px 초상 80장, 확인 그림 4·기록 그림 6. 공통 풀 12장과 아기 → 청년 사슬 48장(자녀·손자의 아기·어린이·청년)은 비고에 "파일럿 2 결과와 함께 판정"을 더했다.
-- **혈통 파일럿 2와 파일럿 1 판정**(2026-09-28 10시, 사용자 판정): 파일럿 2(`lineage-pilot/pilot2-20260928`)는 파일럿 1에서 구별에 실패한 형제 3쌍(L1_203·204, L2_201·202, L2_203·204) 여섯 인물의 아기·어린이·청년·장년 24장을 다시 그렸다(익명 동일인 구별 12/12 통과). 24장과 확인 그림 3 `confirmed`. 파일럿 1의 같은 여섯 인물 24장(아기 포함)은 `superseded`, `replaced_by`에 파일럿 2의 같은 이름 판. 파일럿 1의 나머지 초상 44장(창시 부부 8, 구별된 자녀 L1_201·202 8, 외부 배우자 4, 손자 24) `confirmed` — 그 가운데 아기 10장은 비고 "아기 단계 확정 — 파일럿 1 아기가 기준". 공통 풀 12장은 `candidate` 유지, 비고 "본 제작 1차 공통 풀과 함께 판정". 파일럿 1 확인 그림 4·기록 그림 6도 `confirmed`.
+- **혈통 파일럿 2와 파일럿 1 판정**(2026-09-28 10시, 사용자 판정): 파일럿 2(`lineage-pilot/pilot2-20260928`)는 파일럿 1에서 구별에 실패한 형제 3쌍(L1_203·204, L2_201·202, L2_203·204) 여섯 인물의 아기·어린이·청년·장년 24장을 다시 그렸다(익명 동일인 구별 12/12 통과). 24장과 확인 그림 3 `confirmed`. 파일럿 1의 같은 여섯 인물 24장(아기 포함)은 `superseded`, `replaced_by`에 파일럿 2의 같은 이름 판. 파일럿 1의 나머지 초상 44장(창시 부부 8, 구별된 자녀 L1_201·202 8, 외부 배우자 4, 손자 24) `confirmed` — 그 가운데 아기 10장은 비고 "아기 단계 확정 — 파일럿 1 아기가 기준". 공통 풀 12장은 `candidate` 유지, 비고 "본 제작 1차 공통 풀과 함께 판정". 파일럿 1 확인 그림 4·기록 그림 6도 `confirmed`(사용자 확인).
+  - **파일럿 2 아기 6장 재작업 대기**(10시 판정): `L1_203·204`, `L2_201·202·203·204`의 `_baby`는 `rework_pending`, 비고 "3~5살로 보임 — 파일럿 2 얼굴에 맞춘 0~2살 아기로 재작업". 파일럿 1의 같은 인물 아기 6장은 `superseded` 그대로(`replaced_by`는 파일럿 2 아기 — 재작업본이 오면 그 판으로 바꾼다). 파일럿 2 확정은 21장(초상 18·확인 그림 3).
 - **replaced_by 경로 검사**(2026-09-28, INBOX-1q): `ui-p0/pilot/cursor_sheet.png`의 `replaced_by`가 패턴(`ui-p0/ui/cursor_*.png(6장)`)이던 것을 실제 경로 6개(`cursor_select`·`cursor_place_valid`·`cursor_place_invalid`·`cursor_road_draw`·`cursor_zone_brush`·`cursor_inspect`)로 고쳤다. 이 행이 장부 전체에서 없는 파일을 가리키던 유일한 행이었다. 같은 커밋부터 `npm run check:merge`의 다섯째 검사 `ledger`가 장부에 없는 `replaced_by` 경로를 실패로 본다.
 
 ## 7. 찾지 못한 것
