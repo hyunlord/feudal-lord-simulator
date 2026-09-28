@@ -34,7 +34,7 @@ import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
 import { applyInkOutline, snapToPixel } from "./style";
 import type { ObjectRenderViewMode } from "./objectRenderViewMode";
 import { OBJECT_OUTLINE_ALPHA } from "./occlusionModel";
-import { drawHouseRoofSmoke, drawMillOvenSmoke, smokeTimeMs } from "./roofSmoke";
+import { drawHouseRoofSmoke, drawWorkFireSmoke, smokeTimeMs } from "./roofSmoke";
 
 type ObjectRenderInput = {
   readonly state: GameState;
@@ -156,13 +156,13 @@ function drawBuildingDetail(
   }
   if (detailLevel === "full") {
     const historical = building.kind === "house"
-      ? drawHistoricalHouse(context, building, visualState.houseLevel)
+      ? drawHistoricalHouse(context, building, visualState.houseLevel, input.state)
       : drawHistoricalFacility(context, building, input.state);
     if (historical) {
       if (building.kind === "house") drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
       // F0-V: roof smoke of a lived-in house, the mill oven's smoke while it runs.
       if (building.kind === "house") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, smokeTimeMs(input));
-      if (building.kind === "mill") drawMillOvenSmoke(context, building, smokeTimeMs(input));
+      drawWorkFireSmoke(context, building, input.state, smokeTimeMs(input)); // the mill's oven, the kiln's flue (INSTALL-3)
       drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center,
         kind: building.kind, zoom: input.zoom, visualState });
       return;

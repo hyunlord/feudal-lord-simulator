@@ -2,7 +2,7 @@ import { storageOverflowCause } from '../ui/storageOverflowModel';
 import { durationLabel } from "../ui/gameTimeCopy.ko";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
-import { RESOURCE_TYPES } from "../content/resourceConfig";
+import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import { houseBuiltLevel, houseCondition, houseConditionLabel } from "../population/houseCondition";
 import { providerServiceRows } from "../ui/serviceDiagnosisModel";
@@ -17,6 +17,10 @@ export type BuildingInspectorModel = {
   readonly name: string;
   readonly purpose: string;
   readonly rows: readonly string[];
+  /** INSTALL-3: the goods the building holds (the stock row's items), for the card to draw with their icons. */
+  readonly stock?: readonly { readonly resource: ResourceType; readonly amount: number }[];
+  /** INSTALL-3: the stock row as it stands in `rows` (the card draws it from `stock` instead). */
+  readonly stockRow?: string;
 };
 
 const HOUSE_NAMES = BUILDING_INSPECTOR_COPY.houseNames;
@@ -50,9 +54,9 @@ export function buildingInspectorModel(
       ],
     };
   }
-  const stock = (RESOURCE_TYPES)
-    .filter((resource) => (building.inventory[resource] ?? 0) > 0)
-    .map((resource) => BUILDING_INSPECTOR_COPY.stockItem(resourceName(resource), building.inventory[resource] ?? 0))
+  const held = (RESOURCE_TYPES).filter((resource) => (building.inventory[resource] ?? 0) > 0)
+    .map(resource => ({ resource, amount: building.inventory[resource] ?? 0 }));
+  const stock = held.map(({ resource, amount }) => BUILDING_INSPECTOR_COPY.stockItem(resourceName(resource), amount))
     .join(" · ") || BUILDING_INSPECTOR_COPY.none;
   const problemCause = buildingProblemCause(state, building.id);
   const usage = building.kind === 'storehouse' || building.kind === 'granary' ? storageUsage(building) : null;
@@ -73,5 +77,5 @@ export function buildingInspectorModel(
       ? []
       : [BUILDING_INSPECTOR_COPY.cause(problemCause)]),
   ];
-  return { kind: building.kind, name: config.name, purpose: buildingCopy(building.kind).inspector, rows };
+  return { kind: building.kind, name: config.name, purpose: buildingCopy(building.kind).inspector, rows, stock: held, stockRow: BUILDING_INSPECTOR_COPY.stock(stock) };
 }

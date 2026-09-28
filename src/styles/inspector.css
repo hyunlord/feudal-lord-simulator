@@ -194,3 +194,15 @@
 .prediction-line--negative { color: var(--palette-vermilion); font-weight: 600; }
 .prediction-line--warning .prediction-line-symbol { color: var(--palette-earth-dark); }
 .prediction-line--positive .prediction-line-symbol { color: var(--palette-forest); }
+
+/* INSTALL-3: the barn's crop choice, the stock row's goods with their icons, and the ale line of a house's rise. */
+.app-shell .inspector-crop { display: grid; gap: 4px; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--palette-parchment-dark); }
+.app-shell .inspector-crop h3 { margin: 0; font-size: 13px; }
+.app-shell .inspector-crop p { margin: 0; font-size: 13px; line-height: 1.5; word-break: keep-all; }
+.app-shell .inspector-crop-current, .app-shell .inspector-stock, .app-shell .inspector-stock-item { display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.app-shell .inspector-crop-note, .app-shell .inspector-crop-sowing { color: var(--palette-ink-muted); }
+.app-shell .inspector-crop-pending { font-weight: 600; }
+.app-shell .inspector-crop-select { max-width: 180px; }
+.app-shell .inspector-stock { gap: 4px 8px; }
+.inspector-cause-summary .inspector-ale-line { margin: 2px 0 0; font-weight: 400; }
+.inspector-cause-summary .inspector-ale-line[data-ale="unserved"] { font-weight: 600; }

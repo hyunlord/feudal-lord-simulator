@@ -5,6 +5,7 @@ import { stateCalendar } from "../engine/scenarioState";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { House } from "../population/population.types";
 import { zonesOf } from "../zones/zoneEdits";
+import { brewingSlot } from "../engine/ale";
 import { depthKey } from "./iso";
 import { tileIsVisibleInRange, type TileRange } from "./renderVisibility";
 import { WAVE23_IMAGES } from "./wave23ArtManifest.generated";
@@ -20,7 +21,7 @@ import { WAVE23_IMAGES } from "./wave23ArtManifest.generated";
 //    in winter one in six (children kept indoors).
 //  - A washing line only where a woman (14 or over) lives, one such house in two; none in winter.
 //  - At the door: a chair where an elder (55 or over) lives, one such house in two; else a barrel at a house of level 2
-//    or more, one in three.
+//    or more, one in three. INSTALL-3: a brewing house (C4 `brewingSlot`) keeps its door for its ale barrels instead.
 //  - One animal candidate per house by its level (chosen by hash): level 1 hens ×3 : cat; level 2 hens ×2 : cat : dog;
 //    level 3+ hens : cat : dog ×2. Winter: only one house in two keeps an animal out of doors.
 //  - Pigeons on the ridge of a house of level 2 or more (at most PIGEONS[season] in view); flying birds cross the view
@@ -103,6 +104,8 @@ const unit = (h: number) => (h % 10_000) / 10_000;
 
 type Candidate = { readonly item: VillageLifeItem; readonly rank: number; readonly tx: number; readonly ty: number };
 type Town = { readonly props: readonly Candidate[]; readonly animals: readonly Candidate[]; readonly perches: readonly Candidate[];
+  /** INSTALL-3: the door spot (tile units) each brewing house keeps for its ale barrels (stockPiles.ts draws them). */
+  readonly brewDoors: ReadonlyMap<string, { readonly x: number; readonly y: number }>;
   readonly lived: readonly { readonly tx: number; readonly ty: number }[]; readonly winter: boolean; readonly seed: number };
 
 function item(kind: VillageLifeKind, id: string, x: number, y: number, buildingId: string | null, phase: number, fields: Partial<VillageLifeItem> = {}): VillageLifeItem {
@@ -142,7 +145,8 @@ function townLife(state: GameState): Town {
     return house !== undefined && house.residents > 0 && house.level >= 1 && house.abandonedTick === undefined && house.burntTick === undefined;
   }).sort((a, b) => a.id.localeCompare(b.id));
   const props: Candidate[] = []; const animals: Candidate[] = []; const perches: Candidate[] = [];
-  if (lived.length === 0) return { props, animals, perches, lived: [], winter, seed };
+  const brewDoors = new Map<string, { readonly x: number; readonly y: number }>();
+  if (lived.length === 0) return { props, animals, perches, brewDoors, lived: [], winter, seed };
   for (const building of lived) {
     const level = houses.get(building.id)?.level ?? 1;
     const members = households.get(building.id) ?? [];
@@ -161,7 +165,11 @@ function townLife(state: GameState): Town {
       { x: tx + (w - 1) / 2 + 0.1, y: ty + d - 0.5 + 0.16, cx: tx + Math.round((w - 1) / 2), cy: ty + d },
     ];
     if (h(2) % 2 === 1) doors.reverse();
-    const doorKind: VillageLifeKind | null = elder && h(3) % 2 === 0 ? "doorstep_chair" : level >= 2 && h(21) % 3 === 0 ? "doorstep_barrel" : null;
+    // INSTALL-3: a brewing house's door holds its ale barrels (the pile by its ale), so no chair or barrel there.
+    const brewing = brewingSlot(houses.get(building.id) ?? {}) !== null;
+    const brewDoor = brewing ? doors.find(spot => doorFree(spot.cx, spot.cy)) : undefined;
+    if (brewDoor !== undefined) { claim(brewDoor.cx, brewDoor.cy); brewDoors.set(building.id, { x: brewDoor.x, y: brewDoor.y }); }
+    const doorKind: VillageLifeKind | null = brewing ? null : elder && h(3) % 2 === 0 ? "doorstep_chair" : level >= 2 && h(21) % 3 === 0 ? "doorstep_barrel" : null;
     const door = doorKind === null ? undefined : doors.find(spot => doorFree(spot.cx, spot.cy));
     if (doorKind !== null && door !== undefined) {
       claim(door.cx, door.cy);
@@ -218,7 +226,7 @@ function townLife(state: GameState): Town {
       rank: 0, tx: well.tx, ty: well.ty });
   }
   const byRank = (a: Candidate, b: Candidate) => a.rank - b.rank || a.item.id.localeCompare(b.item.id);
-  return { props: props.sort(byRank), animals: animals.sort(byRank), perches: perches.sort(byRank), lived: lived.map(({ tx, ty }) => ({ tx, ty })), winter, seed };
+  return { props: props.sort(byRank), animals: animals.sort(byRank), perches: perches.sort(byRank), brewDoors, lived: lived.map(({ tx, ty }) => ({ tx, ty })), winter, seed };
 }
 
 // Cache (AGENTS rule 10): (a) the town's candidates, keyed on the houses, buildings, persons, tiles and zones arrays
@@ -274,6 +282,11 @@ export function villageLife(state: GameState, view: VillageLifeView): readonly V
   }
   lastView = { town, range: rangeKey, items };
   return items;
+}
+
+/** INSTALL-3: where a brewing house's ale barrels stand (tile units), or null when it has no free door spot (or does not brew). */
+export function brewingDoor(state: GameState, buildingId: string): { readonly x: number; readonly y: number } | null {
+  return cachedTown(state).brewDoors.get(buildingId) ?? null;
 }
 
 /** The on-screen animal count of a village life list (each hen of a flock counts). */

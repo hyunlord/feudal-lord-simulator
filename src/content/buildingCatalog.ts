@@ -46,7 +46,12 @@ export type BuildingBody = {
  * The historical facility picture (`historicalFacilityManifest`): one id, or a quiet and an active one chosen by the
  * market's trade (`market`) or the building's production (`working`) — Wave 12's active states.
  */
-export type FacilityArt = { readonly id: string } | { readonly quiet: string; readonly active: string; readonly activeWhen: "market" | "working" };
+export type FacilityArt = { readonly id: string } | { readonly quiet: string; readonly active: string; readonly activeWhen: "market" | "working" }
+  /** One of these per building, fixed by its id's hash (INSTALL-3: the malt kiln's two paintings). */
+  | { readonly variants: readonly string[] };
+/** Cells of the Wave 3 building chain icon sheet (INSTALL-3), for a kind the UX-2 sheet has no cell for. */
+export type ChainBuildingIconCell = "malt_kiln";
+export type SignIcon = BuildingIconCell | { readonly chain: ChainBuildingIconCell };
 
 export type BuildingCatalogEntry = {
   readonly category: BuildMenuCategory;
@@ -60,8 +65,8 @@ export type BuildingCatalogEntry = {
   readonly thumbnail?: "house" | "facility" | { readonly file: string };
   /** The icon the menu shows when there is no thumbnail. */
   readonly menuIcon?: BuildingIconCell;
-  /** The construction sign's icon (F0-V). */
-  readonly signIcon?: BuildingIconCell;
+  /** The construction sign's icon (F0-V): a UX-2 sheet cell, or a Wave 3 chain sheet cell. */
+  readonly signIcon?: SignIcon;
   /** The runtime sprite key when it is not the kind (houses by level are the renderer's). */
   readonly spriteKey?: string;
   readonly facilityArt?: FacilityArt;
@@ -107,8 +112,10 @@ export const BUILDING_CATALOG = {
     body: { width: 78, height: 92, roof: 34, fill: "parchment", roofColor: "stoneDark", roofShape: "cone" }, details: ["flag", "door"] },
   keep: { category: "defense", group: "service", glyph: "keep", thumbnail: "facility", facilityArt: { id: "keep" }, kit: "public_keep",
     body: { width: 86, height: 116, roof: 44, fill: "stone", roofColor: "stoneDark", roofShape: "tower" }, details: ["door"] },
-  // C4 (decision AL6): no art yet — the mill's glyph and a cone-roofed body until INSTALL-3 brings the Wave 3 kiln.
-  malt_kiln: { category: "trade", group: "production", glyph: "mill",
+  // C4 (decision AL6) the mill's glyph and a cone-roofed body (the far zooms); INSTALL-3: Wave 3's kiln a / b, its
+  // flue smoking while it malts (the working-fire exception to the no-chimney rule), the chain sheet's kiln on its sign.
+  malt_kiln: { category: "trade", group: "production", glyph: "mill", thumbnail: "facility", signIcon: { chain: "malt_kiln" },
+    facilityArt: { variants: ["malthouse_a", "malthouse_b"] }, smoke: "work_fire",
     body: { width: 52, height: 34, roof: 18, fill: "parchmentDark", roofColor: "earthDark", roofShape: "cone" } },
 } as const satisfies { readonly [K in BuildingKind]: BuildingCatalogEntry };
 

@@ -51,4 +51,6 @@ export const DIAGNOSTIC_CARD_COPY = {
   causeSummary: (next: string, blockerHeading: string, blocker: string) => `다음: ${next} / ${blockerHeading}: ${blocker}`,
   holdRemaining: (level: number, minutes: number, seconds: string) => `L${level}까지 조건 유지 ${minutes}:${seconds} 남음`,
   operationsHeading: '운영과 재고',
+  /** INSTALL-3: the stock row's head (its goods follow, each with its icon). */
+  stockTerm: '재고',
 } as const;

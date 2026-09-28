@@ -4,6 +4,9 @@ import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { HOUSE_PROGRESS_COPY } from './houseProgressCopy.ko';
 import { operationSuspended, BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { HOUSING_CONFIG, type HousingRequirement } from '../content/housingConfig';
+import { ALE_BALANCE } from '../content/aleConfig';
+import { aleRequired, aleServedHouses } from '../engine/ale';
+import { aleHoldTicks } from '../population/housing';
 import type { GameState } from '../engine/engine.types';
 import { BALANCE } from '../content/balanceConfig';
 import { feasibleDistributorDistance } from '../engine/distributorAccess';
@@ -32,13 +35,25 @@ export type BuildingCausePresentation = Readonly<{
   blocker: CauseDetail | null;
   summary: string;
 }>;
+/**
+ * INSTALL-3 (AL-6, decision AL11): the ale rule on the house's next rise, from chapter 2 (`aleRequired`) when that rise is to
+ * `requiredFromLevel` or more. `holdTicks` is the engine's hold for it now (`aleHoldTicks`: half as long again unserved),
+ * `baseTicks` the level's hold with ale.
+ */
+export type HouseAleProgress = Readonly<{ served: boolean; holdTicks: number; baseTicks: number }>;
 export type HouseProgressModel = BuildingCausePresentation & Readonly<{
   currentLevel: number;
   nextLevel: number | null;
   progressTicks: number;
+  /** The hold the engine asks for the next rise (the ale rule's, `aleHoldTicks`, when it applies). */
   requiredTicks: number | null;
   remainingTicks: number | null;
+  /** Absent: ale asks nothing of this rise (chapter 1, the top level, or a rise below `requiredFromLevel`). */
+  ale?: HouseAleProgress;
 }>;
+/** What the ale rule asks of the town now (the engine's own reading, as `tick.ts` passes it to the houses). */
+type AleView = { readonly served: ReadonlySet<string> } | null;
+const aleView = (state: GameState): AleView => aleRequired(state) ? { served: aleServedHouses(state) } : null;
 type RoadService = ReturnType<typeof marketRoadService>;
 const cache = new WeakMap<GameState, ReadonlyMap<string, BuildingCausePresentation | HouseProgressModel>>();
 const PRIORITY = { water: 0, bread: 1, granary: 2, market: 3, church: 4, protected: 5, production: 6 } as const;
@@ -105,7 +120,7 @@ function firstRequirement(requirements: readonly HousingRequirement[], blockers:
     .sort((a, b) => (a.reason === 'unreachable' ? 2 : PRIORITY[a.requirement])
       - (b.reason === 'unreachable' ? 2 : PRIORITY[b.requirement]))[0] ?? null;
 }
-function deriveHouse(state: GameState, house: House, home: Building, road: RoadService): HouseProgressModel {
+function deriveHouse(state: GameState, house: House, home: Building, road: RoadService, ale: AleView = aleView(state)): HouseProgressModel {
   const blockers = requirementBlockers(state, house, home, road);
   const supported = HOUSING_CONFIG.filter(def => def.requires.every(req => blockers[req] === null)).at(-1)?.level ?? 0;
   const outsideCap = house.level < 3 && palisadeProtectionForBuilding(home, state.palisade) === 'outside';
@@ -122,15 +137,22 @@ function deriveHouse(state: GameState, house: House, home: Building, road: RoadS
   const status = risk ? 'risk' : ready ? 'ready' : blocker === null ? 'normal' : 'blocked';
   const name = HOUSING_CONFIG.find(def => def.level === houseBuiltLevel(house))?.name ?? HOUSING_CONFIG[0].name;
   const nextName = HOUSING_CONFIG.find(def => def.level === nextLevel)?.name;
-  const requiredTicks = next?.promotionHoldTicks ?? null;
+  const served = ale === null ? undefined : ale.served.has(house.buildingId);
+  const requiredTicks = next === undefined ? null : aleHoldTicks(next, served);
+  const aleProgress: HouseAleProgress | null = next === undefined || served === undefined || next.level < ALE_BALANCE.requiredFromLevel ? null
+    : { served, holdTicks: aleHoldTicks(next, served), baseTicks: aleHoldTicks(next, true) };
   const progressTicks = ready && requiredTicks !== null ? Math.min(requiredTicks, house.promotionTicks ?? 0) : 0;
   const remainingTicks = ready && requiredTicks !== null ? requiredTicks - progressTicks : null;
-  const remainingSeconds = remainingTicks === null ? 0 : Math.ceil(remainingTicks / BALANCE.TICKS_PER_SECOND);
-  const remainingLabel = `${Math.floor(remainingSeconds / 60)}:${String(remainingSeconds % 60).padStart(2, '0')}`;
+  const remainingLabel = progressClock(remainingTicks ?? 0);
   const summary = risk ? HOUSE_PROGRESS_COPY.riskSummary(house.level, blocker?.label ?? '') : ready ? HOUSE_PROGRESS_COPY.readySummary(nextLevel, nextName ?? '', remainingLabel)
     : blocker === null ? HOUSE_PROGRESS_COPY.steadySummary(house.level) : HOUSE_PROGRESS_COPY.blockedSummary(nextLevel, nextName ?? '', blocker.label);
   return { buildingId: home.id, name, currentLevel: house.level, nextLevel, status, blocker, summary,
-    progressTicks, requiredTicks, remainingTicks };
+    progressTicks, requiredTicks, remainingTicks, ...(aleProgress === null ? {} : { ale: aleProgress }) };
+}
+/** Ticks as the progress line's clock (m:ss of game seconds). */
+export function progressClock(ticks: number): string {
+  const seconds = Math.ceil(Math.max(0, ticks) / BALANCE.TICKS_PER_SECOND);
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
 }
 function deriveFacility(state: GameState, building: Building): BuildingCausePresentation {
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
@@ -158,11 +180,12 @@ export function buildingCauseSnapshot(state: GameState): ReadonlyMap<string, Bui
   const previous = cache.get(state);
   if (previous !== undefined) return previous;
   const road = marketRoadService(state);
+  const ale = aleView(state);
   const houses = new Map(state.houses.map(house => [house.buildingId, house]));
   const snapshot = new Map<string, BuildingCausePresentation | HouseProgressModel>();
   for (const building of state.buildings) {
     const house = houses.get(building.id);
-    snapshot.set(building.id, house === undefined ? deriveFacility(state, building) : deriveHouse(state, house, building, road));
+    snapshot.set(building.id, house === undefined ? deriveFacility(state, building) : deriveHouse(state, house, building, road, ale));
   }
   cache.set(state, snapshot);
   return snapshot;

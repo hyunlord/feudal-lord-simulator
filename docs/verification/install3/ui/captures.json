@@ -1,0 +1,356 @@
+{
+  "url": "http://127.0.0.1:4302/",
+  "states": "scripts/install3States.ts (replayed states, moments m0…m11)",
+  "moments": {
+    "m0-before": {
+      "tick": 90976,
+      "barn": "farmstead-39-36-0",
+      "crop": "wheat"
+    },
+    "m1-barn-barley": {
+      "tick": 90976,
+      "barn": "farmstead-39-36-0"
+    },
+    "m2-kiln-site": {
+      "tick": 90976,
+      "barn": "farmstead-39-36-0",
+      "kilnAt": [
+        38,
+        33
+      ]
+    },
+    "m3-barley-sown": {
+      "tick": 91505,
+      "barn": "farmstead-39-36-0",
+      "strips": 1
+    },
+    "m6-kiln-built": {
+      "tick": 92258,
+      "kiln": "construction-site-000051"
+    },
+    "m4-barley-growing": {
+      "tick": 92500,
+      "barn": "farmstead-39-36-0"
+    },
+    "m5-barley-ripe": {
+      "tick": 93500,
+      "barn": "farmstead-39-36-0"
+    },
+    "m7-barley-in-barn": {
+      "tick": 93505,
+      "barn": "farmstead-39-36-0",
+      "barley": 59
+    },
+    "m8-malt": {
+      "tick": 93574,
+      "kiln": "construction-site-000051",
+      "malt": 1
+    },
+    "m9-brewing": {
+      "tick": 93600,
+      "house": "construction-site-000004",
+      "slot": {
+        "malt": 0,
+        "ale": 2
+      }
+    },
+    "m10-alehouse": {
+      "tick": 93600,
+      "alehouse": "construction-site-000004"
+    },
+    "m11-ale-sold": {
+      "tick": 94000,
+      "alehouses": [
+        "construction-site-000004",
+        "construction-site-000007",
+        "construction-site-000008",
+        "construction-site-000010",
+        "construction-site-000012",
+        "construction-site-000014",
+        "construction-site-000016",
+        "construction-site-000018",
+        "construction-site-000020",
+        "construction-site-000021",
+        "construction-site-000022",
+        "construction-site-000025",
+        "construction-site-000027",
+        "construction-site-000028",
+        "construction-site-000029",
+        "construction-site-000030",
+        "construction-site-000031",
+        "construction-site-000038",
+        "construction-site-000039",
+        "house-44-40-0",
+        "house-44-42-0",
+        "house-46-40-0",
+        "house-46-42-0"
+      ]
+    }
+  },
+  "barn": {
+    "state": "m0-before",
+    "tick": 90976,
+    "barn": "farmstead-39-36-0",
+    "before": [
+      "이 헛간이 뿌리는 작물: 밀",
+      "바꾸면 다음 파종부터 뿌립니다. 이미 뿌린 이랑은 거둘 때까지 그대로입니다",
+      "다음 파종: 겨울 중순쯤부터 여름 중순까지"
+    ],
+    "after": [
+      "이 헛간이 뿌리는 작물: 보리",
+      "바꾸면 다음 파종부터 뿌립니다. 이미 뿌린 이랑은 거둘 때까지 그대로입니다",
+      "다음 파종: 겨울 중순쯤부터 여름 중순까지",
+      "아직 밀 이랑 7개 · 거둔 뒤 다음 파종부터 보리",
+      "헛간에 남은 밀 3 · 먼저 실어 냅니다"
+    ],
+    "trigger": "헛간 작물: 보리",
+    "crop": "barley"
+  },
+  "malt": {
+    "state": "m8-malt",
+    "tick": 93574,
+    "ledgerRows": [
+      {
+        "resource": "wheat",
+        "icon": null,
+        "text": "밀808—68일———91—136—25332—324—"
+      },
+      {
+        "resource": "bread",
+        "icon": "resource.bread",
+        "text": "빵105—68일93——————73—————"
+      },
+      {
+        "resource": "logs",
+        "icon": null,
+        "text": "통나무7———————1————————"
+      },
+      {
+        "resource": "timber",
+        "icon": "resource.timber",
+        "text": "목재112———1013———————————"
+      },
+      {
+        "resource": "barley",
+        "icon": "chain.barley",
+        "text": "보리503—————————————493—10"
+      },
+      {
+        "resource": "malt",
+        "icon": "chain.malt",
+        "text": "엿기름2———————————————1"
+      }
+    ],
+    "kilnStock": [
+      "보리 10",
+      "엿기름 1"
+    ],
+    "kilnIcons": [
+      "chain.barley",
+      "chain.malt"
+    ]
+  },
+  "granaryWithChain": null,
+  "barley": {
+    "state": "m7-barley-in-barn",
+    "tick": 93505,
+    "stock": [
+      "보리 59"
+    ],
+    "icons": [
+      "chain.barley"
+    ]
+  },
+  "chip": {
+    "state": "m0-before",
+    "tick": 90976,
+    "tile": [
+      38,
+      33
+    ],
+    "menu": {
+      "text": "엿기름 가마. 비용 목재 40. 목적 보리를 싹 틔워 말려 엿기름을 만듭니다. 집집의 아낙이 에일로 빚습니다. 조건 길 인접 필요, 시장도시 이후. 건설 가능 · 보유 목재 196엿기름 가마보리를 엿기름으로목재 40",
+      "art": "/assets/wave3/bld/malthouse_a.png"
+    },
+    "lines": [
+      "엿기름 가마 · 목재 40",
+      "목재 40 / 보유 196 · 배치 후 156",
+      "재료보리 · 만듦엿기름",
+      "장부 기간마다 일꾼 2"
+    ],
+    "icons": [
+      "chain.barley",
+      "chain.malt"
+    ]
+  },
+  "unserved": {
+    "state": "m0-before",
+    "tick": 90976,
+    "house": "house-44-42-0",
+    "summary": [
+      "다음: L3 / 첫 방해: 없음 · 승급 대기L3까지 조건 유지 8:25 남음에일이 없어 L3 승급이 늦어집니다 · 조건 유지 10:30 (에일이 있으면 7:00)"
+    ],
+    "ale": [
+      "에일이 없어 L3 승급이 늦어집니다 · 조건 유지 10:30 (에일이 있으면 7:00)"
+    ],
+    "condition": [
+      "에일없음 · L3 승급 조건 유지 10:30 (에일이 있으면 7:00)"
+    ]
+  },
+  "served": {
+    "state": "m11-ale-sold",
+    "tick": 94000,
+    "house": "construction-site-000030",
+    "summary": [
+      "다음: L3 / 첫 방해: 없음 · 승급 대기L3까지 조건 유지 4:20 남음에일을 마십니다 · 제때 승급"
+    ],
+    "ale": [
+      "에일을 마십니다 · 제때 승급"
+    ],
+    "condition": [
+      "에일마십니다 · 제때 승급"
+    ]
+  },
+  "seasonCause-desktop": {
+    "state": "m1-barn-barley",
+    "tick": 90976,
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "title": [
+      "1322년 가을 결산"
+    ],
+    "events": [
+      "에일이 없어 승급을 더 오래 기다리는 집 6채"
+    ],
+    "drink": [],
+    "icons": [],
+    "resume": {
+      "height": 44,
+      "top": 492,
+      "bottom": 536,
+      "bodyBottom": 538,
+      "inCard": true,
+      "inViewport": true,
+      "coarse": false,
+      "contentScrolls": true
+    },
+    "resumeOk": true
+  },
+  "seasonCause-tablet": {
+    "state": "m1-barn-barley",
+    "tick": 90976,
+    "viewport": {
+      "width": 1180,
+      "height": 820,
+      "touch": true
+    },
+    "title": [
+      "1322년 가을 결산"
+    ],
+    "events": [
+      "에일이 없어 승급을 더 오래 기다리는 집 6채"
+    ],
+    "drink": [],
+    "icons": [],
+    "resume": {
+      "height": 48,
+      "top": 498,
+      "bottom": 546,
+      "bodyBottom": 548,
+      "inCard": true,
+      "inViewport": true,
+      "coarse": true,
+      "contentScrolls": true
+    },
+    "resumeOk": true
+  },
+  "seasonDrink-desktop": {
+    "state": "m9-brewing",
+    "tick": 93600,
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "title": [
+      "1323년 여름 결산"
+    ],
+    "events": [
+      "굶주려 1명이 줄었습니다"
+    ],
+    "drink": [
+      "지금 영지에보리 484엿기름 4에일 10"
+    ],
+    "icons": [
+      "chain.barley",
+      "chain.malt",
+      "chain.ale"
+    ],
+    "resume": {
+      "height": 44,
+      "top": 492,
+      "bottom": 536,
+      "bodyBottom": 538,
+      "inCard": true,
+      "inViewport": true,
+      "coarse": false,
+      "contentScrolls": true
+    },
+    "resumeOk": true
+  },
+  "seasonDrink-tablet": {
+    "state": "m9-brewing",
+    "tick": 93600,
+    "viewport": {
+      "width": 1180,
+      "height": 820,
+      "touch": true
+    },
+    "title": [
+      "1323년 여름 결산"
+    ],
+    "events": [
+      "굶주려 1명이 줄었습니다"
+    ],
+    "drink": [
+      "지금 영지에보리 483엿기름 5에일 10"
+    ],
+    "icons": [
+      "chain.barley",
+      "chain.malt",
+      "chain.ale"
+    ],
+    "resume": {
+      "height": 48,
+      "top": 498,
+      "bottom": 546,
+      "bodyBottom": 548,
+      "inCard": true,
+      "inViewport": true,
+      "coarse": true,
+      "contentScrolls": true
+    },
+    "resumeOk": true
+  },
+  "notDone": {
+    "u07": "no granary holds barley or malt in these states (the kiln keeps its malt; the households fetch it): the storage inspector's icons are unit-tested (tests/aleScreens.test.ts, the granary with malt)",
+    "u13": "no replayed state where the bot's next action is set_farmstead_crop (the palisade town's bot does not reach the ale chain in 12,000 ticks; seed 1's natural growth to 200,000 ticks never named it): the label is unit-tested (tests/aleScreens.test.ts, 다음: 헛간 작물을 보리로)"
+  },
+  "sizes": {
+    "u01-barn-crop-wheat.jpg": 15051,
+    "u02-barn-crop-barley.jpg": 15897,
+    "u04-ledger-drawer.jpg": 17191,
+    "u05-barn-stock.jpg": 13106,
+    "u06-kiln-stock.jpg": 14601,
+    "u08-kiln-chip.jpg": 4655,
+    "u09-house-unserved.jpg": 19109,
+    "u10-house-served.jpg": 16099,
+    "u11-season-cause.jpg": 18904,
+    "u11-season-causet.jpg": 19038,
+    "u12-season-drink.jpg": 18418,
+    "u12-season-drinkt.jpg": 18571
+  },
+  "totalBytes": 190640,
+  "errors": []
+}

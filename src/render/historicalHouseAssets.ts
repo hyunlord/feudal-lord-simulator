@@ -7,6 +7,9 @@ import { tileToScreen, TILE_W, TILE_H } from "./iso";
 import { historicalHouseAssetManifest } from "./historicalHouseAssetManifest.generated";
 import { frameBuildingVariant } from "./buildingVariants";
 import { variantSprite } from "./buildingVariantAssets";
+import type { GameState } from "../engine/engine.types";
+import { alehouseArt } from "./aleWorldArt";
+import { WAVE3_ALE_IMAGES } from "./wave3AleManifest.generated";
 
 export type HistoricalHouseAssetMeta = Readonly<{
   level: 0 | 1 | 2 | 3 | 4;
@@ -77,13 +80,20 @@ export function historicalHouseSpriteRect(building: Pick<Building, "tx" | "ty">,
   return { x: center.sx - width / 2, y: center.sy + TILE_H / 2 - height, width, height };
 }
 
-export function drawHistoricalHouse(context: CanvasRenderingContext2D, building: Building, builtLevel: number): boolean {
+/**
+ * A single-lot house's painting at its level: a Wave 2 visual variant painted in the level's frame, or (INSTALL-3) the
+ * Wave 3 alehouse with its ale-stake, an edit of house L2 on the same 137 px canvas and pivot (alehouseArt), drawn
+ * through the same variant path (its coordinates are the L2 frame's).
+ */
+export function drawHistoricalHouse(context: CanvasRenderingContext2D, building: Building, builtLevel: number,
+  state?: Pick<GameState, "houses" | "seed">): boolean {
   if (building.kind !== "house" || building.houseLot !== undefined) return false;
   void preloadHistoricalHouseAssets();
   const record = records.find(candidate => candidate.meta.level === builtLevel);
   if (record?.status !== "ready" || record.image === null) return false;
   const rect = historicalHouseSpriteRect(building, record.meta);
-  const url = frameBuildingVariant(building)?.url ?? null;
+  const alehouse = state === undefined ? null : alehouseArt(state, building, state.houses.find(house => house.buildingId === building.id), builtLevel);
+  const url = alehouse !== null ? WAVE3_ALE_IMAGES[alehouse].url : frameBuildingVariant(building)?.url ?? null;
   const variant = url === null ? null : variantSprite(url, record.meta.width, record.meta.height, record.meta.alphaBounds, Math.ceil(rect.height * 2));
   drawCroppedWorldSprite(context, variant?.image ?? record.raster?.image ?? record.image,
     variant?.source ?? record.raster?.source ?? record.meta.alphaBounds, rect, false, true);

@@ -5,6 +5,8 @@ import type { GameState } from "../../engine/engine.types";
 import { householdServices } from "../../engine/householdServices";
 import { buildingRoadAccessTiles } from "../../engine/routing";
 import { householdMembers, type MemberAgeBand, type MemberSex } from "../../population/householdMembers";
+import { brewingSlot } from "../../engine/ale";
+import { buildingFootprintDistance } from "../../geometry/buildingDistance";
 import { boundaryHash, hashNumbers } from "../../world/boundary/boundaryGeometry";
 import { getOrthogonalRoadNeighbors } from "../../world/roadGraph";
 import type { Tile } from "../../world/world.types";
@@ -20,8 +22,9 @@ import type { Tile } from "../../world/world.types";
  *    render reads for its occupation (`walkerOccupation`).
  */
 
-export type ResidentOccupation = "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard" | "child_companion";
-export type ResidentPurpose = "well" | "market" | "church" | "field" | "visit" | "clergy" | "patrol";
+export type ResidentOccupation = "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard" | "child_companion"
+  | "alewife" | "maltster";
+export type ResidentPurpose = "well" | "market" | "church" | "field" | "visit" | "clergy" | "patrol" | "malt" | "kiln";
 
 export interface ResidentTag {
   readonly occupation: ResidentOccupation;
@@ -53,7 +56,14 @@ export const VISITOR_REACH = 12;
 const WELL_PERIOD = 2_400;
 const FIELD_PERIOD = 800;
 const CLERGY_PERIOD = 600;
-const STAY = { well: 30, market: 120, church: 150, field: 300, visit: 60, clergy: 80, patrol: 20 } as const satisfies Record<ResidentPurpose, number>;
+/**
+ * INSTALL-3 the ale chain's errands (C4 AL-3, AL-4): a brewing house's woman fetches her batch's malt from the nearest
+ * store that holds it (the engine moves it at each batch, `brew_ale`'s 400 ticks, decision AL9: no reach), so she
+ * walks there and back once a batch, leaving just after it; the kiln's workers walk to it like the field hands.
+ */
+const MALT_PERIOD = 400;
+const MALT_STORES: ReadonlySet<string> = new Set(["granary", "storehouse", "malt_kiln"]);
+const STAY = { well: 30, market: 120, church: 150, field: 300, visit: 60, clergy: 80, patrol: 20, malt: 20, kiln: 300 } as const satisfies Record<ResidentPurpose, number>;
 /** Household departures spread over this many ticks after the day starts. */
 const DEPARTURE_SPREAD = 40;
 /**
@@ -63,9 +73,9 @@ const DEPARTURE_SPREAD = 40;
  */
 const HOUSEHOLD_TURNS = 4;
 /** Priority when the cap bites: town figures first, then the market day, then everyday errands. */
-const PRIORITY: Readonly<Record<ResidentPurpose, number>> = { patrol: 0, clergy: 1, visit: 2, market: 3, church: 4, field: 5, well: 6 };
-/** RM-5: at most this many of each purpose at once, so one errand never takes the whole cap (sum 46, cap 40). */
-const QUOTA: Readonly<Record<ResidentPurpose, number>> = { patrol: 2, clergy: 2, visit: 10, market: 12, church: 8, field: 6, well: 6 };
+const PRIORITY: Readonly<Record<ResidentPurpose, number>> = { patrol: 0, clergy: 1, visit: 2, market: 3, church: 4, field: 5, kiln: 5, malt: 6, well: 7 };
+/** RM-5: at most this many of each purpose at once, so one errand never takes the whole cap (sum 56, cap 40). */
+const QUOTA: Readonly<Record<ResidentPurpose, number>> = { patrol: 2, clergy: 2, visit: 10, market: 12, church: 8, field: 6, well: 6, malt: 6, kiln: 4 };
 
 export const absoluteDay = (tick: number): number => Math.floor((Math.max(0, tick) * DAYS_PER_YEAR) / BALANCE.TICKS_PER_YEAR);
 export const dayStartTick = (day: number): number => Math.ceil((day * BALANCE.TICKS_PER_YEAR) / DAYS_PER_YEAR);
@@ -227,6 +237,29 @@ function computePlan(state: GameState): TripPlan {
       household.push({ purpose: "field", occupation: "field_hand", originId: pick.house.buildingId, destinationId: farm.id, route: pick.route, houseId: pick.house.buildingId, slot });
     }
   }
+  // INSTALL-3: the kiln's workers, as the field hands (from the nearest homes by road).
+  for (const kiln of state.buildings.filter(building => building.kind === "malt_kiln" && working(building)).sort((a, b) => a.id.localeCompare(b.id))) {
+    const nearest = homes.flatMap(house => {
+      const home = buildings.get(house.buildingId);
+      const route = home === undefined ? null : buildingRoute(state, home, kiln);
+      return home === undefined || route === null ? [] : [{ house, route }];
+    }).sort((a, b) => a.route.path.length - b.route.path.length || a.house.buildingId.localeCompare(b.house.buildingId));
+    for (let slot = 0; slot < kiln.workers && nearest.length > 0; slot += 1) {
+      const pick = nearest[slot % nearest.length]!;
+      household.push({ purpose: "kiln", occupation: "maltster", originId: pick.house.buildingId, destinationId: kiln.id, route: pick.route, houseId: pick.house.buildingId, slot });
+    }
+  }
+  // INSTALL-3: each brewing house's malt errand, to the store with malt nearest its home (the engine's pick, AL-4).
+  const stores = state.buildings.filter(building => MALT_STORES.has(building.kind) && (building.inventory.malt ?? 0) > 0);
+  for (const house of homes) {
+    const home = buildings.get(house.buildingId);
+    if (home === undefined || brewingSlot(house) === null) continue;
+    const store = [...stores].sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id))[0];
+    const route = store === undefined ? null : buildingRoute(state, home, store);
+    if (store !== undefined && route !== null) {
+      household.push({ purpose: "malt", occupation: "alewife", originId: home.id, destinationId: store.id, route, houseId: home.id, slot: 0 });
+    }
+  }
   // RM-2 visitors: from the first visitor origin (gate, else the farthest road within reach) to a working market.
   const market = state.buildings.filter(building => building.kind === "market" && working(building)).sort((a, b) => a.id.localeCompare(b.id))[0];
   let visitors: Route | null = null;
@@ -258,8 +291,9 @@ function computePlan(state: GameState): TripPlan {
 
 /** Everything `computePlan` reads: houses, buildings, roads (the tiles array), the wall gate and the seed. */
 function planSignature(state: GameState): string {
-  const houses = state.houses.map(house => `${house.buildingId}:${house.residents}:${house.level}:${house.members?.adults ?? 0}:${house.members?.children ?? 0}`).join(";");
-  const buildings = state.buildings.map(building => `${building.id}:${building.kind}:${building.tx},${building.ty}:${building.workers}:${building.operationPaused === true ? 1 : 0}:${building.upkeepUnpaid === true ? 1 : 0}:${building.houseLot ?? ""}`).join(";");
+  // INSTALL-3: whether a house brews, and whether a malt store holds malt (the malt errands' plan).
+  const houses = state.houses.map(house => `${house.buildingId}:${house.residents}:${house.level}:${house.members?.adults ?? 0}:${house.members?.children ?? 0}${brewingSlot(house) === null ? "" : ":b"}`).join(";");
+  const buildings = state.buildings.map(building => `${building.id}:${building.kind}:${building.tx},${building.ty}:${building.workers}:${building.operationPaused === true ? 1 : 0}:${building.upkeepUnpaid === true ? 1 : 0}:${building.houseLot ?? ""}${MALT_STORES.has(building.kind) && (building.inventory.malt ?? 0) > 0 ? ":m" : ""}`).join(";");
   const gate = state.palisade === null ? "" : `${state.palisade.gate.x},${state.palisade.gate.y}`;
   return `${state.seed}|${state.width}x${state.height}|${gate}|${houses}|${buildings}`;
 }
@@ -325,9 +359,11 @@ function activeTrips(state: GameState, plan: TripPlan): readonly ActiveTrip[] {
   for (const planned of plan.household) {
     const base = `${planned.purpose}:${planned.originId}:${planned.destinationId}:${planned.slot}`;
     const offset = hashOf(base, state.seed, 11);
-    if (planned.purpose === "well" || planned.purpose === "field") {
-      const period = planned.purpose === "well" ? WELL_PERIOD : FIELD_PERIOD;
-      const start = tick - ((((tick - offset) % period) + period) % period);
+    if (planned.purpose === "well" || planned.purpose === "field" || planned.purpose === "kiln" || planned.purpose === "malt") {
+      const period = planned.purpose === "well" ? WELL_PERIOD : planned.purpose === "malt" ? MALT_PERIOD : FIELD_PERIOD;
+      // The malt errand leaves within DEPARTURE_SPREAD of each batch tick (when the engine takes the malt).
+      const phase = planned.purpose === "malt" ? offset % DEPARTURE_SPREAD : offset;
+      const start = tick - ((((tick - phase) % period) + period) % period);
       add({ id: `resident-${base}@${start}`, purpose: planned.purpose, occupation: planned.occupation, homeBuildingId: planned.originId,
         houseId: planned.houseId, path: planned.route.path, startTick: start });
       continue;

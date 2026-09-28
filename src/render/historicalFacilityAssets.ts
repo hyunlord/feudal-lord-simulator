@@ -12,7 +12,7 @@ import { tileToScreen, TILE_H } from "./iso";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
-import { frameBuildingVariant, type BuildingVariant } from "./buildingVariants";
+import { frameBuildingVariant, variantRandom, type BuildingVariant } from "./buildingVariants";
 import { variantSprite } from "./buildingVariantAssets";
 import { chapterOfArt } from "./chapterArt";
 
@@ -89,14 +89,26 @@ export function historicalFacilityReady(building: Building, state?: GameState): 
   return assets.some(asset => asset.meta.id === id && asset.status === "ready");
 }
 
+/** INSTALL-3: the variant stream of a facility's `variants` pick (Wave 2 visual variants use salts 0-2). */
+const FACILITY_VARIANT_SALT = 7;
+
 /**
- * BLD-REG: the kind's facility picture (`buildingCatalog.ts` `facilityArt`): one id, or its quiet and active pictures by
- * the market's trade or the building's production. A catalog id the manifest lacks draws nothing (the tests pin them).
+ * BLD-REG: the kind's facility picture (`buildingCatalog.ts` `facilityArt`): one id, its quiet and active pictures by
+ * the market's trade or the building's production, or (INSTALL-3, the malt kiln) one of its variants fixed by the
+ * world seed, kind and plot (`variantRandom`, as the Wave 2 variants: the site's ghost and the finished kiln agree). A
+ * catalog id the manifest lacks draws nothing (the tests pin them). The kiln's Wave 3 paintings are the storehouse's
+ * 160 x 136 canvas with Astra's bottom-centre pivot (80, 128): the crop ends on the pivot row, which this rect puts on
+ * the footprint's front vertex, and `displayWidth` 128 draws them at the storehouse's own fitted scale (0.87 x 128 /
+ * 139 = 0.80 world px per px, buildingSpriteFit), so the kiln stands as large as the store Astra painted it beside.
  */
 export function historicalFacilityAssetId(building: Building, state?: GameState): HistoricalFacilityAssetId | null {
   const art = buildingEntry(building.kind).facilityArt;
   if (art === undefined) return null;
   if ("id" in art) return facilityId(art.id);
+  if ("variants" in art) {
+    const pick = art.variants[Math.floor(variantRandom(state?.seed ?? 0, building, FACILITY_VARIANT_SALT) * art.variants.length)];
+    return pick === undefined ? null : facilityId(pick);
+  }
   const active = art.activeWhen === "market" ? state !== undefined && marketIsActive(state, building)
     : productionOperation(building, BUILDING_CONFIG_BY_KIND[building.kind], state !== undefined && buildingHasRequiredRoadAccess(state, building)) === "working";
   return facilityId(active ? art.active : art.quiet);

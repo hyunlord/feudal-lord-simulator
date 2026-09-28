@@ -2,6 +2,7 @@ import { platformServices } from "../platform/platform";
 import { STORE_INSPECTOR_COPY } from "./storeInspectorCopy.ko";
 import type { StoreInspectorModel } from "./storeInspectorModel";
 import { UiIcon } from "./UiIcon";
+import { ResourceGlyph } from "./ResourceArtwork";
 import { Button } from "./kit";
 
 // UX-3R2 storage inspector body (UX3R 6절): the capacity bar, the items it takes (by rule; no per-store switch yet),
@@ -15,11 +16,11 @@ export function StoreInspectorBody({ model }: { readonly model: StoreInspectorMo
         <span className="store-capacity-text">{STORE_INSPECTOR_COPY.capacity(model.used, model.capacity, model.incoming)}</span>
       </div>
       <h3>{STORE_INSPECTOR_COPY.acceptsHeading}</h3>
-      <p className="store-accepts">{model.items.map(item => <span key={item.resource} className="store-accept-chip" data-accepted="true">{item.name}</span>)}</p>
+      <p className="store-accepts">{model.items.map(item => <span key={item.resource} className="store-accept-chip" data-accepted="true"><ResourceGlyph resource={item.resource} />{item.name}</span>)}</p>
       <p className="store-accepts-note">{STORE_INSPECTOR_COPY.acceptsNote}</p>
       <h3>{STORE_INSPECTOR_COPY.stockHeading}</h3>
       <table className="store-stock"><tbody>{model.items.map(item => (
-        <tr key={item.resource} data-resource={item.resource}><th scope="row">{item.name}</th><td>{item.stored}</td><td className="store-week">{item.week}</td></tr>))}</tbody></table>
+        <tr key={item.resource} data-resource={item.resource}><th scope="row"><span className="store-stock-name"><ResourceGlyph resource={item.resource} />{item.name}</span></th><td>{item.stored}</td><td className="store-week">{item.week}</td></tr>))}</tbody></table>
       <h3>{STORE_INSPECTOR_COPY.usersHeading}</h3>
       <ul className="store-users">
         {model.distributors > 0 ? <li>{STORE_INSPECTOR_COPY.distributors(model.distributors)}</li> : null}

@@ -15,6 +15,10 @@ export const SEASON_LEDGER_COPY = {
   population: (delta: number) => `인구 ${signed(delta)}`,
   versus: (delta: number) => `(전 계절 ${signed(delta)})`,
   stock: (name: string, delta: number) => `${name} ${signed(delta)}`,
+  /** INSTALL-3: the ale chain's goods held in the town as the card opens (not the season's change). */
+  heldNow: (items: readonly string[]) => `지금 영지에: ${items.join(" · ")}`,
+  heldNowLabel: "지금 영지에",
+  held: (name: string, amount: number) => `${name} ${amount}`,
   // UI-4b: the Wave 19 scene names (records/metadata-scenes-*.json), shown under the title and read for each icon.
   scene: {
     population_up: "인구 늘음", population_down: "인구 줄음", household_arrival: "가구 입주", household_departure: "가구 이탈",

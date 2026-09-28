@@ -6,7 +6,8 @@ import type { GameAction } from "../state/gameStore.types";
 import type { TileCoordinate } from "../world/grid";
 import { roadLine } from "../world/roadGraph";
 import { createPlacementFeedback, type PlacementFeedback } from "../render/placementFeedback";
-import { AUTOPLAY_FAMINE_RESPONSE_LABEL, AUTOPLAY_PAINT_ARABLE_LABEL, AUTOPLAY_PETITION_RESPONSE_LABEL, AUTOPLAY_REBUILD_HOUSE_LABEL, AUTOPLAY_RELOCATE_HOUSE_LABEL, AUTOPLAY_RESERVE_RECOVERY_LABEL } from './autoplayCopy.ko';
+import { resourceName } from "../content/resourceCatalog.ko";
+import { AUTOPLAY_FARMSTEAD_CROP_LABEL, AUTOPLAY_FAMINE_RESPONSE_LABEL, AUTOPLAY_PAINT_ARABLE_LABEL, AUTOPLAY_PETITION_RESPONSE_LABEL, AUTOPLAY_REBUILD_HOUSE_LABEL, AUTOPLAY_RELOCATE_HOUSE_LABEL, AUTOPLAY_RESERVE_RECOVERY_LABEL } from './autoplayCopy.ko';
 
 export { autoplayActionToGameAction } from "../engine/autoplayActions";
 
@@ -75,6 +76,7 @@ export function autoplayActionLabel(action: AutoplayAction): string {
     case "petition_response":
       return AUTOPLAY_PETITION_RESPONSE_LABEL;
     case "set_farmstead_crop":
+      return AUTOPLAY_FARMSTEAD_CROP_LABEL(resourceName(action.crop));
     case "none":
       return "다음: 대기";
     default:

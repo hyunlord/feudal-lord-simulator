@@ -19,6 +19,7 @@ import { preloadWave7Art } from "./wave7Art";
 import { preloadWave9Art } from "./wave9Art";
 import { preloadWave17WorldArt } from "./warWorldProps";
 import { preloadWave11Art } from "./wave11Art";
+import { preloadWave3AleArt } from "./wave3AleArt";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
 /** The world art, awaited by captures; `chapter` (chapterArt.ts): the facility paintings up to it (default: all). */
@@ -42,6 +43,8 @@ export function preloadFrameArt(chapter: number): void {
   preloadWave7Art();
   preloadChapterArt(chapter);
   preloadWave11Art();
+  // INSTALL-3: the ale chain's art at startup, not by chapter (a barn can turn to barley in any chapter; the command has no gate).
+  preloadWave3AleArt();
   preloadCanvasIcons();
 }
 

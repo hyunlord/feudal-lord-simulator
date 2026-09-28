@@ -61,15 +61,17 @@ for (const mode of ["ready", "error", "wrong_size", "constructor_throw", "src_th
         constructor() { count++; if ('${mode}' === 'constructor_throw') throw new Error('unavailable'); }
         set src(url) {
           if ('${mode}' === 'src_throw') throw new Error('unavailable');
-          this.naturalWidth = '${mode}' === 'wrong_size' ? 1 : 1254;
-          this.naturalHeight = 1254;
+          // INSTALL-3: the malt kiln's Wave 3 paintings are their own 160 x 136 canvases (no derivative).
+          const kiln = String(url).includes('/wave3/');
+          this.naturalWidth = '${mode}' === 'wrong_size' ? 1 : kiln ? 160 : 1254;
+          this.naturalHeight = kiln ? 136 : 1254;
           queueMicrotask(() => '${mode}' === 'error' ? this.onerror() : this.onload());
         }
       };
       const first = preloadHistoricalFacilityAssets();
       assert.equal(first, preloadHistoricalFacilityAssets());
       await first;
-      assert.equal(count, 11);
+      assert.equal(count, 13);
       assert.ok(historicalFacilityAssetStatuses().every(asset => asset.status === (['ready', 'raster_throw'].includes('${mode}') ? 'ready' : 'missing')));
       if ('${mode}' === 'raster_throw') {
         assert.ok(historicalFacilityAssetStatuses().every(asset => asset.rasterError === 'raster draw failed'));

@@ -10,6 +10,11 @@ import { resourceName } from "../content/resourceCatalog.ko";
 import { DECLINE_CAUSES, LORD_RIGHT_NAMES } from "../content/historyCopy.ko";
 import { conscriptsAway } from "../engine/war";
 import { LORDSHIP_COPY } from "./lordshipCopy.ko";
+import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
+import { resourceEntry } from "../content/resourceCatalog";
+import { economyStockTotals } from "./ledgerModel";
+import { seasonAleCause } from "./houseAleModel";
+import { brewingSlot } from "../engine/ale";
 
 // UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes
 // (UI-4b: from the history ledger, as Wave 19 scene icons, seasonLedgerScenes.ts), money, population and stock beside
@@ -22,7 +27,19 @@ export type SeasonLedgerCardModel = Readonly<{
   lines: readonly string[];
   events: readonly string[];
   hint: { readonly text: string; readonly category: BuildCategory } | null;
+  /**
+   * INSTALL-3: the ale chain's goods held now (barley, malt, ale: the season ledger records no deltas for them) — in the
+   * stores, on the carts and, for ale, in the households' brewing slots — each drawn with its icon; empty when none.
+   */
+  drink: readonly { readonly resource: ResourceType; readonly name: string; readonly amount: number }[];
+  drinkLine: string | null;
 }>;
+
+/** INSTALL-3: the goods of the ale chain (the catalog's Wave 3 chain cells), in the catalog's order. */
+const ALE_CHAIN = RESOURCE_TYPES.filter(resource => resourceEntry(resource).chainCell !== undefined);
+
+/** A card state with the whole world (the game's own) reads the stores and the houses; the tests' bare ledgers do not. */
+const isWorld = (state: object): state is GameState => "buildings" in state && "houses" in state && "tiles" in state && "walkers" in state;
 
 const HINT_CATEGORY: Readonly<Record<Exclude<NextObjectiveHint, null>, BuildCategory>> = {
   food_reserve: "storage", harvest_reserve: "trade", resettle: "storage", dearth_reserve: "storage", fire_break: "living", rebuild: "living", resettled_food: "storage",
@@ -83,7 +100,15 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     ...(lordship?.declined === undefined ? [] : [LORDSHIP_COPY.seasonDeclined(DECLINE_CAUSES[lordship.declined.cause] ?? lordship.declined.cause,
       lordship.declined.right === null ? null : LORD_RIGHT_NAMES[lordship.declined.right] ?? lordship.declined.right, lordship.declined.by === "overlord")]),
     ...(lordship?.houseChanged === undefined ? [] : [LORDSHIP_COPY.seasonHouse(lordship.houseChanged.withdrew, lordship.houseChanged.arrived)]),
-    ...(away > 0 ? [LORDSHIP_COPY.seasonAway(away)] : [])];
+    ...(away > 0 ? [LORDSHIP_COPY.seasonAway(away)] : []),
+    // INSTALL-3 (AL-6): the houses whose rise waits longer for want of ale, as the card opens.
+    ...(isWorld(state) && seasonAleCause(state) !== null ? [seasonAleCause(state)!] : [])];
+  const totals = isWorld(state) ? economyStockTotals(state) : null;
+  // Ale is brewed and kept in the households' first slot (AL-4), not in the stores: those casks count too.
+  const brewed = isWorld(state) ? state.houses.reduce((sum, house) => sum + (brewingSlot(house)?.stock.ale ?? 0), 0) : 0;
+  const drink = totals === null ? [] : ALE_CHAIN.map(resource => ({ resource, name: resourceName(resource),
+    amount: Math.floor(totals[resource] + (resource === "ale" ? brewed : 0)) }));
+  const held = drink.some(item => item.amount > 0);
   return {
     key: `${ledger.year}:${ledger.season}`,
     title: SEASON_LEDGER_COPY.title(year, ledger.season),
@@ -94,6 +119,8 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     events: events.length > 0 ? events : ledger.popDelta < 0 ? [SEASON_LEDGER_COPY.populationFell(-ledger.popDelta)]
       : scenes.some(scene => TROUBLE.has(scene.id)) ? [] : [SEASON_LEDGER_COPY.quiet],
     hint: ledger.nextObjectiveHint === null ? null : { text: hintText(ledger), category: HINT_CATEGORY[ledger.nextObjectiveHint] },
+    drink: held ? drink : [],
+    drinkLine: held ? SEASON_LEDGER_COPY.heldNow(drink.map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
   };
 }
 

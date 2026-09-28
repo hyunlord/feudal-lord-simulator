@@ -23,6 +23,8 @@ export type PlacementChip = {
   readonly period: string | null;
   /** UX-0b2 MARKET-1: a house's road steps to the nearest market (`far` beyond the reach), null with no market. */
   readonly market: Readonly<{ text: string; far: boolean }> | null;
+  /** INSTALL-3: what a production building makes and from what (the chip draws each good with its icon), null otherwise. */
+  readonly production: Readonly<{ input: ResourceType | null; output: ResourceType; text: string }> | null;
 };
 
 type ChipInput = {
@@ -67,7 +69,15 @@ export function placementChipModel(state: GameState, input: ChipInput): Placemen
     reach: input.reachHouses === null ? null
       : input.tool === "market" ? PLACEMENT_CHIP_COPY.reachRoad(input.reachHouses, MARKET_ROAD_REACH) : PLACEMENT_CHIP_COPY.reach(input.reachHouses),
     period: parts.length === 0 ? null : PLACEMENT_CHIP_COPY.period(parts),
-    market: marketLine(input.market ?? null) };
+    market: marketLine(input.market ?? null), production: productionLine(input.tool) };
+}
+
+function productionLine(tool: BuildingKind | "road"): PlacementChip["production"] {
+  const production = tool === "road" ? null : BUILDING_CONFIG_BY_KIND[tool].production;
+  if (production === null) return null;
+  const output = resourceName(production.output);
+  return { input: production.input, output: production.output,
+    text: production.input === null ? PLACEMENT_CHIP_COPY.makes(output) : PLACEMENT_CHIP_COPY.makesFrom(resourceName(production.input), output) };
 }
 
 function marketLine(distance: HouseMarketDistance | null): PlacementChip["market"] {
