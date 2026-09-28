@@ -43,6 +43,9 @@ const trace: Record<string, number>[] = [];
 let last: GameState | null = null;
 let previousAle = new Map<string, number>();
 const firstL4Full: { tick: number | null } = { tick: null };
+/** The chain coming together (as `aleChainRun.ts`): the kiln, a barn on barley, the first ale drunk. */
+const chain: Record<string, number | null> = { chapter2: null, kiln: null, barleyBarn: null, aleDrunk: null };
+const mark = (key: string, tick: number) => { chain[key] ??= tick; };
 
 /** Houses eligible to rise this tick with the ale rule and without it (the same state, one shadow step each way). */
 function eligibility(state: GameState) {
@@ -62,6 +65,12 @@ function eligibility(state: GameState) {
 runPhase19NaturalGrowth({ targetLots: 24, maxTicks, seed, onTick: state => {
   last = state;
   if (firstL4Full.tick === null && state.houses.length === 24 && state.houses.every(house => house.level === 4)) firstL4Full.tick = state.tick;
+  if (state.tick % 50 === 0) {
+    if ((state.politics?.chapter.number ?? 1) >= 2) mark("chapter2", state.tick);
+    if (state.buildings.some(building => building.kind === "malt_kiln")) mark("kiln", state.tick);
+    if (state.buildings.some(building => building.crop === "barley")) mark("barleyBarn", state.tick);
+    if (state.houses.some(house => house.aleUntilTick !== undefined)) mark("aleDrunk", state.tick);
+  }
   if (state.tick % 4_000 === 0) {
     trace.push({ tick: state.tick, year: stateCalendar(state).year, l2plus: state.houses.filter(house => house.level >= 2).length,
       l3plus: state.houses.filter(house => house.level >= 3).length, l4: state.houses.filter(house => house.level === 4).length, population: state.population });
@@ -121,6 +130,6 @@ process.stdout.write(`${JSON.stringify({ seed, variant, maxTicks, window: { star
     alehouses: mean(sums.alehouses), l1plusHouses: mean(sums.l1plus), outOfAlehouseReach: mean(sums.outOfReach),
     heldBackByAle: mean(sums.aleBlocked), eligibleButUnserved: mean(sums.eligibleUnserved), heldBackByOther: mean(sums.otherBlocked),
   },
-  firstL4Full: firstL4Full.tick, victoryTick: final?.settlement?.milestones.prosperity ?? null,
+  chain, chainComplete: chain.aleDrunk !== null, firstL4Full: firstL4Full.tick, victoryTick: final?.settlement?.milestones.prosperity ?? null,
   final: final === null ? null : { tick: final.tick, year: stateCalendar(final).year, population: final.population,
     levels: [0, 1, 2, 3, 4].map(level => final.houses.filter(house => house.level === level).length) }, trace }, null, 1)}\n`);

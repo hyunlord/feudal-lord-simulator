@@ -40,6 +40,11 @@ export function wallInteriorCells(state: GameState): number {
  */
 export const KILN_NEAR_BARN = 6;
 const KILN_SITE_RINGS = [2, 4, KILN_NEAR_BARN] as const;
+/**
+ * When no barn to spare has room within `KILN_NEAR_BARN` (the smallest barn is often the town's first, hemmed in by
+ * houses: probe e075ed8 seed 2 at 119,269 had one legal cell within six tiles of it), the kiln goes a little farther.
+ */
+const KILN_FALLBACK_RINGS = [8, 10] as const;
 type KilnBuildAction = (state: GameState, kind: BuildingKind, accepts?: (coordinate: TileCoordinate) => boolean) => AutoplayAction;
 
 /** The barns the wheat can spare for barley, smallest first (a barn tending no strips would grow nothing: run 2). */
@@ -56,24 +61,31 @@ function roadTiles(state: GameState, from: Building, to: Building): number | nul
   return path === null ? null : path.length - 1;
 }
 
-/** A kiln at the coordinate would stand within `KILN_NEAR_BARN` road tiles of the barn. */
-function kilnNearBarn(state: GameState, barn: Building, coordinate: TileCoordinate, ring: number): boolean {
+/**
+ * A kiln at the coordinate would stand within `KILN_NEAR_BARN` tiles of the barn and, where a road already joins them,
+ * within `KILN_NEAR_BARN` road tiles. A site no road reaches yet is taken too: the bot lays the road to it (as for the mill
+ * beside a backed-up barn). Requiring a road route here first left every seed without a kiln (probe e075ed8).
+ */
+function kilnNearBarn(state: GameState, barn: Building, coordinate: TileCoordinate, ring: number, roadLimit: number): boolean {
   if (Math.abs(coordinate.tx - barn.tx) + Math.abs(coordinate.ty - barn.ty) > ring) return false;
   const kiln: Building = { id: `kiln-candidate:${coordinate.tx},${coordinate.ty}`, kind: "malt_kiln", tx: coordinate.tx, ty: coordinate.ty, workers: 0,
     inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
   const tiles = roadTiles(state, barn, kiln);
-  return tiles !== null && tiles <= KILN_NEAR_BARN;
+  return tiles === null || tiles <= roadLimit;
 }
 
 export function aleChainAction(state: GameState, buildAction: KilnBuildAction): AutoplayAction {
   if (!aleRequired(state) || state.era === "hamlet") return NONE;
   const barley = state.buildings.find(building => building.crop === "barley");
   if (!hasBuiltOrPlannedBuilding(state, "malt_kiln")) {
-    const barn = barley ?? spareBarns(state)[0];
-    if (barn === undefined) return NONE;
-    for (const ring of KILN_SITE_RINGS) {
-      const action = buildAction(state, "malt_kiln", coordinate => kilnNearBarn(state, barn, coordinate, ring));
-      if (action.kind !== "none") return action;
+    const barns = barley === undefined ? spareBarns(state) : [barley];
+    for (const rings of [KILN_SITE_RINGS, KILN_FALLBACK_RINGS]) {
+      for (const barn of barns) {
+        for (const ring of rings) {
+          const action = buildAction(state, "malt_kiln", coordinate => kilnNearBarn(state, barn, coordinate, ring, Math.max(ring, KILN_NEAR_BARN)));
+          if (action.kind !== "none") return action;
+        }
+      }
     }
     return NONE;
   }
