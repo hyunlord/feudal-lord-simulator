@@ -1,0 +1,901 @@
+[
+  {
+    "id": "L4_101_young",
+    "file": "assets/L4/L4_101_young.png",
+    "identity": "L4_101",
+    "lineage": "L4",
+    "generation": 1,
+    "stage": "young",
+    "age": 25,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted olive fine wool merchant tunic with plain linen collar",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short brushed-back slightly wavy hair",
+      "gray eyes",
+      "broad shoulders",
+      "small mole on left cheek",
+      "long upper lip"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Reference is project paint STYLE ONLY. Invent a completely NEW face, not the reference identity. Subject L4_101, male, age 25. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short brushed-back slightly wavy hair; gray eyes; broad shoulders; small mole on left cheek; long upper lip. Maintain individual face across ages. Clothing: muted olive fine wool merchant tunic with plain linen collar. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Reference is project paint STYLE ONLY. Invent a completely NEW face, not the reference identity. Subject L4_101, male, age 25. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short brushed-back slightly wavy hair; gray eyes; broad shoulders; small mole on left cheek; long upper lip. Maintain individual face across ages. Clothing: muted olive fine wool merchant tunic with plain linen collar. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_101_young.png",
+        "referenceImages": [
+          "references/b324ee60b576-L2_201_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_young.png": "b324ee60b576b4095d2effa9666971d244cba63ec25c55b6ec2c5f7bb16ba779"
+        },
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "references/b324ee60b576-L2_201_young.png": "b324ee60b576b4095d2effa9666971d244cba63ec25c55b6ec2c5f7bb16ba779"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Young adult portrait visually inspected",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824"
+  },
+  {
+    "id": "L4_206_young",
+    "file": "assets/L4/L4_206_young.png",
+    "identity": "L4_206",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "young",
+    "age": 24,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted rust wool merchant tunic",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits3": [],
+    "differenceMarkers": [
+      "straight dark blond hair cut at ear",
+      "brown eyes",
+      "angular long face",
+      "lean shoulders",
+      "pale healed brow notch"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Reference is project paint STYLE ONLY. Invent a completely NEW face, not the reference identity. Subject L4_206, male, age 24. External spouse, not born into the copper-haired family; individual features: straight dark blond hair cut at ear; brown eyes; angular long face; lean shoulders; pale healed brow notch. Maintain individual face across ages. Clothing: muted rust wool merchant tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Reference is project paint STYLE ONLY. Invent a completely NEW face, not the reference identity. Subject L4_206, male, age 24. External spouse, not born into the copper-haired family; individual features: straight dark blond hair cut at ear; brown eyes; angular long face; lean shoulders; pale healed brow notch. Maintain individual face across ages. Clothing: muted rust wool merchant tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_206_young.png",
+        "referenceImages": [
+          "references/b324ee60b576-L2_201_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_young.png": "b324ee60b576b4095d2effa9666971d244cba63ec25c55b6ec2c5f7bb16ba779"
+        },
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "references/b324ee60b576-L2_201_young.png": "b324ee60b576b4095d2effa9666971d244cba63ec25c55b6ec2c5f7bb16ba779"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Young adult portrait visually inspected",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [],
+    "sha256": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59"
+  },
+  {
+    "id": "L4_201_young",
+    "file": "assets/L4/L4_201_young.png",
+    "identity": "L4_201",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "young",
+    "age": 24,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted blue wool merchant tunic",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short tightly curled hair",
+      "light blue eyes",
+      "stocky broad shoulders",
+      "dense nose freckles",
+      "wide full lower lip"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_201, male, age 24. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: muted blue wool merchant tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_201, male, age 24. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: muted blue wool merchant tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_201_young.png",
+        "referenceImages": [
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Young adult portrait visually inspected",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8"
+  },
+  {
+    "id": "L4_202_young",
+    "file": "assets/L4/L4_202_young.png",
+    "identity": "L4_202",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "young",
+    "age": 22,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted brown wool merchant tunic",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "straight ear-length hair with side part",
+      "dark brown eyes",
+      "lean narrow shoulders",
+      "dark mole below left eye",
+      "thin narrow mouth"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_202, male, age 22. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. Maintain individual face across ages. Clothing: muted brown wool merchant tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_202, male, age 22. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. Maintain individual face across ages. Clothing: muted brown wool merchant tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_202_young.png",
+        "referenceImages": [
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Young adult portrait visually inspected",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439"
+  },
+  {
+    "id": "L4_303_young",
+    "file": "assets/L4/L4_303_young.png",
+    "identity": "L4_303",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "young",
+    "age": 22,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted slate wool tunic",
+    "fatherIdentity": "L4_206",
+    "motherIdentity": "L4_203",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short straight fringe",
+      "brown eyes",
+      "broad stocky shoulders",
+      "single left cheek mole",
+      "thin broad mouth"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_303, male, age 22. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short straight fringe; brown eyes; broad stocky shoulders; single left cheek mole; thin broad mouth. Maintain individual face across ages. Clothing: muted slate wool tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_303, male, age 22. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short straight fringe; brown eyes; broad stocky shoulders; single left cheek mole; thin broad mouth. Maintain individual face across ages. Clothing: muted slate wool tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_303_young.png",
+        "referenceImages": [
+          "assets/L4/L4_206_young.png",
+          "assets/L4/L4_203_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Young adult portrait visually inspected",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "aba59df4e99ad792657f9ebc40e6ccc69d0ed8e048a2880545cc194e1a64b1bc"
+  },
+  {
+    "id": "L4_101_mature",
+    "file": "assets/L4/L4_101_mature.png",
+    "identity": "L4_101",
+    "lineage": "L4",
+    "generation": 1,
+    "stage": "mature",
+    "age": 45,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted olive fine wool merchant tunic with plain linen collar",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short brushed-back slightly wavy hair",
+      "gray eyes",
+      "broad shoulders",
+      "small mole on left cheek",
+      "long upper lip"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Subject L4_101, male, age 45. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short brushed-back slightly wavy hair; gray eyes; broad shoulders; small mole on left cheek; long upper lip. Maintain individual face across ages. Clothing: muted olive fine wool merchant tunic with plain linen collar. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Subject L4_101, male, age 45. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short brushed-back slightly wavy hair; gray eyes; broad shoulders; small mole on left cheek; long upper lip. Maintain individual face across ages. Clothing: muted olive fine wool merchant tunic with plain linen collar. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_101_mature.png",
+        "referenceImages": [
+          "assets/L4/L4_101_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Visible gray hair and facial aging; intended twenty-year interval, perceived age remains subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "379f4f07efbc5cef632c487f442ec2557a732db4302af58bdae5ac385149ac4e"
+  },
+  {
+    "id": "L4_101_old",
+    "file": "assets/L4/L4_101_old.png",
+    "identity": "L4_101",
+    "lineage": "L4",
+    "generation": 1,
+    "stage": "old",
+    "age": 70,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted olive fine wool merchant tunic with plain linen collar",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short brushed-back slightly wavy hair",
+      "gray eyes",
+      "broad shoulders",
+      "small mole on left cheek",
+      "long upper lip"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Subject L4_101, male, age 70. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short brushed-back slightly wavy hair; gray eyes; broad shoulders; small mole on left cheek; long upper lip. Maintain individual face across ages. Clothing: muted olive fine wool merchant tunic with plain linen collar. Age70, pronounced wrinkles and sagging cheeks, gray-white thinning hair, old skin, still same identity.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Subject L4_101, male, age 70. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short brushed-back slightly wavy hair; gray eyes; broad shoulders; small mole on left cheek; long upper lip. Maintain individual face across ages. Clothing: muted olive fine wool merchant tunic with plain linen collar. Age70, pronounced wrinkles and sagging cheeks, gray-white thinning hair, old skin, still same identity.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_101_old.png",
+        "referenceImages": [
+          "assets/L4/L4_101_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Elderly wrinkles, sagging and graying visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "a9260f1e99015fa25fc47267e05dcda24f39c1f244af3b077bc8378b8641838f"
+  },
+  {
+    "id": "L4_206_mature",
+    "file": "assets/L4/L4_206_mature.png",
+    "identity": "L4_206",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "mature",
+    "age": 44,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted rust wool merchant tunic",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits3": [],
+    "differenceMarkers": [
+      "straight dark blond hair cut at ear",
+      "brown eyes",
+      "angular long face",
+      "lean shoulders",
+      "pale healed brow notch"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Subject L4_206, male, age 44. External spouse, not born into the copper-haired family; individual features: straight dark blond hair cut at ear; brown eyes; angular long face; lean shoulders; pale healed brow notch. Maintain individual face across ages. Clothing: muted rust wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Subject L4_206, male, age 44. External spouse, not born into the copper-haired family; individual features: straight dark blond hair cut at ear; brown eyes; angular long face; lean shoulders; pale healed brow notch. Maintain individual face across ages. Clothing: muted rust wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_206_mature.png",
+        "referenceImages": [
+          "assets/L4/L4_206_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Visible gray hair and facial aging; intended twenty-year interval, perceived age remains subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [],
+    "sha256": "d991429f372a234e595efc714186d6efeb4a5afdc280bec4ace70f06a0035774"
+  },
+  {
+    "id": "L4_301_young",
+    "file": "assets/L4/L4_301_young.png",
+    "identity": "L4_301",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "young",
+    "age": 22,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted brown wool tunic",
+    "fatherIdentity": "L4_201",
+    "motherIdentity": "L4_205",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "loose wavy side-swept hair",
+      "gray-green eyes",
+      "slim shoulders",
+      "two cheek freckles left side",
+      "small upper lip",
+      "narrow hooded wide-set eyes",
+      "small narrow mouth",
+      "tiny chin dimple"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_301, male, age 22. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: loose wavy side-swept hair; gray-green eyes; slim shoulders; two cheek freckles left side; small upper lip. Maintain individual face across ages. Clothing: muted brown wool tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code. CRITICAL DISTINCT INDIVIDUAL: this grandson must NOT be a near-clone of father. Keep only ROUND outer facial silhouette but narrow hooded gray-green eyes, clearly wider interocular spacing, small upturned individual nose, small narrow mouth with thin upper lip and tiny chin dimple, and fleshy high cheeks. NO father large mouth or long broad nose. Hair loose waves, not father tight curls. Make unmistakably another person even if hair hidden.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_301, male, age 22. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: loose wavy side-swept hair; gray-green eyes; slim shoulders; two cheek freckles left side; small upper lip. Maintain individual face across ages. Clothing: muted brown wool tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_301_young.png",
+        "referenceImages": [
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_205_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe"
+        }
+      },
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_301, male, age 22. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: loose wavy side-swept hair; gray-green eyes; slim shoulders; two cheek freckles left side; small upper lip. Maintain individual face across ages. Clothing: muted brown wool tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code. CRITICAL DISTINCT INDIVIDUAL: this grandson must NOT be a near-clone of father. Keep only ROUND outer facial silhouette but narrow hooded gray-green eyes, clearly wider interocular spacing, small upturned individual nose, small narrow mouth with thin upper lip and tiny chin dimple, and fleshy high cheeks. NO father large mouth or long broad nose. Hair loose waves, not father tight curls. Make unmistakably another person even if hair hidden.",
+        "rawFile": "raw/L4/L4_301_young-v2.png",
+        "referenceImages": [
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_205_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Young adult portrait visually inspected",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "c19103978fdff8da2ada8b745637245022f2afc21055c020c2c66eef644fbd65"
+  },
+  {
+    "id": "L4_202_mature",
+    "file": "assets/L4/L4_202_mature.png",
+    "identity": "L4_202",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "mature",
+    "age": 42,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted brown wool merchant tunic",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "straight ear-length hair with side part",
+      "dark brown eyes",
+      "lean narrow shoulders",
+      "dark mole below left eye",
+      "thin narrow mouth"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_202, male, age 42. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. Maintain individual face across ages. Clothing: muted brown wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_202, male, age 42. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. Maintain individual face across ages. Clothing: muted brown wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_202_mature.png",
+        "referenceImages": [
+          "assets/L4/L4_202_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_202_young.png": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Visible gray hair and facial aging; intended twenty-year interval, perceived age remains subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "20b8e55bb7e1725715913bfec9daa63be4db9ff50c77afcd1edd63754d6946fb"
+  },
+  {
+    "id": "L4_201_mature",
+    "file": "assets/L4/L4_201_mature.png",
+    "identity": "L4_201",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "mature",
+    "age": 44,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted blue wool merchant tunic",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short tightly curled hair",
+      "light blue eyes",
+      "stocky broad shoulders",
+      "dense nose freckles",
+      "wide full lower lip"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_201, male, age 44. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: muted blue wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code. CRITICAL CORRECTION: prior middle-aged portrait looked only30. Make this person unmistakably FORTY-FOUR, twenty years beyond age24 reference. Substantial visible crow-feet, horizontal forehead creases, deeper nasolabial folds, under-eye hollows and pouches, heavier changed cheeks, softened aging neck, weathered textured skin. Gray temple hair prominently mixed with auburn through the short curls. Retain the same individual eye spacing, mouth, freckles, head shape and existing clothing. NOT a young smooth face. NOT elderly70. Strong painted midlife aging readable at96px. References remain own young identity first, actual father second and actual mother third. ONE image only.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_201, male, age 44. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: muted blue wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_201_mature.png",
+        "referenceImages": [
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      },
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_201, male, age 44. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: muted blue wool merchant tunic. Age FORTY PLUS, visibly TWENTY YEARS OLDER than image1: unmistakable crow feet, under-eye hollows, nasolabial folds, changed skin tone, gray temples or sparse gray hair visible at coif edge, slight heavier/sagging cheeks. NOT young face with clothing swap. Same eye spacing, signature marks, individual mouth.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code. CRITICAL CORRECTION: prior middle-aged portrait looked only30. Make this person unmistakably FORTY-FOUR, twenty years beyond age24 reference. Substantial visible crow-feet, horizontal forehead creases, deeper nasolabial folds, under-eye hollows and pouches, heavier changed cheeks, softened aging neck, weathered textured skin. Gray temple hair prominently mixed with auburn through the short curls. Retain the same individual eye spacing, mouth, freckles, head shape and existing clothing. NOT a young smooth face. NOT elderly70. Strong painted midlife aging readable at96px. References remain own young identity first, actual father second and actual mother third. ONE image only.",
+        "rawFile": "raw/L4/L4_201_mature-v2.png",
+        "referenceImages": [
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "ageReview": "Corrected stronger forehead and crow-feet creases, gray temple strands, under-eye hollows and midlife facial texture; intended age44",
+      "identityReview": "Young reference and actual parents retained; stable freckles, eyes, mouth and clothing",
+      "clothingReview": "Merchant wool retained"
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "edd3581f711fb7fba4563af643d6c1408037e87e091bae74436fc4f011b00e9c"
+  }
+]

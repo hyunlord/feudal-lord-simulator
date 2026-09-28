@@ -1,0 +1,1524 @@
+[
+  {
+    "id": "L4_201_baby",
+    "file": "assets/L4/L4_201_baby.png",
+    "identity": "L4_201",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "baby",
+    "age": 1,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short tightly curled hair",
+      "light blue eyes",
+      "stocky broad shoulders",
+      "dense nose freckles",
+      "wide full lower lip"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_201, male, age 1. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_201, male, age 1. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_201_baby.png",
+        "referenceImages": [
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Infant anatomy, linen bonnet and swaddling visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "67027fdd46b8da15a72e12edadeba72d845f0c3cd75faee967e02fdd1519316a"
+  },
+  {
+    "id": "L4_202_baby",
+    "file": "assets/L4/L4_202_baby.png",
+    "identity": "L4_202",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "straight ear-length hair with side part",
+      "dark brown eyes",
+      "lean narrow shoulders",
+      "dark mole below left eye",
+      "thin narrow mouth"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_202, male, age 0.5. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_202, male, age 0.5. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_202_baby.png",
+        "referenceImages": [
+          "assets/L4/L4_202_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_202_young.png": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Infant anatomy, linen bonnet and swaddling visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "f1c7e82385a52b4e4976f2f89d98a221310f2603ab421b5097aa0ba8afb2031c"
+  },
+  {
+    "id": "L4_203_baby",
+    "file": "assets/L4/L4_203_baby.png",
+    "identity": "L4_203",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "baby",
+    "age": 1,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "smooth hair swept under linen coif",
+      "green eyes",
+      "slender long shoulders",
+      "three dark freckles across right cheek",
+      "wide mouth with thin upper lip"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_203, female, age 1. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: smooth hair swept under linen coif; green eyes; slender long shoulders; three dark freckles across right cheek; wide mouth with thin upper lip. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_203, female, age 1. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: smooth hair swept under linen coif; green eyes; slender long shoulders; three dark freckles across right cheek; wide mouth with thin upper lip. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_203_baby.png",
+        "referenceImages": [
+          "assets/L4/L4_203_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Infant anatomy, linen bonnet and swaddling visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "d7800e6b1d512d4fac1f648f1b8e35d34f687855510a65aa6bb8e3d1173d9a27"
+  },
+  {
+    "id": "L4_204_baby",
+    "file": "assets/L4/L4_204_baby.png",
+    "identity": "L4_204",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short loose curly bob",
+      "gray-blue eyes",
+      "broad rounded shoulders",
+      "single mole near right mouth corner",
+      "small full mouth"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_204, female, age 0.5. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short loose curly bob; gray-blue eyes; broad rounded shoulders; single mole near right mouth corner; small full mouth. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_204, female, age 0.5. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short loose curly bob; gray-blue eyes; broad rounded shoulders; single mole near right mouth corner; small full mouth. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_204_baby.png",
+        "referenceImages": [
+          "assets/L4/L4_204_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_204_young.png": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Infant anatomy, linen bonnet and swaddling visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "9249b22c00086f02a75bd7bb4e9764fec8236aa4a46061e837db7f1ddaa0f33a"
+  },
+  {
+    "id": "L4_301_baby",
+    "file": "assets/L4/L4_301_baby.png",
+    "identity": "L4_301",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "baby",
+    "age": 1,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L4_201",
+    "motherIdentity": "L4_205",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "loose wavy side-swept hair",
+      "gray-green eyes",
+      "slim shoulders",
+      "two cheek freckles left side",
+      "small upper lip",
+      "narrow hooded wide-set eyes",
+      "small narrow mouth",
+      "tiny chin dimple"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_301, male, age 1. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: loose wavy side-swept hair; gray-green eyes; slim shoulders; two cheek freckles left side; small upper lip; narrow hooded wide-set eyes; small narrow mouth; tiny chin dimple. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_301, male, age 1. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: loose wavy side-swept hair; gray-green eyes; slim shoulders; two cheek freckles left side; small upper lip; narrow hooded wide-set eyes; small narrow mouth; tiny chin dimple. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_301_baby.png",
+        "referenceImages": [
+          "assets/L4/L4_301_young.png",
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_205_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_young.png": "c19103978fdff8da2ada8b745637245022f2afc21055c020c2c66eef644fbd65",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_301_young.png": "c19103978fdff8da2ada8b745637245022f2afc21055c020c2c66eef644fbd65",
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Infant anatomy, linen bonnet and swaddling visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "a45e79ccb8cef0d9e2c40b8e0f74a68bfe3a281bae7d4ad0b8fcac742c313ba4"
+  },
+  {
+    "id": "L4_302_baby",
+    "file": "assets/L4/L4_302_baby.png",
+    "identity": "L4_302",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L4_201",
+    "motherIdentity": "L4_205",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "long straight hair in single loose braid",
+      "light blue eyes",
+      "broad shoulders",
+      "single right cheek mole",
+      "full wide lips"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_302, female, age 0.5. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: long straight hair in single loose braid; light blue eyes; broad shoulders; single right cheek mole; full wide lips. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_302, female, age 0.5. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: long straight hair in single loose braid; light blue eyes; broad shoulders; single right cheek mole; full wide lips. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_302_baby.png",
+        "referenceImages": [
+          "assets/L4/L4_302_young.png",
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_205_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png": "8dd53d9acb862bded7a9ccd7c802a2ee29a3297376bd7092fea7f86f0546a5ad",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_302_young.png": "8dd53d9acb862bded7a9ccd7c802a2ee29a3297376bd7092fea7f86f0546a5ad",
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Infant anatomy, linen bonnet and swaddling visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "936ea1760987da4e5269eb0b7a312e64ffce4bca3a33d27c049a721bf277337c"
+  },
+  {
+    "id": "L4_303_baby",
+    "file": "assets/L4/L4_303_baby.png",
+    "identity": "L4_303",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "baby",
+    "age": 1,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L4_206",
+    "motherIdentity": "L4_203",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short straight fringe",
+      "brown eyes",
+      "broad stocky shoulders",
+      "single left cheek mole",
+      "thin broad mouth"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_303, male, age 1. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short straight fringe; brown eyes; broad stocky shoulders; single left cheek mole; thin broad mouth. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_303, male, age 1. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short straight fringe; brown eyes; broad stocky shoulders; single left cheek mole; thin broad mouth. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_303_baby.png",
+        "referenceImages": [
+          "assets/L4/L4_303_young.png",
+          "assets/L4/L4_206_young.png",
+          "assets/L4/L4_203_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_young.png": "aba59df4e99ad792657f9ebc40e6ccc69d0ed8e048a2880545cc194e1a64b1bc",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_303_young.png": "aba59df4e99ad792657f9ebc40e6ccc69d0ed8e048a2880545cc194e1a64b1bc",
+          "assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Infant anatomy, linen bonnet and swaddling visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "26abd9805b71b42c6190672c11804d14d58cff663b68686fb3dd072e45628319"
+  },
+  {
+    "id": "L4_304_baby",
+    "file": "assets/L4/L4_304_baby.png",
+    "identity": "L4_304",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "linen bonnet and swaddling",
+    "fatherIdentity": "L4_206",
+    "motherIdentity": "L4_203",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short springy curls",
+      "green eyes",
+      "slender shoulders",
+      "freckles across nose bridge",
+      "small bow-shaped mouth"
+    ],
+    "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_304, female, age 0.5. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short springy curls; green eyes; slender shoulders; freckles across nose bridge; small bow-shaped mouth. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_304, female, age 0.5. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short springy curls; green eyes; slender shoulders; freckles across nose bridge; small bow-shaped mouth. Maintain individual face across ages. Clothing: undyed linen infant bonnet and snug swaddling cloth wrapping body below chin; FACE VISIBLE.. TRUE INFANT under12months, NOT toddler: very large round baby cranium, sparse tiny hair wisps, plump baby cheeks, tiny nose/chin, almost no neck; wrapped lying/reclining baby held upright in portrait composition. No grown child shoulders or full head of hair.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_304_baby.png",
+        "referenceImages": [
+          "assets/L4/L4_304_young.png",
+          "assets/L4/L4_206_young.png",
+          "assets/L4/L4_203_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png": "3b34bb57f4bf8eebe250f710713c1d6ead7a3d37c3a260d77a4c1dc31eee128a",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_304_young.png": "3b34bb57f4bf8eebe250f710713c1d6ead7a3d37c3a260d77a4c1dc31eee128a",
+          "assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Infant anatomy, linen bonnet and swaddling visible",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "9fc45050819ff9e9610ad86569a969fb07c051637c6ba08226ed2f78e32fc395"
+  },
+  {
+    "id": "L4_201_child",
+    "file": "assets/L4/L4_201_child.png",
+    "identity": "L4_201",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short tightly curled hair",
+      "light blue eyes",
+      "stocky broad shoulders",
+      "dense nose freckles",
+      "wide full lower lip"
+    ],
+    "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_201, male. Copper auburn hair, round outer face, gently arched brows. Distinct cues short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_201, male, age 8. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. Maintain individual face across ages. Clothing: muted blue wool merchant tunic. Clearly primary school child age8, NOT12-14 adolescent. Short small midface, tiny rounded jaw, broad high forehead, soft round cheeks, short child neck, small shoulders. Boys no beard. Girls completely uncovered hair, NO adult coif or veil; simplify adult hairstyle age appropriately. Small proportioned merchant wool clothing.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_201_child.png",
+        "referenceImages": [
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      },
+      {
+        "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_201, male. Copper auburn hair, round outer face, gently arched brows. Distinct cues short tightly curled hair; light blue eyes; stocky broad shoulders; dense nose freckles; wide full lower lip. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+        "rawFile": "raw/L4/L4_201_child-v2.png",
+        "referenceImages": [
+          "assets/L4/L4_201_baby.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png",
+          "assets/L4/L4_201_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_baby.png": "67027fdd46b8da15a72e12edadeba72d845f0c3cd75faee967e02fdd1519316a",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_201_baby.png": "67027fdd46b8da15a72e12edadeba72d845f0c3cd75faee967e02fdd1519316a",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Final version reads primary-school child with round cheeks, short neck and small shoulders; exact numerical age is subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "2fa927a6c6997c4da99d4bf7a9d46bc8fd8b79faa13a5631f9bc045fa3b11ffd"
+  },
+  {
+    "id": "L4_202_child",
+    "file": "assets/L4/L4_202_child.png",
+    "identity": "L4_202",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "child",
+    "age": 6,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "straight ear-length hair with side part",
+      "dark brown eyes",
+      "lean narrow shoulders",
+      "dark mole below left eye",
+      "thin narrow mouth"
+    ],
+    "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 6. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_202, male. Copper auburn hair, round outer face, gently arched brows. Distinct cues straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_202, male, age 6. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. Maintain individual face across ages. Clothing: muted brown wool merchant tunic. Clearly primary school child age6, NOT12-14 adolescent. Short small midface, tiny rounded jaw, broad high forehead, soft round cheeks, short child neck, small shoulders. Boys no beard. Girls completely uncovered hair, NO adult coif or veil; simplify adult hairstyle age appropriately. Small proportioned merchant wool clothing.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_202_child.png",
+        "referenceImages": [
+          "assets/L4/L4_202_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_202_young.png": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      },
+      {
+        "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 6. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_202, male. Copper auburn hair, round outer face, gently arched brows. Distinct cues straight ear-length hair with side part; dark brown eyes; lean narrow shoulders; dark mole below left eye; thin narrow mouth. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+        "rawFile": "raw/L4/L4_202_child-v2.png",
+        "referenceImages": [
+          "assets/L4/L4_202_baby.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png",
+          "assets/L4/L4_202_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_baby.png": "f1c7e82385a52b4e4976f2f89d98a221310f2603ab421b5097aa0ba8afb2031c",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_202_baby.png": "f1c7e82385a52b4e4976f2f89d98a221310f2603ab421b5097aa0ba8afb2031c",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+          "assets/L4/L4_202_young.png": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Final version reads primary-school child with round cheeks, short neck and small shoulders; exact numerical age is subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "ea43b344c888ad7ca48c483c2713d5010e776d15f5edbd459793cab4bfeb127e"
+  },
+  {
+    "id": "L4_203_child",
+    "file": "assets/L4/L4_203_child.png",
+    "identity": "L4_203",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "child",
+    "age": 8,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "smooth hair swept under linen coif",
+      "green eyes",
+      "slender long shoulders",
+      "three dark freckles across right cheek",
+      "wide mouth with thin upper lip"
+    ],
+    "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_203, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues smooth hair swept under linen coif; green eyes; slender long shoulders; three dark freckles across right cheek; wide mouth with thin upper lip. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_203, female, age 8. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: smooth hair swept under linen coif; green eyes; slender long shoulders; three dark freckles across right cheek; wide mouth with thin upper lip. Maintain individual face across ages. Clothing: muted olive wool merchant gown and linen coif. Clearly primary school child age8, NOT12-14 adolescent. Short small midface, tiny rounded jaw, broad high forehead, soft round cheeks, short child neck, small shoulders. Boys no beard. Girls completely uncovered hair, NO adult coif or veil; simplify adult hairstyle age appropriately. Small proportioned merchant wool clothing.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_203_child.png",
+        "referenceImages": [
+          "assets/L4/L4_203_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      },
+      {
+        "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_203, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues smooth hair swept under linen coif; green eyes; slender long shoulders; three dark freckles across right cheek; wide mouth with thin upper lip. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+        "rawFile": "raw/L4/L4_203_child-v2.png",
+        "referenceImages": [
+          "assets/L4/L4_203_baby.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png",
+          "assets/L4/L4_203_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_baby.png": "d7800e6b1d512d4fac1f648f1b8e35d34f687855510a65aa6bb8e3d1173d9a27",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_203_baby.png": "d7800e6b1d512d4fac1f648f1b8e35d34f687855510a65aa6bb8e3d1173d9a27",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+          "assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Final version reads primary-school child with round cheeks, short neck and small shoulders; exact numerical age is subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "51008f9c6cff788624f71fa2770435d8b7c93db3d9a58ad8e49003c4a55f737d"
+  },
+  {
+    "id": "L4_204_child",
+    "file": "assets/L4/L4_204_child.png",
+    "identity": "L4_204",
+    "lineage": "L4",
+    "generation": 2,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil",
+    "fatherIdentity": "L4_101",
+    "motherIdentity": "L4_102",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short loose curly bob",
+      "gray-blue eyes",
+      "broad rounded shoulders",
+      "single mole near right mouth corner",
+      "small full mouth"
+    ],
+    "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 6. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_204, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues short loose curly bob; gray-blue eyes; broad rounded shoulders; single mole near right mouth corner; small full mouth. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Image 1 is this EXACT SAME PERSON at young age; preserve identity while changing age. Images 2 and 3 are actual parents, family references only. Subject L4_204, female, age 6. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: short loose curly bob; gray-blue eyes; broad rounded shoulders; single mole near right mouth corner; small full mouth. Maintain individual face across ages. Clothing: muted russet wool merchant gown. Clearly primary school child age6, NOT12-14 adolescent. Short small midface, tiny rounded jaw, broad high forehead, soft round cheeks, short child neck, small shoulders. Boys no beard. Girls completely uncovered hair, NO adult coif or veil; simplify adult hairstyle age appropriately. Small proportioned merchant wool clothing.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code.",
+        "rawFile": "raw/L4/L4_204_child.png",
+        "referenceImages": [
+          "assets/L4/L4_204_young.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_204_young.png": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3"
+        }
+      },
+      {
+        "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 6. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_204, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues short loose curly bob; gray-blue eyes; broad rounded shoulders; single mole near right mouth corner; small full mouth. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+        "rawFile": "raw/L4/L4_204_child-v2.png",
+        "referenceImages": [
+          "assets/L4/L4_204_baby.png",
+          "assets/L4/L4_101_young.png",
+          "assets/L4/L4_102_young.png",
+          "assets/L4/L4_204_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_baby.png": "9249b22c00086f02a75bd7bb4e9764fec8236aa4a46061e837db7f1ddaa0f33a",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_204_baby.png": "9249b22c00086f02a75bd7bb4e9764fec8236aa4a46061e837db7f1ddaa0f33a",
+          "assets/L4/L4_101_young.png": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+          "assets/L4/L4_102_young.png": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+          "assets/L4/L4_204_young.png": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Final version reads primary-school child with round cheeks, short neck and small shoulders; exact numerical age is subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "4c364d5811dfe3d006e7c7709908fb9cc7ba7dffc5ff283430e314ee271bfb45"
+  },
+  {
+    "id": "L4_301_child",
+    "file": "assets/L4/L4_301_child.png",
+    "identity": "L4_301",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil",
+    "fatherIdentity": "L4_201",
+    "motherIdentity": "L4_205",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "loose wavy side-swept hair",
+      "gray-green eyes",
+      "slim shoulders",
+      "two cheek freckles left side",
+      "small upper lip",
+      "narrow hooded wide-set eyes",
+      "small narrow mouth",
+      "tiny chin dimple"
+    ],
+    "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_301, male. Copper auburn hair, round outer face, gently arched brows. Distinct cues loose wavy side-swept hair; gray-green eyes; slim shoulders; two cheek freckles left side; small upper lip; narrow hooded wide-set eyes; small narrow mouth; tiny chin dimple. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_301, male. Copper auburn hair, round outer face, gently arched brows. Distinct cues loose wavy side-swept hair; gray-green eyes; slim shoulders; two cheek freckles left side; small upper lip; narrow hooded wide-set eyes; small narrow mouth; tiny chin dimple. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+        "rawFile": "raw/L4/L4_301_child.png",
+        "referenceImages": [
+          "assets/L4/L4_301_baby.png",
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_205_young.png",
+          "assets/L4/L4_301_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_baby.png": "a45e79ccb8cef0d9e2c40b8e0f74a68bfe3a281bae7d4ad0b8fcac742c313ba4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_young.png": "c19103978fdff8da2ada8b745637245022f2afc21055c020c2c66eef644fbd65"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_301_baby.png": "a45e79ccb8cef0d9e2c40b8e0f74a68bfe3a281bae7d4ad0b8fcac742c313ba4",
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+          "assets/L4/L4_301_young.png": "c19103978fdff8da2ada8b745637245022f2afc21055c020c2c66eef644fbd65"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Final version reads primary-school child with round cheeks, short neck and small shoulders; exact numerical age is subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "d7a71a69500f9d664a6a73a4d018856c6ce5ee9cac9485ed2b17454362d41d69"
+  },
+  {
+    "id": "L4_302_child",
+    "file": "assets/L4/L4_302_child.png",
+    "identity": "L4_302",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil",
+    "fatherIdentity": "L4_201",
+    "motherIdentity": "L4_205",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "long straight hair in single loose braid",
+      "light blue eyes",
+      "broad shoulders",
+      "single right cheek mole",
+      "full wide lips"
+    ],
+    "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 6. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_302, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues long straight hair in single loose braid; light blue eyes; broad shoulders; single right cheek mole; full wide lips. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 6. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_302, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues long straight hair in single loose braid; light blue eyes; broad shoulders; single right cheek mole; full wide lips. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+        "rawFile": "raw/L4/L4_302_child.png",
+        "referenceImages": [
+          "assets/L4/L4_302_baby.png",
+          "assets/L4/L4_201_young.png",
+          "assets/L4/L4_205_young.png",
+          "assets/L4/L4_302_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_baby.png": "936ea1760987da4e5269eb0b7a312e64ffce4bca3a33d27c049a721bf277337c",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png": "8dd53d9acb862bded7a9ccd7c802a2ee29a3297376bd7092fea7f86f0546a5ad"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_302_baby.png": "936ea1760987da4e5269eb0b7a312e64ffce4bca3a33d27c049a721bf277337c",
+          "assets/L4/L4_201_young.png": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+          "assets/L4/L4_205_young.png": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+          "assets/L4/L4_302_young.png": "8dd53d9acb862bded7a9ccd7c802a2ee29a3297376bd7092fea7f86f0546a5ad"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Final version reads primary-school child with round cheeks, short neck and small shoulders; exact numerical age is subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "399f83727f73356ad5529865033a71c13ce18605574416b91b613f7cafada6a0"
+  },
+  {
+    "id": "L4_303_child",
+    "file": "assets/L4/L4_303_child.png",
+    "identity": "L4_303",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil",
+    "fatherIdentity": "L4_206",
+    "motherIdentity": "L4_203",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short straight fringe",
+      "brown eyes",
+      "broad stocky shoulders",
+      "single left cheek mole",
+      "thin broad mouth"
+    ],
+    "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_303, male. Copper auburn hair, round outer face, gently arched brows. Distinct cues short straight fringe; brown eyes; broad stocky shoulders; single left cheek mole; thin broad mouth. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_303, male. Copper auburn hair, round outer face, gently arched brows. Distinct cues short straight fringe; brown eyes; broad stocky shoulders; single left cheek mole; thin broad mouth. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+        "rawFile": "raw/L4/L4_303_child.png",
+        "referenceImages": [
+          "assets/L4/L4_303_baby.png",
+          "assets/L4/L4_206_young.png",
+          "assets/L4/L4_203_young.png",
+          "assets/L4/L4_303_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_baby.png": "26abd9805b71b42c6190672c11804d14d58cff663b68686fb3dd072e45628319",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_young.png": "aba59df4e99ad792657f9ebc40e6ccc69d0ed8e048a2880545cc194e1a64b1bc"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_303_baby.png": "26abd9805b71b42c6190672c11804d14d58cff663b68686fb3dd072e45628319",
+          "assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+          "assets/L4/L4_303_young.png": "aba59df4e99ad792657f9ebc40e6ccc69d0ed8e048a2880545cc194e1a64b1bc"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Final version reads primary-school child with round cheeks, short neck and small shoulders; exact numerical age is subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "ee3d74234ea63d347935a37933961beacef7c721cd92eb47f3d59a942541e6b6"
+  },
+  {
+    "id": "L4_304_child",
+    "file": "assets/L4/L4_304_child.png",
+    "identity": "L4_304",
+    "lineage": "L4",
+    "generation": 3,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil",
+    "fatherIdentity": "L4_206",
+    "motherIdentity": "L4_203",
+    "commonTraits3": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "differenceMarkers": [
+      "short springy curls",
+      "green eyes",
+      "slender shoulders",
+      "freckles across nose bridge",
+      "small bow-shaped mouth"
+    ],
+    "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 6. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_304, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues short springy curls; green eyes; slender shoulders; freckles across nose bridge; small bow-shaped mouth. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 6. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_304, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues short springy curls; green eyes; slender shoulders; freckles across nose bridge; small bow-shaped mouth. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+        "rawFile": "raw/L4/L4_304_child.png",
+        "referenceImages": [
+          "assets/L4/L4_304_baby.png",
+          "assets/L4/L4_206_young.png",
+          "assets/L4/L4_203_young.png",
+          "assets/L4/L4_304_young.png"
+        ],
+        "referenceSHA256": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_baby.png": "9fc45050819ff9e9610ad86569a969fb07c051637c6ba08226ed2f78e32fc395",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png": "3b34bb57f4bf8eebe250f710713c1d6ead7a3d37c3a260d77a4c1dc31eee128a"
+        },
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "sourceDimensions": {
+          "width": 1254,
+          "height": 1254
+        },
+        "originalReferenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png"
+        ],
+        "packagedReferenceSHA256": {
+          "assets/L4/L4_304_baby.png": "9fc45050819ff9e9610ad86569a969fb07c051637c6ba08226ed2f78e32fc395",
+          "assets/L4/L4_206_young.png": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+          "assets/L4/L4_203_young.png": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+          "assets/L4/L4_304_young.png": "3b34bb57f4bf8eebe250f710713c1d6ead7a3d37c3a260d77a4c1dc31eee128a"
+        }
+      }
+    ],
+    "processing": "Sharp resize to256x256 only; no face painting",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "presentation": "Single square bust on muted painted background; no text or frame",
+      "ageReview": "Final version reads primary-school child with round cheeks, short neck and small shoulders; exact numerical age is subjective",
+      "clothingReview": "Stage-appropriate clothing visually inspected",
+      "limitations": [
+        "Individual mark side/count and exact eye shade are not pixel-exact guarantees",
+        "Family and same-person discrimination awaits independent blind review"
+      ]
+    },
+    "commonTraits": [
+      "copper auburn hair",
+      "round overall face",
+      "gently arched eyebrows"
+    ],
+    "sha256": "72072616f175aa6fa6d6995ade857cbd4072b5bcfb0b3a7282b26e56cfe9a433"
+  }
+]

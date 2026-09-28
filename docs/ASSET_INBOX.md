@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-28 12시 갱신)
+## 3. 현재 장부 요약 (2026-09-28 13시 갱신)
 
 | wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -49,7 +49,7 @@ assets-inbox/
 | `d1b` | 4 |  | 4 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
-| `lineage` | 191 |  | 153 | 38 |  |  |  | 0 |
+| `lineage` | 236 |  | 195 |  | 41 |  |  | 0 |
 | `lineage-pilot` | 117 |  | 79 |  | 30 | 8 |  | 0 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
 | `portrait-pool` | 340 |  | 340 |  |  |  |  | 304 |
@@ -85,7 +85,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3640** | **3** | **2450** | **38** | **204** | **909** | **36** | **1077** |
+| **합계** | **3685** | **3** | **2492** | **0** | **245** | **909** | **36** | **1077** |
 
 ## 4. 찾는 법
 
@@ -185,6 +185,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-lineage-pilot-20260928.zip` (09-28 08:53) | `lineage-pilot/pilot1-20260928` | 198,695 KB | `40aa71312992fa79…` | 142 | 0 | `raw/`·`references/` 제외 | 작업 폴더 `output/astra-lineage-pilot-v1`과 바이트 같음. 맨 위 문서·`prompts/`·`scripts/`는 `records/`로
 | `/tmp/astra-lineage-pilot2-20260928.zip` (09-28 09:48) | `lineage-pilot/pilot2-20260928` | 84,943 KB | `2765cd745f2e62d6…` | 59 | 0 | `raw/`·`references/` 제외 | 작업 폴더 `output/astra-lineage-pilot2-v1`과 바이트 같음(작업 폴더에만 빈 `records/gentry/`). 맨 위 문서·`scripts/`는 `records/`로
 | `/tmp/astra-lineage-prod1-candidates-20260928-lite.zip` (09-28 12:30, 경량판) | `lineage/prod1-20260928` | 71,463 KB | `828bb3aba3a6f2d9…` | 281 | 0 | `references/` 제외(경량판에 `raw/` 없음) | 전체판 `astra-lineage-prod1-candidates-20260928.zip`(538,294 KB, `cec1612b6a65cbc6…`, raw 포함)은 사용자 지시로 `astra-raw/zips`에만 보관. 경량판의 assets·proofs·records·references·scripts는 작업 폴더 `output/astra-lineage-prod1-v1`과 바이트 같음. 맨 위 문서(`LIGHTWEIGHT_README.md`·`FULL_ARCHIVE_SHA256SUMS.txt` 포함)·`scripts/`는 `records/`로
+| `/tmp/astra-lineage-prod1-costume-v2-20260928-lite.zip` (09-28 13:00, 경량판) | `lineage/prod1-costume-v2-20260928` | 14,921 KB | `cc3ca41753c300e2…` | 80 | 0 | `references/`(편집 전 41장 사본) 제외 | 작업 폴더 `output/astra-lineage-prod1-costume-v2`와 바이트 같음(작업 폴더의 `node_modules` 링크 제외). ZIP 밖 `astra-lineage-prod1-costume-v2-delivery.json`은 `records/delivery.json`으로. 생성 고해상도 원본은 Astra가 `astra-raw/lineage-prod1-costume-v2/`(83MB)에 직접 둠
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -220,6 +221,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **혈통 파일럿 2와 파일럿 1 판정**(2026-09-28 10시, 사용자 판정): 파일럿 2(`lineage-pilot/pilot2-20260928`)는 파일럿 1에서 구별에 실패한 형제 3쌍(L1_203·204, L2_201·202, L2_203·204) 여섯 인물의 아기·어린이·청년·장년 24장을 다시 그렸다(익명 동일인 구별 12/12 통과). 24장과 확인 그림 3 `confirmed`. 파일럿 1의 같은 여섯 인물 24장(아기 포함)은 `superseded`, `replaced_by`에 파일럿 2의 같은 이름 판. 파일럿 1의 나머지 초상 44장(창시 부부 8, 구별된 자녀 L1_201·202 8, 외부 배우자 4, 손자 24) `confirmed` — 그 가운데 아기 10장은 비고 "아기 단계 확정 — 파일럿 1 아기가 기준". 공통 풀 12장은 `candidate` 유지, 비고 "본 제작 1차 공통 풀과 함께 판정". 파일럿 1 확인 그림 4·기록 그림 6도 `confirmed`(사용자 확인).
   - **파일럿 2 아기 6장 재작업 대기**(10시 판정): `L1_203·204`, `L2_201·202·203·204`의 `_baby`는 `rework_pending`, 비고 "3~5살로 보임 — 파일럿 2 얼굴에 맞춘 0~2살 아기로 재작업". 파일럿 1의 같은 인물 아기 6장은 `superseded` 그대로(`replaced_by`는 파일럿 2 아기 — 재작업본이 오면 그 판으로 바꾼다). 파일럿 2 확정은 21장(초상 18·확인 그림 3).
 - **혈통 본 제작 1차**(`lineage/prod1-20260928`, 2026-09-28 12시 판정, 경량판): 256 px 초상 160장. L3 영주 가문 A 38·L5 reeve 가문 38·공통 풀 40(아기 14·걸음마 12·어린이 14)·파일럿 2 아기 v2 6 `confirmed`, L4 양모·직물 상인 가문 38 `rework_pending`(비고 "상인 복식 재작업"). 확인 그림 4·기록 그림 27 `confirmed`. 파일럿 2 `_baby` 6장은 `superseded`(→ `assets/pilot2-baby/*_baby-v2.png`), 파일럿 1의 같은 인물 아기 6장도 `replaced_by`를 v2로 옮겼다. 파일럿 1 공통 풀 12장 중 이번에 재사용된 4장(`L0_005`·`L0_006`·`L0_008` 걸음마, `L0_011` 어린이 = `C_toddler_02`·`01`·`03`, `C_child_01`과 같은 바이트) `confirmed`, 나머지 8장 `rejected`(비고 "본 제작 공통 풀로 대체"). 같은 바이트 네 쌍은 양쪽 비고에 서로를 적었다.
+  - **복식 교정 v2**(`lineage/prod1-costume-v2-20260928`, 13시 판정): L4 상인 가문 38장(청·자주 고운 모직·모피 깃·후드/혼인별 머리쓰개)과 L5_102 청년·장년·노년 3장(올리브 모직·황토빛 머리수건, 다른 L5와 구별) `confirmed`, 확인 그림 4 `confirmed`. 옛 L4 38장(`rework_pending`)과 옛 L5_102 3장(`confirmed`)은 `superseded`, `replaced_by`에 같은 이름의 v2. 본 제작 1차는 이제 재작업 대기 0.
 - **replaced_by 경로 검사**(2026-09-28, INBOX-1q): `ui-p0/pilot/cursor_sheet.png`의 `replaced_by`가 패턴(`ui-p0/ui/cursor_*.png(6장)`)이던 것을 실제 경로 6개(`cursor_select`·`cursor_place_valid`·`cursor_place_invalid`·`cursor_road_draw`·`cursor_zone_brush`·`cursor_inspect`)로 고쳤다. 이 행이 장부 전체에서 없는 파일을 가리키던 유일한 행이었다. 같은 커밋부터 `npm run check:merge`의 다섯째 검사 `ledger`가 장부에 없는 `replaced_by` 경로를 실패로 본다.
 
 ## 7. 찾지 못한 것

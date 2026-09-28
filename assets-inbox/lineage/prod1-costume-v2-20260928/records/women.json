@@ -1,0 +1,486 @@
+[
+  {
+    "id": "L4_102_young",
+    "file": "assets/L4/L4_102_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+    "sourceSHA256": "48811d7fca35860c7d13415af9e91650a877c9430a06ef908c2bec83457ecfe3",
+    "clothing": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_102_young, age25. Preserve her face, freckles, auburn hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_102_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_102_young, age25. Preserve her face, freckles, auburn hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_102_young-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png"
+        ]
+      }
+    ],
+    "sha256": "0c8d42d0c418a3a8b6d8dcf348f7e290f7108b0dc1acaa343e5bcd214458caae"
+  },
+  {
+    "id": "L4_205_young",
+    "file": "assets/L4/L4_205_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png",
+    "sourceSHA256": "d46c43790006f32884c3e2ab7b9240509115871b5808203508426a9c4473dbfe",
+    "clothing": "muted rich purple fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_205_young, age22. Preserve her face, freckles, brown hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich purple fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_205_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich purple fine wool gown with brown fur collar; ivory linen veil and wimple",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_205_young, age22. Preserve her face, freckles, brown hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich purple fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_205_young-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+        ]
+      }
+    ],
+    "sha256": "b9b948e09f32717296e8ce98df0055d4273d63032a44eae1474b3bff2407f069"
+  },
+  {
+    "id": "L4_203_young",
+    "file": "assets/L4/L4_203_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png",
+    "sourceSHA256": "7193962f146973810a4740ca5688e8da49f1cc3549d287f0f51830d6e433df86",
+    "clothing": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_203_young, age24. Preserve her face, freckles, auburn hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_203_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_203_young, age24. Preserve her face, freckles, auburn hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_203_young-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+        ]
+      }
+    ],
+    "sha256": "b89891702828726e55db28f3e41b7758fd7ba59e92b6eb746593fb50e1776ec5"
+  },
+  {
+    "id": "L4_204_young",
+    "file": "assets/L4/L4_204_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png",
+    "sourceSHA256": "26623e7844158da65e5ef2bac1d38992b4652276dc62d183294957efb41b0ba0",
+    "clothing": "muted rich purple fine wool gown with brown fur collar; original uncovered hairstyle retained",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit EXACT input portrait L4_204_young age22. Preserve every face feature, freckles and mouth mole, eye shade, age, expression, short auburn curly bob hairstyle, head and shoulders, pose, bust crop, background and painted texture EXACTLY. Change ONLY russet gown to muted rich plum-purple fine wool gown of prosperous Southern English wool merchant circa1350, visibly distinct modest brown fur collar at neckline. Unmarried young woman: MUST keep existing uncovered auburn curls, NO veil, wimple or hat. Decorated belt/purse edge only if existing crop allows; do not zoom out. NO extra arms, hands, props, jewelry, crown, text, border or beautification. One square portrait; same identity and composition.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_204_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich purple fine wool gown with brown fur collar; original uncovered hairstyle retained",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit EXACT input portrait L4_204_young age22. Preserve every face feature, freckles and mouth mole, eye shade, age, expression, short auburn curly bob hairstyle, head and shoulders, pose, bust crop, background and painted texture EXACTLY. Change ONLY russet gown to muted rich plum-purple fine wool gown of prosperous Southern English wool merchant circa1350, visibly distinct modest brown fur collar at neckline. Unmarried young woman: MUST keep existing uncovered auburn curls, NO veil, wimple or hat. Decorated belt/purse edge only if existing crop allows; do not zoom out. NO extra arms, hands, props, jewelry, crown, text, border or beautification. One square portrait; same identity and composition.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_204_young-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_young.png"
+        ]
+      }
+    ],
+    "sha256": "eaebaa24b59001e9f370296fadc610d892506c947285ebf43a9edb987e597467"
+  },
+  {
+    "id": "L4_302_young",
+    "file": "assets/L4/L4_302_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png",
+    "sourceSHA256": "8dd53d9acb862bded7a9ccd7c802a2ee29a3297376bd7092fea7f86f0546a5ad",
+    "clothing": "muted rich blue fine wool gown with brown fur collar; original uncovered hairstyle retained",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit EXACT input portrait L4_302_young age20. Preserve every face feature, freckles, eye shade, age, expression, auburn braid and loose curls hairstyle, head and shoulders, pose, bust crop, background and painted texture EXACTLY. Change ONLY green gown to muted rich merchant BLUE fine wool gown of prosperous Southern English wool merchant circa1350, visibly distinct modest brown fur collar at neckline. Unmarried young woman: MUST keep existing uncovered auburn braid and curls, NO veil, wimple or hat. Decorated belt/purse edge only if existing crop allows; do not zoom out. NO extra arms, hands, props, jewelry, crown, text, border or beautification. One square portrait; same identity and composition.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_302_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich blue fine wool gown with brown fur collar; original uncovered hairstyle retained",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit EXACT input portrait L4_302_young age20. Preserve every face feature, freckles, eye shade, age, expression, auburn braid and loose curls hairstyle, head and shoulders, pose, bust crop, background and painted texture EXACTLY. Change ONLY green gown to muted rich merchant BLUE fine wool gown of prosperous Southern English wool merchant circa1350, visibly distinct modest brown fur collar at neckline. Unmarried young woman: MUST keep existing uncovered auburn braid and curls, NO veil, wimple or hat. Decorated belt/purse edge only if existing crop allows; do not zoom out. NO extra arms, hands, props, jewelry, crown, text, border or beautification. One square portrait; same identity and composition.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_302_young-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_young.png"
+        ]
+      }
+    ],
+    "sha256": "5a5e6f10565791401e230481abf5c4e0c44d22eada880f3d1cf323924e1554a9"
+  },
+  {
+    "id": "L4_304_young",
+    "file": "assets/L4/L4_304_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png",
+    "sourceSHA256": "3b34bb57f4bf8eebe250f710713c1d6ead7a3d37c3a260d77a4c1dc31eee128a",
+    "clothing": "muted rich purple fine wool gown with brown fur collar; original uncovered hairstyle retained",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit EXACT input portrait L4_304_young age20. Preserve every face feature, freckles, eye shade, age, expression, short auburn curly bob hairstyle, head and shoulders, pose, bust crop, background and painted texture EXACTLY. Change ONLY ochre gown to muted rich plum-purple fine wool gown of prosperous Southern English wool merchant circa1350, visibly distinct modest brown fur collar at neckline. Unmarried young woman: MUST keep existing uncovered auburn curls, NO veil, wimple or hat. Decorated belt/purse edge only if existing crop allows; do not zoom out. NO extra arms, hands, props, jewelry, crown, text, border or beautification. One square portrait; same identity and composition.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_304_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich purple fine wool gown with brown fur collar; original uncovered hairstyle retained",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit EXACT input portrait L4_304_young age20. Preserve every face feature, freckles, eye shade, age, expression, short auburn curly bob hairstyle, head and shoulders, pose, bust crop, background and painted texture EXACTLY. Change ONLY ochre gown to muted rich plum-purple fine wool gown of prosperous Southern English wool merchant circa1350, visibly distinct modest brown fur collar at neckline. Unmarried young woman: MUST keep existing uncovered auburn curls, NO veil, wimple or hat. Decorated belt/purse edge only if existing crop allows; do not zoom out. NO extra arms, hands, props, jewelry, crown, text, border or beautification. One square portrait; same identity and composition.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_304_young-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_young.png"
+        ]
+      }
+    ],
+    "sha256": "29e54db4513c78b7ea2dbdfe6dff258bd7e49f812c550b5ae248e3ee0633f5df"
+  },
+  {
+    "id": "L4_102_mature",
+    "file": "assets/L4/L4_102_mature.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_mature.png",
+    "sourceSHA256": "e13d83c2434098038e174b8749067d3ef4f21ae306275b8dbebc18402314c2a3",
+    "clothing": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_102_mature, age45. Preserve her face, freckles, auburn and gray hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, crow feet, under-eye hollows, forehead lines and middle-aged cheeks. DO NOT make younger or smooth wrinkles.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_mature.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_102_mature-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_102_mature, age45. Preserve her face, freckles, auburn and gray hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, crow feet, under-eye hollows, forehead lines and middle-aged cheeks. DO NOT make younger or smooth wrinkles.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_102_mature-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_mature.png"
+        ]
+      }
+    ],
+    "sha256": "f32d8e90e8d9b3a88911fa28e28f1f560760c2c9d37be29dfc897ad3b8b26dda"
+  },
+  {
+    "id": "L4_102_old",
+    "file": "assets/L4/L4_102_old.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_old.png",
+    "sourceSHA256": "2e63eeb999fc2111fb4692b2753915991b599f2cdc4e56a15ec6b237b5022bde",
+    "clothing": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_102_old, age70. Preserve her face, freckles, white-gray hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, deep crow feet, sagging cheeks, sunken eyes, forehead lines, age spots and elderly skin. DO NOT rejuvenate or smooth wrinkles.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_old.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_102_old-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_102_old, age70. Preserve her face, freckles, white-gray hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, deep crow feet, sagging cheeks, sunken eyes, forehead lines, age spots and elderly skin. DO NOT rejuvenate or smooth wrinkles.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_102_old-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_old.png"
+        ]
+      }
+    ],
+    "sha256": "09235eb2b5ec08b13aede89a35b02c0b746df615ac11f77a5a5f4e8b1ca2ae4e"
+  },
+  {
+    "id": "L4_205_mature",
+    "file": "assets/L4/L4_205_mature.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_mature.png",
+    "sourceSHA256": "3eefc836b18696e465b0ae261b3bae179c17a283daaded92f41f04fbf116d29e",
+    "clothing": "muted rich purple fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_205_mature, age42. Preserve her face, freckles, brown and gray hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich purple fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, crow feet, under-eye hollows, forehead lines and middle-aged cheeks. DO NOT make younger or smooth wrinkles.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_mature.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_205_mature-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich purple fine wool gown with brown fur collar; ivory linen veil and wimple",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_205_mature, age42. Preserve her face, freckles, brown and gray hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich purple fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, crow feet, under-eye hollows, forehead lines and middle-aged cheeks. DO NOT make younger or smooth wrinkles.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_205_mature-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_mature.png"
+        ]
+      }
+    ],
+    "sha256": "935804b6248cd30163bb251da274463c972dcabb6f24aa75b4d8a5ddd706b73b"
+  },
+  {
+    "id": "L4_204_mature",
+    "file": "assets/L4/L4_204_mature.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_mature.png",
+    "sourceSHA256": "9d4e136b0b8e7022ebc39e1fd14f0da09ed57a3734a7c4a1741d016acb3bfcc8",
+    "clothing": "muted rich purple fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_204_mature, age42. Preserve her face, freckles, auburn hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich purple fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, signature mouth mole, crow feet, under-eye hollows, forehead lines and middle-aged cheeks. DO NOT make younger or smooth wrinkles.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_mature.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_204_mature-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich purple fine wool gown with brown fur collar; ivory linen veil and wimple",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_204_mature, age42. Preserve her face, freckles, auburn hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich purple fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, signature mouth mole, crow feet, under-eye hollows, forehead lines and middle-aged cheeks. DO NOT make younger or smooth wrinkles.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_204_mature-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_mature.png"
+        ]
+      }
+    ],
+    "sha256": "5138ea82866cb11b5a716f72a7f2be7a32f37da050ad37118cec4431da2a3887"
+  },
+  {
+    "id": "L4_203_mature",
+    "file": "assets/L4/L4_203_mature.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_mature.png",
+    "sourceSHA256": "319aebed8d7c4fcaba61652138dcfffd2738dc8982eb72cdd93ed51b9a92d9c7",
+    "clothing": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_203_mature, age44. Preserve her face, freckles, auburn and gray hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, crow feet, under-eye hollows, forehead lines and middle-aged cheeks. DO NOT make younger or smooth wrinkles.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_mature.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_203_mature-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to 256x256 only, then ensureAlpha().png({palette:false}); decoded RGB preserved exactly during RGBA conversion; no face painting or compositing",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "qa": {
+      "status": "passed_artist_96px_before_after_review_independent_review_pending",
+      "candidateOnly": true,
+      "installed": false,
+      "identityReview": "At 96px side-by-side face silhouette, eyes, nose, mouth, freckles and expression retained; no observed identity drift. Not a pixel-exact facial identity guarantee.",
+      "ageReview": "Original young/mature/old age appearance retained, including midlife creases and elderly gray hair and wrinkles.",
+      "clothingReview": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+      "framingReview": "Original bust crop and pose retained; no extra hands or arms, text or frame. Belt and purse omitted because waist is outside existing crop.",
+      "proof": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/women-before-after-96.png",
+      "rgbaReview": "Verified 256x256 RGBA, channels=4; decoded RGB equal before/after alpha conversion"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: identity-preserve clothing-only edit. Edit this EXACT portrait L4_203_mature, age44. Preserve her face, freckles, auburn and gray hair edges, eyes, nose, mouth, age, expression, head angle, pose, bust framing, background, light and painted texture EXACTLY. Change ONLY costume: prosperous Southern English wool merchant woman circa1350, muted rich blue fine-wool gown with clearly visible broad brown merchant fur collar. Married woman: ivory linen VEIL plus WIMPLE covering neck beneath chin while leaving face unchanged, existing hair fully covered except original tiny temple edges. Decorated belt or purse edge ONLY if naturally within existing bust crop; do not zoom out or add arms. No jewelry, crowns, heraldry, text, frame, extra hands, facial retouch or beautification. One square portrait. Retain original face geometry and age marks, crow feet, under-eye hollows, forehead lines and middle-aged cheeks. DO NOT make younger or smooth wrinkles.",
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/women/L4_203_mature-attempt1.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_mature.png"
+        ]
+      }
+    ],
+    "sha256": "93b9a5659e8d72e7dc4e981542c9e5db6b4498a7008d4c3bc68e4d47a27e4696"
+  }
+]

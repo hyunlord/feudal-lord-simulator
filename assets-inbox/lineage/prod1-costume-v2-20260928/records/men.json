@@ -1,0 +1,398 @@
+[
+  {
+    "id": "L4_101_young",
+    "file": "assets/L4/L4_101_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+    "sourceSHA256": "db0b98b42de9d4a49e8f4e772e18cffb0195c8f20ebfe3e78e5066b2a5004824",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the exact target portrait. Keep precisely this face, auburn curls and entire visible hairstyle, skin, eye shape, nose, lips, expression, apparent age25, head position, body pose, shoulder proportions, bust crop, background and painted style. Do not redraw or beautify face. Change ONLY clothing: wealthy Southern English merchant circa1350, subdued deep blue fine wool gown with clearly visible soft brown fur collar, decorative leather belt detail at existing bottom crop if space permits. Add a lowered cloth hood draped BEHIND neck and shoulders, not covering or changing a single visible hair strand. No cap over curls. Do not zoom out to show belt or purse; crop stays identical. No new limbs, props, jewelry, text or frame. One square portrait. Exact existing expression and age. Restore same visible hair, face and background if tempted to change them.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_101_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "211f085c3767dec8bfafc9376a7de5e11011232ef1e2f43b7169b7003e4ed31b",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_206_young",
+    "file": "assets/L4/L4_206_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png",
+    "sourceSHA256": "1befe57b4d15e0e0dcc6bf2b79266c91e33215666bb270f5e7e73d8535b2dc59",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_206_young. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age24. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: muted rich plum purple fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_206_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "32dbf55dbb3f5489fec69eb635baf666e6f89233f60abd6292194a52ff2d9c90",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_201_young",
+    "file": "assets/L4/L4_201_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+    "sourceSHA256": "52ef358223db06edf6ac2b39a4ec421cf7c06e61d6cf098cf45c6664607193f8",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_201_young. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age24. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: subdued deep blue fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_201_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "f4f5430f0c19055950427ab5d4e883d60f4205a623cb1c4aadda05eaf95f0d00",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_202_young",
+    "file": "assets/L4/L4_202_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png",
+    "sourceSHA256": "d4f24fdaf777e78dc4a4c8eecdd4f8aeed7c4cfc22122d2aa2afb8818bf3f439",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_202_young. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age22. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: muted rich plum purple fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_202_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "8bf5094af700489c886cb715258e2e965a25c70f8d69096ae4cffe3fef8ebf13",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_303_young",
+    "file": "assets/L4/L4_303_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_young.png",
+    "sourceSHA256": "aba59df4e99ad792657f9ebc40e6ccc69d0ed8e048a2880545cc194e1a64b1bc",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_303_young. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age22. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: subdued deep blue fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_303_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "6faaaa9c558f4e3ce340d3065f2a616b2a6914ff16df8da0073c6ea06a6913fc",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_101_mature",
+    "file": "assets/L4/L4_101_mature.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_mature.png",
+    "sourceSHA256": "379f4f07efbc5cef632c487f442ec2557a732db4302af58bdae5ac385149ac4e",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_101_mature. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age45. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: muted rich plum purple fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_mature.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_101_mature-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "ae5cd87504c0aebf2a1f965d72a154febd6dad3b244a54518cdea0fe3de8c887",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_101_old",
+    "file": "assets/L4/L4_101_old.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_old.png",
+    "sourceSHA256": "a9260f1e99015fa25fc47267e05dcda24f39c1f244af3b077bc8378b8641838f",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_101_old. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age70. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: subdued deep blue fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_old.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_101_old-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "e8a65723991e43924227a8dedf9dce3a2c7656584e81af30deb60c5d045a1786",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_206_mature",
+    "file": "assets/L4/L4_206_mature.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_mature.png",
+    "sourceSHA256": "d991429f372a234e595efc714186d6efeb4a5afdc280bec4ace70f06a0035774",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_206_mature. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age44. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: muted rich plum purple fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_206_mature.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_206_mature-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "f9cafc4d2e0ecfd33a8605618be984381008425350faeddcc7b1ee7de878e459",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_301_young",
+    "file": "assets/L4/L4_301_young.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_young.png",
+    "sourceSHA256": "c19103978fdff8da2ada8b745637245022f2afc21055c020c2c66eef644fbd65",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_301_young. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age22. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: subdued deep blue fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_young.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_301_young-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "7386276961896e79de6dd5c1dfdd1af23cfb62affa08f3b3e9b67f95fe4e4d37",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_202_mature",
+    "file": "assets/L4/L4_202_mature.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_mature.png",
+    "sourceSHA256": "20b8e55bb7e1725715913bfec9daa63be4db9ff50c77afcd1edd63754d6946fb",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_202_mature. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age42. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: muted rich plum purple fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_mature.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_202_mature-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "b458211764606d6c4ce35f93f82026ffabc441894314a92e15eb55f7e031631e",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  },
+  {
+    "id": "L4_201_mature",
+    "file": "assets/L4/L4_201_mature.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_mature.png",
+    "sourceSHA256": "edd3581f711fb7fba4563af643d6c1408037e87e091bae74436fc4f011b00e9c",
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "prompt": "Use case: identity-preserve clothing-only edit. Image1 is the EXACT target portrait L4_201_mature. Preserve the face and head as painted: exact visible hair shape and color, hairline, all freckles/moles, eyes, nose, mouth, expression, skin texture and apparent age44. Same pose, head position, shoulders, bust crop, background, lighting and painted style. Do not beautify or re-age. Change ONLY clothing to wealthy Southern English merchant circa1350: subdued deep blue fine wool gown with prominent soft brown fur collar, decorative leather belt/purse edge ONLY if it fits the existing lower crop naturally. A lowered cloth hood draped BEHIND neck and shoulders leaves ALL existing hairstyle visible and untouched. Do not cover hair with cap. Do not zoom out or extend portrait to show belt. No new limbs, props, text, frame, modern costume, jewelry. One square bust matching original exactly; clothing alone changes.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_mature.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/L4_201_mature-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "processing": "Sharp resize to256x256 and ensureAlpha for RGBA export; original RGB pixels preserved during alpha correction; no painting, compositing or face restoration",
+    "rawDimensions": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 3
+    },
+    "sha256": "4465f5a9e065e158073e876905bccddecbae872a51c4fe2e2bb6652a4ad20786",
+    "qa": {
+      "status": "artist_visual_review_complete_independent_review_pending",
+      "reviewBoard": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/men/men-before-after-96.png",
+      "identityReview": "Source and candidate side-by-side at actual96px: same apparent person, age, expression, hair silhouette and bust framing; no visible major identity drift",
+      "clothingReview": "Subdued blue or plum fine wool, visible brown fur collar, lowered hood behind neck and shoulders; no waist visible",
+      "styleReferenceReviewed": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png",
+      "styleReferenceRole": "Post-generation QA only; not an imagegen input",
+      "limitations": [
+        "Generated edit is not pixel-identical outside clothing",
+        "Belt and purse outside original bust crop; preserving framing takes precedence",
+        "Same-person judgment is visual, not biometric proof"
+      ],
+      "rgbaVerification": "256x256 RGBA, all RGB pixels unchanged by ensureAlpha correction"
+    }
+  }
+]
