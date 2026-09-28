@@ -32,6 +32,13 @@ export const RAIN_AREA_MAX = 0.12;
 /** A rain sheet pixel at or under this alpha (of 255) is cleared when its cell is cut: at the storm's 0.7 it would draw
  * at most 2 % (5.6 / 255), and the storm sheet's streaks with their halo cover 13.3 % of a cell against 9.0 % without. */
 export const RAIN_ALPHA_FLOOR = 8;
+/** Rain: each sheet cell cut once at `scale` (longer, easier streaks; the halo cleared first, then scaled nearest so the
+ * streaks' share of a cell stays what it was), repeated over the view unsmoothed, falling and slanting. */
+export const RAIN_DRAW = {
+  drizzle_sheet: { frameMs: 120, fallPxPerS: 320, slant: 0.18, scale: 1.5 },
+  storm_rain_sheet: { frameMs: 80, fallPxPerS: 680, slant: 0.32, scale: 1.25 },
+} as const;
+export type RainSheet = keyof typeof RAIN_DRAW;
 export const SEASON_TICKS = 1_000;
 /** A new season's weather fades in over its first ticks (a season is 50 s at 1x). */
 export const WEATHER_FADE_TICKS = 60;

@@ -1,6 +1,6 @@
 import { WAVE23_IMAGES, type Wave23Key } from "./wave23ArtManifest.generated";
 import { rgbaOfChannels } from "./style";
-import { RAIN_ALPHA_FLOOR } from "./weatherLayers";
+import { RAIN_ALPHA_FLOOR, RAIN_DRAW, type RainSheet } from "./weatherLayers";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
@@ -55,6 +55,7 @@ export function weatherFrameCount(key: Wave23Key): number {
 // a pattern of one cell; copying the cell every frame would be a 256 x 256 blit and a new canvas at 60 fps. Measured
 // (headless Chrome --disable-gpu on a Mac, docs/verification/install23/weather/weather.json "cost.fillCost"): building
 // a sheet's four cells and patterns 0.3-0.4 ms, against the rain's full-view fill of 1.4 ms it would add to every frame.
+// INSTALL-23b: a rain cell is cut at its drawn scale (its halo cleared, then scaled nearest), once per cell as well.
 const frameCells = new Map<CanvasImageSource, (HTMLCanvasElement | null)[]>();
 
 function cellCanvas(key: Wave23Key, image: CanvasImageSource, frame: number): CanvasImageSource | null {
@@ -71,16 +72,24 @@ function cellCanvas(key: Wave23Key, image: CanvasImageSource, frame: number): Ca
   const paint = canvas.getContext("2d");
   if (paint === null) return null;
   drawCroppedWorldSprite(paint, image, cell, { x: 0, y: 0, width: cell.width, height: cell.height }, false, false);
-  if (RAIN_SHEETS.has(key) && typeof paint.getImageData === "function") {
+  const rain = key in RAIN_DRAW ? RAIN_DRAW[key as RainSheet] : null;
+  if (rain !== null && typeof paint.getImageData === "function") {
+    // INSTALL-23b: the halo cleared, then the cell scaled nearest to its drawn size (the streaks' share unchanged).
     const pixels = paint.getImageData(0, 0, cell.width, cell.height);
     clearFaintPixels(pixels.data, RAIN_ALPHA_FLOOR);
     paint.putImageData(pixels, 0, 0);
+    const scaled = document.createElement("canvas");
+    scaled.width = Math.round(cell.width * rain.scale); scaled.height = Math.round(cell.height * rain.scale);
+    const scaledPaint = scaled.getContext("2d");
+    if (scaledPaint === null) return null;
+    scaledPaint.imageSmoothingEnabled = false;
+    scaledPaint.drawImage(canvas, 0, 0, scaled.width, scaled.height);
+    cells[index] = scaled;
+    return scaled;
   }
   cells[index] = canvas;
   return canvas;
 }
-
-const RAIN_SHEETS: ReadonlySet<Wave23Key> = new Set(["drizzle_sheet", "storm_rain_sheet"]);
 
 /** INSTALL-23b: clears every pixel at or under `floor` alpha (RGBA bytes, in place) — the rain streaks' faint halo, so
  * the streaks cover at most RAIN_AREA_MAX of the view (weatherLayers.ts). Returns the share of pixels left. */

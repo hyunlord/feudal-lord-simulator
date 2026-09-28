@@ -7,7 +7,7 @@ import { SCENARIOS } from "../src/content/scenario/registry";
 import { setPresentationPreference } from "../src/render/presentationPreferences";
 import { WAVE23_IMAGES, type Wave23Key } from "../src/render/wave23ArtManifest.generated";
 import { clearFaintPixels, setWeatherArtForTest, weatherCell } from "../src/render/weatherArt";
-import { DRIZZLE_PERMILLE, engineWeather, RAIN_ALPHA_FLOOR, RAIN_AREA_MAX, rainArea, SEASON_TICKS, stackedPermille, STORM_PERMILLE, WEATHER_ALPHA_CAP_PERMILLE,
+import { DRIZZLE_PERMILLE, engineWeather, RAIN_ALPHA_FLOOR, RAIN_AREA_MAX, RAIN_DRAW, rainArea, SEASON_TICKS, stackedPermille, STORM_PERMILLE, WEATHER_ALPHA_CAP_PERMILLE,
   WEATHER_FADE_TICKS, WET_STORM_FROM, WET_STORM_TO, weatherLayers, type WeatherLayer } from "../src/render/weatherLayers";
 import { CRACK_SIZE, crackSpots, drawWeatherGround, drawWeatherSky, mapFogAnchors, presentedWeatherLayers, SHEEN_SIZE, wetSpots } from "../src/render/weatherOverlay";
 import { CLOUD_DECKS, cloudSprites, fogRect, laneSprites, LATTICE_MAX_H, LATTICE_MAX_W, rectsMeet, tileCentre, type Rect } from "../src/render/weatherPlacement";
@@ -47,7 +47,9 @@ test("Given every weather at every tick of its season When the layers are listed
 });
 
 test("Given the rain sheets with their faint halo cleared When a wet season runs through every tick Then the rain's streaks cover at most 12 % of the view", () => {
-  // Given: each sheet's fullest cell, the pixels over RAIN_ALPHA_FLOOR as the renderer cuts them (weatherArt.ts).
+  // Given: each sheet's fullest cell as the renderer cuts it (weatherArt.ts): the pixels at or under RAIN_ALPHA_FLOOR
+  // cleared, then scaled nearest to RAIN_DRAW's scale (a destination pixel takes the source at floor((d + 0.5) / scale));
+  // the fill repeats it unsmoothed in whole-pixel steps, so its share of the cell is its share of the view.
   const share = new Map<Wave23Key, number>();
   for (const key of ["drizzle_sheet", "storm_rain_sheet"] as const) {
     const image = readPng(`public/${WAVE23_IMAGES[key].url}`);
@@ -59,7 +61,14 @@ test("Given the rain sheets with their faint halo cleared When a wet season runs
         const from = ((cell.y + y) * image.dimensions.width + cell.x) * 4;
         rgba.set(image.rgba.subarray(from, from + cell.width * 4), y * cell.width * 4);
       }
-      fullest = Math.max(fullest, clearFaintPixels(rgba, RAIN_ALPHA_FLOOR));
+      clearFaintPixels(rgba, RAIN_ALPHA_FLOOR);
+      const scale = RAIN_DRAW[key].scale; const width = Math.round(cell.width * scale); const height = Math.round(cell.height * scale);
+      let covered = 0;
+      for (let y = 0; y < height; y += 1) for (let x = 0; x < width; x += 1) {
+        const from = Math.min(cell.height - 1, Math.floor((y + 0.5) / scale)) * cell.width + Math.min(cell.width - 1, Math.floor((x + 0.5) / scale));
+        if ((rgba[from * 4 + 3] ?? 0) > 0) covered += 1;
+      }
+      fullest = Math.max(fullest, covered / (width * height));
     }
     share.set(key, fullest);
   }

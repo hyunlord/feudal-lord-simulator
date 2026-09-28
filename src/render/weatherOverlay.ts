@@ -2,7 +2,7 @@ import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import { presentationPreference } from "./presentationPreferences";
 import { drawWeatherSprite, weatherFrameCount, weatherImage, weatherMeanColour, weatherMeta, weatherPattern } from "./weatherArt";
-import { engineWeather, weatherLayers, type WeatherLayer } from "./weatherLayers";
+import { engineWeather, RAIN_DRAW, weatherLayers, type WeatherLayer } from "./weatherLayers";
 import { CLOUD_DECKS, cloudSprites, fogAnchors, fogRect, landSpots, laneSprites, rectsMeet, type FogAnchor, type LandSpot, type Rect } from "./weatherPlacement";
 import { weatherProofOverride } from "./weatherProof";
 
@@ -20,11 +20,6 @@ const RIPPLE_SIZE = { width: 64, height: 32 } as const;
 export const CRACK_SIZE = { width: 128, height: 64 } as const;
 const RIPPLE_FRAME_MS = 170;
 const WET_SPOT_SALT = 23_203, CRACK_SPOT_SALT = 23_211;
-// Rain: the sheet's cells repeated over the view at `scale` (longer, easier streaks), falling and slanting.
-export const RAIN_DRAW = {
-  drizzle_sheet: { frameMs: 120, fallPxPerS: 320, slant: 0.18, scale: 1.5 },
-  storm_rain_sheet: { frameMs: 80, fallPxPerS: 680, slant: 0.32, scale: 1.25 },
-} as const;
 // Lanes (view px): dust gusts twice their art size so they read at a glance; two decks of cold mist.
 const LANES: Readonly<Record<string, { readonly size: { readonly width: number; readonly height: number }; readonly gap: number; readonly perRow: number;
   readonly speeds: readonly number[]; readonly salt: number }>> = {
@@ -105,8 +100,10 @@ function drawFill(context: CanvasRenderingContext2D, layer: WeatherLayer, viewpo
     const cell = weatherMeta(key);
     const fall = (nowMs / 1000) * rain.fallPxPerS;
     const size = "frames" in cell && "cellHeight" in cell.frames ? cell.frames.cellHeight : cell.height;
-    const span = size * rain.scale;
-    pattern.setTransform(new DOMMatrix().translate(-((fall * rain.slant) % span), fall % span).scale(rain.scale));
+    // The cell is cut at its scale (weatherArt.ts); whole-pixel steps and no smoothing keep its streak share on screen.
+    const span = Math.round(size * rain.scale);
+    pattern.setTransform(new DOMMatrix().translate(-Math.round((fall * rain.slant) % span), Math.round(fall % span)));
+    context.imageSmoothingEnabled = false;
     style = pattern;
   }
   if (style === null) return;
