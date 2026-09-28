@@ -171,6 +171,8 @@ export interface GameState {
   readonly ale?: import("./ale.types").AleState;
   /** F3-A the Black Death of 1348 (save v26, spec PL-1…PL-11). Absent until the collapse era. */
   readonly plague?: import("./plague.types").PlagueState;
+  /** F4-A (save v27): chapter 4's reorganisation — its steps, the four answers, the influence, the guild, chapter 5's start. */
+  readonly reorganisation?: import("./reorganisation.types").ReorganisationState;
   /** F2-A the war of 1337 (save v20, spec WR-1…WR-9). Absent until the War era's messenger. */
   readonly war?: import("./war.types").WarState;
   /** FACTION-0 the factions around the town (save v21, spec FX-1…FX-8). Absent until the first tick. */

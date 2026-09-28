@@ -8,6 +8,7 @@
  * period's upkeep runs again while its old debt waits (FIX-4 E3).
  */
 import { plagueRentPermille, plagueUpkeepPermille } from "./plague";
+import { reorganisationRentPermille, reorganisationTollPermille } from "./reorganisation";
 import { stallFeePermille, stallFeeRightSource } from "./politics";
 import { marketExpansionPermille, murageTollPermille, warTaxPermille } from "./war";
 import type { SourceRef } from "../contracts";
@@ -116,9 +117,11 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
   const postings: LedgerPosting[] = [];
   const plots = homePlots(state);
   let rent = 0;
+  // F4-A (RG-8): after the collectors were chased the tenants withhold a period's rent (the court rolls burnt).
+  const withheld = reorganisationRentPermille(state) === 0;
   for (const house of state.houses) {
     // EV-4: a burnt house pays no rent until it is rebuilt.
-    if (house.residents <= 0 || house.burntTick !== undefined) continue;
+    if (house.residents <= 0 || house.burntTick !== undefined || withheld) continue;
     const plot = plots.get(house.buildingId);
     // F3-A (PL-8): once labour services are commuted the tenants pay money rent at its higher rate.
     const amount = Math.round(rentRelief(house, state.tick, homeRent(house, plot?.width ?? null)) * plagueRentPermille(state) / 1000);
@@ -151,7 +154,9 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
       sourceRefs: [buildingSource(millId, `wheat:${units * MONEY_BALANCE.millTollWheat}`)] });
   }
   for (const [pointId, count] of Object.entries(money.crossings).sort(([a], [b]) => a.localeCompare(b))) {
-    if (count > 0 && tolls) postings.push({ account: "cash", category: "toll", amount: count * MONEY_BALANCE.tollPerCrossing,
+    // F4-A (RG-9): once the town holds the bridge tolls, half the tolls are the town's.
+    const toll = Math.round(count * MONEY_BALANCE.tollPerCrossing * reorganisationTollPermille(state) / 1000);
+    if (count > 0 && tolls && toll > 0) postings.push({ account: "cash", category: "toll", amount: toll,
       sourceRefs: [tollPointSource(pointId), { type: "trade", id: "carter_crossings", detail: `crossings:${count}` }] });
     // F2-A (WR-8): murage, the Crown's toll for the stone wall, while it is building.
     const murage = Math.round(count * MONEY_BALANCE.tollPerCrossing * (murageTollPermille(state) - 1000) / 1000);

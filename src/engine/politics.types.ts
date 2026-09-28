@@ -85,6 +85,20 @@ export interface ChronicleEntry {
       readonly fled: number;
       readonly outcome: "resettled" | "calendar";
     };
+    /** F4-A (RG-10): chapter 4's reorganisation — who left, the cloth, the guild, the tax, the rumour, the charter, the influence. */
+    readonly reorganisation?: {
+      readonly startYear: number;
+      readonly wageLeavers: number;
+      readonly weaverLeavers: number;
+      readonly clothSold: number;
+      readonly clothIncome: number;
+      readonly guild: boolean;
+      readonly pollTax: number;
+      readonly rebellion: "chased" | "quiet" | null;
+      readonly charter: "partial" | "refused" | "calendar";
+      readonly townInfluence: number;
+      readonly merchantInfluence: number;
+    };
   };
 }
 

@@ -40,6 +40,8 @@ import type { Person, PersonConditionKind } from "./persons.types";
 import { lordshipOf } from "./lordshipState";
 import { beaconLit, raidEventId, warDecisionForecast } from "./war";
 import { plagueDecisionForecast } from "./plague";
+import { reorganisationDecisionForecast } from "./reorganisation";
+import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
 import { WAR_PETITION_IDS } from "../content/warConfig";
@@ -140,7 +142,9 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
     // F2-A (WR-2…WR-8): a war decision's sums follow the town (the war's own forecast).
     const treasury = def.trigger === "war" ? warDecisionForecast(before, def.id, chosen)
       // F3-A (PL-5…PL-8): so does a plague decision's.
-      : def.trigger === "plague" ? plagueDecisionForecast(before, def.id, chosen) : now.treasury! + outcome.charterFee;
+      : def.trigger === "plague" ? plagueDecisionForecast(before, def.id, chosen)
+      // F4-A (RG-12): and a reorganisation decision's.
+      : def.trigger === "reorganisation" ? reorganisationDecisionForecast(before, def.id, chosen) : now.treasury! + outcome.charterFee;
     return { chosen, alternatives: (def.responses ?? (["accept", "accept_with_price", "refuse"] as const)).filter(option => option !== chosen),
       predicted: { treasury, merchantGauge: Math.max(0, Math.min(100, now.merchantGauge! + outcome.gauge)) }, actualDueTick: due };
   }
@@ -541,6 +545,44 @@ function plagueDrafts(before: GameState, after: GameState): (Draft & { thumbnail
   return drafts;
 }
 
+/**
+ * F4-A (RG-1…RG-10): the reorganisation's turns — the neighbours' wages, the textile street, the alehouses, the
+ * petitions, the guild founded (or its weavers gone), the earl's warning, the poll tax, the rumour of 1381, the town's
+ * demand, the charter, a petition left unanswered.
+ */
+function reorganisationDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] {
+  const was = before.reorganisation, now = after.reorganisation;
+  if (now === undefined || was === now) return [];
+  const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];
+  const by = (id: string) => ({ actors: [{ type: "faction" as const, id }] });
+  const at = { tick: after.tick, subject: TOWN, ...by("town") };
+  const cause = { type: "event" as const, id: `reorganisation@${now.startTick}`, detail: "reorganisation" };
+  const came = (key: "wageCompetitionTick" | "textileStreetTick" | "alehouseBoomTick" | "surgeTick" | "warningTick" | "autonomyTick") => now[key] !== undefined && was?.[key] === undefined;
+  if (came("wageCompetitionTick")) drafts.push({ ...at, ...by("neighbour_1"), kind: "event", template: "reorg.wage_competition", severity: 2, cause });
+  if (came("textileStreetTick")) drafts.push({ ...at, kind: "event", template: "reorg.textile_street", severity: 2, cause, thumbnail: { state: after, size: 128 } });
+  if (came("alehouseBoomTick")) drafts.push({ ...at, kind: "event", template: "reorg.alehouse_boom", severity: 1, cause });
+  if (came("surgeTick")) drafts.push({ ...at, ...by("merchant_house_1"), kind: "event", template: "reorg.petitions_surge", severity: 2, cause });
+  if (now.guild !== undefined && was?.guild === undefined) drafts.push({ ...at, kind: "event", template: "reorg.guild_founded", severity: 3, cause, thumbnail: { state: after, size: 128 } });
+  if (now.weaverLeavers > (was?.weaverLeavers ?? 0)) drafts.push({ ...at, kind: "event", template: "reorg.weavers_left", severity: 2, params: { households: now.weaverLeavers }, cause });
+  if (came("warningTick")) drafts.push({ ...at, ...by("overlord"), kind: "event", template: "reorg.overlord_warning", severity: 3, params: { influence: now.influence.town ?? 0 }, cause });
+  if (now.collections > (was?.collections ?? 0)) drafts.push({ ...at, ...by("crown"), kind: "event", template: "reorg.poll_tax", severity: 1, params: { amount: now.pollTax - (was?.pollTax ?? 0) }, cause });
+  if (now.rebellion !== undefined && was?.rebellion === undefined) {
+    drafts.push({ ...at, ...by("commons"), kind: "event", template: "reorg.rebellion_rumour", severity: 3, params: { outcome: now.rebellion.outcome, pressure: now.rebellion.pressure }, cause,
+      thumbnail: { state: after, size: 256 } });
+  }
+  if (came("autonomyTick")) drafts.push({ ...at, kind: "event", template: "reorg.autonomy_request", severity: 3, cause });
+  if (now.chapterFiveStart !== undefined && was?.chapterFiveStart === undefined) {
+    drafts.push({ ...at, kind: "event", template: "reorg.charter", severity: 3, params: { charter: now.chapterFiveStart.charter }, cause, thumbnail: { state: after, size: 256 } });
+  }
+  for (const [defId, answer] of Object.entries(now.answers)) {
+    if (answer === "expired" && was?.answers[defId] !== "expired" && (REORGANISATION_PETITION_IDS as readonly string[]).includes(defId)) {
+      const petitioner = after.politics?.petitions.find(petition => petition.defId === defId)?.petitioner;
+      drafts.push({ ...at, ...(petitioner === undefined ? {} : by(factionOfPetitioner(petitioner))), kind: "event", template: "reorg.unanswered", severity: 2, params: { defId } });
+    }
+  }
+  return drafts;
+}
+
 /** One tick of the ledger: `before` is the state the tick started from. */
 export function advanceHistory(before: GameState, after: GameState): GameState {
   let history = historyOf(after);
@@ -558,6 +600,7 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...lordshipDrafts(before, after));
   drafts.push(...warDrafts(before, after));
   drafts.push(...plagueDrafts(before, after));
+  drafts.push(...reorganisationDrafts(before, after));
   drafts.push(...factionDrafts(before, after));
   drafts.push(...personDrafts(before, after));
   let milestones = history.milestones;

@@ -36,6 +36,8 @@ export const FACTION_OF_PETITIONER: Readonly<Record<Petitioner, FactionId>> = {
   merchants: "merchant_house_1", overlord: "overlord", crown: "crown", townsfolk: "town", refugees: "bishop",
   // F3-A (PL-5, PL-6): the labourers are the commons; the parish asks through its bishop.
   labourers: "commons", parish: "bishop",
+  // F4-A (RG-5): the craftsmen who ask for a guild are the town community's.
+  craftsmen: "town",
 };
 
 /**
@@ -114,4 +116,6 @@ export const RELATION_RULES = {
   raidBreached: -10,
   /** FX-4: a new lord's house: every outside faction's relation goes halfway back to where it started. */
   houseChangePermille: 500,
+  /** F4-A (RG-2): the neighbour who lured a household with wages. */
+  wageCompetition: -2,
 } as const;

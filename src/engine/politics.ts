@@ -18,9 +18,12 @@
  *   `answerRestoration`.
  * - F2-A (WR-2…WR-8): the war's five decisions arrive from `war.ts`; their answers are `answerWarPetition`. Chapter 2's
  *   end (WR-9) is written here (`endChapterTwo`), called by the war.
+ * - F3-A / F4-A: the pestilence's and the reorganisation's decisions likewise (`answerPlaguePetition`,
+ *   `answerReorganisationPetition`); chapters 3 and 4 end here (`endChapterThree`, `endChapterFour`).
  */
 import { EffectRegistry, SETTLEMENT_REGION_ID, type SourceRef } from "../contracts";
 import {
+  CHAPTER_FOUR,
   CHAPTER_ONE,
   CHAPTER_THREE,
   CHAPTER_TWO,
@@ -49,6 +52,7 @@ import { calendar, scenarioOf } from "./scenarioState";
 import { answerRestoration } from "./lordship";
 import { answerWarPetition, chapterTwoWallOutcome } from "./war";
 import { answerPlaguePetition } from "./plague";
+import { answerReorganisationPetition } from "./reorganisation";
 import { PLAGUE_BALANCE } from "../content/plagueConfig";
 import { housingLotCount } from "../population/housing";
 
@@ -173,9 +177,9 @@ export function respondToPetition(state: GameState, petitionId: string, response
   const decision: DecisionRecord = { kind: "petition_response", tick: state.tick, petitionId, choice: response };
   // F3-A: a card offers only its answers.
   if (def.responses !== undefined && !def.responses.includes(response)) return state;
-  if (def.trigger === "plague") {
-    // F3-A (PL-5…PL-8): the pestilence's rules answer; the petitioners' faction remembers (FX-4).
-    const answered = answerPlaguePetition(state, petition, response);
+  if (def.trigger === "plague" || def.trigger === "reorganisation") {
+    // F3-A (PL-5…PL-8), F4-A (RG-5…RG-9): the sequence's rules answer; the factions remember (FX-4).
+    const answered = def.trigger === "plague" ? answerPlaguePetition(state, petition, response) : answerReorganisationPetition(state, petition, response);
     const after = answered.politics ?? politics;
     return { ...answered, politics: { ...after,
       petitions: after.petitions.map(entry => entry.id === petition.id ? { ...entry, response, respondedTick: state.tick } : entry),
@@ -324,10 +328,30 @@ export function endChapterThree(state: GameState): GameState {
 }
 
 /**
+ * F4-A (RG-10): chapter 4 ends — its chronicle page is written (with the reorganisation's line) and chapter 5 begins at
+ * the same tick, the same town, from the charter's outcome (`chapterFiveStart`).
+ */
+export function endChapterFour(state: GameState): GameState {
+  const politics = politicsOf(state);
+  if (politics.chapter.number !== CHAPTER_FOUR.chapter || chapterEnd(state, CHAPTER_FOUR.chapter) !== null) return state;
+  const page = chronicleEntry(state);
+  const r = state.reorganisation;
+  const startYear = scenarioOf(state).startYear;
+  const chronicle: ChronicleEntry = r?.chapterFiveStart === undefined ? page : { ...page, stats: { ...page.stats, reorganisation: {
+    startYear: calendar(r.startTick, startYear).year, wageLeavers: r.wageLeavers, weaverLeavers: r.weaverLeavers,
+    clothSold: r.clothSold, clothIncome: r.clothIncome, guild: r.guild !== undefined, pollTax: r.pollTax,
+    rebellion: r.rebellion?.outcome ?? null, charter: r.chapterFiveStart.charter,
+    townInfluence: r.influence.town ?? 0, merchantInfluence: r.influence.merchant_house_1 ?? 0 } } };
+  return { ...state, politics: { ...politics,
+    chapterEnds: [...politics.chapterEnds, { chapter: CHAPTER_FOUR.chapter, tick: state.tick, chronicle }],
+    chapter: { number: CHAPTER_FOUR.chapter + 1, startTick: state.tick, populationStart: state.population, peakPopulation: state.population } } };
+}
+
+/**
  * FAIL-3 (FL-9): the goal of a chapter — chapter 1 the market town through the famine (FC-5), chapter 2 prosperity.
  * F2-A (WR-9): and chapter 2's war goal, the stone wall built or the market chosen (reached at chapter 2's end).
  */
-export type ChapterGoalId = "famine_market_town" | "prosperity" | "wall_or_market" | "resettled";
+export type ChapterGoalId = "famine_market_town" | "prosperity" | "wall_or_market" | "resettled" | "charter";
 export interface ChapterGoal {
   readonly chapter: number;
   readonly id: ChapterGoalId;
@@ -348,6 +372,8 @@ export function chapterGoals(state: Pick<GameState, "politics" | "settlement">):
   }
   // F3-A (PL-10): chapter 3's goal, the town resettled after the pestilence (reached at chapter 3's end).
   if (chapter >= CHAPTER_THREE.chapter) goals.push({ chapter: CHAPTER_THREE.chapter, id: "resettled", reachedTick: chapterEnd(state, CHAPTER_THREE.chapter)?.tick ?? null });
+  // F4-A (RG-10): chapter 4's goal, the charter negotiated (reached at chapter 4's end, granted or refused).
+  if (chapter >= CHAPTER_FOUR.chapter) goals.push({ chapter: CHAPTER_FOUR.chapter, id: "charter", reachedTick: chapterEnd(state, CHAPTER_FOUR.chapter)?.tick ?? null });
   return goals;
 }
 

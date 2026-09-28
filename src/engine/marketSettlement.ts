@@ -16,6 +16,7 @@ import type { LedgerPosting } from "../ledger/ledger.types";
 import { foodPricePermille } from "./eventSchedule";
 import { foodPriceSource } from "./events";
 import { CLOTH_BALANCE } from "../content/clothConfig";
+import { reorganisationClothTrade } from "./reorganisation";
 
 type MarketResource = Exclude<ResourceType, "coin">;
 
@@ -48,7 +49,9 @@ const MARKET_CADENCE_TICKS = 80;
  * (rounded to a whole penny). Trade priority keeps the usual prices, so a dearth does not change what the market
  * sends out first.
  */
-export function marketSalePrice(state: Pick<GameState, "seed" | "scenarioId" | "tick">, resource: MarketResource): number {
+export function marketSalePrice(state: Pick<GameState, "seed" | "scenarioId" | "tick"> & Partial<Pick<GameState, "reorganisation">>, resource: MarketResource): number {
+  // F4-A (RG-3): chapter 4's cloth price (the long-distance merchants' trade at its height).
+  if (resource === "finished_cloth") return reorganisationClothTrade(state as Pick<GameState, "reorganisation">)?.price ?? CLOTH_BALANCE.clothPrice;
   const base = SALE_RULES.find(rule => rule.resource === resource)?.coin ?? 0;
   return resource === "bread" || resource === "wheat" ? Math.round(base * foodPricePermille(state, state.tick) / 1000) : base;
 }
@@ -139,8 +142,10 @@ function settleMarket(
   state: GameState,
   buildings: readonly Building[],
   market: Building,
+  cloth: "any" | "only" | "none" = "any",
 ): { readonly buildings: readonly Building[]; readonly coin: number; readonly sold?: MarketResource; readonly from?: Building } {
   const candidate = [...saleCandidates(connectedStorageSources(state, market, buildings), state)]
+    .filter(entry => cloth === "any" || (entry.resource === "finished_cloth") === (cloth === "only"))
     .sort(compareCandidates)[0];
   if (candidate === undefined) return { buildings, coin: 0 };
 
@@ -178,21 +183,28 @@ export function settleMarkets(state: GameState): GameState {
   let wheatExported = 0;
   let breadExported = 0;
   const ulnage: LedgerPosting[] = [];
+  // F4-A (RG-3): from chapter 4 the long-distance merchants buy cloth apart from the market's everyday trade (a cloth a
+  // round more), the seal is dearer and the lord takes a toll on each cloth sold.
+  const clothTrade = reorganisationClothTrade(state);
   for (const market of completedMarkets(buildings)) {
-    const result = settleMarket(state, buildings, market);
+    for (const cloth of clothTrade === null ? ["any"] as const : ["none", "only"] as const) {
+    const result = settleMarket(state, buildings, market, cloth);
     buildings = result.buildings;
     if (result.sold === undefined) continue;
     traded = true;
     if (result.sold === "wheat") wheatExported += 1;
     if (result.sold === "bread") breadExported += 1;
     // C5 (CL-8): the aulnager seals each cloth sold; the seal's due is the treasury's.
-    if (result.sold === "finished_cloth") ulnage.push({ account: "cash", category: "ulnage", amount: CLOTH_BALANCE.ulnagePerCloth,
+    if (result.sold === "finished_cloth") ulnage.push({ account: "cash", category: "ulnage", amount: clothTrade?.ulnage ?? CLOTH_BALANCE.ulnagePerCloth,
       sourceRefs: [{ type: "building", id: market.id, detail: "cloth_sold" }, { type: "building", id: result.from!.id }] });
+    if (result.sold === "finished_cloth" && clothTrade !== null && clothTrade.toll > 0) ulnage.push({ account: "cash", category: "cloth_toll", amount: clothTrade.toll,
+      sourceRefs: [{ type: "building", id: market.id, detail: `cloth_price:${clothTrade.price}` }, { type: "building", id: result.from!.id }] });
     if (demesneSale && result.from?.kind === "granary" && (result.sold === "wheat" || result.sold === "bread")) {
       const dearth = foodPriceSource(state);
       demesne.push({ account: "cash", category: "demesne_sale", amount: result.coin,
         sourceRefs: [{ type: "building", id: result.from.id, detail: `sold:${result.sold}` }, { type: "building", id: market.id },
           ...(dearth === null ? [] : [dearth])] });
+    }
     }
   }
 

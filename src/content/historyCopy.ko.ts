@@ -62,6 +62,7 @@ export const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
   market_charter: "상인의 시장권 청원", restore_right: "권리 복원 청원",
   wool_payment: "양모 공납 칙령", levy_response: "징집 명령", war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
   vacant_priest: "빈 사제 자리", wages: "일꾼들의 임금 요구", land_redistribution: "빈 필지의 주인", cash_rent: "부역을 돈으로 바꾸자는 청원",
+  guild_charter: "직인들의 길드 결성 요구", tax_collection: "인두세를 걷는 방식", cloth_or_grain: "직물과 곡물 사이의 선택", borough_charter: "도시의 자치 특허 요구서",
 };
 export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   wool_payment: { accept: "현물로 낸다", accept_with_price: "현금으로 낸다", refuse: "거절", expired: "답하지 않음" },
@@ -73,6 +74,10 @@ export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string
   wages: { accept: "임금을 올린다", refuse: "조례대로 묶는다", expired: "답하지 않음" },
   land_redistribution: { accept: "이웃 가구가 넓혀 쓴다", accept_with_price: "새 이주민을 받는다", expired: "답하지 않음" },
   cash_rent: { accept: "돈으로 바꾼다", refuse: "부역을 지킨다", expired: "답하지 않음" },
+  guild_charter: { accept: "길드를 인가한다", refuse: "길드를 거부한다", expired: "답하지 않음" },
+  tax_collection: { accept: "도시 공동체에 맡긴다", refuse: "영주의 징수원이 걷는다", expired: "답하지 않음" },
+  cloth_or_grain: { accept: "직물에 걸고 쟁기밭을 양에게 준다", refuse: "곡물을 지킨다", expired: "답하지 않음" },
+  borough_charter: { accept: "시장과 통행세 일부를 넘긴다", refuse: "특허를 거절한다", expired: "답하지 않음" },
 };
 /** PERSON-1a (LN-4): a birth's line by where the child's name came from. */
 const NAME_FROM: Readonly<Record<string, string>> = {
@@ -104,6 +109,19 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "plague.second": () => "두 번째 역병이 왔다",
   "plague.second_ended": params => `두 번째 역병이 물러갔다 — ${n(params, "dead")}명이 죽었다`,
   "plague.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
+  // F4-A (RG-1…RG-10): the reorganisation.
+  "reorg.wage_competition": () => "이웃 장원이 더 높은 임금으로 일꾼을 부른다",
+  "reorg.textile_street": () => "직조공 집이 늘어 직물 거리가 생겼다",
+  "reorg.alehouse_boom": () => "에일하우스마다 사람이 붐빈다",
+  "reorg.petitions_surge": () => "상인과 직인 무리의 청원이 쏟아진다",
+  "reorg.guild_founded": () => "직인 길드가 섰다",
+  "reorg.weavers_left": params => `직조공 가구 ${n(params, "households")}곳이 길드가 있는 도시로 떠났다`,
+  "reorg.overlord_warning": params => `상위 영주가 커지는 도시를 경고했다 — 도시의 힘 ${n(params, "influence")}`,
+  "reorg.poll_tax": params => `인두세를 걷었다 — 영주의 몫 ${n(params, "amount")}d`,
+  "reorg.rebellion_rumour": params => s(params, "outcome") === "chased" ? "농민 반란의 소문 — 사람들이 세금 징수원을 쫓아내고 장원 법정 기록을 태웠다" : "농민 반란의 소문이 돌았지만 도시는 조용했다",
+  "reorg.autonomy_request": () => "도시가 자치 특허를 요구하는 문서를 올렸다",
+  "reorg.charter": params => s(params, "charter") === "partial" ? "자치 특허를 맺었다 — 시장과 통행세 일부가 도시로 넘어갔다" : "자치 특허를 내주지 않았다",
+  "reorg.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
   "war.beacon": () => "해안의 봉화가 올랐다",
   "war.raid": params => `해안 습격이 닥쳤다 — 불탄 집 ${n(params, "burntHouses")}, 빼앗긴 물자 ${n(params, "looted")}, 빼앗긴 돈 ${n(params, "coin")}d`,
   "war.conscripts_left": params => `징집된 남자 ${n(params, "men")}명이 떠났다`,

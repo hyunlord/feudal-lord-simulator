@@ -25,6 +25,7 @@ import type { EventForecastEntry, EventRecord, EventStage, WeatherReport } from 
 import { rollPermille, hashSeed } from "./prng";
 import { FAMINE_RESPONSE_CONFIG } from "../content/chapterConfig";
 import { PLAGUE_BALANCE } from "../content/plagueConfig";
+import { CLOTH_OR_GRAIN_PETITION_ID, REORGANISATION_BALANCE } from "../content/reorganisationConfig";
 import { calendar, scenarioOf } from "./scenarioState";
 
 export const SEASON_TICKS = PRESSURE_BALANCE.seasonTicks;
@@ -32,7 +33,7 @@ const SEASONS_PER_YEAR = BALANCE.TICKS_PER_YEAR / SEASON_TICKS;
 const SUMMER = 1;
 
 /** The schedule reads the seed and scenario; F0-C1's era events also read what arrived and the eras entered. */
-type EventWorld = Pick<GameState, "seed" | "scenarioId"> & Partial<Pick<GameState, "events" | "historicalEras" | "plague">>;
+type EventWorld = Pick<GameState, "seed" | "scenarioId"> & Partial<Pick<GameState, "events" | "historicalEras" | "plague" | "reorganisation">>;
 
 export function seasonIndexOf(tick: number): number {
   return Math.floor(tick / SEASON_TICKS);
@@ -237,6 +238,14 @@ export function eventForecast(state: GameState): readonly EventForecastEntry[] {
  * `harvestPermille` (its wet summer included); otherwise a wet summer takes `WET_SUMMER_HARVEST_PERMILLE`.
  */
 export function harvestYieldPermille(state: EventWorld, tick: number): number {
+  // F4-A (RG-7, decision RG11): a town that turned its demesne ploughland to sheep lives on bought grain — a bad harvest
+  // (a wet summer, a dearth) takes a sixth more from it; a good year is the same.
+  const weather = weatherHarvestYieldPermille(state, tick);
+  const specialised = state.reorganisation?.answers[CLOTH_OR_GRAIN_PETITION_ID] === "accept";
+  return specialised && weather < 1000 ? Math.round(weather * REORGANISATION_BALANCE.specialisedHarvestPermille / 1000) : weather;
+}
+
+function weatherHarvestYieldPermille(state: EventWorld, tick: number): number {
   if (!weatherActive(state)) return 1000;
   const yearIndex = Math.floor(tick / BALANCE.TICKS_PER_YEAR);
   // FC-1: an arrived era dearth's harvest years.

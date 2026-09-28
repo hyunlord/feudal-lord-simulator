@@ -3,6 +3,11 @@
  * sandbox's from 1364) — pasture first (two 6×6 strokes outside the wall), a pastoral farm beside it, then the weaver's
  * house, the fulling mill and the dyehouse (both by the water) and the tenter yard, one at a time. The spinning and the
  * market's sale are the rules' own. Chapters 1–3 are left as they were (decision CL7).
+ *
+ * F4-A (RG-11, decision RG12): in chapter 4, once the first cloth is sold, the cloth town at once — a second weaver's
+ * house (the textile street), pasture to 120 cells, a second pastoral farm where 30 cells or more lie beyond the first's
+ * reach, and a second tenter yard. Not after the cloth-or-grain answer (1370): building then kept guardrail run 1's
+ * seed 4 from its stable years until its granaries ran short (their room full of malt, C4).
  */
 import { CHAPTER_THREE } from '../content/chapterConfig';
 import { CLOTH_BALANCE } from '../content/clothConfig';
@@ -19,6 +24,10 @@ import { calendar, scenarioOf } from './scenarioState';
 const NONE: AutoplayAction = { kind: 'none' };
 /** CL-11: the pasture the bot paints (cells), each stroke a square this wide, and the least open cells a stroke takes. */
 export const BOT_PASTURE_CELLS = 60;
+/** RG-11: the pasture of chapter 4's cloth town. */
+export const BOT_SPECIALISED_PASTURE_CELLS = 120;
+/** RG-11: the untended pasture (cells) that asks for a second pastoral farm. */
+const BOT_UNTENDED_CELLS = 30;
 const STROKE = 6;
 const MIN_OPEN = 30;
 const CHAIN: readonly BuildingKind[] = ['weaver_house', 'fulling_mill', 'dyehouse', 'tenter_yard'];
@@ -31,8 +40,12 @@ export function clothTime(state: GameState): boolean {
 }
 
 function builtOrPlanned(state: GameState, kind: BuildingKind): boolean {
-  return state.buildings.some(building => building.kind === kind)
-    || state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === kind);
+  return countBuiltOrPlanned(state, kind) > 0;
+}
+
+function countBuiltOrPlanned(state: GameState, kind: BuildingKind): number {
+  return state.buildings.filter(building => building.kind === kind).length
+    + state.constructionSites.filter(site => isBuildingConstructionSite(site) && site.kind === kind).length;
 }
 
 function openCell(state: GameState, tx: number, ty: number, zoned: ReadonlySet<number>): boolean {
@@ -73,12 +86,23 @@ export function clothChainAction(state: GameState, buildAction: ClothBuildAction
   if (!clothTime(state) || state.era === 'hamlet') return NONE;
   const pasture = zonesOf(state).filter(zone => zone.kind === 'pasture').flatMap(zone => zone.membership);
   if (pasture.length < BOT_PASTURE_CELLS) return pastureStroke(state);
+  const reach = (farm: TileCoordinate, index: number) => Math.max(Math.abs(index % state.width - farm.tx),
+    Math.abs(Math.floor(index / state.width) - farm.ty)) <= CLOTH_BALANCE.pastoralReach;
   if (!builtOrPlanned(state, 'pastoral_farm')) {
     // Beside the pasture, within its reach of most of it.
-    const near = (coordinate: TileCoordinate) => pasture.filter(index => Math.max(Math.abs(index % state.width - coordinate.tx),
-      Math.abs(Math.floor(index / state.width) - coordinate.ty)) <= CLOTH_BALANCE.pastoralReach).length * 2 >= pasture.length;
-    return buildAction(state, 'pastoral_farm', near);
+    return buildAction(state, 'pastoral_farm', coordinate => pasture.filter(index => reach(coordinate, index)).length * 2 >= pasture.length);
   }
   for (const kind of CHAIN) if (!builtOrPlanned(state, kind)) return buildAction(state, kind);
+  // RG-11: chapter 4's cloth town — the textile street once cloth sells, the sheep once the lord turns to cloth.
+  const reorganisation = state.reorganisation;
+  if (reorganisation === undefined || reorganisation.clothSold <= 0) return NONE;
+  if (countBuiltOrPlanned(state, 'weaver_house') < 2) return buildAction(state, 'weaver_house');
+  if (pasture.length < BOT_SPECIALISED_PASTURE_CELLS) return pastureStroke(state);
+  const farms = state.buildings.filter(building => building.kind === 'pastoral_farm');
+  const untended = pasture.filter(index => !farms.some(farm => reach(farm, index)));
+  if (untended.length >= BOT_UNTENDED_CELLS && countBuiltOrPlanned(state, 'pastoral_farm') < 2) {
+    return buildAction(state, 'pastoral_farm', coordinate => untended.filter(index => reach(coordinate, index)).length * 2 >= untended.length);
+  }
+  if (countBuiltOrPlanned(state, 'tenter_yard') < 2) return buildAction(state, 'tenter_yard');
   return NONE;
 }

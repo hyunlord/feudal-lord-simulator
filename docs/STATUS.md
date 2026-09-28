@@ -1,11 +1,20 @@
 # 현재 상태
 
-갱신: 2026-09-29(UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **F4-A 4장 재편 1362–1400 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/f4a-reorganisation/REPORT.md), [명세](design/chapter-four-reorganisation.md) RG-1~RG-12, 결정 RG1~RG12.
+  - 사건 사슬(Wave 21 4장과 1:1): 임금 경쟁 → 직물 거리(직조공 집 둘) → 에일하우스 성황 → 청원 급증 → 길드 결성 요구 → 상위 영주의 경고(도시 힘 50) → 1377 인두세 → 1381 농민 반란 소문(압력 50 이상이면 징수원을 쫓음, 유혈 없음) → 자치 요구서 → 4장 끝(특허 다음 계절, 늦어도 1400) → 5장.
+  - 결정 넷(청원, 답 둘씩): 길드 인가/거부, 공동체 위임/직접 징수, 직물 전문화/곡물 유지, 부분 허용(좌판세·통행세 절반 이양, fee farm 120d, 지대 그대로)/거부(5장 반발). 결과는 `chapterFiveStart`.
+  - 세력 힘(도시 공동체·상인 가문 둘, 인구·직물·길드·권리로 자람)과 백작·국왕과의 줄다리기(원장 기억). 길드는 기록(수장 person)이고 세력 목록은 그대로다.
+  - 밸런스: 4장부터 직물 40d(전문화 50d)·인장세 8d·영주 매매세·따로 오는 상인·염료 20짐·길드 × 0.75 → 봇 도시 직물이 4장 전체·마지막 네 해 모두 가장 큰 수입원(38~44 %). C5의 잠복 결함(염색집이 베로 차 염료를 못 받아 사슬이 섬)을 고침. 전문화의 식량 취약은 흉작 해에만(RG11). 저장 v27.
+  - 관문: R1~R12, 봇 4장 완주 5/5(1382 특허 → 5장), 비교표(표준·반대·직접 징수), 사람 경로 4장 첫 결정(가드레일 옆 5/5), 가드레일 2회차 `b67da00` 5/5(승리 틱 불변 = 1~3장 무변화, 새 기준선 `baseline-b67da00`; 1회차 4/5는 seed 4 — 봇의 늦은 공사가 안정을 미루는 사이 C4 엿기름이 곡창을 채워 빵이 바닥남, RG12로 고침), 깨끗한 클론 `d47c74a` 3,531/3,531·build, UI-8 병합 뒤 회귀 `80d9377` 3,584/3,584.
+  - 다음 후보: C4 엿기름이 곡창 자리를 먹는 잠복 결함(seed 4, 고치면 2~3장 봇 도시와 기준선이 바뀜 — 판정 필요).
+  - 넘길 것(렌더): 결정 카드 넷·4장 사건 삽화(`reorganisationForecast`·원장 `reorg.*`), 세력 힘(`factionInfluence`·`factionsList.influence`), 길드(`guildOf`, Wave 12 길드홀), 권리 이양(`market_tolls`·`bridge_tolls`·`chapterFiveStart`), 반란 압력 원인 줄(`revoltPressure`), 장부 `cloth_toll`·`poll_tax`·`fee_farm`, 4장 목표 `charter`.
 
 - **C5 직물 사슬 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/c5-cloth/REPORT.md), [명세](design/cloth-chain.md) CL-1~CL-11, 결정 CL1~CL10.
   - 자원 일곱(양털·실·생베·축융한 베·염료·물들인 베·완성 직물)과 건물 다섯: 목축 농장(초여름 털깎기, 20칸에 일손 한 명), 직조공 집(베틀), 축융 방앗간·염색집(물가), 텐터 틀. 실잣기는 L3+ 집 여성의 둘째 가내 슬롯. 베는 단계에서 단계로 곧장 간다. 시장은 완성 직물을 가장 먼저 팔고 인장세가 금고에 든다(축융 사용료도).

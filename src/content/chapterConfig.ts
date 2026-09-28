@@ -3,6 +3,7 @@
  * chapter's end. Values are integers (permille for fractions, pennies for money).
  */
 import { PLAGUE_PETITION_DEFS } from "./plagueConfig";
+import { REORGANISATION_PETITION_DEFS } from "./reorganisationConfig";
 import { WAR_PETITION_DEFS } from "./warConfig";
 
 /** FC-2: the lord's answer to the Great Famine. */
@@ -35,9 +36,9 @@ export const FAMINE_RESPONSE_CONFIG = {
 /**
  * FC-3: petitioners (the gauge starts at 50 of 100). FAIL-3 (FL-6): the overlord asks too, to hand back a right he holds.
  * F2-A (WR-2…WR-8): the Crown demands, the refugees ask, the townsfolk choose the wall or the market.
- * F3-A (PL-5, PL-6): the labourers ask for wages, the parish for a priest.
+ * F3-A (PL-5, PL-6): the labourers ask for wages, the parish for a priest. F4-A (RG-5): the craftsmen for a guild.
  */
-export type Petitioner = "merchants" | "overlord" | "crown" | "refugees" | "townsfolk" | "labourers" | "parish";
+export type Petitioner = "merchants" | "overlord" | "crown" | "refugees" | "townsfolk" | "labourers" | "parish" | "craftsmen";
 export const MERCHANT_GAUGE_START = 50;
 
 export type PetitionResponse = "accept" | "refuse" | "accept_with_price";
@@ -71,8 +72,9 @@ export interface PetitionDef {
   /**
    * FAIL-3 (FL-6): how it arrives — by the calendar (FC-3, absent) or when a decline's cause has cleared (`lordship.ts`).
    * F2-A (WR-2…WR-8): or in the war's sequence (`war.ts`). F3-A (PL-5…PL-8): or in the pestilence's (`plague.ts`).
+   * F4-A (RG-5…RG-9): or in the reorganisation's (`reorganisation.ts`).
    */
-  readonly trigger?: "calendar" | "decline_recovered" | "war" | "plague";
+  readonly trigger?: "calendar" | "decline_recovered" | "war" | "plague" | "reorganisation";
   /** F3-A: the answers the card offers (absent = all three); another answer is not taken. */
   readonly responses?: readonly PetitionResponse[];
 }
@@ -109,6 +111,7 @@ export const PETITION_DEFS: readonly PetitionDef[] = [
   },
   ...WAR_PETITION_DEFS,
   ...PLAGUE_PETITION_DEFS,
+  ...REORGANISATION_PETITION_DEFS,
 ];
 
 /** FC-5: chapter 1 ends with a market town that came through the famine with this share of its people. */
@@ -127,6 +130,13 @@ export const CHAPTER_THREE = {
   chapter: 3,
   fromYear: 1348,
   toYear: 1364,
+} as const;
+
+/** F4-A (RG-10): chapter 4 of the campaign, the reorganisation (from chapter 3's end, 1400 at the latest). */
+export const CHAPTER_FOUR = {
+  chapter: 4,
+  fromYear: 1362,
+  toYear: 1400,
 } as const;
 
 export const CHAPTER_ONE = {

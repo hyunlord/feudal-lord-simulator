@@ -4,6 +4,7 @@
  * does not stock up for the dearth.
  */
 import { LAND_REDISTRIBUTION_PETITION_ID, PLAGUE_PETITION_IDS } from "../content/plagueConfig";
+import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { EVENT_DEF_BY_ID } from "../content/eventConfig";
 import { foodReserveTicks } from "../population/foodReserve";
@@ -75,6 +76,9 @@ export function chapterDecisionAction(state: GameState, famine: FamineResponseCh
   if ((PLAGUE_PETITION_IDS as readonly string[]).includes(open.defId)) {
     return { kind: "petition_response", petitionId: open.id, response: open.defId === LAND_REDISTRIBUTION_PETITION_ID ? "accept_with_price" : "accept" };
   }
+  // F4-A (RG-11): the reorganisation's by the bot's standard rule — the guild granted, the tax left to the town, the
+  // demesne turned to cloth, the charter granted in part (every card's `accept`).
+  if ((REORGANISATION_PETITION_IDS as readonly string[]).includes(open.defId)) return { kind: "petition_response", petitionId: open.id, response: "accept" };
   return { kind: "petition_response", petitionId: open.id, response: petition };
 }
 

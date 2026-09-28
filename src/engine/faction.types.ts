@@ -47,6 +47,8 @@ export interface FactionState {
 
 /** FX-6 API `factions.list`: a faction with its open demands (petitions waiting) and its promises (rights, loans). */
 export interface FactionView extends FactionRecord {
+  /** F4-A (RG-4): the faction's influence, 0–100 (the town and the merchant houses, from chapter 4). */
+  readonly influence?: number;
   readonly demands: readonly { readonly petitionId: string; readonly defId: string; readonly arrivedTick: number }[];
   readonly promises: readonly { readonly kind: "right" | "loan" | "instalment"; readonly id: string }[];
 }
