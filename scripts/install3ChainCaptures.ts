@@ -62,6 +62,8 @@ async function selectAt(page: Page, tile: readonly number[]) {
   }
 }
 const card = (page: Page) => page.locator(".diagnostic-card");
+/** Scrolls the card's own body so `selector` shows (an element shot shows what is in view). */
+const reveal = (page: Page, selector: string) => page.evaluate(query => { document.querySelector(query)?.scrollIntoView({ block: "center" }); }, selector).then(() => page.waitForTimeout(250));
 async function step(name: string, run: () => Promise<Record<string, unknown> | void>) {
   try { const about = await run(); result[name] = { ...(about ?? {}) }; console.log(name, "ok"); }
   catch (error) { errors.push(`${name}: ${String(error).slice(0, 300)}`); console.log(name, "FAILED", String(error).slice(0, 200)); }
@@ -134,6 +136,7 @@ await step("05-harvest", async () => {
   const { page, close } = await scene(state, tile);
   await world(page, "g05a-world-barn-barley-sacks.jpg");
   await selectAt(page, tile);
+  await reveal(page, ".inspector-stock");
   await ui(card(page), "g05b-ui-barn-stock.jpg");
   await close();
   return { tick: state.tick, barley: moments["m7-barley-in-barn"]!.barley };
@@ -144,6 +147,7 @@ await step("06-malt", async () => {
   const { page, close } = await scene(state, tile);
   await world(page, "g06a-world-kiln-working.jpg");
   await selectAt(page, tile);
+  await reveal(page, ".inspector-stock");
   await ui(card(page), "g06b-ui-kiln-stock.jpg");
   await close();
   return { tick: state.tick, kiln };
