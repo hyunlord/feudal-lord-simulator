@@ -9,7 +9,10 @@
 //  4. typecheck   tsc --noEmit (root node_modules)
 //  5. ledger      scripts/checks/inboxLedger.mjs     every replaced_by path in assets-inbox/INBOX_LEDGER.csv is a
 //                                                    ledger row
-// 1, 2 and 5 read git objects. 3 and 4 need files: they run in this checkout when it is at <head> with no tracked
+//  6. korean      scripts/checks/koreanStrings.mjs   no new Korean string in src outside *.ko.ts and *.generated.*
+//                                                    (parsed with tools/eslint's TypeScript 6)
+// The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
+// 1, 2, 5 and 6 read git objects. 3 and 4 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules.
 import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -20,6 +23,7 @@ import { changedFiles, git, resolveRange } from './gitRange.mjs';
 import { checkPinChanges, formatPinResult } from './pinChanges.mjs';
 import { checkLintExceptions, formatLintResult } from './lintExceptions.mjs';
 import { checkInboxLedger, formatLedgerResult } from './inboxLedger.mjs';
+import { checkKoreanStrings, formatKoreanResult } from './koreanStrings.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
 const ESLINT_DIR = 'tools/eslint';
@@ -40,6 +44,9 @@ const exceptions = checkLintExceptions({ head });
 report('exceptions', exceptions.unexplained.length === 0, formatLintResult(exceptions));
 const ledger = checkInboxLedger({ head });
 report('ledger', ledger.dangling.length === 0, formatLedgerResult(ledger));
+ensureEslint();   // koreanStrings parses with tools/eslint's TypeScript
+const korean = checkKoreanStrings({ head });
+report('korean', korean.added.length === 0, formatKoreanResult(korean));
 
 // Files for ESLint and tsc: this checkout if it is exactly <head>, else a temporary worktree.
 const clean = git(['status', '--porcelain', '--untracked-files=no']).trim() === '';

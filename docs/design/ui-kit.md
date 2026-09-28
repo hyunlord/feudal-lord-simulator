@@ -47,7 +47,7 @@
 - **공유 규칙:** 규칙원은 REVIEW-1의 `tools/eslint/uiControls.mjs` 하나다(병합 검사 `npm run check:merge`가 같은 것을 쓴다).
   - UI-KIT-1이 넓힌 것: 대상 파일에 `src/App.tsx`·`src/render/**/*.tsx`를 더했고, 금지 요소에 `<textarea>`·`<details>`·`<summary>`를 더했다(`<button>`·`<select>`·`<input>`은 원래 있음).
   - 예외는 부품 폴더 `src/ui/kit/`뿐이다.
-- **억제 목록:** `tools/eslint/eslint-suppressions.json`에 REVIEW-1 때 있던 122건(금지 컨트롤 118, exhaustive-deps 4)을 모두 고쳐 0건이다. `npm run lint`는 `tools/eslint`의 ESLint로 억제 없이 `src` 전체를 본다.
+- **억제 목록:** `tools/eslint/eslint-suppressions.json`에 REVIEW-1 때 있던 122건(금지 컨트롤 118, exhaustive-deps 4)을 모두 고쳐 0건이다. `npm run lint`는 `tools/eslint`의 ESLint로 `src` 전체를 본다. CODE-1b부터는 억제 파일(`tools/eslint/eslint-suppressions.json`)을 읽는다. 그 파일에는 계층 규칙 위반 1건만 있고, 금지 컨트롤 억제는 0건 그대로다.
 - **훅 규칙:** `react-hooks/rules-of-hooks`·`exhaustive-deps`는 오류다. 남긴 경고 끄기마다 윗줄에 `// why:`로 이유를 쓴다(AGENTS 규칙 19).
 - **파서:** `tools/eslint`는 자기 잠금 파일과 TypeScript 6.0으로 구문만 읽는다. typescript-eslint는 루트 TypeScript 7(JS 컴파일러 API 없음)을 쓸 수 없다.
 
