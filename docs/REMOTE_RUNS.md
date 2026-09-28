@@ -18,6 +18,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 - **긴 실행**: `FLS_REMOTE_DETACH=1 npm run remote:guardrail`(또는 `run.sh … --detach`)로 띄워 두고, 나중에 `scripts/remote/run.sh --attach <run>`으로 따라가거나 `--fetch <run>`으로 결과만 받는다. ssh가 끊겨도 원격 실행은 계속되고, 같은 방법으로 다시 붙는다.
 - **상태**: `scripts/remote/run.sh --status`로 도는 실행(스코프), 슬라이스 사용량, 폴더 목록을 본다.
 - **종료 코드**는 원격 명령의 것이다. 요약은 `.remote-runs/<run>/summary.txt`(가드레일은 `guardrail/summary.json`)에 있다.
+- **가드레일의 사람 경로**(CODE-1a): seed 실행 옆에서 `tests/humanPath*.test.ts`(명령 재생, 봇 없음)가 함께 돈다. 결과는 `guardrail/human-path.json`·`human-path.log`이고, 실패하면 가드레일 실행도 실패한다.
 
 ## 한 번 실행에서 일어나는 일
 1. **동기화**: git이 보는 작업 트리를 보낸다. 추적 파일과 무시되지 않은 새 파일이 대상이고, `node_modules`·`.git`·`dist`는 보내지 않는다.

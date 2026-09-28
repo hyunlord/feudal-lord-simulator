@@ -6,36 +6,12 @@
  */
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
-import { gameReducer } from "../src/state/gameStore";
 import { burgageParcels } from "../src/zones/zoneFillAgent";
+import { layStreet } from "./helpers/humanStreet";
 import { playAtPace } from "./helpers/tutorialPlay";
 
 const TWO_YEARS = 8_000;
-/** Seed map, tutorial at pace 1: the fields lie south of the village road, so the new street goes round them. */
-const ROAD = [[{ tx: 42, ty: 39 }, { tx: 39, ty: 39 }], [{ tx: 39, ty: 40 }, { tx: 35, ty: 40 }], [{ tx: 35, ty: 41 }, { tx: 35, ty: 60 }]] as const;
-const WELLS = [{ tx: 36, ty: 49 }, { tx: 36, ty: 57 }] as const;
-const PLOT_SIDES = [[32, 34], [36, 38]] as const;
-
-function layStreet(start: GameState): GameState {
-  let state = start;
-  for (const [from, to] of ROAD) {
-    const next = gameReducer(state, { type: "place_road_line", start: from, destination: to });
-    assert.notEqual(next, state, `road ${from.tx},${from.ty} → ${to.tx},${to.ty}`);
-    state = next;
-  }
-  for (const [west, east] of PLOT_SIDES) {
-    state = gameReducer(state, { type: "zone_paint", kind: "burgage", stroke: { tool: "polygon", points: [
-      { x: west, y: 42 }, { x: east + 1, y: 42 }, { x: east + 1, y: 61 }, { x: west, y: 61 }] } });
-  }
-  for (const well of WELLS) {
-    const next = gameReducer(state, { type: "place_building", kind: "well", tx: well.tx, ty: well.ty });
-    assert.notEqual(next, state, `well ${well.tx},${well.ty}`);
-    state = next;
-  }
-  return state;
-}
 
 test("FIX-4 gate ②: twelve plots painted after the tutorial receive eight or more households within two years", () => {
   const { state: tutorial, doneAt } = playAtPace(1, 2_400);
