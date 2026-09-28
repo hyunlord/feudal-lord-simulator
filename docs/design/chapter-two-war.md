@@ -49,7 +49,8 @@
 | `accept_with_price` 현금 | 100 %를 지금 낸다 |
 | `refuse` 거절 | 왕의 조달관이 150 %를 가져간다. 신임을 잃는다 |
 
-#### WR-2a 현물의 양털 뭉치 (FIX-7, 결정 FX7-1)
+#### WR-2a 현물의 양털 뭉치 (FIX-7, 결정 FX7-1 → C5 CL-9)
+- **C5부터 양털은 자원이다.** 현물은 저장소 재고에서 가져간다([직물 사슬 CL-9](cloth-chain.md), 결정 CL5). 아래는 FIX-7의 기록이다.
 - 양모는 C5 전에는 자원이 아니다. 그래서 양털 뭉치는 쌓아 두지 않고 목초지에서 셈한다(`src/engine/pastureWool.ts`, 수치 `src/content/woolConfig.ts`).
   - 양 = 목초지 칸 수 × 1(`pastureSheep`).
   - 한 계절의 양털 뭉치 = 양 × 한 해 1개 ÷ 4, 내림(`pastureFleecesPerSeason`). 초여름에 깎아 한 해 동안 계절마다 4분의 1씩 낸다.
