@@ -1,39 +1,56 @@
 /**
- * FIX-7 (spec docs/design/chapter-two-war.md WR-2, decisions WR5 and FX7-1): the pasture flocks' wool before C5.
- *
- * The sheep are the pasture zones' cells (`PASTURE_WOOL.sheepPerPastureCell`); a season's clip is a quarter of their
- * year's fleeces. The wool levy paid in kind takes the season's fleeces first, at `fleeceValue` each, and only what they
- * do not cover in cash. The fleeces are not stored: C5 makes the fleece a good the flocks put in the stores, and the
- * levy then takes it from there (the same split, from the stock instead of the clip).
+ * WR-2 in kind (FIX-7, C5 CL-9, decisions WR5, FX7-1 and CL5): the wool levy paid in kind takes the town's fleece —
+ * from the storehouses (by id), then the pastoral farms' yards — at `fleeceValue` a fleece, and only what the fleece
+ * does not cover in cash. Since C5 the fleece is a good the pastoral farms shear (`cloth.ts`); FIX-7 reckoned it from
+ * the pasture instead, while it was not yet one.
  */
-import { PASTURE_WOOL } from "../content/woolConfig";
-import { zonesOf } from "../zones/zoneEdits";
+import { CLOTH_BALANCE, FLEECE_RESOURCE } from "../content/clothConfig";
+import type { Building } from "../content/buildingConfig";
 import type { GameState } from "./engine.types";
 
-/** The sheep the town's pastures carry now. */
-export function pastureSheep(state: Pick<GameState, "zones">): number {
-  const cells = zonesOf(state).reduce((sum, zone) => sum + (zone.kind === "pasture" ? zone.membership.length : 0), 0);
-  return Math.floor(cells * PASTURE_WOOL.sheepPerPastureCell);
+const FLEECE_HOLDERS = ["storehouse", "pastoral_farm"] as const;
+
+/** The buildings holding fleece, in the order the levy takes it (the storehouses, then the farms; by id). */
+function holders(state: Pick<GameState, "buildings">): readonly Building[] {
+  return state.buildings.filter(building => (FLEECE_HOLDERS as readonly string[]).includes(building.kind) && (building.inventory.fleece ?? 0) > 0)
+    .sort((a, b) => FLEECE_HOLDERS.indexOf(a.kind as (typeof FLEECE_HOLDERS)[number]) - FLEECE_HOLDERS.indexOf(b.kind as (typeof FLEECE_HOLDERS)[number])
+      || a.id.localeCompare(b.id));
 }
 
-/** A season's clip: a quarter of the flocks' year of fleeces (rounded down). */
-export function pastureFleecesPerSeason(state: Pick<GameState, "zones">): number {
-  return Math.floor(pastureSheep(state) * PASTURE_WOOL.fleecesPerSheepYear / PASTURE_WOOL.seasonsPerClip);
+/** CL-9: the fleece the town holds (storehouses and pastoral farms). */
+export function townFleece(state: Pick<GameState, "buildings">): number {
+  return holders(state).reduce((sum, building) => sum + Math.max(0, Math.floor(building.inventory.fleece ?? 0)), 0);
 }
 
 export interface WoolInKindSplit {
-  /** Fleeces handed over (never more than the season's clip, nor more than the payment needs). */
+  /** Fleeces handed over (never more than the town holds, nor more than the payment needs). */
   readonly fleeces: number;
   /** Their value, pennies (the in-kind ledger line). */
   readonly inKind: number;
-  /** What the fleeces leave unpaid, pennies (the cash charge; unpaid cash goes to arrears as any war charge). */
+  /** What the fleece leaves unpaid, pennies (the cash charge; unpaid cash goes to arrears as any war charge). */
   readonly cash: number;
 }
 
-/** WR-2 in kind: a season's payment of `amount` pennies — the clip's fleeces first, the rest in cash. */
-export function woolInKindSplit(state: Pick<GameState, "zones">, amount: number): WoolInKindSplit {
+/** WR-2 in kind: a season's payment of `amount` pennies — the town's fleece first, the rest in cash. */
+export function woolInKindSplit(state: Pick<GameState, "buildings">, amount: number): WoolInKindSplit {
   if (amount <= 0) return { fleeces: 0, inKind: 0, cash: 0 };
-  const fleeces = Math.min(pastureFleecesPerSeason(state), Math.ceil(amount / PASTURE_WOOL.fleeceValue));
-  const inKind = Math.min(amount, fleeces * PASTURE_WOOL.fleeceValue);
+  const fleeces = Math.min(townFleece(state), Math.ceil(amount / CLOTH_BALANCE.fleeceValue));
+  const inKind = Math.min(amount, fleeces * CLOTH_BALANCE.fleeceValue);
   return { fleeces, inKind, cash: amount - inKind };
+}
+
+/** CL-9: `fleeces` taken from the holders in order (the Crown's collectors carry them off). */
+export function takeFleece(state: GameState, fleeces: number): GameState {
+  let left = fleeces;
+  const taken = new Map<string, number>();
+  for (const building of holders(state)) {
+    if (left <= 0) break;
+    const amount = Math.min(left, Math.floor(building.inventory.fleece ?? 0));
+    if (amount > 0) { taken.set(building.id, amount); left -= amount; }
+  }
+  if (taken.size === 0) return state;
+  return { ...state, buildings: state.buildings.map(building => {
+    const amount = taken.get(building.id);
+    return amount === undefined ? building : { ...building, inventory: { ...building.inventory, [FLEECE_RESOURCE]: (building.inventory.fleece ?? 0) - amount } };
+  }) };
 }

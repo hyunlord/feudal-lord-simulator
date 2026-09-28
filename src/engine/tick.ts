@@ -33,6 +33,7 @@ import { advancePlague, plagueHousing } from "./plague";
 import { advanceWar } from "./war";
 import { advanceFactions } from "./factions";
 import { advanceAle, aleRequired, aleServedHouses } from "./ale";
+import { advanceCloth } from "./cloth";
 import { ALE_BALANCE } from "../content/aleConfig";
 import { advanceHistory } from "./history";
 import { carterCrossings } from "./tollCrossings";
@@ -261,7 +262,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
 function advanceWarTick(state: GameState): GameState {
   // FACTION-0 (FX-1, FX-2, FX-5): then the factions' season (their leaders, their year). C4 (AL-4, AL-5): then the ale.
   // F3-A (PL-1…PL-10): the Black Death's season after the war's; chapter 3's end is written by the politics.
-  return advanceAle(advanceFactions(advancePlague(advanceWar(state, endChapterTwo), endChapterThree)));
+  // C5 (CL-1…CL-8): then the cloth chain's shearing, spinning and dyes.
+  return advanceCloth(advanceAle(advanceFactions(advancePlague(advanceWar(state, endChapterTwo), endChapterThree))));
 }
 
 export function advanceTick(state: GameState): GameState {

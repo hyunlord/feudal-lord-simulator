@@ -165,6 +165,8 @@ function spawnForBuilding(
   const production = definition.production;
   // AF-9: a farmstead's carter hauls the harvest from its barn like production output.
   if (production === null) {
+    // C5 (CL-2): a pastoral farm's carter hauls the shorn fleece from its yard.
+    if (definition.yardOutput !== undefined) return spawnDelivery({ tick, building, buildings, outputResource: definition.yardOutput, inventory, routes });
     const field = fieldOutputResource(building);
     return field === undefined ? { buildings, walker: null }
       : spawnDelivery({ tick, building, buildings, outputResource: field, inventory, routes });

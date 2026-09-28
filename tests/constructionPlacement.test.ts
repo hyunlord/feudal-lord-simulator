@@ -30,6 +30,12 @@ const VALID_ORIGINS = {
   keep: { tx: 30, ty: 1 },
   farmstead: { tx: 33, ty: 1 },
   malt_kiln: { tx: 36, ty: 1 },
+  // C5: the cloth chain; the fulling mill and the dyehouse stand either side of a pool at x 45.
+  pastoral_farm: { tx: 38, ty: 1 },
+  weaver_house: { tx: 41, ty: 1 },
+  fulling_mill: { tx: 43, ty: 1 },
+  dyehouse: { tx: 46, ty: 1 },
+  tenter_yard: { tx: 49, ty: 1 },
 } as const satisfies Record<BuildingKind, { readonly tx: number; readonly ty: number }>;
 
 function constructionSites(state: GameState): readonly ConstructionSite[] {
@@ -51,8 +57,8 @@ function nextConstructionOrdinal(state: GameState): number {
 }
 
 function buildableSettlement(treasuryTimber = 500): GameState {
-  // C4: the road reaches x 37 for the malt kiln at x 36.
-  const roadTxs = new Set(Array.from({ length: 38 }, (_unused, index) => index));
+  // C4: the road reaches x 37 for the malt kiln at x 36; C5: x 52 for the cloth chain.
+  const roadTxs = new Set(Array.from({ length: 53 }, (_unused, index) => index));
   return {
     ...DEFAULT_GAME_STATE,
     tiles: DEFAULT_GAME_STATE.tiles.map((tile) => ({
@@ -62,7 +68,9 @@ function buildableSettlement(treasuryTimber = 500): GameState {
           ? "forest"
           : tile.tx === 22 && tile.ty === 2
             ? "rock"
-            : "grass",
+            : tile.tx === 45 && (tile.ty === 1 || tile.ty === 2)
+              ? "water"
+              : "grass",
       buildingId: null,
       hasRoad: tile.ty === 0 && roadTxs.has(tile.tx),
     })),

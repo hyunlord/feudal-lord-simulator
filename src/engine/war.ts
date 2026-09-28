@@ -23,7 +23,7 @@ import {
   WOOL_PAYMENT_PETITION_ID,
 } from "../content/warConfig";
 import { archetypeOf } from "../content/scenario/registry";
-import { FLEECE_IN_KIND } from "../content/woolConfig";
+import { FLEECE_RESOURCE } from "../content/clothConfig";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { LedgerCategory, LedgerPosting } from "../ledger/ledger.types";
 import { houseLotArea } from "../geometry/buildingFootprint";
@@ -37,7 +37,7 @@ import { EMPTY_MONEY, type UpkeepArrear } from "./money.types";
 import type { PetitionRecord } from "./politics.types";
 import { hashSeed } from "./prng";
 import { calendar, scenarioOf } from "./scenarioState";
-import { woolInKindSplit } from "./pastureWool";
+import { takeFleece, woolInKindSplit } from "./pastureWool";
 import { abandonHouse } from "./seasonPressure";
 import type { Conscripts, RaidLosses, WarState, WarStep } from "./war.types";
 
@@ -75,6 +75,13 @@ function livedIn(state: Pick<GameState, "houses">): readonly House[] {
 /** WR-2: the wool levy (pennies): per lived-in house when it comes. */
 export function woolLevyAmount(state: Pick<GameState, "houses">): number {
   return livedIn(state).length * WAR_BALANCE.woolLevyPerHouse;
+}
+
+/** WR-2 in kind (HL-3 forecast): the cash two seasons' payments take, the fleece the first uses gone for the second. */
+function twoSeasonsInKindCash(state: GameState, perSeason: number): number {
+  const first = woolInKindSplit(state, perSeason);
+  const second = woolInKindSplit(takeFleece(state, first.fleeces), perSeason);
+  return first.cash + second.cash;
 }
 
 /** WR-2 in kind: a season's share (pennies) of the 125 % owed, before the fleeces pay it (`woolInKindSplit`). */
@@ -329,8 +336,8 @@ export function warDecisionForecast(state: GameState, defId: string, response: P
   switch (defId) {
     case WOOL_PAYMENT_PETITION_ID: {
       const levy = woolLevyAmount(state);
-      // In kind: two seasons of the cash the pasture's fleeces leave unpaid (FIX-7).
-      return response === "accept" ? treasury - 2 * woolInKindSplit(state, woolInKindPerSeason(levy)).cash
+      // In kind: two seasons of the cash the town's fleece leaves unpaid (FIX-7; C5: the second season has what the first left).
+      return response === "accept" ? treasury - twoSeasonsInKindCash(state, woolInKindPerSeason(levy))
         : treasury - (response === "accept_with_price" ? levy : Math.ceil(levy * WAR_BALANCE.woolSeizedPermille / 1000));
     }
     case LEVY_RESPONSE_PETITION_ID:
@@ -393,15 +400,16 @@ export function warTaxPermille(state: Pick<GameState, "war">): number {
 }
 
 /**
- * WR-2 in kind (FIX-7, decision FX7-1): a season's wool — the pasture flocks' fleeces first, valued on the ledger's
- * in-kind account (`resource` = the fleece, no cash moves), and only what they leave unpaid charged in cash.
+ * WR-2 in kind (FIX-7, C5 CL-9, decisions FX7-1 and CL5): a season's wool — the town's fleece first, taken from the
+ * stores and valued on the ledger's in-kind account (`resource` = the fleece, no cash moves), the rest charged in cash.
  */
 function payWoolInKind(state: GameState, amount: number): GameState {
   const source: readonly [SourceRef, ...SourceRef[]] = [CROWN, { type: "claim", id: "wool_levy", detail: "in_kind" }];
   const split = woolInKindSplit(state, amount);
   let next = state;
   if (split.inKind > 0) {
-    const posted = postLedgerEntries(next, [{ account: "in_kind", category: "wool_levy", amount: -split.inKind, resource: FLEECE_IN_KIND,
+    next = takeFleece(next, split.fleeces);
+    const posted = postLedgerEntries(next, [{ account: "in_kind", category: "wool_levy", amount: -split.inKind, resource: FLEECE_RESOURCE,
       sourceRefs: [...source, { type: "claim", id: "wool_levy", detail: `fleece:${split.fleeces}` }] }]);
     next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };
   }

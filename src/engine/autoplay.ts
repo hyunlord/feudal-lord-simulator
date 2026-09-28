@@ -13,6 +13,7 @@ import { needsStoneStorageRecovery } from './autoplayStorageRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
+import { clothChainAction } from './autoplayCloth';
 import { ALE_ARABLE_MARGIN_PERMILLE, aleChainAction, aleWantsBarley, autoplayEraAction, stoneProjectAction } from './autoplayEra';
 import { autoplayWallExpansionAction } from './autoplayWallRoom';
 import { preservesAutoplayServiceSpace, serviceSafeRoadAction } from './autoplayServiceSpace';
@@ -206,7 +207,9 @@ function roadAccessAction(state: GameState): AutoplayAction {
  * houses, services and granaries. With better hauling the town grows mills and timber works earlier; inside a
  * palisade they took the last plots (seed 3 stopped short of 24 lots).
  */
-const OUTSIDE_WALL_KINDS: ReadonlySet<BuildingKind> = new Set(["mill", "farmstead", "sawmill", "logging_camp", "quarry", "masonry", "storehouse"]);
+// C5 (CL-11): the cloth chain's yards and water mills go outside the wall too (the weaver's house may stand within).
+const OUTSIDE_WALL_KINDS: ReadonlySet<BuildingKind> = new Set(["mill", "farmstead", "sawmill", "logging_camp", "quarry", "masonry", "storehouse",
+  "pastoral_farm", "fulling_mill", "dyehouse", "tenter_yard"]);
 
 function outsideWall(state: GameState, kind: BuildingKind, coordinate: TileCoordinate): boolean {
   const polygon = state.palisade?.polygon;
@@ -359,7 +362,8 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   if (state.era === "stone_town" && stoneFirst && wallConstructionPriority(state) !== "priority") return { kind: 'set_wall_construction_priority', priority: 'priority' };
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve, barnMill,
-      (current: GameState) => aleFood(current, () => foodAction(current, buildAction, diagnostic)), (current: GameState) => aleChainAction(current, buildAction), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
+      (current: GameState) => aleFood(current, () => foodAction(current, buildAction, diagnostic)), (current: GameState) => aleChainAction(current, buildAction),
+      (current: GameState) => clothChainAction(current, buildAction), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
       (current: GameState): AutoplayAction => homesHeld ? NONE : housingAction(current, policy)]) {
       const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
       if (action.foodTransient !== undefined) metadata = action;
@@ -383,6 +387,8 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => aleFood(state, () => foodAction(state, buildAction, diagnostic)),
     // C4 (AL-8): the ale chain once it is required.
     () => aleChainAction(state, buildAction),
+    // C5 (CL-11): the cloth chain after chapter 3.
+    () => clothChainAction(state, buildAction),
     // FIX-5 (WR-11): the stone-wall variant seeks its project before homes.
     ...(stoneFirst ? [() => stoneProjectAction(state, buildAction)] : []),
     housingPhase,

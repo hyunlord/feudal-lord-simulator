@@ -19,7 +19,13 @@ export type BuildingKind =
   | "market"
   | "church"
   | "keep"
-  | "malt_kiln";
+  | "malt_kiln"
+  // C5 the cloth chain (spec docs/design/cloth-chain.md CL-*).
+  | "pastoral_farm"
+  | "weaver_house"
+  | "fulling_mill"
+  | "dyehouse"
+  | "tenter_yard";
 
 export interface ProductionSpec {
   readonly output: ResourceType;
@@ -28,6 +34,8 @@ export interface ProductionSpec {
   readonly ticksPerOutput: number;
   /** LB-7: production waits (`output_full`) while this much output is still in the building, keeping room for input. */
   readonly outputHoldLimit?: number;
+  /** C5 (CL-6): a second good each output also uses up, from the building's own stock (the dyehouse's dyes). */
+  readonly alsoConsumes?: { readonly resource: ResourceType; readonly amount: number };
 }
 
 export interface BuildingDefinition {
@@ -49,6 +57,11 @@ export interface BuildingDefinition {
   readonly fieldOutput?: ResourceType;
   /** AF-9: load of this building's carter when it hauls out (default `BALANCE.CARTER_CAPACITY`). The farmstead's ox cart. */
   readonly carterCapacity?: number;
+  /**
+   * C5 (CL-2): a building that neither produces nor tends strips but gathers a good in its yard (the pastoral farm's
+   * shorn fleece) and carts it out like production output.
+   */
+  readonly yardOutput?: ResourceType;
 }
 
 export interface Building {
@@ -363,6 +376,38 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     serviceRadius: 0,
     // C4 (decision AL12): the kiln's barley carts carry as the mill's wheat carts do (8 left it starving 79–89 % of the time).
     carterCapacity: LABOUR_BALANCE.millCartCapacity,
+  },
+  // C5 (CL-2): the pastoral farm — the shepherds' fold and wool store beside the pasture; it shears the flocks it tends
+  // in early summer (`cloth.ts`) and carts the fleece to the storehouses.
+  pastoral_farm: {
+    kind: "pastoral_farm", name: BUILDING_COPY.pastoral_farm.name, width: 2, height: 1, workersRequired: 1, buildCost: { timber: 30 },
+    requiresAdjacentTerrain: null, requiresRoad: true, production: null, storageCapacity: 400, serviceRadius: 0, yardOutput: "fleece", carterCapacity: 40,
+  },
+  // C5 (CL-4): the weaver's house and its broad loom — four skeins of yarn a cloth.
+  weaver_house: {
+    kind: "weaver_house", name: BUILDING_COPY.weaver_house.name, width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
+    requiresAdjacentTerrain: null, requiresRoad: true,
+    production: { output: "raw_cloth", input: "yarn", inputPerOutput: 4, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 40, serviceRadius: 0,
+  },
+  // C5 (CL-5): the fulling mill — a water wheel's hammers (14th-century English fulling was water-driven; the corn mill
+  // stays a windmill, the forbidden watermill is the grain one).
+  fulling_mill: {
+    kind: "fulling_mill", name: BUILDING_COPY.fulling_mill.name, width: 2, height: 2, workersRequired: 2, buildCost: { timber: 60 },
+    requiresAdjacentTerrain: "water", requiresRoad: true,
+    production: { output: "fulled_cloth", input: "raw_cloth", inputPerOutput: 1, ticksPerOutput: 60, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
+  },
+  // C5 (CL-6): the dyehouse by the water — a vat of woad, madder or weld a cloth.
+  dyehouse: {
+    kind: "dyehouse", name: BUILDING_COPY.dyehouse.name, width: 2, height: 1, workersRequired: 2, buildCost: { timber: 40 },
+    requiresAdjacentTerrain: "water", requiresRoad: true,
+    production: { output: "dyed_cloth", input: "fulled_cloth", inputPerOutput: 1, ticksPerOutput: 60, outputHoldLimit: 10, alsoConsumes: { resource: "dyes", amount: 1 } },
+    storageCapacity: 40, serviceRadius: 0,
+  },
+  // C5 (CL-7): the tenter field — cloth stretched on its frames to dry true and be finished.
+  tenter_yard: {
+    kind: "tenter_yard", name: BUILDING_COPY.tenter_yard.name, width: 3, height: 2, workersRequired: 1, buildCost: { timber: 20 },
+    requiresAdjacentTerrain: null, requiresRoad: true,
+    production: { output: "finished_cloth", input: "dyed_cloth", inputPerOutput: 1, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
   },
 };
 
