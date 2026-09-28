@@ -20,14 +20,16 @@ import { wallStripsEnabled } from "./renderWallStripsFlag";
 //     (8-tile period) and laid along the outline segment
 //     by segment (texture u = arc length, v across; land up), the painted waterline on the outline;
 //  4. reeds and mudstones (Wave 4d sprites, mirrored by hash) at the scattered decal anchors, over the strips; the
-//     D3a code-drawn blobs until the sprites load.
+//     D3a code-drawn blobs until the sprites load. INSTALL-29: with `liveReeds` the reeds are left out (the Wave 29
+//     sway sheets draw them live at the same rect, drawWaterMotion.ts); the winter ice rim follows the strips
+//     (drawIceRim, called by the chunk after this).
 // Bridge abutments are drawn live after the bridge decks (drawTerrainBoundaryV2), with the decks.
 
 const STRIP_WIDTH = 512;
 const STRIP_HEIGHT = 96;
-const STRIP_PX_PER_TILE = 128;
+export const STRIP_PX_PER_TILE = 128;
 /** Source row of the painted mud line (the waterline): rows 0..41 land fringe, 42..95 water. */
-const WATERLINE_ROW = 42;
+export const WATERLINE_ROW = 42;
 const STRIP_JOIN_FADE = 48;
 const WATER_EDGE_ROW = 88;
 /** Quads overlap their neighbours by this much along the line so antialiased joins leave no hairline. */
@@ -58,7 +60,7 @@ function traceWater(context: CanvasRenderingContext2D, shore: Shoreline, loops: 
 }
 
 export function drawShoreline(context: CanvasRenderingContext2D, shore: Shoreline, loops: readonly number[], parity: boolean,
-  chunk: ScreenBounds, tileBounds: BoundaryBounds, seed: number): void {
+  chunk: ScreenBounds, tileBounds: BoundaryBounds, seed: number, liveReeds = false): void {
   if (loops.length === 0 && !parity) return;
   // 1. Deep water.
   traceWater(context, shore, loops, parity, chunk);
@@ -91,13 +93,13 @@ export function drawShoreline(context: CanvasRenderingContext2D, shore: Shorelin
   if (sprites) {
     for (const index of loops) {
       const loop = shore.loops[index];
-      if (loop !== undefined) drawDecalSprites(context, loop, tileBounds);
+      if (loop !== undefined) drawDecalSprites(context, loop, tileBounds, liveReeds);
     }
   }
 }
 
 /** A smoothed sprite, mirrored about its own vertical centre line when asked (decals, the SW abutment). */
-function drawMirrorableSprite(context: CanvasRenderingContext2D, image: CanvasImageSource, source: { x: number; y: number; width: number; height: number },
+export function drawMirrorableSprite(context: CanvasRenderingContext2D, image: CanvasImageSource, source: { x: number; y: number; width: number; height: number },
   destination: { x: number; y: number; width: number; height: number }, mirrored: boolean): void {
   if (!mirrored) { drawCroppedWorldSprite(context, image, source, destination, false, true); return; }
   const centre = destination.x + destination.width / 2;
@@ -113,8 +115,9 @@ function decalSpritesReady(): boolean {
   return [...TERRAIN_VARIANTS.shoreReeds, ...TERRAIN_VARIANTS.shoreStones].every(key => shoreAsset(key) !== null);
 }
 
-function drawDecalSprites(context: CanvasRenderingContext2D, loop: ShoreLoop, tileBounds: BoundaryBounds): void {
+function drawDecalSprites(context: CanvasRenderingContext2D, loop: ShoreLoop, tileBounds: BoundaryBounds, liveReeds: boolean): void {
   for (const decal of loop.decals) {
+    if (liveReeds && decal.kind === "weed") continue; // INSTALL-29: the swaying reeds are drawn live (drawWaterMotion.ts)
     if (decal.anchor.x < tileBounds.left - 1 || decal.anchor.x > tileBounds.right + 1 || decal.anchor.y < tileBounds.top - 1 || decal.anchor.y > tileBounds.bottom + 1) continue;
     const family = decal.kind === "stone" ? TERRAIN_VARIANTS.shoreStones : TERRAIN_VARIANTS.shoreReeds;
     const image = shoreAsset(family[decal.variant % family.length] as ShoreAssetKey);

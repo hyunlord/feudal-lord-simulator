@@ -1,0 +1,53 @@
+{
+ "note": "Mac, headless Chrome --disable-gpu, 1280x720, palisade-construction save, tile [53,22], zoom 1.1, game paused, &weather=normal; 240 frames of the render stage probe per run; off = drawWaterMotion returns at once (served-module rewrite). Not the DGX gate.",
+ "perf": [
+  {
+   "round": 0,
+   "mode": "off",
+   "frames": 240,
+   "waterMean": 0.005000000000776102,
+   "waterP95": 0.09999999997671694,
+   "totalMedian": 1.2000000000698492,
+   "totalP95": 1.5
+  },
+  {
+   "round": 0,
+   "mode": "on",
+   "frames": 240,
+   "waterMean": 0.13916666666724875,
+   "waterP95": 0.2000000000698492,
+   "totalMedian": 1.3000000000465661,
+   "totalP95": 1.5
+  },
+  {
+   "round": 1,
+   "mode": "off",
+   "frames": 240,
+   "waterMean": 0.005000000001261166,
+   "waterP95": 0.09999999997671694,
+   "totalMedian": 1.1999999999534339,
+   "totalP95": 1.400000000023283
+  },
+  {
+   "round": 1,
+   "mode": "on",
+   "frames": 240,
+   "waterMean": 0.13708333333973619,
+   "waterP95": 0.2000000000698492,
+   "totalMedian": 1.400000000023283,
+   "totalP95": 1.6999999999534339
+  }
+ ],
+ "changedPixels150ms": {
+  "note": "pixels changed (>8 of 255) between frames 0 and 1, 150 ms apart; every scene but running has the game paused",
+  "changed": {
+   "lake": 11773,
+   "shore": 8997,
+   "winter": 12731,
+   "wet": 18780,
+   "zoom06": 583,
+   "reeds": 4902,
+   "running": 25372
+  }
+ }
+}

@@ -122,7 +122,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         state: input.state,
         tiles: visibleTiles,
         range,
-        zoom: input.camera.zoom,
+        zoom: input.camera.zoom, nowMs: input.nowMs ?? 0, // INSTALL-29: water moves on the wall clock, also while paused
         objectRenderItems,
       });
       drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom, objectRenderItems); drawWeatherGround(input.context, input.state, visibleTiles, input.camera.zoom, input.nowMs ?? 0); // INSTALL-7 / INSTALL-15 season decals, INSTALL-23 weather ground
