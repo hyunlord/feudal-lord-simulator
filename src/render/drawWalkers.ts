@@ -12,6 +12,8 @@ import { composedWalkerReady, drawComposedWalker, VILLAGER_WORLD_SCALE, walkerAp
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
 import { visibilityArt } from "./visibilityArtManifest";
 import { drawWave7 } from "./wave7Art";
+import { drawWave3Ale } from "./wave3AleArt";
+import { aleCartLoad } from "./aleWorldArt";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { drawUiIcon } from "../ui/uiArt";
 
@@ -97,6 +99,8 @@ const CLOSE_ZOOM = 1.3;
 // F0-V Wave 6 pile stands in while they load. Coin rides in the collector's purse, not on a cart. RES-REG: a good with
 // no cart load of its own rides as the Wave 7 sacks (granary goods) or crates (storehouse goods).
 const GENERIC_CART_PILE = { granary: "pile_sacks_1", storehouse: "pile_crates_1" } as const;
+/** The Wave 7 loads' cargo width (px of their 96 px art); Wave 3's loads were fitted to the same box (38 x 32 at (48, 48)). */
+const WAVE7_CARGO_WIDTH = 36;
 /** LOD: below this zoom the cart's load is not drawn (it reads as a few pixels; the cart and carter say enough). */
 export const CART_LOAD_MIN_ZOOM = 0.8;
 
@@ -108,14 +112,17 @@ export function cartLoadArt(resource: ResourceType, direction: string): { readon
   // The generic pile's goods span 72 of its 96 px (the crop the F0-V piles use below).
   if (entry.cartLoadKey === undefined) return { key: GENERIC_CART_PILE[entry.storage], width: 72, pile: null };
   const axis = direction === "NE" || direction === "SW" ? "ne" : "nw";
-  return { key: `cart_load_${entry.cartLoadKey}_${axis}` as const, width: 36, pile: entry.cartPileKey ?? null };
+  return { key: `cart_load_${entry.cartLoadKey}_${axis}` as const, width: WAVE7_CARGO_WIDTH, pile: entry.cartPileKey ?? null };
 }
 
 function drawCartPayload(context: CanvasRenderingContext2D, cart: { readonly x: number; readonly y: number; readonly width: number; readonly height: number },
   resource: ResourceType, direction: string): void {
   const art = cartLoadArt(resource, direction);
   if (art === null) return;
-  // The load's pivot (bottom centre of its cargo) on the cart bed, the cargo about 0.55 of the cart's width.
+  // The load's pivot (bottom centre of its cargo) on the cart bed, the cargo about 0.55 of the cart's width. INSTALL-3:
+  // barley, malt and ale ride as Wave 3's loads (same pivot and cargo box as Wave 7's), the sacks or crates while they load.
+  const ale = aleCartLoad(resource, direction);
+  if (ale !== null && drawWave3Ale(context, ale, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / WAVE7_CARGO_WIDTH)) return;
   if (drawWave7(context, art.key, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / art.width)) return;
   const image = art.pile === null ? null : visibilityArt(art.pile);
   if (image === null) return;

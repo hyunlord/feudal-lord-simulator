@@ -6,6 +6,8 @@ import { frameBuildingVariant } from "./buildingVariants";
 import { historicalHouseAssetMeta, historicalHouseSpriteRect } from "./historicalHouseAssets";
 import { houseCompoundAssetMeta, houseCompoundSpriteRect } from "./houseCompoundAssets";
 import { millRegistration } from "./animatedMill";
+import { historicalFacilityAssetId, historicalFacilitySpriteRect } from "./historicalFacilityAssets";
+import type { HistoricalFacilityAssetId } from "./historicalFacilityManifest";
 import { tileToScreen, TILE_H } from "./iso";
 import { ROOF_SMOKE_ANCHORS } from "./roofSmokeAnchors.generated";
 import { visibilityArt } from "./visibilityArtManifest";
@@ -15,7 +17,7 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // F0-V operating signs (visibility design 1절, D6): smoke is "lived in and fed". A house with residents and bread in
 // its stock smokes from its ridge (no chimneys: roof smoke, scripts/roofSmokeAnchors.py); its last loaf gives a thin
 // plume; an empty house, or residents with no bread (world sign S4, worldSigns.ts), give none. The mill's bread oven smokes while the mill runs (workers, not paused
-// or unpaid, wheat in hand or baking under way). Presentation only: read from the state, nothing stored.
+// or unpaid, wheat in hand or baking under way), and the malt kiln's flue while it malts (INSTALL-3). Presentation only: read from the state, nothing stored.
 
 // INSTALL-23b (user judgement 2026-09-28): the plume moves on the frame's wall clock (`nowMs`), so it rises while the
 // game is paused, as water and weather do (the village's animals stop: lifeClock.ts). It was on the game clock
@@ -60,8 +62,24 @@ export function drawHouseRoofSmoke(context: CanvasRenderingContext2D, state: Pic
 
 /** The mill's oven dome (about 87 % across and 66 % down its body art). */
 const MILL_OVEN = { fx: 0.87, fy: 0.66 } as const;
-export function drawMillOvenSmoke(context: CanvasRenderingContext2D, building: Building, nowMs: number): void {
+/**
+ * INSTALL-3: the malt kiln's flue top on each Wave 3 painting, as a fraction of its facility crop (160 x 128), read off
+ * the art: a's squat stone flue at (47, 46), b's round kiln's flue at (127, 35). It is the one flue the no-chimney rule
+ * lets smoke — a working fire, only while the kiln malts.
+ */
+const FACILITY_FLUES: Readonly<Partial<Record<HistoricalFacilityAssetId, { readonly fx: number; readonly fy: number }>>> = {
+  malthouse_a: { fx: 47 / 160, fy: 46 / 128 }, malthouse_b: { fx: 127 / 160, fy: 35 / 128 },
+};
+/** A working fire's smoke (catalog `smoke: "work_fire"`) while it burns: the mill's oven, the kiln's flue. */
+export function drawWorkFireSmoke(context: CanvasRenderingContext2D, building: Building, state: GameState, nowMs: number): void {
   if (!millOvenBurning(building)) return;
+  if (building.kind !== "mill") {
+    const id = historicalFacilityAssetId(building, state);
+    const flue = id === null ? undefined : FACILITY_FLUES[id];
+    const rect = historicalFacilitySpriteRect(building);
+    if (flue !== undefined && rect !== null) drawSmokePlume(context, rect.x + flue.fx * rect.width, rect.y + flue.fy * rect.height, 1, nowMs, building.tx, true);
+    return;
+  }
   const center = tileToScreen(building.tx, building.ty);
   const scale = millRegistration.bodyDisplayWidth / millRegistration.body.width;
   const left = center.sx - millRegistration.bodyCentreX * scale;

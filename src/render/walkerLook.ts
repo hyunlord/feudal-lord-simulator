@@ -23,7 +23,8 @@ export type WalkerPropKind = keyof typeof walkerPropManifest;
 /** Winter cloaks: men's and women's (Wave 5a) and the merchant's (Wave 4e, merchant template bodies only). */
 export type WalkerCloakKind = keyof typeof walkerCloakManifest;
 export type WalkerOccupation = "builder" | "farmer" | "logger" | "quarryman" | "carter" | "coin_carter" | "distributor"
-  | "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard" | "child_companion";
+  | "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard" | "child_companion"
+  | "alewife" | "maltster";
 
 export interface WalkerLook {
   readonly sheetId: WalkerSheetId;
@@ -51,6 +52,10 @@ export const OCCUPATION_BANDS: Readonly<Record<WalkerOccupation, readonly (reado
   clergy: [["priest", 2], ["monk", 1], ["nun", 1]],
   guard: [["guard", 1]],
   child_companion: [["child", 1]],
+  // INSTALL-3: the ale chain's workers wear their Wave 3 sheets (walkerComposer `walkerAppearance`, band "ale"); these
+  // bands only give the rest of the look (sex, trinket).
+  alewife: [["servant", 1]],
+  maltster: [["labor", 1]],
 };
 /** INSTALL-5c: an elder of the household walks in an elder body whatever the errand (Wave 5c elder reskins). */
 export const ELDER_BANDS: readonly (readonly [WalkerClassBand, number])[] = [["elder", 1]];

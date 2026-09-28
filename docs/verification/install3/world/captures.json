@@ -1,0 +1,413 @@
+{
+ "source": "scripts/install3States.ts (the C4 human path replayed; states not edited)",
+ "paused": true,
+ "shots": {
+  "alehouse-dry-z1.0.jpg": {
+   "tick": 92400,
+   "tile": [
+    44,
+    42
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "alehouse house-44-42-0 sold out"
+  },
+  "alehouse-dry-z0.6.jpg": {
+   "tick": 92400,
+   "tile": [
+    44,
+    42
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "alehouse house-44-42-0 sold out"
+  },
+  "alehouse-dry-z2.0.jpg": {
+   "tick": 92400,
+   "tile": [
+    44,
+    42
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 190,
+    "width": 400,
+    "height": 260
+   },
+   "note": "alehouse house-44-42-0 sold out"
+  },
+  "maltster-z1.0.jpg": {
+   "tick": 92402,
+   "tile": [
+    40.24,
+    34
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "maltster resident-kiln:construction-site-000027:construction-site-000051:0@92091"
+  },
+  "maltster-z0.6.jpg": {
+   "tick": 92402,
+   "tile": [
+    40.24,
+    34
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "maltster resident-kiln:construction-site-000027:construction-site-000051:0@92091"
+  },
+  "barley-growing-z1.0.jpg": {
+   "tick": 92500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 360,
+    "y": 244,
+    "width": 560,
+    "height": 312
+   },
+   "note": "7 barley strips growing; the barley strip at (45.5, 38.0) beside the wheat strip growing at (48.5, 38.0)"
+  },
+  "barley-growing-z0.6.jpg": {
+   "tick": 92500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 360,
+    "y": 244,
+    "width": 560,
+    "height": 312
+   },
+   "note": "7 barley strips growing; the barley strip at (45.5, 38.0) beside the wheat strip growing at (48.5, 38.0)"
+  },
+  "barley-growing-z2.0.jpg": {
+   "tick": 92500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "7 barley strips growing; the barley strip at (45.5, 38.0) beside the wheat strip growing at (48.5, 38.0)"
+  },
+  "barn-barley-z1.0.jpg": {
+   "tick": 93505,
+   "tile": [
+    39,
+    36
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "barn farmstead-39-36-0 barley 59 (capacity 1000: pile level 1 below 334), wheat 0"
+  },
+  "barn-barley-z0.6.jpg": {
+   "tick": 93505,
+   "tile": [
+    39,
+    36
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "barn farmstead-39-36-0 barley 59 (capacity 1000: pile level 1 below 334), wheat 0"
+  },
+  "cart-barley-z1.0.jpg": {
+   "tick": 93520,
+   "tile": [
+    40,
+    36
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "carter carter:construction-site-000051:93505 (malt_kiln) with 12 barley"
+  },
+  "cart-barley-z0.6.jpg": {
+   "tick": 93520,
+   "tile": [
+    40,
+    36
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "carter carter:construction-site-000051:93505 (malt_kiln) with 12 barley"
+  },
+  "cart-malt-z1.0.jpg": {
+   "tick": 93554,
+   "tile": [
+    40,
+    34
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "carter carter:construction-site-000051:93554 (malt_kiln) with 1 malt"
+  },
+  "cart-malt-z0.6.jpg": {
+   "tick": 93554,
+   "tile": [
+    40,
+    34
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "carter carter:construction-site-000051:93554 (malt_kiln) with 1 malt"
+  },
+  "kiln-working-z1.0.jpg": {
+   "tick": 93574,
+   "tile": [
+    38.5,
+    33.5
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "kiln barley 10, malt 1, workers 2"
+  },
+  "kiln-working-z0.6.jpg": {
+   "tick": 93574,
+   "tile": [
+    38.5,
+    33.5
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "kiln barley 10, malt 1, workers 2"
+  },
+  "alewife-z1.0.jpg": {
+   "tick": 93577,
+   "tile": [
+    49.44,
+    41
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "alewife resident-malt:house-46-40-0:construction-site-000051:0@93202"
+  },
+  "alewife-z0.6.jpg": {
+   "tick": 93577,
+   "tile": [
+    49.44,
+    41
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "alewife resident-malt:house-46-40-0:construction-site-000051:0@93202"
+  },
+  "alehouse-z1.0.jpg": {
+   "tick": 94400,
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "alehouse construction-site-000020 ale 2"
+  },
+  "alehouse-z0.6.jpg": {
+   "tick": 94400,
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "alehouse construction-site-000020 ale 2"
+  },
+  "alehouse-z2.0.jpg": {
+   "tick": 94400,
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 190,
+    "width": 400,
+    "height": 260
+   },
+   "note": "alehouse construction-site-000020 ale 2"
+  },
+  "brewing-z1.0.jpg": {
+   "tick": 96400,
+   "tile": [
+    47,
+    32
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "house construction-site-000039 level 1, ale 2"
+  },
+  "brewing-z0.6.jpg": {
+   "tick": 96400,
+   "tile": [
+    47,
+    32
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "house construction-site-000039 level 1, ale 2"
+  },
+  "brewing-z2.0.jpg": {
+   "tick": 96400,
+   "tile": [
+    47,
+    32
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 190,
+    "width": 400,
+    "height": 260
+   },
+   "note": "house construction-site-000039 level 1, ale 2"
+  },
+  "barley-ripe-z1.0.jpg": {
+   "tick": 97500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 360,
+    "y": 244,
+    "width": 560,
+    "height": 312
+   },
+   "note": "7 barley strips ripe; the barley strip at (45.5, 38.0) beside the wheat strip ripe at (48.5, 38.0)"
+  },
+  "barley-ripe-z0.6.jpg": {
+   "tick": 97500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 360,
+    "y": 244,
+    "width": 560,
+    "height": 312
+   },
+   "note": "7 barley strips ripe; the barley strip at (45.5, 38.0) beside the wheat strip ripe at (48.5, 38.0)"
+  },
+  "barley-ripe-z2.0.jpg": {
+   "tick": 97500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "7 barley strips ripe; the barley strip at (45.5, 38.0) beside the wheat strip ripe at (48.5, 38.0)"
+  }
+ },
+ "jpegBytes": 693626,
+ "errors": []
+}

@@ -12,6 +12,7 @@ import { buildingBodyProfile } from "../src/render/buildingVisualState";
 import { BUILD_CATEGORIES, buildCategory, buildThumbnail } from "../src/ui/buildMenuPresentation";
 import { BUILD_TOOL_OPTIONS } from "../src/ui/buildMenuModel";
 import { uiIconStyle } from "../src/ui/uiArt";
+import { WAVE3_BUILDING_ICON_CELLS } from "../src/render/wave3AleArt";
 
 // BLD-REG: the building catalog — one line per engine kind and its words — and the gate that no other UI or render
 // file keeps a table over every building kind or switches over one.
@@ -31,18 +32,22 @@ test("every picture the catalog names exists: facility art, sprite keys, thumbna
   for (const kind of CATALOG_BUILDING_KINDS) {
     const entry = buildingEntry(kind);
     const art = entry.facilityArt;
-    if (art !== undefined) for (const id of "id" in art ? [art.id] : [art.quiet, art.active]) assert.ok(facilityIds.has(id), `${kind}: facility ${id}`);
+    if (art !== undefined) for (const id of "id" in art ? [art.id] : "variants" in art ? art.variants : [art.quiet, art.active]) assert.ok(facilityIds.has(id), `${kind}: facility ${id}`);
     if (entry.spriteKey !== undefined) assert.notEqual(spriteMeta(entry.spriteKey), null, `${kind}: sprite ${entry.spriteKey}`);
     const thumbnail = buildThumbnail(kind);
     if (entry.thumbnail !== undefined) {
       assert.ok(thumbnail !== null, `${kind}: thumbnail`);
       assert.ok(existsSync(join("public", thumbnail.replace(/^\//, ""))), `${kind}: ${thumbnail}`);
     }
-    for (const cell of [entry.menuIcon, entry.signIcon]) if (cell !== undefined) assert.ok(uiIconStyle("building", cell, 24) !== null, `${kind}: icon ${cell}`);
+    for (const cell of [entry.menuIcon, entry.signIcon]) {
+      if (typeof cell === "string") assert.ok(uiIconStyle("building", cell, 24) !== null, `${kind}: icon ${cell}`);
+      // INSTALL-3: a Wave 3 chain sheet cell is one of the sheet's named cells.
+      else if (cell !== undefined) assert.ok((WAVE3_BUILDING_ICON_CELLS as readonly string[]).includes(cell.chain), `${kind}: chain icon ${cell.chain}`);
+    }
     assert.ok(BUILD_CATEGORIES.some(category => category.key === buildCategory(kind)), kind);
   }
   // Every kind the game places today has a picture; the fallback (a timber body and its name chip) is for the kinds to come.
-  for (const kind of ["house", "well", "storehouse", "granary", "chapel", "farmstead", "mill", "logging_camp", "sawmill", "quarry", "masonry", "market", "church", "keep"] as const) {
+  for (const kind of ["house", "well", "storehouse", "granary", "chapel", "farmstead", "mill", "logging_camp", "sawmill", "quarry", "masonry", "market", "church", "keep", "malt_kiln"] as const) {
     assert.ok(buildingHasPicture(kind), `${kind}: has a picture`);
   }
 });

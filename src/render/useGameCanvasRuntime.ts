@@ -29,6 +29,7 @@ import { preloadWave7Art } from "./wave7Art";
 import { preloadWave9Art } from "./wave9Art";
 import { preloadWave17WorldArt } from "./warWorldProps";
 import { preloadWave11Art } from "./wave11Art";
+import { preloadWave3AleArt } from "./wave3AleArt";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
 // Game canvas runtime: frame loop, camera, and input. Input goes DOM event -> translator (src/input) -> intent bus
@@ -70,7 +71,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     // F0-V: the visibility art and the canvas icon sheets load with the rest (a paused first frame then has them).
     preloadVisibilityArt();
     preloadWave7Art(); preloadWave9Art(); preloadWave17WorldArt();
-    preloadWave11Art();
+    preloadWave11Art(); preloadWave3AleArt();
     preloadCanvasIcons();
 
     const refs = createCanvasMutableRefs(initialCamera(canvas, stateRef.current));
