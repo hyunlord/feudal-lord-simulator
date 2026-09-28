@@ -22,6 +22,8 @@ export const LEDGER_CATEGORIES = [
   // F2-A (WR-2…WR-8): the wool levy, the array's exemption, the lay subsidy, the merchants' war loan, the war tax, the
   // raid's plunder, the purveyors' wheat, the refugees' fee, murage.
   "wool_levy", "war_exemption", "war_subsidy", "war_loan", "war_tax", "raid_loot", "purveyance", "refugee_fee", "murage",
+  // F3-A (PL-5…PL-7): the raised wages, the Statute's fine, the monastery's stipend, the new settlers' entry fines.
+  "wages", "statute_fine", "church_fee", "entry_fine",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

@@ -29,6 +29,7 @@ import { choosePortraitIdentity, identityFaction, identityHasBand, identityLinea
 import { lordHouse } from "./lordshipState";
 import { calendar, scenarioOf } from "./scenarioState";
 import { conscriptsAway } from "./war";
+import { countPlagueDead, plagueVictims } from "./plague";
 import { factionPerson, petitionFactionLeaders } from "./factions";
 import type { PersonTraits } from "../content/personTraits";
 import { hairWords, inheritTraits, populationTraits } from "./heredity";
@@ -685,13 +686,22 @@ export function advancePersons(state: GameState): GameState {
   const houseIds = new Set(state.houses.map(house => house.buildingId));
 
   // PS-3 deaths of the season and of fire (they take residents from the houses).
+  let plagueTown = 0, plagueManor = 0;
   if (deathDay || burning) {
     const weight = deathDay ? mortalityWeight(state) : 0;
     const burnt = new Set(state.houses.filter(house => house.burntTick === state.tick).map(house => house.buildingId));
+    // F3-A (PL-2): the pestilence's dead of the death day (drawn by weight; residents lost, never refilled).
+    const plague = deathDay ? plagueVictims(state, town.people, year) : new Set<string>();
     for (const person of [...town.people]) {
       if (person.householdId === MANOR_HOUSEHOLD && !deathDay) continue;
       let cause: DeathCause | null = null;
       const home = houseById.get(person.householdId);
+      if (plague.has(person.id)) {
+        town.remove(person.id, { died: "plague" });
+        if (person.householdId === MANOR_HOUSEHOLD) plagueManor += 1;
+        else { plagueTown += 1; if (home !== undefined) residents.set(person.householdId, Math.max(0, residents.get(person.householdId)! - 1)); }
+        continue;
+      }
       if (burnt.has(person.householdId) && rollPermille(state.seed, "fire-death", Number(person.id.slice(2)), state.tick) < FIRE_DEATH_PERMILLE) cause = "fire";
       // A house that cannot grow already loses its people by the decline rule (famine deaths of the frailest); the
       // season's deaths are the turnover of houses that can.
@@ -773,7 +783,9 @@ export function advancePersons(state: GameState): GameState {
     return membersOf(withResidents, byHouse.get(house.buildingId) ?? [], year);
   });
   const population = houses.reduce((sum, house) => sum + Math.max(0, house.residents), 0);
-  return { ...named, houses, population, persons: town.result() };
+  // PL-2: the households the death day took whole (their houses had people and have none).
+  const wiped = plagueTown === 0 ? 0 : state.houses.filter(house => house.residents > 0 && residents.get(house.buildingId) === 0).length;
+  return countPlagueDead({ ...named, houses, population, persons: town.result() }, plagueTown, plagueManor, wiped);
 }
 
 /** PS-7 `persons.of`: the living members of a household, head first. */

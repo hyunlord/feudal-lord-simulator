@@ -25,9 +25,22 @@ const SEASON = PRESSURE_BALANCE.seasonTicks;
 const SAMPLE = PRESSURE_BALANCE.sampleTicks;
 
 /** FL-3: the share of the houses (permille) standing derelict, or null for a town under `minHouses` houses. */
-export function derelictPermille(state: Pick<GameState, "houses">): number | null {
+export function derelictPermille(state: Pick<GameState, "houses"> & Partial<Pick<GameState, "plague">>): number | null {
   if (state.houses.length < LORDSHIP_BALANCE.minHouses) return null;
-  return Math.floor(state.houses.filter(house => house.abandonedTick !== undefined).length * 1000 / state.houses.length);
+  // F3-A (PL-3): a plot the pestilence emptied is the pestilence's loss, not the lord's neglect, until the chapter ends.
+  const held = state.plague?.first !== undefined && state.plague.endedTick === undefined ? new Set(state.plague.vacantHouseIds) : null;
+  return Math.floor(state.houses.filter(house => house.abandonedTick !== undefined && held?.has(house.buildingId) !== true).length * 1000 / state.houses.length);
+}
+
+/**
+ * F3-A (PL-2): the lord's family is gone — every member of the house's family has died (the pestilence spares no one) and
+ * none is left: the overlord grants the town to a new house (FL-7's change, with no decline before it).
+ */
+export function lordFamilyExtinct(state: Pick<GameState, "persons" | "lordship" | "seed">): boolean {
+  const tag = `lord-house:${lordshipOf(state).house.order}`;
+  const persons = state.persons;
+  if (persons === undefined || persons.people.some(person => person.tags.includes(tag))) return false;
+  return persons.past.some(person => person.tags.includes(tag) && !person.alive && person.deathCause === "plague");
 }
 
 /** FL-3: the distinct ledger periods over which unpaid upkeep is still owed. */
@@ -120,6 +133,8 @@ export function advanceLordship(state: GameState): GameState {
     next = { ...next, lordship };
   }
   if (state.tick % SEASON !== 0) return next;
+  // F3-A (PL-2): the pestilence took the lord's whole family — a new house takes the town.
+  if (lordFamilyExtinct(next)) return changeHouse(next, lordship);
   const decline = lordship.decline;
   if (decline === null) {
     const cause = declineCause(next);

@@ -3,6 +3,7 @@
  * signed dearth. The naive variant (`--naive-reserve`, FP-6) rebuilds too (rebuilding is not a reserve measure) but
  * does not stock up for the dearth.
  */
+import { LAND_REDISTRIBUTION_PETITION_ID, PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { EVENT_DEF_BY_ID } from "../content/eventConfig";
 import { foodReserveTicks } from "../population/foodReserve";
@@ -69,6 +70,11 @@ export function chapterDecisionAction(state: GameState, famine: FamineResponseCh
   }
   // F2-A (WR-10): the war's decisions by the bot's own rule.
   if ((WAR_PETITION_IDS as readonly string[]).includes(open.defId)) return { kind: "petition_response", petitionId: open.id, response: warAnswer(state, open.defId, wallChoice) };
+  // F3-A (PL-11): the pestilence's decisions by the bot's standard rule — the monastery's priest, wages raised, new
+  // settlers into the empty plots, labour services commuted to money rent.
+  if ((PLAGUE_PETITION_IDS as readonly string[]).includes(open.defId)) {
+    return { kind: "petition_response", petitionId: open.id, response: open.defId === LAND_REDISTRIBUTION_PETITION_ID ? "accept_with_price" : "accept" };
+  }
   return { kind: "petition_response", petitionId: open.id, response: petition };
 }
 

@@ -22,6 +22,7 @@
 import { EffectRegistry, SETTLEMENT_REGION_ID, type SourceRef } from "../contracts";
 import {
   CHAPTER_ONE,
+  CHAPTER_THREE,
   CHAPTER_TWO,
   FAMINE_RESPONSE_CONFIG,
   MERCHANT_GAUGE_START,
@@ -47,6 +48,8 @@ import { chapterPageRecords } from "./history";
 import { calendar, scenarioOf } from "./scenarioState";
 import { answerRestoration } from "./lordship";
 import { answerWarPetition, chapterTwoWallOutcome } from "./war";
+import { answerPlaguePetition } from "./plague";
+import { PLAGUE_BALANCE } from "../content/plagueConfig";
 import { housingLotCount } from "../population/housing";
 
 const SAMPLE = 50;
@@ -168,6 +171,16 @@ export function respondToPetition(state: GameState, petitionId: string, response
   if (petition === undefined || def === undefined) return state;
   const outcome = def.outcomes[response];
   const decision: DecisionRecord = { kind: "petition_response", tick: state.tick, petitionId, choice: response };
+  // F3-A: a card offers only its answers.
+  if (def.responses !== undefined && !def.responses.includes(response)) return state;
+  if (def.trigger === "plague") {
+    // F3-A (PL-5…PL-8): the pestilence's rules answer; the petitioners' faction remembers (FX-4).
+    const answered = answerPlaguePetition(state, petition, response);
+    const after = answered.politics ?? politics;
+    return { ...answered, politics: { ...after,
+      petitions: after.petitions.map(entry => entry.id === petition.id ? { ...entry, response, respondedTick: state.tick } : entry),
+      decisions: [...after.decisions, decision] } };
+  }
   if (def.trigger === "war") {
     // F2-A (WR-2…WR-8): the war's rules answer; the petitioners' gauge moves as the definition says.
     const answered = answerWarPetition(state, petition, response);
@@ -292,10 +305,29 @@ export function endChapterTwo(state: GameState): GameState {
 }
 
 /**
+ * F3-A (PL-10): chapter 3 ends — its chronicle page is written (with the pestilence's line) and chapter 4 begins at the
+ * same tick, the same town (chapter 4's content comes later).
+ */
+export function endChapterThree(state: GameState): GameState {
+  const politics = politicsOf(state);
+  if (politics.chapter.number !== CHAPTER_THREE.chapter || chapterEnd(state, CHAPTER_THREE.chapter) !== null) return state;
+  const page = chronicleEntry(state);
+  const plague = state.plague;
+  const startYear = scenarioOf(state).startYear;
+  const chronicle: ChronicleEntry = plague?.first === undefined ? page : { ...page, stats: { ...page.stats, plague: {
+    arrivalYear: calendar(plague.first.arrivalTick, startYear).year, populationAtArrival: plague.first.populationAtArrival,
+    dead: plague.first.dead, manorDead: plague.first.manorDead, secondDead: plague.second?.dead ?? 0,
+    resettled: plague.resettled, fled: plague.fled, outcome: state.population * 1000 >= plague.first.populationAtArrival * PLAGUE_BALANCE.resettledPermille ? "resettled" : "calendar" } } };
+  return { ...state, politics: { ...politics,
+    chapterEnds: [...politics.chapterEnds, { chapter: CHAPTER_THREE.chapter, tick: state.tick, chronicle }],
+    chapter: { number: CHAPTER_THREE.chapter + 1, startTick: state.tick, populationStart: state.population, peakPopulation: state.population } } };
+}
+
+/**
  * FAIL-3 (FL-9): the goal of a chapter — chapter 1 the market town through the famine (FC-5), chapter 2 prosperity.
  * F2-A (WR-9): and chapter 2's war goal, the stone wall built or the market chosen (reached at chapter 2's end).
  */
-export type ChapterGoalId = "famine_market_town" | "prosperity" | "wall_or_market";
+export type ChapterGoalId = "famine_market_town" | "prosperity" | "wall_or_market" | "resettled";
 export interface ChapterGoal {
   readonly chapter: number;
   readonly id: ChapterGoalId;
@@ -314,6 +346,8 @@ export function chapterGoals(state: Pick<GameState, "politics" | "settlement">):
     goals.push({ chapter: CHAPTER_TWO.chapter, id: "prosperity", reachedTick: state.settlement?.milestones.prosperity ?? null });
     goals.push({ chapter: CHAPTER_TWO.chapter, id: "wall_or_market", reachedTick: chapterEnd(state, CHAPTER_TWO.chapter)?.tick ?? null });
   }
+  // F3-A (PL-10): chapter 3's goal, the town resettled after the pestilence (reached at chapter 3's end).
+  if (chapter >= CHAPTER_THREE.chapter) goals.push({ chapter: CHAPTER_THREE.chapter, id: "resettled", reachedTick: chapterEnd(state, CHAPTER_THREE.chapter)?.tick ?? null });
   return goals;
 }
 

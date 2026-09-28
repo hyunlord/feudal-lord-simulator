@@ -65,6 +65,8 @@ export interface Building {
   readonly operationPaused?: boolean;
   /** Save v8: its upkeep is in arrears (money rule M-6); it stands idle exactly like a paused building. */
   readonly upkeepUnpaid?: true;
+  /** F3-A (PL-6, save v26): a church or chapel whose priest died — it serves nobody until the seat is filled. */
+  readonly curacyVacant?: true;
   /** C4 (AL-2, save v23): a farmstead's crop for the strips it sows next (absent = wheat). */
   readonly crop?: FieldCrop;
   readonly inventory: Partial<Record<ResourceType, number>>;
@@ -109,8 +111,8 @@ export function isRetiredBuildingKind(kind: BuildingKind): boolean {
  * Paused by the player or idle for unpaid upkeep (M-6). Both reuse the one pause rule: no workers, no
  * service, no production, so homes lose the service through the existing decline rules.
  */
-export function operationSuspended(building: Pick<Building, "operationPaused" | "upkeepUnpaid">): boolean {
-  return building.operationPaused === true || building.upkeepUnpaid === true;
+export function operationSuspended(building: Pick<Building, "operationPaused" | "upkeepUnpaid"> & { readonly curacyVacant?: true }): boolean {
+  return building.operationPaused === true || building.upkeepUnpaid === true || building.curacyVacant === true;
 }
 
 export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> = {

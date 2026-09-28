@@ -7,6 +7,7 @@
  * the arrears account and idles the facility (`upkeepUnpaid`) for that period; a facility that pays the next
  * period's upkeep runs again while its old debt waits (FIX-4 E3).
  */
+import { plagueRentPermille, plagueUpkeepPermille } from "./plague";
 import { stallFeePermille, stallFeeRightSource } from "./politics";
 import { marketExpansionPermille, murageTollPermille, warTaxPermille } from "./war";
 import type { SourceRef } from "../contracts";
@@ -119,7 +120,8 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
     // EV-4: a burnt house pays no rent until it is rebuilt.
     if (house.residents <= 0 || house.burntTick !== undefined) continue;
     const plot = plots.get(house.buildingId);
-    const amount = rentRelief(house, state.tick, homeRent(house, plot?.width ?? null));
+    // F3-A (PL-8): once labour services are commuted the tenants pay money rent at its higher rate.
+    const amount = Math.round(rentRelief(house, state.tick, homeRent(house, plot?.width ?? null)) * plagueRentPermille(state) / 1000);
     if (amount <= 0) continue;
     const sourceRefs: [SourceRef, ...SourceRef[]] = [buildingSource(house.buildingId, `level:${house.level}`)];
     if (plot !== undefined) sourceRefs.push({ type: "zone", id: plot.zoneId, detail: `frontage:${plot.width}` });
@@ -165,7 +167,8 @@ export function upkeepCharges(state: GameState): readonly { readonly facility: S
   const buildings = state.buildings
     .filter(building => BUILDING_UPKEEP_KINDS.includes(building.kind) && building.operationPaused !== true)
     .sort((a, b) => rank(a) - rank(b) || buildingAge(a) - buildingAge(b) || a.id.localeCompare(b.id))
-    .map(building => ({ facility: buildingSource(building.id), amount: MONEY_BALANCE.upkeep[building.kind as UpkeepKind] }));
+    // F3-A (PL-8): while the tenants' week-work keeps the lord's works (labour services kept), the upkeep is lighter.
+    .map(building => ({ facility: buildingSource(building.id), amount: Math.round(MONEY_BALANCE.upkeep[building.kind as UpkeepKind] * plagueUpkeepPermille(state) / 1000) }));
   const gates = builtGatePointIds(state.palisade).map(pointId => ({ facility: tollPointSource(pointId), amount: MONEY_BALANCE.upkeep.gate }));
   return [...buildings, ...gates];
 }

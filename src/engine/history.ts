@@ -39,6 +39,8 @@ import type { SourceRef } from "../contracts";
 import type { Person, PersonConditionKind } from "./persons.types";
 import { lordshipOf } from "./lordshipState";
 import { beaconLit, raidEventId, warDecisionForecast } from "./war";
+import { plagueDecisionForecast } from "./plague";
+import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
 import { WAR_PETITION_IDS } from "../content/warConfig";
 
@@ -136,8 +138,10 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
     const def = PETITION_DEFS.find(entry => entry.id === defId) ?? PETITION_DEFS[0]!;
     const outcome = def.outcomes[chosen];
     // F2-A (WR-2…WR-8): a war decision's sums follow the town (the war's own forecast).
-    const treasury = def.trigger === "war" ? warDecisionForecast(before, def.id, chosen) : now.treasury! + outcome.charterFee;
-    return { chosen, alternatives: (["accept", "accept_with_price", "refuse"] as const).filter(option => option !== chosen),
+    const treasury = def.trigger === "war" ? warDecisionForecast(before, def.id, chosen)
+      // F3-A (PL-5…PL-8): so does a plague decision's.
+      : def.trigger === "plague" ? plagueDecisionForecast(before, def.id, chosen) : now.treasury! + outcome.charterFee;
+    return { chosen, alternatives: (def.responses ?? (["accept", "accept_with_price", "refuse"] as const)).filter(option => option !== chosen),
       predicted: { treasury, merchantGauge: Math.max(0, Math.min(100, now.merchantGauge! + outcome.gauge)) }, actualDueTick: due };
   }
   if (kind === "stone_town") {
@@ -490,6 +494,53 @@ function warDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: 
   return drafts;
 }
 
+/**
+ * F3-A (PL-1…PL-10): the pestilence's turns — the harbour fever's rumour, the first dead and the priest, the new graves,
+ * the empty streets and the abandoned fields, the Statute, the resettlement, the second pestilence, the priest's seat
+ * filled, a petition left unanswered. The dead themselves are the persons' `person.died` (cause `plague`).
+ */
+function plagueDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] {
+  const was = before.plague, now = after.plague;
+  if (now === undefined || was === now) return [];
+  const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];
+  const by = (id: string) => ({ actors: [{ type: "faction" as const, id }] });
+  const at = { tick: after.tick, subject: TOWN, ...by("bishop") };
+  const cause = { type: "event" as const, id: `black_death@${now.eraTick}`, detail: "black_death" };
+  if (now.rumourTick !== undefined && was?.rumourTick === undefined) drafts.push({ ...at, kind: "event", template: "plague.rumour", severity: 2, cause });
+  if (now.first !== undefined && was?.first === undefined) drafts.push({ ...at, kind: "event", template: "plague.arrived", severity: 3, cause });
+  if (now.curacy !== undefined && was?.curacy === undefined) drafts.push({ ...at, kind: "event", template: "plague.priest_died", severity: 2, cause });
+  if (now.curacy?.filledTick !== undefined && after.tick >= now.curacy.filledTick && (was?.curacy?.filledTick === undefined || before.tick < was.curacy.filledTick)) {
+    drafts.push({ ...at, kind: "event", template: "plague.priest_filled", severity: 1, params: { by: now.curacy.by ?? "clerk" } });
+  }
+  const first = now.first, old = was?.first;
+  if (first !== undefined && old !== undefined && old.dead === 0 && first.dead > 0) {
+    drafts.push({ ...at, ...by("town"), kind: "event", template: "plague.new_graves", severity: 2, params: { dead: first.dead }, cause, thumbnail: { state: after, size: 128 } });
+  }
+  if (first !== undefined && (was?.vacantHouseIds.length ?? 0) === 0 && now.vacantHouseIds.length > 0) {
+    drafts.push({ ...at, ...by("town"), kind: "event", template: "plague.empty_streets", severity: 2, params: { houses: now.vacantHouseIds.length }, cause });
+  }
+  if (first?.endTick !== undefined && old?.endTick === undefined) {
+    drafts.push({ ...at, ...by("town"), kind: "event", template: "plague.abandoned_fields", severity: 3,
+      params: { dead: first.dead, manorDead: first.manorDead, population: first.populationAtArrival, permille: first.populationAtArrival === 0 ? 0 : Math.round(first.dead * 1000 / first.populationAtArrival),
+        houses: now.vacantHouseIds.length }, cause, thumbnail: { state: after, size: 256 } });
+  }
+  if (now.ordinanceTick !== undefined && was?.ordinanceTick === undefined) {
+    drafts.push({ ...at, ...by("crown"), kind: "event", template: "plague.ordinance", severity: 2, params: { fine: now.statuteFine ?? 0 } });
+  }
+  if (now.resettled > 0 && (was?.resettled ?? 0) === 0) drafts.push({ ...at, ...by("town"), kind: "event", template: "plague.resettlement", severity: 2, params: { households: now.resettled } });
+  if (now.second !== undefined && was?.second === undefined) drafts.push({ ...at, kind: "event", template: "plague.second", severity: 3, cause });
+  if (now.second?.endTick !== undefined && was?.second?.endTick === undefined) {
+    drafts.push({ ...at, kind: "event", template: "plague.second_ended", severity: 2, params: { dead: now.second.dead } });
+  }
+  for (const [defId, answer] of Object.entries(now.answers)) {
+    if (answer === "expired" && was?.answers[defId] !== "expired" && (PLAGUE_PETITION_IDS as readonly string[]).includes(defId)) {
+      const petitioner = after.politics?.petitions.find(petition => petition.defId === defId)?.petitioner;
+      drafts.push({ ...at, ...(petitioner === undefined ? {} : by(factionOfPetitioner(petitioner))), kind: "event", template: "plague.unanswered", severity: 2, params: { defId } });
+    }
+  }
+  return drafts;
+}
+
 /** One tick of the ledger: `before` is the state the tick started from. */
 export function advanceHistory(before: GameState, after: GameState): GameState {
   let history = historyOf(after);
@@ -506,6 +557,7 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   }
   drafts.push(...lordshipDrafts(before, after));
   drafts.push(...warDrafts(before, after));
+  drafts.push(...plagueDrafts(before, after));
   drafts.push(...factionDrafts(before, after));
   drafts.push(...personDrafts(before, after));
   let milestones = history.milestones;
