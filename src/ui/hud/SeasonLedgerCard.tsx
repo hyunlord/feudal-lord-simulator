@@ -4,6 +4,7 @@ import { SEASON_LEDGER_COPY } from "../seasonLedgerCopy.ko";
 import { wave8ContentStyle, wave8FrameLayerStyle } from "../wave8Art";
 import { seasonSceneStyle } from "../wave19Art";
 import { Button } from "../kit";
+import { ResourceGlyph } from "../ResourceArtwork";
 
 // UI-3 season ledger card (S-28, a modal: time stops while it is up). The Wave 8 scroll: three scenes (the season's
 // biggest changes, UI-4b: Wave 19 icons chosen from the history ledger) in its header slots, their names under the
@@ -27,6 +28,11 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
           <h2>{model.title}</h2>
           <p className="season-ledger-scenes-line">{model.scenesLine}</p>
           {model.lines.map(line => <p key={line} className="season-ledger-line">{line}</p>)}
+          {/* INSTALL-3: the ale chain's goods held now, each with its icon (the line reads the same without them). */}
+          {model.drinkLine === null ? null : <p className="season-ledger-line season-ledger-drink">
+            <span>{SEASON_LEDGER_COPY.heldNowLabel}</span>
+            {model.drink.map(item => <span key={item.resource} className="season-ledger-drink-item" data-resource={item.resource}>
+              <ResourceGlyph resource={item.resource} size={16} />{SEASON_LEDGER_COPY.held(item.name, item.amount)}</span>)}</p>}
           <ul className="season-ledger-events">{model.events.map(event => <li key={event}>{event}</li>)}</ul>
           <div className="season-ledger-actions">
             {model.hint === null ? null : <Button type="button" className="season-ledger-hint" onPress={() => onHint()} variant="secondary">
