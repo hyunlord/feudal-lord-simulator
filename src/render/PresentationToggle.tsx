@@ -3,6 +3,13 @@ import { presentationPreference, setPresentationPreference, subscribePresentatio
 import { PRESENTATION_PREFERENCE_COPY } from "./presentationPreferenceCopy.ko";
 import { Button } from "../ui/kit";
 
+/** UI-7b: a preference's value, kept current (for a screen that shows or hides on it). */
+export function usePresentationPreference(preference: PresentationPreference): boolean {
+  const [enabled, setEnabled] = useState(() => presentationPreference(preference));
+  useEffect(() => subscribePresentationPreferences(() => setEnabled(presentationPreference(preference))), [preference]);
+  return enabled;
+}
+
 /** A pause-menu switch for one presentation preference. */
 export function PresentationToggle({ preference }: { readonly preference: PresentationPreference }) {
   const [enabled, setEnabled] = useState(() => presentationPreference(preference));

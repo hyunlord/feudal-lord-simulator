@@ -18,6 +18,7 @@ import { chronicleIllustration } from "../chronicleModel";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
+import { personEmblem } from "../persons/personModels";
 import { PERSON_TRAIT_COPY } from "../persons/personTraitCopy.ko";
 import { resemblanceParts } from "../persons/resemblance";
 import { drawnPortraitId } from "../portraitArt";
@@ -431,7 +432,8 @@ export type BiographyView = Readonly<{
   household: string | null;
   /** UI-7: what they have of their parents ("닮은 점: 아버지의 매부리코, 어머니의 붉은 머리"; null for none, `resemblance.ts`). */
   resemblance: string | null;
-  companion: Readonly<{ id: string; portraitId: string; label: string }> | null;
+  /** UI-7b: the page's shield holds a house's arms, its small circle a merchant's mark; either empty is hidden. */
+  arms: EmblemSpec | null; mark: EmblemSpec | null; emblemLabel: string;
   events: readonly { readonly id: string; readonly date: string; readonly sentence: string; readonly last: boolean }[];
   relations: readonly BiographyRelation[]; survivors: boolean; offices: readonly string[];
   records: readonly { readonly id: string; readonly tick: number; readonly date: string; readonly sentence: string }[];
@@ -458,8 +460,8 @@ export function biographyView(state: GameState, personId: string): BiographyView
     .sort((a, b) => (RELATION_ORDER[a.role] ?? 9) - (RELATION_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear);
   const relations = members.map(member => ({ id: member.id, line: CHRONICLE_SCREEN_COPY.relation(person.role, member.role, personDisplayName(member)),
     portraitId: drawnPortraitId(member, persons.portrait(state, member).portraitId) }));
-  // The small circle: the spouse of a head (or the head of a spouse), else the head of the house.
-  const companion = members.find(member => member.role === (person.role === "head" ? "spouse" : "head"));
+  // UI-7b: the shield and the small circle are the emblem slots (a family member stays in the relations below).
+  const emblem = personEmblem(state, person);
   const offices: string[] = [];
   for (const tag of person.tags) {
     if (tag === "reeve") offices.push(CHRONICLE_SCREEN_COPY.reeve);
@@ -485,8 +487,8 @@ export function biographyView(state: GameState, personId: string): BiographyView
     household: person.role === "head" ? null : person.householdId === MANOR_HOUSEHOLD ? CHRONICLE_SCREEN_COPY.household(null)
       : CHRONICLE_SCREEN_COPY.household(householdName(state, person.householdId)),
     resemblance: (parts => parts.length === 0 ? null : PERSON_TRAIT_COPY.resemblance(parts))(resemblanceParts(state, person)),
-    companion: companion === undefined ? null : { id: companion.id, portraitId: drawnPortraitId(companion, persons.portrait(state, companion).portraitId),
-      label: CHRONICLE_SCREEN_COPY.companion(person.role, companion.role) },
+    arms: emblem?.kind === "merchant" ? null : emblem, mark: emblem?.kind === "merchant" ? emblem : null,
+    emblemLabel: emblem === null ? "" : emblem.kind === "merchant" ? PERSONS_COPY.merchantMark : PERSONS_COPY.arms,
     events: biography.events.map((event, index) => ({ id: event.id, date: CHRONICLE_SCREEN_COPY.date(event.date.year, event.date.season), sentence: event.summary,
       last: index === biography.events.length - 1 && end !== null })),
     relations, survivors: !person.alive || person.leftYear !== undefined, offices,

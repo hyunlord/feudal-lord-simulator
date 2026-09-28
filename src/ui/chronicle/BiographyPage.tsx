@@ -6,42 +6,52 @@ import { wave19ImageStyle, wave19Url } from "../wave19Art";
 import type { BiographyView } from "./chronicleScreenModel";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import { Button } from "../kit";
+import { artPatchStyle } from "../artPatch";
+import { EmblemImage } from "../heraldry/EmblemImage";
+import { usePresentationPreference } from "../../render/PresentationToggle";
 
 // CHRON-1 biography (CHRONICLE_DESIGN 2.2): the Wave 19 `frame_biography` page (640 x 800 art, drawn at one scale so
-// its printed slots stay where they are): the portrait in the great circle (the pool picture of the person's age now,
-// with how well it matches), the spouse or the head of the house in the small one, the name, the life and the house
-// at the top of the right column (UI-7: with what they have of their parents, "닮은 점"), the life along the page's own line (`biography_life_dot`, `biography_life_end` for
-// a death or a leaving), then the household and the offices, and the records they share with the town.
+// its printed slots stay where they are): the portrait in the great circle (the pool picture of the person's age now;
+// UI-7b: how it was chosen only with the developer display), a house's arms in the shield and a merchant's mark in the
+// small circle (UI-7b: an empty one covered with the page's own blank parchment; family stays in the relations below),
+// the name, the life and the house at the top of the right column (UI-7: with what they have of their parents,
+// "닮은 점"), the life along the page's own line (`biography_life_dot`, `biography_life_end` for a death or a leaving),
+// then the household and the offices, and the records they share with the town.
 export const BIOGRAPHY_PAGE = { width: 640, height: 800 } as const;
 
 /** A slot on the page art, in art pixels (measured on frame_biography.png). */
 const slot = (left: number, top: number, width: number, height: number): CSSProperties =>
   ({ left: `${left / 6.4}%`, top: `${top / 8}%`, width: `${width / 6.4}%`, height: `${height / 8}%` });
 const SLOTS = {
-  portrait: slot(62, 117, 196, 196), companion: slot(189, 370, 86, 86), companionCaption: slot(170, 470, 124, 20), match: slot(36, 494, 262, 44),
+  portrait: slot(62, 117, 196, 196), arms: slot(52, 352, 96, 116), mark: slot(189, 370, 86, 86), match: slot(36, 494, 262, 44),
   header: slot(330, 44, 272, 146), life: slot(296, 196, 310, 326), relations: slot(40, 556, 562, 90), records: slot(40, 660, 562, 106),
 } as const;
+
+/** UI-7b: the printed shield and small circle (with their fleurons) and a blank parchment area of the right column to cover them with. */
+const PRINTED = { arms: { x: 42, y: 338, width: 114, height: 148 }, mark: { x: 166, y: 346, width: 134, height: 136 } } as const;
+const BLANK = { arms: { x: 340, y: 310 }, mark: { x: 460, y: 320 } } as const;
 
 export function BiographyPage({ view, scale, onPerson, onRecord }: {
   readonly view: BiographyView; readonly scale: number; readonly onPerson: (personId: string) => void; readonly onRecord: (recordId: string, tick: number) => void;
 }) {
   const portrait = portraitStyle(view.portraitId, Math.round(196 * scale));
-  const companion = view.companion === null ? null : portraitStyle(view.companion.portraitId, Math.round(86 * scale));
+  const developer = usePresentationPreference("developerInfo");
+  const page = wave19Url("frame_biography");
+  const cover = (key: keyof typeof PRINTED) => <span className={`chronicle-biography-cover chronicle-biography-cover--${key}`} aria-hidden="true"
+    style={artPatchStyle(page, BIOGRAPHY_PAGE.width, BIOGRAPHY_PAGE.height, scale, PRINTED[key], BLANK[key], "var(--palette-parchment)")} />;
   return (
     <article className="chronicle-biography" aria-label={COPY.biographyTitle(view.name)} data-person={view.id} data-portrait={view.portraitId}
       data-portrait-exact={view.portraitExact ? "true" : "false"}
-      style={{ width: BIOGRAPHY_PAGE.width * scale, height: BIOGRAPHY_PAGE.height * scale, backgroundImage: `url("${wave19Url("frame_biography")}")` }}>
+      style={{ width: BIOGRAPHY_PAGE.width * scale, height: BIOGRAPHY_PAGE.height * scale, backgroundImage: `url("${page}")` }}>
       <span className={`chronicle-biography-portrait ${personPortraitStateClass(view.ornament) === "" ? "" : "portrait-greyscale"}`} role="img"
         aria-label={view.ornament === null ? view.portraitLine : PERSON_STATE_COPY.withState(view.portraitLine, PERSON_STATE_COPY.label(view.ornament))}
         data-person-state={view.ornament ?? undefined} style={{ ...SLOTS.portrait, ...portrait }} />
       {/* INSTALL-23 ④: the state ornament over the great circle's bottom-right (a sibling: the greyscale stays on the face). */}
       {view.ornament === null ? null : <span className="chronicle-biography-ornament person-state-ornament" aria-hidden="true" data-ornament={view.ornament}
         style={{ ...SLOTS.portrait, ...personStateOrnamentStyle(view.ornament, Math.round(196 * scale)) }} />}
-      {companion === null || view.companion === null ? null : <>
-        <span className="chronicle-biography-companion" aria-hidden="true" style={{ ...SLOTS.companion, ...companion }} />
-        <span className="chronicle-biography-caption" style={SLOTS.companionCaption}>{view.companion.label}</span>
-      </>}
-      <p className="chronicle-biography-match" data-exact={view.portraitExact ? "true" : "false"} style={SLOTS.match}>{view.portraitLine}</p>
+      {view.arms === null ? cover("arms") : <span className="chronicle-biography-arms" style={SLOTS.arms}><EmblemImage emblem={view.arms} size={Math.round(96 * scale)} label={view.emblemLabel} /></span>}
+      {view.mark === null ? cover("mark") : <span className="chronicle-biography-mark" style={SLOTS.mark}><EmblemImage emblem={view.mark} size={Math.round(86 * scale)} label={view.emblemLabel} /></span>}
+      {developer ? <p className="chronicle-biography-match" data-exact={view.portraitExact ? "true" : "false"} style={SLOTS.match}>{view.portraitLine}</p> : null}
       <header className="chronicle-biography-header" style={SLOTS.header}>
         <h3>{view.name}</h3>
         <p>{view.life}</p>

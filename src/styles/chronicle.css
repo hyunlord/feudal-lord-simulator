@@ -123,8 +123,9 @@
 .chronicle-page-body { min-height: 0; overflow: auto; display: grid; justify-items: center; align-items: start; }
 .chronicle-biography, .chronicle-faction { position: relative; flex: none; background-size: 100% 100%; background-repeat: no-repeat; }
 .chronicle-biography > *, .chronicle-faction > * { position: absolute; box-sizing: border-box; margin: 0; }
-.chronicle-biography-portrait, .chronicle-biography-companion { border-radius: 50%; }
-.chronicle-biography-caption { display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+.chronicle-biography-portrait { border-radius: 50%; }
+/* UI-7b: a house's arms in the printed shield, a merchant's mark in the small circle. */
+.chronicle-biography-arms, .chronicle-biography-mark { display: grid; place-items: center; }
 .chronicle-biography-match { font-size: 12px; line-height: 1.35; }
 .chronicle-biography-match[data-exact="false"] { font-style: italic; color: var(--palette-ink-muted); }
 .chronicle-biography-header { display: grid; align-content: start; gap: 2px; overflow: hidden; }
