@@ -44,9 +44,6 @@ test('translator ignores native-control keydown but always releases held camera 
     bounds: () => ({ left: 0, top: 0, width: 800, height: 600 }), camera: () => camera, world: () => ({ minX: -4000, minY: -4000, maxX: 4000, maxY: 4000 }),
     armed: () => ({ zone: false, zonePolygon: false, palisade: false, road: false }),
     emit: intent => { if (intent.kind === 'pan') { pans.push(intent); camera = { ...camera, panX: camera.panX + intent.dx }; } return true; },
-    // F3-A (INSTALL-3b's hand-over): the keys' own clock, before the fake frames (the real clock ran past them on a
-    // loaded host, and the key let go at 2 s read as still held).
-    now: () => 500,
   });
   try {
     // When: a camera key goes down on the button, then Space and the key go up anywhere
