@@ -1,3 +1,4 @@
+import { BUILDING_COPY } from "./buildingCatalog.ko";
 import { LABOUR_BALANCE } from "./balanceConfig";
 import type { ResourceType } from "./resourceConfig";
 import type { TerrainType } from "./terrainConfig";
@@ -347,7 +348,8 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
   // C4 (AL-3): the malt kiln — barley steeped, sprouted and dried over the kiln floor into malt, by labour (no fuel good).
   malt_kiln: {
     kind: "malt_kiln",
-    name: "엿기름 가마",
+    // New names come from the building catalog's copy (CODE-1b: Korean text lives in *.ko.ts).
+    name: BUILDING_COPY.malt_kiln.name,
     width: 2,
     height: 2,
     workersRequired: 2,
