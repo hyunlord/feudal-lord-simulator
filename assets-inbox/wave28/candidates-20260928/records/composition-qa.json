@@ -1,0 +1,30 @@
+{
+  "denominator": "Conservative visible outside-wall grass mask excluding woods, water, town, HUD",
+  "outside_pixels": 112548,
+  "limit": 0.15,
+  "seasons": {
+    "summer": {
+      "covered_pixels": 13548,
+      "outside_fraction": 0.12037530653587802,
+      "whole_screen_fraction": 0.023520833333333335,
+      "clipped_pixels": 0,
+      "changed_outside_overlay": 0
+    },
+    "autumn": {
+      "covered_pixels": 14254,
+      "outside_fraction": 0.126648185663006,
+      "whole_screen_fraction": 0.024746527777777777,
+      "clipped_pixels": 0,
+      "changed_outside_overlay": 0
+    },
+    "winter": {
+      "covered_pixels": 13106,
+      "outside_fraction": 0.1164480932579877,
+      "whole_screen_fraction": 0.022753472222222224,
+      "clipped_pixels": 0,
+      "changed_outside_overlay": 0
+    }
+  },
+  "placement_count": 14,
+  "source_unchanged_outside_overlay": true
+}

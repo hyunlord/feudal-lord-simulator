@@ -1,0 +1,670 @@
+{
+  "assets": [
+    {
+      "id": "oak_solitary_summer",
+      "family": "oak_solitary",
+      "season": "summer",
+      "file": "assets/oak_solitary_summer.png",
+      "width": 192,
+      "height": 224,
+      "pivot": {
+        "x": 96,
+        "y": 204
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-c02c4bae-7fef-426b-968b-f7506be88748.png",
+      "prompt_exact": "Use case: stylized-concept. One transparent RGBA game sprite: solitary English oak tree, summer, southern England 1300–1450 rural countryside. Broad crooked branching crown, sturdy short trunk visible beneath muted green small leaf masses; large recognizable limbs, modest soft contact shadow immediately underneath. Reference image is this project's art style only, not a scene to reproduce. Painterly hand-painted prerender, muted natural earthy palette, top-left illumination, orthographic 2:1 isometric viewing from above, vertical trunk. SINGLE tree isolated, centered with generous transparent padding on every side, no terrain tile, no ground platform, no text, no people, no frame. Natural asymmetrical mature oak, not huge oversized fantasy tree. Preserve detailed branching so autumn/winter seasonal edits can share identical trunk and ground contact. Full tree from crown to root visible. Real transparent background, not white/checkerboard baked in.",
+      "reference_images": [
+        "references/Wave15_사계절.jpg"
+      ],
+      "native_file": "native/trees/oak_solitary_summer.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1376,
+        "height": 1143
+      },
+      "source_alpha_bounds": {
+        "left": 94,
+        "top": 96,
+        "right": 1310,
+        "bottom": 1050,
+        "width": 1217,
+        "height": 955,
+        "transparent_pixels": 927466
+      },
+      "source_ground_anchor": {
+        "x": 720,
+        "y": 1030
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 88,
+          "top": 83,
+          "width": 1228,
+          "height": 977
+        },
+        "scale": 0.14240506329113925,
+        "resized": {
+          "width": 175,
+          "height": 139
+        },
+        "offset": {
+          "x": 6,
+          "y": 69
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 6,
+        "top": 71,
+        "right": 180,
+        "bottom": 206,
+        "width": 175,
+        "height": 136,
+        "transparent_pixels": 29660
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    },
+    {
+      "id": "oak_solitary_autumn",
+      "family": "oak_solitary",
+      "season": "autumn",
+      "file": "assets/oak_solitary_autumn.png",
+      "width": 192,
+      "height": 224,
+      "pivot": {
+        "x": 96,
+        "y": 204
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-cc0b41a5-c116-40c4-bd36-a91b9d68bb99.png",
+      "prompt_exact": "Use case: lighting-weather. Edit this exact project oak sprite into AUTUMN. Change only foliage from green into muted ocher, russet and dull brown oak leaves; thin the leaves slightly. Absolutely preserve trunk, root foot, major branch geometry, camera angle, scale, positions, canvas dimensions, top-left light and foot shadow. Do not redraw or relocate the trunk. Same single isolated tree, transparent RGBA background. No terrain, text, frame, extra objects.",
+      "reference_images": [
+        "native/trees/oak_solitary_summer.png"
+      ],
+      "native_file": "native/trees/oak_solitary_autumn.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1376,
+        "height": 1143
+      },
+      "source_alpha_bounds": {
+        "left": 90,
+        "top": 85,
+        "right": 1313,
+        "bottom": 1055,
+        "width": 1224,
+        "height": 971,
+        "transparent_pixels": 912324
+      },
+      "source_ground_anchor": {
+        "x": 720,
+        "y": 1030
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 88,
+          "top": 83,
+          "width": 1228,
+          "height": 977
+        },
+        "scale": 0.14240506329113925,
+        "resized": {
+          "width": 175,
+          "height": 139
+        },
+        "offset": {
+          "x": 6,
+          "y": 69
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 6,
+        "top": 69,
+        "right": 180,
+        "bottom": 207,
+        "width": 175,
+        "height": 139,
+        "transparent_pixels": 29402
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    },
+    {
+      "id": "oak_solitary_winter",
+      "family": "oak_solitary",
+      "season": "winter",
+      "file": "assets/oak_solitary_winter.png",
+      "width": 192,
+      "height": 224,
+      "pivot": {
+        "x": 96,
+        "y": 204
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-eb3d68b3-b237-4d77-a823-b71dba5ce79d.png",
+      "prompt_exact": "Use case: lighting-weather. Edit this exact project oak sprite into WINTER. Remove leaves to reveal broad bare oak branch structure; add only very light frost on upper branch edges and exposed roots, no deep snow. Absolutely preserve trunk, root foot, every major branch geometry, camera angle, scale, positions, canvas dimensions, top-left light and foot shadow. Do not redraw or relocate trunk. Keep bare branch tips inside original crown envelope. Same single isolated tree, genuinely transparent RGBA background. No terrain, text, frame, extra objects.",
+      "reference_images": [
+        "native/trees/oak_solitary_summer.png"
+      ],
+      "native_file": "native/trees/oak_solitary_winter.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1375,
+        "height": 1144
+      },
+      "source_alpha_bounds": {
+        "left": 95,
+        "top": 86,
+        "right": 1298,
+        "bottom": 1057,
+        "width": 1204,
+        "height": 972,
+        "transparent_pixels": 1000781
+      },
+      "source_ground_anchor": {
+        "x": 720,
+        "y": 1030
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 88,
+          "top": 83,
+          "width": 1228,
+          "height": 977
+        },
+        "scale": 0.14240506329113925,
+        "resized": {
+          "width": 175,
+          "height": 139
+        },
+        "offset": {
+          "x": 6,
+          "y": 69
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 7,
+        "top": 70,
+        "right": 177,
+        "bottom": 207,
+        "width": 171,
+        "height": 138,
+        "transparent_pixels": 32546
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    },
+    {
+      "id": "willow_pollard_summer",
+      "family": "willow_pollard",
+      "season": "summer",
+      "file": "assets/willow_pollard_summer.png",
+      "width": 160,
+      "height": 192,
+      "pivot": {
+        "x": 80,
+        "y": 176
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-b8ac3f03-d4b3-4f1e-8ad6-9f00a2ea8984.png",
+      "prompt_exact": "Use case: stylized-concept. One transparent RGBA game sprite: distinctly POLLARDED willow, summer, southern England 1300–1450 countryside water margins. Thick short gnarled trunk topped by a very obvious bulbous knobby pollard cut head at shoulder height; MANY slender upright regrowth whips sprout out of that head, forming a modest green leafy fan with narrow leaves. NOT a standard weeping willow, NOT oak, NOT tall single uncut trunk. Show knobby amputated branch ends clearly below green regrowth. Project reference is art style only. Painterly hand-painted prerender, subdued gray green and brown palette, top-left illumination, orthographic 2:1 isometric view from above. Single isolated tree, entirely visible, centered with ample transparent padding all sides. Small roots with gentle contact shadow only, no ground platform, no water/land patch, no people/text/frame. Genuine transparent background.",
+      "reference_images": [
+        "references/Wave15_사계절.jpg"
+      ],
+      "native_file": "native/trees/willow_pollard_summer.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1278,
+        "height": 1230
+      },
+      "source_alpha_bounds": {
+        "left": 234,
+        "top": 33,
+        "right": 1056,
+        "bottom": 1103,
+        "width": 823,
+        "height": 1071,
+        "transparent_pixels": 1066248
+      },
+      "source_ground_anchor": {
+        "x": 662,
+        "y": 1095
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 230,
+          "top": 29,
+          "width": 833,
+          "height": 1089
+        },
+        "scale": 0.15947467166979362,
+        "resized": {
+          "width": 133,
+          "height": 174
+        },
+        "offset": {
+          "x": 11,
+          "y": 6
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 11,
+        "top": 6,
+        "right": 142,
+        "bottom": 177,
+        "width": 132,
+        "height": 172,
+        "transparent_pixels": 18135
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    },
+    {
+      "id": "willow_pollard_autumn",
+      "family": "willow_pollard",
+      "season": "autumn",
+      "file": "assets/willow_pollard_autumn.png",
+      "width": 160,
+      "height": 192,
+      "pivot": {
+        "x": 80,
+        "y": 176
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-1cd41cc7-8b3e-40c8-ac04-2362bdb056c0.png",
+      "prompt_exact": "Use case: lighting-weather. Edit this exact project pollarded willow sprite into AUTUMN. Change only foliage into sparse dull ocher and brown narrow willow leaves, revealing more thin upright whips. Absolutely preserve identical thick trunk, knobby pollard head, circular cut ends, root foot, whip geometry, camera angle, scale, positions, canvas dimensions, top-left light and tiny foot shadow. Do not redraw or relocate trunk or pollard head. Same single isolated tree, transparent RGBA background. No terrain, text, frame or additional objects.",
+      "reference_images": [
+        "native/trees/willow_pollard_summer.png"
+      ],
+      "native_file": "native/trees/willow_pollard_autumn.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1278,
+        "height": 1230
+      },
+      "source_alpha_bounds": {
+        "left": 232,
+        "top": 32,
+        "right": 1060,
+        "bottom": 1115,
+        "width": 829,
+        "height": 1084,
+        "transparent_pixels": 1062763
+      },
+      "source_ground_anchor": {
+        "x": 662,
+        "y": 1095
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 230,
+          "top": 29,
+          "width": 833,
+          "height": 1089
+        },
+        "scale": 0.15947467166979362,
+        "resized": {
+          "width": 133,
+          "height": 174
+        },
+        "offset": {
+          "x": 11,
+          "y": 6
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 11,
+        "top": 6,
+        "right": 143,
+        "bottom": 179,
+        "width": 133,
+        "height": 174,
+        "transparent_pixels": 17842
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    },
+    {
+      "id": "willow_pollard_winter",
+      "family": "willow_pollard",
+      "season": "winter",
+      "file": "assets/willow_pollard_winter.png",
+      "width": 160,
+      "height": 192,
+      "pivot": {
+        "x": 80,
+        "y": 176
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-68af16bd-b5ed-420a-a6f1-b4cd0af07008.png",
+      "prompt_exact": "Use case: lighting-weather. Edit this exact project pollarded willow sprite into WINTER. Remove all foliage to reveal slender upright bare regrowth whips; add very light frost on upper cut-head edges and roots, no thick snow. Absolutely preserve identical thick short trunk, knobby pollard head, circular cut branch ends, root foot, existing whip geometry, camera angle, scale, positions, canvas dimensions, top-left light and tiny foot shadow. Do not redraw or relocate trunk or pollard head. Same single isolated tree, genuinely transparent RGBA background. No terrain, text, frame or extra objects.",
+      "reference_images": [
+        "native/trees/willow_pollard_summer.png"
+      ],
+      "native_file": "native/trees/willow_pollard_winter.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1278,
+        "height": 1230
+      },
+      "source_alpha_bounds": {
+        "left": 270,
+        "top": 31,
+        "right": 1020,
+        "bottom": 1115,
+        "width": 751,
+        "height": 1085,
+        "transparent_pixels": 1181974
+      },
+      "source_ground_anchor": {
+        "x": 662,
+        "y": 1095
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 230,
+          "top": 29,
+          "width": 833,
+          "height": 1089
+        },
+        "scale": 0.15947467166979362,
+        "resized": {
+          "width": 133,
+          "height": 174
+        },
+        "offset": {
+          "x": 11,
+          "y": 6
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 17,
+        "top": 6,
+        "right": 136,
+        "bottom": 179,
+        "width": 120,
+        "height": 174,
+        "transparent_pixels": 21407
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    },
+    {
+      "id": "roadside_cross_summer",
+      "family": "roadside_cross",
+      "season": "summer",
+      "file": "assets/roadside_cross_summer.png",
+      "width": 64,
+      "height": 96,
+      "pivot": {
+        "x": 32,
+        "y": 88
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-dd8924b0-5acc-44d6-adb6-4964d425d5da.png",
+      "prompt_exact": "Use case: historical-scene. Single small medieval English ROADSIDE STONE CROSS game sprite, summer. Southern England 1300–1450 countryside waymarker: plain weathered gray beige stone Latin cross, chunky modest arms and slender shaft set in one small rough low socket stone. NO lettering, NO inscription, NO carved text, NO crucifix body, NO Celtic ring, NO cemetery or grave. One or two tiny muted green grass tufts immediately at socket foot. Modest weathered rough surfaces. Project image is style reference only. Painterly hand-painted prerender, subdued earth tones, top-left illumination, orthographic 2:1 isometric view, cross vertical and slight visible stone thickness. Center full object with generous transparent padding, no terrain tile or scene, no border. Genuine transparent RGBA background, small subtle contact shadow only.",
+      "reference_images": [
+        "references/Wave15_사계절.jpg"
+      ],
+      "native_file": "native/trees/roadside_cross_summer.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1402,
+        "height": 1122
+      },
+      "source_alpha_bounds": {
+        "left": 550,
+        "top": 177,
+        "right": 858,
+        "bottom": 944,
+        "width": 309,
+        "height": 768,
+        "transparent_pixels": 1433998
+      },
+      "source_ground_anchor": {
+        "x": 704,
+        "y": 920
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 540,
+          "top": 172,
+          "width": 322,
+          "height": 775
+        },
+        "scale": 0.10962566844919786,
+        "resized": {
+          "width": 35,
+          "height": 85
+        },
+        "offset": {
+          "x": 14,
+          "y": 6
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 15,
+        "top": 6,
+        "right": 48,
+        "bottom": 90,
+        "width": 34,
+        "height": 85,
+        "transparent_pixels": 4290
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    },
+    {
+      "id": "roadside_cross_autumn",
+      "family": "roadside_cross",
+      "season": "autumn",
+      "file": "assets/roadside_cross_autumn.png",
+      "width": 64,
+      "height": 96,
+      "pivot": {
+        "x": 32,
+        "y": 88
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-a9eae177-624c-4127-889b-51b17c58a392.png",
+      "prompt_exact": "Use case: lighting-weather. Edit this exact project stone roadside cross sprite into AUTUMN. Change only green grass at its foot into dry ocher brown grass, add at most two tiny fallen brown leaves immediately beside foot. Absolutely preserve cross stone shape, height, thickness, texture geometry, arms, low socket base, camera angle, scale, positions, canvas dimensions, top-left light and tiny foot shadow. Same single isolated cross. No inscriptions or text. Genuine transparent RGBA background. No ground patch, frame, people, extra objects.",
+      "reference_images": [
+        "native/trees/roadside_cross_summer.png"
+      ],
+      "native_file": "native/trees/roadside_cross_autumn.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1402,
+        "height": 1122
+      },
+      "source_alpha_bounds": {
+        "left": 542,
+        "top": 175,
+        "right": 859,
+        "bottom": 931,
+        "width": 318,
+        "height": 757,
+        "transparent_pixels": 1438575
+      },
+      "source_ground_anchor": {
+        "x": 704,
+        "y": 920
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 540,
+          "top": 172,
+          "width": 322,
+          "height": 775
+        },
+        "scale": 0.10962566844919786,
+        "resized": {
+          "width": 35,
+          "height": 85
+        },
+        "offset": {
+          "x": 14,
+          "y": 6
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 14,
+        "top": 6,
+        "right": 48,
+        "bottom": 89,
+        "width": 35,
+        "height": 84,
+        "transparent_pixels": 4331
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    },
+    {
+      "id": "roadside_cross_winter",
+      "family": "roadside_cross",
+      "season": "winter",
+      "file": "assets/roadside_cross_winter.png",
+      "width": 64,
+      "height": 96,
+      "pivot": {
+        "x": 32,
+        "y": 88
+      },
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-549c-7d13-9d6c-9935c78964ea/exec-93e8d024-b121-4300-9bd1-77875b18940b.png",
+      "prompt_exact": "Use case: lighting-weather. Edit this exact project stone roadside cross sprite into WINTER. Change only small green grass at its foot into dormant straw with very light frost; add a thin dust of frost on upward stone edges of cross arms and socket. No deep snow. Absolutely preserve cross stone shape, height, thickness, texture geometry, arms, low socket base, camera angle, scale, positions, canvas dimensions, top-left light and tiny foot shadow. Same single isolated cross. No inscriptions or text. Genuine transparent RGBA background. No ground patch, frame, people, extra objects.",
+      "reference_images": [
+        "native/trees/roadside_cross_summer.png"
+      ],
+      "native_file": "native/trees/roadside_cross_winter.png",
+      "accepted": null,
+      "status": "candidate",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-28",
+      "tool": "built-in image_gen",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "historical_profile": "S_England_1300_1450_v1",
+      "source_resolution": {
+        "width": 1402,
+        "height": 1122
+      },
+      "source_alpha_bounds": {
+        "left": 547,
+        "top": 174,
+        "right": 853,
+        "bottom": 932,
+        "width": 307,
+        "height": 759,
+        "transparent_pixels": 1438750
+      },
+      "source_ground_anchor": {
+        "x": 704,
+        "y": 920
+      },
+      "transform": {
+        "method": "Shared family crop and uniform family scale, transparent padding; no painted pixels",
+        "crop": {
+          "left": 540,
+          "top": 172,
+          "width": 322,
+          "height": 775
+        },
+        "scale": 0.10962566844919786,
+        "resized": {
+          "width": 35,
+          "height": 85
+        },
+        "offset": {
+          "x": 14,
+          "y": 6
+        },
+        "kernel": "lanczos3"
+      },
+      "output_alpha_bounds": {
+        "left": 15,
+        "top": 6,
+        "right": 47,
+        "bottom": 88,
+        "width": 33,
+        "height": 83,
+        "transparent_pixels": 4327
+      },
+      "qa_status": "offline visual inspected; transparent RGBA and size verified",
+      "qa_note": "Season edits preserve major structure visually; generated texture pixels are not guaranteed identical. Pivot is a visual authoring anchor, not runtime integration proof."
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+[
+  {
+    "id": "skep_row_summer",
+    "season": "summer",
+    "file": "assets/skep_row_summer.png",
+    "status": "candidate",
+    "native": "native/smallprops/skep_row_summer.png",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "canvas": [
+      96,
+      64
+    ],
+    "width": 96,
+    "height": 64,
+    "pivot": {
+      "x": 48,
+      "y": 60
+    },
+    "anchor": [
+      48,
+      60
+    ],
+    "crop": {
+      "left": 131,
+      "top": 337,
+      "width": 1280,
+      "height": 509
+    },
+    "scale": 0.06875,
+    "resized": [
+      88,
+      35
+    ],
+    "offset": [
+      4,
+      25
+    ],
+    "transforms": [
+      "alpha > 8 bounding box",
+      "aspect-preserving Lanczos3 downsample",
+      "bottom-center placement on transparent RGBA canvas"
+    ],
+    "limitations": [
+      "Generated seasonal edits preserve intended geometry; exact pixel-identical silhouettes are not asserted.",
+      "Offline candidate QA only; no game installation."
+    ],
+    "prompt": "Use case: historical-scene. ONE isolated transparent RGBA sprite for a muted hand-painted medieval South England 1300–1450 strategy game. Orthographic 2:1 isometric camera, soft upper-left daylight, earthy low saturation, fine texture readable when downsized. Genuine alpha transparency, no white matte, no glow, no outlines, no text. No background or large ground patch, only sparse tiny grass touching base. Entire object visible centered with broad transparent margin. Project images are only style/perspective references. THREE bell-shaped woven straw skep beehives side by side on one very low weathered plank supported by rough stones. No modern rectangular box hives. Summer green sparse grass. Broad horizontal composition for 96x64 final sprite.",
+    "promptFile": "native/smallprops/skep_row_summer-prompt.txt",
+    "sourceGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-dcda-7523-a65d-4e69471b66a5/exec-3e342439-9d2e-4656-ad39-a047166b1c62.png",
+    "references": [
+      "references/Wave15_사계절.jpg",
+      "references/Wave23_규격.jpg"
+    ],
+    "generation": {
+      "tool": "built-in image_gen.imagegen",
+      "callsForAsset": 1,
+      "model": null,
+      "seed": null
+    },
+    "review": {
+      "actualSizeBoard": "native/smallprops/actual-size-qa.png",
+      "visual": "PASS: three straw skeps on low plank; rough uncarved stone; muted seasons; no visible glow on green background",
+      "geometry": "Common canvas and bottom-center ground pivot; seasonal edits have small organic detail differences, not pixel-identical silhouettes."
+    },
+    "supersededConcept": {
+      "file": "native/smallprops/superseded-sheet.png",
+      "prompt": "native/smallprops/prompt.txt",
+      "status": "not used for final assets"
+    }
+  },
+  {
+    "id": "skep_row_autumn",
+    "season": "autumn",
+    "file": "assets/skep_row_autumn.png",
+    "status": "candidate",
+    "native": "native/smallprops/skep_row_autumn.png",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "canvas": [
+      96,
+      64
+    ],
+    "width": 96,
+    "height": 64,
+    "pivot": {
+      "x": 48,
+      "y": 60
+    },
+    "anchor": [
+      48,
+      60
+    ],
+    "crop": {
+      "left": 46,
+      "top": 270,
+      "width": 1471,
+      "height": 579
+    },
+    "scale": 0.05982324949014276,
+    "resized": [
+      88,
+      35
+    ],
+    "offset": [
+      4,
+      25
+    ],
+    "transforms": [
+      "alpha > 8 bounding box",
+      "aspect-preserving Lanczos3 downsample",
+      "bottom-center placement on transparent RGBA canvas"
+    ],
+    "limitations": [
+      "Generated seasonal edits preserve intended geometry; exact pixel-identical silhouettes are not asserted.",
+      "Offline candidate QA only; no game installation."
+    ],
+    "prompt": "Use case: lighting-weather. Edit this exact summer skep-row game sprite to autumn. Keep EXACT same three woven straw beehives, every silhouette, plank, stone support, camera, dimensions, position and ground anchors. ONLY change green grass to muted dry ochre grass. Preserve original brown straw. Genuine transparent background; remove any glow or colored haze, preserve sharp clean alpha edge. No other objects, labels or backdrop. Output ONE sprite.",
+    "promptFile": "native/smallprops/skep_row_autumn-prompt.txt",
+    "sourceGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-dcda-7523-a65d-4e69471b66a5/exec-5f2409b2-6cb5-4f88-bc94-c9bbdd7faa98.png",
+    "references": [
+      "native/smallprops/skep_row_summer.png"
+    ],
+    "generation": {
+      "tool": "built-in image_gen.imagegen",
+      "callsForAsset": 1,
+      "model": null,
+      "seed": null
+    },
+    "review": {
+      "actualSizeBoard": "native/smallprops/actual-size-qa.png",
+      "visual": "PASS: three straw skeps on low plank; rough uncarved stone; muted seasons; no visible glow on green background",
+      "geometry": "Common canvas and bottom-center ground pivot; seasonal edits have small organic detail differences, not pixel-identical silhouettes."
+    },
+    "supersededConcept": {
+      "file": "native/smallprops/superseded-sheet.png",
+      "prompt": "native/smallprops/prompt.txt",
+      "status": "not used for final assets"
+    }
+  },
+  {
+    "id": "skep_row_winter",
+    "season": "winter",
+    "file": "assets/skep_row_winter.png",
+    "status": "candidate",
+    "native": "native/smallprops/skep_row_winter.png",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "canvas": [
+      96,
+      64
+    ],
+    "width": 96,
+    "height": 64,
+    "pivot": {
+      "x": 48,
+      "y": 60
+    },
+    "anchor": [
+      48,
+      60
+    ],
+    "crop": {
+      "left": 12,
+      "top": 245,
+      "width": 1524,
+      "height": 614
+    },
+    "scale": 0.05774278215223097,
+    "resized": [
+      88,
+      35
+    ],
+    "offset": [
+      4,
+      25
+    ],
+    "transforms": [
+      "alpha > 8 bounding box",
+      "aspect-preserving Lanczos3 downsample",
+      "bottom-center placement on transparent RGBA canvas"
+    ],
+    "limitations": [
+      "Generated seasonal edits preserve intended geometry; exact pixel-identical silhouettes are not asserted.",
+      "Offline candidate QA only; no game installation."
+    ],
+    "prompt": "Use case: lighting-weather. Edit this exact summer skep-row game sprite to winter. Keep EXACT same three woven straw beehives, every silhouette, plank, stone support, camera, dimensions, position and ground anchors. ONLY change add sparse thin frost to straw top, plank and grass; grass becomes pale dry brown. No deep snow. Preserve original brown straw. Genuine transparent background; remove any glow or colored haze, preserve sharp clean alpha edge. No other objects, labels or backdrop. Output ONE sprite.",
+    "promptFile": "native/smallprops/skep_row_winter-prompt.txt",
+    "sourceGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-dcda-7523-a65d-4e69471b66a5/exec-8a7de75f-b1ce-4ce1-8b55-e6d02893cae1.png",
+    "references": [
+      "native/smallprops/skep_row_summer.png"
+    ],
+    "generation": {
+      "tool": "built-in image_gen.imagegen",
+      "callsForAsset": 1,
+      "model": null,
+      "seed": null
+    },
+    "review": {
+      "actualSizeBoard": "native/smallprops/actual-size-qa.png",
+      "visual": "PASS: three straw skeps on low plank; rough uncarved stone; muted seasons; no visible glow on green background",
+      "geometry": "Common canvas and bottom-center ground pivot; seasonal edits have small organic detail differences, not pixel-identical silhouettes."
+    },
+    "supersededConcept": {
+      "file": "native/smallprops/superseded-sheet.png",
+      "prompt": "native/smallprops/prompt.txt",
+      "status": "not used for final assets"
+    }
+  },
+  {
+    "id": "boundary_stone_summer",
+    "season": "summer",
+    "file": "assets/boundary_stone_summer.png",
+    "status": "candidate",
+    "native": "native/smallprops/boundary_stone_summer.png",
+    "nativeSize": [
+      1086,
+      1448
+    ],
+    "canvas": [
+      48,
+      64
+    ],
+    "width": 48,
+    "height": 64,
+    "pivot": {
+      "x": 24,
+      "y": 60
+    },
+    "anchor": [
+      24,
+      60
+    ],
+    "crop": {
+      "left": 374,
+      "top": 535,
+      "width": 363,
+      "height": 576
+    },
+    "scale": 0.09722222222222222,
+    "resized": [
+      35,
+      56
+    ],
+    "offset": [
+      6,
+      4
+    ],
+    "transforms": [
+      "alpha > 8 bounding box",
+      "aspect-preserving Lanczos3 downsample",
+      "bottom-center placement on transparent RGBA canvas"
+    ],
+    "limitations": [
+      "Generated seasonal edits preserve intended geometry; exact pixel-identical silhouettes are not asserted.",
+      "Offline candidate QA only; no game installation."
+    ],
+    "prompt": "Use case: historical-scene. ONE isolated transparent RGBA sprite for a muted hand-painted medieval South England 1300–1450 strategy game. Orthographic 2:1 isometric camera, soft upper-left daylight, earthy low saturation, fine texture readable when downsized. Genuine alpha transparency, no white matte, no glow, no outlines, no text. No background or large ground patch, only sparse tiny grass touching base. Entire object visible centered with broad transparent margin. Project images are only style/perspective references. ONE small rough upright boundary stone, blunt asymmetrical top, grey-brown weathered rough uncarved stone. No writing, rune, heraldry, cross or symbol. Summer sparse green grass at narrow base. Vertical composition for final 48x64 sprite.",
+    "promptFile": "native/smallprops/boundary_stone_summer-prompt.txt",
+    "sourceGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-dcda-7523-a65d-4e69471b66a5/exec-b4bb7542-5ab5-4340-998e-52a813bf1ed7.png",
+    "references": [
+      "references/Wave15_사계절.jpg",
+      "references/Wave23_규격.jpg"
+    ],
+    "generation": {
+      "tool": "built-in image_gen.imagegen",
+      "callsForAsset": 1,
+      "model": null,
+      "seed": null
+    },
+    "review": {
+      "actualSizeBoard": "native/smallprops/actual-size-qa.png",
+      "visual": "PASS: three straw skeps on low plank; rough uncarved stone; muted seasons; no visible glow on green background",
+      "geometry": "Common canvas and bottom-center ground pivot; seasonal edits have small organic detail differences, not pixel-identical silhouettes."
+    },
+    "supersededConcept": {
+      "file": "native/smallprops/superseded-sheet.png",
+      "prompt": "native/smallprops/prompt.txt",
+      "status": "not used for final assets"
+    }
+  },
+  {
+    "id": "boundary_stone_autumn",
+    "season": "autumn",
+    "file": "assets/boundary_stone_autumn.png",
+    "status": "candidate",
+    "native": "native/smallprops/boundary_stone_autumn.png",
+    "nativeSize": [
+      1086,
+      1448
+    ],
+    "canvas": [
+      48,
+      64
+    ],
+    "width": 48,
+    "height": 64,
+    "pivot": {
+      "x": 24,
+      "y": 60
+    },
+    "anchor": [
+      24,
+      60
+    ],
+    "crop": {
+      "left": 388,
+      "top": 534,
+      "width": 372,
+      "height": 580
+    },
+    "scale": 0.09655172413793103,
+    "resized": [
+      36,
+      56
+    ],
+    "offset": [
+      6,
+      4
+    ],
+    "transforms": [
+      "alpha > 8 bounding box",
+      "aspect-preserving Lanczos3 downsample",
+      "bottom-center placement on transparent RGBA canvas"
+    ],
+    "limitations": [
+      "Generated seasonal edits preserve intended geometry; exact pixel-identical silhouettes are not asserted.",
+      "Offline candidate QA only; no game installation."
+    ],
+    "prompt": "Use case: lighting-weather. Edit this exact summer boundary-stone game sprite to autumn. Keep EXACT same rough stone silhouette, weathering, asymmetrical blunt top, camera, size, position and ground anchor. ONLY change green grass to muted dry ochre grass. Preserve grey-brown stone. Genuine transparent background with sharp clean alpha edge. No writing, runes, heraldry, cross, labels, other objects or scenery. Output ONE sprite.",
+    "promptFile": "native/smallprops/boundary_stone_autumn-prompt.txt",
+    "sourceGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-dcda-7523-a65d-4e69471b66a5/exec-af20708b-826d-41c6-8638-e1331522905c.png",
+    "references": [
+      "native/smallprops/boundary_stone_summer.png"
+    ],
+    "generation": {
+      "tool": "built-in image_gen.imagegen",
+      "callsForAsset": 1,
+      "model": null,
+      "seed": null
+    },
+    "review": {
+      "actualSizeBoard": "native/smallprops/actual-size-qa.png",
+      "visual": "PASS: three straw skeps on low plank; rough uncarved stone; muted seasons; no visible glow on green background",
+      "geometry": "Common canvas and bottom-center ground pivot; seasonal edits have small organic detail differences, not pixel-identical silhouettes."
+    },
+    "supersededConcept": {
+      "file": "native/smallprops/superseded-sheet.png",
+      "prompt": "native/smallprops/prompt.txt",
+      "status": "not used for final assets"
+    }
+  },
+  {
+    "id": "boundary_stone_winter",
+    "season": "winter",
+    "file": "assets/boundary_stone_winter.png",
+    "status": "candidate",
+    "native": "native/smallprops/boundary_stone_winter.png",
+    "nativeSize": [
+      1086,
+      1448
+    ],
+    "canvas": [
+      48,
+      64
+    ],
+    "width": 48,
+    "height": 64,
+    "pivot": {
+      "x": 24,
+      "y": 60
+    },
+    "anchor": [
+      24,
+      60
+    ],
+    "crop": {
+      "left": 374,
+      "top": 550,
+      "width": 366,
+      "height": 581
+    },
+    "scale": 0.0963855421686747,
+    "resized": [
+      35,
+      56
+    ],
+    "offset": [
+      6,
+      4
+    ],
+    "transforms": [
+      "alpha > 8 bounding box",
+      "aspect-preserving Lanczos3 downsample",
+      "bottom-center placement on transparent RGBA canvas"
+    ],
+    "limitations": [
+      "Generated seasonal edits preserve intended geometry; exact pixel-identical silhouettes are not asserted.",
+      "Offline candidate QA only; no game installation."
+    ],
+    "prompt": "Use case: lighting-weather. Edit this exact summer boundary-stone game sprite to winter. Keep EXACT same rough stone silhouette, weathering, asymmetrical blunt top, camera, size, position and ground anchor. ONLY change add sparse thin pale frost to stone top and grass; grass dry and pale. No deep snow. Preserve grey-brown stone. Genuine transparent background with sharp clean alpha edge. No writing, runes, heraldry, cross, labels, other objects or scenery. Output ONE sprite.",
+    "promptFile": "native/smallprops/boundary_stone_winter-prompt.txt",
+    "sourceGeneratedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7e6-dcda-7523-a65d-4e69471b66a5/exec-21c1306f-1ac8-485b-8b3d-f34c02557ca8.png",
+    "references": [
+      "native/smallprops/boundary_stone_summer.png"
+    ],
+    "generation": {
+      "tool": "built-in image_gen.imagegen",
+      "callsForAsset": 1,
+      "model": null,
+      "seed": null
+    },
+    "review": {
+      "actualSizeBoard": "native/smallprops/actual-size-qa.png",
+      "visual": "PASS: three straw skeps on low plank; rough uncarved stone; muted seasons; no visible glow on green background",
+      "geometry": "Common canvas and bottom-center ground pivot; seasonal edits have small organic detail differences, not pixel-identical silhouettes."
+    },
+    "supersededConcept": {
+      "file": "native/smallprops/superseded-sheet.png",
+      "prompt": "native/smallprops/prompt.txt",
+      "status": "not used for final assets"
+    }
+  }
+]
