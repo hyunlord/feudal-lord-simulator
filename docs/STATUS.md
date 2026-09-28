@@ -1,11 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-28(UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **F3-A 3장 흑사병 1348–1362 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/f3a-black-death/REPORT.md), [명세](design/chapter-three-plague.md) PL-1~PL-11, 결정 BD1~BD9.
+  - 1348 항구 열병 소문 → 도래(인물 단위 사망 42~48 %, 노인·어린아이·붐비는 집·안쪽, 가구 전체 15 %, 영주 가솔도) → 빈 거리·묘지·버려진 밭 → 임금 요구 → 1351 노동자 조례 → 1352 재정착 → 1361 두 번째 역병 → 1362~64 3장 끝.
+  - 결정 넷(Wave 21 카드, 청원, 답 둘씩): 임금 인상/조례대로, 수도원/평신도 서기, 이웃 확장/새 이주민, 화폐 지대/부역 유지. 경제: 성장 멈춤·회복 0.6 %/계절, 곡물값 0.8배, 빈 필지 지대 0, 장부 `wages` 등 넷. 저장 v26.
+  - 관문: P1~P12, 봇 3장 완주 5/5(1362 재정착, 사망률 42.0~47.8 %), 사람 경로 3장 첫 결정(가드레일 옆 3/3), 가드레일 `971e07d` 5/5(승리 틱 불변 = 1~2장 무변화, 새 기준선 `baseline-971e07d`).
+  - 넘길 것(렌더): 결정 카드 넷·사건 삽화 아홉(`plagueForecast`·원장 `plague.*`), 빈집(`plagueVacantPlots`, Wave 9 봉쇄 집), 사제 없는 교회(`curacyVacant`), 임금 장부, 3장 목표·장 끝.
 
 - **FIX-7 넘김 넷 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시·판정, 검증 DGX): [보고서](verification/fix7/REPORT.md), 결정 FX7-1~FX7-5, 명세 [WR-2a](design/chapter-two-war.md)·[AL-2·AL-10·AL-11](design/ale-chain.md).
   - 양모 공납 현물: 계절마다 목초지 양의 양털 뭉치(1칸 = 양 1, 한 해 1뭉치, 5d, 가설)를 먼저 내고 부족분만 현금. 원장 `in_kind`·`resource: fleece`. C5에서 뭉치가 자원이 되면 같은 나눔을 재고에서.
