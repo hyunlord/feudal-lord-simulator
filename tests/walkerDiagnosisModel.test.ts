@@ -14,6 +14,7 @@ import {
   walkerDiagnosisModel,
 } from "../src/ui/walkerDiagnosisModel";
 import type { Tile } from "../src/world/world.types";
+import { createConstructionSite } from "../src/economy/constructionSites";
 
 function building(id: string, kind: Building["kind"], tx: number, ty: number): Building {
   return {
@@ -232,4 +233,23 @@ test("Builder walkers are excluded from walker diagnosis cards", () => {
 
   // When / Then
   assert.equal(walkerDiagnosisModel(input, "builder:construction-site-000001:0"), null);
+});
+
+test("INSTALL-23 a carter bound for a building site names the building and where the site lies, not the site's id", () => {
+  // Given: the carter at (0.5, 0) delivering to a mill being built at (4, 2).
+  const site = createConstructionSite({ kind: "mill", tx: 4, ty: 2, ordinal: 5, startedTick: 0 });
+  const bound: CarterWalker = { ...carter(), destination: { kind: "construction_site", siteId: site.id },
+    reservation: { ...carter().reservation!, destination: { kind: "construction_site", siteId: site.id } } };
+  const input = { ...gameState([bound]), constructionSites: [site] };
+
+  // When
+  const model = walkerDiagnosisModel(input, "carter");
+
+  // Then
+  assert.ok(model !== null);
+  assert.doesNotMatch(model.destinationLabel, /construction-site/);
+  assert.match(model.destinationLabel, /^방앗간 공사장 · 남동쪽 \d+칸$/);
+  // A site already gone is "공사장".
+  const gone = walkerDiagnosisModel({ ...input, constructionSites: [] }, "carter");
+  assert.equal(gone?.destinationLabel, "공사장");
 });
