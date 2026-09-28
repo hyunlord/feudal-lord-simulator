@@ -6,7 +6,7 @@
 - [3장 명세](chapter-three-plague.md)(같은 청원 방식·자체 순서), [세력 명세](factions.md) FX-4(원장 기억), [직물 사슬](cloth-chain.md)
 - Wave 21 4장 결정 카드 넷(`ch4_decision_guild_approval`·`ch4_decision_tax_collection`·`ch4_decision_textile_or_grain`·`ch4_decision_charter_negotiation`)과 1:1, 사건 삽화(`ch4_event_*`)
 
-결정: [결정 목록](../decisions/README.md) RG1~RG10. 조항 번호(RG-*)는 `tests/chapterFourReorganisation.test.ts`의 시험 이름(R1~R12)과 이어진다. 사람 경로는 `tests/humanPathChapterFour.test.ts`다. 화면(결정 카드·길드홀·세력 힘)은 렌더 몫이고, 이 명세는 렌더가 읽을 상태 API까지다. 모든 값은 가설이며 플레이 뒤 조정한다(`src/content/reorganisationConfig.ts`).
+결정: [결정 목록](../decisions/README.md) RG1~RG12. 조항 번호(RG-*)는 `tests/chapterFourReorganisation.test.ts`의 시험 이름(R1~R12)과 이어진다. 사람 경로는 `tests/humanPathChapterFour.test.ts`다. 화면(결정 카드·길드홀·세력 힘)은 렌더 몫이고, 이 명세는 렌더가 읽을 상태 API까지다. 모든 값은 가설이며 플레이 뒤 조정한다(`src/content/reorganisationConfig.ts`).
 
 3장은 사람이 모자란 장이었다. 4장에는 사람이 돌아오고, 직물로 부유해진 도시가 영주에게 권리를 요구한다.
 
