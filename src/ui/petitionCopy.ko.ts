@@ -15,6 +15,11 @@ export const PETITION_COPY = {
     title: "양모 공납 칙령",
     demand: (houses: number, levy: number) => `국왕이 전쟁에 쓸 양모를 명합니다: 사는 집 ${houses}채 × 20d = ${pence(levy)}.`,
     accept: (total: number, perSeason: number, seasons: number) => `현물로 ${pence(total)}어치를 ${seasons}계절에 나눠 냅니다(계절마다 ${pence(perSeason)})`,
+    /** ECON-UI (FIX-7): what a season's share takes — the pastures' fleeces first, the rest in coin. */
+    inKindSplit: (fleeces: number, inKind: number, cash: number) => fleeces === 0
+      ? `목초지 양털이 없어 계절마다 ${pence(cash)} 모두 현금`
+      : cash === 0 ? `계절마다 양털 ${fleeces}뭉치(${pence(inKind)})로 다 냅니다` : `계절마다 양털 ${fleeces}뭉치(${pence(inKind)}) + 현금 ${pence(cash)}`,
+    acceptInKind: (share: string, split: string) => `${share} · ${split}`,
     accept_with_price: (levy: number) => `현금 ${pence(levy)}을 지금 냅니다`,
     refuse: (seized: number) => `거절합니다 · 조달관이 ${pence(seized)}을 가져가고, 왕실의 신임을 잃습니다`,
   },
