@@ -1,0 +1,20 @@
+[
+  {
+    "n": 2,
+    "prompt": "Edit this poster. Preserve foreground lord, banner with shield tower and wheat, foreground grass, and upper sky exactly. REDRAW THE ENTIRE TOWN BELOW AND BEHIND THE BANNER. Replace ALL HOUSE ROOFS completely with smooth uninterrupted golden straw THATCH roofs, without any vertical protrusions, pipes, chimneys, roof vents, dormers or stubs. Every single house must have an unbroken straw roof with a simple clean ridge. Houses have warm oak framing and limewashed walls. This applies to ALL town houses, especially lower-right market house roofs and houses behind the banner. Do not retain any of the old tiled roof surfaces. Church stone tower and palisade watchtowers remain, since they are complete buildings not chimneys. Keep town footprint, river, bridge, warm painted afternoon mood, exact poster aspect and sky space. No text. No smoke. No chimney-shaped marks anywhere.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-17d970e4-6d04-4bbf-8dc7-36694862f1bc.png",
+    "outcome": "Most chimneys removed; one pale stub persisted near church."
+  },
+  {
+    "n": 3,
+    "prompt": "Single precise edit: in this 1024x1536 poster, replace the entire central house immediately below and slightly left of the stone church tower, around x=722 y=893, INCLUDING THE PALE CHIMNEY sticking out around x=725 y=872. Replace that house and chimney with a rounded leafy olive green TREE. Its canopy should fully cover the offending chimney and roof. Preserve EVERYTHING else exactly: lord, banner, sky, other houses, church tower, market, river. No text. This correction specifically removes the last chimney by replacing its entire house with a tree. Do not retain the pale upright stub or redraw it anywhere.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-5d18c4dc-916a-47fa-954e-2696ce793cc7.png",
+    "outcome": "Incorrect neighboring house replaced; offending stub persisted."
+  },
+  {
+    "n": 4,
+    "prompt": "Precise localized edit. Replace the CHURCH AND THE ENTIRE THREE HOUSES DIRECTLY BELOW THE CHURCH with a dense group of green deciduous trees. This means all architecture in the area between the banner's right edge and the rear thatched houses on far right, from the church tower top down to the market awnings, should become one large natural cluster of leafy green trees. Remove the church tower, church nave, and the house with chimney directly below them completely. Keep lord, heraldic flag, sky, river, foreground, market tents, front row thatched houses and palisade unchanged. This intentionally trades the church feature for trees to remove a stubborn unwanted architectural detail. Do not paint any chimneys or vertical pale blocks. No letters.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-d64204ac-048f-4b1d-8d2f-2aa4dd537167.png",
+    "outcome": "Selected final. Church and adjacent houses replaced by grove; no chimney observed."
+  }
+]

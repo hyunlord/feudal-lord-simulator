@@ -1,0 +1,75 @@
+{
+ "wave": "wave24",
+ "batch": "processed-20260928",
+ "date": "2026-09-28",
+ "by": "Claude Code (인프라·문서 세션), 사용자 지시",
+ "hero": {
+  "input": "astra-raw/wave24-20260928/hero-native-v4.png (Astra selected_native, records/wave24-panorama.json)",
+  "input_sha256": "86623bbb050f14db5f2cb8f9d5bce258ddf8c2519c9cc5a2f53a0ff2a7d57241",
+  "input_size": [
+   2152,
+   731
+  ],
+  "upscaler": {
+   "model": "Real-ESRGAN RealESRGAN_x2plus.pth (official release v0.2.1, BSD-3-Clause)",
+   "weights_sha256": "49fafd45f8fd7aa8d31ab2a22d14d91b536c34494a5cfe31eb5d89c2fa266abb",
+   "runtime": "spandrel 0.4.2, torch 2.11.0+cu128, DGX Spark GB10 GPU, fp32, whole image, 4.0 s",
+   "limits": "systemd user scope in fls-runs.slice (MemoryMax 48G, CPUQuota 1200%), nice 10"
+  },
+  "steps": [
+   "reflect-pad height 731 -> 732 (model needs multiples of 4)",
+   "x2 -> 4304x1464, crop to 4304x1462",
+   "resize cover-center, Lanczos: scale 0.89219 -> 3840x1304, trim 32 px top and bottom -> 3840x1240 (same framing as Astra's delivered file: its Sharp cover-center trimmed 64 px)"
+  ],
+  "intermediate": "astra-raw/wave24-20260928/processed-20260928/hero-esrgan-x2-4304x1462.png (not in the repository)",
+  "intermediate_sha256": "b12503b5f75f68c5615d51fd806df7f3c2ab23e943b129b4db8b6077046c6c96",
+  "output": "assets/steam_library_hero.png",
+  "output_sha256": "0dcf08db6dc08dcd89e6d4cbef9a23d64037202c051e5f4509b7640179b6c4fe",
+  "output_size": [
+   3840,
+   1240
+  ],
+  "replaces": "wave24/candidates-20260928/assets/steam_library_hero.png (8eec9400…, Lanczos x1.784)",
+  "comparison": "proofs/hero-upscale-comparison-100pct.jpg (3 regions at 100%, delivered left, new right)",
+  "script": "records/upscale_hero.py"
+ },
+ "alpha_cleanup": {
+  "rule": "alpha < 8 -> RGBA (0,0,0,0); all other pixels byte-identical (checked)",
+  "script": "records/alpha_cleanup.py",
+  "files": [
+   {
+    "file": "steam_library_logo_emblem.png",
+    "size": [
+     1280,
+     720
+    ],
+    "alpha_below_8": 646363,
+    "changed_pixels": 16541,
+    "sha256_in": "7e93114806fe3ffd3a1ff15018f87d415cde4000eabd85b87847ac189821ee5b",
+    "sha256_out": "9ca9738c25230cb34f96d9a24f16bb15ff3c00488105cf6200161cecc56a1fc1"
+   },
+   {
+    "file": "steam_app_icon.png",
+    "size": [
+     184,
+     184
+    ],
+    "alpha_below_8": 18548,
+    "changed_pixels": 1052,
+    "sha256_in": "6c57ca76e598bf5751b70fffd0fce9ce1ef85342337740d391948a4d2c13f8b4",
+    "sha256_out": "5a3154ec637d784b1e6a70d67f729a7045a85be04940d7a3903d0d68e4e448ef"
+   },
+   {
+    "file": "steam_shortcut_icon.png",
+    "size": [
+     256,
+     256
+    ],
+    "alpha_below_8": 34895,
+    "changed_pixels": 1761,
+    "sha256_in": "f3dac2a0e0ba8ef386b9556955ee143dd2984da6b67b2321f517f2efcb262981",
+    "sha256_out": "65a369ca05c666715aded8edcaca5d17d29f2597a335e0741c5601d4bd19a96b"
+   }
+  ]
+ }
+}

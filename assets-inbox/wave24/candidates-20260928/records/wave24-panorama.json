@@ -1,0 +1,127 @@
+{
+  "status": "candidate",
+  "built_in": true,
+  "model_name": null,
+  "model_version": null,
+  "seed": null,
+  "generation_date": "2026-09-28",
+  "historical_profile": "S_England_1300_1450_v1",
+  "art_bible_version": "AB_2026-09-19_v1",
+  "accepted": null,
+  "assets": [
+    {
+      "asset_id": "steam_library_hero",
+      "prompt_exact": "Use case: historical-scene. Asset: Steam library hero, ONE original very wide horizontal painted panorama, output requested 3840x1240 pixels; if aspect limit requires, use 3840x1280 (3:1), keeping top/bottom 20px expendable. References are style and town continuity only, independently RECOMPOSE the whole scene for panoramic format; do not crop or stretch either reference. Southern England around 1300: from a hillside a burgundy-cloaked medieval lord at the far left looks over a riverside market town. Warm late afternoon, muted olive, earth, warm plaster, terracotta, subdued blue water, hand-painted gouache grain matching the project reference. Town includes timber-frame warm-plastered houses with low rubble foundations and flat clay-tile or thatched roofs, square medieval parish church tower, canvas market stalls, wooden palisade, river and modest bridge, distant strip fields and wooded hills. Town architecture grouped across upper-left and upper-right; lower CENTER third is quiet uncluttered grass and broad water with very little focal detail, intended for Steam UI coverage. Lord only at left edge, town and bridge fully legible at panoramic scale. No title, no logo, no lettering, no numbers, no symbols, no border, no UI. CRITICAL: ALL residential roofs completely clean uninterrupted thatch or flat clay tiles, NO CHIMNEYS, NO CHIMNEY STUBS, no chimney pots, no smoke, no shiny glass, no slate, no brick houses, no hops, no bright saturated colors. Reference 2 has erroneous chimney stubs: NEVER reproduce them. Single seamless cohesive painting; no panels.",
+      "reference_images": [
+        "references/키아트_타이틀.jpg",
+        "records/main-native.png"
+      ],
+      "selected_native": "records/hero-native-v4.png",
+      "native_attempts": [
+        "records/hero-native.png",
+        "records/hero-native-v2.png",
+        "records/hero-native-v3.png",
+        "records/hero-native-v4.png"
+      ],
+      "qa": {
+        "composition": "pass: independently recomposed panorama, quiet central lower water, lord left",
+        "text_logo": "none visible",
+        "history": "Corrected repeated chimney stubs by whole-roof thatch replacement. No prominent residential chimneys visible in v4. Tiny light mark behind left roof ridge ambiguous foliage/highlight; visual QA is not proof of every subpixel mark.",
+        "limitation": "Upscaled from native 2152x731; not native 4K. Generated edits can soften painted detail.",
+        "accepted": null
+      },
+      "source_resolution": [
+        2152,
+        731
+      ],
+      "final_path": "assets/steam_library_hero.png",
+      "final_resolution": [
+        3840,
+        1240
+      ],
+      "postprocessing": {
+        "tool": "Sharp",
+        "operation": "resize cover center, Lanczos3, PNG",
+        "scale_factor": 1.7843866171003717,
+        "upscaled": true,
+        "scaled_dimensions_approx": [
+          3840,
+          1304.3866171003717
+        ],
+        "minor_trim_after_scale_approx": [
+          0,
+          64.38661710037172
+        ],
+        "content_edit_outside_imagegen": false
+      },
+      "sha256": "8eec94003e511e2eab9313bb64529b77d942e826f4b97a144a3fcc6679b0bb7f",
+      "file_bytes": 12329274
+    },
+    {
+      "asset_id": "steam_page_background",
+      "prompt_exact": "Use case: historical-scene. Asset: Steam store PAGE BACKGROUND, requested output 1438x810 pixels, horizontal 16:9 painting. Create ONE subtle DARK warm parchment background with extremely faint hand-painted medieval map and town outline imagery. This is an unobtrusive background under a store page, NOT a bright hero picture and NOT a UI mockup. Very low contrast, deep muted umber and tobacco brown parchment fiber, softly worn pigment, restrained hand-painted gouache texture related to the attached project key art. Barely visible river curves, irregular field strips, woodland shapes, and outlines of a small southern English medieval market town, tiny timber-framed house roof outlines and church tower silhouette, mostly toward left and right edges. Broad quiet darker middle zone. No strong focal object. Natural continuous pigment shading without ornate borders. Absolutely NO text, NO letters, NO numbers, NO labels, NO compass letters, NO logo, NO watermark, NO page border, NO UI, NO bright yellow parchment, NO strong white lines, NO modern map graphics. House roof outlines must have no chimneys. Reference only informs warm muted painterly project texture; independently compose this dark parchment map background.",
+      "reference_images": [
+        "references/키아트_타이틀.jpg"
+      ],
+      "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70/exec-3c3c55ae-c7dd-4bb0-837e-006f763f500f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "selected_native": "records/page-background-native.png",
+      "qa": {
+        "dark_warm_parchment": "pass",
+        "faint_town_map": "pass",
+        "quiet_center": "pass",
+        "letters_numbers_ui_border": "none visible",
+        "accepted": null
+      },
+      "source_resolution": [
+        1672,
+        941
+      ],
+      "final_path": "assets/steam_page_background.png",
+      "final_resolution": [
+        1438,
+        810
+      ],
+      "postprocessing": {
+        "tool": "Sharp",
+        "operation": "resize cover center, Lanczos3, PNG",
+        "scale_factor": 0.8607863974495218,
+        "upscaled": false,
+        "scaled_dimensions_approx": [
+          1439.2348565356003,
+          810
+        ],
+        "minor_trim_after_scale_approx": [
+          1.2348565356003292,
+          0
+        ],
+        "content_edit_outside_imagegen": false
+      },
+      "sha256": "dee370dbea6a6e2affa760710c1032197ae7ae8ceb2d5888dac196b5280ce09a",
+      "file_bytes": 2346702
+    }
+  ],
+  "corrections": {
+    "attempt2": {
+      "prompt_exact": "Precise object edit of attached panoramic painting. KEEP the exact panoramic composition, burgundy lord, church tower, market town, bridge, river, trees, fields, warm painterly texture and ALL other objects. ONLY REMOVE EVERY RESIDENTIAL CHIMNEY AND CHIMNEY STUB throughout the entire painting, both left and right towns and distant houses. Many small pale upright square stubs currently project above roof ridges: erase ALL of them completely and reconstruct the clean roof ridge, continuous roof tiles or thatch and background foliage/sky behind them. Do not confuse church and palisade towers with chimneys: keep those towers. EVERY domestic roof must have smooth uninterrupted ridge silhouette with ZERO upright masonry projections. Remove roof dormer-like chimney remnants too. No smoke, no new details, no text, no logo. Preserve very wide panoramic aspect; requested 3840x1240 or nearest wide ratio. This is a surgical removal pass; never add a chimney elsewhere.",
+      "reference_images": [
+        "records/hero-native.png"
+      ],
+      "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70/exec-ae67224a-6305-43fa-9d14-f7f55c250b5c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "attempt3": {
+      "prompt_exact": "Surgical retouch: remove remaining chimney protrusions from this image. The terracotta-roof house just RIGHT OF THE CHURCH, above the central market, around x=40% and y=33%, STILL HAS TWO SHORT GRAY MASONRY CHIMNEY STUBS standing above its ridge. ERASE BOTH fully, replace with background tree foliage, and connect a perfectly clean straight terracotta roof ridge. Also examine and remove any similar remaining short gray vertical projection on all residential roofs. Keep church tower, palisade towers, people and EVERYTHING ELSE UNCHANGED. Preserve the same very wide panorama and painterly style. No lettering. Do not reintroduce chimney anywhere. Only visible difference should be those last residential roof chimney stubs gone.",
+      "reference_images": [
+        "records/hero-native-v2.png"
+      ],
+      "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70/exec-12cc174c-636f-4b62-b9e0-9e51ffd46023.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "original_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70/exec-28b778fb-2dfd-478f-bae8-525372d06bfa.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "attempt4": {
+      "prompt_exact": "Edit this complete panorama, preserving dimensions and all composition. Locate the large rectangular timber house with TERRACOTTA RED ROOF at 40% from left, 34% from top, immediately behind the market tent row and to the right of the tall church. REPLACE ITS ENTIRE ROOF with one SIMPLE THICK GOLDEN STRAW THATCH ROOF WITH A CONTINUOUS CLEAN UNBROKEN ROUNDED RIDGE. Paint over the existing roof AND BOTH TWO GRAY CHIMNEY STUBS completely. That single building must now have golden straw roof, NOT red tiles, with absolutely zero masonry protrusions. The straw roof ridge should be clean and smooth like the neighboring thatched houses. Preserve the timber-framed walls under it. ALL other roofs, church, bridge, lord, river, landscape, colors, camera stay unchanged. No text or logo. This specific material replacement is required to ensure no remaining residential chimney.",
+      "reference_images": [
+        "records/hero-native-v3.png"
+      ],
+      "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e1-215f-7430-a3bb-d2b7fb862b70/exec-7ab330e8-f151-4cc3-8f0d-04965cb43a4f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    }
+  }
+}

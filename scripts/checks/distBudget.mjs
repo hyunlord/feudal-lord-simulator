@@ -9,6 +9,10 @@
 //   --json/--md   also write the result as JSON / as the Korean budget table
 // check:merge runs the same measurement (scripts/checks/mergeChecks.mjs, step "budget"); the browser probe
 // scripts/imageMemoryProbe.mjs sorts the images a page fetched with the same categorize().
+// BUDGET-1b "시작 시 불러오는 그림 메모리" (reported, no budget): the decoded size (width × height × 4, from each file's
+// PNG/JPEG header in the build) of the images the startup preload requests at a chapter-1 campaign start and of the
+// whole startup preload (the sandbox, and every start before BUDGET-1b). The lists come from the runtime's own preload
+// functions (scripts/checks/startupArtList.ts, run with tsx); images drawn later load on first draw and are not in it.
 import { execFileSync, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -71,6 +75,69 @@ export function listDistFiles(dir) {
   return files.sort((a, b) => a.path.localeCompare(b.path));
 }
 
+/** Width and height from a PNG (IHDR) or JPEG (first SOFn) header; null for anything else. */
+export function imageSize(bytes) {
+  if (bytes.length >= 24 && bytes.readUInt32BE(0) === 0x89504e47 && bytes.toString('latin1', 12, 16) === 'IHDR') {
+    return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  }
+  if (bytes.length >= 4 && bytes[0] === 0xff && bytes[1] === 0xd8) {
+    let at = 2;
+    while (at + 9 < bytes.length) {
+      if (bytes[at] !== 0xff) return null;
+      const marker = bytes[at + 1];
+      if (marker === 0xff) { at += 1; continue; }
+      if (marker === 0xd8 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) { at += 2; continue; }
+      // SOF0…SOF15 carry the frame size; C4 (DHT), C8 (JPG) and CC (DAC) share the range but do not.
+      if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+        return { width: bytes.readUInt16BE(at + 7), height: bytes.readUInt16BE(at + 5) };
+      }
+      at += 2 + bytes.readUInt16BE(at + 2);
+    }
+  }
+  return null;
+}
+
+/** The startup preload's lists by chapter (scripts/checks/startupArtList.ts in `cwd`), or null when `cwd` has no such script. */
+export function startupArtLists({ cwd }) {
+  const script = join(cwd, 'scripts', 'checks', 'startupArtList.ts');
+  if (!existsSync(script)) return null;
+  const run = spawnSync(join(cwd, 'node_modules', '.bin', 'tsx'), [script], { cwd, encoding: 'utf8', maxBuffer: 64 * 2 ** 20 });
+  if (run.status !== 0) throw new Error(`startupArtList failed (exit ${run.status})\n${`${run.stdout}${run.stderr}`.trim().split('\n').slice(-20).join('\n')}`);
+  return JSON.parse(run.stdout);
+}
+
+/** Decoded bytes (width × height × 4) of `paths` read from `dir`, split by budget category; missing or unreadable files listed. */
+export function decodedImageMemory(paths, dir, config) {
+  const categories = new Map(); const missing = []; let bytes = 0; let fileBytes = 0;
+  for (const path of paths) {
+    const full = join(dir, path);
+    const size = existsSync(full) ? imageSize(readFileSync(full)) : null;
+    if (size === null) { missing.push(path); continue; }
+    const decoded = size.width * size.height * 4;
+    const category = categorize(path, config)?.category ?? OTHER;
+    const row = categories.get(category) ?? { category, images: 0, bytes: 0 };
+    row.images += 1; row.bytes += decoded; categories.set(category, row);
+    bytes += decoded; fileBytes += statSync(full).size;
+  }
+  return { images: paths.length - missing.length, bytes, fileBytes, byCategory: [...categories.values()].sort((a, b) => b.bytes - a.bytes), missing };
+}
+
+/** The "시작 시 불러오는 그림 메모리" line: chapter-1 start and the whole startup preload, and what each chapter adds. */
+export function measureStartupArt({ cwd, dir, config }) {
+  const lists = startupArtLists({ cwd });
+  if (lists === null) return null;
+  const chapterOne = lists.chapters.find(entry => entry.chapter === 1)?.paths ?? [];
+  const first = new Set(chapterOne);
+  let previous = first;
+  const chapters = lists.chapters.map(entry => {
+    const added = entry.paths.filter(path => !previous.has(path));
+    previous = new Set(entry.paths);
+    return { chapter: entry.chapter, added, ...decodedImageMemory(entry.paths, dir, config) };
+  });
+  return { chapterOne: decodedImageMemory(chapterOne, dir, config), all: decodedImageMemory(lists.all, dir, config),
+    deferred: lists.all.filter(path => !first.has(path)), chapters };
+}
+
 const toBytes = (megabytes, config) => megabytes === null ? null : Math.round(megabytes * config.megabyte);
 
 /** Sums `files` ({ path, bytes }) by category and rule and judges them against the budgets. */
@@ -113,6 +180,15 @@ export function formatBudgetTable(result) {
     lines.push(`${name}${String(row.files).padStart(7)}${mb(row.bytes, megabyte).padStart(9)}${budget.padStart(9)}${headroom.padStart(10)}  ${row.budgetBytes === null ? '' : row.pass ? 'ok' : 'OVER'}`);
   }
   lines.push(`MB = ${megabyte.toLocaleString('en-US')} bytes`);
+  const art = result.startupArt;
+  if (art !== undefined && art !== null) {
+    const world = memory => memory.byCategory.find(row => row.category === 'world')?.bytes ?? 0;
+    lines.push(`startup image memory (decoded w×h×4, no budget): chapter-1 start ${art.chapterOne.images} images ${mb(art.chapterOne.bytes, megabyte)} MB` +
+      ` (world ${mb(world(art.chapterOne), megabyte)}); whole preload ${art.all.images} images ${mb(art.all.bytes, megabyte)} MB (world ${mb(world(art.all), megabyte)})`);
+    for (const chapter of art.chapters.filter(entry => entry.added.length > 0)) lines.push(`  entering chapter ${chapter.chapter} adds ${chapter.added.length}: ${chapter.added.join(', ')}`);
+    const missing = [...new Set([...art.chapterOne.missing, ...art.all.missing])];
+    if (missing.length > 0) lines.push(`  ${missing.length} preload image(s) missing or unreadable in the build: ${missing.slice(0, 10).join(', ')}`);
+  }
   if (result.unmatched.length > 0) {
     lines.push(`${result.unmatched.length} file(s) no rule matches (counted as 기타; add a rule to scripts/checks/distBudget.config.json):`);
     for (const file of result.unmatched.slice(0, 20)) lines.push(`  ${file.path} (${file.bytes} bytes)`);
@@ -137,9 +213,22 @@ export function formatBudgetMarkdown(result, { sha, buildMs }) {
     const headroom = row.budgetBytes === null ? '—' : cell(row.budgetBytes - row.bytes);
     lines.push(`| ${row.name} | ${row.files} | ${cell(row.bytes)} | ${cell(row.budgetBytes)} | ${headroom} | ${row.budgetBytes === null ? '—' : row.pass ? '통과' : '초과'} |`);
   }
+  lines.push('', '글꼴은 woff2만 싣는다(BUDGET-1b 판정 2026-09-28, Electron·최신 브라우저 대상): `scripts/woff2OnlyFonts.ts`가 @fontsource CSS의 woff 대체 경로를 빌드 전에 지운다.');
   lines.push('', '범주 안의 구성:', '');
   for (const category of result.categories) {
     for (const rule of [...category.rules].sort((a, b) => b.bytes - a.bytes)) lines.push(`- ${category.name} · ${rule.label}: ${rule.files}개, ${cell(rule.bytes)}`);
+  }
+  const art = result.startupArt;
+  if (art !== undefined && art !== null) {
+    const world = memory => cell(memory.byCategory.find(row => row.category === 'world')?.bytes ?? 0);
+    lines.push('', '## 시작 시 불러오는 그림 메모리', '',
+      '예산 없음(측정만). 시작 때 미리 불러오는 그림(`src/render/preloadGameArt.ts`의 `preloadGameArt`·`preloadFrameArt`, 그리고 첫 지형 프레임이 지도와 관계없이 부르는 경계·계절 그림)의 해제 크기 = 빌드 파일 머리의 가로 × 세로 × 4의 합. 목록은 `scripts/checks/startupArtList.ts`가 이 런타임 함수들을 돌려 얻는다. 지도에 있을 때만 처음 그릴 때 불러오는 그림(물가·구역·마당·성벽 면·날씨·마을 생활)과 초상·삽화는 들지 않는다 — BUDGET-1 탐침의 118.8 MB(1장 끝 마을이 불러온 세계 그림 전부)와 다른 이유다.', '',
+      '| 시작 | 그림 | 파일 | 해제 크기 | 그중 세계 그림 |', '|---|---:|---:|---:|---:|',
+      `| 1장 시작(캠페인 새 게임) | ${art.chapterOne.images} | ${cell(art.chapterOne.fileBytes)} | ${cell(art.chapterOne.bytes)} | ${world(art.chapterOne)} |`,
+      `| 전부(자유 모드, BUDGET-1b 전의 모든 시작) | ${art.all.images} | ${cell(art.all.fileBytes)} | ${cell(art.all.bytes)} | ${world(art.all)} |`, '');
+    for (const chapter of art.chapters.filter(entry => entry.added.length > 0)) {
+      lines.push(`- ${chapter.chapter}장에 들어갈 때 더함: ${chapter.added.length}개(${chapter.added.map(path => `\`${path}\``).join(', ')}) — 누적 ${cell(chapter.bytes)}`);
+    }
   }
   lines.push('', result.unmatched.length === 0 ? '규칙에 안 걸린 파일(기타): 없음.' : `규칙에 안 걸린 파일(기타) ${result.unmatched.length}개: ${result.unmatched.map(file => `\`${file.path}\``).join(', ')}.`);
   return `${lines.join('\n')}\n`;
@@ -160,7 +249,7 @@ export function measureBuild({ cwd, config = loadBudgetConfig() }) {
   const outDir = mkdtempSync(join(tmpdir(), 'fls-dist-budget-'));
   try {
     const buildMs = buildDist({ cwd, outDir });
-    return { buildMs, result: evaluateBudget(listDistFiles(outDir), config) };
+    return { buildMs, result: { ...evaluateBudget(listDistFiles(outDir), config), startupArt: measureStartupArt({ cwd, dir: outDir, config }) } };
   } finally {
     rmSync(outDir, { recursive: true, force: true });
   }
@@ -178,7 +267,7 @@ async function main() {
   else {
     const dist = resolve(flag('dist') ?? join(top, 'dist'));
     if (!existsSync(dist)) throw new Error(`${dist} does not exist: run npm run build, or pass --build`);
-    result = evaluateBudget(listDistFiles(dist), config);
+    result = { ...evaluateBudget(listDistFiles(dist), config), startupArt: measureStartupArt({ cwd: top, dir: dist, config }) };
   }
   console.log(`dist budget at ${sha.slice(0, 8)}${dirty ? ' (working tree modified)' : ''}${buildMs === null ? '' : `, built in ${(buildMs / 1000).toFixed(1)} s`}`);
   console.log(formatBudgetTable(result));

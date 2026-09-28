@@ -1,0 +1,115 @@
+{
+  "reviewer": "independent-native-subagent",
+  "status": "final_offline_visual_pass_with_limits",
+  "scope": "offline visual candidate review; no Steam client verification",
+  "method": [
+    "Viewed every assets/*.png actual file (10 assets).",
+    "Viewed both proof boards, native records/small-120x45.png (120x45) and updated records/small-proof-crop.png at its native 900x500 dimensions.",
+    "Viewed emblem-alpha-check.png on light and dark backgrounds; inspected alpha pixel values without modifying art.",
+    "Re-viewed final correction5 library asset and both rebuilt proof boards; library artwork visibly matches rebuilt proof instances.",
+    "Final tiny recheck: dark temporary title on rebuilt proof02 and regenerated standalone native 120x45 inspected; no additional asset edits."
+  ],
+  "asset_sha256": {
+    "steam_app_icon.png": "6c57ca76e598bf5751b70fffd0fce9ce1ef85342337740d391948a4d2c13f8b4",
+    "steam_header_capsule.png": "429a4933d1c549c0d8dd46a4a44233ca4ea32aa219391207cdb9a32b26b316bf",
+    "steam_library_capsule.png": "5e9bdd6da5d98651e20da0762afbe13701bc6a1ee1168464311aa00f0c2e213b",
+    "steam_library_hero.png": "8eec94003e511e2eab9313bb64529b77d942e826f4b97a144a3fcc6679b0bb7f",
+    "steam_library_logo_emblem.png": "7e93114806fe3ffd3a1ff15018f87d415cde4000eabd85b87847ac189821ee5b",
+    "steam_main_capsule.png": "832b33f5d564615a891fd1984d32828aa65ed81e877302fa7a56e31c372e19c9",
+    "steam_page_background.png": "dee370dbea6a6e2affa760710c1032197ae7ae8ceb2d5888dac196b5280ce09a",
+    "steam_shortcut_icon.png": "f3dac2a0e0ba8ef386b9556955ee143dd2984da6b67b2321f517f2efcb262981",
+    "steam_small_capsule.png": "51f6d053aa814318acf0a6cb653c42e048e754bc4b4d6c7201b3ebd60c3c562e",
+    "steam_vertical_capsule.png": "7011d364119938fd8c6a34e480e0629850875b2819976fa9fb78ce8b0ec8e0bd"
+  },
+  "checks": {
+    "generated_text": {
+      "result": "pass_observed",
+      "note": "No letters/wordmarks visibly baked into candidate art; proof typography is explicit temporary overlay. Heraldic tower and cloak decoration are symbols, not text."
+    },
+    "historical_house_restrictions": {
+      "result": "pass_observed",
+      "note": "Final correction5 library capsule re-viewed at native 600x900: isolated church tower emerges above grove; house roofs show no definite chimney or prohibited door mark. No definite prohibited house chimney/door mark found elsewhere. Roof ridge highlights and gable projections were not counted as chimneys."
+    },
+    "style": {
+      "result": "pass_observed",
+      "note": "Warm ochre light, muted foliage, blue-grey distance, burgundy lord and painted timber/plaster town are coherent across capsule and panorama family; parchment background and emblem are coordinated companion treatments."
+    },
+    "aspect_composition": {
+      "result": "pass_observed",
+      "note": "Main establishes town/market; header and small shift subjects left with quiet right title field; vertical makes lord dominant; library adds banner; hero uses wide river/bridge. Compositions visibly adapt subject balance to aspect."
+    },
+    "logo_quiet_zones": {
+      "result": "pass_observed",
+      "note": "Temporary English/Korean titles fit without hiding primary silhouettes. Upper sky in main/vertical/library and right haze in header/small provide clear separation."
+    },
+    "small_native_120x45": {
+      "result": "pass_with_readability_limit",
+      "note": "Town cluster and tower recognizable at actual 120x45; lord is a tiny distinguishable burgundy standing silhouette on left, not detailed person identity. Updated bold three-line English proof improves FEUDAL/LORD readability; SIMULATOR is still very small. No text/subject overlap.",
+      "approximate_lord_bbox_native120": [
+        2,
+        20,
+        8,
+        19
+      ]
+    },
+    "hero_lower_center_ui": {
+      "result": "pass_observed",
+      "note": "Specified middle-third x / lower-third y rectangle overlays water, shrubs and field. Key lord, tower, town and bridge remain outside this rectangle. Other Steam layouts/crops were not tested."
+    },
+    "emblem_alpha": {
+      "result": "pass_with_nonblocking_residue",
+      "note": "Transparent emblem and icons appear clean against supplied light/dark backgrounds; no visible bad halo. Raw viewer exposes red RGB residue on very low alpha pixels; this does not resemble the composited result.",
+      "saturated_red_alpha_counts": {
+        "emblem": {
+          "1": 2379,
+          "2": 46,
+          "5": 4
+        },
+        "app_icon": {
+          "1": 39
+        },
+        "shortcut_icon": {
+          "1": 75,
+          "2": 8
+        }
+      },
+      "sample_residue_xy": [
+        513,
+        86
+      ]
+    }
+  },
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    {
+      "id": "tiny_lord_detail",
+      "action": "Preserve current left silhouette; do not claim facial/person detail survives 120x45."
+    },
+    {
+      "id": "low_alpha_rgb_residue",
+      "action": "Optional alpha cleanup can remove alpha<=5 residue, but current light/dark composites show no visible fringe."
+    }
+  ],
+  "limits": [
+    "No live Steam client, upload, DPI or platform crop verification.",
+    "Visual inspection cannot prove exhaustive absence of every tiny historical detail.",
+    "This is candidate art visual QA, not game runtime integration."
+  ],
+  "proof_sha256": {
+    "proofs/01-capsules-size-check.png": "35f819430716f1b0cb64783bc375f5b42d59eea01957f7564d52aae901b5ab37",
+    "proofs/02-library-mock.png": "9ae77292b60150592ebff387ad99a15427f80b28130693123fd0759fe5abce6d",
+    "records/small-proof-crop.png": "685c2fec4006a225c91b13b3ef1023087842f35da0293acdb890c5219f768f3c",
+    "records/emblem-alpha-check.png": "ab6adaa0ee1769a56dff059111788d596da1ea55600cd3af35830982c6ec7085",
+    "records/small-120x45.png": "0ff5e4ed9a25e68869a205f27227021a6dfb6ab33ca4368a73a2e40c71daa7dd"
+  },
+  "resolved_findings": [
+    {
+      "id": "temporary_hero_title_contrast",
+      "resolution": "Re-viewed rebuilt proof02: dark brown temporary title is clearly readable against sky; previous contrast observation resolved."
+    },
+    {
+      "id": "standalone_120_resample",
+      "resolution": "Root regenerated 120x45 from final exported asset using Sharp. Re-viewed native standalone; tower/town/lord silhouette judgment unchanged. Earlier comparison against Pillow Lanczos is not applicable to Sharp resampling."
+    }
+  ]
+}

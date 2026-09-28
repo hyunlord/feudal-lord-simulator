@@ -6,7 +6,7 @@ Astra가 만든 산출물은 **설치 여부와 관계없이** `assets-inbox/<wa
 
 ```
 assets-inbox/
-  INBOX_LEDGER.csv          ← PNG 한 장당 한 행 (inbox PNG 수 = 장부 행 수)
+  INBOX_LEDGER.csv          ← 그림(PNG·JPG) 한 장당 한 행 (inbox 그림 수 = 장부 행 수)
   README.md                 ← Wave별 받은 곳과 설치 이력(초기 Wave)
   <wave>/
     <파일들>                 ← INBOX-1 이전에 받은 것(평평한 구조, 그대로 둠)
@@ -22,7 +22,7 @@ assets-inbox/
 - **이미 inbox에 있던 Wave**(d1·d1b·wave2·wave4-pilot·wave4b~4e·wave5a·wave5b)에는 **없는 파일만** 묶음 폴더로 더했다. 같은 바이트(또는 C2PA `caBX` 청크만 다른 바이트)가 Wave 안에 이미 있으면 넣지 않았다. 덮어쓴 파일은 없다.
 - `ui-p0/`는 UX-2 브랜치(`claude/ux2-art-skin`, 본선 미병합)가 먼저 만든 구조(`ui/` 43 · `superseded/` 12 · `pilot/` 12 + `inbox-status.csv`·`provenance-ui-p0*.csv`)를 **같은 경로·같은 바이트**로 가져왔다. UX-2가 본선에 병합될 때 같은 파일끼리라 충돌하지 않는다. UI 파일럿은 UX-2와 맞춰 `ui-p0/pilot/`에 있고, 거기 없던 파일럿 확인 그림·기록은 `ui-p0/pilot-candidates-v1/`에 있다.
 - C2PA `caBX` 청크가 붙은 PNG도 받은 바이트 그대로다. 설치할 때 청크를 빼면 Astra 대장 SHA와 같다(장부 `verdict_note`에 `C2PA caBX 포함` 표시).
-- `assets-inbox/**/*.png`는 Git LFS다(`.gitattributes`). CSV·JSON·MD·HTML은 일반 파일이다.
+- `assets-inbox/**/*.png`는 Git LFS다(`.gitattributes`). CSV·JSON·MD·HTML과 JPG(Wave 24 앱 아이콘 16KB 한 장)는 일반 파일이다.
 
 ## 2. 상태 뜻
 
@@ -35,14 +35,14 @@ assets-inbox/
 | `rejected` | 채택하지 않음(inbox에만 남김) |
 | `retired` | 채택했다가 거둬들임(예: 역사 오류) |
 
-장부 열: `wave, file(assets-inbox 기준 경로), sha256(받은 바이트), status, replaced_by, verdict_note, installed_by`. 대체본이 여러 장이면 `replaced_by`에 경로를 `;`로 잇는다. `replaced_by`의 경로는 모두 장부의 다른 행이어야 하고, 병합 전 검사(`scripts/checks/inboxLedger.mjs`, AGENTS.md 규칙 19)가 아니면 본선 푸시를 거부한다. 같은 바이트가 두 행 이상이면 하나를 정본으로 두고 나머지 행 비고에 `○○와 동일 바이트(정본: 경로)`를 단다. 정본은 confirmed 중 가장 먼저 받은 행(받은 때 = 5절 원본 ZIP·작업 폴더의 시각, 묶음 폴더 밖 행은 같은 Wave의 가장 이른 원본 시각; 같으면 처음 커밋한 때 → `assets/` > 묶음 맨 위 > `proofs/` > `records/` → 경로가 얕은 것 → 경로 순)이고, confirmed가 없는 묶음은 상태와 관계없이 가장 먼저 받은 행이다. 새로 들어오는 행이 기존 행과 바이트가 같은데 이 표시가 없으면 같은 검사가 푸시를 거부한다.
+장부 열: `wave, file(assets-inbox 기준 경로), sha256(받은 바이트), status, replaced_by, verdict_note, installed_by`. 대체본이 여러 장이면 `replaced_by`에 경로를 `;`로 잇는다. `replaced_by`의 경로는 모두 장부의 다른 행이어야 하고, 병합 전 검사(`scripts/checks/inboxLedger.mjs`, AGENTS.md 규칙 19)가 아니면 본선 푸시를 거부한다. 같은 바이트가 두 행 이상이면 하나를 정본으로 두고 나머지 행 비고에 `○○와 동일 바이트(정본: 경로)`를 단다. 정본 선택 순서: ① runtime manifest(`src/**`·`public/**`의 `.ts`·`.json`이 `assets-inbox/…` 경로로 가리키는 것)나 설치 대장(`docs/provenance/assets.csv`의 `sourcePath`)이 가리키는 행. 가리켜지는 행이 둘 이상이면 사용자 판정(pivot-pilot `aging/P0x_young` ↔ `portraits/P0x`는 `portraits/`). ② 그다음은 confirmed 중 가장 먼저 받은 행(받은 때 = 5절 원본 ZIP·작업 폴더의 시각, 묶음 폴더 밖 행은 같은 Wave의 가장 이른 원본 시각; 같으면 처음 커밋한 때 → `assets/` > 묶음 맨 위 > `proofs/` > `records/` → 경로가 얕은 것 → 경로 순)이고, confirmed가 없는 묶음은 상태와 관계없이 가장 먼저 받은 행이다. 새로 들어오는 행이 기존 행과 바이트가 같은데 이 표시가 없으면 같은 검사가 푸시를 거부한다.
 확인 그림·기록 PNG도 한 행씩 있으며, 상태는 그 그림이 확인하는 묶음의 상태를 따른다(`verdict_note`에 `확인 그림`/`기록 그림`).
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-28 15시 갱신)
+## 3. 현재 장부 요약 (2026-09-28 16시 갱신)
 
-| wave | PNG | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
+| wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | `asset-trial` | 23 |  | 2 |  |  | 21 |  | 0 |
 | `d1` | 7 |  | 7 |  |  |  |  | 5 |
@@ -71,6 +71,7 @@ assets-inbox/
 | `wave21` | 90 |  | 66 |  | 24 |  |  | 0 |
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave23` | 120 |  | 120 |  |  |  |  | 82 |
+| `wave24` | 32 |  | 28 |  | 4 |  |  | 0 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 0 |
 | `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
 | `wave4b` | 57 |  | 57 |  |  |  |  | 53 |
@@ -85,7 +86,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3823** | **3** | **2630** | **0** | **245** | **909** | **36** | **1159** |
+| **합계** | **3855** | **3** | **2658** | **0** | **249** | **909** | **36** | **1159** |
 
 ## 4. 찾는 법
 
@@ -187,6 +188,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-lineage-prod1-candidates-20260928-lite.zip` (09-28 12:30, 경량판) | `lineage/prod1-20260928` | 71,463 KB | `828bb3aba3a6f2d9…` | 281 | 0 | `references/` 제외(경량판에 `raw/` 없음) | 전체판 `astra-lineage-prod1-candidates-20260928.zip`(538,294 KB, `cec1612b6a65cbc6…`, raw 포함)은 사용자 지시로 `astra-raw/zips`에만 보관. 경량판의 assets·proofs·records·references·scripts는 작업 폴더 `output/astra-lineage-prod1-v1`과 바이트 같음. 맨 위 문서(`LIGHTWEIGHT_README.md`·`FULL_ARCHIVE_SHA256SUMS.txt` 포함)·`scripts/`는 `records/`로
 | `/tmp/astra-lineage-prod1-costume-v2-20260928-lite.zip` (09-28 13:00, 경량판) | `lineage/prod1-costume-v2-20260928` | 14,921 KB | `cc3ca41753c300e2…` | 80 | 0 | `references/`(편집 전 41장 사본) 제외 | 작업 폴더 `output/astra-lineage-prod1-costume-v2`와 바이트 같음(작업 폴더의 `node_modules` 링크 제외). ZIP 밖 `astra-lineage-prod1-costume-v2-delivery.json`은 `records/delivery.json`으로. 생성 고해상도 원본은 Astra가 `astra-raw/lineage-prod1-costume-v2/`(83MB)에 직접 둠
 | `/tmp/astra-lineage-prod2-candidates-20260928-lite.zip` (09-28 14:15, 경량판) | `lineage/prod2-20260928` | 55,609 KB | `e0e4aa373fac7bcc…` | 199 | 31 | `references/` 제외 | 재사용한 세력 수장 14장은 초상 풀 3차와 같은 바이트라 넣지 않고 풀 3차 행 비고에 연결을 적음. `records/`의 교정본 사본 16장(`L7_*-v2`·`L7_303_young-attempt1`·`-selected-v2`)과 `proof-work/costume-preliminary.png`는 같은 묶음의 `assets/`·`proofs/`와 같은 바이트라 건너뜀(처음 커밋 7802f8a6에 들어갔다가 다음 커밋에서 뺌). 작업 폴더 `output/astra-lineage-prod2-v1`에만 있던 `records/delivery.json`·`records/proof-work/`(PNG 4)를 합침. 전체판 `astra-raw/zips/astra-lineage-prod2-candidates-20260928-full.zip`(343,605 KB, `fffbb843e5ecdc98…`)과 고해상도 원본 `astra-raw/lineage-prod2-20260928/`(286MB)은 Astra가 직접 둠, 저장소에 넣지 않음
+| `/tmp/astra-wave24-candidates-20260928-lite.zip` (09-28 16:41, 경량판) | `wave24/candidates-20260928` | 47,185 KB | `4e35c0631dc02930…` | 54 | 0 | `references/` 제외 | `guides/` → `proofs/guides/`, `exports/` → `assets/exports/`. 작업 폴더 `output/astra-wave24-v1`에만 있던 검수 그림 4·`PLAN.md`·`package-result.json`을 합침, 생성 원본 `*-native*.png` 22장은 제외(Astra가 `astra-raw/wave24-20260928/` 148MB에 직접 둠)
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -223,7 +225,12 @@ git lfs pull --include="assets-inbox/wave7/**"
   - **파일럿 2 아기 6장 재작업 대기**(10시 판정): `L1_203·204`, `L2_201·202·203·204`의 `_baby`는 `rework_pending`, 비고 "3~5살로 보임 — 파일럿 2 얼굴에 맞춘 0~2살 아기로 재작업". 파일럿 1의 같은 인물 아기 6장은 `superseded` 그대로(`replaced_by`는 파일럿 2 아기 — 재작업본이 오면 그 판으로 바꾼다). 파일럿 2 확정은 21장(초상 18·확인 그림 3).
 - **혈통 본 제작 1차**(`lineage/prod1-20260928`, 2026-09-28 12시 판정, 경량판): 256 px 초상 160장. L3 영주 가문 A 38·L5 reeve 가문 38·공통 풀 40(아기 14·걸음마 12·어린이 14)·파일럿 2 아기 v2 6 `confirmed`, L4 양모·직물 상인 가문 38 `rework_pending`(비고 "상인 복식 재작업"). 확인 그림 4·기록 그림 27 `confirmed`. 파일럿 2 `_baby` 6장은 `superseded`(→ `assets/pilot2-baby/*_baby-v2.png`), 파일럿 1의 같은 인물 아기 6장도 `replaced_by`를 v2로 옮겼다. 파일럿 1 공통 풀 12장 중 이번에 재사용된 4장(`L0_005`·`L0_006`·`L0_008` 걸음마, `L0_011` 어린이 = `C_toddler_02`·`01`·`03`, `C_child_01`과 같은 바이트) `confirmed`, 나머지 8장 `rejected`(비고 "본 제작 공통 풀로 대체"). 같은 바이트 네 쌍은 양쪽 비고에 서로를 적었다.
   - **복식 교정 v2**(`lineage/prod1-costume-v2-20260928`, 13시 판정): L4 상인 가문 38장(청·자주 고운 모직·모피 깃·후드/혼인별 머리쓰개)과 L5_102 청년·장년·노년 3장(올리브 모직·황토빛 머리수건, 다른 L5와 구별) `confirmed`, 확인 그림 4 `confirmed`. 옛 L4 38장(`rework_pending`)과 옛 L5_102 3장(`confirmed`)은 `superseded`, `replaced_by`에 같은 이름의 v2. 본 제작 1차는 이제 재작업 대기 0.
-- **같은 바이트 정본 표시**(2026-09-28, INBOX-1y): 장부 전체에서 sha256이 같은 행이 215묶음 460행(2장 201·3장 13·19장 1)이었다. 묶음마다 정본을 하나 정하고 나머지 245행 비고에 `○○와 동일 바이트(정본: 경로)`를 더했다. 상태는 바꾸지 않았다. 정본이 confirmed인 묶음 111, confirmed가 없어 가장 먼저 받은 행을 정본으로 둔 묶음 104(대부분 wave5a·wave10·wave7의 rejected·superseded). 정본의 받은 때는 196묶음이 원본 ZIP·작업 폴더 시각, 19묶음이 Wave의 가장 이른 원본 시각(`wave4-pilot/road/` 같은 묶음 폴더 밖 행).
+- **같은 바이트 정본 표시**(2026-09-28, INBOX-1y): 장부 전체에서 sha256이 같은 행이 215묶음 460행(2장 201·3장 13·19장 1)이었다. 묶음마다 정본을 하나 정하고 나머지 245행 비고에 `○○와 동일 바이트(정본: 경로)`를 더했다. 상태는 바꾸지 않았다. 정본이 confirmed인 묶음 111, confirmed가 없어 가장 먼저 받은 행을 정본으로 둔 묶음 104(대부분 wave5a·wave10·wave7의 rejected·superseded). 정본의 받은 때는 196묶음이 원본 ZIP·작업 폴더 시각, 19묶음이 Wave의 가장 이른 원본 시각(`wave4-pilot/road/` 같은 묶음 폴더 밖 행). 확정본 없는 104묶음은 그대로 둔다(사용자 판정).
+- **Wave 24 Steam 상점 그림**(`wave24/candidates-20260928`, 16시 판정, 경량판): 원화 10(헤더 920×430·작은 캡슐·메인·세로·라이브러리 캡슐·히어로 3840×1240·엠블럼·페이지 배경·앱 아이콘 PNG·바로가기 아이콘), 안전 영역 가이드 10(`proofs/guides/`), 앱 아이콘 JPG 1(`assets/exports/`, 장부의 첫 JPG 행) `confirmed`. `steam_library_hero` 비고 "AI 업스케일 재처리 예정(단순 확대본)" — 2152×731 생성 원본을 확대한 판, `steam_library_logo_emblem` 비고 "알파 8 미만 잔여 픽셀 정리 예정". 확인 그림 2·기록 그림 4 `confirmed`.
+  - **후처리**(`wave24/processed-20260928`, 2026-09-28 17시, 사용자 지시): 4장을 새로 만들어 `confirmed`로 두고, 원래 4행은 `superseded`(`replaced_by`는 새 경로)로 바꿨다. 비교 확인 그림 JPG 1장도 `confirmed`다. 처리 기록은 [`README.md`](../assets-inbox/wave24/processed-20260928/records/README.md)·`processing.json`에 있다.
+    - 히어로: 생성 원본 `hero-native-v4`(2152×731)를 Real-ESRGAN x2plus로 2배 확대하고, Lanczos로 3840×1240에 맞췄다(DGX GPU). 가장자리는 또렷해졌지만 붓 질감은 매끈해졌다. 100% 비교가 `proofs/`에 있다.
+    - 엠블럼·앱 아이콘 PNG·바로가기 아이콘: 알파 8 미만 픽셀(16,541 · 1,052 · 1,761)을 RGBA (0,0,0,0)으로 바꿨다.
+  - **정본 순서에 runtime 참조를 맨 앞으로**(2026-09-28, INBOX-1z, 사용자 판정): runtime manifest나 설치 대장이 가리키는 행을 먼저 정본으로 둔다. 가리켜지는 inbox 경로 1,025개(설치 대장 1,025, 그중 초상 manifest 304·Wave 16 삽화 35·Wave 17 22)로 215묶음을 다시 보니 정본이 바뀌는 묶음은 없었다. 가리켜지는 행이 둘인 묶음은 pivot-pilot 4쌍(`P01`·`P08`·`P14`·`P20`의 `portraits/`와 `aging/…_young` — 초상 manifest와 설치 대장이 두 ID로 둘 다 가리킴)뿐이라 사용자 판정대로 `portraits/`를 정본으로 바꿨다.
 - **혈통 본 제작 2차**(`lineage/prod2-20260928`, 2026-09-28 15시 판정, 경량판): L6 백작 가문·L7 인접 기사 가문·L8 방앗간 가문 각 12명 38단계 = 114장 가운데 새 초상 100장(L6 30·L7 32·L8 38) `confirmed`. 재사용한 세력 수장 14장(L6_101·102, L7_101·102의 청년·장년·노년, L6_201의 청년·장년)은 초상 풀 3차 I101·I102·I107·I108·I103과 바이트가 같아 파일을 넣지 않았다. 장부 행 = PNG 수를 지키려고 새 행을 만들지 않고, 풀 3차의 해당 14행(`confirmed`) 비고에 "초상 풀 3차 I1xx와 동일 — 혈통 L6/L7_…로 연결"을 더했다. 확인 그림 4·기록 그림 34(작업 폴더의 `proof-work` 3 포함) `confirmed`. 같은 묶음 안에서 `assets/`·`proofs/`와 바이트가 같은 기록 사본 17장은 넣지 않았다.
 - **replaced_by 경로 검사**(2026-09-28, INBOX-1q): `ui-p0/pilot/cursor_sheet.png`의 `replaced_by`가 패턴(`ui-p0/ui/cursor_*.png(6장)`)이던 것을 실제 경로 6개(`cursor_select`·`cursor_place_valid`·`cursor_place_invalid`·`cursor_road_draw`·`cursor_zone_brush`·`cursor_inspect`)로 고쳤다. 이 행이 장부 전체에서 없는 파일을 가리키던 유일한 행이었다. 같은 커밋부터 `npm run check:merge`의 다섯째 검사 `ledger`가 장부에 없는 `replaced_by` 경로를 실패로 본다.
 
@@ -241,4 +248,4 @@ git lfs pull --include="assets-inbox/wave7/**"
 - 재작업본이 오면 원본 행은 `superseded` + `replaced_by`, 재작업본은 판정 전까지 `candidate`.
 - 장부는 여러 세션이 고친다. 다시 생성하지 말고 해당 행만 고치거나 행을 더한다.
 - 판정·재작업·설치가 바뀌면 장부 행의 `status`·`replaced_by`·`installed_by`만 고친다. 파일은 지우거나 덮어쓰지 않는다.
-- 장부 행 수 = inbox PNG 수를 유지한다.
+- 장부 행 수 = inbox 그림(PNG·JPG) 수를 유지한다. JPG 행은 Wave 24부터(판정이 따로 온 파생본).

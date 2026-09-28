@@ -1,0 +1,216 @@
+{
+  "checked_files": 23,
+  "pass": true,
+  "art_count": 10,
+  "guides": 10,
+  "proofs": 2,
+  "jpg": 1,
+  "csv_rows": 21,
+  "csv_hashes_verified": 21,
+  "results": [
+    {
+      "file": "assets/steam_header_capsule.png",
+      "width": 920,
+      "height": 430,
+      "channels": 3,
+      "hasAlpha": false,
+      "pass": true
+    },
+    {
+      "file": "guides/steam_header_capsule_safe_zone.png",
+      "width": 920,
+      "height": 430,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_small_capsule.png",
+      "width": 462,
+      "height": 174,
+      "channels": 3,
+      "hasAlpha": false,
+      "pass": true
+    },
+    {
+      "file": "guides/steam_small_capsule_safe_zone.png",
+      "width": 462,
+      "height": 174,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_main_capsule.png",
+      "width": 1232,
+      "height": 706,
+      "channels": 3,
+      "hasAlpha": false,
+      "pass": true
+    },
+    {
+      "file": "guides/steam_main_capsule_safe_zone.png",
+      "width": 1232,
+      "height": 706,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_vertical_capsule.png",
+      "width": 748,
+      "height": 896,
+      "channels": 3,
+      "hasAlpha": false,
+      "pass": true
+    },
+    {
+      "file": "guides/steam_vertical_capsule_safe_zone.png",
+      "width": 748,
+      "height": 896,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_library_capsule.png",
+      "width": 600,
+      "height": 900,
+      "channels": 3,
+      "hasAlpha": false,
+      "pass": true
+    },
+    {
+      "file": "guides/steam_library_capsule_safe_zone.png",
+      "width": 600,
+      "height": 900,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_library_hero.png",
+      "width": 3840,
+      "height": 1240,
+      "channels": 3,
+      "hasAlpha": false,
+      "pass": true
+    },
+    {
+      "file": "guides/steam_library_hero_safe_zone.png",
+      "width": 3840,
+      "height": 1240,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_library_logo_emblem.png",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true,
+      "alpha": {
+        "transparent": 629822,
+        "partial": 290644,
+        "opaque": 1134,
+        "total": 921600
+      }
+    },
+    {
+      "file": "guides/steam_library_logo_emblem_safe_zone.png",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_page_background.png",
+      "width": 1438,
+      "height": 810,
+      "channels": 3,
+      "hasAlpha": false,
+      "pass": true
+    },
+    {
+      "file": "guides/steam_page_background_safe_zone.png",
+      "width": 1438,
+      "height": 810,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_app_icon.png",
+      "width": 184,
+      "height": 184,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true,
+      "alpha": {
+        "transparent": 17496,
+        "partial": 15595,
+        "opaque": 765,
+        "total": 33856
+      }
+    },
+    {
+      "file": "guides/steam_app_icon_safe_zone.png",
+      "width": 184,
+      "height": 184,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "assets/steam_shortcut_icon.png",
+      "width": 256,
+      "height": 256,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true,
+      "alpha": {
+        "transparent": 33134,
+        "partial": 31212,
+        "opaque": 1190,
+        "total": 65536
+      }
+    },
+    {
+      "file": "guides/steam_shortcut_icon_safe_zone.png",
+      "width": 256,
+      "height": 256,
+      "channels": 4,
+      "hasAlpha": true,
+      "pass": true
+    },
+    {
+      "file": "proofs/01-capsules-size-check.png",
+      "width": 2400,
+      "height": 1940,
+      "format": "png",
+      "pass": true
+    },
+    {
+      "file": "proofs/02-library-mock.png",
+      "width": 1920,
+      "height": 1510,
+      "format": "png",
+      "pass": true
+    },
+    {
+      "file": "exports/steam_app_icon.jpg",
+      "width": 184,
+      "height": 184,
+      "format": "jpeg",
+      "pass": true
+    }
+  ],
+  "limits": [
+    "Visual semantic checks are in QA.md and independent-visual-review.json",
+    "No Steam client/runtime test"
+  ],
+  "tracked_product_diff": "git status --short --untracked-files=no returned empty after art export"
+}
