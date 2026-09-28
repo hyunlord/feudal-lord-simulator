@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-28(UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(UI-7 · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -16,6 +16,10 @@
   - 넘길 것(렌더): 장부 서랍·저장소·결산의 에일 줄(`townAle`), 헛간 카드의 보리 잠금과 이유, 양모 카드의 현물 결과 줄(`woolInKindSplit`).
 
 - **Wave 24 Steam 그림 후처리 — 완료, 본선 커밋**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 히어로는 생성 원본 2152×731 → Real-ESRGAN x2plus(DGX GPU) → 3840×1240(구도 동일, 가장자리 또렷·붓 질감 매끈, 100% 비교 첨부). 엠블럼·앱 아이콘 PNG·바로가기 아이콘은 알파 8 미만 픽셀을 (0,0,0,0)으로 바꿨다. `assets-inbox/wave24/processed-20260928/` 4장·비교 1 `confirmed`, 원래 4행 `superseded`, 장부 3,855행 = 그림 3,855. [기록](../assets-inbox/wave24/processed-20260928/records/README.md).
+- **UI-7 가계도·인물 얼굴·상태 장식 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/ui7/REPORT.md), 결정 UI7-D1~D5.
+  - 인물 전기의 "가계도" 탭(Wave 25 16장 설치): 혈통 깃발·문장, 세대 띠, 인물 틀(보통·선택·고인), 가지선·모서리·갈래, 혼인 고리, 가지 접기. 바깥 배우자는 혼인 고리로만(가지선에 매달지 않음 — 시험). 칸을 누르면 그 사람 전기.
+  - 닮은 점 한 줄, 아기·어린이 얼굴(이미 엔진 얼굴 — 단계 이름 보강), 상태 장식 다섯(병·부상·임신·순례·집행관), 원장 문장 다섯 한국어, 영주 가족은 권리 탭 "영주의 가솔"(청지기와 함께).
+  - 관문: L3 영주 가계도·방앗간 가계도·접기·아기·장식 다섯 캡처 오류 0, 스킨 감사 0 / 916, 면적 예산 안, 튜토리얼 22 = 22, B9·TOUCH 14/14.
 - **UI-6c 2장 목표 칩 접기·키보드 시험 가짜 시계 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/ui6c/REPORT.md), 결정 UI6C-D1~D2. 2장 장 목표 카드는 평소 한 줄 칩(누름·다음 목표가 바뀔 때 펼침) — 2장 성벽 공사 상태 1280 × 800 6.4 → 5.7 % / 6 %(INSTALL-3b 판정 대기 해소). `canvasKeyboardTarget` 시험은 가짜 시계(부하 1.6초 지연에서 실패하던 것 재현·해소).
 - **INSTALL-3b 성벽 공사 이름표 묶기·사슬 캡처 대상·결산 인구 줄·배부른 재생 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/install3b/REPORT.md), 결정 INSTALL3B-D1~D5.
   - 성벽 공사 하나에 이름표 하나(화면 안 성문 가까운 구간, 2장 도시 32 → 1), 구간 이름표는 공사 선택·줌 1.35부터. 면적 측정에 "2장 성벽 공사 중" — 캔버스 이름표 5.8 % → 0.4 %, 그 상태 합계 1280 × 800 6.4 % / 6 %로 초과(DOM 몫 6.0 %, 사용자 판정 대기).

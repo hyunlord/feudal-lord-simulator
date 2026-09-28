@@ -1,0 +1,69 @@
+{
+ "baby": {
+  "tick": 90977,
+  "person": "p-000057",
+  "household": "construction-site-000008",
+  "house": [
+   45,
+   40
+  ],
+  "recorded": null
+ },
+ "lord": {
+  "tick": 91000,
+  "person": "m-000001",
+  "household": "manor",
+  "house": null,
+  "recorded": null
+ },
+ "sick": {
+  "tick": 91000,
+  "person": "p-000032",
+  "household": "construction-site-000007",
+  "house": [
+   47,
+   42
+  ],
+  "recorded": true
+ },
+ "injury": {
+  "tick": 91000,
+  "person": "p-000003",
+  "household": "construction-site-000004",
+  "house": [
+   43,
+   42
+  ],
+  "recorded": true
+ },
+ "pregnant": {
+  "tick": 91000,
+  "person": "p-000178",
+  "household": "construction-site-000020",
+  "house": [
+   44,
+   37
+  ],
+  "recorded": true
+ },
+ "bailiff": {
+  "tick": 92000,
+  "person": "p-000045",
+  "household": "construction-site-000008",
+  "house": [
+   45,
+   40
+  ],
+  "recorded": true
+ },
+ "pilgrim": {
+  "tick": 96000,
+  "person": "p-000350",
+  "household": "construction-site-000038",
+  "house": [
+   47,
+   33
+  ],
+  "recorded": true
+ }
+}

@@ -1,0 +1,131 @@
+{
+ "steps": {
+  "t1-lord-tree": {
+   "tick": 91000,
+   "lord": "m-000001",
+   "nodes": 4,
+   "folded": 0,
+   "outside": 1,
+   "dead": 0,
+   "selected": "m-000001",
+   "banner": "드 포콩발 가문 · 영주 가문",
+   "width": 464,
+   "spouseDrops": 0,
+   "smallText": 0
+  },
+  "t2-miller-tree": {
+   "tick": 92000,
+   "head": "p-000045",
+   "open": {
+    "nodes": 13,
+    "folded": 0,
+    "outside": 1,
+    "dead": 0,
+    "selected": "p-000045",
+    "banner": "해치 가문 · 방앗간 가문",
+    "width": 1568,
+    "spouseDrops": 0,
+    "smallText": 0
+   },
+   "folded": {
+    "nodes": 2,
+    "folded": 1,
+    "outside": 1,
+    "dead": 0,
+    "selected": "p-000045",
+    "banner": "해치 가문 · 방앗간 가문",
+    "width": 464,
+    "spouseDrops": 0,
+    "smallText": 0
+   },
+   "frameOpens": {
+    "clicked": "p-000046",
+    "biography": "p-000046"
+   }
+  },
+  "b1-baby": {
+   "tick": 90977,
+   "baby": "p-000057",
+   "chip": {
+    "faces": [
+     "image-set(url(\"/assets/portraits/96/C_baby_02.jpg\") 1x, url(\"/assets/portraits/256/C_baby_02.jpg\") 2x)"
+    ]
+   },
+   "biography": {
+    "portrait": "C_baby_02",
+    "face": "url(\"/assets/portraits/256/C_baby_02.jpg\")"
+   }
+  },
+  "s1-sick": {
+   "tick": 91000,
+   "person": "p-000032",
+   "chipOrnament": "sick",
+   "ornament": "sick",
+   "life": [
+    "1322년 겨울병이 들었다"
+   ],
+   "rawTemplate": false
+  },
+  "s2-injury": {
+   "tick": 91000,
+   "person": "p-000003",
+   "chipOrnament": "injury",
+   "ornament": "injury",
+   "life": [
+    "1322년 겨울일하다 다쳤다"
+   ],
+   "rawTemplate": false
+  },
+  "s3-pregnant": {
+   "tick": 91000,
+   "person": "p-000178",
+   "chipOrnament": "pregnant",
+   "ornament": "pregnant",
+   "life": [
+    "1322년 겨울아이를 가졌다"
+   ],
+   "rawTemplate": false
+  },
+  "s4-pilgrim": {
+   "tick": 96000,
+   "person": "p-000350",
+   "chipOrnament": "pilgrim",
+   "ornament": "pilgrim",
+   "life": [
+    "1324년 봄순례를 떠났다"
+   ],
+   "rawTemplate": false
+  },
+  "s5-bailiff": {
+   "tick": 92000,
+   "person": "p-000045",
+   "chipOrnament": "bailiff",
+   "ornament": "bailiff",
+   "life": [
+    "1322년 겨울방앗간 일을 맡았다",
+    "1323년 봄영주의 집행관이 되었다"
+   ],
+   "rawTemplate": false
+  }
+ },
+ "files": [
+  "t0-lord-household.jpg",
+  "t1-lord-tree.jpg",
+  "t2-miller-tree.jpg",
+  "t3-miller-folded.jpg",
+  "b1-baby-chip.jpg",
+  "b1-baby-biography.jpg",
+  "s1-sick-chip.jpg",
+  "s1-sick-biography.jpg",
+  "s2-injury-chip.jpg",
+  "s2-injury-biography.jpg",
+  "s3-pregnant-chip.jpg",
+  "s3-pregnant-biography.jpg",
+  "s4-pilgrim-chip.jpg",
+  "s4-pilgrim-biography.jpg",
+  "s5-bailiff-chip.jpg",
+  "s5-bailiff-biography.jpg"
+ ],
+ "jpegBytes": 388663,
+ "errors": []
+}
