@@ -148,7 +148,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "person.died": params => `${n(params, "age")}살에 ${DEATH_CAUSES[s(params, "cause")] ?? "세상을 떠났다"}`,
   "person.left_town": () => "마을을 떠났다",
   // PERSON-1a (LN-10): the passing states and the bailiff.
-  "person.bailiff": () => "영주의 집행관(bailiff)이 되었다",
+  "person.bailiff": () => "영주의 집행관이 되었다",
   "person.fell_ill": () => "병이 들었다",
   "person.recovered": () => "병에서 나았다",
   "person.injured": () => "일하다 다쳤다",

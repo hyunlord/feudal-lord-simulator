@@ -482,7 +482,7 @@ export function App() {
         {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
           history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
-          mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} /> : null}
+          mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} onPerson={openPerson} /> : null}
         <UnlockBanner text={tutorial.banner} />
         {toastVisible && completionToast !== null ? <div className="completion-toast" role="status" aria-label={COMPLETION_TOAST_COPY.region}>
           <UiIcon sheet="prediction" cell="ok" />{completionToast.names.length === 1 ? COMPLETION_TOAST_COPY.one(completionToast.names[0]!)

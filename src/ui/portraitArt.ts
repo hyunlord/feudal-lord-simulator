@@ -20,7 +20,7 @@ const url = (path: string) => path.startsWith("data:") ? path : assetUrlForBase(
 /** The picture's 96 px and full-size files (the pool's JPEGs, or the P0 steward's PNGs). */
 function imageOf(portraitId: string): Readonly<{ url: string; url96: string }> | null {
   if (hasPortrait(portraitId)) return PORTRAIT_IMAGES[portraitId];
-  // FIX-4 (HR-12): under 8 the engine gives a silhouette key; the figure is one SVG for every size.
+  // FIX-4 (HR-12): the engine's silhouette key (UI-7: only where the pool has no face for the age), one SVG for every size.
   const figure = silhouetteUrl(portraitId);
   if (figure !== null) return { url: figure, url96: figure };
   const tone = STEWARD_TONES.find(entry => STEWARD_PORTRAIT[entry] === portraitId);

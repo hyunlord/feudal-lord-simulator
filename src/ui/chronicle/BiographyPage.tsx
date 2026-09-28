@@ -10,7 +10,7 @@ import { Button } from "../kit";
 // CHRON-1 biography (CHRONICLE_DESIGN 2.2): the Wave 19 `frame_biography` page (640 x 800 art, drawn at one scale so
 // its printed slots stay where they are): the portrait in the great circle (the pool picture of the person's age now,
 // with how well it matches), the spouse or the head of the house in the small one, the name, the life and the house
-// at the top of the right column, the life along the page's own line (`biography_life_dot`, `biography_life_end` for
+// at the top of the right column (UI-7: with what they have of their parents, "닮은 점"), the life along the page's own line (`biography_life_dot`, `biography_life_end` for
 // a death or a leaving), then the household and the offices, and the records they share with the town.
 export const BIOGRAPHY_PAGE = { width: 640, height: 800 } as const;
 
@@ -47,6 +47,8 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
         <p>{view.life}</p>
         <p>{COPY.roleHousehold(view.role, view.household)}</p>
         {view.offices.map(office => <p key={office} className="chronicle-biography-office">{COPY.employment(office)}</p>)}
+        {/* UI-7: the resemblance last in the header slot (it clips there, never over the life below). */}
+        {view.resemblance === null ? null : <p className="chronicle-biography-resemblance">{view.resemblance}</p>}
       </header>
       <section className="chronicle-biography-life" aria-label={COPY.lifeHeading} style={SLOTS.life}>
         {view.events.length === 0 ? <p className="chronicle-biography-empty">{COPY.lifeEmpty}</p> : (

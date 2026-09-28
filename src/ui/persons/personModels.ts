@@ -2,7 +2,7 @@ import type { Walker } from "../../agents/walker.types";
 import { BUILDING_CONFIG_BY_KIND } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
 import { hashSeed } from "../../engine/prng";
-import { ageOf, currentYear, inTown, personById, personDisplayName } from "../../engine/persons";
+import { LORD_FAMILY_TAG, ageOf, currentYear, inTown, personById, personDisplayName } from "../../engine/persons";
 import { lordHouse } from "../../engine/lordshipState";
 import { persons } from "../../engine/personsApi";
 import { MANOR_HOUSEHOLD, type Person, type PersonClassBand } from "../../engine/persons.types";
@@ -74,6 +74,23 @@ export function petitionerRows(state: GameState, petition: Pick<PetitionRecord, 
 export function stewardPerson(state: Pick<GameState, "persons">): Person | null {
   return state.persons?.people.find(person => person.role === "steward" && inTown(person)) ?? null;
 }
+
+/**
+ * UI-7: the lord's household (PERSON-1a LN-9, the manor) — the ruling house's family in town (the lord, the spouse,
+ * the widowed kin, the children by age; the tag `lord-house:<order>`), each named by what they are to the lord, then
+ * the steward.
+ */
+export function lordHouseholdRows(state: GameState): readonly PersonRow[] {
+  const states = personStatesReader(state);
+  const houseTag = `lord-house:${lordHouse(state).order}`;
+  const year = currentYear(state);
+  const family = (state.persons?.people ?? []).filter(person => inTown(person) && person.tags.includes(LORD_FAMILY_TAG) && person.tags.includes(houseTag))
+    .sort((a, b) => (LORD_FAMILY_ORDER[a.role] ?? 9) - (LORD_FAMILY_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear || a.id.localeCompare(b.id));
+  const steward = stewardPerson(state);
+  return [...family.map(person => ({ ...personRow(state, person, states), line: PERSONS_COPY.lordFamilyLine(person.role, person.sex, PERSONS_COPY.age(ageOf(person, year))) })),
+    ...(steward === null ? [] : [personRow(state, steward, states)])];
+}
+const LORD_FAMILY_ORDER: Readonly<Record<string, number>> = { head: 0, spouse: 1, kin: 2, child: 3 };
 
 /** A walker look's class band as a person's class (the bands without one match any class). */
 const LOOK_CLASS: Readonly<Partial<Record<WalkerClassBand, PersonClassBand>>> = {

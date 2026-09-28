@@ -13,7 +13,7 @@ const LABELS: Readonly<Record<PersonStateId, string>> = {
   marriage: "혼인",
   pilgrim: "순례 중",
   steward: "청지기",
-  bailiff: "집행관(bailiff)",
+  bailiff: "집행관",
   reeve: "마을 대표(reeve)",
 };
 
@@ -27,9 +27,8 @@ export const PERSON_STATE_COPY = {
   withState: (line: string, state: string) => `${line} · ${state}`,
   // The kit gallery's section (a developer screen).
   gallerySection: "인물 상태 장식",
-  galleryNote: "초상 틀 오른쪽 아래 · 96px(카드·전기)와 48px(칩) · 사망은 초상을 흑백으로 · 엔진 자료가 없는 상태도 그림은 준비됨",
+  galleryNote: "초상 틀 오른쪽 아래 · 96px(카드·전기)와 48px(칩) · 사망은 초상을 흑백으로",
   galleryEngine: "엔진에서 파생",
-  galleryHandoff: "엔진 자료 대기",
   galleryChipName: "앨리스 애덤슨",
   galleryChipLine: "가구주 · 31살",
 } as const;

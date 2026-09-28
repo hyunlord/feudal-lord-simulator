@@ -1,8 +1,10 @@
 import { SEMANTIC_PALETTE } from "../content/palette";
 import { SILHOUETTE_PORTRAIT_ID, type PortraitSilhouette } from "../engine/portraits";
 
-// FIX-4 (HR-12): a person under 8 has no portrait; the screens draw a figure in its place — a swaddled baby or a small
-// child, in the parchment and ink of the portrait frames. An SVG, so one drawing serves every slot size.
+// FIX-4 (HR-12): the figure drawn in place of a portrait — a swaddled baby or a small child, in the parchment and ink of
+// the portrait frames. An SVG, so one drawing serves every slot size. UI-7: since PERSON-1a (LN-6) a child under 8 has a
+// face (their lineage set's or the common pool's, drawn like any portrait); the engine gives this key only when the pool
+// has no picture of their sex and age, or a child of 8–13 whose identity has no child picture.
 const FIGURES: Readonly<Record<PortraitSilhouette, string>> = {
   infant: '<circle cx="48" cy="40" r="13"/><path d="M26 86c0-18 10-30 22-30s22 12 22 30z"/><ellipse cx="48" cy="60" rx="19" ry="9"/>',
   child: '<circle cx="48" cy="34" r="14"/><path d="M22 92c0-24 11-38 26-38s26 14 26 38z"/>',

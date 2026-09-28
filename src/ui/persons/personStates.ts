@@ -3,7 +3,8 @@ import { PRESSURE_BALANCE } from "../../content/balanceConfig";
 import type { GameState } from "../../engine/engine.types";
 import type { HistoryRecord } from "../../engine/history.types";
 import { inTown, personById } from "../../engine/persons";
-import { MANOR_HOUSEHOLD, type Person } from "../../engine/persons.types";
+import { persons } from "../../engine/personsApi";
+import { MANOR_HOUSEHOLD, type Person, type PersonConditionKind } from "../../engine/persons.types";
 import { assetUrlForBase } from "../../render/worldAssets";
 import { WAVE23_IMAGES } from "../../render/wave23ArtManifest.generated";
 
@@ -22,17 +23,13 @@ export const PERSON_STATES = [
 ] as const;
 export type PersonStateId = (typeof PERSON_STATES)[number];
 
-/**
- * States the engine keeps no data for yet (INSTALL-23 handoff): no illness, injury, pregnancy, pilgrimage or bailiff
- * office exists on a person or in the ledger. The ornament is ready (it draws when given the state); nothing here
- * derives them.
- */
-export const ENGINE_HANDOFF_STATES: readonly PersonStateId[] = ["sick", "injury", "pregnant", "pilgrim", "bailiff"];
-
 /** A season's ticks: mourning, a marriage and a child born show for this long after the ledger's record. */
 export const PERSON_STATE_WINDOW_TICKS = PRESSURE_BALANCE.seasonTicks;
 
 type Reader = (person: Person) => readonly PersonStateId[];
+
+/** UI-7: the ornament of each passing state the engine keeps (`persons.condition`, PERSON-1a LN-10). */
+const CONDITION_STATES: Readonly<Record<PersonConditionKind, PersonStateId>> = { sick: "sick", injury: "injury", pregnant: "pregnant", pilgrim: "pilgrim" };
 
 /** The ledger's person records of the last season (records are appended in tick order: read from the end). */
 function recentPersonRecords(state: Pick<GameState, "history" | "tick">): readonly HistoryRecord[] {
@@ -67,7 +64,8 @@ function recordHousehold(state: GameState, record: HistoryRecord): string | null
  *    the head's spouse (the child's parents; the child itself does not wear it).
  *  - marriage: a `person.married` record within one season: its subject (the spouse who joined) and the head of that
  *    household.
- *  - steward: role `steward`; reeve: the `reeve` tag.
+ *  - sick, injury, pregnant, pilgrim (UI-7, PERSON-1a LN-10): the person's passing state now (`persons.condition`).
+ *  - steward: role `steward`; bailiff (UI-7): the `bailiff` tag; reeve: the `reeve` tag.
  * Someone who left the town (alive, gone) wears nothing.
  */
 export function personStatesReader(state: GameState): Reader {
@@ -92,7 +90,10 @@ export function personStatesReader(state: GameState): Reader {
     const parent = person.role === "head" || person.role === "spouse";
     if (parent && born.some(entry => entry.id !== person.id && entry.household === person.householdId)) found.add("child_born");
     if (married.some(entry => entry.id === person.id || (person.role === "head" && entry.household === person.householdId))) found.add("marriage");
+    const condition = persons.condition(state, person);
+    if (condition !== null) found.add(CONDITION_STATES[condition.kind]);
     if (person.role === "steward") found.add("steward");
+    if (person.tags.includes("bailiff")) found.add("bailiff");
     if (person.tags.includes("reeve")) found.add("reeve");
     return PERSON_STATES.filter(id => found.has(id));
   };

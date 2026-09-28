@@ -131,6 +131,7 @@
 .chronicle-biography-header h3 { margin: 0; font-family: var(--ui-font-serif); font-size: 17px; line-height: 1.2; }
 .chronicle-biography-header p { margin: 0; font-size: 13px; line-height: 1.35; }
 .chronicle-biography-office { font-weight: 700; }
+.chronicle-biography-header p.chronicle-biography-resemblance { font-size: 12px; font-style: italic; }
 .chronicle-biography-life { overflow-y: auto; }
 .chronicle-biography-life ol { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .chronicle-biography-life li { display: grid; grid-template-columns: 26px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 4px; font-size: 12px; line-height: 1.35; }
