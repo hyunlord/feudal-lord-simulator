@@ -14,6 +14,7 @@ import { drawGroundDecalDetail } from "./drawTerrainDetails";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { waterSurface } from "./drawWater";
 import { drawBridgeAbutments, drawShoreline } from "./drawShoreline";
+import { drawIceRim, drawWaterMotion, iceRimDrawn, liveReeds, waterChunkToken } from "./drawWaterMotion";
 import { preloadShoreAssets, shoreAssetReadiness } from "./terrainVariantAssets";
 import { createGroundChunkCache, groundChunkZoomBucket, type ChunkRasterRequest, type GroundChunkCache } from "./groundChunkCache";
 import { GROUND_CHUNK_TILES, chunkTileBounds, groundBoundaryScene, groundSceneFrameStart, groundBoundarySceneStats, setGroundSceneReverseInput, type GroundBoundaryScene, type GroundChunkPlan } from "./groundBoundaryScene";
@@ -48,6 +49,7 @@ export type TerrainV2Input = {
   readonly range: TileRange;
   readonly zoom: number;
   readonly terrainPatterns?: TerrainPatternAssets;
+  readonly nowMs?: number; // INSTALL-29: the water motion's wall clock (moves while paused); 0 (still) when absent
 };
 
 export type TerrainV2Parts = {
@@ -118,7 +120,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   // Croft bed art only in chunks with beds; crop states only in chunks with arable strips (read this frame).
   const bedReadiness = scene.yardProps.beds.length > 0 ? `:b${zoneAssetReadiness(ZONE_VARIANTS.croftBed)}` : "";
   // Shore art only in chunks that draw water; with wall strips on, the shore strip stops under walls on the water.
-  const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}${wallStripsEnabled() ? ":ws" : ""}` : "";
+  const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}${wallStripsEnabled() ? ":ws" : ""}${waterChunkToken(zoom)}` : "";
   const cropStates = scene.zones.arableBands.length > 0 ? arableStripStateLookup(input.state) : null;
   const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
     + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "");
@@ -141,6 +143,8 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   for (const plan of visible) {
     cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season));
   }
+  probe?.enter("terrain.water"); // INSTALL-29: the water motion, live over the chunks' still water (drawWaterMotion.ts)
+  drawWaterMotion(context, { state: input.state, shore: scene.shore, chunks: visible, range: input.range, zoom: input.zoom, chunkZoom: zoom, nowMs: input.nowMs ?? 0, season }); probe?.enter("terrain.fill");
   // INSTALL-15 staging: in the season's last STAGE_TICKS the visible chunks' next-season rasters are made in idle time,
   // so the turn itself only blends (groundChunkCache header (d)). Same keys as the turn's requests will carry.
   if (input.state.tick % SEASON_TICKS >= SEASON_TICKS - STAGE_TICKS && seasonFadeMs() > 0) {
@@ -192,13 +196,11 @@ function drawGroundChunk(
   }
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   const diamond = chunkDiamond(plan);
-  drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, {
-    left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4,
-  }, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
+  const box = { left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4 };
+  drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, box, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
   drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
-  drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, {
-    left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4,
-  }, bounds, input.state.seed);
+  drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom));
+  if (iceRimDrawn(season)) drawIceRim(context, scene.shore, plan.waterLoops, box); // INSTALL-29: winter, static: baked with the strips
   if (plan.zoneIndexes.length > 0) {
     // A plot's tone stops at a yard: the yard is its own trodden ground.
     context.save();

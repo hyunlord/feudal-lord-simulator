@@ -46,6 +46,7 @@ type TerrainRenderInput = {
   readonly zoom: number;
   readonly terrainPatterns?: TerrainPatternAssets;
   readonly objectRenderItems?: readonly RenderQueueItem[];
+  readonly nowMs?: number; // INSTALL-29: the water motion's wall clock (drawTerrainBoundaryV2)
 };
 
 const baseTerrainColor = (terrain: Tile["terrain"]): PaletteColor => {
