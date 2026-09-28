@@ -1,0 +1,47 @@
+{
+ "steps": {
+  "p4-commoner-card": {
+   "shieldCovered": true,
+   "emblem": null,
+   "match": null
+  },
+  "p1-baby-biography": {
+   "person": "p-000057",
+   "armsCovered": true,
+   "markCovered": true,
+   "arms": false,
+   "companion": false,
+   "match": null
+  },
+  "p2-baby-biography-developer": {
+   "person": "p-000057",
+   "armsCovered": true,
+   "markCovered": true,
+   "arms": false,
+   "companion": false,
+   "match": "초상 C_baby_02 아기 · 성별·나이대·계층 일치"
+  },
+  "p5-lord-card": {
+   "shieldCovered": false,
+   "emblem": "arms",
+   "match": null
+  },
+  "p3-lord-biography": {
+   "person": "m-000001",
+   "armsCovered": false,
+   "markCovered": true,
+   "arms": true,
+   "companion": false,
+   "match": null
+  }
+ },
+ "files": [
+  "p4-commoner-card.jpg",
+  "p1-baby-biography.jpg",
+  "p2-baby-biography-developer.jpg",
+  "p5-lord-card.jpg",
+  "p3-lord-biography.jpg"
+ ],
+ "jpegBytes": 152742,
+ "errors": []
+}

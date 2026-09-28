@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-28(UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -22,6 +22,7 @@
   - 넘길 것(렌더): 장부 서랍·저장소·결산의 에일 줄(`townAle`), 헛간 카드의 보리 잠금과 이유, 양모 카드의 현물 결과 줄(`woolInKindSplit`).
 
 - **Wave 24 Steam 그림 후처리 — 완료, 본선 커밋**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 히어로는 생성 원본 2152×731 → Real-ESRGAN x2plus(DGX GPU) → 3840×1240(구도 동일, 가장자리 또렷·붓 질감 매끈, 100% 비교 첨부). 엠블럼·앱 아이콘 PNG·바로가기 아이콘은 알파 8 미만 픽셀을 (0,0,0,0)으로 바꿨다. `assets-inbox/wave24/processed-20260928/` 4장·비교 1 `confirmed`, 원래 4행 `superseded`, 장부 3,855행 = 그림 3,855. [기록](../assets-inbox/wave24/processed-20260928/records/README.md).
+- **UI-7b 전기·카드의 개발 글자·빈 방패·표식 자리, 1장 면적 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시 RENDER_D 1): [보고서](verification/ui7b/REPORT.md), 결정 UI7B-D1~D4. 초상 근거는 개발자 표시(기본 끔)에서만, 빈 방패·원은 쪽 그림의 양피지로 덮음(가문만 문장, 상인만 표식), 작은 원에 부모 없음, 목표 카드는 내용 폭 — 1장 기본 화면 DGX 5.5 % / 6 %(부하 실행 5.8 %).
 - **UI-7 가계도·인물 얼굴·상태 장식 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/ui7/REPORT.md), 결정 UI7-D1~D5.
   - 인물 전기의 "가계도" 탭(Wave 25 16장 설치): 혈통 깃발·문장, 세대 띠, 인물 틀(보통·선택·고인), 가지선·모서리·갈래, 혼인 고리, 가지 접기. 바깥 배우자는 혼인 고리로만(가지선에 매달지 않음 — 시험). 칸을 누르면 그 사람 전기.
   - 닮은 점 한 줄, 아기·어린이 얼굴(이미 엔진 얼굴 — 단계 이름 보강), 상태 장식 다섯(병·부상·임신·순례·집행관), 원장 문장 다섯 한국어, 영주 가족은 권리 탭 "영주의 가솔"(청지기와 함께).
