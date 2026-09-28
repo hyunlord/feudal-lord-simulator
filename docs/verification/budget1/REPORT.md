@@ -5,7 +5,7 @@
 작업: 예산 스크립트·병합 전 검사 단계·탐침은 하위 에이전트가 `claude/budget1`에서 만들었고(`0944bc38`, `8b199413`), DGX 측정과 보고는 이 세션이 했다. INSTALL-23b와 한 가지로 합쳐 검증·병합했다.
 
 ## 1. 예산표
-- [BUDGET.md](BUDGET.md)(표와 범주 안의 구성), 원본 [dist-budget.json](dist-budget.json)(로컬 `0944bc38`)·[dgx/dist-budget.json](dgx/dist-budget.json)(DGX `ec901f2`, 같은 63.60 MB). MB = 1,000,000바이트.
+- [BUDGET.md](BUDGET.md)(표와 범주 안의 구성), 원본 [dgx/dist-budget.json](dgx/dist-budget.json)(DGX `ec901f2`; [dist-budget.json](dist-budget.json)은 BUDGET-1b가 woff2만으로 다시 잰 것)·[dgx/dist-budget.json](dgx/dist-budget.json)(DGX `ec901f2`, 같은 63.60 MB). MB = 1,000,000바이트.
 
 | 범주 | 파일 | 크기 | 예산 | 남은 폭 |
 |---|---:|---:|---:|---:|

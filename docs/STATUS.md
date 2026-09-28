@@ -1,11 +1,16 @@
 # 현재 상태
 
-갱신: 2026-09-28(BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **BUDGET-1b 글꼴 woff2만·장 그림은 그 장에서 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 BUDGET-1): [보고서](verification/budget1/budget1b/REPORT.md), 결정 BUDGET1b-D1~D2.
+  - 글꼴은 woff2만(`scripts/woff2OnlyFonts.ts`): dist 63.60 → 54.45 MB. 장 그림 규칙 `src/render/chapterArt.ts`: 2장 전쟁 소품·3장 흑사병 봉쇄 집을 그 장에 들어갈 때(8장, 해제 1.05 MB — Wave 12 시설은 아직 없고 3~5장 삽화는 원래 늦게).
+  - 예산표 "시작 시 불러오는 그림 메모리": 1장 시작 441장·해제 66.04 MB(전부 67.10). 다음 후보: 정착 단계별 불러오기(성곽·방어 킷·옛 성문).
+  - 검증: CLONE_SHA.
 
 - **BUDGET-1 빌드 크기 예산·이미지 메모리 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/budget1/REPORT.md), [예산표](verification/budget1/BUDGET.md), 결정 BUDGET1-D1~D3.
   - dist 63.60 MB / 150(초상 4.33 / 20, 삽화 5.29 / 25, 세계 그림 26.14, UI 22.75 — 글꼴 16.19), `check:merge` budget 단계가 넘으면 실패.
