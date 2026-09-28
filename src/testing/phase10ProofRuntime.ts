@@ -23,6 +23,7 @@ import { worldRasterCacheDiagnostics } from "../render/worldRasterCache";
 import { groundBoundaryDiagnostics, resetGroundBoundaryForProof } from "../render/drawTerrainBoundaryV2";
 import { groundBoundaryScene } from "../render/groundBoundaryScene";
 import { setObjectPassForProof } from "../render/renderer";
+import { constructionTagBoxesForProof, setConstructionLabelsForProof } from "../render/constructionTagProbe";
 import { tileToScreen } from "../render/iso";
 import { APRON_TARGET_DEPTH } from "../world/boundary/buildingGrounds";
 import { onboardingWorldGuidanceMemoStats } from "../ui/onboardingWorldGuidance";
@@ -134,6 +135,10 @@ export type Phase10ProofRuntimePort = {
     readonly rays: number; readonly raysWithoutRibbon: number; readonly raysBeyondTarget: number };
   /** C1d gate 1: draw frames without the object pass (true) to read the ground layer alone. */
   readonly groundOnly: (enabled: boolean) => void;
+  /** INSTALL-3b: hide (false) or show the construction tags, for the HUD area measure's canvas share. */
+  readonly constructionLabels: (shown: boolean) => void;
+  /** INSTALL-3b: the last frame's construction tag boxes in canvas pixels (recording starts on the first call). */
+  readonly constructionTagBoxes: () => readonly { readonly x: number; readonly y: number; readonly w: number; readonly h: number }[];
   /** C1d evidence: the current game state (read only), so a naturally played scene can be reopened in another build. */
   readonly state: () => GameState;
 };
@@ -220,7 +225,9 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
     },
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },
     wedgeProbe: () => wedgeProbe(input.canvas, input.cameraRef.current, input.stateRef.current),
-    groundOnly: (enabled) => setObjectPassForProof(!enabled),
+    groundOnly: (enabled) => { setObjectPassForProof(!enabled); setConstructionLabelsForProof(!enabled); },
+    constructionLabels: (shown) => setConstructionLabelsForProof(shown),
+    constructionTagBoxes: () => constructionTagBoxesForProof(),
     state: () => input.stateRef.current,
   };
   window.__FEUDAL_PHASE10_PROOF__ = port;

@@ -206,7 +206,9 @@ test("drawConstructionSite shows the live road break before the stored delivery 
   assert.equal(context.calls.some(call => call.includes("목재 오는 중") || call.includes("목재 0/")), false);
 });
 
-test("drawConstructionSite gives queued palisade segments a dashed gate-order label without a stall label", () => {
+// INSTALL-3b ①: the queue place ("성벽 2번째 대기") is a works tag now, drawn after the object pass (wallSiteLabels.ts,
+// tests/wallSiteLabels.test.ts); the segment itself draws only its dashed run.
+test("drawConstructionSite gives queued palisade segments a dashed run and no tag of their own", () => {
   // Given
   const context = loggedContext();
 
@@ -219,9 +221,7 @@ test("drawConstructionSite gives queued palisade segments a dashed gate-order la
 
   // Then
   assert.ok(context.calls.includes("setLineDash:6,4"));
-  assert.ok(context.calls.includes("measureText:성벽 2번째 대기"));
-  assert.ok(context.calls.includes("fillText:성벽 2번째 대기,42,0"));
-  assert.equal(context.calls.some((call) => call.includes("목재 오는 중")), false);
+  assert.equal(context.calls.some((call) => call.startsWith("fillText:")), false);
 });
 
 test("drawConstructionSite records four active palisade construction stages along the wall edge", () => {

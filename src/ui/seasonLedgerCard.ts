@@ -84,14 +84,15 @@ function hintText(ledger: SeasonLedger): string {
 const TROUBLE: ReadonlySet<SeasonSceneId> = new Set(["population_down", "household_departure", "house_hungry", "bread_shortage", "timber_shortage",
   "stone_shortage", "construction_blocked", "fire", "poor_harvest", "great_famine", "market_quiet", "hungry_gap"]);
 
-export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenarioId" | "history"> & Partial<Pick<GameState, "buildings" | "war">>): SeasonLedgerCardModel | null {
+export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenarioId" | "history"> & Partial<Pick<GameState, "buildings" | "war" | "population">>): SeasonLedgerCardModel | null {
   const history = state.seasons?.history ?? [];
   const ledger = history.at(-1);
   if (ledger === undefined) return null;
   const before = history.at(-2);
   const year = ledger.year;
   const scenes = seasonLedgerScenes(state, ledger, before).map(scene => ({ ...scene, name: SEASON_LEDGER_COPY.scene[scene.id] }));
-  const population = SEASON_LEDGER_COPY.population(ledger.popDelta) + (before === undefined ? "" : ` ${SEASON_LEDGER_COPY.versus(before.popDelta)}`);
+  // INSTALL-3b: the count at the close is the open tally's start (seasonPressure closeSeason opens it at the close).
+  const population = SEASON_LEDGER_COPY.population(state.seasons?.current?.population ?? state.population ?? 0, ledger.popDelta, before?.popDelta ?? null);
   const stock = SEASON_STOCK_KEYS.map(key => SEASON_LEDGER_COPY.stock(resourceName(key), Math.round(ledger.stockDelta[key]))).join(" · ");
   // UI-6: the lordship's fall in the season (FAIL-3: a decline begun, a house changed) and the men away at war (F2-A).
   const lordship = ledger.lordship;

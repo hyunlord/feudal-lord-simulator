@@ -4,7 +4,8 @@ import { pence } from "./hud/hudCopy.ko";
 import type { SeasonSceneId } from "./seasonLedgerScenes";
 
 // UI-3 season ledger card (FP-1): one closed season on the Wave 8 scroll. Signed numbers, no arrows or symbols.
-const signed = (value: number): string => value > 0 ? `+${value}` : value < 0 ? `−${-value}` : "0";
+// INSTALL-3b: a change of nothing reads "±0", so it is never taken for a count ("인구 0" read as an empty town).
+const signed = (value: number): string => value > 0 ? `+${value}` : value < 0 ? `−${-value}` : "±0";
 
 export const SEASON_LEDGER_COPY = {
   label: "계절 결산",
@@ -12,8 +13,9 @@ export const SEASON_LEDGER_COPY = {
   signed,
   money: (income: number, expense: number) => `수입 ${pence(signed(income))} · 지출 ${pence(signed(-expense))} · 남음 ${pence(signed(income - expense))}`,
   pence,
-  population: (delta: number) => `인구 ${signed(delta)}`,
-  versus: (delta: number) => `(전 계절 ${signed(delta)})`,
+  /** INSTALL-3b: the head count at the season's close, then its change (and the season before's, when there is one). */
+  population: (count: number, delta: number, before: number | null) =>
+    before === null ? `인구 ${count}명 (이번 계절 ${signed(delta)})` : `인구 ${count}명 (이번 계절 ${signed(delta)} · 지난 계절 ${signed(before)})`,
   stock: (name: string, delta: number) => `${name} ${signed(delta)}`,
   /** INSTALL-3: the ale chain's goods held in the town as the card opens (not the season's change). */
   heldNow: (items: readonly string[]) => `지금 영지에: ${items.join(" · ")}`,

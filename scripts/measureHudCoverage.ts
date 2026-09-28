@@ -9,17 +9,32 @@
 //  - normal: the default screen;  - build: the build drawer;  - placement: a well picked, the cursor on open ground
 //    (ghost, ring, range circle and the chip);  - zone: the zone layer;  - selection: a house's inspector;
 //  - ledger: the ledger drawer. Modals stop time and are exempt.
-//   PLAYWRIGHT_MODULE=... npx tsx scripts/measureHudCoverage.ts <out.json> --url <url> [--shots <dir>]
-import { mkdirSync, writeFileSync } from "node:fs";
+//  - normal:chapter2-wall-works (INSTALL-3b): the v24 palisade-construction town in chapter 2, its walls under
+//    construction, the camera on the wall works at zoom 1 — the default screen's budget. The construction tags are drawn
+//    on the canvas, so this state's hidden shot also hides them (the proof port's constructionLabels) and their boxes (the
+//    port's constructionTagBoxes, the frame of the first shot) join the DOM boxes.
+//   PLAYWRIGHT_MODULE=... npx tsx scripts/measureHudCoverage.ts <out.json> --url <url> [--shots <dir>] [--only walls]
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { inflateSync } from "node:zlib";
 
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
+import { CHAPTER_TWO } from "../src/content/chapterConfig";
+import { isWallConstructionSite, type WallConstructionSite } from "../src/economy/construction";
+import { palisadeConstructionSchedule } from "../src/economy/palisadeConstruction";
+import { wallSiteLabelAnchor } from "../src/render/wallSiteLabels";
+import { currentConstructionSiteLabel } from "../src/ui/constructionAccessModel";
+import { WALL_SITE_LABEL_COPY } from "../src/ui/wallCarryCopy.ko";
+import type { GameState } from "../src/engine/engine.types";
+import { initialPolitics } from "../src/engine/politics";
+import { decodeSave } from "../src/save/saveCodec";
 
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce<string[][]>((pairs, value, index, all) => value.startsWith("--") ? [...pairs, [value.slice(2), all[index + 1]!]] : pairs, []));
 const url = flags.url ?? "http://127.0.0.1:4281/";
 const THRESHOLD = 24;
+/** A chapter 2 town has long left the tutorial (as scripts/install3ChainCaptures.ts opens its scenes). */
+const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
 const TOOL = ".build-tool:visible:not([aria-disabled='true']):not([disabled])";
 /** Per-state budgets in percent of the view: [PC, tablet] (UX3R section 9). */
 export const BUDGETS = { normal: [6, 8], build: [15, 20], placement: [6, 9], zone: [8, 12], selection: [18, 24], ledger: [25, 30] } as const;
@@ -60,13 +75,17 @@ function decode(png: Buffer): { width: number; height: number; channels: number;
 }
 
 type Box = { readonly x: number; readonly y: number; readonly w: number; readonly h: number };
-function covered(shown: Buffer, hidden: Buffer, again: Buffer, boxes: readonly Box[]): { fraction: number; mask: Uint8Array; width: number; height: number } {
+function covered(shown: Buffer, hidden: Buffer, again: Buffer, boxes: readonly Box[], tagBoxes: readonly Box[] = []): { fraction: number; tagFraction: number; mask: Uint8Array; width: number; height: number } {
   const a = decode(shown), b = decode(hidden), c = decode(again);
   const inside = new Uint8Array(a.width * a.height);
+  // 1 = inside a DOM box, 2 = inside a canvas tag's box only (INSTALL-3b: counted apart as the tags' share).
+  for (const box of tagBoxes) {
+    for (let y = Math.max(0, Math.floor(box.y)); y < Math.min(a.height, Math.ceil(box.y + box.h)); y += 1) inside.fill(2, y * a.width + Math.max(0, Math.floor(box.x)), y * a.width + Math.min(a.width, Math.ceil(box.x + box.w)));
+  }
   for (const box of boxes) {
     for (let y = Math.max(0, Math.floor(box.y)); y < Math.min(a.height, Math.ceil(box.y + box.h)); y += 1) inside.fill(1, y * a.width + Math.max(0, Math.floor(box.x)), y * a.width + Math.min(a.width, Math.ceil(box.x + box.w)));
   }
-  const mask = new Uint8Array(a.width * a.height); let count = 0;
+  const mask = new Uint8Array(a.width * a.height); let count = 0, tagCount = 0;
   for (let i = 0; i < a.width * a.height; i += 1) {
     if (inside[i] === 0) continue;
     let differs = false, stable = true;
@@ -75,14 +94,19 @@ function covered(shown: Buffer, hidden: Buffer, again: Buffer, boxes: readonly B
       if (Math.abs(va - b.data[i * b.channels + k]!) > THRESHOLD) differs = true;
       if (Math.abs(va - c.data[i * c.channels + k]!) > THRESHOLD) stable = false;
     }
-    if (differs && stable) { mask[i] = 1; count += 1; }
+    if (differs && stable) { mask[i] = 1; count += 1; if (inside[i] === 2) tagCount += 1; }
   }
-  return { fraction: count / (a.width * a.height), mask, width: a.width, height: a.height };
+  return { fraction: count / (a.width * a.height), tagFraction: tagCount / (a.width * a.height), mask, width: a.width, height: a.height };
 }
 
-async function measure(page: Page, name: StateName, shots: string | undefined, label: string, cursor: { x: number; y: number }) {
+async function measure(page: Page, name: StateName, shots: string | undefined, label: string, cursor: { x: number; y: number }, canvasTags = false) {
+  type TagPort = { __FEUDAL_PHASE10_PROOF__: { constructionLabels: (s: boolean) => void; constructionTagBoxes: () => readonly Box[] } };
+  const tagBoxes = () => page.evaluate(() => (window as unknown as TagPort).__FEUDAL_PHASE10_PROOF__.constructionTagBoxes().map(box => ({ ...box })));
+  if (canvasTags) await tagBoxes(); // starts the recording
   await page.mouse.move(cursor.x, cursor.y); await page.waitForTimeout(400);
   const shown = await page.screenshot({ type: "png" });
+  // The tags drawn in the frame the shot shows (1 px out for the ink outline).
+  const tags = canvasTags ? (await tagBoxes()).map(box => ({ x: box.x - 1, y: box.y - 1, w: box.w + 2, h: box.h + 2 })) : [];
   const boxes = await page.evaluate(() => {
     const view = window.innerWidth * window.innerHeight;
     return [...document.querySelectorAll("body *")].flatMap(element => {
@@ -94,21 +118,40 @@ async function measure(page: Page, name: StateName, shots: string | undefined, l
     });
   });
   const style = await page.addStyleTag({ content: "*{visibility:hidden!important;transition:none!important}canvas{visibility:visible!important}" });
+  const showTags = (shown: boolean) => page.evaluate(on => (window as unknown as TagPort).__FEUDAL_PHASE10_PROOF__.constructionLabels(on), shown);
+  if (canvasTags) await showTags(false);
   await page.waitForTimeout(150);
   const hidden = await page.screenshot({ type: "png" });
-  await style.evaluate(element => element.remove()); await page.waitForTimeout(250);
+  await style.evaluate(element => element.remove());
+  if (canvasTags) await showTags(true);
+  await page.waitForTimeout(250);
   const again = await page.screenshot({ type: "png" });
-  const result = covered(shown, hidden, again, boxes);
+  const result = covered(shown, hidden, again, boxes, tags);
   if (shots !== undefined) { mkdirSync(shots, { recursive: true }); writeFileSync(join(shots, `${label}-${name}.png`), shown); writeFileSync(join(shots, `${label}-${name}-mask.pgm`), Buffer.concat([Buffer.from(`P5 ${result.width} ${result.height} 1\n`), Buffer.from(result.mask)])); }
-  return { state: name, percent: Math.round(result.fraction * 1000) / 10 };
+  return { state: name, percent: Math.round(result.fraction * 1000) / 10,
+    ...(canvasTags ? { canvasTags: tags.length, tagPercent: Math.round(result.tagFraction * 1000) / 10 } : {}) };
 }
 
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
-type Row = { resolution: string; state: StateName; view?: string; percent: number; budget: number; pass: boolean };
+type Row = { resolution: string; state: StateName; view?: string; percent: number; budget: number; pass: boolean; canvasTags?: number; tagPercent?: number; beforeTags?: { tags: number; percent: number } };
 const rows: Row[] = [];
 type Proof = { __FEUDAL_PHASE10_PROOF__: { tileClientPoint: (t: object) => { clientX: number; clientY: number } } };
+// The chapter 2 town under wall construction (as scripts/install3States.ts sets it) and its works' middle.
+const wallTown = (() => {
+  const saved = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v24/palisade-construction.save.json"))).envelope.state as GameState;
+  const politics = initialPolitics(saved);
+  return { ...saved, politics: { ...politics, chapter: { ...politics.chapter, number: CHAPTER_TWO.chapter } } } as GameState;
+})();
+const wallSites = wallTown.constructionSites.filter(isWallConstructionSite);
+const segmentTagBefore = (site: WallConstructionSite) => {
+  const schedule = palisadeConstructionSchedule(site, wallTown.constructionSites);
+  return schedule.kind === "queued" ? WALL_SITE_LABEL_COPY.queued(schedule.position) : currentConstructionSiteLabel(wallTown, site);
+};
+const wallMiddle = [wallSites.reduce((sum, site) => sum + site.anchor.tx, 0) / wallSites.length, wallSites.reduce((sum, site) => sum + site.anchor.ty, 0) / wallSites.length];
 for (const resolution of RESOLUTIONS) {
+  // `--only walls`: the chapter 2 wall works state alone.
+  if (flags.only !== "walls") {
   const { context, page } = await openScene(browser, { state: null, tile: [45, 41], baseUrl: url, width: resolution.width, height: resolution.height, dpr: 1, zoom: 1, run: true, hasTouch: resolution.touch }) as { context: { close: () => Promise<void> }; page: Page };
   // The steward's new line is a transient (one line, 8 s, UX3R 7): the normal state is measured once it has folded.
   await page.waitForTimeout(2_500);
@@ -143,9 +186,31 @@ for (const resolution of RESOLUTIONS) {
   // UX-3R2: with a kind armed the zone state also shows the land legend under the chips (the toolbar is always up).
   await page.locator("[data-zone-tool='arable']").first().click(); await page.waitForTimeout(400); await push("zone", undefined, "armed");
   await context.close();
+  }
+  // INSTALL-3b: chapter 2 with its walls under construction (the tags on the canvas count; see the header).
+  const walls = await openScene(browser, { state: wallTown, tile: wallMiddle, baseUrl: url, width: resolution.width, height: resolution.height, dpr: 1, zoom: 1, run: true, hasTouch: resolution.touch,
+    query: "&story-delay=600000&weather=none", initScript: TUTORIAL_OFF }) as { context: { close: () => Promise<void> }; page: Page };
+  // The season card the loaded town opens with is a modal (exempt, and its veil dims the whole canvas): closed first.
+  for (const selector of [".story-modal-later", ".chronicle-page .chronicle-keep", ".season-ledger-resume"]) if (await walls.page.locator(selector).count() > 0) { await walls.page.locator(selector).first().click(); await walls.page.waitForTimeout(300); }
+  await walls.page.waitForTimeout(2_500);
+  await walls.page.waitForFunction(() => document.querySelector(".steward-bubble") === null, null, { timeout: 12_000 }).catch(() => undefined);
+  const wallView = "chapter2-wall-works";
+  // Before INSTALL-3b every segment raised its own tag: those whose anchor is on this screen, and their boxes' summed
+  // area (text measured in the page, the drawTag box: text + 8 by 18 px at zoom 1; overlaps counted twice).
+  const segmentTags = wallSites.map(site => ({ site, text: segmentTagBefore(site) })).filter(entry => entry.text !== "").filter(entry => {
+    const anchor = wallSiteLabelAnchor(entry.site);
+    const x = anchor.x + resolution.width / 2 - (wallMiddle[0]! - wallMiddle[1]!) * 32, y = anchor.y + resolution.height / 2 - (wallMiddle[0]! + wallMiddle[1]!) * 16;
+    return x >= 0 && x <= resolution.width && y >= 0 && y <= resolution.height;
+  });
+  const widths = await walls.page.evaluate((texts: readonly string[]) => { const context = document.createElement("canvas").getContext("2d")!; context.font = "12px Georgia, serif"; return texts.map(text => Math.ceil(context.measureText(text).width)); }, segmentTags.map(entry => entry.text));
+  const beforeTags = { tags: segmentTags.length, percent: Math.round(widths.reduce((sum: number, width: number) => sum + (width + 8) * 18, 0) * 1000 / (resolution.width * resolution.height)) / 10 };
+  const measured = await measure(walls.page, "normal", flags.shots, `${resolution.name}-${wallView}`, { x: 200, y: 40 }, true);
+  rows.push({ resolution: resolution.name, ...measured, view: wallView, beforeTags, budget: BUDGETS.normal[resolution.touch ? 1 : 0], pass: measured.percent <= BUDGETS.normal[resolution.touch ? 1 : 0] });
+  await walls.context.close();
 }
 await browser.close();
 const pass = rows.every(row => row.pass);
 writeFileSync(out!, JSON.stringify({ url, threshold: THRESHOLD, budgets: BUDGETS, pass, rows }, null, 1) + "\n");
-for (const row of rows) console.log(`${row.resolution.padEnd(16)} ${`${row.state}${row.view === undefined ? "" : `:${row.view}`}`.padEnd(16)} ${String(row.percent).padStart(5)} % / ${row.budget} % ${row.pass ? "ok" : "OVER"}`);
+for (const row of rows) console.log(`${row.resolution.padEnd(16)} ${`${row.state}${row.view === undefined ? "" : `:${row.view}`}`.padEnd(16)} ${String(row.percent).padStart(5)} % / ${row.budget} % ${row.pass ? "ok" : "OVER"}`
+  + (row.tagPercent === undefined ? "" : ` (canvas tags ${row.canvasTags}: ${row.tagPercent} %; before INSTALL-3b ${row.beforeTags?.tags} segment tags ≈ ${row.beforeTags?.percent} %)`));
 if (!pass) process.exitCode = 1;

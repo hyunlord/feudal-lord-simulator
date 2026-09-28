@@ -14,6 +14,8 @@ import { drawConstructionAccessOverlay } from './constructionAccessOverlay';
 import { renderStageProbe } from "./renderStageProbe";
 import { hoverOcclusionActive } from "./selectionOcclusion";
 import { drawConstructionCrewLinks } from "./constructionCrewLinks";
+import { drawWallSiteLabels } from "./wallSiteLabels";
+import { beginConstructionTagFrame } from "./constructionTagProbe";
 
 type GameCanvasFrameInput = {
   readonly context: CanvasRenderingContext2D;
@@ -53,6 +55,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     input.selectedConstructionSiteId ?? null,
   );
 
+  beginConstructionTagFrame();
   probe?.enter("frame.clear");
   input.context.fillStyle = CANVAS_SURROUND_COLOR;
   input.context.fillRect(0, 0, input.viewport.width, input.viewport.height);
@@ -87,6 +90,8 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
       selectedBuildingId: input.selectedBuildingId ?? null,
     }),
   });
+  // INSTALL-3b ①: one tag per wall works (every segment's with the works selected or from zoom 1.35).
+  drawWallSiteLabels(input.context, { state: input.state, camera: input.camera, viewport: input.viewport, selectedSiteId: input.selectedConstructionSiteId ?? null });
   if (input.selectedConstructionSiteId !== undefined && input.selectedConstructionSiteId !== null) {
     probe?.enter("overlay.constructionAccess");
     drawConstructionAccessOverlay(input.context, input.state, input.selectedConstructionSiteId, input.camera.zoom);
