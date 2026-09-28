@@ -24,6 +24,7 @@ import {
 import { readTutorialRecord, writeTutorialRecord, type TutorialRecord } from "./tutorialStore";
 import { setTutorialGuidanceActive, setTutorialMapTarget } from "./tutorialMapChannel";
 import { chapterGoals } from "../../engine/politics";
+import { plagueRecoveryPermille } from "../../engine/plague";
 import { CHAPTER_COPY } from "../chapterCopy.ko";
 
 // UX-1 tutorial controller (App shell): the record, the current step, the goal cards (the active one, the last
@@ -299,8 +300,14 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
     const goals = chapterGoals(state).filter(entry => entry.chapter === chapter);
     const next = goals.find(entry => entry.reachedTick === null);
     const reached = goals.filter(entry => entry.reachedTick !== null).length;
+    // UI-8 (F3-A PL-10): the resettled goal shows a dynamic permille progress line.
+    const nextWhy = next === undefined
+      ? CHAPTER_COPY.reached(CHAPTER_COPY.goals[goals.at(-1)?.id ?? ""] ?? "")
+      : next.id === "resettled"
+        ? CHAPTER_COPY.resettledProgress(plagueRecoveryPermille(state) ?? 0)
+        : CHAPTER_COPY.goals[next.id] ?? next.id;
     if (goals.length > 0) cards.push({ key: "chapter", title: CHAPTER_COPY.card(chapter),
-      why: next === undefined ? CHAPTER_COPY.reached(CHAPTER_COPY.goals[goals.at(-1)?.id ?? ""] ?? "") : CHAPTER_COPY.goals[next.id] ?? next.id,
+      why: nextWhy,
       progress: { current: reached, target: goals.length }, ctaLabel: CHAPTER_COPY.cta, status: "active", help: null, hasTarget: false,
       foldKey: next?.id ?? "reached" });
   }

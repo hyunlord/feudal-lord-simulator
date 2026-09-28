@@ -299,6 +299,23 @@ function houseArms(state: Pick<GameState, "seed" | "lordship">, record: HistoryR
   return seed === undefined ? null : { kind: "emblem", emblem: { kind: "arms", recipe: armsRecipe(seed, MANOR_HOUSEHOLD) } };
 }
 
+// UI-8 (F3-A): plague records mapped to Wave 21 chronicle scenes.
+// Mapping rationale:
+//   rumour/arrived/priest_died → ch3_chronicle_first_death (earliest visible sign of the plague)
+//   new_graves               → ch3_chronicle_churchyard   (the cemetery fills)
+//   empty_streets            → ch3_chronicle_abandoned_fields (town empties; no dedicated empty-streets art)
+//   abandoned_fields         → ch3_chronicle_abandoned_fields (fields left untended)
+//   ordinance                → ch3_chronicle_ordinance    (the 1351 proclamation)
+//   resettlement             → ch3_chronicle_resettlement (new families arrive)
+//   second/second_ended      → ch3_chronicle_spring_recovery (the second plague subsides)
+const PLAGUE_RECORD_ART: Readonly<Record<string, Wave21ImageId>> = {
+  "plague.rumour": "ch3_chronicle_first_death", "plague.arrived": "ch3_chronicle_first_death",
+  "plague.priest_died": "ch3_chronicle_first_death", "plague.new_graves": "ch3_chronicle_churchyard",
+  "plague.empty_streets": "ch3_chronicle_abandoned_fields", "plague.abandoned_fields": "ch3_chronicle_abandoned_fields",
+  "plague.ordinance": "ch3_chronicle_ordinance", "plague.resettlement": "ch3_chronicle_resettlement",
+  "plague.second": "ch3_chronicle_spring_recovery", "plague.second_ended": "ch3_chronicle_spring_recovery",
+};
+
 /** F2-A (WR-2…WR-8): a royal demand or the war's choice by its petition — its chronicle scene, else its Wave 17 decision card. */
 const WAR_DEMAND_ART: Readonly<Record<string, Wave17ImageId>> = {
   wool_payment: "chronicle_wool_levy", levy_response: "chronicle_conscription", war_funding: "decision_war_funding",
@@ -332,9 +349,31 @@ function chapterTwoArt(state: Pick<GameState, "seed" | "lordship" | "factions" |
   return null;
 }
 
+/** F3-A: the plague's records and chapter 3 milestones. */
+function chapterThreeArt(_state: unknown, record: HistoryRecord): ChronicleArt {
+  const param = (key: string) => String(record.params?.[key] ?? "");
+  const plague = PLAGUE_RECORD_ART[record.template];
+  if (plague !== undefined) return { kind: "wave21", id: plague };
+  if (record.template === "decision.petition_response") {
+    // Plague petition cards: wages, vacant_priest, land_redistribution, cash_rent.
+    const plagueDecisions: Readonly<Record<string, Wave21ImageId>> = {
+      wages: "ch3_decision_wages", vacant_priest: "ch3_decision_vacant_priest",
+      land_redistribution: "ch3_decision_land_redistribution", cash_rent: "ch3_decision_cash_rent",
+    };
+    const id = plagueDecisions[param("defId")];
+    if (id !== undefined) return { kind: "wave21", id };
+  }
+  // Chapter 3 start: no dedicated intro art exists (gap — falls through to chapterTwoArt / base rules).
+  if (record.template === "milestone.chapter_end" && param("chapter") === "3") return { kind: "wave21", id: "ch3_ending" };
+  return null;
+}
+
 export function recordArt(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, record: HistoryRecord): ChronicleArt {
   if (record.template === "decision.stone_town") return { kind: "wave17", id: "stonewall_start" };
   if (record.template === "milestone.stone_town") return { kind: "wave17", id: "stonewall_complete" };
+  // UI-8: chapter 3 plague records checked before chapter 2 (plague petitions share decision.petition_response).
+  const ch3 = chapterThreeArt(state, record);
+  if (ch3 !== null) return ch3;
   const later = chapterTwoArt(state as Pick<GameState, "seed" | "lordship" | "factions">, record);
   if (later !== null) return later;
   if (record.kind === "person") {
@@ -428,6 +467,8 @@ export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" 
 export type BiographyRelation = Readonly<{ id: string; line: string; portraitId: string | null }>;
 export type BiographyView = Readonly<{
   id: string; name: string; portraitId: string; portraitLine: string; portraitExact: boolean; life: string; role: string;
+  /** UI-8 (F3-A PL-2): plague death cause line shown below the life span, or null for non-plague deaths and the living. */
+  deathCause: string | null;
   /** INSTALL-23 ④: the state ornament on the great circle (`personStates.ts`; a death also greys the face). */
   ornament: PersonStateId | null;
   /** The house they belong to (none for a head: it is theirs). */
@@ -484,6 +525,9 @@ export function biographyView(state: GameState, personId: string): BiographyView
     portraitLine: person.role === "steward" ? PERSONS_COPY.stewardPortrait
       : CHRONICLE_SCREEN_COPY.portraitMatch(biography.portrait.identityId, biography.portrait.stage, biography.portrait.exact),
     life: CHRONICLE_SCREEN_COPY.life(person.birthYear, end, biography.age, biography.died !== null, biography.left !== null && biography.died === null),
+    // UI-8 (F3-A PL-2): show plague cause in the header; other death causes are visible in the events list already.
+    deathCause: person.deathCause === "plague" && person.deathYear !== undefined
+      ? CHRONICLE_SCREEN_COPY.plagueDeath(person.deathYear) : null,
     // The steward's trade is the office itself (not "청지기 · 청지기").
     role: CHRONICLE_SCREEN_COPY.role(person.role, person.occupation === person.role ? "" : occupationName(person.occupation)),
     household: person.role === "head" ? null : person.householdId === MANOR_HOUSEHOLD ? CHRONICLE_SCREEN_COPY.household(null)

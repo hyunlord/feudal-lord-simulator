@@ -112,6 +112,7 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
           <p>{view.life}</p>
           <p>{view.household}</p>
           {view.ornament === null ? null : <p className="person-card-state" data-person-state={view.ornament}>{PERSON_STATE_COPY.cardLine(PERSON_STATE_COPY.label(view.ornament))}</p>}
+          {view.deathCause === null ? null : <p className="person-card-cause">{view.deathCause}</p>}
           {developer ? <p className="person-card-match" data-exact={view.exact ? "true" : "false"}>{view.match}</p> : null}
           {view.emblem === null ? null : <p className="person-card-emblem-label">{view.emblemLabel}</p>}
         </div>
