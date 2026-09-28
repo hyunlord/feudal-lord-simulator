@@ -10,7 +10,7 @@
 - **CODE-1a 계층·사람 경로 상시 관문 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, UI 타입 한 줄·원격 작업 스크립트, 검증 DGX, 사용자 지시): [보고서](verification/code1a/REPORT.md), 결정 CODE1A-D1·D2.
   - `population/marketAccess.ts`는 사유 코드와 거리만 돌려준다(UI 문구 import 0). ESLint 억제 1건·한글 목록 8건을 지웠다.
   - 사람 경로(명령 재생, 봇 없음)가 가드레일마다 함께 돈다: 1장 생존·필지 채움(`humanPathChapterOne`), 헛간 보리·첫 에일(`humanPathAle`). 실패하면 가드레일도 실패한다.
-  - 전체 회귀 `00da814` 3,345/3,345. 규칙 무변화라 가드레일은 돌리지 않았다.
+  - 전체 회귀 `00da814` 3,345/3,345, 깨끗한 클론 `c5572c8` 3,345/3,345. 규칙 무변화라 가드레일은 돌리지 않았다.
 
 - **BUDGET-1 빌드 크기 예산·이미지 메모리 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/budget1/REPORT.md), [예산표](verification/budget1/BUDGET.md), 결정 BUDGET1-D1~D3.
   - dist 63.60 MB / 150(초상 4.33 / 20, 삽화 5.29 / 25, 세계 그림 26.14, UI 22.75 — 글꼴 16.19), `check:merge` budget 단계가 넘으면 실패.
