@@ -28,6 +28,7 @@ type GameCanvasFrameInput = {
   readonly problemOnly?: boolean;
   readonly placementFeedback: PlacementFeedback | null;
   readonly nowMs: number;
+  readonly lifeClockMs?: number;
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
   readonly selectedConstructionSiteId?: string | null;
@@ -69,6 +70,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     problemOnly: input.problemOnly ?? false,
     placementFeedback: input.placementFeedback,
     nowMs: input.nowMs,
+    ...(input.lifeClockMs !== undefined ? { lifeClockMs: input.lifeClockMs } : {}),
     selectedBuildingId: input.selectedBuildingId ?? null,
     selectedWalkerId: input.selectedWalkerId ?? null,
     renderWalkers: input.renderWalkers,

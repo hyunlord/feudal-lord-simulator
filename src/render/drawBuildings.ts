@@ -34,7 +34,7 @@ import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
 import { applyInkOutline, snapToPixel } from "./style";
 import type { ObjectRenderViewMode } from "./objectRenderViewMode";
 import { OBJECT_OUTLINE_ALPHA } from "./occlusionModel";
-import { drawHouseRoofSmoke, drawMillOvenSmoke, smokeClockMs } from "./roofSmoke";
+import { drawHouseRoofSmoke, drawMillOvenSmoke, smokeTimeMs } from "./roofSmoke";
 
 type ObjectRenderInput = {
   readonly state: GameState;
@@ -146,7 +146,7 @@ function drawBuildingDetail(
     if (detailLevel !== "full" || !drawHouseCompoundSprite(context, building, visualState.houseLevel)) {
       drawHouseCompound(context, building, visualState.houseLevel, detailLevel);
     } else drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
-    if (detailLevel === "full") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, smokeClockMs(input.state.tick));
+    if (detailLevel === "full") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, smokeTimeMs(input));
     drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
     return;
   }
@@ -161,8 +161,8 @@ function drawBuildingDetail(
     if (historical) {
       if (building.kind === "house") drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
       // F0-V: roof smoke of a lived-in house, the mill oven's smoke while it runs.
-      if (building.kind === "house") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, smokeClockMs(input.state.tick));
-      if (building.kind === "mill") drawMillOvenSmoke(context, building, smokeClockMs(input.state.tick));
+      if (building.kind === "house") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, smokeTimeMs(input));
+      if (building.kind === "mill") drawMillOvenSmoke(context, building, smokeTimeMs(input));
       drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center,
         kind: building.kind, zoom: input.zoom, visualState });
       return;

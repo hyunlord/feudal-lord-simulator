@@ -10,7 +10,7 @@ import { test } from "node:test";
 import type { GameState } from "../src/engine/engine.types";
 import { ageBandOf, ageOf, currentYear } from "../src/engine/persons";
 import { objectRenderItemsForFrame } from "../src/render/renderObjectFrameCache";
-import { FLYING_DEPTH, MAX_ANIMALS, SMALL_ANIMAL_LEGIBILITY, villageLife, villageLifeAnimalCount, type VillageLifeItem } from "../src/render/villageLife";
+import { FLYING_DEPTH, MAX_ANIMALS, SMALL_ANIMAL_LEGIBILITY, TOY_MIN_ZOOM, TOYS, villageLife, villageLifeAnimalCount, type VillageLifeItem } from "../src/render/villageLife";
 import { villageLifeDrawnAt } from "../src/render/villageLifeDraw";
 import { WAVE23_IMAGES } from "../src/render/wave23ArtManifest.generated";
 import { decodeSave } from "../src/save/saveCodec";
@@ -57,13 +57,16 @@ test("Given any view of any town in any season When village life is chosen Then 
   assert.ok(views > 1_000);
 });
 
-test("Given village life When its scales are read Then only hens, cats, dogs and birds are drawn 1.6 x their display scale", () => {
+// INSTALL-23b: the chair, the well's bucket and the washing lines are drawn 1.6 x too; the toys and the barrel keep Astra's scale.
+const LEGIBLE_PROPS = new Set(["doorstep_chair", "well_bucket", "clothesline_a", "clothesline_b"]);
+
+test("Given village life When its scales are read Then the small animals, the chair, the bucket and the washing lines are drawn 1.6 x their display scale and the rest at it", () => {
   const seen = new Set<string>();
   for (const name of TOWNS) for (const season of [1, 3]) {
     for (const item of villageLife(inSeason(load(name), season), { range: full(load(name)) })) {
       const small = item.species !== null;
       assert.equal(small, item.animals > 0);
-      assert.equal(item.scale, WAVE23_IMAGES[item.kind].displayScale * (small ? SMALL_ANIMAL_LEGIBILITY : 1), item.kind);
+      assert.equal(item.scale, WAVE23_IMAGES[item.kind].displayScale * (small || LEGIBLE_PROPS.has(item.kind) ? SMALL_ANIMAL_LEGIBILITY : 1), item.kind);
       seen.add(`${small ? "animal" : "prop"}:${item.kind}`);
     }
   }
@@ -134,9 +137,12 @@ test("Given a town When the object queue is built Then village life joins it by 
   assert.ok(cachedMs <= scanMs);
 });
 
-test("Given the zoom When village life is drawn Then full detail draws all, 0.6 only washing lines and flying birds, blocks none", () => {
+test("Given the zoom When village life is drawn Then full detail draws all but the toys (from 1.35), 0.6 only washing lines and flying birds, blocks none", () => {
   const items = villageLife(inSeason(load("four-farms"), 1), { range: full(load("four-farms")) });
-  assert.ok(items.every(item => villageLifeDrawnAt(item, 1)));
+  assert.ok(items.some(item => TOYS.has(item.kind)), "the fixture has a toy");
+  assert.ok(items.every(item => villageLifeDrawnAt(item, 1) === !TOYS.has(item.kind)));
+  assert.ok(items.every(item => villageLifeDrawnAt(item, TOY_MIN_ZOOM)));
+  assert.ok(items.every(item => villageLifeDrawnAt(item, 1.34) === !TOYS.has(item.kind)));
   assert.ok(items.every(item => !villageLifeDrawnAt(item, 0.45)));
   const simplified = items.filter(item => villageLifeDrawnAt(item, 0.6));
   assert.ok(simplified.length > 0 && simplified.every(item => item.motion === "flight" || LINES.has(item.kind)), simplified.map(item => item.kind).join(" "));

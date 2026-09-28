@@ -21,7 +21,7 @@ export const CRACK_SIZE = { width: 128, height: 64 } as const;
 const RIPPLE_FRAME_MS = 170;
 const WET_SPOT_SALT = 23_203, CRACK_SPOT_SALT = 23_211;
 // Rain: the sheet's cells repeated over the view at `scale` (longer, easier streaks), falling and slanting.
-const RAIN = {
+export const RAIN_DRAW = {
   drizzle_sheet: { frameMs: 120, fallPxPerS: 320, slant: 0.18, scale: 1.5 },
   storm_rain_sheet: { frameMs: 80, fallPxPerS: 680, slant: 0.32, scale: 1.25 },
 } as const;
@@ -96,7 +96,7 @@ export function drawWeatherGround(context: CanvasRenderingContext2D, state: Game
 
 function drawFill(context: CanvasRenderingContext2D, layer: WeatherLayer, viewport: { readonly width: number; readonly height: number }, pixelRatio: number, nowMs: number): void {
   const key = layer.assets[0]!;
-  const rain = key === "drizzle_sheet" || key === "storm_rain_sheet" ? RAIN[key] : null;
+  const rain = key === "drizzle_sheet" || key === "storm_rain_sheet" ? RAIN_DRAW[key] : null;
   // A tint is its flat mean colour (weatherMeanColour's cache note); rain is its sheet's cells repeated, falling.
   let style: CanvasPattern | string | null = rain === null ? weatherMeanColour(key) : null;
   if (rain !== null) {

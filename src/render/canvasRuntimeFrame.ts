@@ -18,6 +18,9 @@ import { roadAlignedWalkers } from "./walkerRoadAlignment";
 import { renderStageProbe } from "./renderStageProbe";
 import { beginGroundSceneFrame } from "./groundBoundaryScene";
 import { observeSoundFrame } from "../audio/soundDirector";
+import { createLifeClock } from "./lifeClock";
+
+const lifeClock = createLifeClock();
 
 export type CanvasFrameRefs = Readonly<{
   cameraRef: { current: CameraState };
@@ -49,6 +52,8 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   zoneBrush?: import("./zoneBrushOverlay").ZoneBrushView | null;
   houseMaterialWave?: HouseMaterialWave | null;
   palisadeCeremonyStartedAtMs?: number | null;
+  /** INSTALL-23b: false while the game is paused (the village life's clock holds). */
+  running?: boolean;
 }>): void {
   const probe = renderStageProbe.current;
   probe?.frameStart();
@@ -75,6 +80,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     problemOnly: input.problemOnly ?? false,
     placementFeedback: input.refs.feedbackRef.current,
     nowMs,
+    lifeClockMs: lifeClock(nowMs, input.running ?? true),
     selectedBuildingId: input.selection?.kind === "building" ? input.selection.buildingId : null,
     selectedWalkerId: input.selection?.kind === "walker" ? input.selection.walkerId : null,
     selectedConstructionSiteId: input.selection?.kind === 'construction_site' ? input.selection.siteId : null,

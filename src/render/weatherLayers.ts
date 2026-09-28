@@ -14,12 +14,24 @@ import type { Wave23Key } from "./wave23ArtManifest.generated";
 // The moving layers carry the weather (rain, fog, dust, mist, cloud shadows); the static tints only support it.
 //
 // The artist's cap (Wave 23 records, qa.combinedLayerCap): the applied globalAlpha summed over every layer that can
-// cover one pixel is at most 0.38 (380 permille), and drizzle and storm are never both at full strength. Each layer is
+// cover one pixel is at most 0.38 (380 permille). INSTALL-23b (user judgement 2026-09-28): the cap holds for the layers
+// that cover the view (tints, fog, mist, dust, sheen, cracks, cloud shadows); the rain streaks and the puddle ripples are
+// outside it (`overCap`: the drizzle at 0.55, the storm at 0.7 — a wet season is the dearth's warning and the player must
+// see it), and instead the rain's streaks cover at most RAIN_AREA_MAX of the view (the sheets' pixels over
+// RAIN_ALPHA_FLOOR; the fainter halo is cleared when the cells are cut, weatherArt.ts). Each layer is
 // placed so that one of its instances covers a pixel at most once (a fill; disjoint lanes; a tile lattice; spaced
 // shore anchors; a drifting cloud lattice — weatherPlacement.ts), and the "water" layers (fog over the shore) and the
 // "land" layers (puddles, sheen, cracks) never meet (the land spots keep clear of every fog bank's reach). So the
 // alpha stacked on one pixel is the sum of the "all" layers plus the larger of the water and land sums (stackedPermille).
 export const WEATHER_ALPHA_CAP_PERMILLE = 380;
+/** INSTALL-23b: the rain layers' alpha (outside the cap): the wet season's drizzle and the storm at its height. */
+export const DRIZZLE_PERMILLE = 550;
+export const STORM_PERMILLE = 700;
+/** The share of the view the rain's streaks may cover (drizzle and storm together while they cross-fade). */
+export const RAIN_AREA_MAX = 0.12;
+/** A rain sheet pixel at or under this alpha (of 255) is cleared when its cell is cut: at the storm's 0.7 it would draw
+ * at most 2 % (5.6 / 255), and the storm sheet's streaks with their halo cover 13.3 % of a cell against 9.0 % without. */
+export const RAIN_ALPHA_FLOOR = 8;
 export const SEASON_TICKS = 1_000;
 /** A new season's weather fades in over its first ticks (a season is 50 s at 1x). */
 export const WEATHER_FADE_TICKS = 60;
@@ -48,6 +60,8 @@ export interface WeatherLayer {
   readonly placement: WeatherPlacement;
   /** Only rain: the rain switch ("rainOverlay") drops it. */
   readonly rain?: true;
+  /** Outside the 0.38 cap (INSTALL-23b): the rain streaks and the puddle ripples. */
+  readonly overCap?: true;
 }
 
 export interface WeatherInput {
@@ -64,11 +78,11 @@ export interface WeatherInput {
 type Def = Omit<WeatherLayer, "alphaPermille">;
 const DEFS = {
   overcast: { id: "overcast", assets: ["overcast_tint"], blend: "multiply", moving: false, space: "view", pass: "sky", zone: "all", placement: "fill" },
-  drizzle: { id: "drizzle", assets: ["drizzle_sheet"], blend: "source-over", moving: true, space: "view", pass: "sky", zone: "all", placement: "fill", rain: true },
-  storm: { id: "storm", assets: ["storm_rain_sheet"], blend: "source-over", moving: true, space: "view", pass: "sky", zone: "all", placement: "fill", rain: true },
+  drizzle: { id: "drizzle", assets: ["drizzle_sheet"], blend: "source-over", moving: true, space: "view", pass: "sky", zone: "all", placement: "fill", rain: true, overCap: true },
+  storm: { id: "storm", assets: ["storm_rain_sheet"], blend: "source-over", moving: true, space: "view", pass: "sky", zone: "all", placement: "fill", rain: true, overCap: true },
   riverFog: { id: "river_fog", assets: ["fog_bank_a", "fog_bank_b", "fog_bank_c"], blend: "source-over", moving: true, space: "world", pass: "sky", zone: "water", placement: "shore" },
   sheen: { id: "wet_sheen", assets: ["wet_ground_sheen"], blend: "screen", moving: false, space: "world", pass: "ground", zone: "land", placement: "lattice" },
-  ripples: { id: "puddle_ripples", assets: ["puddle_ripple_sheet"], blend: "screen", moving: true, space: "world", pass: "ground", zone: "land", placement: "lattice" },
+  ripples: { id: "puddle_ripples", assets: ["puddle_ripple_sheet"], blend: "screen", moving: true, space: "world", pass: "ground", zone: "land", placement: "lattice", overCap: true },
   dust: { id: "dust_wind", assets: ["dry_dust_a", "dry_dust_b"], blend: "source-over", moving: true, space: "view", pass: "sky", zone: "all", placement: "lanes" },
   cracks: { id: "cracked_ground", assets: ["heat_cracked_ground"], blend: "multiply", moving: false, space: "world", pass: "ground", zone: "land", placement: "lattice" },
   frost: { id: "frost_tint", assets: ["frost_morning_tint"], blend: "source-over", moving: false, space: "view", pass: "sky", zone: "all", placement: "fill" },
@@ -84,16 +98,17 @@ const layer = (def: Def, permille: number): WeatherLayer => ({ ...def, alphaPerm
 const mixed = (a: number, b: number, w: number): number => a + (b - a) * w;
 
 // A wet season through its ticks (permille; straight lines between the keys): overcast, drizzle, storm | fog | sheen,
-// ripples. Each key stacks exactly 380 (all + max(water, land)): the morning 60 + 140 | 180 | 50 + 130, the day's
-// drizzle 80 + 200 | 100 | 40 + 60, the storm 80 + 260 | 0 | 10 + 30. The stacked sum is convex along a straight line
-// between two keys, so it stays at or under 380 between them too (tests/weatherOverlay.test.ts checks every tick). The
-// moving layers take the most: the rain (the drizzle up to 200 of its cap 220, the storm 260 of 280), the morning fog
-// (180 of 200), the ripples; the overcast tone only supports them (60-80 of its cap 180).
+// ripples. Under the cap (all + max(water, land), the rain and ripples not counted): the morning 140 | 180 | 60 = 320,
+// the day 150 | 100 | 60 = 250, the storm 180 | 0 | 80 = 260. The sum is convex along a straight line between two keys,
+// so it stays at or under the cap between them too (tests/weatherOverlay.test.ts checks every tick). Outside the cap:
+// the drizzle 550 all season and the storm 700 at the height (cross-faded), the ripples at their art's 350. The
+// overcast tone (INSTALL-23b: 140-180 of its art cap 180, was 60-80) darkens a wet season's view enough to tell it from
+// a clear one in a still frame.
 type WetMix = readonly [overcast: number, drizzle: number, storm: number, fog: number, sheen: number, ripples: number];
 type WetKey = readonly [tick: number, ...mix: WetMix];
-const MORNING: WetMix = [60, 140, 0, 180, 50, 130];
-const DAY: WetMix = [80, 200, 0, 100, 40, 60];
-const STORM: WetMix = [80, 0, 260, 0, 10, 30];
+const MORNING: WetMix = [140, DRIZZLE_PERMILLE, 0, 180, 60, 350];
+const DAY: WetMix = [150, DRIZZLE_PERMILLE, 0, 100, 60, 300];
+const STORM: WetMix = [180, 0, STORM_PERMILLE, 0, 80, 350];
 const WET_KEYS: readonly WetKey[] = [[0, ...MORNING], [WET_MORNING_TO, ...MORNING], [WET_MORNING_TO + 100, ...DAY], [WET_STORM_FROM, ...DAY],
   [WET_STORM_FROM + 50, ...STORM], [WET_STORM_TO - 50, ...STORM], [WET_STORM_TO, ...DAY], [SEASON_TICKS, ...DAY]];
 
@@ -106,6 +121,12 @@ function wetLayers(seasonTick: number): readonly WeatherLayer[] {
     layer(DEFS.overcast, at(1)), layer(DEFS.drizzle, at(2)), layer(DEFS.storm, at(3)),
     layer(DEFS.riverFog, at(4)), layer(DEFS.sheen, at(5)), layer(DEFS.ripples, at(6)),
   ].filter(entry => entry.alphaPermille > 0);
+}
+
+/** The share of the view the rain layers present cover: each sheet's streak share (pixels over RAIN_ALPHA_FLOOR, its
+ * fullest cell) summed over the rain layers drawn (a bound: two sheets cross-fading may overlap). */
+export function rainArea(layers: readonly WeatherLayer[], streakShare: (key: Wave23Key) => number): number {
+  return layers.filter(entry => entry.rain === true).reduce((total, entry) => total + Math.max(...entry.assets.map(streakShare)), 0);
 }
 
 const LAYERS: Readonly<Record<Exclude<WeatherKind, "wet">, readonly WeatherLayer[]>> = {
@@ -128,9 +149,10 @@ export function weatherLayers(input: WeatherInput): readonly WeatherLayer[] {
     .filter(entry => entry.alphaPermille > 0);
 }
 
-/** The most alpha the layers stack on one pixel (see the head comment): the "all" layers plus the larger zone. */
+/** The most alpha the capped layers stack on one pixel (see the head comment): the "all" layers plus the larger zone;
+ * the rain and ripples (`overCap`) are not counted. */
 export function stackedPermille(layers: readonly WeatherLayer[]): number {
-  const sum = (zone: WeatherZone) => layers.filter(entry => entry.zone === zone).reduce((total, entry) => total + entry.alphaPermille, 0);
+  const sum = (zone: WeatherZone) => layers.filter(entry => entry.zone === zone && entry.overCap !== true).reduce((total, entry) => total + entry.alphaPermille, 0);
   return sum("all") + Math.max(sum("water"), sum("land"));
 }
 

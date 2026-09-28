@@ -58,6 +58,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const { problemOnlyRef, highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, previousRenderStateRef, selectedToolRef, selectionRef, stateRef, zoneToolRef } =
     useGameCanvasRuntimeRefs({ store, selectedTool, overlayMode, problemOnly, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs, zoneTool: input.zoneTool ?? null });
   const zoneRadiusRef = useRef(input.onZoneRadiusChange); zoneRadiusRef.current = input.onZoneRadiusChange;
+  // INSTALL-23b: the frame reads the game speed (paused holds the village life's clock) through a ref, so the canvas does not rebind.
+  const getSpeedRef = useRef(store.getSpeed); getSpeedRef.current = store.getSpeed;
   const pendingRef = useRef(input.setPendingPlacement); pendingRef.current = input.setPendingPlacement;
 
   useEffect(() => {
@@ -120,7 +122,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       lastFrameAtMs = nowMs;
       const work = proofFrameWork.current;
       const startedAt = work === null ? 0 : performance.now();
-      drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current });
+      drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current, running: getSpeedRef.current() !== 0 });
       const cursor = gamepad.cursor();
       if (cursor !== null && lastInputDevice() === "gamepad") drawMapCursor(context, cursor, refs.cameraRef.current, refs.pixelRatioRef.current);
       if (work !== null) work.recordFrame(performance.now() - startedAt);

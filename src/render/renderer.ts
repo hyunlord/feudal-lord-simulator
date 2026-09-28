@@ -71,7 +71,7 @@ export type RenderFrameInput = {
   readonly overlayMode?: OverlayMode;
   readonly problemOnly?: boolean;
   readonly placementFeedback?: PlacementFeedback | null;
-  readonly nowMs?: number;
+  readonly nowMs?: number; readonly lifeClockMs?: number; // INSTALL-23b: lifeClockMs, the village life's clock (holds while paused, lifeClock.ts); nowMs when absent
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
   readonly renderWalkers?: readonly Walker[] | undefined;
@@ -140,7 +140,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         objectRenderItems,
         constructionProgress: input.constructionProgress,
         houseMaterialWave: input.houseMaterialWave ?? null,
-        nowMs: input.nowMs ?? 0,
+        nowMs: input.nowMs ?? 0, lifeClockMs: input.lifeClockMs ?? input.nowMs ?? 0,
         hoveredTile: input.hoveredTile ?? null,
       selectionMode: input.selectionMode ?? false,
       }),

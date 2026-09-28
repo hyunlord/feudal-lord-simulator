@@ -32,7 +32,9 @@ import { WAVE23_IMAGES } from "./wave23ArtManifest.generated";
 //
 // Scale: each art's `displayScale` (Astra's, set against the pasture's `cattle_pair`, 128 px drawn 30 px wide); the
 // small animals — hens, cats, dogs and birds — are drawn SMALL_ANIMAL_LEGIBILITY times larger so they read at zoom 1.
-// Props keep their scale. Large animals (none in this batch) keep the ASSET-2 rule (animalScale.ts).
+// INSTALL-23b (user judgement 2026-09-28): the chair, the well's bucket and the washing lines too (at Astra's scale they
+// were 2.5-6 px at zoom 1); the other props (toys, barrel) keep their scale, and the toys are drawn only from
+// TOY_MIN_ZOOM (villageLifeDraw.ts `villageLifeDrawnAt`). Large animals (none in this batch) keep the ASSET-2 rule (animalScale.ts).
 
 export const SMALL_ANIMAL_LEGIBILITY = 1.6;
 export const MAX_ANIMALS = { summer: 8, winter: 4 } as const;
@@ -65,7 +67,7 @@ export type VillageLifeItem = {
   /** Place in the object queue. */
   readonly depth: number;
   readonly anchorTx: number;
-  /** World px per asset px at zoom 1: displayScale, × SMALL_ANIMAL_LEGIBILITY for the small animals. */
+  /** World px per asset px at zoom 1: displayScale, × SMALL_ANIMAL_LEGIBILITY for the small animals and the chair, bucket and lines. */
   readonly scale: number;
   /** The house (or well) it belongs to. */
   readonly buildingId: string | null;
@@ -77,13 +79,18 @@ export type VillageLifeItem = {
 
 export type VillageLifeView = { readonly range: TileRange };
 
+/** The props drawn SMALL_ANIMAL_LEGIBILITY times larger (INSTALL-23b). */
+const LEGIBLE_PROPS: ReadonlySet<VillageLifeKind> = new Set(["doorstep_chair", "well_bucket", "clothesline_a", "clothesline_b"]);
+/** The children's toys: drawn only from this zoom (INSTALL-23b). */
+export const TOY_MIN_ZOOM = 1.35;
+export const TOYS: ReadonlySet<VillageLifeKind> = new Set(["child_ball", "child_hoop", "child_wooden_sword"]);
 const SMALL_ANIMALS: ReadonlySet<VillageLifeKind> = new Set(["crow_flight_sheet", "sparrow_flight_sheet", "pigeon_perched_a", "pigeon_perched_b",
   "cat_idle_a", "cat_idle_b", "chicken_flock_a", "chicken_flock_b", "chicken_flock_c", "chicken_walk_sheet", "village_dog_sleep", "village_dog_walk_sheet"]);
 /** Hens in each flock picture (Astra's life-ground-scale.json `animalCount`). */
 const FLOCK_SIZE: Partial<Record<VillageLifeKind, number>> = { chicken_flock_a: 2, chicken_flock_b: 3, chicken_flock_c: 3 };
 
 export function villageLifeScale(kind: VillageLifeKind): number {
-  return WAVE23_IMAGES[kind].displayScale * (SMALL_ANIMALS.has(kind) ? SMALL_ANIMAL_LEGIBILITY : 1);
+  return WAVE23_IMAGES[kind].displayScale * (SMALL_ANIMALS.has(kind) || LEGIBLE_PROPS.has(kind) ? SMALL_ANIMAL_LEGIBILITY : 1);
 }
 
 function hash(text: string, salt: number): number {

@@ -6,13 +6,14 @@ import { CORE_SCENARIOS } from "../src/content/scenario/coreScenarios";
 import { SCENARIOS } from "../src/content/scenario/registry";
 import { setPresentationPreference } from "../src/render/presentationPreferences";
 import { WAVE23_IMAGES, type Wave23Key } from "../src/render/wave23ArtManifest.generated";
-import { setWeatherArtForTest } from "../src/render/weatherArt";
-import { engineWeather, SEASON_TICKS, stackedPermille, WEATHER_ALPHA_CAP_PERMILLE, WEATHER_FADE_TICKS, WET_STORM_FROM, WET_STORM_TO, weatherLayers,
-  type WeatherLayer } from "../src/render/weatherLayers";
+import { clearFaintPixels, setWeatherArtForTest, weatherCell } from "../src/render/weatherArt";
+import { DRIZZLE_PERMILLE, engineWeather, RAIN_ALPHA_FLOOR, RAIN_AREA_MAX, rainArea, SEASON_TICKS, stackedPermille, STORM_PERMILLE, WEATHER_ALPHA_CAP_PERMILLE,
+  WEATHER_FADE_TICKS, WET_STORM_FROM, WET_STORM_TO, weatherLayers, type WeatherLayer } from "../src/render/weatherLayers";
 import { CRACK_SIZE, crackSpots, drawWeatherGround, drawWeatherSky, mapFogAnchors, presentedWeatherLayers, SHEEN_SIZE, wetSpots } from "../src/render/weatherOverlay";
 import { CLOUD_DECKS, cloudSprites, fogRect, laneSprites, LATTICE_MAX_H, LATTICE_MAX_W, rectsMeet, tileCentre, type Rect } from "../src/render/weatherPlacement";
 import { parseWeatherProof } from "../src/render/weatherProof";
 import { c25BoardState } from "../scripts/c25Board";
+import { readPng } from "../scripts/processBuildingSprite";
 import { recordingCanvas } from "../scripts/recordingCanvas";
 
 // INSTALL-23 weather in the world: the layer model (the artist's 0.38 cap, moving layers, four distinct looks, the
@@ -21,7 +22,7 @@ const KINDS: readonly WeatherKind[] = ["normal", "wet", "dry", "cold"];
 const ids = (layers: readonly WeatherLayer[]) => layers.map(layer => layer.id).sort().join(",");
 const on = { enabled: true, rain: true } as const;
 
-test("Given every weather at every tick of its season When the layers are listed Then the alpha stacked on one pixel is at most 0.38 and no layer passes its art's cap", () => {
+test("Given every weather at every tick of its season When the layers are listed Then the capped layers stack at most 0.38 on one pixel and no layer but the rain passes its art's cap", () => {
   for (const weather of KINDS) for (const rain of [true, false]) for (let seasonTick = 0; seasonTick < SEASON_TICKS; seasonTick += 1) {
     // When
     const layers = weatherLayers({ weather, seasonTick, enabled: true, rain });
@@ -31,14 +32,56 @@ test("Given every weather at every tick of its season When the layers are listed
     for (const layer of layers) for (const key of layer.assets) {
       const meta = WAVE23_IMAGES[key];
       assert.equal(meta.group, "weather", key);
-      assert.ok(layer.alphaPermille <= Math.round(meta.opacityMax * 1000), `${layer.id} ${key} ${layer.alphaPermille} > ${meta.opacityMax}`);
+      // INSTALL-23b: the rain is outside the artist's caps (user judgement); every other layer, the ripples included, is under its art's.
+      if (layer.rain !== true) assert.ok(layer.alphaPermille <= Math.round(meta.opacityMax * 1000), `${layer.id} ${key} ${layer.alphaPermille} > ${meta.opacityMax}`);
       assert.equal(layer.blend, meta.blend === "normal" ? "source-over" : meta.blend, `${key} blend`);
     }
   }
-  // The stress points named in the report: the plain wet season and the storm are exactly at the cap.
-  assert.equal(stackedPermille(weatherLayers({ weather: "wet", seasonTick: 300, ...on })), 380);
-  assert.equal(stackedPermille(weatherLayers({ weather: "wet", seasonTick: 575, ...on })), 380);
+  // Only the rain and the ripples are outside the cap; the drizzle is 0.55 through a wet season, the storm 0.7 at its height.
+  const outside = new Set(KINDS.flatMap(weather => weatherLayers({ weather, seasonTick: 575, ...on }).concat(weatherLayers({ weather, seasonTick: 300, ...on })))
+    .filter(layer => layer.overCap === true).map(layer => layer.id));
+  assert.deepEqual([...outside].sort(), ["drizzle", "puddle_ripples", "storm"]);
+  assert.equal(weatherLayers({ weather: "wet", seasonTick: 300, ...on }).find(layer => layer.id === "drizzle")?.alphaPermille, DRIZZLE_PERMILLE);
+  assert.equal(weatherLayers({ weather: "wet", seasonTick: 575, ...on }).find(layer => layer.id === "storm")?.alphaPermille, STORM_PERMILLE);
   assert.equal(stackedPermille(weatherLayers({ weather: "dry", seasonTick: 300, ...on })), 380);
+});
+
+test("Given the rain sheets with their faint halo cleared When a wet season runs through every tick Then the rain's streaks cover at most 12 % of the view", () => {
+  // Given: each sheet's fullest cell, the pixels over RAIN_ALPHA_FLOOR as the renderer cuts them (weatherArt.ts).
+  const share = new Map<Wave23Key, number>();
+  for (const key of ["drizzle_sheet", "storm_rain_sheet"] as const) {
+    const image = readPng(`public/${WAVE23_IMAGES[key].url}`);
+    let fullest = 0;
+    for (let frame = 0; frame < 4; frame += 1) {
+      const cell = weatherCell(key, frame);
+      const rgba = new Uint8Array(cell.width * cell.height * 4);
+      for (let y = 0; y < cell.height; y += 1) {
+        const from = ((cell.y + y) * image.dimensions.width + cell.x) * 4;
+        rgba.set(image.rgba.subarray(from, from + cell.width * 4), y * cell.width * 4);
+      }
+      fullest = Math.max(fullest, clearFaintPixels(rgba, RAIN_ALPHA_FLOOR));
+    }
+    share.set(key, fullest);
+  }
+  // The storm sheet alone (its halo in) would cover over 12 %: the floor is what keeps it under.
+  assert.ok(share.get("storm_rain_sheet")! > 0.05 && share.get("storm_rain_sheet")! < RAIN_AREA_MAX, String(share.get("storm_rain_sheet")));
+
+  // When / Then
+  let most = 0;
+  for (let seasonTick = 0; seasonTick < SEASON_TICKS; seasonTick += 1) {
+    const area = rainArea(weatherLayers({ weather: "wet", seasonTick, ...on }), key => share.get(key) ?? 0);
+    assert.ok(area <= RAIN_AREA_MAX, `wet at ${seasonTick}: ${area}`);
+    most = Math.max(most, area);
+  }
+  assert.ok(most > 0.08, `the storm covers ${most}`);
+});
+
+test("Given a wet and a clear season When the layers are listed Then the wet overcast tone is at least 0.14, so a still frame reads darker", () => {
+  for (const seasonTick of [WEATHER_FADE_TICKS, 300, 575, 900]) {
+    const overcast = weatherLayers({ weather: "wet", seasonTick, ...on }).find(layer => layer.id === "overcast");
+    assert.ok((overcast?.alphaPermille ?? 0) >= 140, `${seasonTick}: ${overcast?.alphaPermille}`);
+  }
+  assert.equal(weatherLayers({ weather: "normal", seasonTick: 300, ...on }).some(layer => layer.id === "overcast"), false);
 });
 
 test("Given each weather past its fade-in When the layers are listed Then at least one moves, with the rain on or off, and the four weathers draw distinct sets", () => {

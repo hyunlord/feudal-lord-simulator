@@ -1,5 +1,6 @@
 import { WAVE23_IMAGES, type Wave23Key } from "./wave23ArtManifest.generated";
 import { rgbaOfChannels } from "./style";
+import { RAIN_ALPHA_FLOOR } from "./weatherLayers";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
@@ -70,8 +71,25 @@ function cellCanvas(key: Wave23Key, image: CanvasImageSource, frame: number): Ca
   const paint = canvas.getContext("2d");
   if (paint === null) return null;
   drawCroppedWorldSprite(paint, image, cell, { x: 0, y: 0, width: cell.width, height: cell.height }, false, false);
+  if (RAIN_SHEETS.has(key) && typeof paint.getImageData === "function") {
+    const pixels = paint.getImageData(0, 0, cell.width, cell.height);
+    clearFaintPixels(pixels.data, RAIN_ALPHA_FLOOR);
+    paint.putImageData(pixels, 0, 0);
+  }
   cells[index] = canvas;
   return canvas;
+}
+
+const RAIN_SHEETS: ReadonlySet<Wave23Key> = new Set(["drizzle_sheet", "storm_rain_sheet"]);
+
+/** INSTALL-23b: clears every pixel at or under `floor` alpha (RGBA bytes, in place) — the rain streaks' faint halo, so
+ * the streaks cover at most RAIN_AREA_MAX of the view (weatherLayers.ts). Returns the share of pixels left. */
+export function clearFaintPixels(rgba: Uint8ClampedArray | Uint8Array, floor: number): number {
+  let kept = 0;
+  for (let index = 3; index < rgba.length; index += 4) {
+    if ((rgba[index] ?? 0) <= floor) { rgba[index - 3] = 0; rgba[index - 2] = 0; rgba[index - 1] = 0; rgba[index] = 0; } else kept += 1;
+  }
+  return rgba.length === 0 ? 0 : kept / (rgba.length / 4);
 }
 
 // Cache (AGENTS rule 10): the repeat pattern of each source (a tint image or a rain cell canvas); key: the context and

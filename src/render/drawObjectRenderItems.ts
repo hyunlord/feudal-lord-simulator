@@ -36,6 +36,8 @@ type DrawObjectRenderItemsInput = {
   readonly constructionProgress?: ReadonlyMap<string, number> | undefined;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly nowMs?: number;
+  /** INSTALL-23b: the village life's clock (holds while paused); nowMs when absent. */
+  readonly lifeClockMs?: number;
   readonly hoveredTile?: TileCoordinate | null;
   readonly selectionMode?: boolean;
 };
@@ -76,7 +78,7 @@ export function drawObjectRenderItems(
       continue;
     }
     if (item.kind === "village_life") { // INSTALL-23 hens, cats, dogs, birds, toys, washing lines, doorstep props
-      if (viewMode === "normal") drawVillageLifeItem(context, item.life, { state: input.state, zoom: input.zoom, nowMs: input.nowMs ?? 0, camera: input.camera, viewport: input.viewport });
+      if (viewMode === "normal") drawVillageLifeItem(context, item.life, { state: input.state, zoom: input.zoom, nowMs: input.lifeClockMs ?? input.nowMs ?? 0, camera: input.camera, viewport: input.viewport });
       continue;
     }
     if (item.kind === "walker" && !stoneGates.some(gate =>
