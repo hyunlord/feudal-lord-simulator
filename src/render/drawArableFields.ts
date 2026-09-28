@@ -7,7 +7,7 @@ import { arableStripStates, type ArableStripState } from "../zones/arableStrips"
  * The strip states the field art draws (C1f): the C1c four plus `harvested` (stubble ridges, Wave 4c), read from the
  * strip's stage (arableStripStates `stage`; `ripe` stays with the growing art, the other stages map as `state`).
  */
-export type FieldStripState = ArableStripState | "harvested" | "blighted" | "flooded";
+export type FieldStripState = ArableStripState | "harvested" | "blighted" | "flooded" | "barley_growing" | "barley_ripe";
 import { zonesOf } from "../zones/zoneEdits";
 import { RAMPS } from "../content/palette";
 import { tileToScreen } from "./iso";
@@ -20,6 +20,7 @@ import type { ZoneLayer } from "./zoneLayer";
 import { wetSummer } from "./wetSummer";
 import { seasonImage, seasonVariant, type SeasonIndex } from "./seasonArt";
 import { wave9Art, type Wave9Key } from "./wave9Art";
+import { wave3AleArt, type Wave3AleKey } from "./wave3AleArt";
 
 // Arable ridge strips in the ground chunks (C1e): after the zone's soil fill, each strip run is drawn as two ridge rows
 // of its crop state's a | b strip pair, clipped to the crop area (the headland stays bare soil), then the furrow
@@ -37,7 +38,8 @@ const JOIN_FADE = 40;
 const FURROW_STROKE = 1.4;
 const FURROW_ALPHA = 0.75;
 
-const STATE_CODES: Readonly<Record<FieldStripState, string>> = { ploughed: "p", seedling: "s", growing: "g", fallow: "f", harvested: "h", blighted: "b", flooded: "w" };
+const STATE_CODES: Readonly<Record<FieldStripState, string>> = { ploughed: "p", seedling: "s", growing: "g", fallow: "f", harvested: "h", blighted: "b", flooded: "w",
+  barley_growing: "q", barley_ripe: "r" };
 
 /**
  * A light wash over each state's ridges so the states read apart at zoom 0.6, where the painted cues (green dots on the
@@ -45,7 +47,7 @@ const STATE_CODES: Readonly<Record<FieldStripState, string>> = { ploughed: "p", 
  * mean colour (ploughed 102/71/44, seedling 111/80/45, fallow 108/82/51): ploughed darker earth, seedling a fresh
  * green haze, growing a little more gold, fallow a dull olive.
  */
-const STATE_WASH: Readonly<Record<FieldStripState, string>> = {
+const STATE_WASH: Readonly<Record<FieldStripState, string | null>> = {
   ploughed: withAlpha(RAMPS.earth[0], 0.22),
   seedling: withAlpha(RAMPS.foliage[5], 0.3),
   growing: withAlpha(RAMPS.thatch[5], 0.12),
@@ -55,6 +57,10 @@ const STATE_WASH: Readonly<Record<FieldStripState, string>> = {
   // UI-4 wet summer (Wave 9 ridges): the blight's grey-brown and the standing water keep their own paint.
   blighted: withAlpha(RAMPS.earth[1], 0.12),
   flooded: withAlpha(RAMPS.water[2], 0.1),
+  // INSTALL-3 barley (Wave 3): the growing strips are painted green and the ripe ones pale straw, against the wheat's
+  // gold-brown; no wash, so the painted colours carry the difference at 0.6 (docs/verification/install3/world).
+  barley_growing: null,
+  barley_ripe: null,
 };
 /** UI-4: in a wet summer every FLOOD_EVERY-th growing strip stands under water, the rest blight. */
 const FLOOD_EVERY = 3;
@@ -90,10 +96,19 @@ export function arableStripStateLookup(state: GameState): StateLookup {
   for (const zone of zones) if (zone.kind === "arable") for (const strip of arableStripStates(zone, state).strips) {
     const stage: FieldStripState = strip.stage === "harvested" ? "harvested" : strip.state;
     const growing = stage === "seedling" || stage === "growing";
-    lookup.set(strip.id, wet && growing ? (crop++ % FLOOD_EVERY === FLOOD_EVERY - 1 ? "flooded" : "blighted") : stage);
+    lookup.set(strip.id, wet && growing ? (crop++ % FLOOD_EVERY === FLOOD_EVERY - 1 ? "flooded" : "blighted") : fieldStripArt(strip.crop, strip.stage, stage));
   }
   byFields.set(fields, lookup);
   return lookup;
+}
+
+/**
+ * INSTALL-3: a barley strip's art by its stage — Wave 3's growing ridges while it grows, its ripe ridges once ripe; sown
+ * (young shoots), ploughed, fallow and the stubble look the same for both crops, so they keep the wheat's art.
+ */
+export function fieldStripArt(crop: "wheat" | "barley", stage: string, legacy: FieldStripState): FieldStripState {
+  if (crop !== "barley") return legacy;
+  return stage === "ripe" ? "barley_ripe" : stage === "growing" ? "barley_growing" : legacy;
 }
 
 /** Chunk key part: the crop state of each strip run the chunk draws (in plan order). */
@@ -103,7 +118,9 @@ export function stripStateKey(layer: ZoneLayer, bandIndexes: readonly number[], 
     const band = layer.arableBands[index];
     const state = band === undefined ? null : states.get(band.stripId) ?? "fallow";
     // UI-4: a wet ridge drawn before its Wave 9 art loaded (the growing fallback) re-rasters once it is there.
-    const pending = (state === "blighted" || state === "flooded") && WET_RIDGES[state].some(wet => wave9Art(wet) === null);
+    // INSTALL-3: so does a barley ridge drawn before its Wave 3 art loaded.
+    const pending = ((state === "blighted" || state === "flooded") && WET_RIDGES[state].some(wet => wave9Art(wet) === null))
+      || ((state === "barley_growing" || state === "barley_ripe") && BARLEY_RIDGES[state].some(key => wave3AleArt(key) === null));
     key += state === null ? "-" : pending ? STATE_CODES[state].toUpperCase() : STATE_CODES[state];
   }
   return key;
@@ -147,8 +164,9 @@ function drawRidgeRows(context: CanvasRenderingContext2D, field: ArableField, st
         : [{ x: a, y: from }, { x: b, y: from }, { x: b, y: to }, { x: a, y: to }]);
       context.fillStyle = pattern;
       context.fill();
-      if (seasonal !== null) continue; // the winter art is its own colour: no summer wash
-      context.fillStyle = STATE_WASH[state];
+      const wash = STATE_WASH[state];
+      if (seasonal !== null || wash === null) continue; // the winter art is its own colour: no summer wash
+      context.fillStyle = wash;
       context.fill();
     }
   }
@@ -202,11 +220,15 @@ const pairs = new Map<string, CanvasImageSource | null>();
 const WET_RIDGES: Readonly<Record<"blighted" | "flooded", readonly Wave9Key[]>> = {
   blighted: ["field_ridge_blighted_a", "field_ridge_blighted_b"], flooded: ["field_ridge_flooded", "field_ridge_flooded"],
 };
+const BARLEY_RIDGES: Readonly<Record<"barley_growing" | "barley_ripe", readonly Wave3AleKey[]>> = {
+  barley_growing: ["ridge_barley_growing_a", "ridge_barley_growing_b"], barley_ripe: ["ridge_barley_ripe_a", "ridge_barley_ripe_b"],
+};
 function ridgePair(state: FieldStripState): CanvasImageSource | null {
-  if (state === "blighted" || state === "flooded") {
-    const images = WET_RIDGES[state].map(key => wave9Art(key));
+  if (state === "blighted" || state === "flooded" || state === "barley_growing" || state === "barley_ripe") {
+    const keys: readonly string[] = state === "blighted" || state === "flooded" ? WET_RIDGES[state] : BARLEY_RIDGES[state];
+    const images = state === "blighted" || state === "flooded" ? WET_RIDGES[state].map(key => wave9Art(key)) : BARLEY_RIDGES[state].map(key => wave3AleArt(key));
     if (images.some(image => image === null)) return ridgePair("growing");
-    const id = WET_RIDGES[state].join("+");
+    const id = keys.join("+");
     const cached = pairs.get(id);
     if (cached !== undefined) return cached;
     const joined = typeof document === "undefined" ? images[0] as HTMLImageElement : joinStrips(images as HTMLImageElement[]);

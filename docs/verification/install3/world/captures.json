@@ -1,0 +1,536 @@
+{
+ "source": "scripts/install3States.ts moments (the C4 human path replayed; ranOn: ticks the same replay ran on, no edit)",
+ "paused": true,
+ "lod": "IN7-D1: zoom <= 0.7 simplified (blocks, no piles or building overlays), cart loads below 0.8 not drawn, walker art only above 0.7",
+ "shots": {
+  "barley-growing-z1.0.jpg": {
+   "moment": "m4-barley-growing",
+   "tick": 92500,
+   "ranOn": 0,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 360,
+    "y": 244,
+    "width": 560,
+    "height": 312
+   },
+   "note": "barley strip at 45.5,38 beside wheat at 48.5,38"
+  },
+  "barley-growing-z0.6.jpg": {
+   "moment": "m4-barley-growing",
+   "tick": 92500,
+   "ranOn": 0,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 360,
+    "y": 244,
+    "width": 560,
+    "height": 312
+   },
+   "note": "barley strip at 45.5,38 beside wheat at 48.5,38"
+  },
+  "barley-growing-z2.0.jpg": {
+   "moment": "m4-barley-growing",
+   "tick": 92500,
+   "ranOn": 0,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "barley strip at 45.5,38 beside wheat at 48.5,38"
+  },
+  "barley-ripe-z1.0.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 97500,
+   "ranOn": 3500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 360,
+    "y": 244,
+    "width": 560,
+    "height": 312
+   },
+   "note": "barley strip at 45.5,38 beside wheat at 48.5,38"
+  },
+  "barley-ripe-z0.6.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 97500,
+   "ranOn": 3500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 360,
+    "y": 244,
+    "width": 560,
+    "height": 312
+   },
+   "note": "barley strip at 45.5,38 beside wheat at 48.5,38"
+  },
+  "barley-ripe-z2.0.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 97500,
+   "ranOn": 3500,
+   "tile": [
+    47,
+    38
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "barley strip at 45.5,38 beside wheat at 48.5,38"
+  },
+  "field-barley-growing-z0.6.jpg": {
+   "moment": "m4-barley-growing",
+   "tick": 92500,
+   "ranOn": 0,
+   "tile": [
+    38,
+    37
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 520,
+    "y": 320,
+    "width": 240,
+    "height": 160
+   },
+   "note": "barley strip zone-000007:y38:35 growing"
+  },
+  "field-wheat-growing-z0.6.jpg": {
+   "moment": "m4-barley-growing",
+   "tick": 92500,
+   "ranOn": 0,
+   "tile": [
+    53.5,
+    44
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 520,
+    "y": 320,
+    "width": 240,
+    "height": 160
+   },
+   "note": "wheat strip zone-000006:x44:53 growing"
+  },
+  "field-barley-ripe-z0.6.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 97500,
+   "ranOn": 3500,
+   "tile": [
+    38,
+    37
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 520,
+    "y": 320,
+    "width": 240,
+    "height": 160
+   },
+   "note": "barley strip zone-000007:y38:35 ripe"
+  },
+  "field-wheat-ripe-z0.6.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 97500,
+   "ranOn": 3500,
+   "tile": [
+    53.5,
+    44
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 520,
+    "y": 320,
+    "width": 240,
+    "height": 160
+   },
+   "note": "wheat strip zone-000006:x44:53 ripe"
+  },
+  "kiln-working-z1.0.jpg": {
+   "moment": "m8-malt",
+   "tick": 93574,
+   "ranOn": 0,
+   "tile": [
+    38.5,
+    33.5
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "kiln barley 10, malt 1"
+  },
+  "kiln-working-z0.6.jpg": {
+   "moment": "m8-malt",
+   "tick": 93574,
+   "ranOn": 0,
+   "tile": [
+    38.5,
+    33.5
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "kiln barley 10, malt 1"
+  },
+  "barn-barley-z1.0.jpg": {
+   "moment": "m7-barley-in-barn",
+   "tick": 93505,
+   "ranOn": 0,
+   "tile": [
+    39,
+    36
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "farmstead-39-36-0 barley 59"
+  },
+  "barn-barley-z0.6.jpg": {
+   "moment": "m7-barley-in-barn",
+   "tick": 93505,
+   "ranOn": 0,
+   "tile": [
+    39,
+    36
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "farmstead-39-36-0 barley 59"
+  },
+  "alehouse-z1.0.jpg": {
+   "moment": "m10-alehouse",
+   "tick": 94400,
+   "ranOn": 800,
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "construction-site-000020 level 2, ale 2 (stake)"
+  },
+  "alehouse-z0.6.jpg": {
+   "moment": "m10-alehouse",
+   "tick": 94400,
+   "ranOn": 800,
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "construction-site-000020 level 2, ale 2 (stake)"
+  },
+  "alehouse-z2.0.jpg": {
+   "moment": "m10-alehouse",
+   "tick": 94400,
+   "ranOn": 800,
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 190,
+    "width": 400,
+    "height": 260
+   },
+   "note": "construction-site-000020 level 2, ale 2 (stake)"
+  },
+  "alehouse-dry-z1.0.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 94000,
+   "ranOn": 0,
+   "tile": [
+    44,
+    42
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "house-44-42-0 level 2, ale 0 (sold out: no stake)"
+  },
+  "alehouse-dry-z0.6.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 94000,
+   "ranOn": 0,
+   "tile": [
+    44,
+    42
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "house-44-42-0 level 2, ale 0 (sold out: no stake)"
+  },
+  "alehouse-dry-z2.0.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 94000,
+   "ranOn": 0,
+   "tile": [
+    44,
+    42
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 190,
+    "width": 400,
+    "height": 260
+   },
+   "note": "house-44-42-0 level 2, ale 0 (sold out: no stake)"
+  },
+  "brewing-z1.0.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 96400,
+   "ranOn": 2400,
+   "tile": [
+    47,
+    32
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 230,
+    "width": 400,
+    "height": 260
+   },
+   "note": "construction-site-000039 level 1, ale 2 (a level 1 brewer's door)"
+  },
+  "brewing-z0.6.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 96400,
+   "ranOn": 2400,
+   "tile": [
+    47,
+    32
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 246,
+    "width": 400,
+    "height": 260
+   },
+   "note": "construction-site-000039 level 1, ale 2 (a level 1 brewer's door)"
+  },
+  "brewing-z2.0.jpg": {
+   "moment": "m11-ale-sold",
+   "tick": 96400,
+   "ranOn": 2400,
+   "tile": [
+    47,
+    32
+   ],
+   "zoom": 2,
+   "clip": {
+    "x": 440,
+    "y": 190,
+    "width": 400,
+    "height": 260
+   },
+   "note": "construction-site-000039 level 1, ale 2 (a level 1 brewer's door)"
+  },
+  "cart-barley-z1.0.jpg": {
+   "moment": "m7-barley-in-barn",
+   "tick": 93520,
+   "ranOn": 15,
+   "tile": [
+    40,
+    36
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "carter:construction-site-000051:93505 with 12 barley"
+  },
+  "cart-barley-z0.6.jpg": {
+   "moment": "m7-barley-in-barn",
+   "tick": 93520,
+   "ranOn": 15,
+   "tile": [
+    40,
+    36
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "carter:construction-site-000051:93505 with 12 barley"
+  },
+  "cart-malt-z1.0.jpg": {
+   "moment": "m8-malt",
+   "tick": 93574,
+   "ranOn": 0,
+   "tile": [
+    40,
+    36.80000000000001
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "carter:construction-site-000051:93554 with 1 malt"
+  },
+  "cart-malt-z0.6.jpg": {
+   "moment": "m8-malt",
+   "tick": 93574,
+   "ranOn": 0,
+   "tile": [
+    40,
+    36.80000000000001
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "carter:construction-site-000051:93554 with 1 malt"
+  },
+  "alewife-z1.0.jpg": {
+   "moment": "m8-malt",
+   "tick": 93574,
+   "ranOn": 0,
+   "tile": [
+    49.8,
+    41
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "resident-malt:house-46-40-0:construction-site-000051:0@93202"
+  },
+  "alewife-z0.6.jpg": {
+   "moment": "m8-malt",
+   "tick": 93574,
+   "ranOn": 0,
+   "tile": [
+    49.8,
+    41
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "resident-malt:house-46-40-0:construction-site-000051:0@93202"
+  },
+  "maltster-z1.0.jpg": {
+   "moment": "m6-kiln-built",
+   "tick": 92400,
+   "ranOn": 142,
+   "tile": [
+    40,
+    34
+   ],
+   "zoom": 1,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "resident-kiln:construction-site-000027:construction-site-000051:0@92091"
+  },
+  "maltster-z0.6.jpg": {
+   "moment": "m6-kiln-built",
+   "tick": 92400,
+   "ranOn": 142,
+   "tile": [
+    40,
+    34
+   ],
+   "zoom": 0.6,
+   "clip": {
+    "x": 440,
+    "y": 270,
+    "width": 400,
+    "height": 260
+   },
+   "note": "resident-kiln:construction-site-000027:construction-site-000051:0@92091"
+  }
+ },
+ "jpegBytes": 730333,
+ "errors": []
+}

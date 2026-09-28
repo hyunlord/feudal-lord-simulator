@@ -163,6 +163,36 @@ export const historicalFacilityManifest = [
     },
     "displayWidth": 112,
     "sha256": "9b686edcfd10affb1d9185d7febf64a341e2463e42e706cee79a77843c6e8dc3"
+  },
+  {
+    "id": "malthouse_a",
+    "kind": "malt_kiln",
+    "url": "assets/wave3/bld/malthouse_a.png",
+    "width": 160,
+    "height": 136,
+    "source": {
+      "x": 0,
+      "y": 0,
+      "width": 160,
+      "height": 128
+    },
+    "displayWidth": 128,
+    "sha256": "c41fcb44347568593d0407110f2bdf5402f2b0f77ced769baa7212156310a751"
+  },
+  {
+    "id": "malthouse_b",
+    "kind": "malt_kiln",
+    "url": "assets/wave3/bld/malthouse_b.png",
+    "width": 160,
+    "height": 136,
+    "source": {
+      "x": 0,
+      "y": 0,
+      "width": 160,
+      "height": 128
+    },
+    "displayWidth": 128,
+    "sha256": "a29f300d99a6435e9855d3db1e24ea0ceb955d0b859d6616f8b1955b5c152b84"
   }
 ] as const;
 

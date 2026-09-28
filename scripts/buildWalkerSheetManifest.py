@@ -218,6 +218,19 @@ for name in ("wk_carpenter-v1.png", "wk_mason-v1.png"):
                    "legacy": False, "holdsTool": False, "template": "kit_m", "season": "all",
                    "directionOrder": DIRECTIONS, "cloak": None, "cloakPoke": None, "frames": own_frames(image)})
 
+# INSTALL-3: the Wave 3 ale chain's workers, reskins of the civilian templates at their runtime size (the alewife on the
+# woman's 312 x 156, the maltster on the man's 294 x 147: Astra kept each cell's head and both feet byte for byte,
+# records/worker-overlap.csv), so they take the template's feet and figure heights, and hands measured on their own
+# alpha. Band "ale": no occupation band draws them; the alewife walks a brewing house's malt errand, the maltster the
+# kiln's (walkerComposer `walkerAppearance`). No winter cloak (not tested against these costumes).
+for name, template, sex in (("wk_alewife.png", "civilian_woman", "female"), ("wk_maltster.png", "civilian_man", "male")):
+    path = ROOT / "public/assets/wave3/workers" / name
+    image = Image.open(path)
+    sheets.append({"id": name[:-len(".png")], "url": f"assets/wave3/workers/{name}", "width": image.width, "height": image.height,
+                   "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "classBand": "ale", "sex": sex, "occupationTags": [],
+                   "legacy": False, "holdsTool": False, "template": template, "season": "all",
+                   "directionOrder": DIRECTIONS, "cloak": None, "cloakPoke": None, "frames": frames_of(actors[template], hands_of(sheet_image(path)))})
+
 props = {}
 for row in rows:
     if row["type"] != "prop":

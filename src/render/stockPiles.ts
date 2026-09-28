@@ -4,6 +4,9 @@ import { buildingFootprint } from "../geometry/buildingFootprint";
 import { farmsteadFieldWork } from "./farmsteadArt";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { drawWave7, type Wave7Key } from "./wave7Art";
+import { drawWave3Ale, type Wave3AleKey } from "./wave3AleArt";
+import { aleBarrelPile, aleStockPile } from "./aleWorldArt";
+import { brewingDoor } from "./villageLife";
 
 // INSTALL-7 stock piles (Wave 7, 3 levels each): what a building holds shows at its door, so the wheat -> bread -> home
 // chain reads on the map.
@@ -20,7 +23,11 @@ export function stockPileLevel(amount: number, capacity: number): 0 | 1 | 2 | 3 
   return amount >= capacity * 2 / 3 ? 3 : amount >= capacity / 3 ? 2 : 1;
 }
 
-type Pile = { readonly key: Wave7Key; readonly x: number; readonly y: number };
+// INSTALL-3 (Wave 3, aleWorldArt.ts): barley sacks at a barley barn (beside its wheat sacks while it still holds wheat),
+// malt sacks at the kiln's door, the ale barrels at a brewing house's door (the door spot village life keeps for them,
+// villageLife.ts `brewingDoor`). Same scale and thresholds as the Wave 7 piles (Astra drew them at Wave 7's size).
+type Pile = { readonly key: Wave7Key; readonly x: number; readonly y: number; readonly wave3?: undefined }
+  | { readonly key: Wave3AleKey; readonly x: number; readonly y: number; readonly wave3: true };
 
 export function buildingStockPiles(state: GameState, building: Building): readonly Pile[] {
   const size = buildingFootprint(building);
@@ -37,6 +44,15 @@ export function buildingStockPiles(state: GameState, building: Building): readon
   if (building.kind === "farmstead" || building.kind === "granary") add("sacks", building.inventory.wheat ?? 0);
   if (building.kind === "mill") add("bread", building.inventory.bread ?? 0);
   if (building.kind === "storehouse") add("crates", Object.values(building.inventory).reduce((sum, value) => sum + (value ?? 0), 0));
+  const ale = aleStockPile(building, capacity);
+  // Beside the wheat sacks, a third of the way up the door's face, when the barn holds both.
+  if (ale !== null) piles.push({ key: ale, wave3: true, ...(piles.length === 0 ? door : { x: door.x + hw * 0.3, y: door.y - hh * 0.3 }) });
+  const house = building.kind === "house" ? state.houses.find(candidate => candidate.buildingId === building.id) : undefined;
+  const barrels = house === undefined ? null : aleBarrelPile(house);
+  if (barrels !== null) {
+    const spot = brewingDoor(state, building.id);
+    piles.push({ key: barrels, wave3: true, ...(spot === null ? door : { x: tileToScreen(spot.x, spot.y).sx, y: tileToScreen(spot.x, spot.y).sy }) });
+  }
   if (building.kind === "farmstead") {
     const harvested = farmsteadFieldWork(state).get(building.id)?.harvested ?? null;
     const cell = harvested?.[0];
@@ -50,5 +66,8 @@ export function buildingStockPiles(state: GameState, building: Building): readon
 }
 
 export function drawStockPiles(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
-  for (const pile of buildingStockPiles(state, building)) drawWave7(context, pile.key, pile.x, pile.y, PILE_SCALE);
+  for (const pile of buildingStockPiles(state, building)) {
+    if (pile.wave3 === true) drawWave3Ale(context, pile.key, pile.x, pile.y, PILE_SCALE);
+    else drawWave7(context, pile.key, pile.x, pile.y, PILE_SCALE);
+  }
 }

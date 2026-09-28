@@ -1,5 +1,6 @@
 import type { GameState } from "../engine/engine.types";
 import { kitWorker } from "./constructionKits";
+import { aleWorkerSheet } from "./aleWorldArt";
 import type { Walker } from "../agents/walker.types";
 import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { assetUrlForBase } from "./worldAssets";
@@ -162,6 +163,12 @@ export function walkerAppearance(state: GameState, walker: Walker) {
   if (worker !== null) {
     const kitLook = { ...look, sheetId: worker.sheet as typeof look.sheetId };
     return { look: kitLook, prop: worker.tool as ReturnType<typeof walkerHeldProp>, cloak: walkerCloak(state, kitLook) };
+  }
+  // INSTALL-3: the alewife on her malt errand, the maltster to the kiln and on its carts (their Wave 3 sheets, no cloak).
+  const ale = aleWorkerSheet(state, walker);
+  if (ale !== null) {
+    const aleLook = { ...look, sheetId: ale };
+    return { look: aleLook, prop: walkerHeldProp(aleLook, walker, stage, stateCalendar(state)), cloak: walkerCloak(state, aleLook) };
   }
   return { look, prop: walkerHeldProp(look, walker, stage, stateCalendar(state)), cloak: walkerCloak(state, look) };
 }

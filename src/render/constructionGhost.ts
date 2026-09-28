@@ -1,9 +1,10 @@
-import { BUILDING_CATALOG, buildingEntry } from "../content/buildingCatalog";
+import { BUILDING_CATALOG, buildingEntry, type SignIcon } from "../content/buildingCatalog";
 import type { Building, BuildingKind } from "../content/buildingConfig";
 import { constructionSiteFootprint, type ConstructionSite } from "../economy/construction";
 import { isBuildingConstructionSite } from "../economy/constructionSiteAccessors";
 import type { GameState } from "../engine/engine.types";
-import { drawUiIcon, type UiIconCell } from "../ui/uiArt";
+import { drawUiIcon } from "../ui/uiArt";
+import { drawWave3AleOnReference, WAVE3_BUILDING_ICON_CELLS, WAVE3_ICON_CELL } from "./wave3AleArt";
 import { constructionStageIndex } from "./constructionVisibility";
 import { drawFarmsteadSprite } from "./farmsteadArt";
 import { drawHistoricalFacility } from "./historicalFacilityAssets";
@@ -23,7 +24,7 @@ export const GHOST_ALPHA = 0.22;
 const GHOST_STAGES = 2;
 
 /** BLD-REG: the sign's icon is the kind's catalog `signIcon` (a site that is no building has none). */
-const signIcon = (kind: ConstructionSite["kind"]): UiIconCell<"building"> | undefined =>
+const signIcon = (kind: ConstructionSite["kind"]): SignIcon | undefined =>
   Object.hasOwn(BUILDING_CATALOG, kind) ? buildingEntry(kind as BuildingKind).signIcon : undefined;
 
 function ghostBuilding(site: ConstructionSite): Building | null {
@@ -63,5 +64,10 @@ export function drawConstructionSignIcon(context: CanvasRenderingContext2D, site
   const footprint = constructionSiteFootprint(site);
   const center = tileToScreen(footprint.tx + (footprint.width - 1) / 2, footprint.ty + (footprint.height - 1) / 2);
   const span = (footprint.width + footprint.height) * 27;
-  return drawUiIcon(context, "building", cell, center.sx - span * 0.46, center.sy - 19, 12);
+  const x = center.sx - span * 0.46; const y = center.sy - 19;
+  if (typeof cell === "string") return drawUiIcon(context, "building", cell, x, y, 12);
+  // INSTALL-3: a Wave 3 chain icon (one row of 96 px cells; its art spans 80 of them, as the UX-2 cells).
+  const index = WAVE3_BUILDING_ICON_CELLS.indexOf(cell.chain);
+  return drawWave3AleOnReference(context, "icon_building_chain_sheet", { x: index * WAVE3_ICON_CELL, y: 0, width: WAVE3_ICON_CELL, height: WAVE3_ICON_CELL },
+    { width: WAVE3_BUILDING_ICON_CELLS.length * WAVE3_ICON_CELL, height: WAVE3_ICON_CELL }, { x: x - 6, y: y - 6, width: 12, height: 12 });
 }
