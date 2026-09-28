@@ -1,0 +1,23 @@
+{
+  "assets": 100,
+  "missing": [],
+  "failures": [],
+  "checks": "exact canvas; source lower contact contour; transparent overlays outside base; nonempty; SHA256",
+  "runtime": "not installed or tested",
+  "pivot_limit": "Attachment contains PNG only, no numerical runtime pivot; unchanged canvas registration preserves any existing externally supplied pivot.",
+  "rgba_format_checks": "100/100",
+  "proof_dimensions": {
+    "01-level-variants.png": [
+      1250,
+      1080
+    ],
+    "02-city-repetition.png": [
+      1960,
+      1100
+    ],
+    "03-state-overlays.png": [
+      2040,
+      1410
+    ]
+  }
+}

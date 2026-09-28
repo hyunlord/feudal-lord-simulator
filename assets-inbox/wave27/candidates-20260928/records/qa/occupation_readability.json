@@ -1,0 +1,140 @@
+{
+  "matched": 12,
+  "total": 12,
+  "method": "One fresh-context assessor. Shown only numbered final 12-plot scene at 100%, supplied unordered list of 12 possible jobs, no key, no prompts, no sourcefiles. Each job appears with one representative a/b variant; not a population user-study.",
+  "image_sha256": "a6793ed1a1e9fb73251977d7dd1ff392bee33b821658ac6ee913d64ddfa2060e",
+  "results": [
+    {
+      "number": "01",
+      "occupation": "tanner",
+      "variant": "a",
+      "expected": "무두장이",
+      "guess": "무두장이",
+      "confidence": 0.96,
+      "cue": "틀에 펼쳐 말리는 황갈색 가죽과 원형 작업 통이 보임",
+      "alternative": "염색",
+      "match": true
+    },
+    {
+      "number": "02",
+      "occupation": "farmer",
+      "variant": "b",
+      "expected": "농부",
+      "guess": "농부",
+      "confidence": 0.99,
+      "cue": "작물이 자란 작은 밭고랑과 농기구가 보임",
+      "alternative": null,
+      "match": true
+    },
+    {
+      "number": "03",
+      "occupation": "merchant",
+      "variant": "a",
+      "expected": "상인",
+      "guess": "상인",
+      "confidence": 0.98,
+      "cue": "저울과 여러 운송용 나무 상자가 보임",
+      "alternative": null,
+      "match": true
+    },
+    {
+      "number": "04",
+      "occupation": "baker",
+      "variant": "b",
+      "expected": "빵집",
+      "guess": "빵집",
+      "confidence": 0.75,
+      "cue": "둥근 갈색 빵처럼 보이는 물건이 담긴 바구니와 흰 작업판, 장작 더미가 보임",
+      "alternative": "어부",
+      "match": true
+    },
+    {
+      "number": "05",
+      "occupation": "fisher",
+      "variant": "a",
+      "expected": "어부",
+      "guess": "어부",
+      "confidence": 0.95,
+      "cue": "기둥 사이에 널린 큰 그물과 통들이 보임",
+      "alternative": null,
+      "match": true
+    },
+    {
+      "number": "06",
+      "occupation": "weaver",
+      "variant": "b",
+      "expected": "직조",
+      "guess": "직조",
+      "confidence": 0.99,
+      "cue": "천이 걸린 목제 직조틀과 실타래처럼 보이는 흰 재료가 보임",
+      "alternative": null,
+      "match": true
+    },
+    {
+      "number": "07",
+      "occupation": "miller",
+      "variant": "a",
+      "expected": "방앗간",
+      "guess": "방앗간",
+      "confidence": 0.94,
+      "cue": "곡물 포대와 중앙의 원형 제분 장치처럼 보이는 구조, 흩어진 가루가 보임",
+      "alternative": "빵집",
+      "match": true
+    },
+    {
+      "number": "08",
+      "occupation": "carpenter",
+      "variant": "b",
+      "expected": "목수",
+      "guess": "목수",
+      "confidence": 0.99,
+      "cue": "받침대 위 긴 목재와 쌓인 판재, 나무 조각들이 보임",
+      "alternative": null,
+      "match": true
+    },
+    {
+      "number": "09",
+      "occupation": "brewer",
+      "variant": "a",
+      "expected": "에일양조",
+      "guess": "에일양조",
+      "confidence": 0.95,
+      "cue": "여러 큰 나무 술통과 열린 양조 통, 원료 포대가 보임",
+      "alternative": "상인",
+      "match": true
+    },
+    {
+      "number": "10",
+      "occupation": "shepherd",
+      "variant": "b",
+      "expected": "목동",
+      "guess": "목동",
+      "confidence": 0.98,
+      "cue": "울타리와 흰 양털 덩어리, 걸어 놓은 털가죽 같은 물건이 보임",
+      "alternative": "무두장이",
+      "match": true
+    },
+    {
+      "number": "11",
+      "occupation": "dyer",
+      "variant": "a",
+      "expected": "염색",
+      "guess": "염색",
+      "confidence": 0.99,
+      "cue": "빨강 파랑 노랑 천이 빨랫줄에 걸려 있고 여러 색의 액체 통이 보임",
+      "alternative": null,
+      "match": true
+    },
+    {
+      "number": "12",
+      "occupation": "blacksmith",
+      "variant": "b",
+      "expected": "대장장이",
+      "guess": "대장장이",
+      "confidence": 0.97,
+      "cue": "금속 봉과 고리, 말굽 같은 철물 및 검은 연료 포대가 보임",
+      "alternative": null,
+      "match": true
+    }
+  ]
+}

@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-28 20시 갱신)
+## 3. 현재 장부 요약 (2026-09-28 21시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -73,6 +73,8 @@ assets-inbox/
 | `wave23` | 120 |  | 120 |  |  |  |  | 82 |
 | `wave24` | 32 |  | 28 |  | 4 |  |  | 0 |
 | `wave25` | 17 |  | 17 |  |  |  |  | 0 |
+| `wave26` | 103 |  | 103 |  |  |  |  | 0 |
+| `wave27` | 43 |  | 43 |  |  |  |  | 0 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 28 |
 | `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
 | `wave4b` | 57 |  | 57 |  |  |  |  | 53 |
@@ -87,7 +89,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **3872** | **3** | **2675** | **0** | **249** | **909** | **36** | **1513** |
+| **합계** | **4018** | **3** | **2821** | **0** | **249** | **909** | **36** | **1513** |
 
 ## 4. 찾는 법
 
@@ -191,6 +193,8 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-lineage-prod2-candidates-20260928-lite.zip` (09-28 14:15, 경량판) | `lineage/prod2-20260928` | 55,609 KB | `e0e4aa373fac7bcc…` | 199 | 31 | `references/` 제외 | 재사용한 세력 수장 14장은 초상 풀 3차와 같은 바이트라 넣지 않고 풀 3차 행 비고에 연결을 적음. `records/`의 교정본 사본 16장(`L7_*-v2`·`L7_303_young-attempt1`·`-selected-v2`)과 `proof-work/costume-preliminary.png`는 같은 묶음의 `assets/`·`proofs/`와 같은 바이트라 건너뜀(처음 커밋 7802f8a6에 들어갔다가 다음 커밋에서 뺌). 작업 폴더 `output/astra-lineage-prod2-v1`에만 있던 `records/delivery.json`·`records/proof-work/`(PNG 4)를 합침. 전체판 `astra-raw/zips/astra-lineage-prod2-candidates-20260928-full.zip`(343,605 KB, `fffbb843e5ecdc98…`)과 고해상도 원본 `astra-raw/lineage-prod2-20260928/`(286MB)은 Astra가 직접 둠, 저장소에 넣지 않음
 | `/tmp/astra-wave24-candidates-20260928-lite.zip` (09-28 16:41, 경량판) | `wave24/candidates-20260928` | 47,185 KB | `4e35c0631dc02930…` | 54 | 0 | `references/` 제외 | `guides/` → `proofs/guides/`, `exports/` → `assets/exports/`. 작업 폴더 `output/astra-wave24-v1`에만 있던 검수 그림 4·`PLAN.md`·`package-result.json`을 합침, 생성 원본 `*-native*.png` 22장은 제외(Astra가 `astra-raw/wave24-20260928/` 148MB에 직접 둠)
 | `/tmp/astra-wave25-candidates-20260928-lite.zip` (09-28 20:08, 경량판) | `wave25/candidates-20260928` | 1,485 KB | `50de4fa93b118140…` | 38 | 0 | `references/` 제외 | 작업 폴더 `output/astra-wave25-v1`에만 있던 `records/package-result.json`을 합침, 생성 원본·중간본(`native/`, `records/*-native*.png`·`frame-base-initial.png`)은 제외(Astra가 `astra-raw/wave25-20260928/` 14MB에 직접 둠)
+| `/tmp/astra-wave26-candidates-20260928-lite.zip` (09-28 20:42, 경량판) | `wave26/candidates-20260928` | 6,291 KB | `8212892ee26fabd9…` | 144 | 0 | `references/`(기존 주택 5장 등) 제외 | 작업 폴더 `output/astra-wave26-v1`에만 있던 `records/package-result.json`을 합침, 생성 원본 `native/`는 제외(Astra가 `astra-raw/wave26-20260928/` 115MB에 직접 둠)
+| `/tmp/astra-wave27-candidates.zip` (09-28 20:35) | `wave27/candidates-20260928` | 3,983 KB | `1d92d3fe919ba88f…` | 61 | 0 | `references/` 제외 | `qa/`·`provenance/`는 `records/` 아래로. ZIP 밖 `astra-wave27-package-verification.json`은 `records/package-verification.json`으로. 작업 폴더는 `output/`이 아니라 `/tmp/astra-wave27-work`(83MB, 그 안 `delivery/`가 ZIP과 바이트 같음)라 `astra-raw/output/astra-wave27-work/`에 통째로 보관
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -238,6 +242,8 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **replaced_by 경로 검사**(2026-09-28, INBOX-1q): `ui-p0/pilot/cursor_sheet.png`의 `replaced_by`가 패턴(`ui-p0/ui/cursor_*.png(6장)`)이던 것을 실제 경로 6개(`cursor_select`·`cursor_place_valid`·`cursor_place_invalid`·`cursor_road_draw`·`cursor_zone_brush`·`cursor_inspect`)로 고쳤다. 이 행이 장부 전체에서 없는 파일을 가리키던 유일한 행이었다. 같은 커밋부터 `npm run check:merge`의 다섯째 검사 `ledger`가 장부에 없는 `replaced_by` 경로를 실패로 본다.
 
 - **Wave 25 가계도 UI 부품**(`wave25/candidates-20260928`, 2026-09-28 20시 판정, 경량판): 부품 16장(인물 틀 기본·선택·고인 176×216 9-slice, 혈통 배너, 세대 라벨, 가지선 가로·세로·코너 4·T자, 혼인 고리, 바깥 배우자 표식, 펼치기·접기) `confirmed`. 확인 그림 1장 `confirmed`, 비고 "바깥 배우자가 부모 가지선에 매달린 배치는 틀림 — UI-7에서 혼인 고리로만 연결".
+- **Wave 26 주택 다양화**(`wave26/candidates-20260928`, 2026-09-28 20시 판정, 경량판): 1300 양식 L0~L4 등급마다 새 변형 4종(c·d·e·f) = 20장, 변형마다 낡음·새로 지음·눈·판자 상태 오버레이 = 80장, 확인 그림 3장 모두 `confirmed`. 지붕은 초가 13·기와 5·회갈색 돌판 2(L4 e·f). 돌판 지붕 `house_l4_e_snow-v1`·`house_l4_f_snow-v1`은 비고 "설치 때 피복률 60~80% 확인". 상태 오버레이는 같은 변형 전용(다른 변형에 공용으로 얹지 않음), 캔버스는 기존 등급 원본과 같다.
+- **Wave 27 집 뒷마당 데칼**(`wave27/candidates-20260928`, 2026-09-28 21시 판정): 직업 12종 × A/B 24장, 형편·상태 6종 × A/B 12장(256×128), 공용 4장(128×64) = 40장과 확인 그림 2장 `confirmed`. 이름을 가린 판독용 기록 그림 1장(`records/qa/`)도 `confirmed`. 배치 기준점 256×128 (128,104)·128×64 (64,52), 알파 경계로 자르지 않는다.
 ## 7. 찾지 못한 것
 
 | 항목 | 상태 |

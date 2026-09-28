@@ -1,0 +1,788 @@
+{
+  "status": "candidate",
+  "tool": "builtin imagegen",
+  "calls": 20,
+  "modelVersion": null,
+  "seed": null,
+  "installation": "not installed",
+  "canvas": [
+    139,
+    139
+  ],
+  "pivot": "Inherited unchanged canvas coordinates; engine pivot metadata not supplied. Source alpha contact bottom125; not an asserted engine pivot.",
+  "transforms": [
+    "Base alpha bbox registered to original [15,20,113,106]; affine resize recorded per asset.",
+    "Original lower per-column3pixel contact band copied; leader canonical contact audit supersedes initial local error estimate.",
+    "State native whole canvas downsampled139x139, color/delta extraction and base-alpha clipping. Weathered/fresh sparse opacity; snow roof polygons include e lean-to.",
+    "No whole-house final overlay. All native generated PNGs retained, some contain unwanted substrate removed technically."
+  ],
+  "compatibilityAudit": {
+    "source": "references/Wave20_눈오버레이_기준.png",
+    "snow": "Visually inspected supplied Wave20 snow sheet: it shows L2/L3/L4 houses, no L1 template. New L1 hip, lean-to and cross-gable roof geometry cannot reuse it. Regenerated4.",
+    "boarded": "No separate boarded asset supplied; new openings differ. Regenerated4."
+  },
+  "verification": {
+    "visual": "All4 bases and16 composites inspected at actual139px. No chimneys or modern reflective glass. Four variants visibly distinct.",
+    "overlay": "native/l1/effects-qa.json",
+    "registration": "native/l1/registration.json",
+    "limits": [
+      "OfflinePNG QA only; no runtime installation or gameplay check.",
+      "Fresh effect deliberately subtle at139px.",
+      "Local contact mask differs slightly from shared canonical threshold edges; root applies final canonical fix.",
+      "Requested e half-hip and f reversed gable altered by generator; observed shapes recorded accurately."
+    ]
+  },
+  "rows": [
+    {
+      "id": "house_l1_c-v1",
+      "roofMaterial": "thatch",
+      "roofShape": "long gable",
+      "wall": "warm off-white plaster, narrow vertical timber studs",
+      "additions": "small stack of firewood below eaves",
+      "base": {
+        "id": "c",
+        "roof": "steep simple gable roof with ridge along reference direction",
+        "wall": "warm off-white plaster, narrow vertical timber studs",
+        "addition": "small stack of firewood below eaves",
+        "prompt": "Use case: precise-object-edit. Asset: single transparent RGBA isometric game house sprite. Input image is project-owned L1 edit target and exact camera/lot/style reference. Create variant L1 c: steep simple gable roof with ridge along reference direction, golden straw THATCH only; warm off-white plaster, narrow vertical timber studs; small stack of firewood below eaves. Rural modest one-storey southern England around 1300. Keep exact reference camera, scale, central position, ground footprint and ground contact baseline. Keep small squat simple L1 mass, hand-painted textured game art. Same square canvas proportional placement. Background genuinely transparent, no background tile or cast shadow beyond original footprint. No chimney of any kind, chimney pots, glass, brick, slate, people, text. Preserve original ground-contact silhouette. Return one single house only, no sheet.",
+        "native": "native/l1/c.png",
+        "tool": "builtin image_gen",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-6c45c439-7dee-4a86-b07b-4f9959b5c76d.png",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "output": "assets/house_l1_c-v1.png"
+      },
+      "registration": {
+        "id": "c",
+        "file": "house_l1_c-v1.png",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "nativeBBox": {
+          "left": 134,
+          "top": 171,
+          "width": 1005,
+          "height": 979,
+          "bottom": 1149
+        },
+        "targetBBox": {
+          "left": 15,
+          "top": 20,
+          "width": 113,
+          "height": 106,
+          "bottom": 125
+        },
+        "transform": "alpha bbox crop and affine resize to source alpha bbox; source per-column bottom three-pixel contact band copied; lower exterior clipped",
+        "copiedContactPixels": 312,
+        "contactErrorPixels": 0,
+        "canvas": [
+          139,
+          139
+        ],
+        "pivot": "inherited unchanged canvas coordinate system; engine pivot not provided"
+      },
+      "effects": [
+        {
+          "id": "c",
+          "state": "weathered",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_c. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY sparse irregular moss stains on thatch and flaked paint cracks on wall surfaces, aged brown timber accents. 25–40% of house surface affected; no full-surface recolor. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/c_weathered.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-de184918-0d15-4498-a9b3-e945e9ecc881.png",
+          "reference": "assets/house_l1_c-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_c_weathered-v1.png",
+          "qa": {
+            "id": "c",
+            "state": "weathered",
+            "file": "house_l1_c_weathered-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 1467,
+            "basePixels": 7575,
+            "coverageRatio": 0.19366336633663367,
+            "roofMaskPixels": 4033,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "c",
+          "state": "fresh",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_c. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY scattered fresh golden straw highlight strands and small clean limewash repair patches and light new timber grain highlights, 20–35% of house surface affected. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/c_fresh.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-6c642233-5a3b-47d2-9242-a17acf03c522.png",
+          "reference": "assets/house_l1_c-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_c_fresh-v1.png",
+          "qa": {
+            "id": "c",
+            "state": "fresh",
+            "file": "house_l1_c_fresh-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 1775,
+            "basePixels": 7575,
+            "coverageRatio": 0.23432343234323433,
+            "roofMaskPixels": 4033,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "c",
+          "state": "snow",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_c. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY snow lying over roughly 70% of the two visible roof planes, leaving broad irregular thatch gaps around eaves and some ridge. Roof-matched volume. No snow on walls or ground. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/c_snow.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-ed562524-7705-4054-b13a-5f346198dd78.png",
+          "reference": "assets/house_l1_c-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_c_snow-v1.png",
+          "qa": {
+            "id": "c",
+            "state": "snow",
+            "file": "house_l1_c_snow-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 2494,
+            "basePixels": 7575,
+            "coverageRatio": 0.32924092409240924,
+            "roofMaskPixels": 4033,
+            "snowCoverage": 0.61839821472849,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "c",
+          "state": "boarded",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_c. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY thick rough timber boards nailed diagonally and horizontally across the EXACT existing door and existing windows of the reference. Cover openings convincingly with 2–3 boards each; no boards across walls or roof. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/c_boarded.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-95c6c660-1ce9-42c7-8e84-0d12b4826fff.png",
+          "reference": "assets/house_l1_c-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_c_boarded-v1.png",
+          "qa": {
+            "id": "c",
+            "state": "boarded",
+            "file": "house_l1_c_boarded-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 839,
+            "basePixels": 7575,
+            "coverageRatio": 0.11075907590759076,
+            "roofMaskPixels": 4033,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        }
+      ]
+    },
+    {
+      "id": "house_l1_d-v1",
+      "roofMaterial": "thatch",
+      "roofShape": "full hip",
+      "wall": "muted pale ochre plaster with square timber panels",
+      "additions": "small wooden lattice window",
+      "base": {
+        "id": "d",
+        "roof": "fully hipped thatch roof, clearly no triangular gables",
+        "wall": "muted pale ochre plaster with square timber panels",
+        "addition": "small wooden lattice window",
+        "prompt": "Use case: precise-object-edit. Asset: single transparent RGBA isometric game house sprite. Input image is project-owned L1 edit target and exact camera/lot/style reference. Create variant L1 d: fully hipped thatch roof, clearly no triangular gables, golden straw THATCH only; muted pale ochre plaster with square timber panels; small wooden lattice window. Rural modest one-storey southern England around 1300. Keep exact reference camera, scale, central position, ground footprint and ground contact baseline. Keep small squat simple L1 mass, hand-painted textured game art. Same square canvas proportional placement. Background genuinely transparent, no background tile or cast shadow beyond original footprint. No chimney of any kind, chimney pots, glass, brick, slate, people, text. Preserve original ground-contact silhouette. Return one single house only, no sheet.",
+        "native": "native/l1/d.png",
+        "tool": "builtin image_gen",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-733d6512-ebb9-40a9-95d3-10b3bcab11bb.png",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "output": "assets/house_l1_d-v1.png"
+      },
+      "registration": {
+        "id": "d",
+        "file": "house_l1_d-v1.png",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "nativeBBox": {
+          "left": 151,
+          "top": 271,
+          "width": 976,
+          "height": 866,
+          "bottom": 1136
+        },
+        "targetBBox": {
+          "left": 15,
+          "top": 20,
+          "width": 113,
+          "height": 106,
+          "bottom": 125
+        },
+        "transform": "alpha bbox crop and affine resize to source alpha bbox; source per-column bottom three-pixel contact band copied; lower exterior clipped",
+        "copiedContactPixels": 312,
+        "contactErrorPixels": 0,
+        "canvas": [
+          139,
+          139
+        ],
+        "pivot": "inherited unchanged canvas coordinate system; engine pivot not provided"
+      },
+      "effects": [
+        {
+          "id": "d",
+          "state": "weathered",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_d. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY sparse irregular moss stains on thatch and flaked paint cracks on wall surfaces, aged brown timber accents. 25–40% of house surface affected; no full-surface recolor. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/d_weathered.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-a6b08a41-43b7-42a8-b975-2a7b50109a57.png",
+          "reference": "assets/house_l1_d-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_d_weathered-v1.png",
+          "qa": {
+            "id": "d",
+            "state": "weathered",
+            "file": "house_l1_d_weathered-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 1996,
+            "basePixels": 8091,
+            "coverageRatio": 0.24669385737238908,
+            "roofMaskPixels": 3786,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "d",
+          "state": "fresh",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_d. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY scattered fresh golden straw highlight strands and small clean limewash repair patches and light new timber grain highlights, 20–35% of house surface affected. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/d_fresh.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-6fbf6cd0-b624-46e8-8cfc-7e0b0070c7af.png",
+          "reference": "assets/house_l1_d-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_d_fresh-v1.png",
+          "qa": {
+            "id": "d",
+            "state": "fresh",
+            "file": "house_l1_d_fresh-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 1752,
+            "basePixels": 8091,
+            "coverageRatio": 0.21653689284390062,
+            "roofMaskPixels": 3786,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "d",
+          "state": "snow",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_d. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY snow lying over roughly 70% of the two visible roof planes, leaving broad irregular thatch gaps around eaves and some ridge. Roof-matched volume. No snow on walls or ground. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/d_snow.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-bb6cc1b5-c278-49c0-9dc2-454c60dc15db.png",
+          "reference": "assets/house_l1_d-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_d_snow-v1.png",
+          "qa": {
+            "id": "d",
+            "state": "snow",
+            "file": "house_l1_d_snow-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 2958,
+            "basePixels": 8091,
+            "coverageRatio": 0.3655913978494624,
+            "roofMaskPixels": 3786,
+            "snowCoverage": 0.7812995245641838,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "d",
+          "state": "boarded",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_d. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY thick rough timber boards nailed diagonally and horizontally across the EXACT existing door and existing windows of the reference. Cover openings convincingly with 2–3 boards each; no boards across walls or roof. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/d_boarded.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-38059806-8948-4d98-a43e-7523fe564261.png",
+          "reference": "assets/house_l1_d-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_d_boarded-v1.png",
+          "qa": {
+            "id": "d",
+            "state": "boarded",
+            "file": "house_l1_d_boarded-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 970,
+            "basePixels": 8091,
+            "coverageRatio": 0.11988629341243356,
+            "roofMaskPixels": 3786,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        }
+      ]
+    },
+    {
+      "id": "house_l1_e-v1",
+      "roofMaterial": "thatch",
+      "roofShape": "long gable with short right lean-to; half-hip request did not clearly render",
+      "wall": "very pale dusty pink limewash with diagonal timber braces",
+      "additions": "short low attached lean-to on right inside original lot",
+      "base": {
+        "id": "e",
+        "roof": "half-hipped thatch roof, clipped gable ends",
+        "wall": "very pale dusty pink limewash with diagonal timber braces",
+        "addition": "short low attached lean-to on right inside original lot",
+        "prompt": "Use case: precise-object-edit. Asset: single transparent RGBA isometric game house sprite. Input image is project-owned L1 edit target and exact camera/lot/style reference. Create variant L1 e: half-hipped thatch roof, clipped gable ends, golden straw THATCH only; very pale dusty pink limewash with diagonal timber braces; short low attached lean-to on right inside original lot. Rural modest one-storey southern England around 1300. Keep exact reference camera, scale, central position, ground footprint and ground contact baseline. Keep small squat simple L1 mass, hand-painted textured game art. Same square canvas proportional placement. Background genuinely transparent, no background tile or cast shadow beyond original footprint. No chimney of any kind, chimney pots, glass, brick, slate, people, text. Preserve original ground-contact silhouette. Return one single house only, no sheet.",
+        "native": "native/l1/e.png",
+        "tool": "builtin image_gen",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-f6a50ddc-9172-48b7-8e2d-d96147e61f5c.png",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "output": "assets/house_l1_e-v1.png"
+      },
+      "registration": {
+        "id": "e",
+        "file": "house_l1_e-v1.png",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "nativeBBox": {
+          "left": 133,
+          "top": 232,
+          "width": 1001,
+          "height": 897,
+          "bottom": 1128
+        },
+        "targetBBox": {
+          "left": 15,
+          "top": 20,
+          "width": 113,
+          "height": 106,
+          "bottom": 125
+        },
+        "transform": "alpha bbox crop and affine resize to source alpha bbox; source per-column bottom three-pixel contact band copied; lower exterior clipped",
+        "copiedContactPixels": 312,
+        "contactErrorPixels": 0,
+        "canvas": [
+          139,
+          139
+        ],
+        "pivot": "inherited unchanged canvas coordinate system; engine pivot not provided"
+      },
+      "effects": [
+        {
+          "id": "e",
+          "state": "weathered",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_e. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY sparse irregular moss stains on thatch and flaked paint cracks on wall surfaces, aged brown timber accents. 25–40% of house surface affected; no full-surface recolor. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/e_weathered.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-714ff5d2-764f-4aa6-b922-d53411fe41b3.png",
+          "reference": "assets/house_l1_e-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_e_weathered-v1.png",
+          "qa": {
+            "id": "e",
+            "state": "weathered",
+            "file": "house_l1_e_weathered-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 1873,
+            "basePixels": 7466,
+            "coverageRatio": 0.25087061344762923,
+            "roofMaskPixels": 3585,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "e",
+          "state": "fresh",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_e. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY scattered fresh golden straw highlight strands and small clean limewash repair patches and light new timber grain highlights, 20–35% of house surface affected. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/e_fresh.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-2c23c013-acac-45ad-b791-15d614986188.png",
+          "reference": "assets/house_l1_e-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_e_fresh-v1.png",
+          "qa": {
+            "id": "e",
+            "state": "fresh",
+            "file": "house_l1_e_fresh-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 1470,
+            "basePixels": 7466,
+            "coverageRatio": 0.1968925796946156,
+            "roofMaskPixels": 3585,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "e",
+          "state": "snow",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_e. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY snow lying over roughly 70% of the two visible roof planes, leaving broad irregular thatch gaps around eaves and some ridge. Roof-matched volume. No snow on walls or ground. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/e_snow.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-f851fada-e3ec-4951-b193-2ebb2c8c3bc7.png",
+          "reference": "assets/house_l1_e-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_e_snow-v1.png",
+          "qa": {
+            "id": "e",
+            "state": "snow",
+            "file": "house_l1_e_snow-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 2510,
+            "basePixels": 7466,
+            "coverageRatio": 0.33619073131529603,
+            "roofMaskPixels": 3585,
+            "snowCoverage": 0.700139470013947,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "e",
+          "state": "boarded",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_e. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY thick rough timber boards nailed diagonally and horizontally across the EXACT existing door and existing windows of the reference. Cover openings convincingly with 2–3 boards each; no boards across walls or roof. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/e_boarded.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-937fc8e9-5fd3-4ed5-889e-7ad6085e42c1.png",
+          "reference": "assets/house_l1_e-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_e_boarded-v1.png",
+          "qa": {
+            "id": "e",
+            "state": "boarded",
+            "file": "house_l1_e_boarded-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 933,
+            "basePixels": 7466,
+            "coverageRatio": 0.12496651486739888,
+            "roofMaskPixels": 3585,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        }
+      ]
+    },
+    {
+      "id": "house_l1_f-v1",
+      "roofMaterial": "thatch",
+      "roofShape": "cross-gable with secondary front gable; reversed-ridge request rendered as cross-gable",
+      "wall": "ivory limewash with curved timber braces",
+      "additions": "small rough stone doorstep",
+      "base": {
+        "id": "f",
+        "roof": "cross-direction gable thatch roof with gable facing left visible wall",
+        "wall": "ivory limewash with curved timber braces",
+        "addition": "small rough stone doorstep",
+        "prompt": "Use case: precise-object-edit. Asset: single transparent RGBA isometric game house sprite. Input image is project-owned L1 edit target and exact camera/lot/style reference. Create variant L1 f: cross-direction gable thatch roof with gable facing left visible wall, golden straw THATCH only; ivory limewash with curved timber braces; small rough stone doorstep. Rural modest one-storey southern England around 1300. Keep exact reference camera, scale, central position, ground footprint and ground contact baseline. Keep small squat simple L1 mass, hand-painted textured game art. Same square canvas proportional placement. Background genuinely transparent, no background tile or cast shadow beyond original footprint. No chimney of any kind, chimney pots, glass, brick, slate, people, text. Preserve original ground-contact silhouette. Return one single house only, no sheet.",
+        "native": "native/l1/f.png",
+        "tool": "builtin image_gen",
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-3c50a2e7-24a8-4740-8461-0b308316bb1d.png",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "output": "assets/house_l1_f-v1.png"
+      },
+      "registration": {
+        "id": "f",
+        "file": "house_l1_f-v1.png",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "nativeBBox": {
+          "left": 136,
+          "top": 190,
+          "width": 1009,
+          "height": 927,
+          "bottom": 1116
+        },
+        "targetBBox": {
+          "left": 15,
+          "top": 20,
+          "width": 113,
+          "height": 106,
+          "bottom": 125
+        },
+        "transform": "alpha bbox crop and affine resize to source alpha bbox; source per-column bottom three-pixel contact band copied; lower exterior clipped",
+        "copiedContactPixels": 312,
+        "contactErrorPixels": 0,
+        "canvas": [
+          139,
+          139
+        ],
+        "pivot": "inherited unchanged canvas coordinate system; engine pivot not provided"
+      },
+      "effects": [
+        {
+          "id": "f",
+          "state": "weathered",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_f. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY sparse irregular moss stains on thatch and flaked paint cracks on wall surfaces, aged brown timber accents. 25–40% of house surface affected; no full-surface recolor. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/f_weathered.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-40c4e206-6b4e-4ffd-910a-c7b11df26834.png",
+          "reference": "assets/house_l1_f-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_f_weathered-v1.png",
+          "qa": {
+            "id": "f",
+            "state": "weathered",
+            "file": "house_l1_f_weathered-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 1906,
+            "basePixels": 7378,
+            "coverageRatio": 0.2583355923014367,
+            "roofMaskPixels": 3573,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "f",
+          "state": "fresh",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_f. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY scattered fresh golden straw highlight strands and small clean limewash repair patches and light new timber grain highlights, 20–35% of house surface affected. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/f_fresh.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-e1cc487b-3bc8-447b-ba1f-2b2989751c88.png",
+          "reference": "assets/house_l1_f-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_f_fresh-v1.png",
+          "qa": {
+            "id": "f",
+            "state": "fresh",
+            "file": "house_l1_f_fresh-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 1473,
+            "basePixels": 7378,
+            "coverageRatio": 0.19964760097587422,
+            "roofMaskPixels": 3573,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "f",
+          "state": "snow",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_f. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY snow lying over roughly 70% of the two visible roof planes, leaving broad irregular thatch gaps around eaves and some ridge. Roof-matched volume. No snow on walls or ground. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/f_snow.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-bb4ede96-efde-4926-9172-662f82f44f87.png",
+          "reference": "assets/house_l1_f-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_f_snow-v1.png",
+          "qa": {
+            "id": "f",
+            "state": "snow",
+            "file": "house_l1_f_snow-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 2299,
+            "basePixels": 7378,
+            "coverageRatio": 0.3116020601789103,
+            "roofMaskPixels": 3573,
+            "snowCoverage": 0.6434368877693815,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        },
+        {
+          "id": "f",
+          "state": "boarded",
+          "prompt": "Use case: precise-object-edit. Asset: TRANSPARENT EFFECT-ONLY OVERLAY PNG for supplied house_l1_f. Reference image defines exact canvas placement, scale, silhouette, roof geometry, door and window positions. Draw ONLY thick rough timber boards nailed diagonally and horizontally across the EXACT existing door and existing windows of the reference. Cover openings convincingly with 2–3 boards each; no boards across walls or roof. Output ONLY added effect pixels, all base house roof/walls/timbers/doors/windows MUST BE INVISIBLE transparent; overlay will be composited atop original. Preserve exact reference square canvas registration; do not center or enlarge effect independently. Truly transparent background. Match painterly medieval isometric art. No text, no backdrop, no ground, no chimney, no glass, no complete house. Sparse effect layer only.",
+          "native": "native/l1/f_boarded.png",
+          "tool": "builtin image_gen",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-33d4-72d2-b655-1d5b2dc4b891/exec-92f324cd-4279-4df3-9b77-0e1e20e0544b.png",
+          "reference": "assets/house_l1_f-v1.png",
+          "model": "not supplied",
+          "seed": "not supplied",
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "output": "assets/house_l1_f_boarded-v1.png",
+          "qa": {
+            "id": "f",
+            "state": "boarded",
+            "file": "house_l1_f_boarded-v1.png",
+            "canvas": [
+              139,
+              139
+            ],
+            "effectPixels": 920,
+            "basePixels": 7378,
+            "coverageRatio": 0.124695039306045,
+            "roofMaskPixels": 3573,
+            "snowCoverage": null,
+            "exteriorPixels": 0,
+            "method": "Resize whole generated transparent canvas to139; color/delta isolate state pixels; clip alpha to base alpha; sparse weathered/fresh opacity; no silhouette change"
+          }
+        }
+      ]
+    }
+  ],
+  "canonical_final_hashes": {
+    "assets/house_l1_c-v1.png": "7aa5228f420c4591861e604bf5d98be5e92099964daaf83f2c13cd6d1f9dd594",
+    "assets/house_l1_c_weathered-v1.png": "349dabd2ef0097de998afb65364a86571b1a65ca5022339c2922e27e507ba505",
+    "assets/house_l1_c_fresh-v1.png": "717c4909d3ddef6fb57104761e6d9557eb8e89377eb739f375afc36c18a50029",
+    "assets/house_l1_c_snow-v1.png": "c8a5a69d4555487a19be141d98aaede4b0c6dd17c637d41061a9c90458ec2e73",
+    "assets/house_l1_c_boarded-v1.png": "2511a5aa760332706f4394a909c1da329a3c433c35a75b7f91ead32fb7792411",
+    "assets/house_l1_d-v1.png": "6d519e7ed17bb5888b6b74dd3e8ef3a0ff8266530b0d46f683d924cd2fe56698",
+    "assets/house_l1_d_weathered-v1.png": "2d3badc23db28849512a71ad1695b8cd0a23ca09b44c36a4d82676194b73cd1f",
+    "assets/house_l1_d_fresh-v1.png": "6305028ad3e6c1598db2b5159ae5f04e930058d2e133401b1de96cff077ef550",
+    "assets/house_l1_d_snow-v1.png": "05a842235fff0dc3d9d7e03b2416ebadae0bd3c69a1efefea2fbe59c29d05dca",
+    "assets/house_l1_d_boarded-v1.png": "909b41a641e23d9af32749dc874570c85b2b08691185e170d802b53a1772e733",
+    "assets/house_l1_e-v1.png": "c17be28b2c677b279e5531faf87d16305ce5e050f074e2aebfdc42fec8585865",
+    "assets/house_l1_e_weathered-v1.png": "23900f510eaad255904d8cfcf7265a23d3693a989a582de35579e2917bfa4c07",
+    "assets/house_l1_e_fresh-v1.png": "9046f9bab08cc89cb5aa6907d28652658bd45d8e11768e9a44060ba7506b562d",
+    "assets/house_l1_e_snow-v1.png": "a20f5fc24289ce9a62bb25f549afe6a571bf9032c7d98075735bb236f764d1bd",
+    "assets/house_l1_e_boarded-v1.png": "78ec8f69e3f657b26d5e61855b07f32a25270221f32db854fbeede130612cd1b",
+    "assets/house_l1_f-v1.png": "f19579921f7c3154c24c77ee0768df4442addd53ede6fbe5433b39eab42ab937",
+    "assets/house_l1_f_weathered-v1.png": "ec5c5572ae08f2026e41b8b7789a6a36c6df49e82ad94c81f0eef3e8b4e278f2",
+    "assets/house_l1_f_fresh-v1.png": "e9f1e9de522653e57fea22c770490a8754c81c6936a60eef77a2745b438544df",
+    "assets/house_l1_f_snow-v1.png": "db43fc893644758b6a4bab34d830f8e9c5718314ae1a74a97605dd656f87217f",
+    "assets/house_l1_f_boarded-v1.png": "4cae2c4ef93afacf7387c0a200de152c33ab15c9b44cf65467e4f77ddfe52207"
+  },
+  "canonical_hash_note": "Final delivered hashes after root contact normalization; earlier per-generation/final hashes retained as pre-normalization provenance. CSV and this map are final."
+}

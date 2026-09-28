@@ -1,0 +1,1702 @@
+[
+  {
+    "id": "yard_farmer_a-v1",
+    "file": "assets/yards/yard_farmer_a-v1.png",
+    "category": "occupation",
+    "occupation": "farmer",
+    "state": "",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bounds contain; grouped occupation props, no nonuniform distortion.",
+    "prompt": "Create ONE standalone isometric medieval English backyard occupation decal, no house, no people. Match supplied project references' warm subdued hand-painted game-sprite aesthetic, broad readable forms, light upper left, true 2:1 isometric ground axes. Real transparent alpha background. Wide low-lying composition fitting a 2:1 landscape canvas, isolated objects on only sparse broken earth patches, no rectangular tile or pedestal, no border, no text. Designed to remain recognizable at 128x64 display. Farmer yard variant A: three distinct diagonal vegetable furrows of broad cabbage heads and green leeks on left; a complete low wooden medieval ard plough with wooden handles and small iron coulter laid on earth on right. Show plough recognizably, no modern machinery, muted greens and umber.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-792b-7cf0-8af5-f950a44edd02/exec-35583fa1-9bf5-4462-8650-18593e24c504.png",
+    "sha256": "c7b3e0fe4b0dc33d145fd9b09ce59986348d738b4bd362102fc6b0c9b65d70b4",
+    "visual_notes": "Native and 0.5 viewed: crop furrows and complete plough read clearly; vegetable-gardening/farming cue strong.",
+    "status": "candidate",
+    "lane": "trades1",
+    "label_ko": "농부",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "90133101f334a2fe9e7c29aca8f7ca0772ffcec1954d8ea41e6e7cd195ba68d1",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_farmer_b-v1",
+    "file": "assets/yards/yard_farmer_b-v1.png",
+    "category": "occupation",
+    "occupation": "farmer",
+    "state": "",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bounds contain; grouped occupation props, no nonuniform distortion.",
+    "prompt": "Create ONE standalone isometric medieval English backyard occupation decal, no house, no people. Match supplied project references' warm subdued hand-painted game-sprite aesthetic, broad readable forms, light upper left, true 2:1 isometric ground axes. Real transparent alpha background. Wide low-lying composition fitting a 2:1 landscape canvas, isolated objects on only sparse broken earth patches, no rectangular tile or pedestal, no border, no text. Designed to remain recognizable at 128x64 display. Farmer yard variant B: broad crop furrows at rear right with leafy turnips and leeks; at front left a complete low wooden medieval ard plough, crossed wooden handles and iron coulter visibly distinct; shallow basket of turnips beside it. Clearly different arrangement from variant A, warm earth muted greens.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-792b-7cf0-8af5-f950a44edd02/exec-6db680c4-4b3f-40d7-affd-f240591cd19a.png",
+    "sha256": "dbf5744b9446a89cc40e410b2cd03e79d28310b16b6c3e9421dca400307683c6",
+    "visual_notes": "Native and 0.5 viewed: crop furrows and complete plough read clearly; vegetable-gardening/farming cue strong.",
+    "status": "candidate",
+    "lane": "trades1",
+    "label_ko": "농부",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "8af7c9d8aea88d39a96fc1d3820a6b114dac617dc79bbe25b1e71bcd731b5c88",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_baker_a-v1",
+    "file": "assets/yards/yard_baker_a-v1.png",
+    "category": "occupation",
+    "occupation": "baker",
+    "state": "",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bounds contain; grouped occupation props, no nonuniform distortion.",
+    "prompt": "Create ONE standalone isometric medieval English backyard occupation decal, no house, no people. Match supplied project references' warm subdued hand-painted game-sprite aesthetic, broad readable forms, light upper left, true 2:1 isometric ground axes. Real transparent alpha background. Wide low-lying composition fitting a 2:1 landscape canvas, isolated objects on only sparse broken earth patches, no rectangular tile or pedestal, no border, no text. Designed to remain recognizable at 128x64 display. Baker yard variant A: a LARGE orderly low split-firewood stack across left rear and a broad clearly pale ivory-grey patch of swept oven ash on right foreground; a long simple wooden bread peel leans diagonally over stack, one wicker bread basket. No building or oven, no flame, no smoke. Firewood plus pale hearth sweepings are the dominant masses.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-792b-7cf0-8af5-f950a44edd02/exec-fa4f1cc0-3f76-4e6d-bfbd-1b9b78eb094f.png",
+    "sha256": "27b4aff265c2b77e53fc7a7a9620ee53b7bdc5536479b3f2df04313e4c404bdf",
+    "visual_notes": "Native and 0.5 viewed: pale oven ash contrasts with organized firewood; bread peel and basket reinforce bakery. Without bakery context, wood+ash alone could suggest general hearth work.",
+    "status": "candidate",
+    "lane": "trades1",
+    "label_ko": "빵집",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "d18cd342f9678641dddf2f41aa1ba738ea87d090b2503c9cc7cd7e2633cb546a",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_baker_b-v1",
+    "file": "assets/yards/yard_baker_b-v1.png",
+    "category": "occupation",
+    "occupation": "baker",
+    "state": "",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bounds contain; grouped occupation props, no nonuniform distortion.",
+    "prompt": "Create ONE standalone isometric medieval English backyard occupation decal, no house, no people. Match supplied project references' warm subdued hand-painted game-sprite aesthetic, broad readable forms, light upper left, true 2:1 isometric ground axes. Real transparent alpha background. Wide low-lying composition fitting a 2:1 landscape canvas, isolated objects on only sparse broken earth patches, no rectangular tile or pedestal, no border, no text. Designed to remain recognizable at 128x64 display. Baker yard variant B: an orderly wide low pile of split firewood on right, several bundled kindling tied together; left a broad PALE ivory oven ash mound and hearth sweepings with a wooden ash rake and recognizable long wooden bread peel lying diagonally. One basket of round baked loaves. No oven or buildings. Wood and pale ash dominate.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-792b-7cf0-8af5-f950a44edd02/exec-0e568ab1-7cb6-446e-bd75-5d6c7e357113.png",
+    "sha256": "d3aecdd0335a918d0c5951522cf06dfeff06ed0e8f5eaa4846aef6379e5ff1c6",
+    "visual_notes": "Native and 0.5 viewed: pale oven ash contrasts with organized firewood; bread peel and basket reinforce bakery. Without bakery context, wood+ash alone could suggest general hearth work.",
+    "status": "candidate",
+    "lane": "trades1",
+    "label_ko": "빵집",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "79928b9c94d531802141459fb591f20eafc12cc8e56c49092fa93d5306b9fc13",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_blacksmith_a-v1",
+    "file": "assets/yards/yard_blacksmith_a-v1.png",
+    "category": "occupation",
+    "occupation": "blacksmith",
+    "state": "",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bounds contain; grouped occupation props, no nonuniform distortion.",
+    "prompt": "Create ONE standalone isometric medieval English backyard occupation decal, no house, no people. Match supplied project references' warm subdued hand-painted game-sprite aesthetic, broad readable forms, light upper left, true 2:1 isometric ground axes. Real transparent alpha background. Wide low-lying composition fitting a 2:1 landscape canvas, isolated objects on only sparse broken earth patches, no rectangular tile or pedestal, no border, no text. Designed to remain recognizable at 128x64 display. Blacksmith yard variant A: coal-black charcoal heap at left, at right a cluster of recognizably forged blue-grey iron bars and several LARGE U-shaped horseshoes, bent iron offcuts and tongs. Do not render mere grey stones: show long straight square iron bars and open horseshoe shapes. A low wooden tray corrals scraps. No anvil building, no fire.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-792b-7cf0-8af5-f950a44edd02/exec-73b1bfaf-7005-4f26-a6a1-bd69b15e4df2.png",
+    "sha256": "6838f169b05d5c5359336680d894b564821d974286c18f0638e2cc49ed03ffe8",
+    "visual_notes": "Native and 0.5 viewed: horseshoe openings and long forged bars remain recognizable beside black charcoal; metalworking cue clear.",
+    "status": "candidate",
+    "lane": "trades1",
+    "label_ko": "대장장이",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "261a2b67bb3a257f871c15fd5326721bc37baaec6f4dd6faaaadaa62c8d9068d",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_blacksmith_b-v1",
+    "file": "assets/yards/yard_blacksmith_b-v1.png",
+    "category": "occupation",
+    "occupation": "blacksmith",
+    "state": "",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bounds contain; grouped occupation props, no nonuniform distortion.",
+    "prompt": "Create ONE standalone isometric medieval English backyard occupation decal, no house, no people. Match supplied project references' warm subdued hand-painted game-sprite aesthetic, broad readable forms, light upper left, true 2:1 isometric ground axes. Real transparent alpha background. Wide low-lying composition fitting a 2:1 landscape canvas, isolated objects on only sparse broken earth patches, no rectangular tile or pedestal, no border, no text. Designed to remain recognizable at 128x64 display. Blacksmith yard variant B: two coarse charcoal sacks and a spilled black charcoal mound on right rear; left foreground a low stack of long forged blue-grey iron bars crossing a few broad U-shaped horseshoes and flat iron offcuts, visible smith tongs. Clearly iron not rocks. Sparse sooty earth, no building no fire.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-792b-7cf0-8af5-f950a44edd02/exec-bf7142b2-9814-46f4-8f70-654876a86fa4.png",
+    "sha256": "35c5ff6036ff2822ffe400df699fcb5a02c51d95c5f75f37aa8eccd2e4f03168",
+    "visual_notes": "Native and 0.5 viewed: horseshoe openings and long forged bars remain recognizable beside black charcoal; metalworking cue clear.",
+    "status": "candidate",
+    "lane": "trades1",
+    "label_ko": "대장장이",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "a4f0b7ff2c06d155aa0678ece602b34549b62c517bb1faf3ab9eb2b4ccbcc41a",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_carpenter_a-v1",
+    "file": "assets/yards/yard_carpenter_a-v1.png",
+    "category": "occupation",
+    "occupation": "carpenter",
+    "state": "",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bounds contain; grouped occupation props, no nonuniform distortion.",
+    "prompt": "Create ONE standalone isometric medieval English backyard occupation decal, no house, no people. Match supplied project references' warm subdued hand-painted game-sprite aesthetic, broad readable forms, light upper left, true 2:1 isometric ground axes. Real transparent alpha background. Wide low-lying composition fitting a 2:1 landscape canvas, isolated objects on only sparse broken earth patches, no rectangular tile or pedestal, no border, no text. Designed to remain recognizable at 128x64 display. Carpenter yard variant A: clearly squared timber beams stacked low along left, cut plank ends pale; right a recognizable sturdy wooden saw trestle / sawhorse holding one broad plank, with a long toothed medieval hand saw across it and pale curled shavings underneath. Dominant stack and trestle silhouette. No building, no modern power tools.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-792b-7cf0-8af5-f950a44edd02/exec-0713adf2-3b86-41c5-91f5-84c7070969b8.png",
+    "sha256": "cd4c6c2a2eb7d5ad095ccfc62729fd176d3470b5b67814d6b8a759b569eb879e",
+    "visual_notes": "Native and 0.5 viewed: squared lumber and open sawhorse silhouettes clear; saw teeth detail diminishes at 0.5, trestles remain readable.",
+    "status": "candidate",
+    "lane": "trades1",
+    "label_ko": "목수",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "be9340dce115b89d631de88e99929b0787e6bb5d2972b7f48e4e31b798a4a66b",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_carpenter_b-v1",
+    "file": "assets/yards/yard_carpenter_b-v1.png",
+    "category": "occupation",
+    "occupation": "carpenter",
+    "state": "",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bounds contain; grouped occupation props, no nonuniform distortion.",
+    "prompt": "Create ONE standalone isometric medieval English backyard occupation decal, no house, no people. Match supplied project references' warm subdued hand-painted game-sprite aesthetic, broad readable forms, light upper left, true 2:1 isometric ground axes. Real transparent alpha background. Wide low-lying composition fitting a 2:1 landscape canvas, isolated objects on only sparse broken earth patches, no rectangular tile or pedestal, no border, no text. Designed to remain recognizable at 128x64 display. Carpenter yard variant B: recognizable twin low wooden sawhorses supporting a long squared timber diagonally from lower left to upper right; behind them on right a low neat stack of squared beams and boards, a traditional broad toothed hand saw resting visibly over front trestle, pale sawdust and a few shavings. No building, no modern tools. Broad unmistakable trestle silhouette.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-792b-7cf0-8af5-f950a44edd02/exec-4e1788aa-d048-4350-8775-ae00edacbe61.png",
+    "sha256": "8a1cbc083366167bb51eb0b2a480bac840a10cfd67354d0cfd0497db8e239f29",
+    "visual_notes": "Native and 0.5 viewed: squared lumber and open sawhorse silhouettes clear; saw teeth detail diminishes at 0.5, trestles remain readable.",
+    "status": "candidate",
+    "lane": "trades1",
+    "label_ko": "목수",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "dac4673a9172359814132ca0624027c317bb446726947f1b431f9a282ab0869c",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_weaver_a-v1",
+    "slug": "weaver",
+    "variant": "a",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background medieval English household backyard decal, 1300-1450, for an isometric city-building game. The two supplied images are STYLE REFERENCES ONLY: match their warm subdued hand-painted earthy wooden and dirt materials, simple broad readable shapes, soft upper-left lighting, precise isometric 2:1 ground projection. This is a LOW WIDE backyard group, composed horizontally in a 2:1 landscape, isolated on actual transparent alpha with irregular sparse broken earth beneath objects and no rectangular ground tile. Will be reduced to 256x128 native, then 128x64 in game, so focus on large unmistakable trade motifs, not tiny tools. No house, no full building or tall walls, no figures, no text, no labels, no UI, no modern items, no outlined border, no green wallpaper, no chunky raised pedestal. Maintain natural upright object proportions and ample transparent margins.\nWEAVER yard variant A. At left a very small open-sided timber lean-to entrance, only a low thatched roof strip sheltering a clearly visible broad wooden loom with cream vertical warp threads and a partly woven muted ochre cloth. At right two generous woven baskets filled with big cream and brown yarn skeins and a low winding rack. Loom and yarn silhouettes dominate, no drying cloth line or dye vats. Low wide composition.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-9e39-7b41-8e18-9f4a1f6ab64a/exec-e8eaf9ae-8c2d-44b3-a330-88a3838d5f72.png",
+    "references": [
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/croft_bed_a-v1.png",
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/hurdle_gate-v1.png"
+    ],
+    "file": "assets/yards/yard_weaver_a-v1.png",
+    "category": "occupation",
+    "occupation": "weaver",
+    "state": "normal",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "2-cell low backyard; coherent trade groups; proportional contain resize, no stretching",
+    "sha256": "ffe71bcb4a0754b2588def3bf15cdd9328ca0ce4716ea1a3c47941751550e046",
+    "processing": {
+      "crop": {
+        "left": 42,
+        "top": 16,
+        "width": 1707,
+        "height": 838
+      },
+      "scale": 0.13842482100238662,
+      "nw": 236,
+      "nh": 116,
+      "alpha": "generated transparency preserved",
+      "resize": "uniform contain with 8px horizontal/6px vertical minimum margin"
+    },
+    "visual_notes": "At 128x64 game display the open loom and pale yarn baskets remain visible. Weaving rather than dyeing reads from loom structure; small threading is not individually legible.",
+    "status": "candidate",
+    "lane": "trades2",
+    "label_ko": "직조",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "4c4d062678e9a0ad3f0751a9968e46bba50e660dc7fa8d7f859d1c958360b381",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_weaver_b-v1",
+    "slug": "weaver",
+    "variant": "b",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background medieval English household backyard decal, 1300-1450, for an isometric city-building game. The two supplied images are STYLE REFERENCES ONLY: match their warm subdued hand-painted earthy wooden and dirt materials, simple broad readable shapes, soft upper-left lighting, precise isometric 2:1 ground projection. This is a LOW WIDE backyard group, composed horizontally in a 2:1 landscape, isolated on actual transparent alpha with irregular sparse broken earth beneath objects and no rectangular ground tile. Will be reduced to 256x128 native, then 128x64 in game, so focus on large unmistakable trade motifs, not tiny tools. No house, no full building or tall walls, no figures, no text, no labels, no UI, no modern items, no outlined border, no green wallpaper, no chunky raised pedestal. Maintain natural upright object proportions and ample transparent margins.\nWEAVER yard variant B. Low exposed broad wooden loom at right under a tiny open timber lean-to entrance with a narrow plank awning, prominent cream warp threads and muted russet partly woven cloth; left foreground three round baskets overflowing with thick bundled pale wool yarn and two broad skeins draped over a low wooden rail. Different arrangement from A; no dye vats, no long drying textiles. Low wide composition.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-9e39-7b41-8e18-9f4a1f6ab64a/exec-ce1c31f8-6971-4607-a3e0-5a787d0fc00c.png",
+    "references": [
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/croft_bed_a-v1.png",
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/hurdle_gate-v1.png"
+    ],
+    "file": "assets/yards/yard_weaver_b-v1.png",
+    "category": "occupation",
+    "occupation": "weaver",
+    "state": "normal",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "2-cell low backyard; coherent trade groups; proportional contain resize, no stretching",
+    "sha256": "744e5ba46f9dfba219470813eb7280e964fda8340b9cd8cba54399337e739a02",
+    "processing": {
+      "crop": {
+        "left": 66,
+        "top": 39,
+        "width": 1640,
+        "height": 794
+      },
+      "scale": 0.14609571788413098,
+      "nw": 240,
+      "nh": 116,
+      "alpha": "generated transparency preserved",
+      "resize": "uniform contain with 8px horizontal/6px vertical minimum margin"
+    },
+    "visual_notes": "At 128x64 game display the open loom and pale yarn baskets remain visible. Weaving rather than dyeing reads from loom structure; small threading is not individually legible.",
+    "status": "candidate",
+    "lane": "trades2",
+    "label_ko": "직조",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "2da0883a01b36d1daa2a61a0fcd098b49b29e8a3ccf1586b1a2b11ed6399f581",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_dyer_a-v1",
+    "slug": "dyer",
+    "variant": "a",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background medieval English household backyard decal, 1300-1450, for an isometric city-building game. The two supplied images are STYLE REFERENCES ONLY: match their warm subdued hand-painted earthy wooden and dirt materials, simple broad readable shapes, soft upper-left lighting, precise isometric 2:1 ground projection. This is a LOW WIDE backyard group, composed horizontally in a 2:1 landscape, isolated on actual transparent alpha with irregular sparse broken earth beneath objects and no rectangular ground tile. Will be reduced to 256x128 native, then 128x64 in game, so focus on large unmistakable trade motifs, not tiny tools. No house, no full building or tall walls, no figures, no text, no labels, no UI, no modern items, no outlined border, no green wallpaper, no chunky raised pedestal. Maintain natural upright object proportions and ample transparent margins.\nDYER backyard variant A. Three broad round wooden dye tubs front-left, one with muted indigo water and folded cloth at rim. A long LOW simple timber drying rail across rear-right holds three large hanging lengths of dusty madder red, muted blue, and ochre wool cloth, each big and clear. Cloth rail and tubs are unmistakable major silhouettes. No loom, no yarn baskets, no modern plumbing.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-9e39-7b41-8e18-9f4a1f6ab64a/exec-431a3f29-d817-442c-bdcb-9faee8f9bc00.png",
+    "references": [
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/croft_bed_a-v1.png",
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/hurdle_gate-v1.png"
+    ],
+    "file": "assets/yards/yard_dyer_a-v1.png",
+    "category": "occupation",
+    "occupation": "dyer",
+    "state": "normal",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "2-cell low backyard; coherent trade groups; proportional contain resize, no stretching",
+    "sha256": "8eb0ea31bfb3076bfeb8665fa9e2486133fe720505d0b2a0fd8c2bfdda7b505d",
+    "processing": {
+      "crop": {
+        "left": 54,
+        "top": 12,
+        "width": 1681,
+        "height": 857
+      },
+      "scale": 0.1353558926487748,
+      "nw": 228,
+      "nh": 116,
+      "alpha": "generated transparency preserved",
+      "resize": "uniform contain with 8px horizontal/6px vertical minimum margin"
+    },
+    "visual_notes": "At 128x64 game display large muted colored hanging cloth and round dye vats remain clear. Without vats it might resemble washing; both motifs are intentionally paired.",
+    "status": "candidate",
+    "lane": "trades2",
+    "label_ko": "염색",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "27925cbca8f33fd0c0946c4057999c7e8111e305ff5990100800ab4820da0608",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_dyer_b-v1",
+    "slug": "dyer",
+    "variant": "b",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background medieval English household backyard decal, 1300-1450, for an isometric city-building game. The two supplied images are STYLE REFERENCES ONLY: match their warm subdued hand-painted earthy wooden and dirt materials, simple broad readable shapes, soft upper-left lighting, precise isometric 2:1 ground projection. This is a LOW WIDE backyard group, composed horizontally in a 2:1 landscape, isolated on actual transparent alpha with irregular sparse broken earth beneath objects and no rectangular ground tile. Will be reduced to 256x128 native, then 128x64 in game, so focus on large unmistakable trade motifs, not tiny tools. No house, no full building or tall walls, no figures, no text, no labels, no UI, no modern items, no outlined border, no green wallpaper, no chunky raised pedestal. Maintain natural upright object proportions and ample transparent margins.\nDYER backyard variant B. Two especially broad stave-built dye vats right foreground with dark muted blue and dull reddish dye, a large folded dyed textile over one rim. Low crossbar left-rear holds two big cloth lengths in desaturated woad blue and dull russet, one piece angled as if hung to drain. Sparse earth and wooden stirring paddle only. This is cloth dyeing not laundry, saturated color restrained; no loom.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-9e39-7b41-8e18-9f4a1f6ab64a/exec-c6be15ee-b4d8-46db-a55f-025491bb2bcd.png",
+    "references": [
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/croft_bed_a-v1.png",
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/hurdle_gate-v1.png"
+    ],
+    "file": "assets/yards/yard_dyer_b-v1.png",
+    "category": "occupation",
+    "occupation": "dyer",
+    "state": "normal",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "2-cell low backyard; coherent trade groups; proportional contain resize, no stretching",
+    "sha256": "faa09fd03b16ee772c118a6c9d35aafc7cc8fa96e00fdd547f41be443500c720",
+    "processing": {
+      "crop": {
+        "left": 83,
+        "top": 0,
+        "width": 1635,
+        "height": 874
+      },
+      "scale": 0.13272311212814644,
+      "nw": 217,
+      "nh": 116,
+      "alpha": "generated transparency preserved",
+      "resize": "uniform contain with 8px horizontal/6px vertical minimum margin"
+    },
+    "visual_notes": "At 128x64 game display large muted colored hanging cloth and round dye vats remain clear. Without vats it might resemble washing; both motifs are intentionally paired.",
+    "status": "candidate",
+    "lane": "trades2",
+    "label_ko": "염색",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "f213129da11788b8b0fba0cec99b9e8f09341c9c0fbd8ec393baeb7245c5fe57",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_tanner_a-v1",
+    "slug": "tanner",
+    "variant": "a",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background medieval English household backyard decal, 1300-1450, for an isometric city-building game. The two supplied images are STYLE REFERENCES ONLY: match their warm subdued hand-painted earthy wooden and dirt materials, simple broad readable shapes, soft upper-left lighting, precise isometric 2:1 ground projection. This is a LOW WIDE backyard group, composed horizontally in a 2:1 landscape, isolated on actual transparent alpha with irregular sparse broken earth beneath objects and no rectangular ground tile. Will be reduced to 256x128 native, then 128x64 in game, so focus on large unmistakable trade motifs, not tiny tools. No house, no full building or tall walls, no figures, no text, no labels, no UI, no modern items, no outlined border, no green wallpaper, no chunky raised pedestal. Maintain natural upright object proportions and ample transparent margins.\nTANNER backyard variant A. Two broad stretched tan hides with clearly irregular animal-hide outlines, non-gory, dry pale ochre leather, laced to squat wooden rectangular stretching frames positioned side by side along rear; at front one low wooden soaking tub and a stack of curled brown hides on a short trestle. Leather stretched on frames must dominate, no gore, no animals, no cloth drying line. Low wide timber work yard.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-9e39-7b41-8e18-9f4a1f6ab64a/exec-232da223-0ffb-4f56-9e7d-d476b745a7d1.png",
+    "references": [
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/croft_bed_a-v1.png",
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/hurdle_gate-v1.png"
+    ],
+    "file": "assets/yards/yard_tanner_a-v1.png",
+    "category": "occupation",
+    "occupation": "tanner",
+    "state": "normal",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "2-cell low backyard; coherent trade groups; proportional contain resize, no stretching",
+    "sha256": "255bd0d424e0817338bda7b0a255c93e8563194a4cd7f27c12a37ec43f739f13",
+    "processing": {
+      "crop": {
+        "left": 76,
+        "top": 22,
+        "width": 1635,
+        "height": 845
+      },
+      "scale": 0.13727810650887573,
+      "nw": 224,
+      "nh": 116,
+      "alpha": "generated transparency preserved",
+      "resize": "uniform contain with 8px horizontal/6px vertical minimum margin"
+    },
+    "visual_notes": "At 128x64 game display broad irregular hides on frames are distinct from rectangular woven cloth. Non-gory restrained appearance.",
+    "status": "candidate",
+    "lane": "trades2",
+    "label_ko": "무두장이",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "2b5713d357a8671792d4f527fc2294df1191f2c2052476cebb62c123921b3ee2",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_tanner_b-v1",
+    "slug": "tanner",
+    "variant": "b",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background medieval English household backyard decal, 1300-1450, for an isometric city-building game. The two supplied images are STYLE REFERENCES ONLY: match their warm subdued hand-painted earthy wooden and dirt materials, simple broad readable shapes, soft upper-left lighting, precise isometric 2:1 ground projection. This is a LOW WIDE backyard group, composed horizontally in a 2:1 landscape, isolated on actual transparent alpha with irregular sparse broken earth beneath objects and no rectangular ground tile. Will be reduced to 256x128 native, then 128x64 in game, so focus on large unmistakable trade motifs, not tiny tools. No house, no full building or tall walls, no figures, no text, no labels, no UI, no modern items, no outlined border, no green wallpaper, no chunky raised pedestal. Maintain natural upright object proportions and ample transparent margins.\nTANNER backyard variant B. One especially broad pale beige hide, leg-shaped lobes unmistakable, stretched on a squat timber frame on left, second darker warm brown hide stretched diagonally on a smaller frame rear-right. Front-right a wide low wooden tanning tub and rolled leather bundle. Dry restrained non-gory appearance, not horror; no cloth, no figures. Broad horizontal composition.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-9e39-7b41-8e18-9f4a1f6ab64a/exec-12a56694-3eb3-42b2-81d6-b7ad5d5a9515.png",
+    "references": [
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/croft_bed_a-v1.png",
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/hurdle_gate-v1.png"
+    ],
+    "file": "assets/yards/yard_tanner_b-v1.png",
+    "category": "occupation",
+    "occupation": "tanner",
+    "state": "normal",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "2-cell low backyard; coherent trade groups; proportional contain resize, no stretching",
+    "sha256": "79168bb5552a663789e8de945eb7b12ee86671afc2501e4420ca946044b63518",
+    "processing": {
+      "crop": {
+        "left": 72,
+        "top": 34,
+        "width": 1654,
+        "height": 812
+      },
+      "scale": 0.14285714285714285,
+      "nw": 236,
+      "nh": 116,
+      "alpha": "generated transparency preserved",
+      "resize": "uniform contain with 8px horizontal/6px vertical minimum margin"
+    },
+    "visual_notes": "At 128x64 game display broad irregular hides on frames are distinct from rectangular woven cloth. Non-gory restrained appearance.",
+    "status": "candidate",
+    "lane": "trades2",
+    "label_ko": "무두장이",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "2c506b8d23b9f8eb4e2ccbd41869b54f2b2737d95cae8d33af22790fafca1afe",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_brewer_a-v1",
+    "slug": "brewer",
+    "variant": "a",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background medieval English household backyard decal, 1300-1450, for an isometric city-building game. The two supplied images are STYLE REFERENCES ONLY: match their warm subdued hand-painted earthy wooden and dirt materials, simple broad readable shapes, soft upper-left lighting, precise isometric 2:1 ground projection. This is a LOW WIDE backyard group, composed horizontally in a 2:1 landscape, isolated on actual transparent alpha with irregular sparse broken earth beneath objects and no rectangular ground tile. Will be reduced to 256x128 native, then 128x64 in game, so focus on large unmistakable trade motifs, not tiny tools. No house, no full building or tall walls, no figures, no text, no labels, no UI, no modern items, no outlined border, no green wallpaper, no chunky raised pedestal. Maintain natural upright object proportions and ample transparent margins.\nBREWER backyard variant A. Three substantial wooden brewing barrels and one open broad mash tun grouped on right, visibly filled with pale golden grain mash; a wooden stirring paddle leans inside. Left foreground cluster of four bulging beige malt sacks, one open showing a broad heap of golden barley, with a small loose grain pile. Barrels and golden malt are large readable motifs, no cart, no chimney, no bottles, no people.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-9e39-7b41-8e18-9f4a1f6ab64a/exec-15152fe1-6249-41b2-be2d-a12714941bf8.png",
+    "references": [
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/croft_bed_a-v1.png",
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/hurdle_gate-v1.png"
+    ],
+    "file": "assets/yards/yard_brewer_a-v1.png",
+    "category": "occupation",
+    "occupation": "brewer",
+    "state": "normal",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "2-cell low backyard; coherent trade groups; proportional contain resize, no stretching",
+    "sha256": "f941617bd513ec9cef3cb502464e2fc2376ffb059b0c6d9fac859ac8a7318a3f",
+    "processing": {
+      "crop": {
+        "left": 55,
+        "top": 56,
+        "width": 1674,
+        "height": 778
+      },
+      "scale": 0.14336917562724014,
+      "nw": 240,
+      "nh": 112,
+      "alpha": "generated transparency preserved",
+      "resize": "uniform contain with 8px horizontal/6px vertical minimum margin"
+    },
+    "visual_notes": "At 128x64 game display barrel/mash tun plus golden malt sacks read as brewing/storage; brewing is suggested by open mash and paddle, but barrels alone are not occupation-unique.",
+    "status": "candidate",
+    "lane": "trades2",
+    "label_ko": "에일 양조",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "f25b100ef6160fa17c7e08c8c283fa30ad583041708f0374092fca32d92f8ff9",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_brewer_b-v1",
+    "slug": "brewer",
+    "variant": "b",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background medieval English household backyard decal, 1300-1450, for an isometric city-building game. The two supplied images are STYLE REFERENCES ONLY: match their warm subdued hand-painted earthy wooden and dirt materials, simple broad readable shapes, soft upper-left lighting, precise isometric 2:1 ground projection. This is a LOW WIDE backyard group, composed horizontally in a 2:1 landscape, isolated on actual transparent alpha with irregular sparse broken earth beneath objects and no rectangular ground tile. Will be reduced to 256x128 native, then 128x64 in game, so focus on large unmistakable trade motifs, not tiny tools. No house, no full building or tall walls, no figures, no text, no labels, no UI, no modern items, no outlined border, no green wallpaper, no chunky raised pedestal. Maintain natural upright object proportions and ample transparent margins.\nBREWER backyard variant B. Left-rear a squat wide open wooden mash vat with stirring paddle, left-front two large closed brown stave barrels lying horizontally on simple low timber supports; right two overflowing pale sacks of golden malt and one tied sack with a shallow woven grain basket. Warm pale gold grain contrasts with dark barrels, no bottles, no modern metal plant, no house.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-9e39-7b41-8e18-9f4a1f6ab64a/exec-f9efed65-ed89-42c8-8cde-d641a1dfbae2.png",
+    "references": [
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/croft_bed_a-v1.png",
+      "/tmp/astra-wave27-work/reference/astra-wave27-reference-files/hurdle_gate-v1.png"
+    ],
+    "file": "assets/yards/yard_brewer_b-v1.png",
+    "category": "occupation",
+    "occupation": "brewer",
+    "state": "normal",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "2-cell low backyard; coherent trade groups; proportional contain resize, no stretching",
+    "sha256": "4d4311e4b800f21c93e925fe79a1a12d1bab9026c28ac469ad8671c71abb0944",
+    "processing": {
+      "crop": {
+        "left": 52,
+        "top": 30,
+        "width": 1703,
+        "height": 828
+      },
+      "scale": 0.14009661835748793,
+      "nw": 239,
+      "nh": 116,
+      "alpha": "generated transparency preserved",
+      "resize": "uniform contain with 8px horizontal/6px vertical minimum margin"
+    },
+    "visual_notes": "At 128x64 game display barrel/mash tun plus golden malt sacks read as brewing/storage; brewing is suggested by open mash and paddle, but barrels alone are not occupation-unique.",
+    "status": "candidate",
+    "lane": "trades2",
+    "label_ko": "에일 양조",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "297aef10d53d4a22a61c7cd7ac1c2b74b9e29786dea372c60a49c5df957de158",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "occupation": "miller",
+    "variant": "a",
+    "id": "yard_miller_a-v1",
+    "prompt": "Use case: historical-scene. Asset: one transparent backyard occupation decal for medieval England 1300-1450 citybuilder, no text. Input images are STYLE references only: match croft vegetable bed and wooden hurdle painterly warm muted brown organic materials, simple strong forms, soft upper-left light, isometric 2:1 ground axes. Draw a low horizontal group of objects occupying a TWO CELL yard, landscape 2:1 composition, loosely scattered on sparse broken earth patches with completely transparent exterior and between objects. No house, no roof, no thick raised diorama platform, no green rectangular floor, no modern objects, no outline or label, no people. Readable in final 256x128 sprite shown at 128x64: dominant large occupational shapes, details secondary. Preserve natural object proportions. A miller's flour yard: central mound stack of five large pale linen flour sacks, two open sacks visibly filled with pale cream grist, generous pale flour spill on ground, short low wood plank supporting some sacks. One flattened folded empty sack alongside. Grain dust and pale mound are the distinctive visual identity, no barrels, no grain sheaves.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-cb13-79b1-9226-603ce29b02b2/exec-fc98ee4d-4d6e-4e87-9bbb-7c510034b3de.png",
+    "file": "assets/yards/yard_miller_a-v1.png",
+    "category": "occupation",
+    "state": "working",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform contain scaling from alpha bounding box; no nonuniform distortion. Large coherent occupation group dominates.",
+    "sha256": "c26a78aa8a9b18a3a8b219012ddb7466f4f7bea3edc77469cc6b592519b61386",
+    "visual_notes": "Pale flour sacks and spill read as provisions/flour; precise miller vs flour dealer can need contextual knowledge.",
+    "processing": {
+      "raw_copy": "/tmp/astra-wave27-work/lanes/trades3/records/yard_miller_a-v1-raw.png",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha_bbox": {
+        "left": 104,
+        "top": 95,
+        "width": 1582,
+        "height": 715
+      },
+      "contain_bounds": [
+        240,
+        116
+      ],
+      "placed": [
+        8,
+        14,
+        240,
+        108
+      ],
+      "transparent_source_pixels": 902071
+    },
+    "status": "candidate",
+    "lane": "trades3",
+    "label_ko": "방앗간",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "4fa013accdb3e380829fa1de0e2adec62a61d541f68515f69952dfe0885de5df",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "occupation": "miller",
+    "variant": "b",
+    "id": "yard_miller_b-v1",
+    "prompt": "Use case: historical-scene. Asset: one transparent backyard occupation decal for medieval England 1300-1450 citybuilder, no text. Input images are STYLE references only: match croft vegetable bed and wooden hurdle painterly warm muted brown organic materials, simple strong forms, soft upper-left light, isometric 2:1 ground axes. Draw a low horizontal group of objects occupying a TWO CELL yard, landscape 2:1 composition, loosely scattered on sparse broken earth patches with completely transparent exterior and between objects. No house, no roof, no thick raised diorama platform, no green rectangular floor, no modern objects, no outline or label, no people. Readable in final 256x128 sprite shown at 128x64: dominant large occupational shapes, details secondary. Preserve natural object proportions. A miller's flour yard, distinct alternate arrangement: broad crescent of six pale cream flour sacks lying and standing on right and rear, two wide open mouths filled with pale flour, a low shallow wooden flour trough in front and a conspicuous spilled flour patch left. No barrels or grain sheaves.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-cb13-79b1-9226-603ce29b02b2/exec-6da66f21-e1ea-4254-9d26-517fbd53fb1a.png",
+    "file": "assets/yards/yard_miller_b-v1.png",
+    "category": "occupation",
+    "state": "working",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform contain scaling from alpha bounding box; no nonuniform distortion. Large coherent occupation group dominates.",
+    "sha256": "73cde80cfa36a17f2c826bd967d5d983f44cce5f4ce8968257364e49231cb248",
+    "visual_notes": "Pale flour sacks and spill read as provisions/flour; precise miller vs flour dealer can need contextual knowledge.",
+    "processing": {
+      "raw_copy": "/tmp/astra-wave27-work/lanes/trades3/records/yard_miller_b-v1-raw.png",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha_bbox": {
+        "left": 92,
+        "top": 91,
+        "width": 1605,
+        "height": 695
+      },
+      "contain_bounds": [
+        240,
+        116
+      ],
+      "placed": [
+        8,
+        18,
+        240,
+        104
+      ],
+      "transparent_source_pixels": 890678
+    },
+    "status": "candidate",
+    "lane": "trades3",
+    "label_ko": "방앗간",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "0c6f8d323a0f09e2f11d5d6bbb22e361473d56daabd1932d8802c419edb0f362",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "occupation": "merchant",
+    "variant": "a",
+    "id": "yard_merchant_a-v1",
+    "prompt": "Use case: historical-scene. Asset: one transparent backyard occupation decal for medieval England 1300-1450 citybuilder, no text. Input images are STYLE references only: match croft vegetable bed and wooden hurdle painterly warm muted brown organic materials, simple strong forms, soft upper-left light, isometric 2:1 ground axes. Draw a low horizontal group of objects occupying a TWO CELL yard, landscape 2:1 composition, loosely scattered on sparse broken earth patches with completely transparent exterior and between objects. No house, no roof, no thick raised diorama platform, no green rectangular floor, no modern objects, no outline or label, no people. Readable in final 256x128 sprite shown at 128x64: dominant large occupational shapes, details secondary. Preserve natural object proportions. A merchant's trading yard: three clearly square shipping timber crates arranged lower left, one open crate with neutral cloth bundles, and a low bench at rear right supporting a BIG unmistakable two-pan beam balance scale, horizontal beam and hanging bronze pans on both sides. Balance silhouette is the dominant tall cue, crates stay low. A small tightly tied goods sack next to crate. No barrels.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-cb13-79b1-9226-603ce29b02b2/exec-c2557442-df2b-4407-8f5a-1e0c63546b7d.png",
+    "file": "assets/yards/yard_merchant_a-v1.png",
+    "category": "occupation",
+    "state": "working",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform contain scaling from alpha bounding box; no nonuniform distortion. Large coherent occupation group dominates.",
+    "sha256": "7bf7c2f97cf513085ab0a91cd373f0529477319c7feb0bd39a387fcb37fb68d9",
+    "visual_notes": "Large two-pan balance and square shipping crates identify trade.",
+    "processing": {
+      "raw_copy": "/tmp/astra-wave27-work/lanes/trades3/records/yard_merchant_a-v1-raw.png",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha_bbox": {
+        "left": 111,
+        "top": 38,
+        "width": 1553,
+        "height": 804
+      },
+      "contain_bounds": [
+        240,
+        116
+      ],
+      "placed": [
+        16,
+        6,
+        224,
+        116
+      ],
+      "transparent_source_pixels": 993043
+    },
+    "status": "candidate",
+    "lane": "trades3",
+    "label_ko": "상인",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "f2909dec7d83ab7522f6c683e333b5efd2d1460f4dbf894d96365298ef12ab37",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "occupation": "merchant",
+    "variant": "b",
+    "id": "yard_merchant_b-v1",
+    "prompt": "Use case: historical-scene. Asset: one transparent backyard occupation decal for medieval England 1300-1450 citybuilder, no text. Input images are STYLE references only: match croft vegetable bed and wooden hurdle painterly warm muted brown organic materials, simple strong forms, soft upper-left light, isometric 2:1 ground axes. Draw a low horizontal group of objects occupying a TWO CELL yard, landscape 2:1 composition, loosely scattered on sparse broken earth patches with completely transparent exterior and between objects. No house, no roof, no thick raised diorama platform, no green rectangular floor, no modern objects, no outline or label, no people. Readable in final 256x128 sprite shown at 128x64: dominant large occupational shapes, details secondary. Preserve natural object proportions. A merchant's trading yard alternate: low merchant's weighing bench left with a BIG clearly readable two-pan beam balance on it, two bronze hanging pans either side of horizontal beam; clustered four squared timber shipping crates right, one smaller lid leaning flat and a tied cloth goods bundle in foreground. Separate shallow ground patches. Balance dominant cue, no barrels.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-cb13-79b1-9226-603ce29b02b2/exec-a1b1ee99-aa15-4bc9-a760-c2f6a32957c1.png",
+    "file": "assets/yards/yard_merchant_b-v1.png",
+    "category": "occupation",
+    "state": "working",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform contain scaling from alpha bounding box; no nonuniform distortion. Large coherent occupation group dominates.",
+    "sha256": "695e80cdc7b175c2d1c33bb0dab34629100938a3dd282e89275d8060ea75d007",
+    "visual_notes": "Large two-pan balance and square shipping crates identify trade.",
+    "processing": {
+      "raw_copy": "/tmp/astra-wave27-work/lanes/trades3/records/yard_merchant_b-v1-raw.png",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha_bbox": {
+        "left": 55,
+        "top": 55,
+        "width": 1682,
+        "height": 739
+      },
+      "contain_bounds": [
+        240,
+        116
+      ],
+      "placed": [
+        8,
+        17,
+        240,
+        105
+      ],
+      "transparent_source_pixels": 884682
+    },
+    "status": "candidate",
+    "lane": "trades3",
+    "label_ko": "상인",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "74ec4338512185adeaa7faa2c58c6fc3b3c6dc73b7f56fdb91edbc7cce2cc50c",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "occupation": "shepherd",
+    "variant": "a",
+    "id": "yard_shepherd_a-v1",
+    "prompt": "Use case: historical-scene. Asset: one transparent backyard occupation decal for medieval England 1300-1450 citybuilder, no text. Input images are STYLE references only: match croft vegetable bed and wooden hurdle painterly warm muted brown organic materials, simple strong forms, soft upper-left light, isometric 2:1 ground axes. Draw a low horizontal group of objects occupying a TWO CELL yard, landscape 2:1 composition, loosely scattered on sparse broken earth patches with completely transparent exterior and between objects. No house, no roof, no thick raised diorama platform, no green rectangular floor, no modern objects, no outline or label, no people. Readable in final 256x128 sprite shown at 128x64: dominant large occupational shapes, details secondary. Preserve natural object proportions. A shepherd's small backyard sheep fold: low curved wattle woven hurdle pen outlining a shallow U, open front, low gate panel leaning to one side, three large white/ivory wool fleeces draped over the low rail and piled on dirt in front. Dense curly wool textures but large plain pale masses readable small. NO live animals, no people. Pen and wool identify sheepkeeping.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-cb13-79b1-9226-603ce29b02b2/exec-8307fe95-b39b-4224-bdd8-84cf924db6c0.png",
+    "file": "assets/yards/yard_shepherd_a-v1.png",
+    "category": "occupation",
+    "state": "working",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform contain scaling from alpha bounding box; no nonuniform distortion. Large coherent occupation group dominates.",
+    "sha256": "fc305543675c16c68e0280af31c8e55a7cce06c95ccb34db93ee7506c2145768",
+    "visual_notes": "White wool fleeces on low wattle fold strongly identify sheepkeeping.",
+    "processing": {
+      "raw_copy": "/tmp/astra-wave27-work/lanes/trades3/records/yard_shepherd_a-v1-raw.png",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha_bbox": {
+        "left": 266,
+        "top": 117,
+        "width": 1417,
+        "height": 696
+      },
+      "contain_bounds": [
+        240,
+        116
+      ],
+      "placed": [
+        10,
+        6,
+        236,
+        116
+      ],
+      "transparent_source_pixels": 961165
+    },
+    "status": "candidate",
+    "lane": "trades3",
+    "label_ko": "목동",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "65c6ec257109ab16b58e606baab26de49204eafc98f94c9bef7fb5e9c8bb6d50",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "occupation": "shepherd",
+    "variant": "b",
+    "id": "yard_shepherd_b-v1",
+    "prompt": "Use case: historical-scene. Asset: one transparent backyard occupation decal for medieval England 1300-1450 citybuilder, no text. Input images are STYLE references only: match croft vegetable bed and wooden hurdle painterly warm muted brown organic materials, simple strong forms, soft upper-left light, isometric 2:1 ground axes. Draw a low horizontal group of objects occupying a TWO CELL yard, landscape 2:1 composition, loosely scattered on sparse broken earth patches with completely transparent exterior and between objects. No house, no roof, no thick raised diorama platform, no green rectangular floor, no modern objects, no outline or label, no people. Readable in final 256x128 sprite shown at 128x64: dominant large occupational shapes, details secondary. Preserve natural object proportions. A shepherd's small backyard sheep fold alternate: low L-shaped woven wattle hurdle fence along rear and left, short gate open on right, two large rolled ivory-white wool fleeces on ground foreground and one broad white fleece hanging across rear rail. Compact low-height horizontal ensemble, not a high square enclosure. No animals or people.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-cb13-79b1-9226-603ce29b02b2/exec-89558acf-c160-428b-9add-939eb652623b.png",
+    "file": "assets/yards/yard_shepherd_b-v1.png",
+    "category": "occupation",
+    "state": "working",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform contain scaling from alpha bounding box; no nonuniform distortion. Large coherent occupation group dominates.",
+    "sha256": "22f27931f76ee862c76ee3f280ffc16a98f544fe8c1094122e6ffabb3e84ad9b",
+    "visual_notes": "White wool fleeces on low wattle fold strongly identify sheepkeeping.",
+    "processing": {
+      "raw_copy": "/tmp/astra-wave27-work/lanes/trades3/records/yard_shepherd_b-v1-raw.png",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha_bbox": {
+        "left": 44,
+        "top": 90,
+        "width": 1695,
+        "height": 691
+      },
+      "contain_bounds": [
+        240,
+        116
+      ],
+      "placed": [
+        8,
+        24,
+        240,
+        98
+      ],
+      "transparent_source_pixels": 871954
+    },
+    "status": "candidate",
+    "lane": "trades3",
+    "label_ko": "목동",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "792bc1e6f352f445cb8782aca884d865a18fe8f06c2c6cc70137e6c2456215e0",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "occupation": "fisher",
+    "variant": "a",
+    "id": "yard_fisher_a-v1",
+    "prompt": "Use case: historical-scene. Asset: one transparent backyard occupation decal for medieval England 1300-1450 citybuilder, no text. Input images are STYLE references only: match croft vegetable bed and wooden hurdle painterly warm muted brown organic materials, simple strong forms, soft upper-left light, isometric 2:1 ground axes. Draw a low horizontal group of objects occupying a TWO CELL yard, landscape 2:1 composition, loosely scattered on sparse broken earth patches with completely transparent exterior and between objects. No house, no roof, no thick raised diorama platform, no green rectangular floor, no modern objects, no outline or label, no people. Readable in final 256x128 sprite shown at 128x64: dominant large occupational shapes, details secondary. Preserve natural object proportions. A fisher's backyard: one broad coarse fishing net hanging loosely between two short low wooden forked poles across rear diagonal, extra tangled net spreading on ground foreground, two large woven wicker conical funnel fish traps lying together at right with dark circular open mouths clearly visible. Nets and distinctive cone fish-traps are the main large silhouettes. No boat, no water, no fish gore.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-cb13-79b1-9226-603ce29b02b2/exec-8aecb825-d256-4a67-aa88-a6a0dcb69f01.png",
+    "file": "assets/yards/yard_fisher_a-v1.png",
+    "category": "occupation",
+    "state": "working",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform contain scaling from alpha bounding box; no nonuniform distortion. Large coherent occupation group dominates.",
+    "sha256": "294c6aabead2bd561e5047d6c13704bff25fb0b19017195fab7fb08d837e5369",
+    "visual_notes": "Hanging mesh nets and conical wicker fish traps strongly identify fishing.",
+    "processing": {
+      "raw_copy": "/tmp/astra-wave27-work/lanes/trades3/records/yard_fisher_a-v1-raw.png",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha_bbox": {
+        "left": 97,
+        "top": 25,
+        "width": 1576,
+        "height": 830
+      },
+      "contain_bounds": [
+        240,
+        116
+      ],
+      "placed": [
+        18,
+        6,
+        220,
+        116
+      ],
+      "transparent_source_pixels": 909219
+    },
+    "status": "candidate",
+    "lane": "trades3",
+    "label_ko": "어부",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "fc280107034ad0e5be33780e5e83fe862b9a4dfe3490a9c0d68e538f2b58950d",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "occupation": "fisher",
+    "variant": "b",
+    "id": "yard_fisher_b-v1",
+    "prompt": "Use case: historical-scene. Asset: one transparent backyard occupation decal for medieval England 1300-1450 citybuilder, no text. Input images are STYLE references only: match croft vegetable bed and wooden hurdle painterly warm muted brown organic materials, simple strong forms, soft upper-left light, isometric 2:1 ground axes. Draw a low horizontal group of objects occupying a TWO CELL yard, landscape 2:1 composition, loosely scattered on sparse broken earth patches with completely transparent exterior and between objects. No house, no roof, no thick raised diorama platform, no green rectangular floor, no modern objects, no outline or label, no people. Readable in final 256x128 sprite shown at 128x64: dominant large occupational shapes, details secondary. Preserve natural object proportions. A fisher's backyard alternate: three large conical wicker funnel fish traps lying foreground left with circular entrances visible, low drying rack behind right with a loosely draped coarse mesh fishing net and wide net spill on ground. A coiled hemp rope. Low thin poles, restrained warm earth palette, no boat, no water, no people.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-cb13-79b1-9226-603ce29b02b2/exec-8bdf7560-829a-45d5-b612-ed710831cd73.png",
+    "file": "assets/yards/yard_fisher_b-v1.png",
+    "category": "occupation",
+    "state": "working",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform contain scaling from alpha bounding box; no nonuniform distortion. Large coherent occupation group dominates.",
+    "sha256": "fb8c82d0b944ccd5eb57313dee9a148b5cad645192f8f3f962bf6181d1d52d6d",
+    "visual_notes": "Hanging mesh nets and conical wicker fish traps strongly identify fishing.",
+    "processing": {
+      "raw_copy": "/tmp/astra-wave27-work/lanes/trades3/records/yard_fisher_b-v1-raw.png",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "alpha_bbox": {
+        "left": 72,
+        "top": 82,
+        "width": 1628,
+        "height": 733
+      },
+      "contain_bounds": [
+        240,
+        116
+      ],
+      "placed": [
+        8,
+        14,
+        240,
+        108
+      ],
+      "transparent_source_pixels": 893035
+    },
+    "status": "candidate",
+    "lane": "trades3",
+    "label_ko": "어부",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "aa1ef96793c8b85ff2ee67d72e403168ef1f24233f307cb81e59e3444c77587f",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_hungry_a-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A hungry household's backyard: four almost completely EMPTY BARE vegetable furrows of dry brown soil, a fallen broken section of wooden hurdle fence lying diagonally at the rear, just TWO tiny struggling green shoots. Dominant broad barren soil strips, little vegetation, visibly exhausted and empty but NOT overgrown. Isolated small sprite with REAL ALPHA all around irregular soil footprint. NO full scene and NO square background. Flattened garden ground with no deep plinth.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-3fea4fb4-fed7-4c5b-86c4-faed16c3231e.png",
+    "rejected_generation": {
+      "prompt": "undefinedA hungry household's backyard: four almost completely EMPTY BARE vegetable furrows of dry brown soil, a fallen broken section of wooden hurdle fence lying diagonally across the rear, just TWO tiny struggling green shoots. Dominant broad barren soil strips, little vegetation, visibly exhausted and empty but NOT overgrown.",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-0f5650e2-7c5a-4d98-ae32-782a7b146ba0.png",
+      "reason": "Opaque full scene background, not transparent isolated decal"
+    },
+    "file": "assets/yards/yard_hungry_a-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "hungry",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        188,
+        89,
+        1602,
+        812
+      ],
+      "resized": [
+        227,
+        116
+      ],
+      "offset": [
+        15,
+        6
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "c920d9e78f182f0c34cc5d0ceb274b736d36dcad5213e087437d769e4f4be089",
+    "visual_notes": "PASS at native and 0.5: mostly bare empty furrows and fallen rails differ clearly from vacant overgrowth. Newcomer also has bare soil; broken versus fresh intact fence is the supporting cue.",
+    "generation_source_sha256": "1de8dc9076e8a506c3ba0a5ffbd55480f5d243440b3da9cb889662449eac158e",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "굶주림",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_hungry_b-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A hungry household's backyard alternate arrangement: three wide low bare empty vegetable furrows forming a wide flat garden patch, nearly all dry exposed brown soil, fallen wooden fence section across foreground left and one leaning split post behind. Only one tiny withered cabbage plant, almost no vegetation. Empty barren soil dominant, NO overgrown weeds. True2:1 ground axes, wide low composition exactly croft reference camera, NOT chunky raised soil slab.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-cb8d21b1-8152-497a-8c7a-17701f7cb42e.png",
+    "rejected_generation": {
+      "prompt": "undefinedA hungry household's backyard alternate arrangement: three wide bare empty raised planting furrows, nearly all dry exposed soil with a fallen wooden fence section across foreground left and a leaning splintered post right rear. Only one tiny withered cabbage plant. Restrained, no people or bones. Dominant bare barren furrows, no lush weeds.",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-740e17d2-05f8-4a5d-a33d-41277e990df4.png",
+      "reason": "Steep ground angle inconsistent with 2:1 reference"
+    },
+    "file": "assets/yards/yard_hungry_b-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "hungry",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        92,
+        93,
+        1674,
+        813
+      ],
+      "resized": [
+        240,
+        109
+      ],
+      "offset": [
+        8,
+        13
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "215fdac08233f4a2528364ac089b780c6be07b0bdb24031501819e86da340d61",
+    "visual_notes": "PASS at native and 0.5: mostly bare empty furrows and fallen rails differ clearly from vacant overgrowth. Newcomer also has bare soil; broken versus fresh intact fence is the supporting cue.",
+    "generation_source_sha256": "ba544b861f0c75bbbe26a868e395b3f7ef776cac81e215e196f0097c8902204c",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "굶주림",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_newcomer_a-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A newly settled household backyard: wide freshly turned DARK brown soil, three chunky neat fresh furrows with no mature crop yet; a conspicuously NEW intact pale unweathered timber hurdle fence along rear and short side. Crisp new wood and dark freshly dug soil dominate. Clean, hopeful and modest; no tools enlarged, no vegetation mass, no house.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-ce6723e7-cac8-4084-92af-b411b31c6277.png",
+    "file": "assets/yards/yard_newcomer_a-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "newcomer",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        107,
+        46,
+        1668,
+        854
+      ],
+      "resized": [
+        224,
+        116
+      ],
+      "offset": [
+        16,
+        6
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "6c1064bc5d360209e0ed5254c03de31713e5c71c4f4a10e3f181cbea17ead106",
+    "visual_notes": "PASS at native and 0.5: dark newly turned beds plus pale intact new fence distinguish fresh settlement from hungry neglected rows.",
+    "generation_source_sha256": "d45bd97715e7312ae2421e4e81a0014b14e18ba5b70d9861cb42410f6b59dfec",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "새 입주",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_newcomer_b-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A newly settled household backyard alternate arrangement: freshly turned rich dark earth in two broad rectangular planting beds separated by a narrow brown path, a conspicuously NEW intact light honey-colored timber rail fence making an L shape behind them, one new simple timber gate at left. No mature crops yet, just a few tiny green shoots. Fresh wood, neat dark fresh furrows, no overgrowth or breakage. Wide low ground layout, no raised slab.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-4d3568de-bfb6-49a5-be05-6e013870c3c4.png",
+    "file": "assets/yards/yard_newcomer_b-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "newcomer",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        81,
+        90,
+        1693,
+        809
+      ],
+      "resized": [
+        240,
+        107
+      ],
+      "offset": [
+        8,
+        15
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "ad4d33fce3edb4645ad16cd6988b2bdb12ca0500a9e93310e69e5e4ce24a11c1",
+    "visual_notes": "PASS at native and 0.5: dark newly turned beds plus pale intact new fence distinguish fresh settlement from hungry neglected rows.",
+    "generation_source_sha256": "1be3fb249bb918caedf8c3f6105736c4f3edc5e55d18a4b8745756d9914351c2",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "새 입주",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_prosperous_a-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A prosperous backyard: THREE broad carefully tended flower beds with muted cream and ochre blossoms, one clearly woven dome-shaped straw skep beehive, exactly ONE short small fruit tree bearing red fruit toward rear left. Neat productive abundance, wide low ground arrangement. Tree canopy compact, do not make tree dominate.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-dad7e840-18b3-4b84-ab53-bb45c8320816.png",
+    "file": "assets/yards/yard_prosperous_a-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "prosperous",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        24,
+        37,
+        1749,
+        847
+      ],
+      "resized": [
+        240,
+        113
+      ],
+      "offset": [
+        8,
+        9
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "3cadf8cc5688369c78e3c19566d8eb9fdda5397ea97d0eba705a279abadc8094",
+    "visual_notes": "PASS at native and 0.5: tended flowering beds and one compact fruit tree signal prosperity. Skep is present but hive type is less certain at half size; broad abundance carries the state.",
+    "generation_source_sha256": "c449d4e71ca04615ca919028db7be67285a59882ef331327cc6b93a75db8d91c",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "넉넉함",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_prosperous_b-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A prosperous backyard variant B, different arrangement: TWO broad tended flowering borders around a compact irregular earth path, one woven straw skep beehive prominently foreground left, exactly ONE small short fruit tree rear right with ochre fruit. Well-maintained garden abundance, flowers cream and dull red. Low wide composition.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-66f0b3ec-bcbf-4474-b8ec-8befcbbc480f.png",
+    "file": "assets/yards/yard_prosperous_b-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "prosperous",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        153,
+        11,
+        1622,
+        864
+      ],
+      "resized": [
+        200,
+        116
+      ],
+      "offset": [
+        28,
+        6
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "3fcb05147ebbd820f07553537984676bfcc3f0f628ef80888f61c04bf2b87d3a",
+    "visual_notes": "PASS at native and 0.5: tended flowering beds and one compact fruit tree signal prosperity. Skep is present but hive type is less certain at half size; broad abundance carries the state.",
+    "generation_source_sha256": "b3161e2e213203fc4caff5c4a9ae2d8c4b5fe7e05ab8e626c067a448670336d1",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "넉넉함",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_strained_a-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A strained but still maintained backyard: FOUR visible parallel vegetable furrows, sparse patches of cabbage and leek interspersed with conspicuous weeds, one short intact worn fence at rear. About half productive soil bare, yet orderly cultivated rows unmistakable. No overgrown hedge, no fallen fence. Broad cultivated rows are the dominant motif.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-20d08cb1-dd10-456e-ad96-78258a0bc5a5.png",
+    "file": "assets/yards/yard_strained_a-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "strained",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        81,
+        62,
+        1685,
+        833
+      ],
+      "resized": [
+        240,
+        115
+      ],
+      "offset": [
+        8,
+        7
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "c85bd6b7f4c2089e64d3fa5d5cab3d9d0a6141dc01f7e2efa094b66bfdf1603f",
+    "visual_notes": "PASS at native and 0.5: maintained rows with sparse crops and weeds show reduced prosperity. Exact economic threshold cannot be inferred from image alone.",
+    "generation_source_sha256": "76177e857e297e3063d597076d03624214b4dcfa2d5c90113289d3708fe8baa7",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "빠듯함",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_strained_b-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A strained but still maintained backyard alternate arrangement: three low broad vegetable furrows running NE to SW, a few scattered cabbage heads and leek clumps with weed patches between crops. Crop cover only30 percent, weeds15 percent, bare earth paths55 percent. One short old intact wooden hurdle at rear left. Still orderly cultivation distinct from thick vacant weeds. True 2:1 ground camera exactly like supplied reference, wide flat low bed, not steep diamond.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-f5e9b3fc-27ca-454f-af30-26628c16fb17.png",
+    "rejected_generation": {
+      "prompt": "undefinedA struggling but still maintained backyard: three broad vegetable strips separated by orderly walking soil paths, only a few surviving cabbage heads and leek clumps, several distinct weeds between cultivated crops, a short worn intact timber hurdle at left rear. Sparse but still orderly cultivation, no abandoned thick weeds and no broken fence.",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-f385ce29-05c7-4aea-a748-6efbb8d74d18.png",
+      "reason": "Steep ground angle inconsistent with 2:1 reference"
+    },
+    "file": "assets/yards/yard_strained_b-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "strained",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        146,
+        83,
+        1662,
+        812
+      ],
+      "resized": [
+        240,
+        115
+      ],
+      "offset": [
+        8,
+        7
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "7eb06a422a0caaffa5f1d87224462de698b9660d3cd9e53514a98013fa2acd50",
+    "visual_notes": "PASS at native and 0.5: maintained rows with sparse crops and weeds show reduced prosperity. Exact economic threshold cannot be inferred from image alone.",
+    "generation_source_sha256": "3653c3f77d84b66540f525c9871aa789b5e84cdd714c1013a909fbac93136eea",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "빠듯함",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_vacant_a-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. An abandoned vacant household backyard: thick broad overgrown clumps of muted tangled weeds and tall dry grass swallow former vegetable furrows; a clearly broken timber gate lies crookedly at front-right with a gap between posts. Untended green-brown vegetation dominates TWO THIRDS of yard. No crops, flowers, tree, bones or people. Strong overgrown silhouette distinct from bare hungry soil.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-05c9e0a2-f406-46d5-90a7-477d11e935a9.png",
+    "file": "assets/yards/yard_vacant_a-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "vacant",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        60,
+        48,
+        1713,
+        839
+      ],
+      "resized": [
+        240,
+        115
+      ],
+      "offset": [
+        8,
+        7
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "d7c4a785e818c3e6dbaa21a47138d5e0bd5a7265234f33d6a283213eea642f97",
+    "visual_notes": "PASS at native and 0.5: dominant tangled weeds and broken gate show abandonment, clearly greener and less orderly than hunger.",
+    "generation_source_sha256": "dd09ebbbf97898147aff1dcdfe52c8d8c0f4fcf82145281e268dc9ef0c40041d",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "빈집",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_vacant_b-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. An abandoned vacant backyard alternate arrangement: two former earth beds mostly hidden under dense wild grass and broad irregular weeds, broken wooden gate sagging open rear-left and loose split rails on the ground. Green-brown shaggy overgrowth dominates, empty unmaintained path narrow center. NO crops, tree, bones, people. Clearly abandoned vegetation, not bare hunger soil.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-3f285295-6c77-4252-a4d1-7eb9d28cbe8c.png",
+    "file": "assets/yards/yard_vacant_b-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "vacant",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        56,
+        31,
+        1718,
+        856
+      ],
+      "resized": [
+        234,
+        116
+      ],
+      "offset": [
+        11,
+        6
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "5ec70ed6ca560eaa152a7408b0d37fbe5bd1d0ceb5b9075cf47cf981b177409a",
+    "visual_notes": "PASS at native and 0.5: dominant tangled weeds and broken gate show abandonment, clearly greener and less orderly than hunger.",
+    "generation_source_sha256": "b6e537085565845fc740e2bcf944fe3c74389d1f8b15a6ace974c2893b9257b0",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "빈집",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_winter_a-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A winter household backyard: THREE broad garden furrows with irregular thick ivory-gray snow covering around 70 percent and exposed dark soil peeping through, and one SMALL REDUCED firewood stack of just six cut logs prominently at left edge. Short worn timber fence at rear. Low flat snow bed and little remaining wood communicate winter depleted supplies. No evergreen tree, house, snowman, ornament or blue glow.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-97a6f280-80ea-4e03-be56-089587fb7e21.png",
+    "file": "assets/yards/yard_winter_a-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "winter",
+    "variant": "a",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        62,
+        13,
+        1701,
+        864
+      ],
+      "resized": [
+        223,
+        116
+      ],
+      "offset": [
+        17,
+        6
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "8a3e1b1417525aea32df288af73090433927c000f43235e3b2cd2d90a12aa9e6",
+    "visual_notes": "PASS at native and 0.5: broad irregular snow stripes with exposed soil and small firewood remainder read winter immediately.",
+    "generation_source_sha256": "70c4ca23da3077aa6fed2820c163d3dc7dc64e7ff2d16d965385b420339db6ff",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "겨울 공통",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_winter_b-v1",
+    "prompt": "Create ONE standalone transparent RGBA game sprite: a small backyard ground decal for medieval England 1300–1450. Use supplied croft bed and timber gate reference sprites for warm muted hand-painted isometric style. True 2:1 ground axes, upper-left light, sparse irregular broken earth edge, NOT a raised diorama slab or solid rectangular base. Wide low composition intended to downsample to 256×128 and be clear at128×64. All subject fully inside frame with generous transparent margin. No house, whole building, human, labels, typography, icons, modern objects, border, backdrop or green wallpaper. Actual transparent background. A winter household backyard variant B: two long low former vegetable beds under ragged ivory snow, dark soil furrows showing as irregular broken stripes through about 70 percent snow cover, and only FOUR remaining cut firewood logs stacked beside a short timber gate at right foreground. Snow lies unevenly over soil and on wood. Wide subdued low ground layout. No tree, building, snowman or bright blue snow.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-ef1e-78e0-8c72-bd1c97677e4f/exec-7820c0a1-77da-449d-8aed-4be2ee8f9d29.png",
+    "file": "assets/yards/yard_winter_b-v1.png",
+    "category": "state",
+    "occupation": "",
+    "state": "winter",
+    "variant": "b",
+    "width": 256,
+    "height": 128,
+    "anchor_x": 128,
+    "anchor_y": 104,
+    "footprint_cells_x": 2,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform alpha-bbox contain; no nonuniform stretch; same 2-cell yard footprint.",
+    "processing": {
+      "alphaBbox": [
+        55,
+        73,
+        1727,
+        828
+      ],
+      "resized": [
+        240,
+        108
+      ],
+      "offset": [
+        8,
+        14
+      ],
+      "operation": "alpha-bbox crop, uniform Lanczos contain 240x116, bottom at122; original alpha retained"
+    },
+    "sha256": "e13a30c6c8d821974009acc5c573f707d395a0d7dd8c1467bed051c8b729bf74",
+    "visual_notes": "PASS at native and 0.5: broad irregular snow stripes with exposed soil and small firewood remainder read winter immediately.",
+    "generation_source_sha256": "6312b777eccc6f64c39e665788716c5f1c0b818892ab1cd9411cc29c1dfcea8a",
+    "status": "candidate",
+    "lane": "states",
+    "label_ko": "겨울 공통",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_pigsty-v1",
+    "file": "assets/yards/yard_pigsty-v1.png",
+    "category": "common",
+    "occupation": "",
+    "state": "",
+    "variant": "",
+    "width": 128,
+    "height": 64,
+    "anchor_x": 64,
+    "anchor_y": 52,
+    "footprint_cells_x": 1,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform scale only; natural relative proportions, 1-cell common yard prop.",
+    "prompt": "Generate ONE transparent game asset for medieval England 1300-1450. Use supplied reference images ONLY for matching warm subdued painterly isometric game style, upper-left light, true 2:1 isometric ground axes. Subject: small common backyard pigsty: low weathered timber rails enclosing a modest irregular earthy straw patch, ONE small natural proportion pig within, no shelter or roof. Pig must be small relative to enclosure, visibly pig-shaped pink-gray muted, not cartoon giant. Ground patch sparse irregular broken edge; NO thick raised pedestal. Compose low and wide to fit 128x64 native sprite, 1x1 tile; final readability at 64x32. Clear enclosing pen silhouette and natural wood texture. Transparent background with genuine alpha, isolated asset, no house, no whole building, no labels/text/numbers, no extra scenery, no modern objects, no heavy black outline. No glossy 3D. Return single image only.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bf-1425-7991-81ae-eb1c47e09312/exec-fb092022-3f5f-482c-a8c7-c84ea1367234.png",
+    "sha256": "a930279556535ff85b0c5b048ee969259b9b96c38b029d4897553af11f48ed30",
+    "processing": {
+      "alpha_bbox": {
+        "left": 405,
+        "top": 142,
+        "width": 1024,
+        "height": 596
+      },
+      "uniform_resize_inside": [
+        120,
+        58
+      ],
+      "placement": [
+        14,
+        3
+      ]
+    },
+    "visual_notes": "Native and 0.5 review: low timber enclosure and one pig readable; at 0.5 pig species has lower certainty but enclosed livestock pen clear.",
+    "status": "candidate",
+    "lane": "common",
+    "label_ko": "돼지우리",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "e34dda16f44e14f82f42543e896a6bda65569273644a5d42af2ce5b4c248917e",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_chicken_coop-v1",
+    "file": "assets/yards/yard_chicken_coop-v1.png",
+    "category": "common",
+    "occupation": "",
+    "state": "",
+    "variant": "",
+    "width": 128,
+    "height": 64,
+    "anchor_x": 64,
+    "anchor_y": 52,
+    "footprint_cells_x": 1,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform scale only; natural relative proportions, 1-cell common yard prop.",
+    "prompt": "Generate ONE transparent medieval England 1300-1450 common backyard game sprite. Match supplied project's warm subdued painterly isometric refs, upper-left lighting, true 2:1 ground axes, no glossy3D. Low and wide composition for 128x64 native, readability at64x32,1x1cell. Sparse broken irregular earth/straw grounding, not opaque tile/pedestal. Actual transparent background, no text/labels/modernobjects/house/wholebuilding. SUBJECT: Small low woven wicker and weathered wood chicken coop basket shelter with an arched dark opening, and TWO tiny naturally proportioned chickens beside it, one cream and one brown. Chickens NOT giant, coop at most knee high. Distinct coop-and-chickens silhouette, modest straw.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bf-1425-7991-81ae-eb1c47e09312/exec-47b46736-fadc-4408-ae6b-86f8b778aedc.png",
+    "sha256": "da1d463a910f8da3fc5a41af064eccc71fcb2cdbeb7f584805dd4fb195871c77",
+    "processing": {
+      "alpha_bbox": {
+        "left": 345,
+        "top": 157,
+        "width": 1107,
+        "height": 585
+      },
+      "uniform_resize_inside": [
+        120,
+        58
+      ],
+      "placement": [
+        9,
+        3
+      ]
+    },
+    "visual_notes": "Native and 0.5 review: wicker arched coop plus two chickens retained, natural proportions; 0.5 reads as poultry shelter.",
+    "status": "candidate",
+    "lane": "common",
+    "label_ko": "닭장",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "a9fbd5fa18b553626fbf851467402fbb4378fc9e01f7d219d7906c301a713eb4",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_manure-v1",
+    "file": "assets/yards/yard_manure-v1.png",
+    "category": "common",
+    "occupation": "",
+    "state": "",
+    "variant": "",
+    "width": 128,
+    "height": 64,
+    "anchor_x": 64,
+    "anchor_y": 52,
+    "footprint_cells_x": 1,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform scale only; natural relative proportions, 1-cell common yard prop.",
+    "prompt": "Edit this single transparent medieval game asset: change the material identity clearly into a LOW DAMP DARK EARTHY BROWN MANURE / COMPOST HEAP. Current pile looks like golden hay; remove most golden straw. Dominant 75-85% visible surface should be deep muted umber moist crumbly organic earthy manure bulk, only sparse 15-25% short straw fibers mixed INTO the dark brown mass, not golden straw covering top. Keep restrained non-gross treatment, no explicit excrement detail, no insects. Low irregular rounded spread heap, not rocky boulders, no tall hay mound. Preserve isometric viewpoint, warm subdued painterly reference style, upperleft light, transparent alpha background, overall low wide single-asset composition. Final used at128x64 then64x32: should clearly read as DARK compost pile at thumbnail size, strongly different from a golden haypile. No tools, no people, no labels, no added scenery.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bf-1425-7991-81ae-eb1c47e09312/exec-8fb2d0e0-c1b0-476f-9df0-5ca6b3669e55.png",
+    "sha256": "d88dd25436bc949d8aca128f1203d3dd36d90843ad6227a8ebab828631f0c6e1",
+    "processing": {
+      "alpha_bbox": {
+        "left": 161,
+        "top": 214,
+        "width": 1453,
+        "height": 627
+      },
+      "uniform_resize_inside": [
+        120,
+        58
+      ],
+      "placement": [
+        4,
+        9
+      ]
+    },
+    "visual_notes": "Revised dark brown damp compost/manure bulk with only sparse short straw fibers. At native and 0.5 clearly reads as dark organic heap, unlike prior golden hay pile. Natural earthy material identity; fine manure/straw detail necessarily reduced at 64x32.",
+    "iteration": 2,
+    "status": "candidate",
+    "lane": "common",
+    "label_ko": "거름 더미",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "00fd570a321ebe707669659709f8e1115e5326049fa036be942e3928ce7e8f57",
+    "generation_tool": "built-in image_gen"
+  },
+  {
+    "id": "yard_rain_barrel-v1",
+    "file": "assets/yards/yard_rain_barrel-v1.png",
+    "category": "common",
+    "occupation": "",
+    "state": "",
+    "variant": "",
+    "width": 128,
+    "height": 64,
+    "anchor_x": 64,
+    "anchor_y": 52,
+    "footprint_cells_x": 1,
+    "footprint_cells_y": 1,
+    "recommended_display_scale": 0.5,
+    "small_prop_native_scale_notes": "Uniform scale only; natural relative proportions, 1-cell common yard prop.",
+    "prompt": "Generate ONE transparent medieval England 1300-1450 common backyard game sprite. Match supplied project's warm subdued painterly isometric refs, upper-left lighting, true 2:1 ground axes, no glossy3D. Low and wide composition for 128x64 native, readability at64x32,1x1cell. Sparse broken irregular earth/straw grounding, not opaque tile/pedestal. Actual transparent background, no text/labels/modernobjects/house/wholebuilding. SUBJECT: One upright small weathered wooden rain barrel, open top showing dark blue-gray water inside and wood stave rim. A modest short narrow wooden catching trough leans into its rim. No shed or house, no roof, no elaborate plumbing. Barrel natural small yard prop scale, clear clean barrel silhouette. Tiny irregular earth patch only.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bf-1425-7991-81ae-eb1c47e09312/exec-9dc24227-afca-4c6a-bd73-5dbe6e041c1b.png",
+    "sha256": "fa4af6e584c9399beeaadde7e89e0e245f515e701ad74c964dca2fb96d0efca1",
+    "processing": {
+      "alpha_bbox": {
+        "left": 479,
+        "top": 153,
+        "width": 838,
+        "height": 627
+      },
+      "uniform_resize_inside": [
+        120,
+        58
+      ],
+      "placement": [
+        25,
+        3
+      ]
+    },
+    "visual_notes": "Native and 0.5 review: water-filled barrel with modest collecting trough, no building; clean readable barrel silhouette.",
+    "status": "candidate",
+    "lane": "common",
+    "label_ko": "빗물 통",
+    "placement_reference": "front-ground reference of yard canvas; no autocrop at installation",
+    "layering": "Separate occupation and condition candidates; if combined, inspect soil/object overlap and draw order. No game selection rule implemented.",
+    "generation_source_sha256": "41499ff4d7860f73a4cf770911de3983fa3d9bc205ecd9e787ddb918a4f21340",
+    "generation_tool": "built-in image_gen"
+  }
+]
