@@ -54,6 +54,8 @@ const PETITION_NAMES: Readonly<Record<string, string>> = {
   cash_rent: "부역을 돈으로 바꾸자는 청원",
   // F4-A: the four reorganisation petitions (RG-5…RG-9).
   guild_charter: "길드 결성 요구", tax_collection: "인두세를 걷는 방식", cloth_or_grain: "직물과 곡물 사이의 선택", borough_charter: "자치 특허 요구서",
+  // F5-A: the four chapter-5 petitions (LG-2…LG-5).
+  royal_tax: "국왕의 과세", heir_choice: "후계자 선택", borough_autonomy: "자치 특허의 인장", legacy_choice: "유산 선택",
 };
 const ANSWERS: Readonly<Record<string, string>> = { accept: "수락", accept_with_price: "가격을 붙여 수락", refuse: "거절", expired: "답하지 않음" };
 

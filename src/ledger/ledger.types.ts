@@ -28,6 +28,8 @@ export const LEDGER_CATEGORIES = [
   "fulling_toll", "ulnage",
   // F4-A (RG-3, RG-6, RG-9): the lord's toll on cloth sold, his share of the poll tax, the town's fee farm.
   "cloth_toll", "poll_tax", "fee_farm",
+  // F5-A (LG-3…LG-5): the Crown's subsidy (and its confirmation of a charter), the heir's relief, the legacy's endowment.
+  "royal_subsidy", "succession_relief", "legacy_endowment",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

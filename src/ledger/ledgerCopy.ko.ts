@@ -59,6 +59,10 @@ export const LEDGER_CATEGORY_LABELS = {
   cloth_toll: "직물 매매세",
   poll_tax: "인두세 영주 몫",
   fee_farm: "도시의 연납금",
+  // F5-A (LG-3…LG-5)
+  royal_subsidy: "국왕 과세",
+  succession_relief: "상속세",
+  legacy_endowment: "유산 기부",
 } as const satisfies Record<LedgerCategory, string>;
 
 export const LEDGER_WINDOW_LABELS = {
