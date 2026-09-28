@@ -37,6 +37,14 @@ export function FamilyTree({ state, personId, onPerson }: { readonly state: Game
   }, []);
   // why: the tree reads the persons (time stands still while the chronicle is open); the fold choices and the width refold it
   const tree = useMemo(() => familyTreeView(state, personId, choices, room.width), [state.persons, personId, choices, room.width]); // eslint-disable-line react-hooks/exhaustive-deps
+  // A tree wider than the page opens scrolled to the selected person (again when the selection moves to another tree).
+  // why: only on opening a person's tree, not on each fold (a fold keeps where the player scrolled)
+  const selected = tree?.nodes.find(node => node.selected);
+  useLayoutEffect(() => {
+    const element = box.current;
+    if (element === null || selected === undefined || tree === null || tree.width <= element.clientWidth) return;
+    element.scrollLeft = Math.max(0, selected.x + TREE.nodeWidth / 2 - element.clientWidth / 2);
+  }, [personId, tree?.lineageId]); // eslint-disable-line react-hooks/exhaustive-deps
   const founder = tree === null ? undefined : personById(state, tree.emblemPersonId);
   const emblem = founder === undefined ? null : personEmblem(state, founder);
   const toggle = (unitId: string, open: boolean) => setChoices(previous => new Map(previous).set(unitId, !open));

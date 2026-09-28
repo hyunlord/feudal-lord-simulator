@@ -29,7 +29,7 @@ const write = (name: string, person: Person) => {
   moments[name] = { tick: state.tick, person: person.id, household: person.householdId, house: building === undefined ? null : [building.tx, building.ty], recorded };
   console.log(name, state.tick, JSON.stringify(moments[name]));
 };
-const CHECKS: readonly [string, () => Person | undefined][] = [
+const CHECKS: readonly (readonly [string, () => Person | undefined])[] = [
   ["lord", () => state.persons?.people.filter(person => person.tags.includes("lord-family")).find(person => person.role === "head")],
   ["baby", () => state.persons?.people.find(person => inHouse(person) && person.motherId !== undefined && ageOf(person, currentYear(state)) < 2)],
   ...(["sick", "injury", "pregnant", "pilgrim"] as const).map(kind => [kind, () => state.persons?.people.find(person => inHouse(person) && persons.condition(state, person)?.kind === kind)] as const),
