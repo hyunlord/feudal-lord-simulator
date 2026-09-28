@@ -17,6 +17,7 @@ import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { farmProps, type FarmProp } from "./farmProps";
 import { hurdleAssetKey } from "./hurdleArt";
 import { warProps, type WarProp } from "./warWorldProps";
+import { withVillageLife } from "./villageLifeDraw";
 
 type ObjectRenderFrameInput = {
   readonly state: GameState;
@@ -41,7 +42,7 @@ const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderC
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
-  const staticItems = withWarProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input);
+  const staticItems = withVillageLife(withWarProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input), input);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
