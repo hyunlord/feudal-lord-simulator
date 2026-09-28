@@ -42,7 +42,7 @@ import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderStageProbe } from "./renderStageProbe";
 import { forgetGoneConstructionSites } from "./constructionMoments";
-import { drawSeasonalDecals, drawStoryWorldOverlays, drawWorldSigns } from "./worldSigns";
+import { drawSeasonalDecals, drawStoryWorldOverlays, drawWeatherGround, drawWorldSigns } from "./worldSigns";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -125,7 +125,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         zoom: input.camera.zoom,
         objectRenderItems,
       });
-      drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom, objectRenderItems); // INSTALL-7 / INSTALL-15 season decals
+      drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom, objectRenderItems); drawWeatherGround(input.context, input.state, visibleTiles, input.camera.zoom, input.nowMs ?? 0); // INSTALL-7 / INSTALL-15 season decals, INSTALL-23 weather ground
     },
     objects: () => objectPassForProof &&
       drawObjectRenderItems(input.context, {
@@ -203,7 +203,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   if (input.preview.prediction !== undefined) drawPlacementPrediction(input.context, input.state, input.preview.prediction, input.camera.zoom);
   probe?.enter("overlay.cause");
-  // UI-4: the S12 departures and a wet summer's rain over the world, under the cause map and the guidance.
+  // UI-4: the S12 departures and (INSTALL-23) the weather over the world, under the cause map and the guidance.
   drawStoryWorldOverlays(input.context, input.state, input.viewport, input.camera.zoom, input.nowMs ?? 0); drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
   probe?.enter("overlay.onboarding");
   // UX-1: the tutorial step's halo (the goal card's suggested spot) replaces the old per-task map guidance, which had
