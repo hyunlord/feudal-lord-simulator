@@ -1,0 +1,34 @@
+{
+  "id": "L4_301_young",
+  "file": "assets/L4/L4_301_young.png",
+  "identity": "L4_301",
+  "lineage": "L4",
+  "generation": 3,
+  "stage": "young",
+  "age": 22,
+  "sex": "male",
+  "maritalStatus": "married",
+  "clothing": "muted brown wool tunic",
+  "fatherIdentity": "L4_201",
+  "motherIdentity": "L4_205",
+  "commonTraits3": [
+    "copper auburn hair",
+    "round overall face",
+    "gently arched eyebrows"
+  ],
+  "differenceMarkers": [
+    "loose wavy side-swept hair",
+    "gray-green eyes",
+    "slim shoulders",
+    "two cheek freckles left side",
+    "small upper lip",
+    "narrow hooded wide-set eyes",
+    "small narrow mouth",
+    "tiny chin dimple"
+  ],
+  "prompt": "Use case: historical-scene portrait. ONE square individual bust portrait, not contact sheet. Southern English wool merchant family circa 1350. Naturalistic hand-painted subdued gouache/oil on muted taupe background, soft upper-left daylight. Face clearly readable at96px. Images 1 and 2 are actual father and actual mother. Create their DISTINCT NEW child, not a clone. Subject L4_301, male, age 22. Family resemblance ONLY these THREE broad common cues: copper auburn hair, round overall face, gently arched eyebrows. Do NOT precisely copy any parent nose or jaw. Individual identity features: loose wavy side-swept hair; gray-green eyes; slim shoulders; two cheek freckles left side; small upper lip. Maintain individual face across ages. Clothing: muted brown wool tunic. Young adult, natural mature anatomy, not teen.  No text, labels, frame, heraldry, jewelry, crowns or props. No modern costume, no photoreal photography, no beauty retouch. Colors indicate clothing only, never a family color code. CRITICAL DISTINCT INDIVIDUAL: this grandson must NOT be a near-clone of father. Keep only ROUND outer facial silhouette but narrow hooded gray-green eyes, clearly wider interocular spacing, small upturned individual nose, small narrow mouth with thin upper lip and tiny chin dimple, and fleshy high cheeks. NO father large mouth or long broad nose. Hair loose waves, not father tight curls. Make unmistakably another person even if hair hidden.",
+  "referenceImages": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_young.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_205_young.png"
+  ]
+}

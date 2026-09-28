@@ -12,6 +12,10 @@ export const WALKER_DIAGNOSIS_COPY = {
   east: "동",
   samePosition: "같은 위치",
   directionSide: (direction: string) => `${direction}쪽`,
+  /** INSTALL-23: a building site the carter heads to, by the building's name and where it lies from the carter. */
+  site: (name: string) => `${name} 공사장`,
+  sitePlace: (name: string, direction: string, distance: number) => `${name} 공사장 · ${direction} ${distance}칸`,
+  siteGone: "공사장",
   noCargo: "화물 없음",
   deliveryCancelled: "배송 취소",
   delivering: "배송 중",

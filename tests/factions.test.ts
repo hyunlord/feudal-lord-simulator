@@ -20,6 +20,7 @@ import { hashSeed } from "../src/engine/prng";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { gameReducer } from "../src/state/gameStore";
+import { factionDisplayName } from "../src/content/factionCopy.ko";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const YEAR = 4 * SEASON;
@@ -90,7 +91,8 @@ test("X3 (FX-4) an answer moves its faction's relation, and the faction remember
   assert.equal(memory.reason, "petition:market_charter:accept");
   const record = accepted.history!.records.find(entry => entry.id === memory.recordId)!;
   assert.equal(record.template, "faction.relation");
-  assert.equal(historySummary(record), `${house.name} 상인 가문의 마음이 누그러졌다(+10, 이제 ${house.relation}) — 시장권 청원에 수락`);
+  // NAME-1: the house is read in Korean (factionDisplayName, FIX-6 `SURNAMES_KO`); the state keeps its English name.
+  assert.equal(historySummary(record), `${factionDisplayName(house.id, house.name)}의 마음이 누그러졌다(+10, 이제 ${house.relation}) — 시장권 청원에 수락`);
   // The decision itself names the faction.
   const decision = accepted.history!.records.find(entry => entry.template === "decision.petition_response")!;
   assert.deepEqual(decision.actors, [{ type: "faction", id: "merchant_house_1" }]);

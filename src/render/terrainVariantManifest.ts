@@ -12,12 +12,7 @@ export const TERRAIN_VARIANT_ASSETS = [
   { "key": "shallow_c", "url": "assets/shore/shallow_c-v1.png", "width": 256, "height": 128, "role": "fill" },
   { "key": "shallow_d", "url": "assets/shore/shallow_d-v1.png", "width": 256, "height": 128, "role": "fill" },
   { "key": "shallow_e", "url": "assets/shore/shallow_e-v1.png", "width": 256, "height": 128, "role": "fill" },
-  { "key": "palisade_face_a", "url": "assets/wall/palisade_face_a-v1.png", "width": 512, "height": 128, "role": "strip" },
-  { "key": "palisade_face_b", "url": "assets/wall/palisade_face_b-v1.png", "width": 512, "height": 128, "role": "strip" },
-  { "key": "palisade_face_c", "url": "assets/wall/palisade_face_c-v1.png", "width": 512, "height": 128, "role": "strip" },
-  { "key": "stone_face_a", "url": "assets/wall/stone_face_a-v1.png", "width": 512, "height": 128, "role": "strip" },
-  { "key": "stone_face_b", "url": "assets/wall/stone_face_b-v1.png", "width": 512, "height": 128, "role": "strip" },
-  { "key": "stone_face_c", "url": "assets/wall/stone_face_c-v1.png", "width": 512, "height": 128, "role": "strip" },
+  // ASSET-2: the Wave 4b v1 wall faces (palisade a-c, stone a-c), registered but no longer drawn since D3b-2, are retired.
   { "key": "bridge_abutment_ne_a", "url": "assets/module/bridge_abutment_ne_a-v1.png", "width": 256, "height": 192, "role": "module" },
   { "key": "bridge_abutment_nw_a", "url": "assets/module/bridge_abutment_nw_a-v1.png", "width": 256, "height": 192, "role": "module" },
   // Wave 4d (D3b-2): wall strips v2 (face without battlements + a top strip with the wall walk and merlons, a top view
@@ -85,9 +80,6 @@ export const TERRAIN_VARIANTS = {
   deepWater: ["deep_a", "deep_b", "deep_c"],
   shoreReeds: ["reeds_a", "reeds_b", "reeds_c"],
   shoreStones: ["mudstone_a", "mudstone_b"],
-  /** Wave 4b faces (D3b v1 strips); kept registered, no longer drawn. */
-  palisadeFaceV1: ["palisade_face_a", "palisade_face_b", "palisade_face_c"],
-  stoneFaceV1: ["stone_face_a", "stone_face_b", "stone_face_c"],
   palisadeFace: ["palisade_face_v2_a", "palisade_face_v2_b"],
   /** Wave 4e rubble faces: the default stone face (INSTALL-4e). */
   stoneFace: ["stone_face_rubble_a", "stone_face_rubble_b"],

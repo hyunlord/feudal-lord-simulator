@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 import { portraitStyle } from "../portraitArt";
+import { PERSON_STATE_COPY } from "../persons/personStateCopy.ko";
+import { personPortraitStateClass, personStateOrnamentStyle } from "../persons/personStates";
 import { wave19ImageStyle, wave19Url } from "../wave19Art";
 import type { BiographyView } from "./chronicleScreenModel";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
@@ -29,7 +31,12 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
     <article className="chronicle-biography" aria-label={COPY.biographyTitle(view.name)} data-person={view.id} data-portrait={view.portraitId}
       data-portrait-exact={view.portraitExact ? "true" : "false"}
       style={{ width: BIOGRAPHY_PAGE.width * scale, height: BIOGRAPHY_PAGE.height * scale, backgroundImage: `url("${wave19Url("frame_biography")}")` }}>
-      <span className="chronicle-biography-portrait" role="img" aria-label={view.portraitLine} style={{ ...SLOTS.portrait, ...portrait }} />
+      <span className={`chronicle-biography-portrait ${personPortraitStateClass(view.ornament) === "" ? "" : "portrait-greyscale"}`} role="img"
+        aria-label={view.ornament === null ? view.portraitLine : PERSON_STATE_COPY.withState(view.portraitLine, PERSON_STATE_COPY.label(view.ornament))}
+        data-person-state={view.ornament ?? undefined} style={{ ...SLOTS.portrait, ...portrait }} />
+      {/* INSTALL-23 ④: the state ornament over the great circle's bottom-right (a sibling: the greyscale stays on the face). */}
+      {view.ornament === null ? null : <span className="chronicle-biography-ornament person-state-ornament" aria-hidden="true" data-ornament={view.ornament}
+        style={{ ...SLOTS.portrait, ...personStateOrnamentStyle(view.ornament, Math.round(196 * scale)) }} />}
       {companion === null || view.companion === null ? null : <>
         <span className="chronicle-biography-companion" aria-hidden="true" style={{ ...SLOTS.companion, ...companion }} />
         <span className="chronicle-biography-caption" style={SLOTS.companionCaption}>{view.companion.label}</span>

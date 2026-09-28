@@ -1,0 +1,25 @@
+{
+  "judge": "/root/pilot2_blind_judge",
+  "context": "fresh fork none; anonymous board only; no answer key or class frequencies",
+  "attempt": 1,
+  "boardSHA256": "7de105d26d518a95b014d0a27f77f958d67dc6c1ef77738ad6f4a5c7272b506b",
+  "answers": [
+    {"number":1,"decision":"different","confidence":"high","reason":"Left face is longer and more angular with a prominent nose; right has fuller cheeks, a softer jaw and a shorter nose. Hair differs too."},
+    {"number":2,"decision":"different","confidence":"high","reason":"Left has a narrow angular face, pronounced freckles and a longer nose; right has a broader rounded face and different mouth proportions."},
+    {"number":3,"decision":"same","confidence":"high","reason":"Similar eye shape, compact nose, small mouth and rounded cheek structure across plausible aging. Matching curls and clothing also influence the impression."},
+    {"number":4,"decision":"same","confidence":"high","reason":"Eye placement, nose bridge, mouth shape and freckling remain consistent as the face lengthens with age. Matching braid reinforces continuity."},
+    {"number":5,"decision":"different","confidence":"high","reason":"Different eye shapes, nose proportions and mouth contours; right has more conspicuous freckles and a narrower facial outline. Hairstyles also differ."},
+    {"number":6,"decision":"same","confidence":"high","reason":"Similar upward smile, rounded cheeks, eye shape and nose tip; adult proportions plausibly develop from the younger face. Curls reinforce continuity."},
+    {"number":7,"decision":"same","confidence":"high","reason":"Consistent eyes, long nose, mouth shape and cheek structure, with plausible maturation of jaw and neck. Matching braid and clothing contribute."},
+    {"number":8,"decision":"different","confidence":"high","reason":"Left has a narrower face, straighter mouth and more prominent nose; right has rounder cheeks, a shorter nose and a distinct smile. Hair differs."},
+    {"number":9,"decision":"same","confidence":"high","reason":"Similar eye spacing, straight nose, restrained mouth and facial outline across aging. Shared cheek mole and hairstyle substantially reinforce the match."},
+    {"number":10,"decision":"different","confidence":"high","reason":"Left has a broader round face, lighter eyes and a smiling wider mouth; right has a longer face, darker eyes and a narrower unsmiling mouth. Hair and mole also differ."},
+    {"number":11,"decision":"same","confidence":"high","reason":"Consistent broad nose, eye shape, smiling mouth and cheek structure with plausible maturation. Matching curls, freckles and clothing reinforce continuity."},
+    {"number":12,"decision":"different","confidence":"high","reason":"Left has a rounder face, broader nose and fuller smiling lips; right has a longer angular face, narrower mouth and different brow shape. Hair and mole contribute."}
+  ],
+  "limitations": [
+    "Judgments concern visual continuity of illustrated fictional characters, not verified identity.",
+    "Repeated hairstyles, clothing, freckles and a cheek mole influenced some decisions and could function as shortcuts.",
+    "Painterly rendering and limited facial detail constrain fine anatomical comparisons."
+  ]
+}

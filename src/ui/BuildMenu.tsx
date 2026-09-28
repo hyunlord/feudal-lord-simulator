@@ -19,8 +19,9 @@ import { ZONE_BRUSH_COPY } from "../render/zoneBrushCopy.ko";
 import { ZONE_KIND_LABELS } from "../zones/zoneCopy.ko";
 import { platformServices } from "../platform/platform";
 import { INTENT_ORDER } from "../input/intentBus";
-import { lastInputDevice, subscribeInputDevice, type InputDevice } from "../input/inputDevice";
-import { INPUT_HINT_COPY, ZONE_BRUSH_HINT_COPY } from "./inputHintCopy.ko";
+import { INPUT_HINT_COPY, PAD_HINT_COPY, ZONE_BRUSH_HINT_COPY } from "./inputHintCopy.ko";
+import { PadHint } from "./PadGlyph";
+import { useInputDevice } from "./useInputDevice";
 import { BUILD_MENU_COPY, buildCardPurpose } from "./buildMenuCopy.ko";
 import { TUTORIAL_COPY } from "./tutorial/tutorialCopy.ko";
 import { tutorialAccess, type ControlLayer, type TutorialAccess } from "./tutorial/tutorialModel";
@@ -77,8 +78,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   const menuState = state ?? DEFAULT_GAME_STATE;
   // Era-locked buildings stay visible with their lock and the stage that opens them (UX-0 "잠긴 건물은 숨기지 말고").
   const options = buildMenuGroups(menuState, { includeEraLocked: true }).flatMap((group) => group.options);
-  const [inputDevice, setInputDevice] = useState<InputDevice>(() => lastInputDevice());
-  useEffect(() => subscribeInputDevice(setInputDevice), []);
+  const inputDevice = useInputDevice();
   const [category, setCategory] = useState<BuildCategory>(() => {
     const initialTool = selectedTool ?? highlightedTools[0] ?? "house";
     return buildCategory(initialTool);
@@ -275,7 +275,10 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           <p className={buildToolAffordability(selectedOption.tool, menuState).affordable ? "build-menu-ready" : "build-menu-shortfall"}>{buildToolTooltipLines(selectedOption.tool, menuState).at(-1)}</p>
         </>}
       </div>
-      {open !== undefined ? null : <div className="build-menu-instruction">{zoneTool === null ? INPUT_HINT_COPY[inputDevice]
+      {/* INSTALL-23 ⑤: with a gamepad the line is drawn with the pad's glyphs; the mouse and keyboard keep the key names. */}
+      {open !== undefined ? null : <div className="build-menu-instruction" data-input-device={inputDevice}>{inputDevice === "gamepad"
+        ? <PadHint parts={zoneTool === null ? PAD_HINT_COPY.build : zoneTool.target === "erase" ? PAD_HINT_COPY.zoneEraser : PAD_HINT_COPY.zoneStatus(ZONE_KIND_LABELS[zoneTool.target])} />
+        : zoneTool === null ? INPUT_HINT_COPY[inputDevice]
         : inputDevice === "mouse" ? zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraserStatus : ZONE_BRUSH_COPY.status(ZONE_KIND_LABELS[zoneTool.target])
         : zoneTool.target === "erase" ? ZONE_BRUSH_HINT_COPY[inputDevice].eraser : ZONE_BRUSH_HINT_COPY[inputDevice].status(ZONE_KIND_LABELS[zoneTool.target])}</div>}
     </div>

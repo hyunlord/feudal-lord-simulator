@@ -2,7 +2,7 @@ import type { Walker } from "../../agents/walker.types";
 import { BUILDING_CONFIG_BY_KIND } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
 import { hashSeed } from "../../engine/prng";
-import { ageOf, currentYear, displayName, inTown, personById } from "../../engine/persons";
+import { ageOf, currentYear, inTown, personById, personDisplayName } from "../../engine/persons";
 import { lordHouse } from "../../engine/lordshipState";
 import { persons } from "../../engine/personsApi";
 import { MANOR_HOUSEHOLD, type Person, type PersonClassBand } from "../../engine/persons.types";
@@ -10,19 +10,20 @@ import type { PetitionRecord } from "../../engine/politics.types";
 import { walkerLook, type WalkerClassBand } from "../../render/walkerLook";
 import { armsRecipe, merchantRecipe } from "../heraldry/heraldry";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
-import { GENTRY_NAMES_KO } from "../../content/gentryNames";
 import { resourceName } from "../../content/resourceCatalog.ko";
 import { drawnPortraitId } from "../portraitArt";
 import { PERSONS_COPY } from "./personsCopy.ko";
+import { personOrnament, personStatesReader, type PersonStateId } from "./personStates";
 
 // UI-5 people on screen (PERSON-0 persons, spec docs/design/persons.md): the rows and cards the screens show — a
 // house's members, a petition's petitioners, the steward, the person behind a walker, a person's card with the
 // lord's arms (the manor household) or a merchant's mark (a merchant household), and how many portraits match.
 
-export type PersonRow = Readonly<{ id: string; name: string; line: string; portraitId: string; exact: boolean }>;
+/** `ornament` (INSTALL-23 ④): the person's state ornament on the portrait (`personStates.ts`; absent or null = none). */
+export type PersonRow = Readonly<{ id: string; name: string; line: string; portraitId: string; exact: boolean; ornament?: PersonStateId | null }>;
 export type PersonCardView = Readonly<{
   id: string; name: string; role: string; life: string; household: string; portraitId: string; exact: boolean; match: string;
-  emblem: EmblemSpec | null; emblemLabel: string;
+  emblem: EmblemSpec | null; emblemLabel: string; ornament: PersonStateId | null;
 }>;
 
 const ROLE_ORDER: Readonly<Record<string, number>> = { steward: 0, head: 1, spouse: 2, kin: 3, child: 4 };
@@ -37,46 +38,36 @@ function drawnPortrait(state: GameState, person: Person) {
   return { ...pick, portraitId: drawnPortraitId(person, pick.portraitId), exact: fixed || pick.exact, fixed };
 }
 
-export function personRow(state: GameState, person: Person): PersonRow {
+/** A person as a chip's row; `states` reads the ledger once for many rows (`personStatesReader`). */
+export function personRow(state: GameState, person: Person, states: ReturnType<typeof personStatesReader> = personStatesReader(state)): PersonRow {
   const portrait = drawnPortrait(state, person);
   const age = ageOf(person, person.deathYear ?? person.leftYear ?? currentYear(state));
-  return { id: person.id, name: displayName(person), line: PERSONS_COPY.memberLine(PERSONS_COPY.role(person.role), PERSONS_COPY.age(age), occupationOf(person)),
-    portraitId: portrait.portraitId, exact: portrait.exact };
+  return { id: person.id, name: personDisplayName(person), line: PERSONS_COPY.memberLine(PERSONS_COPY.role(person.role), PERSONS_COPY.age(age), occupationOf(person)),
+    portraitId: portrait.portraitId, exact: portrait.exact, ornament: personOrnament(state, person, states) };
 }
 
 /**
  * UI-6: a faction's leader as a chip — the king by his Korean reading, others by their name; the line says whose
  * leader (the faction's display name, `factionDisplayName`) and the age, not a town household's role.
  */
-/**
- * A faction leader's name as every screen writes it (the petition card, the chronicle's faction tab): a king by his
- * Korean regnal name, an outside faction's gentry or clergy by their given name and the Korean reading of their
- * (invented) surname, a townsman as the town's people are named.
- */
-export function factionLeaderName(person: Pick<Person, "givenName" | "surname" | "epithet" | "occupation" | "householdId">): string {
-  if (person.occupation === "king") return PERSONS_COPY.kings[person.givenName] ?? person.givenName;
-  if (person.householdId.startsWith("faction:")) {
-    return [person.givenName, person.surname === undefined ? undefined : GENTRY_NAMES_KO[person.surname] ?? person.surname].filter(part => part !== undefined && part !== "").join(" ");
-  }
-  return displayName(person);
-}
-
 export function factionLeaderRow(state: GameState, person: Person, factionName: string): PersonRow {
   const row = personRow(state, person);
-  const name = factionLeaderName(person);
+  const name = personDisplayName(person);
   const age = ageOf(person, person.deathYear ?? person.leftYear ?? currentYear(state));
   return { ...row, name, line: PERSONS_COPY.leaderLine(factionName, PERSONS_COPY.age(age)) };
 }
 
 /** A house's members as the inspector lists them: head, spouse, kin, children (then by age). */
 export function householdRows(state: GameState, houseId: string): readonly PersonRow[] {
+  const states = personStatesReader(state);
   return persons.of(state, houseId).slice().sort((a, b) => (ROLE_ORDER[a.role] ?? 9) - (ROLE_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear)
-    .map(person => personRow(state, person));
+    .map(person => personRow(state, person, states));
 }
 
 /** The petition's petitioners (PERSON-0 PS-4: two or three household heads, the most substantial first). */
 export function petitionerRows(state: GameState, petition: Pick<PetitionRecord, "petitionerIds">): readonly PersonRow[] {
-  return (petition.petitionerIds ?? []).flatMap(id => { const person = personById(state, id); return person === undefined ? [] : [personRow(state, person)]; });
+  const states = personStatesReader(state);
+  return (petition.petitionerIds ?? []).flatMap(id => { const person = personById(state, id); return person === undefined ? [] : [personRow(state, person, states)]; });
 }
 
 /** The lord's steward (the manor household's steward; PERSON-0 keeps one in office). */
@@ -136,12 +127,13 @@ export function personCardView(state: GameState, personId: string): PersonCardVi
   const head = persons.of(state, person.householdId).find(member => member.role === "head");
   const emblem = personEmblem(state, person);
   return {
-    id: person.id, name: displayName(person), role: PERSONS_COPY.cardRole(PERSONS_COPY.role(person.role), occupationOf(person)),
+    id: person.id, name: personDisplayName(person), role: PERSONS_COPY.cardRole(PERSONS_COPY.role(person.role), occupationOf(person)),
     life: PERSONS_COPY.cardLife(person.birthYear, ageOf(person, year)),
-    household: person.householdId === MANOR_HOUSEHOLD ? PERSONS_COPY.manor : PERSONS_COPY.householdOf(displayName(head ?? person)),
+    household: person.householdId === MANOR_HOUSEHOLD ? PERSONS_COPY.manor : PERSONS_COPY.householdOf(personDisplayName(head ?? person)),
     portraitId: portrait.portraitId, exact: portrait.exact,
     match: portrait.fixed ? PERSONS_COPY.stewardPortrait : PERSONS_COPY.portraitMatch(portrait.identityId, portrait.stage, portrait.exact),
     emblem, emblemLabel: emblem === null ? PERSONS_COPY.noEmblem : emblem.kind === "arms" ? PERSONS_COPY.arms : PERSONS_COPY.merchantMark,
+    ornament: personOrnament(state, person),
   };
 }
 
@@ -152,7 +144,7 @@ export function portraitMatchRate(state: GameState): Readonly<{ exact: number; t
   return { exact, total: living.length, percent: living.length === 0 ? 100 : Math.floor((exact / living.length) * 1000) / 10 };
 }
 
-export type WalkerHeadline = Readonly<{ personId: string | null; name: string | null; portraitId: string | null; exact: boolean; line: string }>;
+export type WalkerHeadline = Readonly<{ personId: string | null; name: string | null; portraitId: string | null; exact: boolean; line: string; ornament?: PersonStateId | null }>;
 
 /**
  * Visibility design 4절: a carrier's card says who, and verb + what + where + progress ("목재를 방앗간 공사장으로
@@ -163,7 +155,8 @@ export function walkerHeadline(state: GameState, walkerId: string): WalkerHeadli
   if (walker === undefined || walker.kind === "builder") return null;
   const person = walkerPerson(state, walker);
   const portrait = person === null ? null : drawnPortrait(state, person);
-  const who = { personId: person?.id ?? null, name: person === null ? null : displayName(person), portraitId: portrait?.portraitId ?? null, exact: portrait?.exact ?? false };
+  const who = { personId: person?.id ?? null, name: person === null ? null : personDisplayName(person), portraitId: portrait?.portraitId ?? null, exact: portrait?.exact ?? false,
+    ornament: person === null ? null : personOrnament(state, person) };
   const cargo = walker.cargo === null ? null : resourceName(walker.cargo.resource);
   if (walker.kind === "distributor") return { ...who, line: cargo === null ? PERSONS_COPY.returningHome : PERSONS_COPY.delivering(cargo) };
   const home = state.buildings.find(building => building.id === walker.homeBuildingId);

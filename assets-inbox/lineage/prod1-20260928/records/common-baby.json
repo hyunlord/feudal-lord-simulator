@@ -1,0 +1,1260 @@
+[
+  {
+    "id": "C_baby_01",
+    "file": "assets/common/C_baby_01.png",
+    "identity": "C_baby_01",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.4,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "muted sage wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "light warm"
+    },
+    "differenceMarkers": [
+      "left-facing quiet pursed lips",
+      "blue grey eyes",
+      "round cheeks"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct male BABY aged 0.4 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse black baby down visible at forehead. light warm skin, grey blue eyes, round wide cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug muted sage wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly left. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_01.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "left-facing quiet pursed lips",
+        "blue grey eyes",
+        "round cheeks"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "b3002fabefd1a087321bc88d43f9864f13bd1168cf4dcb76ec5d763eb50220bd"
+  },
+  {
+    "id": "C_baby_02",
+    "file": "assets/common/C_baby_02.png",
+    "identity": "C_baby_02",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.7,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "dusty ochre wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "dark brown",
+      "skin": "medium warm"
+    },
+    "differenceMarkers": [
+      "front-facing open surprised mouth",
+      "dark round eyes",
+      "broad bonnet rim"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct female BABY aged 0.7 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse dark brown baby down visible at forehead. medium warm skin, brown eyes, soft heart face chubby cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug dusty ochre wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_02.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.7 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, exceptionally round small face, dark straight short wisps, wide apart dark eyes, mouth open in surprise, gathered bonnet tiny frontal pleats. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND dusty ochre wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_02-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "front-facing open surprised mouth",
+        "dark round eyes",
+        "broad bonnet rim"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "68117c15ef9ab7850ab7ffafc02eeb7b9a6a45bcd4233c56be88678de4c60343"
+  },
+  {
+    "id": "C_baby_03",
+    "file": "assets/common/C_baby_03.png",
+    "identity": "C_baby_03",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 1,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "muted russet wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "chestnut",
+      "skin": "light cool"
+    },
+    "differenceMarkers": [
+      "left-facing small gummy smile",
+      "pale grey eyes",
+      "chin dimple"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct male BABY aged 1 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse chestnut baby down visible at forehead. light cool skin, hazel eyes, broad oval baby face. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug muted russet wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_03.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 1 year old infant male in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. three quarter turned to left, short upturned button nose, narrow grey-blue eyes, a tiny smile with gum showing, chin dimple, bonnet has broad flat forehead band. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND muted russet wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_03-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "left-facing small gummy smile",
+        "pale grey eyes",
+        "chin dimple"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "6d7f286fca8792e39ce68b783fc9c18af86fa5487ec3f91fbb1ebce59b50447d"
+  },
+  {
+    "id": "C_baby_04",
+    "file": "assets/common/C_baby_04.png",
+    "identity": "C_baby_04",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "dull blue grey wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "red",
+      "skin": "medium brown"
+    },
+    "differenceMarkers": [
+      "front-facing open mouth",
+      "low sleepy hazel eyes",
+      "red wisps and rounded brows"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct female BABY aged 0.5 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse red baby down visible at forehead. medium brown skin, dark brown eyes, round dimpled cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug dull blue grey wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_04.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.5 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, oval forehead, bushy reddish infant eyebrows, hazel eyes with sleepy lids, mouth relaxed slightly open, distinctive low bonnet edged plain linen. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND dull blue grey wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_04-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "superseded to improve skin tone range"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.5 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, oval forehead, bushy reddish infant eyebrows, hazel eyes with sleepy lids, mouth relaxed slightly open, distinctive low bonnet edged plain linen. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND dull blue grey wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background. IMPORTANT final skin tone must be visibly medium warm olive-brown, clearly medium rather than fair peach, with naturally matching sparse red hair. Keep infant age.",
+        "rawFile": "raw/common-baby/C_baby_04-v3.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected bonnet crown clipped"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.5 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, oval forehead, bushy reddish infant eyebrows, hazel eyes with sleepy lids, mouth relaxed slightly open, distinctive low bonnet edged plain linen. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND dull blue grey wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background. IMPORTANT final skin tone must be visibly medium warm olive-brown, clearly medium rather than fair peach, with naturally matching sparse red hair. Keep infant age. CRITICAL composition: leave a generous plain grey margin ABOVE the entire bonnet crown (at least ten percent canvas), zoom out to show full wrapped bust. No cropping of cap top.",
+        "rawFile": "raw/common-baby/C_baby_04-v4.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected undersized head composition"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.5 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, oval forehead, bushy reddish infant eyebrows, hazel eyes with sleepy lids, mouth relaxed slightly open, distinctive low bonnet edged plain linen. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND dull blue grey wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background. IMPORTANT final skin tone must be visibly medium warm olive-brown, clearly medium rather than fair peach, with naturally matching sparse red hair. Keep infant age. CRITICAL framing: tight head-and-swaddled-shoulder portrait, face fills 55 percent canvas height. Top of bonnet is 6 percent below canvas top; bonnet and chin fully visible, lower swaddle cropped by bottom. Not a small fullbody baby in a large background.",
+        "rawFile": "raw/common-baby/C_baby_04-v5.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "front-facing open mouth",
+        "low sleepy hazel eyes",
+        "red wisps and rounded brows"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "e2f657bbd11aaf859bdebf788c7c71813f1af671025a020f55ae08fff730f3d1"
+  },
+  {
+    "id": "C_baby_05",
+    "file": "assets/common/C_baby_05.png",
+    "identity": "C_baby_05",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 1.2,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "warm taupe wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "dark blond",
+      "skin": "light olive"
+    },
+    "differenceMarkers": [
+      "left-facing pursed mouth",
+      "light grey blue eyes",
+      "fine blond wisps"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct male BABY aged 1.2 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse dark blond baby down visible at forehead. light olive skin, grey green eyes, soft oval full cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug warm taupe wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_05.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 1.2 year old infant male in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. nearly profile left but both eyes visible, very pale blond sparse wisps, small pursed lips, broad soft nose, low rounded forehead, wide bonnet with turned-back cuff. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND warm taupe wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_05-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "left-facing pursed mouth",
+        "light grey blue eyes",
+        "fine blond wisps"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "ad438920cfe8ff19db8e9f4db3aa91171d8eb504f3fb8aebc7e7f9b3fb7e7067"
+  },
+  {
+    "id": "C_baby_06",
+    "file": "assets/common/C_baby_06.png",
+    "identity": "C_baby_06",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.8,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "desaturated moss wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "deep warm brown"
+    },
+    "differenceMarkers": [
+      "right-facing quiet mouth",
+      "dark eyes",
+      "deep brown skin"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct female BABY aged 0.8 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse black baby down visible at forehead. deep warm brown skin, blue eyes, pear face large cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug desaturated moss wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_06.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "right-facing quiet mouth",
+        "dark eyes",
+        "deep brown skin"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "5374644551d918b972dd02449fe0ed710a34b4d1415d6a619efe457e9ec89257"
+  },
+  {
+    "id": "C_baby_07",
+    "file": "assets/common/C_baby_07.png",
+    "identity": "C_baby_07",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.6,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "earth brown wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "dark brown",
+      "skin": "light rosy"
+    },
+    "differenceMarkers": [
+      "front-facing open gummy smile",
+      "dark eyes",
+      "dark curls at forehead"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct male BABY aged 0.6 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse dark brown baby down visible at forehead. light rosy skin, amber brown eyes, round face small chin. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug earth brown wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_07.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.6 year old infant male in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, low broad infant forehead, dark brown sparse curly wisps, grey green alert eyes, large round cheeks, smiling mouth, loose rounded bonnet. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND earth brown wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_07-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "front-facing open gummy smile",
+        "dark eyes",
+        "dark curls at forehead"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "5b6cd1ea8a16089de83344fe407cdb30453f0eaed6ae5959be15657cb7549b81"
+  },
+  {
+    "id": "C_baby_08",
+    "file": "assets/common/C_baby_08.png",
+    "identity": "C_baby_08",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 1.1,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "muted sage wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "chestnut",
+      "skin": "light warm"
+    },
+    "differenceMarkers": [
+      "left-facing closed tiny smile",
+      "dark hazel eyes",
+      "rounded copper wisps"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct female BABY aged 1.1 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse chestnut baby down visible at forehead. light warm skin, grey blue eyes, round wide cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug muted sage wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly left. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_08.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 1.1 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. three quarter left, auburn sparse fine down, pale skin, small wide apart brown eyes, tiny dimple on left cheek, forehead bonnet scalloped folds. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND muted sage wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_08-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "superseded to improve skin tone range"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 1.1 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. three quarter left, auburn sparse fine down, pale skin, small wide apart brown eyes, tiny dimple on left cheek, forehead bonnet scalloped folds. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND muted sage wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background. IMPORTANT final skin tone must be visibly medium warm olive-brown, clearly medium rather than fair peach, with naturally matching sparse chestnut hair. Keep infant age.",
+        "rawFile": "raw/common-baby/C_baby_08-v3.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "left-facing closed tiny smile",
+        "dark hazel eyes",
+        "rounded copper wisps"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "78d47c1ffb284a8386cde7f98957c3c4fb5fd5c4fd427fd6580a750663a4ecdf"
+  },
+  {
+    "id": "C_baby_09",
+    "file": "assets/common/C_baby_09.png",
+    "identity": "C_baby_09",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.3,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "dusty ochre wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "red",
+      "skin": "medium warm"
+    },
+    "differenceMarkers": [
+      "front-facing asymmetric closed smile",
+      "small hazel eyes",
+      "red hair",
+      "rounded cheeks"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct male BABY aged 0.3 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse red baby down visible at forehead. medium warm skin, brown eyes, soft heart face chubby cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug dusty ochre wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_09.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.3 year old infant male in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, copper red tiny wisps, short wide nose, medium olive skin, hazel almond eyes, slightly crooked smile, flat tight linen cap with hanging chin ties. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND dusty ochre wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_09-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "front-facing asymmetric closed smile",
+        "small hazel eyes",
+        "red hair",
+        "rounded cheeks"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "33bfaa86cb77a722ec435c8de4d04e2ab7c7321c9190250ad79d5079e1d6b199"
+  },
+  {
+    "id": "C_baby_10",
+    "file": "assets/common/C_baby_10.png",
+    "identity": "C_baby_10",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.9,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "muted russet wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "dark blond",
+      "skin": "light cool"
+    },
+    "differenceMarkers": [
+      "left-facing frown",
+      "light grey eyes",
+      "warm medium skin",
+      "blond sparse wisps"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct female BABY aged 0.9 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse dark blond baby down visible at forehead. light cool skin, hazel eyes, broad oval baby face. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug muted russet wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_10.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.9 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. three quarter left, dark blond wisps, big blue eyes, long oval upper head with tiny jaw, medium warm skin, baby frowning, bonnet with large fold above ear. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND muted russet wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_10-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "superseded to improve skin tone range"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.9 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. three quarter left, dark blond wisps, big blue eyes, long oval upper head with tiny jaw, medium warm skin, baby frowning, bonnet with large fold above ear. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND muted russet wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background. IMPORTANT final skin tone must be visibly medium warm olive-brown, clearly medium rather than fair peach, with naturally matching sparse dark blond hair. Keep infant age.",
+        "rawFile": "raw/common-baby/C_baby_10-v3.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "left-facing frown",
+        "light grey eyes",
+        "warm medium skin",
+        "blond sparse wisps"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "fbc5523f697eef64d5adc4fcf1a7e3a5f565f322afbe63b6ac435e5ba4e79e5a"
+  },
+  {
+    "id": "C_baby_11",
+    "file": "assets/common/C_baby_11.png",
+    "identity": "C_baby_11",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 1.3,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "dull blue grey wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "black",
+      "skin": "medium brown"
+    },
+    "differenceMarkers": [
+      "front-facing pursed full lips",
+      "dark brown eyes",
+      "black curls",
+      "deep brown skin"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct male BABY aged 1.3 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse black baby down visible at forehead. medium brown skin, dark brown eyes, round dimpled cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug dull blue grey wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_11.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 1.3 year old infant male in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, black sparse tight curls, midbrown skin, small dark brown eyes, broad flat nose, wide plump lips, broad cheeks, bonnet face edge folded twice. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND dull blue grey wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_11-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "front-facing pursed full lips",
+        "dark brown eyes",
+        "black curls",
+        "deep brown skin"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "eff74803ec7249486945cd0b6861c9dfaadda64419084e380c1f735faca9ac9c"
+  },
+  {
+    "id": "C_baby_12",
+    "file": "assets/common/C_baby_12.png",
+    "identity": "C_baby_12",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "warm taupe wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "dark brown",
+      "skin": "light olive"
+    },
+    "differenceMarkers": [
+      "left-facing closed smile",
+      "small pale grey eyes",
+      "very full pale cheeks"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct female BABY aged 0.5 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse dark brown baby down visible at forehead. light olive skin, grey green eyes, soft oval full cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug warm taupe wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_12.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.5 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. three quarter left, dark brown straight hair wisps, very pale skin, exceptionally round full cheeks and small grey eyes, closed smiling mouth and chin dimple, small snug bonnet. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND warm taupe wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_12-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "left-facing closed smile",
+        "small pale grey eyes",
+        "very full pale cheeks"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "c0373453c217cb2250a08be12f9a1355c4c09275ff42b89c80d37feb72979594"
+  },
+  {
+    "id": "C_baby_13",
+    "file": "assets/common/C_baby_13.png",
+    "identity": "C_baby_13",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 1,
+    "sex": "male",
+    "maritalStatus": "notApplicable",
+    "clothing": "desaturated moss wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "chestnut",
+      "skin": "deep warm brown"
+    },
+    "differenceMarkers": [
+      "front-facing two baby teeth",
+      "hazel eyes",
+      "chestnut curls",
+      "warm medium skin"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct male BABY aged 1 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse chestnut baby down visible at forehead. deep warm brown skin, blue eyes, pear face large cheeks. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug desaturated moss wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_13.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 1 year old infant male in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, chestnut short curls, light olive skin, grey green eyes, tiny high nose, pear shaped head with full lower cheeks, open mouth with two baby bottom teeth, bonnet gathered at crown. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND desaturated moss wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_13-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "superseded to improve skin tone range"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 1 year old infant male in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. front facing, chestnut short curls, light olive skin, grey green eyes, tiny high nose, pear shaped head with full lower cheeks, open mouth with two baby bottom teeth, bonnet gathered at crown. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND desaturated moss wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background. IMPORTANT final skin tone must be visibly medium warm olive-brown, clearly medium rather than fair peach, with naturally matching sparse chestnut hair. Keep infant age.",
+        "rawFile": "raw/common-baby/C_baby_13-v3.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "front-facing two baby teeth",
+        "hazel eyes",
+        "chestnut curls",
+        "warm medium skin"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "203460956ba29ac5a0552b58ede38c4f3342f363bd83b7f1a09da9483794e07f"
+  },
+  {
+    "id": "C_baby_14",
+    "file": "assets/common/C_baby_14.png",
+    "identity": "C_baby_14",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "age": 0.7,
+    "sex": "female",
+    "maritalStatus": "notApplicable",
+    "clothing": "earth brown wool swaddle over white linen, tied offwhite linen baby bonnet",
+    "commonTraits": {
+      "hair": "red",
+      "skin": "light rosy"
+    },
+    "differenceMarkers": [
+      "left-facing downturned little mouth",
+      "amber-brown eyes",
+      "red wisps",
+      "taller forehead"
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Make ONE square individual portrait, not a sheet. Reference is project-owned PAINT STYLE AND INFANT ANATOMY guide only, not identity to copy. A distinct female BABY aged 0.7 years, commoner in medieval southern England. Real infant aged 0–2, NOT toddler: oversized baby head, VERY short neck, plump cheeks, tiny nose and mouth, underdeveloped jaw, sparse red baby down visible at forehead. light rosy skin, amber brown eyes, round face small chin. Mandatory soft offwhite LINEN BABY BONNET tied safely below chin, with distinct modest fold arrangement; entire face visible. Mandatory snug earth brown wool outer SWADDLING around white linen underwrap, baby's shoulders and body cocooned, no adult tunic shoulders. Small quiet natural infant expression, looking slightly right. Painted low-saturation gouache realism exactly like reference, soft brushgrain, warm grey plain opaque background, light upperleft, bust centered, head large readable at96px, bonnet crown and chin not cropped. No text, digits, logos, jewelry, adult anatomy, loose long hair, medieval fantasy. Distinct face from reference.",
+        "rawFile": "raw/common-baby/C_baby_14.png",
+        "referenceImages": [
+          "references/common-baby-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "rejected excessive shared infant identity"
+      },
+      {
+        "prompt": "Use case: historical-scene. SINGLE painted infant portrait. Input adult image is ONLY gouache brushstyle and muted grey background reference. Do NOT copy adult anatomy or identity. Depict a genuinely 0.7 year old infant female in medieval England, 0–2 years BABY NOT toddler. Huge infant head relative to tightly SWADDLED body, no shoulders visible, tiny neck, chubby baby cheeks. three quarter left, reddish sparse fine hair, light rosy skin, long forehead and little round cheeks, amber brown eyes, slightly downturned mouth, bonnet wide plain band. ALL babies must wear linen BABY BONNET covering crown with sparse hair visible near forehead AND earth brown wool swaddle wrapped in irregular folds over offwhite linen. Face and chin fully visible. Distinct infant identity with specifically described face; restrained hand painted gouache realism, not photography. Centered bust, crown entirely inside square, soft upperleft light. No jewelry, text, frame, numbers, modern cloth, long hair, adult face, 3–5-year-old. Simple warm grey background.",
+        "rawFile": "raw/common-baby/C_baby_14-v2.png",
+        "referenceImages": [
+          "references/common-baby-adult-style.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected"
+      }
+    ],
+    "processing": {
+      "operation": "sharp resize contain 256x256 PNG only",
+      "sourceDimensions": {
+        "format": "png",
+        "mediaType": "image/png",
+        "width": 1254,
+        "height": 1254,
+        "space": "srgb",
+        "channels": 3,
+        "depth": "uchar",
+        "density": 72,
+        "isProgressive": false,
+        "isPalette": false,
+        "bitsPerSample": 8,
+        "hasProfile": false,
+        "hasAlpha": false,
+        "autoOrient": {
+          "width": 1254,
+          "height": 1254
+        }
+      }
+    },
+    "qa": {
+      "status": "PASS infant bonnet and swaddle; REVIEW exact hair shade",
+      "ageRead": "approximately 0.5–2 years, no 3–5 year olds",
+      "bonnet": true,
+      "swaddle": true,
+      "faceVisible": true,
+      "distinctness": "improved by 12 identity revisions; contact reviewed visually",
+      "limitations": "bonnet obscures some sparse hair and exact five-color quota is target metadata, not a measured guarantee",
+      "candidateOnly": true,
+      "observedDifferenceMarkers": [
+        "left-facing downturned little mouth",
+        "amber-brown eyes",
+        "red wisps",
+        "taller forehead"
+      ],
+      "intendedAgeNotExactVisualAge": true
+    },
+    "sha256": "5bf60cb388b8e64ee8c12b2e5779ad6ebc936ee12fde62316569f052a92004eb"
+  }
+]

@@ -1,0 +1,192 @@
+{
+  "review_type": "independent_subjective_visual_qa",
+  "review_date": "2026-09-28",
+  "reviewer": "prod1_age_review",
+  "source": "records/pilot2-baby-comparison.png",
+  "source_sha256": "dce612c9d81dbe12e3e66c02b868fe8d776cd764402ecc9493140dd7a25e17ff",
+  "method": "Visual inspection of all three 256px columns in the comparison board: actual child, previous baby, corrected baby-v2. No art modifications.",
+  "overall": "PASS for apparent 0-2 age, bonnet, swaddling and broad hair-color continuity. Revised L2_204 resolves the principal near-duplicate concern with L2_203. Cross-age identity remains a subjective moderate-confidence judgment.",
+  "items": [
+    {
+      "id": "L1_203",
+      "estimated_months": [
+        6,
+        12
+      ],
+      "infant_age_pass": true,
+      "bonnet_pass": true,
+      "swaddling_pass": true,
+      "hair_color": "Auburn/red-brown continuity retained.",
+      "identity": "Moderate: light eyes, small mouth and reddish hair remain; reference freckles are substantially softened and view changes from three-quarter to frontal.",
+      "distinctness": "Serious closed mouth helps distinguish this face; still shares the set's round-cheek infant template."
+    },
+    {
+      "id": "L1_204",
+      "estimated_months": [
+        6,
+        12
+      ],
+      "infant_age_pass": true,
+      "bonnet_pass": true,
+      "swaddling_pass": true,
+      "hair_color": "Reddish-brown continuity retained, slightly lighter in the sparse exposed hair.",
+      "identity": "Moderate: round face and compact mouth remain; strong childhood curls cannot be assessed under bonnet and short baby hair.",
+      "distinctness": "Broad, sober face is somewhat distinct, but close to L1_203 in frontal face proportions."
+    },
+    {
+      "id": "L2_201",
+      "estimated_months": [
+        6,
+        12
+      ],
+      "infant_age_pass": true,
+      "bonnet_pass": true,
+      "swaddling_pass": true,
+      "hair_color": "Light ginger continuity broadly retained; infant hair is less saturated than the child's curls.",
+      "identity": "Moderate: blue/light eyes and lifted mouth corners remain; freckles and conspicuous curls are reduced.",
+      "distinctness": "Smiling mouth and light eyes distinguish somewhat, but garment color contributes heavily to immediate differentiation."
+    },
+    {
+      "id": "L2_202",
+      "estimated_months": [
+        5,
+        11
+      ],
+      "infant_age_pass": true,
+      "bonnet_pass": true,
+      "swaddling_pass": true,
+      "hair_color": "Copper/auburn continuity retained.",
+      "identity": "Moderate-to-good: dark eyes and the visible cheek beauty mark provide more specific continuity than most rows; head tilt differs from reference.",
+      "distinctness": "Strongest distinctness within this set because of tilted head, dark eyes and cheek mark."
+    },
+    {
+      "id": "L2_203",
+      "estimated_months": [
+        6,
+        12
+      ],
+      "infant_age_pass": true,
+      "bonnet_pass": true,
+      "swaddling_pass": true,
+      "hair_color": "Ginger/copper continuity retained.",
+      "identity": "Moderate: light eyes, reddish hair and soft smile remain; long braid and dense freckles are naturally unavailable or softened.",
+      "distinctness": "PASS relative to revised L2_204: smaller smile, sparser straighter exposed hair and more frontal gaze now contrast clearly."
+    },
+    {
+      "id": "L2_204",
+      "estimated_months": [
+        7,
+        15
+      ],
+      "infant_age_pass": true,
+      "bonnet_pass": true,
+      "swaddling_pass": true,
+      "hair_color": "Copper/auburn continuity retained; visible curls now preserve a stronger reference cue.",
+      "identity": "Moderate-to-good: copper curls, smiling expression and cheek shape link better to child reference; same-person identity is not proven.",
+      "distinctness": "PASS after correction: open laughing mouth, distinct curls and off-axis gaze separate it clearly from L2_203."
+    }
+  ],
+  "failures": [],
+  "qualification": "The initial L2_203/L2_204 similarity concern is resolved at the inspected comparison size. Do not claim verified same-person identity or 96px runtime distinguishability.",
+  "limitations": [
+    "Age ranges are subjective apparent-age estimates, not verified ages.",
+    "Generated cross-age identity cannot be established from visual inspection alone.",
+    "Review uses the supplied 256px-per-cell comparison board; no 96px runtime review was performed.",
+    "Common bonnet, pose and infant facial proportions reduce visible identity cues."
+  ],
+  "initial_review_history": {
+    "source_sha256": "988dd8fd6782bcdd62d61667d2b83e464d1e80e0639f344469b6b36f0f1a8464",
+    "overall": "PASS for apparent 0-2 age, bonnet, swaddling, and broad hair-color continuity; QUALIFIED for individual identity and six-person distinctness.",
+    "qualification": "No obvious age, bonnet or swaddling failure. Do not claim proven same-person identity or that all six faces are strongly distinct. L2_203 and L2_204 are the principal near-duplicate concern, though they are not exact duplicates.",
+    "items": [
+      {
+        "id": "L1_203",
+        "estimated_months": [
+          6,
+          12
+        ],
+        "infant_age_pass": true,
+        "bonnet_pass": true,
+        "swaddling_pass": true,
+        "hair_color": "Auburn/red-brown continuity retained.",
+        "identity": "Moderate: light eyes, small mouth and reddish hair remain; reference freckles are substantially softened and view changes from three-quarter to frontal.",
+        "distinctness": "Serious closed mouth helps distinguish this face; still shares the set's round-cheek infant template."
+      },
+      {
+        "id": "L1_204",
+        "estimated_months": [
+          6,
+          12
+        ],
+        "infant_age_pass": true,
+        "bonnet_pass": true,
+        "swaddling_pass": true,
+        "hair_color": "Reddish-brown continuity retained, slightly lighter in the sparse exposed hair.",
+        "identity": "Moderate: round face and compact mouth remain; strong childhood curls cannot be assessed under bonnet and short baby hair.",
+        "distinctness": "Broad, sober face is somewhat distinct, but close to L1_203 in frontal face proportions."
+      },
+      {
+        "id": "L2_201",
+        "estimated_months": [
+          6,
+          12
+        ],
+        "infant_age_pass": true,
+        "bonnet_pass": true,
+        "swaddling_pass": true,
+        "hair_color": "Light ginger continuity broadly retained; infant hair is less saturated than the child's curls.",
+        "identity": "Moderate: blue/light eyes and lifted mouth corners remain; freckles and conspicuous curls are reduced.",
+        "distinctness": "Smiling mouth and light eyes distinguish somewhat, but garment color contributes heavily to immediate differentiation."
+      },
+      {
+        "id": "L2_202",
+        "estimated_months": [
+          5,
+          11
+        ],
+        "infant_age_pass": true,
+        "bonnet_pass": true,
+        "swaddling_pass": true,
+        "hair_color": "Copper/auburn continuity retained.",
+        "identity": "Moderate-to-good: dark eyes and the visible cheek beauty mark provide more specific continuity than most rows; head tilt differs from reference.",
+        "distinctness": "Strongest distinctness within this set because of tilted head, dark eyes and cheek mark."
+      },
+      {
+        "id": "L2_203",
+        "estimated_months": [
+          6,
+          12
+        ],
+        "infant_age_pass": true,
+        "bonnet_pass": true,
+        "swaddling_pass": true,
+        "hair_color": "Ginger/copper continuity retained.",
+        "identity": "Moderate: light eyes, reddish hair and soft smile remain; long braid and dense freckles are naturally unavailable or softened.",
+        "distinctness": "Concern: very similar cheek shape, nose, eyes, hairline and small smile to L2_204."
+      },
+      {
+        "id": "L2_204",
+        "estimated_months": [
+          6,
+          12
+        ],
+        "infant_age_pass": true,
+        "bonnet_pass": true,
+        "swaddling_pass": true,
+        "hair_color": "Auburn/copper continuity retained.",
+        "identity": "Moderate: warm reddish hair and smiling expression remain; childhood curls are mostly lost under bonnet.",
+        "distinctness": "Concern: strongly resembles L2_203; red versus green wrapping should not be counted as sufficient face-identity evidence."
+      }
+    ]
+  },
+  "reinspection": {
+    "date": "2026-09-28",
+    "method": "Reopened updated comparison board and compared corrected L2_204 with L2_203 and actual child reference.",
+    "changed_id": "L2_204",
+    "age_pass": true,
+    "bonnet_pass": true,
+    "swaddling_pass": true,
+    "distinctness_pair_pass": true,
+    "notes": "New visible curls, wide open smile and changed gaze are face cues independent of garment color; still convincingly infant rather than school-age child."
+  }
+}

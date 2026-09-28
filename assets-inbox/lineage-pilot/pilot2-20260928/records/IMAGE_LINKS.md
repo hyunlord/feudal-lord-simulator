@@ -1,0 +1,32 @@
+# 개별 초상
+
+- [L1_203_young](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_young.png)
+- [L1_204_young](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_204_young.png)
+- [L1_203_child](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_child.png)
+- [L1_204_child](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_204_child.png)
+- [L1_203_mature](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_mature.png)
+- [L1_204_mature](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_204_mature.png)
+- [L1_203_baby](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_203_baby.png)
+- [L1_204_baby](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/gentry/L1_204_baby.png)
+- [L2_201_young](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_young.png)
+- [L2_202_young](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_young.png)
+- [L2_201_child](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_child.png)
+- [L2_202_child](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_child.png)
+- [L2_201_baby](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_baby.png)
+- [L2_202_baby](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_baby.png)
+- [L2_201_mature](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_201_mature.png)
+- [L2_202_mature](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/brothers/L2_202_mature.png)
+- [L2_203_young](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_203_young.png)
+- [L2_204_young](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_young.png)
+- [L2_203_child](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_203_child.png)
+- [L2_204_child](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_child.png)
+- [L2_203_baby](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_203_baby.png)
+- [L2_204_baby](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_baby.png)
+- [L2_203_mature](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_203_mature.png)
+- [L2_204_mature](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/assets/sisters/L2_204_mature.png)
+
+## 확인 그림
+
+- [01-same-person-blind.png](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/proofs/01-same-person-blind.png)
+- [02-age-chains.png](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/proofs/02-age-chains.png)
+- [03-before-after.png](/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/proofs/03-before-after.png)

@@ -91,6 +91,8 @@ function renderSortY(item: SortableRenderItem): number {
       return item.prop.y;
     case "war_prop":
       return item.prop.ty;
+    case "village_life":
+      return item.life.y;
     case "building":
       return item.building.ty;
     case "palisade_segment":

@@ -64,7 +64,10 @@ def main() -> None:
         stem = name[: -len(".png")]
         asset_id, version = stem.rsplit("-v", 1)
         runtime_dir = f"public/assets/wave11/{group}"
-        runtime = ROOT / runtime_dir / name
+        # ASSET-2: a kit's runtime file carries its family (kit_stone/stage_frame_medium-v1 was the same name as
+        # kit_timber's with other pixels): stone_stage_frame_medium-v1.png, timber_… , public_… , defense_… .
+        runtime_name = f"{group.removeprefix('kit_')}_{name}" if group.startswith("kit_") else name
+        runtime = ROOT / runtime_dir / runtime_name
         runtime.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, runtime)
         assert sha(runtime) == digest == record["sha256"], name
@@ -74,7 +77,7 @@ def main() -> None:
         prompt.write_text(prompt_text + "\n")
         references = sorted({Path(ref).name for g in generations for ref in g.get("references", [])})
         rows.append({
-            "assetId": asset_id, "version": f"v{version}", "runtimePath": f"{runtime_dir}/{name}", "runtimeSha256": digest,
+            "assetId": asset_id, "version": f"v{version}", "runtimePath": f"{runtime_dir}/{runtime_name}", "runtimeSha256": digest,
             "sourcePath": str(source.relative_to(ROOT)), "sourceSha256": digest,
             "tool": (generations[0].get("tool") if generations else None) or "native image_gen", "model": "not exposed",
             "generatedAt": "2026-09-26", "prompt": str(prompt.relative_to(ROOT)), "referenceInputs": ";".join(references) or "none",
@@ -87,7 +90,7 @@ def main() -> None:
         })
         installed.add(str(source.relative_to(ROOT / "assets-inbox")))
         key = f"{group}_{asset_id}" if group.startswith("kit_") else asset_id
-        entry = {"url": f"assets/wave11/{group}/{name}", "width": int(record["width"]), "height": int(record["height"]),
+        entry = {"url": f"assets/wave11/{group}/{runtime_name}", "width": int(record["width"]), "height": int(record["height"]),
                  "pivot": pivot_of(record["pivot_or_attachment"], int(record["width"]), int(record["height"]))}
         frames = frames_of(record["pivot_or_attachment"])
         if frames is not None:

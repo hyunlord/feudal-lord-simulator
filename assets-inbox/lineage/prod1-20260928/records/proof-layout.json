@@ -1,0 +1,44 @@
+{
+  "status": "Ready for external blind judgment; no self score",
+  "assetCount": 160,
+  "pilot2BabyCorrections": 6,
+  "lineageCount": 114,
+  "commonCount": 40,
+  "familyBlind": 30,
+  "identityPairs": 18,
+  "differentPairs": 9,
+  "samePairs": 9,
+  "youngMatureSamePairs": 6,
+  "childYoungSamePairs": 3,
+  "proofs": [
+    {
+      "file": "proofs/01-family-trees.png",
+      "width": 2568,
+      "height": 2550,
+      "sha256": "352a5ecd4ded60849d5042a0a759cc54a6c4911071be9dd24a9b6956e98ae9da"
+    },
+    {
+      "file": "proofs/02-family-blind.png",
+      "width": 1728,
+      "height": 1516,
+      "sha256": "239abbc319055f00fcba397c1016fc5941f1ae51db56b5bac47a37a909783941"
+    },
+    {
+      "file": "proofs/03-same-person-blind.png",
+      "width": 1696,
+      "height": 1860,
+      "sha256": "f7f44e05ce35da4d9640ed01f307f1e7192112edfdc730a6aa8ac89503922cfb"
+    },
+    {
+      "file": "proofs/04-common-pool.png",
+      "width": 2256,
+      "height": 1514,
+      "sha256": "5a2959050e02b4ce663860c14e8967b564727dfae89ae5adb0cb7af2c5952f58"
+    }
+  ],
+  "supplementalAnonymous96": [
+    "records/proof-family-blind-96.png",
+    "records/proof-identity-blind-96.png"
+  ],
+  "processing": "Unedited final portraits composited at equal size. Family tree uniformly resized to actual 96 px; blind portraits remain 256 px. No face crop or retouch."
+}

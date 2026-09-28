@@ -1,0 +1,300 @@
+{
+  "url": "http://127.0.0.1:4301/",
+  "statesDir": "ui6States (scripts/ui6States.ts)",
+  "gallery": {
+    "states": [
+      {
+        "state": "dead",
+        "derived": "true",
+        "ornaments": 2,
+        "dead": true
+      },
+      {
+        "state": "hunger",
+        "derived": "true",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "sick",
+        "derived": "false",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "injury",
+        "derived": "false",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "mourning",
+        "derived": "true",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "child_born",
+        "derived": "true",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "pregnant",
+        "derived": "false",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "marriage",
+        "derived": "true",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "pilgrim",
+        "derived": "false",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "steward",
+        "derived": "true",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "bailiff",
+        "derived": "false",
+        "ornaments": 2,
+        "dead": false
+      },
+      {
+        "state": "reeve",
+        "derived": "true",
+        "ornaments": 2,
+        "dead": false
+      }
+    ],
+    "glyphs": [
+      "A 버튼",
+      "A 버튼",
+      "B 버튼",
+      "B 버튼",
+      "X 버튼",
+      "X 버튼",
+      "Y 버튼",
+      "Y 버튼",
+      "십자키",
+      "십자키",
+      "왼쪽 어깨 버튼",
+      "왼쪽 어깨 버튼",
+      "오른쪽 어깨 버튼",
+      "오른쪽 어깨 버튼",
+      "왼쪽 트리거",
+      "왼쪽 트리거",
+      "오른쪽 트리거",
+      "오른쪽 트리거",
+      "왼쪽 스틱",
+      "왼쪽 스틱",
+      "오른쪽 스틱",
+      "오른쪽 스틱",
+      "메뉴 버튼",
+      "메뉴 버튼",
+      "보기 버튼",
+      "보기 버튼"
+    ]
+  },
+  "childBorn": {
+    "state": "messenger",
+    "head": "p-000552",
+    "household": "construction-site-000036",
+    "members": [
+      {
+        "id": "p-000552",
+        "role": "head",
+        "states": [
+          "child_born"
+        ]
+      },
+      {
+        "id": "p-000757",
+        "role": "spouse",
+        "states": [
+          "child_born"
+        ]
+      },
+      {
+        "id": "p-000555",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-000558",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-000570",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-000595",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-000608",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-000700",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-000710",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-000744",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-000772",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001012",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001016",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001049",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001059",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001064",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001066",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001068",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001070",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001072",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001074",
+        "role": "child",
+        "states": []
+      },
+      {
+        "id": "p-001076",
+        "role": "child",
+        "states": []
+      }
+    ],
+    "chips": [
+      {
+        "person": "p-000552",
+        "label": "페트로닐라 해치의 인물 카드 열기 · 아이를 얻음",
+        "ornament": "child_born",
+        "state": "아이를 얻음"
+      },
+      {
+        "person": "p-000757",
+        "label": "윌리엄 해치의 인물 카드 열기 · 아이를 얻음",
+        "ornament": "child_born",
+        "state": "아이를 얻음"
+      },
+      {
+        "person": "p-000555",
+        "label": "애그니스 해치의 인물 카드 열기",
+        "ornament": null,
+        "state": null
+      },
+      {
+        "person": "p-000558",
+        "label": "시빌 해치의 인물 카드 열기",
+        "ornament": null,
+        "state": null
+      }
+    ],
+    "card": {
+      "ornament": "child_born",
+      "line": "지금: 아이를 얻음"
+    }
+  },
+  "dead": {
+    "person": "p-000173",
+    "greyscale": true,
+    "filter": "grayscale(1)",
+    "ornament": "dead",
+    "label": "초상 I056 청년 · 성별·나이대·계층 일치 · 세상을 떠남"
+  },
+  "hints": {
+    "pauseKeyboard": {
+      "device": "mouse",
+      "pause": "일시정지 중 · Space",
+      "pauseGlyphs": [],
+      "instruction": null,
+      "instructionGlyphs": [],
+      "status": null,
+      "statusGlyphs": []
+    },
+    "pauseGamepad": {
+      "device": "gamepad",
+      "pause": "일시정지 중",
+      "pauseGlyphs": [
+        "Y 버튼",
+        "메뉴 버튼"
+      ],
+      "instruction": null,
+      "instructionGlyphs": [],
+      "status": null,
+      "statusGlyphs": []
+    }
+  },
+  "sizes": {
+    "c01-person-state-sheet.jpg": 62148,
+    "c02-pad-glyphs.jpg": 37911,
+    "c03-parent-chips.jpg": 19548,
+    "c04-parent-card.jpg": 19292,
+    "c05-dead-biography.jpg": 45976,
+    "c06-pause-keyboard.jpg": 6071,
+    "c07-pause-gamepad.jpg": 6292
+  },
+  "totalBytes": 197238,
+  "errors": []
+}

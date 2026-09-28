@@ -3,6 +3,7 @@
  * affairs and what moved their relation. Proper nouns (earldoms, houses, sees, kings) stay as the period wrote them.
  */
 import { GENTRY_NAMES_KO } from "./gentryNames";
+import { SURNAMES_KO } from "./personNames.ko";
 
 export const FACTION_KIND_NAMES: Readonly<Record<string, string>> = {
   overlord: "상위 영주", crown: "국왕과 왕실", neighbour: "이웃 영주", church: "주교", merchant_house: "상인 가문", town: "도시 공동체", commons: "농민 공동체",
@@ -15,7 +16,8 @@ export function factionDisplayName(id: string, name: string): string {
   if (id === "crown") return "국왕과 왕실";
   if (id === "neighbour_1" || id === "neighbour_2") return `${read} 가문(이웃 영주)`;
   if (id === "bishop") return `${read} 주교`;
-  if (id === "merchant_house_1" || id === "merchant_house_2") return `${name} 상인 가문`;
+  // NAME-1: a merchant house is named for its family, read in Korean as its people are (FIX-6 `SURNAMES_KO`).
+  if (id === "merchant_house_1" || id === "merchant_house_2") return `${SURNAMES_KO[name] ?? name} 상인 가문`;
   return FACTION_KIND_NAMES[name] ?? name;
 }
 

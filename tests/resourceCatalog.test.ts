@@ -51,13 +51,17 @@ function carterWith(resource: ResourceType): CarterWalker {
 test("every good draws: its artwork or the generic sacks / crates with its name, a cart load, a cargo colour, a carrier", () => {
   for (const resource of RESOURCE_TYPES) {
     const entry = resourceEntry(resource);
-    const markup = renderToStaticMarkup(createElement(ResourceArtwork, { kind: resource, small: true }));
-    if (entry.iconKey === undefined) {
+    const markup = renderToStaticMarkup(createElement(ResourceArtwork, { kind: resource }));
+    const small = renderToStaticMarkup(createElement(ResourceArtwork, { kind: resource, small: true }));
+    // ASSET-2: the resource sheet's cell at both sizes, else the generic sacks / crates and the name (small: nothing).
+    if (entry.sheetCell === undefined) {
       assert.match(markup, entry.storage === "granary" ? /wave7\/pile\/sacks_1-v1\.png/ : /wave7\/pile\/crates_1-v1\.png/, resource);
       assert.ok(markup.includes(`<span class="resource-name-chip">${resourceName(resource)}</span>`), resource);
+      assert.equal(small, "", resource);
     } else {
-      assert.ok(markup.includes(`runtime-icons-v1/${entry.iconKey}.png`), resource);
+      assert.ok(markup.includes(`data-icon="resource.${entry.sheetCell}"`) && small.includes(`data-icon="resource.${entry.sheetCell}"`), resource);
     }
+    assert.doesNotMatch(markup + small, /runtime-icons-v1/, resource);
     const art = cartLoadArt(resource, "NE");
     if (entry.storage === "none") assert.equal(art, null, resource);
     else assert.equal(art?.key, entry.cartLoadKey === undefined ? (entry.storage === "granary" ? "pile_sacks_1" : "pile_crates_1") : `cart_load_${entry.cartLoadKey}_ne`, resource);

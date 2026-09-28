@@ -1,10 +1,11 @@
+import { personOrnament, type PersonStateId } from "../persons/personStates";
 import { PRESSURE_BALANCE } from "../../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../content/buildingConfig";
 import { HISTORY_CHOICE_LABELS, HISTORY_OCCUPATIONS } from "../../content/historyCopy.ko";
 import type { GameState } from "../../engine/engine.types";
 import { history } from "../../engine/history";
 import type { HistoryKind, HistoryQuery, HistoryRecord, HistorySeverity } from "../../engine/history.types";
-import { ageBandOf, ageOf, displayName, personById, personsOf } from "../../engine/persons";
+import { ageBandOf, ageOf, personById, personDisplayName, personsOf } from "../../engine/persons";
 import { persons } from "../../engine/personsApi";
 import type { Person } from "../../engine/persons.types";
 import { MANOR_HOUSEHOLD } from "../../engine/persons.types";
@@ -101,7 +102,7 @@ export function chroniclePeople(state: Pick<GameState, "history" | "persons">): 
   const people: { id: string; name: string; count: number }[] = [];
   for (const [id, count] of counts) {
     const person = personById(state, id);
-    if (person !== undefined) people.push({ id, name: displayName(person), count });
+    if (person !== undefined) people.push({ id, name: personDisplayName(person), count });
   }
   return people.sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 }
@@ -375,7 +376,7 @@ export function recordCard(state: Pick<GameState, "history" | "persons" | "scena
   const { record, bundle } = item;
   const person = recordPerson(state, record);
   const summary = bundle !== null ? CHRONICLE_SCREEN_COPY.bundleTitle : history.summary(record);
-  const personName = person === undefined ? null : displayName(person);
+  const personName = person === undefined ? null : personDisplayName(person);
   const sentence = personName === null || record.kind !== "person" ? summary
     : HOUSEHOLD_TEMPLATES.has(record.template) ? CHRONICLE_SCREEN_COPY.householdLine(personName, summary) : CHRONICLE_SCREEN_COPY.personLine(personName, summary);
   return {
@@ -422,6 +423,8 @@ export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" 
 export type BiographyRelation = Readonly<{ id: string; line: string; portraitId: string | null }>;
 export type BiographyView = Readonly<{
   id: string; name: string; portraitId: string; portraitLine: string; portraitExact: boolean; life: string; role: string;
+  /** INSTALL-23 ④: the state ornament on the great circle (`personStates.ts`; a death also greys the face). */
+  ornament: PersonStateId | null;
   /** The house they belong to (none for a head: it is theirs). */
   household: string | null;
   companion: Readonly<{ id: string; portraitId: string; label: string }> | null;
@@ -436,7 +439,7 @@ function householdName(state: Pick<GameState, "persons">, householdId: string): 
   if (householdId === MANOR_HOUSEHOLD) return null;
   const members = [...(state.persons?.people ?? []), ...(state.persons?.past ?? [])].filter(person => person.householdId === householdId);
   const head = members.find(person => person.role === "head" && person.alive) ?? members.find(person => person.role === "head") ?? members[0];
-  return head === undefined ? null : displayName(head);
+  return head === undefined ? null : personDisplayName(head);
 }
 
 function occupationName(occupation: string): string {
@@ -449,7 +452,7 @@ export function biographyView(state: GameState, personId: string): BiographyView
   const { person } = biography;
   const members = personsOf(state, person.householdId).filter(member => member.id !== person.id)
     .sort((a, b) => (RELATION_ORDER[a.role] ?? 9) - (RELATION_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear);
-  const relations = members.map(member => ({ id: member.id, line: CHRONICLE_SCREEN_COPY.relation(person.role, member.role, displayName(member)),
+  const relations = members.map(member => ({ id: member.id, line: CHRONICLE_SCREEN_COPY.relation(person.role, member.role, personDisplayName(member)),
     portraitId: drawnPortraitId(member, persons.portrait(state, member).portraitId) }));
   // The small circle: the spouse of a head (or the head of a spouse), else the head of the house.
   const companion = members.find(member => member.role === (person.role === "head" ? "spouse" : "head"));
@@ -460,7 +463,7 @@ export function biographyView(state: GameState, personId: string): BiographyView
       const building = state.buildings.find(entry => entry.id === tag.slice("manager:".length));
       if (building !== undefined) offices.push(CHRONICLE_SCREEN_COPY.manager(BUILDING_CONFIG_BY_KIND[building.kind as BuildingKind].name));
     } else if (tag.startsWith("petitioner:")) {
-      const fellows = (state.persons?.people ?? []).filter(other => other.id !== person.id && other.tags.includes(tag)).map(displayName);
+      const fellows = (state.persons?.people ?? []).filter(other => other.id !== person.id && other.tags.includes(tag)).map(other => personDisplayName(other));
       offices.push(CHRONICLE_SCREEN_COPY.petitioner(fellows));
     }
   }
@@ -468,7 +471,8 @@ export function biographyView(state: GameState, personId: string): BiographyView
   const shared = history.query(state, { actors: [{ type: "person", id: personId }], severity: 1 }).slice(-6).reverse();
   const end = biography.died ?? biography.left;
   return {
-    id: person.id, name: biography.name, portraitId: drawnPortraitId(person, biography.portrait.portraitId), portraitExact: person.role === "steward" || biography.portrait.exact,
+    id: person.id, name: personDisplayName(person), portraitId: drawnPortraitId(person, biography.portrait.portraitId), portraitExact: person.role === "steward" || biography.portrait.exact,
+    ornament: personOrnament(state, person),
     portraitLine: person.role === "steward" ? PERSONS_COPY.stewardPortrait
       : CHRONICLE_SCREEN_COPY.portraitMatch(biography.portrait.identityId, biography.portrait.stage, biography.portrait.exact),
     life: CHRONICLE_SCREEN_COPY.life(person.birthYear, end, biography.age, biography.died !== null, biography.left !== null && biography.died === null),

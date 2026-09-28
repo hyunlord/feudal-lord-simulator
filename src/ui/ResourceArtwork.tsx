@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { resourceEntry } from "../content/resourceCatalog";
 import { resourceName } from "../content/resourceCatalog.ko";
 import type { ResourceType } from "../content/resourceConfig";
 import { assetUrlForBase } from "../render/worldAssets";
-import { RESOURCE_BAR_COPY } from "./resourceBarCopy.ko";
 import { UiIcon } from "./UiIcon";
 
 export type ResourceArtworkKind = ResourceType | "population";
@@ -17,21 +15,18 @@ export function ResourceArtwork({ kind, small = false }: {
   readonly kind: ResourceArtworkKind;
   readonly small?: boolean;
 }) {
-  const [failed, setFailed] = useState(false);
   const className = small ? "resource-artwork resource-artwork--small" : "resource-artwork resource-bar__icon";
-  // UX-2: the kinds the P0 resource sheet paints (24 px); the others keep their runtime-icons-v1 picture.
-  const entry = kind === "population" ? null : resourceEntry(kind);
-  const cell = kind === "population" ? "population" : entry?.sheetCell;
-  if (!small && cell !== undefined) return <UiIcon sheet="resource" cell={cell} className={className} />;
-  const icon = kind === "population" ? "population" : entry?.iconKey;
-  if (icon !== undefined && !failed) {
-    return <img className={className} width={32} height={32} alt="" aria-hidden="true"
-      src={art(`assets/runtime-icons-v1/${icon}.png`)} onError={() => setFailed(true)} />;
-  }
+  // ASSET-2: every good the UX-2 resource sheet paints is drawn from it, at both sizes (the old runtime-icons-v1
+  // pictures are retired). A good without a cell: at full size the generic sacks or crates and its name; small (the
+  // bar's second line, which names it in words) no picture.
+  if (kind === "population") return <UiIcon sheet="resource" cell="population" className={className} />;
+  const cell = resourceEntry(kind).sheetCell;
+  if (cell !== undefined) return <UiIcon sheet="resource" cell={cell} className={className} />;
+  if (small) return null;
   return (
     <span className="resource-artwork-generic" aria-hidden="true">
-      <img className={className} width={32} height={32} alt="" src={art(GENERIC_ART[entry?.storage ?? "none"])} />
-      <span className="resource-name-chip">{kind === "population" ? RESOURCE_BAR_COPY.populationName : resourceName(kind)}</span>
+      <img className={className} width={32} height={32} alt="" src={art(GENERIC_ART[resourceEntry(kind).storage])} />
+      <span className="resource-name-chip">{resourceName(kind)}</span>
     </span>
   );
 }

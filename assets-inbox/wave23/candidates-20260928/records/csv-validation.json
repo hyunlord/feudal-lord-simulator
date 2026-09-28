@@ -1,0 +1,79 @@
+{
+  "tool": "artifact-tool author/reimport",
+  "dataRows": 82,
+  "columns": 17,
+  "allCellsRoundtrip": true,
+  "jsonFieldsParsed": true,
+  "weatherCaps": [
+    {
+      "id": "weather/overcast_tint",
+      "opacityMax": 0.18,
+      "blend": "multiply"
+    },
+    {
+      "id": "weather/fog_bank_a",
+      "opacityMax": 0.2,
+      "blend": "normal"
+    },
+    {
+      "id": "weather/fog_bank_b",
+      "opacityMax": 0.2,
+      "blend": "normal"
+    },
+    {
+      "id": "weather/fog_bank_c",
+      "opacityMax": 0.2,
+      "blend": "normal"
+    },
+    {
+      "id": "weather/drizzle_sheet",
+      "opacityMax": 0.22,
+      "blend": "normal"
+    },
+    {
+      "id": "weather/storm_rain_sheet",
+      "opacityMax": 0.28,
+      "blend": "normal"
+    },
+    {
+      "id": "weather/wet_ground_sheen",
+      "opacityMax": 0.16,
+      "blend": "screen"
+    },
+    {
+      "id": "weather/puddle_ripple_sheet",
+      "opacityMax": 0.35,
+      "blend": "screen"
+    },
+    {
+      "id": "weather/dry_dust_a",
+      "opacityMax": 0.18,
+      "blend": "normal"
+    },
+    {
+      "id": "weather/dry_dust_b",
+      "opacityMax": 0.18,
+      "blend": "normal"
+    },
+    {
+      "id": "weather/heat_cracked_ground",
+      "opacityMax": 0.32,
+      "blend": "multiply"
+    },
+    {
+      "id": "weather/frost_morning_tint",
+      "opacityMax": 0.1,
+      "blend": "normal"
+    },
+    {
+      "id": "weather/cloud_shadow_a",
+      "opacityMax": 0.12,
+      "blend": "multiply"
+    },
+    {
+      "id": "weather/cloud_shadow_b",
+      "opacityMax": 0.12,
+      "blend": "multiply"
+    }
+  ]
+}

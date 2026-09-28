@@ -1,0 +1,11 @@
+# Shared Wave23 lane instructions
+
+You are not alone; do not revert others. Own only your assigned assets/raw/records/script/proof. No further agents, no product installs/edits/git. Root owns package/CSV. Read WORK_ORDER,ASSET_PIPELINE_SPEC,ART_BIBLE and DESIGN. Exact package root is output/astra-wave23-candidates-v1. References already extracted, cattle_pair and heater added. Inspect relevant local images before imagegen edits. Only project-owned image refs. Royal factual web research permitted, not external generation images.
+
+Use built-in image_gen.imagegen, one call per requested asset/variant (derivative sizes from one source). Save actual prompt, exact reference inputs and raw originals incrementally; don't print dataURI. result.output_hint supplies generated path. Tool may take minutes; wait without duplicatecalls. Never substitute procedural/vector artwork for requested painted bitmaps. Sharp permitted for documented resize/composition/mask preservation, not drawing new art. No Python image editing. Actual tool unknownmodel/seed null. Preserve alpha, inspect on light/dark; no white/checkerboardbackground. If transparencyfails use imagegen extraction/edit.
+
+Sharp available /Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp . Canvas /tmp/astra-wave4b-work-20260925/node_modules/@napi-rs/canvas available for proof assembly. Scripts .cjs. Use representative-beforevariants; view at targetsize. No invented PASS. Keep final paths and script reproducible. Fonts/labels may appear on proofs only (except letters required on glyph assets).
+
+Deliver records/metadata-<lane>.json array, one per finalPNG:
+{id,file,width,height,description,role,blendMode,opacityMax,frameLayout,pivot,displayScale,qa,generationRecords:[{prompt,rawFile,referenceImages,tool:"image_gen.imagegen",model:null,seed:null}],processing}.
+Paths package-relative, referenceInputs frozen/copied into references or ownraw. All generationRecords rawFile must exist. Missing optional fields use null, not guessed. FrameLayout state cell size/count/order. opacityMax weather mandatory, max combined layer caveats stated. qa evidence + limitations. Own raw/<lane>/, scripts/<lane>.cjs, records/<lane>-*.json/png/md. Proofowner communicates dependencies. Finish with exact file counts, issues, limitations.

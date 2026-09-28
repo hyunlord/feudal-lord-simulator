@@ -1,0 +1,151 @@
+{
+  "seed": 20260929,
+  "algorithm": "Mulberry32, Fisher-Yates ordering, independent random orientation after ordering",
+  "rule": "Six sibling pairs (three identities pairs at child and young) and six within-identity child-young pairs. Labels, metadata and answer key are not shown to the judge.",
+  "pairs": [
+    {
+      "relation": "different",
+      "left": {
+        "id": "L2_203",
+        "stage": "young"
+      },
+      "right": {
+        "id": "L2_204",
+        "stage": "young"
+      },
+      "number": 1
+    },
+    {
+      "relation": "different",
+      "left": {
+        "id": "L1_203",
+        "stage": "young"
+      },
+      "right": {
+        "id": "L1_204",
+        "stage": "young"
+      },
+      "number": 2
+    },
+    {
+      "relation": "same",
+      "left": {
+        "id": "L1_204",
+        "stage": "young"
+      },
+      "right": {
+        "id": "L1_204",
+        "stage": "child"
+      },
+      "number": 3
+    },
+    {
+      "relation": "same",
+      "left": {
+        "id": "L1_203",
+        "stage": "young"
+      },
+      "right": {
+        "id": "L1_203",
+        "stage": "child"
+      },
+      "number": 4
+    },
+    {
+      "relation": "different",
+      "left": {
+        "id": "L1_204",
+        "stage": "child"
+      },
+      "right": {
+        "id": "L1_203",
+        "stage": "child"
+      },
+      "number": 5
+    },
+    {
+      "relation": "same",
+      "left": {
+        "id": "L2_204",
+        "stage": "child"
+      },
+      "right": {
+        "id": "L2_204",
+        "stage": "young"
+      },
+      "number": 6
+    },
+    {
+      "relation": "same",
+      "left": {
+        "id": "L2_203",
+        "stage": "child"
+      },
+      "right": {
+        "id": "L2_203",
+        "stage": "young"
+      },
+      "number": 7
+    },
+    {
+      "relation": "different",
+      "left": {
+        "id": "L2_203",
+        "stage": "child"
+      },
+      "right": {
+        "id": "L2_204",
+        "stage": "child"
+      },
+      "number": 8
+    },
+    {
+      "relation": "same",
+      "left": {
+        "id": "L2_202",
+        "stage": "child"
+      },
+      "right": {
+        "id": "L2_202",
+        "stage": "young"
+      },
+      "number": 9
+    },
+    {
+      "relation": "different",
+      "left": {
+        "id": "L2_201",
+        "stage": "child"
+      },
+      "right": {
+        "id": "L2_202",
+        "stage": "child"
+      },
+      "number": 10
+    },
+    {
+      "relation": "same",
+      "left": {
+        "id": "L2_201",
+        "stage": "young"
+      },
+      "right": {
+        "id": "L2_201",
+        "stage": "child"
+      },
+      "number": 11
+    },
+    {
+      "relation": "different",
+      "left": {
+        "id": "L2_201",
+        "stage": "young"
+      },
+      "right": {
+        "id": "L2_202",
+        "stage": "young"
+      },
+      "number": 12
+    }
+  ]
+}

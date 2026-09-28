@@ -1,0 +1,194 @@
+{
+  "review_mode": "blind_clothes_only",
+  "confidence_scale": "0 to 1; subjective visual classification confidence, not calibrated probability",
+  "answers": [
+    {
+      "number": 1,
+      "role": "gentry",
+      "confidence": 0.69,
+      "reason": "Broad pale fur lapels frame a narrow gold-edged inner panel; relatively formal layered display."
+    },
+    {
+      "number": 2,
+      "role": "merchant",
+      "confidence": 0.6,
+      "reason": "Rich blue cloth and a brown fur collar suggest prosperity; practical front fastenings provide less overt ceremonial display."
+    },
+    {
+      "number": 3,
+      "role": "gentry",
+      "confidence": 0.71,
+      "reason": "Broad pale fur framing, deep red layers and restrained gold edging read as formal landed-family dress."
+    },
+    {
+      "number": 4,
+      "role": "reeve",
+      "confidence": 0.79,
+      "reason": "Plain brown cloth, small front buttons and no visible fur or metallic trim suggest comparatively modest dress."
+    },
+    {
+      "number": 5,
+      "role": "reeve",
+      "confidence": 0.75,
+      "reason": "Simple rust-colored gown with white linen neckline and small buttons; no conspicuous luxury trim."
+    },
+    {
+      "number": 6,
+      "role": "gentry",
+      "confidence": 0.7,
+      "reason": "Wide pale fur lapels and gold-framed inner panel create a distinctly formal layered costume."
+    },
+    {
+      "number": 7,
+      "role": "reeve",
+      "confidence": 0.77,
+      "reason": "Plain olive cloth and straightforward covered-button front lack visible luxury detailing."
+    },
+    {
+      "number": 8,
+      "role": "gentry",
+      "confidence": 0.67,
+      "reason": "Broad pale fur lapels surrounding gold piping imply formal wealth, although wealthy merchants could wear similar clothes."
+    },
+    {
+      "number": 9,
+      "role": "gentry",
+      "confidence": 0.66,
+      "reason": "Pale fur lapels, gold edging and rich ochre layers read as elevated household display."
+    },
+    {
+      "number": 10,
+      "role": "merchant",
+      "confidence": 0.57,
+      "reason": "Rich blue robe with substantial brown fur collar suggests prosperity but provides little specific landed-status evidence."
+    },
+    {
+      "number": 11,
+      "role": "gentry",
+      "confidence": 0.66,
+      "reason": "Pale fur framing and gold-edged red inner garment read as formal high-status layers."
+    },
+    {
+      "number": 12,
+      "role": "merchant",
+      "confidence": 0.59,
+      "reason": "Rich plum cloth with a compact brown fur neckline and modest buttoning suggests a prosperous household."
+    },
+    {
+      "number": 13,
+      "role": "reeve",
+      "confidence": 0.75,
+      "reason": "Ochre cloth and simple front buttons are relatively unadorned, with no visible fur or gold trim."
+    },
+    {
+      "number": 14,
+      "role": "gentry",
+      "confidence": 0.69,
+      "reason": "Broad pale fur lapels frame a formal dark red bodice and linen neckline."
+    },
+    {
+      "number": 15,
+      "role": "merchant",
+      "confidence": 0.55,
+      "reason": "Blue cloth and a rounded brown fur collar suggest comfortable wealth; a small gold detail could also support gentry."
+    },
+    {
+      "number": 16,
+      "role": "reeve",
+      "confidence": 0.76,
+      "reason": "Plain russet gown with linen neckline and small front fastenings gives a comparatively modest impression."
+    },
+    {
+      "number": 17,
+      "role": "merchant",
+      "confidence": 0.57,
+      "reason": "Blue robe and large brown fur collar show wealth, but no additional trim clearly distinguishes landed status."
+    },
+    {
+      "number": 18,
+      "role": "merchant",
+      "confidence": 0.54,
+      "reason": "Rounded brown fur collar, blue fabric and a small decorated closure suggest prosperous dress; merchant versus gentry is weakly distinguishable."
+    },
+    {
+      "number": 19,
+      "role": "merchant",
+      "confidence": 0.6,
+      "reason": "Plum gown with a narrow brown fur neckline and button row looks prosperous yet restrained."
+    },
+    {
+      "number": 20,
+      "role": "gentry",
+      "confidence": 0.68,
+      "reason": "Pale fur lapels and gold-framed inner panel suggest formal high-status layered attire."
+    },
+    {
+      "number": 21,
+      "role": "reeve",
+      "confidence": 0.78,
+      "reason": "Untrimmed olive gown with white linen and simple buttons suggests modest local-office dress."
+    },
+    {
+      "number": 22,
+      "role": "merchant",
+      "confidence": 0.59,
+      "reason": "Rich blue cloth, compact brown fur neckline and covered buttons suggest a prosperous household."
+    },
+    {
+      "number": 23,
+      "role": "merchant",
+      "confidence": 0.56,
+      "reason": "Blue robe and brown fur collar communicate wealth, but little in the crop establishes landed status."
+    },
+    {
+      "number": 24,
+      "role": "merchant",
+      "confidence": 0.55,
+      "reason": "Burgundy robe with broad brown fur collar suggests prosperity; could plausibly belong to gentry as well."
+    },
+    {
+      "number": 25,
+      "role": "gentry",
+      "confidence": 0.69,
+      "reason": "Pale fur lapels, gold piping and layered red fabric present the more formal luxury treatment."
+    },
+    {
+      "number": 26,
+      "role": "reeve",
+      "confidence": 0.78,
+      "reason": "Plain gray-blue button-front garment lacks conspicuous fur, gold edging or layered display."
+    },
+    {
+      "number": 27,
+      "role": "reeve",
+      "confidence": 0.78,
+      "reason": "Simple gray cloth and small covered buttons suggest comparatively modest dress."
+    },
+    {
+      "number": 28,
+      "role": "reeve",
+      "confidence": 0.78,
+      "reason": "Plain olive gown, linen neckline and restrained buttoning show no conspicuous luxury trim."
+    },
+    {
+      "number": 29,
+      "role": "gentry",
+      "confidence": 0.68,
+      "reason": "Broad pale fur lapels enclosing a gold-edged blue panel read as formal high-status layers."
+    },
+    {
+      "number": 30,
+      "role": "reeve",
+      "confidence": 0.74,
+      "reason": "Plain ochre gown with a linen neckline and small buttons; color alone does not establish wealth."
+    }
+  ],
+  "limitations": [
+    "Only the specified numbered clothes-only image was viewed; no source directories, answer key, metadata or other images were inspected.",
+    "Assignments were made from visible fabric, fur, layering, trim and fastenings, without imposing class quotas.",
+    "The plain-clothed group is visually separable from the fur-trimmed group, but identifying village reeve specifically is not possible from clothing alone.",
+    "Gentry and prosperous merchants plausibly overlap in clothing. Pale wide lapels and gold edging versus brown collars are visual conventions in this sheet, not reliable historical proof of social role.",
+    "The narrow upper-torso crops omit complete garments, accessories and context. No inference was made from faces, skin tone, hair or body type.",
+    "This is a visual readability judgment, not a historical costume-authenticity verification."
+  ]
+}

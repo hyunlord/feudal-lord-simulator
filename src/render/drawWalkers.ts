@@ -8,14 +8,13 @@ import { walkerVisualAnchor } from "./walkerAnchor";
 import { drawProceduralWalkerSprite } from "./walkerProceduralSprite";
 import { walkerPresentationFor } from "./walkerPresentation";
 import { drawRuntimeActor, drawRuntimeHandcart } from "./runtimeActorAssets";
-import { composedWalkerReady, drawComposedWalker, walkerAppearance } from "./walkerComposer";
+import { composedWalkerReady, drawComposedWalker, VILLAGER_WORLD_SCALE, walkerAppearance } from "./walkerComposer";
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
 import { visibilityArt } from "./visibilityArtManifest";
 import { drawWave7 } from "./wave7Art";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { drawUiIcon } from "../ui/uiArt";
 
-const VILLAGER_WORLD_SCALE = 0.55;
 
 export function drawWalkers(
   context: CanvasRenderingContext2D,

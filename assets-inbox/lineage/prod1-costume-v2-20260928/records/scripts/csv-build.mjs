@@ -1,0 +1,17 @@
+import fs from 'node:fs/promises';
+import {Workbook} from '@oai/artifact-tool';
+const base='/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-costume-v2';
+const original=JSON.parse(await fs.readFile(base+'/../astra-lineage-prod1-v1/records/assets.json','utf8'));
+const entries=(await Promise.all(['men','women','children','mother'].map(async lane=>JSON.parse(await fs.readFile(`${base}/records/${lane}.json`,'utf8'))))).flat().sort((a,b)=>a.id.localeCompare(b.id));
+if(entries.length!==41||new Set(entries.map(e=>e.id)).size!==41)throw Error('Expected41unique');
+const headers=['id','file','status','source','source_sha256','lineage','stage','age','sex','marital_status','clothing','prompt','references','raw_file','tool','model','seed','processing','qa'];
+const values=[headers,...entries.map(e=>{const o=original.find(x=>x.id===e.id);if(!o)throw Error(e.id);return[e.id,e.file,'candidate',e.source,e.sourceSHA256,o.lineage,o.stage,String(o.age),o.sex,o.maritalStatus,e.clothing,e.prompt,JSON.stringify(e.referenceImages),e.rawFile,e.tool,e.model??'not provided',e.seed??'not provided',e.processing,JSON.stringify(e.qa)];})];
+const book=Workbook.create(),sheet=book.worksheets.add('Rework');sheet.getRange('A1:S42').values=values;book.recalculate();
+const quote=v=>'"'+String(v??'').replaceAll('"','""')+'"';
+const csv=sheet.getRange('A1:S42').values.map(r=>r.map(quote).join(',')).join('\r\n')+'\r\n';
+const reopened=await Workbook.fromCSV(csv,{sheetName:'Check'}),back=reopened.worksheets.getItem('Check').getRange('A1:S42').values;
+for(let r=0;r<42;r++)for(let c=0;c<19;c++)if(String(values[r][c])!==String(back[r][c]))throw Error(`Roundtrip ${r}:${c}`);
+await fs.writeFile(base+'/assets.csv','\uFEFF'+csv);
+await fs.writeFile(base+'/records/assets.json',JSON.stringify(entries,null,2));
+await fs.writeFile(base+'/records/csv-validation.json',JSON.stringify({rows:41,columns:19,exactRoundtrip:true,authoring:'artifact-tool'},null,2));
+console.log('CSV41 exact roundtrip PASS');

@@ -66,7 +66,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 ## 병합 전 자동 검사
 본선(`codex/phase15-organic-ground`)과 main에 들어가는 것은 pre-push 훅이 먼저 검사한다(AGENTS.md 규칙 19, REVIEW-1).
 - **실행**: `npm run check:merge [-- --base <rev> --head <rev>]`. 기본 범위는 본선과의 merge-base..HEAD다. 훅은 `FLS_PUSH_OK=1 git push …`로 푸시할 때 원격 머리..로컬 머리를 넘긴다.
-  - 검사 다섯 가지 가운데 하나라도 실패하면 푸시를 거부한다.
+  - 검사 여섯 가지 가운데 하나라도 실패하면 푸시를 거부한다.
   - 이 작업 트리가 `<head>`와 다르거나 수정돼 있으면, `<head>`의 임시 워크트리(LFS는 포인터)에서 ESLint·tsc를 돌린다.
 - **검사**:
   1. `scripts/checks/pinChanges.mjs`: 고정값 파일·테스트 해시 값이 바뀌었으면, 같은 범위에서 결정 목록(`docs/decisions/**`, `docs/DECISIONS.md`)에 더한 줄에 그 파일 이름이나 상위 폴더가 있어야 한다.
@@ -74,18 +74,25 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
   3. ESLint(`tools/eslint/`): 바뀐 코드 파일만 본다. `tools/eslint/eslint-suppressions.json`에 없는 위반만 실패한다(REVIEW-1 때 122건: 금지 컨트롤 118, exhaustive-deps 4. UI-KIT-1이 모두 고쳐 0건).
   4. typecheck: 루트 `node_modules`의 `tsc --noEmit`.
   5. `scripts/checks/inboxLedger.mjs`(INBOX-1q): `<head>`의 `assets-inbox/INBOX_LEDGER.csv` 전체에서 `replaced_by`의 경로(`;`로 이은 것 하나하나)가 장부의 다른 행 `file`이어야 한다. `cursor_*.png(6장)` 같은 패턴·설명·오타는 실패한다. 범위에서 바뀐 행만이 아니라 장부 전체를 본다(도입 때 걸린 행 1개는 같은 커밋에서 고쳐 기존 위반 목록이 없다).
+  6. `scripts/checks/koreanStrings.mjs`(CODE-1b): `<head>`의 `src/**/*.{ts,tsx,js,jsx,mjs,cjs}`에서 한글이 든 문자열·템플릿·JSX 텍스트는 `*.ko.ts`와 `*.generated.*`에만 둘 수 있다(주석 제외).
+     - 파싱은 `tools/eslint`의 TypeScript 6으로 한다.
+     - 기존 것은 `scripts/checks/korean-strings-baseline.json`(40개 파일, 463개 문구)에 파일별 정확한 문구로 있다. 목록 문구를 고치면 새 문자열로 본다.
 - **ESLint 설치가 따로인 이유**
   - typescript-eslint는 TypeScript 6.1 미만만 지원한다. 루트의 TypeScript 7(네이티브 포트)에는 JS 컴파일러 API가 없다.
   - 그래서 `tools/eslint/`에 ESLint 10.11 · @typescript-eslint/parser 8.70 · TypeScript 6.0.3(파싱 전용) · react-hooks 7.1.1을 자체 lock으로 둔다. 루트 package.json의 의존성과 lock에는 넣지 않는다.
   - 첫 검사 때 `npm ci`가 저절로 된다(몇 초). ESLint는 저장소 루트에서 돈다(설정의 패턴이 작업 디렉터리 기준).
   - typescript-eslint가 TS 7을 지원하면 루트로 옮길지 그때 결정한다.
+- **계층 규칙 파일: `tools/eslint/layers.mjs`**(CODE-1b)
+  - `src/{engine,population,economy,zones,world,save,ledger,state}/**`에서 `src/ui/**`·`src/render/**`를 import하면 `no-restricted-imports` 위반이다(`../ui/…`, `../../render/…`, `src/ui/…` 모두).
+  - 들어올 때 있던 위반(`src/population/marketAccess.ts` → `ui/serviceDiagnosisCopy.ko`, 1건)은 `tools/eslint/eslint-suppressions.json`에 있다. CODE-1a가 없앤다.
+  - `npm run lint`도 이 억제 파일을 읽는다.
 - **금지 컨트롤 규칙 파일: `tools/eslint/uiControls.mjs`**
   - 이것이 원본이다. `src/ui`의 네이티브 `<select>`·`<input>`·맨 `<button>`을 금지하고, UI 부품 폴더 `src/ui/kit/`는 예외다.
   - UI-KIT-1의 ESLint 설정도 이 파일의 `uiControlsConfig`를 가져다 써서 규칙을 하나로 유지한다.
 - **목록 관리**
-  - 억제·예외 목록은 줄이기만 한다. 위반을 고쳤으면 본선에서 `node scripts/checks/lintExceptions.mjs --write-baseline`, `tools/eslint/node_modules/.bin/eslint -c tools/eslint/eslint.config.mjs --suppressions-location tools/eslint/eslint-suppressions.json --prune-suppressions .`를 실행한다.
+  - 억제·예외 목록은 줄이기만 한다. 위반을 고쳤으면 본선에서 `node scripts/checks/lintExceptions.mjs --write-baseline`, `node scripts/checks/koreanStrings.mjs --write-baseline`, `tools/eslint/node_modules/.bin/eslint -c tools/eslint/eslint.config.mjs --suppressions-location tools/eslint/eslint-suppressions.json --prune-suppressions .`를 실행한다.
   - 새 위반을 목록에 넣어 통과시키지 않는다.
-- **자체 시험**: `bash scripts/checks/selfTest.sh`. 버려도 되는 저장소에서 위반 다섯 종류(고정값·예외·금지 컨트롤·타입·장부 replaced_by)는 거부되고, 고친 변경·일반 변경·작업 브랜치는 통과해야 한다.
+- **자체 시험**: `bash scripts/checks/selfTest.sh`. 버려도 되는 저장소에서 위반 일곱 종류(고정값·예외·금지 컨트롤·타입·장부 replaced_by·계층 import·`*.ko.ts` 밖 새 한글)는 거부되고, 고친 변경·일반 변경·작업 브랜치는 통과해야 한다.
 
 ## DGX 준비(한 번, 다시 해도 됨)
 `npm run remote:setup`은 `scripts/remote/setup-dgx.sh`를 DGX에서 실행한다. sudo 없이 `~/fls-runs`와 `~/.config/systemd/user`만 쓴다.

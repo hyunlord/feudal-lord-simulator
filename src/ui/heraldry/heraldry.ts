@@ -78,30 +78,11 @@ export const heraldryArms = (heraldrySeed: number): ArmsRecipe => armsRecipe(her
 export const heraldryMark = (heraldrySeed: number): MerchantRecipe => merchantRecipe(heraldrySeed, "heraldry");
 
 /**
- * UI-6b: the Crown bears the king's own arms, not a seed's: England — gules, three lions passant in pale, or — until
- * Edward III quartered them with France ancient (azure semé de lis, or) in 1340: 1 and 4 France, 2 and 3 England.
- * Composed from the Wave 14 lion and lis charges on the heater shield (`EmblemImage`). The Wave 14 lion is passant in
- * profile: the batch has no guardant (full-face) lion.
+ * UI-6b: the Crown bears the king's own arms, not a seed's: England — gules, three lions passant guardant in pale, or —
+ * until Edward III quartered them with France ancient (azure semé de lis, or) in 1340: 1 and 4 France, 2 and 3 England.
+ * INSTALL-23: drawn from Wave 23's two finished pictures (`EmblemImage` `royalArmsUrls`).
  */
 export type RoyalArms = "england" | "france_england";
 export const ROYAL_QUARTERED_FROM_YEAR = 1340;
 export const royalArms = (year: number): RoyalArms => year >= ROYAL_QUARTERED_FROM_YEAR ? "france_england" : "england";
 
-type Box = Readonly<{ x: number; y: number; width: number; height: number }>;
-const square = (x: number, y: number, size: number): Box => ({ x, y, width: size, height: size });
-/** A semé: charges in staggered rows over a quarter's box (the quarter's mask and the shield clip them). */
-function seme(x0: number, x1: number, y0: number, y1: number, size: number): readonly Box[] {
-  const boxes: Box[] = [];
-  for (let row = 0, y = y0; y < y1; row += 1, y += size) {
-    for (let x = x0 - (row % 2 === 0 ? 0 : size / 2); x < x1; x += size) boxes.push(square(x, y, size));
-  }
-  return boxes;
-}
-/** Where the charges lie on the 256 px heater shield (its fill spans x 34–222, y 28–234; the quarters meet at 128). */
-export const ROYAL_LAYOUT: Readonly<Record<RoyalArms, Readonly<{ lions: readonly Box[]; lis: readonly Box[] }>>> = {
-  england: { lions: [square(84, 26, 88), square(88, 92, 80), square(95, 154, 66)], lis: [] },
-  france_england: {
-    lions: [square(158, 30, 34), square(158, 61, 34), square(159, 92, 32), square(78, 131, 34), square(82, 162, 32), square(88, 191, 28)],
-    lis: [...seme(34, 128, 30, 128, 30), ...seme(128, 222, 130, 234, 30)],
-  },
-};

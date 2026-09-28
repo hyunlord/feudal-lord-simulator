@@ -1,0 +1,2274 @@
+{
+  "status": "PASS",
+  "count": 160,
+  "identities": 82,
+  "dimensions": "256x256",
+  "parentChecks": [
+    {
+      "asset": "L3_201_young",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_young",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_mature",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_mature",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_baby",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_baby",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_baby",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_201_baby",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_young",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_young",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_mature",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_mature",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_baby",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_202_baby",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_young",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_young",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_mature",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_mature",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_mature",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_mature",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_baby",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_203_baby",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_young",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_young",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_mature",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_mature",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_child",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_child",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_baby",
+      "parent": "L3_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_204_baby",
+      "parent": "L3_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_301_young",
+      "parent": "L3_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_301_young",
+      "parent": "L3_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_301_child",
+      "parent": "L3_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_301_child",
+      "parent": "L3_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_301_child",
+      "parent": "L3_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_301_child",
+      "parent": "L3_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_301_baby",
+      "parent": "L3_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_301_baby",
+      "parent": "L3_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_302_young",
+      "parent": "L3_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_302_young",
+      "parent": "L3_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_302_baby",
+      "parent": "L3_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_302_baby",
+      "parent": "L3_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_302_baby",
+      "parent": "L3_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_302_baby",
+      "parent": "L3_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_302_child",
+      "parent": "L3_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_302_child",
+      "parent": "L3_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_303_young",
+      "parent": "L3_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_303_young",
+      "parent": "L3_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_303_baby",
+      "parent": "L3_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_303_baby",
+      "parent": "L3_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_303_child",
+      "parent": "L3_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_303_child",
+      "parent": "L3_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_303_child",
+      "parent": "L3_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_303_child",
+      "parent": "L3_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_304_young",
+      "parent": "L3_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_304_young",
+      "parent": "L3_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_304_baby",
+      "parent": "L3_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_304_baby",
+      "parent": "L3_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_304_child",
+      "parent": "L3_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_304_child",
+      "parent": "L3_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_304_child",
+      "parent": "L3_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L3_304_child",
+      "parent": "L3_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_young",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_young",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_young",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_young",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_young",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_young",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_young",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_young",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_302_young",
+      "parent": "L4_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_302_young",
+      "parent": "L4_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_303_young",
+      "parent": "L4_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_303_young",
+      "parent": "L4_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_304_young",
+      "parent": "L4_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_304_young",
+      "parent": "L4_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_301_young",
+      "parent": "L4_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_301_young",
+      "parent": "L4_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_301_young",
+      "parent": "L4_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_301_young",
+      "parent": "L4_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_mature",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_mature",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_mature",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_mature",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_baby",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_baby",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_baby",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_baby",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_baby",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_baby",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_baby",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_baby",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_301_baby",
+      "parent": "L4_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_301_baby",
+      "parent": "L4_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_302_baby",
+      "parent": "L4_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_302_baby",
+      "parent": "L4_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_303_baby",
+      "parent": "L4_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_303_baby",
+      "parent": "L4_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_304_baby",
+      "parent": "L4_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_304_baby",
+      "parent": "L4_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_child",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_child",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_child",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_child",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_child",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_child",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_child",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_202_child",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_child",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_child",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_child",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_child",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_child",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_child",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_child",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_204_child",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_301_child",
+      "parent": "L4_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_301_child",
+      "parent": "L4_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_302_child",
+      "parent": "L4_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_302_child",
+      "parent": "L4_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_303_child",
+      "parent": "L4_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_303_child",
+      "parent": "L4_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_304_child",
+      "parent": "L4_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_304_child",
+      "parent": "L4_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_mature",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_mature",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_mature",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_201_mature",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_mature",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_mature",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_mature",
+      "parent": "L4_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L4_203_mature",
+      "parent": "L4_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_young",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_young",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_young",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_young",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_young",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_young",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_young",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_young",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_301_young",
+      "parent": "L5_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_301_young",
+      "parent": "L5_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_302_young",
+      "parent": "L5_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_302_young",
+      "parent": "L5_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_mature",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_mature",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_mature",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_mature",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_mature",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_mature",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_young",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_young",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_young",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_young",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_young",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_young",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_young",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_young",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_baby",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_baby",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_baby",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_baby",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_baby",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_baby",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_baby",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_baby",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_301_baby",
+      "parent": "L5_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_301_baby",
+      "parent": "L5_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_302_baby",
+      "parent": "L5_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_302_baby",
+      "parent": "L5_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_baby",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_baby",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_baby",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_baby",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_child",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_child",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_child",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_201_child",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_child",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_child",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_child",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_202_child",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_child",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_child",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_child",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_child",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_child",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_child",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_child",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_204_child",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_301_child",
+      "parent": "L5_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_301_child",
+      "parent": "L5_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_301_child",
+      "parent": "L5_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_301_child",
+      "parent": "L5_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_302_child",
+      "parent": "L5_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_302_child",
+      "parent": "L5_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_302_child",
+      "parent": "L5_201",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_302_child",
+      "parent": "L5_205",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_child",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_child",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_child",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_303_child",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_child",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_child",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_child",
+      "parent": "L5_206",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_304_child",
+      "parent": "L5_203",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_mature",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_mature",
+      "parent": "L5_102",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_mature",
+      "parent": "L5_101",
+      "actualInput": true
+    },
+    {
+      "asset": "L5_203_mature",
+      "parent": "L5_102",
+      "actualInput": true
+    }
+  ],
+  "maritalChecks": [
+    {
+      "asset": "L3_101_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_101_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_101_old",
+      "sex": "male",
+      "stage": "old",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_102_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_102_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_102_old",
+      "sex": "female",
+      "stage": "old",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_205_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_205_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_206_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_206_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_201_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_201_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_201_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "not applicable",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_201_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "not applicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L3_202_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_202_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_202_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "not applicable",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_202_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "not applicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L3_203_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_203_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_203_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "not applicable",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_203_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "not applicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L3_204_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_204_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_204_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "not applicable",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_204_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "not applicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L3_301_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_301_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "not applicable",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_301_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "not applicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L3_302_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_302_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "not applicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L3_302_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "not applicable",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_303_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_303_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "not applicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L3_303_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "not applicable",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_304_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L3_304_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "not applicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L3_304_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "not applicable",
+      "clothing": "gentry fine wool and modest fur collar; married adult women head covered"
+    },
+    {
+      "asset": "L4_101_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted olive fine wool merchant tunic with plain linen collar"
+    },
+    {
+      "asset": "L4_102_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted rust wool gown and ivory linen coif covering hair"
+    },
+    {
+      "asset": "L4_205_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted blue wool gown and linen coif"
+    },
+    {
+      "asset": "L4_206_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted rust wool merchant tunic"
+    },
+    {
+      "asset": "L4_201_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted blue wool merchant tunic"
+    },
+    {
+      "asset": "L4_202_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted brown wool merchant tunic"
+    },
+    {
+      "asset": "L4_203_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted olive wool merchant gown and linen coif"
+    },
+    {
+      "asset": "L4_204_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "muted russet wool merchant gown"
+    },
+    {
+      "asset": "L4_302_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "muted green wool gown"
+    },
+    {
+      "asset": "L4_303_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted slate wool tunic"
+    },
+    {
+      "asset": "L4_304_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "muted ochre wool gown"
+    },
+    {
+      "asset": "L4_101_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "muted olive fine wool merchant tunic with plain linen collar"
+    },
+    {
+      "asset": "L4_102_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "muted rust wool gown and ivory linen coif covering hair"
+    },
+    {
+      "asset": "L4_101_old",
+      "sex": "male",
+      "stage": "old",
+      "status": "married",
+      "clothing": "muted olive fine wool merchant tunic with plain linen collar"
+    },
+    {
+      "asset": "L4_102_old",
+      "sex": "female",
+      "stage": "old",
+      "status": "married",
+      "clothing": "muted rust wool gown and ivory linen coif covering hair"
+    },
+    {
+      "asset": "L4_205_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "muted blue wool gown and linen coif"
+    },
+    {
+      "asset": "L4_206_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "muted rust wool merchant tunic"
+    },
+    {
+      "asset": "L4_301_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "muted brown wool tunic"
+    },
+    {
+      "asset": "L4_202_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "muted brown wool merchant tunic"
+    },
+    {
+      "asset": "L4_204_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "muted russet wool merchant gown"
+    },
+    {
+      "asset": "L4_201_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L4_202_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L4_203_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L4_204_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L4_301_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L4_302_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L4_303_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L4_304_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "linen bonnet and swaddling"
+    },
+    {
+      "asset": "L4_201_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil"
+    },
+    {
+      "asset": "L4_202_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil"
+    },
+    {
+      "asset": "L4_203_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil"
+    },
+    {
+      "asset": "L4_204_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil"
+    },
+    {
+      "asset": "L4_301_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil"
+    },
+    {
+      "asset": "L4_302_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil"
+    },
+    {
+      "asset": "L4_303_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil"
+    },
+    {
+      "asset": "L4_304_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Small merchant wool child clothing; uncovered hair, no adult coif or veil"
+    },
+    {
+      "asset": "L4_201_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "muted blue wool merchant tunic"
+    },
+    {
+      "asset": "L4_203_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "muted olive wool merchant gown and linen coif"
+    },
+    {
+      "asset": "L5_101_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "good moss-brown wool tunic and linen collar"
+    },
+    {
+      "asset": "L5_102_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "good muted clay-red wool gown and cream linen headcloth All hair covered by plain cream linen headcloth/coif, NOT exposed hair. "
+    },
+    {
+      "asset": "L5_205_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "good muted ochre wool gown and cream linen coif All hair covered by plain cream linen headcloth/coif, NOT exposed hair. "
+    },
+    {
+      "asset": "L5_201_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "quality muted ochre wool tunic and linen"
+    },
+    {
+      "asset": "L5_202_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "quality muted blue-gray wool tunic and linen"
+    },
+    {
+      "asset": "L5_203_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "married",
+      "clothing": "good russet wool gown and linen All hair covered by plain cream linen headcloth/coif, NOT exposed hair. "
+    },
+    {
+      "asset": "L5_204_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "good muted sage wool gown and linen Hair uncovered; no veil or headcloth. "
+    },
+    {
+      "asset": "L5_301_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "good muted olive wool tunic and linen"
+    },
+    {
+      "asset": "L5_302_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "good muted ochre wool gown and linen Hair uncovered; no veil or headcloth. "
+    },
+    {
+      "asset": "L5_101_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "good moss-brown wool tunic and linen collar"
+    },
+    {
+      "asset": "L5_102_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "good muted clay-red wool gown and cream linen headcloth All hair covered by plain cream linen headcloth/coif, NOT exposed hair. "
+    },
+    {
+      "asset": "L5_201_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "quality muted ochre wool tunic and linen"
+    },
+    {
+      "asset": "L5_202_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "quality muted blue-gray wool tunic and linen"
+    },
+    {
+      "asset": "L5_204_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "good muted sage wool gown and linen All hair covered by plain cream linen headcloth/coif, NOT exposed hair. "
+    },
+    {
+      "asset": "L5_206_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "married",
+      "clothing": "good muted brown-red wool tunic and linen"
+    },
+    {
+      "asset": "L5_303_young",
+      "sex": "male",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "good muted blue-gray wool tunic and linen"
+    },
+    {
+      "asset": "L5_304_young",
+      "sex": "female",
+      "stage": "young",
+      "status": "unmarried",
+      "clothing": "good muted brick wool gown and linen Hair uncovered; no veil or headcloth. "
+    },
+    {
+      "asset": "L5_101_old",
+      "sex": "male",
+      "stage": "old",
+      "status": "married",
+      "clothing": "good moss-brown wool tunic and linen collar"
+    },
+    {
+      "asset": "L5_102_old",
+      "sex": "female",
+      "stage": "old",
+      "status": "married",
+      "clothing": "good muted clay-red wool gown and cream linen headcloth All hair covered by plain cream linen headcloth/coif, NOT exposed hair. "
+    },
+    {
+      "asset": "L5_206_mature",
+      "sex": "male",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "good muted brown-red wool tunic and linen"
+    },
+    {
+      "asset": "L5_201_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "not_applicable_minor",
+      "clothing": "linen swaddle and baby bonnet"
+    },
+    {
+      "asset": "L5_202_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "not_applicable_minor",
+      "clothing": "linen swaddle and baby bonnet"
+    },
+    {
+      "asset": "L5_203_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "not_applicable_minor",
+      "clothing": "linen swaddle and baby bonnet"
+    },
+    {
+      "asset": "L5_204_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "not_applicable_minor",
+      "clothing": "linen swaddle and baby bonnet"
+    },
+    {
+      "asset": "L5_301_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "not_applicable_minor",
+      "clothing": "linen swaddle and baby bonnet"
+    },
+    {
+      "asset": "L5_302_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "not_applicable_minor",
+      "clothing": "linen swaddle and baby bonnet"
+    },
+    {
+      "asset": "L5_303_baby",
+      "sex": "male",
+      "stage": "baby",
+      "status": "not_applicable_minor",
+      "clothing": "linen swaddle and baby bonnet"
+    },
+    {
+      "asset": "L5_304_baby",
+      "sex": "female",
+      "stage": "baby",
+      "status": "not_applicable_minor",
+      "clothing": "linen swaddle and baby bonnet"
+    },
+    {
+      "asset": "L5_201_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "not_applicable_minor",
+      "clothing": "quality muted ochre wool tunic and linen"
+    },
+    {
+      "asset": "L5_202_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "not_applicable_minor",
+      "clothing": "quality muted blue-gray wool tunic and linen"
+    },
+    {
+      "asset": "L5_203_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "not_applicable_minor",
+      "clothing": "good russet wool gown and linen Hair uncovered; no veil or headcloth. "
+    },
+    {
+      "asset": "L5_204_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "not_applicable_minor",
+      "clothing": "good muted sage wool gown and linen Hair uncovered; no veil or headcloth. "
+    },
+    {
+      "asset": "L5_301_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "not_applicable_minor",
+      "clothing": "good muted olive wool tunic and linen"
+    },
+    {
+      "asset": "L5_302_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "not_applicable_minor",
+      "clothing": "good muted ochre wool gown and linen Hair uncovered; no veil or headcloth. "
+    },
+    {
+      "asset": "L5_303_child",
+      "sex": "male",
+      "stage": "child",
+      "status": "not_applicable_minor",
+      "clothing": "good muted blue-gray wool tunic and linen"
+    },
+    {
+      "asset": "L5_304_child",
+      "sex": "female",
+      "stage": "child",
+      "status": "not_applicable_minor",
+      "clothing": "good muted brick wool gown and linen Hair uncovered; no veil or headcloth. "
+    },
+    {
+      "asset": "L5_203_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "good russet wool gown and linen All hair covered by plain cream linen headcloth/coif, NOT exposed hair. "
+    },
+    {
+      "asset": "L5_205_mature",
+      "sex": "female",
+      "stage": "mature",
+      "status": "married",
+      "clothing": "good muted ochre wool gown and cream linen coif All hair covered by plain cream linen headcloth/coif, NOT exposed hair. "
+    },
+    {
+      "asset": "C_baby_01",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "muted sage wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_02",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "dusty ochre wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_03",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "muted russet wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_04",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "dull blue grey wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_05",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "warm taupe wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_06",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "desaturated moss wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_07",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "earth brown wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_08",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "muted sage wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_09",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "dusty ochre wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_10",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "muted russet wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_11",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "dull blue grey wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_12",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "warm taupe wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_13",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "desaturated moss wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_baby_14",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "earth brown wool swaddle over white linen, tied offwhite linen baby bonnet"
+    },
+    {
+      "asset": "C_toddler_01",
+      "sex": "male",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "plain clay red wool tunic over linen shift"
+    },
+    {
+      "asset": "C_toddler_02",
+      "sex": "female",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "plain muted green wool gown with linen neckline"
+    },
+    {
+      "asset": "C_toddler_03",
+      "sex": "male",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "ochre brown wool tunic with undyed linen collar"
+    },
+    {
+      "asset": "C_toddler_04",
+      "sex": "female",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "plain muted slate blue wool gown with undyed linen neckline"
+    },
+    {
+      "asset": "C_toddler_05",
+      "sex": "male",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "plain undyed warm oatmeal wool tunic with undyed linen neckline"
+    },
+    {
+      "asset": "C_toddler_06",
+      "sex": "female",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "plain smoky brown wool gown with undyed linen neckline"
+    },
+    {
+      "asset": "C_toddler_07",
+      "sex": "male",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "plain muted moss green wool tunic with undyed linen neckline"
+    },
+    {
+      "asset": "C_toddler_08",
+      "sex": "female",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "plain faded madder russet wool gown with undyed linen neckline"
+    },
+    {
+      "asset": "C_toddler_09",
+      "sex": "male",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "plain ochre brown wool tunic with undyed linen neckline"
+    },
+    {
+      "asset": "C_toddler_10",
+      "sex": "female",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "Plain dusty purple-brown wool gown."
+    },
+    {
+      "asset": "C_toddler_11",
+      "sex": "male",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "Oatmeal wool tunic."
+    },
+    {
+      "asset": "C_toddler_12",
+      "sex": "female",
+      "stage": "toddler",
+      "status": "notApplicable",
+      "clothing": "Russet brown wool dress."
+    },
+    {
+      "asset": "C_child_01",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "plain moss green wool tunic with undyed linen neckline"
+    },
+    {
+      "asset": "C_child_02",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "plain faded madder russet wool gown with undyed linen neckline"
+    },
+    {
+      "asset": "C_child_03",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "plain ochre brown wool tunic with undyed linen neckline"
+    },
+    {
+      "asset": "C_child_04",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "plain muted slate blue wool gown with undyed linen neckline"
+    },
+    {
+      "asset": "C_child_05",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "plain undyed warm oatmeal wool tunic with undyed linen neckline"
+    },
+    {
+      "asset": "C_child_06",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "plain smoky brown wool gown with undyed linen neckline"
+    },
+    {
+      "asset": "C_child_07",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "plain muted moss green wool tunic with undyed linen neckline"
+    },
+    {
+      "asset": "C_child_08",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Plain rusty brown gown."
+    },
+    {
+      "asset": "C_child_09",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Muted deep green wool tunic."
+    },
+    {
+      "asset": "C_child_10",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Plain dusty rose-brown wool gown."
+    },
+    {
+      "asset": "C_child_11",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Muted blue wool tunic."
+    },
+    {
+      "asset": "C_child_12",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Muted ochre wool gown."
+    },
+    {
+      "asset": "C_child_13",
+      "sex": "male",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Oatmeal tunic."
+    },
+    {
+      "asset": "C_child_14",
+      "sex": "female",
+      "stage": "child",
+      "status": "notApplicable",
+      "clothing": "Plain moss-green wool gown."
+    },
+    {
+      "asset": "L1_203_baby-v2",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "Cream linen swaddling and linen infant bonnet; muted green fine wool outer wrap"
+    },
+    {
+      "asset": "L1_204_baby-v2",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "Cream linen swaddling and linen infant bonnet; muted russet fine wool outer wrap"
+    },
+    {
+      "asset": "L2_201_baby-v2",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "Cream linen swaddling and linen infant bonnet; muted blue wool outer wrap"
+    },
+    {
+      "asset": "L2_202_baby-v2",
+      "sex": "male",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "Cream linen swaddling and linen infant bonnet; muted russet wool outer wrap"
+    },
+    {
+      "asset": "L2_203_baby-v2",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "Cream linen swaddling and linen infant bonnet; muted olive wool outer wrap"
+    },
+    {
+      "asset": "L2_204_baby-v2",
+      "sex": "female",
+      "stage": "baby",
+      "status": "notApplicable",
+      "clothing": "Cream linen swaddling and linen infant bonnet; muted rust wool outer wrap"
+    }
+  ],
+  "commonSexBalance": "7/7 babies,6/6 toddlers,7/7 children",
+  "adultAgeGap": 20,
+  "approvedOriginalsUnchanged": 104,
+  "visualLimitations": "Metadata checks do not prove perceived age, covering, likeness, or distinct identity"
+}

@@ -1,0 +1,154 @@
+[
+  {
+    "identity": "L2_101",
+    "lineage": "L2",
+    "generation": 1,
+    "sex": "male",
+    "traits": {
+      "hair": "copper auburn",
+      "skin": "light warm peach",
+      "eyes": "small hazel eyes with relaxed narrow lids",
+      "faceShape": "broad round cheeks",
+      "nose": "broad short nose with rounded tip",
+      "jaw": "soft broad rounded jaw",
+      "brow": "low straight brow"
+    },
+    "clothing": "muted indigo wool gown, modest fur collar and soft cap",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "inheritance": {},
+    "id": "L2_101_old",
+    "file": "assets/lineage2/L2_101_old.png",
+    "stage": "old",
+    "age": 70,
+    "width": 256,
+    "height": 256,
+    "prompt": "Use case: historical-scene. Single square game portrait, one person only, head and upper torso, 256x256 final target. Match supplied project portrait painterly naturalistic gouache/oil style, muted solid taupe background, soft upper-left light, subtle brushwork. Southern England 1300-1450 merchant clothing, no modern elements, no text, no frame, no coat of arms or badge, no held props. Class conveyed only by clothes, never skin or facial character. Reference image 1 is the exact existing founder identity. Preserve that specific person, facial geometry, distinctive nose, cheeks, eyes and hairline. Age this same person to 70, natural wrinkles, graying hair; no identity replacement. Subject L2_101, male, age 70. Traits: hair: copper auburn; skin: light warm peach; eyes: small hazel eyes with relaxed narrow lids; faceShape: broad round cheeks; nose: broad short nose with rounded tip; jaw: soft broad rounded jaw; brow: low straight brow. Clothing: muted indigo wool gown, modest fur collar and soft cap. Keep eyes visible, distinct individual face; siblings differ through the specified trait mix. No family-wide clothing color code.\nCRITICAL AGE CORRECTION: Clearly age 70. Predominantly silver-gray thinning temple hair, deep visible forehead wrinkles and crow feet, under-eye bags, sagging jowls and neck folds. Preserve exact founder broad nose and eyes. Do not leave him middle-aged.",
+    "referenceImages": [
+      "references/I043_mature.png"
+    ],
+    "selectedRaw": "raw/lineage2/L2_101_old-v2.png"
+  },
+  {
+    "identity": "L2_203",
+    "lineage": "L2",
+    "generation": 2,
+    "sex": "female",
+    "traits": {
+      "hair": "copper auburn",
+      "skin": "light warm peach",
+      "eyes": "gray-green eyes with alert almond lids",
+      "faceShape": "long oval face",
+      "nose": "broad short nose with rounded tip",
+      "jaw": "soft broad rounded jaw",
+      "brow": "high subtly arched brow"
+    },
+    "clothing": "muted sage wool dress with linen neckline",
+    "fatherIdentity": "L2_101",
+    "motherIdentity": "L2_102",
+    "inheritance": {
+      "hair": {
+        "from": "L2_101",
+        "value": "copper auburn"
+      },
+      "skin": {
+        "from": "L2_101",
+        "value": "light warm peach"
+      },
+      "eyes": {
+        "from": "L2_102",
+        "value": "gray-green eyes with alert almond lids"
+      },
+      "faceShape": {
+        "from": "L2_102",
+        "value": "long oval face"
+      },
+      "nose": {
+        "from": "L2_101",
+        "value": "broad short nose with rounded tip"
+      },
+      "jaw": {
+        "from": "L2_101",
+        "value": "soft broad rounded jaw"
+      },
+      "brow": {
+        "from": "L2_102",
+        "value": "high subtly arched brow"
+      }
+    },
+    "id": "L2_203_child",
+    "file": "assets/lineage2/L2_203_child.png",
+    "stage": "child",
+    "age": 8,
+    "width": 256,
+    "height": 256,
+    "prompt": "Use case: historical-scene. Single square game portrait, one person only, head and upper torso, 256x256 final target. Match supplied project portrait painterly naturalistic gouache/oil style, muted solid taupe background, soft upper-left light, subtle brushwork. Southern England 1300-1450 merchant clothing, no modern elements, no text, no frame, no coat of arms or badge, no held props. Class conveyed only by clothes, never skin or facial character. Reference 1 actual father; reference 2 actual mother; reference 3 THIS SAME PERSON as a young adult. Transform reference 3 to the requested age preserving identity and family resemblance. Exact artistic trait inheritance contract: hair from L2_101: copper auburn; skin from L2_101: light warm peach; eyes from L2_102: gray-green eyes with alert almond lids; faceShape from L2_102: long oval face; nose from L2_101: broad short nose with rounded tip; jaw from L2_101: soft broad rounded jaw; brow from L2_102: high subtly arched brow. Subject L2_203, female, age 8. Traits: hair: copper auburn; skin: light warm peach; eyes: gray-green eyes with alert almond lids; faceShape: long oval face; nose: broad short nose with rounded tip; jaw: soft broad rounded jaw; brow: high subtly arched brow. Clothing: muted sage wool dress with linen neckline. Clearly an eight-year-old child, natural child proportions and soft age-appropriate features, no facial hair or adult face. Keep eyes visible, distinct individual face; siblings differ through the specified trait mix. No family-wide clothing color code.\nCRITICAL AGE CORRECTION: Clearly EIGHT YEARS OLD, elementary-school-aged child, not teen or adult. Short child neck, small shoulders, shorter lower face, larger forehead proportion, soft round cheeks, undeveloped jaw, plain high-neck child wool dress without adult neckline. Preserve same eye spacing and copper hair.",
+    "referenceImages": [
+      "assets/lineage2/L2_101_mature.png",
+      "assets/lineage2/L2_102_mature.png",
+      "assets/lineage2/L2_203_young.png"
+    ],
+    "selectedRaw": "raw/lineage2/L2_203_child-v2.png"
+  },
+  {
+    "identity": "L2_202",
+    "lineage": "L2",
+    "generation": 2,
+    "sex": "male",
+    "traits": {
+      "hair": "chestnut auburn",
+      "skin": "light warm peach",
+      "eyes": "small hazel eyes with relaxed narrow lids",
+      "faceShape": "long oval face",
+      "nose": "narrow straight nose",
+      "jaw": "soft broad rounded jaw",
+      "brow": "low straight brow"
+    },
+    "clothing": "clay brown merchant wool gown",
+    "fatherIdentity": "L2_101",
+    "motherIdentity": "L2_102",
+    "inheritance": {
+      "hair": {
+        "from": "L2_102",
+        "value": "chestnut auburn"
+      },
+      "skin": {
+        "from": "L2_101",
+        "value": "light warm peach"
+      },
+      "eyes": {
+        "from": "L2_101",
+        "value": "small hazel eyes with relaxed narrow lids"
+      },
+      "faceShape": {
+        "from": "L2_102",
+        "value": "long oval face"
+      },
+      "nose": {
+        "from": "L2_102",
+        "value": "narrow straight nose"
+      },
+      "jaw": {
+        "from": "L2_101",
+        "value": "soft broad rounded jaw"
+      },
+      "brow": {
+        "from": "L2_101",
+        "value": "low straight brow"
+      }
+    },
+    "id": "L2_202_mature",
+    "file": "assets/lineage2/L2_202_mature.png",
+    "stage": "mature",
+    "age": 45,
+    "width": 256,
+    "height": 256,
+    "prompt": "Use case: historical-scene. Single square game portrait, one person only, head and upper torso, 256x256 final target. Match supplied project portrait painterly naturalistic gouache/oil style, muted solid taupe background, soft upper-left light, subtle brushwork. Southern England 1300-1450 merchant clothing, no modern elements, no text, no frame, no coat of arms or badge, no held props. Class conveyed only by clothes, never skin or facial character. Reference 1 actual father; reference 2 actual mother; reference 3 THIS SAME PERSON as a young adult. Transform reference 3 to the requested age preserving identity and family resemblance. Exact artistic trait inheritance contract: hair from L2_102: chestnut auburn; skin from L2_101: light warm peach; eyes from L2_101: small hazel eyes with relaxed narrow lids; faceShape from L2_102: long oval face; nose from L2_102: narrow straight nose; jaw from L2_101: soft broad rounded jaw; brow from L2_101: low straight brow. Subject L2_202, male, age 45. Traits: hair: chestnut auburn; skin: light warm peach; eyes: small hazel eyes with relaxed narrow lids; faceShape: long oval face; nose: narrow straight nose; jaw: soft broad rounded jaw; brow: low straight brow. Clothing: clay brown merchant wool gown. Keep eyes visible, distinct individual face; siblings differ through the specified trait mix. No family-wide clothing color code.\nCRITICAL AGE CORRECTION: Clearly 48 years old with visible forehead lines, crow feet, nasolabial folds, subtle gray at temples and mild lower face sagging. Preserve exact young identity geometry; no smooth teenage face.",
+    "referenceImages": [
+      "assets/lineage2/L2_101_mature.png",
+      "assets/lineage2/L2_102_mature.png",
+      "assets/lineage2/L2_202_young.png"
+    ],
+    "selectedRaw": "raw/lineage2/L2_202_mature-v2.png"
+  }
+]

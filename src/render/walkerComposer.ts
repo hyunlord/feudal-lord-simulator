@@ -24,6 +24,9 @@ import { constructionStageIndex, constructionWorkProgress } from "./construction
 //  - Looks: computed from the state (walkerLooks) the first time a walker is drawn and kept for that walker id while
 //    it lives (pruned when the walkers array no longer holds it), so a look never flips during a walk.
 
+/** A villager's world scale; the composer draws each figure 32 × this tall (17.6 px at zoom 1). */
+export const VILLAGER_WORLD_SCALE = 0.55;
+export const WALKER_FIGURE_PX = 32 * VILLAGER_WORLD_SCALE;
 export const WALKER_CELL = 74;
 export const WALKER_PAD = 17;
 export const WALKER_COMPOSED_CELL = WALKER_CELL + 2 * WALKER_PAD;

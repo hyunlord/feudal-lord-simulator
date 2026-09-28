@@ -1,0 +1,434 @@
+[
+  {
+    "id": "L4_201_baby",
+    "file": "assets/L4/L4_201_baby.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_baby.png",
+    "sourceSHA256": "67027fdd46b8da15a72e12edadeba72d845f0c3cd75faee967e02fdd1519316a",
+    "clothing": "Fine muted blue wool swaddle with subtle outer fur edging; existing linen infant bonnet preserved",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit the supplied portrait of L4_201_baby. Preserve EXACT same baby face, facial proportions, freckles/marks, eyes, expression, hair wisps, skin tone, head position, age, pose, framing, background and painterly style. Change ONLY the existing swaddling cloth to fine muted dusty BLUE wool, with a narrow subtle soft brown fur trim along the OUTER wrap edge only. Keep existing undyed linen infant bonnet unchanged and full face uncovered. This remains the identical 0–2 year old wrapped infant, no aging, no adult clothing, no cap, belt, purse or jewelry. Wealthy southern English merchant infant circa 1350. No new objects or text. Preserve square composition exactly.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_baby.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_201_baby-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original infant anatomy and swaddle/bonnet maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "08bbf92037643a7a2dc72735b47fec6347ac195a33a2855b55cf23a94eadb0e5"
+  },
+  {
+    "id": "L4_202_baby",
+    "file": "assets/L4/L4_202_baby.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_baby.png",
+    "sourceSHA256": "f1c7e82385a52b4e4976f2f89d98a221310f2603ab421b5097aa0ba8afb2031c",
+    "clothing": "Fine muted purple wool swaddle with subtle outer fur edging; existing linen infant bonnet preserved",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit the supplied portrait of L4_202_baby. Preserve EXACT same baby face, facial proportions, freckles/marks, eyes, expression, hair wisps, skin tone, head position, age, pose, framing, background and painterly style. Change ONLY the existing swaddling cloth to fine muted muted PURPLE wool, with a narrow subtle soft brown fur trim along the OUTER wrap edge only. Keep existing undyed linen infant bonnet unchanged and full face uncovered. This remains the identical 0–2 year old wrapped infant, no aging, no adult clothing, no cap, belt, purse or jewelry. Wealthy southern English merchant infant circa 1350. No new objects or text. Preserve square composition exactly.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_baby.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_202_baby-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original infant anatomy and swaddle/bonnet maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "b9c96d03d9b42bc6c64b132d364fcda7226677b2a02865a96ebeaadd5a1d1d5e"
+  },
+  {
+    "id": "L4_203_baby",
+    "file": "assets/L4/L4_203_baby.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_baby.png",
+    "sourceSHA256": "d7800e6b1d512d4fac1f648f1b8e35d34f687855510a65aa6bb8e3d1173d9a27",
+    "clothing": "Fine muted blue wool swaddle with subtle outer fur edging; existing linen infant bonnet preserved",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit the supplied portrait of L4_203_baby. Preserve EXACT same baby face, facial proportions, freckles/marks, eyes, expression, hair wisps, skin tone, head position, age, pose, framing, background and painterly style. Change ONLY the existing swaddling cloth to fine muted dusty BLUE wool, with a narrow subtle soft brown fur trim along the OUTER wrap edge only. Keep existing undyed linen infant bonnet unchanged and full face uncovered. This remains the identical 0–2 year old wrapped infant, no aging, no adult clothing, no cap, belt, purse or jewelry. Wealthy southern English merchant infant circa 1350. No new objects or text. Preserve square composition exactly.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_baby.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_203_baby-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original infant anatomy and swaddle/bonnet maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "e0c67f48ae5f60d385c580b3e8bf225f49b11e04cdf4e42a891979caf1275b43"
+  },
+  {
+    "id": "L4_204_baby",
+    "file": "assets/L4/L4_204_baby.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_baby.png",
+    "sourceSHA256": "9249b22c00086f02a75bd7bb4e9764fec8236aa4a46061e837db7f1ddaa0f33a",
+    "clothing": "Fine muted purple wool swaddle with subtle outer fur edging; existing linen infant bonnet preserved",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit the supplied portrait of L4_204_baby. Preserve EXACT same baby face, facial proportions, freckles/marks, eyes, expression, hair wisps, skin tone, head position, age, pose, framing, background and painterly style. Change ONLY the existing swaddling cloth to fine muted muted PURPLE wool, with a narrow subtle soft brown fur trim along the OUTER wrap edge only. Keep existing undyed linen infant bonnet unchanged and full face uncovered. This remains the identical 0–2 year old wrapped infant, no aging, no adult clothing, no cap, belt, purse or jewelry. Wealthy southern English merchant infant circa 1350. No new objects or text. Preserve square composition exactly.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_baby.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_204_baby-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original infant anatomy and swaddle/bonnet maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "9547a60bf629dba4a5dccca5bc26a966c12cbbb01445f3ec9d655e9643ceedc3"
+  },
+  {
+    "id": "L4_301_baby",
+    "file": "assets/L4/L4_301_baby.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_baby.png",
+    "sourceSHA256": "a45e79ccb8cef0d9e2c40b8e0f74a68bfe3a281bae7d4ad0b8fcac742c313ba4",
+    "clothing": "Fine muted blue wool swaddle with subtle outer fur edging; existing linen infant bonnet preserved",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit the supplied portrait of L4_301_baby. Preserve EXACT same baby face, facial proportions, freckles/marks, eyes, expression, hair wisps, skin tone, head position, age, pose, framing, background and painterly style. Change ONLY the existing swaddling cloth to fine muted dusty BLUE wool, with a narrow subtle soft brown fur trim along the OUTER wrap edge only. Keep existing undyed linen infant bonnet unchanged and full face uncovered. This remains the identical 0–2 year old wrapped infant, no aging, no adult clothing, no cap, belt, purse or jewelry. Wealthy southern English merchant infant circa 1350. No new objects or text. Preserve square composition exactly.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_baby.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_301_baby-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original infant anatomy and swaddle/bonnet maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "252b729bc4d2e9851aa0ea293cfdb282adbf7dcf7e2e5883415ecdbd1f74bc0f"
+  },
+  {
+    "id": "L4_302_baby",
+    "file": "assets/L4/L4_302_baby.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_baby.png",
+    "sourceSHA256": "936ea1760987da4e5269eb0b7a312e64ffce4bca3a33d27c049a721bf277337c",
+    "clothing": "Fine muted purple wool swaddle with subtle outer fur edging; existing linen infant bonnet preserved",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit the supplied portrait of L4_302_baby. Preserve EXACT same baby face, facial proportions, freckles/marks, eyes, expression, hair wisps, skin tone, head position, age, pose, framing, background and painterly style. Change ONLY the existing swaddling cloth to fine muted muted PURPLE wool, with a narrow subtle soft brown fur trim along the OUTER wrap edge only. Keep existing undyed linen infant bonnet unchanged and full face uncovered. This remains the identical 0–2 year old wrapped infant, no aging, no adult clothing, no cap, belt, purse or jewelry. Wealthy southern English merchant infant circa 1350. No new objects or text. Preserve square composition exactly.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_baby.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_302_baby-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original infant anatomy and swaddle/bonnet maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "76137708d635393763003a11a811ee50ba61e0d3936d9ed9146c31f85e81d8a4"
+  },
+  {
+    "id": "L4_303_baby",
+    "file": "assets/L4/L4_303_baby.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_baby.png",
+    "sourceSHA256": "26abd9805b71b42c6190672c11804d14d58cff663b68686fb3dd072e45628319",
+    "clothing": "Fine muted blue wool swaddle with subtle outer fur edging; existing linen infant bonnet preserved",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit the supplied portrait of L4_303_baby. Preserve EXACT same baby face, facial proportions, freckles/marks, eyes, expression, hair wisps, skin tone, head position, age, pose, framing, background and painterly style. Change ONLY the existing swaddling cloth to fine muted dusty BLUE wool, with a narrow subtle soft brown fur trim along the OUTER wrap edge only. Keep existing undyed linen infant bonnet unchanged and full face uncovered. This remains the identical 0–2 year old wrapped infant, no aging, no adult clothing, no cap, belt, purse or jewelry. Wealthy southern English merchant infant circa 1350. No new objects or text. Preserve square composition exactly.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_baby.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_303_baby-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original infant anatomy and swaddle/bonnet maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "5f5f6961b018256696522522cc4784ec2cac8b4d8c4b3159066ed27b7935cba8"
+  },
+  {
+    "id": "L4_304_baby",
+    "file": "assets/L4/L4_304_baby.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_baby.png",
+    "sourceSHA256": "9fc45050819ff9e9610ad86569a969fb07c051637c6ba08226ed2f78e32fc395",
+    "clothing": "Fine muted purple wool swaddle with subtle outer fur edging; existing linen infant bonnet preserved",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit the supplied portrait of L4_304_baby. Preserve EXACT same baby face, facial proportions, freckles/marks, eyes, expression, hair wisps, skin tone, head position, age, pose, framing, background and painterly style. Change ONLY the existing swaddling cloth to fine muted muted PURPLE wool, with a narrow subtle soft brown fur trim along the OUTER wrap edge only. Keep existing undyed linen infant bonnet unchanged and full face uncovered. This remains the identical 0–2 year old wrapped infant, no aging, no adult clothing, no cap, belt, purse or jewelry. Wealthy southern English merchant infant circa 1350. No new objects or text. Preserve square composition exactly.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_baby.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_304_baby-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original infant anatomy and swaddle/bonnet maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "8fafa6a19d70a1ba51b57e301117951908bb529079837db81ec6e202023dbd75"
+  },
+  {
+    "id": "L4_201_child",
+    "file": "assets/L4/L4_201_child.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_child.png",
+    "sourceSHA256": "2fa927a6c6997c4da99d4bf7a9d46bc8fd8b79faa13a5631f9bc045fa3b11ffd",
+    "clothing": "Fine muted blue wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit supplied portrait L4_201_child of the SAME young child age6–9. Preserve EXACT face, marks/freckles/moles, eye color, expression, skin, hair and hairstyle, head shape/size, age, pose, narrow little shoulders, body proportions, square framing and backdrop. Only change existing clothing into fine muted dusty BLUE wool rich merchant child's tunic, with subtle narrow brown fur edging at collar and finely finished seams. Preserve undyed linen neckline. Southern England circa1350; child age remains6–9, never adolescent/adult. Hair remains entirely unchanged and uncovered: NO hat, hood, veil or cap. No jewelry, no purse, no new belt outside frame, no props, no zoom/reframe. Keep painterly rendering and background exactly. Only edit garment.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_201_child.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_201_child-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original primary-school child face and narrow shoulders maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "4d4d7109c1756cfcb8628a90f73add8da0667a5c21ad9f2f89aa4a6cf57051cf"
+  },
+  {
+    "id": "L4_202_child",
+    "file": "assets/L4/L4_202_child.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_child.png",
+    "sourceSHA256": "ea43b344c888ad7ca48c483c2713d5010e776d15f5edbd459793cab4bfeb127e",
+    "clothing": "Fine muted purple wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit supplied portrait L4_202_child of the SAME young child age6–9. Preserve EXACT face, marks/freckles/moles, eye color, expression, skin, hair and hairstyle, head shape/size, age, pose, narrow little shoulders, body proportions, square framing and backdrop. Only change existing clothing into fine muted plum PURPLE wool rich merchant child's tunic, with subtle narrow brown fur edging at collar and finely finished seams. Preserve undyed linen neckline. Southern England circa1350; child age remains6–9, never adolescent/adult. Hair remains entirely unchanged and uncovered: NO hat, hood, veil or cap. No jewelry, no purse, no new belt outside frame, no props, no zoom/reframe. Keep painterly rendering and background exactly. Only edit garment.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_202_child.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_202_child-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original primary-school child face and narrow shoulders maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "ac5922a53d865655640edb5a742564f915f0e0ebd019c44d11d40bd4dd935a81"
+  },
+  {
+    "id": "L4_203_child",
+    "file": "assets/L4/L4_203_child.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_child.png",
+    "sourceSHA256": "51008f9c6cff788624f71fa2770435d8b7c93db3d9a58ad8e49003c4a55f737d",
+    "clothing": "Fine muted blue wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit supplied portrait L4_203_child of the SAME young child age6–9. Preserve EXACT face, marks/freckles/moles, eye color, expression, skin, hair and hairstyle, head shape/size, age, pose, narrow little shoulders, body proportions, square framing and backdrop. Only change existing clothing into fine muted dusty BLUE wool rich merchant child's gown, with subtle narrow brown fur edging at collar and finely finished seams. Preserve undyed linen neckline. Southern England circa1350; child age remains6–9, never adolescent/adult. Hair remains entirely unchanged and uncovered: NO hat, hood, veil or cap. No jewelry, no purse, no new belt outside frame, no props, no zoom/reframe. Keep painterly rendering and background exactly. Only edit garment.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_child.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_203_child-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original primary-school child face and narrow shoulders maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "db3f165f8d4aeb2a4995f046de9543ebf4a49bd111563a1accfa51a3e5a9df01"
+  },
+  {
+    "id": "L4_204_child",
+    "file": "assets/L4/L4_204_child.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_child.png",
+    "sourceSHA256": "4c364d5811dfe3d006e7c7709908fb9cc7ba7dffc5ff283430e314ee271bfb45",
+    "clothing": "Fine muted purple wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit supplied portrait L4_204_child of the SAME young child age6–9. Preserve EXACT face, marks/freckles/moles, eye color, expression, skin, hair and hairstyle, head shape/size, age, pose, narrow little shoulders, body proportions, square framing and backdrop. Only change existing clothing into fine muted plum PURPLE wool rich merchant child's gown, with subtle narrow brown fur edging at collar and finely finished seams. Preserve undyed linen neckline. Southern England circa1350; child age remains6–9, never adolescent/adult. Hair remains entirely unchanged and uncovered: NO hat, hood, veil or cap. No jewelry, no purse, no new belt outside frame, no props, no zoom/reframe. Keep painterly rendering and background exactly. Only edit garment.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_204_child.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_204_child-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original primary-school child face and narrow shoulders maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "5d9c868e9477a784c394e39dc995a49cbaa4e73b664b4fd14dcef3fa6695d1ea"
+  },
+  {
+    "id": "L4_301_child",
+    "file": "assets/L4/L4_301_child.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_child.png",
+    "sourceSHA256": "d7a71a69500f9d664a6a73a4d018856c6ce5ee9cac9485ed2b17454362d41d69",
+    "clothing": "Fine muted blue wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit supplied portrait L4_301_child of the SAME young child age6–9. Preserve EXACT face, marks/freckles/moles, eye color, expression, skin, hair and hairstyle, head shape/size, age, pose, narrow little shoulders, body proportions, square framing and backdrop. Only change existing clothing into fine muted dusty BLUE wool rich merchant child's tunic, with subtle narrow brown fur edging at collar and finely finished seams. Preserve undyed linen neckline. Southern England circa1350; child age remains6–9, never adolescent/adult. Hair remains entirely unchanged and uncovered: NO hat, hood, veil or cap. No jewelry, no purse, no new belt outside frame, no props, no zoom/reframe. Keep painterly rendering and background exactly. Only edit garment.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_301_child.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_301_child-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original primary-school child face and narrow shoulders maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "2116bd2195ec49bf8fec152e18ea4e24526c831f03444cd76ad6f7927f50bbdb"
+  },
+  {
+    "id": "L4_302_child",
+    "file": "assets/L4/L4_302_child.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_child.png",
+    "sourceSHA256": "399f83727f73356ad5529865033a71c13ce18605574416b91b613f7cafada6a0",
+    "clothing": "Fine muted purple wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit supplied portrait L4_302_child of the SAME young child age6–9. Preserve EXACT face, marks/freckles/moles, eye color, expression, skin, hair and hairstyle, head shape/size, age, pose, narrow little shoulders, body proportions, square framing and backdrop. Only change existing clothing into fine muted plum PURPLE wool rich merchant child's gown, with subtle narrow brown fur edging at collar and finely finished seams. Preserve undyed linen neckline. Southern England circa1350; child age remains6–9, never adolescent/adult. Hair remains entirely unchanged and uncovered: NO hat, hood, veil or cap. No jewelry, no purse, no new belt outside frame, no props, no zoom/reframe. Keep painterly rendering and background exactly. Only edit garment.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_302_child.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_302_child-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original primary-school child face and narrow shoulders maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "df402f00dc8a10b8938be6687fdd803cc892a5ebb963925ec4c16c7fe8d95ea8"
+  },
+  {
+    "id": "L4_303_child",
+    "file": "assets/L4/L4_303_child.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_child.png",
+    "sourceSHA256": "ee3d74234ea63d347935a37933961beacef7c721cd92eb47f3d59a942541e6b6",
+    "clothing": "Fine muted blue wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit supplied portrait L4_303_child of the SAME young child age6–9. Preserve EXACT face, marks/freckles/moles, eye color, expression, skin, hair and hairstyle, head shape/size, age, pose, narrow little shoulders, body proportions, square framing and backdrop. Only change existing clothing into fine muted dusty BLUE wool rich merchant child's tunic, with subtle narrow brown fur edging at collar and finely finished seams. Preserve undyed linen neckline. Southern England circa1350; child age remains6–9, never adolescent/adult. Hair remains entirely unchanged and uncovered: NO hat, hood, veil or cap. No jewelry, no purse, no new belt outside frame, no props, no zoom/reframe. Keep painterly rendering and background exactly. Only edit garment.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_303_child.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_303_child-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original primary-school child face and narrow shoulders maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "4e5e17f3bb8b74c44e336e3083fb7874c5fcba5b2307633f4dadf1cf7bf4a94a"
+  },
+  {
+    "id": "L4_304_child",
+    "file": "assets/L4/L4_304_child.png",
+    "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_child.png",
+    "sourceSHA256": "72072616f175aa6fa6d6995ade857cbd4072b5bcfb0b3a7282b26e56cfe9a433",
+    "clothing": "Fine muted purple wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "prompt": "Use case: identity-preserve precise clothing-only edit. Edit supplied portrait L4_304_child of the SAME young child age6–9. Preserve EXACT face, marks/freckles/moles, eye color, expression, skin, hair and hairstyle, head shape/size, age, pose, narrow little shoulders, body proportions, square framing and backdrop. Only change existing clothing into fine muted plum PURPLE wool rich merchant child's gown, with subtle narrow brown fur edging at collar and finely finished seams. Preserve undyed linen neckline. Southern England circa1350; child age remains6–9, never adolescent/adult. Hair remains entirely unchanged and uncovered: NO hat, hood, veil or cap. No jewelry, no purse, no new belt outside frame, no props, no zoom/reframe. Keep painterly rendering and background exactly. Only edit garment.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_304_child.png"
+    ],
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod1-costume-v2/children/L4_304_child-attempt1.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "originalWidth": 1254,
+    "originalHeight": 1254,
+    "processing": "Sharp resize to 256x256, ensureAlpha(), non-paletted RGBA PNG; opaque alpha added without changing decoded RGB; no repaint, crop, face masking, recolor or compositing of final assets",
+    "qa": {
+      "status": "candidate_artist_review_complete_independent_review_pending",
+      "clothingReview": "Muted blue/purple wool and subtle fur present; no adult accessories on babies; no veils on girls",
+      "identityReview": "Face, identifying marks, hair, pose and age visually compared to source; generative editing is not pixel-exact preservation",
+      "ageReview": "Original primary-school child face and narrow shoulders maintained",
+      "review96": "PASS: source/result pairs inspected at actual 96px; no evident identity or age drift; baby swaddle/bonnet and child uncovered hairstyles retained",
+      "rgbaExport": "PASS: 4 channels, decoded RGB byte-identical to prior export, opaque alpha"
+    },
+    "sha256": "b0edf87606e330fac9f034b47f5cf68a23fe0e477073cf0f700cc74830ef8878"
+  }
+]

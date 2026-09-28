@@ -1,0 +1,122 @@
+{
+  "status": "candidate",
+  "assets": [
+    {
+      "id": "crow_flight_sheet",
+      "transparentPixels": 12871,
+      "partialAlphaPixels": 3217,
+      "opaquePixels": 296,
+      "nontransparentFrameBorderPixels": 0,
+      "actualRgba": true,
+      "zoom06Torso": 0.9014399999999999
+    },
+    {
+      "id": "sparrow_flight_sheet",
+      "transparentPixels": 7327,
+      "partialAlphaPixels": 1708,
+      "opaquePixels": 181,
+      "nontransparentFrameBorderPixels": 0,
+      "actualRgba": true,
+      "zoom06Torso": 0.38311199999999995
+    },
+    {
+      "id": "pigeon_perched_a",
+      "transparentPixels": 2558,
+      "partialAlphaPixels": 1430,
+      "opaquePixels": 108,
+      "nontransparentFrameBorderPixels": 0,
+      "actualRgba": true,
+      "zoom06Torso": 0.7211519999999999
+    },
+    {
+      "id": "pigeon_perched_b",
+      "transparentPixels": 2971,
+      "partialAlphaPixels": 1050,
+      "opaquePixels": 75,
+      "nontransparentFrameBorderPixels": 0,
+      "actualRgba": true,
+      "zoom06Torso": 0.7211519999999999
+    }
+  ],
+  "registration": {
+    "crowOriginalThoraxAnchors": [
+      [
+        34,
+        40
+      ],
+      [
+        34,
+        39
+      ],
+      [
+        31,
+        39
+      ],
+      [
+        30,
+        38
+      ]
+    ],
+    "sparrowOriginalThoraxAnchors": [
+      [
+        24,
+        33
+      ],
+      [
+        24,
+        32
+      ],
+      [
+        24,
+        31
+      ],
+      [
+        24,
+        32
+      ]
+    ],
+    "method": "Manual target-cell thorax landmarks; content resize to cell-8 and translation only; values in processing. Generated shape differences remain, not pixel-locked bodies.",
+    "crowFinalThoraxAnchors": [
+      [
+        31.75,
+        39
+      ],
+      [
+        31.75,
+        39.125
+      ],
+      [
+        32.125,
+        39.125
+      ],
+      [
+        32.25,
+        39.25
+      ]
+    ],
+    "sparrowFinalThoraxAnchors": [
+      [
+        24,
+        30.5
+      ],
+      [
+        24,
+        30.667
+      ],
+      [
+        24,
+        30.833
+      ],
+      [
+        24,
+        30.667
+      ]
+    ]
+  },
+  "visualReview": {
+    "native": "Crow black broad wing silhouettes, sparrow warm rounder shorterbody, gray pigeons two distinct poses. All four wing phases present; frame2 and4 intentionally nearlevel.",
+    "alpha": "Light/dark final composites: no white halo, all frame border pixels transparent.",
+    "proportion": "Natural body ratio follows existing cow. At0.6 exact species readability fails; no oversized workaround.",
+    "runtime": "No game installation. GIF animation proof generated6fps. Wing cycle ordered4frames; no claim of pixel-identical heads/body."
+  }
+}

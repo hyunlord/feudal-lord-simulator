@@ -1,0 +1,17 @@
+{
+  "status": "PASS_IDENTITY_GATE_WITH_AGE_CAVEAT",
+  "identityGate": {
+    "different": 6,
+    "same": 6,
+    "total": 12,
+    "attempts": 1
+  },
+  "ageCaveat": "L2_203 child estimated8–10; exact age and3-yeargap not visually provable",
+  "rootReviewed": [
+    "01-same-person-blind.png",
+    "03-before-after.png",
+    "selected final portraits"
+  ],
+  "independentReviewed": "24 portraits at256 and96px",
+  "gameInstalled": false
+}

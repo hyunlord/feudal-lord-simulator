@@ -67,6 +67,11 @@ export function withAlpha(color: PaletteColor, alpha: number): string {
   return `rgba(${red}, ${green}, ${blue}, ${clampAlpha(alpha)})`;
 }
 
+/** A colour from 0-255 channels read off an image (INSTALL-23: a weather tint's mean colour, weatherArt.ts). */
+export function rgbaOfChannels(red: number, green: number, blue: number, alpha: number): string {
+  return `rgba(${Math.round(red)}, ${Math.round(green)}, ${Math.round(blue)}, ${clampAlpha(alpha)})`;
+}
+
 export function applyInkOutline(
   context: Pick<
     CanvasRenderingContext2D,

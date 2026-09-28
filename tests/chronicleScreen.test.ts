@@ -8,7 +8,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import type { GameState } from "../src/engine/engine.types";
 import type { ActorRef, HistoryRecord } from "../src/engine/history.types";
 import { rasterizeSnapshot } from "../src/engine/historySnapshot";
-import { displayName } from "../src/engine/persons";
+import { personDisplayName } from "../src/engine/persons";
 import { persons } from "../src/engine/personsApi";
 import { decodeSave } from "../src/save/saveCodec";
 import { ChronicleScreen } from "../src/ui/chronicle/ChronicleScreen";
@@ -121,7 +121,9 @@ test("CHRON-1 record cards: the kind's frame, the person named, the picture, the
     { kind: "wave16", id: "event_famine_omen" }, "a sign shows the warning card");
   const burnt = card("person.burnt");
   assert.equal(burnt.frame, "frame_record_person");
-  assert.equal(burnt.sentence, `${displayName(head)}의 집 — 가구의 집이 불탔다`);
+  // NAME-1: the person is named in Korean (FIX-6 `personDisplayName`); the state keeps the period English.
+  assert.equal(burnt.sentence, `${personDisplayName(head)}의 집 — 가구의 집이 불탔다`);
+  assert.doesNotMatch(burnt.sentence, /[A-Za-z]/);
   assert.equal(burnt.art?.kind, "portrait");
   assert.equal(burnt.personId, head.id);
   const born = card("person.born");
@@ -153,7 +155,8 @@ test("CHRON-1 biography: the portrait of their age with how it matches, the life
   const state = ledgerTown();
   const view = biographyView(state, head.id)!;
   const portrait = persons.portrait(state, head);
-  assert.equal(view.name, displayName(head));
+  assert.equal(view.name, personDisplayName(head));
+  assert.doesNotMatch(view.name, /[A-Za-z]/);
   assert.equal(view.portraitId, portrait.portraitId);
   assert.equal(view.portraitExact, portrait.exact);
   assert.match(view.portraitLine, portrait.exact ? /성별·나이대·계층 일치$/ : /가장 가까운 그림$/);

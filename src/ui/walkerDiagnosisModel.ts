@@ -8,7 +8,7 @@ import type {
 import { BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
-import { constructionSiteAnchor } from "../economy/construction";
+import { constructionSiteAnchor, constructionSiteDisplayName } from "../economy/construction";
 import { remainingCarterTravelCost } from '../agents/carterTravelCost';
 import { getTile } from '../world/grid';
 import { stoneReplacementSiteId } from '../engine/era';
@@ -86,12 +86,22 @@ function buildingPosition(state: GameState, buildingId: string): TilePos | null 
   return building === undefined ? null : { tx: building.tx, ty: building.ty };
 }
 
-function destinationLabel(state: GameState, destination: CarterDestination): string {
+/**
+ * INSTALL-23: a construction site is named by its building (or the wall segment) and where it lies from the carter
+ * (the card showed the site's id); a site already gone is "공사장".
+ */
+function destinationLabel(state: GameState, destination: CarterDestination, from: TilePos): string {
   switch (destination.kind) {
     case "building":
       return buildingLabel(state, destination.buildingId);
-    case "construction_site":
-      return destination.siteId;
+    case "construction_site": {
+      const site = state.constructionSites.find((candidate) => candidate.id === destination.siteId);
+      if (site === undefined) return WALKER_DIAGNOSIS_COPY.siteGone;
+      const at = constructionSiteAnchor(site);
+      const here = { tx: Math.round(from.tx), ty: Math.round(from.ty) };
+      const name = constructionSiteDisplayName(site);
+      return distance(here, at) === 0 ? WALKER_DIAGNOSIS_COPY.site(name) : WALKER_DIAGNOSIS_COPY.sitePlace(name, directionLabel(here, at), distance(here, at));
+    }
     default:
       return assertNever(destination);
   }
@@ -156,9 +166,9 @@ function carterDiagnosis(
     : remainingDistance;
   const sourceLabel = walker.mission === "deliver"
     ? buildingLabel(state, walker.homeBuildingId)
-    : destinationLabel(state, walker.destination);
+    : destinationLabel(state, walker.destination, walker.position);
   const destination = walker.mission === "deliver"
-    ? destinationLabel(state, walker.destination)
+    ? destinationLabel(state, walker.destination, walker.position)
     : buildingLabel(state, walker.homeBuildingId);
   const sourcePosition = walker.mission === "deliver"
     ? buildingPosition(state, walker.homeBuildingId)

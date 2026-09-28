@@ -1,0 +1,2956 @@
+[
+  {
+    "id": "L1_101_mature",
+    "file": "assets/lineage1/L1_101_mature.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_101",
+    "lineage": "L1",
+    "generation": 1,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "mature",
+    "sex": "male",
+    "age": 45,
+    "clothing": "navy cap, russet wool mantle, gray fur collar, olive tunic",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light warm beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "long straight narrow bridge",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {},
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserve aging edit of reference man I037: show exact same man aged 45. Preserve long angular face, long straight narrow nose, squared jaw, low straight brow, gray-green narrow almond eyes and straight dark brown hair, with moderate subtle graying at temples and realistic lines. Dark navy cap, muted russet fine wool mantle with restrained gray fur collar over dark olive tunic. No added jewelry symbols. One person only.",
+        "rawFile": "raw/lineage1/L1_101_mature.png",
+        "referenceImages": [
+          "references/I037_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: mature lines; subtle at thumbnail size",
+      "identityContinuity": "recognizable founder aging",
+      "traitObservation": "Founder identity retained; long angular face and straight nose consistent across maturity and old age.",
+      "traitExactness": "founder/source description or requested original spouse traits",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_101_mature.png"
+  },
+  {
+    "id": "L1_101_old",
+    "file": "assets/lineage1/L1_101_old.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_101",
+    "lineage": "L1",
+    "generation": 1,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "old",
+    "sex": "male",
+    "age": 70,
+    "clothing": "navy cap, russet mantle, gray fur collar",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light warm beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "long straight narrow bridge",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {},
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserve aging: exact same reference man aged70. Preserve angular long face, straight long narrow nose, square jaw, gray-green eyes, low brows; hair silver gray with brown traces, wrinkles and sagging skin appropriate for70. Same navy cap, russet mantle with gray fur collar. No new symbols.",
+        "rawFile": "raw/lineage1/L1_101_old.png",
+        "referenceImages": [
+          "assets/lineage1/L1_101_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: gray hair and increased lines",
+      "identityContinuity": "recognizable founder aging",
+      "traitObservation": "Founder identity retained; long angular face and straight nose consistent across maturity and old age.",
+      "traitExactness": "founder/source description or requested original spouse traits",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_101_old.png"
+  },
+  {
+    "id": "L1_102_mature",
+    "file": "assets/lineage1/L1_102_mature.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_102",
+    "lineage": "L1",
+    "generation": 1,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "mature",
+    "sex": "female",
+    "age": 45,
+    "clothing": "muted burgundy gown, linen veil, modest gray fur edging",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "broad oval",
+      "nose": "short gently convex broad tip",
+      "jaw": "soft rounded jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {},
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserve edit of the reference woman, same exact mature woman aged 45, auburn wavy hair at temples, hazel rounded almond eyes, broad oval face, short gently convex nose with broad tip, rounded soft jaw and arched brows. Change clothing to muted burgundy gown with linen veil and restrained gray fur edging, no badge or jewelry.",
+        "rawFile": "raw/lineage1/L1_102_mature.png",
+        "referenceImages": [
+          "references/I040_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: mature lines; subtle at thumbnail size",
+      "identityContinuity": "recognizable founder aging",
+      "traitObservation": "Founder identity retained; broad cheek and short convex nose remain recognizable.",
+      "traitExactness": "founder/source description or requested original spouse traits",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_102_mature.png"
+  },
+  {
+    "id": "L1_2S1_young",
+    "file": "assets/lineage1/L1_2S1_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_2S1",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "young",
+    "sex": "female",
+    "age": 22,
+    "clothing": "ocher fine wool gown and simple linen headband",
+    "traits": {
+      "hair": "wavy dark blond",
+      "skin": "light freckled neutral beige",
+      "eyes": "blue gray wide set",
+      "faceShape": "small heart shaped",
+      "nose": "short upturned fine tip",
+      "jaw": "narrow pointed chin",
+      "brow": "fine high arched brows"
+    },
+    "inheritance": {},
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create a completely NEW unrelated young woman age22; reference is STYLE ONLY, never clone its face. Wavy dark blond hair, light freckled neutral beige skin, blue-gray wide set eyes, small heart-shaped face, short upturned fine-tipped nose, narrow pointed chin and fine high arched brows. Ocher fine wool gown, simple narrow linen headband; hair visible. No veil hiding face.",
+        "rawFile": "raw/lineage1/L1_2S1_young.png",
+        "referenceImages": [
+          "references/I040_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "new external identity",
+      "traitObservation": "Distinct new freckled heart-shaped face; hair reads golden auburn rather than requested dark blond.",
+      "traitExactness": "founder/source description or requested original spouse traits",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_2S1_young.png"
+  },
+  {
+    "id": "L1_2S2_young",
+    "file": "assets/lineage1/L1_2S2_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_2S2",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "young",
+    "sex": "male",
+    "age": 22,
+    "clothing": "muted sage fine wool tunic, dark plum short mantle",
+    "traits": {
+      "hair": "curly black",
+      "skin": "medium warm brown",
+      "eyes": "dark brown deep set",
+      "faceShape": "broad rectangular",
+      "nose": "broad straight rounded tip",
+      "jaw": "broad cleft chin",
+      "brow": "thick slightly curved black brows"
+    },
+    "inheritance": {},
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create a completely NEW unrelated young man age22; reference is STYLE ONLY, never clone its face. Curly black hair, medium warm brown skin, dark brown deep-set eyes, broad rectangular face, broad straight nose with rounded tip, broad cleft chin, thick slightly curved black brows. Clean shaven. Muted sage fine wool tunic, dark plum short mantle, no cap.",
+        "rawFile": "raw/lineage1/L1_2S2_young.png",
+        "referenceImages": [
+          "references/I037_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "new external identity",
+      "traitObservation": "Distinct new dark curly-haired face; chin cleft is subtle at 256px.",
+      "traitExactness": "founder/source description or requested original spouse traits",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_2S2_young.png"
+  },
+  {
+    "id": "L1_201_young",
+    "file": "assets/lineage1/L1_201_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_201",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "young",
+    "sex": "male",
+    "age": 22,
+    "clothing": "muted slate blue fine wool tunic, no cap",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light warm beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "long angular",
+      "nose": "long straight narrow bridge",
+      "jaw": "soft rounded jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_102",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_101",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_102",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_101",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_101",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_102",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_101",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create a NEW distinct male child of BOTH reference parents, aged22, not a copy of either parent. Image1 father L1_101, image2 mother L1_102. Exact per-trait artistic inheritance: {\"hair\":{\"from\":\"L1_102\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_101\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_102\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_101\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_101\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_102\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_101\",\"value\":\"straight low dark brows\"}}. Preserve recognizably mixed family resemblance, individual distinct morphology, natural asymmetric face. muted slate blue fine wool tunic, no cap. Clean shaven if male, no makeup.",
+        "rawFile": "raw/lineage1/L1_201_young.png",
+        "referenceImages": [
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn waves and father-like long nose visible. Requested mother soft jaw deviates toward angular father jaw; strong resemblance to brother201/202 pair.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_201_young.png"
+  },
+  {
+    "id": "L1_202_young",
+    "file": "assets/lineage1/L1_202_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_202",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "young",
+    "sex": "male",
+    "age": 22,
+    "clothing": "ocher wool tunic with dark burgundy collar, no cap",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light rosy beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "broad oval",
+      "nose": "short gently convex broad tip",
+      "jaw": "square angular jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_101",
+        "value": "straight dark brown"
+      },
+      "skin": {
+        "from": "L1_102",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_101",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_102",
+        "value": "broad oval"
+      },
+      "nose": {
+        "from": "L1_102",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_101",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_102",
+        "value": "arched auburn brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create a NEW distinct male child of BOTH reference parents, aged22, not a copy of either parent. Image1 father L1_101, image2 mother L1_102. Exact per-trait artistic inheritance: {\"hair\":{\"from\":\"L1_101\",\"value\":\"straight dark brown\"},\"skin\":{\"from\":\"L1_102\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_101\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_102\",\"value\":\"broad oval\"},\"nose\":{\"from\":\"L1_102\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_101\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_102\",\"value\":\"arched auburn brows\"}}. Preserve recognizably mixed family resemblance, individual distinct morphology, natural asymmetric face. ocher wool tunic with dark burgundy collar, no cap. Clean shaven if male, no makeup.",
+        "rawFile": "raw/lineage1/L1_202_young.png",
+        "referenceImages": [
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Dark straight hair distinguishes from201. Requested broad oval face and short broad-tip nose remain too long/angular and father-like.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_202_young.png"
+  },
+  {
+    "id": "L1_203_young",
+    "file": "assets/lineage1/L1_203_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "young",
+    "sex": "female",
+    "age": 22,
+    "clothing": "muted sage gown with narrow linen headband, visible hair",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "short gently convex broad tip",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_102",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_102",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_101",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_101",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_102",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_101",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_101",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create a NEW distinct female child of BOTH reference parents, aged22, not a copy of either parent. Image1 father L1_101, image2 mother L1_102. Exact per-trait artistic inheritance: {\"hair\":{\"from\":\"L1_102\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_102\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_101\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_101\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_102\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_101\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_101\",\"value\":\"straight low dark brows\"}}. Preserve recognizably mixed family resemblance, individual distinct morphology, natural asymmetric face. muted sage gown with narrow linen headband, visible hair. Clean shaven if male, no makeup.",
+        "rawFile": "raw/lineage1/L1_203_young.png",
+        "referenceImages": [
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn waves and gray-green eyes visible. Requested short convex maternal nose is longer/straighter; angular jaw present. Sister distinction relies partly on hair and eye shade.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_203_young.png"
+  },
+  {
+    "id": "L1_204_young",
+    "file": "assets/lineage1/L1_204_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "young",
+    "sex": "female",
+    "age": 22,
+    "clothing": "dusty plum gown, uncovered braided hair",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light warm beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "broad oval",
+      "nose": "long straight narrow bridge",
+      "jaw": "soft rounded jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_101",
+        "value": "straight dark brown"
+      },
+      "skin": {
+        "from": "L1_101",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_102",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_102",
+        "value": "broad oval"
+      },
+      "nose": {
+        "from": "L1_101",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_102",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_102",
+        "value": "arched auburn brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create a NEW distinct female child of BOTH reference parents, aged22, not a copy of either parent. Image1 father L1_101, image2 mother L1_102. Exact per-trait artistic inheritance: {\"hair\":{\"from\":\"L1_101\",\"value\":\"straight dark brown\"},\"skin\":{\"from\":\"L1_101\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_102\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_102\",\"value\":\"broad oval\"},\"nose\":{\"from\":\"L1_101\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_102\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_102\",\"value\":\"arched auburn brows\"}}. Preserve recognizably mixed family resemblance, individual distinct morphology, natural asymmetric face. dusty plum gown, uncovered braided hair. Clean shaven if male, no makeup.",
+        "rawFile": "raw/lineage1/L1_204_young.png",
+        "referenceImages": [
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Dark hair and hazel eyes visible. Requested maternal rounded jaw only partial; sister203 face similarity remains high.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_204_young.png"
+  },
+  {
+    "id": "L1_102_old",
+    "file": "assets/lineage1/L1_102_old.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_102",
+    "lineage": "L1",
+    "generation": 1,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "old",
+    "sex": "female",
+    "age": 70,
+    "clothing": "burgundy gown linen veil gray fur",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "broad oval",
+      "nose": "short gently convex broad tip",
+      "jaw": "soft rounded jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {},
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Exact same reference woman now aged70. Preserve broad oval face, convex short nose broad tip, rounded jaw, hazel eyes, arched brows. Silver auburn hair showing at forehead and temples, realistic age lines and sagging skin. Same burgundy gown, linen veil and fur.",
+        "rawFile": "raw/lineage1/L1_102_old.png",
+        "referenceImages": [
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: gray hair and increased lines",
+      "identityContinuity": "recognizable founder aging",
+      "traitObservation": "Founder identity retained; broad cheek and short convex nose remain recognizable.",
+      "traitExactness": "founder/source description or requested original spouse traits",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_102_old.png"
+  },
+  {
+    "id": "L1_301_young",
+    "file": "assets/lineage1/L1_301_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_301",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_201",
+    "motherIdentity": "L1_2S1",
+    "stage": "young",
+    "sex": "male",
+    "age": 22,
+    "clothing": "muted plum wool tunic",
+    "traits": {
+      "hair": "wavy dark blond",
+      "skin": "light warm beige",
+      "eyes": "blue gray wide set",
+      "faceShape": "long angular",
+      "nose": "short upturned fine tip",
+      "jaw": "soft rounded jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_2S1",
+        "value": "wavy dark blond"
+      },
+      "skin": {
+        "from": "L1_201",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_2S1",
+        "value": "blue gray wide set"
+      },
+      "faceShape": {
+        "from": "L1_201",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_2S1",
+        "value": "short upturned fine tip"
+      },
+      "jaw": {
+        "from": "L1_201",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_201",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create one NEW distinct male aged22, child of BOTH supplied parents. Image1 father L1_201, image2 mother L1_2S1. Never clone either parent. Exact artistic trait inheritance: {\"hair\":{\"from\":\"L1_2S1\",\"value\":\"wavy dark blond\"},\"skin\":{\"from\":\"L1_201\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_2S1\",\"value\":\"blue gray wide set\"},\"faceShape\":{\"from\":\"L1_201\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_2S1\",\"value\":\"short upturned fine tip\"},\"jaw\":{\"from\":\"L1_201\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_201\",\"value\":\"straight low dark brows\"}}. Individually distinctive face, show specified nose and jaw clearly, no generic identical sibling face. muted plum wool tunic. Hairline and eyes visible, clean shaven males. No symbols.",
+        "rawFile": "raw/lineage1/L1_301_young.png",
+        "referenceImages": [
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_2S1_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Golden wavy hair and blue-gray eyes distinguish from father; requested maternal pointed chin instead looks broad/angular.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_301_young.png"
+  },
+  {
+    "id": "L1_302_young",
+    "file": "assets/lineage1/L1_302_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_302",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_201",
+    "motherIdentity": "L1_2S1",
+    "stage": "young",
+    "sex": "female",
+    "age": 22,
+    "clothing": "ocher gown and narrow linen headband",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light freckled neutral beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "small heart shaped",
+      "nose": "long straight narrow bridge",
+      "jaw": "narrow pointed chin",
+      "brow": "fine high arched brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_201",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_2S1",
+        "value": "light freckled neutral beige"
+      },
+      "eyes": {
+        "from": "L1_201",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_2S1",
+        "value": "small heart shaped"
+      },
+      "nose": {
+        "from": "L1_201",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_2S1",
+        "value": "narrow pointed chin"
+      },
+      "brow": {
+        "from": "L1_2S1",
+        "value": "fine high arched brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create one NEW distinct female aged22, child of BOTH supplied parents. Image1 father L1_201, image2 mother L1_2S1. Never clone either parent. Exact artistic trait inheritance: {\"hair\":{\"from\":\"L1_201\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_2S1\",\"value\":\"light freckled neutral beige\"},\"eyes\":{\"from\":\"L1_201\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_2S1\",\"value\":\"small heart shaped\"},\"nose\":{\"from\":\"L1_201\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_2S1\",\"value\":\"narrow pointed chin\"},\"brow\":{\"from\":\"L1_2S1\",\"value\":\"fine high arched brows\"}}. Individually distinctive face, show specified nose and jaw clearly, no generic identical sibling face. ocher gown and narrow linen headband. Hairline and eyes visible, clean shaven males. No symbols.",
+        "rawFile": "raw/lineage1/L1_302_young.png",
+        "referenceImages": [
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_2S1_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn hair, hazel eyes and freckles visible; requested short upturned nose only partial. Resembles mother closely with changed hair shade.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_302_young.png"
+  },
+  {
+    "id": "L1_303_young",
+    "file": "assets/lineage1/L1_303_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_303",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_2S2",
+    "motherIdentity": "L1_203",
+    "stage": "young",
+    "sex": "male",
+    "age": 22,
+    "clothing": "slate blue tunic and dark green cloak",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "dark brown deep set",
+      "faceShape": "broad rectangular",
+      "nose": "broad straight rounded tip",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_203",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_203",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_2S2",
+        "value": "dark brown deep set"
+      },
+      "faceShape": {
+        "from": "L1_2S2",
+        "value": "broad rectangular"
+      },
+      "nose": {
+        "from": "L1_2S2",
+        "value": "broad straight rounded tip"
+      },
+      "jaw": {
+        "from": "L1_203",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_203",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create one NEW distinct male aged22, child of BOTH supplied parents. Image1 father L1_2S2, image2 mother L1_203. Never clone either parent. Exact artistic trait inheritance: {\"hair\":{\"from\":\"L1_203\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_203\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_2S2\",\"value\":\"dark brown deep set\"},\"faceShape\":{\"from\":\"L1_2S2\",\"value\":\"broad rectangular\"},\"nose\":{\"from\":\"L1_2S2\",\"value\":\"broad straight rounded tip\"},\"jaw\":{\"from\":\"L1_203\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_203\",\"value\":\"straight low dark brows\"}}. Individually distinctive face, show specified nose and jaw clearly, no generic identical sibling face. slate blue tunic and dark green cloak. Hairline and eyes visible, clean shaven males. No symbols.",
+        "rawFile": "raw/lineage1/L1_303_young.png",
+        "referenceImages": [
+          "assets/lineage1/L1_2S2_young.png",
+          "assets/lineage1/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn curls and dark eyes visible; requested light rosy skin appears warmer/tanner, face more angular than maternal long shape target.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_303_young.png"
+  },
+  {
+    "id": "L1_304_young",
+    "file": "assets/lineage1/L1_304_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_304",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_2S2",
+    "motherIdentity": "L1_203",
+    "stage": "young",
+    "sex": "female",
+    "age": 22,
+    "clothing": "dusty russet gown, no head covering",
+    "traits": {
+      "hair": "curly black",
+      "skin": "medium warm brown",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "short gently convex broad tip",
+      "jaw": "broad cleft chin",
+      "brow": "thick slightly curved black brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_2S2",
+        "value": "curly black"
+      },
+      "skin": {
+        "from": "L1_2S2",
+        "value": "medium warm brown"
+      },
+      "eyes": {
+        "from": "L1_203",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_203",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_203",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_2S2",
+        "value": "broad cleft chin"
+      },
+      "brow": {
+        "from": "L1_2S2",
+        "value": "thick slightly curved black brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Create one NEW distinct female aged22, child of BOTH supplied parents. Image1 father L1_2S2, image2 mother L1_203. Never clone either parent. Exact artistic trait inheritance: {\"hair\":{\"from\":\"L1_2S2\",\"value\":\"curly black\"},\"skin\":{\"from\":\"L1_2S2\",\"value\":\"medium warm brown\"},\"eyes\":{\"from\":\"L1_203\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_203\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_203\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_2S2\",\"value\":\"broad cleft chin\"},\"brow\":{\"from\":\"L1_2S2\",\"value\":\"thick slightly curved black brows\"}}. Individually distinctive face, show specified nose and jaw clearly, no generic identical sibling face. dusty russet gown, no head covering. Hairline and eyes visible, clean shaven males. No symbols.",
+        "rawFile": "raw/lineage1/L1_304_young.png",
+        "referenceImages": [
+          "assets/lineage1/L1_2S2_young.png",
+          "assets/lineage1/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: young adult",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Black curls, warm brown skin and gray-green eyes visible; requested rounded maternal jaw remains more angular. Distinct from brother by eye and hair colors.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_304_young.png"
+  },
+  {
+    "id": "L1_201_baby",
+    "file": "assets/lineage1/L1_201_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_201",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "baby",
+    "sex": "male",
+    "age": 1,
+    "clothing": "pale flax swaddle with muted blue edge",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light warm beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "long angular",
+      "nose": "long straight narrow bridge",
+      "jaw": "soft rounded jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_102",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_101",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_102",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_101",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_101",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_102",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_101",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_201 at22; make this male aged1. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_102\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_101\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_102\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_101\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_101\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_102\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_101\",\"value\":\"straight low dark brows\"}}. A genuinely age1 infant with round baby proportions, short fine baby hair showing, fully visible face, no adult jaw, facial hair or jewelry. pale flax swaddle with muted blue edge. No other people.",
+        "rawFile": "raw/lineage1/L1_201_baby.png",
+        "referenceImages": [
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: infant/toddler face and swaddle, exact age uncertain",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn waves and father-like long nose visible. Requested mother soft jaw deviates toward angular father jaw; strong resemblance to brother201/202 pair.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_201_baby.png"
+  },
+  {
+    "id": "L1_201_child",
+    "file": "assets/lineage1/L1_201_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_201",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "child",
+    "sex": "male",
+    "age": 8,
+    "clothing": "slate blue plain wool tunic",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light warm beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "long angular",
+      "nose": "long straight narrow bridge",
+      "jaw": "soft rounded jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_102",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_101",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_102",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_101",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_101",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_102",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_101",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_201 at22; make this male aged8. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_102\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_101\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_102\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_101\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_101\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_102\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_101\",\"value\":\"straight low dark brows\"}}. Genuinely 8-year-old natural child proportions, youthful cheeks and small nose; no adult facial hair, makeup or adult neckline. slate blue plain wool tunic. No other people.",
+        "rawFile": "raw/lineage1/L1_201_child.png",
+        "referenceImages": [
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: child reads too old"
+      },
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. IMPORTANT AGE CORRECTION. Draw a primary-school child aged SIX to EIGHT, absolutely not adolescent. Image1 is this child's own adult future identity, image2 father L1_101, image3 mother L1_102; use BOTH parents but transform anatomy thoroughly to small child. male, round baby-fat cheeks, small short buttonlike developing nose, short rounded jaw without sharp adult jawline, proportionally large head and forehead, short little neck, narrow small shoulders and flat child torso. Gentle youthful open eyes. Retain family hair and eye colors: {\"hair\":\"wavy auburn brown\",\"skin\":\"light warm beige\",\"eyes\":\"hazel rounded almond\",\"faceShape\":\"long angular\",\"nose\":\"long straight narrow bridge\",\"jaw\":\"soft rounded jaw\",\"brow\":\"straight low dark brows\"} but make age-appropriate undeveloped facial anatomy. slate blue plain wool tunic, plain modest high neckline. Portrait must look six to eight years old. No wrinkles, mature jaw, long nose, broad adult shoulders, adult curves or facial hair. Same painterly reference style.",
+        "rawFile": "raw/lineage1/L1_201_child-v2.png",
+        "referenceImages": [
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "selected age correction v2"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS/REVIEW: v2 visibly rounder cheeks, short developing nose, smaller shoulders; approx6-9 reading improved but subjective",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn waves and father-like long nose visible. Requested mother soft jaw deviates toward angular father jaw; strong resemblance to brother201/202 pair.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_201_child-v2.png"
+  },
+  {
+    "id": "L1_201_mature",
+    "file": "assets/lineage1/L1_201_mature.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_201",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "mature",
+    "sex": "male",
+    "age": 48,
+    "clothing": "muted slate blue fine wool tunic, no cap",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light warm beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "long angular",
+      "nose": "long straight narrow bridge",
+      "jaw": "soft rounded jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_102",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_101",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_102",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_101",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_101",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_102",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_101",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_201 at22; make this male aged45. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_102\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_101\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_102\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_101\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_101\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_102\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_101\",\"value\":\"straight low dark brows\"}}. Mature45 with modest age lines, preserve exact identity and hair, only subtle temple gray. muted slate blue fine wool tunic, no cap. No other people.",
+        "rawFile": "raw/lineage1/L1_201_mature.png",
+        "referenceImages": [
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: independent reviewer found insufficient young-mature separation"
+      },
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. AGE CORRECTION ONLY: image1 exact person L1_201 at22, images2 and3 actual father and mother. Paint same identity unmistakably FORTY-EIGHT to FIFTY years old, not20s or30s. Noticeable crow's feet, forehead creases, strong nasolabial folds, heavier lower cheeks and visible jowls, slight skin laxity under chin, realistic neck lines, clear salt-and-pepper temples and scattered silver strands through hair. Preserve the person's eye shape, nose, bone structure, hair pattern, freckles and reference-relative identity; aging must remain visible at96px. muted slate blue fine wool tunic, no cap, unchanged muted palette and pose. Adult middle age, not elderly70. BOTH parent references remain contextual ancestry references. No symbols.",
+        "rawFile": "raw/lineage1/L1_201_mature-v2.png",
+        "referenceImages": [
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "selected age correction v2"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: v2 adds obvious gray temples and forehead/eye folds; middle age improved but same-person geometry dominant at96px",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn waves and father-like long nose visible. Requested mother soft jaw deviates toward angular father jaw; strong resemblance to brother201/202 pair.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_201_mature-v2.png"
+  },
+  {
+    "id": "L1_202_baby",
+    "file": "assets/lineage1/L1_202_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_202",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "baby",
+    "sex": "male",
+    "age": 1,
+    "clothing": "soft sage swaddle",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light rosy beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "broad oval",
+      "nose": "short gently convex broad tip",
+      "jaw": "square angular jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_101",
+        "value": "straight dark brown"
+      },
+      "skin": {
+        "from": "L1_102",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_101",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_102",
+        "value": "broad oval"
+      },
+      "nose": {
+        "from": "L1_102",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_101",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_102",
+        "value": "arched auburn brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_202 at22; make this male aged1. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_101\",\"value\":\"straight dark brown\"},\"skin\":{\"from\":\"L1_102\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_101\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_102\",\"value\":\"broad oval\"},\"nose\":{\"from\":\"L1_102\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_101\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_102\",\"value\":\"arched auburn brows\"}}. A genuinely age1 infant with round baby proportions, short fine baby hair showing, fully visible face, no adult jaw, facial hair or jewelry. soft sage swaddle. No other people.",
+        "rawFile": "raw/lineage1/L1_202_baby.png",
+        "referenceImages": [
+          "assets/lineage1/L1_202_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: infant/toddler face and swaddle, exact age uncertain",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Dark straight hair distinguishes from201. Requested broad oval face and short broad-tip nose remain too long/angular and father-like.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_202_baby.png"
+  },
+  {
+    "id": "L1_202_child",
+    "file": "assets/lineage1/L1_202_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_202",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "child",
+    "sex": "male",
+    "age": 8,
+    "clothing": "ocher wool tunic",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light rosy beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "broad oval",
+      "nose": "short gently convex broad tip",
+      "jaw": "square angular jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_101",
+        "value": "straight dark brown"
+      },
+      "skin": {
+        "from": "L1_102",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_101",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_102",
+        "value": "broad oval"
+      },
+      "nose": {
+        "from": "L1_102",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_101",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_102",
+        "value": "arched auburn brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_202 at22; make this male aged8. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_101\",\"value\":\"straight dark brown\"},\"skin\":{\"from\":\"L1_102\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_101\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_102\",\"value\":\"broad oval\"},\"nose\":{\"from\":\"L1_102\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_101\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_102\",\"value\":\"arched auburn brows\"}}. Genuinely 8-year-old natural child proportions, youthful cheeks and small nose; no adult facial hair, makeup or adult neckline. ocher wool tunic. No other people.",
+        "rawFile": "raw/lineage1/L1_202_child.png",
+        "referenceImages": [
+          "assets/lineage1/L1_202_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: childlike but could read approximately 9-11",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Dark straight hair distinguishes from201. Requested broad oval face and short broad-tip nose remain too long/angular and father-like.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_202_child.png"
+  },
+  {
+    "id": "L1_202_mature",
+    "file": "assets/lineage1/L1_202_mature.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_202",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "mature",
+    "sex": "male",
+    "age": 48,
+    "clothing": "ocher wool tunic with dark burgundy collar, no cap",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light rosy beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "broad oval",
+      "nose": "short gently convex broad tip",
+      "jaw": "square angular jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_101",
+        "value": "straight dark brown"
+      },
+      "skin": {
+        "from": "L1_102",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_101",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_102",
+        "value": "broad oval"
+      },
+      "nose": {
+        "from": "L1_102",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_101",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_102",
+        "value": "arched auburn brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_202 at22; make this male aged45. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_101\",\"value\":\"straight dark brown\"},\"skin\":{\"from\":\"L1_102\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_101\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_102\",\"value\":\"broad oval\"},\"nose\":{\"from\":\"L1_102\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_101\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_102\",\"value\":\"arched auburn brows\"}}. Mature45 with modest age lines, preserve exact identity and hair, only subtle temple gray. ocher wool tunic with dark burgundy collar, no cap. No other people.",
+        "rawFile": "raw/lineage1/L1_202_mature.png",
+        "referenceImages": [
+          "assets/lineage1/L1_202_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: independent reviewer found insufficient young-mature separation"
+      },
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. AGE CORRECTION ONLY: image1 exact person L1_202 at22, images2 and3 actual father and mother. Paint same identity unmistakably FORTY-EIGHT to FIFTY years old, not20s or30s. Noticeable crow's feet, forehead creases, strong nasolabial folds, heavier lower cheeks and visible jowls, slight skin laxity under chin, realistic neck lines, clear salt-and-pepper temples and scattered silver strands through hair. Preserve the person's eye shape, nose, bone structure, hair pattern, freckles and reference-relative identity; aging must remain visible at96px. ocher wool tunic with dark burgundy collar, no cap, unchanged muted palette and pose. Adult middle age, not elderly70. BOTH parent references remain contextual ancestry references. No symbols.",
+        "rawFile": "raw/lineage1/L1_202_mature-v2.png",
+        "referenceImages": [
+          "assets/lineage1/L1_202_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "selected age correction v2"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: v2 adds obvious gray temples and forehead/eye folds; middle age improved but same-person geometry dominant at96px",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Dark straight hair distinguishes from201. Requested broad oval face and short broad-tip nose remain too long/angular and father-like.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_202_mature-v2.png"
+  },
+  {
+    "id": "L1_203_baby",
+    "file": "assets/lineage1/L1_203_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "baby",
+    "sex": "female",
+    "age": 1,
+    "clothing": "cream swaddle with dull rose edge",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "short gently convex broad tip",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_102",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_102",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_101",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_101",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_102",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_101",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_101",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_203 at22; make this female aged1. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_102\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_102\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_101\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_101\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_102\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_101\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_101\",\"value\":\"straight low dark brows\"}}. A genuinely age1 infant with round baby proportions, short fine baby hair showing, fully visible face, no adult jaw, facial hair or jewelry. cream swaddle with dull rose edge. No other people.",
+        "rawFile": "raw/lineage1/L1_203_baby.png",
+        "referenceImages": [
+          "assets/lineage1/L1_203_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: infant/toddler face and swaddle, exact age uncertain",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn waves and gray-green eyes visible. Requested short convex maternal nose is longer/straighter; angular jaw present. Sister distinction relies partly on hair and eye shade.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_203_baby.png"
+  },
+  {
+    "id": "L1_203_child",
+    "file": "assets/lineage1/L1_203_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "child",
+    "sex": "female",
+    "age": 8,
+    "clothing": "sage modest high-neck child gown",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "short gently convex broad tip",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_102",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_102",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_101",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_101",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_102",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_101",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_101",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_203 at22; make this female aged8. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_102\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_102\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_101\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_101\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_102\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_101\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_101\",\"value\":\"straight low dark brows\"}}. Genuinely 8-year-old natural child proportions, youthful cheeks and small nose; no adult facial hair, makeup or adult neckline. sage modest high-neck child gown. No other people.",
+        "rawFile": "raw/lineage1/L1_203_child.png",
+        "referenceImages": [
+          "assets/lineage1/L1_203_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: childlike but could read approximately 9-11",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn waves and gray-green eyes visible. Requested short convex maternal nose is longer/straighter; angular jaw present. Sister distinction relies partly on hair and eye shade.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_203_child.png"
+  },
+  {
+    "id": "L1_203_mature",
+    "file": "assets/lineage1/L1_203_mature.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "mature",
+    "sex": "female",
+    "age": 48,
+    "clothing": "muted sage gown with narrow linen headband, visible hair",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "short gently convex broad tip",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_102",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_102",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_101",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_101",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_102",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_101",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_101",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_203 at22; make this female aged45. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_102\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_102\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_101\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_101\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_102\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_101\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_101\",\"value\":\"straight low dark brows\"}}. Mature45 with modest age lines, preserve exact identity and hair, only subtle temple gray. muted sage gown with narrow linen headband, visible hair. No other people.",
+        "rawFile": "raw/lineage1/L1_203_mature.png",
+        "referenceImages": [
+          "assets/lineage1/L1_203_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: independent reviewer found insufficient young-mature separation"
+      },
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. AGE CORRECTION ONLY: image1 exact person L1_203 at22, images2 and3 actual father and mother. Paint same identity unmistakably FORTY-EIGHT to FIFTY years old, not20s or30s. Noticeable crow's feet, forehead creases, strong nasolabial folds, heavier lower cheeks and visible jowls, slight skin laxity under chin, realistic neck lines, clear salt-and-pepper temples and scattered silver strands through hair. Preserve the person's eye shape, nose, bone structure, hair pattern, freckles and reference-relative identity; aging must remain visible at96px. muted sage gown with narrow linen headband, visible hair, unchanged muted palette and pose. Adult middle age, not elderly70. BOTH parent references remain contextual ancestry references. No symbols.",
+        "rawFile": "raw/lineage1/L1_203_mature-v2.png",
+        "referenceImages": [
+          "assets/lineage1/L1_203_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "selected age correction v2"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: v2 adds obvious gray temples and forehead/eye folds; middle age improved but same-person geometry dominant at96px",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn waves and gray-green eyes visible. Requested short convex maternal nose is longer/straighter; angular jaw present. Sister distinction relies partly on hair and eye shade.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_203_mature-v2.png"
+  },
+  {
+    "id": "L1_204_baby",
+    "file": "assets/lineage1/L1_204_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "baby",
+    "sex": "female",
+    "age": 1,
+    "clothing": "ocher swaddle",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light warm beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "broad oval",
+      "nose": "long straight narrow bridge",
+      "jaw": "soft rounded jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_101",
+        "value": "straight dark brown"
+      },
+      "skin": {
+        "from": "L1_101",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_102",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_102",
+        "value": "broad oval"
+      },
+      "nose": {
+        "from": "L1_101",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_102",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_102",
+        "value": "arched auburn brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_204 at22; make this female aged1. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_101\",\"value\":\"straight dark brown\"},\"skin\":{\"from\":\"L1_101\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_102\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_102\",\"value\":\"broad oval\"},\"nose\":{\"from\":\"L1_101\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_102\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_102\",\"value\":\"arched auburn brows\"}}. A genuinely age1 infant with round baby proportions, short fine baby hair showing, fully visible face, no adult jaw, facial hair or jewelry. ocher swaddle. No other people.",
+        "rawFile": "raw/lineage1/L1_204_baby.png",
+        "referenceImages": [
+          "assets/lineage1/L1_204_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: infant/toddler face and swaddle, exact age uncertain",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Dark hair and hazel eyes visible. Requested maternal rounded jaw only partial; sister203 face similarity remains high.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_204_baby.png"
+  },
+  {
+    "id": "L1_204_child",
+    "file": "assets/lineage1/L1_204_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "child",
+    "sex": "female",
+    "age": 8,
+    "clothing": "dusty plum high-neck child gown",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light warm beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "broad oval",
+      "nose": "long straight narrow bridge",
+      "jaw": "soft rounded jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_101",
+        "value": "straight dark brown"
+      },
+      "skin": {
+        "from": "L1_101",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_102",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_102",
+        "value": "broad oval"
+      },
+      "nose": {
+        "from": "L1_101",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_102",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_102",
+        "value": "arched auburn brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_204 at22; make this female aged8. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_101\",\"value\":\"straight dark brown\"},\"skin\":{\"from\":\"L1_101\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_102\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_102\",\"value\":\"broad oval\"},\"nose\":{\"from\":\"L1_101\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_102\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_102\",\"value\":\"arched auburn brows\"}}. Genuinely 8-year-old natural child proportions, youthful cheeks and small nose; no adult facial hair, makeup or adult neckline. dusty plum high-neck child gown. No other people.",
+        "rawFile": "raw/lineage1/L1_204_child.png",
+        "referenceImages": [
+          "assets/lineage1/L1_204_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: child reads too old"
+      },
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. IMPORTANT AGE CORRECTION. Draw a primary-school child aged SIX to EIGHT, absolutely not adolescent. Image1 is this child's own adult future identity, image2 father L1_101, image3 mother L1_102; use BOTH parents but transform anatomy thoroughly to small child. female, round baby-fat cheeks, small short buttonlike developing nose, short rounded jaw without sharp adult jawline, proportionally large head and forehead, short little neck, narrow small shoulders and flat child torso. Gentle youthful open eyes. Retain family hair and eye colors: {\"hair\":\"straight dark brown\",\"skin\":\"light warm beige\",\"eyes\":\"hazel rounded almond\",\"faceShape\":\"broad oval\",\"nose\":\"long straight narrow bridge\",\"jaw\":\"soft rounded jaw\",\"brow\":\"arched auburn brows\"} but make age-appropriate undeveloped facial anatomy. dusty plum high-neck child gown, plain modest high neckline. Portrait must look six to eight years old. No wrinkles, mature jaw, long nose, broad adult shoulders, adult curves or facial hair. Same painterly reference style.",
+        "rawFile": "raw/lineage1/L1_204_child-v2.png",
+        "referenceImages": [
+          "assets/lineage1/L1_204_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "selected age correction v2"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS/REVIEW: v2 visibly rounder cheeks, short developing nose, smaller shoulders; approx6-9 reading improved but subjective",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Dark hair and hazel eyes visible. Requested maternal rounded jaw only partial; sister203 face similarity remains high.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_204_child-v2.png"
+  },
+  {
+    "id": "L1_204_mature",
+    "file": "assets/lineage1/L1_204_mature.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "mature",
+    "sex": "female",
+    "age": 48,
+    "clothing": "dusty plum gown, uncovered braided hair",
+    "traits": {
+      "hair": "straight dark brown",
+      "skin": "light warm beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "broad oval",
+      "nose": "long straight narrow bridge",
+      "jaw": "soft rounded jaw",
+      "brow": "arched auburn brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_101",
+        "value": "straight dark brown"
+      },
+      "skin": {
+        "from": "L1_101",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_102",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_102",
+        "value": "broad oval"
+      },
+      "nose": {
+        "from": "L1_101",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_102",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_102",
+        "value": "arched auburn brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 is exact same person L1_204 at22; make this female aged45. Images2 and3 actual father and mother must guide continuity. Same-person facial landmarks, artistic inherited traits {\"hair\":{\"from\":\"L1_101\",\"value\":\"straight dark brown\"},\"skin\":{\"from\":\"L1_101\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_102\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_102\",\"value\":\"broad oval\"},\"nose\":{\"from\":\"L1_101\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_102\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_102\",\"value\":\"arched auburn brows\"}}. Mature45 with modest age lines, preserve exact identity and hair, only subtle temple gray. dusty plum gown, uncovered braided hair. No other people.",
+        "rawFile": "raw/lineage1/L1_204_mature.png",
+        "referenceImages": [
+          "assets/lineage1/L1_204_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: independent reviewer found insufficient young-mature separation"
+      },
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. AGE CORRECTION ONLY: image1 exact person L1_204 at22, images2 and3 actual father and mother. Paint same identity unmistakably FORTY-EIGHT to FIFTY years old, not20s or30s. Noticeable crow's feet, forehead creases, strong nasolabial folds, heavier lower cheeks and visible jowls, slight skin laxity under chin, realistic neck lines, clear salt-and-pepper temples and scattered silver strands through hair. Preserve the person's eye shape, nose, bone structure, hair pattern, freckles and reference-relative identity; aging must remain visible at96px. dusty plum gown, uncovered braided hair, unchanged muted palette and pose. Adult middle age, not elderly70. BOTH parent references remain contextual ancestry references. No symbols.",
+        "rawFile": "raw/lineage1/L1_204_mature-v2.png",
+        "referenceImages": [
+          "assets/lineage1/L1_204_young.png",
+          "assets/lineage1/L1_101_mature.png",
+          "assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "selected age correction v2"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: v2 adds obvious gray temples and forehead/eye folds; middle age improved but same-person geometry dominant at96px",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Dark hair and hazel eyes visible. Requested maternal rounded jaw only partial; sister203 face similarity remains high.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "REVIEW: different hair/eye/contour cues but same-sex siblings too similar for strong distinct-person claim",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_204_mature-v2.png"
+  },
+  {
+    "id": "L1_301_baby",
+    "file": "assets/lineage1/L1_301_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_301",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_201",
+    "motherIdentity": "L1_2S1",
+    "stage": "baby",
+    "sex": "male",
+    "age": 1,
+    "clothing": "pale oat swaddle with plum edge",
+    "traits": {
+      "hair": "wavy dark blond",
+      "skin": "light warm beige",
+      "eyes": "blue gray wide set",
+      "faceShape": "long angular",
+      "nose": "short upturned fine tip",
+      "jaw": "soft rounded jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_2S1",
+        "value": "wavy dark blond"
+      },
+      "skin": {
+        "from": "L1_201",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_2S1",
+        "value": "blue gray wide set"
+      },
+      "faceShape": {
+        "from": "L1_201",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_2S1",
+        "value": "short upturned fine tip"
+      },
+      "jaw": {
+        "from": "L1_201",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_201",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 exact individual L1_301 at22, make same male aged1. Images2 and3 are actual father and mother; use BOTH parents for continuity. Artistic inheritance {\"hair\":{\"from\":\"L1_2S1\",\"value\":\"wavy dark blond\"},\"skin\":{\"from\":\"L1_201\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_2S1\",\"value\":\"blue gray wide set\"},\"faceShape\":{\"from\":\"L1_201\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_2S1\",\"value\":\"short upturned fine tip\"},\"jaw\":{\"from\":\"L1_201\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_201\",\"value\":\"straight low dark brows\"}}. Clearly infant age1 with big round baby cheeks, short fine baby hair, natural proportions, fully visible face and swaddle, no adult jaw. pale oat swaddle with plum edge. Hair and eyes clearly visible. No jewelry, no additional people.",
+        "rawFile": "raw/lineage1/L1_301_baby.png",
+        "referenceImages": [
+          "assets/lineage1/L1_301_young.png",
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_2S1_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: infant/toddler face and swaddle, exact age uncertain",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Golden wavy hair and blue-gray eyes distinguish from father; requested maternal pointed chin instead looks broad/angular.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_301_baby.png"
+  },
+  {
+    "id": "L1_301_child",
+    "file": "assets/lineage1/L1_301_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_301",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_201",
+    "motherIdentity": "L1_2S1",
+    "stage": "child",
+    "sex": "male",
+    "age": 8,
+    "clothing": "plum wool child tunic",
+    "traits": {
+      "hair": "wavy dark blond",
+      "skin": "light warm beige",
+      "eyes": "blue gray wide set",
+      "faceShape": "long angular",
+      "nose": "short upturned fine tip",
+      "jaw": "soft rounded jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_2S1",
+        "value": "wavy dark blond"
+      },
+      "skin": {
+        "from": "L1_201",
+        "value": "light warm beige"
+      },
+      "eyes": {
+        "from": "L1_2S1",
+        "value": "blue gray wide set"
+      },
+      "faceShape": {
+        "from": "L1_201",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_2S1",
+        "value": "short upturned fine tip"
+      },
+      "jaw": {
+        "from": "L1_201",
+        "value": "soft rounded jaw"
+      },
+      "brow": {
+        "from": "L1_201",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 exact individual L1_301 at22, make same male aged8. Images2 and3 are actual father and mother; use BOTH parents for continuity. Artistic inheritance {\"hair\":{\"from\":\"L1_2S1\",\"value\":\"wavy dark blond\"},\"skin\":{\"from\":\"L1_201\",\"value\":\"light warm beige\"},\"eyes\":{\"from\":\"L1_2S1\",\"value\":\"blue gray wide set\"},\"faceShape\":{\"from\":\"L1_201\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_2S1\",\"value\":\"short upturned fine tip\"},\"jaw\":{\"from\":\"L1_201\",\"value\":\"soft rounded jaw\"},\"brow\":{\"from\":\"L1_201\",\"value\":\"straight low dark brows\"}}. Clearly prepubescent child aged8, not teen; smaller nose, short jaw, rounded child cheeks, narrow shoulders. Natural child proportions, no facial hair, no cosmetics, no adult neckline. plum wool child tunic. Hair and eyes clearly visible. No jewelry, no additional people.",
+        "rawFile": "raw/lineage1/L1_301_child.png",
+        "referenceImages": [
+          "assets/lineage1/L1_301_young.png",
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_2S1_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: childlike but could read approximately 9-11",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Golden wavy hair and blue-gray eyes distinguish from father; requested maternal pointed chin instead looks broad/angular.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_301_child.png"
+  },
+  {
+    "id": "L1_302_baby",
+    "file": "assets/lineage1/L1_302_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_302",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_201",
+    "motherIdentity": "L1_2S1",
+    "stage": "baby",
+    "sex": "female",
+    "age": 1,
+    "clothing": "sage green swaddle",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light freckled neutral beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "small heart shaped",
+      "nose": "long straight narrow bridge",
+      "jaw": "narrow pointed chin",
+      "brow": "fine high arched brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_201",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_2S1",
+        "value": "light freckled neutral beige"
+      },
+      "eyes": {
+        "from": "L1_201",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_2S1",
+        "value": "small heart shaped"
+      },
+      "nose": {
+        "from": "L1_201",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_2S1",
+        "value": "narrow pointed chin"
+      },
+      "brow": {
+        "from": "L1_2S1",
+        "value": "fine high arched brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 exact individual L1_302 at22, make same female aged1. Images2 and3 are actual father and mother; use BOTH parents for continuity. Artistic inheritance {\"hair\":{\"from\":\"L1_201\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_2S1\",\"value\":\"light freckled neutral beige\"},\"eyes\":{\"from\":\"L1_201\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_2S1\",\"value\":\"small heart shaped\"},\"nose\":{\"from\":\"L1_201\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_2S1\",\"value\":\"narrow pointed chin\"},\"brow\":{\"from\":\"L1_2S1\",\"value\":\"fine high arched brows\"}}. Clearly infant age1 with big round baby cheeks, short fine baby hair, natural proportions, fully visible face and swaddle, no adult jaw. sage green swaddle. Hair and eyes clearly visible. No jewelry, no additional people.",
+        "rawFile": "raw/lineage1/L1_302_baby.png",
+        "referenceImages": [
+          "assets/lineage1/L1_302_young.png",
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_2S1_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: infant/toddler face and swaddle, exact age uncertain",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn hair, hazel eyes and freckles visible; requested short upturned nose only partial. Resembles mother closely with changed hair shade.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_302_baby.png"
+  },
+  {
+    "id": "L1_302_child",
+    "file": "assets/lineage1/L1_302_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_302",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_201",
+    "motherIdentity": "L1_2S1",
+    "stage": "child",
+    "sex": "female",
+    "age": 8,
+    "clothing": "ocher high-neck child gown",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light freckled neutral beige",
+      "eyes": "hazel rounded almond",
+      "faceShape": "small heart shaped",
+      "nose": "long straight narrow bridge",
+      "jaw": "narrow pointed chin",
+      "brow": "fine high arched brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_201",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_2S1",
+        "value": "light freckled neutral beige"
+      },
+      "eyes": {
+        "from": "L1_201",
+        "value": "hazel rounded almond"
+      },
+      "faceShape": {
+        "from": "L1_2S1",
+        "value": "small heart shaped"
+      },
+      "nose": {
+        "from": "L1_201",
+        "value": "long straight narrow bridge"
+      },
+      "jaw": {
+        "from": "L1_2S1",
+        "value": "narrow pointed chin"
+      },
+      "brow": {
+        "from": "L1_2S1",
+        "value": "fine high arched brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 exact individual L1_302 at22, make same female aged8. Images2 and3 are actual father and mother; use BOTH parents for continuity. Artistic inheritance {\"hair\":{\"from\":\"L1_201\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_2S1\",\"value\":\"light freckled neutral beige\"},\"eyes\":{\"from\":\"L1_201\",\"value\":\"hazel rounded almond\"},\"faceShape\":{\"from\":\"L1_2S1\",\"value\":\"small heart shaped\"},\"nose\":{\"from\":\"L1_201\",\"value\":\"long straight narrow bridge\"},\"jaw\":{\"from\":\"L1_2S1\",\"value\":\"narrow pointed chin\"},\"brow\":{\"from\":\"L1_2S1\",\"value\":\"fine high arched brows\"}}. Clearly prepubescent child aged8, not teen; smaller nose, short jaw, rounded child cheeks, narrow shoulders. Natural child proportions, no facial hair, no cosmetics, no adult neckline. ocher high-neck child gown. Hair and eyes clearly visible. No jewelry, no additional people.",
+        "rawFile": "raw/lineage1/L1_302_child.png",
+        "referenceImages": [
+          "assets/lineage1/L1_302_young.png",
+          "assets/lineage1/L1_201_young.png",
+          "assets/lineage1/L1_2S1_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: childlike but could read approximately 9-11",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn hair, hazel eyes and freckles visible; requested short upturned nose only partial. Resembles mother closely with changed hair shade.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_302_child.png"
+  },
+  {
+    "id": "L1_303_baby",
+    "file": "assets/lineage1/L1_303_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_303",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_2S2",
+    "motherIdentity": "L1_203",
+    "stage": "baby",
+    "sex": "male",
+    "age": 1,
+    "clothing": "cream swaddle with blue border",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "dark brown deep set",
+      "faceShape": "broad rectangular",
+      "nose": "broad straight rounded tip",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_203",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_203",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_2S2",
+        "value": "dark brown deep set"
+      },
+      "faceShape": {
+        "from": "L1_2S2",
+        "value": "broad rectangular"
+      },
+      "nose": {
+        "from": "L1_2S2",
+        "value": "broad straight rounded tip"
+      },
+      "jaw": {
+        "from": "L1_203",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_203",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 exact individual L1_303 at22, make same male aged1. Images2 and3 are actual father and mother; use BOTH parents for continuity. Artistic inheritance {\"hair\":{\"from\":\"L1_203\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_203\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_2S2\",\"value\":\"dark brown deep set\"},\"faceShape\":{\"from\":\"L1_2S2\",\"value\":\"broad rectangular\"},\"nose\":{\"from\":\"L1_2S2\",\"value\":\"broad straight rounded tip\"},\"jaw\":{\"from\":\"L1_203\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_203\",\"value\":\"straight low dark brows\"}}. Clearly infant age1 with big round baby cheeks, short fine baby hair, natural proportions, fully visible face and swaddle, no adult jaw. cream swaddle with blue border. Hair and eyes clearly visible. No jewelry, no additional people.",
+        "rawFile": "raw/lineage1/L1_303_baby.png",
+        "referenceImages": [
+          "assets/lineage1/L1_303_young.png",
+          "assets/lineage1/L1_2S2_young.png",
+          "assets/lineage1/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: infant/toddler face and swaddle, exact age uncertain",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn curls and dark eyes visible; requested light rosy skin appears warmer/tanner, face more angular than maternal long shape target.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_303_baby.png"
+  },
+  {
+    "id": "L1_303_child",
+    "file": "assets/lineage1/L1_303_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_303",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_2S2",
+    "motherIdentity": "L1_203",
+    "stage": "child",
+    "sex": "male",
+    "age": 8,
+    "clothing": "slate blue child tunic",
+    "traits": {
+      "hair": "wavy auburn brown",
+      "skin": "light rosy beige",
+      "eyes": "dark brown deep set",
+      "faceShape": "broad rectangular",
+      "nose": "broad straight rounded tip",
+      "jaw": "square angular jaw",
+      "brow": "straight low dark brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_203",
+        "value": "wavy auburn brown"
+      },
+      "skin": {
+        "from": "L1_203",
+        "value": "light rosy beige"
+      },
+      "eyes": {
+        "from": "L1_2S2",
+        "value": "dark brown deep set"
+      },
+      "faceShape": {
+        "from": "L1_2S2",
+        "value": "broad rectangular"
+      },
+      "nose": {
+        "from": "L1_2S2",
+        "value": "broad straight rounded tip"
+      },
+      "jaw": {
+        "from": "L1_203",
+        "value": "square angular jaw"
+      },
+      "brow": {
+        "from": "L1_203",
+        "value": "straight low dark brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 exact individual L1_303 at22, make same male aged8. Images2 and3 are actual father and mother; use BOTH parents for continuity. Artistic inheritance {\"hair\":{\"from\":\"L1_203\",\"value\":\"wavy auburn brown\"},\"skin\":{\"from\":\"L1_203\",\"value\":\"light rosy beige\"},\"eyes\":{\"from\":\"L1_2S2\",\"value\":\"dark brown deep set\"},\"faceShape\":{\"from\":\"L1_2S2\",\"value\":\"broad rectangular\"},\"nose\":{\"from\":\"L1_2S2\",\"value\":\"broad straight rounded tip\"},\"jaw\":{\"from\":\"L1_203\",\"value\":\"square angular jaw\"},\"brow\":{\"from\":\"L1_203\",\"value\":\"straight low dark brows\"}}. Clearly prepubescent child aged8, not teen; smaller nose, short jaw, rounded child cheeks, narrow shoulders. Natural child proportions, no facial hair, no cosmetics, no adult neckline. slate blue child tunic. Hair and eyes clearly visible. No jewelry, no additional people.",
+        "rawFile": "raw/lineage1/L1_303_child.png",
+        "referenceImages": [
+          "assets/lineage1/L1_303_young.png",
+          "assets/lineage1/L1_2S2_young.png",
+          "assets/lineage1/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: child reads too old"
+      },
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. IMPORTANT AGE CORRECTION. Draw a primary-school child aged SIX to EIGHT, absolutely not adolescent. Image1 is this child's own adult future identity, image2 father L1_2S2, image3 mother L1_203; use BOTH parents but transform anatomy thoroughly to small child. male, round baby-fat cheeks, small short buttonlike developing nose, short rounded jaw without sharp adult jawline, proportionally large head and forehead, short little neck, narrow small shoulders and flat child torso. Gentle youthful open eyes. Retain family hair and eye colors: {\"hair\":\"wavy auburn brown\",\"skin\":\"light rosy beige\",\"eyes\":\"dark brown deep set\",\"faceShape\":\"broad rectangular\",\"nose\":\"broad straight rounded tip\",\"jaw\":\"square angular jaw\",\"brow\":\"straight low dark brows\"} but make age-appropriate undeveloped facial anatomy. slate blue child tunic, plain modest high neckline. Portrait must look six to eight years old. No wrinkles, mature jaw, long nose, broad adult shoulders, adult curves or facial hair. Same painterly reference style.",
+        "rawFile": "raw/lineage1/L1_303_child-v2.png",
+        "referenceImages": [
+          "assets/lineage1/L1_303_young.png",
+          "assets/lineage1/L1_2S2_young.png",
+          "assets/lineage1/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "selected age correction v2"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "REVIEW: v2 rounder cheeks and smaller shoulders; can still read9-11 rather than6-9",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Auburn curls and dark eyes visible; requested light rosy skin appears warmer/tanner, face more angular than maternal long shape target.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_303_child-v2.png"
+  },
+  {
+    "id": "L1_304_baby",
+    "file": "assets/lineage1/L1_304_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_304",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_2S2",
+    "motherIdentity": "L1_203",
+    "stage": "baby",
+    "sex": "female",
+    "age": 1,
+    "clothing": "muted rust swaddle",
+    "traits": {
+      "hair": "curly black",
+      "skin": "medium warm brown",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "short gently convex broad tip",
+      "jaw": "broad cleft chin",
+      "brow": "thick slightly curved black brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_2S2",
+        "value": "curly black"
+      },
+      "skin": {
+        "from": "L1_2S2",
+        "value": "medium warm brown"
+      },
+      "eyes": {
+        "from": "L1_203",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_203",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_203",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_2S2",
+        "value": "broad cleft chin"
+      },
+      "brow": {
+        "from": "L1_2S2",
+        "value": "thick slightly curved black brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 exact individual L1_304 at22, make same female aged1. Images2 and3 are actual father and mother; use BOTH parents for continuity. Artistic inheritance {\"hair\":{\"from\":\"L1_2S2\",\"value\":\"curly black\"},\"skin\":{\"from\":\"L1_2S2\",\"value\":\"medium warm brown\"},\"eyes\":{\"from\":\"L1_203\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_203\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_203\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_2S2\",\"value\":\"broad cleft chin\"},\"brow\":{\"from\":\"L1_2S2\",\"value\":\"thick slightly curved black brows\"}}. Clearly infant age1 with big round baby cheeks, short fine baby hair, natural proportions, fully visible face and swaddle, no adult jaw. muted rust swaddle. Hair and eyes clearly visible. No jewelry, no additional people.",
+        "rawFile": "raw/lineage1/L1_304_baby.png",
+        "referenceImages": [
+          "assets/lineage1/L1_304_young.png",
+          "assets/lineage1/L1_2S2_young.png",
+          "assets/lineage1/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS: infant/toddler face and swaddle, exact age uncertain",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Black curls, warm brown skin and gray-green eyes visible; requested rounded maternal jaw remains more angular. Distinct from brother by eye and hair colors.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_304_baby.png"
+  },
+  {
+    "id": "L1_304_child",
+    "file": "assets/lineage1/L1_304_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_304",
+    "lineage": "L1",
+    "generation": 3,
+    "fatherIdentity": "L1_2S2",
+    "motherIdentity": "L1_203",
+    "stage": "child",
+    "sex": "female",
+    "age": 8,
+    "clothing": "rust high-neck child gown",
+    "traits": {
+      "hair": "curly black",
+      "skin": "medium warm brown",
+      "eyes": "gray green narrow almond",
+      "faceShape": "long angular",
+      "nose": "short gently convex broad tip",
+      "jaw": "broad cleft chin",
+      "brow": "thick slightly curved black brows"
+    },
+    "inheritance": {
+      "hair": {
+        "from": "L1_2S2",
+        "value": "curly black"
+      },
+      "skin": {
+        "from": "L1_2S2",
+        "value": "medium warm brown"
+      },
+      "eyes": {
+        "from": "L1_203",
+        "value": "gray green narrow almond"
+      },
+      "faceShape": {
+        "from": "L1_203",
+        "value": "long angular"
+      },
+      "nose": {
+        "from": "L1_203",
+        "value": "short gently convex broad tip"
+      },
+      "jaw": {
+        "from": "L1_2S2",
+        "value": "broad cleft chin"
+      },
+      "brow": {
+        "from": "L1_2S2",
+        "value": "thick slightly curved black brows"
+      }
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. Identity-preserving age transformation: Image1 exact individual L1_304 at22, make same female aged8. Images2 and3 are actual father and mother; use BOTH parents for continuity. Artistic inheritance {\"hair\":{\"from\":\"L1_2S2\",\"value\":\"curly black\"},\"skin\":{\"from\":\"L1_2S2\",\"value\":\"medium warm brown\"},\"eyes\":{\"from\":\"L1_203\",\"value\":\"gray green narrow almond\"},\"faceShape\":{\"from\":\"L1_203\",\"value\":\"long angular\"},\"nose\":{\"from\":\"L1_203\",\"value\":\"short gently convex broad tip\"},\"jaw\":{\"from\":\"L1_2S2\",\"value\":\"broad cleft chin\"},\"brow\":{\"from\":\"L1_2S2\",\"value\":\"thick slightly curved black brows\"}}. Clearly prepubescent child aged8, not teen; smaller nose, short jaw, rounded child cheeks, narrow shoulders. Natural child proportions, no facial hair, no cosmetics, no adult neckline. rust high-neck child gown. Hair and eyes clearly visible. No jewelry, no additional people.",
+        "rawFile": "raw/lineage1/L1_304_child.png",
+        "referenceImages": [
+          "assets/lineage1/L1_304_young.png",
+          "assets/lineage1/L1_2S2_young.png",
+          "assets/lineage1/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: child reads too old"
+      },
+      {
+        "prompt": "Single square bust portrait, Southern England 1300–1450 gentry. Match reference finely handpainted matte gouache portrait, muted earthy palette, solid muted taupe background, soft upper-left lighting. Face clearly visible, head and shoulders, no text, frame, coat of arms, badge, crown or modern detail. Clothing varies by individual, never color-code family. This is an artistic resemblance study, not biological determinism. IMPORTANT AGE CORRECTION. Draw a primary-school child aged SIX to EIGHT, absolutely not adolescent. Image1 is this child's own adult future identity, image2 father L1_2S2, image3 mother L1_203; use BOTH parents but transform anatomy thoroughly to small child. female, round baby-fat cheeks, small short buttonlike developing nose, short rounded jaw without sharp adult jawline, proportionally large head and forehead, short little neck, narrow small shoulders and flat child torso. Gentle youthful open eyes. Retain family hair and eye colors: {\"hair\":\"curly black\",\"skin\":\"medium warm brown\",\"eyes\":\"gray green narrow almond\",\"faceShape\":\"long angular\",\"nose\":\"short gently convex broad tip\",\"jaw\":\"broad cleft chin\",\"brow\":\"thick slightly curved black brows\"} but make age-appropriate undeveloped facial anatomy. rust high-neck child gown, plain modest high neckline. Portrait must look six to eight years old. No wrinkles, mature jaw, long nose, broad adult shoulders, adult curves or facial hair. Same painterly reference style.",
+        "rawFile": "raw/lineage1/L1_304_child-v2.png",
+        "referenceImages": [
+          "assets/lineage1/L1_304_young.png",
+          "assets/lineage1/L1_2S2_young.png",
+          "assets/lineage1/L1_203_young.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "selected age correction v2"
+      }
+    ],
+    "processing": "Sharp contain resize to 256x256; no painting or face modification",
+    "qa": {
+      "status": "candidate-reviewed-with-limitations",
+      "reviewMethod": "Visual inspection of generated images and 192px contact board; not independent blind validation",
+      "dimensions": "PASS",
+      "faceVisible": "PASS",
+      "style": "PASS; reference-matched fine painterly rendering",
+      "ageRead": "PASS/REVIEW: v2 visibly rounder cheeks, short developing nose, smaller shoulders; approx6-9 reading improved but subjective",
+      "identityContinuity": "recognizable age chain; not a biometric claim",
+      "traitObservation": "Black curls, warm brown skin and gray-green eyes visible; requested rounded maternal jaw remains more angular. Distinct from brother by eye and hair colors.",
+      "traitExactness": "PARTIAL: inheritance values are requested contract, not all visually achieved",
+      "siblingDistinctness": "not fully assessed independently",
+      "runtime": "NOT INSTALLED",
+      "approval": "candidate; no user adoption recorded",
+      "bothParentsReferenced": true,
+      "traitObservationScope": "Identity contract compared mainly with young portrait; aging anatomy and gray hair intentionally differ.",
+      "visualAgeStageApproval": "candidate only; root independent review controls final gate"
+    },
+    "selectedRawFile": "raw/lineage1/L1_304_child-v2.png"
+  }
+]

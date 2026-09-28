@@ -1,0 +1,33 @@
+{
+  "id": "L4_203_child",
+  "file": "assets/L4/L4_203_child.png",
+  "identity": "L4_203",
+  "lineage": "L4",
+  "generation": 2,
+  "stage": "child",
+  "age": 8,
+  "sex": "female",
+  "maritalStatus": "notApplicable",
+  "clothing": "muted olive wool merchant gown and linen coif",
+  "fatherIdentity": "L4_101",
+  "motherIdentity": "L4_102",
+  "commonTraits3": [
+    "copper auburn hair",
+    "round overall face",
+    "gently arched eyebrows"
+  ],
+  "differenceMarkers": [
+    "smooth hair swept under linen coif",
+    "green eyes",
+    "slender long shoulders",
+    "three dark freckles across right cheek",
+    "wide mouth with thin upper lip"
+  ],
+  "prompt": "Use case: identity-preserve historical portrait growth edit. SINGLE square bust of a REAL SIX TO EIGHT YEAR OLD PRIMARY SCHOOL CHILD, same baby as image1 grown only to age 8. Image1 is this person's BABY identity. Image2 actual father, image3 actual mother. Image4 same person's distant future adult is supporting identity only; DO NOT copy adult anatomy or shoulders. Preserve eye color and permanent marks. Medieval southern England merchant family painterly gouache/oil, taupe background soft upper-left light, no text frame props. Subject L4_203, female. Copper auburn hair, round outer face, gently arched brows. Distinct cues smooth hair swept under linen coif; green eyes; slender long shoulders; three dark freckles across right cheek; wide mouth with thin upper lip. CHILD anatomy is decisive: oversized round forehead and cranium relative to tiny round jaw, very short nose bridge, small button nose, plump full cheeks, small soft mouth, short neck almost hidden by simple linen collar. Narrow LITTLE shoulders less than 1.7 head widths, small chest, not adult bust. Show upper torso with LOTS OF taupe margin around child. Face without adult bone definition, no angular jaw no long midface no developed brow ridge. Age6-8 must be unmistakable not10-14. Ordinary small medieval merchant wool tunic/gown in subdued tones. No infant bonnet, no veil, NO headcover on girl. Hair child version of individual style. No adolescent shoulders or wide chest, no adult neck. NO baby swaddling. Face visible, awake neutral gentle expression. Family resemblance ONLY three broad cues, not exact nose/jaw copying.",
+  "referenceImages": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_baby.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_101_young.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_102_young.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L4/L4_203_young.png"
+  ]
+}

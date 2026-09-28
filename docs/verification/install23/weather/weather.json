@@ -1,0 +1,420 @@
+{
+ "scene": {
+  "state": "wool_payment.json",
+  "tick": 149000,
+  "seed": 2,
+  "tile": [
+   44,
+   38
+  ],
+  "viewport": [
+   1280,
+   800
+  ],
+  "proofQuery": "&weather=<kind>&weather-tick=<tick>"
+ },
+ "cap": 0.38,
+ "cost": {
+  "fogAnchorsMs": 0.57,
+  "fogAnchors": 4,
+  "fillCost": {
+   "tintPatternMultiplyMs": 3.5,
+   "tintFlatMultiplyMs": 0.5,
+   "rainPatternFillMs": 1.1,
+   "rainCellsAndPatternsBuildMs": 0.5
+  },
+  "browser": "headless Chrome --disable-gpu (software raster), linux"
+ },
+ "weathers": {
+  "wet": {
+   "seasonTick": 200,
+   "layers": [
+    {
+     "element": "overcast",
+     "art": [
+      "overcast_tint"
+     ],
+     "blend": "multiply",
+     "alpha": 0.06,
+     "moving": false,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "fill"
+    },
+    {
+     "element": "drizzle",
+     "art": [
+      "drizzle_sheet"
+     ],
+     "blend": "source-over",
+     "alpha": 0.14,
+     "moving": true,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "fill"
+    },
+    {
+     "element": "river_fog",
+     "art": [
+      "fog_bank_a",
+      "fog_bank_b",
+      "fog_bank_c"
+     ],
+     "blend": "source-over",
+     "alpha": 0.18,
+     "moving": true,
+     "space": "world",
+     "pass": "sky",
+     "zone": "water",
+     "placement": "shore"
+    },
+    {
+     "element": "wet_sheen",
+     "art": [
+      "wet_ground_sheen"
+     ],
+     "blend": "screen",
+     "alpha": 0.05,
+     "moving": false,
+     "space": "world",
+     "pass": "ground",
+     "zone": "land",
+     "placement": "lattice"
+    },
+    {
+     "element": "puddle_ripples",
+     "art": [
+      "puddle_ripple_sheet"
+     ],
+     "blend": "screen",
+     "alpha": 0.13,
+     "moving": true,
+     "space": "world",
+     "pass": "ground",
+     "zone": "land",
+     "placement": "lattice"
+    }
+   ],
+   "stackedAlpha": 0.38,
+   "shots": {
+    "z1.0": {
+     "file": "weather-wet-z1.0.jpg",
+     "bytes": 123622,
+     "crop": "weather-wet-crop.jpg",
+     "cropBytes": 19080,
+     "cost": {
+      "firstMs": 5.8,
+      "medianMs": 3.4,
+      "p95Ms": 3.6,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 1323
+     }
+    },
+    "z0.6": {
+     "file": "weather-wet-z0.6.jpg",
+     "bytes": 89593,
+     "cost": {
+      "firstMs": 6,
+      "medianMs": 3.7,
+      "p95Ms": 3.9,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 2914
+     }
+    }
+   }
+  },
+  "wet-storm": {
+   "seasonTick": 575,
+   "layers": [
+    {
+     "element": "overcast",
+     "art": [
+      "overcast_tint"
+     ],
+     "blend": "multiply",
+     "alpha": 0.08,
+     "moving": false,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "fill"
+    },
+    {
+     "element": "storm",
+     "art": [
+      "storm_rain_sheet"
+     ],
+     "blend": "source-over",
+     "alpha": 0.26,
+     "moving": true,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "fill"
+    },
+    {
+     "element": "wet_sheen",
+     "art": [
+      "wet_ground_sheen"
+     ],
+     "blend": "screen",
+     "alpha": 0.01,
+     "moving": false,
+     "space": "world",
+     "pass": "ground",
+     "zone": "land",
+     "placement": "lattice"
+    },
+    {
+     "element": "puddle_ripples",
+     "art": [
+      "puddle_ripple_sheet"
+     ],
+     "blend": "screen",
+     "alpha": 0.03,
+     "moving": true,
+     "space": "world",
+     "pass": "ground",
+     "zone": "land",
+     "placement": "lattice"
+    }
+   ],
+   "stackedAlpha": 0.38,
+   "shots": {
+    "z1.0": {
+     "file": "weather-wet-storm-z1.0.jpg",
+     "bytes": 123055,
+     "crop": "weather-wet-storm-crop.jpg",
+     "cropBytes": 19052,
+     "cost": {
+      "firstMs": 5.2,
+      "medianMs": 3.1,
+      "p95Ms": 3.2,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 1323
+     }
+    },
+    "z0.6": {
+     "file": "weather-wet-storm-z0.6.jpg",
+     "bytes": 89984,
+     "cost": {
+      "firstMs": 5.9,
+      "medianMs": 3.6,
+      "p95Ms": 3.7,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 2914
+     }
+    }
+   }
+  },
+  "dry": {
+   "seasonTick": 200,
+   "layers": [
+    {
+     "element": "dust_wind",
+     "art": [
+      "dry_dust_a",
+      "dry_dust_b"
+     ],
+     "blend": "source-over",
+     "alpha": 0.18,
+     "moving": true,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "lanes"
+    },
+    {
+     "element": "cracked_ground",
+     "art": [
+      "heat_cracked_ground"
+     ],
+     "blend": "multiply",
+     "alpha": 0.2,
+     "moving": false,
+     "space": "world",
+     "pass": "ground",
+     "zone": "land",
+     "placement": "lattice"
+    }
+   ],
+   "stackedAlpha": 0.38,
+   "shots": {
+    "z1.0": {
+     "file": "weather-dry-z1.0.jpg",
+     "bytes": 125793,
+     "crop": "weather-dry-crop.jpg",
+     "cropBytes": 19610,
+     "cost": {
+      "firstMs": 2.9,
+      "medianMs": 1.2,
+      "p95Ms": 1.4,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 1323
+     }
+    },
+    "z0.6": {
+     "file": "weather-dry-z0.6.jpg",
+     "bytes": 91848,
+     "cost": {
+      "firstMs": 3.1,
+      "medianMs": 1.7,
+      "p95Ms": 1.8,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 2914
+     }
+    }
+   }
+  },
+  "cold": {
+   "seasonTick": 200,
+   "layers": [
+    {
+     "element": "cold_mist",
+     "art": [
+      "fog_bank_c",
+      "fog_bank_b"
+     ],
+     "blend": "source-over",
+     "alpha": 0.16,
+     "moving": true,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "lanes"
+    },
+    {
+     "element": "cold_mist_high",
+     "art": [
+      "fog_bank_a"
+     ],
+     "blend": "source-over",
+     "alpha": 0.12,
+     "moving": true,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "lanes"
+    },
+    {
+     "element": "frost_tint",
+     "art": [
+      "frost_morning_tint"
+     ],
+     "blend": "source-over",
+     "alpha": 0.1,
+     "moving": false,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "fill"
+    }
+   ],
+   "stackedAlpha": 0.38,
+   "shots": {
+    "z1.0": {
+     "file": "weather-cold-z1.0.jpg",
+     "bytes": 117548,
+     "crop": "weather-cold-crop.jpg",
+     "cropBytes": 17929,
+     "cost": {
+      "firstMs": 4,
+      "medianMs": 2.2,
+      "p95Ms": 2.3,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 1323
+     }
+    },
+    "z0.6": {
+     "file": "weather-cold-z0.6.jpg",
+     "bytes": 85546,
+     "cost": {
+      "firstMs": 3.8,
+      "medianMs": 2.2,
+      "p95Ms": 2.3,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 2914
+     }
+    }
+   }
+  },
+  "normal": {
+   "seasonTick": 200,
+   "layers": [
+    {
+     "element": "cloud_shadows",
+     "art": [
+      "cloud_shadow_a"
+     ],
+     "blend": "multiply",
+     "alpha": 0.12,
+     "moving": true,
+     "space": "world",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "clouds"
+    },
+    {
+     "element": "cloud_shadows_high",
+     "art": [
+      "cloud_shadow_b"
+     ],
+     "blend": "multiply",
+     "alpha": 0.12,
+     "moving": true,
+     "space": "world",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "clouds"
+    }
+   ],
+   "stackedAlpha": 0.24,
+   "shots": {
+    "z1.0": {
+     "file": "weather-normal-z1.0.jpg",
+     "bytes": 125191,
+     "crop": "weather-normal-crop.jpg",
+     "cropBytes": 19437,
+     "cost": {
+      "firstMs": 4.8,
+      "medianMs": 3.2,
+      "p95Ms": 3.3,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 1323
+     }
+    },
+    "z0.6": {
+     "file": "weather-normal-z0.6.jpg",
+     "bytes": 90872,
+     "cost": {
+      "firstMs": 3.8,
+      "medianMs": 2.2,
+      "p95Ms": 2.4,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 2914
+     }
+    }
+   }
+  }
+ },
+ "settingSwitch": {
+  "before": {
+   "label": "날씨 효과(비·안개·먼지·서리·구름 그림자): 켬",
+   "pressed": "true"
+  },
+  "after": {
+   "label": "날씨 효과(비·안개·먼지·서리·구름 그림자): 끔",
+   "pressed": "false"
+  },
+  "stored": "0",
+  "meanAbsDiff": {
+   "wetOnVsNone": 2.84,
+   "wetOffVsNone": 0,
+   "wetOnVsOff": 2.85
+  }
+ },
+ "jpegBytes": 1158160,
+ "errors": []
+}
