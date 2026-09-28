@@ -8,7 +8,7 @@ import { Select } from "./Select";
 import { UI_KIT_GALLERY_COPY as COPY } from "./uiKitGalleryCopy.ko";
 import { PersonChip, PersonPortrait } from "../persons/PersonViews";
 import { PERSON_STATE_COPY } from "../persons/personStateCopy.ko";
-import { ENGINE_HANDOFF_STATES, PERSON_STATES, type PersonStateId } from "../persons/personStates";
+import { PERSON_STATES, type PersonStateId } from "../persons/personStates";
 import { INPUT_HINT_COPY, PAD_GLYPH_NAMES, PAD_HINT_COPY } from "../inputHintCopy.ko";
 import { PadGlyph, PadHint } from "../PadGlyph";
 import type { PadGlyphId } from "../padGlyphs";
@@ -27,7 +27,7 @@ const STATE_FACES: Readonly<Record<PersonStateId, string>> = {
 };
 const PAD_GLYPHS = Object.keys(PAD_GLYPH_NAMES) as PadGlyphId[];
 
-/** INSTALL-23 ④ ⑤: the person-state ornaments on portraits (all twelve, derivable or not yet) and the pad glyphs. */
+/** INSTALL-23 ④ ⑤: the person-state ornaments on portraits (all twelve, each derived from the engine since UI-7) and the pad glyphs. */
 function PersonStateAndPadSections() {
   return (
     <>
@@ -36,13 +36,13 @@ function PersonStateAndPadSections() {
         <p>{PERSON_STATE_COPY.galleryNote}</p>
         <ul className="ui-kit-gallery-states">
           {PERSON_STATES.map(state => (
-            <li key={state} data-person-state={state} data-derived={ENGINE_HANDOFF_STATES.includes(state) ? "false" : "true"}>
+            <li key={state} data-person-state={state} data-derived="true">
               <strong>{PERSON_STATE_COPY.label(state)}</strong>
               <span className="ui-kit-gallery-state-faces">
                 <PersonPortrait portraitId={STATE_FACES[state]} size={96} ornament={state} />
                 <PersonPortrait portraitId={STATE_FACES[state]} size={48} ornament={state} />
               </span>
-              <small>{ENGINE_HANDOFF_STATES.includes(state) ? PERSON_STATE_COPY.galleryHandoff : PERSON_STATE_COPY.galleryEngine}</small>
+              <small>{PERSON_STATE_COPY.galleryEngine}</small>
             </li>
           ))}
         </ul>

@@ -249,7 +249,6 @@
 .ui-kit-gallery-pads { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 .ui-kit-gallery-states li, .ui-kit-gallery-pads li { display: grid; gap: 4px; justify-items: start; font-size: 13px; }
 .ui-kit-gallery-states small, .ui-kit-gallery-pads small { font-size: 12px; }
-.ui-kit-gallery-states li[data-derived="false"] small { font-style: italic; }
 .ui-kit-gallery-state-faces { display: flex; align-items: flex-end; gap: 10px; }
 .ui-kit-gallery-pads li { grid-template-columns: auto auto; align-items: center; }
 .ui-kit-gallery-pads small { grid-column: 1 / -1; }
