@@ -1,0 +1,896 @@
+{
+  "status": "FINAL_PARTIAL_FAIL",
+  "scope": "independent visual review of 68 lineage portraits, excludes common pool",
+  "method": "Compare actual 256px portraits and pre-generation trait contracts; not blinded family classification.",
+  "reviewedIds": [
+    "L1_101_mature",
+    "L1_101_old",
+    "L1_102_mature",
+    "L1_102_old",
+    "L1_201_baby",
+    "L1_201_child",
+    "L1_201_mature",
+    "L1_201_young",
+    "L1_202_baby",
+    "L1_202_child",
+    "L1_202_mature",
+    "L1_202_young",
+    "L1_203_baby",
+    "L1_203_child",
+    "L1_203_mature",
+    "L1_203_young",
+    "L1_204_baby",
+    "L1_204_child",
+    "L1_204_mature",
+    "L1_204_young",
+    "L1_2S1_young",
+    "L1_2S2_young",
+    "L1_301_baby",
+    "L1_301_child",
+    "L1_301_young",
+    "L1_302_baby",
+    "L1_302_child",
+    "L1_302_young",
+    "L1_303_baby",
+    "L1_303_child",
+    "L1_303_young",
+    "L1_304_baby",
+    "L1_304_child",
+    "L1_304_young",
+    "L2_101_mature",
+    "L2_101_old",
+    "L2_102_mature",
+    "L2_102_old",
+    "L2_201_baby",
+    "L2_201_child",
+    "L2_201_mature",
+    "L2_201_young",
+    "L2_202_baby",
+    "L2_202_child",
+    "L2_202_mature",
+    "L2_202_young",
+    "L2_203_baby",
+    "L2_203_child",
+    "L2_203_mature",
+    "L2_203_young",
+    "L2_204_baby",
+    "L2_204_child",
+    "L2_204_mature",
+    "L2_204_young",
+    "L2_2S1_young",
+    "L2_2S2_young",
+    "L2_301_baby",
+    "L2_301_child",
+    "L2_301_young",
+    "L2_302_baby",
+    "L2_302_child",
+    "L2_302_young",
+    "L2_303_baby",
+    "L2_303_child",
+    "L2_303_young",
+    "L2_304_baby",
+    "L2_304_child",
+    "L2_304_young"
+  ],
+  "findings": [
+    {
+      "ids": [
+        "L1_202_young",
+        "L1_203_young",
+        "L1_301_young",
+        "L1_304_young"
+      ],
+      "severity": "trait-fidelity",
+      "finding": "Requested short or upturned broad-tip noses read relatively long/straight at delivery size. Family resemblance is present but exact selected-parent nose transfer is not consistently established."
+    },
+    {
+      "ids": [
+        "L1_202_young"
+      ],
+      "severity": "trait-fidelity",
+      "finding": "Requested broad oval face remains comparatively long/angular; father-like facial structure dominates the intended mixed contract."
+    },
+    {
+      "ids": [
+        "L1_304_young"
+      ],
+      "severity": "trait-fidelity",
+      "finding": "Broad cleft chin is not clearly legible at 256px; treat as unverified, not exact match."
+    },
+    {
+      "ids": [
+        "L2_201_young",
+        "L2_202_young"
+      ],
+      "severity": "identity-distinction-limitation",
+      "finding": "Brothers show similar nose, mouth and head shape; hairstyle and costume help, but face-only differentiation at 96px may be weak. No literal identical-image clone."
+    },
+    {
+      "ids": [
+        "L2_203_young",
+        "L2_204_young"
+      ],
+      "severity": "identity-distinction-limitation",
+      "finding": "Sisters similarly posed/coiffed and share close facial structure; subtle jaw and cheek width differences, weaker than requested broad-vs-long face contrast."
+    },
+    {
+      "ids": [
+        "L2_101_old"
+      ],
+      "severity": "age-specificity-review",
+      "finding": "Corrected old portrait adds facial lines and some greying, but dark copper hair and facial fullness still read near late mature/early old. Older than mature is plausible; exact 65-75 remains REVIEW."
+    }
+  ],
+  "limitations": [
+    "Independent review by another agent, not a human usability or blinded-family experiment.",
+    "This report did not generate either lineage, but had access to trait contracts and identity labels; it is not blind.",
+    "No biological inference is made.",
+    "Eye hue, subtle brow and exact parent-of-origin visual assignments cannot be certified from reduced portraits.",
+    "Age estimates are qualitative, not numeric measurements.",
+    "Distinct-person failure persists even where family grouping succeeds.",
+    "All 68 selected final lineage PNGs were visually inspected; 11 corrected selections were re-reviewed."
+  ],
+  "distinctPersonCriterion": {
+    "status": "FAIL",
+    "definition": "At portrait display size, relatives must read as different people rather than the same face with changed hair or costume.",
+    "pairs": [
+      {
+        "ids": [
+          "L1_201_young",
+          "L1_202_young"
+        ],
+        "verdict": "FAIL",
+        "evidence": "At 96px face crop the same narrow long nose, mouth, angular cheek and jaw dominate; hair change does not establish distinct person."
+      },
+      {
+        "ids": [
+          "L1_201_young",
+          "L1_301_young"
+        ],
+        "verdict": "FAIL",
+        "evidence": "Near-identical facial proportions and mouth/nose despite intended short upturned nose on grandson. Reads as recolored or younger same person."
+      },
+      {
+        "ids": [
+          "L1_203_young",
+          "L1_204_young"
+        ],
+        "verdict": "FAIL",
+        "evidence": "Minor softness change insufficient at small display size; same eye/nose/mouth configuration and profile dominate."
+      },
+      {
+        "ids": [
+          "L2_201_young",
+          "L2_301_young"
+        ],
+        "verdict": "FAIL",
+        "evidence": "Face silhouette, nose and smile read as same person; skin and hair differences are slight."
+      },
+      {
+        "ids": [
+          "L2_203_young",
+          "L2_204_young"
+        ],
+        "verdict": "UNRESOLVED",
+        "evidence": "Cheek/jaw width differs slightly, but faces remain very close. Cannot certify distinct identity without larger independent observer study."
+      }
+    ],
+    "reviewScale": "256px originals and 96x116 face crops with costume mostly removed",
+    "note": "Visual near-clone failure, not a claim of pixel-identical files."
+  },
+  "reviewedCount": 68,
+  "finalAssetHashes": {
+    "L1_101_mature": "d8c857e8827effddcf34709934e0dc11ff4a086c20e137906fe62b7083f786c4",
+    "L1_101_old": "0c886298ef14d688465e8b53c6c431069ea60a0cfd0f800be4ea16b436103a36",
+    "L1_102_mature": "7606231f6c143ddffc167eaa3dc0cd3ac26494e41ea0c455653198f0b0a28217",
+    "L1_102_old": "6deb5b7c4a57326ef203b2a9db3c31dc70cf566d8183399991ff53abe189ea97",
+    "L1_201_baby": "089d1e1c7bf5fb41b0a986021136540142ea81abc05350e7a554f843d8765daf",
+    "L1_201_child": "7ad77be2e540d48a7411a7fce90a62902a90df53603268a68820ba54f362e51b",
+    "L1_201_mature": "2c4ec624abd77c490ea5a7e10fa752c150515bd2ce278e1716076eab0f17ad8d",
+    "L1_201_young": "b3999905387d14be2ec60bf52be413386f19a7ae66a7dc9216d3412087ec45b8",
+    "L1_202_baby": "480247d7ba84d34b82fb245592ecb9ed89c2a34a33d275e1a86398437c599f36",
+    "L1_202_child": "ebbd1b2e22869568f458db1afd3e6180d908b1e91b713e1c19f0b38289664ff3",
+    "L1_202_mature": "8946bb91f41a7ccbcf16846e12adad44027dfa36139cf09cc6d8386e3a34bd43",
+    "L1_202_young": "5248fd88643d56a1d18a3542a2f474a20287f88218e429ea1a0636855a09247b",
+    "L1_203_baby": "62a3f966b40a526e520fcae1d37fccabc2fa9c252b90507e4c14ce7b327a6dec",
+    "L1_203_child": "51472e3283c10c2a0c848ac30f7d9852cd12322042ecc04709675fd8dfb8a189",
+    "L1_203_mature": "7e1096ef1197a74867e6d8c1ef87acb9831f4ead96c860e67bf208bc6a5c3f4d",
+    "L1_203_young": "70dbc44aca405dda7aefecc9816b259c1b893f4afdbf4a502a72a6b26b0ffad1",
+    "L1_204_baby": "b8276b3200c2cd4d8eadae3e9fb973a6dadb5be599f9a996188e9c8a8baf4003",
+    "L1_204_child": "cfc94434b9291684b3573fc53decb40bd6c8f8ad3cd815195ab70c0495299100",
+    "L1_204_mature": "48c7181dd9468b648cec5feef7cfac4ce2290b944606e2b43c6211971b27b761",
+    "L1_204_young": "2cceeab050a5db464668d1e79c41635b158e32d6db088a487539eec478f2ced7",
+    "L1_2S1_young": "f7af01f93e17bf8a06e70f5ed184f8b13ad77afb5d90e75beb8593c80cbd0b0d",
+    "L1_2S2_young": "49b572b9d827c6b2091771cc1b8a7343ffd771da2f0c1af1c9e121a1adb9334a",
+    "L1_301_baby": "43d99c32e7ebacda7c2864c46bbb430c422bd56b03027f9da6b5b5ecfedaaf49",
+    "L1_301_child": "3345f49a472079a48b5b316403b9c7ead2221a0a3770dfc90a1e2d80c49c3522",
+    "L1_301_young": "c30a56dc546dd0af32847ee7a780c40d04c24b861f0b0274bf38cdfec936b112",
+    "L1_302_baby": "2ba4c07d9e033acc31bc24a17fa0601fc50c33e579ce8d59d8138e226c1e04b5",
+    "L1_302_child": "8436ec5c28dc151e2a13ad3b772aa2e02cc59f67ca5767c6fb973af8b70e2617",
+    "L1_302_young": "e0823f322f20fd5ecf5d6d6e449de4c11c0215789a39929b1990057bb39dae46",
+    "L1_303_baby": "7483fc1294d507314ccfe2cc8e9f41c8dff3f797b6e006cff94bc17ed806e9f1",
+    "L1_303_child": "881b8136db88faa447c97b996c7e25740bdaa59a8a16ac8e07b8e2e158ad65d1",
+    "L1_303_young": "cf1544b8a07da209c3cd9e2aeff8cd062266802402057b18fd8326fec8e455b4",
+    "L1_304_baby": "9e64db1723eba4899470de5d5f92ff4e79b56a4fc797f35553a7c42ccc803540",
+    "L1_304_child": "12ef0ff76b6f31541e7e52b297de4711456a9001f9e84f89dee671c87651b439",
+    "L1_304_young": "9f922a4d1e1c06ca63b5d749713970879ab6e66a08700645a3a7920ea2369a02",
+    "L2_101_mature": "3d16c77ac0391e699e976a4f69677199703d887b703ef60bc87ba45890aee10c",
+    "L2_101_old": "6e0bfc25380913cd7630349c06c24e38b18dec188febccf893e994a4ef0608b6",
+    "L2_102_mature": "a601915bf870e448aed838958794c23d3791bca02f645d5d545b90960d9c1852",
+    "L2_102_old": "4b7379b9e1b46086bfe83c694f2698fdca114d1b658445b9d46e5c29fdf0fe42",
+    "L2_201_baby": "800d5dbbff500fb59e0fdbcb9029a33e1d97c8d670333625c0e2858fd133708d",
+    "L2_201_child": "618d900294f0841e68c9513493b4c6651a475154bed6f05d1682e0a209500175",
+    "L2_201_mature": "81a61c9766ccda4db5f91516201eca8e599dccfdb2a7aa985087b1a9ef25b111",
+    "L2_201_young": "6237b7185c274d9704204d8d839236848eca419da40492aa5090d5d8caa367b0",
+    "L2_202_baby": "25cd3c68639dbb95a7d42f22b1673f893cf695a0434bbdaf598c37f2c9d22c3b",
+    "L2_202_child": "6d9f0563ce7d09ce55ec6f65f0d7adcb3e85455eeb0fbe0540553f24a4ee4cd0",
+    "L2_202_mature": "aa56e4c7c6db76c32162c6dfd3e3f9e070803c98d155eebcfe33b18f1df9af7b",
+    "L2_202_young": "6d7540348a7e949024b38fb66ff28316b2cf8fea718f0edc31ac96a019d735e6",
+    "L2_203_baby": "b4e2b27e1b43f0d4733b65b7f7153410ad8672ddfaec1f8a24af4e489adf09b6",
+    "L2_203_child": "c001ddcc1d4e934087f40e1ff5aacc9f7e810235ffc5fac83491d58d93c6c114",
+    "L2_203_mature": "7756bba6b54c8d5a04ebd91e1f88b4397654af5ba0ce8d7d2b53b29d367e758d",
+    "L2_203_young": "18d29211d2f87e47cc5fcc472e01f60e3c23b89b0e76f1e3d431269d825ec72a",
+    "L2_204_baby": "a8d530b6e7df63039bfb67d8dc59ed649c8ff12a157f11641099dca974d9d084",
+    "L2_204_child": "d5d5c2bb67619acc326585d8e21191b3d75955786d863fc80c0fc81970bbe80f",
+    "L2_204_mature": "95f9a3b271b115af227e2f1447e1a5d7ed1eb7201724054b3825bff1eb68a233",
+    "L2_204_young": "0a89d55994e6747cbd9e57688a67136a081bd3254cd4cdbcd482cecbfc085f95",
+    "L2_2S1_young": "ff878c5e01ea7c1bce588d3c3ec33e016c740d78ee6336897610c2839666879d",
+    "L2_2S2_young": "82501b935679937371b98724431af7f6f6d9cde6e0b2a1bf1d4bd76e6995db62",
+    "L2_301_baby": "d614cbce76777c71197ee0cac27abaa9e394d7948d99b3395ae0f51ce549340e",
+    "L2_301_child": "f14eef702849e85e080fa32593ef7a46a39db7ef76bace3c0164c2ef44a31cd6",
+    "L2_301_young": "52fba880a60a3430eed1ad01259f5058767f1e7b1ebc456c71ac37426d0018e7",
+    "L2_302_baby": "cdf697478a1466eb6f128ba6925581a048cc3da4b245146c3de00e1c9b0899b6",
+    "L2_302_child": "b9e750a02a6e604658852d06acc53f67a0e52e9729205113fa757992e068a155",
+    "L2_302_young": "7872e0db7d86ec7838ac3cbdbcff8c65aec140d07969c5d510cfba33a90569b0",
+    "L2_303_baby": "6eeea4dfb65f8f212a095293d2e9d34b467257a1aafcf1ebcccbccae84879ed7",
+    "L2_303_child": "671857d2aed710bd70d8b5beeda08cb9d15bc96282b3ec5fa3d53414bedafdbe",
+    "L2_303_young": "8270ffaa7b3ef0c071e8c85034a47ee2f3a42c07187ef627d05497294eb0e170",
+    "L2_304_baby": "a0b8c0b0b2735da7ba3e542be4e0bebbbfa69c69c472fcfc7d45c0bc6493472e",
+    "L2_304_child": "f37231ad8404dc871f559d95bcc5862e5688f3cd2b42408a748432c3bc4797f1",
+    "L2_304_young": "16fd633bd5c8665abaaecd223a09be227aef1da5968eece25b584652632e849c"
+  },
+  "ageReview": {
+    "verdict": "PASS_WITH_REVIEW_ITEMS",
+    "correctedPass": [
+      "L1_201_child",
+      "L1_204_child",
+      "L1_303_child",
+      "L1_304_child",
+      "L1_201_mature",
+      "L1_202_mature",
+      "L1_203_mature",
+      "L1_204_mature",
+      "L2_202_mature",
+      "L2_203_child"
+    ],
+    "review": [
+      "L1_202_child",
+      "L1_203_child",
+      "L2_204_child",
+      "L2_301_child",
+      "L2_302_child",
+      "L2_304_child",
+      "L2_101_old"
+    ],
+    "reviewReason": "Listed child portraits read between late childhood and early adolescence; specified 6-9 age is not unambiguous. L2 male founder old stage has weaker 65-75 specificity.",
+    "supersededFailures": [
+      "Initial L1 four child stages were adult-like; selected child corrections materially improve proportions.",
+      "Initial L1 four mature stages and L2_202_mature had insufficient age separation; selected corrections add visible greying, lines and facial aging."
+    ],
+    "babyObservation": "Infants generally read near upper baby range rather than newborns; faces visible. 0-2 category remains plausible."
+  },
+  "portraits": [
+    {
+      "id": "L1_101_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_101_old",
+      "stage": "old",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_102_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_102_old",
+      "stage": "old",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_201_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_201_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_201_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_201_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_202_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_202_child",
+      "stage": "child",
+      "ageStageVerdict": "REVIEW",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_202_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_202_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_203_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_203_child",
+      "stage": "child",
+      "ageStageVerdict": "REVIEW",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_203_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_203_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_204_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_204_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_204_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_204_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_2S1_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_2S2_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_301_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_301_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_301_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_302_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_302_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_302_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_303_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_303_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_303_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_304_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_304_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L1_304_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_101_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_101_old",
+      "stage": "old",
+      "ageStageVerdict": "REVIEW",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_102_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_102_old",
+      "stage": "old",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_201_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_201_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_201_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_201_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_202_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_202_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_202_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_202_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_203_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_203_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_203_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_203_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_204_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_204_child",
+      "stage": "child",
+      "ageStageVerdict": "REVIEW",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_204_mature",
+      "stage": "mature",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_204_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_2S1_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_2S2_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "NOT_APPLICABLE",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_301_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_301_child",
+      "stage": "child",
+      "ageStageVerdict": "REVIEW",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_301_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_302_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_302_child",
+      "stage": "child",
+      "ageStageVerdict": "REVIEW",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_302_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_303_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_303_child",
+      "stage": "child",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_303_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_304_baby",
+      "stage": "baby",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_304_child",
+      "stage": "child",
+      "ageStageVerdict": "REVIEW",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    },
+    {
+      "id": "L2_304_young",
+      "stage": "young",
+      "ageStageVerdict": "PASS",
+      "faceVisible": true,
+      "styleConsistent": true,
+      "traitFidelityVerdict": "PARTIAL_OR_UNVERIFIED",
+      "traitFidelityNote": "Hair color/texture and broad resemblance visible; exact eye hue, brow and selected-parent facial morphology not certified. See specific deviations and near-clone pairs."
+    }
+  ]
+}

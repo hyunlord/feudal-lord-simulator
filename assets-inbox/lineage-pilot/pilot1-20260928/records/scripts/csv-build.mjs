@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';
+import {Workbook} from '@oai/artifact-tool';
+const p='/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1';
+const rows=JSON.parse(await fs.readFile(p+'/records/asset-rows.json','utf8'));
+if(rows.length!==80)throw Error('count');
+const headers=Object.keys(rows[0]),values=[headers,...rows.map(r=>headers.map(k=>r[k]??''))];
+if(headers.length!==18)throw Error('columns');
+const b=Workbook.create(),s=b.worksheets.add('Portraits');s.getRange('A1:R81').values=values;b.recalculate();
+const q=v=>'"'+String(v??'').replaceAll('"','""')+'"';
+const csv=s.getRange('A1:R81').values.map(r=>r.map(q).join(',')).join('\r\n')+'\r\n';
+const read=await Workbook.fromCSV(csv,{sheetName:'Check'}),back=read.worksheets.getItem('Check').getRange('A1:R81').values;
+for(let i=0;i<81;i++)for(let j=0;j<18;j++)if(String(values[i][j])!==String(back[i][j]))throw Error('roundtrip '+i+':'+j);
+for(const r of back.slice(1))for(const j of [12,13,14,15,16])JSON.parse(r[j]);
+await fs.writeFile(p+'/assets.csv','\uFEFF'+csv);
+await fs.writeFile(p+'/records/csv-validation.json',JSON.stringify({status:'PASS',tool:'artifact-tool',rows:80,columns:18,allCellsRoundtrip:true,jsonFieldsParsed:true},null,2));console.log('PASS80rows18cols');

@@ -1,0 +1,154 @@
+{
+  "seed": 20260928,
+  "algorithm": "Mulberry32 Fisher-Yates; input L1 then L2, identities 101,102,201..204,301..304",
+  "coreCount": 20,
+  "founderStageException": "Four founders use mature; no founder young stages exist",
+  "faceCrop": {
+    "x": 0.25,
+    "y": 0.08,
+    "width": 0.5,
+    "height": 0.5
+  },
+  "entries": [
+    {
+      "number": 1,
+      "identity": "L1_202",
+      "stage": "young",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_202_young.png"
+    },
+    {
+      "number": 2,
+      "identity": "L1_201",
+      "stage": "young",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_201_young.png"
+    },
+    {
+      "number": 3,
+      "identity": "L2_203",
+      "stage": "young",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_203_young.png"
+    },
+    {
+      "number": 4,
+      "identity": "L2_101",
+      "stage": "mature",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_101_mature.png"
+    },
+    {
+      "number": 5,
+      "identity": "L2_302",
+      "stage": "young",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_302_young.png"
+    },
+    {
+      "number": 6,
+      "identity": "L1_101",
+      "stage": "mature",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_101_mature.png"
+    },
+    {
+      "number": 7,
+      "identity": "L2_301",
+      "stage": "young",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_301_young.png"
+    },
+    {
+      "number": 8,
+      "identity": "L1_304",
+      "stage": "young",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_304_young.png"
+    },
+    {
+      "number": 9,
+      "identity": "L2_102",
+      "stage": "mature",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_102_mature.png"
+    },
+    {
+      "number": 10,
+      "identity": "L2_204",
+      "stage": "young",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_204_young.png"
+    },
+    {
+      "number": 11,
+      "identity": "L1_102",
+      "stage": "mature",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_102_mature.png"
+    },
+    {
+      "number": 12,
+      "identity": "L1_303",
+      "stage": "young",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_303_young.png"
+    },
+    {
+      "number": 13,
+      "identity": "L1_302",
+      "stage": "young",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_302_young.png"
+    },
+    {
+      "number": 14,
+      "identity": "L2_202",
+      "stage": "young",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_202_young.png"
+    },
+    {
+      "number": 15,
+      "identity": "L1_204",
+      "stage": "young",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_204_young.png"
+    },
+    {
+      "number": 16,
+      "identity": "L2_304",
+      "stage": "young",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_304_young.png"
+    },
+    {
+      "number": 17,
+      "identity": "L1_301",
+      "stage": "young",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_301_young.png"
+    },
+    {
+      "number": 18,
+      "identity": "L2_201",
+      "stage": "young",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_201_young.png"
+    },
+    {
+      "number": 19,
+      "identity": "L1_203",
+      "stage": "young",
+      "lineage": "L1",
+      "file": "assets/lineage1/L1_203_young.png"
+    },
+    {
+      "number": 20,
+      "identity": "L2_303",
+      "stage": "young",
+      "lineage": "L2",
+      "file": "assets/lineage2/L2_303_young.png"
+    }
+  ]
+}

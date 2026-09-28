@@ -1,0 +1,506 @@
+[
+  {
+    "id": "L0_001_baby",
+    "file": "assets/common/L0_001_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_001",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "sex": "male",
+    "age": 0.5,
+    "clothing": "undyed linen swaddle with muted sage outer wrap",
+    "traits": {
+      "hair": "sparse pale flaxen down",
+      "skin": "fair warm",
+      "eyes": "blue grey",
+      "faceShape": "round broad cheeks",
+      "nose": "tiny upturned",
+      "jaw": "soft round",
+      "brow": "fine pale"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male baby, age 0.5 years, Southern England circa 1300–1450. Traits: {\"hair\":\"sparse pale flaxen down\",\"skin\":\"fair warm\",\"eyes\":\"blue grey\",\"faceShape\":\"round broad cheeks\",\"nose\":\"tiny upturned\",\"jaw\":\"soft round\",\"brow\":\"fine pale\"}. Clothing: undyed linen swaddle with muted sage outer wrap. Age is crucial: natural infant anatomy, large rounded head, tiny nose and jaw, very short neck, wrapped infant bust, swaddle below chin leaving entire face and hair visible. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_001_baby.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_002_baby",
+    "file": "assets/common/L0_002_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_002",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "sex": "female",
+    "age": 1,
+    "clothing": "dusty rose wool wrap over cream linen swaddle",
+    "traits": {
+      "hair": "dense dark brown soft curls",
+      "skin": "deep warm brown",
+      "eyes": "dark brown",
+      "faceShape": "oval full cheeks",
+      "nose": "small broad rounded",
+      "jaw": "soft narrow",
+      "brow": "soft dark arc"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner female baby, age 1 years, Southern England circa 1300–1450. Traits: {\"hair\":\"dense dark brown soft curls\",\"skin\":\"deep warm brown\",\"eyes\":\"dark brown\",\"faceShape\":\"oval full cheeks\",\"nose\":\"small broad rounded\",\"jaw\":\"soft narrow\",\"brow\":\"soft dark arc\"}. Clothing: dusty rose wool wrap over cream linen swaddle. Age is crucial: natural infant anatomy, large rounded head, tiny nose and jaw, very short neck, wrapped infant bust, swaddle below chin leaving entire face and hair visible. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_002_baby.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_003_baby",
+    "file": "assets/common/L0_003_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_003",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "sex": "male",
+    "age": 1.5,
+    "clothing": "muted blue grey linen swaddle",
+    "traits": {
+      "hair": "fine short copper red wisps",
+      "skin": "light freckled warm",
+      "eyes": "green grey",
+      "faceShape": "wide pear shaped",
+      "nose": "short gently straight",
+      "jaw": "wide soft",
+      "brow": "light straight"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male baby, age 1.5 years, Southern England circa 1300–1450. Traits: {\"hair\":\"fine short copper red wisps\",\"skin\":\"light freckled warm\",\"eyes\":\"green grey\",\"faceShape\":\"wide pear shaped\",\"nose\":\"short gently straight\",\"jaw\":\"wide soft\",\"brow\":\"light straight\"}. Clothing: muted blue grey linen swaddle. Age is crucial: natural infant anatomy, large rounded head, tiny nose and jaw, very short neck, wrapped infant bust, swaddle below chin leaving entire face and hair visible. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_003_baby.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_004_baby",
+    "file": "assets/common/L0_004_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_004",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "baby",
+    "sex": "female",
+    "age": 0.8,
+    "clothing": "oatmeal linen swaddle with faded ochre outer cloth",
+    "traits": {
+      "hair": "moderately thick straight black tuft",
+      "skin": "medium olive brown",
+      "eyes": "brown",
+      "faceShape": "round compact",
+      "nose": "small button",
+      "jaw": "small round",
+      "brow": "dark curved"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner female baby, age 0.8 years, Southern England circa 1300–1450. Traits: {\"hair\":\"moderately thick straight black tuft\",\"skin\":\"medium olive brown\",\"eyes\":\"brown\",\"faceShape\":\"round compact\",\"nose\":\"small button\",\"jaw\":\"small round\",\"brow\":\"dark curved\"}. Clothing: oatmeal linen swaddle with faded ochre outer cloth. Age is crucial: natural infant anatomy, large rounded head, tiny nose and jaw, very short neck, wrapped infant bust, swaddle below chin leaving entire face and hair visible. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_004_baby.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_005_toddler",
+    "file": "assets/common/L0_005_toddler.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_005",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "sex": "female",
+    "age": 3,
+    "clothing": "plain muted green wool gown with linen neckline",
+    "traits": {
+      "hair": "wavy chestnut bob",
+      "skin": "fair rosy",
+      "eyes": "hazel",
+      "faceShape": "round full cheeks",
+      "nose": "short rounded",
+      "jaw": "soft broad",
+      "brow": "fine curved"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner female toddler, age 3 years, Southern England circa 1300–1450. Traits: {\"hair\":\"wavy chestnut bob\",\"skin\":\"fair rosy\",\"eyes\":\"hazel\",\"faceShape\":\"round full cheeks\",\"nose\":\"short rounded\",\"jaw\":\"soft broad\",\"brow\":\"fine curved\"}. Clothing: plain muted green wool gown with linen neckline. Age is crucial: clearly a small preschool child with naturally large head, soft full cheeks, short neck and small shoulders, not a miniature adult. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_005_toddler.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_006_toddler",
+    "file": "assets/common/L0_006_toddler.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_006",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "sex": "male",
+    "age": 4,
+    "clothing": "plain clay red wool tunic over linen shift",
+    "traits": {
+      "hair": "short tightly curled black hair",
+      "skin": "deep warm brown",
+      "eyes": "dark brown",
+      "faceShape": "rounded oval",
+      "nose": "small broad",
+      "jaw": "soft taper",
+      "brow": "dark straight"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male toddler, age 4 years, Southern England circa 1300–1450. Traits: {\"hair\":\"short tightly curled black hair\",\"skin\":\"deep warm brown\",\"eyes\":\"dark brown\",\"faceShape\":\"rounded oval\",\"nose\":\"small broad\",\"jaw\":\"soft taper\",\"brow\":\"dark straight\"}. Clothing: plain clay red wool tunic over linen shift. Age is crucial: clearly a small preschool child with naturally large head, soft full cheeks, short neck and small shoulders, not a miniature adult. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_006_toddler.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_007_toddler",
+    "file": "assets/common/L0_007_toddler.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_007",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "sex": "female",
+    "age": 5,
+    "clothing": "plain blue grey wool gown with simple linen neckline",
+    "traits": {
+      "hair": "fine straight pale blond chin length hair",
+      "skin": "light warm",
+      "eyes": "blue grey",
+      "faceShape": "long oval child cheeks",
+      "nose": "short straight",
+      "jaw": "narrow rounded",
+      "brow": "pale gentle arc"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner female toddler, age 5 years, Southern England circa 1300–1450. Traits: {\"hair\":\"fine straight pale blond chin length hair\",\"skin\":\"light warm\",\"eyes\":\"blue grey\",\"faceShape\":\"long oval child cheeks\",\"nose\":\"short straight\",\"jaw\":\"narrow rounded\",\"brow\":\"pale gentle arc\"}. Clothing: plain blue grey wool gown with simple linen neckline. Age is crucial: clearly a small preschool child with naturally large head, soft full cheeks, short neck and small shoulders, not a miniature adult. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_007_toddler.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_008_toddler",
+    "file": "assets/common/L0_008_toddler.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_008",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "toddler",
+    "sex": "male",
+    "age": 3.5,
+    "clothing": "ochre brown wool tunic with undyed linen collar",
+    "traits": {
+      "hair": "thick auburn short tousled hair",
+      "skin": "medium warm beige",
+      "eyes": "green brown",
+      "faceShape": "wide round",
+      "nose": "upturned broad tip",
+      "jaw": "round wide",
+      "brow": "auburn low arc"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male toddler, age 3.5 years, Southern England circa 1300–1450. Traits: {\"hair\":\"thick auburn short tousled hair\",\"skin\":\"medium warm beige\",\"eyes\":\"green brown\",\"faceShape\":\"wide round\",\"nose\":\"upturned broad tip\",\"jaw\":\"round wide\",\"brow\":\"auburn low arc\"}. Clothing: ochre brown wool tunic with undyed linen collar. Age is crucial: clearly a small preschool child with naturally large head, soft full cheeks, short neck and small shoulders, not a miniature adult. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_008_toddler.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_009_child",
+    "file": "assets/common/L0_009_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_009",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "sex": "male",
+    "age": 7,
+    "clothing": "plain faded blue wool tunic with cream linen neck",
+    "traits": {
+      "hair": "thick dark brown straight ear length hair",
+      "skin": "medium olive",
+      "eyes": "hazel brown",
+      "faceShape": "slender oval",
+      "nose": "small straight",
+      "jaw": "gently tapered",
+      "brow": "dark level"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male child, age 7 years, Southern England circa 1300–1450. Traits: {\"hair\":\"thick dark brown straight ear length hair\",\"skin\":\"medium olive\",\"eyes\":\"hazel brown\",\"faceShape\":\"slender oval\",\"nose\":\"small straight\",\"jaw\":\"gently tapered\",\"brow\":\"dark level\"}. Clothing: plain faded blue wool tunic with cream linen neck. Age is crucial: natural primary-school child anatomy, soft immature jaw and cheeks, modest small shoulders, no adult facial structure. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_009_child.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_010_child",
+    "file": "assets/common/L0_010_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_010",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "sex": "female",
+    "age": 8,
+    "clothing": "plain muted russet wool gown with oatmeal linen collar",
+    "traits": {
+      "hair": "copper red loosely waved shoulder length hair",
+      "skin": "fair lightly freckled",
+      "eyes": "green",
+      "faceShape": "broad round",
+      "nose": "upturned",
+      "jaw": "soft broad",
+      "brow": "copper arched"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner female child, age 8 years, Southern England circa 1300–1450. Traits: {\"hair\":\"copper red loosely waved shoulder length hair\",\"skin\":\"fair lightly freckled\",\"eyes\":\"green\",\"faceShape\":\"broad round\",\"nose\":\"upturned\",\"jaw\":\"soft broad\",\"brow\":\"copper arched\"}. Clothing: plain muted russet wool gown with oatmeal linen collar. Age is crucial: natural primary-school child anatomy, soft immature jaw and cheeks, modest small shoulders, no adult facial structure. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_010_child.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_011_child",
+    "file": "assets/common/L0_011_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_011",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "sex": "male",
+    "age": 6,
+    "clothing": "plain moss green wool tunic with undyed linen neckline",
+    "traits": {
+      "hair": "light brown tight short curls",
+      "skin": "deep golden brown",
+      "eyes": "dark brown",
+      "faceShape": "short oval full cheeks",
+      "nose": "broad round tip",
+      "jaw": "rounded compact",
+      "brow": "dark softly curved"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner male child, age 6 years, Southern England circa 1300–1450. Traits: {\"hair\":\"light brown tight short curls\",\"skin\":\"deep golden brown\",\"eyes\":\"dark brown\",\"faceShape\":\"short oval full cheeks\",\"nose\":\"broad round tip\",\"jaw\":\"rounded compact\",\"brow\":\"dark softly curved\"}. Clothing: plain moss green wool tunic with undyed linen neckline. Age is crucial: natural primary-school child anatomy, soft immature jaw and cheeks, modest small shoulders, no adult facial structure. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_011_child.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  },
+  {
+    "id": "L0_012_child",
+    "file": "assets/common/L0_012_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L0_012",
+    "lineage": "common",
+    "generation": null,
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "stage": "child",
+    "sex": "female",
+    "age": 9,
+    "clothing": "plain dark brown wool gown with cream linen neckline",
+    "traits": {
+      "hair": "dark blond straight hair in two simple braids",
+      "skin": "light warm beige",
+      "eyes": "grey blue",
+      "faceShape": "long oval",
+      "nose": "short gently convex",
+      "jaw": "narrow soft",
+      "brow": "light straight"
+    },
+    "inheritance": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. Generate exactly ONE square individual painted game portrait, no contact sheet. Input images are project-owned STYLE REFERENCES ONLY: match their restrained handpainted gouache realism, muted palette, crisp readable face, modest brush texture; do not copy any reference identity or any text. Subject: a distinct commoner female child, age 9 years, Southern England circa 1300–1450. Traits: {\"hair\":\"dark blond straight hair in two simple braids\",\"skin\":\"light warm beige\",\"eyes\":\"grey blue\",\"faceShape\":\"long oval\",\"nose\":\"short gently convex\",\"jaw\":\"narrow soft\",\"brow\":\"light straight\"}. Clothing: plain dark brown wool gown with cream linen neckline. Age is crucial: natural primary-school child anatomy, soft immature jaw and cheeks, modest small shoulders, no adult facial structure. Composition: head and upper torso centered, gentle three-quarter turn, entire crown and chin visible, face readable at 96px. Plain solid muted warm grey background. Soft light from upper left. Ordinary clean linen and wool, no expensive trim. All skin tones treated with equal dignity, neutral attentive expression. No facial hair, makeup, adult jewelry, heraldry, badge, border, text, scenery, props, hands or visible arms. Single square image.",
+        "rawFile": "raw/common/L0_012_child.png",
+        "referenceImages": [
+          "references/초상풀_1차_화풍기준.jpg",
+          "references/노화사슬_성공예.jpg"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": "Sharp Lanczos3 resize contain 256x256 preserving aspect; no repainting",
+    "qa": {
+      "status": "pending"
+    }
+  }
+]
