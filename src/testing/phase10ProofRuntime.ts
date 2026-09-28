@@ -9,7 +9,7 @@ import type { TileCoordinate } from "../world/grid";
 import { worldToCanvas, type CameraState } from "../render/camera";
 import { renderDetailLevel, type RenderDetailLevel } from "../render/buildingVisualState";
 import { pickTile, tileCenter } from "../render/picking";
-import { lastInputDevice } from "../input/inputDevice";
+import { lastInputDevice, reportInputDevice, type InputDevice } from "../input/inputDevice";
 import { worldAssetStatuses, type AssetStatus } from "../render/worldAssets";
 import {
   installWorldSpriteDrawProbe,
@@ -119,6 +119,8 @@ export type Phase10ProofRuntimePort = {
   readonly gamepadCursor: () => { readonly clientX: number; readonly clientY: number; readonly tx: number; readonly ty: number } | null;
   /** TOUCH-1 evidence: the last input device (mouse, touch, gamepad). */
   readonly inputDevice: () => string;
+  /** INSTALL-23 ⑤ captures: report a device as the translators would (the hints switch to pad glyphs or key names). */
+  readonly reportInputDevice: (device: InputDevice) => void;
   /** V2 evidence: a composed look's 8 cells as a PNG data URL (null while its images load). */
   readonly walkerComposite: (sheetId: string, prop: string | null, cloak: "male" | "female" | "merchant" | null) => string | null;
   /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
@@ -204,6 +206,7 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       return { clientX: rect.left + canvasPoint.x, clientY: rect.top + canvasPoint.y, tx: tile?.tx ?? -1, ty: tile?.ty ?? -1 };
     },
     inputDevice: () => lastInputDevice(),
+    reportInputDevice: device => reportInputDevice(device),
     walkerComposite: (sheetId, prop, cloak) => {
       const composed = composedLookForProof(sheetId as WalkerSheetId, prop as WalkerPropKind | null, cloak);
       if (composed === null) return null;

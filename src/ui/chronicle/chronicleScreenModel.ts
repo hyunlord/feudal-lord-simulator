@@ -1,3 +1,4 @@
+import { personOrnament, type PersonStateId } from "../persons/personStates";
 import { PRESSURE_BALANCE } from "../../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../content/buildingConfig";
 import { HISTORY_CHOICE_LABELS, HISTORY_OCCUPATIONS } from "../../content/historyCopy.ko";
@@ -422,6 +423,8 @@ export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" 
 export type BiographyRelation = Readonly<{ id: string; line: string; portraitId: string | null }>;
 export type BiographyView = Readonly<{
   id: string; name: string; portraitId: string; portraitLine: string; portraitExact: boolean; life: string; role: string;
+  /** INSTALL-23 ④: the state ornament on the great circle (`personStates.ts`; a death also greys the face). */
+  ornament: PersonStateId | null;
   /** The house they belong to (none for a head: it is theirs). */
   household: string | null;
   companion: Readonly<{ id: string; portraitId: string; label: string }> | null;
@@ -469,6 +472,7 @@ export function biographyView(state: GameState, personId: string): BiographyView
   const end = biography.died ?? biography.left;
   return {
     id: person.id, name: personDisplayName(person), portraitId: drawnPortraitId(person, biography.portrait.portraitId), portraitExact: person.role === "steward" || biography.portrait.exact,
+    ornament: personOrnament(state, person),
     portraitLine: person.role === "steward" ? PERSONS_COPY.stewardPortrait
       : CHRONICLE_SCREEN_COPY.portraitMatch(biography.portrait.identityId, biography.portrait.stage, biography.portrait.exact),
     life: CHRONICLE_SCREEN_COPY.life(person.birthYear, end, biography.age, biography.died !== null, biography.left !== null && biography.died === null),

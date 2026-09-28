@@ -244,3 +244,14 @@
 .ui-kit-gallery-frame { min-height: 96px; padding: 16px 18px; border: 3px solid transparent; font-size: var(--text-13); }
 .ui-kit-gallery-frame p { margin: var(--space-half) 0 0; }
 .ui-kit-gallery-dark { display: flex; flex-wrap: wrap; gap: var(--space-1); align-items: center; margin-top: var(--space-2); padding: 16px 18px; border: 2px solid transparent; }
+/* INSTALL-23 ④ ⑤ gallery: the twelve person-state ornaments (96 and 48 px) and the pad glyphs (48 and 32 px). */
+.ui-kit-gallery-states, .ui-kit-gallery-pads { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: var(--space-1); margin: 0 0 var(--space-1); padding: 0; list-style: none; }
+.ui-kit-gallery-pads { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+.ui-kit-gallery-states li, .ui-kit-gallery-pads li { display: grid; gap: 4px; justify-items: start; font-size: 13px; }
+.ui-kit-gallery-states small, .ui-kit-gallery-pads small { font-size: 12px; }
+.ui-kit-gallery-states li[data-derived="false"] small { font-style: italic; }
+.ui-kit-gallery-state-faces { display: flex; align-items: flex-end; gap: 10px; }
+.ui-kit-gallery-pads li { grid-template-columns: auto auto; align-items: center; }
+.ui-kit-gallery-pads small { grid-column: 1 / -1; }
+.ui-kit-gallery-hints { display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; align-items: center; margin: 0; font-size: 13px; }
+.ui-kit-gallery-hints dd { margin: 0; }

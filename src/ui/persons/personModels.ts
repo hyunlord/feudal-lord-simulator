@@ -13,15 +13,17 @@ import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { resourceName } from "../../content/resourceCatalog.ko";
 import { drawnPortraitId } from "../portraitArt";
 import { PERSONS_COPY } from "./personsCopy.ko";
+import { personOrnament, personStatesReader, type PersonStateId } from "./personStates";
 
 // UI-5 people on screen (PERSON-0 persons, spec docs/design/persons.md): the rows and cards the screens show — a
 // house's members, a petition's petitioners, the steward, the person behind a walker, a person's card with the
 // lord's arms (the manor household) or a merchant's mark (a merchant household), and how many portraits match.
 
-export type PersonRow = Readonly<{ id: string; name: string; line: string; portraitId: string; exact: boolean }>;
+/** `ornament` (INSTALL-23 ④): the person's state ornament on the portrait (`personStates.ts`; absent or null = none). */
+export type PersonRow = Readonly<{ id: string; name: string; line: string; portraitId: string; exact: boolean; ornament?: PersonStateId | null }>;
 export type PersonCardView = Readonly<{
   id: string; name: string; role: string; life: string; household: string; portraitId: string; exact: boolean; match: string;
-  emblem: EmblemSpec | null; emblemLabel: string;
+  emblem: EmblemSpec | null; emblemLabel: string; ornament: PersonStateId | null;
 }>;
 
 const ROLE_ORDER: Readonly<Record<string, number>> = { steward: 0, head: 1, spouse: 2, kin: 3, child: 4 };
@@ -36,11 +38,12 @@ function drawnPortrait(state: GameState, person: Person) {
   return { ...pick, portraitId: drawnPortraitId(person, pick.portraitId), exact: fixed || pick.exact, fixed };
 }
 
-export function personRow(state: GameState, person: Person): PersonRow {
+/** A person as a chip's row; `states` reads the ledger once for many rows (`personStatesReader`). */
+export function personRow(state: GameState, person: Person, states: ReturnType<typeof personStatesReader> = personStatesReader(state)): PersonRow {
   const portrait = drawnPortrait(state, person);
   const age = ageOf(person, person.deathYear ?? person.leftYear ?? currentYear(state));
   return { id: person.id, name: personDisplayName(person), line: PERSONS_COPY.memberLine(PERSONS_COPY.role(person.role), PERSONS_COPY.age(age), occupationOf(person)),
-    portraitId: portrait.portraitId, exact: portrait.exact };
+    portraitId: portrait.portraitId, exact: portrait.exact, ornament: personOrnament(state, person, states) };
 }
 
 /**
@@ -56,13 +59,15 @@ export function factionLeaderRow(state: GameState, person: Person, factionName: 
 
 /** A house's members as the inspector lists them: head, spouse, kin, children (then by age). */
 export function householdRows(state: GameState, houseId: string): readonly PersonRow[] {
+  const states = personStatesReader(state);
   return persons.of(state, houseId).slice().sort((a, b) => (ROLE_ORDER[a.role] ?? 9) - (ROLE_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear)
-    .map(person => personRow(state, person));
+    .map(person => personRow(state, person, states));
 }
 
 /** The petition's petitioners (PERSON-0 PS-4: two or three household heads, the most substantial first). */
 export function petitionerRows(state: GameState, petition: Pick<PetitionRecord, "petitionerIds">): readonly PersonRow[] {
-  return (petition.petitionerIds ?? []).flatMap(id => { const person = personById(state, id); return person === undefined ? [] : [personRow(state, person)]; });
+  const states = personStatesReader(state);
+  return (petition.petitionerIds ?? []).flatMap(id => { const person = personById(state, id); return person === undefined ? [] : [personRow(state, person, states)]; });
 }
 
 /** The lord's steward (the manor household's steward; PERSON-0 keeps one in office). */
@@ -128,6 +133,7 @@ export function personCardView(state: GameState, personId: string): PersonCardVi
     portraitId: portrait.portraitId, exact: portrait.exact,
     match: portrait.fixed ? PERSONS_COPY.stewardPortrait : PERSONS_COPY.portraitMatch(portrait.identityId, portrait.stage, portrait.exact),
     emblem, emblemLabel: emblem === null ? PERSONS_COPY.noEmblem : emblem.kind === "arms" ? PERSONS_COPY.arms : PERSONS_COPY.merchantMark,
+    ornament: personOrnament(state, person),
   };
 }
 
@@ -138,7 +144,7 @@ export function portraitMatchRate(state: GameState): Readonly<{ exact: number; t
   return { exact, total: living.length, percent: living.length === 0 ? 100 : Math.floor((exact / living.length) * 1000) / 10 };
 }
 
-export type WalkerHeadline = Readonly<{ personId: string | null; name: string | null; portraitId: string | null; exact: boolean; line: string }>;
+export type WalkerHeadline = Readonly<{ personId: string | null; name: string | null; portraitId: string | null; exact: boolean; line: string; ornament?: PersonStateId | null }>;
 
 /**
  * Visibility design 4절: a carrier's card says who, and verb + what + where + progress ("목재를 방앗간 공사장으로
@@ -149,7 +155,8 @@ export function walkerHeadline(state: GameState, walkerId: string): WalkerHeadli
   if (walker === undefined || walker.kind === "builder") return null;
   const person = walkerPerson(state, walker);
   const portrait = person === null ? null : drawnPortrait(state, person);
-  const who = { personId: person?.id ?? null, name: person === null ? null : personDisplayName(person), portraitId: portrait?.portraitId ?? null, exact: portrait?.exact ?? false };
+  const who = { personId: person?.id ?? null, name: person === null ? null : personDisplayName(person), portraitId: portrait?.portraitId ?? null, exact: portrait?.exact ?? false,
+    ornament: person === null ? null : personOrnament(state, person) };
   const cargo = walker.cargo === null ? null : resourceName(walker.cargo.resource);
   if (walker.kind === "distributor") return { ...who, line: cargo === null ? PERSONS_COPY.returningHome : PERSONS_COPY.delivering(cargo) };
   const home = state.buildings.find(building => building.id === walker.homeBuildingId);

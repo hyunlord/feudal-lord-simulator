@@ -22,6 +22,10 @@ import {
   type ResourceCounterTween,
 } from "./resourceCounterTween";
 import { Button } from "./kit";
+import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { PAD_HINT_COPY } from "./inputHintCopy.ko";
+import { PadHint } from "./PadGlyph";
+import { useInputDevice } from "./useInputDevice";
 
 type CourtLedgerProps = {
   readonly tick: number;
@@ -181,8 +185,12 @@ export function SettlementStatusLine({
   placementFeedbackMessage = null,
 }: SettlementStatusLineProps) {
   const guidance = settlementGuidance(state);
-  const activeToolStatus =
-    selectedTool === null ? null : getPlacementToolStatus(feedbackPlacementTool(selectedTool));
+  const device = useInputDevice();
+  const activeTool = selectedTool === null ? null : feedbackPlacementTool(selectedTool);
+  const activeToolStatus = activeTool === null ? null : getPlacementToolStatus(activeTool);
+  // INSTALL-23 ⑤: an armed tool's line with the pad's glyphs when the player uses a gamepad (the keys' words otherwise).
+  const padToolStatus = activeTool === null || device !== "gamepad" ? null
+    : activeTool.kind === "building" ? PAD_HINT_COPY.placeBuilding(BUILDING_CONFIG_BY_KIND[activeTool.buildingKind].name) : PAD_HINT_COPY.placeRoad;
   // UX-0: before the game has run, water and bread supply are not computed yet ("우물이 필요합니다" at tick 0 was false).
   if (activeToolStatus === null && placementFeedbackMessage === null && state.tick < STATUS_WARMUP_TICKS) return null;
   const statusLine = activeToolStatus ?? placementFeedbackMessage ?? guidance.statusLine;
@@ -199,7 +207,7 @@ export function SettlementStatusLine({
             <ProblemGlyph kind={guidance.priority.kind} />
           </span>
         )}
-        <span>{statusLine}</span>
+        {padToolStatus === null ? <span>{statusLine}</span> : <PadHint parts={padToolStatus} />}
       </span>
     </section>
   );

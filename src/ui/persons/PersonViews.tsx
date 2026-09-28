@@ -6,17 +6,24 @@ import { WAVE14_IMAGES } from "../wave14ArtManifest.generated";
 import { assetUrlForBase } from "../../render/worldAssets";
 import type { PersonCardView, PersonRow } from "./personModels";
 import { PERSONS_COPY } from "./personsCopy.ko";
+import { PERSON_STATE_COPY } from "./personStateCopy.ko";
+import { personPortraitStateClass, personStateOrnamentStyle, type PersonStateId } from "./personStates";
 import { Button } from "../kit";
 
 // UI-5 people on screen: a portrait (the pool's 96 px JPEG, the 256 px one at 2x; when the person's age band moves to
 // the next picture of their aging chain the new one fades in over the old), a person chip (portrait, name, line — a
 // button that opens the person card) and the person card (Wave 14 `frame_person_card`: the portrait in its recess, the
 // lord's arms or a merchant's mark in its emblem slot, name, role, life, house, how the portrait matches).
+// INSTALL-23 ④: a portrait wears its person's state ornament (`personStates.ts`) over the frame's bottom-right — the
+// ornament is not clipped by the round face — and a death draws the face greyscale; the state is also in words (the
+// chip's line and button name, the card's line), so the small ornament is never the only sign.
 const FADE_MS = 600;
 const CARD = WAVE14_IMAGES.frame_person_card;
 const CARD_SCALE = 1.5;
 
-export function PersonPortrait({ portraitId, size, className = "" }: { readonly portraitId: string; readonly size: number; readonly className?: string }) {
+export function PersonPortrait({ portraitId, size, className = "", ornament = null }: {
+  readonly portraitId: string; readonly size: number; readonly className?: string; readonly ornament?: PersonStateId | null;
+}) {
   const [shown, setShown] = useState(portraitId);
   const [previous, setPrevious] = useState<string | null>(null);
   useEffect(() => {
@@ -28,19 +35,30 @@ export function PersonPortrait({ portraitId, size, className = "" }: { readonly 
   }, [portraitId]); // eslint-disable-line react-hooks/exhaustive-deps
   const style = (id: string) => portraitStyle(id, size) ?? { width: size, height: size };
   return (
-    <span className={`person-portrait ${className}`} aria-hidden="true" data-portrait={shown} style={{ width: size, height: size }}>
+    <span className={`person-portrait ${personPortraitStateClass(ornament)} ${className}`} aria-hidden="true" data-portrait={shown}
+      data-person-state={ornament ?? undefined} style={{ width: size, height: size }}>
       {previous === null ? null : <span className="person-portrait-layer person-portrait-layer--out" style={style(previous)} />}
       <span key={shown} className={`person-portrait-layer${previous === null ? "" : " person-portrait-layer--in"}`} style={style(shown)} />
+      {ornament === null ? null : <span className="person-state-ornament" data-ornament={ornament} style={personStateOrnamentStyle(ornament, size)} />}
     </span>
   );
 }
 
+/** The chip's text: name, line, and the state in words when the portrait wears one. */
+function PersonChipText({ row }: { readonly row: PersonRow }) {
+  const state = row.ornament ?? null;
+  return <span className="person-chip-text"><strong>{row.name}</strong><span>{row.line}</span>
+    {state === null ? null : <span className="person-chip-state" data-person-state={state}>{PERSON_STATE_COPY.label(state)}</span>}</span>;
+}
+
 export function PersonChip({ row, onOpen, size = 48 }: { readonly row: PersonRow; readonly onOpen: (personId: string) => void; readonly size?: number }) {
+  const state = row.ornament ?? null;
   return (
-    <Button type="button" className="person-chip" data-person={row.id} data-portrait-exact={row.exact ? "true" : "false"} aria-label={PERSONS_COPY.openCard(row.name)}
+    <Button type="button" className="person-chip" data-person={row.id} data-portrait-exact={row.exact ? "true" : "false"}
+      aria-label={state === null ? PERSONS_COPY.openCard(row.name) : PERSON_STATE_COPY.openCard(row.name, PERSON_STATE_COPY.label(state))}
       onPress={() => onOpen(row.id)} variant="secondary">
-      <PersonPortrait portraitId={row.portraitId} size={size} />
-      <span className="person-chip-text"><strong>{row.name}</strong><span>{row.line}</span></span>
+      <PersonPortrait portraitId={row.portraitId} size={size} ornament={state} />
+      <PersonChipText row={row} />
     </Button>
   );
 }
@@ -54,8 +72,8 @@ export function PersonList({ rows, onOpen }: { readonly rows: readonly PersonRow
   return (
     <>
       <ul className="person-list">{shown.map(row => <li key={row.id}>{onOpen === undefined
-        ? <span className="person-chip" data-person={row.id} data-portrait-exact={row.exact ? "true" : "false"}><PersonPortrait portraitId={row.portraitId} size={48} />
-          <span className="person-chip-text"><strong>{row.name}</strong><span>{row.line}</span></span></span>
+        ? <span className="person-chip" data-person={row.id} data-portrait-exact={row.exact ? "true" : "false"}><PersonPortrait portraitId={row.portraitId} size={48} ornament={row.ornament ?? null} />
+          <PersonChipText row={row} /></span>
         : <PersonChip row={row} onOpen={onOpen} />}</li>)}</ul>
       {shown.length === rows.length && !open ? null : <Button type="button" className="person-list-toggle" aria-expanded={open}
         onPress={() => setOpen(value => !value)} variant="toggle">{open ? PERSONS_COPY.membersFewer : PERSONS_COPY.membersAll(rows.length)}</Button>}
@@ -73,7 +91,7 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
         data-portrait={view.portraitId} data-portrait-exact={view.exact ? "true" : "false"}
         style={{ width: CARD.width * CARD_SCALE, height: CARD.height * CARD_SCALE, backgroundImage: `url("${assetUrlForBase(CARD.url, import.meta.env?.BASE_URL ?? "/")}")` }}>
         <span className="person-card-portrait" style={slot(portrait.x - portrait.radius, portrait.y - portrait.radius, portrait.radius * 2, portrait.radius * 2)}>
-          <PersonPortrait portraitId={view.portraitId} size={Math.round(portrait.radius * 2 * CARD_SCALE)} />
+          <PersonPortrait portraitId={view.portraitId} size={Math.round(portrait.radius * 2 * CARD_SCALE)} ornament={view.ornament} />
         </span>
         <span className="person-card-emblem" style={slot(emblem.x - emblem.width / 2, emblem.y - emblem.height / 2, emblem.width, emblem.height)}
           data-emblem-kind={view.emblem?.kind ?? "none"}>
@@ -84,6 +102,7 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
           <p>{view.role}</p>
           <p>{view.life}</p>
           <p>{view.household}</p>
+          {view.ornament === null ? null : <p className="person-card-state" data-person-state={view.ornament}>{PERSON_STATE_COPY.cardLine(PERSON_STATE_COPY.label(view.ornament))}</p>}
           <p className="person-card-match" data-exact={view.exact ? "true" : "false"}>{view.match}</p>
           {view.emblem === null ? null : <p className="person-card-emblem-label">{view.emblemLabel}</p>}
         </div>

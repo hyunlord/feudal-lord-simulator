@@ -6,6 +6,12 @@ import { Checkbox, Chip, Divider, Slider, Tabs, Toggle, Tooltip } from "./Contro
 import { Card, Panel, type FrameKind } from "./Frame";
 import { Select } from "./Select";
 import { UI_KIT_GALLERY_COPY as COPY } from "./uiKitGalleryCopy.ko";
+import { PersonChip, PersonPortrait } from "../persons/PersonViews";
+import { PERSON_STATE_COPY } from "../persons/personStateCopy.ko";
+import { ENGINE_HANDOFF_STATES, PERSON_STATES, type PersonStateId } from "../persons/personStates";
+import { INPUT_HINT_COPY, PAD_GLYPH_NAMES, PAD_HINT_COPY } from "../inputHintCopy.ko";
+import { PadGlyph, PadHint } from "../PadGlyph";
+import type { PadGlyphId } from "../padGlyphs";
 
 /**
  * UI-KIT-1 gallery (`/dev/ui-kit`): every kit part in every variant and state on one page, inside `.app-shell` so the
@@ -14,6 +20,53 @@ import { UI_KIT_GALLERY_COPY as COPY } from "./uiKitGalleryCopy.ko";
 const VARIANTS: readonly Exclude<ButtonVariant, "icon">[] = ["primary", "secondary", "quiet", "danger", "toggle", "tab", "surface"];
 const SIZES: readonly ButtonSize[] = ["sm", "md", "lg"];
 const FRAMES: readonly FrameKind[] = ["light", "dark", "objective", "advisor", "modal", "tooltip", "record"];
+/** INSTALL-23 ④: a pool face for each state's sample (the artist's proof faces; an adult for the parent's child_born). */
+const STATE_FACES: Readonly<Record<PersonStateId, string>> = {
+  mourning: "P06", sick: "P03", pregnant: "P02", child_born: "P07", dead: "I047_old", hunger: "P01",
+  injury: "P04", pilgrim: "I056_mature", marriage: "P05", reeve: "I039_mature", bailiff: "I041_young", steward: "I042_mature",
+};
+const PAD_GLYPHS = Object.keys(PAD_GLYPH_NAMES) as PadGlyphId[];
+
+/** INSTALL-23 ④ ⑤: the person-state ornaments on portraits (all twelve, derivable or not yet) and the pad glyphs. */
+function PersonStateAndPadSections() {
+  return (
+    <>
+      <Panel className="ui-kit-gallery-section" aria-label={PERSON_STATE_COPY.gallerySection} data-section="person-states">
+        <h2>{PERSON_STATE_COPY.gallerySection}</h2>
+        <p>{PERSON_STATE_COPY.galleryNote}</p>
+        <ul className="ui-kit-gallery-states">
+          {PERSON_STATES.map(state => (
+            <li key={state} data-person-state={state} data-derived={ENGINE_HANDOFF_STATES.includes(state) ? "false" : "true"}>
+              <strong>{PERSON_STATE_COPY.label(state)}</strong>
+              <span className="ui-kit-gallery-state-faces">
+                <PersonPortrait portraitId={STATE_FACES[state]} size={96} ornament={state} />
+                <PersonPortrait portraitId={STATE_FACES[state]} size={48} ornament={state} />
+              </span>
+              <small>{ENGINE_HANDOFF_STATES.includes(state) ? PERSON_STATE_COPY.galleryHandoff : PERSON_STATE_COPY.galleryEngine}</small>
+            </li>
+          ))}
+        </ul>
+        <div className="ui-kit-gallery-row">
+          <PersonChip row={{ id: "p-gallery", name: PERSON_STATE_COPY.galleryChipName, line: PERSON_STATE_COPY.galleryChipLine, portraitId: STATE_FACES.child_born,
+            exact: true, ornament: "child_born" }} onOpen={() => undefined} />
+        </div>
+      </Panel>
+      <Panel className="ui-kit-gallery-section" aria-label={COPY.padSection} data-section="pad-glyphs">
+        <h2>{COPY.padSection}</h2>
+        <p>{COPY.padNote}</p>
+        <ul className="ui-kit-gallery-pads">
+          {PAD_GLYPHS.map(glyph => (
+            <li key={glyph}><PadGlyph glyph={glyph} size={48} /><PadGlyph glyph={glyph} size={32} /><small>{PAD_GLYPH_NAMES[glyph]}</small></li>
+          ))}
+        </ul>
+        <dl className="ui-kit-gallery-hints">
+          <dt>{COPY.padKeyboard}</dt><dd data-input-hint="keyboard">{INPUT_HINT_COPY.mouse}</dd>
+          <dt>{COPY.padGamepad}</dt><dd><PadHint parts={PAD_HINT_COPY.build} /></dd>
+        </dl>
+      </Panel>
+    </>
+  );
+}
 
 export function UiKitGallery() {
   const [severity, setSeverity] = useState(2);
@@ -85,6 +138,7 @@ export function UiKitGallery() {
           {(["ok", "warn", "block", "info"] as const).map(tone => <Chip key={tone} tone={tone}>{COPY.chips[tone]}</Chip>)}
         </div>
       </Panel>
+      <PersonStateAndPadSections />
       <section className="ui-kit-gallery-section ui-kit-gallery-frames" aria-label={COPY.sections.frames} data-section="frames">
         <h2>{COPY.sections.frames}</h2>
         <div className="ui-kit-gallery-grid">

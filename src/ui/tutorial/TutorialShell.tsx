@@ -5,6 +5,9 @@ import { UiIcon } from "../UiIcon";
 import { TUTORIAL_COPY } from "./tutorialCopy.ko";
 import type { GoalCard, TutorialController } from "./useTutorialController";
 import { Button, Disclosure } from "../kit";
+import { PAD_HINT_COPY } from "../inputHintCopy.ko";
+import { PadHint } from "../PadGlyph";
+import { useInputDevice } from "../useInputDevice";
 
 // UX-1 shell pieces (research E "Objective card / Advisor / Highlight"): goal cards (title 18 px, progress and bar, a
 // reason of at most two lines, one button, `?` help; at most two on screen), the steward (96 px portrait slot, one
@@ -82,10 +85,13 @@ export function UnlockBanner({ text }: { readonly text: string | null }) {
 }
 
 export function PauseVeil({ paused }: { readonly paused: boolean }) {
+  const device = useInputDevice();
   if (!paused) return null;
   // UI-3: the Wave 8 pause vignette over the map and the hourglass badge behind the label.
   return <div className="pause-veil" aria-hidden="false" style={{ backgroundImage: `url("${wave8Url("pause_vignette")}")` }}>
-    <span className="pause-veil-label" role="status" style={{ backgroundImage: `url("${wave8Url("pause_badge")}")` }}>{TUTORIAL_COPY.paused}</span></div>;
+    <span className="pause-veil-label" role="status" data-input-device={device} style={{ backgroundImage: `url("${wave8Url("pause_badge")}")` }}>
+      {/* INSTALL-23 ⑤: the pad's pause buttons as glyphs; the keyboard's Space in words. */}
+      {device === "gamepad" ? <PadHint parts={PAD_HINT_COPY.paused} /> : TUTORIAL_COPY.paused}</span></div>;
 }
 
 export function GoalDrawer({ open, log, children }: { readonly open: boolean; readonly log: TutorialController["log"]; readonly children?: ReactNode }) {
