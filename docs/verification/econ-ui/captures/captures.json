@@ -1,0 +1,54 @@
+{
+ "steps": {
+  "e1-ledger-ale": {
+   "tick": 95000,
+   "lines": [
+    "에일 24통 · 그중 에일집 24통",
+    "빚는 집 24채 · 에일집 22채",
+    "에일을 누린 집 24/24채 · 한 계절에 24통 필요",
+    "이번 계절: 빚음 0통 · 마심 24통 · 에일집에서 삼 4통",
+    "지난 계절: 빚음 48통 · 마심 0통 · 에일집에서 삼 0통"
+   ]
+  },
+  "e2-store-ale": {
+   "store": "granary-42-37-0",
+   "note": [
+    "에일은 집 안에 둡니다 — 도시에 24통, 그중 에일집 24통"
+   ]
+  },
+  "e3-season-ale": {
+   "lines": [
+    "지금 영지에보리 146엿기름 9에일 24",
+    "이 계절 에일: 빚음 48통 · 마심 0통 · 에일집에서 삼 0통",
+    "에일을 누린 집 24/24채 · 한 계절에 24통 필요"
+   ]
+  },
+  "e4-barn-locked": {
+   "era": "hamlet",
+   "locked": "엿기름 가마는 시장도시부터",
+   "disabled": true
+  },
+  "e5-wool-no-pasture": {
+   "pastureCells": 0,
+   "lines": [
+    "현물로 낸다현물로 600d어치를 4계절에 나눠 냅니다(계절마다 150d) · 목초지 양털이 없어 계절마다 150d 모두 현금두 계절 뒤 예측 · 금고 7727d(지금 8027d)"
+   ]
+  },
+  "e6-wool-pasture": {
+   "pastureCells": 103,
+   "lines": [
+    "현물로 낸다현물로 600d어치를 4계절에 나눠 냅니다(계절마다 150d) · 계절마다 양털 25뭉치(125d) + 현금 25d두 계절 뒤 예측 · 금고 7977d(지금 8027d)"
+   ]
+  }
+ },
+ "files": [
+  "e1-ledger-ale.jpg",
+  "e2-store-ale.jpg",
+  "e3-season-ale.jpg",
+  "e4-barn-locked.jpg",
+  "e5-wool-no-pasture.jpg",
+  "e6-wool-pasture.jpg"
+ ],
+ "jpegBytes": 171282,
+ "errors": []
+}
