@@ -1,0 +1,47 @@
+{
+  "protocol": "One independent fresh agent per board; forced2x10 grouping; label permutation allowed; not human study",
+  "results": [
+    {
+      "board": "full",
+      "correct": 18,
+      "total": 20,
+      "accuracy": 0.9,
+      "threshold": 0.8,
+      "pass": true,
+      "Aassigned": "L1",
+      "wrong": [
+        {
+          "number": 11,
+          "identity": "L1_102"
+        },
+        {
+          "number": 20,
+          "identity": "L2_303"
+        }
+      ],
+      "agent": "blind_full",
+      "boardSHA256": "59754cc630a67e9c8cbae0dc63c95518ad95938ffbd329502b59e6f1c2fe0bb0"
+    },
+    {
+      "board": "face",
+      "correct": 18,
+      "total": 20,
+      "accuracy": 0.9,
+      "threshold": 0.8,
+      "pass": true,
+      "Aassigned": "L1",
+      "wrong": [
+        {
+          "number": 11,
+          "identity": "L1_102"
+        },
+        {
+          "number": 20,
+          "identity": "L2_303"
+        }
+      ],
+      "agent": "blind_face",
+      "boardSHA256": "4893977bcdbd623cd1807842da96e2e32949150876f601fa167c0fc564463975"
+    }
+  ]
+}

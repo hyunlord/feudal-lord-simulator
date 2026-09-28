@@ -1,0 +1,13 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const p=path.resolve(__dirname,'..');
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]);
+const originals=JSON.parse(fs.readFileSync(p+'/records/original-reference-hashes.json'));
+for(const r of originals)if(hash(fs.readFileSync(p+'/'+r.file))!==r.sha256)throw Error('reference changed '+r.file);
+const refs=walk(p+'/references').map(f=>({file:path.relative(p,f),sha256:hash(fs.readFileSync(f))}));
+fs.writeFileSync(p+'/records/final-reference-hashes.json',JSON.stringify({originalsVerified:originals.length,allReferences:refs},null,2));
+const rows=JSON.parse(fs.readFileSync(p+'/records/asset-rows.json'));
+for(const r of rows)if(hash(fs.readFileSync(p+'/'+r.file))!==r.sha256)throw Error('staleCSV '+r.file);
+const files=walk(p).filter(f=>path.basename(f)!=='SHA256SUMS').sort();
+fs.writeFileSync(p+'/SHA256SUMS',files.map(f=>hash(fs.readFileSync(f))+'  '+path.relative(p,f)).join('\n')+'\n');
+console.log('PASS original references '+originals.length+', assets '+rows.length+', manifest files '+files.length);

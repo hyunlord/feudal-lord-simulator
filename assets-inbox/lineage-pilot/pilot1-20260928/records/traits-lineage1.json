@@ -1,0 +1,405 @@
+{
+  "status": "pre-generation artistic inheritance contract; not biological determinism",
+  "identities": {
+    "L1_101": {
+      "sex": "male",
+      "traits": {
+        "hair": "straight dark brown",
+        "skin": "light warm beige",
+        "eyes": "gray green narrow almond",
+        "faceShape": "long angular",
+        "nose": "long straight narrow bridge",
+        "jaw": "square angular jaw",
+        "brow": "straight low dark brows"
+      }
+    },
+    "L1_102": {
+      "sex": "female",
+      "traits": {
+        "hair": "wavy auburn brown",
+        "skin": "light rosy beige",
+        "eyes": "hazel rounded almond",
+        "faceShape": "broad oval",
+        "nose": "short gently convex broad tip",
+        "jaw": "soft rounded jaw",
+        "brow": "arched auburn brows"
+      }
+    },
+    "L1_2S1": {
+      "sex": "female",
+      "traits": {
+        "hair": "wavy dark blond",
+        "skin": "light freckled neutral beige",
+        "eyes": "blue gray wide set",
+        "faceShape": "small heart shaped",
+        "nose": "short upturned fine tip",
+        "jaw": "narrow pointed chin",
+        "brow": "fine high arched brows"
+      }
+    },
+    "L1_2S2": {
+      "sex": "male",
+      "traits": {
+        "hair": "curly black",
+        "skin": "medium warm brown",
+        "eyes": "dark brown deep set",
+        "faceShape": "broad rectangular",
+        "nose": "broad straight rounded tip",
+        "jaw": "broad cleft chin",
+        "brow": "thick slightly curved black brows"
+      }
+    },
+    "L1_201": {
+      "sex": "male",
+      "fatherIdentity": "L1_101",
+      "motherIdentity": "L1_102",
+      "traits": {
+        "hair": "wavy auburn brown",
+        "skin": "light warm beige",
+        "eyes": "hazel rounded almond",
+        "faceShape": "long angular",
+        "nose": "long straight narrow bridge",
+        "jaw": "soft rounded jaw",
+        "brow": "straight low dark brows"
+      },
+      "inheritance": {
+        "hair": {
+          "from": "L1_102",
+          "value": "wavy auburn brown"
+        },
+        "skin": {
+          "from": "L1_101",
+          "value": "light warm beige"
+        },
+        "eyes": {
+          "from": "L1_102",
+          "value": "hazel rounded almond"
+        },
+        "faceShape": {
+          "from": "L1_101",
+          "value": "long angular"
+        },
+        "nose": {
+          "from": "L1_101",
+          "value": "long straight narrow bridge"
+        },
+        "jaw": {
+          "from": "L1_102",
+          "value": "soft rounded jaw"
+        },
+        "brow": {
+          "from": "L1_101",
+          "value": "straight low dark brows"
+        }
+      }
+    },
+    "L1_202": {
+      "sex": "male",
+      "fatherIdentity": "L1_101",
+      "motherIdentity": "L1_102",
+      "traits": {
+        "hair": "straight dark brown",
+        "skin": "light rosy beige",
+        "eyes": "gray green narrow almond",
+        "faceShape": "broad oval",
+        "nose": "short gently convex broad tip",
+        "jaw": "square angular jaw",
+        "brow": "arched auburn brows"
+      },
+      "inheritance": {
+        "hair": {
+          "from": "L1_101",
+          "value": "straight dark brown"
+        },
+        "skin": {
+          "from": "L1_102",
+          "value": "light rosy beige"
+        },
+        "eyes": {
+          "from": "L1_101",
+          "value": "gray green narrow almond"
+        },
+        "faceShape": {
+          "from": "L1_102",
+          "value": "broad oval"
+        },
+        "nose": {
+          "from": "L1_102",
+          "value": "short gently convex broad tip"
+        },
+        "jaw": {
+          "from": "L1_101",
+          "value": "square angular jaw"
+        },
+        "brow": {
+          "from": "L1_102",
+          "value": "arched auburn brows"
+        }
+      }
+    },
+    "L1_203": {
+      "sex": "female",
+      "fatherIdentity": "L1_101",
+      "motherIdentity": "L1_102",
+      "traits": {
+        "hair": "wavy auburn brown",
+        "skin": "light rosy beige",
+        "eyes": "gray green narrow almond",
+        "faceShape": "long angular",
+        "nose": "short gently convex broad tip",
+        "jaw": "square angular jaw",
+        "brow": "straight low dark brows"
+      },
+      "inheritance": {
+        "hair": {
+          "from": "L1_102",
+          "value": "wavy auburn brown"
+        },
+        "skin": {
+          "from": "L1_102",
+          "value": "light rosy beige"
+        },
+        "eyes": {
+          "from": "L1_101",
+          "value": "gray green narrow almond"
+        },
+        "faceShape": {
+          "from": "L1_101",
+          "value": "long angular"
+        },
+        "nose": {
+          "from": "L1_102",
+          "value": "short gently convex broad tip"
+        },
+        "jaw": {
+          "from": "L1_101",
+          "value": "square angular jaw"
+        },
+        "brow": {
+          "from": "L1_101",
+          "value": "straight low dark brows"
+        }
+      }
+    },
+    "L1_204": {
+      "sex": "female",
+      "fatherIdentity": "L1_101",
+      "motherIdentity": "L1_102",
+      "traits": {
+        "hair": "straight dark brown",
+        "skin": "light warm beige",
+        "eyes": "hazel rounded almond",
+        "faceShape": "broad oval",
+        "nose": "long straight narrow bridge",
+        "jaw": "soft rounded jaw",
+        "brow": "arched auburn brows"
+      },
+      "inheritance": {
+        "hair": {
+          "from": "L1_101",
+          "value": "straight dark brown"
+        },
+        "skin": {
+          "from": "L1_101",
+          "value": "light warm beige"
+        },
+        "eyes": {
+          "from": "L1_102",
+          "value": "hazel rounded almond"
+        },
+        "faceShape": {
+          "from": "L1_102",
+          "value": "broad oval"
+        },
+        "nose": {
+          "from": "L1_101",
+          "value": "long straight narrow bridge"
+        },
+        "jaw": {
+          "from": "L1_102",
+          "value": "soft rounded jaw"
+        },
+        "brow": {
+          "from": "L1_102",
+          "value": "arched auburn brows"
+        }
+      }
+    },
+    "L1_301": {
+      "sex": "male",
+      "fatherIdentity": "L1_201",
+      "motherIdentity": "L1_2S1",
+      "traits": {
+        "hair": "wavy dark blond",
+        "skin": "light warm beige",
+        "eyes": "blue gray wide set",
+        "faceShape": "long angular",
+        "nose": "short upturned fine tip",
+        "jaw": "soft rounded jaw",
+        "brow": "straight low dark brows"
+      },
+      "inheritance": {
+        "hair": {
+          "from": "L1_2S1",
+          "value": "wavy dark blond"
+        },
+        "skin": {
+          "from": "L1_201",
+          "value": "light warm beige"
+        },
+        "eyes": {
+          "from": "L1_2S1",
+          "value": "blue gray wide set"
+        },
+        "faceShape": {
+          "from": "L1_201",
+          "value": "long angular"
+        },
+        "nose": {
+          "from": "L1_2S1",
+          "value": "short upturned fine tip"
+        },
+        "jaw": {
+          "from": "L1_201",
+          "value": "soft rounded jaw"
+        },
+        "brow": {
+          "from": "L1_201",
+          "value": "straight low dark brows"
+        }
+      }
+    },
+    "L1_302": {
+      "sex": "female",
+      "fatherIdentity": "L1_201",
+      "motherIdentity": "L1_2S1",
+      "traits": {
+        "hair": "wavy auburn brown",
+        "skin": "light freckled neutral beige",
+        "eyes": "hazel rounded almond",
+        "faceShape": "small heart shaped",
+        "nose": "long straight narrow bridge",
+        "jaw": "narrow pointed chin",
+        "brow": "fine high arched brows"
+      },
+      "inheritance": {
+        "hair": {
+          "from": "L1_201",
+          "value": "wavy auburn brown"
+        },
+        "skin": {
+          "from": "L1_2S1",
+          "value": "light freckled neutral beige"
+        },
+        "eyes": {
+          "from": "L1_201",
+          "value": "hazel rounded almond"
+        },
+        "faceShape": {
+          "from": "L1_2S1",
+          "value": "small heart shaped"
+        },
+        "nose": {
+          "from": "L1_201",
+          "value": "long straight narrow bridge"
+        },
+        "jaw": {
+          "from": "L1_2S1",
+          "value": "narrow pointed chin"
+        },
+        "brow": {
+          "from": "L1_2S1",
+          "value": "fine high arched brows"
+        }
+      }
+    },
+    "L1_303": {
+      "sex": "male",
+      "fatherIdentity": "L1_2S2",
+      "motherIdentity": "L1_203",
+      "traits": {
+        "hair": "wavy auburn brown",
+        "skin": "light rosy beige",
+        "eyes": "dark brown deep set",
+        "faceShape": "broad rectangular",
+        "nose": "broad straight rounded tip",
+        "jaw": "square angular jaw",
+        "brow": "straight low dark brows"
+      },
+      "inheritance": {
+        "hair": {
+          "from": "L1_203",
+          "value": "wavy auburn brown"
+        },
+        "skin": {
+          "from": "L1_203",
+          "value": "light rosy beige"
+        },
+        "eyes": {
+          "from": "L1_2S2",
+          "value": "dark brown deep set"
+        },
+        "faceShape": {
+          "from": "L1_2S2",
+          "value": "broad rectangular"
+        },
+        "nose": {
+          "from": "L1_2S2",
+          "value": "broad straight rounded tip"
+        },
+        "jaw": {
+          "from": "L1_203",
+          "value": "square angular jaw"
+        },
+        "brow": {
+          "from": "L1_203",
+          "value": "straight low dark brows"
+        }
+      }
+    },
+    "L1_304": {
+      "sex": "female",
+      "fatherIdentity": "L1_2S2",
+      "motherIdentity": "L1_203",
+      "traits": {
+        "hair": "curly black",
+        "skin": "medium warm brown",
+        "eyes": "gray green narrow almond",
+        "faceShape": "long angular",
+        "nose": "short gently convex broad tip",
+        "jaw": "broad cleft chin",
+        "brow": "thick slightly curved black brows"
+      },
+      "inheritance": {
+        "hair": {
+          "from": "L1_2S2",
+          "value": "curly black"
+        },
+        "skin": {
+          "from": "L1_2S2",
+          "value": "medium warm brown"
+        },
+        "eyes": {
+          "from": "L1_203",
+          "value": "gray green narrow almond"
+        },
+        "faceShape": {
+          "from": "L1_203",
+          "value": "long angular"
+        },
+        "nose": {
+          "from": "L1_203",
+          "value": "short gently convex broad tip"
+        },
+        "jaw": {
+          "from": "L1_2S2",
+          "value": "broad cleft chin"
+        },
+        "brow": {
+          "from": "L1_2S2",
+          "value": "thick slightly curved black brows"
+        }
+      }
+    }
+  }
+}
