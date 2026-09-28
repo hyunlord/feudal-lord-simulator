@@ -63,7 +63,18 @@ export const RESOURCE_CATALOG = [
   { id: "barley", storage: "granary", group: "raw", hudPriority: 7, carrier: "farmer", cartLoadKey: "grainsack", chainCell: "barley", color: "goldDark", bulk: 1 },
   { id: "malt", storage: "granary", group: "goods", hudPriority: 8, carrier: "farmer", cartLoadKey: "grainsack", chainCell: "malt", color: "earth", bulk: 1 },
   { id: "ale", storage: "storehouse", group: "drink", hudPriority: 9, carrier: "farmer", chainCell: "ale", color: "earthDark", bulk: 1 },
-  { id: "coin", storage: "none", group: "money", hudPriority: 10, carrier: "coin_carter", sheetCell: "coin", cargoIconCell: "coin", color: "gold", bulk: 1 },
+  // C5 the cloth chain (K2's seven goods): fleece from the pasture flocks, yarn spun at home, cloth woven, fulled at the
+  // water mill, dyed (woad, madder, weld — the dyes the merchants bring), stretched on the tenters, sold finished.
+  // No chain-sheet cell yet (decision CL10): the season card reads every good with one as the ale chain's; the render
+  // session gives them their Wave 3 cells once the card tells the two chains apart.
+  { id: "fleece", storage: "storehouse", group: "raw", hudPriority: 10, carrier: "farmer", color: "parchment", bulk: 1 },
+  { id: "yarn", storage: "storehouse", group: "goods", hudPriority: 11, carrier: "farmer", color: "parchmentDark", bulk: 1 },
+  { id: "raw_cloth", storage: "storehouse", group: "goods", hudPriority: 12, carrier: "farmer", color: "stone", bulk: 1 },
+  { id: "fulled_cloth", storage: "storehouse", group: "goods", hudPriority: 13, carrier: "farmer", color: "stoneDark", bulk: 1 },
+  { id: "dyes", storage: "storehouse", group: "raw", hudPriority: 14, carrier: "farmer", color: "ultramarine", bulk: 1 },
+  { id: "dyed_cloth", storage: "storehouse", group: "goods", hudPriority: 15, carrier: "farmer", color: "vermilion", bulk: 1 },
+  { id: "finished_cloth", storage: "storehouse", group: "goods", hudPriority: 16, carrier: "farmer", color: "sageDark", bulk: 1 },
+  { id: "coin", storage: "none", group: "money", hudPriority: 17, carrier: "coin_carter", sheetCell: "coin", cargoIconCell: "coin", color: "gold", bulk: 1 },
 ] as const satisfies readonly ResourceEntry[];
 
 type CatalogLine = (typeof RESOURCE_CATALOG)[number];

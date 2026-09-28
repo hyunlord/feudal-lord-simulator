@@ -39,6 +39,11 @@ const BUILDING_KINDS = [
   "church",
   "keep",
   "malt_kiln",
+  "pastoral_farm",
+  "weaver_house",
+  "fulling_mill",
+  "dyehouse",
+  "tenter_yard",
 ] as const satisfies readonly BuildingKind[];
 
 test("BUILDING_CONFIG keeps the construction recipe inputs that the domain model mirrors", () => {
@@ -60,6 +65,11 @@ test("BUILDING_CONFIG keeps the construction recipe inputs that the domain model
     church: { timber: 100, stone: 60 },
     keep: { stone: 150 },
     malt_kiln: { timber: 40 },
+    pastoral_farm: { timber: 30 },
+    weaver_house: { timber: 30 },
+    fulling_mill: { timber: 60 },
+    dyehouse: { timber: 40 },
+    tenter_yard: { timber: 20 },
   } as const satisfies Record<BuildingKind, object>;
 
   // When
@@ -95,6 +105,11 @@ test("CONSTRUCTION constants pin builder capacity, visibility floor, and require
     church: 900,
     keep: 1200,
     malt_kiln: 500,
+    pastoral_farm: 400,
+    weaver_house: 500,
+    fulling_mill: 800,
+    dyehouse: 600,
+    tenter_yard: 400,
   } satisfies Record<BuildingKind, number>);
 });
 

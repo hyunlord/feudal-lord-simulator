@@ -52,6 +52,16 @@ export const BUILDING_COPY = {
     worldTarget: "여기에 성채를 지으세요", history: "성채" },
   malt_kiln: { name: "엿기름 가마", card: "보리를 엿기름으로", purpose: "보리를 싹 틔워 말려 엿기름을 만듭니다. 집집의 아낙이 에일로 빚습니다",
     inspector: "보리를 엿기름으로 말립니다", worldTarget: "여기에 엿기름 가마를 지으세요", history: "엿기름 가마" },
+  pastoral_farm: { name: "목축 농장", card: "목초지의 양을 칩니다", purpose: "가까운 목초지의 양을 치고 초여름에 털을 깎아 양털을 창고로 보냅니다",
+    inspector: "목초지의 양을 치고 털을 깎습니다", worldTarget: "여기에 목축 농장을 지으세요", history: "목축 농장" },
+  weaver_house: { name: "직조공 집", card: "실을 베로 짭니다", purpose: "베틀로 실 네 타래를 생베 한 필로 짭니다",
+    inspector: "실을 생베로 짭니다", worldTarget: "여기에 직조공 집을 지으세요", history: "직조공 집" },
+  fulling_mill: { name: "축융 방앗간", card: "베를 두드려 다집니다", purpose: "물레방아 망치로 생베를 두드려 다집니다. 물가에만 짓습니다",
+    inspector: "생베를 축융합니다", worldTarget: "여기에 축융 방앗간을 지으세요", history: "축융 방앗간" },
+  dyehouse: { name: "염색집", card: "베를 물들입니다", purpose: "상인이 들여온 대청·꼭두서니·목서초로 베를 물들입니다. 물가에만 짓습니다",
+    inspector: "축융한 베를 물들입니다", worldTarget: "여기에 염색집을 지으세요", history: "염색집" },
+  tenter_yard: { name: "텐터 틀", card: "베를 펴 말립니다", purpose: "물들인 베를 틀에 걸어 펴 말리고 다듬어 완성 직물로 만듭니다",
+    inspector: "물들인 베를 펴 말립니다", worldTarget: "여기에 텐터 틀을 세우세요", history: "텐터 틀" },
 } as const satisfies { readonly [K in BuildingKind]: BuildingCopy };
 
 export const buildingCopy = (kind: BuildingKind): BuildingCopy => (BUILDING_COPY as { readonly [K in BuildingKind]: BuildingCopy })[kind];

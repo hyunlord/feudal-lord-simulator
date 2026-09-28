@@ -4,6 +4,7 @@ import type { GameState } from "./engine.types";
 import { arableLayouts, inYearTick, stripTending } from "../zones/arableFields";
 import { pushableMill } from "../agents/millPush";
 import { householdSlotDemand } from "../population/householdSlots";
+import { pastoralFieldNeed, pastureTending } from "./cloth";
 import type { House } from "../population/population.types";
 
 /** LB-4: where the adults went on one tick (`GameState.labour`, save v11). */
@@ -92,9 +93,11 @@ export function allocateLabourDemands(input: LabourDemandInput): { readonly buil
     if (assigned > 0) haulers.set(building.id, assigned);
     remaining -= assigned;
   }
+  // C5 (CL-3): the pastoral farms' shepherds in the same tier — a twentieth of a field's hands a cell.
+  const pasture = pastureTending({ ...input.state, buildings: input.buildings as Building[] });
   for (const building of ordered) {
-    if (building.kind !== "farmstead" || !operating(building)) continue;
-    const need = farmsteadFieldNeed(tended.get(building.id) ?? 0, input.tick);
+    if ((building.kind !== "farmstead" && building.kind !== "pastoral_farm") || !operating(building)) continue;
+    const need = building.kind === "pastoral_farm" ? pastoralFieldNeed(pasture.get(building.id) ?? 0, input.tick) : farmsteadFieldNeed(tended.get(building.id) ?? 0, input.tick);
     const assigned = Math.min(remaining, Math.max(0, need - building.workers));
     if (assigned > 0) hands.set(building.id, assigned);
     remaining -= assigned;

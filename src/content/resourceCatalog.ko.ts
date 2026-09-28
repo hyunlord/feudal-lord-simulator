@@ -20,6 +20,13 @@ export const RESOURCE_COPY = {
   barley: { name: "보리", unit: "자루", short: "보리 밭에서 거둔 곡식 · 엿기름 가마가 엿기름으로 말립니다" },
   malt: { name: "엿기름", unit: "자루", short: "싹 틔워 말린 보리 · 집집의 아낙이 에일로 빚습니다" },
   ale: { name: "에일", unit: "통", short: "홉 없이 빚은 술 · 에일집이 팔고 집집이 마십니다" },
+  fleece: { name: "양털", unit: "뭉치", short: "목축 농장이 초여름에 깎은 털 · 집집의 아낙이 실로 잣습니다" },
+  yarn: { name: "실", unit: "타래", short: "물레로 자은 털실 · 직조공이 베로 짭니다" },
+  raw_cloth: { name: "생베", unit: "필", short: "베틀에서 갓 짠 모직 · 축융 방앗간이 두드려 다집니다" },
+  fulled_cloth: { name: "축융한 베", unit: "필", short: "물레방아 망치로 다진 모직 · 염색집이 물들입니다" },
+  dyes: { name: "염료", unit: "짐", short: "대청·꼭두서니·목서초 · 장거리 상인이 들여옵니다" },
+  dyed_cloth: { name: "물들인 베", unit: "필", short: "염색집에서 물들인 모직 · 텐터 틀에서 펴 말립니다" },
+  finished_cloth: { name: "완성 직물", unit: "필", short: "펴 말려 다듬은 모직 · 시장에서 장거리 상인에게 팝니다" },
   coin: { name: MONEY_LABEL, unit: "페니", short: "장부에 남는 영지의 돈" },
 } as const satisfies { readonly [K in ResourceType]: ResourceCopy };
 
