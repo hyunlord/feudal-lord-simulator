@@ -1,11 +1,19 @@
 # 현재 상태
 
-갱신: 2026-09-28(INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-7 넘김 넷 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시·판정, 검증 DGX): [보고서](verification/fix7/REPORT.md), 결정 FX7-1~FX7-5, 명세 [WR-2a](design/chapter-two-war.md)·[AL-2·AL-10·AL-11](design/ale-chain.md).
+  - 양모 공납 현물: 계절마다 목초지 양의 양털 뭉치(1칸 = 양 1, 한 해 1뭉치, 5d, 가설)를 먼저 내고 부족분만 현금. 원장 `in_kind`·`resource: fleece`. C5에서 뭉치가 자원이 되면 같은 나눔을 재고에서.
+  - 도시 에일 `townAle`: 재고(집 슬롯)·에일집 몫·이번/지난 계절의 빚음·엿기름·마심·삼. `state.ale`, 저장 v25.
+  - 헛간 보리는 엿기름 가마 해금(시장도시)부터: `farmsteadCropLock` → "엿기름 가마는 시장도시부터". 옛 보리 헛간은 그대로.
+  - 자식 프로세스 시험 울타리 3~10초 → 60초.
+  - 가드레일 `1a75de7` 5/5(기준선 `bf6b097`과 해시만 다름, 봇은 공납을 현금으로 내고 목초지 0) · 회귀 `1a75de7` 3,401/3,401.
+  - 넘길 것(렌더): 장부 서랍·저장소·결산의 에일 줄(`townAle`), 헛간 카드의 보리 잠금과 이유, 양모 카드의 현물 결과 줄(`woolInKindSplit`).
 
 - **Wave 24 Steam 그림 후처리 — 완료, 본선 커밋**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 히어로는 생성 원본 2152×731 → Real-ESRGAN x2plus(DGX GPU) → 3840×1240(구도 동일, 가장자리 또렷·붓 질감 매끈, 100% 비교 첨부). 엠블럼·앱 아이콘 PNG·바로가기 아이콘은 알파 8 미만 픽셀을 (0,0,0,0)으로 바꿨다. `assets-inbox/wave24/processed-20260928/` 4장·비교 1 `confirmed`, 원래 4행 `superseded`, 장부 3,855행 = 그림 3,855. [기록](../assets-inbox/wave24/processed-20260928/records/README.md).
 - **INSTALL-3b 성벽 공사 이름표 묶기·사슬 캡처 대상·결산 인구 줄·배부른 재생 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/install3b/REPORT.md), 결정 INSTALL3B-D1~D5.
