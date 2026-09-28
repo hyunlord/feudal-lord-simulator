@@ -15,5 +15,7 @@ step() { local name=$1; shift; "$@" > "$out/gates/$name.log" 2>&1; local code=$?
 step states npx tsx scripts/install3States.ts "$ale"
 step captures npx tsx scripts/econUiCaptures.ts "$out/captures" --url "$URL" --ale "$ale" --war "$war"
 printf '%s\n' "${results[@]}" > "$out/gates/econ-exit-codes.txt"
+# `captures`: the states and the captures alone (a rerun of the evidence).
+if [ "${1:-}" = "captures" ]; then printf '%s\n' "${results[@]}"; exit 0; fi
 UI6_OUT=$out/ui6 UI6_STATES=$war UI5_STATES=${UI5_STATES:-$HOME/fls-ui5-states-v22} bash scripts/ui6Verification.sh all
 printf '%s\n' "${results[@]}"

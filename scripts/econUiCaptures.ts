@@ -60,6 +60,7 @@ await step("e1-ledger-ale", async () => {
   const state = json(aleDir, "m11-ale-sold"); const keep = state.buildings.find(building => building.kind === "keep") ?? state.buildings[0]!;
   const { page, close } = await scene(state, [keep.tx, keep.ty]);
   await page.locator("[data-dock='ledger']").first().click(); await page.waitForTimeout(700);
+  await page.evaluate(() => { document.querySelector(".ledger-town-ale")?.scrollIntoView({ block: "end" }); }); await page.waitForTimeout(300);
   await shot(page.locator(".ledger-drawer"), "e1-ledger-ale.jpg");
   const lines = await text(page, ".ledger-town-ale p");
   await close();
