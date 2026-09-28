@@ -117,7 +117,8 @@ test("UI-5 the person card: a modal (time stops) with the Wave 14 frame, the por
   assert.match(markup, /frame_person_card-v1\.png/);
   assert.match(markup, /data-portrait="steward_neutral"/, "the steward's fixed portrait (the P0 steward), not the pool's I037");
   assert.match(markup, /data-emblem-kind="arms"/);
-  assert.match(markup, /초상 청지기 고정 인물/);
+  // UI-7b: how the portrait was chosen is a developer display (off by default).
+  assert.equal(markup.includes("초상 청지기 고정 인물"), false);
   assert.match(markup, /전기 보기/);
   const ui = reduceUi({ ...INITIAL_UI_STATE, mode: "selection" }, { type: "push_modal", modal: "person_card" });
   assert.deepEqual([topModal(ui), timeStopped(ui), reduceUi(ui, { type: "escape" }).mode], ["person_card", true, "selection"]);

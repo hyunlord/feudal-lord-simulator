@@ -151,7 +151,7 @@ test("CHRON-1 decision record: chosen, the other ways, each predicted number aga
   assert.deepEqual([stone.chosen, stone.alternatives, stone.rows[0]!.actual, stone.pending], ["선포", ["미룸"], null, "실제는 1302년 겨울에 적힙니다"]);
 });
 
-test("CHRON-1 biography: the portrait of their age with how it matches, the life in order, the household, the companion and the shared records", () => {
+test("CHRON-1 biography: the portrait of their age with how it matches, the life in order, the household, the emblem slots and the shared records", () => {
   const state = ledgerTown();
   const view = biographyView(state, head.id)!;
   const portrait = persons.portrait(state, head);
@@ -161,13 +161,13 @@ test("CHRON-1 biography: the portrait of their age with how it matches, the life
   assert.equal(view.portraitExact, portrait.exact);
   assert.match(view.portraitLine, portrait.exact ? /성별·나이대·계층 일치$/ : /가장 가까운 그림$/);
   assert.deepEqual(view.events.map(event => event.sentence), ["가구의 집이 불탔다", "45살에 굶주림 끝에 죽었다"]);
-  assert.equal(view.companion?.id, spouse.id);
-  assert.equal(view.companion?.label, "배우자");
+  // UI-7b: the small circle is the mark's slot, not a family member's (a commoner household: neither arms nor mark).
+  assert.deepEqual([view.arms, view.mark], [null, null]);
   assert.ok(view.relations.some(relation => relation.id === spouse.id && relation.line.startsWith("배우자 ")));
   // A child sees the head as a parent, not the house's roles.
   const child = state.persons!.people.find(member => member.householdId === head.householdId && member.role === "child")!;
   const childView = biographyView(state, child.id)!;
-  assert.deepEqual([childView.companion?.id, childView.companion?.label], [head.id, "부모"]);
+  assert.deepEqual([childView.arms, childView.mark], [null, null]);
   assert.deepEqual(childView.relations.filter(relation => relation.id === head.id || relation.id === spouse.id).map(relation => relation.line.split(" ")[0]), ["부모", "부모"]);
   assert.ok(childView.relations.some(relation => relation.line.startsWith("형제자매 ")));
   assert.deepEqual(view.records.map(entry => entry.sentence), ["45살에 굶주림 끝에 죽었다", "가구의 집이 불탔다"]);

@@ -135,7 +135,6 @@ export const CHRONICLE_SCREEN_COPY = {
   noRelations: "함께 사는 식구가 없습니다",
   recordsHeading: "함께 남긴 기록",
   recordsEmpty: "함께 남긴 큰 기록이 없습니다",
-  companion: (me: string, them: string) => relative(me, them),
   crestLabel: "집안 문장",
   // UI-6 faction tab (CHRON-2 first pass): the nine factions, a faction's page and the world beyond.
   factionTitle: (name: string) => `${name} 연대기`,

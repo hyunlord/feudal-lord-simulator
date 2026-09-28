@@ -41,6 +41,11 @@
 /* UX-0b: the goal's title on its own line above the button (the audit read four to six characters of it, "새 길…",
    "식량 기반: 경…", behind a long button); 220 px wide keeps the idle state inside its area budget. */
 .app-shell .goal-chip-rail .goal-card { flex-wrap: wrap; flex-basis: 220px; max-width: 220px; row-gap: 0; padding-top: 3px; }
+/* UI-7b: the card is as wide as its title or its button, whichever is wider (up to 220 px; a grid, as a wrapping flex
+   row sizes to title + button side by side): the idle chapter 1 screen had its empty right part counted as HUD (the
+   idle state stood at 6.0 % / 6 %). */
+.app-shell .goal-chip-rail .goal-card:not(.goal-card--folded) { display: grid; grid-template-columns: minmax(0, max-content); justify-items: start;
+  flex: 0 1 auto; width: max-content; padding-right: 12px; }
 .app-shell .goal-chip-rail .goal-card-heading { flex: 1 0 100%; display: flex; gap: 6px; align-items: baseline; }
 .app-shell .goal-chip-rail .goal-card-heading .goal-card-title { flex: 1 1 auto; min-width: 0; font-size: 13px; }
 .app-shell .goal-chip-rail .goal-card-count { font-size: 12px; }

@@ -9,16 +9,22 @@ import { PERSONS_COPY } from "./personsCopy.ko";
 import { PERSON_STATE_COPY } from "./personStateCopy.ko";
 import { personPortraitStateClass, personStateOrnamentStyle, type PersonStateId } from "./personStates";
 import { Button } from "../kit";
+import { artPatchStyle } from "../artPatch";
+import { usePresentationPreference } from "../../render/PresentationToggle";
 
 // UI-5 people on screen: a portrait (the pool's 96 px JPEG, the 256 px one at 2x; when the person's age band moves to
 // the next picture of their aging chain the new one fades in over the old), a person chip (portrait, name, line — a
 // button that opens the person card) and the person card (Wave 14 `frame_person_card`: the portrait in its recess, the
-// lord's arms or a merchant's mark in its emblem slot, name, role, life, house, how the portrait matches).
+// lord's arms or a merchant's mark in its emblem slot — UI-7b: else the printed shield covered — name, role, life,
+// house, and with the developer display how the portrait matches).
 // INSTALL-23 ④: a portrait wears its person's state ornament (`personStates.ts`) over the frame's bottom-right — the
 // ornament is not clipped by the round face — and a death draws the face greyscale; the state is also in words (the
 // chip's line and button name, the card's line), so the small ornament is never the only sign.
 const FADE_MS = 600;
 const CARD = WAVE14_IMAGES.frame_person_card;
+/** UI-7b: the card's printed shield with its fleurons, and a blank parchment area to cover it with. */
+const CARD_SHIELD = { x: 257, y: 20, width: 48, height: 60 } as const;
+const CARD_BLANK = { x: 200, y: 96 } as const;
 const CARD_SCALE = 1.5;
 
 export function PersonPortrait({ portraitId, size, className = "", ornament = null }: {
@@ -85,25 +91,28 @@ const slot = (left: number, top: number, width: number, height: number) => ({ le
 
 export function PersonCardModal({ view, onClose, onBiography }: { readonly view: PersonCardView; readonly onClose: () => void; readonly onBiography: (personId: string) => void }) {
   const portrait = CARD.slots.portrait; const emblem = CARD.slots.emblem;
+  const developer = usePresentationPreference("developerInfo");
+  const cardUrl = assetUrlForBase(CARD.url, import.meta.env?.BASE_URL ?? "/");
   return (
     <div className="person-card-backdrop" role="presentation">
       <section className="person-card" role="dialog" aria-modal="true" aria-label={PERSONS_COPY.cardTitle(view.name)} data-person={view.id}
         data-portrait={view.portraitId} data-portrait-exact={view.exact ? "true" : "false"}
-        style={{ width: CARD.width * CARD_SCALE, height: CARD.height * CARD_SCALE, backgroundImage: `url("${assetUrlForBase(CARD.url, import.meta.env?.BASE_URL ?? "/")}")` }}>
+        style={{ width: CARD.width * CARD_SCALE, height: CARD.height * CARD_SCALE, backgroundImage: `url("${cardUrl}")` }}>
         <span className="person-card-portrait" style={slot(portrait.x - portrait.radius, portrait.y - portrait.radius, portrait.radius * 2, portrait.radius * 2)}>
           <PersonPortrait portraitId={view.portraitId} size={Math.round(portrait.radius * 2 * CARD_SCALE)} ornament={view.ornament} />
         </span>
-        <span className="person-card-emblem" style={slot(emblem.x - emblem.width / 2, emblem.y - emblem.height / 2, emblem.width, emblem.height)}
-          data-emblem-kind={view.emblem?.kind ?? "none"}>
-          {view.emblem === null ? null : <EmblemImage emblem={view.emblem} size={Math.round(emblem.width * CARD_SCALE)} label={view.emblemLabel} />}
-        </span>
+        {/* UI-7b: no arms or mark — the printed shield is covered with the card's own blank parchment. */}
+        {view.emblem === null ? <span className="person-card-emblem-cover" aria-hidden="true" data-emblem-kind="none"
+          style={artPatchStyle(cardUrl, CARD.width, CARD.height, CARD_SCALE, CARD_SHIELD, CARD_BLANK)} />
+          : <span className="person-card-emblem" style={slot(emblem.x - emblem.width / 2, emblem.y - emblem.height / 2, emblem.width, emblem.height)}
+            data-emblem-kind={view.emblem.kind}><EmblemImage emblem={view.emblem} size={Math.round(emblem.width * CARD_SCALE)} label={view.emblemLabel} /></span>}
         <div className="person-card-text" style={slot(112, 24, 146, 122)}>
           <h2>{view.name}</h2>
           <p>{view.role}</p>
           <p>{view.life}</p>
           <p>{view.household}</p>
           {view.ornament === null ? null : <p className="person-card-state" data-person-state={view.ornament}>{PERSON_STATE_COPY.cardLine(PERSON_STATE_COPY.label(view.ornament))}</p>}
-          <p className="person-card-match" data-exact={view.exact ? "true" : "false"}>{view.match}</p>
+          {developer ? <p className="person-card-match" data-exact={view.exact ? "true" : "false"}>{view.match}</p> : null}
           {view.emblem === null ? null : <p className="person-card-emblem-label">{view.emblemLabel}</p>}
         </div>
         <div className="person-card-actions" style={slot(112, 148, 196, 40)}>
