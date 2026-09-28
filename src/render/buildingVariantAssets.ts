@@ -57,6 +57,11 @@ export function variantSprite(url: string, originalWidth: number, originalHeight
   return raster === null ? { image, source } : { image: raster.image, source: raster.source };
 }
 
+/** Starts loading a variant in its base frame; settles once it loaded or failed (INSTALL-26: the Wave 26 paintings). */
+export function loadVariantImage(url: string, originalWidth: number, originalHeight: number): Promise<void> {
+  return record(url, originalWidth, originalHeight)?.loaded ?? Promise.resolve();
+}
+
 export function buildingVariantAssetStatuses(): readonly { readonly url: string; readonly status: Record["status"] }[] {
   return [...records].map(([url, entry]) => ({ url, status: entry.status }));
 }

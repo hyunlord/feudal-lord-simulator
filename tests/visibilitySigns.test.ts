@@ -5,7 +5,9 @@ import { test } from "node:test";
 
 import { MAX_LOOPS, SOUND_BANK } from "../src/audio/audioEngine";
 import { houseSmokeStrength, millOvenBurning } from "../src/render/roofSmoke";
+import { historicalHouseAssetManifest } from "../src/render/historicalHouseAssetManifest.generated";
 import { ROOF_SMOKE_ANCHORS } from "../src/render/roofSmokeAnchors.generated";
+import { WAVE26_HOUSE_VARIANTS } from "../src/render/wave26HouseManifest.generated";
 import { emphasisedSigns, MAX_EMPHASIS, worldSigns, type WorldSign } from "../src/render/worldSigns";
 import { SIGNAL_PERSIST_TICKS } from "../src/render/signalPersistence";
 import { isMarketDay } from "../src/render/presentation/residentTrips";
@@ -59,8 +61,17 @@ test("F0-V smoke: the mill oven burns only while the mill runs (workers, wheat o
 
 test("F0-V smoke anchors: every house art the game draws has a ridge point inside its bounds", () => {
   const anchors = Object.entries(ROOF_SMOKE_ANCHORS);
-  assert.equal(anchors.length, 29, "5 houses, 6 pairs and their 18 Wave 2 variants");
-  assert.ok(anchors.every(([, anchor]) => anchor.fx > 0 && anchor.fx < 1 && anchor.fy >= 0 && anchor.fy < 0.5));
+  assert.equal(anchors.length, 49, "5 houses, 6 pairs, their 18 Wave 2 variants and the 20 Wave 26 paintings (INSTALL-26)");
+  // INSTALL-26: a Wave 26 anchor is a fraction of the approved bounds; its ridge is inside the painting's own crop, which
+  // may reach above them (fy below 0; the 4-decimal rounding leaves up to a thousandth of the crop).
+  const crops = new Map(WAVE26_HOUSE_VARIANTS.map(variant => [`assets/wave26/house/${variant.key}.png`, variant]));
+  for (const [url, anchor] of anchors) {
+    const variant = crops.get(url);
+    const bounds = variant === undefined ? null : historicalHouseAssetManifest.find(meta => meta.level === variant.level)!.alphaBounds;
+    const x = variant === undefined || bounds === null ? anchor.fx : (bounds.x + anchor.fx * bounds.width - variant.crop.x) / variant.crop.width;
+    const y = variant === undefined || bounds === null ? anchor.fy : (bounds.y + anchor.fy * bounds.height - variant.crop.y) / variant.crop.height;
+    assert.ok(x > 0 && x < 1 && y > -0.001 && y < 0.5, url);
+  }
 });
 
 test("F0-V world signs: road cut, cold house and empty plot appear only under their condition; at most three in view are emphasised, road cut first", () => {
