@@ -9380,5 +9380,17 @@
     }
    ]
   }
+ ],
+ "guardrail": [
+  {
+   "run": "engine-C4-r1-4c18479",
+   "commit": "4c18479",
+   "result": "failed: seeds 2, 3 and 5 held at L4 16/17/21 for 300,000+ ticks with the advisor idle (deadlock); stopped at 576,000-756,000 ticks; seeds 1 and 4 passed"
+  },
+  {
+   "run": "engine-C4-r2-bf6b097",
+   "commit": "bf6b097",
+   "result": "5/5 target-scale-stable, L4 24/24; victory 114142/158200/130090/110592/134843; new baseline seeds/baseline-bf6b097.json"
+  }
  ]
 }
