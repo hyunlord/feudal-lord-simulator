@@ -127,7 +127,7 @@ for (const [name, scene] of Object.entries(SCENES)) {
       const page = opened.page as Page;
       // The art loads lazily on first draw (Wave 3 through manifestArt; the ground chunks re-raster once it is in).
       await page.waitForTimeout(3_500);
-      const size = scene.only !== undefined ? { width: 240, height: 160 } : scene.wide === true && zoom < 2 ? { width: CROP.width * 1.4, height: CROP.height * 1.2 } : CROP;
+      const size = scene.only !== undefined ? { width: 400, height: 260 } : scene.wide === true && zoom < 2 ? { width: CROP.width * 1.4, height: CROP.height * 1.2 } : CROP;
       // Around the subject's point on the screen (the camera stops at the map's edge, so it is not always the view's middle).
       const at = await page.evaluate(tile => {
         const proof = (window as unknown as { __FEUDAL_PHASE10_PROOF__?: { tileClientPoint: (point: { tx: number; ty: number }) => { clientX: number; clientY: number } } }).__FEUDAL_PHASE10_PROOF__;

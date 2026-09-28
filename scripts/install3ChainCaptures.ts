@@ -10,11 +10,13 @@
 //   07 a house brewing: ale barrels at its door (world) → the ledger drawer's barley and malt (UI);
 //   08 the alehouse with its ale stake (world) → a house served by ale (UI: 에일을 마십니다);
 //   09 ale sold at the alehouse (world, the first sale's tick) → the season card's ale line (UI: 지금 영지에 보리·엿기름·에일).
+// Gate ② (zoom 0.6: barley strips told from wheat) is scripts/install3WorldCaptures.ts's field-* shots (one strip's field each).
 // World shots are 640 x 400 crops at zoom 1.4 around the subject; UI shots are the element. JPEG, and captures.json.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install3ChainCaptures.ts <out-dir> --url <game> --states <install3States dir>
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
+import { arableLayouts } from "../src/zones/arableFields";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Locator = { first: () => Locator; count: () => Promise<number>; waitFor: (options?: object) => Promise<void>; click: (options?: object) => Promise<void>;
@@ -61,11 +63,20 @@ async function step(name: string, run: () => Promise<Record<string, unknown> | v
 }
 const barnId = moments["m0-before"]!.barn as string;
 /** The middle of the fields whose strips carry barley (zone membership cells: index = ty × width + tx). */
-function barleyFields(state: GameState): [number, number] {
-  const zoneIds = new Set((state.arableFields ?? []).filter(field => field.strips.some(strip => strip.crop === "barley")).map(field => field.zoneId));
-  const cells = (state.zones ?? []).filter(zone => zoneIds.has(zone.id)).flatMap(zone => zone.membership);
-  if (cells.length === 0) return tileOf(state, barnId);
-  return [cells.reduce((sum, cell) => sum + cell % state.width, 0) / cells.length + 0.5, cells.reduce((sum, cell) => sum + Math.floor(cell / state.width), 0) / cells.length + 0.5];
+function barleyFields(state: GameState, crop: "barley" | "wheat" = "barley"): [number, number] {
+  // The cells of the strips sown with `crop` (not fallow) in the field with the most of them (the layout gives each strip's cells).
+  const sown = new Map((state.arableFields ?? []).flatMap(field => field.strips).filter(strip => strip.crop === crop && strip.stage !== "fallow" && strip.stage !== "ploughed")
+    .map(strip => [strip.id, strip] as const));
+  const byZone = new Map<string, { tx: number; ty: number }[]>();
+  for (const layout of arableLayouts(state)) for (const strip of layout.strips) if (sown.has(strip.id)) {
+    const cells = byZone.get(strip.zoneId) ?? []; cells.push(...strip.cells); byZone.set(strip.zoneId, cells);
+  }
+  const cells = [...byZone.values()].sort((a, b) => b.length - a.length)[0];
+  if (cells === undefined || cells.length === 0) return tileOf(state, barnId);
+  // The field's front (largest tx + ty, drawn last): the strips there are not behind the houses at zoom 0.6's blocks.
+  const front = Math.max(...cells.map(cell => cell.tx + cell.ty));
+  const near = cells.filter(cell => cell.tx + cell.ty >= front - 3);
+  return [near.reduce((sum, cell) => sum + cell.tx, 0) / near.length + 0.5, near.reduce((sum, cell) => sum + cell.ty, 0) / near.length + 0.5];
 }
 
 await step("01-barn-to-barley", async () => {
@@ -164,7 +175,6 @@ await step("09-sold", async () => {
   await second.close();
   return { tick: state.tick, alehouse: house };
 });
-
 await browser.close();
 const bytes = files.reduce((total, file) => total + statSync(join(out!, file)).size, 0);
 writeFileSync(join(out!, "captures.json"), JSON.stringify({ order: "world → UI per step", steps: result, files, jpegBytes: bytes, errors }, null, 1) + "\n");
