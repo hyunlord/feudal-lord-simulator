@@ -36,7 +36,7 @@ import { reliefCostForecast, reliefCostPosted } from "./famineRelief";
 import { speculationSaleForecast, speculationSalePosted } from "./famineSale";
 import { housingLotCount } from "../population/housing";
 import type { SourceRef } from "../contracts";
-import type { Person } from "./persons.types";
+import type { Person, PersonConditionKind } from "./persons.types";
 import { lordshipOf } from "./lordshipState";
 import { beaconLit, raidEventId, warDecisionForecast } from "./war";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
@@ -265,7 +265,10 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
   for (const person of after.persons.people) {
     const old = was.get(person.id);
     if (old === undefined) {
-      if (person.role === "child" && person.birthYear === year) personRecord(person, "person.born", 0);
+      // PERSON-1a (LN-4): the birth names the parents and where the child's name came from.
+      if (person.role === "child" && person.birthYear === year) personRecord(person, "person.born", 0, {
+        ...(person.motherId === undefined ? {} : { motherId: person.motherId }), ...(person.fatherId === undefined ? {} : { fatherId: person.fatherId }),
+        nameFrom: person.nameFrom ?? "common", ...(person.godparentId === undefined ? {} : { godparentId: person.godparentId }) });
       else if (person.role === "spouse") personRecord(person, "person.married", 0);
       else if (person.role === "kin") personRecord(person, "person.arrived", 0);
       else if (person.role === "steward") personRecord(person, "person.steward", 1);
@@ -274,6 +277,13 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
     if (year - person.birthYear >= 14 && beforeYear - old.birthYear < 14) personRecord(person, "person.came_of_age", 0);
     if (old.occupation !== person.occupation && old.occupation !== "child" && person.occupation !== "labourer") personRecord(person, "person.occupation", 0, { occupation: person.occupation });
     if (!old.tags.includes("reeve") && person.tags.includes("reeve")) personRecord(person, "person.reeve", 1);
+    // PERSON-1a (LN-10): the passing states and the bailiff's office.
+    if (!old.tags.includes("bailiff") && person.tags.includes("bailiff")) personRecord(person, "person.bailiff", 1);
+    if (person.condition !== undefined && old.condition?.kind !== person.condition.kind) {
+      personRecord(person, CONDITION_BEGINS[person.condition.kind], person.condition.kind === "pilgrim" ? 1 : 0);
+    } else if (person.condition === undefined && old.condition !== undefined && old.condition.kind !== "pregnant") {
+      personRecord(person, CONDITION_ENDS[old.condition.kind], 0);
+    }
   }
   const gone = after.persons.past.slice(before.persons.past.length);
   for (const person of gone) {
@@ -283,6 +293,10 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
   }
   return drafts;
 }
+
+/** LN-10: the ledger's line when a passing state begins, and when it ends (a pregnancy ends with the birth's own line). */
+const CONDITION_BEGINS: Readonly<Record<PersonConditionKind, string>> = { sick: "person.fell_ill", injury: "person.injured", pregnant: "person.expecting", pilgrim: "person.pilgrimage" };
+const CONDITION_ENDS: Readonly<Record<Exclude<PersonConditionKind, "pregnant">, string>> = { sick: "person.recovered", injury: "person.healed", pilgrim: "person.returned" };
 
 /** HL-2 ②: event lines written this tick (the season tally's new `event_*` lines). */
 function eventDrafts(before: GameState, after: GameState): Draft[] {

@@ -54,6 +54,13 @@ export const FACTION_PORTRAIT_POOLS: Readonly<Record<FactionId, readonly string[
   overlord: ["earl_house"], crown: ["crown"], neighbour_1: ["neighbor_a"], neighbour_2: ["neighbor_b"], bishop: ["diocese"],
   merchant_house_1: ["merchant_a"], merchant_house_2: ["merchant_b"], town: ["town", "town_council", "guild"], commons: ["rural_community", "community"],
 };
+/**
+ * PERSON-1a (spec docs/design/lineage.md LN-5, LN-7): the noble factions whose leaders are a family — the heir is the
+ * leader's son — and the lineage portrait set their heirs are drawn from (the set's first generation is pool 3's).
+ */
+export const FACTION_LINEAGE_SETS: Readonly<Partial<Record<FactionId, string>>> = { overlord: "L6", neighbour_1: "L7" };
+export const FAMILY_FACTIONS: ReadonlySet<FactionId> = new Set(["overlord", "neighbour_1", "neighbour_2"]);
+
 /** CODE-1a: the pool-3 ranks a leader prefers (the earl before his heir, the bishop before his deputy). */
 export const FACTION_HEAD_RANKS: readonly string[] = ["earl", "sheriff", "escheator", "herald", "knight_lord", "bishop", "house_head", "mayor_candidate",
   "clerk", "guild_representative", "rural_representative", "community_representative"];

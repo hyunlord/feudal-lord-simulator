@@ -69,6 +69,13 @@ export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string
   refugee_admission: { accept: "모두 받아들인다", accept_with_price: "절반만 받는다", refuse: "돌려보낸다", expired: "답하지 않음" },
   wall_or_market: { accept: "석벽을 쌓는다", accept_with_price: "성벽세로 석벽을 쌓는다", refuse: "시장을 넓힌다", expired: "답하지 않음" },
 };
+/** PERSON-1a (LN-4): a birth's line by where the child's name came from. */
+const NAME_FROM: Readonly<Record<string, string>> = {
+  father: "아이가 태어나 아버지 이름을 받았다", grandfather: "아이가 태어나 할아버지 이름을 받았다",
+  mother: "아이가 태어나 어머니 이름을 받았다", grandmother: "아이가 태어나 할머니 이름을 받았다",
+  godparent: "아이가 태어나 대부모의 이름을 받았다", common: "아이가 태어났다",
+};
+
 const DEATH_CAUSES: Readonly<Record<string, string>> = {
   age: "세상을 떠났다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
 };
@@ -131,7 +138,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "person.fed": () => "가구가 다시 배불리 먹게 되었다",
   "person.water": () => "가구에 우물 물이 닿았다",
   "person.water_lost": () => "가구가 우물 물을 잃었다",
-  "person.born": () => "아이가 태어났다",
+  "person.born": params => NAME_FROM[s(params, "nameFrom")] ?? "아이가 태어났다",
   "person.married": () => "혼인해 가구를 이루었다",
   "person.arrived": () => "친척이 와서 함께 살게 되었다",
   "person.came_of_age": () => "어른이 되어 일을 거들기 시작했다",
@@ -140,6 +147,15 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "person.steward": () => "영주의 청지기가 되었다",
   "person.died": params => `${n(params, "age")}살에 ${DEATH_CAUSES[s(params, "cause")] ?? "세상을 떠났다"}`,
   "person.left_town": () => "마을을 떠났다",
+  // PERSON-1a (LN-10): the passing states and the bailiff.
+  "person.bailiff": () => "영주의 집행관(bailiff)이 되었다",
+  "person.fell_ill": () => "병이 들었다",
+  "person.recovered": () => "병에서 나았다",
+  "person.injured": () => "일하다 다쳤다",
+  "person.healed": () => "상처가 아물었다",
+  "person.expecting": () => "아이를 가졌다",
+  "person.pilgrimage": () => "순례를 떠났다",
+  "person.returned": () => "순례에서 돌아왔다",
   "person.grew": params => `식구가 늘어 ${n(params, "residents")}명이 되었다`,
   "person.shrank": params => `식구가 줄어 ${n(params, "residents")}명이 되었다`,
 };
