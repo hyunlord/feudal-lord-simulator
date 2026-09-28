@@ -313,7 +313,7 @@ const PLAGUE_RECORD_ART: Readonly<Record<string, Wave21ImageId>> = {
   "plague.priest_died": "ch3_chronicle_first_death", "plague.new_graves": "ch3_chronicle_churchyard",
   "plague.empty_streets": "ch3_chronicle_abandoned_fields", "plague.abandoned_fields": "ch3_chronicle_abandoned_fields",
   "plague.ordinance": "ch3_chronicle_ordinance", "plague.resettlement": "ch3_chronicle_resettlement",
-  "plague.second": "ch3_chronicle_spring_recovery", "plague.second_ended": "ch3_chronicle_spring_recovery",
+  "plague.second": "ch3_chronicle_churchyard", "plague.second_ended": "ch3_chronicle_spring_recovery",
 };
 
 /** F2-A (WR-2…WR-8): a royal demand or the war's choice by its petition — its chronicle scene, else its Wave 17 decision card. */

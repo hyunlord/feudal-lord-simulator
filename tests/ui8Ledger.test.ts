@@ -32,7 +32,7 @@ const minimalPlague: PlagueState = { eraTick: PLAGUE_ERA_TICK, answers: {}, vaca
 // A state with plague present and a wages + statute_fine entry in the recent ledger window.
 // postLedgerEntries returns only {ledger, treasuryCoin}, so spread into the full state manually.
 const ledgerResult = postLedgerEntries(
-  { ...stateWithDead, plague: minimalPlague },
+  stateWithDead,
   [{ account: "cash", category: "wages", amount: 150, sourceRefs: [{ type: "actor", id: "labourers" }] },
    { account: "cash", category: "statute_fine", amount: 50, sourceRefs: [{ type: "actor", id: "labourers" }] }],
 );
@@ -112,12 +112,12 @@ test("chronicleIllustration maps plague.empty_streets and plague.abandoned_field
 test("chronicleIllustration maps plague.ordinance, .resettlement and second records to Wave21 art", () => {
   assert.equal(chronicleIllustration({ template: "plague.ordinance", params: {} }), "ch3_chronicle_ordinance");
   assert.equal(chronicleIllustration({ template: "plague.resettlement", params: {} }), "ch3_chronicle_resettlement");
-  assert.equal(chronicleIllustration({ template: "plague.second", params: {} }), "ch3_chronicle_spring_recovery");
+  assert.equal(chronicleIllustration({ template: "plague.second", params: {} }), "ch3_chronicle_churchyard");
   assert.equal(chronicleIllustration({ template: "plague.second_ended", params: {} }), "ch3_chronicle_spring_recovery");
 });
 
 test("recordArt maps plague.arrived to wave21 kind for the chronicle screen", () => {
-  const art = recordArt(stateWithPlague, { id: "r1", tick: base.tick, template: "plague.arrived", params: {} });
+  const art = recordArt(stateWithPlague, { id: "r1", tick: base.tick, template: "plague.arrived", params: {} } as never);
   assert.ok(art !== null, "recordArt must return art for plague.arrived");
   assert.equal(art!.kind, "wave21");
   assert.equal(art!.id, "ch3_chronicle_first_death");
