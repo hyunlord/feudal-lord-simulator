@@ -15,6 +15,8 @@ export const FAMILY_TREE_COPY = {
   deceased: "고인",
   // UI-8 (F3-A PL-2): plague-dead persons show the cause in the node's aria-label and as a visible line.
   plagueDeath: (year: number) => `역병으로 죽음 (${year})`,
+  // On the frame itself, a tag in its corner (the death year is in the years line; the full line is the node's label).
+  plagueShort: "역병",
   node: (name: string, years: string, outside: boolean, dead: boolean, deathCause?: string) =>
     [name, years, ...(outside ? ["혼인으로 든 사람"] : []), ...(dead ? [deathCause ?? "고인"] : [])].join(", "),
   collapse: (name: string, count: number) => `${name}의 자손 ${count}명 접기`,

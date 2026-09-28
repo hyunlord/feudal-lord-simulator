@@ -109,7 +109,8 @@ for (const [file, name, at] of [["w1-first-deaths-church", "first-deaths", "chur
     const vacant = state.buildings.find(building => plagueVacantPlots(state).includes(building.id));
     const target = at === "vacant" && vacant !== undefined ? vacant : church(state);
     const { page, close } = await scene(name, 600_000, { tile: [target.tx + 1, target.ty + 1], zoom: 1.4 });
-    await page.mouse.move(640, 790); await page.waitForTimeout(2_500);
+    // No hover: a pointer at the screen's edge pans the camera (edge scroll).
+    await page.waitForTimeout(2_500);
     await page.screenshot({ path: join(out!, `${file}.jpg`), type: "jpeg", quality: 68 });
     result[file] = worldFacts(state);
     await close();

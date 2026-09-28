@@ -442,4 +442,8 @@
 .ledger-town-ale { margin-top: 8px; font-size: 13px; }
 .ledger-town-ale h3 { display: flex; gap: 6px; align-items: center; margin: 0 0 2px; font-size: 14px; }
 .ledger-town-ale p { margin: 0; }
+/* UI-8: the wage ledger (chapter 3), the town ale's heading over a table like the stock one. */
+.ledger-wage-ledger { margin-top: 10px; }
+.ledger-wage-ledger h3 { margin: 0 0 4px; font-size: 14px; }
+.app-shell .ledger-wage-ledger th:first-child { text-align: left; }
 .store-ale-note, .inspector-crop-locked { display: flex; gap: 6px; align-items: center; margin: 4px 0 0; font-size: 12px; color: var(--palette-ink-muted); }

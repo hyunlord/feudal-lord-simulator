@@ -252,9 +252,10 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
       {/* UI-8 (F3-A): wage ledger — plague labour costs by category, shown only once chapter 3's plague arrives. */}
       {tab === "stock" && wageLedger !== null ? <section className="ledger-wage-ledger" aria-label={WAGE_LEDGER_COPY.heading}>
         <h3>{WAGE_LEDGER_COPY.heading}</h3>
-        <p className="ledger-wage-ledger-columns"><span>{WAGE_LEDGER_COPY.thisSeason}</span><span>{WAGE_LEDGER_COPY.lastSeason}</span><span>{WAGE_LEDGER_COPY.chapterTotal}</span></p>
-        {wageLedger.rows.length === 0 ? <p>{WAGE_LEDGER_COPY.noActivity}</p>
-          : wageLedger.rows.map(row => <p key={row.category}>{row.summary}</p>)}
+        <div className="ledger-matrix-scroll"><table className="ledger-matrix">
+          <thead><tr><th scope="col">{WAGE_LEDGER_COPY.category}</th><th scope="col">{WAGE_LEDGER_COPY.thisSeason}</th><th scope="col">{WAGE_LEDGER_COPY.lastSeason}</th><th scope="col">{WAGE_LEDGER_COPY.chapterTotal}</th></tr></thead>
+          <tbody>{wageLedger.rows.map(row => <tr key={row.category}><th scope="row">{row.label}</th>{row.shown.map((amount, index) => <td key={index}>{amount}</td>)}</tr>)}</tbody>
+        </table></div>
       </section> : null}
       {/* UI-6: the rights register (the house, its arms, the title, the lord's rights and the ones he granted, the war). */}
       {tab === "rights" ? <RightsRegister view={lordshipView(state)} onPerson={onPerson} /> : null}

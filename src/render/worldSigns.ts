@@ -34,7 +34,7 @@ export { drawCountryFields } from "./countrysideDraw"; // INSTALL-28 wildflower 
 // At most MAX_EMPHASIS signs in view are emphasised (a steady ring), in PRIORITY order, nearest the view's centre
 // first. Everything is read from the state; nothing is stored.
 // UI-8 chapter 3: curacy_vacant — the church or chapel whose priest died (PL-6, curacyVacant).
-// Replaces the generic idle_latch sign for the church so it has a dedicated reason: bar_latch under the chapel icon
+// Replaces the generic idle_latch sign for the church so it has a dedicated reason: bar_latch beside the chapel icon
 // (existing art, no new files); the inspector gives the reason in words (problemCauseModel.ts).
 export type WorldSignKind = "road_cut" | "cold_house" | "leaving_family" | "abandoned_house" | "idle_latch" | "empty_stall" | "empty_plot" | "curacy_vacant";
 export type WorldSign = Readonly<{ kind: WorldSignKind; tx: number; ty: number; toward: { readonly tx: number; readonly ty: number } | null }>;
@@ -147,9 +147,9 @@ export function drawWorldSigns(context: CanvasRenderingContext2D, state: GameSta
       drawUiIcon(context, "cause", "food", at.sx, at.sy - 44, 20); // UI-3: why they leave (FP-3 food shortage)
     } else if (sign.kind === "idle_latch" || sign.kind === "curacy_vacant") {
       drawWave7(context, "bar_latch", at.sx + 14, at.sy + 12, SIGN_PROP_SCALE);
-      // UI-8: the church shut for want of a priest — the chapel icon over the latch (why it stands idle, like the
-      // leaving family's cause icon); the inspector gives the reason in words.
-      if (sign.kind === "curacy_vacant") drawUiIcon(context, "building", "chapel", at.sx, at.sy - 44, 20);
+      // UI-8: the church shut for want of a priest — the chapel icon beside the latch, inside its ring (why it stands
+      // idle; higher up the church's own roof hides it); the inspector gives the reason in words.
+      if (sign.kind === "curacy_vacant") drawUiIcon(context, "building", "chapel", at.sx - 16, at.sy + 4, 24);
     } else if (sign.kind === "empty_stall") {
       drawWave7(context, "empty_stall", at.sx + 40, at.sy + 26, SIGN_STALL_SCALE);
     }

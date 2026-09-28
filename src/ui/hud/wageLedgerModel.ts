@@ -13,7 +13,8 @@ export interface WageLedgerRow {
   readonly thisSeason: number;
   readonly lastSeason: number;
   readonly chapterTotal: number;
-  readonly summary: string;
+  /** The three amounts as shown (this period, last period, chapter 3). */
+  readonly shown: readonly [string, string, string];
 }
 
 export interface WageLedgerView {
@@ -40,7 +41,7 @@ export function wageLedgerView(state: GameState): WageLedgerView | null {
     const chapterTotal = amountFor(all.byCategory, category);
     const label = LEDGER_CATEGORY_LABELS[category];
     return { category, label, thisSeason, lastSeason, chapterTotal,
-      summary: WAGE_LEDGER_COPY.row(label, thisSeason, lastSeason, chapterTotal) };
+      shown: [WAGE_LEDGER_COPY.amount(thisSeason), WAGE_LEDGER_COPY.amount(lastSeason), WAGE_LEDGER_COPY.amount(chapterTotal)] as const };
   });
   return { heading: WAGE_LEDGER_COPY.heading, rows };
 }
