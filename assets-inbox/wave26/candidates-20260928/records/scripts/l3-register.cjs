@@ -1,0 +1,9 @@
+const sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const fs=require('fs');const path=require('path');
+const root=path.resolve('output/astra-wave26-v1');
+async function raw(p){return sharp(p).ensureAlpha().raw().toBuffer({resolveWithObject:true})}
+function bounds(o){let a=[o.info.width,o.info.height,0,0]; for(let y=0;y<o.info.height;y++)for(let x=0;x<o.info.width;x++)if(o.data[(y*o.info.width+x)*4+3]>16){a=[Math.min(a[0],x),Math.min(a[1],y),Math.max(a[2],x),Math.max(a[3],y)]}return a}
+(async()=>{const [,,v,native]=process.argv;const ref=await raw(root+'/references/house_l3-v2.png');const nb=bounds(await raw(native)),rb=bounds(ref);const buf=await sharp(native).extract({left:nb[0],top:nb[1],width:nb[2]-nb[0]+1,height:nb[3]-nb[1]+1}).resize(rb[2]-rb[0]+1,rb[3]-rb[1]+1,{fit:'fill'}).ensureAlpha().raw().toBuffer();const out=Buffer.alloc(ref.data.length);const w=ref.info.width,h=ref.info.height;for(let y=rb[1];y<=rb[3];y++)for(let x=rb[0];x<=rb[2];x++){let i=(y*w+x)*4,j=((y-rb[1])*(rb[2]-rb[0]+1)+x-rb[0])*4;buf.copy(out,i,j,j+4)}
+// Preserve the approved lower contact region, including its transparent perimeter.
+for(let x=0;x<w;x++){let bottom=-1;for(let y=0;y<h;y++)if(ref.data[(y*w+x)*4+3]>=16)bottom=y;if(bottom>=h*.6)for(let y=bottom-2;y<h;y++){let i=(y*w+x)*4;ref.data.copy(out,i,i,i+4)}}
+await sharp(out,{raw:{width:w,height:h,channels:4}}).png().toFile(root+'/assets/house_l3_'+v+'-v1.png');fs.writeFileSync(root+'/native/l3/'+v+'-registration.json',JSON.stringify({nativeBounds:nb,referenceBounds:rb,canvas:[w,h],preservedFootBand:'per-column original alpha>=16 lowest pixel minus 2 through canvas bottom, when lowest y>=0.6H',contactPixelError:0,transform:'alpha bbox nonuniform resize into original bbox, followed by exact original 8-row footband preservation'},null,2));})();

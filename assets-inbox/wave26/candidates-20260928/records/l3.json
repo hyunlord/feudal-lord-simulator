@@ -1,0 +1,584 @@
+{
+  "family": "l3",
+  "status": "candidate-only",
+  "method": "builtin image_gen separate call per requested base/state; no CLI",
+  "model": "not exposed",
+  "seed": "not exposed",
+  "pivot": {
+    "metadata": "not supplied; inherited unchanged normalized canvas registration",
+    "canvas": [
+      142,
+      142
+    ],
+    "notEnginePivot": true,
+    "measuredContactAnchor": [
+      88,
+      137
+    ]
+  },
+  "variants": [
+    {
+      "v": "c",
+      "material": "thatch",
+      "shape": "half-hip",
+      "wall": "warm ochre plaster",
+      "addition": "curved timber braces and broad shuttered merchant shopfront",
+      "prompt": "Use case: precise-object-edit. Create ONE isolated transparent RGBA isometric medieval L3 merchant house sprite, same painted miniature game art as input. Reference is original approved L3 house. Preserve camera, large two-storey commercial volume, location, ground contact footprint, lower stone plinth and door base EXACTLY. Change roof to thatch, shape half-hip; walls warm ochre plaster; curved timber braces and broad shuttered merchant shopfront. South England 1300. Distinctive thatch straw roof, not tile. No chimneys, chimney pots, modern glass, people, scenery, text, border or ground patch. True transparent background. Keep the same normalized silhouette bounds and stone footpoint as reference. One house only.",
+      "sourceReference": "references/house_l3-v2.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-380c527f-08b0-4eae-9e80-c92e14754cc5.png",
+      "nativeCopy": "native/l3/c-base.png",
+      "final": "assets/house_l3_c-v1.png",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "d5e31b6c1eebed032c015f50e3004241b5196b19b14729a0022c357ac33b8b74",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "b9e829f166ef6591a3d11be46ea688f1274289074d3b64b4d0db91391e5fd1ae"
+    },
+    {
+      "v": "d",
+      "material": "thatch",
+      "shape": "steep side-facing gable",
+      "wall": "pale dusty rose limewash",
+      "addition": "square timber framing and narrow twin shop shutters",
+      "prompt": "Use case: precise-object-edit. ONE transparent RGBA isometric L3 medieval merchant house sprite in exactly the reference painted miniature style. Preserve isometric camera, large two-storey commercial volume, lower plinth footprint and footpoint. Roof thatch, steep side-facing gable; walls pale dusty rose limewash; square timber framing and narrow twin shop shutters. Distinctive thatch straw roof with turned gable orientation, no tiles. South England 1300, no chimney, modern glass, people, scenery, text or ground patch. Same normalized bounds as reference.",
+      "sourceReference": "references/house_l3-v2.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-7fe439ea-37de-467f-b963-d0369a76f255.png",
+      "nativeCopy": "native/l3/d-base.png",
+      "final": "assets/house_l3_d-v1.png",
+      "observedShape": "front gable; requested turned gable direction not achieved",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "3a4457d4b198797601e3e827d2aab54803d9216de66b534585d84032ac0725e4",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "a795956079c65eaea8fcd2749af75bea926971981082c09ff5425ffa0c4397f3"
+    },
+    {
+      "v": "e",
+      "material": "muted brown plain clay tile",
+      "shape": "full hip",
+      "wall": "warm white limewash",
+      "addition": "close vertical timber framing and broad open dark shop bay",
+      "prompt": "Use case: precise-object-edit. ONE transparent RGBA isometric L3 medieval merchant house sprite in exactly reference painted miniature style. Preserve camera, large two-storey commercial volume, lower plinth footprint and footpoint. Change roof to muted brown plain clay tile, full hip, visibly hip roof WITHOUT triangular gable; walls warm white limewash; close vertical timber framing and broad open dark shop bay. South England 1300, no chimney, modern glass, people, scenery, text or ground patch. Same normalized bounds as reference.",
+      "sourceReference": "references/house_l3-v2.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-b1847e8d-216b-4f52-a507-35c28dc3bb17.png",
+      "nativeCopy": "native/l3/e-base.png",
+      "final": "assets/house_l3_e-v1.png",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "1ebb9e073b6c29dd63a43005888b2f97af7bdd177bac219a43672589ecb6311d",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "7af9fe376caf780735552d5ca3cf42f0068b8a0b6461506dc4b1b6bbe8a219b9"
+    },
+    {
+      "v": "f",
+      "material": "muted grey-red plain clay tile",
+      "shape": "half-hip",
+      "wall": "cream ochre limewash",
+      "addition": "diagonal timber braces and divided merchant counter",
+      "prompt": "Use case: precise-object-edit. ONE transparent RGBA isometric L3 medieval merchant house sprite in exactly reference painted miniature style. Preserve camera, large two-storey commercial volume, lower plinth footprint and footpoint. Change roof to muted grey-red plain clay tile, half-hip, with distinctly clipped front gable top; walls cream ochre limewash; diagonal timber braces and divided merchant counter. South England 1300, no chimney, modern glass, people, scenery, text or ground patch. Same normalized bounds as reference.",
+      "sourceReference": "references/house_l3-v2.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-2e7b08ea-bd40-4f7b-ae26-2025a24215aa.png",
+      "nativeCopy": "native/l3/f-base.png",
+      "final": "assets/house_l3_f-v1.png",
+      "observedShape": "gable; requested half-hip not fully achieved",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "94ee9875e771ad1f6d36cb0d89e9f8462218afc0931106ded85d847a2d8b4b58",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "e8fe09dc8c44c6ac5e6c3139937966a1607e2e3f5766424926145d0c034fafdd"
+    }
+  ],
+  "states": [
+    {
+      "v": "f",
+      "state": "weathered",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 f game sprite. Add weathering effects only: patchy moss on roofing, faded mottled limewash and several visible plaster cracks. Moderate clear weathering, no geometry change. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-ab9fd402-edd1-48f8-a1a3-4014f94f366e.png",
+      "recovery": "Native output recovered after record-store error; verified visually against f.",
+      "reference": "assets/house_l3_f-v1.png",
+      "nativeCopy": "native/l3/f-weathered.png",
+      "final": "assets/house_l3_f_weathered-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "5493f55efcd6f4b7c57d07edba991b48ad04599abeb5491ccad22b2a310f37ff",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "69e9dc7af2cfb6cf9f5a45c55e342dd74395ff7d394c804caaf0dc80236c9c35"
+    },
+    {
+      "v": "c",
+      "state": "weathered",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 c game sprite. Add weathering effects only: patchy moss on roofing, faded mottled limewash and several visible plaster cracks. Moderate clear weathering, no geometry change. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-1ab6dd05-263f-4488-afed-84f358eccd63.png",
+      "reference": "assets/house_l3_c-v1.png",
+      "nativeCopy": "native/l3/c-weathered.png",
+      "final": "assets/house_l3_c_weathered-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "798b07b772181cd73b3a40f622c4f66d46daf0a3431964bee78b205daf69f185",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "1a9f34564a49bf8fafef6c94b1464627820e16b73e4d1837ab1393df4fb3b1cc"
+    },
+    {
+      "v": "c",
+      "state": "fresh",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 c game sprite. Add freshly built appearance only: brighter clean roofing strands or tiles, fresh warm timber surfaces and clean bright limewash. Preserve exact geometry. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-303c7717-dbd0-4082-a561-de13f4732b74.png",
+      "reference": "assets/house_l3_c-v1.png",
+      "nativeCopy": "native/l3/c-fresh.png",
+      "final": "assets/house_l3_c_fresh-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "284f01496eb4bd119acea54e0ec51376f034f5b5055ecb417b994c8f773666a8",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "73aafdea49c0a79a6220614ec1cbb6bcd5e19107f58c3bc6b97561bdf721cb01"
+    },
+    {
+      "v": "c",
+      "state": "snow",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 c game sprite. Add thick white patchy snow on 70 percent of visible roof surfaces, leaving irregular roofing gaps and warm exposed eaves. No ground snow. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-608349b4-ef4f-4faf-822c-cdee8b02a23f.png",
+      "reference": "assets/house_l3_c-v1.png",
+      "nativeCopy": "native/l3/c-snow.png",
+      "final": "assets/house_l3_c_snow-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "796553d09d0a69a01c01051117025fb943882763bca103e425a69483fcb606bc",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "e313f13e717a9eb95cd10042db4d51dc655ed063ab276610176d8830e7277f93"
+    },
+    {
+      "v": "c",
+      "state": "boarded",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 c game sprite. Add thick rough brown crossed timber planks nailed across each ground-floor shopfront and doorway. Strong visible X closures, no new openings. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-081246b5-8851-4447-a4ac-cab6f3b09ab6.png",
+      "reference": "assets/house_l3_c-v1.png",
+      "nativeCopy": "native/l3/c-boarded.png",
+      "final": "assets/house_l3_c_boarded-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "ae69f201188a6a0d546ec8f692ab58083d819ff89a16227795b80b4377a4d28f",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "5668eced48fd6be3b0e1827f263a3777f8fc57f1a0673ef2ac04d53be89b4fe1"
+    },
+    {
+      "v": "d",
+      "state": "snow",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 d game sprite. Add thick white patchy snow on 70 percent of visible roof surfaces, leaving irregular roofing gaps and warm exposed eaves. No ground snow. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-dc78d667-3176-4a02-8369-48f583f367ca.png",
+      "reference": "assets/house_l3_d-v1.png",
+      "nativeCopy": "native/l3/d-snow.png",
+      "final": "assets/house_l3_d_snow-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "12c5a5cd95fcf985a4edb14ab72abcd39453dd441b5fed0fc35ca24b0af98c07",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "6ed00f2fbb6045a3435a811573246e1f94cab5a69dff8193cda035e26d42d7c2"
+    },
+    {
+      "v": "d",
+      "state": "fresh",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 d game sprite. Add freshly built appearance only: brighter clean roofing strands or tiles, fresh warm timber surfaces and clean bright limewash. Preserve exact geometry. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-a9aa251b-2f57-467e-87a6-04e71881d80c.png",
+      "reference": "assets/house_l3_d-v1.png",
+      "nativeCopy": "native/l3/d-fresh.png",
+      "final": "assets/house_l3_d_fresh-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "327b4af4bc748aea5a2c5be2bbcf1e6b0e3d5e817456d19e1fa29333772ea7c5",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "6830c208fefe494a19a248c13ae68c1c1c78449ca5271b8f7d20e6a6edab1f41"
+    },
+    {
+      "v": "d",
+      "state": "weathered",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 d game sprite. Add weathering effects only: patchy moss on roofing, faded mottled limewash and several visible plaster cracks. Moderate clear weathering, no geometry change. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-93718ffe-3e4b-4b56-aed6-9c0b9317e8b7.png",
+      "reference": "assets/house_l3_d-v1.png",
+      "nativeCopy": "native/l3/d-weathered.png",
+      "final": "assets/house_l3_d_weathered-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "f45034663f104c74ee0c06bda1ce8aa3937c13656ab7055afb85365e56897a41",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "66c0cf72932f80fa2909cfe60206509f531edcc28baf24dc16813f0bd51145b8"
+    },
+    {
+      "v": "d",
+      "state": "boarded",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 d game sprite. Add thick rough brown crossed timber planks nailed across each ground-floor shopfront and doorway. Strong visible X closures, no new openings. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-bd6bf688-13f1-47b3-b75d-b10cd9b4a711.png",
+      "reference": "assets/house_l3_d-v1.png",
+      "nativeCopy": "native/l3/d-boarded.png",
+      "final": "assets/house_l3_d_boarded-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "3fb49500c818f19a32a78a4efd9afda3b1c44182b45d2ce377daf5510a4b0c05",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "83de57d59239543dc7c1e6e503d78a65d06068c263fde72db147462dd88b8a9b"
+    },
+    {
+      "v": "e",
+      "state": "weathered",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 e game sprite. Add weathering effects only: patchy moss on roofing, faded mottled limewash and several visible plaster cracks. Moderate clear weathering, no geometry change. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-b5766481-7213-4790-8c62-64d234e1196a.png",
+      "reference": "assets/house_l3_e-v1.png",
+      "nativeCopy": "native/l3/e-weathered.png",
+      "final": "assets/house_l3_e_weathered-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "cf4872c7984fe75f29136d5a49211ed6c314e8985170a25187fa3e7678868e10",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "76a390e55eef99562473b561013f8542e28819e125a5b69d0e0bd5cd51ccec1b"
+    },
+    {
+      "v": "e",
+      "state": "fresh",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 e game sprite. Add freshly built appearance only: brighter clean roofing strands or tiles, fresh warm timber surfaces and clean bright limewash. Preserve exact geometry. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-0da7ed88-692c-4820-b7de-3262b348e3cf.png",
+      "reference": "assets/house_l3_e-v1.png",
+      "nativeCopy": "native/l3/e-fresh.png",
+      "final": "assets/house_l3_e_fresh-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "1cc25e3169be3f851fd463b969cea233d79760dde4b8b774a2f88433785c2626",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "f72e6649308b0757a7b276ac72852b9157c7c562a7ad3a3a2723c11ab448c0fa"
+    },
+    {
+      "v": "e",
+      "state": "snow",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 e game sprite. Add thick white patchy snow on 70 percent of visible roof surfaces, leaving irregular roofing gaps and warm exposed eaves. No ground snow. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-c57e94ee-b2d6-461e-ac9c-4802881dcb48.png",
+      "reference": "assets/house_l3_e-v1.png",
+      "nativeCopy": "native/l3/e-snow.png",
+      "final": "assets/house_l3_e_snow-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "8a93c64f0453dbe6b9b38439a407ccde2a874b9437bdb92e833f5a3b1bfc1f8d",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "b4cf59ca0d18c90faa760ff266366a0507738d07d853e59ce971d17b903514c7"
+    },
+    {
+      "v": "e",
+      "state": "boarded",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 e game sprite. Add thick rough brown crossed timber planks nailed across each ground-floor shopfront and doorway. Strong visible X closures, no new openings. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-f6279082-bb0e-4770-9f24-a5186c123213.png",
+      "reference": "assets/house_l3_e-v1.png",
+      "nativeCopy": "native/l3/e-boarded.png",
+      "final": "assets/house_l3_e_boarded-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "b191230bcc564863501b1a0be63fd73268187cfcd7aa2d23c6880f971027cfde",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "1020bf4adffa52e93e3a8cd27db201b050c7c3669bdb2b9f1e70209e1dab6354"
+    },
+    {
+      "v": "f",
+      "state": "boarded",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 f game sprite. Add thick rough brown crossed timber planks nailed across each ground-floor shopfront and doorway. Strong visible X closures, no new openings. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-5b8bd1d3-2a20-4473-84fd-cf1f1e1cd2e4.png",
+      "recovery": "Prior queued call lost on sibling bookkeeping rejection; no native output existed when retry issued.",
+      "reference": "assets/house_l3_f-v1.png",
+      "nativeCopy": "native/l3/f-boarded.png",
+      "final": "assets/house_l3_f_boarded-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "2d30ee003bed862b70527e3c79b774c538af091f5e47172ed9235a118ba65604",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "765169c0da9edc87420f9f3845b271dfa52052c2f2e7fafb13072c8e20b374c6"
+    },
+    {
+      "v": "f",
+      "state": "fresh",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 f game sprite. Add freshly built appearance only: brighter clean roofing strands or tiles, fresh warm timber surfaces and clean bright limewash. Preserve exact geometry. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-6aa327cb-e1de-4fdd-9bfe-dd0693641217.png",
+      "recovery": "Prior queued call lost on sibling bookkeeping rejection; no native output existed when retry issued.",
+      "reference": "assets/house_l3_f-v1.png",
+      "nativeCopy": "native/l3/f-fresh.png",
+      "final": "assets/house_l3_f_fresh-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "1c5cbfa00fbef94c13410f261c452348456301572f956b3e47d3d833344a9e27",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "bc09974993ae15146e8eb75d68830f9ca9ee5e692a8715c9b3a37efe06314352"
+    },
+    {
+      "v": "f",
+      "state": "snow",
+      "prompt": "Use case: precise-object-edit. Input is edit target final L3 f game sprite. Add thick white patchy snow on 70 percent of visible roof surfaces, leaving irregular roofing gaps and warm exposed eaves. No ground snow. Output ONE FULL modified house on true transparent RGBA background, no labels. Retain original exact normalized position, camera, house silhouette, roof shape, doors, timber arrangement and stone footband. Same style. No chimney, glass, people, ground, extra objects. Change only requested surface state, never remodel.",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-bbd1-7fd2-b2ee-22faa900b3a1/exec-dc62ee8b-7e12-48eb-a782-83b31f0c5e67.png",
+      "recovery": "Prior queued call lost on sibling bookkeeping rejection; no native output existed when retry issued.",
+      "reference": "assets/house_l3_f-v1.png",
+      "nativeCopy": "native/l3/f-snow.png",
+      "final": "assets/house_l3_f_snow-v1.png",
+      "transform": "alpha bounding-box registration, difference threshold20, minimum-alpha source-over delta; outside base and original contact contour masked to zero; snow bright-neutral roof-only, boarded warm lower-wall-only; e/f fresh alpha0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSha256": "8986f9417241d1011d1d0d231181c8e2bb863982cfa6545388f8ef1c76d8d1d6",
+      "canvas": [
+        142,
+        142
+      ],
+      "finalSha256": "e18f9a4850814e0c61415be0fcc21fcceefe7686d0e93875ce940d8a4dc92fe7"
+    }
+  ],
+  "visualReview": {
+    "referenceAudit": "Wave20 snow reference viewed: existing l3 snow roof and boarded opening positions cannot be assumed aligned with new variants; generated each separately.",
+    "snow": "visual estimate approximately 60-80% roofing coverage, not a material segmentation measurement",
+    "contact": "per-column original alpha>=16 lowest y minus 2; root canonical audit applies final correction",
+    "fresh": "e/f effect alpha attenuated to 0.6 to retain muted roof palette",
+    "candidateOnly": true,
+    "installed": false,
+    "finalBoard": "native/l3/proof.png",
+    "finalAssessment": "All 20 final PNGs inspected as 4x5 composited board: coherent iso L3 shop-house volumes, two thatch/two tile bases, moss/fresh/snow/cross-board effects visibly distinct; no chimneys or modern reflective glass. Offline candidate QA only."
+  },
+  "contactAudit": [
+    {
+      "asset": "house_l3_c-v1.png",
+      "contactChannelErrors": 0
+    },
+    {
+      "asset": "house_l3_c_weathered-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 5977
+    },
+    {
+      "asset": "house_l3_c_fresh-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 8429
+    },
+    {
+      "asset": "house_l3_c_snow-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 2669
+    },
+    {
+      "asset": "house_l3_c_boarded-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 2300
+    },
+    {
+      "asset": "house_l3_d-v1.png",
+      "contactChannelErrors": 0
+    },
+    {
+      "asset": "house_l3_d_weathered-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 5634
+    },
+    {
+      "asset": "house_l3_d_fresh-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 7982
+    },
+    {
+      "asset": "house_l3_d_snow-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 2179
+    },
+    {
+      "asset": "house_l3_d_boarded-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 2074
+    },
+    {
+      "asset": "house_l3_e-v1.png",
+      "contactChannelErrors": 0
+    },
+    {
+      "asset": "house_l3_e_weathered-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 6689
+    },
+    {
+      "asset": "house_l3_e_fresh-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 9539
+    },
+    {
+      "asset": "house_l3_e_snow-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 2572
+    },
+    {
+      "asset": "house_l3_e_boarded-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 1909
+    },
+    {
+      "asset": "house_l3_f-v1.png",
+      "contactChannelErrors": 0
+    },
+    {
+      "asset": "house_l3_f_weathered-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 5486
+    },
+    {
+      "asset": "house_l3_f_fresh-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 9195
+    },
+    {
+      "asset": "house_l3_f_snow-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 2164
+    },
+    {
+      "asset": "house_l3_f_boarded-v1.png",
+      "outsideBasePixels": 0,
+      "contactPixels": 0,
+      "effectPixels": 2041
+    }
+  ],
+  "canonical_final_hashes": {
+    "assets/house_l3_c-v1.png": "db7e63f297b0e0e5eecd73b6117308478ca4c4f2a5040c103f7e35543b829f79",
+    "assets/house_l3_c_weathered-v1.png": "57c703c46df95ebdb502c6ef8fbbbd01629371c933906ea185f781ed5547e17a",
+    "assets/house_l3_c_fresh-v1.png": "cb66c15a9ae20d51b679fc446cffc0b3c9df4bdcd68a5127270d38f2b3663a5b",
+    "assets/house_l3_c_snow-v1.png": "726a3b3f0f999750e5e6fbe57411993ec727a07b471b58022b0a742af8cfd869",
+    "assets/house_l3_c_boarded-v1.png": "9e6c9b8c70de1be21c294af47237869638a0e5424f41158fb09f983340fbc082",
+    "assets/house_l3_d-v1.png": "bfb0c3952855049fba2e4b3c309dc71615bb2e4cb1289d178b82bc94d23bf05e",
+    "assets/house_l3_d_weathered-v1.png": "fb1d5eba08dfccd3187663ec647480da956322ad62a1b9d5f5a065e5545e36fd",
+    "assets/house_l3_d_fresh-v1.png": "0f691cb66008d843c76eca85ff1bda817431367ced3e5b60f474e39f5ace4480",
+    "assets/house_l3_d_snow-v1.png": "eb683c85889af87b8a1b597a6ea21ebef005ca3a4335bb8d210205a0afb486ad",
+    "assets/house_l3_d_boarded-v1.png": "c68eae4a980c21c0030ffa4a45cd8c0c2cb64a6106210402d0b0e830c82130b8",
+    "assets/house_l3_e-v1.png": "56e24103d06fbadcde34fa52618ab74894a92042a13ec2bcbaf170128ae70474",
+    "assets/house_l3_e_weathered-v1.png": "78e8a7c17991ba04aa2ef0bbb9863cb877abf032d3a2547acc8277b62b682761",
+    "assets/house_l3_e_fresh-v1.png": "da9688e1abf986d50ca8d98853bc06542d879f2448169184f3d19537c70f53b8",
+    "assets/house_l3_e_snow-v1.png": "7b52d75e665e7b17a788c312261fa1514187dc0b5db5804d911695ce5b1fe5eb",
+    "assets/house_l3_e_boarded-v1.png": "7f2e9d9afcc3af2e255ca767af7ab4ce0e36593584313377c117ad46d694d6c4",
+    "assets/house_l3_f-v1.png": "1fa847fda71804c8d4e0feb1c367cb9ec324f248d7b342ba1992b59e638b1055",
+    "assets/house_l3_f_weathered-v1.png": "08dacdbf745b1c1e41bce53ed4e4efe05b5600b23428fd3345ffecabe576ae6a",
+    "assets/house_l3_f_fresh-v1.png": "8b305cac615ef1dc1bef026d1e147dc71c2f6cf1e8a1f34964dc554f91d6d8ca",
+    "assets/house_l3_f_snow-v1.png": "feb9efc25cd410a609ea5bc92b88e69c4be6ac14ac87c9effa89b03748da7292",
+    "assets/house_l3_f_boarded-v1.png": "2e2e2995170c26c3839c7c4141d5a6c252088407f198d815f8b9437ca3d7d65f"
+  },
+  "canonical_hash_note": "Final delivered hashes after root contact normalization; earlier per-generation/final hashes retained as pre-normalization provenance. CSV and this map are final."
+}

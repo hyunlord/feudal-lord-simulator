@@ -1,0 +1,1450 @@
+{
+  "status": "candidate",
+  "specs": [
+    [
+      "c",
+      "long steep front-facing gable thatch roof, warm white limewash, simple vertical timber posts, small barred window"
+    ],
+    [
+      "d",
+      "compact pyramidal hipped thatch roof, pale ochre limewash, rectangular timber panels, firewood under right eave"
+    ],
+    [
+      "e",
+      "half-hip clipped gable thatch roof, pale pink limewash, curved diagonal braces, tiny integral lean-to within original footprint"
+    ],
+    [
+      "f",
+      "reverse-oriented broad gable thatch roof with distinct triangular end facing viewer right, cream limewash, diagonal X bracing, dark oak plank door"
+    ]
+  ],
+  "prompts": {
+    "c": "Use case: precise-object-edit. Create ONE standalone medieval L0 house variant c from the supplied edit target. Transparent RGBA background. Retain original painterly pixel-detailed game sprite style, same isometric camera, scale, wall height, ground footprint and ground contact corners EXACTLY. House occupies exact same position in square canvas with same transparent margins. Change to long steep front-facing gable thatch roof, warm white limewash, simple vertical timber posts, small barred window. Southern England 1300, humble single-storey house. NO chimney, NO glass, NO stone/slate roof, NO modern items. Only one house, no sheet, no text. Preserve original bottom foundation/ground-contact pixels unchanged. Roof must differ recognizably from reference hipped roof.",
+    "d": "Use case: precise-object-edit. Create ONE standalone medieval L0 house variant d from the supplied edit target. Transparent RGBA background. Retain original painterly pixel-detailed game sprite style, same isometric camera, scale, wall height, ground footprint and ground contact corners EXACTLY. House occupies exact same position in square canvas with same transparent margins. Change to compact pyramidal hipped thatch roof, pale ochre limewash, rectangular timber panels, firewood under right eave. Southern England 1300, humble single-storey house. NO chimney, NO glass, NO stone/slate roof, NO modern items. Only one house, no sheet, no text. Preserve original bottom foundation/ground-contact pixels unchanged. Roof shape must differ recognizably.",
+    "e": "Use case: precise-object-edit. Create ONE standalone medieval L0 house variant e from the supplied edit target. Transparent RGBA background. Retain original painterly pixel-detailed game sprite style, same isometric camera, scale, wall height, ground footprint and ground contact corners EXACTLY. House occupies exact same position in square canvas with same transparent margins. Change to half-hip clipped gable thatch roof, pale pink limewash, curved diagonal braces, tiny integral lean-to within original footprint. Southern England 1300, humble single-storey house. NO chimney, NO glass, NO stone/slate roof, NO modern items. Only one house, no sheet, no text. Preserve original bottom foundation/ground-contact pixels unchanged. Roof shape must differ recognizably.",
+    "f": "Use case: precise-object-edit. Create ONE standalone medieval L0 house variant f from the supplied edit target. Transparent RGBA background. Retain original painterly pixel-detailed game sprite style, same isometric camera, scale, wall height, ground footprint and ground contact corners EXACTLY. House occupies exact same position in square canvas with same transparent margins. Change to reverse-oriented broad gable thatch roof with distinct triangular end facing viewer right, cream limewash, diagonal X bracing, dark oak plank door. Southern England 1300, humble single-storey house. NO chimney, NO glass, NO stone/slate roof, NO modern items. Only one house, no sheet, no text. Preserve original bottom foundation/ground-contact pixels unchanged. Roof shape must differ recognizably.",
+    "f_corrected": "Use case: precise-object-edit. Create ONE standalone L0 cottage variant f on transparent RGBA canvas. Edit target is original low medieval cottage. CRITICAL DISTINCT SHAPE: LOW BROAD HIPPED THATCH ROOF with a VERY CLEAR CROSS-GABLE entrance porch canopy projecting toward viewer left/front, within existing rectangular foundation footprint. Main roof ridge should be short and LOW; silhouette must NOT be a long tall gable. Prominent little triangular porch roof over the entrance, pale cream limewash and dark X timber brace on side. Humble SINGLE storey 1300 southern England, not larger/taller. NO chimney, NO glass, no tiles. Exactly same original camera, house scale, transparent square canvas margins, foundation corners, footprint and ground baseline. Keep bottom foot pixels unchanged. Detailed painterly tiny game sprite. One house, no sheet, no text."
+  },
+  "assets": [
+    {
+      "file": "house_l0_c-v1.png",
+      "type": "base",
+      "variant": "c",
+      "native": "native/l0/c-base.png",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas; source PNG has no explicit engine pivot metadata",
+      "groundAnchor": {
+        "alphaThreshold": 16,
+        "lowestY": 139,
+        "xRange": [
+          90,
+          91
+        ],
+        "meanX": 90.5
+      },
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "groundMask": "reference alpha>=16 lower envelope; for y>=95 restore from envelope-2 downward including original exterior alpha; no broad wall restore",
+        "restoredPixels": 6047
+      },
+      "qa": {
+        "groundContourErrorPx": 0,
+        "groundRestoredRGBADiffPixels": 0,
+        "chimney": false,
+        "glass": false,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4
+      },
+      "sha256": "1270510834a7176684b8088b46bda42fc90cf0e843a76608eed9e52dab27766a"
+    },
+    {
+      "file": "house_l0_c_weathered-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "c",
+      "state": "weathered",
+      "native": "native/l0/c-weathered.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 2497,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "ebf74e6e7ced1ef3a29fc8ad51f328b7717f932390fdc1fb6110169d3d2c42c6"
+    },
+    {
+      "file": "house_l0_c_fresh-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "c",
+      "state": "fresh",
+      "native": "native/l0/c-fresh.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 4780,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "a707fd3d19123c02c89efa8127514c65248c22fdcde8069262ad9014466fbe1a"
+    },
+    {
+      "file": "house_l0_c_snow-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "c",
+      "state": "snow",
+      "native": "native/l0/c-snow.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "differenceThreshold": 18,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 2660,
+        "snowCoverageEstimate": 0.6854338842975206,
+        "snowCoverageMethod": "manually chosen projected roof eave boundary, alpha>100 pixel ratio; approximate semantic roof mask",
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "d43fb1106d2af2026b11c996a2b611542206239938df2daa7c898f79593ebb0b"
+    },
+    {
+      "file": "house_l0_c_boarded-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "c",
+      "state": "boarded",
+      "native": "native/l0/c-boarded.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 287,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "628b385fdae03209c55b90da7396c11f1168b1b5c771e830a3879e00d1236bf4"
+    },
+    {
+      "file": "house_l0_d-v1.png",
+      "type": "base",
+      "variant": "d",
+      "native": "native/l0/d-base.png",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas; source PNG has no explicit engine pivot metadata",
+      "groundAnchor": {
+        "alphaThreshold": 16,
+        "lowestY": 139,
+        "xRange": [
+          90,
+          91
+        ],
+        "meanX": 90.5
+      },
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          2
+        ],
+        "groundMask": "reference alpha>=16 lower envelope; for y>=95 restore from envelope-2 downward including original exterior alpha; no broad wall restore",
+        "restoredPixels": 6047
+      },
+      "qa": {
+        "groundContourErrorPx": 0,
+        "groundRestoredRGBADiffPixels": 0,
+        "chimney": false,
+        "glass": false,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4
+      },
+      "sha256": "35972f009b23de6558c1ee3da15b6116c5eb525535d416cbcd4ee89c69856f0d"
+    },
+    {
+      "file": "house_l0_d_weathered-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "d",
+      "state": "weathered",
+      "native": "native/l0/d-weathered.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          2
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 2581,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "ce681c77dac4ad6a3c55f5da4424e135127067a27fdf2ce2e5ee07840d6352f8"
+    },
+    {
+      "file": "house_l0_d_fresh-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "d",
+      "state": "fresh",
+      "native": "native/l0/d-fresh.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          2
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 4684,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "b6430444460568db1238dc7b74f302d0c181805a88b4ae0ca8e63b083b9b9d85"
+    },
+    {
+      "file": "house_l0_d_snow-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "d",
+      "state": "snow",
+      "native": "native/l0/d-snow.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          2
+        ],
+        "differenceThreshold": 18,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 2460,
+        "snowCoverageEstimate": 0.721830985915493,
+        "snowCoverageMethod": "manually chosen projected roof eave boundary, alpha>100 pixel ratio; approximate semantic roof mask",
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "08d6a1ca24bcd723062084870a3f7375244e9cdd6368fa94b3ad2a2744488d21"
+    },
+    {
+      "file": "house_l0_d_boarded-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "d",
+      "state": "boarded",
+      "native": "native/l0/d-boarded.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          2
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 745,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "cf6cbdb04cb1384636034eeb742b451ee165be53355580214e9120b570fab7f9"
+    },
+    {
+      "file": "house_l0_e-v1.png",
+      "type": "base",
+      "variant": "e",
+      "native": "native/l0/e-base.png",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas; source PNG has no explicit engine pivot metadata",
+      "groundAnchor": {
+        "alphaThreshold": 16,
+        "lowestY": 139,
+        "xRange": [
+          90,
+          91
+        ],
+        "meanX": 90.5
+      },
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          -3
+        ],
+        "groundMask": "reference alpha>=16 lower envelope; for y>=95 restore from envelope-2 downward including original exterior alpha; no broad wall restore",
+        "restoredPixels": 6047
+      },
+      "qa": {
+        "groundContourErrorPx": 0,
+        "groundRestoredRGBADiffPixels": 0,
+        "chimney": false,
+        "glass": false,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4
+      },
+      "sha256": "0364388ed945662ae8f79b4bb7fbc897c9df9b0a72f095834e933920154620fe"
+    },
+    {
+      "file": "house_l0_e_weathered-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "e",
+      "state": "weathered",
+      "native": "native/l0/e-weathered.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          -3
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 2627,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "2de19aea6a2d93c2082c34da70def6fa2ca09d8ed02b685090ac4da3ce66f8fd"
+    },
+    {
+      "file": "house_l0_e_fresh-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "e",
+      "state": "fresh",
+      "native": "native/l0/e-fresh.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          -3
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 5234,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "0ed5508e56daca488fb3ad4a72e58458e1eda2f56a4343b9c1de54babe1e63e2"
+    },
+    {
+      "file": "house_l0_e_snow-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "e",
+      "state": "snow",
+      "native": "native/l0/e-snow.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          -3
+        ],
+        "differenceThreshold": 18,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 2281,
+        "snowCoverageEstimate": 0.6021647307286166,
+        "snowCoverageMethod": "manually chosen projected roof eave boundary, alpha>100 pixel ratio; approximate semantic roof mask",
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "f06c4704bd72c566f175981cdb378d7d3e935a541c69095ea4551a6be376239d"
+    },
+    {
+      "file": "house_l0_e_boarded-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "e",
+      "state": "boarded",
+      "native": "native/l0/e-boarded.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          -3
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 338,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "7139a9902c84c681a2516a42762b6b14daf58bf11ac08ee255b1e8a9a0bc2257"
+    },
+    {
+      "file": "house_l0_f-v1.png",
+      "type": "base",
+      "variant": "f",
+      "native": "native/l0/f-base.png",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas; source PNG has no explicit engine pivot metadata",
+      "groundAnchor": {
+        "alphaThreshold": 16,
+        "lowestY": 139,
+        "xRange": [
+          90,
+          91
+        ],
+        "meanX": 90.5
+      },
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          1
+        ],
+        "groundMask": "reference alpha>=16 lower envelope; for y>=95 restore from envelope-2 downward including original exterior alpha; no broad wall restore",
+        "restoredPixels": 6047
+      },
+      "qa": {
+        "groundContourErrorPx": 0,
+        "groundRestoredRGBADiffPixels": 0,
+        "chimney": false,
+        "glass": false,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4
+      },
+      "sha256": "13ba506ac9b64e67ccc746165072eba2ece4bc0d6be4d07ef67dbb16ba4d8280"
+    },
+    {
+      "file": "house_l0_f_weathered-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "f",
+      "state": "weathered",
+      "native": "native/l0/f-weathered.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 3183,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "910a12416d9da64b5f2a5e069eaf9195d89a9792e89f7bcc696d160a4b3a6220"
+    },
+    {
+      "file": "house_l0_f_fresh-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "f",
+      "state": "fresh",
+      "native": "native/l0/f-fresh.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 4103,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "1ef490eb38b8103e7ca1bfb7243ed06678984627c916ca5c1eafc29ea72f2fc0"
+    },
+    {
+      "file": "house_l0_f_snow-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "f",
+      "state": "snow",
+      "native": "native/l0/f-snow.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "differenceThreshold": 18,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 2426,
+        "snowCoverageEstimate": 0.6907687910831666,
+        "snowCoverageMethod": "manually chosen projected roof eave boundary, alpha>100 pixel ratio; approximate semantic roof mask",
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "87d846f2fa2562cde20a07c034e5a95cc0a1ff095f195074d7ed4bb24c40c12f"
+    },
+    {
+      "file": "house_l0_f_boarded-v1.png",
+      "type": "effect-only-overlay",
+      "variant": "f",
+      "state": "boarded",
+      "native": "native/l0/f-boarded.png",
+      "dimensions": [
+        153,
+        153
+      ],
+      "pivot": "inherited unchanged canvas",
+      "transforms": {
+        "fullCanvasResize": [
+          168,
+          153
+        ],
+        "crop": {
+          "left": 8,
+          "top": 0,
+          "width": 153,
+          "height": 153
+        },
+        "translation": [
+          0,
+          0
+        ],
+        "differenceThreshold": 25,
+        "mask": "base alpha intersect; preserve bottom 3px ground contour; semantic roof/wall/opening region selection; see reproducible script"
+      },
+      "qa": {
+        "nontransparentPixels": 469,
+        "snowCoverageEstimate": null,
+        "snowCoverageMethod": null,
+        "outsideBaseAlphaPixels": 0,
+        "groundContourErrorPx": 0,
+        "status": "candidate offline only",
+        "dimensionsPass": true,
+        "channels": 4,
+        "contactOverlayPixels": 0
+      },
+      "sha256": "5ff89a3567818351f0f3ab46164921aabeab803712cfe50290b1db1564371797"
+    }
+  ],
+  "snowBoardedJustification": "All four roof and opening silhouettes differ from supplied original; Wave20 snow sheet is reference only and its overlays cannot register to new silhouettes. Four matching snow and boarded states generated.",
+  "variantDescriptions": {
+    "c": {
+      "roof": "thatch",
+      "shape": "long gable; thatched triangular end",
+      "wall": "warm white limewash, simple vertical posts",
+      "additions": "barred small window, plank door"
+    },
+    "d": {
+      "roof": "thatch",
+      "shape": "pyramidal hip",
+      "wall": "pale ochre limewash, rectangular framing",
+      "additions": "right-eave woodpile"
+    },
+    "e": {
+      "roof": "thatch",
+      "shape": "halfhip plus lean-to roof",
+      "wall": "pale pinkwash with diagonal braces",
+      "additions": "small right lean-to within reference foot outline"
+    },
+    "f": {
+      "roof": "thatch",
+      "shape": "low hip with prominent front crossgable entrance canopy",
+      "wall": "cream limewash with side X brace",
+      "additions": "crossgable canopy and dark plank door"
+    }
+  },
+  "visualNotes": [
+    "All bases inspected at delivered 153px size; all thatch, no chimney or reflective glass.",
+    "Initial f longgable rejected for similarity to c at0.6; corrected f low hip + front crossgable selected. Superseded source preserved.",
+    "Runtime pivot metadata absent from supplied PNG; only identical canvas and measured lower contact contour are asserted."
+  ],
+  "qa": {
+    "expectedFinalCount": 20,
+    "actualFinalCount": 20,
+    "problems": [],
+    "complete": true,
+    "scope": "offline image/alpha/registration only; game not installed or runtime tested"
+  },
+  "generations": [
+    {
+      "variant": "c",
+      "state": "base",
+      "prompt": "Use case: precise-object-edit. Create ONE standalone medieval L0 house variant c from the supplied edit target. Transparent RGBA background. Retain original painterly pixel-detailed game sprite style, same isometric camera, scale, wall height, ground footprint and ground contact corners EXACTLY. House occupies exact same position in square canvas with same transparent margins. Change to long steep front-facing gable thatch roof, warm white limewash, simple vertical timber posts, small barred window. Southern England 1300, humble single-storey house. NO chimney, NO glass, NO stone/slate roof, NO modern items. Only one house, no sheet, no text. Preserve original bottom foundation/ground-contact pixels unchanged. Roof must differ recognizably from reference hipped roof.",
+      "references": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave26-v1/references/house_l0-v3.png"
+      ],
+      "native": "native/l0/c-base.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-4f53e1c6-4da4-4464-8c57-8d0f8b64bc5e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "41aa32aaa27a9b1456fa2432b8008e5032864b38bbe0657a43c9bf4d06bd0e73"
+    },
+    {
+      "variant": "d",
+      "state": "base",
+      "prompt": "Use case: precise-object-edit. Create ONE standalone medieval L0 house variant d from the supplied edit target. Transparent RGBA background. Retain original painterly pixel-detailed game sprite style, same isometric camera, scale, wall height, ground footprint and ground contact corners EXACTLY. House occupies exact same position in square canvas with same transparent margins. Change to compact pyramidal hipped thatch roof, pale ochre limewash, rectangular timber panels, firewood under right eave. Southern England 1300, humble single-storey house. NO chimney, NO glass, NO stone/slate roof, NO modern items. Only one house, no sheet, no text. Preserve original bottom foundation/ground-contact pixels unchanged. Roof shape must differ recognizably.",
+      "references": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave26-v1/references/house_l0-v3.png"
+      ],
+      "native": "native/l0/d-base.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-2367184f-dc0e-4a48-b47a-684ffd17cb79.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "f0c9ae88d2bf9d1ad966bf8507d33ef4fa0d9075f87ae0d650970181ec95dbee"
+    },
+    {
+      "variant": "e",
+      "state": "base",
+      "prompt": "Use case: precise-object-edit. Create ONE standalone medieval L0 house variant e from the supplied edit target. Transparent RGBA background. Retain original painterly pixel-detailed game sprite style, same isometric camera, scale, wall height, ground footprint and ground contact corners EXACTLY. House occupies exact same position in square canvas with same transparent margins. Change to half-hip clipped gable thatch roof, pale pink limewash, curved diagonal braces, tiny integral lean-to within original footprint. Southern England 1300, humble single-storey house. NO chimney, NO glass, NO stone/slate roof, NO modern items. Only one house, no sheet, no text. Preserve original bottom foundation/ground-contact pixels unchanged. Roof shape must differ recognizably.",
+      "references": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave26-v1/references/house_l0-v3.png"
+      ],
+      "native": "native/l0/e-base.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-0ce5a849-3cfe-4986-bd28-481ffd360d7b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "935d9aaa5e490448d7aca310c73654d3b7d4fbc9e967b0771429703eee79658f"
+    },
+    {
+      "variant": "f",
+      "state": "base",
+      "prompt": "Use case: precise-object-edit. Create ONE standalone medieval L0 house variant f from the supplied edit target. Transparent RGBA background. Retain original painterly pixel-detailed game sprite style, same isometric camera, scale, wall height, ground footprint and ground contact corners EXACTLY. House occupies exact same position in square canvas with same transparent margins. Change to reverse-oriented broad gable thatch roof with distinct triangular end facing viewer right, cream limewash, diagonal X bracing, dark oak plank door. Southern England 1300, humble single-storey house. NO chimney, NO glass, NO stone/slate roof, NO modern items. Only one house, no sheet, no text. Preserve original bottom foundation/ground-contact pixels unchanged. Roof shape must differ recognizably.",
+      "references": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave26-v1/references/house_l0-v3.png"
+      ],
+      "native": "native/l0/f-base-superseded.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-81ef0267-81fe-4a7e-929c-e55e30ef9d2a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "status": "superseded_similarity_at_0.6",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "bad95b8f187f428fe815a3a620921093ab903e32a0b5b03fe1bcc7d0063a1143"
+    },
+    {
+      "variant": "c",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house. Add visible moss tufts to thatch, faded limewash and fine cracked plaster. Keep walls and roof geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-4f53e1c6-4da4-4464-8c57-8d0f8b64bc5e.png"
+      ],
+      "native": "native/l0/c-weathered.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-14cde878-f562-4656-a007-078b40f6f63f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "0bf3d22c2e2066de081efb56dae7c863ae58180eafed0a42b2baa5b81c388798"
+    },
+    {
+      "variant": "c",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house. Brighten newly laid straw on roof and fresh limewashed wall patches, warm new timber highlights. Keep geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-4f53e1c6-4da4-4464-8c57-8d0f8b64bc5e.png"
+      ],
+      "native": "native/l0/c-fresh.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-f68e8ab7-6ca6-4e9f-9fff-a3e36c9a5961.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "ee1698be9755f8fd02eaf1bfa529cde3cde2c1ec59521471fcafac9168079b11"
+    },
+    {
+      "variant": "c",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house. Add thick irregular white snow covering 70 percent of actual roof surfaces, follow roof slope and ridge, leave some visible thatch patches. No snow outside roof. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-4f53e1c6-4da4-4464-8c57-8d0f8b64bc5e.png"
+      ],
+      "native": "native/l0/c-snow.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-d6f07736-5c89-4a6d-a10f-967ab1d803f1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "7a23232867ea835d9ce0f6c51954dc8020ae4619b9d4a694a5a69f876af87f08"
+    },
+    {
+      "variant": "c",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house. Add thick rough wooden crossed X planks only over door and window openings. Leave rest entirely unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-4f53e1c6-4da4-4464-8c57-8d0f8b64bc5e.png"
+      ],
+      "native": "native/l0/c-boarded.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-fcdc0a4f-32b8-44bc-ae63-93682d25966f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "df8f52696ebfc5254e86b8a31066ef6a5b4650dc68be7336c081e2e7410e1da5"
+    },
+    {
+      "variant": "f",
+      "state": "base",
+      "prompt": "Use case: precise-object-edit. Create ONE standalone L0 cottage variant f on transparent RGBA canvas. Edit target is original low medieval cottage. CRITICAL DISTINCT SHAPE: LOW BROAD HIPPED THATCH ROOF with a VERY CLEAR CROSS-GABLE entrance porch canopy projecting toward viewer left/front, within existing rectangular foundation footprint. Main roof ridge should be short and LOW; silhouette must NOT be a long tall gable. Prominent little triangular porch roof over the entrance, pale cream limewash and dark X timber brace on side. Humble SINGLE storey 1300 southern England, not larger/taller. NO chimney, NO glass, no tiles. Exactly same original camera, house scale, transparent square canvas margins, foundation corners, footprint and ground baseline. Keep bottom foot pixels unchanged. Detailed painterly tiny game sprite. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave26-v1/references/house_l0-v3.png"
+      ],
+      "native": "native/l0/f-base.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-821e9e82-2c59-4422-b282-4994964db95e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "e141666f2c6666e28f2872d449482a098f4ecdce99dbf644507844288e0fd537"
+    },
+    {
+      "variant": "d",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant d. Add visible moss tufts to thatch, faded limewash and fine cracked plaster. Keep walls and roof geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-2367184f-dc0e-4a48-b47a-684ffd17cb79.png"
+      ],
+      "native": "native/l0/d-weathered.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-8f4cf101-d3ed-40ab-931e-58aea0f3213f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "ea958dd5db29221783dcce2d12b680d6f6e7a91f3c9a0802b117ce67987c9e2a"
+    },
+    {
+      "variant": "d",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant d. Brighten newly laid straw on roof and fresh limewashed wall patches, warm new timber highlights. Keep geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-2367184f-dc0e-4a48-b47a-684ffd17cb79.png"
+      ],
+      "native": "native/l0/d-fresh.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-f5b2ffb8-cb60-40bc-be57-fd80ae7a543a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "fc65edf5967bbb2819922fe500992d5b799e9355d869484448a57ff5007bdc4b"
+    },
+    {
+      "variant": "d",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant d. Add thick irregular white snow covering 70 percent of actual roof surfaces, follow roof slope and ridge, leave some visible thatch patches. No snow outside roof. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-2367184f-dc0e-4a48-b47a-684ffd17cb79.png"
+      ],
+      "native": "native/l0/d-snow.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-5d584637-1b05-43cb-86f7-d5c24c8f8173.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "b668ac250f6f3c33be7272f2c26cde6c74060b330b109491f57a06f7d694512b"
+    },
+    {
+      "variant": "d",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant d. Add thick rough wooden crossed X planks only over door and window openings. Leave rest entirely unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-2367184f-dc0e-4a48-b47a-684ffd17cb79.png"
+      ],
+      "native": "native/l0/d-boarded.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-7e9eefaa-6388-4260-b6c5-b377fc99b604.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "a11ea113b45c30baaeec222221886b1d773f15619046f0bf8ae90150035cb5bd"
+    },
+    {
+      "variant": "e",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant e. Add visible moss tufts to thatch, faded limewash and fine cracked plaster. Keep walls and roof geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-0ce5a849-3cfe-4986-bd28-481ffd360d7b.png"
+      ],
+      "native": "native/l0/e-weathered.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-abcc9867-bcd4-421a-9b2f-30dfab045af0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "67a3148d44a5d0f01593eb50fa64d54cfbca1812669fa58175212f7948470f5f"
+    },
+    {
+      "variant": "e",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant e. Brighten newly laid straw on roof and fresh limewashed wall patches, warm new timber highlights. Keep geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-0ce5a849-3cfe-4986-bd28-481ffd360d7b.png"
+      ],
+      "native": "native/l0/e-fresh.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-ee94aa1b-3724-43e8-b484-d7b3ccf0b7e4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "41ab81571d21128169b43b7e8f7f31e90612da67c3f37c48562484db06a66362"
+    },
+    {
+      "variant": "e",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant e. Add thick irregular white snow covering 70 percent of actual roof surfaces, follow roof slope and ridge, leave some visible thatch patches. No snow outside roof. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-0ce5a849-3cfe-4986-bd28-481ffd360d7b.png"
+      ],
+      "native": "native/l0/e-snow.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-81533398-d412-40ff-86b3-fc4e26dc5db6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "d633ad666c44a83cb5c7199e9a53ef115ed44761984c231537512a3b08be0332"
+    },
+    {
+      "variant": "e",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant e. Add thick rough wooden crossed X planks only over door and window openings. Leave rest entirely unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-0ce5a849-3cfe-4986-bd28-481ffd360d7b.png"
+      ],
+      "native": "native/l0/e-boarded.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-70e0d7f9-d68c-49ea-a240-9478312463ea.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "39e71ae705323200a2746d6c29c0df0c878cfd3de34049597dda59f7ee34b11b"
+    },
+    {
+      "variant": "f",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant f. Add visible moss tufts to thatch, faded limewash and fine cracked plaster. Keep walls and roof geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-81ef0267-81fe-4a7e-929c-e55e30ef9d2a.png"
+      ],
+      "native": "native/l0/f-weathered-superseded.png",
+      "status": "superseded_similarity_at_0.6",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-6809bf09-60ba-489b-93ed-de78ab0b6b3f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "2482ed5905699cd7f36a159f9f26a77df11f4459081b1452b9289bf0b1d52c6d"
+    },
+    {
+      "variant": "f",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant f. Brighten newly laid straw on roof and fresh limewashed wall patches, warm new timber highlights. Keep geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-81ef0267-81fe-4a7e-929c-e55e30ef9d2a.png"
+      ],
+      "native": "native/l0/f-fresh-superseded.png",
+      "status": "superseded_similarity_at_0.6",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-386b7fd5-4ade-4354-935d-644be705a263.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "236c6350bc25ca07b334bea752501d27f9be9376b14e143dbce85b0b7ad23404"
+    },
+    {
+      "variant": "f",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant f. Add thick irregular white snow covering 70 percent of actual roof surfaces, follow roof slope and ridge, leave some visible thatch patches. No snow outside roof. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-81ef0267-81fe-4a7e-929c-e55e30ef9d2a.png"
+      ],
+      "native": "native/l0/f-snow-superseded.png",
+      "status": "superseded_similarity_at_0.6",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-16552014-bb01-427f-9f7d-4ccaad9911c0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "78ab85e783da5f0f82dddfd83eac4cb03ada56dc4a833fdb492d0afd5950649d"
+    },
+    {
+      "variant": "f",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant f. Add thick rough wooden crossed X planks only over door and window openings. Leave rest entirely unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-81ef0267-81fe-4a7e-929c-e55e30ef9d2a.png"
+      ],
+      "native": "native/l0/f-boarded-superseded.png",
+      "status": "superseded_similarity_at_0.6",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-5912722d-f898-43eb-9ee0-8ca49112da96.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "4a4d97b0cbbacd55e56b871389691146c551061d52b353f98e6b10b0eefbd24b"
+    },
+    {
+      "variant": "f",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant f CORRECTED hip+crossgable. Add visible moss tufts to thatch, faded limewash and fine cracked plaster. Keep walls and roof geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-821e9e82-2c59-4422-b282-4994964db95e.png"
+      ],
+      "native": "native/l0/f-weathered.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-f0afbe1e-bbb2-4080-bb7f-2fafe3fd3b59.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "2551cc47d81bfb94447b2641a21476e0744b1bdf18fceaad23c332e11cf8430c"
+    },
+    {
+      "variant": "f",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant f CORRECTED hip+crossgable. Brighten newly laid straw on roof and fresh limewashed wall patches, warm new timber highlights. Keep geometry exactly unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-821e9e82-2c59-4422-b282-4994964db95e.png"
+      ],
+      "native": "native/l0/f-fresh.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-e6653a73-3753-4bbe-b539-75a9985f3442.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "313326ee277d73141a4d78ff2c7aaad0022eced7e5b9effb5bb9d7a507bb2da6"
+    },
+    {
+      "variant": "f",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant f CORRECTED hip+crossgable. Add thick irregular white snow covering 70 percent of actual roof surfaces INCLUDING little front porch roof, follow roof slopes and ridges, leave some visible thatch patches. No snow outside roof. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-821e9e82-2c59-4422-b282-4994964db95e.png"
+      ],
+      "native": "native/l0/f-snow.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-25726a7f-b327-41d8-a712-bd55af1c0096.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "01326c52b81f5fb4b21783197fef2792bf98cc7506d581768cd35186a8f169ba"
+    },
+    {
+      "variant": "f",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Edit target is ONE medieval house variant f CORRECTED hip+crossgable. Add thick rough wooden crossed X planks only over door and window openings. Leave rest entirely unchanged. Preserve original camera, every outline, structure, size, position, canvas, ground, shadow, transparent margins EXACTLY. No chimney. Output full house edited state for subsequent technical difference overlay extraction. Transparent RGBA background. One house, no sheet, no text.",
+      "references": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-821e9e82-2c59-4422-b282-4994964db95e.png"
+      ],
+      "native": "native/l0/f-boarded.png",
+      "status": "selected_source",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7bd-f31c-72d0-a117-b301b584d382/exec-0a21f0c6-7965-4f19-9a10-bf783981ca83.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "builtin image_gen",
+      "modelVersion": "not provided",
+      "seed": "not provided",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeSHA256": "241de51c0685a0abcc93ea7e919a2c510874c7f6781b300fed711b2c9c8ccfc6"
+    }
+  ],
+  "visualReview": {
+    "actualSize153": true,
+    "allCompositesInspected": true,
+    "roofMaterial": "all thatch",
+    "noChimney": true,
+    "noModernGlass": true,
+    "states": "moss/faded-wall; bright new thatch; 60-73 percent snow; thick X boarding over door/window",
+    "notes": "Effect overlays are technical difference masks extracted from separately generated full edited states; no whole house underpaint. Approximate roof-coverage mask is documented, not renderer validation."
+  },
+  "canonical_final_hashes": {
+    "assets/house_l0_c-v1.png": "f07a5dd4e579af72294568884bb1ffbc6c20d99c26574d17e3fad643a1850124",
+    "assets/house_l0_c_weathered-v1.png": "f09d497049d77212f26b9ce12df7490308bec3f2a11f1df844d9a76997b534e4",
+    "assets/house_l0_c_fresh-v1.png": "26526bb9e8652c251c23acac25df6d9f0935f1f2363dc5f08930cb0b2ca7d59a",
+    "assets/house_l0_c_snow-v1.png": "7f0e08d14f2a4b13bbd1dbbec02338e1acc0622385a64d92c99d14c47745b343",
+    "assets/house_l0_c_boarded-v1.png": "1741f751003b984decb9210b44ceba2a0827ea1c9fe30a292af26571574b23b5",
+    "assets/house_l0_d-v1.png": "11ec3fdeb5e806dfe87756a141f1ab8de34e80b238e60c2ff4dbcaffbbbd2a8d",
+    "assets/house_l0_d_weathered-v1.png": "d88cb0162e7fc0fdb4c35f0728793e8be970cafac3ddd60e2e6ae57dafc21282",
+    "assets/house_l0_d_fresh-v1.png": "036222c881baed48086546a8f8003517121bc302d674cc0e692754520a146189",
+    "assets/house_l0_d_snow-v1.png": "deef3760ad85790eaa162c23d7cb53c8756a0ee56155b7c59edcd4cf111e8497",
+    "assets/house_l0_d_boarded-v1.png": "ad53d4eb73c8570f15b15e50980e61b3afa77f6935505c6a6197c6c17cc55857",
+    "assets/house_l0_e-v1.png": "0ce018808f5860fb0248ab6d9afd23ee1f7bab00bb341019ab082bcdeaf292b9",
+    "assets/house_l0_e_weathered-v1.png": "81b6caee21c8835025d7f19b53588cbd71dfccf53a6141b9b590ffe1a3014dd7",
+    "assets/house_l0_e_fresh-v1.png": "c31f88025d287eb7fcaa343c8699687dcd026cdcaa25a8524bd4553afc73d2fc",
+    "assets/house_l0_e_snow-v1.png": "d1b91276ab763a1d53fb87be4f63a5e2032bf239a4c0a48ce055d76bf44b73bd",
+    "assets/house_l0_e_boarded-v1.png": "cdb1cf3c8d9c8c299bcb39439a6184cc5a8365e79631b5833fa033c07e87d70f",
+    "assets/house_l0_f-v1.png": "98f50284496889dee185ba208a7e7ede17571a480c53c29b5e44bf86c728fb2d",
+    "assets/house_l0_f_weathered-v1.png": "78c452fd2a10a300c67736ded34a0c3abbf1080da5b0c2b00a15f85521862d2d",
+    "assets/house_l0_f_fresh-v1.png": "957949dc0bbb0159a3736e0581e0f52819a7804334204c4ed77a776ad80b8d4f",
+    "assets/house_l0_f_snow-v1.png": "b0d58706fb60c762aa99efb1143b9833f2ba7bf0d6215c6888e149548b37dbc4",
+    "assets/house_l0_f_boarded-v1.png": "436d04e2a5288515f102109af4c08910a0fc9c71230222dc33a76eddc1ffa7f3"
+  },
+  "canonical_hash_note": "Final delivered hashes after root contact normalization; earlier per-generation/final hashes retained as pre-normalization provenance. CSV and this map are final."
+}

@@ -1,0 +1,618 @@
+{
+  "status": "candidate",
+  "level": 4,
+  "tool": "builtin image_gen",
+  "model": null,
+  "seed": null,
+  "canvas": [
+    161,
+    161
+  ],
+  "enginePivot": null,
+  "pivotPolicy": "Input contains no engine pivot metadata. Canvas coordinates unchanged; no invented engine pivot.",
+  "contactPolicy": "For every reference column take lowest alpha>=16 pixel where y>=0.6*height; preserve y-2 and every lower pixel exactly. States have alpha=0 in this mask.",
+  "variants": [
+    {
+      "id": "c",
+      "requested": "muted terracotta flat clay TILE roof, transverse broad gable, ivory-white limewash, close vertical timber studs, narrow rich merchant shutter storefront",
+      "prompt": "Use case: precise-object-edit. Create ONE transparent RGBA isometric medieval city-building game sprite, a new L4 merchant-house variant. Input is project-owned base house, style/camera/footprint reference. Keep SAME screen position, camera, building width and height, foundation diamond, doorway foot-contact, canvas composition. South England 1300-1450, three-storey prosperous jettied timber-frame house. Change architecture to muted terracotta flat clay TILE roof, transverse broad gable, ivory-white limewash, close vertical timber studs, narrow rich merchant shutter storefront. SAME small low grey stone foundation, no extension beyond footprint. Preserve original lowest foundation contact silhouette exactly. Hand-painted detailed game art like reference, subdued natural materials. Absolutely NO chimney, chimney pot, modern glass, blue glass, text, watermark, terrain, background or people. Actual transparent background. Roof silhouette may change but total size remains reference size. One isolated house ONLY.",
+      "reference": "references/house_l4-v2.png",
+      "native": "native/l4/c.png",
+      "asset": "assets/house_l4_c-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-0cac263d-9bc2-4ada-a264-10114c0cd4a2.png",
+      "postprocessing": "Alpha >16 bounding-box extracted and normalized to reference [25,11,114,147], RGBA 161 square, narrow per-column contact restored from reference.",
+      "material": "muted clay flat tile",
+      "shape": "gable",
+      "wall": "ivory/vertical studs",
+      "additions": "commercial shutter shopfront, doorway, low stone base",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "008bc4f94b115554faf9c3e9808b74a8649b3ff8454e7b26a1af9640eb97f7c7",
+      "nativeSHA256": "117db98fc654919a475b5005417b53609060fa30b7d6eb57df2c8c1ab1740843"
+    },
+    {
+      "id": "d",
+      "requested": "muted brown clay TILE roof, HALF-HIP roof ends, pale ochre limewash, square timber panels and diagonal braces, rich commercial front with projecting little counter",
+      "prompt": "Use case: precise-object-edit. Create ONE transparent RGBA isometric medieval city-building game sprite, a new L4 merchant-house variant. Input is project-owned base house, style/camera/footprint reference. Keep SAME screen position, camera, building width and height, foundation diamond, doorway foot-contact, canvas composition. South England 1300-1450, three-storey prosperous jettied timber-frame house. Change architecture to muted brown clay TILE roof, HALF-HIP roof ends, pale ochre limewash, square timber panels and diagonal braces, rich commercial front with projecting little counter. SAME small low grey stone foundation, no extension beyond footprint. Preserve original lowest foundation contact silhouette exactly. Hand-painted detailed game art like reference, subdued natural materials. Absolutely NO chimney, chimney pot, modern glass, blue glass, text, watermark, terrain, background or people. Actual transparent background. Roof silhouette may change but total size remains reference size. One isolated house ONLY.",
+      "reference": "references/house_l4-v2.png",
+      "native": "native/l4/d.png",
+      "asset": "assets/house_l4_d-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-a41d7ce1-0739-4330-8e72-5a1631524a60.png",
+      "postprocessing": "Alpha >16 bounding-box extracted and normalized to reference [25,11,114,147], RGBA 161 square, narrow per-column contact restored from reference.",
+      "material": "muted clay flat tile",
+      "shape": "shallow half-hip",
+      "wall": "ochre/square diagonal braces",
+      "additions": "commercial shutter shopfront, doorway, low stone base",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "47966bc91a488f8b4c16a1c60d7894a4e0839aeca42bf2c3c1b52ff623c54ae5",
+      "nativeSHA256": "b14f4ca6830fb02a2bbe3a241da36b6607c187ac43d7b4a29aba4022115950fc"
+    },
+    {
+      "id": "e",
+      "requested": "warm grey rough stone SLAB roof (stone slate, NOT blue shiny slate), HIPPED roof, pale pink limewash, curved timber braces, rich commercial front of two shuttered shop bays",
+      "prompt": "Use case: precise-object-edit. Create ONE transparent RGBA isometric medieval city-building game sprite, a new L4 merchant-house variant. Input is project-owned base house, style/camera/footprint reference. Keep SAME screen position, camera, building width and height, foundation diamond, doorway foot-contact, canvas composition. South England 1300-1450, three-storey prosperous jettied timber-frame house. Change architecture to warm grey rough stone SLAB roof (stone slate, NOT blue shiny slate), HIPPED roof, pale pink limewash, curved timber braces, rich commercial front of two shuttered shop bays. SAME small low grey stone foundation, no extension beyond footprint. Preserve original lowest foundation contact silhouette exactly. Hand-painted detailed game art like reference, subdued natural materials. Absolutely NO chimney, chimney pot, modern glass, blue glass, text, watermark, terrain, background or people. Actual transparent background. Roof silhouette may change but total size remains reference size. One isolated house ONLY.",
+      "reference": "references/house_l4-v2.png",
+      "native": "native/l4/e.png",
+      "asset": "assets/house_l4_e-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-5c7e55f5-3156-4b19-8b6f-fdc0a39f5595.png",
+      "postprocessing": "Alpha >16 bounding-box extracted and normalized to reference [25,11,114,147], RGBA 161 square, narrow per-column contact restored from reference.",
+      "material": "warm grey stone slabs",
+      "shape": "hip",
+      "wall": "pink/curved braces",
+      "additions": "commercial shutter shopfront, doorway, low stone base",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "2510efa2dea17c77150b09adb45206938c465f84accef1697598a13782d9d8b3",
+      "nativeSHA256": "fb06c29121fae1fb48eb4103ed875b8915c04fc78153ee39cba9f1e0c3e49cbe"
+    },
+    {
+      "id": "f",
+      "requested": "warm grey rough stone SLAB roof (stone slate, NOT blue shiny slate), steep reverse-axis GABLE roof, creamy white limewash with ochre panels, dense diagonal bracing, rich commercial front with recessed doorway",
+      "prompt": "Use case: precise-object-edit. Create ONE transparent RGBA isometric medieval city-building game sprite, a new L4 merchant-house variant. Input is project-owned base house, style/camera/footprint reference. Keep SAME screen position, camera, building width and height, foundation diamond, doorway foot-contact, canvas composition. South England 1300-1450, three-storey prosperous jettied timber-frame house. Change architecture to warm grey rough stone SLAB roof (stone slate, NOT blue shiny slate), steep reverse-axis GABLE roof, creamy white limewash with ochre panels, dense diagonal bracing, rich commercial front with recessed doorway. SAME small low grey stone foundation, no extension beyond footprint. Preserve original lowest foundation contact silhouette exactly. Hand-painted detailed game art like reference, subdued natural materials. Absolutely NO chimney, chimney pot, modern glass, blue glass, text, watermark, terrain, background or people. Actual transparent background. Roof silhouette may change but total size remains reference size. One isolated house ONLY.",
+      "reference": "references/house_l4-v2.png",
+      "native": "native/l4/f.png",
+      "asset": "assets/house_l4_f-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-6be2f241-8951-4d93-83c5-cb4691d6efe3.png",
+      "postprocessing": "Alpha >16 bounding-box extracted and normalized to reference [25,11,114,147], RGBA 161 square, narrow per-column contact restored from reference.",
+      "material": "warm grey stone slabs",
+      "shape": "gable",
+      "wall": "cream ochre/dense diagonal braces",
+      "additions": "commercial shutter shopfront, doorway, low stone base",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "483b287216ff3a125a3feecc2d72dd37d2f46dac7339151b80a35d90783eb1ed",
+      "nativeSHA256": "25271e46581a7d8ec2df8ee182637aacf212e8173333867844ee4a46bf2d9077"
+    }
+  ],
+  "states": [
+    {
+      "id": "c",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Make walls visibly aged: faded limewash, small cracks and dirty patches; a little subtle olive moss on roof tiles/slabs; timber slightly faded. Keep structure intact. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_c-v1.png",
+      "native": "native/l4/c_weathered.png",
+      "asset": "assets/house_l4_c_weathered-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-3d682441-81c5-43f0-98a4-6163ede1122b.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "b680b8997389117f3c4c0bb22de8f94069874d7529456933bf0b7611024e8bc6",
+      "nativeSHA256": "282e7874f4f6057e07230c2d6306905d99c8061bf2059255e27b86dd0d0264b5"
+    },
+    {
+      "id": "c",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Make walls freshly limewashed brighter but same colors, exposed timber freshly finished warm brown, roof clean and repaired. Keep original material and structure. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_c-v1.png",
+      "native": "native/l4/c_fresh.png",
+      "asset": "assets/house_l4_c_fresh-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-5b1486cd-1ded-4b7c-b588-53087a8688b5.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "fe2c6790c3d81c52dd0c1f5130ef4b2397d3998745b88d6ee41afd2c05be6fb1",
+      "nativeSHA256": "48e60f762e6c41243145494b13c10a95851a5f03cd8d26c6e2ea326df0476247"
+    },
+    {
+      "id": "c",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Place thick off-white snow patches covering approximately 70% (60–80%) of visible roof surface. Exposed roof remaining around eaves and sparse melted gaps. Small snow on ledges. Do not add falling snow or snow outside house. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_c-v1.png",
+      "native": "native/l4/c_snow.png",
+      "asset": "assets/house_l4_c_snow-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-c91ac46e-123a-4510-a4f5-65b9c7b50b82.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "67f2311bd4b7e0476d0e7f5dfd91325f44aa5a56a29ba98012aaf9ebc69530dd",
+      "nativeSHA256": "2e36ed05bf9b98036c5281769f7d1427d7b6c8f269f82b7cf411c0edb1bc3211"
+    },
+    {
+      "id": "c",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Board shut the merchant door and each visible window using THICK dark weathered wooden cross-planks, visibly crossed X boards or sturdy horizontal paired planks. Boards only on openings; retain roof and walls. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_c-v1.png",
+      "native": "native/l4/c_boarded.png",
+      "asset": "assets/house_l4_c_boarded-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-4bae91f4-768b-4a7c-94f1-77ad708d4ad2.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "846ba4c40a8c8898a037ac2c54c7124938ec97bf816c1f171825b691425d03c3",
+      "nativeSHA256": "bbae02ee3f6bad3ffd1ae25411c500982ee0ee9a88fa484619b4e0116e9e8bfa"
+    },
+    {
+      "id": "d",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Make walls visibly aged: faded limewash, small cracks and dirty patches; a little subtle olive moss on roof tiles/slabs; timber slightly faded. Keep structure intact. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_d-v1.png",
+      "native": "native/l4/d_weathered.png",
+      "asset": "assets/house_l4_d_weathered-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-b90ce0d2-fc06-4add-b363-28b885808eb9.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "7856f2a4bf487f0183b80a14181cd610e863af71bd7ee846c59688d6dc88da2c",
+      "nativeSHA256": "2cbd81fbaa81198f1b26c0a25608165437d9a4aee29459fb3363f80314f41af6"
+    },
+    {
+      "id": "d",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Make walls freshly limewashed brighter but same colors, exposed timber freshly finished warm brown, roof clean and repaired. Keep original material and structure. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_d-v1.png",
+      "native": "native/l4/d_fresh.png",
+      "asset": "assets/house_l4_d_fresh-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-89ebc5c4-cec6-4142-a250-6379a234fb93.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "87e54d138811daab962d3070d842ec31396014f6a9c2a1800e22a67292d49be9",
+      "nativeSHA256": "3307a1677bcffa5994e553fc2ce70fe16540d09c902616e5ec2a24326921c39e"
+    },
+    {
+      "id": "d",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Place thick off-white snow patches covering approximately 70% (60–80%) of visible roof surface. Exposed roof remaining around eaves and sparse melted gaps. Small snow on ledges. Do not add falling snow or snow outside house. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_d-v1.png",
+      "native": "native/l4/d_snow.png",
+      "asset": "assets/house_l4_d_snow-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-c426750b-d4ca-471c-8640-dc55fb541794.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "d8b931d1a2af13939ff1bbb66101d743d1370913c4b3e773fdda2f1a291c9629",
+      "nativeSHA256": "e5dddb2defff6aeac691911d0e81b2bf308d5abb167bd3a8ecb879ebbb025651"
+    },
+    {
+      "id": "d",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Board shut the merchant door and each visible window using THICK dark weathered wooden cross-planks, visibly crossed X boards or sturdy horizontal paired planks. Boards only on openings; retain roof and walls. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_d-v1.png",
+      "native": "native/l4/d_boarded.png",
+      "asset": "assets/house_l4_d_boarded-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-e459623a-aae5-497f-8388-183a2c6e4253.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "ee1bb68891f94be44c19b389fab87be964a1836e4d433175dec7ac337035fc3e",
+      "nativeSHA256": "4213c7b0e0ce0f98dee31e67fa1b6b50fcd8f4f92f0c0bb279d8dbbfd0bc8239"
+    },
+    {
+      "id": "e",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Make walls visibly aged: faded limewash, small cracks and dirty patches; a little subtle olive moss on roof tiles/slabs; timber slightly faded. Keep structure intact. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_e-v1.png",
+      "native": "native/l4/e_weathered.png",
+      "asset": "assets/house_l4_e_weathered-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-46d523f1-a5c4-4bd7-8779-4e7bdd92f7c2.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "ffa86e009aa38289e8d225a2dfd65b4d8f00926f460c2402066f37a11bb22461",
+      "nativeSHA256": "cd6a4202aebeaf60bd738e3d43e0855acdc89e72f47a8e19ecddd360c0939b77"
+    },
+    {
+      "id": "e",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Make walls freshly limewashed brighter but same colors, exposed timber freshly finished warm brown, roof clean and repaired. Keep original material and structure. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_e-v1.png",
+      "native": "native/l4/e_fresh.png",
+      "asset": "assets/house_l4_e_fresh-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-61f5c72b-6515-45c2-9118-4a90905805c8.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "b35eb6895de942b0120f53dbe1408a9278ea29eb88646dd5822c968ed573f7ff",
+      "nativeSHA256": "6dfe73eccdf4a1edb91cb82c47ee0994d626a9059b381e5de0b8b78eaa0567b7"
+    },
+    {
+      "id": "e",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Place thick off-white snow patches covering approximately 70% (60–80%) of visible roof surface. Exposed roof remaining around eaves and sparse melted gaps. Small snow on ledges. Do not add falling snow or snow outside house. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_e-v1.png",
+      "native": "native/l4/e_snow.png",
+      "asset": "assets/house_l4_e_snow-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-65bd5562-5a4f-44c1-b25f-a8cc3ca941e3.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "bf3d7e452025f486c11d0ce8a3460acb1c6cc22529076111858440c89d87b1e0",
+      "nativeSHA256": "9a4f843d6384236465563042e1708acb6cf5fd6ecdd8d06cd217eb4af8bfdaf6"
+    },
+    {
+      "id": "e",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Board shut the merchant door and each visible window using THICK dark weathered wooden cross-planks, visibly crossed X boards or sturdy horizontal paired planks. Boards only on openings; retain roof and walls. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_e-v1.png",
+      "native": "native/l4/e_boarded.png",
+      "asset": "assets/house_l4_e_boarded-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-7aa5407d-c250-4d52-83f6-e3cfaea82b50.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "d6ce90d9d65a77a5388775596c1a757e999f644674c6a6fadb72197582fc782d",
+      "nativeSHA256": "56cbcf126ea3798786e6d8386275b5a875b3ee7eafe664440dde4b21a934416b"
+    },
+    {
+      "id": "f",
+      "state": "weathered",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Make walls visibly aged: faded limewash, small cracks and dirty patches; a little subtle olive moss on roof tiles/slabs; timber slightly faded. Keep structure intact. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_f-v1.png",
+      "native": "native/l4/f_weathered.png",
+      "asset": "assets/house_l4_f_weathered-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-86de0e9c-8054-4c05-9d0f-291e9d089499.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "48d8ec0a5dd0fd6ebd33358dc83c721cf692d877b3f40b9c55d969b27e3d8972",
+      "nativeSHA256": "f9e35226701211f65da1a81c5dddb7e98ed58b1cafbe441b21900b6b0bf5ea67"
+    },
+    {
+      "id": "f",
+      "state": "fresh",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Make walls freshly limewashed brighter but same colors, exposed timber freshly finished warm brown, roof clean and repaired. Keep original material and structure. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_f-v1.png",
+      "native": "native/l4/f_fresh.png",
+      "asset": "assets/house_l4_f_fresh-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-9f745cf1-d257-4c8d-b295-8e178e2aadff.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "50380234c061235ce0eac0abd076d1294e9a23ff57560607103434724dde83d7",
+      "nativeSHA256": "e53c1468eeb078033c63b1bc0a48fc5b5518be3b3519d6111e471ef127e53457"
+    },
+    {
+      "id": "f",
+      "state": "snow",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Place thick off-white snow patches covering approximately 70% (60–80%) of visible roof surface. Exposed roof remaining around eaves and sparse melted gaps. Small snow on ledges. Do not add falling snow or snow outside house. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_f-v1.png",
+      "native": "native/l4/f_snow.png",
+      "asset": "assets/house_l4_f_snow-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-1b4c8ac2-c3e6-4af6-adf4-56b25cb8839f.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "8f40edfe3407a79ca3c2e94ffe265fc3917c163c6d364dc5f0b66a1ddbcf314b",
+      "nativeSHA256": "77657dec796f3d6fa2e1dca37b5fd4fe45eeafabe8135b01ccb51c8faa46d50b"
+    },
+    {
+      "id": "f",
+      "state": "boarded",
+      "prompt": "Use case: lighting-weather. Exact registered image edit of this provided project-owned house sprite. Board shut the merchant door and each visible window using THICK dark weathered wooden cross-planks, visibly crossed X boards or sturdy horizontal paired planks. Boards only on openings; retain roof and walls. All other pixels, position, camera, footprint, roof geometry, canvas framing, lighting and silhouette stay identical. NO chimney or glass, no background, no ground, no text. Actual transparent RGBA. Output one complete edited house sprite, for technical difference extraction into an overlay. Preserve the lowest foundation contact band exactly unchanged.",
+      "reference": "assets/house_l4_f-v1.png",
+      "native": "native/l4/f_boarded.png",
+      "asset": "assets/house_l4_f_boarded-v1.png",
+      "generatorOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7be-fa2b-7a40-864f-501332ffe991/exec-5bca5b96-da07-437f-9608-c9599ef5eae0.png",
+      "extraction": "Full generated state bbox registered; material-specific sparse difference extraction scripts/l4-process.cjs. Base alpha clip; per-column contact exclusion. weathered/fresh alpha capped175.",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "finalSHA256": "3bec001cd1fceffd25c5f20b40d96584e3e6565e1ec3ac981559ecdb52626658",
+      "nativeSHA256": "5f9e6d3772e5494ae1652fda048055e38e15e460588663556bdf24de9503add9"
+    }
+  ],
+  "visualReview": {
+    "reviewed": "native/l4/qa-composites.png at native161px",
+    "result": "Distinct4bases; no chimneys/modern blue glass; thick crossboards readable, subtle weathering; roof snow64.3–74.8%",
+    "limitations": [
+      "f requested reverse-axis gable not achieved; observed same broad axis, distinct stone roof and dense bracing.",
+      "d shallow half-hip subtle.",
+      "Engine pivot metadata absent; runtime unverified.",
+      "Parent will unify canonical contact mask."
+    ],
+    "oldOverlays": "Changed roof/opening morphology required new pervariant snow and boards."
+  },
+  "qa": [
+    {
+      "id": "c",
+      "baseContactMaxError": 0
+    },
+    {
+      "id": "c",
+      "state": "weathered",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2436,
+      "basePixels": 11819
+    },
+    {
+      "id": "c",
+      "state": "fresh",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2313,
+      "basePixels": 11819
+    },
+    {
+      "id": "c",
+      "state": "snow",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2626,
+      "basePixels": 11819,
+      "roofPolygon": [
+        [
+          25,
+          43
+        ],
+        [
+          46,
+          11
+        ],
+        [
+          118,
+          52
+        ],
+        [
+          97,
+          83
+        ]
+      ],
+      "roofPixels": 3107,
+      "coveredRoofPixels": 2237,
+      "roofCoverage": 0.7199871258448665
+    },
+    {
+      "id": "c",
+      "state": "boarded",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 3662,
+      "basePixels": 11819
+    },
+    {
+      "id": "d",
+      "baseContactMaxError": 0
+    },
+    {
+      "id": "d",
+      "state": "weathered",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2340,
+      "basePixels": 11894
+    },
+    {
+      "id": "d",
+      "state": "fresh",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2138,
+      "basePixels": 11894
+    },
+    {
+      "id": "d",
+      "state": "snow",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2232,
+      "basePixels": 11894,
+      "roofPolygon": [
+        [
+          25,
+          43
+        ],
+        [
+          46,
+          11
+        ],
+        [
+          118,
+          52
+        ],
+        [
+          97,
+          83
+        ]
+      ],
+      "roofPixels": 3108,
+      "coveredRoofPixels": 1998,
+      "roofCoverage": 0.6428571428571429
+    },
+    {
+      "id": "d",
+      "state": "boarded",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 3647,
+      "basePixels": 11894
+    },
+    {
+      "id": "e",
+      "baseContactMaxError": 0
+    },
+    {
+      "id": "e",
+      "state": "weathered",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2879,
+      "basePixels": 12202
+    },
+    {
+      "id": "e",
+      "state": "fresh",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 3682,
+      "basePixels": 12202
+    },
+    {
+      "id": "e",
+      "state": "snow",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2660,
+      "basePixels": 12202,
+      "roofPolygon": [
+        [
+          25,
+          39
+        ],
+        [
+          75,
+          11
+        ],
+        [
+          138,
+          47
+        ],
+        [
+          100,
+          78
+        ]
+      ],
+      "roofPixels": 3494,
+      "coveredRoofPixels": 2473,
+      "roofCoverage": 0.707784773898111
+    },
+    {
+      "id": "e",
+      "state": "boarded",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 3966,
+      "basePixels": 12202
+    },
+    {
+      "id": "f",
+      "baseContactMaxError": 0
+    },
+    {
+      "id": "f",
+      "state": "weathered",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 3103,
+      "basePixels": 11748
+    },
+    {
+      "id": "f",
+      "state": "fresh",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2022,
+      "basePixels": 11748
+    },
+    {
+      "id": "f",
+      "state": "snow",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 2582,
+      "basePixels": 11748,
+      "roofPolygon": [
+        [
+          25,
+          43
+        ],
+        [
+          46,
+          11
+        ],
+        [
+          118,
+          52
+        ],
+        [
+          97,
+          83
+        ]
+      ],
+      "roofPixels": 3118,
+      "coveredRoofPixels": 2331,
+      "roofCoverage": 0.7475946119307249
+    },
+    {
+      "id": "f",
+      "state": "boarded",
+      "exteriorPixels": 0,
+      "contactPixels": 0,
+      "overlayPixels": 3553,
+      "basePixels": 11748
+    }
+  ],
+  "canonical_final_hashes": {
+    "assets/house_l4_c-v1.png": "0d5d7bf4bbfb28689f4016a977c53dc8d0afd9207519ec84d57955edbc3ba11c",
+    "assets/house_l4_c_weathered-v1.png": "e79081e4aa56dcd3d1317c4651080230bfb4d339f013909278023771f50d060f",
+    "assets/house_l4_c_fresh-v1.png": "69eb4d63e71e318492b309832fe8efef3f8a16ca400ffb90b5c302a325ec5a3e",
+    "assets/house_l4_c_snow-v1.png": "3664bacb2d27892166ea93d68d4e131f19cb9bdc693f3aa5770834854fa5366e",
+    "assets/house_l4_c_boarded-v1.png": "74e345b25cbbc691fe68558f057a8d62f31c606982e7d20002711397b9175aec",
+    "assets/house_l4_d-v1.png": "e79c63be6c8e10a151697b9f9fb6aa00345413eabf50a0d1005e32f92ac08066",
+    "assets/house_l4_d_weathered-v1.png": "09ddb9c93682c393d16174eaf92677078042bcc3eba18a89c270b6b9a5dc3787",
+    "assets/house_l4_d_fresh-v1.png": "e58ce91588d73217fb979300be76dbc5b98f45d1e453d7d39d2f8fa17c9f503d",
+    "assets/house_l4_d_snow-v1.png": "f1067b8c998d326a77fa45f5e52f1fb5ba0a67f634b311b73645d9ba2a13ffd6",
+    "assets/house_l4_d_boarded-v1.png": "c5197f31f5fabbd5b64f759058b8f70a8099064ed445d7d722145413882f0ce6",
+    "assets/house_l4_e-v1.png": "24ed2419aec7d849c834d188356ad40b2389ca5f0fae192acf5c66124ca292b1",
+    "assets/house_l4_e_weathered-v1.png": "14f3eea11160c337fa8507ba6bbd039e90384aee23b8047effbdf6ea175f7d31",
+    "assets/house_l4_e_fresh-v1.png": "df147d51b1afb7170ac19330a24b84bb54d6032bec92d270c43114217cc85bb3",
+    "assets/house_l4_e_snow-v1.png": "c9f477e481035292a7f269f870c9a36852adf6ed5c744f65aebe09f1824ed734",
+    "assets/house_l4_e_boarded-v1.png": "33f5aa6bde8ffdf45edaee2c7085f3ad691061d475d1af189749df796869f98c",
+    "assets/house_l4_f-v1.png": "97f81a77e7369382493e7c89175318d74a2bc45637a0e73151e755ff0c0b6203",
+    "assets/house_l4_f_weathered-v1.png": "d43e2cc049c42e099d3690b4a72d79adf1dcfa60c3aef63064128c162593631f",
+    "assets/house_l4_f_fresh-v1.png": "92623927304d78a2348bafbdd4879143ef7b7e1e808d28e343717bd5d84a7909",
+    "assets/house_l4_f_snow-v1.png": "bda0cc9cc57038c3183afbdee6548de0c671bda17c8b2cca8b88a888c300d7ca",
+    "assets/house_l4_f_boarded-v1.png": "4cbee401e6247ba9553a6ab4769f0671307b655a34d4ed65cfeeb0dd880ff43f"
+  },
+  "canonical_hash_note": "Final delivered hashes after root contact normalization; earlier per-generation/final hashes retained as pre-normalization provenance. CSV and this map are final."
+}

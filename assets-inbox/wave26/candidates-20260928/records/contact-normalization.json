@@ -1,0 +1,405 @@
+{
+  "rule": "Percolumn lowest source alpha>=16. If at/below .6H, restore source RGBA from bottom-2 downward; else clear source-transparent lowerquarter exterior. State alpha zero on this mask and outside finalbase. No roof/body redesign.",
+  "rows": [
+    {
+      "file": "house_l0_c-v1.png",
+      "changed_channels": 35
+    },
+    {
+      "file": "house_l0_c_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_c_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_c_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_c_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_d-v1.png",
+      "changed_channels": 35
+    },
+    {
+      "file": "house_l0_d_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_d_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_d_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_d_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_e-v1.png",
+      "changed_channels": 35
+    },
+    {
+      "file": "house_l0_e_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_e_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_e_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_e_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_f-v1.png",
+      "changed_channels": 36
+    },
+    {
+      "file": "house_l0_f_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_f_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_f_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l0_f_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l1_c-v1.png",
+      "changed_channels": 332
+    },
+    {
+      "file": "house_l1_c_weathered-v1.png",
+      "changed_channels": 288
+    },
+    {
+      "file": "house_l1_c_fresh-v1.png",
+      "changed_channels": 16
+    },
+    {
+      "file": "house_l1_c_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l1_c_boarded-v1.png",
+      "changed_channels": 99
+    },
+    {
+      "file": "house_l1_d-v1.png",
+      "changed_channels": 332
+    },
+    {
+      "file": "house_l1_d_weathered-v1.png",
+      "changed_channels": 4
+    },
+    {
+      "file": "house_l1_d_fresh-v1.png",
+      "changed_channels": 136
+    },
+    {
+      "file": "house_l1_d_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l1_d_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l1_e-v1.png",
+      "changed_channels": 332
+    },
+    {
+      "file": "house_l1_e_weathered-v1.png",
+      "changed_channels": 168
+    },
+    {
+      "file": "house_l1_e_fresh-v1.png",
+      "changed_channels": 24
+    },
+    {
+      "file": "house_l1_e_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l1_e_boarded-v1.png",
+      "changed_channels": 336
+    },
+    {
+      "file": "house_l1_f-v1.png",
+      "changed_channels": 332
+    },
+    {
+      "file": "house_l1_f_weathered-v1.png",
+      "changed_channels": 52
+    },
+    {
+      "file": "house_l1_f_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l1_f_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l1_f_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l2_c-v1.png",
+      "changed_channels": 29
+    },
+    {
+      "file": "house_l2_c_weathered-v1.png",
+      "changed_channels": 2069
+    },
+    {
+      "file": "house_l2_c_fresh-v1.png",
+      "changed_channels": 1471
+    },
+    {
+      "file": "house_l2_c_snow-v1.png",
+      "changed_channels": 665
+    },
+    {
+      "file": "house_l2_c_boarded-v1.png",
+      "changed_channels": 6
+    },
+    {
+      "file": "house_l2_d-v1.png",
+      "changed_channels": 9
+    },
+    {
+      "file": "house_l2_d_weathered-v1.png",
+      "changed_channels": 186
+    },
+    {
+      "file": "house_l2_d_fresh-v1.png",
+      "changed_channels": 160
+    },
+    {
+      "file": "house_l2_d_snow-v1.png",
+      "changed_channels": 425
+    },
+    {
+      "file": "house_l2_d_boarded-v1.png",
+      "changed_channels": 6
+    },
+    {
+      "file": "house_l2_e-v1.png",
+      "changed_channels": 12
+    },
+    {
+      "file": "house_l2_e_weathered-v1.png",
+      "changed_channels": 148
+    },
+    {
+      "file": "house_l2_e_fresh-v1.png",
+      "changed_channels": 34
+    },
+    {
+      "file": "house_l2_e_snow-v1.png",
+      "changed_channels": 182
+    },
+    {
+      "file": "house_l2_e_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l2_f-v1.png",
+      "changed_channels": 10
+    },
+    {
+      "file": "house_l2_f_weathered-v1.png",
+      "changed_channels": 1194
+    },
+    {
+      "file": "house_l2_f_fresh-v1.png",
+      "changed_channels": 710
+    },
+    {
+      "file": "house_l2_f_snow-v1.png",
+      "changed_channels": 1036
+    },
+    {
+      "file": "house_l2_f_boarded-v1.png",
+      "changed_channels": 351
+    },
+    {
+      "file": "house_l3_c-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_c_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_c_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_c_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_c_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_d-v1.png",
+      "changed_channels": 2
+    },
+    {
+      "file": "house_l3_d_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_d_fresh-v1.png",
+      "changed_channels": 3
+    },
+    {
+      "file": "house_l3_d_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_d_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_e-v1.png",
+      "changed_channels": 46
+    },
+    {
+      "file": "house_l3_e_weathered-v1.png",
+      "changed_channels": 9
+    },
+    {
+      "file": "house_l3_e_fresh-v1.png",
+      "changed_channels": 15
+    },
+    {
+      "file": "house_l3_e_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_e_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_f-v1.png",
+      "changed_channels": 25
+    },
+    {
+      "file": "house_l3_f_weathered-v1.png",
+      "changed_channels": 6
+    },
+    {
+      "file": "house_l3_f_fresh-v1.png",
+      "changed_channels": 6
+    },
+    {
+      "file": "house_l3_f_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l3_f_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_c-v1.png",
+      "changed_channels": 35
+    },
+    {
+      "file": "house_l4_c_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_c_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_c_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_c_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_d-v1.png",
+      "changed_channels": 46
+    },
+    {
+      "file": "house_l4_d_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_d_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_d_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_d_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_e-v1.png",
+      "changed_channels": 11
+    },
+    {
+      "file": "house_l4_e_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_e_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_e_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_e_boarded-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_f-v1.png",
+      "changed_channels": 32
+    },
+    {
+      "file": "house_l4_f_weathered-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_f_fresh-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_f_snow-v1.png",
+      "changed_channels": 0
+    },
+    {
+      "file": "house_l4_f_boarded-v1.png",
+      "changed_channels": 0
+    }
+  ]
+}
