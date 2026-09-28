@@ -333,6 +333,8 @@
 .famine-option-predicted, .petition-predicted { font-size: 12px; font-weight: 600; }
 .story-modal-later { justify-self: end; min-height: 44px; }
 .petition-card { position: relative; width: min(720px, 96vw); min-height: 620px; padding: 0; background: none; border: 0; }
+/* UI-8: a card with two answers (chapter 3's, PetitionDef.responses) is one answer shorter. */
+.petition-card[data-answers="2"] { min-height: 540px; }
 .petition-frame { position: absolute; inset: 0; box-sizing: border-box; }
 .petition-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; padding: 4px 8px; }
 .petition-who { display: flex; gap: 6px; align-items: center; font-weight: 600; }

@@ -80,7 +80,7 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
   return (
     <div className="story-modal-backdrop" role="presentation">
       <section className="story-modal petition-card" role="dialog" aria-modal="true" aria-label={presentation.title} data-petition={view.petitionId}
-        data-def={presentation.defId}>
+        data-def={presentation.defId} data-answers={view.options.length}>
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
         {/* UI-6b: the sender's arms in the frame's empty roundel (its top-left corner). */}
         {from === null ? null : <span className="petition-roundel"><EmblemImage emblem={from.arms} size={38} label={PETITION_COPY.arms(from.name)} /></span>}
