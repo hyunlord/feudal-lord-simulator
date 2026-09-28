@@ -22,6 +22,7 @@ import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
+import { PersonList } from "../persons/PersonViews";
 import { Button } from "../kit";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { LORDSHIP_COPY } from "../lordshipCopy.ko";
@@ -158,8 +159,11 @@ type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map";
  * row lights the buildings holding it on the map, a column head opens that store's inspector (UX-3R2). Alerts,
  * overlays and the map are its other tabs.
  */
-/** UI-6 (FAIL-3, F2-A): the rights tab — Wave 14's rights register frame, the house's arms, each right with its icon. */
-function RightsRegister({ view }: { readonly view: LordshipView }) {
+/**
+ * UI-6 (FAIL-3, F2-A): the rights tab — Wave 14's rights register frame, the house's arms, each right with its icon.
+ * UI-7: under the house, its household (the lord's family and the steward), each chip opening the person card.
+ */
+export function RightsRegister({ view, onPerson }: { readonly view: LordshipView; readonly onPerson: ((personId: string) => void) | undefined }) {
   return (
     <section className="ledger-rights" aria-label={LORDSHIP_COPY.heading} style={wave14FrameStyle("frame_rights_register")}>
       {/* The register is a book open on two pages: the house (its arms, title, a decline) on the left, its rights, what it
@@ -170,6 +174,8 @@ function RightsRegister({ view }: { readonly view: LordshipView }) {
         <div><p className="ledger-rights-house-name">{view.house}</p><p>{view.title}{view.demoted === null ? null : <> · <span className="ledger-rights-lost">{view.demoted}</span></>}</p>
           {view.pastHouses === null ? null : <p>{view.pastHouses}</p>}</div>
       </header>
+      {view.household.length === 0 ? null : <section className="ledger-rights-household" aria-label={PERSONS_COPY.lordHouseholdHeading}>
+        <h4>{PERSONS_COPY.lordHouseholdHeading}</h4><PersonList rows={view.household} onOpen={onPerson} /></section>}
       {view.decline === null ? null : <p className="ledger-rights-lost" role="status">{view.decline}</p>}
       {view.war.length === 0 ? null : <><h4>{LORDSHIP_COPY.warHeading}</h4><ul>{view.war.map(line => <li key={line}>{line}</li>)}</ul></>}
       </div>
@@ -185,11 +191,13 @@ function RightsRegister({ view }: { readonly view: LordshipView }) {
   );
 }
 
-export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight, onOpenChronicle }: {
+export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight, onOpenChronicle, onPerson }: {
   readonly state: GameState; readonly onInspect: (id: string) => void; readonly onClose: () => void;
   readonly viewTab: ReactNode; readonly mapTab: ReactNode;
   /** CHRON-1: the [연대기] tab opens the chronicle screen (a modal: time stops). */
   readonly onOpenChronicle?: () => void;
+  /** UI-7: a person of the lord's household (the rights tab) opens their person card. */
+  readonly onPerson?: (personId: string) => void;
   readonly history?: StoreStockHistory | null; readonly food?: { readonly days: number | null };
   readonly highlighted?: readonly string[]; readonly onHighlight?: (ids: readonly string[]) => void;
 }) {
@@ -231,7 +239,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
           })}</tbody>
         </table></div>)) : null}
       {/* UI-6: the rights register (the house, its arms, the title, the lord's rights and the ones he granted, the war). */}
-      {tab === "rights" ? <RightsRegister view={lordshipView(state)} /> : null}
+      {tab === "rights" ? <RightsRegister view={lordshipView(state)} onPerson={onPerson} /> : null}
       {tab === "alerts" ? (alerts.length === 0 ? <p>{HUD_COPY.ledgerNoAlerts}</p> : <ul className="ledger-alerts">{alerts.map(row => (
         <li key={row.id}><strong>{row.title}</strong> · {row.countLabel}<br /><span>{row.cause}</span>
           <Button type="button" className="ledger-alert-look" onPress={() => { const first = row.targetIds[0]; if (first !== undefined) { platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); } }} variant="secondary">

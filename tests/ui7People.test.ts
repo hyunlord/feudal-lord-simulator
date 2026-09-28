@@ -10,6 +10,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { advanceHistory, history } from "../src/engine/history";
 import type { HistoryRecord } from "../src/engine/history.types";
 import { advancePersons, ageOf, currentYear } from "../src/engine/persons";
+import { lordHouse } from "../src/engine/lordshipState";
 import { persons } from "../src/engine/personsApi";
 import type { Person } from "../src/engine/persons.types";
 import { PORTRAIT_MIN_AGE } from "../src/engine/portraits";
@@ -18,7 +19,10 @@ import { decodeSave } from "../src/save/saveCodec";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { BiographyPage } from "../src/ui/chronicle/BiographyPage";
 import { biographyView, recordCard } from "../src/ui/chronicle/chronicleScreenModel";
-import { personCardView, personRow } from "../src/ui/persons/personModels";
+import { RightsRegister } from "../src/ui/hud/HudShell";
+import { lordshipView } from "../src/ui/lordshipModel";
+import { lordHouseholdRows, personCardView, personRow, stewardPerson } from "../src/ui/persons/personModels";
+import { PERSONS_COPY } from "../src/ui/persons/personsCopy.ko";
 import { PersonCardModal, PersonChip } from "../src/ui/persons/PersonViews";
 import { personStatesReader } from "../src/ui/persons/personStates";
 import { PERSON_TRAIT_COPY } from "../src/ui/persons/personTraitCopy.ko";
@@ -151,4 +155,34 @@ test("UI-7 ledger sentences: the passing states and the bailiff read as Korean s
     assert.equal(life.sentence, sentence);
     assert.doesNotMatch(life.sentence, /person\./);
   }
+});
+
+test("UI-7 the lord's household: the ruling house's family (lord, spouse, children by age) then the steward, with portraits, each opening the person card", () => {
+  const state = ledgerTown();
+  const house = `lord-house:${lordHouse(state).order}`;
+  const family = state.persons!.people.filter(person => person.tags.includes(house) && person.alive && person.leftYear === undefined);
+  assert.ok(family.length >= 2, `${family.length} in the lord's family`);
+  const rows = lordHouseholdRows(state);
+  const steward = stewardPerson(state)!;
+  assert.deepEqual(rows.map(row => row.id).slice(-1), [steward.id], "the steward last");
+  assert.deepEqual(new Set(rows.slice(0, -1).map(row => row.id)), new Set(family.map(person => person.id)));
+  const lord = family.find(person => person.role === "head")!;
+  assert.equal(rows[0]!.id, lord.id);
+  assert.equal(rows[0]!.line, `영주 · ${ageOf(lord, currentYear(state))}살`);
+  const children = rows.filter(row => family.find(person => person.id === row.id)?.role === "child");
+  assert.ok(children.every(row => /^영주의 (아들|딸) · \d+살$/.test(row.line)), children.map(row => row.line).join(", "));
+  for (const row of rows) assert.ok(portraitUrl(row.portraitId, 96) !== null, `${row.id} ${row.portraitId}`);
+  assert.deepEqual(lordshipView(state).household.map(row => row.id), rows.map(row => row.id));
+  // The rights register's house page: a chip (a button that opens the person card) for each, the face drawn.
+  const markup = renderToStaticMarkup(createElement(RightsRegister, { view: lordshipView(state), onPerson: () => undefined }));
+  assert.match(markup, new RegExp(`<section class="ledger-rights-household" aria-label="${PERSONS_COPY.lordHouseholdHeading}">`));
+  for (const row of rows) {
+    assert.match(markup, new RegExp(`<button[^>]*class="person-chip[^"]*"[^>]*data-person="${row.id}"`), row.id);
+    assert.ok(markup.includes(`data-portrait="${row.portraitId}"`), row.portraitId);
+  }
+  // The lord's card names the office in Korean (no "lord").
+  assert.equal(personCardView(state, lord.id)!.role, "가구주 · 영주");
+  // A town without a lord's family: the steward alone.
+  const bare: GameState = { ...state, persons: { ...state.persons!, people: state.persons!.people.filter(person => !person.tags.includes(house)) } };
+  assert.deepEqual(lordHouseholdRows(bare).map(row => row.id), [steward.id]);
 });
