@@ -5,7 +5,9 @@
 #
 #   test         [--typecheck]                              full regression: npm test (all tests/*.test.ts)
 #   guardrail    [--seeds 1,2,3,4,5] [--ticks 1200000] [--lots 24] [--checkpoint]
-#                                                            seeds in parallel: scripts/efficientGrowthRun.ts per seed
+#                                                            seeds in parallel: scripts/efficientGrowthRun.ts per seed,
+#                                                            and beside them the human path (tests/humanPath*.test.ts,
+#                                                            command replay, no bot: CODE-1a) — a failure fails the run
 #   browser      [--repeat 10] [test files ...]              browser tests N times in a row (default: Part7 proof)
 #   perf         [--cells lots24:1:still,...] [--rounds 3] [--baseline perf/baseline-dgx-<sha>.json]
 #                without --baseline: records perf/baseline-dgx-<sha>.json; with it: compares p95 (DGX vs DGX only)
@@ -56,6 +58,13 @@ guardrail)
       rc=$?; echo "$rc $(( $(date +%s) - start ))" > "$OUT/guardrail/seed-$seed.exit" ) &
     pids+=($!)
   done
+  # CODE-1a: a person's path by commands (chapter 1 lives and fills its plots; a barn to barley and the first ale).
+  echo "human path: tests/humanPath*.test.ts"
+  ( start=$(date +%s)
+    node_modules/.bin/tsx --test tests/humanPath*.test.ts > "$OUT/guardrail/human-path.log" 2>&1
+    rc=$?; echo "$rc $(( $(date +%s) - start ))" > "$OUT/guardrail/human-path.exit"
+    echo "$(summarise_tap "$OUT/guardrail/human-path.log")" > "$OUT/guardrail/human-path.txt" ) &
+  pids+=($!)
   wait "${pids[@]}"
   node -e '
     const fs = require("fs"); const dir = process.argv[1]; const rows = [];
@@ -69,7 +78,11 @@ guardrail)
     fs.writeFileSync(`${dir}/summary.json`, JSON.stringify(rows, null, 2) + "\n");
     for (const r of rows) console.log(`seed ${r.seed}: exit ${r.exit} ${r.seconds}s stop=${r.stopReason} tick=${r.tick} guardrail=${r.guardrail}` +
       (r.maxTicks !== null && r.maxTicks < 1200000 ? " (short run: the verdict compares with full 1,200,000-tick baselines and is not a gate result)" : ""));
-    process.exit(rows.every(r => r.exit === 0) ? 0 : 1);
+    const [humanExit, humanSeconds] = fs.readFileSync(`${dir}/human-path.exit`, "utf8").trim().split(" ").map(Number);
+    const humanTotals = fs.readFileSync(`${dir}/human-path.txt`, "utf8").trim();
+    fs.writeFileSync(`${dir}/human-path.json`, JSON.stringify({ exit: humanExit, seconds: humanSeconds, totals: humanTotals }, null, 2) + "\n");
+    console.log(`human path: exit ${humanExit} ${humanSeconds}s ${humanTotals}`);
+    process.exit(rows.every(r => r.exit === 0) && humanExit === 0 ? 0 : 1);
   ' "$OUT/guardrail" "$seeds"
   ;;
 
