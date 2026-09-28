@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-28(INSTALL-3 · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -18,6 +18,18 @@
   - 글꼴은 woff2만(`scripts/woff2OnlyFonts.ts`): dist 63.60 → 54.45 MB. 장 그림 규칙 `src/render/chapterArt.ts`: 2장 전쟁 소품·3장 흑사병 봉쇄 집을 그 장에 들어갈 때(8장, 해제 1.05 MB — Wave 12 시설은 아직 없고 3~5장 삽화는 원래 늦게).
   - 예산표 "시작 시 불러오는 그림 메모리": 1장 시작 441장·해제 66.04 MB(전부 67.10). 다음 후보: 정착 단계별 불러오기(성곽·방어 킷·옛 성문).
   - 검증: DGX 회귀 `531786c` 3,352/3,352, 깨끗한 클론 `6cef5b0` 3,354/3,354·build.
+
+- **PERSON-1a 혈통의 뼈대 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 생성 파일 재생성 예외·손으로 쓴 렌더 0줄, 검증 DGX, 사용자 지시): [보고서](verification/person1a/REPORT.md), [명세](design/lineage.md) LN-1~LN-12, 결정 LN1~LN8.
+  - 사람마다 부모·혈통·형질 여섯이 있다. 유전은 부모 한쪽에서 받고 변이는 5 %다. 이름 관습이 있고, 출생 기록에 이름의 유래가 실린다.
+  - 혈통 세트: 영주 가족 L3(가문 2는 L1), 백작 L6, 인접 기사 L7, 상인 L4·L2, reeve L5, 방앗간 L8이다. 영주 가족이 영주 가솔에 선다. 8세 미만은 공통 풀 얼굴이다. 혈통 초상 326장을 설치 스크립트로 manifest에 넣었다(630장).
+  - 인물 상태 다섯(병·부상·임신·순례·집행관)은 원장에 기록되고, 시뮬레이션에 영향이 없다. 저장 v24.
+  - **관문**
+    - H1~H10.
+    - 머리색이 부모 한쪽과 같은 아이 96.3 %(각 seed 95.6~97.0 %).
+    - 세트 초상 비율 85.7 %(18/21).
+    - 상태 다섯 원장 기록, 다섯 seed 모두.
+  - **검증**: 가드레일 1회차 `40adecb` 5/5(기준선과 해시만 다름). 전체 회귀·깨끗한 클론 `da5ad4b` 3,364/3,364.
+  - **렌더가 넘겨받을 것**: 상태 장식이 읽을 `persons.condition`·태그 `bailiff`, 아기 얼굴, 가계도 API(`parents`·`children`·`lineage`·`resemblance`), 영주 가족(영주 가솔).
 
 - **CODE-1a 계층·사람 경로 상시 관문 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, UI 타입 한 줄·원격 작업 스크립트, 검증 DGX, 사용자 지시): [보고서](verification/code1a/REPORT.md), 결정 CODE1A-D1·D2.
   - `population/marketAccess.ts`는 사유 코드와 거리만 돌려준다(UI 문구 import 0). ESLint 억제 1건·한글 목록 8건을 지웠다.

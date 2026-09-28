@@ -6,13 +6,13 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { PRESSURE_BALANCE } from "../src/content/balanceConfig";
-import { FACTION_DEFS, FACTION_PORTRAIT_POOLS } from "../src/content/factionConfig";
+import { FACTION_DEFS, FACTION_LINEAGE_SETS, FACTION_PORTRAIT_POOLS } from "../src/content/factionConfig";
 import { PORTRAIT_POOL } from "../src/content/portraitPool";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceFactions } from "../src/engine/factions";
 import { personById, personPortrait } from "../src/engine/persons";
 import { initialPolitics } from "../src/engine/politics";
-import { identityFaction } from "../src/engine/portraits";
+import { identityFaction, identityLineage } from "../src/engine/portraits";
 import { decodeSave } from "../src/save/saveCodec";
 import { PORTRAIT_IMAGES } from "../src/ui/portraitArtManifest.generated";
 
@@ -41,7 +41,7 @@ test("pool 3 is in the pool (I101–I124, three ages each, with its factions) an
   }
 });
 
-test("the nine faction leaders all wear their faction's pool-3 face, installed in the manifest (seeds 1–5, and again after 1450's heirs)", () => {
+test("the nine faction leaders all wear their faction's pool-3 face (or, an heir, its lineage set's), installed in the manifest (seeds 1–5, and again after 1450's heirs)", () => {
   for (const seed of [1, 2, 3, 4, 5]) {
     let state = town(seed);
     for (const when of ["first", "1450"] as const) {
@@ -49,7 +49,9 @@ test("the nine faction leaders all wear their faction's pool-3 face, installed i
       assert.equal(rows.length, 9);
       for (const { faction, leader, portrait } of rows) {
         assert.ok(Object.hasOwn(PORTRAIT_IMAGES, portrait.portraitId), `seed ${seed} ${when} ${faction}: ${portrait.portraitId}`);
-        const own = FACTION_PORTRAIT_POOLS[faction].includes(identityFaction(leader.portraitIdentity) ?? "");
+        // PERSON-1a (LN-7): a noble faction's heir may wear his family's lineage set face instead.
+        const own = FACTION_PORTRAIT_POOLS[faction].includes(identityFaction(leader.portraitIdentity) ?? "")
+          || (FACTION_LINEAGE_SETS[faction] !== undefined && identityLineage(leader.portraitIdentity) === FACTION_LINEAGE_SETS[faction]);
         const sexes = new Set(PORTRAIT_POOL.filter(entry => FACTION_PORTRAIT_POOLS[faction].includes(entry.faction ?? "")).map(entry => entry.sex));
         assert.ok(own || !sexes.has(leader.sex), `seed ${seed} ${when} ${faction}: ${leader.portraitIdentity} (${leader.sex})`);
       }

@@ -173,13 +173,14 @@ test("HR-11 (E11) a hungry town's season hint is about food, and it names what t
   assert.deepEqual(closed.foodNeeds, foodNeeds({ ...noBread, tick: seasonStart }));
 });
 
-test("HR-12 (portraits) under 8 a figure, 8–13 child faces only, and a petition's heads show different faces", () => {
-  const adultOnly = PORTRAIT_POOL.find(entry => !PORTRAIT_POOL.some(other => other.identityId === entry.identityId && other.band === "child"))!;
+test("HR-12 (portraits) under 8 the common pool's baby, toddler and child faces (LN4), 8–13 child faces only, and a petition's heads show different faces", () => {
+  const adultOnly = PORTRAIT_POOL.find(entry => entry.lineage === undefined && !PORTRAIT_POOL.some(other => other.identityId === entry.identityId && other.band === "child"))!;
   const person = { portraitIdentity: adultOnly.identityId, sex: adultOnly.sex as Person["sex"], classBand: "labour" as const };
   assert.equal(PORTRAIT_MIN_AGE, 8);
-  assert.equal(portraitFor(person, "child", 2).silhouette, "infant");
-  assert.equal(portraitFor(person, "child", INFANT_AGE).silhouette, "child");
-  assert.equal(portraitFor(person, "child", 7).silhouette, "child");
+  // PERSON-1a (LN4, replacing the figure under 8): the common pool's picture of the age.
+  const bandOf = (choice: ReturnType<typeof portraitFor>) => PORTRAIT_POOL.find(entry => entry.id === choice.portraitId)?.band;
+  assert.deepEqual([bandOf(portraitFor(person, "child", 2)), bandOf(portraitFor(person, "child", INFANT_AGE)), bandOf(portraitFor(person, "child", 7))], ["baby", "toddler", "child"]);
+  assert.ok([2, INFANT_AGE, 7].every(age => PORTRAIT_POOL.find(entry => entry.id === portraitFor(person, "child", age).portraitId)!.lineage === "common"));
   assert.equal(portraitFor(person, "child", 10).silhouette, "child", "an adult-only face is never shown for a child");
   const childFace = PORTRAIT_POOL.find(entry => entry.band === "child")!;
   const child = { portraitIdentity: childFace.identityId, sex: childFace.sex as Person["sex"], classBand: "labour" as const };
@@ -188,11 +189,12 @@ test("HR-12 (portraits) under 8 a figure, 8–13 child faces only, and a petitio
   assert.equal(PORTRAIT_POOL.find(entry => entry.id === shown.portraitId)!.band, "child");
   const chosen = choosePortraitIdentity(7, { id: "p-000900", sex: "female", classBand: "labour", build: "average", occupation: "none", tags: [], role: "child" }, "child", new Map());
   assert.ok(PORTRAIT_POOL.some(entry => entry.identityId === chosen && entry.band === PORTRAIT_BAND.child), "a child is given a face with a child picture");
-  // A child who died at two is remembered as a figure, not a grown face.
+  // A child who died at two is remembered as a baby, not a grown face.
   const state = DEFAULT_GAME_STATE;
   const dead: Person = { id: "p-000901", givenName: "Alice", sex: "female", birthYear: 1300, householdId: "h", role: "child", classBand: "labour",
-    occupation: "none", build: "average", hair: "brown", alive: false, deathYear: 1302, portraitIdentity: adultOnly.identityId, tags: [] };
-  assert.equal(personPortrait({ ...state, tick: 20 * YEAR }, dead).silhouette, "infant");
+    occupation: "none", build: "average", hair: "brown", alive: false, deathYear: 1302, portraitIdentity: adultOnly.identityId, tags: [],
+    lineageId: "lin:p-000901", traits: { hair: "brown", skin: 3, eye: "grey", faceShape: "round", nose: "snub", buildBias: "average" } };
+  assert.equal(bandOf(personPortrait({ ...state, tick: 20 * YEAR }, dead)), "baby", "a child who died at two is remembered as the baby she was");
   // Two petitioners never share a face: give the town's first heads one identity and name a petition.
   const town = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v16/population-176.save.json"))).envelope.state as GameState;
   const heads = town.persons!.people.filter(entry => entry.role === "head" && entry.householdId !== "manor");

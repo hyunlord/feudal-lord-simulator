@@ -44,7 +44,12 @@ test("N1 promotion to v16: every resident of a v15 town is a person with a name 
   assert.equal(personsByRole(state, "steward")[0]!.householdId, MANOR_HOUSEHOLD);
   // Deterministic: the same town promotes to the same persons.
   const again = fixture("population-176", 15);
-  assert.deepEqual(initialPersons(again), state.persons);
+  assert.deepEqual(initialPersons(again), initialPersons(fixture("population-176", 15)));
+  // PERSON-1a: the v16 save (promoted on through v24, its traits read from its faces) holds the same people the v15 town
+  // promotes to now (whose faces follow their drawn traits, and whose newborns are named by custom, LN-4): the same
+  // births, households, roles and sexes.
+  const who = (people: readonly Person[]) => people.map(person => [person.id, person.birthYear, person.householdId, person.role, person.sex]);
+  assert.deepEqual(who(initialPersons(again).people), who(state.persons.people));
 });
 
 test("N2 names follow the period's frequencies, and namesakes in the town carry bynames so every name is unique", () => {

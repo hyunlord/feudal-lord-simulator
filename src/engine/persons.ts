@@ -18,18 +18,21 @@
  * - PS-2 names and PS-5 portraits are fixed when a person appears (namesakes get bynames; see `personNames.ts`).
  */
 import { EPITHETS_KO, GIVEN_NAMES_KO, KING_NAMES_KO, PERSON_NAME_COPY, SURNAMES_KO } from "../content/personNames.ko";
-import { FEMALE_GIVEN_NAMES, HAIR_COLOURS, MALE_GIVEN_NAMES, NAMESAKE_EPITHETS, OCCUPATIONAL_SURNAMES, ORDINAL_EPITHETS, PATRONYMIC_SURNAMES, TOPOGRAPHIC_SURNAMES, type WeightedName } from "../content/personNames";
+import { FEMALE_GIVEN_NAMES, MALE_GIVEN_NAMES, NAMESAKE_EPITHETS, OCCUPATIONAL_SURNAMES, ORDINAL_EPITHETS, PATRONYMIC_SURNAMES, TOPOGRAPHIC_SURNAMES, type WeightedName } from "../content/personNames";
 import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { houseHasFood } from "../population/houseFood";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { foodPricePermille } from "./eventSchedule";
 import { hashSeed, rollPermille } from "./prng";
-import { choosePortraitIdentity, identityFaction, identityHasBand, portraitFor, type PortraitChoice } from "./portraits";
+import { choosePortraitIdentity, identityFaction, identityHasBand, identityLineage, portraitFor, setPlaces, youngStageOf, PORTRAIT_BAND, PORTRAIT_MIN_AGE, type PortraitChoice } from "./portraits";
+import { lordHouse } from "./lordshipState";
 import { calendar, scenarioOf } from "./scenarioState";
 import { conscriptsAway } from "./war";
 import { factionPerson, petitionFactionLeaders } from "./factions";
-import { MANOR_HOUSEHOLD, type DeathCause, type Person, type PersonAgeBand, type PersonBuild, type PersonClassBand, type PersonRole, type PersonSex, type PersonState } from "./persons.types";
+import type { PersonTraits } from "../content/personTraits";
+import { hairWords, inheritTraits, populationTraits } from "./heredity";
+import { MANOR_HOUSEHOLD, type DeathCause, type NameOrigin, type NamedLineage, type Person, type PersonAgeBand, type PersonBuild, type PersonClassBand, type PersonRole, type PersonSex, type PersonState } from "./persons.types";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const YEAR = BALANCE.TICKS_PER_YEAR;
@@ -95,20 +98,66 @@ export function weightedName(names: readonly WeightedName[], roll: number): stri
   return names[0]!.name;
 }
 
+/**
+ * LN-4: a newborn's name by the custom — the first son his father's (50 %) or grandfather's (20 %) name, the first
+ * daughter her mother's (40 %) or grandmother's (20 %, the mother's mother, else the father's); else a godparent's
+ * (30 %: one of the town's notables, the same sex first); the first daughter's last tenth, a later child's, or a birth
+ * with no godparent to hand from the common names (null).
+ */
+export function newbornCustomName(input: { readonly seed: number; readonly key: number; readonly sex: PersonSex; readonly mother: Person | undefined;
+  readonly father: Person | undefined; readonly firstOfSex: boolean; readonly find: (id: string | undefined) => Person | undefined;
+  readonly notables: readonly Person[] }): { givenName: string; nameFrom: NameOrigin; godparentId?: string } | null {
+  const { seed, key, sex, mother, father } = input;
+  if (!input.firstOfSex) return null;
+  const roll = rollPermille(seed, "name-custom", key);
+  if (sex === "male") {
+    if (roll < 500 && father !== undefined) return { givenName: father.givenName, nameFrom: "father" };
+    const grandfather = input.find(father?.fatherId);
+    if (roll >= 500 && roll < 700 && grandfather !== undefined) return { givenName: grandfather.givenName, nameFrom: "grandfather" };
+  } else {
+    if (roll < 400 && mother !== undefined) return { givenName: mother.givenName, nameFrom: "mother" };
+    const grandmother = input.find(mother?.motherId) ?? input.find(father?.motherId);
+    if (roll >= 400 && roll < 600 && grandmother !== undefined) return { givenName: grandmother.givenName, nameFrom: "grandmother" };
+    if (roll >= 900) return null;
+  }
+  const candidates = input.notables.filter(person => person.id !== mother?.id && person.id !== father?.id);
+  const sameSex = candidates.filter(person => person.sex === sex);
+  const pool = (sameSex.length > 0 ? sameSex : candidates).slice().sort((a, b) => a.id.localeCompare(b.id));
+  if (pool.length === 0) return null;
+  const godparent = pool[hashSeed(seed, "godparent", key) % pool.length]!;
+  return { givenName: godparent.sex === sex ? godparent.givenName : weightedName(sex === "male" ? MALE_GIVEN_NAMES : FEMALE_GIVEN_NAMES, hashSeed(seed, "godparent-name", key)),
+    nameFrom: "godparent", godparentId: godparent.id };
+}
+
 /** Working copy of the person state within one step (ordinal, the living, the gone). */
 class Town {
   people: Person[];
   past: Person[];
   ordinal: number;
   reeveYear: number | undefined;
+  lineages: NamedLineage[];
+  reeveTerms: Record<string, number>;
+  lordOrdinal: number;
+  bailiffYear: number | undefined;
   constructor(readonly seed: number, readonly year: number, state: PersonState) {
     this.people = [...state.people];
     this.past = [...state.past];
     this.ordinal = state.nextOrdinal;
     this.reeveYear = state.reeveYear;
+    this.lineages = [...(state.lineages ?? [])];
+    this.reeveTerms = { ...(state.reeveTerms ?? {}) };
+    this.lordOrdinal = state.lordOrdinal ?? 1;
+    this.bailiffYear = state.bailiffYear;
   }
   result(): PersonState {
-    return { people: this.people, past: this.past, nextOrdinal: this.ordinal, ...(this.reeveYear === undefined ? {} : { reeveYear: this.reeveYear }) };
+    return { people: this.people, past: this.past, nextOrdinal: this.ordinal, ...(this.reeveYear === undefined ? {} : { reeveYear: this.reeveYear }),
+      ...(this.lineages.length === 0 ? {} : { lineages: this.lineages }), ...(Object.keys(this.reeveTerms).length === 0 ? {} : { reeveTerms: this.reeveTerms }),
+      ...(this.lordOrdinal === 1 ? {} : { lordOrdinal: this.lordOrdinal }), ...(this.bailiffYear === undefined ? {} : { bailiffYear: this.bailiffYear }) };
+  }
+  /** A person by id among the living and the gone. */
+  find(id: string | undefined): Person | undefined {
+    if (id === undefined) return undefined;
+    return this.people.find(person => person.id === id) ?? this.past.find(person => person.id === id);
   }
   household(householdId: string): Person[] {
     return this.people.filter(person => person.householdId === householdId);
@@ -122,29 +171,49 @@ class Town {
     if (index < 0) return;
     const person = this.people[index]!;
     this.people.splice(index, 1);
-    const tags = person.tags.filter(tag => !tag.startsWith("manager:") && tag !== "reeve");
+    const tags = person.tags.filter(tag => !tag.startsWith("manager:") && tag !== "reeve" && tag !== "bailiff");
+    // LN-10: a passing state ends with the life or the stay in town.
+    const { condition: _condition, ...kept } = person;
     this.past.push(fate.died !== undefined
-      ? { ...person, alive: false, deathYear: this.year, deathCause: fate.died, tags }
-      : { ...person, leftYear: this.year, tags });
+      ? { ...kept, alive: false, deathYear: this.year, deathCause: fate.died, tags }
+      : { ...kept, leftYear: this.year, tags });
   }
 
-  /** PS-2: a unique name in the town; a clash with a living namesake gives both a byname. */
-  name(sex: PersonSex, surname: string | undefined, householdId: string, id: string, birthYear: number): { givenName: string; epithet?: string } {
+  /**
+   * LN-4: a newborn's name by the custom — the first son his father's (50 %) or grandfather's (20 %) name, the first
+   * daughter her mother's (40 %) or grandmother's (20 %); else a godparent's (30 %), one of the town's notables; the
+   * first daughter's last tenth and the later children's from the common names. Null: the common names.
+   */
+  customName(sex: PersonSex, key: number, mother: Person | undefined, father: Person | undefined): { givenName: string; nameFrom: NameOrigin; godparentId?: string } | null {
+    const siblings = [...this.people, ...this.past].some(person => person.sex === sex
+      && ((mother !== undefined && person.motherId === mother.id) || (father !== undefined && person.fatherId === father.id)));
+    const notables = this.people.filter(person => person.alive && (person.tags.includes("reeve") || person.tags.includes("bailiff")
+      || person.householdId === MANOR_HOUSEHOLD || (person.role === "head" && person.classBand === "merchant")) && ageOf(person, this.year) >= 18);
+    return newbornCustomName({ seed: this.seed, key, sex, mother, father, firstOfSex: !siblings, find: id => this.find(id), notables });
+  }
+
+  /** PS-2: a unique name in the town; a clash with a living namesake gives both a byname. LN-4: a newborn's by custom first. */
+  name(sex: PersonSex, surname: string | undefined, householdId: string, id: string, birthYear: number,
+    custom?: { readonly key: number; readonly salt: string; readonly mother?: Person; readonly father?: Person; readonly born: boolean }): { givenName: string; epithet?: string; nameFrom?: NameOrigin; godparentId?: string } {
     const pool = sex === "male" ? MALE_GIVEN_NAMES : FEMALE_GIVEN_NAMES;
     const kin = new Set(this.household(householdId).map(person => person.givenName));
-    let givenName = weightedName(pool, hashSeed(this.seed, "person-name", this.ordinal));
-    for (let attempt = 1; attempt < 6 && kin.has(givenName); attempt += 1) givenName = weightedName(pool, hashSeed(this.seed, "person-name", this.ordinal, attempt));
+    const key = custom?.key ?? this.ordinal;
+    const salt = custom?.salt ?? "person-name";
+    const byCustom = custom?.born === true && (custom.mother !== undefined || custom.father !== undefined) ? this.customName(sex, key, custom.mother, custom.father) : null;
+    let givenName = byCustom?.givenName ?? weightedName(pool, hashSeed(this.seed, salt, key));
+    if (byCustom === null) for (let attempt = 1; attempt < 6 && kin.has(givenName); attempt += 1) givenName = weightedName(pool, hashSeed(this.seed, salt, key, attempt));
+    const origin = byCustom === null ? {} : { nameFrom: byCustom.nameFrom, ...(byCustom.godparentId === undefined ? {} : { godparentId: byCustom.godparentId }) };
     const namesakes = this.people.filter(person => person.givenName === givenName && person.surname === surname);
-    if (namesakes.length === 0) return { givenName };
+    if (namesakes.length === 0) return { givenName, ...origin };
     const used = new Set(namesakes.map(person => person.epithet));
     const lone = namesakes.length === 1 && namesakes[0]!.epithet === undefined ? namesakes[0]! : undefined;
     if (lone !== undefined) {
       const newerIsYounger = birthYear >= lone.birthYear;
       this.replace(lone.id, { epithet: newerIsYounger ? "the elder" : "the younger" });
-      return { givenName, epithet: newerIsYounger ? "the younger" : "the elder" };
+      return { givenName, epithet: newerIsYounger ? "the younger" : "the elder", ...origin };
     }
     const epithet = [...NAMESAKE_EPITHETS, ...ORDINAL_EPITHETS].find(candidate => !used.has(candidate)) ?? `no. ${id.slice(2)}`;
-    return { givenName, epithet };
+    return { givenName, epithet, ...origin };
   }
 
   usage(): Map<string, number> {
@@ -153,20 +222,54 @@ class Town {
     return usage;
   }
 
+  /**
+   * LN-2: a child's parents — the ones given (a birth), else for a child of the household its head and spouse where old
+   * enough to be (14+ years older): the woman its mother, the man its father.
+   */
+  parentsOf(fields: { readonly householdId: string; readonly role: PersonRole; readonly birthYear: number; readonly motherId?: string; readonly fatherId?: string }):
+    { readonly mother?: Person; readonly father?: Person } {
+    if (fields.motherId !== undefined || fields.fatherId !== undefined) {
+      const mother = this.find(fields.motherId);
+      const father = this.find(fields.fatherId);
+      return { ...(mother === undefined ? {} : { mother }), ...(father === undefined ? {} : { father }) };
+    }
+    if (fields.role !== "child") return {};
+    const couple = this.household(fields.householdId).filter(person => (person.role === "head" || person.role === "spouse") && fields.birthYear - person.birthYear >= ADULT_AGE);
+    const mother = couple.find(person => person.sex === "female");
+    const father = couple.find(person => person.sex === "male");
+    return { ...(mother === undefined ? {} : { mother }), ...(father === undefined ? {} : { father }) };
+  }
+
   create(fields: { readonly sex: PersonSex; readonly birthYear: number; readonly householdId: string; readonly role: PersonRole;
-    readonly surname?: string; readonly classBand?: PersonClassBand; readonly occupation?: string; readonly tags?: readonly string[] }): Person {
-    const id = `p-${String(this.ordinal).padStart(6, "0")}`;
-    const roll = hashSeed(this.seed, "person", this.ordinal);
-    const build: PersonBuild = (["thin", "average", "average", "heavy"] as const)[roll % 4]!;
-    const hair = HAIR_COLOURS[(roll >>> 4) % HAIR_COLOURS.length]!;
-    const named = this.name(fields.sex, fields.surname, fields.householdId, id, fields.birthYear);
+    readonly surname?: string; readonly classBand?: PersonClassBand; readonly occupation?: string; readonly tags?: readonly string[];
+    readonly motherId?: string; readonly fatherId?: string; readonly traits?: PersonTraits; readonly lineageId?: string;
+    /** LN-9: one of the lord's family (its own ordinal, `m-`; the town's ordinal and rolls stay as they were). */
+    readonly lord?: true }): Person {
+    const lord = fields.lord === true;
+    const ordinal = lord ? this.lordOrdinal : this.ordinal;
+    const id = `${lord ? "m" : "p"}-${String(ordinal).padStart(6, "0")}`;
+    const scope = lord ? "lord" : "town";
+    const { mother, father } = this.parentsOf(fields);
+    // LN-1 / LN-2: traits from the parents (a child) or the population (a founder or newcomer); the build and the hair's
+    // words follow them.
+    const traits = fields.traits ?? (mother !== undefined || father !== undefined
+      ? inheritTraits(this.seed, scope, ordinal, mother?.traits, father?.traits) : populationTraits(this.seed, scope, ordinal));
+    const build: PersonBuild = traits.buildBias;
+    const hair = hairWords(traits);
+    const born = fields.role === "child" && fields.birthYear === this.year;
+    const named = this.name(fields.sex, fields.surname, fields.householdId, id, fields.birthYear,
+      { key: ordinal, salt: lord ? "lord-person-name" : "person-name", ...(mother === undefined ? {} : { mother }), ...(father === undefined ? {} : { father }), born });
     const draft = { id, sex: fields.sex, classBand: fields.classBand ?? "labour", build, occupation: fields.occupation ?? (this.year - fields.birthYear >= ADULT_AGE ? "labourer" : "child"),
-      tags: fields.tags ?? [], role: fields.role };
+      tags: fields.tags ?? [], role: fields.role, traits };
     const portraitIdentity = choosePortraitIdentity(this.seed, draft, ageBandOf(this.year - fields.birthYear), this.usage());
+    // LN-5: the father's lineage (else the mother's, else the household head's for its child); a newcomer opens one.
+    const head = fields.role === "child" ? this.household(fields.householdId).find(person => person.role === "head") : undefined;
+    const lineageId = fields.lineageId ?? father?.lineageId ?? mother?.lineageId ?? head?.lineageId ?? `lin:${id}`;
     const person: Person = { ...draft, givenName: named.givenName, ...(fields.surname === undefined ? {} : { surname: fields.surname }),
       ...(named.epithet === undefined ? {} : { epithet: named.epithet }), birthYear: fields.birthYear, householdId: fields.householdId,
-      hair, alive: true, portraitIdentity };
-    this.ordinal += 1;
+      hair, alive: true, portraitIdentity, lineageId, ...(mother === undefined ? {} : { motherId: mother.id }), ...(father === undefined ? {} : { fatherId: father.id }),
+      ...(named.nameFrom === undefined ? {} : { nameFrom: named.nameFrom }), ...(named.godparentId === undefined ? {} : { godparentId: named.godparentId }) };
+    if (lord) this.lordOrdinal += 1; else this.ordinal += 1;
     this.people.push(person);
     return person;
   }
@@ -195,7 +298,13 @@ class Town {
     const children = members.length - adults;
     const mother = members.some(person => person.sex === "female" && ageOf(person, this.year) >= 16 && ageOf(person, this.year) <= 44);
     if (mother && children <= adults) {
-      this.create({ sex: roll % 2 === 0 ? "female" : "male", birthYear: this.year, householdId, role: "child", ...(head.surname === undefined ? {} : { surname: head.surname }) });
+      // LN-2 / LN-10: the mother is the woman with child, else the head's or spouse's, else a kinswoman (no father known).
+      const women = members.filter(person => person.sex === "female" && ageOf(person, this.year) >= 16 && ageOf(person, this.year) <= 44);
+      const bearer = women.find(person => person.condition?.kind === "pregnant") ?? women.find(person => person.role === "head" || person.role === "spouse") ?? women[0]!;
+      const husband = bearer.role === "head" || bearer.role === "spouse" ? members.find(person => person.sex === "male" && (person.role === "head" || person.role === "spouse")) : undefined;
+      if (bearer.condition?.kind === "pregnant") { const { condition: _ended, ...delivered } = bearer; this.people[this.people.indexOf(bearer)] = delivered; }
+      this.create({ sex: roll % 2 === 0 ? "female" : "male", birthYear: this.year, householdId, role: "child", ...(head.surname === undefined ? {} : { surname: head.surname }),
+        motherId: bearer.id, ...(husband === undefined ? {} : { fatherId: husband.id }) });
       return;
     }
     // A relative: a young one (14–30), or one time in four a widowed parent (55–70).
@@ -334,6 +443,194 @@ function chooseReeve(town: Town): void {
   const reeve = pool[hashSeed(town.seed, "reeve", town.year) % pool.length]!;
   town.replace(reeve.id, { tags: [...reeve.tags, "reeve"] });
   town.reeveYear = town.year;
+  // LN-5: a lineage that gives two reeves is named.
+  town.reeveTerms[reeve.lineageId] = (town.reeveTerms[reeve.lineageId] ?? 0) + 1;
+}
+
+/**
+ * LN-10 / PS-4: the bailiff, the lord's man in the town — an artisan or merchant household head of 25–60 (not the
+ * reeve), chosen at the year's start (men first). An office tag only (the manor's work is not simulated).
+ */
+function chooseBailiff(town: Town): void {
+  const current = town.people.find(person => person.tags.includes("bailiff"));
+  if (current !== undefined && town.bailiffYear === town.year) return;
+  if (current !== undefined) town.replace(current.id, { tags: current.tags.filter(tag => tag !== "bailiff") });
+  const candidates = town.people.filter(person => person.role === "head" && person.householdId !== MANOR_HOUSEHOLD && !person.tags.includes("reeve")
+    && (person.classBand === "artisan" || person.classBand === "merchant") && ageOf(person, town.year) >= 25 && ageOf(person, town.year) <= 60);
+  const men = candidates.filter(person => person.sex === "male");
+  const pool = (men.length > 0 ? men : candidates).sort((a, b) => a.id.localeCompare(b.id));
+  if (pool.length === 0) return;
+  const bailiff = pool[hashSeed(town.seed, "bailiff", town.year) % pool.length]!;
+  town.replace(bailiff.id, { tags: [...bailiff.tags, "bailiff"] });
+  town.bailiffYear = town.year;
+}
+
+/** LN-9: the lord's family — its members of the ruling house (tag `lord-family`, lineage `lord:<house order>`). */
+export const LORD_FAMILY_TAG = "lord-family";
+const LORD_BIRTH_PERMILLE = 300;
+
+/**
+ * LN-9: the ruling house's family lives in the manor (not in the town's count or labour; ids of their own). It forms
+ * with the house (the lord of 30–45, his wife, two children); each year's start a wife of 16–44 who has borne fewer than
+ * four bears one at 30 %, a lord of 18+ without a wife takes one, a lord who died is followed by his eldest son of 14+
+ * (else the eldest child), and a child of 18 other than the heir leaves the manor (a daughter married away, a younger son
+ * gone into service or the church: decision LN8). A new house (FL-7) brings its own family; the old one leaves.
+ */
+function keepLordFamily(town: Town, state: GameState, yearStart: boolean): void {
+  const house = lordHouse(state);
+  const lineageId = `lord:${house.order}`;
+  const houseTag = `lord-house:${house.order}`;
+  // A new house (FL-7): the old house's family leaves the manor.
+  for (const person of [...town.people]) if (person.tags.includes(LORD_FAMILY_TAG) && !person.tags.includes(houseTag)) town.remove(person.id, { left: true });
+  const family = () => town.people.filter(person => person.tags.includes(houseTag));
+  const common = { householdId: MANOR_HOUSEHOLD, surname: house.name, classBand: "gentry" as const, lord: true as const, tags: [LORD_FAMILY_TAG, houseTag] };
+  if (!town.people.some(person => person.tags.includes(houseTag)) && !town.past.some(person => person.tags.includes(houseTag))) {
+    const roll = hashSeed(town.seed, "lord-family", house.order);
+    const lord = town.create({ ...common, sex: "male", birthYear: town.year - 30 - roll % 16, role: "head", occupation: "lord", lineageId });
+    const lady = town.create({ ...common, sex: "female", birthYear: lord.birthYear + 2 + (roll >>> 4) % 6, role: "spouse", occupation: "lady" });
+    for (let child = 0; child < 2; child += 1) {
+      town.create({ ...common, sex: (roll >>> (8 + child)) % 2 === 0 ? "male" : "female", birthYear: Math.max(lady.birthYear + 18, town.year - 12 + child * 4 + (roll >>> (10 + child)) % 3),
+        role: "child", motherId: lady.id, fatherId: lord.id });
+    }
+    return;
+  }
+  if (!yearStart) return;
+  let members = family();
+  if (members.length === 0) return;
+  // A lord who died: his eldest son of 14+ (else the eldest child) takes the house; the widow stays as kin.
+  if (!members.some(person => person.role === "head")) {
+    const children = members.filter(person => person.role === "child").sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id));
+    const heir = children.find(person => person.sex === "male" && ageOf(person, town.year) >= ADULT_AGE) ?? children[0];
+    if (heir === undefined) return;
+    for (const person of members) if (person.role === "spouse") town.replace(person.id, { role: "kin" });
+    town.replace(heir.id, { role: "head", occupation: heir.sex === "male" ? "lord" : "lady" });
+    members = family();
+  }
+  const head = members.find(person => person.role === "head")!;
+  // The heir stays; his brothers and sisters of 18 leave the manor.
+  const heir = members.filter(person => person.role === "child" && (person.fatherId === head.id || person.motherId === head.id))
+    .sort((a, b) => (a.sex === b.sex ? 0 : a.sex === "male" ? -1 : 1) || a.birthYear - b.birthYear || a.id.localeCompare(b.id))[0];
+  for (const person of members) if (person.role === "child" && person !== heir && ageOf(person, town.year) >= 18) town.remove(person.id, { left: true });
+  members = family();
+  const spouse = members.find(person => person.role === "spouse");
+  if (spouse === undefined && ageOf(head, town.year) >= 18) {
+    const sex: PersonSex = head.sex === "male" ? "female" : "male";
+    town.create({ ...common, sex, birthYear: head.birthYear + (sex === "female" ? 2 : -2) + hashSeed(town.seed, "lord-spouse", town.year) % 5, role: "spouse",
+      occupation: sex === "female" ? "lady" : "lord" });
+    return;
+  }
+  const mother = [head, spouse].find(person => person !== undefined && person.sex === "female" && ageOf(person, town.year) >= 16 && ageOf(person, town.year) <= 44);
+  const father = [head, spouse].find(person => person !== undefined && person.sex === "male");
+  const borne = mother === undefined ? 0 : [...town.people, ...town.past].filter(person => person.motherId === mother.id).length;
+  if (mother === undefined || borne >= 4 || rollPermille(town.seed, "lord-birth", town.year) >= LORD_BIRTH_PERMILLE) return;
+  if (mother.condition?.kind === "pregnant") { const { condition: _ended, ...delivered } = mother; town.people[town.people.indexOf(mother)] = delivered; }
+  town.create({ ...common, sex: hashSeed(town.seed, "lord-birth-sex", town.year) % 2 === 0 ? "female" : "male", birthYear: town.year, role: "child",
+    motherId: mother.id, ...(father === undefined ? {} : { fatherId: father.id }) });
+}
+
+/** LN-5: the town's named lineages — the lord's house, and the families of note (a merchant head, two reeves, the miller). */
+const TOWN_SETS: Readonly<Record<"merchant" | "reeve" | "miller", readonly string[]>> = { merchant: ["L4", "L2"], reeve: ["L5"], miller: ["L8"] };
+function nameLineages(town: Town, state: GameState): void {
+  const named = new Set(town.lineages.map(lineage => lineage.id));
+  const taken = new Set(town.lineages.map(lineage => lineage.set).filter((set): set is string => set !== null));
+  const add = (id: string, kind: NamedLineage["kind"], sets: readonly string[], always = false) => {
+    if (named.has(id)) return;
+    const set = sets.find(candidate => !taken.has(candidate)) ?? null;
+    // A family of note is named while its kind has a set to give (the first merchants, reeves, miller); the lord's always.
+    if (set === null && !always) return;
+    town.lineages.push({ id, kind, set, since: state.tick, slots: {} });
+    named.add(id);
+    if (set !== null) taken.add(set);
+  };
+  const order = lordHouse(state).order;
+  add(`lord:${order}`, "lord", order === 1 ? ["L3"] : order === 2 ? ["L1"] : [], true);
+  for (const head of town.people.filter(person => person.role === "head" && person.householdId !== MANOR_HOUSEHOLD).sort((a, b) => a.id.localeCompare(b.id))) {
+    if (named.has(head.lineageId)) continue;
+    if (head.classBand === "merchant") add(head.lineageId, "merchant", TOWN_SETS.merchant);
+    else if ((town.reeveTerms[head.lineageId] ?? 0) >= 2) add(head.lineageId, "reeve", TOWN_SETS.reeve);
+    else if (head.occupation === "miller") add(head.lineageId, "miller", TOWN_SETS.miller);
+  }
+}
+
+/**
+ * LN-7: a named lineage's family takes the places of its portrait set — the head (and spouse) of the time it was named
+ * the founding couple, their children the second generation, those who married into it the in-law places, the
+ * grandchildren the third — by sex, in order of age, a place whose picture fits the person's age first. A place taken
+ * stays taken; when the set runs out the person keeps the town's face (trait matching).
+ */
+function fillSlots(town: Town, index: number): void {
+  const lineage = town.lineages[index]!;
+  if (lineage.set === null) return;
+  const places = setPlaces(lineage.set);
+  const slots: Record<string, string> = { ...lineage.slots };
+  const slotOf = new Map(Object.entries(slots).map(([identity, personId]) => [personId, identity]));
+  const generationOf = (identity: string | undefined) => places.find(place => place.identityId === identity)?.generation ?? 0;
+  const inSet = (person: Person) => person.householdId !== MANOR_HOUSEHOLD || person.tags.includes(LORD_FAMILY_TAG);
+  // The main line: the heads of the lineage's households and their spouses, their children, and so on down (the set
+  // is a family's three generations: its collateral kin keep the town's faces).
+  const heads = town.people.filter(person => person.lineageId === lineage.id && person.role === "head" && inSet(person));
+  const households = new Set(heads.map(person => person.householdId));
+  const couple = town.people.filter(person => households.has(person.householdId) && (person.role === "head" || person.role === "spouse") && inSet(person));
+  const line = new Set([...couple.map(person => person.id), ...Object.values(slots)]);
+  const born = town.people.filter(person => person.lineageId === lineage.id && inSet(person) && [person.fatherId, person.motherId].some(id => id !== undefined && line.has(id)));
+  const family = [...couple, ...born.filter(person => !line.has(person.id))].sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id));
+  let changed = false;
+  for (const person of family) {
+    if (slotOf.has(person.id)) continue;
+    const current = identityLineage(person.portraitIdentity);
+    if (current !== undefined && current !== "common") continue;
+    const inLaw = person.lineageId !== lineage.id;
+    const parentGeneration = Math.max(0, ...[person.fatherId, person.motherId].map(id => generationOf(id === undefined ? undefined : slotOf.get(id))));
+    const partner = inLaw ? couple.find(other => other.lineageId === lineage.id && other.householdId === person.householdId) : undefined;
+    const generation = inLaw ? generationOf(partner === undefined ? undefined : slotOf.get(partner.id)) || 1
+      : parentGeneration > 0 ? parentGeneration + 1 : 1;
+    const age = ageOf(person, town.year);
+    const band = age < PORTRAIT_MIN_AGE ? youngStageOf(age) : PORTRAIT_BAND[ageBandOf(age)];
+    const free = places.filter(place => place.sex === person.sex && place.generation === generation && slots[place.identityId] === undefined
+      && (generation !== 2 || place.inLaw === inLaw));
+    // The generation's places all given (a large family): the nearest generation's free place with a picture of the
+    // person's age (a face is never given twice: the dead keep theirs).
+    const spare = places.filter(place => place.sex === person.sex && slots[place.identityId] === undefined && place.inLaw === inLaw && place.bands.has(band))
+      .sort((a, b) => Math.abs(a.generation - generation) - Math.abs(b.generation - generation) || a.identityId.localeCompare(b.identityId));
+    const place = free.find(candidate => candidate.bands.has(band)) ?? free[0] ?? spare[0];
+    if (place === undefined) continue;
+    slots[place.identityId] = person.id;
+    slotOf.set(person.id, place.identityId);
+    town.replace(person.id, { portraitIdentity: place.identityId });
+    changed = true;
+  }
+  if (changed) town.lineages[index] = { ...lineage, slots };
+}
+
+/**
+ * LN-10: the season's passing states (no effect on the simulation — work, residence and death are as they were): an
+ * illness at five times the season's death rate for the age (at most 15 %), an injury at 3 % for the working 14–60
+ * (6 % in the quarry, the masonry, the woods), a pregnancy at 15 % for a wife of 16–44 in a household that can grow,
+ * and at the year's start a pilgrimage at 1 % for an adult of 18–60. One state at a time; each ends at its tick.
+ */
+const CONDITION_LENGTH = { sick: SEASON, injury: SEASON, pregnant: 3 * SEASON, pilgrim: 2 * SEASON } as const;
+function advanceConditions(town: Town, state: GameState, yearStart: boolean): void {
+  const houses = new Map(state.houses.map(house => [house.buildingId, house]));
+  for (const person of [...town.people]) {
+    if (person.condition !== undefined && person.condition.until <= state.tick) {
+      const { condition: _ended, ...well } = person;
+      town.people[town.people.indexOf(person)] = well;
+      continue;
+    }
+    if (person.condition !== undefined) continue;
+    const age = ageOf(person, town.year);
+    const key = Number(person.id.slice(2)) + (person.id.startsWith("m-") ? 1_000_000 : 0);
+    const start = (kind: keyof typeof CONDITION_LENGTH) => town.replace(person.id, { condition: { kind, since: state.tick, until: state.tick + CONDITION_LENGTH[kind] } });
+    if (rollPermille(town.seed, "person-state:sick", key, state.tick) < Math.min(150, 5 * seasonDeathPermille(age))) { start("sick"); continue; }
+    const hard = ["mason", "quarrier", "woodward", "sawyer"].includes(person.occupation);
+    if (age >= ADULT_AGE && age <= 60 && person.occupation !== "child" && rollPermille(town.seed, "person-state:injury", key, state.tick) < (hard ? 60 : 30)) { start("injury"); continue; }
+    const home = houses.get(person.householdId);
+    const wife = person.sex === "female" && age >= 16 && age <= 44 && (person.role === "head" || person.role === "spouse")
+      && town.household(person.householdId).some(other => other.sex === "male" && (other.role === "head" || other.role === "spouse"));
+    const canGrow = person.householdId === MANOR_HOUSEHOLD || (home !== undefined && canRefill(home, state.tick));
+    if (wife && canGrow && rollPermille(town.seed, "person-state:pregnant", key, state.tick) < 150) { start("pregnant"); continue; }
+    if (yearStart && age >= 18 && age <= 60 && rollPermille(town.seed, "person-state:pilgrim", key, state.tick) < 10) start("pilgrim");
+  }
 }
 
 /** PS-4: each petition names 2–3 heads, the most substantial (merchant, artisan) first. */
@@ -439,7 +736,9 @@ export function advancePersons(state: GameState): GameState {
       const band = ageBandOf(ageOf(person, year));
       const grown = person.occupation === "child" && band !== "child" ? { occupation: "labourer" } : {};
       const current = { ...person, ...grown };
-      if (identityHasBand(current.portraitIdentity, band) && (portraitFor(current, band).exact || identityFaction(current.portraitIdentity) !== undefined)) {
+      // PERSON-1a (LN-7): a lineage set's face is the family's; it is never traded for the town's.
+      const setFace = identityLineage(current.portraitIdentity) !== undefined && identityLineage(current.portraitIdentity) !== "common";
+      if (setFace || (identityHasBand(current.portraitIdentity, band) && (portraitFor(current, band).exact || identityFaction(current.portraitIdentity) !== undefined))) {
         if (grown.occupation !== undefined) town.replace(person.id, grown);
         continue;
       }
@@ -456,6 +755,13 @@ export function advancePersons(state: GameState): GameState {
   if (seasonStart || state.persons === undefined) {
     appointMasters(town, state);
     chooseReeve(town);
+    // PERSON-1a: the lord's family, the bailiff, the named lineages and their faces, the season's passing states.
+    const yearStart = state.tick % YEAR === 0;
+    keepLordFamily(town, state, yearStart);
+    if (yearStart || state.persons === undefined) chooseBailiff(town);
+    nameLineages(town, state);
+    town.lineages.forEach((_lineage, index) => fillSlots(town, index));
+    if (seasonStart) advanceConditions(town, state, yearStart);
   }
   const named = namePetitioners(town, state);
 

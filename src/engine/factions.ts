@@ -15,10 +15,10 @@
  * Factions change nothing in the simulation yet (FACTION-0 is the base the rights and chronicle work builds on).
  */
 import {
-  BISHOP_SURNAMES, EARLDOMS, FACTION_DEF_BY_ID, FACTION_DEFS, FACTION_EVENTS, FACTION_PORTRAIT_POOLS, FACTION_EVENT_PERMILLE, FACTION_OF_PETITIONER, KINGS, NEIGHBOUR_HOUSES,
+  BISHOP_SURNAMES, EARLDOMS, FACTION_DEF_BY_ID, FACTION_DEFS, FACTION_EVENTS, FACTION_LINEAGE_SETS, FACTION_PORTRAIT_POOLS, FAMILY_FACTIONS, FACTION_EVENT_PERMILLE, FACTION_OF_PETITIONER, KINGS, NEIGHBOUR_HOUSES,
   RELATION_RULES, SEES, WORLD_EVENTS, type FactionDef, type FactionId,
 } from "../content/factionConfig";
-import { HAIR_COLOURS, MALE_GIVEN_NAMES } from "../content/personNames";
+import { MALE_GIVEN_NAMES } from "../content/personNames";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import type { FamineResponseChoice, Petitioner } from "../content/chapterConfig";
 import type { GameState } from "./engine.types";
@@ -27,7 +27,8 @@ import type { HistoryRecord } from "./history.types";
 import { lordshipOf } from "./lordshipState";
 import { ageBandOf, ageOf, currentYear, seasonDeathPermille, weightedName } from "./persons";
 import type { Person, PersonBuild, PersonClassBand } from "./persons.types";
-import { chooseFactionPortraitIdentity, choosePortraitIdentity, identityFaction } from "./portraits";
+import { hairWords, inheritTraits, populationTraits } from "./heredity";
+import { chooseFactionPortraitIdentity, choosePortraitIdentity, identityFaction, identityLineage, PORTRAIT_BAND, setPlaces } from "./portraits";
 import { hashSeed } from "./prng";
 import { WAR_BALANCE } from "../content/warConfig";
 
@@ -53,22 +54,36 @@ function portraitUsage(state: Pick<GameState, "persons" | "factions">, extra: re
   return usage;
 }
 
-/** FX-2: an outside faction's person (a leader or an heir). */
+/**
+ * FX-2: an outside faction's person (a leader or an heir). PERSON-1a: in a noble faction the heir is the predecessor's son
+ * (his father, half his traits) and, where the faction has a lineage set, wears the set's next generation's face.
+ */
 function outsidePerson(state: Pick<GameState, "seed" | "persons" | "factions">, ordinal: number, fields: { readonly factionId: FactionId;
   readonly givenName?: string; readonly surname?: string; readonly birthYear: number; readonly classBand: PersonClassBand; readonly occupation: string;
-  readonly year: number; readonly predecessorFace?: string }, made: readonly Person[]): Person {
+  readonly year: number; readonly predecessor?: Person }, made: readonly Person[]): Person {
   const id = `f-${String(ordinal).padStart(6, "0")}`;
-  const roll = hashSeed(state.seed, "faction-person", ordinal);
-  const build: PersonBuild = (["thin", "average", "average", "heavy"] as const)[roll % 4]!;
-  const draft = { id, sex: "male" as const, classBand: fields.classBand, build, occupation: fields.occupation, tags: [`faction:${fields.factionId}`], role: "head" as const };
+  const father = fields.predecessor !== undefined && FAMILY_FACTIONS.has(fields.factionId) ? fields.predecessor : undefined;
+  const scope = `faction:${fields.factionId}`;
+  const traits = father === undefined ? populationTraits(state.seed, scope, ordinal) : inheritTraits(state.seed, scope, ordinal, undefined, father.traits);
+  const build: PersonBuild = traits.buildBias;
+  const draft = { id, sex: "male" as const, classBand: fields.classBand, build, occupation: fields.occupation, tags: [`faction:${fields.factionId}`], role: "head" as const, traits };
   const band = ageBandOf(fields.year - fields.birthYear);
   const usage = portraitUsage(state, made);
-  const portraitIdentity = chooseFactionPortraitIdentity(state.seed, draft, band, usage, FACTION_PORTRAIT_POOLS[fields.factionId],
-    new Set(fields.predecessorFace === undefined ? [] : [fields.predecessorFace]))
+  const set = FACTION_LINEAGE_SETS[fields.factionId];
+  let portraitIdentity: string | null = null;
+  if (set !== undefined && father !== undefined) {
+    const generation = (setPlaces(set).find(place => place.identityId === father.portraitIdentity)?.generation ?? 1) + 1;
+    const worn = new Set([...(state.factions?.people ?? []), ...made].map(person => person.portraitIdentity));
+    const free = setPlaces(set).filter(place => place.sex === "male" && place.generation === generation && !place.inLaw && !worn.has(place.identityId));
+    // Only a place with a picture of his age (a set's first son may have been drawn as a baby only).
+    portraitIdentity = free.find(place => place.bands.has(PORTRAIT_BAND[band]))?.identityId ?? null;
+  }
+  portraitIdentity ??= chooseFactionPortraitIdentity(state.seed, draft, band, usage, FACTION_PORTRAIT_POOLS[fields.factionId],
+    new Set(fields.predecessor === undefined ? [] : [fields.predecessor.portraitIdentity]))
     ?? choosePortraitIdentity(state.seed, draft, band, usage);
   return { ...draft, givenName: fields.givenName ?? weightedName(MALE_GIVEN_NAMES, hashSeed(state.seed, "faction-name", ordinal)),
     ...(fields.surname === undefined ? {} : { surname: fields.surname }), birthYear: fields.birthYear, householdId: `faction:${fields.factionId}`,
-    hair: HAIR_COLOURS[(roll >>> 4) % HAIR_COLOURS.length]!, alive: true, portraitIdentity };
+    hair: hairWords(traits), alive: true, portraitIdentity, lineageId: `faction:${fields.factionId}`, ...(father === undefined ? {} : { fatherId: father.id }) };
 }
 
 /** FX-5: the king reigning in `year`. */
@@ -168,10 +183,10 @@ function yearTurn(state: GameState, factionState: FactionState): FactionState {
         people[index.get(leaderId)!] = { ...leader, alive: false, deathYear: year, deathCause: "age" };
         const heir = faction.id === "crown"
           ? outsidePerson(state, ordinal, { factionId: "crown", givenName: king.name, birthYear: king.born, classBand: "gentry", occupation: "king", year,
-            predecessorFace: leader.portraitIdentity }, people)
+            predecessor: leader }, people)
           : outsidePerson(state, ordinal, { factionId: faction.id, ...(leader.surname === undefined ? {} : { surname: leader.surname }),
             birthYear: year - 20 - hashSeed(state.seed, "faction-heir", ordinal) % 16, classBand: leader.classBand, occupation: leader.occupation, year,
-            predecessorFace: leader.portraitIdentity }, people);
+            predecessor: leader }, people);
         ordinal += 1;
         people.push(heir);
         index.set(heir.id, people.length - 1);
@@ -208,6 +223,8 @@ function withLeaderFaces(state: GameState): GameState {
     const at = list.findIndex(person => person.id === faction.leaderId);
     const leader = list[at];
     if (leader === undefined || !leader.alive || pools.includes(identityFaction(leader.portraitIdentity) ?? "")) continue;
+    // PERSON-1a: an heir in the faction's lineage set wears the family's face.
+    if (FACTION_LINEAGE_SETS[faction.id] !== undefined && identityLineage(leader.portraitIdentity) === FACTION_LINEAGE_SETS[faction.id]) continue;
     const face = chooseFactionPortraitIdentity(state.seed, leader, ageBandOf(ageOf(leader, year)), usage, pools);
     if (face === null) continue;
     usage.set(leader.portraitIdentity, Math.max(0, (usage.get(leader.portraitIdentity) ?? 1) - 1));

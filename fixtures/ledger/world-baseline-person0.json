@@ -1,5 +1,5 @@
 {
-  "description": "Money-free world state after PERSON-0 (the town's persons: names, births, deaths, offices, save v16) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money, history and Building.upkeepUnpaid. PERSON-0 changes the world by design (the state records persons; mortality takes residents where a house cannot grow, spec PS-3), so the F0-C1 world no longer applies. The cache must still match the ledger on every tick. MARKET-1 re-pinned seed1City2400 (the market reaches homes along the road; the new-game case is unchanged). MARKET-1 MK-5 re-pinned it again: the trace runs the bot, and AR-5 now lays a road (44,43) that brings four lived-in L4 homes into the markets' reach where it used to demolish one of them (the rules are unchanged; at the merge before MK-5 the hash was 67db5f18). FIX-4 re-pinned newGame10000: the new game opens with 60d and 160 timber, and upkeep is charged food chain first with old debt no longer idling a facility (spec HR-1, HR-2, HR-3, HR-9); seed1City2400 is unchanged. FAIL-3 re-pinned seed1City2400: the city has long reached prosperity, which is now a chapter goal; its settlement outcome is \"ongoing\" instead of \"victory\" (spec FL-9), nothing else in the world moves. FIX-6 re-pinned both: the factions' leaders wear the portrait pool 3's faces (decision FX6-2) and the town's portrait usage follows (the world without portraitIdentity is unchanged; were 5123793c… / afc8aeef…).",
+  "description": "Money-free world state after PERSON-0 (the town's persons: names, births, deaths, offices, save v16) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money, history and Building.upkeepUnpaid. PERSON-0 changes the world by design (the state records persons; mortality takes residents where a house cannot grow, spec PS-3), so the F0-C1 world no longer applies. The cache must still match the ledger on every tick. MARKET-1 re-pinned seed1City2400 (the market reaches homes along the road; the new-game case is unchanged). MARKET-1 MK-5 re-pinned it again: the trace runs the bot, and AR-5 now lays a road (44,43) that brings four lived-in L4 homes into the markets' reach where it used to demolish one of them (the rules are unchanged; at the merge before MK-5 the hash was 67db5f18). FIX-4 re-pinned newGame10000: the new game opens with 60d and 160 timber, and upkeep is charged food chain first with old debt no longer idling a facility (spec HR-1, HR-2, HR-3, HR-9); seed1City2400 is unchanged. FAIL-3 re-pinned seed1City2400: the city has long reached prosperity, which is now a chapter goal; its settlement outcome is \"ongoing\" instead of \"victory\" (spec FL-9), nothing else in the world moves. FIX-6 re-pinned both: the factions' leaders wear the portrait pool 3's faces (decision FX6-2) and the town's portrait usage follows (the world without portraitIdentity is unchanged; were 5123793c… / afc8aeef…). PERSON-1a re-pinned both: the persons carry traits, lineage and parents and the lord's family lives in the manor (decision LN7; the simulation without the person layer is unchanged; were 0152347a… / be6ffcf1…).",
   "sourceCommit": "person0-persons",
   "previousBaseline": "fixtures/ledger/world-baseline-f0c1-famine.json",
   "cases": {
@@ -9,7 +9,7 @@
       "endTick": 10000,
       "ticks": 10000,
       "stateFile": null,
-      "finalWorldHashWithoutMoney": "0152347a138be5f331cc6e6ee053ff241abb7029f39d84ceb8da68b71511c597"
+      "finalWorldHashWithoutMoney": "8984c9213c3d07d45831cded1a2f4241a741ea3dd79382989ce78f14f8c0876b"
     },
     "seed1City2400": {
       "kind": "state",
@@ -17,7 +17,7 @@
       "endTick": 681651,
       "ticks": 2400,
       "stateFile": "fixtures/determinism/seed1/final-state.json",
-      "finalWorldHashWithoutMoney": "be6ffcf10c2a790d3a94b97a9d9826a311674fdab2891e17889c9acea7837c64"
+      "finalWorldHashWithoutMoney": "71e0f54bfa69327b4d4c2e8d22bd34c76fa8f6de41fa17f1023f6bace33d9a5e"
     }
   }
 }

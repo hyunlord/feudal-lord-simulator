@@ -237,5 +237,6 @@ test("X9 (FX-4, FX-5) the same seed and the same commands give the same factions
     ["bishop", 20, ["famine:relief"]], ["merchant_house_1", 10, ["petition:market_charter:accept"]], ["merchant_house_2", 0, []],
     ["town", 15, ["raid:held"]], ["commons", 25, ["famine:relief"]]]);
   // CODE-1a (decision FX6-2): the leaders and heirs wear their pool-3 faces (was 83ac82e83047d496f101ccb6f5974cc1512cde416ddbc4b08bc8949a5f17e0f9).
-  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "9dcbe59c87fa6768743debf96f09fc9a57057af1faa066461147bf940c988020");
+  // PERSON-1a (LN7): the factions' people carry traits and lineage; a noble heir is his father's son in the set L6/L7 (was 9dcbe59c…).
+  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "bac1f069a30b1ab21fae2ddeb82d81ecfc3bae022e9a14a9f5e76174ec3e9bc5");
 });

@@ -1,0 +1,335 @@
+{
+ "runner": "DGX scripts/remote/run.sh engine-PERSON1a-gate4 (detached)",
+ "commit": "da5ad4b",
+ "command": "scripts/lineageGateRun.ts <seed> 260000",
+ "seeds": [
+  {
+   "seed": 1,
+   "maxTicks": 260000,
+   "final": {
+    "tick": 236308,
+    "year": 1359,
+    "chapter": 3,
+    "population": 768
+   },
+   "hair": {
+    "bornWithParents": 1211,
+    "bothParents": 592,
+    "bothMatch": 574,
+    "bothRate": 0.9695945945945946,
+    "anyParentMatch": 958,
+    "anyRate": 0.7910817506193228
+   },
+   "sets": {
+    "namedLineages": [
+     {
+      "id": "lord:1",
+      "kind": "lord",
+      "set": "L3",
+      "placesGiven": 8
+     },
+     {
+      "id": "lin:p-000062",
+      "kind": "miller",
+      "set": "L8",
+      "placesGiven": 2
+     },
+     {
+      "id": "lin:p-000004",
+      "kind": "reeve",
+      "set": "L5",
+      "placesGiven": 10
+     },
+     {
+      "id": "lin:p-000285",
+      "kind": "merchant",
+      "set": "L4",
+      "placesGiven": 11
+     },
+     {
+      "id": "lin:p-000937",
+      "kind": "merchant",
+      "set": "L2",
+      "placesGiven": 2
+     }
+    ],
+    "people": 2,
+    "wearingSet": 2,
+    "rate": 1,
+    "notWearing": []
+   },
+   "ledgerStates": {
+    "person.fell_ill": 3440,
+    "person.recovered": 3373,
+    "person.injured": 2493,
+    "person.healed": 2469,
+    "person.expecting": 206,
+    "person.pilgrimage": 176,
+    "person.returned": 172,
+    "person.bailiff": 36
+   }
+  },
+  {
+   "seed": 2,
+   "maxTicks": 260000,
+   "final": {
+    "tick": 238141,
+    "year": 1359,
+    "chapter": 3,
+    "population": 768
+   },
+   "hair": {
+    "bornWithParents": 1164,
+    "bothParents": 474,
+    "bothMatch": 456,
+    "bothRate": 0.9620253164556962,
+    "anyParentMatch": 861,
+    "anyRate": 0.7396907216494846
+   },
+   "sets": {
+    "namedLineages": [
+     {
+      "id": "lord:1",
+      "kind": "lord",
+      "set": "L3",
+      "placesGiven": 10
+     },
+     {
+      "id": "lin:p-000004",
+      "kind": "reeve",
+      "set": "L5",
+      "placesGiven": 9
+     },
+     {
+      "id": "lin:p-000058",
+      "kind": "miller",
+      "set": "L8",
+      "placesGiven": 9
+     },
+     {
+      "id": "lin:p-000421",
+      "kind": "merchant",
+      "set": "L4",
+      "placesGiven": 11
+     },
+     {
+      "id": "lin:p-000938",
+      "kind": "merchant",
+      "set": "L2",
+      "placesGiven": 2
+     }
+    ],
+    "people": 7,
+    "wearingSet": 5,
+    "rate": 0.7142857142857143,
+    "notWearing": [
+     "m-000013:L3:I088:1307",
+     "m-000012:L3:I067:1351"
+    ]
+   },
+   "ledgerStates": {
+    "person.fell_ill": 3277,
+    "person.recovered": 3202,
+    "person.injured": 2263,
+    "person.healed": 2235,
+    "person.expecting": 168,
+    "person.pilgrimage": 135,
+    "person.returned": 135,
+    "person.bailiff": 34
+   }
+  },
+  {
+   "seed": 3,
+   "maxTicks": 260000,
+   "final": {
+    "tick": 260000,
+    "year": 1365,
+    "chapter": 3,
+    "population": 768
+   },
+   "hair": {
+    "bornWithParents": 1063,
+    "bothParents": 490,
+    "bothMatch": 473,
+    "bothRate": 0.9653061224489796,
+    "anyParentMatch": 796,
+    "anyRate": 0.748824082784572
+   },
+   "sets": {
+    "namedLineages": [
+     {
+      "id": "lord:1",
+      "kind": "lord",
+      "set": "L3",
+      "placesGiven": 11
+     },
+     {
+      "id": "lin:p-000058",
+      "kind": "miller",
+      "set": "L8",
+      "placesGiven": 11
+     },
+     {
+      "id": "lin:p-000001",
+      "kind": "reeve",
+      "set": "L5",
+      "placesGiven": 10
+     }
+    ],
+    "people": 5,
+    "wearingSet": 5,
+    "rate": 1,
+    "notWearing": []
+   },
+   "ledgerStates": {
+    "person.fell_ill": 3232,
+    "person.recovered": 3159,
+    "person.injured": 2464,
+    "person.healed": 2436,
+    "person.expecting": 203,
+    "person.pilgrimage": 186,
+    "person.returned": 174,
+    "person.bailiff": 39
+   }
+  },
+  {
+   "seed": 4,
+   "maxTicks": 260000,
+   "final": {
+    "tick": 259562,
+    "year": 1364,
+    "chapter": 3,
+    "population": 768
+   },
+   "hair": {
+    "bornWithParents": 1294,
+    "bothParents": 656,
+    "bothMatch": 627,
+    "bothRate": 0.9557926829268293,
+    "anyParentMatch": 1003,
+    "anyRate": 0.7751159196290572
+   },
+   "sets": {
+    "namedLineages": [
+     {
+      "id": "lord:1",
+      "kind": "lord",
+      "set": "L3",
+      "placesGiven": 11
+     },
+     {
+      "id": "lin:p-000004",
+      "kind": "reeve",
+      "set": "L5",
+      "placesGiven": 10
+     },
+     {
+      "id": "lin:p-000063",
+      "kind": "miller",
+      "set": "L8",
+      "placesGiven": 6
+     },
+     {
+      "id": "lin:p-000609",
+      "kind": "merchant",
+      "set": "L4",
+      "placesGiven": 10
+     },
+     {
+      "id": "lin:p-000611",
+      "kind": "merchant",
+      "set": "L2",
+      "placesGiven": 2
+     }
+    ],
+    "people": 5,
+    "wearingSet": 4,
+    "rate": 0.8,
+    "notWearing": [
+     "m-000013:L3:I073:1344"
+    ]
+   },
+   "ledgerStates": {
+    "person.fell_ill": 3800,
+    "person.recovered": 3712,
+    "person.injured": 2816,
+    "person.healed": 2792,
+    "person.expecting": 221,
+    "person.pilgrimage": 196,
+    "person.returned": 192,
+    "person.bailiff": 43
+   }
+  },
+  {
+   "seed": 5,
+   "maxTicks": 260000,
+   "final": {
+    "tick": 260000,
+    "year": 1365,
+    "chapter": 3,
+    "population": 768
+   },
+   "hair": {
+    "bornWithParents": 1444,
+    "bothParents": 691,
+    "bothMatch": 667,
+    "bothRate": 0.9652677279305355,
+    "anyParentMatch": 1082,
+    "anyRate": 0.7493074792243767
+   },
+   "sets": {
+    "namedLineages": [
+     {
+      "id": "lord:1",
+      "kind": "lord",
+      "set": "L3",
+      "placesGiven": 7
+     },
+     {
+      "id": "lin:p-000007",
+      "kind": "reeve",
+      "set": "L5",
+      "placesGiven": 10
+     },
+     {
+      "id": "lin:p-000059",
+      "kind": "miller",
+      "set": "L8",
+      "placesGiven": 2
+     },
+     {
+      "id": "lin:p-000421",
+      "kind": "merchant",
+      "set": "L4",
+      "placesGiven": 10
+     },
+     {
+      "id": "lin:p-000422",
+      "kind": "merchant",
+      "set": "L2",
+      "placesGiven": 2
+     }
+    ],
+    "people": 2,
+    "wearingSet": 2,
+    "rate": 1,
+    "notWearing": []
+   },
+   "ledgerStates": {
+    "person.fell_ill": 3612,
+    "person.recovered": 3536,
+    "person.injured": 2623,
+    "person.healed": 2606,
+    "person.expecting": 193,
+    "person.pilgrimage": 192,
+    "person.returned": 184,
+    "person.bailiff": 51
+   }
+  }
+ ],
+ "earlierRuns": {
+  "bbce650": "sets measured on every lineage member: 12-30 % (the whole lineage outgrew the 12 places)",
+  "50ca7c0": "main line only: 40-75 % (the lord's family outgrew its places)",
+  "40adecb": "nearest-generation places: 20/30 = 66.7 %"
+ }
+}
