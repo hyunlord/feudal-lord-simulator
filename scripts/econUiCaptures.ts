@@ -101,12 +101,16 @@ async function woolCard(state: GameState, file: string) {
   const keep = state.buildings.find(building => building.kind === "keep") ?? state.buildings[0]!;
   const { page, close } = await scene(state, [keep.tx, keep.ty], { delay: 600 });
   await page.waitForTimeout(2_000);
-  if (await page.locator(".petition-card").count() === 0 && await page.locator(".event-chip").count() > 0) { await page.locator(".event-chip").first().click({ timeout: 5_000 }); await page.waitForTimeout(600); }
+  // As a player opens it: the chip, then the event card's [결정하기].
+  if (await page.locator(".petition-card").count() === 0 && await page.locator(".event-chip").count() > 0) {
+    await page.locator(".event-chip").first().click({ timeout: 5_000 }); await page.waitForTimeout(600);
+    await page.getByRole("button", { name: "결정하기" }).first().click({ timeout: 5_000 }); await page.waitForTimeout(600);
+  }
   await page.locator(".petition-card[data-def='wool_payment']").first().waitFor({ timeout: 15_000 });
   await shot(page.locator(".petition-card"), file);
   const lines = await text(page, ".petition-card [data-response], .petition-card .petition-option, .petition-card li");
   await close();
-  return lines.filter(line => line.includes("현물") || line.includes("양털"));
+  return [...new Set(lines.filter(line => line.includes("현물") || line.includes("양털")))];
 }
 let woolLoaded: GameState | null = null;
 const woolTownOf = () => (woolLoaded ??= json(warDir, "wool_payment"));
