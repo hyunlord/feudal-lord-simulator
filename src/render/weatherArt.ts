@@ -82,8 +82,7 @@ function cellCanvas(key: Wave23Key, image: CanvasImageSource, frame: number): Ca
     scaled.width = Math.round(cell.width * rain.scale); scaled.height = Math.round(cell.height * rain.scale);
     const scaledPaint = scaled.getContext("2d");
     if (scaledPaint === null) return null;
-    scaledPaint.imageSmoothingEnabled = false;
-    scaledPaint.drawImage(canvas, 0, 0, scaled.width, scaled.height);
+    drawCroppedWorldSprite(scaledPaint, canvas, { x: 0, y: 0, width: cell.width, height: cell.height }, { x: 0, y: 0, width: scaled.width, height: scaled.height }, false, false);
     cells[index] = scaled;
     return scaled;
   }
