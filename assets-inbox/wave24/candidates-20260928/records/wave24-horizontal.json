@@ -1,0 +1,107 @@
+{
+  "status": "candidate",
+  "tool": "builtin image_gen__imagegen",
+  "model": "not reported",
+  "seed": "not reported",
+  "postprocessing": "Sharp resize fit:fill to exact target dimensions, PNG; no crop, no generative pixel editing outside imagegen",
+  "assets": [
+    {
+      "id": "steam_header_capsule",
+      "file": "assets/steam_header_capsule.png",
+      "target": [
+        920,
+        430
+      ],
+      "generations": [
+        {
+          "prompt": "Use case: historical-scene. Create a NEW Steam header capsule painting, landscape aspect 920:430 (approximately 2.14:1), no text. References are only style and character/town continuity: reference 1 project title painting, reference 2 burgundy-cloaked lord and river town. RECOMPOSE, do not crop either reference. Southern England around 1300, subdued hand-painted gouache, warm late afternoon. COMPOSITION ESSENTIAL: ALL important imagery restricted to LEFT 60% of canvas: a back-view dark-haired lord in burgundy cloak standing on a hillside in far left foreground, looking toward compact timber-framed warm limewashed houses with low rubble foundations, muted red flat tile and golden thatch roofs, a square stone church tower, a few cream market tents and low timber palisade. A glimpse of river and a little bridge on the right side OF THIS LEFT GROUP near canvas center. Town fades atmospherically before x=60%. Entire RIGHT 40% from top to bottom must be very quiet pale blue-gray / warm ivory sky and atmospheric haze, usable blank logo negative space; no buildings, trees, figures or sharp details in right 40%. Left scene remains coherent and substantial, not a tiny vignette. Match natural painterly shapes, softened brush texture and muted olive fields of reference. CRITICAL historical correction: EVERY ordinary house has completely uninterrupted roof planes; ZERO chimneys, chimney stubs, pots, roof pipes, skylights or glass. Do not reproduce the reference's chimney defects. No house door markings, no hops, no saturated primary colors, no modern architecture, no flags with lettering. NO TEXT, lettering, logo, watermark, UI, border or guide overlays.",
+          "native_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-1227acb1-10cf-4d3c-b5f1-eaf2dbe4b2da.png",
+          "preserved_native": "records/header-native-v1.png",
+          "references": [
+            "references/키아트_타이틀.jpg",
+            "records/main-native.png"
+          ],
+          "status": "rejected: chimney stubs"
+        },
+        {
+          "prompt": "Correct this Steam header painting precisely, maintaining its wide 2.14:1 composition, burgundy lord, town, gouache style, warm muted palette. Remove EVERY single chimney and pale rectangular chimney stub from ALL house roofs throughout the town, including every tiny background cottage. Paint uninterrupted plain red tile or straw thatch in their place. The only vertical stone tower is the large church tower at left. All ordinary roofs MUST be smooth uninterrupted pitched planes without any projections. Inspect each roof and eliminate its stub. Also make the entire RIGHT40% (x>=60% image width, ALL heights) quiet pale blue-ivory atmospheric sky/haze. Remove the foreground tree in that region and fade out the end of the bridge, river edge, all distant hills and tree outlines there, leaving only soft near-featureless haze for later typography. Preserve scene left60%, no text, no logo, no watermark.",
+          "native_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-fe775159-291f-4359-8cfb-4b5ffa85aade.png",
+          "preserved_native": "records/header-native-v2.png",
+          "references": [
+            "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-1227acb1-10cf-4d3c-b5f1-eaf2dbe4b2da.png"
+          ],
+          "status": "rejected: chimney stubs"
+        },
+        {
+          "prompt": "Image edit, architectural correction ONLY. Remove the little pale gray/cream upright chimney stacks from every single cottage roof. They are errors. There are about 15 currently visible. Specific examples: cottage near x15% y40%, straw house x20% y39%, straw house x28% y43%, red tall house x39% y42%, straw house x44% y43%, background red cottage x47% y41%, foreground red roof x48% y55%. ALL of these little upright pale rectangles must vanish. Repaint these locations with continuous red tiles or golden straw roofing. There must be zero chimney stacks anywhere. Do not simply recolor chimneys: eliminate their silhouettes completely. Keep the main church bell tower and palisade defense towers. Preserve every other part of the image, including blank right40%, exact layout, colors, lord and lighting. No text.",
+          "native_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-4467ce7d-3eae-4518-9f40-e199eaf38a44.png",
+          "preserved_native": "records/header-native-v3.png",
+          "references": [
+            "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-fe775159-291f-4359-8cfb-4b5ffa85aade.png"
+          ],
+          "status": "selected"
+        }
+      ],
+      "qa": {
+        "visible_chimneys": "none observed in final",
+        "text_logos": "none",
+        "layout": "left60 lord/town; right40 quiet haze with slight low contrast transition at boundary",
+        "visual_limit": "Painterly mist transition visibly separates scene from logo space; offline candidate only"
+      }
+    },
+    {
+      "id": "steam_small_capsule",
+      "file": "assets/steam_small_capsule.png",
+      "target": [
+        462,
+        174
+      ],
+      "generations": [
+        {
+          "prompt": "Use case: historical-scene. Generate NEW extremely wide Steam SMALL capsule illustration with aspect 462:174, about 2.655:1. This must read when shrunk to 120x45 pixels. References only establish restrained gouache painting style, burgundy-cloaked lord and Southern England river market town around 1300; RECOMPOSE COMPLETELY, not crop. ESSENTIAL LAYOUT: scene concentrated inside LEFT 40% of whole image. Make a strong simplified dark town silhouette with one recognizable square stone church tower above just 4-5 timber-framed warm limewashed gables with simple muted red flat-tile / straw thatch roof shapes; tiny dark burgundy-cloaked lord silhouette at far left foreground facing this town. A modest suggestion of a winding river and short bridge within this left group. Use large readable masses, very few details; no busy miniature panorama. ENTIRE RIGHT 60% is quiet almost-empty warm ivory and pale gray-blue atmospheric sky/haze, low contrast soft painted paper texture for future logo overlay. Keep every tower, roof, figure and river edge LEFT of x40%; no objects/sharp edges at all in right60%. Soft warm late afternoon sunlight, muted olive, burgundy, parchment and slate blue palette, hand-painted gouache brush surface matching supplied references. Historical correction mandatory: all houses have perfectly continuous unbroken roof planes, ABSOLUTELY NO chimney stubs, chimneys, pots or roof pipes anywhere. Avoid house door symbols, glass, hops, saturated colors, modern architecture. No text, letters, logos, watermark, border, UI or guide overlay. Preserve recognizable visual hierarchy at 120x45: lord accent, church tower, town silhouette, immense clear logo space.",
+          "native_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-3e9e33aa-a0a8-4b2e-8f0a-83257f42c1c7.png",
+          "preserved_native": "records/small-native-v1.png",
+          "references": [
+            "references/키아트_타이틀.jpg",
+            "records/main-native.png"
+          ],
+          "status": "rejected: roof chimney persisted"
+        },
+        {
+          "prompt": "Revise this SMALL Steam capsule painting while maintaining aspect 2.655:1 and gouache palette. Make left town even simpler and confine the ENTIRE scene, including lord, roofs, stone church tower, river and short bridge, within LEFT40% of full canvas. Compress/recompose scene horizontally to achieve this; do not stretch image. Remove EVERY chimney stub and roof projection on all houses, especially the small rightmost cottage and large red-roof house. All ordinary house roofs must be uninterrupted plain tile or straw planes without dormers, pipes or chimney stubs. Church stone tower stays. Entire right60% (x>=40%, all heights) must be near-featureless pale blue-gray and ivory haze with paper texture only, absolutely no hills, trees, shrubs, bridge, river outlines or objects; a clear soft blank region for a future large title. Left40% should read at 120x45 as tiny burgundy lord silhouette plus one square church tower and few gables; simplify fine detail substantially. No text, logos, guides or watermark.",
+          "native_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-060b5cb6-4812-4212-904e-b5ef94817ee6.png",
+          "preserved_native": "records/small-native-v2.png",
+          "references": [
+            "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-3e9e33aa-a0a8-4b2e-8f0a-83257f42c1c7.png"
+          ],
+          "status": "rejected: roof chimney persisted"
+        },
+        {
+          "prompt": "Precise single-object removal. On the small pale cottage that is furthest RIGHT among the houses, at about x33.4%, y58% of the full image, a pale brown rectangular CHIMNEY protrudes upwards out of its golden ochre roof. Remove that chimney completely. Fill its silhouette with the blue-green tree backdrop and repaint the roof below as a clean continuous ochre pitched roof. This house MUST have zero chimney. Do not alter anything else: maintain identical dimensions, lord, large square church tower, other houses, bridge, blank right60%, gouache surface and colors. No new objects or text.",
+          "native_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-876298d3-972e-496f-b487-97870eda7f88.png",
+          "preserved_native": "records/small-native-v3.png",
+          "references": [
+            "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-060b5cb6-4812-4212-904e-b5ef94817ee6.png"
+          ],
+          "status": "rejected: roof chimney persisted"
+        },
+        {
+          "prompt": "Remove the entire SMALL RIGHTMOST COTTAGE (the pale isolated house with golden ochre roof and chimney immediately right of the big timber framed house). Replace that whole cottage with an ordinary rounded olive green shrub/grass patch. There should now be only TWO houses visible below the church: left thatched timber house and central large red tile timber house. No third small isolated house, no chimney. Preserve the exact remaining composition, church, burgundy lord, dog, bridge, empty right60%, wide aspect and gouache style. Only delete the small rightmost cottage. No text.",
+          "native_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-7b96a4d4-ed27-44d1-9b2b-cfe0dee81374.png",
+          "preserved_native": "records/small-native-v4.png",
+          "references": [
+            "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-74e1-7863-a1e2-d5284f32511e/exec-876298d3-972e-496f-b487-97870eda7f88.png"
+          ],
+          "status": "selected"
+        }
+      ],
+      "qa": {
+        "visible_chimneys": "none observed after removing rightmost cottage",
+        "text_logos": "none",
+        "layout": "Two main houses plus church tower, lord and bridge; right60 mostly low contrast haze with soft transition",
+        "at_120x45": "Viewed records/small-120x45.png: church tower, roof mass and burgundy lord remain discernible. Tiny detail does not survive, intentionally. Logo not added in this lane.",
+        "visual_limit": "Fine town detail unreadable at 120x45; candidate is silhouette-led. Transition occupies a few pixels of left edge of logo zone."
+      }
+    }
+  ]
+}

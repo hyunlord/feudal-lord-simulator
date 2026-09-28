@@ -1,0 +1,109 @@
+{
+  "status": "candidate",
+  "tool": "builtin image_gen",
+  "model": "not provided by tool",
+  "seed": "not provided by tool",
+  "references": [
+    "references/키아트_타이틀.jpg",
+    "references/초상_화풍.jpg",
+    "records/main-native.png"
+  ],
+  "assets": [
+    {
+      "id": "steam_vertical_capsule",
+      "file": "assets/steam_vertical_capsule.png",
+      "native": "records/vertical-native.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-05b1812b-7ad1-4238-9613-85ccdc4a43fc.png",
+      "prompt": "Use case: historical-scene. Produce ONE finished independent portrait composition for a Steam vertical capsule, target aspect ratio 748:896, no lettering. Input references are STYLE and subject continuity only, not edit targets: first image gives South English river market town, second gives naturalistic painted gentry costume, third gives burgundy cloaked lord and warm afternoon mood. Recompose from scratch; do not crop the landscape reference. CAUTION reference roofs contain forbidden chimney stubs: OMIT EVERY CHIMNEY and smoke on every house; roofs must be smooth uninterrupted thatch or dull flat clay tile.\nScene: southern England circa 1300, river market town below a grassy hill, warm oak frames and limewash walls, low rubble plinths, modest stone church tower, market awnings, winding river and timber bridge, field strips and distant woodland. No extravagant castle. A full-body lord in a deep muted burgundy wool cloak with restrained embroidered border stands on the foreground hill at left of center, seen back / slight three-quarter, boots both entirely in frame, looking down toward the town. Same coherent world as supplied references. His full figure occupies lower roughly 60 percent; town spreads below and behind him. Keep the entire upper 28 percent quiet low-detail muted blue gray and warm cream sky for later title overlay, no tree branches, banners, towers or heads intruding there. This is a specially designed vertical cover with depth, not a crop.\nStyle: hand-painted muted gouache and fine brushwork on subtly textured paper, credible human proportions and subdued historical costume, evocative yet legible at capsule size, soft late afternoon golden light, olive greens, weathered warm earth, muted burgundy. No photographic/3D look. No high saturation.\nAbsolutely no letters, words, numerals, logos, watermarks, frame, title placeholders or guide rectangles. No door marks, no hops, no ordinary-house chimneys, no chimney stubs, no brick houses, no slate, no blue glass, no modern items, no fantasy armor. Preserve calm top logo space.",
+      "target": [
+        748,
+        896
+      ],
+      "qa": {
+        "status": "PASS_visual_candidate",
+        "full_body": true,
+        "independent_recomposition": true,
+        "upper_28_percent_clear": true,
+        "text_free": true,
+        "visible_chimneys": "none observed",
+        "limits": "Offline visual review only; no Steam upload or runtime installation."
+      },
+      "verified_dimensions": [
+        748,
+        896
+      ],
+      "native_dimensions": [
+        1147,
+        1371
+      ]
+    },
+    {
+      "id": "steam_library_capsule",
+      "file": "assets/steam_library_capsule.png",
+      "native": "records/library-native.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-a0677276-84cd-4a59-88a3-7b184c87f80a.png",
+      "prompt": "Use case: historical-scene. Create ONE finished independently composed Steam LIBRARY poster illustration at portrait aspect 2:3, intended final 600x900. Input images are style and setting references only: first South English town key art, second naturalistic gentry portrait brushwork, third burgundy-cloaked lord and market-town afternoon atmosphere. Do not crop or copy the existing landscape composition. Reference roof chimneys are incorrect: do not include ANY chimney or chimney stub or house smoke.\nPoster scene: southern England circa 1300, a lord seen full body in three-quarter back view stands on a grassy hill overlooking a river market town. Deep muted burgundy cloak, restrained embroidered trim, brown boots entirely visible, weathered human proportions. He holds a wooden pole with a large hanging cloth family banner clearly legible in the middle-right portion, entirely below the upper 28 percent. The flag displays an ORIGINAL FICTIONAL heraldic emblem: one simple shield silhouette, a pale gray stone tower in its center, and two wheat ears below / flanking the tower. Colors antique muted gold, burgundy and natural linen, no existing family coat of arms and absolutely NO lettering or symbols resembling letters. Lord left of middle, banner beside him on right, balanced strong poster silhouette, town lower and behind.\nTown: warm oak timber frames with limewashed infill and low rubble bases, smooth thatched roofs or dull flat clay tile, modest church stone tower, market awnings, timber palisade, river and bridge, field strips and woodland. Roofs completely uninterrupted, no chimney structures at all. Keep town secondary and readable.\nReserve the top 28 percent of total canvas as softly painted QUIET EMPTY SKY with very sparse diffuse clouds, no flag, pole, human head, trees, church tower or other objects entering this area; later title will be typeset there. Warm late afternoon, hand painted muted gouache, delicate brush texture, subtle paper grain, coherent with supplied references. Not a 3D render, not photo, not fantasy concept polish. Avoid high saturation, modern clothes, plate armor, door markings, hops, slate roofs, house bricks, reflective blue glass, chimneys. No text, title, numerals, logo, watermark, decorative border or guide rectangles.",
+      "target": [
+        600,
+        900
+      ],
+      "qa": {
+        "status": "PASS_visual_candidate",
+        "full_body": true,
+        "fictional_shield_tower_wheat_banner": true,
+        "independent_recomposition": true,
+        "upper_28_percent_clear": true,
+        "text_free": true,
+        "visible_chimneys": "None observed in selected correction5",
+        "limits": "Rear houses simplified to grove, church tower restored; offline candidate only, no installation or Steam upload.",
+        "church_tower": true
+      },
+      "corrections": [
+        {
+          "prompt": "Precise historical correction of this library poster. Preserve the ENTIRE composition and all existing details, full body lord, original shield with stone tower and wheat flag, river town, quiet upper sky, palette, brushwork, aspect ratio and framing unchanged. Remove EVERY chimney and chimney stub from EVERY ordinary house roof. Several tiny pale vertical rectangles on tiled house roofs at mid-right and lower-right are chimneys: paint these out seamlessly using surrounding roof clay tiles. Scan all roofs including those behind the flag and foreground roofs; no house roof may have any vertical block, pipe, stub or smoke. Church tower, palisade towers and flag pole remain unchanged. Do not add or alter anything else. No letters or text.",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-155de6d8-65fa-4cb9-9803-bcbd824f12c9.png",
+          "native": "records/library-correction1-native.png",
+          "outcome": "FAIL: chimney stubs remain; original retained as candidate"
+        },
+        {
+          "n": 2,
+          "prompt": "Edit this poster. Preserve foreground lord, banner with shield tower and wheat, foreground grass, and upper sky exactly. REDRAW THE ENTIRE TOWN BELOW AND BEHIND THE BANNER. Replace ALL HOUSE ROOFS completely with smooth uninterrupted golden straw THATCH roofs, without any vertical protrusions, pipes, chimneys, roof vents, dormers or stubs. Every single house must have an unbroken straw roof with a simple clean ridge. Houses have warm oak framing and limewashed walls. This applies to ALL town houses, especially lower-right market house roofs and houses behind the banner. Do not retain any of the old tiled roof surfaces. Church stone tower and palisade watchtowers remain, since they are complete buildings not chimneys. Keep town footprint, river, bridge, warm painted afternoon mood, exact poster aspect and sky space. No text. No smoke. No chimney-shaped marks anywhere.",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-17d970e4-6d04-4bbf-8dc7-36694862f1bc.png",
+          "outcome": "Most chimneys removed; one pale stub persisted near church.",
+          "native": "records/library-correction2-native.png"
+        },
+        {
+          "n": 3,
+          "prompt": "Single precise edit: in this 1024x1536 poster, replace the entire central house immediately below and slightly left of the stone church tower, around x=722 y=893, INCLUDING THE PALE CHIMNEY sticking out around x=725 y=872. Replace that house and chimney with a rounded leafy olive green TREE. Its canopy should fully cover the offending chimney and roof. Preserve EVERYTHING else exactly: lord, banner, sky, other houses, church tower, market, river. No text. This correction specifically removes the last chimney by replacing its entire house with a tree. Do not retain the pale upright stub or redraw it anywhere.",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-5d18c4dc-916a-47fa-954e-2696ce793cc7.png",
+          "outcome": "Incorrect neighboring house replaced; offending stub persisted.",
+          "native": "records/library-correction3-native.png"
+        },
+        {
+          "n": 4,
+          "prompt": "Precise localized edit. Replace the CHURCH AND THE ENTIRE THREE HOUSES DIRECTLY BELOW THE CHURCH with a dense group of green deciduous trees. This means all architecture in the area between the banner's right edge and the rear thatched houses on far right, from the church tower top down to the market awnings, should become one large natural cluster of leafy green trees. Remove the church tower, church nave, and the house with chimney directly below them completely. Keep lord, heraldic flag, sky, river, foreground, market tents, front row thatched houses and palisade unchanged. This intentionally trades the church feature for trees to remove a stubborn unwanted architectural detail. Do not paint any chimneys or vertical pale blocks. No letters.",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-d64204ac-048f-4b1d-8d2f-2aa4dd537167.png",
+          "outcome": "Superseded by correction5: chimney removal worked but church landmark removed; church restored in final.",
+          "native": "records/library-correction4-native.png"
+        },
+        {
+          "n": 5,
+          "prompt": "One precise additive edit to this finished historical poster. Add ONLY a simple isolated square medieval parish church bell tower rising above the trees immediately right of the banner, in middle distance near x=720 y=795 on this 1024x1536 image. The tower is a single substantial pale rubble-stone church building with two narrow dark bell openings and small dull clay pyramidal roof, broad visible vertical shaft, partly hidden at base by the grove. It should be clearly a complete parish church tower, not a chimney. NO adjacent houses, no house roofs, no chimney structures, no extra architecture. Keep existing clean thatched houses, grove, market, lord, banner, river, bridge, lighting, sky and framing exactly unchanged. Top 28% stays empty sky. No text. This restores the church landmark while all houses remain chimney-free.",
+          "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e6e0-dfc7-7a92-8650-435a603b9175/exec-5680fbd9-43b6-49d2-aae8-02d9c3d472c9.png",
+          "native": "records/library-correction5-native.png",
+          "outcome": "Selected final. Church tower restored above grove; visible roofs free of chimney stubs."
+        }
+      ],
+      "selectedNative": "records/library-correction5-native.png",
+      "verified_dimensions": [
+        600,
+        900
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ]
+    }
+  ],
+  "postprocessing": "Sharp Lanczos3 resize to exact target dimensions with fit fill; no crop. Independent imagegen compositions."
+}

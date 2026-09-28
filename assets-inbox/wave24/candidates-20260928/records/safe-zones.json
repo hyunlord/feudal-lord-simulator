@@ -1,0 +1,126 @@
+{
+  "coordinates": "normalized x,y,width,height; top-left origin",
+  "note": "Project composition boxes, not official Steam crop templates. Only type=logo reserves title space. Hero/UI and icon guides never request baked-in title.",
+  "assets": [
+    {
+      "id": "steam_header_capsule",
+      "width": 920,
+      "height": 430,
+      "box": [
+        0.6,
+        0.04,
+        0.38,
+        0.87
+      ],
+      "type": "logo"
+    },
+    {
+      "id": "steam_small_capsule",
+      "width": 462,
+      "height": 174,
+      "box": [
+        0.4,
+        0.08,
+        0.58,
+        0.8
+      ],
+      "type": "logo"
+    },
+    {
+      "id": "steam_main_capsule",
+      "width": 1232,
+      "height": 706,
+      "box": [
+        0.25,
+        0.035,
+        0.7,
+        0.26
+      ],
+      "type": "logo"
+    },
+    {
+      "id": "steam_vertical_capsule",
+      "width": 748,
+      "height": 896,
+      "box": [
+        0.08,
+        0.035,
+        0.84,
+        0.23
+      ],
+      "type": "logo"
+    },
+    {
+      "id": "steam_library_capsule",
+      "width": 600,
+      "height": 900,
+      "box": [
+        0.08,
+        0.035,
+        0.84,
+        0.23
+      ],
+      "type": "logo"
+    },
+    {
+      "id": "steam_library_hero",
+      "width": 3840,
+      "height": 1240,
+      "box": [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "type": "steam_ui_occlusion_not_logo"
+    },
+    {
+      "id": "steam_library_logo_emblem",
+      "width": 1280,
+      "height": 720,
+      "box": [
+        0.21,
+        0.07,
+        0.58,
+        0.86
+      ],
+      "type": "emblem_content_not_title"
+    },
+    {
+      "id": "steam_page_background",
+      "width": 1438,
+      "height": 810,
+      "box": [
+        0.18,
+        0.08,
+        0.64,
+        0.84
+      ],
+      "type": "page_content_not_logo"
+    },
+    {
+      "id": "steam_app_icon",
+      "width": 184,
+      "height": 184,
+      "box": [
+        0.043,
+        0.043,
+        0.914,
+        0.914
+      ],
+      "type": "icon_content_not_title"
+    },
+    {
+      "id": "steam_shortcut_icon",
+      "width": 256,
+      "height": 256,
+      "box": [
+        0.031,
+        0.031,
+        0.938,
+        0.938
+      ],
+      "type": "icon_content_not_title"
+    }
+  ]
+}

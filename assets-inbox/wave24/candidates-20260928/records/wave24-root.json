@@ -1,0 +1,39 @@
+{
+  "mode": "builtin image_gen",
+  "model": "not supplied",
+  "seed": "not supplied",
+  "assets": [
+    {
+      "id": "steam_main_capsule",
+      "attempts": [
+        {
+          "prompt": "Create one textless Steam main capsule painted illustration, landscape 1232x706 aspect ratio. Project style reference attached: low-saturation hand-painted gouache southern England circa 1300. A lord viewed from behind on the lower left hillside wearing muted burgundy fine wool cloak overlooks a riverside market town: warm limewashed oak timber houses with thatch and dull flat clay tile roofs, square stone church tower, muted market awnings, a river and bridge on right, distant strip fields and woods. Warm late afternoon light. Reserve the entire upper third as quiet softly painted sky for a later typeset game title; DO NOT draw any text, letters, symbols resembling lettering, logo, border or watermark. Recompose as a cohesive single painting, not a collage. Modest medieval scale. No chimneys on ordinary houses, no door marks, no hops, no saturated primary colors, no fantasy castle. Match visible painterly brushwork and muted warm palette of reference, not photorealism.",
+          "reference": "references/키아트_타이틀.jpg",
+          "native": "main-native.png",
+          "disposition": "rejected: chimney stubs"
+        },
+        {
+          "prompt": "Edit this painting precisely. Remove EVERY chimney or chimney-like small stone/white vertical stump from ALL house rooftops, including lefttilehouses, housesaroundthechurch, centralbrownroofs, rightthatchandtilehouses: reconstruct continuous thatch or flat red clay tiles in their place. Also remove the two dogs beside the lord to simplify foreground. Keep churchtower and palisadegate towers, lord posture and burgundy cloak, riverbridge, dimensions, all other townlayout, painterly texture/light/palette unchanged. Ordinary medieval house rooftops have NO chimney whatsoever. Keep image entirely textless. Preserve upper third sky as quiet later logo area.",
+          "reference": "records/main-native.png",
+          "native": "main-native-v2.png",
+          "disposition": "selected"
+        }
+      ],
+      "status": "candidate",
+      "user_accepted": null
+    },
+    {
+      "id": "steam_library_logo_emblem",
+      "attempts": [
+        {
+          "prompt": "Create one standalone painted heraldic emblem on a genuinely transparent RGBA background. Landscape canvas1280x720, emblem centered fits within about560x640 with ampletransparent space left/right. One simple medieval heater shield in muted dark burgundy, a single warm ivory stone wall-tower with crenellated top as the large central charge, two ochre golden WHEAT ears curve up beside the shield forming a modest framing pair. SouthernEngland1300 style. Match the attached project's shield contact sheet ONLY for handpainted gouache brushstrokes, slightlyworn leather/wood shield edges,upperleftwarmsoftlight andlower subtle shade. This is ONE new emblem, NOT a contact sheet. Strongclear silhouette for184px icon. No crown, no lion, no ribbon, no text, no digits, no logo lettering, no realfamilycoat, no groundshadow, no background/checkerboard painted in. Transparent outside emblem and wheat. Restrainedpaintedstone/gold, not shiny3Dmetal or flatvector.",
+          "reference": "references/문장_질감.jpg",
+          "native": "emblem-native.png",
+          "disposition": "selected: alpha light/dark visual review passed; low-alpha RGB residue disclosed"
+        }
+      ],
+      "status": "candidate",
+      "user_accepted": null
+    }
+  ]
+}
