@@ -15,13 +15,16 @@ import { PETITION_COPY } from "./petitionCopy.ko";
 import { factionLeaderRow, type PersonRow } from "./persons/personModels";
 import type { Wave16ImageId } from "./wave16Art";
 import type { Wave17ImageId } from "./wave17Art";
+import type { Wave21ImageId } from "./wave21Art";
 
 /**
  * UI-6: one presentation per petition kind (`defId`): its scene, title, what it asks, what each answer does, and who
  * brings it. The chapter 1 market charter keeps its UI-4 copy; the war's five demands (F2-A, the Wave 17 decision cards
  * 1:1) and the right's buy-back (FAIL-3) have their own. An unknown kind still shows its subject and the ledger's labels.
+ * UI-8: extended to accept "wave21" for the chapter 3 plague decision cards.
  */
-export type PetitionArt = Readonly<{ sheet: "wave16"; id: Wave16ImageId }> | Readonly<{ sheet: "wave17"; id: Wave17ImageId }>;
+export type PetitionArt = Readonly<{ sheet: "wave16"; id: Wave16ImageId }> | Readonly<{ sheet: "wave17"; id: Wave17ImageId }>
+  | Readonly<{ sheet: "wave21"; id: Wave21ImageId }>;
 type Presentation = Readonly<{
   art: PetitionArt;
   title: string;

@@ -15,6 +15,7 @@ import { EmblemImage } from "../heraldry/EmblemImage";
 import { PETITION_COPY } from "../petitionCopy.ko";
 import { wave14ImageStyle } from "../wave14Art";
 import { wave17ImageStyle, wave17Url } from "../wave17Art";
+import { wave21ImageStyle, wave21Url } from "../wave21Art";
 import { storyArtStyle } from "../storyArt";
 
 // UI-4 story modals (state machine modals: time stops while one is up, and closing it returns to the state under it).
@@ -57,9 +58,11 @@ export function FamineDecisionModal({ view, onChoose, onLater, steward = null, o
   );
 }
 
-/** UI-6: the scene of a petition's kind (Wave 16 for chapter 1's, the Wave 17 decision cards for the war's five). */
+/** UI-6: the scene of a petition's kind (Wave 16 for chapter 1's, the Wave 17 decision cards for the war's five).
+ *  UI-8: extended to accept "wave21" for the chapter 3 plague decisions. */
 function PetitionArt({ art }: { readonly art: PetitionDecisionView["presentation"]["art"] }) {
-  // The Wave 17 scenes are 4:3 (taller than Wave 16's): a little narrower, so the three answers stay inside the frame.
+  // Wave 17 and Wave 21 decision cards are 4:3 (taller than Wave 16's): narrower so the three answers stay inside the frame.
+  if (art.sheet === "wave21") return <div className="story-modal-art" aria-hidden="true" style={wave21ImageStyle(art.id, 208)} />;
   return <div className="story-modal-art" aria-hidden="true" style={art.sheet === "wave16" ? wave16ImageStyle(art.id, 300) : wave17ImageStyle(art.id, 208)} />;
 }
 
@@ -126,7 +129,7 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
 }) {
   return (
     <div className="story-modal-backdrop story-modal-backdrop--chronicle" role="presentation"
-      style={{ backgroundImage: `url("${view.chapter === 2 ? wave17Url("chapter2_end") : wave16Url("chapter1_end")}")` }}>
+      style={{ backgroundImage: `url("${view.chapter === 3 ? wave21Url("ch3_ending") : view.chapter === 2 ? wave17Url("chapter2_end") : wave16Url("chapter1_end")}")` }}>
       <section className="chronicle-page" role="dialog" aria-modal="true" aria-label={view.title}>
         <span className="chronicle-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_chronicle_page")} />
         <div className="chapter-page-body" style={wave8ContentStyle("frame_chronicle_page")}>

@@ -24,6 +24,7 @@ import { resemblanceParts } from "../persons/resemblance";
 import { drawnPortraitId } from "../portraitArt";
 import type { Wave16ImageId } from "../wave16Art";
 import type { Wave17ImageId } from "../wave17Art";
+import type { Wave21ImageId } from "../wave21Art";
 import { CHRONICLE_SCREEN_COPY, OCCUPATION_TITLES } from "./chronicleScreenCopy.ko";
 import { WAVE17_IMAGES } from "../wave17ArtManifest.generated";
 
@@ -232,6 +233,7 @@ export function snapshotFor(state: Pick<GameState, "history">, tick: number, own
 
 export type RecordFrameId = "frame_record_decision" | "frame_record_era" | "frame_record_event" | "frame_record_ledger" | "frame_record_milestone" | "frame_record_person";
 export type ChronicleArt = Readonly<{ kind: "wave16"; id: Wave16ImageId }> | Readonly<{ kind: "wave17"; id: Wave17ImageId }>
+  | Readonly<{ kind: "wave21"; id: Wave21ImageId }>
   | Readonly<{ kind: "portrait"; portraitId: string }> | Readonly<{ kind: "emblem"; emblem: EmblemSpec }> | null;
 export type RecordCard = Readonly<{
   id: string; kind: HistoryKind; frame: RecordFrameId; date: string; sentence: string; numbers: string | null; art: ChronicleArt;
