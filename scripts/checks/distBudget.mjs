@@ -222,7 +222,7 @@ export function formatBudgetMarkdown(result, { sha, buildMs }) {
   if (art !== undefined && art !== null) {
     const world = memory => cell(memory.byCategory.find(row => row.category === 'world')?.bytes ?? 0);
     lines.push('', '## 시작 시 불러오는 그림 메모리', '',
-      '예산 없음(측정만). 시작 때 미리 불러오는 그림(`src/render/preloadGameArt.ts`의 `preloadGameArt`·`preloadFrameArt`, 목록은 `scripts/checks/startupArtList.ts`가 런타임 함수를 돌려 얻는다)의 해제 크기 = 빌드 파일 머리의 가로 × 세로 × 4의 합. 그 뒤 처음 그릴 때 불러오는 그림(지형 변형·구역·날씨·마을 생활 등)과 초상·삽화는 들지 않는다.', '',
+      '예산 없음(측정만). 시작 때 미리 불러오는 그림(`src/render/preloadGameArt.ts`의 `preloadGameArt`·`preloadFrameArt`, 그리고 첫 지형 프레임이 지도와 관계없이 부르는 경계·계절 그림)의 해제 크기 = 빌드 파일 머리의 가로 × 세로 × 4의 합. 목록은 `scripts/checks/startupArtList.ts`가 이 런타임 함수들을 돌려 얻는다. 지도에 있을 때만 처음 그릴 때 불러오는 그림(물가·구역·마당·성벽 면·날씨·마을 생활)과 초상·삽화는 들지 않는다 — BUDGET-1 탐침의 118.8 MB(1장 끝 마을이 불러온 세계 그림 전부)와 다른 이유다.', '',
       '| 시작 | 그림 | 파일 | 해제 크기 | 그중 세계 그림 |', '|---|---:|---:|---:|---:|',
       `| 1장 시작(캠페인 새 게임) | ${art.chapterOne.images} | ${cell(art.chapterOne.fileBytes)} | ${cell(art.chapterOne.bytes)} | ${world(art.chapterOne)} |`,
       `| 전부(자유 모드, BUDGET-1b 전의 모든 시작) | ${art.all.images} | ${cell(art.all.fileBytes)} | ${cell(art.all.bytes)} | ${world(art.all)} |`, '');
