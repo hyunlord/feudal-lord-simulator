@@ -18,6 +18,8 @@ import { chronicleIllustration } from "../chronicleModel";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
+import { PERSON_TRAIT_COPY } from "../persons/personTraitCopy.ko";
+import { resemblanceParts } from "../persons/resemblance";
 import { drawnPortraitId } from "../portraitArt";
 import type { Wave16ImageId } from "../wave16Art";
 import type { Wave17ImageId } from "../wave17Art";
@@ -427,6 +429,8 @@ export type BiographyView = Readonly<{
   ornament: PersonStateId | null;
   /** The house they belong to (none for a head: it is theirs). */
   household: string | null;
+  /** UI-7: what they have of their parents ("닮은 점: 아버지의 매부리코, 어머니의 붉은 머리"; null for none, `resemblance.ts`). */
+  resemblance: string | null;
   companion: Readonly<{ id: string; portraitId: string; label: string }> | null;
   events: readonly { readonly id: string; readonly date: string; readonly sentence: string; readonly last: boolean }[];
   relations: readonly BiographyRelation[]; survivors: boolean; offices: readonly string[];
@@ -480,6 +484,7 @@ export function biographyView(state: GameState, personId: string): BiographyView
     role: CHRONICLE_SCREEN_COPY.role(person.role, person.occupation === person.role ? "" : occupationName(person.occupation)),
     household: person.role === "head" ? null : person.householdId === MANOR_HOUSEHOLD ? CHRONICLE_SCREEN_COPY.household(null)
       : CHRONICLE_SCREEN_COPY.household(householdName(state, person.householdId)),
+    resemblance: (parts => parts.length === 0 ? null : PERSON_TRAIT_COPY.resemblance(parts))(resemblanceParts(state, person)),
     companion: companion === undefined ? null : { id: companion.id, portraitId: drawnPortraitId(companion, persons.portrait(state, companion).portraitId),
       label: CHRONICLE_SCREEN_COPY.companion(person.role, companion.role) },
     events: biography.events.map((event, index) => ({ id: event.id, date: CHRONICLE_SCREEN_COPY.date(event.date.year, event.date.season), sentence: event.summary,
