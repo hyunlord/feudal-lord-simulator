@@ -5,7 +5,7 @@
 - 역사 기준: 14세기 잉글랜드의 양조는 대부분 가정의 여성(alewife)이 맡았다. 에일집은 장대 끝의 표지(ale-stake)로 알렸다. 홉은 1400년대에야 들어왔다.
 - [노동 명세](labour.md) LB-8(가내 생산 슬롯), [자원 목록](../../src/content/resourceCatalog.ts)(RES-REG)
 
-결정: [결정 목록](../decisions/README.md) AL1~AL13. 조항 번호(AL-*)는 `tests/aleChain.test.ts`의 시험 이름(A1~A8)과 이어진다. `tests/humanPathAle.test.ts`는 사람 경로(명령 재생) 시험이다. 화면(헛간 작물 선택, 보리밭, 가마, 양조 통, 에일 장대)은 렌더 몫이다. 이 명세는 렌더가 읽을 API까지다.
+결정: [결정 목록](../decisions/README.md) AL1~AL13, FX7-2·FX7-3(FIX-7). 조항 번호(AL-*)는 `tests/aleChain.test.ts`의 시험 이름(A1~A11)과 이어진다. `tests/humanPathAle.test.ts`는 사람 경로(명령 재생) 시험이다. 화면(헛간 작물 선택, 보리밭, 가마, 양조 통, 에일 장대)은 렌더 몫이다. 이 명세는 렌더가 읽을 API까지다.
 
 ## AL-1 자원과 다섯 분류
 - `resourceCatalog.ts`에 세 줄을 넣었다.
@@ -19,6 +19,9 @@
 - 게임 명령은 `set_farmstead_crop {buildingId, crop}`(`setFarmsteadCrop(state, barnId, crop)`)이다. 플레이어의 헛간 카드와 봇이 같은 명령을 쓴다.
   - 헛간에 `crop: "barley"`가 붙는다. 없으면 밀이다(저장 v23).
   - 원장에는 일상 결정 `operation`으로 남는다.
+- **보리는 엿기름 가마를 기다린다**(FIX-7, 결정 FX7-3). 가마가 잠긴 동안(시장도시 전) 명령은 헛간을 보리로 바꾸지 않는다.
+  - `farmsteadCropLock(state, crop)`이 이유를 돌려준다: `{ code: "kiln_locked", unlockStage: "market_town", reason: "엿기름 가마는 시장도시부터" }`. 풀렸거나 밀이면 `null`이다.
+  - 밀로는 언제나 바꿀 수 있다. 옛 저장에서 이미 보리인 헛간은 그대로다(명령만 잠근다).
 - 띠는 **파종 때** 그 헛간의 작물을 따른다. 이미 뿌린 띠는 제 작물 그대로 자란다.
 - 수확: 보리 띠는 같은 밀 띠보다 1.25배를 거둔다(결정 AL1). 수확 시기는 밀과 같은 달력이다. 거둔 것은 헛간 재고의 그 작물로 들어간다.
 - 헛간 수레는 다른 작물이 남아 있으면 그것부터 나른다. 보리로 바꾼 헛간은 마지막 밀을 먼저 나른다(`fieldOutputResource`).
@@ -66,6 +69,20 @@
 ## AL-9 저장 v23
 - v22 → v23은 버전만 올린다. v22 도시는 밀만 기르고 아직 빚지 않는다.
 
+## AL-10 도시의 에일 (FIX-7, 결정 FX7-2)
+- `townAle(state)`는 도시 전체의 에일을 한 번에 준다(상태마다 캐시). 장부 서랍·저장소·결산이 쓴다.
+  - `stock`: 집 양조 슬롯의 통 합(창고 재고가 있으면 더한다). `inAlehouses`: 그 가운데 에일집의 통(사 마실 수 있는 몫).
+  - `brewingHouses`·`alehouses`: 양조하는 집, 에일집 수.
+  - `servedHouses`/`drinkingHouses`: 에일을 누린 집 / 마시는 집(등급 1 이상, 사는 집). `seasonNeed`: 한 계절에 마실 통(마시는 집 × 1).
+  - `season`: 이번 계절 지금까지 `{ startTick, brewed, maltUsed, drunk, sold }`. `lastSeason`: 닫힌 지난 계절(없으면 `null`).
+- 셈은 `state.ale`(저장 v25)에 있다. 도시가 처음 빚거나 마실 때 열린다. 계절 시작마다 닫혀 `last`가 되고 새 셈이 열린다. 그다음에 그 계절의 마시기를 센다.
+  - `brewed`: 슬롯에 새로 든 통(슬롯 상한 8에 걸린 만큼은 빼고), `maltUsed`: 빚는 데 쓴 엿기름.
+  - `drunk`: 마신 통(제 것 + 산 것), `sold`: 그 가운데 에일집에서 산 통(좌판세의 통 수와 같다).
+- 규칙은 바뀌지 않는다. 세기만 한다.
+
+## AL-11 저장 v25
+- v24 → v25는 버전만 올린다. v24 도시는 아직 세지 않았다. 다음에 빚거나 마실 때 셈이 열린다.
+
 ## 렌더가 읽을 API
 
 | API | 뜻 |
@@ -77,3 +94,5 @@
 | `isAlehouse(house)`, `alehouses(state)` | 에일 장대 |
 | `aleRequired(state)`, `aleServedHouses(state)`, `ALE_BALANCE.unservedHoldPermille` | 에일 없는 집은 승급 대기가 늘어난다는 표시(집 inspector의 진행 줄, 결산 원인) |
 | 봇 행동 `set_farmstead_crop` 라벨 | 지금은 "다음: 대기"로 보인다 |
+| `farmsteadCropLock(state, crop)` | 헛간 작물 선택의 보리 잠금과 이유(FIX-7) |
+| `townAle(state)` | 장부 서랍·저장소의 에일 재고, 결산의 계절 생산·소비(FIX-7) |
