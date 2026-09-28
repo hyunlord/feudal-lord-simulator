@@ -4,13 +4,16 @@ import { FIELD_CROPS, type FieldCrop } from "../content/buildingConfig";
 import { resourceName } from "../content/resourceCatalog.ko";
 import type { GameState } from "../engine/engine.types";
 import { scenarioOf } from "../engine/scenarioState";
+import { farmsteadCropLock } from "../engine/ale";
 import { arableLayouts, inFieldWorkWindow, inYearTick, reconcileArableFields, stripTending } from "../zones/arableFields";
 import type { GameAction } from "../state/gameStore.types";
 import { calendarArrivalLabel } from "./calendarArrival";
 import { FARMSTEAD_CROP_COPY } from "./farmsteadCropCopy.ko";
 
 // INSTALL-3: the barn card's crop choice. The engine command `set_farmstead_crop` (src/engine/ale.ts) changes the crop
-// the barn sows from then on, at any time (no chapter or stage gate); a strip takes its barn's crop when it is sown
+// the barn sows from then on; ECON-UI: barley waits for the malt kiln (FIX-7 `farmsteadCropLock`, before the market
+// town) — the choice is then disabled with the engine's reason while the barn is in wheat (a barn already in barley can
+// still go back to wheat, which is always allowed); a strip takes its barn's crop when it is sown
 // (src/zones/arableFields.ts, the `sow` task), so strips already sown, growing or ripe keep theirs until harvested,
 // and the barn carts out what it holds of the other crop first (`fieldOutputResource`). Read-only over those rules.
 export type FarmsteadCropModel = Readonly<{
@@ -25,6 +28,10 @@ export type FarmsteadCropModel = Readonly<{
   pending: string | null;
   /** The other crop still in the barn (carted out first), null when none. */
   carting: string | null;
+  /** ECON-UI: why barley cannot be chosen yet (the engine's reason), null when it can. */
+  locked: string | null;
+  /** The choice has nothing to change to (barley locked and the barn in wheat). */
+  disabled: boolean;
 }>;
 
 const IN_GROUND = new Set(["sown", "growing", "ripe"]);
@@ -66,6 +73,7 @@ export function farmsteadCropModel(state: GameState, buildingId: string): Farmst
     const other = FIELD_CROPS.find(candidate => candidate !== crop)!;
     const pending = stripsInOtherCrop(state, barn.id, crop);
     const left = Math.floor(barn.inventory[other] ?? 0);
+    const lock = farmsteadCropLock(state, "barley");
     model = {
       buildingId: barn.id, crop,
       options: FIELD_CROPS.map(value => ({ value, label: resourceName(value) })),
@@ -75,6 +83,7 @@ export function farmsteadCropModel(state: GameState, buildingId: string): Farmst
       sowing: sowingLine(state),
       pending: pending === 0 ? null : FARMSTEAD_CROP_COPY.pending(resourceName(other), pending, resourceName(crop)),
       carting: left <= 0 ? null : FARMSTEAD_CROP_COPY.carting(resourceName(other), left),
+      locked: lock === null ? null : lock.reason, disabled: lock !== null && crop === "wheat",
     };
   }
   byId.set(buildingId, model);

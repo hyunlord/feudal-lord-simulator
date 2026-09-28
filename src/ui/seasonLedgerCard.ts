@@ -14,7 +14,8 @@ import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import { resourceEntry } from "../content/resourceCatalog";
 import { economyStockTotals } from "./ledgerModel";
 import { seasonAleCause } from "./houseAleModel";
-import { brewingSlot } from "../engine/ale";
+import { townAle } from "../engine/ale";
+import { townAleView } from "./townAleModel";
 
 // UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes
 // (UI-4b: from the history ledger, as Wave 19 scene icons, seasonLedgerScenes.ts), money, population and stock beside
@@ -33,6 +34,8 @@ export type SeasonLedgerCardModel = Readonly<{
    */
   drink: readonly { readonly resource: ResourceType; readonly name: string; readonly amount: number }[];
   drinkLine: string | null;
+  /** ECON-UI (FIX-7 `townAle`): the closed season's ale — brewed, drunk, bought at the alehouses — and the houses it served. */
+  aleLines: readonly string[];
 }>;
 
 /** INSTALL-3: the goods of the ale chain (the catalog's Wave 3 chain cells), in the catalog's order. */
@@ -105,10 +108,11 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     // INSTALL-3 (AL-6): the houses whose rise waits longer for want of ale, as the card opens.
     ...(isWorld(state) && seasonAleCause(state) !== null ? [seasonAleCause(state)!] : [])];
   const totals = isWorld(state) ? economyStockTotals(state) : null;
-  // Ale is brewed and kept in the households' first slot (AL-4), not in the stores: those casks count too.
-  const brewed = isWorld(state) ? state.houses.reduce((sum, house) => sum + (brewingSlot(house)?.stock.ale ?? 0), 0) : 0;
+  // Ale is brewed and kept in the households' first slot (AL-4), not in the stores: the engine's town count (FIX-7
+  // `townAle`: the slots and any store) is the town's ale.
+  const ale = isWorld(state) ? townAleView(state) : null;
   const drink = totals === null ? [] : ALE_CHAIN.map(resource => ({ resource, name: resourceName(resource),
-    amount: Math.floor(totals[resource] + (resource === "ale" ? brewed : 0)) }));
+    amount: Math.floor(resource === "ale" ? townAle(state as GameState).stock : totals[resource]) }));
   const held = drink.some(item => item.amount > 0);
   return {
     key: `${ledger.year}:${ledger.season}`,
@@ -122,6 +126,7 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     hint: ledger.nextObjectiveHint === null ? null : { text: hintText(ledger), category: HINT_CATEGORY[ledger.nextObjectiveHint] },
     drink: held ? drink : [],
     drinkLine: held ? SEASON_LEDGER_COPY.heldNow(drink.map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
+    aleLines: ale === null || ale.closedSeason === null ? [] : [ale.closedSeason, ale.served],
   };
 }
 

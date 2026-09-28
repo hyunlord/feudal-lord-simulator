@@ -438,3 +438,8 @@
 /* A chip is at least its 48 px portrait and padding tall; the card's text buttons take the tablet's 48 px (the shell's
    44 px minimum is !important, so a height, not a min-height). */
 @media (pointer: coarse) { .person-card-action, .person-list-toggle { height: 48px; } }
+/* ECON-UI (FIX-7): the town's ale under the ledger's stock table, the stores' ale note, the barn's barley lock. */
+.ledger-town-ale { margin-top: 8px; font-size: 13px; }
+.ledger-town-ale h3 { display: flex; gap: 6px; align-items: center; margin: 0 0 2px; font-size: 14px; }
+.ledger-town-ale p { margin: 0; }
+.store-ale-note, .inspector-crop-locked { display: flex; gap: 6px; align-items: center; margin: 4px 0 0; font-size: 12px; color: var(--palette-ink-muted); }

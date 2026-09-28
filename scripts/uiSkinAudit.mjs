@@ -186,7 +186,9 @@ await step('season', async () => {
 await step('chapter-end', async () => {
   const state = load('chapter-end');
   const { context, page } = await scene('chapter-end', houseTile(state));
-  await pause(1500);
+  // ECON-UI: the page opens after the story's world-first delay; on a busy DGX that took over 30 s twice (the audit shot
+  // the plain map and then waited for .chronicle-full), so the page is awaited before its audit.
+  await page.locator('.chronicle-full').waitFor({ timeout: 90_000 }); await pause(1500);
   await audit('chapter-end', page, 's16-chapter-end.jpg');
   // The whole chronicle of a live run (seed 2, 1323: two eras entered, three ahead at their nominal years).
   await page.locator('.chronicle-full').click(); await pause(1500);

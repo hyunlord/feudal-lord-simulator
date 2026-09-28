@@ -210,7 +210,8 @@ function FarmsteadCropSection({ model, onChange }: { readonly model: FarmsteadCr
     <section className="inspector-crop" aria-label={FARMSTEAD_CROP_COPY.heading} data-farmstead-crop={model.crop}>
       <h3>{FARMSTEAD_CROP_COPY.heading}</h3>
       <p className="inspector-crop-current"><ResourceGlyph resource={model.crop} />{model.current}</p>
-      <Select className="inspector-crop-select" label={model.label} value={model.crop} options={model.options} onChange={onChange} />
+      <Select className="inspector-crop-select" label={model.label} value={model.crop} options={model.options} onChange={onChange} disabled={model.disabled} />
+      {model.locked === null ? null : <p className="inspector-crop-locked" role="note"><UiIcon sheet="lock" cell="locked" />{model.locked}</p>}
       <p className="inspector-crop-note">{model.note}</p>
       <p className="inspector-crop-sowing">{model.sowing}</p>
       {model.pending === null ? null : <p className="inspector-crop-pending" role="status">{model.pending}</p>}
