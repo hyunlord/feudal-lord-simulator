@@ -15,15 +15,15 @@
  },
  "cap": 0.38,
  "cost": {
-  "fogAnchorsMs": 0.68,
+  "fogAnchorsMs": 0.57,
   "fogAnchors": 4,
   "fillCost": {
-   "tintPatternMultiplyMs": 3.8,
-   "tintFlatMultiplyMs": 0.6,
-   "rainPatternFillMs": 1.4,
-   "rainCellsAndPatternsBuildMs": 0.3
+   "tintPatternMultiplyMs": 3.5,
+   "tintFlatMultiplyMs": 0.5,
+   "rainPatternFillMs": 1.1,
+   "rainCellsAndPatternsBuildMs": 0.5
   },
-  "browser": "headless Chrome --disable-gpu (software raster), macOS"
+  "browser": "headless Chrome --disable-gpu (software raster), linux"
  },
  "weathers": {
   "wet": {
@@ -101,25 +101,25 @@
    "shots": {
     "z1.0": {
      "file": "weather-wet-z1.0.jpg",
-     "bytes": 140873,
+     "bytes": 123622,
      "crop": "weather-wet-crop.jpg",
-     "cropBytes": 19098,
+     "cropBytes": 19080,
      "cost": {
-      "firstMs": 5.5,
-      "medianMs": 4.5,
-      "p95Ms": 4.7,
+      "firstMs": 5.8,
+      "medianMs": 3.4,
+      "p95Ms": 3.6,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 1323
      }
     },
     "z0.6": {
      "file": "weather-wet-z0.6.jpg",
-     "bytes": 100295,
+     "bytes": 89593,
      "cost": {
-      "firstMs": 14.1,
-      "medianMs": 6.8,
-      "p95Ms": 8.4,
-      "fullViewFillMedianMs": 0.2,
+      "firstMs": 6,
+      "medianMs": 3.7,
+      "p95Ms": 3.9,
+      "fullViewFillMedianMs": 0.1,
       "visibleTiles": 2914
      }
     }
@@ -185,24 +185,24 @@
    "shots": {
     "z1.0": {
      "file": "weather-wet-storm-z1.0.jpg",
-     "bytes": 140209,
+     "bytes": 123055,
      "crop": "weather-wet-storm-crop.jpg",
-     "cropBytes": 19049,
+     "cropBytes": 19052,
      "cost": {
       "firstMs": 5.2,
-      "medianMs": 4.1,
-      "p95Ms": 4.2,
+      "medianMs": 3.1,
+      "p95Ms": 3.2,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 1323
      }
     },
     "z0.6": {
      "file": "weather-wet-storm-z0.6.jpg",
-     "bytes": 102894,
+     "bytes": 89984,
      "cost": {
-      "firstMs": 6.3,
-      "medianMs": 4.7,
-      "p95Ms": 5,
+      "firstMs": 5.9,
+      "medianMs": 3.6,
+      "p95Ms": 3.7,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 2914
      }
@@ -244,24 +244,24 @@
    "shots": {
     "z1.0": {
      "file": "weather-dry-z1.0.jpg",
-     "bytes": 143447,
+     "bytes": 125793,
      "crop": "weather-dry-crop.jpg",
-     "cropBytes": 19641,
+     "cropBytes": 19610,
      "cost": {
-      "firstMs": 2.3,
-      "medianMs": 1.7,
-      "p95Ms": 1.8,
+      "firstMs": 2.9,
+      "medianMs": 1.2,
+      "p95Ms": 1.4,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 1323
      }
     },
     "z0.6": {
      "file": "weather-dry-z0.6.jpg",
-     "bytes": 104846,
+     "bytes": 91848,
      "cost": {
-      "firstMs": 3,
-      "medianMs": 2.2,
-      "p95Ms": 2.4,
+      "firstMs": 3.1,
+      "medianMs": 1.7,
+      "p95Ms": 1.8,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 2914
      }
@@ -316,24 +316,24 @@
    "shots": {
     "z1.0": {
      "file": "weather-cold-z1.0.jpg",
-     "bytes": 134187,
+     "bytes": 117548,
      "crop": "weather-cold-crop.jpg",
-     "cropBytes": 17950,
+     "cropBytes": 17929,
      "cost": {
-      "firstMs": 3.6,
-      "medianMs": 3.1,
-      "p95Ms": 3.2,
+      "firstMs": 4,
+      "medianMs": 2.2,
+      "p95Ms": 2.3,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 1323
      }
     },
     "z0.6": {
      "file": "weather-cold-z0.6.jpg",
-     "bytes": 97581,
+     "bytes": 85546,
      "cost": {
-      "firstMs": 3.7,
-      "medianMs": 3.1,
-      "p95Ms": 3.2,
+      "firstMs": 3.8,
+      "medianMs": 2.2,
+      "p95Ms": 2.3,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 2914
      }
@@ -374,24 +374,24 @@
    "shots": {
     "z1.0": {
      "file": "weather-normal-z1.0.jpg",
-     "bytes": 142671,
+     "bytes": 125191,
      "crop": "weather-normal-crop.jpg",
-     "cropBytes": 19439,
+     "cropBytes": 19437,
      "cost": {
-      "firstMs": 4.2,
-      "medianMs": 3.6,
-      "p95Ms": 3.7,
+      "firstMs": 4.8,
+      "medianMs": 3.2,
+      "p95Ms": 3.3,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 1323
      }
     },
     "z0.6": {
      "file": "weather-normal-z0.6.jpg",
-     "bytes": 103843,
+     "bytes": 90872,
      "cost": {
-      "firstMs": 3.1,
-      "medianMs": 2.5,
-      "p95Ms": 2.7,
+      "firstMs": 3.8,
+      "medianMs": 2.2,
+      "p95Ms": 2.4,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 2914
      }
@@ -415,6 +415,6 @@
    "wetOnVsOff": 2.85
   }
  },
- "jpegBytes": 1306023,
+ "jpegBytes": 1158160,
  "errors": []
 }

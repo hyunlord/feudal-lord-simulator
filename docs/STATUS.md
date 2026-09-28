@@ -1,11 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-28(ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **INSTALL-23 Wave 23 설치 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/install23/REPORT.md), 결정 INSTALL23-D1~D6.
+  - 국왕 문장은 Wave 23 완성 두 판(1340년 전 guardant 사자 셋, 1340년부터 프랑스 백합 4분할), 연도 규칙 UI-6b 그대로.
+  - 날씨: wet(흐림·이슬비/폭우·물가 안개·젖은 광택·웅덩이 물결)·dry(먼지·갈라진 땅)·cold(박무·서리)·normal(구름 그림자), 쌓인 알파 ≤ 0.38, 일시정지 메뉴 스위치. 마을 생활(닭·고양이·개·새·놀잇감·빨랫줄·의자·통·두레박, 작은 동물만 1.6배, 화면 동물 여름 8·겨울 4). 인물 상태 장식 열둘(엔진 파생 일곱, `child_born`은 부모 초상), 패드 글리프, 워커 카드 공사장은 건물 이름과 위치.
+  - 판정 대기: 상한 안 비의 세기(정지 화면에서 옅음), 소품 크기, 일시정지 중 동물 움직임. 엔진에 넘길 것: 병·부상·임신·순례·집행관 자료.
+  - 검증: DGX 전체 회귀 3,315/3,315(C25 그대로), p95 폭우 105.7 %·건조 107.5 % / 110 %, 스킨 감사 0 / 912, 면적 5.9 % / 6 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 깨끗한 클론 CLONE_SHA.
 
 - **ASSET-2 runtime 정리 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 ASSET-1): [보고서](verification/asset2/REPORT.md), 결정 ASSET2-D1~D5.
   - ASSET-1 스크립트 재실행: 장부 밖 0·옛 버전 등록 0·caBX 0·같은 이름 다른 내용 0(본선 10·7·6·4). 장부 밖 10개 삭제, 도로 v2·성벽 면 v1·옛 자원 아이콘 16개 퇴역(`assets-inbox/retired`), Wave 11 킷 파일 계열 접두.

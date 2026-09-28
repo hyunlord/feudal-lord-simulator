@@ -4,7 +4,7 @@
 // shore at quality 70 each (the rain and dust are faint streaks under the cap that a low JPEG quality smooths away). The weather shown is the proof hook's (`&weather=<kind>&weather-tick=<t>`, src/render/weatherProof.ts), so
 // all four are the same scene; the game state is not changed. Beside them weather.json: per weather the layers
 // (element, blend, alpha, moving), the alpha stacked on one pixel, and the draw cost in the page (headless Chromium,
-// software raster: `--disable-gpu`; a Mac, not the DGX).
+// software raster: `--disable-gpu`; the platform is in weather.json).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/weatherCaptures.ts <out-dir> --url <game> --state <state.json> [--tile 44,38]
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -148,7 +148,7 @@ await browser.close();
 const total = WEATHERS.flatMap(({ name }) => [...ZOOMS.map(zoom => `weather-${name}-z${zoom.toFixed(1)}.jpg`), `weather-${name}-crop.jpg`])
   .map(file => statSync(join(out!, file)).size).reduce((a, b) => a + b, 0);
 const body = { scene: { state: statePath.split("/").pop(), tick: state.tick, seed: state.seed, tile, viewport: [1280, 800], proofQuery: "&weather=<kind>&weather-tick=<tick>" },
-  cap: 0.38, cost: { fogAnchorsMs: Math.round(fogAnchorsMs * 100) / 100, fogAnchors: anchors.length, fillCost, browser: "headless Chrome --disable-gpu (software raster), macOS" },
+  cap: 0.38, cost: { fogAnchorsMs: Math.round(fogAnchorsMs * 100) / 100, fogAnchors: anchors.length, fillCost, browser: `headless Chrome --disable-gpu (software raster), ${process.platform}` },
   weathers: result, settingSwitch: switchCheck, jpegBytes: total, errors };
 writeFileSync(join(out!, "weather.json"), JSON.stringify(body, null, 1) + "\n");
 console.log(JSON.stringify({ jpegBytes: total, errors: errors.length }));
