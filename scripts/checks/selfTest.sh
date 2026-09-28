@@ -3,7 +3,8 @@
 # In a throwaway repository with this checkout's scripts/checks, scripts/git-hooks and tools/eslint, pushes to the
 # trunk are refused for each violation kind (pin without decision, lint exception without "// why:", native control
 # in src/ui, type error, inbox ledger replaced_by that is not a ledger row, a simulation folder importing src/ui,
-# a new Korean string outside *.ko.ts) and pass for their fixed versions, ordinary changes and work branches.
+# a new Korean string outside *.ko.ts, a new ledger row with another row's sha256 and no canonical mark or a mark
+# naming other bytes) and pass for their fixed versions, ordinary changes and work branches.
 # Needs npm ci here.
 set -u
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
@@ -43,7 +44,7 @@ pass=0; fail=0
 try() { # try <name> <expect: refused|passes> <push args...>
   local name=$1 expect=$2; shift 2
   if "$@" > "$T/out" 2>&1; then got=passes; else got=refused; fi
-  local reason; reason=$(grep -hE "MISSING|no-restricted-syntax|no-restricted-imports|refused a push|error TS|FAILED" "$T/out" | head -2 | sed 's/^ *//' | cut -c1-110 | tr '\n' ' ')
+  local reason; reason=$(grep -hE "MISSING|UNMARKED|BADMARK|no-restricted-syntax|no-restricted-imports|refused a push|error TS|FAILED" "$T/out" | head -2 | sed 's/^ *//' | cut -c1-110 | tr '\n' ' ')
   if [ "$got" = "$expect" ]; then pass=$((pass+1)); mark=OK; else fail=$((fail+1)); mark=WRONG; fi
   printf '%-5s %-58s %-8s %s\n' "$mark" "$name" "$got" "$reason"
 }
@@ -92,6 +93,12 @@ try "10 new Korean string in src/engine/harvest.ts"   refused trunk_push
 printf 'export const HARVEST_COPY = { label: "\xea\xb0\x80\xec\x9d\x84 \xec\x88\x98\xed\x99\x95" } as const;\n' > src/engine/harvestCopy.ko.ts
 printf 'import { HARVEST_COPY } from "./harvestCopy.ko";\nexport const harvestLabel = HARVEST_COPY.label;\n' > src/engine/harvest.ts; commit "into ko.ts"
 try "10b the same text moved to harvestCopy.ko.ts"    passes  trunk_push
+branch dup; printf 'w2,w2/a-copy.png,11,confirmed,,copy,\r\n' >> assets-inbox/INBOX_LEDGER.csv; commit "dup"
+try "11 new ledger row with the bytes of w1/a-v2"      refused trunk_push
+perl -pi -e 's{^(w2,w2/a-copy\.png,11,confirmed,,copy)}{$1 · a-v2.png와 동일 바이트(정본: w1/a-v1.png)}' assets-inbox/INBOX_LEDGER.csv; commit "wrong mark"
+try "11b its mark names a row with other bytes"        refused trunk_push
+perl -pi -e 's{정본: w1/a-v1\.png}{정본: w1/a-v2.png}' assets-inbox/INBOX_LEDGER.csv; commit "right mark"
+try "11c its mark names the same-bytes row"            passes  trunk_push
 echo "gate: $pass as expected, $fail wrong"
 cd / && rm -rf "$T"
 [ "$fail" = 0 ]

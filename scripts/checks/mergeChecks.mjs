@@ -7,8 +7,8 @@
 //  3. eslint      tools/eslint (own install)         files changed in the range; only violations that are not
 //                                                    in tools/eslint/eslint-suppressions.json fail
 //  4. typecheck   tsc --noEmit (root node_modules)
-//  5. ledger      scripts/checks/inboxLedger.mjs     every replaced_by path in assets-inbox/INBOX_LEDGER.csv is a
-//                                                    ledger row
+//  5. ledger      scripts/checks/inboxLedger.mjs     assets-inbox/INBOX_LEDGER.csv: every replaced_by path is a ledger
+//                                                    row, canonical marks match, new same-sha256 rows are marked
 //  6. korean      scripts/checks/koreanStrings.mjs   no new Korean string in src outside *.ko.ts and *.generated.*
 //                                                    (parsed with tools/eslint's TypeScript 6)
 //  7. budget      scripts/checks/distBudget.mjs      `vite build` of <head> into a temporary folder: the total and each
@@ -26,7 +26,7 @@ import { formatBudgetTable, loadBudgetConfig, measureBuild } from './distBudget.
 import { changedFiles, git, resolveRange } from './gitRange.mjs';
 import { checkPinChanges, formatPinResult } from './pinChanges.mjs';
 import { checkLintExceptions, formatLintResult } from './lintExceptions.mjs';
-import { checkInboxLedger, formatLedgerResult } from './inboxLedger.mjs';
+import { checkInboxLedger, formatLedgerResult, ledgerOk } from './inboxLedger.mjs';
 import { checkKoreanStrings, formatKoreanResult } from './koreanStrings.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
@@ -46,8 +46,8 @@ const pins = checkPinChanges({ base, head });
 report('pins', pins.missing.length === 0, formatPinResult(pins));
 const exceptions = checkLintExceptions({ head });
 report('exceptions', exceptions.unexplained.length === 0, formatLintResult(exceptions));
-const ledger = checkInboxLedger({ head });
-report('ledger', ledger.dangling.length === 0, formatLedgerResult(ledger));
+const ledger = checkInboxLedger({ base, head });
+report('ledger', ledgerOk(ledger), formatLedgerResult(ledger));
 ensureEslint();   // koreanStrings parses with tools/eslint's TypeScript
 const korean = checkKoreanStrings({ head });
 report('korean', korean.added.length === 0, formatKoreanResult(korean));
