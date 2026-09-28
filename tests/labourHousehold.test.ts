@@ -221,7 +221,7 @@ test("L8 LB-9 idle labour above 25% shows the goal-panel line, the cause and the
 });
 
 test("L9 LB-8 crafts load (C4: brew_ale), slots derive by level and household stock saves and moves by process delivery", () => {
-  assert.deepEqual(CRAFT_DEFINITIONS.map(craft => craft.id), ["brew_ale"], "C4 adds brew_ale");
+  assert.deepEqual(CRAFT_DEFINITIONS.map(craft => craft.id), ["brew_ale", "spin_yarn"], "C4 adds brew_ale, C5 spin_yarn");
   assert.deepEqual([0, 1, 2, 3, 4].map(householdSlotCount), [0, 1, 1, 2, 2]);
   const sample = { id: "sample_craft", name: "시험 공정", levels: [1, 2], workers: 1, input: { wheat: 2 }, output: { bread: 1 }, ticksPerBatch: 40 };
   assert.deepEqual(loadCraftDefinitions([sample]).map(craft => craft.id), ["sample_craft"]);

@@ -5,7 +5,7 @@
 - [에일 사슬](ale-chain.md)(가내 슬롯·헛간이 쥐고 있다가 다음 단계가 가져가는 방식), [3장 흑사병](chapter-three-plague.md)(흑사병 뒤 사람이 모자람), FIX-7 양모 현물(FX7-1)
 - 자원은 RES-REG 목록(`resourceCatalog.ts`), 건물은 BLD-REG 목록(`buildingCatalog.ts`)에 줄로 넣었다
 
-결정: [결정 목록](../decisions/README.md) CL1~CL9. 조항 번호(CL-*)는 `tests/clothChain.test.ts`의 시험 이름(T1~T10)과 이어진다. 사람 경로는 `tests/humanPathCloth.test.ts`(목초지 → 첫 직물)다. 모든 값은 가설이다(`src/content/clothConfig.ts`).
+결정: [결정 목록](../decisions/README.md) CL1~CL10. 조항 번호(CL-*)는 `tests/clothChain.test.ts`의 시험 이름(T1~T10)과 이어진다. 사람 경로는 `tests/humanPathCloth.test.ts`(목초지 → 첫 직물)다. 모든 값은 가설이다(`src/content/clothConfig.ts`).
 
 4장(재편)의 중심은 직물 성장이다. 흑사병 뒤 사람이 모자라자 잉글랜드는 곡물 대신 양을 늘렸고, 양털을 수출하던 나라가 직물을 짜는 나라가 되었다.
 
@@ -86,7 +86,7 @@
 
 | API | 뜻 |
 |---|---|
-| 자원 일곱, Wave 3 자원 사슬 칸(`chainCell`) | 장부·창고·수레 적재물 아이콘 |
+| 자원 일곱(사슬 칸은 아직 없음, 결정 CL10) | 장부·창고·수레 적재물 아이콘 — Wave 3 자원 사슬 시트의 fleece~dyes 칸은 결산 카드가 두 사슬을 가른 뒤 목록에서 준다 |
 | 건물 다섯(`BUILDING_CATALOG`, 사슬 표지 `woolhouse`·`weaver_house`·`fulling_mill`·`dyehouse`) | 건설 메뉴·공사 표지. 그림은 렌더 몫(목축 농장은 Wave 2 `farm_pastoral`) |
 | `townCloth`, `spinningSlot(house)` | 장부 서랍의 직물 줄, 집 뒤뜰 물레 |
 | `pastureTending`, `pastureSheep` | 목초지 양 떼 수(지금 `farmProps`는 14칸에 한 무리) |
