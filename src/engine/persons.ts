@@ -582,7 +582,11 @@ function fillSlots(town: Town, index: number): void {
     const band = age < PORTRAIT_MIN_AGE ? youngStageOf(age) : PORTRAIT_BAND[ageBandOf(age)];
     const free = places.filter(place => place.sex === person.sex && place.generation === generation && slots[place.identityId] === undefined
       && (generation !== 2 || place.inLaw === inLaw));
-    const place = free.find(candidate => candidate.bands.has(band)) ?? free[0];
+    // The generation's places all given (a large family): the nearest generation's free place with a picture of the
+    // person's age (a face is never given twice: the dead keep theirs).
+    const spare = places.filter(place => place.sex === person.sex && slots[place.identityId] === undefined && place.inLaw === inLaw && place.bands.has(band))
+      .sort((a, b) => Math.abs(a.generation - generation) - Math.abs(b.generation - generation) || a.identityId.localeCompare(b.identityId));
+    const place = free.find(candidate => candidate.bands.has(band)) ?? free[0] ?? spare[0];
     if (place === undefined) continue;
     slots[place.identityId] = person.id;
     slotOf.set(person.id, place.identityId);
