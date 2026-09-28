@@ -33,8 +33,9 @@ export function derelictPermille(state: Pick<GameState, "houses"> & Partial<Pick
 }
 
 /**
- * F3-A (PL-2): the lord's family is gone — every member of the house's family has died (the pestilence spares no one) and
- * none is left: the overlord grants the town to a new house (FL-7's change, with no decline before it).
+ * F3-A (PL-2): the lord's family is gone — none of the house's family is left and the pestilence took some of them (at
+ * once, or a family it thinned dying out years on): the overlord grants the town to a new house (FL-7's change, with no
+ * decline before it). A family gone without the pestilence is left as before (chapters 1–2 unchanged).
  */
 export function lordFamilyExtinct(state: Pick<GameState, "persons" | "lordship" | "seed">): boolean {
   const tag = `lord-house:${lordshipOf(state).house.order}`;
