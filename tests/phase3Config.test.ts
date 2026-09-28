@@ -101,7 +101,7 @@ test("Phase 3 building table includes chapel without changing ordinary building 
     malt_kiln: {
       kind: "malt_kiln", name: "엿기름 가마", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "malt", input: "barley", inputPerOutput: 1, ticksPerOutput: 20, outputHoldLimit: 20 },
-      storageCapacity: 40, serviceRadius: 0,
+      storageCapacity: 40, serviceRadius: 0, carterCapacity: 12,
     },
   });
 });

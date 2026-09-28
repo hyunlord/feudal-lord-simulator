@@ -11,7 +11,8 @@ import { RESOURCE_CATALOG, STORAGE_KIND_BY_RESOURCE } from "../src/content/resou
 import { RESOURCE_COPY } from "../src/content/resourceCatalog.ko";
 import { SANDBOX_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 import { advanceAle, aleRequired, aleServedHouses, alehouses, brewingSlot, setFarmsteadCrop } from "../src/engine/ale";
-import { aleChainAction, aleWantsBarley } from "../src/engine/autoplayEra";
+import { aleChainAction, aleWantsBarley, KILN_NEAR_BARN } from "../src/engine/autoplayEra";
+import { canPlaceBuilding } from "../src/world/placement";
 import { arableSupplyShort } from "../src/engine/autoplayArable";
 import { deliverCandidate } from "../src/agents/deliveryBuildingCandidates";
 import type { GameState } from "../src/engine/engine.types";
@@ -134,7 +135,7 @@ test("A5 (AL-5) a brewing level-2 house is an alehouse; each season a brewer dri
   assert.equal(casks, boughtBy.length, "the alehouses are paid for what the buyers drank, not for the brewers' own");
 });
 
-test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only when served by ale, and never falls for want of ale", () => {
+test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ half as slowly again without ale, and never falls for want of ale", () => {
   const base = town();
   assert.equal(aleRequired({ ...base, tick: 60_000 }), false);
   assert.equal(aleRequired({ ...base, tick: 80_000 }), false, "a campaign still in chapter 1 after 1318 need not brew");
@@ -143,19 +144,22 @@ test("A6 (AL-6) from 1318 (chapter 2) a house rises to level 2+ only when served
   const house: House = { buildingId: "h", level: 1, residents: 8, hasWater: true, breadStock: 9, lastServicedTick: 0, unmetRequirementTicks: 0, promotionTicks: 2_399 };
   const context = { tick: 100, hasGranaryNearby: true, hasMarketAccess: true, hasChurchAccess: true, palisadeProtection: "inside" as const };
   assert.equal(updateHouse(house, context).level, 2, "no ale needed");
-  assert.equal(updateHouse(house, { ...context, aleServed: false }).level, 1, "blocked without ale");
+  assert.equal(updateHouse(house, { ...context, aleServed: false }).level, 1, "slowed without ale (150 % of the hold)");
+  assert.equal(updateHouse({ ...house, promotionTicks: 3_599 }, { ...context, aleServed: false }).level, 2, "never blocked: it rises after 3,600 ticks");
   assert.equal(updateHouse({ ...house, level: 2, promotionTicks: 0 }, { ...context, aleServed: false }).level, 2, "kept without ale");
 });
 
-test("A9 (AL-6, decision AL11) the rule's settings: require (today) blocks; A requires ale from level 3 and speeds a served rise to 2; B delays an unserved rise by half", () => {
+test("A9 (AL-6, decision AL11) the rule's settings: B (the rule, default) delays; require blocks; A requires ale from level 3 and speeds a served rise to 2; B delays an unserved rise by half", () => {
   const house: House = { buildingId: "h", level: 1, residents: 8, hasWater: true, breadStock: 9, lastServicedTick: 0, unmetRequirementTicks: 0, promotionTicks: 0 };
   const context = { tick: 100, hasGranaryNearby: true, hasMarketAccess: true, hasChurchAccess: true, palisadeProtection: "inside" as const };
   const balance = ALE_BALANCE as unknown as Record<string, unknown>;
   const saved = { ...balance };
   const rises = (ticks: number, served: boolean, level = 1) => updateHouse({ ...house, level, promotionTicks: ticks - 1 }, { ...context, aleServed: served }).level > level;
   try {
-    assert.deepEqual([rises(2_400, true), rises(2_400, false), rises(1_800, true)], [true, false, false], "require: the hold, and no rise unserved");
+    Object.assign(balance, { rule: "require", unservedHoldPermille: 1_000 });
+    assert.deepEqual([rises(2_400, true), rises(2_400, false), rises(99_999, false), rises(1_800, true)], [true, false, false, false], "require: the hold, and no rise unserved");
     Object.assign(balance, { requiredFromLevel: 3, servedBonusFromLevel: 2, servedHoldPermille: 750 });
+    // (A as probed: require from level 3.)
     assert.deepEqual([rises(1_800, true), rises(1_800, false), rises(2_400, false)], [true, false, true], "A: served 75 %, unserved the plain hold");
     assert.deepEqual([rises(8_400, true, 2), rises(8_400, false, 2)], [true, false], "A: level 3 needs ale");
     Object.assign(balance, { ...saved, rule: "delay", unservedHoldPermille: 1_500 });
@@ -165,24 +169,37 @@ test("A9 (AL-6, decision AL11) the rule's settings: require (today) blocks; A re
   }
 });
 
-test("A7 (AL-8) the bot, once ale is required: the malt kiln first, then the smallest barn the wheat can spare turns to barley", () => {
+test("A7 (AL-8) the bot, once ale is required: a malt kiln within six road tiles of a barn the wheat can spare, then that barn turns to barley", () => {
   const base = town();
   const chapter2 = { ...base, politics: { ...base.politics!, chapter: { ...base.politics!.chapter, number: CHAPTER_TWO.chapter } } };
-  const build = (_state: GameState, kind: string) => ({ kind: "place_building" as const, building: kind as "malt_kiln", tx: 1, ty: 1 });
+  // The build step as the bot's: the first legal tile the site test accepts.
+  const build = (state: GameState, kind: string, accepts: (coordinate: { tx: number; ty: number }) => boolean = () => true) => {
+    const tile = state.tiles.find(entry => canPlaceBuilding(state, kind as "malt_kiln", entry.tx, entry.ty).ok && accepts(entry));
+    return tile === undefined ? { kind: "none" as const } : { kind: "place_building" as const, building: kind as "malt_kiln", tx: tile.tx, ty: tile.ty };
+  };
   assert.deepEqual(aleChainAction({ ...base, tick: 60_000 }, build), { kind: "none" }, "not before ale is required");
-  assert.deepEqual(aleChainAction(chapter2, build), { kind: "place_building", building: "malt_kiln", tx: 1, ty: 1 }, "the kiln first");
+  assert.equal(aleWantsBarley(chapter2), true, "the food step plants wider until a barn grows barley");
+  const spare = barns(chapter2).filter(barn => !arableSupplyShort(setFarmsteadCrop(chapter2, barn.id, "barley")));
+  const first = aleChainAction(chapter2, build);
+  if (spare.length === 0) {
+    assert.deepEqual(first, { kind: "none" }, "no barn to spare: no kiln yet");
+  } else {
+    assert.equal(first.kind === "place_building" && first.building, "malt_kiln", "the kiln first");
+    const site = first as { tx: number; ty: number };
+    assert.ok(spare.some(barn => Math.abs(barn.tx - site.tx) + Math.abs(barn.ty - site.ty) <= KILN_NEAR_BARN), "beside a barn to spare");
+  }
   const kiln = withKiln(chapter2, 0);
   const action = aleChainAction(kiln, build);
   // A barn is switched only if the wheat outlook without it still meets the planner's margin.
   if (action.kind === "set_farmstead_crop") {
     assert.equal(arableSupplyShort(setFarmsteadCrop(kiln, action.buildingId, "barley")), false);
-    assert.equal(aleWantsBarley(kiln), true);
     assert.equal(aleWantsBarley(setFarmsteadCrop(kiln, action.buildingId, "barley")), false);
   } else {
     assert.deepEqual(action, { kind: "none" });
     assert.ok(barns(kiln).every(barn => arableSupplyShort(setFarmsteadCrop(kiln, barn.id, "barley"))), "no barn to spare");
-    assert.equal(aleWantsBarley(kiln), true, "the food step plants wider");
   }
+  // The kiln's carts carry as the mill's (decision AL12).
+  assert.equal(BUILDING_CONFIG_BY_KIND.malt_kiln.carterCapacity, BUILDING_CONFIG_BY_KIND.mill.carterCapacity);
   // Barley waits in its barn: no cart takes it to a granary.
   assert.equal(deliverCandidate({ ...barns(kiln)[0]!, crop: "barley", inventory: { barley: 20 } }, "barley", kiln.buildings, { availableStock: () => 20, availableSpace: () => 800 } as never, { betweenBuildings: () => [{ tx: 0, ty: 0 }] } as never), null);
 });

@@ -2,7 +2,8 @@
 // alternative, over a window of ticks: barley barns and strips, barley stock, the kiln's operation (share of ticks by
 // state) and malt, the brewing households and the ale they brew, the houses no alehouse reaches, and the houses held
 // back by ale (eligible for the next level on every other requirement, not by the ale rule).
-//   tsx scripts/aleBottleneckProbe.ts <seed> <maxTicks> <current|A|B> [windowStart] [windowTicks] > seed.json
+//   tsx scripts/aleBottleneckProbe.ts <seed> <maxTicks> <current|A|B|C> [windowStart] [windowTicks] > seed.json
+// `current` is the rules as they stand (C4 decided: C + B); `C` puts back the blocking rule over them.
 // A: ale is required from level 3; a served house rises to level 2 in 75 % of the hold. B: ale is not required; an
 // unserved house waits 150 % of the hold from level 2. The alternatives are set on `ALE_BALANCE` for this run only.
 import { ALE_BALANCE } from "../src/content/aleConfig";
@@ -19,12 +20,14 @@ import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
 const [seedArg, maxArg, variantArg = "current", startArg, spanArg] = process.argv.slice(2);
 const seed = Number(seedArg);
 const maxTicks = Number(maxArg ?? 450_000);
-const variant = variantArg as "current" | "A" | "B";
+const variant = variantArg as "current" | "A" | "B" | "C";
 const windowStart = Number(startArg ?? 300_000);
 const windowTicks = Number(spanArg ?? 20_000);
 const balance = ALE_BALANCE as unknown as Record<string, unknown>;
 if (variant === "A") Object.assign(balance, { requiredFromLevel: 3, servedBonusFromLevel: 2, servedHoldPermille: 750 });
 if (variant === "B") Object.assign(balance, { rule: "delay", requiredFromLevel: 2, unservedHoldPermille: 1_500 });
+// C alone: the kiln's carts and site as they are now, with the old blocking rule.
+if (variant === "C") Object.assign(balance, { rule: "require", requiredFromLevel: 2, unservedHoldPermille: 1_000 });
 
 const SEASON = 1_000;
 const kilnStates: Record<string, number> = {};

@@ -357,6 +357,8 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     production: { output: "malt", input: "barley", inputPerOutput: 1, ticksPerOutput: 20, outputHoldLimit: 20 },
     storageCapacity: 40,
     serviceRadius: 0,
+    // C4 (decision AL12): the kiln's barley carts carry as the mill's wheat carts do (8 left it starving 79–89 % of the time).
+    carterCapacity: LABOUR_BALANCE.millCartCapacity,
   },
 };
 
