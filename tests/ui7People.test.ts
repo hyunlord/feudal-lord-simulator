@@ -19,7 +19,7 @@ import { decodeSave } from "../src/save/saveCodec";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { BiographyPage } from "../src/ui/chronicle/BiographyPage";
 import { biographyView, recordCard } from "../src/ui/chronicle/chronicleScreenModel";
-import { RightsRegister } from "../src/ui/hud/HudShell";
+import { LedgerDrawer, RightsRegister } from "../src/ui/hud/HudShell";
 import { lordshipView } from "../src/ui/lordshipModel";
 import { lordHouseholdRows, personCardView, personRow, stewardPerson } from "../src/ui/persons/personModels";
 import { PERSONS_COPY } from "../src/ui/persons/personsCopy.ko";
@@ -141,6 +141,7 @@ test("UI-7 ledger sentences: the passing states and the bailiff read as Korean s
     const sentence = history.summary({ template });
     assert.notEqual(sentence, template, `${template} has a sentence`);
     assert.match(sentence, /[가-힣]/, template);
+    assert.doesNotMatch(sentence, /[A-Za-z]/, `${template}: no Latin letters in the Korean sentence (${sentence})`);
   }
   const records = state.history!.records.filter(record => templates.includes(record.template));
   // The engine wrote each beginning and the office in these 48 seasons (an ending may fall later); every one it wrote reads.
@@ -151,6 +152,7 @@ test("UI-7 ledger sentences: the passing states and the bailiff read as Korean s
     const sentence = history.summary(record);
     const card = recordCard(state, { key: record.id, tick: record.tick, record, bundle: null });
     assert.ok(card.sentence.endsWith(sentence) && !card.sentence.includes(record.template), `${record.template}: ${card.sentence}`);
+    assert.doesNotMatch(sentence, /[A-Za-z]/, `${record.template}: ${sentence}`);
     const life = biographyView(state, record.subject.id)!.events.find(event => event.id === record.id)!;
     assert.equal(life.sentence, sentence);
     assert.doesNotMatch(life.sentence, /person\./);
@@ -180,6 +182,9 @@ test("UI-7 the lord's household: the ruling house's family (lord, spouse, childr
     assert.match(markup, new RegExp(`<button[^>]*class="person-chip[^"]*"[^>]*data-person="${row.id}"`), row.id);
     assert.ok(markup.includes(`data-portrait="${row.portraitId}"`), row.portraitId);
   }
+  // The click path: the dock's [장부] (data-dock="ledger"), its [권리] tab (data-ledger-tab="rights"), the chips above.
+  const drawer = renderToStaticMarkup(createElement(LedgerDrawer, { state, onInspect: () => undefined, onClose: () => undefined, viewTab: null, mapTab: null, onPerson: () => undefined }));
+  assert.match(drawer, /<button[^>]*data-ledger-tab="rights"[^>]*role="tab"/);
   // The lord's card names the office in Korean (no "lord").
   assert.equal(personCardView(state, lord.id)!.role, "가구주 · 영주");
   // A town without a lord's family: the steward alone.

@@ -13,7 +13,7 @@ const LABELS: Readonly<Record<PersonStateId, string>> = {
   marriage: "혼인",
   pilgrim: "순례 중",
   steward: "청지기",
-  bailiff: "집행관(bailiff)",
+  bailiff: "집행관",
   reeve: "마을 대표(reeve)",
 };
 

@@ -122,6 +122,7 @@ test("INSTALL-23 offices: the steward by role, the reeve by tag; UI-7: the baili
   assert.deepEqual(derivedPersonStates(state, reeve), ["reeve"]);
   const bailiff: Person = { ...family.spouse, tags: [...family.spouse.tags, "bailiff"] };
   assert.deepEqual(derivedPersonStates(town, bailiff), ["bailiff"]);
+  assert.equal(PERSON_STATE_COPY.label("bailiff"), "집행관", "UI-7: the office in Korean only");
   assert.deepEqual(derivedPersonStates(town, { ...bailiff, tags: [...bailiff.tags, "reeve"] }), ["bailiff", "reeve"], "the lord's office before the town's");
 });
 

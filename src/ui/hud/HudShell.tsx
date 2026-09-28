@@ -211,7 +211,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
       <div className="ledger-tabs">
         <div className="ledger-tab-list" role="tablist">
           {(Object.keys(HUD_COPY.ledgerTabs) as LedgerTab[]).map(key => (
-            <Button key={key} type="button" role="tab" aria-selected={tab === key} className="ledger-tab" onPress={() => setTab(key)} variant="tab">{HUD_COPY.ledgerTabs[key]}</Button>
+            <Button key={key} data-ledger-tab={key} type="button" role="tab" aria-selected={tab === key} className="ledger-tab" onPress={() => setTab(key)} variant="tab">{HUD_COPY.ledgerTabs[key]}</Button>
           ))}
         </div>
         {/* CHRON-1: not a tab of the drawer — it opens the chronicle screen over it. */}
