@@ -1,7 +1,7 @@
 {
- "sha": "0944bc38b6bb7716e4daa3fc11825625d1c0d3b9",
+ "sha": "d1b99fd90ff92104f8248aba6bd9d18ad538eb8e",
  "dirty": false,
- "buildMs": 1285,
+ "buildMs": 953,
  "unit": "MB = 1000000 bytes",
  "megabyte": 1000000,
  "categories": [
@@ -113,14 +113,14 @@
   {
    "id": "ui",
    "name": "UI",
-   "bytes": 22747572,
-   "files": 1002,
+   "bytes": 13616924,
+   "files": 630,
    "budgetBytes": null,
    "rules": [
     {
-     "label": "fonts (Noto Sans KR woff2 + woff)",
-     "bytes": 16189396,
-     "files": 744
+     "label": "fonts (Noto Sans KR, Noto Serif KR; woff2 only)",
+     "bytes": 7058748,
+     "files": 372
     },
     {
      "label": "P0 kit: frames, textures, icons, cursors, buttons",
@@ -168,13 +168,13 @@
   {
    "id": "code",
    "name": "코드",
-   "bytes": 2359872,
+   "bytes": 2343208,
    "files": 15,
    "budgetBytes": null,
    "rules": [
     {
      "label": "page, scripts, styles, manifests",
-     "bytes": 2349102,
+     "bytes": 2332438,
      "files": 9
     },
     {
@@ -202,8 +202,8 @@
   }
  ],
  "total": {
-  "bytes": 63595043,
-  "files": 2416,
+  "bytes": 54447731,
+  "files": 2044,
   "budgetBytes": 150000000,
   "pass": true
  },
@@ -214,5 +214,165 @@
   }
  ],
  "over": [],
- "pass": true
+ "pass": true,
+ "startupArt": {
+  "chapterOne": {
+   "images": 441,
+   "bytes": 66043840,
+   "fileBytes": 15175737,
+   "byCategory": [
+    {
+     "category": "world",
+     "images": 429,
+     "bytes": 65700288
+    },
+    {
+     "category": "ui",
+     "images": 12,
+     "bytes": 343552
+    }
+   ],
+   "missing": []
+  },
+  "all": {
+   "images": 449,
+   "bytes": 67096056,
+   "fileBytes": 15391391,
+   "byCategory": [
+    {
+     "category": "world",
+     "images": 437,
+     "bytes": 66752504
+    },
+    {
+     "category": "ui",
+     "images": 12,
+     "bytes": 343552
+    }
+   ],
+   "missing": []
+  },
+  "deferred": [
+   "assets/wave12/world/quay-v1.png",
+   "assets/wave17/world/beacon_idle-v1.png",
+   "assets/wave17/world/beacon_lit-v1.png",
+   "assets/wave17/world/raid_burning_quay-v1.png",
+   "assets/wave17/world/raid_smoke_column_sheet-v1.png",
+   "assets/wave9/event/plague_shut_l1-v1.png",
+   "assets/wave9/event/plague_shut_l2-v1.png",
+   "assets/wave9/event/plague_shut_l3-v1.png"
+  ],
+  "chapters": [
+   {
+    "chapter": 1,
+    "added": [],
+    "images": 441,
+    "bytes": 66043840,
+    "fileBytes": 15175737,
+    "byCategory": [
+     {
+      "category": "world",
+      "images": 429,
+      "bytes": 65700288
+     },
+     {
+      "category": "ui",
+      "images": 12,
+      "bytes": 343552
+     }
+    ],
+    "missing": []
+   },
+   {
+    "chapter": 2,
+    "added": [
+     "assets/wave12/world/quay-v1.png",
+     "assets/wave17/world/beacon_idle-v1.png",
+     "assets/wave17/world/beacon_lit-v1.png",
+     "assets/wave17/world/raid_burning_quay-v1.png",
+     "assets/wave17/world/raid_smoke_column_sheet-v1.png"
+    ],
+    "images": 446,
+    "bytes": 66863040,
+    "fileBytes": 15384984,
+    "byCategory": [
+     {
+      "category": "world",
+      "images": 434,
+      "bytes": 66519488
+     },
+     {
+      "category": "ui",
+      "images": 12,
+      "bytes": 343552
+     }
+    ],
+    "missing": []
+   },
+   {
+    "chapter": 3,
+    "added": [
+     "assets/wave9/event/plague_shut_l1-v1.png",
+     "assets/wave9/event/plague_shut_l2-v1.png",
+     "assets/wave9/event/plague_shut_l3-v1.png"
+    ],
+    "images": 449,
+    "bytes": 67096056,
+    "fileBytes": 15391391,
+    "byCategory": [
+     {
+      "category": "world",
+      "images": 437,
+      "bytes": 66752504
+     },
+     {
+      "category": "ui",
+      "images": 12,
+      "bytes": 343552
+     }
+    ],
+    "missing": []
+   },
+   {
+    "chapter": 4,
+    "added": [],
+    "images": 449,
+    "bytes": 67096056,
+    "fileBytes": 15391391,
+    "byCategory": [
+     {
+      "category": "world",
+      "images": 437,
+      "bytes": 66752504
+     },
+     {
+      "category": "ui",
+      "images": 12,
+      "bytes": 343552
+     }
+    ],
+    "missing": []
+   },
+   {
+    "chapter": 5,
+    "added": [],
+    "images": 449,
+    "bytes": 67096056,
+    "fileBytes": 15391391,
+    "byCategory": [
+     {
+      "category": "world",
+      "images": 437,
+      "bytes": 66752504
+     },
+     {
+      "category": "ui",
+      "images": 12,
+      "bytes": 343552
+     }
+    ],
+    "missing": []
+   }
+  ]
+ }
 }
