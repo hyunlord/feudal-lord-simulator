@@ -90,9 +90,12 @@ function renderSortY(item: SortableRenderItem): number {
     case "farm_prop":
       return item.prop.y;
     case "war_prop":
+    case "plague_prop":
       return item.prop.ty;
     case "village_life":
       return item.life.y;
+    case "countryside":
+      return item.piece.ty;
     case "building":
       return item.building.ty;
     case "palisade_segment":

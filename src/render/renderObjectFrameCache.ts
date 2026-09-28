@@ -19,6 +19,7 @@ import { hurdleAssetKey } from "./hurdleArt";
 import { warProps, type WarProp } from "./warWorldProps";
 import { withVillageLife } from "./villageLifeDraw";
 import { withPlagueProps } from "./plagueWorldProps";
+import { withCountryside } from "./countrysideDraw";
 
 type ObjectRenderFrameInput = {
   readonly state: GameState;
@@ -43,7 +44,7 @@ const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderC
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
-  const staticItems = withVillageLife(withWarProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input), input);
+  const staticItems = withCountryside(withVillageLife(withWarProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input), input), input.state, input.range); // + INSTALL-28, UI-8
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };

@@ -3,6 +3,7 @@ import { BUILDING_CONFIG_BY_KIND, operationSuspended, type Building } from "../c
 import type { GameState } from "../engine/engine.types";
 import { housePressureStatus } from "../population/housePressure";
 import { frameBuildingVariant } from "./buildingVariants";
+import { shownHouseVariantUrl } from "./wave26HouseArt";
 import { historicalHouseAssetMeta, historicalHouseSpriteRect } from "./historicalHouseAssets";
 import { houseCompoundAssetMeta, houseCompoundSpriteRect } from "./houseCompoundAssets";
 import { millRegistration } from "./animatedMill";
@@ -54,7 +55,7 @@ export function drawHouseRoofSmoke(context: CanvasRenderingContext2D, state: Pic
   if (meta === null) return;
   const rect = pair ? houseCompoundSpriteRect(building, meta as NonNullable<ReturnType<typeof houseCompoundAssetMeta>>)
     : historicalHouseSpriteRect(building, meta as NonNullable<ReturnType<typeof historicalHouseAssetMeta>>);
-  const url = frameBuildingVariant(building)?.url ?? meta.url;
+  const url = shownHouseVariantUrl(building, level) ?? frameBuildingVariant(building)?.url ?? meta.url;
   const anchor = ROOF_SMOKE_ANCHORS[url] ?? ROOF_SMOKE_ANCHORS[meta.url];
   if (anchor === undefined) return;
   drawSmokePlume(context, rect.x + anchor.fx * rect.width, rect.y + anchor.fy * rect.height, strength, nowMs, building.tx * 7 + building.ty * 3);

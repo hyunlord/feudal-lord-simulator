@@ -2,6 +2,7 @@ import type { GameState } from "../engine/engine.types";
 import type { Building } from "../content/buildingConfig";
 import { houseBuiltLevel } from "../population/houseCondition";
 import { frameBuildingVariant } from "./buildingVariants";
+import { shownHouseVariantUrl } from "./wave26HouseArt";
 import { renderDetailLevel } from "./buildingVisualState";
 import type { CameraState } from "./camera";
 import { historicalHouseAssetMeta, historicalHouseReady, historicalHouseSpriteRect } from "./historicalHouseAssets";
@@ -144,7 +145,7 @@ function ridge(state: Pick<GameState, "houses" | "buildings">, buildingId: strin
   if (!ready) return null;
   const rect = pair ? houseCompoundSpriteRect(building, meta as NonNullable<ReturnType<typeof houseCompoundAssetMeta>>)
     : historicalHouseSpriteRect(building, meta as NonNullable<ReturnType<typeof historicalHouseAssetMeta>>);
-  const url = frameBuildingVariant(building)?.url ?? meta.url;
+  const url = shownHouseVariantUrl(building, level) ?? frameBuildingVariant(building)?.url ?? meta.url;
   const anchor = ROOF_SMOKE_ANCHORS[url] ?? ROOF_SMOKE_ANCHORS[meta.url];
   return anchor === undefined ? null : { x: rect.x + anchor.fx * rect.width, y: rect.y + anchor.fy * rect.height };
 }

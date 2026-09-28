@@ -20,9 +20,11 @@ import { renderStageProbe, stageForRenderItem } from "./renderStageProbe";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 import { beginBuildingVariantFrame } from "./buildingVariants";
+import { beginHouseVariantFrame } from "./wave26HouseArt";
 import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
 import { drawPlagueProp } from "./plagueWorldProps";
+import { drawCountrysideItem } from "./countrysideDraw";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -51,6 +53,7 @@ export function drawObjectRenderItems(
   const spriteOptions = { camera: input.camera, dpr: input.dpr, viewport: input.viewport }; // the site ghost's culling
   probe?.enter("farmland");
   beginBuildingVariantFrame(input.state);
+  beginHouseVariantFrame(input.state); // INSTALL-26 the Wave 26 house paintings
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   const viewMode = getObjectRenderViewMode();
   // RENDER_BOUNDARY_V2 draws road ribbons in the ground chunks, under frontage and objects. (The V1 wheat-farm soil
@@ -80,6 +83,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "plague_prop") { // UI-8 chapter 3 fresh graves in the churchyard
       if (viewMode === "normal") drawPlagueProp(context, item.prop);
+      continue;
+    }
+    if (item.kind === "countryside") { // INSTALL-28 hedges, baulks, dry-stone walls and point props outside the walls
+      if (viewMode === "normal") drawCountrysideItem(context, item, input.state, input.zoom);
       continue;
     }
     if (item.kind === "village_life") { // INSTALL-23 hens, cats, dogs, birds, toys, washing lines, doorstep props

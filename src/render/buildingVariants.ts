@@ -62,6 +62,11 @@ function weightedPick(variants: readonly BuildingVariant[], random: number): Bui
   return variants[variants.length - 1] as BuildingVariant;
 }
 
+/** Uniform [0,1) stream `salt` keyed by a text (INSTALL-26: a household's id) instead of a plot. */
+export function textRandom(worldSeed: number, text: string, salt: number): number {
+  return hash([worldSeed, textCode(text), salt]) / 4_294_967_296;
+}
+
 type VariantBuilding = Pick<Building, "kind" | "tx" | "ty" | "houseLot">;
 
 /** Variants of a pool this building may show (drops inside-wall variants outside a completed wall). */
@@ -146,8 +151,9 @@ export function beginBuildingVariantFrame(state: VariantState): void {
 }
 
 let variantsEnabled = true;
-/** Tests that pin the base art (e.g. the base farm layer order) switch variants off. */
+/** Tests that pin the base art (e.g. the base farm layer order) switch variants off (Wave 26's too, INSTALL-26). */
 export function setBuildingVariantsEnabled(value: boolean): void { variantsEnabled = value; }
+export function buildingVariantsEnabled(): boolean { return variantsEnabled; }
 
 /** The variant chosen for this building in the current frame; null = base art. */
 export function frameBuildingVariant(building: Pick<Building, "id">): BuildingVariant | null {

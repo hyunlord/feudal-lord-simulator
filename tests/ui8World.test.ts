@@ -9,7 +9,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { GameState } from "../src/engine/engine.types";
-import type { House } from "../src/engine/engine.types";
+import type { House } from "../src/population/population.types";
 import { plagueProps, drawFuneralProcession, withPlagueProps } from "../src/render/plagueWorldProps";
 import { worldSigns } from "../src/render/worldSigns";
 import { buildingProblemCause } from "../src/ui/problemCauseModel";
