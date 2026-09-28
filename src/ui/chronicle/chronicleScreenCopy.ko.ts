@@ -24,7 +24,8 @@ const RELATIVES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   kin: { head: "가구주", spouse: "가구주의 배우자", child: "가구주의 자녀", kin: "친척" },
 };
 const relative = (me: string, them: string) => RELATIVES[me]?.[them] ?? ROLES[them] ?? them;
-const PORTRAIT_STAGES: Readonly<Record<string, string>> = { pool: "", child: "아이", young: "청년", mature: "장년", old: "노년" };
+/** UI-7: with the young stages (a baby, a toddler: PERSON-1a LN-6). */
+const PORTRAIT_STAGES: Readonly<Record<string, string>> = { pool: "", baby: "아기", infant: "아기", toddler: "유아", child: "아이", young: "청년", mature: "장년", old: "노년" };
 const signed = (value: number) => value > 0 ? `+${value}` : value < 0 ? `−${-value}` : "0";
 
 export const CHRONICLE_SCREEN_COPY = {

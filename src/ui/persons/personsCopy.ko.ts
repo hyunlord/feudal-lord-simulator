@@ -7,7 +7,8 @@ const TITLES: Readonly<Record<string, string>> = {
   miller: "방앗간지기", sawyer: "톱장이", mason: "석공", chapman: "행상", husbandman: "농부", woodward: "산지기", quarrier: "채석공",
   granger: "곡창지기", storekeeper: "창고지기", steward: "청지기", labourer: "일꾼", child: "아이",
 };
-const STAGES: Readonly<Record<string, string>> = { pool: "", child: "아이", young: "청년", mature: "장년", old: "노년" };
+/** UI-7: the young stages (PERSON-1a LN-6: a baby 0–2, a toddler 3–5 — their faces from the common pool or the lineage set). */
+const STAGES: Readonly<Record<string, string>> = { pool: "", baby: "아기", infant: "아기", toddler: "유아", child: "아이", young: "청년", mature: "장년", old: "노년" };
 const finalOf = (word: string) => { const last = word.charCodeAt(word.length - 1); return last >= 0xac00 && last <= 0xd7a3 ? (last - 0xac00) % 28 : 0; };
 const josa = (word: string, withFinal: string, without: string) => finalOf(word) !== 0 ? withFinal : without;
 /** 으로 after a final consonant, 로 after a vowel or ㄹ (final index 8). */

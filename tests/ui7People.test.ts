@@ -6,13 +6,20 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { TRAIT_POPULATION, type PersonTraits, type TraitKey } from "../src/content/personTraits";
 import type { GameState } from "../src/engine/engine.types";
+import type { HistoryRecord } from "../src/engine/history.types";
+import { ageOf, currentYear } from "../src/engine/persons";
 import { persons } from "../src/engine/personsApi";
 import type { Person } from "../src/engine/persons.types";
+import { PORTRAIT_MIN_AGE } from "../src/engine/portraits";
 import { decodeSave } from "../src/save/saveCodec";
 import { BiographyPage } from "../src/ui/chronicle/BiographyPage";
-import { biographyView } from "../src/ui/chronicle/chronicleScreenModel";
+import { biographyView, recordCard } from "../src/ui/chronicle/chronicleScreenModel";
+import { personCardView, personRow } from "../src/ui/persons/personModels";
+import { PersonCardModal, PersonChip } from "../src/ui/persons/PersonViews";
+import { personStatesReader } from "../src/ui/persons/personStates";
 import { PERSON_TRAIT_COPY } from "../src/ui/persons/personTraitCopy.ko";
 import { distinctiveShared, resemblanceParts } from "../src/ui/persons/resemblance";
+import { portraitUrl } from "../src/ui/portraitArt";
 
 // UI-7 people: the biography's 닮은 점 (one trait per parent, the rarest value first), the young children's faces, the
 // passing states' ledger sentences and the lord's family beside the steward — on the v17 fixture town.
@@ -72,4 +79,38 @@ test("UI-7 닮은 점 copy: every value of every trait has a Korean word", () =>
     const word = PERSON_TRAIT_COPY.trait(trait as TraitKey, value);
     assert.match(word, /[가-힣]/, `${trait} ${value}: ${word}`);
   }
+});
+
+test("UI-7 young faces: a baby, a toddler and a small child wear the pool's face on the chip, the card, the biography and the record card", () => {
+  const year = currentYear(town);
+  const young = town.persons!.people.filter(person => ageOf(person, year) < PORTRAIT_MIN_AGE);
+  assert.ok(young.length >= 10 && young.some(person => ageOf(person, year) < 3), `${young.length} under 8`);
+  const states = personStatesReader(town);
+  for (const person of young) {
+    const portraitId = persons.portrait(town, person).portraitId;
+    assert.ok(!portraitId.startsWith("silhouette_"), `${person.id} ${portraitId}`);
+    assert.match(portraitUrl(portraitId, 96) ?? "", /\/assets\/portraits\/96\/.+\.jpg$/, portraitId);
+    const row = personRow(town, person, states);
+    assert.equal(row.portraitId, portraitId);
+    assert.match(renderToStaticMarkup(createElement(PersonChip, { row, onOpen: () => undefined })), new RegExp(`data-portrait="${portraitId}"[^>]*>.*assets/portraits/96/${portraitId}\\.jpg`));
+  }
+  const baby = young.find(person => ageOf(person, year) < 3)!;
+  const card = personCardView(town, baby.id)!;
+  assert.match(renderToStaticMarkup(createElement(PersonCardModal, { view: card, onClose: () => undefined, onBiography: () => undefined })), new RegExp(`assets/portraits/256/${card.portraitId}\\.jpg`), "the card's 117 px slot draws the 256 px face");
+  // The match line names the young stage (it wrote none for a baby or a toddler).
+  assert.match(card.match, / 아기 · /);
+  const toddler = young.find(person => persons.portrait(town, person).stage === "toddler")!;
+  assert.match(personCardView(town, toddler.id)!.match, / 유아 · /);
+  const biography = biographyView(town, baby.id)!;
+  assert.match(biography.portraitLine, / 아기 · /);
+  assert.match(renderToStaticMarkup(createElement(BiographyPage, { view: biography, scale: 1, onPerson: () => undefined, onRecord: () => undefined })),
+    new RegExp(`assets/portraits/256/${biography.portraitId}\\.jpg`), "the great circle draws the 256 px face");
+  // A parent's biography shows the baby's face among the relations.
+  const parent = persons.of(town, baby.householdId).find(member => member.role === "head")!;
+  assert.equal(biographyView(town, parent.id)!.relations.find(relation => relation.id === baby.id)!.portraitId, card.portraitId);
+  // The birth's record card is the baby's face at birth.
+  const born: HistoryRecord = { id: "h-ui7-born", tick: town.tick, kind: "person", template: "person.born", severity: 0, subject: { type: "person", id: baby.id } };
+  const art = recordCard(town, { key: born.id, tick: born.tick, record: born, bundle: null }).art;
+  assert.equal(art?.kind, "portrait");
+  assert.ok(art?.kind === "portrait" && !art.portraitId.startsWith("silhouette_") && portraitUrl(art.portraitId, 96) !== null);
 });
