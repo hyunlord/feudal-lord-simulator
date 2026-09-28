@@ -59,12 +59,19 @@ export function yardHash(text: string, salt: number): number {
   return (h ^ (h >>> 15)) >>> 0;
 }
 
-/** The household's yard trade: its craft first, then the members' trades (head, spouse, the rest by id); null: none. */
-export function yardOccupation(house: Pick<House, "crafts">, members: readonly Pick<Person, "id" | "role" | "occupation">[]): YardOccupationKind | null {
-  for (const slot of house.crafts ?? []) {
-    const craft = slot.craftId === null ? undefined : YARD_OCCUPATION_BY_CRAFT[slot.craftId];
-    if (craft !== undefined) return craft;
-  }
+/** The house fields the trade reads (the id only to pick between two pictured crafts). */
+type YardHouse = Pick<House, "crafts"> & Partial<Pick<House, "buildingId">>;
+
+/**
+ * The household's yard trade: its craft first (more than one pictured craft: the house id's hash picks one), then the
+ * members' trades (head, spouse, the rest by id); null: none.
+ */
+export function yardOccupation(house: YardHouse, members: readonly Pick<Person, "id" | "role" | "occupation">[]): YardOccupationKind | null {
+  const crafts = (house.crafts ?? []).flatMap(slot => {
+    const kind = slot.craftId === null ? undefined : YARD_OCCUPATION_BY_CRAFT[slot.craftId];
+    return kind === undefined ? [] : [kind];
+  });
+  if (crafts.length > 0) return crafts[yardHash(house.buildingId ?? "", 30) % crafts.length]!;
   const order = (person: Pick<Person, "role">) => (person.role === "head" ? 0 : person.role === "spouse" ? 1 : 2);
   const sorted = [...members].sort((a, b) => order(a) - order(b) || a.id.localeCompare(b.id));
   for (const person of sorted) {
@@ -75,7 +82,7 @@ export function yardOccupation(house: Pick<House, "crafts">, members: readonly P
 }
 
 export type YardHousehold = {
-  readonly house: Pick<House, "level" | "residents" | "abandonedTick" | "foodShortSinceTick" | "leavingSinceTick" | "crafts">;
+  readonly house: YardHouse & Pick<House, "level" | "residents" | "abandonedTick" | "foodShortSinceTick" | "leavingSinceTick">;
   readonly members: readonly Pick<Person, "id" | "role" | "occupation">[];
   readonly tick: number;
   readonly winter: boolean;

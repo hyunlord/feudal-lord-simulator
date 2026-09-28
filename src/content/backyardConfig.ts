@@ -5,12 +5,21 @@ import { PRESSURE_BALANCE } from "./balanceConfig";
  * Presentation only: nothing here is read by a rule.
  *
  * Occupation (the 12 art kinds): the household's own craft first — a brewing slot (C4 `brew_ale`, the alewife's
- * mash tub) is the brewer's yard — then its members' trades (PS-4 `MASTER_TRADES`: the master of a staffed building
- * takes its trade), head first, then the spouse, then the rest by person id; the first trade with a picture wins.
+ * mash tub) is the brewer's yard, a spinning slot (C5 `spin_yarn`, the woman spinning fleece at home) the weaver's
+ * (its loom, yarn skeins and winding rack); a household with both (every L3+ house of the C5 town brews and, with
+ * fleece in the stores, spins) shows one of them by its house id's hash, so the town shows both trades — then its
+ * members' trades (PS-4 `MASTER_TRADES`: the master of a staffed building takes its trade), head first, then the
+ * spouse, then the rest by person id; the first trade with a picture wins.
  * Trades with no picture of their own (mason, quarrier) and the rest (labourer, child, steward, the lord's family)
  * give no occupation: the household shows its circumstances only.
- * The engine has no baker, blacksmith, weaver, dyer, tanner, shepherd or fisher yet; their pictures are installed and
- * wait for those trades (C5's cloth chain names weavers and dyers).
+ * INSTALL-27 after C5: the pastoral farm, the weaver's house, the fulling mill, the dyehouse and the tenter yard have
+ * no `MASTER_TRADES` entry — their staff are worker counts, no person takes a trade from them — so no household is a
+ * shepherd, weaver (at the loom), fuller, dyer or tenterer yet. When the engine names them: shepherd → shepherd,
+ * weaver → weaver, dyer → dyer; the fuller and the tenterer get none (their work is at the mill's hammers and on the
+ * tenter field, not in a house yard, and no picture shows it — the dyer's rail is dyed cloth, not a tenter frame).
+ * Still unused: shepherd and dyer (waiting for those trades), baker, blacksmith, tanner and fisher (the engine has no
+ * bakehouse, smithy, tannery or fishery). tests/backyardDecals.test.ts fails when the engine adds a trade or craft
+ * this file has not decided on.
  */
 export const YARD_OCCUPATION_KINDS = ["farmer", "baker", "blacksmith", "carpenter", "weaver", "dyer", "tanner", "brewer",
   "miller", "merchant", "shepherd", "fisher"] as const;
@@ -29,8 +38,12 @@ export const YARD_OCCUPATION_BY_TRADE: Readonly<Record<string, YardOccupationKin
 
 /** Household craft (`HouseholdSlot.craftId`) → yard picture; checked before the members' trades. */
 export const YARD_OCCUPATION_BY_CRAFT: Readonly<Record<string, YardOccupationKind>> = {
-  brew_ale: "brewer",
+  brew_ale: "brewer", // C4: the alewife's mash tub
+  spin_yarn: "weaver", // C5 (CL-4): spinning at home — the yarn skeins and winding rack of the weaver's yard
 };
+
+/** Engine trades (`MASTER_TRADES` occupations) that have no yard picture, decided (see the header). */
+export const YARD_UNPICTURED_TRADES: readonly string[] = ["mason", "quarrier"];
 
 export const YARD_CIRCUMSTANCES = ["prosperous", "strained", "hungry", "vacant", "newcomer", "winter"] as const;
 export type YardCircumstance = (typeof YARD_CIRCUMSTANCES)[number];

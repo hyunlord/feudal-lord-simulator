@@ -6,9 +6,13 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { YARD_CIRCUMSTANCES, YARD_OCCUPATION_BY_CRAFT, YARD_OCCUPATION_BY_TRADE, YARD_OCCUPATION_KINDS, YARD_RULES, YARD_SHARED_KINDS } from "../src/content/backyardConfig";
+import { YARD_CIRCUMSTANCES, YARD_OCCUPATION_BY_CRAFT, YARD_OCCUPATION_BY_TRADE, YARD_OCCUPATION_KINDS, YARD_RULES, YARD_SHARED_KINDS,
+  YARD_UNPICTURED_TRADES } from "../src/content/backyardConfig";
 import type { Building } from "../src/content/buildingConfig";
+import { CRAFT_DEFINITIONS } from "../src/content/crafts/craftDefinitions";
+import { advanceCloth, spinningSlot } from "../src/engine/cloth";
 import type { GameState } from "../src/engine/engine.types";
+import { MASTER_TRADES } from "../src/engine/persons";
 import type { Person } from "../src/engine/persons.types";
 import type { House } from "../src/population/population.types";
 import { backyardDecals, backyardLayout, backyardPlan, yardKey, yardMoveIns, yardOccupation, yardPictureKind, yardSharedKey, yardVariant,
@@ -17,6 +21,7 @@ import { drawBackyardDecals, YARD_DECAL_MIN_ZOOM, yardClipPolygons, yardDecalRec
 import { CART_LOAD_MIN_ZOOM } from "../src/render/drawWalkers";
 import { WAVE27_YARD_IMAGES, type Wave27YardKey } from "../src/render/wave27YardManifest.generated";
 import { decodeSave } from "../src/save/saveCodec";
+import { clothTown } from "./helpers/clothTown";
 
 const load = (name: string) => decodeSave(new Uint8Array(readFileSync(`fixtures/saves/v26/${name}.save.json`))).envelope.state as GameState;
 /** The town in a calendar season (1 summer, 3 winter), in a later year than its ledger. */
@@ -52,6 +57,48 @@ test("Given households When their yard trade is read Then the brewing craft come
   for (const [trade, kind] of Object.entries(mapped)) assert.equal(yardOccupation({}, [person("p-1", "head", trade)]), kind, trade);
   for (const trade of ["labourer", "child", "mason", "quarrier", "steward", "lord", "lady"]) assert.equal(yardOccupation({}, [person("p-1", "head", trade)]), null, trade);
   assert.equal(yardOccupation({ crafts: [{ craftId: null, workers: 0, input: {}, output: {}, stock: {} }] }, []), null);
+});
+
+const slot = (craftId: string | null) => ({ craftId, workers: craftId === null ? 0 : 1, input: {}, output: {}, stock: {} });
+
+test("Given households spinning at home (C5) When their yard trade is read Then spinning is the weaver's yard, before the members' trades; brewing and spinning: the house id picks one", () => {
+  assert.equal(yardOccupation({ crafts: [slot(null), slot("spin_yarn")] }, [person("p-1", "head", "miller")]), "weaver");
+  const both = Array.from({ length: 40 }, (_, at) => ({ buildingId: `house-${at}`, crafts: [slot("brew_ale"), slot("spin_yarn")] }));
+  const picked = both.map(house => yardOccupation(house, [person("p-1", "head", "chapman")]));
+  assert.deepEqual(new Set(picked), new Set(["brewer", "weaver"]), "both trades show across the town");
+  assert.deepEqual(both.map(house => yardOccupation(house, [])), picked, "the same house, the same yard; the members' trades wait");
+  assert.equal(yardPictureKind(household({ house: { ...fed, crafts: [slot(null), slot("spin_yarn")] } })), "weaver");
+});
+
+test("Given the engine's trades and crafts When the yard tables are checked Then each is decided (a picture or none) and no row names a trade the engine does not give", () => {
+  // INSTALL-27: C5's five buildings have no MASTER_TRADES entry (their staff are counts), so no shepherd, weaver, fuller,
+  // dyer or tenterer is a person's trade yet; this fails when the engine names one, for backyardConfig to decide.
+  const trades = new Set(Object.values(MASTER_TRADES).map(trade => trade.occupation));
+  for (const trade of trades) assert.ok(YARD_OCCUPATION_BY_TRADE[trade] !== undefined || YARD_UNPICTURED_TRADES.includes(trade), `undecided trade ${trade}`);
+  for (const trade of [...Object.keys(YARD_OCCUPATION_BY_TRADE), ...YARD_UNPICTURED_TRADES]) assert.ok(trades.has(trade), `no engine trade ${trade}`);
+  for (const kind of ["pastoral_farm", "weaver_house", "fulling_mill", "dyehouse", "tenter_yard"]) assert.equal(MASTER_TRADES[kind], undefined, kind);
+  assert.deepEqual(CRAFT_DEFINITIONS.map(craft => craft.id).sort(), Object.keys(YARD_OCCUPATION_BY_CRAFT).sort());
+  const used = new Set([...Object.values(YARD_OCCUPATION_BY_TRADE), ...Object.values(YARD_OCCUPATION_BY_CRAFT)]);
+  assert.deepEqual(YARD_OCCUPATION_KINDS.filter(kind => !used.has(kind)), ["baker", "blacksmith", "dyer", "tanner", "shepherd", "fisher"]);
+});
+
+test("Given the C5 town with fleece in its stores in summer When its women take up spinning Then its yards are the brewers' and the weavers' by house", () => {
+  const town = clothTown();
+  const store = town.buildings.filter(building => building.kind === "storehouse").sort((a, b) => a.id.localeCompare(b.id))[0]!;
+  // A spinning batch (every 400 ticks) in a later year's summer (season 1).
+  const tick = Math.floor(town.tick / 4_000) * 4_000 + 4_000 + 1_200;
+  const spun = advanceCloth({ ...town, tick, buildings: town.buildings.map(entry => entry.id === store.id ? { ...entry, inventory: { ...entry.inventory, fleece: 200 } } : entry) });
+  const spinning = spun.houses.filter(house => spinningSlot(house) !== null);
+  assert.ok(spinning.length >= 10);
+  assert.deepEqual(new Set(spinning.map(house => yardOccupation(house, []))), new Set(["brewer", "weaver"]));
+  let checked = 0;
+  for (const decal of backyardDecals(spun)) {
+    const house = spun.houses.find(entry => entry.buildingId === decal.buildingId)!;
+    if (spinningSlot(house) === null || decal.cells.length < 2) continue;
+    assert.ok(decal.key.startsWith(`yard_${yardOccupation(house, [])}_`), `${decal.buildingId}: ${decal.key}`);
+    checked += 1;
+  }
+  assert.ok(checked > 0);
 });
 
 test("Given a household's circumstances When its yard picture is chosen Then winter > vacant > hungry > newcomer > trade > prosperous / strained", () => {
