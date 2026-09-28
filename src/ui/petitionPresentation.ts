@@ -6,7 +6,8 @@ import type { GameState } from "../engine/engine.types";
 import { faction, factionOfPetitioner } from "../engine/factions";
 import { currentYear, personById } from "../engine/persons";
 import type { PetitionRecord } from "../engine/politics.types";
-import { levyMen, refugeeRoom, subsidyAmount, warOf, woolLevyAmount } from "../engine/war";
+import { levyMen, refugeeRoom, subsidyAmount, warOf, woolInKindPerSeason, woolLevyAmount } from "../engine/war";
+import { woolInKindSplit } from "../engine/pastureWool";
 import { DECISION_COPY } from "./decisionCopy.ko";
 import type { EmblemSpec } from "./heraldry/EmblemImage";
 import { factionEmblem } from "./chronicle/chronicleScreenModel";
@@ -51,8 +52,13 @@ const PRESENTATIONS: Readonly<Record<string, Presentation>> = {
     line: (state, response) => {
       const levy = woolLevyAmount(state);
       if (response === "accept") {
+        // ECON-UI (FIX-7 WR-2a, C5 CL-9): a season's share in the engine's words (woolInKindPerSeason), then what pays
+        // it as the town stands now — the fleece in its stores first, the rest in coin (woolInKindSplit).
         const total = ceilPermille(levy, WAR_BALANCE.woolInKindPermille);
-        return PETITION_COPY.wool_payment.accept(total, Math.ceil(total / WAR_BALANCE.woolInKindSeasons), WAR_BALANCE.woolInKindSeasons);
+        const perSeason = woolInKindPerSeason(levy);
+        const split = woolInKindSplit(state, perSeason);
+        return PETITION_COPY.wool_payment.acceptInKind(PETITION_COPY.wool_payment.accept(total, perSeason, WAR_BALANCE.woolInKindSeasons),
+          PETITION_COPY.wool_payment.inKindSplit(split.fleeces, split.inKind, split.cash));
       }
       return response === "accept_with_price" ? PETITION_COPY.wool_payment.accept_with_price(levy)
         : PETITION_COPY.wool_payment.refuse(ceilPermille(levy, WAR_BALANCE.woolSeizedPermille));

@@ -5,6 +5,7 @@ import { acceptsResource, storageUsage } from "../economy/storage";
 import { constructionSiteDisplayName } from "../economy/constructionSiteAccessors";
 import { STORE_INSPECTOR_COPY } from "./storeInspectorCopy.ko";
 import { STORE_KINDS, weeklyStockChange, type StoreStockHistory } from "./storeStockHistory";
+import { townAleView } from "./townAleModel";
 
 // UX-3R2 storage inspector (UX3R 6절, S-25): what the storehouse or granary holds and who draws on it. Read-only
 // views of the rules (storageUsage, acceptsResource) and the presentation history (storeStockHistory).
@@ -19,6 +20,8 @@ export type StoreInspectorModel = Readonly<{
   items: readonly { readonly resource: ResourceType; readonly name: string; readonly stored: number; readonly incoming: number; readonly week: string }[];
   users: readonly { readonly key: string; readonly text: string }[];
   distributors: number;
+  /** ECON-UI (FIX-7 townAle): the town's ale, kept in the houses (no store holds it), null in a town without ale. */
+  aleNote: string | null;
 }>;
 
 const MAX_USERS = 5;
@@ -49,5 +52,6 @@ export function storeInspectorModel(state: GameState, buildingId: string, histor
     buildingId: building.id, kind: building.kind, name: BUILDING_CONFIG_BY_KIND[building.kind].name, tile: { tx: building.tx, ty: building.ty },
     used: Math.floor(usage.used), incoming: Math.floor(usage.incoming), capacity: usage.capacity, items, users,
     distributors: state.walkers.filter(walker => walker.kind === "distributor" && walker.homeBuildingId === building.id).length,
+    aleNote: townAleView(state)?.inHouses ?? null,
   };
 }
