@@ -1,0 +1,322 @@
+[
+  {
+    "id": "L8_301_child",
+    "identity": "L8_301",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic small leather apron flour trace",
+    "fatherIdentity": "L8_201",
+    "motherIdentity": "L8_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown straight hair",
+      "eyes": "gray",
+      "build": "slender neck",
+      "personalMark": "small LEFT eyebrow notch",
+      "age": 24
+    },
+    "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 8 unmistakable PRIMARY-SCHOOL CHILD. RADICALLY shorten adult midface and lower jaw, small rounded chin, large eyes relative to head, round child cheeks, little nose, short neck and VERY SMALL narrow child shoulders. NO adult jaw, NO long adult face, NO adolescent maturity. The whole face must look 6–8, definitely UNDER TEN. Keep inherited darkbrown hair, gray eyes, gentle arched brows, small LEFT eyebrow notch faintly. Don't clone parent or sibling. Simple good wool child tunic and SMALL plain leather apron with faint flour dust, no fur. Girl hair uncovered, no veil, preserve individual hairstyle scaled to child. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_301_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_301_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_301_child.png",
+    "status": "rejected",
+    "sha256": "53a5f5878190bb5d305a170a1d80b8fd91877fc26796999b49688476015a217d",
+    "generationRecords": [
+      {
+        "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 8 unmistakable PRIMARY-SCHOOL CHILD. RADICALLY shorten adult midface and lower jaw, small rounded chin, large eyes relative to head, round child cheeks, little nose, short neck and VERY SMALL narrow child shoulders. NO adult jaw, NO long adult face, NO adolescent maturity. The whole face must look 6–8, definitely UNDER TEN. Keep inherited darkbrown hair, gray eyes, gentle arched brows, small LEFT eyebrow notch faintly. Don't clone parent or sibling. Simple good wool child tunic and SMALL plain leather apron with faint flour dust, no fur. Girl hair uncovered, no veil, preserve individual hairstyle scaled to child. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png": "d1871b20612bbe3011a1b38cb8ea9d19d8800cbadda43cb627586f98fb2e1e41",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_301_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending full 256px and96px visual review",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_302_child",
+    "identity": "L8_302",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic small leather apron flour trace",
+    "fatherIdentity": "L8_201",
+    "motherIdentity": "L8_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown long loose braid",
+      "eyes": "amber",
+      "build": "rounded shoulders",
+      "personalMark": "tiny mole RIGHT cheek",
+      "age": 21
+    },
+    "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 6 unmistakable PRIMARY-SCHOOL CHILD. RADICALLY shorten adult midface and lower jaw, small rounded chin, large eyes relative to head, round child cheeks, little nose, short neck and VERY SMALL narrow child shoulders. NO adult jaw, NO long adult face, NO adolescent maturity. The whole face must look 6–8, definitely UNDER TEN. Keep inherited darkbrown hair, amber eyes, gentle arched brows, tiny mole RIGHT cheek faintly. Don't clone parent or sibling. Simple good wool child tunic and SMALL plain leather apron with faint flour dust, no fur. Girl hair uncovered, no veil, preserve individual hairstyle scaled to child. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_302_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_302_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_302_child.png",
+    "status": "rejected",
+    "sha256": "97610f1883862a1f0843cab35586fce8c436ba6df724469276a61b412ff3fddc",
+    "generationRecords": [
+      {
+        "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 6 unmistakable PRIMARY-SCHOOL CHILD. RADICALLY shorten adult midface and lower jaw, small rounded chin, large eyes relative to head, round child cheeks, little nose, short neck and VERY SMALL narrow child shoulders. NO adult jaw, NO long adult face, NO adolescent maturity. The whole face must look 6–8, definitely UNDER TEN. Keep inherited darkbrown hair, amber eyes, gentle arched brows, tiny mole RIGHT cheek faintly. Don't clone parent or sibling. Simple good wool child tunic and SMALL plain leather apron with faint flour dust, no fur. Girl hair uncovered, no veil, preserve individual hairstyle scaled to child. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png": "3b837b0812149f45782561e8d8ac8da138e019f583df607d80ce1e583fac7ec4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_302_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending full 256px and96px visual review",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_303_child",
+    "identity": "L8_303",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic small leather apron flour trace",
+    "fatherIdentity": "L8_206",
+    "motherIdentity": "L8_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown wavy ear-length hair",
+      "eyes": "blue",
+      "build": "broad shoulders",
+      "personalMark": "scattered NOSE freckles",
+      "age": 23
+    },
+    "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 8 unmistakable PRIMARY-SCHOOL CHILD. RADICALLY shorten adult midface and lower jaw, small rounded chin, large eyes relative to head, round child cheeks, little nose, short neck and VERY SMALL narrow child shoulders. NO adult jaw, NO long adult face, NO adolescent maturity. The whole face must look 6–8, definitely UNDER TEN. Keep inherited darkbrown hair, blue eyes, gentle arched brows, scattered NOSE freckles faintly. Don't clone parent or sibling. Simple good wool child tunic and SMALL plain leather apron with faint flour dust, no fur. Girl hair uncovered, no veil, preserve individual hairstyle scaled to child. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+    ],
+    "file": "assets/L8/L8_303_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_303_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_303_child.png",
+    "status": "rejected",
+    "sha256": "715947f2935b77ec59209e3b8adb92d2c62157494158bc92d12d9eba600b2aca",
+    "generationRecords": [
+      {
+        "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 8 unmistakable PRIMARY-SCHOOL CHILD. RADICALLY shorten adult midface and lower jaw, small rounded chin, large eyes relative to head, round child cheeks, little nose, short neck and VERY SMALL narrow child shoulders. NO adult jaw, NO long adult face, NO adolescent maturity. The whole face must look 6–8, definitely UNDER TEN. Keep inherited darkbrown hair, blue eyes, gentle arched brows, scattered NOSE freckles faintly. Don't clone parent or sibling. Simple good wool child tunic and SMALL plain leather apron with faint flour dust, no fur. Girl hair uncovered, no veil, preserve individual hairstyle scaled to child. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png": "96377a65dfa195e464d45e0359216459a4a9ab94a378dddd4689d590fa7416a9",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_303_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending full 256px and96px visual review",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_304_child",
+    "identity": "L8_304",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic small leather apron flour trace",
+    "fatherIdentity": "L8_206",
+    "motherIdentity": "L8_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown loose short bob",
+      "eyes": "gray green",
+      "build": "slender shoulders",
+      "personalMark": "small mole LEFT cheek",
+      "age": 20
+    },
+    "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 6 unmistakable PRIMARY-SCHOOL CHILD. RADICALLY shorten adult midface and lower jaw, small rounded chin, large eyes relative to head, round child cheeks, little nose, short neck and VERY SMALL narrow child shoulders. NO adult jaw, NO long adult face, NO adolescent maturity. The whole face must look 6–8, definitely UNDER TEN. Keep inherited darkbrown hair, gray green eyes, gentle arched brows, small mole LEFT cheek faintly. Don't clone parent or sibling. Simple good wool child tunic and SMALL plain leather apron with faint flour dust, no fur. Girl hair uncovered, no veil, preserve individual hairstyle scaled to child. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+    ],
+    "file": "assets/L8/L8_304_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_304_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_304_child.png",
+    "status": "rejected",
+    "sha256": "8f4f2b46a292c6765dbc242cc36bbd093e30e2b013df389c1efc4a0caf62a5d4",
+    "generationRecords": [
+      {
+        "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 6 unmistakable PRIMARY-SCHOOL CHILD. RADICALLY shorten adult midface and lower jaw, small rounded chin, large eyes relative to head, round child cheeks, little nose, short neck and VERY SMALL narrow child shoulders. NO adult jaw, NO long adult face, NO adolescent maturity. The whole face must look 6–8, definitely UNDER TEN. Keep inherited darkbrown hair, gray green eyes, gentle arched brows, small mole LEFT cheek faintly. Don't clone parent or sibling. Simple good wool child tunic and SMALL plain leather apron with faint flour dust, no fur. Girl hair uncovered, no veil, preserve individual hairstyle scaled to child. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png": "e34b15fde8274e6da4104b68171a349c078b9cfb75c6fa0729a298db0856b9ee",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-grandchild-v1/L8_304_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Pending full 256px and96px visual review",
+      "runtime": "not installed"
+    }
+  }
+]

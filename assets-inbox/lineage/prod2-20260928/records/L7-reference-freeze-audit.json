@@ -1,0 +1,140 @@
+[
+  {
+    "id": "L7_303_young-v2",
+    "reason": "Correct helper rehash of mutable canonical after generation; actual edit target preserved as rejected first attempt",
+    "previous": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_303_young.png",
+      "sha256": "9c764cb17be68c26c4a6a393ab7295fa7d190832335c4b5bf247162e5410c172"
+    },
+    "actual": {
+      "file": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_303_young-rejected.png",
+      "sha256": "aed6d05c3c8e410722f176bee85a972c55134af3377ee43ba3d2126716004d3c"
+    }
+  },
+  {
+    "id": "L7_201_baby",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_201_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_201_child-attempt1.png",
+    "sha256": "5351cb7688dd3127fe2da2ecdf8d46fb356a5f78c21026512e10a70a87fff777"
+  },
+  {
+    "id": "L7_202_baby",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_202_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_202_child-attempt1.png",
+    "sha256": "88daccd61a8e11b01589de66811651ffb742e11b2e7149eae5af96525f7e04f4"
+  },
+  {
+    "id": "L7_203_baby",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_203_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_203_child-attempt1.png",
+    "sha256": "3766a2b4a4e1494eef877143a4cacfd3aae7cac5029b1023820010358a4e0a62"
+  },
+  {
+    "id": "L7_204_baby",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_204_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_204_child-attempt1.png",
+    "sha256": "e7213591057ded880b7c3c3811bf7f4ae544654ce736ece7f135ed405ae9c779"
+  },
+  {
+    "id": "L7_301_baby",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_301_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_301_child-attempt1.png",
+    "sha256": "3f3d6ac8ab99da6a026355033b718d6224d7feadffa94acaaa77c9032cbd556b"
+  },
+  {
+    "id": "L7_302_baby",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_302_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_302_child-attempt1.png",
+    "sha256": "b77a6e5f45c3203efecb18593064c21df9012a006c056456837a0b263b8ec30c"
+  },
+  {
+    "id": "L7_304_baby",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_304_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_304_child-attempt1.png",
+    "sha256": "291a12d7fad4bbb1e2f995d9c2828f0c2dbe46f1a1f194cb18bf2b8548d7f61a"
+  },
+  {
+    "id": "L7_303_baby",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_303_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_303_child-attempt1.png",
+    "sha256": "babf53d4e4be78968dd674d40ba48e97f7957eeacb6245561ba665d274d18485"
+  },
+  {
+    "id": "L7_201_child-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_201_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_201_child-attempt1.png",
+    "sha256": "5351cb7688dd3127fe2da2ecdf8d46fb356a5f78c21026512e10a70a87fff777"
+  },
+  {
+    "id": "L7_202_child-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_202_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_202_child-attempt1.png",
+    "sha256": "88daccd61a8e11b01589de66811651ffb742e11b2e7149eae5af96525f7e04f4"
+  },
+  {
+    "id": "L7_203_child-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_203_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_203_child-attempt1.png",
+    "sha256": "3766a2b4a4e1494eef877143a4cacfd3aae7cac5029b1023820010358a4e0a62"
+  },
+  {
+    "id": "L7_204_child-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_204_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_204_child-attempt1.png",
+    "sha256": "e7213591057ded880b7c3c3811bf7f4ae544654ce736ece7f135ed405ae9c779"
+  },
+  {
+    "id": "L7_301_child-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_301_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_301_child-attempt1.png",
+    "sha256": "3f3d6ac8ab99da6a026355033b718d6224d7feadffa94acaaa77c9032cbd556b"
+  },
+  {
+    "id": "L7_302_child-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_302_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_302_child-attempt1.png",
+    "sha256": "b77a6e5f45c3203efecb18593064c21df9012a006c056456837a0b263b8ec30c"
+  },
+  {
+    "id": "L7_303_child-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_303_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_303_child-attempt1.png",
+    "sha256": "babf53d4e4be78968dd674d40ba48e97f7957eeacb6245561ba665d274d18485"
+  },
+  {
+    "id": "L7_304_child-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_304_child.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_304_child-attempt1.png",
+    "sha256": "291a12d7fad4bbb1e2f995d9c2828f0c2dbe46f1a1f194cb18bf2b8548d7f61a"
+  },
+  {
+    "id": "L7_201_mature-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_201_mature.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_201_mature-attempt1.png",
+    "sha256": "39faf1017ea56eb3b522cf2e1fe3db0083778ff07a1b466f2c8610d0ccacc6a7"
+  },
+  {
+    "id": "L7_202_mature-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_202_mature.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_202_mature-attempt1.png",
+    "sha256": "a9fda5902589609027ee06a703316f74dd752cb39b2484f44ed3658e514a126a"
+  },
+  {
+    "id": "L7_203_mature-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_203_mature.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_203_mature-attempt1.png",
+    "sha256": "6332e849db9e74ef1da7d9c098b684a5da7a7afc0deda73be380c48a3f420475"
+  },
+  {
+    "id": "L7_205_mature-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_205_mature.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_205_mature-attempt1.png",
+    "sha256": "e1b733110ec6ffd9bfe20cba3336c182abf9d472b6f1142a24a72289b163e8e3"
+  },
+  {
+    "id": "L7_206_mature-v2",
+    "original": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_206_mature.png",
+    "frozen": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/records/L7_206_mature-attempt1.png",
+    "sha256": "5bab7be1c9882d16fd74a0b9483938def3d57b86cba6b652f29b5695728ea823"
+  }
+]

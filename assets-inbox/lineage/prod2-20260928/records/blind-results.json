@@ -1,0 +1,389 @@
+{
+  "family": {
+    "correct": 26,
+    "total": 30,
+    "accuracy": 0.8666666666666667,
+    "required": 0.8,
+    "pass": true,
+    "bestGroupMapping": [
+      "L6",
+      "L7",
+      "L8"
+    ]
+  },
+  "identity": {
+    "correct": 18,
+    "total": 18,
+    "required": 18,
+    "pass": true,
+    "pairs": [
+      {
+        "number": 1,
+        "left": "L6_301_young",
+        "right": "L6_302_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 2,
+        "left": "L7_301_young",
+        "right": "L7_302_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 3,
+        "left": "L8_201_child",
+        "right": "L8_201_young",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 4,
+        "left": "L6_202_child",
+        "right": "L6_201_child",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 5,
+        "left": "L8_302_young",
+        "right": "L8_301_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 6,
+        "left": "L7_201_child",
+        "right": "L7_202_child",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 7,
+        "left": "L8_203_young",
+        "right": "L8_203_mature",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 8,
+        "left": "L8_201_child",
+        "right": "L8_202_child",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 9,
+        "left": "L6_201_child",
+        "right": "L6_201_young",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 10,
+        "left": "L7_201_young",
+        "right": "L7_201_child",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 11,
+        "left": "L7_101_young",
+        "right": "L7_101_mature",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 12,
+        "left": "L7_203_young",
+        "right": "L7_203_mature",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 13,
+        "left": "L8_203_young",
+        "right": "L8_204_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 14,
+        "left": "L8_101_mature",
+        "right": "L8_101_young",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 15,
+        "left": "L6_203_young",
+        "right": "L6_203_mature",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 16,
+        "left": "L6_101_mature",
+        "right": "L6_101_young",
+        "expected": "same",
+        "actual": "same",
+        "correct": true
+      },
+      {
+        "number": 17,
+        "left": "L7_203_young",
+        "right": "L7_204_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      },
+      {
+        "number": 18,
+        "left": "L6_204_young",
+        "right": "L6_203_young",
+        "expected": "different",
+        "actual": "different",
+        "correct": true
+      }
+    ],
+    "actual96px": {
+      "correct": 16,
+      "total": 18
+    }
+  },
+  "limitations": "Independent AI visual judgment, not human recognition study. Clothing, hair and sex cues are visible. 96px and256px viewing specified in raw judge records.",
+  "costume": {
+    "correct": 18,
+    "total": 30,
+    "items": [
+      {
+        "number": 1,
+        "id": "L5_102_young",
+        "expected": "reeve",
+        "actual": "reeve",
+        "correct": true
+      },
+      {
+        "number": 2,
+        "id": "L5_203_young",
+        "expected": "reeve",
+        "actual": "reeve",
+        "correct": true
+      },
+      {
+        "number": 3,
+        "id": "L5_201_young",
+        "expected": "reeve",
+        "actual": "reeve",
+        "correct": true
+      },
+      {
+        "number": 4,
+        "id": "L4_204_young",
+        "expected": "merchant",
+        "actual": "reeve",
+        "correct": false
+      },
+      {
+        "number": 5,
+        "id": "L7_201_young",
+        "expected": "gentry",
+        "actual": "gentry",
+        "correct": true
+      },
+      {
+        "number": 6,
+        "id": "L6_102_young",
+        "expected": "earl",
+        "actual": "gentry",
+        "correct": false
+      },
+      {
+        "number": 7,
+        "id": "L3_201_young",
+        "expected": "gentry",
+        "actual": "merchant",
+        "correct": false
+      },
+      {
+        "number": 8,
+        "id": "L5_204_young",
+        "expected": "reeve",
+        "actual": "reeve",
+        "correct": true
+      },
+      {
+        "number": 9,
+        "id": "L6_201_young",
+        "expected": "earl",
+        "actual": "earl",
+        "correct": true
+      },
+      {
+        "number": 10,
+        "id": "L8_204_young",
+        "expected": "upper_artisan",
+        "actual": "upper_artisan",
+        "correct": true
+      },
+      {
+        "number": 11,
+        "id": "L3_102_young",
+        "expected": "gentry",
+        "actual": "merchant",
+        "correct": false
+      },
+      {
+        "number": 12,
+        "id": "L4_101_young",
+        "expected": "merchant",
+        "actual": "gentry",
+        "correct": false
+      },
+      {
+        "number": 13,
+        "id": "L4_102_young",
+        "expected": "merchant",
+        "actual": "gentry",
+        "correct": false
+      },
+      {
+        "number": 14,
+        "id": "L7_101_young",
+        "expected": "gentry",
+        "actual": "gentry",
+        "correct": true
+      },
+      {
+        "number": 15,
+        "id": "L3_101_young",
+        "expected": "gentry",
+        "actual": "merchant",
+        "correct": false
+      },
+      {
+        "number": 16,
+        "id": "L7_102_young",
+        "expected": "gentry",
+        "actual": "gentry",
+        "correct": true
+      },
+      {
+        "number": 17,
+        "id": "L4_203_young",
+        "expected": "merchant",
+        "actual": "gentry",
+        "correct": false
+      },
+      {
+        "number": 18,
+        "id": "L5_101_young",
+        "expected": "reeve",
+        "actual": "reeve",
+        "correct": true
+      },
+      {
+        "number": 19,
+        "id": "L8_201_young",
+        "expected": "upper_artisan",
+        "actual": "upper_artisan",
+        "correct": true
+      },
+      {
+        "number": 20,
+        "id": "L8_101_young",
+        "expected": "upper_artisan",
+        "actual": "upper_artisan",
+        "correct": true
+      },
+      {
+        "number": 21,
+        "id": "L4_201_young",
+        "expected": "merchant",
+        "actual": "gentry",
+        "correct": false
+      },
+      {
+        "number": 22,
+        "id": "L3_204_young",
+        "expected": "gentry",
+        "actual": "merchant",
+        "correct": false
+      },
+      {
+        "number": 23,
+        "id": "L7_203_young",
+        "expected": "gentry",
+        "actual": "merchant",
+        "correct": false
+      },
+      {
+        "number": 24,
+        "id": "L8_102_young",
+        "expected": "upper_artisan",
+        "actual": "upper_artisan",
+        "correct": true
+      },
+      {
+        "number": 25,
+        "id": "L3_203_young",
+        "expected": "gentry",
+        "actual": "merchant",
+        "correct": false
+      },
+      {
+        "number": 26,
+        "id": "L6_204_young",
+        "expected": "earl",
+        "actual": "earl",
+        "correct": true
+      },
+      {
+        "number": 27,
+        "id": "L6_101_young",
+        "expected": "earl",
+        "actual": "earl",
+        "correct": true
+      },
+      {
+        "number": 28,
+        "id": "L8_203_young",
+        "expected": "upper_artisan",
+        "actual": "upper_artisan",
+        "correct": true
+      },
+      {
+        "number": 29,
+        "id": "L6_203_young",
+        "expected": "earl",
+        "actual": "earl",
+        "correct": true
+      },
+      {
+        "number": 30,
+        "id": "L7_204_young",
+        "expected": "gentry",
+        "actual": "gentry",
+        "correct": true
+      }
+    ],
+    "limitations": "Lower torso crop only; headwear deliberately excluded. Five classes, six families. AI judgment rather than human study."
+  },
+  "pass": true
+}

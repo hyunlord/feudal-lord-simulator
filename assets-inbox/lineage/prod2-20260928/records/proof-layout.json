@@ -1,0 +1,46 @@
+{
+  "status": "Ready for external blind judgment; no self score",
+  "assetCount": 114,
+  "priorCostumeReferences": 15,
+  "familyBlind": 30,
+  "identityPairs": 18,
+  "differentPairs": 9,
+  "samePairs": 9,
+  "youngMatureSamePairs": 6,
+  "childYoungSamePairs": 3,
+  "costumeBlind": 30,
+  "costumeFamilies": 6,
+  "costumeClasses": 5,
+  "proofs": [
+    {
+      "file": "proofs/01-family-trees.png",
+      "width": 2568,
+      "height": 2550,
+      "sha256": "73c47b11482659f963a2db361aa6cdbb1c60160e632373effd17dca85e353f0f"
+    },
+    {
+      "file": "proofs/02-family-blind.png",
+      "width": 1728,
+      "height": 1516,
+      "sha256": "40564a7166c00a22f64ba69c369b8a291bcbf3ef3aa3e1c9d061c87cb5e167c1"
+    },
+    {
+      "file": "proofs/03-same-person-blind.png",
+      "width": 1696,
+      "height": 1860,
+      "sha256": "b228e47a8c094fbfff1481849b586090f1128a86f97404c6c4f3c54992b06f26"
+    },
+    {
+      "file": "proofs/04-clothes-only-blind.png",
+      "width": 1728,
+      "height": 596,
+      "sha256": "94c69025a1144c40c23cb8420462b71d5d11798a3b57bb3cd14a540198559758"
+    }
+  ],
+  "supplementalAnonymous96": [
+    "records/proof-family-blind-96.png",
+    "records/proof-identity-blind-96.png"
+  ],
+  "supplementalNamedRows": "records/proof-six-family-rows.png",
+  "processing": "Final portraits unchanged. Family tree uses exact 96 px portraits; family and identity blind portraits remain 256 px. Clothes board uses fixed 128x66 lower torso crop at x=24,y=190; source images are not changed."
+}

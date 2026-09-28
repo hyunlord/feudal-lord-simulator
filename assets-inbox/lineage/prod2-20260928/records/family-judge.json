@@ -1,0 +1,9 @@
+{
+  "groups": {
+    "A": [1, 11, 12, 16, 18, 19, 20, 21, 23, 30],
+    "B": [2, 5, 6, 9, 13, 14, 22, 26, 28, 29],
+    "C": [3, 4, 7, 8, 10, 15, 17, 24, 25, 27]
+  },
+  "confidence": "Moderate overall; high for several close pairs (1/19, 11/12, 7/27, 8/10, 23/30), lower for allocating all thirty into exactly three equal groups. A tends toward longer narrow faces and pronounced straight noses; B contains squarer jawlines and several fair or reddish-haired faces; C has comparatively broad cheeks and softer jaw contours.",
+  "limitations": "Viewed only the supplied numbered family.png. Fictional visual likeness grouping is subjective and does not establish biological kinship. Clothing is a substantial confound: apron portraits concentrate in C and fur-trimmed clothing helps distinguish the other apparent sets, so this result cannot demonstrate family recognition independently of costume. Forced ten-per-group constraint affects uncertain placements, especially 5, 9, 14, 22, 28 and 29. Shared painting style, pose, hair and near-duplicate face patterns can also inflate apparent relatedness. No keys, source portraits, expected labels or metadata were read."
+}
