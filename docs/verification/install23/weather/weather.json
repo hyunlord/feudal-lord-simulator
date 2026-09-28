@@ -11,11 +11,11 @@
    1280,
    800
   ],
-  "proofQuery": "&weather=<kind>&weather-tick=200"
+  "proofQuery": "&weather=<kind>&weather-tick=<tick>"
  },
  "cap": 0.38,
  "cost": {
-  "fogAnchorsMs": 0.56,
+  "fogAnchorsMs": 0.68,
   "fogAnchors": 4,
   "fillCost": {
    "tintPatternMultiplyMs": 3.8,
@@ -101,21 +101,107 @@
    "shots": {
     "z1.0": {
      "file": "weather-wet-z1.0.jpg",
-     "bytes": 110583,
+     "bytes": 140873,
+     "crop": "weather-wet-crop.jpg",
+     "cropBytes": 19098,
      "cost": {
-      "firstMs": 6,
-      "medianMs": 4.6,
-      "p95Ms": 4.8,
+      "firstMs": 5.5,
+      "medianMs": 4.5,
+      "p95Ms": 4.7,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 1323
      }
     },
     "z0.6": {
      "file": "weather-wet-z0.6.jpg",
-     "bytes": 80167,
+     "bytes": 100295,
+     "cost": {
+      "firstMs": 14.1,
+      "medianMs": 6.8,
+      "p95Ms": 8.4,
+      "fullViewFillMedianMs": 0.2,
+      "visibleTiles": 2914
+     }
+    }
+   }
+  },
+  "wet-storm": {
+   "seasonTick": 575,
+   "layers": [
+    {
+     "element": "overcast",
+     "art": [
+      "overcast_tint"
+     ],
+     "blend": "multiply",
+     "alpha": 0.08,
+     "moving": false,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "fill"
+    },
+    {
+     "element": "storm",
+     "art": [
+      "storm_rain_sheet"
+     ],
+     "blend": "source-over",
+     "alpha": 0.26,
+     "moving": true,
+     "space": "view",
+     "pass": "sky",
+     "zone": "all",
+     "placement": "fill"
+    },
+    {
+     "element": "wet_sheen",
+     "art": [
+      "wet_ground_sheen"
+     ],
+     "blend": "screen",
+     "alpha": 0.01,
+     "moving": false,
+     "space": "world",
+     "pass": "ground",
+     "zone": "land",
+     "placement": "lattice"
+    },
+    {
+     "element": "puddle_ripples",
+     "art": [
+      "puddle_ripple_sheet"
+     ],
+     "blend": "screen",
+     "alpha": 0.03,
+     "moving": true,
+     "space": "world",
+     "pass": "ground",
+     "zone": "land",
+     "placement": "lattice"
+    }
+   ],
+   "stackedAlpha": 0.38,
+   "shots": {
+    "z1.0": {
+     "file": "weather-wet-storm-z1.0.jpg",
+     "bytes": 140209,
+     "crop": "weather-wet-storm-crop.jpg",
+     "cropBytes": 19049,
+     "cost": {
+      "firstMs": 5.2,
+      "medianMs": 4.1,
+      "p95Ms": 4.2,
+      "fullViewFillMedianMs": 0.1,
+      "visibleTiles": 1323
+     }
+    },
+    "z0.6": {
+     "file": "weather-wet-storm-z0.6.jpg",
+     "bytes": 102894,
      "cost": {
       "firstMs": 6.3,
-      "medianMs": 4.9,
+      "medianMs": 4.7,
       "p95Ms": 5,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 2914
@@ -158,9 +244,11 @@
    "shots": {
     "z1.0": {
      "file": "weather-dry-z1.0.jpg",
-     "bytes": 112413,
+     "bytes": 143447,
+     "crop": "weather-dry-crop.jpg",
+     "cropBytes": 19641,
      "cost": {
-      "firstMs": 2.6,
+      "firstMs": 2.3,
       "medianMs": 1.7,
       "p95Ms": 1.8,
       "fullViewFillMedianMs": 0.1,
@@ -169,11 +257,11 @@
     },
     "z0.6": {
      "file": "weather-dry-z0.6.jpg",
-     "bytes": 82236,
+     "bytes": 104846,
      "cost": {
-      "firstMs": 3.3,
+      "firstMs": 3,
       "medianMs": 2.2,
-      "p95Ms": 2.3,
+      "p95Ms": 2.4,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 2914
      }
@@ -228,9 +316,11 @@
    "shots": {
     "z1.0": {
      "file": "weather-cold-z1.0.jpg",
-     "bytes": 105050,
+     "bytes": 134187,
+     "crop": "weather-cold-crop.jpg",
+     "cropBytes": 17950,
      "cost": {
-      "firstMs": 3.9,
+      "firstMs": 3.6,
       "medianMs": 3.1,
       "p95Ms": 3.2,
       "fullViewFillMedianMs": 0.1,
@@ -239,11 +329,11 @@
     },
     "z0.6": {
      "file": "weather-cold-z0.6.jpg",
-     "bytes": 76505,
+     "bytes": 97581,
      "cost": {
-      "firstMs": 3.9,
+      "firstMs": 3.7,
       "medianMs": 3.1,
-      "p95Ms": 3.3,
+      "p95Ms": 3.2,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 2914
      }
@@ -284,20 +374,22 @@
    "shots": {
     "z1.0": {
      "file": "weather-normal-z1.0.jpg",
-     "bytes": 111818,
+     "bytes": 142671,
+     "crop": "weather-normal-crop.jpg",
+     "cropBytes": 19439,
      "cost": {
-      "firstMs": 5.1,
-      "medianMs": 3.7,
-      "p95Ms": 3.8,
+      "firstMs": 4.2,
+      "medianMs": 3.6,
+      "p95Ms": 3.7,
       "fullViewFillMedianMs": 0.1,
       "visibleTiles": 1323
      }
     },
     "z0.6": {
      "file": "weather-normal-z0.6.jpg",
-     "bytes": 81314,
+     "bytes": 103843,
      "cost": {
-      "firstMs": 3.2,
+      "firstMs": 3.1,
       "medianMs": 2.5,
       "p95Ms": 2.7,
       "fullViewFillMedianMs": 0.1,
@@ -305,40 +397,6 @@
      }
     }
    }
-  },
-  "wet-storm": {
-   "seasonTick": 575,
-   "layers": [
-    {
-     "element": "overcast",
-     "blend": "multiply",
-     "alpha": 0.08,
-     "moving": false,
-     "zone": "all"
-    },
-    {
-     "element": "storm",
-     "blend": "source-over",
-     "alpha": 0.26,
-     "moving": true,
-     "zone": "all"
-    },
-    {
-     "element": "wet_sheen",
-     "blend": "screen",
-     "alpha": 0.01,
-     "moving": false,
-     "zone": "land"
-    },
-    {
-     "element": "puddle_ripples",
-     "blend": "screen",
-     "alpha": 0.03,
-     "moving": true,
-     "zone": "land"
-    }
-   ],
-   "stackedAlpha": 0.38
   }
  },
  "settingSwitch": {
@@ -354,9 +412,9 @@
   "meanAbsDiff": {
    "wetOnVsNone": 2.84,
    "wetOffVsNone": 0,
-   "wetOnVsOff": 2.84
+   "wetOnVsOff": 2.85
   }
  },
- "jpegBytes": 760086,
+ "jpegBytes": 1306023,
  "errors": []
 }

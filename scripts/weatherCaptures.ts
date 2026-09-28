@@ -1,6 +1,7 @@
 // INSTALL-23 weather captures: one scene (a seed 2 chapter-2 state, the lake shore and the town) in each of the four
-// weathers at zoom 1.0 and 0.6 — 8 JPEGs, 1280 x 800, with the DOM HUD on top (the weather is on the world canvas
-// only). The weather shown is the proof hook's (`&weather=<kind>&weather-tick=<t>`, src/render/weatherProof.ts), so
+// weathers at zoom 1.0 and 0.6, and the wet season's height (the storm sheet) besides its morning — 10 JPEGs, 1280 x
+// 800, with the DOM HUD on top (the weather is on the world canvas only), and at zoom 1.0 a 480 x 300 crop of the
+// shore at quality 70 each (the rain and dust are faint streaks under the cap that a low JPEG quality smooths away). The weather shown is the proof hook's (`&weather=<kind>&weather-tick=<t>`, src/render/weatherProof.ts), so
 // all four are the same scene; the game state is not changed. Beside them weather.json: per weather the layers
 // (element, blend, alpha, moving), the alpha stacked on one pixel, and the draw cost in the page (headless Chromium,
 // software raster: `--disable-gpu`; a Mac, not the DGX).
@@ -23,9 +24,13 @@ const url = flag("url")!; const statePath = flag("state")!;
 const tile = (flag("tile") ?? "44,38").split(",").map(Number) as [number, number];
 mkdirSync(out!, { recursive: true });
 const state = JSON.parse(readFileSync(statePath, "utf8")) as GameState;
-const WEATHERS: readonly WeatherKind[] = ["wet", "dry", "cold", "normal"];
+/** The moment of the season shown: past the fade-in, a wet season's morning (drizzle, fog along the water, puddles);
+ * `wet-storm` is the height of a wet season (WET_STORM_FROM-TO: the storm sheet instead of the drizzle). */
+const WEATHERS: readonly { readonly name: string; readonly weather: WeatherKind; readonly tick: number }[] = [
+  { name: "wet", weather: "wet", tick: 200 }, { name: "wet-storm", weather: "wet", tick: 575 },
+  { name: "dry", weather: "dry", tick: 200 }, { name: "cold", weather: "cold", tick: 200 }, { name: "normal", weather: "normal", tick: 200 }];
+const CROP = { x: 20, y: 300, width: 480, height: 300 } as const;
 const ZOOMS = [1, 0.6] as const;
-/** The moment of the season shown: past the fade-in, a wet season's morning (drizzle, fog along the water, puddles). */
 const SEASON_TICK = 200;
 // tsx names the functions it compiles with an `__name` helper; the page evaluation below runs that code, so the page gets the helper.
 const TUTORIAL_OFF = `window.__name = (target) => target; try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
@@ -41,16 +46,18 @@ const started = performance.now();
 const anchors = fogAnchors(state.seed, state.tiles, state.width, state.height);
 const fogAnchorsMs = performance.now() - started;
 
-for (const weather of WEATHERS) {
-  const layers = weatherLayers({ weather, seasonTick: SEASON_TICK, enabled: true, rain: true });
+for (const { name, weather, tick } of WEATHERS) {
+  const layers = weatherLayers({ weather, seasonTick: tick, enabled: true, rain: true });
   const shots: Record<string, unknown> = {};
   for (const zoom of ZOOMS) {
     const { context, page } = await openScene(browser, { state, tile, baseUrl: url, width: 1280, height: 800, zoom, run: false,
-      initScript: TUTORIAL_OFF, query: `&story-delay=600000&weather=${weather}&weather-tick=${SEASON_TICK}` });
-    (page as Page).on("pageerror", error => errors.push(`${weather} ${zoom}: ${String(error).slice(0, 200)}`));
+      initScript: TUTORIAL_OFF, query: `&story-delay=600000&weather=${weather}&weather-tick=${tick}` });
+    (page as Page).on("pageerror", error => errors.push(`${name} ${zoom}: ${String(error).slice(0, 200)}`));
     await (page as Page).waitForTimeout(2_500);
-    const file = `weather-${weather}-z${zoom.toFixed(1)}.jpg`;
-    await (page as Page).screenshot({ path: join(out!, file), type: "jpeg", quality: 36 });
+    const file = `weather-${name}-z${zoom.toFixed(1)}.jpg`;
+    await (page as Page).screenshot({ path: join(out!, file), type: "jpeg", quality: 42 });
+    const crop = zoom === 1 ? `weather-${name}-crop.jpg` : null;
+    if (crop !== null) await (page as Page).screenshot({ path: join(out!, crop), type: "jpeg", quality: 70, clip: CROP });
     // The draw cost of the two weather passes on an offscreen 1280 x 800 canvas at this camera (the page's own weather
     // modules and caches): the first call (images decoded, rain cells and patterns built) and the median of 60 more.
     const cost = await (page as Page).evaluate(async ({ map, zoom: z, tile: t }) => {
@@ -74,11 +81,11 @@ for (const weather of WEATHERS) {
       return { firstMs: Math.round(firstMs * 100) / 100, medianMs: Math.round(times[30]! * 100) / 100, p95Ms: Math.round(times[57]! * 100) / 100,
         fullViewFillMedianMs: Math.round(fills[15]! * 100) / 100, visibleTiles: visible.length };
     }, { map: mapState, zoom, tile });
-    shots[`z${zoom.toFixed(1)}`] = { file, bytes: statSync(join(out!, file)).size, cost };
+    shots[`z${zoom.toFixed(1)}`] = { file, bytes: statSync(join(out!, file)).size, ...(crop !== null ? { crop, cropBytes: statSync(join(out!, crop)).size } : {}), cost };
     await context.close();
   }
-  result[weather] = {
-    seasonTick: SEASON_TICK,
+  result[name] = {
+    seasonTick: tick,
     layers: layers.map(layer => ({ element: layer.id, art: layer.assets, blend: layer.blend, alpha: layer.alphaPermille / 1000, moving: layer.moving,
       space: layer.space, pass: layer.pass, zone: layer.zone, placement: layer.placement })),
     stackedAlpha: stackedPermille(layers) / 1000,
@@ -137,13 +144,10 @@ const fillCost = await (async () => {
   await context.close();
   return measured;
 })();
-// The wet season's height (the storm sheet) for the record: its layers only (no capture).
-const storm = weatherLayers({ weather: "wet", seasonTick: 575, enabled: true, rain: true });
-result["wet-storm"] = { seasonTick: 575, layers: storm.map(layer => ({ element: layer.id, blend: layer.blend, alpha: layer.alphaPermille / 1000, moving: layer.moving, zone: layer.zone })),
-  stackedAlpha: stackedPermille(storm) / 1000 };
 await browser.close();
-const total = WEATHERS.flatMap(weather => ZOOMS.map(zoom => statSync(join(out!, `weather-${weather}-z${zoom.toFixed(1)}.jpg`)).size)).reduce((a, b) => a + b, 0);
-const body = { scene: { state: statePath.split("/").pop(), tick: state.tick, seed: state.seed, tile, viewport: [1280, 800], proofQuery: `&weather=<kind>&weather-tick=${SEASON_TICK}` },
+const total = WEATHERS.flatMap(({ name }) => [...ZOOMS.map(zoom => `weather-${name}-z${zoom.toFixed(1)}.jpg`), `weather-${name}-crop.jpg`])
+  .map(file => statSync(join(out!, file)).size).reduce((a, b) => a + b, 0);
+const body = { scene: { state: statePath.split("/").pop(), tick: state.tick, seed: state.seed, tile, viewport: [1280, 800], proofQuery: "&weather=<kind>&weather-tick=<tick>" },
   cap: 0.38, cost: { fogAnchorsMs: Math.round(fogAnchorsMs * 100) / 100, fogAnchors: anchors.length, fillCost, browser: "headless Chrome --disable-gpu (software raster), macOS" },
   weathers: result, settingSwitch: switchCheck, jpegBytes: total, errors };
 writeFileSync(join(out!, "weather.json"), JSON.stringify(body, null, 1) + "\n");
