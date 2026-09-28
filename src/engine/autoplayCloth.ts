@@ -4,14 +4,14 @@
  * house, the fulling mill and the dyehouse (both by the water) and the tenter yard, one at a time. The spinning and the
  * market's sale are the rules' own. Chapters 1–3 are left as they were (decision CL7).
  *
- * F4-A (RG-11): in chapter 4, once the first cloth is sold, a second weaver's house (the textile street); once the lord
- * turns to cloth, pasture to 120 cells, a second pastoral farm where 30 cells or more lie beyond the first's reach, and a
- * second tenter yard.
+ * F4-A (RG-11, decision RG12): in chapter 4, once the first cloth is sold, the cloth town at once — a second weaver's
+ * house (the textile street), pasture to 120 cells, a second pastoral farm where 30 cells or more lie beyond the first's
+ * reach, and a second tenter yard. Not after the cloth-or-grain answer (1370): building then kept guardrail run 1's
+ * seed 4 from its stable years until its granaries ran short (their room full of malt, C4).
  */
 import { CHAPTER_THREE } from '../content/chapterConfig';
 import { CLOTH_BALANCE } from '../content/clothConfig';
 import { PLAGUE_BALANCE } from '../content/plagueConfig';
-import { CLOTH_OR_GRAIN_PETITION_ID } from '../content/reorganisationConfig';
 import type { BuildingKind } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
 import type { TileCoordinate } from '../geometry/tileGeometry';
@@ -24,7 +24,7 @@ import { calendar, scenarioOf } from './scenarioState';
 const NONE: AutoplayAction = { kind: 'none' };
 /** CL-11: the pasture the bot paints (cells), each stroke a square this wide, and the least open cells a stroke takes. */
 export const BOT_PASTURE_CELLS = 60;
-/** RG-11: the pasture of a town turned to cloth. */
+/** RG-11: the pasture of chapter 4's cloth town. */
 export const BOT_SPECIALISED_PASTURE_CELLS = 120;
 /** RG-11: the untended pasture (cells) that asks for a second pastoral farm. */
 const BOT_UNTENDED_CELLS = 30;
@@ -97,7 +97,6 @@ export function clothChainAction(state: GameState, buildAction: ClothBuildAction
   const reorganisation = state.reorganisation;
   if (reorganisation === undefined || reorganisation.clothSold <= 0) return NONE;
   if (countBuiltOrPlanned(state, 'weaver_house') < 2) return buildAction(state, 'weaver_house');
-  if (reorganisation.answers[CLOTH_OR_GRAIN_PETITION_ID] !== 'accept') return NONE;
   if (pasture.length < BOT_SPECIALISED_PASTURE_CELLS) return pastureStroke(state);
   const farms = state.buildings.filter(building => building.kind === 'pastoral_farm');
   const untended = pasture.filter(index => !farms.some(farm => reach(farm, index)));
