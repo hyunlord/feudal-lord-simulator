@@ -1,0 +1,245 @@
+{
+  "url": "http://127.0.0.1:4456/",
+  "states": "scripts/install3UiStates.ts, scripts/install3BotState.ts (replayed states)",
+  "moments": {
+    "barn-wheat": {
+      "tick": 90976,
+      "year": 1322,
+      "season": 2,
+      "barn": "farmstead-39-36-0",
+      "barnTile": [
+        39,
+        36
+      ],
+      "kilnSpot": [
+        38,
+        33
+      ],
+      "unservedHouse": "house-44-42-0"
+    },
+    "barn-barley": {
+      "tick": 90976,
+      "year": 1322,
+      "season": 2,
+      "barn": "farmstead-39-36-0",
+      "barnTile": [
+        39,
+        36
+      ]
+    },
+    "barley-held": {
+      "tick": 93505,
+      "year": 1323,
+      "season": 1,
+      "barn": "farmstead-39-36-0",
+      "barnTile": [
+        39,
+        36
+      ],
+      "barley": 59
+    },
+    "malt-held": {
+      "tick": 93574,
+      "year": 1323,
+      "season": 1,
+      "kiln": "construction-site-000051",
+      "kilnTile": [
+        38,
+        33
+      ],
+      "malt": 1,
+      "barley": 10
+    },
+    "season-before": {
+      "tick": 93940,
+      "year": 1323,
+      "season": 1,
+      "closesAt": 94000
+    },
+    "sold": {
+      "tick": 94000,
+      "year": 1323,
+      "season": 2,
+      "served": 24
+    },
+    "served": {
+      "tick": 94000,
+      "year": 1323,
+      "season": 2,
+      "house": "construction-site-000030",
+      "houseTile": [
+        44,
+        33
+      ],
+      "unservedHouse": null
+    }
+  },
+  "barn": {
+    "state": "barn-wheat",
+    "tick": 90976,
+    "barn": "farmstead-39-36-0",
+    "before": [
+      "이 헛간이 뿌리는 작물: 밀",
+      "바꾸면 다음 파종부터 뿌립니다. 이미 뿌린 이랑은 거둘 때까지 그대로입니다",
+      "다음 파종: 겨울 중순쯤부터 여름 중순까지"
+    ],
+    "after": [
+      "이 헛간이 뿌리는 작물: 보리",
+      "바꾸면 다음 파종부터 뿌립니다. 이미 뿌린 이랑은 거둘 때까지 그대로입니다",
+      "다음 파종: 겨울 중순쯤부터 여름 중순까지",
+      "아직 밀 이랑 7개 · 거둔 뒤 다음 파종부터 보리",
+      "헛간에 남은 밀 3 · 먼저 실어 냅니다"
+    ],
+    "trigger": "헛간 작물: 보리",
+    "crop": "barley"
+  },
+  "malt": {
+    "state": "malt-held",
+    "tick": 93574,
+    "ledgerRows": [
+      {
+        "resource": "wheat",
+        "icon": null,
+        "text": "밀808—68일———91—136—25332—324—"
+      },
+      {
+        "resource": "bread",
+        "icon": "resource.bread",
+        "text": "빵105—68일93——————73—————"
+      },
+      {
+        "resource": "logs",
+        "icon": null,
+        "text": "통나무7———————1————————"
+      },
+      {
+        "resource": "timber",
+        "icon": "resource.timber",
+        "text": "목재112———1013———————————"
+      },
+      {
+        "resource": "barley",
+        "icon": "chain.barley",
+        "text": "보리503—————————————493—10"
+      },
+      {
+        "resource": "malt",
+        "icon": "chain.malt",
+        "text": "엿기름2———————————————1"
+      }
+    ],
+    "kilnStock": [
+      "보리 10",
+      "엿기름 1"
+    ],
+    "kilnIcons": [
+      "chain.barley",
+      "chain.malt"
+    ]
+  },
+  "granaryWithChain": null,
+  "barley": {
+    "state": "barley-held",
+    "tick": 93505,
+    "stock": [
+      "보리 59"
+    ],
+    "icons": [
+      "chain.barley"
+    ]
+  },
+  "chip": {
+    "state": "barn-wheat",
+    "tick": 90976,
+    "tile": [
+      38,
+      33
+    ],
+    "menu": {
+      "text": "엿기름 가마. 비용 목재 40. 목적 보리를 싹 틔워 말려 엿기름을 만듭니다. 집집의 아낙이 에일로 빚습니다. 조건 길 인접 필요, 시장도시 이후. 건설 가능 · 보유 목재 196엿기름 가마보리를 엿기름으로목재 40",
+      "art": "glyph"
+    },
+    "lines": [
+      "엿기름 가마 · 목재 40",
+      "목재 40 / 보유 196 · 배치 후 156",
+      "재료보리 · 만듦엿기름",
+      "장부 기간마다 일꾼 2"
+    ],
+    "icons": [
+      "chain.barley",
+      "chain.malt"
+    ]
+  },
+  "unserved": {
+    "state": "barn-wheat",
+    "tick": 90976,
+    "house": "house-44-42-0",
+    "summary": [
+      "다음: L3 / 첫 방해: 없음 · 승급 대기L3까지 조건 유지 8:25 남음에일이 없어 L3 승급이 늦어집니다 · 조건 유지 10:30 (에일이 있으면 7:00)"
+    ],
+    "ale": [
+      "에일이 없어 L3 승급이 늦어집니다 · 조건 유지 10:30 (에일이 있으면 7:00)"
+    ],
+    "condition": [
+      "에일없음 · L3 승급 조건 유지 10:30 (에일이 있으면 7:00)"
+    ]
+  },
+  "served": {
+    "state": "served",
+    "tick": 94000,
+    "house": "construction-site-000030",
+    "summary": [
+      "다음: L3 / 첫 방해: 없음 · 승급 대기L3까지 조건 유지 4:20 남음에일을 마십니다 · 제때 승급"
+    ],
+    "ale": [
+      "에일을 마십니다 · 제때 승급"
+    ],
+    "condition": [
+      "에일마십니다 · 제때 승급"
+    ]
+  },
+  "seasonCause": {
+    "state": "barn-barley",
+    "tick": 90976,
+    "title": [
+      "1322년 가을 결산"
+    ],
+    "events": [
+      "에일이 없어 승급을 더 오래 기다리는 집 6채"
+    ],
+    "drink": [],
+    "icons": []
+  },
+  "seasonDrink": {
+    "state": "season-before",
+    "tick": 93940,
+    "title": [
+      "1323년 여름 결산"
+    ],
+    "events": [
+      "굶주려 1명이 줄었습니다"
+    ],
+    "drink": [
+      "지금 영지에보리 484엿기름 4에일 10"
+    ],
+    "icons": [
+      "chain.barley",
+      "chain.malt",
+      "chain.ale"
+    ]
+  },
+  "sizes": {
+    "u01-barn-crop-wheat.jpg": 14739,
+    "u02-barn-crop-barley.jpg": 16256,
+    "u04-ledger-drawer.jpg": 17430,
+    "u05-barn-stock.jpg": 13405,
+    "u06-kiln-stock.jpg": 14702,
+    "u08-kiln-chip.jpg": 4834,
+    "u09-house-unserved.jpg": 19444,
+    "u10-house-served.jpg": 16368,
+    "u11-season-cause.jpg": 18196,
+    "u12-season-drink.jpg": 18829
+  },
+  "totalBytes": 154203,
+  "errors": []
+}
