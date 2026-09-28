@@ -1,0 +1,12 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const base=path.resolve(__dirname,'..');
+const rows=JSON.parse(fs.readFileSync(base+'/records/assets.json'));
+const escape=text=>String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
+const proofs=['01-same-person-blind.png','02-age-chains.png','03-before-after.png'];
+fs.writeFileSync(base+'/index.html',`<!doctype html><html lang="ko"><meta charset="utf-8"><title>혈통 초상 파일럿 2</title><style>body{font:16px sans-serif;background:#e8e3d7;color:#302c26;padding:24px}section{display:flex;flex-wrap:wrap;gap:20px}figure{margin:0;width:256px}img{max-width:100%}a{color:#56402a}</style><h1>혈통 초상 파일럿 2</h1><p>후보 24장. 게임 미설치. 판정은 REPORT.md 참조.</p><p>${proofs.map(f=>`<a href="proofs/${f}">${f}</a>`).join(' · ')}</p><section>${rows.map(r=>`<figure><a href="${r.file}"><img src="${r.file}" width="256" height="256"></a><figcaption>${escape(r.id)} · ${r.age}세</figcaption></figure>`).join('')}</section></html>`);
+fs.appendFileSync(base+'/IMAGE_LINKS.md','\n## 확인 그림\n\n'+proofs.map(f=>`- [${f}](${base}/proofs/${f})`).join('\n')+'\n');
+const walk=directory=>fs.readdirSync(directory,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(directory,e.name)):[path.join(directory,e.name)]);
+const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+const files=walk(base).filter(f=>path.basename(f)!=='SHA256SUMS').sort();
+fs.writeFileSync(base+'/SHA256SUMS',files.map(f=>`${hash(fs.readFileSync(f))}  ${path.relative(base,f)}`).join('\n')+'\n');
+console.log(`Manifest ${files.length} files; gallery24; proofs3`);

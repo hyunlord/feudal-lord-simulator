@@ -1,0 +1,453 @@
+{
+  "status": "final-candidate-visual-review-with-limits",
+  "method": "Non-blind independent subjective visual inspection of all24 individual256px PNG, then original-resolution proofs/02-age-chains.png including24 actual96px tiles. No blind identity judging performed. Ages are uncertain apparent-age estimates, not measured ages.",
+  "initialChildReview": [
+    {
+      "file": "assets/brothers/L2_201_child.png",
+      "sha256": "58255dbfc5770490e3f104a642e833b2610d60b2fc7c1d97881d04d03432a463",
+      "requestedAge": 9,
+      "estimatedVisualAgeRange": "11–14",
+      "observation": "Developed lower face and broad shoulders",
+      "verdict": "revise",
+      "phase": "initial snapshot, not final"
+    },
+    {
+      "file": "assets/brothers/L2_202_child.png",
+      "sha256": "76c6530ad81211bebbd3bd8acf8f65319b3690c35858c392bada435a6a68cbee",
+      "requestedAge": 6,
+      "estimatedVisualAgeRange": "12–15",
+      "observation": "Long angular lower face and developed nose",
+      "verdict": "revise",
+      "phase": "initial snapshot, not final"
+    },
+    {
+      "file": "assets/gentry/L1_203_child.png",
+      "sha256": "b673172a660de7b0c7ff47ebe5909f9f550f00ec7b643f9f8fc4c18e303903b6",
+      "requestedAge": 9,
+      "estimatedVisualAgeRange": "12–15",
+      "observation": "Long neck and adult-length lower face",
+      "verdict": "revise",
+      "phase": "initial snapshot, not final"
+    },
+    {
+      "file": "assets/gentry/L1_204_child.png",
+      "sha256": "8fc96a8a89a4ddff2d3a77897212cd0d67dfd475d62c2ece454a02d65f1374df",
+      "requestedAge": 6,
+      "estimatedVisualAgeRange": "9–12",
+      "observation": "Defined nose/chin and relatively long neck",
+      "verdict": "revise",
+      "phase": "initial snapshot, not final"
+    },
+    {
+      "file": "assets/sisters/L2_203_child.png",
+      "sha256": "e8e92fd826b4a2f9d6a9c8940afd448ef904f3929dab9e86280fe44f253bac2f",
+      "requestedAge": 9,
+      "estimatedVisualAgeRange": "12–15",
+      "observation": "Long neck, adolescent face and torso proportions",
+      "verdict": "revise",
+      "phase": "initial snapshot, not final"
+    },
+    {
+      "file": "assets/sisters/L2_204_child.png",
+      "sha256": "c27731d136235cb56446e7b4096c09a2e448fc095a2d47a4f021c6e62702194c",
+      "requestedAge": 6,
+      "estimatedVisualAgeRange": "9–12",
+      "observation": "Developed face and shoulder proportions",
+      "verdict": "revise",
+      "phase": "initial snapshot, not final"
+    }
+  ],
+  "initialSnapshotCaveat": "Assets were actively being replaced. Initial L1_203 observation and SHA may span a write; initial snapshot is provisional only. Final frozen review supersedes it.",
+  "revisedChildReview": [
+    {
+      "file": "assets/gentry/L1_203_child.png",
+      "sha256": "b673172a660de7b0c7ff47ebe5909f9f550f00ec7b643f9f8fc4c18e303903b6",
+      "estimatedVisualAgeRange": "9–11",
+      "observation": "Shorter covered neck and child-sized shoulders; upper end of target9, no longer clearly adolescent.",
+      "verdict": "acceptable subject to final frozen review",
+      "size": 256
+    },
+    {
+      "file": "assets/gentry/L1_204_child.png",
+      "sha256": "ec71123129023d9e9b331f99a2648c89d404d2ece6f8548b611a3a5677ae9d29",
+      "estimatedVisualAgeRange": "6–8",
+      "observation": "Short rounded lower face and full cheeks; acceptable target6.",
+      "verdict": "acceptable subject to final frozen review",
+      "size": 256
+    },
+    {
+      "file": "assets/brothers/L2_201_child.png",
+      "sha256": "a21d2a62aad6f380e177b359e39b4ed86f5a661464b27fae73bb64435806fde5",
+      "estimatedVisualAgeRange": "9–11",
+      "observation": "Upper primary school, not clearly teen; lower face/nose remain developed.",
+      "verdict": "borderline; revise if strict6–9",
+      "size": 256
+    },
+    {
+      "file": "assets/brothers/L2_202_child.png",
+      "sha256": "52df15b227169f835a2558169a427a8730cc3709236083dabb9f454e80a240ce",
+      "estimatedVisualAgeRange": "8–10",
+      "observation": "Softer cheeks but long lower face and nose remain older than target6.",
+      "verdict": "revise for target6",
+      "size": 256
+    },
+    {
+      "file": "assets/sisters/L2_203_child.png",
+      "sha256": "3089c8e6cc476327109803cfcee9bf4ab2f8b39e0573b9e9d73d95222c2dec30",
+      "estimatedVisualAgeRange": "8–10",
+      "observation": "Child head/shoulder ratio and much shorter neck, no longer teen.",
+      "verdict": "pass target9",
+      "size": 256
+    },
+    {
+      "file": "assets/sisters/L2_204_child.png",
+      "sha256": "c23316ee10a1ad782968dad0ee644aa6ff122ab88139edf2960903682dadea68",
+      "estimatedVisualAgeRange": "6–8",
+      "observation": "Short small jaw, rounded cheeks and short neck.",
+      "verdict": "pass target6",
+      "size": 256
+    }
+  ],
+  "frozenBeforeReview": {
+    "assets/brothers/L2_201_baby.png": "117eb06809120c9fad5f23a706fa429ed25530c95361b4f04417fa274ab4fa62",
+    "assets/brothers/L2_201_child.png": "561fab508bfa3ecec14f8b3bc6e664545e3b5b44b0e97d926781bf5bd958aa37",
+    "assets/brothers/L2_201_mature.png": "55a6051331c729020a3bc9b8941b8073349ad802cbc3b8e23918effc14b96b3b",
+    "assets/brothers/L2_201_young.png": "b324ee60b576b4095d2effa9666971d244cba63ec25c55b6ec2c5f7bb16ba779",
+    "assets/brothers/L2_202_baby.png": "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301",
+    "assets/brothers/L2_202_child.png": "2588e3ddf9961cae8661c45020239c763bbb04dc61495e90fd6337864b8ee8fc",
+    "assets/brothers/L2_202_mature.png": "5c580463224d67b2addb7c46f40cba833c5249407cdf0b061d4b94a6d1f11a2c",
+    "assets/brothers/L2_202_young.png": "3013146edf2afff32a8b283db53e164e5f7afdc96e7b5610b4311ad2f6ee6c8a",
+    "assets/gentry/L1_203_baby.png": "2100561ad6964a812afa0936bdb031b0ff2963987d1d2a5b8b20e1675fc5d8be",
+    "assets/gentry/L1_203_child.png": "05e4bb9b9bb02dfa3ab14dde08727cbe934ccb296b8c20442d7310e67cc09b3a",
+    "assets/gentry/L1_203_mature.png": "51687115b3139710ac7cbc5cbf7eb55d86297b8953d40cdd8dc0cb05764d9603",
+    "assets/gentry/L1_203_young.png": "39dfb7329555038cc9962b0b65af88db863d079a65785025732c1ab36b88f830",
+    "assets/gentry/L1_204_baby.png": "c7c6e26f2870c8438e4bb3f3fef6d07556bef3537c9197dc4c210c3f9ad63981",
+    "assets/gentry/L1_204_child.png": "ec71123129023d9e9b331f99a2648c89d404d2ece6f8548b611a3a5677ae9d29",
+    "assets/gentry/L1_204_mature.png": "056c13125c132e3497bbe6a6a22b42271aca40b406b4c06194fb68e8037e396e",
+    "assets/gentry/L1_204_young.png": "3a67fa18e7738d1bdd68d98eda081348969614f7fe007eda38fd8f983fd4093c",
+    "assets/sisters/L2_203_baby.png": "3f60fdf9701ca12922c344e7379aa4faa9ae24b1b7fe2b482df93e6a9b4c33b5",
+    "assets/sisters/L2_203_child.png": "3089c8e6cc476327109803cfcee9bf4ab2f8b39e0573b9e9d73d95222c2dec30",
+    "assets/sisters/L2_203_mature.png": "841f991821173b1e0db5d738662ac92cec3cfb02d176335d6cd539d0005589d2",
+    "assets/sisters/L2_203_young.png": "62d8f89a4bbba20feadd844139785e55d23fb1419a1092616a56f4ffc1c9fe68",
+    "assets/sisters/L2_204_baby.png": "185334bd9441ebe325884c89829db0ec5a1515055a2d44cb3359f2d0fd4412ed",
+    "assets/sisters/L2_204_child.png": "c23316ee10a1ad782968dad0ee644aa6ff122ab88139edf2960903682dadea68",
+    "assets/sisters/L2_204_mature.png": "013c272ecf1b604b2aa8b7bcf279d6ccff4f704ad77a04bbf44bdef17688aa4c",
+    "assets/sisters/L2_204_young.png": "0d9f24d7943e6c8a7a24bfe39bb12dce6a29551089d1046f8ee90a9ffb619e87"
+  },
+  "frozenAfterReview": {
+    "assets/brothers/L2_201_baby.png": "117eb06809120c9fad5f23a706fa429ed25530c95361b4f04417fa274ab4fa62",
+    "assets/brothers/L2_201_child.png": "561fab508bfa3ecec14f8b3bc6e664545e3b5b44b0e97d926781bf5bd958aa37",
+    "assets/brothers/L2_201_mature.png": "55a6051331c729020a3bc9b8941b8073349ad802cbc3b8e23918effc14b96b3b",
+    "assets/brothers/L2_201_young.png": "b324ee60b576b4095d2effa9666971d244cba63ec25c55b6ec2c5f7bb16ba779",
+    "assets/brothers/L2_202_baby.png": "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301",
+    "assets/brothers/L2_202_child.png": "2588e3ddf9961cae8661c45020239c763bbb04dc61495e90fd6337864b8ee8fc",
+    "assets/brothers/L2_202_mature.png": "5c580463224d67b2addb7c46f40cba833c5249407cdf0b061d4b94a6d1f11a2c",
+    "assets/brothers/L2_202_young.png": "3013146edf2afff32a8b283db53e164e5f7afdc96e7b5610b4311ad2f6ee6c8a",
+    "assets/gentry/L1_203_baby.png": "2100561ad6964a812afa0936bdb031b0ff2963987d1d2a5b8b20e1675fc5d8be",
+    "assets/gentry/L1_203_child.png": "05e4bb9b9bb02dfa3ab14dde08727cbe934ccb296b8c20442d7310e67cc09b3a",
+    "assets/gentry/L1_203_mature.png": "51687115b3139710ac7cbc5cbf7eb55d86297b8953d40cdd8dc0cb05764d9603",
+    "assets/gentry/L1_203_young.png": "39dfb7329555038cc9962b0b65af88db863d079a65785025732c1ab36b88f830",
+    "assets/gentry/L1_204_baby.png": "c7c6e26f2870c8438e4bb3f3fef6d07556bef3537c9197dc4c210c3f9ad63981",
+    "assets/gentry/L1_204_child.png": "ec71123129023d9e9b331f99a2648c89d404d2ece6f8548b611a3a5677ae9d29",
+    "assets/gentry/L1_204_mature.png": "056c13125c132e3497bbe6a6a22b42271aca40b406b4c06194fb68e8037e396e",
+    "assets/gentry/L1_204_young.png": "3a67fa18e7738d1bdd68d98eda081348969614f7fe007eda38fd8f983fd4093c",
+    "assets/sisters/L2_203_baby.png": "3f60fdf9701ca12922c344e7379aa4faa9ae24b1b7fe2b482df93e6a9b4c33b5",
+    "assets/sisters/L2_203_child.png": "3089c8e6cc476327109803cfcee9bf4ab2f8b39e0573b9e9d73d95222c2dec30",
+    "assets/sisters/L2_203_mature.png": "841f991821173b1e0db5d738662ac92cec3cfb02d176335d6cd539d0005589d2",
+    "assets/sisters/L2_203_young.png": "62d8f89a4bbba20feadd844139785e55d23fb1419a1092616a56f4ffc1c9fe68",
+    "assets/sisters/L2_204_baby.png": "185334bd9441ebe325884c89829db0ec5a1515055a2d44cb3359f2d0fd4412ed",
+    "assets/sisters/L2_204_child.png": "c23316ee10a1ad782968dad0ee644aa6ff122ab88139edf2960903682dadea68",
+    "assets/sisters/L2_204_mature.png": "013c272ecf1b604b2aa8b7bcf279d6ccff4f704ad77a04bbf44bdef17688aa4c",
+    "assets/sisters/L2_204_young.png": "0d9f24d7943e6c8a7a24bfe39bb12dce6a29551089d1046f8ee90a9ffb619e87"
+  },
+  "hashesStable": true,
+  "reviewedAssetCount": 24,
+  "finalPortraitReview": [
+    {
+      "file": "assets/gentry/L1_203_baby.png",
+      "sha256": "2100561ad6964a812afa0936bdb031b0ff2963987d1d2a5b8b20e1675fc5d8be",
+      "estimatedVisualAgeRange": "2–4",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles across cheeks/nose; blue-gray eyes; long braid from child onward.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "visible infant/toddler face; exact age not certified"
+    },
+    {
+      "file": "assets/gentry/L1_203_child.png",
+      "sha256": "05e4bb9b9bb02dfa3ab14dde08727cbe934ccb296b8c20442d7310e67cc09b3a",
+      "estimatedVisualAgeRange": "7–9",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles across cheeks/nose; blue-gray eyes; long braid from child onward.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "primary-school child, not12–14"
+    },
+    {
+      "file": "assets/gentry/L1_203_young.png",
+      "sha256": "39dfb7329555038cc9962b0b65af88db863d079a65785025732c1ab36b88f830",
+      "estimatedVisualAgeRange": "20–28",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles across cheeks/nose; blue-gray eyes; long braid from child onward.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "young adult"
+    },
+    {
+      "file": "assets/gentry/L1_203_mature.png",
+      "sha256": "51687115b3139710ac7cbc5cbf7eb55d86297b8953d40cdd8dc0cb05764d9603",
+      "estimatedVisualAgeRange": "35–45",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles across cheeks/nose; blue-gray eyes; long braid from child onward.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "mature adult with subtle aging; exact age not certified"
+    },
+    {
+      "file": "assets/gentry/L1_204_baby.png",
+      "sha256": "c7c6e26f2870c8438e4bb3f3fef6d07556bef3537c9197dc4c210c3f9ad63981",
+      "estimatedVisualAgeRange": "0.5–1.5",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small cheek mark on viewer-right side visible at256, curly bob, rounded face; exact anatomical side cannot be independently proven from three-quarter rendering.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "visible infant/toddler face; exact age not certified"
+    },
+    {
+      "file": "assets/gentry/L1_204_child.png",
+      "sha256": "ec71123129023d9e9b331f99a2648c89d404d2ece6f8548b611a3a5677ae9d29",
+      "estimatedVisualAgeRange": "6–8",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small cheek mark on viewer-right side visible at256, curly bob, rounded face; exact anatomical side cannot be independently proven from three-quarter rendering.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "primary-school child, not12–14"
+    },
+    {
+      "file": "assets/gentry/L1_204_young.png",
+      "sha256": "3a67fa18e7738d1bdd68d98eda081348969614f7fe007eda38fd8f983fd4093c",
+      "estimatedVisualAgeRange": "18–25",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small cheek mark on viewer-right side visible at256, curly bob, rounded face; exact anatomical side cannot be independently proven from three-quarter rendering.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "young adult"
+    },
+    {
+      "file": "assets/gentry/L1_204_mature.png",
+      "sha256": "056c13125c132e3497bbe6a6a22b42271aca40b406b4c06194fb68e8037e396e",
+      "estimatedVisualAgeRange": "33–43",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small cheek mark on viewer-right side visible at256, curly bob, rounded face; exact anatomical side cannot be independently proven from three-quarter rendering.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "mature adult with subtle aging; exact age not certified"
+    },
+    {
+      "file": "assets/brothers/L2_201_baby.png",
+      "sha256": "117eb06809120c9fad5f23a706fa429ed25530c95361b4f04417fa274ab4fa62",
+      "estimatedVisualAgeRange": "2–4",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles and curly hair persist; broader shoulders in adults; blue-gray eyes.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "visible infant/toddler face; exact age not certified"
+    },
+    {
+      "file": "assets/brothers/L2_201_child.png",
+      "sha256": "561fab508bfa3ecec14f8b3bc6e664545e3b5b44b0e97d926781bf5bd958aa37",
+      "estimatedVisualAgeRange": "7–9",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles and curly hair persist; broader shoulders in adults; blue-gray eyes.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "primary-school child, not12–14"
+    },
+    {
+      "file": "assets/brothers/L2_201_young.png",
+      "sha256": "b324ee60b576b4095d2effa9666971d244cba63ec25c55b6ec2c5f7bb16ba779",
+      "estimatedVisualAgeRange": "20–28",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles and curly hair persist; broader shoulders in adults; blue-gray eyes.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "young adult"
+    },
+    {
+      "file": "assets/brothers/L2_201_mature.png",
+      "sha256": "55a6051331c729020a3bc9b8941b8073349ad802cbc3b8e23918effc14b96b3b",
+      "estimatedVisualAgeRange": "33–45",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles and curly hair persist; broader shoulders in adults; blue-gray eyes.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "mature adult with subtle aging; exact age not certified"
+    },
+    {
+      "file": "assets/brothers/L2_202_baby.png",
+      "sha256": "69d20692a5f19ed16875fb5b24ce1d5cbb8cc744a28de87c51468b701785c301",
+      "estimatedVisualAgeRange": "0.5–1.5",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small dark viewer-left cheek mark persists, straight hair becomes longer, narrower face and shoulders.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "visible infant/toddler face; exact age not certified"
+    },
+    {
+      "file": "assets/brothers/L2_202_child.png",
+      "sha256": "2588e3ddf9961cae8661c45020239c763bbb04dc61495e90fd6337864b8ee8fc",
+      "estimatedVisualAgeRange": "6–8",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small dark viewer-left cheek mark persists, straight hair becomes longer, narrower face and shoulders.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "primary-school child, not12–14"
+    },
+    {
+      "file": "assets/brothers/L2_202_young.png",
+      "sha256": "3013146edf2afff32a8b283db53e164e5f7afdc96e7b5610b4311ad2f6ee6c8a",
+      "estimatedVisualAgeRange": "19–27",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small dark viewer-left cheek mark persists, straight hair becomes longer, narrower face and shoulders.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "young adult"
+    },
+    {
+      "file": "assets/brothers/L2_202_mature.png",
+      "sha256": "5c580463224d67b2addb7c46f40cba833c5249407cdf0b061d4b94a6d1f11a2c",
+      "estimatedVisualAgeRange": "36–46",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small dark viewer-left cheek mark persists, straight hair becomes longer, narrower face and shoulders.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "mature adult with subtle aging; exact age not certified"
+    },
+    {
+      "file": "assets/sisters/L2_203_baby.png",
+      "sha256": "3f60fdf9701ca12922c344e7379aa4faa9ae24b1b7fe2b482df93e6a9b4c33b5",
+      "estimatedVisualAgeRange": "2–4",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles, greenish eyes, braid from child onward, narrower shoulders persist.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "visible infant/toddler face; exact age not certified"
+    },
+    {
+      "file": "assets/sisters/L2_203_child.png",
+      "sha256": "3089c8e6cc476327109803cfcee9bf4ab2f8b39e0573b9e9d73d95222c2dec30",
+      "estimatedVisualAgeRange": "8–10",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles, greenish eyes, braid from child onward, narrower shoulders persist.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "primary-school not teen; target9 plausible but estimated range extends to10"
+    },
+    {
+      "file": "assets/sisters/L2_203_young.png",
+      "sha256": "62d8f89a4bbba20feadd844139785e55d23fb1419a1092616a56f4ffc1c9fe68",
+      "estimatedVisualAgeRange": "20–28",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles, greenish eyes, braid from child onward, narrower shoulders persist.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "young adult"
+    },
+    {
+      "file": "assets/sisters/L2_203_mature.png",
+      "sha256": "841f991821173b1e0db5d738662ac92cec3cfb02d176335d6cd539d0005589d2",
+      "estimatedVisualAgeRange": "36–46",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Freckles, greenish eyes, braid from child onward, narrower shoulders persist.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "mature adult with subtle aging; exact age not certified"
+    },
+    {
+      "file": "assets/sisters/L2_204_baby.png",
+      "sha256": "185334bd9441ebe325884c89829db0ec5a1515055a2d44cb3359f2d0fd4412ed",
+      "estimatedVisualAgeRange": "0.5–1.5",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small cheek mark and curls persist at256; exact anatomical side not independently proven from three-quarter rendering.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "visible infant/toddler face; exact age not certified"
+    },
+    {
+      "file": "assets/sisters/L2_204_child.png",
+      "sha256": "c23316ee10a1ad782968dad0ee644aa6ff122ab88139edf2960903682dadea68",
+      "estimatedVisualAgeRange": "6–8",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small cheek mark and curls persist at256; exact anatomical side not independently proven from three-quarter rendering.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "primary-school child, not12–14"
+    },
+    {
+      "file": "assets/sisters/L2_204_young.png",
+      "sha256": "0d9f24d7943e6c8a7a24bfe39bb12dce6a29551089d1046f8ee90a9ffb619e87",
+      "estimatedVisualAgeRange": "19–27",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small cheek mark and curls persist at256; exact anatomical side not independently proven from three-quarter rendering.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "young adult"
+    },
+    {
+      "file": "assets/sisters/L2_204_mature.png",
+      "sha256": "013c272ecf1b604b2aa8b7bcf279d6ccff4f704ad77a04bbf44bdef17688aa4c",
+      "estimatedVisualAgeRange": "35–46",
+      "faceVisible": true,
+      "veil": false,
+      "identityMarkerObservation": "Small cheek mark and curls persist at256; exact anatomical side not independently proven from three-quarter rendering.",
+      "at256": "individually inspected",
+      "at96": "inspected actual96px tile in original-resolution age-chain proof",
+      "ageVerdict": "mature adult with subtle aging; exact age not certified"
+    }
+  ],
+  "proof": {
+    "file": "proofs/02-age-chains.png",
+    "sha256": "4a5c10cc269d2644cb5ccae18c860da38df0fa89dd91f5fe76972b22b5870031"
+  },
+  "verdicts": {
+    "primarySchoolRatherThanTeen": "pass all6",
+    "strictEstimatedRangeEntirely6to9": "not certified: L2_203 estimate8–10 though target9 plausible",
+    "babiesFaceVisible": "pass all6",
+    "gentryFineWoolAndFur": "pass all8 gentry portraits, including baby wool wraps/gowns",
+    "unmarriedFemaleNoVeil": "pass all16 female portraits",
+    "marksAcrossStages": "visible at256; reduced96px fine detail limits independent marker verification",
+    "siblingDifferences": "each pair has at least3 observed256px differences: hair, facial mark, face/build; eye-color differences additional but less robust at96",
+    "adultThreeYearGaps": "metadata records correct paired gaps; images cannot verify exact3years",
+    "youngMatureReadability96": "limited: subtle age difference, especially gentry and L2_201"
+  },
+  "limits": [
+    "Candidate art offline inspection only; no runtime installation or validation.",
+    "Subjective age ranges are not a claim of exact age.",
+    "96px eye color, fine freckles, and small birthmarks have limited legibility.",
+    "Exact anatomical side of small female cheek marks not independently established from three-quarter view.",
+    "Initial L1_203 view/hash race remains recorded and is not valid evidence binding; final frozen review supersedes it."
+  ]
+}

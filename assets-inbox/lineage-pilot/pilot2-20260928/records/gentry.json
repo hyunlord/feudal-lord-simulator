@@ -1,0 +1,503 @@
+[
+  {
+    "id": "L1_203_young",
+    "file": "assets/gentry/L1_203_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "young",
+    "sex": "female",
+    "age": 22,
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "commonTraits": {
+      "hair": "dark auburn",
+      "faceShape": "broad oval",
+      "brow": "gently arched"
+    },
+    "differenceMarkers": {
+      "age": "older by 3 years except approximate baby stages",
+      "hair": "long loose single braid; shorter infant hair",
+      "eyes": "blue gray",
+      "build": "slim shoulders",
+      "personalMark": "many freckles across nose and cheeks"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait for a medieval game, Southern England 1300-1450. Match project references finely handpainted matte gouache, softly visible brushwork, muted earthy colors, flat muted taupe background, upper-left lighting. Head and shoulders face dominant, no text, symbols, frame, veil, hood, hat or head covering. Female GENTRY, fine wool gown with restrained real fur collar, good fabric and tailoring. Both inputs are her actual father and mother; family resemblance ONLY dark auburn hair, broad oval overall face and gently arched brows. Do not copy either parent nose or jaw; invent individual anatomy. Only one person. Not photorealistic, not modern makeup. Create daughter L1_203 aged22, the older sister. Slim narrow shoulders and graceful long neck, long dark auburn hair in a loose SINGLE braid over her right shoulder; wide clearly BLUE-GRAY eyes; distinctive many rust-colored freckles over nosebridge and both cheeks. Individual narrow slightly upturned nose, delicate mouth with longer upper lip. Broad oval face, gently arched eyebrows. Fine muted mossgreen wool with gray fur collar. Youthful unmarried woman, bare uncovered head. DIFFERENT person from her sister who has short curly bob, brown eyes, stocky shoulders and dark birthmark. Freckles are crucial for lifelong identity.",
+        "rawFile": "raw/gentry/L1_203_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "selectedRawFile": "raw/gentry/L1_203_young.png",
+    "processing": "Sharp contain resize 256x256 only, no face painting or geometric modification",
+    "qa": {
+      "status": "candidate visually reviewed; root independent review controls final gate",
+      "dimensions": "PASS256x256",
+      "faceVisible": "PASS",
+      "bothParentsReferenced": true,
+      "clothing": "fine wool and fur collars, all uncovered hair",
+      "personalMarks": "bluegray eyes, freckles, braid maintained; baby hair shorter",
+      "siblingDistinction": "clearly different hairstyles, eye colors, freckles versus single birthmark, slim versus fuller build; blind result determined independently",
+      "ageRead": "young adult",
+      "traitLimitations": "family common face shape and brow interpreted broadly, no exact parental nose/jaw copying; clothing still aids distinction",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L1_204_young",
+    "file": "assets/gentry/L1_204_young.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "young",
+    "sex": "female",
+    "age": 19,
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "commonTraits": {
+      "hair": "dark auburn",
+      "faceShape": "broad oval",
+      "brow": "gently arched"
+    },
+    "differenceMarkers": {
+      "age": "younger by 3 years except approximate baby stages",
+      "hair": "short curly bob; sparse infant curls",
+      "eyes": "brown",
+      "build": "stockier rounded shoulders",
+      "personalMark": "small dark birthmark below anatomical left eye (viewer right)"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait for a medieval game, Southern England 1300-1450. Match project references finely handpainted matte gouache, softly visible brushwork, muted earthy colors, flat muted taupe background, upper-left lighting. Head and shoulders face dominant, no text, symbols, frame, veil, hood, hat or head covering. Female GENTRY, fine wool gown with restrained real fur collar, good fabric and tailoring. Both inputs are her actual father and mother; family resemblance ONLY dark auburn hair, broad oval overall face and gently arched brows. Do not copy either parent nose or jaw; invent individual anatomy. Only one person. Not photorealistic, not modern makeup. Create daughter L1_204 aged19, younger sister. Stockier broad rounded shoulders, short neck, SHORT tight dark auburn curly bob exposing ears; wide round BROWN eyes. Distinctive small dark birthmark immediately below her anatomical LEFT eye (viewer right). Rounder lips with short upper lip, small buttonlike nose and fullness in lower cheeks, broad oval overall face; do not copy any parental nose or jaw. No freckles. Fine muted russet wool with graybrown fur collar. Bare head, unmarried girl. Keep same portrait framing as references, make this a distinct youthful adult, not mother clone, not longbraid freckled sister. Skin warmbeige.",
+        "rawFile": "raw/gentry/L1_204_young.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "selectedRawFile": "raw/gentry/L1_204_young.png",
+    "processing": "Sharp contain resize 256x256 only, no face painting or geometric modification",
+    "qa": {
+      "status": "candidate visually reviewed; root independent review controls final gate",
+      "dimensions": "PASS256x256",
+      "faceVisible": "PASS",
+      "bothParentsReferenced": true,
+      "clothing": "fine wool and fur collars, all uncovered hair",
+      "personalMarks": "brown eyes, dark birthmark below anatomical left eye and curly hair maintained",
+      "siblingDistinction": "clearly different hairstyles, eye colors, freckles versus single birthmark, slim versus fuller build; blind result determined independently",
+      "ageRead": "young adult",
+      "traitLimitations": "family common face shape and brow interpreted broadly, no exact parental nose/jaw copying; clothing still aids distinction",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L1_203_child",
+    "file": "assets/gentry/L1_203_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "child",
+    "sex": "female",
+    "age": 9,
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "commonTraits": {
+      "hair": "dark auburn",
+      "faceShape": "broad oval",
+      "brow": "gently arched"
+    },
+    "differenceMarkers": {
+      "age": "older by 3 years except approximate baby stages",
+      "hair": "long loose single braid; shorter infant hair",
+      "eyes": "blue gray",
+      "build": "slim shoulders",
+      "personalMark": "many freckles across nose and cheeks"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait for a medieval game, Southern England 1300-1450. Match project references finely handpainted matte gouache, softly visible brushwork, muted earthy colors, flat muted taupe background, upper-left lighting. Head and shoulders face dominant, no text, symbols, frame, veil, hood, hat or head covering. Female GENTRY, fine wool gown with restrained real fur collar, good fabric and tailoring. Both inputs are her actual father and mother; family resemblance ONLY dark auburn hair, broad oval overall face and gently arched brows. Do not copy either parent nose or jaw; invent individual anatomy. Only one person. Not photorealistic, not modern makeup. Identity-preserving AGE REGRESSION of first reference young daughter L1_203, remaining two refs are actual parents. Show EXACT same freckled bluegray-eyed girl at age NINE, truly primary-school child notteen. Round high child cranium, shorter smallface, small nose, undeveloped shortjaw, soft babycheeks, narrow childshoulders, no adult neck, no mature mouth/makeup. Preserve many freckle identity marks, wide bluegray eyes, auburn hair in SINGLE loose braid, gently arched brows and broadly oval face. Child-size fine mossgreen wool gown, gray fur collar. Uncovered hair, no veil. No bust development, no teen model face. Face recognizable as first portrait at9.",
+        "rawFile": "raw/gentry/L1_203_child.png",
+        "referenceImages": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e55a-fe96-7151-b1c6-b844cc91f761/exec-d186a8d5-2208-4d9d-8048-4c77f3c82006.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: child reads too old"
+      },
+      {
+        "prompt": "Create a NINE-YEAR-OLD LITTLE GIRL portrait, NOT an adult with smooth skin. First reference is her adult identity only; redraw all anatomy to true small child proportions. Head takes more frame than adult; rounded domed forehead, large eyes relative to tiny short nose and small chin, short plump neck hardly visible above HIGH ROUND CLOSED NECKLINE childgown, small narrow shoulders, no chest visible. Soft babyfat cheeks, no adult cheekbones or angular jaw, no long adult face. Keep recognizable identity markers ONLY: many freckles across nose/cheeks, bluegray wide eyes, auburn single braid, gently arched brows. Inputs2and3 actual parents. Medieval southern English gentry child, fine mossgreen wool highneck gown and small fur tippet, no veil or headcover. Same matte painterly muted taupe background and brushwork asrefs. One square headandshouldersportrait. No text. Essential correction: this must look aged9, not12-14. Do not preserve adult neck, adult nose proportions, adult shoulders or squarelowneckline.",
+        "rawFile": "raw/gentry/L1_203_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e55a-fe96-7151-b1c6-b844cc91f761/exec-d186a8d5-2208-4d9d-8048-4c77f3c82006.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "superseded: independent review age9-11 upperborderline",
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      },
+      {
+        "prompt": "Targeted age correction to FIRST image: this is a NINE yearold primaryschool girl, current face reads too old. Make her CLEARLY 7–9years, not11. Shorten midface and nose length considerably, puff uppercheeks with childhood babyfat, round the chin and shorten jaw, increase rounded cranium relative to tiny shoulders. Slightly widen innocent roundeyes. Keep bluegrayeyes, identical distinctive frecklepattern, darkauburn braid, highneckfinegreenwool andfur, no veil. Bothotherinputsactualparents forancestryonly. No adultanatomy, no adultlongnose orneck. Preserve same mattepaintedstyle and identity while draw truly prepubertal anatomy. Single squareportrait. No text.",
+        "rawFile": "raw/gentry/L1_203_child-v3.png",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot2-v1/raw/gentry/L1_203_child-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected age correction v3",
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "selectedRawFile": "raw/gentry/L1_203_child-v3.png",
+    "processing": "Sharp contain resize 256x256 only, no face painting or geometric modification",
+    "qa": {
+      "status": "candidate visually reviewed; root independent review controls final gate",
+      "dimensions": "PASS256x256",
+      "faceVisible": "PASS",
+      "bothParentsReferenced": true,
+      "clothing": "fine wool and fur collars, all uncovered hair",
+      "personalMarks": "bluegray eyes, freckles, braid maintained; baby hair shorter",
+      "siblingDistinction": "clearly different hairstyles, eye colors, freckles versus single birthmark, slim versus fuller build; blind result determined independently",
+      "ageRead": "v3 shorter nose/midface fuller cheeks; root independent review pending",
+      "traitLimitations": "family common face shape and brow interpreted broadly, no exact parental nose/jaw copying; clothing still aids distinction",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L1_204_child",
+    "file": "assets/gentry/L1_204_child.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "child",
+    "sex": "female",
+    "age": 6,
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "commonTraits": {
+      "hair": "dark auburn",
+      "faceShape": "broad oval",
+      "brow": "gently arched"
+    },
+    "differenceMarkers": {
+      "age": "younger by 3 years except approximate baby stages",
+      "hair": "short curly bob; sparse infant curls",
+      "eyes": "brown",
+      "build": "stockier rounded shoulders",
+      "personalMark": "small dark birthmark below anatomical left eye (viewer right)"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait for a medieval game, Southern England 1300-1450. Match project references finely handpainted matte gouache, softly visible brushwork, muted earthy colors, flat muted taupe background, upper-left lighting. Head and shoulders face dominant, no text, symbols, frame, veil, hood, hat or head covering. Female GENTRY, fine wool gown with restrained real fur collar, good fabric and tailoring. Both inputs are her actual father and mother; family resemblance ONLY dark auburn hair, broad oval overall face and gently arched brows. Do not copy either parent nose or jaw; invent individual anatomy. Only one person. Not photorealistic, not modern makeup. Identity-preserving AGE REGRESSION of first reference young daughter L1_204, remaining two refs actual parents. EXACT same brown-eyed curly-haired girl age SIX. MUST look like little primary-school child, NOT12-14. Very large round childhood cranium relative to small short lowerface, short tiny nose, little child jaw, full round babycheeks, short neck and small rounded child shoulders. Brown eyes, short darkauburn curly bob, small dark birthmark below anatomical left eye (viewer right), no freckles. Fine russet child-size wool gown with small fur collar. Uncovered hair, no veil. No adolescent/adult face, no makeup, no mature neck. Recognizable identity from first reference but authentic sixyearold anatomy.",
+        "rawFile": "raw/gentry/L1_204_child.png",
+        "referenceImages": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e55a-fe96-7151-b1c6-b844cc91f761/exec-42073271-2949-4dc9-bf22-9b0ebb66bf0a.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "disposition": "superseded: child reads too old"
+      },
+      {
+        "prompt": "A SIX-YEAR-OLD LITTLE GIRL, primary-school child portrait. First reference heradult identity only. REDRAW body and face anatomy age6, not miniaturized adult. Large domed head, very short tiny nose, small mouthandchin, full baby cheeks, tiny shortneck, little child shoulders under high round closedneckline. Shortauburn curlybob, round brown eyes, single dark birthmark below anatomical LEFTeye(viewerright) must remain. No freckles. Fine russet wool childgown with smallgrayfur tippet, no visible upperchest, noveil/hat. Remaining refs actual parents, nottarget. Muted painterly gouache medievalEnglishgentry, taupe background, headshoulders, single squareportrait, notphotorealistic, no text. Must read six notpreteen; immature childface no long angular adultlowerface.",
+        "rawFile": "raw/gentry/L1_204_child-v2.png",
+        "referenceImages": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e55a-fe96-7151-b1c6-b844cc91f761/exec-42073271-2949-4dc9-bf22-9b0ebb66bf0a.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "disposition": "selected age correction",
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "selectedRawFile": "raw/gentry/L1_204_child-v2.png",
+    "processing": "Sharp contain resize 256x256 only, no face painting or geometric modification",
+    "qa": {
+      "status": "candidate visually reviewed; root independent review controls final gate",
+      "dimensions": "PASS256x256",
+      "faceVisible": "PASS",
+      "bothParentsReferenced": true,
+      "clothing": "fine wool and fur collars, all uncovered hair",
+      "personalMarks": "brown eyes, dark birthmark below anatomical left eye and curly hair maintained",
+      "siblingDistinction": "clearly different hairstyles, eye colors, freckles versus single birthmark, slim versus fuller build; blind result determined independently",
+      "ageRead": "v2 reads6-8; primaryschool anatomy",
+      "traitLimitations": "family common face shape and brow interpreted broadly, no exact parental nose/jaw copying; clothing still aids distinction",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L1_203_mature",
+    "file": "assets/gentry/L1_203_mature.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "mature",
+    "sex": "female",
+    "age": 42,
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "commonTraits": {
+      "hair": "dark auburn",
+      "faceShape": "broad oval",
+      "brow": "gently arched"
+    },
+    "differenceMarkers": {
+      "age": "older by 3 years except approximate baby stages",
+      "hair": "long loose single braid; shorter infant hair",
+      "eyes": "blue gray",
+      "build": "slim shoulders",
+      "personalMark": "many freckles across nose and cheeks"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait for a medieval game, Southern England 1300-1450. Match project references finely handpainted matte gouache, softly visible brushwork, muted earthy colors, flat muted taupe background, upper-left lighting. Head and shoulders face dominant, no text, symbols, frame, veil, hood, hat or head covering. Female GENTRY, fine wool gown with restrained real fur collar, good fabric and tailoring. Both inputs are her actual father and mother; family resemblance ONLY dark auburn hair, broad oval overall face and gently arched brows. Do not copy either parent nose or jaw; invent individual anatomy. Only one person. Not photorealistic, not modern makeup. Age-preserving identity edit FIRST reference young L1_203 into exact same woman aged FORTY TWO. Other refs her parents only ancestral context, not target. Preserve long auburn single braid, distinctive many freckles across cheeks and nose, bluegray eyes, slim shoulders, face identity. Clearly grown mature: crowfeet, fine forehead lines, deeper under-eye and nasolabial folds, a few gray hairs at temples, slightly softened mature cheeks. Do not age toelderly. Same fine mossgreen wool and grayfur, uncovered head. One42yearold woman.",
+        "rawFile": "raw/gentry/L1_203_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e55a-fe96-7151-b1c6-b844cc91f761/exec-d186a8d5-2208-4d9d-8048-4c77f3c82006.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "selectedRawFile": "raw/gentry/L1_203_mature.png",
+    "processing": "Sharp contain resize 256x256 only, no face painting or geometric modification",
+    "qa": {
+      "status": "candidate visually reviewed; root independent review controls final gate",
+      "dimensions": "PASS256x256",
+      "faceVisible": "PASS",
+      "bothParentsReferenced": true,
+      "clothing": "fine wool and fur collars, all uncovered hair",
+      "personalMarks": "bluegray eyes, freckles, braid maintained; baby hair shorter",
+      "siblingDistinction": "clearly different hairstyles, eye colors, freckles versus single birthmark, slim versus fuller build; blind result determined independently",
+      "ageRead": "mature lines and templegray visible while identity maintained",
+      "traitLimitations": "family common face shape and brow interpreted broadly, no exact parental nose/jaw copying; clothing still aids distinction",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L1_204_mature",
+    "file": "assets/gentry/L1_204_mature.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "mature",
+    "sex": "female",
+    "age": 39,
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "commonTraits": {
+      "hair": "dark auburn",
+      "faceShape": "broad oval",
+      "brow": "gently arched"
+    },
+    "differenceMarkers": {
+      "age": "younger by 3 years except approximate baby stages",
+      "hair": "short curly bob; sparse infant curls",
+      "eyes": "brown",
+      "build": "stockier rounded shoulders",
+      "personalMark": "small dark birthmark below anatomical left eye (viewer right)"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single square bust portrait for a medieval game, Southern England 1300-1450. Match project references finely handpainted matte gouache, softly visible brushwork, muted earthy colors, flat muted taupe background, upper-left lighting. Head and shoulders face dominant, no text, symbols, frame, veil, hood, hat or head covering. Female GENTRY, fine wool gown with restrained real fur collar, good fabric and tailoring. Both inputs are her actual father and mother; family resemblance ONLY dark auburn hair, broad oval overall face and gently arched brows. Do not copy either parent nose or jaw; invent individual anatomy. Only one person. Not photorealistic, not modern makeup. Identity-preserving age progression firstreference L1_204 from19toTHIRTYNINE. Same rounded sturdy woman with short auburn curls, warm brown eyes, small dark birthmark below anatomical left eye(viewer right), compact rounded shoulders. Preserve unique face. Visible subtle foreheadlines, crowfeet, under-eye creases, slightfacialmaturity and graystrands attemples, notelderly. Same russetwool and graybrownfur collar. No veil. Otherrefs areparents contextonly. Single mature39woman.",
+        "rawFile": "raw/gentry/L1_204_mature.png",
+        "referenceImages": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e55a-fe96-7151-b1c6-b844cc91f761/exec-42073271-2949-4dc9-bf22-9b0ebb66bf0a.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "selectedRawFile": "raw/gentry/L1_204_mature.png",
+    "processing": "Sharp contain resize 256x256 only, no face painting or geometric modification",
+    "qa": {
+      "status": "candidate visually reviewed; root independent review controls final gate",
+      "dimensions": "PASS256x256",
+      "faceVisible": "PASS",
+      "bothParentsReferenced": true,
+      "clothing": "fine wool and fur collars, all uncovered hair",
+      "personalMarks": "brown eyes, dark birthmark below anatomical left eye and curly hair maintained",
+      "siblingDistinction": "clearly different hairstyles, eye colors, freckles versus single birthmark, slim versus fuller build; blind result determined independently",
+      "ageRead": "mature lines and templegray visible while identity maintained",
+      "traitLimitations": "family common face shape and brow interpreted broadly, no exact parental nose/jaw copying; clothing still aids distinction",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L1_203_baby",
+    "file": "assets/gentry/L1_203_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_203",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "baby",
+    "sex": "female",
+    "age": 2,
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "commonTraits": {
+      "hair": "dark auburn",
+      "faceShape": "broad oval",
+      "brow": "gently arched"
+    },
+    "differenceMarkers": {
+      "age": "older by 3 years except approximate baby stages",
+      "hair": "long loose single braid; shorter infant hair",
+      "eyes": "blue gray",
+      "build": "slim shoulders",
+      "personalMark": "many freckles across nose and cheeks"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Single painted square portrait of a TWO-YEAR-OLD TODDLER girl, medieval English gentry. Firstinput her adult identity, inputs2/3 bothparents. Actual toddler proportions huge round cranium, babyfatcheeks tinybutton nose smallchin, big bluegray eyes, shortneck. Her identitymarkers are auburn hair (short soft babyhair, tiny loose braid if possible), scattered little freckles overnoseandcheeks. Sweet neutral expression notadult seriousness. Fine mossgreen childwool tunic with softsmallfur collar, childhighneckline, headuncovered no veil. Match mattehandpainted projectstyle, mutedtaupe background upperleftlight, faceandshoulders, no text, no frame, no adult anatomy. Preserve bluegrayeyes and distinctivefreckles for agechain, while mostimportant truly2yearold.",
+        "rawFile": "raw/gentry/L1_203_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e55a-fe96-7151-b1c6-b844cc91f761/exec-d186a8d5-2208-4d9d-8048-4c77f3c82006.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "selectedRawFile": "raw/gentry/L1_203_baby.png",
+    "processing": "Sharp contain resize 256x256 only, no face painting or geometric modification",
+    "qa": {
+      "status": "candidate visually reviewed; root independent review controls final gate",
+      "dimensions": "PASS256x256",
+      "faceVisible": "PASS",
+      "bothParentsReferenced": true,
+      "clothing": "fine wool and fur collars, all uncovered hair",
+      "personalMarks": "bluegray eyes, freckles, braid maintained; baby hair shorter",
+      "siblingDistinction": "clearly different hairstyles, eye colors, freckles versus single birthmark, slim versus fuller build; blind result determined independently",
+      "ageRead": "reads toddler approximately2-3",
+      "traitLimitations": "family common face shape and brow interpreted broadly, no exact parental nose/jaw copying; clothing still aids distinction",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L1_204_baby",
+    "file": "assets/gentry/L1_204_baby.png",
+    "width": 256,
+    "height": 256,
+    "identity": "L1_204",
+    "lineage": "L1",
+    "generation": 2,
+    "fatherIdentity": "L1_101",
+    "motherIdentity": "L1_102",
+    "stage": "baby",
+    "sex": "female",
+    "age": 0.5,
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "commonTraits": {
+      "hair": "dark auburn",
+      "faceShape": "broad oval",
+      "brow": "gently arched"
+    },
+    "differenceMarkers": {
+      "age": "younger by 3 years except approximate baby stages",
+      "hair": "short curly bob; sparse infant curls",
+      "eyes": "brown",
+      "build": "stockier rounded shoulders",
+      "personalMark": "small dark birthmark below anatomical left eye (viewer right)"
+    },
+    "generationRecords": [
+      {
+        "prompt": "A SIX-MONTH-OLD BABY GIRL, not a toddler or child. First reference adult identity ONLY, second and third biologicalparentpaintings. REDRAW completely as infant anatomy: very large round domed head, tiny almostflat button nose, round puffy cheeks, tiny chin and mouth, tiny neck invisible in wool swaddling wrap, newbornsmallshoulders. Sparse short soft AUBURN curls on scalp, round BROWN babyeyes, small dark birthmark below her anatomical left eye(viewerright). NOT fully grown bobhair, NOT two year old, noadultshoulders oradultgown. Fine muted russet wool swaddling wrap with softtinyfuredge evokesgentry. Barehead no veil. One face visible awake infant, clean gentle expression. Muted taupebackdrop, painterlymattegouache sameprojectstyle upperleftlight. No text/frame/adult hands orotherpeople. ChildL1_204 as sixmonthold.",
+        "rawFile": "raw/gentry/L1_204_baby.png",
+        "referenceImages": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e55a-fe96-7151-b1c6-b844cc91f761/exec-42073271-2949-4dc9-bf22-9b0ebb66bf0a.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_101_mature.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-pilot-v1/assets/lineage1/L1_102_mature.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "selectedRawFile": "raw/gentry/L1_204_baby.png",
+    "processing": "Sharp contain resize 256x256 only, no face painting or geometric modification",
+    "qa": {
+      "status": "candidate visually reviewed; root independent review controls final gate",
+      "dimensions": "PASS256x256",
+      "faceVisible": "PASS",
+      "bothParentsReferenced": true,
+      "clothing": "fine wool and fur collars, all uncovered hair",
+      "personalMarks": "brown eyes, dark birthmark below anatomical left eye and curly hair maintained",
+      "siblingDistinction": "clearly different hairstyles, eye colors, freckles versus single birthmark, slim versus fuller build; blind result determined independently",
+      "ageRead": "reads infant approximately6-12months, exact6month uncertain",
+      "traitLimitations": "family common face shape and brow interpreted broadly, no exact parental nose/jaw copying; clothing still aids distinction",
+      "runtime": "not installed"
+    }
+  }
+]
