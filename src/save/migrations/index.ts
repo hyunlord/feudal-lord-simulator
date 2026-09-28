@@ -19,6 +19,7 @@ import { migrateV20ToV21 } from './v20ToV21';
 import { migrateV21ToV22 } from './v21ToV22';
 import { migrateV22ToV23 } from './v22ToV23';
 import { migrateV23ToV24 } from './v23ToV24';
+import { migrateV24ToV25 } from './v24ToV25';
 import { SAVE_SCHEMA_VERSION } from "../saveTypes";
 import { migrateV0ToV1 } from "./v0ToV1";
 import { migrateV2ToV3 } from "./v2ToV3";
@@ -56,6 +57,7 @@ export const SAVE_MIGRATIONS: readonly SaveMigration[] = [
   { from: 21, to: 22, migrate: migrateV21ToV22 },
   { from: 22, to: 23, migrate: migrateV22ToV23 },
   { from: 23, to: 24, migrate: migrateV23ToV24 },
+  { from: 24, to: 25, migrate: migrateV24ToV25 },
 ];
 
 export class SaveMigrationError extends Error {}

@@ -1,5 +1,5 @@
 /**
- * C4 the ale chain (spec docs/design/ale-chain.md AL-1…AL-9): scenarios A1–A8.
+ * C4 the ale chain (spec docs/design/ale-chain.md AL-1…AL-10): scenarios A1–A11 (A10 and A11 FIX-7).
  */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -10,7 +10,7 @@ import { CHAPTER_TWO } from "../src/content/chapterConfig";
 import { RESOURCE_CATALOG, STORAGE_KIND_BY_RESOURCE } from "../src/content/resourceCatalog";
 import { RESOURCE_COPY } from "../src/content/resourceCatalog.ko";
 import { SANDBOX_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
-import { advanceAle, aleRequired, aleServedHouses, alehouses, brewingSlot, setFarmsteadCrop } from "../src/engine/ale";
+import { advanceAle, aleRequired, aleServedHouses, alehouses, brewingSlot, farmsteadCropLock, setFarmsteadCrop, townAle } from "../src/engine/ale";
 import { aleChainAction, aleWantsBarley, KILN_NEAR_BARN } from "../src/engine/autoplayEra";
 import { canPlaceBuilding } from "../src/world/placement";
 import { arableSupplyShort } from "../src/engine/autoplayArable";
@@ -215,4 +215,57 @@ test("A8 (AL-9) the save round trip (v23) keeps the crop and the brewing slots; 
   const v22 = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v22/palisade-construction.save.json")));
   assert.equal(v22.migratedFrom, 22);
   assert.ok((v22.envelope.state as GameState).buildings.every(building => building.crop === undefined));
+});
+
+test("A10 (AL-10, FIX-7) the town's ale on the ledger: the slots' casks, the alehouses', and the season's brewing and drinking counted to its end", () => {
+  assert.equal(town().ale, undefined, "a town that has not brewed has no count");
+  assert.deepEqual(townAle(town()).season, { startTick: Math.floor(town().tick / 1000) * 1000, brewed: 0, maltUsed: 0, drunk: 0, sold: 0 });
+  const base = withKiln(town(), 40);
+  let state: GameState = base;
+  for (let batch = 0; batch < 3; batch += 1) state = advanceAle(atBatch(state));
+  const ale = townAle(state);
+  const casks = state.houses.reduce((sum, house) => sum + (brewingSlot(house)?.stock.ale ?? 0), 0);
+  assert.ok(casks > 0);
+  assert.equal(ale.stock, casks);
+  assert.equal(ale.inAlehouses, state.houses.filter(house => alehouses(state).includes(house.buildingId)).reduce((sum, house) => sum + (brewingSlot(house)?.stock.ale ?? 0), 0));
+  assert.equal(ale.brewingHouses, state.houses.filter(house => brewingSlot(house) !== null).length);
+  assert.equal(ale.alehouses, alehouses(state).length);
+  assert.equal(ale.seasonNeed, ale.drinkingHouses * ALE_BALANCE.alePerHouseSeason);
+  // Everything brewed and drunk so far is this season's or the last's (three batches cross at most one season start,
+  // where the town drank).
+  const total = (key: "brewed" | "drunk" | "maltUsed") => ale.season[key] + (ale.lastSeason?.[key] ?? 0);
+  assert.ok(total("brewed") > 0);
+  assert.equal(total("brewed") - total("drunk"), casks);
+  assert.equal(total("maltUsed"), 40 - (state.buildings.find(building => building.id === "malt_kiln-test")!.inventory.malt ?? 0));
+  // At the next season's start the count closes: the drinking opens the new season.
+  const seasonTick = Math.ceil((state.tick + 1) / 1000) * 1000;
+  const drunk = advanceAle({ ...state, tick: seasonTick % BATCH === 0 ? seasonTick + 1000 * 2 : seasonTick });
+  const after = townAle(drunk);
+  assert.equal(after.season.startTick, drunk.tick);
+  // The season that closed is the one counted before (or, two seasons on, nothing brewed or drunk in between: null).
+  assert.deepEqual(after.lastSeason, drunk.tick - 1000 === state.ale!.current.startTick ? state.ale!.current : null);
+  const drankHouses = drunk.houses.filter(house => house.aleUntilTick === drunk.tick + ALE_BALANCE.aleServedTicks).length;
+  assert.equal(after.season.drunk, drankHouses * ALE_BALANCE.alePerHouseSeason);
+  const dues = drunk.ledger!.entries.filter(entry => entry.tick === drunk.tick && entry.category === "stall_fee");
+  assert.equal(after.season.sold, dues.reduce((sum, entry) => sum + Number(String(entry.sourceRefs[0]!.detail).split(":")[1]), 0));
+  assert.equal(after.stock, ale.stock - after.season.drunk + after.season.brewed);
+  // The count rides the save (v25).
+  const saved = decodeSave(encodeSave({ state: drunk, createdAt: "2026-09-28T00:00:00.000Z", savedAt: "2026-09-28T00:00:00.000Z" }).bytes);
+  assert.deepEqual(saved.envelope.state.ale, drunk.ale);
+  assert.equal(SAVE_SCHEMA_VERSION, 25);
+});
+
+test("A11 (AL-2, FIX-7) barley waits for the malt kiln: before the market town the command turns no barn to barley and says why; a barn already in barley keeps it", () => {
+  const walled = town();
+  const barn = barns(walled)[0]!;
+  const hamlet: GameState = { ...walled, era: "hamlet" };
+  assert.deepEqual(farmsteadCropLock(hamlet, "barley"), { code: "kiln_locked", unlockStage: "market_town", reason: "엿기름 가마는 시장도시부터" });
+  assert.equal(farmsteadCropLock(hamlet, "wheat"), null);
+  assert.equal(farmsteadCropLock(walled, "barley"), null, "the market town has the kiln");
+  assert.equal(gameReducer(hamlet, { type: "set_farmstead_crop", buildingId: barn.id, crop: "barley" }), hamlet, "the command does nothing");
+  assert.equal(gameReducer(walled, { type: "set_farmstead_crop", buildingId: barn.id, crop: "barley" }).buildings.find(building => building.id === barn.id)!.crop, "barley");
+  // An older save's barley barn in a hamlet keeps its crop and may go back to wheat.
+  const old: GameState = { ...hamlet, buildings: hamlet.buildings.map(building => building.id === barn.id ? { ...building, crop: "barley" as const } : building) };
+  assert.equal(advanceAle(atBatch(old)).buildings.find(building => building.id === barn.id)!.crop, "barley");
+  assert.equal(gameReducer(old, { type: "set_farmstead_crop", buildingId: barn.id, crop: "wheat" }).buildings.find(building => building.id === barn.id)!.crop, undefined);
 });

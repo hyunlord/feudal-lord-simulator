@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import test from "node:test";
+import { CHILD_KILL_GUARD_MS } from "./helpers/childGuard";
 
 for (const derivative of [false, true]) for (const compound of [false, true]) for (const failure of ["none", "null", "throw"] as const) {
   test(`${derivative ? "derived" : "original"} ${compound ? "compound" : "single"} house uses a bounded raster and settles after canvas ${failure}`, () => {
@@ -43,7 +44,7 @@ for (const derivative of [false, true]) for (const compound of [false, true]) fo
         assert.ok(thumbnails.every(canvas=>canvas.width>=112 && canvas.width<=170 && canvas.height>0 && canvas.height<512));
       } else assert.ok(calls.every(call=>call.args[0] instanceof Image));
     `;
-    execFileSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", script], { encoding: "utf8", timeout: 10000 });
+    execFileSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", script], { encoding: "utf8", timeout: CHILD_KILL_GUARD_MS });
     assert.ok(true);
   });
 }
