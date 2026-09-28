@@ -70,6 +70,14 @@ export type ObjectRenderItem =
       readonly anchorTx: number;
     }
   | {
+      /** INSTALL-28 the countryside outside the walls (countrysideDraw.ts): field-edge strip pieces and point props, display only. */
+      readonly kind: "countryside";
+      readonly id: string;
+      readonly piece: import("./countrysideLand").CountryStripPiece | import("./countrysideLayout").CountryPiece;
+      readonly depth: number;
+      readonly anchorTx: number;
+    }
+  | {
       /** Orchard trees and haycocks of painted zones (C1b), from the ground scene's zone layer. */
       readonly kind: "zone_prop";
       readonly id: string;

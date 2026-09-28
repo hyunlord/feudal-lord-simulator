@@ -23,6 +23,7 @@ import { beginBuildingVariantFrame } from "./buildingVariants";
 import { beginHouseVariantFrame } from "./wave26HouseArt";
 import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
+import { drawCountrysideItem } from "./countrysideDraw";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -77,6 +78,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "war_prop") { // UI-6 the war's beacon, burning quay and raid smoke
       if (viewMode === "normal") drawWarProp(context, item.prop, input.zoom, input.nowMs ?? 0);
+      continue;
+    }
+    if (item.kind === "countryside") { // INSTALL-28 hedges, baulks, dry-stone walls and point props outside the walls
+      if (viewMode === "normal") drawCountrysideItem(context, item, input.state, input.zoom);
       continue;
     }
     if (item.kind === "village_life") { // INSTALL-23 hens, cats, dogs, birds, toys, washing lines, doorstep props
