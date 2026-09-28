@@ -52,7 +52,8 @@
 
 ## 6. 회귀
 - UI-6 묶음(`ui6/`): 스킨 감사 0 / 912(`ui6/audit/audit.json`), 튜토리얼 22 = 22, 터치 대상 통과, B9 입력 재생 14/14, TOUCH 재생 14/14, 패드·포커스 통과. `gates.json`의 `hudArea: false`는 위 2절의 1280 × 800 2장 성벽 상태 하나.
-- 병합 전 검사(`check:merge`) 통과. 로컬 `npm test` 3,394/3,394.
+- 병합 전 검사(`check:merge`) 통과. 로컬 `npm test` 3,394/3,394. 본선 `726b2934`를 합친 `b911875`: DGX `npm test` 3,394/3,394, 깨끗한 클론 두 번째 3,394/3,394·build.
+- 깨끗한 클론 첫 번째는 1개 실패 — `tests/canvasKeyboardTarget.test.ts` "translator ignores native-control keydown …"(`2 !== 1`). 이 가지와 무관한 입력 시험이다: 번역기에 가짜 시계(`now`)를 넘기지 않아 키 누름·뗌 시각은 실제 `performance.now()`, 프레임은 가짜 1,000~2,000 ms라, 시험 프로세스가 부하로 2초 넘게 걸려 뜨면 뗀 시각이 프레임 뒤가 되어 "아직 눌림"으로 읽힌다. 로컬 5번·DGX `npm test`·클론 두 번째는 통과. 넘길 것: 그 시험에 `now`를 넘기면 된다(입력 층 담당).
 - 렌더 파일 줄 수: `drawPalisadeConstructionSites.ts`는 이름표 코드가 빠져 줄었고, 새 `wallSiteLabels.ts`·`constructionTagProbe.ts`는 250줄 아래.
 
 ## 7. 결정
