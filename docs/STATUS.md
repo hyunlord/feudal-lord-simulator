@@ -7,6 +7,7 @@
 
 ## 현재 단계
 
+- **CODE-1b 계층 규칙·한글 문자열 검사 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): `src/{engine,population,economy,zones,world,save,ledger,state}`에서 `src/ui`·`src/render` import 금지(`tools/eslint/layers.mjs`, 기존 1건은 억제 → CODE-1a), `check:merge` 6단계로 `src`의 `*.ko.ts`·생성 파일 밖 새 한글 문자열 금지(기준 40파일·463문구). 자체 시험 17/17. AGENTS.md 규칙 19, [사용법](REMOTE_RUNS.md#병합-전-자동-검사), 결정 RV2.
 - **ASSET-2 runtime 정리 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 ASSET-1): [보고서](verification/asset2/REPORT.md), 결정 ASSET2-D1~D5.
   - ASSET-1 스크립트 재실행: 장부 밖 0·옛 버전 등록 0·caBX 0·같은 이름 다른 내용 0(본선 10·7·6·4). 장부 밖 10개 삭제, 도로 v2·성벽 면 v1·옛 자원 아이콘 16개 퇴역(`assets-inbox/retired`), Wave 11 킷 파일 계열 접두.
   - 자원 막대는 UX-2 시트 칸만(밀·통나무·원석 칸은 없음 — Astra 후보), 이야기 워커는 일반 워커 키(17.6 px), Wave 13 동물 설치 배율 기준, 말뚝 면 색 띠·잔여 점 수정. 초기 건물 17개는 아직 쓰여 목록으로 보고.
