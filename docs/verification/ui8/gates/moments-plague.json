@@ -1,0 +1,275 @@
+{
+ "plague.rumour": {
+  "tick": 193000,
+  "year": 1348,
+  "params": {}
+ },
+ "plague.arrived": {
+  "tick": 194000,
+  "year": 1348,
+  "params": {}
+ },
+ "plague.priest_died": {
+  "tick": 194000,
+  "year": 1348,
+  "params": {}
+ },
+ "vacant_priest": {
+  "tick": 194000,
+  "year": 1348,
+  "petitionId": "vacant_priest@194000"
+ },
+ "plague.new_graves": {
+  "tick": 194001,
+  "year": 1348,
+  "params": {
+   "dead": 68
+  }
+ },
+ "plague.empty_streets": {
+  "tick": 194001,
+  "year": 1348,
+  "params": {
+   "houses": 1
+  }
+ },
+ "first-deaths": {
+  "tick": 194001,
+  "year": 1348,
+  "dead": 68,
+  "vacant": 1
+ },
+ "wages": {
+  "tick": 196000,
+  "year": 1349,
+  "petitionId": "wages@196000"
+ },
+ "plague.abandoned_fields": {
+  "tick": 198000,
+  "year": 1349,
+  "params": {
+   "dead": 338,
+   "manorDead": 4,
+   "population": 768,
+   "permille": 440,
+   "houses": 4
+  }
+ },
+ "land_redistribution": {
+  "tick": 198000,
+  "year": 1349,
+  "petitionId": "land_redistribution@198000"
+ },
+ "plague.ordinance": {
+  "tick": 204000,
+  "year": 1351,
+  "params": {
+   "fine": 100
+  }
+ },
+ "plague.resettlement": {
+  "tick": 208000,
+  "year": 1352,
+  "params": {
+   "households": 2
+  }
+ },
+ "cash_rent": {
+  "tick": 208000,
+  "year": 1352,
+  "petitionId": "cash_rent@208000"
+ },
+ "plague.second": {
+  "tick": 244000,
+  "year": 1361,
+  "params": {}
+ },
+ "plague.second_ended": {
+  "tick": 246000,
+  "year": 1361,
+  "params": {
+   "dead": 81
+  }
+ },
+ "chapter3-end": {
+  "tick": 248000,
+  "year": 1362,
+  "end": {
+   "chapter": 3,
+   "tick": 248000,
+   "chronicle": {
+    "chapter": 3,
+    "fromYear": 1340,
+    "toYear": 1362,
+    "events": [
+     {
+      "recordId": "h-013498",
+      "eventId": "era:collapse",
+      "defId": "collapse",
+      "year": 1348,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-013594",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1348,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-013683",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1348,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-013684",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1348,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-013751",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1348,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-013752",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1348,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-014321",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1349,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-017467",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1361,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     }
+    ],
+    "decisions": [
+     {
+      "recordId": "h-013833",
+      "kind": "petition_response",
+      "tick": 194065,
+      "chosen": "accept",
+      "alternatives": [
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 11096,
+       "merchantGauge": 80
+      },
+      "actual": {
+       "treasury": 11173,
+       "merchantGauge": 80
+      }
+     },
+     {
+      "recordId": "h-014214",
+      "kind": "petition_response",
+      "tick": 196118,
+      "chosen": "accept",
+      "alternatives": [
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 11083,
+       "merchantGauge": 80
+      },
+      "actual": {
+       "treasury": 11138,
+       "merchantGauge": 80
+      }
+     },
+     {
+      "recordId": "h-014374",
+      "kind": "petition_response",
+      "tick": 198038,
+      "chosen": "accept_with_price",
+      "alternatives": [
+       "accept"
+      ],
+      "predicted": {
+       "treasury": 11178,
+       "merchantGauge": 80
+      },
+      "actual": {
+       "treasury": 11200,
+       "merchantGauge": 80
+      }
+     }
+    ],
+    "stats": {
+     "populationStart": 739,
+     "populationEnd": 615,
+     "peakPopulation": 768,
+     "houses": 24,
+     "burntHouses": 0,
+     "departures": 0,
+     "harvestLost": 0,
+     "treasury": 8210,
+     "famine": {
+      "year": 1315,
+      "populationAtArrival": 527,
+      "populationAtEnd": 528
+     },
+     "plague": {
+      "arrivalYear": 1348,
+      "populationAtArrival": 768,
+      "dead": 338,
+      "manorDead": 4,
+      "secondDead": 81,
+      "resettled": 4,
+      "fled": 0,
+      "outcome": "resettled"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,199 @@
+{
+ "plague.rumour": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "항구 열병 소문"
+   ],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  }
+ },
+ "plague.arrived": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  },
+  "ui": {
+   "modal": "빈 사제 자리",
+   "def": "vacant_priest",
+   "chips": [
+    "빈 사제 자리",
+    "역병이 들어왔습니다",
+    "사제가 죽었습니다"
+   ],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  }
+ },
+ "vacant_priest": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  },
+  "ui": {
+   "modal": "빈 사제 자리",
+   "def": "vacant_priest",
+   "chips": [
+    "빈 사제 자리",
+    "역병이 들어왔습니다",
+    "사제가 죽었습니다"
+   ],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  }
+ },
+ "wages": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  },
+  "ui": {
+   "modal": "일꾼들의 임금 요구",
+   "def": "wages",
+   "chips": [
+    "역병이 들어왔습니다",
+    "새 무덤",
+    "빈 거리"
+   ],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  }
+ },
+ "land_redistribution": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  },
+  "ui": {
+   "modal": "빈 필지의 주인",
+   "def": "land_redistribution",
+   "chips": [
+    "빈 필지의 주인",
+    "빈 거리",
+    "버려진 밭"
+   ],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  }
+ },
+ "cash_rent": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  },
+  "ui": {
+   "modal": "부역을 돈으로 바꾸자는 청원",
+   "def": "cash_rent",
+   "chips": [
+    "부역을 돈으로 바꾸자는 청원",
+    "빈 거리",
+    "재정착"
+   ],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  }
+ },
+ "plague.resettlement": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  },
+  "ui": {
+   "modal": "부역을 돈으로 바꾸자는 청원",
+   "def": "cash_rent",
+   "chips": [
+    "부역을 돈으로 바꾸자는 청원",
+    "빈 거리",
+    "재정착"
+   ],
+   "goal": "제3장 · 흑사병의 그늘0/1목표 기록"
+  }
+ },
+ "chapter3-end": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "목표 기록"
+  },
+  "ui": {
+   "modal": "제3장 연대기 · 1340–1362",
+   "def": null,
+   "chips": [],
+   "goal": "목표 기록"
+  }
+ },
+ "season-strip": [
+  "역병 도착 — 가을 초쯤",
+  "임금 요구 — 내년 봄 초쯤"
+ ],
+ "w1-first-deaths-church": {
+  "tick": 194001,
+  "stage": "arrival",
+  "dead": 68,
+  "graves": 2,
+  "curacyVacant": true,
+  "churchSign": true,
+  "housesWantingChurch": 23,
+  "ofThemMarked": 0,
+  "vacantPlots": 1
+ },
+ "w2-empty-streets": {
+  "tick": 196000,
+  "stage": "arrival",
+  "dead": 186,
+  "graves": 5,
+  "curacyVacant": false,
+  "churchSign": false,
+  "housesWantingChurch": 0,
+  "ofThemMarked": 0,
+  "vacantPlots": 2
+ },
+ "w3-priest-died": {
+  "tick": 194000,
+  "stage": "arrival",
+  "dead": 0,
+  "graves": 0,
+  "curacyVacant": true,
+  "churchSign": true,
+  "housesWantingChurch": 24,
+  "ofThemMarked": 0,
+  "vacantPlots": 0
+ },
+ "l1-wage-ledger": [
+  "분류이번 기간지난 기간3장 합계",
+  "임금-112d-112d-2446d",
+  "노동자 조례 벌금0d0d-100d",
+  "수도원 사제 봉급0d0d-60d",
+  "새 이주민 입주금0d0d40d"
+ ],
+ "t1-plague-tree": {
+  "child": "p-000143",
+  "deceased": 21,
+  "causes": [
+   "역병",
+   "역병",
+   "역병",
+   "역병",
+   "역병",
+   "역병",
+   "역병",
+   "역병"
+  ]
+ },
+ "errors": []
+}
