@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-28(ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -28,6 +28,11 @@
   - 넘길 것(렌더): 장부 서랍·저장소·결산의 에일 줄(`townAle`), 헛간 카드의 보리 잠금과 이유, 양모 카드의 현물 결과 줄(`woolInKindSplit`).
 
 - **Wave 24 Steam 그림 후처리 — 완료, 본선 커밋**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 히어로는 생성 원본 2152×731 → Real-ESRGAN x2plus(DGX GPU) → 3840×1240(구도 동일, 가장자리 또렷·붓 질감 매끈, 100% 비교 첨부). 엠블럼·앱 아이콘 PNG·바로가기 아이콘은 알파 8 미만 픽셀을 (0,0,0,0)으로 바꿨다. `assets-inbox/wave24/processed-20260928/` 4장·비교 1 `confirmed`, 원래 4행 `superseded`, 장부 3,855행 = 그림 3,855. [기록](../assets-inbox/wave24/processed-20260928/records/README.md).
+- **INSTALL-26~29 세계 풍경 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_D 3): [보고서](verification/install26/REPORT.md), 결정 INSTALL26-D1~D2·INSTALL27-D1~D4·INSTALL28-D1·INSTALL29-D1.
+  - Wave 26 집 변형(등급마다 다섯, 집 id로 결정론, 부유한 가구는 기와·돌판 쪽, fresh·weathered·눈·판자 층; L4 e 눈 64.4 %·f 73.7 %), Wave 27 뒷마당(직업·형편·겨울, 줌 0.8부터), Wave 28 시골(구역 경계 생울타리·돌담, 성벽 밖 소품 화면 4.6 %), Wave 29 물(잔물결·거품·갈대·반짝임·물고기·얼음 테, 일시정지 중에도).
+  - 관문: 1340 도시 전후 캡처 오류 0, 성능 p95 108.6 %·102.5 %(≤ 110 %), 스킨 감사 0 / 918, 면적 예산 안, 튜토리얼 22 = 22, B9·TOUCH 14/14.
+  - 예산표 "시작 시 불러오는 그림 메모리": 1장 시작 569장·해제 76.99 MB(Wave 26 100장 +8.61 MB, 전부 78.04). dist 65.82 / 150 MB.
+  - 남은 것: 필지 여러 칸 집은 변형·눈 없음(본선과 같음), 뒷마당 그림 여섯은 대응 직업 없음, 강 흐름·물레방아 물길은 지도에 없어 그리지 않음.
 - **ECON-UI 엔진 FIX-7 넘김 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_D 2): [보고서](verification/econ-ui/REPORT.md), 결정 ECONUI-D1~D3. 도시의 에일(`townAle`)을 장부 서랍·저장소·결산에, 헛간 보리 잠금과 이유(`farmsteadCropLock`), 양모 공납 현물 줄(양털 뭉치 먼저·나머지 현금). 감사의 장 끝 쪽 기다림(부하 실행 두 번 멈춤).
 - **UI-7b 전기·카드의 개발 글자·빈 방패·표식 자리, 1장 면적 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시 RENDER_D 1): [보고서](verification/ui7b/REPORT.md), 결정 UI7B-D1~D4. 초상 근거는 개발자 표시(기본 끔)에서만, 빈 방패·원은 쪽 그림의 양피지로 덮음(가문만 문장, 상인만 표식), 작은 원에 부모 없음, 목표 카드는 내용 폭 — 1장 기본 화면 DGX 5.5 % / 6 %(부하 실행 5.8 %).
 - **UI-7 가계도·인물 얼굴·상태 장식 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/ui7/REPORT.md), 결정 UI7-D1~D5.

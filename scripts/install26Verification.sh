@@ -5,12 +5,27 @@
 # winter (scripts/install26Captures.ts on UI-6's states); ② the landscape's frame cost against the trunk
 # (scripts/install26Perf.mjs, p95 ≤ 110 %); then UI-6's set into docs/verification/install26/ui6 (skin audit, HUD area,
 # tutorial, touch targets, replays, focus). Each step runs even when one before it fails.
+# `recheck [steps]`: some of UI-6's steps again into the same ui6 folder (hud-coverage with its shots, audit-base,
+# input-replay; default the first two), their exit codes replaced in its exit-codes.txt; the gate summary is then
+# rewritten locally (scripts/ux3GateSummary.mjs reads the step logs, which stay on this side).
 set -u
 out=docs/verification/install26
 war=${UI6_STATES:-$HOME/fls-ui6-states}
 mkdir -p "$out/gates"
 declare -a results=()
 step() { local name=$1; shift; "$@" > "$out/gates/$name.log" 2>&1; local code=$?; results+=("$name=$code"); echo "$name exit $code"; }
+if [ "${1:-}" = "recheck" ]; then
+  ui6=$out/ui6
+  for name in ${2:-hud-coverage audit-base}; do
+    case $name in
+      hud-coverage) step hud-coverage npx tsx scripts/measureHudCoverage.ts "$ui6/gates/hud-coverage.json" --url "$URL" --shots "$ui6/gates/hud-shots" ;;
+      audit-base) step audit-base node scripts/uiSkinAudit.mjs "$ui6/audit-base" --url "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}" ;;
+      input-replay) step input-replay node scripts/inputReplayCompare.mjs "$ui6/gates/input-replay.json" --base "$BASE_URL" --url "$URL"; cp "$out/gates/input-replay.log" "$ui6/gates/" ;;
+    esac
+  done
+  for entry in "${results[@]}"; do sed -i "s/^${entry%%=*}=.*/$entry/" "$ui6/gates/exit-codes.txt"; done
+  printf '%s\n' "${results[@]}"; exit 0
+fi
 if [ "${1:-}" != "perf" ]; then step captures npx tsx scripts/install26Captures.ts "$out/captures" --url "$URL" --base "$BASE_URL" --states "$war"; fi
 if [ "${1:-}" = "captures" ]; then printf '%s\n' "${results[@]}"; exit 0; fi
 step perf node scripts/install26Perf.mjs "$out/gates/perf.json" --url "$URL" --base "$BASE_URL" --states "$war"
