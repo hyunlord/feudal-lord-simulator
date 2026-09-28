@@ -62,6 +62,14 @@ export type ObjectRenderItem =
       readonly anchorTx: number;
     }
   | {
+      /** INSTALL-23 village life (villageLife.ts): yard animals, birds, toys, washing lines, doorstep props, display only. */
+      readonly kind: "village_life";
+      readonly id: string;
+      readonly life: import("./villageLife").VillageLifeItem;
+      readonly depth: number;
+      readonly anchorTx: number;
+    }
+  | {
       /** Orchard trees and haycocks of painted zones (C1b), from the ground scene's zone layer. */
       readonly kind: "zone_prop";
       readonly id: string;
