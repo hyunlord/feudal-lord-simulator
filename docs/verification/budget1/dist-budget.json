@@ -1,0 +1,218 @@
+{
+ "sha": "0944bc38b6bb7716e4daa3fc11825625d1c0d3b9",
+ "dirty": false,
+ "buildMs": 1285,
+ "unit": "MB = 1000000 bytes",
+ "megabyte": 1000000,
+ "categories": [
+  {
+   "id": "world",
+   "name": "세계 그림",
+   "bytes": 26140784,
+   "files": 660,
+   "budgetBytes": null,
+   "rules": [
+    {
+     "label": "terrain, water, shore, roads, fields, foliage, boundaries, zones, yards",
+     "bytes": 4229814,
+     "files": 108
+    },
+    {
+     "label": "buildings, walls, gates, bridges, modules",
+     "bytes": 13736673,
+     "files": 163
+    },
+    {
+     "label": "walkers, animals, carried props",
+     "bytes": 1872797,
+     "files": 90
+    },
+    {
+     "label": "visible simulation marks (visibility v1)",
+     "bytes": 326042,
+     "files": 22
+    },
+    {
+     "label": "world waves 7, 9, 11, 12, 15",
+     "bytes": 4683902,
+     "files": 239
+    },
+    {
+     "label": "war props (Wave 17 world)",
+     "bytes": 167339,
+     "files": 4
+    },
+    {
+     "label": "village life, weather (Wave 23)",
+     "bytes": 1124217,
+     "files": 34
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "portraits",
+   "name": "초상",
+   "bytes": 4330489,
+   "files": 614,
+   "budgetBytes": 20000000,
+   "rules": [
+    {
+     "label": "portrait pool (256 and 96 px JPEG)",
+     "bytes": 4051156,
+     "files": 608
+    },
+    {
+     "label": "steward portraits (P0)",
+     "bytes": 279333,
+     "files": 6
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "illustrations",
+   "name": "삽화",
+   "bytes": 5289273,
+   "files": 81,
+   "budgetBytes": 25000000,
+   "rules": [
+    {
+     "label": "events, decisions, chronicle, chapter pages (Wave 16)",
+     "bytes": 2988328,
+     "files": 35
+    },
+    {
+     "label": "chapter 2 end, chronicle, decisions, events (Wave 17)",
+     "bytes": 1958503,
+     "files": 22
+    },
+    {
+     "label": "season ledger scenes (Wave 19)",
+     "bytes": 342442,
+     "files": 24
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "keyart",
+   "name": "키아트",
+   "bytes": 1489415,
+   "files": 6,
+   "budgetBytes": null,
+   "rules": [
+    {
+     "label": "title, mode select, emblem, loading screens (Wave 8)",
+     "bytes": 1489415,
+     "files": 6
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ui",
+   "name": "UI",
+   "bytes": 22747572,
+   "files": 1002,
+   "budgetBytes": null,
+   "rules": [
+    {
+     "label": "fonts (Noto Sans KR woff2 + woff)",
+     "bytes": 16189396,
+     "files": 744
+    },
+    {
+     "label": "P0 kit: frames, textures, icons, cursors, buttons",
+     "bytes": 1893752,
+     "files": 92
+    },
+    {
+     "label": "heraldry, merchant marks, seals, UI frames and icons (Wave 14)",
+     "bytes": 778949,
+     "files": 58
+    },
+    {
+     "label": "record cards, chronicle pages, timeline (Wave 19)",
+     "bytes": 2553936,
+     "files": 29
+    },
+    {
+     "label": "pad glyphs, person-state ornaments, royal arms (Wave 23)",
+     "bytes": 375101,
+     "files": 48
+    },
+    {
+     "label": "Wave 8 frames, icons, ornaments, time strip",
+     "bytes": 956438,
+     "files": 31
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "sound",
+   "name": "소리",
+   "bytes": 1237638,
+   "files": 37,
+   "budgetBytes": null,
+   "rules": [
+    {
+     "label": "audio",
+     "bytes": 1237638,
+     "files": 37
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "code",
+   "name": "코드",
+   "bytes": 2359872,
+   "files": 15,
+   "budgetBytes": null,
+   "rules": [
+    {
+     "label": "page, scripts, styles, manifests",
+     "bytes": 2349102,
+     "files": 9
+    },
+    {
+     "label": "license texts",
+     "bytes": 10770,
+     "files": 6
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "other",
+   "name": "기타",
+   "bytes": 0,
+   "files": 1,
+   "budgetBytes": null,
+   "rules": [
+    {
+     "label": "unmatched",
+     "bytes": 0,
+     "files": 1
+    }
+   ],
+   "pass": true
+  }
+ ],
+ "total": {
+  "bytes": 63595043,
+  "files": 2416,
+  "budgetBytes": 150000000,
+  "pass": true
+ },
+ "unmatched": [
+  {
+   "path": "assets/.gitkeep",
+   "bytes": 0
+  }
+ ],
+ "over": [],
+ "pass": true
+}
