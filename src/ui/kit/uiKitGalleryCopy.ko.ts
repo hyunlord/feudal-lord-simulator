@@ -21,4 +21,9 @@ export const UI_KIT_GALLERY_COPY = {
   frameStates: { complete: "목표 완료", warn: "목표 경고", advisorWarn: "청지기 걱정" },
   frameBody: "양피지 9-slice 틀. 글은 틀 안쪽 여백에 놓입니다.",
   tooltip: "도움말은 누르거나 초점을 줄 때도 보입니다(호버만으로 보이는 정보는 없습니다).",
+  // INSTALL-23 ⑤: the pad glyphs and one hint line in both forms.
+  padSection: "패드 글리프",
+  padNote: "게임패드를 쓰면 도움말·상태 줄·일시정지 표시가 글리프로, 키보드·마우스면 키 이름으로 나옵니다.",
+  padKeyboard: "키보드·마우스",
+  padGamepad: "게임패드",
 } as const;

@@ -2,9 +2,10 @@ import type { CSSProperties } from "react";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { Button } from "../kit";
 import { portraitStyle } from "../portraitArt";
+import { personPortraitStateClass, personStateOrnamentStyle } from "../persons/personStates";
 import { wave19ImageStyle, wave19Url } from "../wave19Art";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
-import type { FactionPageView } from "./factionTabModel";
+import { leaderName, type FactionPageView } from "./factionTabModel";
 
 // CHRON-2 faction chronicle page (CHRONICLE_DESIGN 2.3; UI-6 first pass). The Wave 19 `frame_faction_page` (640 x 800
 // art, drawn at one scale so its printed slots stay where they are): the leader's portrait in the circle, the arms in
@@ -53,7 +54,11 @@ export function FactionPage({ view, scale, onRecord }: {
       style={{ width: FACTION_PAGE.width * scale, height: FACTION_PAGE.height * scale }}>
       <PageArt scale={scale} />
       {leader === null || view.leader === null ? null
-        : <span className="chronicle-faction-leader" role="img" aria-label={view.leader.name} data-portrait={view.leader.portraitId} style={{ ...FACTION_PAGE_SLOTS.leader, ...leader }} />}
+        : <span className={`chronicle-faction-leader ${personPortraitStateClass(view.leader.ornament) === "" ? "" : "portrait-greyscale"}`} role="img"
+          aria-label={leaderName(view.leader)} data-portrait={view.leader.portraitId} data-person-state={view.leader.ornament ?? undefined}
+          style={{ ...FACTION_PAGE_SLOTS.leader, ...leader }} />}
+      {view.leader === null || view.leader.ornament === undefined || view.leader.ornament === null ? null : <span className="chronicle-faction-ornament person-state-ornament" aria-hidden="true"
+        data-ornament={view.leader.ornament} style={{ ...FACTION_PAGE_SLOTS.leader, ...personStateOrnamentStyle(view.leader.ornament, Math.round(148 * scale)) }} />}
       <span className="chronicle-faction-crest" style={FACTION_PAGE_SLOTS.crest}>
         <EmblemImage emblem={view.emblem} size={Math.round(CREST_ART * scale)} label={view.emblemLabel} />
       </span>

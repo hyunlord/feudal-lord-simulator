@@ -360,8 +360,19 @@
 .audio-bus { display: grid; gap: 2px; min-width: 180px; font-size: 13px; }
 .audio-bus input[type="range"] { width: 100%; min-height: 44px; margin: 0; accent-color: var(--palette-gold); }
 /* UI-5 people on screen: portraits (a new aging picture fades in over the old), person chips, the person card. */
-.person-portrait { position: relative; display: inline-block; flex: none; border-radius: 50%; overflow: hidden; }
-.person-portrait-layer { position: absolute; inset: 0; border-radius: 50%; }
+/* The face layers are round themselves; the portrait box does not clip, so a state ornament may sit over its frame's edge. */
+.person-portrait { position: relative; display: inline-block; flex: none; border-radius: 50%; }
+.person-portrait-layer { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; }
+/* INSTALL-23 ④: the state ornament (a full-canvas layer, drawn bottom-right) and a death's greyscale face (not the candle). */
+.person-state-ornament { position: absolute; inset: 0; pointer-events: none; }
+.person-portrait--dead .person-portrait-layer, .portrait-greyscale { filter: grayscale(1); }
+.person-chip-state { font-size: 12px; font-weight: 700; }
+/* INSTALL-23 ⑤: pad glyphs in a hint line (help line, status line, pause badge): glyph(s) then words, part by part. */
+.pad-glyph { display: inline-block; flex: none; vertical-align: middle; }
+.pad-hint { display: inline-flex; align-items: center; gap: 4px 12px; flex-wrap: wrap; vertical-align: middle; }
+.pad-hint-part { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; }
+.build-menu-instruction .pad-hint { flex-wrap: nowrap; }
+.person-card-text p.person-card-state { font-size: 12px; font-weight: 700; }
 .person-portrait-layer--in { animation: person-portrait-in 600ms ease-out both; }
 .person-portrait-layer--out { animation: person-portrait-out 600ms ease-out both; }
 @keyframes person-portrait-in { from { opacity: 0; } to { opacity: 1; } }

@@ -215,7 +215,7 @@ function cardIdentity(model: DiagnosticCardModel, headline: WalkerHeadline | nul
     }
     case "walker": return { name: headline?.name === null || headline?.name === undefined ? model.value.roleLabel : PERSONS_COPY.walkerName(headline.name, model.value.roleLabel),
       type: DIAGNOSTIC_CARD_COPY.walkerType, label: DIAGNOSTIC_CARD_COPY.walkerLabel(model.value.roleLabel),
-      art: headline?.portraitId === null || headline?.portraitId === undefined ? <span>{DIAGNOSTIC_CARD_COPY.walkerArt}</span> : <PersonPortrait portraitId={headline.portraitId} size={44} /> };
+      art: headline?.portraitId === null || headline?.portraitId === undefined ? <span>{DIAGNOSTIC_CARD_COPY.walkerArt}</span> : <PersonPortrait portraitId={headline.portraitId} size={44} ornament={headline.ornament ?? null} /> };
     case "wall": return { name: model.value.name, type: WALL_INSPECTOR_COPY.type, label: WALL_INSPECTOR_COPY.label(model.value.name), art: <span>{WALL_INSPECTOR_COPY.art}</span> };
     case "construction_site": return { name: model.value.name, type: DIAGNOSTIC_CARD_COPY.siteType, label: DIAGNOSTIC_CARD_COPY.siteLabel(model.value.name), art: <span>{DIAGNOSTIC_CARD_COPY.siteArt}</span> };
   }

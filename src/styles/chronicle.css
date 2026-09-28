@@ -162,6 +162,9 @@
 .chronicle-factions-leader { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .chronicle-factions-leader-text strong { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .chronicle-factions-face { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--palette-ink) 55%, transparent); }
+/* INSTALL-23 ④: the leader's face and its state ornament over the frame's bottom-right. */
+.chronicle-factions-face-frame { position: relative; flex: none; display: block; width: 44px; height: 44px; }
+.chronicle-factions-face-frame .chronicle-factions-face { display: block; }
 .chronicle-factions-face--none { background: color-mix(in srgb, var(--palette-ink) 12%, transparent); }
 .chronicle-factions-scale { display: grid; justify-items: center; gap: 2px; }
 .chronicle-factions-track { position: relative; display: block; height: 14px; background-size: 100% 100%; }

@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { Button } from "../kit";
 import { portraitStyle } from "../portraitArt";
+import { personPortraitStateClass, personStateOrnamentStyle } from "../persons/personStates";
 import { wave19ImageStyle, wave19Url } from "../wave19Art";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import type { FactionRow, WorldLine } from "./factionTabModel";
@@ -44,7 +45,12 @@ export function FactionTab({ rows, world, onOpen }: {
                   <span className="chronicle-factions-name"><strong>{row.name}</strong>{row.kind === row.name ? null : <span>{row.kind}</span>}</span>
                   <span className="chronicle-factions-leader">
                     {face === null ? <span className="chronicle-factions-face chronicle-factions-face--none" aria-hidden="true" />
-                      : <span className="chronicle-factions-face" aria-hidden="true" data-portrait={row.leader?.portraitId} style={face} />}
+                      : <span className="chronicle-factions-face-frame" aria-hidden="true">
+                        <span className={`chronicle-factions-face ${personPortraitStateClass(row.leader?.ornament) === "" ? "" : "portrait-greyscale"}`}
+                          data-portrait={row.leader?.portraitId} data-person-state={row.leader?.ornament ?? undefined} style={face} />
+                        {row.leader === null || row.leader.ornament === undefined || row.leader.ornament === null ? null
+                          : <span className="person-state-ornament" data-ornament={row.leader.ornament} style={personStateOrnamentStyle(row.leader.ornament, FACE)} />}
+                      </span>}
                     <span className="chronicle-factions-leader-text"><strong>{row.leader?.name ?? COPY.noLeader}</strong>{row.leader === null ? null : <span>{row.leader.line}</span>}</span>
                   </span>
                   <RelationScale row={row} />

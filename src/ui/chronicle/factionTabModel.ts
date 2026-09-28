@@ -7,6 +7,8 @@ import { history } from "../../engine/history";
 import { ageOf, currentYear, personById, personDisplayName, personPortrait } from "../../engine/persons";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { drawnPortraitId } from "../portraitArt";
+import { PERSON_STATE_COPY } from "../persons/personStateCopy.ko";
+import { personOrnament, type PersonStateId } from "../persons/personStates";
 import { chronicleDate, factionEmblem } from "./chronicleScreenModel";
 import { CHRONICLE_SCREEN_COPY as COPY, DEMAND_NAMES, LEADER_ROLES, RELATION_BANDS } from "./chronicleScreenCopy.ko";
 
@@ -17,7 +19,8 @@ import { CHRONICLE_SCREEN_COPY as COPY, DEMAND_NAMES, LEADER_ROLES, RELATION_BAN
 // `factionDisplayName` and `GENTRY_NAMES_KO` (FIX-5): an engine proper noun never reaches the screen as it is stored.
 // Pure: the screen renders what these return.
 
-export type FactionLeaderView = Readonly<{ id: string; name: string; role: string; line: string; portraitId: string }>;
+/** `ornament` (INSTALL-23 ④): the leader's state ornament (`personStates.ts`; a town person as the commons' reeve wears theirs). */
+export type FactionLeaderView = Readonly<{ id: string; name: string; role: string; line: string; portraitId: string; ornament?: PersonStateId | null }>;
 export type FactionRow = Readonly<{
   id: FactionId; name: string; kind: string; emblem: EmblemSpec; emblemLabel: string; leader: FactionLeaderView | null;
   relation: number; relationX: number; relationText: string; demands: number; promises: number; memory: number; label: string;
@@ -49,8 +52,12 @@ function leaderView(state: GameState, faction: FactionView): FactionLeaderView |
   const year = currentYear(state);
   const age = person.alive ? ageOf(person, year) : null;
   return { id: person.id, name: personDisplayName(person), role, line: COPY.leaderLine(role, age),
-    portraitId: drawnPortraitId(person, personPortrait(state, person).portraitId) };
+    portraitId: drawnPortraitId(person, personPortrait(state, person).portraitId), ornament: personOrnament(state, person) };
 }
+
+/** The leader's name as a screen reader hears it: with the portrait's state when it wears one. */
+export const leaderName = (leader: FactionLeaderView) => leader.ornament === undefined || leader.ornament === null ? leader.name
+  : PERSON_STATE_COPY.withState(leader.name, PERSON_STATE_COPY.label(leader.ornament));
 
 const nameOf = (faction: Pick<FactionView, "id" | "name">) => factionDisplayName(faction.id, faction.name);
 
@@ -63,7 +70,7 @@ export function factionRows(state: GameState): readonly FactionRow[] {
     const relationText = COPY.relationText(relationBand(relation), relation);
     return { id: faction.id, name, kind: FACTION_KIND_NAMES[faction.kind] ?? "", emblem: factionEmblem(faction, currentYear(state)), emblemLabel: COPY.crestLabel, leader,
       relation, relationX: relationX(relation), relationText, demands: faction.demands.length, promises: faction.promises.length, memory: faction.memory.length,
-      label: COPY.factionRowLabel(name, leader?.name ?? COPY.noLeader, relationText, faction.demands.length) };
+      label: COPY.factionRowLabel(name, leader === null ? COPY.noLeader : leaderName(leader), relationText, faction.demands.length) };
   });
 }
 
