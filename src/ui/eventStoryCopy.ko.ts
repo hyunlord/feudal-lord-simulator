@@ -111,4 +111,46 @@ export const EVENT_STORY_COPY = {
     beacon: "봉화가 올랐습니다. 다음 계절에 습격이 옵니다 — 성벽을 닫으십시오",
     raidAhead: (year: number) => `해안 습격이 ${year}년 여름쯤 올 것입니다. 성벽을 돌로 닫아 두십시오`,
   },
+  // UI-8 (F3-A PL-1…PL-10): the Black Death of 1348 — nine beats and their steward line.
+  plague: {
+    /** PL-1: the harbour fever rumour — while plagueStage === "rumour". */
+    rumour: { title: "항구 열병 소문", line: "항구에서 열병이 돈다는 소문이 들어왔습니다. 아직 도시 밖 이야기입니다",
+      advice: "곡창과 금고를 채워 두십시오. 사제 공석이 생기면 곧 결정이 필요합니다" },
+    /** PL-2: the pestilence arrives — while plagueStage === "arrival". */
+    arrival: { title: "역병이 들어왔습니다", line: "역병이 도시에 들어왔습니다. 계절마다 사람이 죽고 집이 빕니다",
+      advice: "임금과 사제 자리 결정을 서두르십시오. 빈 필지는 이후 다시 채울 수 있습니다",
+      dead: (n: number) => `지금까지 사망 ${n}명` },
+    /** PL-6: priest's seat is empty — while curacyVacant. */
+    priestDeath: { title: "사제가 죽었습니다", line: "사제가 역병으로 죽었습니다. 교회와 예배당이 비어 아무도 섬기지 않습니다",
+      advice: "빈 사제 자리 청원에 답해 교회를 다시 여십시오" },
+    /** PL-2: first deaths — during arrival, dead > 0. */
+    newGraves: { title: "새 무덤", line: "교회 묘지에 새 무덤이 늘었습니다. 역병이 이웃을 빼앗아 갑니다",
+      advice: "역병은 한 계절 안에 멈추지 않습니다. 남은 일꾼으로 시설을 유지하십시오",
+      dead: (n: number) => `사망 ${n}명` },
+    /** PL-3: first vacant houses — while vacant houses exist during arrival. */
+    emptyStreets: { title: "빈 거리", line: "사람이 죽거나 달아나 거리가 비었습니다. 빈 집이 늘어납니다",
+      advice: "빈 필지는 역병이 물러가면 재정착으로 채울 수 있습니다",
+      houses: (n: number) => `빈 집 ${n}채` },
+    /** PL-3: arrival ends, fields lie empty — within 2 seasons of first.endTick. */
+    abandonedFields: { title: "버려진 밭", line: "역병이 물러갔습니다. 일꾼이 줄어 밭이 버려지고 수확이 모자랍니다",
+      advice: "빈 필지 재분배 청원에 답해 재정착을 시작하십시오" },
+    /** PL-5: the Statute of Labourers is read — within 1 season of ordinanceTick. */
+    ordinance: { title: "노동자 조례 낭독", line: "국왕이 1351년 노동자 조례를 낭독했습니다. 임금을 올린 영주는 벌금을 냅니다",
+      advice: "임금을 올렸다면 조례 벌금이 금고에서 나갑니다" },
+    /** PL-7: resettlement has begun — while resettled > 0 and endedTick undefined. */
+    resettlement: { title: "재정착", line: "빈 집에 새 가족이 들기 시작했습니다. 빈 필지가 서서히 채워집니다",
+      advice: "화폐 지대 청원에 답해 지대 수입을 안정시키십시오" },
+    /** PL-9: the second pestilence — while plague.second is active (endTick undefined). */
+    second: { title: "두 번째 역병", line: "1361년, 역병이 다시 왔습니다. 이번에는 아이와 젊은이들이 많이 죽습니다",
+      advice: "두 계절이면 끝납니다. 금고와 식량을 지켜 내십시오",
+      dead: (n: number) => `이번 역병 사망 ${n}명` },
+    /** Chip advice for a plague petition (non-crown petitioners: labourers, parish, townsfolk). */
+    demand: { advice: "한 계절 안에 답하지 않으면 거절로 칩니다. 역병 뒤의 선택은 3장 끝까지 남습니다" },
+  },
+  /** UI-8: the steward's one line when the plague is the nearest coming event. */
+  stewardPlague: {
+    rumour: "항구 열병 소문이 돕니다. 역병이 올 수 있습니다 — 금고와 곡창을 채워 두십시오",
+    arrival: "역병이 도시에 들어왔습니다. 임금·사제 자리 청원에 곧 답해야 합니다",
+    second: "두 번째 역병이 왔습니다. 두 계절이면 물러갑니다",
+  },
 } as const;
