@@ -16,8 +16,8 @@ import { decodeSave } from "../src/save/saveCodec";
 import { petitionDecisionView } from "../src/ui/decisionModels";
 import { storyBeats } from "../src/ui/eventStory";
 import { PetitionModal } from "../src/ui/hud/StoryModals";
-import { ROYAL_LAYOUT, ROYAL_QUARTERED_FROM_YEAR, royalArms } from "../src/ui/heraldry/heraldry";
-import { emblemKey } from "../src/ui/heraldry/EmblemImage";
+import { ROYAL_QUARTERED_FROM_YEAR, royalArms } from "../src/ui/heraldry/heraldry";
+import { EmblemImage, emblemKey, royalArmsUrls } from "../src/ui/heraldry/EmblemImage";
 import { factionEmblem } from "../src/ui/chronicle/chronicleScreenModel";
 import { lordshipView, menAwayLine } from "../src/ui/lordshipModel";
 import { warMarks } from "../src/ui/seasonStrip";
@@ -166,11 +166,11 @@ test("UI-6b the Crown bears the king's arms of the year: England's lions until 1
   assert.deepEqual(factionEmblem({ kind: "crown", heraldrySeed: 7 }, 1339), { kind: "royal", arms: "england" });
   assert.deepEqual(factionEmblem({ kind: "crown", heraldrySeed: 7 }, 1340), { kind: "royal", arms: "france_england" });
   assert.equal(factionEmblem({ kind: "overlord", heraldrySeed: 7 }, 1340).kind, "arms", "the others keep their seed's arms");
-  // Three lions in pale; quartered: three in each of 2 and 3, and a semé of lis over 1 and 4.
-  assert.equal(ROYAL_LAYOUT.england.lions.length, 3);
-  assert.deepEqual(ROYAL_LAYOUT.england.lions.map(box => box.y), [...ROYAL_LAYOUT.england.lions.map(box => box.y)].sort((a, b) => a - b));
-  assert.equal(ROYAL_LAYOUT.france_england.lions.length, 6);
-  assert.ok(ROYAL_LAYOUT.france_england.lis.length >= 8);
+  // INSTALL-23: Wave 23's finished arms, 96 and 256 px, by the year.
+  assert.match(royalArmsUrls("england").small, /wave23\/royal\/arms_royal_england_pre1340_96\.png$/);
+  assert.match(royalArmsUrls("france_england").large, /wave23\/royal\/arms_royal_england_1340_256\.png$/);
+  const markup = renderToStaticMarkup(createElement(EmblemImage, { emblem: { kind: "royal", arms: "france_england" }, size: 38, label: "국왕과 왕실" }));
+  assert.match(markup, /arms_royal_england_1340_96\.png 96w, [^"]*arms_royal_england_1340_256\.png 256w/);
   assert.equal(emblemKey({ kind: "royal", arms: "england" }), "royal.england");
 });
 
