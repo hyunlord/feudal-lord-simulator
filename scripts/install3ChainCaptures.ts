@@ -52,9 +52,14 @@ async function scene(state: GameState, tile: readonly number[], run = false) {
 }
 async function world(page: Page, file: string) { await page.mouse.move(4, 4); await page.waitForTimeout(250); await page.screenshot({ path: join(out!, file), type: "jpeg", quality: 62, clip: CROP }); files.push(file); }
 async function ui(locator: Locator, file: string) { await locator.first().waitFor({ timeout: 10_000 }); await locator.first().screenshot({ path: join(out!, file), type: "jpeg", quality: 62 }); files.push(file); }
+/** Clicks the building at `tile`; a walker or cart passing over it can take the click, so a few nearby points are tried. */
 async function selectAt(page: Page, tile: readonly number[]) {
-  const at = await page.evaluate(spot => (window as unknown as { __FEUDAL_PHASE10_PROOF__: Proof }).__FEUDAL_PHASE10_PROOF__.tileClientPoint(spot), { tx: tile[0], ty: tile[1] });
-  await page.mouse.click(at.clientX, at.clientY); await page.waitForTimeout(700);
+  for (const [dx, dy] of [[0, 0], [0.25, -0.25], [-0.25, 0.25], [0.3, 0.3]] as const) {
+    const at = await page.evaluate(spot => (window as unknown as { __FEUDAL_PHASE10_PROOF__: Proof }).__FEUDAL_PHASE10_PROOF__.tileClientPoint(spot), { tx: tile[0]! + dx, ty: tile[1]! + dy });
+    await page.mouse.click(at.clientX, at.clientY); await page.waitForTimeout(700);
+    if (await page.locator(".diagnostic-card").count() > 0) return;
+    await page.keyboard.press("Escape"); await page.waitForTimeout(200);
+  }
 }
 const card = (page: Page) => page.locator(".diagnostic-card");
 async function step(name: string, run: () => Promise<Record<string, unknown> | void>) {
