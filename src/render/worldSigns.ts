@@ -17,6 +17,7 @@ import { drawWave7 } from "./wave7Art";
 export { drawSeasonalDecals } from "./seasonalDecals"; // one renderer import for the world's ground and signs
 export { drawStoryWorldOverlays } from "./wetSummer"; // UI-4 story overlays (S12 departures, INSTALL-23 weather)
 export { drawWeatherGround } from "./weatherOverlay"; // INSTALL-23 weather on the ground (sheen, puddles, cracks)
+export { drawCountryFields } from "./countrysideDraw"; // INSTALL-28 wildflower patches outside the walls
 
 // World signs (visibility design 3절; F0-V the P0 three, INSTALL-7 the Wave 7 art and the rest): the world says what
 // needs doing before an icon does.

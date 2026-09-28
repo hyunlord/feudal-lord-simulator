@@ -148,7 +148,7 @@ export function stageForRenderItem(kind: string): RenderStage {
     case "construction_site": return "construction";
     case "palisade_segment": return "walls";
     case "bridge_rail": return "bridges";
-    case "tree": case "stump": case "groundCover": return "nature";
+    case "tree": case "stump": case "groundCover": case "countryside": return "nature";
     default: return "buildings";
   }
 }
