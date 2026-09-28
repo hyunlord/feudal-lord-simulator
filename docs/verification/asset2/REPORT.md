@@ -49,6 +49,7 @@
 - DGX UI 관문 `c2a5a3c`, 본선 `a33390d9` 대비([gates.json](gates/gates.json)): 스킨 감사 0 / 909(26개 상태), 본선 0 / 788([audit.json](audit/audit.json)); 면적 1280 5.9 % / 6 %, 태블릿 6.4 % / 8 %; 튜토리얼 22 = 22, B9·TOUCH 14/14, 게임패드·초점 복귀, 터치 대상·글자 위반 0.
 - 전후 캡처(DGX, UI-5 `petition-open` seed 2, 확대 2): 이야기 워커가 둘레의 일반 워커와 같은 키로, 자원 막대 원석 줄은 글만.
 - 깨끗한 클론 `4111f02`(본선 INBOX-1s를 받은 병합, DGX): npm ci, typecheck, 3,288/3,288, build. `npm run check:merge` 통과(ledger 검사 포함).
+- 본선이 그 뒤 INBOX-1t·1u(INBOX 장부·PNG만)로 움직여 한 번 더 받았다: 병합 전 검사와 설치 대장·INBOX·해시 시험을 로컬에서 돌렸다(클론은 `4111f02`).
 - 시간: 09:07(작업 가지 생성) → 10:18(클론 통과, KST 벽시계), 약 1시간 11분.
 - 증거 0.3 MB.
 
