@@ -4,14 +4,18 @@ import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
+import { PRESSURE_BALANCE } from "../src/content/balanceConfig";
 import { TRAIT_POPULATION, type PersonTraits, type TraitKey } from "../src/content/personTraits";
 import type { GameState } from "../src/engine/engine.types";
+import { advanceHistory, history } from "../src/engine/history";
 import type { HistoryRecord } from "../src/engine/history.types";
-import { ageOf, currentYear } from "../src/engine/persons";
+import { advancePersons, ageOf, currentYear } from "../src/engine/persons";
 import { persons } from "../src/engine/personsApi";
 import type { Person } from "../src/engine/persons.types";
 import { PORTRAIT_MIN_AGE } from "../src/engine/portraits";
+import type { House } from "../src/population/population.types";
 import { decodeSave } from "../src/save/saveCodec";
+import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { BiographyPage } from "../src/ui/chronicle/BiographyPage";
 import { biographyView, recordCard } from "../src/ui/chronicle/chronicleScreenModel";
 import { personCardView, personRow } from "../src/ui/persons/personModels";
@@ -113,4 +117,38 @@ test("UI-7 young faces: a baby, a toddler and a small child wear the pool's face
   const art = recordCard(town, { key: born.id, tick: born.tick, record: born, bundle: null }).art;
   assert.equal(art?.kind, "portrait");
   assert.ok(art?.kind === "portrait" && !art.portraitId.startsWith("silhouette_") && portraitUrl(art.portraitId, 96) !== null);
+});
+
+/** The engine's own records: a town of 24 houses for 48 seasons (lineage.test.ts H9), every person record it wrote. */
+function ledgerTown(): GameState {
+  const SEASON = PRESSURE_BALANCE.seasonTicks;
+  const houses: House[] = Array.from({ length: 24 }, (_, index) => ({ buildingId: `house-${String(index).padStart(3, "0")}`, level: 2, builtLevel: 2,
+    residents: 8, hasWater: true, breadStock: 5, lastServicedTick: 0, unmetRequirementTicks: 0, members: { adults: 4, children: 4, seed: index } }));
+  let state = advancePersons({ ...DEFAULT_GAME_STATE, tick: SEASON, houses, population: 24 * 8 });
+  state = { ...state, persons: { ...state.persons!, people: state.persons!.people.map((entry, index) => entry.role === "head" && index % 5 === 0 ? { ...entry, classBand: "artisan" as const } : entry) } };
+  for (let season = 2; season <= 48; season += 1) state = advanceHistory(state, advancePersons({ ...state, tick: season * SEASON }));
+  return state;
+}
+
+test("UI-7 ledger sentences: the passing states and the bailiff read as Korean sentences in the biography and on the record cards", () => {
+  const state = ledgerTown();
+  const templates = ["person.fell_ill", "person.recovered", "person.injured", "person.healed", "person.expecting", "person.pilgrimage", "person.returned", "person.bailiff"];
+  for (const template of templates) {
+    const sentence = history.summary({ template });
+    assert.notEqual(sentence, template, `${template} has a sentence`);
+    assert.match(sentence, /[가-힣]/, template);
+  }
+  const records = state.history!.records.filter(record => templates.includes(record.template));
+  // The engine wrote each beginning and the office in these 48 seasons (an ending may fall later); every one it wrote reads.
+  for (const template of ["person.fell_ill", "person.injured", "person.expecting", "person.pilgrimage", "person.bailiff"]) {
+    assert.ok(records.some(record => record.template === template), template);
+  }
+  for (const record of records) {
+    const sentence = history.summary(record);
+    const card = recordCard(state, { key: record.id, tick: record.tick, record, bundle: null });
+    assert.ok(card.sentence.endsWith(sentence) && !card.sentence.includes(record.template), `${record.template}: ${card.sentence}`);
+    const life = biographyView(state, record.subject.id)!.events.find(event => event.id === record.id)!;
+    assert.equal(life.sentence, sentence);
+    assert.doesNotMatch(life.sentence, /person\./);
+  }
 });
