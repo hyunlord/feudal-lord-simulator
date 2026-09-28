@@ -1,11 +1,16 @@
 # 현재 상태
 
-갱신: 2026-09-28(NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · C4 멈춤 · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **ASSET-2 runtime 정리 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 ASSET-1): [보고서](verification/asset2/REPORT.md), 결정 ASSET2-D1~D5.
+  - ASSET-1 스크립트 재실행: 장부 밖 0·옛 버전 등록 0·caBX 0·같은 이름 다른 내용 0(본선 10·7·6·4). 장부 밖 10개 삭제, 도로 v2·성벽 면 v1·옛 자원 아이콘 16개 퇴역(`assets-inbox/retired`), Wave 11 킷 파일 계열 접두.
+  - 자원 막대는 UX-2 시트 칸만(밀·통나무·원석 칸은 없음 — Astra 후보), 이야기 워커는 일반 워커 키(17.6 px), Wave 13 동물 설치 배율 기준, 말뚝 면 색 띠·잔여 점 수정. 초기 건물 17개는 아직 쓰여 목록으로 보고.
+  - 검증: DGX 전체 회귀 3,288/3,288(C25 그대로), 스킨 감사 0 / 909, 면적 5.9 % / 6 %, 튜토리얼 22 = 22, B9·TOUCH 14/14.
 
 - **NAME-1 화면의 사람 이름 한글 — 관문 통과, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시): [보고서](verification/name1/REPORT.md), 결정 NAME1-D1~D2.
   - 식구·인물 카드·가구·워커·청원 칩·연대기 카드·전기·세력 탭과 쪽의 사람 이름을 `persons.displayName`(FIX-6) 하나로, 국왕 표는 `KING_NAMES_KO` 하나. 상인 가문 이름도 한글 읽기.
