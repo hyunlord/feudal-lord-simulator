@@ -1,9 +1,8 @@
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
-import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { GameState } from "../engine/engine.types";
 import { eventForecast } from "../engine/eventSchedule";
-import { curacyVacant, plagueForecast, plagueStage } from "../engine/plague";
+import { curacyVacant, plagueStage } from "../engine/plague";
 import { famineStatus, openPetitions } from "../engine/politics";
 import { stateCalendar } from "../engine/scenarioState";
 import { wetSummer } from "../render/wetSummer";
