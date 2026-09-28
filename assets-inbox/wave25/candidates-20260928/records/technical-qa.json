@@ -1,0 +1,19 @@
+{
+  "asset_count": 16,
+  "dimension_checks": "16/16",
+  "rgba_checks": "16/16",
+  "seams": [
+    "h left/right and v top/bottom identical, mismatch0",
+    "tree_line_corner_tl all declared ports mismatch0",
+    "tree_line_corner_tr all declared ports mismatch0",
+    "tree_line_corner_bl all declared ports mismatch0",
+    "tree_line_corner_br all declared ports mismatch0",
+    "tree_line_junction_t all declared ports mismatch0"
+  ],
+  "proof_dimensions": "1280x800",
+  "limits": [
+    "Opaque parchment-centered rectangular node frames have no fully transparent pixels in selected/deceased variants.",
+    "Runtime interaction not tested.",
+    "Spouse portraits are source JPEG crops upscaled65 to96 pixels."
+  ]
+}

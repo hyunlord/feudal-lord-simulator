@@ -1,0 +1,112 @@
+{
+  "status": "candidate",
+  "generator": "built-in image_gen",
+  "model_version": null,
+  "seed": null,
+  "references": [
+    "references/UI-KIT_부품_톤.jpg",
+    "references/Wave19_전기_세력쪽_틀.jpg"
+  ],
+  "assets": [
+    {
+      "id": "tree_lineage_banner",
+      "file": "assets/tree_lineage_banner.png",
+      "native": "records/native-banner-labels.png",
+      "prompt": "Create exactly ONE isolated medieval genealogy UI lineage heading banner asset on a truly transparent RGBA background, NO checkerboard drawn. Wide horizontal 320:72 aspect silhouette, use canvas efficiently. Style reference images supplied: first UI-KIT parchment material/color, second restrained thin brown oak/ink trim. Not a whole screen. Warm low-saturation cream parchment flat ribbon plate, extremely thin dark warm oak brown double keyline, subtly clipped/rounded outside corners. No gold baroque, no thick wood. Center must be very quiet flat color without speckle clusters. No letters, no numbers, NO emblems, NO coat of arms, no placeholder icons. Entire interior is blank; leave a completely clear 48x48 area centered around x=42,y=36 in final 320x72 pixels for CODE to overlay its heraldry, do NOT draw an enclosure or divider around it. Rest interior title area also blank. Production 9-slice: all ornamental corner detail confined within left/right 24px and top/bottom 10px at final size; central 272x52 is flat parchment. Top/bottom edges must be perfectly straight uniform horizontal bands throughout the central 272px. Left/right edges perfectly straight through central52px. Tiny restrained corner ink accents only. No folds, curls, fishtails, taper, cast shadow, perspective, gradients or uneven wavy edges in stretch zones. Exterior corners genuinely alpha transparent. Single front-facing banner only, no samples, no labels. Deliver high resolution preserving exact 40:9 silhouette aspect.",
+      "selection": "first generation",
+      "width": 320,
+      "height": 72,
+      "slice": {
+        "left": 24,
+        "right": 24,
+        "top": 10,
+        "bottom": 10
+      },
+      "heraldry_slot": {
+        "x": 18,
+        "y": 12,
+        "width": 48,
+        "height": 48
+      },
+      "text_safe": {
+        "x": 72,
+        "y": 12,
+        "width": 224,
+        "height": 48
+      },
+      "qa": {
+        "native_width": 2089,
+        "native_height": 753,
+        "crop": {
+          "left": 63,
+          "top": 183,
+          "width": 1965,
+          "height": 386
+        },
+        "output_width": 320,
+        "output_height": 72,
+        "channels": 4,
+        "transparent_pixels": 155,
+        "partial_alpha_pixels": 22149,
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_dust_cleared_pixels": 40,
+        "visual_review": "Native final-size inspection: blank center and heraldry reserve; only tiny corner ornamentation within insets; straight trims. No letters, numerals, or baked emblem."
+      }
+    },
+    {
+      "id": "tree_generation_label",
+      "file": "assets/tree_generation_label.png",
+      "native": "records/native-generation-labels.png",
+      "prompt": "Generate exactly ONE isolated blank medieval genealogy generation-label UI strip, transparent RGBA exterior. Reference1 UI-KIT low saturation parchment tone; reference2 Wave19 thin restrained oak-brown ink double outline. Label final intended dimensions120x32, horizontal 15:4 aspect silhouette. Very quiet warm cream parchment rectangular plate with tiny clipped corners and fine brown double hairline outline, tiny geometric corner accents only. No letters, numbers, glyphs, logos, emblem, icons, no empty text placeholder dashes. Flat front orthographic. True 9-slice: keep corner ornaments entirely inside left/right10px and top/bottom8px at final120x32. Central100x16 totally blank light parchment, minimal even texture; horizontal upper/lower trim straight uniform bands; vertical side trim straight. No curled paper, fishtail ribbon, folds, diagonal surfaces, ornate decoration, drop shadow or perspective. Transparent pixels OUTSIDE corner silhouette, NOT black background or drawn transparency checkerboard. One single asset only, high resolution. It must remain a quiet readable background at native120x32.",
+      "selection": "first generation",
+      "width": 120,
+      "height": 32,
+      "slice": {
+        "left": 10,
+        "right": 10,
+        "top": 8,
+        "bottom": 8
+      },
+      "text_safe": {
+        "x": 12,
+        "y": 8,
+        "width": 96,
+        "height": 16
+      },
+      "qa": {
+        "native_width": 2103,
+        "native_height": 748,
+        "crop": {
+          "left": 73,
+          "top": 163,
+          "width": 1956,
+          "height": 419
+        },
+        "output_width": 120,
+        "output_height": 32,
+        "channels": 4,
+        "transparent_pixels": 20,
+        "partial_alpha_pixels": 3545,
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_dust_cleared_pixels": 8,
+        "visual_review": "Native final-size inspection: blank center and heraldry reserve; only tiny corner ornamentation within insets; straight trims. No letters, numerals, or baked emblem."
+      }
+    }
+  ],
+  "postprocessing": "Sharp alpha bounding-box crop, resize to exact requested dimensions with Lanczos3, preserving native alpha. No painted content added. Alpha values 1–8 from downsampling are cleared to zero to remove transparent-corner dust; other alpha values preserved.",
+  "limitations": [
+    "Offline candidate assets, not installed in game.",
+    "Parchment texture scales with center; corner/edge ornament geometry is protected by declared insets.",
+    "Banner heraldry is an unpainted reserved code-overlay area, not a baked crest."
+  ]
+}

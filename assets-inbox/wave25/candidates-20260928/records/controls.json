@@ -1,0 +1,105 @@
+{
+  "assets": [
+    {
+      "id": "tree_expand",
+      "width": 32,
+      "height": 32,
+      "status": "candidate",
+      "prompt": "Create exactly ONE raster game UI asset: a compact square EXPAND button bearing one bold centered PLUS glyph, for a medieval genealogy tree. Use case: stylized-concept. It will be downscaled to 32x32 pixels, so prioritize functional simplicity and legibility. Flat front-facing square button, straight edges with tiny softened corners, thin dark oak-brown outline, warm pale parchment face, muted dark ink-brown thick plus symbol. Subtle paper grain only, no ornament, no metal, no beveled 3D, no shadow. Button spans 90 percent of square canvas, plus spans 42 percent. Transparent RGBA background outside button, true alpha, no painted checkerboard. NO text, letters, digits, watermark, multiple buttons or sheet. Palette consistent with restrained parchment/oak medieval UI, beige #ddc9a3, ink #51432c.",
+      "tool": "built-in image_gen",
+      "model": null,
+      "seed": null,
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a9-7121-7c53-ada1-ca150196920f/exec-b9c578c5-4085-41b7-9b87-a5f74c9080e4.png",
+      "native_path": "native/tree_expand.png",
+      "asset_path": "assets/tree_expand.png",
+      "reference": "references/UI-KIT_부품_톤.jpg visually inspected, no reference uploaded",
+      "postprocessing": "Sharp Lanczos3 resize full canvas to exact dimensions; preserve native and alpha",
+      "qa": {
+        "width": 32,
+        "height": 32,
+        "channels": 4,
+        "transparentPixels": 331,
+        "opaquePixels": 80,
+        "alpha128bbox": [
+          4,
+          5,
+          27,
+          26
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ]
+      }
+    },
+    {
+      "id": "tree_collapse",
+      "width": 32,
+      "height": 32,
+      "status": "candidate",
+      "prompt": "Edit this single parchment EXPAND button into its matching COLLAPSE button. Change ONLY centered plus symbol to a centered thick horizontal MINUS glyph by removing its vertical stroke. Preserve identical outer button geometry, canvas, position, border color and thickness, parchment texture and alpha transparency. One flat front-facing square button. No text, letters or digits. Intended 32x32px game UI. Transparent outside, no checkerboard painted.",
+      "tool": "built-in image_gen",
+      "model": null,
+      "seed": null,
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a9-7121-7c53-ada1-ca150196920f/exec-4bfe21b0-36ff-4659-800e-894e6e999318.png",
+      "native_path": "native/tree_collapse.png",
+      "asset_path": "assets/tree_collapse.png",
+      "reference": "tree_expand native image edit target",
+      "postprocessing": "Sharp Lanczos3 resize full canvas to exact dimensions; preserve native and alpha",
+      "qa": {
+        "width": 32,
+        "height": 32,
+        "channels": 4,
+        "transparentPixels": 310,
+        "opaquePixels": 80,
+        "alpha128bbox": [
+          4,
+          5,
+          27,
+          26
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ]
+      }
+    },
+    {
+      "id": "tree_outside_spouse_marker",
+      "width": 24,
+      "height": 24,
+      "status": "candidate",
+      "prompt": "Create exactly ONE small OPEN DOOR icon for a medieval genealogy UI indicating a spouse entering from outside. Final icon will be 24x24 pixels: extremely clear bold simplified silhouette and few large shapes. Front-facing upright doorway frame in dark oak/ink brown #51432c, one plain warm ochre oak door panel swung partially open toward viewer on right hinge, revealing a light warm parchment interior slit. Flat hand painted raster UI style, subtle restrained texture only, same parchment/oak muted palette as a historical game's plain functional buttons. Door icon occupies about 85% of square canvas, centered. No person, no heads, no arrows, no rings, no sign, no ornate arch, no castle, no scene, no ground, no shadow, no letters, text or digits. TRUE transparent RGBA background outside door outline; never painted checkerboard. Single asset only.",
+      "tool": "built-in image_gen",
+      "model": null,
+      "seed": null,
+      "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0e7a9-7121-7c53-ada1-ca150196920f/exec-903ff61f-9bf0-4436-a7ed-11b762b21024.png",
+      "native_path": "native/tree_outside_spouse_marker.png",
+      "asset_path": "assets/tree_outside_spouse_marker.png",
+      "reference": "references/UI-KIT_부품_톤.jpg visually inspected, no reference uploaded",
+      "postprocessing": "Sharp Lanczos3 resize full canvas to 24x24; preserve native and alpha",
+      "qa": {
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "transparentPixels": 240,
+        "opaquePixels": 43,
+        "alpha128bbox": [
+          6,
+          2,
+          17,
+          21
+        ],
+        "nativeDimensions": [
+          1254,
+          1254
+        ]
+      }
+    }
+  ],
+  "visual_qa": {
+    "status": "pass_offline_candidate",
+    "review": "Inspected native and exact-size 32px/24px PNGs. Expand plus and collapse minus are distinct, centered and legible; both alpha128 bounds [4,5,27,26]. Door reads as open doorway at 24px. Warm parchment face and oak/ink brown outlines match supplied UI-KIT direction. True outside transparency verified; no text/digits, people, or painted checkerboard.",
+    "limits": "Generated buttons have matching silhouette bounds but are not claimed pixel-identical outside glyph. Actual runtime interaction not tested. Candidate only, no game installation."
+  }
+}

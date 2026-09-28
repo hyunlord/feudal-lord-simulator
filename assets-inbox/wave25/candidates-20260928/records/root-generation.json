@@ -1,0 +1,23 @@
+{
+  "tool": "image_gen__imagegen",
+  "model_version": null,
+  "seed": null,
+  "generations": [
+    {
+      "id": "ink-line",
+      "prompt": "Create a single tiny UI asset source for a medieval genealogy branch line. ONE horizontal straight sepia brown ink stroke across full canvas width, with a very slight faded handdrawn ink bleed on both sides. Genuinely transparent background. Mainstroke slender, dark enough at64x8 finalsize. Constantthickness acrossfullwidth, NOtaper atends and NOornaments, no brush/pen object. Intended to tile seamlessly lefttoright after technicaledge matching. Source canbe wide horizontalcanvas, stroke runs perfectlyhorizontally throughverticalcenter. Overallpaintedinkstyle matches attached restrained parchment oak UI. Do NOT reproduce sheet/layout/text/portraits/frame. NO letters/numbers/shapesotherthanthe singleline. Transparentabovebelow. Desired finalasset64x8.",
+      "references": [
+        "references/Wave19_전기_세력쪽_틀.jpg"
+      ],
+      "native": "records/line-native.png"
+    },
+    {
+      "id": "marriage-rings",
+      "prompt": "Generate ONE tiny genealogy UI marriage connector: two interlocking plain sepia ink rings side by side centered on a transparent canvas, no text or numerals, no heart, no jewels, no banner, no background. Restrained medieval manuscript hand-painted slightly uneven ink, matching attached UI brown ink. Final48x16 wide horizontal ratio, keep rings thick enough at16px high. Transparent exterior and holes. Only two rings, substantial empty transparent margins.",
+      "references": [
+        "references/UI-KIT_부품_톤.jpg"
+      ],
+      "native": "records/marriage-native.png"
+    }
+  ]
+}

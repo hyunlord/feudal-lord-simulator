@@ -1,0 +1,242 @@
+{
+  "assets": [
+    {
+      "id": "tree_collapse",
+      "file": "assets/tree_collapse.png",
+      "width": 32,
+      "height": 32,
+      "rgba": true,
+      "transparent_pixels": 310,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "b59ecb4885147a9508936fc5326516519530157bc666404c97fc950b4c0d8e4b"
+    },
+    {
+      "id": "tree_expand",
+      "file": "assets/tree_expand.png",
+      "width": 32,
+      "height": 32,
+      "rgba": true,
+      "transparent_pixels": 331,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "70b62bb3147936aa907f52a070f819f4bfc44017d9b8c3b9173cb853e5a092ac"
+    },
+    {
+      "id": "tree_generation_label",
+      "file": "assets/tree_generation_label.png",
+      "width": 120,
+      "height": 32,
+      "rgba": true,
+      "transparent_pixels": 20,
+      "alpha_min": 0,
+      "nine_slice_ltrb": [
+        10,
+        8,
+        10,
+        8
+      ],
+      "status": "candidate",
+      "sha256": "27abeff838603f1ae81699d274e8a4533bcd0bac58c4f458e35a9ea1a088e1b9"
+    },
+    {
+      "id": "tree_line_corner_bl",
+      "file": "assets/tree_line_corner_bl.png",
+      "width": 16,
+      "height": 16,
+      "rgba": true,
+      "transparent_pixels": 161,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "320e1049ec22a53e9d21ae6e641de4dc4b7a24ede2740003f2b227a11ebae059"
+    },
+    {
+      "id": "tree_line_corner_br",
+      "file": "assets/tree_line_corner_br.png",
+      "width": 16,
+      "height": 16,
+      "rgba": true,
+      "transparent_pixels": 161,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "51c96cc78bd9629c7cf9e75448066402fe4fb3aebd2888153177e33d015dbf13"
+    },
+    {
+      "id": "tree_line_corner_tl",
+      "file": "assets/tree_line_corner_tl.png",
+      "width": 16,
+      "height": 16,
+      "rgba": true,
+      "transparent_pixels": 161,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "c1718a9086b890571b5f7bdd2bcc9484ef3a570f0c1eca97b726774e8ba040f6"
+    },
+    {
+      "id": "tree_line_corner_tr",
+      "file": "assets/tree_line_corner_tr.png",
+      "width": 16,
+      "height": 16,
+      "rgba": true,
+      "transparent_pixels": 161,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "db11e7f018e3bdaa7cc2962c7a7ddf0f789bd41a5b1fb99d1e1eb70d29e88b0a"
+    },
+    {
+      "id": "tree_line_h",
+      "file": "assets/tree_line_h.png",
+      "width": 64,
+      "height": 8,
+      "rgba": true,
+      "transparent_pixels": 128,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "bf30ad9db1a7a84686d2fb632a61cc29364113a9e34676ca7246f96ee69365b0"
+    },
+    {
+      "id": "tree_line_junction_t",
+      "file": "assets/tree_line_junction_t.png",
+      "width": 16,
+      "height": 16,
+      "rgba": true,
+      "transparent_pixels": 130,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "bb4204829221bfde3a8d6e746b7d9fea60b51a8af1de4c364e2cfe6d684497af"
+    },
+    {
+      "id": "tree_line_v",
+      "file": "assets/tree_line_v.png",
+      "width": 8,
+      "height": 64,
+      "rgba": true,
+      "transparent_pixels": 128,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "1812fde294e9293b1ea43aacfc11bc8dd1d2ed990cafe2e96b440edb6791308e"
+    },
+    {
+      "id": "tree_lineage_banner",
+      "file": "assets/tree_lineage_banner.png",
+      "width": 320,
+      "height": 72,
+      "rgba": true,
+      "transparent_pixels": 155,
+      "alpha_min": 0,
+      "nine_slice_ltrb": [
+        24,
+        10,
+        24,
+        10
+      ],
+      "status": "candidate",
+      "sha256": "4360152ee834a7be7294f9269b6ec907909225d2786f720174b0ced905f33f42"
+    },
+    {
+      "id": "tree_marriage_link",
+      "file": "assets/tree_marriage_link.png",
+      "width": 48,
+      "height": 16,
+      "rgba": true,
+      "transparent_pixels": 443,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "7e3cf0e98168a8651510bd67f46739bb6b8e23ad559f92d994cb54e5d675e3ac"
+    },
+    {
+      "id": "tree_node_frame",
+      "file": "assets/tree_node_frame.png",
+      "width": 176,
+      "height": 216,
+      "rgba": true,
+      "transparent_pixels": 0,
+      "alpha_min": 82,
+      "nine_slice_ltrb": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "status": "candidate",
+      "sha256": "470640fd6e92ccddc2bfb651cab63b6e1da943ae5128f58dde6409a76f133d87"
+    },
+    {
+      "id": "tree_node_frame_deceased",
+      "file": "assets/tree_node_frame_deceased.png",
+      "width": 176,
+      "height": 216,
+      "rgba": true,
+      "transparent_pixels": 0,
+      "alpha_min": 255,
+      "nine_slice_ltrb": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "status": "candidate",
+      "sha256": "4a84094c858176127e383964f000ac9802cef36054438e87304dc7107716025f"
+    },
+    {
+      "id": "tree_node_frame_selected",
+      "file": "assets/tree_node_frame_selected.png",
+      "width": 176,
+      "height": 216,
+      "rgba": true,
+      "transparent_pixels": 0,
+      "alpha_min": 255,
+      "nine_slice_ltrb": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "status": "candidate",
+      "sha256": "6a9f446f49cc4000c743cdf8f876df99820139180ce67af5548a4a5b5286e944"
+    },
+    {
+      "id": "tree_outside_spouse_marker",
+      "file": "assets/tree_outside_spouse_marker.png",
+      "width": 24,
+      "height": 24,
+      "rgba": true,
+      "transparent_pixels": 240,
+      "alpha_min": 0,
+      "nine_slice_ltrb": null,
+      "status": "candidate",
+      "sha256": "ce5ac4da4cf76fb3f16df22ed3ccaa82066fd17f6119226dd564582564ee7e6e"
+    }
+  ],
+  "portrait_slot": {
+    "center_x": 88,
+    "top": 18,
+    "diameter": 96,
+    "baked": false
+  },
+  "tile_ports": {
+    "center": 8,
+    "width": 8,
+    "corner_naming": "top-left joins right+down; top-right left+down; bottom-left right+up; bottom-right left+up",
+    "junction_t": "left+right+down"
+  },
+  "proof": {
+    "width": 1280,
+    "height": 800,
+    "portraits": 12,
+    "deceased": 1,
+    "selected": 1,
+    "collapsed": 1,
+    "synthetic": true
+  }
+}
