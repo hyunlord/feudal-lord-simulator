@@ -1,6 +1,6 @@
 /**
  * UI-8 world-render features for chapter 3 (Black Death):
- *   - Fresh grave decals grow with plague.first.dead, capped at 4 (plagueWorldProps.ts plagueProps).
+ *   - Fresh grave decals grow with plague.first.dead, one per forty dead, capped at 8 (plagueWorldProps.ts plagueProps).
  *   - Funeral walker: drawFuneralProcession is exported and well-typed (smoke test only; canvas draw).
  *   - Plague-vacant houses: worldSigns suppresses `abandoned_house` for vacantHouseIds members.
  *   - Church with vacant curacy: worldSigns emits `curacy_vacant` instead of `idle_latch`.
@@ -109,8 +109,8 @@ test("graves: 0 graves when dead = 0", () => {
   assert.equal(graves.length, 0, "dead=0 → no graves");
 });
 
-test("graves: 1 grave for 1 death, 1 grave for 3 deaths, 2 for 4, 4 for 12 (capped at MAX_GRAVES=4)", () => {
-  for (const [dead, expected] of [[1, 1], [3, 1], [4, 2], [6, 2], [9, 3], [12, 4], [100, 4]] as [number, number][]) {
+test("graves: one decal per forty dead (at least one), capped at MAX_GRAVES=8", () => {
+  for (const [dead, expected] of [[1, 1], [40, 1], [41, 2], [120, 3], [186, 5], [320, 8], [1000, 8]] as [number, number][]) {
     const state = withFirstPlague(baseState(), dead);
     const graves = plagueProps(state);
     assert.equal(graves.length, expected, `dead=${dead} → ${expected} grave(s)`);
@@ -118,7 +118,7 @@ test("graves: 1 grave for 1 death, 1 grave for 3 deaths, 2 for 4, 4 for 12 (capp
 });
 
 test("graves: deterministic by seed + arrivalTick — same state yields same positions", () => {
-  const state = withFirstPlague(baseState(), 9);
+  const state = withFirstPlague(baseState(), 120);
   const first = plagueProps(state);
   const second = plagueProps(state); // hits cache
   assert.deepEqual(first, second);
@@ -148,7 +148,7 @@ test("withPlagueProps: returns original queue when no plague first wave", () => 
 });
 
 test("withPlagueProps: injects plague_prop items for each grave", () => {
-  const state = withFirstPlague(baseState(), 12); // 4 graves
+  const state = withFirstPlague(baseState(), 160); // 4 graves
   const range = { minTx: 0, minTy: 0, maxTx: 9, maxTy: 9 };
   const result = withPlagueProps([], state, range);
   const plagueItems = result.filter(item => item.kind === "plague_prop");
@@ -222,4 +222,14 @@ test("PLAGUE_UI_COPY.curacyVacant is a non-empty Korean string", () => {
   // Should contain Korean characters (Hangul range U+AC00–U+D7A3 or Jamo)
   assert.ok(/[가-힣ᄀ-ᇿ㄰-㆏]/.test(PLAGUE_UI_COPY.curacyVacant),
     `expected Korean text, got: "${PLAGUE_UI_COPY.curacyVacant}"`);
+});
+
+test("graves: a town's felled forest is open ground for them; standing forest and roads are not", () => {
+  const town = withFirstPlague(baseState(), 40);
+  const forest = { ...town, tiles: town.tiles.map(tile => ({ ...tile, terrain: "forest" as const })), forestHarvests: [] } as GameState;
+  assert.equal(plagueProps(forest).length, 0, "standing forest");
+  const felled = { ...forest, forestHarvests: forest.tiles.map((_, index) => ({ tx: index % forest.width, ty: Math.floor(index / forest.width), harvestedAtTick: 0 })) } as unknown as GameState;
+  assert.equal(plagueProps(felled).length, 1, "felled forest");
+  const roads = { ...town, tiles: town.tiles.map(tile => ({ ...tile, hasRoad: true })) } as GameState;
+  assert.equal(plagueProps(roads).length, 0, "roads");
 });

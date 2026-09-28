@@ -1,6 +1,7 @@
 import { applyPaletteStroke } from './style';
 import type { GameState } from '../engine/engine.types';
 import { buildingFootprint } from '../geometry/buildingFootprint';
+import { curacyVacant } from '../engine/plague';
 import { SEMANTIC_PALETTE } from '../content/palette';
 import { CAUSE_REGISTRY, causeMarkerSeverity, type CauseMarkerSeverity } from '../ui/causeRegistry';
 import { buildingCauseSnapshot } from '../ui/houseProgressModel';
@@ -17,12 +18,16 @@ const SEVERITY_SHAPES: Readonly<Record<CauseMarkerSeverity, { readonly points: r
 /**
  * One marker per building, for its first cause and only when that cause needs the player (causeMarkerSeverity);
  * a house waiting out its promotion keeps its progress ring. Zoomed out, groupCauseMarkers clusters them by cell.
+ * UI-8: while the plague has left the church without a priest (PL-6), a house whose one want is that church gets no
+ * marker of its own — the church's sign says it once (worldSigns curacy_vacant), not a triangle over every house.
  */
 export function causeMarkersForState(state: GameState, zoom: number): readonly CauseMarker[] {
   const snapshot = buildingCauseSnapshot(state);
+  const priestless = curacyVacant(state);
   return groupCauseMarkers([...state.buildings].sort((a,b) => a.id.localeCompare(b.id)).flatMap(building => {
     const cause = snapshot.get(building.id);
     if (cause === undefined) return [];
+    if (priestless && cause.blocker?.causeId === 'operation_paused' && cause.blocker.requirement === 'church') return [];
     const severity = causeMarkerSeverity(cause);
     if (severity === null && cause.status !== 'ready') return [];
     const size = buildingFootprint(building);

@@ -38,15 +38,18 @@ export type PlagueProp = {
   readonly id: string;
 };
 
-const MAX_GRAVES = 4;
-const GRAVES_PER_DEAD = 3; // one new grave appears for every three deaths, up to MAX_GRAVES
+const MAX_GRAVES = 8;
+const GRAVES_PER_DEAD = 40; // one decal (a row of graves) for every forty deaths, up to MAX_GRAVES — a seed 2 town: 68 dead on
+// the first death day → 2, 186 a year on → 5, 338 by chapter 3's end → 8
 const GRAVE_SCALE = 0.5; // decal_fresh_graves is 128×64; at 0.5 it fits in one tile
 
-/** Church or chapel to anchor the churchyard; falls back to the keep. */
+/** Church or chapel to anchor the churchyard (the parish church — the first by id, so the graves stay put when a
+ * priest comes); falls back to the keep. */
 function churchBuilding(state: GameState): Building | null {
-  return state.buildings.find(b => b.kind === "church")
-    ?? state.buildings.find(b => b.kind === "chapel")
-    ?? state.buildings.find(b => b.kind === "keep")
+  const byId = [...state.buildings].sort((a, b) => a.id.localeCompare(b.id));
+  return byId.find(b => b.kind === "church")
+    ?? byId.find(b => b.kind === "chapel")
+    ?? byId.find(b => b.kind === "keep")
     ?? null;
 }
 
@@ -71,7 +74,11 @@ function computeGraves(state: GameState): readonly PlagueProp[] {
     for (let dy = 0; dy < bfp.height; dy += 1) for (let dx = 0; dx < bfp.width; dx += 1)
       occupied.add((b.ty + dy) * state.width + b.tx + dx);
   }
-  // Candidate tiles: grass ring around the church footprint (up to 2 tiles out), not occupied.
+  // Building sites count as taken too; a town's cleared ground is often felled forest (the backyards' rule,
+  // backyardDecals.ts: open grass or felled forest, no road).
+  for (const site of state.constructionSites ?? []) if ("tx" in site) occupied.add(site.ty * state.width + site.tx);
+  const felled = new Set((state.forestHarvests ?? []).map(harvest => harvest.ty * state.width + harvest.tx));
+  // Candidate tiles: open ground in a ring around the church footprint (up to 2 tiles out), not occupied.
   const candidates: { tx: number; ty: number }[] = [];
   for (let dy = -2; dy <= fp.height + 1; dy += 1) {
     for (let dx = -2; dx <= fp.width + 1; dx += 1) {
@@ -79,7 +86,8 @@ function computeGraves(state: GameState): readonly PlagueProp[] {
       const tx = church.tx + dx; const ty = church.ty + dy;
       if (tx < 0 || ty < 0 || tx >= state.width || ty >= state.height) continue;
       if (occupied.has(ty * state.width + tx)) continue;
-      if (state.tiles[ty * state.width + tx]?.terrain !== "grass") continue;
+      const tile = state.tiles[ty * state.width + tx];
+      if (tile === undefined || tile.hasRoad || !(tile.terrain === "grass" || (tile.terrain === "forest" && felled.has(ty * state.width + tx)))) continue;
       candidates.push({ tx, ty });
     }
   }
