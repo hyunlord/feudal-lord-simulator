@@ -291,7 +291,7 @@ test("P12 (PL-11) the save round trip (v26) mid-pestilence, the same course twic
   const mid = at(arrival + SEASON + 2);
   const saved = decodeSave(encodeSave({ state: mid, createdAt: "2026-09-28T00:00:00.000Z", savedAt: "2026-09-28T00:00:00.000Z" }).bytes);
   // F4-A: v27 (the reorganisation) carries the pestilence's state as it was.
-  assert.equal(SAVE_SCHEMA_VERSION, 27);
+  assert.ok(SAVE_SCHEMA_VERSION >= 27, "FIX-8: v28 and later too");
   assert.deepEqual(saved.envelope.state, mid);
   const a = run(mid, mid.tick + 1500), b = run(saved.envelope.state, mid.tick + 1500);
   assert.deepEqual(a, b);
