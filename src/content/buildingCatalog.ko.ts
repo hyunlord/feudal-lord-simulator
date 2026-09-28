@@ -50,6 +50,8 @@ export const BUILDING_COPY = {
     worldTarget: "여기에 교회를 지으세요", history: "교회" },
   keep: { name: "성채", card: "석조 도시의 성채", purpose: "석조 도시의 중심 성채를 세웁니다", inspector: "석조 도시의 중심 성채",
     worldTarget: "여기에 성채를 지으세요", history: "성채" },
+  malt_kiln: { name: "엿기름 가마", card: "보리를 엿기름으로", purpose: "보리를 싹 틔워 말려 엿기름을 만듭니다. 집집의 아낙이 에일로 빚습니다",
+    inspector: "보리를 엿기름으로 말립니다", worldTarget: "여기에 엿기름 가마를 지으세요", history: "엿기름 가마" },
 } as const satisfies { readonly [K in BuildingKind]: BuildingCopy };
 
 export const buildingCopy = (kind: BuildingKind): BuildingCopy => (BUILDING_COPY as { readonly [K in BuildingKind]: BuildingCopy })[kind];

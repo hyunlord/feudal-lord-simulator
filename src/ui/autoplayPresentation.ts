@@ -46,6 +46,7 @@ export function autoplayActionPulseTile(action: AutoplayAction): TileCoordinate 
     case "rebuild_house":
     case "famine_response":
     case "petition_response":
+    case "set_farmstead_crop":
     case "none":
       return null;
     default:
@@ -73,6 +74,7 @@ export function autoplayActionLabel(action: AutoplayAction): string {
       return AUTOPLAY_FAMINE_RESPONSE_LABEL;
     case "petition_response":
       return AUTOPLAY_PETITION_RESPONSE_LABEL;
+    case "set_farmstead_crop":
     case "none":
       return "다음: 대기";
     default:
@@ -120,6 +122,7 @@ export function autoplayActionFeedback(action: AutoplayAction, nowMs: number): P
     case "rebuild_house":
     case "famine_response":
     case "petition_response":
+    case "set_farmstead_crop":
     case "none":
       return null;
     default:

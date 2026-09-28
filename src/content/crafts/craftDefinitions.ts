@@ -2,6 +2,8 @@
  * Household crafts (spec `docs/design/labour.md` LB-8). One JSON file per craft in this folder, listed in
  * `CRAFT_SOURCES`; the first one is C4's `brew_ale`. Until then there are none and every household slot is empty.
  */
+import brewAle from "./brew_ale.json";
+
 export interface CraftDefinition {
   /** `namespace:id`-free short id, e.g. `brew_ale`. */
   readonly id: string;
@@ -16,8 +18,8 @@ export interface CraftDefinition {
   readonly ticksPerBatch: number;
 }
 
-/** Raw JSON of every craft file (C4 adds `import brewAle from "./brew_ale.json"` here). */
-const CRAFT_SOURCES: readonly unknown[] = [];
+/** Raw JSON of every craft file. C4 (AL-4): the first, the household's ale. */
+const CRAFT_SOURCES: readonly unknown[] = [brewAle];
 
 const isAmounts = (value: unknown): value is Record<string, number> =>
   typeof value === "object" && value !== null && !Array.isArray(value)

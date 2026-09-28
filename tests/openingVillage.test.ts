@@ -17,7 +17,8 @@ import { ONBOARDING_TASKS } from "../src/ui/onboardingTaskModel";
 const OPENING_CENTER = { tx: 45, ty: 41 } as const;
 // FIX-1: the opening houses are watered at creation (was 839a86230db877de / 2e036754c2d05951 with hasWater false).
 // FIX-4 E1·E9: the opening treasury (60d, was 0d) and timber (160, was 120) are in both hashes (were a0b2bbd0dd5b032b / efe743579d152e19).
-const EXPECTED_ECONOMY_HASH = "6818a289e7d06743";
+// C4 AL-1: the stock totals carry barley, malt and ale (0 at the opening; was 6818a289e7d06743).
+const EXPECTED_ECONOMY_HASH = "ce00cf0f6929e5e5";
 const EXPECTED_OPENING_HASH = "554ec34e9e648193";
 function roadKeys(): readonly string[] {
   return DEFAULT_GAME_STATE.tiles

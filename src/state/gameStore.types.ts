@@ -54,6 +54,12 @@ type GameCommand =
       readonly choice: import("../content/chapterConfig").FamineResponseChoice;
     }
   | {
+      /** C4 (AL-2): the crop a farmstead sows next (its strips already sown keep theirs). */
+      readonly type: "set_farmstead_crop";
+      readonly buildingId: string;
+      readonly crop: import("../content/buildingConfig").FieldCrop;
+    }
+  | {
       /** F0-C1 FC-3: the lord's answer to a petition. */
       readonly type: "petition_response";
       readonly petitionId: string;

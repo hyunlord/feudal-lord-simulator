@@ -58,41 +58,23 @@ function normalizeConstructionSite(site: ConstructionSite) {
     stall: site.stall,
     startedTick: site.startedTick,
   };
-  switch (site.kind) {
-    case "palisade_segment":
-    case "stone_wall_segment":
-      return {
-        ...common,
-        wallId: site.wallId,
-        segmentIndex: site.segmentIndex,
-        gateDistance: site.gateDistance,
-        order: site.order,
-        path: site.path,
-        anchor: site.anchor,
-      };
-    case "house":
-    case "well":
-    case "storehouse":
-    case "granary":
-    case "chapel":
-    case "wheat_farm":
-    case "farmstead":
-    case "mill":
-    case "logging_camp":
-    case "sawmill":
-    case "quarry":
-    case "masonry":
-    case "market":
-    case "church":
-    case "keep":
-      return {
-        ...common,
-        tx: site.tx,
-        ty: site.ty,
-      };
-    default:
-      return assertNever(site);
+  if (site.kind === "palisade_segment" || site.kind === "stone_wall_segment") {
+    return {
+      ...common,
+      wallId: site.wallId,
+      segmentIndex: site.segmentIndex,
+      gateDistance: site.gateDistance,
+      order: site.order,
+      path: site.path,
+      anchor: site.anchor,
+    };
   }
+  // A building site of any kind (BLD-REG / C4: no list of kinds here).
+  return {
+    ...common,
+    tx: site.tx,
+    ty: site.ty,
+  };
 }
 
 function normalizeHouse(house: House, mergedLot: boolean) {

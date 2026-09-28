@@ -22,27 +22,8 @@ const BUILDER_ANCHORS = [
 ] as const;
 
 function constructionLabourSiteAnchor(site: ConstructionLabourSite): TileCoordinate {
-  switch (site.kind) {
-    case "palisade_segment":
-    case "stone_wall_segment":
-      return site.anchor;
-    case "house":
-    case "well":
-    case "storehouse":
-    case "granary":
-    case "chapel":
-    case "wheat_farm":
-    case "farmstead":
-    case "mill":
-    case "logging_camp":
-    case "sawmill":
-    case "quarry":
-    case "masonry":
-    case "market":
-    case "church":
-    case "keep":
-      return { tx: site.tx, ty: site.ty };
-  }
+  // BLD-REG / C4: a wall segment's anchor, else the building's tile (any kind of BUILDING_CONFIG_BY_KIND).
+  return site.kind === "palisade_segment" || site.kind === "stone_wall_segment" ? site.anchor : { tx: site.tx, ty: site.ty };
 }
 
 const wholeNonnegative = (value: number): number =>

@@ -11,7 +11,8 @@ export interface ArableStripRecord {
   readonly id: string;
   /** Cells of the run when the record was laid out; a run of another length is a new strip (AF-3). */
   readonly cells: number;
-  readonly crop: "wheat";
+  /** C4 (AL-2): the crop sown (a strip takes its farmstead's crop at sowing; wheat before). */
+  readonly crop: "wheat" | "barley";
   readonly stage: ArableStage;
   /** Tick the strip entered `stage`. */
   readonly stageTick: number;

@@ -107,6 +107,9 @@ export const BUILDING_CATALOG = {
     body: { width: 78, height: 92, roof: 34, fill: "parchment", roofColor: "stoneDark", roofShape: "cone" }, details: ["flag", "door"] },
   keep: { category: "defense", group: "service", glyph: "keep", thumbnail: "facility", facilityArt: { id: "keep" }, kit: "public_keep",
     body: { width: 86, height: 116, roof: 44, fill: "stone", roofColor: "stoneDark", roofShape: "tower" }, details: ["door"] },
+  // C4 (decision AL6): no art yet — the mill's glyph and a cone-roofed body until INSTALL-3 brings the Wave 3 kiln.
+  malt_kiln: { category: "trade", group: "production", glyph: "mill",
+    body: { width: 52, height: 34, roof: 18, fill: "parchmentDark", roofColor: "earthDark", roofShape: "cone" } },
 } as const satisfies { readonly [K in BuildingKind]: BuildingCatalogEntry };
 
 /** The glyph of a category, for a kind that has none of its own. */

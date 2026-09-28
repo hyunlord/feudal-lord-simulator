@@ -1,5 +1,5 @@
 import { BALANCE } from "../content/balanceConfig";
-import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import { barnHolds, BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import {
   STORAGE_KIND_BY_RESOURCE,
   isStorableResource,
@@ -40,6 +40,8 @@ export function deliverCandidate(
   routes: DeliveryRoutePort,
 ): RouteCandidate | null {
   if (!isStorableResource(resource)) return null;
+  // C4 (AL-2, decision AL4): barley waits in its barn for the kiln to fetch it; it never fills the granaries' room.
+  if (resource === "barley") return null;
   // Stock another carter already claimed (a mill fetching from a barn, AF-9) stays for that carter.
   const stock = Math.min(amountOf(producer.inventory, resource), inventory.availableStock(producer, resource));
   if (stock === 0) return null;
@@ -83,9 +85,9 @@ export function fetchCandidate(
     );
     return amount > 0 ? [{ building, path, amount }] : [];
   });
-  const stored = from(building => building.kind === storeKind || BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === resource);
+  const stored = from(building => building.kind === storeKind || barnHolds(building, resource));
   // LB-15 (BOT-3): while a barn is piled with the input the other barns drop out; stores keep their place.
-  const barn = (building: Building) => BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === resource;
+  const barn = (building: Building) => barnHolds(building, resource);
   const piled = (building: Building) => barn(building) && amountOf(building.inventory, resource) >= BARN_BACKLOG_STOCK;
   const drawn = stored.some(({ building }) => piled(building)) ? stored.filter(({ building }) => !barn(building) || piled(building)) : stored;
   const candidates = drawn.length > 0 ? drawn

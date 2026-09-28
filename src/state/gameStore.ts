@@ -1,3 +1,4 @@
+import { setFarmsteadCrop } from "../engine/ale";
 import { SCENARIOS } from "../content/scenario/registry";
 import { DEFAULT_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { recordMaterialPlacement, refreshMaterialResult } from '../engine/autoplayMaterialLifecycle';
@@ -148,6 +149,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return famineResponse(state, action.choice);
     case "petition_response":
       return respondToPetition(state, action.petitionId, action.response);
+    case "set_farmstead_crop":
+      return setFarmsteadCrop(state, action.buildingId, action.crop);
     case "cancel_construction": {
       const routes = createSimulationRoutePorts(state);
       const result = cancelConstruction({
