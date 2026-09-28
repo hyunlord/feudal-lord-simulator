@@ -41,7 +41,7 @@ export const WAR_BALANCE = {
   /** A demand left unanswered this many seasons is refused (the petition expires). */
   answerSeasons: 1,
 
-  /** WR-2 wool levy: per lived-in house. In kind (C4 turns it into wool): 125 % in four seasonal payments; refused: 150 % seized at once. */
+  /** WR-2 wool levy: per lived-in house. In kind: 125 % in four seasonal payments, the pasture flocks' fleeces first and the rest in cash (FIX-7, `pastureWool.ts`); refused: 150 % seized at once. */
   woolLevyPerHouse: 20,
   woolInKindPermille: 1250,
   woolInKindSeasons: 4,

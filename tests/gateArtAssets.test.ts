@@ -1,5 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
+import { CHILD_KILL_GUARD_MS } from './helpers/childGuard';
 for (const mode of ['ready','error','wrong_size','constructor_throw','src_throw','string_throw']) {
  test(`gate parts settle with procedural fallback when ${mode}`,()=>{
   execFileSync(process.execPath,['--import','tsx','--input-type=module','-e',`
@@ -18,6 +19,6 @@ for (const mode of ['ready','error','wrong_size','constructor_throw','src_throw'
    assert.equal(drawRegisteredGate(context,node,'stone'),'${mode}'==='ready');
    assert.ok(drawn.every(url=>!url.includes('closed')));
    if('${mode}'==='ready'){assert.ok(drawn.some(url=>url.includes('stone_arch')));assert.ok(drawn.some(url=>url.includes('doors_open')));}
-  `],{timeout:5000});
+  `],{timeout:CHILD_KILL_GUARD_MS});
  });
 }

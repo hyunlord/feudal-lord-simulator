@@ -23,6 +23,7 @@ import {
   WOOL_PAYMENT_PETITION_ID,
 } from "../content/warConfig";
 import { archetypeOf } from "../content/scenario/registry";
+import { FLEECE_IN_KIND } from "../content/woolConfig";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { LedgerCategory, LedgerPosting } from "../ledger/ledger.types";
 import { houseLotArea } from "../geometry/buildingFootprint";
@@ -36,6 +37,7 @@ import { EMPTY_MONEY, type UpkeepArrear } from "./money.types";
 import type { PetitionRecord } from "./politics.types";
 import { hashSeed } from "./prng";
 import { calendar, scenarioOf } from "./scenarioState";
+import { woolInKindSplit } from "./pastureWool";
 import { abandonHouse } from "./seasonPressure";
 import type { Conscripts, RaidLosses, WarState, WarStep } from "./war.types";
 
@@ -73,6 +75,11 @@ function livedIn(state: Pick<GameState, "houses">): readonly House[] {
 /** WR-2: the wool levy (pennies): per lived-in house when it comes. */
 export function woolLevyAmount(state: Pick<GameState, "houses">): number {
   return livedIn(state).length * WAR_BALANCE.woolLevyPerHouse;
+}
+
+/** WR-2 in kind: a season's share (pennies) of the 125 % owed, before the fleeces pay it (`woolInKindSplit`). */
+export function woolInKindPerSeason(levy: number): number {
+  return Math.ceil(Math.ceil(levy * WAR_BALANCE.woolInKindPermille / 1000) / WAR_BALANCE.woolInKindSeasons);
 }
 
 const adultsOf = (house: House) => house.members?.adults ?? Math.ceil(house.residents / 2);
@@ -276,8 +283,7 @@ export function answerWarPetition(state: GameState, petition: PetitionRecord, re
     case WOOL_PAYMENT_PETITION_ID: {
       const levy = woolLevyAmount(state);
       if (response === "accept") {
-        const total = Math.ceil(levy * WAR_BALANCE.woolInKindPermille / 1000);
-        return withWar(next, { ...now, instalments: [...now.instalments, { category: "wool_levy", perSeason: Math.ceil(total / WAR_BALANCE.woolInKindSeasons), seasonsLeft: WAR_BALANCE.woolInKindSeasons }] });
+        return withWar(next, { ...now, instalments: [...now.instalments, { category: "wool_levy", perSeason: woolInKindPerSeason(levy), seasonsLeft: WAR_BALANCE.woolInKindSeasons }] });
       }
       return charge(next, "wool_levy", response === "accept_with_price" ? levy : Math.ceil(levy * WAR_BALANCE.woolSeizedPermille / 1000), source);
     }
@@ -323,7 +329,8 @@ export function warDecisionForecast(state: GameState, defId: string, response: P
   switch (defId) {
     case WOOL_PAYMENT_PETITION_ID: {
       const levy = woolLevyAmount(state);
-      return response === "accept" ? treasury - 2 * Math.ceil(Math.ceil(levy * WAR_BALANCE.woolInKindPermille / 1000) / WAR_BALANCE.woolInKindSeasons)
+      // In kind: two seasons of the cash the pasture's fleeces leave unpaid (FIX-7).
+      return response === "accept" ? treasury - 2 * woolInKindSplit(state, woolInKindPerSeason(levy)).cash
         : treasury - (response === "accept_with_price" ? levy : Math.ceil(levy * WAR_BALANCE.woolSeizedPermille / 1000));
     }
     case LEVY_RESPONSE_PETITION_ID:
@@ -385,12 +392,27 @@ export function warTaxPermille(state: Pick<GameState, "war">): number {
   return (state.war?.taxSeasonsLeft ?? 0) > 0 ? WAR_BALANCE.taxSurchargePermille : 0;
 }
 
+/**
+ * WR-2 in kind (FIX-7, decision FX7-1): a season's wool — the pasture flocks' fleeces first, valued on the ledger's
+ * in-kind account (`resource` = the fleece, no cash moves), and only what they leave unpaid charged in cash.
+ */
+function payWoolInKind(state: GameState, amount: number): GameState {
+  const source: readonly [SourceRef, ...SourceRef[]] = [CROWN, { type: "claim", id: "wool_levy", detail: "in_kind" }];
+  const split = woolInKindSplit(state, amount);
+  let next = state;
+  if (split.inKind > 0) {
+    const posted = postLedgerEntries(next, [{ account: "in_kind", category: "wool_levy", amount: -split.inKind, resource: FLEECE_IN_KIND,
+      sourceRefs: [...source, { type: "claim", id: "wool_levy", detail: `fleece:${split.fleeces}` }] }]);
+    next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };
+  }
+  return charge(next, "wool_levy", split.cash, source);
+}
+
 function seasonalCharges(state: GameState, war: WarState): GameState {
   let next = state;
   for (const instalment of war.instalments) {
-    const source: readonly [SourceRef, ...SourceRef[]] = instalment.category === "war_loan"
-      ? [{ type: "actor", id: "merchants" }, { type: "claim", id: "war_loan", detail: "repayment" }] : [CROWN, { type: "claim", id: "wool_levy", detail: "in_kind" }];
-    next = charge(next, instalment.category, instalment.perSeason, source);
+    if (instalment.category === "wool_levy") { next = payWoolInKind(next, instalment.perSeason); continue; }
+    next = charge(next, instalment.category, instalment.perSeason, [{ type: "actor", id: "merchants" }, { type: "claim", id: "war_loan", detail: "repayment" }]);
   }
   const instalments = war.instalments.map(entry => ({ ...entry, seasonsLeft: entry.seasonsLeft - 1 })).filter(entry => entry.seasonsLeft > 0);
   let current = { ...warOf(next)!, instalments };

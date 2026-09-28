@@ -1,6 +1,6 @@
 /**
  * F2-A chapter 2's war (spec docs/design/chapter-two-war.md WR-1…WR-10): scenarios E11–E20 (the flow events' E1–E10
- * continue here).
+ * continue here); E21 the wool in kind (FIX-7).
  */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -20,8 +20,10 @@ import { chapterEnd, chapterGoals, endChapterTwo, initialPolitics, openPetitions
 import { hashSeed } from "../src/engine/prng";
 import {
   advanceWar, beaconLit, levyMen, raidLosses, raidSeasonOffset, recoverySeasonOffset, refugeeRoom, ringDefencePermille, subsidyAmount,
-  warForecast, woolLevyAmount,
+  warDecisionForecast, warForecast, woolInKindPerSeason, woolLevyAmount,
 } from "../src/engine/war";
+import { pastureFleecesPerSeason, pastureSheep, woolInKindSplit } from "../src/engine/pastureWool";
+import { FLEECE_IN_KIND, PASTURE_WOOL } from "../src/content/woolConfig";
 import type { PetitionResponse } from "../src/content/chapterConfig";
 import { LEDGER_PERIOD_TICKS, postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
@@ -302,4 +304,50 @@ test("E20 (WR-10) the bot's answers, an unanswered demand refused, the save roun
   // A v19 save has had no war.
   const v19 = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v19/palisade-construction.save.json")));
   assert.deepEqual([v19.migratedFrom, (v19.envelope.state as GameState).war], [19, undefined]);
+});
+
+/** The war town with a pasture of `cells` cells (a zone of the first unzoned cells, as painted). */
+function withPasture(state: GameState, cells: number): GameState {
+  const taken = new Set((state.zones ?? []).flatMap(zone => zone.membership));
+  const membership: number[] = [];
+  for (let index = 0; membership.length < cells; index += 1) if (!taken.has(index)) membership.push(index);
+  return { ...state, zones: [...(state.zones ?? []), { id: "zone-pasture-test", kind: "pasture", strokes: [], membership, createdOrdinal: 999 }] };
+}
+
+test("E21 (WR-2 in kind, FIX-7) the wool in kind is the pasture flocks' fleeces first, on the ledger's in-kind account, and only the rest in cash", () => {
+  const levy = 24 * WAR_BALANCE.woolLevyPerHouse;
+  const perSeason = woolInKindPerSeason(levy);
+  assert.equal(perSeason, Math.ceil(Math.ceil(levy * 1.25) / 4));
+  // A season's clip: a quarter of a fleece a sheep, a sheep a cell.
+  assert.equal(pastureSheep(withPasture(warTown(), 100)), 100 * PASTURE_WOOL.sheepPerPastureCell);
+  assert.equal(pastureFleecesPerSeason(withPasture(warTown(), 100)), 25);
+  const answered = (cells: number) => {
+    const edict = season(season(withPasture(warTown(), cells), 0), 1);
+    return respondToPetition(edict, open(edict, WOOL_PAYMENT_PETITION_ID)!.id, "accept");
+  };
+  const inKindOf = (state: GameState) => (state.ledger?.entries ?? []).filter(entry => entry.account === "in_kind" && entry.category === "wool_levy");
+  // No pasture: all in cash, as before FIX-7.
+  const bare = run(answered(0), 2, 6);
+  assert.equal(-cashOf(bare, "wool_levy"), 4 * perSeason);
+  assert.equal(inKindOf(bare).length, 0);
+  // Some pasture: its fleeces each season, the shortfall in cash.
+  const fleeces = pastureFleecesPerSeason(withPasture(warTown(), 60));
+  assert.ok(fleeces * PASTURE_WOOL.fleeceValue < perSeason);
+  const part = run(answered(60), 2, 6);
+  assert.equal(-cashOf(part, "wool_levy"), 4 * (perSeason - fleeces * PASTURE_WOOL.fleeceValue));
+  assert.deepEqual(inKindOf(part).map(entry => [entry.amount, entry.resource, entry.sourceRefs.at(-1)!.detail]),
+    Array.from({ length: 4 }, () => [-fleeces * PASTURE_WOOL.fleeceValue, FLEECE_IN_KIND, `fleece:${fleeces}`]));
+  assert.equal(treasuryBalance(part), 5000 - 4 * (perSeason - fleeces * PASTURE_WOOL.fleeceValue), "the fleeces move no cash");
+  // Pasture enough: no cash at all; the fleeces cover the payment and no more.
+  const full = run(answered(400), 2, 6);
+  assert.equal(cashOf(full, "wool_levy"), 0);
+  assert.deepEqual(inKindOf(full).map(entry => entry.amount), [-perSeason, -perSeason, -perSeason, -perSeason]);
+  assert.deepEqual(woolInKindSplit(withPasture(warTown(), 400), perSeason), { fleeces: Math.ceil(perSeason / PASTURE_WOOL.fleeceValue), inKind: perSeason, cash: 0 });
+  // The forecast (HL-3) counts only the cash: two seasons of the shortfall.
+  const edict = season(season(withPasture(warTown(), 60), 0), 1);
+  assert.equal(warDecisionForecast(edict, WOOL_PAYMENT_PETITION_ID, "accept"), 5000 - 2 * (perSeason - fleeces * PASTURE_WOOL.fleeceValue));
+  // A treasury short of the shortfall owes it as arrears, as before; the fleeces are still paid.
+  const poor = run((() => { const e = season(season(withPasture(warTown(0), 60), 0), 1); return respondToPetition(e, open(e, WOOL_PAYMENT_PETITION_ID)!.id, "accept"); })(), 2, 2);
+  assert.equal(poor.money!.arrears.at(-1)!.amount, perSeason - fleeces * PASTURE_WOOL.fleeceValue);
+  assert.equal(inKindOf(poor).length, 1);
 });

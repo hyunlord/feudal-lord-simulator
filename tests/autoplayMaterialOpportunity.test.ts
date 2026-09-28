@@ -6,6 +6,7 @@ import { hasArrivedAtPathEnd, stepWalkerAlongPath } from '../src/agents/movement
 import type { CarterWalker, TilePos } from '../src/agents/walker.types';
 import { BALANCE } from '../src/content/balanceConfig';
 import { materialPolicyTown } from './autoplayMaterialPolicyFixtures';
+import { CHILD_KILL_GUARD_MS } from './helpers/childGuard';
 
 function actualTicks(path: readonly TilePos[]): number {
   const destination = { kind: 'building' as const, buildingId: 'test' };
@@ -58,7 +59,7 @@ test('malformed cached public route fails closed without an unbounded synchronou
     for(const path of [[{tx:0,ty:0},{tx:2,ty:0}],[{tx:0,ty:0},{tx:1,ty:1}],[{tx:0,ty:0},{tx:0,ty:0}],[{tx:1e300,ty:0}],
       [{tx:9007199254740990,ty:0},{tx:9007199254740991,ty:0}]])assert.equal(materialLegTicks(path),null);
     console.log('all malformed routes rejected');`;
-  const child = spawnSync(process.execPath, ['--import', 'tsx', '--input-type=module', '--eval', code], { encoding: 'utf8', timeout: 3000 });
+  const child = spawnSync(process.execPath, ['--import', 'tsx', '--input-type=module', '--eval', code], { encoding: 'utf8', timeout: CHILD_KILL_GUARD_MS });
   assert.equal(child.error, undefined, child.error?.message);
   assert.equal(child.status, 0, child.stderr);
   assert.match(child.stdout, /all malformed routes rejected/);

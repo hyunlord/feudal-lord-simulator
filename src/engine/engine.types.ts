@@ -167,6 +167,8 @@ export interface GameState {
   readonly politics?: import("./politics.types").PoliticsState;
   /** FAIL-3 (save v19, FL-*): the lord's house, lost rights, title demotion and decline. Absent = the first house, all held. */
   readonly lordship?: import("./lordship.types").LordshipState;
+  /** C4 AL-10 (FIX-7, save v25): the town's ale counted this season and the last. Absent until the first brew or drink. */
+  readonly ale?: import("./ale.types").AleState;
   /** F2-A the war of 1337 (save v20, spec WR-1…WR-9). Absent until the War era's messenger. */
   readonly war?: import("./war.types").WarState;
   /** FACTION-0 the factions around the town (save v21, spec FX-1…FX-8). Absent until the first tick. */

@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
 import test from "node:test";
+import { CHILD_KILL_GUARD_MS } from "./helpers/childGuard";
 
 for (const mode of ["ready", "error", "constructor_throw", "src_throw", "raster_throw", "raster_string_throw"] as const) {
   test(`stone wall preload settles and preserves usable originals after ${mode}`, () => {
@@ -34,6 +35,6 @@ for (const mode of ["ready", "error", "constructor_throw", "src_throw", "raster_
       assert.equal(stoneWallMaterial(), null);
       if ('${mode}'.startsWith('raster_')) assert.equal(stoneWallAssetStatuses()[0].loadError, 'canvas unavailable');
     `;
-    execFileSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", script], { timeout: 5000 });
+    execFileSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", script], { timeout: CHILD_KILL_GUARD_MS });
   });
 }
