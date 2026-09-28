@@ -238,10 +238,11 @@ export function eventForecast(state: GameState): readonly EventForecastEntry[] {
  * `harvestPermille` (its wet summer included); otherwise a wet summer takes `WET_SUMMER_HARVEST_PERMILLE`.
  */
 export function harvestYieldPermille(state: EventWorld, tick: number): number {
-  // F4-A (RG-7): a town that turned its demesne ploughland to sheep reaps less.
-  const specialised = state.reorganisation?.answers[CLOTH_OR_GRAIN_PETITION_ID] === "accept" ? REORGANISATION_BALANCE.specialisedHarvestPermille : 1000;
+  // F4-A (RG-7, decision RG11): a town that turned its demesne ploughland to sheep lives on bought grain — a bad harvest
+  // (a wet summer, a dearth) takes a sixth more from it; a good year is the same.
   const weather = weatherHarvestYieldPermille(state, tick);
-  return specialised === 1000 ? weather : Math.round(weather * specialised / 1000);
+  const specialised = state.reorganisation?.answers[CLOTH_OR_GRAIN_PETITION_ID] === "accept";
+  return specialised && weather < 1000 ? Math.round(weather * REORGANISATION_BALANCE.specialisedHarvestPermille / 1000) : weather;
 }
 
 function weatherHarvestYieldPermille(state: EventWorld, tick: number): number {

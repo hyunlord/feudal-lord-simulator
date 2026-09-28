@@ -91,7 +91,7 @@ export const REORGANISATION_BALANCE = {
   clothTollPermille: 200,
   /** RG-3: the dyes the merchants bring a working dyehouse each season from chapter 4 (up to `CLOTH_BALANCE.dyesHeld`). */
   dyesPerSeason: 20,
-  /** RG-7: a specialised town's harvest share (the demesne's ploughland under sheep), permille. */
+  /** RG-7: a specialised town's share of a bad harvest (a wet summer, a dearth — its ploughland under sheep), permille. */
   specialisedHarvestPermille: 850,
 
   /** RG-4 influence: the parts and their caps. */

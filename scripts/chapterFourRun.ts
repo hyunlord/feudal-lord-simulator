@@ -2,8 +2,9 @@
 // chapters 1–3 into chapter 4 and records the reorganisation — its steps, the four answers, the influence and the
 // relations year by year, the rumour of 1381, the charter, chapter 4's end and chapter 5's start — and the treasury's
 // income by category through chapter 4 (all of it and its last four years: is cloth the chief income?). Stops at
-// chapter 5 (or `maxTicks`).
-//   tsx scripts/chapterFourRun.ts <seed> <maxTicks> > seed.json
+// chapter 5 (or `maxTicks`); with `stable`, goes on to the town's stability after chapter 4 (the guardrail's stop) and
+// records the L4 houses there.
+//   tsx scripts/chapterFourRun.ts <seed> <maxTicks> [stable] > seed.json
 import { CHAPTER_FOUR, CHAPTER_THREE } from "../src/content/chapterConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { chapterEnd } from "../src/engine/politics";
@@ -15,6 +16,7 @@ import { runPhase19NaturalGrowth } from "./phase19NaturalGrowth";
 const [seedArg, maxArg] = process.argv.slice(2);
 const seed = Number(seedArg);
 const maxTicks = Number(maxArg ?? 420_000);
+const toStability = process.argv[4] === "stable";
 const YEAR = 4000;
 const CLOTH = new Set(["ulnage", "cloth_toll", "fulling_toll"]);
 
@@ -51,11 +53,11 @@ try {
     }
     seen = (state.ledger?.nextEntryOrdinal ?? 1) - 1;
     const r = state.reorganisation;
-    if (inChapterFour && r !== undefined && state.tick % YEAR === 0) {
+    if (r !== undefined && state.tick % YEAR === 0) {
       yearly.push({ ...when(state), influence: r.influence, clothSold: r.clothSold,
         relations: Object.fromEntries((state.factions?.factions ?? []).map(faction => [faction.id, faction.relation])) });
     }
-    if (chapterEnd(state, CHAPTER_FOUR.chapter) !== null) { chapter4End ??= when(state); throw new Stop(); }
+    if (chapterEnd(state, CHAPTER_FOUR.chapter) !== null) { chapter4End ??= when(state); if (!toStability) throw new Stop(); }
   // The growth run would stop at the town's stability: chapter 4 goes on to its end.
   }, additionalAcceptance: state => chapterEnd(state, CHAPTER_FOUR.chapter) !== null });
 } catch (error) {
@@ -82,5 +84,5 @@ process.stdout.write(`${JSON.stringify({ seed, maxTicks, chapter3End, chapter4En
   income: { chapter: table(income), lastFourYears: { fromYear: endYear === null ? null : endYear - 4, ...table(lastFour) }, costs: Object.fromEntries(costs) },
   byYear: Object.fromEntries([...byYear].map(([year, row]) => [year, Object.fromEntries(row)])), yearly,
   chapterEnd: end === null ? null : { tick: end.tick, year: end.chronicle.toYear, reorganisation: end.chronicle.stats.reorganisation ?? null },
-  final: final === null ? null : { ...when(final), era: final.era, outcome: final.settlement?.outcome ?? null, chapter: final.politics?.chapter.number ?? 1,
+  toStability, final: final === null ? null : { ...when(final), era: final.era, outcome: final.settlement?.outcome ?? null, chapter: final.politics?.chapter.number ?? 1,
     rights: final.politics?.rights.map(right => `${right.id}:${right.holder}`) ?? [] } }, null, 1)}\n`);

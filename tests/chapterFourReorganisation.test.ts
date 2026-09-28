@@ -165,13 +165,18 @@ test("R6 (RG-6) the poll tax of 1377: left to the town, a penny an adult a colle
   assert.equal(cash(silent, "poll_tax").at(-1)!.amount, adults * B.directPerAdult);
 });
 
-test("R7 (RG-7) cloth or grain: turned to cloth, the price rises and the harvest falls for good; grain keeps both", () => {
+test("R7 (RG-7) cloth or grain: turned to cloth, the price rises and a bad harvest falls further for good; grain keeps both", () => {
   const petition = shared.politics!.petitions.find(entry => entry.defId === CLOTH_OR_GRAIN_PETITION_ID)!;
   assert.equal(petition.arrivedTick, shared.politics!.petitions.find(entry => entry.defId === GUILD_CHARTER_PETITION_ID)!.arrivedTick + B.clothAfterGuild * SEASON);
   assert.equal(petition.petitioner, "merchants");
   const grain = answered(shared, { [CLOTH_OR_GRAIN_PETITION_ID]: "refuse" });
-  const tick = at(1374, 2);
-  assert.equal(harvestYieldPermille(shared, tick), Math.round(harvestYieldPermille(grain, tick) * B.specialisedHarvestPermille / 1000));
+  // A bad harvest (a wet summer) takes a sixth more from the cloth town; a good one is the same.
+  const harvests = Array.from({ length: 30 }, (_, index) => at(1370 + index, 2));
+  const bad = harvests.find(tick => harvestYieldPermille(grain, tick) < 1000)!;
+  const good = harvests.find(tick => harvestYieldPermille(grain, tick) === 1000)!;
+  assert.ok(bad !== undefined && good !== undefined, "a wet summer and a good one in thirty years");
+  assert.equal(harvestYieldPermille(shared, bad), Math.round(harvestYieldPermille(grain, bad) * B.specialisedHarvestPermille / 1000));
+  assert.equal(harvestYieldPermille(shared, good), 1000);
   assert.equal(marketSalePrice(grain, "finished_cloth"), B.clothPrice);
   assert.equal(marketSalePrice(shared, "finished_cloth"), B.specialisedClothPrice);
   assert.ok(revoltPressure(shared).causes.some(cause => cause.id === "cloth_specialised"));
