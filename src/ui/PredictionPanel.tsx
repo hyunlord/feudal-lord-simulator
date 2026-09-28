@@ -4,6 +4,8 @@ import type { Point } from '../render/camera';
 import { UiIcon } from './UiIcon';
 import type { PlacementChip } from './placementChip';
 import { PLACEMENT_CHIP_COPY } from './placementChipCopy.ko';
+import { ResourceGlyph } from './ResourceArtwork';
+import { resourceName } from '../content/resourceCatalog.ko';
 
 /** UX-2: the painted prediction icons (speech bubble · check · warning diamond · cross). */
 const LINE_SYMBOLS = { info: { icon: 'pending', label: '안내' }, ok: { icon: 'ok', label: '충족' },
@@ -37,6 +39,11 @@ export function PredictionPanel({ lines, position, chip }: PredictionPresentatio
     {chip.reach === null ? null : <p className="placement-chip-reach">{chip.reach}</p>}
     {chip.market === null ? null : <p className="placement-chip-market" data-far={chip.market.far ? 'true' : undefined}>
       {chip.market.far ? <UiIcon sheet="prediction" cell="warn" label={LINE_SYMBOLS.warn.label} /> : null}{chip.market.text}</p>}
+    {/* INSTALL-3: what it makes and from what, each good with its icon (the words say the same). */}
+    {chip.production === null ? null : <p className="placement-chip-production" data-output={chip.production.output}>
+      {chip.production.input === null ? null : <><span>{PLACEMENT_CHIP_COPY.fromLabel}</span><ResourceGlyph resource={chip.production.input} size={16} />
+        <span>{resourceName(chip.production.input)}</span><span aria-hidden="true">{PLACEMENT_CHIP_COPY.costJoin}</span></>}
+      <span>{PLACEMENT_CHIP_COPY.makesLabel}</span><ResourceGlyph resource={chip.production.output} size={16} /><span>{resourceName(chip.production.output)}</span></p>}
     {chip.period === null ? null : <p className="placement-chip-period">{chip.period}</p>}
   </aside>;
   if (lines.length === 0) return null;

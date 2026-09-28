@@ -28,6 +28,7 @@ import {
 import type { DistributorRouteHistory } from "../ui/distributorRouteHistory";
 import type { StoreStockHistory } from "../ui/storeStockHistory";
 import { storeInspectorModel } from "../ui/storeInspectorModel";
+import { farmsteadCropAction, farmsteadCropModel } from "../ui/farmsteadCropModel";
 import { constructionBlockerLine } from "../ui/constructionBlockerLine";
 import { PlacementConfirmBar } from "../ui/hud/PlacementConfirmBar";
 import type { TileCoordinate } from "../world/grid";
@@ -155,6 +156,12 @@ export function GameCanvas({
     }
   }
 
+  // INSTALL-3: a barn's card carries its crop choice (the game command `set_farmstead_crop`).
+  const cropChoice = (buildingId: string) => {
+    const crop = farmsteadCropModel(state, buildingId);
+    return crop === null ? {} : { farmsteadCrop: { model: crop, onChange: (next: typeof crop.crop) => dispatch(farmsteadCropAction(buildingId, next)) } };
+  };
+
   const demolishHouse = (buildingId: string) => {
     dispatch({ type: "demolish_house", buildingId });
     setSelection(null);
@@ -199,6 +206,7 @@ export function GameCanvas({
           walkerHeadline={selection.kind === 'walker' ? walkerHeadline(state, selection.walkerId) : null}
           houseMembers={selection.kind === 'building' && cardModel.kind === 'house' ? householdRows(state, selection.buildingId) : []}
           reachLine={selection.kind === 'building' ? marketReachLine(state, selection.buildingId) : null}
+          {...(selection.kind !== 'building' || cardModel.kind !== 'building' ? {} : cropChoice(selection.buildingId))}
           {...(onPerson === undefined ? {} : { onPerson })}
         />
       ) : null}

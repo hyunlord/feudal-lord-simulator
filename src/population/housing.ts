@@ -131,7 +131,7 @@ function stepResidents(house: House, tick: number, lotArea: number): House {
 }
 
 /** C4 (AL-6): the level's hold under the ale rule — longer unserved (`delay`), shorter served below the required level. */
-function aleHoldTicks(next: HousingDefinition, served: boolean | undefined): number {
+export function aleHoldTicks(next: HousingDefinition, served: boolean | undefined): number {
   if (served === undefined) return next.promotionHoldTicks;
   const permille = !served && ALE_BALANCE.rule === "delay" && next.level >= ALE_BALANCE.requiredFromLevel ? ALE_BALANCE.unservedHoldPermille
     : served && next.level >= ALE_BALANCE.servedBonusFromLevel && next.level < ALE_BALANCE.requiredFromLevel ? ALE_BALANCE.servedHoldPermille : 1_000;

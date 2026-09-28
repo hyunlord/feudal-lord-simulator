@@ -8,6 +8,7 @@ import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { STARTING_HOUSE_ID } from "../src/state/openingVillage";
 import { buildingInspectorModel } from "../src/render/buildingInspectorModel";
 import { DiagnosticCard, placeDiagnosticCard } from "../src/render/DiagnosticCard";
+import { resourceName } from "../src/content/resourceCatalog.ko";
 
 test("diagnostic card placement stays in viewport and outside its selected target", () => {
   const position = placeDiagnosticCard(
@@ -180,7 +181,9 @@ test("selected facility card retains authoritative operation facts and its actua
   assert.match(markup, /aria-label="곡창 시설 진단"/);
   assert.match(markup, /barn.png/);
   assert.match(markup, /상세 정보 닫기/);
-  for (const row of value.rows) assert.ok(markup.includes(row));
+  // INSTALL-3: the stock row is drawn good by good with its icon; every other row as its text.
+  for (const row of value.rows) if (row !== value.stockRow) assert.ok(markup.includes(row), row);
+  for (const item of value.stock ?? []) assert.ok(markup.includes(`${resourceName(item.resource)} ${item.amount}`), item.resource);
   assert.doesNotMatch(markup, /data-action="demolish-house"/);
 });
 

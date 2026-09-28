@@ -20,6 +20,12 @@ export type ResourceCartLoadKey = "log" | "timber" | "rawstone" | "stone" | "gra
 export type ResourceCartPileKey = "pile_wood_1" | "pile_stone_1";
 /** A cell of the UX-2 resource sheet (24 px). */
 export type ResourceSheetCell = "bread" | "timber" | "stone" | "coin";
+/**
+ * The cells of the Wave 3 resource chain sheet (`icon_resource_chain_sheet`, ten 96 px cells in one row), in sheet order
+ * (assets-inbox/wave3/candidates-20260926/records/icons-sources.json: the ale chain's three, then the cloth chain's).
+ */
+export const RESOURCE_CHAIN_SHEET_CELLS = ["barley", "malt", "ale", "fleece", "yarn", "raw_cloth", "fulled_cloth", "dyed_cloth", "finished_cloth", "dyes"] as const;
+export type ResourceChainCell = (typeof RESOURCE_CHAIN_SHEET_CELLS)[number];
 
 export type ResourceEntry = {
   readonly id: string;
@@ -36,6 +42,8 @@ export type ResourceEntry = {
    * and the name chip (ASSET-2: the old runtime-icons-v1 pictures are retired).
    */
   readonly sheetCell?: ResourceSheetCell;
+  /** INSTALL-3: the Wave 3 chain sheet cell the screens draw, for a good the UX-2 sheet does not paint. */
+  readonly chainCell?: ResourceChainCell;
   /** The sheet cell drawn over a walker carrying it at the close zoom (goods the cart does not show). */
   readonly cargoIconCell?: ResourceSheetCell;
   /** The colour token (`SEMANTIC_PALETTE`) of the cargo square below the composed-walker zoom. */
@@ -52,9 +60,9 @@ export const RESOURCE_CATALOG = [
   { id: "stone_raw", storage: "storehouse", group: "raw", hudPriority: 5, carrier: "quarryman", cartLoadKey: "rawstone", cartPileKey: "pile_stone_1", color: "stoneDark", bulk: 1 },
   { id: "stone", storage: "storehouse", group: "goods", hudPriority: 6, carrier: "quarryman", cartLoadKey: "stone", cartPileKey: "pile_stone_1", sheetCell: "stone", color: "stone", bulk: 1 },
   // C4 the ale chain: barley from the fields, malt from the kiln, ale brewed in the households (no hops before 1400s).
-  { id: "barley", storage: "granary", group: "raw", hudPriority: 7, carrier: "farmer", cartLoadKey: "grainsack", color: "goldDark", bulk: 1 },
-  { id: "malt", storage: "granary", group: "goods", hudPriority: 8, carrier: "farmer", cartLoadKey: "grainsack", color: "earth", bulk: 1 },
-  { id: "ale", storage: "storehouse", group: "drink", hudPriority: 9, carrier: "farmer", color: "earthDark", bulk: 1 },
+  { id: "barley", storage: "granary", group: "raw", hudPriority: 7, carrier: "farmer", cartLoadKey: "grainsack", chainCell: "barley", color: "goldDark", bulk: 1 },
+  { id: "malt", storage: "granary", group: "goods", hudPriority: 8, carrier: "farmer", cartLoadKey: "grainsack", chainCell: "malt", color: "earth", bulk: 1 },
+  { id: "ale", storage: "storehouse", group: "drink", hudPriority: 9, carrier: "farmer", chainCell: "ale", color: "earthDark", bulk: 1 },
   { id: "coin", storage: "none", group: "money", hudPriority: 10, carrier: "coin_carter", sheetCell: "coin", cargoIconCell: "coin", color: "gold", bulk: 1 },
 ] as const satisfies readonly ResourceEntry[];
 

@@ -24,6 +24,8 @@ import {
 import type { MarketAccessDiagnosis } from "../population/marketAccess";
 import type { TileCoordinate } from "../world/grid";
 import { existingRoadComponent } from "../world/roadGraph";
+import { houseAleCondition } from "./houseAleModel";
+import { houseProgressModel } from "./houseProgressModel";
 
 export type WaterDiagnosis =
   | { readonly kind: "capacity" | "paused" | "understaffed" | "unreachable"; readonly label: string }
@@ -77,6 +79,8 @@ export type HouseDiagnosisModel = {
   readonly market: MarketAccessDiagnosis | { readonly kind: "capacity" | "paused"; readonly label: string };
   readonly church: ServiceDiagnosis;
   readonly stoneHouse: StoneHouseDiagnosis;
+  /** INSTALL-3 (AL-6): from chapter 2, ale as a condition of the next rise (absent when it asks nothing). */
+  readonly ale?: { readonly served: boolean; readonly label: string };
 };
 
 export type PopulationDiagnosis =
@@ -260,7 +264,13 @@ export function houseDiagnosisModel(
     church: serviceDiagnosis(state, home, "church"),
     stoneHouse: stoneHouseDiagnosis(state, house, home),
     pressure: housePressureLine(house),
+    ...aleCondition(state, houseId),
   };
+}
+
+function aleCondition(state: GameState, houseId: string): { readonly ale?: { readonly served: boolean; readonly label: string } } {
+  const ale = houseAleCondition(houseProgressModel(state, houseId));
+  return ale === null ? {} : { ale };
 }
 
 function housePressureLine(house: House): string | null {

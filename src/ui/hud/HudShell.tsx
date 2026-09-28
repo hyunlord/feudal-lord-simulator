@@ -8,6 +8,7 @@ import { alertRowLookAtIntent, alertStackRows } from "../alertStackModel";
 import { ALERT_STACK_COPY } from "../alertStackCopy.ko";
 import { stewardPortraitStyle } from "../uiArt";
 import { UiIcon } from "../UiIcon";
+import { ResourceGlyph } from "../ResourceArtwork";
 import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
 import type { TutorialController } from "../tutorial/useTutorialController";
 import type { ControlLayer } from "../tutorial/tutorialModel";
@@ -224,7 +225,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
             return (
             <tr key={row.resource} data-resource={row.resource} data-lit={lit ? "true" : undefined}>
               <th scope="row"><Button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(resourceName(row.resource))}
-                onPress={() => onHighlight?.(lit ? [] : holders)} variant="surface">{resourceName(row.resource)}</Button></th>
+                onPress={() => onHighlight?.(lit ? [] : holders)} variant="surface"><ResourceGlyph resource={row.resource} />{resourceName(row.resource)}</Button></th>
               <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td>
               {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}</tr>);
           })}</tbody>

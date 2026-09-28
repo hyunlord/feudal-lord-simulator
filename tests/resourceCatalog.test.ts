@@ -53,8 +53,12 @@ test("every good draws: its artwork or the generic sacks / crates with its name,
     const entry = resourceEntry(resource);
     const markup = renderToStaticMarkup(createElement(ResourceArtwork, { kind: resource }));
     const small = renderToStaticMarkup(createElement(ResourceArtwork, { kind: resource, small: true }));
-    // ASSET-2: the resource sheet's cell at both sizes, else the generic sacks / crates and the name (small: nothing).
-    if (entry.sheetCell === undefined) {
+    // ASSET-2: the resource sheet's cell at both sizes; INSTALL-3: else the Wave 3 chain sheet's cell at both sizes;
+    // else the generic sacks / crates and the name (small: nothing).
+    if (entry.chainCell !== undefined) {
+      assert.ok(markup.includes(`data-icon="chain.${entry.chainCell}"`) && small.includes(`data-icon="chain.${entry.chainCell}"`), resource);
+      assert.match(markup, /assets\/wave3\/icons\/icon_resource_chain_sheet\.png/, resource);
+    } else if (entry.sheetCell === undefined) {
       assert.match(markup, entry.storage === "granary" ? /wave7\/pile\/sacks_1-v1\.png/ : /wave7\/pile\/crates_1-v1\.png/, resource);
       assert.ok(markup.includes(`<span class="resource-name-chip">${resourceName(resource)}</span>`), resource);
       assert.equal(small, "", resource);

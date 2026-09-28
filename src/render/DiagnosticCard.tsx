@@ -18,7 +18,14 @@ import type { BuildingInspectorModel } from "./buildingInspectorModel";
 import type { StoreInspectorModel } from "../ui/storeInspectorModel";
 import { StoreInspectorBody } from "../ui/StoreInspector";
 import { STORE_INSPECTOR_COPY } from "../ui/storeInspectorCopy.ko";
-import { Button, Disclosure } from "../ui/kit";
+import { Button, Disclosure, Select } from "../ui/kit";
+import { ResourceGlyph } from "../ui/ResourceArtwork";
+import { resourceName } from "../content/resourceCatalog.ko";
+import type { FieldCrop } from "../content/buildingConfig";
+import type { FarmsteadCropModel } from "../ui/farmsteadCropModel";
+import { FARMSTEAD_CROP_COPY } from "../ui/farmsteadCropCopy.ko";
+import { houseAleProgressLine } from "../ui/houseAleModel";
+import { HOUSE_ALE_COPY } from "../ui/houseAleCopy.ko";
 import { DIAGNOSTIC_CARD_COPY } from "./diagnosticCardCopy.ko";
 import type { WallInspectorModel } from "./wallInspectorModel";
 import { WALL_INSPECTOR_COPY } from "./wallInspectorCopy.ko";
@@ -91,6 +98,8 @@ function HouseCard({ model, onDemolishHouse, onMergeHouses, members, onPerson }:
       </dl>
       <Disclosure className="inspector-development" summary={DIAGNOSTIC_CARD_COPY.developmentSummary}>
         <dl>
+          {model.ale === undefined ? null
+            : <div data-ale-condition={model.ale.served ? "served" : "unserved"}><dt>{HOUSE_ALE_COPY.term}</dt><dd>{model.ale.label}</dd></div>}
           <div><dt>{DIAGNOSTIC_CARD_COPY.protectionTerm}</dt><dd>{model.protection.label}</dd></div>
           <div><dt>{DIAGNOSTIC_CARD_COPY.marketTerm}</dt><dd>{model.market.label}</dd></div>
           <div><dt>{DIAGNOSTIC_CARD_COPY.churchTerm}</dt><dd>{model.church.label}</dd></div>
@@ -195,6 +204,31 @@ function ConstructionSiteCard({
   );
 }
 
+/** INSTALL-3: the barn's crop (the game command `set_farmstead_crop`; a change is sown from the next sowing). */
+function FarmsteadCropSection({ model, onChange }: { readonly model: FarmsteadCropModel; readonly onChange: (crop: FieldCrop) => void }): ReactElement {
+  return (
+    <section className="inspector-crop" aria-label={FARMSTEAD_CROP_COPY.heading} data-farmstead-crop={model.crop}>
+      <h3>{FARMSTEAD_CROP_COPY.heading}</h3>
+      <p className="inspector-crop-current"><ResourceGlyph resource={model.crop} />{model.current}</p>
+      <Select className="inspector-crop-select" label={model.label} value={model.crop} options={model.options} onChange={onChange} />
+      <p className="inspector-crop-note">{model.note}</p>
+      <p className="inspector-crop-sowing">{model.sowing}</p>
+      {model.pending === null ? null : <p className="inspector-crop-pending" role="status">{model.pending}</p>}
+      {model.carting === null ? null : <p className="inspector-crop-carting">{model.carting}</p>}
+    </section>
+  );
+}
+
+/** INSTALL-3: a building's stock row, each good with its icon and name. */
+function StockRow({ stock }: { readonly stock: NonNullable<BuildingInspectorModel["stock"]> }): ReactElement {
+  return (
+    <span className="inspector-stock">{DIAGNOSTIC_CARD_COPY.stockTerm}
+      {stock.length === 0 ? <span>{DIAGNOSTIC_CARD_COPY.none}</span> : stock.map(item => (
+        <span key={item.resource} className="inspector-stock-item" data-resource={item.resource}><ResourceGlyph resource={item.resource} />{resourceName(item.resource)} {item.amount}</span>))}
+    </span>
+  );
+}
+
 function cardIdentity(model: DiagnosticCardModel, headline: WalkerHeadline | null = null): Readonly<{ name: string; type: string; label: string; art: ReactElement }> {
   switch (model.kind) {
     case "house": return {
@@ -234,6 +268,7 @@ export function DiagnosticCard({
   houseMembers = [],
   onPerson,
   reachLine = null,
+  farmsteadCrop,
 }: Readonly<{
   model: DiagnosticCardModel;
   /** The hover tooltip's cause line for a selected building (same text, UI-1 / B9). */
@@ -252,8 +287,11 @@ export function DiagnosticCard({
   onPerson?: (personId: string) => void;
   /** UX-0b2 MARKET-1: a market's reach ("길 40걸음 안 집 15채"; the map shows the road tiles). */
   reachLine?: string | null;
+  /** INSTALL-3: a barn's crop choice (the game command `set_farmstead_crop`). */
+  farmsteadCrop?: { readonly model: FarmsteadCropModel; readonly onChange: (crop: FieldCrop) => void };
 }>): ReactElement {
   const identity = cardIdentity(model, walkerHeadline);
+  const aleLine = causeSummary == null ? null : houseAleProgressLine(causeSummary);
   return (
     <div className="diagnostic-card-position" onKeyDown={(event) => {
       event.stopPropagation();
@@ -274,12 +312,14 @@ export function DiagnosticCard({
           )}
           {causeSummary.status === 'ready' && causeSummary.remainingTicks !== null && causeSummary.nextLevel !== null ?
             <p>{DIAGNOSTIC_CARD_COPY.holdRemaining(causeSummary.nextLevel, Math.floor(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) / 60), String(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) % 60).padStart(2, '0'))}</p> : null}
+          {aleLine === null ? null
+            : <p className="inspector-ale-line" data-ale={causeSummary.ale?.served === true ? "served" : "unserved"}>{aleLine}</p>}
         </div>}
         <div className="inspector-body">
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} members={houseMembers} onPerson={onPerson} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} headline={walkerHeadline} /> : null}
           {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}
-          {model.kind === "building" ? <><p>{model.value.purpose}</p>{reachLine === null ? null : <p className="inspector-market-reach" data-market-reach="true">{reachLine}</p>}{buildingOperation === undefined ? null : <section className="inspector-actions"><Button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onPress={() => buildingOperation.onToggle()} variant="secondary">{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</Button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>{DIAGNOSTIC_CARD_COPY.operationsHeading}</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
+          {model.kind === "building" ? <><p>{model.value.purpose}</p>{farmsteadCrop === undefined ? null : <FarmsteadCropSection model={farmsteadCrop.model} onChange={farmsteadCrop.onChange} />}{reachLine === null ? null : <p className="inspector-market-reach" data-market-reach="true">{reachLine}</p>}{buildingOperation === undefined ? null : <section className="inspector-actions"><Button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onPress={() => buildingOperation.onToggle()} variant="secondary">{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</Button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>{DIAGNOSTIC_CARD_COPY.operationsHeading}</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row === model.value.stockRow && model.value.stock !== undefined ? <StockRow stock={model.value.stock} /> : row}</li>)}</ul></> : null}
           {model.kind === "wall" ? <><p>{model.value.purpose}</p><ul className="inspector-facts" data-wall-segment={model.value.segmentId}>{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"
             ? onCancelConstruction === undefined

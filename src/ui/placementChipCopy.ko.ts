@@ -19,6 +19,11 @@ export const PLACEMENT_CHIP_COPY = {
   market: (steps: number, reach: number) => `시장까지 길 ${steps}걸음 / ${reach}`,
   marketFar: (steps: number, reach: number) => `시장까지 길 ${steps}걸음 / ${reach} — 닿지 않음`,
   marketNoRoad: "시장까지 이어진 길 없음",
+  /** INSTALL-3: what a production building makes (and from what). */
+  makes: (output: string) => `만듦 ${output}`,
+  makesFrom: (input: string, output: string) => `재료 ${input} · 만듦 ${output}`,
+  makesLabel: "만듦",
+  fromLabel: "재료",
   /** UI-3 (FP-2 placement ledger): per ledger period, only the parts that are not zero. */
   period: (parts: readonly string[]) => `장부 기간마다 ${parts.join(" · ")}`,
   rent: (value: number) => `지대 +${pence(value)}`,
