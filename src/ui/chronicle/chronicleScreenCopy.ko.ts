@@ -22,6 +22,8 @@ const RELATIVES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   spouse: { head: "배우자", child: "자녀", kin: "친척" },
   child: { head: "부모", spouse: "부모", child: "형제자매", kin: "친척" },
   kin: { head: "가구주", spouse: "가구주의 배우자", child: "가구주의 자녀", kin: "친척" },
+  // UI-7: the steward serves the manor household — its head is the lord.
+  steward: { head: "영주", spouse: "영주의 배우자", child: "영주의 자녀", kin: "영주의 친척" },
 };
 const relative = (me: string, them: string) => RELATIVES[me]?.[them] ?? ROLES[them] ?? them;
 /** UI-7: with the young stages (a baby, a toddler: PERSON-1a LN-6). */

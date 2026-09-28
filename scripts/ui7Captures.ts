@@ -1,5 +1,5 @@
 // UI-7 gates on the states of scripts/ui7States.ts (the v24 town left to run):
-//   t1 the lord's family tree (the L3 lineage set): the steward's card → the lord → [전기 보기] → [가계도];
+//   t0 the lord's household on the ledger's rights tab; t1 the lord's family tree (the L3 lineage set): the lord → [전기 보기] → [가계도];
 //   t2 the miller's family tree (L8, a head with eleven children: wider than the page, it scrolls) and t3 folded;
 //   b1 a baby's face (under two) on its house card and its biography;
 //   s1–s5 the person-state ornaments sick, injury, pregnant, pilgrim and bailiff on the house card's person row and the
@@ -83,8 +83,10 @@ await step("t1-lord-tree", async () => {
   const state = load("lord"); const lord = moments.lord!.person;
   const keep = state.buildings.find(building => building.kind === "keep") ?? state.buildings[0]!;
   const { page, close } = await scene(state, [keep.tx, keep.ty]);
-  // The steward's card (the HUD's [청지기]) lists the lord's family beside the steward.
-  await page.locator(".steward-dock, [data-dock='steward']").first().click(); await page.waitForTimeout(700);
+  // The ledger drawer's rights tab lists the lord's household: the ruling house's family, then the steward.
+  await page.locator("[data-dock='ledger']").first().click(); await page.waitForTimeout(500);
+  await page.locator("[data-ledger-tab='rights']").first().click(); await page.waitForTimeout(600);
+  await shot(page.locator(".ledger-rights-household"), "t0-lord-household.jpg");
   await openBiography(page, lord);
   await openTree(page);
   await shot(page.locator(".chronicle-screen"), "t1-lord-tree.jpg");
