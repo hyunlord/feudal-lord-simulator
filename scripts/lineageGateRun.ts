@@ -21,9 +21,10 @@ let counted = 0;
 runPhase19NaturalGrowth({ targetLots: 24, maxTicks, seed, onTick: state => {
   last = state;
   // The ledger keeps everyday records a while only: count each state's line once, by its ordinal (`h-000123`), as written.
-  for (const record of state.history?.records ?? []) {
-    const ordinal = Number(record.id.slice(2));
-    if (ordinal <= counted) continue;
+  const records = state.history?.records ?? [];
+  for (let index = records.length - 1; index >= 0; index -= 1) {
+    const record = records[index]!;
+    if (Number(record.id.slice(2)) <= counted) break;
     if (record.template in counts) counts[record.template]! += 1;
   }
   counted = (state.history?.nextOrdinal ?? 1) - 1;
