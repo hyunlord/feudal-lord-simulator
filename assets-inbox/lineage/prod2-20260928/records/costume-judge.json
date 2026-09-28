@@ -1,0 +1,186 @@
+{
+  "items": [
+    {
+      "number": 1,
+      "class": "reeve",
+      "confidence": "low",
+      "reason": "Plain olive wool with no visible ornament; modest dress, but office is not identifiable."
+    },
+    {
+      "number": 2,
+      "class": "reeve",
+      "confidence": "low",
+      "reason": "Plain rust wool and light underlayer; no rank-specific trim."
+    },
+    {
+      "number": 3,
+      "class": "reeve",
+      "confidence": "low",
+      "reason": "Plain ochre wool with minimal detail; could equally be everyday artisan dress."
+    },
+    {
+      "number": 4,
+      "class": "reeve",
+      "confidence": "low",
+      "reason": "Unadorned dark plum cloth; colour alone does not distinguish office or wealth."
+    },
+    {
+      "number": 5,
+      "class": "gentry",
+      "confidence": "medium",
+      "reason": "Fitted buttoned garment, ornamented belt and gold-edged outer layer suggest prosperous landed dress."
+    },
+    {
+      "number": 6,
+      "class": "gentry",
+      "confidence": "medium",
+      "reason": "Dark green dress with conspicuous gold belt and decorated accessory suggests elevated household status."
+    },
+    {
+      "number": 7,
+      "class": "merchant",
+      "confidence": "low",
+      "reason": "Substantial brown fur border over olive wool suggests prosperity without explicit noble insignia."
+    },
+    {
+      "number": 8,
+      "class": "reeve",
+      "confidence": "low",
+      "reason": "Plain olive neckline over linen with no costly trim visible."
+    },
+    {
+      "number": 9,
+      "class": "earl",
+      "confidence": "high",
+      "reason": "White spotted fur and elaborate gold ornament on blue cloth form the strongest aristocratic rank signal."
+    },
+    {
+      "number": 10,
+      "class": "upper_artisan",
+      "confidence": "high",
+      "reason": "Scuffed leather apron fastened over wool strongly suggests a working craft occupation."
+    },
+    {
+      "number": 11,
+      "class": "merchant",
+      "confidence": "low",
+      "reason": "Burgundy garment with broad brown fur facing suggests affluent urban clothing but overlaps gentry."
+    },
+    {
+      "number": 12,
+      "class": "gentry",
+      "confidence": "low",
+      "reason": "Blue cloth and brown fur collar suggest affluent dress; merchant is equally plausible."
+    },
+    {
+      "number": 13,
+      "class": "gentry",
+      "confidence": "low",
+      "reason": "Blue wool with broad brown fur collar suggests elevated status without a specific rank marker."
+    },
+    {
+      "number": 14,
+      "class": "gentry",
+      "confidence": "medium",
+      "reason": "Buttoned rust garment, gold belt and gold-edged outer layer suggest costly formal dress."
+    },
+    {
+      "number": 15,
+      "class": "merchant",
+      "confidence": "low",
+      "reason": "Rust wool and broad brown fur facing suggest a prosperous wearer; gentry cannot be excluded."
+    },
+    {
+      "number": 16,
+      "class": "gentry",
+      "confidence": "low",
+      "reason": "Blue garment with pale fur trim suggests elevated status, but the crop does not establish social class."
+    },
+    {
+      "number": 17,
+      "class": "gentry",
+      "confidence": "low",
+      "reason": "Blue cloth with brown fur collar and narrow decorated edge suggests expensive dress."
+    },
+    {
+      "number": 18,
+      "class": "reeve",
+      "confidence": "low",
+      "reason": "Plain brown wool with no decorative hardware or fur visible; occupation is uncertain."
+    },
+    {
+      "number": 19,
+      "class": "upper_artisan",
+      "confidence": "high",
+      "reason": "Prominent worn leather apron over ochre wool is a clear craft-work cue."
+    },
+    {
+      "number": 20,
+      "class": "upper_artisan",
+      "confidence": "high",
+      "reason": "Worn leather apron and practical strap hardware suggest skilled manual work."
+    },
+    {
+      "number": 21,
+      "class": "gentry",
+      "confidence": "low",
+      "reason": "Blue cloth with brown fur facing suggests an affluent wearer; merchant remains plausible."
+    },
+    {
+      "number": 22,
+      "class": "merchant",
+      "confidence": "low",
+      "reason": "Ochre garment with broad brown fur facing signals prosperity but no identifiable noble rank."
+    },
+    {
+      "number": 23,
+      "class": "merchant",
+      "confidence": "low",
+      "reason": "Green buttoned garment with narrow fur collar and decorative placket suggests comfortable urban dress; gentry also plausible."
+    },
+    {
+      "number": 24,
+      "class": "upper_artisan",
+      "confidence": "high",
+      "reason": "Weathered leather apron over plain olive wool suggests practical craft clothing."
+    },
+    {
+      "number": 25,
+      "class": "merchant",
+      "confidence": "low",
+      "reason": "Burgundy wool with substantial brown fur facing suggests an affluent merchant, but is not class-exclusive."
+    },
+    {
+      "number": 26,
+      "class": "earl",
+      "confidence": "high",
+      "reason": "Red luxurious cloth, spotted white fur and a jeweled clasp strongly suggest aristocratic ceremonial dress."
+    },
+    {
+      "number": 27,
+      "class": "earl",
+      "confidence": "low",
+      "reason": "Rich red outer garment and gold-edged blue cuff suggest high status, but no rank-specific fur is visible."
+    },
+    {
+      "number": 28,
+      "class": "upper_artisan",
+      "confidence": "high",
+      "reason": "Scuffed leather apron with shoulder attachment over rust wool is a strong craft-work signal."
+    },
+    {
+      "number": 29,
+      "class": "earl",
+      "confidence": "high",
+      "reason": "Red cloth with spotted white fur and ornate clasp strongly suggests aristocratic ceremonial dress."
+    },
+    {
+      "number": 30,
+      "class": "gentry",
+      "confidence": "low",
+      "reason": "Rust garment with pale fur edge and gold clasp suggests affluent dress; merchant or higher nobility remain possible."
+    }
+  ],
+  "limitations": "Forced best-fit labels from clothing crops only. Plain garments do not identify a reeve, and brown fur, blue wool, belts and buttons cannot reliably separate gentry from merchants. Earl labels describe visual costume signaling, not historically definitive rank attribution. No counts were assumed and no source identities, metadata or other images were inspected.",
+  "boardSHA256": "94c69025a1144c40c23cb8420462b71d5d11798a3b57bb3cd14a540198559758"
+}

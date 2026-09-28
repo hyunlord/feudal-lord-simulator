@@ -1,0 +1,434 @@
+{
+  "seed": 20261003,
+  "algorithm": "Mulberry32 Fisher-Yates",
+  "classes": [
+    "earl",
+    "gentry",
+    "merchant",
+    "upper_artisan",
+    "reeve"
+  ],
+  "rule": "Thirty anonymous lower-torso crops: five young portraits from six families. L3 and L7 share gentry class. No face, hair, or headgear cues. Fixed x24..151 crop excludes L7_204 braid. Crop is proof-only and does not alter final portraits.",
+  "items": [
+    {
+      "id": "L5_102_young",
+      "family": "L5",
+      "class": "reeve",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-costume-v2/assets/L5/L5_102_young.png",
+      "number": 1,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "ce221c2eaf67024260b8291c7367da34be33d768631273bc6555c4ba3a29fcb8"
+    },
+    {
+      "id": "L5_203_young",
+      "family": "L5",
+      "class": "reeve",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L5/L5_203_young.png",
+      "number": 2,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "743c7261a8369d15f328d894a61d66258bdcdb9e1663b71e99d103547c9dd741"
+    },
+    {
+      "id": "L5_201_young",
+      "family": "L5",
+      "class": "reeve",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L5/L5_201_young.png",
+      "number": 3,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "c0e2056ad4023081c8de9c3c5970d018122d712042f172f4259e0b2b1c28ac7b"
+    },
+    {
+      "id": "L4_204_young",
+      "family": "L4",
+      "class": "merchant",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-costume-v2/assets/L4/L4_204_young.png",
+      "number": 4,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "eaebaa24b59001e9f370296fadc610d892506c947285ebf43a9edb987e597467"
+    },
+    {
+      "id": "L7_201_young",
+      "family": "L7",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_201_young.png",
+      "number": 5,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "50c18146195cacbcc97c693b985404392ba59267c7cdcf568666dd768ef30cb4"
+    },
+    {
+      "id": "L6_102_young",
+      "family": "L6",
+      "class": "earl",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L6/L6_102_young.png",
+      "number": 6,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "3ab93a52018c20ad6be249370df3c4929d60deae88cbd982abe96decde2ea820"
+    },
+    {
+      "id": "L3_201_young",
+      "family": "L3",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_201_young.png",
+      "number": 7,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "761a3ab2cab02e5b677726e918c2867aee1ab8d8eb5ee76bbafe210f194c32f4"
+    },
+    {
+      "id": "L5_204_young",
+      "family": "L5",
+      "class": "reeve",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L5/L5_204_young.png",
+      "number": 8,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "857b44c17b60ebb49ddf60fbb6a8d12fd3bb2bf0a3e611d48246beb88cfd7d28"
+    },
+    {
+      "id": "L6_201_young",
+      "family": "L6",
+      "class": "earl",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L6/L6_201_young.png",
+      "number": 9,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "ec71d82649776ce9b8ac17dc41890d64a0174d9806194ccf924941791c836a65"
+    },
+    {
+      "id": "L8_204_young",
+      "family": "L8",
+      "class": "upper_artisan",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png",
+      "number": 10,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "a8e9c4a9d20130a36e4037d0a73cdc5a4fe99add8b346e42aea0fea8436ea07d"
+    },
+    {
+      "id": "L3_102_young",
+      "family": "L3",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_102_young.png",
+      "number": 11,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "86022fda522ad7a327be8a60650ab84563f3af48278192ead14f3dd253a91528"
+    },
+    {
+      "id": "L4_101_young",
+      "family": "L4",
+      "class": "merchant",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-costume-v2/assets/L4/L4_101_young.png",
+      "number": 12,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "211f085c3767dec8bfafc9376a7de5e11011232ef1e2f43b7169b7003e4ed31b"
+    },
+    {
+      "id": "L4_102_young",
+      "family": "L4",
+      "class": "merchant",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-costume-v2/assets/L4/L4_102_young.png",
+      "number": 13,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "0c8d42d0c418a3a8b6d8dcf348f7e290f7108b0dc1acaa343e5bcd214458caae"
+    },
+    {
+      "id": "L7_101_young",
+      "family": "L7",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_101_young.png",
+      "number": 14,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "b7ba1addcc4bbb61ca9c28255d8c435b5bbec1721f721825a596874427878a1f"
+    },
+    {
+      "id": "L3_101_young",
+      "family": "L3",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_101_young.png",
+      "number": 15,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "f122f7cd0e39024feac3b6e7ac256a6fb114747987c05748d952b3ec24059e74"
+    },
+    {
+      "id": "L7_102_young",
+      "family": "L7",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_102_young.png",
+      "number": 16,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "4c8d59e6be272b957d7392bb4d29a0301ba7bc9070a3332842f7391d2b728a70"
+    },
+    {
+      "id": "L4_203_young",
+      "family": "L4",
+      "class": "merchant",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-costume-v2/assets/L4/L4_203_young.png",
+      "number": 17,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "b89891702828726e55db28f3e41b7758fd7ba59e92b6eb746593fb50e1776ec5"
+    },
+    {
+      "id": "L5_101_young",
+      "family": "L5",
+      "class": "reeve",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L5/L5_101_young.png",
+      "number": 18,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd"
+    },
+    {
+      "id": "L8_201_young",
+      "family": "L8",
+      "class": "upper_artisan",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "number": 19,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f"
+    },
+    {
+      "id": "L8_101_young",
+      "family": "L8",
+      "class": "upper_artisan",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "number": 20,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f"
+    },
+    {
+      "id": "L4_201_young",
+      "family": "L4",
+      "class": "merchant",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-costume-v2/assets/L4/L4_201_young.png",
+      "number": 21,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "f4f5430f0c19055950427ab5d4e883d60f4205a623cb1c4aadda05eaf95f0d00"
+    },
+    {
+      "id": "L3_204_young",
+      "family": "L3",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_204_young.png",
+      "number": 22,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "b14ddd0e147e3f01d53fd2b72720dcf8de118c4c6d49f773af41fd47e9959593"
+    },
+    {
+      "id": "L7_203_young",
+      "family": "L7",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_203_young.png",
+      "number": 23,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "c4901feae0c0d6abd7029d34993a9a6e76b7d2b17b31004d13784bdcd7e637ab"
+    },
+    {
+      "id": "L8_102_young",
+      "family": "L8",
+      "class": "upper_artisan",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png",
+      "number": 24,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+    },
+    {
+      "id": "L3_203_young",
+      "family": "L3",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod1-v1/assets/L3/L3_203_young.png",
+      "number": 25,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "f740f05bf9d588c65f09fa434a298c6c9ce2aebda63064a1d0be1e9c448cbe09"
+    },
+    {
+      "id": "L6_204_young",
+      "family": "L6",
+      "class": "earl",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L6/L6_204_young.png",
+      "number": 26,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "3ad51b4d7b22d72a803912316aac360ac27203def5a139dc1f976f4d2c7369c9"
+    },
+    {
+      "id": "L6_101_young",
+      "family": "L6",
+      "class": "earl",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L6/L6_101_young.png",
+      "number": 27,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "2763b9003b5354503caf2aabd169431e3ea7e522d34ab21d9fade8f7d0da112e"
+    },
+    {
+      "id": "L8_203_young",
+      "family": "L8",
+      "class": "upper_artisan",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png",
+      "number": 28,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+    },
+    {
+      "id": "L6_203_young",
+      "family": "L6",
+      "class": "earl",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L6/L6_203_young.png",
+      "number": 29,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "72d94d698c1328e02955e4577817e07348a5c361cede76f1326f3ef5a4fc2632"
+    },
+    {
+      "id": "L7_204_young",
+      "family": "L7",
+      "class": "gentry",
+      "source": "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L7/L7_204_young.png",
+      "number": 30,
+      "crop": [
+        24,
+        190,
+        128,
+        66
+      ],
+      "sourceSHA256": "a276b5ca7d5f9eecd1b90c626f7bf926b2d688097cc62168093926ebedbfc3db"
+    }
+  ]
+}

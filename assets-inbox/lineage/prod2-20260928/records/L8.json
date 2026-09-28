@@ -1,0 +1,3174 @@
+[
+  {
+    "id": "L8_101_mature",
+    "identity": "L8_101",
+    "lineage": "L8",
+    "generation": 1,
+    "stage": "mature",
+    "age": 46,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "ochre wool; dark brown leather apron flour smudges",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "straight dark brown jaw-length bob",
+      "eyes": "gray",
+      "personalMark": "small notch in left brow",
+      "build": "slender neck",
+      "age": 46
+    },
+    "prompt": "Age THIS SAME PERSON to 46. TWENTY years older: obvious eye bags and forehead lines, crow feet, slightly sagging cheeks and gray temple strands. Keep exact identity, distinctive nose, mouth, face contour, gaze direction, brow notch/cheek mole, hair style, same apron flour marks, headcloth for woman, paint style backdrop pose framing. Clear facial aging, not only recoloring hair. Single square bust portrait no words, no fur.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png"
+    ],
+    "file": "assets/L8/L8_101_mature.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_mature.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_mature.png",
+    "status": "candidate",
+    "sha256": "9d28ff4ac3c91673d40cb26997be75e6976be9fe0e2772e924744ab9d2bc4afe",
+    "generationRecords": [
+      {
+        "prompt": "Age THIS SAME PERSON to 46. TWENTY years older: obvious eye bags and forehead lines, crow feet, slightly sagging cheeks and gray temple strands. Keep exact identity, distinctive nose, mouth, face contour, gaze direction, brow notch/cheek mole, hair style, same apron flour marks, headcloth for woman, paint style backdrop pose framing. Clear facial aging, not only recoloring hair. Single square bust portrait no words, no fur.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_mature.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_101_old",
+    "identity": "L8_101",
+    "lineage": "L8",
+    "generation": 1,
+    "stage": "old",
+    "age": 68,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "ochre wool; dark brown leather apron flour smudges",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "straight dark brown jaw-length bob",
+      "eyes": "gray",
+      "personalMark": "small notch in left brow",
+      "build": "slender neck",
+      "age": 68
+    },
+    "prompt": "Age THIS SAME PERSON to 68. Elderly68: deeply lined forehead, crowfeet, sagging lower cheeks, thin silver hair, weathered neck. Keep exact identity, distinctive nose, mouth, face contour, gaze direction, brow notch/cheek mole, hair style, same apron flour marks, headcloth for woman, paint style backdrop pose framing. Clear facial aging, not only recoloring hair. Single square bust portrait no words, no fur.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png"
+    ],
+    "file": "assets/L8/L8_101_old.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_old.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_old.png",
+    "status": "candidate",
+    "sha256": "063a47b5aa476318c19b4e5a5d17d151e2484b35924da5adebb3a9761fe81530",
+    "generationRecords": [
+      {
+        "prompt": "Age THIS SAME PERSON to 68. Elderly68: deeply lined forehead, crowfeet, sagging lower cheeks, thin silver hair, weathered neck. Keep exact identity, distinctive nose, mouth, face contour, gaze direction, brow notch/cheek mole, hair style, same apron flour marks, headcloth for woman, paint style backdrop pose framing. Clear facial aging, not only recoloring hair. Single square bust portrait no words, no fur.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_old.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_101_young",
+    "identity": "L8_101",
+    "lineage": "L8",
+    "generation": 1,
+    "stage": "young",
+    "age": 26,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "ochre wool; dark brown leather apron flour smudges",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "straight dark brown jaw-length bob",
+      "eyes": "gray",
+      "personalMark": "small notch in left brow",
+      "build": "slender neck",
+      "age": 26
+    },
+    "prompt": "Generate a NEW identity for a medieval English affluent miller husband age26. Reference ONLY conveys paint finish and apron, DO NOT copy reference face, pose, hair or features. Man with DARK BROWN STRAIGHT blunt jaw-length bob (NO reddish curls), elongated ROUND OVAL face, tall forehead, large GRAY eyes, distinct slightly aquiline thin nose, narrow chin, visible small notch left eyebrow, slender neck, no beard. Look slightly to viewer RIGHT, almost frontal. Gently arched eyebrows. Sturdy good ochre wool and broad dark brown LEATHER APRON with obvious WHITE FLOUR smudges across chest. NO FUR. Fine subdued handpainted gouache/tempera, warm matte gray background, soft upper-left light, square chest-up, same scale as reference. Only one person. No text, border, accessories, machinery.",
+    "referenceImages": [
+      "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-founders/L8_101_young-256.png"
+    ],
+    "file": "assets/L8/L8_101_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_young.png",
+    "status": "candidate",
+    "sha256": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+    "generationRecords": [
+      {
+        "prompt": "Generate a NEW identity for a medieval English affluent miller husband age26. Reference ONLY conveys paint finish and apron, DO NOT copy reference face, pose, hair or features. Man with DARK BROWN STRAIGHT blunt jaw-length bob (NO reddish curls), elongated ROUND OVAL face, tall forehead, large GRAY eyes, distinct slightly aquiline thin nose, narrow chin, visible small notch left eyebrow, slender neck, no beard. Look slightly to viewer RIGHT, almost frontal. Gently arched eyebrows. Sturdy good ochre wool and broad dark brown LEATHER APRON with obvious WHITE FLOUR smudges across chest. NO FUR. Fine subdued handpainted gouache/tempera, warm matte gray background, soft upper-left light, square chest-up, same scale as reference. Only one person. No text, border, accessories, machinery.",
+        "referenceImages": [
+          "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-founders/L8_101_young-256.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-founders/L8_101_young-256.png": "0572c3488e74526112be17d5e55a1efa7e6e51a402cc22a38f5ecde7800b1a45"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_101_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        },
+        "referenceArchiveNote": "Original input path was assets/L8/L8_101_young.png before replacement. This archived 256px copy restores the exact source pixels and encoding with the same resize pipeline."
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_102_mature",
+    "identity": "L8_102",
+    "lineage": "L8",
+    "generation": 1,
+    "stage": "mature",
+    "age": 44,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "sage wool; tan leather apron flour smudges; cream linen headcloth",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown under linen",
+      "eyes": "deep brown",
+      "personalMark": "dark right cheek mole",
+      "build": "rounded shoulders",
+      "age": 44
+    },
+    "prompt": "Age THIS SAME PERSON to 44. TWENTY years older: obvious eye bags and forehead lines, crow feet, slightly sagging cheeks and gray temple strands. Keep exact identity, distinctive nose, mouth, face contour, gaze direction, brow notch/cheek mole, hair style, same apron flour marks, headcloth for woman, paint style backdrop pose framing. Clear facial aging, not only recoloring hair. Single square bust portrait no words, no fur.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_102_mature.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_mature.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_mature.png",
+    "status": "candidate",
+    "sha256": "5add8aa750d9136cf3d4b5a600425ae926d6b79d839aebb9c50f46102168d13e",
+    "generationRecords": [
+      {
+        "prompt": "Age THIS SAME PERSON to 44. TWENTY years older: obvious eye bags and forehead lines, crow feet, slightly sagging cheeks and gray temple strands. Keep exact identity, distinctive nose, mouth, face contour, gaze direction, brow notch/cheek mole, hair style, same apron flour marks, headcloth for woman, paint style backdrop pose framing. Clear facial aging, not only recoloring hair. Single square bust portrait no words, no fur.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_mature.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_102_old",
+    "identity": "L8_102",
+    "lineage": "L8",
+    "generation": 1,
+    "stage": "old",
+    "age": 66,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "sage wool; tan leather apron flour smudges; cream linen headcloth",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown under linen",
+      "eyes": "deep brown",
+      "personalMark": "dark right cheek mole",
+      "build": "rounded shoulders",
+      "age": 66
+    },
+    "prompt": "Age THIS SAME PERSON to 66. Elderly68: deeply lined forehead, crowfeet, sagging lower cheeks, thin silver hair, weathered neck. Keep exact identity, distinctive nose, mouth, face contour, gaze direction, brow notch/cheek mole, hair style, same apron flour marks, headcloth for woman, paint style backdrop pose framing. Clear facial aging, not only recoloring hair. Single square bust portrait no words, no fur.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_102_old.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_old.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_old.png",
+    "status": "candidate",
+    "sha256": "46a65ed875a909b4121e3308bdc81bc98b34e71814fe2245c1800c0a5c5bc802",
+    "generationRecords": [
+      {
+        "prompt": "Age THIS SAME PERSON to 66. Elderly68: deeply lined forehead, crowfeet, sagging lower cheeks, thin silver hair, weathered neck. Keep exact identity, distinctive nose, mouth, face contour, gaze direction, brow notch/cheek mole, hair style, same apron flour marks, headcloth for woman, paint style backdrop pose framing. Clear facial aging, not only recoloring hair. Single square bust portrait no words, no fur.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_old.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_102_young",
+    "identity": "L8_102",
+    "lineage": "L8",
+    "generation": 1,
+    "stage": "young",
+    "age": 24,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "sage wool; tan leather apron flour smudges; cream linen headcloth",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown under linen",
+      "eyes": "deep brown",
+      "personalMark": "dark right cheek mole",
+      "build": "rounded shoulders",
+      "age": 24
+    },
+    "prompt": "Generate a NEW identity for a medieval English affluent miller wife age24. Reference ONLY conveys paint finish and apron, DO NOT copy reference face, pose, hair or features. Woman with a BROAD ROUND face and full low cheeks, SHORT UPTURNED nose, THIN upper lip, deep-set DARK BROWN eyes, small dark mole on her RIGHT cheek. DARK BROWN hair under completely covering muted ochre linen headcloth. FRONTAL gaze, head angled slightly viewer RIGHT. Clearly new woman different from reference, no long pointed nose or reference side profile. Gently arched eyebrows. Sturdy good sage wool and broad tan LEATHER APRON with obvious WHITE FLOUR smudges across chest. NO FUR. Fine subdued handpainted gouache/tempera, warm matte gray background, soft upper-left light, square chest-up, same scale as reference. Only one person. No text, border, accessories, machinery.",
+    "referenceImages": [
+      "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-founders/L8_102_young-256.png"
+    ],
+    "file": "assets/L8/L8_102_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_young.png",
+    "status": "candidate",
+    "sha256": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a",
+    "generationRecords": [
+      {
+        "prompt": "Generate a NEW identity for a medieval English affluent miller wife age24. Reference ONLY conveys paint finish and apron, DO NOT copy reference face, pose, hair or features. Woman with a BROAD ROUND face and full low cheeks, SHORT UPTURNED nose, THIN upper lip, deep-set DARK BROWN eyes, small dark mole on her RIGHT cheek. DARK BROWN hair under completely covering muted ochre linen headcloth. FRONTAL gaze, head angled slightly viewer RIGHT. Clearly new woman different from reference, no long pointed nose or reference side profile. Gently arched eyebrows. Sturdy good sage wool and broad tan LEATHER APRON with obvious WHITE FLOUR smudges across chest. NO FUR. Fine subdued handpainted gouache/tempera, warm matte gray background, soft upper-left light, square chest-up, same scale as reference. Only one person. No text, border, accessories, machinery.",
+        "referenceImages": [
+          "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-founders/L8_102_young-256.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/rejected-founders/L8_102_young-256.png": "13cd9009424c6d9463e1c635117065663ff058ce819fb473f871f081f6895b0a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_102_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        },
+        "referenceArchiveNote": "Original input path was assets/L8/L8_102_young.png before replacement. This archived 256px copy restores the exact source pixels and encoding with the same resize pipeline."
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_201_baby",
+    "identity": "L8_201",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "baby",
+    "age": 1,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "linen baby bonnet and plain wool swaddling",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "short straight dark brown hair side part",
+      "eyes": "gray",
+      "build": "slender shoulders",
+      "personalMark": "small notch LEFT eyebrow",
+      "age": 1
+    },
+    "prompt": "Transform FIRST reference, the same person, into a REAL 1 year old INFANT, not toddler or miniature adult; large round baby skull, very short neck, tiny infant nose, plump cheeks, small infant limbs wholly wrapped in swaddling. Second and third references are actual FATHER and MOTHER; use both for family traits. Retain this individual's dark brown hair, eye color, overall face identity and subtle personal mark (small notch LEFT eyebrow); do not clone siblings or parent. Linen INFANT BONNET, plain muted wool SWADDLING wrap, no adult apron or work props; very sparse dark brown baby hair at forehead. No fur. Same paint style matte gray backdrop chest-up square framing, no text. Age must be visually obvious and identity readable96px.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_201_baby.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_baby.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_baby.png",
+    "status": "candidate",
+    "sha256": "07756333d9ae276d103d814e212bc51cd045195d04df72008a60648ca048e1fb",
+    "generationRecords": [
+      {
+        "prompt": "Transform FIRST reference, the same person, into a REAL 1 year old INFANT, not toddler or miniature adult; large round baby skull, very short neck, tiny infant nose, plump cheeks, small infant limbs wholly wrapped in swaddling. Second and third references are actual FATHER and MOTHER; use both for family traits. Retain this individual's dark brown hair, eye color, overall face identity and subtle personal mark (small notch LEFT eyebrow); do not clone siblings or parent. Linen INFANT BONNET, plain muted wool SWADDLING wrap, no adult apron or work props; very sparse dark brown baby hair at forehead. No fur. Same paint style matte gray backdrop chest-up square framing, no text. Age must be visually obvious and identity readable96px.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_baby.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_101",
+      "personalMark": "father eyebrow notch"
+    }
+  },
+  {
+    "id": "L8_201_child",
+    "identity": "L8_201",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic; small leather apron flour trace",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "short straight dark brown hair side part",
+      "eyes": "gray",
+      "build": "slender shoulders",
+      "personalMark": "small notch LEFT eyebrow",
+      "age": 8
+    },
+    "prompt": "De-age FIRST reference into an unmistakable 8 year old SMALL CHILD. Second and third actual parents are family reference only. Crucial: CHILD HEAD PROPORTIONS not adult face shrunk. Short midface, extremely small rounded jaw/chin, round plump cheeks, big eyes and broad forehead, tiny child nose, SHORT neck, VERY SMALL narrow shoulders. Looks6–8, absolutely NOT teen12+. Maintain individual's dark brown short straight dark brown hair side part, gray eyes, small notch LEFT eyebrow subtle. Child tunic with small plain leather apron and slight flour traces, no fur, girl's hair uncovered no veil. Same painterly matte gray background square bust soft light. Do not preserve adult jawline! No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_201_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_child.png",
+    "status": "candidate",
+    "sha256": "fe2804124a4450dfeafa85532407c7e026bf3b0ad04cafeb9f026856bf0a90a4",
+    "generationRecords": [
+      {
+        "prompt": "De-age FIRST reference into an unmistakable 8 year old SMALL CHILD. Second and third actual parents are family reference only. Crucial: CHILD HEAD PROPORTIONS not adult face shrunk. Short midface, extremely small rounded jaw/chin, round plump cheeks, big eyes and broad forehead, tiny child nose, SHORT neck, VERY SMALL narrow shoulders. Looks6–8, absolutely NOT teen12+. Maintain individual's dark brown short straight dark brown hair side part, gray eyes, small notch LEFT eyebrow subtle. Child tunic with small plain leather apron and slight flour traces, no fur, girl's hair uncovered no veil. Same painterly matte gray background square bust soft light. Do not preserve adult jawline! No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_101",
+      "personalMark": "father eyebrow notch"
+    }
+  },
+  {
+    "id": "L8_201_mature",
+    "identity": "L8_201",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "mature",
+    "age": 45,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "ochre sturdy wool; brown leather apron flour smudges; uncovered hair",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "short straight dark brown hair side part",
+      "eyes": "gray",
+      "build": "slender shoulders",
+      "personalMark": "small notch LEFT eyebrow",
+      "age": 45
+    },
+    "prompt": "Age FIRST reference into same person age45, visibly TWENTY YEARS older. Stronger aging clearly readable96px: DEEP CROW FEET, eye bags, horizontal forehead creases, nasolabial folds, loosening cheeks and wrinkled neck, scattered gray hairs at temples. Preserve identity, exact eyes nose mouth, hair style, personal mark small notch LEFT eyebrow, pose and framing.  Sturdy wool, flour dusty leather apron, no fur. Paint same style matte gray backdrop. Not subtle cosmetic lines; mature forty-plus face. No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_201_mature.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_mature.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_mature.png",
+    "status": "candidate",
+    "sha256": "b5d1f81f4b05ed2c6f1e67be4a57b3da22dc7e1355e47604b371dc0a5f4ed27a",
+    "generationRecords": [
+      {
+        "prompt": "Age FIRST reference into same person age45, visibly TWENTY YEARS older. Stronger aging clearly readable96px: DEEP CROW FEET, eye bags, horizontal forehead creases, nasolabial folds, loosening cheeks and wrinkled neck, scattered gray hairs at temples. Preserve identity, exact eyes nose mouth, hair style, personal mark small notch LEFT eyebrow, pose and framing.  Sturdy wool, flour dusty leather apron, no fur. Paint same style matte gray backdrop. Not subtle cosmetic lines; mature forty-plus face. No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_mature.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_101",
+      "personalMark": "father eyebrow notch"
+    }
+  },
+  {
+    "id": "L8_201_young",
+    "identity": "L8_201",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "young",
+    "age": 25,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "ochre sturdy wool; brown leather apron flour smudges; uncovered hair",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "short straight dark brown hair side part",
+      "eyes": "gray",
+      "build": "slender shoulders",
+      "personalMark": "small notch LEFT eyebrow",
+      "age": 25
+    },
+    "prompt": "Create ONE NEW descendant portrait, son age25 of BOTH pictured parents. First input FATHER, second MOTHER. Resemblance ONLY through dark brown hair + broad round OVAL overall face + gently arched eyebrows. Do NOT clone either parent's exact nose/chin or face. Distinct individual: short straight dark brown hair side part, gray eyes, slender shoulders, small notch LEFT eyebrow, narrow rounded nose, individual mouth. UNMARRIED: hair visible, NO veil or headcloth. Sturdy ochre good wool, prominent brown LEATHER APRON across chest with conspicuous irregular white FLOUR DUST. No fur or noble jewelry. Southern England medieval upper artisan. Same muted warm handpainted gouache/tempera portrait, matte gray background, soft upper-left light, square chest-up. Unique face, NOT copy of either parent, no text. Keep babyface absent at adult age.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_201_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_young.png",
+    "status": "candidate",
+    "sha256": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE NEW descendant portrait, son age25 of BOTH pictured parents. First input FATHER, second MOTHER. Resemblance ONLY through dark brown hair + broad round OVAL overall face + gently arched eyebrows. Do NOT clone either parent's exact nose/chin or face. Distinct individual: short straight dark brown hair side part, gray eyes, slender shoulders, small notch LEFT eyebrow, narrow rounded nose, individual mouth. UNMARRIED: hair visible, NO veil or headcloth. Sturdy ochre good wool, prominent brown LEATHER APRON across chest with conspicuous irregular white FLOUR DUST. No fur or noble jewelry. Southern England medieval upper artisan. Same muted warm handpainted gouache/tempera portrait, matte gray background, soft upper-left light, square chest-up. Unique face, NOT copy of either parent, no text. Keep babyface absent at adult age.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_201_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_101",
+      "personalMark": "father eyebrow notch"
+    }
+  },
+  {
+    "id": "L8_202_baby",
+    "identity": "L8_202",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "linen baby bonnet and plain wool swaddling",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown wavy ear-length hair",
+      "eyes": "brown",
+      "build": "broad shoulders",
+      "personalMark": "one dark mole beside RIGHT lip",
+      "age": 0.5
+    },
+    "prompt": "Transform FIRST reference, the same person, into a REAL 0.5 year old INFANT, not toddler or miniature adult; large round baby skull, very short neck, tiny infant nose, plump cheeks, small infant limbs wholly wrapped in swaddling. Second and third references are actual FATHER and MOTHER; use both for family traits. Retain this individual's dark brown hair, eye color, overall face identity and subtle personal mark (one dark mole beside RIGHT lip); do not clone siblings or parent. Linen INFANT BONNET, plain muted wool SWADDLING wrap, no adult apron or work props; very sparse dark brown baby hair at forehead. No fur. Same paint style matte gray backdrop chest-up square framing, no text. Age must be visually obvious and identity readable96px.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_202_baby.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_baby.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_baby.png",
+    "status": "candidate",
+    "sha256": "4ac6431e4b194bd133bfe620e49bf5f5e165226e5e996d1ad1eda9c1010887b1",
+    "generationRecords": [
+      {
+        "prompt": "Transform FIRST reference, the same person, into a REAL 0.5 year old INFANT, not toddler or miniature adult; large round baby skull, very short neck, tiny infant nose, plump cheeks, small infant limbs wholly wrapped in swaddling. Second and third references are actual FATHER and MOTHER; use both for family traits. Retain this individual's dark brown hair, eye color, overall face identity and subtle personal mark (one dark mole beside RIGHT lip); do not clone siblings or parent. Linen INFANT BONNET, plain muted wool SWADDLING wrap, no adult apron or work props; very sparse dark brown baby hair at forehead. No fur. Same paint style matte gray backdrop chest-up square framing, no text. Age must be visually obvious and identity readable96px.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png": "2989998c28b53b1e49b15cafe15928abd66d68fd618193bbf9bf9ac31585ebfc",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_baby.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_102",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_202_child",
+    "identity": "L8_202",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "child",
+    "age": 6,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic; small leather apron flour trace",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown wavy ear-length hair",
+      "eyes": "brown",
+      "build": "broad shoulders",
+      "personalMark": "one dark mole beside RIGHT lip",
+      "age": 6
+    },
+    "prompt": "De-age FIRST reference into an unmistakable 6 year old SMALL CHILD. Second and third actual parents are family reference only. Crucial: CHILD HEAD PROPORTIONS not adult face shrunk. Short midface, extremely small rounded jaw/chin, round plump cheeks, big eyes and broad forehead, tiny child nose, SHORT neck, VERY SMALL narrow shoulders. Looks6–8, absolutely NOT teen12+. Maintain individual's dark brown dark brown wavy ear-length hair, brown eyes, one dark mole beside RIGHT lip subtle. Child tunic with small plain leather apron and slight flour traces, no fur, girl's hair uncovered no veil. Same painterly matte gray background square bust soft light. Do not preserve adult jawline! No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_202_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_child.png",
+    "status": "candidate",
+    "sha256": "8ee0e14a3b0b02e1d81104d84522e1063f89a87bbe88d6857ab03c73573d617f",
+    "generationRecords": [
+      {
+        "prompt": "De-age FIRST reference into an unmistakable 6 year old SMALL CHILD. Second and third actual parents are family reference only. Crucial: CHILD HEAD PROPORTIONS not adult face shrunk. Short midface, extremely small rounded jaw/chin, round plump cheeks, big eyes and broad forehead, tiny child nose, SHORT neck, VERY SMALL narrow shoulders. Looks6–8, absolutely NOT teen12+. Maintain individual's dark brown dark brown wavy ear-length hair, brown eyes, one dark mole beside RIGHT lip subtle. Child tunic with small plain leather apron and slight flour traces, no fur, girl's hair uncovered no veil. Same painterly matte gray background square bust soft light. Do not preserve adult jawline! No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png": "2989998c28b53b1e49b15cafe15928abd66d68fd618193bbf9bf9ac31585ebfc",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_102",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_202_mature",
+    "identity": "L8_202",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "mature",
+    "age": 42,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted blue gray sturdy wool; brown leather apron flour smudges; uncovered hair",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown wavy ear-length hair",
+      "eyes": "brown",
+      "build": "broad shoulders",
+      "personalMark": "one dark mole beside RIGHT lip",
+      "age": 42
+    },
+    "prompt": "Age FIRST reference into same person age42, visibly TWENTY YEARS older. Stronger aging clearly readable96px: DEEP CROW FEET, eye bags, horizontal forehead creases, nasolabial folds, loosening cheeks and wrinkled neck, scattered gray hairs at temples. Preserve identity, exact eyes nose mouth, hair style, personal mark one dark mole beside RIGHT lip, pose and framing.  Sturdy wool, flour dusty leather apron, no fur. Paint same style matte gray backdrop. Not subtle cosmetic lines; mature forty-plus face. No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_202_mature.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_mature.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_mature.png",
+    "status": "candidate",
+    "sha256": "e11be0bf51bfdd6e4389cad2592b465f2e37e41f69cf86c6a1e1d743c503f4d5",
+    "generationRecords": [
+      {
+        "prompt": "Age FIRST reference into same person age42, visibly TWENTY YEARS older. Stronger aging clearly readable96px: DEEP CROW FEET, eye bags, horizontal forehead creases, nasolabial folds, loosening cheeks and wrinkled neck, scattered gray hairs at temples. Preserve identity, exact eyes nose mouth, hair style, personal mark one dark mole beside RIGHT lip, pose and framing.  Sturdy wool, flour dusty leather apron, no fur. Paint same style matte gray backdrop. Not subtle cosmetic lines; mature forty-plus face. No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_202_young.png": "2989998c28b53b1e49b15cafe15928abd66d68fd618193bbf9bf9ac31585ebfc",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_mature.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_102",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_202_young",
+    "identity": "L8_202",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "young",
+    "age": 22,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "muted blue gray sturdy wool; brown leather apron flour smudges; uncovered hair",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown wavy ear-length hair",
+      "eyes": "brown",
+      "build": "broad shoulders",
+      "personalMark": "one dark mole beside RIGHT lip",
+      "age": 22
+    },
+    "prompt": "Create ONE NEW descendant portrait, son age22 of BOTH pictured parents. First input FATHER, second MOTHER. Resemblance ONLY through dark brown hair + broad round OVAL overall face + gently arched eyebrows. Do NOT clone either parent's exact nose/chin or face. Distinct individual: dark brown wavy ear-length hair, brown eyes, broad shoulders, one dark mole beside RIGHT lip, broad short nose, individual mouth. UNMARRIED: hair visible, NO veil or headcloth. Sturdy muted blue gray good wool, prominent brown LEATHER APRON across chest with conspicuous irregular white FLOUR DUST. No fur or noble jewelry. Southern England medieval upper artisan. Same muted warm handpainted gouache/tempera portrait, matte gray background, soft upper-left light, square chest-up. Unique face, NOT copy of either parent, no text. Keep babyface absent at adult age.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_202_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_young.png",
+    "status": "candidate",
+    "sha256": "2989998c28b53b1e49b15cafe15928abd66d68fd618193bbf9bf9ac31585ebfc",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE NEW descendant portrait, son age22 of BOTH pictured parents. First input FATHER, second MOTHER. Resemblance ONLY through dark brown hair + broad round OVAL overall face + gently arched eyebrows. Do NOT clone either parent's exact nose/chin or face. Distinct individual: dark brown wavy ear-length hair, brown eyes, broad shoulders, one dark mole beside RIGHT lip, broad short nose, individual mouth. UNMARRIED: hair visible, NO veil or headcloth. Sturdy muted blue gray good wool, prominent brown LEATHER APRON across chest with conspicuous irregular white FLOUR DUST. No fur or noble jewelry. Southern England medieval upper artisan. Same muted warm handpainted gouache/tempera portrait, matte gray background, soft upper-left light, square chest-up. Unique face, NOT copy of either parent, no text. Keep babyface absent at adult age.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_202_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_102",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_203_baby",
+    "identity": "L8_203",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "baby",
+    "age": 1,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "linen baby bonnet and plain wool swaddling",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown single long braid",
+      "eyes": "gray green",
+      "build": "slender long neck",
+      "personalMark": "light freckles across NOSE",
+      "age": 1
+    },
+    "prompt": "Transform FIRST reference, the same person, into a REAL 1 year old INFANT, not toddler or miniature adult; large round baby skull, very short neck, tiny infant nose, plump cheeks, small infant limbs wholly wrapped in swaddling. Second and third references are actual FATHER and MOTHER; use both for family traits. Retain this individual's dark brown hair, eye color, overall face identity and subtle personal mark (light freckles across NOSE); do not clone siblings or parent. Linen INFANT BONNET, plain muted wool SWADDLING wrap, no adult apron or work props; very sparse dark brown baby hair at forehead. No fur. Same paint style matte gray backdrop chest-up square framing, no text. Age must be visually obvious and identity readable96px.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_203_baby.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_baby.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_baby.png",
+    "status": "candidate",
+    "sha256": "b3eb0e95db1a2359573f655e62419ffbdb3d1b3120ad9ab3ec63841968d16609",
+    "generationRecords": [
+      {
+        "prompt": "Transform FIRST reference, the same person, into a REAL 1 year old INFANT, not toddler or miniature adult; large round baby skull, very short neck, tiny infant nose, plump cheeks, small infant limbs wholly wrapped in swaddling. Second and third references are actual FATHER and MOTHER; use both for family traits. Retain this individual's dark brown hair, eye color, overall face identity and subtle personal mark (light freckles across NOSE); do not clone siblings or parent. Linen INFANT BONNET, plain muted wool SWADDLING wrap, no adult apron or work props; very sparse dark brown baby hair at forehead. No fur. Same paint style matte gray backdrop chest-up square framing, no text. Age must be visually obvious and identity readable96px.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_baby.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "gray-green individual variation",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_203_child",
+    "identity": "L8_203",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "child",
+    "age": 8,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic; small leather apron flour trace",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown single long braid",
+      "eyes": "gray green",
+      "build": "slender long neck",
+      "personalMark": "light freckles across NOSE",
+      "age": 8
+    },
+    "prompt": "Grow FIRST reference BABY girl into age8 young primary-school GIRL. Second reference future adult only for identity hints, not adult proportions. Third actual FATHER and fourth actual MOTHER. Preserve BABY's rounded cheeks, short lowerface and tiny rounded chin while growing to8. Absolutely not adolescent. Large child head, short small nose, large eyes, SHORT midface, small mouth, very short neck, SMALL NARROW shoulders. gray green eyes, darkbrown simple single childhood braid, faint light freckles across NOSE. UNMARRIED girl NO veil/headcloth. Replace bonnet/swaddle with sturdy rust wool child tunic and small plain leather apron, flour hint, NO fur. Same subtle handpainted square bust backdrop. No text. AGE6–8 should be obvious even thumbnail.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_203_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_child.png",
+    "status": "candidate",
+    "sha256": "80606ccaae8fdb0e57a99bc9f1209cc76a998b46a8a0472e976f53bce47f3423",
+    "generationRecords": [
+      {
+        "prompt": "Grow FIRST reference BABY girl into age8 young primary-school GIRL. Second reference future adult only for identity hints, not adult proportions. Third actual FATHER and fourth actual MOTHER. Preserve BABY's rounded cheeks, short lowerface and tiny rounded chin while growing to8. Absolutely not adolescent. Large child head, short small nose, large eyes, SHORT midface, small mouth, very short neck, SMALL NARROW shoulders. gray green eyes, darkbrown simple single childhood braid, faint light freckles across NOSE. UNMARRIED girl NO veil/headcloth. Replace bonnet/swaddle with sturdy rust wool child tunic and small plain leather apron, flour hint, NO fur. Same subtle handpainted square bust backdrop. No text. AGE6–8 should be obvious even thumbnail.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_baby.png": "b3eb0e95db1a2359573f655e62419ffbdb3d1b3120ad9ab3ec63841968d16609",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "gray-green individual variation",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_203_mature",
+    "identity": "L8_203",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "mature",
+    "age": 43,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "muted rust sturdy wool; brown leather apron flour smudges; linen headcloth; married headcloth",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown single long braid",
+      "eyes": "gray green",
+      "build": "slender long neck",
+      "personalMark": "light freckles across NOSE",
+      "age": 43
+    },
+    "prompt": "Age FIRST reference into same person age43, visibly TWENTY YEARS older. Stronger aging clearly readable96px: DEEP CROW FEET, eye bags, horizontal forehead creases, nasolabial folds, loosening cheeks and wrinkled neck, scattered gray hairs at temples. Preserve identity, exact eyes nose mouth, hair style, personal mark light freckles across NOSE, pose and framing. MARRIED woman all hair under linen headcloth. Sturdy wool, flour dusty leather apron, no fur. Paint same style matte gray backdrop. Not subtle cosmetic lines; mature forty-plus face. No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_203_mature.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_mature.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_mature.png",
+    "status": "candidate",
+    "sha256": "2ec5c6e78634416f1abb360297513b0f1a6e313d1110dec0d8226316b554845f",
+    "generationRecords": [
+      {
+        "prompt": "Age FIRST reference into same person age43, visibly TWENTY YEARS older. Stronger aging clearly readable96px: DEEP CROW FEET, eye bags, horizontal forehead creases, nasolabial folds, loosening cheeks and wrinkled neck, scattered gray hairs at temples. Preserve identity, exact eyes nose mouth, hair style, personal mark light freckles across NOSE, pose and framing. MARRIED woman all hair under linen headcloth. Sturdy wool, flour dusty leather apron, no fur. Paint same style matte gray backdrop. Not subtle cosmetic lines; mature forty-plus face. No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_mature.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "gray-green individual variation",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_203_young",
+    "identity": "L8_203",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "young",
+    "age": 23,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "muted rust sturdy wool; brown leather apron flour smudges; linen headcloth",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown single long braid",
+      "eyes": "gray green",
+      "build": "slender long neck",
+      "personalMark": "light freckles across NOSE",
+      "age": 23
+    },
+    "prompt": "Create ONE NEW descendant portrait, daughter age23 of BOTH pictured parents. First input FATHER, second MOTHER. Resemblance ONLY through dark brown hair + broad round OVAL overall face + gently arched eyebrows. Do NOT clone either parent's exact nose/chin or face. Distinct individual: dark brown single long braid, gray green eyes, slender long neck, light freckles across NOSE, small upturned nose, individual mouth. MARRIED: linen headcloth covers hair, braid can be mostly tucked beneath. Sturdy muted rust good wool, prominent brown LEATHER APRON across chest with conspicuous irregular white FLOUR DUST. No fur or noble jewelry. Southern England medieval upper artisan. Same muted warm handpainted gouache/tempera portrait, matte gray background, soft upper-left light, square chest-up. Unique face, NOT copy of either parent, no text. Keep babyface absent at adult age.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_203_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_young.png",
+    "status": "candidate",
+    "sha256": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE NEW descendant portrait, daughter age23 of BOTH pictured parents. First input FATHER, second MOTHER. Resemblance ONLY through dark brown hair + broad round OVAL overall face + gently arched eyebrows. Do NOT clone either parent's exact nose/chin or face. Distinct individual: dark brown single long braid, gray green eyes, slender long neck, light freckles across NOSE, small upturned nose, individual mouth. MARRIED: linen headcloth covers hair, braid can be mostly tucked beneath. Sturdy muted rust good wool, prominent brown LEATHER APRON across chest with conspicuous irregular white FLOUR DUST. No fur or noble jewelry. Southern England medieval upper artisan. Same muted warm handpainted gouache/tempera portrait, matte gray background, soft upper-left light, square chest-up. Unique face, NOT copy of either parent, no text. Keep babyface absent at adult age.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_203_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "gray-green individual variation",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_204_baby",
+    "identity": "L8_204",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "linen baby bonnet and plain wool swaddling",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown loose shoulder-length wavy hair",
+      "eyes": "deep brown",
+      "build": "rounded shoulders",
+      "personalMark": "clear face except tiny mole below LEFT eye",
+      "age": 0.5
+    },
+    "prompt": "Transform FIRST reference, the same person, into a REAL 0.5 year old INFANT, not toddler or miniature adult; large round baby skull, very short neck, tiny infant nose, plump cheeks, small infant limbs wholly wrapped in swaddling. Second and third references are actual FATHER and MOTHER; use both for family traits. Retain this individual's dark brown hair, eye color, overall face identity and subtle personal mark (clear face except tiny mole below LEFT eye); do not clone siblings or parent. Linen INFANT BONNET, plain muted wool SWADDLING wrap, no adult apron or work props; very sparse dark brown baby hair at forehead. No fur. Same paint style matte gray backdrop chest-up square framing, no text. Age must be visually obvious and identity readable96px.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_204_baby.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_baby.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_baby.png",
+    "status": "candidate",
+    "sha256": "06595f06aa880b36479f032456464b1b2a5b2db6e77c9f743d4dcd5efd6df7f9",
+    "generationRecords": [
+      {
+        "prompt": "Transform FIRST reference, the same person, into a REAL 0.5 year old INFANT, not toddler or miniature adult; large round baby skull, very short neck, tiny infant nose, plump cheeks, small infant limbs wholly wrapped in swaddling. Second and third references are actual FATHER and MOTHER; use both for family traits. Retain this individual's dark brown hair, eye color, overall face identity and subtle personal mark (clear face except tiny mole below LEFT eye); do not clone siblings or parent. Linen INFANT BONNET, plain muted wool SWADDLING wrap, no adult apron or work props; very sparse dark brown baby hair at forehead. No fur. Same paint style matte gray backdrop chest-up square framing, no text. Age must be visually obvious and identity readable96px.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png": "a8e9c4a9d20130a36e4037d0a73cdc5a4fe99add8b346e42aea0fea8436ea07d",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_baby.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_102",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_204_child",
+    "identity": "L8_204",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic; small leather apron flour trace",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown loose shoulder-length wavy hair",
+      "eyes": "deep brown",
+      "build": "rounded shoulders",
+      "personalMark": "clear face except tiny mole below LEFT eye",
+      "age": 6
+    },
+    "prompt": "Grow FIRST reference BABY girl into age6 young primary-school GIRL. Second reference future adult only for identity hints, not adult proportions. Third actual FATHER and fourth actual MOTHER. Preserve BABY's rounded cheeks, short lowerface and tiny rounded chin while growing to6. Absolutely not adolescent. Large child head, short small nose, large eyes, SHORT midface, small mouth, very short neck, SMALL NARROW shoulders. deep brown eyes, darkbrown loose wavy child hair, faint clear face except tiny mole below LEFT eye. UNMARRIED girl NO veil/headcloth. Replace bonnet/swaddle with sturdy moss wool child tunic and small plain leather apron, flour hint, NO fur. Same subtle handpainted square bust backdrop. No text. AGE6–8 should be obvious even thumbnail.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_204_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_child.png",
+    "status": "candidate",
+    "sha256": "8735a80594bee6786fcdf5c75c97c6bb4a3749a6f7d1c0d2110ede34571e2c7d",
+    "generationRecords": [
+      {
+        "prompt": "Grow FIRST reference BABY girl into age6 young primary-school GIRL. Second reference future adult only for identity hints, not adult proportions. Third actual FATHER and fourth actual MOTHER. Preserve BABY's rounded cheeks, short lowerface and tiny rounded chin while growing to6. Absolutely not adolescent. Large child head, short small nose, large eyes, SHORT midface, small mouth, very short neck, SMALL NARROW shoulders. deep brown eyes, darkbrown loose wavy child hair, faint clear face except tiny mole below LEFT eye. UNMARRIED girl NO veil/headcloth. Replace bonnet/swaddle with sturdy moss wool child tunic and small plain leather apron, flour hint, NO fur. Same subtle handpainted square bust backdrop. No text. AGE6–8 should be obvious even thumbnail.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_baby.png": "06595f06aa880b36479f032456464b1b2a5b2db6e77c9f743d4dcd5efd6df7f9",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png": "a8e9c4a9d20130a36e4037d0a73cdc5a4fe99add8b346e42aea0fea8436ea07d",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_102",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_204_mature",
+    "identity": "L8_204",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "mature",
+    "age": 40,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "muted moss sturdy wool; brown leather apron flour smudges; uncovered hair; married headcloth",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown loose shoulder-length wavy hair",
+      "eyes": "deep brown",
+      "build": "rounded shoulders",
+      "personalMark": "clear face except tiny mole below LEFT eye",
+      "age": 40
+    },
+    "prompt": "Age FIRST reference into same person age40, visibly TWENTY YEARS older. Stronger aging clearly readable96px: DEEP CROW FEET, eye bags, horizontal forehead creases, nasolabial folds, loosening cheeks and wrinkled neck, scattered gray hairs at temples. Preserve identity, exact eyes nose mouth, hair style, personal mark clear face except tiny mole below LEFT eye, pose and framing. MARRIED woman all hair under linen headcloth. Sturdy wool, flour dusty leather apron, no fur. Paint same style matte gray backdrop. Not subtle cosmetic lines; mature forty-plus face. No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_204_mature.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_mature.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_mature.png",
+    "status": "candidate",
+    "sha256": "dbbd97ab937ba08089f8d0ef9613be9fc0aaf2d9affa9f9ac6d1f54140e3cf54",
+    "generationRecords": [
+      {
+        "prompt": "Age FIRST reference into same person age40, visibly TWENTY YEARS older. Stronger aging clearly readable96px: DEEP CROW FEET, eye bags, horizontal forehead creases, nasolabial folds, loosening cheeks and wrinkled neck, scattered gray hairs at temples. Preserve identity, exact eyes nose mouth, hair style, personal mark clear face except tiny mole below LEFT eye, pose and framing. MARRIED woman all hair under linen headcloth. Sturdy wool, flour dusty leather apron, no fur. Paint same style matte gray backdrop. Not subtle cosmetic lines; mature forty-plus face. No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_204_young.png": "a8e9c4a9d20130a36e4037d0a73cdc5a4fe99add8b346e42aea0fea8436ea07d",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_mature.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_102",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_204_young",
+    "identity": "L8_204",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "young",
+    "age": 20,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "muted moss sturdy wool; brown leather apron flour smudges; uncovered hair",
+    "fatherIdentity": "L8_101",
+    "motherIdentity": "L8_102",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "broad round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown loose shoulder-length wavy hair",
+      "eyes": "deep brown",
+      "build": "rounded shoulders",
+      "personalMark": "clear face except tiny mole below LEFT eye",
+      "age": 20
+    },
+    "prompt": "Create ONE NEW descendant portrait, daughter age20 of BOTH pictured parents. First input FATHER, second MOTHER. Resemblance ONLY through dark brown hair + broad round OVAL overall face + gently arched eyebrows. Do NOT clone either parent's exact nose/chin or face. Distinct individual: dark brown loose shoulder-length wavy hair, deep brown eyes, rounded shoulders, clear face except tiny mole below LEFT eye, small straight nose, individual mouth. UNMARRIED: hair visible, NO veil or headcloth. Sturdy muted moss good wool, prominent brown LEATHER APRON across chest with conspicuous irregular white FLOUR DUST. No fur or noble jewelry. Southern England medieval upper artisan. Same muted warm handpainted gouache/tempera portrait, matte gray background, soft upper-left light, square chest-up. Unique face, NOT copy of either parent, no text. Keep babyface absent at adult age.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_204_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_young.png",
+    "status": "candidate",
+    "sha256": "a8e9c4a9d20130a36e4037d0a73cdc5a4fe99add8b346e42aea0fea8436ea07d",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE NEW descendant portrait, daughter age20 of BOTH pictured parents. First input FATHER, second MOTHER. Resemblance ONLY through dark brown hair + broad round OVAL overall face + gently arched eyebrows. Do NOT clone either parent's exact nose/chin or face. Distinct individual: dark brown loose shoulder-length wavy hair, deep brown eyes, rounded shoulders, clear face except tiny mole below LEFT eye, small straight nose, individual mouth. UNMARRIED: hair visible, NO veil or headcloth. Sturdy muted moss good wool, prominent brown LEATHER APRON across chest with conspicuous irregular white FLOUR DUST. No fur or noble jewelry. Southern England medieval upper artisan. Same muted warm handpainted gouache/tempera portrait, matte gray background, soft upper-left light, square chest-up. Unique face, NOT copy of either parent, no text. Keep babyface absent at adult age.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_204_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_101 + L8_102",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_102",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_205_mature",
+    "identity": "L8_205",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "mature",
+    "age": 43,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "muted teal sturdy wool and leather flour apron",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "BLACK hair completely covered by pale gray linen headcloth",
+      "faceShape": "long angular face, prominent cheekbones, long straight nose, thin lips",
+      "brow": "arched"
+    },
+    "differenceMarkers": {
+      "hair": "BLACK hair completely covered by pale gray linen headcloth",
+      "eyes": "amber",
+      "build": "slim shoulders",
+      "personalMark": "small mole left temple",
+      "age": 43
+    },
+    "prompt": "Age this SAME adult by TWENTY YEARS to age43. Keep unmistakably same individual, exact eye and nose shape, pose expression framing and apron clothing. Show clear forehead and eye wrinkles, eye bags, sagging lower cheeks and gray temples. For woman headcloth stays covering hair. Handpainted muted portrait, flour dusty leather apron, no fur, no words.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_205_mature.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_205_mature.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_205_mature.png",
+    "status": "candidate",
+    "sha256": "63fd16d541df6ef3ef3563416c18c4c52438262d92cff50db3d0da1a0e844c05",
+    "generationRecords": [
+      {
+        "prompt": "Age this SAME adult by TWENTY YEARS to age43. Keep unmistakably same individual, exact eye and nose shape, pose expression framing and apron clothing. Show clear forehead and eye wrinkles, eye bags, sagging lower cheeks and gray temples. For woman headcloth stays covering hair. Handpainted muted portrait, flour dusty leather apron, no fur, no words.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_205_mature.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_205_young",
+    "identity": "L8_205",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "young",
+    "age": 23,
+    "sex": "female",
+    "maritalStatus": "married",
+    "clothing": "muted teal sturdy wool and leather flour apron",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "BLACK hair completely covered by pale gray linen headcloth",
+      "faceShape": "long angular face, prominent cheekbones, long straight nose, thin lips",
+      "brow": "arched"
+    },
+    "differenceMarkers": {
+      "hair": "BLACK hair completely covered by pale gray linen headcloth",
+      "eyes": "amber",
+      "build": "slim shoulders",
+      "personalMark": "small mole left temple",
+      "age": 23
+    },
+    "prompt": "Create ONE completely NEW married medieval English upper-artisan female age23, external spouse joining miller family, NOT biologically related. Reference is PAINT STYLE and leather APRON only. A new face: long angular face, prominent cheekbones, long straight nose, thin lips; BLACK hair completely covered by pale gray linen headcloth; amber eyes; small mole left temple; slim shoulders. Do not reuse reference face, nose, or mouth. Frontal slight right gaze. Sturdy muted teal wool with broad dark brown LEATHER APRON and visible white flour dust, no fur or noble jewelry. MARRIED woman keep all hair covered under headcloth. Low-saturation fine handpainted gouache matte gray background soft upper-left light square chest-up. No lettering machinery borders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+    ],
+    "file": "assets/L8/L8_205_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_205_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_205_young.png",
+    "status": "candidate",
+    "sha256": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE completely NEW married medieval English upper-artisan female age23, external spouse joining miller family, NOT biologically related. Reference is PAINT STYLE and leather APRON only. A new face: long angular face, prominent cheekbones, long straight nose, thin lips; BLACK hair completely covered by pale gray linen headcloth; amber eyes; small mole left temple; slim shoulders. Do not reuse reference face, nose, or mouth. Frontal slight right gaze. Sturdy muted teal wool with broad dark brown LEATHER APRON and visible white flour dust, no fur or noble jewelry. MARRIED woman keep all hair covered under headcloth. Low-saturation fine handpainted gouache matte gray background soft upper-left light square chest-up. No lettering machinery borders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_102_young.png": "fa45dbb033ef475a7d2ae2c70071ccaecceeca93ff5a6992ed59f23ff852e31a"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_205_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_206_mature",
+    "identity": "L8_206",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "mature",
+    "age": 46,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted russet sturdy wool and leather flour apron",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "SANDY BLOND short straight hair, neatly trimmed short beard",
+      "faceShape": "square face, broad jaw, short broad nose",
+      "brow": "arched"
+    },
+    "differenceMarkers": {
+      "hair": "SANDY BLOND short straight hair, neatly trimmed short beard",
+      "eyes": "blue",
+      "build": "broad neck",
+      "personalMark": "small scar right eyebrow",
+      "age": 46
+    },
+    "prompt": "Age this SAME adult by TWENTY YEARS to age46. Keep unmistakably same individual, exact eye and nose shape, pose expression framing and apron clothing. Show clear forehead and eye wrinkles, eye bags, sagging lower cheeks and gray temples. For woman headcloth stays covering hair. Handpainted muted portrait, flour dusty leather apron, no fur, no words.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png"
+    ],
+    "file": "assets/L8/L8_206_mature.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_206_mature.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_206_mature.png",
+    "status": "candidate",
+    "sha256": "5ed1aae3ff77c433b92a8152928a7d2fcae0fd334240ea7d965fb83d46175306",
+    "generationRecords": [
+      {
+        "prompt": "Age this SAME adult by TWENTY YEARS to age46. Keep unmistakably same individual, exact eye and nose shape, pose expression framing and apron clothing. Show clear forehead and eye wrinkles, eye bags, sagging lower cheeks and gray temples. For woman headcloth stays covering hair. Handpainted muted portrait, flour dusty leather apron, no fur, no words.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_206_mature.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_206_young",
+    "identity": "L8_206",
+    "lineage": "L8",
+    "generation": 2,
+    "stage": "young",
+    "age": 26,
+    "sex": "male",
+    "maritalStatus": "married",
+    "clothing": "muted russet sturdy wool and leather flour apron",
+    "fatherIdentity": null,
+    "motherIdentity": null,
+    "commonTraits": {
+      "hair": "SANDY BLOND short straight hair, neatly trimmed short beard",
+      "faceShape": "square face, broad jaw, short broad nose",
+      "brow": "arched"
+    },
+    "differenceMarkers": {
+      "hair": "SANDY BLOND short straight hair, neatly trimmed short beard",
+      "eyes": "blue",
+      "build": "broad neck",
+      "personalMark": "small scar right eyebrow",
+      "age": 26
+    },
+    "prompt": "Create ONE completely NEW married medieval English upper-artisan male age26, external spouse joining miller family, NOT biologically related. Reference is PAINT STYLE and leather APRON only. A new face: square face, broad jaw, short broad nose; SANDY BLOND short straight hair, neatly trimmed short beard; blue eyes; small scar right eyebrow; broad neck. Do not reuse reference face, nose, or mouth. Frontal slight right gaze. Sturdy muted russet wool with broad dark brown LEATHER APRON and visible white flour dust, no fur or noble jewelry.  Low-saturation fine handpainted gouache matte gray background soft upper-left light square chest-up. No lettering machinery borders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png"
+    ],
+    "file": "assets/L8/L8_206_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_206_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_206_young.png",
+    "status": "candidate",
+    "sha256": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE completely NEW married medieval English upper-artisan male age26, external spouse joining miller family, NOT biologically related. Reference is PAINT STYLE and leather APRON only. A new face: square face, broad jaw, short broad nose; SANDY BLOND short straight hair, neatly trimmed short beard; blue eyes; small scar right eyebrow; broad neck. Do not reuse reference face, nose, or mouth. Frontal slight right gaze. Sturdy muted russet wool with broad dark brown LEATHER APRON and visible white flour dust, no fur or noble jewelry.  Low-saturation fine handpainted gouache matte gray background soft upper-left light square chest-up. No lettering machinery borders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_101_young.png": "82726652b309558d0a68db73916e0cff075f4c8fecfd4b19137dd00a5515c20f"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_206_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "L8_301_baby",
+    "identity": "L8_301",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "baby",
+    "age": 1,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "linen infant bonnet wool swaddling",
+    "fatherIdentity": "L8_201",
+    "motherIdentity": "L8_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown straight hair",
+      "eyes": "gray",
+      "build": "slender neck",
+      "personalMark": "small LEFT eyebrow notch",
+      "age": 1
+    },
+    "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 1 real INFANT, plump BABY cheeks, tiny nose, short neck, almost no jaw, sparse baby darkbrown hair under linen BABY BONNET, entirely SWADDLED in plain soft wool, not a toddler. Keep inherited darkbrown hair, gray eyes, gentle arched brows, small LEFT eyebrow notch faintly. Don't clone parent or sibling. No apron, no worktools, no adult costume. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_301_baby.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_baby.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_baby.png",
+    "status": "candidate",
+    "sha256": "489f444c72ec2441ac19d154840d0938931180eb8915a2ffc5f80b73dd5e195b",
+    "generationRecords": [
+      {
+        "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 1 real INFANT, plump BABY cheeks, tiny nose, short neck, almost no jaw, sparse baby darkbrown hair under linen BABY BONNET, entirely SWADDLED in plain soft wool, not a toddler. Keep inherited darkbrown hair, gray eyes, gentle arched brows, small LEFT eyebrow notch faintly. Don't clone parent or sibling. No apron, no worktools, no adult costume. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png": "d1871b20612bbe3011a1b38cb8ea9d19d8800cbadda43cb627586f98fb2e1e41",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_baby.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_201 + L8_205",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_201",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_301_child",
+    "identity": "L8_301",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic small leather apron flour trace",
+    "fatherIdentity": "L8_201",
+    "motherIdentity": "L8_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown straight hair",
+      "eyes": "gray",
+      "build": "slender neck",
+      "personalMark": "small LEFT eyebrow notch",
+      "age": 8
+    },
+    "prompt": "FIRST image is this INFANT. GROW THAT BABY only to age8 SMALL CHILD (not teenager). Second image is future adult identity for eye color/hair ONLY; DO NOT use adult facial length, jaw, shoulders. Third father fourth mother. New portrait should still have baby-derived rounded face: VERY SHORT lower face, small nose and tiny rounded chin, large eyes, round cheeks, broad forehead, short child neck and narrow tiny shoulders. Clearly elementary-school8, under9. short dark brown straight hair, gray eyes, small LEFT eyebrow notch. Little boy hair matching youthful pattern. Remove swaddle/bonnet replace with simple muted wool CHILD TUNIC and small plain leather apron slight flour dust. No fur. Maintain this child's own identity and resemblance to BOTH parents. Soft painted warm gray backdrop square bust. No text. Distinctly child not small adult.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_301_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_child.png",
+    "status": "candidate",
+    "sha256": "f7824e43e0f11b210cab2d03ad62786610792438adc43ba175572655c087626c",
+    "generationRecords": [
+      {
+        "prompt": "FIRST image is this INFANT. GROW THAT BABY only to age8 SMALL CHILD (not teenager). Second image is future adult identity for eye color/hair ONLY; DO NOT use adult facial length, jaw, shoulders. Third father fourth mother. New portrait should still have baby-derived rounded face: VERY SHORT lower face, small nose and tiny rounded chin, large eyes, round cheeks, broad forehead, short child neck and narrow tiny shoulders. Clearly elementary-school8, under9. short dark brown straight hair, gray eyes, small LEFT eyebrow notch. Little boy hair matching youthful pattern. Remove swaddle/bonnet replace with simple muted wool CHILD TUNIC and small plain leather apron slight flour dust. No fur. Maintain this child's own identity and resemblance to BOTH parents. Soft painted warm gray backdrop square bust. No text. Distinctly child not small adult.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_baby.png": "489f444c72ec2441ac19d154840d0938931180eb8915a2ffc5f80b73dd5e195b",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_301_young.png": "d1871b20612bbe3011a1b38cb8ea9d19d8800cbadda43cb627586f98fb2e1e41",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_201 + L8_205",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_201",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_301_young",
+    "identity": "L8_301",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "young",
+    "age": 24,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "muted ochre sturdy wool; leather apron flour dust",
+    "fatherIdentity": "L8_201",
+    "motherIdentity": "L8_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "short dark brown straight hair",
+      "eyes": "gray",
+      "build": "slender neck",
+      "personalMark": "small LEFT eyebrow notch",
+      "age": 24
+    },
+    "prompt": "Create ONE NEW son age24 of BOTH pictured parents. First FATHER, second MOTHER. Family resemblance only dark brown hair + oval face + gently arched brows. Unique individual with short dark brown straight hair, gray eyes, slender neck, small LEFT eyebrow notch, long round oval overall face. Blend both parents yet give new individual nose and chin, not face copy. UNMARRIED male, hair uncovered, NO veil or headcloth for girl, no beard for young man. Upper artisan muted ochre sturdy wool and brown LEATHER APRON with obvious WHITE FLOUR DUST across chest. No fur or jewelry, no machinery. Same subtle painterly gouache matte warm gray backdrop, square chest-up, soft upper-left lighting. No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_301_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_young.png",
+    "status": "candidate",
+    "sha256": "d1871b20612bbe3011a1b38cb8ea9d19d8800cbadda43cb627586f98fb2e1e41",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE NEW son age24 of BOTH pictured parents. First FATHER, second MOTHER. Family resemblance only dark brown hair + oval face + gently arched brows. Unique individual with short dark brown straight hair, gray eyes, slender neck, small LEFT eyebrow notch, long round oval overall face. Blend both parents yet give new individual nose and chin, not face copy. UNMARRIED male, hair uncovered, NO veil or headcloth for girl, no beard for young man. Upper artisan muted ochre sturdy wool and brown LEATHER APRON with obvious WHITE FLOUR DUST across chest. No fur or jewelry, no machinery. Same subtle painterly gouache matte warm gray backdrop, square chest-up, soft upper-left lighting. No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_301_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_201 + L8_205",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_201",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_302_baby",
+    "identity": "L8_302",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "linen infant bonnet wool swaddling",
+    "fatherIdentity": "L8_201",
+    "motherIdentity": "L8_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown long loose braid",
+      "eyes": "amber",
+      "build": "rounded shoulders",
+      "personalMark": "tiny mole RIGHT cheek",
+      "age": 0.5
+    },
+    "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 0.5 real INFANT, plump BABY cheeks, tiny nose, short neck, almost no jaw, sparse baby darkbrown hair under linen BABY BONNET, entirely SWADDLED in plain soft wool, not a toddler. Keep inherited darkbrown hair, amber eyes, gentle arched brows, tiny mole RIGHT cheek faintly. Don't clone parent or sibling. No apron, no worktools, no adult costume. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_302_baby.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_baby.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_baby.png",
+    "status": "candidate",
+    "sha256": "32e2e40ef07db1abb78dc6ae1d9da066f7d1a3282644b5d4d3e78ad2bd3257ca",
+    "generationRecords": [
+      {
+        "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 0.5 real INFANT, plump BABY cheeks, tiny nose, short neck, almost no jaw, sparse baby darkbrown hair under linen BABY BONNET, entirely SWADDLED in plain soft wool, not a toddler. Keep inherited darkbrown hair, amber eyes, gentle arched brows, tiny mole RIGHT cheek faintly. Don't clone parent or sibling. No apron, no worktools, no adult costume. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png": "3b837b0812149f45782561e8d8ac8da138e019f583df607d80ce1e583fac7ec4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_baby.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_201 + L8_205",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_205",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_302_child",
+    "identity": "L8_302",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic small leather apron flour trace",
+    "fatherIdentity": "L8_201",
+    "motherIdentity": "L8_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown long loose braid",
+      "eyes": "amber",
+      "build": "rounded shoulders",
+      "personalMark": "tiny mole RIGHT cheek",
+      "age": 6
+    },
+    "prompt": "FIRST image is this INFANT. GROW THAT BABY only to age6 SMALL CHILD (not teenager). Second image is future adult identity for eye color/hair ONLY; DO NOT use adult facial length, jaw, shoulders. Third father fourth mother. New portrait should still have baby-derived rounded face: VERY SHORT lower face, small nose and tiny rounded chin, large eyes, round cheeks, broad forehead, short child neck and narrow tiny shoulders. Clearly elementary-school6, under9. dark brown long loose braid, amber eyes, tiny mole RIGHT cheek. Little girl with uncovered hair, simple loose childhood hair, no headcloth. Remove swaddle/bonnet replace with simple muted wool CHILD TUNIC and small plain leather apron slight flour dust. No fur. Maintain this child's own identity and resemblance to BOTH parents. Soft painted warm gray backdrop square bust. No text. Distinctly child not small adult.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_302_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_child.png",
+    "status": "candidate",
+    "sha256": "31f3991e606d1d8b4eecd465dbf8e35bf7a1f009058d5b93c806248bebbc39b8",
+    "generationRecords": [
+      {
+        "prompt": "FIRST image is this INFANT. GROW THAT BABY only to age6 SMALL CHILD (not teenager). Second image is future adult identity for eye color/hair ONLY; DO NOT use adult facial length, jaw, shoulders. Third father fourth mother. New portrait should still have baby-derived rounded face: VERY SHORT lower face, small nose and tiny rounded chin, large eyes, round cheeks, broad forehead, short child neck and narrow tiny shoulders. Clearly elementary-school6, under9. dark brown long loose braid, amber eyes, tiny mole RIGHT cheek. Little girl with uncovered hair, simple loose childhood hair, no headcloth. Remove swaddle/bonnet replace with simple muted wool CHILD TUNIC and small plain leather apron slight flour dust. No fur. Maintain this child's own identity and resemblance to BOTH parents. Soft painted warm gray backdrop square bust. No text. Distinctly child not small adult.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_baby.png": "32e2e40ef07db1abb78dc6ae1d9da066f7d1a3282644b5d4d3e78ad2bd3257ca",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_302_young.png": "3b837b0812149f45782561e8d8ac8da138e019f583df607d80ce1e583fac7ec4",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_201 + L8_205",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_205",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_302_young",
+    "identity": "L8_302",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "young",
+    "age": 21,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "muted teal sturdy wool; leather apron flour dust",
+    "fatherIdentity": "L8_201",
+    "motherIdentity": "L8_205",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown long loose braid",
+      "eyes": "amber",
+      "build": "rounded shoulders",
+      "personalMark": "tiny mole RIGHT cheek",
+      "age": 21
+    },
+    "prompt": "Create ONE NEW daughter age21 of BOTH pictured parents. First FATHER, second MOTHER. Family resemblance only dark brown hair + oval face + gently arched brows. Unique individual with dark brown long loose braid, amber eyes, rounded shoulders, tiny mole RIGHT cheek, broad round oval overall face. Blend both parents yet give new individual nose and chin, not face copy. UNMARRIED female, hair uncovered, NO veil or headcloth for girl, no beard for young man. Upper artisan muted teal sturdy wool and brown LEATHER APRON with obvious WHITE FLOUR DUST across chest. No fur or jewelry, no machinery. Same subtle painterly gouache matte warm gray backdrop, square chest-up, soft upper-left lighting. No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+    ],
+    "file": "assets/L8/L8_302_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_young.png",
+    "status": "candidate",
+    "sha256": "3b837b0812149f45782561e8d8ac8da138e019f583df607d80ce1e583fac7ec4",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE NEW daughter age21 of BOTH pictured parents. First FATHER, second MOTHER. Family resemblance only dark brown hair + oval face + gently arched brows. Unique individual with dark brown long loose braid, amber eyes, rounded shoulders, tiny mole RIGHT cheek, broad round oval overall face. Blend both parents yet give new individual nose and chin, not face copy. UNMARRIED female, hair uncovered, NO veil or headcloth for girl, no beard for young man. Upper artisan muted teal sturdy wool and brown LEATHER APRON with obvious WHITE FLOUR DUST across chest. No fur or jewelry, no machinery. Same subtle painterly gouache matte warm gray backdrop, square chest-up, soft upper-left lighting. No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_201_young.png": "0dda01e91d81ed265437ae089f210006e15ca75fbbb0e1dba1cf1fbba71f190f",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_205_young.png": "72aca678039f92f9e98a959d086aeb4329743926d82a6ec42b6eac2ac9f124a4"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_302_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "both parents L8_201 + L8_205",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_205",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_303_baby",
+    "identity": "L8_303",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "baby",
+    "age": 1,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "linen infant bonnet wool swaddling",
+    "fatherIdentity": "L8_206",
+    "motherIdentity": "L8_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown wavy ear-length hair",
+      "eyes": "blue",
+      "build": "broad shoulders",
+      "personalMark": "scattered NOSE freckles",
+      "age": 1
+    },
+    "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 1 real INFANT, plump BABY cheeks, tiny nose, short neck, almost no jaw, sparse baby darkbrown hair under linen BABY BONNET, entirely SWADDLED in plain soft wool, not a toddler. Keep inherited darkbrown hair, blue eyes, gentle arched brows, scattered NOSE freckles faintly. Don't clone parent or sibling. No apron, no worktools, no adult costume. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+    ],
+    "file": "assets/L8/L8_303_baby.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_baby.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_baby.png",
+    "status": "candidate",
+    "sha256": "ce77731a498809d88b4d3d805b303585125e5203f95a52d5c487fce69f3ca205",
+    "generationRecords": [
+      {
+        "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 1 real INFANT, plump BABY cheeks, tiny nose, short neck, almost no jaw, sparse baby darkbrown hair under linen BABY BONNET, entirely SWADDLED in plain soft wool, not a toddler. Keep inherited darkbrown hair, blue eyes, gentle arched brows, scattered NOSE freckles faintly. Don't clone parent or sibling. No apron, no worktools, no adult costume. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png": "96377a65dfa195e464d45e0359216459a4a9ab94a378dddd4689d590fa7416a9",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_baby.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "mother L8_203",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_206",
+      "personalMark": "mother nose freckles"
+    }
+  },
+  {
+    "id": "L8_303_child",
+    "identity": "L8_303",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "child",
+    "age": 8,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic small leather apron flour trace",
+    "fatherIdentity": "L8_206",
+    "motherIdentity": "L8_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown wavy ear-length hair",
+      "eyes": "blue",
+      "build": "broad shoulders",
+      "personalMark": "scattered NOSE freckles",
+      "age": 8
+    },
+    "prompt": "FIRST image is this INFANT. GROW THAT BABY only to age8 SMALL CHILD (not teenager). Second image is future adult identity for eye color/hair ONLY; DO NOT use adult facial length, jaw, shoulders. Third father fourth mother. New portrait should still have baby-derived rounded face: VERY SHORT lower face, small nose and tiny rounded chin, large eyes, round cheeks, broad forehead, short child neck and narrow tiny shoulders. Clearly elementary-school8, under9. dark brown wavy ear-length hair, blue eyes, scattered NOSE freckles. Little boy hair matching youthful pattern. Remove swaddle/bonnet replace with simple muted wool CHILD TUNIC and small plain leather apron slight flour dust. No fur. Maintain this child's own identity and resemblance to BOTH parents. Soft painted warm gray backdrop square bust. No text. Distinctly child not small adult.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+    ],
+    "file": "assets/L8/L8_303_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_child.png",
+    "status": "candidate",
+    "sha256": "d0de87c26e88c6b3a8faf62b62d907ac0b1932e094f7ed721471d686ef814fbd",
+    "generationRecords": [
+      {
+        "prompt": "FIRST image is this INFANT. GROW THAT BABY only to age8 SMALL CHILD (not teenager). Second image is future adult identity for eye color/hair ONLY; DO NOT use adult facial length, jaw, shoulders. Third father fourth mother. New portrait should still have baby-derived rounded face: VERY SHORT lower face, small nose and tiny rounded chin, large eyes, round cheeks, broad forehead, short child neck and narrow tiny shoulders. Clearly elementary-school8, under9. dark brown wavy ear-length hair, blue eyes, scattered NOSE freckles. Little boy hair matching youthful pattern. Remove swaddle/bonnet replace with simple muted wool CHILD TUNIC and small plain leather apron slight flour dust. No fur. Maintain this child's own identity and resemblance to BOTH parents. Soft painted warm gray backdrop square bust. No text. Distinctly child not small adult.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_baby.png": "ce77731a498809d88b4d3d805b303585125e5203f95a52d5c487fce69f3ca205",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_303_young.png": "96377a65dfa195e464d45e0359216459a4a9ab94a378dddd4689d590fa7416a9",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "mother L8_203",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_206",
+      "personalMark": "mother nose freckles"
+    }
+  },
+  {
+    "id": "L8_303_young",
+    "identity": "L8_303",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "young",
+    "age": 23,
+    "sex": "male",
+    "maritalStatus": "unmarried",
+    "clothing": "muted russet sturdy wool; leather apron flour dust",
+    "fatherIdentity": "L8_206",
+    "motherIdentity": "L8_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown wavy ear-length hair",
+      "eyes": "blue",
+      "build": "broad shoulders",
+      "personalMark": "scattered NOSE freckles",
+      "age": 23
+    },
+    "prompt": "Create ONE NEW son age23 of BOTH pictured parents. First FATHER, second MOTHER. Family resemblance only dark brown hair + oval face + gently arched brows. Unique individual with dark brown wavy ear-length hair, blue eyes, broad shoulders, scattered NOSE freckles, broad round oval overall face. Blend both parents yet give new individual nose and chin, not face copy. UNMARRIED male, hair uncovered, NO veil or headcloth for girl, no beard for young man. Upper artisan muted russet sturdy wool and brown LEATHER APRON with obvious WHITE FLOUR DUST across chest. No fur or jewelry, no machinery. Same subtle painterly gouache matte warm gray backdrop, square chest-up, soft upper-left lighting. No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+    ],
+    "file": "assets/L8/L8_303_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_young.png",
+    "status": "candidate",
+    "sha256": "96377a65dfa195e464d45e0359216459a4a9ab94a378dddd4689d590fa7416a9",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE NEW son age23 of BOTH pictured parents. First FATHER, second MOTHER. Family resemblance only dark brown hair + oval face + gently arched brows. Unique individual with dark brown wavy ear-length hair, blue eyes, broad shoulders, scattered NOSE freckles, broad round oval overall face. Blend both parents yet give new individual nose and chin, not face copy. UNMARRIED male, hair uncovered, NO veil or headcloth for girl, no beard for young man. Upper artisan muted russet sturdy wool and brown LEATHER APRON with obvious WHITE FLOUR DUST across chest. No fur or jewelry, no machinery. Same subtle painterly gouache matte warm gray backdrop, square chest-up, soft upper-left lighting. No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_303_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "mother L8_203",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "father L8_206",
+      "personalMark": "mother nose freckles"
+    }
+  },
+  {
+    "id": "L8_304_baby",
+    "identity": "L8_304",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "baby",
+    "age": 0.5,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "linen infant bonnet wool swaddling",
+    "fatherIdentity": "L8_206",
+    "motherIdentity": "L8_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown loose short bob",
+      "eyes": "gray green",
+      "build": "slender shoulders",
+      "personalMark": "small mole LEFT cheek",
+      "age": 0.5
+    },
+    "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 0.5 real INFANT, plump BABY cheeks, tiny nose, short neck, almost no jaw, sparse baby darkbrown hair under linen BABY BONNET, entirely SWADDLED in plain soft wool, not a toddler. Keep inherited darkbrown hair, gray green eyes, gentle arched brows, small mole LEFT cheek faintly. Don't clone parent or sibling. No apron, no worktools, no adult costume. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+    ],
+    "file": "assets/L8/L8_304_baby.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_baby.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_baby.png",
+    "status": "candidate",
+    "sha256": "1eeed3fd55796223b239e7bca4533ccb982f9ca171f7b315e23da1b619b0d5bb",
+    "generationRecords": [
+      {
+        "prompt": "FIRST reference is this person's adult identity, second and third ACTUAL PARENTS. Repaint identity at age 0.5 real INFANT, plump BABY cheeks, tiny nose, short neck, almost no jaw, sparse baby darkbrown hair under linen BABY BONNET, entirely SWADDLED in plain soft wool, not a toddler. Keep inherited darkbrown hair, gray green eyes, gentle arched brows, small mole LEFT cheek faintly. Don't clone parent or sibling. No apron, no worktools, no adult costume. Same subdued painted gouache square bust portrait, matte gray background soft left light. No words. The child head is LARGE relative to tiny shoulders.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png": "e34b15fde8274e6da4104b68171a349c078b9cfb75c6fa0729a298db0856b9ee",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_baby.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "mother L8_203",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_203",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_304_child",
+    "identity": "L8_304",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "child",
+    "age": 6,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "child wool tunic small leather apron flour trace",
+    "fatherIdentity": "L8_206",
+    "motherIdentity": "L8_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown loose short bob",
+      "eyes": "gray green",
+      "build": "slender shoulders",
+      "personalMark": "small mole LEFT cheek",
+      "age": 6
+    },
+    "prompt": "FIRST image is this INFANT. GROW THAT BABY only to age6 SMALL CHILD (not teenager). Second image is future adult identity for eye color/hair ONLY; DO NOT use adult facial length, jaw, shoulders. Third father fourth mother. New portrait should still have baby-derived rounded face: VERY SHORT lower face, small nose and tiny rounded chin, large eyes, round cheeks, broad forehead, short child neck and narrow tiny shoulders. Clearly elementary-school6, under9. dark brown loose short bob, gray green eyes, small mole LEFT cheek. Little girl with uncovered hair, simple loose childhood hair, no headcloth. Remove swaddle/bonnet replace with simple muted wool CHILD TUNIC and small plain leather apron slight flour dust. No fur. Maintain this child's own identity and resemblance to BOTH parents. Soft painted warm gray backdrop square bust. No text. Distinctly child not small adult.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_baby.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+    ],
+    "file": "assets/L8/L8_304_child.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_child.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_child.png",
+    "status": "candidate",
+    "sha256": "71177868e217e30278c06e9171355286700661f24fabefdaca09565dce6f6876",
+    "generationRecords": [
+      {
+        "prompt": "FIRST image is this INFANT. GROW THAT BABY only to age6 SMALL CHILD (not teenager). Second image is future adult identity for eye color/hair ONLY; DO NOT use adult facial length, jaw, shoulders. Third father fourth mother. New portrait should still have baby-derived rounded face: VERY SHORT lower face, small nose and tiny rounded chin, large eyes, round cheeks, broad forehead, short child neck and narrow tiny shoulders. Clearly elementary-school6, under9. dark brown loose short bob, gray green eyes, small mole LEFT cheek. Little girl with uncovered hair, simple loose childhood hair, no headcloth. Remove swaddle/bonnet replace with simple muted wool CHILD TUNIC and small plain leather apron slight flour dust. No fur. Maintain this child's own identity and resemblance to BOTH parents. Soft painted warm gray backdrop square bust. No text. Distinctly child not small adult.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_baby.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_baby.png": "1eeed3fd55796223b239e7bca4533ccb982f9ca171f7b315e23da1b619b0d5bb",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_304_young.png": "e34b15fde8274e6da4104b68171a349c078b9cfb75c6fa0729a298db0856b9ee",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_child.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "mother L8_203",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_203",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  },
+  {
+    "id": "L8_304_young",
+    "identity": "L8_304",
+    "lineage": "L8",
+    "generation": 3,
+    "stage": "young",
+    "age": 20,
+    "sex": "female",
+    "maritalStatus": "unmarried",
+    "clothing": "muted sage sturdy wool; leather apron flour dust",
+    "fatherIdentity": "L8_206",
+    "motherIdentity": "L8_203",
+    "commonTraits": {
+      "hair": "dark brown",
+      "faceShape": "round oval",
+      "brow": "gently arched eyebrows"
+    },
+    "differenceMarkers": {
+      "hair": "dark brown loose short bob",
+      "eyes": "gray green",
+      "build": "slender shoulders",
+      "personalMark": "small mole LEFT cheek",
+      "age": 20
+    },
+    "prompt": "Create ONE NEW daughter age20 of BOTH pictured parents. First FATHER, second MOTHER. Family resemblance only dark brown hair + oval face + gently arched brows. Unique individual with dark brown loose short bob, gray green eyes, slender shoulders, small mole LEFT cheek, long round oval overall face. Blend both parents yet give new individual nose and chin, not face copy. UNMARRIED female, hair uncovered, NO veil or headcloth for girl, no beard for young man. Upper artisan muted sage sturdy wool and brown LEATHER APRON with obvious WHITE FLOUR DUST across chest. No fur or jewelry, no machinery. Same subtle painterly gouache matte warm gray backdrop, square chest-up, soft upper-left lighting. No text.",
+    "referenceImages": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+    ],
+    "file": "assets/L8/L8_304_young.png",
+    "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_young.png",
+    "selectedRawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_young.png",
+    "status": "candidate",
+    "sha256": "e34b15fde8274e6da4104b68171a349c078b9cfb75c6fa0729a298db0856b9ee",
+    "generationRecords": [
+      {
+        "prompt": "Create ONE NEW daughter age20 of BOTH pictured parents. First FATHER, second MOTHER. Family resemblance only dark brown hair + oval face + gently arched brows. Unique individual with dark brown loose short bob, gray green eyes, slender shoulders, small mole LEFT cheek, long round oval overall face. Blend both parents yet give new individual nose and chin, not face copy. UNMARRIED female, hair uncovered, NO veil or headcloth for girl, no beard for young man. Upper artisan muted sage sturdy wool and brown LEATHER APRON with obvious WHITE FLOUR DUST across chest. No fur or jewelry, no machinery. Same subtle painterly gouache matte warm gray backdrop, square chest-up, soft upper-left lighting. No text.",
+        "referenceImages": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png"
+        ],
+        "referenceHashes": {
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_206_young.png": "c1824fbbb4b981adc31491ca285337c5a97d844a8944254dbcb3a43a9aba90f8",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-lineage-prod2-v1/assets/L8/L8_203_young.png": "12567def4677636a5eda6ba2059c8487a557264b2ea532ea362d8b6bcfd0c39e"
+        },
+        "rawFile": "/Users/rexxa/feudal-lord-analysis/astra-raw/lineage-prod2-20260928/L8/L8_304_young.png",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "sourceDimensions": {
+          "format": "png",
+          "mediaType": "image/png",
+          "width": 1254,
+          "height": 1254,
+          "space": "srgb",
+          "channels": 3,
+          "depth": "uchar",
+          "density": 72,
+          "isProgressive": false,
+          "isPalette": false,
+          "bitsPerSample": 8,
+          "hasProfile": false,
+          "hasAlpha": false,
+          "autoOrient": {
+            "width": 1254,
+            "height": 1254
+          }
+        }
+      }
+    ],
+    "processing": "Sharp resize256 ensureAlpha only; no face composite",
+    "qa": {
+      "status": "candidate",
+      "visualObservation": "Individual256px and96px contact inspected. Independent prod2_ageqa final PASS38/38. Infant0–2 and covered married adults retained; all child stages read as children after corrections. Child201/202 judged8–10 upper-boundary, corrected203/204/301–304 judged5–8; target6–9 approximate visual estimation. Mature201–204 judged40–50 after enhanced facial aging.",
+      "runtime": "not installed"
+    },
+    "inheritance": {
+      "hair": "mother L8_203",
+      "faceShape": "overall oval combination only; individual nose and chin not copied",
+      "brow": "both parents gently arched",
+      "eyes": "mother L8_203",
+      "personalMark": "individual variation; not a family-wide copied mark"
+    }
+  }
+]

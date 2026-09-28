@@ -1,0 +1,223 @@
+{
+  "pairs96": [
+    {
+      "number": 1,
+      "answer": "different",
+      "reason": "Different facial proportions, jaw and brow despite shared clothing.",
+      "confidence": "high"
+    },
+    {
+      "number": 2,
+      "answer": "different",
+      "reason": "Distinct face shapes, hair structure and features.",
+      "confidence": "high"
+    },
+    {
+      "number": 3,
+      "answer": "different",
+      "reason": "Left is rounder and softer featured; right has longer angular face and brow.",
+      "confidence": "medium"
+    },
+    {
+      "number": 4,
+      "answer": "different",
+      "reason": "Different hair color, face shape and eye structure.",
+      "confidence": "high"
+    },
+    {
+      "number": 5,
+      "answer": "different",
+      "reason": "Facial proportions and hairstyle differ.",
+      "confidence": "high"
+    },
+    {
+      "number": 6,
+      "answer": "different",
+      "reason": "Curl pattern, cheek shape and nose differ.",
+      "confidence": "medium"
+    },
+    {
+      "number": 7,
+      "answer": "same",
+      "reason": "Consistent facial structure with apparent aging.",
+      "confidence": "high"
+    },
+    {
+      "number": 8,
+      "answer": "different",
+      "reason": "Different nose, brow and hair texture.",
+      "confidence": "medium"
+    },
+    {
+      "number": 9,
+      "answer": "same",
+      "reason": "Youth to adult plausibly preserves light hair, nose and facial proportions.",
+      "confidence": "medium"
+    },
+    {
+      "number": 10,
+      "answer": "same",
+      "reason": "Curly hair, nose and brow appear consistent across age.",
+      "confidence": "medium"
+    },
+    {
+      "number": 11,
+      "answer": "same",
+      "reason": "Matching broad facial structure with aging.",
+      "confidence": "high"
+    },
+    {
+      "number": 12,
+      "answer": "same",
+      "reason": "Face, nose and head covering align across aging.",
+      "confidence": "high"
+    },
+    {
+      "number": 13,
+      "answer": "same",
+      "reason": "Facial features align despite changed hairstyle and clothing.",
+      "confidence": "medium"
+    },
+    {
+      "number": 14,
+      "answer": "same",
+      "reason": "Closely matching face, hair and pose.",
+      "confidence": "high"
+    },
+    {
+      "number": 15,
+      "answer": "same",
+      "reason": "Closely matching facial shape and features.",
+      "confidence": "high"
+    },
+    {
+      "number": 16,
+      "answer": "same",
+      "reason": "Consistent face and hair with slight age variation.",
+      "confidence": "high"
+    },
+    {
+      "number": 17,
+      "answer": "different",
+      "reason": "Different facial proportions, eye shape and hair presentation.",
+      "confidence": "medium"
+    },
+    {
+      "number": 18,
+      "answer": "different",
+      "reason": "Different jaw, nose and facial proportions.",
+      "confidence": "high"
+    }
+  ],
+  "pairs": [
+    {
+      "number": 1,
+      "answer": "different",
+      "reason": "Different nose length, chin, jaw and eye presentation.",
+      "confidence": "high"
+    },
+    {
+      "number": 2,
+      "answer": "different",
+      "reason": "Angular broad jaw on left versus longer narrower face on right.",
+      "confidence": "high"
+    },
+    {
+      "number": 3,
+      "answer": "same",
+      "reason": "Age progression plausibly retains eye spacing, nose form and asymmetric mouth.",
+      "confidence": "medium"
+    },
+    {
+      "number": 4,
+      "answer": "different",
+      "reason": "Distinct eye spacing, mouth and hair characteristics.",
+      "confidence": "high"
+    },
+    {
+      "number": 5,
+      "answer": "different",
+      "reason": "Different chin, nose and eye geometry despite similar coloring.",
+      "confidence": "high"
+    },
+    {
+      "number": 6,
+      "answer": "different",
+      "reason": "Different eye spacing, cheeks, mouth and curl pattern.",
+      "confidence": "high"
+    },
+    {
+      "number": 7,
+      "answer": "same",
+      "reason": "Same nose, mouth, eyes and asymmetry with older facial lines.",
+      "confidence": "high"
+    },
+    {
+      "number": 8,
+      "answer": "different",
+      "reason": "Different brow, nose shape, eye spacing and hair texture.",
+      "confidence": "high"
+    },
+    {
+      "number": 9,
+      "answer": "same",
+      "reason": "Child to adult plausibly preserves pale eyes, narrow nose and light wavy hair.",
+      "confidence": "medium"
+    },
+    {
+      "number": 10,
+      "answer": "same",
+      "reason": "Age transition maintains distinctive brow, nose, gaze and curls.",
+      "confidence": "high"
+    },
+    {
+      "number": 11,
+      "answer": "same",
+      "reason": "Matching face proportions, hair and nose with aging lines.",
+      "confidence": "high"
+    },
+    {
+      "number": 12,
+      "answer": "same",
+      "reason": "Consistent nose, lips and face shape under age-related changes.",
+      "confidence": "high"
+    },
+    {
+      "number": 13,
+      "answer": "different",
+      "reason": "Faces are very similar but right has fuller cheeks, changed nose contour and eye shape.",
+      "confidence": "low"
+    },
+    {
+      "number": 14,
+      "answer": "same",
+      "reason": "Matching nose, jaw and asymmetry with age variation.",
+      "confidence": "high"
+    },
+    {
+      "number": 15,
+      "answer": "same",
+      "reason": "Matching features and proportions with fine age changes.",
+      "confidence": "high"
+    },
+    {
+      "number": 16,
+      "answer": "same",
+      "reason": "Matching angular face, nose and hair with aging.",
+      "confidence": "high"
+    },
+    {
+      "number": 17,
+      "answer": "different",
+      "reason": "Distinct nose, brow and face proportions.",
+      "confidence": "high"
+    },
+    {
+      "number": 18,
+      "answer": "different",
+      "reason": "Different jaw, nose profile and eye shape.",
+      "confidence": "high"
+    }
+  ],
+  "limitations": "Subjective fictional-character visual continuity judgment. No keys, metadata, expected counts or source files read. The 96px decisions were recorded before the larger board and preserved unchanged; larger-board judgments are sequential rather than independent of prior exposure. Childhood-to-adulthood and close lookalikes are uncertain."
+}
