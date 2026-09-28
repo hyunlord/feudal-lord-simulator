@@ -1,6 +1,7 @@
 import { BUILDING_CONFIG_BY_KIND } from "../buildingConfig";
 import { EVENT_DEF_BY_ID, WEATHER_EVENT_ID } from "../eventConfig";
 import { WAR_SEQUENCE_ID } from "../warConfig";
+import { PLAGUE_SEQUENCE_ID } from "../plagueConfig";
 import { CORE_ARCHETYPES, CORE_SCENARIOS, DEFAULT_SCENARIO_ID } from "./coreScenarios";
 import { CONDITION_KINDS, STAGE_ORDER, type ArchetypeDef, type Condition, type ConditionSet, type ScenarioDef, type StageDef, type StageId } from "./types";
 
@@ -127,7 +128,7 @@ function validateScenario(scenario: ScenarioDef, archetypes: ReadonlyMap<string,
   validateSet(id, scenario.walls.stoneWallPrereq, "walls.stoneWallPrereq");
   // F0-B (EV-1): active events name known definitions; events need the weather.
   for (const eventId of scenario.activeEvents) {
-    if (eventId !== WEATHER_EVENT_ID && eventId !== WAR_SEQUENCE_ID && !EVENT_DEF_BY_ID.has(eventId)) fail(id, `unknown active event ${eventId}`);
+    if (eventId !== WEATHER_EVENT_ID && eventId !== WAR_SEQUENCE_ID && eventId !== PLAGUE_SEQUENCE_ID && !EVENT_DEF_BY_ID.has(eventId)) fail(id, `unknown active event ${eventId}`);
   }
   if (scenario.activeEvents.some(eventId => eventId !== WEATHER_EVENT_ID) && !scenario.activeEvents.includes(WEATHER_EVENT_ID)) fail(id, "events need the weather");
 }

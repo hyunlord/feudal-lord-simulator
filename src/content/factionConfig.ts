@@ -34,6 +34,8 @@ export const FACTION_DEF_BY_ID: ReadonlyMap<FactionId, FactionDef> = new Map(FAC
 /** FX-3: whose petition it is — the petitioner stands for a faction (the refugees come under the bishop's letter). */
 export const FACTION_OF_PETITIONER: Readonly<Record<Petitioner, FactionId>> = {
   merchants: "merchant_house_1", overlord: "overlord", crown: "crown", townsfolk: "town", refugees: "bishop",
+  // F3-A (PL-5, PL-6): the labourers are the commons; the parish asks through its bishop.
+  labourers: "commons", parish: "bishop",
 };
 
 /**

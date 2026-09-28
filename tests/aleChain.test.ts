@@ -252,7 +252,7 @@ test("A10 (AL-10, FIX-7) the town's ale on the ledger: the slots' casks, the ale
   // The count rides the save (v25).
   const saved = decodeSave(encodeSave({ state: drunk, createdAt: "2026-09-28T00:00:00.000Z", savedAt: "2026-09-28T00:00:00.000Z" }).bytes);
   assert.deepEqual(saved.envelope.state.ale, drunk.ale);
-  assert.equal(SAVE_SCHEMA_VERSION, 25);
+  assert.ok(SAVE_SCHEMA_VERSION >= 25); // F3-A: v26
 });
 
 test("A11 (AL-2, FIX-7) barley waits for the malt kiln: before the market town the command turns no barn to barley and says why; a barn already in barley keeps it", () => {

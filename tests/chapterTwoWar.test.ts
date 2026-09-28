@@ -250,7 +250,8 @@ test("E19 (WR-9) chapter 2 ends once the war has passed and the market is chosen
   assert.equal(end.tick, M + (recovery + 1) * SEASON);
   assert.equal(end.chronicle.stats.war!.wall, "market");
   assert.equal(ended.politics!.chapter.number, 3);
-  assert.deepEqual(chapterGoals(ended).map(goal => [goal.chapter, goal.id, goal.reachedTick]).at(-1), [2, "wall_or_market", end.tick]);
+  // F3-A: chapter 3's goal (the resettlement) follows chapter 2's, not yet reached.
+  assert.deepEqual(chapterGoals(ended).map(goal => [goal.chapter, goal.id, goal.reachedTick]).slice(-2), [[2, "wall_or_market", end.tick], [3, "resettled", null]]);
   const history = advanceHistory(market, ended).history!.records.map(record => record.template);
   assert.ok(history.includes("milestone.chapter_end") && history.includes("milestone.chapter_start"));
   // The stone wall chosen: the chapter waits for it — and ends in 1348 whatever its state.

@@ -169,6 +169,8 @@ export interface GameState {
   readonly lordship?: import("./lordship.types").LordshipState;
   /** C4 AL-10 (FIX-7, save v25): the town's ale counted this season and the last. Absent until the first brew or drink. */
   readonly ale?: import("./ale.types").AleState;
+  /** F3-A the Black Death of 1348 (save v26, spec PL-1…PL-11). Absent until the collapse era. */
+  readonly plague?: import("./plague.types").PlagueState;
   /** F2-A the war of 1337 (save v20, spec WR-1…WR-9). Absent until the War era's messenger. */
   readonly war?: import("./war.types").WarState;
   /** FACTION-0 the factions around the town (save v21, spec FX-1…FX-8). Absent until the first tick. */

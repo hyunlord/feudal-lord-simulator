@@ -2,6 +2,7 @@
  * F0-C1 chapter 1 content (spec docs/design/flow-chapter-one.md FC-*): the famine responses, the first petition and the
  * chapter's end. Values are integers (permille for fractions, pennies for money).
  */
+import { PLAGUE_PETITION_DEFS } from "./plagueConfig";
 import { WAR_PETITION_DEFS } from "./warConfig";
 
 /** FC-2: the lord's answer to the Great Famine. */
@@ -34,8 +35,9 @@ export const FAMINE_RESPONSE_CONFIG = {
 /**
  * FC-3: petitioners (the gauge starts at 50 of 100). FAIL-3 (FL-6): the overlord asks too, to hand back a right he holds.
  * F2-A (WR-2…WR-8): the Crown demands, the refugees ask, the townsfolk choose the wall or the market.
+ * F3-A (PL-5, PL-6): the labourers ask for wages, the parish for a priest.
  */
-export type Petitioner = "merchants" | "overlord" | "crown" | "refugees" | "townsfolk";
+export type Petitioner = "merchants" | "overlord" | "crown" | "refugees" | "townsfolk" | "labourers" | "parish";
 export const MERCHANT_GAUGE_START = 50;
 
 export type PetitionResponse = "accept" | "refuse" | "accept_with_price";
@@ -68,9 +70,11 @@ export interface PetitionDef {
   readonly expiredGauge: number;
   /**
    * FAIL-3 (FL-6): how it arrives — by the calendar (FC-3, absent) or when a decline's cause has cleared (`lordship.ts`).
-   * F2-A (WR-2…WR-8): or in the war's sequence (`war.ts`).
+   * F2-A (WR-2…WR-8): or in the war's sequence (`war.ts`). F3-A (PL-5…PL-8): or in the pestilence's (`plague.ts`).
    */
-  readonly trigger?: "calendar" | "decline_recovered" | "war";
+  readonly trigger?: "calendar" | "decline_recovered" | "war" | "plague";
+  /** F3-A: the answers the card offers (absent = all three); another answer is not taken. */
+  readonly responses?: readonly PetitionResponse[];
 }
 
 export const MARKET_CHARTER_PETITION_ID = "market_charter";
@@ -104,6 +108,7 @@ export const PETITION_DEFS: readonly PetitionDef[] = [
     expiredGauge: 0,
   },
   ...WAR_PETITION_DEFS,
+  ...PLAGUE_PETITION_DEFS,
 ];
 
 /** FC-5: chapter 1 ends with a market town that came through the famine with this share of its people. */
@@ -115,6 +120,13 @@ export const CHAPTER_TWO = {
   chapter: 2,
   fromYear: 1318,
   toYear: 1347,
+} as const;
+
+/** F3-A (PL-10): chapter 3 of the campaign, the Black Death (from chapter 2's end, 1348 at the latest). */
+export const CHAPTER_THREE = {
+  chapter: 3,
+  fromYear: 1348,
+  toYear: 1364,
 } as const;
 
 export const CHAPTER_ONE = {

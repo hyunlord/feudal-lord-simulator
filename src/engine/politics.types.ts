@@ -74,6 +74,17 @@ export interface ChronicleEntry {
       readonly lostMen: number;
       readonly wall: "stone_wall" | "market" | "unfinished";
     };
+    /** F3-A (PL-10): chapter 3's pestilence — its year, the people it found and took (the manor's apart), the second's dead, the resettlement. */
+    readonly plague?: {
+      readonly arrivalYear: number;
+      readonly populationAtArrival: number;
+      readonly dead: number;
+      readonly manorDead: number;
+      readonly secondDead: number;
+      readonly resettled: number;
+      readonly fled: number;
+      readonly outcome: "resettled" | "calendar";
+    };
   };
 }
 

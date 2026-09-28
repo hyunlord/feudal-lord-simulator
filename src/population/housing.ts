@@ -29,7 +29,14 @@ export type HouseUpdateContext = {
   readonly palisadeProtection?: PalisadeProtection;
   /** C4 (AL-6): while ale is required, whether the house is served by ale (absent: ale asks nothing). */
   readonly aleServed?: boolean;
+  /** F3-A (PL-3): after the pestilence the growth rule adds nobody — the town's recovery is the plague's rule. */
+  readonly growthHeld?: boolean;
+  /** F3-A (PL-7): the level's hold, permille (the households that took the empty plots rise faster). Absent = 1,000. */
+  readonly holdPermille?: number;
 };
+
+/** F3-A (PL-3, PL-7): what the pestilence asks of the houses this tick (absent = nothing). */
+export type PlagueHousing = { readonly growthHeld: boolean; readonly holdPermille: number };
 
 /** C4 (AL-6): what the ale requirement asks of the town's houses this tick (absent = nothing). */
 export type AleRequirement = { readonly fromLevel: number; readonly served: ReadonlySet<string> };
@@ -110,7 +117,7 @@ function stepBurntResidents(house: House, tick: number, lotArea: number): House 
   return { ...house, residents: Math.max(0, house.residents - lotArea) };
 }
 
-function stepResidents(house: House, tick: number, lotArea: number): House {
+function stepResidents(house: House, tick: number, lotArea: number, growthHeld = false): House {
   // FP-3 stage 2: an abandoned house stays empty until the pressure rules let a new household in.
   if (house.abandonedTick !== undefined) return house;
   if (tick <= 0 || tick % BALANCE.GROWTH_INTERVAL !== houseGrowthPhase(house.buildingId)) return house;
@@ -124,7 +131,7 @@ function stepResidents(house: House, tick: number, lotArea: number): House {
   }
 
   const capacity = definitionForLevel(house.level).capacity * lotArea;
-  if (house.hasWater && (houseHasFood(house) || tick <= (house.starvationGraceUntilTick ?? 0)) && house.residents < capacity) {
+  if (!growthHeld && house.hasWater && (houseHasFood(house) || tick <= (house.starvationGraceUntilTick ?? 0)) && house.residents < capacity) {
     return { ...house, residents: Math.min(capacity, house.residents + lotArea) };
   }
   return house;
@@ -160,7 +167,7 @@ export function updateHouse(
 
   if (nextEligible && next !== undefined) {
     const promotionTicks = (house.promotionTicks ?? 0) + 1;
-    updated = promotionTicks >= aleHoldTicks(next, context.aleServed)
+    updated = promotionTicks >= Math.ceil(aleHoldTicks(next, context.aleServed) * (context.holdPermille ?? 1_000) / 1_000)
       ? { ...house, level: next.level, promotionTicks: 0, unmetRequirementTicks: 0 }
       : { ...house, promotionTicks, unmetRequirementTicks: 0 };
   } else if (targetLevel >= house.level) {
@@ -180,7 +187,7 @@ export function updateHouse(
         : { ...house, unmetRequirementTicks, promotionTicks: 0 };
   }
 
-  return stepResidents({ ...updated, builtLevel: Math.max(houseBuiltLevel(house), updated.level) }, context.tick, context.lotArea ?? 1);
+  return stepResidents({ ...updated, builtLevel: Math.max(houseBuiltLevel(house), updated.level) }, context.tick, context.lotArea ?? 1, context.growthHeld === true);
 }
 
 function hasGranaryNearby(
@@ -207,6 +214,7 @@ export function updateHousing(
   marketService?: MarketRoadService,
   services: ServiceAllocation = allocateHouseServices({ houses, buildings, roadService: marketService }),
   ale?: AleRequirement,
+  plague?: PlagueHousing,
 ): HousingUpdate {
   const watered = houses.map(house => {
     const hasWater = services.houses.get(house.buildingId)?.water.kind === "served";
@@ -223,6 +231,7 @@ export function updateHousing(
       palisadeProtection:
         home === null ? "inactive" : palisadeProtectionForBuilding(home, palisade),
       ...(ale === undefined ? {} : { aleServed: ale.served.has(house.buildingId) }),
+      ...(plague === undefined ? {} : { growthHeld: plague.growthHeld, holdPermille: plague.holdPermille }),
     });
   });
   return {
