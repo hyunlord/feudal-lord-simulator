@@ -1,5 +1,6 @@
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
+import { plagueVacantPlots } from "../engine/plague";
 import { housePressureStatus } from "../population/housePressure";
 import { buildBuildingVisualState } from "./buildingVisualState";
 import { historicalHouseAssetMeta, historicalHouseReady, historicalHouseSpriteRect } from "./historicalHouseAssets";
@@ -14,6 +15,8 @@ import { seasonBlend, seasonForObject } from "./seasonTransition";
 //  - winter (calendar season 3): snow on the roof of a single-lot house, the Wave 7 layer painted on that level's own
 //    canvas (roof_snow_l0..l4), drawn into the same rect and crop as the house; gone in spring;
 //  - an abandoned house (F0-A stage 2): the boarded windows (boarded_l0..l4), same registration;
+//  - UI-8 (chapter 3 plague): a plague-emptied house gets event_plague_shut_l1..l3 instead of boarded;
+//    both died and fled households share vacantHouseIds (spec PL-3). No door marks (historical accuracy).
 //  - stock piles at the door (stockPiles.ts).
 // Pair lots have no Wave 7 overlay yet (their roofs differ); they keep their walls bare in winter.
 // UI-4 (Wave 9, world before UI): a house on fire (F0-B `events.burning`) shows its roof in flames (fire_roof_lN on the
@@ -30,7 +33,16 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
       const rect = historicalHouseSpriteRect(building, meta);
       const clamped = Math.max(0, Math.min(4, level));
       const house = state.houses.find(candidate => candidate.buildingId === building.id);
-      if (house !== undefined && housePressureStatus(house) === "abandoned") drawWave7Overlay(context, `boarded_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
+      if (house !== undefined && housePressureStatus(house) === "abandoned") {
+        // UI-8: plague-emptied houses (died or fled, both in vacantHouseIds) get the plague_shut overlay instead.
+        // event_plague_shut has l1..l3 only; clamp to that range. Art is chapter-3 gated (chapterArt.ts).
+        if (plagueVacantPlots(state).includes(house.buildingId)) {
+          const pLevel = Math.max(1, Math.min(3, clamped));
+          drawWave9Overlay(context, `event_plague_shut_l${pLevel}` as Wave9Key, meta.alphaBounds, meta, rect);
+        } else {
+          drawWave7Overlay(context, `boarded_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
+        }
+      }
       // INSTALL-15: while the season turns, each roof takes or loses its snow at its own moment, with the trees.
       if (seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3) drawWave7Overlay(context, `roof_snow_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
     }

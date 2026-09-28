@@ -2,6 +2,7 @@ import { drawUiIcon } from "../ui/uiArt";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import { BUILDING_CONFIG_BY_KIND, operationSuspended, type Building } from "../content/buildingConfig";
 import { marketHasSaleCandidate } from "../engine/marketSettlement";
+import { curacyVacant, plagueVacantPlots } from "../engine/plague";
 import { isMarketDay } from "./presentation/residentTrips";
 import type { GameState } from "../engine/engine.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
@@ -30,11 +31,14 @@ export { drawWeatherGround } from "./weatherOverlay"; // INSTALL-23 weather on t
 // S2, S4 (and S8 on the plaques) wait one distribution cycle (R0-1, signalPersistence.ts); the rest show at once.
 // At most MAX_EMPHASIS signs in view are emphasised (a steady ring), in PRIORITY order, nearest the view's centre
 // first. Everything is read from the state; nothing is stored.
-export type WorldSignKind = "road_cut" | "cold_house" | "leaving_family" | "abandoned_house" | "idle_latch" | "empty_stall" | "empty_plot";
+// UI-8 chapter 3: curacy_vacant — the church or chapel whose priest died (PL-6, curacyVacant).
+// Replaces the generic idle_latch sign for the church so it has a dedicated reason; drawn as bar_latch
+// (same art, no new files) since the inspector provides the textual explanation (problemCauseModel.ts).
+export type WorldSignKind = "road_cut" | "cold_house" | "leaving_family" | "abandoned_house" | "idle_latch" | "empty_stall" | "empty_plot" | "curacy_vacant";
 export type WorldSign = Readonly<{ kind: WorldSignKind; tx: number; ty: number; toward: { readonly tx: number; readonly ty: number } | null }>;
 export const MAX_EMPHASIS = 3;
 const PRIORITY: Readonly<Record<WorldSignKind, number>> = {
-  road_cut: 0, cold_house: 1, leaving_family: 2, abandoned_house: 3, idle_latch: 4, empty_stall: 5, empty_plot: 6,
+  road_cut: 0, cold_house: 1, leaving_family: 2, abandoned_house: 3, idle_latch: 4, empty_stall: 5, empty_plot: 6, curacy_vacant: 4,
 };
 const ROAD_SEARCH = 10;
 
@@ -74,17 +78,24 @@ export function worldSigns(state: GameState): readonly WorldSign[] {
     const size = buildingFootprint(building); // a ring goes round the footprint's middle, not its top corner
     return { tx: building.tx + (size.width - 1) / 2, ty: building.ty + (size.height - 1) / 2 };
   };
+  // UI-8: plague-vacant houses (died/fled households, both in vacantHouseIds) show no abandoned sign.
+  const vacantPlagueIds = new Set(plagueVacantPlots(state));
   for (const house of state.houses) {
     const building = buildingById.get(house.buildingId);
     if (building === undefined) continue;
     const pressure = housePressureStatus(house);
     if (pressure === "leaving") signs.push({ kind: "leaving_family", ...middle(building), toward: null });
-    else if (pressure === "abandoned") signs.push({ kind: "abandoned_house", ...middle(building), toward: null });
+    else if (pressure === "abandoned" && !vacantPlagueIds.has(house.buildingId)) signs.push({ kind: "abandoned_house", ...middle(building), toward: null });
     else if (coldShown.has(house.buildingId)) signs.push({ kind: "cold_house", ...middle(building), toward: null });
   }
   const marketDay = isMarketDay(state.tick);
+  // UI-8: church with curacy vacant gets a dedicated sign (curacy_vacant) instead of idle_latch.
+  const churchVacant = curacyVacant(state);
   for (const building of state.buildings) {
-    if (operationSuspended(building)) signs.push({ kind: "idle_latch", ...middle(building), toward: null });
+    if (operationSuspended(building)) {
+      const isCuracy = churchVacant && (building.kind === "church" || building.kind === "chapel") && building.curacyVacant === true;
+      signs.push({ kind: isCuracy ? "curacy_vacant" : "idle_latch", ...middle(building), toward: null });
+    }
     if (marketDay && building.kind === "market" && !marketHasSaleCandidate(state, building)) signs.push({ kind: "empty_stall", ...middle(building), toward: null });
   }
   for (const parcel of burgageParcels(state)) {
@@ -132,8 +143,8 @@ export function drawWorldSigns(context: CanvasRenderingContext2D, state: GameSta
     } else if (sign.kind === "leaving_family") {
       drawWave7(context, "bundle_family_prop", at.sx + 18, at.sy + 14, SIGN_PROP_SCALE);
       drawUiIcon(context, "cause", "food", at.sx, at.sy - 44, 20); // UI-3: why they leave (FP-3 food shortage)
-    } else if (sign.kind === "idle_latch") {
-      drawWave7(context, "bar_latch", at.sx + 14, at.sy + 12, SIGN_PROP_SCALE);
+    } else if (sign.kind === "idle_latch" || sign.kind === "curacy_vacant") {
+      drawWave7(context, "bar_latch", at.sx + 14, at.sy + 12, SIGN_PROP_SCALE); // UI-8: curacy_vacant uses same bar art; inspector shows reason text
     } else if (sign.kind === "empty_stall") {
       drawWave7(context, "empty_stall", at.sx + 40, at.sy + 26, SIGN_STALL_SCALE);
     }

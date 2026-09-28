@@ -22,6 +22,7 @@ import { wallStripsEnabled } from "./renderWallStripsFlag";
 import { beginBuildingVariantFrame } from "./buildingVariants";
 import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
+import { drawPlagueProp } from "./plagueWorldProps";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -75,6 +76,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "war_prop") { // UI-6 the war's beacon, burning quay and raid smoke
       if (viewMode === "normal") drawWarProp(context, item.prop, input.zoom, input.nowMs ?? 0);
+      continue;
+    }
+    if (item.kind === "plague_prop") { // UI-8 chapter 3 fresh graves in the churchyard
+      if (viewMode === "normal") drawPlagueProp(context, item.prop);
       continue;
     }
     if (item.kind === "village_life") { // INSTALL-23 hens, cats, dogs, birds, toys, washing lines, doorstep props

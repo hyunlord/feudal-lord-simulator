@@ -1,6 +1,7 @@
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { openPetitions } from "../engine/politics";
+import { plagueVacantPlots } from "../engine/plague";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { tileToScreen } from "./iso";
 import { drawWave7 } from "./wave7Art";
@@ -78,8 +79,12 @@ let departureTick = -1;
 export function drawDepartures(context: CanvasRenderingContext2D, state: GameState, nowMs: number): void {
   if (state.tick < departureTick) departures.clear();
   departureTick = state.tick;
+  // UI-8: plague-vacant houses (households that died or fled the plague) do not show departure walkers —
+  // a dead household does not walk away; fled is handled the same way (same vacantHouseIds list).
+  const vacantPlagueIds = new Set(plagueVacantPlots(state));
   for (const house of state.houses) {
     if (house.abandonedTick === undefined || departures.has(house.buildingId) || state.tick - house.abandonedTick > 200) continue;
+    if (vacantPlagueIds.has(house.buildingId)) continue;
     const building = state.buildings.find(candidate => candidate.id === house.buildingId);
     if (building === undefined) continue;
     // The nearest map edge along a tile axis.
