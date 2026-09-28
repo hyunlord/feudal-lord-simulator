@@ -3,16 +3,16 @@
 //   e2 a store's card with its ale note (the same town);
 //   e3 the season card at the next close with the season's ale (the replay's m9-brewing run at 5x);
 //   e4 a hamlet's barn (v26 four-farms): barley disabled with the engine's reason;
-//   e5 the wool levy card (UI-6's chapter 2 run, wool_payment): the in-kind answer's split — a town without pasture;
-//   e6 the same card after the player paints a pasture (a zone_paint command): fleeces first, the rest in coin.
+//   e5 the wool levy card (UI-6's chapter 2 run, wool_payment): the in-kind answer's split — no fleece in the stores;
+//   e6 the same card with fleece for half the share in a storehouse (C5 CL-9: stored fleece first, the rest in coin).
 // Element JPEGs and captures.json (the lines read from the page).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/econUiCaptures.ts <out-dir> --url <game> --ale <install3States dir> --war <ui6States dir>
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
 import { decodeSave } from "../src/save/saveCodec";
-import { gameReducer } from "../src/state/gameStore";
-import { zonesOf } from "../src/zones/zoneEdits";
+import { CLOTH_BALANCE } from "../src/content/clothConfig";
+import { woolInKindPerSeason, woolLevyAmount } from "../src/engine/war";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Locator = { first: () => Locator; count: () => Promise<number>; waitFor: (options?: object) => Promise<void>; click: (options?: object) => Promise<void>;
@@ -115,21 +115,16 @@ async function woolCard(state: GameState, file: string) {
 }
 let woolLoaded: GameState | null = null;
 const woolTownOf = () => (woolLoaded ??= json(warDir, "wool_payment"));
-await step("e5-wool-no-pasture", async () => ({ pastureCells: zonesOf(woolTownOf()).filter(zone => zone.kind === "pasture").reduce((sum, zone) => sum + zone.membership.length, 0),
-  lines: await woolCard(woolTownOf(), "e5-wool-no-pasture.jpg") }));
-await step("e6-wool-pasture", async () => {
-  // The player paints a pasture on open ground away from the town (the first brush that adds cells).
+await step("e5-wool-no-fleece", async () => ({ lines: await woolCard(woolTownOf(), "e5-wool-no-fleece.jpg") }));
+await step("e6-wool-stored-fleece", async () => {
+  // C5 (CL-9): the levy takes the town's stored fleece. Capture setup (not play): fleece for half a season's share put
+  // in the first storehouse — a town whose pastoral farm had filled it.
   const woolTown = woolTownOf();
-  const before = zonesOf(woolTown).filter(zone => zone.kind === "pasture").reduce((sum, zone) => sum + zone.membership.length, 0);
-  let painted = woolTown;
-  for (const [x, y] of [[12, 12], [12, 60], [60, 12], [20, 40], [40, 20], [70, 70]] as const) {
-    const next = gameReducer(woolTown, { type: "zone_paint", kind: "pasture", stroke: { tool: "brush", points: [{ x: x + 0.5, y: y + 0.5 }, { x: x + 6.5, y: y + 0.5 }], radius: 4 } });
-    const cells = zonesOf(next).filter(zone => zone.kind === "pasture").reduce((sum, zone) => sum + zone.membership.length, 0);
-    if (cells > before + 20) { painted = next; break; }
-  }
-  const cells = zonesOf(painted).filter(zone => zone.kind === "pasture").reduce((sum, zone) => sum + zone.membership.length, 0);
-  if (cells <= before) throw new Error("no pasture painted");
-  return { pastureCells: cells, lines: await woolCard(painted, "e6-wool-pasture.jpg") };
+  const share = woolInKindPerSeason(woolLevyAmount(woolTown));
+  const fleece = Math.floor(share / CLOTH_BALANCE.fleeceValue / 2);
+  const store = woolTown.buildings.find(building => building.kind === "storehouse")!;
+  const stocked = { ...woolTown, buildings: woolTown.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, fleece } } : building) } as GameState;
+  return { fleece, store: store.id, lines: await woolCard(stocked, "e6-wool-stored-fleece.jpg") };
 });
 await browser.close();
 const bytes = files.reduce((total, file) => total + statSync(join(out!, file)).size, 0);

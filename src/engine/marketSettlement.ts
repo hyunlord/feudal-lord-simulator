@@ -15,6 +15,7 @@ import { scenarioOf } from "./scenarioState";
 import type { LedgerPosting } from "../ledger/ledger.types";
 import { foodPricePermille } from "./eventSchedule";
 import { foodPriceSource } from "./events";
+import { CLOTH_BALANCE } from "../content/clothConfig";
 
 type MarketResource = Exclude<ResourceType, "coin">;
 
@@ -36,6 +37,8 @@ const SALE_RULES = [
   { resource: "timber", reserve: 60, coin: 6 },
   { resource: "stone_raw", reserve: 40, coin: 3 },
   { resource: "stone", reserve: 40, coin: 8 },
+  // C5 (CL-8): finished cloth to the long-distance merchants, before anything else (the dearest good), none kept back.
+  { resource: "finished_cloth", reserve: 0, coin: CLOTH_BALANCE.clothPrice },
 ] as const satisfies readonly SaleRule[];
 
 const MARKET_CADENCE_TICKS = 80;
@@ -88,7 +91,8 @@ function connectedStorageSources(
   const component = existingRoadComponent(state, buildingRoadAccessTiles(state, market));
   const componentKeys = new Set(component.map(coordinateKey));
   return buildings
-    .filter((building) => building.kind === "granary" || building.kind === "storehouse")
+    // C5 (CL-8): the merchants buy finished cloth at the tenter yard too.
+    .filter((building) => building.kind === "granary" || building.kind === "storehouse" || building.kind === "tenter_yard")
     .filter((building) =>
       buildingRoadAccessTiles(state, building).some((road) =>
         componentKeys.has(coordinateKey(road)),
@@ -173,6 +177,7 @@ export function settleMarkets(state: GameState): GameState {
   let traded = false;
   let wheatExported = 0;
   let breadExported = 0;
+  const ulnage: LedgerPosting[] = [];
   for (const market of completedMarkets(buildings)) {
     const result = settleMarket(state, buildings, market);
     buildings = result.buildings;
@@ -180,6 +185,9 @@ export function settleMarkets(state: GameState): GameState {
     traded = true;
     if (result.sold === "wheat") wheatExported += 1;
     if (result.sold === "bread") breadExported += 1;
+    // C5 (CL-8): the aulnager seals each cloth sold; the seal's due is the treasury's.
+    if (result.sold === "finished_cloth") ulnage.push({ account: "cash", category: "ulnage", amount: CLOTH_BALANCE.ulnagePerCloth,
+      sourceRefs: [{ type: "building", id: market.id, detail: "cloth_sold" }, { type: "building", id: result.from!.id }] });
     if (demesneSale && result.from?.kind === "granary" && (result.sold === "wheat" || result.sold === "bread")) {
       const dearth = foodPriceSource(state);
       demesne.push({ account: "cash", category: "demesne_sale", amount: result.coin,
@@ -189,7 +197,7 @@ export function settleMarkets(state: GameState): GameState {
   }
 
   if (!traded) return state;
-  const posted = demesne.length === 0 ? null : postLedgerEntries(state, demesne);
+  const posted = demesne.length + ulnage.length === 0 ? null : postLedgerEntries(state, [...demesne, ...ulnage]);
   return recordFoodFlow({
     ...state,
     buildings: [...buildings],

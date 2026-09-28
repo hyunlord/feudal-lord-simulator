@@ -1,0 +1,9 @@
+{
+  "id": "spin_yarn",
+  "name": "실잣기",
+  "levels": [3, 4],
+  "workers": 1,
+  "input": { "fleece": 1 },
+  "output": { "yarn": 1 },
+  "ticksPerBatch": 400
+}

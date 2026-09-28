@@ -3,6 +3,7 @@
  * `CRAFT_SOURCES`; the first one is C4's `brew_ale`. Until then there are none and every household slot is empty.
  */
 import brewAle from "./brew_ale.json";
+import spinYarn from "./spin_yarn.json";
 
 export interface CraftDefinition {
   /** `namespace:id`-free short id, e.g. `brew_ale`. */
@@ -18,8 +19,8 @@ export interface CraftDefinition {
   readonly ticksPerBatch: number;
 }
 
-/** Raw JSON of every craft file. C4 (AL-4): the first, the household's ale. */
-const CRAFT_SOURCES: readonly unknown[] = [brewAle];
+/** Raw JSON of every craft file. C4 (AL-4): the first, the household's ale. C5 (CL-4): spinning, the second slot. */
+const CRAFT_SOURCES: readonly unknown[] = [brewAle, spinYarn];
 
 const isAmounts = (value: unknown): value is Record<string, number> =>
   typeof value === "object" && value !== null && !Array.isArray(value)

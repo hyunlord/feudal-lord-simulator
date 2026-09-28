@@ -1,5 +1,5 @@
 import { BALANCE } from "../content/balanceConfig";
-import { barnHolds, BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import { barnHolds, BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
 import {
   STORAGE_KIND_BY_RESOURCE,
   isStorableResource,
@@ -32,6 +32,11 @@ function bestCandidate(candidates: readonly RouteCandidate[], replenishBread = f
   })[0] ?? null;
 }
 
+/** C5 (CL-4…CL-7): the building each cloth good goes to next. */
+const CLOTH_NEXT_STAGE: Partial<Record<ResourceType, BuildingKind>> = {
+  yarn: "weaver_house", raw_cloth: "fulling_mill", fulled_cloth: "dyehouse", dyed_cloth: "tenter_yard",
+};
+
 export function deliverCandidate(
   producer: Building,
   resource: ResourceType,
@@ -46,6 +51,20 @@ export function deliverCandidate(
   const stock = Math.min(amountOf(producer.inventory, resource), inventory.availableStock(producer, resource));
   if (stock === 0) return null;
   const storeKind = STORAGE_KIND_BY_RESOURCE[resource];
+  // C5 (CL-4…CL-7, decision CL6): cloth passes from hand to hand — each stage's cart takes it to the next stage's
+  // building while that one has room, and only then to a storehouse (the stores of a grown town stand full of timber).
+  const next = CLOTH_NEXT_STAGE[resource];
+  if (next !== undefined) {
+    const direct = buildings.flatMap((building) => {
+      if (building.kind !== next || building.id === producer.id) return [];
+      const path = routes.betweenBuildings(producer.id, building.id);
+      if (path === null || path.length === 0) return [];
+      const amount = Math.min(BUILDING_CONFIG_BY_KIND[producer.kind].carterCapacity ?? BALANCE.CARTER_CAPACITY, stock, inventory.availableSpace(building));
+      return amount > 0 ? [{ building, path, amount }] : [];
+    });
+    const best = bestCandidate(direct, false);
+    if (best !== null) return best;
+  }
   const candidates = buildings.flatMap((building) => {
     if (building.kind !== storeKind) return [];
     const path = routes.betweenBuildings(producer.id, building.id);

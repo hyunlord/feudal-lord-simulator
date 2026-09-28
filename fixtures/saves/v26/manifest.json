@@ -161,6 +161,23 @@
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
       "saveSerializeMs": 1.91
+    },
+    {
+      "id": "chapter-four-town",
+      "description": "a town that came through chapters 1-3: the F3-A guardrail's seed 1 at its end (1368, chapter 4, 24 L4 lots); its path cache emptied (a cache, rebuilt as routes are asked)",
+      "sourceFile": "DGX engine-F3A-gr1-971e07d guardrail/seed-1/final-state.json",
+      "sourceSha256": "a0fb8333a5cb58a1fe2d433ad6d71d0d50e3f015b591f69a1c94ff138eb04364",
+      "provenance": "Natural bot growth (guardrail run, efficientGrowthRun seed 1) at commit 971e07d; re-encoded with the current save schema, pathCache emptied. Not edited otherwise.",
+      "file": "chapter-four-town.save.json",
+      "bytes": 3352003,
+      "tick": 275340,
+      "population": 768,
+      "era": "stone_town",
+      "buildings": 83,
+      "houses": 24,
+      "palisadeSegments": 20,
+      "completedPalisadeSegments": 20,
+      "saveSerializeMs": 8.97
     }
   ],
   "v0Fixtures": [

@@ -71,6 +71,12 @@ export const CONSTRUCTION = {
     keep: 1200,
     // C4 (AL-3)
     malt_kiln: 500,
+    // C5 (CL-2…CL-7)
+    pastoral_farm: 400,
+    weaver_house: 500,
+    fulling_mill: 800,
+    dyehouse: 600,
+    tenter_yard: 400,
   },
 } as const satisfies {
   readonly MAX_BUILDERS_PER_SITE: number;

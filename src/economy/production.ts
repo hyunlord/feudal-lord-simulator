@@ -24,6 +24,8 @@ export function productionOperation(
   if (!hasRoad) return "no_road";
   if (building.workers < definition.workersRequired) return "understaffed";
   if (production.input !== null && stock(building, production.input) < production.inputPerOutput) return "no_input";
+  // C5 (CL-6): a second good each output uses (the dyehouse's dyes).
+  if (production.alsoConsumes !== undefined && stock(building, production.alsoConsumes.resource) < production.alsoConsumes.amount) return "no_input";
   const released = production.input === null ? 0 : production.inputPerOutput;
   if (availableSpace(building, definition) + released < 1) return "output_full";
   if (production.outputHoldLimit !== undefined && stock(building, production.output) >= production.outputHoldLimit) return "output_full";
@@ -54,6 +56,9 @@ export function stepProduction(
   if (production.input !== null) {
     inventory[production.input] =
       stock(building, production.input) - production.inputPerOutput;
+  }
+  if (production.alsoConsumes !== undefined) {
+    inventory[production.alsoConsumes.resource] = stock(building, production.alsoConsumes.resource) - production.alsoConsumes.amount;
   }
   inventory[production.output] =
     Math.max(0, inventory[production.output] ?? 0) + 1;

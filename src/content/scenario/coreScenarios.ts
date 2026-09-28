@@ -22,7 +22,8 @@ const STAGES: readonly StageDef[] = [
     ] },
     // K4-1: the church moves here from the stone-town proclamation so L4 houses need no stone wall.
     // C4 (AL-3): the malt kiln with the market town (ale is a choice in chapter 1, a need from 1318).
-    unlocks: ["quarry", "masonry", "market", "church", "malt_kiln"],
+    // C5 (CL-2…CL-7): the pastoral farm and the cloth trades with the market town (the hamlet's first menu unchanged).
+    unlocks: ["quarry", "masonry", "market", "church", "malt_kiln", "pastoral_farm", "weaver_house", "fulling_mill", "dyehouse", "tenter_yard"],
   },
   {
     id: "fortified_town",

@@ -4,7 +4,7 @@ import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { BALANCE } from "../src/content/balanceConfig";
-import { PASTURE_WOOL } from "../src/content/woolConfig";
+import { CLOTH_BALANCE } from "../src/content/clothConfig";
 import { BREW_ALE_CRAFT_ID, townAle } from "../src/engine/ale";
 import type { GameState } from "../src/engine/engine.types";
 import { woolInKindPerSeason, woolLevyAmount } from "../src/engine/war";
@@ -17,7 +17,7 @@ import { TOWN_ALE_COPY } from "../src/ui/townAleCopy.ko";
 import { townAleView } from "../src/ui/townAleModel";
 
 // ECON-UI (engine FIX-7): the town's ale on the ledger drawer, the stores and the season card; the barn's barley lock
-// with its reason; the wool levy's in-kind line (the pastures' fleeces first, the rest in coin).
+// with its reason; the wool levy's in-kind line (the town's stored fleece first — C5 CL-9 —, the rest in coin).
 const load = (name: string) => decodeSave(new Uint8Array(readFileSync(`fixtures/saves/v26/${name}.save.json`))).envelope.state as GameState;
 const SEASON = BALANCE.TICKS_PER_YEAR / 4;
 
@@ -71,15 +71,15 @@ test("barley waits for the malt kiln: before the market town the choice is disab
   assert.deepEqual([open.disabled, open.locked], [false, null]);
 });
 
-test("the wool levy's in-kind answer says what a season takes: the pastures' fleeces first, the rest in coin", () => {
+test("the wool levy's in-kind answer says what a season takes: the town's stored fleece first, the rest in coin", () => {
   const town = load("palisade-construction");
   const petition = { id: "petition-test", defId: "wool_payment", petitioner: "crown", subject: "wool_payment", createdTick: town.tick, status: "open" } as never;
   const perSeason = woolInKindPerSeason(woolLevyAmount(town));
   const line = (state: GameState) => petitionPresentation(state, petition).line("accept");
-  assert.match(line(town), /목초지 양털이 없어 계절마다 \d+d 모두 현금/);
-  const pasture = town.zones!.find(zone => zone.kind === "pasture");
-  // With pastures enough for part of the share: fleeces and coin.
-  const cells = Math.ceil(perSeason / PASTURE_WOOL.fleeceValue) * 2; // half the share's fleeces (a season is a quarter of a year's clip)
-  const withPasture = { ...town, zones: [...(town.zones ?? []).filter(zone => zone !== pasture), { id: "pasture-test", kind: "pasture", membership: Array.from({ length: cells }, (_, index) => index) }] } as unknown as GameState;
-  assert.match(line(withPasture), /계절마다 양털 \d+뭉치\(\d+d\)( \+ 현금 \d+d|로 다 냅니다)/);
+  assert.match(line(town), /창고에 양털이 없어 계절마다 \d+d 모두 현금/);
+  // Fleece for half the share in a storehouse (C5 CL-9: the levy takes it from the stores).
+  const half = Math.floor(perSeason / CLOTH_BALANCE.fleeceValue / 2);
+  const store = town.buildings.find(building => building.kind === "storehouse")!;
+  const stocked = { ...town, buildings: town.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, fleece: half } } : building) } as GameState;
+  assert.match(line(stocked), new RegExp(`계절마다 창고 양털 ${half}뭉치\\(${half * CLOTH_BALANCE.fleeceValue}d\\) \\+ 현금 ${perSeason - half * CLOTH_BALANCE.fleeceValue}d`));
 });

@@ -14,6 +14,7 @@ import type { GameState } from './engine.types';
 import { accrueMilledWheat } from './moneyRules';
 import { stepArableFields } from '../zones/arableFields';
 import { recordHarvestLoss } from './events';
+import { fullingToll } from './cloth';
 
 export function runProduction(input: GameState): GameState {
   // AF-3…AF-9: the fields advance first; a harvest lands in the barn this tick and counts as wheat produced.
@@ -33,6 +34,7 @@ export function runProduction(input: GameState): GameState {
   let breadProduced = 0;
   let timberProduced = 0;
   const milledWheat = new Map<string, number>();
+  const fulled = new Map<string, number>();
   const buildings = state.buildings.map((building) => {
     if (!buildingHasRequiredRoadAccess(state, building)) return building;
     if (building.kind === 'wheat_farm') {
@@ -60,6 +62,7 @@ export function runProduction(input: GameState): GameState {
       wheatConsumed += ground;
       if (building.kind === 'mill' && ground > 0) milledWheat.set(building.id, (milledWheat.get(building.id) ?? 0) + ground);
     }
+    if (step.produced === "fulled_cloth") fulled.set(building.id, (fulled.get(building.id) ?? 0) + 1);
     if (step.produced !== null && state.autoplayFoodObservation?.siteId === building.id) observedOutput += 1;
     forestHarvests = forestHarvestsAfterProduction({
       state: { ...state, forestHarvests },
@@ -76,9 +79,11 @@ export function runProduction(input: GameState): GameState {
     ...(materialRecord === undefined ? {} : { autoplayMaterialRecovery: materialRecord }),
   }, { wheatProduced, breadProduced, farmFullTicks, farmReadyTicks }),
   { eligibleMillTicks, rawStarvedTicks, wheatConsumed }, true), milledWheat);
+  // C5 (CL-5): the lord's fulling mill takes its toll on each cloth fulled.
+  const tolled = fullingToll(nextState, fulled);
   return observedOutput === 0
-    ? nextState
-    : recordFoodObservationActivity(nextState, { outputProduced: observedOutput });
+    ? tolled
+    : recordFoodObservationActivity(tolled, { outputProduced: observedOutput });
 }
 
 function timberProductionWindow(state: GameState, produced: number): NonNullable<GameState['timberProductionWindow']> {

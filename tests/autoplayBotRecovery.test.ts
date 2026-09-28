@@ -168,7 +168,9 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // at chapter 5's end (FL-9): the prosperous town's outcome is "ongoing" (was "victory"), re-recorded at FAIL-3. C4 adds
   // barley, malt and ale to the hashed stock totals (0 here: chapter 1 need not brew), re-recorded at C4 (was
   // 57b48964ac5b3c9e, which the same state still gives without the three goods; the full-state hash below is unchanged).
-  assert.equal(hashEconomyState(state), "4811a678f2a882b5");
+  // C5 adds the cloth chain's seven goods to the stock totals (0 here), re-recorded at C5 (was 4811a678f2a882b5; the
+  // full-state hash below is unchanged: chapter 1 is the same).
+  assert.equal(hashEconomyState(state), "eee07b584282a9b6");
   // FIX-6: the factions' leaders wear pool 3's faces (was 6ec1cf75…; with every portraitIdentity removed the state is the same).
   // PERSON-1a: the persons carry their traits, lineage and parents, the lord's family lives in the manor (was e7a38e20…;
   // without persons, factions and petitioners the state is trunk's, decision LN7).
