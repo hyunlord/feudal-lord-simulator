@@ -244,6 +244,32 @@ if (states6 !== undefined) {
   });
 }
 
+// UI-8: chapter 3 — the plague's wage ledger in the stock tab and chapter 3's end page. States from --states8.
+const states8 = flag('states8');
+const load8 = name => JSON.parse(readFileSync(join(states8, `${name}.json`), 'utf8'));
+async function scene8(stateName, extra = {}) {
+  const state = load8(stateName);
+  const opened = await openScene(browser, { state, tile: houseTile(state), baseUrl: url, width: 1280, height: 800, zoom: 1.1, run: false,
+    initScript: TUTORIAL_OFF, query: extra.query ?? '' });
+  opened.page.on('pageerror', error => result.errors.push(`${stateName}: ${String(error)}`));
+  return opened;
+}
+if (states8 !== undefined) {
+  await step('wage-ledger', async () => {
+    const { context, page } = await scene8('chapter3-end', { query: '&story-delay=600000' });
+    await pause(1000);
+    await page.locator("[data-dock='ledger']").click(); await pause(500);
+    await audit('wage-ledger', page, 's23-wage-ledger.jpg');
+    await context.close();
+  });
+  await step('chapter3-page', async () => {
+    const { context, page } = await scene8('chapter3-end', { query: '&story-delay=5000' });
+    await page.locator('.chronicle-page').waitFor({ timeout: 30_000 }); await pause(800);
+    await audit('chapter3-page', page, 's24-chapter3-page.jpg');
+    await context.close();
+  });
+}
+
 // Gate ③: the gallery at desktop and tablet size (full page), audited as well.
 for (const [name, viewport, touch] of [['gallery-desktop', { width: 1280, height: 800 }, false], ['gallery-tablet', { width: 1180, height: 820 }, true]]) {
   await step(name, async () => {
@@ -274,7 +300,8 @@ await step('sheet', async () => {
 
 await browser.close();
 const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet',
-  ...(states6 === undefined ? [] : ['war-petition-writ', 'war-petition-refugees', 'rights-decline', 'rights-chapter2', 'chapter2-page'])];
+  ...(states6 === undefined ? [] : ['war-petition-writ', 'war-petition-refugees', 'rights-decline', 'rights-chapter2', 'chapter2-page']),
+  ...(states8 === undefined ? [] : ['wage-ledger', 'chapter3-page'])];
 result.missing = expected.filter(name => result.states[name] === undefined);
 result.pass = result.total.skinless === 0 && result.missing.length === 0;
 writeFileSync(join(out, 'audit.json'), JSON.stringify(result, null, 1) + '\n');

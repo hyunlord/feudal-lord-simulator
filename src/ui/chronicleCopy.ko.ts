@@ -12,6 +12,8 @@ const METRICS: Readonly<Record<string, (value: number) => string>> = {
 const metricLine = (values: Readonly<Record<string, number>>) => Object.entries(values).map(([key, value]) => (METRICS[key] ?? (v => `${key} ${v}`))(value)).join(" · ");
 
 const WALL_OUTCOME: Readonly<Record<string, string>> = { stone_wall: "석벽 완공", market: "시장을 넓힘", unfinished: "석벽 미완" };
+// UI-8 (F3-A PL-10): chapter 3 plague outcomes.
+const PLAGUE_OUTCOME: Readonly<Record<string, string>> = { resettled: "재정착 완료", calendar: "세월로 마감" };
 
 export const CHRONICLE_COPY = {
   label: "연대기",
@@ -33,6 +35,12 @@ export const CHRONICLE_COPY = {
     ...(stats.war === undefined ? [] : [
       stats.war.raidYear === null || stats.war.raidLosses === null ? "해안 습격 없음" : `해안 습격(${stats.war.raidYear}) 불탄 집 ${stats.war.raidLosses.burntHouses} · 빼앗긴 돈 ${pence(stats.war.raidLosses.coin)} · 성벽 방어 ${Math.round((stats.war.defencePermille ?? 0) / 10)} %`,
       `징집 ${stats.war.men}명 · 돌아오지 못한 사람 ${stats.war.lostMen}명 · ${WALL_OUTCOME[stats.war.wall]}`]),
+    // UI-8 (F3-A PL-10): chapter 3's plague.
+    ...(stats.plague === undefined ? [] : [
+      `역병 도래(${stats.plague.arrivalYear}) 당시 인구 ${stats.plague.populationAtArrival}명`,
+      `역병 사망 ${stats.plague.dead}명 · 영주 가솔 ${stats.plague.manorDead}명 · 두 번째 역병 ${stats.plague.secondDead}명`,
+      `재정착 ${stats.plague.resettled}가구 · 달아난 가구 ${stats.plague.fled}가구 · ${PLAGUE_OUTCOME[stats.plague.outcome] ?? stats.plague.outcome}`,
+    ]),
   ],
   nextChapter: "제2장으로",
   nextChapterOf: (chapter: number) => `제${chapter + 1}장으로`,

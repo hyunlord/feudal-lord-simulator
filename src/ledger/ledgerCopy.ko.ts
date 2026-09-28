@@ -1,6 +1,18 @@
 import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import type { LedgerAccount, LedgerCategory } from "./ledger.types";
 
+// UI-8 (F3-A): Korean display names for `actor` source ids used in plague (and war) ledger postings.
+// New war actors are also here because ledgerPanelModel reads this map for all actor sources.
+export const LEDGER_ACTOR_LABELS: Readonly<Record<string, string>> = {
+  crown: "국왕",
+  raiders: "약탈자",
+  merchants: "상인",
+  refugees: "피란민",
+  parish: "교구",
+  settlers: "새 이주민",
+  labourers: "노동자",
+};
+
 export const LEDGER_ACCOUNT_LABELS = {
   cash: "현금",
   restricted: "목적 기금",

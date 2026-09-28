@@ -77,8 +77,14 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onBiography={id => { onChroniclePerson(id); sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "history" }); }} /> : null}
     {top === "history" ? <ChronicleScreen state={state} initialPersonId={chroniclePersonId} onClose={() => { onChroniclePerson(null); sendUi({ type: "pop_modal" }); }}
       onLookAt={tile => { sendUi({ type: "pop_modal" }); platformServices().input.emit({ kind: "lookAt", tile }); }} /> : null}
-    {top === "chapter_preview" ? <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} chapter={(latestChapterEnd(state)?.chapter ?? 1) + 1}
-      goals={chapterGoals(state).filter(goal => goal.chapter === 2).map(goal => CHAPTER_COPY.goals[goal.id] ?? goal.id)} /> : null}
+    {top === "chapter_preview" ? (() => {
+      // UI-8: the preview's chapter is always the one after the latest chapter end.
+      // Goals shown are those of the next chapter. Chapter 4 has no content yet — ChapterTwoPreview shows
+      // "coming later" with the correct chapter number when `chapter !== 2`.
+      const nextChapter = (latestChapterEnd(state)?.chapter ?? 1) + 1;
+      return <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} chapter={nextChapter}
+        goals={chapterGoals(state).filter(goal => goal.chapter === nextChapter).map(goal => CHAPTER_COPY.goals[goal.id] ?? goal.id)} />;
+    })() : null}
     {top === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
       settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
         <PresentationToggle preference="eventPause" /><PresentationToggle preference="weatherFx" /><PresentationToggle preference="rainOverlay" />

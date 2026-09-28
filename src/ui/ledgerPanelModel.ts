@@ -1,7 +1,7 @@
 import type { SourceRef } from '../contracts';
 import type { GameState } from '../engine/engine.types';
 import { LEDGER_ACCOUNTS, type LedgerAccount } from '../ledger/ledger.types';
-import { LEDGER_ACCOUNT_LABELS, LEDGER_CATEGORY_LABELS, LEDGER_COPY, LEDGER_WINDOW_LABELS } from '../ledger/ledgerCopy.ko';
+import { LEDGER_ACCOUNT_LABELS, LEDGER_ACTOR_LABELS, LEDGER_CATEGORY_LABELS, LEDGER_COPY, LEDGER_WINDOW_LABELS } from '../ledger/ledgerCopy.ko';
 import { ledgerView, sourceBuildingIds, type LedgerWindow } from '../ledger/ledgerView';
 import { CAUSE_REGISTRY } from './causeRegistry';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
@@ -42,6 +42,17 @@ export function ledgerSourcePresentation(state: Pick<GameState, 'buildings'>, so
   }
   if (source.type === 'policy' && source.id === 'stone_wall_project') {
     return { label: MONEY_RULE_COPY.stoneProject, glyph: CAUSE_REGISTRY.wall.glyphText, color: CAUSE_REGISTRY.wall.color, buildingIds: [] };
+  }
+  // UI-8 (F3-A): plague (and war) postings use actor/claim sources. Actor ids are named; claim ids are omitted
+  // (they carry detail strings like "workers:12" that are not user-facing labels).
+  if (source.type === 'actor') {
+    const label = LEDGER_ACTOR_LABELS[source.id] ?? source.id;
+    return { label, glyph: NEUTRAL.glyph, color: NEUTRAL.color, buildingIds: [] };
+  }
+  if (source.type === 'claim') {
+    // Claims are secondary refs (detail on a posting); their id is an internal key, not a player-facing name.
+    // Show nothing navigable: fall through to the opening-balance placeholder the panel renders greyed.
+    return { label: LEDGER_COPY.rolledUp, glyph: NEUTRAL.glyph, color: NEUTRAL.color, buildingIds: [] };
   }
   return { label: LEDGER_CATEGORY_LABELS.opening_balance, glyph: NEUTRAL.glyph, color: NEUTRAL.color, buildingIds: [] };
 }

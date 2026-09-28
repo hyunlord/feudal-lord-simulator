@@ -24,6 +24,8 @@ export type PersonRow = Readonly<{ id: string; name: string; line: string; portr
 export type PersonCardView = Readonly<{
   id: string; name: string; role: string; life: string; household: string; portraitId: string; exact: boolean; match: string;
   emblem: EmblemSpec | null; emblemLabel: string; ornament: PersonStateId | null;
+  /** UI-8 (F3-A PL-2): plague death cause shown on the card, or null for non-plague deaths and the living. */
+  deathCause: string | null;
 }>;
 
 const ROLE_ORDER: Readonly<Record<string, number>> = { steward: 0, head: 1, spouse: 2, kin: 3, child: 4 };
@@ -151,6 +153,9 @@ export function personCardView(state: GameState, personId: string): PersonCardVi
     match: portrait.fixed ? PERSONS_COPY.stewardPortrait : PERSONS_COPY.portraitMatch(portrait.identityId, portrait.stage, portrait.exact),
     emblem, emblemLabel: emblem === null ? PERSONS_COPY.noEmblem : emblem.kind === "arms" ? PERSONS_COPY.arms : PERSONS_COPY.merchantMark,
     ornament: personOrnament(state, person),
+    // UI-8 (F3-A PL-2): plague cause shown on the card for plague-dead persons.
+    deathCause: person.deathCause === "plague" && person.deathYear !== undefined
+      ? PERSONS_COPY.plagueDeath(person.deathYear) : null,
   };
 }
 

@@ -58,7 +58,8 @@ export function lordshipView(state: GameState): LordshipView {
       lost: right.status !== "held", status: right.present || right.status !== "held" ? LORDSHIP_COPY.status[right.status] ?? right.status : LORDSHIP_COPY.absent,
       since: right.since === undefined ? null : LORDSHIP_COPY.since(yearOfTick(state, right.since)),
     })),
-    granted: (state.politics?.rights ?? []).map(right => DECISION_COPY.right(right.holder, right.stallFeePermille)),
+    // UI-8: pass right.id so DECISION_COPY.right can distinguish commuted_rent from market-charter rights.
+    granted: (state.politics?.rights ?? []).map(right => DECISION_COPY.right(right.holder, right.stallFeePermille, right.id)),
     decline: lordship.decline === null ? null : LORDSHIP_COPY.decline(DECLINE_CAUSES[lordship.decline.cause] ?? lordship.decline.cause),
     war: war === undefined ? [] : [LORDSHIP_COPY.favour(war.favour),
       ...(conscriptsAway(state) > 0 ? [LORDSHIP_COPY.away(conscriptsAway(state))] : []),
