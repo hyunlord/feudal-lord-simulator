@@ -471,9 +471,10 @@ const LORD_BIRTH_PERMILLE = 300;
 
 /**
  * LN-9: the ruling house's family lives in the manor (not in the town's count or labour; ids of their own). It forms
- * with the house (the lord of 30–45, his wife, two children); each year's start a wife of 16–44 with fewer than four
- * children bears one at 30 %, a lord of 18+ without a wife takes one, and a lord who died is followed by his eldest son
- * of 14+ (else the eldest child). A new house (FL-7) brings its own family; the old one leaves.
+ * with the house (the lord of 30–45, his wife, two children); each year's start a wife of 16–44 who has borne fewer than
+ * four bears one at 30 %, a lord of 18+ without a wife takes one, a lord who died is followed by his eldest son of 14+
+ * (else the eldest child), and a child of 18 other than the heir leaves the manor (a daughter married away, a younger son
+ * gone into service or the church: decision LN8). A new house (FL-7) brings its own family; the old one leaves.
  */
 function keepLordFamily(town: Town, state: GameState, yearStart: boolean): void {
   const house = lordHouse(state);
@@ -506,6 +507,11 @@ function keepLordFamily(town: Town, state: GameState, yearStart: boolean): void 
     members = family();
   }
   const head = members.find(person => person.role === "head")!;
+  // The heir stays; his brothers and sisters of 18 leave the manor.
+  const heir = members.filter(person => person.role === "child" && (person.fatherId === head.id || person.motherId === head.id))
+    .sort((a, b) => (a.sex === b.sex ? 0 : a.sex === "male" ? -1 : 1) || a.birthYear - b.birthYear || a.id.localeCompare(b.id))[0];
+  for (const person of members) if (person.role === "child" && person !== heir && ageOf(person, town.year) >= 18) town.remove(person.id, { left: true });
+  members = family();
   const spouse = members.find(person => person.role === "spouse");
   if (spouse === undefined && ageOf(head, town.year) >= 18) {
     const sex: PersonSex = head.sex === "male" ? "female" : "male";
@@ -515,8 +521,8 @@ function keepLordFamily(town: Town, state: GameState, yearStart: boolean): void 
   }
   const mother = [head, spouse].find(person => person !== undefined && person.sex === "female" && ageOf(person, town.year) >= 16 && ageOf(person, town.year) <= 44);
   const father = [head, spouse].find(person => person !== undefined && person.sex === "male");
-  const children = members.filter(person => person.role === "child" && ageOf(person, town.year) < ADULT_AGE).length;
-  if (mother === undefined || children >= 4 || rollPermille(town.seed, "lord-birth", town.year) >= LORD_BIRTH_PERMILLE) return;
+  const borne = mother === undefined ? 0 : [...town.people, ...town.past].filter(person => person.motherId === mother.id).length;
+  if (mother === undefined || borne >= 4 || rollPermille(town.seed, "lord-birth", town.year) >= LORD_BIRTH_PERMILLE) return;
   if (mother.condition?.kind === "pregnant") { const { condition: _ended, ...delivered } = mother; town.people[town.people.indexOf(mother)] = delivered; }
   town.create({ ...common, sex: hashSeed(town.seed, "lord-birth-sex", town.year) % 2 === 0 ? "female" : "male", birthYear: town.year, role: "child",
     motherId: mother.id, ...(father === undefined ? {} : { fatherId: father.id }) });
