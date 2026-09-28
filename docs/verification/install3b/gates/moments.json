@@ -1,0 +1,153 @@
+{
+ "m0-before": {
+  "tick": 92684,
+  "barn": "farmstead-39-36-0",
+  "crop": "wheat",
+  "food": {
+   "shortHouses": 0,
+   "status": "일꾼이 놀고 있습니다 — 길이 끊겼는지 확인하세요",
+   "problems": [
+    "labour"
+   ]
+  }
+ },
+ "m1-barn-barley": {
+  "tick": 92684,
+  "barn": "farmstead-39-36-0",
+  "food": {
+   "shortHouses": 0,
+   "status": "일꾼이 놀고 있습니다 — 길이 끊겼는지 확인하세요",
+   "problems": [
+    "labour"
+   ]
+  }
+ },
+ "m2-kiln-site": {
+  "tick": 92684,
+  "barn": "farmstead-39-36-0",
+  "kilnAt": [
+   38,
+   33
+  ],
+  "food": {
+   "shortHouses": 0,
+   "status": "일꾼이 놀고 있습니다 — 길이 끊겼는지 확인하세요",
+   "problems": [
+    "labour"
+   ]
+  }
+ },
+ "m3-barley-sown": {
+  "tick": 92698,
+  "barn": "farmstead-39-36-0",
+  "strips": 1,
+  "food": {
+   "shortHouses": 0,
+   "status": "정착지는 안정적입니다",
+   "problems": []
+  }
+ },
+ "m4-barley-growing": {
+  "tick": 93198,
+  "barn": "farmstead-39-36-0",
+  "food": {
+   "shortHouses": 0,
+   "status": "일손이 남습니다 — 건설을 늘리거나 경작지·헛간을 넓히세요",
+   "problems": []
+  }
+ },
+ "m6-kiln-built": {
+  "tick": 94090,
+  "kiln": "construction-site-000051",
+  "food": {
+   "shortHouses": 0,
+   "status": "일꾼이 놀고 있습니다 — 길이 끊겼는지 확인하세요",
+   "problems": [
+    "labour"
+   ]
+  }
+ },
+ "m5-barley-ripe": {
+  "tick": 94198,
+  "barn": "farmstead-39-36-0",
+  "food": {
+   "shortHouses": 0,
+   "status": "정착지는 안정적입니다",
+   "problems": []
+  }
+ },
+ "m7-barley-in-barn": {
+  "tick": 94211,
+  "barn": "farmstead-39-36-0",
+  "barley": 150,
+  "food": {
+   "shortHouses": 0,
+   "status": "정착지는 안정적입니다",
+   "problems": []
+  }
+ },
+ "m8-malt": {
+  "tick": 94280,
+  "kiln": "construction-site-000051",
+  "malt": 1,
+  "food": {
+   "shortHouses": 0,
+   "status": "정착지는 안정적입니다",
+   "problems": []
+  }
+ },
+ "m9-brewing": {
+  "tick": 94400,
+  "house": "construction-site-000004",
+  "slot": {
+   "malt": 0,
+   "ale": 2
+  },
+  "food": {
+   "shortHouses": 0,
+   "status": "정착지는 안정적입니다",
+   "problems": []
+  }
+ },
+ "m10-alehouse": {
+  "tick": 94400,
+  "alehouse": "construction-site-000004",
+  "food": {
+   "shortHouses": 0,
+   "status": "정착지는 안정적입니다",
+   "problems": []
+  }
+ },
+ "m11-ale-sold": {
+  "tick": 95000,
+  "alehouses": [
+   "construction-site-000004",
+   "construction-site-000007",
+   "construction-site-000008",
+   "construction-site-000010",
+   "construction-site-000012",
+   "construction-site-000014",
+   "construction-site-000016",
+   "construction-site-000018",
+   "construction-site-000020",
+   "construction-site-000021",
+   "construction-site-000022",
+   "construction-site-000025",
+   "construction-site-000027",
+   "construction-site-000028",
+   "construction-site-000029",
+   "construction-site-000031",
+   "construction-site-000038",
+   "construction-site-000039",
+   "house-44-40-0",
+   "house-44-42-0",
+   "house-46-40-0",
+   "house-46-42-0"
+  ],
+  "food": {
+   "shortHouses": 0,
+   "status": "일손이 남습니다 — 건설을 늘리거나 경작지·헛간을 넓히세요",
+   "problems": []
+  }
+ }
+}
