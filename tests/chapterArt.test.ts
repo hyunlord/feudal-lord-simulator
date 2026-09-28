@@ -1,14 +1,15 @@
 /**
  * BUDGET-1b chapter-scoped startup art (src/render/chapterArt.ts): a chapter-1 campaign start leaves out the war props
  * (chapter 2, with the Wave 12 quay) and the plague-shut houses (chapter 3); entering a chapter adds its art; the
- * sandbox takes everything. The last test runs the runtime's own preload through scripts/checks/startupArtList.ts.
+ * sandbox takes everything. The last tests run the runtime's own preload through scripts/checks/startupArtList.ts: any
+ * url CHAPTER_ART declares for chapter N must be out of the startup set before chapter N and in it from chapter N on.
  */
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 import type { GameState } from "../src/engine/engine.types";
-import { artChapterLimit, artForChapter, chapterOfArt } from "../src/render/chapterArt";
+import { artChapterLimit, artForChapter, CHAPTER_ART, chapterOfArt } from "../src/render/chapterArt";
 import { historicalFacilityManifest } from "../src/render/historicalFacilityManifest";
 import { WAVE9_IMAGES } from "../src/render/wave9ArtManifest.generated";
 import { WAVE17_WORLD_IMAGES } from "../src/render/wave17WorldManifest.generated";
@@ -47,12 +48,29 @@ test("the limit: the campaign's chapter being played (1 before politics), the sa
   assert.deepEqual(artForChapter(URLS, artChapterLimit(SANDBOX)), URLS);
 });
 
-test("the runtime's startup preload requests later chapters' art only once the game is in them", () => {
+const lists = (() => {
   const script = fileURLToPath(new URL("../scripts/checks/startupArtList.ts", import.meta.url));
   const tsx = fileURLToPath(new URL("../node_modules/.bin/tsx", import.meta.url));
-  const lists = JSON.parse(execFileSync(tsx, [script], { encoding: "utf8" })) as { chapters: { chapter: number; paths: string[] }[]; all: string[] };
-  const chapter = (n: number) => new Set(lists.chapters.find(entry => entry.chapter === n)!.paths);
-  const all = new Set(lists.all);
+  return JSON.parse(execFileSync(tsx, [script], { encoding: "utf8" })) as { chapters: { chapter: number; paths: string[] }[]; all: string[] };
+})();
+const chapter = (n: number) => new Set(lists.chapters.find(entry => entry.chapter === n)!.paths);
+const all = new Set(lists.all);
+
+test("no art CHAPTER_ART declares for a later chapter is in the startup set before that chapter", () => {
+  assert.ok(CHAPTER_ART.length > 0);
+  for (const entry of CHAPTER_ART) {
+    assert.ok(entry.chapter >= 2 && entry.urls.length > 0, entry.what);
+    for (const url of entry.urls) {
+      // A declared url no startup loader requests would be a typo or an art the preload never reaches.
+      assert.ok(all.has(url), `${entry.what}: ${url} is in the whole (sandbox) preload`);
+      for (const { chapter: n, paths } of lists.chapters) {
+        assert.equal(paths.includes(url), n >= entry.chapter, `${entry.what}: ${url} ${n >= entry.chapter ? "in" : "out of"} the chapter-${n} startup set`);
+      }
+    }
+  }
+});
+
+test("the runtime's startup preload requests later chapters' art only once the game is in them", () => {
   for (const url of [...WAR, ...PLAGUE]) {
     assert.ok(all.has(url), `the sandbox preloads ${url}`);
     assert.ok(!chapter(1).has(url), `a chapter-1 start leaves out ${url}`);

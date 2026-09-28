@@ -114,8 +114,8 @@ test("GameCanvas starts world asset preload without blocking first paint", async
 
   // When
   const importsPreloader = /import\s+\{[^}]*\bpreloadGameArt\b[^}]*\}\s+from\s+"\.\/preloadGameArt";/.test(source);
-  const startsPreloaderWithoutAwait = /\bvoid\s+preloadGameArt\s*\(\s*\)/.test(source);
-  const awaitsPreloader = /\bawait\s+preloadGameArt\s*\(\s*\)/.test(source);
+  const startsPreloaderWithoutAwait = /\bvoid\s+preloadGameArt\s*\(\s*artChapter\s*\)/.test(source);
+  const awaitsPreloader = /\bawait\s+preloadGameArt\s*\(/.test(source);
 
   // Then
   assert.equal(importsPreloader, true);
@@ -125,6 +125,7 @@ test("GameCanvas starts world asset preload without blocking first paint", async
   assert.match(source, /preloadFrameArt\(artChapter\)/);
   assert.match(source, /if \(chapter > artChapter\) \{ artChapter = chapter; preloadChapterArt\(chapter\); \}/);
   assert.match(preloader, /Promise\.all\(/);
+  assert.match(preloader, /preloadHistoricalFacilityAssets\(chapter\)/);
   for (const loader of ["preloadWorldAssets", "preloadRuntimeActorAssets", "preloadGateAssets", "preloadBridgeWaterAssets", "preloadMillAssets", "preloadConstructionArtAssets"]) {
     assert.ok(preloader.includes(`${loader}()`), `preload includes ${loader}`);
   }

@@ -61,9 +61,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     const canvas = canvasRef.current, context = canvas?.getContext("2d") ?? null;
     if (canvas === null || context === null) return undefined;
 
-    void preloadGameArt();
     // BUDGET-1b: the chapter-bound art up to the chapter being played (a loaded save: its chapter; the sandbox: all).
     let artChapter = artChapterLimit(stateRef.current);
+    void preloadGameArt(artChapter);
     preloadFrameArt(artChapter);
 
     const refs = createCanvasMutableRefs(initialCamera(canvas, stateRef.current));

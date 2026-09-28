@@ -6,24 +6,31 @@ import { WAVE17_WORLD_IMAGES } from "./wave17WorldManifest.generated";
 
 // BUDGET-1b (judgement 2026-09-28): the world art still loads in one go at the start, except the art of the campaign
 // chapters the game has not entered yet — that loads when the chapter begins. Presentation only (nothing is saved).
-//  - Chapter-bound art (by url, the runtime manifests' own entries):
-//    - chapter 2: the war's world props (WAVE17_WORLD_IMAGES: beacon, burning quay, raid smoke, and the Wave 12 quay
-//      under the burning quay) — the war comes only in chapter 2 (engine/war.ts).
-//    - chapter 3: the Wave 9 plague-shut houses (1348, the chapter after the war's; no draw path uses them yet).
-//    - everything else: chapter 1. Buildings unlock by settlement stage, not by chapter (content/scenario), so the
-//      stage-gated art (market town's facilities, the keep, stone walls and gates) stays at startup.
+//  - Chapter-bound art is declared in CHAPTER_ART below, one line per manifest (or part of one), by the manifests' own
+//    urls. Everything not declared is chapter 1. Buildings unlock by settlement stage, not by chapter
+//    (content/scenario), so the stage-gated art (the market town's facilities, the keep, stone walls and gates) is not
+//    declared and stays at startup.
 //  - The limit: in the campaign, the chapter being played (`politics.chapter.number`, 1 before politics exist); outside
 //    it (the sandbox), every chapter.
 //  - Entering a chapter: the canvas compares the limit each frame and, when it rises, preloads the new chapter's art
-//    (preloadGameArt.ts `preloadChapterArt`). A war prop drawn before its image arrives is skipped for that frame, as
-//    before (manifestArt's draw returns false until loaded and starts the load itself).
+//    (preloadGameArt.ts `preloadChapterArt`). Art drawn before its image arrives takes the loader's usual fallback (a war
+//    prop or a facility painting is not drawn that frame; its draw starts the load itself).
+//  - Installing later-chapter art: add its CHAPTER_ART line and preload it through a chapter-aware loader — a manifestArt
+//    manifest in preloadGameArt.ts CHAPTER_SCOPED_MANIFESTS, or a historicalFacilityManifest entry (that loader filters
+//    by chapter already). tests/chapterArt.test.ts fails when a url declared here for chapter 2+ is in the startup set
+//    of a chapter-1 start, or when a declared url is not in the whole preload.
 
-const PLAGUE_CHAPTER = CHAPTER_TWO.chapter + 1;
+type ChapterArt = { readonly chapter: number; readonly what: string; readonly urls: readonly string[] };
+const urlsOf = <K extends string>(manifest: Readonly<Record<K, { readonly url: string }>>, keep: (key: K) => boolean = () => true): readonly string[] =>
+  (Object.keys(manifest) as K[]).filter(keep).map(key => manifest[key].url);
 
-const CHAPTER_OF_URL: ReadonlyMap<string, number> = new Map([
-  ...Object.values(WAVE17_WORLD_IMAGES).map(image => [image.url, CHAPTER_TWO.chapter] as const),
-  ...Object.entries(WAVE9_IMAGES).filter(([key]) => key.startsWith("event_plague_shut_")).map(([, image]) => [image.url, PLAGUE_CHAPTER] as const),
-]);
+/** The chapter-bound art, one line each (see above). */
+export const CHAPTER_ART: readonly ChapterArt[] = [
+  { chapter: CHAPTER_TWO.chapter, what: "the war's world props (Wave 17 world, the Wave 12 quay under the burning quay)", urls: urlsOf(WAVE17_WORLD_IMAGES) },
+  { chapter: CHAPTER_TWO.chapter + 1, what: "the plague-shut houses (Wave 9; 1348, no draw path yet)", urls: urlsOf(WAVE9_IMAGES, key => key.startsWith("event_plague_shut_")) },
+];
+
+const CHAPTER_OF_URL: ReadonlyMap<string, number> = new Map(CHAPTER_ART.flatMap(entry => entry.urls.map(url => [url, entry.chapter] as const)));
 
 /** The campaign chapter an image (a manifest url, base-relative: `assets/…`) belongs to; 1 for art every chapter draws. */
 export function chapterOfArt(url: string): number {

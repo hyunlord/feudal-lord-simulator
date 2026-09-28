@@ -27,12 +27,13 @@ const { preloadBoundaryAssets } = await import("../../src/render/boundaryAssets"
 const { preloadSeasonArt } = await import("../../src/render/seasonArt");
 
 const chapters: { chapter: number; paths: string[] }[] = [];
-void preloadGameArt();
 void preloadBoundaryAssets();
 preloadSeasonArt();
 for (let chapter = 1; chapter <= CAMPAIGN_CHAPTERS; chapter += 1) {
+  void preloadGameArt(chapter);
   preloadFrameArt(chapter);
   chapters.push({ chapter, paths: [...requested].sort() });
 }
+void preloadGameArt(Number.POSITIVE_INFINITY);
 preloadFrameArt(Number.POSITIVE_INFINITY);
 process.stdout.write(`${JSON.stringify({ chapters, all: [...requested].sort() })}\n`);

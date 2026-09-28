@@ -21,9 +21,10 @@ import { preloadWave17WorldArt } from "./warWorldProps";
 import { preloadWave11Art } from "./wave11Art";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
-export async function preloadGameArt(): Promise<void> {
+/** The world art, awaited by captures; `chapter` (chapterArt.ts): the facility paintings up to it (default: all). */
+export async function preloadGameArt(chapter = Number.POSITIVE_INFINITY): Promise<void> {
   await Promise.all([
-    registerHouseConditionArt(HOUSE_CONDITION_ART), preloadWorldAssets(), preloadHistoricalHouseAssets(), preloadHistoricalFacilityAssets(),
+    registerHouseConditionArt(HOUSE_CONDITION_ART), preloadWorldAssets(), preloadHistoricalHouseAssets(), preloadHistoricalFacilityAssets(chapter),
     preloadHouseCompoundAssets(), preloadStoneWallAssets(),
     preloadRuntimeActorAssets(), preloadMillAssets(), preloadConstructionArtAssets(),
     preloadGateAssets(), preloadBridgeWaterAssets(), preloadTimberWallAssets(), preloadTownLandscapeAssets(), preloadBuildingVariantAssets(),
@@ -44,9 +45,12 @@ export function preloadFrameArt(chapter: number): void {
   preloadCanvasIcons();
 }
 
-/** BUDGET-1b: the chapter-bound manifests, up to `chapter`; called again when the game enters a later chapter. */
+/** BUDGET-1b: the manifestArt manifests that hold chapter-bound art (chapterArt.ts CHAPTER_ART); a new one joins here. */
+const CHAPTER_SCOPED_MANIFESTS: readonly ((include: (url: string) => boolean) => void)[] = [preloadWave9Art, preloadWave17WorldArt];
+
+/** BUDGET-1b: the chapter-bound art up to `chapter`; called again when the game enters a later chapter. */
 export function preloadChapterArt(chapter: number): void {
   const entered = (url: string) => chapterOfArt(url) <= chapter;
-  preloadWave9Art(entered);
-  preloadWave17WorldArt(entered);
+  for (const preload of CHAPTER_SCOPED_MANIFESTS) preload(entered);
+  void preloadHistoricalFacilityAssets(chapter);
 }
