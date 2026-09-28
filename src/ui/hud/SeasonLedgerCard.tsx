@@ -25,22 +25,25 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
             {scene.value === null ? null : <strong>{scene.value}</strong>}</li>)}
         </ol>
         <div className="season-ledger-body" style={wave8ContentStyle("frame_season_ledger")}>
-          <h2>{model.title}</h2>
-          <p className="season-ledger-scenes-line">{model.scenesLine}</p>
-          {model.lines.map(line => <p key={line} className="season-ledger-line">{line}</p>)}
-          {/* INSTALL-3: the ale chain's goods held now, each with its icon (the line reads the same without them). */}
-          {model.drinkLine === null ? null : <p className="season-ledger-line season-ledger-drink">
-            <span>{SEASON_LEDGER_COPY.heldNowLabel}</span>
-            {model.drink.map(item => <span key={item.resource} className="season-ledger-drink-item" data-resource={item.resource}>
-              <ResourceGlyph resource={item.resource} size={16} />{SEASON_LEDGER_COPY.held(item.name, item.amount)}</span>)}</p>}
-          <ul className="season-ledger-events">{model.events.map(event => <li key={event}>{event}</li>)}</ul>
-          <div className="season-ledger-actions">
+          {/* INSTALL-3: the season's lines scroll; the card's own controls (계속, the auto toggle) stay pinned below them. */}
+          <div className="season-ledger-content">
+            <h2>{model.title}</h2>
+            <p className="season-ledger-scenes-line">{model.scenesLine}</p>
+            {model.lines.map(line => <p key={line} className="season-ledger-line">{line}</p>)}
+            {/* INSTALL-3: the ale chain's goods held now, each with its icon (the line reads the same without them). */}
+            {model.drinkLine === null ? null : <p className="season-ledger-line season-ledger-drink">
+              <span>{SEASON_LEDGER_COPY.heldNowLabel}</span>
+              {model.drink.map(item => <span key={item.resource} className="season-ledger-drink-item" data-resource={item.resource}>
+                <ResourceGlyph resource={item.resource} size={16} />{SEASON_LEDGER_COPY.held(item.name, item.amount)}</span>)}</p>}
+            <ul className="season-ledger-events">{model.events.map(event => <li key={event}>{event}</li>)}</ul>
             {model.hint === null ? null : <Button type="button" className="season-ledger-hint" onPress={() => onHint()} variant="secondary">
               <UiIcon sheet="action" cell="open" />{model.hint.text}</Button>}
-            <Button type="button" className="season-ledger-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{SEASON_LEDGER_COPY.resume}</Button>
           </div>
-          <Button type="button" className="season-ledger-auto" aria-pressed={auto} onPress={() => onAutoChange(!auto)} variant="toggle">
-            {auto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button>
+          <div className="season-ledger-actions">
+            <Button type="button" className="season-ledger-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{SEASON_LEDGER_COPY.resume}</Button>
+            <Button type="button" className="season-ledger-auto" aria-pressed={auto} onPress={() => onAutoChange(!auto)} variant="toggle">
+              {auto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button>
+          </div>
         </div>
       </section>
     </div>
