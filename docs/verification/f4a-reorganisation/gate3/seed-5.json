@@ -1,6 +1,6 @@
 {
  "seed": 5,
- "maxTicks": 440000,
+ "maxTicks": 600000,
  "chapter3End": {
   "tick": 248000,
   "year": 1362,
@@ -13,7 +13,7 @@
   "tick": 329000,
   "year": 1382,
   "population": 768,
-  "treasury": 56399,
+  "treasury": 59338,
   "lived": 24,
   "l4": 24
  },
@@ -88,7 +88,7 @@
    "merchant_house_2": 45
   },
   "guild": {
-   "foundedTick": 276007,
+   "foundedTick": 276038,
    "headId": "p-001753"
   },
   "pollTax": 1887,
@@ -109,8 +109,8 @@
   },
   "wageLeavers": 1,
   "weaverLeavers": 0,
-  "clothSold": 966,
-  "clothIncome": 19786,
+  "clothSold": 1130,
+  "clothIncome": 22935,
   "chapterFiveStart": {
    "charter": "partial",
    "rights": [
@@ -120,7 +120,7 @@
    "feeFarm": 120,
    "backlash": 0,
    "guild": {
-    "foundedTick": 276007,
+    "foundedTick": 276038,
     "headId": "p-001753"
    },
    "influence": {
@@ -132,9 +132,9 @@
  },
  "income": {
   "chapter": {
-   "cloth": 19786,
-   "total": 53246,
-   "clothPermille": 372,
+   "cloth": 22935,
+   "total": 56186,
+   "clothPermille": 408,
    "largestOther": [
     "rent",
     16146
@@ -142,20 +142,20 @@
    "clothChief": true,
    "categories": {
     "rent": 16146,
-    "toll": 9559,
-    "cloth_toll": 9130,
-    "ulnage": 7728,
-    "mill_toll": 3922,
-    "fulling_toll": 2928,
-    "stall_fee": 1946,
+    "cloth_toll": 10484,
+    "toll": 9365,
+    "ulnage": 9040,
+    "mill_toll": 3891,
+    "fulling_toll": 3411,
+    "stall_fee": 1962,
     "poll_tax": 1887
    }
   },
   "lastFourYears": {
    "fromYear": 1378,
-   "cloth": 5034,
-   "total": 13041,
-   "clothPermille": 386,
+   "cloth": 5019,
+   "total": 12915,
+   "clothPermille": 389,
    "largestOther": [
     "rent",
     3360
@@ -164,12 +164,12 @@
    "categories": {
     "rent": 3360,
     "cloth_toll": 2390,
-    "toll": 2130,
+    "toll": 2054,
     "ulnage": 1912,
     "poll_tax": 1258,
-    "mill_toll": 865,
-    "fulling_toll": 732,
-    "stall_fee": 394
+    "mill_toll": 827,
+    "fulling_toll": 717,
+    "stall_fee": 397
    }
   },
   "costs": {
@@ -188,185 +188,185 @@
   },
   "1363": {
    "stall_fee": 112,
-   "toll": 534,
+   "toll": 560,
    "mill_toll": 229,
    "rent": 960,
-   "cloth_toll": 272,
-   "ulnage": 272,
+   "cloth_toll": 288,
+   "ulnage": 288,
    "fulling_toll": 105
   },
   "1364": {
    "stall_fee": 111,
-   "cloth_toll": 320,
-   "ulnage": 320,
-   "fulling_toll": 129,
-   "toll": 542,
-   "mill_toll": 216,
+   "cloth_toll": 416,
+   "ulnage": 416,
+   "fulling_toll": 180,
+   "toll": 540,
+   "mill_toll": 221,
    "rent": 960
   },
   "1365": {
-   "stall_fee": 75,
-   "fulling_toll": 108,
-   "cloth_toll": 296,
-   "ulnage": 296,
-   "toll": 288,
-   "mill_toll": 101,
+   "stall_fee": 76,
+   "fulling_toll": 183,
+   "cloth_toll": 472,
+   "ulnage": 472,
+   "toll": 293,
+   "mill_toll": 94,
    "rent": 480
   },
   "1366": {
-   "stall_fee": 109,
-   "toll": 535,
-   "mill_toll": 242,
+   "stall_fee": 112,
+   "toll": 538,
+   "mill_toll": 243,
    "rent": 960,
-   "cloth_toll": 272,
-   "ulnage": 272,
-   "fulling_toll": 108
+   "cloth_toll": 504,
+   "ulnage": 504,
+   "fulling_toll": 186
   },
   "1367": {
-   "stall_fee": 112,
-   "cloth_toll": 296,
-   "ulnage": 296,
-   "fulling_toll": 108,
-   "toll": 490,
-   "mill_toll": 218,
+   "stall_fee": 111,
+   "fulling_toll": 180,
+   "cloth_toll": 472,
+   "ulnage": 472,
+   "toll": 525,
+   "mill_toll": 229,
    "rent": 960
   },
   "1368": {
    "stall_fee": 74,
-   "cloth_toll": 296,
-   "ulnage": 296,
-   "fulling_toll": 108,
-   "toll": 257,
-   "mill_toll": 99,
+   "cloth_toll": 488,
+   "ulnage": 488,
+   "fulling_toll": 186,
+   "toll": 252,
+   "mill_toll": 90,
    "rent": 480
   },
   "1369": {
-   "stall_fee": 106,
-   "toll": 534,
-   "mill_toll": 239,
+   "stall_fee": 108,
+   "toll": 530,
+   "mill_toll": 258,
    "rent": 926,
-   "cloth_toll": 304,
-   "ulnage": 304,
-   "fulling_toll": 114
+   "cloth_toll": 568,
+   "ulnage": 568,
+   "fulling_toll": 186
   },
   "1370": {
-   "stall_fee": 106,
-   "cloth_toll": 386,
-   "ulnage": 312,
-   "fulling_toll": 108,
-   "toll": 581,
-   "mill_toll": 235,
+   "stall_fee": 111,
+   "cloth_toll": 538,
+   "ulnage": 432,
+   "fulling_toll": 168,
+   "toll": 541,
+   "mill_toll": 220,
    "rent": 900
   },
   "1371": {
-   "stall_fee": 78,
-   "cloth_toll": 540,
-   "ulnage": 432,
-   "fulling_toll": 162,
-   "toll": 217,
-   "mill_toll": 94,
+   "stall_fee": 76,
+   "cloth_toll": 560,
+   "ulnage": 448,
+   "fulling_toll": 165,
+   "toll": 193,
+   "mill_toll": 95,
    "rent": 450
   },
   "1372": {
-   "stall_fee": 114,
-   "toll": 572,
-   "mill_toll": 255,
+   "stall_fee": 116,
+   "toll": 533,
+   "mill_toll": 245,
    "rent": 910,
-   "cloth_toll": 530,
-   "ulnage": 424,
-   "fulling_toll": 171
+   "cloth_toll": 590,
+   "ulnage": 472,
+   "fulling_toll": 174
   },
   "1373": {
-   "stall_fee": 108,
-   "cloth_toll": 630,
-   "ulnage": 504,
-   "fulling_toll": 183,
-   "toll": 605,
-   "mill_toll": 239,
+   "stall_fee": 107,
+   "cloth_toll": 540,
+   "ulnage": 432,
+   "fulling_toll": 162,
+   "toll": 582,
+   "mill_toll": 244,
    "rent": 960
   },
   "1374": {
-   "stall_fee": 73,
-   "cloth_toll": 560,
-   "ulnage": 448,
-   "fulling_toll": 159,
-   "toll": 306,
-   "mill_toll": 110,
+   "stall_fee": 72,
+   "cloth_toll": 630,
+   "ulnage": 504,
+   "fulling_toll": 180,
+   "toll": 320,
+   "mill_toll": 89,
    "rent": 480
   },
   "1375": {
-   "stall_fee": 109,
-   "toll": 610,
-   "mill_toll": 246,
+   "stall_fee": 111,
+   "toll": 594,
+   "mill_toll": 241,
    "rent": 960,
-   "cloth_toll": 620,
-   "ulnage": 496,
-   "fulling_toll": 177
+   "cloth_toll": 600,
+   "ulnage": 480,
+   "fulling_toll": 189
   },
   "1376": {
-   "stall_fee": 109,
-   "cloth_toll": 560,
-   "ulnage": 448,
-   "fulling_toll": 192,
-   "toll": 598,
-   "mill_toll": 230,
+   "stall_fee": 111,
+   "cloth_toll": 600,
+   "ulnage": 480,
+   "fulling_toll": 189,
+   "toll": 606,
+   "mill_toll": 246,
    "rent": 960
   },
   "1377": {
-   "stall_fee": 73,
-   "cloth_toll": 650,
-   "ulnage": 520,
-   "fulling_toll": 177,
+   "stall_fee": 74,
+   "cloth_toll": 560,
+   "ulnage": 448,
+   "fulling_toll": 168,
    "poll_tax": 629,
-   "toll": 351,
-   "mill_toll": 98,
+   "toll": 307,
+   "mill_toll": 100,
    "rent": 480
   },
   "1378": {
-   "stall_fee": 106,
-   "toll": 599,
-   "mill_toll": 250,
+   "stall_fee": 110,
+   "toll": 580,
+   "mill_toll": 249,
    "rent": 960,
-   "cloth_toll": 610,
-   "ulnage": 488,
-   "fulling_toll": 186
+   "cloth_toll": 580,
+   "ulnage": 464,
+   "fulling_toll": 180
   },
   "1379": {
    "stall_fee": 107,
    "poll_tax": 635,
-   "cloth_toll": 610,
-   "ulnage": 488,
+   "cloth_toll": 640,
+   "ulnage": 512,
    "fulling_toll": 180,
-   "toll": 584,
-   "mill_toll": 255,
+   "toll": 562,
+   "mill_toll": 246,
    "rent": 960
   },
   "1380": {
    "stall_fee": 74,
-   "cloth_toll": 570,
-   "ulnage": 456,
-   "fulling_toll": 183,
-   "toll": 329,
-   "mill_toll": 102,
+   "fulling_toll": 174,
+   "cloth_toll": 590,
+   "ulnage": 472,
+   "toll": 294,
+   "mill_toll": 89,
    "rent": 480
   },
   "1381": {
-   "stall_fee": 107,
+   "stall_fee": 106,
    "toll": 618,
-   "mill_toll": 258,
+   "mill_toll": 243,
    "rent": 960,
-   "cloth_toll": 600,
-   "ulnage": 480,
    "fulling_toll": 183,
+   "cloth_toll": 580,
+   "ulnage": 464,
    "poll_tax": 623
   },
   "1382": {
    "stall_fee": 9,
-   "cloth_toll": 160,
-   "ulnage": 128,
-   "fulling_toll": 39,
-   "toll": 140,
-   "mill_toll": 105,
+   "cloth_toll": 220,
+   "ulnage": 176,
+   "fulling_toll": 45,
+   "toll": 128,
+   "mill_toll": 119,
    "rent": 480
   }
  },
@@ -384,6 +384,16 @@
     "merchant_house_2": 15
    },
    "clothSold": 0,
+   "labour": {
+    "adults": 288,
+    "facility": 137,
+    "construction": 0,
+    "fieldHands": 144,
+    "hauling": 7,
+    "household": 0,
+    "idle": 0
+   },
+   "malt": 0,
    "relations": {
     "overlord": 20,
     "crown": 25,
@@ -400,7 +410,7 @@
    "tick": 252000,
    "year": 1363,
    "population": 744,
-   "treasury": 18396,
+   "treasury": 18389,
    "lived": 24,
    "l4": 24,
    "influence": {
@@ -409,6 +419,16 @@
     "merchant_house_2": 19
    },
    "clothSold": 6,
+   "labour": {
+    "adults": 372,
+    "facility": 148,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 41,
+    "idle": 0
+   },
+   "malt": 0,
    "relations": {
     "overlord": 20,
     "crown": 25,
@@ -425,15 +445,25 @@
    "tick": 256000,
    "year": 1364,
    "population": 768,
-   "treasury": 19587,
+   "treasury": 19645,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 60,
-    "merchant_house_1": 61,
-    "merchant_house_2": 36
+    "town": 61,
+    "merchant_house_1": 63,
+    "merchant_house_2": 37
    },
-   "clothSold": 41,
+   "clothSold": 43,
+   "labour": {
+    "adults": 384,
+    "facility": 148,
+    "construction": 0,
+    "fieldHands": 180,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 20,
     "crown": 25,
@@ -450,15 +480,25 @@
    "tick": 260000,
    "year": 1365,
    "population": 768,
-   "treasury": 21359,
+   "treasury": 21663,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 63,
+    "town": 69,
     "merchant_house_1": 66,
     "merchant_house_2": 39
    },
-   "clothSold": 81,
+   "clothSold": 95,
+   "labour": {
+    "adults": 384,
+    "facility": 148,
+    "construction": 0,
+    "fieldHands": 180,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 20,
     "crown": 25,
@@ -475,15 +515,25 @@
    "tick": 264000,
    "year": 1366,
    "population": 768,
-   "treasury": 23076,
+   "treasury": 23801,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 61,
-    "merchant_house_1": 63,
-    "merchant_house_2": 37
+    "town": 72,
+    "merchant_house_1": 66,
+    "merchant_house_2": 39
    },
-   "clothSold": 118,
+   "clothSold": 154,
+   "labour": {
+    "adults": 384,
+    "facility": 148,
+    "construction": 0,
+    "fieldHands": 180,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 20,
     "crown": 25,
@@ -500,15 +550,25 @@
    "tick": 268000,
    "year": 1367,
    "population": 768,
-   "treasury": 24268,
+   "treasury": 25515,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 60,
-    "merchant_house_1": 61,
-    "merchant_house_2": 36
+    "town": 73,
+    "merchant_house_1": 66,
+    "merchant_house_2": 39
    },
-   "clothSold": 153,
+   "clothSold": 216,
+   "labour": {
+    "adults": 384,
+    "facility": 148,
+    "construction": 0,
+    "fieldHands": 180,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 20,
     "crown": 25,
@@ -525,15 +585,25 @@
    "tick": 272000,
    "year": 1368,
    "population": 768,
-   "treasury": 25901,
+   "treasury": 27649,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 61,
-    "merchant_house_1": 62,
-    "merchant_house_2": 37
+    "town": 73,
+    "merchant_house_1": 66,
+    "merchant_house_2": 39
    },
-   "clothSold": 189,
+   "clothSold": 276,
+   "labour": {
+    "adults": 384,
+    "facility": 148,
+    "construction": 0,
+    "fieldHands": 178,
+    "hauling": 7,
+    "household": 48,
+    "idle": 3
+   },
+   "malt": 0,
    "relations": {
     "overlord": 20,
     "crown": 25,
@@ -550,15 +620,25 @@
    "tick": 276000,
    "year": 1369,
    "population": 768,
-   "treasury": 27582,
+   "treasury": 29770,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 61,
-    "merchant_house_1": 63,
-    "merchant_house_2": 37
+    "town": 73,
+    "merchant_house_1": 66,
+    "merchant_house_2": 39
    },
-   "clothSold": 226,
+   "clothSold": 337,
+   "labour": {
+    "adults": 384,
+    "facility": 148,
+    "construction": 0,
+    "fieldHands": 178,
+    "hauling": 7,
+    "household": 48,
+    "idle": 3
+   },
+   "malt": 0,
    "relations": {
     "overlord": 10,
     "crown": 25,
@@ -575,15 +655,25 @@
    "tick": 280000,
    "year": 1370,
    "population": 766,
-   "treasury": 28793,
+   "treasury": 31606,
    "lived": 24,
    "l4": 22,
    "influence": {
-    "town": 82,
-    "merchant_house_1": 74,
-    "merchant_house_2": 44
+    "town": 93,
+    "merchant_house_1": 76,
+    "merchant_house_2": 45
    },
-   "clothSold": 264,
+   "clothSold": 408,
+   "labour": {
+    "adults": 383,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 46,
+    "idle": 2
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -600,15 +690,25 @@
    "tick": 284000,
    "year": 1371,
    "population": 766,
-   "treasury": 30611,
+   "treasury": 33687,
    "lived": 24,
    "l4": 22,
    "influence": {
-    "town": 83,
+    "town": 90,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 304,
+   "clothSold": 462,
+   "labour": {
+    "adults": 383,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 46,
+    "idle": 2
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -625,15 +725,25 @@
    "tick": 288000,
    "year": 1372,
    "population": 766,
-   "treasury": 32608,
+   "treasury": 35715,
    "lived": 24,
    "l4": 22,
    "influence": {
-    "town": 89,
+    "town": 91,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 357,
+   "clothSold": 519,
+   "labour": {
+    "adults": 383,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 46,
+    "idle": 2
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -650,15 +760,25 @@
    "tick": 292000,
    "year": 1373,
    "population": 768,
-   "treasury": 34315,
+   "treasury": 37470,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 90,
+    "town": 92,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 411,
+   "clothSold": 577,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -675,15 +795,25 @@
    "tick": 296000,
    "year": 1374,
    "population": 768,
-   "treasury": 36714,
+   "treasury": 39685,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 93,
+    "town": 90,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 474,
+   "clothSold": 632,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -700,15 +830,25 @@
    "tick": 300000,
    "year": 1375,
    "population": 768,
-   "treasury": 38961,
+   "treasury": 42089,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 90,
+    "town": 93,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 529,
+   "clothSold": 695,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -725,7 +865,7 @@
    "tick": 304000,
    "year": 1376,
    "population": 768,
-   "treasury": 40805,
+   "treasury": 43890,
    "lived": 24,
    "l4": 24,
    "influence": {
@@ -733,7 +873,17 @@
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 591,
+   "clothSold": 755,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -750,15 +900,25 @@
    "tick": 308000,
    "year": 1377,
    "population": 768,
-   "treasury": 43090,
+   "treasury": 46235,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 91,
+    "town": 92,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 648,
+   "clothSold": 814,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -775,15 +935,25 @@
    "tick": 312000,
    "year": 1378,
    "population": 768,
-   "treasury": 46138,
+   "treasury": 49099,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 93,
+    "town": 91,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 711,
+   "clothSold": 870,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -800,15 +970,25 @@
    "tick": 316000,
    "year": 1379,
    "population": 768,
-   "treasury": 48657,
+   "treasury": 51531,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 93,
+    "town": 92,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 774,
+   "clothSold": 929,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -825,7 +1005,7 @@
    "tick": 320000,
    "year": 1380,
    "population": 768,
-   "treasury": 50993,
+   "treasury": 53894,
    "lived": 24,
    "l4": 24,
    "influence": {
@@ -833,7 +1013,17 @@
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 834,
+   "clothSold": 992,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -850,15 +1040,25 @@
    "tick": 324000,
    "year": 1381,
    "population": 768,
-   "treasury": 53315,
+   "treasury": 56153,
    "lived": 24,
    "l4": 24,
    "influence": {
-    "town": 91,
+    "town": 92,
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 891,
+   "clothSold": 1050,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -875,7 +1075,7 @@
    "tick": 328000,
    "year": 1382,
    "population": 768,
-   "treasury": 55771,
+   "treasury": 58613,
    "lived": 24,
    "l4": 24,
    "influence": {
@@ -883,7 +1083,17 @@
     "merchant_house_1": 76,
     "merchant_house_2": 45
    },
-   "clothSold": 951,
+   "clothSold": 1110,
+   "labour": {
+    "adults": 384,
+    "facility": 152,
+    "construction": 0,
+    "fieldHands": 176,
+    "hauling": 7,
+    "household": 48,
+    "idle": 1
+   },
+   "malt": 0,
    "relations": {
     "overlord": 5,
     "crown": 25,
@@ -904,8 +1114,8 @@
    "startYear": 1362,
    "wageLeavers": 1,
    "weaverLeavers": 0,
-   "clothSold": 966,
-   "clothIncome": 19786,
+   "clothSold": 1130,
+   "clothIncome": 22935,
    "guild": true,
    "pollTax": 1887,
    "rebellion": "quiet",
@@ -914,11 +1124,12 @@
    "merchantInfluence": 76
   }
  },
+ "toStability": true,
  "final": {
   "tick": 329000,
   "year": 1382,
   "population": 768,
-  "treasury": 56399,
+  "treasury": 59338,
   "lived": 24,
   "l4": 24,
   "era": "stone_town",

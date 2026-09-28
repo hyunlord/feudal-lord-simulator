@@ -1,0 +1,502 @@
+{
+ "run": "engine-F4A-ch4c-440b47c",
+ "commit": "440b47c",
+ "note": "chapterFourRun.ts <seed> 600000 stable: to chapter 5, then on to the growth run's stability",
+ "seeds": [
+  {
+   "seed": 1,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 93,
+    "merchant_house_1": 76,
+    "merchant_house_2": 45
+   },
+   "guild": true,
+   "clothSold": 979,
+   "clothIncome": 20090,
+   "wageLeavers": 3,
+   "weaverLeavers": 0,
+   "pollTax": 1852,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 252000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYearsPerYear": {
+    "cloth": 1050,
+    "rent": 796,
+    "toll": 221,
+    "mill_toll": 210,
+    "poll_tax": 312,
+    "stall_fee": 67,
+    "other": 0
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 4200,
+    "total": 10625,
+    "clothPermille": 395,
+    "largestOther": [
+     "rent",
+     3186
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3186,
+     "cloth_toll": 2000,
+     "ulnage": 1600,
+     "poll_tax": 1249,
+     "toll": 883,
+     "mill_toll": 840,
+     "fulling_toll": 600,
+     "stall_fee": 267
+    }
+   },
+   "chapterIncome": {
+    "cloth": 20090,
+    "total": 47737,
+    "clothPermille": 421,
+    "largestOther": [
+     "rent",
+     16126
+    ],
+    "clothChief": true
+   },
+   "afterChapterFour": {
+    "toStabilityTick": 352377,
+    "year": 1388,
+    "l4": 24,
+    "minL4": 22
+   },
+   "relationsSpring1382": {
+    "overlord": 5,
+    "crown": 25,
+    "neighbour_1": -6,
+    "neighbour_2": 0,
+    "bishop": 15,
+    "merchant_house_1": 25,
+    "merchant_house_2": 0,
+    "town": 38,
+    "commons": 40
+   }
+  },
+  {
+   "seed": 2,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 92,
+    "merchant_house_1": 73,
+    "merchant_house_2": 43
+   },
+   "guild": true,
+   "clothSold": 791,
+   "clothIncome": 16343,
+   "wageLeavers": 2,
+   "weaverLeavers": 0,
+   "pollTax": 1844,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 256000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYearsPerYear": {
+    "cloth": 981,
+    "rent": 840,
+    "toll": 190,
+    "mill_toll": 208,
+    "poll_tax": 307,
+    "stall_fee": 63,
+    "other": 0
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 3924,
+    "total": 10358,
+    "clothPermille": 379,
+    "largestOther": [
+     "rent",
+     3360
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3360,
+     "cloth_toll": 1850,
+     "ulnage": 1480,
+     "poll_tax": 1229,
+     "mill_toll": 831,
+     "toll": 762,
+     "fulling_toll": 594,
+     "stall_fee": 252
+    }
+   },
+   "chapterIncome": {
+    "cloth": 16343,
+    "total": 42665,
+    "clothPermille": 383,
+    "largestOther": [
+     "rent",
+     16209
+    ],
+    "clothChief": true
+   },
+   "afterChapterFour": {
+    "toStabilityTick": 329000,
+    "year": 1382,
+    "l4": 24,
+    "minL4": 23
+   },
+   "relationsSpring1382": {
+    "overlord": 5,
+    "crown": 18,
+    "neighbour_1": -4,
+    "neighbour_2": 0,
+    "bishop": 13,
+    "merchant_house_1": 25,
+    "merchant_house_2": 0,
+    "town": 38,
+    "commons": 40
+   }
+  },
+  {
+   "seed": 3,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 93,
+    "merchant_house_1": 74,
+    "merchant_house_2": 44
+   },
+   "guild": true,
+   "clothSold": 936,
+   "clothIncome": 19230,
+   "wageLeavers": 1,
+   "weaverLeavers": 0,
+   "pollTax": 1893,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 252000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYearsPerYear": {
+    "cloth": 1058,
+    "rent": 840,
+    "toll": 0,
+    "mill_toll": 220,
+    "poll_tax": 318,
+    "stall_fee": 93,
+    "other": 0
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 4233,
+    "total": 10116,
+    "clothPermille": 418,
+    "largestOther": [
+     "rent",
+     3360
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3360,
+     "cloth_toll": 2000,
+     "ulnage": 1600,
+     "poll_tax": 1270,
+     "mill_toll": 881,
+     "fulling_toll": 633,
+     "stall_fee": 371,
+     "toll": 1
+    }
+   },
+   "chapterIncome": {
+    "cloth": 19230,
+    "total": 43338,
+    "clothPermille": 444,
+    "largestOther": [
+     "rent",
+     16320
+    ],
+    "clothChief": true
+   },
+   "afterChapterFour": {
+    "toStabilityTick": 342273,
+    "year": 1385,
+    "l4": 24,
+    "minL4": 24
+   },
+   "relationsSpring1382": {
+    "overlord": 13,
+    "crown": 18,
+    "neighbour_1": -1,
+    "neighbour_2": 0,
+    "bishop": 13,
+    "merchant_house_1": 45,
+    "merchant_house_2": 0,
+    "town": 28,
+    "commons": 40
+   }
+  },
+  {
+   "seed": 4,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 93,
+    "merchant_house_1": 76,
+    "merchant_house_2": 45
+   },
+   "guild": true,
+   "clothSold": 971,
+   "clothIncome": 19964,
+   "wageLeavers": 2,
+   "weaverLeavers": 0,
+   "pollTax": 1858,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 252000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYearsPerYear": {
+    "cloth": 1054,
+    "rent": 838,
+    "toll": 254,
+    "mill_toll": 205,
+    "poll_tax": 310,
+    "stall_fee": 63,
+    "other": 0
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 4218,
+    "total": 10895,
+    "clothPermille": 387,
+    "largestOther": [
+     "rent",
+     3350
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3350,
+     "cloth_toll": 2000,
+     "ulnage": 1600,
+     "poll_tax": 1239,
+     "toll": 1015,
+     "mill_toll": 821,
+     "fulling_toll": 618,
+     "stall_fee": 252
+    }
+   },
+   "chapterIncome": {
+    "cloth": 19964,
+    "total": 48581,
+    "clothPermille": 411,
+    "largestOther": [
+     "rent",
+     16280
+    ],
+    "clothChief": true
+   },
+   "afterChapterFour": {
+    "toStabilityTick": 600000,
+    "year": 1450,
+    "l4": 23,
+    "minL4": 18
+   },
+   "relationsSpring1382": {
+    "overlord": 5,
+    "crown": 25,
+    "neighbour_1": -4,
+    "neighbour_2": 0,
+    "bishop": 15,
+    "merchant_house_1": 25,
+    "merchant_house_2": 0,
+    "town": 38,
+    "commons": 40
+   }
+  },
+  {
+   "seed": 5,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 98,
+    "merchant_house_1": 76,
+    "merchant_house_2": 45
+   },
+   "guild": true,
+   "clothSold": 1130,
+   "clothIncome": 22935,
+   "wageLeavers": 1,
+   "weaverLeavers": 0,
+   "pollTax": 1887,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 252000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYearsPerYear": {
+    "cloth": 1255,
+    "rent": 840,
+    "toll": 514,
+    "mill_toll": 207,
+    "poll_tax": 314,
+    "stall_fee": 99,
+    "other": 0
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 5019,
+    "total": 12915,
+    "clothPermille": 389,
+    "largestOther": [
+     "rent",
+     3360
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3360,
+     "cloth_toll": 2390,
+     "toll": 2054,
+     "ulnage": 1912,
+     "poll_tax": 1258,
+     "mill_toll": 827,
+     "fulling_toll": 717,
+     "stall_fee": 397
+    }
+   },
+   "chapterIncome": {
+    "cloth": 22935,
+    "total": 56186,
+    "clothPermille": 408,
+    "largestOther": [
+     "rent",
+     16146
+    ],
+    "clothChief": true
+   },
+   "afterChapterFour": {
+    "toStabilityTick": 329000,
+    "year": 1382,
+    "l4": 24,
+    "minL4": 22
+   },
+   "relationsSpring1382": {
+    "overlord": 5,
+    "crown": 25,
+    "neighbour_1": -2,
+    "neighbour_2": 0,
+    "bishop": 15,
+    "merchant_house_1": 25,
+    "merchant_house_2": 0,
+    "town": 38,
+    "commons": 40
+   }
+  }
+ ]
+}
