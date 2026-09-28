@@ -1,6 +1,6 @@
 # 빌드 결과(dist) 크기 예산표
 
-측정: `d1b99fd9` 빌드(`vite build`, 1.0초). MB = 1,000,000바이트. 규칙·예산 원본은 `scripts/checks/distBudget.config.json`, 병합 전 검사(`npm run check:merge`)가 전체나 예산 있는 범주가 넘으면 실패한다.
+측정: `f23ab615` 빌드(`vite build`, 1.2초). MB = 1,000,000바이트. 규칙·예산 원본은 `scripts/checks/distBudget.config.json`, 병합 전 검사(`npm run check:merge`)가 전체나 예산 있는 범주가 넘으면 실패한다.
 
 | 범주 | 파일 | 크기 | 예산 | 남은 폭 | 판정 |
 |---|---:|---:|---:|---:|---|

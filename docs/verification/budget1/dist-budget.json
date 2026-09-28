@@ -1,7 +1,7 @@
 {
- "sha": "d1b99fd90ff92104f8248aba6bd9d18ad538eb8e",
+ "sha": "f23ab6151e680e468be9403b3a31f0f47f0d3da3",
  "dirty": false,
- "buildMs": 953,
+ "buildMs": 1206,
  "unit": "MB = 1000000 bytes",
  "megabyte": 1000000,
  "categories": [
@@ -168,13 +168,13 @@
   {
    "id": "code",
    "name": "코드",
-   "bytes": 2343208,
+   "bytes": 2343643,
    "files": 15,
    "budgetBytes": null,
    "rules": [
     {
      "label": "page, scripts, styles, manifests",
-     "bytes": 2332438,
+     "bytes": 2332873,
      "files": 9
     },
     {
@@ -202,7 +202,7 @@
   }
  ],
  "total": {
-  "bytes": 54447731,
+  "bytes": 54448166,
   "files": 2044,
   "budgetBytes": 150000000,
   "pass": true
