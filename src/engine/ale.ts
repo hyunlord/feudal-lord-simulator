@@ -105,10 +105,13 @@ function brewBatch(state: GameState): GameState {
     }
     const home = byId.get(house.buildingId);
     // She fetches a batch's malt from the nearest of the town's stores that has it (decision AL9: run 3's kilns carted
-    // their malt to granaries 14–30 tiles from the nearest house, where a reach of 12 left every slot dry).
+    // their malt to granaries 14–30 tiles from the nearest house, where a reach of 12 left every slot dry). FIX-8
+    // (decision FX8-1): malt left in a granary (an old save's, a cart on its way when it was saved) goes first, so the
+    // granary's room comes back to the bread.
     if ((slot.stock.malt ?? 0) < (craft.input.malt ?? 1) && home !== undefined) {
+      const inGranary = (building: Building) => (building.kind === "granary" ? 0 : 1);
       const store = buildings.filter(building => MALT_STORES.has(building.kind) && (building.inventory.malt ?? 0) > 0)
-        .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id))[0];
+        .sort((a, b) => inGranary(a) - inGranary(b) || buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id))[0];
       if (store !== undefined) {
         buildings[index.get(store.id)!] = { ...store, inventory: { ...store.inventory, malt: (store.inventory.malt ?? 0) - 1 } };
         slot = { ...slot, stock: { ...slot.stock, malt: (slot.stock.malt ?? 0) + 1 } };

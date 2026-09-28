@@ -47,7 +47,7 @@ test("A1 (AL-1) barley, malt and ale are three lines of the catalog: five groups
   const ids = RESOURCE_CATALOG.map(entry => entry.id);
   assert.deepEqual(ids.filter(id => ["barley", "malt", "ale"].includes(id)), ["barley", "malt", "ale"]);
   assert.deepEqual([...new Set(RESOURCE_CATALOG.map(entry => entry.group))].sort(), ["drink", "food", "goods", "money", "raw"]);
-  assert.deepEqual([STORAGE_KIND_BY_RESOURCE.barley, STORAGE_KIND_BY_RESOURCE.malt, STORAGE_KIND_BY_RESOURCE.ale], ["granary", "granary", "storehouse"]);
+  assert.deepEqual([STORAGE_KIND_BY_RESOURCE.barley, STORAGE_KIND_BY_RESOURCE.malt, STORAGE_KIND_BY_RESOURCE.ale], ["granary", "storehouse", "storehouse"], "FIX-8 (FX8-1): malt to the storehouse");
   assert.deepEqual([RESOURCE_COPY.barley.name, RESOURCE_COPY.malt.name, RESOURCE_COPY.ale.name], ["보리", "엿기름", "에일"]);
   assert.ok(!ids.some(id => /hop/.test(id)), "no hops before the 1400s");
 });
