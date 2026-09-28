@@ -1,0 +1,577 @@
+{
+ "runner": "DGX scripts/remote/run.sh engine-C4-probe3 (detached)",
+ "commit": "bf6b097",
+ "command": "scripts/aleBottleneckProbe.ts <seed> 450000 <C|current> 300000 20000; current = C+B (the rules decided)",
+ "trunkBaseline": {
+  "run": "engine-C4-base-987ee37",
+  "command": "runPhase19NaturalGrowth seed 1-5 to 450000 on trunk (no ale): first tick with 24 houses all L4",
+  "seeds": [
+   {
+    "seed": 1,
+    "firstL4Full": 121600,
+    "victoryTick": 112942,
+    "finalTick": 235846
+   },
+   {
+    "seed": 2,
+    "firstL4Full": 171197,
+    "victoryTick": 155362,
+    "finalTick": 218692
+   },
+   {
+    "seed": 3,
+    "firstL4Full": 136020,
+    "victoryTick": 129628,
+    "finalTick": 281084
+   },
+   {
+    "seed": 4,
+    "firstL4Full": 116052,
+    "victoryTick": 109392,
+    "finalTick": 259712
+   },
+   {
+    "seed": 5,
+    "firstL4Full": 140557,
+    "victoryTick": 130780,
+    "finalTick": 315741
+   }
+  ]
+ },
+ "runs": [
+  {
+   "seed": 1,
+   "variant": "C",
+   "maxTicks": 450000,
+   "window": {
+    "start": 300000,
+    "ticks": 20000,
+    "samples": 0
+   },
+   "bottleneck": {
+    "barleyBarns": null,
+    "barleyStrips": null,
+    "barleyStock": null,
+    "kilnSharePercent": {},
+    "maltStock": null,
+    "maltInKiln": null,
+    "brewingHouses": null,
+    "aleBrewedPerSeason": null,
+    "drinkersPerSeason": null,
+    "dryHousesPerSeason": null,
+    "alehouses": null,
+    "l1plusHouses": null,
+    "outOfAlehouseReach": null,
+    "heldBackByAle": null,
+    "eligibleButUnserved": null,
+    "heldBackByOther": null
+   },
+   "chain": {
+    "chapter2": 69500,
+    "kiln": 109600,
+    "barleyBarn": 109800,
+    "aleDrunk": 114000
+   },
+   "chainComplete": true,
+   "firstL4Full": 119255,
+   "victoryTick": 117599,
+   "final": {
+    "tick": 236931,
+    "year": 1359,
+    "population": 768,
+    "levels": [
+     0,
+     0,
+     0,
+     0,
+     24
+    ]
+   },
+   "l4ByTick": {
+    "20000": 0,
+    "40000": 0,
+    "60000": 0,
+    "80000": 0,
+    "100000": 0,
+    "120000": 24,
+    "140000": 24,
+    "160000": 21,
+    "180000": 24,
+    "200000": 24,
+    "220000": 24
+   }
+  },
+  {
+   "seed": 3,
+   "variant": "C",
+   "maxTicks": 450000,
+   "window": {
+    "start": 300000,
+    "ticks": 20000,
+    "samples": 200
+   },
+   "bottleneck": {
+    "barleyBarns": 1,
+    "barleyStrips": 1,
+    "barleyStock": 3.7,
+    "kilnSharePercent": {
+     "no_input": 84.6,
+     "working": 15.4
+    },
+    "maltStock": 1.3,
+    "maltInKiln": 1.1,
+    "brewingHouses": 24,
+    "aleBrewedPerSeason": 9.5,
+    "drinkersPerSeason": 15.5,
+    "dryHousesPerSeason": 8.5,
+    "alehouses": 24,
+    "l1plusHouses": 24,
+    "outOfAlehouseReach": 0,
+    "heldBackByAle": 0.7,
+    "eligibleButUnserved": 0.7,
+    "heldBackByOther": 0
+   },
+   "chain": {
+    "chapter2": 93500,
+    "kiln": 99250,
+    "barleyBarn": 99350,
+    "aleDrunk": 102000
+   },
+   "chainComplete": true,
+   "firstL4Full": null,
+   "victoryTick": 127860,
+   "final": {
+    "tick": 450000,
+    "year": 1412,
+    "population": 732,
+    "levels": [
+     0,
+     0,
+     2,
+     0,
+     22
+    ]
+   },
+   "l4ByTick": {
+    "20000": 0,
+    "40000": 0,
+    "60000": 0,
+    "80000": 0,
+    "100000": 0,
+    "120000": 0,
+    "140000": 18,
+    "160000": 17,
+    "180000": 20,
+    "200000": 21,
+    "220000": 21,
+    "240000": 21,
+    "260000": 21,
+    "280000": 21,
+    "300000": 21,
+    "320000": 21,
+    "340000": 21,
+    "360000": 21,
+    "380000": 20,
+    "400000": 21,
+    "420000": 21,
+    "440000": 22
+   }
+  },
+  {
+   "seed": 5,
+   "variant": "C",
+   "maxTicks": 450000,
+   "window": {
+    "start": 300000,
+    "ticks": 20000,
+    "samples": 200
+   },
+   "bottleneck": {
+    "barleyBarns": 1,
+    "barleyStrips": 4,
+    "barleyStock": 964.2,
+    "kilnSharePercent": {
+     "no_input": 77.3,
+     "working": 22.7
+    },
+    "maltStock": 1.8,
+    "maltInKiln": 1.7,
+    "brewingHouses": 24,
+    "aleBrewedPerSeason": 13.9,
+    "drinkersPerSeason": 21,
+    "dryHousesPerSeason": 3.1,
+    "alehouses": 23,
+    "l1plusHouses": 24,
+    "outOfAlehouseReach": 0,
+    "heldBackByAle": 1,
+    "eligibleButUnserved": 1,
+    "heldBackByOther": 0
+   },
+   "chain": {
+    "chapter2": 89500,
+    "kiln": 116100,
+    "barleyBarn": 116200,
+    "aleDrunk": 119000
+   },
+   "chainComplete": true,
+   "firstL4Full": 144176,
+   "victoryTick": 134843,
+   "final": {
+    "tick": 450000,
+    "year": 1412,
+    "population": 764,
+    "levels": [
+     0,
+     1,
+     1,
+     0,
+     22
+    ]
+   },
+   "l4ByTick": {
+    "20000": 0,
+    "40000": 0,
+    "60000": 0,
+    "80000": 0,
+    "100000": 0,
+    "120000": 0,
+    "140000": 17,
+    "160000": 17,
+    "180000": 21,
+    "200000": 21,
+    "220000": 21,
+    "240000": 23,
+    "260000": 23,
+    "280000": 21,
+    "300000": 23,
+    "320000": 23,
+    "340000": 21,
+    "360000": 21,
+    "380000": 21,
+    "400000": 23,
+    "420000": 21,
+    "440000": 20
+   }
+  },
+  {
+   "seed": 1,
+   "variant": "current",
+   "maxTicks": 450000,
+   "window": {
+    "start": 300000,
+    "ticks": 20000,
+    "samples": 0
+   },
+   "bottleneck": {
+    "barleyBarns": null,
+    "barleyStrips": null,
+    "barleyStock": null,
+    "kilnSharePercent": {},
+    "maltStock": null,
+    "maltInKiln": null,
+    "brewingHouses": null,
+    "aleBrewedPerSeason": null,
+    "drinkersPerSeason": null,
+    "dryHousesPerSeason": null,
+    "alehouses": null,
+    "l1plusHouses": null,
+    "outOfAlehouseReach": null,
+    "heldBackByAle": null,
+    "eligibleButUnserved": null,
+    "heldBackByOther": null
+   },
+   "chain": {
+    "chapter2": 69500,
+    "kiln": 109600,
+    "barleyBarn": 109800,
+    "aleDrunk": 114000
+   },
+   "chainComplete": true,
+   "firstL4Full": 119255,
+   "victoryTick": 114142,
+   "final": {
+    "tick": 236308,
+    "year": 1359,
+    "population": 768,
+    "levels": [
+     0,
+     0,
+     0,
+     0,
+     24
+    ]
+   },
+   "l4ByTick": {
+    "20000": 0,
+    "40000": 0,
+    "60000": 0,
+    "80000": 0,
+    "100000": 0,
+    "120000": 24,
+    "140000": 24,
+    "160000": 21,
+    "180000": 24,
+    "200000": 24,
+    "220000": 24
+   }
+  },
+  {
+   "seed": 2,
+   "variant": "current",
+   "maxTicks": 450000,
+   "window": {
+    "start": 300000,
+    "ticks": 20000,
+    "samples": 0
+   },
+   "bottleneck": {
+    "barleyBarns": null,
+    "barleyStrips": null,
+    "barleyStock": null,
+    "kilnSharePercent": {},
+    "maltStock": null,
+    "maltInKiln": null,
+    "brewingHouses": null,
+    "aleBrewedPerSeason": null,
+    "drinkersPerSeason": null,
+    "dryHousesPerSeason": null,
+    "alehouses": null,
+    "l1plusHouses": null,
+    "outOfAlehouseReach": null,
+    "heldBackByAle": null,
+    "eligibleButUnserved": null,
+    "heldBackByOther": null
+   },
+   "chain": {
+    "chapter2": 77500,
+    "kiln": 160000,
+    "barleyBarn": 160000,
+    "aleDrunk": 166000
+   },
+   "chainComplete": true,
+   "firstL4Full": 172397,
+   "victoryTick": 158200,
+   "final": {
+    "tick": 238141,
+    "year": 1359,
+    "population": 768,
+    "levels": [
+     0,
+     0,
+     0,
+     0,
+     24
+    ]
+   },
+   "l4ByTick": {
+    "20000": 0,
+    "40000": 0,
+    "60000": 0,
+    "80000": 0,
+    "100000": 0,
+    "120000": 0,
+    "140000": 0,
+    "160000": 19,
+    "180000": 24,
+    "200000": 24,
+    "220000": 24
+   }
+  },
+  {
+   "seed": 3,
+   "variant": "current",
+   "maxTicks": 450000,
+   "window": {
+    "start": 300000,
+    "ticks": 20000,
+    "samples": 0
+   },
+   "bottleneck": {
+    "barleyBarns": null,
+    "barleyStrips": null,
+    "barleyStock": null,
+    "kilnSharePercent": {},
+    "maltStock": null,
+    "maltInKiln": null,
+    "brewingHouses": null,
+    "aleBrewedPerSeason": null,
+    "drinkersPerSeason": null,
+    "dryHousesPerSeason": null,
+    "alehouses": null,
+    "l1plusHouses": null,
+    "outOfAlehouseReach": null,
+    "heldBackByAle": null,
+    "eligibleButUnserved": null,
+    "heldBackByOther": null
+   },
+   "chain": {
+    "chapter2": 93500,
+    "kiln": 99250,
+    "barleyBarn": 99350,
+    "aleDrunk": 102000
+   },
+   "chainComplete": true,
+   "firstL4Full": 145401,
+   "victoryTick": 130090,
+   "final": {
+    "tick": 274152,
+    "year": 1368,
+    "population": 768,
+    "levels": [
+     0,
+     0,
+     0,
+     0,
+     24
+    ]
+   },
+   "l4ByTick": {
+    "20000": 0,
+    "40000": 0,
+    "60000": 0,
+    "80000": 0,
+    "100000": 0,
+    "120000": 0,
+    "140000": 22,
+    "160000": 21,
+    "180000": 24,
+    "200000": 24,
+    "220000": 24,
+    "240000": 24,
+    "260000": 24
+   }
+  },
+  {
+   "seed": 4,
+   "variant": "current",
+   "maxTicks": 450000,
+   "window": {
+    "start": 300000,
+    "ticks": 20000,
+    "samples": 0
+   },
+   "bottleneck": {
+    "barleyBarns": null,
+    "barleyStrips": null,
+    "barleyStock": null,
+    "kilnSharePercent": {},
+    "maltStock": null,
+    "maltInKiln": null,
+    "brewingHouses": null,
+    "aleBrewedPerSeason": null,
+    "drinkersPerSeason": null,
+    "dryHousesPerSeason": null,
+    "alehouses": null,
+    "l1plusHouses": null,
+    "outOfAlehouseReach": null,
+    "heldBackByAle": null,
+    "eligibleButUnserved": null,
+    "heldBackByOther": null
+   },
+   "chain": {
+    "chapter2": 69500,
+    "kiln": 112150,
+    "barleyBarn": 112250,
+    "aleDrunk": 115000
+   },
+   "chainComplete": true,
+   "firstL4Full": 116802,
+   "victoryTick": 110592,
+   "final": {
+    "tick": 259562,
+    "year": 1364,
+    "population": 768,
+    "levels": [
+     0,
+     0,
+     0,
+     0,
+     24
+    ]
+   },
+   "l4ByTick": {
+    "20000": 0,
+    "40000": 0,
+    "60000": 0,
+    "80000": 0,
+    "100000": 0,
+    "120000": 24,
+    "140000": 24,
+    "160000": 21,
+    "180000": 23,
+    "200000": 22,
+    "220000": 24,
+    "240000": 24
+   }
+  },
+  {
+   "seed": 5,
+   "variant": "current",
+   "maxTicks": 450000,
+   "window": {
+    "start": 300000,
+    "ticks": 20000,
+    "samples": 161
+   },
+   "bottleneck": {
+    "barleyBarns": 1,
+    "barleyStrips": 4,
+    "barleyStock": 960.6,
+    "kilnSharePercent": {
+     "no_input": 74.7,
+     "working": 25.3
+    },
+    "maltStock": 1.8,
+    "maltInKiln": 1.7,
+    "brewingHouses": 24,
+    "aleBrewedPerSeason": 16.4,
+    "drinkersPerSeason": 21.1,
+    "dryHousesPerSeason": 2.9,
+    "alehouses": 24,
+    "l1plusHouses": 24,
+    "outOfAlehouseReach": 0,
+    "heldBackByAle": 0,
+    "eligibleButUnserved": 0,
+    "heldBackByOther": 0
+   },
+   "chain": {
+    "chapter2": 89500,
+    "kiln": 116100,
+    "barleyBarn": 116200,
+    "aleDrunk": 119000
+   },
+   "chainComplete": true,
+   "firstL4Full": 144260,
+   "victoryTick": 134843,
+   "final": {
+    "tick": 316041,
+    "year": 1379,
+    "population": 768,
+    "levels": [
+     0,
+     0,
+     0,
+     0,
+     24
+    ]
+   },
+   "l4ByTick": {
+    "20000": 0,
+    "40000": 0,
+    "60000": 0,
+    "80000": 0,
+    "100000": 0,
+    "120000": 0,
+    "140000": 17,
+    "160000": 14,
+    "180000": 20,
+    "200000": 16,
+    "220000": 21,
+    "240000": 24,
+    "260000": 24,
+    "280000": 22,
+    "300000": 24
+   }
+  }
+ ]
+}
