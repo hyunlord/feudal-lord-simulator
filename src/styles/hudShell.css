@@ -46,6 +46,13 @@
 .app-shell .goal-chip-rail .goal-card-count { font-size: 12px; }
 .app-shell .goal-chip-rail .goal-card-actions { flex: 0 0 auto; }
 .app-shell .goal-chip-rail .goal-card-cta { min-height: 44px; padding: 4px 10px; font-size: 13px; }
+/* UI-6c: the chapter's goal card folds to a one-line chip (title and count, 44 px, 48 on tablet); opened, its reason
+   shows under the chip and its button beside. */
+.app-shell .goal-chip-rail .goal-card--folded { flex: 0 1 auto; padding: 0; min-height: 44px; }
+.app-shell .goal-chip-rail .goal-card-fold { display: flex; flex: 1 1 auto; gap: 8px; align-items: baseline; justify-content: space-between; min-width: 0; min-height: 44px; padding: 4px 8px; }
+.app-shell .goal-chip-rail .goal-card-fold .goal-card-title { flex: 1 1 auto; min-width: 0; font-size: 13px; text-align: left; }
+.app-shell .goal-chip-rail .goal-card--unfolded .goal-card-fold { flex: 1 0 100%; }
+.app-shell .goal-chip-rail .goal-card--unfolded .goal-card-why { display: block; flex: 1 0 100%; margin: 0 8px 2px 0; font-size: 12px; }
 /* Placement keeps only the tutorial's card (US-D5), not the log opener. */
 .app-shell .goal-chip-rail[data-placing="true"] .goal-drawer-toggle { display: none; }
 /* The goal log opener is its icon alone here (its name stays the button's text for assistive tech). */
@@ -144,7 +151,7 @@
 
 /* Tablets: 48 px targets (research 15 section 8). */
 @media (pointer: coarse) {
-  .app-shell :is(.status-pill-cell, .control-layer, .ledger-tab, .crisis-icon, .goal-card-cta, .slot-panel-close, .build-drawer .build-menu-category) { min-height: 48px; }
+  .app-shell :is(.status-pill-cell, .control-layer, .ledger-tab, .crisis-icon, .goal-card-cta, .goal-card-fold, .slot-panel-close, .build-drawer .build-menu-category) { min-height: 48px; }
   .app-shell .status-pill { height: 48px; }
   .app-shell .crisis-icon { width: 48px; height: 48px; }
   .app-shell .action-dock-button { min-width: 64px; min-height: 64px; }

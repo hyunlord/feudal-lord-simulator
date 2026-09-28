@@ -1,5 +1,5 @@
 import { wave8Url } from "../wave8Art";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { stewardPortraitStyle } from "../uiArt";
 import { UiIcon } from "../UiIcon";
 import { TUTORIAL_COPY } from "./tutorialCopy.ko";
@@ -38,7 +38,39 @@ export function GoalCards({ tutorial, onToggleDrawer, drawerOpen, warn = false, 
   );
 }
 
+/** UI-6c: how long a foldable card stays open after its next goal changes, before it folds back to its chip. */
+export const GOAL_CARD_UNFOLD_MS = 8_000;
+
 function GoalCardView({ card, warn, onPress, onLook }: { readonly card: GoalCard; readonly warn: boolean; readonly onPress: () => void; readonly onLook: () => void }) {
+  if (card.status === "active" && card.foldKey !== undefined) return <FoldableGoalCard card={card} warn={warn} onPress={onPress} onLook={onLook} />;
+  return <GoalCardBody card={card} warn={warn} onPress={onPress} onLook={onLook} />;
+}
+
+/**
+ * UI-6c: the chapter's goal card as a one-line chip (title and count, a button) that opens to the reason and its button
+ * when pressed or for a while when the next goal changes (not on mount: the chapter screen has just shown the goals).
+ */
+function FoldableGoalCard({ card, warn, onPress, onLook }: { readonly card: GoalCard; readonly warn: boolean; readonly onPress: () => void; readonly onLook: () => void }) {
+  const [open, setOpen] = useState(false);
+  const seen = useRef(card.foldKey);
+  useEffect(() => {
+    if (seen.current === card.foldKey) return undefined;
+    seen.current = card.foldKey;
+    setOpen(true);
+    const timer = window.setTimeout(() => setOpen(false), GOAL_CARD_UNFOLD_MS);
+    return () => window.clearTimeout(timer);
+  }, [card.foldKey]);
+  const chip = (
+    <Button type="button" className="goal-card-fold" aria-expanded={open} onPress={() => setOpen(value => !value)} variant="toggle">
+      <span className="goal-card-title">{card.title}</span>
+      {card.progress === null ? null : <span className="goal-card-count">{TUTORIAL_COPY.progress(card.progress.current, card.progress.target)}</span>}
+    </Button>
+  );
+  if (!open) return <article className={warn ? "goal-card goal-card--folded goal-card--warn" : "goal-card goal-card--folded"} data-goal-card={card.key} data-folded="true">{chip}</article>;
+  return <GoalCardBody card={card} warn={warn} onPress={onPress} onLook={onLook} heading={chip} />;
+}
+
+function GoalCardBody({ card, warn, onPress, onLook, heading }: { readonly card: GoalCard; readonly warn: boolean; readonly onPress: () => void; readonly onLook: () => void; readonly heading?: ReactNode }) {
   if (card.status !== "active") {
     return (
       <article className={`goal-card goal-card--${card.status}`} data-goal-card={card.key} role="status">
@@ -49,11 +81,11 @@ function GoalCardView({ card, warn, onPress, onLook }: { readonly card: GoalCard
   }
   const ratio = card.progress === null ? null : card.progress.target === 0 ? 1 : Math.min(1, card.progress.current / card.progress.target);
   return (
-    <article className={warn ? "goal-card goal-card--warn" : "goal-card"} data-goal-card={card.key}>
-      <header className="goal-card-heading">
+    <article className={`${warn ? "goal-card goal-card--warn" : "goal-card"}${heading === undefined ? "" : " goal-card--unfolded"}`} data-goal-card={card.key}>
+      {heading ?? <header className="goal-card-heading">
         <h3 className="goal-card-title">{card.title}</h3>
         {card.progress === null ? null : <span className="goal-card-count">{TUTORIAL_COPY.progress(card.progress.current, card.progress.target)}</span>}
-      </header>
+      </header>}
       {ratio === null ? null : <span className="goal-card-bar" aria-hidden="true"><span style={{ width: `${Math.round(ratio * 100)}%` }} /></span>}
       {card.why === "" ? null : <p className="goal-card-why">{card.why}</p>}
       <div className="goal-card-actions">
