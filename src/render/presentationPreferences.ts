@@ -1,10 +1,11 @@
-// UI-4 / INSTALL-15 presentation switches (per browser, platform preferences; never saved in the game): the rain
-// overlay of a wet summer, whether an arriving event's card stops time, and the season effects (falling leaves,
-// snowfall). Defaults: rain on, stop off (UI-4: event cards are not modal), season effects on.
+// UI-4 / INSTALL-15 / INSTALL-23 presentation switches (per browser, platform preferences; never saved in the game):
+// the rain of a wet season, whether an arriving event's card stops time, the season effects (falling leaves,
+// snowfall) and the weather effects (INSTALL-23: rain, fog, dust, mist, frost, cloud shadows; off draws none of them).
+// Defaults: rain on, stop off (UI-4: event cards are not modal), season effects on, weather effects on.
 import { platformServices } from "../platform/platform";
 
-export type PresentationPreference = "rainOverlay" | "eventPause" | "seasonFx";
-const DEFAULTS: Readonly<Record<PresentationPreference, boolean>> = { rainOverlay: true, eventPause: false, seasonFx: true };
+export type PresentationPreference = "rainOverlay" | "eventPause" | "seasonFx" | "weatherFx";
+const DEFAULTS: Readonly<Record<PresentationPreference, boolean>> = { rainOverlay: true, eventPause: false, seasonFx: true, weatherFx: true };
 const KEY = (preference: PresentationPreference) => `feudal.presentation.${preference}`;
 const values = new Map<PresentationPreference, boolean>();
 const listeners = new Set<() => void>();
