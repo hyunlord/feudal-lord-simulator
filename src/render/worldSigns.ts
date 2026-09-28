@@ -15,6 +15,7 @@ import { visibilityArt } from "./visibilityArtManifest";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { drawWave7 } from "./wave7Art";
 export { drawSeasonalDecals } from "./seasonalDecals"; // one renderer import for the world's ground and signs
+export { drawBackyardDecals } from "./drawBackyardDecals"; // INSTALL-27 backyard decals (ground pass)
 export { drawStoryWorldOverlays } from "./wetSummer"; // UI-4 story overlays (S12 departures, INSTALL-23 weather)
 export { drawWeatherGround } from "./weatherOverlay"; // INSTALL-23 weather on the ground (sheen, puddles, cracks)
 
