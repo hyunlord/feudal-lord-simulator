@@ -1,6 +1,7 @@
 import { BALANCE } from "../content/balanceConfig";
 import { SEASON_BALANCE } from "../content/balanceConfig";
 import type { GameState } from "../engine/engine.types";
+import type { PlagueStep, PlagueStepId } from "../engine/plague.types";
 import type { WarStep } from "../engine/war.types";
 import { LEDGER_PERIOD_TICKS } from "../ledger/ledger";
 import { absoluteDay, dayStartTick, MARKET_DAY_OF_MONTH } from "../render/presentation/residentTrips";
@@ -62,6 +63,16 @@ export function arrivalOf(now: number, tick: number): { readonly season: 0 | 1 |
  */
 export type WarMark = { readonly id: WarStep["id"]; readonly tick: number; readonly fraction: number };
 export function warMarks(steps: readonly Pick<WarStep, "id" | "tick" | "state">[], now: number): readonly WarMark[] {
+  return steps.filter(step => step.state === "ahead" && step.tick >= now && step.tick - now < YEAR)
+    .map(step => ({ id: step.id, tick: step.tick, fraction: yearFraction(step.tick) })).sort((a, b) => a.tick - b.tick);
+}
+
+/**
+ * UI-8 (F3-A PL-1…PL-10): the plague sequence's coming steps within a year (`plagueForecast`), on the strip:
+ * rumour, arrival, wage demand, abandoned fields, ordinance, resettlement, second pestilence, end.
+ */
+export type PlagueMark = { readonly id: PlagueStepId; readonly tick: number; readonly fraction: number };
+export function plagueMarks(steps: readonly Pick<PlagueStep, "id" | "tick" | "state">[], now: number): readonly PlagueMark[] {
   return steps.filter(step => step.state === "ahead" && step.tick >= now && step.tick - now < YEAR)
     .map(step => ({ id: step.id, tick: step.tick, fraction: yearFraction(step.tick) })).sort((a, b) => a.tick - b.tick);
 }

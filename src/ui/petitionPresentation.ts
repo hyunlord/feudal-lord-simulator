@@ -1,4 +1,5 @@
 import { PETITION_DEFS, type PetitionResponse } from "../content/chapterConfig";
+import { PLAGUE_BALANCE } from "../content/plagueConfig";
 import { WAR_BALANCE } from "../content/warConfig";
 import { factionDisplayName } from "../content/factionCopy.ko";
 import { PETITION_SUBJECTS, WAR_CHOICES } from "../content/historyCopy.ko";
@@ -97,10 +98,49 @@ const PRESENTATIONS: Readonly<Record<string, Presentation>> = {
       : response === "accept_with_price" ? PETITION_COPY.wall_or_market.accept_with_price(warOf(state)?.favour !== false)
       : PETITION_COPY.wall_or_market.refuse(),
   },
+  // UI-8: the four plague petition cards (F3-A PL-5…PL-8), Wave 21 640×480 decision art, two answers each.
+  vacant_priest: {
+    art: { sheet: "wave21", id: "ch3_decision_vacant_priest" }, title: PETITION_COPY.vacant_priest.title,
+    demand: () => PETITION_COPY.vacant_priest.demand,
+    line: (_state, response) => response === "accept"
+      ? PETITION_COPY.vacant_priest.accept(PLAGUE_BALANCE.monasteryStipend)
+      : PETITION_COPY.vacant_priest.refuse(),
+  },
+  wages: {
+    art: { sheet: "wave21", id: "ch3_decision_wages" }, title: PETITION_COPY.wages.title,
+    demand: state => PETITION_COPY.wages.demand(workerCount(state)),
+    line: (_state, response) => response === "accept"
+      ? PETITION_COPY.wages.accept
+      : PETITION_COPY.wages.refuse(),
+  },
+  land_redistribution: {
+    art: { sheet: "wave21", id: "ch3_decision_land_redistribution" }, title: PETITION_COPY.land_redistribution.title,
+    demand: state => PETITION_COPY.land_redistribution.demand(vacantPlotCount(state)),
+    line: (_state, response) => response === "accept_with_price"
+      ? PETITION_COPY.land_redistribution.accept_with_price(PLAGUE_BALANCE.settlerHouseholds, PLAGUE_BALANCE.entryFine)
+      : PETITION_COPY.land_redistribution.accept,
+  },
+  cash_rent: {
+    art: { sheet: "wave21", id: "ch3_decision_cash_rent" }, title: PETITION_COPY.cash_rent.title,
+    demand: () => PETITION_COPY.cash_rent.demand,
+    line: (_state, response) => response === "accept"
+      ? PETITION_COPY.cash_rent.accept()
+      : PETITION_COPY.cash_rent.refuse(),
+  },
 };
 
 function livedIn(state: GameState): number {
   return state.houses.filter(house => house.residents > 0).length;
+}
+
+/** UI-8 PL-5: workers in lord's buildings (the wage cost's base). Mirrors plagueDecisionForecast's count. */
+function workerCount(state: GameState): number {
+  return state.buildings.reduce((sum, building) => sum + (building.kind === "house" ? 0 : Math.max(0, building.workers)), 0);
+}
+
+/** UI-8 PL-7: how many plots the plague emptied (shown in the land demand). */
+function vacantPlotCount(state: GameState): number {
+  return state.plague?.vacantHouseIds?.length ?? 0;
 }
 
 export type PetitionFrom = Readonly<{ factionId: string; name: string; arms: EmblemSpec; leader: PersonRow | null; writ: boolean }>;

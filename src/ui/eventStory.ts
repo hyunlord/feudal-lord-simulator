@@ -1,7 +1,9 @@
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
+import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { GameState } from "../engine/engine.types";
 import { eventForecast } from "../engine/eventSchedule";
+import { curacyVacant, plagueForecast, plagueStage } from "../engine/plague";
 import { famineStatus, openPetitions } from "../engine/politics";
 import { stateCalendar } from "../engine/scenarioState";
 import { wetSummer } from "../render/wetSummer";
@@ -20,7 +22,10 @@ import type { StoryIllustration } from "./storyArt";
 // same way. A beat's `id` is stable for as long as the beat lasts (the card is not re-announced).
 export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer" | "bad_harvest" | "famine_omen" | "famine"
   | "first_winter" | "petition" | "market_charter" | "market_town" | "palisade"
-  | "war_messenger" | "beacon" | "raid" | "raid_aftermath" | "conscripts_away" | "stone_wall";
+  | "war_messenger" | "beacon" | "raid" | "raid_aftermath" | "conscripts_away" | "stone_wall"
+  // UI-8: nine plague beats (F3-A PL-1…PL-10).
+  | "plague_rumour" | "plague_arrival" | "plague_priest_death" | "plague_new_graves" | "plague_empty_streets"
+  | "plague_abandoned_fields" | "plague_ordinance" | "plague_resettlement" | "plague_second";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -106,16 +111,21 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
     title: copy.firstWinter.title, line: copy.firstWinter.line, advice: copy.firstWinter.advice, facts: [] });
   // The merchants' petition while it waits; the charter once granted (for a season); the town's eras.
   // UI-6: a petition's chip by its kind — the war's demands with their Wave 17 scene and the rules' numbers.
+  // UI-8: the four plague petitions use Wave 21 event illustrations and a fitting plague-specific advice line.
   const petition = openPetitions(state)[0];
   if (petition !== undefined) {
     const presentation = petitionPresentation(state, petition);
     const war = WAR_DEMAND_ART[petition.defId];
-    beats.push({ id: `petition:${petition.id}`, kind: "petition", illustration: war ?? "event_market_petition", tile: keepTile(state), decision: "petition",
-      title: war === undefined && petition.defId === "market_charter" ? copy.petition.title : presentation.title,
-      line: war === undefined && petition.defId === "market_charter" ? copy.petition.line : presentation.demand,
-      advice: petition.petitioner === "crown" ? copy.war.demand.advice : copy.petition.advice, facts: [] });
+    const plaguePetition = PLAGUE_DEMAND_ART[petition.defId];
+    beats.push({ id: `petition:${petition.id}`, kind: "petition", illustration: war ?? plaguePetition ?? "event_market_petition", tile: keepTile(state), decision: "petition",
+      title: war === undefined && plaguePetition === undefined && petition.defId === "market_charter" ? copy.petition.title : presentation.title,
+      line: war === undefined && plaguePetition === undefined && petition.defId === "market_charter" ? copy.petition.line : presentation.demand,
+      advice: petition.petitioner === "crown" ? copy.war.demand.advice
+        : plaguePetition !== undefined ? copy.plague.demand.advice
+        : copy.petition.advice, facts: [] });
   }
   beats.push(...warBeats(state));
+  beats.push(...plagueBeats(state));
   const right = state.politics?.rights?.[0];
   if (right !== undefined && state.tick - right.grantedTick < SEASON) beats.push({ id: `charter:${right.id}`, kind: "market_charter", illustration: "event_market_charter", tile: marketTile(state), decision: null,
     title: copy.charter.title, line: copy.charter.line, advice: copy.charter.advice, facts: [] });
@@ -134,6 +144,12 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
 const WAR_DEMAND_ART: Readonly<Record<string, StoryIllustration>> = {
   wool_payment: "event_wool_levy_edict", levy_response: "event_conscription_departure", war_funding: "event_royal_messenger_arrival",
   refugee_admission: "event_raid_aftermath", wall_or_market: "event_stonewall_charter",
+};
+
+/** UI-8: the plague petitions' chip illustrations (Wave 21 event art; the card shows the Wave 21 decision picture). */
+const PLAGUE_DEMAND_ART: Readonly<Record<string, StoryIllustration>> = {
+  vacant_priest: "ch3_event_priest_death", wages: "ch3_event_wage_demand",
+  land_redistribution: "ch3_event_abandoned_fields", cash_rent: "ch3_event_resettlement",
 };
 
 /**
@@ -172,7 +188,88 @@ function warBeats(state: GameState): readonly StoryBeat[] {
   return beats;
 }
 
-/** UI-4 forecast (the ladder's rumour and sign): the steward's one line for the nearest coming fire or dearth; UI-6: the war's. */
+/**
+ * UI-8 (F3-A PL-1…PL-10, world before UI): the plague's beats — the harbour fever rumour, the arrival raging, the
+ * priest's death while the curacy is empty, the new graves and empty streets during the spread, the abandoned fields
+ * when it ends, the Crown's Statute of Labourers, the resettlement, and the second pestilence of 1361.
+ * Respects the world-first delay (eventWorldFirstMs / useStoryPresentation) exactly as warBeats does: each beat has
+ * a stable `id` so the card is not re-announced.
+ */
+function plagueBeats(state: GameState): readonly StoryBeat[] {
+  const stage = plagueStage(state);
+  if (stage === null) return [];
+  const plague = state.plague!;
+  const copy = EVENT_STORY_COPY.plague;
+  const beats: StoryBeat[] = [];
+
+  // 1. 소문 (rumour): harbour fever heard of, before the pestilence arrives.
+  if (stage === "rumour") {
+    beats.push({ id: `plague_rumour:${plague.eraTick}`, kind: "plague_rumour", illustration: "ch3_event_harbour_fever",
+      tile: keepTile(state), decision: null, title: copy.rumour.title, line: copy.rumour.line, advice: copy.rumour.advice, facts: [] });
+  }
+
+  // 2. 도래 (arrival): while the first pestilence rages (no own art — shares priest_death).
+  if (stage === "arrival" && plague.first !== undefined) {
+    beats.push({ id: `plague_arrival:${plague.first.arrivalTick}`, kind: "plague_arrival", illustration: "ch3_event_priest_death",
+      tile: keepTile(state), decision: null, title: copy.arrival.title, line: copy.arrival.line, advice: copy.arrival.advice,
+      facts: plague.first.dead > 0 ? [copy.arrival.dead(plague.first.dead)] : [] });
+  }
+
+  // 3. 사제의 죽음 (priest_death): while the curacy is empty (curacyVacant spans arrival and early recovery).
+  if (curacyVacant(state)) {
+    beats.push({ id: `plague_priest:${plague.curacy!.vacantSince}`, kind: "plague_priest_death", illustration: "ch3_event_priest_death",
+      tile: churchTile(state), decision: null, title: copy.priestDeath.title, line: copy.priestDeath.line, advice: copy.priestDeath.advice, facts: [] });
+  }
+
+  // 4. 새 무덤 (new_graves): first deaths visible during the spread.
+  if (stage === "arrival" && plague.first !== undefined && plague.first.dead > 0) {
+    beats.push({ id: `plague_new_graves:${plague.first.arrivalTick}`, kind: "plague_new_graves", illustration: "ch3_event_new_graves",
+      tile: churchTile(state), decision: null, title: copy.newGraves.title, line: copy.newGraves.line, advice: copy.newGraves.advice,
+      facts: [copy.newGraves.dead(plague.first.dead)] });
+  }
+
+  // 5. 빈 거리 (empty_streets): vacant houses while the pestilence spreads or the town recovers.
+  if (plague.vacantHouseIds.length > 0 && (stage === "arrival" || stage === "recovery")) {
+    beats.push({ id: `plague_empty_streets:${plague.first?.arrivalTick ?? plague.eraTick}`, kind: "plague_empty_streets",
+      illustration: "ch3_event_empty_streets", tile: null, decision: null, title: copy.emptyStreets.title, line: copy.emptyStreets.line,
+      advice: copy.emptyStreets.advice, facts: [copy.emptyStreets.houses(plague.vacantHouseIds.length)] });
+  }
+
+  // 6. 버려진 밭 (abandoned_fields): within 2 seasons of the first pestilence ending.
+  if (plague.first?.endTick !== undefined && state.tick - plague.first.endTick < 2 * SEASON) {
+    beats.push({ id: `plague_abandoned:${plague.first.endTick}`, kind: "plague_abandoned_fields",
+      illustration: "ch3_event_abandoned_fields", tile: arableTile(state), decision: null, title: copy.abandonedFields.title,
+      line: copy.abandonedFields.line, advice: copy.abandonedFields.advice, facts: [] });
+  }
+
+  // 7. 조례 (ordinance): within 1 season of the Statute of Labourers being read.
+  if (plague.ordinanceTick !== undefined && state.tick - plague.ordinanceTick < SEASON) {
+    beats.push({ id: `plague_ordinance:${plague.ordinanceTick}`, kind: "plague_ordinance",
+      illustration: "ch3_event_ordinance_reading", tile: keepTile(state), decision: null, title: copy.ordinance.title,
+      line: copy.ordinance.line, advice: copy.ordinance.advice, facts: [] });
+  }
+
+  // 8. 재정착 (resettlement): while resettlement is ongoing and the chapter has not ended.
+  if (stage === "recovery" && plague.resettled > 0 && plague.endedTick === undefined) {
+    beats.push({ id: `plague_resettlement:${plague.eraTick}`, kind: "plague_resettlement",
+      illustration: "ch3_event_resettlement", tile: null, decision: null, title: copy.resettlement.title,
+      line: copy.resettlement.line, advice: copy.resettlement.advice, facts: [] });
+  }
+
+  // 9. 두 번째 역병 (second): while the 1361 pestilence is active (no own art — uses new_graves).
+  if (plague.second !== undefined && plague.second.endTick === undefined) {
+    beats.push({ id: `plague_second:${plague.second.arrivalTick}`, kind: "plague_second",
+      illustration: "ch3_event_new_graves", tile: keepTile(state), decision: null, title: copy.second.title,
+      line: copy.second.line, advice: copy.second.advice, facts: [copy.second.dead(plague.second.dead)] });
+  }
+
+  return beats;
+}
+
+/**
+ * UI-4 forecast (the ladder's rumour and sign): the steward's one line for the nearest coming fire or dearth;
+ * UI-6: the war's; UI-8: the plague's (while rumour, arrival, or second pestilence active).
+ */
 export function forecastStewardLine(state: GameState): { readonly key: string; readonly text: string } | null {
   const war = warOf(state);
   if (war !== undefined) {
@@ -181,6 +278,18 @@ export function forecastStewardLine(state: GameState): { readonly key: string; r
     if (state.tick - war.messengerTick < SEASON) return { key: `war:messenger:${war.messengerTick}`, text: lines.messenger };
     const raid = warForecast(state).find(step => step.id === "raid" && step.state === "ahead");
     if (raid !== undefined && raid.tick - state.tick < 4 * SEASON) return { key: `war:raid:${raid.tick}`, text: lines.raidAhead(stateCalendar({ ...state, tick: raid.tick }).year) };
+  }
+  // UI-8: plague steward line — rumour before arrival, active arrival, and the second pestilence.
+  const plague = state.plague;
+  if (plague !== undefined) {
+    const plines = EVENT_STORY_COPY.stewardPlague;
+    const stage = plagueStage(state);
+    if (plague.second !== undefined && plague.second.endTick === undefined)
+      return { key: `plague:second:${plague.second.arrivalTick}`, text: plines.second };
+    if (stage === "arrival" && plague.first !== undefined)
+      return { key: `plague:arrival:${plague.first.arrivalTick}`, text: plines.arrival };
+    if (stage === "rumour" && plague.rumourTick !== undefined)
+      return { key: `plague:rumour:${plague.rumourTick}`, text: plines.rumour };
   }
   const entry = eventForecast(state).find(candidate => candidate.stage === "rumour" || candidate.stage === "sign");
   if (entry === undefined) return null;
@@ -197,6 +306,12 @@ function spotTile(spot: { readonly tx: number; readonly ty: number } | null) {
 function keepTile(state: GameState) {
   const keep = state.buildings.find(building => building.kind === "keep") ?? state.buildings.find(building => building.kind === "chapel" || building.kind === "church");
   return keep === undefined ? null : { tx: keep.tx, ty: keep.ty };
+}
+
+/** UI-8: the church or chapel tile (for beats centred on the curacy — priest death, new graves). */
+function churchTile(state: GameState) {
+  const church = state.buildings.find(building => building.kind === "church" || building.kind === "chapel");
+  return church === undefined ? null : { tx: church.tx, ty: church.ty };
 }
 function marketTile(state: GameState) {
   const market = state.buildings.find(building => building.kind === "market");

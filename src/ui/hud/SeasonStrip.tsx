@@ -2,7 +2,8 @@ import { idleWheat } from "./statusPillModel";
 import type { GameState } from "../../engine/engine.types";
 import { eventForecast } from "../../engine/eventSchedule";
 import { warForecast } from "../../engine/war";
-import { arrivalOf, forecastMarks, seasonMarks, warMarks, yearFraction, type SeasonMarkKind, type WarMark } from "../seasonStrip";
+import { arrivalOf, forecastMarks, plagueMarks, seasonMarks, warMarks, yearFraction, type PlagueMark, type SeasonMarkKind, type WarMark } from "../seasonStrip";
+import { plagueForecast } from "../../engine/plague";
 import { UiIcon } from "../UiIcon";
 import type { UiIconCell } from "../uiArt";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
@@ -19,6 +20,12 @@ const MARK_IMAGE: Readonly<Record<SeasonMarkKind, Wave8ImageId>> = {
 // the refugees (labour).
 const WAR_ICON: Readonly<Record<WarMark["id"], UiIconCell<"cause">>> = {
   messenger: "rights", wool_levy: "rights", commission: "rights", subsidy: "rights", beacon: "safety", raid: "safety", refugees: "labour", recovery: "rights",
+};
+
+// UI-8: the plague's steps by the cause family they press on — deaths and second wave (safety), labour disruptions,
+// ordinance and end (rights), abandoned fields (food).
+const PLAGUE_ICON: Readonly<Record<PlagueMark["id"], UiIconCell<"cause">>> = {
+  rumour: "safety", arrival: "safety", wage_demand: "labour", abandoned_fields: "food", ordinance: "rights", resettlement: "labour", second: "safety", end: "rights",
 };
 
 export function SeasonStripMini({ tick }: { readonly tick: number }) {
@@ -38,6 +45,7 @@ export function SeasonStripPanel({ state, food, onClose }: {
   const marks = seasonMarks(state);
   const coming = forecastMarks(eventForecast(state), state.tick);
   const war = warMarks(warForecast(state), state.tick);
+  const plague = plagueMarks(plagueForecast(state), state.tick);
   const until = food.untilTick === null ? null : arrivalOf(state.tick, food.untilTick);
   return (
     <section className="season-strip-panel" aria-label={SEASON_STRIP_COPY.listTitle}>
@@ -51,6 +59,8 @@ export function SeasonStripPanel({ state, food, onClose }: {
           style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={mark.kind === "fire" ? "safety" : "food"} /></span>)}
         {war.map(mark => <span key={`war:${mark.id}`} className="season-strip-mark season-strip-forecast" data-mark={`war_${mark.id}`}
           style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={WAR_ICON[mark.id]} /></span>)}
+        {plague.map(mark => <span key={`plague:${mark.id}`} className="season-strip-mark season-strip-forecast" data-mark={`plague_${mark.id}`}
+          style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={PLAGUE_ICON[mark.id]} /></span>)}
         <span className="season-strip-pin" data-fraction={yearFraction(state.tick).toFixed(3)}
           style={{ left: `${yearFraction(state.tick) * 100}%`, ...wave8ImageStyle("season_pin", 12) }} />
       </div>
@@ -65,6 +75,11 @@ export function SeasonStripPanel({ state, food, onClose }: {
           const when = arrivalOf(state.tick, mark.tick);
           return <li key={`war:${mark.id}`} data-mark={`war_${mark.id}`}><UiIcon sheet="cause" cell={WAR_ICON[mark.id]} />
             {SEASON_STRIP_COPY.row(SEASON_STRIP_COPY.war[mark.id] ?? mark.id, SEASON_STRIP_COPY.arrival(when.season, when.third, when.nextYear))}</li>;
+        })}
+        {plague.map(mark => {
+          const when = arrivalOf(state.tick, mark.tick);
+          return <li key={`plague:${mark.id}`} data-mark={`plague_${mark.id}`}><UiIcon sheet="cause" cell={PLAGUE_ICON[mark.id]} />
+            {SEASON_STRIP_COPY.row(SEASON_STRIP_COPY.plague[mark.id] ?? mark.id, SEASON_STRIP_COPY.arrival(when.season, when.third, when.nextYear))}</li>;
         })}
         {marks.map(mark => {
           const when = arrivalOf(state.tick, mark.tick);
