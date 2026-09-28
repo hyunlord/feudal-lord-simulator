@@ -116,5 +116,85 @@ export const ROOF_SMOKE_ANCHORS: Readonly<Record<string, { readonly fx: number; 
  "assets/buildings/variants-wave2/house_pair_l4_vertical_court-v1.png": {
   "fx": 0.1686,
   "fy": 0.0364
+ },
+ "assets/wave26/house/house_l0_c.png": {
+  "fx": 0.2657,
+  "fy": -0.0131
+ },
+ "assets/wave26/house/house_l0_d.png": {
+  "fx": 0.4262,
+  "fy": 0.0749
+ },
+ "assets/wave26/house/house_l0_e.png": {
+  "fx": 0.3017,
+  "fy": 0.0214
+ },
+ "assets/wave26/house/house_l0_f.png": {
+  "fx": 0.3552,
+  "fy": 0.0749
+ },
+ "assets/wave26/house/house_l1_c.png": {
+  "fx": 0.2729,
+  "fy": -0.0074
+ },
+ "assets/wave26/house/house_l1_d.png": {
+  "fx": 0.4059,
+  "fy": -0.0074
+ },
+ "assets/wave26/house/house_l1_e.png": {
+  "fx": 0.2729,
+  "fy": -0.0074
+ },
+ "assets/wave26/house/house_l1_f.png": {
+  "fx": 0.2774,
+  "fy": -0.0074
+ },
+ "assets/wave26/house/house_l2_c.png": {
+  "fx": 0.2307,
+  "fy": -0.007
+ },
+ "assets/wave26/house/house_l2_d.png": {
+  "fx": 0.4252,
+  "fy": -0.007
+ },
+ "assets/wave26/house/house_l2_e.png": {
+  "fx": 0.2483,
+  "fy": -0.007
+ },
+ "assets/wave26/house/house_l2_f.png": {
+  "fx": 0.2439,
+  "fy": -0.007
+ },
+ "assets/wave26/house/house_l3_c.png": {
+  "fx": 0.2569,
+  "fy": -0.0026
+ },
+ "assets/wave26/house/house_l3_d.png": {
+  "fx": 0.248,
+  "fy": -0.0026
+ },
+ "assets/wave26/house/house_l3_e.png": {
+  "fx": 0.4075,
+  "fy": -0.0026
+ },
+ "assets/wave26/house/house_l3_f.png": {
+  "fx": 0.3809,
+  "fy": -0.0026
+ },
+ "assets/wave26/house/house_l4_c.png": {
+  "fx": 0.2168,
+  "fy": -0.0035
+ },
+ "assets/wave26/house/house_l4_d.png": {
+  "fx": 0.2388,
+  "fy": -0.0035
+ },
+ "assets/wave26/house/house_l4_e.png": {
+  "fx": 0.3894,
+  "fy": -0.0035
+ },
+ "assets/wave26/house/house_l4_f.png": {
+  "fx": 0.1991,
+  "fy": -0.0035
  }
 };

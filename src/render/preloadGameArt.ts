@@ -20,6 +20,7 @@ import { preloadWave9Art } from "./wave9Art";
 import { preloadWave17WorldArt } from "./warWorldProps";
 import { preloadWave11Art } from "./wave11Art";
 import { preloadWave3AleArt } from "./wave3AleArt";
+import { preloadWave26HouseLayers, preloadWave26HousePaintings } from "./wave26HouseArt";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
 /** The world art, awaited by captures; `chapter` (chapterArt.ts): the facility paintings up to it (default: all). */
@@ -29,6 +30,7 @@ export async function preloadGameArt(chapter = Number.POSITIVE_INFINITY): Promis
     preloadHouseCompoundAssets(), preloadStoneWallAssets(),
     preloadRuntimeActorAssets(), preloadMillAssets(), preloadConstructionArtAssets(),
     preloadGateAssets(), preloadBridgeWaterAssets(), preloadTimberWallAssets(), preloadTownLandscapeAssets(), preloadBuildingVariantAssets(),
+    preloadWave26HousePaintings(), // INSTALL-26
   ]);
 }
 
@@ -45,6 +47,7 @@ export function preloadFrameArt(chapter: number): void {
   preloadWave11Art();
   // INSTALL-3: the ale chain's art at startup, not by chapter (a barn can turn to barley in any chapter; the command has no gate).
   preloadWave3AleArt();
+  preloadWave26HouseLayers(); // INSTALL-26 the house paintings' weathered, fresh, snow and boarded layers
   preloadCanvasIcons();
 }
 

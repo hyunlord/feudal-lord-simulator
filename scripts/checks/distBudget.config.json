@@ -35,6 +35,7 @@
     { "category": "world", "label": "visible simulation marks (visibility v1)", "patterns": ["assets/visibility-v1/**"] },
     { "category": "world", "label": "world waves 7, 9, 11, 12, 15", "patterns": ["assets/{wave7,wave9,wave11,wave12,wave15}/**"] },
     { "category": "world", "label": "war props (Wave 17 world)", "patterns": ["assets/wave17/world/**"] },
-    { "category": "world", "label": "village life, weather (Wave 23)", "patterns": ["assets/wave23/{life_birds,life_ground,life_props,weather}/**"] }
+    { "category": "world", "label": "village life, weather (Wave 23)", "patterns": ["assets/wave23/{life_birds,life_ground,life_props,weather}/**"] },
+    { "category": "world", "label": "house variants and their state layers (Wave 26)", "patterns": ["assets/wave26/**"] }
   ]
 }

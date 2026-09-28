@@ -10,6 +10,7 @@ import { historicalHouseAssetMeta, historicalHouseSpriteRect } from "./historica
 import { houseCompoundAssetMeta, houseCompoundSpriteRect } from "./houseCompoundAssets";
 import { frameBuildingVariant } from "./buildingVariants";
 import { BUILDING_VARIANT_OVERLAY_REGISTRATION } from "./buildingVariantOverlay.generated";
+import { shownHouseVariant } from "./wave26HouseArt";
 
 export type HouseConditionContext = Pick<CanvasRenderingContext2D, "globalAlpha" | "fillStyle" | "beginPath" | "moveTo" | "lineTo" | "closePath" | "fill" | "save" | "restore" | "drawImage" | "imageSmoothingEnabled"> & { getTransform(): CanvasTransform };
 
@@ -42,6 +43,8 @@ export function drawHouseCondition(
   condition: HouseCondition,
 ): void {
   if (building.kind !== "house" || condition === "maintained") return;
+  // INSTALL-26: the wear marks are painted on the approved house; a Wave 26 painting shows its own weathered layer.
+  if (shownHouseVariant(building, builtLevel) !== null) return;
   const frame = conditionFrame(building, builtLevel);
   if (frame !== null) {
     const artwork = houseConditionArt(builtLevel, building.houseLot ?? "single", condition);
