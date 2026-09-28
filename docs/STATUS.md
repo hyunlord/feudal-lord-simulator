@@ -1,11 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-28(UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-28(C5 · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **C5 직물 사슬 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/c5-cloth/REPORT.md), [명세](design/cloth-chain.md) CL-1~CL-11, 결정 CL1~CL10.
+  - 자원 일곱(양털·실·생베·축융한 베·염료·물들인 베·완성 직물)과 건물 다섯: 목축 농장(초여름 털깎기, 20칸에 일손 한 명), 직조공 집(베틀), 축융 방앗간·염색집(물가), 텐터 틀. 실잣기는 L3+ 집 여성의 둘째 가내 슬롯. 베는 단계에서 단계로 곧장 간다. 시장은 완성 직물을 가장 먼저 팔고 인장세가 금고에 든다(축융 사용료도).
+  - 양털 수치 다시 정함(1칸 양 2, 한 해 1뭉치, 5d). 양모 공납 현물은 저장소 재고에서.
+  - 관문: T1~T10, 봇 직물 사슬 5/5(3장 끝 뒤 첫 판매 2,160~6,800틱), 사람 경로 목초지 → 첫 직물(가드레일 옆 4/4), 가드레일 `75dd23c` 5/5(승리 틱 불변, 새 기준선 `baseline-75dd23c`), 저장 형식 그대로.
+  - 넘길 것(렌더): 건물 다섯 그림(목축 농장 = Wave 2 `farm_pastoral` 판정 필요), 직물 일곱의 사슬 칸(결산 카드의 에일 줄이 두 사슬을 가른 뒤), 장부·결산의 직물 줄(`townCloth`, `ulnage`·`fulling_toll`), 집 뒤뜰 물레(`spinningSlot`).
 
 - **F3-A 3장 흑사병 1348–1362 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/f3a-black-death/REPORT.md), [명세](design/chapter-three-plague.md) PL-1~PL-11, 결정 BD1~BD9.
   - 1348 항구 열병 소문 → 도래(인물 단위 사망 42~48 %, 노인·어린아이·붐비는 집·안쪽, 가구 전체 15 %, 영주 가솔도) → 빈 거리·묘지·버려진 밭 → 임금 요구 → 1351 노동자 조례 → 1352 재정착 → 1361 두 번째 역병 → 1362~64 3장 끝.
