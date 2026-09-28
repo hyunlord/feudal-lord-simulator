@@ -1,6 +1,6 @@
 {
   "schemaVersion": 24,
-  "sha256": "9c9f057560cfb19499bc0102de1b8ee3246b036d1513ae8350f020fe3713c161",
+  "sha256": "6ef362cc29d6673e4e7b50ecdfda6006ebe71f396a60b8f7d960e4ff175df738",
   "inputs": [
     "DEFAULT_GAME_STATE",
     "fixtures/saves/v1/new-game.save.json",
@@ -501,7 +501,7 @@
     "$.persons.lineages:array",
     "$.persons.lineages[].id:string",
     "$.persons.lineages[].kind:string",
-    "$.persons.lineages[].set:null|string",
+    "$.persons.lineages[].set:string",
     "$.persons.lineages[].since:number",
     "$.persons.lineages[].slots.<key>:string",
     "$.persons.lineages[].slots:object",
