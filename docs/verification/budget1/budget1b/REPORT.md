@@ -14,7 +14,9 @@
 - 지금 옮겨진 것은 적다 — 8장, 파일 0.22 MB, 해제 1.05 MB:
   - 2장: 전쟁 소품(봉화·불타는 부두·연기·Wave 12 부두) 5장, 해제 0.82 MB.
   - 3장: Wave 9 흑사병 봉쇄 집 `plague_shut_l1..3`, 해제 0.24 MB(그리는 코드가 아직 없어 주제로 3장에 묶었다).
-- 전제가 반만 맞았다: Wave 12 시설 그림은 아직 설치되지 않았고(public에 있는 Wave 12 파일은 부두 하나), 3~5장 삽화는 CSS 배경이라 원래 미리 불러오지 않는다. 앞으로 설치되는 장 그림은 `chapterArt.ts`에 한 줄로 장을 적으면 된다. 시험(`tests/chapterArt.test.ts` 4/4)이 실제 시작 목록을 돌려 뒤 장 그림이 시작 목록에 들어가면 실패한다.
+- 장 선언 한 줄: `CHAPTER_ART`(`src/render/chapterArt.ts`)에 매니페스트(또는 그 일부)마다 `{ chapter, what, urls }` 한 줄(매니페스트의 url을 그대로 씀). `manifestArt` 기반 매니페스트는 `CHAPTER_SCOPED_MANIFESTS`(`preloadGameArt.ts`)에 들어가고, 시설 그림 로더도 장으로 거른다(`preloadGameArt(chapter)` → `preloadHistoricalFacilityAssets(chapter)`) — 앞으로 Wave 12 시설은 `CHAPTER_ART` 한 줄이면 된다. 이를 위해 시설 로더가 그림을 하나씩 불러오게 바뀌었다(전에는 첫 시설 그리기가 모든 시설 그림을 시작; 이제 필요한 그림만. 그려지기 전 대체 경로는 같다; 자유 모드와 캡처의 `preloadGameArt()`는 전부).
+- 지키는 시험(`tests/chapterArt.test.ts` 5/5): 선언된 url마다 실제 시작 목록(`startupArtList.ts`)을 장마다 돌려, 그 장 전에는 없고 그 장부터 있고 전체에는 있어야 한다. 장을 따르지 않는 로더(예: Wave 7)의 url을 선언하면 "… out of the chapter-1 startup set"으로 실패하는 것을 임시 수정으로 확인했다.
+- 전제가 반만 맞았다: Wave 12 시설 그림은 아직 설치되지 않았고(public에 있는 Wave 12 파일은 부두 하나), 3~5장 삽화는 CSS 배경이라 원래 미리 불러오지 않는다. 
 - 건물은 장이 아니라 정착 단계(마을·장터 도시·성곽 도시)로 열려 1장에도 나올 수 있으니 단계 그림(성곽 기둥·탑, 방어 킷, 옛 성문)은 그대로 둔다.
 - 1장 끝 저장(`ui4ChapterStates` chapter-end)은 끝나는 순간 장 번호가 2라서 2장 그림을 불러온다(로컬 탐침 [image-memory-chapter-end-local.json](image-memory-chapter-end-local.json)); 대기근 도착 저장(1장)은 장 그림 0([image-memory-famine-arrival-local.json](image-memory-famine-arrival-local.json), 부르기 단계만 유효 — 뒤 단계는 대기근 결정 창이 열려 시간 초과).
 
@@ -26,4 +28,4 @@
 VERIFY_SECTION
 
 ## 5. 다음 후보(규칙이 다름 — 판정 필요)
-- 정착 단계별 불러오기: 메모리는 여기에 있다 — 성곽 기둥·탑 5 × 6.3 MB, 방어 킷 6.3 MB, 옛 성문 9.4 MB(해제). 지금은 시작 목록이 아니라 처음 그릴 때 불러온다.
+- 정착 단계별 불러오기(해제 크기): 지금 시작 때 불러오는 것 — Wave 11 방어 킷 6.29 MB·공공 킷 2.00 MB, 장터 도시·성채 시설 그림 1.61 MB, 돌 성문 아치 둘 2.10 MB, 합 약 12.0 MB를 미룰 수 있다. 성벽 면·기둥·탑·성문 16장 35.73 MB는 이미 성벽이 있을 때 처음 그리면서 불러온다. 목책 성문 부분은 마을 단계부터 쓰여 그대로.
