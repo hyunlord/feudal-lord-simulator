@@ -117,6 +117,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/ui/wave14ArtManifest.generated.ts",
     "src/render/seasonArtManifest.generated.ts",
     "src/render/wave23ArtManifest.generated.ts", "src/render/wave3AleManifest.generated.ts",
+    "src/render/wave27YardManifest.generated.ts",
   ];
   for (const file of manifestFiles) {
     for (const url of extractUrlLiterals(readText(file))) {
