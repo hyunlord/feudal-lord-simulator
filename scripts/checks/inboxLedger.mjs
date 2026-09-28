@@ -82,7 +82,7 @@ export function formatLedgerResult(result) {
   if (dangling.length > 0) lines.push('  Write each replacement as the file path of its own ledger row; join several with ";".');
   for (const { file, target, why } of badMarks) lines.push(`  BADMARK ${file} (정본: ${target}): ${why}`);
   for (const { file, same } of unmarked) lines.push(`  UNMARKED ${file} has the same sha256 as ${same.join(', ')}`);
-  if (unmarked.length > 0) lines.push('  Add "<name>와 동일 바이트(정본: <path>)" to its verdict_note; the canonical is the earliest received confirmed row.');
+  if (unmarked.length > 0) lines.push('  Add "<name>와 동일 바이트(정본: <path>)" to its verdict_note; the canonical is the row a runtime manifest or docs/provenance/assets.csv points at, else the earliest received confirmed row (docs/ASSET_INBOX.md section 2).');
   return lines.join('\n');
 }
 
