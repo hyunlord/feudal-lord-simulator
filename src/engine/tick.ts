@@ -27,9 +27,10 @@ import { accrueTollCrossings, settleMoneyPeriod } from "./moneyRules";
 import { advanceSeasons, recordStarvation } from "./seasonPressure";
 import { advanceZoneSettlement } from "../zones/zoneSettlement";
 import { advanceEvents } from "./events";
-import { advancePolitics, endChapterThree, endChapterTwo } from "./politics";
+import { advancePolitics, endChapterFour, endChapterThree, endChapterTwo } from "./politics";
 import { advanceLordship } from "./lordship";
 import { advancePlague, plagueHousing } from "./plague";
+import { advanceReorganisation } from "./reorganisation";
 import { advanceWar } from "./war";
 import { advanceFactions } from "./factions";
 import { advanceAle, aleRequired, aleServedHouses } from "./ale";
@@ -263,7 +264,8 @@ function advanceWarTick(state: GameState): GameState {
   // FACTION-0 (FX-1, FX-2, FX-5): then the factions' season (their leaders, their year). C4 (AL-4, AL-5): then the ale.
   // F3-A (PL-1…PL-10): the Black Death's season after the war's; chapter 3's end is written by the politics.
   // C5 (CL-1…CL-8): then the cloth chain's shearing, spinning and dyes.
-  return advanceCloth(advanceAle(advanceFactions(advancePlague(advanceWar(state, endChapterTwo), endChapterThree))));
+  // F4-A (RG-1…RG-10): the reorganisation's season after the pestilence's; chapter 4's end is written by the politics.
+  return advanceCloth(advanceAle(advanceFactions(advanceReorganisation(advancePlague(advanceWar(state, endChapterTwo), endChapterThree), endChapterFour))));
 }
 
 export function advanceTick(state: GameState): GameState {

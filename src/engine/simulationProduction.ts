@@ -9,6 +9,7 @@ import { forestHarvestsAfterProduction } from './forestHarvests';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { productionOperation, stepProduction } from '../economy/production';
+import { reorganisationDefinition } from './reorganisation';
 import { placementSpendableResource } from '../world/placement';
 import type { GameState } from './engine.types';
 import { accrueMilledWheat } from './moneyRules';
@@ -46,7 +47,8 @@ export function runProduction(input: GameState): GameState {
       eligibleMillTicks += 1;
       if (productionOperation(building, BUILDING_CONFIG_BY_KIND.mill) === 'no_input') rawStarvedTicks += 1;
     }
-    const step = stepProduction(building, BUILDING_CONFIG_BY_KIND[building.kind]);
+    // F4-A (RG-5): the guild's looms (or the weavers gone after its refusal) set the cloth buildings' working time.
+    const step = stepProduction(building, reorganisationDefinition(state, building.kind));
     if (building.kind === 'masonry' && materialRecord !== undefined) {
       const operation = productionOperation(building, BUILDING_CONFIG_BY_KIND.masonry);
       const hauling = operation === 'no_input' && materialRoutes !== undefined

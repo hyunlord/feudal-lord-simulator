@@ -16,6 +16,7 @@
 import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, operationSuspended, type Building } from "../content/buildingConfig";
 import { CLOTH_BALANCE } from "../content/clothConfig";
+import { REORGANISATION_BALANCE } from "../content/reorganisationConfig";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import { postLedgerEntries } from "../ledger/ledger";
 import type { LedgerPosting } from "../ledger/ledger.types";
@@ -197,7 +198,9 @@ function bringDyes(state: GameState): GameState {
   const buildings = state.buildings.map(building => {
     if (building.kind !== "dyehouse" || operationSuspended(building)) return building;
     const room = BUILDING_CONFIG_BY_KIND.dyehouse.storageCapacity - held(building);
-    const dyes = Math.min(CLOTH_BALANCE.dyesPerSeason, Math.max(0, CLOTH_BALANCE.dyesHeld - (building.inventory.dyes ?? 0)), Math.max(0, room));
+    // F4-A (RG-3): from chapter 4 the merchants bring twice the dyes (the cloth trade at its height).
+    const perSeason = state.reorganisation === undefined ? CLOTH_BALANCE.dyesPerSeason : REORGANISATION_BALANCE.dyesPerSeason;
+    const dyes = Math.min(perSeason, Math.max(0, CLOTH_BALANCE.dyesHeld - (building.inventory.dyes ?? 0)), Math.max(0, room));
     if (dyes <= 0) return building;
     changed = true;
     return { ...building, inventory: { ...building.inventory, dyes: (building.inventory.dyes ?? 0) + dyes } };

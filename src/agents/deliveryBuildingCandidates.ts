@@ -6,6 +6,7 @@ import {
   type ResourceType,
 } from "../content/resourceConfig";
 import { amountOf } from "./deliveryCommon";
+import { CLOTH_BALANCE } from "../content/clothConfig";
 import { storageIntakeSpace } from "../economy/storage";
 import type {
   DeliveryInventoryPort,
@@ -59,7 +60,10 @@ export function deliverCandidate(
       if (building.kind !== next || building.id === producer.id) return [];
       const path = routes.betweenBuildings(producer.id, building.id);
       if (path === null || path.length === 0) return [];
-      const amount = Math.min(BUILDING_CONFIG_BY_KIND[producer.kind].carterCapacity ?? BALANCE.CARTER_CAPACITY, stock, inventory.availableSpace(building));
+      // F4-A (decision RG4): the cart leaves the dyehouse room for the dyes it holds — a vat full of fulled cloth took no
+      // dyes and the chain stood (the probe of the chapter-4 town, 1377).
+      const dyeRoom = building.kind === "dyehouse" ? Math.max(0, CLOTH_BALANCE.dyesHeld - amountOf(building.inventory, "dyes")) : 0;
+      const amount = Math.min(BUILDING_CONFIG_BY_KIND[producer.kind].carterCapacity ?? BALANCE.CARTER_CAPACITY, stock, inventory.availableSpace(building) - dyeRoom);
       return amount > 0 ? [{ building, path, amount }] : [];
     });
     const best = bestCandidate(direct, false);

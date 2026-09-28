@@ -43,6 +43,10 @@ export const LEDGER_CATEGORY_LABELS = {
   // C5 (CL-5, CL-8)
   fulling_toll: "축융 방앗간 사용료",
   ulnage: "직물 인장세",
+  // F4-A (RG-3, RG-6, RG-9)
+  cloth_toll: "직물 매매세",
+  poll_tax: "인두세 영주 몫",
+  fee_farm: "도시의 연납금",
 } as const satisfies Record<LedgerCategory, string>;
 
 export const LEDGER_WINDOW_LABELS = {

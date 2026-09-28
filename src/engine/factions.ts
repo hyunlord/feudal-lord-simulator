@@ -31,6 +31,7 @@ import { hairWords, inheritTraits, populationTraits } from "./heredity";
 import { chooseFactionPortraitIdentity, choosePortraitIdentity, identityFaction, identityLineage, PORTRAIT_BAND, setPlaces } from "./portraits";
 import { hashSeed } from "./prng";
 import { WAR_BALANCE } from "../content/warConfig";
+import { BOROUGH_CHARTER_PETITION_ID, REORGANISATION_EVENT_RELATIONS, REORGANISATION_PETITION_IDS, REORGANISATION_RELATIONS, type ReorganisationPetitionId } from "../content/reorganisationConfig";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const YEAR = 4 * SEASON;
@@ -279,6 +280,16 @@ export function factionChanges(before: GameState, after: GameState): readonly Fa
   const was = new Map((before.politics?.petitions ?? []).map(petition => [petition.id, petition.response]));
   for (const petition of after.politics?.petitions ?? []) {
     if (petition.response === undefined || was.get(petition.id) !== undefined) continue;
+    // F4-A (RG-5…RG-9): a reorganisation answer moves the town's side and the lords' side apart (its own table).
+    if ((REORGANISATION_PETITION_IDS as readonly string[]).includes(petition.defId)) {
+      const answer = petition.response === "expired" ? "refuse" : petition.response;
+      const reason = `petition:${petition.defId}:${petition.response}`;
+      for (const [factionId, delta] of Object.entries(REORGANISATION_RELATIONS[petition.defId as ReorganisationPetitionId][answer] ?? {})) {
+        const warned = petition.defId === BOROUGH_CHARTER_PETITION_ID && answer === "accept" && factionId === "overlord" && after.reorganisation?.warningTick !== undefined;
+        changes.push({ factionId: factionId as FactionId, delta: delta! + (warned ? REORGANISATION_EVENT_RELATIONS.warnedOverlord : 0), reason });
+      }
+      continue;
+    }
     const factionId = factionOfPetitioner(petition.petitioner);
     const rules = factionId === "crown" ? RELATION_RULES.crown : RELATION_RULES.petition;
     changes.push({ factionId, delta: rules[petition.response], reason: `petition:${petition.defId}:${petition.response}` });
@@ -307,6 +318,20 @@ export function factionChanges(before: GameState, after: GameState): readonly Fa
     const held = after.war.raid.defencePermille >= WAR_BALANCE.timberDefencePermille;
     changes.push({ factionId: "town", delta: held ? RELATION_RULES.raidHeld : RELATION_RULES.raidBreached, reason: held ? "raid:held" : "raid:breached" });
   }
+  // F4-A (RG-2, RG-4, RG-8): the neighbours' wages, the earl's warning, the rumour of 1381.
+  const reorgBefore = before.reorganisation, reorgAfter = after.reorganisation;
+  if (reorgAfter !== undefined) {
+    const lured = reorgAfter.wageLeavers - (reorgBefore?.wageLeavers ?? 0);
+    if (lured > 0) changes.push({ factionId: "neighbour_1", delta: lured * RELATION_RULES.wageCompetition, reason: "reorg:wage_competition" });
+    if (reorgAfter.warningTick !== undefined && reorgBefore?.warningTick === undefined) {
+      changes.push({ factionId: "overlord", delta: REORGANISATION_EVENT_RELATIONS.overlordWarning, reason: "reorg:overlord_warning" });
+    }
+    if (reorgAfter.rebellion !== undefined && reorgBefore?.rebellion === undefined) {
+      for (const [factionId, delta] of Object.entries(REORGANISATION_EVENT_RELATIONS[reorgAfter.rebellion.outcome])) {
+        changes.push({ factionId: factionId as FactionId, delta, reason: `reorg:rebellion:${reorgAfter.rebellion.outcome}` });
+      }
+    }
+  }
   return changes.filter(change => change.delta !== 0);
 }
 
@@ -334,6 +359,8 @@ export function factionsList(state: GameState): readonly FactionView[] {
   const open = (state.politics?.petitions ?? []).filter(petition => petition.response === undefined);
   return factions.map(faction => ({
     ...faction,
+    // F4-A (RG-4): the town's and the merchant houses' influence from chapter 4.
+    ...(state.reorganisation?.influence[faction.id] === undefined ? {} : { influence: state.reorganisation.influence[faction.id] }),
     demands: open.filter(petition => factionOfPetitioner(petition.petitioner) === faction.id).map(petition => ({ petitionId: petition.id, defId: petition.defId, arrivedTick: petition.arrivedTick })),
     promises: [
       ...(state.politics?.rights ?? []).filter(right => factionOfPetitioner(right.holder) === faction.id).map(right => ({ kind: "right" as const, id: right.id })),

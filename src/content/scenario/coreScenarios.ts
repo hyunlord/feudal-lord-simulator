@@ -1,6 +1,7 @@
 import { MONEY_BALANCE } from "../balanceConfig";
 import { DEARTH_REHEARSAL_EVENT_ID, FIRE_EVENT_ID, FIRST_FIRE_EVENT_ID, GREAT_FAMINE_EFFECTS, GREAT_FAMINE_EVENT_ID, WEATHER_EVENT_ID } from "../eventConfig";
 import { PLAGUE_SEQUENCE_ID } from "../plagueConfig";
+import { REORGANISATION_SEQUENCE_ID } from "../reorganisationConfig";
 import { WAR_ERA_EFFECTS, WAR_SEQUENCE_ID } from "../warConfig";
 import { SCENARIO_COPY } from "./scenarioCopy.ko";
 import type { ArchetypeDef, EraDef, ObjectiveDef, ScenarioDef, StageDef } from "./types";
@@ -84,7 +85,7 @@ export const CORE_ARCHETYPES: readonly ArchetypeDef[] = [{ id: "core:open_field"
  * F0-B (EV-1): the weather and chapter 1's events — the first fire, later fires and the first dearth (the rehearsal).
  * F0-C1 (FC-1): and the Great Famine, which comes with the famine era. F2-A (WR-1): and the war of 1337. F3-A (PL-1): and the Black Death.
  */
-const CORE_EVENTS = [WEATHER_EVENT_ID, FIRST_FIRE_EVENT_ID, FIRE_EVENT_ID, DEARTH_REHEARSAL_EVENT_ID, GREAT_FAMINE_EVENT_ID, WAR_SEQUENCE_ID, PLAGUE_SEQUENCE_ID] as const;
+const CORE_EVENTS = [WEATHER_EVENT_ID, FIRST_FIRE_EVENT_ID, FIRE_EVENT_ID, DEARTH_REHEARSAL_EVENT_ID, GREAT_FAMINE_EVENT_ID, WAR_SEQUENCE_ID, PLAGUE_SEQUENCE_ID, REORGANISATION_SEQUENCE_ID] as const;
 
 export const CORE_SCENARIOS: readonly ScenarioDef[] = [
   {
