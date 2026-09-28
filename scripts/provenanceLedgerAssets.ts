@@ -103,6 +103,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/terrainVariantManifest.ts",
     "src/render/walkerSheetManifest.generated.ts",
     "src/ui/uiArtManifest.generated.ts",
+    "src/ui/wave25ArtManifest.generated.ts",
     "src/render/visibilityArtManifest.ts",
     "src/render/wave7ArtManifest.generated.ts",
     "src/render/wave11ArtManifest.generated.ts",

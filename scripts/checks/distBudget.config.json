@@ -28,6 +28,7 @@
     { "category": "ui", "label": "heraldry, merchant marks, seals, UI frames and icons (Wave 14)", "patterns": ["assets/wave14/**"] },
     { "category": "ui", "label": "record cards, chronicle pages, timeline (Wave 19)", "patterns": ["assets/wave19/{cards,pages,timeline}/**"] },
     { "category": "ui", "label": "pad glyphs, person-state ornaments, royal arms (Wave 23)", "patterns": ["assets/wave23/{pad,person_state,royal}/**"] },
+    { "category": "ui", "label": "family tree parts (Wave 25)", "patterns": ["assets/wave25/tree/**"] },
     { "category": "world", "label": "buildings, walls, gates, bridges, modules", "patterns": ["assets/{buildings,wall,complete-art-v1,module,phase16-house-condition,runtime-construction-v1}/**"] },
     { "category": "world", "label": "terrain, water, shore, roads, fields, foliage, boundaries, zones, yards", "patterns": ["assets/{terrain,water,shore,road,fields,foliage,boundary,phase16-landscape,zones,yards}/**"] },
     { "category": "world", "label": "walkers, animals, carried props", "patterns": ["assets/{walkers-v2,walker-props-v1,runtime-actors-v1}/**"] },

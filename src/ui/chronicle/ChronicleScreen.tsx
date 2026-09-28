@@ -18,6 +18,8 @@ import { CARD_ROW, RecordCardView } from "./RecordCardView";
 import { SnapshotMapView } from "./SnapshotMapView";
 import { FACTION_PAGE, FactionPage } from "./FactionPage";
 import { FactionTab } from "./FactionTab";
+import { FamilyTree } from "./FamilyTree";
+import { FAMILY_TREE_COPY } from "./familyTreeCopy.ko";
 import { factionPageView, factionRows, worldLines } from "./factionTabModel";
 import type { FactionId } from "../../content/factionConfig";
 import { INTENT_ORDER } from "../../input/intentBus";
@@ -90,6 +92,8 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   const [compare, setCompare] = useState(false);
   const [detailView, setDetailView] = useState<"record" | "map">("record");
   const [personId, setPersonId] = useState<string | null>(initialPersonId);
+  // UI-7: a person's page is their biography or their family tree (a frame in the tree opens that person's biography).
+  const [personTab, setPersonTab] = useState<"biography" | "tree">("biography");
   const [tab, setTab] = useState<"records" | "factions">("records");
   const [factionId, setFactionId] = useState<FactionId | null>(null);
   /** A record opened from a faction's page: the page Esc (or [세력 연대기로]) returns to. */
@@ -160,7 +164,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     const index = itemIndexAt(items, at);
     setSelected(items[index]!.key); scrollTo(index);
   };
-  const openPerson = (id: string) => { setPersonId(id); };
+  const openPerson = (id: string) => { setPersonId(id); setPersonTab("biography"); };
   const openFaction = (id: string) => { setPersonId(null); setTab("factions"); setFactionId(id as FactionId); setReturnFaction(null); };
   /** A faction page's remembered record: the faction's whole ledger (every severity, every kind), with it picked. */
   const openFactionRecord = (recordId: string, tick: number) => {
@@ -227,8 +231,11 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
         <Button type="button" className="chronicle-close" aria-label={COPY.closeLabel} onPress={() => onClose()} variant="icon">{COPY.close}</Button>
       </header>
       {personId !== null ? (
-        <div className="chronicle-page-body" ref={body}>
-          {biography === null ? <p className="chronicle-empty">{COPY.lifeEmpty}</p>
+        <div className="chronicle-page-body chronicle-page-body--person" ref={body} data-person-tab={personTab}>
+          <Tabs label={FAMILY_TREE_COPY.tabsLabel} className="chronicle-tabs chronicle-person-tabs" tabClassName="chronicle-tab" selected={personTab}
+            tabs={[{ key: "biography", label: FAMILY_TREE_COPY.biographyTab }, { key: "tree", label: FAMILY_TREE_COPY.treeTab }]} onSelect={key => setPersonTab(key)} />
+          {personTab === "tree" ? <FamilyTree state={state} personId={personId} onPerson={id => openPerson(id)} />
+            : biography === null ? <p className="chronicle-empty">{COPY.lifeEmpty}</p>
             : <BiographyPage view={biography} scale={pageScale} onPerson={id => openPerson(id)} onRecord={(recordId, tick) => openRecord(recordId, tick)} />}
         </div>
       ) : view === "factions" ? (
