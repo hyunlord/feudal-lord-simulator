@@ -1,6 +1,5 @@
 import type { PalisadePath } from "../world/palisadeGeometry";
 import { isPointInsidePalisade } from "../world/palisadeGeometry";
-import { boundaryHash } from "../world/boundary/boundaryGeometry";
 import type { Tile } from "../world/world.types";
 import type { Zone, ZoneKind } from "../zones/zone.types";
 
@@ -24,6 +23,14 @@ import type { Zone, ZoneKind } from "../zones/zone.types";
 // side is road (the field gate). As a zone grows its edges move out with it, so the hedge grows with the field.
 
 export const SETTLED_REACH = 3;
+
+/** The countryside's own hash (not the curved-ground module's: the countryside also draws with RENDER_BOUNDARY_V2 off). */
+export function countryHash(key: number, seed: number, salt: number): number {
+  let hash = Math.imul(key ^ 0x9e37_79b9, 0x85eb_ca6b) ^ Math.imul(seed + 101_111, 0xc2b2_ae35) ^ Math.imul(salt + 7, 0x27d4_eb2f);
+  hash = Math.imul(hash ^ (hash >>> 15), 0x2c1b_3c6d);
+  hash = Math.imul(hash ^ (hash >>> 12), 0x297a_2d39);
+  return (hash ^ (hash >>> 15)) >>> 0;
+}
 const FIELD_KINDS: ReadonlySet<ZoneKind> = new Set(["arable", "pasture"]);
 
 export type CountryLandInput = {
@@ -149,7 +156,7 @@ function fieldEdgeStrips(input: CountryLandInput, cells: readonly (Tile | undefi
       const run = edges.slice(start, end + 1);
       start = end + 1;
       const first = run[0]!.along; const last = run[run.length - 1]!.along;
-      const hash = boundaryHash(first * 131 + line, input.seed, axis === "x" ? 2_801 : 2_803);
+      const hash = countryHash(first * 131 + line, input.seed, axis === "x" ? 2_801 : 2_803);
       const family: CountryStripFamily = kind === "b" ? "baulk" : input.stony || run.some(edge => edge.rocky) ? "dry_stone_wall"
         : hash % 2 === 0 ? "hedgerow_a" : "hedgerow_b";
       const gaps = roadGates(run);

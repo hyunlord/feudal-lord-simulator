@@ -2,11 +2,10 @@ import type { GameState } from "../engine/engine.types";
 import { archetypeOf } from "../content/scenario/registry";
 import { scenarioOf } from "../engine/scenarioState";
 import { constructionSiteFootprint, isWallConstructionSite } from "../economy/constructionSiteAccessors";
-import { boundaryHash } from "../world/boundary/boundaryGeometry";
 import type { Tile } from "../world/world.types";
 import { zonesOf } from "../zones/zoneEdits";
 import { COUNTRY_SCALE } from "./countrysideArt";
-import { countryLand, type CountryLand, type CountryLandInput, type CountryStripPiece } from "./countrysideLand";
+import { countryHash, countryLand, type CountryLand, type CountryLandInput, type CountryStripPiece } from "./countrysideLand";
 
 // INSTALL-28 point props and wildflower patches on open country (countrysideLand.ts), a deterministic scatter seeded by
 // the world seed and the tile: the map is cut into BLOCK x BLOCK cell blocks; a block holds at most one piece when its
@@ -89,7 +88,7 @@ export function buildCountryside(input: CountryLandInput): Countryside {
   const tall: { readonly tx: number; readonly ty: number }[] = [];
   const props: CountryPiece[] = []; const fields: CountryPiece[] = [];
   for (let by = 0; by * BLOCK < height; by += 1) for (let bx = 0; bx * BLOCK < width; bx += 1) {
-    const hash = boundaryHash(by * 4_099 + bx, input.seed, 2_811);
+    const hash = countryHash(by * 4_099 + bx, input.seed, 2_811);
     if ((hash % 1_000) / 1_000 >= BLOCK_CHANCE) continue;
     const tx = bx * BLOCK + ((hash >>> 10) % BLOCK); const ty = by * BLOCK + ((hash >>> 13) % BLOCK);
     if (!open(tx, ty)) continue;
@@ -154,7 +153,7 @@ export function stonyArchetype(archetypeId: string | undefined): boolean {
 // finished; recomputed only when the sites array is replaced), the seed and the scenario (its archetype).
 // Left out on purpose: ticks, walkers, stocks, crops, house levels and the season — none of them decides which land is
 // open or where a zone's edge runs (the season only picks the picture at draw time). Measured (Mac, tsx; the v26 save
-// fixtures, tests/countryside.test.ts `countrysideBuildMs`): a build 0.7–3.6 ms, a hit 0.001–0.007 ms; without the
+// fixtures, tests/countryside.test.ts `countrysideBuildMs`): a build 0.7–3.8 ms, a hit 0.001–0.007 ms; without the
 // cache every frame would pay the build.
 let last: { readonly tiles: readonly Tile[]; readonly zones: GameState["zones"]; readonly wall: unknown; readonly sites: string;
   readonly seed: number; readonly scenario: string | undefined; readonly layout: Countryside } | null = null;
