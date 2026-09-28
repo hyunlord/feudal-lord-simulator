@@ -85,6 +85,7 @@ export function FamilyTree({ state, personId, onPerson }: { readonly state: Game
                     {node.outside ? <span className="family-tree-outside" aria-hidden="true" style={wave25ImageStyle("tree_outside_spouse_marker", 20)} /> : null}
                     <span className="family-tree-name">{node.name}</span>
                     <span className="family-tree-years">{node.years}</span>
+                    {node.deathCause === null ? null : <span className="family-tree-cause" aria-hidden="true">{FAMILY_TREE_COPY.plagueShort}</span>}
                   </Button>
                 );
               })}

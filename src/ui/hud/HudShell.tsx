@@ -30,6 +30,8 @@ import { lordshipView, type LordshipView } from "../lordshipModel";
 import { wave14FrameStyle, wave14ImageStyle } from "../wave14Art";
 import { townAleView } from "../townAleModel";
 import { TOWN_ALE_COPY } from "../townAleCopy.ko";
+import { wageLedgerView } from "./wageLedgerModel";
+import { WAGE_LEDGER_COPY } from "./wageLedgerCopy.ko";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -207,6 +209,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   const matrix = ledgerMatrix(state);
   const alerts = alertStackRows(state);
   const townAle = townAleView(state);
+  const wageLedger = wageLedgerView(state);
   return (
     <section className="ledger-drawer slot-panel" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
@@ -245,6 +248,14 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
       {tab === "stock" && townAle !== null ? <section className="ledger-town-ale" aria-label={TOWN_ALE_COPY.heading}>
         <h3><ResourceGlyph resource="ale" />{TOWN_ALE_COPY.heading}</h3>
         {[townAle.stock, townAle.houses, townAle.served, townAle.thisSeason, ...(townAle.lastSeason === null ? [] : [townAle.lastSeason])].map(line => <p key={line}>{line}</p>)}
+      </section> : null}
+      {/* UI-8 (F3-A): wage ledger — plague labour costs by category, shown only once chapter 3's plague arrives. */}
+      {tab === "stock" && wageLedger !== null ? <section className="ledger-wage-ledger" aria-label={WAGE_LEDGER_COPY.heading}>
+        <h3>{WAGE_LEDGER_COPY.heading}</h3>
+        <div className="ledger-matrix-scroll"><table className="ledger-matrix">
+          <thead><tr><th scope="col">{WAGE_LEDGER_COPY.category}</th><th scope="col">{WAGE_LEDGER_COPY.thisSeason}</th><th scope="col">{WAGE_LEDGER_COPY.lastSeason}</th><th scope="col">{WAGE_LEDGER_COPY.chapterTotal}</th></tr></thead>
+          <tbody>{wageLedger.rows.map(row => <tr key={row.category}><th scope="row">{row.label}</th>{row.shown.map((amount, index) => <td key={index}>{amount}</td>)}</tr>)}</tbody>
+        </table></div>
       </section> : null}
       {/* UI-6: the rights register (the house, its arms, the title, the lord's rights and the ones he granted, the war). */}
       {tab === "rights" ? <RightsRegister view={lordshipView(state)} onPerson={onPerson} /> : null}

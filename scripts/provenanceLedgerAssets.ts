@@ -113,6 +113,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/ui/wave16ArtManifest.generated.ts",
     "src/ui/wave19ArtManifest.generated.ts",
     "src/ui/wave17ArtManifest.generated.ts",
+    "src/ui/wave21ArtManifest.generated.ts",
     "src/ui/portraitArtManifest.generated.ts",
     "src/ui/wave14ArtManifest.generated.ts",
     "src/render/seasonArtManifest.generated.ts",

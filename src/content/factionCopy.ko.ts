@@ -49,6 +49,10 @@ export const FACTION_LEADER_LINES: Readonly<Record<string, string>> = {
 const PETITION_NAMES: Readonly<Record<string, string>> = {
   market_charter: "시장권 청원", restore_right: "권리 복원 청원", wool_payment: "양모 공납 칙령", levy_response: "징집 명령",
   war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
+  // UI-8: the four plague petitions (F3-A PL-5…PL-8).
+  vacant_priest: "빈 사제 자리", wages: "일꾼들의 임금 요구", land_redistribution: "빈 필지의 주인",
+  cash_rent: "부역을 돈으로 바꾸자는 청원",
+  // F4-A: the four reorganisation petitions (RG-5…RG-9).
   guild_charter: "길드 결성 요구", tax_collection: "인두세를 걷는 방식", cloth_or_grain: "직물과 곡물 사이의 선택", borough_charter: "자치 특허 요구서",
 };
 const ANSWERS: Readonly<Record<string, string>> = { accept: "수락", accept_with_price: "가격을 붙여 수락", refuse: "거절", expired: "답하지 않음" };

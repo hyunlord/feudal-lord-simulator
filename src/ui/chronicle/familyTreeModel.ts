@@ -27,6 +27,8 @@ export const TREE = {
 export type TreeNodeView = Readonly<{
   personId: string; x: number; y: number; generation: number; outside: boolean; dead: boolean; selected: boolean;
   name: string; years: string; portraitId: string; label: string;
+  /** UI-8 (F3-A PL-2): human-readable death cause line, or null if not plague-caused or still alive. */
+  deathCause: string | null;
 }>;
 /** A branch line: horizontal from (x, y) `length` to the right, or vertical `length` down (the line's centre). */
 export type TreeLine = Readonly<{ axis: "h" | "v"; x: number; y: number; length: number }>;
@@ -154,8 +156,14 @@ export function familyTreeView(state: GameState, personId: string, choices: Read
   const node = (person: Person, x: number, generation: number, outside: boolean) => {
     const dead = !person.alive && person.deathYear !== undefined;
     const name = persons.displayName(person);
+    // UI-8 (F3-A PL-2): show the plague death cause on deceased nodes.
+    const deathCause = dead && person.deathCause === "plague" && person.deathYear !== undefined
+      ? FAMILY_TREE_COPY.plagueDeath(person.deathYear) : null;
+    const causeForLabel = deathCause ?? undefined;
     nodes.push({ personId: person.id, x, y: rowY(generation), generation, outside, dead, selected: person.id === personId, name, years: years(person),
-      portraitId: drawnPortraitId(person, persons.portrait(state, person).portraitId), label: FAMILY_TREE_COPY.node(name, years(person), outside, dead) });
+      portraitId: drawnPortraitId(person, persons.portrait(state, person).portraitId),
+      deathCause,
+      label: FAMILY_TREE_COPY.node(name, years(person), outside, dead, causeForLabel) });
   };
   let deepest = 0;
   /** Lays `unit`'s subtree from `left`; returns the x of the member's centre (the drop's target from its parents). */

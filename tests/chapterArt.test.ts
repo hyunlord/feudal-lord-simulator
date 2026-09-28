@@ -13,11 +13,13 @@ import { artChapterLimit, artForChapter, CHAPTER_ART, chapterOfArt } from "../sr
 import { historicalFacilityManifest } from "../src/render/historicalFacilityManifest";
 import { WAVE9_IMAGES } from "../src/render/wave9ArtManifest.generated";
 import { WAVE17_WORLD_IMAGES } from "../src/render/wave17WorldManifest.generated";
+import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
 
 const WAR = Object.values(WAVE17_WORLD_IMAGES).map(image => image.url);
 const PLAGUE = [WAVE9_IMAGES.event_plague_shut_l1.url, WAVE9_IMAGES.event_plague_shut_l2.url, WAVE9_IMAGES.event_plague_shut_l3.url];
+const WAVE21 = Object.values(WAVE21_IMAGES).map(image => image.url);
 const EVERY_CHAPTER = [...historicalFacilityManifest.map(meta => meta.url), WAVE9_IMAGES.event_burnt_l2.url, WAVE9_IMAGES.event_crowd_manor_gate.url];
-const URLS = [...EVERY_CHAPTER, ...WAR, ...PLAGUE];
+const URLS = [...EVERY_CHAPTER, ...WAR, ...PLAGUE, ...WAVE21];
 
 type ChapterState = Pick<GameState, "scenarioId" | "politics">;
 const SANDBOX: ChapterState = { scenarioId: "core:sandbox" };
@@ -71,12 +73,13 @@ test("no art CHAPTER_ART declares for a later chapter is in the startup set befo
 });
 
 test("the runtime's startup preload requests later chapters' art only once the game is in them", () => {
-  for (const url of [...WAR, ...PLAGUE]) {
+  for (const url of [...WAR, ...PLAGUE, ...WAVE21]) {
     assert.ok(all.has(url), `the sandbox preloads ${url}`);
     assert.ok(!chapter(1).has(url), `a chapter-1 start leaves out ${url}`);
   }
   for (const url of WAR) assert.ok(chapter(2).has(url), `chapter 2 adds ${url}`);
   for (const url of PLAGUE) assert.ok(!chapter(2).has(url) && chapter(3).has(url), `chapter 3 adds ${url}`);
-  assert.deepEqual([...all].filter(url => !chapter(1).has(url)).sort(), [...WAR, ...PLAGUE].sort(), "only chapter-bound art is deferred");
+  for (const url of WAVE21) assert.ok(!chapter(2).has(url) && chapter(3).has(url), `chapter 3 adds wave21 ${url}`);
+  assert.deepEqual([...all].filter(url => !chapter(1).has(url)).sort(), [...WAR, ...PLAGUE, ...WAVE21].sort(), "only chapter-bound art is deferred");
   for (const url of historicalFacilityManifest.map(meta => meta.url)) assert.ok(chapter(1).has(url), `stage-gated ${url} stays at startup`);
 });

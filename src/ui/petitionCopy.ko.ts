@@ -54,6 +54,35 @@ export const PETITION_COPY = {
       : "왕실의 신임이 없어 성벽세가 붙지 않습니다 · 석벽 사업과 같습니다",
     refuse: () => "석벽을 포기하고 장을 넓힙니다 · 좌판세 × 2 · 상인 게이지 +5",
   },
+  // UI-8: the four plague petitions (F3-A PL-5…PL-8), each offering exactly the def's two answers.
+  vacant_priest: {
+    title: "빈 사제 자리",
+    demand: "첫 사망과 함께 사제가 역병으로 죽었습니다. 교회가 비어 있습니다.",
+    /** PL-6: accept — monastery priest; refuse — lay clerk. */
+    accept: (stipend: number) => `봉급 ${pence(stipend)}를 내고 수도원의 사제를 청합니다 · 두 계절 뒤에 옵니다 · 주교 세력 +10`,
+    refuse: () => "평신도 서기를 세웁니다 · 돈이 들지 않고 곧 기도를 맡습니다 · 주교 세력 −15",
+  },
+  wages: {
+    title: "일꾼들의 임금 요구",
+    demand: (workers: number) => `역병이 지나 일손이 줄었습니다. 일꾼 ${workers}명이 임금 인상을 요구합니다.`,
+    /** PL-5: accept — raise wages; refuse — hold by statute. */
+    accept: "임금을 올립니다 · 장부 기간마다 일꾼 1인당 1d · 일꾼이 남습니다",
+    refuse: () => "임금을 묶습니다 · 계절마다 가난한 가구가 임금을 주는 곳으로 떠날 수 있습니다",
+  },
+  land_redistribution: {
+    title: "빈 필지의 주인",
+    demand: (vacant: number) => `역병이 빈 필지 ${vacant}곳을 남겼습니다. 주민들이 어떻게 쓸지 청합니다.`,
+    /** PL-7: accept — neighbours expand; accept_with_price — new settlers with entry fine. */
+    accept: "이웃 가구가 빈 필지를 넓혀 씁니다 · 계절마다 한 가구씩 듭니다",
+    accept_with_price: (households: number, fine: number) => `새 이주민을 받습니다 · 계절마다 ${households}가구씩, 가구당 ${pence(fine)}`,
+  },
+  cash_rent: {
+    title: "부역을 돈으로 바꾸자는 청원",
+    demand: "재정착이 시작됩니다. 소작인들이 부역 대신 화폐 지대를 청합니다.",
+    /** PL-8: accept — commute to cash; refuse — keep labour services. */
+    accept: () => "화폐 지대로 바꿉니다 · 지대 ×1.25 · 권리 목록에 화폐 지대 권리",
+    refuse: () => "부역을 지킵니다 · 영주 시설 유지비 ×0.75 · 계절마다 가구가 달아날 수 있습니다",
+  },
   /** The Crown's writ (its hanging seal carries the Crown's arms); the petitioner line for every card. */
   writ: "국왕의 칙서",
   senderHeading: "보낸 사람",

@@ -26,6 +26,17 @@ export type ChronicleView = Readonly<{
 export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "params">): StoryIllustration {
   const param = (key: string) => String(record.params?.[key] ?? "");
   switch (record.template) {
+    // UI-8 (F3-A): plague records mapped to Wave 21 chronicle scenes (384×384).
+    // rumour / arrived / priest_died → first-death scene (the earliest visible plague sign).
+    // new_graves → churchyard, empty_streets / abandoned_fields → abandoned fields.
+    // ordinance → the ordinance proclamation, resettlement → resettlement scene.
+    // second / second_ended → spring recovery (the plague ebbing).
+    case "plague.rumour": case "plague.arrived": case "plague.priest_died": return "ch3_chronicle_first_death";
+    case "plague.new_graves": case "plague.second": return "ch3_chronicle_churchyard";
+    case "plague.empty_streets": case "plague.abandoned_fields": return "ch3_chronicle_abandoned_fields";
+    case "plague.ordinance": return "ch3_chronicle_ordinance";
+    case "plague.resettlement": return "ch3_chronicle_resettlement";
+    case "plague.second_ended": return "ch3_chronicle_spring_recovery";
     // UI-6 (F2-A): the war's records with the Wave 17 chronicle scenes.
     case "war.messenger": return "chronicle_messenger";
     case "war.beacon": return "chronicle_beacon";

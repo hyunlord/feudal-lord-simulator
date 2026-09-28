@@ -30,5 +30,10 @@ export const DECISION_COPY = {
     refuse: { label: "거절", line: () => "시장권을 주지 않습니다. 상인들이 등을 돌립니다" },
   },
   rightsHeading: "권리 목록",
-  right: (holder: string, feePermille: number) => `${holder === "merchants" ? "상인 무리" : holder}: 시장권 · 좌판세 × ${(feePermille / 1000).toFixed(2)}`,
+  // UI-8 (F3-A PL-8): commuted_rent (holder townsfolk) is a labour-commutation right, not a market charter.
+  // All other granted rights are market charters (holder merchants).
+  right: (holder: string, feePermille: number, rightId?: string) =>
+    rightId === "commuted_rent"
+      ? "소작인: 화폐 지대 · 부역 면제"
+      : `${holder === "merchants" ? "상인 무리" : holder}: 시장권 · 좌판세 × ${(feePermille / 1000).toFixed(2)}`,
 } as const;

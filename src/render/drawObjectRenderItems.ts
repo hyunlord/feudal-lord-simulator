@@ -23,6 +23,7 @@ import { beginBuildingVariantFrame } from "./buildingVariants";
 import { beginHouseVariantFrame } from "./wave26HouseArt";
 import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
+import { drawPlagueProp } from "./plagueWorldProps";
 import { drawCountrysideItem } from "./countrysideDraw";
 
 type DrawObjectRenderItemsInput = {
@@ -78,6 +79,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "war_prop") { // UI-6 the war's beacon, burning quay and raid smoke
       if (viewMode === "normal") drawWarProp(context, item.prop, input.zoom, input.nowMs ?? 0);
+      continue;
+    }
+    if (item.kind === "plague_prop") { // UI-8 chapter 3 fresh graves in the churchyard
+      if (viewMode === "normal") drawPlagueProp(context, item.prop);
       continue;
     }
     if (item.kind === "countryside") { // INSTALL-28 hedges, baulks, dry-stone walls and point props outside the walls

@@ -123,6 +123,8 @@ export const CHRONICLE_SCREEN_COPY = {
   noHousehold: "가구 없음",
   portraitMatch: (identity: string, stage: string, exact: boolean) =>
     `초상 ${identity}${PORTRAIT_STAGES[stage] === "" || PORTRAIT_STAGES[stage] === undefined ? "" : ` ${PORTRAIT_STAGES[stage]}`} · ${exact ? "성별·나이대·계층 일치" : "가장 가까운 그림"}`,
+  // UI-8 (F3-A PL-2): plague death cause shown below the life span in the biography header.
+  plagueDeath: (year: number) => `역병으로 죽음 (${year})`,
   lifeHeading: "생애",
   lifeEmpty: "아직 남긴 기록이 없습니다",
   relationsHeading: "관계",
