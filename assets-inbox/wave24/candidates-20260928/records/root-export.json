@@ -1,0 +1,72 @@
+{
+  "main": {
+    "native": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1657,
+      "height": 949,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1657,
+        "height": 949
+      }
+    },
+    "final": [
+      1232,
+      706
+    ],
+    "method": "independently generated, technical aspect normalization"
+  },
+  "emblem": {
+    "native": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 4,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": true,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "alpha": {
+      "min": 0,
+      "max": 255,
+      "sum": 116079672,
+      "squaresSum": 29085396472,
+      "mean": 73.77857720332132,
+      "stdev": 114.20591629044705,
+      "minX": 0,
+      "minY": 48,
+      "maxX": 769,
+      "maxY": 112
+    },
+    "final": [
+      1280,
+      720
+    ]
+  },
+  "icons": {
+    "method": "same emblem alpha-bound trim, fit, eight-pixel padding",
+    "sizes": [
+      184,
+      256
+    ]
+  }
+}

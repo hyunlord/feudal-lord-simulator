@@ -27,7 +27,10 @@ export function manifestArt<K extends string>(manifest: Readonly<Record<K, Meta>
   };
   return {
     art,
-    preload: (): void => { for (const key of Object.keys(manifest) as K[]) art(key); },
+    /** Starts loading every entry, or those whose url `include` accepts (BUDGET-1b: the chapters entered, chapterArt.ts). */
+    preload: (include?: (url: string) => boolean): void => {
+      for (const key of Object.keys(manifest) as K[]) if (include === undefined || include(manifest[key].url)) art(key);
+    },
     /** Draws `key` with its pivot at (x, y), `scale` world px per asset px; `frame` picks a sheet cell. False until loaded. */
     draw: (context: CanvasRenderingContext2D, key: K, x: number, y: number, scale: number, frame = 0): boolean => {
       const image = art(key);

@@ -14,13 +14,15 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { frameBuildingVariant, variantRandom, type BuildingVariant } from "./buildingVariants";
 import { variantSprite } from "./buildingVariantAssets";
+import { chapterOfArt } from "./chapterArt";
 
 type Meta = typeof historicalFacilityManifest[number];
-type Asset = { readonly meta: Meta; readonly url: string; status: "idle" | "loading" | "ready" | "missing"; image: HTMLImageElement | null; raster: RasterizedWorldSprite | null; rasterError: string | null };
+type Asset = { readonly meta: Meta; readonly url: string; status: "idle" | "loading" | "ready" | "missing"; image: HTMLImageElement | null; raster: RasterizedWorldSprite | null; rasterError: string | null; loaded: Promise<void> | null };
 const assets: Asset[] = historicalFacilityManifest.map(meta => ({ meta,
-  url: assetUrlForBase(meta.url, import.meta.env?.BASE_URL ?? "/"), status: "idle", image: null, raster: null, rasterError: null,
+  url: assetUrlForBase(meta.url, import.meta.env?.BASE_URL ?? "/"), status: "idle", image: null, raster: null, rasterError: null, loaded: null,
 }));
-let preload: Promise<void> | null = null;
+/** BUDGET-1b: one promise per chapter limit asked for (the same call gives the same promise). */
+const preloads = new Map<number, Promise<void>>();
 const marketActivity = new WeakMap<GameState, WeakMap<Building, boolean>>();
 
 function marketIsActive(state: GameState, building: Building): boolean {
@@ -36,9 +38,19 @@ function marketIsActive(state: GameState, building: Building): boolean {
   return active;
 }
 
-export function preloadHistoricalFacilityAssets(): Promise<void> {
+/** Starts loading the facility paintings of chapters up to `chapter` (chapterArt.ts; default: all), each once. */
+export function preloadHistoricalFacilityAssets(chapter = Number.POSITIVE_INFINITY): Promise<void> {
   if (typeof globalThis.Image !== "function") return Promise.resolve();
-  preload ??= Promise.all(assets.map(asset => new Promise<void>(resolve => {
+  let preload = preloads.get(chapter);
+  if (preload === undefined) {
+    preload = Promise.all(assets.filter(asset => chapterOfArt(asset.meta.url) <= chapter).map(loadAsset)).then(() => undefined);
+    preloads.set(chapter, preload);
+  }
+  return preload;
+}
+
+function loadAsset(asset: Asset): Promise<void> {
+  asset.loaded ??= new Promise<void>(resolve => {
     asset.status = "loading";
     try {
       const image = new Image();
@@ -64,8 +76,8 @@ export function preloadHistoricalFacilityAssets(): Promise<void> {
       asset.status = "missing";
       resolve();
     }
-  }))).then(() => undefined);
-  return preload;
+  });
+  return asset.loaded;
 }
 
 export function historicalFacilityAssetStatuses() {
@@ -128,8 +140,8 @@ export function drawHistoricalFacility(context: CanvasRenderingContext2D, buildi
   if (variant?.id !== "windmill" && drawAnimatedMill(context, building)) return true;
   const id = historicalFacilityAssetId(building, state);
   if (id === null) return false;
-  void preloadHistoricalFacilityAssets();
   const asset = assets.find(candidate => candidate.meta.id === id);
+  if (asset !== undefined && typeof globalThis.Image === "function") void loadAsset(asset);
   const rect = historicalFacilitySpriteRect(building);
   if (asset?.status !== "ready" || asset.image === null || rect === null) return false;
   const url = facilityVariantUrl(variant, id);
