@@ -1,0 +1,510 @@
+{
+ "run": "engine-F4A-ch4-7b9392c",
+ "commit": "7b9392c",
+ "seeds": [
+  {
+   "seed": 1,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 93,
+    "merchant_house_1": 76,
+    "merchant_house_2": 45
+   },
+   "guild": true,
+   "clothSold": 874,
+   "clothIncome": 18049,
+   "wageLeavers": 3,
+   "weaverLeavers": 0,
+   "pollTax": 1852,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 252000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 4260,
+    "total": 10668,
+    "clothPermille": 399,
+    "largestOther": [
+     "rent",
+     3186
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3186,
+     "cloth_toll": 2000,
+     "ulnage": 1600,
+     "poll_tax": 1249,
+     "mill_toll": 846,
+     "toll": 842,
+     "fulling_toll": 660,
+     "stall_fee": 285
+    }
+   },
+   "chapterIncome": {
+    "cloth": 18049,
+    "total": 45607,
+    "clothPermille": 396,
+    "largestOther": [
+     "rent",
+     16126
+    ],
+    "clothChief": true
+   },
+   "relations": {
+    "overlord": 5,
+    "crown": 25,
+    "neighbour_1": -6,
+    "neighbour_2": 0,
+    "bishop": 15,
+    "merchant_house_1": 25,
+    "merchant_house_2": 0,
+    "town": 38,
+    "commons": 40
+   },
+   "final": {
+    "tick": 329000,
+    "year": 1382,
+    "population": 768,
+    "treasury": 56962,
+    "lived": 24,
+    "l4": 24,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 5,
+    "rights": [
+     "market_charter:merchants",
+     "commuted_rent:townsfolk",
+     "market_tolls:townsfolk",
+     "bridge_tolls:townsfolk"
+    ]
+   }
+  },
+  {
+   "seed": 2,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 93,
+    "merchant_house_1": 73,
+    "merchant_house_2": 43
+   },
+   "guild": true,
+   "clothSold": 619,
+   "clothIncome": 12936,
+   "wageLeavers": 2,
+   "weaverLeavers": 0,
+   "pollTax": 1844,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 256000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 3801,
+    "total": 10284,
+    "clothPermille": 370,
+    "largestOther": [
+     "rent",
+     3360
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3360,
+     "cloth_toll": 1800,
+     "ulnage": 1440,
+     "poll_tax": 1229,
+     "toll": 828,
+     "mill_toll": 814,
+     "fulling_toll": 561,
+     "stall_fee": 252
+    }
+   },
+   "chapterIncome": {
+    "cloth": 12936,
+    "total": 39413,
+    "clothPermille": 328,
+    "largestOther": [
+     "rent",
+     16209
+    ],
+    "clothChief": false
+   },
+   "relations": {
+    "overlord": 5,
+    "crown": 18,
+    "neighbour_1": -4,
+    "neighbour_2": 0,
+    "bishop": 13,
+    "merchant_house_1": 25,
+    "merchant_house_2": 0,
+    "town": 38,
+    "commons": 40
+   },
+   "final": {
+    "tick": 329000,
+    "year": 1382,
+    "population": 768,
+    "treasury": 36033,
+    "lived": 24,
+    "l4": 24,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 5,
+    "rights": [
+     "market_charter:merchants",
+     "commuted_rent:townsfolk",
+     "market_tolls:townsfolk",
+     "bridge_tolls:townsfolk"
+    ]
+   }
+  },
+  {
+   "seed": 3,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 93,
+    "merchant_house_1": 74,
+    "merchant_house_2": 44
+   },
+   "guild": true,
+   "clothSold": 781,
+   "clothIncome": 16228,
+   "wageLeavers": 1,
+   "weaverLeavers": 0,
+   "pollTax": 1893,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 252000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 4209,
+    "total": 10037,
+    "clothPermille": 419,
+    "largestOther": [
+     "rent",
+     3360
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3360,
+     "cloth_toll": 2000,
+     "ulnage": 1600,
+     "poll_tax": 1270,
+     "mill_toll": 842,
+     "fulling_toll": 609,
+     "stall_fee": 356
+    }
+   },
+   "chapterIncome": {
+    "cloth": 16228,
+    "total": 40281,
+    "clothPermille": 403,
+    "largestOther": [
+     "rent",
+     16320
+    ],
+    "clothChief": false
+   },
+   "relations": {
+    "overlord": 13,
+    "crown": 18,
+    "neighbour_1": -1,
+    "neighbour_2": 0,
+    "bishop": 13,
+    "merchant_house_1": 45,
+    "merchant_house_2": 0,
+    "town": 28,
+    "commons": 40
+   },
+   "final": {
+    "tick": 329000,
+    "year": 1382,
+    "population": 768,
+    "treasury": 22901,
+    "lived": 24,
+    "l4": 24,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 5,
+    "rights": [
+     "market_charter:merchants",
+     "commuted_rent:townsfolk",
+     "market_tolls:townsfolk",
+     "bridge_tolls:townsfolk"
+    ]
+   }
+  },
+  {
+   "seed": 4,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 92,
+    "merchant_house_1": 76,
+    "merchant_house_2": 45
+   },
+   "guild": true,
+   "clothSold": 875,
+   "clothIncome": 18125,
+   "wageLeavers": 2,
+   "weaverLeavers": 0,
+   "pollTax": 1844,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 252000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 4251,
+    "total": 10752,
+    "clothPermille": 395,
+    "largestOther": [
+     "rent",
+     3242
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3242,
+     "cloth_toll": 2000,
+     "ulnage": 1600,
+     "poll_tax": 1225,
+     "toll": 978,
+     "mill_toll": 804,
+     "fulling_toll": 651,
+     "stall_fee": 252
+    }
+   },
+   "chapterIncome": {
+    "cloth": 18125,
+    "total": 46216,
+    "clothPermille": 392,
+    "largestOther": [
+     "rent",
+     16145
+    ],
+    "clothChief": true
+   },
+   "relations": {
+    "overlord": 5,
+    "crown": 25,
+    "neighbour_1": -4,
+    "neighbour_2": 0,
+    "bishop": 15,
+    "merchant_house_1": 25,
+    "merchant_house_2": 0,
+    "town": 38,
+    "commons": 40
+   },
+   "final": {
+    "tick": 329000,
+    "year": 1382,
+    "population": 744,
+    "treasury": 50826,
+    "lived": 24,
+    "l4": 23,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 5,
+    "rights": [
+     "market_charter:merchants",
+     "commuted_rent:townsfolk",
+     "market_tolls:townsfolk",
+     "bridge_tolls:townsfolk"
+    ]
+   }
+  },
+  {
+   "seed": 5,
+   "chapter3End": 1362,
+   "chapter4End": 1382,
+   "chapter": 5,
+   "answers": {
+    "guild_charter": "accept",
+    "cloth_or_grain": "accept",
+    "tax_collection": "accept",
+    "borough_charter": "accept"
+   },
+   "rebellion": {
+    "tick": 325000,
+    "pressure": 10,
+    "outcome": "quiet"
+   },
+   "charter": "partial",
+   "influence": {
+    "town": 98,
+    "merchant_house_1": 76,
+    "merchant_house_2": 45
+   },
+   "guild": true,
+   "clothSold": 966,
+   "clothIncome": 19786,
+   "wageLeavers": 1,
+   "weaverLeavers": 0,
+   "pollTax": 1887,
+   "steps": {
+    "wage_competition": 249000,
+    "textile_street": 252000,
+    "alehouse_boom": 256000,
+    "petitions_surge": 272000,
+    "guild_demand": 276000,
+    "cloth_or_grain": 280000,
+    "overlord_warning": 276000,
+    "poll_tax": 308000,
+    "rebellion_rumour": 325000,
+    "autonomy_request": 328000,
+    "end": 329000
+   },
+   "lastFourYears": {
+    "fromYear": 1378,
+    "cloth": 5034,
+    "total": 13041,
+    "clothPermille": 386,
+    "largestOther": [
+     "rent",
+     3360
+    ],
+    "clothChief": true,
+    "categories": {
+     "rent": 3360,
+     "cloth_toll": 2390,
+     "toll": 2130,
+     "ulnage": 1912,
+     "poll_tax": 1258,
+     "mill_toll": 865,
+     "fulling_toll": 732,
+     "stall_fee": 394
+    }
+   },
+   "chapterIncome": {
+    "cloth": 19786,
+    "total": 53246,
+    "clothPermille": 372,
+    "largestOther": [
+     "rent",
+     16146
+    ],
+    "clothChief": true
+   },
+   "relations": {
+    "overlord": 5,
+    "crown": 25,
+    "neighbour_1": -2,
+    "neighbour_2": 0,
+    "bishop": 15,
+    "merchant_house_1": 25,
+    "merchant_house_2": 0,
+    "town": 38,
+    "commons": 40
+   },
+   "final": {
+    "tick": 329000,
+    "year": 1382,
+    "population": 768,
+    "treasury": 56399,
+    "lived": 24,
+    "l4": 24,
+    "era": "stone_town",
+    "outcome": "ongoing",
+    "chapter": 5,
+    "rights": [
+     "market_charter:merchants",
+     "commuted_rent:townsfolk",
+     "market_tolls:townsfolk",
+     "bridge_tolls:townsfolk"
+    ]
+   }
+  }
+ ]
+}
