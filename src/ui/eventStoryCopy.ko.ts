@@ -167,7 +167,7 @@ export const EVENT_STORY_COPY = {
       advice: "직물 거리와 에일집이 모두 서면 청원이 잇달아 옵니다" },
     /** RG-1: the surge of petitions begins. */
     petitionsSurge: { title: "청원 물결", line: "도시 공동체의 힘이 커졌습니다. 청원이 잇달아 밀려옵니다",
-      advice: "조합·인두세·자치 특허 청원에 차례로 답해야 합니다" },
+      advice: "길드·직물 대 곡물·인두세·자치 특허, 네 결정이 차례로 옵니다" },
     /** RG-4: the overlord warns the lord about the town's growing power. */
     overlordWarning: { title: "백작의 경고", line: "상위 영주(백작)가 도시 공동체의 힘이 지나치게 커졌다고 경고합니다",
       advice: "경고 뒤에 자치 특허를 내주면 백작이 더 크게 돌아섭니다" },

@@ -84,30 +84,35 @@ export const PETITION_COPY = {
     refuse: () => "부역을 지킵니다 · 영주 시설 유지비 ×0.75 · 계절마다 가구가 달아날 수 있습니다",
   },
   // UI-9 (F4-A RG-5…RG-9): chapter 4 reorganisation petitions (two answers each — accept / refuse).
+  // UI-9 (F4-A RG-5…RG-9): chapter 4's four cards; each answer's relations come from the engine's table (`relations`).
   guild_charter: {
-    title: "장인 조합 설립 청원",
-    demand: "장인 무리가 직물 조합을 꾸릴 권리를 청합니다. 조합이 서면 직물 공방이 더 빠르게 돌아갑니다.",
-    accept: () => "조합을 허합니다 · 직물 공방 작업 ×¾ · 도시 세력 +10 · 상인 세력 +5",
-    refuse: (households: number) => `거부합니다 · 직조공 ${households}가구 이탈 · 직물 공방 작업 ×1¼`,
+    title: "길드 인가 청원",
+    demand: "장인들이 직물 길드를 세우게 해 달라고 청합니다. 길드가 서면 직물 네 건물이 더 빨리 돌아갑니다.",
+    accept: (relations: string) => `길드를 인가합니다 · 직물 네 건물 작업 ×¾ · 도시의 힘 +20 · 자치 요구가 1382년으로 · ${relations}`,
+    refuse: (households: number, relations: string) => `거부합니다 · 다음 계절 직조공 ${households}가구가 떠남 · 직조 작업 ×1¼ · 반란 압력 +10 · ${relations}`,
   },
   tax_collection: {
-    title: "인두세 위탁 징수 청원",
-    demand: "도시 공동체가 인두세를 스스로 걷어 납부하겠다고 청합니다.",
-    accept: (perAdult: number) => `위탁합니다 · 성인 1인당 ${pence(perAdult)} · 도시 세력 +10 · 평민 세력 +10`,
-    refuse: (perAdult: number) => `직접 징수합니다 · 성인 1인당 ${pence(perAdult)} · 반란 압력 +40 · 평민 세력 −10`,
+    title: "인두세 징수 방식",
+    demand: "국왕의 인두세(14세 이상 한 사람 4d)를 도시 공동체가 스스로 걷겠다고 청합니다. 국왕의 몫은 금고를 지나지 않고 영주의 몫만 듭니다.",
+    accept: (perAdult: number, relations: string) => `도시 공동체에 맡깁니다 · 걷을 때마다 어른 한 사람당 ${pence(perAdult)} · ${relations}`,
+    refuse: (perAdult: number, relations: string) => `영주의 징수원이 걷습니다 · 어른 한 사람당 ${pence(perAdult)} · 반란 압력 +40 · ${relations}`,
   },
   cloth_or_grain: {
-    title: "직물 전업 청원",
-    demand: "상인들이 곡물 교역을 접고 직물에 전업하자고 청합니다.",
-    accept: () => "직물 전업입니다 · 직물가 인상 · 흉년 피해 감소 · 상인 세력 +10",
-    refuse: () => "혼합 교역을 유지합니다 · 상인 세력 −10 · 평민 세력 +5",
+    title: "직물 대 곡물",
+    demand: "상인들이 영지의 쟁기밭을 양으로 돌려 직물에 걸자고 청합니다.",
+    accept: (price: number, harvestPercent: number, relations: string) =>
+      `직물에 겁니다 · 직물 값 ${pence(price)} · 흉년 수확 ${harvestPercent} %로 줄어듦(식량이 약해짐) · 반란 압력 +10 · ${relations}`,
+    refuse: (relations: string) => `곡물을 지킵니다 · 바뀌는 것 없음 · ${relations}`,
   },
   borough_charter: {
-    title: "자치 특허 청원",
-    demand: "도시 공동체가 자치 특허를 청합니다. 시장세·교량세·수수료를 받을 권리를 원합니다.",
-    accept: (feeFarm: number) => `자치를 허합니다 · 시장세·교량세 절반이 금고로 · 연간 수수료 ${pence(feeFarm)} · 도시 세력 +20`,
-    refuse: () => "거부합니다 · 5장에서 반발 · 도시 세력 −25 · 상인 세력 −15",
+    title: "자치 특허 협상",
+    demand: "도시 공동체가 자치 특허를 청합니다. 시장 좌판세와 통행세 절반을 도시가 걷고, 그 대가로 해마다 영주에게 fee farm을 내겠다고 합니다.",
+    accept: (feeFarm: number, relations: string) => `일부 허용합니다 · 시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 ${pence(feeFarm)} · ${relations}`,
+    refuse: (relations: string) => `거부합니다 · 권리는 그대로 · 5장에 도시의 반발 · ${relations}`,
   },
+  /** The relations an answer moves, short names (`REORGANISATION_RELATIONS`); the earl's line after his warning. */
+  relations: (moves: readonly (readonly [who: string, delta: number])[]) => `관계 ${moves.map(([who, delta]) => `${who} ${delta > 0 ? "+" : "−"}${Math.abs(delta)}`).join(" · ")}`,
+  relationNames: { town: "도시", merchant_house_1: "상인", overlord: "백작", crown: "국왕", commons: "평민" } as Readonly<Record<string, string>>,
   /** The Crown's writ (its hanging seal carries the Crown's arms); the petitioner line for every card. */
   writ: "국왕의 칙서",
   senderHeading: "보낸 사람",

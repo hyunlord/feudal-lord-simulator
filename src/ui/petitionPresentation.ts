@@ -1,6 +1,6 @@
 import { PETITION_DEFS, type PetitionResponse } from "../content/chapterConfig";
 import { PLAGUE_BALANCE } from "../content/plagueConfig";
-import { REORGANISATION_BALANCE } from "../content/reorganisationConfig";
+import { REORGANISATION_BALANCE, REORGANISATION_EVENT_RELATIONS, REORGANISATION_RELATIONS, type ReorganisationPetitionId } from "../content/reorganisationConfig";
 import { WAR_BALANCE } from "../content/warConfig";
 import { factionDisplayName } from "../content/factionCopy.ko";
 import { PETITION_SUBJECTS, WAR_CHOICES } from "../content/historyCopy.ko";
@@ -132,32 +132,41 @@ const PRESENTATIONS: Readonly<Record<string, Presentation>> = {
   guild_charter: {
     art: { sheet: "wave21", id: "ch4_decision_guild_approval" }, title: PETITION_COPY.guild_charter.title,
     demand: () => PETITION_COPY.guild_charter.demand,
-    line: (_state, response) => response === "accept"
-      ? PETITION_COPY.guild_charter.accept()
-      : PETITION_COPY.guild_charter.refuse(REORGANISATION_BALANCE.refusedWeaverHouseholds),
+    line: (state, response) => response === "accept"
+      ? PETITION_COPY.guild_charter.accept(reorgRelations(state, "guild_charter", response))
+      : PETITION_COPY.guild_charter.refuse(REORGANISATION_BALANCE.refusedWeaverHouseholds, reorgRelations(state, "guild_charter", response)),
   },
   tax_collection: {
     art: { sheet: "wave21", id: "ch4_decision_tax_collection" }, title: PETITION_COPY.tax_collection.title,
     demand: () => PETITION_COPY.tax_collection.demand,
-    line: (_state, response) => response === "accept"
-      ? PETITION_COPY.tax_collection.accept(REORGANISATION_BALANCE.delegatedPerAdult)
-      : PETITION_COPY.tax_collection.refuse(REORGANISATION_BALANCE.directPerAdult),
+    line: (state, response) => response === "accept"
+      ? PETITION_COPY.tax_collection.accept(REORGANISATION_BALANCE.delegatedPerAdult, reorgRelations(state, "tax_collection", response))
+      : PETITION_COPY.tax_collection.refuse(REORGANISATION_BALANCE.directPerAdult, reorgRelations(state, "tax_collection", response)),
   },
   cloth_or_grain: {
     art: { sheet: "wave21", id: "ch4_decision_textile_or_grain" }, title: PETITION_COPY.cloth_or_grain.title,
     demand: () => PETITION_COPY.cloth_or_grain.demand,
-    line: (_state, response) => response === "accept"
-      ? PETITION_COPY.cloth_or_grain.accept()
-      : PETITION_COPY.cloth_or_grain.refuse(),
+    line: (state, response) => response === "accept"
+      ? PETITION_COPY.cloth_or_grain.accept(REORGANISATION_BALANCE.specialisedClothPrice, REORGANISATION_BALANCE.specialisedHarvestPermille / 10,
+        reorgRelations(state, "cloth_or_grain", response))
+      : PETITION_COPY.cloth_or_grain.refuse(reorgRelations(state, "cloth_or_grain", response)),
   },
   borough_charter: {
     art: { sheet: "wave21", id: "ch4_decision_charter_negotiation" }, title: PETITION_COPY.borough_charter.title,
     demand: () => PETITION_COPY.borough_charter.demand,
-    line: (_state, response) => response === "accept"
-      ? PETITION_COPY.borough_charter.accept(REORGANISATION_BALANCE.feeFarm)
-      : PETITION_COPY.borough_charter.refuse(),
+    line: (state, response) => response === "accept"
+      ? PETITION_COPY.borough_charter.accept(REORGANISATION_BALANCE.feeFarm, reorgRelations(state, "borough_charter", response))
+      : PETITION_COPY.borough_charter.refuse(reorgRelations(state, "borough_charter", response)),
   },
 };
+
+/** UI-9: an answer's relation moves (the engine's table), the earl's larger turn after his warning (RG-9). */
+function reorgRelations(state: GameState, defId: ReorganisationPetitionId, response: string): string {
+  const moves = Object.entries(REORGANISATION_RELATIONS[defId][response === "refuse" ? "refuse" : "accept"] ?? {}).map(([id, delta]) => [id, delta ?? 0] as const)
+    .map(([id, delta]) => [id, defId === "borough_charter" && response === "accept" && id === "overlord" && state.reorganisation?.warningTick !== undefined
+      ? delta + REORGANISATION_EVENT_RELATIONS.warnedOverlord : delta] as const);
+  return PETITION_COPY.relations(moves.map(([id, delta]) => [PETITION_COPY.relationNames[id] ?? id, delta] as const));
+}
 
 function livedIn(state: GameState): number {
   return state.houses.filter(house => house.residents > 0).length;
