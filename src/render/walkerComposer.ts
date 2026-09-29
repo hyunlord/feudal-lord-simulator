@@ -81,12 +81,27 @@ type Cell = OffscreenCanvas | HTMLCanvasElement;
 const CELL_BYTES = WALKER_COMPOSED_CELL * WALKER_COMPOSED_CELL * 4;
 const cells = new Map<CellKey, Cell>();
 const madeCells = new WeakSet<object>();
+/** When each cell was last drawn: a cell no walker drew for STALE_MS goes to the budget's pool (checked every SWEEP_MS),
+ * so the cells follow the looks shown now (a town's looks change with its trips: 1,394 cells collected in 150 s). */
+const lastDrawnMs = new Map<CellKey, number>();
+const STALE_MS = 10_000; const SWEEP_MS = 2_000;
+let lastSweepMs = 0;
+function sweepStaleCells(nowMs: number): void {
+  if (nowMs - lastSweepMs < SWEEP_MS) return;
+  lastSweepMs = nowMs;
+  for (const [key, drawnMs] of lastDrawnMs) {
+    if (nowMs - drawnMs < STALE_MS) continue;
+    const cell = cells.get(key);
+    cells.delete(key); lastDrawnMs.delete(key); canvasBudget.forget(cellOwner, key);
+    if (cell !== undefined) canvasBudget.give(cell);
+  }
+}
 const stats = { composed: 0, evicted: 0, composeMsTotal: 0, composeMsMax: 0, firstComposeMs: null as number | null };
 const cellOwner: BudgetOwner = {
   name: "walker-cells",
   evict(key) {
     const cell = cells.get(key as CellKey);
-    cells.delete(key as CellKey); stats.evicted += 1;
+    cells.delete(key as CellKey); lastDrawnMs.delete(key as CellKey); stats.evicted += 1;
     if (cell !== undefined) { cell.width = 0; cell.height = 0; }
   },
 };
@@ -95,8 +110,10 @@ const cellOwner: BudgetOwner = {
 function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: WalkerCloakKind | null,
   direction: WalkerPresentationDirection, gaitFrame: number): Cell | null {
   const key: CellKey = `${sheetId}|${prop ?? "-"}|${cloak ?? "-"}|${direction}${gaitFrame}`;
+  const nowMs = typeof performance === "undefined" ? 0 : performance.now();
+  sweepStaleCells(nowMs);
   const hit = cells.get(key);
-  if (hit !== undefined) { canvasBudget.touch(cellOwner, key, "onscreen"); return hit; }
+  if (hit !== undefined) { canvasBudget.touch(cellOwner, key, "onscreen"); lastDrawnMs.set(key, nowMs); return hit; }
   const images = lookImages(sheetId, prop, cloak);
   const sheet = walkerSheet(sheetId);
   const frame = sheet.frames.find(candidate => candidate.direction === direction && candidate.gaitFrame === gaitFrame);
@@ -136,7 +153,7 @@ function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak
   const elapsed = typeof performance === "undefined" ? 0 : performance.now() - started;
   stats.composed += 1; stats.composeMsTotal += elapsed; stats.composeMsMax = Math.max(stats.composeMsMax, elapsed);
   stats.firstComposeMs ??= elapsed;
-  cells.set(key, cell);
+  cells.set(key, cell); lastDrawnMs.set(key, nowMs);
   canvasBudget.track(cellOwner, key, CELL_BYTES, "onscreen");
   return cell;
 }
@@ -246,7 +263,7 @@ export function composedLookForProof(sheetId: WalkerSheetId, prop: WalkerPropKin
 /** Evidence: drop composed cells and looks (a fresh session). */
 export function resetWalkerComposerForProof(): void {
   for (const key of cells.keys()) canvasBudget.forget(cellOwner, key);
-  cells.clear(); lookCache.clear(); lastWalkers = null;
+  cells.clear(); lastDrawnMs.clear(); lookCache.clear(); lastWalkers = null;
   Object.assign(stats, { composed: 0, evicted: 0, composeMsTotal: 0, composeMsMax: 0, firstComposeMs: null });
 }
 
