@@ -22,10 +22,16 @@ export type PredictionPresentation = {
 export function PredictionPanel({ lines, position, chip }: PredictionPresentation) {
   const panelRef = useRef<HTMLElement>(null);
   const [height, setHeight] = useState(184);
+  // SMOOTH-2R: set only a new height. The panel follows the pointer and its lines change every frame of a drag; an
+  // equal setHeight from the layout effect and the observer's first call still cost React a render and a commit each.
+  const heightRef = useRef(height);
   useLayoutEffect(() => {
     const element = panelRef.current;
     if (element === null) return;
-    const measure = () => setHeight(Math.ceil(element.getBoundingClientRect().height));
+    const measure = () => {
+      const next = Math.ceil(element.getBoundingClientRect().height);
+      if (next !== heightRef.current) { heightRef.current = next; setHeight(next); }
+    };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(element);

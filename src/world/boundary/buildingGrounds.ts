@@ -103,7 +103,14 @@ const SIDES = [
 ] as const;
 
 export function buildingGrounds(input: BuildingGroundsInput): BuildingGrounds {
+  const steps = buildingGroundsSteps(input);
+  for (let step = steps.next(); ; step = steps.next()) if (step.done === true) return step.value;
+}
+
+/** SMOOTH-2R: the same, a building at a time (the live ground scene build spreads it over frames, groundSceneBuild.ts). */
+export function* buildingGroundsSteps(input: BuildingGroundsInput): Generator<void, BuildingGrounds, void> {
   const roadDistance = roadDistanceField(input.graph, input.mapWidth, input.mapHeight);
+  yield;
   const stone = new Set<number>();
   for (const chain of input.graph.chains) chain.cells.forEach((cell, index) => { if (chain.materials[index] === "stone") stone.add(cell.ty * input.mapWidth + cell.tx); });
   for (const point of input.graph.fixedPoints) if (point.material === "stone") stone.add(point.ty * input.mapWidth + point.tx);
@@ -122,6 +129,7 @@ export function buildingGrounds(input: BuildingGroundsInput): BuildingGrounds {
     if (yard !== null) yards.push(yard);
     const apron = buildingApron(input, building, roadDistance, half, footprintOwner, stone);
     if (apron !== null) aprons.push(apron);
+    yield;
   }
   return { yards, aprons, roadDistance };
 }
