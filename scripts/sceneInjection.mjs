@@ -13,8 +13,12 @@ export const GAME_STORE_ROUTE = '**/src/state/gameStore.ts*';
 const ANCHOR = 'useState(DEFAULT_GAME_STATE)';
 
 /** The keys a bare state lacks that a state of today's schema carries (empty: it is current). No free variables. */
+/** New-game keys an older save may lack by design (its schema had no such field and the migration gives none). */
+const OPTIONAL_NEW_GAME_KEYS = new Set(['river']);
+
 export function staleStateKeys(state, newGame, codec) {
-  const missing = Object.keys(newGame).filter(key => !(key in state));
+  // ARCH-1b (MA-9): the map's river is optional — a save from before v32 has none (its water all flows), not stale.
+  const missing = Object.keys(newGame).filter(key => !(key in state) && !OPTIONAL_NEW_GAME_KEYS.has(key));
   // Older than today's new game: refused without running the chain (in the page, v9 -> v10 reads Node's process).
   if (missing.length > 0 || typeof state.tick !== 'number' || state.tick <= newGame.tick) return missing;
   const firstTick = new Set(Object.keys(codec.advanceTick(structuredClone(newGame))));

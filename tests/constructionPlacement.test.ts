@@ -84,6 +84,8 @@ function buildableSettlement(treasuryTimber = 500): GameState {
     roadRevision: 1,
     pathCache: {},
     treasuryCoin: 0,
+    // ARCH-1b (MA-10): the pool at x 45 is a brook here (the fulling mill's wheel needs running water); all else is grass.
+    river: { kind: "brook", cells: [1 * 64 + 45, 2 * 64 + 45], flow: "ss", fords: [], bridgeSites: [] },
   };
 }
 
