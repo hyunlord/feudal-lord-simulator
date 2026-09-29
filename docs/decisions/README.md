@@ -447,6 +447,7 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | MA4 | **땅은 상태에 둔다**(`GameState.archetypeId`, 저장 v31): 시나리오를 땅마다 복제하지 않는다. 없으면 시나리오의 땅(강가)이라 옛 저장이 그대로 읽힌다. 해안 여부(습격·역병 도착)도 `stateArchetype(state)`에서 읽는다. 렌더의 `countrysideLayout`은 아직 `archetypeOf(scenarioOf(state))`로 읽는다. 새 땅의 마른 돌담이 보이려면 렌더가 `stateArchetype`으로 바꿔야 한다(렌더 넘김) | 확정(ARCH-1) | 2026-09-29 | [지도 유형 명세](../design/map-archetypes.md) MA-6 |
 | MA5 | **강가 시장도시는 seed 1 지도 하나다**: 새 게임 API는 강가에 다른 seed를 받지 않는다. 가드레일의 seed 2~5는 지금처럼 검증용 이동 규칙(`selectGrowthOpening`)으로 마을을 옮긴다. 새 땅은 어떤 seed든 마을 자리가 제자리다 | 확정(ARCH-1) | 2026-09-29 | [지도 유형 명세](../design/map-archetypes.md) MA-6 |
 | MA6 | **해안 항구의 사건 가중 1.2**: 습격이 태우는 집 수와 약탈 몫을 1.2배로 한다. 역병 첫 해 사망률도 1.2배로 하되 900‰를 넘지 않는다(42~48 % → 50~57 %). 강어귀인 강가 시장도시는 1,000이다. 내륙 셋은 해안이 아니어서 습격이 없고, 역병이 한 계절 늦다 | 확정(ARCH-1) | 2026-09-29 | [지도 유형 명세](../design/map-archetypes.md) MA-4 ⑤ |
+| MA7 | 규칙 19 고정값(ARCH-1): `fixtures/saves/v31/`(v30 묶음 열둘을 v31로, `buildSaveFixtures.ts --from-version 30`)와 `src/save/schemaFingerprint.v31.json`을 더했다. 이유: 저장 v31이 `GameState.archetypeId`(MA4)를 더했다. 이행은 판 번호만 올린다(옛 저장에는 땅이 없고 강가로 읽힌다). 다시 기록한 고정값은 없다. 강가 시장도시의 시뮬레이션은 바이트까지 같다(MA1) | 확정(ARCH-1) | 2026-09-29 | [ARCH-1 보고서](../verification/arch1/REPORT.md) |
 
 ## R1-fix 확정 규칙
 
