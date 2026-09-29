@@ -14,7 +14,7 @@ import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
 import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
-import { setGroundSceneZoneDeferral } from "./groundBoundaryScene";
+import { setGroundSceneIncrementalBuild, setGroundSceneZoneDeferral } from "./groundBoundaryScene";
 import { installAutoplayPulseRuntime } from "./autoplayPulseRuntime";
 import { createCanvasIntentHandler } from "./canvasIntentHandler";
 import { bindMouseKeyboard, bindTouch } from "../input/domInputBindings";
@@ -129,10 +129,10 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     const disposeAutoplayPulse = installAutoplayPulseRuntime(refs.feedbackRef);
     const disposeProofRuntime = installPhase10ProofRuntime({ canvas, cameraRef: refs.cameraRef, stateRef, location: window.location, gamepadCursor: () => gamepad.cursor() });
     const disposeEvents = bindMouseKeyboard(canvas, translator, resize);
-    const disposeZoneTouch = bindTouch(canvas, touch); setGroundSceneZoneDeferral(true);
+    const disposeZoneTouch = bindTouch(canvas, touch); setGroundSceneZoneDeferral(true); setGroundSceneIncrementalBuild(true);
     frameId = requestAnimationFrame(drawFrame);
     return () => {
-      disposeZoneTouch(); setGroundSceneZoneDeferral(false);
+      disposeZoneTouch(); setGroundSceneZoneDeferral(false); setGroundSceneIncrementalBuild(false);
       cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeEvents(); disposeProofRuntime(); disposeHandler();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection, setPrediction,
