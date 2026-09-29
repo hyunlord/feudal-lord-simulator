@@ -19,7 +19,8 @@
 .settlement-disclosure { flex-shrink: 0; text-decoration: underline; }
 .settlement-progress--changed { outline: 2px solid var(--palette-gold); outline-offset: 1px; }
 .settlement-progress-body { max-height: min(40vh, 320px); overflow-y: auto; }
-.settlement-crisis-slot { position: fixed; right: 12px; bottom: calc(var(--command-height) + 66px); z-index: 4; width: min(336px, calc(100vw - 24px)); pointer-events: none; }
+/* NAT-1: medium width token for the crisis card slot. */
+.settlement-crisis-slot { position: fixed; right: 12px; bottom: calc(var(--command-height) + 66px); z-index: 4; width: min(var(--box-w-medium), calc(100vw - 32px)); pointer-events: none; }
 .settlement-crisis-slot:empty { display: none; }
 .settlement-crisis-slot .settlement-crisis { margin: 0; padding: 8px 12px; color: var(--palette-ink); background: var(--palette-vellum); border: 2px solid var(--palette-vermilion); }
 @media (max-width: 850px) {
