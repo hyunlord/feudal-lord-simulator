@@ -12,6 +12,7 @@ import { storyWalkerScale } from "./storyWorldProps";
 import { WAVE12_GUILDHALL_IMAGES } from "./wave12GuildhallManifest.generated";
 import { wave9Art, wave9Meta, type Wave9Key } from "./wave9Art";
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { canTraverseWallBoundary } from "../world/wallTraversal";
 
 // UI-9: Chapter 4 reorganisation world props (spec docs/design/chapter-four-reorganisation.md RG-4…RG-8).
 //  1. Guildhall world prop: Wave 12 guildhall painting on a free 3 × 2 spot near the market (grass or felled forest, no road, building or site) while guildOf(state) !== null.
@@ -65,17 +66,34 @@ function computeGuildhallSpot(state: GameState): { tx: number; ty: number } | nu
   for (const site of state.constructionSites ?? []) if ("tx" in site) occupied.add((site as { tx: number; ty: number }).ty * state.width + (site as { tx: number; ty: number }).tx);
   for (const tile of state.tiles) if (tile.hasRoad) occupied.add(tile.ty * state.width + tile.tx);
   const felled = new Set((state.forestHarvests ?? []).map(h => h.ty * state.width + h.tx));
+  // Fields and pastures are the town's; no zone cell takes the hall.
+  for (const zone of state.zones ?? []) for (const index of zone.membership) occupied.add(index);
   // The painting stands on a 3 × 2 footprint (its pivot: the footprint's south-west front corner): all six cells free.
   const free3x2 = (tx: number, ty: number): boolean => {
     if (tx < 0 || ty < 0 || tx + 2 >= state.width || ty + 1 >= state.height) return false;
     for (let dy = 0; dy < 2; dy += 1) for (let dx = 0; dx < 3; dx += 1) {
-      const k = (ty + dy) * state.width + tx + dx; if (occupied.has(k)) return false;
+      const k = (ty + dy) * state.width + tx + dx; if (occupied.has(k) || !inside.has(k)) return false;
       const tile = state.tiles[k]; if (tile === undefined) return false;
       if (tile.terrain !== "grass" && !(tile.terrain === "forest" && felled.has(k))) return false;
+      // The town wall runs along tile edges: none may cross the hall's plot.
+      if (dx > 0 && !canTraverseWallBoundary(state, { tx: tx + dx - 1, ty: ty + dy }, { tx: tx + dx, ty: ty + dy })) return false;
+      if (dy > 0 && !canTraverseWallBoundary(state, { tx: tx + dx, ty: ty + dy - 1 }, { tx: tx + dx, ty: ty + dy })) return false;
     } return true;
   };
   const anchor = state.buildings.find(b => b.kind === "market") ?? state.buildings.find(b => b.kind === "keep") ?? state.buildings[0];
   if (anchor === undefined) return null;
+  // The market's side of the wall: the cells reachable from it within the search box without crossing a wall edge.
+  const inside = new Set<number>([anchor.ty * state.width + anchor.tx]);
+  for (const queue = [{ tx: anchor.tx, ty: anchor.ty }]; queue.length > 0;) {
+    const at = queue.pop()!;
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+      const next = { tx: at.tx + dx, ty: at.ty + dy };
+      if (Math.abs(next.tx - anchor.tx) > 11 || Math.abs(next.ty - anchor.ty) > 11 || next.tx < 0 || next.ty < 0 || next.tx >= state.width || next.ty >= state.height) continue;
+      const key = next.ty * state.width + next.tx;
+      if (inside.has(key) || !canTraverseWallBoundary(state, at, next)) continue;
+      inside.add(key); queue.push(next);
+    }
+  }
   const cands: { tx: number; ty: number; key: number }[] = [];
   for (let r = 1; r <= 8 && cands.length < 4; r += 1) {
     for (let dy = -r; dy <= r; dy += 1) for (let dx = -r; dx <= r; dx += 1) {
