@@ -5,15 +5,7 @@ export const TOWN_CLOTH_COPY = {
   spinningHouses: (count: number) => `실 잣는 집 ${count}채`,
   buildingCount: (name: string, count: number) => `${name} ${count}동`,
   buildingsLine: (parts: readonly string[]) => parts.join(" · "),
-  /** The season card's line: ulnage and fulling_toll from the closed season. */
-  closedSeason: (ulnage: number, fullingToll: number) =>
-    `이 계절 직물 수입: 직물 인장세 +${ulnage}d · 축융 사용료 +${fullingToll}d`,
-  /** Korean display names for the five cloth buildings (CL-10: must live in *.ko.ts). */
-  buildingNames: {
-    pastoral_farm: "목축 농장",
-    weaver_house: "직조공 집",
-    fulling_mill: "축융 방앗간",
-    dyehouse: "염색집",
-    tenter_yard: "텐터 틀",
-  },
+  /** The season card's line: the closed season's cloth money by its ledger categories' own names. */
+  closedSeason: (parts: readonly (readonly [label: string, amount: number])[]) =>
+    `이 계절 직물 수입: ${parts.map(([label, amount]) => `${label} +${amount}d`).join(" · ")}`,
 } as const;

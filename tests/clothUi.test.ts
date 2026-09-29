@@ -116,10 +116,9 @@ test("townClothView.closedSeason is null when no cloth ledger income exists", ()
 });
 
 test("TOWN_CLOTH_COPY.closedSeason formats ulnage and fulling_toll amounts correctly", () => {
-  const line = TOWN_CLOTH_COPY.closedSeason(4, 3);
-  assert.ok(line.includes("직물 인장세"), `must mention ulnage label (got: ${line})`);
+  const line = TOWN_CLOTH_COPY.closedSeason([[LEDGER_CATEGORY_LABELS.ulnage, 4], [LEDGER_CATEGORY_LABELS.fulling_toll, 3]]);
+  assert.equal(line, "이 계절 직물 수입: 직물 인장세 +4d · 축융 방앗간 사용료 +3d");
   assert.ok(line.includes("+4d"), `must include ulnage amount (got: ${line})`);
-  assert.ok(line.includes("축융 사용료"), `must mention fulling_toll label (got: ${line})`);
   assert.ok(line.includes("+3d"), `must include fulling_toll amount (got: ${line})`);
 });
 

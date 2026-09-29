@@ -1,5 +1,7 @@
+import { buildingCopy } from "../content/buildingCatalog.ko";
 import { townCloth } from "../engine/cloth";
 import type { GameState } from "../engine/engine.types";
+import { LEDGER_CATEGORY_LABELS } from "../ledger/ledgerCopy.ko";
 import { ledgerView } from "../ledger/ledgerView";
 import { TOWN_CLOTH_COPY } from "./townClothCopy.ko";
 
@@ -24,19 +26,15 @@ export function townClothView(state: GameState): TownClothView | null {
   const ulnage = amountFor("ulnage");
   const fullingToll = amountFor("fulling_toll");
 
-  const bn = TOWN_CLOTH_COPY.buildingNames;
-  const buildingParts = [
-    ...(cloth.buildings.pastoral_farm > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.pastoral_farm, cloth.buildings.pastoral_farm)] : []),
-    ...(cloth.buildings.weaver_house > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.weaver_house, cloth.buildings.weaver_house)] : []),
-    ...(cloth.buildings.fulling_mill > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.fulling_mill, cloth.buildings.fulling_mill)] : []),
-    ...(cloth.buildings.dyehouse > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.dyehouse, cloth.buildings.dyehouse)] : []),
-    ...(cloth.buildings.tenter_yard > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.tenter_yard, cloth.buildings.tenter_yard)] : []),
-  ];
+  const kinds = ["pastoral_farm", "weaver_house", "fulling_mill", "dyehouse", "tenter_yard"] as const;
+  const buildingParts = kinds.filter(kind => cloth.buildings[kind] > 0).map(kind => TOWN_CLOTH_COPY.buildingCount(buildingCopy(kind).name, cloth.buildings[kind]));
+
 
   return {
     sheep: TOWN_CLOTH_COPY.sheep(cloth.sheep, cloth.tendedCells),
     spinningHouses: TOWN_CLOTH_COPY.spinningHouses(cloth.spinningHouses),
     buildings: TOWN_CLOTH_COPY.buildingsLine(buildingParts),
-    closedSeason: (ulnage > 0 || fullingToll > 0) ? TOWN_CLOTH_COPY.closedSeason(ulnage, fullingToll) : null,
+    closedSeason: (ulnage > 0 || fullingToll > 0)
+      ? TOWN_CLOTH_COPY.closedSeason([[LEDGER_CATEGORY_LABELS.ulnage, ulnage], [LEDGER_CATEGORY_LABELS.fulling_toll, fullingToll]]) : null,
   };
 }
