@@ -52,6 +52,8 @@
 | 전부(자유 모드, BUDGET-1b 전의 모든 시작) | 449 | 15.39 MB | 67.10 MB | 66.75 MB |
 | 1장 시작, INSTALL-26~29 뒤(`d8515ce`, Wave 26 집 변형·층 100장 더함) | 569 | 17.50 MB | 76.99 MB | 74.31 MB |
 | 전부, INSTALL-26~29 뒤 | 577 | 17.71 MB | 78.04 MB | 75.36 MB |
+| 1장 시작, CLOTH-UI 뒤(`1afb147`, Wave 3 직물 사슬·Wave 2 목축 농장 37장 더함) | 607 | — | 80.61 MB | 74.31 MB |
+| 전부, CLOTH-UI 뒤(UI-8·PLAGUE-b의 3장 삽화 포함) | 635 | — | 123.30 MB | 75.36 MB |
 
 - 2장에 들어갈 때 더함: 5개(`assets/wave12/world/quay-v1.png`, `assets/wave17/world/beacon_idle-v1.png`, `assets/wave17/world/beacon_lit-v1.png`, `assets/wave17/world/raid_burning_quay-v1.png`, `assets/wave17/world/raid_smoke_column_sheet-v1.png`) — 누적 66.86 MB
 - 3장에 들어갈 때 더함: 3개(`assets/wave9/event/plague_shut_l1-v1.png`, `assets/wave9/event/plague_shut_l2-v1.png`, `assets/wave9/event/plague_shut_l3-v1.png`) — 누적 67.10 MB
