@@ -1,3 +1,4 @@
+import { canvasBudget, type BudgetOwner } from "./canvasBudget";
 import { recordDrawExtent, type RecordedExtent } from "./rasterDrawBounds";
 type Transform = Readonly<{ a: number; b: number; c: number; d: number; e: number; f: number }>;
 export type RasterBounds = Readonly<{ left: number; top: number; right: number; bottom: number }>;
@@ -7,6 +8,16 @@ const MAX_PIXELS = 8_000_000;
 // Counters describe this context's bounded cache, not simulation state.
 type CacheStats = { hits: number; misses: number; evictions: number; pixels: number; rasterMs: number };
 const diagnostics = new WeakMap<CanvasRenderingContext2D, CacheStats>();
+// SMOOTH-2R: each raster is also an entry of the page's canvas budget (canvasBudget.ts); pushed out, it is drawn again.
+const owners = new WeakMap<CanvasRenderingContext2D, BudgetOwner>();
+function budgetOwner(context: CanvasRenderingContext2D, cache: Map<string, Entry>, stats: CacheStats): BudgetOwner {
+  let owner = owners.get(context);
+  if (owner === undefined) {
+    owner = { name: "world-raster", evict(key) { const old = cache.get(key); if (old === undefined) return; cache.delete(key); stats.evictions++; stats.pixels -= old.pixels; } };
+    owners.set(context, owner);
+  }
+  return owner;
+}
 export function worldRasterCacheDiagnostics(context: CanvasRenderingContext2D): Readonly<CacheStats> {
   return { ...(diagnostics.get(context) ?? { hits: 0, misses: 0, evictions: 0, pixels: 0, rasterMs: 0 }) };
 }
@@ -32,6 +43,7 @@ export function drawCachedWorldRaster(context: CanvasRenderingContext2D, content
     stats = { hits: 0, misses: 0, evictions: 0, pixels: 0, rasterMs: 0 };
     diagnostics.set(context, stats);
   }
+  const owner = budgetOwner(context, cache, stats);
   let entry = cache.get(key);
   if (entry === undefined) {
     stats.misses++;
@@ -67,11 +79,11 @@ export function drawCachedWorldRaster(context: CanvasRenderingContext2D, content
     for (const existing of cache.values()) total += existing.pixels;
     for (const [oldKey, old] of cache) {
       if (total <= MAX_PIXELS) break;
-      total -= old.pixels; cache.delete(oldKey); stats.evictions++;
+      total -= old.pixels; cache.delete(oldKey); stats.evictions++; canvasBudget.forget(owner, oldKey);
     }
-    cache.set(key, entry);
+    cache.set(key, entry); canvasBudget.track(owner, key, entry.pixels * 4, "onscreen");
     stats.pixels = total; stats.rasterMs += performance.now() - started;
-  } else { stats.hits++; cache.delete(key); cache.set(key, entry); }
+  } else { stats.hits++; cache.delete(key); cache.set(key, entry); canvasBudget.touch(owner, key, "onscreen"); }
   context.save();
   try {
     context.setTransform(1, 0, 0, 1, 0, 0);
