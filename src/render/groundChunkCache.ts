@@ -1,4 +1,5 @@
 import { canvasBudget, type BudgetOwner, type CanvasBudget } from "./canvasBudget";
+import type { CanvasTransform as StyleTransform } from "./style";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
 // Offscreen rasters of 8x8-tile ground chunks (RENDER_BOUNDARY_V2 only).
@@ -98,7 +99,8 @@ export type GroundChunkCacheStats = {
 export type GroundChunkCache = {
   /** `frameStartMs`: when the live frame began; only then may deferrable re-rasters wait (never in tests and tools). */
   beginFrame(frameStartMs?: number): void;
-  draw(target: CanvasRenderingContext2D, request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): void;
+  /** `transform`: the target's current transform when the caller has it (SMOOTH-2R: read once a frame, not per blit). */
+  draw(target: CanvasRenderingContext2D, request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void, transform?: StyleTransform | null): void;
   /** Rasters a chunk that is not on screen yet (idle time, only with budget room); no-op if an up-to-date raster exists. */
   prefetch(request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): boolean;
   /** Whether `prefetch` would raster anything for this request. */
@@ -277,7 +279,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
       store(request.id, next, false);
       return true;
     },
-    draw(target, request, paint) {
+    draw(target, request, paint, transform) {
       drawnThisFrame.add(request.id);
       lastScale = request.scale;
       const entry = entries.get(request.id);
@@ -285,12 +287,12 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         stats.hits += 1;
         entries.delete(request.id); entries.set(request.id, entry);
         budget.touch(owner, request.id, "onscreen");
-        blit(target, entry); return;
+        blit(target, entry, transform); return;
       }
       if (entry !== undefined && entry.contentKey === request.contentKey && zoomBudget <= 0) {
         stats.deferredZoom += 1;
         budget.touch(owner, request.id, "onscreen");
-        blit(target, entry); return;
+        blit(target, entry, transform); return;
       }
       const turning = entry !== undefined && request.fade !== undefined && entry.fadeToken !== undefined && entry.fadeToken !== request.fade.token;
       if (turning && request.fade !== undefined && entry.scale === request.scale && request.fade.ms > 0
@@ -298,7 +300,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         // The old season until this chunk's moment in the turn (header (d)).
         stats.waves += 1; pendingThisFrame += 1;
         budget.touch(owner, request.id, "onscreen");
-        blit(target, entry); return;
+        blit(target, entry, transform); return;
       }
       if (turning && request.fade !== undefined) {
         turnStart(request.fade.token);
@@ -307,7 +309,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
           // Made ahead in idle time: taken as is; the old season's canvas goes to the pool.
           staged.delete(request.id); budget.forget(owner, STAGE + request.id); stats.stagedUsed += 1;
           store(request.id, ready, true);
-          blit(target, ready); return;
+          blit(target, ready, transform); return;
         }
       }
       if (frameStart !== undefined && entry !== undefined && entry.scale === request.scale && request.deferKey !== undefined
@@ -317,7 +319,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         pendingThisFrame += 1;
         deferredFrames.set(request.id, (deferredFrames.get(request.id) ?? 0) + 1);
         budget.touch(owner, request.id, "onscreen");
-        blit(target, entry); return;
+        blit(target, entry, transform); return;
       }
       if ((deferredFrames.get(request.id) ?? 0) >= MAX_DEFERRED_FRAMES) forcedThisFrame = true;
       deferredFrames.delete(request.id);
@@ -326,7 +328,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
       if (next === null) { paint(target); return; }
       if (zoomOnly) { stats.zoomRasters += 1; zoomBudget -= 1; } else stats.contentRasters += 1;
       store(request.id, next, true);
-      blit(target, next);
+      blit(target, next, transform);
     },
     stats: () => ({ ...stats }),
     clear() {
@@ -344,10 +346,10 @@ function fadePhase(id: string): number {
   return ((hash >>> 0) % 1_000) / 1_000;
 }
 
-function blit(target: CanvasRenderingContext2D, held: Held): void {
+function blit(target: CanvasRenderingContext2D, held: Held, transform?: StyleTransform | null): void {
   const canvas = held.raster.canvas;
   drawCroppedWorldSprite(target, canvas, { x: 0, y: 0, width: canvas.width, height: canvas.height },
-    { x: held.left, y: held.top, width: canvas.width / held.scale, height: canvas.height / held.scale }, true, true);
+    { x: held.left, y: held.top, width: canvas.width / held.scale, height: canvas.height / held.scale }, true, true, transform ?? undefined);
 }
 
 export function groundChunkZoomBucket(zoom: number): number {

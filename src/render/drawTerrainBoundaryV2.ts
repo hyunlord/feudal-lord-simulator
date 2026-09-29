@@ -141,7 +141,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   });
   const paintRoads = (plan: GroundChunkPlan) => (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, season);
   for (const plan of visible) {
-    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season));
+    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season), transform);
   }
   probe?.enter("terrain.water"); // INSTALL-29: the water motion, live over the chunks' still water (drawWaterMotion.ts)
   drawWaterMotion(context, { state: input.state, shore: scene.shore, chunks: visible, range: input.range, zoom: input.zoom, chunkZoom: zoom, nowMs: input.nowMs ?? 0, season }); probe?.enter("terrain.fill");
@@ -167,7 +167,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   drawTownLandscape(context, input.state, input.tiles);
   probe?.enter("roads.ground");
   for (const plan of visible) {
-    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paintRoads(plan));
+    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paintRoads(plan), transform);
   }
   for (const tile of input.tiles) if (tile.hasRoad && tile.terrain === "water") drawBridgeDeck(context, input.state, tile);
   if (scene.shore.bridgeEnds.length > 0) drawBridgeAbutments(context, scene.shore);
