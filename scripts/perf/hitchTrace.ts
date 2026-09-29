@@ -69,7 +69,7 @@ export async function analyseRun(input: { readonly frames: readonly FrameRecord[
   if (input.tracePath === null) return { stats, longFrames: longFrames.map(frame => ({ ...frame, moments: nearMoment(frame.to) })), causes: [] };
 
   const trace = await readTrace(input.tracePath);
-  const events = trace.traceEvents ?? (trace as unknown as any[]);
+  const events = trace.traceEvents;
   const start = events.find(event => event.name === "hitch:start" && (event.ph === "R" || event.ph === "I" || event.ph === "i" || event.ph === "b" || event.ph === "n"));
   if (start === undefined) throw new Error(`${input.tracePath}: no hitch:start mark`);
   const pid = start.pid; const tid = start.tid;
