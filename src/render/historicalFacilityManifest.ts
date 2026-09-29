@@ -193,6 +193,116 @@ export const historicalFacilityManifest = [
     },
     "displayWidth": 128,
     "sha256": "a29f300d99a6435e9855d3db1e24ea0ceb955d0b859d6616f8b1955b5c152b84"
+  },
+  {
+    "id": "weaver_house_a",
+    "kind": "weaver_house",
+    "url": "assets/wave3/bld/weaver_house_a.png",
+    "width": 137,
+    "height": 137,
+    "source": { "x": 0, "y": 0, "width": 137, "height": 132 },
+    "displayWidth": 110,
+    "sha256": "1a447eb9406e497dee48e863136f31f083e9f01111893d86ab6b3280a960d6af"
+  },
+  {
+    "id": "weaver_house_b",
+    "kind": "weaver_house",
+    "url": "assets/wave3/bld/weaver_house_b.png",
+    "width": 137,
+    "height": 137,
+    "source": { "x": 0, "y": 0, "width": 137, "height": 132 },
+    "displayWidth": 110,
+    "sha256": "2ba8c09b215cfa9d310aab87a5a39151dc55cd00beb25d27878b18fbc640e0cf"
+  },
+  {
+    "id": "fulling_mill_nesw",
+    "kind": "fulling_mill",
+    "url": "assets/wave3/bld/fulling_mill_nesw.png",
+    "width": 200,
+    "height": 160,
+    "source": { "x": 0, "y": 0, "width": 200, "height": 152 },
+    "displayWidth": 160,
+    "sha256": "924692a2c6491b041963fcfe5ea716690c4344b79a5149213496b68d9b5521c0"
+  },
+  {
+    "id": "fulling_mill_nwse",
+    "kind": "fulling_mill",
+    "url": "assets/wave3/bld/fulling_mill_nwse.png",
+    "width": 200,
+    "height": 160,
+    "source": { "x": 0, "y": 0, "width": 200, "height": 152 },
+    "displayWidth": 160,
+    "sha256": "85a158ba38a8c6845908da035d9ff0434d56ffa6b381536b872e09116170d1bf"
+  },
+  {
+    "id": "dyehouse_a",
+    "kind": "dyehouse",
+    "url": "assets/wave3/bld/dyehouse_a.png",
+    "width": 160,
+    "height": 136,
+    "source": { "x": 0, "y": 0, "width": 160, "height": 128 },
+    "displayWidth": 128,
+    "sha256": "5a3d6dc7d4d31b22f91453599f42b6eccbb7e8b22f6635cc6c246090813ad34a"
+  },
+  {
+    "id": "dyehouse_b",
+    "kind": "dyehouse",
+    "url": "assets/wave3/bld/dyehouse_b.png",
+    "width": 160,
+    "height": 136,
+    "source": { "x": 0, "y": 0, "width": 160, "height": 128 },
+    "displayWidth": 128,
+    "sha256": "12b95535772714e0bfe7a91c10f1bca3bbf9bab95b254ba83dc4787fc868785d"
+  },
+  {
+    "id": "tenter_frames_a",
+    "kind": "tenter_yard",
+    "url": "assets/wave3/yard/tenter_frames_a.png",
+    "width": 384,
+    "height": 192,
+    "source": { "x": 0, "y": 0, "width": 384, "height": 184 },
+    "displayWidth": 256,
+    "sha256": "958430122112831e3674bb54d29d267b03a3d098a335df674f32bbb9a9ae937b"
+  },
+  {
+    "id": "tenter_frames_dyed",
+    "kind": "tenter_yard",
+    "url": "assets/wave3/yard/tenter_frames_dyed.png",
+    "width": 384,
+    "height": 192,
+    "source": { "x": 0, "y": 0, "width": 384, "height": 184 },
+    "displayWidth": 256,
+    "sha256": "f63a99fd7e77a6fb985fb03d5d8d14181aaaa53d8d327c006121c9febf60d791"
+  },
+  {
+    "id": "farm_pastoral_spring",
+    "kind": "pastoral_farm",
+    "url": "assets/wave2/bld/farm_pastoral_spring.png",
+    "width": 384,
+    "height": 192,
+    "source": { "x": 0, "y": 0, "width": 384, "height": 184 },
+    "displayWidth": 256,
+    "sha256": "9136f8eb6e4b1ec0f137c344f574677a0d4f26688b861e94a50d21ca484593ae"
+  },
+  {
+    "id": "farm_pastoral_summer",
+    "kind": "pastoral_farm",
+    "url": "assets/wave2/bld/farm_pastoral_summer.png",
+    "width": 384,
+    "height": 192,
+    "source": { "x": 0, "y": 0, "width": 384, "height": 184 },
+    "displayWidth": 256,
+    "sha256": "4fab6bfe6c2c4ce47855d41d2b71cbba764be2f9cb03305bea96f8fcae7d223b"
+  },
+  {
+    "id": "farm_pastoral_winter",
+    "kind": "pastoral_farm",
+    "url": "assets/wave2/bld/farm_pastoral_winter.png",
+    "width": 384,
+    "height": 192,
+    "source": { "x": 0, "y": 0, "width": 384, "height": 184 },
+    "displayWidth": 256,
+    "sha256": "7564790ae4d650ee6881b61af965ef7f9943b250479414b54c2c3e327f47dcd4"
   }
 ] as const;
 

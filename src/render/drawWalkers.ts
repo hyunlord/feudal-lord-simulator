@@ -13,7 +13,9 @@ import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionMode
 import { visibilityArt } from "./visibilityArtManifest";
 import { drawWave7 } from "./wave7Art";
 import { drawWave3Ale } from "./wave3AleArt";
+import { drawWave3Cloth } from "./wave3ClothArt";
 import { aleCartLoad } from "./aleWorldArt";
+import { clothCartLoad } from "./clothWorldArt";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { drawUiIcon } from "../ui/uiArt";
 
@@ -123,6 +125,9 @@ function drawCartPayload(context: CanvasRenderingContext2D, cart: { readonly x: 
   // barley, malt and ale ride as Wave 3's loads (same pivot and cargo box as Wave 7's), the sacks or crates while they load.
   const ale = aleCartLoad(resource, direction);
   if (ale !== null && drawWave3Ale(context, ale, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / WAVE7_CARGO_WIDTH)) return;
+  // INSTALL-C5: fleece bales, raw cloth and dyed cloth ride as Wave 3's cloth loads (same pivot and scale as ale/Wave 7).
+  const cloth = clothCartLoad(resource, direction);
+  if (cloth !== null && drawWave3Cloth(context, cloth, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / WAVE7_CARGO_WIDTH)) return;
   if (drawWave7(context, art.key, cart.x + cart.width / 2, cart.y + cart.height * 0.5, cart.width * 0.55 / art.width)) return;
   const image = art.pile === null ? null : visibilityArt(art.pile);
   if (image === null) return;

@@ -21,6 +21,7 @@ import { preloadWave9Art } from "./wave9Art";
 import { preloadWave17WorldArt } from "./warWorldProps";
 import { preloadWave11Art } from "./wave11Art";
 import { preloadWave3AleArt } from "./wave3AleArt";
+import { preloadWave3ClothArt } from "./wave3ClothArt";
 import { preloadWave26HouseLayers, preloadWave26HousePaintings } from "./wave26HouseArt";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
@@ -48,6 +49,8 @@ export function preloadFrameArt(chapter: number): void {
   preloadWave11Art();
   // INSTALL-3: the ale chain's art at startup, not by chapter (a barn can turn to barley in any chapter; the command has no gate).
   preloadWave3AleArt();
+  // INSTALL-C5: the cloth chain's art at startup (same reasoning: any building can hold cloth in any chapter).
+  preloadWave3ClothArt();
   preloadWave26HouseLayers(); // INSTALL-26 the house paintings' weathered, fresh, snow and boarded layers
   preloadCanvasIcons();
 }
