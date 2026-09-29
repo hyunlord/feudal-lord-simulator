@@ -1,6 +1,7 @@
 import type { GameState } from "../engine/engine.types";
 import { kitWorker } from "./constructionKits";
 import { aleWorkerSheet } from "./aleWorldArt";
+import { clothWorkerSheet } from "./clothWorkerSheet";
 import type { Walker } from "../agents/walker.types";
 import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { assetUrlForBase } from "./worldAssets";
@@ -169,6 +170,12 @@ export function walkerAppearance(state: GameState, walker: Walker) {
   if (ale !== null) {
     const aleLook = { ...look, sheetId: ale };
     return { look: aleLook, prop: walkerHeldProp(aleLook, walker, stage, stateCalendar(state)), cloak: walkerCloak(state, aleLook) };
+  }
+  // UI-9: the cloth chain's workers — shepherd, fuller, wool merchant (their Wave 3 sheets, no cloak).
+  const cloth = clothWorkerSheet(state, walker);
+  if (cloth !== null) {
+    const clothLook = { ...look, sheetId: cloth };
+    return { look: clothLook, prop: walkerHeldProp(clothLook, walker, stage, stateCalendar(state)), cloak: walkerCloak(state, clothLook) };
   }
   return { look, prop: walkerHeldProp(look, walker, stage, stateCalendar(state)), cloak: walkerCloak(state, look) };
 }
