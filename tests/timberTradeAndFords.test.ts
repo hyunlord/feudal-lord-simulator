@@ -14,7 +14,7 @@ import { TIMBER_EXPANSION_OBSERVATION_TICKS } from "../src/engine/autoplayTimber
 import type { GameState } from "../src/engine/engine.types";
 import { MARKET_CADENCE_TICKS } from "../src/engine/marketSettlement";
 import { roadPlacementFailure, roadTimberCost } from "../src/engine/roadPlacement";
-import { advanceTimberTrade, botTimberOrder, orderTimber, timberTradeMarket } from "../src/engine/timberTrade";
+import { advanceTimberTrade, botTimberOrder, botTimberOrderFor, orderTimber, timberTradeMarket } from "../src/engine/timberTrade";
 import { treasuryBalance } from "../src/ledger/ledger";
 import { decodeSave } from "../src/save/saveCodec";
 import { gameReducer } from "../src/state/gameStore";
@@ -70,6 +70,18 @@ test("TT-4 the bot orders its wall's missing timber after a whole shortage windo
   assert.equal(botTimberOrder({ ...wallShort, timberProductionWindow: { ...wallShort.timberProductionWindow!, expansionShortageSinceTick: state.tick - 10 } }), null, "not before the window");
   assert.equal(botTimberOrder({ ...wallShort, timberOrder: 5 }), null, "an order stands");
   assert.equal(botTimberOrder({ ...wallShort, treasuryCoin: 300 }), null, "the reserve");
+});
+
+test("TT-4b a building short of timber alone, the town's sawmills idle a whole window: the bot orders the shortfall; not while its timber still comes", () => {
+  const state = town();
+  assert.ok(state.buildings.some(building => building.kind === "sawmill"));
+  const spendable = placementSpendableResource(state, "timber");
+  const stalled = { ...state, timberProductionWindow: { startTick: state.tick - 2399, throughTick: state.tick, produced: 0, productionTicks: [] } } as GameState;
+  assert.equal(botTimberOrderFor(stalled, spendable + 40), 40);
+  assert.equal(botTimberOrderFor(stalled, spendable + 1), TIMBER_TRADE_BALANCE.perMarketDay, "at least a market day's worth");
+  assert.equal(botTimberOrderFor(stalled, spendable), null, "nothing short");
+  assert.equal(botTimberOrderFor({ ...stalled, timberProductionWindow: { ...stalled.timberProductionWindow!, produced: 3 } }, spendable + 40), null, "the town's timber still comes");
+  assert.equal(botTimberOrderFor({ ...stalled, treasuryCoin: 300 + 18 * 39 }, spendable + 40), null, "not above the reserve");
 });
 
 /** A harbour town (its brook has fords) with the treasury's timber for a crossing. */

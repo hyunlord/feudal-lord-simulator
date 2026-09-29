@@ -9,7 +9,7 @@ import { autoplaySearchExhausted, runAutoplaySearch, runAutoplaySearchPhase } fr
 import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
 import { timberExpansionKind } from './autoplayTimberRecovery';
-import { botTimberOrder } from './timberTrade';
+import { botTimberOrder, botTimberOrderFor } from './timberTrade';
 import { crossingAction } from './autoplayCrossing';
 import { needsStoneStorageRecovery } from './autoplayStorageRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
@@ -233,7 +233,12 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
     if (storageCapacityBlock(state.buildings, output) !== null) return NONE;
   }
   const cost = BUILDING_CONFIG_BY_KIND[kind].buildCost;
-  if ((["timber", "stone"] as const).some(resource => (cost[resource] ?? 0) > placementSpendableResource(state, resource))) return NONE;
+  if ((cost.stone ?? 0) > placementSpendableResource(state, "stone")) return NONE;
+  if ((cost.timber ?? 0) > placementSpendableResource(state, "timber")) {
+    // FIX-10 (TT-4b): short of timber alone while the town's own has stopped — bought from the market's traders.
+    const order = botTimberOrderFor(state, cost.timber ?? 0);
+    return order === null ? NONE : { kind: "order_timber", amount: order };
+  }
   const routed = (coordinate: TileCoordinate) => !BUILDING_CONFIG_BY_KIND[kind].requiresRoad
     || hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate));
   if (state.palisade !== null && OUTSIDE_WALL_KINDS.has(kind)) {

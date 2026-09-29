@@ -4,7 +4,8 @@
  * - TT-2 on each market day (a market round) with a staffed market open, the traders bring up to `perMarketDay` of it
  *   into the treasury's timber at `price` pennies each — as much as the treasury pays for — posted `timber_purchase`.
  * - TT-3 the order falls by what came; at nought it is gone.
- * - TT-4 the bot orders its construction's missing timber when it can pay for it and keep `botCoinReserve`.
+ * - TT-4 the bot orders its wall's missing timber when it can pay for it and keep `botCoinReserve`; TT-4b, when a building
+ *   it wants lacks only timber and the town's sawmills made none in the last window, that building's missing timber.
  */
 import { TIMBER_TRADE_BALANCE } from "../content/timberTradeConfig";
 import { constructionDeliveryNeed, isWallConstructionSite } from "../economy/construction";
@@ -58,4 +59,21 @@ export function botTimberOrder(state: GameState): number | null {
   const affordable = Math.floor((state.treasuryCoin - TIMBER_TRADE_BALANCE.botCoinReserve) / TIMBER_TRADE_BALANCE.price);
   const amount = Math.min(need, affordable, TIMBER_TRADE_BALANCE.maxOrder);
   return amount >= TIMBER_TRADE_BALANCE.perMarketDay ? amount : null;
+}
+
+/**
+ * TT-4b: the bot wants a building that lacks only timber while the town's own timber has stopped (sawmills stand but
+ * made none in the last 2,400-tick window: the camps' wood cut out) — the shortfall, if the treasury pays for it above
+ * the reserve.
+ */
+export function botTimberOrderFor(state: GameState, timberNeeded: number): number | null {
+  if ((state.timberOrder ?? 0) > 0 || timberTradeMarket(state) === null) return null;
+  const window = state.timberProductionWindow;
+  if (window === undefined || window.produced > 0 || state.tick - window.startTick < 2399
+    || !state.buildings.some(building => building.kind === "sawmill")) return null;
+  const shortfall = timberNeeded - placementSpendableResource(state, "timber");
+  if (shortfall <= 0) return null;
+  const affordable = Math.floor((state.treasuryCoin - TIMBER_TRADE_BALANCE.botCoinReserve) / TIMBER_TRADE_BALANCE.price);
+  const amount = Math.min(Math.max(shortfall, TIMBER_TRADE_BALANCE.perMarketDay), TIMBER_TRADE_BALANCE.maxOrder);
+  return amount <= affordable ? amount : null;
 }
