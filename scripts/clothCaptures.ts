@@ -118,7 +118,7 @@ await step("u3-season-cloth", async () => {
   const state = load("c8-first-sale"); const keep = state.buildings.find(building => building.kind === "keep") ?? state.buildings[0]!;
   const { page, close } = await scene(state, [keep.tx, keep.ty], 1.1, { run: true });
   await page.getByRole("button", { name: "5배속", exact: true }).click().catch(() => undefined);
-  await page.locator(".season-ledger-card").first().waitFor({ timeout: 120_000 }); await page.waitForTimeout(600);
+  await page.locator(".season-ledger-card").first().waitFor({ timeout: 300_000 }); // a season at 5x (slower on the DGX) await page.waitForTimeout(600);
   await page.locator(".season-ledger-card").first().screenshot({ path: join(out!, "u3-season-cloth.jpg"), type: "jpeg", quality: 70 });
   const lines = { cloth: await text(page, ".season-ledger-cloth, .season-ledger-cloth-money"), ale: await text(page, ".season-ledger-drink, .season-ledger-ale"),
     clothIcons: await page.evaluate(() => [...document.querySelectorAll(".season-ledger-cloth [data-icon^='chain.']")].map(node => node.getAttribute("data-icon")), undefined),
