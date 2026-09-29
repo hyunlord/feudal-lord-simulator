@@ -22,7 +22,8 @@ const PLAGUE = [WAVE9_IMAGES.event_plague_shut_l1.url, WAVE9_IMAGES.event_plague
 // UI-9: Wave 21 split into chapter 3 (ch3_*, with PLAGUE-b's Wave 31 opening painting) and chapter 4 (ch4_*).
 const WAVE21_CH3 = [...(Object.keys(WAVE21_IMAGES) as (keyof typeof WAVE21_IMAGES)[]).filter(k => k.startsWith("ch3_")).map(k => WAVE21_IMAGES[k].url),
   ...Object.values(WAVE31_IMAGES).filter(image => image.chapter === 3).map(image => image.url)];
-const WAVE21_CH4 = (Object.keys(WAVE21_IMAGES) as (keyof typeof WAVE21_IMAGES)[]).filter(k => k.startsWith("ch4_")).map(k => WAVE21_IMAGES[k].url);
+const WAVE21_CH4 = [...(Object.keys(WAVE21_IMAGES) as (keyof typeof WAVE21_IMAGES)[]).filter(k => k.startsWith("ch4_")).map(k => WAVE21_IMAGES[k].url),
+  ...Object.values(WAVE31_IMAGES).filter(image => image.chapter === 4).map(image => image.url)];
 const WAVE21 = [...WAVE21_CH3, ...WAVE21_CH4];
 const GUILDHALL = Object.values(WAVE12_GUILDHALL_IMAGES).map(image => image.url); // UI-9: chapter 4 guildhall prop
 const EVERY_CHAPTER = [...historicalFacilityManifest.map(meta => meta.url), WAVE9_IMAGES.event_burnt_l2.url, WAVE9_IMAGES.event_crowd_manor_gate.url];

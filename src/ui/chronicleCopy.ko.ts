@@ -61,6 +61,8 @@ export const CHRONICLE_COPY = {
   // PLAGUE-b: a later chapter built in the game opens as chapter 2 does, over its Wave 31 opening painting.
   chapterOpening: {
     3: { title: "제3장 · 흑사병의 그늘 · 1348–1364", line: "항구에서 열병 소문이 올라옵니다. 역병이 지나가면 일손이 모자라고, 남은 이들이 값을 부릅니다", start: "제3장 시작" },
+    // UI-9 (F4-A): chapter 4, the reorganisation.
+    4: { title: "제4장 · 재편 · 1362–1400", line: "역병이 지나간 도시가 부유해졌습니다. 이제 도시는 영주에게 권리를 요구합니다", start: "제4장 시작" },
   } as Readonly<Record<number, { readonly title: string; readonly line: string; readonly start: string }>>,
   laterTitle: (chapter: number) => `제${chapter}장 — 예고`,
   laterLine: "다음 장은 아직 준비 중입니다",
@@ -71,14 +73,4 @@ export const CHRONICLE_COPY = {
   chapterTwoContinue: "이 마을로 계속",
   famineLoadingTitle: "1315 · 대기근",
   famineLoadingLine: "비가 그치지 않는 여름이 이어집니다",
-} as const;
-
-/**
- * UI-9 (F4-A RG-10): chapter 4 opening screen copy — wired by the integrator (useCampaignChapterStart or
- * equivalent) when the chapter transitions; exported separately so the wiring commit stays isolated.
- */
-export const CHAPTER_FOUR_OPENING = {
-  title: "제4장 · 재편 · 1362–1400",
-  line: "역병이 지나간 도시가 부유해졌습니다. 이제 도시는 영주에게 권리를 요구합니다",
-  start: "제4장 시작",
 } as const;

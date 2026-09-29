@@ -79,8 +79,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onLookAt={tile => { sendUi({ type: "pop_modal" }); platformServices().input.emit({ kind: "lookAt", tile }); }} /> : null}
     {top === "chapter_preview" ? (() => {
       // UI-8: the preview's chapter is always the one after the latest chapter end.
-      // Goals shown are those of the next chapter. Chapter 4 has no content yet — ChapterTwoPreview shows
-      // "coming later" with the correct chapter number when `chapter !== 2`.
+      // Goals shown are those of the next chapter. A built chapter (2, and 3–4 over their Wave 31 paintings) opens
+      // with its title, line and goals; one not built yet shows "coming later" with its number.
       const nextChapter = (latestChapterEnd(state)?.chapter ?? 1) + 1;
       return <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} chapter={nextChapter}
         goals={chapterGoals(state).filter(goal => goal.chapter === nextChapter).map(goal => CHAPTER_COPY.goals[goal.id] ?? goal.id)} />;

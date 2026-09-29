@@ -35,6 +35,7 @@ export const CHAPTER_ART: readonly ChapterArt[] = [
   { chapter: CHAPTER_THREE.chapter, what: "Wave 31 chapter 3 opening (PLAGUE-b: the chronicle's chapter start, the opening screen)", urls: urlsOf(WAVE31_IMAGES, key => WAVE31_IMAGES[key].chapter === CHAPTER_THREE.chapter) },
   // UI-9: chapter 4 reorganisation art (Wave 21 ch4_*: decision cards, event illustrations, chronicle scenes, chapter-4 end).
   { chapter: CHAPTER_FOUR.chapter, what: "Wave 21 chapter 4 illustrations (UI-9: decisions, events, chronicle, chapter-4 end)", urls: urlsOf(WAVE21_IMAGES, key => key.startsWith("ch4_")) },
+  { chapter: CHAPTER_FOUR.chapter, what: "Wave 31 chapter 4 opening (UI-9: the chronicle's chapter start, the opening screen)", urls: urlsOf(WAVE31_IMAGES, key => WAVE31_IMAGES[key].chapter === CHAPTER_FOUR.chapter) },
   { chapter: CHAPTER_FOUR.chapter, what: "Wave 12 guildhall world prop (UI-9: chapter 4 guild founded)", urls: urlsOf(WAVE12_GUILDHALL_IMAGES) },
 ];
 
