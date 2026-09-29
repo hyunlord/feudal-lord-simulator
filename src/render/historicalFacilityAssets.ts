@@ -1,3 +1,4 @@
+import { stateCalendar } from "../engine/scenarioState";
 import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { drawAnimatedMill } from "./animatedMill";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
@@ -108,6 +109,12 @@ export function historicalFacilityAssetId(building: Building, state?: GameState)
   if ("variants" in art) {
     const pick = art.variants[Math.floor(variantRandom(state?.seed ?? 0, building, FACILITY_VARIANT_SALT) * art.variants.length)];
     return pick === undefined ? null : facilityId(pick);
+  }
+  // CLOTH-UI: seasonal art (spring / summer / winter); autumn (season 2) falls back to summer.
+  if ("seasonal" in art) {
+    const season = state !== undefined ? stateCalendar(state).season : 1; // why: no state → show summer as default
+    const id = season === 0 ? art.seasonal.spring : season === 3 ? art.seasonal.winter : art.seasonal.summer;
+    return facilityId(id);
   }
   const active = art.activeWhen === "market" ? state !== undefined && marketIsActive(state, building)
     : productionOperation(building, BUILDING_CONFIG_BY_KIND[building.kind], state !== undefined && buildingHasRequiredRoadAccess(state, building)) === "working";
