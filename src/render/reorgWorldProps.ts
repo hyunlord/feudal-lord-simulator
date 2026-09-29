@@ -14,7 +14,7 @@ import { wave9Art, wave9Meta, type Wave9Key } from "./wave9Art";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
 // UI-9: Chapter 4 reorganisation world props (spec docs/design/chapter-four-reorganisation.md RG-4…RG-8).
-//  1. Guildhall world prop: Wave 12 guildhall painting on a free 2×2 tile near the market while guildOf(state) !== null.
+//  1. Guildhall world prop: Wave 12 guildhall painting on a free 3 × 2 spot near the market (grass or felled forest, no road, building or site) while guildOf(state) !== null.
 //     Depth-sorted in the object queue via withReorgProps (called from renderObjectFrameCache.ts).
 //  2. Textile walkers: two walkers carrying bolts between weaver houses while textileStreetTick is set and ≥2 exist.
 //  3. Alehouse drinkers: 1–2 walkers per alehouse during alehouse_boom; wall-clock animated (visible while paused).
@@ -65,9 +65,10 @@ function computeGuildhallSpot(state: GameState): { tx: number; ty: number } | nu
   for (const site of state.constructionSites ?? []) if ("tx" in site) occupied.add((site as { tx: number; ty: number }).ty * state.width + (site as { tx: number; ty: number }).tx);
   for (const tile of state.tiles) if (tile.hasRoad) occupied.add(tile.ty * state.width + tile.tx);
   const felled = new Set((state.forestHarvests ?? []).map(h => h.ty * state.width + h.tx));
-  const free2x2 = (tx: number, ty: number): boolean => {
-    if (tx < 0 || ty < 0 || tx + 1 >= state.width || ty + 1 >= state.height) return false;
-    for (let dy = 0; dy < 2; dy += 1) for (let dx = 0; dx < 2; dx += 1) {
+  // The painting stands on a 3 × 2 footprint (its pivot: the footprint's south-west front corner): all six cells free.
+  const free3x2 = (tx: number, ty: number): boolean => {
+    if (tx < 0 || ty < 0 || tx + 2 >= state.width || ty + 1 >= state.height) return false;
+    for (let dy = 0; dy < 2; dy += 1) for (let dx = 0; dx < 3; dx += 1) {
       const k = (ty + dy) * state.width + tx + dx; if (occupied.has(k)) return false;
       const tile = state.tiles[k]; if (tile === undefined) return false;
       if (tile.terrain !== "grass" && !(tile.terrain === "forest" && felled.has(k))) return false;
@@ -80,17 +81,12 @@ function computeGuildhallSpot(state: GameState): { tx: number; ty: number } | nu
     for (let dy = -r; dy <= r; dy += 1) for (let dx = -r; dx <= r; dx += 1) {
       if (Math.abs(dx) !== r && Math.abs(dy) !== r) continue;
       const tx = anchor.tx + dx; const ty = anchor.ty + dy;
-      if (free2x2(tx, ty)) cands.push({ tx, ty, key: hashI(state.seed, tx * 31, ty * 17) });
+      if (free3x2(tx, ty)) cands.push({ tx, ty, key: hashI(state.seed, tx * 31, ty * 17) });
     }
   }
   if (cands.length === 0) return null;
   cands.sort((a, b) => a.key - b.key);
   return cands[0] ?? null;
-}
-
-/** Draws the guildhall painting at its prop position. Called from drawObjectRenderItems for "reorg_prop". */
-export function drawReorgProp(ctx: CanvasRenderingContext2D): void { // UI-9: prop; spot passed via item in drawObjectRenderItems
-  void ctx; // actual draw: see drawReorgPropAt
 }
 
 /** Draws the guildhall body + active overlay at the prop tile. */
@@ -201,30 +197,29 @@ function drawAlehouseDrinkers(ctx: CanvasRenderingContext2D, state: GameState, r
   }
 }
 
-// 3. Collector chase: two walkers hurrying from town centre toward the map edge, for one season after "chased".
-const CHASE_LOOP_MS = 10_000;
+// 3. Collector chase (RG-8, chased): for a season after the rumour, the lord's collector hurries from the market to the
+// keep with the townsfolk a few steps behind him — nobody armed, nobody hurt. No tax collector was painted: the Wave 9
+// royal messenger's livery stands in for the lord's official; the followers are the petitioners.
+const CHASE_LOOP_MS = 9_000;
+const CHASERS: readonly { readonly key: Wave9Key; readonly lag: number; readonly side: number }[] = [
+  { key: "wk_royal_messenger", lag: 0, side: 0 }, { key: "wk_petitioner_m", lag: 0.16, side: -8 },
+  { key: "wk_petitioner_f", lag: 0.2, side: 8 }, { key: "wk_petitioner_m", lag: 0.26, side: 2 },
+];
 function drawCollectorChase(ctx: CanvasRenderingContext2D, state: GameState, reorg: GameState["reorganisation"] & object, nowMs: number): void {
   const rebellion = reorg.rebellion;
   if (rebellion === undefined || rebellion.outcome !== "chased") return;
   if (state.tick - rebellion.tick >= SEASON_TICKS) return;
-  // Move from built-tiles centroid toward a deterministic map edge.
-  let sx = 0, sy = 0, count = 0;
-  for (const tile of state.tiles) if (tile.buildingId !== null) { sx += tile.tx; sy += tile.ty; count += 1; }
-  if (count === 0) return;
-  const cx = sx / count; const cy = sy / count;
-  const h = hashI(state.seed, rebellion.tick);
-  const edgeTx = (h & 1) ? state.width + 2 : -2;
-  const edgeTy = cy;
-  const from = tileToScreen(cx, cy); const to = tileToScreen(edgeTx, edgeTy);
-  const t = (nowMs % CHASE_LOOP_MS) / CHASE_LOOP_MS;
-  const walkers: { key: Wave9Key; offX: number; offY: number }[] = [
-    { key: "wk_petitioner_m", offX: 0, offY: 0 }, { key: "wk_petitioner_f", offX: 12, offY: 6 },
-  ];
-  const gait = Math.floor(nowMs / GAIT_MS);
-  const dir: Dir = to.sx >= from.sx ? "NE" : "SW"; // hurrying away
-  for (const { key, offX, offY } of walkers) {
-    const wx = from.sx + (to.sx - from.sx) * t + offX;
-    const wy = from.sy + (to.sy - from.sy) * t + offY;
-    walkerCell(ctx, key, dir, gait, wx, wy);
+  const market = state.buildings.find(b => b.kind === "market");
+  const keep = state.buildings.find(b => b.kind === "keep") ?? state.buildings.find(b => b.kind === "church");
+  if (market === undefined || keep === undefined) return;
+  const from = buildingDoor(market); const to = buildingDoor(keep);
+  const dx = to.sx - from.sx; const dy = to.sy - from.sy;
+  const dir: Dir = dx >= 0 ? (dy >= 0 ? "SE" : "NE") : (dy >= 0 ? "SW" : "NW");
+  const run = (nowMs % CHASE_LOOP_MS) / CHASE_LOOP_MS;
+  const gait = Math.floor(nowMs / (GAIT_MS * 0.7)); // hurrying
+  for (const [index, chaser] of CHASERS.entries()) {
+    const t = run - chaser.lag;
+    if (t < 0 || t > 1) continue;
+    walkerCell(ctx, chaser.key, dir, gait + index, from.sx + dx * t + chaser.side, from.sy + dy * t + chaser.side * 0.5);
   }
 }

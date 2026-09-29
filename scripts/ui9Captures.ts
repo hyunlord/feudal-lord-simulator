@@ -14,6 +14,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
 import { guildOf, reorganisationStage, revoltPressure } from "../src/engine/reorganisation";
+import { reorgProp } from "../src/render/reorgWorldProps";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Locator = { first: () => Locator; click: (options?: object) => Promise<void>; count: () => Promise<number>; waitFor: (options?: object) => Promise<void>;
@@ -110,15 +111,16 @@ const keepOf = (state: GameState) => state.buildings.find(building => building.k
 function worldFacts(state: GameState) {
   const r = state.reorganisation;
   return { tick: state.tick, stage: reorganisationStage(state), weavers: of(state, "weaver_house").length, textileStreet: r?.textileStreetTick ?? null,
-    alehouseBoom: r?.alehouseBoomTick ?? null, guild: guildOf(state), rebellion: r?.rebellion ?? null, openPetitions: (state.politics?.petitions ?? []).filter(p => p.response === undefined).map(p => p.defId) };
+    alehouseBoom: r?.alehouseBoomTick ?? null, guild: guildOf(state), guildhall: reorgProp(state), rebellion: r?.rebellion ?? null, openPetitions: (state.politics?.petitions ?? []).filter(p => p.response === undefined).map(p => p.defId) };
 }
 const CLOSE: readonly (readonly [file: string, name: string, at: (state: GameState) => { tx: number; ty: number }])[] = [
   ["w1-textile-street", "reorg.textile_street", state => of(state, "weaver_house")[0] ?? keepOf(state)],
   ["w2-alehouse-crowd", "reorg.alehouse_boom", state => { const house = state.houses.find(entry => (entry.crafts?.[0]?.stock.ale ?? 0) > 0); return state.buildings.find(building => building.id === house?.buildingId) ?? keepOf(state); }],
   ["w3-petition-crowd", "guild_charter", keepOf],
-  ["w4-collectors-chased", "rumour-chased", keepOf],
+  ["w4-collectors-chased", "rumour-chased", state => { const market = of(state, "market")[0] ?? keepOf(state); const keep = keepOf(state);
+    return { tx: Math.round((market.tx + keep.tx) / 2), ty: Math.round((market.ty + keep.ty) / 2) }; }],
   ["w5-rumour-quiet", "rumour-quiet", keepOf],
-  ["w6-guildhall", "cloth_or_grain", state => of(state, "market")[0] ?? keepOf(state)],
+  ["w6-guildhall", "cloth_or_grain", state => reorgProp(state) ?? of(state, "market")[0] ?? keepOf(state)],
 ];
 for (const [file, name, at] of CLOSE) {
   await step(file, async () => {
