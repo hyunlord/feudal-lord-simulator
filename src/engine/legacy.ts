@@ -220,11 +220,11 @@ function due(state: GameState, legacy: LegacyState, step: LegacyStepId): number 
   switch (step) {
     case "mayor_demand": return legacy.startTick + B.mayorAfter * SEASON;
     case "royal_tax_envoy": return at.mayor_demand === undefined ? null : at.mayor_demand + B.envoyAfterMayor * SEASON;
-    case "succession": return at.royal_tax_envoy === undefined ? null : at.royal_tax_envoy + B.successionAfterEnvoy * SEASON;
+    case "succession": return at.royal_tax_envoy === undefined ? null : Math.max(at.royal_tax_envoy + B.successionAfterEnvoy * SEASON, seasonOf(state, B.successionFromYear));
     case "city_seal": { const heir = answeredAt(state, HEIR_CHOICE_PETITION_ID); return heir === null ? null : heir + B.sealAfterHeir * SEASON; }
     case "charter_sealing": return at.city_seal === undefined ? null : at.city_seal + B.charterAfterSeal * SEASON;
     case "family_departure": { const charter = answeredAt(state, BOROUGH_AUTONOMY_PETITION_ID); return charter === null ? null : charter + B.departureAfterCharter * SEASON; }
-    case "legacy_record": return at.family_departure === undefined ? null : at.family_departure + B.legacyAfterDeparture * SEASON;
+    case "legacy_record": return at.family_departure === undefined ? null : Math.max(at.family_departure + B.legacyAfterDeparture * SEASON, seasonOf(state, B.legacyFromYear));
     case "last_market": return lastMarketTick(state);
   }
 }
@@ -408,7 +408,7 @@ export function advanceLegacy(state: GameState, endChapter: (state: GameState) =
   if (ready("succession")) {
     const lord = lordOf(next);
     const old = lord !== undefined && ageOf(lord, yearOf(next, tick)) >= B.lordOldAge && tick % YEAR === 0;
-    const latest = l.steps.royal_tax_envoy! + B.successionLatestAfterEnvoy * SEASON;
+    const latest = due(next, l, "succession")! + (B.successionLatestAfterEnvoy - B.successionAfterEnvoy) * SEASON;
     if (old || tick >= latest || lord === undefined) {
       const offered = offerHeirs(came(next, l, "succession"));
       next = withLegacy(offered.state, l = { ...legacyOf(offered.state)!, candidates: offered.candidates });

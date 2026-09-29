@@ -75,9 +75,14 @@ test("L1 (LG-1) the eight steps come in order, each with its Wave 21 picture; fo
   assert.ok(records.some(record => record.illustration === LEGACY_STEP_ART.charter_sealing), "the charter sealed");
   assert.ok(records.every(record => HISTORY_TEMPLATES[record.template] !== undefined));
   assert.deepEqual(LEGACY_PETITION_DEFS.map(def => def.id).sort(), Object.keys(LEGACY_DECISION_ART).sort());
-  // The chain's longest course: 4 + 4 + 12 + 4 + 2 + 2 + 8 seasons and a season for each answer, from 1400 at the latest.
+  // The pace (1400–1450): the succession from 1400, the legacy's question from 1440.
+  assert.ok(end.legacy!.steps.succession! >= at(B.successionFromYear));
+  assert.ok(end.history!.records.some(record => record.template === "decision.petition_response" && record.params?.defId === LEGACY_CHOICE_PETITION_ID && record.tick >= at(B.legacyFromYear)));
+  // The chain's longest course from a chapter opened in 1400: 4 + 4 + 12 seasons to the succession, then 4 + 2 + 2 + 8
+  // and a season for each answer — before the legacy's floor of 1440, which leaves ten years to the last market day.
   const longest = B.mayorAfter + B.envoyAfterMayor + B.successionLatestAfterEnvoy + B.sealAfterHeir + B.charterAfterSeal + B.departureAfterCharter + B.legacyAfterDeparture + 4;
-  assert.ok(at(1400) + longest * SEASON < at(B.lastMarketYear, B.lastMarketSeason), `${longest} seasons`);
+  assert.ok(at(1400) + longest * SEASON < at(B.legacyFromYear), `${longest} seasons`);
+  assert.ok(at(B.legacyFromYear) + 2 * SEASON < at(B.lastMarketYear, B.lastMarketSeason));
 });
 
 test("L2 (LG-2) the charter sealed: the mayoralty and the seal to the town, the fine, the fee farm raised, the merchants' mayor, the family leaves", () => {

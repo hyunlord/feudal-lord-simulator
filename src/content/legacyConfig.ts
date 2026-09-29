@@ -52,6 +52,9 @@ export const LEGACY_BALANCE = {
   envoyAfterMayor: 4,
   successionAfterEnvoy: 4,
   successionLatestAfterEnvoy: 12,
+  /** LG-1: the succession not before the spring of this year, the legacy's question not before this one (the chapter is 1400–1450). */
+  successionFromYear: 1400,
+  legacyFromYear: 1440,
   /** LG-1: the succession comes the first spring the lord is this old (from `successionAfterEnvoy`). */
   lordOldAge: 50,
   sealAfterHeir: 4,

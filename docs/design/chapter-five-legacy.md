@@ -9,15 +9,16 @@
 |---|---|---|---|
 | `mayor_demand` | `ch5_event_mayor_demand` | 5장 시작 + 4계절 | 상인 엘리트가 도시가 시장(mayor)을 뽑게 해 달라고 요구한다. 후보는 첫 상인 가문의 수장이다 |
 | `royal_tax_envoy` | `ch5_event_royal_tax_envoy` | 앞 + 4계절 | 국왕의 과세 사절이 온다 → 결정 ③ |
-| `succession` | `ch5_event_succession` | 앞 + 4계절부터 영주가 50세 이상인 첫 봄, 늦어도 앞 + 12계절 | 늙은 영주가 후계자를 정한다 → 결정 ② |
+| `succession` | `ch5_event_succession` | 앞 + 4계절부터(1400년 봄 전에는 오지 않는다) 영주가 50세 이상인 첫 봄, 늦어도 그로부터 + 8계절 | 늙은 영주가 후계자를 정한다 → 결정 ② |
 | `city_seal` | `ch5_event_city_seal_making` | 후계자 답 + 4계절 | 도시가 제 인장을 만든다 |
 | `charter_sealing` | `ch5_event_charter_sealing` | 앞 + 2계절 | 자치 특허에 인장을 찍을지 → 결정 ① |
 | `family_departure` | `ch5_event_family_departure` | 특허 답 + 2계절 | 특허를 내주었으면 가문이 영주관을 떠나 시골 장원으로 간다(퇴거), 아니면 남는다(잔류) |
-| `legacy_record` | `ch5_event_legacy_record` | 앞 + 8계절 → 결정 ④, 답한 다음 계절에 유산 기록을 봉인한다 | |
+| `legacy_record` | `ch5_event_legacy_record` | 앞 + 8계절, 1440년 봄 전에는 오지 않는다 → 결정 ④. 답한 다음 계절에 유산 기록을 봉인한다 | |
 | `last_market` | `ch5_event_last_market` | 1450년 여름 | 마지막 장날. 유산 판정, 결말, 5장 끝 = 캠페인 끝 |
 
 - 답하지 않은 청원은 한 계절 뒤 영주의 침묵이 답한다(`expired`, LG-2~LG-5의 "침묵").
-- 늦게 연 5장(1400)도 1450 전에 모든 단계가 온다(여덟 단계의 합은 최대 40계절).
+- 박자(결정 LG1): 5장은 4장이 끝나는 해(봇 1382)에 열리지만, 지시의 5장은 1400–1450이다. 그래서 첫 결정(국왕 과세)은 5장 시작 뒤 2년 안에 오고, 후계자·인장·특허·퇴거는 1400년부터, 유산은 1440년부터 온다. 봇 도시에서는 1383~84 · 1400~05 · 1440 · 1450에 온다.
+- 늦게 연 5장(1400)도 1440 전에 퇴거까지 오고, 유산 뒤 마지막 장날까지 열 해가 남는다.
 
 ## LG-2 결정 ① 자치 특허 (`borough_autonomy`, 시민 청원, `ch5_decision_autonomy`)
 답 둘: `accept` 특허 수여, `refuse` 가문 지배 유지. 선택지와 대가는 4장 결과에 따라 다르다(`legacyDecisionForecast`, 카드가 읽는다).
