@@ -139,7 +139,7 @@ for (const [file, dir, name, chapter] of [["o3-chapter3-opening", dirs.ui6, "cha
       const candidate = await scene(state, [keep.tx, keep.ty], { delay: 0, label: file });
       // The page opens after the save's first frames: a minute or more on the DGX's software rendering.
       try { await candidate.page.locator(".chronicle-page").waitFor({ timeout: 120_000 }); opened = candidate; result[`${file}-attempts`] = attempt; }
-      catch { await candidate.close(); }
+      catch (error) { errors.push(`${file} attempt ${attempt}: ${String(error).slice(0, 200)}`); await candidate.close(); }
     }
     if (opened === null) throw new Error(`${file}: the chapter page did not open in three loads`);
     const { page, close } = opened;
