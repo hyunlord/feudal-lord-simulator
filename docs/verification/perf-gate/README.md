@@ -53,3 +53,4 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | 2026-09-29 23:36 | `c53a3815` | 실패 | big-town-x5 통과 · new-game-x3 통과 · season-x1 통과 · placement-x3 실패 | [2026-09-29-2336-c53a3815](2026-09-29-2336-c53a3815.md) |
 | 2026-09-29 23:50 | `d1dcff54` | 판정 아님 | big-town-x5 실패 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-29-2350-d1dcff54](2026-09-29-2350-d1dcff54.md) |
 | 2026-09-29 23:54 | `d1dcff54`* | 판정 아님 | big-town-x5 실패 · new-game-x3 판정 아님 · season-x1 통과 · placement-x3 판정 아님 | [2026-09-29-2354-d1dcff54](2026-09-29-2354-d1dcff54.md) |
+| 2026-09-30 01:21 | `924b7cb5` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0121-924b7cb5](2026-09-30-0121-924b7cb5.md) |
