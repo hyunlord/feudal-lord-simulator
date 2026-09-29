@@ -137,7 +137,8 @@ for (const [file, dir, name, chapter] of [["o3-chapter3-opening", dirs.ui6, "cha
     let opened: Awaited<ReturnType<typeof scene>> | null = null;
     for (let attempt = 1; attempt <= 3 && opened === null; attempt += 1) {
       const candidate = await scene(state, [keep.tx, keep.ty], { delay: 0, label: file });
-      try { await candidate.page.locator(".chronicle-page").waitFor({ timeout: 40_000 }); opened = candidate; result[`${file}-attempts`] = attempt; }
+      // The page opens after the save's first frames: a minute or more on the DGX's software rendering.
+      try { await candidate.page.locator(".chronicle-page").waitFor({ timeout: 120_000 }); opened = candidate; result[`${file}-attempts`] = attempt; }
       catch { await candidate.close(); }
     }
     if (opened === null) throw new Error(`${file}: the chapter page did not open in three loads`);
