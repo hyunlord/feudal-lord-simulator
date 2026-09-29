@@ -1,0 +1,50 @@
+{
+  "reviewedAt": "2026-09-29T11:44:46.615Z",
+  "verdict": "pass_with_documented_scale_limit",
+  "blockingIssues": [],
+  "inspected": [
+    "drain/drain_stage3_drying_summer_5x5-v3.png",
+    "drain/drain_stage3_drying_winter_5x5-v3.png",
+    "drain/drain_stage3_drying_summer_3x3-v3.png",
+    "drain/drain_stage3_drying_winter_3x3-v3.png",
+    "checks/01-region-drainage-sequence.png"
+  ],
+  "checks": [
+    {
+      "criterion": "whole region; no 25-cell checkerboard",
+      "result": "pass",
+      "evidence": "All four output sprites and final proof show irregular continuous ground; no repeated cell boundary or repeated patch grid."
+    },
+    {
+      "criterion": "wet mud / puddle scars / reeds / new grass",
+      "result": "pass",
+      "evidence": "Dark wet areas, cracked puddle margins, cut golden reed clumps and small green grass appear in irregular placements."
+    },
+    {
+      "criterion": "two continuous ditch traces",
+      "result": "pass",
+      "evidence": "Two narrow parallel depressions cross each region; subdued in summer, frost picks out edges in winter."
+    },
+    {
+      "criterion": "5x5 versus 3x3",
+      "result": "pass",
+      "evidence": "Smaller footprint retains fewer/appropriately compact major features, rather than making every feature microscopic."
+    },
+    {
+      "criterion": "season",
+      "result": "pass",
+      "evidence": "Winter retains exposed dark soil with widespread thin frost and blue-grey frozen puddle remnants; no thick blanket of snow."
+    },
+    {
+      "criterion": "zoom0.6 stage distinction",
+      "result": "pass",
+      "evidence": "Dark drying earth and pale stubble/ice patches remain distinct from staked fen, drainage channels on fen, and finished grass."
+    },
+    {
+      "criterion": "zoom0.6 microscopic detail",
+      "result": "documented_limit",
+      "evidence": "Individual blades, fine cracks and separate cut reed stalks reduce to grouped texture; larger clumps and wet/ice patches remain."
+    }
+  ],
+  "runtimeVerified": false
+}

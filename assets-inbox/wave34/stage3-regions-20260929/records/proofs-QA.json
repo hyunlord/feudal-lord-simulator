@@ -1,0 +1,35 @@
+{
+  "file": "checks/01-region-drainage-sequence.png",
+  "sha256": "436949b28b51d695fddc94125025c99e80ae9794bc3dbfce643bd7019ae8a2ea",
+  "dimensions": [
+    1500,
+    1870
+  ],
+  "verdict": "pass_with_documented_limitations",
+  "regionSizes": [
+    [
+      5,
+      5
+    ],
+    [
+      3,
+      3
+    ]
+  ],
+  "seasons": [
+    "summer",
+    "winter"
+  ],
+  "zoom": [
+    1,
+    0.6
+  ],
+  "stage3DrawCountPerPanel": 1,
+  "tileRepetition": false,
+  "emptyCellMasking": false,
+  "engineInstalled": false,
+  "limitations": [
+    "ditch traces direction matches but exact positions are irregular",
+    "fine cracks and individual grass leaves small at 3x3 zoom 0.6"
+  ]
+}

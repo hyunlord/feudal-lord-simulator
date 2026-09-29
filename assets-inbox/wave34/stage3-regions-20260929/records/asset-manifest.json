@@ -1,0 +1,78 @@
+[
+  {
+    "id": "drain/drain_stage3_drying_summer_5x5-v3",
+    "file": "drain/drain_stage3_drying_summer_5x5-v3.png",
+    "width": 640,
+    "height": 320,
+    "pivot": [
+      320,
+      160
+    ],
+    "regionCells": [
+      5,
+      5
+    ],
+    "repeat": "NONE",
+    "drawCount": 1,
+    "stage": 3,
+    "season": "summer",
+    "status": "candidate"
+  },
+  {
+    "id": "drain/drain_stage3_drying_winter_5x5-v3",
+    "file": "drain/drain_stage3_drying_winter_5x5-v3.png",
+    "width": 640,
+    "height": 320,
+    "pivot": [
+      320,
+      160
+    ],
+    "regionCells": [
+      5,
+      5
+    ],
+    "repeat": "NONE",
+    "drawCount": 1,
+    "stage": 3,
+    "season": "winter",
+    "status": "candidate"
+  },
+  {
+    "id": "drain/drain_stage3_drying_summer_3x3-v3",
+    "file": "drain/drain_stage3_drying_summer_3x3-v3.png",
+    "width": 384,
+    "height": 192,
+    "pivot": [
+      192,
+      96
+    ],
+    "regionCells": [
+      3,
+      3
+    ],
+    "repeat": "NONE",
+    "drawCount": 1,
+    "stage": 3,
+    "season": "summer",
+    "status": "candidate"
+  },
+  {
+    "id": "drain/drain_stage3_drying_winter_3x3-v3",
+    "file": "drain/drain_stage3_drying_winter_3x3-v3.png",
+    "width": 384,
+    "height": 192,
+    "pivot": [
+      192,
+      96
+    ],
+    "regionCells": [
+      3,
+      3
+    ],
+    "repeat": "NONE",
+    "drawCount": 1,
+    "stage": 3,
+    "season": "winter",
+    "status": "candidate"
+  }
+]
