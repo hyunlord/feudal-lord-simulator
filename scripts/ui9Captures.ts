@@ -13,6 +13,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
+import { isAlehouse } from "../src/engine/ale";
 import { guildOf, reorganisationStage, revoltPressure } from "../src/engine/reorganisation";
 import { reorgProp } from "../src/render/reorgWorldProps";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
@@ -115,7 +116,7 @@ function worldFacts(state: GameState) {
 }
 const CLOSE: readonly (readonly [file: string, name: string, at: (state: GameState) => { tx: number; ty: number }])[] = [
   ["w1-textile-street", "reorg.textile_street", state => of(state, "weaver_house")[0] ?? keepOf(state)],
-  ["w2-alehouse-crowd", "reorg.alehouse_boom", state => { const house = state.houses.find(entry => (entry.crafts?.[0]?.stock.ale ?? 0) > 0); return state.buildings.find(building => building.id === house?.buildingId) ?? keepOf(state); }],
+  ["w2-alehouse-crowd", "reorg.alehouse_boom", state => { const house = state.houses.find(entry => isAlehouse(entry)); return state.buildings.find(building => building.id === house?.buildingId) ?? keepOf(state); }],
   ["w3-petition-crowd", "guild_charter", keepOf],
   ["w4-collectors-chased", "rumour-chased", state => { const market = of(state, "market")[0] ?? keepOf(state); const keep = keepOf(state);
     return { tx: Math.round((market.tx + keep.tx) / 2), ty: Math.round((market.ty + keep.ty) / 2) }; }],
@@ -157,8 +158,10 @@ for (const [file, name] of [["f3-commons-quiet", "rumour-quiet"], ["f4-commons-c
     const { page, close } = await scene(name, 600_000);
     await openChronicleFactions(page);
     await page.locator(".chronicle-factions-row[data-faction='commons']").first().click(); await page.waitForTimeout(900);
+    // The revolt pressure stands below the page (scrolled to, as the player scrolls).
+    await page.evaluate(() => { document.querySelector(".chronicle-faction-pressure")?.scrollIntoView({ block: "end" }); }); await page.waitForTimeout(400);
     await page.screenshot({ path: join(out!, `${file}.jpg`), type: "jpeg", quality: 66 });
-    result[file] = await page.evaluate(() => [...document.querySelectorAll(".chronicle-faction p, .chronicle-faction li")].map(node => node.textContent?.trim() ?? "").slice(0, 30));
+    result[file] = await page.evaluate(() => [...document.querySelectorAll(".chronicle-faction-pressure p, .chronicle-faction-pressure li")].map(node => node.textContent?.trim() ?? ""));
     await close();
   });
 }

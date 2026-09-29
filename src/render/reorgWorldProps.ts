@@ -176,23 +176,23 @@ function drawTextileWalkers(ctx: CanvasRenderingContext2D, state: GameState, reo
   walkerCell(ctx, "wk_petitioner_f", fwd ? dir : (DIR_COL[dir] <= 1 ? "SW" : "NE") as Dir, gait + 1, sx + 10, sy + 4);
 }
 
-// 2. Alehouse crowd: 1–2 walkers lingering near each alehouse during the boom.
-const ALE_WALKER_OFFSETS = [{ ox: -18, oy: 12 }, { ox: 16, oy: 16 }] as const;
+// 2. Alehouse crowd (RG-1 the alehouses' boom): three or four drinkers clustered at each alehouse's door, turned to
+// one another (half face the door, half the street), swaying a little on the wall clock — a crowd, not passers-by.
+const ALE_WALKER_OFFSETS = [{ ox: -16, oy: 8, dir: "NE" }, { ox: 14, oy: 10, dir: "NW" }, { ox: -4, oy: 20, dir: "NE" }, { ox: 22, oy: 22, dir: "SW" }] as const;
 const ALE_LOOP_MS = 8_000;
 function drawAlehouseDrinkers(ctx: CanvasRenderingContext2D, state: GameState, reorg: GameState["reorganisation"] & object, nowMs: number): void {
   if (reorg.alehouseBoomTick === undefined || reorg.endedTick !== undefined) return;
-  const gait = Math.floor(nowMs / GAIT_MS);
   for (const house of state.houses) {
     if (!isAlehouse(house)) continue;
     const building = state.buildings.find(b => b.id === house.buildingId);
     if (building === undefined) continue;
     const at = buildingDoor(building);
-    const walkerCount = (hashI(state.seed, building.tx * 13, building.ty * 7) % 2) + 1; // 1 or 2 per alehouse
+    const walkerCount = 3 + (hashI(state.seed, building.tx * 13, building.ty * 7) % 2); // 3 or 4 per alehouse
     for (let i = 0; i < walkerCount; i += 1) {
       const off = ALE_WALKER_OFFSETS[i]!;
-      const swing = Math.sin((nowMs / ALE_LOOP_MS + i * 0.5) * Math.PI * 2) * 3; // gentle sway
-      const key: Wave9Key = i === 0 ? "wk_petitioner_m" : "wk_petitioner_f";
-      walkerCell(ctx, key, "SW", gait + i, at.sx + off.ox, at.sy + off.oy + swing);
+      const swing = Math.sin((nowMs / ALE_LOOP_MS + i * 0.37) * Math.PI * 2) * 2;
+      const key: Wave9Key = i % 2 === 0 ? "wk_petitioner_m" : "wk_petitioner_f";
+      walkerCell(ctx, key, off.dir, 0, at.sx + off.ox + swing, at.sy + off.oy);
     }
   }
 }
