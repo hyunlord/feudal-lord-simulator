@@ -78,6 +78,9 @@ export function drawObjectRenderItems(
   const queue = placeWalkers(sortRenderItems([...input.objectRenderItems, ...rails]), input.state, item =>
     stoneGates.some(gate => Math.hypot(item.walker.position.tx - gate.x, item.walker.position.ty - gate.y) < 1.5)
     || bridgeAt(input.state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) !== null);
+  // SMOOTH-2R: the camera transform, read once for the queue; walls and walkers read it per item before (a new
+  // DOMMatrix each, 113 a frame in the 1380 town). Every item restores what it changes, so it holds at each item.
+  const transform = context.getTransform?.();
   for (const item of queue) {
     probe?.enter(stageForRenderItem(item.kind));
     if (item.kind === "bridge_rail") {
@@ -130,7 +133,7 @@ export function drawObjectRenderItems(
         gates: item.gates,
         zoom: input.zoom,
         ...(wallStrips ? { face: wallFaceFor(input.state, item) } : {}),
-      });
+      }, transform);
       continue;
     }
     context.save();
@@ -148,7 +151,7 @@ export function drawObjectRenderItems(
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
       selectionMode: input.selectionMode ?? false,
-      viewMode,
+      viewMode, transform,
     });
     context.restore();
   }
@@ -173,7 +176,7 @@ export function drawObjectRenderItems(
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
       selectionMode: input.selectionMode ?? false,
-      viewMode,
+      viewMode, transform,
     });
     context.restore();
   }

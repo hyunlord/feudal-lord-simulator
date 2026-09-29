@@ -14,14 +14,15 @@ export function rasterCacheKey(content: string, t: Transform): string {
   return `${content}|${t.a},${t.b},${t.c},${t.d}`;
 }
 
-/** Cache one complete queue item; translation only changes its integer device-pixel destination. */
+/** Cache one complete queue item; translation only changes its integer device-pixel destination. SMOOTH-2R: `current`
+ * is the context's current transform when the caller holds it (read once per frame), else getTransform() is read here. */
 export function drawCachedWorldRaster(context: CanvasRenderingContext2D, content: string,
-  bounds: RasterBounds, draw: (paint: CanvasRenderingContext2D) => void): void {
+  bounds: RasterBounds, draw: (paint: CanvasRenderingContext2D) => void, current?: Transform): void {
   if (typeof document === "undefined" || typeof context.getTransform !== "function"
     || context.globalCompositeOperation !== "source-over" || context.globalAlpha !== 1) {
     draw(context); return;
   }
-  const transform = context.getTransform();
+  const transform = current ?? context.getTransform();
   const key = rasterCacheKey(`${content}|${bounds.left},${bounds.top},${bounds.right},${bounds.bottom}|${context.imageSmoothingEnabled}:${context.imageSmoothingQuality}`, transform);
   let cache = caches.get(context);
   if (cache === undefined) { cache = new Map(); caches.set(context, cache); }

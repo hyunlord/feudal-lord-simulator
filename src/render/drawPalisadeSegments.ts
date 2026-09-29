@@ -15,7 +15,7 @@ import {
 } from "./palisadeRenderGeometry";
 import type { StoneWallNode } from "./stoneWallTopology";
 import { drawStoneWall } from "./stoneWallRenderer";
-import { applyInkOutline, applyPaletteStroke, snapToPixel } from "./style";
+import { applyInkOutline, applyPaletteStroke, snapToPixel, type CanvasTransform } from "./style";
 import { drawWallFaceSlice, drawWallModules, type WallFaceSlice } from "./drawWallFaces";
 import type { WallNode, WallPillar } from "../world/boundary/wallBaseline";
 import { wallFaceReadiness } from "./terrainVariantAssets";
@@ -44,7 +44,8 @@ export type PalisadeRunStyle =
   | "roof"
   | "completed";
 
-export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: DrawPalisadeSegmentInput): void {
+/** `transform`: the context's current transform when the caller holds it (SMOOTH-2R, drawCachedWorldRaster). */
+export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: DrawPalisadeSegmentInput, transform?: CanvasTransform): void {
   const points = palisadeScreenPath([...input.segment.edgePath,
     ...(input.stoneNodes ?? []).flatMap(node => [node.point, ...node.neighbors]),
     ...(input.face?.nodes ?? []).flatMap(node => [node.point, ...node.neighbors])]);
@@ -59,7 +60,7 @@ export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: Dr
     right: Math.max(...points.map(point => point.x)) + 96,
     top: Math.min(...points.map(point => point.y)) - 128,
     bottom: Math.max(...points.map(point => point.y)) + 48,
-  }, paint => drawPalisadeSegmentUncached(paint, input));
+  }, paint => drawPalisadeSegmentUncached(paint, input), transform);
 }
 
 export function drawPalisadeSegmentUncached(
