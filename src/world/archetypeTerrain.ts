@@ -11,7 +11,7 @@
  */
 import type { ArchetypeDef, ArchetypeTerrainKind } from "../content/scenario/types";
 import type { TerrainType } from "../content/terrainConfig";
-import { hashSeed } from "../engine/prng";
+import { hashSeed } from "../content/seedHash";
 import { guaranteeEssentialResourceTerrain } from "./essentialResources";
 import type { Grid } from "./grid";
 import { fbm } from "./noise";

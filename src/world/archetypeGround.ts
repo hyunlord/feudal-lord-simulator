@@ -9,7 +9,7 @@
  */
 import type { ArchetypeDef } from "../content/scenario/types";
 import type { TerrainType } from "../content/terrainConfig";
-import { hashSeed } from "../engine/prng";
+import { hashSeed } from "../content/seedHash";
 import { fbm } from "./noise";
 
 export interface GroundLayer {
