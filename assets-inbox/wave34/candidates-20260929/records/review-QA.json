@@ -1,0 +1,53 @@
+{
+  "status": "pass_with_documented_limits",
+  "reviewedAt": "2026-09-29T10:40:38.137Z",
+  "scope": "26 candidate assets and 2 offline proofs",
+  "checks": [
+    {
+      "id": "ford-width-axis",
+      "result": "pass",
+      "evidence": "fords-qa.png: w2/w3/w4 lengths distinct; NE and NW opposite isometric slopes in both seasons."
+    },
+    {
+      "id": "ford-water",
+      "result": "pass",
+      "evidence": "Open water visible between stepping stones, with restrained shore ramps; proof01 shows underlying water and flow."
+    },
+    {
+      "id": "winter",
+      "result": "pass",
+      "evidence": "Thin pale ice on water edges and stone/bank margins; central water remains open."
+    },
+    {
+      "id": "props",
+      "result": "pass",
+      "evidence": "Cart, soil, sluice, planks distinguishable. Splash A elevated arc, B low ripple."
+    },
+    {
+      "id": "strip",
+      "result": "pass",
+      "evidence": "Three repeats no obvious join break; summer/winter restrained tones."
+    },
+    {
+      "id": "drain-sequence",
+      "result": "pass",
+      "evidence": "Final proof02: boundary stakes, two ditch rows with smaller fewer pools, continuous quiet drying mud, then grass and perimeter ditch; readable at zoom1.0/0.6."
+    },
+    {
+      "id": "stage3-repeat",
+      "result": "pass_after_revision",
+      "evidence": "Earlier patchy mud grid rejected. Final proof02 summer/winter has no conspicuous green square holes or repeated large blotches. Native-resolution plot composition before downscale required."
+    },
+    {
+      "id": "proof-context",
+      "result": "pass",
+      "evidence": "Proof01 labels offline reconstruction and displays attached minimap crop; atlas bridge assembled as one object, not entire atlas."
+    }
+  ],
+  "limits": [
+    "Offline asset review only, not engine installation or runtime validation.",
+    "Splash B is subtle at zoom0.6.",
+    "Stage3 reed stubble and sparse grass reduce to texture at zoom0.6; stage identity is the drying soil field.",
+    "Compose stage3 at source resolution then scale whole plot, per proofs-contract.md; separately filtered tile edges can show alpha gaps."
+  ]
+}

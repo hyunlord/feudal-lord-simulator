@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-29 13시 갱신)
+## 3. 현재 장부 요약 (2026-09-29 20시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -58,17 +58,17 @@ assets-inbox/
 | `walker-pilot2` | 96 |  | 96 |  |  |  |  | 0 |
 | `wave10` | 735 |  |  |  |  | 735 |  | 0 |
 | `wave11` | 69 |  | 69 |  |  |  |  | 55 |
-| `wave12` | 89 |  | 65 |  | 24 |  |  | 1 |
+| `wave12` | 89 |  | 65 |  | 24 |  |  | 3 |
 | `wave13` | 118 |  | 118 |  |  |  |  | 0 |
 | `wave14` | 147 |  | 146 |  | 1 |  |  | 58 |
 | `wave15` | 69 |  | 69 |  |  |  |  | 65 |
 | `wave16` | 49 |  | 49 |  |  |  |  | 35 |
-| `wave17` | 64 |  | 64 |  |  |  |  | 26 |
+| `wave17` | 64 |  | 64 |  |  |  |  | 27 |
 | `wave18` | 48 |  | 48 |  |  |  |  | 0 |
 | `wave19` | 57 |  | 57 |  |  |  |  | 53 |
 | `wave2` | 42 |  | 36 |  | 1 | 1 | 4 | 30 |
 | `wave20` | 97 |  | 82 |  | 15 |  |  | 0 |
-| `wave21` | 90 |  | 66 |  | 24 |  |  | 19 |
+| `wave21` | 90 |  | 66 |  | 24 |  |  | 38 |
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave23` | 120 |  | 120 |  |  |  |  | 82 |
 | `wave24` | 32 |  | 28 |  | 4 |  |  | 0 |
@@ -79,9 +79,10 @@ assets-inbox/
 | `wave29` | 32 |  | 32 |  |  |  |  | 14 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 62 |
 | `wave30` | 141 |  | 141 |  |  |  |  | 0 |
-| `wave31` | 4 |  | 4 |  |  |  |  | 1 |
-| `wave32` | 37 |  | 35 | 2 |  |  |  | 0 |
+| `wave31` | 4 |  | 4 |  |  |  |  | 3 |
+| `wave32` | 41 |  | 39 |  | 2 |  |  | 0 |
 | `wave33` | 6 |  | 6 |  |  |  |  | 0 |
+| `wave34` | 28 |  | 26 | 2 |  |  |  | 0 |
 | `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
 | `wave4b` | 57 |  | 57 |  |  |  |  | 53 |
 | `wave4c` | 29 |  | 29 |  |  |  |  | 18 |
@@ -95,7 +96,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **4288** | **0** | **3092** | **2** | **249** | **909** | **36** | **1779** |
+| **합계** | **4320** | **0** | **3122** | **2** | **251** | **909** | **36** | **1803** |
 
 ## 4. 찾는 법
 
@@ -207,6 +208,8 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave31-candidates.zip` (09-29 08:39) | `wave31/candidates-20260929` | 3,860 KB | `36c751f174773007…` | 16 | 0 | 없음 | `illustrations/` → `assets/illustrations/`, `provenance/`(프롬프트·원본 해시) → `records/provenance/`. 작업 폴더 `/tmp/astra-wave31-work`의 `package-verification.json`은 `records/`로, 작업 폴더 전체(`delivery/`가 ZIP과 바이트 같음)는 `astra-raw/output/astra-wave31-work/`에 보관. 네 장 모두 JPG
 | `/tmp/astra-wave32-candidates-20260929-lite.zip` (09-29 09:41, 경량판) | `wave32/candidates-20260929` | 5,420 KB | `843c3d8f7089d712…` | 105 | 0 | `references/`(현재 `barn.png` 등) 제외 | 마스크는 `records/masks/`. 작업 폴더 `output/astra-wave32-v1`에만 있던 `records/package-result.json`을 합침, 생성 원본 `native/`는 제외(Astra가 `astra-raw/wave32-20260929/` 42MB에 직접 둠). `/tmp`의 포장 시도 폴더 둘 중 하나는 ZIP과 같고 하나는 `PLAN.md`만 다름. 확인 그림 2장은 JPG
 | `/tmp/astra-wave33-candidates-20260929-lite.zip` (09-29 13:13, 경량판) | `wave33/candidates-20260929` | 9,128 KB | `161793154b37cc05…` | 19 | 0 | `references/`(Wave 21 참조 JPG 3) 제외(사용자 지시) | 작업 폴더 `output/astra-wave33-v1`과 바이트 같음, 생성 원본 `native/`는 제외(Astra가 `astra-raw/wave33-20260929/` 17MB에 직접 둠). 확인판 `contact.jpg`는 JPG
+| `/tmp/astra-wave32-rework-20260929-lite.zip` (09-29 09:49, 경량판) | `wave32/rework-20260929` | 4,552 KB | `55102d27d7985a52…` | 26 | 25 | `references/` 제외 | 26장 가운데 바뀐 것은 `granary_b_snow-v1`·`granary_b_boarded-v1` 둘뿐(해시 대조). 원래 납품과 바이트가 같은 24장·기록 마스크 1장과 `records/previous/`(원래 묶음 기록 사본 58파일)는 넣지 않음. 작업 폴더 `output/astra-wave32-rework-v2`에만 있던 `records/package-result.json`을 합침, 생성 원본 `native/`는 제외(Astra가 `astra-raw/wave32-rework-20260929/`에 직접 둠)
+| `/tmp/astra-wave34-candidates-20260929.zip` (09-29 19:42) | `wave34/candidates-20260929` | 3,193 KB | `90db8e9bf0e3fb33…` | 55 | 0 | `references/`(7), `records/proof-inputs/`(확인 그림을 만들 때 쓴 기존 게임 그림 사본 10) 제외 | `ford/`·`drain/`·`props/` → `assets/` 아래, `checks/` → `proofs/`. ZIP 밖 `astra-wave34-sha-validation.txt`는 `records/sha-validation.txt`로. 작업 폴더 `/tmp/astra-wave34-work-20260929`(2.3MB)는 `astra-raw/output/`에 보관. 생성 원본 보존 폴더는 없음
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -263,6 +266,8 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 31 장 시작 그림**(`wave31/candidates-20260929`, 2026-09-29 09시 판정): 3장(1348 흑사병의 예감)·4장(1362 재편)·5장(1400 자치와 유산) 시작 그림 1920×1080 JPG 3장과 1~5장 비교 그림(3200×360 JPG) 1장 `confirmed`. 생성 원본 약 1672×941을 확대·중앙 크롭한 판(네이티브 1920 아님). 비교 그림의 1장은 Wave 8 `keyart_title_bg`, 2장은 Wave 16 `chapter2_intro`.
 - **Wave 32 곡창**(`wave32/candidates-20260929`, 2026-09-29 09시 판정, 경량판): 기본형 3(a 받침돌 목조·초가, b 다른 목골조·평기와, c 석조·부벽·돌판)과 상태 그림 18(가득·절반·빔·낡음·눈·빈집 판자, 160×144 피벗 (80,128), 현재 `barn.png`와 같은 규격), 분리 소품 5(도르래 보·밧줄 갈고리·낱자루·자루 더미 2). 24장 `confirmed`, `granary_b_snow-v1` `rework_pending`(비고 "눈이 흰 기와로 보임"), `granary_b_boarded-v1` `rework_pending`(비고 "판자가 안 보임"). 확인 그림 2(JPG)·마스크 9 `confirmed`.
 - **Wave 33 막간 사건 삽화**(`wave33/candidates-20260929`, 2026-09-29 13시 판정, 경량판): 960×540 삽화 5장(1391 양모 집산지 이전, 1394 길드와 상인의 다툼, 1394 장터 국소 화재, 1396 교회 신랑 증축, 1399 헨리 4세 즉위 소식)과 확인판 1장(JPG) `confirmed`. 1399 왕실 깃발은 프랑스(백합 흩뿌림)·잉글랜드(사자 셋) 4분할(1406 이후 세 백합판과 구별).
+- **Wave 32 곡창 재작업**(`wave32/rework-20260929`, 2026-09-29 20시 판정): B 눈(기와 줄눈을 덮는 불규칙한 눈 더미)·B 판자(문을 가로지르는 X자) 새 2장 `confirmed`, 비고 "재작업판(바이트 다름)" — 파일 이름이 원래 납품과 같다. 옛 2장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 비교판 1(JPG, 확인 그림)·새 마스크 1 `confirmed`. 나머지 24장은 원래 납품과 바이트가 같아 새 행을 만들지 않았다.
+- **Wave 34 여울·습지 배수**(`wave34/candidates-20260929`, 2026-09-29 20시 판정): 여울 12(폭 2·3·4 × ne·nw × 여름·겨울, 512×256), 배수 1·2단계 4와 완료 도랑 띠 2, 소품 6(흙수레·널다리·수문·흙더미·물튀김 2), 확인 그림 2 = 26장 `confirmed`. `drain_stage3_drying_summer-v1`·`_winter-v1` 2장은 `rework_pending`(비고 "무늬 없는 갈색 판 — 진흙·그루터기·웅덩이 자국 필요").
 ## 7. 찾지 못한 것
 
 | 항목 | 상태 |

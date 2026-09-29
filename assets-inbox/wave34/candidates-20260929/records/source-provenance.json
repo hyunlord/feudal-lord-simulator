@@ -1,0 +1,1813 @@
+[
+  {
+    "id": "ford/ford_w2_ne_summer-v1",
+    "widthTiles": 2,
+    "direction": "ne",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE isolated transparent game sprite of a shallow river FORD, NOT a bridge. Same restrained hand-painted miniature game art as project references. Summer, southern England 1300–1450. Final canvas512x256, 2:1 isometric ground plane, center anchor256,128. Crossing travel runs SW lower-left to NE upper-right, slope -0.5. Water span TWO tiles: between points192,160 and320,96, where tiles128x64. One-tile-wide flat shallow blue-grey water channel crossing patch with gravel visible UNDER water and a sparse row of irregular steppingstones. BOTH ends have a short half-tile olive grass/muddy bank ramp with two subtle cart-wheel ruts leading INTO water. Never raised causeway or paved roadway. Water must have genuine partial alpha (about35–60% opacity) so underlying river flow overlay can show, stones and banks opaque. Outside patch fully transparent. Overall art bounds roughly x128..384 y48..208, leaving generous transparent canvas. Lowcontrast muted olive/brown/grey-blue palette. Broad readable forms, no micro-noise, no foam, no figures, vehicles, text, grids, labels, cast shadows or extra objects. Ref1 bridge is brushwork and projection only, do not copy bridge; ref2 water tones; ref3 muted fen ground. Only ONE ford, no sheet.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave29_물.jpg",
+      "references/Wave22_습지_지면.jpg"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-14498603-f4db-4d98-a636-da751402826f.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:27:15.983Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w2_ne_summer-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        -174,
+        226.5
+      ],
+      "nativeTravelU": [
+        -490.5,
+        510.5
+      ],
+      "nativeCrossV": [
+        760,
+        1111
+      ],
+      "bankContacts": [
+        [
+          192,
+          160
+        ],
+        [
+          320,
+          96
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "bridge_wood_ne_sw-v2.png",
+      "Wave29_물.jpg",
+      "Wave22_습지_지면.jpg"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/bridge_wood_ne_sw-v2.png",
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave29_물.jpg",
+        "providedReference": "references/Wave29_물.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave29_물.jpg",
+        "sha256": "2cebb86520ab9913aa727f5443b2accbbba9b8953913561d00ffb5243d7b5b85",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave22_습지_지면.jpg",
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w2_ne_summer-v1.png",
+    "runtimeSha256": "36d42e70dbf4824b00f3f6a62bcd7c0b6aff2dafe60bf05d811fd65431d80593",
+    "sourceSha256": "635221561c5c651386fb09b7eb6080dede48e866de670e2eb43f13562e31a18a"
+  },
+  {
+    "id": "ford/ford_w2_ne_winter-v1",
+    "widthTiles": 2,
+    "direction": "ne",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target image1 this exact summer ford sprite into mild southern English WINTER 1300–1450. Preserve every stone position, both bank ramp outlines, cart ruts, exact crossing orientation, camera, footprint and transparent background. Change ONLY season: olive grass slightly dormant grey-olive, tiny thin broken icy rim along water margins near banks, sparse frost on exposed bank edges. Water stays OPEN, blue-grey and genuinely semi-transparent, never solid frozen ice. No thick snow, no new objects, no extra shadows, no dramatic white outline. Same hand-painted game art, no text. Preserve image canvas and composition EXACTLY.",
+    "referenceInputs": [
+      "exec-14498603-f4db-4d98-a636-da751402826f.png [native reference, SHA in records; not bundled]"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-8d7461d1-d955-4a88-a79c-f09515922629.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:33:46.682Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w2_ne_winter-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        -200.5,
+        247
+      ],
+      "nativeTravelU": [
+        -492.5,
+        512
+      ],
+      "nativeCrossV": [
+        759.5,
+        1112.5
+      ],
+      "bankContacts": [
+        [
+          192,
+          160
+        ],
+        [
+          320,
+          96
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "ford/ford_w2_ne_summer-v1"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "exec-14498603-f4db-4d98-a636-da751402826f.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-14498603-f4db-4d98-a636-da751402826f.png",
+        "sha256": "635221561c5c651386fb09b7eb6080dede48e866de670e2eb43f13562e31a18a",
+        "relatedDeliveryAsset": "ford/ford_w2_ne_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w2_ne_winter-v1.png",
+    "runtimeSha256": "60d4c846dcba2046749e34ba6a4741fe6316b101ed25abd64c7923e179385b11",
+    "sourceSha256": "2c2bae09f95413980d71100aa1235dda00e45d12f382f2561b1f2729bcac722f"
+  },
+  {
+    "id": "ford/ford_w2_nw_summer-v1",
+    "widthTiles": 2,
+    "direction": "nw",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE isolated transparent game sprite of a shallow river FORD, NOT a bridge. Same restrained hand-painted miniature game art as project references. Summer, southern England 1300–1450. Final canvas512x256, 2:1 isometric ground plane, center anchor256,128. Crossing travel runs NW upper-left to SE lower-right, slope +0.5. Water span TWO tiles: between points192,96 and320,160, where tiles128x64. One-tile-wide flat shallow blue-grey water channel crossing patch with gravel visible UNDER water and a sparse row of irregular steppingstones. BOTH ends have a short half-tile olive grass/muddy bank ramp with two subtle cart-wheel ruts leading INTO water. Never raised causeway or paved roadway. Water must have genuine partial alpha (about35–60% opacity) so underlying river flow overlay can show, stones and banks opaque. Outside patch fully transparent. Overall art bounds roughly x128..384 y48..208, leaving generous transparent canvas. Lowcontrast muted olive/brown/grey-blue palette. Broad readable forms, no micro-noise, no foam, no figures, vehicles, text, grids, labels, cast shadows or extra objects. Ref1 bridge is brushwork and projection only, do not copy bridge; ref2 water tones; ref3 muted fen ground. Only ONE ford, no sheet. Independent second direction, recompose lighting top-left; do not merely mirror.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave29_물.jpg",
+      "references/Wave22_습지_지면.jpg"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-ff5a1f78-2719-47dd-a6f2-a2b0799561a1.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:28:08.458Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w2_nw_summer-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        698.5,
+        1146.5
+      ],
+      "nativeTravelU": [
+        433.5,
+        1420
+      ],
+      "nativeCrossV": [
+        -176.5,
+        82
+      ],
+      "bankContacts": [
+        [
+          192,
+          96
+        ],
+        [
+          320,
+          160
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "bridge_wood_ne_sw-v2.png",
+      "Wave29_물.jpg",
+      "Wave22_습지_지면.jpg"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/bridge_wood_ne_sw-v2.png",
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave29_물.jpg",
+        "providedReference": "references/Wave29_물.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave29_물.jpg",
+        "sha256": "2cebb86520ab9913aa727f5443b2accbbba9b8953913561d00ffb5243d7b5b85",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave22_습지_지면.jpg",
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w2_nw_summer-v1.png",
+    "runtimeSha256": "7b2a3b983a4b03ea90c9375f4f005a6bbef2bcedfe6ec4d6e9440fab8f4b1259",
+    "sourceSha256": "499e24669e6f6f764f87dcb73d7d7089e6382f8dd70c4184d40765a37e65f867"
+  },
+  {
+    "id": "ford/ford_w2_nw_winter-v1",
+    "widthTiles": 2,
+    "direction": "nw",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target image1 this exact summer ford sprite into mild southern English WINTER 1300–1450. Preserve every stone position, both bank ramp outlines, cart ruts, exact crossing orientation, camera, footprint and transparent background. Change ONLY season: olive grass slightly dormant grey-olive, tiny thin broken icy rim along water margins near banks, sparse frost on exposed bank edges. Water stays OPEN, blue-grey and genuinely semi-transparent, never solid frozen ice. No thick snow, no new objects, no extra shadows, no dramatic white outline. Same hand-painted game art, no text. Preserve image canvas and composition EXACTLY.",
+    "referenceInputs": [
+      "exec-ff5a1f78-2719-47dd-a6f2-a2b0799561a1.png [native reference, SHA in records; not bundled]"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-b9d43a86-fc08-4a14-ba52-fcb07696e39b.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:34:29.287Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w2_nw_winter-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        679,
+        1158.5
+      ],
+      "nativeTravelU": [
+        432,
+        1422.5
+      ],
+      "nativeCrossV": [
+        -179.5,
+        83.5
+      ],
+      "bankContacts": [
+        [
+          192,
+          96
+        ],
+        [
+          320,
+          160
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "ford/ford_w2_nw_summer-v1"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "exec-ff5a1f78-2719-47dd-a6f2-a2b0799561a1.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-ff5a1f78-2719-47dd-a6f2-a2b0799561a1.png",
+        "sha256": "499e24669e6f6f764f87dcb73d7d7089e6382f8dd70c4184d40765a37e65f867",
+        "relatedDeliveryAsset": "ford/ford_w2_nw_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w2_nw_winter-v1.png",
+    "runtimeSha256": "5fd8d08904b28ecf140033c4280b2ba0b28294571cc034019d5346fd43917c51",
+    "sourceSha256": "5d222b553991a9daf9fd35ff543850b047bfa7416c44b4ad347d56ffa28ebbde"
+  },
+  {
+    "id": "ford/ford_w3_ne_summer-v1",
+    "widthTiles": 3,
+    "direction": "ne",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE isolated transparent game sprite of a shallow river FORD, NOT a bridge. Same restrained hand-painted miniature game art as project references. Summer, southern England 1300–1450. Final canvas512x256, 2:1 isometric ground plane, center anchor256,128. Crossing travel runs SW lower-left to NE upper-right, slope -0.5. Water span THREE tiles: between points160,176 and352,80, where tiles128x64. One-tile-wide flat shallow blue-grey water channel crossing patch with gravel visible UNDER water and a sparse row of irregular steppingstones. BOTH ends have a short half-tile olive grass/muddy bank ramp with two subtle cart-wheel ruts leading INTO water. Never raised causeway or paved roadway. Water must have genuine partial alpha (about35–60% opacity) so underlying river flow overlay can show, stones and banks opaque. Outside patch fully transparent. Water occupies THREE QUARTERS of total travel length, end ramps together only ONE QUARTER, noticeably longer water than 2tile crossing. Overall art bounds roughly x96..416 y48..208, leaving generous transparent canvas. Lowcontrast muted olive/brown/grey-blue palette. Broad readable forms, no micro-noise, no foam, no figures, vehicles, text, grids, labels, cast shadows or extra objects. Ref1 bridge is brushwork and projection only, do not copy bridge; ref2 water tones; ref3 muted fen ground. Only ONE ford, no sheet. Make steppingstones irregular staggered seven large visible rocks, not uniform.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave29_물.jpg",
+      "references/Wave22_습지_지면.jpg"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-f13354c8-5fcf-4510-9e0f-0b21e8f9b181.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:29:00.726Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w3_ne_summer-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        -237.5,
+        296.5
+      ],
+      "nativeTravelU": [
+        -585,
+        624.5
+      ],
+      "nativeCrossV": [
+        790.5,
+        1130.5
+      ],
+      "bankContacts": [
+        [
+          160,
+          176
+        ],
+        [
+          352,
+          80
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "bridge_wood_ne_sw-v2.png",
+      "Wave29_물.jpg",
+      "Wave22_습지_지면.jpg"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/bridge_wood_ne_sw-v2.png",
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave29_물.jpg",
+        "providedReference": "references/Wave29_물.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave29_물.jpg",
+        "sha256": "2cebb86520ab9913aa727f5443b2accbbba9b8953913561d00ffb5243d7b5b85",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave22_습지_지면.jpg",
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w3_ne_summer-v1.png",
+    "runtimeSha256": "6a4d7d1cc54a0a983d53a6ff6345f2ead4627ad1efe09d3f02cfde444dcc9eb5",
+    "sourceSha256": "c460638ccf5f4f5a839421cfb4f90dc2e53fbad3f0423f1e2f27f72fc464af28"
+  },
+  {
+    "id": "ford/ford_w3_ne_winter-v1",
+    "widthTiles": 3,
+    "direction": "ne",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target image1 this exact summer ford sprite into mild southern English WINTER 1300–1450. Preserve every stone position, both bank ramp outlines, cart ruts, exact crossing orientation, camera, footprint and transparent background. Change ONLY season: olive grass slightly dormant grey-olive, tiny thin broken icy rim along water margins near banks, sparse frost on exposed bank edges. Water stays OPEN, blue-grey and genuinely semi-transparent, never solid frozen ice. No thick snow, no new objects, no extra shadows, no dramatic white outline. Same hand-painted game art, no text. Preserve image canvas and composition EXACTLY.",
+    "referenceInputs": [
+      "exec-f13354c8-5fcf-4510-9e0f-0b21e8f9b181.png [native reference, SHA in records; not bundled]"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-90b9a5f6-92a2-4e0d-8c3e-9bc36cc26b15.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:35:12.773Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w3_ne_winter-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        -251,
+        320.5
+      ],
+      "nativeTravelU": [
+        -587.5,
+        629.5
+      ],
+      "nativeCrossV": [
+        786.5,
+        1134.5
+      ],
+      "bankContacts": [
+        [
+          160,
+          176
+        ],
+        [
+          352,
+          80
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "ford/ford_w3_ne_summer-v1"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "exec-f13354c8-5fcf-4510-9e0f-0b21e8f9b181.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-f13354c8-5fcf-4510-9e0f-0b21e8f9b181.png",
+        "sha256": "c460638ccf5f4f5a839421cfb4f90dc2e53fbad3f0423f1e2f27f72fc464af28",
+        "relatedDeliveryAsset": "ford/ford_w3_ne_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w3_ne_winter-v1.png",
+    "runtimeSha256": "e27643b3deb42504cde241daec9a0ec5dbcc09bb4df727d062b54add3a2387e7",
+    "sourceSha256": "fecf5499e88787c605de13c90e71d412645fc96913201da03b14c95ca516647f"
+  },
+  {
+    "id": "ford/ford_w3_nw_summer-v1",
+    "widthTiles": 3,
+    "direction": "nw",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE isolated transparent game sprite of a shallow river FORD, NOT a bridge. Same restrained hand-painted miniature game art as project references. Summer, southern England 1300–1450. Final canvas512x256, 2:1 isometric ground plane, center anchor256,128. Crossing travel runs NW upper-left to SE lower-right, slope +0.5. Water span THREE tiles: between points160,80 and352,176, where tiles128x64. One-tile-wide flat shallow blue-grey water channel crossing patch with gravel visible UNDER water and a sparse row of irregular steppingstones. BOTH ends have a short half-tile olive grass/muddy bank ramp with two subtle cart-wheel ruts leading INTO water. Never raised causeway or paved roadway. Water must have genuine partial alpha (about35–60% opacity) so underlying river flow overlay can show, stones and banks opaque. Outside patch fully transparent. Water occupies THREE QUARTERS of total travel length, end ramps together only ONE QUARTER, noticeably longer water than 2tile crossing. Overall art bounds roughly x96..416 y48..208, leaving generous transparent canvas. Lowcontrast muted olive/brown/grey-blue palette. Broad readable forms, no micro-noise, no foam, no figures, vehicles, text, grids, labels, cast shadows or extra objects. Ref1 bridge is brushwork and projection only, do not copy bridge; ref2 water tones; ref3 muted fen ground. Only ONE ford, no sheet. Make steppingstones irregular staggered seven large visible rocks, not uniform.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave29_물.jpg",
+      "references/Wave22_습지_지면.jpg"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-584ece57-7f6d-4b87-8e83-8c631165e4d0.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:29:50.210Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w3_nw_summer-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        584,
+        1169.5
+      ],
+      "nativeTravelU": [
+        311,
+        1495
+      ],
+      "nativeCrossV": [
+        -192.5,
+        111.5
+      ],
+      "bankContacts": [
+        [
+          160,
+          80
+        ],
+        [
+          352,
+          176
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "bridge_wood_ne_sw-v2.png",
+      "Wave29_물.jpg",
+      "Wave22_습지_지면.jpg"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/bridge_wood_ne_sw-v2.png",
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave29_물.jpg",
+        "providedReference": "references/Wave29_물.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave29_물.jpg",
+        "sha256": "2cebb86520ab9913aa727f5443b2accbbba9b8953913561d00ffb5243d7b5b85",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave22_습지_지면.jpg",
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w3_nw_summer-v1.png",
+    "runtimeSha256": "425e238384a885c8566fb082cd5997dc4ddc17a04dd36d17e525094deebe4b52",
+    "sourceSha256": "6ad7b418bbf974bbc220b7e8d3f91ab6684a301fbb1b8dd395cce722635b9cfc"
+  },
+  {
+    "id": "ford/ford_w3_nw_winter-v1",
+    "widthTiles": 3,
+    "direction": "nw",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target image1 this exact summer ford sprite into mild southern English WINTER 1300–1450. Preserve every stone position, both bank ramp outlines, cart ruts, exact crossing orientation, camera, footprint and transparent background. Change ONLY season: olive grass slightly dormant grey-olive, tiny thin broken icy rim along water margins near banks, sparse frost on exposed bank edges. Water stays OPEN, blue-grey and genuinely semi-transparent, never solid frozen ice. No thick snow, no new objects, no extra shadows, no dramatic white outline. Same hand-painted game art, no text. Preserve image canvas and composition EXACTLY.",
+    "referenceInputs": [
+      "exec-584ece57-7f6d-4b87-8e83-8c631165e4d0.png [native reference, SHA in records; not bundled]"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-17ad8342-9977-4d7b-ad7f-4a333bccf143.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:35:49.296Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w3_nw_winter-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        564.5,
+        1182.5
+      ],
+      "nativeTravelU": [
+        309,
+        1497.5
+      ],
+      "nativeCrossV": [
+        -195,
+        111.5
+      ],
+      "bankContacts": [
+        [
+          160,
+          80
+        ],
+        [
+          352,
+          176
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "ford/ford_w3_nw_summer-v1"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "exec-584ece57-7f6d-4b87-8e83-8c631165e4d0.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-584ece57-7f6d-4b87-8e83-8c631165e4d0.png",
+        "sha256": "6ad7b418bbf974bbc220b7e8d3f91ab6684a301fbb1b8dd395cce722635b9cfc",
+        "relatedDeliveryAsset": "ford/ford_w3_nw_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w3_nw_winter-v1.png",
+    "runtimeSha256": "81b2b9cd0522a3c5cf739b2b7d0c227bc43175beeff7390961cba548b5c01e50",
+    "sourceSha256": "9f1690f7d2f5328306007cbf7a87ab28c20978121f7cd7931da7294e52ce3431"
+  },
+  {
+    "id": "ford/ford_w4_ne_summer-v1",
+    "widthTiles": 4,
+    "direction": "ne",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE isolated transparent game sprite of a shallow river FORD, NOT a bridge. Same restrained hand-painted miniature game art as project references. Summer, southern England 1300–1450. Final canvas512x256, 2:1 isometric ground plane, center anchor256,128. Crossing travel runs SW lower-left to NE upper-right, slope -0.5. Water span FOUR tiles: between points128,192 and384,64, where tiles128x64. One-tile-wide flat shallow blue-grey water channel crossing patch with gravel visible UNDER water and a sparse row of irregular steppingstones. BOTH ends have a short half-tile olive grass/muddy bank ramp with two subtle cart-wheel ruts leading INTO water. Never raised causeway or paved roadway. Water must have genuine partial alpha (about35–60% opacity) so underlying river flow overlay can show, stones and banks opaque. Outside patch fully transparent. Water occupies FOUR FIFTHS of travel length: very long open water crossing, short half-tile ramps at each end together only onefifth. Keep same transverse width as a single tile. Overall art bounds roughly x64..448 y32..224, leaving generous transparent canvas. Lowcontrast muted olive/brown/grey-blue palette. Broad readable forms, no micro-noise, no foam, no figures, vehicles, text, grids, labels, cast shadows or extra objects. Ref1 bridge is brushwork and projection only, do not copy bridge; ref2 water tones; ref3 muted fen ground. Only ONE ford, no sheet. Nine low flat irregular large steppingstones spaced across long ford, most water open.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave29_물.jpg",
+      "references/Wave22_습지_지면.jpg"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-36bdede5-4dfd-45c9-b64c-33f8fd51c45f.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:30:40.121Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w4_ne_summer-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        -316,
+        392.5
+      ],
+      "nativeTravelU": [
+        -677.5,
+        641.5
+      ],
+      "nativeCrossV": [
+        780.5,
+        1086.5
+      ],
+      "bankContacts": [
+        [
+          128,
+          192
+        ],
+        [
+          384,
+          64
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "bridge_wood_ne_sw-v2.png",
+      "Wave29_물.jpg",
+      "Wave22_습지_지면.jpg"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/bridge_wood_ne_sw-v2.png",
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave29_물.jpg",
+        "providedReference": "references/Wave29_물.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave29_물.jpg",
+        "sha256": "2cebb86520ab9913aa727f5443b2accbbba9b8953913561d00ffb5243d7b5b85",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave22_습지_지면.jpg",
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w4_ne_summer-v1.png",
+    "runtimeSha256": "e99525476d1b466d0cdfc8b2482e46c56d76e732202e49a43a33120941d7d72f",
+    "sourceSha256": "7bb01bbee737c896e116ab450e4bb04882fbc27b029f4f0500b6d46a3e885b95"
+  },
+  {
+    "id": "ford/ford_w4_ne_winter-v1",
+    "widthTiles": 4,
+    "direction": "ne",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target image1 this exact summer ford sprite into mild southern English WINTER 1300–1450. Preserve every stone position, both bank ramp outlines, cart ruts, exact crossing orientation, camera, footprint and transparent background. Change ONLY season: olive grass slightly dormant grey-olive, tiny thin broken icy rim along water margins near banks, sparse frost on exposed bank edges. Water stays OPEN, blue-grey and genuinely semi-transparent, never solid frozen ice. No thick snow, no new objects, no extra shadows, no dramatic white outline. Same hand-painted game art, no text. Preserve image canvas and composition EXACTLY.",
+    "referenceInputs": [
+      "exec-36bdede5-4dfd-45c9-b64c-33f8fd51c45f.png [native reference, SHA in records; not bundled]"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-ba137957-f82f-4621-8310-695ef846d262.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:36:36.100Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w4_ne_winter-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        -371,
+        418
+      ],
+      "nativeTravelU": [
+        -678.5,
+        642
+      ],
+      "nativeCrossV": [
+        780.5,
+        1087.5
+      ],
+      "bankContacts": [
+        [
+          128,
+          192
+        ],
+        [
+          384,
+          64
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "ford/ford_w4_ne_summer-v1"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "exec-36bdede5-4dfd-45c9-b64c-33f8fd51c45f.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-36bdede5-4dfd-45c9-b64c-33f8fd51c45f.png",
+        "sha256": "7bb01bbee737c896e116ab450e4bb04882fbc27b029f4f0500b6d46a3e885b95",
+        "relatedDeliveryAsset": "ford/ford_w4_ne_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w4_ne_winter-v1.png",
+    "runtimeSha256": "c1714be428421e02f0901ed053c7b3a009959fee212cbb93fc37829fcca5edcd",
+    "sourceSha256": "94487dac6d4b24223a4900f98ba143faf60332d57196e22b4d4b9ec43d19b0e5"
+  },
+  {
+    "id": "ford/ford_w4_nw_summer-v1",
+    "widthTiles": 4,
+    "direction": "nw",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE isolated transparent game sprite of a shallow river FORD, NOT a bridge. Same restrained hand-painted miniature game art as project references. Summer, southern England 1300–1450. Final canvas512x256, 2:1 isometric ground plane, center anchor256,128. Crossing travel runs NW upper-left to SE lower-right, slope +0.5. Water span FOUR tiles: between points128,64 and384,192, where tiles128x64. One-tile-wide flat shallow blue-grey water channel crossing patch with gravel visible UNDER water and a sparse row of irregular steppingstones. BOTH ends have a short half-tile olive grass/muddy bank ramp with two subtle cart-wheel ruts leading INTO water. Never raised causeway or paved roadway. Water must have genuine partial alpha (about35–60% opacity) so underlying river flow overlay can show, stones and banks opaque. Outside patch fully transparent. Water occupies FOUR FIFTHS of travel length: very long open water crossing, short half-tile ramps at each end together only onefifth. Keep same transverse width as a single tile. Overall art bounds roughly x64..448 y32..224, leaving generous transparent canvas. Lowcontrast muted olive/brown/grey-blue palette. Broad readable forms, no micro-noise, no foam, no figures, vehicles, text, grids, labels, cast shadows or extra objects. Ref1 bridge is brushwork and projection only, do not copy bridge; ref2 water tones; ref3 muted fen ground. Only ONE ford, no sheet. Nine low flat irregular large steppingstones spaced across long ford, most water open.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave29_물.jpg",
+      "references/Wave22_습지_지면.jpg"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-be4474ff-d4f3-4193-9758-ced0359495cf.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:31:28.975Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w4_nw_summer-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        516.5,
+        1275.5
+      ],
+      "nativeTravelU": [
+        274.5,
+        1534
+      ],
+      "nativeCrossV": [
+        -183.5,
+        78.5
+      ],
+      "bankContacts": [
+        [
+          128,
+          64
+        ],
+        [
+          384,
+          192
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "bridge_wood_ne_sw-v2.png",
+      "Wave29_물.jpg",
+      "Wave22_습지_지면.jpg"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/bridge_wood_ne_sw-v2.png",
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave29_물.jpg",
+        "providedReference": "references/Wave29_물.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave29_물.jpg",
+        "sha256": "2cebb86520ab9913aa727f5443b2accbbba9b8953913561d00ffb5243d7b5b85",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave22_습지_지면.jpg",
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w4_nw_summer-v1.png",
+    "runtimeSha256": "089fcc7d859742a96c325a8416e784b7634a859259bfa5c1695a749115cfa203",
+    "sourceSha256": "80ae7313cfcbca79d1fb1ba5e3fc64cc017cb48bfc8b55f64b859dc0e8e227df"
+  },
+  {
+    "id": "ford/ford_w4_nw_winter-v1",
+    "widthTiles": 4,
+    "direction": "nw",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target image1 this exact summer ford sprite into mild southern English WINTER 1300–1450. Preserve every stone position, both bank ramp outlines, cart ruts, exact crossing orientation, camera, footprint and transparent background. Change ONLY season: olive grass slightly dormant grey-olive, tiny thin broken icy rim along water margins near banks, sparse frost on exposed bank edges. Water stays OPEN, blue-grey and genuinely semi-transparent, never solid frozen ice. No thick snow, no new objects, no extra shadows, no dramatic white outline. Same hand-painted game art, no text. Preserve image canvas and composition EXACTLY.",
+    "referenceInputs": [
+      "exec-be4474ff-d4f3-4193-9758-ced0359495cf.png [native reference, SHA in records; not bundled]"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-bcbcad00-e1a6-4ecf-a2af-e6deeeb837f6.png",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:37:11.487Z",
+    "candidates": 1,
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/ford/ford_w4_nw_winter-v1.png",
+    "pivot": [
+      256,
+      128
+    ],
+    "canvas": [
+      512,
+      256
+    ],
+    "repeat": "none",
+    "stage": "ford",
+    "sourceCanvas": [
+      1774,
+      887
+    ],
+    "mechanicalTransform": {
+      "projection": "native iso axis remap",
+      "nativeWaterU": [
+        506.5,
+        1291.5
+      ],
+      "nativeTravelU": [
+        273.5,
+        1538
+      ],
+      "nativeCrossV": [
+        -185.5,
+        79.5
+      ],
+      "bankContacts": [
+        [
+          128,
+          64
+        ],
+        [
+          384,
+          192
+        ]
+      ],
+      "waterOpacity": "blue-grey water selective alpha multiplier0.52; opaque warm stones and banks preserved"
+    },
+    "manualEdits": "Native alpha-bounds and water-colour ROI measured; isometric-axis crop/reprojection to fixed tile width, center pivot; selective blue-grey water alpha reduction only; no invented painting.",
+    "selectionReason": "Independent width/direction composition; shallow ford, submerged gravel, steppingstones and rutted ramps at both ends.",
+    "referenceAssetIds": [
+      "ford/ford_w4_nw_summer-v1"
+    ],
+    "dimensions": [
+      512,
+      256
+    ],
+    "referenceRecords": [
+      {
+        "filename": "exec-be4474ff-d4f3-4193-9758-ced0359495cf.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-a437-7ee0-8041-b792165c7de6/exec-be4474ff-d4f3-4193-9758-ced0359495cf.png",
+        "sha256": "80ae7313cfcbca79d1fb1ba5e3fc64cc017cb48bfc8b55f64b859dc0e8e227df",
+        "relatedDeliveryAsset": "ford/ford_w4_nw_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "ford/ford_w4_nw_winter-v1.png",
+    "runtimeSha256": "da1a4495e9fbdf12f907eda324b32a3467f8fe8855947ffe1470de58cc8a7ad0",
+    "sourceSha256": "d930cc3ae852233e33980702efdd0ffd60d18b58514aa566cfc8a01f258cc58f"
+  },
+  {
+    "id": "props/ford_splash_a-v1",
+    "w": 96,
+    "h": 64,
+    "prompt": "Use case: historical-scene. A single hand-painted isometric 2:1 game sprite for southern England 1300–1450. Match supplied project references: quiet olive, warm brown, weathered oak, restrained natural material brushwork, soft top-left daylight. Reference images are style/material references only, do not copy their sheet layout or text. Transparent RGBA background, isolated object, no ground tile, no backdrop, no label, no people, no modern equipment. Target final canvas 96x64 pixels; draw broad simplified readable forms for half-size and 0.3-size display. Subject fully visible, all four sides clear transparent margin, ground contact aligned lower center. No long shadow, no tiny decorative noise. Subject: ONLY a small low shallow-water splash caused by one medieval cartwheel moving through a ford, without the wheel or cart. Muted pale gray-green translucent water in a broad LEFT-biased crescent, three short upward curled lobes, an open center and two restrained short ripples. Almost horizontal, not tall fountain, no big white foam, no dozens of droplets. Must read at 29 pixels wide. Water itself semitransparent, backdrop fully transparent. Match water reference subdued palette. No earth base, stones, objects or ground shadow.",
+    "referenceInputs": [
+      "references/Wave29_물.jpg",
+      "references/Wave12_ditch_drain.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb3-1080-7500-82da-3b64bc1b4ff7/exec-92a8d59c-b922-462a-b838-a1d7e16948da.png",
+    "generatedAt": "2026-09-29T10:32:06.779Z",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/props/ford_splash_a-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "pivot": [
+      48,
+      56
+    ],
+    "size": [
+      96,
+      64
+    ],
+    "repeat": "none",
+    "season": "all",
+    "stage": "ford effect",
+    "selectionReason": "Left-biased short crescent splash silhouette; restrained water accent.",
+    "manualEdits": "Native RGBA alpha>24 bounds crop, one proportional resize, bottom-center placement; exact transparent 8 px border clearing. No repainting or procedural replacement.",
+    "notes": "candidate; no game install; lower-center pivot; 8px transparent margins; native alpha preserved.",
+    "referenceRecords": [
+      {
+        "filename": "Wave29_물.jpg",
+        "providedReference": "references/Wave29_물.jpg",
+        "nativeSourcePath": null,
+        "sha256": "2cebb86520ab9913aa727f5443b2accbbba9b8953913561d00ffb5243d7b5b85",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": null,
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "props/ford_splash_a-v1.png",
+    "runtimeSha256": "85424b7cdfe39e728f24f69ada80f25d4978a57551d8c865f853295c6143b315",
+    "sourceSha256": "5010e40c213bcc229189820ca25a1036e7aad27cfadc7c100b73e0d4e8bcec5e"
+  },
+  {
+    "id": "props/ford_splash_b-v1",
+    "w": 96,
+    "h": 64,
+    "prompt": "Use case: historical-scene. A single hand-painted isometric 2:1 game sprite for southern England 1300–1450. Match supplied project references: quiet olive, warm brown, weathered oak, restrained natural material brushwork, soft top-left daylight. Reference images are style/material references only, do not copy their sheet layout or text. Transparent RGBA background, isolated object, no ground tile, no backdrop, no label, no people, no modern equipment. Target final canvas 96x64 pixels; draw broad simplified readable forms for half-size and 0.3-size display. Subject fully visible, all four sides clear transparent margin, ground contact aligned lower center. No long shadow, no tiny decorative noise. Subject: ONLY a tiny restrained shallow-water displacement from a slow cartwheel in a ford, without cart or wheel. Silhouette variant B: TWO unequal separated low tapered fans stretching horizontally, dominant fan on RIGHT and small low wedge on left, broken quiet ripple between; visibly different from crescent variant. Muted pale gray-green translucent water with short soft white-gray rim, no big bright foam. Barely any height, no fountain or explosion, no airborne droplets. Readable at 29 pixels wide. Water semitransparent, background completely transparent. No earth base, stones, objects, or shadow. Match subdued water in reference.",
+    "referenceInputs": [
+      "references/Wave29_물.jpg",
+      "references/Wave12_ditch_drain.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb3-1080-7500-82da-3b64bc1b4ff7/exec-a51aa0aa-e468-4410-80cb-687629ee673e.png",
+    "generatedAt": "2026-09-29T10:32:58.664Z",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/props/ford_splash_b-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "pivot": [
+      48,
+      56
+    ],
+    "size": [
+      96,
+      64
+    ],
+    "repeat": "none",
+    "season": "all",
+    "stage": "ford effect",
+    "selectionReason": "Low two-fan ripple silhouette distinct from A; at zoom 0.6 reads as subtle water trace.",
+    "manualEdits": "Native RGBA alpha>24 bounds crop, one proportional resize, bottom-center placement; exact transparent 8 px border clearing. No repainting or procedural replacement.",
+    "notes": "candidate; no game install; lower-center pivot; 8px transparent margins; native alpha preserved.",
+    "referenceRecords": [
+      {
+        "filename": "Wave29_물.jpg",
+        "providedReference": "references/Wave29_물.jpg",
+        "nativeSourcePath": null,
+        "sha256": "2cebb86520ab9913aa727f5443b2accbbba9b8953913561d00ffb5243d7b5b85",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": null,
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "props/ford_splash_b-v1.png",
+    "runtimeSha256": "b84b85f008dad9ba01d04e924b0cefad7a6cea7e4490f43510ea257ccfc180ed",
+    "sourceSha256": "382a2705d3bf60776739e1e83dd6ab8e6e4be3c30e8fb41494f97c3d53994b9e"
+  },
+  {
+    "id": "drain/drain_stage1_staked_summer-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-5fa38c35-8bb5-4902-b754-0cc1b5e25da3.png",
+    "prompt": "Create one transparent game ground-overlay sprite, drain_stage1_staked_summer-v1. Reference1 is this project's Wave22 scene board: match ONLY fen row subdued grey-olive mud and hand-painted brush style; reference2 is existing ditch material. Southern England 1300–1450. Isometric 2:1 diamond, output intended128x64, centered diamond fills image width and height with corners at topcenter/rightcenter/bottomcenter/leftcenter. Ground decal only, no thick tile slab, transparent outside and mostly transparent inside so existing fen shows through. Sparse two short wooden surveying stakes with plain hemp rope along a short diagonal, first small excavation and low brown spoil heap beside it. Early drainage works, no people/tools/buildings/text. Three broad easily readable shapes, minimal fine detail. Keep all stakes within diamond footprint, only ground-level short stakes. Excavation follows NE-SW from southwest edge midpoint to northeast edge midpoint, slope -1/2. Ditch is only short starter cut at this early stage, not full canal. Soft upperleft light short contact shadow only. Warm dull earth muted grey olive, no bright green. No frame, no checkerboard drawn, no labels. This overlay repeats on adjacent128x64 diamonds at vectors(64,32),(-64,32); no solid diamond background or perimeter outline.",
+    "referenceInputs": [
+      "references/Wave22_습지_지면.jpg",
+      "references/Wave12_ditch_drain.png"
+    ],
+    "generatedAt": "2026-09-29T10:29:27.363Z",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "season": "summer",
+    "phase": 1,
+    "status": "candidate",
+    "candidates": 1,
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage1_staked_summer-v1.png",
+    "dimensions": [
+      128,
+      64
+    ],
+    "pivot": [
+      64,
+      32
+    ],
+    "repeatContract": "isometric diamond grid vectors (64,32),(-64,32); stage2 channel NE-SW contacts (32,48),(96,16); not rectangular XY texture",
+    "manualEdits": "Native RGBA preserved; same summer-derived crop/window applied to seasonal pair; resized once to128x64; exact2:1diamond exterior alpha0. Stage2 affine-align longitudinal channel and cap center water alpha175; no painted content.",
+    "selectionReason": "Phase-specific silhouettes: stake rope/spoil, continuous water ditch, drying mud reed stubble. Winter native edit from summer.",
+    "referenceRecords": [
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": null,
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": null,
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "drain/drain_stage1_staked_summer-v1.png",
+    "runtimeSha256": "f091a1952228015ff1a6c98e86874d2d405048065329bb96a9da4dee14deaa50",
+    "sourceSha256": "76633ccb5bd4686aca35df17b66352ae32739479031d923d373d9403c67368c0"
+  },
+  {
+    "id": "drain/drain_stage1_staked_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-24d6ecd6-fb7e-4437-a4cb-57e8f6b119f1.png",
+    "prompt": "Edit this exact drainage stage1 ground-overlay sprite to winter. Preserve exact canvas, transparent silhouette, both stakes, rope, excavation, soil heap and all geometry/positions/scale. Change only season: thin subdued grey-white frost on upper soil ridges and stake tops, very small pale ice edge on existing water. No thick snow, no new objects, no solid background. Keep warmbrown mud visible and both stakes and rope readable. Same painterly game style, softupperleftlight. Transparent background preserved. This is same object same place with winter edgefrost only.",
+    "referenceInputs": [
+      "exec-5fa38c35-8bb5-4902-b754-0cc1b5e25da3.png [native reference, SHA in records; not bundled]"
+    ],
+    "generatedAt": "2026-09-29T10:32:30.754Z",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "season": "winter",
+    "phase": 1,
+    "status": "candidate",
+    "candidates": 1,
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage1_staked_winter-v1.png",
+    "dimensions": [
+      128,
+      64
+    ],
+    "pivot": [
+      64,
+      32
+    ],
+    "repeatContract": "isometric diamond grid vectors (64,32),(-64,32); stage2 channel NE-SW contacts (32,48),(96,16); not rectangular XY texture",
+    "manualEdits": "Native RGBA preserved; same summer-derived crop/window applied to seasonal pair; resized once to128x64; exact2:1diamond exterior alpha0. Stage2 affine-align longitudinal channel and cap center water alpha175; no painted content.",
+    "selectionReason": "Phase-specific silhouettes: stake rope/spoil, continuous water ditch, drying mud reed stubble. Winter native edit from summer.",
+    "referenceRecords": [
+      {
+        "filename": "exec-5fa38c35-8bb5-4902-b754-0cc1b5e25da3.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-5fa38c35-8bb5-4902-b754-0cc1b5e25da3.png",
+        "sha256": "76633ccb5bd4686aca35df17b66352ae32739479031d923d373d9403c67368c0",
+        "relatedDeliveryAsset": "drain/drain_stage1_staked_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "drain/drain_stage1_staked_winter-v1.png",
+    "runtimeSha256": "d794cf354a2e5ee51483a976ccdc88dbd8ac4005af45111f8a5cf00aa7a9a706",
+    "sourceSha256": "6634fa61a338410c3836639ce6f05c03b4a5cae0aa618bae3bf14a0b569a1a4d"
+  },
+  {
+    "id": "drain/drain_stage2_ditched_summer-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-b6309a93-5df1-44ee-ba67-b08364f1007e.png",
+    "prompt": "Create ONE transparent isometric game ground overlay drain_stage2_ditched_summer-v1. Reference1 is this project's fen landscape palette/style; reference2 existing ditch material. Southern England1300–1450. Exact2:1ground rhombus intended128x64. A straight shallow hand-dug drainage ditch passes through center from southwest edge midpoint (32,48) to northeast edge midpoint(96,16), screen slope -0.5. MUST run cleanly OFF those two edges so identical adjacent diamonds at vector(64,-32) produce a continuous watercourse. Low dark warmbrown earthen shoulders, a clearly readable thin greyolive water channel, one shrinking small pool beside channel. No stakes or ropes or people or buildings. Semi-transparent water, mostlytransparent ground outside the ditch shoulder and small pool. No tile slab, no background plane, no frame. Broad simple shapes readable at64x32/38x19; no microgravel. Softupperleftlight, short contactshadow, muted natural fen brown/greyolive. Orthographic2:1isometric, ground rhombusnot perspective. Native transparent background. No text or labels. Ditch is MUCH more developed than stage1, continuous drainage channel.",
+    "referenceInputs": [
+      "references/Wave22_습지_지면.jpg",
+      "references/Wave12_ditch_drain.png"
+    ],
+    "generatedAt": "2026-09-29T10:29:27.364Z",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "season": "summer",
+    "phase": 2,
+    "status": "candidate",
+    "candidates": 1,
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage2_ditched_summer-v1.png",
+    "dimensions": [
+      128,
+      64
+    ],
+    "pivot": [
+      64,
+      32
+    ],
+    "repeatContract": "isometric diamond grid vectors (64,32),(-64,32); stage2 channel NE-SW contacts (32,48),(96,16); not rectangular XY texture",
+    "manualEdits": "Native RGBA preserved; same summer-derived crop/window applied to seasonal pair; resized once to128x64; exact2:1diamond exterior alpha0. Stage2 affine-align longitudinal channel and cap center water alpha175; no painted content.",
+    "selectionReason": "Phase-specific silhouettes: stake rope/spoil, continuous water ditch, drying mud reed stubble. Winter native edit from summer.",
+    "referenceRecords": [
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": null,
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": null,
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "drain/drain_stage2_ditched_summer-v1.png",
+    "runtimeSha256": "6d97f3c9c1d42cbad02b5aa7ebde9a312199883b02d0a06f62ffee7b71a4fa92",
+    "sourceSha256": "c373a9cb592362f16596d394712ca39afaa5209c5b0c2b07a8cc63210d5538a8"
+  },
+  {
+    "id": "drain/drain_stage2_ditched_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-41f6b483-9978-4704-8b4c-bd4c801ba15e.png",
+    "prompt": "Edit this exact drainage stage2 ground-overlay sprite to winter. Preserve exact canvas, transparent silhouette, continuous straight diagonal waterchannel, both muddy shoulders, sidepool, grasspositions, scale and geometry. Change onlyseason: thin subdued grey-white frost on top of earthen shoulders, narrow ice rim beside existing water, keep middle channel visibly liquid greyolive and semi-transparent for laterwaterfloweffects. No thick snow, no newobjects, no shiftingchannel. Keep dullbrown earth visible. Same painterlygame style andsoftupperleftlight. Transparent background preserved. Same place with lightwinteredgefrost only.",
+    "referenceInputs": [
+      "exec-b6309a93-5df1-44ee-ba67-b08364f1007e.png [native reference, SHA in records; not bundled]"
+    ],
+    "generatedAt": "2026-09-29T10:32:30.755Z",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "season": "winter",
+    "phase": 2,
+    "status": "candidate",
+    "candidates": 1,
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage2_ditched_winter-v1.png",
+    "dimensions": [
+      128,
+      64
+    ],
+    "pivot": [
+      64,
+      32
+    ],
+    "repeatContract": "isometric diamond grid vectors (64,32),(-64,32); stage2 channel NE-SW contacts (32,48),(96,16); not rectangular XY texture",
+    "manualEdits": "Native RGBA preserved; same summer-derived crop/window applied to seasonal pair; resized once to128x64; exact2:1diamond exterior alpha0. Stage2 affine-align longitudinal channel and cap center water alpha175; no painted content.",
+    "selectionReason": "Phase-specific silhouettes: stake rope/spoil, continuous water ditch, drying mud reed stubble. Winter native edit from summer.",
+    "referenceRecords": [
+      {
+        "filename": "exec-b6309a93-5df1-44ee-ba67-b08364f1007e.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-b6309a93-5df1-44ee-ba67-b08364f1007e.png",
+        "sha256": "c373a9cb592362f16596d394712ca39afaa5209c5b0c2b07a8cc63210d5538a8",
+        "relatedDeliveryAsset": "drain/drain_stage2_ditched_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "drain/drain_stage2_ditched_winter-v1.png",
+    "runtimeSha256": "55286779741b3bff8004e8c0976e4b900c6596d3a863fa207b4c90402bb3ca6e",
+    "sourceSha256": "430cc0145b6ab9fb4019a570ae7ec780e392eb00682d4948e1b783600ff364e2"
+  },
+  {
+    "id": "drain/drain_stage3_drying_summer-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-39831268-e29d-4527-b86a-6d5c3b18fc38.png",
+    "prompt": "Edit this exact candidate stage3 drying-fen sprite into a CONTINUOUS quiet ground overlay for128x64 2:1 diamond tile. Replace patchy isolated brown islands and big transparent holes with an unbroken thin low-contrast warm grey-brown damp peat-earth surface covering the WHOLE rhombus. Tiny fine muted brushgrain like existing gamegrass, no large blotches, no cracks, no outlined rim, no shadowed slab. Only 2 or3 verysmall clipped reedstubs and one sparse short olivegrass hint, verysubtle, no standout repeating objects. SouthernEngland medievaldrainedfen. Exactdiamond corners centeredtop/right/bottom/left, transparent only OUTSIDE diamond; inside continuous earthy surface can be partlytransparent but NO holes. Final repeats25diamonds into continuous dryingground, must not reveal individualtile outlines or brownisland patterns. Keep lowcontrast neutralbrown tone; no water/pools, no stakes, no objects, no text. Soft even upperleft daylight. This is groundpaint, not a raised dirtmound. Native transparentbackground outside.",
+    "referenceInputs": [
+      "drain-stage3-summer-rejected-input-reconstructed.png [native reference, SHA in records; not bundled]"
+    ],
+    "generatedAt": "2026-09-29T10:39:06.199Z",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "season": "summer",
+    "phase": 3,
+    "status": "candidate",
+    "candidates": 2,
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage3_drying_summer-v1.png",
+    "dimensions": [
+      128,
+      64
+    ],
+    "pivot": [
+      64,
+      32
+    ],
+    "repeatContract": "2:1diamond grid vectors(64,32),(-64,32); continuous ground no interioralpha holes. Precompose nativegrid before filteredzoom or usecoverage-aware sharedtileedges.",
+    "manualEdits": "Native continuous-diamond redraw from rejected previouscandidate; same summer-derived crop/window132x66 centered then exact128x64diamond alpha0 outside. No procedural painting. Summer/winter whole native128x64grid composited before0.5/0.3reduction to avoid independent filteredalpha tilehairlines.",
+    "selectionReason": "Final native redraw removes large transparentholes and patchchecker; quiet continuousdryingearth with subdued reedstubble/sparsegrass. 25tile nativecomposite passes1.0/0.6visualtest.",
+    "priorAttempts": [
+      {
+        "id": "drain/drain_stage3_drying_summer-v1",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-6fb7bea8-a2e2-4862-afc6-c21e8394c230.png",
+        "prompt": "Create ONE transparent isometric2:1game ground overlay drain_stage3_drying_summer-v1. Match references ONLY project's greyolive fen and warmbrown soil painterly style. Third stage of medieval English fen drainage: a low irregular patch of exposed drying brown peat mud, handful of clipped short reed stubs and two tiny sparse olivegrass clumps. Former pool is GONE, no visible water, no stakes, rope, canal, buildings, tools or people. Large simple ground shapes readable at128x64source,64x32gamezoom1 and38x19zoom0.6. Must look low and flat, no thick slab. Patch fits within2:1diamond; transparent background allaround, generous irregular transparent holes so underlying fen shows through. Mud takes about half the diamond area, not solid fulltile. Muted lowcontrast rough painterly strokes like projectrefs; no crack lattice, no micrograin, no brightgreen. Softupperleftlight onlyshortcontactshadow. No text/labels/checkerboard.",
+        "referenceInputs": [
+          "Wave22_습지_지면.jpg",
+          "Wave12_ditch_drain.png"
+        ],
+        "generatedAt": "2026-09-29T10:29:27.364Z",
+        "tool": "image_gen.imagegen",
+        "model": "not displayed",
+        "season": "summer",
+        "phase": 3,
+        "status": "candidate",
+        "candidates": 1,
+        "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage3_drying_summer-v1.png",
+        "dimensions": [
+          128,
+          64
+        ],
+        "pivot": [
+          64,
+          32
+        ],
+        "repeatContract": "isometric diamond grid vectors (64,32),(-64,32); stage2 channel NE-SW contacts (32,48),(96,16); not rectangular XY texture",
+        "manualEdits": "Native RGBA preserved; same summer-derived crop/window applied to seasonal pair; resized once to128x64; exact2:1diamond exterior alpha0. Stage2 affine-align longitudinal channel and cap center water alpha175; no painted content. Stage3 summer-derived alpha bounds enlarged to150x80 centered then diamond clipped, exposing broad mud across approx78%tile; rejected initial112x44 fit was too narrow.",
+        "selectionReason": "Phase-specific silhouettes: stake rope/spoil, continuous water ditch, drying mud reed stubble. Winter native edit from summer.",
+        "rejectionReason": "Patchy isolated mud and large transparent holes produced checkerboard after25tile repetition;112x44fit and150x80expanded fit both rejected."
+      }
+    ],
+    "referenceInputProvenance": {
+      "path": "/tmp/astra-wave34-work-20260929/drain-stage3-summer-rejected-input-reconstructed.png",
+      "sha256": "98c02ba5d29fe507791fccf0c45f05bdd7b3b23db87f647b407ecd3c879575cc",
+      "kind": "deterministic reconstruction of overwritten actual edit input",
+      "actualToolArgument": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage3_drying_summer-v1.png",
+      "reconstruction": "Same native source, same canvas implementation; alpha>20 bbox; draw bbox at x=-11,y=-8,w=150,h=80;128x64exactdiamondmask using pixel centers; original input hash was not recorded before overwrite",
+      "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-6fb7bea8-a2e2-4862-afc6-c21e8394c230.png"
+    },
+    "referenceRecords": [
+      {
+        "filename": "drain-stage3-summer-rejected-input-reconstructed.png",
+        "providedReference": null,
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/drain-stage3-summer-rejected-input-reconstructed.png",
+        "sha256": "98c02ba5d29fe507791fccf0c45f05bdd7b3b23db87f647b407ecd3c879575cc",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "drain/drain_stage3_drying_summer-v1.png",
+    "runtimeSha256": "a399c7f435ef8145f69b91505e9478ef3485508a530e9bd4bafa7a94292e4d56",
+    "sourceSha256": "6b04ba87cf2680ff9fa83e55452f5497f8ee3366731271704dc0d26bf8c1f2cd"
+  },
+  {
+    "id": "drain/drain_stage3_drying_winter-v1",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-21a2f7d6-9307-4a73-be60-d7634b785d50.png",
+    "prompt": "Edit this exact continuous diamond drying-fen surface to winter. Keep exactcanvas,diamondoutline,unbrokenmudcoverage,allreedstubandgrasspositionsandgeometry. Only add very light subdued greyfrost dust to small existing stubs and sparsegrass, thin minimal icefrost flecks on soil. NO white perimeter stripe (would make tiledgrid), NO snowblanket, no newholes, no largepatches, no increased contrast, no icepool. Brownmud remainsdominant andquiet. This128x64tile repeats25diamonds into continuous dryingground, each edge must notbehighlighted. Transparentonlyoutsidediamond. Samepainterlygameartsoftupperleftdaylight.",
+    "referenceInputs": [
+      "exec-39831268-e29d-4527-b86a-6d5c3b18fc38.png [native reference, SHA in records; not bundled]"
+    ],
+    "generatedAt": "2026-09-29T10:39:06.204Z",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "season": "winter",
+    "phase": 3,
+    "status": "candidate",
+    "candidates": 2,
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage3_drying_winter-v1.png",
+    "dimensions": [
+      128,
+      64
+    ],
+    "pivot": [
+      64,
+      32
+    ],
+    "repeatContract": "2:1diamond grid vectors(64,32),(-64,32); continuous ground no interioralpha holes. Precompose nativegrid before filteredzoom or usecoverage-aware sharedtileedges.",
+    "manualEdits": "Native continuous-diamond redraw from rejected previouscandidate; same summer-derived crop/window132x66 centered then exact128x64diamond alpha0 outside. No procedural painting. Summer/winter whole native128x64grid composited before0.5/0.3reduction to avoid independent filteredalpha tilehairlines.",
+    "selectionReason": "Final native redraw removes large transparentholes and patchchecker; quiet continuousdryingearth with subdued reedstubble/sparsegrass. 25tile nativecomposite passes1.0/0.6visualtest.",
+    "priorAttempts": [
+      {
+        "id": "drain/drain_stage3_drying_winter-v1",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-d4f01ff6-5928-4d99-a340-41fe037fa9b6.png",
+        "prompt": "Edit this exact stage3 drying-fen ground-overlay sprite to winter. Preserve exact canvas, transparent silhouette, every mudpatch, clippedreedstub and sparsegrass clump with samepositions andscale. Change only season: thin subdued palegrey frost on scattered upper rims of drying peatmud and clippedstubble, sparsegrass less green. No snow blanket, no water/pools, no newobjects, no larger reeds. Mostly brownmud visible. Same painterlygame style, softupperleftlight, transparentbackground preserved. Same place with lightwinterfrost.",
+        "referenceInputs": [
+          "exec-6fb7bea8-a2e2-4862-afc6-c21e8394c230.png"
+        ],
+        "generatedAt": "2026-09-29T10:32:30.756Z",
+        "tool": "image_gen.imagegen",
+        "model": "not displayed",
+        "season": "winter",
+        "phase": 3,
+        "status": "candidate",
+        "candidates": 1,
+        "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage3_drying_winter-v1.png",
+        "dimensions": [
+          128,
+          64
+        ],
+        "pivot": [
+          64,
+          32
+        ],
+        "repeatContract": "isometric diamond grid vectors (64,32),(-64,32); stage2 channel NE-SW contacts (32,48),(96,16); not rectangular XY texture",
+        "manualEdits": "Native RGBA preserved; same summer-derived crop/window applied to seasonal pair; resized once to128x64; exact2:1diamond exterior alpha0. Stage2 affine-align longitudinal channel and cap center water alpha175; no painted content. Stage3 summer-derived alpha bounds enlarged to150x80 centered then diamond clipped, exposing broad mud across approx78%tile; rejected initial112x44 fit was too narrow.",
+        "selectionReason": "Phase-specific silhouettes: stake rope/spoil, continuous water ditch, drying mud reed stubble. Winter native edit from summer.",
+        "rejectionReason": "Patchy isolated mud and large transparent holes produced checkerboard after25tile repetition;112x44fit and150x80expanded fit both rejected."
+      }
+    ],
+    "referenceRecords": [
+      {
+        "filename": "exec-39831268-e29d-4527-b86a-6d5c3b18fc38.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb2-dcb1-7282-bcce-f4856c28d2f9/exec-39831268-e29d-4527-b86a-6d5c3b18fc38.png",
+        "sha256": "6b04ba87cf2680ff9fa83e55452f5497f8ee3366731271704dc0d26bf8c1f2cd",
+        "relatedDeliveryAsset": "drain/drain_stage3_drying_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "drain/drain_stage3_drying_winter-v1.png",
+    "runtimeSha256": "94d113ed8bc003fb9079e70a5fe2e2a6fe59e59f782d4ac1d8ee25ecdfaa2ab1",
+    "sourceSha256": "af9e8026cf6f1c4f44bd54f2dbc525877f041290f3668cb7c7dcc204f653d12a"
+  },
+  {
+    "id": "drain/drain_done_edge_summer-v1",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_done_edge_summer-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-4fbfbe23-a389-46e1-9208-4b93c4882fed.png",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      0,
+      292,
+      1774,
+      300
+    ],
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "summer",
+    "stage": "done",
+    "repeat": "X only",
+    "waterSelectedPixels": 1006,
+    "partialAlphaPixels": 21853,
+    "xSeamMax": 0,
+    "yMarginViolations": 0,
+    "manualEdits": "Alpha-bbox vertical crop; resize to512x48 at y8; cool blue-grey channel pixels capped alpha160; local16px shared X end band premultiplied blend; zero transparentRGB.",
+    "prompt": "Use case: historical-scene. Asset: drain_done_edge_summer-v1, single horizontal repeatable drainage ditch strip for a 2:1 isometric hand-painted medieval city-builder, southern England 1300–1450. Reference image is the project's Wave12_ditch_drain.png, use the same restrained earth/olive palette and painterly scale but draw a new four-tile-long narrow drainage ditch WITH shallow blue-grey water visibly flowing quietly along its length. Flat horizontal material strip, no isometric rotation of the strip itself; engine/proof will bend/project it around reclaimed fen. Canvas target512x64, long aspect8:1. Brown freshly cut peat banks either side with sparse short olive grass tufts; open continuous central channel. Shapes readable at half and 0.3 scale. Make ditch approximately 26px wide at finalresolution, with banks total48px tall. Upper and lower8px entirely transparent, ragged organic bank edges; NO horizontal end margins: artwork crosses left/right edges and must tile seamlessly X only. Water genuinely partially transparent, muted bluegrey not vividcyan; opaque earthbanks. No perspective vanishing point, no people, tools, structures, text, grid, shadows, isolated standout objects, regular scallops, evenly spaced big rocks. Soft top-left light, no long shadow. This is one isolatedRGBAstrip, not a spritesheet.",
+    "referenceInputs": [
+      "references/Wave12_ditch_drain.png"
+    ],
+    "tool": "native image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:27:06.754Z",
+    "candidates": 1,
+    "status": "candidate",
+    "selectionReason": "Matched Wave12 banks and open channel; 3x repeat visual check passed, winter restrained thin ice rims.",
+    "referenceRecords": [
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": "/tmp/astra-wave34-work-20260929/astra-wave34-reference-files/Wave12_ditch_drain.png",
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "drain/drain_done_edge_summer-v1.png",
+    "runtimeSha256": "a1e74a7f1458bc4e83e1f5828d5b75dab0cbae81436b4962a996dd7071b0e9b1",
+    "sourceSha256": "b11483524bd7397966584ae25df76eff8687c133f3b763295fcce149fffa42ac"
+  },
+  {
+    "id": "drain/drain_done_edge_winter-v1",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_done_edge_winter-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-b581a54d-ec86-4eab-b89b-49f6a37c0b43.png",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      0,
+      291,
+      1774,
+      302
+    ],
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "winter",
+    "stage": "done",
+    "repeat": "X only",
+    "waterSelectedPixels": 5388,
+    "partialAlphaPixels": 21452,
+    "xSeamMax": 0,
+    "yMarginViolations": 0,
+    "manualEdits": "Alpha-bbox vertical crop; resize to512x48 at y8; cool blue-grey channel pixels capped alpha160; local16px shared X end band premultiplied blend; zero transparentRGB.",
+    "prompt": "Use case: lighting-weather. Edit the attached project candidate drainage ditch strip to WINTER, change only season. Preserve exact horizontal continuous channel position, width, all earthbank silhouettes and grass placements, transparent canvas and allgeometry. Southern England restrained winter: small thin greywhite ice rims along WATER EDGES only, grass dull olive straw, wet grey-brown peat, water still mostly OPEN and translucent bluegrey, a very faint dusting of frost on bank tops. No snow blanket, no solid frozen ditch, no added rocks/plants/objects. Match existing muted handpaintedgame brushwork. OneRGBA512x64target strip, left/right seamlessX, top/bottom8transparent after normalization. No text, grid, border, perspective. Make interiorwater genuinely partiallytransparent while earth and thinice remain opaque.",
+    "referenceInputs": [
+      "exec-4fbfbe23-a389-46e1-9208-4b93c4882fed.png [native reference, SHA in records; not bundled]"
+    ],
+    "tool": "native image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-29T10:29:08.519Z",
+    "candidates": 1,
+    "status": "candidate",
+    "selectionReason": "Matched Wave12 banks and open channel; 3x repeat visual check passed, winter restrained thin ice rims.",
+    "referenceRecords": [
+      {
+        "filename": "exec-4fbfbe23-a389-46e1-9208-4b93c4882fed.png",
+        "providedReference": null,
+        "nativeSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-4fbfbe23-a389-46e1-9208-4b93c4882fed.png",
+        "sha256": "b11483524bd7397966584ae25df76eff8687c133f3b763295fcce149fffa42ac",
+        "relatedDeliveryAsset": "drain/drain_done_edge_summer-v1.png",
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "drain/drain_done_edge_winter-v1.png",
+    "runtimeSha256": "9bef7a0ccad60762736006e752bbd65c100362aa80faa8617dbd9484b5edaefc",
+    "sourceSha256": "1aeda6190b9e1880200188cb7c0213cba6ffc2d070349c7d49cc663f2ac5a582"
+  },
+  {
+    "id": "props/drain_earth_cart-v1",
+    "w": 128,
+    "h": 96,
+    "prompt": "Use case: historical-scene. A single hand-painted isometric 2:1 game sprite for southern England 1300–1450. Match supplied project references: quiet olive, warm brown, weathered oak, restrained natural material brushwork, soft top-left daylight. Reference images are style/material references only, do not copy their sheet layout or text. Transparent RGBA background, isolated object, no ground tile, no backdrop, no label, no people, no modern equipment. Target final canvas 128x96 pixels; draw broad simplified readable forms for half-size and 0.3-size display. Subject fully visible, all four sides clear transparent margin, ground contact aligned lower center. No long shadow, no tiny decorative noise. Subject: one modest medieval two-wheel wooden earth handcart, plank-sided low rectangular box heaped with moist excavated brown soil, visible chunky wooden spoked wheel and two plain forward handles. No horse, no person, no metal machinery. Wheels and handles form distinct clean silhouette; soil reads as one broad mound. Isometric side-front view, approximately one logical tile long.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave12_ditch_drain.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb3-1080-7500-82da-3b64bc1b4ff7/exec-c440d903-ad47-45c0-a825-be058be41a6c.png",
+    "generatedAt": "2026-09-29T10:27:26.889Z",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/props/drain_earth_cart-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "pivot": [
+      64,
+      88
+    ],
+    "size": [
+      128,
+      96
+    ],
+    "repeat": "none",
+    "season": "all",
+    "stage": "drain construction prop",
+    "selectionReason": "Native project-reference sprite with distinct subject silhouette and subdued natural palette.",
+    "manualEdits": "Native RGBA alpha>24 bounds crop, one proportional resize, bottom-center placement; exact transparent 8 px border clearing. No repainting or procedural replacement.",
+    "notes": "candidate; no game install; lower-center pivot; 8px transparent margins; native alpha preserved.",
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": null,
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": null,
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "props/drain_earth_cart-v1.png",
+    "runtimeSha256": "b89283c7df2c731c6db9e191031ed4fed9a6c7159d2bbc3f54b0dff4464d7d76",
+    "sourceSha256": "2c98e13b163ccc1c60f67e6e435ec19d14936a3603225216d6155e52c1d8383f"
+  },
+  {
+    "id": "props/drain_soil_heap-v1",
+    "w": 96,
+    "h": 64,
+    "prompt": "Use case: historical-scene. A single hand-painted isometric 2:1 game sprite for southern England 1300–1450. Match supplied project references: quiet olive, warm brown, weathered oak, restrained natural material brushwork, soft top-left daylight. Reference images are style/material references only, do not copy their sheet layout or text. Transparent RGBA background, isolated object, no ground tile, no backdrop, no label, no people, no modern equipment. Target final canvas 96x64 pixels; draw broad simplified readable forms for half-size and 0.3-size display. Subject fully visible, all four sides clear transparent margin, ground contact aligned lower center. No long shadow, no tiny decorative noise. Subject: a single low broad uneven mound of freshly excavated wet fen earth, about half a tile, flattened asymmetrical kidney silhouette, dark warm brown clods with a few dull olive root fibers at its base. Read as soil rather than stone: soft packed lumps and shallow spade facets, no stones, no plants or tools. Broad three main clumps, no isolated tiny flecks. Not a cone. Match earthy ditch reference.",
+    "referenceInputs": [
+      "references/Wave12_ditch_drain.png",
+      "references/Wave22_습지_지면.jpg"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb3-1080-7500-82da-3b64bc1b4ff7/exec-0e69d54f-43c7-4def-9ddf-b672167daff5.png",
+    "generatedAt": "2026-09-29T10:28:13.225Z",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/props/drain_soil_heap-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "pivot": [
+      48,
+      56
+    ],
+    "size": [
+      96,
+      64
+    ],
+    "repeat": "none",
+    "season": "all",
+    "stage": "drain construction prop",
+    "selectionReason": "Native project-reference sprite with distinct subject silhouette and subdued natural palette.",
+    "manualEdits": "Native RGBA alpha>24 bounds crop, one proportional resize, bottom-center placement; exact transparent 8 px border clearing. No repainting or procedural replacement.",
+    "notes": "candidate; no game install; lower-center pivot; 8px transparent margins; native alpha preserved.",
+    "referenceRecords": [
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": null,
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave22_습지_지면.jpg",
+        "providedReference": "references/Wave22_습지_지면.jpg",
+        "nativeSourcePath": null,
+        "sha256": "f2f08796c08e63394d25838e873af875d62306e4f1eab73571006f512e5fbfb7",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "props/drain_soil_heap-v1.png",
+    "runtimeSha256": "1da347896fa07f6504098c19b280acc701d2c4598eab9726f0345205c56fbde6",
+    "sourceSha256": "ff759b0af05f9d5614105136360c58f023d9abc318164b3726f4759f853d800c"
+  },
+  {
+    "id": "props/drain_sluice-v1",
+    "w": 128,
+    "h": 96,
+    "prompt": "Use case: historical-scene. A single hand-painted isometric 2:1 game sprite for southern England 1300–1450. Match supplied project references: quiet olive, warm brown, weathered oak, restrained natural material brushwork, soft top-left daylight. Reference images are style/material references only, do not copy their sheet layout or text. Transparent RGBA background, isolated object, no ground tile, no backdrop, no label, no people, no modern equipment. Target final canvas 128x96 pixels; draw broad simplified readable forms for half-size and 0.3-size display. Subject fully visible, all four sides clear transparent margin, ground contact aligned lower center. No long shadow, no tiny decorative noise. Subject: a modest medieval fen drainage sluice, a small plain oak-board sliding gate set between two short wooden uprights and one crossbeam, gate blocks the little drainage ditch. Lift by simple projecting wooden handle on top, NO wheel crank, no gears, no iron rack mechanism. Two short muddy earthen bank cheeks and a little muted gray-green shallow water immediately below gate only. Low, simple practical farm structure, not a tall castle gate. Compact silhouette, no surrounding landscape.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave12_ditch_drain.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb3-1080-7500-82da-3b64bc1b4ff7/exec-9839bb10-7204-4410-8e30-142a829f2036.png",
+    "generatedAt": "2026-09-29T10:30:14.878Z",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/props/drain_sluice-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "pivot": [
+      64,
+      88
+    ],
+    "size": [
+      128,
+      96
+    ],
+    "repeat": "none",
+    "season": "all",
+    "stage": "drain construction prop",
+    "selectionReason": "Native project-reference sprite with distinct subject silhouette and subdued natural palette.",
+    "manualEdits": "Native RGBA alpha>24 bounds crop, one proportional resize, bottom-center placement; exact transparent 8 px border clearing. No repainting or procedural replacement.",
+    "notes": "candidate; no game install; lower-center pivot; 8px transparent margins; native alpha preserved.",
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": null,
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": null,
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "props/drain_sluice-v1.png",
+    "runtimeSha256": "3723b8e196b76ad77ab81e1c81a69e4cc02041b7c892548547f8dbb5ec2c2ad5",
+    "sourceSha256": "b22b9879d5d918e1f4f630f493c9ba19a219d0f0e4fcc09bf8e9e1ea746786f4"
+  },
+  {
+    "id": "props/drain_plank_bridge-v1",
+    "w": 128,
+    "h": 64,
+    "prompt": "Use case: historical-scene. A single hand-painted isometric 2:1 game sprite for southern England 1300–1450. Match supplied project references: quiet olive, warm brown, weathered oak, restrained natural material brushwork, soft top-left daylight. Reference images are style/material references only, do not copy their sheet layout or text. Transparent RGBA background, isolated object, no ground tile, no backdrop, no label, no people, no modern equipment. Target final canvas 128x64 pixels; draw broad simplified readable forms for half-size and 0.3-size display. Subject fully visible, all four sides clear transparent margin, ground contact aligned lower center. No long shadow, no tiny decorative noise. Subject: a tiny simple ditch crossing of three rough long oak planks laid side by side over a narrow drainage ditch. Three clearly separate lengthwise boards on two very low cross supports, flat low profile, NO railing, NO posts, NO large foundation, NO steps, NO river or terrain tile. Smaller and humbler than supplied river bridge, for a person to cross a fen ditch. Isometric deck long axis bottom-left to top-right with 2:1 ground angle. Only planks and low supports, contact shadow minimal.",
+    "referenceInputs": [
+      "references/bridge_wood_ne_sw-v2.png",
+      "references/Wave12_ditch_drain.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ecb3-1080-7500-82da-3b64bc1b4ff7/exec-d52e721c-442b-4977-a134-94a5c8465274.png",
+    "generatedAt": "2026-09-29T10:30:55.783Z",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/props/drain_plank_bridge-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "candidates": 1,
+    "status": "candidate",
+    "pivot": [
+      64,
+      56
+    ],
+    "size": [
+      128,
+      64
+    ],
+    "repeat": "none",
+    "season": "all",
+    "stage": "drain construction prop",
+    "selectionReason": "Native project-reference sprite with distinct subject silhouette and subdued natural palette.",
+    "manualEdits": "Native RGBA alpha>24 bounds crop, one proportional resize, bottom-center placement; exact transparent 8 px border clearing. No repainting or procedural replacement.",
+    "notes": "candidate; no game install; lower-center pivot; 8px transparent margins; native alpha preserved.",
+    "referenceRecords": [
+      {
+        "filename": "bridge_wood_ne_sw-v2.png",
+        "providedReference": "references/bridge_wood_ne_sw-v2.png",
+        "nativeSourcePath": null,
+        "sha256": "a75ff77173767ac741d67f93796d446a243d4fe3760725a6c0436c519071714c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      },
+      {
+        "filename": "Wave12_ditch_drain.png",
+        "providedReference": "references/Wave12_ditch_drain.png",
+        "nativeSourcePath": null,
+        "sha256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+        "relatedDeliveryAsset": null,
+        "nativeIncluded": false
+      }
+    ],
+    "runtimePath": "props/drain_plank_bridge-v1.png",
+    "runtimeSha256": "cadb5bae967e2ca9319e0b7fb01957c0c3885a314a70ebc04a4b82e2b5bdd5ce",
+    "sourceSha256": "2d3dfbbbbaa915f9b3d46dbd12365d9fab7135be7517ca1b8ae37d66734b5da5"
+  }
+]
