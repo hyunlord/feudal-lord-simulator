@@ -1,0 +1,108 @@
+{
+ "variant": "lords",
+ "answers": {
+  "royal_tax": "refuse",
+  "heir_choice": "accept",
+  "borough_autonomy": "refuse",
+  "legacy_choice": "refuse"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 131036,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "eldest_son",
+  "personId": "m-000017",
+  "previousHeadId": "m-000015",
+  "tick": 408000,
+  "relief": 100
+ },
+ "candidates": [
+  [
+   "eldest_son",
+   "son"
+  ],
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": null,
+ "family": "stayed",
+ "backlash": 93,
+ "royalSubsidy": 0,
+ "legacy": "church",
+ "endowment": 500,
+ "clothSold": 3400,
+ "scores": {
+  "town": 55,
+  "family": 65,
+  "church": 56,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": -20,
+    "legacy": 0
+   },
+   "family": {
+    "house": 10,
+    "generations": 16,
+    "heir": 12,
+    "stayed": 15,
+    "relations": 2,
+    "treasury": 10,
+    "legacy": 0
+   },
+   "church": {
+    "church": 10,
+    "chapels": 4,
+    "bishop": 7,
+    "priest": 5,
+    "relief": 5,
+    "legacy": 25
+   }
+  }
+ },
+ "ending": {
+  "id": "lords_town",
+  "title": "영주의 도시",
+  "sentence": "특허 없이 가문이 다스린 도시였다. 드 보테르 가문은 영주관에 남았고, 1450년 마지막 장날 장터의 세는 여전히 영주의 금고로 갔다.",
+  "quotes": [
+   "h-032139",
+   "h-031611",
+   "h-046064"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": 15,
+  "crown": 13,
+  "neighbour_1": -3,
+  "neighbour_2": 0,
+  "bishop": 28,
+  "merchant_house_1": 20,
+  "merchant_house_2": 0,
+  "town": 38,
+  "commons": 35
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk"
+ ]
+}

@@ -63,6 +63,7 @@ export const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
   wool_payment: "양모 공납 칙령", levy_response: "징집 명령", war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
   vacant_priest: "빈 사제 자리", wages: "일꾼들의 임금 요구", land_redistribution: "빈 필지의 주인", cash_rent: "부역을 돈으로 바꾸자는 청원",
   guild_charter: "직인들의 길드 결성 요구", tax_collection: "인두세를 걷는 방식", cloth_or_grain: "직물과 곡물 사이의 선택", borough_charter: "도시의 자치 특허 요구서",
+  royal_tax: "국왕의 과세 사절", heir_choice: "늙은 영주의 후계자", borough_autonomy: "자치 특허의 인장", legacy_choice: "남길 유산 하나",
 };
 export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   wool_payment: { accept: "현물로 낸다", accept_with_price: "현금으로 낸다", refuse: "거절", expired: "답하지 않음" },
@@ -78,6 +79,10 @@ export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string
   tax_collection: { accept: "도시 공동체에 맡긴다", refuse: "영주의 징수원이 걷는다", expired: "답하지 않음" },
   cloth_or_grain: { accept: "직물에 걸고 쟁기밭을 양에게 준다", refuse: "곡물을 지킨다", expired: "답하지 않음" },
   borough_charter: { accept: "시장과 통행세 일부를 넘긴다", refuse: "특허를 거절한다", expired: "답하지 않음" },
+  royal_tax: { accept: "과세를 낸다", refuse: "감면을 청원한다", expired: "답하지 않음" },
+  heir_choice: { accept: "맏아들에게 잇게 한다", accept_with_price: "딸의 남편에게 잇게 한다", refuse: "조카에게 잇게 한다", expired: "답하지 않음" },
+  borough_autonomy: { accept: "자치 특허에 인장을 찍는다", refuse: "가문이 계속 다스린다", expired: "답하지 않음" },
+  legacy_choice: { accept: "도시에 길드홀과 시청을 남긴다", accept_with_price: "가문의 영주관과 문장, 혈통 기록을 남긴다", refuse: "교회를 넓히고 기도처를 세운다", expired: "답하지 않음" },
 };
 /** PERSON-1a (LN-4): a birth's line by where the child's name came from. */
 const NAME_FROM: Readonly<Record<string, string>> = {
@@ -122,6 +127,21 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "reorg.autonomy_request": () => "도시가 자치 특허를 요구하는 문서를 올렸다",
   "reorg.charter": params => s(params, "charter") === "partial" ? "자치 특허를 맺었다 — 시장과 통행세 일부가 도시로 넘어갔다" : "자치 특허를 내주지 않았다",
   "reorg.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
+  // F5-A (LG-1…LG-8): chapter 5, autonomy and legacy.
+  "legacy.mayor_demand": params => s(params, "candidate") === "" ? "상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다"
+    : `상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다 — 후보 ${s(params, "candidate")}`,
+  "legacy.royal_tax_envoy": () => "국왕의 과세 사절이 왔다 — 15분의 1·10분의 1세",
+  "legacy.succession": params => { const lord = s(params, "lord"); return `늙은 영주 ${lord}(${n(params, "age")}세)${josa(lord, "이", "가")} 후계자를 정해야 한다 — 후보 ${n(params, "candidates")}명`; },
+  "legacy.heir_seated": params => { const heir = s(params, "heir"); return `${heir}${josa(heir, "이", "가")} 가문을 이었다 — ${s(params, "relation")}`; },
+  "legacy.royal_subsidy": params => `국왕에게 과세를 냈다 — ${n(params, "amount")}d`,
+  "legacy.city_seal": () => "도시가 제 인장을 새겼다",
+  "legacy.charter_sealed": params => s(params, "mayor") === "" ? "자치 특허에 도시 인장이 찍혔다" : `자치 특허에 도시 인장이 찍혔다 — 첫 시장 ${s(params, "mayor")}`,
+  "legacy.charter_refused": params => `영주가 자치 특허를 거절했다 — 도시의 반발 ${n(params, "backlash")}`,
+  "legacy.family_departed": params => `${houseName(s(params, "house"))} 가문이 영주관을 떠나 시골 장원으로 갔다`,
+  "legacy.family_stayed": params => `${houseName(s(params, "house"))} 가문이 영주관에 남았다`,
+  "legacy.legacy_record": params => s(params, "legacy") === "" ? "유산 기록을 봉인했다 — 남긴 것 없이" : `유산 기록을 봉인했다 — ${s(params, "legacy")}`,
+  "legacy.last_market": params => `마지막 장날 — ${s(params, "ending")}`,
+  "legacy.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
   "war.beacon": () => "해안의 봉화가 올랐다",
   "war.raid": params => `해안 습격이 닥쳤다 — 불탄 집 ${n(params, "burntHouses")}, 빼앗긴 물자 ${n(params, "looted")}, 빼앗긴 돈 ${n(params, "coin")}d`,
   "war.conscripts_left": params => `징집된 남자 ${n(params, "men")}명이 떠났다`,

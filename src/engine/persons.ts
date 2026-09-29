@@ -25,6 +25,9 @@ import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { foodPricePermille } from "./eventSchedule";
 import { hashSeed, rollPermille } from "./prng";
+import { LEGACY_BALANCE } from "../content/legacyConfig";
+import { NEIGHBOUR_SURNAMES } from "../content/gentryNames";
+import type { HeirCandidate } from "./legacy.types";
 import { choosePortraitIdentity, identityFaction, identityHasBand, identityLineage, portraitFor, setPlaces, youngStageOf, PORTRAIT_BAND, PORTRAIT_MIN_AGE, type PortraitChoice } from "./portraits";
 import { lordHouse } from "./lordshipState";
 import { calendar, scenarioOf } from "./scenarioState";
@@ -527,6 +530,86 @@ function keepLordFamily(town: Town, state: GameState, yearStart: boolean): void 
   if (mother.condition?.kind === "pregnant") { const { condition: _ended, ...delivered } = mother; town.people[town.people.indexOf(mother)] = delivered; }
   town.create({ ...common, sex: hashSeed(town.seed, "lord-birth-sex", town.year) % 2 === 0 ? "female" : "male", birthYear: town.year, role: "child",
     motherId: mother.id, ...(father === undefined ? {} : { fatherId: father.id }) });
+}
+
+/** F5-A (LG-3): a candidate of the question carries this tag until chosen (the others leave again). */
+export const HEIR_CANDIDATE_TAG = "heir-candidate";
+
+/**
+ * F5-A (LG-3): the old lord's heirs, real persons of the family — his eldest living son (in the manor first, else one
+ * gone), the husband of his eldest daughter of 16+ (a gentleman of a neighbouring house, who comes with the question),
+ * and the eldest son of his brother or sister (who comes with it too; a distant kinsman when he has none).
+ */
+/**
+ * F5-A (LG-3): the lord of the manor — the house's head, else (a house whose heiress died and left her husband, LN-9
+ * names no head then) its eldest living adult of the family.
+ */
+export function manorLord(people: readonly Person[], houseOrder: number, year: number): Person | undefined {
+  const family = people.filter(person => person.tags.includes(`lord-house:${houseOrder}`) && person.householdId === MANOR_HOUSEHOLD);
+  return family.find(person => person.role === "head")
+    ?? family.filter(person => ageOf(person, year) >= ADULT_AGE).sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id))[0];
+}
+
+export function offerHeirs(state: GameState): { readonly state: GameState; readonly candidates: readonly HeirCandidate[] } {
+  if (state.persons === undefined) return { state, candidates: [] };
+  const year = currentYear(state);
+  const town = new Town(state.seed, year, state.persons);
+  const house = lordHouse(state);
+  const head = manorLord(town.people, house.order, year);
+  if (head === undefined) return { state, candidates: [] };
+  const all = () => [...town.people, ...town.past];
+  const byAge = (a: Person, b: Person) => a.birthYear - b.birthYear || a.id.localeCompare(b.id);
+  const childrenOf = (id: string) => all().filter(person => person.alive && (person.fatherId === id || person.motherId === id)).sort(byAge);
+  const candidates: HeirCandidate[] = [];
+  const sons = childrenOf(head.id).filter(person => person.sex === "male");
+  const son = sons.find(person => town.people.includes(person)) ?? sons[0];
+  if (son !== undefined) candidates.push({ kind: "eldest_son", personId: son.id, throughId: null, relation: "son", created: false });
+  const common = { householdId: MANOR_HOUSEHOLD, role: "kin" as const, classBand: "gentry" as const, occupation: "lord", lord: true as const, tags: [HEIR_CANDIDATE_TAG] };
+  const roll = hashSeed(state.seed, "heir-candidates", state.tick);
+  const daughter = childrenOf(head.id).find(person => person.sex === "female" && ageOf(person, year) >= LEGACY_BALANCE.daughterMinAge);
+  if (daughter !== undefined) {
+    const [low, high] = LEGACY_BALANCE.husbandOlder;
+    const husband = town.create({ ...common, sex: "male", birthYear: daughter.birthYear - low - roll % (high - low + 1),
+      surname: NEIGHBOUR_SURNAMES[(roll >>> 4) % NEIGHBOUR_SURNAMES.length]! });
+    candidates.push({ kind: "daughter_husband", personId: husband.id, throughId: daughter.id, relation: "husband", created: true });
+  }
+  const sibling = all().filter(person => person.id !== head.id && ((head.fatherId !== undefined && person.fatherId === head.fatherId)
+    || (head.motherId !== undefined && person.motherId === head.motherId))).sort(byAge)[0];
+  const [young, old] = LEGACY_BALANCE.nephewAge;
+  const nephew = town.create({ ...common, sex: "male", birthYear: year - young - (roll >>> 8) % (old - young + 1),
+    surname: sibling === undefined || sibling.sex === "male" ? house.name : NEIGHBOUR_SURNAMES[(roll >>> 12) % NEIGHBOUR_SURNAMES.length]!,
+    ...(sibling === undefined ? { lineageId: `lord:${house.order}` } : sibling.sex === "male" ? { fatherId: sibling.id } : { motherId: sibling.id }) });
+  candidates.push({ kind: "nephew", personId: nephew.id, throughId: sibling?.id ?? null, relation: sibling === undefined ? "kinsman" : "nephew", created: true });
+  return { state: { ...state, persons: town.result() }, candidates };
+}
+
+/**
+ * F5-A (LG-3): the named heir takes the house — the head of the manor (the old lord and his wife stay as kin); a
+ * daughter's husband comes with her (back to the manor as his wife); the family member who had left comes home; the
+ * other candidates who came with the question leave again.
+ */
+export function seatHeir(state: GameState, chosen: HeirCandidate, candidates: readonly HeirCandidate[]): GameState {
+  if (state.persons === undefined) return state;
+  const town = new Town(state.seed, currentYear(state), state.persons);
+  const houseTag = `lord-house:${lordHouse(state).order}`;
+  for (const person of town.people.filter(entry => entry.tags.includes(houseTag) && (entry.role === "head" || entry.role === "spouse"))) town.replace(person.id, { role: "kin" });
+  const home = (id: string, change: Partial<Person>) => {
+    const gone = town.past.findIndex(person => person.id === id && person.alive);
+    if (gone >= 0) {
+      const { leftYear: _left, ...person } = town.past[gone]!;
+      town.past.splice(gone, 1);
+      town.people.push(person);
+    }
+    const person = town.people.find(entry => entry.id === id);
+    if (person === undefined) return;
+    const tags = [...new Set([...person.tags.filter(tag => tag !== HEIR_CANDIDATE_TAG), LORD_FAMILY_TAG, houseTag])];
+    town.replace(id, { ...change, householdId: MANOR_HOUSEHOLD, tags });
+  };
+  const heir = town.find(chosen.personId);
+  home(chosen.personId, { role: "head", occupation: heir?.sex === "female" ? "lady" : "lord" });
+  if (chosen.kind === "daughter_husband" && chosen.throughId !== null) home(chosen.throughId, { role: "spouse", occupation: "lady" });
+  for (const candidate of candidates) if (candidate.created && candidate.personId !== chosen.personId) town.remove(candidate.personId, { left: true });
+  return { ...state, persons: town.result() };
 }
 
 /** LN-5: the town's named lineages — the lord's house, and the families of note (a merchant head, two reeves, the miller). */

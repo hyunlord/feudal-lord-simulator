@@ -1,0 +1,104 @@
+{
+ "variant": "lords",
+ "answers": {
+  "royal_tax": "refuse",
+  "heir_choice": "refuse",
+  "borough_autonomy": "refuse",
+  "legacy_choice": "refuse"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 172020,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "nephew",
+  "personId": "m-000015",
+  "previousHeadId": "m-000013",
+  "tick": 344000,
+  "relief": 200
+ },
+ "candidates": [
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": null,
+ "family": "stayed",
+ "backlash": 93,
+ "royalSubsidy": 0,
+ "legacy": "church",
+ "endowment": 500,
+ "clothSold": 3400,
+ "scores": {
+  "town": 55,
+  "family": 62,
+  "church": 56,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": -20,
+    "legacy": 0
+   },
+   "family": {
+    "house": 20,
+    "generations": 12,
+    "heir": 5,
+    "stayed": 15,
+    "relations": 0,
+    "treasury": 10,
+    "legacy": 0
+   },
+   "church": {
+    "church": 10,
+    "chapels": 4,
+    "bishop": 7,
+    "priest": 5,
+    "relief": 5,
+    "legacy": 25
+   }
+  }
+ },
+ "ending": {
+  "id": "lords_town",
+  "title": "영주의 도시",
+  "sentence": "특허 없이 가문이 다스린 도시였다. 드 포콩발 가문은 영주관에 남았고, 1450년 마지막 장날 장터의 세는 여전히 영주의 금고로 갔다.",
+  "quotes": [
+   "h-026470",
+   "h-025872",
+   "h-027331"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": -15,
+  "crown": 15,
+  "neighbour_1": -6,
+  "neighbour_2": 0,
+  "bishop": 30,
+  "merchant_house_1": 20,
+  "merchant_house_2": 0,
+  "town": 38,
+  "commons": 35
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk"
+ ]
+}
