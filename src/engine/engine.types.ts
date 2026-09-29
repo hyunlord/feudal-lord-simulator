@@ -92,6 +92,10 @@ export interface GameState {
   readonly scenarioId?: string;
   /** ARCH-1 (AR-6, save v31): the map's land (`namespace:id`); absent = the scenario's (the open field, the riverside town). */
   readonly archetypeId?: string;
+  /** ARCH-1b (MA-9, save v32): the map's river — its channel, flow, fords and bridge sites; absent in older saves (all water flows). */
+  readonly river?: import("../world/river").RiverData;
+  /** ARCH-1b (MA-11, save v32): the fen's drainage works and the ground they drained; absent until the first. */
+  readonly drainage?: import("./drainage").DrainageState;
   settlement?: import("./settlement.types").SettlementProgress;
   tick: number;
   seed: number;

@@ -113,7 +113,8 @@ test("Phase 3 building table includes chapel without changing ordinary building 
       production: { output: "raw_cloth", input: "yarn", inputPerOutput: 4, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 40, serviceRadius: 0,
     },
     fulling_mill: {
-      kind: "fulling_mill", name: "축융 방앗간", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 60 }, requiresAdjacentTerrain: "water", requiresRoad: true,
+      // ARCH-1b (MA-10): its wheel needs running water.
+      kind: "fulling_mill", name: "축융 방앗간", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 60 }, requiresAdjacentTerrain: "water", requiresFlowingWater: true, requiresRoad: true,
       production: { output: "fulled_cloth", input: "raw_cloth", inputPerOutput: 1, ticksPerOutput: 60, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
     },
     dyehouse: {

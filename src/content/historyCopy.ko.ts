@@ -173,6 +173,9 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "decision.stone_town": () => "석벽 사업을 선포했다",
   "decision.rebuild": () => "불탄 집을 다시 짓기 시작했다",
   "decision.wall_expand": () => "목책을 넓혀 새로 두르기로 했다",
+  // ARCH-1b (MA-11): the fen's drainage.
+  "decision.drainage": () => "습지의 웅덩이를 메우는 배수 공사를 시작했다",
+  "drainage.done": params => `배수 공사가 끝나 웅덩이 ${n(params, "cells")}칸이 풀밭이 되었다`,
   "event.rumour": params => `${eventName(s(params, "defId"))}의 소문이 돌았다`,
   "event.sign": params => `${eventName(s(params, "defId"))}의 징후가 보였다`,
   "event.arrived": params => { const name = eventName(s(params, "defId")); return `${name}${josa(name, "이", "가")} 닥쳤다`; },

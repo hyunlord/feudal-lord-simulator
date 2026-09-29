@@ -20,6 +20,7 @@ import type { Tile, WorldView } from "./world.types";
 import { palisadePathHasBuildingClearance, type PalisadeFootprint } from "./palisadeGeometry";
 import type { WallBoundary } from "./wallTraversal";
 import { canTraverseRoadBoundary } from "./bridges";
+import { isFlowingWater, type RiverData } from "./river";
 
 export enum PlacementFailure {
   occupied = "occupied",
@@ -50,6 +51,8 @@ type ResourceWorldView = WorldView & {
   readonly era?: Era;
   readonly scenarioId?: string;
   readonly palisade?: WallBoundary | null;
+  /** ARCH-1b (MA-10): the map's river; absent (an older save), all water flows. */
+  readonly river?: RiverData;
 };
 
 const ERA_STAGE_INDEX = {
@@ -230,6 +233,12 @@ export function canPlaceBuildingBeforeRoad(
     definition.requiresAdjacentTerrain !== null &&
     !hasAdjacentTerrain(world, origin, definition, definition.requiresAdjacentTerrain)
   ) {
+    return { ok: false, reason: PlacementFailure.needs_adjacent_terrain };
+  }
+
+  // ARCH-1b (MA-10): a water wheel needs a flowing neighbour (the render words it; the reason is the adjacency's).
+  if (definition.requiresFlowingWater === true && !surroundingRing(origin, definition).some(coordinate =>
+    isInBounds(world, coordinate) && isFlowingWater(world, coordinate.ty * world.width + coordinate.tx))) {
     return { ok: false, reason: PlacementFailure.needs_adjacent_terrain };
   }
 

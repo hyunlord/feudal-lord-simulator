@@ -1,6 +1,6 @@
 // ARCH-1 gate ② (spec docs/design/map-archetypes.md MA-2, MA-5): the engine's proof raster of each land — the
 // opening state's map at 128×128 (2 px a tile, top-down, not the render's isometric view), coloured by terrain and by
-// the ground layer's fill and band, with the opening village and its roads; one file per land and seed, and a sheet
+// the ground layer's fill and band, with the river (ARCH-1b), the opening village and its roads; one file per land and seed, and a sheet
 // (lands across, seeds down). Colours are a legend, not art; JPEG (AGENTS rule 1).
 //   tsx scripts/archetypeTerrainCapture.ts [outDir=docs/verification/arch1/terrain] [seeds=1,2,3]
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -22,6 +22,9 @@ const BAND: readonly (readonly [string, Colour])[] = [
   ["boundary/reed_bed", [150, 150, 84]], ["boundary/", [150, 170, 110]],
 ];
 const SEA: Colour = [40, 74, 128];
+const RIVER: Colour = [96, 150, 206];
+const FORD: Colour = [150, 190, 220];
+const BRIDGE_SITE: Colour = [220, 120, 40];
 const ROAD: Colour = [176, 142, 96];
 const BUILDING: Colour = [150, 52, 40];
 
@@ -30,6 +33,10 @@ function raster(archetypeIndex: number, seed: number): { width: number; height: 
   const { state } = createGrowthOpening(seed, archetype.id);
   const terrains = state.tiles.map(tile => tile.terrain);
   const layer = archetypeGroundLayer(archetype, terrains, state.width, state.height, seed);
+  // ARCH-1b (MA-9): the river's channel (light blue), its fords (paler) and bridge sites (orange, one bank tile).
+  const river = new Set(state.river?.cells ?? []);
+  const fords = new Set(state.river?.fords ?? []);
+  const bridges = new Set((state.river?.bridgeSites ?? []).map(site => site.ty * state.width + site.tx));
   const width = state.width * SCALE, height = state.height * SCALE;
   const data = new Uint8Array(width * height * 4);
   for (const tile of state.tiles) {
@@ -37,6 +44,8 @@ function raster(archetypeIndex: number, seed: number): { width: number; height: 
     const bandKey = layer.keys[layer.band[index]!]!;
     let colour: Colour = TERRAIN[tile.terrain] ?? FILL[layer.keys[layer.fill[index]!]!] ?? [255, 0, 255];
     if (tile.terrain === "water" && (tile.tx === 0 || tile.ty === 0) && archetype.terrain.sea !== undefined) colour = SEA;
+    if (river.has(index)) colour = fords.has(index) ? FORD : RIVER;
+    if (bridges.has(index)) colour = BRIDGE_SITE;
     if (layer.band[index] !== 0) colour = BAND.find(([prefix]) => bandKey.startsWith(prefix))?.[1] ?? colour;
     if (tile.hasRoad) colour = ROAD;
     if (tile.buildingId !== null) colour = BUILDING;

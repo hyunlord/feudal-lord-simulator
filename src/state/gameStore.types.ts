@@ -16,6 +16,8 @@ type GameCommand =
   | { readonly type: "restart_settlement" }
   /** ARCH-1 (MA-6): and the land and its seed (absent = the riverside town, seed 1). */
   | { readonly type: "start_new_game"; readonly scenarioId: string; readonly archetypeId?: string; readonly seed?: number }
+  /** ARCH-1b (MA-11): drain the fen's still water around a tile (`drainagePlan` says what it takes). */
+  | { readonly type: "drain_fen"; readonly tx: number; readonly ty: number }
   | { readonly type: "load_saved_state"; readonly state: GameState }
   | { readonly type: "merge_houses"; readonly sourceBuildingId: string; readonly targetBuildingId: string }
   | {
