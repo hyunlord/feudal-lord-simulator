@@ -60,7 +60,8 @@ export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "
     }
     // PLAGUE-b: a chapter's start is its Wave 31 opening painting (chapter 2's is Wave 16's, chronicleScreenModel).
     case "milestone.chapter_start": return chapterIntro(Number(param("chapter"))) ?? "chronicle_settlement";
-    case "milestone.chapter_end": return "chronicle_survival_spring";
+    // UI-9 (F4-A): chapter 4 end uses the chapter's own ending illustration.
+    case "milestone.chapter_end": return param("chapter") === "4" ? "ch4_ending" : "chronicle_survival_spring";
     case "era.entered": return param("eraId") === "famine" ? "chronicle_famine" : param("eraId") === "saturation" ? "chronicle_settlement" : "chronicle_palisade";
     default: return "chronicle_settlement";
   }

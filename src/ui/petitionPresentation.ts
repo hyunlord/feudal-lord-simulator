@@ -1,5 +1,6 @@
 import { PETITION_DEFS, type PetitionResponse } from "../content/chapterConfig";
 import { PLAGUE_BALANCE } from "../content/plagueConfig";
+import { REORGANISATION_BALANCE } from "../content/reorganisationConfig";
 import { WAR_BALANCE } from "../content/warConfig";
 import { factionDisplayName } from "../content/factionCopy.ko";
 import { PETITION_SUBJECTS, WAR_CHOICES } from "../content/historyCopy.ko";
@@ -126,6 +127,35 @@ const PRESENTATIONS: Readonly<Record<string, Presentation>> = {
     line: (_state, response) => response === "accept"
       ? PETITION_COPY.cash_rent.accept()
       : PETITION_COPY.cash_rent.refuse(),
+  },
+  // UI-9: the four reorganisation petition cards (F4-A RG-5…RG-9), Wave 21 640×480 decision art, two answers each.
+  guild_charter: {
+    art: { sheet: "wave21", id: "ch4_decision_guild_approval" }, title: PETITION_COPY.guild_charter.title,
+    demand: () => PETITION_COPY.guild_charter.demand,
+    line: (_state, response) => response === "accept"
+      ? PETITION_COPY.guild_charter.accept()
+      : PETITION_COPY.guild_charter.refuse(REORGANISATION_BALANCE.refusedWeaverHouseholds),
+  },
+  tax_collection: {
+    art: { sheet: "wave21", id: "ch4_decision_tax_collection" }, title: PETITION_COPY.tax_collection.title,
+    demand: () => PETITION_COPY.tax_collection.demand,
+    line: (_state, response) => response === "accept"
+      ? PETITION_COPY.tax_collection.accept(REORGANISATION_BALANCE.delegatedPerAdult)
+      : PETITION_COPY.tax_collection.refuse(REORGANISATION_BALANCE.directPerAdult),
+  },
+  cloth_or_grain: {
+    art: { sheet: "wave21", id: "ch4_decision_textile_or_grain" }, title: PETITION_COPY.cloth_or_grain.title,
+    demand: () => PETITION_COPY.cloth_or_grain.demand,
+    line: (_state, response) => response === "accept"
+      ? PETITION_COPY.cloth_or_grain.accept()
+      : PETITION_COPY.cloth_or_grain.refuse(),
+  },
+  borough_charter: {
+    art: { sheet: "wave21", id: "ch4_decision_charter_negotiation" }, title: PETITION_COPY.borough_charter.title,
+    demand: () => PETITION_COPY.borough_charter.demand,
+    line: (_state, response) => response === "accept"
+      ? PETITION_COPY.borough_charter.accept(REORGANISATION_BALANCE.feeFarm)
+      : PETITION_COPY.borough_charter.refuse(),
   },
 };
 

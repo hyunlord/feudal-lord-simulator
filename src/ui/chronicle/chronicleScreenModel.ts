@@ -351,6 +351,23 @@ function chapterTwoArt(state: Pick<GameState, "seed" | "lordship" | "factions" |
   return null;
 }
 
+// UI-9 (F4-A RG-5…RG-9): chapter 4 reorganisation decision cards and chapter 4 end milestone.
+const REORG_DECISION_ART: Readonly<Record<string, Wave21ImageId>> = {
+  guild_charter: "ch4_decision_guild_approval", tax_collection: "ch4_decision_tax_collection",
+  cloth_or_grain: "ch4_decision_textile_or_grain", borough_charter: "ch4_decision_charter_negotiation",
+};
+
+/** F4-A: the reorganisation's petition decisions and chapter 4 milestone. */
+function chapterFourArt(_state: unknown, record: HistoryRecord): ChronicleArt {
+  const param = (key: string) => String(record.params?.[key] ?? "");
+  if (record.template === "decision.petition_response") {
+    const id = REORG_DECISION_ART[param("defId")];
+    if (id !== undefined) return { kind: "wave21", id };
+  }
+  if (record.template === "milestone.chapter_end" && param("chapter") === "4") return { kind: "wave21", id: "ch4_ending" };
+  return null;
+}
+
 /** F3-A: the plague's records and chapter 3 milestones. */
 function chapterThreeArt(_state: unknown, record: HistoryRecord): ChronicleArt {
   const param = (key: string) => String(record.params?.[key] ?? "");
@@ -375,6 +392,9 @@ function chapterThreeArt(_state: unknown, record: HistoryRecord): ChronicleArt {
 export function recordArt(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, record: HistoryRecord): ChronicleArt {
   if (record.template === "decision.stone_town") return { kind: "wave17", id: "stonewall_start" };
   if (record.template === "milestone.stone_town") return { kind: "wave17", id: "stonewall_complete" };
+  // UI-9: chapter 4 reorganisation records checked first (reorg petitions share decision.petition_response).
+  const ch4 = chapterFourArt(state, record);
+  if (ch4 !== null) return ch4;
   // UI-8: chapter 3 plague records checked before chapter 2 (plague petitions share decision.petition_response).
   const ch3 = chapterThreeArt(state, record);
   if (ch3 !== null) return ch3;
