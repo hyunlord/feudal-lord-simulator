@@ -1,0 +1,29 @@
+{
+  "head": "4ad2d2a444d7d0e3dbbcdb112f55f942dc1f331c",
+  "sources": [
+    {
+      "source": "fixtures/perf-gate/ch4-1380.save.json.gz",
+      "sourceSHA256": "4b3fb4ef1aa1be2e381e4fe572bab295cf8adb9c6fd42002fc19b6e94ad742ff",
+      "archivePath": "saves/ch4-1380.save.json.gz",
+      "transformation": "byte-identical"
+    },
+    {
+      "source": "fixtures/saves/v32/population-176.save.json",
+      "sourceSHA256": "1f6d463a32b040155a2cc885a5dc0e72d8a64bc46ca8a80998cc19931c361788",
+      "archivePath": "saves/population-176.save.json.gz",
+      "transformation": "gzip lossless only"
+    },
+    {
+      "source": "fixtures/saves/v32/chapter-five-town.save.json",
+      "sourceSHA256": "b15c169f6444fc122cb16ba95a4b6e0bc6d1e93b9107aa8eb9c9e7b312f9a00b",
+      "archivePath": "saves/chapter-five-town.save.json.gz",
+      "transformation": "gzip lossless only"
+    },
+    {
+      "source": "fixtures/autoplay-search-budget/seed4-120000.json.gz",
+      "sourceSHA256": "fce2c6d3261506ac4a0a19f747e5b529519afa825685f7d0398b3d7d1682421c",
+      "archivePath": "saves/seed4-120000.json.gz",
+      "transformation": "byte-identical"
+    }
+  ]
+}
