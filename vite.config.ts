@@ -29,8 +29,9 @@ function nat1PseudoLongPlugin() {
       let result = importLine + code;
       // Wrap: `export const NAME = {` → `export const NAME = __pl({`
       result = result.replace(/(export const [A-Za-z_]\w* = )(\{)/g, "$1__pl($2");
-      // Close: `} as const;` → `} as const);`
-      result = result.replace(/(\} as const);/g, "$1);");
+      // Close: `} as const;` or `} as const satisfies Type;` → append `)` before `;`
+      // The [^\n;]* captures optional TypeScript `satisfies` clauses on the same line.
+      result = result.replace(/(\} as const(?:\s+satisfies\s+[^\n;]+)?);/g, "$1);");
       return { code: result, map: null };
     },
   };

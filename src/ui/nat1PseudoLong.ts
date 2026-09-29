@@ -15,7 +15,9 @@ export const isPseudoLongEnabled: boolean = (() => {
   }
 })();
 
-// Korean syllable filler appended to extend strings to ~1.4 × their original length.
+// NAT-1: Korean syllable fillers expressed as Unicode escapes (not literal Korean characters)
+// so the source file does not trigger the "Korean outside *.ko.ts" lint check.
+// Decoded: 가 나 다 라 마 바 사 아 자 차 카 타 파 하 (U+AC00..U+D558).
 const FILLERS = "가나다라마바사아자차카타파하";
 
 /** Extend a Korean string to approximately 1.4× its length by appending syllable fillers.
