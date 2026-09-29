@@ -6,6 +6,7 @@ import type { FamineDecisionView, PetitionDecisionView } from "../decisionModels
 import { UiIcon } from "../UiIcon";
 import { wave8ContentStyle, wave8FrameLayerStyle, wave8ImageStyle, wave8Url } from "../wave8Art";
 import { wave16ImageStyle, wave16Url } from "../wave16Art";
+import { chapterIntro, wave31Url } from "../wave31Art";
 import { PersonChip, PersonPortrait } from "../persons/PersonViews";
 import type { PersonRow } from "../persons/personModels";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
@@ -172,16 +173,22 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
 export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [] }: {
   readonly onContinue: () => void; readonly chapter?: number; readonly goals?: readonly string[];
 }) {
-  const open = chapter === 2;
+  // PLAGUE-b: chapter 3 on opens the same way over its Wave 31 painting when the game has built it (its copy line).
+  const later = CHRONICLE_COPY.chapterOpening[chapter];
+  const intro = chapterIntro(chapter);
+  const opening = chapter === 2 ? { title: CHRONICLE_COPY.chapterTwoStartTitle, line: CHRONICLE_COPY.chapterTwoStartLine, start: CHRONICLE_COPY.chapterTwoStart }
+    : later !== undefined && intro !== null ? later : null;
+  const open = opening !== null;
+  const art = intro === null ? wave16Url("chapter2_intro") : wave31Url(intro);
   return (
-    <div className="chapter-preview" role="dialog" aria-modal="true" aria-label={open ? CHRONICLE_COPY.chapterTwoStartTitle : CHRONICLE_COPY.laterTitle(chapter)}
-      data-chapter={chapter} style={{ backgroundImage: `url("${wave16Url("chapter2_intro")}")` }}>
-      <p className="chapter-loading-title">{open ? CHRONICLE_COPY.chapterTwoStartTitle : CHRONICLE_COPY.laterTitle(chapter)}</p>
-      <p className="chapter-loading-line">{open ? CHRONICLE_COPY.chapterTwoStartLine : CHRONICLE_COPY.laterLine}</p>
+    <div className="chapter-preview" role="dialog" aria-modal="true" aria-label={opening?.title ?? CHRONICLE_COPY.laterTitle(chapter)}
+      data-chapter={chapter} style={{ backgroundImage: `url("${art}")` }}>
+      <p className="chapter-loading-title">{opening?.title ?? CHRONICLE_COPY.laterTitle(chapter)}</p>
+      <p className="chapter-loading-line">{opening?.line ?? CHRONICLE_COPY.laterLine}</p>
       {open && goals.length > 0 ? <section className="chapter-preview-goals" aria-label={CHRONICLE_COPY.chapterTwoGoalsHeading}>
         <h3>{CHRONICLE_COPY.chapterTwoGoalsHeading}</h3><ul>{goals.map(goal => <li key={goal}>{goal}</li>)}</ul></section> : null}
       <Button type="button" className="chapter-preview-continue" onPress={() => onContinue()} variant="primary"><UiIcon sheet="time" cell="play" />
-        {open ? CHRONICLE_COPY.chapterTwoStart : CHRONICLE_COPY.chapterTwoContinue}</Button>
+        {opening?.start ?? CHRONICLE_COPY.chapterTwoContinue}</Button>
     </div>
   );
 }

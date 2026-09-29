@@ -1,12 +1,16 @@
 # 현재 상태
 
-갱신: 2026-09-29(FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **PLAGUE-b 역병 빈집 판자·3장 시작 그림 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_E 1): [보고서](verification/plague-b/REPORT.md), 결정 PLAGUEB-D1~D3.
+  - 역병 빈집은 제 그림의 빈집 판자(Wave 26 변형 `boarded`·기본 그림 Wave 7), Wave 9 봉쇄 판은 L1~L3 기본 그림에서만. 봇 도시 빈집 둘 모두 판자(판자 켬·끔 나란히 캡처).
+  - 3장 시작 그림은 같은 날 온 Wave 31 `chapter3_intro`(연대기 3장 시작 칸, 3장 시작 화면 — 전에는 "예고·준비 중"이 떴다). 목표 목록은 양피지 바탕.
+  - 관문: 캡처 오류 0, 스킨 감사 0 / 1014, 면적 5.4 % / 6 %·태블릿 5.8 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 깨끗한 클론 `b2432dd` 3,600/3,600·build.
 - **FIX-8 엿기름은 창고로 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 판정, 검증 DGX): [보고서](verification/fix8/REPORT.md), [명세](design/ale-chain.md) AL-12, 결정 FX8-1·FX8-2.
   - 곡창은 식량 저장소다. 엿기름은 창고로 간다(창고 자리의 4분의 1까지). 몫이 차면 가마가 제 엿기름을 쥐고, 양조하는 집이 가마에서 곧장 가져온다. 곡창에 남은 엿기름은 양조 때 먼저 쓰인다. 저장 v28은 곡창의 엿기름을 창고 빈자리로 옮긴다.
   - 관문: seed 4 연장 실행 1400~1450 L4 24(F4-A 코드 18~23, 곡창 엿기름 0), 가드레일 `7630a2a` 5/5(새 기준선 `baseline-7630a2a`, 승리 틱 셋 그대로, seed 3·5는 2장에서 약 850틱), 사람 경로 5/5, 시험 M1~M4, 깨끗한 클론 `6edb69f` 3,598/3,598·build.

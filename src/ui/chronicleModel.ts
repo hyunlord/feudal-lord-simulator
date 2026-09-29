@@ -6,6 +6,7 @@ import type { ChapterEnd } from "../engine/politics.types";
 import { chapterEnd } from "../engine/politics";
 import { CHRONICLE_COPY } from "./chronicleCopy.ko";
 import type { StoryIllustration } from "./storyArt";
+import { chapterIntro } from "./wave31Art";
 
 // UI-4 chronicle page (CHRONICLE_DESIGN 2.1 timeline v0, one chapter): at the end of chapter 1 (F0-C1 `chapterEnd`),
 // the chapter as a timeline edited from the F0-C2 history ledger (`history.query`: the chapter's records of severity 1
@@ -57,6 +58,8 @@ export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "
       return building === "mill" ? "chronicle_first_mill" : building === "farmstead" ? "chronicle_first_plough" : building === "market" ? "chronicle_market_day"
         : building === "chapel" || building === "church" ? "chronicle_church_dedication" : "chronicle_settlement";
     }
+    // PLAGUE-b: a chapter's start is its Wave 31 opening painting (chapter 2's is Wave 16's, chronicleScreenModel).
+    case "milestone.chapter_start": return chapterIntro(Number(param("chapter"))) ?? "chronicle_settlement";
     case "milestone.chapter_end": return "chronicle_survival_spring";
     case "era.entered": return param("eraId") === "famine" ? "chronicle_famine" : param("eraId") === "saturation" ? "chronicle_settlement" : "chronicle_palisade";
     default: return "chronicle_settlement";
