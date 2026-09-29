@@ -1,0 +1,310 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "판정 아님",
+ "commit": "d1dcff5487548ed20cd5f5d3b51d06ad0ddf0260",
+ "dirty": false,
+ "started": "2026-09-29T14:50:12.430Z",
+ "finished": "2026-09-29T14:53:28.911Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   7.5,
+   7.2
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [
+  "new-game-x3: 실행이 끝나지 않았다: } /  / Node.js v25.8.2",
+  "season-x1: 실행이 끝나지 않았다: } /  / Node.js v25.8.2",
+  "placement-x3: 실행이 끝나지 않았다: } /  / Node.js v25.8.2"
+ ],
+ "failures": [
+  "big-town-x5: 최대 440.9 ms > 100",
+  "big-town-x5: 50 ms 초과 1.3/분 > 1"
+ ],
+ "scenes": [
+  {
+   "id": "big-town-x5",
+   "loadMax": 0.17,
+   "label": "가장 큰 도시 5배속",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 5,
+   "action": "none",
+   "verdict": "실패",
+   "failed": [
+    "최대 440.9 ms > 100",
+    "50 ms 초과 1.3/분 > 1"
+   ],
+   "invalid": [],
+   "stats": {
+    "frames": 21710,
+    "minutes": 3.05,
+    "p50": 8.3,
+    "p95": 9.3,
+    "p99": 9.4,
+    "max": 440.9,
+    "over25": 19,
+    "over33": 7,
+    "over50": 4,
+    "over25PerMin": 6.2,
+    "over33PerMin": 2.3,
+    "over50PerMin": 1.3
+   },
+   "loadSeconds": 3.946,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     882
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 8,
+    "autosave": 9,
+    "dialog": 56,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 59.3,
+     "ms": 440.9
+    },
+    {
+     "atSeconds": 59.5,
+     "ms": 175.5
+    },
+    {
+     "atSeconds": 66.8,
+     "ms": 67.3
+    },
+    {
+     "atSeconds": 60.3,
+     "ms": 50.9
+    },
+    {
+     "atSeconds": 60.3,
+     "ms": 49.9
+    },
+    {
+     "atSeconds": 60,
+     "ms": 41
+    },
+    {
+     "atSeconds": 60.4,
+     "ms": 33.5
+    }
+   ],
+   "longAnimationFrames": [
+    {
+     "start": 65086.30000001192,
+     "duration": 447.09999999403954,
+     "blocking": 396.9,
+     "renderStart": 65090.40000000596,
+     "styleAndLayoutStart": 65533.30000001192,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 2458742,
+       "duration": 344,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 3813284,
+       "duration": 99,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 58.9
+    },
+    {
+     "start": 65579.90000000596,
+     "duration": 178.5,
+     "blocking": 0,
+     "renderStart": 65731.80000001192,
+     "styleAndLayoutStart": 65758.20000000298,
+     "scripts": [
+      {
+       "invoker": "TimerHandler:setTimeout",
+       "fn": "publish",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 2373761,
+       "duration": 6,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 2458742,
+       "duration": 10,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 3813284,
+       "duration": 17,
+       "forcedStyleAndLayout": 10
+      }
+     ],
+     "atSeconds": 59.4
+    },
+    {
+     "start": 66487.5,
+     "duration": 80.6000000089407,
+     "blocking": 0,
+     "renderStart": 66525.80000001192,
+     "styleAndLayoutStart": 66567.90000000596,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 2458742,
+       "duration": 17,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 3813284,
+       "duration": 25,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 60.3
+    },
+    {
+     "start": 72980.5,
+     "duration": 73.6000000089407,
+     "blocking": 23.2,
+     "renderStart": 73022,
+     "styleAndLayoutStart": 73052.30000001192,
+     "scripts": [
+      {
+       "invoker": "MessagePort.onmessage",
+       "fn": "performWorkUntilDeadline",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 20427,
+       "duration": 41,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-2FgRw0nw.js",
+       "charPosition": 3813284,
+       "duration": 30,
+       "forcedStyleAndLayout": 25
+      }
+     ],
+     "atSeconds": 66.8
+    }
+   ]
+  },
+  {
+   "id": "new-game-x3",
+   "loadMax": 0,
+   "label": "새 게임 3배속",
+   "save": null,
+   "speed": 3,
+   "action": "none",
+   "verdict": "판정 아님",
+   "failed": [],
+   "invalid": [
+    "실행이 끝나지 않았다: } /  / Node.js v25.8.2"
+   ],
+   "stats": null,
+   "loadSeconds": null,
+   "page": null,
+   "moments": null,
+   "worstFrames": [],
+   "longAnimationFrames": []
+  },
+  {
+   "id": "season-x1",
+   "loadMax": 0,
+   "label": "계절 전환(가장 큰 도시 1배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 1,
+   "action": "none",
+   "verdict": "판정 아님",
+   "failed": [],
+   "invalid": [
+    "실행이 끝나지 않았다: } /  / Node.js v25.8.2"
+   ],
+   "stats": null,
+   "loadSeconds": null,
+   "page": null,
+   "moments": null,
+   "worstFrames": [],
+   "longAnimationFrames": []
+  },
+  {
+   "id": "placement-x3",
+   "loadMax": 0,
+   "label": "배치 끌기(가장 큰 도시 3배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 3,
+   "action": "placement",
+   "verdict": "판정 아님",
+   "failed": [],
+   "invalid": [
+    "실행이 끝나지 않았다: } /  / Node.js v25.8.2"
+   ],
+   "stats": null,
+   "loadSeconds": null,
+   "page": null,
+   "moments": null,
+   "worstFrames": [],
+   "longAnimationFrames": []
+  }
+ ],
+ "moments": {
+  "windows": 146,
+  "windowsWithLong": 3,
+  "baseline": 0.02054794520547945,
+  "rows": [
+   {
+    "kind": "season",
+    "seen": 8,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.02054794520547945,
+    "pValue": 1,
+    "pass": true
+   },
+   {
+    "kind": "autosave",
+    "seen": 9,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.02054794520547945,
+    "pValue": 1,
+    "pass": true
+   }
+  ],
+  "pass": true
+ }
+}
