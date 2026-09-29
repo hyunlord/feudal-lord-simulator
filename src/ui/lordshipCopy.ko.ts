@@ -2,7 +2,12 @@ import { LORD_HOUSE_NAMES_KO } from "../content/historyCopy.ko";
 
 // UI-6: the ledger drawer's rights tab — the ruling house and its arms, the lord's title, the three rights (FAIL-3
 // FL-1…FL-8) and, in the war (F2-A), the Crown's favour, the men away and the ring's defence.
+// UI-9: 4장 권리 이양 (RG-7) — market_tolls and bridge_tolls granted to the town via borough_charter.
 const house = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;
+// UI-9: localised names for the rights the town receives in chapter 4.
+const RIGHTS_TRANSFER_NAMES: Readonly<Record<string, string>> = {
+  market_tolls: "시장 통행세", bridge_tolls: "다리 통행세",
+};
 export const LORDSHIP_COPY = {
   tab: "권리",
   heading: "영주 권리 등록부",
@@ -27,4 +32,8 @@ export const LORDSHIP_COPY = {
     `영지가 쇠퇴했습니다 — ${cause} ${right === null ? "잃은 권리 없이" : `${right}${byOverlord ? "를 상위 영주가 맡았고" : "를 상인들이 가져갔고"}`} 칭호가 강등되었습니다`,
   seasonHouse: (withdrew: string, arrived: string) => `${house(withdrew)} 가문이 물러나고 ${house(arrived)} 가문이 영지를 맡았습니다`,
   seasonAway: (men: number) => `징집되어 떠나 있는 사람 ${men}명`,
+  // UI-9: RG-7 rights-transfer section (rights held by the town from ch4).
+  rightsTransferHeading: "4장 권리 이양",
+  rightsTransferLine: (id: string, year: number) =>
+    `${RIGHTS_TRANSFER_NAMES[id] ?? id} → 도시 · ${year}년 · 자치도시 칙허장`,
 } as const;
