@@ -505,9 +505,31 @@ function keepLordFamily(town: Town, state: GameState, yearStart: boolean): void 
   if (!members.some(person => person.role === "head")) {
     const children = members.filter(person => person.role === "child").sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id));
     const heir = children.find(person => person.sex === "male" && ageOf(person, town.year) >= ADULT_AGE) ?? children[0];
-    if (heir === undefined) return;
-    for (const person of members) if (person.role === "spouse") town.replace(person.id, { role: "kin" });
-    town.replace(heir.id, { role: "head", occupation: heir.sex === "male" ? "lord" : "lady" });
+    const dead = [...town.past].filter(person => person.tags.includes(houseTag) && person.role === "head" && !person.alive)
+      .sort((a, b) => (b.deathYear ?? 0) - (a.deathYear ?? 0) || b.id.localeCompare(a.id))[0];
+    const widower = members.find(person => person.role === "spouse");
+    const theirs = (person: Person) => dead !== undefined && widower !== undefined && person.alive
+      && [person.fatherId, person.motherId].includes(dead.id) && [person.fatherId, person.motherId].includes(widower.id);
+    // FIX-9 (decision FX9-3): the courtesy of England — an heiress's husband holds her lands for his life when a child of
+    // theirs lives; the child stays the heir.
+    if (dead?.sex === "female" && widower !== undefined && [...town.people, ...town.past].some(theirs)) {
+      town.replace(widower.id, { role: "head", occupation: widower.sex === "male" ? "lord" : "lady" });
+    } else if (heir !== undefined) {
+      for (const person of members) if (person.role === "spouse") town.replace(person.id, { role: "kin" });
+      town.replace(heir.id, { role: "head", occupation: heir.sex === "male" ? "lord" : "lady" });
+    } else {
+      // FIX-9 (FX9-3): no child — the dead lord's nearest of the blood (one who left comes home); none, the widowed spouse.
+      const kin = dead === undefined ? undefined : nearestBloodKin(town, dead, houseTag);
+      const next = kin ?? widower;
+      if (next === undefined) return;
+      if (kin !== undefined && !town.people.includes(kin)) {
+        const { leftYear: _left, ...home } = kin;
+        town.past.splice(town.past.indexOf(kin), 1);
+        town.people.push({ ...home, householdId: MANOR_HOUSEHOLD });
+      }
+      if (widower !== undefined && widower !== next) town.replace(widower.id, { role: "kin" });
+      town.replace(next.id, { role: "head", occupation: next.sex === "male" ? "lord" : "lady" });
+    }
     members = family();
   }
   const head = members.find(person => person.role === "head")!;
@@ -610,6 +632,42 @@ export function seatHeir(state: GameState, chosen: HeirCandidate, candidates: re
   if (chosen.kind === "daughter_husband" && chosen.throughId !== null) home(chosen.throughId, { role: "spouse", occupation: "lady" });
   for (const candidate of candidates) if (candidate.created && candidate.personId !== chosen.personId) town.remove(candidate.personId, { left: true });
   return { ...state, persons: town.result() };
+}
+
+/** FIX-9: a person who left the manor this old is taken to have died away (no longer called home). */
+const KIN_HOME_MAX_AGE = 70;
+
+/**
+ * FIX-9 (FX9-3): the dead lord's nearest living kin of the blood — a descendant, or one who shares an ancestor with
+ * them (the married-in share none): the fewest steps through the common ancestor; then one in the manor, a man, the elder.
+ */
+function nearestBloodKin(town: Town, dead: Person, houseTag: string): Person | undefined {
+  const everyone = [...town.people, ...town.past].filter(person => person.tags.includes(houseTag));
+  const byId = new Map(everyone.map(person => [person.id, person]));
+  const ancestors = (person: Person): Map<string, number> => {
+    const depth = new Map<string, number>([[person.id, 0]]);
+    const queue: Person[] = [person];
+    while (queue.length > 0) {
+      const next = queue.shift()!;
+      for (const parentId of [next.fatherId, next.motherId]) {
+        const parent = parentId === undefined ? undefined : byId.get(parentId);
+        if (parent === undefined || depth.has(parent.id)) continue;
+        depth.set(parent.id, depth.get(next.id)! + 1);
+        queue.push(parent);
+      }
+    }
+    return depth;
+  };
+  const mine = ancestors(dead);
+  const ranked = everyone.filter(person => person.id !== dead.id && person.alive && (town.people.includes(person) || ageOf(person, town.year) <= KIN_HOME_MAX_AGE))
+    .map(person => {
+      let steps = Infinity;
+      for (const [id, up] of ancestors(person)) { const down = mine.get(id); if (down !== undefined) steps = Math.min(steps, up + down); }
+      return { person, steps };
+    }).filter(entry => entry.steps < Infinity);
+  ranked.sort((a, b) => a.steps - b.steps || Number(town.people.includes(b.person)) - Number(town.people.includes(a.person))
+    || (a.person.sex === b.person.sex ? 0 : a.person.sex === "male" ? -1 : 1) || a.person.birthYear - b.person.birthYear || a.person.id.localeCompare(b.person.id));
+  return ranked[0]?.person;
 }
 
 /** LN-5: the town's named lineages — the lord's house, and the families of note (a merchant head, two reeves, the miller). */

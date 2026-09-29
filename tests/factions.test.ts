@@ -6,14 +6,14 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { PRESSURE_BALANCE } from "../src/content/balanceConfig";
-import { FACTION_DEFS, FACTION_EVENT_PERMILLE, FACTION_PORTRAIT_POOLS, RELATION_RULES } from "../src/content/factionConfig";
+import { FACTION_DEFS, FACTION_EVENT_PERMILLE, FACTION_LEADER_MIN_AGE, FACTION_PORTRAIT_POOLS, RELATION_RULES } from "../src/content/factionConfig";
 import type { GameState } from "../src/engine/engine.types";
 import {
   advanceFactions, applyFactionRecords, factionChanges, factionChronicle, factionOfPetitioner, factionsList, kingOf, worldTimeline,
 } from "../src/engine/factions";
 import type { FactionState } from "../src/engine/faction.types";
 import { advanceHistory, historySummary } from "../src/engine/history";
-import { advancePersons, personById } from "../src/engine/persons";
+import { advancePersons, ageBandOf, currentYear, personById } from "../src/engine/persons";
 import { initialPolitics } from "../src/engine/politics";
 import { identityFaction } from "../src/engine/portraits";
 import { hashSeed } from "../src/engine/prng";
@@ -238,5 +238,22 @@ test("X9 (FX-4, FX-5) the same seed and the same commands give the same factions
     ["town", 15, ["raid:held"]], ["commons", 25, ["famine:relief"]]]);
   // CODE-1a (decision FX6-2): the leaders and heirs wear their pool-3 faces (was 83ac82e83047d496f101ccb6f5974cc1512cde416ddbc4b08bc8949a5f17e0f9).
   // PERSON-1a (LN7): the factions' people carry traits and lineage; a noble heir is his father's son in the set L6/L7 (was 9dcbe59c…).
-  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "bac1f069a30b1ab21fae2ddeb82d81ecfc3bae022e9a14a9f5e76174ec3e9bc5");
+  // FIX-9 (decision FX9-5): the successors of the role's age (a bishop 40, an earl 25), the town's heads by age (was bac1f069…).
+  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "da2175b70fe2414c6ed7a1d0f5cdbab76845ea299f0c5c103544843738f828d0");
+});
+
+test("X5b (FIX-9) a successor is of the role's age: a bishop 40 or more, an earl 25 or more; the town community's head 30 or more", () => {
+  const base = created();
+  for (const [id, min] of [["bishop", FACTION_LEADER_MIN_AGE.bishop], ["overlord", FACTION_LEADER_MIN_AGE.overlord]] as const) {
+    const leaderId = factionOf(base, id).leaderId;
+    let state: GameState = { ...base, factions: { ...base.factions!, people: base.factions!.people.map(person => person.id === leaderId ? { ...person, birthYear: 1200 } : person) } };
+    for (let year = 1; year <= 5 && factionOf(state, id).leaderId === leaderId; year += 1) state = advanceFactions({ ...state, tick: base.tick + year * YEAR });
+    const heir = personById(state, factionOf(state, id).leaderId!)!;
+    assert.notEqual(heir.id, leaderId, id);
+    const age = currentYear(state) - heir.birthYear;
+    assert.ok(age >= min && age < min + 16, `${id} successor aged ${age}`);
+    assert.notEqual(ageBandOf(age), "child");
+  }
+  const town = personById(base, factionOf(base, "town").leaderId!);
+  if (town !== undefined) assert.ok(currentYear(base) - town.birthYear >= FACTION_LEADER_MIN_AGE.town, "the town community's head");
 });

@@ -56,6 +56,8 @@ const PETITION_NAMES: Readonly<Record<string, string>> = {
   guild_charter: "길드 결성 요구", tax_collection: "인두세를 걷는 방식", cloth_or_grain: "직물과 곡물 사이의 선택", borough_charter: "자치 특허 요구서",
   // F5-A: the four chapter-5 petitions (LG-2…LG-5).
   royal_tax: "국왕의 과세", heir_choice: "후계자 선택", borough_autonomy: "자치 특허의 인장", legacy_choice: "유산 선택",
+  // FIX-9: the interlude's two (LG-13).
+  guild_dispute: "길드와 상인의 다툼", church_rebuilding: "교회 증축 청원",
 };
 const ANSWERS: Readonly<Record<string, string>> = { accept: "수락", accept_with_price: "가격을 붙여 수락", refuse: "거절", expired: "답하지 않음" };
 
@@ -68,6 +70,7 @@ export function factionReasonLine(reason: string): string {
   if (kind === "restored") return "권리를 되삼";
   if (kind === "house_change") return "영주 가문이 바뀜";
   if (kind === "raid") return a === "held" ? "습격에 성벽이 버팀" : "습격에 성벽이 뚫림";
+  if (kind === "legacy") return a === "deposition" ? "리처드 2세가 폐위되고 새 왕이 섬" : reason;
   if (kind === "reorg") return a === "wage_competition" ? "더 높은 임금으로 가구를 데려감" : a === "overlord_warning" ? "도시가 커지는 것을 경계함"
     : b === "chased" ? "징수원을 쫓아낸 소동" : "반란 소문이 조용히 지나감";
   return reason;

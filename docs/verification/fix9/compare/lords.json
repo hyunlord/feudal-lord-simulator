@@ -1,0 +1,114 @@
+{
+ "variant": "lords",
+ "answers": {
+  "royal_tax": "refuse",
+  "guild_dispute": "accept",
+  "church_rebuilding": "refuse",
+  "heir_choice": "refuse",
+  "borough_autonomy": "refuse",
+  "legacy_choice": "accept"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 172119,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "nephew",
+  "personId": "m-000019",
+  "previousHeadId": "m-000017",
+  "tick": 400000,
+  "relief": 200
+ },
+ "candidates": [
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": null,
+ "family": "stayed",
+ "backlash": 93,
+ "royalSubsidy": 0,
+ "legacy": "town",
+ "endowment": 500,
+ "clothSold": 3400,
+ "interludes": {
+  "staple": 364000,
+  "guild_dispute": 376000,
+  "church_rebuilding": 384000,
+  "deposition": 398000
+ },
+ "naveRebuilt": false,
+ "scores": {
+  "town": 80,
+  "family": 58,
+  "church": 41,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": -20,
+    "legacy": 25
+   },
+   "family": {
+    "house": 20,
+    "generations": 8,
+    "heir": 5,
+    "stayed": 15,
+    "relations": 0,
+    "treasury": 10,
+    "legacy": 0
+   },
+   "church": {
+    "church": 20,
+    "chapels": 4,
+    "bishop": 2,
+    "priest": 10,
+    "relief": 5,
+    "rebuilt": 0,
+    "legacy": 0
+   }
+  }
+ },
+ "ending": {
+  "id": "free_borough",
+  "title": "스스로 다스리는 도시",
+  "sentence": "특허는 끝내 찍히지 않았지만 도시는 가문보다 커졌다. 1450년 마지막 장날, 길드홀과 시청이 도시의 이름을 남겼다.",
+  "quotes": [
+   "h-031427",
+   "h-030921",
+   "h-046083"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": -15,
+  "crown": 13,
+  "neighbour_1": -6,
+  "neighbour_2": 0,
+  "bishop": 5,
+  "merchant_house_1": 10,
+  "merchant_house_2": 0,
+  "town": 58,
+  "commons": 35
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk"
+ ]
+}

@@ -49,9 +49,9 @@ const MARKET_CADENCE_TICKS = 80;
  * (rounded to a whole penny). Trade priority keeps the usual prices, so a dearth does not change what the market
  * sends out first.
  */
-export function marketSalePrice(state: Pick<GameState, "seed" | "scenarioId" | "tick"> & Partial<Pick<GameState, "reorganisation">>, resource: MarketResource): number {
+export function marketSalePrice(state: Pick<GameState, "seed" | "scenarioId" | "tick"> & Partial<Pick<GameState, "reorganisation" | "legacy">>, resource: MarketResource): number {
   // F4-A (RG-3): chapter 4's cloth price (the long-distance merchants' trade at its height).
-  if (resource === "finished_cloth") return reorganisationClothTrade(state as Pick<GameState, "reorganisation">)?.price ?? CLOTH_BALANCE.clothPrice;
+  if (resource === "finished_cloth") return reorganisationClothTrade(state as Pick<GameState, "reorganisation"> & Pick<GameState, "tick">)?.price ?? CLOTH_BALANCE.clothPrice;
   const base = SALE_RULES.find(rule => rule.resource === resource)?.coin ?? 0;
   return resource === "bread" || resource === "wheat" ? Math.round(base * foodPricePermille(state, state.tick) / 1000) : base;
 }

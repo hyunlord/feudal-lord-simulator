@@ -174,7 +174,9 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // FIX-6: the factions' leaders wear pool 3's faces (was 6ec1cf75…; with every portraitIdentity removed the state is the same).
   // PERSON-1a: the persons carry their traits, lineage and parents, the lord's family lives in the manor (was e7a38e20…;
   // without persons, factions and petitioners the state is trunk's, decision LN7).
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "07fe070b49b812668676a4e5a38f968059a2a5e2ec0c3322bbf2e7b2003db787");
+  // FIX-9: an heiress's widower or her nearest of the blood takes a headless house, the factions' leaders are of their
+  // role's age (was 07fe070b…; without persons, factions and petitioners the state is trunk's, decisions FX9-3, FX9-5).
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "12e7d9b8ed31303f943016e0f17d40d8b468ceb06f9938e69b28c7478941199a");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {

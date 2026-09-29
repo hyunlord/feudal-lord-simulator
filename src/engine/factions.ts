@@ -15,7 +15,7 @@
  * Factions change nothing in the simulation yet (FACTION-0 is the base the rights and chronicle work builds on).
  */
 import {
-  BISHOP_SURNAMES, EARLDOMS, FACTION_DEF_BY_ID, FACTION_DEFS, FACTION_EVENTS, FACTION_LINEAGE_SETS, FACTION_PORTRAIT_POOLS, FAMILY_FACTIONS, FACTION_EVENT_PERMILLE, FACTION_OF_PETITIONER, KINGS, NEIGHBOUR_HOUSES,
+  BISHOP_SURNAMES, EARLDOMS, FACTION_DEF_BY_ID, FACTION_DEFS, FACTION_EVENTS, FACTION_LEADER_MIN_AGE, FACTION_LINEAGE_SETS, FACTION_PORTRAIT_POOLS, FAMILY_FACTIONS, FACTION_EVENT_PERMILLE, FACTION_OF_PETITIONER, KINGS, NEIGHBOUR_HOUSES,
   RELATION_RULES, SEES, WORLD_EVENTS, type FactionDef, type FactionId,
 } from "../content/factionConfig";
 import { MALE_GIVEN_NAMES } from "../content/personNames";
@@ -31,7 +31,7 @@ import { hairWords, inheritTraits, populationTraits } from "./heredity";
 import { chooseFactionPortraitIdentity, choosePortraitIdentity, identityFaction, identityLineage, PORTRAIT_BAND, setPlaces } from "./portraits";
 import { hashSeed } from "./prng";
 import { WAR_BALANCE } from "../content/warConfig";
-import { HEIR_BY_RESPONSE, HEIR_CHOICE_PETITION_ID, LEGACY_CHOICE_PETITION_ID, LEGACY_PETITION_IDS, LEGACY_RELATIONS, type LegacyPetitionId } from "../content/legacyConfig";
+import { HEIR_BY_RESPONSE, HEIR_CHOICE_PETITION_ID, LEGACY_BALANCE, LEGACY_CHOICE_PETITION_ID, LEGACY_PETITION_IDS, LEGACY_RELATIONS, type LegacyPetitionId } from "../content/legacyConfig";
 import { BOROUGH_CHARTER_PETITION_ID, REORGANISATION_EVENT_RELATIONS, REORGANISATION_PETITION_IDS, REORGANISATION_RELATIONS, type ReorganisationPetitionId } from "../content/reorganisationConfig";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
@@ -69,7 +69,8 @@ function outsidePerson(state: Pick<GameState, "seed" | "persons" | "factions">, 
   const traits = father === undefined ? populationTraits(state.seed, scope, ordinal) : inheritTraits(state.seed, scope, ordinal, undefined, father.traits);
   const build: PersonBuild = traits.buildBias;
   const draft = { id, sex: "male" as const, classBand: fields.classBand, build, occupation: fields.occupation, tags: [`faction:${fields.factionId}`], role: "head" as const, traits };
-  const band = ageBandOf(fields.year - fields.birthYear);
+  // FIX-9: the portrait's stage at the role's age at least (the child king wears his officer's grown face).
+  const band = ageBandOf(Math.max(fields.year - fields.birthYear, FACTION_LEADER_MIN_AGE[fields.factionId]));
   const usage = portraitUsage(state, made);
   const set = FACTION_LINEAGE_SETS[fields.factionId];
   let portraitIdentity: string | null = null;
@@ -105,8 +106,12 @@ function seedPicks(state: Pick<GameState, "seed" | "lordship">) {
 }
 
 /** FX-2: the town's heads a town faction may be led by, best first (merchant houses: merchants; the town: artisans; the commons: the reeve). */
-function townCandidates(state: Pick<GameState, "persons" | "seed">, def: FactionDef): readonly Person[] {
-  const heads = (state.persons?.people ?? []).filter(person => person.role === "head" && person.householdId !== "manor");
+function townCandidates(state: Pick<GameState, "persons" | "seed" | "tick" | "scenarioId">, def: FactionDef): readonly Person[] {
+  const all = (state.persons?.people ?? []).filter(person => person.role === "head" && person.householdId !== "manor");
+  // FIX-9: a head old enough for the role (the town community's 30, a merchant's 25), while the town has one.
+  const year = currentYear(state);
+  const grown = all.filter(person => ageOf(person, year) >= FACTION_LEADER_MIN_AGE[def.id]);
+  const heads = grown.length > 0 ? grown : all;
   const rank: Readonly<Record<string, readonly string[]>> = {
     merchant_house: ["merchant", "artisan", "labour", "poor_servant"], town: ["artisan", "merchant", "labour", "poor_servant"], commons: ["labour", "poor_servant", "artisan", "merchant"],
   };
@@ -116,7 +121,7 @@ function townCandidates(state: Pick<GameState, "persons" | "seed">, def: Faction
 }
 
 /** FX-2: the town factions' leaders — kept while they live in the town, else the best head not leading another town faction. */
-function townLeaders(state: Pick<GameState, "persons" | "seed">, factions: readonly FactionRecord[]): Map<FactionId, Person | null> {
+function townLeaders(state: Pick<GameState, "persons" | "seed" | "tick" | "scenarioId">, factions: readonly FactionRecord[]): Map<FactionId, Person | null> {
   const living = new Map((state.persons?.people ?? []).map(person => [person.id, person]));
   const taken = new Set<string>();
   const result = new Map<FactionId, Person | null>();
@@ -187,7 +192,8 @@ function yearTurn(state: GameState, factionState: FactionState): FactionState {
           ? outsidePerson(state, ordinal, { factionId: "crown", givenName: king.name, birthYear: king.born, classBand: "gentry", occupation: "king", year,
             predecessor: leader }, people)
           : outsidePerson(state, ordinal, { factionId: faction.id, ...(leader.surname === undefined ? {} : { surname: leader.surname }),
-            birthYear: year - 20 - hashSeed(state.seed, "faction-heir", ordinal) % 16, classBand: leader.classBand, occupation: leader.occupation, year,
+            // FIX-9: the successor at the role's age at least (a bishop 40, an earl 25).
+            birthYear: year - FACTION_LEADER_MIN_AGE[faction.id] - hashSeed(state.seed, "faction-heir", ordinal) % 16, classBand: leader.classBand, occupation: leader.occupation, year,
             predecessor: leader }, people);
         ordinal += 1;
         people.push(heir);
@@ -227,7 +233,7 @@ function withLeaderFaces(state: GameState): GameState {
     if (leader === undefined || !leader.alive || pools.includes(identityFaction(leader.portraitIdentity) ?? "")) continue;
     // PERSON-1a: an heir in the faction's lineage set wears the family's face.
     if (FACTION_LINEAGE_SETS[faction.id] !== undefined && identityLineage(leader.portraitIdentity) === FACTION_LINEAGE_SETS[faction.id]) continue;
-    const face = chooseFactionPortraitIdentity(state.seed, leader, ageBandOf(ageOf(leader, year)), usage, pools);
+    const face = chooseFactionPortraitIdentity(state.seed, leader, ageBandOf(Math.max(ageOf(leader, year), FACTION_LEADER_MIN_AGE[faction.id])), usage, pools);
     if (face === null) continue;
     usage.set(leader.portraitIdentity, Math.max(0, (usage.get(leader.portraitIdentity) ?? 1) - 1));
     usage.set(face, (usage.get(face) ?? 0) + 1);
@@ -344,6 +350,12 @@ export function factionChanges(before: GameState, after: GameState): readonly Fa
         changes.push({ factionId: factionId as FactionId, delta, reason: `reorg:rebellion:${reorgAfter.rebellion.outcome}` });
       }
     }
+  }
+  // FIX-9 (LG-13): Richard II deposed (1399) — the new king's reign goes halfway back to where the Crown started.
+  if (after.legacy?.interludes?.deposition !== undefined && before.legacy?.interludes?.deposition === undefined) {
+    const crown = factions.factions.find(faction => faction.id === "crown");
+    const start = FACTION_DEF_BY_ID.get("crown")!.startRelation;
+    if (crown !== undefined) changes.push({ factionId: "crown", delta: Math.round((start - crown.relation) * LEGACY_BALANCE.depositionPermille / 1000), reason: "legacy:deposition" });
   }
   return changes.filter(change => change.delta !== 0);
 }

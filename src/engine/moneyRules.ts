@@ -166,6 +166,13 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
   return { postings, millWheat };
 }
 
+/** FIX-9: a period's rent at the usual rate (before money rent's rate and any withholding) — the forecasts' base. */
+export function periodRent(state: GameState): number {
+  const plots = homePlots(state);
+  return state.houses.reduce((sum, house) => house.residents <= 0 || house.burntTick !== undefined ? sum
+    : sum + rentRelief(house, state.tick, homeRent(house, plots.get(house.buildingId)?.width ?? null)), 0);
+}
+
 /** Facilities that owe upkeep this period, in charge order (E2): buildings by rank, then age, then gates by id. */
 export function upkeepCharges(state: GameState): readonly { readonly facility: SourceRef; readonly amount: number }[] {
   const rank = (building: Building) => UPKEEP_RANK[building.kind] ?? OTHER_UPKEEP_RANK;
