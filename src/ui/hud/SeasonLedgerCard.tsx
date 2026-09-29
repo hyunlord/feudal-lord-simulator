@@ -36,6 +36,12 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
               {model.drink.map(item => <span key={item.resource} className="season-ledger-drink-item" data-resource={item.resource}>
                 <ResourceGlyph resource={item.resource} size={16} />{SEASON_LEDGER_COPY.held(item.name, item.amount)}</span>)}</p>}
             {model.aleLines.map(line => <p key={line} className="season-ledger-line season-ledger-ale">{line}</p>)}
+            {/* C5: the cloth chain's goods held now, each with its icon (parallel to the ale drink row). */}
+            {model.clothLine === null ? null : <p className="season-ledger-line season-ledger-cloth">
+              <span>{SEASON_LEDGER_COPY.heldNowLabel}</span>
+              {model.cloth.map(item => <span key={item.resource} className="season-ledger-cloth-item" data-resource={item.resource}>
+                <ResourceGlyph resource={item.resource} size={16} />{SEASON_LEDGER_COPY.held(item.name, item.amount)}</span>)}</p>}
+            {model.clothLines.map(line => <p key={line} className="season-ledger-line season-ledger-cloth-money">{line}</p>)}
             <ul className="season-ledger-events">{model.events.map(event => <li key={event}>{event}</li>)}</ul>
             {model.hint === null ? null : <Button type="button" className="season-ledger-hint" onPress={() => onHint()} variant="secondary">
               <UiIcon sheet="action" cell="open" />{model.hint.text}</Button>}
