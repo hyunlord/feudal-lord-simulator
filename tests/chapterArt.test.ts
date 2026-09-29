@@ -14,10 +14,12 @@ import { historicalFacilityManifest } from "../src/render/historicalFacilityMani
 import { WAVE9_IMAGES } from "../src/render/wave9ArtManifest.generated";
 import { WAVE17_WORLD_IMAGES } from "../src/render/wave17WorldManifest.generated";
 import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
+import { WAVE31_IMAGES } from "../src/ui/wave31ArtManifest.generated";
 
 const WAR = Object.values(WAVE17_WORLD_IMAGES).map(image => image.url);
 const PLAGUE = [WAVE9_IMAGES.event_plague_shut_l1.url, WAVE9_IMAGES.event_plague_shut_l2.url, WAVE9_IMAGES.event_plague_shut_l3.url];
-const WAVE21 = Object.values(WAVE21_IMAGES).map(image => image.url);
+// Chapter 3's illustrations: Wave 21's (UI-8) and its Wave 31 opening painting (PLAGUE-b).
+const WAVE21 = [...Object.values(WAVE21_IMAGES).map(image => image.url), ...Object.values(WAVE31_IMAGES).filter(image => image.chapter === 3).map(image => image.url)];
 const EVERY_CHAPTER = [...historicalFacilityManifest.map(meta => meta.url), WAVE9_IMAGES.event_burnt_l2.url, WAVE9_IMAGES.event_crowd_manor_gate.url];
 const URLS = [...EVERY_CHAPTER, ...WAR, ...PLAGUE, ...WAVE21];
 
