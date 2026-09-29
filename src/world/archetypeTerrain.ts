@@ -15,6 +15,7 @@ import { hashSeed } from "../content/seedHash";
 import { guaranteeEssentialResourceTerrain } from "./essentialResources";
 import type { Grid } from "./grid";
 import { fbm } from "./noise";
+import { carveRiver, riverSource, type RiverData, type RiverSpec } from "./river";
 import { buildWorldGrid, cleanupTerrainRegions, terrainFields, WORLD_SAMPLE_ORIGIN, type WorldGridSize } from "./terrain";
 import type { Tile } from "./world.types";
 
@@ -55,7 +56,7 @@ export function coastSeaEdge(seed: number): "north" | "west" {
  * MA-2 ①: the land's base terrain by rank. Water is the lowest `shares.water` of the (detail-broken) elevation, rock
  * the highest `shares.rock`; forest the wettest `shares.forest` of what is left — so each seed of a land has its shares.
  */
-function baseTerrains(archetype: ArchetypeDef, width: number, height: number, seed: number): TerrainType[] {
+function baseTerrains(archetype: ArchetypeDef, width: number, height: number, seed: number): { terrains: TerrainType[]; lift: Float64Array } {
   const shares = archetype.terrain.shares!;
   const detail = (archetype.terrain.detailPermille ?? 0) / 1000;
   const count = width * height;
@@ -77,7 +78,7 @@ function baseTerrains(archetype: ArchetypeDef, width: number, height: number, se
   const open = byLift.slice(waterCount, count - rockCount).sort((a, b) => wet[b]! - wet[a]! || a - b);
   const forestCount = Math.min(open.length, Math.round(count * shares.forest / 1000));
   for (let rank = 0; rank < forestCount; rank += 1) terrains[open[rank]!] = "forest";
-  return terrains;
+  return { terrains, lift };
 }
 
 function inClearing(tx: number, ty: number, seed: number): boolean {
@@ -111,16 +112,55 @@ function guaranteeQuarryRock(terrains: readonly TerrainType[], width: number, he
   return guaranteed.map((terrain, index) => inRect(TOWN_SITE, index % width, Math.floor(index / width)) ? "grass" : terrain);
 }
 
-/** MA-2: the terrain of a new land (not the riverside town), row-major. */
-export function archetypeTerrains(archetype: ArchetypeDef, size: WorldGridSize): TerrainType[] {
-  const kind = archetype.terrain.kind;
-  if (kind === "river") return buildWorldGrid(size).tiles.map(tile => tile.terrain);
+
+/**
+ * MA-9: the rectangles the river may not enter — the town site (one tile wider) and the logging camp's copse — so the
+ * opening village, its first street and its camp's forest stand on every land and seed.
+ */
+export const RIVER_CLOSED = [
+  { minTx: TOWN_SITE.minTx - 1, maxTx: TOWN_SITE.maxTx + 1, minTy: TOWN_SITE.minTy - 1, maxTy: TOWN_SITE.maxTy + 1 },
+  { minTx: 51, maxTx: 58, minTy: 35, maxTy: 46 },
+] as const;
+
+export interface ArchetypeWorld {
+  readonly terrains: TerrainType[];
+  /** MA-9: the river (or brook) carved into `terrains`; null only if no channel could be found. */
+  readonly river: RiverData | null;
+}
+
+/** The river's spec on a land: to the sea on the coast, else across to the opposite edge. */
+function riverSpec(archetype: ArchetypeDef): RiverSpec {
+  const river = archetype.terrain.river;
+  return { kind: river.kind, minWidth: river.minWidth, maxWidth: river.maxWidth, mouth: archetype.terrain.sea === undefined ? "edge" : "sea" };
+}
+
+/**
+ * MA-2, MA-9: a land's terrain and its river. The riverside town is the open field's map (`buildWorldGrid`) with the
+ * river carved across it (ARCH-1b; the open field had lakes and no running water) and the quarry's rock guaranteed again
+ * off the town site; a new land is drawn by its shares, then its sea, clean-up, town site, river and quarry rock.
+ */
+export function buildArchetypeWorld(archetype: ArchetypeDef, size: WorldGridSize, siteOffset: { readonly tx: number; readonly ty: number } = { tx: 0, ty: 0 }): ArchetypeWorld {
   const { width, height } = size;
-  const fieldSeed = size.seed + FIELD_SALT[kind];
-  const terrains = baseTerrains(archetype, width, height, fieldSeed);
+  const spec = riverSpec(archetype);
+  // The rectangles the river keeps off, moved with the town site (the guardrail's seeds 2–5 translate the riverside
+  // town's opening village; a new land's never moves).
+  const closed = RIVER_CLOSED.map(rect => ({ minTx: rect.minTx + siteOffset.tx, maxTx: rect.maxTx + siteOffset.tx,
+    minTy: rect.minTy + siteOffset.ty, maxTy: rect.maxTy + siteOffset.ty }));
+  if (archetype.terrain.kind === "river") {
+    const terrains = buildWorldGrid(size).tiles.map(tile => tile.terrain);
+    const lift = (index: number) => terrainFields(index % width + WORLD_SAMPLE_ORIGIN.tx, Math.floor(index / width) + WORLD_SAMPLE_ORIGIN.ty, size.seed).elevation;
+    // The open field's quarry rock is already guaranteed (`buildWorldGrid`); the river comes last.
+    const river = carveRiver(terrains, width, height, size.seed, spec, lift, closed, riverSource(size.seed));
+    return { terrains, river };
+  }
+  const fieldSeed = size.seed + FIELD_SALT[archetype.terrain.kind];
+  const { terrains, lift } = baseTerrains(archetype, width, height, fieldSeed);
   const sea = archetype.terrain.sea;
+  let source = riverSource(size.seed);
   if (sea !== undefined) {
     const edge = coastSeaEdge(size.seed);
+    // The brook rises at the edge opposite the sea and runs into it.
+    source = edge === "north" ? "south" : "east";
     const span = sea.maxDepth - sea.minDepth;
     for (let ty = 0; ty < height; ty += 1) for (let tx = 0; tx < width; tx += 1) {
       const along = edge === "north" ? tx : ty;
@@ -130,12 +170,20 @@ export function archetypeTerrains(archetype: ArchetypeDef, size: WorldGridSize):
   }
   const cleaned = cleanupTerrainRegions(terrains, width, height);
   stampTownSite(cleaned, width, height, size.seed);
-  return guaranteeQuarryRock(cleaned, width, height, size.seed);
+  // The quarry's rock before the river: a channel splitting the land would otherwise make the guarantee add rock to each
+  // side (it looks for a quarry site in every dry component).
+  const guaranteed = guaranteeQuarryRock(cleaned, width, height, size.seed);
+  const river = carveRiver(guaranteed, width, height, fieldSeed, spec, index => lift[index]!, closed, source);
+  return { terrains: guaranteed, river };
 }
 
-/** MA-2: the world grid of any land (the riverside town's is `buildWorldGrid`'s, byte for byte). */
+/** MA-2: the terrain of any land, row-major. */
+export function archetypeTerrains(archetype: ArchetypeDef, size: WorldGridSize): TerrainType[] {
+  return buildArchetypeWorld(archetype, size).terrains;
+}
+
+/** MA-2: the world grid of any land. */
 export function buildArchetypeWorldGrid(archetype: ArchetypeDef, size: WorldGridSize): Grid {
-  if (archetype.terrain.kind === "river") return buildWorldGrid(size);
   const tiles: Tile[] = archetypeTerrains(archetype, size).map((terrain, index) => ({
     tx: index % size.width, ty: Math.floor(index / size.width), terrain, buildingId: null, hasRoad: false,
   }));

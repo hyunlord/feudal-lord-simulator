@@ -5,6 +5,7 @@ import { arableLayouts, inYearTick, stripTending } from "../zones/arableFields";
 import { pushableMill } from "../agents/millPush";
 import { householdSlotDemand } from "../population/householdSlots";
 import { pastoralFieldNeed, pastureTending } from "./cloth";
+import { drainageDiggers } from "./drainage";
 import type { House } from "../population/population.types";
 
 /** LB-4: where the adults went on one tick (`GameState.labour`, save v11). */
@@ -15,6 +16,8 @@ export interface LabourSummary {
   readonly fieldHands: number;
   readonly hauling: number;
   readonly household: number;
+  /** ARCH-1b (MA-11): the fen's diggers (absent when none). */
+  readonly drainage?: number;
   readonly idle: number;
 }
 
@@ -79,7 +82,7 @@ export interface LabourDemandInput {
  * LB-4 tiers 7–9 on what the R1-fix allocation left: granary haulers (LB-7), farmstead field hands (LB-5, by
  * building id) and household slots (LB-8). Writes `fieldHands`/`haulers` on the buildings (absent when 0).
  */
-export function allocateLabourDemands(input: LabourDemandInput): { readonly buildings: readonly Building[]; readonly summary: LabourSummary } {
+export function allocateLabourDemands(input: LabourDemandInput): { readonly buildings: readonly Building[]; readonly summary: LabourSummary; readonly drainage: ReadonlyMap<string, number> } {
   let remaining = Math.max(0, Math.floor(input.remaining));
   const tended = tendedCellsByFarmstead({ ...input.state, buildings: input.buildings as Building[] });
   const hands = new Map<string, number>();
@@ -102,6 +105,10 @@ export function allocateLabourDemands(input: LabourDemandInput): { readonly buil
     if (assigned > 0) hands.set(building.id, assigned);
     remaining -= assigned;
   }
+  // ARCH-1b (MA-11): the fen's drainage works dig with what the fields left.
+  const drainage = drainageDiggers(input.state, remaining);
+  const diggers = [...drainage.values()].reduce((total, men) => total + men, 0);
+  remaining -= diggers;
   const householdDemand = input.houses.reduce((total, house) => total + householdSlotDemand(house), 0);
   const household = Math.min(remaining, householdDemand);
   remaining -= household;
@@ -123,8 +130,10 @@ export function allocateLabourDemands(input: LabourDemandInput): { readonly buil
       fieldHands: sum(hands),
       hauling: sum(haulers),
       household,
+      ...(diggers > 0 ? { drainage: diggers } : {}),
       idle: remaining,
     },
+    drainage,
   };
 }
 

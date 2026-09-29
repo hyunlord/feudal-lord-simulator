@@ -47,6 +47,7 @@ import { manorLord, personDisplayName } from "./persons";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
+import { finishedDrainage } from "./drainage";
 import { WAR_PETITION_IDS } from "../content/warConfig";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
@@ -56,10 +57,10 @@ export const ACTUAL_AFTER_TICKS = 2 * SEASON;
 
 /** HL-2 ①: the decision kinds (twelve, and WALL-2's wall expansion) and the commands behind them. */
 export const DECISION_KINDS = ["build", "road", "zone", "house", "cancel", "operation", "wall_priority",
-  "rebuild", "market_town", "stone_town", "famine_response", "petition_response", "wall_expand"] as const;
+  "rebuild", "market_town", "stone_town", "famine_response", "petition_response", "wall_expand", "drainage"] as const;
 export type DecisionKind = (typeof DECISION_KINDS)[number];
 /** HL-3: the big five, one record each with alternatives, a prediction and (later) the actual. */
-export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand"];
+export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand", "drainage"];
 
 export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = {
   place_building: "build", place_road_line: "road", remove_road: "road",
@@ -68,6 +69,8 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   set_wall_construction_priority: "wall_priority", rebuild_house: "rebuild", set_farmstead_crop: "operation",
   confirm_palisade_proclamation: "market_town", confirm_stone_town_proclamation: "stone_town",
   famine_response: "famine_response", petition_response: "petition_response", expand_palisade: "wall_expand",
+  // ARCH-1b (MA-11): the fen's drainage works.
+  drain_fen: "drainage",
 };
 
 /** HL-2 ③: buildings whose first completion is a milestone. */
@@ -164,12 +167,17 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
   if (kind === "market_town") {
     return { chosen: "proclaim", alternatives: ["wait"], predicted: pick(metrics(after), ["population", "lots"]), actualDueTick: due };
   }
+  if (kind === "drainage") {
+    // ARCH-1b (MA-11): the mere drained or left; the treasury keeps its coin (the works cost timber and men).
+    return { chosen: "drain", alternatives: ["leave"], predicted: pick(now, ["population", "treasury"]), actualDueTick: due };
+  }
   return { chosen: "rebuild", alternatives: ["leave"], predicted: pick(now, ["population"]), actualDueTick: due };
 }
 
 const BIG_KEYS: Readonly<Record<string, readonly string[]>> = {
   famine_response: ["population", "treasury"], petition_response: ["treasury", "merchantGauge"],
   stone_town: ["treasury", "lots"], market_town: ["population", "lots"], rebuild: ["population"], wall_expand: ["population", "lots"],
+  drainage: ["population", "treasury"],
 };
 
 /** HL-2 ①: records the player's (or the bot's) command, if it changed the state. Called by `gameReducer`. */
@@ -674,6 +682,12 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...legacyDrafts(before, after));
   drafts.push(...factionDrafts(before, after));
   drafts.push(...personDrafts(before, after));
+  // ARCH-1b (MA-11): a drainage works finished — its cells are meadow now.
+  for (const work of finishedDrainage(before, after)) {
+    const cell = work.cells[0]!;
+    drafts.push({ tick: after.tick, kind: "event", template: "drainage.done", params: { cells: work.cells.length, timber: work.timber },
+      subject: TOWN, place: { tx: cell % after.width, ty: Math.floor(cell / after.width) }, severity: 2 });
+  }
   let milestones = history.milestones;
   if (after.tick % PRESSURE_BALANCE.sampleTicks === 0) {
     const reached = milestoneDrafts(after, new Set(milestones));

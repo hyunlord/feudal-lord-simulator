@@ -77,6 +77,8 @@ export interface ArchetypeTerrainDef {
   readonly detailPermille?: number;
   /** A sea along one map edge (the seed picks north or west): its depth in tiles, the least and the most. */
   readonly sea?: { readonly minDepth: number; readonly maxDepth: number };
+  /** ARCH-1b (MA-9): the flowing water across the map — a river (2–4 wide) or a brook (1–2); on the coast it runs to the sea. */
+  readonly river: { readonly kind: "river" | "brook"; readonly minWidth: number; readonly maxWidth: number };
 }
 
 /** ARCH-1 (MA-5): the art a render lays on the archetype's land — Wave 22 ground, Wave 28 field edges, Wave 29 water. */
