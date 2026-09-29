@@ -21,6 +21,7 @@ import { FactionTab } from "./FactionTab";
 import { FamilyTree } from "./FamilyTree";
 import { FAMILY_TREE_COPY } from "./familyTreeCopy.ko";
 import { factionPageView, factionRows, worldLines } from "./factionTabModel";
+import { tugOfWarView } from "./factionInfluenceModel";
 import type { FactionId } from "../../content/factionConfig";
 import { INTENT_ORDER } from "../../input/intentBus";
 import { platformServices } from "../../platform/platform";
@@ -127,12 +128,16 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   const biography = useMemo(() => personId === null ? null : biographyView(state, personId), [personId, state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps
   // The faction tab reads the factions, the ledger, the persons, the petitions and the war (time stands still while it is open).
   const view = personId !== null ? "person" : tab === "records" ? "records" : factionId === null ? "factions" : "faction";
+  // UI-9: state.reorganisation added — factionRows now reads factionInfluence, which depends on it.
   // why: the rows and the page are rebuilt when the tab or page opens; the state is still while the screen is up
-  const rows = useMemo(() => view === "factions" ? factionRows(state) : [], [view, state.factions, state.history, state.politics, state.war]); // eslint-disable-line react-hooks/exhaustive-deps
+  const rows = useMemo(() => view === "factions" ? factionRows(state) : [], [view, state.factions, state.history, state.politics, state.war, state.reorganisation]); // eslint-disable-line react-hooks/exhaustive-deps
   // why: the world's events move only with the year
   const world = useMemo(() => view === "factions" ? worldLines(state) : [], [view, yearNow]); // eslint-disable-line react-hooks/exhaustive-deps
-  // why: as the rows
-  const factionPage = useMemo(() => view === "faction" && factionId !== null ? factionPageView(state, factionId) : null, [view, factionId, state.factions, state.history, state.politics, state.war]); // eslint-disable-line react-hooks/exhaustive-deps
+  // why: as the rows; UI-9: state.reorganisation for revoltPressureSection.
+  const factionPage = useMemo(() => view === "faction" && factionId !== null ? factionPageView(state, factionId) : null, [view, factionId, state.factions, state.history, state.politics, state.war, state.reorganisation]); // eslint-disable-line react-hooks/exhaustive-deps
+  // UI-9: RG-4 tug-of-war view for the factions tab (null before chapter 4).
+  // why: depends on reorganisation (the influence and warningTick it holds).
+  const tug = useMemo(() => view === "factions" ? tugOfWarView(state) : null, [view, state.reorganisation]); // eslint-disable-line react-hooks/exhaustive-deps
   const returnName = returnFaction === null ? null : factionNameOf(state, returnFaction);
   const filterFactionName = filter.factionId == null ? null : factionNameOf(state, filter.factionId);
 
@@ -240,7 +245,7 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
         </div>
       ) : view === "factions" ? (
         <div className="chronicle-page-body chronicle-page-body--factions" ref={body}>
-          <FactionTab rows={rows} world={world} onOpen={id => openFaction(id)} />
+          <FactionTab rows={rows} world={world} tug={tug} onOpen={id => openFaction(id)} />
         </div>
       ) : view === "faction" ? (
         <div className="chronicle-page-body" ref={body}>

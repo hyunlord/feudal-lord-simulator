@@ -92,6 +92,14 @@ export type ObjectRenderItem =
       readonly prop: import("./plagueWorldProps").PlagueProp;
       readonly depth: number;
       readonly anchorTx: number;
+    }
+  | {
+      /** UI-9 chapter 4 reorganisation (reorgWorldProps.ts): the guildhall world prop, display only. */
+      readonly kind: "reorg_prop";
+      readonly id: string;
+      readonly prop: import("./reorgWorldProps").ReorgProp;
+      readonly depth: number;
+      readonly anchorTx: number;
     };
 
 export type WorldObjectRenderItem = ObjectRenderItem | PalisadeSegmentRenderItem;

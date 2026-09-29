@@ -34,6 +34,10 @@ import { townClothView } from "../townClothModel";
 import { TOWN_CLOTH_COPY } from "../townClothCopy.ko";
 import { wageLedgerView } from "./wageLedgerModel";
 import { WAGE_LEDGER_COPY } from "./wageLedgerCopy.ko";
+// UI-9: chapter 4 reorganisation ledger (RG-3, RG-6, RG-9) and revolt pressure on the rights tab (RG-8).
+import { reorgLedgerView } from "./reorgLedgerModel";
+import { REORG_LEDGER_COPY } from "./reorgLedgerCopy.ko";
+import { FACTION_INFLUENCE_COPY as INFLUENCE } from "../chronicle/factionInfluenceCopy.ko";
 
 // UX-3 HUD shell (research 15 B): the only UI always on screen — the status pill (top left), the layer switch (bottom
 // left), the action dock (bottom right) and, while something is wrong, at most three crisis icons (top right). The
@@ -192,6 +196,25 @@ export function RightsRegister({ view, onPerson }: { readonly view: LordshipView
           <span aria-hidden="true" style={wave14ImageStyle(right.icon, 32)} /><strong>{right.name}</strong>
           <span className={right.lost ? "ledger-rights-lost" : undefined}>{right.status}{right.since === null ? "" : ` · ${right.since}`}</span></li>))}</ul>
       {view.granted.length === 0 ? null : <><h4>{LORDSHIP_COPY.grantedHeading}</h4><ul>{view.granted.map(line => <li key={line}>{line}</li>)}</ul></>}
+      {/* UI-9: RG-7 rights moved to the town in chapter 4 (market_tolls, bridge_tolls via borough_charter). */}
+      {view.rightsTransfer.length === 0 ? null : (
+        <><h4>{LORDSHIP_COPY.rightsTransferHeading}</h4>
+        <ul>{view.rightsTransfer.map(r => <li key={r.id}>{r.line}</li>)}</ul></>
+      )}
+      {/* UI-9: RG-8 revolt pressure on the rights tab, chapter 4 only. */}
+      {view.revoltPressure !== null ? (
+        <section className="ledger-rights-pressure" aria-label={INFLUENCE.pressureHeading}>
+          <h4>{INFLUENCE.pressureHeading}</h4>
+          <p>{view.revoltPressure.totalLabel}</p>
+          <p className="ledger-rights-threshold">{view.revoltPressure.thresholdLine}</p>
+          {view.revoltPressure.causes.length > 0
+            ? <ul>{view.revoltPressure.causes.map(c => <li key={c.key}>{c.line}</li>)}</ul>
+            : null}
+          {view.revoltPressure.outcome !== null
+            ? <p>{view.revoltPressure.outcome}</p>
+            : null}
+        </section>
+      ) : null}
       </div>
     </section>
   );
@@ -213,6 +236,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   const townAle = townAleView(state);
   const townCloth = townClothView(state);
   const wageLedger = wageLedgerView(state);
+  // UI-9: RG-3/RG-6/RG-9 chapter 4 reorganisation ledger — null before chapter 4 starts.
+  const reorgLedger = reorgLedgerView(state);
   return (
     <section className="ledger-drawer slot-panel" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
@@ -264,6 +289,14 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         <div className="ledger-matrix-scroll"><table className="ledger-matrix">
           <thead><tr><th scope="col">{WAGE_LEDGER_COPY.category}</th><th scope="col">{WAGE_LEDGER_COPY.thisSeason}</th><th scope="col">{WAGE_LEDGER_COPY.lastSeason}</th><th scope="col">{WAGE_LEDGER_COPY.chapterTotal}</th></tr></thead>
           <tbody>{wageLedger.rows.map(row => <tr key={row.category}><th scope="row">{row.label}</th>{row.shown.map((amount, index) => <td key={index}>{amount}</td>)}</tr>)}</tbody>
+        </table></div>
+      </section> : null}
+      {/* UI-9: RG-3/RG-6/RG-9 chapter 4 reorganisation ledger — cloth income, poll tax and fee farm by category. */}
+      {tab === "stock" && reorgLedger !== null ? <section className="ledger-wage-ledger" aria-label={REORG_LEDGER_COPY.heading}>
+        <h3>{REORG_LEDGER_COPY.heading}</h3>
+        <div className="ledger-matrix-scroll"><table className="ledger-matrix">
+          <thead><tr><th scope="col">{REORG_LEDGER_COPY.category}</th><th scope="col">{REORG_LEDGER_COPY.thisSeason}</th><th scope="col">{REORG_LEDGER_COPY.lastSeason}</th><th scope="col">{REORG_LEDGER_COPY.chapterTotal}</th></tr></thead>
+          <tbody>{reorgLedger.rows.map(row => <tr key={row.category}><th scope="row">{row.label}</th>{row.shown.map((amount, index) => <td key={index}>{amount}</td>)}</tr>)}</tbody>
         </table></div>
       </section> : null}
       {/* UI-6: the rights register (the house, its arms, the title, the lord's rights and the ones he granted, the war). */}

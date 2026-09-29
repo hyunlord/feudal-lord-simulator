@@ -24,6 +24,7 @@ import { craftDefinition } from "../population/householdSlots";
 import type { House, HouseholdSlot } from "../population/population.types";
 import { zonesOf } from "../zones/zoneEdits";
 import type { GameState } from "./engine.types";
+import { archetypeRules, scaleByPermille } from "./archetype";
 import { laborSeason } from "./labourDemand";
 import { ageOf, currentYear } from "./persons";
 
@@ -86,6 +87,8 @@ export function pastoralFieldNeed(tendedCells: number, tick: number): number {
 function shear(state: GameState): GameState {
   const tended = pastureTending(state);
   if (tended.size === 0) return state;
+  // ARCH-1 (MA-4 ②): the land's pasture — the down's flocks clip more, the forest's less.
+  const pastoralPermille = archetypeRules(state).pastoralPermille;
   let changed = false;
   const buildings = state.buildings.map(building => {
     const cells = tended.get(building.id) ?? 0;
@@ -93,7 +96,7 @@ function shear(state: GameState): GameState {
     const need = Math.max(1, pastoralFieldNeed(cells, state.tick));
     const hands = Math.max(0, building.workers) + Math.max(0, building.fieldHands ?? 0);
     const staffed = Math.min(1000, Math.floor(hands * 1000 / need));
-    const clip = Math.floor(cells * CLOTH_BALANCE.sheepPerPastureCell * CLOTH_BALANCE.fleecesPerSheepYear * staffed / 1000);
+    const clip = scaleByPermille(Math.floor(cells * CLOTH_BALANCE.sheepPerPastureCell * CLOTH_BALANCE.fleecesPerSheepYear * staffed / 1000), pastoralPermille);
     const held = Object.values(building.inventory).reduce((sum, amount) => sum + Math.max(0, amount ?? 0), 0);
     const fleece = Math.min(clip, Math.max(0, BUILDING_CONFIG_BY_KIND.pastoral_farm.storageCapacity - held));
     if (fleece <= 0) return building;

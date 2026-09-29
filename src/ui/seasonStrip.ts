@@ -2,6 +2,7 @@ import { BALANCE } from "../content/balanceConfig";
 import { SEASON_BALANCE } from "../content/balanceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { PlagueStep, PlagueStepId } from "../engine/plague.types";
+import type { ReorganisationStep, ReorganisationStepId } from "../engine/reorganisation.types";
 import type { WarStep } from "../engine/war.types";
 import { LEDGER_PERIOD_TICKS } from "../ledger/ledger";
 import { absoluteDay, dayStartTick, MARKET_DAY_OF_MONTH } from "../render/presentation/residentTrips";
@@ -75,4 +76,16 @@ export type PlagueMark = { readonly id: PlagueStepId; readonly tick: number; rea
 export function plagueMarks(steps: readonly Pick<PlagueStep, "id" | "tick" | "state">[], now: number): readonly PlagueMark[] {
   return steps.filter(step => step.state === "ahead" && step.tick >= now && step.tick - now < YEAR)
     .map(step => ({ id: step.id, tick: step.tick, fraction: yearFraction(step.tick) })).sort((a, b) => a.tick - b.tick);
+}
+
+/**
+ * UI-9 (F4-A RG-1…RG-10): the reorganisation sequence's coming steps within a year (`reorganisationForecast`), on the
+ * strip: wage competition, textile street, alehouse boom, petitions surge, guild demand, cloth-or-grain, overlord
+ * warning, poll tax, rebellion rumour, autonomy request, end. Steps with null tick (condition-gated) are excluded.
+ */
+export type ReorganisationMark = { readonly id: ReorganisationStepId; readonly tick: number; readonly fraction: number };
+export function reorganisationMarks(steps: readonly Pick<ReorganisationStep, "id" | "tick" | "state">[], now: number): readonly ReorganisationMark[] {
+  // The reorganisation's steps come a year (four seasons) apart: the next one, exactly a year ahead, still shows.
+  return steps.filter(step => step.state === "ahead" && step.tick !== null && step.tick >= now && step.tick - now <= YEAR)
+    .map(step => ({ id: step.id, tick: step.tick!, fraction: yearFraction(step.tick!) })).sort((a, b) => a.tick - b.tick);
 }

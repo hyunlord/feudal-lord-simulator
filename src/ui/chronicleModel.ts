@@ -7,6 +7,7 @@ import { chapterEnd } from "../engine/politics";
 import { CHRONICLE_COPY } from "./chronicleCopy.ko";
 import type { StoryIllustration } from "./storyArt";
 import { chapterIntro } from "./wave31Art";
+import type { Wave21ImageId } from "./wave21Art";
 
 // UI-4 chronicle page (CHRONICLE_DESIGN 2.1 timeline v0, one chapter): at the end of chapter 1 (F0-C1 `chapterEnd`),
 // the chapter as a timeline edited from the F0-C2 history ledger (`history.query`: the chapter's records of severity 1
@@ -23,9 +24,32 @@ export type ChronicleView = Readonly<{
   stats: readonly string[];
 }>;
 
+/**
+ * UI-9 (F4-A): the reorganisation's ledger lines and their Wave 21 chapter-4 pictures (the six chronicle scenes, the
+ * event illustrations where no scene was painted). The rumour of 1381: the chase only when the collectors were chased —
+ * a quiet rumour is the townsfolk talking (the petitions' scene); nobody is hurt in either.
+ */
+export function reorgRecordArt(record: Pick<HistoryRecord, "template" | "params">): Wave21ImageId | null {
+  switch (record.template) {
+    case "reorg.wage_competition": case "reorg.weavers_left": return "ch4_chronicle_wage_competition";
+    case "reorg.textile_street": return "ch4_chronicle_textile_street";
+    case "reorg.alehouse_boom": return "ch4_event_alehouse";
+    case "reorg.petitions_surge": return "ch4_chronicle_petitions";
+    case "reorg.guild_founded": return "ch4_chronicle_guild";
+    case "reorg.overlord_warning": return "ch4_event_lord_warning";
+    case "reorg.poll_tax": return "ch4_decision_tax_collection";
+    case "reorg.rebellion_rumour": return record.params?.outcome === "chased" ? "ch4_chronicle_rebellion_rumour" : "ch4_chronicle_petitions";
+    case "reorg.autonomy_request": return "ch4_event_autonomy_request";
+    case "reorg.charter": return "ch4_chronicle_charter_negotiation";
+    default: return null;
+  }
+}
+
 /** The chronicle illustration for a ledger record (the chapter's settlement when nothing fits better). */
 export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "params">): StoryIllustration {
   const param = (key: string) => String(record.params?.[key] ?? "");
+  const reorg = reorgRecordArt(record);
+  if (reorg !== null) return reorg;
   switch (record.template) {
     // UI-8 (F3-A): plague records mapped to Wave 21 chronicle scenes (384×384).
     // rumour / arrived / priest_died → first-death scene (the earliest visible plague sign).
@@ -60,7 +84,8 @@ export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "
     }
     // PLAGUE-b: a chapter's start is its Wave 31 opening painting (chapter 2's is Wave 16's, chronicleScreenModel).
     case "milestone.chapter_start": return chapterIntro(Number(param("chapter"))) ?? "chronicle_settlement";
-    case "milestone.chapter_end": return "chronicle_survival_spring";
+    // UI-9 (F4-A): chapter 4 end uses the chapter's own ending illustration.
+    case "milestone.chapter_end": return param("chapter") === "4" ? "ch4_ending" : "chronicle_survival_spring";
     case "era.entered": return param("eraId") === "famine" ? "chronicle_famine" : param("eraId") === "saturation" ? "chronicle_settlement" : "chronicle_palisade";
     default: return "chronicle_settlement";
   }

@@ -90,6 +90,8 @@ export interface AutoplayFoodObservation {
 export interface GameState {
   /** Scenario (`namespace:id`, save v5). Absent in pre-v5 states, which read as the default campaign. */
   readonly scenarioId?: string;
+  /** ARCH-1 (AR-6, save v31): the map's land (`namespace:id`); absent = the scenario's (the open field, the riverside town). */
+  readonly archetypeId?: string;
   settlement?: import("./settlement.types").SettlementProgress;
   tick: number;
   seed: number;

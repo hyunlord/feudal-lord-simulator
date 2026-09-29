@@ -1,5 +1,5 @@
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
-import type { PlagueMark, SeasonMarkKind } from "./seasonStrip";
+import type { PlagueMark, ReorganisationMark, SeasonMarkKind } from "./seasonStrip";
 
 // UI-3 season strip: the year at a glance and what comes next. Times are calendar arrivals ("가을 초쯤"), never ticks.
 const THIRDS = ["초", "중순", "말"] as const;
@@ -22,6 +22,11 @@ export const SEASON_STRIP_COPY = {
   plague: { rumour: "항구 열병 소문", arrival: "역병 도착", wage_demand: "임금 요구",
     abandoned_fields: "버려진 밭", ordinance: "노동자 조례", resettlement: "재정착",
     second: "두 번째 역병", end: "역병 종료" } satisfies Record<PlagueMark["id"], string>,
+  /** UI-9: the reorganisation's coming steps (F4-A `reorganisationForecast`). */
+  reorg: { wage_competition: "임금 경쟁", textile_street: "직물 거리", alehouse_boom: "에일집 성황",
+    petitions_surge: "청원 물결", guild_demand: "길드 인가 청원", cloth_or_grain: "직물 대 곡물",
+    overlord_warning: "백작의 경고", poll_tax: "인두세 징수",
+    rebellion_rumour: "1381년 농민 반란 소문", autonomy_request: "자치 특허 협상", end: "4장 종료" } satisfies Record<ReorganisationMark["id"], string>,
   /** Judgement 2026-09-26: the pill's food days, with the calendar point they reach ("식량 270일 — 가을 초까지"). */
   foodUntil: (days: number, season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
     `식량 ${days}일 — ${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}까지`,

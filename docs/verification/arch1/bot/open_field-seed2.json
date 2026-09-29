@@ -1,0 +1,159 @@
+{
+ "archetypeId": "core:open_field",
+ "seed": 2,
+ "toYear": 1330,
+ "completed": true,
+ "chapterEndYear": 1319,
+ "stoppedBy": "chapter-1-end",
+ "failures": [],
+ "final": {
+  "tick": 77500,
+  "year": 1319,
+  "population": 528,
+  "era": "palisade",
+  "abandoned": false,
+  "treasury": 2482
+ },
+ "famine": {
+  "arrivalTick": 61550,
+  "populationAtArrival": 527,
+  "populationAtEnd": 528,
+  "endTick": 77500
+ },
+ "yearly": [
+  {
+   "year": 1301,
+   "population": 56,
+   "era": "hamlet",
+   "lots": 4,
+   "treasury": 60
+  },
+  {
+   "year": 1302,
+   "population": 114,
+   "era": "hamlet",
+   "lots": 13,
+   "treasury": 89
+  },
+  {
+   "year": 1303,
+   "population": 132,
+   "era": "hamlet",
+   "lots": 15,
+   "treasury": 138
+  },
+  {
+   "year": 1304,
+   "population": 186,
+   "era": "hamlet",
+   "lots": 16,
+   "treasury": 178
+  },
+  {
+   "year": 1305,
+   "population": 233,
+   "era": "hamlet",
+   "lots": 16,
+   "treasury": 333
+  },
+  {
+   "year": 1306,
+   "population": 277,
+   "era": "hamlet",
+   "lots": 16,
+   "treasury": 537
+  },
+  {
+   "year": 1307,
+   "population": 312,
+   "era": "hamlet",
+   "lots": 17,
+   "treasury": 662
+  },
+  {
+   "year": 1308,
+   "population": 340,
+   "era": "hamlet",
+   "lots": 19,
+   "treasury": 940
+  },
+  {
+   "year": 1309,
+   "population": 376,
+   "era": "hamlet",
+   "lots": 20,
+   "treasury": 1226
+  },
+  {
+   "year": 1310,
+   "population": 402,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 1379
+  },
+  {
+   "year": 1311,
+   "population": 440,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 1725
+  },
+  {
+   "year": 1312,
+   "population": 460,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 2095
+  },
+  {
+   "year": 1313,
+   "population": 528,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 2314
+  },
+  {
+   "year": 1314,
+   "population": 528,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 2760
+  },
+  {
+   "year": 1315,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 3198
+  },
+  {
+   "year": 1316,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 3096
+  },
+  {
+   "year": 1317,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 2894
+  },
+  {
+   "year": 1318,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 2691
+  },
+  {
+   "year": 1319,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 2585
+  }
+ ],
+ "elapsedSeconds": 233.7
+}

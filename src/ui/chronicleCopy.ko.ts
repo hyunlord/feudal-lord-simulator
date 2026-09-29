@@ -14,6 +14,8 @@ const metricLine = (values: Readonly<Record<string, number>>) => Object.entries(
 const WALL_OUTCOME: Readonly<Record<string, string>> = { stone_wall: "석벽 완공", market: "시장을 넓힘", unfinished: "석벽 미완" };
 // UI-8 (F3-A PL-10): chapter 3 plague outcomes.
 const PLAGUE_OUTCOME: Readonly<Record<string, string>> = { resettled: "재정착 완료", calendar: "세월로 마감" };
+// UI-9 (F4-A RG-9/RG-10): chapter 4 charter outcomes.
+const CHARTER_OUTCOME: Readonly<Record<string, string>> = { partial: "부분 허용", refused: "거부", calendar: "세월로 마감" };
 
 export const CHRONICLE_COPY = {
   label: "연대기",
@@ -41,6 +43,13 @@ export const CHRONICLE_COPY = {
       `역병 사망 ${stats.plague.dead}명 · 영주 가솔 ${stats.plague.manorDead}명 · 두 번째 역병 ${stats.plague.secondDead}명`,
       `재정착 ${stats.plague.resettled}가구 · 달아난 가구 ${stats.plague.fled}가구 · ${PLAGUE_OUTCOME[stats.plague.outcome] ?? stats.plague.outcome}`,
     ]),
+    // UI-9 (F4-A RG-10): chapter 4's reorganisation.
+    ...(stats.reorganisation === undefined ? [] : [
+      `재편 시작 ${stats.reorganisation.startYear}년 · 임금 이탈 가구 ${stats.reorganisation.wageLeavers}가구 · 직조공 이탈 ${stats.reorganisation.weaverLeavers}가구`,
+      `팔린 직물 ${stats.reorganisation.clothSold}필 · 직물 수입 ${pence(stats.reorganisation.clothIncome)} · 길드 ${stats.reorganisation.guild ? "있음" : "없음"}`,
+      `인두세 ${pence(stats.reorganisation.pollTax)} · 반란 소문 ${stats.reorganisation.rebellion === "chased" ? "징수원 쫓음" : stats.reorganisation.rebellion === "quiet" ? "조용히 지남" : "없음"} · 특허 ${CHARTER_OUTCOME[stats.reorganisation.charter] ?? stats.reorganisation.charter}`,
+      `도시 세력 ${stats.reorganisation.townInfluence} · 상인 세력 ${stats.reorganisation.merchantInfluence}`,
+    ]),
   ],
   nextChapter: "제2장으로",
   nextChapterOf: (chapter: number) => `제${chapter + 1}장으로`,
@@ -52,6 +61,8 @@ export const CHRONICLE_COPY = {
   // PLAGUE-b: a later chapter built in the game opens as chapter 2 does, over its Wave 31 opening painting.
   chapterOpening: {
     3: { title: "제3장 · 흑사병의 그늘 · 1348–1364", line: "항구에서 열병 소문이 올라옵니다. 역병이 지나가면 일손이 모자라고, 남은 이들이 값을 부릅니다", start: "제3장 시작" },
+    // UI-9 (F4-A): chapter 4, the reorganisation.
+    4: { title: "제4장 · 재편 · 1362–1400", line: "역병이 지나간 도시가 부유해졌습니다. 이제 도시는 영주에게 권리를 요구합니다", start: "제4장 시작" },
   } as Readonly<Record<number, { readonly title: string; readonly line: string; readonly start: string }>>,
   laterTitle: (chapter: number) => `제${chapter}장 — 예고`,
   laterLine: "다음 장은 아직 준비 중입니다",

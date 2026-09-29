@@ -270,6 +270,53 @@ if (states8 !== undefined) {
   });
 }
 
+// UI-9: chapter 4 — a reorganisation card, the faction tab's influence and tug of war, the rights tab (the charter's
+// rights, the fee farm, the revolt pressure), the chapter 4 ledger and chapter 4's end page. States from --states9.
+const states9 = flag('states9');
+if (states9 !== undefined) {
+  const scene9 = async (stateName, query) => {
+    const state = JSON.parse(readFileSync(join(states9, `${stateName}.json`), 'utf8'));
+    const opened = await openScene(browser, { state, tile: houseTile(state), baseUrl: url, width: 1280, height: 800, zoom: 1.1, run: false, initScript: TUTORIAL_OFF, query });
+    opened.page.on('pageerror', error => result.errors.push(`${stateName}: ${String(error)}`));
+    return opened;
+  };
+  const dismiss = async page => {
+    for (const selector of ['.chronicle-page .chronicle-keep', '.story-modal-later', '.season-ledger-resume']) if (await page.locator(selector).count() > 0) { await page.locator(selector).first().click(); await pause(400); }
+  };
+  await step('reorg-petition', async () => {
+    const { context, page } = await scene9('borough_charter', '&story-delay=0');
+    await page.locator('.petition-card').waitFor({ timeout: 60_000 }).catch(async () => { await page.locator('.event-chip').first().click(); });
+    await page.locator('.petition-card').waitFor({ timeout: 30_000 }); await pause(600);
+    await audit('reorg-petition', page, 's25-reorg-petition.jpg');
+    await context.close();
+  });
+  await step('factions-chapter4', async () => {
+    const { context, page } = await scene9('rumour-chased', '&story-delay=600000');
+    await pause(1000); await dismiss(page);
+    await page.locator("[data-dock='ledger']").click(); await pause(500);
+    await page.locator('.ledger-tab--chronicle').first().click(); await pause(1200);
+    await page.evaluate(() => { for (const tab of document.querySelectorAll('.chronicle-tab')) if (tab.textContent?.trim() === '세력') tab.click(); }); await pause(900);
+    await audit('factions-chapter4', page, 's26-factions-chapter4.jpg');
+    await context.close();
+  });
+  for (const [name, tab, file] of [['rights-chapter4', 'rights', 's27-rights-chapter4.jpg'], ['reorg-ledger', 'stock', 's28-reorg-ledger.jpg']]) {
+    await step(name, async () => {
+      const { context, page } = await scene9('chapter4-end', '&story-delay=600000');
+      await pause(1000); await dismiss(page);
+      await page.locator("[data-dock='ledger']").click(); await pause(500);
+      await page.locator(`[data-ledger-tab='${tab}']`).first().click(); await pause(600);
+      await audit(name, page, file);
+      await context.close();
+    });
+  }
+  await step('chapter4-page', async () => {
+    const { context, page } = await scene9('chapter4-end', '&story-delay=5000');
+    await page.locator('.chronicle-page').waitFor({ timeout: 90_000 }); await pause(800);
+    await audit('chapter4-page', page, 's29-chapter4-page.jpg');
+    await context.close();
+  });
+}
+
 // Gate ③: the gallery at desktop and tablet size (full page), audited as well.
 for (const [name, viewport, touch] of [['gallery-desktop', { width: 1280, height: 800 }, false], ['gallery-tablet', { width: 1180, height: 820 }, true]]) {
   await step(name, async () => {
@@ -301,7 +348,8 @@ await step('sheet', async () => {
 await browser.close();
 const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet',
   ...(states6 === undefined ? [] : ['war-petition-writ', 'war-petition-refugees', 'rights-decline', 'rights-chapter2', 'chapter2-page']),
-  ...(states8 === undefined ? [] : ['wage-ledger', 'chapter3-page'])];
+  ...(states8 === undefined ? [] : ['wage-ledger', 'chapter3-page']),
+  ...(states9 === undefined ? [] : ['reorg-petition', 'factions-chapter4', 'rights-chapter4', 'reorg-ledger', 'chapter4-page'])];
 result.missing = expected.filter(name => result.states[name] === undefined);
 result.pass = result.total.skinless === 0 && result.missing.length === 0;
 writeFileSync(join(out, 'audit.json'), JSON.stringify(result, null, 1) + '\n');

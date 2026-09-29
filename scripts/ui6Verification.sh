@@ -23,7 +23,7 @@ if [ "$mode" = "captures" ] || [ "$mode" = "all" ]; then
   step captures npx tsx scripts/ui6Captures.ts "$out/captures" --url "$URL" --states "$states"
 fi
 if [ "$mode" = "audit" ] || [ "$mode" = "all" ]; then
-  step audit node scripts/uiSkinAudit.mjs "$out/audit" --url "$URL" --states "$states5" --states6 "$states" ${UI8_STATES:+--states8 "$UI8_STATES"}
+  step audit node scripts/uiSkinAudit.mjs "$out/audit" --url "$URL" --states "$states5" --states6 "$states" ${UI8_STATES:+--states8 "$UI8_STATES"} ${UI9_STATES:+--states9 "$UI9_STATES"}
   step audit-base node scripts/uiSkinAudit.mjs "$out/audit-base" --url "$BASE_URL" --states "$states5"
 fi
 if [ "$mode" = "all" ]; then

@@ -1,0 +1,173 @@
+{
+ "archetypeId": "core:coastal_port",
+ "seed": 1,
+ "toYear": 1330,
+ "completed": true,
+ "chapterEndYear": 1321,
+ "stoppedBy": "chapter-1-end",
+ "failures": [],
+ "final": {
+  "tick": 85500,
+  "year": 1321,
+  "population": 528,
+  "era": "palisade",
+  "abandoned": false,
+  "treasury": 4135
+ },
+ "famine": {
+  "arrivalTick": 73600,
+  "populationAtArrival": 528,
+  "populationAtEnd": 528,
+  "endTick": 85500
+ },
+ "yearly": [
+  {
+   "year": 1301,
+   "population": 56,
+   "era": "hamlet",
+   "lots": 4,
+   "treasury": 60
+  },
+  {
+   "year": 1302,
+   "population": 121,
+   "era": "hamlet",
+   "lots": 14,
+   "treasury": 86
+  },
+  {
+   "year": 1303,
+   "population": 134,
+   "era": "hamlet",
+   "lots": 17,
+   "treasury": 120
+  },
+  {
+   "year": 1304,
+   "population": 234,
+   "era": "hamlet",
+   "lots": 18,
+   "treasury": 168
+  },
+  {
+   "year": 1305,
+   "population": 205,
+   "era": "hamlet",
+   "lots": 16,
+   "treasury": 316
+  },
+  {
+   "year": 1306,
+   "population": 244,
+   "era": "hamlet",
+   "lots": 20,
+   "treasury": 430
+  },
+  {
+   "year": 1307,
+   "population": 351,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 542
+  },
+  {
+   "year": 1308,
+   "population": 385,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 820
+  },
+  {
+   "year": 1309,
+   "population": 413,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 1139
+  },
+  {
+   "year": 1310,
+   "population": 438,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 1306
+  },
+  {
+   "year": 1311,
+   "population": 464,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 1672
+  },
+  {
+   "year": 1312,
+   "population": 517,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 2088
+  },
+  {
+   "year": 1313,
+   "population": 528,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 2313
+  },
+  {
+   "year": 1314,
+   "population": 528,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 2772
+  },
+  {
+   "year": 1315,
+   "population": 528,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 3251
+  },
+  {
+   "year": 1316,
+   "population": 528,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 3491
+  },
+  {
+   "year": 1317,
+   "population": 528,
+   "era": "hamlet",
+   "lots": 24,
+   "treasury": 3949
+  },
+  {
+   "year": 1318,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 4398
+  },
+  {
+   "year": 1319,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 4290
+  },
+  {
+   "year": 1320,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 4343
+  },
+  {
+   "year": 1321,
+   "population": 528,
+   "era": "palisade",
+   "lots": 24,
+   "treasury": 4135
+  }
+ ],
+ "elapsedSeconds": 175
+}
