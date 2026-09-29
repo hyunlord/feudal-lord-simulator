@@ -1,0 +1,190 @@
+{
+ "archetypeId": "core:fen_drainage",
+ "seed": 3,
+ "coastal": false,
+ "campaignEnded": true,
+ "ending": "free_borough",
+ "scores": {
+  "town": 100,
+  "family": 50,
+  "church": 74,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": 20,
+    "legacy": 25
+   },
+   "family": {
+    "house": 20,
+    "generations": 12,
+    "heir": 8,
+    "stayed": 0,
+    "relations": 0,
+    "treasury": 10,
+    "legacy": 0
+   },
+   "church": {
+    "church": 20,
+    "chapels": 4,
+    "bishop": 20,
+    "priest": 10,
+    "relief": 5,
+    "rebuilt": 15,
+    "legacy": 0
+   }
+  }
+ },
+ "chapterEnds": [
+  {
+   "chapter": 1,
+   "year": 1324
+  },
+  {
+   "chapter": 2,
+   "year": 1341
+  },
+  {
+   "chapter": 3,
+   "year": 1362
+  },
+  {
+   "chapter": 4,
+   "year": 1382
+  },
+  {
+   "chapter": 5,
+   "year": 1450
+  }
+ ],
+ "final": {
+  "year": 1450,
+  "chapter": 5,
+  "population": 768,
+  "peakPopulation": 768,
+  "treasury": 160784,
+  "abandoned": false,
+  "l4": 24
+ },
+ "raid": null,
+ "plague": {
+  "populationAtArrival": 768,
+  "deathPermille": 428,
+  "dead": 328,
+  "second": {
+   "deathPermille": 120,
+   "dead": 82
+  }
+ },
+ "failures": [],
+ "decades": [
+  {
+   "year": 1310,
+   "population": 453,
+   "treasury": 1633,
+   "chapter": 1,
+   "l4": 0
+  },
+  {
+   "year": 1320,
+   "population": 528,
+   "treasury": 5326,
+   "chapter": 1,
+   "l4": 0
+  },
+  {
+   "year": 1330,
+   "population": 528,
+   "treasury": 2281,
+   "chapter": 2,
+   "l4": 0
+  },
+  {
+   "year": 1340,
+   "population": 768,
+   "treasury": 1442,
+   "chapter": 2,
+   "l4": 24
+  },
+  {
+   "year": 1350,
+   "population": 450,
+   "treasury": 5578,
+   "chapter": 3,
+   "l4": 20
+  },
+  {
+   "year": 1360,
+   "population": 664,
+   "treasury": 8608,
+   "chapter": 3,
+   "l4": 24
+  },
+  {
+   "year": 1370,
+   "population": 768,
+   "treasury": 21009,
+   "chapter": 4,
+   "l4": 24
+  },
+  {
+   "year": 1380,
+   "population": 768,
+   "treasury": 39284,
+   "chapter": 4,
+   "l4": 24
+  },
+  {
+   "year": 1390,
+   "population": 768,
+   "treasury": 56430,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1400,
+   "population": 768,
+   "treasury": 72705,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1410,
+   "population": 768,
+   "treasury": 90249,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1420,
+   "population": 768,
+   "treasury": 108083,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1430,
+   "population": 768,
+   "treasury": 125504,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1440,
+   "population": 768,
+   "treasury": 143225,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1450,
+   "population": 768,
+   "treasury": 160532,
+   "chapter": 5,
+   "l4": 24
+  }
+ ],
+ "elapsedSeconds": 2079.9
+}

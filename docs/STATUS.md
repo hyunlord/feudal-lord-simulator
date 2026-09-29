@@ -1,11 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-29(ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(FIX-10 진행 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-10 해안 습격 1.5·목재 사 오기·여울 — 진행 중(시간 상한에서 멈춤, 병합 전)**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/fix10/REPORT.md), [목재 명세](design/timber-trade.md) TT-1~TT-4b, [지도 명세](design/map-archetypes.md) MA-13·FD-1~FD-4, 결정 FX10-1~5. 브랜치 `claude/fix10-timber-fords`(SMOOTH-2E 위).
+  - 해안 습격 1.5(역병 1.2 그대로). 목재 사 오기: 장날 2개·하나 18d, 명령 `order_timber`, 봇은 목책이 기다릴 때와 제재소가 멈췄을 때. 여울: 칸당 목재 1·반 속도. 봇은 물 건너 바위·숲으로 건넌다. 저장 v33.
+  - 백악 seed 2: 1450 L4 0 → 24(인구 768, 금고 135,158).
+  - 가드레일 1회차 `37233ab` 5/5 새 기준선 `baseline-37233ab`(seed 3 불변), 사람 경로 10/10.
+  - 남은 것: perf:gate 회귀 없음 비교 한 벌(SMOOTH-2E 병합 뒤 본선 대 이 브랜치), 해안 seed 3·강가 seed 2의 늦은 L4 흔들림 판정, 전체 회귀·깨끗한 클론·병합.
 
 - **SMOOTH-G 부드러움 관문·메모리 붙잡이 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): [보고서](verification/smooth-g/REPORT.md), [관문 사용법·기록](verification/perf-gate/README.md), 결정 SG1~SG3.
   - `npm run perf:gate`(1단계, 사용자 판정 2026-09-29)
