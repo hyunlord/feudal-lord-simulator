@@ -41,6 +41,9 @@ import { lordshipOf } from "./lordshipState";
 import { beaconLit, raidEventId, warDecisionForecast } from "./war";
 import { plagueDecisionForecast } from "./plague";
 import { reorganisationDecisionForecast } from "./reorganisation";
+import { heirRelationWord, legacyDecisionForecast, legacyEnding, legacyWord } from "./legacy";
+import { LEGACY_PETITION_IDS, LEGACY_STEP_ART, BOROUGH_AUTONOMY_PETITION_ID } from "../content/legacyConfig";
+import { manorLord, personDisplayName } from "./persons";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
@@ -144,8 +147,12 @@ function bigDecision(before: GameState, after: GameState, kind: DecisionKind, co
       // F3-A (PL-5…PL-8): so does a plague decision's.
       : def.trigger === "plague" ? plagueDecisionForecast(before, def.id, chosen)
       // F4-A (RG-12): and a reorganisation decision's.
-      : def.trigger === "reorganisation" ? reorganisationDecisionForecast(before, def.id, chosen) : now.treasury! + outcome.charterFee;
-    return { chosen, alternatives: (def.responses ?? (["accept", "accept_with_price", "refuse"] as const)).filter(option => option !== chosen),
+      : def.trigger === "reorganisation" ? reorganisationDecisionForecast(before, def.id, chosen)
+      // F5-A (LG-12): and a chapter-5 decision's.
+      : def.trigger === "legacy" ? legacyDecisionForecast(before, def.id, chosen) : now.treasury! + outcome.charterFee;
+    // F5-A (LG-3): the alternatives the petition itself offered.
+    const offered = before.politics?.petitions.find(petition => petition.id === command.petitionId)?.options ?? def.responses;
+    return { chosen, alternatives: (offered ?? (["accept", "accept_with_price", "refuse"] as const)).filter(option => option !== chosen),
       predicted: { treasury, merchantGauge: Math.max(0, Math.min(100, now.merchantGauge! + outcome.gauge)) }, actualDueTick: due };
   }
   if (kind === "stone_town") {
@@ -190,7 +197,8 @@ export function recordDecision(before: GameState, after: GameState, command: { r
   return withFactionRecords(after, history, append(history, [{ tick: after.tick, kind: "decision", template: `decision.${kind}`, params, subject: TOWN,
     ...(petitioner === undefined ? {} : { actors: [{ type: "faction" as const, id: factionOfPetitioner(petitioner) }] }),
     ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }, ...lordshipDrafts(before, after),
-    ...factionDrafts(before, after)]));
+    // F5-A (LG-2…LG-5): what a chapter-5 answer did at once (the heir seated, the Crown paid, the charter sealed).
+    ...legacyDrafts(before, after), ...factionDrafts(before, after)]));
 }
 
 /** FACTION-0 (FX-4): a faction's relation moved — one record each, the faction's memory. */
@@ -583,6 +591,59 @@ function reorganisationDrafts(before: GameState, after: GameState): (Draft & { t
   return drafts;
 }
 
+/**
+ * F5-A (LG-1…LG-8): chapter 5's turns — each step (with its Wave 21 picture), the Crown paid, the heir seated, the
+ * charter sealed or refused, the family gone or staying, the legacy sealed, the last market day, a petition left.
+ */
+function legacyDrafts(before: GameState, after: GameState): (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] {
+  const was = before.legacy, now = after.legacy;
+  if (now === undefined || was === now) return [];
+  const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];
+  const by = (id: string) => ({ actors: [{ type: "faction" as const, id }] });
+  const at = { tick: after.tick, subject: TOWN, ...by("town") };
+  const cause = { type: "event" as const, id: `legacy@${now.startTick}`, detail: "legacy" };
+  const name = (id: string | null | undefined) => { const person = id == null ? undefined : [...(after.persons?.people ?? []), ...(after.persons?.past ?? [])].find(entry => entry.id === id); return person === undefined ? "" : personDisplayName(person); };
+  const came = (step: keyof typeof LEGACY_STEP_ART) => now.steps[step] !== undefined && was?.steps[step] === undefined;
+  const art = (step: keyof typeof LEGACY_STEP_ART) => ({ illustration: LEGACY_STEP_ART[step] });
+  const house = lordshipOf(after).house.name;
+  if (came("mayor_demand")) drafts.push({ ...at, ...by("merchant_house_1"), ...art("mayor_demand"), kind: "event", template: "legacy.mayor_demand", severity: 2, params: { candidate: name(now.mayorCandidateId) }, cause });
+  if (came("royal_tax_envoy")) drafts.push({ ...at, ...by("crown"), ...art("royal_tax_envoy"), kind: "event", template: "legacy.royal_tax_envoy", severity: 2, cause });
+  if (came("succession")) {
+    const lord = manorLord(after.persons?.people ?? [], lordshipOf(after).house.order, calendar(after.tick, scenarioOf(after).startYear).year);
+    drafts.push({ ...at, ...by("overlord"), ...art("succession"), kind: "event", template: "legacy.succession", severity: 3, cause,
+      params: { lord: name(lord?.id), age: lord === undefined ? 0 : calendar(after.tick, scenarioOf(after).startYear).year - lord.birthYear, candidates: now.candidates.length } });
+  }
+  if (now.royalSubsidy > (was?.royalSubsidy ?? 0)) drafts.push({ ...at, ...by("crown"), kind: "event", template: "legacy.royal_subsidy", severity: 1, params: { amount: now.royalSubsidy - (was?.royalSubsidy ?? 0) }, cause });
+  if (now.heir !== undefined && was?.heir === undefined) {
+    const candidate = now.candidates.find(entry => entry.personId === now.heir!.personId);
+    drafts.push({ tick: after.tick, subject: { type: "person", id: now.heir.personId }, actors: [{ type: "faction", id: "overlord" }], kind: "event", template: "legacy.heir_seated", severity: 3,
+      params: { heir: name(now.heir.personId), relation: candidate === undefined ? "" : heirRelationWord(candidate) }, illustration: "ch5_chronicle_heir", cause });
+  }
+  if (came("city_seal")) drafts.push({ ...at, ...art("city_seal"), kind: "event", template: "legacy.city_seal", severity: 2, cause, thumbnail: { state: after, size: 128 } });
+  const charter = now.answers[BOROUGH_AUTONOMY_PETITION_ID];
+  if (charter !== undefined && was?.answers[BOROUGH_AUTONOMY_PETITION_ID] === undefined) {
+    drafts.push(charter === "accept"
+      ? { ...at, ...art("charter_sealing"), kind: "event", template: "legacy.charter_sealed", severity: 3, params: { mayor: name(now.mayorId) }, cause, thumbnail: { state: after, size: 256 } }
+      : { ...at, kind: "event", template: "legacy.charter_refused", severity: 3, params: { backlash: now.backlash }, cause, thumbnail: { state: after, size: 256 } });
+  }
+  if (came("family_departure")) {
+    drafts.push({ ...at, ...(now.family === "departed" ? art("family_departure") : {}), kind: "event", template: now.family === "departed" ? "legacy.family_departed" : "legacy.family_stayed",
+      severity: 3, params: { house }, cause });
+  }
+  if (came("legacy_record")) drafts.push({ ...at, ...art("legacy_record"), kind: "event", template: "legacy.legacy_record", severity: 3, params: { legacy: legacyWord(now.legacy) }, cause });
+  if (came("last_market")) {
+    drafts.push({ ...at, ...art("last_market"), kind: "event", template: "legacy.last_market", severity: 3, params: { ending: legacyEnding(after)?.title ?? "" }, cause,
+      thumbnail: { state: after, size: 256 } });
+  }
+  for (const [defId, answer] of Object.entries(now.answers)) {
+    if (answer === "expired" && was?.answers[defId] !== "expired" && (LEGACY_PETITION_IDS as readonly string[]).includes(defId)) {
+      const petitioner = after.politics?.petitions.find(petition => petition.defId === defId)?.petitioner;
+      drafts.push({ ...at, ...(petitioner === undefined ? {} : by(factionOfPetitioner(petitioner))), kind: "event", template: "legacy.unanswered", severity: 2, params: { defId } });
+    }
+  }
+  return drafts;
+}
+
 /** One tick of the ledger: `before` is the state the tick started from. */
 export function advanceHistory(before: GameState, after: GameState): GameState {
   let history = historyOf(after);
@@ -601,6 +662,7 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...warDrafts(before, after));
   drafts.push(...plagueDrafts(before, after));
   drafts.push(...reorganisationDrafts(before, after));
+  drafts.push(...legacyDrafts(before, after));
   drafts.push(...factionDrafts(before, after));
   drafts.push(...personDrafts(before, after));
   let milestones = history.milestones;

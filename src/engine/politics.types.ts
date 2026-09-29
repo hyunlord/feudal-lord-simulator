@@ -15,6 +15,8 @@ export interface PetitionRecord {
   readonly respondedTick?: number;
   /** PERSON-0 PS-4 (save v16): the persons who bring the petition (2–3 household heads). */
   readonly petitionerIds?: readonly string[];
+  /** F5-A (LG-3, save v29): the answers this petition takes when they depend on the town (the heirs there are). */
+  readonly options?: readonly PetitionResponse[];
 }
 
 /** FC-4: one right the lord granted (one line of the rights list). */
@@ -98,6 +100,18 @@ export interface ChronicleEntry {
       readonly charter: "partial" | "refused" | "calendar";
       readonly townInfluence: number;
       readonly merchantInfluence: number;
+    };
+    /** F5-A (LG-8): chapter 5's autonomy and legacy — the mayor, the heir, the Crown's tax, the charter, the family, the legacy, the ending. */
+    readonly legacy?: {
+      readonly startYear: number;
+      readonly mayor: boolean;
+      readonly heir: import("../content/legacyConfig").HeirKind | null;
+      readonly royalTax: "paid" | "petitioned" | null;
+      readonly charter: "sealed" | "refused" | null;
+      readonly family: "departed" | "stayed" | null;
+      readonly legacy: import("../content/legacyConfig").LegacyAxis | null;
+      readonly ending: import("../content/legacyConfig").LegacyEndingId | null;
+      readonly scores: { readonly town: number; readonly family: number; readonly church: number } | null;
     };
   };
 }

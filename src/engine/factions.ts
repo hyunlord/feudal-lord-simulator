@@ -20,7 +20,7 @@ import {
 } from "../content/factionConfig";
 import { MALE_GIVEN_NAMES } from "../content/personNames";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
-import type { FamineResponseChoice, Petitioner } from "../content/chapterConfig";
+import type { FamineResponseChoice, Petitioner, PetitionResponse } from "../content/chapterConfig";
 import type { GameState } from "./engine.types";
 import type { FactionMemory, FactionRecord, FactionState, FactionTimelineEntry, FactionView } from "./faction.types";
 import type { HistoryRecord } from "./history.types";
@@ -31,6 +31,7 @@ import { hairWords, inheritTraits, populationTraits } from "./heredity";
 import { chooseFactionPortraitIdentity, choosePortraitIdentity, identityFaction, identityLineage, PORTRAIT_BAND, setPlaces } from "./portraits";
 import { hashSeed } from "./prng";
 import { WAR_BALANCE } from "../content/warConfig";
+import { HEIR_BY_RESPONSE, HEIR_CHOICE_PETITION_ID, LEGACY_CHOICE_PETITION_ID, LEGACY_PETITION_IDS, LEGACY_RELATIONS, type LegacyPetitionId } from "../content/legacyConfig";
 import { BOROUGH_CHARTER_PETITION_ID, REORGANISATION_EVENT_RELATIONS, REORGANISATION_PETITION_IDS, REORGANISATION_RELATIONS, type ReorganisationPetitionId } from "../content/reorganisationConfig";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
@@ -287,6 +288,18 @@ export function factionChanges(before: GameState, after: GameState): readonly Fa
       for (const [factionId, delta] of Object.entries(REORGANISATION_RELATIONS[petition.defId as ReorganisationPetitionId][answer] ?? {})) {
         const warned = petition.defId === BOROUGH_CHARTER_PETITION_ID && answer === "accept" && factionId === "overlord" && after.reorganisation?.warningTick !== undefined;
         changes.push({ factionId: factionId as FactionId, delta: delta! + (warned ? REORGANISATION_EVENT_RELATIONS.warnedOverlord : 0), reason });
+      }
+      continue;
+    }
+    // F5-A (LG-6): a chapter-5 answer, by its own table (the silence as its default: the heir named, the rest refused).
+    if ((LEGACY_PETITION_IDS as readonly string[]).includes(petition.defId)) {
+      const heir = after.legacy?.heir?.kind;
+      const answer = petition.response !== "expired" ? petition.response
+        : petition.defId === HEIR_CHOICE_PETITION_ID ? (Object.entries(HEIR_BY_RESPONSE).find(([, kind]) => kind === heir)?.[0] as PetitionResponse | undefined)
+        : petition.defId === LEGACY_CHOICE_PETITION_ID ? undefined : "refuse";
+      const reason = `petition:${petition.defId}:${petition.response}`;
+      for (const [factionId, delta] of Object.entries(answer === undefined ? {} : LEGACY_RELATIONS[petition.defId as LegacyPetitionId][answer] ?? {})) {
+        changes.push({ factionId: factionId as FactionId, delta: delta!, reason });
       }
       continue;
     }

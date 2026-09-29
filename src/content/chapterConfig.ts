@@ -3,6 +3,7 @@
  * chapter's end. Values are integers (permille for fractions, pennies for money).
  */
 import { PLAGUE_PETITION_DEFS } from "./plagueConfig";
+import { LEGACY_PETITION_DEFS } from "./legacyConfig";
 import { REORGANISATION_PETITION_DEFS } from "./reorganisationConfig";
 import { WAR_PETITION_DEFS } from "./warConfig";
 
@@ -72,9 +73,9 @@ export interface PetitionDef {
   /**
    * FAIL-3 (FL-6): how it arrives — by the calendar (FC-3, absent) or when a decline's cause has cleared (`lordship.ts`).
    * F2-A (WR-2…WR-8): or in the war's sequence (`war.ts`). F3-A (PL-5…PL-8): or in the pestilence's (`plague.ts`).
-   * F4-A (RG-5…RG-9): or in the reorganisation's (`reorganisation.ts`).
+   * F4-A (RG-5…RG-9): or in the reorganisation's (`reorganisation.ts`). F5-A (LG-2…LG-5): or in chapter 5's (`legacy.ts`).
    */
-  readonly trigger?: "calendar" | "decline_recovered" | "war" | "plague" | "reorganisation";
+  readonly trigger?: "calendar" | "decline_recovered" | "war" | "plague" | "reorganisation" | "legacy";
   /** F3-A: the answers the card offers (absent = all three); another answer is not taken. */
   readonly responses?: readonly PetitionResponse[];
 }
@@ -112,6 +113,7 @@ export const PETITION_DEFS: readonly PetitionDef[] = [
   ...WAR_PETITION_DEFS,
   ...PLAGUE_PETITION_DEFS,
   ...REORGANISATION_PETITION_DEFS,
+  ...LEGACY_PETITION_DEFS,
 ];
 
 /** FC-5: chapter 1 ends with a market town that came through the famine with this share of its people. */
@@ -137,6 +139,13 @@ export const CHAPTER_FOUR = {
   chapter: 4,
   fromYear: 1362,
   toYear: 1400,
+} as const;
+
+/** F5-A (LG-1, LG-8): chapter 5 of the campaign, autonomy and legacy (from chapter 4's end to the last market day of 1450). */
+export const CHAPTER_FIVE = {
+  chapter: 5,
+  fromYear: 1382,
+  toYear: 1450,
 } as const;
 
 export const CHAPTER_ONE = {

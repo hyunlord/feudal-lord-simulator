@@ -1,0 +1,110 @@
+{
+ "variant": "standard",
+ "answers": {
+  "royal_tax": "accept",
+  "heir_choice": "accept",
+  "borough_autonomy": "accept",
+  "legacy_choice": "accept"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 134896,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "eldest_son",
+  "personId": "m-000017",
+  "previousHeadId": "m-000015",
+  "tick": 408000,
+  "relief": 100
+ },
+ "candidates": [
+  [
+   "eldest_son",
+   "son"
+  ],
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": "p-002909",
+ "family": "departed",
+ "backlash": 0,
+ "royalSubsidy": 400,
+ "legacy": "town",
+ "endowment": 500,
+ "clothSold": 3400,
+ "scores": {
+  "town": 100,
+  "family": 50,
+  "church": 27,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": 20,
+    "legacy": 25
+   },
+   "family": {
+    "house": 10,
+    "generations": 16,
+    "heir": 12,
+    "stayed": 0,
+    "relations": 2,
+    "treasury": 10,
+    "legacy": 0
+   },
+   "church": {
+    "church": 10,
+    "chapels": 4,
+    "bishop": 3,
+    "priest": 5,
+    "relief": 5,
+    "legacy": 0
+   }
+  }
+ },
+ "ending": {
+  "id": "free_borough",
+  "title": "스스로 다스리는 도시",
+  "sentence": "1403년 자치 특허에 도시 인장이 찍혔고, 나이 든 머틸다 리처드슨이 첫 시장이 되었다. 1450년 마지막 장날, 도시는 제 법정과 제 인장으로 스스로를 다스렸고, 길드홀에 그 이름을 새겼다.",
+  "quotes": [
+   "h-032140",
+   "h-031612",
+   "h-046065"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": -10,
+  "crown": 30,
+  "neighbour_1": -3,
+  "neighbour_2": 0,
+  "bishop": 13,
+  "merchant_house_1": 50,
+  "merchant_house_2": 0,
+  "town": 88,
+  "commons": 40
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk",
+  "mayoralty:townsfolk",
+  "borough_seal:townsfolk"
+ ]
+}

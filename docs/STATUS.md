@@ -1,11 +1,19 @@
 # 현재 상태
 
-갱신: 2026-09-29(PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **F5-A 5장 자치와 유산 1382–1450 — 관문 통과, 본선 병합. 캠페인이 1300~1450년 처음부터 끝까지 이어진다**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/f5a-legacy/REPORT.md), [명세](design/chapter-five-legacy.md) LG-1~LG-12, 결정 LG1~LG7.
+  - 사건 사슬(Wave 21 5장과 1:1): 시장 선출 요구 → 국왕 과세 사절 → 가문 상속 → 도시 인장 → 특허 날인(또는 거부 뒤 반발) → 가문 퇴거/잔류 → 유산 기록 봉인 → 1450 여름 마지막 장날(유산 판정, 5장 끝 = 캠페인 승리). 박자: 첫 결정은 5장 시작 뒤 2년 안, 상속 1400·유산 1440부터.
+  - 결정 넷(청원): 자치 특허 수여/가문 지배(4장 결과·도시 힘·반발로 대가가 달라짐), 후계자(맏아들/딸의 남편/조카 — 가족 실제 인물, 없는 후보는 답이 없음), 국왕 과세 납부/청원, 유산 하나(도시/가문/교회).
+  - 유산 판정: 세 축(도시·가문·교회) 점수 + 고른 유산 → 결말 여섯(원장 인용 문장). 연대기 책 `campaignChronicle`(장 다섯·가문 계보·세력 아홉·유산)과 한국어 내보내기.
+  - 관문: L1~L12, 비교표 결말 5종(`free_borough`·`house_remembered`·`merchants_chantry`·`house_seat`·`lords_town`), 봇 5장 완주 5/5(1450), 사람 경로 5장 첫 결정(가드레일 옆 6/6), 가드레일 `26ae3da` 5/5(끝 상태 해시 다섯 = `baseline-7630a2a`, 1~4장 무변화), 저장 v29, 깨끗한 클론 `86f3f73` 3,622/3,622·build, PLAGUE-b 병합 뒤 회귀 `fd93d0c` 3,624/3,624.
+  - 판정·다음 후보: 1384~1400 빈 16년(4장이 1382에 끝남), `pilgrim_town`은 봇 도시에서 안 나옴(교회 축 최대 56), 4장 길드 결성 기록 누락(명령 시점 기록), 가장 없는 영주 가문(LN-9).
+  - 넘길 것(렌더): 결정 카드 넷(`petition.options ?? def.responses`로 답 거르기, `legacyDecisionForecast`), 사건 여덟(`legacyForecast`·원장 `legacy.*` 그림 키), 후계자 후보(`heirCandidates`), 유산 점수·결말(`legacyScores`·`legacyEnding`), 연대기 책(`campaignChronicle`·`campaignChronicleText`, 캠페인 끝 그림), 권리 `mayoralty`·`borough_seal`, 장부 `royal_subsidy`·`succession_relief`·`legacy_endowment`, 가문 퇴거 뒤 빈 영주관, 5장 목표 `legacy`·캠페인 끝.
 
 - **PLAGUE-b 역병 빈집 판자·3장 시작 그림 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_E 1): [보고서](verification/plague-b/REPORT.md), 결정 PLAGUEB-D1~D3.
   - 역병 빈집은 제 그림의 빈집 판자(Wave 26 변형 `boarded`·기본 그림 Wave 7), Wave 9 봉쇄 판은 L1~L3 기본 그림에서만. 봇 도시 빈집 둘 모두 판자(판자 켬·끔 나란히 캡처).
