@@ -41,6 +41,8 @@ interface Rect { readonly minTx: number; readonly maxTx: number; readonly minTy:
 const SIDE_MARGIN = 7;
 /** The meander's centre line lies this many tiles (plus the seed's 0–6) from the edge across the flow (MA-9). */
 const MEANDER_CENTRE = 13;
+/** Tiles around the town site within which the channel pays more (MA-9). */
+const SITE_ROOM = 6;
 /** What a tile off the centre line costs the channel, per tile. */
 const MEANDER_PULL = 1.4;
 
@@ -122,16 +124,25 @@ export function carveRiver(terrains: TerrainType[], width: number, height: numbe
   const amplitude = spec.kind === "river" ? 5 : 3.5;
   const wavelength = 20 + hashSeed(seed, "river:wave") % 12;
   const phase = (hashSeed(seed, "river:phase") % 628) / 100;
-  const centre = MEANDER_CENTRE + hashSeed(seed, "river:centre") % 7;
+  // The centre line lies in the half of the map away from the town site (the first closed rectangle): west of it or
+  // north of it for the riverside town's own site, the other side when the guardrail's seeds move the site there.
+  const extent = acrossNorthSouth ? width : height;
+  const site = closed[0];
+  const siteAcross = site === undefined ? extent : acrossNorthSouth ? (site.minTx + site.maxTx) / 2 : (site.minTy + site.maxTy) / 2;
+  const fromEdge = MEANDER_CENTRE + hashSeed(seed, "river:centre") % 7;
+  const centre = siteAcross >= extent / 2 ? fromEdge : extent - 1 - fromEdge;
   for (let index = 0; index < count; index += 1) {
     const tx = index % width, ty = Math.floor(index / width);
     if (closed.some(rect => inRect(rect, tx, ty))) { cost[index] = Number.POSITIVE_INFINITY; continue; }
     const along = acrossNorthSouth ? ty : tx, across = acrossNorthSouth ? tx : ty;
     const target = centre + amplitude * Math.sin(along * 2 * Math.PI / wavelength + phase) + (fbm(along * 0.07, 3.5, seed + 71_003, 2) - 0.5) * 12;
-    const side = Math.min(across, (acrossNorthSouth ? width : height) - 1 - across);
+    const side = Math.min(across, extent - 1 - across);
     const rim = side < SIDE_MARGIN ? (SIDE_MARGIN - side) * 2 : 0;
     const off = MEANDER_PULL * Math.abs(across - target);
-    cost[index] = (terrains[index] === "water" ? 0.3 : 0.6 + 3 * lift(index) + (terrains[index] === "rock" ? 6 : 0)) + rim + off;
+    // The town's room: near the site the channel pays more, so it does not wrap the town's ground.
+    const gap = site === undefined ? SITE_ROOM : Math.max(site.minTx - tx, tx - site.maxTx, site.minTy - ty, ty - site.maxTy, 0);
+    const room = gap < SITE_ROOM ? (SITE_ROOM - gap) * 1.5 : 0;
+    cost[index] = (terrains[index] === "water" ? 0.3 : 0.6 + 3 * lift(index) + (terrains[index] === "rock" ? 6 : 0)) + rim + off + room;
   }
   const sea = spec.mouth === "sea" ? seaCells(terrains, width, height) : null;
   const onEdge = (edge: RiverSource, tx: number, ty: number) =>
